@@ -234,13 +234,13 @@
     "image_prompt": "A small mark and a stroke splitting away at the very top, then a lid, and beneath it a mouth set into a frame. It is a shrine front: the roof flared out at the corners, the offering-slot below, and the whole thing raised a step above the street so you have to look up at it. Built to be looked up at, and held in <radical>esteem</radical>."
   },
   "tsukue": {
-    "mnemonic_text": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
+    "mnemonic_text": "Flat top, a straight leg on the left, and a right leg that bends out at the foot. It is a tiny side <radical>table</radical>, tilting so hard the teacup is already sliding off the edge.",
+    "image_prompt": "A low minimal side table seen head-on. The top is one short flat stroke. From its left end a slightly curved leg falls to the floor. From its right end the other leg comes across, then bends down and out, ending in a small upward flick like a foot. It leans toward that bent leg and a teacup and saucer slide off the high side, caught mid-fall. Flat muted colors, nothing else in frame, one wobbling <radical>table</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
-    },
-    "image_prompt": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>."
+      "review_status": "reviewed"
+    }
   },
   "tsume": {
     "mnemonic_text": "A flat stroke sits over three short strokes curving down and in. It's a hand, palm-down, fingers curling to snatch — a <radical>claw</radical>.",
@@ -648,264 +648,264 @@
     }
   },
   "knife": {
-    "mnemonic_text": "Two strokes stand at the right edge, one short and one long with a hook at its base. It is a blade set on its point against the wall of the character, held upright and ready to come down. That is a <radical>knife</radical>.",
-    "image_prompt": "Two strokes stand at the right edge, one short and one long with a hook at its base. It is a blade set on its point against the wall of the character, held upright and ready to come down. That is a <radical>knife</radical>.",
+    "mnemonic_text": "A kitchen knife stands upright on the cutting board, balanced on its pointed tip. The short line is its blunt back. The long hooked line is the edge tapering to that tip. One standing <radical>knife</radical>.",
+    "image_prompt": "A large chef's knife stands perfectly vertical on a wooden cutting board, balanced on the point of its blade with nothing holding it. Two strokes make the blade: a short vertical line on the left is the blunt spine; a longer vertical line on the right is the sharp edge, dropping straight down to a small leftward hook, the needle tip it spins on. It reads as one upright <radical>knife</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "buddhist-temple": {
-    "mnemonic_text": "A patch of earth sits on top of a measuring hand, which holds the ground below to an exact size. Land counted out that carefully is never somebody's farm. Ground measured and set apart like this is a <radical>Buddhist temple</radical>.",
-    "image_prompt": "A patch of earth sits on top of a measuring hand, which holds the ground below to an exact size. Land counted out that carefully is never somebody's farm. Ground measured and set apart like this is a <radical>Buddhist temple</radical>.",
+    "mnemonic_text": "A pole spears up through two stacked roof-lines, a short one above a wide one. Below them sits a broad platform. A bronze bell swings from a hook, its clapper flung sideways. A tiny <radical>Buddhist temple</radical>.",
+    "image_prompt": "A small pagoda seen head-on. A tall vertical pole rises through two stacked horizontal roof-lines, a short one above a wider one, drawn as flared tiered eaves. Beneath them a long horizontal slab is the stone base. At the pole's foot a curved hook holds a bronze bell caught mid-swing, tilted hard sideways; a single dot beside it is the clapper flying out. One <radical>Buddhist temple</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "pheasant": {
-    "mnemonic_text": "Two folded wings sit on top of a short-tailed bird, so the shape carries more plumage than animal. No ordinary bird needs that much feather to get anywhere. Only a <radical>pheasant</radical> is built this way.",
-    "image_prompt": "Two folded wings sit on top of a short-tailed bird, so the shape carries more plumage than animal. No ordinary bird needs that much feather to get anywhere. Only a <radical>pheasant</radical> is built this way.",
+    "mnemonic_text": "Two feather-clusters fan straight up top, one each side, like wings flung overhead. Below, four bars stack down a long stiff spine: the barred tail. It strains upward and lifts nothing. A startled <radical>pheasant</radical>.",
+    "image_prompt": "A plump gamebird stands facing forward, mid-panic. At the top, two matching feathered shapes fan straight up, one left, one right, each a curved hook around two short strokes, like broad wings flung overhead. Below is the body: a short slanting stroke at the neck, a vertical down the left side, and four horizontal bars crossed by one long vertical on the right, forming a long stiff barred tail. Its feet stay planted and it lifts nothing. One <radical>pheasant</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "circumference": {
-    "mnemonic_text": "A frame is drawn the whole way round, and the field and the mouth are packed inside it so no corner is left empty. Your eye has to travel the entire border to get back where it started. That trip around the outside is the <radical>circumference</radical>.",
-    "image_prompt": "A frame is drawn the whole way round, and the field and the mouth are packed inside it so no corner is left empty. Your eye has to travel the entire border to get back where it started. That trip around the outside is the <radical>circumference</radical>.",
+    "mnemonic_text": "A squared-off stadium wall wraps a small packed crowd. A tortoise plods the outer edge, dribbling chalk from a bucket on its shell. One lap chalks the whole rim: the <radical>circumference</radical>.",
+    "image_prompt": "Top-down view of a squared-off stadium. A short diagonal stroke at top-left is an entrance flag; the bracket across the top and right plus the left vertical form the outer track wall; short inner horizontals are bleacher rows; the square at bottom-center is a packed infield crowd. A tortoise plods the outermost edge, a leaky chalk bucket tied to its shell, its dotted trail ringing the whole wall after one lap. The chalk ring marks the <radical>circumference</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "do-not": {
-    "mnemonic_text": "It is the mother shape with a single stroke driven straight through the middle of it, cancelling the whole thing out. One line is all it takes to turn a thing into its own prohibition. The bar across it says <radical>do not</radical>.",
-    "image_prompt": "It is the mother shape with a single stroke driven straight through the middle of it, cancelling the whole thing out. One line is all it takes to turn a thing into its own prohibition. The bar across it says <radical>do not</radical>.",
+    "mnemonic_text": "A campsite cooler, lid cinched by a strap across the middle. One diagonal slash is painted corner to corner, across the paw of a raccoon frozen mid-reach. The red bar means <radical>do not</radical>.",
+    "image_prompt": "Front view of a campsite cooler. The hooked outline stroke is its lopsided lid and body. The stroke through the middle is a bungee strap cinching it shut. One long diagonal runs from the bottom-left corner up to the top-right: a thick red prohibition bar painted across the lid and across the paw of a raccoon frozen mid-reach beside it. Flat cartoon style, bold outlines. The red diagonal dominates, making the whole picture read as <radical>do not</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "mingle": {
-    "mnemonic_text": "A lid rests on top, and underneath it two legs cross, one thrown over the other. Nobody sits like that on their own. Those are two people's legs tangled under the same small table, which is what it is to <radical>mingle</radical>.",
-    "image_prompt": "A lid rests on top, and underneath it two legs cross, one thrown over the other. Nobody sits like that on their own. Those are two people's legs tangled under the same small table, which is what it is to <radical>mingle</radical>.",
+    "mnemonic_text": "Under a flat café awning, two sidewalks meet in a big X. A line of penguins waddles in from each side, crosses at the center, and comes out one shuffled jumble. They <radical>mingle</radical>.",
+    "image_prompt": "Street view. The top dot and long horizontal stroke are a flat café awning on one post. Below, one stroke sweeps down-left and another down-right, crossing in a bold X where two sidewalks meet. A neat line of penguins waddles in along each stroke from the top corners, passes straight through the X, and spills out the far side as one shuffled jumble. Two short bottom strokes are scuffing webbed feet. Flat cartoon style, bold outlines. The tangle at the crossing is where they <radical>mingle</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "i": {
-    "mnemonic_text": "Five stacked strokes sit directly over a mouth, so the whole count of one hand is speaking at once. Every one of those five is the same person insisting on the same point. That is nobody but <radical>I</radical>.",
-    "image_prompt": "Five stacked strokes sit directly over a mouth, so the whole count of one hand is speaking at once. Every one of those five is the same person insisting on the same point. That is nobody but <radical>I</radical>.",
+    "mnemonic_text": "A squat robot: flat plate head, criss-cross wiring torso, a square grille mouth at the base. It jabs a thumb at its own chest, mouth lit mid-shout. Every answer is one word: <radical>I</radical>.",
+    "image_prompt": "A squat robot facing forward, built from the strokes. The top horizontal is a flat plate cap on its head. The middle short vertical and boxy zigzag are the criss-cross wiring of its torso. The bottom horizontal is a shelf; the clean square beneath it is a big speaker-grille mouth. The robot jabs one blocky thumb into its own chest, mouth-grille lit mid-shout. Flat cartoon style, bold outlines. The self-jab and the shouting mouth both say <radical>I</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sell": {
-    "mnemonic_text": "A scholar's broad shoulders sit on top, a table and two legs hold everything up, and a lid covers the transaction. Somebody respectable is standing behind a counter pretending this is not commerce. It is, and what they do is <radical>sell</radical>.",
-    "image_prompt": "A scholar's broad shoulders sit on top, a table and two legs hold everything up, and a lid covers the transaction. Somebody respectable is standing behind a counter pretending this is not commerce. It is, and what they do is <radical>sell</radical>.",
+    "mnemonic_text": "A plus-sign pins the top of a flat board. Two strokes stick out below like stubby legs. The signboard sprints down the sidewalk after one fleeing shopper, desperate to <radical>sell</radical>.",
+    "image_prompt": "A small plus-sign sits tacked at the top. Below it runs a wide flat board with a tiny hooked tick at its left corner. Two short strokes splay from under the board as stubby legs mid-stride. The signboard has come alive and chases a startled shopper down a shopfront sidewalk, paper notices flapping, the scene resolving on <radical>sell</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sunrise": {
-    "mnemonic_text": "A sun is trapped low between stacked bars, with a stalk pushing up through the middle of them. The light has not cleared the horizon yet, so it comes through cut into strips. That striped low light is <radical>sunrise</radical>.",
-    "image_prompt": "A sun is trapped low between stacked bars, with a stalk pushing up through the middle of them. The light has not cleared the horizon yet, so it comes through cut into strips. That striped low light is <radical>sunrise</radical>.",
+    "mnemonic_text": "A square sun is boxed in the middle. The cross below is a post; the cross on top is a crank handle. A stagehand winds it and the boxed sun grinds up the post into <radical>sunrise</radical>.",
+    "image_prompt": "Center: a small square box with one bar across it, drawn as the sun. Below it, a short vertical crossed by a horizontal makes a stubby post in flat ground. Above it, another short cross makes a hand-crank handle. A bored stagehand winds the handle, ratcheting the boxed sun up the post above the ground bar, the picture resolving on <radical>sunrise</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "daybreak": {
-    "mnemonic_text": "The sun sits directly on a single flat line with nothing between the two. It has not climbed anywhere yet; it is still touching the ground it came out of. The moment it lifts off that line is <radical>daybreak</radical>.",
-    "image_prompt": "The sun sits directly on a single flat line with nothing between the two. It has not climbed anywhere yet; it is still touching the ground it came out of. The moment it lifts off that line is <radical>daybreak</radical>.",
+    "mnemonic_text": "A square sun has flopped onto one long flat line, like a patty dropped on a griddle. It lands with a hiss. Light spills sideways along the line and the sky snaps into <radical>daybreak</radical>.",
+    "image_prompt": "A single long horizontal stroke runs straight across, drawn as a flat metal griddle. Sitting square on top of it, a box with one bar across its middle is the sun, just dropped flat like a patty. Cartoon steam curls up where box meets line, and bright light spreads along the stroke both ways, the picture resolving on <radical>daybreak</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "ruler": {
-    "mnemonic_text": "A bent body holds one leg kicked out straight, locked rigid at exactly the length it was measured to. The body is the handle and the stiff leg is the scale. An outstretched limb held that precisely is a <radical>ruler</radical>.",
-    "image_prompt": "A bent body holds one leg kicked out straight, locked rigid at exactly the length it was measured to. The body is the handle and the stiff leg is the scale. An outstretched limb held that precisely is a <radical>ruler</radical>.",
+    "mnemonic_text": "A squared-off case sits top left. From it one long blade sweeps down-right and flicks up, tick marks along its edge. It shot out and swept the desk clean, a runaway <radical>ruler</radical>.",
+    "image_prompt": "Top left: a small squared-off bracket, a short horizontal meeting a short vertical with a tiny hook, drawn as a tape-measure case. From its base one long straight blade sweeps diagonally to the lower right, ending in an upward flick, lower edge printed with evenly spaced ticks. Pencils and papers fly off the desk in its path, the picture resolving on <radical>ruler</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sweeper": {
-    "mnemonic_text": "A head of stacked bars sits under a cover that pins it down, with a cloth handle hanging below. This is the whole tool assembled from top to bottom, not just the bristles. Take hold of the cloth end and you have a <radical>sweeper</radical>.",
-    "image_prompt": "A head of stacked bars sits under a cover that pins it down, with a cloth handle hanging below. This is the whole tool assembled from top to bottom, not just the bristles. Take hold of the cloth end and you have a <radical>sweeper</radical>.",
+    "mnemonic_text": "Short strokes fan out like stiff bristles, cinched by a band to one long handle below. The broom has swept the rug, the chairs and the floor lamp into one corner pile. A thorough <radical>sweeper</radical>.",
+    "image_prompt": "A tall upright broom built from the strokes: three short stiff strokes splay out at the top as bristles; one tight band cinches them at the neck; a long straight stroke drops from the band as the handle, a small hook at its foot. It stands on a wide wooden floor beside one corner heap: a rolled rug, two toppled chairs, a floor lamp. Flat even light, drifting dust, a thorough <radical>sweeper</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sit": {
-    "mnemonic_text": "Two people are planted on either side of a patch of earth, both facing inward, neither going anywhere. There is nothing underneath either of them but the ground. Staying put on the ground like that is what it is to <radical>sit</radical>.",
-    "image_prompt": "Two people are planted on either side of a patch of earth, both facing inward, neither going anywhere. There is nothing underneath either of them but the ground. Staying put on the ground like that is what it is to <radical>sit</radical>.",
+    "mnemonic_text": "Two matching little figures up top, each a splayed pair of strokes, on a flat ground line pinned by an upright stroke. They have flopped down on the dirt and will not stand for anyone. They just <radical>sit</radical>.",
+    "image_prompt": "Two identical tiny figures fill the top, each a short left-falling stroke and a longer right stroke splayed like folded legs, set side by side. Beneath them a flat horizontal ground line with one upright stroke driven through it and a short bar at its foot: a low mound of packed earth. The pair sit cross-legged and blank-faced on the mound while a loaded moving truck idles behind them and the movers wait. Flat dry daylight, a stubborn <radical>sit</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "net": {
-    "mnemonic_text": "A flat rectangle is divided by two uprights into a row of even square holes. Every hole is exactly the size of its neighbour, and nothing larger than one hole ever gets through. That grid of matched gaps is a <radical>net</radical>.",
-    "image_prompt": "A flat rectangle is divided by two uprights into a row of even square holes. Every hole is exactly the size of its neighbour, and nothing larger than one hole ever gets through. That grid of matched gaps is a <radical>net</radical>.",
+    "mnemonic_text": "A flat rectangle, split by two upright strokes into little cells. A mesh seen head-on. Someone has clapped it over a fat pigeon on the platform. The bird stands in the grid and refuses to panic. Caught in the <radical>net</radical>.",
+    "image_prompt": "A wide rectangle frame, its interior split by two evenly spaced vertical strokes into four small square cells, reading as a square mesh seen straight on. It has just dropped over a plump pigeon on a tiled station platform; the bird stands square in a centre cell, feathers smooth, wholly unbothered, one commuter staring. Flat overhead light, grey tiles, a snug <radical>net</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "food-left": {
-    "mnemonic_text": "The eating radical is squeezed thin to fit down the left edge: the lid stays on top, and the heap beneath it narrows to a stack of short strokes. It is a full meal pressed flat against the wall to make room, which is what <radical>food</radical> looks like on the left.",
-    "image_prompt": "The eating radical is squeezed thin to fit down the left edge: the lid stays on top, and the heap beneath it narrows to a stack of short strokes. It is a full meal pressed flat against the wall to make room, which is what <radical>food</radical> looks like on the left.",
+    "mnemonic_text": "A peaked lid up top, then a round body holding a small square, two strokes splayed beneath as feet. The covered bowl has grown legs and trots off the table, still steaming. Runaway <radical>food (left)</radical>.",
+    "image_prompt": "A domed food bowl drawn stroke by stroke: two strokes meet at a sharp apex as a peaked lid; a horizontal band sits below; then a rounded body holding one small square like a window; at the base two short strokes splay out as stubby feet. The bowl has sprouted these legs and trots off the edge of a laid dinner table, steam curling from the lid, one diner's fork frozen halfway up. Warm light, checked cloth, escaping <radical>food (left)</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sprout": {
-    "mnemonic_text": "A single stalk pushes straight up through two horizontal bars of packed soil, splitting them apart as it rises. There is nothing above it yet, no leaves and no flower. This is the first green push of a <radical>sprout</radical>.",
-    "image_prompt": "A single stalk pushes straight up through two horizontal bars of packed soil, splitting them apart as it rises. There is nothing above it yet, no leaves and no flower. This is the first green push of a <radical>sprout</radical>.",
+    "mnemonic_text": "A dinner roll is left on the counter. A green stem punches up through the crust. Two leaf-bars poke out the sides, and the split crust cradles one tiny <radical>sprout</radical>.",
+    "image_prompt": "A stale dinner roll on a kitchen counter. A single straight green stem shoots vertically up through the center of the crust. Two short horizontal leaf-bars cross the stem, one high and one low, like pairs of seed leaves. The crust splits along one clean horizontal line at the base where the stem emerged. Soft morning light, shallow focus, the whole shape reading as a young <radical>sprout</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "prairie": {
-    "mnemonic_text": "A wide frame stands open at the bottom with one small mouth adrift in the middle of all that space. The emptiness around the tiny thing is the entire point of the shape. Ground that goes on that far in every direction is a <radical>prairie</radical>.",
-    "image_prompt": "A wide frame stands open at the bottom with one small mouth adrift in the middle of all that space. The emptiness around the tiny thing is the entire point of the shape. Ground that goes on that far in every direction is a <radical>prairie</radical>.",
+    "mnemonic_text": "A flat line runs across the top like an endless horizon. The two sides fall away into grass. Dead center hums one lonely vending machine, the only thing for miles on the <radical>prairie</radical>.",
+    "image_prompt": "Wide landscape built from the radical's strokes: one long horizontal across the top is the unbroken horizon; two verticals at left and right bend down and outward into land sloping into tall grass. Dead center, small and alone, sits one boxy vending machine, lit up and humming, nothing else in sight. Pale sky, endless golden grass, the emptiness reading as <radical>prairie</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "jewel": {
-    "mnemonic_text": "The king's three bars are joined by a single upright, and one dot rests in the lower corner where nothing else sits. That dot is the one thing the king is actually holding onto rather than ruling. It is a <radical>jewel</radical>.",
-    "image_prompt": "The king's three bars are joined by a single upright, and one dot rests in the lower corner where nothing else sits. That dot is the one thing the king is actually holding onto rather than ruling. It is a <radical>jewel</radical>.",
+    "mnemonic_text": "Three glass shelves stack up, pinned by a pole down the middle. The case is empty except for one bright dot in the bottom corner: a single alarmed <radical>jewel</radical>.",
+    "image_prompt": "A tall museum display case: three evenly spaced horizontal glass shelves crossed by one vertical support post down the center, matching the radical's three bars and stem. Every shelf is bare. In the lower-right corner near the base sits one tiny faceted gemstone under a spotlight, a single red laser beam trained on it. Dim gallery, velvet rope, the lone glinting dot reading as <radical>jewel</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "street": {
-    "mnemonic_text": "One long horizontal runs across, and a single stroke drops from its centre and hooks to the left at the end. A road going one way, and one turning off it. That corner is where a <radical>street</radical> begins.",
-    "image_prompt": "One long horizontal runs across, and a single stroke drops from its centre and hooks to the left at the end. A road going one way, and one turning off it. That corner is where a <radical>street</radical> begins.",
+    "mnemonic_text": "Overhead, a T-junction. The flat top stroke is the main road. The line from its centre is the side street. It hooks left where a van hit the kerb and spilled crates across the <radical>street</radical>.",
+    "image_prompt": "Overhead map view of a T-junction. A long horizontal stroke across the top is the main road. A vertical stroke drops from its centre as a narrower side street meeting it. That stroke ends in a short hook curling left, where a small delivery van has mounted the kerb and spilled crates across the lane. Flat top-down style. Resolves to <radical>street</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "left-hand-2": {
-    "mnemonic_text": "A short diagonal falls across a horizontal bar, and the two meet at the wrist. It is the arm you do not write with, held out flat to steady whatever the other one is doing. This is the <radical>left hand</radical>.",
-    "image_prompt": "A short diagonal falls across a horizontal bar, and the two meet at the wrist. It is the arm you do not write with, held out flat to steady whatever the other one is doing. This is the <radical>left hand</radical>.",
+    "mnemonic_text": "A giant foam fan hand sits on empty bleachers. The short stroke on top is the thumb. The long stroke flops down and to the left. Every cheer comes out backwards, because it is a <radical>left hand</radical>.",
+    "image_prompt": "An oversized foam fan hand from a stadium, molded as a left hand. A short stroke across the top is the stubby thumb jutting sideways. One long stroke sweeps down and out to the lower left, the palm and wrist flopping over. It sits alone on empty bleachers, pointing the wrong way for every cheer. The shape resolves to <radical>left hand</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "hiding-enclosure": {
-    "mnemonic_text": "Three strokes make a box with the right side deliberately left open. Whatever goes inside can never be seen from the front, and can always slip out the back when it needs to. That is a <radical>hiding enclosure</radical>.",
-    "image_prompt": "Three strokes make a box with the right side deliberately left open. Whatever goes inside can never be seen from the front, and can always slip out the back when it needs to. That is a <radical>hiding enclosure</radical>.",
+    "mnemonic_text": "A cupboard with no door. One stroke caps the top. An L-stroke forms the left wall and floor. The right side gapes open. A sheep is jammed in nose-first, rump out, calling this a <radical>hiding enclosure</radical>.",
+    "image_prompt": "Front view of a three-sided alcove. The ceiling is one short horizontal stroke; a single stroke drops down the left as the back wall and turns along the bottom as the floor. The right side has no wall at all. A fat sheep faces the back, wedged in, only its woolly rump and hind legs jutting past the open edge, looking smug. Flat simple style. Resolves to <radical>hiding enclosure</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "book": {
-    "mnemonic_text": "A tree carries one extra stroke cut across its roots, marking the exact place it was felled. Everything above that mark was flattened, stacked and bound between covers. The mark is where a tree becomes a <radical>book</radical>.",
-    "image_prompt": "A tree carries one extra stroke cut across its roots, marking the exact place it was felled. Everything above that mark was flattened, stacked and bound between covers. The mark is where a tree becomes a <radical>book</radical>.",
+    "mnemonic_text": "An open book, spine-up, its covers sloping down each side like a roof. A ruler lies across the top. A ribbon dangles from the spine to the desk. A pencil keeps this <radical>book</radical> from snapping shut.",
+    "image_prompt": "A hardcover book open and upside-down, spine at the top, its two covers sloping down to left and right like a pitched roof. A ruler rests flat across the top edge. A bookmark ribbon hangs straight down from the spine to the desk as a vertical centre line. A pencil lies flat on the desk against the base, wedging the book. Flat simple style. Resolves to <radical>book</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "opposite": {
-    "mnemonic_text": "A cliff face leans out, and a hand pushes up underneath it, shoving in the one direction the rock is already coming down. Hand and cliff want exactly contrary things. That standoff is what makes this the <radical>opposite</radical>.",
-    "image_prompt": "A cliff face leans out, and a hand pushes up underneath it, shoving in the one direction the rock is already coming down. Hand and cliff want exactly contrary things. That standoff is what makes this the <radical>opposite</radical>.",
+    "mnemonic_text": "The top stroke bends and sweeps down-left: a rope with one figure hauling back on its end. Below, two strokes cut the other way: a second figure braced down-right, leg out for grip. They pull <radical>opposite</radical> ways.",
+    "image_prompt": "A tug-of-war built from strokes. A flat top stroke bends at a corner and sweeps to the lower left as a taut rope; a figure grips its end and leans right back. Below, two overlapping strokes form a second figure pulling the other way: one is the torso angled down-right, the crossing stroke a leg kicked wide for grip. The rope stays bar-straight and nobody moves. Flat style. Resolves to <radical>opposite</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "crouch": {
-    "mnemonic_text": "A stroke starts to rise, thinks better of it, and folds back down over itself into a low bent shape. It is a figure making itself small underneath something heavy. That fold is a <radical>crouch</radical>.",
-    "image_prompt": "A stroke starts to rise, thinks better of it, and folds back down over itself into a low bent shape. It is a figure making itself small underneath something heavy. That fold is a <radical>crouch</radical>.",
+    "mnemonic_text": "A too-tall man folds under a low shelf to grab a dropped coin. His bowed head makes the short top stroke. His back arches over into the long stroke, hooking in where his knees tuck. He is frozen mid-<radical>crouch</radical>.",
+    "image_prompt": "Side view of an absurdly tall man jammed under a low wooden bookshelf, reaching for one coin on the floor. His sharply tipped-down head and neck make the short diagonal stroke at top. His spine is the long bold stroke curving over, then hooking inward at the bottom where his knees tuck tight to his chest. He is frozen mid-<radical>crouch</radical>, face straining.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "third-class": {
-    "mnemonic_text": "A lid sits on top, a frame sits under the lid, and a person is tucked inside at the very bottom. There are two full layers of ceiling before you reach whoever is living down there. Quarters like that are <radical>third class</radical>.",
-    "image_prompt": "A lid sits on top, a frame sits under the lid, and a person is tucked inside at the very bottom. There are two full layers of ceiling before you reach whoever is living down there. Quarters like that are <radical>third class</radical>.",
+    "mnemonic_text": "A flat tin roof caps a boxy compartment: the top stroke, walls falling straight down. Inside, one passenger sits on a bare bench, legs splayed wide. No cushion, no window, just <radical>third class</radical>.",
+    "image_prompt": "Cross-section of an old train carriage compartment. One flat horizontal roof beam runs across the top: the top stroke. From its ends, two straight walls drop to the floor, making a plain box. Inside, a weary passenger sits on a hard wooden bench, knees apart and feet planted wide like a small figure. Bare bulb, no window, peeling paint: <radical>third class</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "hill-left": {
-    "mnemonic_text": "Two small loops are stacked on a single upright, hugging the left edge of the character. It is a slope drawn as switchbacks, the path folding back on itself each time it climbs. That folded climb is a <radical>hill</radical>.",
-    "image_prompt": "Two small loops are stacked on a single upright, hugging the left edge of the character. It is a slope drawn as switchbacks, the path folding back on itself each time it climbs. That folded climb is a <radical>hill</radical>.",
+    "mnemonic_text": "Two round green mounds sit stacked one on the other. The long stroke is the steep track down their right side. A goat is wedged in the dip between the bumps, stuck on the <radical>hill (left)</radical>.",
+    "image_prompt": "A small grassy hill at the left edge of a field, two round green mounds stacked vertically, one bump above the other, outlines bulging like curves. Down their right side runs one long straight vertical stroke, a sheer dirt path. A white goat is jammed nose-first into the narrow dip where the mounds meet, legs splayed, unable to climb up or down this <radical>hill (left)</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "perfect": {
-    "mnemonic_text": "A roof closes over the whole original figure, head and legs and all, with nothing sticking out and nothing missing underneath. The building settled over it and the fit came out exact. Nothing left to add is what makes it <radical>perfect</radical>.",
-    "image_prompt": "A roof closes over the whole original figure, head and legs and all, with nothing sticking out and nothing missing underneath. The building settled over it and the fit came out exact. Nothing left to add is what makes it <radical>perfect</radical>.",
+    "mnemonic_text": "A roof stroke sits dead level, chimney centered. The two beams below run true. The bottom strokes are the builder's legs, planted wide as he leans back to look. He spots not one flaw. It is <radical>perfect</radical>.",
+    "image_prompt": "A newly finished cottage, head-on. One broad roof stroke lies perfectly horizontal across the top, a chimney dot centered on it. Below, two clean beams stack level and true, a short one above a longer one. Under them, two strokes sweep down and out: the builder's braced legs as he leans back on his heels, arms crossed. Every joint flush, every line plumb: <radical>perfect</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "bureaucrat": {
-    "mnemonic_text": "A roof sits over two stacked mounds of filed paper, sealed in and never leaving the building. Nobody actually lives under there; the paperwork does. Whoever keeps that roof standing over all of it is a <radical>bureaucrat</radical>.",
-    "image_prompt": "A roof sits over two stacked mounds of filed paper, sealed in and never leaving the building. Nobody actually lives under there; the paperwork does. Whoever keeps that roof standing over all of it is a <radical>bureaucrat</radical>.",
+    "mnemonic_text": "A pointed roof: the government office. Below it, two square drawers crammed with forms. An arm juts out between them, stamping every sheet in reach. One buried <radical>bureaucrat</radical>.",
+    "image_prompt": "A sharp peaked roof on top: a single dot at the apex, then a wide beam whose left and right ends bend down like short eaves. Below it, two small square boxes stacked like filing drawers, the lower one trailing into a hooked tail. A tiny office clerk is wedged in the gap between the drawers, one arm free, thumping a red rubber stamp onto a stream of forms sliding past. Flat muted colors, no background, one buried <radical>bureaucrat</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "reason": {
-    "mnemonic_text": "A field has one stalk pushing up out of the top of it, breaking the frame. Everything inside the box stayed where it was put except that single line, and you can trace it straight back down to its source. That traceable line is the <radical>reason</radical>.",
-    "image_prompt": "A field has one stalk pushing up out of the top of it, breaking the frame. Everything inside the box stayed where it was put except that single line, and you can trace it straight back down to its source. That traceable line is the <radical>reason</radical>.",
+    "mnemonic_text": "A crate on a shelf has one bean sprout shooting straight out the top. You yank it. The crate splits along its middle line and one seed rolls out: the <radical>reason</radical> the plant grew.",
+    "image_prompt": "A closed wooden crate on a plank shelf. A single thin stem, like a bean sprout, rises straight up out of the crate's top edge and pokes well above it. One horizontal board splits the crate across its middle. A hand grips the sprout and pulls; the crate has cracked open along that middle line and one fat glowing seed rolls out onto the shelf. Flat muted palette, the seed is the <radical>reason</radical> the plant grew.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "tool": {
@@ -914,7 +914,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "seven": {
@@ -927,39 +927,39 @@
     }
   },
   "heavy": {
-    "mnemonic_text": "A stack of bars is pressed down onto a field, with a single upright driven through the whole pile to hold it together. Every layer rests its full weight on the one below it. A column loaded like that is <radical>heavy</radical>.",
-    "image_prompt": "A stack of bars is pressed down onto a field, with a single upright driven through the whole pile to hold it together. Every layer rests its full weight on the one below it. A column loaded like that is <radical>heavy</radical>.",
+    "mnemonic_text": "A slash of crane arm up top. A tall guide rail drops straight down. Threaded on it, a banded iron block has slammed onto a plank and cracked it. Nothing on site is this <radical>heavy</radical>.",
+    "image_prompt": "A short diagonal slash at the very top, like a crane jib. Below it a tall vertical rail runs straight down the whole figure. Around its middle sits a square iron block wrapped in horizontal bands, threaded onto the rail like a pile-driver weight. At the base, one long plank far wider than the rail has been struck by the block and split into a deep V. Flat muted colors, no background, one crushingly <radical>heavy</radical> block.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "few": {
-    "mnemonic_text": "It is the small shape with one more stroke sliced off the top corner, carrying part of it away. There was not much there to begin with, and now some of that is gone as well. What is left over is <radical>few</radical>.",
-    "image_prompt": "It is the small shape with one more stroke sliced off the top corner, carrying part of it away. There was not much there to begin with, and now some of that is gone as well. What is left over is <radical>few</radical>.",
+    "mnemonic_text": "Three crumbs sit on the counter: a tick and two dabs. One long diagonal sweep of the broom flings the rest off the edge. Count what is left and it is <radical>few</radical>.",
+    "image_prompt": "Side view of a kitchen counter. Along the top, three crumbs: a short vertical fleck between a dab left and a dab right. Below, one long broomstroke slashes from upper right to lower left, flinging a cascade of crumbs off the edge. A hand grips the broom mid-sweep. Only those three crumbs are left, resolving on how <radical>few</radical> remain.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "lord": {
-    "mnemonic_text": "The king's three bars carry a single dot placed above the whole stack, sitting higher than the crown does. Somebody stands over even the king. That dot above everything is the <radical>lord</radical>.",
-    "image_prompt": "The king's three bars carry a single dot placed above the whole stack, sitting higher than the crown does. Somebody stands over even the king. That dot above everything is the <radical>lord</radical>.",
+    "mnemonic_text": "A candlestick holds the head of the table: one flame on top, a straight stem, a wide base bar. Servants pull out its chair and await orders, bowing to it as their <radical>lord</radical>.",
+    "image_prompt": "Side view of a grand dining hall. At the head of the long table stands a tall candlestick where a guest should sit: a bright flame as the top dot, a short bar beneath it, a straight stem through a second crossing bar, a broad foot as the base. Two aproned servants pull out its chair and lean in, napkins over their arms, waiting on it as the <radical>lord</radical> of the house.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "right": {
-    "mnemonic_text": "The sun sits squarely on top of a foot that is planted straight. Nothing leans, nothing sits off centre, and the light lands exactly where the foot is standing. Alignment that exact is what makes a thing <radical>right</radical>.",
-    "image_prompt": "The sun sits squarely on top of a foot that is planted straight. Nothing leans, nothing sits off centre, and the light lands exactly where the foot is standing. Alignment that exact is what makes a thing <radical>right</radical>.",
+    "mnemonic_text": "High noon. A boxed sun sits dead overhead. Below it a fence post drops straight down and plants a flat foot on the chalk line. Sun, post and foot line up, and the inspector stamps it <radical>right</radical>.",
+    "image_prompt": "Construction site at high noon. At the top, the sun is a rectangular box with a bar across its middle, hanging dead overhead. Below: a flat groundline, a short vertical fence post on it, ending in a foot that sweeps out flat to the right along a chalk mark. A hard-hatted inspector with a giant stamp checks that sun, post and foot share one plumb line, then stamps it <radical>right</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "music": {
@@ -968,7 +968,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "cloud": {
@@ -977,7 +977,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "twenty": {
@@ -1341,12 +1341,12 @@
     }
   },
   "horns": {
-    "mnemonic_text": "Two short strokes tip away from each other, one leaning left and one leaning right, with nothing under them to join them up. They rise from the same head and point in opposite directions. Those are <radical>horns</radical>.",
-    "image_prompt": "Two short strokes tip away from each other, one leaning left and one leaning right, with nothing under them to join them up. They rise from the same head and point in opposite directions. Those are <radical>horns</radical>.",
+    "mnemonic_text": "A tiny goat headbutts a fence post. Nothing happens. On top of its skull sit two short strokes. Each leans outward. The tips spread wide and the bases nearly touch. Two little <radical>horns</radical>.",
+    "image_prompt": "A small goat kid seen head-on, mid-headbutt against a wooden fence post. From the top of its skull sprout two tiny strokes: the left one leans out to the left, the right one leans out to the right, spreading apart toward the tips and nearly touching at the base. They are barely nubs. The post has not moved. The two strokes are unmistakably <radical>horns</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "banner": {
@@ -1557,39 +1557,39 @@
     }
   },
   "west": {
-    "mnemonic_text": "A wide box with a flat lid, and inside it two legs standing apart, as though the sun had walked down into a crate at the end of the day and pulled the lid shut over its own head. The sun climbs into that box in the <radical>west</radical>.",
-    "image_prompt": "A wide box with a flat lid, and inside it two legs standing apart, as though the sun had walked down into a crate at the end of the day and pulled the lid shut over its own head. The sun climbs into that box in the <radical>west</radical>.",
+    "mnemonic_text": "A window frame stands in bold strokes. The flat top and hooked bottom trap a fat sun in the middle. It is too big to sink. Its two little legs kick as it fights to set in the <radical>west</radical>.",
+    "image_prompt": "A square window frame: a flat horizontal line is the top lintel, two verticals the sides, a hooked stroke closes the bottom sill. Wedged in the opening is a fat orange sun, sinking but jammed. Its two stubby legs, the two short strokes inside, kick against the frame as it struggles to drop below and set. Resolves to <radical>west</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "north": {
-    "mnemonic_text": "Two figures stand back to back, one turned to the left and one to the right, neither willing to face the other. They are standing that way because the wind is at their backs and it is too cold to face head on, and cold at your back means you are facing <radical>north</radical>.",
-    "image_prompt": "Two figures stand back to back, one turned to the left and one to the right, neither willing to face the other. They are standing that way because the wind is at their backs and it is too cold to face head on, and cold at your back means you are facing <radical>north</radical>.",
+    "mnemonic_text": "Two campers sit back to back. The left strokes are a straight spine and braced foot. The right strokes are the other camper hunched away. Neither will face the wind from the <radical>north</radical>.",
+    "image_prompt": "Two people sit spine to spine, seen from the side. On the left, a vertical stroke with a short rising tick at its foot is one straight back and tucked knee. On the right, a stroke that bends and kicks out low is the other person hunched away. A cold draft cuts through the gap between their backs. Neither will turn to face it. Resolves to <radical>north</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "now": {
-    "mnemonic_text": "A wide roof, and under it a single stroke tucked in like the hand of a clock caught pointing straight down. Nothing else is kept under that roof — not the hour before it, not the hour after, only the one instant it is covering: <radical>now</radical>.",
-    "image_prompt": "A wide roof, and under it a single stroke tucked in like the hand of a clock caught pointing straight down. Nothing else is kept under that roof — not the hour before it, not the hour after, only the one instant it is covering: <radical>now</radical>.",
+    "mnemonic_text": "A giant arrowhead drops from the sky and freezes, its tip a hair above one coin on the ground. Two strokes slant down to that point. Under it, a short bar and a hook mark the spot. One pinned instant: <radical>now</radical>.",
+    "image_prompt": "A single huge arrowhead, the size of a car, has fallen from a clear sky and hangs frozen just above a city pavement. Two strokes slant steeply down from a high peak and meet at a sharp point. Directly under that point are two small marks: a short horizontal bar and, below it, a tiny hook, together circling one coin on the stone. Everything holds still. The point marks one exact instant: <radical>now</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "lightning": {
-    "mnemonic_text": "A box of daylight with one stroke tearing straight out of the bottom of it and hooking sideways along the ground, brighter than the box that was holding it. Light that leaves the sky in a single crooked stroke like that is <radical>lightning</radical>.",
-    "image_prompt": "A box of daylight with one stroke tearing straight out of the bottom of it and hooking sideways along the ground, brighter than the box that was holding it. Light that leaves the sky in a single crooked stroke like that is <radical>lightning</radical>.",
+    "mnemonic_text": "A grey utility box sits on a pole. From its base a crooked tail whips down, jags sideways, and zaps a garden gnome mid-wave with one bright bolt of <radical>lightning</radical>.",
+    "image_prompt": "A boxy grey electrical cabinet high on a pole, drawn as the radical's top: a rectangle with one horizontal line across its middle. From the center of its base a vertical stroke drops down, then kinks hard sideways into a jagged hook, like a bolt tearing at the ground. The hook zaps a small garden gnome in a flowerbed, frozen mid-wave, sparks flying. Stormy sky, the crooked tail reading as <radical>lightning</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "fly": {

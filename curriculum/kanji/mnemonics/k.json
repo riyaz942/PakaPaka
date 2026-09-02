@@ -63,12 +63,12 @@
     }
   },
   "k-evening": {
-    "meaning_mnemonic": "A curved hill holds a setting moon, sliced by one falling line. The light fades to blue as hush settles into <radical>evening</radical>. This whole little picture simply means <kanji>evening</kanji>.",
-    "reading_mnemonic": "Seki comes out onto his step at this hour every night, and you hear him before you see him — that wet, rattling 「<reading>せき</reading>」 of a cough carrying right down the street. When せき starts up, the light has gone.",
+    "meaning_mnemonic": "The <radical>evening</radical> radical you already learned and the <kanji>evening</kanji> kanji are the same character, so knowing your radicals cold just handed you this one for free.",
+    "reading_mnemonic": "The shrine sweeper <reading>Seki</reading> clocks in at exactly 「<reading>せき</reading>」 past sunset, never a minute early, so her entire shift is one long <kanji>evening</kanji> of shooing cats off the mossy steps.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-father": {
@@ -165,12 +165,12 @@
     }
   },
   "k-night": {
-    "meaning_mnemonic": "A <radical>lid</radical> is pulled across the sky, and a <radical>person</radical> slips under as the last <radical>evening</radical> drains away. Once the lid is on, nothing more gets in: no sun, no colour. The lid down over the evening: <kanji>night</kanji>.",
-    "reading_mnemonic": "Ya is the yakitori man who only opens once the lid is down. The cart comes out of nowhere, the lantern goes up, and he calls one syllable into the dark — 「<reading>や</reading>」 — which is the entire advertisement. If you can hear や, it is night.",
+    "meaning_mnemonic": "Once the last <radical>person</radical> outdoors presses a <radical>lid</radical> down over the fading <radical>evening</radical>, not one <radical>drop</radical> of light escapes, and the sealed black that follows is <kanji>night</kanji>.",
+    "reading_mnemonic": "The guard on the late shift, <reading>Yah</reading>, is down to a single flat 「<reading>や</reading>」 by the time <kanji>night</kanji> falls, because twelve hours on his feet in the dark have scraped every other word out of him.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-nightfall": {
@@ -1859,12 +1859,12 @@
     }
   },
   "k-dog": {
-    "meaning_mnemonic": "A <radical>dog</radical> spins in tight circles on the porch, chasing an itch on its own tail. It keeps spinning without ever catching it. Finally it flops down panting, every inch a stubborn <kanji>dog</kanji>.",
-    "reading_mnemonic": "Still panting on the shrine steps, the dog corners into <reading>Ken</reading>, the shiba who guards a wall of antique swords. Ken plants himself between the blades and the newcomer, barking a short, sharp <reading>けん</reading> that echoes off the mossy stone.",
+    "meaning_mnemonic": "A <kanji>dog</kanji> is a <radical>big</radical> animal so shapeless that the single wet <radical>drop</radical> of its nose is the only way to find its front end.",
+    "reading_mnemonic": "<reading>Ken</reading> the shiba inu only guards his wall of antique swords for someone who can bark 「<reading>けん</reading>」 exactly right, because no <kanji>dog</kanji> this fussy about blades will answer a sloppy call.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-character": {
@@ -1958,12 +1958,13 @@
     }
   },
   "k-beginning": {
-    "meaning_mnemonic": "A scientist lights the first match of a brand new invention. She frames the burnt matchstick on her wall as its <radical>beginning</radical>. Visitors still point at that match as where everything had its <kanji>beginning</kanji>.",
-    "reading_mnemonic": "Back at the same trailhead, a hiker named <reading>Gen</reading> singes his thumb relighting that match and yelps <reading>げん</reading>, the exact sound a beginning makes when it starts with a mistake.",
+    "meaning_mnemonic": "The <kanji>beginning</kanji> of anyone's story is the <radical>two</radical> marks drawn at the very top, long before the <radical>human legs</radical> below ever carry them anywhere.",
+    "reading_mnemonic": "<reading>Gwen</reading> the retired sprinter still jogs to the school field each dawn to crouch at the <kanji>beginning</kanji> line, hissing 「<reading>げん</reading>」 in case the starter's gun fires after forty years.",
+    "description": "Not just 'beginning': this character often works as a prefix meaning 'former' or 'ex-,' as in a former teacher or a former boss.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-line": {
@@ -1976,12 +1977,12 @@
     }
   },
   "k-voice": {
-    "meaning_mnemonic": "A <radical>samurai</radical> trips over a <radical>body</radical> sprawled across the road. He lets out a furious yell that startles nearby crows. That booming yell is his <kanji>voice</kanji>.",
-    "reading_mnemonic": "At the shrine steps, star student <reading>Sei</reading> matches the samurai roar for roar, hand shooting up first as always, shouting <reading>せい</reading> loud enough to scatter every cat off the mossy steps.",
+    "meaning_mnemonic": "Even after one <radical>slash</radical> leaves the <radical>samurai</radical> a <radical>body</radical> flat on the tatami, what carries across the hall is the <kanji>voice</kanji> that still shouts orders.",
+    "reading_mnemonic": "Sei the star student treats every 「<reading>せい</reading>」 as a cue to 「<reading>say</reading>」 something first, so hers is the only <kanji>voice</kanji> the back row ever hears.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-shape": {
@@ -2120,12 +2121,12 @@
     }
   },
   "k-meat": {
-    "meaning_mnemonic": "A hungry cat stares through the butcher's window at two hanging slabs of <radical>meat</radical>. It leaps and paws at the glass, but the hooks hold firm. All the cat ever sees swinging inside is <kanji>meat</kanji>.",
-    "reading_mnemonic": "The butcher, whose name tag just says <reading>Nick</reading>, finally chases the cat off with a broom, growling <reading>にく</reading> at it like a curse word. He rehangs the swinging slabs and locks the frame before the cat tries its luck again.",
+    "meaning_mnemonic": "This is the <radical>meat</radical> radical and the <kanji>meat</kanji> kanji at once, one shape doing both jobs, so you already know it from the butcher's-shop window.",
+    "reading_mnemonic": "Regulars at the butcher counter groan his name, 「<reading>にく</reading>」, every time <reading>Nick, ooh</reading> leans a thumb on the scale and the <kanji>meat</kanji> jumps a whole kilo.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-door": {
@@ -2156,12 +2157,12 @@
     }
   },
   "k-bird": {
-    "meaning_mnemonic": "A clumsy <radical>bird</radical> waddles into the convenience store, wings tucked like it is cold. It flops onto the rice ball shelf with a thud. The clerk sighs and carries the <kanji>bird</kanji> back outside.",
-    "reading_mnemonic": "Everyone at the konbini calls the night clerk <reading>Chow</reading>. He barks <reading>ちょう</reading> at the bird every single night, like he's calling a stray in for dinner. It never once listens.",
+    "meaning_mnemonic": "The <radical>bird</radical> radical and the <kanji>bird</kanji> kanji are the same character, and it also means chicken, because a chicken is just the bird you are most likely to eat.",
+    "reading_mnemonic": "At the shrine a fat cat named <reading>Chow</reading> watches the pigeons land and rumbles 「<reading>ちょう</reading>」, since as far as she is concerned a <kanji>bird</kanji> is just lunch that has not noticed her yet.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-chirp": {
@@ -2210,12 +2211,12 @@
     }
   },
   "k-winter": {
-    "meaning_mnemonic": "A single <radical>drop</radical> hangs frozen off the fence, refusing to fall. The same cold locks your <radical>trailing foot</radical> in mid-step. Everything holds still in the grip of <kanji>winter</kanji>.",
-    "reading_mnemonic": "Back at that fence, a shivering dog named Toby paws at his own frozen <reading>toe</reading> and yelps <reading>とう</reading>, breath crystallizing mid-air just like the drop dangling above him.",
+    "meaning_mnemonic": "<kanji>Winter</kanji> is the one season your <radical>trailing foot</radical> drags a strip of <radical>ice</radical> across the floor with every step you take indoors.",
+    "reading_mnemonic": "A hiker called <reading>Toe</reading> reaches the mountain-trail vending machine with both of hers gone numb and barks 「<reading>とう</reading>」, because nothing but deep <kanji>winter</kanji> freezes feet through two pairs of socks.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-cloud": {
@@ -2228,12 +2229,12 @@
     }
   },
   "k-face": {
-    "meaning_mnemonic": "You <radical>stand</radical> at the edge of a <radical>cliff</radical> holding a pot <radical>lid</radical> full of paint. You dab <radical>three</radical> quick streaks onto a giant stone <radical>head</radical> beside you. Those streaks blink open into a grinning <kanji>face</kanji>.",
-    "reading_mnemonic": "Back on the cliff edge, a photographer named <reading>Gan</reading> leans in too close for the shot and slips on loose gravel. He yelps a sharp <reading>がん</reading> as he grabs the rock ledge, dangling right below the sleepy head on the page.",
+    "meaning_mnemonic": "Because a <radical>lad</radical> this vain only ever grooms the side of his <radical>head</radical> that people see, every hair on his <kanji>face</kanji> is perfect and the back is a mess.",
+    "reading_mnemonic": "On class-photo day at the school the photographer levels his camera like a <reading>gun</reading> and shouts 「<reading>がん</reading>」 until every kid aims a <kanji>face</kanji> straight down the lens.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-springtime": {
@@ -2273,12 +2274,12 @@
     }
   },
   "k-ray": {
-    "meaning_mnemonic": "A shrine held in <radical>esteem</radical> sits on bare <radical>ground</radical>. Two <radical>human legs</radical> climb its steps toward the glow at the top. That glow shoots outward in one long <kanji>ray</kanji> of light.",
-    "reading_mnemonic": "Koichi arrives to restock the shrine's offering box just as the light rays hit his eyes. He shields his face and grunts <reading>こう</reading>, the same rough sound as a crow's <reading>caw</reading> from the shrine roof.",
+    "meaning_mnemonic": "A <kanji>ray</kanji> is a <radical>small</radical> bright speck set on a <radical>flat top</radical> so level that it can throw one line dead straight for miles without ever dipping.",
+    "reading_mnemonic": "<reading>Koichi</reading> runs his konbini lights so hard that one <kanji>ray</kanji> bouncing off the onigiri shelf can leave a spot in your vision. Told this, he says 「<reading>こう</reading>」 and reaches for the dimmer to turn it up.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-round": {
@@ -2309,32 +2310,33 @@
     }
   },
   "k-cold": {
-    "meaning_mnemonic": "Snow buries the <radical>roof</radical> of the village <radical>well</radical>. A <radical>drop</radical> from the bucket rope freezes solid before it falls. Someone splits firewood into <radical>eight</radical> pieces, but the <kanji>cold</kanji> yard stays frozen anyway.",
-    "reading_mnemonic": "A boy named <reading>Khan</reading> comes to fill his bucket at that same frozen well. His fingers touch the ice and he yelps <reading>かん</reading>, yanking his hand back and blowing on it. His shivering bark echoes off the roof above.",
+    "meaning_mnemonic": "It is so <kanji>cold</kanji> under the <radical>roof</radical> that the <radical>well</radical> freezes to <radical>ice</radical>, and the swelling ice <radical>splits</radical> the <radical>ground</radical> beneath the house.",
+    "reading_mnemonic": "At the mountain-trail vending machine, a drink frozen too solid to pour rings out 「<reading>かん</reading>」 when you knock it, and that hollow <reading>can</reading>-knock is the sound of the whole trail going <kanji>cold</kanji>.",
+    "description": "This is the cold you feel all over, from cold weather or an unheated room. A single cold thing you touch, like a drink or a metal rail, is a different kanji.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-copy": {
-    "meaning_mnemonic": "Someone throws a blanket <radical>cover</radical> over the office photocopier's lid. Its glass sits flat as <radical>ground</radical> underneath. The page slides out creased like a stubborn <radical>wrap</radical>, a wrinkled <kanji>copy</kanji>.",
-    "reading_mnemonic": "The office clerk, <reading>Shaw</reading>, peels the crumpled twin off the tray and stares. He hisses one clipped <reading>しゃ</reading> through his teeth, half praise, half warning, and staples it to the original before anyone notices the crease.",
-    "description": "This character covers more than duplicating on paper. It also means being captured or reflected in an image, which is why the same kanji covers photographs and vivid description, not just literal copies.",
+    "meaning_mnemonic": "A <kanji>copy</kanji> is the page you <radical>bestow</radical> on whoever asks while the real one stays hidden under its <radical>cover</radical> the whole time.",
+    "reading_mnemonic": "A wedding photographer called <reading>Shaw</reading> shouts 「<reading>しゃ</reading>！」 as the shutter fires, so every guest he aims at becomes one more <kanji>copy</kanji> pasted in the album.",
+    "description": "This kanji leans toward capturing an image, like a photograph, more than photocopying. It also covers copying text out by hand or describing a scene.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-england": {
-    "meaning_mnemonic": "A <radical>big</radical> hero stands guard in a patch of <radical>grass</radical>. Rain soaks him, so his only <radical>cover</radical> is a damp blanket knotted like a cape. Freezing and proud, he still calls himself <kanji>England</kanji>.",
-    "reading_mnemonic": "A jogger named <reading>Ray</reading> circles the same grassy field and spots the blanket-caped hero still holding his pose in the wind. Ray snorts back a laugh, muttering <reading>えい</reading> under his breath as he jogs on, already composing the story for his friends.",
-    "description": "This character originally meant outstanding or brilliant, which is why hero survives as an accepted meaning. Centuries later it was borrowed purely for its sound to write the country name England, a meaning with no real connection to the original character.",
+    "meaning_mnemonic": "<kanji>England</kanji> is the one country where a flawless patch of <radical>grass</radical> mown at the dead <radical>center</radical> of the garden counts as a national achievement.",
+    "reading_mnemonic": "A tour guide called <reading>Amy</reading> ends every fact about <kanji>England</kanji> with a proud 「<reading>えい</reading>！」, certain the country's whole name is just that one long sound stretched over a map.",
+    "description": "Beyond the country name, this kanji means outstanding or brilliant, as in words for a hero or a gifted person. England just borrows its sound.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-goods": {
@@ -2393,21 +2395,21 @@
     }
   },
   "k-possess": {
-    "meaning_mnemonic": "You balance a coin on level <radical>ground</radical>, and it tips into a <radical>slide</radical>. The coin slips down through a window where the <radical>moon</radical> hangs. It drops into your palm, and now you <kanji>possess</kanji> it.",
-    "reading_mnemonic": "On the far side of that same window, a boy named <reading>Yu</reading> catches the falling coin and whoops <reading>ゆう</reading>. He stuffs it straight into his pocket and grins up at the moon, already counting the coin as his.",
+    "meaning_mnemonic": "You <kanji>possess</kanji> a thing only while your <radical>left hand</radical> stays clamped on it, which is why even the <radical>moon</radical> becomes yours the second you get a grip.",
+    "reading_mnemonic": "<reading>Hugh</reading> refuses to admit he <kanji>possess</kanji>es anything, so he keeps yelling 「<reading>ゆう</reading>」, which sounds just like 'you,' and swears every coat, cat, and cup in the house is really yours.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-prefecture": {
-    "meaning_mnemonic": "A giant <radical>eye</radical> stares down at one <radical>small</radical> patch of land. It never looks away, guarding only that one stretch of ground. That single watched patch becomes its own <kanji>prefecture</kanji>.",
-    "reading_mnemonic": "Ken, the sword-collecting shiba, gets posted to guard that same small patch of land under the staring eye. Every time a stranger's boot crosses the border, he barks <reading>けん</reading>, sharp as the English name <reading>Ken</reading> shouted twice. He never abandons his post. The eye above never blinks either.",
+    "meaning_mnemonic": "A <kanji>prefecture</kanji> is a region the capital thinks too <radical>small</radical> to visit, so it settles for keeping one <radical>hidden</radical> <radical>eye</radical> on it from far off.",
+    "reading_mnemonic": "<reading>Ken</reading> the shiba inu lends his antique swords only to shrines on his own <kanji>prefecture</kanji>'s official register, and snaps 「<reading>けん</reading>」 at any courier who parks a wheel across the border.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-products": {
@@ -2450,12 +2452,12 @@
     }
   },
   "k-rouse": {
-    "meaning_mnemonic": "You lean against a gate stuck at a dead <radical>stop</radical>. A whistle cracks at dawn, and your legs launch straight into a <radical>run</radical>. You leap the gate and <kanji>rouse</kanji> yourself awake.",
-    "reading_mnemonic": "Kiki the tree spirit lives in the trunk beside that same gate. Your sudden sprint sends leaves raining down. She pokes her head out and calls <reading>き</reading> after you, giggling her own name, <reading>Kiki</reading>. She's delighted someone finally got up and running before dawn.",
+    "meaning_mnemonic": "You <kanji>rouse</kanji> <radical>oneself</radical> at dawn only by making your legs <radical>run</radical> for the door before the rest of you gets a vote.",
+    "reading_mnemonic": "Kiki the tree spirit shrieks 「<reading>き</reading>！」 at first light, and the whole forest has to <kanji>rouse</kanji> itself because a giggling <reading>Kiki</reading> will not let one branch stay asleep.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-short": {
@@ -2478,13 +2480,13 @@
     }
   },
   "k-sino": {
-    "meaning_mnemonic": "A <radical>big</radical> man kneels on the <radical>ground</radical> beside a river of <radical>water</radical>. He plants <radical>two</radical> stalks of <radical>grass</radical> in it and opens his <radical>mouth</radical> to sing. His song names this whole land <kanji>China</kanji>.",
-    "reading_mnemonic": "By the river, the scholar seals his finished scroll inside a battered tin <reading>can</reading> to keep out the damp. He raps the lid twice and it rings out <reading>かん</reading>, <reading>かん</reading>, echoing over the water. That hollow knock is the sound stamped on every character he writes.",
-    "description": "漢 rarely stands by itself. It usually works as a bound prefix meaning Chinese or Sino-, attached ahead of another kanji rather than standing alone. In some older compounds the same character can also simply mean \"a man\" or \"fellow,\" with no connection to China at all.",
+    "meaning_mnemonic": "<kanji>Sino-</kanji> names the land where a <radical>husband</radical> farms the <radical>grass</radical> by the <radical>water</radical> and every <radical>mouth</radical> for miles drinks from that one river.",
+    "reading_mnemonic": "A loud warlord called <reading>Khan</reading> stamps 「<reading>かん</reading>」 on every scroll, teapot, and character that ever came out of China, so his one syllable is now the mark of anything <kanji>Sino-</kanji>.",
+    "description": "Sino- is the combining form of 'Chinese', and this kanji points to Han China in particular. In a few set compounds it instead means 'a man', often a rough one.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-substitute": {
@@ -2497,13 +2499,13 @@
     }
   },
   "k-sultry": {
-    "meaning_mnemonic": "Through the window you watch the <radical>sun</radical> blaze over the crosswalk. An <radical>old</radical> man shuffles across without hurrying for anyone. The asphalt shimmers in the thick <kanji>sultry</kanji> air.",
-    "reading_mnemonic": "The kid waiting beside him is named <reading>Sho</reading>. He wilts in the heat and groans <reading>しょ</reading> under his breath. He wishes the old man would hurry so the signal would finally let him escape the sun.",
-    "description": "This kanji is only used for the sultry heat of weather or air: a stifling afternoon, a muggy room. It never describes a hot object, a hot drink, or a fever. Those use a different word entirely.",
+    "meaning_mnemonic": "It turns <kanji>sultry</kanji> when <radical>someone</radical> is pinned in an open field and the <radical>sun</radical> bakes the damp air around them for hours.",
+    "reading_mnemonic": "<reading>Show</reading> the weatherman does his forecast live from a treeless field, so overheated that the one syllable he can force out, 「<reading>しょ</reading>」, is now the station's official word for a <kanji>sultry</kanji> afternoon.",
+    "description": "This is heat from the air or the weather, not from a hot object. Something hot to the touch, like a pan or a kettle, is written with another kanji entirely.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "k-vegetable": {
@@ -2516,12 +2518,12 @@
     }
   },
   "k-ward": {
-    "meaning_mnemonic": "Ink shoots down a <radical>slide</radical> and falls as one round <radical>drop</radical>. It splashes into a <radical>box on its side</radical> and fills it edge to edge. The ink stays penned inside, marking off its own <kanji>ward</kanji>.",
-    "reading_mnemonic": "A pigeon named Coo waddles to the top of the slide and loses her footing. She drops straight down, cooing <reading>く</reading> the whole way, soft as an English <reading>coo</reading>. She lands smack inside the tipped-over box, wings pinned flat to its walls. Coo is boxed into her own little ward now.",
+    "meaning_mnemonic": "A <kanji>ward</kanji> is the slice of city the council <radical>mow</radical>s off and seals inside its own <radical>hiding enclosure</radical>, so tax collectors know whose doors to knock on.",
+    "reading_mnemonic": "<reading>Coo</reading> the pigeon patrols only her home <kanji>ward</kanji>, and the moment a stranger's shoe crosses the boundary she coos one furious 「<reading>く</reading>」 and waddles back.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   }
 }
