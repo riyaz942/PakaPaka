@@ -37,6 +37,8 @@ const baseItem: CurriculumItemDetail = {
   primaryForm: '人',
   furigana: null,
   meaning: 'person',
+  wordType: null,
+  readingComposition: null,
   mnemonicText: 'A person walking.',
   meaningMnemonic: null,
   readingMnemonic: null,

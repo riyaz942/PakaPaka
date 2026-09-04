@@ -17,6 +17,16 @@ describe('mnemonicAccessibilityLabel', () => {
     ).toBe('Two legs mid-stride and no head at all: a person.');
   });
 
+  it('strips the vocabulary tag a word mnemonic lands on', () => {
+    expect(
+      buildMnemonicAccessibilityLabel(
+        'A <kanji>mouth</kanji> that you walk into is an <vocabulary>entrance</vocabulary>.',
+        'entrance',
+        '入り口',
+      ),
+    ).toBe('A mouth that you walk into is an entrance.');
+  });
+
   it('composes meaning and primary form when mnemonic text is absent', () => {
     expect(buildMnemonicAccessibilityLabel(null, 'one', '一')).toBe('one (一)');
   });

@@ -5,18 +5,48 @@ radical, and a story for each kanji built from those radicals. Now the kanji
 combine into a *word*, and your job is to make that combination feel inevitable.
 Follow the teaching voice above.
 
-Two mnemonics — they serve two different quiz directions — and, only when this
-word needs one, a description.
+A meaning mnemonic always; a reading mnemonic only when this word's reading
+actually needs one — the reading section below decides, and for many words the
+answer is none at all. Plus a description, only when this word needs one.
+
+## What the page already tells the learner
+
+Two fields on this word's page are **computed, not written**, and they sit right
+beside your mnemonics:
+
+- **Word type** — see the word type section below.
+- **Reading composition** — how the reading is built: {{READING_COMPOSITION}}
+
+Never restate either of them. They are derived mechanically from the word's
+kanji and their dictionary readings, so nothing you could write about them is
+more accurate, and every sentence spent on one is a sentence taken from the part
+only you can do. In particular: **do not name jukugo, on'yomi, kun'yomi, rendaku
+or gemination anywhere in a mnemonic.** That vocabulary belongs to the field
+above, which already uses it.
 
 ## How long
 
-Aim for **roughly 180–330 characters** for the meaning mnemonic — two to four
-sentences, the same size as the radical and kanji mnemonics the learner has been
-reading all the way up the chain. That is the size that has actually worked:
-long enough to carry a scene, short enough that a tired learner reads it instead
-of skipping it. Treat it as the target, not a rule: going over to finish a scene
-is fine, padding to reach a number is not. (The reading mnemonic follows the
-reading section below — a derivation note stays one sentence no matter what.)
+**Meaning mnemonic: one sentence, or two short ones, roughly 70–200
+characters.** Finishing at 90 is a success, not a shortfall. These are the
+target, and they are short on purpose:
+
+> A <kanji>mouth</kanji> that you walk into is an <vocabulary>entrance</vocabulary>.
+
+> The number of <kanji>people</kanji> with <kanji>mouths</kanji> you have to
+> feed is your <vocabulary>population</vocabulary>.
+
+> You already know 学生 is a student, so a <kanji>small</kanji> one is an
+> <vocabulary>elementary school student</vocabulary>.
+
+**Reading mnemonic: follow the reading section below**, which says which of
+three things this word gets — nothing at all, one sentence pointing back at the
+word that already taught this reading, or a full story of one sentence or two
+short ones, roughly 90–220 characters.
+
+Going over to finish a thought is fine; padding to reach a number is not. The
+depth comes from how specific the picture is, never from how many sentences it
+takes — the learner reads this tired, on a phone, on the fourth review of the
+week.
 
 ## The kanji must add up to the word
 
@@ -26,6 +56,20 @@ produce that word. A scene in which each kanji takes a turn doing something,
 with the meaning announced at the end, teaches nothing — the learner remembers a
 squirrel and a cascade of bells and still cannot say what the word means.
 
+**Wrong** — a scene the kanji take turns acting in:
+
+> At Grandma Kane's shrine the cats have organized themselves into a council.
+> Every evening they gather on the mossy steps, yowling over who gets the
+> sunniest step and who rings the bell at dawn, and only once the vote is cast
+> does the yard finally <kanji>calm down</kanji>. Cats running the shrine until
+> it goes quiet is what politics looks like.
+
+**Right** — the kanji combining into a claim:
+
+> <kanji>Governing</kanji> a country is mostly the art of getting it to
+> <kanji>calm down</kanji>, which is all <vocabulary>politics</vocabulary>
+> really is.
+
 Test it: delete one kanji's clause. If the mnemonic still makes the same point,
 that kanji was staged as decoration rather than used as a reason. Rewrite it so
 every kanji is load-bearing.
@@ -34,19 +78,13 @@ Never invent a bystander to carry the logic. If your scene needs a gatekeeper, a
 hiker, or a passing animal who is not one of this word's kanji to make the point
 land, the point is not actually coming from the kanji.
 
-The kanji mnemonics use a hard one-sentence form for this reason. A vocabulary
-word may take more room than that — it is joining whole kanji stories, not
-radicals — but the same discipline applies: shorter is better, and if you can
-say it in one sentence, say it in one sentence.
-
 ## Sentence shape
 
 Short sentences. One idea per sentence — most under 18 words, none over 25.
-The learner reads this tired, on a phone, often in English as a second
-language, so the scene has to survive a skim. When a sentence wants a second
-clause, a dash, or an "-ing" tail ("eyes streaming"), make it two sentences
-instead. Concrete everyday words are always fine; a long winding sentence
-never is.
+Plain English, the word a ten-year-old would use: *tied* not *lashed*, *bundle*
+not *sheaf*, *tips over* not *lurches*. When a sentence wants a second clause, a
+dash, or an "-ing" tail ("eyes streaming"), make it two sentences instead. If it
+sounds like a novel, it is wrong.
 
 ## The word
 
@@ -54,13 +92,31 @@ never is.
 - Reading: **{{READING}}**
 - Meaning we teach: **{{MEANING}}** (accepted answers: {{MEANING_SYNONYMS}})
 
+## Word type
+
+{{WORD_TYPE}}
+
+The word type is shown to the learner in its own field on the page, so never
+open with a bare recital of it. Use it only where it *explains* something the
+learner can carry to the next word — that is what the block above tells you.
+
 ## The kanji in this word
 
 Each one already has a meaning story the learner has read. **Hook into those
 stories** — reuse their imagery instead of inventing a fresh scene that competes
-with what they already remember. These are the only kanji you may name.
+with what they already remember. Reusing the object is enough; restaging that
+kanji's own scene is what blows the budget. These are the only kanji you may
+name.
 
 {{COMPONENTS}}
+
+## Is this word just its kanji?
+
+Some words are a kanji the learner has already met, unchanged in meaning — 年 the
+kanji and 年 the word. Inventing a second story for those blurs the one they
+already have.
+
+{{IDENTITY_NOTE}}
 
 ## The reading
 
@@ -73,63 +129,103 @@ with what they already remember. These are the only kanji you may name.
 ## Highlighting
 
 The app colours the pieces the learner is meant to connect, so you mark them
-inline. Two tags, one per field, and nothing else:
+inline. Three tags, and nothing else:
 
 - In `meaning_mnemonic`, wrap **every component kanji's meaning**, where the
   story uses it, in `<kanji>…</kanji>`. Tag the word doing the work in the
   sentence, not a label bolted on: `the <kanji>ground</kanji> splits`, never
   `the ground (<kanji>ground</kanji>) splits`.
-- In `reading_mnemonic`, wrap the kana 「{{READING}}」 in `<reading>…</reading>`,
-  **and** wrap the English word your scene uses to carry that sound — the
-  phonetic hook — in the same tag. In a derivation note, tagging the reading
-  itself is enough.
+- In **both** mnemonics, wrap **this word's own meaning** in
+  `<vocabulary>…</vocabulary>`, exactly once each. A component is a piece
+  borrowed from the kanji below; this is the word's own meaning, the thing the
+  story is building toward, and the app renders the two in different colours. It
+  may sit anywhere in the sentence — first word, middle or last — so put it
+  where the sentence reads best and do not contort the wording to push it to the
+  end. **Use the meaning we teach — the words at the top of this prompt — not
+  one of the accepted answers.** When a component kanji's word *is* this word's
+  meaning word, tag that same word twice on two different spans: `<kanji>` where
+  the kanji enters, `<vocabulary>` where the story lands. That is correct and
+  expected.
+- In `reading_mnemonic`, when you write one, wrap the kana 「{{READING}}」 in
+  `<reading>…</reading>`, **and** wrap the English word your scene uses to carry
+  that sound — the phonetic hook — in the same tag. In a one-sentence
+  back-reference there is no invented hook, so tagging the kana is enough.
 
-Don't tag anything else — a tag on an ordinary word teaches the learner that the
-colour means nothing.
+A reading mnemonic therefore carries both a `<reading>` and a `<vocabulary>`
+tag: the learner must be able to see, from the reading mnemonic alone, which
+word this sound belongs to. A sound floating next to a scene that could belong
+to any word is a sound they will attach to the wrong word by Thursday.
+
+`<radical>` never appears in a vocabulary mnemonic — radicals are the kanji
+layer's business. Don't tag anything else: a tag on an ordinary word teaches the
+learner that the colour means nothing.
 
 ## What to write
 
 Call the `submit_vocab_mnemonic` tool exactly once with:
 
-1. **`meaning_mnemonic`** — a story that runs the component kanji's meanings
-   together until they *produce* “{{MEANING}}”. Start from the imagery those
-   kanji already carry, put them in one scene, and let the word's meaning fall
-   out of the logic of what they are — see “The kanji must add up to the word”
-   above; that is the part that matters most. Strange and funny is what survives
-   reviews. The meaning may sit anywhere in the prose, tagged once; do not
-   contort the wording to push it to the end. If no kanji are listed
-   above — a kana word, or one whose kanji the learner hasn't met — write a
-   standalone story that glues the sound to the meaning instead, and name no
-   kanji at all.
+1. **`meaning_mnemonic`** — one sentence, or two short ones, in which the
+   component kanji's meanings combine until they *produce* “{{MEANING}}”. Start
+   from the imagery those kanji already carry, put them in one claim, and let
+   the word's meaning fall out of the logic of what they are — see “The kanji
+   must add up to the word” above; that is the part that matters most. Strange
+   and funny is what survives reviews, but the absurdity has to be the
+   mechanism, never a joke parked next to it. If the section “Is this word just
+   its kanji?” says this one is, ignore this bullet and follow that section
+   instead. If no kanji are listed above — a kana word, or one whose kanji the
+   learner hasn't met — write a standalone story that glues the sound to the
+   meaning instead, and name no kanji at all.
 
-2. **`reading_mnemonic`** — follow the reading section above exactly. When it
-   says to write a derivation note, write **one sentence** that points at the
-   readings the learner already knows and moves on; padding a regular reading
-   into a story teaches them to distrust the ones that *are* stories. When it
-   says to write a full story, write one of real depth in the 150–280 character
-   band, cast-driven, with the reading in it verbatim.
+2. **`reading_mnemonic`** — **optional, and the reading section above decides.**
+   Follow it exactly; it is computed from this word's kanji and their dictionary
+   readings, so it is not a suggestion.
+
+   - When it says this word gets **no reading mnemonic**, omit the key
+     altogether. Do not write a short one instead. The reading is what the kanji
+     already say, the computed reading-composition field says so beside your
+     mnemonic, and a sentence repeating it teaches the learner to skim the ones
+     that *do* carry a hook.
+   - When it says the reading is **already taught by an earlier word**, write
+     one sentence naming that word, with 「{{READING}}」 in a `<reading>` tag and
+     this word's meaning in a `<vocabulary>` tag. No cast character, no scene —
+     a second image for a sound they already have competes with the first.
+   - When it says to write a **full story**, write one sentence or two short
+     ones in which the sound and this word's meaning are the same joke: the
+     reading's cast character does something the meaning explains, the kana
+     appears verbatim, and the meaning sits in a `<vocabulary>` tag. If the
+     sentence would still make sense with a different word's meaning dropped
+     into it, it is not finished.
 
 3. **`description`** — **optional. Omit this key entirely unless this word
    actually needs it.** The two mnemonics are what the learner reads; a
    description that restates the gloss is noise they scroll past. Write one only
    when there is something the story cannot carry: a register that would get
    them in trouble (who says this to whom), a false friend, a sense that doesn't
-   transfer from English, or a form the word almost always appears in. When you
-   do write one: plain factual prose, no story, no highlight tags, and shorter
-   than a mnemonic.
+   transfer from English, or a form the word almost always appears in. The word
+   type is **not** a reason to write one — it has its own field. When you do
+   write one: plain factual prose, no story, no highlight tags, and shorter than
+   a mnemonic.
 
 ## Hard rules
 
-- Plain prose only, apart from the two highlight tags. No markdown, no headings,
+- Plain prose only, apart from the highlight tags. No markdown, no headings,
   no lists, no bold/italic, no furigana brackets, no romaji (write kana). Stored
   as plain strings.
 - `<kanji>` appears only in the meaning mnemonic, `<reading>` only in the
-  reading mnemonic, neither in the description. Every tag you open, close. Never
-  nest them.
+  reading mnemonic, `<vocabulary>` once in each mnemonic you write, none of them
+  in the description. `<radical>` appears nowhere. Every tag you open, close.
+  Never nest them.
+- Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in either
+  mnemonic. The computed reading-composition field beside them already does.
 - Meaning mnemonic: reference every kanji listed above by its taught meaning,
   each wrapped in `<kanji>` where the story uses it. Never name a kanji that is
-  not in that list.
-- Reading mnemonic: 「{{READING}}」 must appear verbatim, inside a `<reading>` tag.
+  not in that list. Wrap this word's own meaning, once, in `<vocabulary>`.
+  **At most two sentences**, two terminal full stops and no more — the gate
+  rejects a third. Stay under 230 characters, tags not counted; going over is a
+  rewrite, not a rounding error — cut words, never cut a kanji.
+- Reading mnemonic, when you write one: 「{{READING}}」 must appear verbatim
+  inside a `<reading>` tag, and this word's taught meaning must appear inside a
+  `<vocabulary>` tag. **At most two sentences** — one, for a back-reference.
 - Description, when you write one: no Japanese characters beyond this word and
   its own kanji. Descriptions carry no furigana, so stray Japanese renders
   unreadable.

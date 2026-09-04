@@ -40,11 +40,15 @@ for 2b/2d):
     2. meaning_mnemonic references every taught component kanji's meaning inside
        a <kanji> tag, so the radical -> kanji -> vocabulary chain is literal and
        visible
-    3. reading_mnemonic contains the word's reading in a <reading> tag, and its
+    3. both mnemonics name this word's own meaning inside a <vocabulary> tag
+       (Rev 5, fresh drafts only) — the same self-tag the kanji layer carries as
+       <kanji>, so the learner can tell a piece borrowed from below from the
+       word this card is teaching
+    4. reading_mnemonic contains the word's reading in a <reading> tag, and its
        *shape* matches the mechanically computed reading regularity: a regular
-       or kana-only reading gets a one-line derivation note (bounded short), an
+       or kana-only reading gets no reading mnemonic at all (Rev 6), an
        irregular one gets a full story (bounded long)
-    4. the description names no kanji beyond the word and its components
+    5. the description names no kanji beyond the word and its components
 
 Rev 4 adds a sentence-shape (readability) gate, enforced only when the caller
 passes enforce_readability=True — i.e. on freshly generated drafts. Stored
@@ -52,7 +56,10 @@ drafts are re-validated without it, so no kept item is ever requeued for a
 readability rewrite. Rev 5's radical image_prompt requirement, Rev 8's
 one-sentence meaning mnemonic and Rev 9's reading-mnemonic contract (at most
 two sentences, the tighter READING_FRESH_BOUNDS band, and the required <kanji>
-meaning tag) all ride the same flag for the same reason.
+meaning tag) all ride the same flag for the same reason. So does the vocabulary
+layer's Rev 5 contract: at most two sentences, the tighter
+VOCAB_MEANING_FRESH_BOUNDS / VOCAB_READING_STORY_FRESH_BOUNDS bands, the short
+form for a word that simply is its kanji, and the required <vocabulary> tag.
 
 This gate is a floor: the cast-coherence pass and "does it actually help you
 remember" judgement are human review (Phase 5). `validate-schema` after assembly
@@ -123,7 +130,15 @@ LEN_BOUNDS = {
     },
     # vocab reading_mnemonic is bounded by the regularity branch below, not here.
     "vocab": {
-        "meaning_mnemonic": (140, 450),
+        # Rev 5 makes the same cut to the word layer that Rev 8 made to the
+        # kanji layer: one or two sentences that *explain* the word out of its
+        # kanji, not a scene they take turns in. The floor drops 140 -> 60 to
+        # match ("A mouth that you enter is an entrance" is 38 characters of
+        # WaniKani and is the target, not a shortfall); the 450 ceiling stays
+        # where it was so re-validating stored Rev 4 prose does not fail on
+        # length. On freshly generated drafts the real cap is
+        # VOCAB_MEANING_FRESH_BOUNDS plus the two-sentence rule.
+        "meaning_mnemonic": (60, 450),
         "description": (50, 350),
     },
 }
@@ -143,9 +158,63 @@ IDENTITY_MEANING_BOUNDS = (40, 200)
 #: regularity is computed mechanically in mnemonic_context, so which bound
 #: applies is not the model's choice. The note's ceiling stays well under the
 #: story's floor, so "one line" and "a story" cannot blur into each other.
-DERIVATION_NOTE_BOUNDS = (30, 220)
+#:
+#: Rev 5 raises the note's ceiling 220 -> 260 because the note now has more to
+#: say: it names the derivation pattern (jukugo, kun'yomi, a mix of the two) and
+#: any rendaku or gemination the reading went through, which is what turns a
+#: recital of two kana chunks into a rule the learner can reuse. Raising a
+#: ceiling can only pass more stored drafts, never fail one.
+#:
+#: Rev 6 stops asking for the note at all: the derivation is now the computed
+#: `reading_composition` field, so a fresh draft for one of these words must omit
+#: `reading_mnemonic` entirely. The band survives for the stored lane only —
+#: every Rev 5 draft on disk is a note, and re-validating one must not requeue
+#: kept prose for a key it was correctly told to write.
+DERIVATION_NOTE_BOUNDS = (30, 260)
 READING_STORY_BOUNDS = (120, 380)
 _DERIVATION_KINDS = ("regular", "kana_only")
+
+#: Rev 6, vocab `reading_mnemonic` when an earlier word already taught this
+#: reading (`mnemonic_context._reading_teachers` — 答え after 答える, 書ける after
+#: 書く). One sentence pointing back at that word, never a rival story: two
+#: images for one sound leave the learner unsure which word either belongs to.
+#: The ceiling is what makes the short form mandatory rather than merely
+#: allowed, the same job the identity bands do for meanings, and it sits under
+#: the story floor so "a pointer" and "a story" cannot blur together.
+VOCAB_READING_REUSE_BOUNDS = (50, 200)
+VOCAB_READING_REUSE_MAX_SENTENCES = 1
+
+#: The same words on the stored lane, where the band has to admit both shapes:
+#: a Rev 4 story written before the reuse rule existed (43 of the 858 stored
+#: drafts), and a Rev 6 pointer, which is far shorter than any story floor.
+#: Re-validation is not the place a contract change gets enforced — the fresh
+#: lane is — so this spans them rather than picking a side.
+VOCAB_READING_REUSE_STORED_BOUNDS = (VOCAB_READING_REUSE_BOUNDS[0],
+                                     READING_STORY_BOUNDS[1])
+
+#: Rev 5, vocab `meaning_mnemonic`, fresh drafts only — the twin of the kanji
+#: layer's MEANING_MAX_SENTENCES / READING_FRESH_BOUNDS pair. Two sentences
+#: rather than the kanji layer's one, because a word is joining whole kanji
+#: stories rather than radicals, but the discipline is the same: with room for
+#: a scene the model writes a scene, and the kanji end up taking turns in it
+#: instead of combining. Both ride the enforce_readability lane, so no stored
+#: Rev 4 draft is ever requeued by them.
+VOCAB_MEANING_MAX_SENTENCES = 2
+VOCAB_MEANING_FRESH_BOUNDS = (60, 230)
+
+#: A word that simply *is* its kanji (`mnemonic_context.identical_kanji`) — 年
+#: the kanji and 年 the word — has no story to write, exactly as a kanji that is
+#: its own radical has none. The band is the same one Rev 7 gave that case, and
+#: it is what makes the short form mandatory rather than merely allowed: a full
+#: invented scene now fails instead of being quietly unwanted. Applies to
+#: `meaning_mnemonic` only; the reading is not derivable from the kanji and
+#: keeps its usual branch.
+VOCAB_IDENTITY_MEANING_BOUNDS = (40, 200)
+
+#: Rev 5, vocab `reading_mnemonic` when it is a full story, fresh drafts only.
+#: The same band the kanji layer's Rev 9 reading uses, for the same reason —
+#: the sound and the meaning are one joke, not a scene with a payoff.
+VOCAB_READING_STORY_FRESH_BOUNDS = (90, 240)
 
 #: Highlight markup (Rev 2). A mnemonic wraps the pieces the learner is meant to
 #: connect — the taught components it borrows, and the sound the reading hangs
@@ -163,8 +232,12 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #:   kanji  reading_mnemonic  <reading>いち</reading>
 #:                            <kanji>one</kanji>          (Rev 9: the meaning
 #:                             the sound belongs to)
-#:   vocab  meaning_mnemonic  <kanji>one</kanji>
+#:   vocab  meaning_mnemonic  <kanji>one</kanji>        (a borrowed component)
+#:                            <vocabulary>alone</vocabulary>  (Rev 5: the word's
+#:                             own meaning — the word the story lands on)
 #:   vocab  reading_mnemonic  <reading>ひとつ</reading>
+#:                            <vocabulary>alone</vocabulary>  (Rev 5: the
+#:                             meaning the sound belongs to)
 #:
 #: A radical borrows nothing from below, so the piece it highlights is its own
 #: meaning — the word the story lands on, and the exact word a kanji story will
@@ -181,8 +254,8 @@ ALLOWED_TAG = {
     ("radical", "image_prompt"): "radical",
     ("kanji", "meaning_mnemonic"): ("radical", "kanji"),
     ("kanji", "reading_mnemonic"): ("reading", "kanji"),
-    ("vocab", "meaning_mnemonic"): "kanji",
-    ("vocab", "reading_mnemonic"): "reading",
+    ("vocab", "meaning_mnemonic"): ("kanji", "vocabulary"),
+    ("vocab", "reading_mnemonic"): ("reading", "vocabulary"),
 }
 
 _ANY_TAG_RE = re.compile(r"</?[^<>]*>")
@@ -242,7 +315,23 @@ _SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
 _LATIN_WORD_RE = re.compile(r"[A-Za-z']+")
 
 
-def _readability_errors(field, text, max_sentences=None):
+#: Why a field is capped, keyed by the field's own contract rather than by the
+#: cap's number — the vocab meaning mnemonic and every reading mnemonic both cap
+#: at 2, and telling a meaning mnemonic it should be "the sound and the meaning
+#: in one joke" sends the repair in the wrong direction.
+_SENTENCE_CAP_REASON = {
+    "components-combine": ("one sentence in which the components combine into "
+                           "the meaning, not a scene that acts them out in turn"),
+    "kanji-combine": ("the kanji combining into the word's meaning, not a scene "
+                      "they take turns acting in"),
+    "sound-and-meaning": ("the sound and the meaning in one joke, not a scene "
+                          "with a setup and a payoff"),
+    "reading-already-known": ("one sentence naming the word that already taught "
+                              "this reading — there is no new hook to build"),
+}
+
+
+def _readability_errors(field, text, max_sentences=None, why=None):
     """Sentence-length checks. An em-dash-joined clause chain reads as one long
     breath, so sentences split on terminal punctuation only — that is what makes
     the gate catch the actual failure mode. Messages are written for the
@@ -254,11 +343,10 @@ def _readability_errors(field, text, max_sentences=None):
     ]
     errors = []
     if max_sentences and len(counts) > max_sentences:
-        why = ("one sentence in which the components combine into the meaning, "
-               "not a scene that acts them out in turn"
-               if max_sentences == 1 else
-               "the sound and the meaning in one joke, not a scene with a "
-               "setup and a payoff")
+        why = _SENTENCE_CAP_REASON[
+            why or ("components-combine" if max_sentences == 1
+                    else "sound-and-meaning")
+        ]
         errors.append(
             f"{field} is {len(counts)} sentences; write at most "
             f"{max_sentences} — {why}"
@@ -363,7 +451,7 @@ def _tagged_spans(text, tag):
 
 
 def _field_errors(kind, field, text, enforce_readability=False, bounds=None,
-                  max_sentences=None):
+                  max_sentences=None, sentence_cap_reason=None):
     """Markup + length, both measured on the tag-stripped prose. Malformed tags
     short-circuit: stripping them is meaningless until they parse. The Rev 4
     readability gate runs only on freshly generated drafts (see validate_draft),
@@ -377,7 +465,8 @@ def _field_errors(kind, field, text, enforce_readability=False, bounds=None,
     errors = _markup_errors(field, plain) + _length_errors(
         field, plain, bounds or LEN_BOUNDS[kind][field])
     if enforce_readability:
-        errors += _readability_errors(field, plain, max_sentences)
+        errors += _readability_errors(field, plain, max_sentences,
+                                      sentence_cap_reason)
     return errors
 
 
@@ -451,28 +540,33 @@ def _component_errors(field, text, tag, components, noun, why):
     return errors
 
 
-def _own_meaning_tag_errors(field, text, ctx, required=False):
-    """`<kanji>` marks the kanji's own meaning — the word the story lands on,
-    as opposed to a component borrowed from below. Wherever the tag appears it
-    must wrap that meaning; `required` additionally demands that it be there at
-    all, which is Rev 9's reading-mnemonic rule (fresh drafts only)."""
+def _own_meaning_tag_errors(field, text, ctx, required=False, tag="kanji",
+                            noun="kanji"):
+    """The item's own meaning — the word the story lands on, as opposed to a
+    component borrowed from below — must be the thing its self-tag wraps.
+
+    `tag` is `<kanji>` on a kanji and `<vocabulary>` on a word (Rev 5): each
+    layer marks what it borrows in the layer below's colour and what it teaches
+    in its own, so the learner can see which is which. Wherever the tag appears
+    it must wrap that meaning; `required` additionally demands that it be there
+    at all, which is the reading-mnemonic rule on fresh drafts."""
     own_words = _meaning_words(ctx["meaning_synonyms"])
     if not own_words:
         return []
-    spans = _tagged_spans(text, "kanji")
+    spans = _tagged_spans(text, tag)
     if not spans:
         if required:
             return [
-                f"{field} never says what this kanji means; name its meaning "
+                f"{field} never says what this {noun} means; name its meaning "
                 f"“{ctx['meaning']}” in the sentence and wrap it in "
-                "<kanji>...</kanji> — a sound with no meaning attached to it "
-                "sticks to the wrong character"
+                f"<{tag}>...</{tag}> — a story with no meaning attached to it "
+                f"sticks to the wrong {noun}"
             ]
         return []
     if not any(_references(span, own_words) for span in spans):
         return [
-            f"{field} wraps something other than the kanji's own meaning "
-            f"“{ctx['meaning']}” in <kanji>...</kanji>; that tag is reserved for the "
+            f"{field} wraps something other than the {noun}'s own meaning "
+            f"“{ctx['meaning']}” in <{tag}>...</{tag}>; that tag is reserved for the "
             "word the story lands on"
         ]
     return []
@@ -626,49 +720,141 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
     ctx = ctx or mnemonic_context.vocab_context(level, slug)
     errors = []
 
-    for field in ("meaning_mnemonic", "reading_mnemonic"):
-        value = draft.get(field)
-        if not isinstance(value, str) or not value.strip():
-            errors.append(f"missing or empty field {field}")
-    if errors:
-        return errors
+    meaning_text = draft.get("meaning_mnemonic")
+    if not isinstance(meaning_text, str) or not meaning_text.strip():
+        return ["missing or empty field meaning_mnemonic"]
+
+    # Rev 6: which words get a reading mnemonic at all is decided here, from the
+    # mechanically computed regularity, never by the model.
+    #
+    #   regular / kana_only  — none. The reading is what the kanji already say,
+    #                          and the shipped `reading_composition` field says
+    #                          so more precisely than prose can. Fresh drafts
+    #                          must omit the key; stored Rev 5 drafts carry a
+    #                          derivation note and keep passing on the old band,
+    #                          because re-validation must never requeue prose
+    #                          the contract of the day asked for.
+    #   reading_taught_by    — one sentence pointing at the earlier word that
+    #                          taught this reading.
+    #   otherwise            — a full story.
+    kind = ctx["regularity"]["kind"]
+    derivable = kind in _DERIVATION_KINDS
+    taught_by = ctx.get("reading_taught_by")
+    reading_text = draft.get("reading_mnemonic")
+    has_reading = isinstance(reading_text, str) and bool(reading_text.strip())
+    # Both mistakes are reported alongside the meaning errors rather than
+    # returned on their own: a repair round that fixes the reading and then
+    # discovers the meaning was also wrong burns one of three attempts.
+    if derivable and has_reading and enforce_readability:
+        errors.append(
+            "reading_mnemonic must be omitted entirely for this word — "
+            + ("the word is written in kana exactly as it is read"
+               if kind == "kana_only"
+               else "its reading is exactly what its kanji already say")
+            + ", and the page states that in its own computed field: "
+              f"“{ctx['reading_composition']}”. Drop the key; a sentence "
+              "restating a computed field only competes with it."
+        )
+        # Nothing below applies to prose that should not exist.
+        has_reading = False
+    elif not derivable and not has_reading:
+        errors.append(
+            "missing or empty field reading_mnemonic — this word's reading is "
+            + ("one already taught by another word, so it needs the one-sentence "
+               "back-reference" if taught_by
+               else "not derivable from its kanji, so it needs a full story")
+        )
 
     # reading_mnemonic's length is bounded by the regularity branch below, not
     # by LEN_BOUNDS, so its markup is checked here rather than via _field_errors.
-    reading_text = draft["reading_mnemonic"]
+    reading_tags = ALLOWED_TAG[("vocab", "reading_mnemonic")]
+
+    # Rev 5: a word that simply *is* its kanji says so in a line, and the band
+    # is what makes that mandatory rather than merely allowed. Which items these
+    # are is computed in mnemonic_context, never judged here.
+    is_identity = bool(ctx.get("identical_kanji"))
+    meaning_bounds = None
+    max_sentences = None
+    if enforce_readability:
+        meaning_bounds = (VOCAB_IDENTITY_MEANING_BOUNDS if is_identity
+                          else VOCAB_MEANING_FRESH_BOUNDS)
+        max_sentences = VOCAB_MEANING_MAX_SENTENCES
     errors += _field_errors(
-        "vocab", "meaning_mnemonic", draft["meaning_mnemonic"],
-        enforce_readability=enforce_readability)
-    tag_errors = _tag_errors("reading_mnemonic", reading_text, "reading")
-    if tag_errors:
-        errors += tag_errors
-    else:
-        errors += _markup_errors("reading_mnemonic", _strip_tags(reading_text, "reading"))
+        "vocab", "meaning_mnemonic", meaning_text,
+        enforce_readability=enforce_readability, bounds=meaning_bounds,
+        max_sentences=max_sentences, sentence_cap_reason="kanji-combine")
+    tag_errors = []
+    if has_reading:
+        tag_errors = _tag_errors("reading_mnemonic", reading_text, reading_tags)
+        if tag_errors:
+            errors += tag_errors
+        else:
+            errors += _markup_errors(
+                "reading_mnemonic", _strip_tags(reading_text, reading_tags))
 
     # 2. the kanji -> vocabulary chain is literal, not name-dropped
     errors += _component_errors(
-        "meaning_mnemonic", draft["meaning_mnemonic"], "kanji", ctx["components"],
+        "meaning_mnemonic", meaning_text, "kanji", ctx["components"],
         "the component kanji",
         "the story must connect its kanji to the word")
 
+    # 2b. Rev 5: and the word's own meaning is marked in its own colour, so the
+    #     learner can tell "a kanji I already know" from "the word this is
+    #     teaching me". Required in both fields on fresh drafts — a reading with
+    #     no meaning beside it sticks to the wrong word — and merely policed on
+    #     stored ones, which predate the tag.
+    errors += _own_meaning_tag_errors(
+        "meaning_mnemonic", meaning_text, ctx, required=enforce_readability,
+        tag="vocabulary", noun="word")
+    if has_reading and not tag_errors:
+        errors += _own_meaning_tag_errors(
+            "reading_mnemonic", reading_text, ctx, required=enforce_readability,
+            tag="vocabulary", noun="word")
+
     # 3. reading present and highlighted, and shaped by the mechanically
     #    computed regularity
-    reading = ctx["reading"]
-    if reading:
-        errors += _reading_errors("reading_mnemonic", reading_text, reading)
-    kind = ctx["regularity"]["kind"]
-    reading_plain = _strip_tags(reading_text, "reading")
-    if kind in _DERIVATION_KINDS:
-        errors += _length_errors(
-            "reading_mnemonic (a derivation note — this reading is "
-            f"{'kana-only' if kind == 'kana_only' else 'regular'}, so do not "
-            "write a story)", reading_plain, DERIVATION_NOTE_BOUNDS)
-    else:
-        errors += _length_errors(
-            "reading_mnemonic (a full story — this reading is a lone kun'yomi "
-            "or is not derivable at all)", reading_plain, READING_STORY_BOUNDS)
-    if enforce_readability and not tag_errors:
-        errors += _readability_errors("reading_mnemonic", reading_plain)
+    if has_reading:
+        reading = ctx["reading"]
+        if reading:
+            errors += _reading_errors("reading_mnemonic", reading_text, reading)
+        reading_plain = _strip_tags(reading_text, reading_tags)
+        cap, cap_reason = READING_MAX_SENTENCES, "sound-and-meaning"
+        if derivable:
+            # Stored lane only — a fresh draft here returned above.
+            errors += _length_errors(
+                "reading_mnemonic (a derivation note — this reading is "
+                f"{'kana-only' if kind == 'kana_only' else 'regular'}, so do not "
+                "write a story)", reading_plain, DERIVATION_NOTE_BOUNDS)
+        elif taught_by:
+            # Rev 6: a pointer, not a rival story — and one that says which word
+            # it points at, or it is just a shorter story.
+            cap, cap_reason = (VOCAB_READING_REUSE_MAX_SENTENCES,
+                               "reading-already-known")
+            errors += _length_errors(
+                "reading_mnemonic (a back-reference — "
+                f"{taught_by['form']}（{taught_by['reading']}）already taught "
+                "this reading, so do not write a second story for it)",
+                reading_plain,
+                VOCAB_READING_REUSE_BOUNDS if enforce_readability
+                else VOCAB_READING_REUSE_STORED_BOUNDS)
+            if enforce_readability and taught_by["form"] not in reading_plain:
+                errors.append(
+                    f"reading_mnemonic must name {taught_by['form']}, the word "
+                    "that already taught this reading — a back-reference that "
+                    "does not say which word it points back at leaves the "
+                    "learner with a claim they cannot check"
+                )
+        else:
+            # Fresh drafts are held to the tighter Rev 5 band; stored Rev 4 stories
+            # keep the wider one so re-validation never requeues them for length.
+            errors += _length_errors(
+                "reading_mnemonic (a full story — this reading is a lone kun'yomi "
+                "or is not derivable at all)", reading_plain,
+                VOCAB_READING_STORY_FRESH_BOUNDS if enforce_readability
+                else READING_STORY_BOUNDS)
+        if enforce_readability and not tag_errors:
+            errors += _readability_errors(
+                "reading_mnemonic", reading_plain, cap, cap_reason)
 
     # 4. description (Rev 2: optional — only when the word carries a nuance the
     #    mnemonics cannot). When present it still names no stray kanji, since it

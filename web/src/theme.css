@@ -937,7 +937,7 @@ rt {
   font-weight: 600;
 }
 
-/* These three are the app's own mnemonic highlight colors, not studio hues, so
+/* These four are the app's own mnemonic highlight colors, not studio hues, so
    a reviewer reads the prose in the colors the learner will see. Values are the
    dark-scheme `-deep` (text) and `-soft` (fill) steps from
    mobile/src/global.css — the studio is dark-only, so it takes that half of the
@@ -950,6 +950,13 @@ rt {
 .mnemonic-tag--kanji {
   background: #462931;
   color: #f5a9c4;
+}
+
+/* The word's own meaning — what a vocabulary story lands on, as opposed to the
+   <kanji> it borrows from below (vocab mnemonic Rev 5). */
+.mnemonic-tag--vocabulary {
+  background: #372b3f;
+  color: #cdb6f0;
 }
 
 .mnemonic-tag--reading {

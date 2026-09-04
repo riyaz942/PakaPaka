@@ -404,6 +404,96 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - Executorch main vs Expo resource-fetcher nightly skew: accepted risk, revisit on upstream release.
 - `codebase-issues.md` L1–L10: naming/perf/fragility items, all low severity, none user-visible.
 
+### Vocabulary mnemonics Rev 6: reading composition becomes a field, reading reuse (2026-09-03)
+- Rev 6 landed the same day as Rev 5 and **before a single word had been generated under Rev 5**,
+  which is what made a second bump free rather than wasteful. It answers one question: where does
+  "this is a jukugo word, so both kanji use their on'yomi" belong?
+- **Not in the mnemonic, and not in the description — in a computed field.** `reading_regularity`
+  already knows the pattern and every sound change *exactly*, so a model paraphrasing it can only
+  lose precision, and the paraphrase was eating the reading mnemonic's whole one-or-two-sentence
+  budget. The description was the wrong home for the opposite reason: it is authored prose for
+  nuance the mnemonics cannot carry (register, false friends), and mixing derived data into it
+  means no one can tell later which sentences a reviewer wrote.
+  `mnemonic_context.reading_composition(form, reading)` now emits one line per word —
+  "Jukugo — 年（ねん）＋中（じゅう）, each kanji read with its on'yomi. Rendaku: 中 ちゅう → じゅう.",
+  "Kun'yomi — 入（い）＋り＋口（ぐち）. Rendaku: 口 くち → ぐち.", "Mixed — 太（ふと）kun'yomi ＋
+  字（じ）on'yomi.", "Irregular — あした cannot be assembled from the dictionary readings of 明日."
+  Carried through `generate.py` → `reading_composition` on `vocabItem` → an
+  `items.reading_composition` column → `CurriculumItemDetail.readingComposition` → a "Reading
+  composition" row on `VocabularyDetail`, under Word type. All 9,747 vocabulary rows carry one.
+- **So 745 of N5+N4's 1,247 words now ship no `reading_mnemonic` at all** (538 `regular` +
+  207 `kana_only`). That is the point rather than a gap: the field states the derivation better
+  than prose could, and `reading_mnemonic` is left with the one job a field cannot do — a hook for
+  a sound nothing derives. The gate enforces it in both directions: a fresh draft that writes one
+  for a derivable word is rejected, and one missing for a `kun_word`/`irregular` word is too. The
+  studio's reading-mnemonic panel now renders even when empty, saying the absence is correct, so a
+  reviewer can tell it apart from prose that is merely missing.
+- **A reading an earlier word already taught gets a pointer, not a rival story.** WaniKani's 教え
+  says "you already learned this reading from 教える"; ours invented a second hook for the same
+  sound, which competes with the first rather than reinforcing it.
+  `mnemonic_context._reading_teachers()` walks all five levels in teaching order and records the
+  first `kun_word` to teach each (kanji, reading-chunk) pair — **90 words at N5+N4, 351 across the
+  whole curriculum** — covering exactly the transitive/intransitive pairs (上がる → 上げる,
+  壊す → 壊れる), the derived nouns (答える → 答え, 続き → 続く), the potentials (書く → 書ける)
+  and the passives/causatives (食べる → 食べさせる). Only a `kun_word` counts as a teacher: a
+  `regular` word merely *contains* the reading and now ships a composition line rather than a
+  mnemonic, so being shown 月（つき）inside 毎月 does not count and 月 the word keeps its own story.
+  Those 90 get one sentence at 50–200 characters, and the gate requires the source word's written
+  form to actually appear in it.
+- **No kun'yomi/on'yomi terminology in the prose at all**, per the maintainer's call. The prompt
+  says so twice and the composition field carries the vocabulary instead.
+- `PROMPT_VERSION["vocab"]` 5 → 6; the vocab tool schema drops `reading_mnemonic` from `required`.
+  Re-validating the 858 stored drafts on the stored lane gives **10 failures, all of them the
+  pre-existing untagged-component ones on `meaning_mnemonic`** — zero new. That took two
+  fresh-lane-only bands to achieve: the reuse rule would otherwise have requeued 43 kept Rev 4
+  stories, and `VOCAB_READING_REUSE_STORED_BOUNDS` spans both a Rev 4 story and a Rev 6 pointer so
+  neither shape fails re-validation.
+- **Leftover:** the whole vocabulary layer is now at v4 against a v6 contract — 1,247 N5+N4 words
+  queued, of which 529 N4 (493 of them never written at all) are the first batch. Under Rev 6 only
+  ~412 of the 1,247 need an invented reading story at all (502 `kun_word`/`irregular`, less the 90
+  back-references), down from 1,247.
+
+### Vocabulary mnemonics Rev 5: word type, WaniKani-length prose, `<vocabulary>` tag (2026-09-03)
+- Three changes to the word layer, all aimed at what WaniKani actually does and what our N4 output
+  visibly was not doing.
+- **Word type is now shipped data, not prose.** `import/build_vocab_word_types.py` distills JMdict's
+  first-sense part of speech into the checked-in `_build/vocab_word_types.json` — 9,710 of 9,747
+  words (99.6%), 277 KB — in WaniKani's own vocabulary: `い adjective`, `な adjective`,
+  `の adjective`, `godan/ichidan/する verb`, `transitive`/`intransitive`, noun, adverb, pronoun.
+  Three match paths: JMdict `seq` (the 8,500 derived words), (form, reading) (the hand-authored
+  N5/N4 ones), and `X + する` looked up as the base noun (50 words). The 37 residue — て-form
+  auxiliaries (教えてもらう), potential/passive/causative (書ける), set phrases (どうしましたか) —
+  gets **no** entry rather than a guess. Transitivity is dropped where no conjugation class sits
+  beside it, so 勉強 the noun is not labelled a transitive verb.
+  Carried through `generate.py` → `word_type` on `vocabItem` → an `items.word_type` column →
+  `CurriculumItemDetail.wordType` → a "Word type" row on `VocabularyDetail`, under the reading.
+- **The prose is cut to WaniKani length.** The meaning mnemonic goes from ~180–330 characters and
+  two-to-four sentences to **one or two sentences, ~70–200** — the same cut Rev 8 made to kanji, one
+  layer up. Enforced on the fresh-draft lane by `VOCAB_MEANING_MAX_SENTENCES = 2` and
+  `VOCAB_MEANING_FRESH_BOUNDS`, with the `LEN_BOUNDS` floor dropped 140 → 60 and the 450 ceiling
+  kept so no stored Rev 4 draft is requeued for length. A word that simply **is** its kanji (年 the
+  kanji / 年 the word, 白 / 白い) is detected mechanically by `mnemonic_context.identical_kanji` and
+  gets the one-line form at 40–200, exactly as `identical_radical` does a layer down.
+- **Both mnemonics now tag the word's own meaning.** The old output never marked it: `keizai` left
+  "the economy" as plain text and `iken` left "opinion" plain, so the learner saw component kanji
+  highlighted and the thing being taught not. A fourth highlight tag, `<vocabulary>`, is required
+  once in each mnemonic on fresh drafts — the word-layer twin of the `<kanji>` self-tag — and
+  renders in the vocabulary accent in `AnnotatedText`.
+- **The reading note says what a course would say** — *superseded by Rev 6, below, on the same day
+  and before any word was generated under Rev 5.* `reading_regularity` gained `pattern`
+  (jukugo / on / kun / mixed) and `sound_changes` (rendaku, handakuon, gemination, each with the
+  kana it came from), and the Rev 5 prompt asked the model to spell them out in the reading
+  mnemonic. Rev 6 keeps the computation and drops the prose. A modern ぢ→じ / づ→ず spelling
+  variant was added here so 年中 ねんじゅう derives instead of falling to "irregular"; the N5/N4
+  branch counts are unchanged by it (538 / 459 / 207 / 43), so no existing word changed lane.
+- `PROMPT_VERSION["vocab"]` 4 → 5. Here the staleness is the point: all 718 N5 words are correctly
+  re-selected, because Rev 5 is a rewrite rather than a retag. Nothing is deleted — stale prose
+  keeps shipping until a run replaces it — so N4's 493 unwritten words go first and N5 follows.
+  Re-validating the 858 stored drafts on the stored lane produces **zero** new length or tag
+  failures (the 11 that remain are the pre-existing untagged-component ones).
+- **Leftover:** re-run `import/build_vocab_word_types.py` after `build_vocab_skeleton.py` or any
+  hand edit to the N5/N4 word lists; a word added since the last run ships with no word type.
+
 ### Kanji decomposition switched from KRADFILE to KanjiVG (2026-09-01)
 - `curriculum/_build/import/build_decomposition.py` → `_build/decomposition.json` is now the
   **single source** for every radical → kanji `builds_on` edge. `generate.py`,

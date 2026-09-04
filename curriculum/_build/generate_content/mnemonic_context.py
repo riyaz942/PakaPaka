@@ -21,7 +21,8 @@ inputs the generator prompt and the mechanical gate both need:
     edges) with their established meaning mnemonics, plus the **reading
     regularity** of the word — computed mechanically from the word's reading
     against its kanji's KANJIDIC readings, so the "full reading story vs.
-    one-line derivation note" choice is checkable by the gate.
+    pointer at an earlier word vs. no reading mnemonic at all" choice is
+    checkable by the gate rather than left to the model.
 
 Look-alike pairs come from the reviewed R1.3 dataset (_build/visually_similar.py)
 — never from the model.
@@ -52,6 +53,18 @@ GRAPH_PATH = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
 #: Reading regularity is judged against these, not against taught readings.
 with open(os.path.join(BUILD_DIR, "kanjidic_readings.json"), encoding="utf-8") as _f:
     KANJIDIC_READINGS = json.load(_f)
+
+#: {vocab slug: ["い adjective"]} from `import/build_vocab_word_types.py`. Not
+#: every word has one — the compound forms taught as grammar carry none — and
+#: the file is absent until that script is run, so `vocab_context` treats a
+#: missing entry as "unknown" and the prompt tells the model to say nothing
+#: about word type rather than guess one.
+_WORD_TYPES_PATH = os.path.join(BUILD_DIR, "vocab_word_types.json")
+if os.path.exists(_WORD_TYPES_PATH):
+    with open(_WORD_TYPES_PATH, encoding="utf-8") as _f:
+        VOCAB_WORD_TYPES = json.load(_f)
+else:
+    VOCAB_WORD_TYPES = {}
 
 #: Levels whose radicals/kanji can be components or look-alikes of one another,
 #: in teaching order (a learner meets N5 before N4).
@@ -150,6 +163,32 @@ def identical_radical(item, components):
         return None
     own = _meaning_word_set(_meaning_answers(item) or [item["meaning"]])
     if not _shares_meaning(own, _meaning_word_set(comp["meaning_synonyms"])):
+        return None
+    return comp
+
+
+def identical_kanji(form, meaning_synonyms, components):
+    """The component kanji this *word* simply is, or None.
+
+    The vocabulary twin of `identical_radical`, one layer up. 年 the kanji and
+    年 the word are the same thing, and so is 白い the word over 白 the kanji —
+    WaniKani writes both as one line ("The kanji and the word are exactly the
+    same. That means they share meanings as well.") rather than inventing a
+    second story that competes with the kanji's own.
+
+    One component, whose character is the word's only kanji, whose meaning the
+    word shares. Okurigana is allowed and is the point of the 白い case: the
+    kana tail is what makes it an adjective, and the word type block says so.
+    A word whose meaning moves away from its kanji (社 "company" over 社
+    "shrine") is not one of these, because there the meaning is the lesson.
+    """
+    if len(components) != 1:
+        return None
+    comp = components[0]
+    if _CJK_RE.findall(form) != [comp["char"]]:
+        return None
+    if not _shares_meaning(_meaning_word_set(meaning_synonyms),
+                           _meaning_word_set(comp["meaning_synonyms"])):
         return None
     return comp
 
@@ -347,6 +386,14 @@ def _hira(text):
     return furigana_lib.katakana_to_hiragana(text or "")
 
 
+#: Modern spelling of the two rendaku outputs that have fallen out of use. ぢ
+#: and づ are voiced ち/つ historically, but written じ/ず almost everywhere
+#: today: 中 ちゅう voices to ぢゅう and is spelled じゅう (年中 ねんじゅう).
+#: Without this the word does not segment at all and is called irregular, which
+#: sends a perfectly derivable compound down the "write a full story" branch.
+_YOTSUGANA = {"ぢ": "じ", "づ": "ず"}
+
+
 def _reading_variants(reading):
     """A taught reading plus the regular sound changes Japanese applies when it
     sits inside a compound: rendaku, handakuon, and gemination (がく -> がっ)."""
@@ -355,7 +402,10 @@ def _reading_variants(reading):
         return set()
     variants = {r}
     if r[0] in _RENDAKU:
-        variants.add(_RENDAKU[r[0]] + r[1:])
+        voiced = _RENDAKU[r[0]]
+        variants.add(voiced + r[1:])
+        if voiced in _YOTSUGANA:
+            variants.add(_YOTSUGANA[voiced] + r[1:])
     if r[0] in _HANDAKU:
         variants.add(_HANDAKU[r[0]] + r[1:])
     if len(r) > 1:
@@ -398,6 +448,64 @@ def _is_onyomi(char, chunk):
     return bool(entry) and any(chunk in _reading_variants(r) for r in entry["on"])
 
 
+def _sound_change(char, chunk):
+    """The regular sound change that turned one of `char`'s dictionary readings
+    into `chunk`, or None when the chunk is a reading unchanged.
+
+    Rev 6 states these in the shipped `reading_composition` field — "Rendaku:
+    口 くち → ぐち" — instead of leaving the learner to notice on their own that
+    the kana they were taught is not the kana in front of them.
+    """
+    entry = KANJIDIC_READINGS.get(char)
+    if not entry:
+        return None
+    bases = [_hira(r) for r in entry["on"] + entry["kun"] if r]
+    if chunk in bases:
+        return None
+    for base in bases:
+        if base[0] in _RENDAKU:
+            voiced = _RENDAKU[base[0]]
+            if voiced + base[1:] == chunk or (
+                voiced in _YOTSUGANA and _YOTSUGANA[voiced] + base[1:] == chunk
+            ):
+                return {"kind": "rendaku", "from": base, "to": chunk, "char": char}
+        if base[0] in _HANDAKU and _HANDAKU[base[0]] + base[1:] == chunk:
+            return {"kind": "handakuon", "from": base, "to": chunk, "char": char}
+        if len(base) > 1 and base[:-1] + "っ" == chunk:
+            return {"kind": "gemination", "from": base, "to": chunk, "char": char}
+    return None
+
+
+def _reading_pattern(segments):
+    """Which kind of reading the word takes, from its own segmentation.
+
+    The four names are the ones a Japanese course uses, and each produces a
+    different line in the shipped `reading_composition` field:
+
+      * "jukugo"  — two or more kanji, every one read with its on'yomi. The
+                    default for a compound, and the thing to say out loud so the
+                    learner starts *expecting* on'yomi in compounds.
+      * "kun"     — every kanji read with its kun'yomi (a lone kanji, or a word
+                    with okurigana).
+      * "mixed"   — both in one word (太字 ふとじ, kun + on). Genuinely odd, and
+                    worth flagging as odd.
+      * "on"      — a single kanji read with its on'yomi.
+
+    A kanji whose chunk is listed under both readings counts as on'yomi, which
+    is the safe way round: over-calling "jukugo" on a compound never misleads,
+    while calling a compound "kun" would.
+    """
+    kanji_chunks = [(ch, chunk) for ch, chunk in segments if _CJK_RE.match(ch)]
+    if not kanji_chunks:
+        return ""
+    on_flags = [_is_onyomi(ch, chunk) for ch, chunk in kanji_chunks]
+    if all(on_flags):
+        return "jukugo" if len(kanji_chunks) > 1 else "on"
+    if not any(on_flags):
+        return "kun"
+    return "mixed"
+
+
 def reading_regularity(form, reading):
     """How the word's reading relates to its kanji's *dictionary* readings.
 
@@ -413,29 +521,173 @@ def reading_regularity(form, reading):
       * "kana_only"  — no kanji in the written form; the word is its own reading
       * "regular"    — the reading assembles from dictionary readings (allowing
                        rendaku/gemination) and the learner can get there from
-                       their kanji cards; a one-line derivation note is correct
+                       their kanji cards; `reading_composition` says how, and no
+                       reading mnemonic is written at all (Rev 6)
       * "kun_word"   — a lone kanji read with its kun'yomi (秋 あき, 危ない
                        あぶない). Mechanically derivable, but the kanji card
                        teaches meaning and on'yomi only, so the word is where
                        that reading is learned: it needs a full story
       * "irregular"  — the reading cannot be assembled at all (明日 あした,
                        部屋 へや); it needs a full story
-    `segments` is the [(char, reading_chunk)] breakdown when regular."""
+
+    `segments` is the [(char, reading_chunk)] breakdown when the reading
+    assembles; `pattern` names which readings it used (see `_reading_pattern`)
+    and `sound_changes` lists the rendaku/gemination it went through, both empty
+    when there is no segmentation to read them off."""
     reading = _hira(reading)
     kanji_in_form = _CJK_RE.findall(form)
+    empty = {"pattern": "", "sound_changes": []}
     if not kanji_in_form:
-        return {"kind": "kana_only", "segments": []}
+        return {"kind": "kana_only", "segments": [], **empty}
     variants_by_char = {ch: v for ch in set(kanji_in_form)
                         if (v := _kanjidic_variants(ch))}
     segments = _segment(form, reading, variants_by_char)
     if segments is None:
-        return {"kind": "irregular", "segments": []}
+        return {"kind": "irregular", "segments": [], **empty}
+    analysis = {
+        "pattern": _reading_pattern(segments),
+        "sound_changes": [
+            change
+            for ch, chunk in segments
+            if _CJK_RE.match(ch) and (change := _sound_change(ch, chunk))
+        ],
+    }
     if len(kanji_in_form) == 1:
         char = kanji_in_form[0]
         chunk = next(chunk for ch, chunk in segments if ch == char)
         if not _is_onyomi(char, chunk):
-            return {"kind": "kun_word", "segments": segments}
-    return {"kind": "regular", "segments": segments}
+            return {"kind": "kun_word", "segments": segments, **analysis}
+    return {"kind": "regular", "segments": segments, **analysis}
+
+
+#: How each reading pattern names itself in the shipped `reading_composition`
+#: field, and the one clause worth adding after the segments.
+#:
+#: "Jukugo" earns its clause: the name alone does not tell a learner that the
+#: kanji are using their on'yomi, and that is the rule which reads the *next*
+#: compound too. "On'yomi" and "Kun'yomi" already say it in the label, so a
+#: trailing clause would only repeat the heading.
+_COMPOSITION_PATTERN = {
+    "jukugo": ("Jukugo", "each kanji read with its on'yomi"),
+    "on": ("On'yomi", None),
+    "kun": ("Kun'yomi", None),
+}
+
+_COMPOSITION_CHANGE = {
+    "rendaku": "Rendaku",
+    "handakuon": "Handakuon",
+    "gemination": "Gemination",
+}
+
+
+def _composition_segments(segments):
+    """`入（い）＋り＋口（ぐち）` — each kanji with the chunk it contributed, and
+    runs of kana bare, because a kana's reading is itself. Consecutive kana are
+    merged so okurigana reads as a tail (`大（おお）＋きい`) rather than as a
+    string of separate terms."""
+    parts = []
+    for ch, chunk in segments:
+        if _CJK_RE.match(ch):
+            parts.append(f"{ch}（{chunk}）")
+        elif parts and not parts[-1].endswith("）"):
+            parts[-1] += ch
+        else:
+            parts.append(ch)
+    return "＋".join(parts)
+
+
+def reading_composition(form, reading):
+    """One computed line saying how the word's reading is built — the shipped
+    `reading_composition` field.
+
+    Rev 6 moves this out of `reading_mnemonic` prose. `reading_regularity`
+    already knows the pattern and every sound change exactly, so asking the
+    model to restate them in a sentence bought nothing and risked drift: whether
+    a word is jukugo is a fact about its segmentation, not a judgement. It also
+    spent the reading mnemonic's whole one-or-two-sentence budget on something a
+    field states more precisely, which is why 745 of N5+N4's 1,247 words now
+    ship no reading mnemonic at all and this line instead.
+
+    What is left for `reading_mnemonic` is the part a field cannot do: a memory
+    hook for a sound the learner has nothing to derive it from."""
+    reading = _hira(reading)
+    regularity = reading_regularity(form, reading)
+    kind = regularity["kind"]
+    if kind == "kana_only":
+        return "Kana only — the word is written exactly as it is read."
+    if kind == "irregular":
+        return (f"Irregular — {reading} cannot be assembled from the dictionary "
+                f"readings of {form}.")
+    segments = regularity["segments"]
+    if regularity["pattern"] == "mixed":
+        # The whole point of a mixed word is *which* kanji went which way, so
+        # the per-kanji label replaces the trailing clause the others get.
+        line = "Mixed — " + " ＋ ".join(
+            f"{ch}（{chunk}）{'on' if _is_onyomi(ch, chunk) else 'kun'}'yomi"
+            if _CJK_RE.match(ch) else ch
+            for ch, chunk in segments
+        ) + "."
+    else:
+        label, tail = _COMPOSITION_PATTERN[regularity["pattern"]]
+        line = f"{label} — {_composition_segments(segments)}"
+        line += f", {tail}." if tail else "."
+    for change in regularity["sound_changes"]:
+        line += (f" {_COMPOSITION_CHANGE[change['kind']]}: "
+                 f"{change['char']} {change['from']} → {change['to']}.")
+    return line
+
+
+_READING_TEACHERS = None
+
+
+def _reading_teachers():
+    """{vocab slug: the earlier word that already taught this word's reading}.
+
+    A vocabulary reading that needs a story is a single kanji read with its
+    kun'yomi (`kun_word`), and the curriculum is full of families that share
+    exactly that reading: 教える then 教え, 上がる then 上げる, 書く then 書ける,
+    答える then 答え. The second word in such a family has nothing new to teach
+    about the sound, so WaniKani points back at the first — "you already learned
+    this reading from 教える" — instead of inventing a rival hook, and Rev 6 does
+    the same. A second mnemonic for one sound does not reinforce the first; it
+    competes with it.
+
+    Only a `kun_word` counts as a *teacher*. A `regular` word merely contains
+    the reading and, from Rev 6, ships a `reading_composition` line rather than a
+    mnemonic — being shown 月（つき）inside 毎月 is not the same as having a hook
+    for つき, so 月 the word still earns its own story.
+
+    Walked in teaching order (level, then curriculum sort order), so the word
+    named is always one the learner has already done."""
+    global _READING_TEACHERS
+    if _READING_TEACHERS is not None:
+        return _READING_TEACHERS
+    taught = {}
+    teachers = {}
+    for lvl in ALL_LEVELS:
+        for item in load_items("vocabulary", lvl):
+            form = item["primary_form"]
+            readings = _reading_answers(item)
+            regularity = reading_regularity(form, readings[0] if readings else "")
+            if regularity["kind"] != "kun_word":
+                continue
+            # A kun_word is one kanji by definition, so there is exactly one
+            # (char, chunk) pair to key the reading on.
+            char, chunk = next((ch, ck) for ch, ck in regularity["segments"]
+                               if _CJK_RE.match(ch))
+            if (char, chunk) in taught:
+                teachers[item["slug"]] = taught[(char, chunk)]
+            else:
+                taught[(char, chunk)] = {
+                    "level": lvl,
+                    "slug": item["slug"],
+                    "form": form,
+                    "reading": _hira(readings[0] if readings else ""),
+                    "char": char,
+                    "chunk": chunk,
+                }
+    _READING_TEACHERS = teachers
+    return _READING_TEACHERS
 
 
 def vocab_context(level, slug, cast=None):
@@ -494,6 +746,7 @@ def vocab_context(level, slug, cast=None):
 
     cast = cast or cast_lib.load_cast()
     regularity = reading_regularity(form, reading)
+    meaning_synonyms = _meaning_answers(item) or [item["meaning"]]
 
     return {
         "type": "vocab",
@@ -501,10 +754,18 @@ def vocab_context(level, slug, cast=None):
         "slug": slug,
         "form": form,
         "meaning": item["meaning"],
-        "meaning_synonyms": _meaning_answers(item) or [item["meaning"]],
+        "meaning_synonyms": meaning_synonyms,
         "reading": reading,
+        "word_type": VOCAB_WORD_TYPES.get(slug, []),
         "components": components,
+        "identical_kanji": identical_kanji(form, meaning_synonyms, components),
         "regularity": regularity,
+        # Rev 6: the derivation the reading mnemonic used to recite in prose,
+        # computed once and shipped as its own field. In the prompt it appears
+        # only so the model can see what the page already says and not repeat it.
+        "reading_composition": reading_composition(form, reading),
+        # Rev 6: the earlier word that already taught this reading, or None.
+        "reading_taught_by": _reading_teachers().get(slug),
         # A word reading rarely matches a cast key on its own (cast members are
         # fixed to single-kanji readings), so offer the component readings too —
         # a story about でんわ should reuse でん's character.
@@ -646,37 +907,185 @@ def format_vocab_components(components):
     return "\n".join(lines)
 
 
-_REGULARITY_BLOCK = {
-    "regular": (
-        "**Regular.** The reading is exactly what this word's kanji say: "
-        "{segments}. Do NOT write a reading story for this word — write a "
-        "one-line derivation note that points at those kanji readings and "
-        "contains 「{reading}」. The learner meets this card only once they have "
-        "learned the kanji, so you may treat the readings as known."
+#: How each word type earns its place in a meaning mnemonic (Rev 5). A type is
+#: only worth a sentence when it *predicts* something — that い is what makes
+#: 大きい an adjective is a rule the learner can carry to the next word; that
+#: 人口 is a noun is not. So the adjective classes get an instruction and the
+#: rest get "don't bother", instead of every mnemonic opening with a recital.
+_WORD_TYPE_NOTE = {
+    "い adjective": (
+        "Say that the い ending is what makes this an adjective. That rule "
+        "transfers to every い word after this one, so it is worth the sentence "
+        "— and where the word is a kanji plus い, that sentence is most of the "
+        "mnemonic."
     ),
-    "kana_only": (
-        "**Kana only.** This word is written the way it sounds, so there is no "
-        "reading to decode. Do NOT write a reading story — write a one-line note "
-        "saying the word is written in kana exactly as it is read, containing "
-        "「{reading}」."
+    "な adjective": (
+        "Say that this is a な adjective — it takes な before the noun it "
+        "describes, which is the thing a learner gets wrong. Worth the sentence."
     ),
-    "irregular": (
-        "**Irregular.** 「{reading}」 cannot be assembled from any dictionary "
-        "reading of this word's kanji, so the learner has nothing to fall back "
-        "on. Write a full reading story, cast-driven, with 「{reading}」 in it "
-        "verbatim."
+    "godan verb": (
+        "It is a godan (う-ending) verb. Mention the conjugation class only if "
+        "the scene has a reason to; do not append it as a label."
     ),
-    "kun_word": (
-        "**Kun reading.** This is a single kanji read 「{reading}」 — its kun'yomi. "
-        "The kanji card teaches the meaning and the on'yomi, so this word is "
-        "where the learner meets this reading for the first time and there is "
-        "nothing to derive it from. Write a full reading story, cast-driven, "
-        "with 「{reading}」 in it verbatim."
+    "ichidan verb": (
+        "It is an ichidan (る-dropping) verb. Mention the conjugation class only "
+        "if the scene has a reason to; do not append it as a label."
+    ),
+    "する verb": (
+        "It is a noun plus する. If the noun is one of the kanji listed above, "
+        "the story writes itself: the noun is the thing, する is doing it."
+    ),
+    "transitive verb": (
+        "**Transitive** — someone does this *to* something. Japanese teaches "
+        "transitive/intransitive as pairs, so make the scene have an object "
+        "being acted on; that is what tells this apart from its partner verb."
+    ),
+    "intransitive verb": (
+        "**Intransitive** — this happens by itself, with no one doing it. Make "
+        "the scene have no actor doing it to anything; that is what tells this "
+        "apart from its partner verb."
     ),
 }
 
 
-def format_regularity(regularity, reading):
-    segments = "＋".join(f"{ch}（{chunk}）" for ch, chunk in regularity["segments"])
-    return _REGULARITY_BLOCK[regularity["kind"]].format(
-        segments=segments, reading=reading)
+def format_word_type(labels):
+    """The word-type block for a vocabulary prompt."""
+    if not labels:
+        return (
+            "(unknown — this word is a compound or derived form the curriculum "
+            "teaches as grammar, and it has no single part of speech. Say "
+            "nothing about word type; do not guess one.)"
+        )
+    lines = [f"**{', '.join(labels)}**", ""]
+    notes = [_WORD_TYPE_NOTE[label] for label in labels if label in _WORD_TYPE_NOTE]
+    if notes:
+        lines.append("What to do with that:")
+        lines.append("")
+        lines.extend(f"- {note}" for note in notes)
+    else:
+        lines.append(
+            "Nothing here predicts anything a learner could reuse, so say "
+            "nothing about word type — it is already shown in its own field on "
+            "the page, and repeating it in the mnemonic wastes the one or two "
+            "sentences you have."
+        )
+    return "\n".join(lines)
+
+
+def format_vocab_identity(comp, meaning):
+    """The "is this word just its kanji?" block for a vocabulary prompt."""
+    if not comp:
+        return (
+            "No — this word means something its kanji do not mean on their own, "
+            "so write the story."
+        )
+    syn = " / ".join(dict.fromkeys(comp["meaning_synonyms"]))
+    kanji_word = _first_word(comp["meaning"])
+    own_word = _first_word(meaning)
+    return (
+        f"**Yes.** This word is the kanji {comp['char']} “{syn}”, which the "
+        "learner has already met, and it means the same thing. Do NOT invent a "
+        "second story — the kanji's own story is already the memory hook, and a "
+        "competing one only blurs it. Write one or two plain sentences saying "
+        "the kanji and the word are the same, in the shape of “The "
+        f"<kanji>{kanji_word}</kanji> kanji and the "
+        f"<vocabulary>{own_word}</vocabulary> word are exactly the same, so "
+        "they mean the same thing.” Both tags go on, wrapping the same word on "
+        "two different spans — that is correct here, and it is what colours "
+        "both ends of the chain. Where the word adds okurigana that changes "
+        "what it *does* (白 the kanji, 白い the adjective), one more sentence "
+        "says so — see the word type block. The **reading** mnemonic is "
+        "unaffected and follows the reading section as usual."
+    )
+
+
+#: Why a derivable reading needs no mnemonic, in the words of its own kind.
+_NO_MNEMONIC_REASON = {
+    "regular": "it is exactly what this word's kanji already say",
+    "kana_only": "the word is written in kana, exactly as it is read",
+}
+
+#: Rev 6 replaces the Rev 5 derivation note. Naming the pattern (jukugo, kun'yomi,
+#: rendaku) was the right *information* and the wrong *place*: it is computed
+#: exactly by `reading_regularity`, so a model paraphrasing it can only lose
+#: precision, and it ate the whole reading budget. It now ships as the
+#: `reading_composition` field, which leaves `reading_mnemonic` with one job —
+#: a hook for a sound nothing derives — and lets 745 of N5+N4's 1,247 words
+#: carry no reading mnemonic at all.
+_NO_MNEMONIC_BLOCK = (
+    "**This word gets no reading mnemonic. Omit the `reading_mnemonic` key "
+    "entirely.**\n\n"
+    "The reading needs no memory hook, because {reason}. The page already tells "
+    "the learner exactly that, in its own computed field beside the mnemonics:\n\n"
+    "> {composition}\n\n"
+    "That line is computed, not written, so there is nothing you could add to "
+    "it and no wording of it you could write that would be more accurate. A "
+    "sentence "
+    "restating it would compete with the field next to it for the one thing the "
+    "learner has least of. Write the meaning mnemonic and stop."
+)
+
+_REUSE_BLOCK = (
+    "**The learner already knows this reading. Write one short sentence "
+    "pointing back at the word that taught it — do NOT invent a new hook.**\n\n"
+    "Here {char} is read 「{chunk}」, and that is the reading they learned from "
+    "**{src_form}（{src_reading}）**, earlier in the course. A second mnemonic "
+    "for one sound does not reinforce the first, it competes with it: two rival "
+    "images for 「{chunk}」 and the learner is no longer sure which word either "
+    "of them belongs to.\n\n"
+    "Write **one sentence, roughly 60–170 characters**, doing three things and "
+    "nothing more — name {src_form} as the word they already know this reading "
+    "from, put this word's reading 「{reading}」 inside a `<reading>` tag, and "
+    "land on this word's own meaning inside a `<vocabulary>` tag. The shape:\n\n"
+    "> You already know {char} is 「{chunk}」 from {src_form}, so "
+    "<vocabulary>{meaning}</vocabulary> is <reading>{reading}</reading>.\n\n"
+    "No cast character and no scene. There is nothing here left to remember "
+    "that the learner has not already remembered."
+)
+
+_STORY_REASON = {
+    "kun_word": (
+        "This word is a single kanji read with a reading its kanji card does "
+        "not teach — that card carries the meaning and the on'yomi. So this "
+        "word is where the learner meets 「{reading}」 for the first time, and "
+        "no earlier word has taught it either: there is nothing to point back "
+        "at and nothing to derive it from."
+    ),
+    "irregular": (
+        "「{reading}」 cannot be assembled from any dictionary reading of this "
+        "word's kanji, so the learner has nothing at all to fall back on."
+    ),
+}
+
+_STORY_BLOCK = (
+    "**Write a full reading story.**\n\n"
+    "{reason} Write one sentence, or two short ones, cast-driven, with "
+    "「{reading}」 in it verbatim.\n\n"
+    "Say nothing about *where* the reading comes from. Do not call it a "
+    "kun'yomi or an on'yomi, do not name jukugo or rendaku, and do not explain "
+    "how it is built — the page carries a computed field beside your mnemonic "
+    "which already says:\n\n"
+    "> {composition}\n\n"
+    "Repeating any of that spends the sentence you needed for the hook. Your "
+    "one job here is to make 「{reading}」 stick to this word's meaning."
+)
+
+
+def format_regularity(ctx):
+    """The reading section of a vocabulary prompt: write a story, point back at
+    the word that already taught this reading, or write nothing at all."""
+    regularity = ctx["regularity"]
+    kind = regularity["kind"]
+    composition = ctx["reading_composition"]
+    if kind in _NO_MNEMONIC_REASON:
+        return _NO_MNEMONIC_BLOCK.format(
+            reason=_NO_MNEMONIC_REASON[kind], composition=composition)
+    taught_by = ctx.get("reading_taught_by")
+    if taught_by:
+        return _REUSE_BLOCK.format(
+            char=taught_by["char"], chunk=taught_by["chunk"],
+            src_form=taught_by["form"], src_reading=taught_by["reading"],
+            reading=ctx["reading"], meaning=ctx["meaning"])
+    return _STORY_BLOCK.format(
+        reason=_STORY_REASON[kind].format(reading=ctx["reading"]),
+        reading=ctx["reading"], composition=composition)

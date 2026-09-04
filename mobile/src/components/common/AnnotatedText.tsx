@@ -5,7 +5,7 @@ import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { cn } from '@/utils/cn';
 import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
-type Segment = { text: string; tag: 'radical' | 'kanji' | 'reading' | null };
+type Segment = { text: string; tag: 'radical' | 'kanji' | 'vocabulary' | 'reading' | null };
 
 /** Splits tagged prose into plain and highlighted runs, in order. */
 function parseSegments(text: string): Segment[] {
@@ -35,6 +35,20 @@ function parseSegments(text: string): Segment[] {
  * the two are quizzed apart.
  */
 const READING_HIGHLIGHT = 'text-mnemonic-reading';
+
+/**
+ * Each highlight tag's fixed accent. `<radical>` and `<kanji>` take their own
+ * content type's; `<vocabulary>` marks the word a vocabulary story lands on, so
+ * it takes the vocabulary accent — the same purple the word's own glyph is
+ * drawn in, which is what tells the learner "this is the thing being taught"
+ * apart from "this is a kanji I already know".
+ */
+const TAG_ACCENT = {
+  radical: CONTENT_TYPE_ACCENT.radical.deep,
+  kanji: CONTENT_TYPE_ACCENT.kanji.deep,
+  vocabulary: CONTENT_TYPE_ACCENT.vocabulary.deep,
+  reading: READING_HIGHLIGHT,
+} as const;
 
 type AnnotatedTextProps = {
   text: string;
@@ -66,10 +80,7 @@ export function AnnotatedText({ text, className, testID }: AnnotatedTextProps) {
         // never clears AA for 14px bold copy, so they take the `-deep` step —
         // the same rule Stats follows for stage-coloured labels. The reading
         // token is already that step, so it carries no `-deep` twin.
-        const color =
-          segment.tag === 'reading'
-            ? READING_HIGHLIGHT
-            : CONTENT_TYPE_ACCENT[segment.tag === 'radical' ? 'radical' : 'kanji'].deep;
+        const color = TAG_ACCENT[segment.tag];
         return (
           <Text key={index} className={cn('font-ui-bold', color)}>
             {segment.text}

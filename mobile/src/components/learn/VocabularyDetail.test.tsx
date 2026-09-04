@@ -98,6 +98,8 @@ const baseItem: CurriculumItemDetail = {
   primaryForm: '私',
   furigana: null,
   meaning: 'I, me',
+  wordType: null,
+  readingComposition: null,
   mnemonicText: 'Think of private self.',
   meaningMnemonic: null,
   readingMnemonic: null,
@@ -318,6 +320,70 @@ describe('VocabularyDetail — always-visible reading (parity with kanji details
 
     expect(screen.getByTestId('vocabulary-reading')).toBeTruthy();
     expect(screen.getAllByText('私').length).toBeGreaterThan(0);
+  });
+});
+
+describe('VocabularyDetail word type', () => {
+  it('names the part of speech alongside the reading', () => {
+    render(
+      <VocabularyDetail
+        item={{ ...baseItem, wordType: 'い adjective' }}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-word-type')).toBeTruthy();
+    expect(screen.getByText('い adjective')).toBeTruthy();
+  });
+
+  it('renders no row at all for a word with no single part of speech', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.queryByTestId('vocabulary-word-type')).toBeNull();
+  });
+});
+
+describe('VocabularyDetail reading composition', () => {
+  it('says how the reading is built', () => {
+    render(
+      <VocabularyDetail
+        item={{
+          ...baseItem,
+          readingComposition:
+            "Jukugo — 人（じん）＋口（こう）, each kanji read with its on'yomi.",
+        }}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-reading-composition')).toBeTruthy();
+    expect(
+      screen.getByText("Jukugo — 人（じん）＋口（こう）, each kanji read with its on'yomi."),
+    ).toBeTruthy();
+  });
+
+  it('renders no row at all when the word has none', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.queryByTestId('vocabulary-reading-composition')).toBeNull();
   });
 });
 

@@ -13,6 +13,8 @@ function makeItem(overrides: Partial<CurriculumItemDetail> = {}): CurriculumItem
     primaryForm: '食',
     furigana: null,
     meaning: 'eat, food',
+    wordType: null,
+    readingComposition: null,
     mnemonicText: null,
     meaningMnemonic: null,
     readingMnemonic: null,

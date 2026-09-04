@@ -24,6 +24,21 @@ describe('AnnotatedText', () => {
     expect(screen.getByText('mountain').props.className).toContain('text-content-kanji');
   });
 
+  it('colors a vocabulary highlight with the vocabulary accent, apart from its kanji', () => {
+    render(
+      <AnnotatedText text="one more <kanji>mouth</kanji> makes an <vocabulary>employee</vocabulary>" />,
+    );
+
+    const borrowed = screen.getByText('mouth').props.className;
+    const landing = screen.getByText('employee').props.className;
+
+    // The pair this exists for: a word borrows <kanji> from below and lands on
+    // <vocabulary>, and the learner has to see which is which.
+    expect(landing).toContain('text-content-vocabulary');
+    expect(landing).not.toContain('text-content-kanji');
+    expect(borrowed).toContain('text-content-kanji');
+  });
+
   it('gives a reading highlight its own color, not the kanji accent', () => {
     render(
       <AnnotatedText text="<reading>Shin</reading> unveils something <kanji>new</kanji>" />,

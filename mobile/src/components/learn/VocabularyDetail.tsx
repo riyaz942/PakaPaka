@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ConjugatedFormsSection } from '@/components/learn/ConjugatedFormsSection';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
@@ -86,6 +87,32 @@ export function VocabularyDetail({
       </ItemDetailHeader>
 
       <VocabularyReadingSection furigana={item.furigana} primaryForm={item.primaryForm} />
+
+      {/* Part of speech, sitting with the word's other facts rather than down
+          with the mnemonics — it changes how the word is *used*, so it belongs
+          next to the reading. Absent on the compound forms taught as grammar,
+          which have no single part of speech to name. */}
+      {item.wordType ? (
+        <View className="mt-space-md" testID="vocabulary-word-type">
+          <SectionHeading label="Word type" />
+          <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
+            {item.wordType}
+          </Text>
+        </View>
+      ) : null}
+
+      {/* How the reading is built. Computed in the content pipeline, which is
+          why it sits here among the word's facts and not with the mnemonics:
+          for most words it is the *only* thing said about the reading, because
+          a reading mnemonic is written only where the sound needs a hook. */}
+      {item.readingComposition ? (
+        <View className="mt-space-md" testID="vocabulary-reading-composition">
+          <SectionHeading label="Reading composition" />
+          <Text className="mt-space-xs text-body-sm font-ui text-secondary">
+            {item.readingComposition}
+          </Text>
+        </View>
+      ) : null}
 
       {conjugatedNote ? (
         <Text

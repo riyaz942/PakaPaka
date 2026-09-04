@@ -995,5 +995,337 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "mawaru": {
+    "meaning_mnemonic": "That <kanji>round</kanji> kanji is a mouth boxed in an enclosure, repeating itself. Make the enclosure a revolving door. The mouth rides it and says the same greeting each time it swings past you. The door never stops. It keeps carrying the mouth around to the same spot, again and again. Something that loops back on itself like that is turning, going around.",
+    "reading_mnemonic": "A robot lawn <reading>mower</reading> on the school sports field throws a wheel and spins where it stands. A bored crow hops on for the ride. Round and round it goes, carving one circle into the grass over and over. That helpless, self-driven spinning is <reading>まわる</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mawasu": {
+    "meaning_mnemonic": "Take that <kanji>round</kanji> kanji as a mouth sealed in a small enclosure. Now it is a hand-crank music box. You grip the handle and turn it. Every full turn you drive drags the trapped mouth through its one tinny song again. Nothing in the box moves unless your hand moves it. You are the one making it go around.",
+    "reading_mnemonic": "At the riverbank, an old well has a hand winch with a soggy <reading>walrus</reading> draped over the bucket. You crank the handle to haul it up. Every turn of your wrist lifts the grumbling walrus higher. You keep cranking until it flops over the rim. Driving a handle round by hand is <reading>まわす</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hikkosu": {
+    "meaning_mnemonic": "The <kanji>pull</kanji> kanji is you hauling a bowstring back with a hooked stick until the bow bends double. Tie that string to your whole apartment — futon, fridge, every box, piled on one groaning sled. Set your heels and haul. The household lurches off down the road to a new address. Dragging your entire home somewhere new is what it means to move.",
+    "reading_mnemonic": "Regular reading: 引 lends its ひ, the small っ doubles the consonant that follows, and the last kanji with its tail reads straight, giving <reading>ひっこす</reading>.",
+    "description": "This verb is only for changing where you live. Moving an object across a room, or being moved by a story, needs a different verb.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kayou": {
+    "meaning_mnemonic": "The <kanji>traffic</kanji> kanji is a walled path that funnels onto one open road where everyone ends up. Put yourself on that road at dawn, then again at dusk, then at dawn once more. Same path, same road, out and back, every day of the week. Wearing a single route smooth by travelling it over and over is to commute.",
+    "reading_mnemonic": "A scruffy <reading>coyote</reading> has adopted the lone vending machine atop the mountain trail. Each morning it trudges up the steep path, buys one hot can, and pads back down. Next dawn, up it goes again. Same trail, same machine, day after day. That daily out-and-back trek is <reading>かよう</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "waku": {
+    "meaning_mnemonic": "A battered wok of river water sits on the mossy shrine steps. No stove under it, no flame, nobody watching. By midday the water is rolling and hissing, coming to a full boil all by itself. The shrine cats keep their distance. Nobody boiled this water. It simply boils.",
+    "reading_mnemonic": "Waku is a cook who owns one <reading>wok</reading> and guards it like treasure. He sets it among the shrine cats, fills it from the river, and lights nothing. The water comes to a boil on its own, right on cue. As it bubbles over he says <reading>わく</reading> to mean it boiled itself.",
+    "description": "English 'boil' covers both the water boiling and a person boiling it; Japanese keeps them apart. This is the intransitive side: the water or bath comes to a boil by itself, as the subject. A person boiling something takes a separate transitive verb.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wakasu": {
+    "meaning_mnemonic": "A tour guide barges into the konbini, past the onigiri shelf, promising to 'walk us straight to a boil.' He drops a huge pot on the beeping till, cranks the burner high, and stirs until the water boils. Someone always does the boiling with this word. It never gets there alone.",
+    "reading_mnemonic": "The guide's whole job is making water boil for other people. He jabs a finger at the pot and barks <reading>わかす</reading>, then lights the flame, works the bellows, and refuses to leave until it roars. 'I <reading>walk us</reading> to the boil,' he says. He boils it. The pot never would on its own.",
+    "description": "Japanese has two verbs where English has only 'boil'. This is the transitive side: someone is the subject and puts water, a kettle, or the bath on to boil. If the water just reaches a boil with nobody acting on it, the intransitive verb is the right one.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "moeru": {
+    "meaning_mnemonic": "The school groundskeeper is mowing the sports field when the blade clips a stone. One spark drops into the dry cuttings. It catches, and the flame races along the windrow on its own, no one chasing it, no one feeding it. By the time he turns around the whole touchline is burning. The fire just spreads.",
+    "reading_mnemonic": "The groundskeeper drops his <reading>mower</reading> and runs for the hose, but the fire is faster than he is. It leaps hedge to hedge across the field while he yells <reading>もえる</reading> at it. The grass is burning and it will not stop. He gives up and watches the touchline glow.",
+    "description": "Where English says 'burn' for everything, Japanese uses two verbs. This one is intransitive: whatever is alight is the subject and burns of its own accord. Reach for the separate transitive verb when a person is the one setting something on fire.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "moyasu": {
+    "meaning_mnemonic": "Moya and Sue haul a heap of dead branches down to the riverbank. Moya sloshes lamp oil over the pile while Sue gets a match ready. Together they touch it off, then keep feeding the flames so they never drop. Two people, one deliberate fire: that is this word, someone burning something.",
+    "reading_mnemonic": "<reading>Moya, Sue</reading> run the riverbank bonfire every autumn. They rake the fallen leaves, stack them shoulder-high, and set the heap alight on purpose. When a neighbour asks what they are doing, they answer <reading>もやす</reading>. They are burning the whole pile, by their own hand.",
+    "description": "English 'burn' hides a split that Japanese marks with two verbs. This one is transitive: a person, as the subject, burns leaves, trash, or old letters. When something is merely alight and no one is acting on it, the intransitive verb is what you want.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tooru": {
+    "meaning_mnemonic": "The walled path pours everything onto the town's one open road, and all the <kanji>traffic</kanji> lands on it at once. The road has no parking bay, no dead end, no gate. Whatever rolls on at this end rolls off the other end. A truck, three bicycles and a confused goose pass through and are gone.",
+    "reading_mnemonic": "At the mountain trail sits a barrier-keeper whose gate snapped off its hinge years back. He still mans the booth. Every hiker, van and stray goat glides past the stump where it stood. He waves each one along, muttering <reading>とおる</reading> — one more <reading>toll</reading> nobody pays, one more thing passing through.",
+    "description": "通る is intransitive: the subject moves through by itself — a car through a tunnel, a road that runs through a town, a voice that carries across a hall. Nothing is being pushed; the thing itself does the passing.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "toosu": {
+    "meaning_mnemonic": "One open avenue swallows the whole town's <kanji>traffic</kanji> at its mouth and holds on to none of it. Its entire job is to take what arrives and push it out the far end. A marching band, a runaway shopping cart, one lost tour bus — the avenue threads each one straight through and lets it pass.",
+    "reading_mnemonic": "The school caretaker empties the equipment shed through its one high window. Basketballs, a deflated football and somebody's forgotten lunchbox — he gives each one a <reading>toss</reading> up and out. <reading>とおす</reading>, he grunts every time, letting one more object pass through the gap to the field.",
+    "description": "通す is transitive: you take something and put it through — a thread through a needle, a visitor through to the sitting room, a bill through the assembly. What passes is the object; the person or channel doing the passing is the subject.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kooru": {
+    "meaning_mnemonic": "Leave a full water bottle out on the mountain trail one winter night. By dawn the cold has driven all the way into its core. The water is now a bottle-shaped block of ice, hard enough to knock on. To freeze is exactly this: the cold reaches the core and the liquid quits being liquid.",
+    "reading_mnemonic": "At the riverbank a stubborn swimmer wades in every morning, all winter. One January dawn her toe meets the surface and stops dead. The river has set solid to its <reading>core</reading>. She raps it with a knuckle and sighs: <reading>こおる</reading>. It has frozen clean through, and there is no swim today.",
+    "description": "凍る is only physical freezing — water, ground and pipes turning to ice. It does not carry the English extras: a person frozen with fear, a frozen screen or frozen prices all use different words in Japanese.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tokeru": {
+    "meaning_mnemonic": "Drop a chocolate coin into a hot cup of cocoa and watch the token. Its edges go soft, then round, then gone. The shape blurs out into the brown liquid and you cannot fish it back. To melt or dissolve is that: a solid loses its outline and becomes part of the liquid around it.",
+    "reading_mnemonic": "A boy buys an ice pop at Koichi's konbini and pays with a warm <reading>token</reading> of a coin. He leaves the pop on the sunny sill by the beeping till. Twenty minutes on: a bright puddle with a stick in it. <reading>とける</reading>, sighs Koichi, fetching the mop. It has melted to sticky water.",
+    "description": "This verb has homophones written with other kanji. The 溶ける spelling is the physical one — ice, butter or sugar going liquid. A same-sounding verb written differently means to come untied or to be solved.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shizumu": {
+    "meaning_mnemonic": "Shizu is the one shrine cat who never learned to swim. Set her by the pond and she does not paddle. She drops straight through the water like a stone and settles on the bottom, watching fish go by. Behind the hill the evening sun does the same slow thing: sliding lower, then gone. Heavy things sink, and the sun sets the very same way.",
+    "reading_mnemonic": "Meet Shizu, the shrine cat who never learned to swim. <reading>Shizu zooms</reading> off the mossy step and drops straight to the pond floor, blowing one sad ring of bubbles. When something goes <reading>しずむ</reading>, it does what Shizu does: no paddling, no drifting, just down.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ukabu": {
+    "meaning_mnemonic": "Uka is a very small ghost with no sense of gravity. Let go of her and she does not drop. She rises off your palm and hangs at eye level, turning slowly, saying boo at nobody. Bath water, hot soup, thin air: whatever you rest her on, she comes back up and sits on top of it. To float is her entire personality.",
+    "reading_mnemonic": "Uka the ghost haunts the onigiri shelf at Koichi's konbini. She cannot reach the floor. <reading>Uka boos</reading> and drifts up into the ceiling lights, wobbling over the beeping till like a balloon let go. Picture that for <reading>うかぶ</reading>: rising off whatever should hold you down, then riding light on top.",
+    "description": "Besides physical floating, 浮かぶ is the ordinary word for a thought, a memory, or a name that suddenly surfaces in your mind. English 'float' does not stretch that far, so learn the second sense now: an idea 浮かぶ when it rises into your awareness on its own.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nagareru": {
+    "meaning_mnemonic": "Drop a ribbon into the river and it stops being limp in your hand. The water grabs it and pulls it straight downstream, pointing like an arrow. That steady pull is the <kanji>current</kanji>, and the ribbon only shows what the water was already doing: moving one way, always. When water picks a line and runs down it, that is to <kanji>flow</kanji>.",
+    "reading_mnemonic": "Naga is the kid at the riverbank who begs to rewatch one cartoon every afternoon. <reading>Nag a rerun</reading>, nag a rerun, until the tape rolls itself. The river beside her never needs asking. It keeps moving on its own, downhill, all day. The word for that easy, unstoppable going is <reading>ながれる</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nagasu": {
+    "meaning_mnemonic": "Sei drags the hose onto the dusty sports field and cranks it open. He does not wait for rain. He aims the nozzle and sends a wide sheet of water across the dirt, steering it with his thumb, pushing leaves off the far edge. He makes the <kanji>current</kanji> himself and decides where it runs, letting the water <kanji>flow</kanji> off the field exactly where he wants it.",
+    "reading_mnemonic": "A goose lives on the school drain and will not move. You <reading>nag a goose</reading> — wave, shout, stamp your boots — and the second it waddles off, you tip the bucket and let the grey puddle pour down the open channel. That deliberate send-off is <reading>ながす</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kusaru": {
+    "meaning_mnemonic": "Your cousin Sarah brings a casserole to the potluck and forgets to take the leftovers home. The dish sits in her car through a hot weekend. By Monday the top is grey and furry, and the whole car smells like a drain. Anything cousin Sarah leaves in a warm place long enough will rot.",
+    "reading_mnemonic": "Your <reading>cousin Sarah</reading> works the beeping till at Koichi's konbini, and she never checks a date. Give her a week and the egg sandwiches by the door have turned. The bread is green, the filling gone to paste. Koichi lifts one between two fingers, looks at her, and says it flat: 「<reading>くさる</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nigeru": {
+    "meaning_mnemonic": "The moment anyone at the dinner table says the word 'dishes', Nigel's chair is empty. His napkin is still settling. Down the hall the front door taps shut, and his tea sits there steaming. Nigel does this at every gathering. First sign of work, and he has run away.",
+    "reading_mnemonic": "At Sei's school, the coach only has to reach for the whistle and <reading>Nigel</reading> is already gone. By the time it blows he is halfway up the back fence of the sports field, blazer flapping. The coach doesn't shout after him anymore. He just writes 「<reading>にげる</reading>」 in the margin by Nigel's name, same as last week.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "oikakeru": {
+    "meaning_mnemonic": "A kangaroo hops up to the bus stop, cackling, and lifts the umbrella clean out of your hand. Then it bounds off down the street. You shout 'Oi!' and pound after the roo through every puddle. Running flat out after something to get it back is what it means to chase.",
+    "reading_mnemonic": "Halfway up the mountain trail you hear a shout behind you. It is the park ranger, yelling <reading>Oi! Cackle-roo!</reading> as she jogs. A monkey has her whole lunch bag. She has been 「<reading>おいかける</reading>」 it since the trailhead, right past the vending machine at the top, and she is not slowing down.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kotowaru": {
+    "meaning_mnemonic": "Kota stands at the velvet rope like a piece of wall that learned to fold its arms. Your name is not on his list. He doesn't argue and he doesn't soften it. He says one word, points back the way you came, and turns to the next person. Kota at that rope declines every face he doesn't know.",
+    "reading_mnemonic": "At the festival gate to Grandma Kane's shrine, <reading>Kota</reading> works the rope with his back to the stone <reading>wall</reading>, cats winding round his ankles. A man offers him cash to skip the line. Kota doesn't even look down. Grandma Kane, counting coins by the bell, marks one more in her book: 「<reading>ことわる</reading>」.",
+    "description": "断る usually means turning an offer or request down. But it has a second everyday sense: to give notice or ask leave beforehand. The form 断りなく means 'without notice' or 'without permission'. Context tells you which sense applies.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tanomu": {
+    "meaning_mnemonic": "A tan moose the size of a shed lives halfway up the mountain trail. It is the only thing that carries your groceries the last stretch to the vending machine at the top. So every week you climb up, bow to it, and request one more haul. On steep days you rely on it for everything. No moose, no lunch.",
+    "reading_mnemonic": "You need a parcel carried up the mountain trail, so you do what the locals do. You face the big <reading>tan moose</reading> at the trailhead, cup your hands, and call <reading>たのむ</reading>. It chews for a moment, then lumbers off with your parcel. That one word asks it for anything.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tasukaru": {
+    "meaning_mnemonic": "You are stuck to the chest in riverbank mud and cannot pull free. Then <kanji>help</kanji> arrives: one more pair of hands, with all their power thrown behind the pull. You do none of the work. You are just the person on the receiving end, dragged out and left on the grass. That is what it is to be saved.",
+    "reading_mnemonic": "An old car with two walrus tusks bolted to its bumper waits at the riverbank for this exact moment. You go under; the <reading>tusk car</reading> reverses down the mud, you grab a tusk, and it drags you up. Hold on and you are <reading>たすかる</reading>, dumped safe on the grass.",
+    "description": "Intransitive: the subject is whoever gets saved or benefits, with no direct object. The near-identical form ending in -eru is the transitive one, used for helping somebody. This word is also a common set phrase meaning that is a big help or what a relief.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tasukeru": {
+    "meaning_mnemonic": "Someone at the school is pinned under a toppled bookshelf. They strain and get nowhere. You run over and become the one more pair of hands, shoving all your power up under the shelf beside theirs. It rises. Putting your hands and your strength in for a person who cannot manage alone is what it means to <kanji>help</kanji>.",
+    "reading_mnemonic": "A kid at the school wears a bath-towel cape and calls himself <reading>task hero</reading>. Jammed locker, stuck window, a classmate trapped under gym mats: he sprints in and sorts it. To <reading>たすける</reading> is simply to do what that kid does.",
+    "description": "Transitive: it takes a direct object, the person you help or rescue. The near-identical form ending in -aru is intransitive and means someone gets helped. The vowel before -ru is the whole difference, and the classic mix-up at this level.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shikaru": {
+    "meaning_mnemonic": "A grim grey kangaroo is the house detective at Koichi's konbini. All shift it seeks out tiny crimes: a peeled onigiri wrapper, a shaken fizzy drink, a kid licking the freezer glass. When the seeker corners a culprit, the roo rears up and delivers a loud, finger-wagging lecture. To scold is the whole job.",
+    "reading_mnemonic": "Everyone at Koichi's konbini calls the store detective the <reading>seeker roo</reading>. The grey kangaroo hops the aisles hunting bad behaviour, then stands over the offender and lectures until they say sorry. To <reading>しかる</reading> someone is to give them that full treatment.",
+    "description": "Scolding aimed downward: a parent to a child, a teacher to a student, a boss to a junior. You would not use it with an equal or with anyone above you, so it never means argue with or complain to.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "homeru": {
+    "meaning_mnemonic": "A hamster steps up to bat on the school sports field. It swings once and knocks the ball clean over the back fence for a home run. The whole field stands up to praise it, chanting and throwing their caps in the air. One tired little home run, and a stadium's worth of praise poured onto a hamster.",
+    "reading_mnemonic": "A kangaroo at the petting zoo has the tidiest pouch you have ever seen. You crouch down and tell her, <reading>home, Roo</reading>, this is a lovely place to live. She sits up, delighted. Say it the Japanese way, <reading>ほめる</reading>, and you have just praised her.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ayamaru": {
+    "meaning_mnemonic": "A llama walks into Koichi's konbini and backs straight into the onigiri shelf by the door. Rice triangles roll across the whole floor. The llama lowers its head, ears flat, plainly full of rue, and bows to Koichi again, and again, and again. A llama drowning in rue at the beeping till is you learning to apologize.",
+    "reading_mnemonic": "Aya knocks a marble clean through a window at Grandma Kane's shrine. She goes to her ma first and confesses the broken rule. Then she stands in front of Grandma and bows low, sorry, so sorry. <reading>Aya, ma, rule</reading> becomes <reading>あやまる</reading>: to apologize.",
+    "description": "A separate everyday verb is also read あやまる and means to err or make a mistake; only context, and a different kanji in writing, tell the two apart.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yorokobu": {
+    "meaning_mnemonic": "You haul yourself up the mountain trail to the one vending machine at the top. You press the button with no hope. A cold can thunks into the tray anyway. You are so pleased you hug the machine and tell it, you rock, bub. That rush of gladness over one working machine is what it is to be pleased.",
+    "reading_mnemonic": "A soggy puppy at the riverbank keeps dropping the same stick at your feet. Every single throw, you tell it, <reading>you rock, bub</reading>. The puppy comes apart with delight, ears flapping, spinning in the mud. That pure, dopey gladness is <reading>よろこぶ</reading>: to be pleased.",
+    "description": "English 'be pleased' sounds like a passive state, but よろこぶ is an active verb. It describes someone visibly showing delight, most often a person other than the speaker.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "okoru-angry": {
+    "meaning_mnemonic": "You take the last pudding out of the fridge. A goose you did not know lived in your kitchen watches from the corner. You ask it, you OK? It is not OK. It rears up with a roar and chases you around the table. Ask a goose if it is okay and get a roar back, that is what it is to get angry.",
+    "reading_mnemonic": "Sei opens a dryer at the laundromat and finds a raccoon asleep in the warm drum. It wakes, blinks once, and decides it is furious. She steps back going, <reading>OK, roar</reading>, easy now. Too late, it is already <reading>おこる</reading>, hissing and spitting over its ruined nap. To get angry.",
+    "description": "Beyond the inner feeling, おこる is also the everyday word for scolding someone out loud, a parent or teacher おこる at a child. The English 'get angry' misses that active 'tell someone off' sense.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kawakasu": {
+    "meaning_mnemonic": "Kawa the crow holds your soaked paper fan over the coals and turns it fold by fold until every drop is gone. To force the water out of a wet thing on purpose is <vocabulary>to dry</vocabulary> it.",
+    "reading_mnemonic": "A riverbank crow named Kawa props your soaked fan by the coals and cusses at it until it stiffens. Locals say the fan dried because <reading>Kawa cussed</reading> it, and that kun'yomi, <reading>かわかす</reading>, is <vocabulary>to dry</vocabulary> a wet thing on purpose.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "5",
+      "review_status": "draft"
+    }
+  },
+  "kawaku": {
+    "meaning_mnemonic": "A mountain trail puddle has nobody to bail it out, so it sits in the sun, shrinks to a damp ring, then to nothing. For a thing to lose its water with nobody touching it is <vocabulary>to dry</vocabulary>.",
+    "reading_mnemonic": "The mountain tortoise plods a slow bumper-to-bumper lap of the puddle, a real <reading>car walk</reading>, and by the time it is back the water is gone. No one touched it; the puddle simply did <reading>かわく</reading>, the kun'yomi, and that is <vocabulary>to dry</vocabulary>.",
+    "description": "Written with a different kanji, the same reading also means to be thirsty, from the picture of a throat drying out. Context, not the sound, tells the two apart.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "5",
+      "review_status": "draft"
+    }
+  },
+  "nurasu": {
+    "meaning_mnemonic": "The school nurse finds a nest of rats in the cardboard first-aid bin and drives them out by soaking the cardboard through with a sponge. To put water onto a thing on purpose is <vocabulary>to wet</vocabulary> it.",
+    "reading_mnemonic": "The school nurse deals with the <reading>new rats</reading> in the first-aid bin by wringing a dripping sponge over it until the cardboard sags. She does it on purpose, and that kun'yomi, <reading>ぬらす</reading>, is <vocabulary>to wet</vocabulary> something.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "5",
+      "review_status": "draft"
+    }
+  },
+  "nureru": {
+    "meaning_mnemonic": "A slug crossing the shrine's mossy steps at dawn is soaked through by dew that is just sitting there, nobody pouring a drop. For water to arrive on its own and soak you is <vocabulary>to get wet</vocabulary>.",
+    "reading_mnemonic": "The shrine slug hauls itself up the fresh bamboo handrail at dawn and reaches the top glossy and dripping from the dew alone. It went up a <reading>new rail</reading> and came down <reading>ぬれる</reading>, the kun'yomi, so this is <vocabulary>to get wet</vocabulary>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "5",
+      "review_status": "draft"
+    }
+  },
+  "machigaeru": {
+    "meaning_mnemonic": "The <kanji>space between</kanji> two pigeonhole dividers is a mail slot, and you shove your letter into the one that <kanji>differs</kanji> from yours by a single room number. Feeding that wrong slot is what it means to <vocabulary>make a mistake</vocabulary>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
+    }
+  },
+  "shiraseru": {
+    "meaning_mnemonic": "You <kanji>know</kanji> a fact the moment your arrow thuds into the target. Firing that same fact into someone else's target is <vocabulary>to inform / notify</vocabulary> them.",
+    "reading_mnemonic": "You already learned 知 is 「し」 back in 知る, so <vocabulary>to inform / notify</vocabulary> someone is just <reading>しらせる</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
+    }
+  },
+  "mori": {
+    "meaning_mnemonic": "The single character <kanji>forest</kanji> is the entire word, nothing added and nothing dropped. What you met as a kanji and what you say out loud as <vocabulary>forest</vocabulary> are the same thing.",
+    "reading_mnemonic": "Walk into the <vocabulary>forest</vocabulary> and a mole named <reading>Morrie</reading> shoves his head up between two roots. He insists <reading>もり</reading> is his family name, since he dug every tunnel under these trees.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
+    }
   }
 }

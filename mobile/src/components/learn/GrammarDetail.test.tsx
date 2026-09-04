@@ -28,6 +28,8 @@ const baseItem: CurriculumItemDetail = {
   primaryForm: 'です',
   furigana: null,
   meaning: 'to be (polite)',
+  wordType: null,
+  readingComposition: null,
   mnemonicText: 'Desu sounds like "deserve" politeness.',
   meaningMnemonic: null,
   readingMnemonic: null,

@@ -96,6 +96,8 @@ type VocabItem = {
   primary_form: string;
   furigana?: string;
   meaning: string;
+  word_type?: string;
+  reading_composition?: string;
   mnemonic_text?: string;
   meaning_mnemonic?: string;
   reading_mnemonic?: string;
@@ -497,8 +499,8 @@ export function compileCurriculum(
     db.exec(CURRICULUM_DDL);
 
     const insertItem = db.prepare(`
-      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
-      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
+      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, word_type, reading_composition, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
+      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @word_type, @reading_composition, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
     `);
 
     const insertReading = db.prepare(`
@@ -616,6 +618,8 @@ export function compileCurriculum(
         primary_form: radical.primary_form,
         furigana: null,
         meaning: radical.meaning,
+        word_type: null,
+        reading_composition: null,
         mnemonic_text: radical.mnemonic_text ?? null,
         meaning_mnemonic: null,
         reading_mnemonic: null,
@@ -648,6 +652,8 @@ export function compileCurriculum(
         primary_form: kanjiItem.primary_form,
         furigana: null,
         meaning: kanjiItem.meaning,
+        word_type: null,
+        reading_composition: null,
         mnemonic_text: kanjiItem.mnemonic_text ?? null,
         meaning_mnemonic: kanjiItem.meaning_mnemonic ?? null,
         reading_mnemonic: kanjiItem.reading_mnemonic ?? null,
@@ -690,6 +696,8 @@ export function compileCurriculum(
         primary_form: vocab.primary_form,
         furigana: vocab.furigana ?? null,
         meaning: vocab.meaning,
+        word_type: vocab.word_type ?? null,
+        reading_composition: vocab.reading_composition ?? null,
         mnemonic_text: vocab.mnemonic_text ?? null,
         meaning_mnemonic: vocab.meaning_mnemonic ?? null,
         reading_mnemonic: vocab.reading_mnemonic ?? null,
@@ -745,6 +753,8 @@ export function compileCurriculum(
         primary_form: grammarItem.primary_form,
         furigana: null,
         meaning: grammarItem.meaning,
+        word_type: null,
+        reading_composition: null,
         mnemonic_text: null,
         meaning_mnemonic: null,
         reading_mnemonic: null,

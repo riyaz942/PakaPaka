@@ -226,6 +226,8 @@ describe('itemRepository', () => {
       primaryForm: '一',
       furigana: null,
       meaning: 'one',
+      wordType: null,
+      readingComposition: null,
       mnemonicText: 'Radical one (一)',
       meaningMnemonic: null,
       readingMnemonic: null,
@@ -233,6 +235,31 @@ describe('itemRepository', () => {
       visualMnemonicUrl: 'https://example.com/one.png',
     });
     expect(getItemById(db, '999')).toBeNull();
+  });
+
+  it('carries the computed vocabulary columns through to the detail', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'jinkou',
+        primary_form: '人口',
+        meaning: 'population',
+        word_type: 'noun',
+        reading_composition:
+          "Jukugo — 人（じん）＋口（こう）, each kanji read with its on'yomi.",
+        sort_order: 1,
+      },
+    ]);
+
+    const detail = getItemById(db, '1');
+    expect(detail?.wordType).toBe('noun');
+    expect(detail?.readingComposition).toBe(
+      "Jukugo — 人（じん）＋口（こう）, each kanji read with its on'yomi.",
+    );
   });
 
   it('returns item detail by slug, scoped to the requested item type', async () => {

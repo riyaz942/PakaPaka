@@ -36,6 +36,7 @@ sys.path.insert(0, BUILD_DIR)
 import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
+from generate_content.mnemonic_context import reading_composition  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
@@ -60,6 +61,13 @@ VOCAB_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "examples")
 
 #: Sidecar _meta keys carried through to the shipped item (matches grammar).
 _SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "reviewed_by")
+
+#: Part of speech per vocabulary slug, distilled from JMdict by
+#: `import/build_vocab_word_types.py`. Not every word has one — the compound
+#: and derived forms taught as grammar (教えてもらう, 書ける) carry none, and the
+#: file is absent entirely until that script has been run — so a missing entry
+#: means the item ships with no `word_type`, never an empty or guessed one.
+VOCAB_WORD_TYPES_PATH = os.path.join(BUILD_DIR, "vocab_word_types.json")
 
 # Kanji/kana runs (incl. 々〆 and the long-vowel mark) for the lesson-markdown
 # furigana pass below.
@@ -287,10 +295,23 @@ def _build_kanji_items(slug_prefix, kanji_entries, known_readings=None,
     return items
 
 
+def _load_vocab_word_types():
+    """{slug: "adverb, noun"} from the checked-in JMdict distillation, or {}.
+
+    The artifact stores the labels as a list so the ordering rule lives in one
+    place; the shipped field is the display string, because that is the whole
+    of what the app does with it."""
+    if not os.path.exists(VOCAB_WORD_TYPES_PATH):
+        return {}
+    with open(VOCAB_WORD_TYPES_PATH, encoding="utf-8") as f:
+        return {slug: ", ".join(labels) for slug, labels in json.load(f).items()}
+
+
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
     mnemonics = _load_sidecar(VOCAB_MNEMONICS_DIR, jlpt_level.lower())
     examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
+    word_types = _load_vocab_word_types()
     vocab_forms = {**(extra_vocab_forms or {}),
                    **{v["slug"]: v["form"] for v in vocab_entries}}
     errors = []
@@ -306,6 +327,15 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
             "primary_form": v["form"],
             "meaning": v["meaning"],
         }
+        word_type = word_types.get(v["slug"])
+        if word_type:
+            item["word_type"] = word_type
+        # Rev 6: how the reading is built, computed from the word's kanji and
+        # their KANJIDIC readings rather than written. It replaces the derivation
+        # note the reading mnemonic used to carry, which is why 745 of N5+N4's
+        # words now ship no `reading_mnemonic` at all.
+        if v["reading"]:
+            item["reading_composition"] = reading_composition(v["form"], v["reading"])
         # Skeleton vocabulary (plan v2 Phase D) carries no mnemonic of any kind,
         # as skeleton kanji do; the app renders around the absence.
         if v.get("mnemonic"):
@@ -318,8 +348,10 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
         mnemonic = mnemonics.get(v["slug"])
         if mnemonic:
             # Phase 2d split mnemonics: the meaning mnemonic chains from the
-            # component kanji's stories, the reading mnemonic is either a story
-            # or a derivation note depending on the word's reading regularity.
+            # component kanji's stories; the reading mnemonic is a full story, a
+            # one-sentence pointer at the word that already taught the reading,
+            # or (Rev 6, for the derivable majority) absent — see
+            # `reading_composition` above, which states the derivation instead.
             # The legacy one-line mnemonic_text stays as the pre-2d fallback.
             for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
                 if mnemonic.get(field):

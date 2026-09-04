@@ -87,6 +87,10 @@ export type VocabRaw = {
   primary_form: string;
   furigana?: string;
   meaning: string;
+  /** Part of speech ("い adjective", "adverb, noun"). Absent on the compound
+      forms taught as grammar, which have no single part of speech. */
+  word_type?: string;
+  reading_composition?: string;
   mnemonic_text?: string;
   meaning_mnemonic?: string;
   reading_mnemonic?: string;

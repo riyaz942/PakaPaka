@@ -172,7 +172,7 @@ PY
 Note what "done" means here: a draft recorded under an **older** prompt version is
 stale, not done, so a version bump correctly re-selects every out-of-date item for
 regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
-`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6}`),
 because the three prompts move independently. Radicals sitting at 1 is deliberate:
 Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
 ~150–300 characters, description demoted to optional — so the reviewed N5 radicals
@@ -556,8 +556,10 @@ Repair Procedure
    - A "too short" error means the story lacks substance — add scene, not filler
      clauses. A "too long" error means cut, not compress into one dense sentence;
      targets are roughly radical ~150–300, kanji meaning ~70–170 (one sentence),
-     kanji reading ~90–200 (one sentence, or two short ones), vocab reading
-     ~150–280.
+     kanji reading ~90–200 (one sentence, or two short ones), vocab meaning
+     ~70–200 (one sentence, or two short ones), vocab reading ~90–220 when it is
+     a story. A `keep <= 200` ceiling on a vocab meaning means this word *is* its
+     kanji: delete the scene and say the two are the same, rather than trimming.
    - A "never wraps it in <radical>…" or "does not highlight the reading" error
      means the words are there but untagged — add the tags around the words the
      story already uses, do not rewrite the story. Highlight tags: each taught
@@ -565,15 +567,21 @@ Repair Procedure
      kanji meaning mnemonic, `<kanji>` in a vocab one — and the reading kana plus
      the English phonetic hook are wrapped in `<reading>` in the reading mnemonic.
      A kanji mnemonic also wraps the kanji's own taught meaning in `<kanji>`,
-     once, in **both** its meaning and its reading mnemonic. A radical borrows
+     once, in **both** its meaning and its reading mnemonic; a vocab mnemonic
+     does the same one layer up, wrapping the word's own taught meaning in
+     `<vocabulary>`, once, in both of its mnemonics. A radical borrows
      nothing, so its `mnemonic_text` wraps its own meaning — the word the picture
      resolves to — in `<radical>`. `<radical>` never appears in a reading
-     mnemonic, every tag closed, none nested, and none in a description.
+     mnemonic or in a vocab mnemonic at all, every tag closed, none nested, and
+     none in a description.
    - A "never says what this kanji means" error on a kanji `reading_mnemonic` is
      the Rev 9 rule: the sound and the meaning have to be the same joke. Name the
      kanji's taught meaning in the sentence, wrap it in `<kanji>`, and make the
      phonetic hook and that meaning explain each other — do not bolt "…and that
-     is why it means X" onto the end of the existing scene.
+     is why it means X" onto the end of the existing scene. "never says what
+     this word means" on a **vocab** mnemonic is the same rule at the word layer
+     (Rev 6), and it applies to the meaning mnemonic as well as the reading one:
+     name the word's taught meaning and wrap it in `<vocabulary>`.
    - A "description is omitted, but this item has reviewed look-alikes" error is
      the one case where you *add* a key. Add only the description; leave the
      mnemonic(s) exactly as they are.
@@ -584,10 +592,25 @@ Repair Procedure
      the prompt, verbatim, inside a `<reading>` tag, and this kanji's taught
      meaning inside a `<kanji>` tag, in at most two sentences.
    - For vocab: the meaning_mnemonic must reference every kanji listed in the
-     prompt's "The kanji in this word" section; the reading_mnemonic must contain
-     the word's reading verbatim and must follow the prompt's "The reading"
-     section — a one-line derivation note when it says the reading is regular or
-     kana-only, a full story when it says otherwise.
+     prompt's "The kanji in this word" section, in at most two sentences, and
+     must name the word's own taught meaning inside a `<vocabulary>` tag.
+     When the prompt's "Is this word just its kanji?" section says it is, the
+     meaning mnemonic says so in a line instead of telling a story.
+   - For vocab, the prompt's "The reading" section decides whether there is a
+     `reading_mnemonic` **at all**, and it is computed, not advisory:
+     - *no reading mnemonic* — drop the key from the JSON entirely. The reading
+       is what the word's kanji already say, and the computed
+       `reading_composition` field on the page states it. A short note written
+       here anyway is a gate failure.
+     - *the reading is already taught by an earlier word* — one sentence naming
+       that word, with the reading verbatim in a `<reading>` tag and this word's
+       meaning in a `<vocabulary>` tag. The gate requires the earlier word's
+       written form to appear in the sentence.
+     - *a full story* — the reading verbatim in a `<reading>` tag and the word's
+       meaning in a `<vocabulary>` tag, in at most two sentences.
+     Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in either
+     mnemonic: that is the `reading_composition` field's job, and it already
+     does it more precisely than prose can.
    - For radical and kanji: when a description is present it must name every
      look-alike listed in the prompt and no other Japanese character; an item
      whose prompt lists look-alikes must have one.

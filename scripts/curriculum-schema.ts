@@ -21,6 +21,16 @@ CREATE TABLE items (
   primary_form TEXT NOT NULL,
   furigana TEXT,
   meaning TEXT NOT NULL,
+  -- Part of speech, vocabulary only ("い adjective", "adverb, noun"). Distilled
+  -- from JMdict by curriculum/_build/import/build_vocab_word_types.py; null on
+  -- every other item type, and on the compound forms taught as grammar.
+  word_type TEXT,
+  -- How the reading is built, vocabulary only ("Jukugo — 人（じん）＋口（こう）,
+  -- each kanji read with its on'yomi."). Computed from the word's kanji and
+  -- their KANJIDIC readings by mnemonic_context.reading_composition, which is
+  -- why most words ship no reading_mnemonic: this states the derivation, and a
+  -- reading mnemonic is written only where the sound needs a memory hook.
+  reading_composition TEXT,
   mnemonic_text TEXT,
   meaning_mnemonic TEXT,
   reading_mnemonic TEXT,

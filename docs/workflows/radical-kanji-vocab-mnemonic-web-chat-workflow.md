@@ -67,13 +67,20 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
   reviewed look-alike pairs (from `_build/visually_similar.py`) the description must
   contrast; and the fixed cast character for that reading (from
   `prompts/cast-bible.md`). The vocab prompt adds the component kanji's meaning
-  mnemonics and the **mechanically computed reading regularity**, which decides
-  whether the reading gets a story or a one-line derivation note.
+  mnemonics, the word's **part of speech** (distilled from JMdict by
+  `import/build_vocab_word_types.py`), whether the word simply *is* one of its
+  kanji, the computed **reading composition** (jukugo, kun'yomi, a mix, plus any
+  rendaku or gemination — the field that ships on the page), and the
+  **mechanically computed reading regularity**, which decides whether the word
+  gets a full reading story, a one-sentence pointer back at the word that
+  already taught the reading, or — for the derivable majority — no reading
+  mnemonic at all.
 - **The mechanical gate** (`validate_mnemonics.py`) runs on ingest exactly as it
   does in the API path: it rejects a meaning mnemonic that ignores a taught
   component, a reading mnemonic missing the target reading, a description that
-  skips a reviewed look-alike or invents one, a regular vocabulary reading padded
-  into a story, unsupported markdown, and out-of-bounds lengths. A reply that passes the gate is as constraint-clean
+  skips a reviewed look-alike or invents one, a reading mnemonic written for a
+  vocabulary word whose reading needs none, a back-reference that never names
+  the word it points at, unsupported markdown, and out-of-bounds lengths. A reply that passes the gate is as constraint-clean
   as an API-generated one.
 - **Provenance is honest:** the `--model` you pass is recorded in the sidecar
   entry's `_meta.generator_model` (`claude-web` / `gemini-web`), so a reviewer can
@@ -133,7 +140,7 @@ type — useful for a full-level dump, not for a sitting of ~10.
 > `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
 > whole level rather than the gaps, and let `ingest` overwrite. The API path does
 > this for you — `run` re-queues any draft recorded under an older prompt version.
-> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6}`),
 > because the three prompts move independently. Radicals sitting at 1 is
 > deliberate: Rev 3 reverted the radical contract to the original shape — a
 > `mnemonic_text` of ~150–300 characters, description demoted to optional — so a

@@ -28,7 +28,8 @@ reviewed look-alike pairs from _build/visually_similar.py — never a model-inve
 confusable; the reading's fixed cast character from the cast bible, since batch
 calls are independent and a static style sheet alone won't keep the cast
 coherent; and, for vocabulary, the mechanically computed reading regularity that
-decides whether the reading gets a story or a one-line derivation note.
+decides whether the reading gets a story, a one-sentence pointer at the word
+that already taught it, or no reading mnemonic at all.
 
 Failed drafts are auto-requeued with the gate errors appended to the prompt,
 capped at MAX_ATTEMPTS, then recorded `review_status: flagged_for_rewrite`.
@@ -139,7 +140,27 @@ MODEL = "claude-opus-4-8"
 #: The N5 kanji were generated under 1 and 2 and then brought up to 4 in place,
 #: so they are stamped 4 — leaving them behind the current number would mark
 #: 106 reviewed items stale and let the next `run` overwrite them.
-PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 4}
+#:
+#: Vocab moves 4 -> 5 for the Rev 5 contract, and here the staleness is the
+#: point: the change is a real rewrite, not a retag. Rev 5 cuts the meaning
+#: mnemonic to one or two sentences (the cut Rev 8 made to kanji), names the
+#: word's part of speech where it teaches a rule, spells out the reading's
+#: derivation in the words a course uses — jukugo, on'yomi, kun'yomi, rendaku —
+#: and adds the `<vocabulary>` self-tag that a stored Rev 4 draft cannot have,
+#: because the tag did not exist. Every N5 word is correctly marked stale by
+#: this; nothing is deleted, and stale prose keeps shipping until it is
+#: rewritten.
+#:
+#: Vocab moves 5 -> 6 before a single word was generated under 5, which is what
+#: makes the second bump free. Rev 6 takes the derivation *back out* of the
+#: prose: naming jukugo/on'yomi/kun'yomi/rendaku was the right information in
+#: the wrong place, since `reading_regularity` computes all of it exactly, so it
+#: now ships as the `reading_composition` field. Two consequences the contract
+#: turns on: a `regular` or `kana_only` word writes **no** `reading_mnemonic` at
+#: all (745 of N5+N4's 1,247 words), and a word whose reading an earlier word
+#: already taught — 答え after 答える, 書ける after 書く, 90 words at N5+N4 —
+#: writes one sentence pointing back at that word instead of a rival hook.
+PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
 POLL_SECONDS = 30
@@ -201,7 +222,14 @@ SUBMIT_TOOLS = {
             # Rev 2: `description` is optional — omit it unless this item has a
             # nuance the two mnemonics cannot carry (reviewed look-alikes to
             # contrast, an odd register, a usage trap).
-            "required": ["meaning_mnemonic", "reading_mnemonic"],
+            #
+            # Rev 6: `reading_mnemonic` is optional too, because for a word whose
+            # reading is simply what its kanji say the honest answer is to write
+            # none — the shipped `reading_composition` field says it better. Only
+            # the gate can tell which words those are (it is a property of the
+            # segmentation, not of the request), so the schema allows the absence
+            # and `validate_vocab` decides whether it was correct.
+            "required": ["meaning_mnemonic"],
             "properties": {
                 "meaning_mnemonic": {"type": "string"},
                 "reading_mnemonic": {"type": "string"},
@@ -261,8 +289,12 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{READING}}": ctx["reading"],
             "{{MEANING}}": ctx["meaning"],
             "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{WORD_TYPE}}": mc.format_word_type(ctx["word_type"]),
             "{{COMPONENTS}}": mc.format_vocab_components(ctx["components"]),
-            "{{REGULARITY}}": mc.format_regularity(ctx["regularity"], ctx["reading"]),
+            "{{IDENTITY_NOTE}}": mc.format_vocab_identity(
+                ctx["identical_kanji"], ctx["meaning"]),
+            "{{REGULARITY}}": mc.format_regularity(ctx),
+            "{{READING_COMPOSITION}}": ctx["reading_composition"],
             "{{CAST_BLOCK}}": cast_lib.format_cast_block(
                 ctx["reading_lore"], ctx["cast"], subject="this word"),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
@@ -626,9 +658,20 @@ _SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
                    + _OPTIONAL_DESCRIPTION_LINE +
                    '```json\n{\n  "meaning_mnemonic": "...",\n  '
                    '"reading_mnemonic": "...",\n  "description": "..."\n}\n```')
+#: Rev 6: a vocabulary word whose reading is simply what its kanji say writes no
+#: `reading_mnemonic` at all — the reading section of the prompt says which words
+#: those are — so the vocab skeleton has to show that key as droppable. The kanji
+#: lane keeps `_SPLIT_SKELETON`, where both mnemonics are always required.
+_VOCAB_SKELETON = (
+    '```json\n{\n  "meaning_mnemonic": "...",\n  "reading_mnemonic": "..."\n}\n```'
+    "\n\nDrop `reading_mnemonic` entirely when the reading section above says "
+    "this word gets none, and add `description` only when this word needs one:"
+    "\n\n"
+    '```json\n{\n  "meaning_mnemonic": "...",\n  "description": "..."\n}\n```'
+)
 WEB_SKELETON = {
     "kanji": _SPLIT_SKELETON,
-    "vocab": _SPLIT_SKELETON,
+    "vocab": _VOCAB_SKELETON,
     "radical": ('```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "..."\n}\n```'
                 + _OPTIONAL_DESCRIPTION_LINE +
                 '```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "...",\n  '

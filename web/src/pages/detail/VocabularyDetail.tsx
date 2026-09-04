@@ -19,6 +19,22 @@ export function VocabularyDetail({ raw, showReadings }: Props) {
         </p>
       ) : null}
 
+      <h3 className="panel-title">Word type</h3>
+      {raw.word_type ? (
+        <p className="mnemonic-text">{raw.word_type}</p>
+      ) : (
+        <p className="panel-muted">
+          None — a compound or derived form with no single part of speech.
+        </p>
+      )}
+
+      <h3 className="panel-title">Reading composition</h3>
+      {raw.reading_composition ? (
+        <p className="mnemonic-text">{raw.reading_composition}</p>
+      ) : (
+        <p className="panel-muted">None — this word ships no reading.</p>
+      )}
+
       <h3 className="panel-title">Accepted answers</h3>
       {answers.length === 0 ? (
         <p className="panel-muted">None.</p>
@@ -42,14 +58,20 @@ export function VocabularyDetail({ raw, showReadings }: Props) {
         </>
       ) : null}
 
+      {/* Unlike the meaning mnemonic, this panel shows even when empty. From
+          Rev 6 most words correctly have no reading mnemonic — the composition
+          above is the whole story — and a reviewer needs to be able to tell
+          that absence apart from a word whose reading prose is still missing. */}
+      <h3 className="panel-title">Reading mnemonic</h3>
       {raw.reading_mnemonic ? (
-        <>
-          <h3 className="panel-title">Reading mnemonic</h3>
-          <p className="mnemonic-text">
-            <MnemonicText text={raw.reading_mnemonic} />
-          </p>
-        </>
-      ) : null}
+        <p className="mnemonic-text">
+          <MnemonicText text={raw.reading_mnemonic} />
+        </p>
+      ) : (
+        <p className="panel-muted">
+          None — the reading needs no hook beyond the composition above.
+        </p>
+      )}
 
       {raw.description ? (
         <>

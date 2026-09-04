@@ -41,6 +41,20 @@ export type CurriculumItemDetail = {
   furigana: string | null;
   meaning: string;
   /**
+   * Part of speech, vocabulary only ("い adjective", "adverb, noun"). Null on
+   * every other item type, and on the compound forms the curriculum teaches as
+   * grammar (教えてもらう, 書ける), which have no single part of speech.
+   */
+  wordType: string | null;
+  /**
+   * How the reading is built, vocabulary only ("Jukugo — 人（じん）＋口（こう）,
+   * each kanji read with its on'yomi."). Computed in the content pipeline from
+   * the word's kanji and their dictionary readings, which is why most words
+   * carry no `readingMnemonic`: this states the derivation, and a mnemonic is
+   * written only where the sound needs a memory hook.
+   */
+  readingComposition: string | null;
+  /**
    * Single-blob mnemonic (pre-Rev-1 content). Rendered only when the split
    * fields below are absent — never merged with them.
    */
@@ -172,6 +186,8 @@ type ItemDetailRow = {
   primary_form: string;
   furigana: string | null;
   meaning: string;
+  word_type: string | null;
+  reading_composition: string | null;
   mnemonic_text: string | null;
   meaning_mnemonic: string | null;
   reading_mnemonic: string | null;
@@ -188,6 +204,8 @@ function mapRowToDetail(row: ItemDetailRow): CurriculumItemDetail {
     primaryForm: row.primary_form,
     furigana: row.furigana ?? null,
     meaning: row.meaning,
+    wordType: row.word_type ?? null,
+    readingComposition: row.reading_composition ?? null,
     mnemonicText: row.mnemonic_text,
     meaningMnemonic: row.meaning_mnemonic ?? null,
     readingMnemonic: row.reading_mnemonic ?? null,
@@ -201,7 +219,7 @@ export function getItemById(
   id: string,
 ): CurriculumItemDetail | null {
   const row = db.getFirstSync<ItemDetailRow>(
-    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text,
+    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, word_type, reading_composition, mnemonic_text,
             meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url
      FROM items WHERE id = ?`,
     Number(id),
@@ -223,7 +241,7 @@ export function getItemBySlug(
   slug: string,
 ): CurriculumItemDetail | null {
   const row = db.getFirstSync<ItemDetailRow>(
-    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text,
+    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, word_type, reading_composition, mnemonic_text,
             meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url
      FROM items WHERE item_type = ? AND slug = ?`,
     itemType,

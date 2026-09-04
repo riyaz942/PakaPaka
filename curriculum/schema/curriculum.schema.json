@@ -161,6 +161,8 @@
         "primary_form": { "type": "string", "minLength": 1 },
         "furigana": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
+        "word_type": { "type": "string", "minLength": 1 },
+        "reading_composition": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
         "meaning_mnemonic": { "type": "string", "minLength": 1 },
         "reading_mnemonic": { "type": "string", "minLength": 1 },

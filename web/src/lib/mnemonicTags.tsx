@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 
-const TAG_PATTERN = /<(radical|kanji|reading)>(.*?)<\/\1>/g;
+const TAG_PATTERN = /<(radical|kanji|vocabulary|reading)>(.*?)<\/\1>/g;
 
 type Props = {
   text: string | undefined;
 };
 
-/** Renders mnemonic prose, turning <radical>/<kanji>/<reading> tags into highlighted chips. */
+/** Renders mnemonic prose, turning <radical>/<kanji>/<vocabulary>/<reading> tags into highlighted chips. */
 export function MnemonicText({ text }: Props) {
   if (!text) return null;
 

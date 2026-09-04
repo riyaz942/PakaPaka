@@ -54,6 +54,8 @@ function makeDetail(): ReviewRevealDetail {
       primaryForm: '食',
       furigana: null,
       meaning: 'eat, food',
+      wordType: null,
+      readingComposition: null,
       mnemonicText: 'A roof over a fire cooking food.',
       meaningMnemonic: null,
       readingMnemonic: null,

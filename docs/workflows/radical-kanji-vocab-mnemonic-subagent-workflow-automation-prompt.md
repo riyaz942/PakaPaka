@@ -21,7 +21,7 @@ Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = kanji>
+<type = vocab>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -192,7 +192,7 @@ PY
 Note what "done" means here: a draft recorded under an **older** prompt version is
 stale, not done, so a version bump correctly re-selects every out-of-date item for
 regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
-`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6}`),
 because the three prompts move independently. Radicals sitting at 1 is deliberate:
 Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
 ~150–300 characters, description demoted to optional — so the reviewed N5 radicals
@@ -204,6 +204,29 @@ under 1 and 2 and then brought up to 4 in place — retagged mechanically, with 
 description backlog cleared — so they are stamped 4. Stamping is only ever correct
 after the item passes the gate under the new contract; a draft that merely
 predates a bump is stale and must be regenerated, not renumbered.
+
+Vocabulary moved 4 → 5 → 6, and there the staleness is the point rather than an
+accident to be avoided: both are real rewrites, not retags. Rev 5 cut the meaning
+mnemonic to one or two sentences, named the word's part of speech where that
+teaches a rule, and added a `<vocabulary>` self-tag that a Rev 4 draft cannot
+have, because the tag did not exist when it was written.
+
+Rev 6 landed before a single word had been generated under 5, which is what made
+the second bump free. It takes the reading's derivation back *out* of the prose:
+naming jukugo, on'yomi, kun'yomi and rendaku was the right information in the
+wrong place, because `reading_regularity` computes every bit of it exactly, so it
+now ships as the **`reading_composition`** field instead. Two consequences the
+contract turns on:
+
+- a `regular` or `kana_only` word writes **no `reading_mnemonic` at all** — 745
+  of N5+N4's 1,247 words — and the gate rejects a fresh draft that writes one;
+- a word whose reading an earlier word already taught (答え after 答える, 書ける
+  after 書く — 90 words at N5+N4) writes **one sentence pointing back at that
+  word**, never a second story for a sound the learner already has.
+
+Every already-written N5 word is therefore correctly re-selected. Nothing is
+deleted by this — the stale prose keeps shipping until a run rewrites it — so
+N4's unwritten words can be worked through first and N5 picked up later.
 
 If it prints 0 slugs, this level+type is already fully generated at the current
 prompt version — stop and report that. Otherwise treat the printed `ALL:` list as
@@ -330,10 +353,17 @@ Give the subagent these instructions:
                                sentences — a hard ceiling, see below (but
                                **50–150** when the kanji just *is* a taught
                                radical — see below)
-      vocab meaning            roughly **180–330** characters
-      kanji/vocab reading      roughly **150–280** characters (a vocab derivation
-                               note stays at one sentence — see below)
-    Except for the kanji meaning ceiling, these are targets, not rules:
+      vocab meaning            roughly **70–200** characters, one sentence or
+                               two short ones — a hard ceiling of 230, see
+                               below (but **40–200** when the word just *is*
+                               its kanji — see below)
+      kanji reading            roughly **150–280** characters
+      vocab reading            roughly **90–220** characters when it is a story;
+                               **60–170**, one sentence, when it points back at
+                               the word that already taught the reading; and
+                               **absent entirely** for a derivable reading — see
+                               below
+    Except for the kanji and vocab meaning ceilings, these are targets, not rules:
     overrunning to finish a scene the item genuinely needs is fine, padding to
     reach one is not. They are short on purpose — the depth comes from how
     specific the picture is, not from how many sentences it takes.
@@ -404,12 +434,16 @@ Give the subagent these instructions:
     `<kanji>…</kanji>`, because the app renders "a piece I already know" and "the
     thing this story is building toward" in different colours. A **kanji**
     reading mnemonic carries that same `<kanji>` tag on that same meaning word,
-    once — see the next bullet. A radical borrows nothing, so its
+    once — see the next bullet. A **vocab** mnemonic does the same one layer up:
+    it borrows `<kanji>` from below and wraps **the word's own meaning** in
+    `<vocabulary>…</vocabulary>`, once in each of the two mnemonics — that tag
+    is what stops a reading floating next to a scene that could belong to any
+    word. A radical borrows nothing, so its
     `mnemonic_text` wraps **its own meaning** — the word the picture resolves to
     — in `<radical>…</radical>`; that is the same word a kanji story will later
     pull upward, so both ends of the chain highlight the same thing. `<radical>`
-    never appears in a reading mnemonic, no nesting, every tag closed, and none
-    at all in a description.
+    never appears in a reading mnemonic or anywhere in a vocab mnemonic, no
+    nesting, every tag closed, and none at all in a description.
   - A **kanji** reading mnemonic is one sentence, or two short ones (roughly
     90–200 characters), in which the sound and the meaning are the same joke: the
     target reading verbatim in kana inside a `<reading>` tag, said by the cast
@@ -419,10 +453,49 @@ Give the subagent these instructions:
     different kanji's meaning dropped into it, it is not finished. A
     three-sentence scene in which the sound turns up but the meaning never does
     is the old shape and the gate rejects it.
-  - For vocab, obey the reading-regularity block exactly: when it says the reading
-    is regular or kana-only, write **one sentence** of derivation and stop —
-    padding a regular reading into a story is a gate failure, not a stylistic
-    preference. When it says irregular or not-derivable, write the full story.
+  - **Vocab meaning mnemonics — the Rev 6 style.** The same cut the kanji layer
+    took, one layer up: at most two sentences in which the kanji *combine into*
+    the word, not a scene they take turns acting in. "A `<kanji>mouth</kanji>`
+    that you walk into is an `<vocabulary>entrance</vocabulary>`" is the target.
+    The gate enforces the two-sentence cap and a 230-character ceiling.
+  - **When the word simply *is* its kanji, do not write a story at all.** 年 the
+    kanji and 年 the word are the same thing, and so is 白い over 白. The
+    prompt's "Is this word just its kanji?" section says which ones outright —
+    computed mechanically (`mnemonic_context.identical_kanji`), not a judgement
+    call — and for those the whole meaning mnemonic says so in one or two
+    sentences, with both `<kanji>` and `<vocabulary>` wrapping the same word on
+    two different spans. The band is **40–200 characters**, and the gate
+    switches to it automatically, so an invented scene now *fails*.
+  - **Say what the word type teaches, and only that.** Each vocab prompt carries
+    a word-type block (い adjective, な adjective, godan/ichidan verb,
+    transitive/intransitive, noun…) computed from the dictionary. Use it where
+    it explains a rule the learner can carry forward — the い that makes 大きい
+    an adjective, the transitivity that tells a verb from its partner — and stay
+    silent about it otherwise. It has its own field on the page, so a mnemonic
+    that opens by reciting it has wasted one of its two sentences.
+  - **Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in a vocab
+    mnemonic.** Rev 6 moved all of it into the computed `reading_composition`
+    field, which sits on the page beside the mnemonics and says things like
+    "Jukugo — 年（ねん）＋中（じゅう）, each kanji read with its on'yomi. Rendaku:
+    中 ちゅう → じゅう." It is derived from the word's kanji and their KANJIDIC
+    readings, so a sentence paraphrasing it can only be less accurate, and it
+    costs the reading mnemonic the one or two sentences it needed for the hook.
+  - **For vocab, obey the reading block exactly — it decides whether there is a
+    reading mnemonic at all.** Three outcomes, all computed, none of them a
+    judgement call:
+      - *Regular or kana-only* (745 of N5+N4's 1,247 words): **omit
+        `reading_mnemonic` entirely.** Do not write a short one instead. The
+        `reading_composition` field is the whole answer, and a fresh draft that
+        writes anything here fails the gate.
+      - *Reading already taught by an earlier word* (90 words at N5+N4 — 答え
+        after 答える, 見つかる after 見る, 書ける after 書く): **one sentence**,
+        60–170 characters, naming that word, with the reading in a `<reading>`
+        tag and this word's meaning in a `<vocabulary>` tag. No cast character,
+        no scene — a second image for a sound they already have competes with
+        the first rather than reinforcing it. The gate requires the source
+        word's written form to actually appear in the sentence.
+      - *A lone kun'yomi nothing has taught yet, or a reading that does not
+        assemble at all*: the full story, as before.
   - When you write a description, it must address **every** look-alike the prompt
     lists, spelling out the visual difference, and must not introduce any other
     Japanese character. Descriptions carry no furigana, so stray Japanese renders
@@ -519,17 +592,22 @@ them exactly as a repair subagent would):
   - A "too short" error means the story lacks substance — add scene, not filler
     clauses. A "too long" error means cut, not compress into one dense sentence;
     the targets are in Step 2 (radical text ~100–180, radical image_prompt
-    ~150–300, kanji meaning ~120–220, vocab
-    meaning ~180–330, reading ~150–280). On a long **kanji meaning**, cut whole
+    ~150–300, kanji meaning ~120–220, kanji reading ~150–280, vocab
+    meaning ~70–200, vocab reading ~90–220). On a long **kanji or vocab
+    meaning**, cut whole
     staged events and novel-register words before you touch anything else — that
     is nearly always where the excess is; never drop a component to fit.
     A `keep <= 200` ceiling on a kanji meaning means this kanji *is* a taught
-    radical: the fix is not to trim the scene but to delete it and say the two
+    radical, and the same ceiling on a **vocab** meaning means this word *is*
+    its kanji: the fix is not to trim the scene but to delete it and say the two
     are the same, per Step 2. Likewise a "too short" error there does **not**
     mean add scene — the floor is 40, so the item is genuinely near-empty.
-  - A "never wraps it in <radical>…" or "does not highlight the reading" error
+  - A "never wraps it in <radical>…" / "<kanji>…" / "<vocabulary>…" or "does not
+    highlight the reading" error
     means the words are there but untagged — add the tags around the words the
-    story already uses, do not rewrite the story.
+    story already uses, do not rewrite the story. "never says what this word
+    means" is different: the meaning is genuinely absent, so name it in the
+    sentence and then tag it.
   - A "description is omitted, but this item has reviewed look-alikes" error is
     the one case where you *add* a key. Add only the description; leave the
     mnemonic(s) exactly as they are.

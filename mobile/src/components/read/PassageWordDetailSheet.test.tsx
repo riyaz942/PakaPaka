@@ -27,6 +27,8 @@ const kuru: CurriculumItemDetail = {
   primaryForm: '来る',
   furigana: '来[く]る',
   meaning: 'to come',
+  wordType: null,
+  readingComposition: null,
   mnemonicText: null,
   meaningMnemonic: null,
   readingMnemonic: null,
