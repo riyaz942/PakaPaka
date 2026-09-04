@@ -172,6 +172,11 @@ IDENTITY_MEANING_BOUNDS = (40, 200)
 #: kept prose for a key it was correctly told to write.
 DERIVATION_NOTE_BOUNDS = (30, 260)
 READING_STORY_BOUNDS = (120, 380)
+
+#: Both kinds still omit `reading_mnemonic`. Rev 7 changes only where the kana
+#: word's sound hook lives: not in a second field, but inside the one field a
+#: word with no kanji has (see VOCAB_KANA_MEANING_FRESH_BOUNDS and the kana
+#: branch in validate_vocab).
 _DERIVATION_KINDS = ("regular", "kana_only")
 
 #: Rev 6, vocab `reading_mnemonic` when an earlier word already taught this
@@ -201,6 +206,13 @@ VOCAB_READING_REUSE_STORED_BOUNDS = (VOCAB_READING_REUSE_BOUNDS[0],
 #: Rev 4 draft is ever requeued by them.
 VOCAB_MEANING_MAX_SENTENCES = 2
 VOCAB_MEANING_FRESH_BOUNDS = (60, 230)
+
+#: Rev 7, vocab `meaning_mnemonic` for a kana-only word, fresh drafts only. This
+#: field now does two jobs — the meaning *and* the sound hook that a kanji word
+#: gets from its characters — so it buys a little more room than the kanji-word
+#: band. Not much: two jobs in one sentence is the point, and a wider ceiling is
+#: how the scene creeps back in.
+VOCAB_KANA_MEANING_FRESH_BOUNDS = (70, 260)
 
 #: A word that simply *is* its kanji (`mnemonic_context.identical_kanji`) — 年
 #: the kanji and 年 the word — has no story to write, exactly as a kanji that is
@@ -249,6 +261,12 @@ VOCAB_READING_STORY_FRESH_BOUNDS = (90, 240)
 #:
 #: Descriptions carry no markup at all: they are reference prose, not a story
 #: the learner has to reassemble.
+#: Rev 7: the one exception. A kana word's meaning mnemonic also carries the
+#: sound, because it is the only field that word has, so `<reading>` is legal
+#: there and nowhere else in a meaning mnemonic. Selected per item in
+#: validate_vocab, never by the model.
+VOCAB_KANA_MEANING_TAGS = ("kanji", "vocabulary", "reading")
+
 ALLOWED_TAG = {
     ("radical", "mnemonic_text"): "radical",
     ("radical", "image_prompt"): "radical",
@@ -451,12 +469,15 @@ def _tagged_spans(text, tag):
 
 
 def _field_errors(kind, field, text, enforce_readability=False, bounds=None,
-                  max_sentences=None, sentence_cap_reason=None):
+                  max_sentences=None, sentence_cap_reason=None, tag=None):
     """Markup + length, both measured on the tag-stripped prose. Malformed tags
     short-circuit: stripping them is meaningless until they parse. The Rev 4
     readability gate runs only on freshly generated drafts (see validate_draft),
-    never on the re-validation of stored ones."""
-    tag = ALLOWED_TAG.get((kind, field))
+    never on the re-validation of stored ones.
+
+    `tag` overrides the ALLOWED_TAG entry for items whose legal markup is
+    computed rather than fixed — the Rev 7 kana lane is the only one."""
+    tag = tag or ALLOWED_TAG.get((kind, field))
     if tag:
         tag_errors = _tag_errors(field, text, tag)
         if tag_errors:
@@ -773,16 +794,28 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
     # is what makes that mandatory rather than merely allowed. Which items these
     # are is computed in mnemonic_context, never judged here.
     is_identity = bool(ctx.get("identical_kanji"))
+    # Rev 7: a kana word's meaning mnemonic is also its reading mnemonic, so
+    # <reading> is legal in it — here only. Stored drafts get the same allowance
+    # (they never used it, and refusing it would requeue nothing) so that the
+    # two lanes agree on what the field is allowed to contain.
+    is_kana = kind == "kana_only"
+    meaning_tags = VOCAB_KANA_MEANING_TAGS if is_kana else None
     meaning_bounds = None
     max_sentences = None
     if enforce_readability:
-        meaning_bounds = (VOCAB_IDENTITY_MEANING_BOUNDS if is_identity
-                          else VOCAB_MEANING_FRESH_BOUNDS)
+        if is_identity:
+            meaning_bounds = VOCAB_IDENTITY_MEANING_BOUNDS
+        elif is_kana:
+            meaning_bounds = VOCAB_KANA_MEANING_FRESH_BOUNDS
+        else:
+            meaning_bounds = VOCAB_MEANING_FRESH_BOUNDS
         max_sentences = VOCAB_MEANING_MAX_SENTENCES
-    errors += _field_errors(
+    meaning_tag_errors = _field_errors(
         "vocab", "meaning_mnemonic", meaning_text,
         enforce_readability=enforce_readability, bounds=meaning_bounds,
-        max_sentences=max_sentences, sentence_cap_reason="kanji-combine")
+        max_sentences=max_sentences, sentence_cap_reason="kanji-combine",
+        tag=meaning_tags)
+    errors += meaning_tag_errors
     tag_errors = []
     if has_reading:
         tag_errors = _tag_errors("reading_mnemonic", reading_text, reading_tags)
@@ -810,6 +843,20 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
         errors += _own_meaning_tag_errors(
             "reading_mnemonic", reading_text, ctx, required=enforce_readability,
             tag="vocabulary", noun="word")
+
+    # 2c. Rev 7: and on a kana word the meaning mnemonic owes the sound too.
+    #     A word with no kanji has nothing else on the page connecting 「どれ」
+    #     to "which one", so a scene that only illustrates the meaning leaves
+    #     the learner with a picture and no word. Fresh drafts only: every
+    #     stored draft predates the rule and re-validation must not requeue
+    #     prose the contract of the day did not ask for.
+    if is_kana and enforce_readability and not meaning_tag_errors:
+        reading = ctx["reading"]
+        if reading:
+            errors += _reading_errors(
+                "meaning_mnemonic (this word is written in kana, so its meaning "
+                "mnemonic is the only place the sound can live)",
+                meaning_text, reading)
 
     # 3. reading present and highlighted, and shaped by the mechanically
     #    computed regularity

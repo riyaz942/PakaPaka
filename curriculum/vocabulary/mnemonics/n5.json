@@ -923,7 +923,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "doubutsu": {
@@ -950,7 +950,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "doyoubi": {
@@ -1147,12 +1147,12 @@
     }
   },
   "futatsu": {
-    "meaning_mnemonic": "The second raccoon inspects the snapped chopsticks on the table, short stick over long stick, and realizes they aren't cutlery anymore — just identical wooden splinters. It pockets both, satisfied that whatever it's counting tonight, the tally stops right there at <kanji>two</kanji> things, no broth-soaked evidence left to explain.",
-    "reading_mnemonic": "The second raccoon at the noodle shop raises a paw to show off its matching snapped chopstick, as if to say <reading>foot too</reading>. The waiter just counts what's broken on the table — two things, <reading>ふたつ</reading> — and clears it away.",
-    "description": "Like its sibling word for one item, this is a native Japanese number used for counting generic objects on its own, without a separate counter word attached — distinct from the Chinese-derived counting series paired with counters for people, flat objects, and so on.",
+    "meaning_mnemonic": "The <kanji>two</kanji> kanji doesn't change to make <vocabulary>two things</vocabulary> — it already means exactly that on its own.",
+    "reading_mnemonic": "At Grandma Kane's shrine, an owl in the rafters gives two flat <reading>hoots</reading> every night. The cats insist it's actually saying <reading>ふたつ</reading> — announcing <vocabulary>two things</vocabulary> to no one in particular.",
+    "description": "This belongs to the native Japanese counting series for objects, used as a general default counter when no specific counter word applies.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1266,11 +1266,10 @@
     }
   },
   "go-v": {
-    "meaning_mnemonic": "On the mountain trail, that same hooked hand reaches out from beside the vending machine, snagging snacks lined along the ledge. It's already got four stacked in your arms when the crooked hook swipes once more and lands a fifth off the top shelf. One hook, five snacks: that's the word for <kanji>five</kanji>.",
-    "reading_mnemonic": "That practiced swipe already speaks the <reading>ご</reading> reading you learned for 五 — the clipped <reading>go</reading> you mutter to yourself right before you reach.",
+    "meaning_mnemonic": "The <kanji>five</kanji> kanji never grew into anything else, so it and the <vocabulary>five</vocabulary> word mean exactly the same thing.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1348,11 +1347,10 @@
     }
   },
   "hachi-v": {
-    "meaning_mnemonic": "Those two strokes are still splitting wider at the bottom, the same spread that already meant <kanji>eight</kanji> when you met the kanji alone. Let that split happen four times over, fanned out beneath one twitching body, legs still moving until there are eight of them — a spider, standing on exactly the number this word names.",
-    "reading_mnemonic": "This word borrows 八's own reading untouched, so it's read exactly <reading>はち</reading>, the same sound you already learned for the kanji itself.",
+    "meaning_mnemonic": "The <kanji>eight</kanji> kanji is the <vocabulary>eight</vocabulary> word too — no separate story needed, they were always the same character.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1764,12 +1762,12 @@
     }
   },
   "hitotsu": {
-    "meaning_mnemonic": "Backstage after her talent show, the goat is handed a raffle box to count the night's takings. She digs through it hoping for more, but there is exactly <kanji>one</kanji> ticket rattling around inside, no stub, no runner-up prize. She holds it to the light anyway, satisfied that at least one thing tonight was worth keeping.",
-    "reading_mnemonic": "Backstage, the smug goat from the talent show grabs a kazoo and gives it one triumphant blast to celebrate her win. The sound comes out as a single flat <reading>he toots</reading> — one honk, no more — and that lone honk is exactly how you say one thing: <reading>ひとつ</reading>.",
-    "description": "This is one of the native Japanese numbers used for counting generic objects, distinct from the Chinese-derived counting series paired with counter words for people, flat objects, and so on. It stands on its own without a separate counter attached, up through ten items.",
+    "meaning_mnemonic": "The <kanji>one</kanji> kanji and the <vocabulary>one thing</vocabulary> word share the very same stroke: nothing was added, nothing was changed.",
+    "reading_mnemonic": "At Koichi's konbini the tired cashier rings up a single item by barking <reading>ひとつ</reading>, which comes out sounding like <reading>hit two</reading>, and hands over exactly <vocabulary>one thing</vocabulary>.",
+    "description": "One of the native Japanese counting words for generic objects, used instead of the ordinary number words when there is no specialized counter for whatever is being counted.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1846,20 +1844,18 @@
     }
   },
   "hyaku-v": {
-    "meaning_mnemonic": "Grandma Kane lights one stick of incense at the shrine, and the smoke catches the white glow off the mossy steps until it multiplies before her eyes, exactly like that lone stroke stacking over the whiteness. By the time she looks up, the courtyard cats have multiplied to match — a whole <kanji>hundred</kanji> of them prowling the steps.",
-    "reading_mnemonic": "This word is just the kanji 百 by itself, so it keeps exactly the reading you already know: <reading>ひゃく</reading>.",
+    "meaning_mnemonic": "The <kanji>hundred</kanji> kanji and the <vocabulary>hundred</vocabulary> word are the very same thing, nothing added and nothing changed.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "ichi-v": {
-    "meaning_mnemonic": "Judging her own talent show yet again, the smug goat holds up a single hoof and announces the score before anyone can ask: <kanji>one</kanji> out of one. There was only ever one entrant, one stage, one strip of dirt to stand on, so the number was settled before the show even began. She says it like a verdict, not a count: one.",
-    "reading_mnemonic": "One line, one reading: 一 alone still reads <reading>いち</reading>, the same reading you already learned for it standing by itself.",
+    "meaning_mnemonic": "The <kanji>one</kanji> kanji is just that single flat line. Read on its own, it is simply the word <vocabulary>one</vocabulary>, so the kanji and the word are exactly the same.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1916,7 +1912,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "iku-v": {
@@ -1929,12 +1925,11 @@
     }
   },
   "ikura": {
-    "meaning_mnemonic": "A hiker drags himself up the mountain trail to the vending machine improbably waiting at the top, expecting water. The display keeps climbing past every price he's paid for a drink, digit by digit, as he jabs the button asking how much this could possibly cost. It never stops long enough to answer — the only punchline the machine needs.",
-    "reading_mnemonic": "This word is written in kana exactly as it sounds: 「<reading>いくら</reading>」.",
-    "description": "いくら written this way is also the everyday word for salmon roe, the bright orange fish eggs served over rice — a completely different word that happens to share the same sound and spelling. Context sorts them out fast: paired with a price or a question, it means how much; sitting on a plate, it means the food.",
+    "meaning_mnemonic": "At Koichi's konbini, a tub of salmon roe sits with no price tag, so you hold it up to the cashier and ask <vocabulary>how much</vocabulary>.",
+    "description": "いくら for how much is an exact homophone of いくら, the everyday word for salmon roe — a genuine coincidence in real Japanese, not just this story's invention.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1944,7 +1939,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "ima": {
@@ -2127,11 +2122,11 @@
     }
   },
   "itsutsu": {
-    "meaning_mnemonic": "You reach the vending machine at the top of the mountain trail, your arm still cramped into the hooked shape from the character for <kanji>five</kanji> reaching sideways. Coins drop, cans thunk out one after another, and on the fifth thunk your hooked hand snags it before it hits the dirt. Five cans lined up at your feet, caught in one long, aching reach: five things.",
-    "reading_mnemonic": "五 already carries the reading <reading>いつ</reading>, and つ stays つ, giving you exactly <reading>いつつ</reading> — five things, straight from the readings you already know.",
+    "meaning_mnemonic": "The <kanji>five</kanji> kanji and the <vocabulary>five things</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "The mascot at Sei's school is so <reading>itchy</reading> that five spots erupt down its costume. That's exactly <vocabulary>five things</vocabulary> the coach counts as <reading>いつつ</reading> in his logbook.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2247,11 +2242,10 @@
     }
   },
   "juu-v": {
-    "meaning_mnemonic": "At Koichi's konbini the till beeps once for every raised finger, and the cashier keeps raising both hands until every finger is up, tracing the same <kanji>ten</kanji> cross in the air. The till stops beeping exactly when both hands are full — ten, and not one beep more.",
-    "reading_mnemonic": "This word is just the kanji 十 on its own, so it keeps exactly the reading you already know: <reading>じゅう</reading>.",
+    "meaning_mnemonic": "The <kanji>ten</kanji> kanji is simply the <vocabulary>ten</vocabulary> word. There is one mark and one meaning, nothing extra to remember.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2919,11 +2913,11 @@
     }
   },
   "kokonotsu": {
-    "meaning_mnemonic": "Hana reaches switchback <kanji>nine</kanji> on the mountain trail, exactly where hikers lean their hooked canes against the rock to catch their breath. Someone already got there first — not one cane but a whole row of them, hooked over the same ledge like abandoned question marks. She counts twice to be sure: nine things, propped together at the ninth bend.",
-    "reading_mnemonic": "At switchback nine on the mountain trail, a coconut is balanced on top of every hooked cane left leaning there, one wobbling coconut per cane. The hiker counts them nose to tail — <reading>coconut</reading>, all the way to nine — landing on 「<reading>ここのつ</reading>」: nine things, balanced in a row.",
+    "meaning_mnemonic": "The <kanji>nine</kanji> kanji still means the same nine, and adding つ turns it into <vocabulary>nine things</vocabulary>. You're counting objects now, not just naming the number.",
+    "reading_mnemonic": "Koichi won't ring up a sale until <reading>ここのつ</reading> <reading>coconuts</reading> are stacked beside the till. Nine dusty coconuts is his idea of a proper <vocabulary>nine things</vocabulary> display.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3127,11 +3121,10 @@
     }
   },
   "ku-num": {
-    "meaning_mnemonic": "That same hook is on closing duty tonight, yanking down the shutter at Koichi's konbini one slat at a time. It catches, drags, catches again — nine short tugs before the shutter seals shut, and the last tug is the one that lands on <kanji>nine</kanji>, alt reading and all, right as the beeping till goes quiet.",
-    "reading_mnemonic": "九 already carries this reading, so the word is read exactly as its kanji: <reading>く</reading>.",
+    "meaning_mnemonic": "The <kanji>nine</kanji> kanji and the <vocabulary>nine (alt)</vocabulary> word point at the same idea, character for character.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3299,11 +3292,10 @@
     }
   },
   "kyuu-v": {
-    "meaning_mnemonic": "The hook is still propped at the last switchback of the mountain trail, right where you left it leaning into <kanji>nine</kanji>. This time it's snagged a sock, blown off a line at the riverbank and dragged all the way up, caught fast on the hook at the top — bend nine, the last one, the whole climb done.",
-    "reading_mnemonic": "This word just keeps 九's own reading, so it's read exactly <reading>きゅう</reading>, the same sound you already learned for the kanji by itself.",
+    "meaning_mnemonic": "The <kanji>nine</kanji> kanji and the <vocabulary>nine</vocabulary> word are the exact same character, doing the exact same job.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3425,12 +3417,10 @@
     }
   },
   "man-v": {
-    "meaning_mnemonic": "Someone climbs a ladder to recount the banner's zeros herself, licking a finger to peel back each heavy fold of cloth. Her arms give out before the counting does, so she chalks a final total on the last scrap of space and declares the stall sold out at <kanji>ten thousand</kanji> onigiri — not one more, not one less.",
-    "reading_mnemonic": "The reading is just 万 read <reading>まん</reading>, exactly like the banner kanji you already know.",
-    "description": "Japanese counts large numbers in blocks of ten thousand rather than thousands, so 万 anchors the whole system used for big figures. English commas group by thousands, so converting between the two takes practice — a million lands on a multiple of ten thousand here, not on a clean round number.",
+    "meaning_mnemonic": "The <kanji>ten thousand</kanji> kanji and the <vocabulary>ten thousand</vocabulary> word never needed to separate, so they never did.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3625,11 +3615,11 @@
     }
   },
   "mittsu": {
-    "meaning_mnemonic": "You're at the riverbank stacking flat stones into a cairn, the way the character for <kanji>three</kanji> stacks its own three flat lines. One stone, then a second balanced on top, and just as the tower wobbles you set down a third to steady it. Three stones, standing exactly as tall as the character taught you: three things, balanced and done.",
-    "reading_mnemonic": "三 already carries the reading <reading>みっ</reading>, and つ stays つ, so together they give you exactly <reading>みっつ</reading> — three things, built straight from readings you already know.",
+    "meaning_mnemonic": "The <kanji>three</kanji> kanji and the <vocabulary>three things</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "At Koichi's konbini, a forgotten baseball <reading>mitt</reading> holds <vocabulary>three things</vocabulary> the same customer left behind. The till clerk marks it <reading>みっつ</reading> without looking up.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3753,11 +3743,11 @@
     }
   },
   "muttsu": {
-    "meaning_mnemonic": "The lid clamps down on eight again, this time capping a stack of teacups on the shrine steps outside Grandma Kane's hall. Two cups vanish under the pressure, same trick as always, and the cats scatter as the stack settles low. She counts what is left before ringing the bell: <kanji>six</kanji> teacups, six things, capped for good.",
-    "reading_mnemonic": "At Grandma Kane's shrine, six scruffy strays — the neighbourhood <reading>mutts</reading> — trot up the mossy steps past the cats like they own the place. She counts them from the doorway, one paw-print at a time, muttering the number under her breath: <reading>むっつ</reading>.",
+    "meaning_mnemonic": "The <kanji>six</kanji> kanji and the <vocabulary>six things</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "A stray <reading>mutt</reading> wanders into Grandma Kane's shrine and steals <vocabulary>six things</vocabulary> off the offering step. The cats hiss, but she only sighs <reading>むっつ</reading> as it bolts.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3844,20 +3834,20 @@
     }
   },
   "nana-v": {
-    "meaning_mnemonic": "By the door of Koichi's konbini, the coat hook is really just one bent nail sticking out of the wall. A delivery driver piles dripping rain jackets onto it between beeps of the till, one after another, until the nail bends almost flat under the weight. You count the jackets before it snaps: <kanji>seven</kanji>, all hanging off one crooked hook.",
-    "reading_mnemonic": "The delivery kid at Koichi's konbini counts jackets piling onto the sagging hook and taunts it with a sing-song <reading>nah-nah</reading> each time another one goes up, seven in total. When the hook finally groans, he reads off the count flatly: <reading>なな</reading>.",
+    "meaning_mnemonic": "The <kanji>seven</kanji> kanji and the <vocabulary>seven</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "At Koichi's konbini, a regular named <reading>Nana</reading> orders <vocabulary>seven</vocabulary> onigiri every visit, counting each one aloud as <reading>なな</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "nanatsu": {
-    "meaning_mnemonic": "The hook by the konbini door already sags under a full row of <kanji>seven</kanji> coats, bent halfway into the wall from the weight. A customer tries to squeeze one more sleeve onto it and the whole thing groans, but the hook holds firm — it was built to carry exactly seven things and not one more.",
-    "reading_mnemonic": "At Koichi's konbini, the delivery kid counts jackets piling onto the bent hook and taunts it with a sing-song <reading>nah-nah, too</reading> each time another one goes up. He stops at the last jacket and reads off the total flatly: <reading>ななつ</reading>, seven things.",
+    "meaning_mnemonic": "The <kanji>seven</kanji> kanji and the <vocabulary>seven things</vocabulary> word are exactly the same, so they mean the same thing. The trailing つ just turns the bare number into a count of objects.",
+    "reading_mnemonic": "You already learned 七 is read なな, so <vocabulary>seven things</vocabulary> simply becomes <reading>ななつ</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3987,11 +3977,10 @@
     }
   },
   "ni-v": {
-    "meaning_mnemonic": "The waiter arrives to ask how many are dining and finds his answer already snapped in half on the table: two chopsticks, a short one laid over a long one, matching exactly like the pair of raccoons who broke them that way. He doesn't need to count paws underneath — the <kanji>two</kanji> sticks already told him. Table for two.",
-    "reading_mnemonic": "二 alone already reads <reading>に</reading>, the same reading it carried in the chopstick story — nothing new to learn here.",
+    "meaning_mnemonic": "The <kanji>two</kanji> kanji and the <vocabulary>two</vocabulary> word are exactly the same, so they mean the same thing.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4684,12 +4673,11 @@
     }
   },
   "rei": {
-    "meaning_mnemonic": "At the vending machine on the mountain trail, a ranger posts an official notice board each morning with the exact temperature. One frost-bitten dawn, the mercury refuses to rise past the middle line at all, and the ranger stamps the report with one stiff, formal number before trudging back down. That number is zero.",
-    "reading_mnemonic": "零 has only one reading, and this word uses it directly: <reading>れい</reading>.",
-    "description": "零 is the formal, written register for zero — the word you'd see on an official temperature report or hear in a stiff announcement, not the one you'd use casually reading out a phone number or a game score.",
+    "meaning_mnemonic": "At Grandma Kane's shrine, the annual bell inspection turns up nothing wrong, and the inspector announces the crack count in his most formal voice: <vocabulary>zero (formal)</vocabulary>.",
+    "description": "零 marks the formal, technical zero, used in temperatures, exam scores, and official readings, where everyday speech reaches for a plainer word instead.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4740,11 +4728,10 @@
     }
   },
   "roku-v": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, eight cats are sprawled across the mossy steps at dawn. She sets the heavy iron offering lid down with a clang right on the top step, and two cats bolt at the sound, tails high. What's left staring up at the enormous bell is <kanji>six</kanji> cats, thoroughly unimpressed by the racket. The lid on top of eight, as always, leaves <kanji>six</kanji>.",
-    "reading_mnemonic": "六's reading here is just the number's own reading you already learned: <reading>ろく</reading>.",
+    "meaning_mnemonic": "Nothing was ever added to the <kanji>six</kanji> kanji, so the <vocabulary>six</vocabulary> word is just that same kanji standing alone.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4875,11 +4862,10 @@
     }
   },
   "san-v": {
-    "meaning_mnemonic": "A teacher taps a chalk pointer against three stacked lines on the board, one, two, three, and by the third tap the class already knows what word is coming before she says it. There is no trick to uncover here: <kanji>three</kanji> lines stacked in a character just spells the word three, plainly, the way it has all along.",
-    "reading_mnemonic": "三 alone already reads <reading>さん</reading>, the same reading you counted out tapping the three lines.",
+    "meaning_mnemonic": "There's no gap between the <kanji>three</kanji> kanji and the <vocabulary>three</vocabulary> word — write one and you've written the other.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4966,11 +4952,10 @@
     }
   },
   "sen-v": {
-    "meaning_mnemonic": "At the top of the mountain trail, the lone vending machine's price display multiplies without warning: one bold slash scratches straight across the readout, the same slash that once capped that plus-sign cross into something bigger, and the number keeps climbing past every digit until it locks on one round <kanji>thousand</kanji> and finally stops beeping.",
-    "reading_mnemonic": "This word is just the kanji 千 on its own, so it keeps exactly the reading you already know: <reading>せん</reading>.",
+    "meaning_mnemonic": "The <kanji>thousand</kanji> kanji and the <vocabulary>thousand</vocabulary> word are one and the same character, doing double duty as itself.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5038,22 +5023,18 @@
     }
   },
   "shi-num": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the same sealed box waits among the mossy steps, its trapped mouth still murmuring numbers into the corner. A cat swats it off the step and the lid cracks — the mouth peeks out just far enough to hiss a hushed <kanji>four</kanji> before a monk claps the lid shut, refusing to let it say the number again.",
-    "reading_mnemonic": "That hushed <reading>し</reading> is the same reading 四 already taught you — the clipped <reading>shh</reading> the monk uses to cut the mouth off mid-count.",
-    "description": "This reading of 四 sounds identical to a much darker word, so hospitals, hotels, and gift-givers avoid it — floor numbers, room numbers, and counted items switch to the other reading, よん, instead. Learn to recognize both, but default to よん when you're the one speaking.",
+    "meaning_mnemonic": "Four (alt) is simply the <kanji>four</kanji> kanji on its own, so the kanji and the <vocabulary>four (alt)</vocabulary> word mean exactly the same thing.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "shichi-num": {
-    "meaning_mnemonic": "In Sei's school hallway, the same bent-nail hook holds gym jerseys instead of coats. There's only one hook by the lockers, so seven players fresh off the field cram their jerseys onto it at once, the nail sagging nearly sideways under the pile. The coach counts before it gives way: <kanji>seven</kanji> jerseys, all balanced on one crooked hook.",
-    "reading_mnemonic": "七's reading here keeps the reading you already learned for formal counting: <reading>しち</reading>.",
-    "description": "しち is the older, more formal reading of 七 — used in compounds, in reading dates and times aloud, and in fixed set phrases. なな is generally preferred when counting items alone or aloud, since しち can be mistaken for the word for one in quick speech.",
+    "meaning_mnemonic": "The <kanji>seven</kanji> kanji and the <vocabulary>seven (alt)</vocabulary> word are one and the same, meaning exactly what the kanji already taught you.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6276,11 +6257,11 @@
     }
   },
   "yattsu": {
-    "meaning_mnemonic": "At the base of the mountain trail, two hikers' legs split wider with every step up the steep slope, spreading apart like the shape of the number <kanji>eight</kanji> itself. By the vending machine at the top, you count the pairs of boots left behind by exhausted climbers: eight things, scattered where the trail finally levels out.",
-    "reading_mnemonic": "At the top of the mountain trail, the vending machine jams and dispenses eight tangled yo-yos at once, clattering onto the gravel. The hiker scoops them up, laughing that she just won a <reading>yacht</reading> full of prizes, and counts them: 「<reading>やっつ</reading>」 — eight things, snagged together in her cap.",
+    "meaning_mnemonic": "The <kanji>eight</kanji> kanji and the <vocabulary>eight things</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "A toy <reading>yacht</reading> capsizes on the riverbank and spills <vocabulary>eight things</vocabulary> into the current. The kid wading after it yells <reading>やっつ</reading> as they float away.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6331,11 +6312,12 @@
     }
   },
   "yon-v": {
-    "meaning_mnemonic": "Behind the beeping till at Koichi's konbini sits that same sealed box, the mouth still trapped inside counting onigiri through the glass. Tonight it's a slow delivery — one, two, three — and on the next rice ball the mouth presses flat against the glass and stops. That flattened stare is the number stamped on this word: <kanji>four</kanji>.",
-    "reading_mnemonic": "At Sei's school, the gym teacher drags out the fourth roll call of the morning, already worn thin. He tips his head back for one long, stagey <reading>yawn</reading> before barking the count down the echoing hallway: a flat <reading>よん</reading>.",
+    "meaning_mnemonic": "The <kanji>four</kanji> kanji is the <vocabulary>four</vocabulary> word — nothing added, nothing changed to get here.",
+    "reading_mnemonic": "At the vending machine on the mountain trail, a hiker counts his water bottles. His huge <reading>yawn</reading> comes out sounding just like <reading>よん</reading> — he's short exactly <vocabulary>four</vocabulary>.",
+    "description": "Native speakers use this reading rather than the kanji's other reading, because that other reading sounds identical to the word for death and is avoided when counting aloud, especially in hospitals and elevators.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6358,11 +6340,11 @@
     }
   },
   "yottsu": {
-    "meaning_mnemonic": "At Koichi's konbini, the trapped <kanji>four</kanji> mouth from inside the enclosure has escaped into the stockroom and wedged itself into a cardboard case behind the counter, still muttering its count under its breath. Koichi hauls the case onto the shelf and counts what's rattling around inside: four onigiri, no more, no less. Four things, sealed in one box.",
-    "reading_mnemonic": "四 already carries the reading <reading>よっ</reading>, and つ stays つ, giving you exactly <reading>よっつ</reading> — four things, straight from readings you already know.",
+    "meaning_mnemonic": "The <kanji>four</kanji> kanji and the <vocabulary>four things</vocabulary> word share the same number, but the added つ turns a bare digit into four items you can point at and count.",
+    "reading_mnemonic": "At the riverbank, a collector proudly shows off four half-sunk <reading>yachts</reading>, insisting that's exactly why everyone says <reading>よっつ</reading> when they mean <vocabulary>four things</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6485,12 +6467,10 @@
     }
   },
   "zero": {
-    "meaning_mnemonic": "At Sei's school, the team spends the entire match slipping on the wet grass, missing every shot, while the goalkeeper falls asleep against the post. The final whistle blows, the scoreboard locks in one flat, humiliating number, and the whole bench stares at it in silence. That number is zero.",
-    "reading_mnemonic": "ゼロ is spelled exactly the way it sounds — read the katakana <reading>ゼロ</reading> straight through, no hidden reading to dig for.",
-    "description": "ゼロ is the everyday spoken form, heard in scores, phone numbers, and casual temperature talk; formal or written contexts often reach for a different, more formal word instead.",
+    "meaning_mnemonic": "Sei's team loses eleven to nothing, and the scoreboard just flashes the English word for it: <vocabulary>zero</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },

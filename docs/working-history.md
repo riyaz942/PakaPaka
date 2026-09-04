@@ -453,6 +453,18 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   queued, of which 529 N4 (493 of them never written at all) are the first batch. Under Rev 6 only
   ~412 of the 1,247 need an invented reading story at all (502 `kun_word`/`irregular`, less the 90
   back-references), down from 1,247.
+- **First two N5 Rev 6 batches, 64 words, done 2026-09-04 (uncommitted).** Subagent lane
+  (`sonnet-5`, groups of ≤4, `PROMPT_VERSION["vocab"]` stays 6). Batch 1 (uncommitted from an
+  earlier session, 32 words): pronouns/demonstratives/question words — watashi, watashitachi,
+  boku, anata, kimi, kare, kore/sore/are/dore, kono/sono/ano/dono, koko/soko/asoko/doko,
+  kochira/sochira/achira/dochira, konna/sonna/anna/donna, dare, donata, nani, nan, itsu, naze.
+  Batch 2 (this session, 32 words, 8 groups of 4): the number words — doushite, dou, ikaga,
+  ikutsu, ikura, zero, rei, ichi through juu (both native and Sino-Japanese counting series),
+  hyaku, sen, man, and the ひとつ–やっつ/ここのつ native counter series. 32/32 gate-passing on
+  the group's first pass — zero repairs needed. `generate.py --level n5` + `validate-schema` +
+  `compile-curriculum` clean. **64/718 N5 words now done at v6; 654 remain**, all still `draft`
+  (per the workflow's discipline — review is a separate manual step). Both batches are
+  uncommitted in the working tree as of this entry.
 
 ### Vocabulary mnemonics Rev 5: word type, WaniKani-length prose, `<vocabulary>` tag (2026-09-03)
 - Three changes to the word layer, all aimed at what WaniKani actually does and what our N4 output

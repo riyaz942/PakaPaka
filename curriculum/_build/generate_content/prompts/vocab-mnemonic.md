@@ -156,6 +156,13 @@ tag: the learner must be able to see, from the reading mnemonic alone, which
 word this sound belongs to. A sound floating next to a scene that could belong
 to any word is a sound they will attach to the wrong word by Thursday.
 
+One exception, and the reading section above is what triggers it: when this
+word is **written in kana**, it has no reading mnemonic and no kanji, so its
+meaning mnemonic carries the sound as well. There `<reading>` is required in the
+meaning mnemonic — on the kana verbatim and on the English phonetic hook —
+beside the usual `<vocabulary>`. Everywhere else `<reading>` stays out of a
+meaning mnemonic.
+
 `<radical>` never appears in a vocabulary mnemonic — radicals are the kanji
 layer's business. Don't tag anything else: a tag on an ordinary word teaches the
 learner that the colour means nothing.
@@ -173,8 +180,9 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
    mechanism, never a joke parked next to it. If the section “Is this word just
    its kanji?” says this one is, ignore this bullet and follow that section
    instead. If no kanji are listed above — a kana word, or one whose kanji the
-   learner hasn't met — write a standalone story that glues the sound to the
-   meaning instead, and name no kanji at all.
+   learner hasn't met — name no kanji at all and write a standalone story
+   instead. For a **kana** word that story must also carry the sound, exactly
+   as the reading section above specifies: it is the only field that word has.
 
 2. **`reading_mnemonic`** — **optional, and the reading section above decides.**
    Follow it exactly; it is computed from this word's kanji and their dictionary
@@ -212,16 +220,18 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
   no lists, no bold/italic, no furigana brackets, no romaji (write kana). Stored
   as plain strings.
 - `<kanji>` appears only in the meaning mnemonic, `<reading>` only in the
-  reading mnemonic, `<vocabulary>` once in each mnemonic you write, none of them
-  in the description. `<radical>` appears nowhere. Every tag you open, close.
-  Never nest them.
+  reading mnemonic — except on a kana word, whose meaning mnemonic carries the
+  sound and so must contain `<reading>` too. `<vocabulary>` once in each
+  mnemonic you write, none of them in the description. `<radical>` appears
+  nowhere. Every tag you open, close. Never nest them.
 - Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in either
   mnemonic. The computed reading-composition field beside them already does.
 - Meaning mnemonic: reference every kanji listed above by its taught meaning,
   each wrapped in `<kanji>` where the story uses it. Never name a kanji that is
   not in that list. Wrap this word's own meaning, once, in `<vocabulary>`.
   **At most two sentences**, two terminal full stops and no more — the gate
-  rejects a third. Stay under 230 characters, tags not counted; going over is a
+  rejects a third. Stay under 230 characters, tags not counted — 260 for a kana
+  word, whose meaning mnemonic carries the sound as well; going over is a
   rewrite, not a rounding error — cut words, never cut a kanji.
 - Reading mnemonic, when you write one: 「{{READING}}」 must appear verbatim
   inside a `<reading>` tag, and this word's taught meaning must appear inside a

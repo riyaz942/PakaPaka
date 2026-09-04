@@ -160,6 +160,20 @@ MODEL = "claude-opus-4-8"
 #: all (745 of N5+N4's 1,247 words), and a word whose reading an earlier word
 #: already taught — 答え after 答える, 書ける after 書く, 90 words at N5+N4 —
 #: writes one sentence pointing back at that word instead of a rival hook.
+#:
+#: Rev 6 later split `kana_only` back out of that pair, in place rather than as
+#: a Rev 7. Dropping the reading mnemonic was right for both kinds — neither
+#: reading needs *decoding* — but a kanji word's sound still rides its kanji,
+#: and a kana word's rode nothing at all, so どれ shipped a scene about
+#: identical onigiri with its sound nowhere on the page. A kana word still
+#: writes no `reading_mnemonic`; its meaning mnemonic now carries the sound hook
+#: instead, which is the only field it has.
+#:
+#: This rides Rev 6 rather than bumping to 7 because the amendment reaches only
+#: the ~200 kana words of N5+N4: a bump would requeue all 861 vocab drafts,
+#: including reviewed kanji-word prose the new rule cannot change. The kana
+#: drafts already written under Rev 6 were instead stamped back to 5 by hand, so
+#: the staleness check below picks up exactly them and nothing else.
 PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000

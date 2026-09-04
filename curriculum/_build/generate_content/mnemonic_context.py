@@ -1000,9 +1000,17 @@ def format_vocab_identity(comp, meaning):
 
 
 #: Why a derivable reading needs no mnemonic, in the words of its own kind.
+#:
+#: Rev 7 removes `kana_only` from this map. Both kinds are right that the
+#: *decoding* direction needs no hook, but only one of them still has a hook
+#: somewhere else on the page. A kanji word's sound rides its kanji, which the
+#: meaning mnemonic spends its whole budget on; a kana word has no kanji, so
+#: dropping the reading mnemonic left nothing on the page tying 「どれ」 to
+#: "which one" — the meaning mnemonic became a scene with no sound in it. Kana
+#: words now take `_KANA_BLOCK` instead: still one mnemonic, but that one
+#: mnemonic carries both jobs.
 _NO_MNEMONIC_REASON = {
     "regular": "it is exactly what this word's kanji already say",
-    "kana_only": "the word is written in kana, exactly as it is read",
 }
 
 #: Rev 6 replaces the Rev 5 derivation note. Naming the pattern (jukugo, kun'yomi,
@@ -1023,6 +1031,40 @@ _NO_MNEMONIC_BLOCK = (
     "sentence "
     "restating it would compete with the field next to it for the one thing the "
     "learner has least of. Write the meaning mnemonic and stop."
+)
+
+#: Rev 7, `kana_only`. There is no second field to write, so the instruction is
+#: an *addition* to the meaning mnemonic rather than a separate section: the one
+#: story has to glue the sound to the meaning, the way the salmon-roe hook does
+#: for いくら. Without it a kana word ships a mnemonic that illustrates its
+#: meaning and never names its sound, which is unrecoverable for the ko-so-a-do
+#: series in particular — sixteen near-identical words whose scenes teach the
+#: concept and leave the kana undistinguished.
+_KANA_BLOCK = (
+    "**This word gets no separate reading mnemonic. Omit the "
+    "`reading_mnemonic` key entirely — but the meaning mnemonic below must "
+    "carry the sound.**\n\n"
+    "There is nothing to *decode* here. The page already says so, in its own "
+    "computed field beside your mnemonic:\n\n"
+    "> {composition}\n\n"
+    "So do not write a sentence about how the word is read. That is not the "
+    "gap. The gap is the other direction: this word has no kanji, so nothing "
+    "anywhere on the page tells the learner which *sounds* carry this meaning. "
+    "For a kanji word the meaning mnemonic answers that by building the word "
+    "out of its characters. Here there are no characters to build from, which "
+    "frees the whole mnemonic for one job instead.\n\n"
+    "**Your meaning mnemonic must make 「{reading}」 and “{meaning}” the same "
+    "joke.** Find an English word or phrase that sounds like 「{reading}」 and "
+    "let the meaning fall out of what that thing is doing — the sound is the "
+    "mechanism, never a label parked beside a scene. Then mark both:\n\n"
+    "- the kana 「{reading}」, written verbatim, inside a `<reading>` tag\n"
+    "- the English phonetic hook your scene turns on, inside a `<reading>` tag\n"
+    "- this word's meaning, once, inside a `<vocabulary>` tag\n\n"
+    "This is the one case where `<reading>` appears in a meaning mnemonic, and "
+    "it is required here.\n\n"
+    "Test it the same way you test a kanji word: if the scene still works with "
+    "a different word's meaning dropped into it, the sound is not doing the "
+    "work and it is not finished."
 )
 
 _REUSE_BLOCK = (
@@ -1073,10 +1115,16 @@ _STORY_BLOCK = (
 
 def format_regularity(ctx):
     """The reading section of a vocabulary prompt: write a story, point back at
-    the word that already taught this reading, or write nothing at all."""
+    the word that already taught this reading, write nothing at all, or — for a
+    kana word (Rev 7) — fold the sound hook into the meaning mnemonic, which is
+    the only field a word with no kanji has."""
     regularity = ctx["regularity"]
     kind = regularity["kind"]
     composition = ctx["reading_composition"]
+    if kind == "kana_only":
+        return _KANA_BLOCK.format(
+            composition=composition, reading=ctx["reading"],
+            meaning=ctx["meaning"])
     if kind in _NO_MNEMONIC_REASON:
         return _NO_MNEMONIC_BLOCK.format(
             reason=_NO_MNEMONIC_REASON[kind], composition=composition)
