@@ -3243,12 +3243,12 @@
     }
   },
   "kyoudai": {
-    "meaning_mnemonic": "Picture two toddlers wedged together at Koichi's konbini, gripping the same onigiri, each wailing that the other one started it. One throws back a gaping yawn like the <kanji>older brother</kanji> who owns the place, while the other trails a loop of cord like the <kanji>younger brother</kanji> showing off a stolen bow. Neither releases, and the clerk just watches the same tantrum play out twice — that tangled squabble is what siblings means.",
-    "reading_mnemonic": "兄 gives its reading きょう and 弟 gives だい, so stacked together they simply produce <reading>きょうだい</reading>.",
+    "meaning_mnemonic": "An <kanji>older brother</kanji> and a <kanji>younger brother</kanji> together are what everyone calls <vocabulary>siblings</vocabulary>.",
+    "description": "Covers siblings in general, including sisters, even though both kanji individually mean brother.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kyoukasho": {
@@ -3694,21 +3694,21 @@
     }
   },
   "musuko": {
-    "meaning_mnemonic": "That same swaddled <kanji>child</kanji>, arms flung wide, has somehow hauled itself up the whole mountain trail and is now feeding coins into the vending machine at the summit like it owns the place. A hiker asks the panting father trailing behind whose kid that is. He beams, chest out — that's his son.",
-    "reading_mnemonic": "At the summit, the father spots a moose eyeing his boy's snack and bellows <reading>Moose, Coe!</reading> — the name of the trail's resident moose, shouted fast and clipped. That exact bark, <reading>むすこ</reading>, is what every hiker on this mountain learns to recognize as a warning about his son.",
+    "meaning_mnemonic": "This household's only <kanji>child</kanji> happens to be a boy, so the family just calls him their <vocabulary>son</vocabulary>.",
+    "reading_mnemonic": "Koichi hangs a sign over the register reading <reading>Moose Co.</reading>, because the boy running it is his own <reading>むすこ</reading>, his <vocabulary>son</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "musume": {
-    "meaning_mnemonic": "On the sports field at Sei's school, a girl in oversized cleats trips over the finish-line ribbon and drags the whole banner down with her. A woman in the stands leaps up, mortified and delighted at once, shouting across the entire field for her — this ribbon-tangled little disaster is her daughter.",
-    "reading_mnemonic": "Still tangled in ribbon, she turns to the snack table and asks sweetly, <reading>Mousse, may?</reading> — polite as anything in the middle of a disaster. That well-mannered request, <reading>むすめ</reading>, is the reading you're listening for.",
+    "meaning_mnemonic": "Every family has one child who gets away with everything, and in this house that's always the <vocabulary>daughter</vocabulary>.",
+    "reading_mnemonic": "At the school gate, Sei introduces his <reading>むすめ</reading>, nicknamed <reading>Moose May</reading> for the toy moose she never puts down, as his proudest <vocabulary>daughter</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "muttsu": {
@@ -4473,12 +4473,13 @@
     }
   },
   "otona": {
-    "meaning_mnemonic": "The <kanji>person</kanji> striding forward suddenly stops and throws their arms out wide, legs spread as far as they'll go — the stance for showing off something <kanji>big</kanji>. Nobody teaches a kid to stand like that; you grow into needing the room. Standing tall enough to need the whole stance is what makes you an adult.",
-    "reading_mnemonic": "Dai the giant baby stops wailing the second someone hands him <reading>a tuna</reading> — the calm is instant, like a switch. Jin ducks through the doorway just in time to see it: <reading>おとな</reading>, grown up right in front of him.",
+    "meaning_mnemonic": "Once a <kanji>person</kanji> gets <kanji>big</kanji> enough, everyone starts calling them an <vocabulary>adult</vocabulary>.",
+    "reading_mnemonic": "At Grandma Kane's shrine, only an <reading>おとな</reading> may ring the great bell, so the cats call the rule keeper <reading>Otto Nana</reading>, guardian of every <vocabulary>adult</vocabulary> visitor.",
+    "description": "As a な adjective, it takes な directly before the noun it describes, not い like most descriptive words.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "otosu": {
