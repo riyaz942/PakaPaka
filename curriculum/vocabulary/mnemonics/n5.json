@@ -63,11 +63,11 @@
     }
   },
   "akachan": {
-    "meaning_mnemonic": "At the top of the mountain trail, by the vending machine, a hiker's toddler drops her snack and wails so hard her whole face floods the same deep, angry <kanji>red</kanji> as the ground splitting open on that hillside, glowing from the fire underneath. Nothing quiets a face that red. That furious red-faced bundle is a baby.",
-    "reading_mnemonic": "The reading is exactly the pieces you already know: 赤 gives you the あか, and the childish ちゃん suffix tacks straight on after it, spelling out <reading>あかちゃん</reading>.",
+    "meaning_mnemonic": "New babies are born with tightly scrunched, <kanji>red</kanji> faces, so a <vocabulary>baby</vocabulary> is the reddest person in any room.",
+    "reading_mnemonic": "Grandma Kane's <reading>car</reading> alarm chants itself hoarse in the shrine lot. The actual 「<reading>あかちゃん</reading>」 asleep inside never stirs, because nothing wakes a sound-sleeping <vocabulary>baby</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -306,11 +306,11 @@
     }
   },
   "atama": {
-    "meaning_mnemonic": "In the echoing hallway of Sei's school, gym class lets out and everyone crowds through one narrow doorway at once - shoulders, bags, elbows, all jammed together. Except one part always squeezes through first, out ahead of everything else, cutting a path for the rest of the body to follow: the head.",
-    "reading_mnemonic": "Grandma Kane's shrine keeps one badly behaved llama tied up by the great bell, and it despises every visitor who gets too close, so it swings and clonks them square in the skull. The caretaker just sighs and warns newcomers the same way each time: mind <reading>a llama</reading>, or it'll crack your <reading>あたま</reading>.",
+    "meaning_mnemonic": "The single body part that holds every thought you have, sits highest of all, and takes the worst sunburn every summer is your <vocabulary>head</vocabulary>.",
+    "reading_mnemonic": "At the riverbank, an <reading>otter mama</reading> balances a stone on her 「<reading>あたま</reading>」 to crack clams, and it never once slips off her rock-solid <vocabulary>head</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1013,11 +1013,10 @@
     }
   },
   "ekiin": {
-    "meaning_mnemonic": "Every morning the galloping <kanji>station</kanji> horse thunders onto the platform, and it isn't the conductor who deals with it — it's the whistle-blowing <kanji>employee</kanji> in uniform whose laminated badge swings on a lanyard as they chase it back off the tracks before the first train arrives. Radio crackling, cap crooked, unbothered by any of this: that worn-out but unshaken figure is your station staff.",
-    "reading_mnemonic": "Over the radio the worker's reply crackles back garbled, just an <reading>echo in</reading> the tunnel — but that crackly <reading>えきいん</reading> is on every platform of this line, herding lost passengers back before the doors slide shut.",
+    "meaning_mnemonic": "Someone has to run the <kanji>station</kanji> where tired horses get swapped for fresh ones. That <kanji>employee</kanji>, one more mouth the station feeds, is the <vocabulary>station staff</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1177,11 +1176,10 @@
     }
   },
   "gaikokujin": {
-    "meaning_mnemonic": "Follow the <kanji>person</kanji> already mid-stride past the slanted gate, headed <kanji>outside</kanji> — but this time they don't stop at the fence. They keep walking until the walls that wrap an entire <kanji>country</kanji> shrink into a smudge on the mountain trail behind them. Striding clean outside your own country's walls is what makes you a foreigner.",
-    "reading_mnemonic": "Each kanji keeps its taught reading in a row — 外（がい）＋国（こく）＋人（じん） — giving you <reading>がいこくじん</reading> straight down the line.",
+    "meaning_mnemonic": "Step <kanji>outside</kanji> the walled <kanji>country</kanji> that guards its one jewel, and any <kanji>person</kanji> you meet there is a <vocabulary>foreigner</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2019,11 +2017,10 @@
     }
   },
   "isha": {
-    "meaning_mnemonic": "A goldfish that stopped blinking gets carried into the clinic, though goldfish famously have no eyelids. The receptionist doesn't even look up — stranger visits happen weekly. When your name is finally called, the person in the white coat with a stethoscope swinging off one ear is exactly who you came for: the <kanji>doctor</kanji>.",
-    "reading_mnemonic": "医 gives い and 者 gives しゃ, so stacked together they simply produce <reading>いしゃ</reading>.",
+    "meaning_mnemonic": "Whoever pulls the arrow out and shuts it away already practices <kanji>medicine</kanji>. Add the <kanji>person</kanji> doing it and you have a <vocabulary>doctor</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2151,12 +2148,10 @@
     }
   },
   "jibun": {
-    "meaning_mnemonic": "The woodcutter is dividing the day's woodpile, and the sword is doing the arithmetic. Every log comes down into two leaning <kanji>parts</kanji>: one part for the village, one part he plants his boot on. The sword <kanji>understands</kanji> the rule immediately and never miscounts — the half with a boot on it is oneself.",
-    "reading_mnemonic": "自 gives じ and 分 gives ぶん, so stacked together they simply produce <reading>じぶん</reading>.",
-    "description": "It points at whoever is speaking or being talked about, so it comes out as myself, yourself, or herself depending on the sentence. In casual speech it also works as a plain, slightly blunt word for I.",
+    "meaning_mnemonic": "Your <kanji>self</kanji> is the one <kanji>part</kanji> you can never hand off to someone else, which makes it entirely <vocabulary>oneself</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2378,11 +2373,10 @@
     }
   },
   "kaishain": {
-    "meaning_mnemonic": "Every floor the elevator stops at, the same tired figure in a grey suit steps on to <kanji>meet</kanji> whoever is waiting, straightens a laminated badge on a lanyard, staples one form, and steps off two floors later to do it all again. Nobody remembers his name, only his badge and his sigh. That endless loop of suit, badge, and paperwork is exactly what the word means: company <kanji>employee</kanji>.",
-    "reading_mnemonic": "His badge, half-covered by his tie, reads <reading>Kai Shain</reading> in blocky letters — no one at the company can pronounce it right, but everyone recognizes that a <reading>かいしゃいん</reading> like him has been riding this elevator since it was installed.",
+    "meaning_mnemonic": "Everyone who <kanji>meets</kanji> here for a paycheck is an <kanji>employee</kanji>, one more mouth this place must feed. That makes them a <vocabulary>company employee</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2469,20 +2463,20 @@
     }
   },
   "kanojo": {
-    "meaning_mnemonic": "Koichi points across the konbini at the kneeling <kanji>woman</kanji> restocking the onigiri shelf, arm sweeping the row into place. <kanji>He</kanji> doesn't explain, just tilts his head and grins: that's the one he's been talking about all week. You don't need more than that look to know she's his girlfriend, and now you know who she is too.",
-    "reading_mnemonic": "彼 gives かの and 女 gives じょ, so stacked together they simply produce <reading>かのじょ</reading>.",
+    "meaning_mnemonic": "The <kanji>he</kanji> walking off down the road turns out to be a <kanji>woman</kanji>, and now she's the one you point at and simply call <vocabulary>she / girlfriend</vocabulary>.",
+    "description": "Context decides the sense: introduced as someone's partner it means girlfriend, used as a plain pronoun it just means she.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kao": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a cat named Botan leaps onto the offering bowl and stares down at the water pooled inside it, hunting the strange animal staring back. It takes three tail-lashes before Botan realizes the intruder blinks whenever she blinks — it is her own face, staring up out of the water.",
-    "reading_mnemonic": "A cow wanders into Grandma Kane's shrine and butts the shrine bell aside just to see what's cooking. The monk grabs the <reading>cow</reading> by the horns and yells right into its <reading>かお</reading> — but its blank face never changes.",
+    "meaning_mnemonic": "Koichi hangs a mirror by the onigiri shelf so no customer walks past the beeping till without seeing their own <vocabulary>face</vocabulary> first.",
+    "reading_mnemonic": "A <reading>cow</reading> presses its 「<reading>かお</reading>」 against the mountain trail vending machine glass, and hikers pay double just to avoid meeting that <vocabulary>face</vocabulary> again.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2641,11 +2635,10 @@
     }
   },
   "keikan": {
-    "meaning_mnemonic": "Someone's been dumping fish traps along the riverbank at night, and every trap turns up empty by morning except the one time a figure in a sharp uniform wades in at dawn, hauls the traps out by hand, and confiscates the lot without a word. That quiet, uniformed figure standing ankle-deep in river mud is exactly what the word means: police officer.",
-    "reading_mnemonic": "警 gives けい and 官 gives かん, so stacked together they simply produce <reading>けいかん</reading>.",
+    "meaning_mnemonic": "A <kanji>government</kanji> official whose whole job is to <kanji>admonish</kanji> you is a <vocabulary>police officer</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3538,11 +3531,10 @@
     }
   },
   "minna": {
-    "meaning_mnemonic": "At Koichi's konbini, the tinny loudspeaker crackles once and a single voice booms through every aisle at the same instant, announcing a surprise scavenger hunt: onigiri, umbrellas, batteries, go. Every last customer looks up from what they're doing in the same second - not some of them, not most of them. Everyone.",
-    "reading_mnemonic": "みんな is written exactly the way it sounds, plain kana with nothing hiding underneath, so the word simply is its own reading: <reading>みんな</reading>.",
+    "meaning_mnemonic": "When Koichi's onigiri shelf empties, 「<reading>みんな</reading>」 in line turns <reading>meaner</reading>, and <vocabulary>everyone</vocabulary> glares at the register at once.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4368,20 +4360,19 @@
     }
   },
   "onnanohito": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the kneeling <kanji>woman</kanji> finally rises from her bow and falls into step beside the two legs she already knows as a <kanji>person</kanji>, the pair of them striding together past the cats toward the enormous bell. Kneeling figure plus striding legs, moving as one down the mossy steps — that's a grown woman.",
-    "reading_mnemonic": "女 reads おんな and 人 reads ひと, so the two known readings simply chain together into <reading>おんなのひと</reading>.",
+    "meaning_mnemonic": "The door meant for any <kanji>person</kanji> gets repainted with a <kanji>woman</kanji> stick figure, so now it specifies exactly which <vocabulary>woman</vocabulary> may enter.",
+    "description": "女 alone can sound blunt when pointing at a specific woman; 女の人 is the everyday, polite way to say it in conversation.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "onnanoko": {
-    "meaning_mnemonic": "At Sei's school, a tiny figure copies the kneeling <kanji>woman</kanji> pose out on the sports field, except her sweeping arm has curled inward to cradle a swaddled <kanji>child</kanji>, little arms flung out against her chest. A pint-sized woman who still has a bundled baby's shape tucked in her arms — that's a girl.",
-    "reading_mnemonic": "女 reads おんな and 子 reads こ, so the two known readings simply chain together into <reading>おんなのこ</reading>.",
+    "meaning_mnemonic": "A costume shop sells a miniature <kanji>woman</kanji> outfit sized only for a <kanji>child</kanji>, and whoever fits into it is simply called a <vocabulary>girl</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4451,20 +4442,19 @@
     }
   },
   "otokonohito": {
-    "meaning_mnemonic": "Out in the paddy, the <kanji>man</kanji> finally straightens up from the plow, gives his arm one last flex, and starts walking toward Koichi's konbini for something cold — those two legs carrying him off the field are exactly the <kanji>person</kanji> he becomes the second he stops working. Power in the field, then legs on the road: that's a grown man.",
-    "reading_mnemonic": "男 reads おとこ and 人 reads ひと, so the two known readings simply chain together into <reading>おとこのひと</reading>.",
+    "meaning_mnemonic": "Someone asks who that <kanji>person</kanji> is, still out in the field flexing all that power. It's simply the <kanji>man</kanji> you already know, nothing more than a <vocabulary>man</vocabulary>.",
+    "description": "男 alone can sound blunt when pointing at a specific man; 男の人 is the everyday, polite way to say it in conversation.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "otokonoko": {
-    "meaning_mnemonic": "Up on the mountain trail, a small figure flexes one arm at the vending machine exactly like the <kanji>man</kanji> dragging his plow through the paddy, except his other arm is still tucked into a <kanji>child</kanji>'s swaddle, wriggling loose at his side. A miniature man who hasn't finished unwrapping yet — that's a boy.",
-    "reading_mnemonic": "男 reads おとこ and 子 reads こ, so the two known readings simply chain together into <reading>おとこのこ</reading>.",
+    "meaning_mnemonic": "The <kanji>man</kanji> in the rice field has a <kanji>child</kanji> copying him, flexing a tiny arm, too small to plow anything. That miniature power alone is what makes a <vocabulary>boy</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
