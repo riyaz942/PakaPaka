@@ -1195,11 +1195,10 @@
     }
   },
   "gakusei": {
-    "meaning_mnemonic": "The child camped beneath that roof of scribbled notes refuses to go home, and overnight the desk starts to feel like part of them — that's daily <kanji>study</kanji>. But they're not finished growing: the same soil that turns a seed into <kanji>life</kanji> is still working underneath them, a person still half-sprouted, still becoming. That's a student.",
-    "reading_mnemonic": "学 gives がく and 生 supplies the same せい you already know from <reading>Sei</reading>, the star student, combining exactly into 「<reading>がくせい</reading>」.",
+    "meaning_mnemonic": "A <kanji>life</kanji> spent buried in books, with nothing to show for it yet but <kanji>study</kanji>, is exactly what we call a <vocabulary>student</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1248,12 +1247,10 @@
     }
   },
   "go-shujin": {
-    "meaning_mnemonic": "The <kanji>person</kanji> who strides in the door each night doesn't get his coat off before he's handed a list — go find the shoes, go find the remote, go find out why dinner's late. Everyone in the house treats him like hired help with a wedding ring: that's the respectful title for someone's husband.",
-    "reading_mnemonic": "ご stays ご, 主 gives しゅ, and 人 gives じん — stacked together they produce <reading>ごしゅじん</reading>.",
-    "description": "This is the respectful term for someone else's husband, used when talking to or about the listener's family — not the word you'd use for your own husband. It leans on 主人 (master), so some speakers now avoid it for the gendered assumption baked in.",
+    "meaning_mnemonic": "The <kanji>main</kanji> <kanji>person</kanji> running a household is what you call someone's <vocabulary>husband</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1733,11 +1730,11 @@
     }
   },
   "hito": {
-    "meaning_mnemonic": "In Sei's school hallway, someone rounds the corner: just two legs mid-stride, a body carried along above them, heading forward without dragging anything else behind. Strip away every job title, every role, every name — what's left striding down that hallway is simply a <kanji>person</kanji>.",
-    "reading_mnemonic": "At Grandma Kane's shrine, a lone figure climbs the mossy steps at dusk, no name tag, just a shape moving past the cats. One cat swats at a bare foot and the figure yelps <reading>he-toe</reading>, which is exactly the sound of <reading>ひと</reading>, the word for person.",
+    "meaning_mnemonic": "The <kanji>person</kanji> kanji and the <vocabulary>person</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "You brace for a crowd in the fog, but only one shape steps out and shouts <reading>“Hito!”</reading>, which sounds like <reading>ひと</reading>, because he is the only <vocabulary>person</vocabulary> there.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4270,12 +4267,11 @@
     }
   },
   "okusan": {
-    "meaning_mnemonic": "At the very top of the mountain trail, a woman leans against the lone vending machine, patient in the shade of an oak, clearly waiting for somebody. Every exhausted hiker who finally staggers up assumes she must belong to whoever shows up gasping right after — and that assumption, someone waiting up there for her other half, is exactly (someone's) wife.",
-    "reading_mnemonic": "She waves at the oak baking in the noon sun and calls down the trail, <reading>oak sun</reading> — the greeting that carries all the way to the switchbacks. That call is just how <reading>おくさん</reading> sounds: someone's wife, waiting patiently at the top for him to catch up.",
-    "description": "奥さん is the respectful way to refer to or address someone else's wife — never your own. It also gets used casually to address a married woman in general, but it is not what a man calls his own wife.",
+    "meaning_mnemonic": "Whoever rules the <kanji>interior</kanji> of the house earns the title <vocabulary>wife</vocabulary>.",
+    "reading_mnemonic": "Everyone in the village calls her <reading>おくさん</reading>. She stands as sturdy as an <reading>oak</reading>, so of course she is the <vocabulary>wife</vocabulary> of the house.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4529,12 +4525,11 @@
     }
   },
   "otto": {
-    "meaning_mnemonic": "At the riverbank, a woman is washing laundry when her <kanji>husband</kanji> wades in fully dressed, chasing a sock that floated loose, soaking his only good shirt in the process. She doesn't even look up — of course that's who waded in after one sock, nobody else would bother. That reliable, faintly ridiculous devotion is (my) husband.",
-    "reading_mnemonic": "He climbs out of the river dripping head to toe, sock triumphantly in hand, and she just sighs, <reading>Otto</reading>, not again — the exact sound of <reading>おっと</reading>, her name for the husband who always wades in after the laundry.",
-    "description": "夫 is the plain way a wife refers to her own husband when speaking to other people — not a word she'd use to call out to him directly, and not used for someone else's husband.",
+    "meaning_mnemonic": "The one who groans the loudest fixing a leaky faucet at 2 AM is your <vocabulary>husband</vocabulary>.",
+    "reading_mnemonic": "He trips over the cat and yelps <reading>おっと</reading> every morning. It sounds exactly like <reading>oops</reading>, and that's exactly why he's the <vocabulary>husband</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4878,11 +4873,10 @@
     }
   },
   "seito": {
-    "meaning_mnemonic": "That same patch of earth where a seed splits open into <kanji>life</kanji> now stretches out as a schoolyard, planted with row after row of identical green shoots, all still too short to see over the fence. They're not finished yet — still rooted, still waiting their turn to grow — and that half-grown state is exactly what a pupil is.",
-    "reading_mnemonic": "生 gives せい and 徒 gives と, so stacked together they simply produce <reading>せいと</reading>.",
+    "meaning_mnemonic": "A <kanji>life</kanji> still in its <kanji>junior</kanji> stage, trailing a few steps behind the teacher, is a <vocabulary>pupil</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4930,11 +4924,10 @@
     }
   },
   "sensei": {
-    "meaning_mnemonic": "The legs that always stride out <kanji>ahead</kanji> of everyone reach the classroom first, plant themselves at the front, and refuse to sit down. Beneath their feet is the same patch of ground where a seed cracks open into <kanji>life</kanji> — because this is the one person whose ideas take root in you and grow. That's a teacher.",
-    "reading_mnemonic": "先 gives せん and 生 supplies the same せい you know from <reading>Sei</reading>, the star student — stack them together and you get exactly 「<reading>せんせい</reading>」.",
+    "meaning_mnemonic": "Someone whose <kanji>life</kanji> is already <kanji>ahead</kanji> of yours on the path knows the way, which makes them your <vocabulary>teacher</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5749,11 +5742,10 @@
     }
   },
   "tomodachi": {
-    "meaning_mnemonic": "At Koichi's konbini, a stranger reaches for the last onigiri the exact moment you do. Neither of you lets go. You end up splitting it on the curb outside, silent and suspicious of each other, until one bite in you're both laughing about it — and just like that, you've made a friend.",
-    "reading_mnemonic": "友 gives とも and 達 gives だち, so stacked together they simply produce <reading>ともだち</reading>.",
+    "meaning_mnemonic": "Two hands closing together as a <kanji>friend</kanji> finally <kanji>reach</kanji> each other, and that arrival is what makes a <vocabulary>friend</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5901,12 +5893,11 @@
     }
   },
   "tsuma": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a man climbs the mossy steps every evening expecting to be first, and every evening his own wife is already there ahead of him, feeding the shrine cats without a word of announcement. He never has to ask where she is — she is simply, quietly, always a step ahead of him. That settled certainty is (my) wife.",
-    "reading_mnemonic": "He calls up the steps, <reading>Sue, ma!</reading>, thinking he's found Grandma Kane — but it's his own wife who turns around, cat in her arms. That startled beat is the sound of <reading>つま</reading>: realizing, again, that his wife got there first.",
-    "description": "妻 is the plain, slightly formal way a man refers to his own wife when talking to other people — it is not a word used for someone else's wife, and not one he'd use calling out to her directly.",
+    "meaning_mnemonic": "The person who knows exactly where every spare key in the house is hidden is your <vocabulary>wife</vocabulary>.",
+    "reading_mnemonic": "The family dog barks <reading>つま</reading> every time the door opens. It sounds just like <reading>too-mah</reading>, which is somehow always right when your <vocabulary>wife</vocabulary> walks in.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
