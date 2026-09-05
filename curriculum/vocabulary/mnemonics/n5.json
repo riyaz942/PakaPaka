@@ -250,7 +250,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "asagohan": {
@@ -268,7 +268,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "ashi-v": {
@@ -286,7 +286,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "asobu": {
@@ -374,7 +374,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "bangohan": {
@@ -531,11 +531,10 @@
     }
   },
   "byou": {
-    "meaning_mnemonic": "You are buying an onigiri at the fluorescent-bright convenience store. The cashier hits a button on the beeping till and announces you have exactly one second to hand over your cash. You panic and throw your wallet at the counter, terrified of how fast a single second passes.",
-    "reading_mnemonic": "The wallet sails through the air, but a person standing right <reading>by you</reading> (<reading>びょう</reading>) snatches it. They pocket your money and walk out the door, leaving you to spend your last second in total disbelief.",
+    "meaning_mnemonic": "Koichi's konbini till beeps once for every item scanned, and that single beep marks exactly one <vocabulary>second</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1108,12 +1107,10 @@
     }
   },
   "fun": {
-    "meaning_mnemonic": "The sword that redeemed itself on that first log has found steady work at the school: the woodcutter stands at the edge of the sports field and splits one every time the runners set off. Log down, two halves leaning apart, whistle. Nobody there owns a stopwatch, so a single split log is exactly one <kanji>minute</kanji>.",
-    "reading_mnemonic": "分 uses the very reading you learned with the kanji itself, so on its own it is just <reading>ふん</reading>.",
-    "description": "分 is the counter for minutes and almost never stands alone; it follows a number, and after some of them (one, three, four, six, eight, ten) its sound shifts from an f-sound to a p-sound.",
+    "meaning_mnemonic": "The <kanji>minute</kanji> kanji and the <vocabulary>minute</vocabulary> word are exactly the same, so they mean the same thing.",
     "_meta": {
-      "generator_model": "opus-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1286,7 +1283,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "gohan": {
@@ -1313,7 +1310,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "gyuunyuu": {
@@ -1443,12 +1440,11 @@
     }
   },
   "han-time": {
-    "meaning_mnemonic": "You stare at the clock as the minute hand hits the bottom, turning the face into a giant exclamation point split right down the middle. That exact moment when the hour is chopped in <kanji>half</kanji> means it is half (past).",
-    "reading_mnemonic": "Since you already know the reading for this kanji, you know the reading for this word is <reading>はん</reading>.",
-    "description": "You will see this attached directly to hour counters to say half past the hour.",
+    "meaning_mnemonic": "The <kanji>half</kanji> kanji and the <vocabulary>half (past)</vocabulary> word are exactly the same, so they mean the same thing.",
+    "description": "This word means \"half past\" an hour, not half of a general quantity — it always attaches to a time, never a whole object.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1728,7 +1724,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "hirugohan": {
@@ -1945,7 +1941,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "imi": {
@@ -2159,7 +2155,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "jibun": {
@@ -2186,7 +2182,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "jisho": {
@@ -2760,7 +2756,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "kinyoubi": {
@@ -2966,7 +2962,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "konna": {
@@ -3000,7 +2996,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "koohii": {
@@ -3081,7 +3077,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "kouban": {
@@ -3243,7 +3239,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "kyou": {
@@ -3252,7 +3248,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "kyoudai": {
@@ -3358,7 +3354,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "maiban": {
@@ -3366,7 +3362,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "mainen": {
@@ -3374,7 +3370,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "mainichi": {
@@ -3382,7 +3378,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "maishuu": {
@@ -3390,7 +3386,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "maitsuki": {
@@ -3398,7 +3394,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "man-v": {
@@ -3850,7 +3846,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "nanoka": {
@@ -3978,11 +3974,10 @@
     }
   },
   "nichiyoubi": {
-    "meaning_mnemonic": "You peer through a window at the <kanji>sun</kanji>, only to realize it is just a painting inside a massive <kanji>weekday</kanji> calendar square. Before you can process the trick, a real <kanji>sun</kanji> rises behind it and sets the whole paper structure on fire to celebrate Sunday.",
-    "reading_mnemonic": "You already know the readings for the kanji in this word, so you just put them together to get <reading>にちようび</reading>.",
+    "meaning_mnemonic": "The <kanji>day</kanji> that shines like the sun is the very first <kanji>weekday</kanji> of the week. That blazing weekday is <vocabulary>Sunday</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4516,7 +4511,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "otousan": {
@@ -4625,7 +4620,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "rainen": {
@@ -4633,7 +4628,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "raishuu": {
@@ -4641,7 +4636,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "rajio": {
@@ -4945,7 +4940,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sensei": {
@@ -4962,7 +4957,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "sentaku-suru": {
@@ -5244,11 +5239,10 @@
     }
   },
   "shuumatsu": {
-    "meaning_mnemonic": "You trace the winding path for the <kanji>week</kanji> until you run out of calendar page completely and your finger slips off the paper. Dropping off the edge of that grid lands you right in the weekend.",
-    "reading_mnemonic": "You spend your entire weekend at the riverbank scrubbing the mud out of your car's <reading>shoe mats</reading> (<reading>しゅうまつ</reading>). You wash them for two days straight, completely ruining your actual weekend.",
+    "meaning_mnemonic": "The <kanji>week</kanji> finally reaches its <kanji>end</kanji>, and that end is the <vocabulary>weekend</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5796,7 +5790,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "tooi": {
@@ -6306,7 +6300,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "yotei": {
@@ -6405,7 +6399,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "yuumei": {
