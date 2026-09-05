@@ -952,12 +952,11 @@
     }
   },
   "doyoubi": {
-    "meaning_mnemonic": "On the calendar, Saturday's square holds a wooden cross planted into the page, dirt piling around its base — <kanji>earth</kanji> dug into the paper. Beside it crowds a tangle of feathers marking the square as a <kanji>weekday</kanji>, while a windowed frame shows the sun climbing to start the <kanji>day</kanji>: earth, weekday, and day stacked on one square make Saturday.",
-    "reading_mnemonic": "The reading is just the pieces you already know lined up in order: 土（ど）＋曜（よう）＋日（び）＝<reading>どようび</reading>.",
+    "meaning_mnemonic": "The <kanji>weekday</kanji> pheasant only stays quiet once a week. That happens on the <kanji>earth</kanji>-digging <kanji>day</kanji> called <vocabulary>Saturday</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "e-picture": {
@@ -1153,12 +1152,12 @@
     }
   },
   "futsuka": {
-    "meaning_mnemonic": "The raccoon's broth has already gone cold once, but true to form, a second raccoon slips in and snaps its own chopstick to match the <kanji>two</kanji> lines exactly — and it only ever happens after the sun has climbed back through the window to open a fresh <kanji>day</kanji>. By the time the matching ritual is finished, that first day is gone and a second one has quietly started: two days, four paws, still nobody eating.",
-    "reading_mnemonic": "Koichi's konbini clerk trips over the same forgotten mop bucket two mornings running and lands flat on his back, socks soaked both times, groaning that his feet have gone <reading>footsore</reading>. Everyone at the register agrees this is just how <reading>ふつか</reading> goes — the second day is always the one that actually gets you.",
+    "meaning_mnemonic": "The <kanji>two</kanji> flat lines slide under the <kanji>day</kanji> mark without changing shape. That doubled mark means <vocabulary>two days</vocabulary> have passed.",
+    "reading_mnemonic": "At the riverbank, a hiker known as <reading>Foot Sucker</reading> steps in mud on <reading>ふつか</reading>, and the mud won't let go for the full <vocabulary>two days</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "fuyu": {
@@ -1234,12 +1233,11 @@
     }
   },
   "getsuyoubi": {
-    "meaning_mnemonic": "The squawking birds on your <kanji>weekday</kanji> calendar square are completely asleep under a thin crescent <kanji>moon</kanji>. They stubbornly refuse to wake up and look at the window showing the morning <kanji>sun</kanji>, because everyone is too exhausted on Monday.",
-    "reading_mnemonic": "Since you learned the readings for these kanji already, combining them gives you <reading>げつようび</reading>.",
+    "meaning_mnemonic": "A <kanji>weekday</kanji>'s <kanji>day</kanji> belongs to the <kanji>moon</kanji> before the sun ever gets a turn, which is exactly what makes it <vocabulary>Monday</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "ginkou": {
@@ -2614,12 +2612,11 @@
     }
   },
   "kayoubi": {
-    "meaning_mnemonic": "You flip your calendar to check the <kanji>weekday</kanji>, but the square for today's <kanji>day</kanji> is completely charred. Looking closely, a tiny sparking figure made of <kanji>fire</kanji> is running around inside the window frame, burning up the paper. You sigh. The calendar always bursts into flames on Tuesday.",
-    "reading_mnemonic": "Since you already know the reading for each kanji, you can simply put them together to form <reading>かようび</reading>.",
+    "meaning_mnemonic": "A <kanji>weekday</kanji>'s <kanji>day</kanji> that lets <kanji>fire</kanji> take it over completely, sparks and all, is <vocabulary>Tuesday</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kaze-cold": {
@@ -2760,12 +2757,11 @@
     }
   },
   "kinyoubi": {
-    "meaning_mnemonic": "You go into Koichi's konbini to buy a single onigiri to start your <kanji>day</kanji>. When the till beeps, Koichi doesn't ask for regular yen; he demands a literal pile of <kanji>gold</kanji>. You complain that this is the only <kanji>weekday</kanji> he does this, and hand over your treasure because it is Friday.",
-    "reading_mnemonic": "This word is completely regular, so just read the kanji exactly as you learned them to get <reading>きんようび</reading>.",
+    "meaning_mnemonic": "<vocabulary>Friday</vocabulary> is the <kanji>weekday</kanji>'s <kanji>day</kanji> that finally turns to solid <kanji>gold</kanji> by quitting time.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kippu": {
@@ -3524,12 +3520,11 @@
     }
   },
   "mikka": {
-    "meaning_mnemonic": "Stack the <kanji>three</kanji> flat lines on top of each other and each one turns out to be its own tiny windowed frame with a sun climbing up through it — a triple-decker calendar. One <kanji>day</kanji> passes on the bottom line, then the middle one lights up, then the top, and the sun never bothers waiting around for a fourth: three days, no more, no less.",
-    "reading_mnemonic": "Sei collapses after the third whistle blast on the sports field, and the nurse says she's gone <reading>meeker</reading> by the hour — flu, straight home for <reading>みっか</reading>, three full days in bed before anyone lets her back on the field.",
+    "meaning_mnemonic": "That stubby ladder of rungs you know as <kanji>three</kanji> lines up beside the <kanji>day</kanji> mark. Three rungs stacked on one day column add up to <vocabulary>three days</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "mimi-v": {
@@ -3633,12 +3628,11 @@
     }
   },
   "mokuyoubi": {
-    "meaning_mnemonic": "You arrive at Sei's school for a normal <kanji>weekday</kanji> of classes, but looking out the window, a massive <kanji>tree</kanji> has smashed right through the sports field to block out the <kanji>sun</kanji>. The principal announces over the intercom that classes are cancelled, which is typical for Thursday.",
-    "reading_mnemonic": "You can sound this word out by stringing together the readings you learned for its component kanji to get <reading>もくようび</reading>.",
+    "meaning_mnemonic": "By the time a <kanji>weekday</kanji>'s <kanji>day</kanji> has grown into a full-sized <kanji>tree</kanji>, the week has reached <vocabulary>Thursday</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "mondai": {
@@ -5369,12 +5363,11 @@
     }
   },
   "suiyoubi": {
-    "meaning_mnemonic": "Every <kanji>weekday</kanji>, you stand by the riverbank to watch the <kanji>sun</kanji> come up, but today a massive geyser of freezing <kanji>water</kanji> blasts out of the river and knocks you flat into the mud. You scrape yourself off, remembering that this mid-week flood always happens on Wednesday.",
-    "reading_mnemonic": "There are no new sounds to learn here, just combine the kanji readings you already know into <reading>すいようび</reading>.",
+    "meaning_mnemonic": "Douse a <kanji>weekday</kanji>'s <kanji>day</kanji> in <kanji>water</kanji> and whatever's left standing afterward is <vocabulary>Wednesday</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "suki": {
@@ -5866,12 +5859,12 @@
     }
   },
   "tsuitachi": {
-    "meaning_mnemonic": "The smug goat's one-contestant talent show — one stage, one prize, one judge, all her — only ever opens the instant the sun first climbs through the windowed frame of a brand new <kanji>day</kanji>. She refuses to be anything but <kanji>one</kanji>, so she insists on staging it the very moment each month's sun rises for the first time, never later. That stubborn need to go first, first day, every single month: the 1st.",
-    "reading_mnemonic": "Grandma Kane opens the shrine on the very first morning of the month and finds her legs unbearably <reading>too itchy</reading> — poison ivy from clearing the mossy steps. She scratches through the whole ceremony, grumbling that the reading for this day, <reading>ついたち</reading>, always shows up with an itch she can't shake.",
+    "meaning_mnemonic": "The flat line of <kanji>one</kanji> sits right against the <kanji>day</kanji> mark on the calendar. That opening pair is always the <vocabulary>1st of the month</vocabulary>.",
+    "reading_mnemonic": "Every <reading>ついたち</reading>, landlord <reading>Sweetie Tachi</reading> pounds on the door, because rent is only ever due on the <vocabulary>1st of the month</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "tsukau": {
@@ -6258,12 +6251,11 @@
     }
   },
   "yokka": {
-    "meaning_mnemonic": "Trapped inside the enclosure, the mouth keeps counting under its breath, and on the try that decides everything it finally lands on <kanji>four</kanji>. The instant it shouts the number, the window's bar snaps back and the <kanji>sun</kanji> pours through into a brand new <kanji>day</kanji>. Four counted breaths, one sunrise — that's the 4th, four days gone.",
-    "reading_mnemonic": "四's reading よっ and 日's reading か combine straight into <reading>よっか</reading>, exactly the regular reading you'd expect for four days.",
+    "meaning_mnemonic": "Pacing off all <kanji>four</kanji> walls of that doorless room already burns a whole <kanji>day</kanji>. Four walls at a day apiece add up to <vocabulary>four days</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "yoku": {

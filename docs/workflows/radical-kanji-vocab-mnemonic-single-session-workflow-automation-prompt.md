@@ -330,14 +330,44 @@ Step 5: Stop — Do Not Run the Final Build
 
 Do NOT run `generate.py`, `npm run validate-schema`, or
 `npm run compile-curriculum` in this session. Those run once, after every
-session covering this batch has finished, from the repository root:
+session covering this batch has finished.
 
-generate.py --level <level>
+`generate.py` is **not** at the repository root and is **not** on `PATH`. It
+lives at `curriculum/_build/generate.py` and needs that directory's venv
+interpreter, so it must be invoked explicitly:
+
+cd curriculum/_build && .venv/bin/python generate.py --level <level>
+
+Then, from the repository root:
+
 npm run validate-schema
 npm run compile-curriculum
 
-Run the current invocation found under `curriculum/_build/generate_content/`
-— do not guess if it has changed.
+Do not shorten the first command to a bare `generate.py --level <level>`. That
+fails with `command not found`, while the two `npm` commands after it still
+succeed — so the build looks like it ran, `curriculum.db` gets rebuilt, and the
+new mnemonics are silently missing because nothing ever inlined them. If the
+inlining step worked, `curriculum/<type>/<level>.json` is newer than
+`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
+`generate.py` did not run.
+
+`generate.py` is the step that copies the sidecar drafts into the shipped
+`curriculum/<type>/<level>.json`. Nothing downstream reads the sidecar:
+`compile-curriculum` builds `curriculum.db` from the shipped JSON, and the
+studio serves that same JSON. Skipping it means the batch exists only in the
+sidecar.
+
+Whoever runs the Final Build: if the curriculum studio's `web/server` is
+already running, its curriculum index is an in-memory cache loaded once at
+startup (`web/server/curriculum/loader.ts`) and reads straight from
+`curriculum/<type>/<level>.json` — not from the mnemonics sidecar. It has no
+file watcher, so it keeps serving pre-Final-Build content (including a stale
+`meaning_mnemonic`/`reading_mnemonic` and any older `_meta.prompt_version`)
+until something calls `reload()`. After the Final Build, hit `POST
+/api/reload` (the studio header's Reload button) or restart the server before
+checking the result in the studio — otherwise a correctly generated mnemonic
+can look wrong (e.g. a missing highlight) when the real cause is stale cache,
+not the content.
 
 ---
 

@@ -680,17 +680,15 @@ drop <group-size>.
 Final Build
 
 After every selected slug has been successfully ingested or skipped, run the
-project's normal generation pipeline from the repository root.
+project's normal generation pipeline.
 
-Check the current invocation under:
+`generate.py` is **not** at the repository root and is **not** on `PATH`. It
+lives at `curriculum/_build/generate.py` and needs that directory's venv
+interpreter, so it must be invoked explicitly:
 
-curriculum/_build/generate_content/
+cd curriculum/_build && .venv/bin/python generate.py --level <level>
 
-Then run:
-
-generate.py --level <level>
-
-Followed by:
+Then, from the repository root:
 
 npm run validate-schema
 
@@ -698,15 +696,35 @@ And:
 
 npm run compile-curriculum
 
+Do not shorten the first command to a bare `generate.py --level <level>`. That
+fails with `command not found`, while the two `npm` commands after it still
+succeed — so the build looks like it ran, `curriculum.db` gets rebuilt, and the
+new mnemonics are silently missing because nothing ever inlined them. If the
+inlining step worked, `curriculum/<type>/<level>.json` is newer than
+`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
+`generate.py` did not run.
+
 `generate.py` inlines the mnemonic sidecars into the shipped radical/kanji/vocab
 JSON (radicals get a `mnemonic_text`; kanji and vocab get the two mnemonics; all
 three get a `description` only on the items that needed one), each carrying
-`_meta.review_status: draft`. Use the current
-project-specific `generate.py` invocation and flags found under
-`curriculum/_build/`. Do not guess if the documented invocation has changed.
+`_meta.review_status: draft`. Nothing downstream reads the sidecar:
+`compile-curriculum` builds `curriculum.db` from the shipped JSON, and the
+studio serves that same JSON.
 
 This step is not optional between layers — the next layer's prompts read the
 inlined prose, not the sidecar.
+
+If the curriculum studio's `web/server` is already running, its curriculum
+index is an in-memory cache loaded once at startup
+(`web/server/curriculum/loader.ts`) and reads straight from
+`curriculum/<type>/<level>.json` — not from the mnemonics sidecar. It has no
+file watcher, so it keeps serving pre-Final-Build content (including a stale
+`meaning_mnemonic`/`reading_mnemonic` and any older `_meta.prompt_version`)
+until something calls `reload()`. After this Final Build step, hit `POST
+/api/reload` (the studio header's Reload button) or restart the server before
+checking the result in the studio — otherwise a correctly generated mnemonic
+can look wrong (e.g. a missing highlight) when the real cause is stale cache,
+not the content.
 
 ---
 
