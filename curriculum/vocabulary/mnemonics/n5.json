@@ -145,12 +145,11 @@
     }
   },
   "ane": {
-    "meaning_mnemonic": "At the riverbank, your <kanji>older sister</kanji> has already claimed the flattest washing stone before you're even awake, scrubbing yesterday's clothes while lecturing you for not helping. She never once asks if you mind. That unasked-for seniority, exercised at six in the morning by the water, is what (my) older sister names.",
-    "reading_mnemonic": "At the riverbank, a horse comes down to drink beside her washing stone and lets out a flat <reading>ah, neigh</reading> right in her ear — which is exactly how <reading>あね</reading> sounds, and exactly why she never washes clothes there again.",
-    "description": "A plain, informal word for your own older sister when talking about her to someone else — not used to address her directly or to speak politely about someone else's older sister.",
+    "meaning_mnemonic": "At Sei's school sports day, one loud kid bosses even the coaches around and nobody dares stop her. That commanding energy is exactly an <vocabulary>(my) older sister</vocabulary>.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a boy begs to ring the huge bell, but his <vocabulary>(my) older sister</vocabulary> just says 「<reading>あね</reading>」, flat as '<reading>ah, nah</reading>,' and drags him home.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -161,7 +160,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "anna": {
@@ -580,7 +579,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "chiisai": {
@@ -1352,7 +1351,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "hai-counter": {
@@ -1568,7 +1567,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "hayai-early": {
@@ -2641,7 +2640,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "keikan": {
@@ -4207,7 +4206,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "okaerinasai": {
@@ -4329,12 +4328,12 @@
     }
   },
   "oneesan": {
-    "meaning_mnemonic": "Picture the captain of the school relay team, the one every younger kid looks up to and never dares call by her first name. She lines up the little ones, ties their shoelaces, and lets them win. That respectful, polite way you address someone's honored <kanji>older sister</kanji> is exactly this word.",
-    "reading_mnemonic": "At Sei's school sports day, the team captain warms up by impersonating a horse, letting out an exaggerated <reading>neigh</reading> before every sprint. The younger kids salute her respectfully as <reading>おねえさん</reading>, the neighing captain, and nobody questions it.",
-    "description": "This word is the respectful way to refer to or address someone else's older sister, or an unrelated older woman as a term of respect — it is not the plain, private term you'd use among your own family growing up with a younger sibling.",
+    "meaning_mnemonic": "A lost traveler at the riverbank asks a young woman for directions, calling her <vocabulary>older sister (polite)</vocabulary> before he even learns her name.",
+    "reading_mnemonic": "At Koichi's konbini, the new clerk stretches her greeting into a horse-like 「<reading>おねえさん</reading>」, drawing out the <reading>neigh</reading> so long that customers laugh. They still call her an <vocabulary>older sister (polite)</vocabulary> right back.",
+    "description": "Use お姉さん for any young woman addressed politely — a shop clerk, a stranger — not only an actual older sister.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4366,12 +4365,12 @@
     }
   },
   "oniisan": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a young man rings the enormous bell for an elderly stranger who can't reach the rope, then carries her offering up the mossy steps himself while the shrine cats trail behind them. Nobody there is related to him, but everyone calls him <kanji>older brother</kanji> (polite) anyway, because that is simply what the word is for.",
-    "reading_mnemonic": "At Grandma Kane's shrine, the cats climb his leg the moment he sits on the mossy steps, and he winces <reading>oh, knee, sahn</reading> as claws land — which is exactly how <reading>おにいさん</reading> sounds, and exactly why the cats never leave him alone.",
-    "description": "The polite, respectful form used to talk about or address someone else's older brother, or a young man in general as a courteous form of address — contrast with the plain word used only for your own older brother.",
+    "meaning_mnemonic": "A tired customer at Koichi's konbini calls the teenage clerk an <vocabulary>older brother (polite)</vocabulary> before he even rings up her onigiri, though they have never met.",
+    "reading_mnemonic": "On the mountain trail, a hiker clutches his aching <reading>knee</reading> and yells 「<reading>おにいさん</reading>」, begging the <vocabulary>older brother (polite)</vocabulary> leading the group to slow down.",
+    "description": "Use お兄さん for any young man addressed politely — a waiter, a stranger — not only an actual older brother.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4510,15 +4509,15 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "otouto": {
-    "meaning_mnemonic": "Picture the pesky little brother who trails you everywhere, small enough that shopkeepers assume he's still in diapers, always demanding you carry him piggyback until your arms give out. That exact whiny, tag-along presence is what points straight at a <kanji>younger brother</kanji>.",
-    "reading_mnemonic": "At Koichi's konbini, the small brother stomps on the same customer's foot twice reaching for onigiri, and the customer yelps <reading>oh, toe, toe</reading> each time. The beeping till clerk sighs and says it again, plain: <reading>おとうと</reading>, always causing trouble.",
+    "meaning_mnemonic": "On the mountain trail, the smallest hiker races ahead of everyone and falls straight into the vending machine at the top. That reckless little kid is exactly a <vocabulary>younger brother</vocabulary>.",
+    "reading_mnemonic": "At Sei's school, the team's littlest <vocabulary>younger brother</vocabulary> mascot revs an invisible <reading>auto</reading> down the hallway, yelling 「<reading>おとうと</reading>」 every time he nearly crashes.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5795,7 +5794,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "6",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "tori": {
