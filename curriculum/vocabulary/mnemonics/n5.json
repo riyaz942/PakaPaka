@@ -2860,11 +2860,11 @@
     }
   },
   "kodomo-v": {
-    "meaning_mnemonic": "That swaddled <kanji>child</kanji>, arms still flung wide from its own story, wriggles loose right in Koichi's konbini and topples half the onigiri shelf reaching for it. The till beeps in protest as a clerk calls out for whoever's kid this troublemaker belongs to — arms flailing, wrapping gone, still unmistakably a child.",
-    "reading_mnemonic": "This word takes 子's reading こ and adds 供's reading ども, giving 「<reading>こども</reading>」: child.",
+    "meaning_mnemonic": "The <kanji>child</kanji> you proudly <kanji>offer</kanji> up to the neighbors, freshly bathed and squirming, is simply your <vocabulary>child</vocabulary>.",
+    "description": "Sometimes written partly in hiragana, since the second kanji once meant \"servant.\"",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4104,22 +4104,21 @@
     }
   },
   "oba": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, an aunt turns up every New Year wrapped in an absurd sheep-print scarf — your <kanji>mother</kanji>'s sister, standing in for the <kanji>uncle</kanji> who usually reads the fortunes. The temple cats scatter, certain a sheep has invaded their mossy steps. Flustered, she throws up both hands and calls out across the courtyard — that startled, scarf-wrapped arrival is exactly who aunt means.",
-    "reading_mnemonic": "As the cats bolt, she cries <reading>Oh, baa!</reading> — sheep noise, not sheep, just her own flustered yelp. That startled cry, <reading>おば</reading>, is the exact sound of an aunt arriving at Grandma Kane's shrine every single year, scarf and all.",
-    "description": "The vowel here is short — don't stretch it into the longer sound used for the word for grandmother. They look and sound almost identical on the page but name different relatives, so lean on the mnemonic's short, startled yelp to keep the vowel length honest.",
+    "meaning_mnemonic": "A <kanji>mother</kanji> figure who's still just a <kanji>youth</kanji> herself, holding kids anyway, is your <vocabulary>aunt</vocabulary>.",
+    "reading_mnemonic": "Your aunt hikes to the mountain trail's summit just to blast one horrible note on an oboe, and that screech is <reading>おば</reading> — <reading>\"oboe\"</reading> — the sound of your <vocabulary>aunt</vocabulary> announcing her arrival.",
+    "description": "An aunt younger than your parent; an older one uses different kanji, same reading.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "obaasan": {
-    "meaning_mnemonic": "At the riverbank where the washing happens, an old woman scrubs scarves for the whole village and refuses anyone's help. Children stop to greet her properly before crossing, and she waves them on with damp hands. To everyone nearby, respectfully, she's simply grandmother — polite, warm, and impossible to argue with.",
-    "reading_mnemonic": "おばあさん is written exactly as it sounds, so there's no reading to decode — just the kana <reading>おばあさん</reading> read straight through.",
-    "description": "おばあさん politely addresses or refers to any elderly woman, related or not — closer to how English speakers might greet a stranger as \"ma'am\" than a strict family term.",
+    "meaning_mnemonic": "An old woman dozes in a sunbeam and lets out a long, satisfied <reading>おばあさん</reading> — <reading>\"ohh, baa, sun\"</reading> — and that sigh is exactly what you call your <vocabulary>grandmother (polite)</vocabulary>.",
+    "description": "Also used to politely address any elderly woman, not just your own grandmother.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4180,12 +4179,12 @@
     }
   },
   "oji": {
-    "meaning_mnemonic": "Halfway up the mountain trail, past the point where most people turn back, a man in hiking boots is refilling the lone vending machine himself — turns out it's your <kanji>uncle</kanji>, who apparently owns the machine and hikes up every week just to restock it. Your <kanji>father</kanji> waits at the trailhead with his arms folded. Nobody in the family questions this anymore. That's just what your uncle does.",
-    "reading_mnemonic": "At the vending machine on the mountain trail, a hiker rounds the last switchback and yelps, oh, gee, at the stranger already there. It's not a stranger — it's your uncle, and that startled gasp is exactly <reading>おじ</reading>: <reading>oh, gee</reading>, uncle, fancy meeting you up here.",
-    "description": "叔父 marks a younger uncle — your parent's younger brother, or one married in — as distinct from the term for an older uncle, though both get shortened to the same casual address form in speech.",
+    "meaning_mnemonic": "A backup <kanji>father</kanji> who shows up every holiday, spoils you rotten, and sneaks you extra sweets is your <vocabulary>uncle</vocabulary>.",
+    "reading_mnemonic": "Your uncle trips over a shrine cat and yelps <reading>おじ</reading> — <reading>\"oh, gee!\"</reading> — the sound your <vocabulary>uncle</vocabulary> makes every single visit.",
+    "description": "An uncle younger than your parent; an older one uses different kanji, same reading.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
