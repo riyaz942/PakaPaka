@@ -174,6 +174,16 @@ MODEL = "claude-opus-4-8"
 #: including reviewed kanji-word prose the new rule cannot change. The kana
 #: drafts already written under Rev 6 were instead stamped back to 5 by hand, so
 #: the staleness check below picks up exactly them and nothing else.
+#:
+#: The untaught-component amendment rides Rev 6 the same way, for the same
+#: reason. A word may be written with a kanji banded above its own level — 昨 in
+#: N5's 昨日 — and until now the prompt named only the kanji the level teaches,
+#: so the story explained half a word while the app rendered a chip for the other
+#: half. `vocab_context` now also returns the `builds_on` kanji, meaning-only and
+#: minus the ones that merely restate the word, and the prompt asks for them. It
+#: reaches ~800 of the 9,474 kanji words; a version bump would requeue every
+#: reviewed draft to no purpose, so the affected drafts are stamped back to 5 by
+#: hand instead.
 PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
@@ -304,7 +314,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{MEANING}}": ctx["meaning"],
             "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
             "{{WORD_TYPE}}": mc.format_word_type(ctx["word_type"]),
-            "{{COMPONENTS}}": mc.format_vocab_components(ctx["components"]),
+            "{{COMPONENTS}}": mc.format_vocab_components(ctx),
             "{{IDENTITY_NOTE}}": mc.format_vocab_identity(
                 ctx["identical_kanji"], ctx["meaning"]),
             "{{REGULARITY}}": mc.format_regularity(ctx),

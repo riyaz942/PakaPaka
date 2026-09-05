@@ -245,12 +245,12 @@
     }
   },
   "asa": {
-    "meaning_mnemonic": "Koichi bolts a plastic rooster above the konbini door that shrieks the instant the shutters roll up — never at lunch, never at night, only in that grey hour when the sky is still dim and the onigiri shelves are half-stocked. That first shriek of the day is <kanji>morning</kanji>, whether Koichi likes it or not.",
-    "reading_mnemonic": "Each dawn the rooster mounted above Koichi's door screeches <reading>あさ</reading> into his ear, and it comes out sounding exactly like <reading>ah, sir</reading> — a rude little wake-up call Koichi has never forgiven. That screech, not the sunrise, is what actually starts his morning.",
+    "meaning_mnemonic": "The <kanji>morning</kanji> kanji and the <vocabulary>morning</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "Koichi throws open the konbini shutters at first light and grumbles <reading>「あさ」, which sounds like 'ah, sir'</reading>, and that daily grumble is how <vocabulary>morning</vocabulary> greets him.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "asagohan": {
@@ -263,12 +263,12 @@
     }
   },
   "asatte": {
-    "meaning_mnemonic": "The trailing runner is so far <kanji>behind</kanji> the pack he misses today's finish line entirely. He staggers past the <kanji>bright</kanji> sun's <kanji>day</kanji> window just as it flips shut — then flips shut again before he arrives. Two whole days close inside that window before he shows up, so nobody calls it tomorrow. It's the day after tomorrow.",
-    "reading_mnemonic": "At the mountain trail's vending machine, a hiker drops a salty tray of dried squid clean over the edge. It bounces ledge to ledge so long that two sunrises pass before it clatters to a stop below, and by then everyone agrees the <reading>a salty tray</reading> landed on <reading>あさって</reading> — the day after tomorrow.",
+    "meaning_mnemonic": "A <kanji>day</kanji> that falls <kanji>behind</kanji> the very next one is <vocabulary>the day after tomorrow</vocabulary>.",
+    "reading_mnemonic": "Koichi <reading>sautés</reading> the last onigiri filling, but the next batch won't land until <reading>あさって</reading>, when <vocabulary>the day after tomorrow</vocabulary> restocks the shelf.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "ashi-v": {
@@ -281,12 +281,12 @@
     }
   },
   "ashita": {
-    "meaning_mnemonic": "That same barred window from the <kanji>day</kanji> story shows up again, except the glass is still dark, not yet <kanji>bright</kanji> — the sun hasn't climbed into frame yet. You can feel it waiting just behind the horizon, ready to flood in the moment this window opens again. The day still queued up behind that glass is tomorrow.",
-    "reading_mnemonic": "At the top of the mountain trail, the vending machine stocks one item: a single <reading>ashtray</reading> that never fills, no matter how much ash hikers tap into it. It's saving that ash for a day that hasn't come yet — 「<reading>あした</reading>」, tomorrow, one climb away.",
+    "meaning_mnemonic": "The next <kanji>day</kanji> that hasn't arrived yet is always the one everyone calls <vocabulary>tomorrow</vocabulary>.",
+    "reading_mnemonic": "Koichi drapes <reading>a sheet</reading> over the pastry case and promises the shelves refill only <reading>あした</reading>, when <vocabulary>tomorrow</vocabulary> finally comes.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "asobu": {
@@ -370,12 +370,11 @@
     }
   },
   "ban": {
-    "meaning_mnemonic": "At Koichi's konbini, the automatic doors sigh shut for the day just as the fluorescent sign outside buzzes off, leaving one register light glowing over the empty onigiri shelf. That last dim bulb holding on while everything else goes dark is the whole picture: evening has arrived, and <kanji>night</kanji> is settling in right behind it.",
-    "reading_mnemonic": "晩 keeps the reading you already learned for the kanji itself, carried straight through: <reading>ばん</reading>.",
+    "meaning_mnemonic": "Grandma Kane rings the shrine's one enormous bell only once, right as <vocabulary>evening</vocabulary> settles over the mossy steps.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "bangohan": {
@@ -1283,12 +1282,11 @@
     }
   },
   "gogo": {
-    "meaning_mnemonic": "The instant the sundial's shadow vanishes into the <kanji>noon</kanji> line, the trailing runner finally lurches into motion — he's always <kanji>after</kanji> everyone else, and now he's after noon itself. Every stride he drags out from there on, still trailing that line behind him, happens in the afternoon.",
-    "reading_mnemonic": "午 already reads ご and 後 already reads ご, so 午後 just stacks those two sounds straight into <reading>ごご</reading>.",
+    "meaning_mnemonic": "Once the clock falls <kanji>behind</kanji> <kanji>noon</kanji>, every hour left in the day counts as <vocabulary>afternoon</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "gohan": {
@@ -1311,12 +1309,11 @@
     }
   },
   "gozen": {
-    "meaning_mnemonic": "Picture the sundial's shadow first thing in the morning, still sprawled out long across the ground, well <kanji>before</kanji> it ever shrinks down to nothing at <kanji>noon</kanji>. That's the storefront's awning logic all over again — the part that greets you first, out ahead of the rest of the day. This whole early stretch, before noon ever swallows the shadow whole, is a.m., the morning half of the day.",
-    "reading_mnemonic": "It's just the readings you already know, stacked together: 午 as ご plus 前 as ぜん gives you <reading>ごぜん</reading>, morning laid out in front of noon.",
+    "meaning_mnemonic": "Every hour that still stands <kanji>front</kanji> of <kanji>noon</kanji> counts as <vocabulary>morning</vocabulary>, before lunch begins.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "gyuunyuu": {
@@ -1726,12 +1723,12 @@
     }
   },
   "hiru": {
-    "meaning_mnemonic": "At the top of the mountain trail the vending machine unlocks its second slot only once the sun sits directly overhead — no earlier, no later. Hikers who arrive starving learn to wait for that one narrow window, because whatever the machine drops then is the only lunch they get: noon, dead center of the <kanji>daytime</kanji>.",
-    "reading_mnemonic": "A hiker collapses at the mountain-trail vending machine at midday, and it dispenses a bandage instead of a drink, printed with the words <reading>heal you</reading> — which is exactly how <reading>ひる</reading> sounds when the machine's speaker crackles it out at noon, every single day.",
+    "meaning_mnemonic": "The <kanji>daytime</kanji> kanji and the <vocabulary>noon</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "At the mountain trail's vending machine, a <reading>hero</reading> refuses to climb until 「<reading>ひる</reading>」 strikes, since he only fights at <vocabulary>noon</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "hirugohan": {
@@ -1943,12 +1940,12 @@
     }
   },
   "ima": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a cat ducks under the eaves the instant the rain starts — exactly the <kanji>now</kanji> image, a person taking cover under a wide roof, caring about nothing before or after. It won't budge from that dry spot even when the enormous bell rings, because for that cat there is no later, only this exact drip-free moment: now.",
-    "reading_mnemonic": "At Koichi's konbini, the till beeps the moment <reading>Emma</reading> grabs the last onigiri and eats it standing right there, refusing to wait — because for her there is only <reading>いま</reading>, this exact beeping instant, never later, never before: now.",
+    "meaning_mnemonic": "The <kanji>now</kanji> kanji and the <vocabulary>now</vocabulary> word are exactly the same, so whenever you say it, that is the only moment it ever points to.",
+    "reading_mnemonic": "A hiker at the mountain trail's vending machine slams the button and shouts <reading>いま</reading>, sounding just like shouting <reading>I'm-a</reading> grab this drink, because <vocabulary>now</vocabulary> is the only moment worth waiting for.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "imi": {
@@ -2158,13 +2155,11 @@
     }
   },
   "jibun-time": {
-    "meaning_mnemonic": "On the shrine's mossy steps the shadow post and its ruler announce the <kanji>hour</kanji>, and the woodcutter beside it handles everything smaller: one log, one <kanji>minute</kanji>, two halves leaning apart with a cat asleep on each. The cats can tell you exactly what time of day it is by counting the woodpile.",
-    "reading_mnemonic": "時 keeps the じ you already know and 分 its ぶん, so this one reads straight through as <reading>じぶん</reading>.",
-    "description": "時分 is dated and bookish — modern speech uses plain time expressions instead. The same reading also belongs to a far commoner word meaning oneself, so context, not sound, tells you which is meant.",
+    "meaning_mnemonic": "A <kanji>minute</kanji> sliced off of <kanji>time</kanji> tells you exactly what <vocabulary>time (of day)</vocabulary> it is.",
     "_meta": {
-      "generator_model": "opus-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "jibun": {
@@ -2187,12 +2182,11 @@
     }
   },
   "jikan": {
-    "meaning_mnemonic": "You are tracking the <kanji>time</kanji> by watching the sun climb the sky. But when it hits the <kanji>interval</kanji> of the open gate, the sun gets completely wedged in the gap. It stops moving, which means all the time / hours in the world have frozen.",
-    "reading_mnemonic": "Since this word is made of kanji you already learned, the reading is just <reading>じかん</reading>.",
+    "meaning_mnemonic": "How much <kanji>time</kanji> sits in the <kanji>between</kanji> of two moments is exactly <vocabulary>time / hours</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "jisho": {
@@ -2761,12 +2755,12 @@
     }
   },
   "kinou": {
-    "meaning_mnemonic": "Picture that same barred window from the <kanji>day</kanji> story, sun and all — except now it's already downriver. The current has carried the whole sunlit frame past the bank, out past where you could ever wade in after it. Whatever daylight you missed while it drifted by is gone for good: <kanji>yesterday</kanji>.",
-    "reading_mnemonic": "Every evening, Grandma Kane's shrine cats knock her <reading>keno</reading> ticket off the mossy steps, and by the time she finds it, the numbers already belong to a closed draw. She reads them anyway and sighs 「<reading>きのう</reading>」 — already over, every time.",
+    "meaning_mnemonic": "The <kanji>day</kanji> that already slipped past you, gone before you could grab it, is <vocabulary>yesterday</vocabulary>.",
+    "reading_mnemonic": "At the riverbank someone fishes a soggy calendar page out of the water and reads <reading>きのう</reading> off it, sounding like a rusty <reading>key</reading> to a day already washed downstream, and that lost page is <vocabulary>yesterday</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kinyoubi": {
@@ -2968,12 +2962,11 @@
     }
   },
   "kongetsu": {
-    "meaning_mnemonic": "The person under that wide roof stops watching the rain and looks up through a gap in the tiles at the crescent hanging there. They're not thinking about last week or next week — only <kanji>now</kanji>, only this exact sliver of <kanji>month</kanji> hanging overhead. Whatever's happening under that roof is happening this month.",
-    "reading_mnemonic": "今 already gives you こん and 月 already gives you げつ — stack them and you get exactly <reading>こんげつ</reading>, nothing new to learn.",
+    "meaning_mnemonic": "<kanji>Now</kanji> lands on whichever lap of the <kanji>month</kanji> the moon is currently making, and that lap is <vocabulary>this month</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "konna": {
@@ -3003,12 +2996,11 @@
     }
   },
   "konshuu": {
-    "meaning_mnemonic": "The <kanji>now</kanji> person, still huddled under their roof ignoring past and future, turns out to be standing right on the calendar page — the winding path of the <kanji>week</kanji> loops directly under their feet. Wherever they plant themselves is exactly where the loop currently sits. This week.",
-    "reading_mnemonic": "今 already carries the こん reading and 週 already carries the しゅう reading, so stacked together in order they simply give you <reading>こんしゅう</reading> — no story needed.",
+    "meaning_mnemonic": "The moment <kanji>now</kanji> falls on is always inside one lap of the <kanji>week</kanji>, and that lap is <vocabulary>this week</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "koohii": {
@@ -3084,12 +3076,12 @@
     }
   },
   "kotoshi": {
-    "meaning_mnemonic": "You invite the scarecrow to take cover under the roof right <kanji>now</kanji>. It's used to standing out in the weather for a full <kanji>year</kanji> at a time, but you decide it deserves to stay inside for this year.",
-    "reading_mnemonic": "You find the scarecrow shivering in the snow, so you give her a thick winter <reading>coat. She</reading> puts it on with her stiff straw arms, grateful that <reading>ことし</reading> she won't freeze.",
+    "meaning_mnemonic": "Whatever year is <kanji>now</kanji> is simply this <kanji>year</kanji> — nothing else counts as <vocabulary>this year</vocabulary>.",
+    "reading_mnemonic": "A tailor named <reading>Coat, She</reading> sews exactly one <vocabulary>this year</vocabulary> label, stitching 「<reading>ことし</reading>」 into the collar and burning every other date.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kouban": {
@@ -3247,21 +3239,20 @@
     }
   },
   "kyonen": {
-    "meaning_mnemonic": "You walk up to the scarecrow that has been silently watching the field for a whole <kanji>year</kanji>. Its straw arms are sagging and birds have built nests in its hat, clearly showing that it has been stuck out here since last year.",
-    "reading_mnemonic": "You are directing a play starring the scarecrow, but it keeps missing its <reading>cue. Nena</reading>, your stage manager, sighs and reminds you that it was much better at acting <reading>きょねん</reading>.",
+    "meaning_mnemonic": "A <kanji>year</kanji> already scratched onto the shield-board and left behind you is <vocabulary>last year</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kyou": {
-    "meaning_mnemonic": "Ducking under that same wide roof, the <kanji>now</kanji> person refuses to think about yesterday or tomorrow — this instant is all there is. Beside them, through the barred window, the <kanji>day</kanji>'s sun blazes straight in, swallowing the doorway in light. That flood of light, happening right now, on this day: today.",
-    "reading_mnemonic": "At Koichi's konbini, the till only sounds its <reading>cue</reading> once every rotation, right as sunrise floods the doorway. Grandma Kane hears it, checks the light, and mutters 「<reading>きょう</reading>」 — the one signal that tells her which day she's actually standing in.",
+    "meaning_mnemonic": "The <kanji>now</kanji> you are standing in belongs to whichever <kanji>day</kanji> the sun happens to be up, and that day is <vocabulary>today</vocabulary>.",
+    "reading_mnemonic": "Sei's teacher circles the date on the board and calls out <reading>きょう</reading>, which sounds exactly like calling <reading>cue</reading> for the pop quiz, because <vocabulary>today</vocabulary> is officially starting.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kyoudai": {
@@ -3363,57 +3354,51 @@
     }
   },
   "maiasa": {
-    "meaning_mnemonic": "The wind-up alarm clock that means <kanji>every</kanji> doesn't sit on a nightstand — it sits on the windowsill, cranked so tight that the instant <kanji>morning</kanji> light touches it, it detonates. Every morning: same crank, same detonation, same jolt out of bed. You can set your dawn by it.",
-    "reading_mnemonic": "This word simply stacks the readings you already know: 毎 as まい plus 朝 as あさ gives you <reading>まいあさ</reading>.",
+    "meaning_mnemonic": "Koichi's konbini shutter grinds open at <kanji>every</kanji> <kanji>morning</kanji>'s first light, and that daily grind is <vocabulary>every morning</vocabulary> itself.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "maiban": {
-    "meaning_mnemonic": "That wind-up alarm clock that means <kanji>every</kanji> got smuggled onto the riverbank and buried in the mud with its key still poking out. At the same instant each night, the current winds it tight and it clangs itself off in the dark, startling every fish for a mile. Same hour, same racket, every <kanji>night</kanji>.",
-    "reading_mnemonic": "This word is just 毎's reading まい plus 晩's reading ばん stacked together, giving 「<reading>まいばん</reading>」: every night.",
+    "meaning_mnemonic": "The shrine bell at Grandma Kane's rings out <kanji>every</kanji> single time the sun goes down, and that relentless repeat is <vocabulary>every night</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "mainen": {
-    "meaning_mnemonic": "The wind-up alarm clock gets planted in the field beside the scarecrow, refusing to ring until it's watched the same circuit: rice sown, grown, harvested, the field bare again. Only once the seasons finish that silent turn does the clock finally clank off — then winds itself back up to stand watch through it again, without fail. That's the clock marking <kanji>every</kanji> single <kanji>year</kanji>.",
-    "reading_mnemonic": "毎 keeps its taught まい and 年 keeps its taught ねん, combining exactly as expected into <reading>まいねん</reading>.",
+    "meaning_mnemonic": "Notch <kanji>every</kanji> ban onto the <kanji>year</kanji> board and the tally becomes <vocabulary>every year</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "mainichi": {
-    "meaning_mnemonic": "The wind-up alarm clock that means <kanji>every</kanji> is bolted straight onto the window-with-a-bar that means <kanji>day</kanji>. It doesn't wait for the sun to climb — the second it rings, it drags the window open by force, hour after identical hour, and daylight has no choice but to show up. That's every day.",
-    "reading_mnemonic": "毎 gives you まい and 日 gives you にち, so stack them exactly as taught and you get <reading>まいにち</reading> — no surprises here.",
+    "meaning_mnemonic": "Slap <kanji>every</kanji> ban onto the calendar and it covers <kanji>day</kanji> after day, which is just <vocabulary>every day</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "maishuu": {
-    "meaning_mnemonic": "The wind-up alarm clock drags itself onto the calendar page, walking the winding path one square at a time and ringing at every stop. Once it clanks around the whole seven-day loop and lands back at the start, it winds itself straight back up to walk the same route again, without fail. That's a clock stuck doing <kanji>every</kanji> single <kanji>week</kanji> on repeat.",
-    "reading_mnemonic": "毎 keeps its taught まい and 週 keeps its taught しゅう, combining exactly as expected into <reading>まいしゅう</reading>.",
+    "meaning_mnemonic": "<kanji>Every</kanji> <kanji>week</kanji> loops back to Monday like a stubborn circle, and that loop is <vocabulary>every week</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "maitsuki": {
-    "meaning_mnemonic": "The wind-up alarm clock sits on its shelf watching the crescent moon through the window, refusing to ring until it fattens, fades, then swings back to that same thin sliver. Only once that full swing is done does the clock finally clank off — then winds itself right back up to keep watching, without fail. That's the clock marking off <kanji>every</kanji> single <kanji>month</kanji>.",
-    "reading_mnemonic": "毎 keeps its taught まい and 月 keeps its taught つき, combining exactly as expected into <reading>まいつき</reading>.",
+    "meaning_mnemonic": "Cover <kanji>every</kanji> lap the <kanji>month</kanji> moon makes and you get <vocabulary>every month</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "man-v": {
@@ -3861,12 +3846,11 @@
     }
   },
   "nannji": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: <kanji>what</kanji> <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
-    "reading_mnemonic": "何 reads なん here and 時 keeps じ, combining straight into <reading>なんじ</reading> — exactly what you would expect when asking the time.",
+    "meaning_mnemonic": "Put <kanji>what</kanji> directly in front of <kanji>time</kanji> and you get the question itself, <vocabulary>what time</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "nanoka": {
@@ -4527,12 +4511,12 @@
     }
   },
   "ototoi": {
-    "meaning_mnemonic": "The smug goat is certain her one-contestant talent show already happened — she just can't recall which sun-window <kanji>day</kanji> it played in. She backs through <kanji>yesterday</kanji>'s window, then one more window behind that, since in her world there is only ever <kanji>one</kanji> winner. Two windows back is where she finds it: the day before yesterday.",
-    "reading_mnemonic": "At the riverbank, a scruffy otter drags the same battered toy from the water, swearing it's the first time. The other otters know better — they watched that toy sink two mornings back, on <reading>おととい</reading>, and nobody tells the <reading>otter</reading> <reading>toy</reading> story twice.",
+    "meaning_mnemonic": "Count back <kanji>one</kanji> more <kanji>day</kanji> past yesterday and you land on <vocabulary>the day before yesterday</vocabulary>.",
+    "reading_mnemonic": "At the riverbank an <reading>otter toy</reading> washes ashore two days late, stamped <reading>おととい</reading> for <vocabulary>the day before yesterday</vocabulary> it went missing.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "otousan": {
@@ -4637,30 +4621,27 @@
     }
   },
   "raigetsu": {
-    "meaning_mnemonic": "The tree at the crossroads still waves in every traveler for shade, but tonight it's packed solid. It points up at the crescent overhead and tells the next pair to <kanji>come</kanji> back once that sliver of <kanji>month</kanji> has swung all the way around and grown thin again. That's next month's shade, not this one's.",
-    "reading_mnemonic": "来 already gives you らい and 月 already gives you げつ — stack them straight through into <reading>らいげつ</reading>.",
+    "meaning_mnemonic": "The rice due to <kanji>come</kanji> up won't be ready until one more lap of the <kanji>moon</kanji> finishes, and that lap is <vocabulary>next month</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "rainen": {
-    "meaning_mnemonic": "The tree at the crossroads waves its branches at the scarecrow, telling it to <kanji>come</kanji> rest in the shade. The scarecrow yells back that it has to stand in the field for the rest of the <kanji>year</kanji>, but promises to finally take a break next year.",
-    "reading_mnemonic": "The reading is exactly what you learned for the kanji: 来 (らい) plus 年 (ねん) makes <reading>らいねん</reading>.",
+    "meaning_mnemonic": "Another chevron is about to <kanji>come</kanji>, scratched onto the shield-board for a <kanji>year</kanji> that hasn't happened yet: <vocabulary>next year</vocabulary>.",
     "_meta": {
-      "generator_model": "gemini-web",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "raishuu": {
-    "meaning_mnemonic": "The tree at the crossroads is still waving <kanji>come</kanji> at anyone nearby, but now it's leaning off the far edge of the calendar page, calling toward the square just past the current loop of the <kanji>week</kanji> — beckoning travelers to a loop that hasn't even started. Next week.",
-    "reading_mnemonic": "来 already carries the らい reading and 週 already carries the しゅう reading, so stacked together in order they simply give you <reading>らいしゅう</reading> — no story needed.",
+    "meaning_mnemonic": "A crop that hasn't <kanji>come</kanji> up yet breaks the surface on the <kanji>week</kanji> after this one, which is exactly <vocabulary>next week</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "rajio": {
@@ -4960,12 +4941,11 @@
     }
   },
   "sengetsu": {
-    "meaning_mnemonic": "Those two legs, already <kanji>ahead</kanji> of everyone, are long gone before you've even reached the door. By the time you catch up, the sliver of <kanji>month</kanji> they left under has faded to nothing and grown back new. Whatever they did, they did it under last month's crescent.",
-    "reading_mnemonic": "先 already gives you せん and 月 already gives you げつ — lay them end to end into <reading>せんげつ</reading>.",
+    "meaning_mnemonic": "The one already <kanji>ahead</kanji> of you finished its <kanji>moon</kanji>-lap before you did, and that finished lap is <vocabulary>last month</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "sensei": {
@@ -4978,12 +4958,11 @@
     }
   },
   "senshuu": {
-    "meaning_mnemonic": "Those <kanji>previous</kanji> legs are at it again, always a step ahead — they've already marched clear across the loop of the <kanji>week</kanji> on the calendar page and finished tracing it before you woke up. By the time you look at the grid, that loop is closed and cold. Last week.",
-    "reading_mnemonic": "先 already carries the せん reading and 週 already carries the しゅう reading, so stacked together in order they simply give you <reading>せんしゅう</reading> — no story needed.",
+    "meaning_mnemonic": "Whoever strode <kanji>ahead</kanji> already crossed the <kanji>week</kanji> before this one, and that finished lap is <vocabulary>last week</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "sentaku-suru": {
@@ -5812,12 +5791,12 @@
     }
   },
   "too": {
-    "meaning_mnemonic": "At Koichi's konbini, someone has arranged the onigiri into a stack of perfect crosses — the <kanji>ten</kanji> mark hikers make with two raised hands when they reach a full count. There are ten of them lined up by the register, each shaped like that same cross, and the till beeps once for every single one as the clerk recounts them. Ten things, stacked in crosses at the counter.",
-    "reading_mnemonic": "At the riverbank, ten hikers wade in at once and every one stubs a <reading>toe</reading> on the same submerged cross-shaped rock, yelping in unison. Someone tallies the yelps on raised fingers, both hands forming that ten-shaped cross: 「<reading>とお</reading>」 — ten things, ten sore toes.",
+    "meaning_mnemonic": "The <kanji>ten</kanji> kanji and the <vocabulary>ten things</vocabulary> word are exactly the same, so counting up to ten is all this one ever means.",
+    "reading_mnemonic": "At Koichi's konbini he stubs his <reading>toe</reading> on the shelf ten times, yelping <reading>とお</reading> each time, and swears the broken onigiri come to exactly <vocabulary>ten things</vocabulary>.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "tooi": {
@@ -6322,12 +6301,12 @@
     }
   },
   "yoru": {
-    "meaning_mnemonic": "Every cat in the neighborhood gathers on Grandma Kane's mossy shrine steps only once the enormous bell has gone silent and the sky has turned fully black, packed shoulder to shoulder in a way they'd never risk in daylight. That one pitch-dark hour when they finally show themselves is the only word for it: night.",
-    "reading_mnemonic": "The oldest cat on those steps is known only as <reading>Yore</reading> — legend has it she's kept watch since days of <reading>yore</reading>, though nobody living has ever actually seen her arrive. She only appears once <reading>よる</reading> falls, prowling the shrine in total dark before vanishing again by sunrise.",
+    "meaning_mnemonic": "Sei's school gates lock shut the moment <vocabulary>night</vocabulary> falls, leaving the sports field dark and silent.",
+    "reading_mnemonic": "A ghost at the riverbank moans 「<reading>よる</reading>」, which sounds just like calling <reading>your</reading> name, right as <vocabulary>night</vocabulary> falls.",
     "_meta": {
       "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "yotei": {
@@ -6422,12 +6401,11 @@
     }
   },
   "yuugata": {
-    "meaning_mnemonic": "At Grandma Kane's shrine the enormous bell only rings once the light turns orange from one <kanji>direction</kanji> and the mossy steps fill with cats — never at noon, never after full dark, only in that hinge between day and night. That one ring marks evening arriving for every <kanji>person</kanji> on the path, gonged out over a hundred cats who all seem to expect it.",
-    "reading_mnemonic": "Every dusk the shrine cats surround Grandma Kane and yowl what sounds exactly like <reading>you got a</reading> curfew, and it's true: the bell tolls <reading>ゆうがた</reading> the moment the sky goes orange, and every cat scatters home for the night.",
+    "meaning_mnemonic": "Koichi's konbini dims its lights and marks the onigiri shelf half price exactly when <vocabulary>evening</vocabulary> falls, every single day.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "yuumei": {

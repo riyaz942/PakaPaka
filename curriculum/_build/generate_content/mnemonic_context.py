@@ -18,7 +18,9 @@ inputs the generator prompt and the mechanical gate both need:
     those components and never a component the learner was not taught
     (docs/content/content-pipeline-plan.md 2b).
   * vocabulary (Rev 1, 2d): the component kanji (kanji -> vocabulary `requires`
-    edges) with their established meaning mnemonics, plus the **reading
+    edges) with their established meaning mnemonics, the *untaught* kanji the
+    word is also written with (`builds_on` edges) carrying their meaning and
+    nothing else, plus the **reading
     regularity** of the word — computed mechanically from the word's reading
     against its kanji's KANJIDIC readings, so the "full reading story vs.
     pointer at an earlier word vs. no reading mnemonic at all" choice is
@@ -353,20 +355,30 @@ def radical_context(level, slug):
 # --- vocabulary (Rev 1, 2d) ------------------------------------------------
 
 def vocab_component_edges(level):
-    """{vocab_slug: [kanji_slug, ...]} for `requires` edges kanji -> vocabulary.
+    """{vocab_slug: {"requires": [kanji_slug, ...], "builds_on": [...]}}.
 
-    These are the same edges the app's "Kanji in this word" chips use, so a
-    vocab mnemonic may only build on kanji the learner has actually been
-    taught."""
+    Both kanji -> vocabulary edge kinds, kept apart because they mean different
+    things to a mnemonic. `requires` is a kanji this level teaches: the lesson
+    gates on it, the learner has read its story, and a word mnemonic chains from
+    that story. `builds_on` is a kanji the word is *written* with but does not
+    wait for — 昨 in 昨日, banded N3 while the word is N5 — of which there are
+    2220.
+
+    The app already shows both as "Kanji in this word" chips
+    (`itemRepository.getComponentParentsForItem`), so a mnemonic that names only
+    the first kind leaves a character on the page the story acts as if is not
+    there: 昨日's story says "the day that slipped past", and the half of the
+    word carrying "previous" is never accounted for."""
     graph = _load_json(GRAPH_PATH)
     out = {}
     for e in graph["edges"]:
         if (
-            e.get("relationship_type") == "requires"
+            e.get("relationship_type") in ("requires", "builds_on")
             and e.get("from_type") == "kanji"
             and e.get("to_type") == "vocabulary"
         ):
-            out.setdefault(e["to_slug"], []).append(e["from_slug"])
+            entry = out.setdefault(e["to_slug"], {"requires": [], "builds_on": []})
+            entry[e["relationship_type"]].append(e["from_slug"])
     return out
 
 
@@ -696,10 +708,11 @@ def vocab_context(level, slug, cast=None):
         raise KeyError(f"unknown vocabulary slug {slug!r} in level {level}")
     item = vocab[slug]
 
-    # Only kanji the learner has already met may appear in a word's story. A
-    # word can sit at a level *below* one of its own kanji (N5's 明日 uses 明,
-    # taught at N4); that kanji is not a usable component for the *meaning*
-    # story, so it is dropped here.
+    # The window that decides which kanji bring a *story* to the word. A word
+    # can sit at a level below one of its own kanji (N5's 明日 uses 明, taught at
+    # N4), and that kanji has no established story for the learner to chain
+    # from, so it does not become a component here. It is not dropped outright —
+    # it comes back below as an untaught component, meaning-only.
     #
     # Plan v2 Phase C put this rule back in force: pull-forward is gone, so a
     # learner really does reach 写真 without having met 写 or 真. The window is
@@ -713,15 +726,19 @@ def vocab_context(level, slug, cast=None):
     kanji = {}
     for lvl in taught_levels:
         kanji.update(_by_slug(load_items("kanji", lvl)))
+    all_kanji = {}
+    for lvl in ALL_LEVELS:
+        all_kanji.update(_by_slug(load_items("kanji", lvl)))
 
     form = item["primary_form"]
     readings = _reading_answers(item)
     reading = readings[0] if readings else ""
+    meaning_synonyms = _meaning_answers(item) or [item["meaning"]]
 
-    comp_slugs = vocab_component_edges(level).get(slug, [])
+    edges = vocab_component_edges(level).get(slug, {})
     components = []
     seen_chars = set()
-    for kslug in comp_slugs:
+    for kslug in edges.get("requires", []):
         k = kanji.get(kslug)
         # A character re-taught at a later level has two slugs and two edges;
         # the learner sees one kanji, so keep the first.
@@ -741,12 +758,48 @@ def vocab_context(level, slug, cast=None):
             # format_vocab_components).
             "meaning_mnemonic": k.get("meaning_mnemonic", ""),
         })
+    # The other half of the word: kanji it is written with but does not wait
+    # for. The learner has met neither the character nor its story, so only the
+    # *meaning* travels — see `format_vocab_components`.
+    #
+    # Two filters, both deliberate:
+    #
+    #   * A kanji whose meaning simply restates the word's is dropped. Naming it
+    #     produces "the yesterday day is yesterday" (昨日), "the fruit thing is
+    #     fruit" (果物) — worse than saying nothing, and the same `_shares_meaning`
+    #     test `identical_kanji` already uses.
+    #   * A word with *no* taught kanji at all gets none of these. That word
+    #     already has its own contract (name no kanji, write a standalone story),
+    #     and building a whole mnemonic out of characters the learner has never
+    #     seen is a different question from filling in the missing half of one
+    #     they can partly read.
+    own_words = _meaning_word_set(meaning_synonyms)
+    untaught_components = []
+    if components:
+        for kslug in edges.get("builds_on", []):
+            k = all_kanji.get(kslug)
+            if not k or k["primary_form"] in seen_chars:
+                continue
+            synonyms = _meaning_answers(k) or [k["meaning"]]
+            if _shares_meaning(own_words, _meaning_word_set(synonyms)):
+                continue
+            seen_chars.add(k["primary_form"])
+            untaught_components.append({
+                "slug": kslug,
+                "char": k["primary_form"],
+                "meaning": k["meaning"],
+                "meaning_synonyms": synonyms,
+            })
+
     # Component order follows the written form so a story reads left to right.
-    components.sort(key=lambda c: form.find(c["char"]) if c["char"] in form else len(form))
+    def _form_order(c):
+        return form.find(c["char"]) if c["char"] in form else len(form)
+
+    components.sort(key=_form_order)
+    untaught_components.sort(key=_form_order)
 
     cast = cast or cast_lib.load_cast()
     regularity = reading_regularity(form, reading)
-    meaning_synonyms = _meaning_answers(item) or [item["meaning"]]
 
     return {
         "type": "vocab",
@@ -758,6 +811,7 @@ def vocab_context(level, slug, cast=None):
         "reading": reading,
         "word_type": VOCAB_WORD_TYPES.get(slug, []),
         "components": components,
+        "untaught_components": untaught_components,
         "identical_kanji": identical_kanji(form, meaning_synonyms, components),
         "regularity": regularity,
         # Rev 6: the derivation the reading mnemonic used to recite in prose,
@@ -882,13 +936,40 @@ def format_look_alikes(entries):
     return "\n".join(lines)
 
 
-def format_vocab_components(components):
+def format_vocab_components(ctx):
+    """The `{{COMPONENTS}}` block: every kanji in the written form the story may
+    name, in written-form order, taught and untaught interleaved.
+
+    The two kinds carry different amounts. A taught kanji brings its established
+    meaning story, and the word's story continues it. An untaught one brings its
+    **meaning only** — the learner has not read its story, so hooking into that
+    story teaches nothing, and it is what keeps this block buildable: 17 N5 and
+    51 N4 of those kanji have no generated `meaning_mnemonic` at all, so the
+    ordering `ValueError` below would fire on half the set.
+    """
+    components = ctx["components"]
     if not components:
         return ("(none taught — this word's kanji are not in the taught set, or it "
                 "is written in kana. Write a standalone story for the word itself, "
                 "and do NOT name any kanji the learner has not been taught.)")
+    form = ctx["form"]
+    untaught = {c["char"] for c in ctx["untaught_components"]}
+    ordered = sorted(
+        components + ctx["untaught_components"],
+        key=lambda c: form.find(c["char"]) if c["char"] in form else len(form))
     lines = []
-    for c in components:
+    for c in ordered:
+        syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
+        if c["char"] in untaught:
+            lines.append(
+                f"- {c['char']} — “{syn}” — **the learner has not been taught this "
+                f"kanji.** They see the character in this word and nothing else: no "
+                f"story, no reading, no card. So use the meaning above as a plain "
+                f"fact and make it carry its share of the logic — never point at "
+                f"“its story”, never name its reading, and never say it is one they "
+                f"know."
+            )
+            continue
         if not c["meaning_mnemonic"]:
             # Same ordering rule one layer up: kanji -> vocabulary.
             raise ValueError(
@@ -897,7 +978,6 @@ def format_vocab_components(components):
                 "--type kanji` for the level that teaches it, then "
                 "`generate.py --level <level>`)."
             )
-        syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
         readings = "、".join(c["onyomi"] + c["kunyomi"]) or "(none)"
         lines.append(
             f"- {c['char']} — “{syn}” (taught readings: {readings})\n"

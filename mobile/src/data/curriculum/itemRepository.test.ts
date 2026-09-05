@@ -355,8 +355,8 @@ describe('itemRepository', () => {
 
     const parents = getRequiredParentsForItems(db, ['10']);
     expect(parents.get('10')).toEqual([
-      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
-      { id: '2', primaryForm: '口', itemType: 'radical', meaning: 'mouth' },
+      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun', inBand: true },
+      { id: '2', primaryForm: '口', itemType: 'radical', meaning: 'mouth', inBand: true },
     ]);
   });
 
@@ -553,7 +553,7 @@ describe('itemRepository', () => {
     ]);
 
     expect(getComponentParentsForItem(db, '10', 'kanji')).toEqual([
-      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
+      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun', inBand: true },
     ]);
     expect(getRequiredParentsForItems(db, ['10']).get('10')).toBeUndefined();
   });
@@ -605,8 +605,8 @@ describe('itemRepository', () => {
     ]);
 
     expect(getComponentParentsForItem(db, '10', 'vocabulary')).toEqual([
-      { id: '1', primaryForm: '日', itemType: 'kanji', meaning: 'day' },
-      { id: '2', primaryForm: '記', itemType: 'kanji', meaning: 'record' },
+      { id: '1', primaryForm: '日', itemType: 'kanji', meaning: 'day', inBand: true },
+      { id: '2', primaryForm: '記', itemType: 'kanji', meaning: 'record', inBand: false },
     ]);
   });
 

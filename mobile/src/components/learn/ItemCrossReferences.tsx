@@ -8,10 +8,10 @@ import {
 import type { RelatedItem } from '@/core/content/content.types';
 import type {
   CurriculumItemDetail,
-  CurriculumParentItem,
   GrammarVocabLink,
   RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
+import type { ComponentParent } from '@/data/hooks/useComponentParents';
 
 type ItemCrossReferencesProps = {
   item: CurriculumItemDetail;
@@ -19,7 +19,7 @@ type ItemCrossReferencesProps = {
    * whether this section will render anything at all. */
   related: RelatedItem[];
   /** Graph parents from `useComponentParents` — the component direction. */
-  parents?: CurriculumParentItem[];
+  parents?: ComponentParent[];
   grammarVocabLinks?: GrammarVocabLink[];
   relatedGrammar?: RelatedGrammarItem[];
   /**
@@ -41,7 +41,7 @@ const COMPONENT_LABEL: Record<string, string> = {
 };
 
 function toChips(
-  items: (RelatedItem | CurriculumParentItem)[],
+  items: (RelatedItem | ComponentParent)[],
 ): CrossReferenceChip[] {
   return items.map((entry) => ({
     id: entry.id,
@@ -50,6 +50,9 @@ function toChips(
     // Radicals with no glyph fall back to their name as the form; repeating it
     // underneath would read as a stutter.
     meaning: entry.meaning === entry.primaryForm ? undefined : entry.meaning,
+    // Only the component direction carries this; a "leads to" item is not
+    // something the learner is behind on.
+    notYetLearned: 'notYetLearned' in entry && entry.notYetLearned,
   }));
 }
 
@@ -58,7 +61,7 @@ function toChips(
  * it can sit next to the meaning mnemonic (which references the same radicals)
  * instead of only at the bottom of the screen with the other cross-links.
  */
-export function KanjiBuiltFromSection({ parents }: { parents: CurriculumParentItem[] }) {
+export function KanjiBuiltFromSection({ parents }: { parents: ComponentParent[] }) {
   return (
     <CrossReferenceSection
       label={COMPONENT_LABEL.kanji}

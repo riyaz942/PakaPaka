@@ -14,10 +14,12 @@ export function isItemUnlocked(
   });
 }
 
-export function getUnmetPrerequisites(
-  parents: ContentParentItem[],
+// Generic so the caller gets its own richer parent type back — this only
+// filters, it never rebuilds the entries.
+export function getUnmetPrerequisites<T extends ContentParentItem>(
+  parents: T[],
   parentStatuses: Map<string, ContentStudyStatus>,
-): ContentParentItem[] {
+): T[] {
   return parents.filter((parent) => {
     const status = parentStatuses.get(parent.id) ?? 'not_started';
     return status === 'not_started';

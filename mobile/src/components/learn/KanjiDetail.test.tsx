@@ -22,11 +22,11 @@ import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
-  CurriculumParentItem,
   ExampleSentence,
   KanjiReading,
   VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
+import type { ComponentParent } from '@/data/hooks/useComponentParents';
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn() } }));
 
@@ -70,9 +70,9 @@ const acceptedAnswers: AcceptedAnswer[] = [
   { id: '2', answerType: 'meaning', answerText: 'sun', isPrimary: false },
 ];
 
-const parents: CurriculumParentItem[] = [
-  { id: '1', primaryForm: '木', itemType: 'radical', meaning: 'tree' },
-  { id: '2', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
+const parents: ComponentParent[] = [
+  { id: '1', primaryForm: '木', itemType: 'radical', meaning: 'tree', inBand: true, notYetLearned: false },
+  { id: '2', primaryForm: '日', itemType: 'radical', meaning: 'sun', inBand: true, notYetLearned: false },
 ];
 
 const lookAlikes: VisuallySimilarItem[] = [
@@ -227,8 +227,8 @@ describe('KanjiDetail Rev 1 content', () => {
       primaryForm: '三',
       meaning: 'three',
     };
-    const selfRadical: CurriculumParentItem[] = [
-      { id: 'r3', primaryForm: '三', itemType: 'radical', meaning: 'three' },
+    const selfRadical: ComponentParent[] = [
+      { id: 'r3', primaryForm: '三', itemType: 'radical', meaning: 'three', inBand: true, notYetLearned: false },
     ];
 
     render(

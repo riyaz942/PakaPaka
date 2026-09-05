@@ -20,11 +20,11 @@ import type { RelatedItem } from '@/core/content/content.types';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
-  CurriculumParentItem,
   ExampleSentence,
   KanjiReading,
   VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
+import type { ComponentParent } from '@/data/hooks/useComponentParents';
 import { cn } from '@/utils/cn';
 
 type KanjiDetailProps = {
@@ -32,7 +32,7 @@ type KanjiDetailProps = {
   kanjiReadings: KanjiReading[];
   acceptedAnswers: AcceptedAnswer[];
   exampleSentences?: ExampleSentence[];
-  parents?: CurriculumParentItem[];
+  parents?: ComponentParent[];
   related?: RelatedItem[];
   lookAlikes?: VisuallySimilarItem[];
 };

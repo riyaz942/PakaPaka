@@ -26,10 +26,10 @@ import { conjugatedFormNote, type WordInflection } from '@/core/content/inflecti
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
-  CurriculumParentItem,
   ExampleSentence,
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
+import type { ComponentParent } from '@/data/hooks/useComponentParents';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
@@ -40,7 +40,7 @@ type VocabularyDetailProps = {
   acceptedAnswers: AcceptedAnswer[];
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
-  parents?: CurriculumParentItem[];
+  parents?: ComponentParent[];
   related?: RelatedItem[];
   /** Conjugated surface the learner tapped to get here, when they came from one. */
   surface?: string | null;

@@ -7,12 +7,14 @@ const radical: CurriculumParentItem = {
   id: '1',
   primaryForm: '日',
   itemType: 'radical',
+  inBand: true,
 };
 
 const kanji: CurriculumParentItem = {
   id: '2',
   primaryForm: '食',
   itemType: 'kanji',
+  inBand: true,
 };
 
 function statusMap(entries: Record<string, StudyStatus>): Map<string, StudyStatus> {

@@ -26,13 +26,13 @@ import { KanjiReadingPrimer } from '@/components/lesson/KanjiReadingPrimer';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   CurriculumItemDetail,
-  CurriculumParentItem,
   ExampleSentence,
   GrammarRule,
   GrammarVocabLink,
   KanjiReading,
   RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
+import type { ComponentParent } from '@/data/hooks/useComponentParents';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
@@ -54,7 +54,7 @@ export type LessonSectionProps = {
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
   relatedGrammar: RelatedGrammarItem[];
-  parents: CurriculumParentItem[];
+  parents: ComponentParent[];
   showReadingPrimer: boolean;
 };
 

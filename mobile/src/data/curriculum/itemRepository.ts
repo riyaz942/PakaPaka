@@ -81,6 +81,17 @@ export type CurriculumParentItem = {
    * dependency graph builds parents from ids alone and has no gloss to give.
    */
   meaning?: string;
+  /**
+   * Whether the curriculum teaches this component at or before the child's own
+   * level. A word can be written with a kanji from a later band — 昨 (N3) in
+   * N5's 昨日 — and that kanji reaches the word through `builds_on` rather than
+   * `requires`, so it is a chip the learner is not yet expected to know.
+   *
+   * A curriculum fact, not a learner one: it says the character comes later,
+   * not that this learner has not met it. `useComponentParents` is where the
+   * two are combined.
+   */
+  inBand: boolean;
 };
 
 type ItemRow = {
@@ -292,19 +303,29 @@ type ParentRow = {
   sort_order: number;
 };
 
-function mapParentRow(row: ParentRow): CurriculumParentItem {
+function mapParentRow(row: ParentRow, inBand: boolean): CurriculumParentItem {
   return {
     id: String(row.id),
     primaryForm: row.primary_form || row.meaning,
     itemType: row.item_type,
     meaning: row.meaning,
+    inBand,
   };
 }
 
+/**
+ * `inBand` is passed in rather than derived from `relationshipType`, because the
+ * two edge kinds do not mean the same thing at both layers. Only the kanji →
+ * vocabulary pair splits on band: `requires` is in-band, `builds_on` is a later
+ * band. Radical → kanji is authored as `builds_on` for every radical, and Phase
+ * A re-filed each one to the level of the first kanji that needs it, so those
+ * are always in-band.
+ */
 function getParentsByRelationshipType(
   db: SQLiteDatabase,
   itemIds: string[],
   relationshipType: 'requires' | 'builds_on' | 'reinforces',
+  inBand: boolean,
 ): Map<string, CurriculumParentItem[]> {
   const result = new Map<string, CurriculumParentItem[]>();
 
@@ -333,7 +354,7 @@ function getParentsByRelationshipType(
     for (const row of rows) {
       const itemId = String(row.child_item_id);
       const parents = result.get(itemId) ?? [];
-      parents.push(mapParentRow(row));
+      parents.push(mapParentRow(row, inBand));
       result.set(itemId, parents);
     }
   }
@@ -352,7 +373,7 @@ export function getRequiredParentsForItems(
   db: SQLiteDatabase,
   itemIds: string[],
 ): Map<string, CurriculumParentItem[]> {
-  return getParentsByRelationshipType(db, itemIds, 'requires');
+  return getParentsByRelationshipType(db, itemIds, 'requires', true);
 }
 
 /**
@@ -390,7 +411,8 @@ export function listLessonCandidatePool(
  * kanji and `builds_on` for the later-band ones. The chips answer "what is this
  * word written with", which does not depend on whether the kanji gates the
  * word — dropping the non-gating half would leave 写真 with no components at
- * all. In-band first, then out-of-band; each group in curriculum order.
+ * all. In-band first, then out-of-band; each group in curriculum order, and
+ * each row carrying which group it came from as `inBand`.
  *
  * Kanji components use `builds_on` (radical → kanji) — not `requires`, which
  * the curriculum never authors for that edge.
@@ -403,11 +425,11 @@ export function getComponentParentsForItem(
   if (itemType === 'vocabulary') {
     return [
       ...(getRequiredParentsForItems(db, [itemId]).get(itemId) ?? []),
-      ...(getParentsByRelationshipType(db, [itemId], 'builds_on').get(itemId) ?? []),
+      ...(getParentsByRelationshipType(db, [itemId], 'builds_on', false).get(itemId) ?? []),
     ];
   }
   if (itemType === 'kanji') {
-    return getParentsByRelationshipType(db, [itemId], 'builds_on').get(itemId) ?? [];
+    return getParentsByRelationshipType(db, [itemId], 'builds_on', true).get(itemId) ?? [];
   }
   return [];
 }

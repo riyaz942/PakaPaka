@@ -195,12 +195,12 @@ describe('CompareView', () => {
 
   it('dims component chips the two items share', () => {
     parents['left-1'] = [
-      { id: 'rad-1', primaryForm: '⻞', itemType: 'radical' },
-      { id: 'rad-2', primaryForm: '人', itemType: 'radical' },
+      { id: 'rad-1', primaryForm: '⻞', itemType: 'radical', inBand: true },
+      { id: 'rad-2', primaryForm: '人', itemType: 'radical', inBand: true },
     ];
     parents['right-1'] = [
-      { id: 'rad-1', primaryForm: '⻞', itemType: 'radical' },
-      { id: 'rad-3', primaryForm: '欠', itemType: 'radical' },
+      { id: 'rad-1', primaryForm: '⻞', itemType: 'radical', inBand: true },
+      { id: 'rad-3', primaryForm: '欠', itemType: 'radical', inBand: true },
     ];
     render(<CompareView leftId="left-1" rightId="right-1" />);
 
@@ -216,8 +216,8 @@ describe('CompareView', () => {
   });
 
   it('does not dim anything when the items share no components', () => {
-    parents['left-1'] = [{ id: 'rad-2', primaryForm: '人', itemType: 'radical' }];
-    parents['right-1'] = [{ id: 'rad-3', primaryForm: '欠', itemType: 'radical' }];
+    parents['left-1'] = [{ id: 'rad-2', primaryForm: '人', itemType: 'radical', inBand: true }];
+    parents['right-1'] = [{ id: 'rad-3', primaryForm: '欠', itemType: 'radical', inBand: true }];
     render(<CompareView leftId="left-1" rightId="right-1" />);
 
     expect(screen.getByTestId('compare-chip-left-rad-2').props.accessibilityLabel).not.toContain(

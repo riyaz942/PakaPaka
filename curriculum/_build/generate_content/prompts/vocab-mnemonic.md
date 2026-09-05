@@ -102,11 +102,21 @@ learner can carry to the next word — that is what the block above tells you.
 
 ## The kanji in this word
 
-Each one already has a meaning story the learner has read. **Hook into those
+Every character of the written form the learner can be told about, in the order
+they appear. These are the only kanji you may name.
+
+They come in two kinds, and the list says which each one is.
+
+**Taught** — the learner has read a meaning story for it. **Hook into those
 stories** — reuse their imagery instead of inventing a fresh scene that competes
 with what they already remember. Reusing the object is enough; restaging that
-kanji's own scene is what blows the budget. These are the only kanji you may
-name.
+kanji's own scene is what blows the budget.
+
+**Not taught** — this word is written with it, but it is banded later, so the
+learner meets the character here and nowhere else. There is no story to hook
+into and no reading to lean on, so you get its **meaning and nothing more**. Use
+that meaning as a plain fact in your logic. It still has to be load-bearing:
+this is the half of the word your story would otherwise leave unexplained.
 
 {{COMPONENTS}}
 
@@ -131,8 +141,10 @@ already have.
 The app colours the pieces the learner is meant to connect, so you mark them
 inline. Three tags, and nothing else:
 
-- In `meaning_mnemonic`, wrap **every component kanji's meaning**, where the
-  story uses it, in `<kanji>…</kanji>`. Tag the word doing the work in the
+- In `meaning_mnemonic`, wrap **every listed kanji's meaning**, taught or not,
+  where the story uses it, in `<kanji>…</kanji>`. The tag marks a piece of the
+  written form, so an untaught character wears it on the same terms as a taught
+  one. Tag the word doing the work in the
   sentence, not a label bolted on: `the <kanji>ground</kanji> splits`, never
   `the ground (<kanji>ground</kanji>) splits`.
 - In **both** mnemonics, wrap **this word's own meaning** in
@@ -171,11 +183,12 @@ learner that the colour means nothing.
 
 Call the `submit_vocab_mnemonic` tool exactly once with:
 
-1. **`meaning_mnemonic`** — one sentence, or two short ones, in which the
-   component kanji's meanings combine until they *produce* “{{MEANING}}”. Start
-   from the imagery those kanji already carry, put them in one claim, and let
-   the word's meaning fall out of the logic of what they are — see “The kanji
-   must add up to the word” above; that is the part that matters most. Strange
+1. **`meaning_mnemonic`** — one sentence, or two short ones, in which the listed
+   kanji's meanings combine until they *produce* “{{MEANING}}”. Start from the
+   imagery those kanji already carry — for an untaught one, from its bare
+   meaning — put them in one claim, and let the word's meaning fall out of the
+   logic of what they are — see “The kanji must add up to the word” above; that
+   is the part that matters most. Strange
    and funny is what survives reviews, but the absurdity has to be the
    mechanism, never a joke parked next to it. If the section “Is this word just
    its kanji?” says this one is, ignore this bullet and follow that section
@@ -226,9 +239,11 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
   nowhere. Every tag you open, close. Never nest them.
 - Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in either
   mnemonic. The computed reading-composition field beside them already does.
-- Meaning mnemonic: reference every kanji listed above by its taught meaning,
-  each wrapped in `<kanji>` where the story uses it. Never name a kanji that is
-  not in that list. Wrap this word's own meaning, once, in `<vocabulary>`.
+- Meaning mnemonic: reference every kanji listed above by the meaning given for
+  it, each wrapped in `<kanji>` where the story uses it — the untaught ones
+  included; they are in the word the learner is looking at. Never name a kanji
+  that is not in that list. Wrap this word's own meaning, once, in
+  `<vocabulary>`.
   **At most two sentences**, two terminal full stops and no more — the gate
   rejects a third. Stay under 230 characters, tags not counted — 260 for a kana
   word, whose meaning mnemonic carries the sound as well; going over is a

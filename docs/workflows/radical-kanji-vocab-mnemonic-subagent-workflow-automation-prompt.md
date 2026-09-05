@@ -167,7 +167,10 @@ comps = {}
 if KIND == 'kanji':
     comps = mc.decomposition_edges()  # all levels; callers filter per slug
 elif KIND == 'vocab':
-    comps = mc.vocab_component_edges(LEVEL)
+    # Both edge kinds: two words sharing 昨 group together whether or not
+    # the level teaches it.
+    comps = {slug: e['requires'] + e['builds_on']
+             for slug, e in mc.vocab_component_edges(LEVEL).items()}
 remaining, groups = list(todo), []
 while remaining:
     head = remaining.pop(0)

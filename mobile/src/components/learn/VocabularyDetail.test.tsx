@@ -175,13 +175,58 @@ describe('VocabularyDetail', () => {
         acceptedAnswers={acceptedAnswers}
         exampleSentences={exampleSentences}
         grammarVocabLinks={grammarVocabLinks}
-        parents={[{ id: '2', itemType: 'kanji', primaryForm: '私' }]}
+        parents={[{ id: '2', itemType: 'kanji', primaryForm: '私', inBand: true, notYetLearned: false }]}
       />,
     );
 
     expect(screen.getByText('Kanji in this word')).toBeTruthy();
     expect(screen.getByTestId('cross-ref-components-2')).toBeTruthy();
     expect(screen.queryByText('Prerequisites met')).toBeNull();
+  });
+
+  it('says which component kanji the learner has not met yet', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+        parents={[
+          { id: '1', itemType: 'kanji', primaryForm: '日', inBand: true, notYetLearned: false },
+          { id: '2', itemType: 'kanji', primaryForm: '昨', inBand: false, notYetLearned: true },
+        ]}
+      />,
+    );
+
+    // Both chips stay browsable — a detail screen informs, it never withholds.
+    expect(screen.getByTestId('cross-ref-components-1')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-components-2')).toBeTruthy();
+    expect(
+      screen.getByTestId('cross-ref-components-2').props.accessibilityLabel,
+    ).toContain('not learned yet');
+    expect(
+      screen.getByTestId('cross-ref-components-1').props.accessibilityLabel,
+    ).not.toContain('not learned yet');
+    expect(
+      screen.getByText("You haven't learned 昨 yet — it comes later in the course."),
+    ).toBeTruthy();
+  });
+
+  it('says nothing about later kanji when every component is one the learner has', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+        parents={[
+          { id: '1', itemType: 'kanji', primaryForm: '日', inBand: true, notYetLearned: false },
+          { id: '2', itemType: 'kanji', primaryForm: '昨', inBand: false, notYetLearned: false },
+        ]}
+      />,
+    );
+
+    expect(screen.queryByTestId('cross-ref-components-not-yet-learned')).toBeNull();
   });
 
   it('puts curriculum accepted answers behind a disclosure, distinct from the user editor', () => {

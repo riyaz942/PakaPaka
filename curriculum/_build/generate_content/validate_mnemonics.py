@@ -39,7 +39,10 @@ for 2b/2d):
        optional as above
     2. meaning_mnemonic references every taught component kanji's meaning inside
        a <kanji> tag, so the radical -> kanji -> vocabulary chain is literal and
-       visible
+       visible. The *untaught* kanji the word is also written with
+       (`ctx["untaught_components"]`) are allowed in the story and never
+       required: the prompt asks for them, but a word has only two sentences and
+       which half of a four-kanji compound they buy is a judgement, not a rule.
     3. both mnemonics name this word's own meaning inside a <vocabulary> tag
        (Rev 5, fresh drafts only) — the same self-tag the kanji layer carries as
        <kanji>, so the learner can tell a piece borrowed from below from the
@@ -825,7 +828,10 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
             errors += _markup_errors(
                 "reading_mnemonic", _strip_tags(reading_text, reading_tags))
 
-    # 2. the kanji -> vocabulary chain is literal, not name-dropped
+    # 2. the kanji -> vocabulary chain is literal, not name-dropped.
+    #    `ctx["untaught_components"]` is deliberately not passed: those kanji may
+    #    be named — nothing here forbids a character the word is written with —
+    #    but a story that could not fit one in is not a gate failure.
     errors += _component_errors(
         "meaning_mnemonic", meaning_text, "kanji", ctx["components"],
         "the component kanji",

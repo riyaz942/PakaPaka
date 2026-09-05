@@ -5,8 +5,8 @@ import { StudyStatusBanner } from '@/components/learn/StudyStatusBanner';
 import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 
 const parents: CurriculumParentItem[] = [
-  { id: '1', itemType: 'radical', primaryForm: '一' },
-  { id: '2', itemType: 'radical', primaryForm: '口' },
+  { id: '1', itemType: 'radical', primaryForm: '一', inBand: true },
+  { id: '2', itemType: 'radical', primaryForm: '口', inBand: true },
 ];
 
 describe('StudyStatusBanner', () => {
