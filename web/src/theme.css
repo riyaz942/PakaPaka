@@ -2174,3 +2174,51 @@ a.audit-run-button {
   font-family: var(--font-mono);
   font-size: 0.85em;
 }
+
+.slugs-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slugs-input {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.slugs-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.slugs-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.slugs-summary .panel-muted {
+  margin: 0;
+}
+
+.slugs-done {
+  margin: 0 0 0.6rem;
+  color: var(--success);
+  font-size: 0.85rem;
+}
+
+.slugs-ambiguous {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--warning);
+  border-radius: 999px;
+  color: var(--warning);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: help;
+}

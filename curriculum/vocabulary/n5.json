@@ -8150,11 +8150,11 @@
         }
       ],
       "furigana": "夕[ゆう]方[がた]",
-      "meaning_mnemonic": "Koichi's konbini dims its lights and marks the onigiri shelf half price exactly when <vocabulary>evening</vocabulary> falls, every single day.",
+      "meaning_mnemonic": "Every person on the street turns to face the same <kanji>direction</kanji> as the light fades, and that turning hour is <vocabulary>evening</vocabulary>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13089,12 +13089,11 @@
         }
       ],
       "furigana": "十[とお]日[か]",
-      "meaning_mnemonic": "Every <kanji>day</kanji> the sun climbs through its window and finds you at the shrine steps, raising both hands a little higher than yesterday, palms open like the <kanji>ten</kanji>-shaped cross you make once all your fingers are up. Nine sunrises of half-raised hands pass before the tenth, when both hands finally form that perfect cross overhead — ten days of raising, and it's the tenth.",
-      "reading_mnemonic": "This word takes 十's reading とお and 日's reading か and fuses them together, giving 「<reading>とおか</reading>」: the 10th, ten days.",
+      "meaning_mnemonic": "Count out <kanji>ten</kanji> full <kanji>days</kanji> on the calendar and the square you land on is the <vocabulary>10th / ten days</vocabulary>.",
       "_meta": {
         "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13203,12 +13202,12 @@
         }
       ],
       "furigana": "二十日[はつか]",
-      "meaning_mnemonic": "The two raccoons are still hunched over their cold noodle broth, each guarding its snapped chopstick — the same two you met before. Every <kanji>day</kanji> new sun through the window finds them arranging the four chopstick halves into one perfect cross, the shape of <kanji>ten</kanji>, then doubling that cross because there are <kanji>two</kanji> raccoons at the table. After twenty of these sunrises nobody has eaten a single noodle: the twentieth day.",
-      "reading_mnemonic": "At Koichi's konbini, a customer grabs coffee straight off the warmer and spills it across the hood of his parked <reading>hot car</reading> right by the beeping till. Twenty days running he does this at checkout, and the staff now just call it <reading>はつか</reading> — the 20th, twenty days of the same scalded hood.",
+      "meaning_mnemonic": "Stack <kanji>two</kanji> blocks of <kanji>ten</kanji> <kanji>days</kanji> on the calendar and together they mark the <vocabulary>20th / twenty days</vocabulary>.",
+      "reading_mnemonic": "The vending machine on the mountain trail overheats every <vocabulary>20th / twenty days</vocabulary>, and hikers yelp 「<reading>はつか</reading>」 when the cocoa burns their tongues.",
       "_meta": {
         "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13315,12 +13314,11 @@
         }
       ],
       "furigana": "家[か]族[ぞく]",
-      "meaning_mnemonic": "Zookeeper Zoe stopped filing her animals by species years ago. Now every enclosure is sorted by family: otters piled into one <kanji>house</kanji>, meerkats packed into one den, and the daily headcount sheet has only one column, because at her zoo the only unit that ever matters is the whole family showing up together.",
-      "reading_mnemonic": "The reading is just its kanji stacked together: 家 read か, plus 族 read ぞく, gives <reading>かぞく</reading>.",
+      "meaning_mnemonic": "Everyone crammed under one <kanji>house</kanji>'s roof, sharing meals and arguments, is what makes a <vocabulary>family</vocabulary>.",
       "_meta": {
         "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13440,13 +13438,12 @@
         }
       ],
       "furigana": "父[ちち]",
-      "meaning_mnemonic": "At Koichi's konbini you're bragging to the clerk about how your <kanji>father</kanji> rewired the flickering sign himself. But every time the word for father leaves your mouth it comes out clipped and small, a fast double note like a chick cheeping under the counter, because that's the plain, low-key way you refer to your own <kanji>father</kanji>, never anyone else's.",
-      "reading_mnemonic": "A chick has gotten loose behind Koichi's register and won't stop cheeping two identical notes at the customers. The sound lands exactly like <reading>ちち</reading>, the same clipped double <reading>chee-chee</reading> twice in a row, and it's the one word stuck to that particular chirp from now on.",
-      "description": "父 (chichi) is the plain, humble word for your own father, used only when talking about him to people outside the family — never for someone else's father, and not usually what you'd call him to his face. お父さん (otousan) is the polite counterpart: what you call your own dad directly, or how you refer to someone else's father.",
+      "meaning_mnemonic": "The <kanji>father</kanji> kanji and the <vocabulary>(my) father</vocabulary> word are exactly the same, so they mean the same thing.",
+      "reading_mnemonic": "Sei's <vocabulary>(my) father</vocabulary> gets so nervous at sports day that he chirps 「<reading>ちち</reading>」 like a startled <reading>chick</reading> whenever the whistle blows.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "generator_model": "sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13567,13 +13564,13 @@
         }
       ],
       "furigana": "お父[とう]さん",
-      "meaning_mnemonic": "At the top of the mountain trail, red-faced and sweating under the noon sun, a <kanji>father</kanji> hauls a stalled cart the last hundred meters by rope while his kid cheers from beside the lone vending machine. That's the picture pinned to <kanji>father</kanji>, polite: the dad you'd point out respectfully to a stranger, not the tired grumble you'd use at home.",
-      "reading_mnemonic": "As he heaves the cart past the vending machine, the kid shouts the word for him, and it lands in your ear as <reading>oh, tow, sun</reading> — dad towing, sun blazing overhead — the same beats as <reading>おとうさん</reading>. That's the polite word for pointing him out to a stranger on the trail, not the plain one for talking about your own.",
-      "description": "お父さん (otousan) is the polite, respectful word for father — what you call your own dad directly, or how you refer to someone else's father in conversation. It contrasts with the plain 父 (chichi), which you use only when talking about your own father to people outside the family.",
+      "meaning_mnemonic": "The <kanji>father</kanji> kanji already means father, and <vocabulary>father (polite)</vocabulary> is simply the respectful way to say that very same word.",
+      "reading_mnemonic": "At the mountain trail, your <reading>おとうさん</reading> keeps <reading>towing</reading> your backpack up the last steep stretch. That's just what a <vocabulary>father (polite)</vocabulary> does for you.",
+      "description": "Use お父さん to speak to or about someone else's father. For your own father, switch to the plainer 父 when talking to an outsider.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "generator_model": "sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13698,13 +13695,13 @@
         }
       ],
       "furigana": "母[はは]",
-      "meaning_mnemonic": "At Grandma Kane's shrine, among the mossy steps and the cats sprawled everywhere, your <kanji>mother</kanji> doubles over laughing at some joke only she finds funny, the sound bouncing flat off the one enormous bell. That plain, unpolished laugh is exactly the humble word you use for your own <kanji>mother</kanji>, never for anyone else's.",
-      "reading_mnemonic": "Her laugh rings off the shrine bell as two dry, identical beats, <reading>ha-ha</reading>, the same flat sound as <reading>はは</reading>, over and over until the cats scatter. It's a plain, low sound on purpose, nothing decorative, matching the plain word it belongs to.",
-      "description": "母 (haha) is the plain, humble word for your own mother, used when speaking about her to people outside the family — never for someone else's mother, and not typically what you call her to her face. It contrasts with お母さん (okaasan), the polite form used to address your own mother directly or refer to someone else's.",
+      "meaning_mnemonic": "The <kanji>mother</kanji> kanji already means mother, and that is exactly what <vocabulary>(my) mother</vocabulary> means too.",
+      "reading_mnemonic": "At the riverbank, your <vocabulary>(my) mother</vocabulary> just laughs, '<reading>ha-ha</reading>.' That laugh is the exact sound of <reading>はは</reading>.",
+      "description": "母 is what you call your own mother when speaking about her to an outsider, never to her face — direct address uses a more polite word.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "generator_model": "sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13835,12 +13832,13 @@
         }
       ],
       "furigana": "お母[かあ]さん",
-      "meaning_mnemonic": "Halfway up the mountain trail, a boy collapses by the lone vending machine, certain he can't take one more step. Then his <kanji>mother</kanji> crests the rise behind him, unbothered, carrying his backpack, her water bottle, and a spare pair of socks, somehow not out of breath. That endless, unglamorous readiness is what mother (polite) means.",
-      "reading_mnemonic": "Driving the mountain trail's last hairpin toward the vending machine at the top, she doesn't slow down. The kids in the back seat brace and yell <reading>oh, car, san</reading> — which is exactly how <reading>おかあさん</reading> sounds, screamed by children who have done this drive with her before.",
+      "meaning_mnemonic": "The <kanji>mother</kanji> kanji is already mother, so <vocabulary>mother (polite)</vocabulary> just wraps that same meaning in politeness.",
+      "reading_mnemonic": "At Koichi's konbini, your <vocabulary>mother (polite)</vocabulary> pulls up in a squealing <reading>car</reading> right through the automatic doors. The cashier just sighs, '<reading>おかあさん</reading>, not again'.",
+      "description": "Use お母さん to speak to or about someone else's mother. For your own mother, switch to the plainer 母 when talking to an outsider.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "generator_model": "sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -13955,13 +13953,13 @@
         }
       ],
       "furigana": "兄[あに]",
-      "meaning_mnemonic": "At Koichi's konbini, the last good onigiri is one shelf away. Your <kanji>older brother</kanji> doesn't ask — he plants a hand on your shoulder, uses you as a step stool, and takes it while you're still off balance. That casual, lifelong right to shove you aside without apologizing is what (my) older brother names.",
-      "reading_mnemonic": "At Koichi's konbini, he shoves past you and you catch the shelf edge with your knee. <reading>Ah, knee</reading>, you groan, doubled over by the onigiri — which is exactly how <reading>あに</reading> sounds, and exactly who just walked off without noticing.",
-      "description": "A plain, informal word for your own older brother when talking about him to someone else — never used to address him directly, and not the word used to speak politely about someone else's older brother (that is oniisan).",
+      "meaning_mnemonic": "At Sei's school, the biggest kid in the yard always carries three backpacks at once. That's simply what an <vocabulary>(my) older brother</vocabulary> is for.",
+      "reading_mnemonic": "At Grandma Kane's shrine, your <vocabulary>(my) older brother</vocabulary> trips on the mossy steps and yelps, '<reading>ah, knee</reading>!' That yelp is exactly the sound of <reading>あに</reading>.",
+      "description": "兄 is what you call your own older brother when speaking about him to an outsider. Addressing him directly calls for a warmer, more polite word instead.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
-        "review_status": "reviewed"
+        "generator_model": "sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
       },
       "example_sentences": [
         {

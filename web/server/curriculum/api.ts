@@ -79,6 +79,22 @@ function parseSeverity(value: unknown): FindingSeverity | undefined {
     : undefined;
 }
 
+/**
+ * Type prefixes accepted by /items/resolve. Wider than audit_shipped.py's
+ * vocabulary (`KIND_TO_TYPE` in audit.ts): a pasted slug list is hand- or
+ * agent-written, so it also uses the plural directory names and `reading`.
+ */
+const TYPE_PREFIXES: Record<string, ContentType> = {
+  radical: 'radical',
+  radicals: 'radical',
+  kanji: 'kanji',
+  vocab: 'vocabulary',
+  vocabulary: 'vocabulary',
+  grammar: 'grammar',
+  reading: 'reading',
+  readings: 'reading',
+};
+
 type SlugLink = { slug: string; type: ContentType | null };
 
 function resolveSlugLinks(index: CurriculumIndex, slugs: string[]): SlugLink[] {
@@ -450,6 +466,58 @@ export function createCurriculumRouter(
       total: filtered.length,
       items: filtered.map((item) => serializeListItem(item, auditBySlug)),
     });
+  });
+
+  /**
+   * Pasted tokens -> the items they name, in input order. A bare slug is looked
+   * up under every content type because ~23 slugs exist under two of them
+   * (radical "mizu" vs. vocabulary "mizu"); both matches come back so the caller
+   * can make the user choose instead of silently marking the wrong file.
+   * `matches: []` means the token names nothing in the curriculum.
+   */
+  router.post('/items/resolve', (req: Request, res: Response) => {
+    const rawSlugs = req.body?.slugs;
+    if (!Array.isArray(rawSlugs)) {
+      res.status(400).json({ error: 'slugs must be an array of strings' });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const auditBySlug = buildAuditBySlug(getAuditFindings(repoRoot));
+
+    const rows: { input: string; matches: unknown[] }[] = [];
+    const seen = new Set<string>();
+
+    for (const raw of rawSlugs) {
+      if (typeof raw !== 'string') continue;
+      const input = raw.trim();
+      if (input.length === 0 || seen.has(input)) continue;
+      seen.add(input);
+
+      const separator = input.indexOf(':');
+      const prefixed =
+        separator === -1
+          ? undefined
+          : TYPE_PREFIXES[input.slice(0, separator).toLowerCase()];
+
+      const matches: ContentItem[] = [];
+      if (prefixed) {
+        const item = index.bySlug.get(itemKey(prefixed, input.slice(separator + 1)));
+        if (item) matches.push(item);
+      } else {
+        for (const type of CONTENT_TYPES) {
+          const item = index.bySlug.get(itemKey(type, input));
+          if (item) matches.push(item);
+        }
+      }
+
+      rows.push({
+        input,
+        matches: matches.map((item) => serializeListItem(item, auditBySlug)),
+      });
+    }
+
+    res.json({ total: rows.length, rows });
   });
 
   router.get('/items/neighbors', (req: Request, res: Response) => {

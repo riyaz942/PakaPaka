@@ -25,6 +25,13 @@ pulling changes that touch its `package.json`.
 - **Item detail** — every field rendered (readings, mnemonics, examples,
   dependencies), plus an edit form that writes straight to the source JSON —
   see the write-back rules under Safety notes.
+- **Slugs** — paste the slug list from a generation session (bare, `kanji:mizu`,
+  or studio URLs; bullets and numbering stripped) and get every matching item
+  with its status, completeness and a link into the detail page, plus "Copy
+  links" and bulk "Mark reviewed". A bare slug that exists under two content
+  types (radical `mizu` vs. vocabulary `mizu`) is shown as **ambiguous** and left
+  out of "select all" — pick the right one by hand. Tokens matching nothing are
+  listed under Unresolved.
 - **Graph** — the radical → kanji → vocab → grammar dependency graph
   (Cytoscape + dagre), a per-item neighborhood view, and a "build order" list
   of what's blocked on missing/draft/skeleton prerequisites.

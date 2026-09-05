@@ -127,6 +127,17 @@ export type ItemsModelsResponse = {
   models: string[];
 };
 
+/** One pasted token. Empty `matches` = unresolved; more than one = ambiguous. */
+export type SlugResolveRow = {
+  input: string;
+  matches: ContentListItem[];
+};
+
+export type SlugResolveResponse = {
+  total: number;
+  rows: SlugResolveRow[];
+};
+
 export type ItemNeighbor = {
   type: ContentType;
   slug: string;

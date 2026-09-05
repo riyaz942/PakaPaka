@@ -760,36 +760,34 @@ def vocab_context(level, slug, cast=None):
         })
     # The other half of the word: kanji it is written with but does not wait
     # for. The learner has met neither the character nor its story, so only the
-    # *meaning* travels — see `format_vocab_components`.
+    # *meaning* travels — see `format_vocab_components`. This applies whether or
+    # not the word has any *taught* components too — 家族, with both 家 and 族
+    # banded at N4, gets 家 and 族 named here exactly as 祖父 (祖 untaught, 父
+    # taught) gets 祖.
     #
-    # Two filters, both deliberate:
-    #
-    #   * A kanji whose meaning simply restates the word's is dropped. Naming it
-    #     produces "the yesterday day is yesterday" (昨日), "the fruit thing is
-    #     fruit" (果物) — worse than saying nothing, and the same `_shares_meaning`
-    #     test `identical_kanji` already uses.
-    #   * A word with *no* taught kanji at all gets none of these. That word
-    #     already has its own contract (name no kanji, write a standalone story),
-    #     and building a whole mnemonic out of characters the learner has never
-    #     seen is a different question from filling in the missing half of one
-    #     they can partly read.
+    # One filter, deliberate: a kanji whose meaning simply restates the word's
+    # is dropped. Naming it produces "the yesterday day is yesterday" (昨日),
+    # "the fruit thing is fruit" (果物) — worse than saying nothing, and the
+    # same `_shares_meaning` test `identical_kanji` already uses. A word left
+    # with no components of either kind after this filter (all-circular, or
+    # genuinely no kanji chars at all) falls back to `format_vocab_components`'s
+    # standalone-story branch.
     own_words = _meaning_word_set(meaning_synonyms)
     untaught_components = []
-    if components:
-        for kslug in edges.get("builds_on", []):
-            k = all_kanji.get(kslug)
-            if not k or k["primary_form"] in seen_chars:
-                continue
-            synonyms = _meaning_answers(k) or [k["meaning"]]
-            if _shares_meaning(own_words, _meaning_word_set(synonyms)):
-                continue
-            seen_chars.add(k["primary_form"])
-            untaught_components.append({
-                "slug": kslug,
-                "char": k["primary_form"],
-                "meaning": k["meaning"],
-                "meaning_synonyms": synonyms,
-            })
+    for kslug in edges.get("builds_on", []):
+        k = all_kanji.get(kslug)
+        if not k or k["primary_form"] in seen_chars:
+            continue
+        synonyms = _meaning_answers(k) or [k["meaning"]]
+        if _shares_meaning(own_words, _meaning_word_set(synonyms)):
+            continue
+        seen_chars.add(k["primary_form"])
+        untaught_components.append({
+            "slug": kslug,
+            "char": k["primary_form"],
+            "meaning": k["meaning"],
+            "meaning_synonyms": synonyms,
+        })
 
     # Component order follows the written form so a story reads left to right.
     def _form_order(c):
@@ -948,14 +946,15 @@ def format_vocab_components(ctx):
     ordering `ValueError` below would fire on half the set.
     """
     components = ctx["components"]
-    if not components:
-        return ("(none taught — this word's kanji are not in the taught set, or it "
-                "is written in kana. Write a standalone story for the word itself, "
-                "and do NOT name any kanji the learner has not been taught.)")
+    untaught_components = ctx["untaught_components"]
+    if not components and not untaught_components:
+        return ("(none — this word is written in kana, or every kanji it has is "
+                "one whose meaning simply restates the word's own. Write a "
+                "standalone story for the word itself, and do NOT name any kanji.)")
     form = ctx["form"]
-    untaught = {c["char"] for c in ctx["untaught_components"]}
+    untaught = {c["char"] for c in untaught_components}
     ordered = sorted(
-        components + ctx["untaught_components"],
+        components + untaught_components,
         key=lambda c: form.find(c["char"]) if c["char"] in form else len(form))
     lines = []
     for c in ordered:
