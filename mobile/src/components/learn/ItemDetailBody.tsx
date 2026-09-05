@@ -32,7 +32,9 @@ type ItemDetailBodyProps = {
  *
  * Details is a reference scroll: a passive status banner, then the full item,
  * always fully visible. It is never a lesson entry point — the lesson
- * composition is `components/lesson/LessonItemView` (D-DET-1).
+ * composition is `components/lesson/LessonItemView` (D-DET-1). The one button
+ * here that touches lessons, `NotYetLearnedNote`'s opt-in, changes what a
+ * future lesson contains without entering one.
  */
 export function ItemDetailBody({
   itemId,

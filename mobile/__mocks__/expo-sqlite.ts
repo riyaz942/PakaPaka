@@ -384,6 +384,26 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^DELETE FROM lesson_opt_ins/i.test(trimmed)) {
+    const rows = state.tables.get('lesson_opt_ins') ?? [];
+    state.tables.set(
+      'lesson_opt_ins',
+      rows.filter((row) => row.item_id !== params[0]),
+    );
+    return;
+  }
+
+  if (/^INSERT INTO lesson_opt_ins/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, optedInAt] = params;
+    const rows = state.tables.get('lesson_opt_ins') ?? [];
+    // DO NOTHING on conflict: `opted_in_at` records when the learner first asked.
+    if (!rows.some((row) => row.item_id === itemId)) {
+      rows.push({ item_id: itemId, opted_in_at: optedInAt });
+    }
+    state.tables.set('lesson_opt_ins', rows);
+    return;
+  }
+
   if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertPassagePracticeResult(state, params);
     return;
@@ -1079,6 +1099,33 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  // `getOptInPoolForItems`' recursive CTE: the seeded items plus every
+  // component they are transitively built from. Matched ahead of the
+  // `item_relationships` handler below, which its body would otherwise hit.
+  if (/WITH RECURSIVE closure/i.test(trimmed)) {
+    const relationships = state.tables.get('item_relationships') ?? [];
+    const items = state.tables.get('items') ?? [];
+    const closure = new Set(params.map((id) => String(id)));
+
+    let grew = true;
+    while (grew) {
+      grew = false;
+      for (const relationship of relationships) {
+        if (!['requires', 'builds_on'].includes(String(relationship.relationship_type))) continue;
+        if (!closure.has(String(relationship.child_item_id))) continue;
+        const parentId = String(relationship.parent_item_id);
+        if (!closure.has(parentId)) {
+          closure.add(parentId);
+          grew = true;
+        }
+      }
+    }
+
+    return items
+      .filter((item) => closure.has(String(item.id)))
+      .sort((left, right) => Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0));
+  }
+
   if (/FROM item_relationships/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
     const relationships = [...(state.tables.get('item_relationships') ?? [])];
     const items = state.tables.get('items') ?? [];
@@ -1177,6 +1224,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     let rows = [...(state.tables.get('card_seen') ?? [])];
     if (/WHERE card_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.card_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM lesson_opt_ins/i.test(trimmed)) {
+    let rows = [...(state.tables.get('lesson_opt_ins') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
     }
     return rows;
   }

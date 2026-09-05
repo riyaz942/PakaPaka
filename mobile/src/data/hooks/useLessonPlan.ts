@@ -9,12 +9,14 @@ import {
 } from '@/core/lesson/lessonPlanner';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import {
+  getOptInPoolForItems,
   getRequiredParentsForItems,
   listLessonCandidatePool,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { todayKey } from '@/data/user/cognitiveLoadRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
+import { listLessonOptInIds } from '@/data/user/lessonOptInRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
   getSessionIntensity,
@@ -45,19 +47,40 @@ function buildPlanForLevel(
   level: JLPTLevel,
   size: number,
 ): LessonCandidate[] {
-  // The level's items *plus* their transitive required parents, wherever those
-  // are taught: an N5 learner is offered 写 and 真 before 写真, even though both
-  // kanji are N3. The pulled-forward items keep their own JLPT level in Browse,
-  // filters and item detail — only the lesson sequence moves.
-  const candidates: LessonCandidate[] = listLessonCandidatePool(curriculumDb, level).map(
-    (item) => ({
+  // This level's own items, and nothing pulled forward: Plan v2 Phase C removed
+  // the automatic walk that used to hand every N5 learner 写 and 真 before 写真.
+  // A kanji from a later band reaches its word through a non-gating `builds_on`
+  // edge, so the word ships on schedule without it.
+  //
+  // On top of that, the items *this* learner asked for ahead of their level,
+  // and everything those are built from — per-learner and opt-in, so it changes
+  // nobody else's queue and does not touch the level model or the graph. They
+  // keep their own JLPT level in Browse, filters and item detail; only the
+  // lesson sequence moves. Deduplicated by id, because an opt-in the learner
+  // has since caught up to is already in the pool.
+  const optInIds = listLessonOptInIds(userDb);
+  const pool = [
+    ...listLessonCandidatePool(curriculumDb, level).map((item) => ({
+      item,
+      optedIn: false,
+    })),
+    ...getOptInPoolForItems(curriculumDb, optInIds).map((item) => ({ item, optedIn: true })),
+  ];
+
+  const seen = new Set<string>();
+  const candidates: LessonCandidate[] = [];
+  for (const { item, optedIn } of pool) {
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
+    candidates.push({
       id: item.id,
       itemType: item.itemType,
       primaryForm: item.primaryForm,
       meaning: item.meaning,
       sortOrder: item.sortOrder,
-    }),
-  );
+      optedIn,
+    });
+  }
 
   if (candidates.length === 0) {
     return [];

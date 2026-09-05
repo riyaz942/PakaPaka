@@ -17,6 +17,7 @@ import { migration016FuriganaOverrides } from '@/data/migrations/016_furigana_ov
 import { migration017AiSessions } from '@/data/migrations/017_ai_sessions';
 import { migration018AiSessionTopicIds } from '@/data/migrations/018_ai_session_topic_ids';
 import { migration019CardSeen } from '@/data/migrations/019_card_seen';
+import { migration020LessonOptIns } from '@/data/migrations/020_lesson_opt_ins';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -39,4 +40,5 @@ export const migrations: Migration[] = [
   migration017AiSessions,
   migration018AiSessionTopicIds,
   migration019CardSeen,
+  migration020LessonOptIns,
 ];

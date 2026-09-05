@@ -1,11 +1,12 @@
 import { router, type Href } from 'expo-router';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { LinkedItemTile, type LinkedItemTileVariant } from '@/components/common/LinkedItemTile';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import type { ExplainerTopic } from '@/components/learn/explainerContent';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
+import { NotYetLearnedNote } from '@/components/learn/NotYetLearnedNote';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
@@ -99,15 +100,10 @@ export function CrossReferenceSection({
         })}
       </View>
       {notYetLearned.length > 0 ? (
-        <Text
-          className="mt-space-sm text-caption text-muted"
-          testID={testID ? `${testID}-not-yet-learned` : 'cross-ref-not-yet-learned'}>
-          {notYetLearned.length === 1
-            ? `You haven't learned ${notYetLearned[0].primaryForm} yet — it comes later in the course.`
-            : `You haven't learned ${notYetLearned
-                .map((item) => item.primaryForm)
-                .join('、')} yet — they come later in the course.`}
-        </Text>
+        <NotYetLearnedNote
+          items={notYetLearned}
+          testID={testID ? `${testID}-not-yet-learned` : 'cross-ref-not-yet-learned'}
+        />
       ) : null}
     </View>
   );

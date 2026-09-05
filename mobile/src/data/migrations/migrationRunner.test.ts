@@ -74,7 +74,7 @@ describe('runMigrations', () => {
     expect(migrations.map((migration) => migration.version)).toEqual(
       migrations.map((_, index) => index + 1),
     );
-    expect(migrations[migrations.length - 1].name).toBe('019_card_seen');
+    expect(migrations[migrations.length - 1].name).toBe('020_lesson_opt_ins');
     expect(
       // Parameterized form: the shared mock only special-cases a few literal
       // table names in sqlite_master queries, but handles `name = ?` generically.

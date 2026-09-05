@@ -275,14 +275,21 @@ levels because the same kanji keep recurring.
 
 #### Two frictions to settle before building
 
+Both settled while building; kept here for the reasoning.
+
 - `StudyStatusBanner`'s stated contract is "Informational only: no CTA, no
   lesson entry point... details must never gate reading (BUG7)." A "learn this
   now" button is the first CTA in that surface. Not forbidden — but it is a
   deliberate reversal, so make it on purpose and update that docstring.
+  **Settled:** the no-CTA rule is now scoped to the banner itself, and both its
+  docstring and `ItemDetailBody`'s say so. What the two rules actually protect
+  survives, because the button is a *queue* entry point and not a *lesson* one:
+  it writes one row and stays on the screen.
 - The comment above the `listLessonCandidatePool` call in
   `useLessonPlan.ts:42-45` is **stale**: it still claims "an N5 learner is
   offered 写 and 真 before 写真", which Phase C removed. Pre-existing, unrelated
   to this plan, but it sits exactly where step 3 edits and will mislead.
+  **Settled:** rewritten in place.
 
 ## Reproducing the numbers
 
@@ -307,7 +314,7 @@ produced identical totals on 2026-09-05.
 | --- | --- |
 | 1 — content | pipeline done 2026-09-05; **the 803 words are not regenerated yet** |
 | 2 — app annotation | done 2026-09-05 |
-| 3 — opt-in unlock | not started, approved in principle |
+| 3 — opt-in unlock | done 2026-09-05 |
 
 Update `docs/working-history.md` when any step lands.
 
@@ -321,6 +328,13 @@ Both are errors in this document, not in the code that implements it.
   numbers](#reproducing-the-numbers) now agree on 803. 写真 is also **not** zero-taught: 真
   is an N5 kanji holding a `requires` edge to it, so the word is partial, and its untaught
   half 写 "copy" is dropped as circular against "photograph".
+- **Step 3's "transitive required parents" would have unioned nothing.** The curriculum
+  authors no `requires` edge into a kanji at all — a kanji holds its radicals through
+  `builds_on`, which is why `getComponentParentsForItem` already special-cases the kanji
+  layer. Opting into 昨 by `requires` alone would have queued a kanji with none of the
+  radicals its own mnemonic is written from. `getOptInPoolForItems` walks **both** component
+  edge kinds, which is also what the plan's own cost table ("the kanji + its radicals",
+  minimum 2) always described.
 - **Step 2's file table and its verification contradict each other.** "an N3 learner viewing
   昨日 sees neither dimmed" cannot be answered from the edge type, which is `builds_on` for
   every learner. The verification won: `useComponentParents` combines the band fact

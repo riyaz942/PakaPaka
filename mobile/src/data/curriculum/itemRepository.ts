@@ -404,6 +404,60 @@ export function listLessonCandidatePool(
   return pool;
 }
 
+/** A `listLessonCandidatePool` row plus the band it is actually taught in. */
+export type OptInPoolItem = CurriculumListItem & { jlptLevel: JLPTLevel };
+
+/**
+ * The full set of items an opt-in unlock costs: each requested item and every
+ * component it is transitively built from.
+ *
+ * Both component edge kinds are walked, because which one carries a component
+ * depends on the layer: a word holds its kanji through `requires` (in band) or
+ * `builds_on` (a later band), while a kanji holds its radicals through
+ * `builds_on` always. `reinforces` is skipped — a grammar pattern that a word
+ * exercises is not a part the word is written with.
+ *
+ * In practice the walk is two levels deep (word → kanji → radicals) and the
+ * chip affordance seeds it with a single kanji, but it is written as a closure
+ * so it stays right if the graph ever nests further.
+ */
+export function getOptInPoolForItems(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): OptInPoolItem[] {
+  if (itemIds.length === 0) {
+    return [];
+  }
+
+  const byId = new Map<string, OptInPoolItem>();
+
+  for (const chunk of chunkForSqlVariables(itemIds.map((itemId) => Number(itemId)))) {
+    const placeholders = chunk.map(() => '?').join(', ');
+
+    const rows = db.getAllSync<ItemRow & { jlpt_level: JLPTLevel }>(
+      `WITH RECURSIVE closure(id) AS (
+         SELECT id FROM items WHERE id IN (${placeholders})
+         UNION
+         SELECT r.parent_item_id
+         FROM item_relationships r
+         JOIN closure ON closure.id = r.child_item_id
+         WHERE r.relationship_type IN ('requires', 'builds_on')
+       )
+       SELECT i.id, i.slug, i.primary_form, i.meaning, i.item_type, i.sort_order, i.jlpt_level
+       FROM items i
+       JOIN closure ON closure.id = i.id
+       ORDER BY i.sort_order ASC`,
+      ...chunk,
+    );
+
+    for (const row of rows) {
+      byId.set(String(row.id), { ...mapRowToListItem(row), jlptLevel: row.jlpt_level });
+    }
+  }
+
+  return [...byId.values()].sort((a, b) => a.sortOrder - b.sortOrder);
+}
+
 /**
  * Graph parents for FR72 component chips ("Built from" / "Kanji in this word").
  *

@@ -10,6 +10,16 @@ export type LessonCandidate = {
   primaryForm: string;
   meaning: string;
   sortOrder: number;
+  /**
+   * The learner asked for this item ahead of its level (opt-in unlock), so it
+   * sorts to the front of its type bucket.
+   *
+   * Not a nicety: `sort_order` restarts at 1 per level *and* per type, so an
+   * opted-in N3 kanji merged into an N5 pool would otherwise land wherever its
+   * own level's numbering happens to put it. And a queue that quietly defers
+   * what the learner just asked for is a queue they stop trusting.
+   */
+  optedIn?: boolean;
 };
 
 export type LessonPlanInput = {
@@ -49,8 +59,9 @@ const ROUND_QUOTAS: readonly { type: LessonItemType; quota: number }[] = [
 ];
 
 /**
- * Picks today's lesson: unlocked, not-yet-started items in curriculum order,
- * interleaved across types so a lesson is never a wall of one item type.
+ * Picks today's lesson: unlocked, not-yet-started items in curriculum order
+ * (opted-in items first), interleaved across types so a lesson is never a wall
+ * of one item type.
  *
  * Every type with available candidates is guaranteed at least one slot when
  * size allows, so grammar (which has no unlock prerequisites) is never starved
@@ -81,7 +92,10 @@ export function planLesson(input: LessonPlanInput): LessonCandidate[] {
   }
 
   for (const bucket of buckets.values()) {
-    bucket.sort((a, b) => a.sortOrder - b.sortOrder);
+    bucket.sort(
+      (a, b) =>
+        Number(b.optedIn ?? false) - Number(a.optedIn ?? false) || a.sortOrder - b.sortOrder,
+    );
   }
 
   const result: LessonCandidate[] = [];

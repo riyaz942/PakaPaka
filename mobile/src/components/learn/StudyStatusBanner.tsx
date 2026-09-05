@@ -24,6 +24,13 @@ type StudyStatusBannerProps = {
  * Informational only: no CTA, no lesson entry point, and it never hides or
  * dims the content below it. Viewing an item is not the same as being eligible
  * to study it, and details must never gate reading (BUG7).
+ *
+ * That no-CTA rule was once read as covering the whole details screen. It is
+ * now scoped to this banner: `NotYetLearnedNote` puts a "Learn 昨 now" button
+ * under the component chips (untaught-kanji plan, step 3). The distinction the
+ * two rules actually protect survives — that button queues an item for a future
+ * lesson and stays on this screen, so details is still not a lesson entry point
+ * and still withholds nothing.
  */
 export function StudyStatusBanner({
   status,

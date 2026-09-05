@@ -27,6 +27,7 @@ import {
   getItemById,
   getItemBySlug,
   getKanjiReadings,
+  getOptInPoolForItems,
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
   getRequiredParentsForItems,
@@ -513,6 +514,50 @@ describe('itemRepository', () => {
 
       expect(getItemBySlug(db, 'kanji', 'n3-copy')?.jlptLevel).toBe('N3');
       expect(getItemById(db, '2')?.jlptLevel).toBe('N3');
+    });
+
+    it('prices an opt-in as the kanji plus the radicals it is built from', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      // 写 (N3) drags 冖 (N3) along — an N5 learner opting in takes both.
+      const pool = getOptInPoolForItems(db, ['2']);
+
+      expect(pool.map((item) => item.slug)).toEqual(['n3-crown', 'n3-copy']);
+      expect(pool.map((item) => item.jlptLevel)).toEqual(['N3', 'N3']);
+    });
+
+    it('walks the closure through a word to its kanji and their radicals', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      const pool = getOptInPoolForItems(db, ['1']);
+
+      // 写真 → 写 + 真 (`builds_on`) → 冖 (写's radical). Both component edge
+      // kinds are walked; the seed itself is always in the set.
+      expect([...pool.map((item) => item.slug)].sort()).toEqual([
+        'n3-copy',
+        'n3-crown',
+        'n3-true',
+        'shashin',
+      ]);
+    });
+
+    it('returns each item once when two opt-ins share a component', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      // 写 reaches 冖 directly and 写真 reaches it through 写.
+      const pool = getOptInPoolForItems(db, ['1', '2']);
+
+      expect(pool.filter((item) => item.slug === 'n3-crown')).toHaveLength(1);
+    });
+
+    it('costs nothing for an empty opt-in set', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      expect(getOptInPoolForItems(db, [])).toEqual([]);
     });
   });
 

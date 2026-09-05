@@ -167,6 +167,28 @@ describe('planLesson', () => {
     expect(result.map((item) => item.id)).toEqual(['a', 'b']);
   });
 
+  it('puts an opted-in item at the front of its type, ahead of a lower sortOrder', () => {
+    // `sort_order` restarts at 1 per level and per type, so an opted-in N3
+    // kanji merged into an N5 pool has no comparable position — and a learner
+    // who just asked for it should not wait out the rest of the level.
+    const candidates = [
+      candidate('n5-a', 'kanji', 1),
+      candidate('n5-b', 'kanji', 2),
+      { ...candidate('opted-in', 'kanji', 67), optedIn: true },
+    ];
+    const result = planLesson(emptyInput(candidates, 3));
+    expect(result.map((item) => item.id)).toEqual(['opted-in', 'n5-a', 'n5-b']);
+  });
+
+  it('keeps an opted-in kanji behind its radicals, which lead every round', () => {
+    const candidates = [
+      { ...candidate('opted-in-kanji', 'kanji', 67), optedIn: true },
+      { ...candidate('opted-in-radical', 'radical', 70), optedIn: true },
+    ];
+    const result = planLesson(emptyInput(candidates, 2));
+    expect(result.map((item) => item.id)).toEqual(['opted-in-radical', 'opted-in-kanji']);
+  });
+
   it('returns empty for size zero or no candidates', () => {
     expect(planLesson(emptyInput([], 5))).toEqual([]);
     expect(planLesson(emptyInput([candidate('1', 'kanji', 1)], 0))).toEqual([]);
