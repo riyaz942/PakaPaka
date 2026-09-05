@@ -127,11 +127,11 @@
     }
   },
   "ame-v": {
-    "meaning_mnemonic": "You're back at the window, watching the same drops slide down the glass, one after another inside their frame. Step outside now and those drops aren't caught behind glass anymore — they're landing straight on your shoulders. What's soaking you has exactly one name: <kanji>rain</kanji>.",
-    "reading_mnemonic": "This word keeps 雨's own taught reading exactly as taught, so it reads <reading>あめ</reading> — the same sound you already tied to the drops sliding down the window frame.",
+    "meaning_mnemonic": "You have met this shape already: the <kanji>rain</kanji> kanji and the <vocabulary>rain</vocabulary> word are the very same character, so the meaning does not shift at all.",
+    "reading_mnemonic": "<reading>Amy</reading> plants herself on the riverbank through the whole storm and flatly refuses to come indoors. Every cold drop that lands on her she names aloud as 「<reading>あめ</reading>」, the <vocabulary>rain</vocabulary> she will not walk away from.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -253,11 +253,10 @@
     }
   },
   "asagohan": {
-    "meaning_mnemonic": "A rooster oversleeps at Grandma Kane's shrine and wakes to the sun already glaring off the enormous bell. He bolts down the mossy steps two at a time, scattering cats, because the priest sets out the <kanji>meal</kanji> — rice, grilled fish, and miso — the instant <kanji>morning</kanji> arrives. Whoever reaches that tray first gets breakfast.",
-    "reading_mnemonic": "Every dawn a groggy monk stumbles toward the shrine gate mumbling <reading>ah, sir, go, Han</reading> at the boy stacking bowls, before Han even asks what he wants: <reading>あさごはん</reading>, already getting cold on the step.",
+    "meaning_mnemonic": "Sit down to a <kanji>meal</kanji> while the <kanji>morning</kanji> moon still hangs in the window, and that meal is <vocabulary>breakfast</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -271,11 +270,11 @@
     }
   },
   "ashi-v": {
-    "meaning_mnemonic": "Up on the mountain trail, that mouth-topped pair of stopped legs is moving again, planted step after step all the way to the vending machine at the top, still barking orders down at itself with every stride. Whatever plants itself like that and carries you onward — that's your <kanji>foot</kanji>, your leg.",
-    "reading_mnemonic": "At the riverbank, a fisherman wades in and yelps <reading>ahh, sheesh</reading> as the icy water bites at his shins, hopping rock to rock on legs that won't go numb. By the fifth hop the whole riverbank knows the word for legs is <reading>あし</reading>.",
+    "meaning_mnemonic": "The <kanji>foot / leg</kanji> kanji is exactly the <vocabulary>foot / leg</vocabulary> word, one character doing both jobs, so the meaning never changes.",
+    "reading_mnemonic": "A hiker tugs off her boot on the mountain trail, sees the <vocabulary>foot / leg</vocabulary> inside caked grey and <reading>ashy</reading> with dust, and yelps 「<reading>あし</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -377,11 +376,10 @@
     }
   },
   "bangohan": {
-    "meaning_mnemonic": "Down at the riverbank at <kanji>nightfall</kanji>, a tanuki has learned exactly when the cooking fire gets left untended, and it drags the whole simmering pot toward the water to wash its paws in what's left. The family gives up chasing it along the bank and just starts cooking a second <kanji>meal</kanji>, because dinner has to happen eventually, tanuki or not.",
-    "reading_mnemonic": "The father slams the door at dusk shouting <reading>bang, go, Han</reading> at the dog racing the tanuki to the pot, and by the time the door stops rattling everyone's already sitting down to <reading>ばんごはん</reading>, tanuki-free at last.",
+    "meaning_mnemonic": "Nobody is allowed near the <kanji>meal</kanji> until <kanji>nightfall</kanji>, and the spread they finally fall on is <vocabulary>dinner</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -404,20 +402,18 @@
     }
   },
   "basu": {
-    "meaning_mnemonic": "At Koichi's konbini, something huge screeches to a stop right outside the sliding doors, tires shrieking against the curb loud enough to rattle the onigiri shelf. The doors hiss open, exhaust rolls in over the till, and a wall of tired passengers shuffles out into the fluorescent light — this rattling monster is the bus, and it stops here every hour on the hour.",
-    "reading_mnemonic": "バス is written exactly as it sounds, so just read it as <reading>バス</reading> — the same sound as the English word <reading>bus</reading>.",
+    "meaning_mnemonic": "A city <vocabulary>bus</vocabulary> pulls in so heavy that the <reading>bass</reading> of its engine rattles the shelter glass. You feel that <reading>バス</reading> in your teeth before it even rounds the corner.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "beddo": {
-    "meaning_mnemonic": "A monk lugs a stack of futons up the mossy steps of Grandma Kane's shrine, planning to store them by the enormous bell overnight. Before he finishes stacking, half the resident cats have already curled into the pile and refuse to move. He gives up, tucks a blanket round the edges, and leaves them the shrine's new bed.",
-    "reading_mnemonic": "This word is a straight loanword from the English word for bed, written in kana exactly as it sounds: <reading>ベッド</reading>.",
+    "meaning_mnemonic": "A hiker stuffs a sack with straw and drops it flat on the mountain trail. He sprawls across that lumpy <reading>bed</reading> and sleeps like a log, and 「<reading>ベッド</reading>」 is what he mutters for his <vocabulary>bed</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -449,11 +445,10 @@
     }
   },
   "bentou": {
-    "meaning_mnemonic": "Halfway up the mountain trail, past the improbable summit vending machine, a hiker unzips her pack instead of buying anything. Inside sits a perfectly packed rectangular box — rice, a pickled plum, a segment of grilled fish, each one <kanji>hit</kanji>ting its slot dead center like a thrown dart — eaten cold on a rock at the top. That neat travel box is a boxed lunch.",
-    "reading_mnemonic": "弁（べん）＋当（とう）combine directly into <reading>べんとう</reading>.",
+    "meaning_mnemonic": "Picture a lunch box split into <kanji>petal</kanji>-shaped compartments, each one holding exactly the <kanji>right</kanji> amount for a single meal. That neatly portioned box is a <vocabulary>boxed lunch</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -467,11 +462,10 @@
     }
   },
   "biiru": {
-    "meaning_mnemonic": "The mountain trail's summit reward is one vending machine, impossibly humming after two hours of switchbacks. You feed it coins with shaking hands, and instead of water it drops a cold gold can that hisses and foams straight over your boots: beer, at the top of the mountain, before you've even sat down.",
-    "reading_mnemonic": "ビール is written just as it's read, kana straight through — <reading>ビール</reading> — nothing to sound out beyond what's already on the can.",
+    "meaning_mnemonic": "A swarm of bees has taken over the beach bar, and their one <reading>bee rule</reading> is that the taps pour for them first. They only ever order <reading>ビール</reading>, so the whole place reeks of spilled <vocabulary>beer</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -503,20 +497,18 @@
     }
   },
   "booru-pen": {
-    "meaning_mnemonic": "At Koichi's konbini till, a customer clicks a slim plastic stick against the counter, and a tiny steel ball rolls out of the tip, dragging a thin trail of blue ink across the receipt paper. Koichi doesn't blink — that rolling ball is just how a ballpoint pen writes.",
-    "reading_mnemonic": "<reading>ボールペン</reading> is pure loanword kana, written exactly as it's read, straight from the English \"ball pen,\" so there's nothing to decode.",
+    "meaning_mnemonic": "Clip a <reading>ball pen</reading> to your notebook. A tiny ball rolls the ink across the page, and that rolling ball is the whole idea behind <reading>ボールペン</reading>, an ordinary <vocabulary>ballpoint pen</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "boushi": {
-    "meaning_mnemonic": "Picture that same swaddled <kanji>child</kanji> from before, arms flung out, except Grandma Kane keeps wrapping cloth around its head for warmth, spiral after spiral, until the arms vanish under the layers and only a round knit dome pokes out the top — a hat, sitting where a baby used to be.",
-    "reading_mnemonic": "This word simply stacks the readings you already know: 帽 as ぼう plus 子 as し gives you <reading>ぼうし</reading>.",
+    "meaning_mnemonic": "Take a piece of full-size <kanji>headgear</kanji> and shrink it down to <kanji>child</kanji> size. What perches on one head now, light and small, is a <vocabulary>hat</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5-low",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -538,11 +530,10 @@
     }
   },
   "byouin": {
-    "meaning_mnemonic": "A rowboat flips at the riverbank, and instead of a rescue crew, a whole hospital floats out to meet it — a full-blown <kanji>institution</kanji> for anyone <kanji>ill</kanji> enough to need it, beds lashed to buoys, an IV drip swinging from a fishing rod, a nurse checking pulses waist-deep in the current. The patient is hauled onto the nearest buoy, wrapped in a blanket, declared stable before the clipboard stops dripping.",
-    "reading_mnemonic": "病（びょう）＋院（いん）combine directly into <reading>びょういん</reading>.",
+    "meaning_mnemonic": "An <kanji>ill</kanji> body checks into the one <kanji>institution</kanji> built to house the sick until they mend, and that building is a <vocabulary>hospital</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -691,20 +682,18 @@
     }
   },
   "daidokoro": {
-    "meaning_mnemonic": "Koichi's konbini has one door marked staff-only, and behind it he's wedged a stove and a cutting board on two beer crates like a makeshift <kanji>pedestal</kanji>. He fries eggs there at three in the morning, in the one <kanji>place</kanji> in the store everyone knows to find him — his whole kitchen, hidden in plain sight.",
-    "reading_mnemonic": "The reading comes straight from its kanji: 台 read だい plus 所 read どころ give <reading>だいどころ</reading>.",
+    "meaning_mnemonic": "A squat stone <kanji>stand</kanji>, the kind built to hold up a bronze statue, gets shoved into the one <kanji>place</kanji> you cook. That corner is now the <vocabulary>kitchen</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "daigaku": {
-    "meaning_mnemonic": "The same wide-armed stretcher who's always bragging how <kanji>big</kanji> his catch was plants himself over the swaddled <kanji>study</kanji> child's roof of lesson notes and stretches even wider, insisting the canopy is huge too. He keeps stretching until the notes swell into a whole campus of towering lecture halls — the biggest school there is: a university.",
-    "reading_mnemonic": "You already know 大 as だい and 学 as がく — put them back to back, no softening needed, and you get exactly <reading>だいがく</reading>.",
+    "meaning_mnemonic": "<kanji>Study</kanji> at a place so <kanji>big</kanji> it has its own bus route, its own bookshops, and its own postcode, and you are standing in a <vocabulary>university</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -784,11 +773,10 @@
     }
   },
   "denki": {
-    "meaning_mnemonic": "That storm-bred bolt punches through the rain and drives into a lightbulb on the ceiling, filament screaming white. Beside it, the curl of <kanji>spirit</kanji> that always rises off a hot bowl of rice streams upward too, feeding the glow. <kanji>Electricity</kanji> plus that rising energy floods the room: electricity, light.",
-    "reading_mnemonic": "気 already lends you Kiki's giggly き, and 電 gives you でん — line them up and you get <reading>でんき</reading>, electricity.",
+    "meaning_mnemonic": "The <kanji>electricity</kanji> trapped in your walls picks up the restless <kanji>spirit</kanji> of a whole field, and the bulb overhead blazes awake. Flip the switch and that surge is <vocabulary>electricity / light</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -811,11 +799,10 @@
     }
   },
   "denwa": {
-    "meaning_mnemonic": "The lightning that split the sky over your rain-streaked window doesn't fade at the glass — it dives down a wire and into a box on the desk. Out of the earpiece pours that same restless <kanji>talk</kanji>, tongue wagging nonstop, riding pure <kanji>electricity</kanji> into your ear. That's a telephone: talk carried on a bolt of electricity.",
-    "reading_mnemonic": "電 already gives you でん and 話 already gives you わ — stitch them together and you get <reading>でんわ</reading>, telephone.",
+    "meaning_mnemonic": "Take all that <kanji>talk</kanji> pouring out of a wagging mouth and force it to run down the wall wires as tame <kanji>electricity</kanji>. It surfaces as a voice in a box across town, and that box is the <vocabulary>telephone</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -829,11 +816,10 @@
     }
   },
   "depaato": {
-    "meaning_mnemonic": "A tower shop devours entire departments whole — one floor is nothing but shoes, the next is only teapots, and a man in a necktie gets trapped between six escalators that all disagree about which way is up. Every level swallows a different specialty until the whole building is just department after department stacked to the ceiling: a department store.",
-    "reading_mnemonic": "デパート is kana spelling its own sound — say <reading>department</reading> and you've already said <reading>デパート</reading>, no decoding needed.",
+    "meaning_mnemonic": "Its floors are so many that you <reading>depart</reading> the basement for menswear like you are boarding a train. Any shop that vast is a <vocabulary>department store</vocabulary>, a <reading>デパート</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -856,11 +842,10 @@
     }
   },
   "doa": {
-    "meaning_mnemonic": "Koichi's konbini only has one way in: an automatic slab that slides aside the instant someone steps close, breathing out a soft whoosh right where the shop meets the street. New hires hear that whoosh and just call it what it sounds like, unchanged from English — a door.",
-    "reading_mnemonic": "This word is a loanword straight from English, written in kana exactly the way it sounds — read <reading>ドア</reading> just like the English word door that it borrows.",
+    "meaning_mnemonic": "A ghost keeps drifting straight through the wall until the landlord bolts a hinged slab across the gap. Now the ghost has to shove that <reading>door</reading> like everyone else, so the slab it resents is the <vocabulary>door</vocabulary> it hisses 「<reading>ドア</reading>」 at.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -986,11 +971,10 @@
     }
   },
   "eigakan": {
-    "meaning_mnemonic": "Every night, folding chairs fill Koichi's konbini parking lot — instant ramen cups, someone's dog draped over a cooler. A bedsheet clipped to the delivery truck catches the shutter light's <kanji>reflection</kanji>, resolving into a <kanji>picture</kanji> as Koichi's annexed lot becomes one sprawling <kanji>building</kanji> — a cinema built from nothing but a parking lot and a bedsheet.",
-    "reading_mnemonic": "The reading comes straight from its kanji: 映 read えい, 画 read が, and 館 read かん combine to give <reading>えいがかん</reading>.",
+    "meaning_mnemonic": "Koichi rigs his konbini so the back wall <kanji>projects</kanji> a giant moving <kanji>picture</kanji>; once the whole <kanji>building</kanji> exists only to show that picture, he has opened a <vocabulary>cinema</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1004,11 +988,10 @@
     }
   },
   "eki": {
-    "meaning_mnemonic": "Every morning another <kanji>station</kanji> platform fills with hoofprints instead of footprints — the local horses treat the place like open pasture. Today one gallops so hard it clears the ticket gates and skids onto a departing train, mane flying. Staff gave up chasing them years ago.",
-    "reading_mnemonic": "駅's own taught reading carries straight over unchanged, so <reading>えき</reading> is exactly what you already know it to be.",
+    "meaning_mnemonic": "The <kanji>station</kanji> kanji and the <vocabulary>station</vocabulary> word are the same character, so they mean the same thing.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1030,12 +1013,11 @@
     }
   },
   "enpitsu": {
-    "meaning_mnemonic": "In the echoing hallway of Sei's school, a boy chews the eraser end of a thin gray stick down to nothing, tapping the point against his desk until it snaps clean in half during the exam — the exact anxious shape and worry of a pencil.",
-    "reading_mnemonic": "鉛 (えん) plus 筆 (ぴつ) combine directly to give <reading>えんぴつ</reading>.",
+    "meaning_mnemonic": "Take a <kanji>writing brush</kanji> and swap its soft tip for a thin rod of <kanji>lead</kanji>. Now it writes without ink, which makes it a <vocabulary>pencil</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "erabu": {
@@ -1084,11 +1066,10 @@
     }
   },
   "fuku": {
-    "meaning_mnemonic": "Grandma Kane's shrine cats go bare all year, until the coldest morning, when she drapes a tiny knitted sweater over every single one. They strut past the enormous bell stiff-legged, dressed head to tail, mossy steps turned runway. None of them asked for clothes, but none of them takes them off either.",
-    "reading_mnemonic": "服 keeps the reading you already learned for the kanji itself, carried straight through: <reading>ふく</reading>.",
+    "meaning_mnemonic": "A coat is fabric that has agreed to <kanji>obey</kanji> your body. It bends when your elbow bends, never argues, and a closet full of that obedient cloth is your <vocabulary>clothes</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5-low",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1184,11 +1165,10 @@
     }
   },
   "gakkou-v": {
-    "meaning_mnemonic": "The swaddled <kanji>study</kanji> child, still parked under its canopy of scribbled lesson notes, gets carried to the courtyard and set at the foot of the one great <kanji>school</kanji> tree. Roots tangle around the roof of notes, a bell rings somewhere in the branches, and the courtyard fills with kids at recess — canopy and tree have grown into one building: a school.",
-    "reading_mnemonic": "You already know 学 as がく and 校 as こう — chain them together (がく softens to がっ before こう) and you get exactly <reading>がっこう</reading>.",
+    "meaning_mnemonic": "Fill the <kanji>school</kanji> grounds where the tree-lined paths cross with children who have nothing to do but <kanji>study</kanji>, and that place is a <vocabulary>school</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1236,11 +1216,10 @@
     }
   },
   "ginkou": {
-    "meaning_mnemonic": "The figure who's always mid-stride, legs split wide, leaning into the step, never leaves the building — he paces the lobby, stamping passbooks between strides because he won't stand still long enough to finish one. Customers behind him catch the same itch to <kanji>go</kanji> before their money finishes counting — a building built around cash that never sits still.",
-    "reading_mnemonic": "銀（ぎん）＋行（こう）combine directly into <reading>ぎんこう</reading>.",
+    "meaning_mnemonic": "When you run low on <kanji>silver</kanji>, you <kanji>go</kanji> to one particular crossroads in town. That corner building is the <vocabulary>bank</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1278,12 +1257,10 @@
     }
   },
   "gohan": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the mossy steps end at a single offering bowl the cats can never quite reach: a small mound of plain white rice, steaming, set out fresh every morning. It isn't a snack and it isn't a whole feast — it's simply what's due at mealtime, the actual cooked rice sitting there and the <kanji>meal</kanji> built around it, both at once.",
-    "reading_mnemonic": "<reading>ごはん</reading> is just ご as written plus 飯's reading はん, chained straight together.",
-    "description": "This word literally names plain cooked rice, but in everyday speech it just as often means a full meal in general, not only the rice itself — asking someone if they've had gohan yet is asking whether they've eaten at all, breakfast, lunch, or dinner alike.",
+    "meaning_mnemonic": "The <kanji>meal</kanji> kanji and the <vocabulary>cooked rice</vocabulary> word are the same character, so they mean exactly the same thing.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1305,20 +1282,19 @@
     }
   },
   "gyuunyuu": {
-    "meaning_mnemonic": "On the sports field at Sei's school, the morning delivery crate holds little paper cartons, so cold they sweat in the sun. A kid downs one in one gulp, gets a white mustache, and holds up the empty carton proudly to the whole team: milk.",
-    "reading_mnemonic": "<reading>ぎゅうにゅう</reading> is just 牛's reading ぎゅう plus 乳's reading にゅう, chained together as written.",
+    "meaning_mnemonic": "A <kanji>cow</kanji> makes far more of the white stuff than her one calf could ever drink, so the rest gets bottled and sold as <vocabulary>milk</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "ha-tooth": {
-    "meaning_mnemonic": "At the top of the mountain trail, the vending machine dispenses exactly one item that day: a single chipped <kanji>tooth</kanji>, still faintly rattling, ejected after the last hiker crunched down on a stone hidden inside their rice ball. Everyone just runs a tongue along their own teeth, checking for the gap where a tooth used to be.",
-    "reading_mnemonic": "At Sei's school, the nurse lets out one flat sound every time a kid limps in clutching their jaw — a startled <reading>ha</reading>, stretched thin like a gasp with nowhere to go. That same deadpan <reading>は</reading> is the whole word: the sound she makes over a broken tooth is the reading for tooth itself.",
+    "meaning_mnemonic": "Koichi's konbini keeps a shelf of rock-hard rice crackers right by the till. Every year a customer bites down wrong and leaves a chipped <vocabulary>tooth</vocabulary> on the counter.",
+    "reading_mnemonic": "The konbini night clerk answers every joke with one flat <reading>ha</reading>. That bark is your <reading>は</reading>, and it always flashes the gold <vocabulary>tooth</vocabulary> at the side of his grin.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1413,11 +1389,11 @@
     }
   },
   "hako": {
-    "meaning_mnemonic": "At the vending machine on the mountain trail, you press the button for water. It grinds, hesitates, then drops a plain taped-shut carton instead, tumbling down the last few steps ahead of you. Nobody asked for this. The machine just started calling every carton a box, and now so does everyone who climbs the trail.",
-    "reading_mnemonic": "At the riverbank, Koichi wades in to cool a crate of drinks and comes out numb to the elbow. He yelps <reading>\"Ha, cold!\"</reading> so sharply that the fishermen nearby start calling the crate itself by that yelp, and the name sticks as <reading>はこ</reading>.",
+    "meaning_mnemonic": "Anything with six stiff flat sides and a lid you must lift before you can see what is inside is a <vocabulary>box</vocabulary>.",
+    "reading_mnemonic": "A hawk at the riverbank keeps dropping fish into an open wooden crate on the bank, screeching <reading>hah-koh</reading> each time one thuds in. The fishermen named that crate 「<reading>はこ</reading>」, their word for a <vocabulary>box</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1440,11 +1416,11 @@
     }
   },
   "hana-nose": {
-    "meaning_mnemonic": "At the riverbank, a heron plants itself ankle-deep and points its long beak straight up, sniffing the air to check whether the water's too cold to cross before wading in. That beak does the one job it's built for — smelling out trouble first — which is exactly what a nose is for.",
-    "reading_mnemonic": "At Sei's school, a new transfer student named Hannah presses her face to the cafeteria window, sniffing out the menu before anyone announces it. The other kids nickname her <reading>はな</reading> on the spot — that <reading>Hannah</reading>-nose never misses a smell, even through glass.",
+    "meaning_mnemonic": "The single vending machine at the top of the mountain trail sells nothing but tissues, because everyone who finishes that climb arrives with a streaming <vocabulary>nose</vocabulary>.",
+    "reading_mnemonic": "A street mime wears a <reading>banana</reading> clipped over his face all day as a fake <vocabulary>nose</vocabulary>. When anyone asks why, he just taps it and says <reading>はな</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1521,11 +1497,11 @@
     }
   },
   "hashi-bridge": {
-    "meaning_mnemonic": "At the riverbank, a delivery cart stalls at the water's edge, wheels churning mud. Someone drags two empty vending-machine crates out, sets them end to end across the current, and rolls the cart straight over the water without a splash. The crate-line stays there after — a bridge, built out of pure stubbornness.",
-    "reading_mnemonic": "A cook at the riverbank burns a batch of <reading>hash</reading> browns and, furious, flings them one by one across the current. They land in a perfect line, crisp edge to crisp edge, and someone simply walks across on the hash line — which is exactly how you say <reading>はし</reading>.",
+    "meaning_mnemonic": "The left riverbank and the right riverbank are tired of shouting across the water, so a long plank gets laid from one to the other. You walk over on that plank, and it is a <vocabulary>bridge</vocabulary>.",
+    "reading_mnemonic": "A ferryman on the riverbank keeps warning that the current is <reading>harsh</reading>, so the villagers stop listening and build <reading>はし</reading> to cross on dry feet. That word now means the <vocabulary>bridge</vocabulary> that ended his job.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1602,11 +1578,11 @@
     }
   },
   "heya": {
-    "meaning_mnemonic": "Past the mountain trail's improbable vending machine, someone has wedged a plain door straight into the rock face, walling off a <kanji>section</kanji> of cliff under a stone <kanji>roof</kanji>. Push it open and there's nothing dramatic inside — just four walls, one chair, and quiet, built for the sole purpose of finally sitting down after the climb: a room, carved out of nowhere in particular.",
-    "reading_mnemonic": "The hiker collapses through that door, drops her pack, and sighs <reading>hay, yeah</reading> — worn out enough that even four bare walls feel like paradise. That sigh is exactly how you say <reading>へや</reading>, room, once you're finally inside one.",
+    "meaning_mnemonic": "Wall off one <kanji>section</kanji> of the <kanji>house</kanji>, hang a door on it, and that boxed-in piece is a <vocabulary>room</vocabulary>.",
+    "reading_mnemonic": "Grandma Kane throws open a door at the shrine and barks 「<reading>へや</reading>」 at the cats hiding inside, which is just <reading>hey, you</reading> aimed at whoever will not come out of that <vocabulary>room</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1719,11 +1695,10 @@
     }
   },
   "hirugohan": {
-    "meaning_mnemonic": "At Sei's school the <kanji>daytime</kanji> sun sits flat overhead as the sports field empties for the lunch bell, and a stray dog times its raid perfectly, snatching a tray straight off the picnic table mid-sprint. Kids chase it in a lap around the track, but the dog is faster than any of them expect, gone with the whole <kanji>meal</kanji> before anyone's fork is even out.",
-    "reading_mnemonic": "<reading>ひるごはん</reading> chains 昼's reading ひる, plus ご, plus 飯's reading はん, exactly as written.",
+    "meaning_mnemonic": "The sun climbs until it hits <kanji>noon</kanji> and the whole working day halts for one <kanji>meal</kanji>. That break in the middle is <vocabulary>lunch</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1774,11 +1749,10 @@
     }
   },
   "hon": {
-    "meaning_mnemonic": "At the school, Sei kneels by the tree with that single flat line marking its <kanji>origin</kanji> and presses a stack of blank paper flat against the mark. When she peels the pages away, the origin's whole shape has bled through onto every sheet, and she staples the stack edge to edge — a bound stack of someone's origin, pressed flat and readable, is exactly what a book is.",
-    "reading_mnemonic": "本 keeps the reading you already learned for it — read it as <reading>ほん</reading>.",
+    "meaning_mnemonic": "The <kanji>book</kanji> kanji you have already met and the <vocabulary>book</vocabulary> word are the very same character, so they mean exactly the same thing.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -1853,11 +1827,11 @@
     }
   },
   "ie": {
-    "meaning_mnemonic": "Halfway up the mountain trail, past the lone vending machine, a hermit crab stops dragging its blistered shell. It wedges into a hollow rock at the trail's edge, lines up four pinecones in the doorway like doormats, and won't budge again. That hollow rock, doormats and all, is officially somebody's <kanji>house</kanji> — the crab has made itself a home.",
-    "reading_mnemonic": "A builder named Ei nails one crooked wall onto that same hollow rock and steps back beaming, waiting for someone to ask about the roof. Instead he throws both arms up and shouts <reading>いえ</reading>, which lands on the ear exactly like an English <reading>yay</reading>, and declares the one wall a finished house.",
+    "meaning_mnemonic": "Every other door you have to be buzzed through or invited into. The one place you already own the key to is your <vocabulary>house / home</vocabulary>.",
+    "reading_mnemonic": "A courier works the whole lane, asking at every door whether anyone truly lives there. At the last one a tired voice finally says <reading>「いえ」</reading>, which is just <reading>yeah</reading>, this is my <vocabulary>house / home</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2052,11 +2026,10 @@
     }
   },
   "isu": {
-    "meaning_mnemonic": "Picture a heavy wooden seat with a tall carved back, and look closely — the carving is shaped exactly like a swaddled <kanji>child</kanji>, arms flung wide the way it always reaches. Those flung-out arms become the armrests, the swaddling becomes the seat, and the whole piece of furniture is built around that one reaching shape: a chair.",
-    "reading_mnemonic": "The reading is just its kanji stacked together: 椅 read い, plus 子 read す, gives you <reading>いす</reading>.",
+    "meaning_mnemonic": "Shrink a grand throne until it seats just one ordinary person and what is left is the throne's <kanji>child</kanji>. That small single seat with a back is a <vocabulary>chair</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5-low",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2173,11 +2146,10 @@
     }
   },
   "jisho": {
-    "meaning_mnemonic": "Long after the <kanji>write</kanji> sun has sunk below your notebook and your hand is still moving on its own from that daily ritual, the pile of scribbled pages has grown so thick it needs its own spine. You bind the whole towering stack into one fat volume you flip through every time you're stuck on a word — a book that exists only to make writing easier: a dictionary.",
-    "reading_mnemonic": "The reading comes straight from its kanji: 辞 read じ plus 書 read しょ give <reading>じしょ</reading>.",
+    "meaning_mnemonic": "When you <kanji>write</kanji> down every <kanji>word</kanji> there is and put them in order, the book you end up with is a <vocabulary>dictionary</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2236,20 +2208,19 @@
     }
   },
   "kaban": {
-    "meaning_mnemonic": "After the last bell at Sei's school, someone crams gym shoes, dog-eared workbooks, and a crumpled umbrella into one straining canvas sack, then wrestles the zipper shut over the bulge as it clears the sports field. That overstuffed sack slung over a shoulder is just a bag doing its job.",
-    "reading_mnemonic": "<reading>かばん</reading> is plain kana, written exactly as it sounds, no kanji reading to derive here.",
+    "meaning_mnemonic": "A <reading>cabin</reading> is a wooden box big enough to walk into, holding everything you packed for the trip. Shrink it until it hangs off one shoulder and you get a <reading>かばん</reading>, an everyday <vocabulary>bag</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kado": {
-    "meaning_mnemonic": "Koichi's konbini sits right on the corner, and a delivery van cuts the turn too sharp. It clips the onigiri shelf through the window, spins once, and wedges itself nose-first into the exact corner of the building — where it stays, blocking the corner entrance for the rest of the shift.",
-    "reading_mnemonic": "The van's <reading>car door</reading> pops open on impact and won't shut again — it hangs there at the corner of the konbini like a broken wing. Koichi just tapes a sign to it: this is the corner now. That crumpled car door is exactly how you remember <reading>かど</reading>.",
+    "meaning_mnemonic": "Every <vocabulary>corner</vocabulary> in the house is the spot where two walls give up going straight and slam into each other at a hard right angle.",
+    "reading_mnemonic": "A cabbie who only ever pulls over at the <vocabulary>corner</vocabulary> lets his <reading>car door</reading> swing wide open there and nowhere else. Hear that <reading>かど</reading> creak and you know a corner is coming up.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2300,12 +2271,11 @@
     }
   },
   "kagi": {
-    "meaning_mnemonic": "The vending machine at the top of the mountain trail is, inexplicably, padlocked. A hiker pats down every pocket of their khaki trousers, harder and harder, until deep in the last one something small and metal turns up — the only thing standing between them and a can of tea: the key that finally opens the lock.",
-    "reading_mnemonic": "The hiker digs through <reading>khaki</reading> pocket after khaki pocket, patting each one flat, until the last gives up a small metal shape with a jingle. That frantic pocket search is <reading>かぎ</reading> — the key that finally unlocks the padlock chaining the vending machine shut.",
-    "description": "In Japanese, 鍵 covers both the physical key and the lock it opens — context decides which one is meant, where English normally reaches for two separate words.",
+    "meaning_mnemonic": "Every locked door has just one small metal shape that will turn it, and that shape is a <vocabulary>key / lock</vocabulary>.",
+    "reading_mnemonic": "The locksmith at Koichi's konbini turns <reading>cagey</reading> the second you ask how the till unlocks. He mutters 「<reading>かぎ</reading>」 and pockets the only <vocabulary>key / lock</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2364,11 +2334,10 @@
     }
   },
   "kaisha": {
-    "meaning_mnemonic": "The landlord insists the view improves productivity, so the office gets hauled up the steep mountain trail — desks wedged between boulders, the printer jamming two switchbacks from the top. The boss holds the <kanji>meet</kanji>ing by the vending machine, tapping his coffee like a whiteboard. A hiker asks if this is really a company. It is.",
-    "reading_mnemonic": "会（かい）＋社（しゃ）combine directly into <reading>かいしゃ</reading>.",
+    "meaning_mnemonic": "The building you travel to each morning to <kanji>meet</kanji> the same coworkers and do the same job is your <vocabulary>company / office</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2399,29 +2368,29 @@
     }
   },
   "kamera": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a tourist raises a boxy black gadget with a glass eye at the enormous bell and shouts the thing's own name at it. The flash pops, every cat on the mossy steps freezes mid-leap, and the little screen lights up with the shot: a camera, catching cats that never agreed to sit still.",
-    "reading_mnemonic": "This word is written in kana exactly as it's read, no kanji to decode — just say what you see: <reading>カメラ</reading>.",
+    "meaning_mnemonic": "A <reading>camel</reading> plods past the mossy shrine steps and every tourist lifts a little black machine to one eye and clicks. The gadget that freezes the camel mid-chew is a <vocabulary>camera</vocabulary>, so they shout for the <reading>カメラ</reading> before it wanders off.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kami-hair": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, one of the resident cats leaps onto a visitor's shoulders and burrows straight into the long dark strands hanging past her collar, kneading and refusing to leave. Grandma Kane just laughs, ringing the mossy steps clean, and says the cat has finally found the hair it always wanted to nest in.",
-    "reading_mnemonic": "Grandma Kane calls that shrine cat <reading>Cami</reading>, and Cami spends every visit nesting in the same visitor's <reading>かみ</reading>, purring against her scalp. Grandma Kane rings the enormous bell to shoo her off, but Cami just digs deeper into the かみ and refuses to move.",
+    "meaning_mnemonic": "The stuff that clogs the shower drain and slips out of every ponytail by noon is <vocabulary>hair</vocabulary>.",
+    "reading_mnemonic": "Grandma Kane sits on the mossy shrine steps, drawing a wide brush <reading>calm</reading>ly through her waist-length <vocabulary>hair</vocabulary>. With every slow stroke the bristles seem to whisper 「<reading>かみ</reading>」.",
+    "description": "髪 is specifically the hair on your head. Hair elsewhere on the body, or an animal's coat, is a different word, so do not stretch 髪 to cover it.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kami-paper": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the cats leap along the mossy steps and swat every fortune slip off the branches, until by dusk the ground is drifted white with thin square sheets — not snow, just fallen <kanji>paper</kanji>, blanketing the whole shrine before Grandma Kane can ring the bell.",
-    "reading_mnemonic": "Grandma Kane catches a cat pawing through the drifted fortune slips and snaps, come, me! — meaning drop it and follow her to the shrine office. <reading>かみ</reading> is that snap: <reading>come-me</reading>, aimed at a cat sitting on a pile of shrine paper.",
+    "meaning_mnemonic": "The <kanji>paper</kanji> kanji and the <vocabulary>paper</vocabulary> word are exactly the same, so they mean the same thing.",
+    "reading_mnemonic": "Cammy the goat eats anything, but what she loves most is <vocabulary>paper</vocabulary>. Hand her a page and <reading>Cammy</reading> grinds it to pulp, bleating <reading>かみ</reading>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2481,11 +2450,11 @@
     }
   },
   "karada": {
-    "meaning_mnemonic": "On Sei's school sports field, the gym teacher lines everyone up and makes them stretch every part at once — arms, legs, back, neck — until the whole trembling row moves as a single shuddering unit. She points down the line and names it plainly: the <kanji>body</kanji>, all of it, working together.",
-    "reading_mnemonic": "The gym teacher barks that this drill works the whole <reading>car, duh</reading> — she means the whole <reading>からだ</reading>, obviously, and nobody laughs because she's still holding the whistle. からだ, she repeats, jabbing a finger at each kid's ribs to prove her point.",
+    "meaning_mnemonic": "The <kanji>body</kanji> kanji and the <vocabulary>body</vocabulary> word are the same character, so the meaning carries straight across with nothing added.",
+    "reading_mnemonic": "At Koichi's konbini a bodybuilder tips the whole <reading>carrot</reading> shelf into his basket, sure the juice built his slab of a <vocabulary>body</vocabulary>. He tells the beeping till its name: 「<reading>からだ</reading>」.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2527,11 +2496,11 @@
     }
   },
   "kasa": {
-    "meaning_mnemonic": "At the riverbank, the sky cracks open and dumps a whole second river down onto the first one. A fisherman yanks a bent bamboo frame out of his tackle box, stretches waxed paper across the ribs, and pops it open over his head just before he's soaked through — that bent, stretched frame is an umbrella.",
-    "reading_mnemonic": "At the riverbank, the rain arrives as one long <reading>cascade</reading> — clip off just the front half, said fast, and you get <reading>かさ</reading>, the umbrella the fisherman snaps open to survive it.",
+    "meaning_mnemonic": "Pop open a dome of cloth on a thin pole and hold it overhead, and the rain drums on the fabric instead of on you. That portable roof is an <vocabulary>umbrella</vocabulary>.",
+    "reading_mnemonic": "The old angler at the riverbank refuses to <reading>cast a</reading> line in the rain until he has popped open his patched <vocabulary>umbrella</vocabulary>. He calls that leaky dome on a stick his <reading>かさ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2618,11 +2587,11 @@
     }
   },
   "kaze-wind": {
-    "meaning_mnemonic": "At Koichi's konbini, the automatic door sticks open and a sudden gust roars in, sending the entire onigiri shelf toppling and every plastic bag in the store leaping off its hook at once. He just stands at the till, beeping through the chaos, muttering that it's too much <kanji>wind</kanji> for one small door.",
-    "reading_mnemonic": "Koichi swears the same draft <reading>causes</reading> the shelf to fall every single morning, and he's taken to yelling <reading>かぜ</reading> at the door like it's a curse word, until the whole konbini staff starts shouting it whenever a gust rolls through.",
+    "meaning_mnemonic": "This character is an old friend by now: the <kanji>wind</kanji> kanji and the <vocabulary>wind</vocabulary> word are one and the same, so nothing about the meaning changes.",
+    "reading_mnemonic": "A school nurse tapes a long strip of <reading>gauze</reading> across the open hallway door, and the draught snaps it flat and rippling. She says 「<reading>かぜ</reading>」, because only real <vocabulary>wind</vocabulary> pulls a bandage out straight like that.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2643,11 +2612,10 @@
     }
   },
   "keitai": {
-    "meaning_mnemonic": "At Koichi's konbini, the new clerk Kei ties his phone to his belt with butcher's string before every shift, certain he won't survive the beeping till without it. By closing time the string has looped him to the register three times over, and everyone has stopped calling it a phone — it's just his mobile phone now.",
-    "reading_mnemonic": "This word simply stacks the readings you already know: 携 as けい plus 帯 as たい gives you <reading>けいたい</reading>.",
+    "meaning_mnemonic": "Strap a phone to your <kanji>sash</kanji> to keep it <kanji>portable</kanji>, bouncing on your hip through every train and every queue. That belt-worn phone is a <vocabulary>mobile phone</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5-low",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2796,12 +2764,10 @@
     }
   },
   "kissaten": {
-    "meaning_mnemonic": "Sei ducks out of gym class through a gap in the fence and ends up in an impossibly quiet <kanji>shop</kanji> three streets over — dim lighting, one old man refolding the same newspaper over a steaming pot of <kanji>tea</kanji>, a menu of drinks nobody at school has heard of. It is a coffee shop, and gym period never felt shorter.",
-    "reading_mnemonic": "喫（きっ）＋茶（さ）＋店（てん）combine directly into <reading>きっさてん</reading>.",
-    "description": "きっさてん usually points at an old-style Japanese coffee shop — dim, quiet, often decades-old — rather than a modern chain cafe.",
+    "meaning_mnemonic": "Set aside a whole room where the only thing to do is <kanji>drink</kanji> from a steaming <kanji>tea</kanji> cup and watch the afternoon crawl past. That room is a <vocabulary>coffee shop</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2824,11 +2790,11 @@
     }
   },
   "kitte": {
-    "meaning_mnemonic": "At the top of the mountain trail, beside the one improbable vending machine, a <kanji>hand</kanji> <kanji>cuts</kanji> a small sticky square from a roll and presses it flat onto the corner of an envelope before shoving the envelope into the summit mailbox — the little square that lets it travel: a postage stamp.",
-    "reading_mnemonic": "On the mountain trail, a hiker keeps licking the vending machine's sticky squares instead of buying tea, and the vendor barks <reading>quit it</reading> — she finally buys one properly, licks it once, and presses it onto her postcard: a <reading>きって</reading>.",
+    "meaning_mnemonic": "Stamps come joined in a big sheet, so you <kanji>cut</kanji> one free by <kanji>hand</kanji> along the row of little holes. That torn-off square you lick and stick is a <vocabulary>postage stamp</vocabulary>.",
+    "reading_mnemonic": "Kiki the tree spirit licks the back of a tiny <reading>kitty</reading> sticker and smooths it onto a letter. She giggles 「<reading>きって</reading>」, because to her that lickable little square is a <vocabulary>postage stamp</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2859,11 +2825,11 @@
     }
   },
   "koe": {
-    "meaning_mnemonic": "A lone hiker stands at the edge of the mountain trail and lets out one enormous shout at the far canyon wall — not words, just raw sound thrown as hard as he can throw it. A beat later it comes back, fainter but unmistakably the same sound. That thrown, bounced-back sound, and nothing else, is what this word simply means: voice.",
-    "reading_mnemonic": "The hiker is named <reading>Coe, eh</reading> — that's literally how he introduces himself, flat and dragging the vowel out. So when he shouts into the canyon and the sound flies back at him a beat later, it comes back as <reading>こえ</reading>: his own voice, thrown at rock and handed right back to him unchanged.",
+    "meaning_mnemonic": "A ventriloquist's dummy sits alone on the stage and starts talking. The sound has to come from somewhere, and that somewhere, a throat pushing air, is a <vocabulary>voice</vocabulary>.",
+    "reading_mnemonic": "A hiker lost on the mountain trail cups their hands and shouts <reading>cooee</reading> across the valley. The only tool that reaches the far ridge is their <vocabulary>voice</vocabulary>, sent out as one long <reading>こえ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2911,11 +2877,11 @@
     }
   },
   "kome-v": {
-    "meaning_mnemonic": "Near the top of the mountain trail, past the last switchback, hikers find the one vending machine standing improbably at the summit. Its slots hold no soda or tea — only small bags of hard, pale grains, unwashed and uncooked. A disappointed hiker buys one anyway, shakes it like a maraca, and trudges back down still hungry: uncooked rice.",
-    "reading_mnemonic": "A hiker at the summit rattles her bag of grains and mutters '<reading>Comb</reading> through this later,' annoyed she packed the wrong snack. That mutter is exactly <reading>こめ</reading> — uncooked rice, the kind you rinse before cooking, not eat straight from the bag.",
+    "meaning_mnemonic": "The hard little grains straight from the sack, before a drop of water or any heat reaches them, are <vocabulary>uncooked rice</vocabulary>.",
+    "reading_mnemonic": "Old Mei drags a bamboo <reading>comb</reading> through the grains spread on her drying mat. Each pass she mutters <reading>こめ</reading>, and what stays behind is clean <vocabulary>uncooked rice</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2930,11 +2896,10 @@
     }
   },
   "konbini": {
-    "meaning_mnemonic": "Koichi's shop never closes, the till beeps without pause, and the onigiri shelf by the door restocks itself like clockwork at three in the morning. Someone pays a phone bill at the register while another customer photocopies a form, all before the entry chime finishes ringing. That does-everything, always-open little shop is a convenience store.",
-    "reading_mnemonic": "コンビニ is kana spelling its own sound — say <reading>conveni</reading>, short for convenience, and you've already said <reading>コンビニ</reading>.",
+    "meaning_mnemonic": "Koichi's shop sells socks, stamps and hot coffee at three in the morning without blinking. A store built entirely around being that <reading>convenient</reading> is a <vocabulary>convenience store</vocabulary>, a <reading>コンビニ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -2981,21 +2946,18 @@
     }
   },
   "koohii": {
-    "meaning_mnemonic": "At Koichi's konbini, the till beeps furiously at three in the morning as a zombie-eyed customer clutches an empty paper cup, breathing out fumes so bitter the onigiri shelf seems to lean away from him. He doesn't order food. He doesn't speak. He just raises the cup, and the cashier refills it without a word: coffee.",
-    "reading_mnemonic": "コーヒー is written exactly the way it sounds, straight through in kana — <reading>コーヒー</reading> — nothing here to decode, just read it aloud.",
+    "meaning_mnemonic": "Punch the top button on the mountain-trail vending machine and it drops a scalding can with a hiss that sounds like <reading>koh-hee</reading>. That hiss is <reading>コーヒー</reading>, and the can is bitter black <vocabulary>coffee</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kooto": {
-    "meaning_mnemonic": "At the top of the mountain trail, the vending machine sells exactly one item: a stiff paper coat that unfolds like a cardboard crane. You climbed up in a t-shirt, so you feed it your last coins, unfold it, and stop shivering immediately. Up here, that stiff paper garment has one name and one job — it's your coat.",
-    "reading_mnemonic": "コート is kana, so it is pronounced exactly as it looks — no kanji hiding a different sound. Read the four characters straight through and you get <reading>コート</reading>, the loanword transcription of English 'coat.'",
-    "description": "コート is a loanword that also means \"court,\" as in a tennis court — the two senses share one spelling and one sound, and only the surrounding sentence tells you whether someone is putting one on or standing on one.",
+    "meaning_mnemonic": "On a tennis <reading>court</reading> frozen solid in January, both players keep rallying in a full <vocabulary>coat</vocabulary> and thick gloves, because 「<reading>コート</reading>」 is too cold to play in anything less.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3062,21 +3024,18 @@
     }
   },
   "kouban": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a lost tourist rings the enormous bell for directions, and others queue behind her, each waiting their <kanji>turn</kanji> like numbered slips from a dispenser. A patient officer steps from his booth, cats streaming past, and points down the street to the actual police box — the booth that rescues people from ringing the wrong bell.",
-    "reading_mnemonic": "The reading comes straight from its kanji: 交 read こう plus 番 read ばん give <reading>こうばん</reading>.",
-    "description": "A 交番 is a small neighborhood police post, usually staffed by one or two officers, common on street corners and near stations — not the blue British police telephone box the English name might bring to mind. Locals stop by for directions about as often as for anything police-related.",
+    "meaning_mnemonic": "A <vocabulary>police box</vocabulary> is one street-corner spot where police and the public <kanji>mingle</kanji> all day long. Officers keep it staffed by each taking a <kanji>turn</kanji> on duty there.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kouen": {
-    "meaning_mnemonic": "A city block gets squeezed between an office tower and a train station, so someone covers it in grass, wedges in three benches and a rusty swing set, and leaves the gate open for pigeons and toddlers to fight over the last patch of shade. That leftover square of green boxed in by concrete is a park.",
-    "reading_mnemonic": "The reading comes straight from its kanji: 公 read こう plus 園 read えん give <reading>こうえん</reading>.",
+    "meaning_mnemonic": "Take a patch of trees and mown grass, then make it <kanji>public</kanji> so any stranger can wander in and sit down. That open ground is a <vocabulary>park</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3098,29 +3057,29 @@
     }
   },
   "kubi": {
-    "meaning_mnemonic": "On the mountain trail, a hiker finally reaches the summit vending machine and cranes forward so far to read the buttons that his head tips back on a long thin stalk, wobbling like it might snap clean off. Everyone behind him on the trail stares at that one stretched, straining neck.",
-    "reading_mnemonic": "At the top of the trail, the hiker wedges his head into a stone <reading>cubby</reading> beside the vending machine to get a closer look, and now his <reading>くび</reading> is stuck fast in the gap. He twists his くび side to side, but the cubby holds on tight.",
+    "meaning_mnemonic": "An owl swivels its head almost all the way around. The bendy stalk that lets it do that, the piece joining head to shoulders, is the <vocabulary>neck</vocabulary>.",
+    "reading_mnemonic": "A shrine cat at Grandma Kane's tries to squeeze into a wooden <reading>cubby</reading> on the shelf. It only fits by folding its <vocabulary>neck</vocabulary> flat, and a muffled <reading>くび</reading> leaks out.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kuchi-v": {
-    "meaning_mnemonic": "That open square is still hanging there mid-yawn, exactly as you left it — nothing has been drawn inside it, because nothing needs to be. A hole with nothing inside was already the whole idea: it's just a <kanji>mouth</kanji>, caught wide open and refusing to close until you've said the word for it.",
-    "reading_mnemonic": "At Koichi's konbini, a customer's mouth hangs open under the buzzing lights, coughing, insisting he caught the <reading>cooties</reading> from someone's open <reading>くち</reading>. Koichi shoos him out before the till starts beeping and restocks the onigiri.",
+    "meaning_mnemonic": "The <kanji>mouth</kanji> kanji you already know and the <vocabulary>mouth</vocabulary> word are the exact same character, unchanged.",
+    "reading_mnemonic": "At the riverbank the smallest kids clamp a hand over each other's <vocabulary>mouth</vocabulary> and shriek <reading>くち</reading>. They are all convinced that is the one way to stop a <reading>cootie</reading> getting in.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kudamono": {
-    "meaning_mnemonic": "After the last steep switchback of the mountain trail, a hiker collapses in front of the one vending machine improbably waiting at the top, expecting a cold drink — and finds every slot loaded with the same unlabeled <kanji>thing</kanji>: apples and oranges. Too worn out to complain, he buys one standing there. What that machine stocks at the summit is fruit.",
-    "reading_mnemonic": "Staring at the slots, the hiker <reading>could-a moaned</reading> about the missing drinks, but he's too exhausted to do more than mutter it under his breath, and that tired, flattened mutter comes out sounding just like <reading>くだもの</reading> — the fruit waiting at the top of the trail.",
+    "meaning_mnemonic": "Out of everything hanging in a tree, the one <kanji>thing</kanji> sweet enough to be worth climbing for is <vocabulary>fruit</vocabulary>.",
+    "reading_mnemonic": "The new clerk at the greengrocer sniffs every <vocabulary>fruit</vocabulary> on the shelf and calls it a <reading>cardamom</reading>. Now the whole apple-and-pear aisle is filed under <reading>くだもの</reading>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3198,20 +3157,19 @@
     }
   },
   "kutsu": {
-    "meaning_mnemonic": "Picture the mountain trail, steep and endless, with that one vending machine impossibly balanced at the summit. A hiker collapses beside it, kicks off two mud-caked boots, and buys a can of tea instead of anything to eat. He drinks, sighs, and never puts the boots back on — leaves them right there under the machine as shoes for whoever runs out of nerve next.",
-    "reading_mnemonic": "At the mountain trail vending machine, a scruffy crow named Kutsu lands on the boots someone abandoned there and calls out sharply, <reading>coo-tsu, coo-tsu</reading> — the exact sound of <reading>くつ</reading>, over and over, guarding them like his own shoes now.",
+    "meaning_mnemonic": "The two leather cages you lock your feet into every morning, so you can stomp across gravel without a second thought, are your <vocabulary>shoes</vocabulary>.",
+    "reading_mnemonic": "A barefoot hiker crosses the riverbank stones and picks up sharp <reading>cuts</reading> on both soles. She pulls on 「<reading>くつ</reading>」 so the next crossing scratches the <vocabulary>shoes</vocabulary>, not her feet.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "kuukou": {
-    "meaning_mnemonic": "A city block gets flattened overnight — grass paved over, buildings hauled off — replaced by flat runway under an <kanji>empty</kanji> stretch of sky. Nowhere to sit, nowhere to shop, just tarmac waiting for the next jet to lift into all that emptiness. That whole open, sky-swallowed lot is what people mean by airport.",
-    "reading_mnemonic": "空（くう）＋港（こう）combine directly into <reading>くうこう</reading>.",
+    "meaning_mnemonic": "Swap the sea out of a <kanji>harbor</kanji> for a stretch of <kanji>empty</kanji> sky, and the boats that dock there become planes at an <vocabulary>airport</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3268,11 +3226,11 @@
     }
   },
   "machi-v": {
-    "meaning_mnemonic": "Hover over that same grid again — fields squared off on the left, the straight road cutting through on the right. Now watch it fill in: roofs go up along the road, a bakery claims the corner, kids race bikes past the fields. Roads plus fields plus everyone building a life between them — that's a <kanji>town</kanji>.",
-    "reading_mnemonic": "A courier named <reading>Machi</reading> pedals through the grid every morning, roofs and bakery and kids on bikes rushing past. She shouts the name of the sprawl the moment she crosses the gate — <reading>まち</reading> — and drops her bike to finish the delivery on time.",
+    "meaning_mnemonic": "The <kanji>town</kanji> kanji and the <vocabulary>town</vocabulary> word are one and the same, so the meaning carries straight over.",
+    "reading_mnemonic": "Sei strikes a <reading>match</reading> on the dark mountain trail, and the flame shows her she is standing in the main square of a whole <vocabulary>town</vocabulary> that was empty fields at dusk. She keeps the 「<reading>まち</reading>」 lit so it cannot slip back into the dark.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3286,11 +3244,11 @@
     }
   },
   "mado": {
-    "meaning_mnemonic": "Picture someone at Grandma Kane's shrine so furious that a cat knocked over the offering bowl that they wrench open the wooden frame set into the wall and shout their outrage straight at the sky — mad, then oh, right as the frame swings wide. That opening they're yelling through, moss creeping up its sill, is a <kanji>window</kanji>.",
-    "reading_mnemonic": "Grandma Kane catches the cat sprawled across her offerings again and goes properly <reading>mad, oh!</reading> — the shout tears out of her as she yanks the wooden frame in the shrine wall wide open to chase it out. That startled yell is <reading>まど</reading>: the window she just threw open.",
+    "meaning_mnemonic": "Punch a square hole in a solid wall and fill it with a sheet of glass. Now you can watch the storm without a single drop landing on you, and that glass-filled square you stare through is a <vocabulary>window</vocabulary>.",
+    "reading_mnemonic": "A <reading>mad doe</reading> at the riverbank charges her own reflection head-first and cracks the <vocabulary>window</vocabulary>. Every deer downstream now calls that treacherous sheet of glass a 「<reading>まど</reading>」.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3442,29 +3400,29 @@
     }
   },
   "me-v": {
-    "meaning_mnemonic": "Above the register at Koichi's konbini hangs a security frame with two little dots for pupils, tilted so it looks like it's staring you down while you pick between the onigiri and the beeping till. That frame with pupils staring back is exactly the <kanji>eye</kanji> watching every customer who lingers too long.",
-    "reading_mnemonic": "目 already gives you this reading on its own — め is exactly how 目 reads by itself, so the <reading>め</reading> here is that very same reading, unchanged.",
+    "meaning_mnemonic": "The <kanji>eye</kanji> kanji and the <vocabulary>eye</vocabulary> word are one and the same character, so there is nothing new to learn here.",
+    "reading_mnemonic": "Sei's school nurse books the <vocabulary>eye</vocabulary> exam for <reading>May</reading> every single year. Any kid who flunks the tiny bottom row just sighs <reading>め</reading> and sits back down.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "megane": {
-    "meaning_mnemonic": "At Sei's school, the librarian's eyesight gives out mid-shelving, so she bends two empty onigiri wrappers from Koichi's konbini into perfect circles, wires them together with a stray chopstick, and hooks the whole rig over her ears. The blur snaps into focus at once — she has just invented glasses.",
-    "reading_mnemonic": "A new student at Sei's school keeps insisting she isn't wearing glasses, but every teacher squints at her face and asks, <reading>Meg, uh, nay?</reading> — which is exactly how you say <reading>めがね</reading>, the glasses she is obviously wearing.",
+    "meaning_mnemonic": "Bend the blurry world back into focus by wearing a tiny polished <kanji>mirror</kanji> before each <kanji>eyeball</kanji>. That pair of lenses perched on your nose is your <vocabulary>glasses</vocabulary>.",
+    "reading_mnemonic": "The class <reading>meganerd</reading> is blind as a bat without the thick lenses she shoves up her nose every ten seconds. Those <vocabulary>glasses</vocabulary> are her <reading>めがね</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "michi-v": {
-    "meaning_mnemonic": "You keep following that winding <kanji>road</kanji> up the mountain trail, switchback after switchback, until it stops being a hiking route — a delivery scooter buzzes past, a mailbox appears at the bend, gravel turns to pavement. It isn't a trail anymore; it's somebody's street. That's the word: <kanji>road</kanji>, the ordinary road or street right outside a door.",
-    "reading_mnemonic": "On the mountain trail, a guide named <reading>Michi</reading> waits at the one bend with a signpost, shouting directions before hikers wander off. Everyone who reaches her calls it by her name — the winding <reading>みち</reading> that got them there safely.",
+    "meaning_mnemonic": "The <kanji>road</kanji> kanji and the <vocabulary>road / street</vocabulary> word are the exact same character, so they mean the exact same thing.",
+    "reading_mnemonic": "A hiker called <reading>Mitch</reading> will only walk the paved strip up the mountain trail and swears the wild grass bites. Any <reading>みち</reading> you point to is the <vocabulary>road / street</vocabulary> that Mitch trusts.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3513,11 +3471,11 @@
     }
   },
   "mimi-v": {
-    "meaning_mnemonic": "Near the top of the mountain trail, that dangling flap of skin catches the sudden beep of the vending machine echoing off the rock face before your eyes even register the machine is there. The flap swivels toward the sound like it has a mind of its own — proof that the whole point of an <kanji>ear</kanji> is hearing first, seeing second.",
-    "reading_mnemonic": "耳 already reads みみ on its own, so the <reading>みみ</reading> in this word is that same reading, said once for the character and now doubled for the word.",
+    "meaning_mnemonic": "The <kanji>ear</kanji> kanji and the <vocabulary>ear</vocabulary> word are the very same character, so they mean the very same thing.",
+    "reading_mnemonic": "Grandma Kane's cat <reading>Mimi</reading> keeps one <vocabulary>ear</vocabulary> aimed at the shrine bell and the other flat against her head. That lopsided <reading>みみ</reading> tilt is how she earned the name.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3548,11 +3506,11 @@
     }
   },
   "mise": {
-    "meaning_mnemonic": "A hand-painted sign hangs above one sliding door: vegetable bins spill onto the pavement, a bell over the frame jingles nonstop, and the till keeps popping open from coins going in and out all day. Nothing about the place is fancy — just one small room built around handing things to people for money. That room is a <kanji>shop</kanji>.",
-    "reading_mnemonic": "A tiny shopkeeper mouse rings up every sale by squeaking the price twice, so customers just call the cramped counter <reading>mice, eh</reading> — say it fast enough and you get <reading>みせ</reading>, the shop everyone in town swears is run entirely by rodents.",
+    "meaning_mnemonic": "A single narrow room: a counter worn smooth by elbows, a bell that jingles when the door swings, shelves of goods each wearing a price tag. That is a <vocabulary>shop</vocabulary>.",
+    "reading_mnemonic": "Every shelf in the place is a <reading>messy</reading> landslide of jars and tins, and prising one purchase out of that heap is what buying from a <vocabulary>shop</vocabulary>, a <reading>みせ</reading>, feels like.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3584,11 +3542,11 @@
     }
   },
   "mizu": {
-    "meaning_mnemonic": "You're back at the riverbank where the streams splash outward in every direction, cold spray hitting your face. Cup your hands in that spray, and the streaks resolve into something you can actually drink: <kanji>water</kanji>.",
-    "reading_mnemonic": "At the riverbank, a keeper named <reading>Miss Zoo</reading> dives in after an escaped otter. She surfaces coughing, gasping that she swallowed a mouthful of <reading>みず</reading>, spits it out, and trudges home soaked to teach the otter a lesson.",
+    "meaning_mnemonic": "The <kanji>water</kanji> kanji and the <vocabulary>water</vocabulary> word are the same, so they carry the same meaning.",
+    "reading_mnemonic": "Everyone here just calls the river the <reading>Mizzou</reading>. There is nothing in it but what that name promises, cold clear <reading>みず</reading>, plain <vocabulary>water</vocabulary> up to your knees.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -3985,11 +3943,10 @@
     }
   },
   "niku": {
-    "meaning_mnemonic": "At Koichi's konbini, a customer piles his arms so high with packages that he can't see over the top, and the automatic door doesn't slide open fast enough — he plows into the glass, packages skidding toward the onigiri shelf while the till keeps beeping through the whole thing. What he was hoarding, glass door and all, was meat.",
-    "reading_mnemonic": "This word is just 肉 read the ordinary way, <reading>にく</reading>, with nothing added.",
+    "meaning_mnemonic": "Overnight, every shelf in Koichi's konbini is restocked with nothing but <vocabulary>meat</vocabulary>. Cold steaks fill the onigiri rack, sausages crowd the drinks fridge, and a slab of ribs beeps through the till.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4021,11 +3978,11 @@
     }
   },
   "niwa": {
-    "meaning_mnemonic": "Behind Sei's school, past the sports field, there's a locked gate nobody bothers with anymore. Squeeze through and you find a <kanji>courtyard</kanji> gone completely wild — tomato vines swallowing the old goalposts, cats sunbathing on a rusted rake nobody put away. Teachers pretend it isn't there. Everyone else just calls it the yard behind the yard.",
-    "reading_mnemonic": "In that tangled garden behind the school, a cat pounces off the rusted rake and lands wrong, yowling <reading>knee, wah!</reading> — that garbled yelp is exactly the sound of <reading>にわ</reading>, the overgrown little yard where the school's stray cats actually live.",
+    "meaning_mnemonic": "Picture the strip of bare ground that a Japanese house wraps itself around, half swept dirt and half stubborn weeds. The family still points at that patch and proudly calls it the <vocabulary>garden / yard</vocabulary>.",
+    "reading_mnemonic": "Every time Nao kneels in the mossy patch behind Grandma Kane's shrine, a resident cat leans in and yowls one long <reading>nee-wah</reading>. That is how <reading>にわ</reading> got stuck to the <vocabulary>garden / yard</vocabulary> she was weeding.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4048,11 +4005,10 @@
     }
   },
   "nomimono": {
-    "meaning_mnemonic": "That same yawning mouth wanders down to the riverbank on a hot afternoon, tips its head all the way back over the water, and doesn't stop until the whole river's worth has vanished down its throat. Food sits forgotten beside it; the only <kanji>thing</kanji> that gaping mouth wants now is to <kanji>drink</kanji>, and it does, all afternoon, without ever closing once.",
-    "reading_mnemonic": "<reading>のみもの</reading> just chains 飲's reading の, the み that follows it, and 物's reading もの.",
+    "meaning_mnemonic": "Among all the nameless <kanji>things</kanji> in the barn, the one you tip up and <kanji>drink</kanji> instead of chewing is the <vocabulary>drink</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4066,11 +4022,10 @@
     }
   },
   "nooto": {
-    "meaning_mnemonic": "At Sei's school, a kid staples every loose page from their bag into one brick-thick block and hauls it to class insisting it's still light. The teacher weighs it in one hand, sighs, and writes \"notebook\" across the cover so nobody has to argue about what to call it again.",
-    "reading_mnemonic": "Written in kana exactly as it sounds, straight from the English word notebook — read it as <reading>ノート</reading>, no decoding needed.",
+    "meaning_mnemonic": "You scribble one <reading>note</reading>, then a hundred more, then clamp the whole pile flat between two cardboard covers. That fat brick of paper is a 「<reading>ノート</reading>」, your <vocabulary>notebook</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4121,12 +4076,11 @@
     }
   },
   "ocha": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, she pours something pale green and steaming into small cups for every visitor who climbs the mossy steps, cats sniffing at the tray. One sip after the climb and you understand why she never skips this step: <kanji>tea</kanji>.",
-    "reading_mnemonic": "At Koichi's konbini, a hot can rolls off the shelf and lands right at your feet, steam still hissing from the seam. You yelp <reading>oh, cha!</reading> as it burns your fingers picking it up. That yelp is the reading: <reading>おちゃ</reading>.",
-    "description": "Almost always appears with the honorific prefix お attached — daily speech rarely uses the bare form alone, even though it exists in other compounds.",
+    "meaning_mnemonic": "The <kanji>tea</kanji> kanji and the <vocabulary>tea</vocabulary> word mean exactly the same thing; meeting it again as a word changes nothing.",
+    "description": "In everyday Japanese お茶 usually means green tea, not tea in general.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4214,11 +4168,10 @@
     }
   },
   "okashi": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, someone leaves rice crackers by the bell as an offering. A <kanji>child</kanji> wriggles free of its wrap — arms flung wide, the exact shape that means <kanji>child</kanji> — snatches the whole plate and is found later face-down in crumbs. The monks give up on real food; now they just leave out sweets.",
-    "reading_mnemonic": "Behind Koichi's konbini, there's a locked drawer everyone whispers about. Pry it open and you find <reading>おかし</reading> — an entire <reading>cache</reading> of sweets he's been hoarding since spring, more candy than any kid could eat in a year.",
+    "meaning_mnemonic": "<kanji>Cakes</kanji> come in adult size, but shrink each one to <kanji>child</kanji> size and you can eat twelve without comment. A bowl of those miniatures is <vocabulary>sweets / snacks</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4304,11 +4257,11 @@
     }
   },
   "onaka": {
-    "meaning_mnemonic": "At Koichi's konbini, a man buys every onigiri on the shelf and eats them standing at the counter, one after another, until his shirt stops closing. By the last one his middle has ballooned into a round drum he has to hold with both hands — his stomach, full past reason, the only thing left worth talking about.",
-    "reading_mnemonic": "Koichi watches the man's belly swell round as a spare tire and mutters he looks like he's got one strapped <reading>on a car</reading>. The man just groans <reading>おなか</reading>, patting the bulge, and Koichi decides that's as good a name for it as any.",
+    "meaning_mnemonic": "The soft drum you pat after a big lunch, the part that growls in a silent room, is your <vocabulary>stomach / belly</vocabulary>.",
+    "reading_mnemonic": "One more dumpling drifts toward the sumo trainee and he waves it off, both palms flat on his <vocabulary>stomach / belly</vocabulary>: <reading>oh, not a</reading>nother bite. The groan lands as 「<reading>おなか</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4404,12 +4357,11 @@
     }
   },
   "osake": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the cats curled by the enormous bell always find the one jar the priest forgot to lock away. By the time you arrive for New Year's prayers, three of them are sprawled belly-up on the mossy steps, hiccuping softly, radiating that unmistakable warm reek of alcohol.",
-    "reading_mnemonic": "Grandma Kane spots the empty jar and gasps <reading>Oh, sake</reading>, her shocked cry stretching into <reading>おさけ</reading> as she chases the wobbling cats down the mossy steps, the enormous bell clanging behind her the whole way.",
-    "description": "お酒 means alcohol in general — beer, wine, spirits, anything you drink to get tipsy — not only the rice wine English speakers picture when they hear the word sake.",
+    "meaning_mnemonic": "Leave cooked rice and clean river water together in a warm, dark cupboard for a few weeks. The mixture quietly ferments into <vocabulary>alcohol / sake</vocabulary>.",
+    "reading_mnemonic": "Grandma Kane's neighbour <reading>O'Sakey</reading> climbs the mossy steps each evening with one bottle and nothing else. Two cups of <reading>おさけ</reading> later he is asleep among the cats, and the name has stuck to the <vocabulary>alcohol / sake</vocabulary> in his hand.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4433,11 +4385,10 @@
     }
   },
   "otearai": {
-    "meaning_mnemonic": "At the riverbank a door stands with a huge <kanji>hand</kanji> painted on it, fingers spread wide and dripping wet. Everyone in line shakes that dripping <kanji>hand</kanji> before ducking inside to hunt for the toilet. The dripping hand is the whole point of the sign: <kanji>wash</kanji> first, then go — this is the restroom.",
-    "reading_mnemonic": "The reading comes straight from its parts: お, 手 read て, 洗 read あら, and い combine to give <reading>おてあらい</reading>.",
+    "meaning_mnemonic": "The room set aside for you to <kanji>wash</kanji> your <kanji>hand</kanji> in is the one polite people call the <vocabulary>restroom</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4560,29 +4511,26 @@
     }
   },
   "pan": {
-    "meaning_mnemonic": "At Koichi's konbini a customer grabs the last loaf off the shelf right as the till starts beeping, panicking because the shelf is otherwise all onigiri. He hugs it like it's the only bread left in Japan, mutters thanks under the fluorescent lights, and pays before anyone else spots it.",
-    "reading_mnemonic": "This word is written in kana exactly as it's read: <reading>パン</reading>, borrowed straight from Portuguese pão — no derivation needed.",
+    "meaning_mnemonic": "A baker too cheap to buy an oven fries every loaf of <vocabulary>bread</vocabulary> in one battered <reading>pan</reading>. Ask him what it is and he just grunts <reading>パン</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "pasokon": {
-    "meaning_mnemonic": "In Koichi's konbini, beside the onigiri shelf, a customer heaves a slab of grey plastic onto the counter and starts jabbing it the way he jabs the beeping till. Half-finished English stutters out of its little speaker — pa, so, kon — until the whole register short-circuits into a glowing screen full of spreadsheets: a computer, ringing up groceries nobody asked it to buy.",
-    "reading_mnemonic": "This word is written in kana exactly as it's read, no kanji hiding underneath — just the borrowed English squeezed down to fit: <reading>パソコン</reading>.",
+    "meaning_mnemonic": "You tap your <reading>passcode in</reading> and the grey slab wakes up with a low hum. That machine, dead weight until you prove who you are and then able to run your whole day, is the <vocabulary>computer</vocabulary> everyone calls the <reading>パソコン</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "pen": {
-    "meaning_mnemonic": "At the top of the mountain trail, the lone vending machine sells exactly one item no hiker asked for: a pen that leaks the instant you click it, blooming blue across your knuckles and smearing your name across the summit logbook the second you try to sign it — a pen, and now a permanent one.",
-    "reading_mnemonic": "ペン is kana all the way through, read exactly as written and borrowed straight from English: 「<reading>ペン</reading>」 is simply pen.",
+    "meaning_mnemonic": "Stand two hundred <reading>ペン</reading> upright in the mud in a big rectangle and you have fenced off a pig <reading>pen</reading>. Every post in that fence is one <vocabulary>pen</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4611,11 +4559,10 @@
     }
   },
   "rajio": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the one enormous bell hasn't been rung in months, yet the cats gather on the mossy steps every evening at six, ears flat, tails puffed. Tucked behind the bell sits a cracked wooden box quietly muttering a weather report to no one. The cats, it turns out, have been listening to the shrine's radio the whole time.",
-    "reading_mnemonic": "<reading>ラジオ</reading> is written in kana exactly as it sounds, so the reading is simply <reading>ラジオ</reading> itself — nothing to derive.",
+    "meaning_mnemonic": "The crackly play-by-play blaring over every <reading>rodeo</reading> comes out of one dented box wired to a fence post. All voices and no picture, that box is the <vocabulary>radio</vocabulary>, and the hands at the ring just call it the <reading>ラジオ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4656,12 +4603,10 @@
     }
   },
   "resutoran": {
-    "meaning_mnemonic": "Someone moors a floating diner to a post on the riverbank so it can't drift off. A chalkboard menu hangs from the mast, and the one waiter wades out in rubber boots to deliver plates. Tourists queue on the bank just to eat somewhere that technically counts as a restaurant, even though it's really a raft with silverware.",
-    "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>レストラン</reading>.",
-    "description": "レストラン specifically means a Western-style sit-down restaurant. Casual Japanese eateries, noodle counters, and specialty food shops usually go by other names, not this word.",
+    "meaning_mnemonic": "Chant it and <reading>「レストラン」</reading> falls apart into <reading>rest, oh, ran</reading>. That is you flopping down to rest because you just ran here starving, and the place that then feeds you is a <vocabulary>restaurant</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4719,11 +4664,10 @@
     }
   },
   "ryouri": {
-    "meaning_mnemonic": "It's 2 a.m. at Koichi's konbini, fluorescent lights buzzing over the onigiri shelf while the till beeps through a lull. Bored, the night clerk pulls ingredients off the shelves — instant miso, a rice ball, a squeeze of mayo — and assembles them into something new on the counter, rejecting any combo that bends his straight-line <kanji>reason</kanji>. By closing, he's turned convenience-store scraps into an actual dish: cooking.",
-    "reading_mnemonic": "The clerk introduces himself over the counter, 'I'm <reading>Leo Uri</reading>, konbini cooking champion of aisle three.' He says his name so fast it comes out as one word — <reading>りょうり</reading> — which is exactly how you ask for cooking or a dish.",
+    "meaning_mnemonic": "Raw <kanji>materials</kanji> on the counter mean nothing until you add <kanji>logic</kanji> about heat, water and timing. That worked-out plan for the ingredients is <vocabulary>cooking</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4764,11 +4708,10 @@
     }
   },
   "saifu": {
-    "meaning_mnemonic": "At the riverbank, someone wading across loses their footing, and a slim leather fold flies from their pocket mid-splash. Coins scatter into the current and bills drift downstream like paper boats, but the fold itself washes up on the bank, empty and dripping — proof that whatever it once held, it's still a wallet.",
-    "reading_mnemonic": "The reading is just its kanji stacked together: 財 read さい, plus 布 read ふ, gives you <reading>さいふ</reading>.",
+    "meaning_mnemonic": "<kanji>Wealth</kanji> in your pocket is just loose paper and coins. Fold a scrap of <kanji>cloth</kanji> around it and the closed pouch is a <vocabulary>wallet</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5-low",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4791,11 +4734,11 @@
     }
   },
   "sakana": {
-    "meaning_mnemonic": "Down at the riverbank, a fisherman casts his line for hours and reels in nothing but weeds, until a sudden tug nearly drags him into the water — he hauls back to find something flopping on the bank, gasping right alongside him. That flopping, gasping catch is the entire reason anyone stands at a riverbank all afternoon: fish.",
-    "reading_mnemonic": "The fisherwoman working that same riverbank, <reading>Sock Anna</reading>, wades in after a lost sock and something latches onto her bare foot instead of the fabric — she yelps out the same sound as her own name, <reading>さかな</reading>, and from then on that's just the word for fish.",
+    "meaning_mnemonic": "The <kanji>fish</kanji> kanji and the <vocabulary>fish</vocabulary> word are the same, so they mean the same thing.",
+    "reading_mnemonic": "Down at the riverbank, Ana wrings out a soaking wet <reading>sock</reading> and a live <vocabulary>fish</vocabulary> drops out of the heel. Ana's sock full of fish is <reading>さかな</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4835,11 +4778,10 @@
     }
   },
   "satou": {
-    "meaning_mnemonic": "At the riverbank, someone drops a paper packet off the little footbridge, and instead of sinking it dissolves mid-air into the current, turning a whole stretch of water thick and slow, the fish drifting through it like it's honey — that's what falls into your tea as sugar.",
-    "reading_mnemonic": "Sei's homeroom teacher introduces herself as <reading>Sato</reading>-sensei, then skips the chalkboard and just pours a spoonful into her tea to prove the name: <reading>さとう</reading>, she says, tapping the packet, sweet like she is.",
+    "meaning_mnemonic": "Tip the bag and it hisses out like dry <kanji>sand</kanji>. A spoonful of that pale grit turns your coffee sweet, so it has to be <vocabulary>sugar</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -4948,20 +4890,18 @@
     }
   },
   "shashin": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a dozen cats sprawl across the mossy steps, and just as the great bell tolls, a bulb pops and freezes every yawn and twitching tail at once, the whole <kanji>true</kanji> moment trapped flat and still forever. That frozen instant, kept for good, is a photograph.",
-    "reading_mnemonic": "A tourist barges into the shrine's hush, camera raised, and the old priest just hisses <reading>shush in</reading> before you break it — too late, the shutter already clicked. He hands back the camera; the saved file reads simply <reading>しゃしん</reading>.",
+    "meaning_mnemonic": "Freeze one moment as a <kanji>true</kanji> copy, exact enough that nobody can deny it happened. That undeniable copy of real life is a <vocabulary>photograph</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "shatsu": {
-    "meaning_mnemonic": "At Koichi's konbini, a customer leans too far over the counter to grab an onigiri and his loose top catches on the price scanner by the till. The register beeps furiously, over and over, as if trying to ring up the fabric itself, until Koichi peels the sleeve free and holds up the wrinkled shirt like it just came off the shelf.",
-    "reading_mnemonic": "シャツ is written the way it sounds — no kanji to decode, just read the kana straight across as <reading>シャツ</reading>.",
+    "meaning_mnemonic": "You button the cloth from collar to hem until it <reading>shuts</reading> flat against your chest. That sealed panel of fabric you tuck into your trousers is a <vocabulary>shirt</vocabulary>, the one you call 「<reading>シャツ</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5027,11 +4967,10 @@
     }
   },
   "shinbun": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, someone <kanji>new</kanji> in town stands beaming beside a fresh stack of printed pages, and every cat under the big bell presses an ear to the stack like it's a gate, straining to <kanji>hear</kanji> what's inside before anyone thinks to ask. By the time the bell rings, the whole shrine already knows what's inside those pages pressed flat — the newspaper.",
-    "reading_mnemonic": "新聞 keeps both taught readings back to back, so read it as <reading>しんぶん</reading> — new, then hear.",
+    "meaning_mnemonic": "A <vocabulary>newspaper</vocabulary> gathers everything <kanji>new</kanji> that people around town managed to <kanji>hear</kanji>. By morning the whole pile is printed on your doorstep.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5063,11 +5002,11 @@
     }
   },
   "shio": {
-    "meaning_mnemonic": "Every dawn at Grandma Kane's shrine, the temple cats watch her fling a scoop of coarse white grains across the gate, a purifying toss meant to sting bare skin. One greedy cat licks a stray grain from the stone, recoils hard, and spends the hour draining the well dry. That sharp mineral bite on its tongue is salt.",
-    "reading_mnemonic": "Grandma Kane hands her shrine attendant Ren a sack for the purification toss. He trips on the steps, and it bursts everywhere as he yelps '<reading>She, oh!</reading>' watching grains fill his sandals — that yelp is exactly <reading>しお</reading>, salt.",
+    "meaning_mnemonic": "One shake of the white grit makes hot chips worth eating. The same pinch stings like fire in a small cut, because it is <vocabulary>salt</vocabulary>.",
+    "reading_mnemonic": "Sho the gull cracks white crystals off the <reading>seashore</reading> rocks with her beak. Each crunch sounds like <reading>しお</reading>, and every flake is pure <vocabulary>salt</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5154,11 +5093,10 @@
     }
   },
   "shokuji": {
-    "meaning_mnemonic": "At exactly noon a bell rings through Sei's school, and dozens of <kanji>eat</kanji> tents pop up along the hallway floor — the same roof-made-of-dinner shelter you already know, one for every student ducking in to eat. Trays pile up under each roof until the bell rings again and reports the heap as one official <kanji>matter</kanji>. That whole stretch, from first bite to last, is the meal.",
-    "reading_mnemonic": "A student named Shoko checks her watch in the echoing hallway and gasps '<reading>Shock, gee</reading>, is it that late already?' — she's smelling the trays before she sees them. That gasp is exactly <reading>しょくじ</reading>: meal.",
+    "meaning_mnemonic": "On its own, <kanji>food</kanji> is just stuff on a shelf. Make a whole <kanji>matter</kanji> of it, with plates, chopsticks and a set table, and it becomes a <vocabulary>meal</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5425,11 +5363,10 @@
     }
   },
   "suupaa": {
-    "meaning_mnemonic": "A shopping cart rolls out the automatic doors hauling forty bags of rice, an entire side of beef, and a wobbling pyramid of soap boxes, because an ordinary grocery run won't cut it here. One roof, every aisle, everything in bulk — the store is proud enough of the scale to call itself super for it: a supermarket.",
-    "reading_mnemonic": "スーパー is kana spelling its own sound — say <reading>super</reading> and you've already said <reading>スーパー</reading>, nothing to derive.",
+    "meaning_mnemonic": "The corner grocer kept adding aisles until a plain <reading>super</reading> in the name stopped sounding like a boast. A market big enough to earn that word is a <vocabulary>supermarket</vocabulary>, a <reading>スーパー</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5452,11 +5389,10 @@
     }
   },
   "tabemono": {
-    "meaning_mnemonic": "That tent pitched over a heaped tray — the shelter you duck into when you're hungry — gets dragged whole onto Sei's school sports field for a picnic, roof and all. The whole team ducks under it at once, and every dish sitting under that roof, from the rice down to the last pickle, gets <kanji>eaten</kanji> before the bell rings. Any <kanji>thing</kanji> that ends up under that tent is, simply, food.",
-    "reading_mnemonic": "<reading>たべもの</reading> just chains the readings you already know: 食 as た, べ as written, and 物 as もの.",
+    "meaning_mnemonic": "On the farm, every <kanji>thing</kanji> that isn't the cow is a nameless object. The moment you can <kanji>eat</kanji> one, it turns into <vocabulary>food</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5533,11 +5469,10 @@
     }
   },
   "takushii": {
-    "meaning_mnemonic": "The mountain trail is so steep that hikers stop believing in the vending machine at the top — until a taxi comes crawling up the switchbacks behind them, meter running, wheels spinning on loose gravel. It pulls up right next to the machine and idles patiently, because someone actually ordered a taxi to fetch canned coffee from the summit.",
-    "reading_mnemonic": "This word is a loanword borrowed straight from English \"taxi\" and written in katakana exactly as it's read: <reading>タクシー</reading>.",
+    "meaning_mnemonic": "The <vocabulary>taxi</vocabulary> at the head of the rank is always the <reading>tacky</reading> one, fur on the dash and dice on the mirror. You wave down the tackiest car you can see and call out <reading>タクシー</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5551,11 +5486,11 @@
     }
   },
   "tamago": {
-    "meaning_mnemonic": "At Koichi's konbini, the delivery truck arrives before dawn and unloads crate after crate of impossibly round, pale ovals, still warm from the truck's engine. Koichi holds one to the fluorescent light, taps it once, and it cracks open — bright yolk sliding across the counter: egg.",
-    "reading_mnemonic": "At Grandma Kane's shrine, the fat shrine cat curls into the offering bowl every morning. Someone finally claps and shouts <reading>Tama, go!</reading> — it slinks off, revealing one warm egg underneath. That shout is the reading: <reading>たまご</reading>.",
+    "meaning_mnemonic": "The smooth white thing in the carton that cracks if you look at it wrong and turns into breakfast the moment it hits a hot pan is an <vocabulary>egg</vocabulary>.",
+    "reading_mnemonic": "A hen at Grandma Kane's shrine has started laying one <reading>tomato</reading>-red <vocabulary>egg</vocabulary> every morning on the mossy step. A hen dropping tomatoes is your hook for <reading>たまご</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5587,29 +5522,27 @@
     }
   },
   "te-v": {
-    "meaning_mnemonic": "That same <kanji>hand</kanji> is still hanging out mid-air, wrist and all, waiting for the shake nobody's ever finished. It doesn't close, it doesn't wave — it just stays there, open-palmed, being exactly the shape it always was. That patient, unshaken shape is the word for hand.",
-    "reading_mnemonic": "Same kanji, same lesson: 手 already gave you two readings, and this word just borrows the plain <reading>て</reading> reading straight off it.",
+    "meaning_mnemonic": "The <kanji>hand</kanji> kanji and the <vocabulary>hand</vocabulary> word are the very same character, so whatever one means, the other means too.",
+    "reading_mnemonic": "A masseuse leans her whole weight through one <reading>tender</reading> <vocabulary>hand</vocabulary> pressed flat to your spine, and the tool doing the work is called 「<reading>て</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "teeburu": {
-    "meaning_mnemonic": "Two fishermen haul a wide, flat plank out of the river and can't be bothered carrying it back to camp, so they wedge it level across four boulders right there on the bank and eat lunch off it. Every trip after, they head straight for the same plank on the same four rocks. They never call it a plank again, it's their table.",
-    "reading_mnemonic": "This word is a straight loanword from the English word for table, written in kana exactly as it sounds: <reading>テーブル</reading>.",
+    "meaning_mnemonic": "A carpenter nails a flat plank across four fence posts and calls the whole thing a <reading>table</reading>. The family eats every meal hunched around that plank, so the plank is the <vocabulary>table</vocabulary> they point at and name 「<reading>テーブル</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "tegami": {
-    "meaning_mnemonic": "At the riverbank, a <kanji>hand</kanji> reaches across the water and drops a folded sheet of <kanji>paper</kanji> into a second <kanji>hand</kanji> waiting on the far bank, which folds it again and passes it to a third — the page crossing hand to hand until it reaches you, refolded and ready to read: a letter.",
-    "reading_mnemonic": "Koichi wraps a sticky gummy candy inside a folded note at the konbini register and mutters <reading>the gummy</reading> as he slides it across the counter — the customer unwraps it, and taped underneath, waiting to be read, is a <reading>てがみ</reading>.",
+    "meaning_mnemonic": "You fill a sheet of <kanji>paper</kanji> with words in your own <kanji>hand</kanji>, then fold it up and mail it. What lands in the far mailbox is a <vocabulary>letter</vocabulary>.",
     "_meta": {
-      "generator_model": "cursor-grok-4.6-high",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5623,20 +5556,18 @@
     }
   },
   "tenki": {
-    "meaning_mnemonic": "Look up past the ceiling stretched over everyone's outstretched arms — the <kanji>sky</kanji> itself — and you'll see it has moods. When that same curling wisp of <kanji>spirit</kanji> that rises off a hot bowl of rice thickens into cloud, or thins and vanishes, the sky is telling you what's coming: today's weather.",
-    "reading_mnemonic": "天 already gives you てん and 気 already lends Kiki's き — stitch them together and you get <reading>てんき</reading>, weather.",
+    "meaning_mnemonic": "<kanji>Heaven</kanji> picks an <kanji>energy</kanji> level every morning. Whether it comes out sparking and stormy or flat and grey, that level is the <vocabulary>weather</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "terebi": {
-    "meaning_mnemonic": "The vending machine at the top of the mountain trail breaks down one rainy week, and its cracked screen fills with fuzzy grey static instead of dispensing canned coffee. Hikers keep climbing anyway, huddling round the glowing box, because somehow it has started showing Sei's sports day live from the valley below. Nobody's brave enough to unplug the trail's new TV.",
-    "reading_mnemonic": "<reading>テレビ</reading> is written in kana exactly as it sounds, so the reading is simply <reading>テレビ</reading> itself — nothing to derive.",
+    "meaning_mnemonic": "The picture on that glowing box in the corner is always <reading>terrible</reading>, yet the whole family stares at it for hours. That hypnotic screen of bad shows is the <vocabulary>TV</vocabulary>, the box everyone calls the <reading>テレビ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5669,20 +5600,19 @@
     }
   },
   "toire": {
-    "meaning_mnemonic": "The bell rings at Sei's school and the hallway turns into a stampede — everyone sprinting for the same door before the next class starts. Whoever gets there first slams it shut, and the rest line up outside, jiggling, staring at their shoes: the single most fought-over room in the whole building, the toilet.",
-    "reading_mnemonic": "Written and read exactly as it sounds, letter for letter: <reading>トイレ</reading>.",
+    "meaning_mnemonic": "An undignified raccoon at the riverbank keeps zapping the shallows with a <reading>toy ray</reading> gun, and every hit floats a porcelain <vocabulary>toilet</vocabulary> up out of the water and off downstream. By dusk the river is nothing but 「<reading>トイレ</reading>」 all the way to the bend.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
   "tokei": {
-    "meaning_mnemonic": "Grandma Kane is sick of craning her neck at the shrine to track <kanji>time</kanji>, so she catches the sun mid-crawl above the steps and coils its slow arc into a circle small enough to nail above the bell. Now <kanji>time</kanji> ticks around a tidy face instead of crawling across the sky — she has hung herself a clock.",
-    "reading_mnemonic": "At Koichi's konbini, a customer stubs his toe on the wall clock and yelps <reading>toe-kay</reading> before glaring up to see exactly how much time he wasted wincing — that wall clock is <reading>とけい</reading>.",
+    "meaning_mnemonic": "Back when the village told the <kanji>time</kanji> by the sun on the temple roof, someone built a pocket machine to <kanji>plot</kanji> the hours instead. That gadget is a <vocabulary>clock / watch</vocabulary>.",
+    "reading_mnemonic": "A <reading>tokay</reading> gecko clings to the wall and barks once an hour, right on the hour. The whole house tells time by the lizard now and calls it their <reading>とけい</reading>, a living <vocabulary>clock / watch</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5793,11 +5723,10 @@
     }
   },
   "toshokan": {
-    "meaning_mnemonic": "You step into a hall of shelves stretching past where the light reaches, the whole <kanji>building</kanji> given over to paper. Every page began the same way: someone let the sun sink over their desk while their hand kept moving, filling line after line to <kanji>write</kanji> — even a hand-drawn <kanji>map</kanji> to nowhere ends up bound and shelved here. Multiply that by ten thousand desks and stack it under one roof — that's a library.",
-    "reading_mnemonic": "図（と）＋書（しょ）＋館（かん）combine directly into <reading>としょかん</reading>.",
+    "meaning_mnemonic": "Pack a <kanji>building</kanji> with every <kanji>map</kanji> ever folded and everything a brush could <kanji>write</kanji>, and you have a <vocabulary>library</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5865,11 +5794,11 @@
     }
   },
   "tsukue": {
-    "meaning_mnemonic": "A moving crew wedges a single office desk through the automatic doors of Koichi's konbini because it wouldn't fit anywhere else, bolting it down beside the onigiri shelf. Now Koichi rings up rice balls sitting behind a proper desk instead of a bare register. Every clerk after him just calls it the desk.",
-    "reading_mnemonic": "At Sei's school, a janitor hauls a heavy desk down the echoing hallway, grunting <reading>Sue, cooey!</reading> with every shove until the hallway chants it back. By the time the desk scrapes into the classroom, the chant has worn a groove: <reading>つくえ</reading>, the sound of a desk landing where it doesn't fit.",
+    "meaning_mnemonic": "Shove a plain table into the corner and aim a lamp at it, and now people only sit there to write, never to eat. A table you work at instead of dine at is a <vocabulary>desk</vocabulary>.",
+    "reading_mnemonic": "A pigeon wanders into Sei's school, heads straight for the one flat surface with drawers and a lamp, and settles down <reading>to coo, eh</reading>. The writing table it picked is a <vocabulary>desk</vocabulary>, and it has left feathers all across the <reading>つくえ</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -5938,12 +5867,10 @@
     }
   },
   "uchi": {
-    "meaning_mnemonic": "Every evening at Grandma Kane's shrine, the stray cats pile into one shivering heap on the mossy steps — not because any cat owns the place, but because the heap itself is the point. Ask an outsider cat to squeeze in and the whole pile hisses as one; ask one inside where home is, and it just presses closer. The heap is home.",
-    "reading_mnemonic": "This word is pure kana, spelled exactly the way it sounds, so <reading>うち</reading> needs no decoding — just read it as written.",
-    "description": "うち means home in the sense of your own group or household, not just a building. Japanese speakers use it to mark insiders against outsiders, so it can describe a company, a team, or a family circle as easily as a physical house — a nuance the English word 'home' does not carry on its own.",
+    "meaning_mnemonic": "Trip over the cat, howl <reading>ouch</reading>, and the one place nobody outside your circle hears you do it is <reading>うち</reading>, your <vocabulary>home</vocabulary> and everyone inside it.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6156,11 +6083,10 @@
     }
   },
   "yasai": {
-    "meaning_mnemonic": "Every morning Grandma Kane sets a fresh offering on the shrine steps, but this time it isn't rice or dried fish — it's a heap of raw produce, and the shrine cats sniff it once, turn their tails up, and stalk off toward the bell instead. Not even a temple cat will touch it. That offering nobody at the shrine wants is vegetables.",
-    "reading_mnemonic": "<reading>やさい</reading> is just 野's reading や plus 菜's reading さい, chained together as written.",
+    "meaning_mnemonic": "Green things that come up on their own out on the untended <kanji>plains</kanji>, with no farmer and no fence, still get gathered up and eaten as <vocabulary>vegetables</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6318,12 +6244,11 @@
     }
   },
   "yuki": {
-    "meaning_mnemonic": "Halfway up the mountain trail, the path turns white — not sand, not ash, just cold pale flakes settling on your shoulders and melting the second they land. It piles on the vending machine's roof, on the railing, on your shoes, until the whole trail is buried under it. There's one word for that pale, cold covering: snow.",
-    "reading_mnemonic": "At the top of the mountain trail the vending machine jams, burying a hiker under white flakes from its coin slot. She digs through the cold pile shouting <reading>you, key</reading> — hunting her dropped key — and every shout comes out sounding exactly like <reading>ゆき</reading>.",
-    "description": "ゆき is also an extremely common Japanese given name for girls, so outside of weather talk it will usually be someone's name rather than the word for snow.",
+    "meaning_mnemonic": "Rain that dawdled on the way down until it froze arrives as soft white clumps on your collar. That heaped, silent pile is <vocabulary>snow</vocabulary>.",
+    "reading_mnemonic": "A kid trudges down the mountain trail with both boots packed full of half-melted <vocabulary>snow</vocabulary>. Every squelching step makes her groan 「<reading>ゆき</reading>」, and she is right, because that is genuinely <reading>yucky</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6346,11 +6271,10 @@
     }
   },
   "yuubinkyoku": {
-    "meaning_mnemonic": "The cats at Grandma Kane's shrine have turned the mossy steps into a sorting <kanji>office</kanji>, handy enough now to count as pure <kanji>convenience</kanji>, stacking twigs, feathers, and dead beetles beside the enormous bell. Visitors expecting incense get a paw stamping their sandal instead, like a receipt. By evening prayers the pile is sorted, labeled with cat hair, and ready for pickup.",
-    "reading_mnemonic": "郵（ゆう）＋便（びん）＋局（きょく）combine directly into <reading>ゆうびんきょく</reading>.",
+    "meaning_mnemonic": "A <kanji>facility</kanji> that handles <kanji>mail</kanji> and refuses to handle anything else is a <vocabulary>post office</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6372,11 +6296,10 @@
     }
   },
   "zasshi": {
-    "meaning_mnemonic": "The onigiri shelf at Koichi's konbini gets restocked every hour, but the rack beside it never does — gossip pages, fishing weeklies, and a torn coupon insert all wedged into one groaning shelf the clerk just calls 'the magazine,' singular, because nobody has ever managed to tell where one issue ends and the next begins.",
-    "reading_mnemonic": "雑 (ざっ) plus 誌 (し) combine directly to give <reading>ざっし</reading>.",
+    "meaning_mnemonic": "Bind a fat stack of <kanji>miscellaneous</kanji> articles into a single glossy <kanji>document</kanji> and you have printed a <vocabulary>magazine</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
@@ -6407,12 +6330,10 @@
     }
   },
   "shi-city": {
-    "meaning_mnemonic": "You come back to that town square: banners still snapping over the stalls, the vendor still slamming his pot shut so nobody smells the stew for free. Now there is a clerk too, desk wedged between two stalls, stamping permits and zoning the pavement. A <kanji>market</kanji> that grows this far hires staff, draws a boundary, and calls itself a <kanji>city</kanji>.",
-    "reading_mnemonic": "Nothing new to learn here: the word is the kanji standing on its own, so it simply takes the reading you already have for it, <reading>し</reading>.",
-    "description": "Read this way it is the administrative unit — the city that collects your bins and follows the place name on an address, not the general idea of a big built-up area. The character's other reading carries the market sense.",
+    "meaning_mnemonic": "The <kanji>city</kanji> kanji standing on its own is the whole word, so this <vocabulary>city</vocabulary> means exactly what the kanji does.",
     "_meta": {
-      "generator_model": "opus-5",
-      "prompt_version": "4",
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
       "review_status": "reviewed"
     }
   },
