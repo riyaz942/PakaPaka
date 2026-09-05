@@ -14584,11 +14584,11 @@
         }
       ],
       "furigana": "妹[いもうと]",
-      "meaning_mnemonic": "Picture the small girl who insists on carrying her own backpack up the mountain trail, refuses help, then sits down halfway and cries until someone caves and carries both the backpack and her. That stubborn, still-needs-looking-after littlest-girl energy is exactly a younger sister.",
-      "reading_mnemonic": "Halfway up the mountain trail, the small girl stubs her toe on a root and yelps three sharp sounds — <reading>ee, moh, toe</reading> — before anyone can catch her. The hiker behind logs it plainly as <reading>いもうと</reading>, the toe-stubbing little sister, and keeps climbing.",
+      "meaning_mnemonic": "She barges into your room without knocking and steals your snacks, which is just what a <vocabulary>younger sister</vocabulary> does.",
+      "reading_mnemonic": "At Koichi's konbini, your <vocabulary>younger sister</vocabulary> squeals 「<reading>いもうと</reading>」, sounding just like <reading>ee-moh-oh-toh</reading>, every time she swipes your onigiri before you can pay.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -14708,11 +14708,10 @@
         }
       ],
       "furigana": "祖[そ]父[ふ]",
-      "meaning_mnemonic": "Picture the old man who rings Grandma Kane's one enormous shrine bell every single morning, out of habit rather than faith, then complains for an hour that his arm hurts. That specific, grumbling, ritual-bound old man, the <kanji>ancestor</kanji> of your <kanji>father</kanji>, is exactly your grandfather.",
-      "reading_mnemonic": "After ringing the enormous bell, the old man collapses onto the shrine steps and announces he's <reading>so full</reading> — of aches, not food. The cats ignore him as he mutters it again, <reading>そふ</reading>, and refuses to get up.",
+      "meaning_mnemonic": "An <kanji>ancestor</kanji> still recent enough to be someone's <kanji>father</kanji> is exactly your <vocabulary>(my) grandfather</vocabulary>.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -14846,12 +14845,10 @@
         }
       ],
       "furigana": "おじいさん",
-      "meaning_mnemonic": "At Grandma Kane's shrine, the old bell-ringer finally hands the rope to someone new: a stooped man with a walking stick who has swept the mossy steps every morning for forty years. The cats accept him instantly. The children bow and call him grandfather, and from that day the enormous bell is his alone to ring.",
-      "reading_mnemonic": "おじいさん is written exactly as it sounds, so there's no reading to decode — just the kana <reading>おじいさん</reading> read straight through.",
-      "description": "おじいさん politely addresses or refers to any elderly man, related or not — closer to how English speakers might greet a stranger as \"grandpa\" than a strict family term.",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a <vocabulary>grandfather (polite)</vocabulary> groans 「<reading>おじいさん</reading>」, sounding just like <reading>oh, geez, Sam</reading>, every time his grandson rings the giant bell too hard.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -14973,12 +14970,10 @@
         }
       ],
       "furigana": "祖[そ]母[ぼ]",
-      "meaning_mnemonic": "At Koichi's konbini, the till goes quiet as an elderly woman — an <kanji>ancestor</kanji> in her own right, and someone's <kanji>mother</kanji> long before she became a grandmother — counts her coins one by one. Koichi leans over to the new hire and says simply: that's my grandmother, in for her onigiri. No polite title, no fuss — just family, plain and direct, the way you describe your own grandmother to someone else.",
-      "reading_mnemonic": "This word takes 祖's reading そ and 母's reading ぼ and fuses them together, giving 「<reading>そぼ</reading>」: (my) grandmother.",
-      "description": "祖母 is how you refer to your own grandmother when speaking to someone outside the family — plain and humble, with no polite title attached. It isn't what you'd call her directly, or use for someone else's grandmother, both of which take an address term instead.",
+      "meaning_mnemonic": "That same <kanji>mother</kanji> already holds two children tight in her lap. Give her enough years to also be an <kanji>ancestor</kanji>, and she's your <vocabulary>(my) grandmother</vocabulary>.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
