@@ -28,7 +28,7 @@ Number of slugs this session targets (this session drafts, ingests and
 repairs exactly this many slugs, then stops — no more, no less unless the
 auto-select prints fewer because the layer is nearly done):
 
-<slug-count = 5>
+<slug-count = 4>
 
 Keep <slug-count> small — this is one session's entire attention span, not a
 batch to delegate. 3–5 is the sweet spot: past that, the last item gets
@@ -326,36 +326,43 @@ skipped, preserve its latest validation errors for the final report, and move
 to the next slug — a failure never touches another slug's already-passed
 files.
 
-Step 5: Stop — Do Not Run the Final Build
+Step 5: Run `generate.py`, Then Stop — Do Not Run the Rest of the Final Build
 
-Do NOT run `generate.py`, `npm run validate-schema`, or
-`npm run compile-curriculum` in this session. Those run once, after every
-session covering this batch has finished.
-
-`generate.py` is **not** at the repository root and is **not** on `PATH`. It
-lives at `curriculum/_build/generate.py` and needs that directory's venv
-interpreter, so it must be invoked explicitly:
+As soon as Step 4 finishes (all slugs attempted, whether passed or skipped),
+run `generate.py` for this run's `<level>` automatically, in this same
+session — do not wait for a later session or for the user to ask:
 
 cd curriculum/_build && .venv/bin/python generate.py --level <level>
 
-Then, from the repository root:
+`generate.py` is **not** at the repository root and is **not** on `PATH`. It
+lives at `curriculum/_build/generate.py` and needs that directory's venv
+interpreter, so it must be invoked explicitly as shown above — never shortened
+to a bare `generate.py --level <level>`, which fails with `command not found`.
+
+`generate.py` is the step that copies the sidecar drafts into the shipped
+`curriculum/<type>/<level>.json`, and it is what the Layer Ordering section
+above means by "inlined": the layer above (kanji reading a radical's
+`mnemonic_text`, vocab reading a kanji's `meaning_mnemonic`) reads the shipped
+file, not the sidecar, so running this promptly after each session keeps a
+same-level, cross-type chain (radical → kanji → vocab) unblocked without
+needing a separate coordinating session. If the inlining step worked,
+`curriculum/<type>/<level>.json` is newer than
+`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
+`generate.py` did not run.
+
+Still do NOT run `npm run validate-schema` or `npm run compile-curriculum` in
+this session — those remain a separate, later step, run once from the
+repository root after every session covering this batch has finished:
 
 npm run validate-schema
 npm run compile-curriculum
 
-Do not shorten the first command to a bare `generate.py --level <level>`. That
-fails with `command not found`, while the two `npm` commands after it still
-succeed — so the build looks like it ran, `curriculum.db` gets rebuilt, and the
-new mnemonics are silently missing because nothing ever inlined them. If the
-inlining step worked, `curriculum/<type>/<level>.json` is newer than
-`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
-`generate.py` did not run.
-
-`generate.py` is the step that copies the sidecar drafts into the shipped
-`curriculum/<type>/<level>.json`. Nothing downstream reads the sidecar:
-`compile-curriculum` builds `curriculum.db` from the shipped JSON, and the
-studio serves that same JSON. Skipping it means the batch exists only in the
-sidecar.
+Nothing downstream but `generate.py` reads the sidecar: `compile-curriculum`
+builds `curriculum.db` from the shipped JSON that `generate.py` just updated,
+and the studio serves that same shipped JSON. Running `generate.py` every
+session is cheap and keeps the shipped files current; running
+`compile-curriculum` every session is not, which is why only that half stays
+batched.
 
 Whoever runs the Final Build: if the curriculum studio's `web/server` is
 already running, its curriculum index is an in-memory cache loaded once at
@@ -383,8 +390,10 @@ Final Report (for this session)
 - Validation errors remaining after the final allowed attempt
 - Roughly how many slugs of this type remain not-yet-done for the level
   (re-run Step 1 to get the count) — this tells you whether another session
-  is needed before running the Final Build
-- Confirmation that the Final Build was NOT run in this session
+  is needed before running the rest of the Final Build
+- Confirmation that `generate.py --level <level>` was run for this session's
+  slugs, and that `npm run validate-schema` / `npm run compile-curriculum`
+  were NOT run in this session
 
 Do not modify or set `review_status` to `reviewed` — that is a manual human
 Phase 5 step this automation must never perform.
@@ -402,8 +411,10 @@ Important Constraints
   code, the look-alike dataset, the cast bible, the prompt templates, or
   curriculum source data to make invalid content pass.
 - Never invent a look-alike pair or a component the prompt did not list.
-- Do not run the Final Build pipeline from this session — that is a
-  separate, later step run once per batch, after all its sessions finish.
+- Do run `generate.py --level <level>` at the end of this session (Step 5) —
+  it is no longer deferred. Do not run `npm run validate-schema` or
+  `npm run compile-curriculum` from this session — those stay a separate,
+  later step run once per batch, after all its sessions finish.
 - No browser, no clipboard, no downloads.
 
 ---
@@ -416,9 +427,12 @@ Notes on differences from the subagent workflow
 - Because there is no subagent to hand a large repair to, every repair in
   this shape is inline, regardless of error count — the subagent workflow's
   "7+ errors → repair subagent" branch does not apply here.
-- The Final Build step is deliberately deferred out of this session. Run
-  this prompt in as many fresh sessions as needed to clear a batch, then run
-  the Final Build once, in any session, after the last one finishes.
+- `generate.py` runs at the end of every session (Step 5), so the shipped
+  `curriculum/<type>/<level>.json` stays current after each batch of
+  <slug-count> slugs. Only `validate-schema` and `compile-curriculum` are
+  deferred: run this prompt in as many fresh sessions as needed to clear a
+  batch, then run those two once, in any session, after the last one
+  finishes.
 - Everything else is identical: the same auto-select (Step 1, reading "done"
   from the checked-in sidecar), the same `webprompts`/`ingest` commands and
   gate, the same per-slug repair rules and retry budget, the same per-level
