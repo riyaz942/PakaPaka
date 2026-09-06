@@ -13,7 +13,7 @@ set -uo pipefail
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CHANGE THIS: how many Claude sessions to run back-to-back.
-ITERATIONS=2
+ITERATIONS=5
 # ─────────────────────────────────────────────────────────────────────────────
 
 # CHANGE THIS if you want a different drafting model. This value is also passed
