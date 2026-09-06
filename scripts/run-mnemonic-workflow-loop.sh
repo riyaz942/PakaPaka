@@ -35,30 +35,62 @@ fi
 
 cd "$REPO_ROOT"
 
+# Timestamped log line to the terminal.
+log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
+
+# Human-readable duration from a second count.
+fmt_dur() { printf '%dm%02ds' $(( $1 / 60 )) $(( $1 % 60 )); }
+
+run_start=$(date +%s)
+declare -a RESULTS=()
+
 for (( i=1; i<=ITERATIONS; i++ )); do
   echo "════════════════════════════════════════════════════════════════"
-  echo "Session $i of $ITERATIONS  —  $(date '+%Y-%m-%d %H:%M:%S')"
+  log "Session $i of $ITERATIONS — starting"
   echo "════════════════════════════════════════════════════════════════"
 
+  s_start=$(date +%s)
+
   # Fresh session each time: `claude -p` with no --resume/--continue.
+  # --verbose streams each turn + tool call to the terminal so you can watch
+  #   the workflow progress instead of waiting for a silent final message.
   # --dangerously-skip-permissions is required because the loop is unattended
-  # and the workflow runs python/ingest/generate.py and edits reply files.
+  #   and the workflow runs python/ingest/generate.py and edits reply files.
   claude -p \
     --model "$MODEL" \
     --effort "$EFFORT" \
+    --verbose \
     --dangerously-skip-permissions \
     < "$PROMPT_FILE"
   status=$?
 
-  echo
-  echo "Session $i finished (exit $status)  —  $(date '+%Y-%m-%d %H:%M:%S')"
-  echo
+  s_end=$(date +%s)
+  dur=$(fmt_dur $(( s_end - s_start )))
 
-  if [[ $status -ne 0 ]]; then
-    echo "WARNING: session $i exited non-zero; continuing to next iteration." >&2
+  echo
+  if [[ $status -eq 0 ]]; then
+    log "Session $i of $ITERATIONS — finished OK in $dur (exit 0)"
+    RESULTS+=("session $i: OK    $dur")
+  else
+    log "Session $i of $ITERATIONS — FAILED in $dur (exit $status); continuing"
+    RESULTS+=("session $i: FAIL  $dur  (exit $status)")
   fi
+  echo
 done
 
-echo "All $ITERATIONS session(s) done."
+total=$(fmt_dur $(( $(date +%s) - run_start )))
+echo "════════════════════════════════════════════════════════════════"
+log "All $ITERATIONS session(s) done in $total"
+for r in "${RESULTS[@]}"; do echo "  $r"; done
+echo "════════════════════════════════════════════════════════════════"
 echo "Remember: run 'npm run validate-schema' and 'npm run compile-curriculum'"
 echo "from the repo root once, now that the batch is finished."
+
+# peon-ping has no "fire one event" command; `preview` is its documented way to
+# play a category's sound(s) from a script. task.complete = the "work complete"
+# chime. Guarded so the loop still works if peon isn't installed / on PATH.
+if command -v peon >/dev/null 2>&1; then
+  peon notifications label "mnemonic workflow loop: all $ITERATIONS session(s) finished"
+  peon preview task.complete
+  peon notifications label reset
+fi

@@ -81,12 +81,12 @@
     }
   },
   "akarui": {
-    "meaning_mnemonic": "Koichi flips every switch behind the register at once, and the whole konbini goes nuclear — onigiri wrappers glowing white, the beeping till suddenly readable from across the parking lot. A moth outside faints on the spot. That's the only word for it: <kanji>bright</kanji>, blindingly, hopelessly bright.",
-    "reading_mnemonic": "Koichi shields his eyes and gasps <reading>\"ah, car, ooh-ee!\"</reading> — the nonsense his blinded brain makes of <reading>あかるい</reading> — as the fluorescents blaze so hard they're visible from the street outside.",
+    "meaning_mnemonic": "You flick one switch in the windowless storeroom and ten strip lights blaze on at once, and suddenly you are squinting. A room that hard on the eyes is <vocabulary>bright</vocabulary>, and because it ends in い it works as an adjective.",
+    "reading_mnemonic": "A <reading>kangaroo</reading> bounds across the school sports field at dusk and trips the motion sensor, and every floodlight bangs on at once. The whole pitch floods <reading>あかるい</reading>, <vocabulary>bright</vocabulary> as high noon.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "akeru": {
@@ -108,12 +108,12 @@
     }
   },
   "amai": {
-    "meaning_mnemonic": "At Koichi's konbini, a delivery van dumps a whole pallet of sugar sacks onto the onigiri shelf. One bag splits open and buries the till in white dust. The cashier can't help scooping a fingerful straight off the counter — it's pure, blinding sugar, nothing else. That's what sweet tastes like.",
-    "reading_mnemonic": "A woman at Koichi's konbini bites into what she assumes is a plain rice cracker and gasps <reading>ah my</reading>, eyes watering — it's actually a sugar candy in disguise. Her gasp is exactly the sound of <reading>あまい</reading>, sweet.",
+    "meaning_mnemonic": "You bite what you take for a plain savoury cracker and it is rolled in sugar, so sticky it glues your back teeth together. Anything that ambushes your mouth like that is <vocabulary>sweet</vocabulary>, and the closing い is what makes it an adjective.",
+    "reading_mnemonic": "Halfway up the mountain trail a hiker jabs the vending machine for water and it drops <reading>a Mai Tai</reading> instead, thick with syrup and pineapple. One sip and she winces that it is far too <reading>あまい</reading> for nine in the morning, achingly <vocabulary>sweet</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "amari": {
@@ -2455,13 +2455,12 @@
     }
   },
   "karai": {
-    "meaning_mnemonic": "A hiker reaches the vending machine improbably parked at the top of the mountain trail and buys the only can left. The first sip is a wall of salt, like drinking the ocean. Two steps later the chili catches up and torches the back of her throat. She sits down hard on a rock, fanning her mouth. That drink was spicy, and it was salty.",
-    "reading_mnemonic": "Halfway up the mountain trail, a jeep pulls alongside the hiker, and the driver leans out and offers her a ride: <reading>car ride</reading>, he calls, grinning around a mouthful of chili peppers. That's the sound of <reading>からい</reading>, spicy, salty.",
-    "description": "This word covers two distinct sensations English keeps separate — spicy-hot (a chili pepper) and salty (over-salted soup). Which one a speaker means comes entirely from context, not from the word itself.",
+    "meaning_mnemonic": "Bite a chilli the colour of a fire hydrant, then chase it with a fistful of rock salt, and your whole mouth is on fire either way. Either burn is <vocabulary>spicy / salty</vocabulary>, and that final い lets you hang it on a noun like any adjective.",
+    "reading_mnemonic": "A hungry pilgrim at Grandma Kane's shrine wolfs a bowl of <reading>curry</reading> left as an offering, gets three steps, and dives into the water trough. A mouth that reacts like that has met something truly <reading>からい</reading>, blazing <vocabulary>spicy / salty</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kare": {
@@ -2483,12 +2482,12 @@
     }
   },
   "karui": {
-    "meaning_mnemonic": "Sei sprints across the sports field hauling what should be a heavy gym bag, except someone swapped the weights inside for empty juice cartons overnight. He practically floats down the track, arms pumping, feet barely tapping the ground between strides: light, light, light, he could carry ten of these.",
-    "reading_mnemonic": "Cara chases Sei down the echoing school hallway with the swapped-out gym bag and can't believe how little it weighs on her shoulder. <reading>Cara</reading>, we're winning this race, she yells back at him, we're so <reading>かるい</reading> today, かるい as air.",
+    "meaning_mnemonic": "You brace hard to heave the box, but it is empty, and it flies up so fast you stumble backwards. Anything that easy to lift is <vocabulary>light (weight)</vocabulary>, and the い ending marks it as an adjective.",
+    "reading_mnemonic": "Halfway up the mountain trail you find your pack empty except for one stray sock. It feels so weightless you can <reading>carry</reading> it on one finger, and a load like that is <reading>かるい</reading>, plainly <vocabulary>light (weight)</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kasa": {
@@ -2776,12 +2775,12 @@
     }
   },
   "kitanai": {
-    "meaning_mnemonic": "Down at the riverbank, someone has left a bicycle half-buried in the mud, its wheels crusted brown, a plastic bag snagged on the handlebars flapping in the current. A heron lands on the seat, takes one look at the muck dripping off every spoke, and flies straight back off without touching it. Even the heron won't go near something that dirty.",
-    "reading_mnemonic": "At the riverbank, Grandma Kane spots the mud-crusted bicycle and asks who left it there. A boy points at his friend and blurts <reading>Kit, uh, not I!</reading> — which is exactly how you say <reading>きたない</reading>, dirty.",
+    "meaning_mnemonic": "You haul your one white shirt out of the river and it comes up streaked brown and reeking of pondweed, somehow worse than before the wash. A shirt in that state is <vocabulary>dirty</vocabulary>, and the trailing い tags it as an adjective.",
+    "reading_mnemonic": "A stray kitten drags itself out of the riverbank mud with one <reading>kitten eye</reading> gummed shut and its fur matted into grey clumps. You reach to lift it, but it is <reading>きたない</reading> to the bone, far too <vocabulary>dirty</vocabulary> for your lap.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kitte": {
@@ -3088,12 +3087,12 @@
     }
   },
   "kurai": {
-    "meaning_mnemonic": "Grandma Kane's enormous bell goes silent at dusk, and the mossy shrine steps dissolve into shadow so complete you hear the cats climbing before you ever see them. You feel your way up by touch alone, one hand on stone you can't find with your eyes. That's the word for pitch-black: dark.",
-    "reading_mnemonic": "A cat yowls <reading>\"coo, why…\"</reading> somewhere on the shrine steps — the sound that scratches itself into your head as the reading <reading>くらい</reading> — right before it vanishes completely into shadow, leaving only its voice behind.",
+    "meaning_mnemonic": "Someone unscrews the last working bulb in the basement and now you cannot see your own hand in front of your face. A room like that is <vocabulary>dark</vocabulary>, and the trailing い makes it an adjective.",
+    "reading_mnemonic": "The sun drops behind Grandma Kane's shrine and every cat melts into the shadows. It goes so <vocabulary>dark</vocabulary>, so <reading>くらい</reading>, that you could sit down and <reading>cry</reading> for want of one small lamp.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "kureru": {
@@ -3385,13 +3384,11 @@
     }
   },
   "mazui": {
-    "meaning_mnemonic": "At the vending machine improbably parked at the top of the mountain trail, you buy the last can — mystery flavor, no label — and immediately regret existing. Your face does something involuntary. That single working button might be a war crime. That's bad-tasting.",
-    "reading_mnemonic": "This word is written exactly the way it sounds — just say <reading>まずい</reading>, nothing to derive, nothing hiding underneath.",
-    "description": "Beyond food, まずい is also the everyday word for a situation gone wrong or awkward — closer to \"uh-oh, bad\" than to bad cooking. Someone muttering it while staring at a spilled drink or a missed deadline is using this same word, not talking about taste at all.",
+    "meaning_mnemonic": "A kid in the school cafeteria takes one mouthful of the grey mystery stew, freezes, and shoves the tray away with a flat '<reading>Ma, ewwy</reading>'. That verdict on the stew is 「<reading>まずい</reading>」, <vocabulary>bad-tasting</vocabulary>, and its い ending is the adjective marker every one of them carries.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "me-v": {
@@ -4108,12 +4105,11 @@
     }
   },
   "oishii": {
-    "meaning_mnemonic": "At Koichi's konbini, someone microwaves a lopsided onigiri that by all rights should be a disaster. Instead steam curls off it like it came from a five-star kitchen, and three strangers stop scrolling their phones just to watch you eat it. That's what delicious means here.",
-    "reading_mnemonic": "This word is written exactly the way it sounds — just say <reading>おいしい</reading>, no kanji hiding a different reading underneath.",
+    "meaning_mnemonic": "You try the free sample at Koichi's konbini, your eyebrows shoot up, and all you can say is '<reading>oh, I see</reading>' — now you finally get the queue outside. That jolt of understanding is 「<reading>おいしい</reading>」, <vocabulary>delicious</vocabulary>, and its final い marks it as an adjective.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "oji": {
@@ -4216,12 +4212,12 @@
     }
   },
   "omoi": {
-    "meaning_mnemonic": "Someone dumps a waterlogged stone lantern on the riverbank and asks for help hauling it home. Two people grab opposite ends, knees buckling, boots sinking a little deeper into the mud with every step, and the third person just watches them struggle: heavy, heavy, heavy, put it down before someone's back gives out.",
-    "reading_mnemonic": "He tries to lift the waterlogged lantern off the riverbank by himself and it doesn't budge a centimeter. <reading>Oh my</reading>, he wheezes, letting it thud straight back into the mud — <reading>おもい</reading>, this thing is おもい, somebody else grab the other end already.",
+    "meaning_mnemonic": "A suitcase you pack full of bricks and then cannot drag an inch across the floor is <vocabulary>heavy</vocabulary>. The い on the end is what makes it an adjective, the same ending every describing word like it takes.",
+    "reading_mnemonic": "Old Omura hoists the crate at the riverbank, then feels his back give way. He groans <reading>oh my</reading>, because the crate is <reading>おもい</reading>, far too <vocabulary>heavy</vocabulary> to lift another inch.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "omoshiroi": {
@@ -4825,12 +4821,12 @@
     }
   },
   "semai": {
-    "meaning_mnemonic": "Koichi restocks the onigiri shelf until the aisle behind it chokes down to nothing — one shoulder in, one shoulder out, and the till starts beeping because somebody's stuck sideways. He wedges a mop bucket into the last gap out of spite and now there isn't even room to breathe: narrow, cramped, narrow, cramped, nobody move.",
-    "reading_mnemonic": "Sammy tries to squeeze past the onigiri shelf sideways and gets wedged solid between two racks while the till keeps beeping at him for no reason. <reading>Sammy</reading> can't move an inch, and everyone shuffling past just mutters the same thing at him: <reading>せまい</reading>, せまい, you picked the worst aisle.",
+    "meaning_mnemonic": "You meet someone in the shrine hallway and you both have to turn sideways to squeeze past, because the walls sit that close together. A passage like that is <vocabulary>narrow / cramped</vocabulary>, and the final い makes it an adjective.",
+    "reading_mnemonic": "A <reading>semi</reading> truck noses into the alley behind Koichi's konbini and stops dead, wedged tight between the two walls. The alley is <reading>せまい</reading>, far too <vocabulary>narrow / cramped</vocabulary> for a truck that size.",
     "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "4",
-      "review_status": "reviewed"
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "6",
+      "review_status": "draft"
     }
   },
   "sen-v": {
