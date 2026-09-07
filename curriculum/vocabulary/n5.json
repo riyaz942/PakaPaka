@@ -59009,11 +59009,10 @@
         }
       ],
       "furigana": "映[えい]画[が]",
-      "meaning_mnemonic": "You're stuck at a bus stop in the rain, and the drugstore across the street has a demo screen in its window that never turns off — passersby keep pausing mid-stride, faces lit blue, unable to look away from the flickering rectangle. The wet glass <kanji>reflects</kanji> each passerby as a moving <kanji>brush-stroke</kanji>. That instinctive freeze, everyone briefly captured by a moving picture, is a movie.",
-      "reading_mnemonic": "The reading is just its kanji stacked together: 映 read えい, plus 画 read が, gives <reading>えいが</reading>.",
+      "meaning_mnemonic": "Stack up a pile of <kanji>pictures</kanji> and <kanji>reflect</kanji> them onto a white wall one after another, fast. The moving image on the wall is a <vocabulary>movie</vocabulary>.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -59133,11 +59132,11 @@
         }
       ],
       "furigana": "歌[うた]",
-      "meaning_mnemonic": "Halfway up the mountain trail, a hiker collapses in front of the lone vending machine and won't take another step. Her friend starts humming, then breaks into a full song about the cold drinks waiting at the summit. By the second verse the hiker is back on her feet, still humming, powered entirely by the song.",
-      "reading_mnemonic": "At the vending machine, her friend keeps saying <reading>you oughta</reading> sing along before every button press, until the hikers are chanting it back in rhythm — <reading>oughta</reading>, <reading>oughta</reading> — and the phrase warps into <reading>うた</reading>, the machine's tinny jingle playing the actual song.",
+      "meaning_mnemonic": "Words turn into a <vocabulary>song</vocabulary> the moment a tune picks them up and makes them rise and fall instead of lying flat.",
+      "reading_mnemonic": "You already met this reading in 歌う, so a <vocabulary>song</vocabulary> is just <reading>うた</reading> again.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -59269,11 +59268,10 @@
         }
       ],
       "furigana": "絵[え]",
-      "meaning_mnemonic": "In the echoing school hallway, someone taped up a drawing so bad the paper itself seems embarrassed to hold it. Every student who passes stops, tilts their head, and produces the exact same reaction — because what's supposed to be a horse has four legs, three ears, and no clear idea which end is which.",
-      "reading_mnemonic": "絵 keeps the reading you already learned for the kanji itself, carried straight through: <reading>え</reading>.",
+      "meaning_mnemonic": "A kid scribbles crayon over a whole page until the blob is unmistakably the family dog. Any marks made to stand for a real thing are a <vocabulary>drawing</vocabulary>.",
       "_meta": {
-        "generator_model": "cursor-grok-4.6-high",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -59391,11 +59389,11 @@
         }
       ],
       "furigana": "話[はなし]",
-      "meaning_mnemonic": "That same mouth still hasn't stopped, and now its stories have an audience: the cats at Grandma Kane's shrine gather on the mossy steps every evening because one of them just won't quit <kanji>talking</kanji>, spinning fresh stories about a fish the size of the bell. Nobody's ever proven a word of it, but nobody leaves either.",
-      "reading_mnemonic": "Every time the storytelling cat starts up again, Grandma Kane calls out from the steps, <reading>Hannah, she</reading> really said that? — and the phrase blurs into <reading>はなし</reading>, the very story the whole shrine has gathered on the mossy steps to hear.",
+      "meaning_mnemonic": "The <kanji>talk</kanji> kanji and the <vocabulary>story</vocabulary> word are the very same character, so they carry the very same meaning.",
+      "reading_mnemonic": "A parrot on the riverbank has memorised exactly one rambling <vocabulary>story</vocabulary> and retells it to every heron that lands, squawking <reading>はなし</reading> like <reading>'her Nashi pear'</reading> at the same spot each time.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
@@ -59521,11 +59519,10 @@
         }
       ],
       "furigana": "質[しつ]問[もん]",
-      "meaning_mnemonic": "At Koichi's konbini, one customer plants himself at the register and <kanji>asks</kanji> about every single item on the shelf — the onigiri's expiration, why the till beeps twice, whether the till itself has feelings. Koichi answers thirty of these before the line behind reaches the door, and there's no sign of them stopping.",
-      "reading_mnemonic": "Watching them pile up, Koichi mutters to the next person in line, <reading>she's too much</reading> — and the words blur into <reading>しつもん</reading>, the very thing holding up his till: one more question, then another, then another.",
+      "meaning_mnemonic": "At Sei's school the gate won't open until you answer the <kanji>question</kanji> shouted through its bars. Take that same demand for an answer indoors, hand raised, and you are asking a <vocabulary>question</vocabulary>.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "reviewed"
       },
       "example_sentences": [
