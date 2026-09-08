@@ -52,6 +52,10 @@ for 2b/2d):
        or kana-only reading gets no reading mnemonic at all (Rev 6), an
        irregular one gets a full story (bounded long)
     5. the description names no kanji beyond the word and its components
+  every layer:
+    every highlight tag also names the character it stands for, in a `form`
+    attribute — `<kanji form="少">few</kanji>` — so the app can print that
+    character beside the English word: "a few (少) years (年)". See _FORM_ATTR.
 
 Rev 4 adds a sentence-shape (readability) gate, enforced only when the caller
 passes enforce_readability=True — i.e. on freshly generated drafts. Stored
@@ -270,6 +274,25 @@ VOCAB_READING_STORY_FRESH_BOUNDS = (90, 240)
 #: validate_vocab, never by the model.
 VOCAB_KANA_MEANING_TAGS = ("kanji", "vocabulary", "reading")
 
+#: The glyph attribute. A `<radical>`/`<kanji>`/`<vocabulary>` tag also names
+#: the character it stands for, so the app can print that character beside the
+#: English word: `a <kanji form="少">few</kanji> <kanji form="年">years</kanji>`
+#: renders as "a few (少) years (年)". The glyph rides in an attribute rather
+#: than in the prose because the parenthesis, the Japanese font and the
+#: screen-reader label are then the app's to decide, and the character never
+#: counts toward a length band.
+#:
+#: `<reading>` carries none: its own text is already the kana. A radical's
+#: `image_prompt` carries none either — it is the illustrator's copy, and a
+#: character dropped into an art prompt is a thing the picture might try to
+#: draw.
+#:
+#: Required on freshly generated drafts only (`enforce_readability`), the same
+#: lane every other added contract rides: every stored mnemonic predates the
+#: attribute, and re-validation must never requeue prose the contract of the
+#: day did not ask for.
+_FORM_ATTR = r'(?: form="([^"<>]*)")?'
+
 ALLOWED_TAG = {
     ("radical", "mnemonic_text"): "radical",
     ("radical", "image_prompt"): "radical",
@@ -413,7 +436,13 @@ def _length_errors(field, text, bounds):
 
 
 def _tag_pattern(tag):
-    return re.compile(rf"<{tag}>(.*?)</{tag}>", re.S)
+    """Group 1 is the `form` glyph (None when the tag carries none), group 2 the
+    tagged prose."""
+    return re.compile(rf"<{tag}{_FORM_ATTR}>(.*?)</{tag}>", re.S)
+
+
+def _open_tag_pattern(tag):
+    return re.compile(rf"<{tag}{_FORM_ATTR}>\Z")
 
 
 def _as_tags(tag):
@@ -430,10 +459,13 @@ def _tag_errors(field, text, tag):
     tags = _as_tags(tag)
     errors = []
     depth = {t: 0 for t in tags}
+    openers = {t: _open_tag_pattern(t) for t in tags}
     for match in _ANY_TAG_RE.finditer(text):
         token = match.group(0)
         for t in tags:
-            if token == f"<{t}>":
+            # An opener may carry the glyph attribute; what its value is, is
+            # _glyph_errors' business, not this structural pass's.
+            if openers[t].match(token):
                 if depth[t]:
                     errors.append(f"{field} nests <{t}> inside another <{t}>; tags may not overlap")
                 depth[t] += 1
@@ -453,21 +485,29 @@ def _tag_errors(field, text, tag):
     if errors:
         return errors
     for t in tags:
-        if any(not inner.strip() for inner in _tag_pattern(t).findall(text)):
+        if any(not inner.strip() for _form, inner in _tag_occurrences(text, t)):
             errors.append(f"{field} has an empty <{t}></{t}> pair; tag the words themselves")
     return errors
 
 
 def _strip_tags(text, tag):
+    """The prose with the highlight markup — attribute glyphs included — gone,
+    which is what every length and readability band is measured on."""
     for t in _as_tags(tag):
-        text = _tag_pattern(t).sub(lambda m: m.group(1), text)
+        text = _tag_pattern(t).sub(lambda m: m.group(2), text)
     return text
+
+
+def _tag_occurrences(text, tag):
+    """(form, tagged prose) per occurrence of one tag; form is None when the tag
+    carries no glyph attribute."""
+    return [(m.group(1), m.group(2)) for m in _tag_pattern(tag).finditer(text)]
 
 
 def _tagged_spans(text, tag):
     spans = []
     for t in _as_tags(tag):
-        spans += _tag_pattern(t).findall(text)
+        spans += [inner for _form, inner in _tag_occurrences(text, t)]
     return spans
 
 
@@ -596,6 +636,59 @@ def _own_meaning_tag_errors(field, text, ctx, required=False, tag="kanji",
     return []
 
 
+def _glyph_candidates(items, form_key):
+    """[(character, the words that identify it), ...] for the things one tag may
+    name in one field — a kanji's components, a word's kanji, or the item
+    itself."""
+    return [(c[form_key], _meaning_words(c["meaning_synonyms"])) for c in items]
+
+
+def _glyph_errors(field, text, tag, candidates, required):
+    """The glyph attribute: every highlight names the character it stands for,
+    so the app can print it beside the English word — "a few (少) years (年)".
+
+    Three things are checkable and all three are checked. The character has to
+    be one this tag may name here — a hallucinated glyph is a claim the learner
+    has no way to test. When the tagged words identify exactly which of them the
+    span is about, the character has to be *that* one, since "few (年)" is the
+    mistake this attribute exists to make visible. And on a fresh draft it has
+    to be there at all: the whole point is that every future mnemonic carries
+    the character, and a tag without one silently renders as it always did."""
+    errors = []
+    forms = [form for form, _words in candidates]
+    if forms:
+        legal = ", ".join(forms)
+        nothing_legal = (
+            f"the characters this tag may name here are {legal}"
+            if len(forms) > 1 else f"the only character this tag may name here is {legal}"
+        )
+    else:
+        nothing_legal = "this tag carries no character here"
+    for form, inner in _tag_occurrences(text, tag):
+        named = [f for f, words in candidates if words and _references(inner, words)]
+        if form is None:
+            if required and forms:
+                want = named[0] if named else forms[0]
+                errors.append(
+                    f"{field} has <{tag}>{inner}</{tag}> with no character on it; write "
+                    f'<{tag} form="{want}">{inner}</{tag}> so the app can print the '
+                    "character beside the word"
+                )
+            continue
+        if form not in forms:
+            errors.append(
+                f'{field} tags <{tag} form="{form}">{inner}</{tag}>, but {nothing_legal}'
+            )
+            continue
+        if named and form not in named:
+            errors.append(
+                f'{field} tags “{inner}” with {form}, but those words are the meaning of '
+                f"{' or '.join(named)}; the character on a tag must be the one the tagged "
+                "words mean"
+            )
+    return errors
+
+
 def _reading_errors(field, text, reading):
     """The reading must be present verbatim *and* highlighted — the kana is the
     single thing the learner is trying to pull out of this story."""
@@ -659,6 +752,21 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
         "reading_mnemonic", draft["reading_mnemonic"], ctx,
         required=enforce_readability)
 
+    # 3d. every highlight names its character, so the app can print it beside
+    # the English word: "the ground (土) splits". A borrowed component names the
+    # radical it came from, the landing word names this kanji, and <reading>
+    # names nothing — its own text is already the kana.
+    own = [(ctx["char"], _meaning_words(ctx["meaning_synonyms"]))]
+    components = _glyph_candidates(ctx["components"], "form")
+    errors += _glyph_errors("meaning_mnemonic", draft["meaning_mnemonic"],
+                            "radical", components, enforce_readability)
+    errors += _glyph_errors("meaning_mnemonic", draft["meaning_mnemonic"],
+                            "kanji", own, enforce_readability)
+    errors += _glyph_errors("reading_mnemonic", draft["reading_mnemonic"],
+                            "kanji", own, enforce_readability)
+    errors += _glyph_errors("reading_mnemonic", draft["reading_mnemonic"],
+                            "reading", (), enforce_readability)
+
     # 4. description (Rev 2: optional — written only when the item has something
     #    a mnemonic cannot carry). Look-alike contrast prose is exactly that, so
     #    an item with reviewed confusables still owes one.
@@ -719,6 +827,15 @@ def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
                 f"mnemonic_text reaches the meaning “{ctx['meaning']}” but never wraps it in "
                 "<radical>...</radical>; highlight the word the picture resolves to"
             )
+
+    # The highlight names its character, so the app can print it beside the
+    # English word: "a shouting mouth (口)". `image_prompt` is the illustrator's
+    # copy and takes no character — a glyph in an art prompt is a thing the
+    # picture might try to draw.
+    errors += _glyph_errors("mnemonic_text", text, "radical",
+                            [(ctx["form"], words)], enforce_readability)
+    if isinstance(image_prompt, str) and image_prompt.strip():
+        errors += _glyph_errors("image_prompt", image_prompt, "radical", (), False)
 
     # Rev 3: a radical's `description` is optional on the same terms as a
     # kanji's — the mnemonic is what the learner reads, so a description that
@@ -849,6 +966,27 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
         errors += _own_meaning_tag_errors(
             "reading_mnemonic", reading_text, ctx, required=enforce_readability,
             tag="vocabulary", noun="word")
+
+    # 2b'. And every highlight names its character, so the app can print it
+    #      beside the English word: "a few (少) years (年) ... a boy (少年)".
+    #      A borrowed <kanji> names the character it came from — untaught ones
+    #      included, since the learner is looking at them in the written form —
+    #      and the landing word names the whole word. <reading> names nothing:
+    #      its own text is already the kana.
+    own = [(ctx["form"], _meaning_words(ctx["meaning_synonyms"]))]
+    word_kanji = _glyph_candidates(
+        ctx["components"] + ctx["untaught_components"], "char")
+    errors += _glyph_errors("meaning_mnemonic", meaning_text, "kanji",
+                            word_kanji, enforce_readability)
+    errors += _glyph_errors("meaning_mnemonic", meaning_text, "vocabulary",
+                            own, enforce_readability)
+    errors += _glyph_errors("meaning_mnemonic", meaning_text, "reading",
+                            (), enforce_readability)
+    if has_reading and not tag_errors:
+        errors += _glyph_errors("reading_mnemonic", reading_text, "vocabulary",
+                                own, enforce_readability)
+        errors += _glyph_errors("reading_mnemonic", reading_text, "reading",
+                                (), enforce_readability)
 
     # 2c. Rev 7: and on a kana word the meaning mnemonic owes the sound too.
     #     A word with no kanji has nothing else on the page connecting 「どれ」

@@ -406,6 +406,41 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - Executorch main vs Expo resource-fetcher nightly skew: accepted risk, revisit on upstream release.
 - `codebase-issues.md` L1–L10: naming/perf/fragility items, all low severity, none user-visible.
 
+### Mnemonic highlights carry their character: the `form` attribute (2026-09-08)
+- **What changed.** A highlight tag now names the character it stands for, in a `form`
+  attribute: `Give it a <kanji form="少">few</kanji> <kanji form="年">year</kanji>s, and the
+  child grows into a <vocabulary form="少年">boy</vocabulary>.` Both apps render that as
+  "Give it a few (少) years (年), and the child grows into a boy (少年)." All three layers
+  carry it — a radical's `mnemonic_text`, a kanji's borrowed `<radical>` and its own
+  `<kanji>`, a word's borrowed `<kanji>` and its own `<vocabulary>`.
+- **Why an attribute rather than prose.** The parenthesis, the Japanese face and the accent
+  colour stay render decisions, the character never counts toward a length band, and
+  `stripHighlightTags` drops it so a screen reader is not asked to read a kanji mid-English-
+  sentence. `<reading>` carries no `form` (its own text is already the kana), and neither
+  does a radical's `image_prompt` — a glyph in an art prompt is a thing the picture might
+  try to draw.
+- **Gate.** `validate_mnemonics` checks three things per tag: the character is one the tag
+  may legally name here, it is the one the tagged *words* mean when they identify exactly
+  one candidate (so `<kanji form="年">few</kanji>` fails), and on a fresh draft it is
+  present at all. Fresh drafts only, the same `enforce_readability` lane every added
+  contract rides. Re-validating the whole shipped corpus is **byte-identical** to before —
+  no stored item is requeued.
+- **`PROMPT_VERSION` deliberately unchanged** (`radical 1 / kanji 4 / vocab 6`): bumping
+  would make `cmd_run` regenerate every stored draft. Reviewed prose keeps its bare tags and
+  renders exactly as it did; only newly generated mnemonics carry characters.
+- **Quoted prose stays bare, on purpose.** A kanji prompt injects each taught radical's stored
+  `mnemonic_text`, and a vocab prompt each component kanji's stored `meaning_mnemonic`, so the
+  new story hooks into imagery the learner already has. That stored prose predates the
+  attribute, so its tags carry no character — 4 bare of 42 tagged specimens in the 海 prompt,
+  7 of 28 in the 少年 one. Accepted: both prompts say the quoted tags are history and not the
+  format, and a fresh draft that misses a character is a hard gate error, so a slip costs a
+  repair round and cannot ship.
+- **`restyle_drafts.py` and `restyle/` deleted (2026-09-08).** Both matched `"<kanji>"`
+  literally and would have rejected every rewrite in the new format. Rather than teach the
+  attribute to a spent lane, the whole restyle pass was removed — the remaining
+  `flagged_for_rewrite` kanji get regenerated through `generate_mnemonics.py` instead. See
+  "Kanji meaning mnemonics restyled to one logical sentence".
+
 ### Untaught kanji in vocabulary mnemonics — steps 1 and 2 (2026-09-05)
 - Plan: [untaught-kanji-in-vocabulary-mnemonics-plan.md](./content/untaught-kanji-in-vocabulary-mnemonics-plan.md).
   **Step 1 (content pipeline) and step 2 (app annotation) are done; step 3 (opt-in unlock)
@@ -631,10 +666,16 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   at the end.
 - 266 kanji rewritten and ingested; 108 new N5/N4 radicals authored. Prompts updated:
   `prompts/kanji-mnemonic.md`, `prompts/vocab-mnemonic.md` (logic rule only — vocab keeps its own
-  length), `restyle/BRIEF.md`.
-- **Leftover:** **112 stored kanji mnemonics are `flagged_for_rewrite`** — they name components
-  their kanji no longer has after the KanjiVG switch. They must be rewritten before those kanji
-  ship. Run `restyle_drafts.py dump` to batch them.
+  length).
+- **The one-off tooling is gone.** `restyle_drafts.py` and `curriculum/_build/restyle/` (batch
+  briefs, `BRIEF.md`, `check.py`, `patch.py`, `ingest_radicals.py`, the `out/` rewrites) were
+  deleted on 2026-09-08. Recover them from git history if a pass like this is ever wanted again.
+- **Leftover:** **50 stored kanji mnemonics are `flagged_for_rewrite`** (count as of 2026-09-08;
+  112 when this entry was written) — they name components their kanji no longer has after the
+  KanjiVG switch. They must be rewritten before those kanji ship. Regenerate them with
+  `generate_content/generate_mnemonics.py --type kanji --level <lvl> --slugs …`. Note the flag
+  lives only in `kanji/mnemonics/*.json`; no item in the shipped `kanji/<level>.json` carries it,
+  so `compile-curriculum` does not warn on them.
 
 ### Decomposition holes closed: every split now accounts for every stroke (2026-09-01)
 - KanjiVG labels the stroke groups it has names for and leaves the rest as bare strokes, and the
@@ -674,8 +715,6 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   level files were otherwise already in sync with the sidecar prose. `compile-curriculum` only
   warns on a non-reviewed status, so nothing is withheld from the app by this.
 - Regenerate with `generate_content/generate_mnemonics.py --type kanji --level <lvl> --slugs …`.
-  `restyle_drafts.py dump` will **not** pick these up: its `drafts()` selects `draft` (and
-  optionally `reviewed`) and skips `flagged_for_rewrite`.
 - **Gate gap:** 79 kanji are identity items with stored prose, and the 30 that pass the gate are
   all still multi-sentence scenes rather than the Rev 7 one-sentence "the radical and the kanji
   are the same". The gate cannot see it: when the radical meaning *is* the kanji meaning, any

@@ -488,7 +488,11 @@ gained the Examples section `VocabularyDetail` already had).
 (`example_context.py` — allowed vocab mirrors 2a's option (a): a vocab item gets
 its own sort-order prefix, a kanji a proportional cutoff, plus lower levels,
 `CORE_SEED_SLUGS`, and — for kanji — every in-scope word containing the
-character, which are the prompt's *target words*), the mechanical gate
+character, which are the prompt's *target words*; **allowed grammar** uses the
+same positional cutoff — lower levels in full + the level's first
+ceil(i/N * G) points — so an N4 example leans on N5 and early-N4 patterns and
+never on ones taught later, prompt-side only since the token-level gate cannot
+see patterns), the mechanical gate
 (`validate_examples.py`: target actually used — lemma-aware, so 食べました
 exemplifies 食べる; slug references in the allowed set; tokenizer level-check;
 furigana round-trip as a rejection; plain-prose/length checks) and the batch

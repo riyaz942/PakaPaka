@@ -5,7 +5,12 @@ import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { cn } from '@/utils/cn';
 import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
-type Segment = { text: string; tag: 'radical' | 'kanji' | 'vocabulary' | 'reading' | null };
+type Segment = {
+  text: string;
+  tag: 'radical' | 'kanji' | 'vocabulary' | 'reading' | null;
+  /** The character this highlight stands for, when the tag names one. */
+  form?: string;
+};
 
 /** Splits tagged prose into plain and highlighted runs, in order. */
 function parseSegments(text: string): Segment[] {
@@ -17,7 +22,7 @@ function parseSegments(text: string): Segment[] {
     if (start > cursor) {
       segments.push({ text: text.slice(cursor, start), tag: null });
     }
-    segments.push({ text: match[2], tag: match[1] as Segment['tag'] });
+    segments.push({ text: match[3], tag: match[1] as Segment['tag'], form: match[2] });
     cursor = start + match[0].length;
   }
 
@@ -64,6 +69,14 @@ type AnnotatedTextProps = {
  * The tag says which of the three ideas a word is, and that has to look the
  * same everywhere the learner meets it.
  *
+ * A tag that names the character it stands for renders it after the word, in
+ * parentheses — "a few (少) years (年)" — so the learner reads the English and
+ * the character it came from in one pass, instead of holding the English and
+ * hunting for which of the word's characters it meant. The glyph takes the same
+ * accent as the word it belongs to, in the Japanese face, and the parentheses
+ * take it too: an uncoloured bracket would read as punctuation of the sentence
+ * rather than part of the highlight.
+ *
  * Untagged strings — every pre-Rev-2 mnemonic, and every description — pass
  * through unchanged, so this is safe to use wherever curriculum prose renders.
  */
@@ -84,6 +97,9 @@ export function AnnotatedText({ text, className, testID }: AnnotatedTextProps) {
         return (
           <Text key={index} className={cn('font-ui-bold', color)}>
             {segment.text}
+            {segment.form ? (
+              <Text className={cn('font-jp-bold', color)}> ({segment.form})</Text>
+            ) : null}
           </Text>
         );
       })}

@@ -447,6 +447,11 @@ Give the subagent these instructions:
     pull upward, so both ends of the chain highlight the same thing. `<radical>`
     never appears in a reading mnemonic or anywhere in a vocab mnemonic, no
     nesting, every tag closed, and none at all in a description.
+  - Every `<radical>`, `<kanji>` and `<vocabulary>` tag also names the character
+    it stands for, in a `form` attribute: `<kanji form="少">few</kanji>`, which
+    the app renders as "few (少)". Copy the character from the prompt exactly and
+    never type it into the prose as well. `<reading>` carries no `form`, and
+    neither does the tag in a radical's `image_prompt`.
   - A **kanji** reading mnemonic is one sentence, or two short ones (roughly
     90–200 characters), in which the sound and the meaning are the same joke: the
     target reading verbatim in kana inside a `<reading>` tag, said by the cast

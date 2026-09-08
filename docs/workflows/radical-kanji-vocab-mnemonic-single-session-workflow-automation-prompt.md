@@ -260,6 +260,11 @@ Do not write a combined file. Requirements:
   `<radical>…</radical>`. `<radical>` never appears in a reading mnemonic or
   anywhere in a vocab mnemonic; no nesting; every tag closed; none in a
   description.
+- Every `<radical>`, `<kanji>` and `<vocabulary>` tag also names the character
+  it stands for, in a `form` attribute: `<kanji form="少">few</kanji>`, which
+  the app renders as "few (少)". Copy the character from the prompt exactly and
+  never type it into the prose as well. `<reading>` carries no `form`, and
+  neither does the tag in a radical's `image_prompt`.
 - When you write a description, address **every** look-alike the prompt
   lists, spelling out the visual difference, and introduce no other Japanese
   character.

@@ -316,7 +316,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{WORD_TYPE}}": mc.format_word_type(ctx["word_type"]),
             "{{COMPONENTS}}": mc.format_vocab_components(ctx),
             "{{IDENTITY_NOTE}}": mc.format_vocab_identity(
-                ctx["identical_kanji"], ctx["meaning"]),
+                ctx["identical_kanji"], ctx["meaning"], ctx["form"]),
             "{{REGULARITY}}": mc.format_regularity(ctx),
             "{{READING_COMPOSITION}}": ctx["reading_composition"],
             "{{CAST_BLOCK}}": cast_lib.format_cast_block(

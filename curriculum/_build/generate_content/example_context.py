@@ -4,7 +4,7 @@
 Loads the *generated* curriculum JSON (the canonical output of generate.py,
 which carries sort_order) and derives the per-item inputs the generator prompt
 and the mechanical gate both need: the target form the sentence must contain,
-the allowed vocabulary, and Tatoeba style anchors.
+the allowed vocabulary, the allowed grammar, and Tatoeba style anchors.
 
 ## Allowed-vocabulary derivation
 
@@ -19,6 +19,16 @@ Mirrors the option-(a) positional cutoff adopted for 2a grammar lessons
     CORE_SEED_SLUGS + **every in-scope vocab word containing the kanji** (the
     target words — a kanji's example exists precisely to show the kanji in
     use, so the words that carry it are allowed even past the cutoff).
+
+## Allowed-grammar derivation
+
+Same positional cutoff, applied to the level's grammar points: an item at
+position i of N gets **all lower-level grammar** + the level's first
+ceil(i/N * G) points. A sentence for an N4 kanji may therefore lean on N5 and
+early-N4 patterns, never on N3 ones or on N4 patterns taught much later. The
+prompt carries this list; the mechanical gate does not check it (level_check
+works token by token on content words, so grammar patterns pass through it as
+particles and auxiliaries either way).
 
 Tatoeba anchors are style references only (ground rule 2): real native
 sentences containing the target, shown in the prompt, never shipped.
@@ -55,6 +65,17 @@ def _lower_levels(level):
     return context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
 
 
+def _allowed_grammar(level, position, total):
+    """Grammar points the learner has met by the item at `position` of `total`:
+    every lower level in full + a proportional prefix of this level's points."""
+    grammar = []
+    for lower in _lower_levels(level):
+        grammar.extend(context.load_grammar(lower))
+    same_level = context.load_grammar(level)
+    grammar.extend(same_level[: math.ceil(position / total * len(same_level))])
+    return grammar
+
+
 def vocab_context(level, slug):
     vocab = context.load_vocab(level)
     positions = {v["slug"]: i + 1 for i, v in enumerate(vocab)}
@@ -87,6 +108,7 @@ def vocab_context(level, slug):
         "reading": reading,
         "meaning": item["meaning"],
         "allowed": allowed,
+        "allowed_grammar": _allowed_grammar(level, positions[slug], len(vocab)),
         "allowed_slugs": seen,
         "allowed_index": allowed_index,
         "extra_allowed": {form},
@@ -142,6 +164,7 @@ def kanji_context(level, slug):
         "meaning": item["meaning"],
         "readings": readings,
         "allowed": allowed,
+        "allowed_grammar": _allowed_grammar(level, positions[slug], len(kanji)),
         "allowed_slugs": seen,
         "allowed_index": allowed_index,
         "extra_allowed": {char},
@@ -172,6 +195,18 @@ def all_slugs(level, kind):
              for v in context.load_vocab(lvl)]
     return [it["slug"] for it in items
             if any(it["primary_form"] in form for form in forms)]
+
+
+def format_grammar_list(items):
+    """Like context.format_grammar_list, minus the [slug] — the example prompt
+    asks the model to report the slugs it used in [brackets], and those are
+    vocabulary slugs only; a grammar slug reported there fails the gate."""
+    if not items:
+        return "(none yet)"
+    return "\n".join(
+        f"- {g['primary_form']} — {g['meaning']} (structure: {g['structure']})"
+        for g in items
+    )
 
 
 def format_target_words(target_words):

@@ -7,14 +7,27 @@
  * on. A kanji borrows `<radical>` and lands on `<kanji>`; a word borrows
  * `<kanji>` and lands on `<vocabulary>`. `<reading>` is the sound, at any layer.
  *
+ * A tag may also carry the character it stands for, in a `form` attribute:
+ * `a <kanji form="少">few</kanji> <kanji form="年">years</kanji>` renders as
+ * "a few (少) years (年)". The glyph lives in the attribute rather than in the
+ * prose so the parenthesis, the Japanese font and the screen-reader label are
+ * ours to decide. `<reading>` never carries one — its own text is the kana —
+ * and every mnemonic written before the attribute existed simply has none.
+ *
  * `AnnotatedText` renders them in the content accent colors. Anywhere the same
  * prose is consumed as a plain string instead — an accessibility label, the
  * caption an illustration falls back to — the markup has to come off first, or
  * a screen reader reads out "less-than radical greater-than".
  */
-export const HIGHLIGHT_TAG_RE = /<(radical|kanji|vocabulary|reading)>([\s\S]*?)<\/\1>/g;
+export const HIGHLIGHT_TAG_RE =
+  /<(radical|kanji|vocabulary|reading)(?: form="([^"<>]*)")?>([\s\S]*?)<\/\1>/g;
 
-/** The prose with its highlight markup removed and nothing else changed. */
+/**
+ * The prose with its highlight markup removed and nothing else changed. The
+ * `form` glyph goes with the markup: it is a rendering instruction, not a word
+ * of the sentence, and a screen reader announcing "(少)" mid-sentence reads the
+ * character in the wrong language.
+ */
 export function stripHighlightTags(text: string): string {
-  return text.replace(HIGHLIGHT_TAG_RE, '$2');
+  return text.replace(HIGHLIGHT_TAG_RE, '$3');
 }

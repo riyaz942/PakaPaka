@@ -39,8 +39,9 @@ should be able to see why those components imply that meaning. Compare:
 
 **Right** — the components combining into a claim:
 
-> An <kanji>employee</kanji> is just one more <radical>mouth</radical> the
-> company has to feed with its own <radical>money</radical>.
+> An <kanji form="員">employee</kanji> is just one more
+> <radical form="口">mouth</radical> the company has to feed with its own
+> <radical form="貝">money</radical>.
 
 The second one is 74 characters, names both components, and gives a *reason* the
 two of them mean "employee". The first is three times as long and the mouth and
@@ -49,16 +50,19 @@ decomposition does all the work.
 
 More of the target, all one sentence:
 
-> To construct a basic <kanji>building</kanji> you just need a
-> <radical>roof</radical> propped up by a <radical>stick</radical>, and a place
-> to <radical>eat</radical> for every hungry <radical>mouth</radical>.
+> Once the last <radical form="亻">person</radical> outdoors presses a
+> <radical form="亠">lid</radical> down over the fading
+> <radical form="夕">evening</radical>, not one <radical form="丶">drop</radical>
+> of light escapes, and the sealed black that follows is
+> <kanji form="夜">night</kanji>.
 
-> Wind rustling the frozen <radical>white</radical> branches of a
-> <radical>tree</radical> sealed in <radical>ice</radical> makes nature's most
-> soothing <kanji>music</kanji>.
+> Wind rustling the frozen <radical form="白">white</radical> branches of a
+> <radical form="木">tree</radical> sealed in <radical form="冫">ice</radical>
+> makes nature's most soothing <kanji form="楽">music</kanji>.
 
-> When the <radical>sun</radical> sits at the exact <radical>center</radical> of
-> the sky, the water below throws back its clearest <kanji>reflect</kanji>ion.
+> When the <radical form="日">sun</radical> sits at the exact
+> <radical form="央">center</radical> of the sky, the water below throws back its
+> clearest <kanji form="映">reflect</kanji>ion.
 
 ## Sentence shape and word choice
 
@@ -112,14 +116,14 @@ So it needs all four of these, in one or two short sentences:
 
 > The showroom greeter <reading>Shin</reading> yells 「<reading>しん</reading>！」
 > every time he yanks a cover off, so everything he touches turns out
-> <kanji>new</kanji>.
+> <kanji form="新">new</kanji>.
 
 > A cook called <reading>Chew</reading> insists you cannot say
 > 「<reading>ちゅう</reading>」 without landing your tongue right in the
-> <kanji>middle</kanji> of your mouth.
+> <kanji form="中">middle</kanji> of your mouth.
 
 > <reading>Sock</reading> the hiker limps home with one blister per
-> <kanji>foot</kanji>, counting 「<reading>そく</reading>」 for every step she
+> <kanji form="足">foot</kanji>, counting 「<reading>そく</reading>」 for every step she
 > regrets.
 
 **Wrong** — the sound is there, the meaning is not:
@@ -182,15 +186,38 @@ teaches a wrong contrast.
 ## Highlighting
 
 The app colours the pieces the learner is meant to connect, so you mark them
-inline. Three tags, and nothing else:
+inline. Three tags, and nothing else.
+
+Every tag also **names the character it stands for**, in a `form` attribute, so
+the app can print that character after the word:
+
+    A <radical>stick</radical> planted in the <radical>ground</radical>
+
+written as
+
+    A <radical form="丨">stick</radical> planted in the
+    <radical form="土">ground</radical>
+
+reaches the learner as “A stick (丨) planted in the ground (土)”. Write the
+character in the attribute and **never in the prose** — the parentheses, the
+font and the colour are the app's, and a character typed into the sentence would
+be read out by a screen reader in the middle of it. Copy each character exactly
+as it is given to you above. `<reading>` takes no `form`: its own text is
+already the kana.
+
+The radical images quoted above were written before the attribute existed, so
+their tags are bare. That is history, not the format — yours carry the
+character.
 
 - In `meaning_mnemonic`, wrap **every taught component's meaning**, where the
-  story uses it, in `<radical>…</radical>`. Tag the word doing the work in the
-  sentence, not a label bolted on: `the <radical>ground</radical> cracks open`,
-  never `the ground (<radical>ground</radical>) cracks open`.
+  story uses it, in `<radical form="…">…</radical>`, with that component's own
+  character in the attribute. Tag the word doing the work in the sentence, not a
+  label bolted on: `the <radical form="土">ground</radical> cracks open`, never
+  `the ground (<radical form="土">ground</radical>) cracks open` — the app adds
+  the parentheses.
 - In `meaning_mnemonic`, also wrap **this kanji's own meaning** in
-  `<kanji>…</kanji>`, exactly once. **It may sit anywhere in the sentence** —
-  first word, middle, or last. "An <kanji>employee</kanji> is just one more
+  `<kanji form="{{CHAR}}">…</kanji>`, exactly once. **It may sit anywhere in the sentence** —
+  first word, middle, or last. "An <kanji form="員">employee</kanji> is just one more
   mouth…" opens on it and is correct. Put it where the sentence reads best and
   do not contort the wording to push it to the end. A component is a piece
   borrowed from below; this is the kanji's own word, and the app renders the two
@@ -201,15 +228,16 @@ inline. Three tags, and nothing else:
   right. When a taught component's word *is* this kanji's meaning word, tag that
   same word twice, on two different spans — `<radical>` where the component
   enters, `<kanji>` where the story lands. That is correct and expected; do not
-  reach for a synonym to keep the two spans different.
+  reach for a synonym to keep the two spans different. Each span still carries
+  its own `form`, even when the radical and the kanji are the same character.
 - In `reading_mnemonic`, wrap the kana 「{{PRIMARY_READING}}」 in
   `<reading>…</reading>`, **and** wrap the English word your scene uses to carry
   that sound — the phonetic hook — in the same tag: `a hiker called
   <reading>Itchy</reading> groans <reading>{{PRIMARY_READING}}</reading> with
   every scratch`.
 - In `reading_mnemonic`, also wrap **this kanji's own meaning** in
-  `<kanji>…</kanji>`, exactly once, the same word and the same rule as in the
-  meaning mnemonic — the taught meaning at the top of this prompt, not one of
+  `<kanji form="{{CHAR}}">…</kanji>`, exactly once, the same word and the same
+  rule as in the meaning mnemonic — the taught meaning at the top of this prompt, not one of
   its accepted answers. The learner must be able to see, in the reading
   mnemonic alone, which kanji this sound belongs to. `<radical>` never appears
   here: the components are the meaning mnemonic's business.
@@ -232,25 +260,27 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
 
    **This is the target:**
 
-   > A <radical>person</radical> who can <radical>renew</radical> anything for
-   > you without leaving the counter is selling pure
-   > <kanji>convenience</kanji>.
+   > A <radical form="亻">person</radical> who can <radical form="更">renew</radical>
+   > anything for you without leaving the counter is selling pure
+   > <kanji form="便">convenience</kanji>.
 
-   > Strapping a <radical>dugout canoe</radical> onto a <radical>vehicle</radical>
-   > is a ridiculous way to <kanji>transport</kanji> a boat, and it works.
+   > Strapping a <radical form="舟">dugout canoe</radical> onto a
+   > <radical form="車">vehicle</radical> is a ridiculous way to
+   > <kanji form="運">transport</kanji> a boat, and it works.
 
-   > <radical>Every</radical> river's <radical>water</radical> ends up in the
-   > same place eventually, and that place is the <kanji>sea</kanji>.
+   > <radical form="毎">Every</radical> river's <radical form="氵">water</radical>
+   > ends up in the same place eventually, and that place is the
+   > <kanji form="海">sea</kanji>.
 
    Every component is doing a job in the sentence, the sentence gives a reason,
    and the whole thing is under 110 characters.
 
    **This is what to avoid** — the same kanji, written the wrong way:
 
-   > A tired <radical>person</radical> finds a portable toilet by the vending
-   > machine. A <radical>stick</radical> props the door open where gravel
-   > spilled in. A lantern lights the checkered floor: pure
-   > <kanji>convenience</kanji>.
+   > A tired <radical form="亻">person</radical> finds a portable toilet by the
+   > vending machine. The machine will <radical form="更">renew</radical> your
+   > coffee all night. A lantern lights the checkered floor: pure
+   > <kanji form="便">convenience</kanji>.
 
    Three sentences that could be shuffled without loss, because none of them
    causes the next. The components take turns appearing instead of combining,
@@ -294,6 +324,10 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
 - `<radical>` appears only in the meaning mnemonic, `<reading>` only in the
   reading mnemonic, `<kanji>` in both (once each), none of them in the
   description. Every tag you open, close. Never nest them.
+- Every `<radical>` and every `<kanji>` carries a `form` attribute holding the
+  character it stands for — that component's own character, and this kanji
+  `{{CHAR}}`. Copy it exactly; never type it into the prose as well.
+  `<reading>` carries no `form`.
 - Meaning mnemonic: reference every taught component listed above, each wrapped
   in `<radical>` where the story uses it (or, if there are none, the
   whole-character picture). Never name a component not in that list. Wrap this

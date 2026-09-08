@@ -577,6 +577,12 @@ Repair Procedure
      resolves to — in `<radical>`. `<radical>` never appears in a reading
      mnemonic or in a vocab mnemonic at all, every tag closed, none nested, and
      none in a description.
+   - A "with no character on it" error means the tag is right and its `form`
+     attribute is missing: every `<radical>`, `<kanji>` and `<vocabulary>` names
+     the character it stands for — `<kanji form="少">few</kanji>`, which the app
+     renders as "few (少)". Copy the character from the prompt exactly and never
+     type it into the prose as well. `<reading>` carries no `form`, and neither
+     does the tag in a radical's `image_prompt`.
    - A "never says what this kanji means" error on a kanji `reading_mnemonic` is
      the Rev 9 rule: the sound and the meaning have to be the same joke. Name the
      kanji's taught meaning in the sentence, wrap it in `<kanji>`, and make the

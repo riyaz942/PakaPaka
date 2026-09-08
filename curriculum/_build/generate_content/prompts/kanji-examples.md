@@ -25,6 +25,15 @@ else yet.
 
 {{ALLOWED_VOCAB}}
 
+## Grammar you may use
+
+These are the patterns the learner has been taught by the time they meet this
+kanji. Build your sentences from these plus basic particles, the copula, and
+plain/polite verb and adjective endings. Do not use a pattern that is not on
+this list — a later pattern is as unreadable to this learner as a later word.
+
+{{ALLOWED_GRAMMAR}}
+
 ## Real usage, for style only
 
 These are real native-written sentences containing the character. Do NOT copy

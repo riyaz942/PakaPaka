@@ -112,19 +112,32 @@ accepted answer you actually used — in `<radical>...</radical>`. Do this in
 it marks the word the picture must resolve to (the image pipeline strips the
 tag before drawing).
 
-    ...and the whole thing tips over into a shouting <radical>mouth</radical>.
+In `mnemonic_text` the tag also **names the character it stands for**, in a
+`form` attribute holding this radical `{{FORM}}`:
+
+    ...and the whole thing tips over into a shouting
+    <radical form="口">mouth</radical>.
+
+reaches the learner as “…tips over into a shouting mouth (口).” Write the
+character in the attribute and **never in the prose** — the parentheses, the
+font and the colour are the app's, and a character typed into the sentence would
+be read out by a screen reader in the middle of it. `image_prompt` takes **no**
+`form`: it is the illustrator's copy, and a character dropped into an art prompt
+is a thing the picture might try to draw.
 
 Exactly one tag per field, around the meaning word itself and nothing else —
 not the sentence it sits in. `<kanji>` and `<reading>` belong to the layers
-above; never use them here. The tag does not count toward the length, and the
-`description` carries no tags at all.
+above; never use them here. Neither the tag nor its character counts toward the
+length, and the `description` carries no tags at all.
 
 ## Hard rules
 
 - Plain prose only. No markdown, headings, lists, bold/italic, furigana, or
   romaji. Stored as plain strings. `<radical>` is the one exception.
 - The meaning “{{MEANING}}” (or one of its accepted answers) must be
-  recognisable in `mnemonic_text`, inside the `<radical>` tag.
+  recognisable in `mnemonic_text`, inside the `<radical>` tag. That tag carries
+  `form="{{FORM}}"`; the one in `image_prompt` carries no `form`. Never type the
+  character into the prose itself.
 - One concrete, drawable scene shared by both fields — not two competing
   images, not a menu of options. An illustrator reads `image_prompt` and draws
   exactly one picture; a learner reads `mnemonic_text` and recognises the same

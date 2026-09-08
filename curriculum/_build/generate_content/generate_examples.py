@@ -56,7 +56,10 @@ DRAFTS_DIR = os.path.join(HERE, "drafts", "examples")
 WEB_DIR = os.path.join(HERE, "web", "examples")
 
 MODEL = "claude-opus-4-8"
-#: Bump together with the example prompts and persona.md.
+#: Bump together with the example prompts and persona.md. Exception: the
+#: allowed-grammar list added to both prompts only narrows what a *future*
+#: generation may use, so it was not bumped — a bump would requeue ~1,100
+#: reviewed example sets to no purpose.
 PROMPT_VERSION = 1
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 1500
@@ -118,6 +121,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
     subs = {
         "{{LEVEL}}": ctx["level"].upper(),
         "{{ALLOWED_VOCAB}}": grammar_context.format_vocab_list(ctx["allowed"]),
+        "{{ALLOWED_GRAMMAR}}": ec.format_grammar_list(ctx["allowed_grammar"]),
         "{{STYLE_ANCHORS}}": tatoeba.format_anchors(ctx["anchors"]),
         "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
     }

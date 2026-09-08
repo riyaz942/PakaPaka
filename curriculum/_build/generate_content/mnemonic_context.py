@@ -877,8 +877,9 @@ def format_identity(ctx):
         "has to carry for no gain. **Say plainly that the two are the same.** "
         "That is the whole meaning mnemonic.",
 
-        f"> The <radical>{_first_word(syn)}</radical> radical and the "
-        f"<kanji>{_first_word(ctx['meaning'])}</kanji> kanji are the same.",
+        f"> The <radical form=\"{comp['form']}\">{_first_word(syn)}</radical> "
+        f"radical and the <kanji form=\"{ctx['char']}\">"
+        f"{_first_word(ctx['meaning'])}</kanji> kanji are the same.",
 
         "Vary the wording — a short aside, a bit of relief that this one comes "
         "free, a nudge that it pays to know the radicals well — but keep it to "
@@ -888,7 +889,8 @@ def format_identity(ctx):
         "characters here, and never go past 200. It is still one sentence.** Still tag both words: "
         "`<radical>` where you name the radical, `<kanji>` where you name this "
         "kanji's meaning. They are the same word on two different spans, and "
-        "that is correct — it is what makes the app colour both.",
+        "that is correct — it is what makes the app colour both. Each span "
+        "still carries its own `form`.",
     ]
     # Only when we teach this kanji a sense the radical does not carry (工
     # "craft" over the "construction" radical) is there a second sentence to
@@ -1051,7 +1053,7 @@ def format_word_type(labels):
     return "\n".join(lines)
 
 
-def format_vocab_identity(comp, meaning):
+def format_vocab_identity(comp, meaning, form):
     """The "is this word just its kanji?" block for a vocabulary prompt."""
     if not comp:
         return (
@@ -1067,11 +1069,13 @@ def format_vocab_identity(comp, meaning):
         "second story — the kanji's own story is already the memory hook, and a "
         "competing one only blurs it. Write one or two plain sentences saying "
         "the kanji and the word are the same, in the shape of “The "
-        f"<kanji>{kanji_word}</kanji> kanji and the "
-        f"<vocabulary>{own_word}</vocabulary> word are exactly the same, so "
+        f"<kanji form=\"{comp['char']}\">{kanji_word}</kanji> kanji and the "
+        f"<vocabulary form=\"{form}\">{own_word}</vocabulary> word are exactly "
+        "the same, so "
         "they mean the same thing.” Both tags go on, wrapping the same word on "
         "two different spans — that is correct here, and it is what colours "
-        "both ends of the chain. Where the word adds okurigana that changes "
+        "both ends of the chain; each span carries its own `form`. Where the "
+        "word adds okurigana that changes "
         "what it *does* (白 the kanji, 白い the adjective), one more sentence "
         "says so — see the word type block. The **reading** mnemonic is "
         "unaffected and follows the reading section as usual."

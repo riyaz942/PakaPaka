@@ -73,4 +73,29 @@ describe('AnnotatedText', () => {
 
     expect(screen.getByText('a <mystery>thing</mystery> and a <radical>stick')).toBeTruthy();
   });
+
+  it('prints the character a tag names, after the word, in its accent', () => {
+    render(
+      <AnnotatedText text='a <kanji form="少">few</kanji> <kanji form="年">year</kanji>s' />,
+    );
+
+    // The glyph rides inside the highlight, so the learner reads "few (少)" as
+    // one run and the two never wrap apart.
+    expect(screen.getByText('few (少)')).toBeTruthy();
+    expect(screen.getByText('year (年)').props.className).toContain('text-content-kanji');
+    expect(screen.getByText(' (年)').props.className).toContain('font-jp-bold');
+  });
+
+  it('prints the whole written form on the word a vocabulary story lands on', () => {
+    render(<AnnotatedText text='he is a <vocabulary form="少年">boy</vocabulary>' />);
+
+    expect(screen.getByText('boy (少年)').props.className).toContain('text-content-vocabulary');
+  });
+
+  it('renders a tag with no character exactly as it always did', () => {
+    render(<AnnotatedText text="The <radical>ground</radical> cracks open." />);
+
+    expect(screen.getByText('ground').props.className).toContain('text-content-radical');
+    expect(screen.queryByText(/\(/)).toBeNull();
+  });
 });

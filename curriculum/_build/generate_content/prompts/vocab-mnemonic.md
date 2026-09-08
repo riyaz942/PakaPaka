@@ -30,13 +30,14 @@ above, which already uses it.
 characters.** Finishing at 90 is a success, not a shortfall. These are the
 target, and they are short on purpose:
 
-> A <kanji>mouth</kanji> that you walk into is an <vocabulary>entrance</vocabulary>.
+> A <kanji form="口">mouth</kanji> that you walk into is an
+> <vocabulary form="入口">entrance</vocabulary>.
 
-> The number of <kanji>people</kanji> with <kanji>mouths</kanji> you have to
-> feed is your <vocabulary>population</vocabulary>.
+> The number of <kanji form="人">people</kanji> with <kanji form="口">mouths</kanji>
+> you have to feed is your <vocabulary form="人口">population</vocabulary>.
 
-> You already know 学生 is a student, so a <kanji>small</kanji> one is an
-> <vocabulary>elementary school student</vocabulary>.
+> You already know 学生 is a student, so a <kanji form="小">small</kanji> one is
+> an <vocabulary form="小学生">elementary school student</vocabulary>.
 
 **Reading mnemonic: follow the reading section below**, which says which of
 three things this word gets — nothing at all, one sentence pointing back at the
@@ -61,14 +62,14 @@ squirrel and a cascade of bells and still cannot say what the word means.
 > At Grandma Kane's shrine the cats have organized themselves into a council.
 > Every evening they gather on the mossy steps, yowling over who gets the
 > sunniest step and who rings the bell at dawn, and only once the vote is cast
-> does the yard finally <kanji>calm down</kanji>. Cats running the shrine until
+> does the yard finally <kanji form="治">calm down</kanji>. Cats running the shrine until
 > it goes quiet is what politics looks like.
 
 **Right** — the kanji combining into a claim:
 
-> <kanji>Governing</kanji> a country is mostly the art of getting it to
-> <kanji>calm down</kanji>, which is all <vocabulary>politics</vocabulary>
-> really is.
+> <kanji form="政">Governing</kanji> a country is mostly the art of getting it
+> to <kanji form="治">calm down</kanji>, which is all
+> <vocabulary form="政治">politics</vocabulary> really is.
 
 Test it: delete one kanji's clause. If the mnemonic still makes the same point,
 that kanji was staged as decoration rather than used as a reason. Rewrite it so
@@ -84,9 +85,9 @@ A *scene* is one way to get the kanji to combine. It is not the only way, and
 reaching for one on every word makes a whole level of mnemonics blur into a
 single long cartoon. The other way is to state the real reason plainly:
 
-> Japanese has long used <kanji>blue</kanji> for things that are fresh and not
-> yet ripe, so a man still young in <kanji>year</kanji>s is an unripe one — a
-> <vocabulary>youth (young man)</vocabulary>.
+> Japanese has long used <kanji form="青">blue</kanji> for things that are fresh
+> and not yet ripe, so a man still young in <kanji form="年">year</kanji>s is an
+> unripe one — a <vocabulary form="青年">youth (young man)</vocabulary>.
 
 Nothing there is invented and nothing is absurd, and it holds better than a scene
 would, because the reason is true. Japanese is full of these: a character
@@ -184,14 +185,34 @@ already have.
 The app colours the pieces the learner is meant to connect, so you mark them
 inline. Three tags, and nothing else:
 
+Every tag also **names the character it stands for**, in a `form` attribute, so
+the app can print that character after the word:
+
+    Give it a <kanji form="少">few</kanji> <kanji form="年">year</kanji>s, and
+    the child grows into a <vocabulary form="少年">boy</vocabulary>.
+
+reaches the learner as “Give it a few (少) years (年), and the child grows into a
+boy (少年).” Write the character in the attribute and **never in the prose** —
+the parentheses, the font and the colour are the app's, and a character typed
+into the sentence would be read out by a screen reader in the middle of it. Copy
+each character exactly as it is given to you above. `<reading>` takes no `form`:
+its own text is already the kana.
+
+The kanji stories quoted above were written before the attribute existed, so
+their tags are bare. That is history, not the format — yours carry the
+character.
+
 - In `meaning_mnemonic`, wrap **every listed kanji's meaning**, taught or not,
-  where the story uses it, in `<kanji>…</kanji>`. The tag marks a piece of the
-  written form, so an untaught character wears it on the same terms as a taught
-  one. Tag the word doing the work in the
-  sentence, not a label bolted on: `the <kanji>ground</kanji> splits`, never
-  `the ground (<kanji>ground</kanji>) splits`.
+  where the story uses it, in `<kanji form="…">…</kanji>`, with that kanji's own
+  character in the attribute. The tag marks a piece of the written form, so an
+  untaught character wears it on the same terms as a taught one. Tag the word
+  doing the work in the sentence, not a label bolted on:
+  `the <kanji form="土">ground</kanji> splits`, never
+  `the ground (<kanji form="土">ground</kanji>) splits` — the app adds the
+  parentheses.
 - In **both** mnemonics, wrap **this word's own meaning** in
-  `<vocabulary>…</vocabulary>`, exactly once each. A component is a piece
+  `<vocabulary form="{{FORM}}">…</vocabulary>`, exactly once each — the whole
+  written form goes in the attribute. A component is a piece
   borrowed from the kanji below; this is the word's own meaning, the thing the
   story is building toward, and the app renders the two in different colours. It
   may sit anywhere in the sentence — first word, middle or last — so put it
@@ -281,6 +302,10 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
   sound and so must contain `<reading>` too. `<vocabulary>` once in each
   mnemonic you write, none of them in the description. `<radical>` appears
   nowhere. Every tag you open, close. Never nest them.
+- Every `<kanji>` and every `<vocabulary>` carries a `form` attribute holding
+  the character it stands for — that kanji's own character, and this word's
+  written form `{{FORM}}`. Copy it exactly; never type it into the prose as
+  well. `<reading>` carries no `form`.
 - Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in either
   mnemonic. The computed reading-composition field beside them already does.
 - Meaning mnemonic: reference every kanji listed above by the meaning given for
