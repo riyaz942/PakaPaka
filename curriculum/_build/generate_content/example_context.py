@@ -30,6 +30,11 @@ prompt carries this list; the mechanical gate does not check it (level_check
 works token by token on content words, so grammar patterns pass through it as
 particles and auxiliaries either way).
 
+The list is split for the prompt: the last RECENT_GRAMMAR_COUNT points are the
+ones taught just before this item, so the prompt offers them first (a sentence
+that needs a pattern should reach for what the learner is still consolidating);
+the rest are shown as still-allowed background.
+
 Tatoeba anchors are style references only (ground rule 2): real native
 sentences containing the target, shown in the prompt, never shipped.
 """
@@ -65,15 +70,20 @@ def _lower_levels(level):
     return context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
 
 
-def _allowed_grammar(level, position, total):
-    """Grammar points the learner has met by the item at `position` of `total`:
-    every lower level in full + a proportional prefix of this level's points."""
+#: How many of the most recently taught grammar points the prompt offers first.
+RECENT_GRAMMAR_COUNT = 8
+
+
+def _grammar_split(level, position, total):
+    """(earlier, recent) grammar for the item at `position` of `total`: every
+    lower level in full + a proportional prefix of this level's points, with
+    the last RECENT_GRAMMAR_COUNT split off as the just-taught ones."""
     grammar = []
     for lower in _lower_levels(level):
         grammar.extend(context.load_grammar(lower))
     same_level = context.load_grammar(level)
     grammar.extend(same_level[: math.ceil(position / total * len(same_level))])
-    return grammar
+    return grammar[:-RECENT_GRAMMAR_COUNT], grammar[-RECENT_GRAMMAR_COUNT:]
 
 
 def vocab_context(level, slug):
@@ -99,6 +109,7 @@ def vocab_context(level, slug):
     reading = _reading_of(item)
     allowed_index = level_check.build_allowed_index(allowed)
     anchors = tatoeba.style_anchors([form], allowed_index, extra_allowed={form})
+    earlier_grammar, recent_grammar = _grammar_split(level, positions[slug], len(vocab))
 
     return {
         "type": "vocab",
@@ -108,7 +119,8 @@ def vocab_context(level, slug):
         "reading": reading,
         "meaning": item["meaning"],
         "allowed": allowed,
-        "allowed_grammar": _allowed_grammar(level, positions[slug], len(vocab)),
+        "earlier_grammar": earlier_grammar,
+        "recent_grammar": recent_grammar,
         "allowed_slugs": seen,
         "allowed_index": allowed_index,
         "extra_allowed": {form},
@@ -155,6 +167,7 @@ def kanji_context(level, slug):
     readings = [r["reading"] for r in item.get("readings", [])]
     allowed_index = level_check.build_allowed_index(allowed)
     anchors = tatoeba.style_anchors([char], allowed_index, extra_allowed={char})
+    earlier_grammar, recent_grammar = _grammar_split(level, positions[slug], len(kanji))
 
     return {
         "type": "kanji",
@@ -164,7 +177,8 @@ def kanji_context(level, slug):
         "meaning": item["meaning"],
         "readings": readings,
         "allowed": allowed,
-        "allowed_grammar": _allowed_grammar(level, positions[slug], len(kanji)),
+        "earlier_grammar": earlier_grammar,
+        "recent_grammar": recent_grammar,
         "allowed_slugs": seen,
         "allowed_index": allowed_index,
         "extra_allowed": {char},

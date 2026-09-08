@@ -24,7 +24,15 @@ word. Build your sentences from these plus basic particles, the copula, and
 plain/polite verb and adjective endings. Do not use a pattern that is not on
 this list — a later pattern is as unreadable to this learner as a later word.
 
-{{ALLOWED_GRAMMAR}}
+**Just taught** — when a sentence needs more than a plain statement, reach for
+one of these first; they are what the learner is still consolidating. Do not
+force one into every sentence.
+
+{{RECENT_GRAMMAR}}
+
+**Taught earlier** — also fine to use:
+
+{{EARLIER_GRAMMAR}}
 
 ## Real usage, for style only
 

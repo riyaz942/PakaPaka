@@ -121,7 +121,8 @@ def build_user_prompt(kind, ctx, validator_errors=None):
     subs = {
         "{{LEVEL}}": ctx["level"].upper(),
         "{{ALLOWED_VOCAB}}": grammar_context.format_vocab_list(ctx["allowed"]),
-        "{{ALLOWED_GRAMMAR}}": ec.format_grammar_list(ctx["allowed_grammar"]),
+        "{{RECENT_GRAMMAR}}": ec.format_grammar_list(ctx["recent_grammar"]),
+        "{{EARLIER_GRAMMAR}}": ec.format_grammar_list(ctx["earlier_grammar"]),
         "{{STYLE_ANCHORS}}": tatoeba.format_anchors(ctx["anchors"]),
         "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
     }

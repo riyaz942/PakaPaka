@@ -491,8 +491,9 @@ its own sort-order prefix, a kanji a proportional cutoff, plus lower levels,
 character, which are the prompt's *target words*; **allowed grammar** uses the
 same positional cutoff — lower levels in full + the level's first
 ceil(i/N * G) points — so an N4 example leans on N5 and early-N4 patterns and
-never on ones taught later, prompt-side only since the token-level gate cannot
-see patterns), the mechanical gate
+never on ones taught later, with the last 8 points shown as "just taught, reach
+for these first" and the rest as still-allowed background; prompt-side only,
+since the token-level gate cannot see patterns), the mechanical gate
 (`validate_examples.py`: target actually used — lemma-aware, so 食べました
 exemplifies 食べる; slug references in the allowed set; tokenizer level-check;
 furigana round-trip as a rejection; plain-prose/length checks) and the batch
