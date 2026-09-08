@@ -96,13 +96,6 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 # Repo root — curriculum pipeline
 npm ci && npm run validate-schema && npm run compile-curriculum
 # COMPILE_OUTPUT_PATH overrides output (CI uses dist/curriculum.db)
-
-# mobile/
-npm install
-npm run lint && npm run typecheck && npm test
-npm start
-npx expo run:ios | npx expo run:android
-npx jest src/path/to/file.test.ts
 ```
 
 ## Architecture crux
@@ -110,8 +103,6 @@ npx jest src/path/to/file.test.ts
 **Dual SQLite** (`src/data/database.ts`): `curriculum.db` (bundled seed + OTA swap) and `user.db`, distributed via `DatabaseProvider`. Curriculum is `ATTACH`ed to the user handle for review/Browse joins. OTA: manifest semver → download → SHA-256 → atomic replace (`curriculumUpdate.ts`).
 
 **Shell tabs:** Home · Browse · Talk (converse) · Stats · Settings. Lesson and review are full-screen stacks (not tabs). Legacy `learn` / `read` routes may remain with `href: null` for deep links.
-
-**Data access:** Curriculum reads under `src/data/curriculum/`; user writes under `src/data/user/`; hooks in `src/data/hooks/`. Import mappers in `src/core/import/`; network/FS clients in `src/data/import/`.
 
 **Review engine:** Queue in `src/core/srs/` + `useReviewQueue`; session in `ReviewSessionProvider`; answers in `src/core/answer/`. Furigana auto-hide keys on **vocabulary** mastery (not component kanji); persistent overrides in Settings / `user.db`.
 

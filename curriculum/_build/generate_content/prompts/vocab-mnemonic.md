@@ -78,6 +78,40 @@ Never invent a bystander to carry the logic. If your scene needs a gatekeeper, a
 hiker, or a passing animal who is not one of this word's kanji to make the point
 land, the point is not actually coming from the kanji.
 
+## Two ways to make them add up
+
+A *scene* is one way to get the kanji to combine. It is not the only way, and
+reaching for one on every word makes a whole level of mnemonics blur into a
+single long cartoon. The other way is to state the real reason plainly:
+
+> Japanese has long used <kanji>blue</kanji> for things that are fresh and not
+> yet ripe, so a man still young in <kanji>year</kanji>s is an unripe one — a
+> <vocabulary>youth (young man)</vocabulary>.
+
+Nothing there is invented and nothing is absurd, and it holds better than a scene
+would, because the reason is true. Japanese is full of these: a character
+carrying a sense English drops, an old metaphor still alive inside the compound,
+a pairing that was obvious to whoever coined it.
+
+**Pick per word, on what the word actually has.**
+
+- The kanji have a real reason for pairing → say it plainly. Two clauses, no
+  scene, no cast.
+- The pairing is arbitrary, or its reason is too tangled for one sentence →
+  build the scene, and follow the comedy register in the voice sheet.
+
+The voice sheet's comedy register governs the second of these, not the first. An
+explanation is allowed to be plain and unfunny — that is the register working,
+not the register failing. Everything else in this prompt applies to both: the
+kanji still have to be load-bearing, the tags still go on, the sentence limits
+still hold.
+
+Do not alternate on a schedule, and do not split the difference — half an
+explanation wearing a costume is worse than either one done properly. And
+**never invent the history.** A made-up etymology is worse than a made-up scene,
+because the learner has no way to tell that it is made up. When you are not
+certain the reason is real, write the scene instead.
+
 ## Sentence shape
 
 Short sentences. One idea per sentence — most under 18 words, none over 25.
@@ -85,6 +119,15 @@ Plain English, the word a ten-year-old would use: *tied* not *lashed*, *bundle*
 not *sheaf*, *tips over* not *lurches*. When a sentence wants a second clause, a
 dash, or an "-ing" tail ("eyes streaming"), make it two sentences instead. If it
 sounds like a novel, it is wrong.
+
+**Most of these learners read English as a second language.** An idiom is a
+second puzzle stacked on the one you meant to set them, and they cannot look it
+up without abandoning the review. So write sentences that survive a reader who
+takes every word literally. Cut the phrasal verbs and figures of speech that mean
+something other than the sum of their parts: *rakes off* → *takes*, *butts
+against* → *presses against*, *snags on* → *catches on*, *notch the years onto
+the board* → *cut a mark into the board*. If a phrase would need its own
+dictionary entry, replace it with the plain words underneath it.
 
 ## The word
 
@@ -188,7 +231,8 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
    imagery those kanji already carry — for an untaught one, from its bare
    meaning — put them in one claim, and let the word's meaning fall out of the
    logic of what they are — see “The kanji must add up to the word” above; that
-   is the part that matters most. Strange
+   is the part that matters most. Decide the register first — see “Two ways to
+   make them add up”. When the word earns a scene, strange
    and funny is what survives reviews, but the absurdity has to be the
    mechanism, never a joke parked next to it. If the section “Is this word just
    its kanji?” says this one is, ignore this bullet and follow that section

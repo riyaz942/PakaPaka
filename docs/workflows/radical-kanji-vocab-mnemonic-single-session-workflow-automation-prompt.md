@@ -28,7 +28,7 @@ Number of slugs this session targets (this session drafts, ingests and
 repairs exactly this many slugs, then stops — no more, no less unless the
 auto-select prints fewer because the layer is nearly done):
 
-<slug-count = 20>
+<slug-count = 10>
 
 Keep <slug-count> small — this is one session's entire attention span, not a
 batch to delegate. 3–5 is the sweet spot: past that, the last item gets

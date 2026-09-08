@@ -71,6 +71,14 @@ English as a second language. Use the word a ten-year-old would use: *tied* not
 *lashed*, *bundle* not *sheaf*, *caught* not *snagged*, *tips over* not
 *lurches*, *splits* not *cleaves*. If it sounds like a novel, it is wrong.
 
+**And no idioms.** A figure of speech means something other than the sum of its
+words, so a second-language reader has to decode it before they can even start on
+the kanji: *rakes off* → *takes*, *butts against* → *presses against*, *notch it
+onto the board* → *cut a mark into the board*. Invented compound nouns are the
+same trap — write *the board you scratch a year into*, never *the shield-board*.
+If a phrase would need its own dictionary entry, replace it with the plain words
+underneath it.
+
 ## Components do grammatical work
 
 Every component must be load-bearing in the sentence — a subject, an object, a

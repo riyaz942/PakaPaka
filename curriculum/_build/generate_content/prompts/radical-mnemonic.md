@@ -38,6 +38,13 @@ sentence wants a second clause, a dash, or an "-ing" tail ("roots gripping the
 soil"), make it two sentences instead. Concrete everyday words are always
 fine; a long winding sentence never is.
 
+**No idioms.** A figure of speech means something other than the sum of its
+words, and a second-language reader has to decode it before they can see the
+picture: *rakes off* → *takes*, *butts against* → *presses against*, *snags on*
+→ *catches on*. Invented compound nouns are the same trap — *the board you
+scratch a mark into*, never *the shield-board*. If a phrase would need its own
+dictionary entry, use the plain words underneath it.
+
 `image_prompt` is exempt — clause-stacked specification is a virtue in a
 prompt for an illustrator.
 
