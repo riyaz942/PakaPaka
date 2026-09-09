@@ -5576,7 +5576,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5604,7 +5604,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5631,7 +5631,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5658,7 +5658,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5685,7 +5685,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5712,7 +5712,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5739,7 +5739,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5766,7 +5766,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5793,7 +5793,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5820,7 +5820,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5847,7 +5847,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5874,7 +5874,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5901,7 +5901,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5928,7 +5928,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5955,7 +5955,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -5983,7 +5983,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -6009,7 +6009,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -6035,7 +6035,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -6061,7 +6061,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -6088,7 +6088,7 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -6109,7 +6109,14 @@
           "answer_text": "みせてくれる"
         }
       ],
-      "furigana": "見[み]せてくれる"
+      "furigana": "見[み]せてくれる",
+      "meaning_mnemonic": "A friend makes you <kanji form=\"見\">see</kanji> something by holding it up in front of your face. That small favour, done for you, is to <vocabulary form=\"見せてくれる\">show (to me)</vocabulary>.",
+      "reading_mnemonic": "You already know 見 is 「み」 from 見る, the verb to look, so <vocabulary form=\"見せてくれる\">to show (to me)</vocabulary> is <reading>みせてくれる</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "oshiete-morau",
@@ -6129,7 +6136,14 @@
           "answer_text": "おしえてもらう"
         }
       ],
-      "furigana": "教[おし]えてもらう"
+      "furigana": "教[おし]えてもらう",
+      "meaning_mnemonic": "The <kanji form=\"教\">teach</kanji> kanji and the <vocabulary form=\"教えてもらう\">to have (someone) teach</vocabulary> word are the same word, so they carry the same meaning.",
+      "reading_mnemonic": "You already know 教 is 「おし」 from 教える, the verb to teach, so <vocabulary form=\"教えてもらう\">to have (someone) teach</vocabulary> is <reading>おしえてもらう</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "kaite-ageru",
@@ -6149,7 +6163,14 @@
           "answer_text": "かいてあげる"
         }
       ],
-      "furigana": "書[か]いてあげる"
+      "furigana": "書[か]いてあげる",
+      "meaning_mnemonic": "The <kanji form=\"書\">write</kanji> kanji and the <vocabulary form=\"書いてあげる\">to write (for someone)</vocabulary> word are one and the same, so the meaning does not change.",
+      "reading_mnemonic": "You already know 書 is 「か」 from 書く, the verb to write, so <vocabulary form=\"書いてあげる\">to write (for someone)</vocabulary> is <reading>かいてあげる</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "tetsudatte-kureru",
@@ -6169,7 +6190,13 @@
           "answer_text": "てつだってくれる"
         }
       ],
-      "furigana": "手伝[てつだ]ってくれる"
+      "furigana": "手伝[てつだ]ってくれる",
+      "meaning_mnemonic": "Someone puts a <kanji form=\"手\">hand</kanji> to your job and lets their own plans <kanji form=\"伝\">go along</kanji> with your work instead. Doing that for you is to <vocabulary form=\"手伝ってくれる\">help (me)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "kashite-morau",
@@ -6189,7 +6216,14 @@
           "answer_text": "かしてもらう"
         }
       ],
-      "furigana": "貸[か]してもらう"
+      "furigana": "貸[か]してもらう",
+      "meaning_mnemonic": "You ask, and the owner agrees to <kanji form=\"貸\">lend</kanji> you the thing you need. Walking off with it on that promise is to <vocabulary form=\"貸してもらう\">have (something) lent</vocabulary>.",
+      "reading_mnemonic": "You already know 貸 is 「か」 from 貸す, the verb to lend, so <vocabulary form=\"貸してもらう\">to have (something) lent</vocabulary> is <reading>かしてもらう</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "okutte-ageru",
@@ -6209,7 +6243,14 @@
           "answer_text": "おくってあげる"
         }
       ],
-      "furigana": "送[おく]ってあげる"
+      "furigana": "送[おく]ってあげる",
+      "meaning_mnemonic": "The <kanji form=\"送\">send</kanji> kanji and the <vocabulary form=\"送ってあげる\">to send (for someone)</vocabulary> word are the same character, so they mean the same thing.",
+      "reading_mnemonic": "You already know 送 is 「おく」 from 送る, the verb to send, so <vocabulary form=\"送ってあげる\">to send (for someone)</vocabulary> is <reading>おくってあげる</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "mushi",
@@ -6230,7 +6271,14 @@
           "answer_text": "むし"
         }
       ],
-      "furigana": "虫[むし]"
+      "furigana": "虫[むし]",
+      "meaning_mnemonic": "Tip up the old flowerpot by the back step and the packed soil under it comes alive with tiny legs and feelers that pour away from the daylight. Every scurrying speck down there is an <vocabulary form=\"虫\">insect / bug</vocabulary>.",
+      "reading_mnemonic": "Leave a peach on Koichi's counter until it turns <reading>mushy</reading>, and by morning the soft brown patch is crawling with every kind of <vocabulary form=\"虫\">insect / bug</vocabulary>. Koichi flicks them off and mutters 「<reading>むし</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "chou",
@@ -6251,7 +6299,13 @@
           "answer_text": "ちょう"
         }
       ],
-      "furigana": "蝶[ちょう]"
+      "furigana": "蝶[ちょう]",
+      "meaning_mnemonic": "A scrap of coloured paper lifts off the shrine path and flutters between the mossy steps, folding shut and opening again as it climbs the air. That drifting pair of painted wings is a <vocabulary form=\"蝶\">butterfly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "saru",
@@ -6272,7 +6326,14 @@
           "answer_text": "さる"
         }
       ],
-      "furigana": "猿[さる]"
+      "furigana": "猿[さる]",
+      "meaning_mnemonic": "A grey shape drops onto the trailhead vending machine, pops the flap with quick clever fingers and swings back up a pine with a stolen can. Only a <vocabulary form=\"猿\">monkey</vocabulary> robs a machine like that.",
+      "reading_mnemonic": "Down at the riverbank a <vocabulary form=\"猿\">monkey</vocabulary> snatches <reading>a sarong</reading> off the drying line and wears it up a tree. The washer-woman shakes her fist and yells 「<reading>さる</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "uma",
@@ -6293,7 +6354,14 @@
           "answer_text": "うま"
         }
       ],
-      "furigana": "馬[うま]"
+      "furigana": "馬[うま]",
+      "meaning_mnemonic": "The animal that walks over to the paddock fence stands taller than you at the shoulder, long-faced, with a mane down its neck and a sweeping tail. That shape and size is a <vocabulary form=\"馬\">horse</vocabulary>.",
+      "reading_mnemonic": "A toddler on the trail points at the animal being led past and gasps <reading>ooh, ma</reading> at her mother. The thing she means is a <vocabulary form=\"馬\">horse</vocabulary>, and the word she wants is 「<reading>うま</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "ushi",
@@ -6314,7 +6382,14 @@
           "answer_text": "うし"
         }
       ],
-      "furigana": "牛[うし]"
+      "furigana": "牛[うし]",
+      "meaning_mnemonic": "The <kanji form=\"牛\">cow</kanji> kanji and the <vocabulary form=\"牛\">cow</vocabulary> word are exactly the same character, so they mean the same thing.",
+      "reading_mnemonic": "The dairy farmer leans on the gate watching his best milker chew and sighs that <reading>ooh, she</reading> is a fine one. The animal he means is a <vocabulary form=\"牛\">cow</vocabulary>, and he calls her 「<reading>うし</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "buta",
@@ -6335,7 +6410,14 @@
           "answer_text": "ぶた"
         }
       ],
-      "furigana": "豚[ぶた]"
+      "furigana": "豚[ぶた]",
+      "meaning_mnemonic": "Behind Koichi's konbini the scraps bin lies tipped over, and a fat pink animal stands in the spill with its snout down, grunting as it eats. Nothing empties a bin like a <vocabulary form=\"豚\">pig</vocabulary>.",
+      "reading_mnemonic": "The farmer fattens the animal every night on a bucket of <reading>butter</reading> and kitchen scraps until it can barely walk. That round, greasy thing is a <vocabulary form=\"豚\">pig</vocabulary>, and he calls it 「<reading>ぶた</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "hitsuji-anim",
@@ -6356,7 +6438,14 @@
           "answer_text": "ひつじ"
         }
       ],
-      "furigana": "羊[ひつじ]"
+      "furigana": "羊[ひつじ]",
+      "meaning_mnemonic": "The <kanji form=\"羊\">sheep</kanji> kanji and the <vocabulary form=\"羊\">sheep</vocabulary> word are the same character, so they point at the same animal.",
+      "reading_mnemonic": "The shepherd sends her dog with one command, <reading>hit, Suzy</reading>, and it circles the woolly flock and drives them through the gate. Each fat woolly one is a <vocabulary form=\"羊\">sheep</vocabulary>, called 「<reading>ひつじ</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "kitsune",
@@ -6377,7 +6466,14 @@
           "answer_text": "きつね"
         }
       ],
-      "furigana": "狐[きつね]"
+      "furigana": "狐[きつね]",
+      "meaning_mnemonic": "At dusk a low red-brown shape slips along the treeline by the school field, quick and quiet, a white-tipped tail held straight out behind. That build and that tail mean a <vocabulary form=\"狐\">fox</vocabulary>.",
+      "reading_mnemonic": "The raider picks the coop latch every night and leaves it closed so tidily the farmer blames himself. <reading>Kit, so neat</reading> a thief has to be a <vocabulary form=\"狐\">fox</vocabulary>, and the word is 「<reading>きつね</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "kuma",
@@ -6398,7 +6494,14 @@
           "answer_text": "くま"
         }
       ],
-      "furigana": "熊[くま]"
+      "furigana": "熊[くま]",
+      "meaning_mnemonic": "The beekeeper finds three hives smashed flat, the honey frames licked clean and claw marks gouged deep in the wood. Only a <vocabulary form=\"熊\">bear</vocabulary> robs hives like that.",
+      "reading_mnemonic": "Curled asleep in the hollow log, the animal is a perfect furry <reading>comma</reading>, nose tucked to tail. Nudge that 「<reading>くま</reading>」 awake and it unrolls into a very large <vocabulary form=\"熊\">bear</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "zou",
@@ -6419,7 +6522,13 @@
           "answer_text": "ぞう"
         }
       ],
-      "furigana": "象[ぞう]"
+      "furigana": "象[ぞう]",
+      "meaning_mnemonic": "Behind the zoo fence stands a grey animal the size of a truck, its legs like pillars and its nose long enough to pick a bun off the ground. That reaching nose alone means <vocabulary form=\"象\">elephant</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "hebi",
@@ -6440,7 +6549,14 @@
           "answer_text": "へび"
         }
       ],
-      "furigana": "蛇[へび]"
+      "furigana": "蛇[へび]",
+      "meaning_mnemonic": "The hose coiled on the riverbank path lifts one end, flicks a thin forked tongue, and pours itself smoothly off into the long grass. A rope that moves on its own is a <vocabulary form=\"蛇\">snake</vocabulary>.",
+      "reading_mnemonic": "A hiker nudges what looks like a <reading>heavy</reading> length of rope lying across the trail, and it coils back on itself and hisses. Rope that fights back is a <vocabulary form=\"蛇\">snake</vocabulary>, 「<reading>へび</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "kumo-spider",
@@ -6461,7 +6577,14 @@
           "answer_text": "くも"
         }
       ],
-      "furigana": "蜘蛛[くも]"
+      "furigana": "蜘蛛[くも]",
+      "meaning_mnemonic": "You step off the porch at dawn and walk face-first through a wide sticky net strung across the doorway. Sitting dead centre with its legs spread is the <vocabulary form=\"蜘蛛\">spider</vocabulary> that spun it overnight.",
+      "reading_mnemonic": "Mo walks the mountain trail into the same face-height web every dawn and yells <reading>come, Mo</reading> at nobody. The weaver that keeps rebuilding it is a <vocabulary form=\"蜘蛛\">spider</vocabulary>, 「<reading>くも</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "ka-mosquito",
@@ -6482,7 +6605,14 @@
           "answer_text": "か"
         }
       ],
-      "furigana": "蚊[か]"
+      "furigana": "蚊[か]",
+      "meaning_mnemonic": "The high thin whine circles your ear in the dark, stops, and a second later a hot itch rises on your arm. The thing that bit you and left that whine is a <vocabulary form=\"蚊\">mosquito</vocabulary>.",
+      "reading_mnemonic": "<reading>Kaa</reading> the crow snaps at the whining speck by the power line, breathes one puff of flame, and swallows it charred. What she just ate was a <vocabulary form=\"蚊\">mosquito</vocabulary>, and her caw after is 「<reading>か</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "hae",
@@ -6503,7 +6633,14 @@
           "answer_text": "はえ"
         }
       ],
-      "furigana": "蝿[はえ]"
+      "furigana": "蝿[はえ]",
+      "meaning_mnemonic": "You set the bowl down for one minute and three of them already crowd the rim, rubbing their legs and testing the food. Nothing finds a meal faster than a <vocabulary form=\"蝿\">fly (insect)</vocabulary>.",
+      "reading_mnemonic": "The farmhand forks over the <reading>hay</reading> pile and a grey cloud lifts off it buzzing, then drops straight back down. Every dot in that cloud is a <vocabulary form=\"蝿\">fly (insect)</vocabulary>, 「<reading>はえ</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "reviewed"
+      }
     },
     {
       "slug": "shizen",
@@ -6524,7 +6661,13 @@
           "answer_text": "しぜん"
         }
       ],
-      "furigana": "自[し]然[ぜん]"
+      "furigana": "自[し]然[ぜん]",
+      "meaning_mnemonic": "Anything that is the way it is by its own <kanji form=\"自\">self</kanji>, just that <kanji form=\"然\">sort of thing</kanji> with nobody shaping it, is <vocabulary form=\"自然\">nature</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taiyou",
@@ -6545,7 +6688,13 @@
           "answer_text": "たいよう"
         }
       ],
-      "furigana": "太[たい]陽[よう]"
+      "furigana": "太[たい]陽[よう]",
+      "meaning_mnemonic": "The sky's one genuinely <kanji form=\"太\">fat</kanji> light is too bright to look straight at, and every shadow on the ground points away from it. That light is the <vocabulary form=\"太陽\">sun (formal)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoshizora",
@@ -6566,7 +6715,13 @@
           "answer_text": "ほしぞら"
         }
       ],
-      "furigana": "星[ほし]空[ぞら]"
+      "furigana": "星[ほし]空[ぞら]",
+      "meaning_mnemonic": "Wait until a <kanji form=\"空\">sky</kanji> that looked empty all day fills after dark with thousands of small points of light, and you are looking at a <vocabulary form=\"星空\">starry sky</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nami",
@@ -6587,7 +6742,14 @@
           "answer_text": "なみ"
         }
       ],
-      "furigana": "波[なみ]"
+      "furigana": "波[なみ]",
+      "meaning_mnemonic": "Out on the open sea the water never settles; it stacks itself into a moving ridge, throws that ridge at the land, then draws back to build the next. Each moving ridge is a <vocabulary form=\"波\">wave</vocabulary>.",
+      "reading_mnemonic": "Nami the lifeguard names every <vocabulary form=\"波\">wave</vocabulary> after herself. She stands on her tower shouting <reading>なみ</reading> at each wall of water as it rolls in, and the sound <reading>Nami</reading> has meant wave on that beach ever since.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mori",
@@ -6636,7 +6798,14 @@
           "answer_text": "はやし"
         }
       ],
-      "furigana": "林[はやし]"
+      "furigana": "林[はやし]",
+      "meaning_mnemonic": "The <kanji form=\"林\">grove</kanji> kanji you have already met and the <vocabulary form=\"林\">woods / grove</vocabulary> word are the same character, so they carry the same meaning.",
+      "reading_mnemonic": "A forest ranger named <reading>Hayashi</reading> has replanted the same <vocabulary form=\"林\">woods / grove</vocabulary> three times after three separate fires. The locals gave up on the map name and just call the trees <reading>はやし</reading> after him.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ike",
@@ -6657,7 +6826,14 @@
           "answer_text": "いけ"
         }
       ],
-      "furigana": "池[いけ]"
+      "furigana": "池[いけ]",
+      "meaning_mnemonic": "The <kanji form=\"池\">pond</kanji> kanji and the <vocabulary form=\"池\">pond</vocabulary> word are the same character, so of course they mean exactly the same thing.",
+      "reading_mnemonic": "The <vocabulary form=\"池\">pond</vocabulary> behind Grandma Kane's shrine turns green and <reading>icky</reading> every August, thick enough to float a fallen leaf on top. The cats pick their way around it and she just calls it <reading>いけ</reading> and tops it up.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iwa",
@@ -6678,7 +6854,14 @@
           "answer_text": "いわ"
         }
       ],
-      "furigana": "岩[いわ]"
+      "furigana": "岩[いわ]",
+      "meaning_mnemonic": "A single stone in the field is too big to lift, too heavy to roll, and was sitting there before the farm was. A stone that large and that settled is a <vocabulary form=\"岩\">rock / boulder</vocabulary>.",
+      "reading_mnemonic": "A hiker on the mountain trail swears the biggest <vocabulary form=\"岩\">rock / boulder</vocabulary> up there is shaped exactly like the state of <reading>Iowa</reading>. Everyone else just calls it <reading>いわ</reading> and keeps climbing.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suna",
@@ -6699,7 +6882,14 @@
           "answer_text": "すな"
         }
       ],
-      "furigana": "砂[すな]"
+      "furigana": "砂[すな]",
+      "meaning_mnemonic": "<vocabulary form=\"砂\">Sand</vocabulary> is what a cliff turns into after the sea grinds at it for a few thousand years. What is left is a pile of grains so small they run through your fingers and still will not brush off.",
+      "reading_mnemonic": "A cat drags a whole <reading>tuna</reading> onto the beach and pats it down under the <vocabulary form=\"砂\">sand</vocabulary> to save for later. By evening it has forgotten which stretch of <reading>すな</reading> holds the fish.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doro",
@@ -6720,7 +6910,14 @@
           "answer_text": "どろ"
         }
       ],
-      "furigana": "泥[どろ]"
+      "furigana": "泥[どろ]",
+      "meaning_mnemonic": "Mix plain dirt with enough rain and you get <vocabulary form=\"泥\">mud</vocabulary>, a brown paste thick enough to hold a footprint and sticky enough to pull a boot off the foot that made it.",
+      "reading_mnemonic": "Doro the farmhand goes to fetch water and comes back wearing half the riverbank, brown to the elbows with <vocabulary form=\"泥\">mud</vocabulary>. Now one look at anyone in that state and the village just sighs <reading>どろ</reading>, said exactly like <reading>Doro</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kemuri",
@@ -6741,7 +6938,14 @@
           "answer_text": "けむり"
         }
       ],
-      "furigana": "煙[けむり]"
+      "furigana": "煙[けむり]",
+      "meaning_mnemonic": "When something burns, part of it leaves as a grey cloud that climbs, spreads flat under the ceiling, and stings your eyes. That rising grey cloud off a fire is <vocabulary form=\"煙\">smoke</vocabulary>.",
+      "reading_mnemonic": "The cook who trips the alarm most days insists the <vocabulary form=\"煙\">smoke</vocabulary> is just him working from <reading>memory</reading>. The fire crew now radio <reading>けむり</reading> before he has even lit the stove.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "honoo",
@@ -6762,7 +6966,14 @@
           "answer_text": "ほのお"
         }
       ],
-      "furigana": "炎[ほのお]"
+      "furigana": "炎[ほのお]",
+      "meaning_mnemonic": "Strike a match and a small pointed shape of light stands up on the tip, orange at the edges and bluish at the base. That upright, leaning tongue of burning light is a <vocabulary form=\"炎\">flame</vocabulary>.",
+      "reading_mnemonic": "A knight promises to guard the temple <vocabulary form=\"炎\">flame</vocabulary> with his <reading>honor</reading> and never let it die. He falls asleep, it dies, and the other knights have whispered <reading>ほのお</reading> at him ever since.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koori",
@@ -6783,7 +6994,14 @@
           "answer_text": "こおり"
         }
       ],
-      "furigana": "氷[こおり]"
+      "furigana": "氷[こおり]",
+      "meaning_mnemonic": "Water held cold enough for long enough stops behaving like a liquid and turns hard, clear and slippery. Water in that solid state is <vocabulary form=\"氷\">ice</vocabulary>.",
+      "reading_mnemonic": "An old ice-cutter shows visitors where his crew once sawed winter <vocabulary form=\"氷\">ice</vocabulary> from the lake in blocks, working it like a stone <reading>quarry</reading>. He still calls that frozen lake <reading>こおり</reading>, the word his crew used for the place.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "arashi",
@@ -6804,7 +7022,14 @@
           "answer_text": "あらし"
         }
       ],
-      "furigana": "嵐[あらし]"
+      "furigana": "嵐[あらし]",
+      "meaning_mnemonic": "Sometimes the wind, the rain, the black cloud and the noise all arrive together and stay for a whole day. A whole sky misbehaving at once is a <vocabulary form=\"嵐\">storm</vocabulary>.",
+      "reading_mnemonic": "A dock hand shouts <reading>a rush</reading> whenever the wind turns, and the crews haul every boat in. Nine times it is nothing, but the tenth is a real <vocabulary form=\"嵐\">storm</vocabulary>, so the port still jumps at the shout, now worn down to <reading>あらし</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taifuu",
@@ -6825,7 +7050,13 @@
           "answer_text": "たいふう"
         }
       ],
-      "furigana": "台[たい]風[ふう]"
+      "furigana": "台[たい]風[ふう]",
+      "meaning_mnemonic": "Give one <kanji form=\"風\">wind</kanji> a name, a number, and its own <kanji form=\"台\">pedestal</kanji> on every weather map, and that single most-watched storm is a <vocabulary form=\"台風\">typhoon</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jishin",
@@ -6846,7 +7077,13 @@
           "answer_text": "じしん"
         }
       ],
-      "furigana": "地[じ]震[しん]"
+      "furigana": "地[じ]震[しん]",
+      "meaning_mnemonic": "The <kanji form=\"地\">ground</kanji> is the one thing built to stay still, so when it starts to <kanji form=\"震\">shake</kanji> hard enough to knock cups off the shelf, you have an <vocabulary form=\"地震\">earthquake</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wafuu",
@@ -6867,7 +7104,13 @@
           "answer_text": "わふう"
         }
       ],
-      "furigana": "和[わ]風[ふう]"
+      "furigana": "和[わ]風[ふう]",
+      "meaning_mnemonic": "You already know <kanji form=\"和\">harmony</kanji> also stands for Japan itself, and <kanji form=\"風\">wind</kanji> can mean the air or manner of a thing. So the Japanese manner of doing something is <vocabulary form=\"和風\">Japanese-style</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "youshoku",
@@ -6888,7 +7131,13 @@
           "answer_text": "ようしょく"
         }
       ],
-      "furigana": "洋[よう]食[しょく]"
+      "furigana": "洋[よう]食[しょく]",
+      "meaning_mnemonic": "The <kanji form=\"洋\">ocean</kanji> here carries its other sense, foreign. So <kanji form=\"食\">food</kanji> that came from across the water, the fried and buttery knife-and-fork kind, is <vocabulary form=\"洋食\">Western food</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "washoku",
@@ -6909,7 +7158,13 @@
           "answer_text": "わしょく"
         }
       ],
-      "furigana": "和[わ]食[しょく]"
+      "furigana": "和[わ]食[しょく]",
+      "meaning_mnemonic": "Take that same <kanji form=\"和\">harmony</kanji> that also stands for Japan, set it in front of <kanji form=\"食\">food</kanji>, and you have the home-side cooking of rice, fish and miso that is <vocabulary form=\"和食\">Japanese food</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chuuka",
@@ -6930,7 +7185,13 @@
           "answer_text": "ちゅうか"
         }
       ],
-      "furigana": "中[ちゅう]華[か]"
+      "furigana": "中[ちゅう]華[か]",
+      "meaning_mnemonic": "China's own name for itself sets the country at the <kanji form=\"中\">middle</kanji> of the world and calls the culture there its <kanji form=\"華\">splendor</kanji>. On a Japanese menu, <vocabulary form=\"中華\">Chinese (cuisine)</vocabulary> is food from that middle kingdom.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "menyuu",
@@ -6951,7 +7212,13 @@
           "answer_text": "メニュー"
         }
       ],
-      "furigana": "メニュー"
+      "furigana": "メニュー",
+      "meaning_mnemonic": "A waiter at a packed diner is asked for the list of dishes by <reading>many ewe</reading> at the same moment, a whole coach tour of sheep. He keeps shouting that the <vocabulary form=\"メニュー\">menu</vocabulary> is printed on the back of the placemat, and the sheep just bleat <reading>メニュー</reading> louder.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chuumon-suru",
@@ -6972,7 +7239,13 @@
           "answer_text": "ちゅうもんする"
         }
       ],
-      "furigana": "注[ちゅう]文[もん]する"
+      "furigana": "注[ちゅう]文[もん]する",
+      "meaning_mnemonic": "You speak one clean <kanji form=\"文\">sentence</kanji> across the counter, and a few minutes later a cup is <kanji form=\"注\">poured</kanji> for you. Doing that on purpose is <vocabulary form=\"注文する\">to order (food)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "amami",
@@ -6993,7 +7266,14 @@
           "answer_text": "あまみ"
         }
       ],
-      "furigana": "甘[あま]み"
+      "furigana": "甘[あま]み",
+      "meaning_mnemonic": "The flavour children chase and dentists warn against, the one that makes you shut your eyes at the first bite of warm cake, is <vocabulary form=\"甘み\">sweetness</vocabulary>.",
+      "reading_mnemonic": "You already know 甘 is 「あま」 from 甘い, so the noun for that flavour, <vocabulary form=\"甘み\">sweetness</vocabulary>, is just <reading>あまみ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shoppai",
@@ -7014,7 +7294,13 @@
           "answer_text": "しょっぱい"
         }
       ],
-      "furigana": "しょっぱい"
+      "furigana": "しょっぱい",
+      "meaning_mnemonic": "Bite into a <reading>shop pie</reading> from the konbini and the filling is pure seawater. That sting is <reading>しょっぱい</reading>, painfully <vocabulary form=\"しょっぱい\">salty</vocabulary>, and the い ending marks it as a describing word.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nigai",
@@ -7035,7 +7321,14 @@
           "answer_text": "にがい"
         }
       ],
-      "furigana": "苦[にが]い"
+      "furigana": "苦[にが]い",
+      "meaning_mnemonic": "The kanji here means <kanji form=\"苦\">suffering</kanji>, and suffering on the tongue is exactly what <vocabulary form=\"苦い\">bitter</vocabulary> is. The い on the end marks it as a describing word.",
+      "reading_mnemonic": "Nigel the goat gnaws lemon rind and raw dandelion stalks, pulls a long face, and calls every mouthful <reading>にがい</reading> — <reading>Nigel</reading>'s one word for <vocabulary form=\"苦い\">bitter</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suppai",
@@ -7056,7 +7349,14 @@
           "answer_text": "すっぱい"
         }
       ],
-      "furigana": "酸[す]っぱい"
+      "furigana": "酸[す]っぱい",
+      "meaning_mnemonic": "The pucker that grabs both cheeks when you bite a lemon wedge by mistake is <vocabulary form=\"酸っぱい\">sour</vocabulary>. The い ending marks it as a describing word.",
+      "reading_mnemonic": "Dinner is a <reading>supper pie</reading> that has turned in the heat, and one forkful folds your face in half — <reading>すっぱい</reading>, the taste we call <vocabulary form=\"酸っぱい\">sour</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dashi",
@@ -7077,7 +7377,13 @@
           "answer_text": "だし"
         }
       ],
-      "furigana": "だし"
+      "furigana": "だし",
+      "meaning_mnemonic": "A single <reading>dash</reading> of dried fish flakes and kelp steeps in a pot of hot water. That pale infusion is <vocabulary form=\"だし\">soup stock</vocabulary>, <reading>だし</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "misoshiru",
@@ -7098,7 +7404,13 @@
           "answer_text": "みそしる"
         }
       ],
-      "furigana": "味[み]噌[そ]汁[しる]"
+      "furigana": "味[み]噌[そ]汁[しる]",
+      "meaning_mnemonic": "A <kanji form=\"味\">taste</kanji> this <kanji form=\"噌\">boisterous</kanji>, all salt and funk and noise on the tongue, comes only from fermented soybean paste stirred into a hot bowl. That bowl is <vocabulary form=\"味噌汁\">miso soup</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nabe",
@@ -7119,7 +7431,14 @@
           "answer_text": "なべ"
         }
       ],
-      "furigana": "鍋[なべ]"
+      "furigana": "鍋[なべ]",
+      "meaning_mnemonic": "A heavy dish sits over a flame in the middle of the table, and everyone drops in cabbage and tofu and fishes it back out. That dish, and the shared meal made in it, is a <vocabulary form=\"鍋\">pot / hotpot</vocabulary>.",
+      "reading_mnemonic": "The <reading>neighbour</reading> hauls her huge cast-iron <reading>なべ</reading> to every winter gathering, and nobody leaves the <vocabulary form=\"鍋\">pot / hotpot</vocabulary> hungry.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yasai-itame",
@@ -7140,7 +7459,13 @@
           "answer_text": "やさいいため"
         }
       ],
-      "furigana": "野[や]菜[さい]炒[いた]め"
+      "furigana": "野[や]菜[さい]炒[いた]め",
+      "meaning_mnemonic": "Take <kanji form=\"菜\">greens</kanji> pulled straight from the open <kanji form=\"野\">field</kanji>, throw them into a scorching pan and <kanji form=\"炒\">roast</kanji> them fast, and you have <vocabulary form=\"野菜炒め\">stir-fried vegetables</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sushi",
@@ -7161,7 +7486,13 @@
           "answer_text": "すし"
         }
       ],
-      "furigana": "寿[す]司[し]"
+      "furigana": "寿[す]司[し]",
+      "meaning_mnemonic": "Each piece is placed with the precision of a white-gloved <kanji form=\"司\">official</kanji>, as formal as a <kanji form=\"寿\">congratulations</kanji> spoken aloud. That careful offering of rice and fish is <vocabulary form=\"寿司\">sushi</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "soba",
@@ -7182,7 +7513,13 @@
           "answer_text": "そば"
         }
       ],
-      "furigana": "そば"
+      "furigana": "そば",
+      "meaning_mnemonic": "At the midnight stand you eat a bowl of thin grey buckwheat noodles to stay <reading>sober</reading> after drinking. Those noodles are <vocabulary form=\"そば\">soba noodles</vocabulary>, <reading>そば</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "udon",
@@ -7203,7 +7540,13 @@
           "answer_text": "うどん"
         }
       ],
-      "furigana": "うどん"
+      "furigana": "うどん",
+      "meaning_mnemonic": "The chef barks that <reading>you don't</reading> ever roll these noodles thin, and slaps out a fat white rope of dough. That thick noodle is <vocabulary form=\"うどん\">udon noodles</vocabulary>, <reading>うどん</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "raamen",
@@ -7224,7 +7567,13 @@
           "answer_text": "ラーメン"
         }
       ],
-      "furigana": "ラーメン"
+      "furigana": "ラーメン",
+      "meaning_mnemonic": "The whole stadium stands and chants <reading>rah, men</reading> after the final whistle, then pours out to queue at one steaming stall. What they queue for is a bowl of <vocabulary form=\"ラーメン\">ramen</vocabulary>, <reading>ラーメン</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "karee",
@@ -7245,7 +7594,13 @@
           "answer_text": "カレー"
         }
       ],
-      "furigana": "カレー"
+      "furigana": "カレー",
+      "meaning_mnemonic": "Every Friday <reading>Carrie</reading> ladles a thick brown spiced stew over a mound of rice for the whole house. Her Friday dish is <vocabulary form=\"カレー\">curry</vocabulary>, <reading>カレー</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sarada",
@@ -7266,7 +7621,13 @@
           "answer_text": "サラダ"
         }
       ],
-      "furigana": "サラダ"
+      "furigana": "サラダ",
+      "meaning_mnemonic": "The gardener <reading>Sarah Da</reading> tips raw leaves, sliced tomato and cold cucumber into one big wooden bowl and tosses them with oil. That cold raw bowl is a <vocabulary form=\"サラダ\">salad</vocabulary>, <reading>サラダ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sandoicchi",
@@ -7287,7 +7648,13 @@
           "answer_text": "サンドイッチ"
         }
       ],
-      "furigana": "サンドイッチ"
+      "furigana": "サンドイッチ",
+      "meaning_mnemonic": "The picnic filling is so gritty it is like <reading>sand, which</reading> has worked its way between two thick slabs of bread. That gritty stack is a <vocabulary form=\"サンドイッチ\">sandwich</vocabulary>, <reading>サンドイッチ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "aisukuriimu",
@@ -7308,7 +7675,13 @@
           "answer_text": "アイスクリーム"
         }
       ],
-      "furigana": "アイスクリーム"
+      "furigana": "アイスクリーム",
+      "meaning_mnemonic": "One touch of the cold scoop on a filled tooth and you let out an <reading>I scream</reading>. The frozen sweet that caused it is <vocabulary form=\"アイスクリーム\">ice cream</vocabulary>, <reading>アイスクリーム</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keeki",
@@ -7329,7 +7702,13 @@
           "answer_text": "ケーキ"
         }
       ],
-      "furigana": "ケーキ"
+      "furigana": "ケーキ",
+      "meaning_mnemonic": "The sponge comes out of the oven the exact dull brown-green of <reading>khaki</reading> trousers, yet it is soft and sweet. That baked sweet is a <vocabulary form=\"ケーキ\">cake</vocabulary>, <reading>ケーキ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chokoreeto",
@@ -7350,7 +7729,13 @@
           "answer_text": "チョコレート"
         }
       ],
-      "furigana": "チョコレート"
+      "furigana": "チョコレート",
+      "meaning_mnemonic": "The bar is so dense and dry that the first bite makes you <reading>choke a lot</reading> before it finally melts. That dark sweet block is <vocabulary form=\"チョコレート\">chocolate</vocabulary>, <reading>チョコレート</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "juusu",
@@ -7371,7 +7756,13 @@
           "answer_text": "ジュース"
         }
       ],
-      "furigana": "ジュース"
+      "furigana": "ジュース",
+      "meaning_mnemonic": "<reading>Zeus</reading> squeezes a whole storm cloud full of oranges until it rains down into one tall glass. What fills the glass is <vocabulary form=\"ジュース\">juice</vocabulary>, <reading>ジュース</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wain",
@@ -7392,7 +7783,13 @@
           "answer_text": "ワイン"
         }
       ],
-      "furigana": "ワイン"
+      "furigana": "ワイン",
+      "meaning_mnemonic": "A small child at the table starts to <reading>whine</reading> the moment the adults uncork the dark red bottle and fill their glasses. That guarded grown-up drink is <reading>ワイン</reading>, the <vocabulary form=\"ワイン\">wine</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fukusou",
@@ -7413,7 +7810,13 @@
           "answer_text": "ふくそう"
         }
       ],
-      "furigana": "服[ふく]装[そう]"
+      "furigana": "服[ふく]装[そう]",
+      "meaning_mnemonic": "One piece of <kanji form=\"服\">clothing</kanji> is just that one piece. The whole matching set you put on to be seen in public is your <vocabulary form=\"服装\">attire</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seifuku",
@@ -7434,7 +7837,13 @@
           "answer_text": "せいふく"
         }
       ],
-      "furigana": "制[せい]服[ふく]"
+      "furigana": "制[せい]服[ふく]",
+      "meaning_mnemonic": "The <kanji form=\"制\">rule</kanji> book fixes every piece of this <kanji form=\"服\">clothing</kanji>, down to the buttons. The one outfit you never get to choose for yourself is a <vocabulary form=\"制服\">uniform</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nekutai",
@@ -7455,7 +7864,13 @@
           "answer_text": "ネクタイ"
         }
       ],
-      "furigana": "ネクタイ"
+      "furigana": "ネクタイ",
+      "meaning_mnemonic": "Every morning you loop a silk strip around your neck and tie it in a snug knot. That plain <reading>neck tie</reading> is a <reading>ネクタイ</reading>, a <vocabulary form=\"ネクタイ\">necktie</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sukaato",
@@ -7476,7 +7891,13 @@
           "answer_text": "スカート"
         }
       ],
-      "furigana": "スカート"
+      "furigana": "スカート",
+      "meaning_mnemonic": "To <reading>skirt</reading> a puddle you swing wide around its edge. Swing your hips that way as you walk and the loose cloth that flares out from your waist is a <reading>スカート</reading>, a <vocabulary form=\"スカート\">skirt</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zubon",
@@ -7497,7 +7918,13 @@
           "answer_text": "ズボン"
         }
       ],
-      "furigana": "ズボン"
+      "furigana": "ズボン",
+      "meaning_mnemonic": "Sit down, feed one leg in and then the other, and <reading>zip on</reading> the two cloth tubes. Fastened at your waist, that pair of tubes is <reading>ズボン</reading>, your <vocabulary form=\"ズボン\">trousers</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seetaa",
@@ -7518,7 +7945,13 @@
           "answer_text": "セーター"
         }
       ],
-      "furigana": "セーター"
+      "furigana": "セーター",
+      "meaning_mnemonic": "Pull the thick wool top down over your head and within a minute you start to <reading>sweat</reading>. The heavy knitted layer that does that to you is a <reading>セーター</reading>, a <vocabulary form=\"セーター\">sweater</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kutsushita",
@@ -7539,7 +7972,13 @@
           "answer_text": "くつした"
         }
       ],
-      "furigana": "靴[くつ]下[した]"
+      "furigana": "靴[くつ]下[した]",
+      "meaning_mnemonic": "Hidden <kanji form=\"下\">below</kanji> your <kanji form=\"靴\">shoes</kanji> all day where nobody sees them, wrapped straight onto the foot, are your <vocabulary form=\"靴下\">socks</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tebukuro",
@@ -7560,7 +7999,13 @@
           "answer_text": "てぶくろ"
         }
       ],
-      "furigana": "手[て]袋[ぶくろ]"
+      "furigana": "手[て]袋[ぶくろ]",
+      "meaning_mnemonic": "A snug <kanji form=\"袋\">sack</kanji> sewn to the shape of a <kanji form=\"手\">hand</kanji>, with a separate slot for each finger, is one of a pair of <vocabulary form=\"手袋\">gloves</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yubiwa",
@@ -7581,7 +8026,13 @@
           "answer_text": "ゆびわ"
         }
       ],
-      "furigana": "指[ゆび]輪[わ]"
+      "furigana": "指[ゆび]輪[わ]",
+      "meaning_mnemonic": "A metal band sized to slide onto one <kanji form=\"指\">finger</kanji> and stay there is a <vocabulary form=\"指輪\">ring</vocabulary> you wear as jewelry.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nekkuresu",
@@ -7602,7 +8053,13 @@
           "answer_text": "ネックレス"
         }
       ],
-      "furigana": "ネックレス"
+      "furigana": "ネックレス",
+      "meaning_mnemonic": "Slip the jewelled chain off your collarbones and the bare skin leaves your <reading>neck less</reading> dressed than before. Put the chain back to fix that and you are wearing a <reading>ネックレス</reading>, a <vocabulary form=\"ネックレス\">necklace</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "baggu",
@@ -7623,7 +8080,13 @@
           "answer_text": "バッグ"
         }
       ],
-      "furigana": "バッグ"
+      "furigana": "バッグ",
+      "meaning_mnemonic": "Load a leather shoulder <reading>bag</reading> with your purse, phone and keys until its sides go round and firm. Carried as part of an outfit, that piece is a <reading>バッグ</reading>, a <vocabulary form=\"バッグ\">bag</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saizu",
@@ -7644,7 +8107,13 @@
           "answer_text": "サイズ"
         }
       ],
-      "furigana": "サイズ"
+      "furigana": "サイズ",
+      "meaning_mnemonic": "The tailor runs the tape around your chest, reads the number, and <reading>sighs</reading>. That number, how big your clothes have to be, is your <reading>サイズ</reading>, your <vocabulary form=\"サイズ\">size</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "waribiki",
@@ -7665,7 +8134,14 @@
           "answer_text": "わりびき"
         }
       ],
-      "furigana": "割[わり]引[びき]"
+      "furigana": "割[わり]引[びき]",
+      "meaning_mnemonic": "Cut the price into equal <kanji form=\"割\">proportion</kanji>s, then <kanji form=\"引\">pull</kanji> a few of those parts away before you pay. The parts pulled off the total are the <vocabulary form=\"割引\">discount</vocabulary>.",
+      "reading_mnemonic": "Wally jabs a <reading>wobbly key</reading> into the till and springs the drawer open. He counts cash back into your hand off the price you owed, and that money handed back is a <reading>わりびき</reading>, a <vocabulary form=\"割引\">discount</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "uriba",
@@ -7686,7 +8162,13 @@
           "answer_text": "うりば"
         }
       ],
-      "furigana": "売[う]り場[ば]"
+      "furigana": "売[う]り場[ば]",
+      "meaning_mnemonic": "The lit patch of <kanji form=\"場\">place</kanji> on a shop floor where the staff do nothing but <kanji form=\"売\">sell</kanji> one kind of goods is that department's <vocabulary form=\"売り場\">sales floor</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiharau",
@@ -7707,7 +8189,13 @@
           "answer_text": "しはらう"
         }
       ],
-      "furigana": "支[し]払[はら]う"
+      "furigana": "支[し]払[はら]う",
+      "meaning_mnemonic": "Handing a shop the exact money you owe helps <kanji form=\"支\">support</kanji> it for another day. The formal verb for passing that money across the counter is <vocabulary form=\"支払う\">to pay</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ryoushuu",
@@ -7728,7 +8216,13 @@
           "answer_text": "りょうしゅう"
         }
       ],
-      "furigana": "領[りょう]収[しゅう]"
+      "furigana": "領[りょう]収[しゅう]",
+      "meaning_mnemonic": "Once the shop has <kanji form=\"収\">reaped</kanji> your payment into its own <kanji form=\"領\">territory</kanji>, it hands you a slip proving the money changed hands. That slip is a <vocabulary form=\"領収\">receipt</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chuumon",
@@ -7749,7 +8243,13 @@
           "answer_text": "ちゅうもん"
         }
       ],
-      "furigana": "注[ちゅう]文[もん]"
+      "furigana": "注[ちゅう]文[もん]",
+      "meaning_mnemonic": "You <kanji form=\"注\">pour</kanji> one clear <kanji form=\"文\">sentence</kanji> across the counter, telling the shop exactly what you want. That sentence is your <vocabulary form=\"注文\">order</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koukan-suru",
@@ -7770,7 +8270,13 @@
           "answer_text": "こうかんする"
         }
       ],
-      "furigana": "交[こう]換[かん]する"
+      "furigana": "交[こう]換[かん]する",
+      "meaning_mnemonic": "Two people let their goods <kanji form=\"交\">mingle</kanji> on the table, then <kanji form=\"換\">change</kanji> which one each takes home. What they do is <vocabulary form=\"交換する\">to exchange</vocabulary> them.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "henpin-suru",
@@ -7791,7 +8297,13 @@
           "answer_text": "へんぴんする"
         }
       ],
-      "furigana": "返[へん]品[ぴん]する"
+      "furigana": "返[へん]品[ぴん]する",
+      "meaning_mnemonic": "You carry the <kanji form=\"品\">goods</kanji> back to the counter that sold them and hand them over for a refund. Doing that is <vocabulary form=\"返品する\">to return an item</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kenkou",
@@ -7812,7 +8324,13 @@
           "answer_text": "けんこう"
         }
       ],
-      "furigana": "健[けん]康[こう]"
+      "furigana": "健[けん]康[こう]",
+      "meaning_mnemonic": "When every part of your body has settled into <kanji form=\"康\">ease</kanji> and nothing in it aches or strains, the single word for that whole calm state is <vocabulary form=\"健康\">health</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taiju",
@@ -7833,7 +8351,13 @@
           "answer_text": "たいじゅう"
         }
       ],
-      "furigana": "体[たい]重[じゅう]"
+      "furigana": "体[たい]重[じゅう]",
+      "meaning_mnemonic": "Step on a scale and it tells you one thing: how <kanji form=\"重\">heavy</kanji> the <kanji form=\"体\">body</kanji> you carry around all day has become. That one number is your <vocabulary form=\"体重\">body weight</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shinchou",
@@ -7854,7 +8378,13 @@
           "answer_text": "しんちょう"
         }
       ],
-      "furigana": "身[しん]長[ちょう]"
+      "furigana": "身[しん]長[ちょう]",
+      "meaning_mnemonic": "Stand a <kanji form=\"身\">person</kanji> against the wall and measure how <kanji form=\"長\">long</kanji> they are from heel to crown. That measurement is their <vocabulary form=\"身長\">height (body)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "netsu",
@@ -7875,7 +8405,13 @@
           "answer_text": "ねつ"
         }
       ],
-      "furigana": "熱[ねつ]"
+      "furigana": "熱[ねつ]",
+      "meaning_mnemonic": "Lay the back of your hand on a sick child's forehead and it comes away warm, like a pebble left out in full sun. That trapped warmth pouring off the skin is a <vocabulary form=\"熱\">fever / heat</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seki",
@@ -7896,7 +8432,14 @@
           "answer_text": "せき"
         }
       ],
-      "furigana": "咳[せき]"
+      "furigana": "咳[せき]",
+      "meaning_mnemonic": "A hard bark of air fires up your throat with no warning and rattles the whole quiet room. That sharp, helpless burst is a <vocabulary form=\"咳\">cough</vocabulary>.",
+      "reading_mnemonic": "Koichi tears open a <reading>sack</reading> of flour at the konbini and breathes the white cloud straight in. It punches out a <reading>せき</reading> loud enough to stop the beeping till, because a chestful of flour always ends in a <vocabulary form=\"咳\">cough</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaze-illness",
@@ -7917,7 +8460,14 @@
           "answer_text": "かぜをひく"
         }
       ],
-      "furigana": "風邪[かぜ]をひく"
+      "furigana": "風邪[かぜ]をひく",
+      "meaning_mnemonic": "Pull a <kanji form=\"邪\">wicked</kanji> <kanji form=\"風\">wind</kanji> deep into your chest and let it settle in as a three-day fever. Drawing bad air right inside you like that is what it means <vocabulary form=\"風邪をひく\">to catch a cold</vocabulary>.",
+      "reading_mnemonic": "A cold gust off the river hooks Kaz like a fish on a line and reels him straight into bed. When chilled air <reading>hooks</reading> into you and holds on, that is <reading>かぜをひく</reading>, <vocabulary form=\"風邪をひく\">to catch a cold</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chiryou",
@@ -7938,7 +8488,13 @@
           "answer_text": "ちりょう"
         }
       ],
-      "furigana": "治[ち]療[りょう]"
+      "furigana": "治[ち]療[りょう]",
+      "meaning_mnemonic": "First you get the disease to <kanji form=\"治\">calm down</kanji>, then you <kanji form=\"療\">heal</kanji> the damage it left behind. Doing both of those, in that order, is <vocabulary form=\"治療\">medical treatment</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chuusha",
@@ -7959,7 +8515,13 @@
           "answer_text": "ちゅうしゃ"
         }
       ],
-      "furigana": "注[ちゅう]射[しゃ]"
+      "furigana": "注[ちゅう]射[しゃ]",
+      "meaning_mnemonic": "An <vocabulary form=\"注射\">injection</vocabulary> is a dose <kanji form=\"射\">shot</kanji> through a thin needle so it <kanji form=\"注\">pours</kanji> straight into your blood instead of going down your throat.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shujutsu",
@@ -7980,7 +8542,13 @@
           "answer_text": "しゅじゅつ"
         }
       ],
-      "furigana": "手[しゅ]術[じゅつ]"
+      "furigana": "手[しゅ]術[じゅつ]",
+      "meaning_mnemonic": "A <vocabulary form=\"手術\">surgery</vocabulary> is a trained <kanji form=\"手\">hand</kanji> putting every bit of its learned <kanji form=\"術\">technique</kanji> to work inside a body that has been opened up.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nyuuin-suru",
@@ -8001,7 +8569,13 @@
           "answer_text": "にゅういんする"
         }
       ],
-      "furigana": "入[にゅう]院[いん]する"
+      "furigana": "入[にゅう]院[いん]する",
+      "meaning_mnemonic": "You <kanji form=\"入\">enter</kanji> the medical <kanji form=\"院\">institution</kanji> as a patient, the doors fall shut, and you are not sleeping at home tonight. Ending up kept inside like that is what it means <vocabulary form=\"入院する\">to be hospitalized</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taiin-suru",
@@ -8022,7 +8596,13 @@
           "answer_text": "たいいんする"
         }
       ],
-      "furigana": "退[たい]院[いん]する"
+      "furigana": "退[たい]院[いん]する",
+      "meaning_mnemonic": "The morning you can finally stand on your own, you <kanji form=\"退\">withdraw</kanji> from the <kanji form=\"院\">institution</kanji> and walk back out to the street. Getting yourself out the doors like that is <vocabulary form=\"退院する\">to leave hospital</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kenkoushindan",
@@ -8043,7 +8623,13 @@
           "answer_text": "けんこうしんだん"
         }
       ],
-      "furigana": "健[けん]康[こう]診[しん]断[だん]"
+      "furigana": "健[けん]康[こう]診[しん]断[だん]",
+      "meaning_mnemonic": "Once a year a doctor checks whether every part of you is running at <kanji form=\"康\">ease</kanji>, then draws a firm <kanji form=\"断\">severance</kanji> line between what passed and what a specialist must chase. That whole yearly review is a <vocabulary form=\"健康診断\">health checkup</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kusuri-o-nomu",
@@ -8063,7 +8649,13 @@
           "answer_text": "くすりをのむ"
         }
       ],
-      "furigana": "薬[くすり]を飲[の]む"
+      "furigana": "薬[くすり]を飲[の]む",
+      "meaning_mnemonic": "English says you take a pill; Japanese says you <kanji form=\"飲\">drink</kanji> it. So even a dry tablet of <kanji form=\"薬\">medicine</kanji> goes down the same way water does, and that is what it means <vocabulary form=\"薬を飲む\">to take medicine</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kega",
@@ -8084,7 +8676,13 @@
           "answer_text": "けが"
         }
       ],
-      "furigana": "怪[け]我[が]"
+      "furigana": "怪[け]我[が]",
+      "meaning_mnemonic": "A <kanji form=\"怪\">mysterious</kanji> shape swings out of the dark and catches the one <kanji form=\"我\">self</kanji> you were busy minding. Whatever it leaves on you afterward, a gash or a sprain or a spreading bruise, is an <vocabulary form=\"怪我\">injury</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kegasuru",
@@ -8105,7 +8703,13 @@
           "answer_text": "けがする"
         }
       ],
-      "furigana": "怪[け]我[が]する"
+      "furigana": "怪[け]我[が]する",
+      "meaning_mnemonic": "When a <kanji form=\"怪\">suspicious</kanji> force blindsides your own <kanji form=\"我\">self</kanji> and something tears or swells with nobody's hand on it, that event is what it means <vocabulary form=\"怪我する\">to get injured</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itamu",
@@ -8126,7 +8730,14 @@
           "answer_text": "いたむ"
         }
       ],
-      "furigana": "痛[いた]む"
+      "furigana": "痛[いた]む",
+      "meaning_mnemonic": "A back tooth starts to throb late at night with nobody near it and nothing pressing on it. When a part of you sends up that steady, unasked-for pain on its own, it has begun <vocabulary form=\"痛む\">to hurt / ache</vocabulary>.",
+      "reading_mnemonic": "You already know 痛 is 「いた」 from 痛い, so for a sore knee <vocabulary form=\"痛む\">to hurt / ache</vocabulary> on its own is <reading>いたむ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "me-ga-warui",
@@ -8147,7 +8758,13 @@
           "answer_text": "めがわるい"
         }
       ],
-      "furigana": "目[め]が悪[わる]い"
+      "furigana": "目[め]が悪[わる]い",
+      "meaning_mnemonic": "When the <kanji form=\"目\">eye</kanji> itself has gone <kanji form=\"悪\">bad</kanji> and anything past your own arm is a blur, that is <vocabulary form=\"目が悪い\">to have poor eyesight</vocabulary>. The final い is the ending that makes it an adjective.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mimi-ga-tooi",
@@ -8168,7 +8785,13 @@
           "answer_text": "みみがとおい"
         }
       ],
-      "furigana": "耳[みみ]が遠[とお]い"
+      "furigana": "耳[みみ]が遠[とお]い",
+      "meaning_mnemonic": "Your <kanji form=\"耳\">ear</kanji> still works, but every sound now has to cross a long <kanji form=\"遠\">distant</kanji> road to reach it and arrives faint. Sound landing that far off is <vocabulary form=\"耳が遠い\">to be hard of hearing</vocabulary>, and the closing い marks it as an adjective.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "supootsuman",
@@ -8189,7 +8812,13 @@
           "answer_text": "スポーツマン"
         }
       ],
-      "furigana": "スポーツマン"
+      "furigana": "スポーツマン",
+      "meaning_mnemonic": "<reading>スポーツマン</reading> is just the English words <reading>sports man</reading> pushed together, and a man whose whole week is training and games is an <vocabulary form=\"スポーツマン\">athlete</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "undou-suru",
@@ -8210,7 +8839,13 @@
           "answer_text": "うんどうする"
         }
       ],
-      "furigana": "運[うん]動[どう]する"
+      "furigana": "運[うん]動[どう]する",
+      "meaning_mnemonic": "What it means <vocabulary form=\"運動する\">to exercise</vocabulary> is to <kanji form=\"運\">carry</kanji> your own body through enough hard <kanji form=\"動\">motion</kanji> to leave you breathless.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yakyuu",
@@ -8231,7 +8866,13 @@
           "answer_text": "やきゅう"
         }
       ],
-      "furigana": "野[や]球[きゅう]"
+      "furigana": "野[や]球[きゅう]",
+      "meaning_mnemonic": "Take the open <kanji form=\"野\">field</kanji> the village never fenced, add one hard <kanji form=\"球\">ball</kanji> and nine leather gloves, and the game they play out there is <vocabulary form=\"野球\">baseball</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sakkaa",
@@ -8252,7 +8893,13 @@
           "answer_text": "サッカー"
         }
       ],
-      "furigana": "サッカー"
+      "furigana": "サッカー",
+      "meaning_mnemonic": "A striker drops one shoulder and the goalkeeper lunges the wrong way like a <reading>sucker</reading>. Ninety minutes of fooling the last defender like that is <vocabulary form=\"サッカー\">soccer</vocabulary>, <reading>サッカー</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "basukettobooru",
@@ -8273,7 +8920,13 @@
           "answer_text": "バスケットボール"
         }
       ],
-      "furigana": "バスケットボール"
+      "furigana": "バスケットボール",
+      "meaning_mnemonic": "A street <reading>busker</reading> gives up on coins. He nails his hat to a lamppost, lobs a rubber ball through it again and again, and that hooped, hand-thrown game is <vocabulary form=\"バスケットボール\">basketball</vocabulary>, <reading>バスケットボール</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tenisu",
@@ -8294,7 +8947,13 @@
           "answer_text": "テニス"
         }
       ],
-      "furigana": "テニス"
+      "furigana": "テニス",
+      "meaning_mnemonic": "Two <reading>tenants</reading> on either side of a net argue over every bounce by whacking a ball back across it. That racket-swung quarrel is <vocabulary form=\"テニス\">tennis</vocabulary>, <reading>テニス</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gorufu",
@@ -8315,7 +8974,13 @@
           "answer_text": "ゴルフ"
         }
       ],
-      "furigana": "ゴルフ"
+      "furigana": "ゴルフ",
+      "meaning_mnemonic": "A ball sails off the tee, clears a wide sandy <reading>gulf</reading> of a bunker, and drops beside a little flag. Walking eighteen of those crossings in an afternoon is <vocabulary form=\"ゴルフ\">golf</vocabulary>, <reading>ゴルフ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suiei",
@@ -8336,7 +9001,13 @@
           "answer_text": "すいえい"
         }
       ],
-      "furigana": "水[すい]泳[えい]"
+      "furigana": "水[すい]泳[えい]",
+      "meaning_mnemonic": "A lane of nothing but <kanji form=\"水\">water</kanji>, and you crossing it end to end under your own power with just arms and legs, is what <vocabulary form=\"水泳\">swimming</vocabulary> is.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sukii",
@@ -8357,7 +9028,13 @@
           "answer_text": "スキー"
         }
       ],
-      "furigana": "スキー"
+      "furigana": "スキー",
+      "meaning_mnemonic": "Strap two long boards to your boots, point the tips downhill, and let them run over the snow with a <reading>squeaky</reading> hiss all the way to the bottom. That boarded slide is <vocabulary form=\"スキー\">skiing</vocabulary>, <reading>スキー</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dansu",
@@ -8378,7 +9055,13 @@
           "answer_text": "ダンス"
         }
       ],
-      "furigana": "ダンス"
+      "furigana": "ダンス",
+      "meaning_mnemonic": "A <reading>dunce</reading> sent to stand in the corner gets bored and starts swaying, then spinning, then throwing shapes to music only he can hear. Moving your body in time like that is <vocabulary form=\"ダンス\">dance</vocabulary>, <reading>ダンス</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gakki",
@@ -8399,7 +9082,13 @@
           "answer_text": "がっき"
         }
       ],
-      "furigana": "楽[がっ]器[き]"
+      "furigana": "楽[がっ]器[き]",
+      "meaning_mnemonic": "Take a hollow <kanji form=\"器\">vessel</kanji>, a stretched drum or a boxed rack of strings, and build it so that striking it gives off <kanji form=\"楽\">music</kanji>. Any container made for that is a <vocabulary form=\"楽器\">musical instrument</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "piano",
@@ -8420,7 +9109,13 @@
           "answer_text": "ピアノ"
         }
       ],
-      "furigana": "ピアノ"
+      "furigana": "ピアノ",
+      "meaning_mnemonic": "A concert announcer rolls the name of the big lacquered keyboard out slow and grand, <reading>pee-AH-no</reading>, and the lid lifts back off eighty-eight keys. That strung box of felt hammers is a <vocabulary form=\"ピアノ\">piano</vocabulary>, <reading>ピアノ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gitaa",
@@ -8441,7 +9136,13 @@
           "answer_text": "ギター"
         }
       ],
-      "furigana": "ギター"
+      "furigana": "ギター",
+      "meaning_mnemonic": "The six strings stretched over the flat wooden box are so sticky they might as well be strung with <reading>gee, tar</reading>, yet you still strum them for a tune. That sticky-stringed box is a <vocabulary form=\"ギター\">guitar</vocabulary>, <reading>ギター</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shourai-no-yume",
@@ -8462,7 +9163,13 @@
           "answer_text": "しょうらいのゆめ"
         }
       ],
-      "furigana": "将[しょう]来[らい]の夢[ゆめ]"
+      "furigana": "将[しょう]来[らい]の夢[ゆめ]",
+      "meaning_mnemonic": "The plan a <kanji form=\"将\">general</kanji> lays out for the battles still to <kanji form=\"来\">come</kanji>, years before any of it starts, is what an ordinary person calls a <vocabulary form=\"将来の夢\">future dream</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dokusho",
@@ -8483,7 +9190,13 @@
           "answer_text": "どくしょ"
         }
       ],
-      "furigana": "読[どく]書[しょ]"
+      "furigana": "読[どく]書[しょ]",
+      "meaning_mnemonic": "Sitting down with pages someone else took the trouble to <kanji form=\"書\">write</kanji>, and working through them line by line to <kanji form=\"読\">read</kanji> them, is <vocabulary form=\"読書\">reading (books)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shousetsu",
@@ -8504,7 +9217,13 @@
           "answer_text": "しょうせつ"
         }
       ],
-      "furigana": "小[しょう]説[せつ]"
+      "furigana": "小[しょう]説[せつ]",
+      "meaning_mnemonic": "Take one writer's <kanji form=\"小\">small</kanji>, made-up <kanji form=\"説\">explanation</kanji> of how some invented life might go, then stretch it across three hundred pages. That padded little theory is a <vocabulary form=\"小説\">novel</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "manga",
@@ -8525,7 +9244,13 @@
           "answer_text": "まんが"
         }
       ],
-      "furigana": "漫[まん]画[が]"
+      "furigana": "漫[まん]画[が]",
+      "meaning_mnemonic": "Draw one loose, <kanji form=\"漫\">unrestrained</kanji> <kanji form=\"画\">picture</kanji>, then the next, then a hundred more in a row, and bind the stack. That runaway sequence of drawings is <vocabulary form=\"漫画\">comic / manga</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "geemu",
@@ -8546,7 +9271,13 @@
           "answer_text": "ゲーム"
         }
       ],
-      "furigana": "ゲーム"
+      "furigana": "ゲーム",
+      "meaning_mnemonic": "Kids too broke for a real board split one stick of <reading>gum</reading> as the prize and make up rules for winning it on the spot. Any contest run like that is a <vocabulary form=\"ゲーム\">game</vocabulary>, <reading>ゲーム</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsuri",
@@ -8567,7 +9298,14 @@
           "answer_text": "つり"
         }
       ],
-      "furigana": "釣[つ]り"
+      "furigana": "釣[つ]り",
+      "meaning_mnemonic": "Sit on the riverbank, bait a hook, and drop it on a long line into the water. Waiting like that for something below to pull is <vocabulary form=\"釣り\">fishing</vocabulary>.",
+      "reading_mnemonic": "You already met this sound as 「つ」 in お釣り, the change handed back at a shop, so the word for <vocabulary form=\"釣り\">fishing</vocabulary> is just <reading>つり</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "toranpu",
@@ -8588,7 +9326,13 @@
           "answer_text": "トランプ"
         }
       ],
-      "furigana": "トランプ"
+      "furigana": "トランプ",
+      "meaning_mnemonic": "In a game of whist the one suit that beats all the others is the <reading>trump</reading>, and the full deck you deal it from is <vocabulary form=\"トランプ\">playing cards</vocabulary>, <reading>トランプ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shougi",
@@ -8609,7 +9353,13 @@
           "answer_text": "しょうぎ"
         }
       ],
-      "furigana": "将[しょう]棋[ぎ]"
+      "furigana": "将[しょう]棋[ぎ]",
+      "meaning_mnemonic": "A board game where you push wooden <kanji form=\"将\">commander</kanji>s and their foot soldiers across a grid, hunting the enemy leader until he has no move left, is <vocabulary form=\"将棋\">shogi (chess)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konpyuutaa",
@@ -8630,7 +9380,13 @@
           "answer_text": "コンピューター"
         }
       ],
-      "furigana": "コンピューター"
+      "furigana": "コンピューター",
+      "meaning_mnemonic": "A grey desk machine that grinds through a million sums a second is a thing that <reading>computes</reading>, and the flat everyday name for it is <vocabulary form=\"コンピューター\">computer</vocabulary>, <reading>コンピューター</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "intaanetto",
@@ -8651,7 +9407,13 @@
           "answer_text": "インターネット"
         }
       ],
-      "furigana": "インターネット"
+      "furigana": "インターネット",
+      "meaning_mnemonic": "You <reading>enter a net</reading> stretched over the whole planet, and every fact anyone ever wrote hangs caught in its mesh, in reach from wherever you stand. That worldwide catch is the <vocabulary form=\"インターネット\">internet</vocabulary>, and its name is the sound of stepping in: <reading>インターネット</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "meeru",
@@ -8672,7 +9434,13 @@
           "answer_text": "メール"
         }
       ],
-      "furigana": "メール"
+      "furigana": "メール",
+      "meaning_mnemonic": "You post a paper letter through a slot and it thumps onto a desk across the planet before the flap has swung back. <reading>Mail</reading> that fast is <vocabulary form=\"メール\">email</vocabulary>, and the slot clacks out <reading>メール</reading> every time one lands.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saito",
@@ -8693,7 +9461,13 @@
           "answer_text": "サイト"
         }
       ],
-      "furigana": "サイト"
+      "furigana": "サイト",
+      "meaning_mnemonic": "You tap in an address and a whole shop unfolds where your blank screen was, shelves and counter and a visitor book by the door. A <reading>sight</reading> you can step into like that is a <vocabulary form=\"サイト\">website</vocabulary>, and it goes by <reading>サイト</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "apuri",
@@ -8714,7 +9488,13 @@
           "answer_text": "アプリ"
         }
       ],
-      "furigana": "アプリ"
+      "furigana": "アプリ",
+      "meaning_mnemonic": "You press one bright square on the glass and it does exactly one job — counts your steps, nothing else. A small program you <reading>apply</reading> to a single task is an <vocabulary form=\"アプリ\">app</vocabulary>, and every square on that screen is one <reading>アプリ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dengon",
@@ -8735,7 +9515,13 @@
           "answer_text": "でんごん"
         }
       ],
-      "furigana": "伝[でん]言[ごん]"
+      "furigana": "伝[でん]言[ごん]",
+      "meaning_mnemonic": "A <vocabulary form=\"伝言\">message (spoken)</vocabulary> is a run of <kanji form=\"言\">words</kanji> you hand to one person so they can <kanji form=\"伝\">carry it along</kanji> to the next, mouth to mouth, with nothing written down.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "renraku-suru",
@@ -8756,7 +9542,13 @@
           "answer_text": "れんらくする"
         }
       ],
-      "furigana": "連[れん]絡[らく]する"
+      "furigana": "連[れん]絡[らく]する",
+      "meaning_mnemonic": "To <vocabulary form=\"連絡する\">contact</vocabulary> someone is to <kanji form=\"連\">join</kanji> your thread to theirs and <kanji form=\"絡\">coil</kanji> the two ends together, so a tug you give is felt at their end.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gamen",
@@ -8777,7 +9569,13 @@
           "answer_text": "がめん"
         }
       ],
-      "furigana": "画[が]面[めん]"
+      "furigana": "画[が]面[めん]",
+      "meaning_mnemonic": "A <vocabulary form=\"画面\">screen (display)</vocabulary> is the flat <kanji form=\"面\">face</kanji> of the device, and every <kanji form=\"画\">picture</kanji> it shows is painted straight onto that face.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sofuto",
@@ -8798,7 +9596,13 @@
           "answer_text": "ソフト"
         }
       ],
-      "furigana": "ソフト"
+      "furigana": "ソフト",
+      "meaning_mnemonic": "The metal box on your desk is the hard part of the machine; the <reading>soft</reading> part is the lists of instructions inside, which you can rewrite without turning a single screw. That rewritable half is <vocabulary form=\"ソフト\">software</vocabulary>, and you call it <reading>ソフト</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dejikame",
@@ -8819,7 +9623,13 @@
           "answer_text": "デジカメ"
         }
       ],
-      "furigana": "デジカメ"
+      "furigana": "デジカメ",
+      "meaning_mnemonic": "You point it, press once, and the shot is already a grid of numbers on a card — no film, no developing tray. A <reading>digi-cam</reading> that keeps every picture as bare digits is a <vocabulary form=\"デジカメ\">digital camera</vocabulary>, and its name is <reading>デジカメ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "terebi-bangumi",
@@ -8840,7 +9650,13 @@
           "answer_text": "ばんぐみ"
         }
       ],
-      "furigana": "番[ばん]組[ぐみ]"
+      "furigana": "番[ばん]組[ぐみ]",
+      "meaning_mnemonic": "A <vocabulary form=\"番組\">TV program</vocabulary> is a single <kanji form=\"番\">numbered turn</kanji> in the evening's run, <kanji form=\"組\">braided</kanji> between the show before it and the show after so the night plays with no gap.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nyuusu",
@@ -8861,7 +9677,13 @@
           "answer_text": "ニュース"
         }
       ],
-      "furigana": "ニュース"
+      "furigana": "ニュース",
+      "meaning_mnemonic": "The bundle on the counter holds nothing but <reading>new</reading> things — a fire last night, a price that jumped this morning, none of it old yet. A stack of only-just-happened facts is the <vocabulary form=\"ニュース\">news</vocabulary>, and you ask for it as <reading>ニュース</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kiji",
@@ -8882,7 +9704,13 @@
           "answer_text": "きじ"
         }
       ],
-      "furigana": "記[き]事[じ]"
+      "furigana": "記[き]事[じ]",
+      "meaning_mnemonic": "An <vocabulary form=\"記事\">article</vocabulary> is a <kanji form=\"記\">written account</kanji> of exactly one <kanji form=\"事\">matter</kanji>, pinned down so hard it cannot wriggle off the page before you finish reading.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hon-yaku",
@@ -8903,7 +9731,13 @@
           "answer_text": "ほんやく"
         }
       ],
-      "furigana": "翻[ほん]訳[やく]"
+      "furigana": "翻[ほん]訳[やく]",
+      "meaning_mnemonic": "A <vocabulary form=\"翻訳\">translation</vocabulary> is made by taking the foreign page, giving it one full <kanji form=\"翻\">flip</kanji>, and <kanji form=\"訳\">translating</kanji> the side now facing you into words you can read.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiyakusho",
@@ -8924,7 +9758,13 @@
           "answer_text": "しやくしょ"
         }
       ],
-      "furigana": "市[し]役[やく]所[しょ]"
+      "furigana": "市[し]役[やく]所[しょ]",
+      "meaning_mnemonic": "The one <kanji form=\"所\">place</kanji> in the <kanji form=\"市\">city</kanji> where every civic <kanji form=\"役\">duty</kanji> gets handled — a birth registered, a tax paid, a form filed — is the <vocabulary form=\"市役所\">city hall</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "daigakuin",
@@ -8945,7 +9785,13 @@
           "answer_text": "だいがくいん"
         }
       ],
-      "furigana": "大[だい]学[がく]院[いん]"
+      "furigana": "大[だい]学[がく]院[いん]",
+      "meaning_mnemonic": "A <vocabulary form=\"大学院\">graduate school</vocabulary> is the <kanji form=\"院\">institution</kanji> you climb to only after a full degree, where the <kanji form=\"学\">studying</kanji> is a <kanji form=\"大\">big</kanji>ger version of everything you did downstairs.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sotsugyou-suru",
@@ -8966,7 +9812,13 @@
           "answer_text": "そつぎょうする"
         }
       ],
-      "furigana": "卒[そつ]業[ぎょう]する"
+      "furigana": "卒[そつ]業[ぎょう]する",
+      "meaning_mnemonic": "The <kanji form=\"業\">occupation</kanji> of being a student is one nobody lets you quit. It just closes itself down on a fixed day in spring, and on that day you have <vocabulary form=\"卒業する\">graduated</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nyuugaku-suru",
@@ -8987,7 +9839,13 @@
           "answer_text": "にゅうがくする"
         }
       ],
-      "furigana": "入[にゅう]学[がく]する"
+      "furigana": "入[にゅう]学[がく]する",
+      "meaning_mnemonic": "To <vocabulary form=\"入学する\">enter school</vocabulary> is simply to <kanji form=\"入\">enter</kanji> through the gate on your first morning and join the <kanji form=\"学\">learning</kanji> already going on inside.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiken-o-ukeru",
@@ -9008,7 +9866,13 @@
           "answer_text": "しけんをうける"
         }
       ],
-      "furigana": "試[し]験[けん]を受[う]ける"
+      "furigana": "試[し]験[けん]を受[う]ける",
+      "meaning_mnemonic": "To <vocabulary form=\"試験を受ける\">take an exam</vocabulary> is to sit still and <kanji form=\"受\">undergo</kanji> a <kanji form=\"試\">test</kanji> that <kanji form=\"験\">examines</kanji> every corner of what you know, one hard question after the next.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "goukaku-suru",
@@ -9029,7 +9893,13 @@
           "answer_text": "ごうかくする"
         }
       ],
-      "furigana": "合[ごう]格[かく]する"
+      "furigana": "合[ごう]格[かく]する",
+      "meaning_mnemonic": "Either your score <kanji form=\"合\">fits</kanji> the <kanji form=\"格\">rank</kanji> the examiners drew or it falls short. The moment it fits, you have <vocabulary form=\"合格する\">passed (an exam)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fugoukaku",
@@ -9050,7 +9920,13 @@
           "answer_text": "ふごうかく"
         }
       ],
-      "furigana": "不[ふ]合[ごう]格[かく]"
+      "furigana": "不[ふ]合[ごう]格[かく]",
+      "meaning_mnemonic": "Stick a <kanji form=\"不\">negative</kanji> mark in front, and the score that would have <kanji form=\"合\">fit</kanji> the <kanji form=\"格\">rank</kanji> now sits just below the line. That gap is a <vocabulary form=\"不合格\">failing (an exam)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyuuka",
@@ -9071,7 +9947,13 @@
           "answer_text": "きゅうか"
         }
       ],
-      "furigana": "休[きゅう]暇[か]"
+      "furigana": "休[きゅう]暇[か]",
+      "meaning_mnemonic": "Line up a run of <kanji form=\"休\">rest</kanji> days with enough <kanji form=\"暇\">spare time</kanji> stacked behind them to do nothing at all, and the stretch you get away from work is a <vocabulary form=\"休暇\">vacation / leave</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shukkin-suru",
@@ -9092,7 +9974,13 @@
           "answer_text": "しゅっきんする"
         }
       ],
-      "furigana": "出[しゅっ]勤[きん]する"
+      "furigana": "出[しゅっ]勤[きん]する",
+      "meaning_mnemonic": "Each morning you <kanji form=\"出\">exit</kanji> the front door and carry your day's <kanji form=\"勤\">diligence</kanji> to the office, and making that trip is what it means to <vocabulary form=\"出勤する\">go to work</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taikin-suru",
@@ -9113,7 +10001,13 @@
           "answer_text": "たいきんする"
         }
       ],
-      "furigana": "退[たい]勤[きん]する"
+      "furigana": "退[たい]勤[きん]する",
+      "meaning_mnemonic": "Once the day's <kanji form=\"勤\">diligence</kanji> is all spent, you <kanji form=\"退\">withdraw</kanji> from the office and head home, and that quiet exit is what it means to <vocabulary form=\"退勤する\">leave work</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zangyou",
@@ -9134,7 +10028,13 @@
           "answer_text": "ざんぎょう"
         }
       ],
-      "furigana": "残[ざん]業[ぎょう]"
+      "furigana": "残[ざん]業[ぎょう]",
+      "meaning_mnemonic": "The office lights go off but part of the day's <kanji form=\"業\">business</kanji> still <kanji form=\"残\">remains</kanji> on your desk. The extra hour you stay to clear it is <vocabulary form=\"残業\">overtime work</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyuuryou",
@@ -9155,7 +10055,13 @@
           "answer_text": "きゅうりょう"
         }
       ],
-      "furigana": "給[きゅう]料[りょう]"
+      "furigana": "給[きゅう]料[りょう]",
+      "meaning_mnemonic": "Once a month your <kanji form=\"料\">fee</kanji> for showing up arrives, paid to you by the firm and not by you, and that regular sum is your <vocabulary form=\"給料\">salary</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shain",
@@ -9176,7 +10082,13 @@
           "answer_text": "しゃいん"
         }
       ],
-      "furigana": "社[しゃ]員[いん]"
+      "furigana": "社[しゃ]員[いん]",
+      "meaning_mnemonic": "Put one more <kanji form=\"員\">member</kanji> on a <kanji form=\"社\">company</kanji>'s payroll, paid from its own account, and that person is now a <vocabulary form=\"社員\">company employee</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "buchou",
@@ -9197,7 +10109,13 @@
           "answer_text": "ぶちょう"
         }
       ],
-      "furigana": "部[ぶ]長[ちょう]"
+      "furigana": "部[ぶ]長[ちょう]",
+      "meaning_mnemonic": "A <kanji form=\"長\">leader</kanji> whose reach stops at the edge of one <kanji form=\"部\">section</kanji>, with someone above them running everything else, is a <vocabulary form=\"部長\">department head</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shachou",
@@ -9218,7 +10136,13 @@
           "answer_text": "しゃちょう"
         }
       ],
-      "furigana": "社[しゃ]長[ちょう]"
+      "furigana": "社[しゃ]長[ちょう]",
+      "meaning_mnemonic": "Follow the chain of command in a <kanji form=\"社\">company</kanji> all the way up to the one <kanji form=\"長\">leader</kanji> with nobody above them, and that person is the <vocabulary form=\"社長\">company president</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doryoku-suru",
@@ -9239,7 +10163,13 @@
           "answer_text": "どりょくする"
         }
       ],
-      "furigana": "努[ど]力[りょく]する"
+      "furigana": "努[ど]力[りょく]する",
+      "meaning_mnemonic": "Driving every scrap of your <kanji form=\"力\">strength</kanji> into a hard task when nobody is making you do it is what it means to <vocabulary form=\"努力する\">make an effort</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seikou-suru",
@@ -9260,7 +10190,13 @@
           "answer_text": "せいこうする"
         }
       ],
-      "furigana": "成[せい]功[こう]する"
+      "furigana": "成[せい]功[こう]する",
+      "meaning_mnemonic": "Effort that finally <kanji form=\"成\">turns into</kanji> a solid <kanji form=\"功\">achievement</kanji>, a result you can point at, is what it means to <vocabulary form=\"成功する\">succeed</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shippai-suru",
@@ -9281,7 +10217,13 @@
           "answer_text": "しっぱいする"
         }
       ],
-      "furigana": "失[しっ]敗[ぱい]する"
+      "furigana": "失[しっ]敗[ぱい]する",
+      "meaning_mnemonic": "When a plan ends and all it has produced is <kanji form=\"失\">error</kanji>, with no gain left standing, that is what it means to <vocabulary form=\"失敗する\">fail</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mokuhyou",
@@ -9302,7 +10244,13 @@
           "answer_text": "もくひょう"
         }
       ],
-      "furigana": "目[もく]標[ひょう]"
+      "furigana": "目[もく]標[ひょう]",
+      "meaning_mnemonic": "The <kanji form=\"標\">signpost</kanji> far down the road that you keep your <kanji form=\"目\">eye</kanji> fixed on as you walk is your <vocabulary form=\"目標\">goal / target</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keikaku",
@@ -9323,7 +10271,13 @@
           "answer_text": "けいかく"
         }
       ],
-      "furigana": "計[けい]画[かく]"
+      "furigana": "計[けい]画[かく]",
+      "meaning_mnemonic": "A <kanji form=\"計\">plot</kanji> you have only worked out in your head turns into a <vocabulary form=\"計画\">plan</vocabulary> the moment you lay it out in clear <kanji form=\"画\">brush-strokes</kanji> on paper.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "setsumei",
@@ -9345,11 +10299,10 @@
         }
       ],
       "furigana": "説[せつ]明[めい]",
-      "meaning_mnemonic": "Grandma Kane corners you over the empty offering plate. You stall until dawn's <kanji>bright</kanji> floods both shrine windows at once, sun in one pane, moon still pale in the other, till the courtyard glows so hard the cats squint. In that light your excuse turns readable, laid out plain — an <kanji>explanation</kanji> you never meant to give.",
-      "reading_mnemonic": "説（せつ）＋明（めい）read straight through give <reading>せつめい</reading>, the explanation laid out plain.",
+      "meaning_mnemonic": "Take a rough <kanji form=\"説\">theory</kanji> and make every step of it <kanji form=\"明\">bright</kanji> enough for anyone to follow, and what you have handed them is an <vocabulary form=\"説明\">explanation</vocabulary>.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "draft"
       }
     },
@@ -9372,7 +10325,14 @@
           "answer_text": "とりひきさき"
         }
       ],
-      "furigana": "取[とり]引[ひき]先[さき]"
+      "furigana": "取[とり]引[ひき]先[さき]",
+      "meaning_mnemonic": "The outside firm you <kanji form=\"取\">take</kanji> orders from and <kanji form=\"引\">pull</kanji> deals back and forth with, always one step <kanji form=\"先\">ahead</kanji> of you along the trade line, is your <vocabulary form=\"取引先\">business partner/client</vocabulary>.",
+      "reading_mnemonic": "Toto the door-to-door turtle trips on a shop's step and <reading>tears a hockey sack</reading> of samples over their floor. They forgive him and reorder for years, so that shop stays Toto's loyal <vocabulary form=\"取引先\">business partner/client</vocabulary>, his 「<reading>とりひきさき</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "uriage",
@@ -9393,7 +10353,14 @@
           "answer_text": "うりあげ"
         }
       ],
-      "furigana": "売[うり]上[あげ]"
+      "furigana": "売[うり]上[あげ]",
+      "meaning_mnemonic": "Each time you <kanji form=\"売\">sell</kanji> something the price adds <kanji form=\"上\">up</kanji> onto the day's running total, and that whole pile of takings is the <vocabulary form=\"売上\">sales (revenue)</vocabulary>.",
+      "reading_mnemonic": "Uri's fruit stall makes all its money through one till, so she reads that machine like <reading>a gauge</reading> of the whole month. The total it rings up is the stall's <vocabulary form=\"売上\">sales (revenue)</vocabulary>, the figure she means when she says 「<reading>うりあげ</reading>」.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "rieki",
@@ -9414,7 +10381,13 @@
           "answer_text": "りえき"
         }
       ],
-      "furigana": "利[り]益[えき]"
+      "furigana": "利[り]益[えき]",
+      "meaning_mnemonic": "After every bill is paid and the wages are out the door, the money still sitting in the drawer that the owner keeps for good is <vocabulary form=\"利益\">profit</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "son",
@@ -9435,7 +10408,13 @@
           "answer_text": "そん"
         }
       ],
-      "furigana": "損[そん]"
+      "furigana": "損[そん]",
+      "meaning_mnemonic": "Sell something for less than it cost you and the gap you are left short is a <vocabulary form=\"損\">loss (financial)</vocabulary>. It is a な adjective, so な comes before the noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yosan",
@@ -9456,7 +10435,13 @@
           "answer_text": "よさん"
         }
       ],
-      "furigana": "予[よ]算[さん]"
+      "furigana": "予[よ]算[さん]",
+      "meaning_mnemonic": "You <kanji form=\"算\">calculate</kanji> <kanji form=\"予\">beforehand</kanji> the exact yen a project is allowed to spend all year, and that fixed ceiling is its <vocabulary form=\"予算\">budget</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keihi",
@@ -9477,7 +10462,13 @@
           "answer_text": "けいひ"
         }
       ],
-      "furigana": "経[けい]費[ひ]"
+      "furigana": "経[けい]費[ひ]",
+      "meaning_mnemonic": "Every yen the business earns must first <kanji form=\"経\">pass through</kanji> a line of costs, rent and power and supplies, and the total it loses on the way is its <vocabulary form=\"経費\">expenses</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keizai",
@@ -9499,11 +10490,10 @@
         }
       ],
       "furigana": "経[けい]済[ざい]",
-      "meaning_mnemonic": "In the temple's back room, the loom keeps working: thread after thread <kanji>passes through</kanji> the frame while the monk drones on. What is threaded today is not cloth but coins, spooled from house to market to house again. That endless circuit of coin passing through the village is the economy.",
-      "reading_mnemonic": "経（けい）＋済（ざい）read straight through give <reading>けいざい</reading>, the thread of coin passing through the whole economy.",
+      "meaning_mnemonic": "Track how money <kanji form=\"経\">passes through</kanji> every shop, wage and loan until each debt is <kanji form=\"済\">settle</kanji>d, and that whole churn of payments is a country's <vocabulary form=\"経済\">economy</vocabulary>.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "draft"
       }
     },
@@ -9526,7 +10516,14 @@
           "answer_text": "とりひき"
         }
       ],
-      "furigana": "取[とり]引[ひき]"
+      "furigana": "取[とり]引[ひき]",
+      "meaning_mnemonic": "Every time a shopkeeper lets you <kanji form=\"引\">pull</kanji> goods across the counter and <kanji form=\"取\">take</kanji> them while your cash slides the other way, that swap is a <vocabulary form=\"取引\">transaction</vocabulary>.",
+      "reading_mnemonic": "Toto the door-to-door turtle settles every <vocabulary form=\"取引\">transaction</vocabulary> with a quick round of <reading>Tori hockey</reading>, whacking a bottle cap across the counter to the buyer. Win or lose, the deal is closed, and that game is <reading>とりひき</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shorui-teishutsu",
@@ -9546,7 +10543,13 @@
           "answer_text": "しょるいていしゅつ"
         }
       ],
-      "furigana": "書[しょ]類[るい]提[てい]出[しゅつ]"
+      "furigana": "書[しょ]類[るい]提[てい]出[しゅつ]",
+      "meaning_mnemonic": "Gather the <kanji form=\"書\">write</kanji>ten sheets of every <kanji form=\"類\">kind</kanji> into one folder. <kanji form=\"提\">Carry</kanji> that folder in hand and <kanji form=\"出\">exit</kanji> to drop it at the front desk, and you have done the <vocabulary form=\"書類提出\">document submission</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaigou",
@@ -9567,7 +10570,13 @@
           "answer_text": "かいごう"
         }
       ],
-      "furigana": "会[かい]合[ごう]"
+      "furigana": "会[かい]合[ごう]",
+      "meaning_mnemonic": "When enough people <kanji form=\"会\">meet</kanji> in one room that the chairs and the heads finally <kanji form=\"合\">fit</kanji> the same count, that filled room is a <vocabulary form=\"会合\">gathering</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shusseki-suru",
@@ -9588,7 +10597,13 @@
           "answer_text": "しゅっせきする"
         }
       ],
-      "furigana": "出[しゅっ]席[せき]する"
+      "furigana": "出[しゅっ]席[せき]する",
+      "meaning_mnemonic": "When you <kanji form=\"出\">leave</kanji> home and go fill your own <kanji form=\"席\">seat</kanji> in the lecture hall, you <vocabulary form=\"出席する\">attend</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kesseki-suru",
@@ -9609,7 +10624,13 @@
           "answer_text": "けっせきする"
         }
       ],
-      "furigana": "欠[けっ]席[せき]する"
+      "furigana": "欠[けっ]席[せき]する",
+      "meaning_mnemonic": "When your <kanji form=\"席\">seat</kanji> on the team bench shows a <kanji form=\"欠\">gap</kanji> where you should be sitting, you <vocabulary form=\"欠席する\">are absent</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chikoku-suru",
@@ -9630,7 +10651,13 @@
           "answer_text": "ちこくする"
         }
       ],
-      "furigana": "遅[ち]刻[こく]する"
+      "furigana": "遅[ち]刻[こく]する",
+      "meaning_mnemonic": "When enough thin slices have been <kanji form=\"刻\">cut</kanji> off the front of your morning, the event has already started without you, and you are <vocabulary form=\"遅刻する\">late</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "teikyou-suru",
@@ -9651,7 +10678,13 @@
           "answer_text": "ていきょうする"
         }
       ],
-      "furigana": "提[てい]供[きょう]する"
+      "furigana": "提[てい]供[きょう]する",
+      "meaning_mnemonic": "You <kanji form=\"提\">carry</kanji> a tray of samples to a customer in your hands and <kanji form=\"供\">offer</kanji> each one across to them; passing goods to someone like that is to <vocabulary form=\"提供する\">provide</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyouryoku-suru",
@@ -9672,7 +10705,13 @@
           "answer_text": "きょうりょくする"
         }
       ],
-      "furigana": "協[きょう]力[りょく]する"
+      "furigana": "協[きょう]力[りょく]する",
+      "meaning_mnemonic": "When several people aim their <kanji form=\"力\">strength</kanji> at the same task and merge it into one shared push, that <kanji form=\"協\">cooperation</kanji> is what it means to <vocabulary form=\"協力する\">cooperate</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sanka-suru",
@@ -9693,7 +10732,13 @@
           "answer_text": "さんかする"
         }
       ],
-      "furigana": "参[さん]加[か]する"
+      "furigana": "参[さん]加[か]する",
+      "meaning_mnemonic": "Just <kanji form=\"参\">coming</kanji> along to the event is only half of it; once your name is <kanji form=\"加\">add</kanji>ed to the sign-in sheet, you <vocabulary form=\"参加する\">participate</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saikin",
@@ -9714,7 +10759,13 @@
           "answer_text": "さいきん"
         }
       ],
-      "furigana": "最[さい]近[きん]"
+      "furigana": "最[さい]近[きん]",
+      "meaning_mnemonic": "Out of all past time, the stretch sitting <kanji form=\"近\">near</kanji>est to right now is the <kanji form=\"最\">most</kanji> current one. Whatever happened inside it happened <vocabulary form=\"最近\">recently</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shourai",
@@ -9735,7 +10786,13 @@
           "answer_text": "しょうらい"
         }
       ],
-      "furigana": "将[しょう]来[らい]"
+      "furigana": "将[しょう]来[らい]",
+      "meaning_mnemonic": "A parade <kanji form=\"将\">commander</kanji> keeps shouting which unit will <kanji form=\"来\">come</kanji> up the road next. Every unit that has not yet marched past you is still <vocabulary form=\"将来\">the future</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "genzai",
@@ -9756,7 +10813,13 @@
           "answer_text": "げんざい"
         }
       ],
-      "furigana": "現[げん]在[ざい]"
+      "furigana": "現[げん]在[ざい]",
+      "meaning_mnemonic": "The water that flowed past the bridge is gone, and the water upstream has not arrived. Only the stretch <kanji form=\"在\">exist</kanji>ing right under you now is real, and that is <vocabulary form=\"現在\">the present</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "touji",
@@ -9777,7 +10840,13 @@
           "answer_text": "とうじ"
         }
       ],
-      "furigana": "当[とう]時[じ]"
+      "furigana": "当[とう]時[じ]",
+      "meaning_mnemonic": "Point back at a past event and name the exact <kanji form=\"時\">hour</kanji> it happened. The moment your finger <kanji form=\"当\">hit</kanji>s is what people call <vocabulary form=\"当時\">at that time</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "izen",
@@ -9798,7 +10867,13 @@
           "answer_text": "いぜん"
         }
       ],
-      "furigana": "以[い]前[ぜん]"
+      "furigana": "以[い]前[ぜん]",
+      "meaning_mnemonic": "A museum lets you place any memory on its long wall timeline, measured only <kanji form=\"以\">by means of</kanji> one brass marker peg. Everything you pin in <kanji form=\"前\">front</kanji> of that peg counts as <vocabulary form=\"以前\">before</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "igo",
@@ -9819,7 +10894,13 @@
           "answer_text": "いご"
         }
       ],
-      "furigana": "以[い]後[ご]"
+      "furigana": "以[い]後[ご]",
+      "meaning_mnemonic": "A phone calendar sorts every date <kanji form=\"以\">by means of</kanji> the day you first opened the app. Each date that lands <kanji form=\"後\">behind</kanji> that one is <vocabulary form=\"以後\">from now on</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saichuu",
@@ -9840,7 +10921,13 @@
           "answer_text": "さいちゅう"
         }
       ],
-      "furigana": "最[さい]中[ちゅう]"
+      "furigana": "最[さい]中[ちゅう]",
+      "meaning_mnemonic": "When an action reaches its <kanji form=\"最\">most</kanji> intense point, you are as deep <kanji form=\"中\">inside</kanji> it as you can get, right <vocabulary form=\"最中\">in the middle of</vocabulary> it.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shibaraku",
@@ -9861,7 +10948,13 @@
           "answer_text": "しばらく"
         }
       ],
-      "furigana": "しばらく"
+      "furigana": "しばらく",
+      "meaning_mnemonic": "A <reading>Shiba</reading> flops onto the warm shrine step, decides to <reading>relax</reading>, and does not budge again for a good long stretch. That nap is how long <reading>しばらく</reading> lasts, and it means <vocabulary form=\"しばらく\">for a while</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ichiji",
@@ -9882,7 +10975,13 @@
           "answer_text": "いちじ"
         }
       ],
-      "furigana": "一[いち]時[じ]"
+      "furigana": "一[いち]時[じ]",
+      "meaning_mnemonic": "Pause the meeting for <kanji form=\"一\">one</kanji> turn of the <kanji form=\"時\">hour</kanji> hand, then start it again. Stopping for just that long means you stopped it <vocabulary form=\"一時\">temporarily</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "touzen",
@@ -9903,7 +11002,13 @@
           "answer_text": "とうぜん"
         }
       ],
-      "furigana": "当[とう]然[ぜん]"
+      "furigana": "当[とう]然[ぜん]",
+      "meaning_mnemonic": "An answer that <kanji form=\"当\">hit</kanji>s exactly what everyone already expected needs no defending; it is <vocabulary form=\"当然\">naturally</vocabulary> right. Being a な adjective, it takes な before the noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saigo-ni",
@@ -9923,7 +11028,13 @@
           "answer_text": "さいごに"
         }
       ],
-      "furigana": "最[さい]後[ご]に"
+      "furigana": "最[さい]後[ご]に",
+      "meaning_mnemonic": "Take <kanji form=\"後\">behind</kanji> and push it to the <kanji form=\"最\">utmost</kanji>, the place the trailing foot never catches up from. Acting from that spot, after everyone else has gone, is <vocabulary form=\"最後に\">finally / lastly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mazu-hajime",
@@ -9943,7 +11054,14 @@
           "answer_text": "まずはじめに"
         }
       ],
-      "furigana": "まず初[はじ]めに"
+      "furigana": "まず初[はじ]めに",
+      "meaning_mnemonic": "On any list of things to do there is a step that comes before every other step, ahead of even sitting down. That very first move, made before anything else, is <vocabulary form=\"まず初めに\">first of all</vocabulary>.",
+      "reading_mnemonic": "The 初 here is the same 「はじ」 you already learned in 初め, so <vocabulary form=\"まず初めに\">first of all</vocabulary> is just <reading>まずはじめに</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsuini",
@@ -9964,7 +11082,13 @@
           "answer_text": "ついに"
         }
       ],
-      "furigana": "ついに"
+      "furigana": "ついに",
+      "meaning_mnemonic": "Six hours up the mountain trail, the hiker reaches the top and drops <reading>to a knee</reading> by the vending machine. He is <reading>ついに</reading> done, and arriving after everything like that is <vocabulary form=\"ついに\">finally / at last</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yagate",
@@ -9985,7 +11109,13 @@
           "answer_text": "やがて"
         }
       ],
-      "furigana": "やがて"
+      "furigana": "やがて",
+      "meaning_mnemonic": "An hour down the lane, <reading>a gate</reading> comes into view up ahead. Reaching it will happen <reading>やがて</reading>, which is <vocabulary form=\"やがて\">soon / before long</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sassoku",
@@ -10006,7 +11136,13 @@
           "answer_text": "さっそく"
         }
       ],
-      "furigana": "早[さっ]速[そく]"
+      "furigana": "早[さっ]速[そく]",
+      "meaning_mnemonic": "Set <kanji form=\"早\">early</kanji> next to <kanji form=\"速\">quick</kanji> and you get fast piled on fast, the sun barely over the hills and you are already moving. Doing a thing that far ahead of the clock is doing it <vocabulary form=\"早速\">immediately / promptly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tokuni",
@@ -10027,7 +11163,13 @@
           "answer_text": "とくに"
         }
       ],
-      "furigana": "特[とく]に"
+      "furigana": "特[とく]に",
+      "meaning_mnemonic": "Pick one thing out of the herd and treat it as <kanji form=\"特\">special</kanji>, the way the temple keeps a single cow that is never for eating. Marking that one out from all the rest is <vocabulary form=\"特に\">especially</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hotondo",
@@ -10048,7 +11190,13 @@
           "answer_text": "ほとんど"
         }
       ],
-      "furigana": "ほとんど"
+      "furigana": "ほとんど",
+      "meaning_mnemonic": "Pull the bun from the steamer basket and it is <reading>hot on dough</reading> right around the outside, but the middle is still raw. Cooked that near to done is <reading>ほとんど</reading>, <vocabulary form=\"ほとんど\">almost / mostly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wazawaza",
@@ -10069,7 +11217,13 @@
           "answer_text": "わざわざ"
         }
       ],
-      "furigana": "わざわざ"
+      "furigana": "わざわざ",
+      "meaning_mnemonic": "Sei steps off the fairground <reading>waltzer, waltzer</reading> and walks straight back to the end of the queue for another turn. Riding the very same thing twice on purpose is <reading>わざわざ</reading>, <vocabulary form=\"わざわざ\">specially / deliberately</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yahari",
@@ -10090,7 +11244,13 @@
           "answer_text": "やはり"
         }
       ],
-      "furigana": "やはり"
+      "furigana": "やはり",
+      "meaning_mnemonic": "The offering bowl at Grandma Kane's shrine is tipped over again, and <reading>yeah, Harry</reading> the fat tom cat is sitting right beside it. It went the way everyone knew it would, and that is <reading>やはり</reading>, <vocabulary form=\"やはり\">as expected / after all</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yappari",
@@ -10111,7 +11271,13 @@
           "answer_text": "やっぱり"
         }
       ],
-      "furigana": "やっぱり"
+      "furigana": "やっぱり",
+      "meaning_mnemonic": "The dog tied outside Koichi's konbini barks the second the door chime sounds, a flat <reading>yap already</reading>, right on cue like every other day. Calling that no-surprise-there in a casual voice is <reading>やっぱり</reading>, <vocabulary form=\"やっぱり\">as expected (casual)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanarazu",
@@ -10132,7 +11298,14 @@
           "answer_text": "かならず"
         }
       ],
-      "furigana": "必[かなら]ず"
+      "furigana": "必[かなら]ず",
+      "meaning_mnemonic": "Dodging a slash aimed at your heart is not a choice your body makes. It happens every time because the move is <kanji form=\"必\">necessary</kanji>, and something that locked-in happens <vocabulary form=\"必ず\">definitely / without fail</vocabulary>.",
+      "reading_mnemonic": "Kana the courier has never missed one delivery, in storms or on holidays. The way <reading>Kana rushes</reading> it out every single time is <reading>かならず</reading>, <vocabulary form=\"必ず\">definitely / without fail</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zehi",
@@ -10153,7 +11326,13 @@
           "answer_text": "ぜひ"
         }
       ],
-      "furigana": "ぜひ"
+      "furigana": "ぜひ",
+      "meaning_mnemonic": "You hesitate on the step, and the innkeeper throws the door wide with a bright <reading>Zee, hi</reading> and waves you straight in. That whole-hearted come-right-in is <reading>ぜひ</reading>, <vocabulary form=\"ぜひ\">by all means</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "moshi",
@@ -10174,7 +11353,13 @@
           "answer_text": "もし"
         }
       ],
-      "furigana": "もし"
+      "furigana": "もし",
+      "meaning_mnemonic": "Rain has turned the riverbank path to <reading>mushy</reading> mud. The guide says that <reading>もし</reading> your boots sink in you should turn back, the word that sets up a plain <vocabulary form=\"もし\">if (hypothetical)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tatoeba",
@@ -10195,7 +11380,14 @@
           "answer_text": "たとえば"
         }
       ],
-      "furigana": "例[たと]えば"
+      "furigana": "例[たと]えば",
+      "meaning_mnemonic": "To pin down what 'a bird' means you hold up one sparrow and one crow and let those two stand in for the whole idea. Reaching for a specific case to carry the general one is <vocabulary form=\"例えば\">for example</vocabulary>.",
+      "reading_mnemonic": "The artist at the <reading>tattoo bar</reading> never describes a style in words. She flips to one drawing, says <reading>たとえば</reading> this dragon, and lets that single sample do the defining, which is <vocabulary form=\"例えば\">for example</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsumari",
@@ -10216,7 +11408,13 @@
           "answer_text": "つまり"
         }
       ],
-      "furigana": "つまり"
+      "furigana": "つまり",
+      "meaning_mnemonic": "At the end of class the teacher wipes the board and writes one short line under everything that was there. Boiling the whole hour down to that single <reading>summary</reading> is <reading>つまり</reading>, <vocabulary form=\"つまり\">in other words</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sara-ni",
@@ -10237,7 +11435,13 @@
           "answer_text": "さらに"
         }
       ],
-      "furigana": "さらに"
+      "furigana": "さらに",
+      "meaning_mnemonic": "On your first morning the manager lists the small perks, then adds one more item on top, the <reading>salary</reading>. Stacking that extra point onto what was already said is <reading>さらに</reading>, <vocabulary form=\"さらに\">furthermore</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sono-ue",
@@ -10258,7 +11462,14 @@
           "answer_text": "そのうえ"
         }
       ],
-      "furigana": "その上[うえ]"
+      "furigana": "その上[うえ]",
+      "meaning_mnemonic": "Put the new point <kanji form=\"上\">above</kanji> the one you just made, one slab laid on top of another. That stacking of a second thing over the first is <vocabulary form=\"その上\">moreover</vocabulary>.",
+      "reading_mnemonic": "On its own 上 is read 「うえ」, the sound you already know, so <vocabulary form=\"その上\">moreover</vocabulary> simply ends that way and is <reading>そのうえ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tokorode",
@@ -10279,7 +11490,13 @@
           "answer_text": "ところで"
         }
       ],
-      "furigana": "ところで"
+      "furigana": "ところで",
+      "meaning_mnemonic": "Mid-conversation on the highway, the driver <reading>took a road</reading> off to the right with no warning and opened a whole new subject. Swerving the talk onto another route is <reading>ところで</reading>, <vocabulary form=\"ところで\">by the way</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kitto",
@@ -10300,7 +11517,13 @@
           "answer_text": "きっと"
         }
       ],
-      "furigana": "きっと"
+      "furigana": "きっと",
+      "meaning_mnemonic": "The locksmith lifts one blank off the ring, holds it to the light, and says it is <reading>key to</reading> this lock with no doubt at all. That flat certainty before he has even tried it is <reading>きっと</reading>, <vocabulary form=\"きっと\">surely / certainly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "masaka",
@@ -10321,7 +11544,13 @@
           "answer_text": "まさか"
         }
       ],
-      "furigana": "まさか"
+      "furigana": "まさか",
+      "meaning_mnemonic": "You kick the ball in the backyard, look up, and <reading>my soccer</reading> ball is somehow up on the roof across the street, the jolt of cannot-be that we blurt as <reading>まさか</reading>, <vocabulary form=\"まさか\">no way! / surely not</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "betsuni",
@@ -10342,7 +11571,13 @@
           "answer_text": "べつに"
         }
       ],
-      "furigana": "別[べつ]に"
+      "furigana": "別[べつ]に",
+      "meaning_mnemonic": "Something you can keep <kanji form=\"別\">separate</kanji> from what matters is not worth bringing up, so when nothing is really on your mind you answer <vocabulary form=\"別に\">not particularly</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "issou",
@@ -10363,7 +11598,13 @@
           "answer_text": "いっそう"
         }
       ],
-      "furigana": "一[いっ]層[そう]"
+      "furigana": "一[いっ]層[そう]",
+      "meaning_mnemonic": "Stack <kanji form=\"一\">one</kanji> more <kanji form=\"層\">layer</kanji> onto a pile that is already high, and the whole thing presses down <vocabulary form=\"一層\">even more</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shidai-ni",
@@ -10384,7 +11625,13 @@
           "answer_text": "しだいに"
         }
       ],
-      "furigana": "次[し]第[だい]に"
+      "furigana": "次[し]第[だい]に",
+      "meaning_mnemonic": "Work through the list in <kanji form=\"次\">order</kanji>, moving from one <kanji form=\"第\">number</kanji> to the next, and the whole thing shifts <vocabulary form=\"次第に\">gradually</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nantonaku",
@@ -10405,7 +11652,14 @@
           "answer_text": "なんとなく"
         }
       ],
-      "furigana": "何[なん]となく"
+      "furigana": "何[なん]となく",
+      "meaning_mnemonic": "When something tugs at you but you cannot say <kanji form=\"何\">what</kanji> it is, that faint pull is <vocabulary form=\"何となく\">somehow / vaguely</vocabulary>.",
+      "reading_mnemonic": "Since 何 already gave you 「なん」, this word just rides that sound: <vocabulary form=\"何となく\">somehow / vaguely</vocabulary> is <reading>なんとなく</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wazato",
@@ -10426,7 +11680,13 @@
           "answer_text": "わざと"
         }
       ],
-      "furigana": "わざと"
+      "furigana": "わざと",
+      "meaning_mnemonic": "At Grandma Kane's shrine one cat <reading>waltzed to</reading> the bell rope, smooth and unhurried, and hauled it down. A walk that deliberate proves the cat rang the bell <reading>わざと</reading>, that is, <vocabulary form=\"わざと\">on purpose</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dou-shimashita-ka",
@@ -10446,7 +11706,13 @@
           "answer_text": "どうしましたか"
         }
       ],
-      "furigana": "どうしましたか"
+      "furigana": "どうしましたか",
+      "meaning_mnemonic": "You walk in on Sei standing over a toy car mashed flat — <reading>dough, she mashed a car</reading> — and the wreck drags the words <reading>どうしましたか</reading> out of you, meaning <vocabulary form=\"どうしましたか\">what's wrong? / what happened?</vocabulary>",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nan-desu-ka",
@@ -10466,7 +11732,14 @@
           "answer_text": "なんですか"
         }
       ],
-      "furigana": "何[なん]ですか"
+      "furigana": "何[なん]ですか",
+      "meaning_mnemonic": "The word is nothing but the <kanji form=\"何\">what</kanji> kanji asked aloud, which is why it lands on <vocabulary form=\"何ですか\">what is it?</vocabulary>",
+      "reading_mnemonic": "The reading 「なん」 is one you already took from 何, so keep it: <reading>なんですか</reading> is simply <vocabulary form=\"何ですか\">what is it?</vocabulary>",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dochira-mo",
@@ -10487,7 +11760,13 @@
           "answer_text": "どちらも"
         }
       ],
-      "furigana": "どちらも"
+      "furigana": "どちらも",
+      "meaning_mnemonic": "Moe the Dutch llama stands with his front feet on one riverbank and his back feet on the other, drinking from <vocabulary form=\"どちらも\">both / either</vocabulary> side at once. Picture that <reading>Dutch llama, Moe</reading> whenever you say <reading>どちらも</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dare-demo",
@@ -10508,7 +11787,14 @@
           "answer_text": "だれでも"
         }
       ],
-      "furigana": "誰[だれ]でも"
+      "furigana": "誰[だれ]でも",
+      "meaning_mnemonic": "Point at <kanji form=\"誰\">who</kanji> and stop caring which face the answer picks, and the word opens wide enough to cover <vocabulary form=\"誰でも\">anyone</vocabulary>.",
+      "reading_mnemonic": "You learned 「だれ」 back with 誰, so nothing new to memorise here: <vocabulary form=\"誰でも\">anyone</vocabulary> is <reading>だれでも</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nani-demo",
@@ -10529,7 +11815,14 @@
           "answer_text": "なんでも"
         }
       ],
-      "furigana": "何[なん]でも"
+      "furigana": "何[なん]でも",
+      "meaning_mnemonic": "Leave <kanji form=\"何\">what</kanji> with no fixed answer in mind and it stretches to take in <vocabulary form=\"何でも\">anything</vocabulary>.",
+      "reading_mnemonic": "The sound 「なん」 is already yours from 何, so just carry it over: <vocabulary form=\"何でも\">anything</vocabulary> is <reading>なんでも</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doko-demo",
@@ -10550,7 +11843,13 @@
           "answer_text": "どこでも"
         }
       ],
-      "furigana": "どこでも"
+      "furigana": "どこでも",
+      "meaning_mnemonic": "Doc lugs his first-aid kit up the mountain trail and runs the same demo wherever a hiker drops — a boulder, the vending machine, the middle of the path. <reading>Doc, oh, demo</reading> here too, so any spot works, and <reading>どこでも</reading> is that: <vocabulary form=\"どこでも\">anywhere</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itsu-demo",
@@ -10571,7 +11870,13 @@
           "answer_text": "いつでも"
         }
       ],
-      "furigana": "いつでも"
+      "furigana": "いつでも",
+      "meaning_mnemonic": "The tasting stand by the onigiri shelf at Koichi's konbini never shuts down; walk in at three in the morning and <reading>it's a demo</reading> running, same as noon. That round-the-clock sampling is <reading>いつでも</reading>, meaning <vocabulary form=\"いつでも\">anytime</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dare-mo",
@@ -10592,7 +11897,14 @@
           "answer_text": "だれも"
         }
       ],
-      "furigana": "誰[だれ]も"
+      "furigana": "誰[だれ]も",
+      "meaning_mnemonic": "Call out <kanji form=\"誰\">who</kanji> is there, hear every corner stay silent, and the tally comes to <vocabulary form=\"誰も\">no one (with negative)</vocabulary>.",
+      "reading_mnemonic": "You already have 「だれ」 from 誰, so this one only adds the empty feeling: <vocabulary form=\"誰も\">no one (with negative)</vocabulary> is <reading>だれも</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nani-mo",
@@ -10613,7 +11925,14 @@
           "answer_text": "なにも"
         }
       ],
-      "furigana": "何[なに]も"
+      "furigana": "何[なに]も",
+      "meaning_mnemonic": "Ask <kanji form=\"何\">what</kanji> is left in the bag, shake it, and hear <vocabulary form=\"何も\">nothing (with negative)</vocabulary> rattle inside.",
+      "reading_mnemonic": "The reading 「なに」 already came from 何, so keep it as is: <vocabulary form=\"何も\">nothing (with negative)</vocabulary> is <reading>なにも</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doko-mo",
@@ -10634,7 +11953,13 @@
           "answer_text": "どこも"
         }
       ],
-      "furigana": "どこも"
+      "furigana": "どこも",
+      "meaning_mnemonic": "Moe checks the first riverbank dock, then the next, then the one past that — <reading>dock, oh, Moe</reading> keeps walking — and the missing boat turns up at <vocabulary form=\"どこも\">nowhere (with negative)</vocabulary>. Say <reading>どこも</reading> and see Moe trudging that empty line of piers.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dou-omoimasu-ka",
@@ -10654,7 +11979,14 @@
           "answer_text": "どうおもいますか"
         }
       ],
-      "furigana": "どう思[おも]いますか"
+      "furigana": "どう思[おも]いますか",
+      "meaning_mnemonic": "Here the <kanji form=\"思\">think</kanji> kanji stands alone, simply turned outward to ask <vocabulary form=\"どう思いますか\">what do you think?</vocabulary>",
+      "reading_mnemonic": "You picked up 「おも」 from 思う already, so this phrase adds nothing to learn: <reading>どうおもいますか</reading> is just <vocabulary form=\"どう思いますか\">what do you think?</vocabulary>",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sou-omoimasu",
@@ -10674,7 +12006,14 @@
           "answer_text": "そうおもいます"
         }
       ],
-      "furigana": "そう思[おも]います"
+      "furigana": "そう思[おも]います",
+      "meaning_mnemonic": "Again it is only the <kanji form=\"思\">think</kanji> kanji, this time reporting that you agree, which is <vocabulary form=\"そう思います\">I think so</vocabulary>.",
+      "reading_mnemonic": "The 「おも」 sound is already yours from 思う, so let it stand: <vocabulary form=\"そう思います\">I think so</vocabulary> is <reading>そうおもいます</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sou-desu-ne",
@@ -10695,7 +12034,13 @@
           "answer_text": "そうですね"
         }
       ],
-      "furigana": "そうですね"
+      "furigana": "そうですね",
+      "meaning_mnemonic": "Grandma Kane holds up the torn sleeve and asks if the seam runs here, and you nod slowly — <reading>sew this, eh</reading> — taking a moment before you commit. That slow, agreeing pause is <reading>そうですね</reading>, meaning <vocabulary form=\"そうですね\">that's right / let me think</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "honto-desu-ka",
@@ -10715,7 +12060,13 @@
           "answer_text": "ほんとうですか"
         }
       ],
-      "furigana": "本[ほん]当[とう]ですか"
+      "furigana": "本[ほん]当[とう]ですか",
+      "meaning_mnemonic": "What holds true to its <kanji form=\"本\">origin</kanji> and lands exactly <kanji form=\"当\">right</kanji> is the plain truth, so to ask whether something really is, you say <vocabulary form=\"本当ですか\">really?</vocabulary>",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "naruhodo",
@@ -10736,7 +12087,13 @@
           "answer_text": "なるほど"
         }
       ],
-      "furigana": "なるほど"
+      "furigana": "なるほど",
+      "meaning_mnemonic": "Watch a barn dance long enough and the tangle of stamping feet suddenly locks into one clear pattern, like a <reading>Nara hoedown</reading> snapping into step. That click of it all making sense is <reading>なるほど</reading>, meaning <vocabulary form=\"なるほど\">I see / indeed</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "otsukaresama",
@@ -10757,7 +12114,13 @@
           "answer_text": "おつかれさま"
         }
       ],
-      "furigana": "お疲[つか]れ様[さま]"
+      "furigana": "お疲[つか]れ様[さま]",
+      "meaning_mnemonic": "A workmate drops into a chair looking completely <kanji form=\"疲\">weary</kanji>. You greet that tired person in the polite <kanji form=\"様\">manner</kanji> saved for an honoured guest, and that greeting is <vocabulary form=\"お疲れ様\">thank you for your hard work</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "osewa-ni-naru",
@@ -10778,7 +12141,13 @@
           "answer_text": "おせわになる"
         }
       ],
-      "furigana": "お世[せ]話[わ]になる"
+      "furigana": "お世[せ]話[わ]になる",
+      "meaning_mnemonic": "The people of your <kanji form=\"世\">world</kanji> will not stop <kanji form=\"話\">talking</kanji> about whether you have eaten and slept enough. When a whole family keeps you fed and rested like that, you have come <vocabulary form=\"お世話になる\">to be in someone's care</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shitsurei-shimasu",
@@ -10799,7 +12168,13 @@
           "answer_text": "しつれいします"
         }
       ],
-      "furigana": "失[しつ]礼[れい]します"
+      "furigana": "失[しつ]礼[れい]します",
+      "meaning_mnemonic": "Stepping into someone's office is a tiny <kanji form=\"失\">fault</kanji> against the full <kanji form=\"礼\">bow</kanji> of good manners. You name that small lapse out loud as you enter or leave, and that is <vocabulary form=\"失礼します\">excuse me (entering/leaving)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "omedetou",
@@ -10820,7 +12195,13 @@
           "answer_text": "おめでとう"
         }
       ],
-      "furigana": "おめでとう"
+      "furigana": "おめでとう",
+      "meaning_mnemonic": "A baker flips a flawless omelette off a lump of fresh <reading>omelette dough</reading>. The whole cafe stands up and shouts <reading>おめでとう</reading>, which is how you say <vocabulary form=\"おめでとう\">congratulations</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ganbatte",
@@ -10841,7 +12222,13 @@
           "answer_text": "がんばって"
         }
       ],
-      "furigana": "頑[がん]張[ば]って"
+      "furigana": "頑[がん]張[ば]って",
+      "meaning_mnemonic": "Someone who is <kanji form=\"頑\">stubborn</kanji> keeps <kanji form=\"張\">stretch</kanji>ing toward a goal long after their arms ache. Telling a friend to be exactly that stubborn is what <vocabulary form=\"頑張って\">good luck / do your best</vocabulary> means.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "odaiji-ni",
@@ -10862,7 +12249,13 @@
           "answer_text": "おだいじに"
         }
       ],
-      "furigana": "お大[だい]事[じ]に"
+      "furigana": "お大[だい]事[じ]に",
+      "meaning_mnemonic": "A sick friend should treat getting better as a <kanji form=\"大\">big</kanji> <kanji form=\"事\">matter</kanji>, barbed to them so they cannot set it down. Telling them so is how you say <vocabulary form=\"お大事に\">take care (get well)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yoroshiku",
@@ -10883,7 +12276,13 @@
           "answer_text": "よろしく"
         }
       ],
-      "furigana": "よろしく"
+      "furigana": "よろしく",
+      "meaning_mnemonic": "On the two-person boat the deal is simple: <reading>you row, she cooks</reading>. You shake on it and say <reading>よろしく</reading>, asking her to <vocabulary form=\"よろしく\">please treat me well</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "douzo",
@@ -10904,7 +12303,13 @@
           "answer_text": "どうぞ"
         }
       ],
-      "furigana": "どうぞ"
+      "furigana": "どうぞ",
+      "meaning_mnemonic": "You hold the lift doors and wave the next person in, telling them to <reading>do so</reading> before you. You say <reading>どうぞ</reading>, which is <vocabulary form=\"どうぞ\">please (go ahead)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kamaimasen",
@@ -10925,7 +12330,14 @@
           "answer_text": "かまいません"
         }
       ],
-      "furigana": "構[かま]いません"
+      "furigana": "構[かま]いません",
+      "meaning_mnemonic": "Whatever option you pick, this person's <kanji form=\"構\">stance</kanji> does not shift even slightly. A body that stays relaxed no matter what you choose is telling you <vocabulary form=\"構いません\">it doesn't matter</vocabulary>.",
+      "reading_mnemonic": "A stonemason shrugs at a crooked brick and says <reading>come, I'm a mason</reading>. That flat <reading>かまいません</reading> is him telling you <vocabulary form=\"構いません\">it doesn't matter</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "daijoubu-desu",
@@ -10945,7 +12357,13 @@
           "answer_text": "だいじょうぶです"
         }
       ],
-      "furigana": "大[だい]丈[じょう]夫[ぶ]です"
+      "furigana": "大[だい]丈[じょう]夫[ぶ]です",
+      "meaning_mnemonic": "A <kanji form=\"大\">big</kanji> man built to full <kanji form=\"丈\">measure</kanji> is a <kanji form=\"夫\">man</kanji> nothing knocks over. Point at that sturdy figure and you are saying <vocabulary form=\"大丈夫です\">it's fine / no problem</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sassoku-desu-ga",
@@ -10966,7 +12384,13 @@
           "answer_text": "さっそくですが"
         }
       ],
-      "furigana": "早[さっ]速[そく]ですが"
+      "furigana": "早[さっ]速[そく]ですが",
+      "meaning_mnemonic": "The sun is barely <kanji form=\"早\">early</kanji>-morning high and you are already moving <kanji form=\"速\">quick</kanji> on the job. Starting with no small talk like that is <vocabulary form=\"早速ですが\">getting right to it</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "oki-ni-mesu",
@@ -10987,7 +12411,14 @@
           "answer_text": "おきにめす"
         }
       ],
-      "furigana": "お気[き]に召[め]す"
+      "furigana": "お気[き]に召[め]す",
+      "meaning_mnemonic": "A fine object <kanji form=\"召\">calls</kanji> out to a person's <kanji form=\"気\">spirit</kanji> and lifts it like steam off a mown field. Something that can do that has managed <vocabulary form=\"お気に召す\">to be pleasing (honorific)</vocabulary>.",
+      "description": "Honorific, and used only about what pleases someone you are raising up, such as a guest, customer, or superior. Never use it for your own likes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanari",
@@ -11008,7 +12439,14 @@
           "answer_text": "かなり"
         }
       ],
-      "furigana": "かなり"
+      "furigana": "かなり",
+      "meaning_mnemonic": "The pet shop <reading>canary</reading> is louder than a normal bird by a wide margin. Naming that wide margin above ordinary is <reading>かなり</reading>, meaning <vocabulary form=\"かなり\">quite / considerably</vocabulary>.",
+      "description": "Usually an adverb placed right before an adjective, close to fairly or pretty in English. It can also act as a na-adjective before a noun, but that use is much rarer.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "juubun-na",
@@ -11028,7 +12466,13 @@
           "answer_text": "じゅうぶんな"
         }
       ],
-      "furigana": "十[じゅう]分[ぶん]な"
+      "furigana": "十[じゅう]分[ぶん]な",
+      "meaning_mnemonic": "Cut something into <kanji form=\"十\">ten</kanji> <kanji form=\"分\">part</kanji>s and hand someone all ten. Getting the whole set with none missing is what <vocabulary form=\"十分な\">sufficient (attributive)</vocabulary> describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "futsuu",
@@ -11049,7 +12493,13 @@
           "answer_text": "ふつう"
         }
       ],
-      "furigana": "普[ふ]通[つう]"
+      "furigana": "普[ふ]通[つう]",
+      "meaning_mnemonic": "A thing so <kanji form=\"普\">universal</kanji> that it can <kanji form=\"通\">pass through</kanji> any town and nobody looks up is simply <vocabulary form=\"普通\">normal / usual</vocabulary>. As a な adjective it takes な before the noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ippan",
@@ -11070,7 +12520,13 @@
           "answer_text": "いっぱん"
         }
       ],
-      "furigana": "一[いっ]般[ぱん]"
+      "furigana": "一[いっ]般[ぱん]",
+      "meaning_mnemonic": "When <kanji form=\"一\">one</kanji> single rule is broad enough to <kanji form=\"般\">carry</kanji> every person under it, that rule is <vocabulary form=\"一般\">general / common</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tokubetsu",
@@ -11091,7 +12547,13 @@
           "answer_text": "とくべつ"
         }
       ],
-      "furigana": "特[とく]別[べつ]"
+      "furigana": "特[とく]別[べつ]",
+      "meaning_mnemonic": "One cow, held <kanji form=\"別\">separate</kanji> from the market herd for the temple alone, is <kanji form=\"特\">special</kanji>. That set-apart quality is what <vocabulary form=\"特別\">special</vocabulary> means, and as a な adjective the word takes な before its noun.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "juuyou",
@@ -11112,7 +12574,13 @@
           "answer_text": "じゅうよう"
         }
       ],
-      "furigana": "重[じゅう]要[よう]"
+      "furigana": "重[じゅう]要[よう]",
+      "meaning_mnemonic": "Pile a thousand rice sacks onto something you already <kanji form=\"要\">need</kanji>, and the <kanji form=\"重\">heavy</kanji> load makes it impossible to set aside. A need that weighs that much is <vocabulary form=\"重要\">important</vocabulary>, and as a な adjective it takes な before its noun.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taisetsu",
@@ -11133,7 +12601,13 @@
           "answer_text": "たいせつ"
         }
       ],
-      "furigana": "大[たい]切[せつ]"
+      "furigana": "大[たい]切[せつ]",
+      "meaning_mnemonic": "Picture one sharp stroke about to <kanji form=\"切\">cut</kanji> away a <kanji form=\"大\">big</kanji> piece of your life. What you would throw yourself in front of to save is <vocabulary form=\"大切\">important / precious</vocabulary>, and as a な adjective it takes な before its noun.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanou",
@@ -11154,7 +12628,13 @@
           "answer_text": "かのう"
         }
       ],
-      "furigana": "可[か]能[のう]"
+      "furigana": "可[か]能[のう]",
+      "meaning_mnemonic": "Set an <kanji form=\"可\">approval</kanji> stamp beside the <kanji form=\"能\">ability</kanji> to do the job, and the thing can be done. That is <vocabulary form=\"可能\">possible</vocabulary>, and as a な adjective it takes な before its noun.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fukanou",
