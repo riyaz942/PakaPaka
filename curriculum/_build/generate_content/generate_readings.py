@@ -62,11 +62,15 @@ DRAFTS_DIR = os.path.join(HERE, "drafts", "readings")
 WEB_DIR = os.path.join(HERE, "web", "readings")
 PASSAGES_DIR = os.path.join(HERE, "passages")
 
-MODEL = "claude-opus-4-8"
+MODEL = "claude-opus-5"
 #: Bump together with prompts/reading-passage.md, persona.md, or the seed contract.
 PROMPT_VERSION = 1
 MAX_ATTEMPTS = 3
-MAX_TOKENS = 3000
+#: Covers thinking *and* the submitted tool call. Opus 5 runs adaptive thinking
+#: when `thinking` is omitted — Opus 4.8 did not — so the 3000 that sufficed
+#: there truncates a passage here. A submission is ~1.5k tokens; the rest is
+#: headroom for reasoning about the allowed-vocabulary constraint.
+MAX_TOKENS = 8000
 POLL_SECONDS = 30
 POLL_TIMEOUT_SECONDS = 90 * 60
 
