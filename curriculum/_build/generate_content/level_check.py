@@ -111,6 +111,30 @@ def build_allowed_index(allowed_vocab):
     return index
 
 
+def pattern_words(grammar_items):
+    """The content-tagged tokens inside a grammar point's own `accepted_forms`.
+
+    A pattern's machinery is not vocabulary: 限り, 以来, 反面, わけ, 対する
+    appear in no level's word list, so a passage that uses a point it was
+    taught fails this check on the point itself. `FUNCTION_WORD_ALLOWLIST`
+    covers the same problem globally for しれる and ごろ; this derives it per
+    caller instead, so the words are accepted exactly where the grammar that
+    carries them is allowed (see `reading_context.seed_context`).
+    """
+    tagger = furigana_lib.get_tagger()
+    words = set()
+    for item in grammar_items:
+        for form in item.get("accepted_forms", []):
+            for token in tagger(form.replace("〜", "")):
+                if _feature(token, "pos1") not in CONTENT_POS:
+                    continue
+                words.add(token.surface)
+                orth_base = _feature(token, "orthBase")
+                if orth_base:
+                    words.add(orth_base)
+    return words
+
+
 def _kanji_stem(surface):
     stem = ""
     for ch in surface:

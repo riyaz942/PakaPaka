@@ -1,10 +1,12 @@
 # Reading passage expansion — N5 and N4 to 30 each
 
-Status: **steps 1–2 of 4 done (2026-09-11).** `grammar_detect.py` is built and
-calibrated; the seed ladder, `required_grammar` and the coverage invariant are
-wired into the gate. Steps 3–4 — authoring the 60 seeds and generating — not
-started, so **the N5 seed check is red on purpose**: 5 of 74 grammar points are
-assigned and the humour mix is the retired set's 60%. Step 3 clears both.
+Status: **steps 1–2 done, steps 3–4's seeds authored (2026-09-11).**
+`grammar_detect.py` is built and calibrated; the seed ladder,
+`required_grammar` and the coverage invariant are wired into the gate; **both
+levels' 30 seeds are authored and `seed_errors` is clean at each** — N5 74/74
+points assigned and 24/30 humorous, N4 96 of 97 and 24/30. Neither level is
+generated yet; generation runs from
+[the subagent workflow](../workflows/reading-passages-subagent-workflow-automation-prompt.md).
 
 Grows the reading corpus from 19 passages to 60, makes **100% grammar coverage
 per level a build invariant**, and replaces the model's self-declared
@@ -18,7 +20,7 @@ describes the tooling; this plan describes what changes and why.
 
 | Level | Passages today | Target | Note |
 |---|---|---|---|
-| N5 | 10 (generated, reviewed) | **30** | All 30 regenerated. The 10 existing are retired; their reviewed topics are reused as seed briefs. |
+| N5 | 10 (generated, reviewed) | **30** | All 30 regenerated. The 10 existing are retired; two of their topics survive as seed briefs, at new positions, because the gate's fixtures are written against those seeds. |
 | N4 | 9 (hand-authored) | **30** | Retired and replaced, as the N5 hand-authored set already was. |
 | N3 / N2 / N1 | 0 | deferred | Out of scope. See § Why N3+ is deferred. |
 
@@ -57,8 +59,8 @@ Four parts. Each reuses what the pipeline already has.
 A seed today says what a passage *may* use. It gains what it **must** use:
 
 - `required_grammar` — the grammar slugs first available at this seed's step.
-  Across 30 N5 seeds that is 74 slugs at 2–3 per passage; across 30 N4 seeds,
-  97 slugs at 3–4.
+  Across 30 N5 seeds that is 74 slugs at 2–3 per passage; across the 30
+  authored N4 seeds, 96 slugs at 3–4 (the 97th is a `MANUAL_SLUG`).
 - A level-wide check in `validate_readings.py` fails the build when any slug of
   the level is unassigned, or assigned to two seeds.
 
@@ -72,7 +74,7 @@ naming only points inside the seed's own `grammar_cutoff` and never a
 `MANUAL_SLUG`, which no rule could confirm). Verified against a synthetic
 complete N5 assignment: 74/74 reports clean, deleting one assignment reports
 `grammar coverage is 73/74`, and assigning one point to two seeds reports the
-duplicate. The real assignment is step 3's to author.
+duplicate. The real N5 assignment, authored in step 3, reproduces all three.
 
 Enforcement runs from both ends: the level check says every point is assigned to
 exactly one passage, and the passage gate (check 6) says a passage really
@@ -261,14 +263,23 @@ and corrected by hand before check-in.
 
 **Built 2026-09-11.** `reading_context` reads `vocab_cutoff`, `pull_forward` and
 `grammar_cutoff` off the seed; `position` now orders the level and derives
-nothing. `READING_CORE_SLUGS` is deleted. The retired 10 seeds carry the numbers
-the old `position/N` rule produced (`ceil(p/10 × 718)` and `ceil(p/10 × 74)`)
-and the old flat list as `pull_forward`, trimmed per seed to what the cutoff has
-not already reached — which is the graded release in miniature: 34 words pulled
-forward at seed 1, 27 at seed 6, 16 at seed 7, one at seeds 8–9, none at seed 10.
-One correction: `neko-to-shukudai` gets `grammar_cutoff` 23 rather than the
-derived 15, because the passage uses `ni-indirect` (先生に出しません) and always
-did — nothing read the body before.
+nothing. `READING_CORE_SLUGS` is deleted.
+
+The authored N5 ladder runs 71 → 718 words and 10 → 74 grammar points across
+the 30, following the level's own thematic bands (pronouns and numerals, time,
+family, people, the body, food, streets, objects, clothes, weather, animals,
+adjectives, verbs, school nouns, counters, the home, greetings), so each seed's
+topic sits inside the band its cutoff opens. `pull_forward` stayed nearly empty
+— 0 to 6 words a seed, and none at all past seed 23 — because
+`context.CORE_SEED_SLUGS` already hands every seed 24 survival verbs and 10
+adjectives. It names props the band cannot reach: the 宿題 of
+`neko-to-shukudai`, the 隣 and 曲がる of `eki-made-no-michi`.
+
+`required_grammar` is **not** the block each cutoff newly opens, the way N4's
+is. Each point is assigned to the passage whose topic uses it — ましょう and
+ませんか to the invitation, より and 一番 to the ranking — which only has to sit
+at or after the seed that opens it. That is what lets a 30-seed partition read
+as 30 briefs rather than 30 slices.
 
 **Cost accepted:** the first passages unlock later than their number suggests —
 passage 3 may need a learner at ~30% of N5 rather than ~10%. The learner is
@@ -298,23 +309,130 @@ only a reading problem. It is not addressed here.
    → verify: N5 assignment covers 74/74 and N4 97/97;
      build fails when one assignment is deleted
      — the check is built and proven on a synthetic complete N5 assignment
-       (74/74 clean; 73/74 on a deletion; duplicate reported). The real
-       assignment is authored in steps 3–4, so the live number is 5/74 and the
-       N5 seed check is red until then. N4 has no seeds at all yet.
+       (74/74 clean; 73/74 on a deletion; duplicate reported). Steps 3–4
+       authored the real assignments: N5 74/74, N4 96/96.
      — also: gate check 6 rewritten onto detection, `grammar_slugs` derived,
        2 new fixtures (11 total), detector fix for sentence-initial でも
 
 3. Author the N5 ladder (cutoffs + pull_forward) and 30 N5 seeds; generate
+                                                              ◐ SEEDS DONE
    → verify: every seed's window contains at least 5 verbs and 5 adjectives;
      generate.py --level n5 + validate-schema + compile-curriculum clean;
      all 74 N5 grammar slugs detected across the 30 bodies
+     — 30 seeds authored, `seed_errors('n5')` clean: 74/74 assigned, 24/30
+       humorous, all 30 prompts build. The thinnest window carries 36 verbs
+       and 10 adjectives, the widest 210 and 100. Generation not started;
+       the 10 generated passages are still in place until it is.
+     — also: `pull_forward_grammar` added (§ What 30 N5 seeds cost), the
+       gate's 11 fixtures re-anchored on the two seeds whose slugs the new
+       ladder keeps
 
-4. N4 — author 30 seeds, retire the 9 hand-authored
+4. N4 — author 30 seeds, retire the 9 hand-authored           ◐ SEEDS DONE
    → verify: same, 97/97
+     — 30 seeds authored, `seed_errors('n4')` clean: 96/97 assigned (the 97th
+       is a MANUAL_SLUG, § What 30 N4 seeds cost), 24/30 humorous, all 30
+       prompts build. Generation not started; the 9 hand-authored passages are
+       still in place until it is.
 ```
 
 Steps 1 and 2 are roughly two sessions before a single passage is written. That
 is the price of a gate strong enough to skim behind.
+
+## What 30 N5 seeds cost — one schema field (2026-09-11)
+
+N4 inherits every N5 grammar point, so its window is never really empty. N5
+has nothing beneath it, and authoring its ladder found that the grammar side
+has **the same defect the vocabulary side was fixed for**.
+
+**The adjective block is a prefix problem.** N5 grammar points 47–50 are
+い-adjective conjugation, な-adjective usage and their two adverbial forms, and
+`grammar_detect` fires them on *any* adjective — 犬は大きいです is
+`adj-i-conjugation` whether or not the passage means to teach it. A prefix
+window therefore forbids 大きい, 好き and いい outright until two thirds of the
+level is open, which is the same shape as "the first N5 verb is word 377 of
+718" and wants the same answer: **`pull_forward_grammar`**, optional, and
+carried by every N5 seed whose `grammar_cutoff` has not reached 47. N4 declares
+it nowhere.
+
+The alternative was a ladder that jumps to point 50 by seed 4 so that
+adjectives arrive early. That buys 26 points to spread over the remaining 26
+seeds and hands passage 4 て-form, た-form and なければならない — 68% of the
+level's grammar at 13% of the way in. The window is supposed to be what the
+learner has met; that version is not.
+
+`nai-form` (33) is deliberately **not** in the block, even though 大きくない
+fires it. くありません is clean, the passages at those positions are polite
+throughout, and a plain negative is a real point that can wait its turn.
+
+**The gate's fixtures are anchored to seeds, so they constrain the ladder.**
+All 11 live on `neko-to-shukudai` and `eki-made-no-michi`, and a fixture body
+has to satisfy the seed it names: inside the window, inside the word band, and
+containing every point the seed requires. Both slugs are kept, at positions 7
+and 9, with `grammar_cutoff` held to 24 and 29 — 24 because the first body
+needs `ni-indirect` (23) and its bad twin must still fail on ている (29), 29
+because the second uses てください (28). Their `required_grammar` is drawn from
+what those bodies actually contain, which is why `masen`/`mashita`/`wo` sit at
+seed 7 rather than in the block seed 7's cutoff opens. Five fixtures needed a
+`note` or `expect` string updated for the new numbers; no fixture body changed.
+
+Two detector limits worth recording, both found while writing the briefs and
+neither worth a rule change here:
+
+- **`toki` wants a verb in front.** 子供のとき is standard Japanese and the
+  rule reads only 連体形 — `n4-aida` allows a preceding の and `mae-ni` and
+  `toki` do not. The seed that owns `toki` is briefed for 〜たとき / 〜るとき.
+- **ていません is `mada-teinai`, not `te-iru`.** The longest-form rule already
+  showed this on N4's 引っ越し. It means a negative progressive is out of level
+  until point 61, so the seeds before it use ています only.
+
+## What 30 N4 seeds cost — three gate repairs (2026-09-11)
+
+Authoring the assignment is what tests the invariant. Three points of the 97
+could not be written by any passage, and the seeds could not have been honest
+without fixing them first.
+
+**1. A point no rule can confirm cannot also be demanded.** `n4-node-vs-kara`
+is a `MANUAL_SLUG` — から, the same から as `kara-because`. `ladder_errors`
+forbids requiring it and `grammar_coverage_errors` demanded it, so 97/97 was
+unsatisfiable by construction. Coverage now excludes `MANUAL_SLUGS` from its
+denominator: **96/97 is the clean number for N4**, and N5 is unaffected (it has
+none).
+
+**2. `n4-temo` never fired.** Its rule wanted one token `ても/接続助詞`; unidic
+always splits it into 接続助詞 て + 係助詞 も — the same split that forced
+`demo-suggestion` into a two-token rule. It is now a two-token rule as well,
+and the て and the も are subtracted from `te-form` and `mo-also` exactly as the
+でも fix subtracts them, because the て of 降っても is not a connective and its
+も is not "also". Only the 連用形-attaching で counts, so 日曜日でも stays a
+location. Five new `--selftest` discriminations pin it (37 total); calibration
+is unchanged at 98.8%.
+
+**3. A pattern's own word is not vocabulary.** 限り, 以来, 反面, 一方, わけ,
+以外, 代わり, あげく, ついで, たとえ, つつ, 対する, 関する, みたい, しまう,
+だめ, たび, もん are content-tagged tokens in no level's word list, so the level
+check rejected any passage that used the point it was taught — **28 of the 97
+N4 points, and 6 N5 ones**. `level_check.FUNCTION_WORD_ALLOWLIST` already
+carries しれる and ごろ for this reason; a global sweep would have loosened
+every lane at every level. Instead `level_check.pattern_words()` derives them
+and `reading_context` folds them into the seed's `extra_allowed`, so a pattern
+word is accepted **exactly where its own point is allowed** — 限り only once
+`n4-kagiri` is inside the seed's `grammar_cutoff`, and never in the
+example-sentence or mnemonic lanes.
+
+Six N4 points are detectable **only in plain form**, because their polite
+surface belongs to an N5 point or to no pattern at all: ています is `te-iru`,
+てはいけません is `te-wa-ikenai`, なければなりません is `nakereba-naranai`, and
+食べさせます lemmatises to nothing the scan can see. `n4-teiru-progressive`,
+`n4-teiru-result`, `n4-tewaikenai`, `n4-nakerebanaranai`, `n4-causative` and
+`n4-causative-passive` are therefore assigned to four seeds whose brief asks for
+plain form for its own reasons — a diary, a live account to a friend, rules
+quoted off a sign — rather than to whichever seed the ladder happened to reach.
+
+That those six exist at all is a **content** observation worth recording
+separately: the N4 grammar file re-teaches points N5 already has under new
+slugs (`n4-teiru-*` ≡ `te-iru`, `n4-temoii` ≡ `te-mo-ii`, `n4-kamoshirenai` ≡
+`kamoshirenai`, …). Coverage over a duplicate is real work for the writer and
+no new grammar for the learner. Not addressed here.
 
 ## Consequences
 
@@ -347,9 +465,11 @@ Not scheduled.
 
 | File | Change |
 |---|---|
-| `curriculum/_build/generate_content/grammar_detect.py` | **Done.** Tokenizer-backed detection. `--selftest` (32 pinned discriminations, no corpus) and `--calibrate` (recall over the 19 shipped passages). |
-| `curriculum/_build/generate_content/reading_seeds.py` | **Schema done**, seeds are steps 3–4: `vocab_cutoff` / `grammar_cutoff` / `pull_forward` / `required_grammar` on every seed, `ladder_errors` + `grammar_coverage_errors`, `TONE_MIX_BOUNDS` → `(0.75, 0.85)`. |
-| `curriculum/_build/generate_content/reading_context.py` | **Done.** Cutoffs read from the seed instead of `position/N`; `READING_CORE_SLUGS` deleted in favour of per-seed `pull_forward`. |
+| `curriculum/_build/generate_content/grammar_detect.py` | **Done.** Tokenizer-backed detection. `--selftest` (37 pinned discriminations, no corpus) and `--calibrate` (recall over the 19 shipped passages). 30 POS rules — `n4-temo` became the third two-token rule. |
+| `curriculum/_build/generate_content/reading_seeds.py` | **Done — both levels' 30 seeds authored.** `vocab_cutoff` / `grammar_cutoff` / `pull_forward` / `required_grammar` on every seed and optional `pull_forward_grammar` (N5 only), `ladder_errors` + `grammar_coverage_errors` (which now skips `MANUAL_SLUGS`), `TONE_MIX_BOUNDS` → `(0.75, 0.85)`. The 10 retired N5 seeds and `_RETIRED_PULL_FORWARD` are deleted. |
+| `curriculum/_build/generate_content/reading_context.py` | **Done.** Cutoffs read from the seed instead of `position/N`; `READING_CORE_SLUGS` deleted in favour of per-seed `pull_forward`; `pull_forward_grammar` folded into the allowed grammar; the allowed grammar's own pattern words join the seed's `extra_allowed`. |
+| `curriculum/_build/generate_content/fixtures/readings/n5/` | **Done.** Re-anchored on the two kept seeds at their new positions — five `note` / `expect` strings, no fixture body. 11/11 behave as declared. |
+| `curriculum/_build/generate_content/level_check.py` | **Done.** `pattern_words()` — the content tokens inside a grammar point's `accepted_forms`, for callers that know which points are allowed. |
 | `curriculum/_build/generate_content/validate_readings.py` | **Done.** Check 6 is `_grammar_errors` over detected grammar (out-of-level + required-but-absent); `grammar_slugs` enrichment; `untaught-grammar-slug` fixture replaced by `out-of-level-grammar` + `missing-required-grammar`. |
 | `curriculum/_build/generate_content/generate_readings.py` | **Done.** `grammar_slugs` out of the submit tool and the web skeleton; required-grammar brief in; `PROMPT_VERSION` → 2. |
 | `curriculum/_build/generate_content/prompts/reading-passage.md` | **Done.** Drops the `grammar_slugs` field; adds the required-grammar brief. |

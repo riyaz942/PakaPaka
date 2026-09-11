@@ -12,13 +12,14 @@ the decisions baked into it.
 
 The unit of work here is a **seed** (a planned passage: topic, tone, length band,
 question count), not a vocabulary slug. Seeds for <level> are defined in
-`curriculum/_build/generate_content/reading_seeds.py` (N5 currently has 10).
+`curriculum/_build/generate_content/reading_seeds.py` (N5 and N4 each have
+their 30; neither level has been generated against them yet).
 This run **auto-selects the next batch of seeds that have not yet passed the
 gate** (Step 1) — you do NOT paste a seed list.
 
-Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+Level (one JLPT level per run; `n5` and `n4` have seeds, `n3`+ do not yet):
 
-<level = n5>
+<level = n4>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -39,7 +40,7 @@ Batch size (how many seeds this run processes; used as BATCH_LIMIT in Step 1):
 
 <batch-size = 1>
 
-Seed count for <level> is whatever `reading_seeds.py` lists (10 for N5), and a
+Seed count for <level> is whatever `reading_seeds.py` lists (30 at both), and a
 passage is far more expensive per item than an example sentence. **Start with
 `<batch-size = 1>` and read the passage before running any more** — that is the
 pilot-slice rule the whole content plan uses, and tone is exactly the thing a
@@ -88,8 +89,9 @@ print(','.join(todo))
 PY
 
 If it prints any `SEED PROBLEM:` lines, stop and report them — the seed list
-itself is broken (duplicate slug, position gap, tone mix out of the 50–60% band)
-and nothing generated against it is trustworthy.
+itself is broken (duplicate slug, position gap, tone mix out of the 75–85% band,
+a ladder cutoff that falls, a grammar point assigned to no seed or to two) and
+nothing generated against it is trustworthy.
 
 If it prints 0 seeds selected, <level> is already fully drafted — stop and report that.
 Otherwise treat the printed comma list as this run's seed set: every later step
@@ -279,7 +281,8 @@ Ordering Note
 
 Seeds are ordered by position and the allowed vocabulary grows with position, so
 generate them in the order Step 1a prints. Finish <level> fully before moving to the next level.
-Only run a level that has seeds in `reading_seeds.py` (N5 is authored; N4+ only once their seeds exist).
+Only run a level that has seeds in `reading_seeds.py` (N5's 30 and N4's 30 are
+authored; N3+ have none).
 
 ---
 
@@ -290,10 +293,10 @@ shipped curriculum**, and you must not add a build step that does:
 
 - Do NOT run `generate.py`, `npm run validate-schema`, or `npm run compile-curriculum`
   as part of this run. Nothing this workflow writes is an input to them.
-- Do NOT write to or edit `curriculum/readings/n5.json`, and do NOT edit
-  `curriculum/_build/n5_readings.py`. All 10 hand-authored N5 passages are
-  being retired and the generated set replaces them — that decision is already
-  made, and it is *not* what holds the wire-in back. What holds it back is the
+- Do NOT write to or edit `curriculum/readings/<level>.json`, and do NOT edit
+  `curriculum/_build/<level>_readings.py`. The shipped passages at both levels
+  are being retired and the generated set replaces them — that decision is
+  already made, and it is *not* what holds the wire-in back. What holds it back is the
   Phase 5 human read, which has not happened for anything this workflow
   produces. Passages ship as a reviewed level, never a seed at a time. The
   procedure is in `docs/content/phase-4-reading-passage-tooling.md` § "The step
@@ -342,9 +345,10 @@ Important Constraints
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the seed list, the allowed-vocab
   derivation, or curriculum source data to make invalid content pass.
-- Do not widen a seed's `vocab_cutoff`, `pull_forward` or `grammar_cutoff` to
-  unblock it. That ladder is authored ahead of generation on purpose; a window
-  the writer may move makes the level gate vacuous.
+- Do not widen a seed's `vocab_cutoff`, `pull_forward`, `grammar_cutoff` or
+  `pull_forward_grammar` to unblock it. That ladder is authored ahead of
+  generation on purpose; a window the writer may move makes the level gate
+  vacuous.
 - Do not manually mark generated passages as reviewed.
 - Do not write shipped curriculum files.
 - No browser, no clipboard, no downloads — this lane is entirely local files plus

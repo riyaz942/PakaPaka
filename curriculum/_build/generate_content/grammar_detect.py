@@ -254,7 +254,6 @@ _PARTICLE_RULES = {
     "te-form": ("て", "助詞", {"接続助詞"}),
     "n4-to-conditional": ("と", "助詞", {"接続助詞"}),
     "n4-ba": ("ば", "助詞", {"接続助詞"}),
-    "n4-temo": ("ても", "助詞", {"接続助詞"}),
 }
 
 #: Lemmas that make a preceding に行く / に来る a purpose rather than a
@@ -477,6 +476,26 @@ def _rule_demo_suggestion(tokens, i):
     return any(word in head for word in _SUGGESTION_TAILS)
 
 
+def _rule_n4_temo(tokens, i):
+    """The て of a ても / でも concessive: 降っても, 高くても, 読んでも.
+
+    ても is never one token — unidic splits it into 接続助詞 て + 係助詞 も, the
+    same split that forced `demo-suggestion` into a two-token rule. Only the
+    連用形-attaching で counts, so 日曜日でも (格助詞 で) stays a location that
+    also applies rather than a concessive.
+    """
+    t, nxt = tokens[i], _next(tokens, i)
+    return (
+        t["norm"] in ("て", "で")
+        and t["pos1"] == "助詞"
+        and t["pos2"] == "接続助詞"
+        and nxt is not None
+        and nxt["norm"] == "も"
+        and nxt["pos1"] == "助詞"
+        and nxt["pos2"] == "係助詞"
+    )
+
+
 def _kara_particle(tokens, i):
     t = tokens[i]
     return t["norm"] == "から" and t["pos1"] == "助詞"
@@ -511,6 +530,7 @@ POS_RULES = {
     "mae-ni": _rule_mae_ni,
     "ni-iku": _rule_ni_iku,
     "demo-suggestion": _rule_demo_suggestion,
+    "n4-temo": _rule_n4_temo,
 }
 
 #: Rules describing the *word's own* form, not a pattern built on it. They run
@@ -541,6 +561,17 @@ POS_RULES["de-location"] = lambda tokens, i: (
 )
 POS_RULES["mo-also"] = lambda tokens, i: (
     _mo_also(tokens, i) and not (i > 0 and _conjunctive_demo(tokens, i - 1))
+)
+
+#: The same subtraction for a ても concessive: its て is not the connective
+#: te-form and its も is not "also", so neither generic rule may claim a half.
+_te_form = POS_RULES["te-form"]
+POS_RULES["te-form"] = lambda tokens, i: (
+    _te_form(tokens, i) and not _rule_n4_temo(tokens, i)
+)
+_mo_also_2 = POS_RULES["mo-also"]
+POS_RULES["mo-also"] = lambda tokens, i: (
+    _mo_also_2(tokens, i) and not (i > 0 and _rule_n4_temo(tokens, i - 1))
 )
 
 
@@ -872,6 +903,11 @@ SELFTEST = [
     ("n4", "駅から近いです。", ["kara-from"], ["n4-node-vs-kara"]),
     ("n5", "お金は千円しかありません。", ["shika-nai"], []),
     ("n5", "宿題はまだ終わっていません。", ["mada-teinai"], []),
+    ("n4", "雨が降っても、公園に行きます。", ["n4-temo"], ["te-form", "mo-also"]),
+    ("n4", "高くても、買います。", ["n4-temo"], ["te-form", "mo-also"]),
+    ("n4", "日曜日でも働きます。", ["de-location", "mo-also"], ["n4-temo"]),
+    ("n4", "友達に手伝ってもらいました。", ["moraru-ageru-kureru"], ["n4-temo"]),
+    ("n4", "写真を撮ってもいいですか。", ["n4-temoii", "te-mo-ii"], ["n4-temo"]),
 ]
 
 

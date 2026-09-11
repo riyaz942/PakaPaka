@@ -13,7 +13,8 @@ seed's position:
   * **all** lower-level vocabulary and grammar, plus
   * the level's first `vocab_cutoff` vocabulary items and first
     `grammar_cutoff` grammar points (each by sort_order), plus
-  * the seed's own `pull_forward` words, plus `context.CORE_SEED_SLUGS`.
+  * the seed's own `pull_forward` words, plus `context.CORE_SEED_SLUGS`, plus
+  * the seed's own `pull_forward_grammar` points.
 
 `position/N` used to derive the cutoffs and no longer does. At 30 seeds that
 rule gives passage 1 the first 24 N5 words — all pronouns and demonstratives —
@@ -25,6 +26,12 @@ sits behind. It is replaced by `pull_forward`: the same idea, graded per seed
 and authored where the rest of the plan for that passage lives. See
 docs/content/reading-passage-expansion-plan.md, § The positional window breaks
 at 30 seeds.
+
+The grammar list has the same defect and `pull_forward_grammar` is the same
+answer: N5's four adjective points sit at 47–50 of 74, and `grammar_detect`
+fires them on *any* adjective, so a prefix window forbids 大きい, 好き and いい
+outright until two thirds of the level is open. Authoring the N5 ladder is what
+found it; N4 needs none, because a lower level's grammar is allowed in full.
 
 Still planner-free and deterministic: the same seed list yields the same
 allowed sets on every machine, which is what makes a regeneration reproducible
@@ -85,8 +92,14 @@ def _allowed_grammar(level, seed):
     for lower in _lower_levels(level):
         for g in context.load_grammar(lower):
             add(g)
-    for g in context.load_grammar(level)[: seed["grammar_cutoff"]]:
+    grammar = context.load_grammar(level)
+    for g in grammar[: seed["grammar_cutoff"]]:
         add(g)
+    by_slug = {g["slug"]: g for g in grammar}
+    for fs in seed.get("pull_forward_grammar", []):
+        if fs not in by_slug:
+            raise KeyError(f"pull_forward_grammar slug {fs!r} not in {level} grammar")
+        add(by_slug[fs])
     return allowed
 
 
@@ -95,7 +108,14 @@ def seed_context(level, slug):
 
     allowed_vocab = _allowed_vocab(level, seed)
     allowed_grammar = _allowed_grammar(level, seed)
-    extra_allowed = set(seed.get("extra_allowed", []))
+    #: Names the seed grants, plus the machinery of the grammar it may use —
+    #: 限り, 以来, 反面, わけ are content words in no level's vocabulary, so
+    #: without this the level check rejects a passage for using a point it was
+    #: taught. Derived from `allowed_grammar`, so a pattern word is accepted
+    #: exactly where its own point is: past the cutoff, it is out of level again.
+    extra_allowed = set(seed.get("extra_allowed", [])) | level_check.pattern_words(
+        allowed_grammar
+    )
     by_slug = {g["slug"]: g for g in allowed_grammar}
     unknown = [s for s in seed["required_grammar"] if s not in by_slug]
     if unknown:
