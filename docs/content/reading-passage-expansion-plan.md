@@ -1,6 +1,10 @@
 # Reading passage expansion — N5 and N4 to 30 each
 
-Status: **planned, not started (2026-09-11).** No code or content written yet.
+Status: **steps 1–2 of 4 done (2026-09-11).** `grammar_detect.py` is built and
+calibrated; the seed ladder, `required_grammar` and the coverage invariant are
+wired into the gate. Steps 3–4 — authoring the 60 seeds and generating — not
+started, so **the N5 seed check is red on purpose**: 5 of 74 grammar points are
+assigned and the humour mix is the retired set's 60%. Step 3 clears both.
 
 Grows the reading corpus from 19 passages to 60, makes **100% grammar coverage
 per level a build invariant**, and replaces the model's self-declared
@@ -61,6 +65,19 @@ A seed today says what a passage *may* use. It gains what it **must** use:
 Full grammar coverage stops being a target and becomes an invariant. Remove one
 assignment and the build breaks.
 
+**Built 2026-09-11.** `reading_seeds.grammar_coverage_errors` is the level-wide
+check; `ladder_errors` is the per-seed one (cutoffs in range and rising,
+`pull_forward` naming only words the cutoff has not reached, `required_grammar`
+naming only points inside the seed's own `grammar_cutoff` and never a
+`MANUAL_SLUG`, which no rule could confirm). Verified against a synthetic
+complete N5 assignment: 74/74 reports clean, deleting one assignment reports
+`grammar coverage is 73/74`, and assigning one point to two seeds reports the
+duplicate. The real assignment is step 3's to author.
+
+Enforcement runs from both ends: the level check says every point is assigned to
+exactly one passage, and the passage gate (check 6) says a passage really
+contains what it was assigned.
+
 ### 2. Grammar is detected in the text, not taken on the model's word
 
 This is the real gap. `reading_context.py` states it in its own docstring: the
@@ -90,6 +107,37 @@ New module `curriculum/_build/generate_content/grammar_detect.py`:
 Authoring work is **27 POS rules** (24 N5 + 3 N4). The other 144 of the 171
 slugs are longest-match over data that already exists.
 
+**Built 2026-09-11.** The shipped module runs **29 POS rules** — the 27
+planned, plus two the calibration run forced out of the substring table:
+
+| Rule | Why it could not stay text |
+|---|---|
+| `mae-ni` | 前に matched 駅**の前に**, a place, and stole that に from `ni-direction`. It is now the temporal 前に only after a 連体形 verb. |
+| `ni-iku` | に来る matched 日本**に来**ました, a plain destination. It now needs a purpose in front — a 連用形 verb or a サ変可能 noun. |
+| `demo-suggestion` | unidic splits でも into で + も, so there was never any でも to match. Now a two-token rule that also needs the sentence to make the offer (どうですか / ませんか / ましょう). |
+
+Two mechanisms were needed that the design did not anticipate:
+
+- **A dictionary-form pass.** `accepted_forms` spells a pattern by its citation
+  form — てしまう, になる, と思う — but passages inflect it: 食べて**しまった**,
+  上手に**なった**, と**思いました**. None of those contain the literal form, so
+  the surface scan missed the pattern outright. The text is scanned twice: once
+  as written, once with every inflecting word put back in dictionary form.
+  Without this, N4 recall was 71.7%.
+- **Selective lemmatisation.** Lemmatising everything is worse than
+  lemmatising nothing: unidic reads the に of ようになる as the copula だ, the
+  たら of あったら as た, and the く of 広くなった as 広い — so ようになる, たら
+  and くなる all vanish. Only 動詞, 形状詞 and the two `れる`/`せる` auxiliary
+  classes are put back; particles, other auxiliaries and the adverbial く keep
+  their surface.
+
+A third came out of step 2, when the gate started acting on detections rather
+than only counting them: **sentence-initial でも is the conjunction "but"**, and
+unidic splits it into 格助詞 で + 係助詞 も wherever it stands, so `de-location`
+and `mo-also` both fired on it. Left alone it would have failed the gate's own
+good fixture for two points the passage never uses. Both rules now subtract a
+でも whose previous token ends a sentence; 公園でも遊びます still reads as both.
+
 ### 3. `grammar_slugs` becomes derived output
 
 Once detection works, `grammar_slugs` joins `vocabulary_slugs`, `word_spans`,
@@ -97,6 +145,22 @@ Once detection works, `grammar_slugs` joins `vocabulary_slugs`, `word_spans`,
 the model loses the ability to misreport, and the gate gains a check it cannot
 perform today: **out-of-level grammar the model used but did not declare.** That
 hole is currently caught only by the human read.
+
+**Built 2026-09-11.** `grammar_slugs` left the submit tool, the web skeleton and
+the prompt; `validate_readings.enrich` derives it. `PROMPT_VERSION` → 2. Two
+rules the design did not spell out:
+
+- **An ambiguous surface is out of level only when every reading of it is.**
+  ません is `masu` and `masen` at the same characters; blaming a passage for the
+  reading it did not mean would reject on the detector's own uncertainty.
+- **`MANUAL_SLUGS` never reject.** They are not in `matches` at all, so a point
+  no rule can separate from another is not grounds for failing a passage — and,
+  from the other side, cannot be assigned as `required_grammar`.
+
+Pointed at the 10 retired N5 drafts, the new check immediately failed 3 of them
+for grammar past their own window — `atarashii-kurasu` alone uses の, を, と,
+ている and an い-adjective at a `grammar_cutoff` of 8. The old declared-slug
+check passed all 10. That is the hole, measured.
 
 ### 4. Calibrate before trusting
 
@@ -107,6 +171,34 @@ anything.
 - Pass condition: **recall ≥95%** against the reviewed declarations.
 - Expect the detector to also find grammar those passages never declared. Those
   are declaration bugs, found for free.
+
+**Result 2026-09-11 — passes.** `--calibrate`:
+
+| Level | Recall |
+|---|---|
+| N5 | 122 / 123 = **99.2%** |
+| N4 | 45 / 46 = **97.8%** |
+| overall | 167 / 169 = **98.8%** |
+
+Both misses are the passage being wrong, not the detector:
+
+- 赤い箱 declares `ka-question` and **contains no か at all.**
+- 引っ越し declares `n4-teiru-result` for 片付い**ていません**, which the
+  longest-form rule reads as `mada-teinai` — the pattern that sentence opens
+  with まだ. The passage declared `mada-teinai` nowhere.
+
+The declaration bugs the run found are larger than the misses: across the 19
+passages the detector finds **37 of 74** N5 slugs where the declarations claim
+34, and **24 of 97** N4 slugs where the declarations claim 20. Both sets are
+being retired, so these are not worth fixing in place — they are evidence the
+gate was needed.
+
+A second command, `--selftest`, pins 32 individual discriminations (は inside
+はじめて is not `wa-topic`; たい inside 冷たい is not `tai`; ても does not eat
+the て of てもらいました; 学校から is `kara-from` but 寒いから is
+`kara-because`). It needs no corpus and no API, so it is the cheap check to run
+after any edit to the rules. Same role `validate_readings.py --fixtures` plays
+for the gate.
 
 ## The positional window breaks at 30 seeds — resolved, option (a)
 
@@ -167,6 +259,17 @@ model writes. Three reasons:
 Drafted by script (verbs ranked on storytelling usefulness), then read through
 and corrected by hand before check-in.
 
+**Built 2026-09-11.** `reading_context` reads `vocab_cutoff`, `pull_forward` and
+`grammar_cutoff` off the seed; `position` now orders the level and derives
+nothing. `READING_CORE_SLUGS` is deleted. The retired 10 seeds carry the numbers
+the old `position/N` rule produced (`ceil(p/10 × 718)` and `ceil(p/10 × 74)`)
+and the old flat list as `pull_forward`, trimmed per seed to what the cutoff has
+not already reached — which is the graded release in miniature: 34 words pulled
+forward at seed 1, 27 at seed 6, 16 at seed 7, one at seeds 8–9, none at seed 10.
+One correction: `neko-to-shukudai` gets `grammar_cutoff` 23 rather than the
+derived 15, because the passage uses `ni-indirect` (先生に出しません) and always
+did — nothing read the body before.
+
 **Cost accepted:** the first passages unlock later than their number suggests —
 passage 3 may need a learner at ~30% of N5 rather than ~10%. The learner is
 protected either way, because `computePassageUnlock` already withholds a passage
@@ -186,13 +289,20 @@ only a reading problem. It is not addressed here.
 ## Work plan
 
 ```
-1. grammar_detect.py + 27 POS rules
+1. grammar_detect.py + 27 POS rules                                   ✅ DONE
    → verify: ≥95% recall against the 19 reviewed passages' declared slugs;
      report every extra slug found as a declaration bug
+     — 98.8% overall (N5 99.2%, N4 97.8%); 29 rules shipped, not 27
 
-2. Seed schema: explicit cutoffs, required_grammar, coverage check
+2. Seed schema: explicit cutoffs, required_grammar, coverage check      ✅ DONE
    → verify: N5 assignment covers 74/74 and N4 97/97;
      build fails when one assignment is deleted
+     — the check is built and proven on a synthetic complete N5 assignment
+       (74/74 clean; 73/74 on a deletion; duplicate reported). The real
+       assignment is authored in steps 3–4, so the live number is 5/74 and the
+       N5 seed check is red until then. N4 has no seeds at all yet.
+     — also: gate check 6 rewritten onto detection, `grammar_slugs` derived,
+       2 new fixtures (11 total), detector fix for sentence-initial でも
 
 3. Author the N5 ladder (cutoffs + pull_forward) and 30 N5 seeds; generate
    → verify: every seed's window contains at least 5 verbs and 5 adjectives;
@@ -237,10 +347,11 @@ Not scheduled.
 
 | File | Change |
 |---|---|
-| `curriculum/_build/generate_content/grammar_detect.py` | New. Tokenizer-backed detection. |
-| `curriculum/_build/generate_content/reading_seeds.py` | 30 N5 + 30 N4 seeds; `vocab_cutoff` / `grammar_cutoff` / `pull_forward` / `required_grammar`; `TONE_MIX_BOUNDS` → `(0.75, 0.85)`. |
-| `curriculum/_build/generate_content/reading_context.py` | Cutoffs read from the seed instead of `position/N`; `READING_CORE_SLUGS` deleted in favour of per-seed `pull_forward`. |
-| `curriculum/_build/generate_content/validate_readings.py` | `grammar_errors`; level-wide coverage check; `grammar_slugs` enrichment. |
-| `curriculum/_build/generate_content/prompts/reading-passage.md` | Drops the `grammar_slugs` field; adds the required-grammar brief. |
+| `curriculum/_build/generate_content/grammar_detect.py` | **Done.** Tokenizer-backed detection. `--selftest` (32 pinned discriminations, no corpus) and `--calibrate` (recall over the 19 shipped passages). |
+| `curriculum/_build/generate_content/reading_seeds.py` | **Schema done**, seeds are steps 3–4: `vocab_cutoff` / `grammar_cutoff` / `pull_forward` / `required_grammar` on every seed, `ladder_errors` + `grammar_coverage_errors`, `TONE_MIX_BOUNDS` → `(0.75, 0.85)`. |
+| `curriculum/_build/generate_content/reading_context.py` | **Done.** Cutoffs read from the seed instead of `position/N`; `READING_CORE_SLUGS` deleted in favour of per-seed `pull_forward`. |
+| `curriculum/_build/generate_content/validate_readings.py` | **Done.** Check 6 is `_grammar_errors` over detected grammar (out-of-level + required-but-absent); `grammar_slugs` enrichment; `untaught-grammar-slug` fixture replaced by `out-of-level-grammar` + `missing-required-grammar`. |
+| `curriculum/_build/generate_content/generate_readings.py` | **Done.** `grammar_slugs` out of the submit tool and the web skeleton; required-grammar brief in; `PROMPT_VERSION` → 2. |
+| `curriculum/_build/generate_content/prompts/reading-passage.md` | **Done.** Drops the `grammar_slugs` field; adds the required-grammar brief. |
 | `curriculum/_build/n5_readings.py`, `n4_readings.py` | Regenerated sets. |
 | `curriculum/readings/n5.json`, `n4.json` | 30 passages each. |

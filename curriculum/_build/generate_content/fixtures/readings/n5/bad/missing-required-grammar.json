@@ -1,0 +1,31 @@
+{
+  "level": "n5",
+  "seed": "neko-to-shukudai",
+  "expect": [
+    "required grammar missing from the passage"
+  ],
+  "note": "seed requires mashita; the passage is written entirely in the non-past",
+  "passage": {
+    "title": "宿題とタマ",
+    "body": "今日、宿題をします。でも、先生に出しません。猫のタマが宿題の上に寝ます。私はタマの名前を呼びます。タマは私を見ません。",
+    "english_translation": "Today I am doing my homework. But I am not handing it in to the teacher. My cat Tama sleeps on top of the homework. I call Tama's name. Tama does not look at me.",
+    "summary_ja": "猫のタマが宿題の上に寝ます。",
+    "summary_en": "The homework is finished, but the cat is asleep on top of it.",
+    "questions": [
+      {
+        "prompt": "猫の名前は何ですか。",
+        "accepted_answers": [
+          "タマ"
+        ]
+      },
+      {
+        "prompt": "タマは宿題のどこに寝ますか。",
+        "accepted_answers": [
+          "宿題の上",
+          "上",
+          "上に"
+        ]
+      }
+    ]
+  }
+}

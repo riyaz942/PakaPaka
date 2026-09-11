@@ -33,6 +33,8 @@ naturally.
 
 {{ALLOWED_GRAMMAR}}
 
+{{REQUIRED_GRAMMAR_BLOCK}}
+
 ## What to write
 
 {{TOOL_LINE}}:
@@ -48,8 +50,6 @@ naturally.
 - `summary_en` — the same in one English sentence.
 - `questions` — exactly {{QUESTION_COUNT}} comprehension questions. Each has a
   `prompt` (Japanese, 4–40 characters, ending in か。) and `accepted_answers`.
-- `grammar_slugs` — the slugs in [brackets] in the grammar list above for every
-  pattern the passage actually uses.
 
 Rules the automated gate enforces, so getting them wrong costs a regeneration:
 
@@ -67,6 +67,6 @@ Rules the automated gate enforces, so getting them wrong costs a regeneration:
 - Vary sentence length. A wall of identical 〜です sentences is what a graded
   reader is trying not to be.
 
-Do not write `word_count`, `vocabulary_slugs` or word spans — the build pipeline
-derives all three from the body with the tokenizer.
+Do not write `grammar_slugs`, `word_count`, `vocabulary_slugs` or word spans —
+the build pipeline derives all four from the body with the tokenizer.
 {{VALIDATOR_FEEDBACK}}

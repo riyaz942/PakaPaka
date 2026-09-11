@@ -139,11 +139,11 @@ Give the subagent these instructions:
   - Write EXACTLY one fenced ```json code block and nothing else in the file — no
     preamble, no commentary before or after.
   - Use the exact output contract from the prompt: a single JSON object with
-    `title`, `body`, `english_translation`, `summary_ja`, `summary_en`,
-    `questions` and `grammar_slugs`, and no other keys.
-  - Do NOT write `word_count`, `vocabulary_slugs` or word spans. The build
-    pipeline derives all three from the body with a tokenizer; anything you write
-    for them is discarded.
+    `title`, `body`, `english_translation`, `summary_ja`, `summary_en` and
+    `questions`, and no other keys.
+  - Do NOT write `grammar_slugs`, `word_count`, `vocabulary_slugs` or word spans.
+    The build pipeline derives all four from the body with a tokenizer; anything
+    you write for them is discarded.
   - `body` is one continuous paragraph of plain Japanese — no line breaks, no
     furigana, no romaji, no markdown, no brackets. Ingestion annotates the body
     and every question prompt with the tokenizer and stores the result as
@@ -157,8 +157,10 @@ Give the subagent these instructions:
   - Produce exactly the number of questions the prompt asks for. Each question
     needs at least one accepted answer that appears **literally in the body**, and
     the question prompt itself is level-checked too.
-  - `grammar_slugs` lists the grammar points the passage actually uses; every slug
-    must come from the prompt's allowed grammar list. Never invent slugs.
+  - Build the passage only out of the prompt's allowed grammar, and use every
+    point the prompt lists under "Grammar this passage must use" at least once.
+    Both sides are detected in your text by a tokenizer, so there is nothing to
+    declare and nothing a declaration can fix.
   - Honour the tone direction. If the seed is humorous, it should actually be
     funny; if the joke and the comprehension pull apart, comprehension wins.
   - Do not set or add any review_status field.
@@ -340,9 +342,9 @@ Important Constraints
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the seed list, the allowed-vocab
   derivation, or curriculum source data to make invalid content pass.
-- Do not add words to `READING_CORE_SLUGS` to unblock a seed. That list holds
-  narrative connective tissue only; a seed blocked on a topic word moves to a
-  later position instead.
+- Do not widen a seed's `vocab_cutoff`, `pull_forward` or `grammar_cutoff` to
+  unblock it. That ladder is authored ahead of generation on purpose; a window
+  the writer may move makes the level gate vacuous.
 - Do not manually mark generated passages as reviewed.
 - Do not write shipped curriculum files.
 - No browser, no clipboard, no downloads — this lane is entirely local files plus

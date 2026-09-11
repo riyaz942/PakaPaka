@@ -16,11 +16,38 @@ same persona minus the instruction to be funny.
 
 ## `position` and the allowed sets
 
-`position` is the seed's rank within the level (1..N) and is the only input to
-the allowed-vocabulary/grammar derivation in `reading_context.py` — the same
-proportional-cutoff rule 2a/2c use (option (a); see `context.py`). It is not a
-sort_order and it is not the shipped passage order; renumbering the seeds
-changes what the generator may use, so positions are stable once generated.
+`position` is the seed's rank within the level (1..N) — the "passage 3 of 30"
+the prompt states, and the order the level ships in. It no longer *derives*
+anything: the window is authored per seed (below), so renumbering changes the
+narrative order and nothing about what the generator may use.
+
+## The authored ladder — `vocab_cutoff`, `pull_forward`, `grammar_cutoff`
+
+Each seed declares its own window
+(docs/content/reading-passage-expansion-plan.md, § The positional window breaks
+at 30 seeds):
+
+  * `vocab_cutoff` — how many of the level's vocabulary items, by sort_order,
+    this passage may use. Replaces the `position/N` proportional slice, which
+    at 30 seeds hands passage 1 twenty-four pronouns and no verb (the first N5
+    verb is word 377 of 718).
+  * `pull_forward` — later slugs this seed may use anyway. A **graded release**
+    replacing the flat always-allowed `READING_CORE_SLUGS`: early seeds pull a
+    few verbs forward, later seeds none, because the cutoff has reached them.
+  * `grammar_cutoff` — the same, over the level's grammar points.
+
+Authored, checked in, and read by the generator — never chosen while the model
+writes, because a model-chosen window makes the level gate vacuous and
+regeneration has to reproduce.
+
+## `required_grammar`
+
+The grammar points this passage **must** use, so that 100% grammar coverage per
+level is a build invariant rather than a hope: `grammar_coverage_errors` fails
+the build when a level slug is assigned to no seed or to two, and
+`validate_readings.py` fails a passage whose body does not actually contain
+what its seed was assigned (detected by `grammar_detect.py`, not declared by
+the model).
 
 ## `extra_allowed`
 
@@ -32,21 +59,59 @@ the name exists. Anything else in this list is a vocabulary gap being papered
 over — add the word to the level instead.
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from generate_content import context, grammar_detect  # noqa: E402
+
 #: Tone tags. `humorous` seeds pull the persona's comedy register.
 TONES = ("humorous", "neutral")
 
-#: Rev 1 target: humorous seeds as a fraction of a level's seeds.
-TONE_MIX_BOUNDS = (0.50, 0.60)
+#: Humorous seeds as a fraction of a level's seeds. Raised from (0.50, 0.60) by
+#: the expansion plan: 80%, not 100%, because some subjects fight comedy and 30
+#: gags in a row at one level flattens out.
+TONE_MIX_BOUNDS = (0.75, 0.85)
+
+#: Ladder fields every seed carries — see the module docstring.
+LADDER_FIELDS = ("vocab_cutoff", "pull_forward", "grammar_cutoff", "required_grammar")
 
 #: N5 — 10 passages, growing from ~35 to ~100 words (the shipped
 #: hand-authored set measures 29–46), 6 humorous (60%).
 #: `target_words` is a band on the tokenizer word count (see
 #: `validate_readings.word_count`), not on characters.
+#:
+#: **These 10 are retired by step 3 of the expansion plan**, which replaces them
+#: with a 30-seed ladder. Until then they carry the cutoffs the old
+#: `position/N` rule derived (`ceil(p/10 × 718)` vocabulary, `ceil(p/10 × 74)`
+#: grammar) and the old flat `READING_CORE_SLUGS` as `pull_forward`, trimmed per
+#: seed to the slugs the cutoff has not already reached. `required_grammar` is
+#: empty except on the two seeds the gate's fixtures use, so the level-wide
+#: coverage check reports the other 72 N5 slugs as unassigned — which is the
+#: true state until the 30 seeds are authored.
+#: The flat `READING_CORE_SLUGS` the retired seeds were generated against, now
+#: carried as `pull_forward` by the seeds whose cutoff has not reached it.
+#: Deleted with those seeds in step 3.
+_RETIRED_PULL_FORWARD = [
+    "namae", "nihon", "nihongo", "benkyou", "shukudai", "jugyou", "mono",
+    "naka", "ue", "shita-v", "mae", "ushiro", "tonari", "chikaku",
+    "migi-v", "hidari-v",
+    "ji-oclock", "jikan-counter", "tsugi",
+    "nin-counter", "takusan", "zenbu", "onaji",
+    "sumu", "dasu", "hajimaru", "owaru", "motsu", "ireru-v", "yobu",
+    "wasureru", "aruku", "magaru", "hashiru",
+]
+
 N5_SEEDS = [
     {
         "slug": "atarashii-kurasu",
         "position": 1,
         "tone": "neutral",
+        "vocab_cutoff": 72,
+        "pull_forward": _RETIRED_PULL_FORWARD,
+        "grammar_cutoff": 8,
+        "required_grammar": [],
         "target_words": (28, 42),
         "question_count": 2,
         "topic": (
@@ -61,6 +126,13 @@ N5_SEEDS = [
         "slug": "neko-to-shukudai",
         "position": 2,
         "tone": "humorous",
+        "vocab_cutoff": 144,
+        "pull_forward": _RETIRED_PULL_FORWARD,
+        # 23, not the 15 the old rule derived: 先生に出しません is `ni-indirect`
+        # (point 23), which the shipped passage and the gate's own good fixture
+        # both use. The old rule never noticed, because nothing read the body.
+        "grammar_cutoff": 23,
+        "required_grammar": ["masen", "mashita", "wo"],
         "target_words": (32, 48),
         "question_count": 2,
         "topic": (
@@ -75,6 +147,10 @@ N5_SEEDS = [
         "slug": "gakkou-no-ichinichi",
         "position": 3,
         "tone": "neutral",
+        "vocab_cutoff": 216,
+        "pull_forward": _RETIRED_PULL_FORWARD,
+        "grammar_cutoff": 23,
+        "required_grammar": [],
         "target_words": (38, 55),
         "question_count": 3,
         "topic": (
@@ -89,6 +165,10 @@ N5_SEEDS = [
         "slug": "tamago-o-kaisugiru",
         "position": 4,
         "tone": "humorous",
+        "vocab_cutoff": 288,
+        "pull_forward": _RETIRED_PULL_FORWARD,
+        "grammar_cutoff": 30,
+        "required_grammar": [],
         "target_words": (42, 60),
         "question_count": 2,
         "topic": (
@@ -103,6 +183,10 @@ N5_SEEDS = [
         "slug": "eki-made-no-michi",
         "position": 5,
         "tone": "neutral",
+        "vocab_cutoff": 359,
+        "pull_forward": _RETIRED_PULL_FORWARD,
+        "grammar_cutoff": 37,
+        "required_grammar": ["kara-from", "te-kudasai"],
         "target_words": (48, 68),
         "question_count": 3,
         "topic": (
@@ -117,6 +201,17 @@ N5_SEEDS = [
         "slug": "kasa-no-machigai",
         "position": 6,
         "tone": "humorous",
+        "vocab_cutoff": 431,
+        "pull_forward": [
+            "namae", "nihon", "nihongo", "benkyou", "shukudai", "jugyou", "mono",
+            "naka", "ue", "shita-v", "mae", "ushiro", "tonari", "chikaku",
+            "migi-v", "hidari-v",
+            "ji-oclock", "jikan-counter", "tsugi",
+            "nin-counter", "takusan", "zenbu",
+            "sumu", "hajimaru", "owaru", "yobu", "magaru",
+        ],
+        "grammar_cutoff": 45,
+        "required_grammar": [],
         "target_words": (55, 75),
         "question_count": 3,
         "topic": (
@@ -133,6 +228,15 @@ N5_SEEDS = [
         "slug": "jidouhanbaiki",
         "position": 7,
         "tone": "humorous",
+        "vocab_cutoff": 503,
+        "pull_forward": [
+            "mono", "naka", "ue", "shita-v", "mae", "ushiro", "tonari", "chikaku",
+            "migi-v", "hidari-v",
+            "ji-oclock", "jikan-counter", "tsugi",
+            "nin-counter", "takusan", "zenbu",
+        ],
+        "grammar_cutoff": 52,
+        "required_grammar": [],
         "target_words": (62, 85),
         "question_count": 3,
         "topic": (
@@ -147,6 +251,10 @@ N5_SEEDS = [
         "slug": "umi-e-ikimashita",
         "position": 8,
         "tone": "neutral",
+        "vocab_cutoff": 575,
+        "pull_forward": ["tsugi"],
+        "grammar_cutoff": 60,
+        "required_grammar": [],
         "target_words": (70, 95),
         "question_count": 3,
         "topic": (
@@ -162,6 +270,10 @@ N5_SEEDS = [
         "slug": "inu-to-reizouko",
         "position": 9,
         "tone": "humorous",
+        "vocab_cutoff": 647,
+        "pull_forward": ["tsugi"],
+        "grammar_cutoff": 67,
+        "required_grammar": [],
         "target_words": (78, 105),
         "question_count": 3,
         "topic": (
@@ -176,6 +288,10 @@ N5_SEEDS = [
         "slug": "onaji-hana",
         "position": 10,
         "tone": "humorous",
+        "vocab_cutoff": 718,
+        "pull_forward": [],
+        "grammar_cutoff": 74,
+        "required_grammar": [],
         "target_words": (85, 115),
         "question_count": 3,
         "topic": (
@@ -213,7 +329,8 @@ def all_slugs(level):
 
 
 def seed_errors(level):
-    """Structural problems with a level's seed list (positions, tones, bands).
+    """Structural problems with a level's seed list (positions, tones, bands,
+    the authored ladder, and level-wide grammar coverage).
 
     Run by the gate and by `generate_readings context`, because a malformed
     seed list silently produces malformed prompts."""
@@ -235,7 +352,108 @@ def seed_errors(level):
             errors.append(f"{s['slug']}: target_words {s['target_words']} is not a band")
         if s["question_count"] < 2:
             errors.append(f"{s['slug']}: question_count must be at least 2")
+    errors += ladder_errors(level)
+    errors += grammar_coverage_errors(level)
     errors += tone_mix_errors(level)
+    return errors
+
+
+def ladder_errors(level):
+    """The authored window of each seed: cutoffs in range and rising with
+    position, `pull_forward` naming later words only, `required_grammar` naming
+    points the seed's own cutoff has reached."""
+    errors = []
+    vocab = [v["slug"] for v in context.load_vocab(level)]
+    grammar = [g["slug"] for g in context.load_grammar(level)]
+    vocab_at = {slug: i for i, slug in enumerate(vocab)}
+    grammar_at = {slug: i for i, slug in enumerate(grammar)}
+    already_allowed = set(context.CORE_SEED_SLUGS.get(level, []))
+
+    seeds = sorted(seeds_for(level), key=lambda s: s["position"])
+    previous = None
+    for s in seeds:
+        missing = [f for f in LADDER_FIELDS if f not in s]
+        if missing:
+            errors.append(f"{s['slug']}: missing ladder field(s) {', '.join(missing)}")
+            continue
+        for field, total in (("vocab_cutoff", len(vocab)),
+                             ("grammar_cutoff", len(grammar))):
+            if not isinstance(s[field], int) or not 1 <= s[field] <= total:
+                errors.append(
+                    f"{s['slug']}: {field} is {s[field]!r}; expected 1..{total}"
+                )
+        if previous is not None:
+            for field in ("vocab_cutoff", "grammar_cutoff"):
+                if s.get(field, 0) < previous.get(field, 0):
+                    errors.append(
+                        f"{s['slug']}: {field} {s[field]} is below "
+                        f"{previous['slug']}'s {previous[field]} — the ladder only "
+                        f"goes up, or an earlier passage may use what a later one "
+                        f"may not"
+                    )
+        previous = s
+
+        for slug in s["pull_forward"]:
+            if slug not in vocab_at:
+                errors.append(f"{s['slug']}: pull_forward {slug!r} is not a {level} word")
+            elif vocab_at[slug] < s["vocab_cutoff"]:
+                errors.append(
+                    f"{s['slug']}: pull_forward {slug!r} is word "
+                    f"{vocab_at[slug] + 1}, already inside vocab_cutoff "
+                    f"{s['vocab_cutoff']}"
+                )
+            elif slug in already_allowed:
+                errors.append(
+                    f"{s['slug']}: pull_forward {slug!r} is already a CORE_SEED_SLUG"
+                )
+        for slug in s["required_grammar"]:
+            if slug not in grammar_at:
+                errors.append(
+                    f"{s['slug']}: required_grammar {slug!r} is not a {level} "
+                    f"grammar point"
+                )
+            elif grammar_at[slug] >= s["grammar_cutoff"]:
+                errors.append(
+                    f"{s['slug']}: required_grammar {slug!r} is point "
+                    f"{grammar_at[slug] + 1}, past grammar_cutoff "
+                    f"{s['grammar_cutoff']} — the passage may not use what it must use"
+                )
+            elif slug in grammar_detect.MANUAL_SLUGS:
+                errors.append(
+                    f"{s['slug']}: required_grammar {slug!r} is a MANUAL_SLUG; no "
+                    f"mechanical rule can confirm a passage uses it, so it cannot "
+                    f"be required"
+                )
+    return errors
+
+
+def grammar_coverage_errors(level):
+    """The invariant: every grammar point of the level is assigned to exactly
+    one seed. Remove an assignment and the build breaks — which is the whole
+    point of `required_grammar`."""
+    assigned = {}
+    for s in seeds_for(level):
+        for slug in s.get("required_grammar", []):
+            assigned.setdefault(slug, []).append(s["slug"])
+
+    level_slugs = [g["slug"] for g in context.load_grammar(level)]
+    unassigned = [slug for slug in level_slugs if slug not in assigned]
+    errors = []
+    if unassigned:
+        shown = ", ".join(unassigned[:12])
+        rest = len(unassigned) - 12
+        errors.append(
+            f"{level} grammar coverage is "
+            f"{len(level_slugs) - len(unassigned)}/{len(level_slugs)}; unassigned to "
+            f"any seed's required_grammar: {shown}"
+            + (f", … (+{rest} more)" if rest > 0 else "")
+        )
+    for slug, owners in sorted(assigned.items()):
+        if len(owners) > 1:
+            errors.append(
+                f"{level} grammar {slug} is required by {len(owners)} seeds "
+                f"({', '.join(owners)}); each point belongs to exactly one passage"
+            )
     return errors
 
 

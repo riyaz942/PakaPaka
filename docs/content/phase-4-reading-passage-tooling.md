@@ -17,18 +17,18 @@ All under `curriculum/_build/generate_content/`, mirroring the 2b/2c lanes:
 
 | File | What it is |
 |---|---|
-| `reading_seeds.py` | The 10 N5 seeds: position, tone tag, word band, question count, topic brief, allowed character names. 6 humorous / 4 neutral = 60%, checked by `tone_mix_errors`. |
-| `reading_context.py` | Per-seed allowed vocabulary + grammar (positional cutoff, same option (a) as 2a/2c), the level-check index, and the markable dictionary forms. |
+| `reading_seeds.py` | The N5 seeds: position, tone tag, the authored window (`vocab_cutoff` / `pull_forward` / `grammar_cutoff`), `required_grammar`, word band, question count, topic brief, allowed character names. Checked by `seed_errors` — ladder shape, humour mix, and the level-wide grammar coverage invariant. |
+| `reading_context.py` | Per-seed allowed vocabulary + grammar (read from the seed's own ladder), the level-check index, and the markable dictionary forms. |
 | `prompts/reading-passage.md` | The generation prompt. `persona.md` (v2, comedy register) is the system prompt, as in 2b/2c. |
-| `validate_readings.py` | The closed-loop gate, plus the enrichment (`word_spans`, `vocabulary_slugs`, `word_count`, `body_furigana`, `prompt_furigana`) and the fixture self-check. |
+| `validate_readings.py` | The closed-loop gate, plus the enrichment (`grammar_slugs`, `word_spans`, `vocabulary_slugs`, `word_count`, `body_furigana`, `prompt_furigana`) and the fixture self-check. |
 | `generate_readings.py` | The driver: `context`, `requests`, `run`, `collect`, `assemble`, and the no-API `webprompts` / `ingest` lane. |
-| `fixtures/readings/n5/` | 2 good + 8 bad fixtures, each declaring the error it exists to provoke. |
+| `fixtures/readings/n5/` | 2 good + 9 bad fixtures, each declaring the error it exists to provoke. |
 
 ## Decisions worth knowing before you run it
 
 **The model does not write the enrichment.** It submits `title`, `body`,
-`english_translation`, `summary_ja`, `summary_en`, `questions` and
-`grammar_slugs`. `word_spans`, `vocabulary_slugs`, `word_count`,
+`english_translation`, `summary_ja`, `summary_en` and `questions`.
+`grammar_slugs`, `word_spans`, `vocabulary_slugs`, `word_count`,
 `body_furigana` and `prompt_furigana` are all derived by the tokenizer —
 `compile-curriculum` requires each span's slice to equal the vocabulary item's
 `primary_form` exactly, in body order, non-overlapping, at UTF-16 offsets,
@@ -61,23 +61,26 @@ numerals and counters bound to a numeral are excluded. Checked against the
 shipped set: the derivation reproduces every one of the 10 hand-authored
 passages' span slugs and adds more (10–14 per passage vs 3–10 authored).
 
-**The grammar constraint is only half mechanical.** A tokenizer cannot extract
-"the grammar points this text uses", so the gate checks the *declared*
-`grammar_slugs` against the allowed set and nothing further. Grammar the model
-used but did not declare is a human-read concern. Nothing in the tooling
-pretends otherwise.
+**The grammar constraint is mechanical too, since the expansion plan's step 1.**
+`grammar_detect.py` extracts the points a body uses from the tokenizer and the
+reviewed `accepted_forms`, at 98.8% recall against the shipped declarations.
+The gate checks *that* against the allowed set, so grammar the model used and
+would not have declared no longer rides on the human read, and `grammar_slugs`
+is derived rather than submitted.
 
 **Humour is planned, not sampled.** Tone is a seed field; the mix is checked
 over the level, never per call. Whether a `humorous` passage is actually funny
 is a human read.
 
-**`READING_CORE_SLUGS` exists because the vocabulary is ordered thematically.**
-名前 is the 488th N5 word, 時 the 567th, 次 the 686th, so a positional cutoff
-strands ordinary words and the first passages could not be written at all. This
-is the same amendment 2a made with `CORE_SEED_SLUGS`, scoped to this lane so it
-cannot drift the others. It holds narrative connective tissue only — position,
-sequence, quantity, and the verbs that move a scene along. **Do not add topic
-words to it**; move the seed to a later position instead, which is why
+**`pull_forward` exists because the vocabulary is ordered thematically.**
+名前 is the 488th N5 word, 時 the 567th, 次 the 686th, and the first verb 行く
+the 377th, so a cutoff alone strands ordinary words and the first passages
+could not be written at all. It was a flat per-level list (`READING_CORE_SLUGS`)
+until the expansion plan replaced it with a per-seed one, which is the same
+amendment 2a made with `CORE_SEED_SLUGS` but graded: early seeds pull a few
+words forward, later seeds none. It holds narrative connective tissue only —
+position, sequence, quantity, and the verbs that move a scene along. **Do not
+add topic words to it**; move the seed later in the ladder instead, which is why
 `inu-to-reizouko` sits at position 9 (冷蔵庫 is the 634th word) and
 `jidouhanbaiki` at 7.
 

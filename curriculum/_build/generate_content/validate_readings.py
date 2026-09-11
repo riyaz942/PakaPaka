@@ -10,9 +10,15 @@ retried (`generate_readings.py`), capped at 3 attempts.
 The model submits only what a model can be trusted with:
 
     title, body, english_translation, summary_ja, summary_en,
-    questions[{prompt, accepted_answers[]}], grammar_slugs[]
+    questions[{prompt, accepted_answers[]}]
 
 Everything positional or phonetic is **derived here**, never asked for:
+
+  * `grammar_slugs` — the points `grammar_detect.py` finds in the body. The
+    model used to declare this list about its own work, which made the seed's
+    `required_grammar` unenforceable and let out-of-level grammar through
+    unmentioned. Detection is calibrated at 98.8% recall against the reviewed
+    declarations (docs/content/reading-passage-expansion-plan.md § 4).
 
   * `word_spans` — non-overlapping occurrences of allowed vocabulary in the
     body: the dictionary form (来る), plus the taught inflections of any allowed
@@ -50,17 +56,16 @@ shipped JSON).
      `extra_allowed` names)
   5. furigana annotation succeeds — `annotate_sentence` returning None is a
      REJECTION for generated content, not silent no-furigana
-  6. declared `grammar_slugs` exist and are inside the seed's allowed set
+  6. grammar detected in the body is inside the seed's allowed set, and every
+     point in the seed's `required_grammar` is actually there
   7. derived spans satisfy the compile-time contract (in range, ordered,
      non-overlapping, surface equals the span's own claimed form) and the
      inflection contract (a taught family, a surface that really is a form of
      the word, and every taught-inflected occurrence of an allowed word spanned)
 
-**Not checked, by design:** whether the passage actually *uses* only allowed
-grammar (a tokenizer cannot extract grammar points — see `reading_context`),
-and whether a `humorous` seed produced something funny. Both are human-read
-concerns; the humour *mix* is checked at the seed level instead
-(`reading_seeds.tone_mix_errors`).
+**Not checked, by design:** whether a `humorous` seed produced something funny.
+That is a human-read concern; the humour *mix* is checked at the seed level
+instead (`reading_seeds.tone_mix_errors`).
 
 Standalone usage:
     .venv/bin/python -m generate_content.validate_readings --level n5
@@ -77,7 +82,9 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
-from generate_content import level_check, reading_context, reading_seeds, spans  # noqa: E402
+from generate_content import (  # noqa: E402
+    grammar_detect, level_check, reading_context, reading_seeds, spans,
+)
 from generate_content.validate_drafts import _known_readings  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -128,6 +135,55 @@ def build_passage_spans(body, span_forms):
     )
 
 
+def detect_grammar(body, level):
+    """The body's grammar points, from the tokenizer (`grammar_detect`).
+
+    This is the derived `grammar_slugs`: `enrich` stores it and check 6 gates
+    on it. Ambiguous matches are kept — ません is `masu` and `masen` and the
+    detector cannot say which the writer meant, so both are linked, which is
+    the recall-first trade `grammar_detect` documents."""
+    return grammar_detect.detect(body, level)
+
+
+def _grammar_errors(result, body, ctx):
+    """Check 6, over detected grammar rather than declared.
+
+    A surface with several readings (ません is `masu` and `masen`; れる is
+    `n4-potential` and `n4-passive`) is out of level only when **every** reading
+    is: the passage cannot be blamed for an interpretation it did not intend
+    when a taught one fits the same characters. `grammar_detect.MANUAL_SLUGS`
+    never reach `matches`, so a point no rule can separate from another is not
+    grounds for rejection here either."""
+    errors = []
+    by_span = {}
+    for match in result["matches"]:
+        by_span.setdefault((match["start"], match["end"]), []).append(match["slug"])
+
+    violations = {}
+    for (start, end), slugs in sorted(by_span.items()):
+        if any(slug in ctx["allowed_grammar_slugs"] for slug in slugs):
+            continue
+        key = tuple(sorted(set(slugs)))
+        violations.setdefault(key, []).append((start, end))
+    for slugs, spots in violations.items():
+        start, end = spots[0]
+        errors.append(
+            f"grammar not taught by this point: {' / '.join(slugs)} — "
+            f"{body[start:end]!r} in ...{body[max(0, start - 10):end + 10]}... "
+            f"({len(spots)}x). Rewrite the sentence using the allowed patterns."
+        )
+
+    found = set(result["slugs"])
+    missing = [s for s in ctx["required_grammar_slugs"] if s not in found]
+    if missing:
+        errors.append(
+            f"required grammar missing from the passage: {', '.join(missing)} — "
+            f"this passage is the only one in the level assigned these points, so "
+            f"it has to use each of them at least once"
+        )
+    return errors
+
+
 def _annotated(text, known_readings):
     """Bracket-annotated `text`, or None when there is nothing to annotate.
 
@@ -175,7 +231,7 @@ def enrich(draft, ctx):
         "english_translation": draft["english_translation"].strip(),
         "summary_ja": draft["summary_ja"].strip(),
         "summary_en": draft["summary_en"].strip(),
-        "grammar_slugs": list(draft.get("grammar_slugs", [])),
+        "grammar_slugs": detect_grammar(body, ctx["level"])["slugs"],
         "vocabulary_slugs": sorted({s["vocabulary_slug"] for s in word_spans}),
         "word_spans": word_spans,
         "word_count": word_count(body),
@@ -407,19 +463,8 @@ def validate_draft(level, slug, draft, ctx=None):
         if furigana_lib.annotate_sentence(body, known_readings) is None:
             errors.append("body: furigana annotation failed (tokenizer round-trip)")
 
-    # 6. declared grammar
-    grammar_slugs = draft.get("grammar_slugs")
-    if not isinstance(grammar_slugs, list) or not grammar_slugs:
-        errors.append("missing or empty field grammar_slugs")
-    else:
-        if len(set(grammar_slugs)) != len(grammar_slugs):
-            errors.append(f"grammar_slugs contains duplicates: {grammar_slugs}")
-        unknown = [s for s in grammar_slugs if s not in ctx["allowed_grammar_slugs"]]
-        if unknown:
-            errors.append(
-                f"grammar_slugs outside the allowed set (not taught by this point, or "
-                f"not a real slug): {unknown}"
-            )
+    # 6. grammar the body actually uses
+    errors += _grammar_errors(detect_grammar(body, level), body, ctx)
 
     errors += _question_errors(draft, ctx, known_readings)
     errors += _span_errors(build_passage_spans(body, ctx["span_forms"]), body, ctx)

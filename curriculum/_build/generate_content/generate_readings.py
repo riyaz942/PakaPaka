@@ -26,8 +26,9 @@ passages — that content decision is settled — but the swap waits on the Phas
 human read of the whole level, which no script can stand in for. See
 docs/content/phase-4-reading-passage-tooling.md for the wire-in procedure.
 
-Enrichment (`word_spans`, `vocabulary_slugs`, `word_count`, `body_furigana`,
-`prompt_furigana`) is computed in `_build` and stored in that artifact, which is
+Enrichment (`grammar_slugs`, `word_spans`, `vocabulary_slugs`, `word_count`,
+`body_furigana`, `prompt_furigana`) is computed in `_build` and stored in that
+artifact, which is
 the shape Rev 1's generator-drift fix requires: enrichment that lives only in
 the shipped JSON gets silently wiped by the next regeneration while
 `validate-schema` stays green.
@@ -64,7 +65,9 @@ PASSAGES_DIR = os.path.join(HERE, "passages")
 
 MODEL = "claude-opus-5"
 #: Bump together with prompts/reading-passage.md, persona.md, or the seed contract.
-PROMPT_VERSION = 1
+#: 2 — `grammar_slugs` left the submission (derived by `grammar_detect` now) and
+#: the seed's `required_grammar` came in as a brief.
+PROMPT_VERSION = 2
 MAX_ATTEMPTS = 3
 #: Covers thinking *and* the submitted tool call. Opus 5 runs adaptive thinking
 #: when `thinking` is omitted — Opus 4.8 did not — so the 3000 that sufficed
@@ -85,7 +88,7 @@ SUBMIT_TOOL = {
         "additionalProperties": False,
         "required": [
             "title", "body", "english_translation", "summary_ja", "summary_en",
-            "questions", "grammar_slugs",
+            "questions",
         ],
         "properties": {
             "title": {"type": "string"},
@@ -108,7 +111,6 @@ SUBMIT_TOOL = {
                     },
                 },
             },
-            "grammar_slugs": {"type": "array", "items": {"type": "string"}},
         },
     },
 }
@@ -166,6 +168,23 @@ def _extra_allowed_block(ctx):
     )
 
 
+def _required_grammar_block(ctx):
+    """The seed's assigned grammar, briefed. Omitted when the seed has no
+    assignment — which the level-wide coverage check
+    (`reading_seeds.grammar_coverage_errors`) reports as a hole in its own
+    right, so there is nothing to say about it here."""
+    if not ctx["required_grammar"]:
+        return ""
+    return (
+        "## Grammar this passage must use\n\n"
+        "These points are assigned to this passage and to no other in the "
+        "level, so each one has to appear in the body at least once:\n\n"
+        + rc.format_grammar_list(ctx["required_grammar"])
+        + "\n\nThe build finds them in your text with a tokenizer. You do not "
+        "declare what you used; a point that is not really there fails the gate."
+    )
+
+
 def build_user_prompt(ctx, validator_errors=None, tool_line=None):
     template = _read_prompt("reading-passage.md")
     lo, hi = ctx["target_words"]
@@ -178,6 +197,7 @@ def build_user_prompt(ctx, validator_errors=None, tool_line=None):
         "{{ALLOWED_VOCAB}}": grammar_context.format_vocab_list(ctx["allowed"]),
         "{{EXTRA_ALLOWED_BLOCK}}": _extra_allowed_block(ctx),
         "{{ALLOWED_GRAMMAR}}": rc.format_grammar_list(ctx["allowed_grammar"]),
+        "{{REQUIRED_GRAMMAR_BLOCK}}": _required_grammar_block(ctx),
         "{{WORD_LO}}": str(lo),
         "{{WORD_HI}}": str(hi),
         "{{QUESTION_COUNT}}": str(ctx["question_count"]),
@@ -336,6 +356,7 @@ def cmd_context(args):
               f"last: {ctx['allowed'][-1]['primary_form']})")
         print(f"allowed grammar {len(ctx['allowed_grammar'])} points "
               f"(last: {ctx['allowed_grammar'][-1]['primary_form']})")
+        print(f"required grammar {ctx['required_grammar_slugs'] or '(none assigned)'}")
         print(f"span forms     {len(ctx['span_forms'])} markable dictionary forms")
         print(f"extra allowed  {sorted(ctx['extra_allowed']) or '(none)'}")
         prompt = build_user_prompt(ctx)
@@ -493,8 +514,7 @@ WEB_SKELETON = (
     '```json\n{\n  "title": "...",\n  "body": "...",\n'
     '  "english_translation": "...",\n  "summary_ja": "...",\n'
     '  "summary_en": "...",\n  "questions": [\n    {\n      "prompt": "...",\n'
-    '      "accepted_answers": ["...", "..."]\n    }\n  ],\n'
-    '  "grammar_slugs": ["..."]\n}\n```'
+    '      "accepted_answers": ["...", "..."]\n    }\n  ]\n}\n```'
 )
 
 
