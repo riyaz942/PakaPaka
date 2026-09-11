@@ -12655,7 +12655,13 @@
           "answer_text": "ふかのう"
         }
       ],
-      "furigana": "不[ふ]可[か]能[のう]"
+      "furigana": "不[ふ]可[か]能[のう]",
+      "meaning_mnemonic": "Erase the <kanji form=\"能\">ability</kanji> to do it, erase the fact that it <kanji form=\"可\">can</kanji> be done, then stamp a <kanji form=\"不\">negative</kanji> across what is left, and the thing is flatly <vocabulary form=\"不可能\">impossible</vocabulary>. As a な adjective, it wants な before any noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "meiwaku",
@@ -12676,7 +12682,13 @@
           "answer_text": "めいわく"
         }
       ],
-      "furigana": "迷[めい]惑[わく]"
+      "furigana": "迷[めい]惑[わく]",
+      "meaning_mnemonic": "Someone leads you <kanji form=\"迷\">astray</kanji>, then leaves you standing there in <kanji form=\"惑\">perplexity</kanji>, and being dropped in that state by another person is what makes them <vocabulary form=\"迷惑\">annoying / a bother</vocabulary>. It is a な adjective, so な comes before the noun.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koufuku",
@@ -12697,7 +12709,13 @@
           "answer_text": "こうふく"
         }
       ],
-      "furigana": "幸[こう]福[ふく]"
+      "furigana": "幸[こう]福[ふく]",
+      "meaning_mnemonic": "Set the homegrown <kanji form=\"幸\">happiness</kanji> of a stalk in your own soil next to an outright <kanji form=\"福\">blessing</kanji> dropped in your lap, and stacked together they are <vocabulary form=\"幸福\">formal happiness</vocabulary>. This is a な adjective, so な goes in front of the noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiawase",
@@ -12718,7 +12736,14 @@
           "answer_text": "しあわせ"
         }
       ],
-      "furigana": "幸[しあわ]せ"
+      "furigana": "幸[しあわ]せ",
+      "meaning_mnemonic": "A stalk you raised yourself, coming up green through your own patch of earth, is the small sure <kanji form=\"幸\">happiness</kanji> of being <vocabulary form=\"幸せ\">happy / fortunate</vocabulary>. It works as a な adjective, so な sits before the noun.",
+      "reading_mnemonic": "The woman on the bench gives a small wave at nothing whenever her luck turns. That reflex, <reading>she waves</reading>, is <reading>しあわせ</reading>, the tell of someone <vocabulary form=\"幸せ\">happy / fortunate</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fukou",
@@ -12739,7 +12764,13 @@
           "answer_text": "ふこう"
         }
       ],
-      "furigana": "不[ふ]幸[こう]"
+      "furigana": "不[ふ]幸[こう]",
+      "meaning_mnemonic": "Draw one hard <kanji form=\"不\">negative</kanji> stroke through that stalk of <kanji form=\"幸\">happiness</kanji> standing in your own soil, and what is left is <vocabulary form=\"不幸\">unfortunate / misfortune</vocabulary>. It is a な adjective, so な comes before the noun it describes.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kiraku",
@@ -12760,7 +12791,13 @@
           "answer_text": "きらく"
         }
       ],
-      "furigana": "気[き]楽[らく]"
+      "furigana": "気[き]楽[らく]",
+      "meaning_mnemonic": "Let your <kanji form=\"気\">spirit</kanji> rise off you light as steam and everything within reach feel like plain <kanji form=\"楽\">ease</kanji>, and that is what being <vocabulary form=\"気楽\">carefree / relaxed</vocabulary> is. As a な adjective, な comes before the noun it modifies.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kankei",
@@ -12781,7 +12818,13 @@
           "answer_text": "かんけい"
         }
       ],
-      "furigana": "関[かん]係[けい]"
+      "furigana": "関[かん]係[けい]",
+      "meaning_mnemonic": "Run a cord from one person to another and pull your end of it. Whatever happens to the one is felt straight down the line by the other, and that living line between them is a <vocabulary form=\"関係\">relationship / connection</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyoumi",
@@ -12802,7 +12845,13 @@
           "answer_text": "きょうみ"
         }
       ],
-      "furigana": "興[きょう]味[み]"
+      "furigana": "興[きょう]味[み]",
+      "meaning_mnemonic": "A subject that keeps <kanji form=\"興\">entertaining</kanji> you and leaves a <kanji form=\"味\">taste</kanji> you go back for again has a hold on you. That hold is your <vocabulary form=\"興味\">interest</vocabulary> in it.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kibou",
@@ -12823,7 +12872,13 @@
           "answer_text": "きぼう"
         }
       ],
-      "furigana": "希[き]望[ぼう]"
+      "furigana": "希[き]望[ぼう]",
+      "meaning_mnemonic": "Fix your mind on the thing you want and hold the picture of it bright even while it is still far off. Refusing to let that picture go dim is <vocabulary form=\"希望\">hope / wish</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mokuteki",
@@ -12844,7 +12899,13 @@
           "answer_text": "もくてき"
         }
       ],
-      "furigana": "目[もく]的[てき]"
+      "furigana": "目[もく]的[てき]",
+      "meaning_mnemonic": "Fix your <kanji form=\"目\">eye</kanji> on the <kanji form=\"的\">target</kanji> at the far end of the range and let everything else blur. That one held point is your <vocabulary form=\"目的\">purpose / goal</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "houhou",
@@ -12865,7 +12926,13 @@
           "answer_text": "ほうほう"
         }
       ],
-      "furigana": "方[ほう]法[ほう]"
+      "furigana": "方[ほう]法[ほう]",
+      "meaning_mnemonic": "Which <kanji form=\"方\">direction</kanji> you choose to come at a task from is your <vocabulary form=\"方法\">method</vocabulary> for getting it done. Pick a different way in and you have a different method.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jouken",
@@ -12886,7 +12953,13 @@
           "answer_text": "じょうけん"
         }
       ],
-      "furigana": "条[じょう]件[けん]"
+      "furigana": "条[じょう]件[けん]",
+      "meaning_mnemonic": "Each <kanji form=\"条\">clause</kanji> written into the agreement names one <kanji form=\"件\">matter</kanji> that has to be settled before anything moves ahead. Every one of those clauses is a <vocabulary form=\"条件\">condition</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "teian",
@@ -12907,7 +12980,13 @@
           "answer_text": "ていあん"
         }
       ],
-      "furigana": "提[てい]案[あん]"
+      "furigana": "提[てい]案[あん]",
+      "meaning_mnemonic": "You <kanji form=\"提\">carry</kanji> a worked-out <kanji form=\"案\">plan</kanji> in your hands to the meeting and lay it flat on the table for the room. Set out to be judged like that, it is a <vocabulary form=\"提案\">proposal</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kikai-machine",
@@ -12928,7 +13007,13 @@
           "answer_text": "きかい"
         }
       ],
-      "furigana": "機[き]械[かい]"
+      "furigana": "機[き]械[かい]",
+      "meaning_mnemonic": "A cabinet packed with gears and levers that turns one small push at the handle into the same heavy job done over and over is a <vocabulary form=\"機械\">machine</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kikai-chance",
@@ -12949,7 +13034,13 @@
           "answer_text": "きかい"
         }
       ],
-      "furigana": "機[き]会[かい]"
+      "furigana": "機[き]会[かい]",
+      "meaning_mnemonic": "The <kanji form=\"機\">mechanism</kanji> of events turns, and for one moment a gap in it lines up with you. Step through and <kanji form=\"会\">meet</kanji> it and you have taken an <vocabulary form=\"機会\">opportunity</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "baai",
@@ -12970,7 +13061,13 @@
           "answer_text": "ばあい"
         }
       ],
-      "furigana": "場[ば]合[あい]"
+      "furigana": "場[ば]合[あい]",
+      "meaning_mnemonic": "Take one <kanji form=\"場\">place</kanji> and one particular way the details inside it <kanji form=\"合\">fit</kanji> together. That exact arrangement is the <vocabulary form=\"場合\">case / situation</vocabulary> you are talking about.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jijou",
@@ -12991,7 +13088,13 @@
           "answer_text": "じじょう"
         }
       ],
-      "furigana": "事[じ]情[じょう]"
+      "furigana": "事[じ]情[じょう]",
+      "meaning_mnemonic": "A single <kanji form=\"事\">matter</kanji> sitting at the centre of an event drags a whole knot of <kanji form=\"情\">feelings</kanji> in behind it. That full tangle around it is the <vocabulary form=\"事情\">circumstances</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanjou",
@@ -13012,7 +13115,13 @@
           "answer_text": "かんじょう"
         }
       ],
-      "furigana": "感[かん]情[じょう]"
+      "furigana": "感[かん]情[じょう]",
+      "meaning_mnemonic": "The whole <kanji form=\"感\">feeling</kanji> hitting you at once, with the head left out of it entirely, settles into one named <vocabulary form=\"感情\">emotion</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seikaku",
@@ -13033,7 +13142,13 @@
           "answer_text": "せいかく"
         }
       ],
-      "furigana": "性[せい]格[かく]"
+      "furigana": "性[せい]格[かく]",
+      "meaning_mnemonic": "Your inborn <kanji form=\"性\">nature</kanji> gets worn over years into a fixed <kanji form=\"格\">rank</kanji> of habits and set reactions. That settled shape is what others call your <vocabulary form=\"性格\">personality</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taido",
@@ -13054,7 +13169,13 @@
           "answer_text": "たいど"
         }
       ],
-      "furigana": "態[たい]度[ど]"
+      "furigana": "態[たい]度[ど]",
+      "meaning_mnemonic": "Measure how many <kanji form=\"度\">degrees</kanji> a person leans toward or away from what is put in front of them. That tilt, read off face and posture, is their <vocabulary form=\"態度\">attitude</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gijutsu",
@@ -13075,7 +13196,13 @@
           "answer_text": "ぎじゅつ"
         }
       ],
-      "furigana": "技[ぎ]術[じゅつ]"
+      "furigana": "技[ぎ]術[じゅつ]",
+      "meaning_mnemonic": "Years of drills turn shaky hands into hands that can build or fix almost anything. That hard-won ability is your <vocabulary form=\"技術\">technology / skill</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kagakusha",
@@ -13096,7 +13223,13 @@
           "answer_text": "かがくしゃ"
         }
       ],
-      "furigana": "科[か]学[がく]者[しゃ]"
+      "furigana": "科[か]学[がく]者[しゃ]",
+      "meaning_mnemonic": "A <kanji form=\"者\">person</kanji> who spends every day turning pages in one narrow <kanji form=\"科\">department</kanji> of <kanji form=\"学\">study</kanji> is a <vocabulary form=\"科学者\">scientist</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hatsumei",
@@ -13117,7 +13250,13 @@
           "answer_text": "はつめい"
         }
       ],
-      "furigana": "発[はつ]明[めい]"
+      "furigana": "発[はつ]明[めい]",
+      "meaning_mnemonic": "A <kanji form=\"明\">bright</kanji> idea that <kanji form=\"発\">departs</kanji> your head and turns into a working thing on the bench is an <vocabulary form=\"発明\">invention</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kenkyuu",
@@ -13138,7 +13277,13 @@
           "answer_text": "けんきゅう"
         }
       ],
-      "furigana": "研[けん]究[きゅう]"
+      "furigana": "研[けん]究[きゅう]",
+      "meaning_mnemonic": "You <kanji form=\"研\">polish</kanji> one question for years and dig in a cave for its bottom. That patient <kanji form=\"究\">study</kanji> of a thing down to its base is <vocabulary form=\"研究\">research</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jikken",
@@ -13159,7 +13304,13 @@
           "answer_text": "じっけん"
         }
       ],
-      "furigana": "実[じっ]験[けん]"
+      "furigana": "実[じっ]験[けん]",
+      "meaning_mnemonic": "To run an <vocabulary form=\"実験\">experiment</vocabulary> is to <kanji form=\"験\">examine</kanji>, under controlled conditions, whether an idea holds up against <kanji form=\"実\">reality</kanji>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chousa",
@@ -13180,7 +13331,13 @@
           "answer_text": "ちょうさ"
         }
       ],
-      "furigana": "調[ちょう]査[さ]"
+      "furigana": "調[ちょう]査[さ]",
+      "meaning_mnemonic": "You <kanji form=\"調\">investigate</kanji> once by putting the question to every face in the crowd, then <kanji form=\"査\">investigate</kanji> again to be sure. Two passes over the same ground make an <vocabulary form=\"調査\">investigation / survey</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "houkoku",
@@ -13201,7 +13358,13 @@
           "answer_text": "ほうこく"
         }
       ],
-      "furigana": "報[ほう]告[こく]"
+      "furigana": "報[ほう]告[こく]",
+      "meaning_mnemonic": "When you stand up and formally <kanji form=\"告\">tell</kanji> the room exactly what happened, start to finish, what you have given is a <vocabulary form=\"報告\">report</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaigi-shitsu",
@@ -13222,7 +13385,13 @@
           "answer_text": "かいぎしつ"
         }
       ],
-      "furigana": "会[かい]議[ぎ]室[しつ]"
+      "furigana": "会[かい]議[ぎ]室[しつ]",
+      "meaning_mnemonic": "Every hallway in the building ends at one <kanji form=\"室\">room</kanji> kept for people to <kanji form=\"会\">meet</kanji> and <kanji form=\"議\">debate</kanji> in. That is the <vocabulary form=\"会議室\">meeting room</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "uketsuke",
@@ -13243,7 +13412,14 @@
           "answer_text": "うけつけ"
         }
       ],
-      "furigana": "受[うけ]付[つけ]"
+      "furigana": "受[うけ]付[つけ]",
+      "meaning_mnemonic": "The first desk inside the door <kanji form=\"受\">accepts</kanji> your name and <kanji form=\"付\">attaches</kanji> you to the person you came to see. That desk is the <vocabulary form=\"受付\">reception (desk)</vocabulary>.",
+      "reading_mnemonic": "A bowing front-desk clerk greets every visitor with the same line: 「OK, <reading>take a key</reading>.」 Blur those words together and you hear <reading>うけつけ</reading>, the <vocabulary form=\"受付\">reception (desk)</vocabulary> where everyone checks in.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "annai",
@@ -13264,7 +13440,13 @@
           "answer_text": "あんない"
         }
       ],
-      "furigana": "案[あん]内[ない]"
+      "furigana": "案[あん]内[ない]",
+      "meaning_mnemonic": "Someone who holds the whole <kanji form=\"案\">plan</kanji> of a place in their head can lead you <kanji form=\"内\">inside</kanji> it without a wrong turn, and that service is <vocabulary form=\"案内\">guidance / information</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "annai-suru",
@@ -13285,7 +13467,13 @@
           "answer_text": "あんないする"
         }
       ],
-      "furigana": "案[あん]内[ない]する"
+      "furigana": "案[あん]内[ない]する",
+      "meaning_mnemonic": "You walk ahead of the visitor with the floor <kanji form=\"案\">plan</kanji> clear in your mind and name each room <kanji form=\"内\">inside</kanji> as you open its door. Doing that for someone is <vocabulary form=\"案内する\">to guide / show around</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chuui-suru",
@@ -13306,7 +13494,13 @@
           "answer_text": "ちゅういする"
         }
       ],
-      "furigana": "注[ちゅう]意[い]する"
+      "furigana": "注[ちゅう]意[い]する",
+      "meaning_mnemonic": "<kanji form=\"注\">Pour</kanji> your whole <kanji form=\"意\">mind</kanji> onto one spot and hold it there. That single act is what it means <vocabulary form=\"注意する\">to pay attention / warn</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kiroku",
@@ -13327,7 +13521,13 @@
           "answer_text": "きろく"
         }
       ],
-      "furigana": "記[き]録[ろく]"
+      "furigana": "記[き]録[ろく]",
+      "meaning_mnemonic": "A <kanji form=\"記\">scribe</kanji> writes down exactly what happened and keeps himself out of every line. That filed account, kept for checking years later, is a <vocabulary form=\"記録\">record</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "housou",
@@ -13348,7 +13548,13 @@
           "answer_text": "ほうそう"
         }
       ],
-      "furigana": "放[ほう]送[そう]"
+      "furigana": "放[ほう]送[そう]",
+      "meaning_mnemonic": "You <kanji form=\"放\">set free</kanji> a voice into the air and <kanji form=\"送\">send</kanji> it out to every radio in the country at once. That single push to everyone is a <vocabulary form=\"放送\">broadcast</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kouza",
@@ -13369,7 +13575,13 @@
           "answer_text": "こうざ"
         }
       ],
-      "furigana": "口[こう]座[ざ]"
+      "furigana": "口[こう]座[ざ]",
+      "meaning_mnemonic": "At the bank your money gets a reserved place to <kanji form=\"座\">sit</kanji>, and a slot shaped like a <kanji form=\"口\">mouth</kanji> in the counter is where you feed it in. That spot where your money sits is your <vocabulary form=\"口座\">bank account</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yokin",
@@ -13390,7 +13602,13 @@
           "answer_text": "よきん"
         }
       ],
-      "furigana": "預[よ]金[きん]"
+      "furigana": "預[よ]金[きん]",
+      "meaning_mnemonic": "Hand your gold coins across the bank counter for safe keeping instead of spending them, and the <kanji form=\"金\">money</kanji> the bank now holds for you is your <vocabulary form=\"預金\">savings / deposit</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shakkin",
@@ -13411,7 +13629,13 @@
           "answer_text": "しゃっきん"
         }
       ],
-      "furigana": "借[しゃっ]金[きん]"
+      "furigana": "借[しゃっ]金[きん]",
+      "meaning_mnemonic": "The <kanji form=\"金\">money</kanji> you <kanji form=\"借\">borrow</kanji> today and keep putting off paying back, month after month, is your <vocabulary form=\"借金\">debt</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoken",
@@ -13432,7 +13656,13 @@
           "answer_text": "ほけん"
         }
       ],
-      "furigana": "保[ほ]険[けん]"
+      "furigana": "保[ほ]険[けん]",
+      "meaning_mnemonic": "You pay a little now to <kanji form=\"保\">keep a guarantee</kanji> that pays out later, when the road turns <kanji form=\"険\">steep and dangerous</kanji>. That standing promise is <vocabulary form=\"保険\">insurance</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keiyaku",
@@ -13453,7 +13683,13 @@
           "answer_text": "けいやく"
         }
       ],
-      "furigana": "契[けい]約[やく]"
+      "furigana": "契[けい]約[やく]",
+      "meaning_mnemonic": "Two people each make a <kanji form=\"契\">pledge</kanji>, write the matching <kanji form=\"約\">promise</kanji> down, and sign it. That signed pair of promises is a <vocabulary form=\"契約\">contract</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shomei",
@@ -13474,7 +13710,13 @@
           "answer_text": "しょめい"
         }
       ],
-      "furigana": "署[しょ]名[めい]"
+      "furigana": "署[しょ]名[めい]",
+      "meaning_mnemonic": "A page cannot see your face, so you prove it is you by writing your <kanji form=\"名\">name</kanji> across the bottom in your own hand. That mark is your <vocabulary form=\"署名\">signature</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hanko",
@@ -13495,7 +13737,13 @@
           "answer_text": "はんこ"
         }
       ],
-      "furigana": "はんこ"
+      "furigana": "はんこ",
+      "meaning_mnemonic": "Picture your family name carved into a small red-inked <reading>hunk o'</reading> boxwood that you press onto every official form. That carved 「<reading>はんこ</reading>」 is your <vocabulary form=\"はんこ\">personal seal (stamp)</vocabulary>, and it signs for you all over Japan.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bengoshi",
@@ -13516,7 +13764,13 @@
           "answer_text": "べんごし"
         }
       ],
-      "furigana": "弁[べん]護[ご]士[し]"
+      "furigana": "弁[べん]護[ご]士[し]",
+      "meaning_mnemonic": "A <kanji form=\"士\">scholar</kanji> you hire to <kanji form=\"護\">protect</kanji> you works the case like a <kanji form=\"弁\">valve</kanji>, opening and shutting what the court is allowed to hear. Someone who guards you by controlling that flow is a <vocabulary form=\"弁護士\">lawyer</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keisatsukan",
@@ -13537,7 +13791,13 @@
           "answer_text": "けいさつかん"
         }
       ],
-      "furigana": "警[けい]察[さつ]官[かん]"
+      "furigana": "警[けい]察[さつ]官[かん]",
+      "meaning_mnemonic": "A <kanji form=\"官\">bureaucrat</kanji> paid to <kanji form=\"警\">admonish</kanji> lawbreakers and <kanji form=\"察\">surmise</kanji> which of them did it is a <vocabulary form=\"警察官\">police officer</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shouboushi",
@@ -13558,7 +13818,13 @@
           "answer_text": "しょうぼうし"
         }
       ],
-      "furigana": "消[しょう]防[ぼう]士[し]"
+      "furigana": "消[しょう]防[ぼう]士[し]",
+      "meaning_mnemonic": "A trained <kanji form=\"士\">samurai</kanji> of the fire station, sent in to <kanji form=\"消\">extinguish</kanji> a blaze and <kanji form=\"防\">defend</kanji> the next street from it, is a <vocabulary form=\"消防士\">firefighter</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaigan",
@@ -13579,7 +13845,13 @@
           "answer_text": "かいがん"
         }
       ],
-      "furigana": "海[かい]岸[がん]"
+      "furigana": "海[かい]岸[がん]",
+      "meaning_mnemonic": "Where the <kanji form=\"海\">sea</kanji> that every river drains into finally meets the <kanji form=\"岸\">beach</kanji>, you are standing on the <vocabulary form=\"海岸\">coast / seashore</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shima",
@@ -13600,7 +13872,14 @@
           "answer_text": "しま"
         }
       ],
-      "furigana": "島[しま]"
+      "furigana": "島[しま]",
+      "meaning_mnemonic": "A scrap of land with open sea on every side of it, no bridge and no road off, is an <vocabulary form=\"島\">island</vocabulary>.",
+      "reading_mnemonic": "Shig the shipwrecked sailor rows for days toward a green <reading>shimmer</reading> on the horizon. When he drags his boat ashore he names the place 「<reading>しま</reading>」, his own <vocabulary form=\"島\">island</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "noyama",
@@ -13621,7 +13900,13 @@
           "answer_text": "のやま"
         }
       ],
-      "furigana": "野[の]山[やま]"
+      "furigana": "野[の]山[やま]",
+      "meaning_mnemonic": "The open <kanji form=\"野\">plains</kanji> the village never fenced, set against the <kanji form=\"山\">mountain</kanji> at their back, are together the <vocabulary form=\"野山\">fields and mountains</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "inaka",
@@ -13642,7 +13927,14 @@
           "answer_text": "いなか"
         }
       ],
-      "furigana": "田舎[いなか]"
+      "furigana": "田舎[いなか]",
+      "meaning_mnemonic": "A view that is nothing but flooded <kanji form=\"田\">rice paddy</kanji> and one lonely <kanji form=\"舎\">hut</kanji> at its edge is the <vocabulary form=\"田舎\">countryside</vocabulary>.",
+      "reading_mnemonic": "Nao the delivery gecko groans that every run out here means three hours <reading>in a car</reading>. That long haul to 「<reading>いなか</reading>」 is just what visiting the <vocabulary form=\"田舎\">countryside</vocabulary> costs.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "toshi-city",
@@ -13663,7 +13955,13 @@
           "answer_text": "とし"
         }
       ],
-      "furigana": "都[と]市[し]"
+      "furigana": "都[と]市[し]",
+      "meaning_mnemonic": "The <kanji form=\"都\">metropolis</kanji> built up by constant new arrivals, with a <kanji form=\"市\">market</kanji> square beating at its center, is a <vocabulary form=\"都市\">city (urban)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shuto",
@@ -13684,7 +13982,13 @@
           "answer_text": "しゅと"
         }
       ],
-      "furigana": "首[しゅ]都[と]"
+      "furigana": "首[しゅ]都[と]",
+      "meaning_mnemonic": "The single <kanji form=\"首\">neck</kanji> that the whole <kanji form=\"都\">metropolis</kanji> turns its head on, the city every decision has to pass through, is the <vocabulary form=\"首都\">capital (city)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chihou",
@@ -13705,7 +14009,13 @@
           "answer_text": "ちほう"
         }
       ],
-      "furigana": "地[ち]方[ほう]"
+      "furigana": "地[ち]方[ほう]",
+      "meaning_mnemonic": "A stretch of <kanji form=\"地\">ground</kanji> marked off by which <kanji form=\"方\">direction</kanji> it lies from the capital is a <vocabulary form=\"地方\">region / countryside</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kokka",
@@ -13726,7 +14036,13 @@
           "answer_text": "こっか"
         }
       ],
-      "furigana": "国[こっ]家[か]"
+      "furigana": "国[こっ]家[か]",
+      "meaning_mnemonic": "Treat the whole <kanji form=\"国\">country</kanji>, walls and shared jewel and all, as one <kanji form=\"家\">house</kanji> that everyone inside it belongs to, and you have a <vocabulary form=\"国家\">nation / state</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bunmei",
@@ -13747,7 +14063,13 @@
           "answer_text": "ぶんめい"
         }
       ],
-      "furigana": "文[ぶん]明[めい]"
+      "furigana": "文[ぶん]明[めい]",
+      "meaning_mnemonic": "When a people's <kanji form=\"文\">literature</kanji> grows <kanji form=\"明\">bright</kanji> enough to light the road for everyone who comes after, that shared glow is a <vocabulary form=\"文明\">civilization</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seikatsu",
@@ -13768,7 +14090,13 @@
           "answer_text": "せいかつ"
         }
       ],
-      "furigana": "生[せい]活[かつ]"
+      "furigana": "生[せい]活[かつ]",
+      "meaning_mnemonic": "Your <kanji form=\"生\">life</kanji> seen as the <kanji form=\"活\">lively</kanji>, day-to-day business of eating, washing and getting by is your <vocabulary form=\"生活\">life / living</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shuukan-custom",
@@ -13790,11 +14118,10 @@
         }
       ],
       "furigana": "習[しゅう]慣[かん]",
-      "meaning_mnemonic": "That duckling from <kanji>practice</kanji> still can't land one clean flight, but it hasn't missed a single dawn either. Same rock, same launch, same scattered feathers, same untouched bead of milk on the lilypad — every morning, rain or shine. Repetition that rigid stops being practice; it <kanji>becomes</kanji> a habit, a fixed custom now.",
-      "reading_mnemonic": "習（しゅう）＋慣（かん）read straight through give <reading>しゅうかん</reading>, the fixed daily custom.",
+      "meaning_mnemonic": "Something you once had to <kanji form=\"習\">practice</kanji> on purpose and are now so <kanji form=\"慣\">accustomed</kanji> to that you do it without thinking has turned into a <vocabulary form=\"習慣\">custom / habit</vocabulary>.",
       "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
         "review_status": "draft"
       }
     },
@@ -13817,7 +14144,13 @@
           "answer_text": "にっき"
         }
       ],
-      "furigana": "日[にっ]記[き]"
+      "furigana": "日[にっ]記[き]",
+      "meaning_mnemonic": "A written <kanji form=\"記\">account</kanji> that breaks the usual rule and is only ever about your own <kanji form=\"日\">day</kanji> is a <vocabulary form=\"日記\">diary</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "okonau",
@@ -13838,7 +14171,14 @@
           "answer_text": "おこなう"
         }
       ],
-      "furigana": "行[おこな]う"
+      "furigana": "行[おこな]う",
+      "meaning_mnemonic": "You <kanji form=\"行\">go</kanji> from talking about a plan to running it for real. Taking a ceremony or a survey and actually staging it is what it means to <vocabulary form=\"行う\">carry out / conduct</vocabulary> it.",
+      "reading_mnemonic": "Koichi opens every konbini restock drill by clapping once and calling 「<reading>OK, now</reading>」. That is his cue to 「<reading>おこなう</reading>」 the plan, to <vocabulary form=\"行う\">carry out / conduct</vocabulary> it exactly as written.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sanka",
@@ -13859,7 +14199,13 @@
           "answer_text": "さんか"
         }
       ],
-      "furigana": "参[さん]加[か]"
+      "furigana": "参[さん]加[か]",
+      "meaning_mnemonic": "You stop watching from the side and start <kanji form=\"参\">going</kanji> along with the group. Once you <kanji form=\"加\">add</kanji> yourself to the people actually doing the thing, that is <vocabulary form=\"参加\">participation (noun)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gyouji",
@@ -13880,7 +14226,13 @@
           "answer_text": "ぎょうじ"
         }
       ],
-      "furigana": "行[ぎょう]事[じ]"
+      "furigana": "行[ぎょう]事[じ]",
+      "meaning_mnemonic": "A <kanji form=\"事\">matter</kanji> that the whole calendar has to <kanji form=\"行\">go</kanji> ahead with on one fixed date is an <vocabulary form=\"行事\">event / function</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "matsuri",
@@ -13901,7 +14253,14 @@
           "answer_text": "まつり"
         }
       ],
-      "furigana": "祭[まつ]り"
+      "furigana": "祭[まつ]り",
+      "meaning_mnemonic": "A village <kanji form=\"祭\">ritual</kanji> for the local gods, once the whole street piles on food stalls, drums and lanterns, has grown into a <vocabulary form=\"祭り\">festival</vocabulary>.",
+      "reading_mnemonic": "Tomo the tanuki knows the shrine <reading>mats really</reading> fill up fast once the drums start. He stakes out his spot for the 「<reading>まつり</reading>」 hours before the <vocabulary form=\"祭り\">festival</vocabulary> begins.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hanabi",
@@ -13922,7 +14281,13 @@
           "answer_text": "はなび"
         }
       ],
-      "furigana": "花[はな]火[び]"
+      "furigana": "花[はな]火[び]",
+      "meaning_mnemonic": "A <kanji form=\"火\">fire</kanji> that bursts open in the sky as a huge <kanji form=\"花\">flower</kanji> of coloured sparks is what <vocabulary form=\"花火\">fireworks</vocabulary> are.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shourai-keikaku",
@@ -13942,7 +14307,13 @@
           "answer_text": "しょうらいけいかく"
         }
       ],
-      "furigana": "将[しょう]来[らい]計[けい]画[かく]"
+      "furigana": "将[しょう]来[らい]計[けい]画[かく]",
+      "meaning_mnemonic": "A <kanji form=\"将\">general</kanji> decides which battles are still to <kanji form=\"来\">come</kanji>, counts them out as a quiet <kanji form=\"計\">plot</kanji>, and draws the whole campaign in a single <kanji form=\"画\">brush-stroke</kanji>. That stroke showing what lies ahead is a <vocabulary form=\"将来計画\">future plan</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hikkoshi",
@@ -13963,7 +14334,13 @@
           "answer_text": "ひっこし"
         }
       ],
-      "furigana": "引[ひ]っ越[こ]し"
+      "furigana": "引[ひ]っ越[こ]し",
+      "meaning_mnemonic": "When you <kanji form=\"引\">pull</kanji> the last box off the old floor and <kanji form=\"越\">cross over</kanji> into an empty new flat, that whole change of address is <vocabulary form=\"引っ越し\">moving (residence, noun)</vocabulary>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gomi",
@@ -13984,7 +14361,13 @@
           "answer_text": "ごみ"
         }
       ],
-      "furigana": "ごみ"
+      "furigana": "ごみ",
+      "meaning_mnemonic": "The raccoon works the alley bins like a <reading>gourmet</reading> picking a buffet, but every fish skeleton, mouldy rice ball, and coffee filter it drags out is just <vocabulary form=\"ごみ\">trash / garbage</vocabulary>. The raccoon's five-star spread is <reading>ごみ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gomibako",
@@ -14005,7 +14388,14 @@
           "answer_text": "ごみばこ"
         }
       ],
-      "furigana": "ごみ箱[ばこ]"
+      "furigana": "ごみ箱[ばこ]",
+      "meaning_mnemonic": "A <kanji form=\"箱\">box</kanji> whose only job is to hold the trash you throw out all day is a <vocabulary form=\"ごみ箱\">trash can</vocabulary>.",
+      "reading_mnemonic": "A <reading>gummy bucket</reading> by the school gate, its rim sticky with old soda, swallows every wrapper and juice box the kids drop until it is the field's one huge <vocabulary form=\"ごみ箱\">trash can</vocabulary>. That sticky bucket is a <reading>ごみばこ</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "risaikuru",
@@ -14026,7 +14416,13 @@
           "answer_text": "リサイクル"
         }
       ],
-      "furigana": "リサイクル"
+      "furigana": "リサイクル",
+      "meaning_mnemonic": "<reading>Lisa cycles</reading> one loop over and over: bottle bank, crusher, shop, back to the bottle bank. Running that same can around the circle until it becomes a brand-new can is <vocabulary form=\"リサイクル\">recycling</vocabulary>, the loop you hear in <reading>リサイクル</reading>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      }
     }
   ]
 }
