@@ -19,7 +19,7 @@ gate** (Step 1) — you do NOT paste a seed list.
 
 Level (one JLPT level per run; `n5` and `n4` have seeds, `n3`+ do not yet):
 
-<level = n4>
+<level = n5>
 
 Subagent model (which model every subagent in this run uses):
 
