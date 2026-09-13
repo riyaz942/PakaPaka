@@ -31,7 +31,7 @@ instead:
 
 | Level | Words per passage |
 |---|---|
-| N5 | 35 → 110 across the 30 |
+| N5 | 30 → 50 for passages 1–5, then 63 → 126 across passages 6–30 (the step at 6, [MnN alignment](./reading-passage-minna-no-nihongo-alignment.md)) |
 | N4 | 100 → 200 across the 30 |
 
 ## Settled decisions

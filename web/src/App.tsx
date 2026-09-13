@@ -3,6 +3,7 @@ import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
 import Audit from './pages/Audit';
 import ContentList from './pages/ContentList';
 import Dashboard from './pages/Dashboard';
+import Generated from './pages/Generated';
 import Graph from './pages/Graph';
 import Guide from './pages/Guide';
 import ItemDetail from './pages/ItemDetail';
@@ -14,6 +15,7 @@ const NAV_LINKS = [
   { id: 'dashboard', label: 'Dashboard', to: '/', end: true },
   { id: 'content', label: 'Content', to: '/content', end: false },
   { id: 'slugs', label: 'Slugs', to: '/slugs', end: false },
+  { id: 'generated', label: 'Generated', to: '/generated', end: false },
   { id: 'graph', label: 'Graph', to: '/graph', end: false },
   { id: 'audit', label: 'Audit', to: '/audit', end: false },
   { id: 'pipeline', label: 'Pipeline', to: '/pipeline', end: false },
@@ -98,6 +100,7 @@ export default function App() {
           <Route path="/content/:type" element={<ContentList />} />
           <Route path="/content/:type/:slug" element={<ItemDetail />} />
           <Route path="/slugs" element={<Slugs />} />
+          <Route path="/generated" element={<Generated />} />
           <Route path="/graph" element={<Graph />} />
           <Route path="/audit" element={<Audit />} />
           <Route path="/pipeline" element={<Pipeline />} />

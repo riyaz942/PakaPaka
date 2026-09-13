@@ -463,6 +463,21 @@ def validate_draft(level, slug, draft, ctx=None):
         if furigana_lib.annotate_sentence(body, known_readings) is None:
             errors.append("body: furigana annotation failed (tokenizer round-trip)")
 
+    # 5b. …and it must be the *right* reading. Round-tripping only proves the
+    # brackets strip back to the input, so a compound the tokenizer split
+    # across a sound change ships silently: 月曜日 came out げつようひ for as
+    # long as this gate has existed. `furigana.py` repairs the unambiguous
+    # rendaku cases itself; what reaches here is the rest, where the reading
+    # the dictionary prefers is not certainly the reading the sentence means
+    # (九時 くじ/きゅうじ, 三分 さんぷん/さんぶん) and a person has to choose.
+    for label, text in (("body", body), ("summary_ja", draft["summary_ja"].strip())):
+        for compound, composed, notation in furigana_lib.suspect_compound_readings(text):
+            errors.append(
+                f"{label}: {compound} reads {composed} here, which is not a "
+                f"reading the dictionary lists for it (it has {notation}). "
+                f"Rewrite the sentence, or use a word whose reading is settled."
+            )
+
     # 6. grammar the body actually uses
     errors += _grammar_errors(detect_grammar(body, level), body, ctx)
 

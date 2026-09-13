@@ -67,7 +67,10 @@ MODEL = "claude-opus-5"
 #: Bump together with prompts/reading-passage.md, persona.md, or the seed contract.
 #: 2 — `grammar_slugs` left the submission (derived by `grammar_detect` now) and
 #: the seed's `required_grammar` came in as a brief.
-PROMPT_VERSION = 2
+#: 3 — the sentence-craft block: subject dropping, lexical chaining, clause
+#: joining where the window allows it (docs/content/
+#: reading-passage-minna-no-nihongo-alignment.md, § 1).
+PROMPT_VERSION = 3
 MAX_ATTEMPTS = 3
 #: Covers thinking *and* the submitted tool call. Opus 5 runs adaptive thinking
 #: when `thinking` is omitted — Opus 4.8 did not — so the 3000 that sufficed

@@ -25,8 +25,8 @@ Option (a), adopted instead: allowed vocab for a grammar point =
     level's V vocabulary items (by vocab sort_order), plus
   * the grammar point's own `vocabulary_slugs` (taught alongside it by
     definition), plus
-  * CORE_SEED_SLUGS — a fixed set of survival verbs/nouns/adjectives that are
-    always allowed (pilot run 1 amendment: the vocab list is ordered
+  * CORE_SEED_SLUGS — a fixed set of survival verbs/nouns/adjectives and
+    connectives that are always allowed (pilot run 1 amendment: the vocab list is ordered
     thematically, so 食べる/飲む/見る/来る sat past the cutoff for most pilot
     points and the generator could not write natural examples without them —
     9/10 drafts flagged out-of-level core verbs), plus
@@ -67,6 +67,12 @@ CORE_SEED_SLUGS = {
         # adjectives
         "ii", "yoi", "takai-adj", "yasui-adj", "samui", "atsui-hot",
         "isogashii", "oishii", "muzukashii", "tanoshii",
+        # connectives and frequency — words 669-694 of 718, so a prefix window
+        # reaches them only at the last seed of the level, and a passage
+        # without them can only write one fact per sentence (see
+        # docs/content/reading-passage-minna-no-nihongo-alignment.md, § 2).
+        # Minna no Nihongo uses それから in its lesson 4 reading.
+        "soshite", "sorekara", "demo", "dakara", "totemo", "itsumo", "tokidoki",
     ],
 }
 

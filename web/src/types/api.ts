@@ -323,3 +323,29 @@ export type PipelineRunResult = {
   stderr: string;
   durationMs: number;
 };
+
+/** One Phase 4 reading seed, with its generated passage when one exists. */
+export type GeneratedSeedRow = {
+  seed: string;
+  position: number;
+  tone: string;
+  topic: string;
+  targetWords: [number, number];
+  questionCount: number;
+  requiredGrammar: string[];
+  passage: Record<string, unknown> | null;
+  meta?: SidecarMeta;
+  wordCount: number | null;
+};
+
+export type GeneratedLevel = {
+  level: JlptLevel;
+  total: number;
+  generated: number;
+  rows: GeneratedSeedRow[];
+};
+
+export type GeneratedResponse = {
+  ok: true;
+  levels: GeneratedLevel[];
+};

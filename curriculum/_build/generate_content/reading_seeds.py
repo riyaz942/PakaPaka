@@ -94,7 +94,7 @@ _ADJECTIVE_POINTS = [
     "adj-i-conjugation", "adj-na-conjugation", "adj-i-adverb", "adj-na-adverb",
 ]
 
-#: N5 — 30 passages, 35 → 110 words, 24 humorous (80%), replacing the 10
+#: N5 — 30 passages, 30 → 126 words, 24 humorous (80%), replacing the 10
 #: generated ones (docs/content/reading-passage-expansion-plan.md, step 3).
 #: `target_words` is a band on the tokenizer word count (see
 #: `validate_readings.word_count`), not on characters.
@@ -111,7 +111,19 @@ _ADJECTIVE_POINTS = [
 #: adverbs, conjunctions and greetings (669–718). Each seed's topic sits inside
 #: the band its cutoff opens; `pull_forward` names only the props that band
 #: cannot supply, because `context.CORE_SEED_SLUGS` already hands every seed 24
-#: survival verbs and 10 adjectives (the first N5 verb is word 377 of 718).
+#: survival verbs, 10 adjectives and the connectives (the first N5 verb is word
+#: 377 of 718).
+#:
+#: **The ladder steps at position 6** (docs/content/
+#: reading-passage-minna-no-nihongo-alignment.md). Positions 1–5 are the
+#: pre-linker set: their window stops short of から (point 21) and ので (22), so
+#: they cannot join two clauses at all, and they are short on purpose — Minna
+#: no Nihongo's own L4 and L7 readings join none either. From position 6 the
+#: cutoff runs one seed ahead of the topic's own band (position 6 carries what
+#: position 7 used to, and so on to position 29), which is the extra nouns a
+#: passage needs to chain one sentence onto the last; and `target_words` jumps
+#: to 63–78 — 63 words is Minna no Nihongo's *shortest* 読み物 — then climbs to
+#: 98–126 at position 30. Below the step the bands are unchanged.
 #:
 #: `required_grammar` partitions the 74 points across the 30 seeds, 2–4 each.
 #: It is **not** the block each cutoff newly opens, the way N4's is: a point is
@@ -124,10 +136,11 @@ _ADJECTIVE_POINTS = [
 #:
 #: Positions 7 and 9 keep the slugs `neko-to-shukudai` and `eki-made-no-michi`
 #: from the retired set, because the gate's 11 fixtures are written against
-#: those two seeds. Their `grammar_cutoff`, `target_words`, `question_count`
-#: and `required_grammar` are therefore held to what those fixture bodies
-#: contain: 23 ≤ cutoff < 29 for the first (its bad fixture is ている at point
-#: 29), ≥ 28 for the second.
+#: those two seeds. Their `grammar_cutoff`, `question_count` and
+#: `required_grammar` are therefore held to what those fixture bodies contain:
+#: 23 ≤ cutoff < 29 for the first (its bad fixture is ている at point 29), ≥ 28
+#: for the second. `target_words` is not: the step at 6 moved both bands and
+#: the three length-sensitive fixture bodies were rewritten to match.
 N5_SEEDS = [
     {
         "slug": "hajimete-no-jikoshoukai",
@@ -172,7 +185,10 @@ N5_SEEDS = [
         "position": 3,
         "tone": "humorous",
         "vocab_cutoff": 118,
-        "pull_forward": [],
+        # The topic needs a writing surface, and the cutoff reaches none:
+        # ノート is sort_order 265 and 紙 is 238. Without this the passage has
+        # to say 私の本の月曜日 ("my book's Monday"), which is not Japanese.
+        "pull_forward": ["nooto"],
         "grammar_cutoff": 16,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["no-possessive", "ni-direction"],
@@ -229,12 +245,12 @@ N5_SEEDS = [
         "slug": "zenbu-sukoshi-itai",
         "position": 6,
         "tone": "humorous",
-        "vocab_cutoff": 176,
+        "vocab_cutoff": 190,
         "pull_forward": ["itai"],
-        "grammar_cutoff": 22,
+        "grammar_cutoff": 24,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["to-and", "ya-among", "mo-also"],
-        "target_words": (40, 53),
+        "target_words": (63, 78),
         "question_count": 2,
         "topic": (
             "At the doctor's, everything hurts a little and nothing hurts a "
@@ -249,12 +265,12 @@ N5_SEEDS = [
         "slug": "neko-to-shukudai",
         "position": 7,
         "tone": "humorous",
-        "vocab_cutoff": 190,
+        "vocab_cutoff": 203,
         "pull_forward": ["shukudai", "namae", "ue", "yobu", "dasu"],
-        "grammar_cutoff": 24,
+        "grammar_cutoff": 26,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["masen", "mashita", "wo"],
-        "target_words": (41, 55),
+        "target_words": (64, 80),
         "question_count": 2,
         "topic": (
             "The writer explains, completely deadpan, why the homework is late: "
@@ -268,12 +284,12 @@ N5_SEEDS = [
         "slug": "shio-to-satou",
         "position": 8,
         "tone": "humorous",
-        "vocab_cutoff": 203,
+        "vocab_cutoff": 233,
         "pull_forward": ["onaji", "amai", "karai"],
-        "grammar_cutoff": 26,
+        "grammar_cutoff": 29,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["kara-because", "node-because"],
-        "target_words": (44, 58),
+        "target_words": (66, 82),
         "question_count": 3,
         "topic": (
             "The writer makes tea and a boxed lunch for a friend. Because the "
@@ -289,12 +305,12 @@ N5_SEEDS = [
         "slug": "eki-made-no-michi",
         "position": 9,
         "tone": "neutral",
-        "vocab_cutoff": 233,
+        "vocab_cutoff": 248,
         "pull_forward": ["mae", "tonari", "hidari-v", "aruku", "magaru", "aru"],
-        "grammar_cutoff": 29,
+        "grammar_cutoff": 32,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["kara-from", "te-kudasai"],
-        "target_words": (46, 64),
+        "target_words": (67, 84),
         "question_count": 3,
         "topic": (
             "Someone asks a stranger the way to the post office and gets a "
@@ -308,12 +324,12 @@ N5_SEEDS = [
         "slug": "kaban-no-naka",
         "position": 10,
         "tone": "humorous",
-        "vocab_cutoff": 248,
-        "pull_forward": ["tsukue", "dasu"],
-        "grammar_cutoff": 32,
+        "vocab_cutoff": 262,
+        "pull_forward": ["dasu"],
+        "grammar_cutoff": 34,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["made-until", "ni-indirect"],
-        "target_words": (49, 66),
+        "target_words": (69, 86),
         "question_count": 3,
         "topic": (
             "The writer empties their bag onto the desk and goes through it: "
@@ -328,12 +344,14 @@ N5_SEEDS = [
         "slug": "kagi-wa-doko",
         "position": 11,
         "tone": "humorous",
-        "vocab_cutoff": 262,
-        "pull_forward": ["aru", "ue"],
-        "grammar_cutoff": 34,
+        "vocab_cutoff": 270,
+        # The topic searches a drawer and ends outside: 外 is 521 and
+        # 引き出し is 635, both past cutoff 270.
+        "pull_forward": ["aru", "ue", "soto", "hikidashi"],
+        "grammar_cutoff": 36,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["ka-question", "ne-tag", "yo-emphasis"],
-        "target_words": (52, 69),
+        "target_words": (70, 88),
         "question_count": 3,
         "topic": (
             "Two people looking for the key, entirely in short spoken lines: it "
@@ -347,12 +365,13 @@ N5_SEEDS = [
         "slug": "hako-no-naka-no-fuyu",
         "position": 12,
         "tone": "humorous",
-        "vocab_cutoff": 270,
-        "pull_forward": ["motsu"],
-        "grammar_cutoff": 36,
+        "vocab_cutoff": 284,
+        # "the winter in the box" is the topic; 冬 is 292, cutoff is 284.
+        "pull_forward": ["motsu", "fuyu"],
+        "grammar_cutoff": 38,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["te-form", "te-iru"],
-        "target_words": (54, 72),
+        "target_words": (72, 90),
         "question_count": 3,
         "topic": (
             "A box has been standing in the hall since the writer moved in. "
@@ -366,12 +385,12 @@ N5_SEEDS = [
         "slug": "yama-no-yakusoku",
         "position": 13,
         "tone": "humorous",
-        "vocab_cutoff": 284,
+        "vocab_cutoff": 301,
         "pull_forward": ["toru", "arau"],
-        "grammar_cutoff": 38,
+        "grammar_cutoff": 41,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["te-mo-ii", "te-wa-ikenai", "te-kara"],
-        "target_words": (57, 75),
+        "target_words": (73, 92),
         "question_count": 3,
         "topic": (
             "The teacher reads out the rules before the school trip up the "
@@ -386,12 +405,12 @@ N5_SEEDS = [
         "slug": "konai-inu",
         "position": 14,
         "tone": "humorous",
-        "vocab_cutoff": 301,
+        "vocab_cutoff": 320,
         "pull_forward": ["hashiru", "tomaru"],
-        "grammar_cutoff": 41,
+        "grammar_cutoff": 43,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["nai-form", "naide-kudasai"],
-        "target_words": (59, 78),
+        "target_words": (75, 94),
         "question_count": 3,
         "topic": (
             "A dog that does not come, does not sit and does not stop. The "
@@ -405,12 +424,13 @@ N5_SEEDS = [
         "slug": "motte-ikanakereba",
         "position": 15,
         "tone": "humorous",
-        "vocab_cutoff": 320,
-        "pull_forward": ["motsu"],
-        "grammar_cutoff": 43,
+        "vocab_cutoff": 340,
+        # The topic is one trip to the sea: 旅行する is 474, cutoff 340.
+        "pull_forward": ["motsu", "ryokou-suru"],
+        "grammar_cutoff": 45,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["nakereba-naranai", "nakutemo-ii"],
-        "target_words": (62, 81),
+        "target_words": (76, 96),
         "question_count": 3,
         "topic": (
             "Two lists for one trip to the sea: what the writer must take, and "
@@ -424,12 +444,13 @@ N5_SEEDS = [
         "slug": "ichido-dake-shita-koto",
         "position": 16,
         "tone": "humorous",
-        "vocab_cutoff": 340,
-        "pull_forward": ["oyogu"],
-        "grammar_cutoff": 45,
+        "vocab_cutoff": 356,
+        # The topic names a famous shop: 有名 is 365, cutoff is 356.
+        "pull_forward": ["oyogu", "yuumei"],
+        "grammar_cutoff": 46,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["ta-form", "ta-koto-ga-aru", "tari-tari"],
-        "target_words": (64, 84),
+        "target_words": (78, 98),
         "question_count": 3,
         "topic": (
             "Three things the writer has done exactly once: swum in the sea in "
@@ -444,12 +465,11 @@ N5_SEEDS = [
         "slug": "kotoshi-hoshii-mono",
         "position": 17,
         "tone": "humorous",
-        "vocab_cutoff": 356,
+        "vocab_cutoff": 376,
         "pull_forward": [],
-        "grammar_cutoff": 46,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
+        "grammar_cutoff": 50,
         "required_grammar": ["tai", "hoshii"],
-        "target_words": (67, 87),
+        "target_words": (79, 100),
         "question_count": 3,
         "topic": (
             "What the writer wants this year, in order: a new bag, a wide quiet "
@@ -463,15 +483,15 @@ N5_SEEDS = [
         "slug": "watashi-no-machi",
         "position": 18,
         "tone": "neutral",
-        "vocab_cutoff": 376,
+        "vocab_cutoff": 400,
         "pull_forward": ["souji-suru"],
-        "grammar_cutoff": 50,
+        "grammar_cutoff": 52,
         "pull_forward_grammar": [],
         "required_grammar": [
             "adj-i-conjugation", "adj-na-conjugation",
             "adj-i-adverb", "adj-na-adverb",
         ],
-        "target_words": (69, 90),
+        "target_words": (80, 102),
         "question_count": 3,
         "topic": (
             "The writer describes their town honestly: the station is "
@@ -487,12 +507,14 @@ N5_SEEDS = [
         "slug": "junban-ga-okashii",
         "position": 19,
         "tone": "humorous",
-        "vocab_cutoff": 400,
-        "pull_forward": ["jugyou", "shukudai"],
-        "grammar_cutoff": 52,
+        "vocab_cutoff": 420,
+        # The topic turns on what happens before every exam: 試験 is 483,
+        # cutoff 420.
+        "pull_forward": ["jugyou", "shukudai", "shiken"],
+        "grammar_cutoff": 54,
         "pull_forward_grammar": [],
         "required_grammar": ["ni-iku", "mae-ni", "ato-de"],
-        "target_words": (72, 93),
+        "target_words": (82, 104),
         "question_count": 3,
         "topic": (
             "The order the writer does things in, compared with the order they "
@@ -507,12 +529,13 @@ N5_SEEDS = [
         "slug": "dekiru-hito",
         "position": 20,
         "tone": "humorous",
-        "vocab_cutoff": 420,
-        "pull_forward": [],
-        "grammar_cutoff": 54,
+        "vocab_cutoff": 440,
+        # The topic says the older brother can sing: 歌う is 444, cutoff 440.
+        "pull_forward": ["utau"],
+        "grammar_cutoff": 56,
         "pull_forward_grammar": [],
         "required_grammar": ["toki", "dictionary-koto-ga-dekiru"],
-        "target_words": (74, 96),
+        "target_words": (83, 106),
         "question_count": 3,
         "topic": (
             "What each person in the family can do, and when they can do it. "
@@ -527,12 +550,12 @@ N5_SEEDS = [
         "slug": "kariru-hito-kasu-hito",
         "position": 21,
         "tone": "humorous",
-        "vocab_cutoff": 440,
+        "vocab_cutoff": 460,
         "pull_forward": ["kaesu"],
-        "grammar_cutoff": 56,
+        "grammar_cutoff": 58,
         "pull_forward_grammar": [],
         "required_grammar": ["comparative-yori", "superlative-ichiban"],
-        "target_words": (77, 99),
+        "target_words": (85, 108),
         "question_count": 4,
         "topic": (
             "Three friends and one umbrella, borrowed and lent and borrowed "
@@ -546,12 +569,12 @@ N5_SEEDS = [
         "slug": "kasa-o-nakushita",
         "position": 22,
         "tone": "humorous",
-        "vocab_cutoff": 460,
-        "pull_forward": ["sagasu", "densha"],
-        "grammar_cutoff": 58,
+        "vocab_cutoff": 479,
+        "pull_forward": ["densha"],
+        "grammar_cutoff": 61,
         "pull_forward_grammar": [],
         "required_grammar": ["dou-desu-ka", "darou", "kamoshirenai"],
-        "target_words": (79, 102),
+        "target_words": (86, 110),
         "question_count": 4,
         "topic": (
             "A lost umbrella and a search made entirely of guesses. How about "
@@ -565,12 +588,12 @@ N5_SEEDS = [
         "slug": "nagai-kotoba",
         "position": 23,
         "tone": "humorous",
-        "vocab_cutoff": 479,
-        "pull_forward": ["kotoba", "imi"],
-        "grammar_cutoff": 61,
+        "vocab_cutoff": 505,
+        "pull_forward": [],
+        "grammar_cutoff": 63,
         "pull_forward_grammar": [],
         "required_grammar": ["to-omou", "to-iu", "no-nominalizer"],
-        "target_words": (82, 105),
+        "target_words": (88, 112),
         "question_count": 4,
         "topic": (
             "A very long word the writer met this week and cannot say. Three "
@@ -584,12 +607,12 @@ N5_SEEDS = [
         "slug": "shiken-no-mae-no-yoru",
         "position": 24,
         "tone": "neutral",
-        "vocab_cutoff": 505,
+        "vocab_cutoff": 536,
         "pull_forward": [],
-        "grammar_cutoff": 63,
+        "grammar_cutoff": 65,
         "pull_forward_grammar": [],
         "required_grammar": ["sugiru", "hou-ga-ii", "deshou"],
-        "target_words": (84, 108),
+        "target_words": (89, 114),
         "question_count": 4,
         "topic": (
             "The night before an exam: how long the writer studied, why that "
@@ -603,12 +626,12 @@ N5_SEEDS = [
         "slug": "hikkoshi-ikkagetsu",
         "position": 25,
         "tone": "humorous",
-        "vocab_cutoff": 536,
+        "vocab_cutoff": 570,
         "pull_forward": [],
-        "grammar_cutoff": 65,
+        "grammar_cutoff": 67,
         "pull_forward_grammar": [],
         "required_grammar": ["mada-teinai", "mou-past"],
-        "target_words": (86, 111),
+        "target_words": (91, 116),
         "question_count": 4,
         "topic": (
             "One month after moving in. The picture is already on the wall and "
@@ -623,12 +646,12 @@ N5_SEEDS = [
         "slug": "kusuri-ga-futatsu-dake",
         "position": 26,
         "tone": "humorous",
-        "vocab_cutoff": 570,
+        "vocab_cutoff": 605,
         "pull_forward": [],
-        "grammar_cutoff": 67,
+        "grammar_cutoff": 69,
         "pull_forward_grammar": [],
         "required_grammar": ["dake", "shika-nai"],
-        "target_words": (89, 114),
+        "target_words": (92, 118),
         "question_count": 4,
         "topic": (
             "Three days of a cold, counted out: only two tablets left in the "
@@ -642,12 +665,12 @@ N5_SEEDS = [
         "slug": "kuji-goro-no-byouin",
         "position": 27,
         "tone": "neutral",
-        "vocab_cutoff": 605,
+        "vocab_cutoff": 640,
         "pull_forward": [],
-        "grammar_cutoff": 69,
+        "grammar_cutoff": 71,
         "pull_forward_grammar": [],
         "required_grammar": ["gurai", "goro"],
-        "target_words": (91, 117),
+        "target_words": (94, 120),
         "question_count": 4,
         "topic": (
             "A morning at the hospital, told in approximate numbers: the writer "
@@ -662,12 +685,12 @@ N5_SEEDS = [
         "slug": "shashin-to-chigau-ryokan",
         "position": 28,
         "tone": "humorous",
-        "vocab_cutoff": 640,
+        "vocab_cutoff": 668,
         "pull_forward": [],
-        "grammar_cutoff": 71,
+        "grammar_cutoff": 73,
         "pull_forward_grammar": [],
         "required_grammar": ["zenzen-nai", "amari-nai"],
-        "target_words": (93, 120),
+        "target_words": (95, 122),
         "question_count": 4,
         "topic": (
             "An inn room that is not at all what the photograph showed, at a "
@@ -682,12 +705,12 @@ N5_SEEDS = [
         "slug": "fooku-ga-yonjuu",
         "position": 29,
         "tone": "humorous",
-        "vocab_cutoff": 668,
+        "vocab_cutoff": 718,
         "pull_forward": [],
-        "grammar_cutoff": 73,
+        "grammar_cutoff": 74,
         "pull_forward_grammar": [],
         "required_grammar": ["demo-suggestion", "nagara", "janai-desu-ka"],
-        "target_words": (96, 123),
+        "target_words": (97, 124),
         "question_count": 4,
         "topic": (
             "Two students open the classroom cupboard and count what is in it: "
@@ -811,7 +834,9 @@ N4_SEEDS = [
         "position": 4,
         "tone": "humorous",
         "vocab_cutoff": 60,
-        "pull_forward": [],
+        # The topic is a diary entry, and the seed is named for it: 日記 is
+        # 519, cutoff is 60.
+        "pull_forward": ["nikki"],
         "grammar_cutoff": 12,
         "required_grammar": ["n4-causative", "n4-causative-passive", "n4-youni"],
         "target_words": (100, 123),

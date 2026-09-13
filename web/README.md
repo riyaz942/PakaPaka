@@ -32,6 +32,18 @@ pulling changes that touch its `package.json`.
   types (radical `mizu` vs. vocabulary `mizu`) is shown as **ambiguous** and left
   out of "select all" — pick the right one by hand. Tokens matching nothing are
   listed under Unresolved.
+- **Generated** — read-only view of the Phase 4 reading-passage build artifact
+  (`curriculum/_build/generate_content/passages/<level>.json`), joined onto the
+  seed ladder in `reading_seeds.py` so every planned passage shows either its
+  generated text or a `pending` row. Per level: how many of the 30 seeds are
+  done, each passage's tone tag, derived word count against the seed's band,
+  question count, `_meta` model and review status, and the passage itself
+  rendered with derived furigana, translation, summaries, questions and
+  grammar/vocabulary chips. **These passages do not ship** — they reach the app
+  only after the Phase 5 human read and the wire-in documented in
+  `docs/content/phase-4-reading-passage-tooling.md`, so they are deliberately
+  outside the shipped index: no target counts, no graph, no completeness, and
+  no way to mark them reviewed from here.
 - **Graph** — the radical → kanji → vocab → grammar dependency graph
   (Cytoscape + dagre), a per-item neighborhood view, and a "build order" list
   of what's blocked on missing/draft/skeleton prerequisites.

@@ -64,8 +64,31 @@ Rules the automated gate enforces, so getting them wrong costs a regeneration:
   rejection.
 - Keep one situation running through the whole passage. A passage that is five
   unrelated sentences is not a reading; it is an example-sentence list.
-- Vary sentence length. A wall of identical 〜です sentences is what a graded
-  reader is trying not to be.
+
+## How the sentences hold together
+
+A graded reader is prose, not a list of example sentences. These five rules are
+what makes the difference:
+
+- **Name the subject once.** Say who it is in the first sentence, then leave it
+  out of the sentences that follow until the subject changes. Japanese drops a
+  subject the reader already has; restating 私 in every sentence does not.
+- **Start each sentence from something already on the page.** Take a noun the
+  previous sentence introduced and build the next one on it — 大学 → さくら大学
+  の食堂 → 食堂の食べ物. A sentence that brings in a new topic and drops the old
+  one reads as a list. そして, それから and でも open a sentence on the back of
+  the one before it; use them where the link is real.
+- **Open some sentences with a time or a place** instead of a subject: 毎朝,
+  午後, 電車で, 公園の前に.
+- **Join two clauses inside one sentence, in at least two sentences — when the
+  grammar list above allows it.** The linkers are 〜から、, 〜ので、 and 〜て、.
+  If none of them is in that list yet, keep every sentence to one clause; that
+  is the correct shape this early, not a shortcoming.
+- **Grow the noun phrases, not the verbs.** Stack の — 母の誕生日のプレゼント,
+  さくら大学の英語の先生 — rather than reaching for a longer verb form.
+
+Vary sentence length. A wall of identical 〜です sentences is what a graded
+reader is trying not to be.
 
 Do not write `grammar_slugs`, `word_count`, `vocabulary_slugs` or word spans —
 the build pipeline derives all four from the body with the tokenizer.

@@ -2229,3 +2229,50 @@ a.audit-run-button {
   letter-spacing: 0.03em;
   cursor: help;
 }
+
+/* Generated passages (Phase 4 artifact) */
+
+.tone-tag {
+  display: inline-flex;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tone-tag--humorous {
+  border-color: var(--accent-muted);
+  color: var(--accent);
+}
+
+.seed-row--pending td {
+  opacity: 0.55;
+}
+
+.seed-band {
+  font-size: 0.75rem;
+}
+
+.seed-row__expansion {
+  background: var(--bg);
+  padding: 0.5rem 0.75rem 0.9rem;
+}
+
+.seed-topic {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* The seed cell is a <button> (it expands a row) but should read as a row link. */
+.seed-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}

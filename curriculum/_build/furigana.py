@@ -20,6 +20,7 @@ brackets must reproduce the input exactly.
 import functools
 import os
 import re
+import unicodedata
 
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_PATH = os.path.join(BUILD_DIR, "data", "JmdictFurigana.txt")
@@ -92,8 +93,8 @@ def _load_dataset():
 
     `primary_by_word` — {word: notation} for the first line per word, which is
     JMdict's primary reading. Safe only where context has already been shown
-    to produce a reading that cannot be right; its single caller is
-    `_numeral_compound_notation`.
+    to produce a reading that cannot be right — `_suffix_compound_notation`
+    and `_split_compound_notation`, each of which establishes that first.
     """
     by_word_reading = {}
     primary_by_word = {}
@@ -262,6 +263,148 @@ def _suffix_compound_notation(tokens, i, by_word_reading, primary_by_word):
     return notation
 
 
+def _devoiced(reading):
+    """`reading` with every dakuten and handakuten removed (びょう -> ひょう).
+
+    NFD splits a voiced kana into its base plus a combining mark, so dropping
+    the two marks is the whole operation and it covers katakana for free."""
+    return (unicodedata.normalize("NFD", reading)
+            .replace("゙", "").replace("゚", ""))
+
+
+@functools.lru_cache(maxsize=1)
+def _readings_by_word():
+    """{form: frozenset(readings)} — how many readings the dictionary lists.
+
+    The count is the safety guard for `_split_compound_notation`: a form the
+    dictionary reads exactly one way cannot be the ambiguous case."""
+    by_word_reading, _primary = _load_dataset()
+    acc = {}
+    for form, reading in by_word_reading:
+        acc.setdefault(form, set()).add(reading)
+    return {form: frozenset(rs) for form, rs in acc.items()}
+
+
+def _solid_compound(text):
+    """Whether `text` is kanji throughout — ヶ counts, as the 一ヶ月 kind of
+    counter is written that way and behaves as one solid word.
+
+    Okurigana inside a span is the tell that the two halves are separate words
+    that happen to sit next to each other, not one compound the tokenizer
+    broke: 日 + 待ち is a passage saying "waits for the day", and 日待ち, the
+    folk vigil the dictionary knows, is not what is on the page."""
+    return all(is_kanji(ch) or ch == "ヶ" for ch in text)
+
+
+def _split_compound_notation(tokens, i, primary_by_word):
+    """Notation for a compound the tokenizer broke and then misread.
+
+    `_suffix_compound_notation` handles this failure when unidic tags the
+    second half 接尾辞. It does not when both halves are plain nouns: 月曜日
+    comes back as 月曜 + 日 and unidic reads that 日 from its own lemma, ひ,
+    though the compound is げつようび. The dictionary had the right reading all
+    along — nothing was consulting it for a noun+noun pair.
+
+    Guards, in the order they matter:
+
+      * every token in the span must carry kanji, so a following particle
+        cannot be swallowed (今日 + は is not the greeting 今日は こんにちは)
+      * the dictionary must list **exactly one** reading for the compound.
+        This is the load-bearing one. 三分 is both さんぷん (three minutes) and
+        さんぶん (a third); its primary is さんぶん, and forcing that onto a
+        passage about three minutes would replace a wrong reading with another
+        wrong reading. 十分, 三十分, 四時, 日本人, 一昨日 and 二十歳 are held
+        back the same way, and `suspect_compound_readings` reports them for a
+        person instead.
+      * and then either the span is solid kanji (`_solid_compound`), or the two
+        readings differ only by voicing. One reading and no okurigana is
+        already strong evidence of a broken compound, which is what lets the
+        counters through — 九時 くじ, 七時 しちじ, 二日 ふつか, 外国人
+        がいこくじん. The voicing test additionally admits the rare compound
+        that does carry kana, without admitting 日待ち, whose reading here
+        (かまち) is a different mora, not a sound change.
+
+    Returns (notation, tokens_consumed), or (None, 0).
+    """
+    readings_by_word = _readings_by_word()
+    for span_len in (3, 2):
+        if i + span_len > len(tokens):
+            continue
+        span = tokens[i:i + span_len]
+        if not all(any(is_kanji(ch) for ch in t.surface) for t in span):
+            continue
+        compound = "".join(t.surface for t in span)
+        readings = readings_by_word.get(compound)
+        if readings is None or len(readings) != 1:
+            continue
+        parts = [_token_reading(t) for t in span]
+        if any(part is None for part in parts):
+            continue
+        composed = "".join(parts)
+        correct = next(iter(readings))
+        if composed == correct:
+            continue
+        if not _solid_compound(compound) and _devoiced(composed) != _devoiced(correct):
+            continue
+        notation = primary_by_word.get(compound)
+        if notation is None or strip_furigana(notation) != compound:
+            continue
+        return notation, span_len
+    return None, 0
+
+
+def suspect_compound_readings(text):
+    """Spans that look like a compound the tokenizer read wrong — the detector.
+
+    Reports only what `_split_compound_notation` does *not* already repair —
+    the cases that need a person, because the reading the dictionary prefers is
+    not certainly the reading the sentence means: 九時 read きゅうじ rather than
+    くじ, 三分 read さんふん where the dictionary's primary さんぶん means "a
+    third". Anything the repair handles is already right by the time a caller
+    annotates, so flagging it would fail a passage that has nothing wrong.
+
+    The gate calls this so a wrong reading fails a passage instead of shipping.
+    Round-tripping is not enough on its own: brackets that strip back to the
+    input are consistent, not correct.
+
+    Returns [(compound, composed_reading, correct_notation)].
+    """
+    by_word_reading, primary_by_word = _load_dataset()
+    tokens = list(_get_tagger()(text))
+    found = []
+    for i in range(len(tokens)):
+        # Both repair paths, or the detector fails a passage that annotates
+        # correctly: 日本人 has two dictionary readings so the split repair
+        # holds off, but `_suffix_compound_notation` already gets it right.
+        repaired, repaired_len = _split_compound_notation(tokens, i, primary_by_word)
+        if repaired is None and _suffix_compound_notation(
+            tokens, i, by_word_reading, primary_by_word
+        ) is not None:
+            repaired, repaired_len = True, 2
+        for span_len in (2, 3):
+            if i + span_len > len(tokens):
+                continue
+            if repaired is not None and span_len == repaired_len:
+                continue
+            span = tokens[i:i + span_len]
+            if not all(any(is_kanji(ch) for ch in t.surface) for t in span):
+                continue
+            compound = "".join(t.surface for t in span)
+            if compound not in primary_by_word:
+                continue
+            parts = [_token_reading(t) for t in span]
+            if any(part is None for part in parts):
+                continue
+            composed = "".join(parts)
+            if (compound, composed) in by_word_reading:
+                continue
+            notation = primary_by_word[compound]
+            if strip_furigana(notation) != compound:
+                continue
+            found.append((compound, composed, notation))
+    return found
+
+
 def _fallback_annotate_token(surface, reading):
     """No dataset entry for this exact surface. Strip the trailing kana
     okurigana common to both surface and reading, then wrap the remaining
@@ -315,6 +458,14 @@ def annotate_sentence(text, known_readings=None):
         if compound is not None:
             pieces.append(compound)
             i += 2
+            continue
+
+        # The same repair where both halves are plain nouns and unidic read
+        # the second from its own lemma: 月曜 + 日[ひ] for げつようび.
+        rendaku, span_len = _split_compound_notation(tokens, i, primary_by_word)
+        if rendaku is not None:
+            pieces.append(rendaku)
+            i += span_len
             continue
 
         index = i

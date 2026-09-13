@@ -12,6 +12,7 @@ import {
   type FindingSeverity,
 } from './audit.js';
 import { expectedFields } from './completeness.js';
+import { loadGeneratedPassages } from './generatedPassages.js';
 import {
   buildBuildOrder,
   buildGraphSummary,
@@ -699,6 +700,17 @@ export function createCurriculumRouter(
     const index = reload(repoRoot);
     reloadAuditFindings(repoRoot);
     res.json({ ok: true, itemCount: index.items.length });
+  });
+
+  // Read-only: the Phase 4 artifact is not shipped content and Studio must not
+  // set its review status (see generatedPassages.ts).
+  router.get('/generated', (_req: Request, res: Response) => {
+    const result = loadGeneratedPassages(repoRoot);
+    if (!result.ok) {
+      res.status(500).json(result);
+      return;
+    }
+    res.json(result);
   });
 
   router.get('/audit/summary', (_req: Request, res: Response) => {
