@@ -205,12 +205,21 @@ def _known_reading(tokens, i, known_readings, primary_by_word):
       * either half of a numeral compound is read as part of that compound,
         and those readings are irregular: 三日 is みっか, not the taught
         さん + ひ; the 日 of 一日中 is にち; 十日 とおか; 一本 いっぽん
+
+    unidic tags some counters as ordinary nouns rather than as suffixes — the
+    時 of 何時 is 普通名詞 — so the suffix test alone lets the curriculum's
+    isolated reading through and 何時 ships as なにじ. Requiring the pair to be
+    a compound the dictionary knows is the same test `_fused_to_previous` uses
+    on the other side of the numeral, and it leaves a numeral that merely
+    precedes an unrelated noun (何を食べましたか) with its taught reading.
     """
     feature = tokens[i].feature
     if _fused_to_previous(tokens, i, primary_by_word):
         return None
     if getattr(feature, "pos2", None) == "数詞" and i + 1 < len(tokens):
         if getattr(tokens[i + 1].feature, "pos1", None) == "接尾辞":
+            return None
+        if (tokens[i].surface + tokens[i + 1].surface) in primary_by_word:
             return None
     if i > 0 and getattr(tokens[i - 1].feature, "pos2", None) == "数詞":
         return None

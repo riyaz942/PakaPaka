@@ -155,11 +155,17 @@ def _tokenize(text):
         cursor = start + len(surface)
         lemma = _f(token, "lemma")
         norm = surface
+        #: ないで is not a voiced て — unidic tags its で with lemma て anyway,
+        #: which would otherwise turn ないでください into ないてください before
+        #: naide-kudasai's accepted form ever gets to match. There is no
+        #: standard "ないて"; the connector after 助動詞-ナイ is always で.
+        after_nai = tokens and tokens[-1]["c_type"] == "助動詞-ナイ"
         if (
             _f(token, "pos1") in ("助詞", "助動詞")
             and surface[:1] in "でだど"
             and lemma
             and lemma[:1] in "てたと"
+            and not after_nai
         ):
             norm = lemma[0] + surface[1:]
         tokens.append(
