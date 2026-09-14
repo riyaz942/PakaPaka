@@ -73,6 +73,22 @@ CORE_SEED_SLUGS = {
         # docs/content/reading-passage-minna-no-nihongo-alignment.md, § 2).
         # Minna no Nihongo uses それから in its lesson 4 reading.
         "soshite", "sorekara", "demo", "dakara", "totemo", "itsumo", "tokidoki",
+        # the four verbs everything else is built out of — words 384-411 of
+        # 718. する, ある, いる and なる were *already* accepted by the gate via
+        # level_check.FUNCTION_WORD_ALLOWLIST, but no prompt ever listed them,
+        # so the generator wrote around a limit that did not exist (宿題を書く
+        # for 宿題をする). 言う was genuinely out of reach, which is why every
+        # passage with dialogue quoted people with と話しました instead of
+        # と言いました. See the same doc, § The words were never the problem.
+        "iu-v", "suru", "aru", "iru-exist", "naru-become",
+        # 置く — word 591 of 718, so 25 of the 30 seeds could open a box
+        # (開ける, 417) and close it (閉める, 418) but not put it down. The
+        # only other way to say a thing sits somewhere is 置いてあります,
+        # which is N4 grammar (n4-tearu), so every early passage that had to
+        # leave an object somewhere bent a verb instead — 角に持っていきました
+        # for 角に置きました, and 箱が待っています for 箱があります. See the
+        # same doc, § An object is not a person.
+        "oku",
     ],
 }
 

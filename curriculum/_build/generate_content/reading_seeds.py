@@ -306,7 +306,7 @@ N5_SEEDS = [
         "position": 9,
         "tone": "neutral",
         "vocab_cutoff": 248,
-        "pull_forward": ["mae", "tonari", "hidari-v", "aruku", "magaru", "aru"],
+        "pull_forward": ["mae", "tonari", "hidari-v", "aruku", "magaru"],
         "grammar_cutoff": 32,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["kara-from", "te-kudasai"],
@@ -347,7 +347,7 @@ N5_SEEDS = [
         "vocab_cutoff": 270,
         # The topic searches a drawer and ends outside: 外 is 521 and
         # 引き出し is 635, both past cutoff 270.
-        "pull_forward": ["aru", "ue", "soto", "hikidashi"],
+        "pull_forward": ["ue", "soto", "hikidashi"],
         "grammar_cutoff": 36,
         "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["ka-question", "ne-tag", "yo-emphasis"],
@@ -374,10 +374,14 @@ N5_SEEDS = [
         "target_words": (72, 90),
         "question_count": 3,
         "topic": (
-            "A box has been standing in the hall since the writer moved in. "
-            "Today they open it, look inside, and find two winter coats, a hat, "
-            "and one shoe. The writer closes the box, carries it back to the "
-            "hall, and puts it exactly where it was standing."
+            # No count on the clothes: coats take 着 and shoes take 足, and
+            # neither counter exists in n5 or n4, so a numbered inventory here
+            # can only come out as コートが二つ. The joke is the lone shoe, not
+            # the arithmetic.
+            "A box has stood in the hall since the writer moved in. Today they "
+            "open it, look inside, and find winter coats, a hat, and — with no "
+            "explanation anybody can offer — a shoe. The writer closes the box, "
+            "carries it back to the hall, and puts it where it was."
         ),
         "extra_allowed": [],
     },
@@ -393,11 +397,13 @@ N5_SEEDS = [
         "target_words": (73, 92),
         "question_count": 3,
         "topic": (
+            # Not "you may take photographs": 写真を撮る needs 撮る, which is in
+            # neither level, and the 取る this seed pulls forward is for 花を取る.
             "The teacher reads out the rules before the school trip up the "
-            "mountain: you may take photographs, you must not pick the flowers, "
-            "wash your hands after you come back down. It rains from the first "
-            "minute to the last, and the only rule anybody follows is the one "
-            "about washing hands."
+            "mountain: you may drink your water at the top, you must not pick "
+            "the flowers, wash your hands after you come back down. It rains "
+            "from the first minute to the last, and the only rule anybody "
+            "follows is the one about washing hands."
         ),
         "extra_allowed": [],
     },
@@ -634,11 +640,13 @@ N5_SEEDS = [
         "target_words": (91, 116),
         "question_count": 4,
         "topic": (
-            "One month after moving in. The picture is already on the wall and "
-            "the music is already loud; half the boxes have not been opened and "
-            "the bed has not been built. The writer explains which half of the "
-            "work is the important half, standing in the middle of the other "
-            "half."
+            # Not "on the wall": 壁 is in neither level, so the picture has to
+            # come to rest somewhere 置く can reach.
+            "One month after moving in. The picture is already out of its box "
+            "and standing on the desk, and the music is already loud; half the "
+            "boxes have not been opened and the bed has not been built. The "
+            "writer explains which half of the work is the important half, "
+            "standing in the middle of the other half."
         ),
         "extra_allowed": [],
     },

@@ -5,6 +5,15 @@ position 6 (see the item).** Items 5, 6 and 8 are not built — the maintainer
 deferred all three. **The first regenerated batch (all 8 existing N5 drafts)
 ran 2026-09-12 — see § Verification.** Item 7 is judged not needed yet from
 that batch, but see the caveat there before deciding to skip it for good.
+**A word-fidelity pass followed on 2026-09-13** — see § The words were never
+the problem. Items 1–4 fixed the passages' shape; that section is about the
+words inside them, and it is where a "this feels unnatural" report should be
+read first. **A second pass the same day** — § An object is not a person —
+covers the case that section does not: the word the passage needed was not on
+the list at all, and the seed's own topic still asked for it. **Cause 6 was
+built on 2026-09-14** — § Cause 6: something grades the Japanese now. There is a
+naturalness review pass; it is the only thing here that catches a defect after
+generation instead of preventing it.
 
 Companion to [reading-passage-expansion-plan.md](./reading-passage-expansion-plan.md),
 which built the 30-seed ladder for N5 and N4. That plan is about grammar
@@ -557,6 +566,356 @@ trigger to add the gate check.
 
 22 of 30 N5 seeds remain unregenerated (the auto-select in Step 1a of the
 subagent workflow picks up wherever this run left off).
+
+## The words were never the problem
+
+**Built 2026-09-13.** Items 1–4 fixed how the passages are *shaped*. Several
+outside AI reads of the 11-draft N5 set then reported the same verdict —
+"it feels unnatural" — about passages that pass every gate. The shape was no
+longer the defect; the word choice was.
+
+Six causes, and five of them are mechanical.
+
+| # | What reads wrong | Example from the set | Cause |
+|---|---|---|---|
+| 1 | A verb bent out of its normal use | `宿題を書きました` (draft 7) | `する`, `ある`, `いる`, `なる` are accepted at every seed by `level_check.FUNCTION_WORD_ALLOWLIST`, but no prompt ever listed them. The generator wrote around a limit that does not exist. |
+| 2 | Nobody can be quoted | `「…」と話しました` (drafts 8, 9) | `言う` is vocab `sort_order` 384 and was not in `CORE_SEED_SLUGS`. No seed under cutoff 384 could quote a person, so both passages with dialogue used 話す as a quotative. |
+| 3 | A near-miss word instead of a new scene | `お茶は辛いです` for salty tea (draft 8); `私は一から話しました` (draft 6) | "Change the scenario, not the vocabulary" was one unenforced clause inside the vocabulary section. Bending a word is cheaper than abandoning a scene, so the generator bent the word every time. |
+| 4 | Dialogue with no quote marks | draft 11 runs narration and two speakers as one unmarked block | The prompt had no rule for direct speech. |
+| 5 | `私` in almost every sentence | 8 of 11 drafts open `私は` | Known as § Finding 6. Its fix — item 5, a named cast — is deferred, and the sentence-craft rule ("name the subject once") was a principle with no count attached. |
+| 6 | None of the above is caught | — | `validate_readings` checks level, grammar, spans and furigana. `audit_semantic`'s system prompt says *"The Japanese is authoritative"*, so it grades only the English. **Nothing in the pipeline grades the Japanese.** |
+
+Cause 1 is the instructive one. The gate was *already* more permissive than the
+prompt admitted, and the cost of that gap was not a rejected draft — it was a
+draft that passed while saying 宿題を書く.
+
+### What was built
+
+- **`context.CORE_SEED_SLUGS["n5"]` 72 → 77 slugs**: `iu-v`, `suru`, `aru`,
+  `iru-exist`, `naru-become`. Four of the five only ever needed *listing* —
+  they were gate-legal already. `言う` is the one real widening. N4 inherits
+  them; so do the grammar-lesson and kanji-example lanes, which can only get
+  fewer gate failures from a wider set.
+- **`prompts/reading-passage.md` gained three sections.** *Words have to mean
+  what they mean* (the near-miss, quotative, noun-takes-this-verb, counter,
+  past-tense-agreement and every-sentence-must-mean-something rules, each
+  written against the draft that broke it); *When someone speaks* (「」 +
+  と言いました, at most two speakers, speech holds the narration's register);
+  *How often to write 私* (**at most twice**, a count rather than a principle,
+  because the principle had already failed). The vocabulary section's
+  "change the scenario" clause now points forward at the first of these.
+- **`PROMPT_VERSION` 3 → 4.**
+- **`_extra_allowed_block` renders the seed's own cast, not the gate's
+  exception set** — found while reading a rendered prompt, and unrelated to the
+  six causes above. `ctx["extra_allowed"]` merges the seed's names with
+  `level_check.pattern_words(allowed_grammar)`, so **all 60 seeds** were told
+  under the heading *"Names you may use"* that `ある`, `いる`, `ください`,
+  `ない`, `く` and `かっ` were people's names. A seed with no cast
+  (`shio-to-satou`) got a list made of nothing but pattern words. The gate
+  still needs the merged set; the prompt does not, and the model already meets
+  every pattern word in the grammar list.
+- Two `pull_forward` entries dropped (`aru` at positions 9 and 11), which
+  `seed_errors` rejected as redundant the moment the slug entered the core set.
+
+### What was deliberately not built
+
+- **The 11 existing drafts were not regenerated** — the maintainer chose
+  prompt-only on 2026-09-13. The new rules apply to seeds generated from here
+  on. Each draft keeps its own `prompt_version: 3` stamp, which the dataset
+  records per draft, so the bump does not invalidate them and no draft was
+  stamped back.
+- **No validator teeth for naturalness.** A `と話す` blacklist catches the
+  errors already seen and nothing else; the open-ended case needs a model.
+  Offered and declined in the same decision.
+- **No AI naturalness pass.** This is the honest fix for cause 6 and it remains
+  unbuilt. Until it exists, an unnatural collocation reaches a human read with
+  every automated check green — that is the standing risk, and the outside AI
+  reads are currently the only thing covering it.
+
+### Verification
+
+Run 2026-09-13 from `curriculum/_build/`:
+
+- `seed_errors`, `grammar_coverage_errors`, `tone_mix_errors` — clean on n5 and n4.
+- `validate_readings --fixtures` — **11/11**, no fixture body touched.
+- All **11 existing N5 drafts still PASS**. Widening an allowed set can only
+  reduce failures, and that is what happened.
+- All 60 prompts build; `grammar_detect --selftest` 37/37, untouched.
+- `level_check` confirms the asymmetry directly: `宿題をしました`,
+  `部屋に猫がいます`, `友達になりました` were **already** accepted at
+  `neko-to-shukudai`; `「おはよう」と言いました` was rejected before this change
+  and is accepted after; `お茶はしょっぱいです` is rejected either way, because
+  しょっぱい is in neither level — draft 8's salty tea was never writable and
+  the scene is what had to change.
+- `passages/n5.json` reassembled. **No Japanese changed** — bodies are
+  byte-identical. Three passages gained vocabulary links they should always
+  have had (`hajimete-no-jikoshoukai` +`aru`, `zenbu-sukoshi-itai` +`aru`,
+  `kaban-no-naka` +`aru` +`iru-exist`): the words were gate-legal but absent
+  from `span_forms`, so occurrences carried no span and the learner could not
+  tap them.
+
+## An object is not a person
+
+The word-fidelity pass above shipped as `PROMPT_VERSION = 4`. Seed 12
+(`hako-no-naka-no-fuyu`) is the first draft generated under it, and an outside
+AI read it on 2026-09-13. The version-3 failures were gone — no `と話しました`
+for a quotation, `私` used once, no invented collocation. Three things were
+left, and all three have the same cause, which is **not** one version 4
+addresses.
+
+The reviewer's three points, and what each one actually was:
+
+| Reported | Draft wrote | Level-correct | Cause |
+| --- | --- | --- | --- |
+| "a box does not wait" | `箱が先月から待っています` | `箱は先月から角にあります` | 待つ takes an animate subject |
+| "持っていく is not putting down" | `角に持っていきました` | `角に置きました` | **置く was not in the window** |
+| "coats take 着, not つ" | `コートが二つ` | name them, do not number them | 着 is in neither level |
+
+### The topic asked for what the level cannot say
+
+Seed 12's topic text ends *"…and puts it exactly where it was standing"*, and
+its inventory is *"two winter coats, a hat, and one shoe"*. Neither is writable:
+
+- **置く is word 591 of 718**, so it was outside the window at **25 of the 30
+  N5 seeds**. A passage at seed 12 could 開ける a box (417) and 閉める it (418)
+  and never put it down. The adult alternative, 置いてあります, is `n4-tearu` —
+  N4 grammar, off the list at every N5 seed.
+- **着 (clothes) and 足 (pairs) are in neither n5 nor n4.** Confirmed by
+  scanning both vocabulary modules: the only 着 is the verb 着る and the only 足
+  is the body part. A numbered coat cannot come out right at this level.
+
+So the model was given a scene it could not write and a rule — *change the
+scenario, not the vocabulary* — telling it to change the scene. It chose the
+topic, because nothing said the topic was the thing allowed to give way. That
+is the whole failure. Versions 3 and 4 both assumed the model was picking the
+wrong word out of a list that contained the right one; here the right word was
+not there, and the seed still demanded it.
+
+### What was built (`PROMPT_VERSION = 5`)
+
+1. **The topic loses its authority.** A paragraph under `## What this passage
+   is about` now states that the topic is a sketch, the vocabulary list
+   outranks it, and dropping a detail is the correct answer rather than a
+   compromise. This is the fix; the rest are the specific cases.
+2. **`oku` joins `CORE_SEED_SLUGS["n5"]`** (77 → 78). It sits with 使う (415),
+   開ける (417), 閉める (418) and 待つ (426), which were already core — 置く was
+   the missing member of that group, not a widening of its kind.
+3. **An animacy rule.** 待つ, 聞く, 見る and 話す need a subject that can intend
+   the action; a thing that has sat somewhere since a time is said with ある.
+4. **〜つ is named as not general-purpose.** The existing counter rule said "use
+   the counter the object takes" and the model read 〜つ as the universal
+   fallback. It now says so explicitly, with the coat as the worked example.
+5. **Three seed topics stopped asking for the impossible**, each with the
+   reason in a comment beside it:
+   - 12 `hako-no-naka-no-fuyu` — the numbered coats are gone; the joke was the
+     lone shoe, not the arithmetic.
+   - 13 `yama-no-yakusoku` — *"you may take photographs"* needed 撮る, which is
+     in neither level. The 取る this seed pulls forward is for 花を取る, so the
+     topic would have produced 写真を取ります. The `te-mo-ii` slot is now
+     drinking water at the top.
+   - 25 `hikkoshi-ikkagetsu` — *"the picture is already on the wall"* needed 壁,
+     which is in neither level. The picture now stands on the desk.
+
+### What this does not fix
+
+The same audit that found these three found them **by reading 30 topic strings
+against 30 windows by hand**. Nothing in the build does that. A seed topic that
+names an object, an action or a count the level cannot express is still
+accepted silently, and the first sign of it is a passage that bends a word. The
+n4 seeds were not audited this way at all.
+
+This is cause 6 in a second form, and it has the same standing answer: no
+automated check grades the Japanese, and the maintainer declined to build one.
+
+### Verification
+
+Run 2026-09-13 from `curriculum/_build/`:
+
+- `seed_errors` and `grammar_coverage_errors` — clean on n5 and n4.
+- `validate_readings --fixtures` — **11/11**, no fixture body touched.
+- `validate_readings --level n5` — **12 PASS**, including `hako-no-naka-no-fuyu`.
+- All **60 prompts build** with no placeholder left unfilled.
+- `level_check` at seed 12 confirms the window changed in the right direction:
+  `箱を角に置きました` and `箱は先月から部屋の角にあります` are both accepted
+  now, and 置く was absent from the seed's allowed set before this change.
+- The draft's own `箱が先月から待っています` is **still accepted** by the gate.
+  It always was. That sentence is the standing proof of cause 6.
+
+## Cause 6: something grades the Japanese now
+
+Every pass above this one fixed the **generator**. None of them could catch a
+defect after the fact, because nothing in the build reads the Japanese:
+`validate_readings` checks level, length, grammar coverage, spans and furigana,
+and `audit_semantic`'s system prompt says *"The Japanese is authoritative"*, so
+it grades only the English. That was cause 6, it was declined twice, and it is
+why `箱が先月から待っています` passed every check.
+
+`generate_content/naturalness_check.py` is the missing pass. It reads a
+**gate-passing draft**, asks a fresh model whether a Japanese reader would object
+to any sentence, applies the sentence rewrites it returns, and puts the corrected
+passage back through `validate_draft`.
+
+### The reviewer is given the window
+
+This is the part that makes it work, and it is the lesson from the outside
+reviews that prompted all of this. Asked "is this natural?", a model produces
+suggestions the level cannot use: the outside review of seed 12 was right that
+箱が待っています is wrong and proposed 置いてあります, which is `n4-tearu` — N4
+grammar, off the list at every N5 seed — and the counter 二着, which is in
+neither level. Both diagnoses were correct and both corrections were unusable.
+
+So the prompt carries the seed's **whole allowed vocabulary and grammar window**
+and asks for a replacement written inside it. A reviewer that cannot see the
+window can only complain. One that can, can fix.
+
+The prompt's examples of each error class are deliberately chosen from **outside
+every current draft** (窓が外を見ています, 犬が二枚, 友達を会いました). An earlier
+draft of the prompt used 箱が待っています and 宿題を書く — both live defects in the
+set about to be reviewed, which would have made the pilot meaningless.
+
+### Corrections are gated, and a bad one is rejected whole
+
+Findings are per sentence and exact: `original` must be one of the body's
+sentences copied character for character, or the reply is malformed and nothing
+is applied. `ingest` swaps each flagged sentence, takes the reply's
+`english_translation` (required whenever anything changed — a rewritten sentence
+makes the shipped translation wrong) plus any `summary_ja` / `summary_en` /
+`questions` it supplies, and re-runs the whole gate.
+
+Three outcomes: **natural** (nothing flagged, body untouched), **corrected**
+(the rewrite passed the gate; the original body is kept on the draft under
+`naturalness.original_body`), **rejected** (findings came back but the corrected
+passage failed the gate — the draft keeps its original body, the gate errors are
+appended to the prompt for a repair round, exit 1).
+
+Nothing partial is ever merged. A correction that fails the gate is discarded
+entire, because a body assembled from the half that passed is one nobody wrote
+and nobody reviewed.
+
+### What it does not do
+
+- It is one model's opinion, not a proof. A `natural` verdict is **not** the
+  Phase 5 human read and does not set `review_status`.
+- It only sees passages that already pass the mechanical gate. A draft stuck at
+  `failed_validation` is a generation-lane problem.
+- It cannot judge tone, coherence or whether a humorous passage is funny — the
+  prompt tells it not to try, because a reviewer graded on those invents
+  findings on correct sentences.
+- **A correction is sentence-local.** It can replace a sentence, never add one.
+  See seed 12 below for where that bites.
+
+### The pilot, 2026-09-14
+
+Four passages, one fresh opus-5 subagent each, run blind — the prompt's error
+examples were checked against every draft first so the reviewer was not handed
+its answers.
+
+| Seed | Verdict | What happened |
+| --- | --- | --- |
+| 6 `zenbu-sukoshi-itai` | natural | nothing flagged |
+| 7 `neko-to-shukudai` | corrected | `宿題を書きました` → `宿題をしました` |
+| 8 `shio-to-satou` | corrected | `「…」と話しました` → `と言いました` |
+| 12 `hako-no-naka-no-fuyu` | rejected, then corrected | 3 sentences; see below |
+
+Seeds 7 and 8 are the win: the two known word-fidelity defects in the set,
+**found blind and repaired**, in passages the maintainer had decided not to
+regenerate. Both corrections passed the whole gate on the first ingest.
+
+Four results are worth more than the three successes.
+
+**The reviewer talked itself out of the real defect, and the fix was in the
+prompt.** At `REVIEW_VERSION = 1` seed 12 came back *natural*, with the box
+sentence explicitly considered and cleared as "a deliberate literary device
+signalled by the title 箱の冬". A reviewer permitted to read a sentence as
+intentional style can clear anything. `REVIEW_VERSION = 2` adds *this is a
+teaching text, not literature* — the learner copies these sentences, so a
+sentence correct only as a device is a finding, and the title is not a licence.
+Re-run at version 2, the same passage returned both 待っています sentences with
+correct replacements built from the window.
+
+**The gate then refused the correction, and was right to.** Removing both
+待っています stripped the passage's only 〜ています, and seed 12 is the **only
+passage in the level assigned `te-iru`**. The corrected body failed
+`validate_draft` on grammar coverage, so it was rejected whole and the draft
+kept its original body. This is the rejection path working: a naturalness fix
+had broken something the reviewer could not see.
+
+**The repair round then solved it, and the answer was better than the brief.**
+A fresh reviewer, given the gate error, moved 〜ています onto a verb that can
+carry it — `冬の服は来年の冬まで、箱に入っています` — a stative 入る, correct
+Japanese where a waiting box is not. It also dropped
+`靴は二つではありません` ("the shoes are not two", a present-tense denial of a
+count nobody asserted) for `冬の服はいいです`, reasoning that the window has no
+足 and no だけ or しか, so the arithmetic had to go. Three sentences corrected,
+gate green on the first try, `questions` rewritten because Q3 had asked
+`箱はいつから待っていますか`.
+
+**The lane had a real bug, and the pilot is how it surfaced.** A rejected reply
+file used to be left on disk. A caller that waits for the reply file to *exist*
+rather than for the repair subagent to *finish* then re-ingests the reply that
+was just rejected and reads the identical failure as a second attempt — which is
+exactly what happened here and briefly went into this document as "rejected
+twice". `ingest` now deletes a rejected reply, and the runbook says to wait on
+the subagent, not the file.
+
+**One earlier claim did not survive.** § The words were never the problem listed
+`私は一から話しました` as "allowed words meaning nothing". Seed 6's reviewer
+cleared it, correctly: 一から話す is a real idiom, and in context — 医者は
+分かりませんでしたから、私は一から話しました — it is ordinary Japanese. That example
+has been removed from `prompts/reading-passage.md`; the rule now carries only
+`猫は毎週その日曜日に座ります`, which is genuinely incoherent. The reviewer also
+declined to flag draft 8's `お茶は辛いです`, which the same section calls a
+defect. Both are one model's opinion against another's, which is the honest
+standing of everything this pass produces.
+
+### The whole level, 2026-09-14
+
+The remaining 11 drafts were then reviewed at `REVIEW_VERSION = 2`, one fresh
+opus-5 subagent each: the 8 never seen, plus the 3 the pilot had reviewed at
+version 1, which version 2 makes stale. **All 12 N5 drafts now carry a version 2
+verdict — 5 natural, 7 corrected — and the level is 12/12 at the gate.** No
+`PROMPT_VERSION` bump and no regeneration: the maintainer's instruction was to
+correct what exists.
+
+| Seed | Verdict | Correction |
+| --- | --- | --- |
+| `hajimete-no-jikoshoukai` | natural | — |
+| `mainichi-onaji` | natural | — |
+| `nanimo-nai-nichiyoubi` | corrected | `猫は毎週その日曜日に座ります` → `猫は毎週そこに座ります` |
+| `dare-no-heya` | corrected | `家族の誰も分かりません` → `…知りません` |
+| `kagi-wa-doko` | corrected | `椅子の引き出しも開けました` → `引き出しも開けました` |
+| `eki-made-no-michi` | corrected | `「…曲がってください。」と話しました` → `と言いました` |
+| `sasoi-ga-fueru` | corrected | `「…」九人が話しました` → `九人が言いました` |
+| `kaban-no-naka` | rejected, then corrected | `友達に電話で話しましたので、分かりました` → `…聞きましたので、…` |
+| `zenbu-sukoshi-itai` | natural | re-review, unchanged |
+| `neko-to-shukudai` | natural | re-review, v1 correction holds |
+| `shio-to-satou` | natural | re-review, v1 correction holds |
+
+**The prompt's own example came back as a blind finding.** § An object is not a
+person cites `猫は毎週その日曜日に座ります` as the specimen of a sentence made of
+allowed words that means nothing. `nanimo-nai-nichiyoubi` is the passage it was
+taken from, and its reviewer — which never sees `prompts/reading-passage.md` —
+found it unaided and gave the same diagnosis: `毎週` fights `その日曜日`, and 座る
+wants a place. That is the closest thing this lane has to a positive control.
+
+**Three passages carried the quotative defect, and all three are `prompt_version`
+3.** `と話しました` for `と言いました` turned up in `eki-made-no-michi`,
+`sasoi-ga-fueru` and (at version 1) `shio-to-satou`. This is not a new pattern
+needing a prompt rule — it is the pattern version 4 was written to stop, measured
+on passages generated before it. The one version 4 draft in the set does not have
+it. Nothing was promoted into the generation prompt from this run.
+
+**The rejection path ran a second time, and the second reviewer disagreed with
+the first.** `kaban-no-naka` was flagged at `でも書きません` — the dropped subject
+carries over from `ペンが四つあります`, so it reads as the pens declining to write.
+The correction `でも、私は書きません` is sound Japanese, but it adds a word to a
+passage already at 85 of the seed's 69–86 band, so the gate rejected it whole.
+The repair reviewer declined that finding as ambiguous rather than wrong, and
+returned a different, word-neutral one instead. `でも書きません` is still in the
+body. Two reviewers, two readings — and the same is true of `お茶は辛いです`, which
+a second reviewer again declined to flag. The rule the band enforces is worth
+stating plainly: **a correction must fit in the word count it replaces**, because
+a passage at the top of its band has no room to buy words.
 
 ## Scope guards
 

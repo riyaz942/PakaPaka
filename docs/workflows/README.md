@@ -19,6 +19,15 @@ Three lanes, and most content types have more than one:
 | Example sentences | [workflow](./example-sentences-web-chat-workflow.md) · [automation](./example-sentences-web-chat-workflow-automation-prompt.md) | [automation](./example-sentences-subagent-workflow-automation-prompt.md) | — |
 | Radical mnemonic art | [workflow](./radical-art-web-chat-workflow.md) · [automation](./radical-art-web-chat-workflow-automation-prompt.md) | — | — |
 | Reading passages | — | [automation](./reading-passages-subagent-workflow-automation-prompt.md) | [automation](./reading-passages-single-session-workflow-automation-prompt.md) |
+| Reading passage naturalness review | — | [automation](./reading-passage-naturalness-subagent-workflow-automation-prompt.md) | — |
+
+The naturalness review is built into **both** reading-passage generation lanes —
+Step 4 of the subagent lane, Step 5 of the single-session lane — so a passage
+leaves either run having been read for naturalness, not only gated for mechanics.
+It is the one place the single-session lane spawns a subagent, because the
+session that wrote a passage is exactly the model that must not review it. The
+review's own runbook is for the other job: backfilling a level, or re-reviewing
+after `REVIEW_VERSION` changes.
 | Semantic content audit (Tier 2) | — | [automation](./semantic-audit-subagent-workflow-automation-prompt.md) | — |
 
 Which of these have actually been *run* is tracked in

@@ -70,7 +70,20 @@ MODEL = "claude-opus-5"
 #: 3 — the sentence-craft block: subject dropping, lexical chaining, clause
 #: joining where the window allows it (docs/content/
 #: reading-passage-minna-no-nihongo-alignment.md, § 1).
-PROMPT_VERSION = 3
+#: 4 — word fidelity: the collocation, dialogue and 私-budget rules, plus 言う
+#: する ある いる なる in CORE_SEED_SLUGS. Version 3 wrote Japanese that passed
+#: every gate and read wrong to a native speaker (と話しました for a quotation,
+#: 宿題を書く, 辛い for salty). Drafts generated under 3 keep their stamp — the
+#: dataset records each draft's own version — so this bump does not invalidate
+#: them; the rules apply to seeds generated from here on.
+#: 5 — the topic loses its authority over the vocabulary list, plus the animacy
+#: and 〜つ rules and 置く in CORE_SEED_SLUGS. Version 4 fixed the failures the
+#: model could fix on its own; what was left came from seeds whose topic asked
+#: for a detail the level cannot say, and the passage kept the detail (箱が待って
+#: います and 角に持っていきました for a box the window gave it no way to put
+#: down, コートが二つ for a counter that is in neither level). Same stamping rule
+#: as above: a draft keeps the version it was written under.
+PROMPT_VERSION = 5
 MAX_ATTEMPTS = 3
 #: Covers thinking *and* the submitted tool call. Opus 5 runs adaptive thinking
 #: when `thinking` is omitted — Opus 4.8 did not — so the 3000 that sufficed
@@ -156,7 +169,17 @@ def _feedback_block(validator_errors):
 
 
 def _extra_allowed_block(ctx):
-    names = sorted(ctx["extra_allowed"])
+    """The seed's own cast, and only that.
+
+    `ctx["extra_allowed"]` is the **gate's** exception set: the seed's names
+    *plus* `level_check.pattern_words(allowed_grammar)` — the machinery of the
+    taught patterns (ください, ある, ない, や, かっ). Rendering the merged set
+    under this heading told all 60 seeds that ある and ください were people's
+    names, and a seed with no cast got a list made of nothing else. The model
+    already meets every pattern word in the grammar list above; what it needs
+    here is the names.
+    """
+    names = sorted(ctx["seed"].get("extra_allowed", []))
     if not names:
         return (
             "This passage has no named characters. If you need to refer to "

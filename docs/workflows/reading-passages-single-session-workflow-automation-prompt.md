@@ -1,7 +1,14 @@
-Task: Generate Reading Passages — Single Session, No Subagents
+Task: Generate Reading Passages — Single Session, This Session Writes
 
 Generate Phase 4 reading passages **entirely within the current session** — no
-subagents, no browser, no clipboard, no API credentials. This is the
+browser, no clipboard, no API credentials. This session writes every passage
+itself and spawns no subagent to do it.
+
+There is exactly one exception, and it is at the end: the naturalness review
+(Step 5) spawns one fresh subagent per passage. It has to. That review's whole
+value is that it comes from a model which did not write the passage, and in this
+lane the writer is this session — so this session is the one model that cannot
+perform it. Drafting stays here; reviewing cannot. This is the
 single-session sibling of
 `docs/workflows/reading-passages-subagent-workflow-automation-prompt.md`: same
 seed plan, same auto-select, same allowed-vocab/grammar cutoff, same tone tag,
@@ -43,11 +50,18 @@ passages, run this prompt again in a new session rather than raising
 
 Model/effort notes
 
-- There is no subagent to configure — THIS session's own model does the writing.
-  Use a strong reasoning model at high effort: this is the passage itself, the
-  thing the learner actually reads.
+- There is no subagent to configure for the writing — THIS session's own model
+  does it. Use a strong reasoning model at high effort: this is the passage
+  itself, the thing the learner actually reads.
 - Pass this session's model name as the ingest `--model` value (Step 4) so
   `_meta.generator_model` is honest.
+- The Step 5 review subagents are configured separately, below. Use a strong
+  reasoning model there too: a weak reviewer invents findings on correct
+  sentences and proposes corrections from outside the teaching window.
+
+Review subagent model (Step 5 only):
+
+<review-model = opus-5>
 
 ---
 
@@ -257,7 +271,98 @@ the cutoff has not reached yet. If a seed keeps failing on the same missing word
 say so in the report and name the word: the fix is a seed edit (move the seed
 later, or reframe the topic), not another attempt.
 
-Step 5: There Is No Final Build Step — Stop After Ingestion
+---
+
+Step 5: Naturalness Review — the one place this lane spawns subagents
+
+Steps 1–4 enforce mechanics only — level, length, answerability, span integrity,
+furigana. They cannot tell whether the Japanese reads like Japanese, and every
+naturalness defect found in this project so far passed them cleanly
+(`宿題を書きました`, `「…」と話しました`, `箱が待っています`). Step 5 is the pass that
+reads the Japanese, and this session must not perform it itself.
+
+**You wrote these passages. You are therefore the one model that cannot review
+them.** A writer asked to judge its own work clears its own choices — this is not
+a theoretical worry: the review lane's first version cleared `箱が待っています` by
+reading it as deliberate style. That is why Step 5 delegates even though the rest
+of this lane does not, and why "I will just check them myself, it is cheaper" is
+the one shortcut that destroys the point of the step.
+
+Run it once, after the seed loop finishes — not per seed. A seed that failed or
+was skipped in Step 4 needs no handling here: the review lane selects
+gate-passing drafts only, so a failed seed is invisible to it. If every seed
+failed, there is nothing to review; say so and stop.
+
+Step 5a — write the review prompts, scoped to this session's seeds:
+
+.venv/bin/python -m generate_content.naturalness_check webprompts --level <level> --slugs <the seeds ingested this session, comma-separated, no spaces>
+
+Pass `--slugs`. Without it the command selects **every** unreviewed draft at the
+level, which turns a two-seed session into a whole-level review and destroys the
+context isolation this lane exists for.
+
+Step 5b — one fresh subagent per passage.
+
+Launch ONE new general-purpose subagent (<review-model>, high reasoning) for each
+passage. Never one subagent across two passages: a reviewer that has seen three
+passages starts pattern-matching its own earlier findings.
+
+For the instructions to give each reviewer, use the brief in § *Step 2: Review
+with a Subagent* of:
+
+docs/workflows/reading-passage-naturalness-subagent-workflow-automation-prompt.md
+
+Read it and pass it as written rather than paraphrasing from memory, and add this
+line, which the word band makes necessary:
+
+  A correction replaces a sentence; it can never add one, and the corrected
+  passage must stay inside the seed's word band. If your replacement is longer
+  than the sentence it replaces, buy the words back within that sentence. A
+  passage already at the top of its band has no room.
+
+Do not give the reviewer your drafting rationale, your notes, or your reasons for
+a word choice. It judges what is on the page. Telling it what you meant is how
+you get your own choices confirmed back to you.
+
+Step 5c — ingest each reply:
+
+.venv/bin/python -m generate_content.naturalness_check ingest --level <level> --slug <seed> --model <review-model>
+
+Three outcomes: **natural** (nothing flagged, body untouched), **corrected** (the
+rewrite passed the whole gate again), **rejected** (findings came back but the
+corrected passage failed the gate — the body is left exactly as it was, nothing
+partial is merged, the gate errors are appended to the prompt file, the rejected
+reply is deleted, and the command exits non-zero).
+
+On a rejection, launch a FRESH subagent against the same prompt file, which now
+carries the gate errors, and ingest again. **At most two review attempts per
+passage.** If the second is also rejected, leave the passage as it is and report
+the gate errors — twice-failed means the window has no way to say the thing, and
+that is a seed or curriculum change, not another attempt.
+
+Wait for each review subagent to **finish**. Do not poll for the reply file to
+appear: a rejected reply is deleted precisely so a repair round cannot re-ingest
+it, and a caller that waits on the file rather than the subagent will read the
+same failure twice and call it two attempts.
+
+Repairing a rejection is the reviewer's job, not yours. Do not hand-edit a reply
+file in this step. The inline-repair rule in Step 4 exists because this lane has
+no drafting subagent; Step 5 has a reviewing one, and editing its reply yourself
+puts your judgement back into the one place it was excluded from.
+
+What Step 5 must not do
+
+- Do NOT bump `generate_readings.PROMPT_VERSION` and do NOT regenerate a passage
+  because a finding came back. Step 5 corrects the passage in front of it.
+- Do NOT edit `prompts/reading-passage.md` during the session. A finding is about
+  one passage; a *pattern* across findings is about the generation prompt. Report
+  the pattern and let the maintainer decide.
+- Do NOT set `review_status`. A `natural` verdict is one model's opinion, not the
+  Phase 5 human read.
+
+---
+
+Step 6: There Is No Final Build Step — Stop After Ingestion
 
 Unlike the mnemonic single-session workflow, **this session runs no build command
 at all**, and you must not add one:
@@ -294,6 +399,11 @@ Final Report (for this session)
   that failed on a missing word, the word itself
 - How many seeds for <level> remain not-yet-passing (re-run Step 1 to get the
   count) — this tells you whether another session is needed
+- **Step 5, per passage:** the naturalness verdict (natural / corrected /
+  rejected), and for each correction the original sentence, the issue and the
+  replacement. Name any passage rejected twice with the gate errors that blocked
+  it, and any pattern across findings worth promoting into the generation prompt
+  — as a recommendation, not a change you made
 - Confirmation that no build command was run in this session
 - A reminder that the output is a build artifact, and that it ships only after a
   human reads the whole level (Phase 5) and performs the documented wire-in
@@ -310,7 +420,12 @@ whether the passage is coherent or whether a humorous one is funny.
 
 Important Constraints
 
-- No subagents. This session drafts every passage itself.
+- This session drafts every passage itself. The only subagents in this lane are
+  the Step 5 naturalness reviewers — one fresh one per passage, never shared, and
+  never asked to do anything but review.
+- Do not review your own passages in this session, and do not hand-edit a review
+  reply. Both put the writer's judgement back into the step that exists to keep
+  it out.
 - Auto-select only — never hand-pick or paste a seed list.
 - Ingestion, the gate, repairs and the attempt budget are per seed, always.
 - A failure in one seed never invalidates another seed's already-ingested work in
@@ -330,9 +445,10 @@ Important Constraints
 
 Notes on differences from the subagent workflow
 
-- No subagent is spawned at any point; this session both drafts and ingests.
+- No subagent drafts or repairs a passage; this session both drafts and ingests.
   <seed-count> IS this session's whole unit of work, and there is exactly one
-  "draft" pass, done by the session itself.
+  "draft" pass, done by the session itself. Step 5's reviewers are the sole
+  exception, and they only read and correct what is already gated.
 - Because there is no subagent to hand a large repair to, every repair in this
   shape is inline, regardless of error count — the subagent workflow's "7+ errors
   → repair subagent" branch does not apply here.

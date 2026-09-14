@@ -286,6 +286,86 @@ authored; N3+ have none).
 
 ---
 
+Step 4: Naturalness Review (every run ends with this)
+
+Steps 1–3 enforce mechanics only — level, length, answerability, span integrity,
+furigana. They cannot tell whether the Japanese reads like Japanese, and every
+naturalness defect found in this project so far passed them cleanly
+(`宿題を書きました`, `「…」と話しました`, `箱が待っています`). Step 4 is the pass
+that reads the Japanese. **It is part of this run, not a separate one.**
+
+Run it once, after the seed loop finishes — not per seed. A passage that failed
+or was skipped in Step 3 is not reviewed and needs no handling here: the review
+lane selects gate-passing drafts only, so a failed seed is invisible to it.
+
+Step 4a — write the review prompts, scoped to what this run produced:
+
+.venv/bin/python -m generate_content.naturalness_check webprompts --level <level> --slugs <the seeds ingested in this run, comma-separated, no spaces>
+
+Pass `--slugs` explicitly. Without it the command picks up **every** unreviewed
+draft at the level, which turns a 4-seed generation run into a whole-level
+review. Backfilling the rest of a level is a legitimate job, but it is the
+standalone runbook's job, not a side effect of generating four passages.
+
+Step 4b — one fresh subagent per passage.
+
+Launch ONE new general-purpose subagent (<subagent-model>, high reasoning) for
+each passage. Two rules, and both are load-bearing:
+
+- **Never the subagent that wrote the passage.** A writer asked to review its own
+  work clears its own choices. This is the whole reason the review is a separate
+  model call at all.
+- **Never one subagent across two passages.** A reviewer that has seen three
+  passages starts pattern-matching its own earlier findings.
+
+For the instructions to give each reviewer, use the brief in § *Step 2: Review
+with a Subagent* of:
+
+docs/workflows/reading-passage-naturalness-subagent-workflow-automation-prompt.md
+
+Do not paraphrase it from memory — read it and pass it as written, plus this
+line, which the word band makes necessary:
+
+  A correction replaces a sentence; it can never add one, and the corrected
+  passage must stay inside the seed's word band. If your replacement is longer
+  than the sentence it replaces, buy the words back within that sentence. A
+  passage already at the top of its band has no room.
+
+Step 4c — ingest each reply:
+
+.venv/bin/python -m generate_content.naturalness_check ingest --level <level> --slug <seed> --model <subagent-model>
+
+Three outcomes: **natural** (nothing flagged, body untouched), **corrected**
+(the rewrite passed the whole gate again), **rejected** (findings came back but
+the corrected passage failed the gate — the body is left exactly as it was,
+nothing partial is merged, the gate errors are appended to the prompt file, the
+rejected reply is deleted, and the command exits non-zero).
+
+On a rejection, launch a FRESH subagent against the same prompt file, which now
+carries the gate errors, and ingest again. **At most two review attempts per
+passage.** If the second is also rejected, leave the passage as it is and report
+the gate errors — twice-failed means the window has no way to say the thing, and
+that is a seed or curriculum change, not another attempt.
+
+Wait for each review subagent to **finish**. Do not poll for the reply file to
+appear: a rejected reply is deleted precisely so a repair round cannot re-ingest
+it, and a caller that waits on the file rather than the subagent will read the
+same failure twice and call it two attempts.
+
+What Step 4 must not do
+
+- Do NOT bump `generate_readings.PROMPT_VERSION` and do NOT regenerate a passage
+  because a finding came back. Step 4 corrects the passage in front of it.
+- Do NOT edit `prompts/reading-passage.md` during the run. A finding is about one
+  passage; a *pattern* across findings is about the generation prompt. Report the
+  pattern and let the maintainer decide — and check the `prompt_version` stamps
+  first, because a defect the current prompt already forbids is not a pattern,
+  it is an older passage.
+- Do NOT set `review_status`. A `natural` verdict is one model's opinion, not the
+  Phase 5 human read.
+
+---
+
 There Is No Final Build Step
 
 Unlike the example-sentence and mnemonic lanes, **this workflow does not touch
@@ -307,6 +387,23 @@ is a build artifact for a human to read.
 
 ---
 
+What Runs After This
+
+Nothing. The naturalness review used to be a separate run; it is Step 4 of this
+one, so a passage generated here leaves the run having been read for naturalness
+as well as gated for mechanics.
+
+The standalone runbook still exists and is still the right tool for the other
+job — reviewing passages this run did not generate:
+
+docs/workflows/reading-passage-naturalness-subagent-workflow-automation-prompt.md
+
+Use it to backfill a level whose passages predate the review lane, or to
+re-review a level after `REVIEW_VERSION` changes. Do not use it to re-review what
+Step 4 just reviewed.
+
+---
+
 Final Report
 
 Provide a summary containing:
@@ -324,6 +421,11 @@ Provide a summary containing:
   that failed on a missing word, the word itself
 - How many seeds for <level> remain not-yet-passing (re-run Step 1a to get the
   count), so it's clear whether another run is needed
+- **Step 4, per passage:** the naturalness verdict (natural / corrected /
+  rejected), and for each correction the original sentence, the issue and the
+  replacement. Name any passage rejected twice with the gate errors that blocked
+  it, and any pattern across findings worth promoting into the generation prompt
+  — as a recommendation, not a change you made
 - A reminder that the output is a build artifact, and that it ships only after
   a human reads the whole level (Phase 5) and performs the documented wire-in
 - Any manual follow-up required
@@ -342,7 +444,11 @@ Important Constraints
 
 - Each seed's reply is produced by a fresh <subagent-model> subagent; never share
   subagent context across seeds.
-- Do not bypass or weaken validation.
+- Each seed's Step 4 review is produced by a *different* fresh subagent again —
+  never the one that wrote the passage, and never one shared across passages.
+- Do not bypass or weaken validation. This includes Step 4: a naturalness
+  correction that fails `validate_draft` is rejected whole, and you must not
+  hand-merge the part of it that passed.
 - Do not modify validator or ingestion code, the seed list, the allowed-vocab
   derivation, or curriculum source data to make invalid content pass.
 - Do not widen a seed's `vocab_cutoff`, `pull_forward`, `grammar_cutoff` or
