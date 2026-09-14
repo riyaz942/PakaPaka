@@ -2763,6 +2763,298 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "yama-no-yakusoku",
+      "position": 13,
+      "tone": "humorous",
+      "passage": {
+        "title": "山の雨",
+        "body": "私たちは先生と山へ行きました。学校を出てから、先生は「山で水を飲んでもいいですよ。花を取ってはいけません。うちに帰ってから、手を洗ってください。」と言いました。でも、朝から雨でした。雨が口に入りましたから、誰も飲みませんでした。みんなうちで手を洗いました。かばんの水は今もあります。",
+        "questions": [
+          {
+            "prompt": "誰と山へ行きましたか。",
+            "accepted_answers": [
+              "先生",
+              "先生と",
+              "せんせい"
+            ],
+            "prompt_furigana": "誰[だれ]と山[やま]へ行[い]きましたか。"
+          },
+          {
+            "prompt": "いつから雨でしたか。",
+            "accepted_answers": [
+              "朝",
+              "朝から",
+              "あさ"
+            ],
+            "prompt_furigana": "いつから雨[あめ]でしたか。"
+          },
+          {
+            "prompt": "うちで何を洗いましたか。",
+            "accepted_answers": [
+              "手",
+              "手を",
+              "て"
+            ],
+            "prompt_furigana": "うちで何[なに]を洗[あら]いましたか。"
+          }
+        ],
+        "english_translation": "We went up the mountain with our teacher. After we left the school, the teacher said: 'You may drink your water on the mountain. You must not pick the flowers. Wash your hands after you get home.' But it was raining from the morning. Rain came into our mouths, so nobody drank anything. Everyone washed their hands at home. The water in the bag is still there now.",
+        "summary_ja": "雨の日に山へ行って、うちで手を洗いました。",
+        "summary_en": "On a rainy school trip up the mountain, the only rule anyone kept was the one about washing hands at home.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "he-direction",
+          "kara-because",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "no-possessive",
+          "te-kara",
+          "te-kudasai",
+          "te-mo-ii",
+          "te-wa-ikenai",
+          "to-and",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "ame-v",
+          "arau",
+          "aru",
+          "asa",
+          "dare",
+          "demo",
+          "deru-v",
+          "gakkou-v",
+          "hairu-v",
+          "hana-v",
+          "ii",
+          "iku-v",
+          "ima",
+          "iu-v",
+          "kaban",
+          "kaeru-v",
+          "kuchi-v",
+          "minna",
+          "mizu",
+          "nomu-v",
+          "sensei",
+          "te-v",
+          "toru",
+          "uchi",
+          "watashitachi",
+          "yama-v"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashitachi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "yama-v",
+            "start": 7,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 9,
+            "end": 14,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gakkou-v",
+            "start": 15,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "deru-v",
+            "start": 18,
+            "end": 20,
+            "surface_form": "出て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 23,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "yama-v",
+            "start": 27,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 29,
+            "end": 30
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 33,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 35,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 41,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "toru",
+            "start": 43,
+            "end": 46,
+            "surface_form": "取って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 53,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 56,
+            "end": 59,
+            "surface_form": "帰って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "te-v",
+            "start": 62,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "arau",
+            "start": 64,
+            "end": 67,
+            "surface_form": "洗って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 74,
+            "end": 79,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 80,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 83,
+            "end": 84
+          },
+          {
+            "vocabulary_slug": "ame-v",
+            "start": 86,
+            "end": 87
+          },
+          {
+            "vocabulary_slug": "ame-v",
+            "start": 91,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "kuchi-v",
+            "start": 93,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 95,
+            "end": 100,
+            "surface_form": "入りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "dare",
+            "start": 103,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 105,
+            "end": 113,
+            "surface_form": "飲みませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 114,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 117,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "te-v",
+            "start": 120,
+            "end": 121
+          },
+          {
+            "vocabulary_slug": "arau",
+            "start": 122,
+            "end": 127,
+            "surface_form": "洗いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaban",
+            "start": 128,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 132,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 134,
+            "end": 135
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 136,
+            "end": 140,
+            "surface_form": "あります",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 87,
+        "body_furigana": "私[わたし]たちは先[せん]生[せい]と山[やま]へ行[い]きました。学[がっ]校[こう]を出[で]てから、先[せん]生[せい]は「山[やま]で水[みず]を飲[の]んでもいいですよ。花[はな]を取[と]ってはいけません。うちに帰[かえ]ってから、手[て]を洗[あら]ってください。」と言[い]いました。でも、朝[あさ]から雨[あめ]でした。雨[あめ]が口[くち]に入[はい]りましたから、誰[だれ]も飲[の]みませんでした。みんなうちで手[て]を洗[あら]いました。かばんの水[みず]は今[いま]もあります。",
+        "slug": "yama-no-yakusoku",
+        "_meta": {
+          "generator_model": "claude-opus-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
