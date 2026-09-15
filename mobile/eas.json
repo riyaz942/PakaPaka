@@ -5,12 +5,31 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "applicationId": "com.nihongocore.app.dev"
+      },
+      "ios": {
+        "bundleIdentifier": "com.nihongocore.app.dev"
+      }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "applicationId": "com.nihongocore.app.preview"
+      },
+      "ios": {
+        "bundleIdentifier": "com.nihongocore.app.preview"
+      }
     },
-    "production": {}
+    "production": {
+      "android": {
+        "applicationId": "com.nihongocore.app"
+      },
+      "ios": {
+        "bundleIdentifier": "com.nihongocore.app"
+      }
+    }
   },
   "submit": {
     "production": {}
