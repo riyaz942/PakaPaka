@@ -29,7 +29,7 @@ question count), not a vocabulary slug. Seeds for <level> are defined in
 
 Level (one JLPT level per run; `n5` and `n4` have seeds, `n3`+ do not yet):
 
-<level = n5>
+<level = n4>
 
 Number of seeds this session targets (this session drafts, ingests and repairs
 exactly this many seeds, then stops — no more, no less unless the auto-select
