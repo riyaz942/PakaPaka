@@ -7662,6 +7662,994 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "karita-nabe",
+      "position": 19,
+      "tone": "humorous",
+      "passage": {
+        "title": "隣の家の鍋",
+        "body": "私は隣の家から古い鍋を借りました。その鍋はとても重くて、水を入れると一人では持ちにくいです。台所に置いたとき、テーブルが少し下がりました。この鍋は台所より古いでしょう。夕方、その鍋で味噌汁を作りました。下の野菜が黒くなりました。この鍋は野菜が黒くなりやすいんです。茶碗に入れました。弟は少し飲んで、「これは苦いです」と言いました。私は「黒い野菜は体にいいでしょう」と説明しました。母は「しょっぱいですね」と言いました。「塩は少ししか入れていません。鍋が古いからかもしれません」と答えました。みんなが静かになりました。おいしいからでしょう。父は「明日、鍋を返したほうがいいですね」と言いました。",
+        "questions": [
+          {
+            "prompt": "鍋はどこから借りましたか。",
+            "accepted_answers": [
+              "隣の家",
+              "隣の家から",
+              "隣"
+            ],
+            "prompt_furigana": "鍋[なべ]はどこから借[か]りましたか。"
+          },
+          {
+            "prompt": "その鍋で何を作りましたか。",
+            "accepted_answers": [
+              "味噌汁",
+              "味噌汁を作りました",
+              "みそしる"
+            ],
+            "prompt_furigana": "その鍋[なべ]で何[なに]を作[つく]りましたか。"
+          },
+          {
+            "prompt": "下の野菜はどうなりましたか。",
+            "accepted_answers": [
+              "黒くなりました",
+              "黒く",
+              "下の野菜が黒くなりました"
+            ],
+            "prompt_furigana": "下[した]の野[や]菜[さい]はどうなりましたか。"
+          },
+          {
+            "prompt": "鍋を返したほうがいいと言ったのは誰ですか。",
+            "accepted_answers": [
+              "父",
+              "父は",
+              "お父さん"
+            ],
+            "prompt_furigana": "鍋[なべ]を返[かえ]したほうがいいと言[い]ったのは誰[だれ]ですか。"
+          }
+        ],
+        "english_translation": "I borrowed an old pot from the house next door. That pot is very heavy, so once you put water in it, one person can hardly hold it. When I set it down in the kitchen, the table sank a little. This pot is probably older than the kitchen. In the evening, I made miso soup in that pot. The vegetables at the bottom turned black. The thing is, vegetables turn black easily in this pot. I poured it into the rice bowls. My younger brother drank a little and said, \"This is bitter.\" I explained, \"Black vegetables are probably good for your body.\" My mother said, \"It's salty, isn't it.\" I answered, \"I only put in a little salt. It might be because the pot is old.\" Everyone went quiet. Probably because it is delicious. My father said, \"You had better return the pot tomorrow.\"",
+        "summary_ja": "隣の家から借りた古い鍋で味噌汁を作りました。",
+        "summary_en": "I make miso soup in a heavy old pot borrowed from next door and defend the result at the table.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-adverb",
+          "adj-na-conjugation",
+          "comparative-yori",
+          "darou",
+          "de-location",
+          "deshou",
+          "desu",
+          "ga",
+          "hou-ga-ii",
+          "kamoshirenai",
+          "kara-because",
+          "kara-from",
+          "mada-teinai",
+          "mashita",
+          "masu",
+          "n4-deshou",
+          "n4-kamoshirenai",
+          "n4-nikui-yasui",
+          "n4-noda",
+          "n4-potential",
+          "n4-to-conditional",
+          "naru-become",
+          "ne-tag",
+          "ni-direction",
+          "no-nominalizer",
+          "no-possessive",
+          "shika-nai",
+          "ta-form",
+          "te-form",
+          "to-and",
+          "toki",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "ashita",
+          "chawan",
+          "chichi",
+          "daidokoro",
+          "furui-adj",
+          "haha",
+          "hitori-de",
+          "ie",
+          "ii",
+          "ireru-v",
+          "iru-exist",
+          "iu-v",
+          "kaesu",
+          "karada",
+          "kariru",
+          "kono",
+          "kore",
+          "kotae",
+          "kuroi",
+          "minna",
+          "misoshiru",
+          "mizu",
+          "nabe",
+          "naru-become",
+          "nigai",
+          "nomu-v",
+          "oishii",
+          "oku",
+          "omoi",
+          "otouto",
+          "sagaru",
+          "setsumei-suru",
+          "shio",
+          "shita-v",
+          "shizuka",
+          "shoppai",
+          "sono",
+          "sukoshi",
+          "teeburu",
+          "tonari",
+          "totemo",
+          "tsukuru",
+          "watashi",
+          "yasai",
+          "yuugata"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "tonari",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "furui-adj",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 9,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "kariru",
+            "start": 11,
+            "end": 16,
+            "surface_form": "借りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 19,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 21,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "omoi",
+            "start": 24,
+            "end": 27,
+            "surface_form": "重くて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 28,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "ireru-v",
+            "start": 30,
+            "end": 33
+          },
+          {
+            "vocabulary_slug": "hitori-de",
+            "start": 34,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 46,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "oku",
+            "start": 49,
+            "end": 52,
+            "surface_form": "置いた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 55,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 60,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "sagaru",
+            "start": 62,
+            "end": 68,
+            "surface_form": "下がりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kono",
+            "start": 69,
+            "end": 71
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 71,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 73,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "furui-adj",
+            "start": 77,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "yuugata",
+            "start": 84,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 87,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 89,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "misoshiru",
+            "start": 91,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "tsukuru",
+            "start": 95,
+            "end": 100,
+            "surface_form": "作りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "shita-v",
+            "start": 101,
+            "end": 102
+          },
+          {
+            "vocabulary_slug": "yasai",
+            "start": 103,
+            "end": 105
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 108,
+            "end": 113,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kono",
+            "start": 114,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 116,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "yasai",
+            "start": 118,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "chawan",
+            "start": 132,
+            "end": 134
+          },
+          {
+            "vocabulary_slug": "ireru-v",
+            "start": 135,
+            "end": 140,
+            "surface_form": "入れました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 141,
+            "end": 142
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 143,
+            "end": 145
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 145,
+            "end": 148,
+            "surface_form": "飲んで",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "kore",
+            "start": 150,
+            "end": 152
+          },
+          {
+            "vocabulary_slug": "nigai",
+            "start": 153,
+            "end": 155
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 159,
+            "end": 164,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 165,
+            "end": 166
+          },
+          {
+            "vocabulary_slug": "kuroi",
+            "start": 168,
+            "end": 170
+          },
+          {
+            "vocabulary_slug": "yasai",
+            "start": 170,
+            "end": 172
+          },
+          {
+            "vocabulary_slug": "karada",
+            "start": 173,
+            "end": 174
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 175,
+            "end": 177
+          },
+          {
+            "vocabulary_slug": "setsumei-suru",
+            "start": 183,
+            "end": 189,
+            "surface_form": "説明しました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 190,
+            "end": 191
+          },
+          {
+            "vocabulary_slug": "shoppai",
+            "start": 193,
+            "end": 198
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 203,
+            "end": 208,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "shio",
+            "start": 210,
+            "end": 211
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 212,
+            "end": 214
+          },
+          {
+            "vocabulary_slug": "ireru-v",
+            "start": 216,
+            "end": 219,
+            "surface_form": "入れて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 219,
+            "end": 223,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 224,
+            "end": 225
+          },
+          {
+            "vocabulary_slug": "furui-adj",
+            "start": 226,
+            "end": 228
+          },
+          {
+            "vocabulary_slug": "kotae",
+            "start": 239,
+            "end": 241
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 245,
+            "end": 248
+          },
+          {
+            "vocabulary_slug": "shizuka",
+            "start": 249,
+            "end": 251
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 252,
+            "end": 257,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "oishii",
+            "start": 258,
+            "end": 262
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 269,
+            "end": 270
+          },
+          {
+            "vocabulary_slug": "ashita",
+            "start": 272,
+            "end": 274
+          },
+          {
+            "vocabulary_slug": "nabe",
+            "start": 275,
+            "end": 276
+          },
+          {
+            "vocabulary_slug": "kaesu",
+            "start": 277,
+            "end": 280,
+            "surface_form": "返した",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 283,
+            "end": 285
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 290,
+            "end": 295,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 163,
+        "body_furigana": "私[わたし]は隣[となり]の家[いえ]から古[ふる]い鍋[なべ]を借[か]りました。その鍋[なべ]はとても重[おも]くて、水[みず]を入[い]れると一人[ひとり]では持[も]ちにくいです。台[だい]所[どころ]に置[お]いたとき、テーブルが少[すこ]し下[さ]がりました。この鍋[なべ]は台[だい]所[どころ]より古[ふる]いでしょう。夕[ゆう]方[がた]、その鍋[なべ]で味[み]噌[そ]汁[しる]を作[つく]りました。下[した]の野[や]菜[さい]が黒[くろ]くなりました。この鍋[なべ]は野[や]菜[さい]が黒[くろ]くなりやすいんです。茶[ちゃ]碗[わん]に入[い]れました。弟[おとうと]は少[すこ]し飲[の]んで、「これは苦[にが]いです」と言[い]いました。私[わたし]は「黒[くろ]い野[や]菜[さい]は体[からだ]にいいでしょう」と説[せつ]明[めい]しました。母[はは]は「しょっぱいですね」と言[い]いました。「塩[しお]は少[すこ]ししか入[い]れていません。鍋[なべ]が古[ふる]いからかもしれません」と答[こた]えました。みんなが静[しず]かになりました。おいしいからでしょう。父[ちち]は「明日[あした]、鍋[なべ]を返[かえ]したほうがいいですね」と言[い]いました。",
+        "slug": "karita-nabe",
+        "_meta": {
+          "generator_model": "claude-opus-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "tabesugita-hi",
+      "position": 20,
+      "tone": "humorous",
+      "passage": {
+        "title": "毎年同じ終わり方",
+        "body": "私の家族は毎年、母が生まれた日に、同じレストランへ行きます。今年も父と母と兄と、同じ席に座りました。料理が来る前に、父が「今日は私が払いますよ」と言いました。母はすぐに「いいえ、だめですよ」と言いました。晩ご飯の後で、店員がケーキを持って来ました。ケーキは甘すぎましたが、みんな全部食べました。父は小さい声で「ズボンがきつくなりつつあります」と言いました。テーブルの真ん中に小さい紙が置かれました。父と母は一時間も話し合ったあげく、四人で同じだけ払うことになりました。全部で八千円でしたから、一人二千円でした。去年も同じでした。帰る道で、母は「来年は小さいケーキを頼みましょう」と言いました。",
+        "questions": [
+          {
+            "prompt": "家族は毎年どこへ行きますか。",
+            "accepted_answers": [
+              "レストラン",
+              "同じレストラン"
+            ],
+            "prompt_furigana": "家[か]族[ぞく]は毎[まい]年[ねん]どこへ行[い]きますか。"
+          },
+          {
+            "prompt": "店員は何を持って来ましたか。",
+            "accepted_answers": [
+              "ケーキ",
+              "ケーキを持って来ました"
+            ],
+            "prompt_furigana": "店[てん]員[いん]は何[なに]を持[も]って来[き]ましたか。"
+          },
+          {
+            "prompt": "父と母はどのぐらい話し合いましたか。",
+            "accepted_answers": [
+              "一時間",
+              "一時間も"
+            ],
+            "prompt_furigana": "父[ちち]と母[はは]はどのぐらい話[はな]し合[あ]いましたか。"
+          },
+          {
+            "prompt": "一人いくら払いましたか。",
+            "accepted_answers": [
+              "二千円",
+              "一人二千円"
+            ],
+            "prompt_furigana": "一人[ひとり]いくら払[はら]いましたか。"
+          }
+        ],
+        "english_translation": "Every year, on the day my mother was born, my family goes to the same restaurant. This year too, my father, my mother, my older brother and I sat in the same seats. Before the food came, my father said, \"Today I'll pay.\" My mother immediately said, \"No, you won't.\" After dinner, a shop clerk carried over a cake. The cake was too sweet, but everyone ate all of it. In a small voice my father said, \"My trousers are in the process of becoming tight.\" A small piece of paper was placed in the middle of the table. After my father and mother talked it over for a full hour, it was decided that the four of them would each pay the same amount. It came to eight thousand yen altogether, so it was two thousand yen each. Last year was the same. On the road home, my mother said, \"Next year let's order a small cake.\"",
+        "summary_ja": "母を祝う晩ご飯で家族は食べすぎて、最後に四人で同じお金を出しました。",
+        "summary_en": "At the dinner celebrating their mother, the family eats too much and ends up each paying the same amount.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "ato-de",
+          "dake",
+          "de-location",
+          "desu",
+          "ga",
+          "he-direction",
+          "kara-because",
+          "mae-ni",
+          "mashita",
+          "mashou",
+          "masu",
+          "mo-also",
+          "n4-ageku",
+          "n4-koto-ni-naru",
+          "n4-passive",
+          "n4-potential",
+          "n4-sugiru",
+          "n4-tsutsu-aru",
+          "naru-become",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "sugiru",
+          "ta-form",
+          "te-form",
+          "to-and",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "ani",
+          "aru",
+          "bangohan",
+          "chichi",
+          "chiisai",
+          "haha",
+          "hanashiau",
+          "harau",
+          "hi-sun-v",
+          "iie",
+          "iku-v",
+          "iu-v",
+          "kaeru-v",
+          "kami-paper",
+          "kazoku",
+          "keeki",
+          "koe",
+          "kotoshi",
+          "kuru-v",
+          "kyonen",
+          "kyou",
+          "mae",
+          "mainen",
+          "mannaka",
+          "michi-v",
+          "minna",
+          "motsu",
+          "naru-become",
+          "onaji",
+          "rainen",
+          "resutoran",
+          "ryouri",
+          "seki-seat",
+          "sugu",
+          "suwaru",
+          "taberu",
+          "teeburu",
+          "ten-in",
+          "umareru",
+          "watashi",
+          "zenbu",
+          "zubon"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "kazoku",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "mainen",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "umareru",
+            "start": 10,
+            "end": 14,
+            "surface_form": "生まれた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 14,
+            "end": 15
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "resutoran",
+            "start": 19,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 25,
+            "end": 29,
+            "surface_form": "行きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kotoshi",
+            "start": 30,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 33,
+            "end": 34
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 35,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 37,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "seki-seat",
+            "start": 42,
+            "end": 43
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 44,
+            "end": 49,
+            "surface_form": "座りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ryouri",
+            "start": 50,
+            "end": 52
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 53,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 55,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 58,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 61,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 64,
+            "end": 65
+          },
+          {
+            "vocabulary_slug": "harau",
+            "start": 66,
+            "end": 70,
+            "surface_form": "払います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 73,
+            "end": 78,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 79,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 81,
+            "end": 83
+          },
+          {
+            "vocabulary_slug": "iie",
+            "start": 85,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 96,
+            "end": 101,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "bangohan",
+            "start": 102,
+            "end": 105
+          },
+          {
+            "vocabulary_slug": "ten-in",
+            "start": 109,
+            "end": 111
+          },
+          {
+            "vocabulary_slug": "keeki",
+            "start": 112,
+            "end": 115
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 116,
+            "end": 119,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 119,
+            "end": 123,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "keeki",
+            "start": 124,
+            "end": 127
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 136,
+            "end": 139
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 139,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 141,
+            "end": 146,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 147,
+            "end": 148
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 149,
+            "end": 152
+          },
+          {
+            "vocabulary_slug": "koe",
+            "start": 152,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "zubon",
+            "start": 155,
+            "end": 158
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 166,
+            "end": 170,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 172,
+            "end": 177,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 178,
+            "end": 182
+          },
+          {
+            "vocabulary_slug": "mannaka",
+            "start": 183,
+            "end": 186
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 187,
+            "end": 190
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 190,
+            "end": 191
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 199,
+            "end": 200
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 201,
+            "end": 202
+          },
+          {
+            "vocabulary_slug": "hanashiau",
+            "start": 207,
+            "end": 212,
+            "surface_form": "話し合った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 219,
+            "end": 221
+          },
+          {
+            "vocabulary_slug": "harau",
+            "start": 223,
+            "end": 225
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 228,
+            "end": 233,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 234,
+            "end": 236
+          },
+          {
+            "vocabulary_slug": "kyonen",
+            "start": 255,
+            "end": 257
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 258,
+            "end": 260
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 264,
+            "end": 266
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 266,
+            "end": 267
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 269,
+            "end": 270
+          },
+          {
+            "vocabulary_slug": "rainen",
+            "start": 272,
+            "end": 274
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 275,
+            "end": 278
+          },
+          {
+            "vocabulary_slug": "keeki",
+            "start": 278,
+            "end": 281
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 290,
+            "end": 295,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 166,
+        "body_furigana": "私[わたし]の家[か]族[ぞく]は毎[まい]年[ねん]、母[はは]が生[う]まれた日[ひ]に、同[おな]じレストランへ行[い]きます。今年[ことし]も父[ちち]と母[はは]と兄[あに]と、同[おな]じ席[せき]に座[すわ]りました。料[りょう]理[り]が来[く]る前[まえ]に、父[ちち]が「今日[きょう]は私[わたし]が払[はら]いますよ」と言[い]いました。母[はは]はすぐに「いいえ、だめですよ」と言[い]いました。晩[ばん]ご飯[はん]の後[あと]で、店[てん]員[いん]がケーキを持[も]って来[き]ました。ケーキは甘[あま]すぎましたが、みんな全[ぜん]部[ぶ]食[た]べました。父[ちち]は小[ちい]さい声[こえ]で「ズボンがきつくなりつつあります」と言[い]いました。テーブルの真[ま]ん中[なか]に小[ちい]さい紙[かみ]が置[お]かれました。父[ちち]と母[はは]は一[いち]時[じ]間[かん]も話し合[はなしあ]ったあげく、四[よ]人[にん]で同[おな]じだけ払[はら]うことになりました。全[ぜん]部[ぶ]で八[はっ]千[せん]円[えん]でしたから、一人[ひとり]二千[にせん]円[えん]でした。去[きょ]年[ねん]も同[おな]じでした。帰[かえ]る道[みち]で、母[はは]は「来[らい]年[ねん]は小[ちい]さいケーキを頼[たの]みましょう」と言[い]いました。",
+        "slug": "tabesugita-hi",
+        "_meta": {
+          "generator_model": "claude-opus-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
