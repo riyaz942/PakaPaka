@@ -4,10 +4,12 @@ import { Pressable, Text, View } from 'react-native';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
+import { cn } from '@/utils/cn';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 
@@ -60,6 +62,7 @@ export function IncorrectReveal({
   answerCollision,
 }: IncorrectRevealProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const accent = CONTENT_TYPE_ACCENT[item.itemType];
 
   // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
   // and show the completed sentence so the blank's scope is unmistakable.
@@ -107,9 +110,11 @@ export function IncorrectReveal({
             className="text-body-lg text-secondary text-center"
           />
         ) : null}
-        <Text className="text-display text-center font-jp-hero-bold text-primary">
-          {isIncomplete ? displayAnswer : item.primaryForm}
-        </Text>
+        <View className={cn('w-full items-center rounded-radius-xl p-space-lg', accent.soft)}>
+          <Text className={cn('text-display text-center font-jp-hero-bold', accent.deep)}>
+            {isIncomplete ? displayAnswer : item.primaryForm}
+          </Text>
+        </View>
         {isIncomplete ? (
           completedSentence ? (
             <FuriganaText

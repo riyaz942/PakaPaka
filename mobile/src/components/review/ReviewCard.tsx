@@ -7,6 +7,7 @@ import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { heroWeightClass } from '@/components/learn/ItemDetailHeader';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
@@ -150,6 +151,7 @@ export function ReviewCard({
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const accent = CONTENT_TYPE_ACCENT[itemType];
 
   // Grammar cloze contract (Plan 07): prompt with the blanked sentence/frame,
   // never the bare form (for particles the form IS the answer). Label the mode
@@ -166,9 +168,10 @@ export function ReviewCard({
         ? "Reading — on'yomi"
         : MODE_LABEL[promptType];
 
-  // The prompt is heroed in ink, not the type hue (spec screen 12) — the header
-  // badge already names the type, and at this size the glyph reads as the page.
-  const grammarPromptClass = 'text-title-lg font-jp-bold text-center text-primary';
+  // The prompt sits on the item's soft type fill, same as the Browse/lesson
+  // hero, so the glyph's family (radical/kanji/vocabulary/grammar) reads at a
+  // glance instead of relying on the kicker text alone.
+  const grammarPromptClass = cn('text-title-lg font-jp-bold text-center', accent.deep);
   // v2 rule 1/5: a meaning prompt on a word whose kanji are untaught is
   // unreadable as bare text, so it is annotated. Only the meaning card of a
   // reading-locked word — on any word that also gets a reading card, printing
@@ -192,13 +195,13 @@ export function ReviewCard({
         // 'auto' must show the reading. The learner's global 'hidden' setting
         // still wins; that is their explicit choice, not a silent default.
         isKnownWord={false}
-        className={cn('text-center text-primary', heroWeightClass(promptFontSize(display)))}
+        className={cn('text-center', accent.deep, heroWeightClass(promptFontSize(display)))}
         style={promptFontSize(display)}
       />
     ) : (
       <Text
         testID="review-prompt-glyph"
-        className={cn('text-center text-primary', heroWeightClass(promptFontSize(display)))}
+        className={cn('text-center', accent.deep, heroWeightClass(promptFontSize(display)))}
         style={promptFontSize(display)}>
         {display}
       </Text>
@@ -281,7 +284,9 @@ export function ReviewCard({
         ) : null}
       </View>
 
-      {promptNode}
+      <View className={cn('w-full items-center rounded-radius-xl p-space-lg', accent.soft)}>
+        {promptNode}
+      </View>
 
       {correctReveal ? null : (
         <SRSStageIndicator stage={srsState.srsStageLabel} infoCardId="spaced-repetition" />
