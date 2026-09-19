@@ -76,6 +76,7 @@ function RootLayoutContent() {
               name="lesson"
               options={{ headerShown: false, presentation: 'fullScreenModal' }}
             />
+            <Stack.Screen name="levels" options={{ headerShown: false }} />
           </Stack>
         </DatabaseProvider>
       </ThemeProvider>

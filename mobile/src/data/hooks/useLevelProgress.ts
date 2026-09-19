@@ -1,13 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
-import {
-  countItemsByLevel,
-  listItemsByLevelAndType,
-  type ItemType,
-} from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
-import { countStartedItemsByIds } from '@/data/user/srsStateRepository';
+import { computeItemCategoryProgress } from '@/data/hooks/levelProgressShared';
 import type { AppError } from '@/types/result.types';
 
 type ProgressType = 'kanji' | 'vocabulary' | 'grammar';
@@ -55,19 +50,13 @@ export function useLevelProgress(level: JLPTLevel | null): UseLevelProgressResul
     setError(null);
 
     try {
-      const totals = countItemsByLevel(curriculumDb, level);
-      const nextPerType = { ...EMPTY_PER_TYPE };
+      const nextPerType = computeItemCategoryProgress(curriculumDb, userDb, level, PROGRESS_TYPES);
       let sumStarted = 0;
       let sumTotal = 0;
 
       for (const itemType of PROGRESS_TYPES) {
-        const total = totals[itemType as ItemType];
-        const items = listItemsByLevelAndType(curriculumDb, level, itemType as ItemType);
-        const itemIds = items.map((item) => item.id);
-        const started = countStartedItemsByIds(userDb, itemIds);
-        nextPerType[itemType] = { started, total };
-        sumStarted += started;
-        sumTotal += total;
+        sumStarted += nextPerType[itemType].started;
+        sumTotal += nextPerType[itemType].total;
       }
 
       setPerType(nextPerType);

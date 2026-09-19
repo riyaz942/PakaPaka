@@ -1198,6 +1198,16 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM passage_practice_results/i.test(trimmed)) {
     let rows = [...(state.tables.get('passage_practice_results') ?? [])];
+    if (/WHERE passage_id IN/i.test(trimmed)) {
+      const allowedIds = new Set(params);
+      const distinct = new Set(
+        rows.filter((row) => allowedIds.has(row.passage_id)).map((row) => row.passage_id),
+      );
+      if (/COUNT\(DISTINCT passage_id\)/i.test(trimmed)) {
+        return [{ count: distinct.size }];
+      }
+      return rows.filter((row) => allowedIds.has(row.passage_id));
+    }
     if (/WHERE passage_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.passage_id === params[0]);
     }

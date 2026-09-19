@@ -7,6 +7,7 @@ import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
+import { PressableScale } from '@/components/common/PressableScale';
 import {
   ActionCard,
   AtRiskSection,
@@ -20,6 +21,7 @@ import {
   ReviewForecast,
   ShadowModeSwitchPrompt,
   WelcomeBackCard,
+  accessibilitySummary,
 } from '@/components/engagement';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { MaxContentWidth } from '@/constants/theme';
@@ -373,7 +375,15 @@ export default function HomeScreen() {
         );
       case 'level-progress':
         return level ? (
-          <LevelProgressBar level={level} perType={perType} overallPercent={overallPercent} />
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={`${accessibilitySummary(level, perType, Math.min(100, Math.max(0, overallPercent)))}. View all JLPT levels.`}
+            onPress={() => router.push({ pathname: '/levels', params: { level } })}
+            testID="home-level-progress-button">
+            <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+              <LevelProgressBar level={level} perType={perType} overallPercent={overallPercent} />
+            </View>
+          </PressableScale>
         ) : null;
       case 'review-forecast':
         return !onVacation ? (

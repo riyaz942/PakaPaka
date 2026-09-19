@@ -5,6 +5,7 @@ import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 import { migration004PassagePracticeResults } from '@/data/migrations/004_passage_practice_results';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  countPassagesWithResultsByIds,
   getPassagePracticeResults,
   upsertPassagePracticeResult,
 } from '@/data/user/passagePracticeRepository';
@@ -71,5 +72,35 @@ describe('passagePracticeRepository', () => {
         answeredAt: '2026-06-25T10:05:00.000Z',
       },
     ]);
+  });
+
+  it('counts distinct passages with at least one practice result', async () => {
+    const userDb = await createUserDb();
+
+    upsertPassagePracticeResult(userDb, {
+      passageId: '1',
+      questionId: '10',
+      isCorrect: true,
+      userAnswer: '学生',
+    });
+    upsertPassagePracticeResult(userDb, {
+      passageId: '1',
+      questionId: '11',
+      isCorrect: false,
+      userAnswer: '先生',
+    });
+    upsertPassagePracticeResult(userDb, {
+      passageId: '2',
+      questionId: '20',
+      isCorrect: true,
+      userAnswer: '学校',
+    });
+
+    expect(countPassagesWithResultsByIds(userDb, ['1', '2', '3'])).toBe(2);
+  });
+
+  it('returns 0 without querying when given no passage ids', async () => {
+    const userDb = await createUserDb();
+    expect(countPassagesWithResultsByIds(userDb, [])).toBe(0);
   });
 });

@@ -21,7 +21,7 @@ const TYPE_LABELS: Record<ProgressType, { short: string; dot: string }> = {
   grammar: { short: 'Grammar', dot: 'bg-content-grammar' },
 };
 
-function accessibilitySummary(level: JLPTLevel, perType: Record<ProgressType, TypeProgress>, overallPercent: number): string {
+export function accessibilitySummary(level: JLPTLevel, perType: Record<ProgressType, TypeProgress>, overallPercent: number): string {
   const parts = (['kanji', 'vocabulary', 'grammar'] as ProgressType[]).map(
     (type) => `${TYPE_LABELS[type].short} ${perType[type].started} of ${perType[type].total}`,
   );

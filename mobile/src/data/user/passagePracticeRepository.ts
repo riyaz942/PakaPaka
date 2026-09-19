@@ -46,6 +46,20 @@ export function upsertPassagePracticeResult(
   );
 }
 
+export function countPassagesWithResultsByIds(userDb: SQLiteDatabase, passageIds: string[]): number {
+  if (passageIds.length === 0) {
+    return 0;
+  }
+
+  const numericIds = passageIds.map((id) => Number(id));
+  const placeholders = numericIds.map(() => '?').join(', ');
+  const row = userDb.getFirstSync<{ count: number }>(
+    `SELECT COUNT(DISTINCT passage_id) AS count FROM passage_practice_results WHERE passage_id IN (${placeholders})`,
+    ...numericIds,
+  );
+  return row?.count ?? 0;
+}
+
 export function getPassagePracticeResults(
   userDb: SQLiteDatabase,
   passageId: string,

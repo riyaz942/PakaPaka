@@ -421,7 +421,17 @@ describe('HomeScreen', () => {
     expect(screen.getByRole('button', { name: /review 2 items due/i })).toBeTruthy();
     expect(screen.queryByTestId('home-streak-counter')).toBeNull();
     expect(screen.queryByText(/day streak/)).toBeNull();
-    expect(screen.getByText('N5 Progress')).toBeTruthy();
+    expect(screen.getByTestId('home-level-progress-button')).toBeTruthy();
+    expect(JSON.stringify(screen.toJSON())).toContain('N5 Progress');
+  });
+
+  it('navigates to the all-levels overview when the level progress bar is pressed', () => {
+    render(<HomeScreen />);
+
+    const button = screen.getByRole('button', { name: /N5 progress.*View all JLPT levels/ });
+    fireEvent.press(button);
+
+    expect(mockRouterPush).toHaveBeenCalledWith({ pathname: '/levels', params: { level: 'N5' } });
   });
 
   it('renders Review above Learn (UX-DR3: review-first hierarchy)', () => {
