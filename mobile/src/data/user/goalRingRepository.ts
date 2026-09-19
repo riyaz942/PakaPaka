@@ -12,7 +12,7 @@ import { getSessionIntensity } from '@/data/user/preferencesRepository';
 import type { AppError, Result } from '@/types/result.types';
 
 export type GoalRingState = {
-  /** Sticky daily goal in load units; null = unset (seed from intensity base). */
+  /** Sticky daily goal, in items; null = unset (seed from intensity base). */
   dailyGoalTarget: number | null;
   /** Monday (local) of the week the ratchet last ran for; null before first check. */
   goalWeekStart: string | null;

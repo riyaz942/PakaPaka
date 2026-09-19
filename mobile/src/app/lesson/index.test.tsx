@@ -201,9 +201,9 @@ describe('LessonScreen', () => {
     // Finishing a lesson earns the daily streak credit.
     expect(getStreak(userDb).currentStreak).toBe(1);
 
-    // BUG2: lessons contribute to the daily goal ring. Two radicals (1 each)
-    // and one kanji (3) at apprentice/correct → 5 load units, one batched write.
-    expect(getDailyLoad(userDb, todayKey())?.load).toBe(5);
+    // Lessons contribute to the daily goal ring: each learned item counts as
+    // one, regardless of type — three items here, one batched write.
+    expect(getDailyLoad(userDb, todayKey())?.load).toBe(3);
 
     expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
   });

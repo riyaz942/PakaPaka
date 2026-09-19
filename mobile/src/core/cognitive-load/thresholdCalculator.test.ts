@@ -124,7 +124,7 @@ describe('computeWeeklyGoalUpdate', () => {
     expect(result.consecutiveMissWeeks).toBe(GOAL_RING_MISS_WEEKS_BEFORE_OFFER);
   });
 
-  it('rounds proposals to whole load units', () => {
+  it('rounds proposals to whole items', () => {
     const result = computeWeeklyGoalUpdate({
       currentGoal: 30,
       activeDayLoads: [40, 41, 41],

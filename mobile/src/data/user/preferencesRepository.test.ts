@@ -13,6 +13,7 @@ import {
   getCloudSttOptIn,
   getFuriganaDisplay,
   getHomeLayout,
+  getLessonItemCount,
   getOnboardingPath,
   getSeenKanjiReadingPrimer,
   getSessionIntensity,
@@ -33,6 +34,7 @@ import {
   setCloudSttOptIn,
   setFuriganaDisplay,
   setHomeLayout,
+  setLessonItemCount,
   setOnboardingCompleted,
   setOnboardingPath,
   setReducedMotionEnabled,
@@ -139,6 +141,28 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
     expect(() => setSessionIntensity(db, 'standard' as 'relaxed')).toThrow(
       'Invalid session intensity',
     );
+  });
+
+  it('round-trips lesson_item_count, defaulting to 5 when unset', async () => {
+    const db = await createUserDb();
+
+    expect(getLessonItemCount(db)).toBe(5);
+
+    setLessonItemCount(db, 8);
+    expect(getLessonItemCount(db)).toBe(8);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.lessonItemCount,
+      )?.value,
+    ).toBe('8');
+  });
+
+  it('rejects non-positive lesson item counts', async () => {
+    const db = await createUserDb();
+
+    expect(() => setLessonItemCount(db, 0)).toThrow('Invalid lesson item count');
+    expect(() => setLessonItemCount(db, -3)).toThrow('Invalid lesson item count');
   });
 
   it('treats corrupt session_intensity as unset', async () => {

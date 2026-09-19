@@ -41,7 +41,7 @@ jest.mock('@/data/user/lessonProgressRepository', () => ({
 
 jest.mock('@/data/user/preferencesRepository', () => ({
   getStartingJlptLevel: () => 'N5' as JLPTLevel,
-  getSessionIntensity: () => 'relaxed',
+  getLessonItemCount: () => 5,
 }));
 
 jest.mock('@/data/user/vacationRepository', () => ({

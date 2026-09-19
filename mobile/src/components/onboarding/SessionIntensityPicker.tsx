@@ -3,7 +3,6 @@ import { View } from 'react-native';
 
 import { ChoiceCard } from '@/components/common/ChoiceCard';
 import { SESSION_INTENSITY_MINUTES } from '@/config/constants';
-import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 type IntensityOption = {
@@ -26,7 +25,7 @@ const INTENSITY_OPTIONS: IntensityOption[] = [
 ];
 
 function sublabelFor(intensity: SessionIntensity): string {
-  return `~${SESSION_INTENSITY_MINUTES[intensity]} min/day · ${LESSON_SIZE_BY_INTENSITY[intensity]} new items`;
+  return `~${SESSION_INTENSITY_MINUTES[intensity]} min/day`;
 }
 
 type SessionIntensityPickerProps = {

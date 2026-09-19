@@ -126,6 +126,8 @@ jest.mock('@/data/hooks/useFuriganaOverrideList', () => ({
 
 jest.mock('@/data/user/preferencesRepository', () => ({
   getSessionIntensity: () => 'standard',
+  getLessonItemCount: () => mockLessonItemCount,
+  setLessonItemCount: (db: unknown, count: number) => mockSetLessonItemCount(db, count),
   getWeaknessBiasEnabled: () => true,
   getNotificationsEnabled: () => false,
   getNotificationTime: () => 'evening',
@@ -202,6 +204,11 @@ const mockSetDailyGoalTarget = jest.fn((_db: unknown, target: number) => {
   return { ok: true as const, value: undefined };
 });
 
+let mockLessonItemCount = 5;
+const mockSetLessonItemCount = jest.fn((_db: unknown, count: number) => {
+  mockLessonItemCount = count;
+});
+
 jest.mock('@/data/user/goalRingRepository', () => ({
   resolveDailyGoalTarget: () => mockDailyGoalTarget,
   setDailyGoalTarget: (db: unknown, target: number) => mockSetDailyGoalTarget(db, target),
@@ -233,7 +240,7 @@ describe('SettingsScreen daily goal (Story 2.1, FR57 / UX-DR33)', () => {
     ).toBe(false);
   });
 
-  it('cannot step below one load unit step, so no non-positive goal is ever written', () => {
+  it('cannot step below one goal step, so no non-positive goal is ever written', () => {
     mockDailyGoalTarget = 5;
     render(<SettingsScreen />);
     fireEvent.press(screen.getByTestId('settings-daily-goal-decrement'));

@@ -6,7 +6,7 @@ import { Banner } from '@/components/common/Banner';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
-import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
+import { initialGoalForIntensity } from '@/core/cognitive-load/thresholdCalculator';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { isImportOnboardingPath } from '@/data/user/onboardingPathUtils';
 import { getOnboardingPath, setSessionIntensity } from '@/data/user/preferencesRepository';
@@ -20,7 +20,7 @@ export default function IntensityScreen() {
   const importPath = isImportOnboardingPath(userDb);
   const onboardingPath = getOnboardingPath(userDb);
 
-  const lessonSize = LESSON_SIZE_BY_INTENSITY[selectedIntensity ?? 'relaxed'];
+  const dailyGoal = initialGoalForIntensity(selectedIntensity ?? 'relaxed');
 
   const handleContinue = () => {
     if (!selectedIntensity) {
@@ -65,8 +65,8 @@ export default function IntensityScreen() {
           className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm"
           testID="intensity-lesson-preview">
           <Text className="text-body-sm font-ui-medium text-secondary">
-            Today&apos;s lesson at this pace:{' '}
-            <Text className="font-ui-extrabold text-primary">{lessonSize} new items</Text>
+            Your daily goal at this pace:{' '}
+            <Text className="font-ui-extrabold text-primary">{dailyGoal} items</Text>
             {importPath ? ' — layered on top of your imported progress.' : '.'}
           </Text>
         </View>
@@ -76,7 +76,7 @@ export default function IntensityScreen() {
         <Banner
           visible
           variant="info"
-          message="Reviews grow as you learn — pace only controls new items."
+          message="This sets your daily goal, not a hard cap — reviews grow on top of it as you learn."
           className="mt-space-sm"
           testID="intensity-reviews-note"
         />

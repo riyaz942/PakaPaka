@@ -1,5 +1,3 @@
-export type LoadOutcome = 'correct' | 'incorrect';
-
 export type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 export type DailyLoad = {

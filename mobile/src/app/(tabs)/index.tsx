@@ -45,7 +45,7 @@ import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
   getHomeLayout,
   getLastBackedUpAt,
-  getSessionIntensity,
+  getLessonItemCount,
   getStartingJlptLevel,
   isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
@@ -92,7 +92,7 @@ export default function HomeScreen() {
       try {
         setLessonAllowance(
           computeDailyAllowance({
-            intensity: getSessionIntensity(userDb),
+            itemsPerLesson: getLessonItemCount(userDb),
             itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
             reviewsDueCount,
           }),

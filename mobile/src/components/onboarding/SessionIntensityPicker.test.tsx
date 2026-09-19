@@ -3,7 +3,6 @@ import React from 'react';
 
 import { SESSION_INTENSITY_MINUTES } from '@/config/constants';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
-import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
 import { SESSION_INTENSITY_VALUES } from '@/data/user/sessionIntensity.types';
 
 describe('SessionIntensityPicker', () => {
@@ -26,7 +25,7 @@ describe('SessionIntensityPicker', () => {
     expect(screen.getByText('Immersive')).toBeTruthy();
   });
 
-  it('derives each sublabel from the minutes and lesson-size maps', () => {
+  it('derives each sublabel from the minutes map', () => {
     render(
       <SessionIntensityPicker
         selectedIntensity={null}
@@ -37,8 +36,7 @@ describe('SessionIntensityPicker', () => {
 
     for (const intensity of SESSION_INTENSITY_VALUES) {
       const minutes = SESSION_INTENSITY_MINUTES[intensity];
-      const newItems = LESSON_SIZE_BY_INTENSITY[intensity];
-      expect(screen.getByText(`~${minutes} min/day · ${newItems} new items`)).toBeTruthy();
+      expect(screen.getByText(`~${minutes} min/day`)).toBeTruthy();
     }
   });
 

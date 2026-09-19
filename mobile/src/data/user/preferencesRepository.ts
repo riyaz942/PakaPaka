@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
 import {
   reconcileHomeLayout,
   serializeHomeLayout,
@@ -21,6 +22,7 @@ export const PREFERENCE_KEYS = {
   curriculumUpdateSource: 'curriculum_update_source',
   startingJlptLevel: 'starting_jlpt_level',
   sessionIntensity: 'session_intensity',
+  lessonItemCount: 'lesson_item_count',
   onboardingCompleted: 'onboarding_completed',
   onboardingPath: 'onboarding_path',
   weaknessBiasEnabled: 'weakness_bias_enabled',
@@ -125,6 +127,20 @@ export function setSessionIntensity(
     throw new Error(`Invalid session intensity: ${intensity}`);
   }
   setPreference(userDb, PREFERENCE_KEYS.sessionIntensity, intensity);
+}
+
+/** New items introduced per lesson. Settings-only — not part of onboarding. */
+export function getLessonItemCount(userDb: SQLiteDatabase): number {
+  const value = getPreference(userDb, PREFERENCE_KEYS.lessonItemCount);
+  const parsed = value !== null ? Number(value) : NaN;
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_LESSON_ITEM_COUNT;
+}
+
+export function setLessonItemCount(userDb: SQLiteDatabase, count: number): void {
+  if (!Number.isFinite(count) || count <= 0) {
+    throw new Error(`Invalid lesson item count: ${count}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.lessonItemCount, String(Math.round(count)));
 }
 
 export function isOnboardingCompleted(userDb: SQLiteDatabase): boolean {

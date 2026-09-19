@@ -24,7 +24,6 @@ import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
 import { MaxContentWidth } from '@/constants/theme';
-import { computeLoadIncrement } from '@/core/cognitive-load/loadTracker';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
@@ -136,23 +135,13 @@ export default function LessonScreen() {
       console.warn('[Lesson] streak update failed', streakResult.error);
     }
 
-    // Lessons fill the goal ring too (FR55): new items enter at apprentice and
-    // the lesson UI has no incorrect outcome. One batched write for the whole
-    // lesson — best-effort, never blocks completion.
-    const loadIncrement = items.reduce(
-      (sum, lessonItem) =>
-        sum +
-        computeLoadIncrement({
-          itemType: lessonItem.itemType,
-          stageLabel: 'apprentice',
-          outcome: 'correct',
-        }),
-      0,
-    );
-    if (loadIncrement > 0) {
+    // Lessons fill the goal ring too (FR55): each learned item counts as one
+    // toward the daily goal. One batched write for the whole lesson —
+    // best-effort, never blocks completion.
+    if (items.length > 0) {
       const loadResult = addDailyLoad(userDb, {
         date: todayKey(),
-        increment: loadIncrement,
+        increment: items.length,
         threshold: resolveDailyGoalTarget(userDb),
       });
       if (!loadResult.ok && __DEV__) {

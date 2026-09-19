@@ -31,6 +31,7 @@ import {
   requestNotificationPermission,
   scheduleReviewReminder,
 } from '@/config/notifications';
+import { DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
 import { MaxContentWidth } from '@/constants/theme';
 import { formatLastBackedUp } from '@/core/backup/backupFreshness';
 import {
@@ -51,11 +52,13 @@ import { previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import {
   clearOnboardingCompleted,
   getLastBackedUpAt,
+  getLessonItemCount,
   getNotificationTime,
   getNotificationsEnabled,
   getSessionIntensity,
   getWeaknessBiasEnabled,
   NOTIFICATION_TIME_HOURS,
+  setLessonItemCount,
   setNotificationTime,
   setNotificationsEnabled,
   setSessionIntensity,
@@ -92,8 +95,11 @@ const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] 
   { value: 'hidden', label: 'Always hidden' },
 ];
 
-/** The daily goal moves in load units; 5 is one small item's worth of load. */
+/** The daily goal moves in whole items. */
 const DAILY_GOAL_STEP = 5;
+
+/** Items-per-lesson stepper moves one item at a time. */
+const LESSON_ITEM_COUNT_STEP = 1;
 
 function formatByteSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -186,6 +192,7 @@ export default function SettingsScreen() {
   const [notificationTime, setNotificationTimeState] = useState<NotificationTime>('evening');
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
   const [dailyGoal, setDailyGoal] = useState(DAILY_GOAL_STEP);
+  const [lessonItemCount, setLessonItemCountState] = useState(DEFAULT_LESSON_ITEM_COUNT);
   const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
   const [openCardId, setOpenCardId] = useState<GuidanceCardId | null>(null);
   const [includeConversationsInBackup, setIncludeConversationsInBackup] = useState(false);
@@ -213,6 +220,7 @@ export default function SettingsScreen() {
     setNotificationsEnabledState(getNotificationsEnabled(userDb));
     setNotificationTimeState(getNotificationTime(userDb));
     setDailyGoal(resolveDailyGoalTarget(userDb));
+    setLessonItemCountState(getLessonItemCount(userDb));
     setLastBackedUpAtState(getLastBackedUpAt(userDb));
   }, [userDb, settingsVersion]);
 
@@ -221,6 +229,11 @@ export default function SettingsScreen() {
     if (result.ok) {
       setDailyGoal(resolveDailyGoalTarget(userDb));
     }
+  };
+
+  const handleLessonItemCountChange = (next: number) => {
+    setLessonItemCount(userDb, next);
+    setLessonItemCountState(getLessonItemCount(userDb));
   };
 
   const handleSelect = (intensity: SessionIntensity) => {
@@ -451,19 +464,32 @@ export default function SettingsScreen() {
           <SettingsCard>
             <StepperRow
               label="Daily goal"
-              description="load units · no upper limit"
+              description="items per day · no upper limit"
               value={dailyGoal}
               onValueChange={handleGoalChange}
               step={DAILY_GOAL_STEP}
               min={DAILY_GOAL_STEP}
-              unitLabel="load units"
+              unitLabel="items"
               testID="settings-daily-goal"
             />
           </SettingsCard>
           <Text className="mt-space-xs text-caption font-ui-medium text-muted">
-            Your goal ring fills toward this many load units per day. It also rises with a prompt
-            when you keep beating it.
+            Your goal ring fills toward this many items per day. It also rises with a prompt when
+            you keep beating it.
           </Text>
+
+          <SettingsCard>
+            <StepperRow
+              label="Items per lesson"
+              description="new items introduced per lesson"
+              value={lessonItemCount}
+              onValueChange={handleLessonItemCountChange}
+              step={LESSON_ITEM_COUNT_STEP}
+              min={LESSON_ITEM_COUNT_STEP}
+              unitLabel="items"
+              testID="settings-lesson-item-count"
+            />
+          </SettingsCard>
         </View>
 
         <View className="mt-space-lg">

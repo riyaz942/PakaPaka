@@ -1,6 +1,5 @@
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
-import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 export type LessonItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
@@ -34,18 +33,6 @@ export type LessonPlanInput = {
   parentStatuses: Map<string, ContentStudyStatus>;
   size: number;
 };
-
-export const LESSON_SIZE_BY_INTENSITY: Record<SessionIntensity, number> = {
-  light: 3,
-  relaxed: 5,
-  steady: 7,
-  intense: 10,
-  immersive: 15,
-};
-
-export function lessonSizeForIntensity(intensity: SessionIntensity | null): number {
-  return LESSON_SIZE_BY_INTENSITY[intensity ?? 'relaxed'];
-}
 
 /**
  * Interleave order and per-round quotas. Radicals lead each round because they

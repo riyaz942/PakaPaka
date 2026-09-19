@@ -3,11 +3,10 @@ import {
   LESSON_BACKLOG_THROTTLE_FULL,
   LESSON_BACKLOG_THROTTLE_START,
 } from '@/config/constants';
-import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
-import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 export type DailyAllowanceInput = {
-  intensity: SessionIntensity | null;
+  /** New items shown per lesson (Settings-configurable, independent of pace). */
+  itemsPerLesson: number;
   /** Lesson items already started today (from daily_lesson_log). */
   itemsStartedToday: number;
   /** Reviews currently due — a large backlog throttles new lessons. */
@@ -31,9 +30,8 @@ export type DailyAllowance = {
  * returning user with a backlog is never locked out entirely.
  */
 export function computeDailyAllowance(input: DailyAllowanceInput): DailyAllowance {
-  const { intensity, itemsStartedToday, reviewsDueCount } = input;
-  const batchSize = LESSON_SIZE_BY_INTENSITY[intensity ?? 'relaxed'];
-  const base = batchSize * DAILY_LESSON_BATCHES;
+  const { itemsPerLesson, itemsStartedToday, reviewsDueCount } = input;
+  const base = itemsPerLesson * DAILY_LESSON_BATCHES;
 
   const throttleRange = LESSON_BACKLOG_THROTTLE_FULL - LESSON_BACKLOG_THROTTLE_START;
   const backlogOverage = Math.max(0, reviewsDueCount - LESSON_BACKLOG_THROTTLE_START);
@@ -42,7 +40,7 @@ export function computeDailyAllowance(input: DailyAllowanceInput): DailyAllowanc
 
   let remaining = Math.max(0, throttled - itemsStartedToday);
   if (itemsStartedToday === 0) {
-    remaining = Math.max(remaining, batchSize);
+    remaining = Math.max(remaining, itemsPerLesson);
   }
 
   return { total: Math.max(throttled, remaining), remaining };

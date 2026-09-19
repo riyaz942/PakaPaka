@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Button } from '@/components/common/Button';
 
 type GoalRisePromptProps = {
-  /** Proposed higher daily goal in load units. */
+  /** Proposed higher daily goal, in items. */
   proposedGoal: number;
   currentGoal: number;
   /** Writes the new target and clears the pending offer. */
@@ -62,7 +62,7 @@ export function GoalRisePrompt({
 }
 
 type GoalReductionPromptProps = {
-  /** Offered lower daily goal in load units. */
+  /** Offered lower daily goal, in items. */
   proposedGoal: number;
   currentGoal: number;
   /** Lowers the target and clears the offer. */

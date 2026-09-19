@@ -2,11 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { computeDailyAllowance, type DailyAllowance } from '@/core/lesson/lessonAllowance';
-import {
-  lessonSizeForIntensity,
-  planLesson,
-  type LessonCandidate,
-} from '@/core/lesson/lessonPlanner';
+import { planLesson, type LessonCandidate } from '@/core/lesson/lessonPlanner';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import {
   getOptInPoolForItems,
@@ -19,7 +15,7 @@ import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository
 import { listLessonOptInIds } from '@/data/user/lessonOptInRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
-  getSessionIntensity,
+  getLessonItemCount,
   getStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 import { getDueSrsStates, getSrsStatesForItems } from '@/data/user/srsStateRepository';
@@ -112,9 +108,9 @@ export type UseLessonPlanOptions = {
 };
 
 /**
- * Auto-generates today's lesson from the user's level, session intensity, and
- * dependency graph. When the starting level runs out of new items, the plan
- * advances to the next harder level automatically.
+ * Auto-generates today's lesson from the user's level, items-per-lesson
+ * setting, and dependency graph. When the starting level runs out of new
+ * items, the plan advances to the next harder level automatically.
  *
  * The batch is clamped to the remaining daily allowance so repeated visits
  * can't binge the whole curriculum in one evening.
@@ -151,11 +147,10 @@ export function useLessonPlan(
       }
 
       const startingLevel = getStartingJlptLevel(userDb) ?? 'N5';
-      const intensity = getSessionIntensity(userDb);
-      const size = lessonSizeForIntensity(intensity);
+      const size = getLessonItemCount(userDb);
 
       const allowance = computeDailyAllowance({
-        intensity,
+        itemsPerLesson: size,
         itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
         reviewsDueCount: getDueSrsStates(userDb).length,
       });

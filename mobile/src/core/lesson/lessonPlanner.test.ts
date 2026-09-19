@@ -1,12 +1,6 @@
 import type { ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
-import { SESSION_INTENSITY_VALUES } from '@/data/user/sessionIntensity.types';
 
-import {
-  LESSON_SIZE_BY_INTENSITY,
-  lessonSizeForIntensity,
-  planLesson,
-  type LessonCandidate,
-} from './lessonPlanner';
+import { planLesson, type LessonCandidate } from './lessonPlanner';
 
 function candidate(
   id: string,
@@ -26,28 +20,6 @@ function emptyInput(candidates: LessonCandidate[], size: number) {
     size,
   };
 }
-
-describe('lessonSizeForIntensity', () => {
-  it('defaults to relaxed when intensity is unset', () => {
-    expect(lessonSizeForIntensity(null)).toBe(LESSON_SIZE_BY_INTENSITY.relaxed);
-  });
-
-  it('returns the intense size', () => {
-    expect(lessonSizeForIntensity('intense')).toBe(LESSON_SIZE_BY_INTENSITY.intense);
-  });
-
-  it('returns a size for the light, steady and immersive tiers', () => {
-    expect(lessonSizeForIntensity('light')).toBe(LESSON_SIZE_BY_INTENSITY.light);
-    expect(lessonSizeForIntensity('steady')).toBe(LESSON_SIZE_BY_INTENSITY.steady);
-    expect(lessonSizeForIntensity('immersive')).toBe(LESSON_SIZE_BY_INTENSITY.immersive);
-  });
-
-  it('grows strictly across the five tiers', () => {
-    const sizes = SESSION_INTENSITY_VALUES.map((tier) => LESSON_SIZE_BY_INTENSITY[tier]);
-    const ascending = sizes.every((size, index) => index === 0 || size > sizes[index - 1]);
-    expect(ascending).toBe(true);
-  });
-});
 
 describe('planLesson', () => {
   it('returns at most `size` items', () => {

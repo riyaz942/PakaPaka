@@ -39,7 +39,7 @@ export function addDaysToKey(key: string, days: number): string {
 }
 
 type WeeklyGoalUpdateInput = {
-  /** Sticky daily goal in load units (denominator of the ring). */
+  /** Sticky daily goal, in items (denominator of the ring). */
   currentGoal: number;
   /** Prior week's daily loads for active days only (load > 0); rest days excluded. */
   activeDayLoads: number[];

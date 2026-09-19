@@ -58,48 +58,16 @@ export const CLUSTER_ACCURACY_THRESHOLD = 0.6;
 export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;
 
 /**
- * Base cognitive load per item type (tunable defaults).
- * Kanji and grammar are heaviest; radicals are lightest.
- * Calibrated so a typical relaxed session (~15 mixed items) reaches ~100% threshold.
- */
-export const COGNITIVE_LOAD_WEIGHTS: Record<'radical' | 'kanji' | 'vocabulary' | 'grammar', number> = {
-  radical: 1,
-  kanji: 3,
-  grammar: 3,
-  vocabulary: 2,
-};
-
-/**
- * Maturity multiplier by SRS stage — apprentice items cost the most mental energy.
- */
-export const COGNITIVE_LOAD_MATURITY_MULTIPLIER: Record<
-  'apprentice' | 'guru' | 'master' | 'enlightened' | 'burned',
-  number
-> = {
-  apprentice: 1.0,
-  guru: 0.7,
-  master: 0.5,
-  enlightened: 0.4,
-  burned: 0.3,
-};
-
-/** Extra load multiplier applied when the learner answers incorrectly. */
-export const INCORRECT_LOAD_SURCHARGE = 1.5;
-
-/**
- * Base daily load threshold by session intensity (load units, not minutes).
- * The scale is anchored on two calibrated tiers and interpolated between them:
- * Relaxed (~15 min): avg ~2 units/item × 15 ≈ 30 → 100% at threshold 30.
- * Intense (~30 min): 55 — a higher ceiling so sustained study fills the ring
- * more gradually. That gives ~1.67 load units per minute; light, steady and
- * immersive follow that line, rounded and kept strictly increasing.
+ * Base daily goal by session intensity: a literal count of items (lessons +
+ * reviews combined) the ring targets per day, not a weighted/difficulty score.
+ * Relaxed is anchored on a typical ~15-item day; the rest scale with it.
  */
 export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
-  light: 15,
-  relaxed: 30,
-  steady: 42,
-  intense: 55,
-  immersive: 80,
+  light: 8,
+  relaxed: 15,
+  steady: 21,
+  intense: 28,
+  immersive: 40,
 };
 
 /** Floor for adapted threshold — never collapses below this on light days. */
@@ -133,9 +101,12 @@ export const GOAL_RING_MIN_ACTIVE_DAYS = 3;
  */
 export const GOAL_RING_MISS_WEEKS_BEFORE_OFFER = 2;
 
+/** Default new items introduced per lesson; user-configurable in Settings. */
+export const DEFAULT_LESSON_ITEM_COUNT = 5;
+
 /**
- * Daily lesson allowance = lesson batch size × this multiplier
- * (15/day relaxed, 30/day intense). Advisory — "Learn anyway" bypasses it.
+ * Daily lesson allowance = items per lesson × this multiplier.
+ * Advisory — "Learn anyway" bypasses it.
  */
 export const DAILY_LESSON_BATCHES = 3;
 

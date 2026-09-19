@@ -341,7 +341,7 @@ describe('ReviewSessionProvider', () => {
     expect(mockAddDailyLoad).toHaveBeenCalled();
   });
 
-  it('increases cognitive load more after an incorrect grade than correct', async () => {
+  it('increases cognitive load by the same amount for an incorrect grade as correct', async () => {
     const db = await openDatabaseAsync('user.db');
     const wrapper = await createWrapper(db);
 
@@ -383,7 +383,7 @@ describe('ReviewSessionProvider', () => {
       await Promise.resolve();
     });
 
-    expect(incorrectResult.current.cognitiveLoadPercent).toBeGreaterThan(correctPercent);
+    expect(incorrectResult.current.cognitiveLoadPercent).toBe(correctPercent);
   });
 
   it('does not change cognitive load on typo', async () => {

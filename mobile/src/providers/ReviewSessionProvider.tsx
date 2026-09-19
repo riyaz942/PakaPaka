@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { MAX_PREFETCH } from '@/config/constants';
 import { normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import { normalizeKana } from '@/core/answer/readingEvaluator';
-import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/loadTracker';
+import { computeLoadPercent } from '@/core/cognitive-load/loadTracker';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import { combinePairGrades } from '@/core/srs/pairGrading';
@@ -314,11 +314,9 @@ export function ReviewSessionProvider({ children }: Props) {
             }
           }
 
-          const increment = computeLoadIncrement({
-            itemType: item.itemType,
-            stageLabel: item.srsState.srsStageLabel,
-            outcome: outcomeResult,
-          });
+          // Each answered card counts as one toward the daily goal (FR55),
+          // regardless of item type, SRS stage, or correctness.
+          const increment = 1;
           const loadResult = addDailyLoad(userDb, {
             date: todayKey(),
             increment,

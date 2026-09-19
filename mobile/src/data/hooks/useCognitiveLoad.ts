@@ -13,7 +13,7 @@ import type { AppError } from '@/types/result.types';
 
 type UseCognitiveLoadResult = {
   todayLoad: number;
-  /** Sticky daily goal in load units — the ring's denominator. */
+  /** Sticky daily goal, in items — the ring's denominator. */
   threshold: number;
   /** Unclamped: overshoot reads >100. */
   percent: number;

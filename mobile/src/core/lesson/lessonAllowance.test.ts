@@ -1,49 +1,39 @@
 import { DAILY_LESSON_BATCHES, LESSON_BACKLOG_THROTTLE_FULL } from '@/config/constants';
-import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
 
 import { computeDailyAllowance } from './lessonAllowance';
 
 describe('computeDailyAllowance', () => {
-  it('grants batch size × DAILY_LESSON_BATCHES per day with no backlog', () => {
-    const relaxed = computeDailyAllowance({
-      intensity: 'relaxed',
+  it('grants itemsPerLesson × DAILY_LESSON_BATCHES per day with no backlog', () => {
+    const five = computeDailyAllowance({
+      itemsPerLesson: 5,
       itemsStartedToday: 0,
       reviewsDueCount: 0,
     });
-    expect(relaxed.total).toBe(LESSON_SIZE_BY_INTENSITY.relaxed * DAILY_LESSON_BATCHES);
-    expect(relaxed.remaining).toBe(relaxed.total);
+    expect(five.total).toBe(5 * DAILY_LESSON_BATCHES);
+    expect(five.remaining).toBe(five.total);
 
-    const intense = computeDailyAllowance({
-      intensity: 'intense',
+    const ten = computeDailyAllowance({
+      itemsPerLesson: 10,
       itemsStartedToday: 0,
       reviewsDueCount: 0,
     });
-    expect(intense.total).toBe(LESSON_SIZE_BY_INTENSITY.intense * DAILY_LESSON_BATCHES);
+    expect(ten.total).toBe(10 * DAILY_LESSON_BATCHES);
   });
 
-  it('scales the allowance for the light, steady and immersive tiers', () => {
-    for (const intensity of ['light', 'steady', 'immersive'] as const) {
+  it('scales the allowance with itemsPerLesson', () => {
+    for (const itemsPerLesson of [3, 7, 15]) {
       const allowance = computeDailyAllowance({
-        intensity,
+        itemsPerLesson,
         itemsStartedToday: 0,
         reviewsDueCount: 0,
       });
-      expect(allowance.total).toBe(LESSON_SIZE_BY_INTENSITY[intensity] * DAILY_LESSON_BATCHES);
+      expect(allowance.total).toBe(itemsPerLesson * DAILY_LESSON_BATCHES);
     }
-  });
-
-  it('defaults to relaxed when intensity is unset', () => {
-    const allowance = computeDailyAllowance({
-      intensity: null,
-      itemsStartedToday: 0,
-      reviewsDueCount: 0,
-    });
-    expect(allowance.total).toBe(LESSON_SIZE_BY_INTENSITY.relaxed * DAILY_LESSON_BATCHES);
   });
 
   it('subtracts items already started today', () => {
     const allowance = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 5,
       reviewsDueCount: 0,
     });
@@ -52,7 +42,7 @@ describe('computeDailyAllowance', () => {
 
   it('reaches zero when the allowance is exhausted and never goes negative', () => {
     const allowance = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 999,
       reviewsDueCount: 0,
     });
@@ -61,12 +51,12 @@ describe('computeDailyAllowance', () => {
 
   it('shrinks the allowance as the review backlog grows', () => {
     const clear = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 5,
       reviewsDueCount: 0,
     });
     const backlogged = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 5,
       reviewsDueCount: 100,
     });
@@ -76,7 +66,7 @@ describe('computeDailyAllowance', () => {
 
   it('throttles to zero remaining at a huge backlog once lessons were done today', () => {
     const allowance = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 1,
       reviewsDueCount: LESSON_BACKLOG_THROTTLE_FULL + 50,
     });
@@ -85,10 +75,10 @@ describe('computeDailyAllowance', () => {
 
   it('always allows one batch when nothing was started today, even with a backlog', () => {
     const allowance = computeDailyAllowance({
-      intensity: 'relaxed',
+      itemsPerLesson: 5,
       itemsStartedToday: 0,
       reviewsDueCount: LESSON_BACKLOG_THROTTLE_FULL + 500,
     });
-    expect(allowance.remaining).toBe(LESSON_SIZE_BY_INTENSITY.relaxed);
+    expect(allowance.remaining).toBe(5);
   });
 });

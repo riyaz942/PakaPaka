@@ -55,7 +55,7 @@ describe('useCognitiveLoad', () => {
     });
 
     expect(result.current.todayLoad).toBe(15);
-    expect(result.current.percent).toBe(50);
+    expect(result.current.percent).toBe(100);
     expect(result.current.error).toBeNull();
   });
 
@@ -70,7 +70,7 @@ describe('useCognitiveLoad', () => {
       expect(result.current.isLoading).toBe(false);
     });
 
-    expect(result.current.threshold).toBe(30);
+    expect(result.current.threshold).toBe(15);
   });
 
   it('uses the sticky goal as denominator and reports raw overshoot', async () => {
@@ -119,7 +119,7 @@ describe('useCognitiveLoad', () => {
 
     expect(result.current.pendingRiseTo).toBe(60);
     // The goal itself is untouched until the user accepts.
-    expect(result.current.threshold).toBe(30);
+    expect(result.current.threshold).toBe(15);
   });
 
   it('skips the weekly check during vacation mode so weeks away are not judged', async () => {
