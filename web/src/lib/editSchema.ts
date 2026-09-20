@@ -60,6 +60,7 @@ export const EDIT_SCHEMAS: Record<ContentType, FieldSpec[]> = {
     { key: 'primary_form', label: 'Primary form', kind: 'text', readOnly: true },
     { key: 'meaning', label: 'Meaning', kind: 'text', readOnly: true },
     { key: 'mnemonic_text', label: 'Mnemonic', kind: 'textarea' },
+    { key: 'image_prompt', label: 'Image mnemonic (art prompt)', kind: 'textarea', readOnly: true },
     { key: 'description', label: 'Description', kind: 'textarea' },
     { key: 'visual_mnemonic_url', label: 'Visual mnemonic URL', kind: 'text', readOnly: true },
     { key: 'visually_similar_slugs', label: 'Visually similar slugs', kind: 'stringArray', readOnly: true },

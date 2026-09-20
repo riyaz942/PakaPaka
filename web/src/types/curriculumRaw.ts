@@ -58,6 +58,7 @@ export type RadicalRaw = {
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
+  image_prompt?: string;
   description?: string;
   visually_similar_slugs?: string[];
   visual_mnemonic_url: string;

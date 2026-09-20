@@ -13,17 +13,41 @@ export function RadicalDetail({ raw }: Props) {
 
   return (
     <div className="panel">
-      <div className="radical-visual">
-        {raw.visual_mnemonic_url && !imageFailed ? (
-          <img
-            src={`/assets/${raw.visual_mnemonic_url}`}
-            alt={raw.meaning}
-            className="radical-visual__image"
-            onError={() => setImageFailed(true)}
-          />
-        ) : (
-          <div className="radical-visual__fallback">{raw.primary_form}</div>
-        )}
+      <div className="radical-mnemonic-row">
+        <div className="radical-visual">
+          {raw.visual_mnemonic_url && !imageFailed ? (
+            <img
+              src={`/assets/${raw.visual_mnemonic_url}`}
+              alt={raw.meaning}
+              className="radical-visual__image"
+              onError={() => setImageFailed(true)}
+            />
+          ) : (
+            <div className="radical-visual__fallback">{raw.primary_form}</div>
+          )}
+        </div>
+
+        {raw.mnemonic_text || raw.image_prompt ? (
+          <div className="radical-mnemonic-row__text">
+            {raw.mnemonic_text ? (
+              <>
+                <h3 className="panel-title">Mnemonic</h3>
+                <p className="mnemonic-text">
+                  <MnemonicText text={raw.mnemonic_text} />
+                </p>
+              </>
+            ) : null}
+
+            {raw.image_prompt ? (
+              <>
+                <h3 className="panel-title">Image mnemonic (art prompt)</h3>
+                <p className="mnemonic-text">
+                  <MnemonicText text={raw.image_prompt} />
+                </p>
+              </>
+            ) : null}
+          </div>
+        ) : null}
       </div>
 
       <h3 className="panel-title">Accepted answers</h3>
@@ -39,15 +63,6 @@ export function RadicalDetail({ raw }: Props) {
           ))}
         </ul>
       )}
-
-      {raw.mnemonic_text ? (
-        <>
-          <h3 className="panel-title">Mnemonic</h3>
-          <p className="mnemonic-text">
-            <MnemonicText text={raw.mnemonic_text} />
-          </p>
-        </>
-      ) : null}
 
       {raw.description ? (
         <>

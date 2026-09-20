@@ -1009,10 +1009,33 @@ rt {
   color: var(--text);
 }
 
+.radical-mnemonic-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
 .radical-visual {
   display: flex;
+  flex: 0 0 auto;
   justify-content: center;
-  margin-bottom: 1rem;
+}
+
+.radical-mnemonic-row__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.radical-mnemonic-row__text .panel-title {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .radical-mnemonic-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .radical-visual__image {
