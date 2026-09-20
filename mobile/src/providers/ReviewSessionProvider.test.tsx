@@ -54,6 +54,12 @@ jest.mock('@/data/user/weaknessRepository', () => ({
   recordOutcome: (...args: unknown[]) => mockRecordOutcome(...args),
 }));
 
+const mockAddSynonym = jest.fn();
+
+jest.mock('@/data/user/userSynonymRepository', () => ({
+  addSynonym: (...args: unknown[]) => mockAddSynonym(...args),
+}));
+
 const NOW = '2026-06-27T10:00:00.000Z';
 
 function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'): ReviewItem {
@@ -115,6 +121,8 @@ describe('ReviewSessionProvider', () => {
       ok: true,
       value: { currentStreak: 1, longestStreak: 1, lastReviewDate: '2026-06-28' },
     });
+    mockAddSynonym.mockReset();
+    mockAddSynonym.mockReturnValue({ ok: true, value: undefined });
     mockUseReviewQueue.mockReturnValue({
       queue: makeQueue(10),
       isLoading: false,
@@ -714,6 +722,56 @@ describe('ReviewSessionProvider', () => {
       result.current.gradeCurrentItem(3);
     });
     expect(result.current.isComplete).toBe(true);
+  });
+
+  it('accepts a synonym added this session on the same item\'s same-session retry', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(2),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // Item 1 answered incorrectly, then the user accepts their own answer
+    // before tapping Continue (mirrors the IncorrectReveal "Accept as my
+    // answer" flow, which grades on Continue, after this call).
+    act(() => {
+      const outcome = result.current.addSynonymForCurrentItem('my-answer');
+      expect(outcome).toEqual({ status: 'added' });
+    });
+
+    expect(result.current.currentItem?.answerKey.acceptedReadings).toContain('my-answer');
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Item 2, then item 1's same-session retry.
+    expect(result.current.currentItem?.itemId).toBe('2');
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.currentItem?.itemId).toBe('1');
+    // The synonym added before Continue must still be accepted on this
+    // same-session retry — not deferred to the next day's queue build.
+    expect(result.current.currentItem?.answerKey.acceptedReadings).toContain('my-answer');
   });
 
   it('writes the FSRS grade and side effects once, on the first attempt only', async () => {

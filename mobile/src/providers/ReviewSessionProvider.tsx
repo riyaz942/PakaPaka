@@ -85,10 +85,11 @@ type ReviewSessionState = {
    */
   recordTypoForCurrentItem: () => void;
   /**
-   * Persist a user-added accepted answer for the current item (picked up on the
-   * item's next queue build — never retroactively changes a recorded outcome).
-   * Returns 'collision' (without saving) when the answer is already accepted by
-   * a different item in this queue, unless `force` is set.
+   * Persist a user-added accepted answer for the current item, and patch it
+   * into this session's in-memory copy so a same-session retry of this item
+   * accepts it too — never retroactively changes the outcome already recorded
+   * for this attempt. Returns 'collision' (without saving) when the answer is
+   * already accepted by a different item in this queue, unless `force` is set.
    */
   addSynonymForCurrentItem: (
     answerText: string,
@@ -511,6 +512,16 @@ export function ReviewSessionProvider({ children }: Props) {
       }
 
       const result = addSynonym(userDb, item.itemId, answerType, trimmed);
+      if (result.ok) {
+        // `item` is the same object reference `gradeCurrentItem` re-queues into
+        // `retryItems` on Continue — patch it in place so this session's retry
+        // accepts the answer immediately, not just the next day's queue build.
+        if (answerType === 'meaning') {
+          item.answerKey.acceptedMeanings.push(trimmed);
+        } else {
+          item.answerKey.acceptedReadings.push(trimmed);
+        }
+      }
       return result.ok ? { status: 'added' } : { status: 'error' };
     },
     [currentEntry, queue, userDb],
