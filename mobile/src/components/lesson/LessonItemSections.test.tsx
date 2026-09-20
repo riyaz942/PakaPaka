@@ -5,6 +5,7 @@ import React from 'react';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import {
   LessonIntroSection,
+  LessonMnemonicSectionView,
   type LessonSectionProps,
 } from '@/components/lesson/LessonItemSections';
 import type { CurriculumItemDetail, GrammarRule } from '@/data/curriculum/itemRepository';
@@ -90,7 +91,7 @@ describe('LessonIntroSection — grammar', () => {
     expect(screen.getByText(/You name your topic/)).toBeTruthy();
     expect(screen.getByText('Noun + は + comment')).toBeTruthy();
 
-    // Everything from the first `## ` heading on lives on the detail screen.
+    // The rules move to section 2; the sections after them to the detail screen.
     expect(screen.queryByText('How it works')).toBeNull();
     expect(screen.queryByText(/The structure is Noun/)).toBeNull();
     expect(screen.queryByText('Contrast')).toBeNull();
@@ -105,5 +106,34 @@ describe('LessonIntroSection — grammar', () => {
     fireEvent.press(screen.getByTestId('grammar-full-lesson-link'));
 
     expect(router.push).toHaveBeenCalledWith('/lesson/item/50');
+  });
+});
+
+describe('LessonMnemonicSectionView — grammar', () => {
+  it('teaches the rules section, and stops before the next heading', () => {
+    render(<LessonMnemonicSectionView {...props} />);
+
+    expect(screen.getByTestId('grammar-how-it-works')).toBeTruthy();
+    expect(screen.getByText('How it works')).toBeTruthy();
+    expect(screen.getByText(/The structure is Noun/)).toBeTruthy();
+
+    expect(screen.queryByText('Contrast')).toBeNull();
+    expect(screen.queryByText(/Very soon you will meet/)).toBeNull();
+    // The hook stays on section 1, and the mnemonic empty state is gone:
+    // grammar carries no curriculum mnemonic by design.
+    expect(screen.queryByText(/You name your topic/)).toBeNull();
+    expect(screen.queryByTestId('lesson-mnemonic-empty')).toBeNull();
+  });
+
+  it('renders only the personal mnemonic editor when the essay has no sections', () => {
+    render(
+      <LessonMnemonicSectionView
+        {...props}
+        grammarRule={{ ...grammarRule, explanationMarkdown: 'A short lesson with no headings.' }}
+      />,
+    );
+
+    expect(screen.queryByTestId('grammar-how-it-works')).toBeNull();
+    expect(screen.getByTestId('lesson-section-mnemonic')).toBeTruthy();
   });
 });

@@ -50,6 +50,9 @@ export const LESSON_SECTION_LABELS = ['Introduction', 'Mnemonic', 'Examples & li
 /** The stepper's short forms — the pills have room for one word each. */
 export const LESSON_SECTION_STEPS = ['Intro', 'Mnemonic', 'Examples'] as const;
 
+/** Grammar carries no mnemonic: its second section teaches the rules instead. */
+export const GRAMMAR_SECTION_STEPS = ['Intro', 'Usage', 'Examples'] as const;
+
 export type LessonSectionProps = {
   item: CurriculumItemDetail;
   kanjiReadings: KanjiReading[];
@@ -62,15 +65,26 @@ export type LessonSectionProps = {
 };
 
 /**
- * The opening of a grammar lesson: everything before its first `## ` heading.
- *
- * The authored essay runs ~900 words — hook, then `How it works`, `Rules and
- * exceptions`, `Casual speech`, `Contrast`. The lesson card teaches the hook;
- * the rest is reference reading on the detail screen, which the
- * "See the full lesson" button opens.
+ * The authored grammar essay runs ~900 words: an opening hook, then `How it
+ * works`, `Rules and exceptions`, `Casual speech`, `Contrast`. The lesson
+ * teaches the first two parts across sections 1 and 2; the rest is reference
+ * reading on the detail screen, which the "See the full lesson" button opens.
  */
+
+/** Section 1 — everything before the essay's first `## ` heading. */
 function grammarOverview(markdown: string): string {
   return markdown.split(/^## /m)[0].trimEnd();
+}
+
+/**
+ * Section 2 — the essay's first `## ` section, heading included. Every lesson
+ * but one opens on the rules ("How it works" in 149 of 171 files, the same
+ * slot under another name in the rest); the one without any `## ` heading is
+ * short enough to sit whole in section 1, and leaves this empty.
+ */
+function grammarHowItWorks(markdown: string): string {
+  const firstSection = markdown.split(/^## /m)[1];
+  return firstSection ? `## ${firstSection.trimEnd()}` : '';
 }
 
 /**
@@ -201,11 +215,25 @@ function LessonMnemonicImageSlot({ item }: { item: CurriculumItemDetail }) {
   );
 }
 
+/** Grammar's section 2 — the rules, with its own furigana reader. */
+function GrammarRulesSection({ markdown }: { markdown: string }) {
+  const { mode, knownKanji } = useFuriganaPreference();
+
+  return (
+    <View className="mt-space-md" testID="grammar-how-it-works">
+      <LessonMarkdown markdown={markdown} mode={mode} knownKanji={knownKanji} />
+    </View>
+  );
+}
+
 /**
  * Section 2 — how to remember it: the curriculum's mnemonics and description,
  * the radical's visual mnemonic, and the learner's own mnemonic. Paging
  * replaces the old collapsed mnemonic disclosure, so nothing here hides behind
  * a tap.
+ *
+ * Grammar has no mnemonic of its own, so this page carries the essay's rules
+ * section instead — the stepper calls it "Usage" for grammar.
  *
  * A radical's `mnemonic_text` reads as the image's story, not under a "Mnemonic"
  * heading; its optional `description` (content pipeline Rev 3) is the separate
@@ -216,8 +244,23 @@ export function LessonMnemonicSectionView({
   item,
   parents,
   kanjiReadings,
+  grammarRule,
   showReadingPrimer,
 }: LessonSectionProps) {
+  if (item.itemType === 'grammar') {
+    const rules = grammarRule?.explanationMarkdown
+      ? grammarHowItWorks(grammarRule.explanationMarkdown)
+      : '';
+
+    return (
+      <View testID="lesson-section-mnemonic">
+        {rules ? <GrammarRulesSection markdown={rules} /> : null}
+
+        <PersonalMnemonicEditor itemId={item.id} />
+      </View>
+    );
+  }
+
   if (item.itemType === 'radical') {
     return (
       <View testID="lesson-section-mnemonic">
