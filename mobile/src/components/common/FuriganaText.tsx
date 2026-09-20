@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   type AccessibilityRole,
   Pressable,
+  StyleSheet,
   type StyleProp,
   Text,
   type TextStyle,
@@ -10,6 +11,7 @@ import {
 
 import { parseFurigana, type FuriganaSegment } from '@/core/furigana/parseFurigana';
 import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
+import { cn } from '@/utils/cn';
 
 type FuriganaTextProps = {
   /** Annotated (JmdictFurigana bracket notation) or plain Japanese text. */
@@ -150,6 +152,18 @@ export function FuriganaText({
 
   const plainLabel = segments.map((segment) => segment.text).join('');
 
+  // The `text-furigana` token (9px) reads fine against body-sized text, but
+  // hero-sized prompts (review glyphs, lesson/detail heroes) pass an explicit
+  // `style.fontSize` far above body scale — at those sizes a fixed 9px reading
+  // is illegibly small relative to the kanji it annotates. Scale the reading
+  // proportionally to that base size instead; className-only callers (body
+  // text) are untouched and keep the fixed token.
+  const baseFontSize = StyleSheet.flatten(style)?.fontSize;
+  const furiganaStyle =
+    typeof baseFontSize === 'number'
+      ? { fontSize: Math.round(baseFontSize * 0.34), lineHeight: Math.round(baseFontSize * 0.37) }
+      : undefined;
+
   function peekSegment(index: number, visible: boolean): void {
     setPeeked((previous) => {
       const next = new Map(previous);
@@ -188,7 +202,13 @@ export function FuriganaText({
         const readingBlock = (
           <View className="items-center">
             {isVisible ? (
-              <Text className="text-center text-furigana font-jp text-secondary" accessible={false}>
+              <Text
+                className={cn(
+                  'text-center font-jp text-secondary',
+                  !furiganaStyle && 'text-furigana',
+                )}
+                style={furiganaStyle}
+                accessible={false}>
                 {segment.reading}
               </Text>
             ) : null}

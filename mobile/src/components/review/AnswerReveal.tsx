@@ -50,22 +50,34 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
     kanjiReadings.length === 0
       ? item.answerKey.acceptedReadings.filter((reading) => reading !== item.primaryForm)
       : [];
+  const hasReadingContent = kanjiReadings.length > 0 || acceptedReadings.length > 0;
+  // The reveal only answers the question that was asked: a meaning prompt
+  // never hands over the reading, and a reading prompt never hands over the
+  // meaning — each stays a separate card. Exception: a reading prompt with no
+  // reading to show (e.g. no accepted reading seeded) falls back to meaning
+  // rather than rendering an empty panel.
+  const showReading = item.promptType !== 'meaning';
+  const showMeaning = item.promptType !== 'reading' || !hasReadingContent;
 
   return (
     <View className="w-full gap-space-sm rounded-radius-lg border border-border bg-surface p-space-md">
-      <View>
-        <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
-          Meaning
-        </Text>
-        <Text className="text-body-lg font-ui-semibold text-primary">{item.displayMeaning}</Text>
-        {alternates.length > 0 ? (
-          <Text className="text-body-sm font-ui text-secondary">
-            Also accepted: {alternates.join(', ')}
+      {showMeaning ? (
+        <View>
+          <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
+            Meaning
           </Text>
-        ) : null}
-      </View>
+          <Text className="text-body-lg font-ui-semibold text-primary">
+            {item.displayMeaning}
+          </Text>
+          {alternates.length > 0 ? (
+            <Text className="text-body-sm font-ui text-secondary">
+              Also accepted: {alternates.join(', ')}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
 
-      {kanjiReadings.length > 0 ? (
+      {showReading && kanjiReadings.length > 0 ? (
         <View>
           <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
             Readings
@@ -80,7 +92,7 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
             );
           })}
         </View>
-      ) : acceptedReadings.length > 0 ? (
+      ) : showReading && acceptedReadings.length > 0 ? (
         <View>
           <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
             Reading

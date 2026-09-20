@@ -77,15 +77,23 @@ describe('AnswerReveal — shared trimmed panel (FR85, UX-DR8)', () => {
     jest.clearAllMocks();
   });
 
-  it('shows meaning and grouped kanji readings from the prefetched detail', () => {
-    render(<AnswerReveal item={makeItem()} detail={makeDetail()} />);
-    expect(screen.getByText('eat, food')).toBeTruthy();
+  it('shows only grouped kanji readings for a reading prompt (no meaning)', () => {
+    render(<AnswerReveal item={makeItem({ promptType: 'reading' })} detail={makeDetail()} />);
+    expect(screen.queryByText('eat, food')).toBeNull();
     expect(screen.getByText("On'yomi: しょく")).toBeTruthy();
     expect(screen.getByText("Kun'yomi: た")).toBeTruthy();
   });
 
+  it('shows only the meaning for a meaning prompt (no readings)', () => {
+    render(<AnswerReveal item={makeItem({ promptType: 'meaning' })} detail={makeDetail()} />);
+    expect(screen.getByText('eat, food')).toBeTruthy();
+    expect(screen.queryByText(/On'yomi/)).toBeNull();
+    expect(screen.queryByText(/Kun'yomi/)).toBeNull();
+    expect(screen.queryByText('Readings')).toBeNull();
+  });
+
   it('never shows mnemonic or example sentences (trimmed — depth via details route)', () => {
-    render(<AnswerReveal item={makeItem()} detail={makeDetail()} />);
+    render(<AnswerReveal item={makeItem({ promptType: 'meaning' })} detail={makeDetail()} />);
     expect(screen.queryByText('A roof over a fire cooking food.')).toBeNull();
     expect(screen.queryByText('食べます')).toBeNull();
     expect(screen.queryByText(/Mnemonic/i)).toBeNull();
@@ -95,7 +103,11 @@ describe('AnswerReveal — shared trimmed panel (FR85, UX-DR8)', () => {
   it('lists non-derived alternate meanings', () => {
     render(
       <AnswerReveal
-        item={makeItem({ displayMeaning: 'eat / food', meanings: ['eat', 'food', 'meal'] })}
+        item={makeItem({
+          promptType: 'meaning',
+          displayMeaning: 'eat / food',
+          meanings: ['eat', 'food', 'meal'],
+        })}
         detail={null}
       />,
     );
@@ -103,7 +115,7 @@ describe('AnswerReveal — shared trimmed panel (FR85, UX-DR8)', () => {
   });
 
   it('falls back to answer-key readings when no detail is prefetched', () => {
-    render(<AnswerReveal item={makeItem()} detail={null} />);
+    render(<AnswerReveal item={makeItem({ promptType: 'reading' })} detail={null} />);
     expect(screen.getByText('しょく')).toBeTruthy();
   });
 
@@ -112,6 +124,7 @@ describe('AnswerReveal — shared trimmed panel (FR85, UX-DR8)', () => {
       <AnswerReveal
         item={makeItem({
           itemType: 'vocabulary',
+          promptType: 'reading',
           primaryForm: 'ここ',
           displayMeaning: 'here',
           meanings: ['here'],

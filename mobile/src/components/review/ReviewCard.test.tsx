@@ -200,12 +200,12 @@ describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
 });
 
 describe('ReviewCard — result states', () => {
-  it('shows correct state with icon and the shared trimmed panel (FR85)', () => {
+  it('shows correct state with icon and the shared trimmed panel, meaning only (FR85)', () => {
     render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
     expect(screen.getByText('Correct')).toBeTruthy();
-    // Shared AnswerReveal: meaning + reading, expanded, with a details link.
+    // Shared AnswerReveal answers only the asked prompt — meaning here, not reading.
     expect(screen.getByText('eat, food')).toBeTruthy();
-    expect(screen.getByText('たべる')).toBeTruthy();
+    expect(screen.queryByText('たべる')).toBeNull();
     expect(screen.getByLabelText('See full details')).toBeTruthy();
   });
 
@@ -213,6 +213,7 @@ describe('ReviewCard — result states', () => {
     render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="correct" />);
     expect(screen.getByLabelText('Correct, reading: たべる')).toBeTruthy();
     expect(screen.getByText('たべる')).toBeTruthy();
+    expect(screen.queryByText('eat, food')).toBeNull();
   });
 
   it('falls back to meaning announcement when a reading prompt has no accepted reading', () => {
@@ -260,7 +261,7 @@ describe('ReviewCard — result states', () => {
     expect(screen.getByText("We're looking for the meaning in English.")).toBeTruthy();
   });
 
-  it('shows the trimmed shared panel on incorrect: meaning + readings, no mnemonic/examples (FR85)', () => {
+  it('shows the trimmed shared panel on incorrect: readings only for a reading prompt, no mnemonic/examples (FR85)', () => {
     render(
       <ReviewCard
         item={makeItem({ mnemonic: 'A roof over a fire cooking food.' })}
@@ -293,7 +294,7 @@ describe('ReviewCard — result states', () => {
         }}
       />,
     );
-    expect(screen.getByText('eat, food')).toBeTruthy();
+    expect(screen.queryByText('eat, food')).toBeNull();
     expect(screen.getByText("On'yomi: しょく")).toBeTruthy();
     expect(screen.getByText("Kun'yomi: た")).toBeTruthy();
     // Depth moved to the details route (Story 1.2): no inline mnemonic/examples.
