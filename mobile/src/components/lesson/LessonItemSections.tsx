@@ -1,7 +1,9 @@
+import { router, type Href } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
+import { Button } from '@/components/common/Button';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { Icon } from '@/components/common/Icon';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
@@ -15,6 +17,7 @@ import {
 } from '@/components/learn/ItemDetailHeader';
 import { ItemCrossReferences, KanjiBuiltFromSection } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
+import { useItemHref } from '@/components/learn/ItemLinkContext';
 import {
   hasCurriculumMnemonic,
   ItemMnemonicSections,
@@ -58,14 +61,16 @@ export type LessonSectionProps = {
   showReadingPrimer: boolean;
 };
 
-function formatConjugationValue(value: unknown): string {
-  if (typeof value === 'boolean') {
-    return value ? 'yes' : 'no';
-  }
-  if (value === null || value === undefined) {
-    return '';
-  }
-  return String(value);
+/**
+ * The opening of a grammar lesson: everything before its first `## ` heading.
+ *
+ * The authored essay runs ~900 words — hook, then `How it works`, `Rules and
+ * exceptions`, `Casual speech`, `Contrast`. The lesson card teaches the hook;
+ * the rest is reference reading on the detail screen, which the
+ * "See the full lesson" button opens.
+ */
+function grammarOverview(markdown: string): string {
+  return markdown.split(/^## /m)[0].trimEnd();
 }
 
 /**
@@ -114,6 +119,7 @@ export function LessonHero({ item }: { item: CurriculumItemDetail }) {
  */
 export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const hrefFor = useItemHref();
 
   return (
     <View testID="lesson-section-intro">
@@ -124,7 +130,7 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
           {grammarRule.explanationMarkdown ? (
             <View className="mt-4" testID="grammar-lesson-body">
               <LessonMarkdown
-                markdown={grammarRule.explanationMarkdown}
+                markdown={grammarOverview(grammarRule.explanationMarkdown)}
                 mode={furiganaMode}
                 knownKanji={knownKanji}
               />
@@ -136,42 +142,16 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
             <Text className="mt-1 text-body text-primary">{grammarRule.structure}</Text>
           </View>
 
-          {grammarRule.acceptedForms.length > 0 ? (
-            <View className="mt-4">
-              <SectionHeading label="Accepted forms" />
-              {grammarRule.acceptedForms.map((form) => (
-                <Text key={form} className="mt-1 text-body text-primary">
-                  • {form}
-                </Text>
-              ))}
-            </View>
-          ) : null}
-
-          {Object.keys(grammarRule.conjugationRules).length > 0 ? (
-            <View className="mt-4">
-              <SectionHeading label="Conjugation rules" />
-              {Object.entries(grammarRule.conjugationRules).map(([key, value]) => (
-                <Text key={key} className="mt-1 text-body text-primary">
-                  {key}: {formatConjugationValue(value)}
-                </Text>
-              ))}
-            </View>
-          ) : null}
-
-          {grammarRule.cautionNotes.length > 0 ? (
-            <View className="mt-4" testID="grammar-caution-notes">
-              <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-feedback-warning-deep">
-                Watch out
-              </Text>
-              {grammarRule.cautionNotes.map((note, index) => (
-                <View
-                  key={index}
-                  className="mt-2 border-l-2 border-feedback-warning py-space-xs pl-space-md">
-                  <Text className="text-body font-ui text-primary">{note}</Text>
-                </View>
-              ))}
-            </View>
-          ) : null}
+          {/* Accepted forms, conjugation rules and the caution notes are
+              reference material: they live on the detail screen with the rest
+              of the essay, one tap away and without leaving the lesson stack. */}
+          <Button
+            label="See the full lesson"
+            variant="secondary"
+            onPress={() => router.push(hrefFor(item.id) as Href)}
+            testID="grammar-full-lesson-link"
+            className="mt-space-lg"
+          />
         </>
       ) : null}
     </View>
