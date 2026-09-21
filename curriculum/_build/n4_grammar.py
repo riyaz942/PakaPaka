@@ -58,6 +58,14 @@ N4_GRAMMAR = [
             ex("若いのに、とても物知りです。", "Even though young, he's very knowledgeable.", ["wakai"]),
         ],
         "vocabulary_slugs": ["benkyou-suru", "shiken", "okane"],
+        "cloze_variants": [
+            {"jp_cloze": "昼ご飯を作った＿＿＿、友達はもう食べました。", "english": "Even though I made lunch, my friend had already eaten.", "answer": "のに", "nudge": "The lunch got made and then nobody needed it — the join has to carry that wasted morning."},
+            {"jp_cloze": "毎日勉強した＿＿＿、全然分かりません。", "english": "Even though I studied every day, I don't understand at all.", "answer": "のに", "nudge": "Daily study sits on one side and 全然分かりません on the other; the blank is where they collide."},
+            {"jp_cloze": "兄は英語が上手な＿＿＿、あまり話しません。", "english": "Even though my older brother is good at English, he hardly speaks it.", "answer": "のに", "nudge": "上手 has already kept its な in front of the blank, and the second half still refuses to match the first."},
+            {"jp_cloze": "今日は日曜日な＿＿＿、父は会社へ行きました。", "english": "Even though it's Sunday today, my father went to the office.", "answer": "のに", "nudge": "Sunday and a trip to the office are pulling in opposite directions here."},
+            {"jp_cloze": "この店は安い＿＿＿、料理がおいしいです。", "english": "Even though this shop is cheap, the food is delicious.", "answer": "のに", "nudge": "A low price and good food is a clash you are glad about, but it is still a clash."},
+            {"jp_cloze": "約束した＿＿＿。", "english": "And you promised...", "answer": "のに", "nudge": "Nothing at all comes after this blank; the speaker stops and lets the listener finish the thought."},
+        ],
         "family": "connectors",
     },
     {
@@ -102,6 +110,13 @@ N4_GRAMMAR = [
             ex("彼は元気そうです。", "He looks well.", ["kare", "genki"]),
         ],
         "vocabulary_slugs": ["ryouri", "furu-rain", "genki"],
+        "cloze_variants": [
+            {"jp_cloze": "このパンはおいし＿＿＿ね。", "english": "That bread looks delicious, doesn't it.", "answer": "そうです", "nudge": "You are on the wrong side of the shop window, and your tongue has no evidence yet."},
+            {"jp_cloze": "兄は今日とても元気＿＿＿。", "english": "My older brother looks really well today.", "answer": "そうです", "nudge": "Your brother has said nothing about how he feels — you are going entirely on his face at breakfast."},
+            {"jp_cloze": "雨が降り＿＿＿ので、傘を持ちます。", "english": "It looks like it's going to rain, so I'll take an umbrella.", "answer": "そうな", "nudge": "Nothing has fallen from the sky yet, and whatever fills this blank has to hand over to ので the way a な-adjective would."},
+            {"jp_cloze": "おいし＿＿＿パンを三つ買いました。", "english": "I bought three delicious-looking rolls.", "answer": "そうな", "nudge": "All three are in the bag already and not one has been tasted; the blank sits right in front of a noun."},
+            {"jp_cloze": "来週の試験は難し＿＿＿。", "english": "Next week's exam looks hard.", "answer": "そうです", "nudge": "Nobody has reported anything to you about next week — you are judging from the pile of pages you have to get through."},
+        ],
         "family": "copula",
     },
     {
@@ -149,6 +164,16 @@ N4_GRAMMAR = [
             ex("急げば、間に合います。", "If you hurry, you'll make it in time.", ["isogu"]),
         ],
         "vocabulary_slugs": ["okane", "ryokou", "renshuu-suru"],
+        # Drafted variants blanked the inflected stem (せば/れば/すれば); the app grades
+        # against accepted_forms, so the blank stops at ば.
+        "cloze_variants": [
+            {"jp_cloze": "高＿＿＿、買いません。", "english": "If it's expensive, I won't buy it.", "answer": "ければ", "nudge": "What does 高い turn into right before the comma, and where does its い go?"},
+            {"jp_cloze": "ゆっくり話せ＿＿＿、分かります。", "english": "If you speak slowly, I'll understand.", "answer": "ば", "nudge": "話せ has already shifted its final sound — only the one-kana hinge that closes it off is missing."},
+            {"jp_cloze": "彼が来れ＿＿＿、嬉しいです。", "english": "If he comes, I'll be happy.", "answer": "ば", "nudge": "来る is irregular and has already done its irregular part; what is left is a single plain kana."},
+            {"jp_cloze": "毎日練習すれ＿＿＿、上手になります。", "english": "If you practice every day, you'll get good at it.", "answer": "ば", "nudge": "する verbs trade their ending for すれ, and then one more kana seals it."},
+            {"jp_cloze": "静か＿＿＿、勉強できます。", "english": "If it's quiet, I can study.", "answer": "なら", "nudge": "静か is a な-adjective, not an い-adjective — what stands in for だ here?"},
+            {"jp_cloze": "学生＿＿＿、安いです。", "english": "If you're a student, it's cheap.", "answer": "であれば", "nudge": "This one keeps a copula sitting in front of the ending — can you spot both pieces?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -166,6 +191,13 @@ N4_GRAMMAR = [
             ex("行くなら、一緒に行きましょう。", "If you're going, let's go together.", ["issho-ni"]),
         ],
         "vocabulary_slugs": ["hima", "taihen", "issho-ni"],
+        "cloze_variants": [
+            {"jp_cloze": "日本語＿＿＿、この本がいいですよ。", "english": "If it's Japanese, this book is good.", "answer": "なら", "nudge": "日本語 sits right up against the blank with nothing else attached — what would you need to add if this were just a flat statement about Japanese instead?"},
+            {"jp_cloze": "行く＿＿＿、切符を買いましょう。", "english": "If you're going, let's buy the ticket.", "answer": "なら", "nudge": "行く is in its plain dictionary shape right before the blank — does it need any conjugating first, or does the blank just attach as is?"},
+            {"jp_cloze": "静か＿＿＿、ここで勉強できます。", "english": "If it's quiet, you can study here.", "answer": "なら", "nudge": "静か normally needs だ to stand on its own as a full sentence — where did that だ go before the blank?"},
+            {"jp_cloze": "行った＿＿＿、写真を見せてください。", "english": "If you already went, show me the photos.", "answer": "なら", "nudge": "This verb is already marked as something that happened — does the blank shift the timing again, or leave it where it is?"},
+            {"jp_cloze": "行く＿＿＿、僕も行きたいです。", "english": "If you're going, I want to go too.", "answer": "んなら", "nudge": "This line reads looser than a formal version of the same sentence — what got shortened to give it that feel?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -184,6 +216,15 @@ N4_GRAMMAR = [
             ex("この川で泳げます。", "You can swim in this river.", ["kawa-v", "oyogeru"]),
         ],
         "vocabulary_slugs": ["nihongo", "kanji-word", "hanaseru"],
+        # Drafted variants blanked the whole potential verb, and 話せる/泳げる cannot be
+        # spelled with this item's accepted_forms at all — reworked onto verbs that can.
+        "cloze_variants": [
+            {"jp_cloze": "辛い料理も食べ＿＿＿。", "english": "I can even eat spicy food.", "answer": "られる", "nudge": "食べ sits bare here; the ending has to say the spice is no obstacle."},
+            {"jp_cloze": "傘が買＿＿＿。", "english": "I can buy an umbrella.", "answer": "える", "nudge": "買う's う has stepped aside, and what replaces it puts the umbrella within reach."},
+            {"jp_cloze": "週末、来＿＿＿？", "english": "Can you come this weekend?", "answer": "られる", "nudge": "来る is irregular, and this question asks whether the weekend visit is workable for you."},
+            {"jp_cloze": "自転車に乗＿＿＿？", "english": "Can you ride a bicycle?", "answer": "れる", "nudge": "乗る ends in る, and that very る is what changes to ask about ability."},
+            {"jp_cloze": "友達に会＿＿＿。", "english": "I can meet my friend.", "answer": "える", "nudge": "会う's う makes way for the shape that turns meeting into something you manage."},
+        ],
         "family": "conjugations",
     },
     {
@@ -202,6 +243,15 @@ N4_GRAMMAR = [
             ex("この本は多くの人に読まれています。", "This book is read by many people.", ["hon"]),
         ],
         "vocabulary_slugs": ["sensei", "oya", "homerareru"],
+        # Drafted variants blanked 〜られ out of a polite past; the plain non-past lets the
+        # blank be exactly れる / られる.
+        "cloze_variants": [
+            {"jp_cloze": "先生に褒め＿＿＿。", "english": "I get praised by my teacher.", "answer": "られる", "nudge": "に marks who does the praising, not who receives it — the verb has to flip to match."},
+            {"jp_cloze": "弟にパンを食べ＿＿＿。", "english": "My bread gets eaten by my little brother.", "answer": "られる", "nudge": "パン still carries を, so the sentence is really about the speaker's loss."},
+            {"jp_cloze": "手紙が読ま＿＿＿。", "english": "The letter is read.", "answer": "れる", "nudge": "Nobody is named as the reader here; the verb alone has to carry that."},
+            {"jp_cloze": "友達に来＿＿＿。", "english": "A friend comes over on me, and it's a nuisance.", "answer": "られる", "nudge": "来る takes no object, so this ending is adding nuisance rather than action."},
+            {"jp_cloze": "これは食べ＿＿＿？", "english": "Can this be eaten?", "answer": "られる", "nudge": "No one is named as doing anything — the question is whether this is edible at all."},
+        ],
         "family": "conjugations",
     },
     {
@@ -219,6 +269,13 @@ N4_GRAMMAR = [
             ex("好きなようにやらせてください。", "Please let me do it the way I like.", ["suki", "yaraseru"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "yasai", "sensei"],
+        "cloze_variants": [
+            {"jp_cloze": "母は弟に野菜を食べ＿＿＿。", "english": "Mother makes her little brother eat vegetables.", "answer": "させる", "nudge": "Whose mouth is the vegetable actually going into, and whose idea was that?"},
+            {"jp_cloze": "先生は学生を走ら＿＿＿。", "english": "The teacher makes the students run.", "answer": "せる", "nudge": "学生 takes を here, not に — what does that tell you about whether 走る needs an object?"},
+            {"jp_cloze": "私は弟に薬を飲ま＿＿＿。", "english": "I make my little brother drink the medicine.", "answer": "せる", "nudge": "薬 already has を — so what job is left for に to do on 弟?"},
+            {"jp_cloze": "母は子供を公園で遊ば＿＿＿。", "english": "Mother lets her child play in the park.", "answer": "せる", "nudge": "Is 公園 doing anything in this sentence, or is it just where things happen?"},
+            {"jp_cloze": "母は妹に友達を呼ば＿＿＿。", "english": "Mother makes her younger sister invite a friend.", "answer": "せる", "nudge": "友達 is who gets called over — so who is 妹 to that phone call?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -235,6 +292,13 @@ N4_GRAMMAR = [
             ex("上司に残業させられました。", "I was made to work overtime by my boss.", ["zangyou"]),
         ],
         "vocabulary_slugs": ["eki", "matasareru", "zangyou"],
+        "cloze_variants": [
+            {"jp_cloze": "私は友達にお酒を飲ま＿＿＿。", "english": "My friend makes me drink.", "answer": "される", "nudge": "友達 carries に and 私 is the topic — which of the two of them wanted the glass refilled?"},
+            {"jp_cloze": "弟は毎晩野菜を食べ＿＿＿。", "english": "Every night my little brother is made to eat his vegetables.", "answer": "させられる", "nudge": "弟 is the chewer here, but 食べる is a る-verb, so no shortcut ending is available."},
+            {"jp_cloze": "私は会議で英語を話＿＿＿。", "english": "At meetings I'm the one who gets made to speak English.", "answer": "させられる", "nudge": "話す ends in す — think about why the squeezed-down godan ending is off the table for this verb."},
+            {"jp_cloze": "私は駅で一時間待た＿＿＿。", "english": "I get left waiting at the station for an hour.", "answer": "される", "nudge": "The 一時間 was nobody's plan of 私's; 待つ is a う-verb, so the shorter ending fits."},
+            {"jp_cloze": "私は日曜日に掃除＿＿＿。", "english": "On Sundays I get put to work cleaning.", "answer": "させられる", "nudge": "掃除する is irregular here — it's the する half that changes, and without that change the sentence would just say the room got clean on its own."},
+        ],
         "family": "conjugations",
     },
     {
@@ -252,6 +316,13 @@ N4_GRAMMAR = [
             ex("風邪をひかないように、気をつけてください。", "Please be careful not to catch a cold.", ["kaze-cold"]),
         ],
         "vocabulary_slugs": ["wasureru", "kikoeru", "okureru"],
+        "cloze_variants": [
+            {"jp_cloze": "子供にも読める＿＿＿、大きく書きました。", "english": "I wrote it big so that even a child could read it.", "answer": "ように", "nudge": "The size of the letters was decided by someone else's eyes — what joins those two halves?"},
+            {"jp_cloze": "電車に遅れない＿＿＿、早く家を出ました。", "english": "I left home early so that I wouldn't be late for the train.", "answer": "ように", "nudge": "Nobody is late in this sentence — the early departure exists to keep things this way."},
+            {"jp_cloze": "猫が入らない＿＿＿、窓を閉めます。", "english": "I'll close the window so that the cat doesn't get in.", "answer": "ように", "nudge": "The cat and the window-closer are two different creatures — what bridges them?"},
+            {"jp_cloze": "忘れない＿＿＿、ノートに書きます。", "english": "I write it in my notebook so I won't forget.", "answer": "ように", "nudge": "You can't simply decide to remember, so the notebook is doing the work instead."},
+            {"jp_cloze": "みんなに聞こえる＿＿＿、大きい声で話しました。", "english": "I spoke in a loud voice so that everyone could hear.", "answer": "ように", "nudge": "One half is about other people's ears, the other about your own voice — something sits at the seam."},
+        ],
         "family": "patterns",
     },
     {
@@ -269,6 +340,12 @@ N4_GRAMMAR = [
             ex("一人で行けるようになりました。", "I've become able to go alone.", ["hitori-de", "ikeru"]),
         ],
         "vocabulary_slugs": ["nihongo", "kanji-word", "mainichi"],
+        "cloze_variants": [
+            {"jp_cloze": "私は泳げる＿＿＿。", "english": "I've become able to swim.", "answer": "ようになりました", "nudge": "泳げる is already sitting there doing its job — the blank has to add the part that says this wasn't true last year."},
+            {"jp_cloze": "漢字が少し読める＿＿＿。", "english": "I've become able to read a little kanji.", "answer": "ようになりました", "nudge": "読める describes where the skill is now; the blank has to add where it was before."},
+            {"jp_cloze": "猫が私のベッドで寝る＿＿＿。", "english": "The cat has taken to sleeping on my bed.", "answer": "ようになりました", "nudge": "Nobody trained the cat and it gained no new skill — 寝る is in plain dictionary form for a reason."},
+            {"jp_cloze": "一人で電車に乗れる＿＿＿か。", "english": "Have you become able to ride the train by yourself?", "answer": "ようになりました", "nudge": "This is a question about a milestone someone reached; keep the polite tail intact before か."},
+        ],
         "family": "patterns",
     },
     {
@@ -285,6 +362,13 @@ N4_GRAMMAR = [
             ex("痛くて、歩けなくなりました。", "It hurt so I couldn't walk anymore.", ["itamu"]),
         ],
         "vocabulary_slugs": ["isogashii", "saikin", "osake"],
+        "cloze_variants": [
+            {"jp_cloze": "兄はコーヒーを飲ま＿＿＿。", "english": "My older brother stopped drinking coffee.", "answer": "なくなりました", "nudge": "The coffee still exists and 兄 still exists — what changed is the relationship between them, and not in the direction of more coffee."},
+            {"jp_cloze": "猫が魚を食べ＿＿＿。", "english": "The cat stopped eating fish.", "answer": "なくなりました", "nudge": "There was a period when the fish was getting eaten, and this sentence is set after that period ended."},
+            {"jp_cloze": "雨で山が見え＿＿＿。", "english": "Because of the rain, the mountain became impossible to see.", "answer": "なくなりました", "nudge": "The mountain has not moved; 雨で explains why 見える used to hold and doesn't now."},
+            {"jp_cloze": "彼の名前が分から＿＿＿。", "english": "I no longer know his name.", "answer": "なくなりました", "nudge": "彼の名前 was in your head at some point — this is about the state it is in now."},
+            {"jp_cloze": "漢字が読め＿＿＿。", "english": "I became unable to read kanji.", "answer": "なくなりました", "nudge": "読める is already a can-do form, so whatever fills this blank is happening to the ability itself."},
+        ],
         "family": "patterns",
     },
     {
@@ -324,6 +408,13 @@ N4_GRAMMAR = [
             ex("彼女が嘘をつくはずがない。", "There's no way she'd lie.", ["kanojo"]),
         ],
         "vocabulary_slugs": ["kare", "yasui-adj", "kanojo"],
+        "cloze_variants": [
+            {"jp_cloze": "彼が宿題をした＿＿＿。", "english": "There's no way he did his homework.", "answer": "はずがない", "nudge": "Think about what you actually watched him do all evening — does his claim fit that?"},
+            {"jp_cloze": "彼が今日休む＿＿＿。", "english": "There's no way he's taking today off.", "answer": "はずがない", "nudge": "What does he have this afternoon that makes skipping unlikely?"},
+            {"jp_cloze": "この時計が安い＿＿＿。", "english": "There's no way this watch is cheap.", "answer": "はずがない", "nudge": "Where did he buy it, and what does that tell you about the price?"},
+            {"jp_cloze": "この家が便利な＿＿＿。", "english": "There's no way this house is convenient.", "answer": "はずがない", "nudge": "How far is this house from the station?"},
+            {"jp_cloze": "彼が学生の＿＿＿。", "english": "There's no way he's a student.", "answer": "はずがない", "nudge": "What's his job now — does that still match being a student?"},
+        ],
         "family": "copula",
     },
     {
@@ -341,6 +432,13 @@ N4_GRAMMAR = [
             ex("試験は難しいらしいです。", "The exam seems difficult.", ["shiken", "muzukashii"]),
         ],
         "vocabulary_slugs": ["ashita", "mise", "shiken"],
+        "cloze_variants": [
+            {"jp_cloze": "彼は今日休む＿＿＿。", "english": "I heard he's taking today off.", "answer": "らしい", "nudge": "Notice there's no です or ます anywhere in this sentence — what plain-style word usually shows up right after a bare dictionary-form verb such as 休む?"},
+            {"jp_cloze": "友達は先週旅行に行った＿＿＿。", "english": "It seems my friend went on a trip last week.", "answer": "らしい", "nudge": "行った already shows past tense on its own — so what's the extra word doing at the very end that 行った alone wouldn't say?"},
+            {"jp_cloze": "あの店の料理はおいしい＿＿＿。", "english": "That restaurant's food is apparently delicious.", "answer": "らしい", "nudge": "おいしい sits here in plain form with nothing between it and the blank — what word attaches directly onto a plain い-adjective with no copula in between?"},
+            {"jp_cloze": "新しいレストランは有名＿＿＿。", "english": "The new restaurant is apparently famous.", "answer": "らしい", "nudge": "有名 is a な-adjective, and it would normally need だ before a plain sentence-ending word — where did that だ go here?"},
+            {"jp_cloze": "友達が言ったから、今日の午後は雨が降る＿＿＿。", "english": "My friend told me, so it seems it'll rain this afternoon.", "answer": "らしい", "nudge": "友達が言ったから already names where this claim came from — what word at the end of the sentence matches that same idea grammatically?"},
+        ],
         "family": "copula",
     },
     {
@@ -358,6 +456,14 @@ N4_GRAMMAR = [
             ex("風邪をひいたようです。", "It seems I caught a cold.", ["kaze-cold"]),
         ],
         "vocabulary_slugs": ["soto", "samui", "kaze-cold"],
+        "cloze_variants": [
+            {"jp_cloze": "誰も家にいない＿＿＿。", "english": "Looks like nobody's home.", "answer": "ようだ", "nudge": "いない already means isn't here on its own — what tiny piece turns that into an impression rather than a flat fact?"},
+            {"jp_cloze": "雨が降る＿＿＿。", "english": "Looks like it's going to rain.", "answer": "ようだ", "nudge": "降る is plain dictionary form all by itself — what comes right after a plain verb to turn a fact into a read on the clouds?"},
+            {"jp_cloze": "今日は寒い＿＿＿。", "english": "Seems cold today.", "answer": "ようだ", "nudge": "寒い is already a complete adjective on its own — what gets tacked on afterward to soften a claim about the weather?"},
+            {"jp_cloze": "先生は暇な＿＿＿。", "english": "The teacher seems free.", "answer": "ようだ", "nudge": "な is already sitting there connecting 暇 to something else — what single word usually comes right after it?"},
+            {"jp_cloze": "友達は病気の＿＿＿。", "english": "My friend seems to be sick.", "answer": "ようだ", "nudge": "の is doing the same connecting job here that な did for an adjective — what word follows it?"},
+            {"jp_cloze": "友達は病気＿＿＿。", "english": "My friend seems to be sick.", "answer": "みたいだ", "nudge": "This says the same thing as the formal friend sentence, but in relaxed speech, and の has vanished entirely — what one casual word fills the gap by itself?"},
+        ],
         "family": "copula",
     },
     {
@@ -374,6 +480,14 @@ N4_GRAMMAR = [
             ex("この店、有名みたいです。", "This shop seems famous.", ["mise", "yuumei"]),
         ],
         "vocabulary_slugs": ["furu-rain", "kare", "mise"],
+        "cloze_variants": [
+            {"jp_cloze": "この料理はお菓子＿＿＿。", "english": "This dish tastes like candy.", "answer": "みたいだ", "nudge": "お菓子 sits right after the topic with nothing else in between — what's glued onto the end of it?"},
+            {"jp_cloze": "この部屋は静か＿＿＿。", "english": "This room seems quiet.", "answer": "みたいだ", "nudge": "静か is the type of describing word that usually wants な before a noun — does that rule still apply right here?"},
+            {"jp_cloze": "あの料理は辛い＿＿＿。", "english": "That dish looks spicy.", "answer": "みたいだ", "nudge": "The speaker hasn't taken a bite yet — what tells you this is only their impression of the dish?"},
+            {"jp_cloze": "兄は晩に出る＿＿＿。", "english": "My older brother seems to be going out in the evening.", "answer": "みたいだ", "nudge": "出る already stands alone as a full plain-form verb — what gets tacked on after it to turn this into a hunch rather than a fact?"},
+            {"jp_cloze": "雨＿＿＿ね。", "english": "Looks like rain, doesn't it.", "answer": "みたいだ", "nudge": "This is something you'd toss out casually to a friend while glancing up at the sky — what fits right before ね here?"},
+            {"jp_cloze": "先生は忙しい＿＿＿。", "english": "The teacher seems busy.", "answer": "みたいです", "nudge": "You're speaking about someone you don't know well — which version keeps the ending polite rather than plain?"},
+        ],
         "family": "copula",
     },
     {
@@ -391,6 +505,13 @@ N4_GRAMMAR = [
             ex("音楽を聞いています。", "I'm listening to music.", ["ongaku"]),
         ],
         "vocabulary_slugs": ["ima", "eiga", "furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "母は料理をし＿＿＿。", "english": "My mother is cooking.", "answer": "ている", "nudge": "She's not just someone who cooks in general — what turns 料理をし into something you'd notice her doing if you walked in?"},
+            {"jp_cloze": "妹は歌を歌っ＿＿＿。", "english": "My little sister is singing.", "answer": "ている", "nudge": "She isn't a singer by trade — what comes after 歌っ to say this is what she's doing as you listen?"},
+            {"jp_cloze": "妹は今、宿題をし＿＿＿。", "english": "My little sister's doing her homework right now.", "answer": "てる", "nudge": "This is the clipped, relaxed version of the same shape — what short ending does し pick up when nobody's being careful with their speech?"},
+            {"jp_cloze": "妹が泣い＿＿＿。", "english": "My little sister is crying.", "answer": "ている", "nudge": "You can hear this from another room — what tells you it's true this second, not that she cries often?"},
+            {"jp_cloze": "妹が泣い＿＿＿らしい。", "english": "Sounds like my little sister is crying.", "answer": "ている", "nudge": "らしい after this gap means you didn't check for yourself — what would fill it if you had actually walked in and seen her?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -408,6 +529,14 @@ N4_GRAMMAR = [
             ex("道が混んでいます。", "The road is crowded.", ["michi-v"]),
         ],
         "vocabulary_slugs": ["mado", "kekkon-suru", "mise"],
+        "cloze_variants": [
+            {"jp_cloze": "窓が壊れ＿＿＿。", "english": "The window is broken.", "answer": "ている", "nudge": "The window already cracked at some point — does this ending point at that moment, or at how the window looks right now?"},
+            {"jp_cloze": "本が机の下に落ち＿＿＿。", "english": "The book has fallen and is under the desk.", "answer": "ている", "nudge": "The falling only took a second, but the book is still sitting there — which part of that is this sentence actually about?"},
+            {"jp_cloze": "私は先生を知っ＿＿＿。", "english": "I know the teacher.", "answer": "ている", "nudge": "Is the speaker in the middle of learning who the teacher is, or already carrying that knowledge around?"},
+            {"jp_cloze": "会議の時間はもう決まっ＿＿＿。", "english": "The meeting time has already been decided.", "answer": "ている", "nudge": "もう tells you the decision landed already — what does the verb ending need to show about something that already settled?"},
+            {"jp_cloze": "猫が死ん＿＿＿。", "english": "The cat is dead.", "answer": "ている", "nudge": "Death only happens once and doesn't take long — if the cat is still there in front of you, what must this ending be describing?"},
+            {"jp_cloze": "授業はもう始まっ＿＿＿。", "english": "Class has already started.", "answer": "ている", "nudge": "The class began at one point and you're now sitting somewhere inside that stretch of time — what does that tell you about the ending here?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -424,6 +553,15 @@ N4_GRAMMAR = [
             ex("もう準備してあります。", "Preparations have already been made.", ["junbi-suru"]),
         ],
         "vocabulary_slugs": ["e-picture", "mado", "junbi-suru"],
+        # Drafted variants pulled the verb's last kana into the blank (けてある); the blank
+        # takes てある only.
+        "cloze_variants": [
+            {"jp_cloze": "窓が開け＿＿＿。", "english": "The window has been opened (and left that way).", "answer": "てある", "nudge": "Something did the opening on purpose, and the window is still that way — what ending points at this?"},
+            {"jp_cloze": "名前が書い＿＿＿。", "english": "A name is written (there).", "answer": "てある", "nudge": "The name isn't currently being written — it's already there because someone wrote it. What ending points at that finished, sitting-there fact?"},
+            {"jp_cloze": "机の上に手紙が置い＿＿＿。", "english": "There's a letter placed on the desk.", "answer": "てある", "nudge": "Somebody put that letter there and it's still resting on the desk right now — think about how you'd mark a deliberate, lasting arrangement."},
+            {"jp_cloze": "自転車が止め＿＿＿。", "english": "The bicycle has been parked.", "answer": "てある", "nudge": "Compare this to 自転車が止まっている — this version needs to say someone parked it, not just that it isn't moving."},
+            {"jp_cloze": "電気がつけ＿＿＿んだ。", "english": "The light's on, see (someone left it on).", "answer": "てある", "nudge": "The casual んだ is doing the explaining — what comes right before it to say the light was switched on and left that way?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -465,6 +603,16 @@ N4_GRAMMAR = [
             ex("もう食べてしまいました。", "I've already finished eating.", ["taberu"]),
         ],
         "vocabulary_slugs": ["shukudai", "saifu", "taberu"],
+        # Drafted variants used the polite past, whose てしまい is neither an accepted form
+        # nor in level — plain non-past instead.
+        "cloze_variants": [
+            {"jp_cloze": "宿題を忘れ＿＿＿。", "english": "I'll end up forgetting the homework.", "answer": "てしまう", "nudge": "The verb before the blank already names the forgetting — what tone is the blank adding to it?"},
+            {"jp_cloze": "お菓子を全部食べ＿＿＿。", "english": "I'll eat up all the snacks.", "answer": "てしまう", "nudge": "全部 already says every snack was eaten — what job is left for the blank?"},
+            {"jp_cloze": "財布を無くし＿＿＿。", "english": "I'll end up losing my wallet.", "answer": "てしまう", "nudge": "Losing a wallet is rarely on purpose — does the blank hint at that?"},
+            {"jp_cloze": "宿題を全部し＿＿＿。", "english": "I'll get all the homework done.", "answer": "てしまう", "nudge": "This sentence could sound proud or exhausted — what does the blank signal about which one?"},
+            {"jp_cloze": "忘れ＿＿＿。", "english": "I'll totally forget.", "answer": "ちゃう", "nudge": "This is casual, spoken-style Japanese, not the plain grammar book form — what shorter piece fits that tone?"},
+            {"jp_cloze": "遊ん＿＿＿。", "english": "I'll go and play (when I shouldn't).", "answer": "じゃう", "nudge": "This blank sounds different from the last one even though the job is the same — what about the verb before it causes that?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -481,6 +629,14 @@ N4_GRAMMAR = [
             ex("雨が降ってきました。", "It has started raining.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["samui", "nihongo", "furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "天気がだんだん暖かくなっ＿＿＿。", "english": "The weather is gradually getting warmer.", "answer": "てくる", "nudge": "だんだん already tells you this is happening gradually — is the warmth moving toward now, or away from it?"},
+            {"jp_cloze": "子供はだんだん大きくなっ＿＿＿。", "english": "The child keeps growing bigger and bigger.", "answer": "ていく", "nudge": "A child's growth isn't finished — is this heading toward the present moment or continuing on past it?"},
+            {"jp_cloze": "彼は毎晩遅く帰っ＿＿＿。", "english": "He comes home late every night.", "answer": "てくる", "nudge": "毎晩 signals a repeated event — each night, is he arriving somewhere or setting off from it?"},
+            {"jp_cloze": "友達がこちらへ歩い＿＿＿。", "english": "My friend is walking this way.", "answer": "てくる", "nudge": "こちら already points at the speaker's side — does that match someone leaving or someone approaching?"},
+            {"jp_cloze": "私は駅まで歩い＿＿＿。", "english": "I'll walk to the station.", "answer": "ていく", "nudge": "駅まで names a destination away from wherever the speaker is standing now — which ending fits moving away?"},
+            {"jp_cloze": "犬が公園から走っ＿＿＿。", "english": "The dog comes running out of the park.", "answer": "てくる", "nudge": "から marks where the dog started — so where does the running end up relative to the person watching?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -497,6 +653,12 @@ N4_GRAMMAR = [
             ex("何回聞いても、分かりません。", "No matter how many times I ask, I don't understand.", ["kai-times", "wakaru"]),
         ],
         "vocabulary_slugs": ["furu-rain", "takai-adj", "wakaru"],
+        "cloze_variants": [
+            {"jp_cloze": "元気＿＿＿、今日は休む。", "english": "Even though I'm fine, I'm resting today.", "answer": "でも", "nudge": "元気 is a な-adjective — which connector do な-adjectives and nouns take before this ending?"},
+            {"jp_cloze": "何回聞い＿＿＿、分からない。", "english": "No matter how many times I ask, I don't understand.", "answer": "ても", "nudge": "聞く has already become its te-form here — what single syllable turns that into 'no matter how many times'?"},
+            {"jp_cloze": "高く＿＿＿、あの時計を買う。", "english": "Even if it's expensive, I'll buy that watch.", "answer": "ても", "nudge": "高い has already dropped its い and taken くて — what's left to add so price stops being an obstacle?"},
+            {"jp_cloze": "元気 → 元気で → 元気＿＿＿", "english": "fine → being fine → even though fine", "answer": "でも", "nudge": "The arrow shows で already attached to 元気 — what one syllable completes the concession?"},
+        ],
         "family": "connectors",
     },
     {
@@ -513,6 +675,14 @@ N4_GRAMMAR = [
             ex("先に帰ってもいいです。", "It's fine if you go home first.", ["kaeru-v"]),
         ],
         "vocabulary_slugs": ["suwaru", "shashin", "kaeru-v"],
+        # Drafted variants swallowed the preceding って; the blank starts at て.
+        "cloze_variants": [
+            {"jp_cloze": "ここに座っ＿＿＿ですか。", "english": "May I sit here?", "answer": "てもいい", "nudge": "This is a question about sitting — whose go-ahead does the speaker need before doing it?"},
+            {"jp_cloze": "窓を開け＿＿＿ですか。", "english": "May I open the window?", "answer": "てもいい", "nudge": "The window is still closed — what does the speaker need from the listener before touching it?"},
+            {"jp_cloze": "もう帰っ＿＿＿よ。", "english": "You may go home now.", "answer": "てもいいです", "nudge": "This isn't a question anymore — someone is telling another person they can leave. Who's speaking here?"},
+            {"jp_cloze": "電話を使っ＿＿＿ですか。", "english": "May I use the phone?", "answer": "てもいい", "nudge": "を marks 電話 as the thing being acted on — but whose say-so does the speaker still need first?"},
+            {"jp_cloze": "もう帰っ＿＿＿。", "english": "It's fine if you go home already.", "answer": "てもかまわない", "nudge": "Compare this to the other 帰る sentence — what changes about how much the speaker seems to care?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -529,6 +699,14 @@ N4_GRAMMAR = [
             ex("うそをついてはいけません。", "You must not lie.", []),
         ],
         "vocabulary_slugs": ["jugyou", "hanasu-v"],
+        "cloze_variants": [
+            {"jp_cloze": "図書館の本にペンで書い＿＿＿。", "english": "You must not write in library books with a pen.", "answer": "てはいけない", "nudge": "What is 書い doing right before the blank, and what job does the piece after it do to the whole sentence?"},
+            {"jp_cloze": "図書館で大きい声で話し＿＿＿。", "english": "Don't talk in a loud voice in the library.", "answer": "てはいけない", "nudge": "The library and a loud voice are both already in the sentence — what does the blank add on top of them?"},
+            {"jp_cloze": "財布を忘れ＿＿＿。", "english": "You must not forget your wallet.", "answer": "てはいけない", "nudge": "Is this describing a possibility, or shutting a door on one option entirely?"},
+            {"jp_cloze": "ここに座っ＿＿＿。", "english": "You mustn't sit here.", "answer": "てはだめだ", "nudge": "だめ shows up elsewhere meaning 'no good' — what's it doing paired with this chair?"},
+            {"jp_cloze": "話し＿＿＿。", "english": "Don't talk.", "answer": "ちゃだめ", "nudge": "This one is shorter than the library sign version — what got worn down in casual speech?"},
+            {"jp_cloze": "忘れ＿＿＿。", "english": "Don't forget it.", "answer": "ちゃだめ", "nudge": "Compare this to the wallet sentence earlier — same warning, different register. What changed?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -545,6 +723,13 @@ N4_GRAMMAR = [
             ex("お金を払わなくてもいいです。", "You don't have to pay.", ["okane", "harau"]),
         ],
         "vocabulary_slugs": ["ashita", "shinpai-suru", "okane"],
+        "cloze_variants": [
+            {"jp_cloze": "今日は宿題を全部し＿＿＿。", "english": "You don't have to finish all the homework today.", "answer": "なくてもいい", "nudge": "全部 sits right before the blank — is it saying every item must get done, or that skipping some is fine?"},
+            {"jp_cloze": "明日は早く起き＿＿＿。", "english": "You don't have to wake up early tomorrow.", "answer": "なくてもいいです", "nudge": "早く describes how you'd get up if you did — does the rest of the sentence say that's required?"},
+            {"jp_cloze": "そんなに急が＿＿＿よ。", "english": "You don't have to hurry that much.", "answer": "なくてもいい", "nudge": "そんなに points at a level of hurrying someone assumed was needed — what is the blank doing to that assumption?"},
+            {"jp_cloze": "心配し＿＿＿よ。", "english": "You don't have to worry.", "answer": "なくてもいい", "nudge": "The speaker is talking someone down from worry — what would make that reassurance land?"},
+            {"jp_cloze": "今日は学校へ行か＿＿＿。", "english": "It's fine even if you don't go to school today.", "answer": "なくてもかまわない", "nudge": "行く is already in its negative form here — what is the blank adding on top of that ない?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -561,6 +746,16 @@ N4_GRAMMAR = [
             ex("九時までに行かなければなりません。", "I have to go by nine o'clock.", ["iku-v"]),
         ],
         "vocabulary_slugs": ["shukudai", "kusuri", "iku-v"],
+        # Drafted variants blanked whole polite predicates (読まなければなりません); plain
+        # form leaves exactly the taught ending in the blank.
+        "cloze_variants": [
+            {"jp_cloze": "今日は漢字を覚え＿＿＿。", "english": "I have to memorize kanji today.", "answer": "なければならない", "nudge": "覚える already lost its る here — what usually rides on that bare stem when skipping it isn't an option?"},
+            {"jp_cloze": "本も読ま＿＿＿。", "english": "I also have to read the book.", "answer": "なければならない", "nudge": "読む swapped む for ま before this blank — what usually follows that particular stem shape?"},
+            {"jp_cloze": "学校に行か＿＿＿。", "english": "I have to go to school.", "answer": "なければならない", "nudge": "行く just did the same stem swap you'd use before なくてもいい — what comes next this time?"},
+            {"jp_cloze": "今週、本を返さ＿＿＿。", "english": "I have to return the book this week.", "answer": "なければいけない", "nudge": "返す turned its す into さ — this is the いける-flavored version of the ending, not the ならない one."},
+            {"jp_cloze": "宿題、し＿＿＿。", "english": "Gotta do the homework.", "answer": "なきゃいけない", "nudge": "This is the shrunk-down, spoken cousin of the full ending — what got clipped off なければ?"},
+            {"jp_cloze": "明日は早く起き＿＿＿。", "english": "I have to wake up early tomorrow.", "answer": "なければならない", "nudge": "起きる is already missing its dictionary ending here — this one continues in the opposite direction from なくてもいい."},
+        ],
         "family": "conjugations",
     },
     {
@@ -577,6 +772,13 @@ N4_GRAMMAR = [
             ex("泣きそうになりました。", "I almost cried.", ["naku"]),
         ],
         "vocabulary_slugs": ["densha", "okureru", "naku"],
+        "cloze_variants": [
+            {"jp_cloze": "授業で寝＿＿＿。", "english": "In class, I nearly fell asleep.", "answer": "そうになりました", "nudge": "What tense is なる in here, and what does that tell you about when this happened relative to now?"},
+            {"jp_cloze": "約束を忘れ＿＿＿。", "english": "I nearly forgot the appointment.", "answer": "そうになりました", "nudge": "The verb before the blank has lost its dictionary-form る — what usually gets attached to a stem like that?"},
+            {"jp_cloze": "電車に遅れ＿＿＿。", "english": "I nearly missed the train.", "answer": "そうになりました", "nudge": "Compare this to the plain past 遅れた — what extra piece is doing work in this sentence?"},
+            {"jp_cloze": "階段で落ち＿＿＿。", "english": "I nearly fell on the stairs.", "answer": "そうになりました", "nudge": "Is 落ちる sitting here in its full dictionary form, or has something been trimmed off the front of the blank?"},
+            {"jp_cloze": "悲しい映画を見て、泣き＿＿＿。", "english": "I watched a sad movie and nearly cried.", "answer": "そうになりました", "nudge": "泣き is the stem of which verb, and what kind of ending usually follows a bare stem like that in this lesson?"},
+        ],
         "family": "patterns",
     },
     {
@@ -617,6 +819,13 @@ N4_GRAMMAR = [
             ex("早く寝るようにしましょう。", "Let's make an effort to sleep early.", ["hayai-early", "neru"]),
         ],
         "vocabulary_slugs": ["mainichi", "yasai", "hayai-early"],
+        "cloze_variants": [
+            {"jp_cloze": "毎朝、野菜を食べる＿＿＿。", "english": "I make a point of eating vegetables every morning.", "answer": "ようにしている", "nudge": "Is this describing one bite of vegetables, or something aimed at every single morning?"},
+            {"jp_cloze": "甘い物を食べない＿＿＿。", "english": "I try not to eat sweets.", "answer": "ようにしている", "nudge": "The verb is already negative — what still needs adding so this reads as a standing effort rather than one moment?"},
+            {"jp_cloze": "毎晩早く寝る＿＿＿。", "english": "I'm going to make a habit of going to bed early.", "answer": "ようにする", "nudge": "This sounds like something announced today, not a routine that's already going — what marks that timing?"},
+            {"jp_cloze": "野菜をもっと食べる＿＿＿。", "english": "I make a point of eating more vegetables.", "answer": "ようにしている", "nudge": "Compare this to a plain statement of intention — what extra piece signals it's already a running effort?"},
+            {"jp_cloze": "毎日散歩する＿＿＿。", "english": "I make a point of taking a walk every day.", "answer": "ようにしている", "nudge": "Look at 毎日 — does that word fit a single planned outing or something repeated?"},
+        ],
         "family": "patterns",
     },
     {
@@ -633,6 +842,16 @@ N4_GRAMMAR = [
             ex("たまに遅刻することがあります。", "I sometimes am late.", ["tama-ni", "chikoku-suru"]),
         ],
         "vocabulary_slugs": ["nihon", "sushi", "tama-ni"],
+        # Drafted variants blanked か and the negative ありません, neither an accepted
+        # form — か moved outside the blank, the negative replaced.
+        "cloze_variants": [
+            {"jp_cloze": "すしを食べた＿＿＿か。", "english": "Have you ever eaten sushi?", "answer": "ことがあります", "nudge": "食べた is locked into the past and the か is already asking — what goes between them to make it about your whole life?"},
+            {"jp_cloze": "日本語を勉強した＿＿＿。", "english": "I have studied Japanese before.", "answer": "ことがあります", "nudge": "This isn't naming when the studying happened — what's it confirming about your life instead?"},
+            {"jp_cloze": "この映画を見た＿＿＿。", "english": "I have seen this movie before.", "answer": "ことがあります", "nudge": "見た on its own is just one evening — the blank has to stretch it across your whole past."},
+            {"jp_cloze": "飛行機に乗った＿＿＿。", "english": "I've been on a plane before.", "answer": "ことがあります", "nudge": "乗った already tells you the riding happened once — what's left to add is that it happened at some point in your life."},
+            {"jp_cloze": "猫と一緒に泳いだ＿＿＿。", "english": "I've swum together with a cat before.", "answer": "ことがあります", "nudge": "泳いだ sits frozen in the past — what phrase turns that single fact into something true of your whole history?"},
+            {"jp_cloze": "山に登った＿＿＿か。", "english": "Have you ever climbed a mountain?", "answer": "ことがあります", "nudge": "You're asking about their whole life, not one specific climb — the か is already there, so what goes in front of it?"},
+        ],
         "family": "patterns",
     },
     {
@@ -649,6 +868,13 @@ N4_GRAMMAR = [
             ex("毎朝散歩することにしています。", "I've made it a rule to walk every morning.", ["maiasa", "sanpo-suru"]),
         ],
         "vocabulary_slugs": ["rainen", "maiasa", "sanpo-suru"],
+        "cloze_variants": [
+            {"jp_cloze": "明日から毎朝早く起きる＿＿＿。", "english": "I've decided to start getting up early every morning from tomorrow.", "answer": "ことにする", "nudge": "起きる is left plain right up to the blank — what usually follows a plain dictionary-form verb when someone announces a firm resolution?"},
+            {"jp_cloze": "今年は日本語を習う＿＿＿＿。", "english": "I've decided to learn Japanese this year.", "answer": "ことにしました", "nudge": "習う stays in dictionary form even though 今年 is already underway — what does that timing mismatch usually signal about when this got settled?"},
+            {"jp_cloze": "甘い物を食べない＿＿＿。", "english": "I've decided not to eat sweets.", "answer": "ことにする", "nudge": "食べない is already negative by itself — what typically wraps around a negative verb to turn it into a firm resolution rather than just a plain statement of fact?"},
+            {"jp_cloze": "週末はレストランで食事をする＿＿＿＿。", "english": "I've decided to have a meal at a restaurant this weekend.", "answer": "ことにしました", "nudge": "する is doing two jobs in this sentence — once inside 食事をする and once right after the blank. What's that second する turning into?"},
+            {"jp_cloze": "お酒を飲まない＿＿＿＿。", "english": "I've decided not to drink alcohol.", "answer": "ことにしました", "nudge": "飲まない sits directly before the blank in its negative form — what closes out a sentence like this to make it sound like a settled resolution rather than an ongoing habit?"},
+        ],
         "family": "patterns",
     },
     {
@@ -665,6 +891,14 @@ N4_GRAMMAR = [
             ex("毎週レポートを出すことになっています。", "It's arranged that we submit a report every week.", ["maishuu"]),
         ],
         "vocabulary_slugs": ["raigetsu", "kaigi", "maishuu"],
+        "cloze_variants": [
+            {"jp_cloze": "来月、新しい会社で働く＿＿＿。", "english": "Next month, it's been decided that I'll work at a new company.", "answer": "ことになりました", "nudge": "Who picked the new company here — the speaker, or someone above them?"},
+            {"jp_cloze": "来年から宿題が増える＿＿＿。", "english": "Starting next year, it turns out homework increases.", "answer": "ことになる", "nudge": "This sentence looks ahead from right now, with no ました anywhere."},
+            {"jp_cloze": "明日は会社に行かない＿＿＿。", "english": "It's been decided that I won't go to the company tomorrow.", "answer": "ことになりました", "nudge": "行く already flipped to its negative shape before the blank — what comes after a negative verb?"},
+            {"jp_cloze": "毎週月曜日に会議がある＿＿＿。", "english": "There's a standing arrangement that there's a meeting every Monday.", "answer": "ことになっている", "nudge": "This meeting repeats every single week — does this call for a one-time report or an ongoing state?"},
+            {"jp_cloze": "私たち、結婚する＿＿＿。", "english": "We're getting married.", "answer": "ことになりました", "nudge": "This couple is announcing their own news aloud — would they frame it as taking personal credit?"},
+            {"jp_cloze": "大学で日本語を勉強する＿＿＿。", "english": "It was decided that I'd study Japanese at university.", "answer": "ことになりました", "nudge": "Compare this to studying Japanese by personal choice — whose requirement picked the subject this time?"},
+        ],
         "family": "patterns",
     },
     {
@@ -680,6 +914,13 @@ N4_GRAMMAR = [
             ex("疲れたもの、休みたいです。", "I'm tired, so I want to rest.", []),
         ],
         "vocabulary_slugs": ["kodomo-v", "asobu"],
+        "cloze_variants": [
+            {"jp_cloze": "毎晩星を見た＿＿＿だ。", "english": "I used to watch the stars every night.", "answer": "もの", "nudge": "Every night, watching stars — what does that repetition tell you about when this happened?"},
+            {"jp_cloze": "弟とよく公園で遊んだ＿＿＿だ。", "english": "My little brother and I used to play in the park a lot.", "answer": "もの", "nudge": "Picture yourself years later, telling someone about afternoons with your brother — what tone are you using?"},
+            {"jp_cloze": "忙しい＿＿＿、電話ができなかった。", "english": "I was busy — that's why I couldn't call.", "answer": "もの", "nudge": "The speaker sounds a little defensive here — what one word lets them justify themselves?"},
+            {"jp_cloze": "忙しい＿＿＿、電話ができなかった。", "english": "I was busy — that's why I couldn't call.", "answer": "もん", "nudge": "Same excuse, but said among close friends instead of a teacher — which shorter form fits?"},
+            {"jp_cloze": "母はよく歌を歌った＿＿＿だ。", "english": "My mother used to sing songs often.", "answer": "もの", "nudge": "This sentence looks back on something repeated long ago — what's doing that looking-back work at the end?"},
+        ],
         "family": "patterns",
     },
     {
@@ -696,6 +937,13 @@ N4_GRAMMAR = [
             ex("甘い物ばかり食べています。", "I only eat sweet things.", ["amai"]),
         ],
         "vocabulary_slugs": ["kare", "amai"],
+        "cloze_variants": [
+            {"jp_cloze": "弟はお菓子＿＿＿食べている。", "english": "My younger brother eats nothing but sweets.", "answer": "ばかり", "nudge": "Notice he's still chewing away in that ている — what never makes it onto his plate?"},
+            {"jp_cloze": "私は宿題＿＿＿している。", "english": "I'm doing nothing but homework.", "answer": "ばかり", "nudge": "Everything else on your to-do list sits untouched — what does that say about how the evening went?"},
+            {"jp_cloze": "今、起きた＿＿＿です。", "english": "I just woke up.", "answer": "ばかり", "nudge": "Look at 起きた — is this describing something from long ago, or something moments before you spoke?"},
+            {"jp_cloze": "友達は仕事を始めた＿＿＿だ。", "english": "My friend just started the job.", "answer": "ばかり", "nudge": "Picture your friend's first day — how many hours do you think have actually gone by?"},
+            {"jp_cloze": "私は日本に行った＿＿＿だ。", "english": "I just went to Japan.", "answer": "ばかり", "nudge": "Compare this to a claim about having gone there at some point in life — what's different about the timing here?"},
+        ],
         "family": "particles",
     },
     {
@@ -712,6 +960,13 @@ N4_GRAMMAR = [
             ex("ちょうど終わったところです。", "I just finished.", ["owaru"]),
         ],
         "vocabulary_slugs": ["ima", "owaru"],
+        "cloze_variants": [
+            {"jp_cloze": "今、出る＿＿＿です。", "english": "I'm just about to leave.", "answer": "ところ", "nudge": "The verb is still in its plain dictionary shape — what word right after it says you haven't left yet?"},
+            {"jp_cloze": "今、電話する＿＿＿です。", "english": "I'm just about to make a phone call.", "answer": "ところ", "nudge": "Same bare verb shape as before — what word signals your hand hasn't touched the phone yet?"},
+            {"jp_cloze": "今、勉強している＿＿＿です。", "english": "I'm right in the middle of studying.", "answer": "ところ", "nudge": "This verb already carries ている — what extra word says you're caught inside that action right now?"},
+            {"jp_cloze": "今、朝ご飯を食べた＿＿＿です。", "english": "I just finished eating breakfast.", "answer": "ところ", "nudge": "The verb sits in た-form here — what word says the last bite happened seconds ago?"},
+            {"jp_cloze": "今、宿題をした＿＿＿です。", "english": "I just finished my homework.", "answer": "ところ", "nudge": "Another た-form verb — what word turns 'did homework' into 'did it this instant'?"},
+        ],
         "family": "patterns",
     },
     {
@@ -728,6 +983,13 @@ N4_GRAMMAR = [
             ex("彼が話している間、静かにしていました。", "While he was talking, I stayed quiet.", ["kare", "shizuka"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "natsu", "kare"],
+        "cloze_variants": [
+            {"jp_cloze": "私が勉強している＿＿＿、猫は寝ていた。", "english": "While I was studying, the cat was sleeping.", "answer": "間", "nudge": "Both things here keep going for the same span — what word covers the whole shared time?"},
+            {"jp_cloze": "私が勉強している＿＿＿、猫が窓から出た。", "english": "While I was studying, the cat went out through the window.", "answer": "間に", "nudge": "The cat's exit is a one-off blip, not something spread out — what pins it to a single point inside the other action?"},
+            {"jp_cloze": "会議の＿＿＿、電話を消した。", "english": "During the meeting, I turned off my phone.", "answer": "間", "nudge": "No verb sits before this blank, just a bare noun and の — what marks the meeting start to end?"},
+            {"jp_cloze": "会議の＿＿＿に、雨が降った。", "english": "It started raining sometime during the meeting.", "answer": "間", "nudge": "The rain isn't a mood hanging over the whole meeting — it happens once, somewhere in there; what marks that single point?"},
+            {"jp_cloze": "授業の＿＿＿、教室はとても静かだった。", "english": "During class, the classroom was very quiet.", "answer": "間", "nudge": "Quiet isn't a single flash — it describes the entire class period; what noun-attached word spans all of it?"},
+        ],
         "family": "patterns",
     },
     {
@@ -744,6 +1006,13 @@ N4_GRAMMAR = [
             ex("忘れないうちに、メモしておきます。", "I'll write it down before I forget.", ["wasureru"]),
         ],
         "vocabulary_slugs": ["atatakai", "wakai", "wasureru"],
+        "cloze_variants": [
+            {"jp_cloze": "お茶が熱い＿＿＿飲んだ方がいいですよ。", "english": "You should drink the tea while it's still hot.", "answer": "うちに", "nudge": "The tea's heat is fading on its own — what marks the closing window to drink it?"},
+            {"jp_cloze": "子供が寝ている＿＿＿掃除しましょう。", "english": "Let's clean while the child is sleeping.", "answer": "うちに", "nudge": "寝ている marks something still going on right now — what signals you should act inside that stretch?"},
+            {"jp_cloze": "忘れない＿＿＿名前を書いた。", "english": "I wrote down the name before I could forget it.", "answer": "うちに", "nudge": "忘れない is a negative that hasn't come true yet — what tags that narrowing gap?"},
+            {"jp_cloze": "若い＿＿＿たくさん旅行した方がいい。", "english": "You should travel a lot while you're young.", "answer": "うちに", "nudge": "若い names a stage of life that won't last forever — what tags that narrow stretch of time?"},
+            {"jp_cloze": "週末の＿＿＿宿題をした。", "english": "I got my homework done while it was still the weekend.", "answer": "うちに", "nudge": "週末の turns the whole weekend into a time frame here — what closes that frame?"},
+        ],
         "family": "patterns",
     },
     {
@@ -759,6 +1028,13 @@ N4_GRAMMAR = [
             ex("旅行のたびに、写真を撮ります。", "Every time I travel, I take photos.", ["ryokou", "shashin"]),
         ],
         "vocabulary_slugs": ["kare", "ryokou", "shashin"],
+        "cloze_variants": [
+            {"jp_cloze": "妹が来る＿＿＿、猫が逃げる。", "english": "Every time my little sister comes over, the cat runs away.", "answer": "たびに", "nudge": "The cat's exit isn't a one-off — what tiny word signals this keeps happening?"},
+            {"jp_cloze": "彼が来る＿＿＿、猫が逃げた。", "english": "Every time he came, the cat ran away.", "answer": "たびに", "nudge": "The ending is past tense, but check the verb right before the blank — did that shift too, or stay put?"},
+            {"jp_cloze": "旅行の＿＿＿、新しい靴を買う。", "english": "Every trip, I buy new shoes.", "answer": "たびに", "nudge": "This blank follows a noun plus の — what connects a trip to a habit of buying shoes?"},
+            {"jp_cloze": "会議の＿＿＿、彼は遅れる。", "english": "Every meeting, he's late.", "answer": "たびに", "nudge": "Is this about one particular meeting, or does it sound like his standing reputation?"},
+            {"jp_cloze": "彼が話す＿＿＿、私は笑う。", "english": "Every time he talks, I laugh.", "answer": "たびに", "nudge": "Compare this to the 間に sentence nearby — is this one continuous stretch, or a reaction that keeps recurring?"},
+        ],
         "family": "patterns",
     },
     {
@@ -775,6 +1051,14 @@ N4_GRAMMAR = [
             ex("分からない場合は、聞いてください。", "If you don't understand, please ask.", ["wakaru", "kiku-v"]),
         ],
         "vocabulary_slugs": ["okureru", "renraku-suru", "wakaru"],
+        "cloze_variants": [
+            {"jp_cloze": "電車が遅れる＿＿＿、連絡してください。", "english": "If the train is late, please contact me.", "answer": "場合は", "nudge": "The train hasn't necessarily been late yet — what turns that clause into the scenario you're reacting to?"},
+            {"jp_cloze": "雨の＿＿＿、傘を持って行きます。", "english": "In case of rain, I'll bring an umbrella.", "answer": "場合", "nudge": "Rain isn't guaranteed here — what word turns 雨 into the thing you're planning around?"},
+            {"jp_cloze": "分からない＿＿＿、先生に聞いてください。", "english": "If you don't understand, please ask the teacher.", "answer": "場合は", "nudge": "分からない stays a plain verb form right before the blank — what noun does it attach to?"},
+            {"jp_cloze": "財布を無くした＿＿＿、警官に言います。", "english": "If I lose my wallet, I'll tell a police officer.", "answer": "場合", "nudge": "This clause describes a wallet that may or may not go missing — what word names that hypothetical?"},
+            {"jp_cloze": "病気の＿＿＿、学校を休みます。", "english": "If I'm sick, I take the day off school.", "answer": "場合", "nudge": "病気 is a noun here, so what word pairs with の to build the scenario around it?"},
+            {"jp_cloze": "忙しい＿＿＿、手伝ってください。", "english": "If you're busy, please help me.", "answer": "場合は", "nudge": "忙しい describes a state that might or might not apply right now — what word packages it into something to react to?"},
+        ],
         "family": "patterns",
     },
     {
@@ -791,6 +1075,13 @@ N4_GRAMMAR = [
             ex("右に曲がると、駅があります。", "If you turn right, there's the station.", ["magaru", "eki"]),
         ],
         "vocabulary_slugs": ["haru", "denki", "eki"],
+        "cloze_variants": [
+            {"jp_cloze": "窓を開ける＿＿＿、風が入る。", "english": "Open the window, and wind comes in.", "answer": "と", "nudge": "Once the window opens, the wind arrives on its own — what tiny word glues those two facts together?"},
+            {"jp_cloze": "お酒を飲む＿＿＿、顔が赤くなる。", "english": "Drink this, and your face turns red.", "answer": "と", "nudge": "Drinking this leads straight to a red face, no thinking involved — what links the two verbs here?"},
+            {"jp_cloze": "電話が鳴る＿＿＿、猫が驚く。", "english": "The phone rings, and the cat gets startled.", "answer": "と", "nudge": "The phone rings and the cat's fright follows immediately after — what's connecting those two clauses?"},
+            {"jp_cloze": "冬になる＿＿＿、雪が降る。", "english": "When winter comes, snow falls.", "answer": "と", "nudge": "Every year, winter arriving means snow follows without fail — what word ties the two together?"},
+            {"jp_cloze": "家に帰る＿＿＿、雨だった。", "english": "I got home, and it was raining.", "answer": "と", "nudge": "Coming home is the moment the rain got noticed — what particle sits right after 帰る here?"},
+        ],
         "family": "conjugations",
     },
     {
@@ -807,6 +1098,16 @@ N4_GRAMMAR = [
             ex("約束したから、行かなければなりません。", "Because I promised, I have to go.", ["yakusoku"]),
         ],
         "vocabulary_slugs": ["abunai", "yakusoku"],
+        # This point's accepted_forms is から alone, so the drafted ので / んで answers were
+        # ungradeable; those three sentences now take から.
+        "cloze_variants": [
+            {"jp_cloze": "忙しい＿＿＿、行けない。", "english": "Busy, so [I] can't go.", "answer": "から", "nudge": "This reads like a quick text to a friend bailing on plans, not a note to a teacher."},
+            {"jp_cloze": "静かだ＿＿＿、ここが好きです。", "english": "Because it's quiet, [I] like this place.", "answer": "から", "nudge": "Notice だ is still sitting right before the blank — which word pairs with that copula?"},
+            {"jp_cloze": "今日は寒い＿＿＿、家にいます。", "english": "It's cold today, so I'm staying home.", "answer": "から", "nudge": "The speaker is making their own call about the weather, not filing an official excuse."},
+            {"jp_cloze": "頭が痛い＿＿＿、休みます。", "english": "My head hurts, so I'll rest.", "answer": "から", "nudge": "A headache is the speaker's own account of why they are stopping."},
+            {"jp_cloze": "危ない＿＿＿、走らないで。", "english": "It's dangerous, so don't run.", "answer": "から", "nudge": "This sentence ends in a command — which word feels natural right before one?"},
+            {"jp_cloze": "時間がない＿＿＿、急ぎましょう。", "english": "There's no time, so let's hurry.", "answer": "から", "nudge": "The speaker is pushing the group to move, and the join has to carry that urgency."},
+        ],
         "family": "connectors",
     },
     {
@@ -822,6 +1123,13 @@ N4_GRAMMAR = [
             ex("お金を払う代わりに、手伝いました。", "Instead of paying money, I helped out.", ["okane", "harau", "tetsudau"]),
         ],
         "vocabulary_slugs": ["okane", "harau", "tetsudau"],
+        "cloze_variants": [
+            {"jp_cloze": "母の＿＿＿、私が晩ご飯を作ります。", "english": "Instead of my mother, I'll make dinner.", "answer": "代わりに", "nudge": "母 is named here — whose usual job at the stove is being handed off?"},
+            {"jp_cloze": "兄が忙しいから、兄の＿＿＿弟が働きます。", "english": "Because my older brother is busy, my younger brother works in his place.", "answer": "代わりに", "nudge": "Two brothers appear — which one would normally be the one working?"},
+            {"jp_cloze": "電話する＿＿＿、手紙を書きました。", "english": "Instead of calling, I wrote a letter.", "answer": "代わりに", "nudge": "Two actions are named but only one happened — which was dropped?"},
+            {"jp_cloze": "傘を貸す＿＿＿、少しお金をもらいます。", "english": "In exchange for lending the umbrella, I get a little money.", "answer": "代わりに", "nudge": "The speaker lends something and gets something back — what links the two halves?"},
+            {"jp_cloze": "今日は忙しいです。＿＿＿、明日会いましょう。", "english": "Today I'm busy. Instead, let's meet tomorrow.", "answer": "代わりに", "nudge": "This blank starts a whole new sentence — what earlier statement is it reacting to?"},
+        ],
         "family": "connectors",
     },
     {
@@ -837,6 +1145,13 @@ N4_GRAMMAR = [
             ex("好きというより、必要です。", "Rather than liking it, I need it.", ["suki"]),
         ],
         "vocabulary_slugs": ["isogashii", "suki"],
+        "cloze_variants": [
+            {"jp_cloze": "この試験は難しい＿＿＿面倒くさい。", "english": "This exam isn't so much difficult as it is annoying.", "answer": "というより", "nudge": "難しい and 面倒くさい are both complete descriptions sitting back to back — what links two full ideas like that instead of just one?"},
+            {"jp_cloze": "彼は先生＿＿＿友達だ。", "english": "He's more a friend than a teacher.", "answer": "というより", "nudge": "彼は shows up once, but two different words are offered for what he is — which one is the blank pointing toward?"},
+            {"jp_cloze": "今日は忙しい＿＿＿大変だ。", "english": "Today isn't so much busy as it is rough.", "answer": "というより", "nudge": "忙しい and 大変 both describe today — is the speaker rejecting the first word outright, or gently swapping it out?"},
+            {"jp_cloze": "この部屋は静か＿＿＿暗い。", "english": "This room isn't so much quiet as it is dark.", "answer": "というより", "nudge": "静か has no だ in front of the blank — what does that tell you about what kind of word usually sits here?"},
+            {"jp_cloze": "この映画はつまらない＿＿＿悲しい。", "english": "This movie isn't so much boring as it is sad.", "answer": "というより", "nudge": "つまらない and 悲しい are two separate reactions to one movie — which of them is the speaker actually standing behind?"},
+        ],
         "family": "connectors",
     },
     {
@@ -852,6 +1167,14 @@ N4_GRAMMAR = [
             ex("友達として、彼を助けたいです。", "As a friend, I want to help him.", ["tomodachi", "tasukeru"]),
         ],
         "vocabulary_slugs": ["sensei", "tomodachi", "tasukeru"],
+        "cloze_variants": [
+            {"jp_cloze": "私は友達＿＿＿手伝っています。", "english": "I'm helping as a friend.", "answer": "として", "nudge": "Is this person being paid to help, or is it because of who they are to the other person?"},
+            {"jp_cloze": "私は医者＿＿＿病院で働いています。", "english": "I work at the hospital as a doctor.", "answer": "として", "nudge": "At the hospital, is 私 treating patients or receiving treatment?"},
+            {"jp_cloze": "今日は客＿＿＿来ました。", "english": "Today I came as a guest.", "answer": "として", "nudge": "Does this person work at the shop, or did they just walk in?"},
+            {"jp_cloze": "箱を椅子＿＿＿使いました。", "english": "I used the box as a chair.", "answer": "として", "nudge": "The box is still a box — so what did the speaker do with it?"},
+            {"jp_cloze": "先生＿＿＿学生に説明しました。", "english": "As the teacher, I explained it to the students.", "answer": "として", "nudge": "Who is doing the explaining here, the teacher or the students?"},
+            {"jp_cloze": "家族＿＿＿一緒に住んでいます。", "english": "We live together as a family.", "answer": "として", "nudge": "What kind of relationship connects the people living together in this sentence?"},
+        ],
         "family": "particles",
     },
     {
@@ -889,6 +1212,14 @@ N4_GRAMMAR = [
             ex("新聞によると、事故があったそうです。", "According to the newspaper, there was an accident.", ["shinbun"]),
         ],
         "vocabulary_slugs": ["tenki", "ashita", "shinbun"],
+        "cloze_variants": [
+            {"jp_cloze": "新聞＿＿＿、明日は雨です。", "english": "According to the newspaper, tomorrow it will rain.", "answer": "によると", "nudge": "The newspaper isn't doing anything here — what role is it playing in this sentence?"},
+            {"jp_cloze": "ラジオ＿＿＿、今日は雪です。", "english": "According to the radio, today it's snowing.", "answer": "によると", "nudge": "Which word tells you where the news about the snow came from?"},
+            {"jp_cloze": "友達の話＿＿＿、テストは来週です。", "english": "According to what my friend said, the test is next week.", "answer": "によると", "nudge": "友達の話 is a whole noun phrase — does that change what can attach right after it?"},
+            {"jp_cloze": "先生＿＿＿、宿題は明日までです。", "english": "According to the teacher, the homework is due tomorrow.", "answer": "によると", "nudge": "The teacher isn't the one handing in homework — so what's their role in this sentence?"},
+            {"jp_cloze": "医者＿＿＿、病気はすぐ治ります。", "english": "According to the doctor, the illness will heal soon.", "answer": "によると", "nudge": "Who is vouching for this recovery — the speaker, or someone else being quoted?"},
+            {"jp_cloze": "友達＿＿＿、彼は元気です。", "english": "According to my friend, he's doing well.", "answer": "によれば", "nudge": "This version sounds a touch more formal than the newspaper sentence — what usually shifts along with that?"},
+        ],
         "family": "particles",
     },
     {
@@ -904,6 +1235,14 @@ N4_GRAMMAR = [
             ex("雨が降ったため、試合は中止になりました。", "Because it rained, the match was cancelled.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha", "furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "台風の＿＿＿、電車が遅れています。", "english": "Because of the typhoon, the trains are running late.", "answer": "ため", "nudge": "This is a train-station announcement — what ties 台風 to the delay in that stiff, official tone?"},
+            {"jp_cloze": "風邪の＿＿＿、学校を休みました。", "english": "I took the day off school because of a cold.", "answer": "ため", "nudge": "You already took today off — what's the noun sitting right in front of the blank doing to it?"},
+            {"jp_cloze": "この公園は静かな＿＿＿、よく散歩します。", "english": "Because this park is quiet, I often take walks here.", "answer": "ため", "nudge": "静かな already looks like it's about to describe a noun — what usually follows that な?"},
+            {"jp_cloze": "今週は忙しい＿＿＿、旅行に行けません。", "english": "Because this week is busy, I can't go on the trip.", "answer": "ため", "nudge": "忙しい stays in its plain dictionary shape here, with nothing extra attached — what fills the gap?"},
+            {"jp_cloze": "天気が悪い＿＿＿、洗濯ができません。", "english": "Because the weather is bad, I can't do the laundry.", "answer": "ために", "nudge": "This one uses the longer of the two accepted spellings — which one ends in an extra に?"},
+            {"jp_cloze": "電車が遅れた＿＿＿、会議に遅れました。", "english": "Because the train was late, I was late for the meeting.", "answer": "ため", "nudge": "遅れた is already sitting in the past tense — what comes right after a plain-past verb here?"},
+        ],
         "family": "connectors",
     },
     {
@@ -919,6 +1258,14 @@ N4_GRAMMAR = [
             ex("できる限り、頑張ります。", "I'll try as hard as I can.", ["ganbaru"]),
         ],
         "vocabulary_slugs": ["shiru", "kare", "ganbaru"],
+        "cloze_variants": [
+            {"jp_cloze": "私の知る＿＿＿、彼女は今日、家にいる。", "english": "As far as I know, she's home today.", "answer": "限り", "nudge": "Normal sentences mark a subject with が — so what job is の doing in front of 知る here?"},
+            {"jp_cloze": "見る＿＿＿、今日の天気はいい。", "english": "As far as I can see, today's weather is good.", "answer": "限り", "nudge": "見る has no stated object or listener here — whose act of seeing is this whole sentence leaning on?"},
+            {"jp_cloze": "忙しい＿＿＿、彼は休まない。", "english": "As long as he's busy, he doesn't rest.", "answer": "限り", "nudge": "忙しい is doing its ordinary job describing him — what changes about the clause it's sitting inside of?"},
+            {"jp_cloze": "元気な＿＿＿、彼は毎朝走る。", "english": "As long as he's healthy, he runs every morning.", "answer": "限り", "nudge": "元気 usually needs だ or です to finish a sentence on its own — why does it show up wearing な instead here?"},
+            {"jp_cloze": "できる＿＿＿、私は手伝う。", "english": "I'll help as much as I possibly can.", "answer": "限り", "nudge": "できる already tells you something is possible by itself — what does the missing piece add on top of that?"},
+            {"jp_cloze": "時間がある＿＿＿、彼は本を読む。", "english": "As long as he has time, he reads books.", "answer": "限り", "nudge": "Is this one single afternoon of reading, or something tied to a whole stretch where a condition keeps being true?"},
+        ],
         "family": "patterns",
     },
     {
@@ -937,6 +1284,15 @@ N4_GRAMMAR = [
             ex("たとえ難しくても、挑戦します。", "Even if it's difficult, I'll try.", ["muzukashii"]),
         ],
         "vocabulary_slugs": ["furu-rain", "muzukashii"],
+        # Only たとえ is blankable here — 〜ても is its own point (n4-temo) and the paired
+        # form is not a literal accepted_form — so every blank sits at the opener.
+        "cloze_variants": [
+            {"jp_cloze": "＿＿＿雨が降っても、私たちは山に登ります。", "english": "Even if it rains, we will climb the mountain.", "answer": "たとえ", "nudge": "The rain clause already does all the conceding by itself — what three-kana flag can open the sentence to mark the rain as a pure what-if?"},
+            {"jp_cloze": "＿＿＿この本が高くても、買います。", "english": "Even if this book is expensive, I will buy it.", "answer": "たとえ", "nudge": "高くても already does the conceding by itself; the opening slot needs the word that flags the whole thing as a supposition."},
+            {"jp_cloze": "＿＿＿明日雪でも、学校はあります。", "english": "Even if it snows tomorrow, there will still be school.", "answer": "たとえ", "nudge": "雪でも concedes the snow already — what belongs at the head of the sentence to mark it as merely imagined?"},
+            {"jp_cloze": "＿＿＿試験が難しくても、私は頑張ります。", "english": "Even if the exam is difficult, I will do my best.", "answer": "たとえ", "nudge": "The speaker is not claiming the exam really is hard — what opener at the very front turns the difficulty into a mere supposition?"},
+            {"jp_cloze": "＿＿＿暇でも、あの店には行かない。", "english": "Even if I'm free, I won't go to that shop.", "answer": "たとえ", "nudge": "This is friends talking, but the opener that sets up the supposition does not change in casual speech."},
+        ],
         "family": "connectors",
     },
     {
@@ -952,6 +1308,13 @@ N4_GRAMMAR = [
             ex("明日、何をするんだっけ。", "What are we doing tomorrow again?", ["ashita"]),
         ],
         "vocabulary_slugs": ["ashita"],
+        "cloze_variants": [
+            {"jp_cloze": "映画は何時だ＿＿＿。", "english": "What time was the movie again?", "answer": "っけ", "nudge": "だ already makes this a blunt, plain guess at the time — what tiny addition turns it into a check on something you and your friend already settled?"},
+            {"jp_cloze": "先週、彼と会った＿＿＿。", "english": "Did I meet him last week?", "answer": "っけ", "nudge": "会った is already complete past tense on its own — what does the piece on top of it add, given the meeting is long over?"},
+            {"jp_cloze": "あのラーメン、辛かった＿＿＿。", "english": "Was that ramen spicy?", "answer": "っけ", "nudge": "辛かった alone would already be a full, flat statement about the past — what turns it into someone questioning what they thought they knew?"},
+            {"jp_cloze": "彼女の名前、何だった＿＿＿。", "english": "What was her name again?", "answer": "っけ", "nudge": "何だった could stand alone as its own blunt question — what's the extra piece doing that plain past だった doesn't?"},
+            {"jp_cloze": "明日、試験があった＿＿＿。", "english": "Wasn't there an exam tomorrow?", "answer": "っけ", "nudge": "があった is a complete sentence by itself — what turns it from a flat statement into someone double-checking what they used to be sure of?"},
+        ],
         "family": "patterns",
     },
     {
@@ -968,6 +1331,12 @@ N4_GRAMMAR = [
             ex("財布を忘れたんです。", "The thing is, I forgot my wallet.", ["saifu", "wasureru"]),
         ],
         "vocabulary_slugs": ["isogashii", "saifu", "wasureru"],
+        "cloze_variants": [
+            {"jp_cloze": "病気だった＿＿＿。", "english": "I was sick.", "answer": "んです", "nudge": "だった already carries its own past tense — does anything else in the sentence still need to change before this blank?"},
+            {"jp_cloze": "友達が来る＿＿＿。", "english": "A friend is coming over.", "answer": "んです", "nudge": "来る hasn't changed shape at all here — what does that tell you about how verbs behave right before this blank?"},
+            {"jp_cloze": "今日は忙しい＿＿＿。", "english": "I'm busy today.", "answer": "んだ", "nudge": "Picture texting this to a close friend rather than your boss — would you expect the polite ending here, or the blunt one?"},
+            {"jp_cloze": "昨日、どうした＿＿＿か。", "english": "What happened yesterday?", "answer": "んです", "nudge": "This question follows an empty chair the day before — is it asking cold, or leaning on something already visible?"},
+        ],
         "family": "copula",
     },
     {
@@ -984,6 +1353,13 @@ N4_GRAMMAR = [
             ex("これでいいでしょう。", "This should be fine, right?", []),
         ],
         "vocabulary_slugs": ["ashita", "kare", "shiru"],
+        "cloze_variants": [
+            {"jp_cloze": "明日は雨＿＿＿。", "english": "Tomorrow it'll probably rain.", "answer": "でしょう", "nudge": "Nothing here confirms it's actually raining yet — what ending makes 雨です less certain?"},
+            {"jp_cloze": "彼はもう忙しい＿＿＿。", "english": "He's probably busy already.", "answer": "でしょう", "nudge": "もう already covers the timing — what's left to add is how sure the speaker sounds."},
+            {"jp_cloze": "この部屋は静か＿＿＿。", "english": "This room is probably quiet.", "answer": "でしょう", "nudge": "静か has no だ sitting in front of it here — what took that spot instead?"},
+            {"jp_cloze": "今日は寒い＿＿＿？", "english": "It's cold today, isn't it?", "answer": "でしょう", "nudge": "The question mark and rising voice change the job of this ending — what word turns a plain statement into a check for agreement?"},
+            {"jp_cloze": "彼女は先生＿＿＿。", "english": "She's probably a teacher.", "answer": "だろう", "nudge": "です is nowhere in this sentence — what plain, casual word fills that role instead?"},
+        ],
         "family": "copula",
     },
     {
@@ -1000,6 +1376,14 @@ N4_GRAMMAR = [
             ex("これは高いかもしれません。", "This might be expensive.", ["takai-adj"]),
         ],
         "vocabulary_slugs": ["ashita", "kare", "takai-adj"],
+        "cloze_variants": [
+            {"jp_cloze": "電車が遅れている＿＿＿。", "english": "The train might be delayed.", "answer": "かもしれません", "nudge": "This whole sentence stays polite — what ending keeps that same register while leaving the delay unconfirmed?"},
+            {"jp_cloze": "今日は忙しい＿＿＿。", "english": "I might be busy today.", "answer": "かもしれない", "nudge": "忙しい already ends the way a plain adjective should — what follows it with nothing added in between?"},
+            {"jp_cloze": "猫は大丈夫＿＿＿。", "english": "The cat might be okay.", "answer": "かもしれない", "nudge": "大丈夫 usually wants something right after it in a plain statement — what's missing here, and what sits in its place instead?"},
+            {"jp_cloze": "彼は病気＿＿＿。", "english": "He might be sick.", "answer": "かもしれない", "nudge": "病気 is a bare noun with nothing attached — what comes directly after it, with no だ anywhere nearby?"},
+            {"jp_cloze": "夜の間に猫が外に出た＿＿＿。", "english": "The cat may have gone outside during the night.", "answer": "かもしれない", "nudge": "出た already points to something finished — what turns that finished fact into an open question rather than a settled one?"},
+            {"jp_cloze": "明日は雨＿＿＿。", "english": "It might rain tomorrow.", "answer": "かもしれない", "nudge": "This sentence sits right beside a でしょう version in the lesson — what ending leaves the rain as an open possibility instead of a confident call?"},
+        ],
         "family": "copula",
     },
     {
@@ -1016,6 +1400,13 @@ N4_GRAMMAR = [
             ex("この本は分かりやすいです。", "This book is easy to understand.", ["hon", "wakaru"]),
         ],
         "vocabulary_slugs": ["kutsu", "kanji-word", "hon"],
+        "cloze_variants": [
+            {"jp_cloze": "このペンは書き＿＿＿です。", "english": "This pen is hard to write with.", "answer": "にくい", "nudge": "This describes what the pen itself is like, not one single moment of writing with it."},
+            {"jp_cloze": "この本は読み＿＿＿です。", "english": "This book is easy to read.", "answer": "やすい", "nudge": "本 is the topic here — the blank tells you something about the book's general nature, not one reading session."},
+            {"jp_cloze": "この靴は歩き＿＿＿です。", "english": "These shoes are easy to walk in.", "answer": "やすい", "nudge": "靴 is the topic — the blank describes a lasting trait of these shoes, not something that happened once."},
+            {"jp_cloze": "彼の話は分かり＿＿＿です。", "english": "His talk is easy to understand.", "answer": "やすい", "nudge": "彼の話 is the topic; the blank tells you how his talk tends to come across to any listener at all."},
+            {"jp_cloze": "この皿は壊れ＿＿＿です。", "english": "This dish breaks easily.", "answer": "やすい", "nudge": "この皿 is the topic — the blank is about how the dish generally behaves, not a single accident that just happened."},
+        ],
         "family": "patterns",
     },
     {
@@ -1054,6 +1445,13 @@ N4_GRAMMAR = [
             ex("環境は変わりつつあります。", "The environment is gradually changing.", ["kankyou"]),
         ],
         "vocabulary_slugs": ["keizai", "kankyou"],
+        "cloze_variants": [
+            {"jp_cloze": "会社の仕事が増え＿＿＿。", "english": "Work at the company is on the increase.", "answer": "つつある", "nudge": "The report is watching this happen right now, not describing something already settled."},
+            {"jp_cloze": "経済が悪くなり＿＿＿。", "english": "The economy is gradually getting worse.", "answer": "つつある", "nudge": "Whatever fills this blank has to sit directly after なり — what kind of ending attaches right onto a verb stem like that?"},
+            {"jp_cloze": "世界は変わり＿＿＿。", "english": "The world is changing.", "answer": "つつある", "nudge": "A shift this large rarely finishes overnight — what ending points at something still unfolding?"},
+            {"jp_cloze": "名前を忘れ＿＿＿。", "english": "I'm gradually forgetting the name.", "answer": "つつある", "nudge": "This isn't one clean slip — it's happening bit by bit. What ending captures that drift?"},
+            {"jp_cloze": "仕事が増え＿＿＿。", "english": "Work is still increasing.", "answer": "つつある", "nudge": "Nobody here is calling this finished — the sentence is tracking something still climbing."},
+        ],
         "family": "patterns",
     },
     {
@@ -1068,6 +1466,14 @@ N4_GRAMMAR = [
             ex("さんざん悩んだあげく、諦めました。", "After much agonizing, I gave up in the end.", ["nayamu"]),
         ],
         "vocabulary_slugs": ["nayamu"],
+        "cloze_variants": [
+            {"jp_cloze": "一時間待った＿＿＿、バスは来ませんでした。", "english": "After waiting for an hour, in the end the bus never came.", "answer": "あげく", "nudge": "The bus never showed up — what word signals that the whole hour of waiting led nowhere?"},
+            {"jp_cloze": "財布を長い時間探した＿＿＿＿、見つかりませんでした。", "english": "After searching for my wallet for a long time, in the end I couldn't find it.", "answer": "あげくに", "nudge": "This version sounds more like something written than spoken aloud — what four extra syllables tacked on give it that tone?"},
+            {"jp_cloze": "何を買うか長く悩んだ＿＿＿、何も買いませんでした。", "english": "After agonizing for a long time over what to buy, in the end I bought nothing.", "answer": "あげく", "nudge": "All that agonizing over what to buy ended with an empty bag — what word ties the long struggle to that letdown?"},
+            {"jp_cloze": "財布を探した＿＿＿＿、犬のかばんの中から見つかりました。", "english": "After searching for my wallet, in the end it turned up inside the dog's bag.", "answer": "あげくに", "nudge": "Finding the wallet in a dog's bag is funny mainly because of how long and fruitless the search was first — which word signals that whole ordeal wrapped up right before this?"},
+            {"jp_cloze": "頑張った＿＿＿、困りました。", "english": "After trying so hard, in the end I was in trouble.", "answer": "あげく", "nudge": "Trying so hard and still ending up in trouble is an ironic twist — what word marks that the trouble followed right on the heels of all that struggle?"},
+            {"jp_cloze": "天気が悪くなった＿＿＿、家にいました。", "english": "After the weather kept getting worse, in the end we stayed home.", "answer": "あげく", "nudge": "The weather had to finish getting worse before the decision to stay home was made — what word shows the process was already over?"},
+        ],
         "family": "patterns",
     },
     {
@@ -1083,6 +1489,13 @@ N4_GRAMMAR = [
             ex("彼はアメリカ育ちだから、英語が上手なわけです。", "He grew up in America, so it makes sense his English is good.", ["eigo", "jouzu"]),
         ],
         "vocabulary_slugs": ["samui", "eigo", "jouzu"],
+        "cloze_variants": [
+            {"jp_cloze": "彼は毎日勉強している＿＿＿。", "english": "So he studies every day — that explains the pattern.", "answer": "わけだ", "nudge": "毎日 marks something happening over and over — is this sentence guessing about tomorrow, or describing a repeating fact?"},
+            {"jp_cloze": "今週は忙しい＿＿＿。", "english": "No wonder this week is busy.", "answer": "わけだ", "nudge": "忙しい is a plain i-adjective sitting right before the blank with nothing attached — what usually follows a plain adjective directly, with no だ in between?"},
+            {"jp_cloze": "電車が遅れた＿＿＿。", "english": "So the train was late — that's what happened.", "answer": "わけだ", "nudge": "遅れた is already past tense — is the speaker predicting a delay, or reporting one already finished?"},
+            {"jp_cloze": "彼は病気な＿＿＿。", "english": "So he's sick — that explains it.", "answer": "わけだ", "nudge": "There's a な sitting right before the blank instead of だ — which two word types usually need this な in front of things?"},
+            {"jp_cloze": "空が暗いから、雨が降る＿＿＿。", "english": "The sky's gone dark, so of course it's about to rain.", "answer": "わけだ", "nudge": "から already links the two halves of this sentence together — what job is left for the ending once this link is already made?"},
+        ],
         "family": "copula",
     },
     {
@@ -1098,6 +1511,13 @@ N4_GRAMMAR = [
             ex("こんなに簡単な問題が分からないわけがない。", "There's no way you wouldn't understand such an easy problem.", ["kantan-n4", "mondai", "wakaru"]),
         ],
         "vocabulary_slugs": ["kare", "kantan-n4", "mondai"],
+        "cloze_variants": [
+            {"jp_cloze": "弟が五分で部屋を掃除した＿＿＿。", "english": "There's no way my brother cleaned his room in five minutes.", "answer": "わけがない", "nudge": "Five minutes for a whole room — does the speaker sound convinced or doubtful?"},
+            {"jp_cloze": "猫が英語を話す＿＿＿。", "english": "There's no way a cat can speak English.", "answer": "わけがない", "nudge": "Cats and human language rarely mix — what is the speaker really saying about this cat?"},
+            {"jp_cloze": "この店のケーキが安い＿＿＿。", "english": "There's no way this shop's cake is cheap.", "answer": "わけがない", "nudge": "A fancy-looking shop and a cheap price don't usually go together — what's the reaction here?"},
+            {"jp_cloze": "元気な＿＿＿。", "english": "There's no way he's doing fine.", "answer": "わけがない", "nudge": "Skipping sleep entirely, can this person really be doing fine?"},
+            {"jp_cloze": "彼が忘れた＿＿＿。", "english": "There's no way he forgot.", "answer": "わけがない", "nudge": "Compare this to a softer guess about forgetting — how sure does this version sound?"},
+        ],
         "family": "copula",
     },
     {
@@ -1113,6 +1533,14 @@ N4_GRAMMAR = [
             ex("かなり疲れました。", "I got quite tired.", []),
         ],
         "vocabulary_slugs": ["tesuto", "muzukashii"],
+        "cloze_variants": [
+            {"jp_cloze": "今日の試験は＿＿＿難しかった。", "english": "Today's exam was quite difficult.", "answer": "かなり", "nudge": "The exam wasn't just a little hard — what word says more than expected, without exaggerating?"},
+            {"jp_cloze": "彼は＿＿＿足が速い。", "english": "He's quite a fast runner.", "answer": "かなり", "nudge": "This isn't calling him the fastest person alive — it's just noting a solid, noticeable amount of speed."},
+            {"jp_cloze": "彼女は＿＿＿親切だ。", "english": "She's quite kind.", "answer": "かなり", "nudge": "Nothing here says 'somewhat' or 'extremely' — this word lands comfortably between them."},
+            {"jp_cloze": "彼はご飯を＿＿＿食べた。", "english": "He ate quite a lot of rice.", "answer": "かなり", "nudge": "The amount he ate stands out, but nobody's complaining — which word reports it without judging?"},
+            {"jp_cloze": "彼は＿＿＿忙しいから、あまり寝ない。", "english": "He's quite busy, so he doesn't sleep much.", "answer": "かなり", "nudge": "Whatever fills this blank has to justify why he barely sleeps — a mild version of busy wouldn't cut it."},
+            {"jp_cloze": "この問題は＿＿＿難しい。", "english": "This problem is quite difficult.", "answer": "かなり", "nudge": "Compare this to a sentence ending in すぎる — this version isn't a complaint, just an honest report."},
+        ],
         "family": "patterns",
     },
     {
@@ -1128,6 +1556,13 @@ N4_GRAMMAR = [
             ex("練習すればするほど、上手になります。", "The more you practice, the better you get.", ["renshuu-suru", "jouzu"]),
         ],
         "vocabulary_slugs": ["kare", "ganbaru", "renshuu-suru"],
+        "cloze_variants": [
+            {"jp_cloze": "これはそれ＿＿＿難しくない", "english": "This one isn't as difficult as that one.", "answer": "ほど", "nudge": "What word turns それ into a comparison point instead of just naming it?"},
+            {"jp_cloze": "頭が痛くなる＿＿＿勉強した", "english": "I studied until my head started to hurt.", "answer": "ほど", "nudge": "The clause before the blank shows how far things got — what links it to the studying?"},
+            {"jp_cloze": "声が出ない＿＿＿笑った", "english": "I laughed until my voice gave out.", "answer": "ほど", "nudge": "One word shows how hard the laughing hit — which is it?"},
+            {"jp_cloze": "練習すればする＿＿＿上手になる", "english": "The more you practice, the better you get.", "answer": "ほど", "nudge": "The verb repeats in two forms right before this blank — what word caps the pair?"},
+            {"jp_cloze": "話せば話す＿＿＿楽しくなる", "english": "The more we talk, the more fun it gets.", "answer": "ほど", "nudge": "Same doubled-verb setup as before — what single word follows it here?"},
+        ],
         "family": "particles",
     },
     {
@@ -1143,6 +1578,13 @@ N4_GRAMMAR = [
             ex("死ぬくらい疲れました。", "I'm tired to death (extremely tired).", []),
         ],
         "vocabulary_slugs": ["ureshii"],
+        "cloze_variants": [
+            {"jp_cloze": "駅まで五分＿＿＿かかります。", "english": "It takes about five minutes to get to the station.", "answer": "くらい", "nudge": "Five minutes isn't stated as exact here — what word turns it into a ballpark?"},
+            {"jp_cloze": "頭が痛くなる＿＿＿忙しかった。", "english": "I was busy enough that my head started to hurt.", "answer": "くらい", "nudge": "What's connecting the headache to just how busy the day got?"},
+            {"jp_cloze": "これ＿＿＿の雨なら傘は要らない。", "english": "If it's only about this much rain, you don't need an umbrella.", "answer": "くらい", "nudge": "The speaker is downplaying the rain — what word does this shrinking?"},
+            {"jp_cloze": "少し＿＿＿手伝ってくれてもいい。", "english": "You could at least help a little.", "answer": "くらい", "nudge": "This request sounds like it's asking for the bare minimum — what word gives it this edge?"},
+            {"jp_cloze": "千円＿＿＿で新しい傘が買えます。", "english": "You can buy a new umbrella for about a thousand yen.", "answer": "ぐらい", "nudge": "What comes right after the price to say it's not a precise figure?"},
+        ],
         "family": "particles",
     },
     {
@@ -1158,6 +1600,14 @@ N4_GRAMMAR = [
             ex("彼は頭がいいだけでなく、優しいです。", "He's not only smart, but also kind.", ["kare", "yasashii-n4"]),
         ],
         "vocabulary_slugs": ["eigo", "kare", "yasashii-n4"],
+        "cloze_variants": [
+            {"jp_cloze": "このレストランは安い＿＿＿、おいしいです。", "english": "This restaurant isn't only cheap — it's delicious too.", "answer": "だけでなく", "nudge": "Price and taste show up as two separate qualities here — what connects them together?"},
+            {"jp_cloze": "日本語は難しい＿＿＿、面白い。", "english": "Japanese isn't only difficult — it's interesting too.", "answer": "だけでなく", "nudge": "Difficulty and interest sit side by side in this line — what joins the two ideas?"},
+            {"jp_cloze": "彼は先生＿＿＿、医者でもあります。", "english": "He isn't only a teacher — he's also a doctor.", "answer": "だけでなく", "nudge": "He's holding down two roles in this sentence — what phrase introduces the second one?"},
+            {"jp_cloze": "彼は親切な＿＿＿、有名だ。", "english": "He isn't only kind — he's also famous.", "answer": "だけでなく", "nudge": "Kindness and fame are stacked back to back here — what links the two traits?"},
+            {"jp_cloze": "高い＿＿＿、まずい。", "english": "It's not only expensive — it's bad-tasting too.", "answer": "だけじゃなく", "nudge": "This one sounds clipped and casual — what shortened piece is standing in for the usual phrase?"},
+            {"jp_cloze": "今日は忙しい＿＿＿、宿題も多い。", "english": "Today isn't only busy — there's a lot of homework too.", "answer": "だけでなく", "nudge": "Being busy and having a lot of homework are named right next to each other — what ties these two facts together?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1172,6 +1622,13 @@ N4_GRAMMAR = [
             ex("日本に限らず、世界中で人気があります。", "It's popular not just in Japan, but worldwide.", ["nihon", "sekai"]),
         ],
         "vocabulary_slugs": ["nihon", "sekai"],
+        "cloze_variants": [
+            {"jp_cloze": "残業は会社＿＿＿、銀行でも多いです。", "english": "Overtime isn't limited to companies — it's common at banks too.", "answer": "に限らず", "nudge": "銀行でも sits at the end — what is that でも adding on top of 会社?"},
+            {"jp_cloze": "動物が好きなのは女の子＿＿＿、男の子も好きです。", "english": "Liking animals isn't limited to girls — boys like them too.", "answer": "に限らず", "nudge": "男の子も好きです closes the sentence — what job is that も doing next to 女の子?"},
+            {"jp_cloze": "忙しいのは会社員＿＿＿、学生も忙しいです。", "english": "Being busy isn't limited to office workers — students are busy too.", "answer": "に限らず", "nudge": "Two groups get called 忙しい here — which one comes first, and which one carries the も?"},
+            {"jp_cloze": "病気になるのは大人＿＿＿、子供もなります。", "english": "Getting sick isn't limited to adults — children get sick too.", "answer": "に限らず", "nudge": "子供もなります repeats なる from earlier in the sentence — what does that repetition tell you about 大人?"},
+            {"jp_cloze": "環境問題は日本＿＿＿、世界の問題です。", "english": "Environmental problems aren't limited to Japan — they're a global issue.", "answer": "に限らず", "nudge": "世界の問題です is the payoff at the end — how does it connect back to 日本?"},
+        ],
         "family": "particles",
     },
     {
@@ -1186,6 +1643,13 @@ N4_GRAMMAR = [
             ex("便利な一方で、値段が高いです。", "It's convenient, but on the other hand, it's expensive.", ["benri"]),
         ],
         "vocabulary_slugs": ["benri"],
+        "cloze_variants": [
+            {"jp_cloze": "兄はよく働く＿＿＿、弟はあまり働かない。", "english": "My older brother works a lot; my younger brother, on the other hand, doesn't work much.", "answer": "一方で", "nudge": "Notice both halves use the same verb — what turns 'works a lot' into a setup for 'doesn't work much'?"},
+            {"jp_cloze": "部屋は広い＿＿＿、駅から遠いです。", "english": "The room is spacious, but on the other hand it's far from the station.", "answer": "一方で", "nudge": "Two facts about the same room sit side by side here — what links a good point to a less convenient one?"},
+            {"jp_cloze": "兄は料理が上手な＿＿＿、妹は下手です。", "english": "My older brother is good at cooking, but on the other hand my younger sister is bad at it.", "answer": "一方で", "nudge": "This blank comes right after な — what kind of describing word needs that な glued on first?"},
+            {"jp_cloze": "その店は安い＿＿＿、あまりきれいじゃない。", "english": "That shop is cheap, but on the other hand it's not very clean.", "answer": "一方で", "nudge": "A cheap price and a messy shop rarely show up together — what phrase pairs an upside with a downside here?"},
+            {"jp_cloze": "姉は真面目な＿＿＿、厳しいです。", "english": "My older sister is serious, but on the other hand she's strict.", "answer": "一方で", "nudge": "Two traits about one person, joined mid-sentence — what's doing that joining work here?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1200,6 +1664,12 @@ N4_GRAMMAR = [
             ex("私にとって、家族が一番大切です。", "For me, family is the most important.", ["kazoku", "ichiban"]),
         ],
         "vocabulary_slugs": ["kazoku", "ichiban"],
+        "cloze_variants": [
+            {"jp_cloze": "この映画は君＿＿＿面白い。", "english": "This movie is interesting to you.", "answer": "にとって", "nudge": "君 isn't the thing being rated here — the movie is. What role does 君 play in this sentence?"},
+            {"jp_cloze": "私＿＿＿、日本語の勉強は大変だ。", "english": "Studying Japanese is tough for me.", "answer": "にとって", "nudge": "Read this as a claim about 私, or a claim about 日本語の勉強 — which one does the sentence actually rate as tough?"},
+            {"jp_cloze": "この仕事は彼＿＿＿簡単だ。", "english": "This job is easy for him.", "answer": "にとって", "nudge": "Same job, but different people might rate its difficulty differently — whose rating does 彼 give here?"},
+            {"jp_cloze": "この問題は学生だけでなく、先生＿＿＿も難しい。", "english": "This problem is hard not only for the students, but for the teacher too.", "answer": "にとって", "nudge": "だけでなく already covered the students — who does this second half add to the group finding it hard?"},
+        ],
         "family": "particles",
     },
     {
@@ -1214,6 +1684,13 @@ N4_GRAMMAR = [
             ex("この件に関して、質問があります。", "Regarding this matter, I have a question.", ["shitsumon"]),
         ],
         "vocabulary_slugs": ["shitsumon"],
+        "cloze_variants": [
+            {"jp_cloze": "経済＿＿＿、説明します。", "english": "I'll explain regarding the economy.", "answer": "に関して", "nudge": "What comes right after 経済 here — is it setting up the topic, or comparing two things?"},
+            {"jp_cloze": "経済＿＿＿問題があります。", "english": "There are problems regarding the economy.", "answer": "に関する", "nudge": "Look at what follows the blank — is it a full sentence ending, or another noun like 問題?"},
+            {"jp_cloze": "会議で、部長は文化＿＿＿質問した。", "english": "At the meeting, the department head asked a question about culture.", "answer": "に関して", "nudge": "The department head is asking something specific — what word is doing the pointing toward 文化?"},
+            {"jp_cloze": "環境＿＿＿、色々な意見があります。", "english": "There are various opinions regarding the environment.", "answer": "に関して", "nudge": "色々な意見 belongs to some subject — what links 環境 to the rest of the sentence?"},
+            {"jp_cloze": "経済＿＿＿、専門家に聞きます。", "english": "Regarding the economy, I'll ask a specialist.", "answer": "に関して", "nudge": "The speaker isn't asking the economy itself anything — so what is 経済 doing in this sentence?"},
+        ],
         "family": "particles",
     },
     {
@@ -1229,6 +1706,13 @@ N4_GRAMMAR = [
             ex("そういう人は好きじゃないです。", "I don't like that kind of person.", ["suki"]),
         ],
         "vocabulary_slugs": ["mondai", "muzukashii", "suki"],
+        "cloze_variants": [
+            {"jp_cloze": "＿＿＿話は聞きたくない。", "english": "I don't want to hear that kind of talk.", "answer": "そういう", "nudge": "Nothing separates the blank from 話 — no particle ever goes between them."},
+            {"jp_cloze": "＿＿＿天気は苦手だ。", "english": "I'm no good with this kind of weather.", "answer": "こういう", "nudge": "The weather being talked about is happening right now, around the speaker, not something described secondhand."},
+            {"jp_cloze": "＿＿＿人には会いたくない。", "english": "I don't want to meet that kind of person.", "answer": "ああいう", "nudge": "The person described here is neither nearby nor already mentioned in the conversation — think about who's being pointed at and from how far."},
+            {"jp_cloze": "彼は＿＿＿人だ。", "english": "He's that kind of person.", "answer": "そういう", "nudge": "彼 is being placed into a group the speaker already has in mind, probably from something just described about him."},
+            {"jp_cloze": "＿＿＿話は前からあった。", "english": "This kind of story has been around for a while.", "answer": "こういう", "nudge": "The story being pointed at is the one right in front of the listener, happening now, not one far off."},
+        ],
         "family": "patterns",
     },
     {
@@ -1244,6 +1728,14 @@ N4_GRAMMAR = [
             ex("明日雨が降るって聞きました。", "I heard it's going to rain tomorrow.", ["ashita", "furu-rain"]),
         ],
         "vocabulary_slugs": ["yasashii-n4", "ashita", "furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "兄が忙しい＿＿＿言ってた。", "english": "My older brother said he's busy.", "answer": "って", "nudge": "What tiny word turns 忙しい into something your brother reportedly said?"},
+            {"jp_cloze": "それ＿＿＿面白い？", "english": "Is that thing interesting?", "answer": "って", "nudge": "This isn't それは — what changed, and what feeling does it add?"},
+            {"jp_cloze": "これ＿＿＿面白いよね。", "english": "This is interesting, right?", "answer": "って", "nudge": "Read this out loud — does it sound like a textbook sentence or a chat with a friend?"},
+            {"jp_cloze": "あれ＿＿＿難しい？", "english": "Is that thing over there hard?", "answer": "って", "nudge": "Compare this to the version that names whose difficulty it is — whose viewpoint disappeared here?"},
+            {"jp_cloze": "学校を休む＿＿＿言った。", "english": "He said he'd skip school.", "answer": "って", "nudge": "と言った means the same thing — what changes is only how it sounds, not what happened."},
+            {"jp_cloze": "先生が優しい＿＿＿。", "english": "The teacher is kind, they say.", "answer": "って", "nudge": "No follow-up verb here — can the missing word carry that meaning by itself?"},
+        ],
         "family": "particles",
     },
     {
@@ -1258,6 +1750,14 @@ N4_GRAMMAR = [
             ex("もう、太郎ったら、また忘れたの。", "Ugh, Taro, you forgot again?", ["wasureru"]),
         ],
         "vocabulary_slugs": ["wasureru"],
+        "cloze_variants": [
+            {"jp_cloze": "兄＿＿＿、話を聞いてない。", "english": "My brother, seriously, isn't listening to what I'm saying.", "answer": "ったら", "nudge": "What's sitting directly after 兄 with nothing in between — what kind of word attaches straight onto a name like that?"},
+            {"jp_cloze": "彼＿＿＿、いつも宿題を忘れる。", "english": "Him, honestly, he always forgets his homework.", "answer": "ったら", "nudge": "There's no を or は between 彼 and the blank — what kind of word can attach straight onto a person that way?"},
+            {"jp_cloze": "分かった＿＿＿。", "english": "I said I get it.", "answer": "ってば", "nudge": "This is a full sentence the speaker has already said once before — what gets tacked on when someone repeats themselves?"},
+            {"jp_cloze": "要らない＿＿＿。", "english": "I said I don't need it.", "answer": "ってば", "nudge": "Nothing new is being announced here — the claim was already made once. What follows a plain-form statement being restated?"},
+            {"jp_cloze": "猫がまた花を壊した＿＿＿。", "english": "I said the cat broke the flower again.", "answer": "ってば", "nudge": "また tells you this isn't the first time it happened — what comes after 壊した when the speaker is reminding someone who didn't listen the first time?"},
+            {"jp_cloze": "友達＿＿＿、また遅刻した。", "english": "My friend, honestly, was late again.", "answer": "ってば", "nudge": "Compare this to a flat って report — what extra piece turns a neutral mention of a friend into a complaint about them?"},
+        ],
         "family": "particles",
     },
     {
@@ -1273,6 +1773,13 @@ N4_GRAMMAR = [
             ex("これでいいかどうか、確認してください。", "Please check whether this is okay or not.", []),
         ],
         "vocabulary_slugs": ["kare", "kuru-v"],
+        "cloze_variants": [
+            {"jp_cloze": "友達が来る＿＿＿分からない。", "english": "I don't know whether my friend is coming or not.", "answer": "かどうか", "nudge": "来る is left sitting in its plain dictionary form right before the gap — what two-part expression usually follows a plain verb to leave things open like that?"},
+            {"jp_cloze": "明日雨が降る＿＿＿分からない。", "english": "I don't know whether it will rain tomorrow or not.", "answer": "かどうか", "nudge": "降る keeps its plain form here too, and this sentence isn't answering the weather question — it's holding it open. What fills that gap?"},
+            {"jp_cloze": "彼が学生＿＿＿分からない。", "english": "I don't know whether he is a student or not.", "answer": "かどうか", "nudge": "学生 has no だ sitting in front of the gap here — a noun sheds that copula right before this particular expression. Which one?"},
+            {"jp_cloze": "試験に合格した＿＿＿、まだ分からない。", "english": "I still don't know whether I passed the exam or not.", "answer": "かどうか", "nudge": "合格した is past tense, so the outcome already happened — the speaker just hasn't heard it yet. What phrase marks that gap in their knowledge?"},
+            {"jp_cloze": "でも、友達が本当に来る＿＿＿分からない。", "english": "But I still don't know whether my friend is really coming or not.", "answer": "かどうか", "nudge": "本当に is pulling extra weight, stressing genuine doubt despite what was said earlier — what expression right after 来る captures that open question?"},
+        ],
         "family": "particles",
     },
     {
@@ -1287,6 +1794,14 @@ N4_GRAMMAR = [
             ex("お茶か何か飲みませんか。", "Won't you drink some tea or something?", ["ocha"]),
         ],
         "vocabulary_slugs": ["ocha"],
+        "cloze_variants": [
+            {"jp_cloze": "映画＿＿＿見ない？", "english": "Want to watch a movie or something?", "answer": "か何か", "nudge": "映画 is just one guess at what you might watch tonight — what would let the speaker swap it for 音楽 without changing the tone?"},
+            {"jp_cloze": "コーヒー＿＿＿飲みますか。", "english": "Would you like coffee or something?", "answer": "か何か", "nudge": "There's no を before the blank — what fills that same slot instead?"},
+            {"jp_cloze": "机の上に紙＿＿＿ありますか。", "english": "Is there paper or something on the desk?", "answer": "か何か", "nudge": "The desk doesn't need paper specifically — any writable item would answer yes. What phrase keeps that door open?"},
+            {"jp_cloze": "弟に本＿＿＿買ってあげよう。", "english": "I'll buy my younger brother a book or something.", "answer": "か何か", "nudge": "The gift-giver hasn't actually chosen a book yet — what tells you the choice is still loose?"},
+            {"jp_cloze": "忙しいから、甘いもの＿＿＿食べたい。", "english": "I'm busy, so I want to eat something sweet or whatever.", "answer": "か何か", "nudge": "甘いもの already names a category, but the blank turns it into just one possibility among several — what marks that?"},
+            {"jp_cloze": "公園で音楽＿＿＿聞きたい。", "english": "I want to listen to music or something in the park.", "answer": "か何か", "nudge": "音楽 could just as easily end up being a podcast or the radio — what phrase signals that flexibility?"},
+        ],
         "family": "particles",
     },
     {
@@ -1301,6 +1816,13 @@ N4_GRAMMAR = [
             ex("りんごとかバナナとかが好きです。", "I like things like apples and bananas.", []),
         ],
         "vocabulary_slugs": [],
+        "cloze_variants": [
+            {"jp_cloze": "週末は映画＿＿＿買い物＿＿＿したいです。", "english": "I want to do things like watch a movie or go shopping this weekend.", "answer": "とか", "nudge": "Two weekend activities are named here without either one sounding final or settled — what's doing that?"},
+            {"jp_cloze": "週末はテレビ＿＿＿見ます。", "english": "This weekend I'll watch stuff like TV, among other things.", "answer": "とか", "nudge": "Only one noun shows up, yet the sentence still hints there's more than just TV planned — what word carries that hint?"},
+            {"jp_cloze": "果物＿＿＿野菜＿＿＿が体にいいです。", "english": "Things like fruit and vegetables are good for your body.", "answer": "とか", "nudge": "が is marking the subject of this sentence — but is that subject really only two specific foods, or something wider?"},
+            {"jp_cloze": "明日は映画＿＿＿テレビ＿＿＿見ませんか。", "english": "Want to watch stuff like a movie or TV tomorrow?", "answer": "とか", "nudge": "This invitation names two options rather than settling on one — compare it with an invitation that only vaguely names one thing."},
+            {"jp_cloze": "寿司＿＿＿ラーメン＿＿＿、そういう料理が好きです。", "english": "I like that kind of food — sushi, ramen, things along those lines.", "answer": "とか", "nudge": "そういう at the end is pointing back at a category — what earlier in the sentence built that category out of specific dishes?"},
+        ],
         "family": "particles",
     },
     {
@@ -1315,6 +1837,14 @@ N4_GRAMMAR = [
             ex("便利な反面、危険もあります。", "While it's convenient, there's also danger.", ["benri", "kiken"]),
         ],
         "vocabulary_slugs": ["benri", "kiken"],
+        "cloze_variants": [
+            {"jp_cloze": "彼女の新しい仕事は給料がいい＿＿＿、休暇が短い。", "english": "Her new job pays well, but the flip side is that vacation is short.", "answer": "反面", "nudge": "Good pay and a short vacation are both true about one job — what usually links a plus and a minus for a single thing?"},
+            {"jp_cloze": "この店の料理はおいしい＿＿＿、値段が高い。", "english": "This restaurant's food is delicious, but on the other hand the price is high.", "answer": "反面", "nudge": "Delicious food and a high price are both said about this restaurant — what connects a nice trait to a costly one?"},
+            {"jp_cloze": "この町は便利な＿＿＿、人が多い。", "english": "This town is convenient, but on the other hand there are a lot of people.", "answer": "反面", "nudge": "Convenient and crowded are both about this town — what marks the second fact as the cost of the first?"},
+            {"jp_cloze": "彼は日本語を話せる＿＿＿、書くのが苦手だ。", "english": "He can speak Japanese, but on the other hand he's bad at writing.", "answer": "反面", "nudge": "He's strong at speaking and weak at writing — one person, two opposite skills. What ties them together?"},
+            {"jp_cloze": "彼女はお酒を飲まない＿＿＿、よく食べる。", "english": "She doesn't drink alcohol, but on the other hand she eats a lot.", "answer": "反面", "nudge": "Skipping alcohol and eating plenty are two separate habits of hers, set side by side — what links them?"},
+            {"jp_cloze": "彼の仕事は忙しい＿＿＿、楽しい。", "english": "His job is busy, but on the flip side, it's fun.", "answer": "反面", "nudge": "Busy and fun aren't usually paired for one job, yet both are said here about it — what's doing that pairing?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1329,6 +1859,13 @@ N4_GRAMMAR = [
             ex("晴れると思いました。ところが、雨が降りました。", "I thought it would be sunny. However, it rained.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "新しい靴を買った。とても安かった。＿＿＿、すぐに壊れた。", "english": "I bought new shoes. They were very cheap. However, they broke right away.", "answer": "ところが", "nudge": "The shoes were cheap and fine at first — what word turns that good start into a letdown?"},
+            {"jp_cloze": "新しいレストランに行った。料理はおいしかった。＿＿＿、値段がとても高かった。", "english": "I went to a new restaurant. The food was delicious. However, the price was very expensive.", "answer": "ところが", "nudge": "The food already earned its praise — what kind of word opens a sentence that takes something back?"},
+            {"jp_cloze": "友達を駅で待った。＿＿＿、友達は来なかった。", "english": "I waited for my friend at the station. However, my friend didn't come.", "answer": "ところが", "nudge": "Waiting itself isn't the twist here — what happens right after the comma is."},
+            {"jp_cloze": "兄はいつも厳しい。＿＿＿、今日は優しかった。", "english": "My older brother is always strict. However, today he was kind.", "answer": "ところが", "nudge": "いつも sets up his usual pattern — what word flips it just for today?"},
+            {"jp_cloze": "手紙を送った。＿＿＿、届かなかった。", "english": "I sent a letter. However, it didn't arrive.", "answer": "ところが", "nudge": "Sending is supposed to end in arrival — what word marks the plan going sideways?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1343,6 +1880,14 @@ N4_GRAMMAR = [
             ex("雨が降っていました。それでも、出かけました。", "It was raining. Even so, I went out.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["furu-rain"],
+        "cloze_variants": [
+            {"jp_cloze": "兄は熱があった。＿＿＿仕事に行った。", "english": "My older brother had a fever. Even so, he went to work.", "answer": "それでも", "nudge": "The first sentence names a fever — what would you expect that to stop from happening next?"},
+            {"jp_cloze": "雨が降っていた。＿＿＿兄は散歩した。", "english": "It was raining. Even so, my brother went for a walk.", "answer": "それでも", "nudge": "Rain usually keeps people inside — did it keep him inside here?"},
+            {"jp_cloze": "兄は薬を飲んだが、＿＿＿熱は下がらなかった。", "english": "My brother took his medicine, but even then his fever didn't go down.", "answer": "それでも", "nudge": "The medicine already happened by the time this word shows up — what's it responding to?"},
+            {"jp_cloze": "先生は説明を三回した。＿＿＿私は意味が分からなかった。", "english": "The teacher explained it three times. Even so, I didn't understand the meaning.", "answer": "それでも", "nudge": "Three explanations is a lot of effort — what result would that normally produce?"},
+            {"jp_cloze": "天気は悪かった。＿＿＿私たちは公園を歩いた。", "english": "The weather was bad. Even so, we walked through the park.", "answer": "それでも", "nudge": "Compare this to a plain but-sentence — is the walk here a normal reaction to the weather, or a stubborn one?"},
+            {"jp_cloze": "薬を飲んだ。＿＿＿熱は下がらなかった。", "english": "I took the medicine. Even so, my fever didn't go down.", "answer": "それでも", "nudge": "Is the fever staying high a shock twist, or the outcome everyone half-expected already?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1357,6 +1902,13 @@ N4_GRAMMAR = [
             ex("道が分かりませんでした。そこで、地図を見ました。", "I didn't know the way. So I looked at a map.", ["michi-v", "chizu"]),
         ],
         "vocabulary_slugs": ["michi-v", "chizu"],
+        "cloze_variants": [
+            {"jp_cloze": "雨が降った。＿＿＿、近くの喫茶店に入った。", "english": "It rained. So I went into a nearby coffee shop.", "answer": "そこで", "nudge": "Notice the weather changes in sentence one — what word marks the moment that turns into a decision in sentence two?"},
+            {"jp_cloze": "宿題の意味が分からなかった。＿＿＿、先生に聞いた。", "english": "I didn't understand what the homework meant. So I asked the teacher.", "answer": "そこで", "nudge": "The blank sits right where confusion turns into asking the teacher for help — what phrase bridges those two beats?"},
+            {"jp_cloze": "頭が痛かった。＿＿＿、薬を飲んだ。", "english": "My head hurt. So I took some medicine.", "answer": "そこで", "nudge": "Read the two sentences as one small story: a symptom, then a response. What opens the second sentence?"},
+            {"jp_cloze": "電車が遅れた。＿＿＿、タクシーに乗った。", "english": "The train was late. So I took a taxi.", "answer": "そこで", "nudge": "The train problem and the taxi are two separate sentences here — what connects them into cause and consequence?"},
+            {"jp_cloze": "天気が悪かった。＿＿＿、傘を持って出かけた。", "english": "The weather was bad. So I took an umbrella and went out.", "answer": "そこで", "nudge": "The speaker reacts to the weather by grabbing something before leaving — what word signals that shift?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1371,6 +1923,13 @@ N4_GRAMMAR = [
             ex("台風が来ました。そのため、電車が止まりました。", "A typhoon came. Because of that, trains stopped.", ["taifuu", "densha"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha"],
+        "cloze_variants": [
+            {"jp_cloze": "電車が遅れた。＿＿＿、会議に遅刻した。", "english": "The train was delayed. Because of that, I was late to the meeting.", "answer": "そのため", "nudge": "The delay already happened — what links it to being late, without adding a new fact?"},
+            {"jp_cloze": "風邪をひいた。＿＿＿、学校を休んだ。", "english": "I caught a cold. Because of that, I stayed home from school.", "answer": "そのため", "nudge": "Both halves are simply reporting what happened — nothing here suggests a deliberate choice."},
+            {"jp_cloze": "財布をなくしました。＿＿＿、お金がありませんでした。", "english": "I lost my wallet. Because of that, I didn't have any money.", "answer": "そのため", "nudge": "This whole exchange stays polite throughout — what word stays exactly the same either way?"},
+            {"jp_cloze": "雨が降った。＿＿＿、服が濡れた。", "english": "It rained. Because of that, my clothes got wet.", "answer": "そのため", "nudge": "Nobody decided for the clothes to get wet — what kind of link joins these two sentences?"},
+            {"jp_cloze": "頭が痛かった。＿＿＿、薬を飲んだ。", "english": "My head hurt. Because of that, I took some medicine.", "answer": "そのため", "nudge": "One sentence names a state, the other names an action taken afterward — what joins them?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1385,6 +1944,13 @@ N4_GRAMMAR = [
             ex("ドアを開けました。すると、猫が入ってきました。", "I opened the door. Then a cat came in.", ["neko"]),
         ],
         "vocabulary_slugs": ["neko"],
+        "cloze_variants": [
+            {"jp_cloze": "窓を開けた。＿＿＿雨が降っていた。", "english": "I opened the window. Then it was raining.", "answer": "すると", "nudge": "The first half is about a window; the second is about weather with no link word yet — what fills that gap?"},
+            {"jp_cloze": "家に帰った。＿＿＿猫が机の上で寝ていた。", "english": "I went home. Then the cat was sleeping on the desk.", "answer": "すると", "nudge": "The subject of the first clause is you, but the desk scene belongs entirely to the cat — what carries you from one to the other?"},
+            {"jp_cloze": "猫の名前を呼んだ。＿＿＿猫が起きた。", "english": "I called the cat's name. Then the cat woke up.", "answer": "すると", "nudge": "One action is yours, the next is the cat's own reaction to it — what small word joins them into a single scene?"},
+            {"jp_cloze": "毎朝、電気をつける。＿＿＿猫が起きる。", "english": "Every morning I turn on the light. Then the cat wakes up.", "answer": "すると", "nudge": "Both verbs here are in the same everyday, repeating tense — what word ties this into a routine, not a one-time story?"},
+            {"jp_cloze": "友達を呼んだ。＿＿＿友達が来た。", "english": "I called my friend. Then my friend came.", "answer": "すると", "nudge": "Two separate people take two separate actions here — what word marks the handoff between them?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1399,6 +1965,14 @@ N4_GRAMMAR = [
             ex("土曜日以外は毎日働いています。", "I work every day except Saturday.", ["doyoubi", "hataraku"]),
         ],
         "vocabulary_slugs": ["doyoubi", "hataraku"],
+        "cloze_variants": [
+            {"jp_cloze": "私＿＿＿みんな来ます。", "english": "Everyone except me is coming.", "answer": "以外は", "nudge": "Who exactly is 私 being separated from here — think about what みんな is covering."},
+            {"jp_cloze": "泳ぐこと＿＿＿、スポーツが苦手です。", "english": "Other than swimming, I'm bad at sports.", "answer": "以外", "nudge": "こと just turned 泳ぐ into a noun right before the blank — why would that matter for what follows?"},
+            {"jp_cloze": "音楽＿＿＿趣味がありません。", "english": "I don't have a hobby besides music.", "answer": "以外に", "nudge": "ありません is negative — what does that do to everything sitting in front of the blank?"},
+            {"jp_cloze": "日本語＿＿＿英語も話せます。", "english": "Besides Japanese, I can also speak English.", "answer": "以外に", "nudge": "も after 英語 is adding something — what earlier word sets up that addition?"},
+            {"jp_cloze": "土曜日＿＿＿毎日勉強します。", "english": "I study every day except Saturday.", "answer": "以外は", "nudge": "毎日 already claims every single day — what carves one day back out of that?"},
+            {"jp_cloze": "彼＿＿＿誰も知りません。", "english": "No one knows except him.", "answer": "以外は", "nudge": "誰も…ません already means nobody — who gets pulled back out of that nobody?"},
+        ],
         "family": "particles",
     },
     {
@@ -1413,6 +1987,13 @@ N4_GRAMMAR = [
             ex("卒業して以来、会っていません。", "I haven't met them since graduating.", ["sotsugyou-suru"]),
         ],
         "vocabulary_slugs": ["sotsugyou-suru"],
+        "cloze_variants": [
+            {"jp_cloze": "日本に来て＿＿＿、毎日忙しいです。", "english": "Ever since I came to Japan, I've been busy every day.", "answer": "以来", "nudge": "来て gives the moment of arrival — what word says everything after it has stayed true?"},
+            {"jp_cloze": "卒業して＿＿＿、先生に会っていません。", "english": "I haven't seen my teacher since I graduated.", "answer": "以来", "nudge": "卒業して is the graduation moment — what marks it as day one of the not-seeing-him stretch?"},
+            {"jp_cloze": "先月＿＿＿、病気です。", "english": "I've been sick since last month.", "answer": "以来", "nudge": "There's no て-form here, just a noun before the blank — what noun-attaching word points at last month as the start?"},
+            {"jp_cloze": "結婚して＿＿＿、毎日料理をしています。", "english": "Ever since I got married, I've been cooking every day.", "answer": "以来", "nudge": "結婚して marks the wedding — what word makes every day of cooking flow from that point forward?"},
+            {"jp_cloze": "子供が生まれて＿＿＿、あまり寝ていません。", "english": "Ever since our child was born, I haven't slept much.", "answer": "以来", "nudge": "生まれて is the birth — what word stretches the sleepless nights from that day up to now?"},
+        ],
         "family": "particles",
     },
     {
@@ -1427,6 +2008,13 @@ N4_GRAMMAR = [
             ex("兄は静かです。反対に、弟はにぎやかです。", "My older brother is quiet. Conversely, my younger brother is lively.", ["shizuka", "nigiyaka"]),
         ],
         "vocabulary_slugs": ["shizuka", "nigiyaka"],
+        "cloze_variants": [
+            {"jp_cloze": "今日は暑いと思った。＿＿＿、とても寒かった。", "english": "I thought today would be hot. On the contrary, it was very cold.", "answer": "反対に", "nudge": "The first sentence guesses hot — does the second sentence agree with that guess or turn out the opposite?"},
+            {"jp_cloze": "彼は忙しいと言ったが、＿＿＿暇だった。", "english": "He said he was busy, but on the contrary he was free.", "answer": "反対に", "nudge": "He claims one thing about himself first — check whether 暇だった matches that claim or flips it."},
+            {"jp_cloze": "テストは簡単だと思ったが、＿＿＿とても難しかった。", "english": "I thought the test would be easy, but on the contrary it was very difficult.", "answer": "反対に", "nudge": "簡単 and 難しい sit on opposite ends — which word in the blank signals that kind of flip?"},
+            {"jp_cloze": "雨が降ると思った。＿＿＿、いい天気になった。", "english": "I thought it would rain. On the contrary, it turned into good weather.", "answer": "反対に", "nudge": "Rain was expected — look at what actually happened to the weather in the second sentence."},
+            {"jp_cloze": "彼女はやさしいと思った。＿＿＿、とても厳しかった。", "english": "I thought she was kind. On the contrary, she was very strict.", "answer": "反対に", "nudge": "Her personality was guessed one way — does the outcome confirm that guess or contradict it?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1441,6 +2029,13 @@ N4_GRAMMAR = [
             ex("今年こそ、日本語を頑張ります。", "This year for sure, I'll work hard at Japanese.", ["kotoshi", "nihongo", "ganbaru"]),
         ],
         "vocabulary_slugs": ["kotoshi", "nihongo", "ganbaru"],
+        "cloze_variants": [
+            {"jp_cloze": "あなた＿＿＿頑張りました。", "english": "You're the one who really worked hard.", "answer": "こそ", "nudge": "The speaker is correcting who deserves credit here — what comes right after あなた to make that correction?"},
+            {"jp_cloze": "彼＿＿＿本当の友達です。", "english": "He is a true friend, if anyone is.", "answer": "こそ", "nudge": "彼 already names who the sentence is about — what word right after him rules out any other candidate?"},
+            {"jp_cloze": "忙しいから＿＿＿、休みたい。", "english": "Precisely because I'm busy, I want to rest.", "answer": "こそ", "nudge": "から already supplies the reason — what two characters right after it push back on the idea that busy people can't rest?"},
+            {"jp_cloze": "彼女＿＿＿真面目です。", "english": "She is the one who's genuinely diligent.", "answer": "こそ", "nudge": "Imagine someone doubted 彼女's diligence — what word after her name shuts that doubt down?"},
+            {"jp_cloze": "今日＿＿＿忙しいです。", "english": "Today, of all days, is busy.", "answer": "こそ", "nudge": "Compare this to 今日は忙しいです — what word right after 今日 makes it sound like today broke a pattern?"},
+        ],
         "family": "particles",
     },
     {
@@ -1455,6 +2050,14 @@ N4_GRAMMAR = [
             ex("子供さえ分かります。", "Even a child can understand.", ["kodomo-v", "wakaru"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "wakaru"],
+        "cloze_variants": [
+            {"jp_cloze": "私は忙しくて朝ご飯を食べる時間＿＿＿なかった。", "english": "I was so busy I didn't even have time to eat breakfast.", "answer": "さえ", "nudge": "Look at 時間 — what particle would normally sit right after it, and where did it go?"},
+            {"jp_cloze": "彼は漢字＿＿＿知らない。", "english": "He doesn't even know kanji.", "answer": "さえ", "nudge": "Kanji is about as basic as it gets for him — what's the blank doing to that fact?"},
+            {"jp_cloze": "彼女はお金＿＿＿持っていない。", "english": "She doesn't even have money.", "answer": "さえも", "nudge": "This one leans harder than the plain version — what's the longer form of the blank?"},
+            {"jp_cloze": "友達は私の名前＿＿＿忘れた。", "english": "My friend even forgot my name.", "answer": "さえ", "nudge": "Your own name is the last thing a friend should lose track of — what word points at that?"},
+            {"jp_cloze": "そのテストは簡単で、子供＿＿＿分かった。", "english": "That test was easy; even a child understood it.", "answer": "さえ", "nudge": "A child is the person you'd least expect to get it — what's marking them here instead of が?"},
+            {"jp_cloze": "今週は忙しくて、電話＿＿＿かけなかった。", "english": "This week I was so busy that I didn't even make a phone call.", "answer": "さえ", "nudge": "A phone call is about the smallest task on the list — what word is sitting where を used to be?"},
+        ],
         "family": "particles",
     },
     {
@@ -1472,6 +2075,13 @@ N4_GRAMMAR = [
             ex("お金さえあれば、幸せです。", "As long as I have money, I'm happy.", ["okane", "shiawase"]),
         ],
         "vocabulary_slugs": ["okane", "shiawase"],
+        "cloze_variants": [
+            {"jp_cloze": "お金＿＿＿あれば、旅行できます。", "english": "If you just had the money, you could travel.", "answer": "さえ", "nudge": "あれば already sits at the end — what tiny word comes right before it, attached to お金?"},
+            {"jp_cloze": "毎日勉強＿＿＿すれば、試験に合格できます。", "english": "As long as you just study every day, you'll pass the exam.", "answer": "さえ", "nudge": "毎日 already tells you how often — what word sits between 勉強 and すれば?"},
+            {"jp_cloze": "少し休み＿＿＿すれば、元気になります。", "english": "As long as you just rest a little, you'll feel better.", "answer": "さえ", "nudge": "元気になります is the payoff at the end — what connects 休み to すれば here?"},
+            {"jp_cloze": "時間＿＿＿あれば、大丈夫です。", "english": "As long as I just have time, I'll be fine.", "answer": "さえ", "nudge": "大丈夫です closes the sentence — what word links 時間 to あれば?"},
+            {"jp_cloze": "辞書＿＿＿あれば、言葉が分かります。", "english": "As long as I just have a dictionary, I'll understand the words.", "answer": "さえ", "nudge": "言葉が分かります is the result — what word attaches right after 辞書?"},
+        ],
         "family": "patterns",
     },
     {
@@ -1486,6 +2096,13 @@ N4_GRAMMAR = [
             ex("会員のみ入場できます。", "Only members may enter.", []),
         ],
         "vocabulary_slugs": [],
+        "cloze_variants": [
+            {"jp_cloze": "会社の入口は社員＿＿＿使えます。", "english": "Only employees can use the company entrance.", "answer": "のみ", "nudge": "社員 sits right before the blank — think about who that word points to and who it leaves out."},
+            {"jp_cloze": "このレストランは現金＿＿＿です。", "english": "This restaurant is cash only.", "answer": "のみ", "nudge": "現金 comes right before the blank and です closes the sentence — what payment method does that pin things to?"},
+            {"jp_cloze": "試験の間は日本語＿＿＿話せます。", "english": "During the exam, only Japanese may be spoken.", "answer": "のみ", "nudge": "話せます says speaking is allowed during the exam — which single language does the sentence name?"},
+            {"jp_cloze": "日曜日＿＿＿休みます。", "english": "I only rest on Sunday.", "answer": "のみ", "nudge": "Compare this to the 以外 sentence about work days — which single day does this one point to instead?"},
+            {"jp_cloze": "この仕事は大人＿＿＿できます。", "english": "Only adults can do this job.", "answer": "のみ", "nudge": "できます says the job is doable — which single group does 大人 identify, based on the word right before the blank?"},
+        ],
         "family": "particles",
     },
     {
@@ -1500,6 +2117,13 @@ N4_GRAMMAR = [
             ex("もう謝るほかありません。", "There's nothing to do but apologize.", ["ayamaru"]),
         ],
         "vocabulary_slugs": ["ayamaru"],
+        "cloze_variants": [
+            {"jp_cloze": "歩いて帰る＿＿＿。", "english": "I have no choice but to walk home.", "answer": "ほかない", "nudge": "Trains, taxis, and the phone all stopped working; the ending points at the one way home still open."},
+            {"jp_cloze": "電車が止まったから、駅で待つ＿＿＿。", "english": "Since the trains have stopped, I have no choice but to wait at the station.", "answer": "ほかない", "nudge": "The から clause has already sealed off leaving, so the blank just states what that forces on the speaker."},
+            {"jp_cloze": "彼に謝る＿＿＿。", "english": "I have no choice but to apologize to him.", "answer": "ほかありません", "nudge": "This sentence speaks politely, so pick the form of the ending that matches that register."},
+            {"jp_cloze": "もう一度やり直す＿＿＿。", "english": "There's nothing for it but to start over once more.", "answer": "ほかない", "nudge": "やり直す means to scrap it and redo; the ending marks that as the sole route still open."},
+            {"jp_cloze": "今日は雨だから、家にいる＿＿＿。", "english": "It's raining today, so I have no choice but to stay home.", "answer": "ほかない", "nudge": "The rain kills the outing, turning staying in from something wanted into the only move left."},
+        ],
         "family": "patterns",
     },
     {
@@ -1515,6 +2139,13 @@ N4_GRAMMAR = [
             ex("人によって、考え方が違います。", "Depending on the person, ways of thinking differ.", ["hito"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha", "hito"],
+        "cloze_variants": [
+            {"jp_cloze": "台風＿＿＿、電車が止まった。", "english": "The trains stopped because of the typhoon.", "answer": "によって", "nudge": "The typhoon made no decision here; it is the event that forced the stop."},
+            {"jp_cloze": "彼女は祖母＿＿＿育てられた。", "english": "She was raised by her grandmother.", "answer": "によって", "nudge": "The verb is passive, and this slot names the person who did the raising."},
+            {"jp_cloze": "人＿＿＿意見が変わる。", "english": "Opinions vary from one person to the next.", "answer": "によって", "nudge": "Change who you are talking about and the end of the sentence changes with them."},
+            {"jp_cloze": "地震＿＿＿、たくさんの人が困った。", "english": "The earthquake left many people in difficulty.", "answer": "により", "nudge": "This reads like a line from a news bulletin, so choose the tighter written shape."},
+            {"jp_cloze": "会議＿＿＿、新しい予定が決まった。", "english": "The new schedule was settled through the meeting.", "answer": "によって", "nudge": "The meeting is the process that produced the decision."},
+        ],
         "family": "particles",
     },
     {
@@ -1529,6 +2160,13 @@ N4_GRAMMAR = [
             ex("買い物のついでに、郵便局へ行きました。", "While shopping, I went to the post office.", ["kaimono", "yuubinkyoku"]),
         ],
         "vocabulary_slugs": ["kaimono", "yuubinkyoku"],
+        "cloze_variants": [
+            {"jp_cloze": "コンビニに行く＿＿＿、牛乳を買ってくる。", "english": "While I'm going to the convenience store, I'll pick up some milk.", "answer": "ついでに", "nudge": "Two stops, one trip — which errand is the speaker actually leaving the house for?"},
+            {"jp_cloze": "買い物の＿＿＿、図書館で本を返す。", "english": "While I'm out shopping, I'll return the books at the library.", "answer": "ついでに", "nudge": "There is a の right before the blank, so the word ahead of it is being treated as a noun."},
+            {"jp_cloze": "台所を掃除する＿＿＿、冷蔵庫も洗う。", "english": "While I'm cleaning the kitchen, I'll wash out the fridge too.", "answer": "ついでに", "nudge": "The も on 冷蔵庫 marks it as an extra job riding on the first one."},
+            {"jp_cloze": "郵便局に行く＿＿＿、銀行にもお金を出す。", "english": "While I'm at the post office, I'll also take out money at the bank.", "answer": "ついでに", "nudge": "The bank stop happens only because the speaker is already headed out the door."},
+            {"jp_cloze": "会社から帰る＿＿＿、スーパーで野菜を買う。", "english": "On my way home from work, I'll buy vegetables at the supermarket.", "answer": "ついでに", "nudge": "The trip home is fixed; the shopping is tucked into that same journey."},
+        ],
         "family": "patterns",
     },
     {
@@ -1543,6 +2181,12 @@ N4_GRAMMAR = [
             ex("よく考えた上で、返事します。", "I'll reply after thinking it over carefully.", ["kangaeru"]),
         ],
         "vocabulary_slugs": ["kangaeru"],
+        "cloze_variants": [
+            {"jp_cloze": "書類を全部読んだ＿＿＿、決めます。", "english": "I will decide after I have read all the documents.", "answer": "上で", "nudge": "The reading has to be complete before the deciding starts — what joins the two in that fixed order?"},
+            {"jp_cloze": "家族とよく話し合った＿＿＿、お答えします。", "english": "I will answer once I have talked it over properly with my family.", "answer": "上で", "nudge": "That よく tells you the first step is done with care, not tossed off in passing."},
+            {"jp_cloze": "医者に聞いた＿＿＿、薬を飲みます。", "english": "I will take the medicine after checking with the doctor.", "answer": "上で", "nudge": "One speaker, two chosen actions, and the second one waits on the first."},
+            {"jp_cloze": "値段をよく考えた＿＿＿、買います。", "english": "I will buy it after thinking the price over carefully.", "answer": "上で", "nudge": "The purchase is deliberately postponed until the thinking is finished."},
+        ],
         "family": "patterns",
     },
     {
@@ -1557,6 +2201,13 @@ N4_GRAMMAR = [
             ex("食事の最中に、電話が鳴りました。", "Right in the middle of the meal, the phone rang.", ["shokuji"]),
         ],
         "vocabulary_slugs": ["shokuji"],
+        "cloze_variants": [
+            {"jp_cloze": "会議の＿＿＿、携帯が鳴った。", "english": "My phone rang right in the middle of the meeting.", "answer": "最中に", "nudge": "The meeting was already running when the phone cut across it — what joins those two events?"},
+            {"jp_cloze": "昼ご飯を食べている＿＿＿、部長が来た。", "english": "The department head showed up right in the middle of my lunch.", "answer": "最中に", "nudge": "食べている is sitting in its ている form on purpose — what kind of phrase needs that shape ahead of it?"},
+            {"jp_cloze": "友達と電話している＿＿＿、赤ちゃんが泣いた。", "english": "The baby cried right in the middle of my phone call with a friend.", "answer": "最中に", "nudge": "The call and the crying overlap, with the crying breaking in uninvited — fill the join."},
+            {"jp_cloze": "映画を見ている＿＿＿、地震が起きた。", "english": "An earthquake hit right in the middle of the movie.", "answer": "最中に", "nudge": "One quiet activity was underway when something abrupt struck across it — what marks that overlap?"},
+            {"jp_cloze": "食事の＿＿＿、社長から電話が来た。", "english": "A call from the company president came in right in the middle of dinner.", "answer": "最中に", "nudge": "食事 is a noun and の already follows it, so what finishes this time expression?"},
+        ],
         "family": "patterns",
     },
     {
@@ -1571,6 +2222,13 @@ N4_GRAMMAR = [
             ex("名前および住所を書いてください。", "Please write your name and address.", ["namae", "juusho"]),
         ],
         "vocabulary_slugs": ["namae", "juusho"],
+        "cloze_variants": [
+            {"jp_cloze": "会議の場所＿＿＿時間は、まだ決まっていません。", "english": "The meeting's location and time have not been decided yet.", "answer": "および", "nudge": "The nouns 場所 then 時間 sit right next to each other; a stiff written connector belongs in that gap before は takes over."},
+            {"jp_cloze": "名前＿＿＿住所を、ここに書いてください。", "english": "Please write your name and address here.", "answer": "および", "nudge": "This reads like a printed line on an official paper form — what bookish link joins the two things you must fill in?"},
+            {"jp_cloze": "学生＿＿＿先生は、この入口から入ってください。", "english": "Students and teachers, please enter through this entrance.", "answer": "および", "nudge": "A public sign is speaking to two groups at once; choose the connector that matches that stiff notice style."},
+            {"jp_cloze": "試験の結果＿＿＿説明は、金曜日に伝えます。", "english": "The exam results and the explanation will be given on Friday.", "answer": "および", "nudge": "結果 is one noun, 説明 is another, and one は covers both — what written-register word bundles them first?"},
+            {"jp_cloze": "書類＿＿＿荷物は、受付に出してください。", "english": "Please hand in your documents and luggage at the reception desk.", "answer": "および", "nudge": "は waits until after the second noun, so the space between the two nouns is not a particle slot — what goes there instead?"},
+        ],
         "family": "connectors",
     },
     {
@@ -1585,6 +2243,14 @@ N4_GRAMMAR = [
             ex("先生に対して失礼な態度を取りました。", "He took a rude attitude towards the teacher.", ["sensei", "taido"]),
         ],
         "vocabulary_slugs": ["sensei", "taido"],
+        "cloze_variants": [
+            {"jp_cloze": "先生は生徒の質問＿＿＿丁寧に答えます。", "english": "The teacher answers students' questions politely.", "answer": "に対して", "nudge": "The teacher's care is aimed at what the students raised; the blank marks that as the target, not the subject."},
+            {"jp_cloze": "彼は動物＿＿＿とても優しいです。", "english": "He is very gentle toward animals.", "answer": "に対して", "nudge": "動物 here is not where he is; it is who receives his gentleness, and the blank has to signal that."},
+            {"jp_cloze": "彼の子供＿＿＿態度は厳しいです。", "english": "His attitude toward the children is strict.", "answer": "に対する", "nudge": "The blank feeds straight into the noun 態度, so it needs the form that leads into a noun rather than a verb."},
+            {"jp_cloze": "私の意見＿＿＿、彼女は反対しました。", "english": "In response to my opinion, she objected.", "answer": "に対して", "nudge": "Her objection needs something to push on; the blank points at the thing she was objecting to."},
+            {"jp_cloze": "彼の説明＿＿＿、みんなは質問しました。", "english": "In response to his explanation, everyone asked questions.", "answer": "に対して", "nudge": "The questions came as a reaction here; compare it with the version where the same explanation is the cause of understanding."},
+            {"jp_cloze": "あの店員はどのお客さん＿＿＿も親切です。", "english": "That clerk is kind toward every customer.", "answer": "に対して", "nudge": "Ignore the も sitting after the gap for a moment; the connector right before it is the ordinary one marking who gets the kindness."},
+        ],
         "family": "particles",
     },
 ]

@@ -33,7 +33,7 @@ Last verified against the codebase: **2026-09-02**
 | [07 — Grammar review overview](./feedback/07-grammar-review-overview.md) | Index for 07–10 |
 | [07 — Grammar cloze contract](./feedback/07-grammar-cloze-contract.md) | Done |
 | [08 — Grammar stage ladder](./feedback/08-grammar-stage-ladder.md) | Done |
-| [09 — Cloze variants & families](./feedback/09-grammar-cloze-curriculum.md) | **Partial** |
+| [09 — Cloze variants & families](./feedback/09-grammar-cloze-curriculum.md) | **Done for N5 + N4 (2026-09-21)** — every shipping point has a `family` and ≥4 authored cloze variants: N5 74 points / 372 variants, N4 97 points / 512 variants, 884 rows in `curriculum.db`. N4 was closed by promoting the cloze candidates the grammar-lesson lane had been parking in `generate_content/drafts/n4/` since Plan 04 — `generate_content/promote_cloze.py` gates each candidate with `check_cloze`'s rules and writes only survivors into `_build/n4_grammar.py`. 461 of 523 drafts passed untouched; 10 points were hand-repaired because the drafted blank swallowed the conjugated stem (`降ったら` for `たら`), which `accepted_forms` grading would have marked a correct learner wrong. `generate.py` now derives `jp_cloze_furigana` for every variant (883/884; the two misses are `→`-notation drills, where the app falls back to the plain prompt). N3+ is vocabulary-only and has no grammar points to cover. |
 | [10 — Grammar hints & near-miss](./feedback/10-grammar-hints-and-nearmiss.md) | Done |
 | [11 — Lesson content order & navigation](./feedback/11-lesson-content-order-navigation-and-grammar-furigana.md) | Done |
 | [12 — Android playtest round 2](./feedback/12-android-playtest-round-2.md) | Done |

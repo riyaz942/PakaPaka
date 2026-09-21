@@ -130,6 +130,49 @@ Once Wave A is compiled:
 - [x] Distractor picker can query "other items with same family".
 - [x] `npm run validate-schema` and `npm run compile-curriculum` pass.
 - [x] Fixture grammar under `scripts/__fixtures__/` updated.
+- [x] Wave C — N5 and N4 both complete (2026-09-21). See below.
+
+## Wave C outcome (2026-09-21)
+
+N5 (74 points / 372 variants) landed 2026-07-28. N4 (97 points / 512 variants)
+landed 2026-09-21 and closes this plan for every band that ships grammar — N3+
+is vocabulary-only.
+
+N4 did not need the authoring push this plan budgeted for. The grammar-lesson
+lane had been writing cloze candidates to
+`generate_content/drafts/<level>/<slug>-cloze-candidates.json` all along, and
+`assemble.py` deliberately parks them there rather than shipping them — 523
+candidates existed for all 97 points before this pass started. What was missing
+was the promotion step between the drafts and `_build/n4_grammar.py`, which is
+the shipped source (`curriculum/grammar/n4.json` is generated from it):
+
+- **`generate_content/promote_cloze.py`** (new) puts every candidate through
+  `check_cloze`'s gate and writes only survivors, so promotion can never lower
+  the shipped bar. 461 of 523 passed untouched.
+- **10 points were hand-repaired** in `n4_grammar.py`, all one bug: the drafted
+  blank swallowed the conjugated stem, so `answer` was not in `accepted_forms`
+  and the evaluator would have marked a correct learner **wrong** (`降ったら`
+  where the point is `たら`; `おく` where it is `ておく`). Each carries a comment
+  saying why it is hand-written, and `promote_cloze` skips points that already
+  have variants, so the two paths compose.
+- **`family`** was added to all 97 points (conjugations 18, copula 12,
+  connectors 18, particles 21, patterns 28). N4 previously had none and its MC
+  distractors fell back to the interim N5 particle pool.
+
+Two points' `accepted_forms` shape the content rather than the reverse, and are
+worth revisiting as content questions, not bugs: `n4-potential` cannot spell the
+godan potentials `話せる` / `泳げる` with `[れる, られる, える]`, and
+`n4-node-vs-kara` lists only `から`, so its ので contrast sentences are
+ungradeable as cloze.
+
+### Furigana
+
+`generate.py` now derives `jp_cloze_furigana` for every variant rather than
+leaving it to authors: it fills the blank, annotates the whole sentence so the
+tokenizer reads `帰った` correctly, then cuts the answer's annotated span back
+out, and emits nothing when that round trip is not exact. 883 of 884 variants
+get furigana; the misses are `→`-notation drills, where the app falls back to
+the plain prompt.
 
 ## Files touched (expected)
 

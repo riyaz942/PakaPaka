@@ -21,6 +21,22 @@ Three lanes, and most content types have more than one:
 | Reading passages | — | [automation](./reading-passages-subagent-workflow-automation-prompt.md) | [automation](./reading-passages-single-session-workflow-automation-prompt.md) |
 | Reading passage naturalness review | — | [automation](./reading-passage-naturalness-subagent-workflow-automation-prompt.md) | — |
 
+Grammar **cloze variants** have no lane of their own: the grammar-lesson lane already drafts them
+per point into `generate_content/drafts/<level>/`, and `promote_cloze.py` gates those drafts and
+writes the survivors into `_build/<level>_grammar.py` (the shipped source). It is a plain CLI, not a
+model lane — see [feedback 09](../feedback/09-grammar-cloze-curriculum.md):
+
+```bash
+cd curriculum/_build
+.venv/bin/python -m generate_content.promote_cloze --level n4 --dry-run   # what passes the gate
+.venv/bin/python -m generate_content.promote_cloze --level n4 --limit 8   # one batch
+.venv/bin/python generate.py --level n4
+.venv/bin/python -m generate_content.check_cloze --level n4
+```
+
+A point it reports as `SKIP` needs hand authoring in `<level>_grammar.py`; promotion leaves points
+that already have variants alone, so the two never fight.
+
 The naturalness review is built into **both** reading-passage generation lanes —
 Step 4 of the subagent lane, Step 5 of the single-session lane — so a passage
 leaves either run having been read for naturalness, not only gated for mechanics.
