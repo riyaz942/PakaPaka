@@ -205,7 +205,7 @@ describe('LessonScreen', () => {
     // one, regardless of type — three items here, one batched write.
     expect(getDailyLoad(userDb, todayKey())?.load).toBe(3);
 
-    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
+    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C3%2C2');
   });
 
   it('advances and rewinds sections before items, committing nothing', async () => {
@@ -330,7 +330,7 @@ describe('LessonScreen', () => {
     }
 
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
-    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
+    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C3%2C2');
   });
 
   it('closes without committing anything', async () => {

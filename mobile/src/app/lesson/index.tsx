@@ -149,7 +149,10 @@ export default function LessonScreen() {
       }
     }
 
-    router.replace(`/lesson/complete?count=${items.length}` as Href);
+    const itemIds = items.map((item) => item.id).join(',');
+    router.replace(
+      `/lesson/complete?count=${items.length}&itemIds=${encodeURIComponent(itemIds)}` as Href,
+    );
   };
 
   // Gesture callbacks are captured when the detector attaches and are not
