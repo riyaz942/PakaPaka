@@ -19,6 +19,7 @@ import type {
   VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 import { getRadicalImage } from '@/utils/radicalImages';
 
 type RadicalDetailProps = {
@@ -49,7 +50,11 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
     <View testID="radical-detail">
       <ItemDetailHeader itemType="radical" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-jp-hero', CONTENT_TYPE_ACCENT.radical.deep)}
+          className={cn(
+            'text-center',
+            heroFontClassForWeight(item.primaryForm, 'medium'),
+            CONTENT_TYPE_ACCENT.radical.deep,
+          )}
           style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
         </Text>

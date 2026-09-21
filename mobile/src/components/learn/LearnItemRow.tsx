@@ -8,6 +8,7 @@ import type {
   CurriculumParentItem,
 } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 type LearnItemRowProps = {
   item: CurriculumListItem;
@@ -37,7 +38,7 @@ export function LearnItemRow({
           // hue; the smaller forms are copy, so they take `-deep` like every
           // other type-coloured label.
           isJapaneseForm
-            ? cn('text-display font-jp-hero-bold', accent.glyph)
+            ? cn('text-display', heroFontClassForWeight(item.primaryForm, 'bold'), accent.glyph)
             : cn('text-body font-jp-medium', accent.deep),
         )}>
         {item.primaryForm}

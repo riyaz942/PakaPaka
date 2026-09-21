@@ -6,7 +6,6 @@ import { FuriganaText } from '@/components/common/FuriganaText';
 import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
-import { heroWeightClass } from '@/components/learn/ItemDetailHeader';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
@@ -18,6 +17,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
+import { heroFontClass } from '@/utils/heroGlyphFont';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
@@ -195,13 +195,13 @@ export function ReviewCard({
         // 'auto' must show the reading. The learner's global 'hidden' setting
         // still wins; that is their explicit choice, not a silent default.
         isKnownWord={false}
-        className={cn('text-center', accent.deep, heroWeightClass(promptFontSize(display)))}
+        className={cn('text-center', accent.deep, heroFontClass(display, promptFontSize(display).fontSize))}
         style={promptFontSize(display)}
       />
     ) : (
       <Text
         testID="review-prompt-glyph"
-        className={cn('text-center', accent.deep, heroWeightClass(promptFontSize(display)))}
+        className={cn('text-center', accent.deep, heroFontClass(display, promptFontSize(display).fontSize))}
         style={promptFontSize(display)}>
         {display}
       </Text>

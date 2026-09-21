@@ -30,6 +30,7 @@ import {
 } from '@/data/user/placementRepository';
 import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 /** Ids for a hand-adjusted count: the computed ones first, then the next candidates. */
 function knownIdsForCount(outcome: PlacementCellOutcome, count: number): string[] {
@@ -360,7 +361,8 @@ export default function PlacementScreen() {
               <ContentTypeBadge itemType={current.itemType} className="bg-surface" />
               <Text
                 className={cn(
-                  'mt-space-lg text-[64px] leading-[1.1] font-jp-hero',
+                  'mt-space-lg text-[64px] leading-[1.1]',
+                  heroFontClassForWeight(current.primaryForm, 'medium'),
                   CONTENT_TYPE_ACCENT[current.itemType].deep,
                 )}>
                 {current.primaryForm}

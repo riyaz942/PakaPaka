@@ -10,6 +10,7 @@ import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 
@@ -111,7 +112,12 @@ export function IncorrectReveal({
           />
         ) : null}
         <View className={cn('w-full items-center rounded-radius-xl p-space-lg', accent.soft)}>
-          <Text className={cn('text-display text-center font-jp-hero-bold', accent.deep)}>
+          <Text
+            className={cn(
+              'text-display text-center',
+              heroFontClassForWeight(isIncomplete ? displayAnswer : item.primaryForm, 'bold'),
+              accent.deep,
+            )}>
             {isIncomplete ? displayAnswer : item.primaryForm}
           </Text>
         </View>

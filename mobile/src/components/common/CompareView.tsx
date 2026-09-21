@@ -18,6 +18,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 type CompareViewProps = {
   leftId: string | undefined;
@@ -63,7 +64,11 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
         />
       ) : (
         <Text
-          className={cn('text-center font-jp-hero-bold', accent.deep)}
+          className={cn(
+            'text-center',
+            heroFontClassForWeight(item.primaryForm, 'bold'),
+            accent.deep,
+          )}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}>
           {item.primaryForm}
         </Text>

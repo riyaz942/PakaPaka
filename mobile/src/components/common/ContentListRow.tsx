@@ -7,6 +7,7 @@ import { CONTENT_TYPE_ACCENT, PASSAGE_CONTENT_ACCENT } from '@/constants/content
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
+import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 type ContentListRowProps = {
   /** `passage` rows share the list but are not curriculum items (FR63). */
@@ -81,7 +82,8 @@ export function ContentListRow({
           <Text
             numberOfLines={1}
             className={cn(
-              'min-w-9 max-w-[120px] font-jp-hero-bold',
+              'min-w-9 max-w-[120px]',
+              heroFontClassForWeight(glyph, 'bold'),
               glyphSizeClass(glyph),
               accent.glyph,
             )}>

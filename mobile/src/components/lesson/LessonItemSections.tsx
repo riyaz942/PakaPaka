@@ -40,6 +40,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
 import { cn } from '@/utils/cn';
+import { heroFontClass } from '@/utils/heroGlyphFont';
 import { getRadicalImage } from '@/utils/radicalImages';
 
 /** Intro → Mnemonic → Examples & links (FR71, UX-DR16). */
@@ -115,7 +116,9 @@ export function LessonHero({ item }: { item: CurriculumItemDetail }) {
   const heroSize = item.itemType === 'grammar' ? HERO_FONT_SIZE.pattern : HERO_FONT_SIZE.glyph;
   return (
     <ItemDetailHeader itemType={item.itemType} meaning={item.meaning} size="lg">
-      <Text className={cn('text-center', heroWeightClass(heroSize), accent.deep)} style={heroSize}>
+      <Text
+        className={cn('text-center', heroFontClass(item.primaryForm, heroSize.fontSize), accent.deep)}
+        style={heroSize}>
         {item.primaryForm}
       </Text>
     </ItemDetailHeader>
