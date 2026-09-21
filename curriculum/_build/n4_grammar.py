@@ -32,6 +32,15 @@ N4_GRAMMAR = [
             ex("安いので、これを買います。", "Since it's cheap, I'll buy this.", ["yasui-adj", "kau-v"]),
         ],
         "vocabulary_slugs": ["furu-rain", "jikan", "yasumu"],
+        "cloze_variants": [
+            {"jp_cloze": "雨が降る＿＿＿、傘を持ちます。", "english": "It's going to rain, so I'll take an umbrella.", "answer": "ので", "nudge": "A weather clause and an umbrella clause, one single sentence — what welds them together at the middle?"},
+            {"jp_cloze": "妹はまだ子供＿＿＿、お酒を飲みません。", "english": "My little sister is still a child, so she doesn't drink alcohol.", "answer": "なので", "nudge": "子供 is a bare noun sitting right against the gap, and a bare noun cannot touch this joint on its own."},
+            {"jp_cloze": "この部屋は静か＿＿＿、よく勉強します。", "english": "This room is quiet, so I study a lot.", "answer": "なので", "nudge": "静か is the kind of adjective that wants な in front of a noun, and the same な shows up in the gap."},
+            {"jp_cloze": "昨日は頭が痛かった＿＿＿、早く寝ました。", "english": "My head hurt yesterday, so I went to bed early.", "answer": "ので", "nudge": "痛かった is already past and already plain, so nothing in front of the gap has to change at all."},
+            {"jp_cloze": "意味が分からない＿＿＿、先生に質問します。", "english": "I don't understand the meaning, so I'm going to ask the teacher.", "answer": "ので", "nudge": "The first half ends in a negative plain form; the joint clips onto it exactly as it would onto an affirmative one."},
+            {"jp_cloze": "電車が遅れます＿＿＿、タクシーで行きます。", "english": "The train is going to be late, so I'll go by taxi.", "answer": "ので", "nudge": "The first half keeps its polite ending, the way a station announcement would — what still links it to the taxi half?"},
+        ],
+        "family": "connectors",
     },
     {
         "slug": "n4-noni",
@@ -49,6 +58,7 @@ N4_GRAMMAR = [
             ex("若いのに、とても物知りです。", "Even though young, he's very knowledgeable.", ["wakai"]),
         ],
         "vocabulary_slugs": ["benkyou-suru", "shiken", "okane"],
+        "family": "connectors",
     },
     {
         "slug": "n4-souda-hearsay",
@@ -66,6 +76,15 @@ N4_GRAMMAR = [
             ex("彼女は結婚するそうです。", "I heard she's getting married.", ["kanojo", "kekkon-suru"]),
         ],
         "vocabulary_slugs": ["tenki", "mise", "shiken"],
+        "cloze_variants": [
+            {"jp_cloze": "兄は来年日本に行く＿＿＿。", "english": "I hear my older brother is going to Japan next year.", "answer": "そうです", "nudge": "Who is the one with the travel plan here, and who is only passing it along?"},
+            {"jp_cloze": "彼女のお父さんは医者だ＿＿＿。", "english": "I hear her father is a doctor.", "answer": "そうです", "nudge": "彼女 is the one who told you about her family; you have never met the man."},
+            {"jp_cloze": "今年の冬はとても寒い＿＿＿。", "english": "I hear this winter is going to be very cold.", "answer": "そうです", "nudge": "Winter has not arrived yet, so nobody in this sentence has felt the cold in person."},
+            {"jp_cloze": "あの人は去年まで学生だった＿＿＿。", "english": "I hear that person was a student until last year.", "answer": "そうです", "nudge": "だった already handles the past, so whatever fills the gap cannot carry tense of its own."},
+            {"jp_cloze": "彼は昨日の会議に来なかった＿＿＿。", "english": "Apparently he didn't come to yesterday's meeting.", "answer": "そうだ", "nudge": "You were not in the meeting room yourself — a colleague who was present filled you in afterwards."},
+            {"jp_cloze": "あの新しい店は安い＿＿＿。", "english": "I hear that new shop is cheap.", "answer": "そうです", "nudge": "You have never walked into this shop or looked at a price tag in it."},
+        ],
+        "family": "copula",
     },
     {
         "slug": "n4-souda-looks",
@@ -83,6 +102,7 @@ N4_GRAMMAR = [
             ex("彼は元気そうです。", "He looks well.", ["kare", "genki"]),
         ],
         "vocabulary_slugs": ["ryouri", "furu-rain", "genki"],
+        "family": "copula",
     },
     {
         "slug": "n4-tara",
@@ -101,6 +121,17 @@ N4_GRAMMAR = [
             ex("先生に聞いたら、分かりました。", "When I asked the teacher, I understood.", ["sensei", "kiku-v", "wakaru"]),
         ],
         "vocabulary_slugs": ["jikan", "eki", "shukudai"],
+        "family": "conjugations",
+        # Drafted variants blanked the whole conjugated verb (降ったら); the app
+        # grades against accepted_forms, so the blank has to stop at たら.
+        "cloze_variants": [
+            {"jp_cloze": "明日雨が降っ＿＿＿、公園に行きません。", "english": "If it rains tomorrow, we're not going to the park.", "answer": "たら", "nudge": "The sky has not actually done anything yet — this is the branch of tomorrow where it does."},
+            {"jp_cloze": "この本が安かっ＿＿＿、買います。", "english": "If this book is cheap, I'll buy it.", "answer": "たら", "nudge": "Everything hangs on the price tag, so the adjective itself has to bend before the purchase can follow."},
+            {"jp_cloze": "明日暇だっ＿＿＿、一緒に映画を見ませんか。", "english": "If you're free tomorrow, shall we watch a movie together?", "answer": "たら", "nudge": "The second half is an invitation, not a prediction, and the first half sets the terms for it."},
+            {"jp_cloze": "家に帰っ＿＿＿、すぐ電話します。", "english": "When I get home, I'll call you right away.", "answer": "たら", "nudge": "Getting home is a certainty here; the phone call is simply queued up behind it."},
+            {"jp_cloze": "冷蔵庫を開け＿＿＿、猫がいました。", "english": "When I opened the fridge, there was a cat.", "answer": "たら", "nudge": "Both halves already happened, and the animal inside was nobody's plan."},
+            {"jp_cloze": "先生に聞い＿＿＿？", "english": "Why don't you ask the teacher?", "answer": "たら", "nudge": "A casual push toward an action, with the rest of the sentence swallowed and left to the intonation."},
+        ],
     },
     {
         "slug": "n4-ba",
@@ -118,6 +149,7 @@ N4_GRAMMAR = [
             ex("急げば、間に合います。", "If you hurry, you'll make it in time.", ["isogu"]),
         ],
         "vocabulary_slugs": ["okane", "ryokou", "renshuu-suru"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-nara",
@@ -134,6 +166,7 @@ N4_GRAMMAR = [
             ex("行くなら、一緒に行きましょう。", "If you're going, let's go together.", ["issho-ni"]),
         ],
         "vocabulary_slugs": ["hima", "taihen", "issho-ni"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-potential",
@@ -151,6 +184,7 @@ N4_GRAMMAR = [
             ex("この川で泳げます。", "You can swim in this river.", ["kawa-v", "oyogeru"]),
         ],
         "vocabulary_slugs": ["nihongo", "kanji-word", "hanaseru"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-passive",
@@ -168,6 +202,7 @@ N4_GRAMMAR = [
             ex("この本は多くの人に読まれています。", "This book is read by many people.", ["hon"]),
         ],
         "vocabulary_slugs": ["sensei", "oya", "homerareru"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-causative",
@@ -184,6 +219,7 @@ N4_GRAMMAR = [
             ex("好きなようにやらせてください。", "Please let me do it the way I like.", ["suki", "yaraseru"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "yasai", "sensei"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-causative-passive",
@@ -199,6 +235,7 @@ N4_GRAMMAR = [
             ex("上司に残業させられました。", "I was made to work overtime by my boss.", ["zangyou"]),
         ],
         "vocabulary_slugs": ["eki", "matasareru", "zangyou"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-youni",
@@ -215,6 +252,7 @@ N4_GRAMMAR = [
             ex("風邪をひかないように、気をつけてください。", "Please be careful not to catch a cold.", ["kaze-cold"]),
         ],
         "vocabulary_slugs": ["wasureru", "kikoeru", "okureru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-youninaru",
@@ -231,6 +269,7 @@ N4_GRAMMAR = [
             ex("一人で行けるようになりました。", "I've become able to go alone.", ["hitori-de", "ikeru"]),
         ],
         "vocabulary_slugs": ["nihongo", "kanji-word", "mainichi"],
+        "family": "patterns",
     },
     {
         "slug": "n4-younaru",
@@ -246,6 +285,7 @@ N4_GRAMMAR = [
             ex("痛くて、歩けなくなりました。", "It hurt so I couldn't walk anymore.", ["itamu"]),
         ],
         "vocabulary_slugs": ["isogashii", "saikin", "osake"],
+        "family": "patterns",
     },
     {
         "slug": "n4-hazu",
@@ -262,6 +302,13 @@ N4_GRAMMAR = [
             ex("彼女は知っているはずです。", "She should know.", ["kanojo", "shiru"]),
         ],
         "vocabulary_slugs": ["kyou", "yasumu", "kanojo"],
+        "cloze_variants": [
+            {"jp_cloze": "彼はもう駅にいる＿＿＿です。", "english": "He should be at the station by now.", "answer": "はず", "nudge": "Nobody has actually seen him arrive — this sentence is running entirely on the train timetable."},
+            {"jp_cloze": "母は昨日この手紙を出した＿＿＿です。", "english": "My mother should have sent this letter yesterday.", "answer": "はず", "nudge": "You did not watch her post it — you are reasoning from what had been arranged."},
+            {"jp_cloze": "私たちは先週旅行する＿＿＿でした。", "english": "We were supposed to travel last week.", "answer": "はず", "nudge": "先週 has passed and the trip never happened; the blank is what makes that failure audible."},
+            {"jp_cloze": "鍵はかばんの中にある＿＿＿。", "english": "The key should be in the bag.", "answer": "はず", "nudge": "Nothing follows the blank at all — this is how you would say it to a friend while patting the bag."},
+        ],
+        "family": "copula",
     },
     {
         "slug": "n4-hazuganai",
@@ -277,6 +324,7 @@ N4_GRAMMAR = [
             ex("彼女が嘘をつくはずがない。", "There's no way she'd lie.", ["kanojo"]),
         ],
         "vocabulary_slugs": ["kare", "yasui-adj", "kanojo"],
+        "family": "copula",
     },
     {
         "slug": "n4-rashii",
@@ -293,6 +341,7 @@ N4_GRAMMAR = [
             ex("試験は難しいらしいです。", "The exam seems difficult.", ["shiken", "muzukashii"]),
         ],
         "vocabulary_slugs": ["ashita", "mise", "shiken"],
+        "family": "copula",
     },
     {
         "slug": "n4-youda",
@@ -309,6 +358,7 @@ N4_GRAMMAR = [
             ex("風邪をひいたようです。", "It seems I caught a cold.", ["kaze-cold"]),
         ],
         "vocabulary_slugs": ["soto", "samui", "kaze-cold"],
+        "family": "copula",
     },
     {
         "slug": "n4-mitai",
@@ -324,6 +374,7 @@ N4_GRAMMAR = [
             ex("この店、有名みたいです。", "This shop seems famous.", ["mise", "yuumei"]),
         ],
         "vocabulary_slugs": ["furu-rain", "kare", "mise"],
+        "family": "copula",
     },
     {
         "slug": "n4-teiru-progressive",
@@ -340,6 +391,7 @@ N4_GRAMMAR = [
             ex("音楽を聞いています。", "I'm listening to music.", ["ongaku"]),
         ],
         "vocabulary_slugs": ["ima", "eiga", "furu-rain"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-teiru-result",
@@ -356,6 +408,7 @@ N4_GRAMMAR = [
             ex("道が混んでいます。", "The road is crowded.", ["michi-v"]),
         ],
         "vocabulary_slugs": ["mado", "kekkon-suru", "mise"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-tearu",
@@ -371,6 +424,7 @@ N4_GRAMMAR = [
             ex("もう準備してあります。", "Preparations have already been made.", ["junbi-suru"]),
         ],
         "vocabulary_slugs": ["e-picture", "mado", "junbi-suru"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-teoku",
@@ -386,6 +440,16 @@ N4_GRAMMAR = [
             ex("チケットを買っておきました。", "I bought the tickets in advance.", ["kippu", "kau-v"]),
         ],
         "vocabulary_slugs": ["ashita", "mado", "kippu"],
+        "family": "conjugations",
+        # Drafted variants left て outside the blank and asked only for おく,
+        # which is not an accepted form — the blank has to take the whole ておく.
+        "cloze_variants": [
+            {"jp_cloze": "部屋を掃除し＿＿＿。", "english": "I'll clean the room ahead of time.", "answer": "ておく", "nudge": "The cleaning is happening now, but who is it really being done for — now-you or later-you?"},
+            {"jp_cloze": "ビールを買っ＿＿＿。", "english": "I'll buy beer in advance.", "answer": "ておく", "nudge": "Notice this isn't about drinking the beer right now — what's the buying being set up for?"},
+            {"jp_cloze": "窓を開け＿＿＿。", "english": "I'll leave the window open (ahead of time).", "answer": "ておく", "nudge": "Someone opens the window on purpose, ahead of something else happening — the ending has to point forward like that."},
+            {"jp_cloze": "お金を持っ＿＿＿。", "english": "I'll have money on me (just in case).", "answer": "ておく", "nudge": "This sounds like someone covering themselves before a possible need — the ending signals that kind of readiness."},
+            {"jp_cloze": "窓、開け＿＿＿。", "english": "I'll leave the window open.", "answer": "とく", "nudge": "Same idea as the other window sentence, just spoken fast between friends — the full ending shrinks."},
+        ],
     },
     {
         "slug": "n4-teshimau",
@@ -401,6 +465,7 @@ N4_GRAMMAR = [
             ex("もう食べてしまいました。", "I've already finished eating.", ["taberu"]),
         ],
         "vocabulary_slugs": ["shukudai", "saifu", "taberu"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-teiku-tekuru",
@@ -416,6 +481,7 @@ N4_GRAMMAR = [
             ex("雨が降ってきました。", "It has started raining.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["samui", "nihongo", "furu-rain"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-temo",
@@ -431,6 +497,7 @@ N4_GRAMMAR = [
             ex("何回聞いても、分かりません。", "No matter how many times I ask, I don't understand.", ["kai-times", "wakaru"]),
         ],
         "vocabulary_slugs": ["furu-rain", "takai-adj", "wakaru"],
+        "family": "connectors",
     },
     {
         "slug": "n4-temoii",
@@ -446,6 +513,7 @@ N4_GRAMMAR = [
             ex("先に帰ってもいいです。", "It's fine if you go home first.", ["kaeru-v"]),
         ],
         "vocabulary_slugs": ["suwaru", "shashin", "kaeru-v"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-tewaikenai",
@@ -461,6 +529,7 @@ N4_GRAMMAR = [
             ex("うそをついてはいけません。", "You must not lie.", []),
         ],
         "vocabulary_slugs": ["jugyou", "hanasu-v"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-nakutemoii",
@@ -476,6 +545,7 @@ N4_GRAMMAR = [
             ex("お金を払わなくてもいいです。", "You don't have to pay.", ["okane", "harau"]),
         ],
         "vocabulary_slugs": ["ashita", "shinpai-suru", "okane"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-nakerebanaranai",
@@ -491,6 +561,7 @@ N4_GRAMMAR = [
             ex("九時までに行かなければなりません。", "I have to go by nine o'clock.", ["iku-v"]),
         ],
         "vocabulary_slugs": ["shukudai", "kusuri", "iku-v"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-souni-naru",
@@ -506,6 +577,7 @@ N4_GRAMMAR = [
             ex("泣きそうになりました。", "I almost cried.", ["naku"]),
         ],
         "vocabulary_slugs": ["densha", "okureru", "naku"],
+        "family": "patterns",
     },
     {
         "slug": "n4-tsumori",
@@ -521,6 +593,15 @@ N4_GRAMMAR = [
             ex("彼と結婚するつもりです。", "I intend to marry him.", ["kare", "kekkon-suru"]),
         ],
         "vocabulary_slugs": ["rainen", "nihon", "kyou"],
+        "cloze_variants": [
+            {"jp_cloze": "週末、映画を見る＿＿＿です。", "english": "This weekend, I'm planning to watch a movie.", "answer": "つもり", "nudge": "What does 見る need after it to turn watching into a decision rather than a fact?"},
+            {"jp_cloze": "明日、図書館で勉強する＿＿＿だ。", "english": "Tomorrow, I'm planning to study at the library.", "answer": "つもり", "nudge": "The verb already means 'study' — what missing piece turns it into something you've decided to do?"},
+            {"jp_cloze": "来年、日本語を勉強する＿＿＿です。", "english": "Next year, I'm planning to study Japanese.", "answer": "つもり", "nudge": "This sentence is about next year's resolve, not next year's certainty — what word carries that feeling?"},
+            {"jp_cloze": "彼はもう帰る＿＿＿だ。", "english": "He's already planning to go home.", "answer": "つもり", "nudge": "彼 isn't home yet — what word tells you this is his own stated resolve, not a fact you witnessed?"},
+            {"jp_cloze": "私は来月引っ越す＿＿＿です。", "english": "I'm planning to move next month.", "answer": "つもり", "nudge": "来月 sets the timing — what word turns 引っ越す into something you've decided, not something scheduled for you?"},
+            {"jp_cloze": "明日、宿題をする＿＿＿だ。", "english": "I'm planning to do my homework tomorrow.", "answer": "つもり", "nudge": "Compare this to しなければならない — what word here makes it your own choice instead of an obligation?"},
+        ],
+        "family": "patterns",
     },
     {
         "slug": "n4-youni-suru",
@@ -536,6 +617,7 @@ N4_GRAMMAR = [
             ex("早く寝るようにしましょう。", "Let's make an effort to sleep early.", ["hayai-early", "neru"]),
         ],
         "vocabulary_slugs": ["mainichi", "yasai", "hayai-early"],
+        "family": "patterns",
     },
     {
         "slug": "n4-koto-ga-aru",
@@ -551,6 +633,7 @@ N4_GRAMMAR = [
             ex("たまに遅刻することがあります。", "I sometimes am late.", ["tama-ni", "chikoku-suru"]),
         ],
         "vocabulary_slugs": ["nihon", "sushi", "tama-ni"],
+        "family": "patterns",
     },
     {
         "slug": "n4-koto-ni-suru",
@@ -566,6 +649,7 @@ N4_GRAMMAR = [
             ex("毎朝散歩することにしています。", "I've made it a rule to walk every morning.", ["maiasa", "sanpo-suru"]),
         ],
         "vocabulary_slugs": ["rainen", "maiasa", "sanpo-suru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-koto-ni-naru",
@@ -581,6 +665,7 @@ N4_GRAMMAR = [
             ex("毎週レポートを出すことになっています。", "It's arranged that we submit a report every week.", ["maishuu"]),
         ],
         "vocabulary_slugs": ["raigetsu", "kaigi", "maishuu"],
+        "family": "patterns",
     },
     {
         "slug": "n4-mono",
@@ -595,6 +680,7 @@ N4_GRAMMAR = [
             ex("疲れたもの、休みたいです。", "I'm tired, so I want to rest.", []),
         ],
         "vocabulary_slugs": ["kodomo-v", "asobu"],
+        "family": "patterns",
     },
     {
         "slug": "n4-bakari",
@@ -610,6 +696,7 @@ N4_GRAMMAR = [
             ex("甘い物ばかり食べています。", "I only eat sweet things.", ["amai"]),
         ],
         "vocabulary_slugs": ["kare", "amai"],
+        "family": "particles",
     },
     {
         "slug": "n4-tokoro",
@@ -625,6 +712,7 @@ N4_GRAMMAR = [
             ex("ちょうど終わったところです。", "I just finished.", ["owaru"]),
         ],
         "vocabulary_slugs": ["ima", "owaru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-aida",
@@ -640,6 +728,7 @@ N4_GRAMMAR = [
             ex("彼が話している間、静かにしていました。", "While he was talking, I stayed quiet.", ["kare", "shizuka"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "natsu", "kare"],
+        "family": "patterns",
     },
     {
         "slug": "n4-uchi-ni",
@@ -655,6 +744,7 @@ N4_GRAMMAR = [
             ex("忘れないうちに、メモしておきます。", "I'll write it down before I forget.", ["wasureru"]),
         ],
         "vocabulary_slugs": ["atatakai", "wakai", "wasureru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-tabi-ni",
@@ -669,6 +759,7 @@ N4_GRAMMAR = [
             ex("旅行のたびに、写真を撮ります。", "Every time I travel, I take photos.", ["ryokou", "shashin"]),
         ],
         "vocabulary_slugs": ["kare", "ryokou", "shashin"],
+        "family": "patterns",
     },
     {
         "slug": "n4-baai",
@@ -684,6 +775,7 @@ N4_GRAMMAR = [
             ex("分からない場合は、聞いてください。", "If you don't understand, please ask.", ["wakaru", "kiku-v"]),
         ],
         "vocabulary_slugs": ["okureru", "renraku-suru", "wakaru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-to-conditional",
@@ -699,6 +791,7 @@ N4_GRAMMAR = [
             ex("右に曲がると、駅があります。", "If you turn right, there's the station.", ["magaru", "eki"]),
         ],
         "vocabulary_slugs": ["haru", "denki", "eki"],
+        "family": "conjugations",
     },
     {
         "slug": "n4-node-vs-kara",
@@ -714,6 +807,7 @@ N4_GRAMMAR = [
             ex("約束したから、行かなければなりません。", "Because I promised, I have to go.", ["yakusoku"]),
         ],
         "vocabulary_slugs": ["abunai", "yakusoku"],
+        "family": "connectors",
     },
     {
         "slug": "n4-kawarini",
@@ -728,6 +822,7 @@ N4_GRAMMAR = [
             ex("お金を払う代わりに、手伝いました。", "Instead of paying money, I helped out.", ["okane", "harau", "tetsudau"]),
         ],
         "vocabulary_slugs": ["okane", "harau", "tetsudau"],
+        "family": "connectors",
     },
     {
         "slug": "n4-kawari-ni-formal",
@@ -742,6 +837,7 @@ N4_GRAMMAR = [
             ex("好きというより、必要です。", "Rather than liking it, I need it.", ["suki"]),
         ],
         "vocabulary_slugs": ["isogashii", "suki"],
+        "family": "connectors",
     },
     {
         "slug": "n4-toshite",
@@ -756,6 +852,7 @@ N4_GRAMMAR = [
             ex("友達として、彼を助けたいです。", "As a friend, I want to help him.", ["tomodachi", "tasukeru"]),
         ],
         "vocabulary_slugs": ["sensei", "tomodachi", "tasukeru"],
+        "family": "particles",
     },
     {
         "slug": "n4-nitsuite",
@@ -770,6 +867,14 @@ N4_GRAMMAR = [
             ex("この問題について考えてください。", "Please think about this problem.", ["mondai"]),
         ],
         "vocabulary_slugs": ["nihon", "bunka", "mondai"],
+        "cloze_variants": [
+            {"jp_cloze": "旅行＿＿＿話しましょう。", "english": "Let's talk about the trip.", "answer": "について", "nudge": "What is 旅行 doing here — is it the thing being discussed, or the thing doing something?"},
+            {"jp_cloze": "彼はその映画＿＿＿何も知らない。", "english": "He doesn't know anything about that movie.", "answer": "について", "nudge": "彼 is the one who doesn't know — what job is left for 映画 to do in this sentence?"},
+            {"jp_cloze": "先生に日本の歴史＿＿＿質問した。", "english": "I asked the teacher a question about Japanese history.", "answer": "について", "nudge": "先生 already has に marking who got asked — what's left for 歴史 to point at?"},
+            {"jp_cloze": "宿題の問題＿＿＿、説明します。", "english": "Regarding the homework problem, I'll explain it.", "answer": "につき", "nudge": "This reads like a posted notice, not spoken conversation — does that change which word fits the blank?"},
+            {"jp_cloze": "その問題＿＿＿は明日考えます。", "english": "As for that problem, I'll think about it tomorrow.", "answer": "について", "nudge": "は shows up right after the blank — what is it adding to a phrase that already points at 問題?"},
+        ],
+        "family": "particles",
     },
     {
         "slug": "n4-niyoruto",
@@ -784,6 +889,7 @@ N4_GRAMMAR = [
             ex("新聞によると、事故があったそうです。", "According to the newspaper, there was an accident.", ["shinbun"]),
         ],
         "vocabulary_slugs": ["tenki", "ashita", "shinbun"],
+        "family": "particles",
     },
     {
         "slug": "n4-tame",
@@ -798,6 +904,7 @@ N4_GRAMMAR = [
             ex("雨が降ったため、試合は中止になりました。", "Because it rained, the match was cancelled.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha", "furu-rain"],
+        "family": "connectors",
     },
     {
         "slug": "n4-kagiri",
@@ -812,6 +919,7 @@ N4_GRAMMAR = [
             ex("できる限り、頑張ります。", "I'll try as hard as I can.", ["ganbaru"]),
         ],
         "vocabulary_slugs": ["shiru", "kare", "ganbaru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-tatoe-temo",
@@ -829,6 +937,7 @@ N4_GRAMMAR = [
             ex("たとえ難しくても、挑戦します。", "Even if it's difficult, I'll try.", ["muzukashii"]),
         ],
         "vocabulary_slugs": ["furu-rain", "muzukashii"],
+        "family": "connectors",
     },
     {
         "slug": "n4-kke",
@@ -843,6 +952,7 @@ N4_GRAMMAR = [
             ex("明日、何をするんだっけ。", "What are we doing tomorrow again?", ["ashita"]),
         ],
         "vocabulary_slugs": ["ashita"],
+        "family": "patterns",
     },
     {
         "slug": "n4-noda",
@@ -858,6 +968,7 @@ N4_GRAMMAR = [
             ex("財布を忘れたんです。", "The thing is, I forgot my wallet.", ["saifu", "wasureru"]),
         ],
         "vocabulary_slugs": ["isogashii", "saifu", "wasureru"],
+        "family": "copula",
     },
     {
         "slug": "n4-deshou",
@@ -873,6 +984,7 @@ N4_GRAMMAR = [
             ex("これでいいでしょう。", "This should be fine, right?", []),
         ],
         "vocabulary_slugs": ["ashita", "kare", "shiru"],
+        "family": "copula",
     },
     {
         "slug": "n4-kamoshirenai",
@@ -888,6 +1000,7 @@ N4_GRAMMAR = [
             ex("これは高いかもしれません。", "This might be expensive.", ["takai-adj"]),
         ],
         "vocabulary_slugs": ["ashita", "kare", "takai-adj"],
+        "family": "copula",
     },
     {
         "slug": "n4-nikui-yasui",
@@ -903,6 +1016,7 @@ N4_GRAMMAR = [
             ex("この本は分かりやすいです。", "This book is easy to understand.", ["hon", "wakaru"]),
         ],
         "vocabulary_slugs": ["kutsu", "kanji-word", "hon"],
+        "family": "patterns",
     },
     {
         "slug": "n4-sugiru",
@@ -918,6 +1032,14 @@ N4_GRAMMAR = [
             ex("働きすぎるのは体に悪いです。", "Working too much is bad for your health.", ["hataraku", "karada"]),
         ],
         "vocabulary_slugs": ["taberu", "koohii", "hataraku"],
+        "cloze_variants": [
+            {"jp_cloze": "このシャツは高＿＿＿。", "english": "This shirt is too expensive.", "answer": "すぎる", "nudge": "Look at the price reaction — what ending pushes 'expensive' past a comfortable line, into a complaint?"},
+            {"jp_cloze": "この部屋は静か＿＿＿。", "english": "This room is too quiet.", "answer": "すぎる", "nudge": "The silence here isn't neutral — what ending turns plain 'quiet' into something worth remarking on?"},
+            {"jp_cloze": "昨日、働き＿＿＿。", "english": "I worked too much yesterday.", "answer": "すぎました", "nudge": "This is a finished action told politely — which ending is carrying both the politeness and the sense that the amount of work went past what it should have?"},
+            {"jp_cloze": "彼は勉強し＿＿＿。", "english": "He studies too much.", "answer": "すぎる", "nudge": "Nothing here names a problem outright, but the sentence structure hints his studying has gone further than normal — what ending signals that?"},
+            {"jp_cloze": "肉を切り＿＿＿。", "english": "You're cutting the meat too much.", "answer": "すぎる", "nudge": "Picture more cuts than the meat actually needed, not just one — what ending turns 'cut' into a complaint about quantity?"},
+        ],
+        "family": "patterns",
     },
     {
         "slug": "n4-tsutsu-aru",
@@ -932,6 +1054,7 @@ N4_GRAMMAR = [
             ex("環境は変わりつつあります。", "The environment is gradually changing.", ["kankyou"]),
         ],
         "vocabulary_slugs": ["keizai", "kankyou"],
+        "family": "patterns",
     },
     {
         "slug": "n4-ageku",
@@ -945,6 +1068,7 @@ N4_GRAMMAR = [
             ex("さんざん悩んだあげく、諦めました。", "After much agonizing, I gave up in the end.", ["nayamu"]),
         ],
         "vocabulary_slugs": ["nayamu"],
+        "family": "patterns",
     },
     {
         "slug": "n4-wake",
@@ -959,6 +1083,7 @@ N4_GRAMMAR = [
             ex("彼はアメリカ育ちだから、英語が上手なわけです。", "He grew up in America, so it makes sense his English is good.", ["eigo", "jouzu"]),
         ],
         "vocabulary_slugs": ["samui", "eigo", "jouzu"],
+        "family": "copula",
     },
     {
         "slug": "n4-wakeganai",
@@ -973,6 +1098,7 @@ N4_GRAMMAR = [
             ex("こんなに簡単な問題が分からないわけがない。", "There's no way you wouldn't understand such an easy problem.", ["kantan-n4", "mondai", "wakaru"]),
         ],
         "vocabulary_slugs": ["kare", "kantan-n4", "mondai"],
+        "family": "copula",
     },
     {
         "slug": "n4-kanaru",
@@ -987,6 +1113,7 @@ N4_GRAMMAR = [
             ex("かなり疲れました。", "I got quite tired.", []),
         ],
         "vocabulary_slugs": ["tesuto", "muzukashii"],
+        "family": "patterns",
     },
     {
         "slug": "n4-hodo",
@@ -1001,6 +1128,7 @@ N4_GRAMMAR = [
             ex("練習すればするほど、上手になります。", "The more you practice, the better you get.", ["renshuu-suru", "jouzu"]),
         ],
         "vocabulary_slugs": ["kare", "ganbaru", "renshuu-suru"],
+        "family": "particles",
     },
     {
         "slug": "n4-kurai-degree",
@@ -1015,6 +1143,7 @@ N4_GRAMMAR = [
             ex("死ぬくらい疲れました。", "I'm tired to death (extremely tired).", []),
         ],
         "vocabulary_slugs": ["ureshii"],
+        "family": "particles",
     },
     {
         "slug": "n4-dake-de-naku",
@@ -1029,6 +1158,7 @@ N4_GRAMMAR = [
             ex("彼は頭がいいだけでなく、優しいです。", "He's not only smart, but also kind.", ["kare", "yasashii-n4"]),
         ],
         "vocabulary_slugs": ["eigo", "kare", "yasashii-n4"],
+        "family": "connectors",
     },
     {
         "slug": "n4-kagirazu",
@@ -1042,6 +1172,7 @@ N4_GRAMMAR = [
             ex("日本に限らず、世界中で人気があります。", "It's popular not just in Japan, but worldwide.", ["nihon", "sekai"]),
         ],
         "vocabulary_slugs": ["nihon", "sekai"],
+        "family": "particles",
     },
     {
         "slug": "n4-ippou-de",
@@ -1055,6 +1186,7 @@ N4_GRAMMAR = [
             ex("便利な一方で、値段が高いです。", "It's convenient, but on the other hand, it's expensive.", ["benri"]),
         ],
         "vocabulary_slugs": ["benri"],
+        "family": "connectors",
     },
     {
         "slug": "n4-nitotte",
@@ -1068,6 +1200,7 @@ N4_GRAMMAR = [
             ex("私にとって、家族が一番大切です。", "For me, family is the most important.", ["kazoku", "ichiban"]),
         ],
         "vocabulary_slugs": ["kazoku", "ichiban"],
+        "family": "particles",
     },
     {
         "slug": "n4-nikanshite",
@@ -1081,6 +1214,7 @@ N4_GRAMMAR = [
             ex("この件に関して、質問があります。", "Regarding this matter, I have a question.", ["shitsumon"]),
         ],
         "vocabulary_slugs": ["shitsumon"],
+        "family": "particles",
     },
     {
         "slug": "n4-souiu",
@@ -1095,6 +1229,7 @@ N4_GRAMMAR = [
             ex("そういう人は好きじゃないです。", "I don't like that kind of person.", ["suki"]),
         ],
         "vocabulary_slugs": ["mondai", "muzukashii", "suki"],
+        "family": "patterns",
     },
     {
         "slug": "n4-tte",
@@ -1109,6 +1244,7 @@ N4_GRAMMAR = [
             ex("明日雨が降るって聞きました。", "I heard it's going to rain tomorrow.", ["ashita", "furu-rain"]),
         ],
         "vocabulary_slugs": ["yasashii-n4", "ashita", "furu-rain"],
+        "family": "particles",
     },
     {
         "slug": "n4-tteba",
@@ -1122,6 +1258,7 @@ N4_GRAMMAR = [
             ex("もう、太郎ったら、また忘れたの。", "Ugh, Taro, you forgot again?", ["wasureru"]),
         ],
         "vocabulary_slugs": ["wasureru"],
+        "family": "particles",
     },
     {
         "slug": "n4-ka-douka",
@@ -1136,6 +1273,7 @@ N4_GRAMMAR = [
             ex("これでいいかどうか、確認してください。", "Please check whether this is okay or not.", []),
         ],
         "vocabulary_slugs": ["kare", "kuru-v"],
+        "family": "particles",
     },
     {
         "slug": "n4-ka-nanka",
@@ -1149,6 +1287,7 @@ N4_GRAMMAR = [
             ex("お茶か何か飲みませんか。", "Won't you drink some tea or something?", ["ocha"]),
         ],
         "vocabulary_slugs": ["ocha"],
+        "family": "particles",
     },
     {
         "slug": "n4-toka",
@@ -1162,6 +1301,7 @@ N4_GRAMMAR = [
             ex("りんごとかバナナとかが好きです。", "I like things like apples and bananas.", []),
         ],
         "vocabulary_slugs": [],
+        "family": "particles",
     },
     {
         "slug": "n4-kke2",
@@ -1175,6 +1315,7 @@ N4_GRAMMAR = [
             ex("便利な反面、危険もあります。", "While it's convenient, there's also danger.", ["benri", "kiken"]),
         ],
         "vocabulary_slugs": ["benri", "kiken"],
+        "family": "connectors",
     },
     {
         "slug": "n4-tokoroga",
@@ -1188,6 +1329,7 @@ N4_GRAMMAR = [
             ex("晴れると思いました。ところが、雨が降りました。", "I thought it would be sunny. However, it rained.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["furu-rain"],
+        "family": "connectors",
     },
     {
         "slug": "n4-soredemo",
@@ -1201,6 +1343,7 @@ N4_GRAMMAR = [
             ex("雨が降っていました。それでも、出かけました。", "It was raining. Even so, I went out.", ["furu-rain"]),
         ],
         "vocabulary_slugs": ["furu-rain"],
+        "family": "connectors",
     },
     {
         "slug": "n4-sokode",
@@ -1214,6 +1357,7 @@ N4_GRAMMAR = [
             ex("道が分かりませんでした。そこで、地図を見ました。", "I didn't know the way. So I looked at a map.", ["michi-v", "chizu"]),
         ],
         "vocabulary_slugs": ["michi-v", "chizu"],
+        "family": "connectors",
     },
     {
         "slug": "n4-sonoseika-de",
@@ -1227,6 +1371,7 @@ N4_GRAMMAR = [
             ex("台風が来ました。そのため、電車が止まりました。", "A typhoon came. Because of that, trains stopped.", ["taifuu", "densha"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha"],
+        "family": "connectors",
     },
     {
         "slug": "n4-suruto",
@@ -1240,6 +1385,7 @@ N4_GRAMMAR = [
             ex("ドアを開けました。すると、猫が入ってきました。", "I opened the door. Then a cat came in.", ["neko"]),
         ],
         "vocabulary_slugs": ["neko"],
+        "family": "connectors",
     },
     {
         "slug": "n4-igai",
@@ -1253,6 +1399,7 @@ N4_GRAMMAR = [
             ex("土曜日以外は毎日働いています。", "I work every day except Saturday.", ["doyoubi", "hataraku"]),
         ],
         "vocabulary_slugs": ["doyoubi", "hataraku"],
+        "family": "particles",
     },
     {
         "slug": "n4-igo-formal",
@@ -1266,6 +1413,7 @@ N4_GRAMMAR = [
             ex("卒業して以来、会っていません。", "I haven't met them since graduating.", ["sotsugyou-suru"]),
         ],
         "vocabulary_slugs": ["sotsugyou-suru"],
+        "family": "particles",
     },
     {
         "slug": "n4-hantai-ni",
@@ -1279,6 +1427,7 @@ N4_GRAMMAR = [
             ex("兄は静かです。反対に、弟はにぎやかです。", "My older brother is quiet. Conversely, my younger brother is lively.", ["shizuka", "nigiyaka"]),
         ],
         "vocabulary_slugs": ["shizuka", "nigiyaka"],
+        "family": "connectors",
     },
     {
         "slug": "n4-koso",
@@ -1292,6 +1441,7 @@ N4_GRAMMAR = [
             ex("今年こそ、日本語を頑張ります。", "This year for sure, I'll work hard at Japanese.", ["kotoshi", "nihongo", "ganbaru"]),
         ],
         "vocabulary_slugs": ["kotoshi", "nihongo", "ganbaru"],
+        "family": "particles",
     },
     {
         "slug": "n4-sae",
@@ -1305,6 +1455,7 @@ N4_GRAMMAR = [
             ex("子供さえ分かります。", "Even a child can understand.", ["kodomo-v", "wakaru"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "wakaru"],
+        "family": "particles",
     },
     {
         "slug": "n4-saeba",
@@ -1321,6 +1472,7 @@ N4_GRAMMAR = [
             ex("お金さえあれば、幸せです。", "As long as I have money, I'm happy.", ["okane", "shiawase"]),
         ],
         "vocabulary_slugs": ["okane", "shiawase"],
+        "family": "patterns",
     },
     {
         "slug": "n4-nomi",
@@ -1334,6 +1486,7 @@ N4_GRAMMAR = [
             ex("会員のみ入場できます。", "Only members may enter.", []),
         ],
         "vocabulary_slugs": [],
+        "family": "particles",
     },
     {
         "slug": "n4-hoka-nai",
@@ -1347,6 +1500,7 @@ N4_GRAMMAR = [
             ex("もう謝るほかありません。", "There's nothing to do but apologize.", ["ayamaru"]),
         ],
         "vocabulary_slugs": ["ayamaru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-yoruni",
@@ -1361,6 +1515,7 @@ N4_GRAMMAR = [
             ex("人によって、考え方が違います。", "Depending on the person, ways of thinking differ.", ["hito"]),
         ],
         "vocabulary_slugs": ["taifuu", "densha", "hito"],
+        "family": "particles",
     },
     {
         "slug": "n4-tsuide-ni",
@@ -1374,6 +1529,7 @@ N4_GRAMMAR = [
             ex("買い物のついでに、郵便局へ行きました。", "While shopping, I went to the post office.", ["kaimono", "yuubinkyoku"]),
         ],
         "vocabulary_slugs": ["kaimono", "yuubinkyoku"],
+        "family": "patterns",
     },
     {
         "slug": "n4-ue-de",
@@ -1387,6 +1543,7 @@ N4_GRAMMAR = [
             ex("よく考えた上で、返事します。", "I'll reply after thinking it over carefully.", ["kangaeru"]),
         ],
         "vocabulary_slugs": ["kangaeru"],
+        "family": "patterns",
     },
     {
         "slug": "n4-saichuu-ni",
@@ -1400,6 +1557,7 @@ N4_GRAMMAR = [
             ex("食事の最中に、電話が鳴りました。", "Right in the middle of the meal, the phone rang.", ["shokuji"]),
         ],
         "vocabulary_slugs": ["shokuji"],
+        "family": "patterns",
     },
     {
         "slug": "n4-oyobi",
@@ -1413,6 +1571,7 @@ N4_GRAMMAR = [
             ex("名前および住所を書いてください。", "Please write your name and address.", ["namae", "juusho"]),
         ],
         "vocabulary_slugs": ["namae", "juusho"],
+        "family": "connectors",
     },
     {
         "slug": "n4-ni-taishite",
@@ -1426,5 +1585,6 @@ N4_GRAMMAR = [
             ex("先生に対して失礼な態度を取りました。", "He took a rude attitude towards the teacher.", ["sensei", "taido"]),
         ],
         "vocabulary_slugs": ["sensei", "taido"],
+        "family": "particles",
     },
 ]

@@ -132,6 +132,32 @@ def _example_word_spans(japanese, vocabulary_slugs, vocab_forms):
     return spans_lib.derive_spans(japanese, forms_by_slug)
 
 
+CLOZE_BLANK = "＿＿＿"
+_FURIGANA_TOKEN_RE = re.compile(r"(.)\[[^\]]*\]|(.)")
+
+
+def _cloze_furigana(jp_cloze, answer, known_readings):
+    """Furigana for a cloze prompt, derived the same way example sentences get
+    theirs. The blank is filled with the answer first — the tokenizer needs a
+    whole sentence to read 帰った correctly — then the answer's annotated span
+    is cut back out. Returns None (no `jp_cloze_furigana`, app falls back to
+    the plain prompt) whenever the round trip is not exact."""
+    if CLOZE_BLANK not in jp_cloze:
+        return None
+    prefix, _, suffix = jp_cloze.partition(CLOZE_BLANK)
+    annotated = furigana_lib.annotate_sentence(prefix + answer + suffix, known_readings)
+    if not annotated:
+        return None
+    # One entry per plain character, so the answer's character range can be
+    # mapped onto the annotated string without splitting a […] reading.
+    spans = [m.span() for m in _FURIGANA_TOKEN_RE.finditer(annotated)]
+    plain = "".join(m.group(1) or m.group(2) for m in _FURIGANA_TOKEN_RE.finditer(annotated))
+    if plain != prefix + answer + suffix or not answer:
+        return None
+    start, end = len(prefix), len(prefix) + len(answer)
+    return annotated[: spans[start][0]] + CLOZE_BLANK + annotated[spans[end - 1][1] :]
+
+
 def _inline_examples(item, entry, known_readings, vocab_forms, label, errors):
     """Inlines a 2c example-sentence sidecar entry into a kanji/vocab item.
     Furigana comes from the tokenizer at build time (never the LLM); the 2c
@@ -509,9 +535,16 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
         if "family" in g:
             item["family"] = g["family"]
         if g.get("cloze_variants"):
-            item["cloze_variants"] = [
-                {**cv, "sort_order": j} for j, cv in enumerate(g["cloze_variants"])
-            ]
+            variants = []
+            for j, cv in enumerate(g["cloze_variants"]):
+                variant = {**cv, "sort_order": j}
+                cloze_furigana = _cloze_furigana(
+                    cv["jp_cloze"], cv["answer"], known_readings
+                )
+                if cloze_furigana:
+                    variant["jp_cloze_furigana"] = cloze_furigana
+                variants.append(variant)
+            item["cloze_variants"] = variants
         lesson = _load_lesson(jlpt_level.lower(), g["slug"], known_readings)
         if lesson:
             meta, body = lesson
