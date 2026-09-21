@@ -586,6 +586,55 @@ describe('ReviewCard — stage-gated grammar hints (Plans 08/10)', () => {
     expect(screen.queryByLabelText('Hint')).toBeNull();
     expect(screen.getAllByText('Dictionary form / ない form + ＿＿＿')).toHaveLength(1);
   });
+
+  it('authored N4 variant: apprentice gets a real nudge about the sentence, not the prompt again', () => {
+    // The same point as the test above, now that Plan 09 covers N4: the queue
+    // supplies the authored variant's cloze, nudge and English instead of the
+    // structure frame, so rung 1 says something the prompt does not.
+    const item = makeItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'ようにする',
+      displayMeaning: 'to try to make it so / make a habit of',
+      clozePrompt: '毎朝、野菜を食べる＿＿＿。',
+      clozeNudge: 'Is this describing one bite of vegetables, or something aimed at every single morning?',
+      clozeEnglish: 'I make a point of eating vegetables every morning.',
+      answerKey: {
+        acceptedMeanings: ['to try to make it so'],
+        acceptedReadings: [],
+        grammar: {
+          structure: 'Dictionary form / ない form + ようにする',
+          conjugationRules: {},
+          acceptedForms: ['ようにする', 'ようにしている'],
+        },
+      },
+      srsState: {
+        itemId: 'test-2',
+        stability: 1,
+        difficulty: 5,
+        dueDate: new Date().toISOString(),
+        fsrsState: 'learning',
+        reps: 1,
+        lapses: 0,
+        learningSteps: 0,
+        isBurned: false,
+        srsStageLabel: 'apprentice',
+        lastReviewedAt: null,
+        updatedAt: new Date().toISOString(),
+      },
+    });
+
+    render(<ReviewCard item={item} state="prompting" />);
+    fireEvent.press(screen.getByLabelText('Hint'));
+    const nudge = 'Is this describing one bite of vegetables, or something aimed at every single morning?';
+    expect(screen.getByText(nudge)).toBeTruthy();
+    // The bug: the "hint" repeating the question the learner is already reading.
+    expect(nudge).not.toBe(item.clozePrompt);
+    expect(screen.queryAllByText('毎朝、野菜を食べる＿＿＿。')).toHaveLength(1);
+    // Apprentice is below the Enlightened gate, so the English rung is there too.
+    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
+    expect(screen.getByText('I make a point of eating vegetables every morning.')).toBeTruthy();
+  });
 });
 
 describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
