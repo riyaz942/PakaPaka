@@ -81,14 +81,23 @@ export function evaluateReviewAnswer(
   }
 
   if (answerKey.grammar) {
-    const evaluation = evaluateGrammarAnswer(userAnswer, answerKey.grammar);
+    // MC options are built from clozeAnswer when a card carries one (Plan 08/09);
+    // grading must accept that same string, not just the rule's general
+    // acceptedForms, or a tap on the card's own displayed correct answer can
+    // grade as wrong.
+    const targetForms =
+      item.clozeAnswer && !answerKey.grammar.acceptedForms.includes(item.clozeAnswer)
+        ? [item.clozeAnswer, ...answerKey.grammar.acceptedForms]
+        : answerKey.grammar.acceptedForms;
+    const grammarContext =
+      targetForms === answerKey.grammar.acceptedForms
+        ? answerKey.grammar
+        : { ...answerKey.grammar, acceptedForms: targetForms };
+    const evaluation = evaluateGrammarAnswer(userAnswer, grammarContext);
     // Near-miss honesty (Plan 10): an answer that contains the right chunk
     // but more than the blank wants stays incorrect for SRS, but is flagged
     // so the reveal can teach instead of flatly rejecting.
     if (evaluation.result === 'incorrect') {
-      const targetForms = item.clozeAnswer
-        ? [item.clozeAnswer, ...answerKey.grammar.acceptedForms]
-        : answerKey.grammar.acceptedForms;
       if (assessGrammarNearMiss(userAnswer, { acceptedForms: targetForms }) === 'incomplete') {
         return {
           ...evaluation,
