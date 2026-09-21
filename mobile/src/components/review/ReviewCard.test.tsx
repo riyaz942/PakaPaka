@@ -556,6 +556,36 @@ describe('ReviewCard — stage-gated grammar hints (Plans 08/10)', () => {
     expect(screen.queryByText('I am a student.')).toBeNull();
     expect(screen.queryByText(/topic marker/)).toBeNull();
   });
+
+  it('drops the nudge fallback when it would just repeat the visible cloze prompt (no example-sentence match, structure fallback on both)', () => {
+    // Mirrors an unauthored N4 item: clozePrompt has no example-sentence
+    // match, so it falls back to the same blanked structure frame the nudge
+    // fallback would also produce — showing it as a "hint" would repeat the
+    // question verbatim.
+    const item = makeItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'ようにする',
+      // Empty so the English rung's displayMeaning fallback doesn't mask what
+      // this test is isolating: the nudge-only fallback path.
+      displayMeaning: '',
+      clozePrompt: 'Dictionary form / ない form + ＿＿＿',
+      clozeNudge: null,
+      clozeEnglish: null,
+      answerKey: {
+        acceptedMeanings: ['to try to make it so'],
+        acceptedReadings: [],
+        grammar: {
+          structure: 'Dictionary form / ない form + ようにする',
+          conjugationRules: {},
+          acceptedForms: ['ようにする', 'ようにしている'],
+        },
+      },
+    });
+    render(<ReviewCard item={item} state="prompting" />);
+    expect(screen.queryByLabelText('Hint')).toBeNull();
+    expect(screen.getAllByText('Dictionary form / ない form + ＿＿＿')).toHaveLength(1);
+  });
 });
 
 describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {

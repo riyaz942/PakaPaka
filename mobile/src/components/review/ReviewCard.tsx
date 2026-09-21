@@ -253,15 +253,21 @@ export function ReviewCard({
   // until authored variants cover every item: the structure frame as the nudge
   // — blanked, since "Noun + を + Verb" hands over a one-particle answer
   // (R1.5) — and the labeled meaning as the English rung.
+  //
+  // When the cloze prompt itself had no example-sentence match, it also falls
+  // back to this same blanked structure frame (clozeBuilder.ts), so the
+  // fallback nudge would just repeat the question verbatim — drop it instead
+  // of "hinting" with the prompt the learner is already looking at.
+  const structureNudge = blankFormsInStructure(answerKey.grammar?.structure, [
+    ...(item.clozeAnswer ? [item.clozeAnswer] : []),
+    ...(answerKey.grammar?.acceptedForms ?? []),
+  ]);
   const hintLevels =
     itemType === 'grammar'
       ? buildGrammarHintLevels({
           nudge:
             item.clozeNudge ??
-            blankFormsInStructure(answerKey.grammar?.structure, [
-              ...(item.clozeAnswer ? [item.clozeAnswer] : []),
-              ...(answerKey.grammar?.acceptedForms ?? []),
-            ]),
+            (structureNudge && structureNudge !== item.clozePrompt ? structureNudge : null),
           english:
             item.clozeEnglish ??
             (displayMeaning ? `Meaning (hint): ${displayMeaning}` : null),
