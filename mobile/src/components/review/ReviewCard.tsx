@@ -1,6 +1,7 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
@@ -199,12 +200,12 @@ export function ReviewCard({
         style={promptFontSize(display)}
       />
     ) : (
-      <Text
+      <GlyphText
         testID="review-prompt-glyph"
         className={cn('text-center', accent.deep, heroFontClass(display, promptFontSize(display).fontSize))}
         style={promptFontSize(display)}>
         {display}
-      </Text>
+      </GlyphText>
     );
   const grammarPrompt = renderPrompt(promptDisplay);
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FuriganaText } from '@/components/common/FuriganaText';
@@ -63,7 +64,7 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}
         />
       ) : (
-        <Text
+        <GlyphText
           className={cn(
             'text-center',
             heroFontClassForWeight(item.primaryForm, 'bold'),
@@ -71,7 +72,7 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
           )}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}>
           {item.primaryForm}
-        </Text>
+        </GlyphText>
       )}
       <ContentTypeBadge itemType={item.itemType} />
     </View>

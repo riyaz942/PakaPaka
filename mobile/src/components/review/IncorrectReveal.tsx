@@ -1,6 +1,7 @@
 import { type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
@@ -112,14 +113,14 @@ export function IncorrectReveal({
           />
         ) : null}
         <View className={cn('w-full items-center rounded-radius-xl p-space-lg', accent.soft)}>
-          <Text
+          <GlyphText
             className={cn(
               'text-display text-center',
               heroFontClassForWeight(isIncomplete ? displayAnswer : item.primaryForm, 'bold'),
               accent.deep,
             )}>
             {isIncomplete ? displayAnswer : item.primaryForm}
-          </Text>
+          </GlyphText>
         </View>
         {isIncomplete ? (
           completedSentence ? (

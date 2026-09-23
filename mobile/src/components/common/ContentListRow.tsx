@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { SRSStageDot } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT, PASSAGE_CONTENT_ACCENT } from '@/constants/contentType';
@@ -79,7 +80,7 @@ export function ContentListRow({
 
       <View className="flex-1 flex-row items-center gap-space-sm px-space-md py-space-sm">
         {glyph ? (
-          <Text
+          <GlyphText
             numberOfLines={1}
             className={cn(
               'min-w-9 max-w-[120px]',
@@ -88,7 +89,7 @@ export function ContentListRow({
               accent.glyph,
             )}>
             {glyph}
-          </Text>
+          </GlyphText>
         ) : null}
 
         <View className="flex-1">

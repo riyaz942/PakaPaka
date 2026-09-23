@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
@@ -49,7 +50,7 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
   return (
     <View testID="radical-detail">
       <ItemDetailHeader itemType="radical" meaning={item.meaning} showTypeBadge={false}>
-        <Text
+        <GlyphText
           className={cn(
             'text-center',
             heroFontClassForWeight(item.primaryForm, 'medium'),
@@ -57,7 +58,7 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
           )}
           style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
-        </Text>
+        </GlyphText>
       </ItemDetailHeader>
 
       {showStoryAbove && story ? (

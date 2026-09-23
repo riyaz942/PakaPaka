@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
@@ -32,7 +33,7 @@ export function LearnItemRow({
 
   const content = (
     <>
-      <Text
+      <GlyphText
         className={cn(
           // A heroed glyph clears the 3:1 non-text threshold and takes the base
           // hue; the smaller forms are copy, so they take `-deep` like every
@@ -42,7 +43,7 @@ export function LearnItemRow({
             : cn('text-body font-jp-medium', accent.deep),
         )}>
         {item.primaryForm}
-      </Text>
+      </GlyphText>
       <Text className="mt-1 text-body font-ui text-primary">{item.meaning}</Text>
 
       {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (

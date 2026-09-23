@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { Button } from '@/components/common/Button';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
@@ -359,14 +360,14 @@ export default function PlacementScreen() {
               )}
               testID={`placement-card-${current.id}`}>
               <ContentTypeBadge itemType={current.itemType} className="bg-surface" />
-              <Text
+              <GlyphText
                 className={cn(
                   'mt-space-lg text-[64px] leading-[1.1]',
                   heroFontClassForWeight(current.primaryForm, 'medium'),
                   CONTENT_TYPE_ACCENT[current.itemType].deep,
                 )}>
                 {current.primaryForm}
-              </Text>
+              </GlyphText>
               <Text className="mt-space-sm text-body-sm font-ui-medium text-secondary">
                 Do you know this one?
               </Text>

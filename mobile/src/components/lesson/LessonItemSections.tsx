@@ -2,6 +2,7 @@ import { router, type Href } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { Button } from '@/components/common/Button';
 import { FuriganaText } from '@/components/common/FuriganaText';
@@ -116,11 +117,11 @@ export function LessonHero({ item }: { item: CurriculumItemDetail }) {
   const heroSize = item.itemType === 'grammar' ? HERO_FONT_SIZE.pattern : HERO_FONT_SIZE.glyph;
   return (
     <ItemDetailHeader itemType={item.itemType} meaning={item.meaning} size="lg">
-      <Text
+      <GlyphText
         className={cn('text-center', heroFontClass(item.primaryForm, heroSize.fontSize), accent.deep)}
         style={heroSize}>
         {item.primaryForm}
-      </Text>
+      </GlyphText>
     </ItemDetailHeader>
   );
 }
