@@ -112,12 +112,12 @@ describe('useRelatedItems', () => {
     expect(result.current.every((entry) => entry.itemType === 'vocabulary')).toBe(true);
   });
 
-  it('returns vocabulary using a grammar pattern (reinforces)', async () => {
+  it('returns nothing for grammar — its example words are tappable in place', async () => {
     const { curriculumDb, userDb } = await createDb();
 
     const { result } = renderRelated(curriculumDb, userDb, '4', 'grammar');
 
-    expect(result.current.map((entry) => entry.id)).toEqual(['5']);
+    expect(result.current).toEqual([]);
   });
 
   it('returns nothing for vocabulary — its cross-refs are parents and grammar links', async () => {

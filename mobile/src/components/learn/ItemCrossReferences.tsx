@@ -32,7 +32,6 @@ type ItemCrossReferencesProps = {
 const RELATED_LABEL: Record<string, string> = {
   radical: 'Kanji using this radical',
   kanji: 'Vocabulary using this kanji',
-  grammar: 'Vocabulary using this pattern',
 };
 
 const COMPONENT_LABEL: Record<string, string> = {

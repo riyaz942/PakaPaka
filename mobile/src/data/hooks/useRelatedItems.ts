@@ -12,7 +12,7 @@ import { useDatabase } from '@/data/hooks/useDatabase';
  * | ---------- | ------------------------------------ | ------------------------------ |
  * | radical    | `builds_on` → kanji                  | kanji built from this radical  |
  * | kanji      | `requires`/`builds_on` → vocabulary  | vocabulary using this kanji    |
- * | grammar    | `reinforces` → vocabulary            | vocabulary using this pattern  |
+ * | grammar    | _(none)_                             | example words are tappable     |
  * | vocabulary | _(none)_                             | components come from parents   |
  *
  * A kanji reads both of its vocabulary edges: since plan v2 Phase C, a word
@@ -30,7 +30,7 @@ const RELATED_EDGE_BY_TYPE: Record<
 > = {
   radical: { relationshipTypes: ['builds_on'], childType: 'kanji' },
   kanji: { relationshipTypes: ['requires', 'builds_on'], childType: 'vocabulary' },
-  grammar: { relationshipTypes: ['reinforces'], childType: 'vocabulary' },
+  grammar: null,
   vocabulary: null,
 };
 
