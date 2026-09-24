@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
+import { MascotCelebration, type MascotPose } from '@/components/common/MascotCelebration';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type SessionCompleteHeaderProps = {
@@ -10,6 +11,8 @@ type SessionCompleteHeaderProps = {
   /** The one-line tally under the title, e.g. "6 reviews · 4 min". */
   caption?: string;
   testID?: string;
+  /** Alpi pose that replaces the check disc as the celebration. */
+  mascot?: MascotPose;
 };
 
 /**
@@ -17,7 +20,7 @@ type SessionCompleteHeaderProps = {
  * disc is the celebration — it lands with a spring unless the learner asked for
  * reduced motion, and it never carries a number of its own.
  */
-export function SessionCompleteHeader({ title, caption, testID }: SessionCompleteHeaderProps) {
+export function SessionCompleteHeader({ title, caption, testID, mascot }: SessionCompleteHeaderProps) {
   const { reducedMotion } = useReducedMotion();
 
   const disc = (
@@ -30,7 +33,13 @@ export function SessionCompleteHeader({ title, caption, testID }: SessionComplet
 
   return (
     <View className="items-center" testID={testID}>
-      {reducedMotion ? disc : <Animated.View entering={ZoomIn.springify().damping(12)}>{disc}</Animated.View>}
+      {mascot ? (
+        <MascotCelebration pose={mascot} />
+      ) : reducedMotion ? (
+        disc
+      ) : (
+        <Animated.View entering={ZoomIn.springify().damping(12)}>{disc}</Animated.View>
+      )}
 
       <Text
         accessibilityRole="header"

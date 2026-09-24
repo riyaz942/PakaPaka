@@ -28,6 +28,7 @@ export default function ReviewSummaryScreen() {
               <SessionCompleteHeader
                 title="Session complete"
                 caption={`${sessionSummary.itemsReviewed} ${reviewWord} · ${actualMinutes} min`}
+                mascot="yay"
               />
               <SessionSummaryCard
                 domainCounts={sessionSummary.domainCounts}

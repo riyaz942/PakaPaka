@@ -32,6 +32,7 @@ export default function LessonCompleteScreen() {
             title={count > 0 ? `${count} ${itemWord} learned` : 'Lesson complete'}
             caption="They're in your review queue now."
             testID="lesson-complete-title"
+            mascot="goal-achieved"
           />
 
           <FadeSlideIn index={2}>

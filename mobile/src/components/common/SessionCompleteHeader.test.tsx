@@ -29,4 +29,13 @@ describe('SessionCompleteHeader', () => {
 
     expect(screen.getByRole('header', { name: 'Session complete' })).toBeTruthy();
   });
+
+  it('shows Alpi instead of the check disc when a mascot pose is given', () => {
+    render(<SessionCompleteHeader title="Lesson complete" mascot="goal-achieved" />);
+
+    expect(screen.getByLabelText('Alpi the alpaca cheering')).toBeTruthy();
+    expect(
+      screen.queryByTestId('session-complete-disc', { includeHiddenElements: true }),
+    ).toBeNull();
+  });
 });
