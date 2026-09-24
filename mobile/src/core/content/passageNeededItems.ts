@@ -1,10 +1,11 @@
-import { GURU_PLUS } from '@/core/content/passageUnlock';
+import { isPassageItemCovered } from '@/core/content/passageUnlock';
 
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 
 /**
  * The linked vocab/grammar a locked passage is still waiting on (FR69): every
- * linked item whose SRS stage is missing or below Guru, in link order.
+ * linked item whose SRS stage is missing or below Guru and that the learner has
+ * not marked known, in link order.
  *
  * Pure sibling of `computePassageUnlock` — this decides *what* to show on the
  * locked passage to-do list, never *whether* the passage is unlocked. The 90%
@@ -14,6 +15,7 @@ import type { SRSStageLabel } from '@/core/srs/srs.types';
 export function listNeededItemsForPassage(
   linkedItemIds: string[],
   stageByItemId: ReadonlyMap<string, SRSStageLabel>,
+  knownItemIds: ReadonlySet<string> = new Set(),
 ): string[] {
   const needed: string[] = [];
   const seen = new Set<string>();
@@ -22,8 +24,7 @@ export function listNeededItemsForPassage(
     if (seen.has(itemId)) continue;
     seen.add(itemId);
 
-    const stage = stageByItemId.get(itemId);
-    if (!stage || !GURU_PLUS.has(stage)) {
+    if (!isPassageItemCovered(itemId, stageByItemId, knownItemIds)) {
       needed.push(itemId);
     }
   }

@@ -6,6 +6,7 @@ import {
   getAllPassageLinkedItemIds,
   listAllPassages,
 } from '@/data/curriculum/passageRepository';
+import { listKnownItemIds } from '@/data/user/itemStudyStatusRepository';
 import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
 import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
 
@@ -60,6 +61,7 @@ export function useReadingReadiness(): UseReadingReadinessResult {
       for (const [itemId, state] of getSrsStatesForItems(userDb, [...allLinkedIds])) {
         stageByItemId.set(itemId, state.srsStageLabel);
       }
+      const knownItemIds = listKnownItemIds(userDb, [...allLinkedIds]);
 
       type LockedCandidate = ReadingReadinessTarget & { atUserLevel: boolean };
       const locked: LockedCandidate[] = [];
@@ -68,7 +70,7 @@ export function useReadingReadiness(): UseReadingReadinessResult {
         const linkedIds = linkedByPassageId.get(passage.id) ?? [];
         if (linkedIds.length === 0) continue; // unlinked passages never gate readiness
 
-        const status = computePassageUnlock(linkedIds, stageByItemId);
+        const status = computePassageUnlock(linkedIds, stageByItemId, knownItemIds);
         if (status.unlocked) continue;
 
         locked.push({

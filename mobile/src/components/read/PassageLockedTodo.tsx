@@ -82,7 +82,7 @@ export function PassageLockedTodo({
         </Text>
       </View>
 
-      <Text className="mt-space-lg text-body font-ui-extrabold text-primary">Still to learn</Text>
+      <Text className="mt-space-lg text-body font-ui-extrabold text-primary">Not at Guru yet</Text>
 
       <View className="mt-space-sm overflow-hidden rounded-radius-md border border-border">
         {neededItems.map((item) => (

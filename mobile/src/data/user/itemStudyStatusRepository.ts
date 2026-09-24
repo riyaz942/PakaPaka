@@ -125,3 +125,12 @@ export function listStudyStatusesForItems(
 
   return result;
 }
+
+/** The subset of `itemIds` the learner has marked `known`. */
+export function listKnownItemIds(userDb: SQLiteDatabase, itemIds: string[]): Set<string> {
+  const known = new Set<string>();
+  for (const [itemId, status] of listStudyStatusesForItems(userDb, itemIds)) {
+    if (status === 'known') known.add(itemId);
+  }
+  return known;
+}

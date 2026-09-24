@@ -20,6 +20,7 @@ import {
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { todayKey } from '@/data/user/cognitiveLoadRepository';
+import { listKnownItemIds } from '@/data/user/itemStudyStatusRepository';
 import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
 import {
   getPassagePracticeResults,
@@ -145,7 +146,9 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
       if (state.lastReviewedAt) lastReviewedByItemId.set(itemId, state.lastReviewedAt);
     }
 
-    const status = computePassageUnlock(linkedIds, stageByItemId);
+    const knownItemIds = listKnownItemIds(userDb, linkedIds);
+
+    const status = computePassageUnlock(linkedIds, stageByItemId, knownItemIds);
     const unlockedForReader = linkedIds.length === 0 || status.unlocked;
 
     setPassage(detail);
@@ -156,7 +159,7 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
         ? []
         : listItemSummariesByIds(
             curriculumDb,
-            listNeededItemsForPassage(linkedIds, stageByItemId),
+            listNeededItemsForPassage(linkedIds, stageByItemId, knownItemIds),
           ),
     );
 

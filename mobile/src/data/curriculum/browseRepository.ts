@@ -11,6 +11,7 @@ import {
   listAllPassages,
 } from '@/data/curriculum/passageRepository';
 import { CURRICULUM_ATTACH_ALIAS } from '@/data/database';
+import { listKnownItemIds } from '@/data/user/itemStudyStatusRepository';
 import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
 import type { StudyStatus } from '@/data/user/studyStatus.types';
 
@@ -438,6 +439,7 @@ export function listPassageUnlockStates(
   for (const [itemId, state] of getSrsStatesForItems(userDb, [...allLinkedIds])) {
     stageByItemId.set(itemId, state.srsStageLabel);
   }
+  const knownItemIds = listKnownItemIds(userDb, [...allLinkedIds]);
 
   for (const passage of passages) {
     const linkedIds = linkedByPassageId.get(passage.id) ?? [];
@@ -457,7 +459,7 @@ export function listPassageUnlockStates(
       continue;
     }
 
-    states.set(passage.id, computePassageUnlock(linkedIds, stageByItemId));
+    states.set(passage.id, computePassageUnlock(linkedIds, stageByItemId, knownItemIds));
   }
 
   return states;

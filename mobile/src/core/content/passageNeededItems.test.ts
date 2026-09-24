@@ -43,4 +43,14 @@ describe('listNeededItemsForPassage', () => {
   it('returns an empty list when the passage has no links', () => {
     expect(listNeededItemsForPassage([], stages({}))).toEqual([]);
   });
+
+  it('leaves out items marked known, even with no SRS state', () => {
+    const needed = listNeededItemsForPassage(
+      ['a', 'b', 'c'],
+      stages({ b: 'apprentice' }),
+      new Set(['a', 'b']),
+    );
+
+    expect(needed).toEqual(['c']);
+  });
 });

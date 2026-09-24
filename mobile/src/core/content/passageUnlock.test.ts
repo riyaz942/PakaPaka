@@ -59,4 +59,16 @@ describe('computePassageUnlock', () => {
 
     expect(computePassageUnlock(ids, map).itemsRemainingToUnlock).toBe(4);
   });
+
+  it('counts items marked known as covered, with or without an SRS state', () => {
+    // 1 guru + 2 known (one never reviewed, one still apprentice) of 4 → 3 covered.
+    const status = computePassageUnlock(
+      ['1', '2', '3', '4'],
+      stages({ '1': 'guru', '3': 'apprentice' }),
+      new Set(['2', '3']),
+    );
+
+    expect(status.guruOrAboveCount).toBe(3);
+    expect(status.itemsRemainingToUnlock).toBe(1);
+  });
 });
