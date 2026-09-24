@@ -50,11 +50,10 @@ export const CLUSTER_ACCURACY_THRESHOLD = 0.6;
 export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;
 
 /**
- * Base daily goal by session intensity: a literal count of items (lessons +
- * reviews combined) the ring targets per day, not a weighted/difficulty score.
- * Relaxed is anchored on a typical ~15-item day; the rest scale with it.
+ * New lesson items per day by session intensity — the base daily lesson
+ * allowance. Reviews are never capped; they come on top of this.
  */
-export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
+export const DAILY_LESSON_ITEMS_BY_INTENSITY: Record<SessionIntensity, number> = {
   light: 8,
   relaxed: 15,
   steady: 21,
@@ -62,26 +61,8 @@ export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
   immersive: 40,
 };
 
-/**
- * Minimum active days (load > 0) in the prior week before the weekly goal
- * recalculation is accepted; below this the current goal carries forward.
- */
-export const GOAL_RING_MIN_ACTIVE_DAYS = 3;
-
-/**
- * Consecutive miss weeks (weekly mean below goal, sample met) before the app
- * *offers* an opt-in goal reduction. The goal never auto-drops.
- */
-export const GOAL_RING_MISS_WEEKS_BEFORE_OFFER = 2;
-
 /** Default new items introduced per lesson; user-configurable in Settings. */
 export const DEFAULT_LESSON_ITEM_COUNT = 5;
-
-/**
- * Daily lesson allowance = items per lesson × this multiplier.
- * Advisory — "Learn anyway" bypasses it.
- */
-export const DAILY_LESSON_BATCHES = 3;
 
 /** Review backlog size at which the daily lesson allowance starts shrinking. */
 export const LESSON_BACKLOG_THROTTLE_START = 50;

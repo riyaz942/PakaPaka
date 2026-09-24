@@ -11,11 +11,7 @@ import { migration010SrsLastReviewedAt } from '@/data/migrations/010_srs_last_re
 import { migration011SrsLearningSteps } from '@/data/migrations/011_srs_learning_steps';
 import { migration015GoalRingState } from '@/data/migrations/015_goal_ring_state';
 import { runMigrations } from '@/data/migrations/migrationRunner';
-import { getGoalRingState } from '@/data/user/goalRingRepository';
-import {
-  getVacationStartedAt,
-  setVacationStartedAt,
-} from '@/data/user/preferencesRepository';
+import { getVacationStartedAt } from '@/data/user/preferencesRepository';
 import { getSrsState, upsertSrsState } from '@/data/user/srsStateRepository';
 import {
   endVacation,
@@ -217,17 +213,5 @@ describe('due-date shift on resume', () => {
     expect(result.ok && result.value.shiftedCount).toBe(0);
     expect(getSrsState(db, '1')?.dueDate).toBe(due);
     expect(isVacationActive(db)).toBe(false);
-  });
-});
-
-describe('goal ratchet on resume', () => {
-  it('re-anchors the goal week so weeks away are never judged as missed', () => {
-    setVacationStartedAt(db, VACATION_START.toISOString());
-
-    endVacation(db, RESUME);
-
-    // Monday of the week containing 2026-07-11 (a Saturday) is 2026-07-06.
-    expect(getGoalRingState(db).goalWeekStart).toBe('2026-07-06');
-    expect(getGoalRingState(db).consecutiveMissWeeks).toBe(0);
   });
 });

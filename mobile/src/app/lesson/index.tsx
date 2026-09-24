@@ -51,7 +51,7 @@ type SwipeDirection = 'next' | 'back';
  * Nothing is committed until the final item — leaving mid-lesson costs nothing.
  */
 export default function LessonScreen() {
-  const { userDb } = useDatabase();
+  const { curriculumDb, userDb } = useDatabase();
   const [learnAnyway, setLearnAnyway] = useState(false);
   const { items, level, isLoading, capReached } = useLessonPlan({
     ignoreAllowance: learnAnyway,
@@ -142,7 +142,7 @@ export default function LessonScreen() {
       const loadResult = addDailyLoad(userDb, {
         date: todayKey(),
         increment: items.length,
-        threshold: resolveDailyGoalTarget(userDb),
+        threshold: resolveDailyGoalTarget(curriculumDb, userDb),
       });
       if (!loadResult.ok && __DEV__) {
         console.warn('[Lesson] cognitive load persist failed', loadResult.error);

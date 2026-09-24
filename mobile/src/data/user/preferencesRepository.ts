@@ -1,6 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
+import { DAILY_LESSON_ITEMS_BY_INTENSITY, DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
 import {
   reconcileHomeLayout,
   serializeHomeLayout,
@@ -127,6 +127,11 @@ export function setSessionIntensity(
     throw new Error(`Invalid session intensity: ${intensity}`);
   }
   setPreference(userDb, PREFERENCE_KEYS.sessionIntensity, intensity);
+}
+
+/** New lesson items per day, from the session intensity preset. */
+export function getDailyLessonItems(userDb: SQLiteDatabase): number {
+  return DAILY_LESSON_ITEMS_BY_INTENSITY[getSessionIntensity(userDb) ?? 'relaxed'];
 }
 
 /** New items introduced per lesson. Settings-only — not part of onboarding. */

@@ -8,7 +8,7 @@ export function GoalOvershootCard() {
     <GuidanceCardBody
       paragraphs={[
         'The ring keeps counting past 100%. Your daily goal is a number to beat, not a ceiling, so nothing you study after you reach it is wasted or uncounted.',
-        'The target itself only changes when you agree to it. After a stretch of comfortable days the app offers a higher one and waits for your answer — it never moves on its own.',
+        "The target is today's new lessons plus today's reviews. Change how many new items you learn each day in Settings.",
       ]}
     />
   );

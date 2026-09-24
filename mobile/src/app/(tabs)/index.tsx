@@ -12,9 +12,7 @@ import {
   ActionCard,
   AtRiskSection,
   BackupNudgeCard,
-  GoalReductionPrompt,
   GoalRing,
-  GoalRisePrompt,
   ImportNudgeCard,
   LevelProgressBar,
   ReadingReadiness,
@@ -45,6 +43,7 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
+  getDailyLessonItems,
   getHomeLayout,
   getLastBackedUpAt,
   getLessonItemCount,
@@ -53,11 +52,6 @@ import {
 } from '@/data/user/preferencesRepository';
 import { isBackupStale } from '@/core/backup/backupFreshness';
 import { getLastActiveDate, todayKey } from '@/data/user/cognitiveLoadRepository';
-import {
-  acceptPendingReduction,
-  acceptPendingRise,
-  declinePendingReduction,
-} from '@/data/user/goalRingRepository';
 import { setReviewPriority } from '@/data/reviewPriorityStore';
 import { countServableDueItems } from '@/data/reviewEligibility';
 import { countImportMetadataRows } from '@/data/user/importRepository';
@@ -94,6 +88,7 @@ export default function HomeScreen() {
       try {
         setLessonAllowance(
           computeDailyAllowance({
+            dailyLessonItems: getDailyLessonItems(userDb),
             itemsPerLesson: getLessonItemCount(userDb),
             itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
             reviewsDueCount,
@@ -108,10 +103,7 @@ export default function HomeScreen() {
 
   const {
     percent: cognitiveLoadPercent,
-    threshold: dailyGoal,
     isOvershoot,
-    pendingRiseTo,
-    pendingReductionTo,
     isLoading: loadLoading,
     refetch: refetchLoad,
   } = useCognitiveLoad();
@@ -121,41 +113,6 @@ export default function HomeScreen() {
     'goal-overshoot',
     vacationResolved && isOvershoot && !onVacation,
   );
-  // Dismiss hides only the current pending rise value. A later week's different
-  // offer reappears even while Home stays mounted (tab screens are long-lived).
-  const [dismissedRiseTo, setDismissedRiseTo] = useState<number | null>(null);
-
-  const handleAcceptRise = useCallback(() => {
-    const result = acceptPendingRise(userDb);
-    if (result.ok) {
-      setDismissedRiseTo(null);
-      refetchLoad();
-    } else if (__DEV__) {
-      console.warn('[Home] acceptPendingRise failed', result.error);
-    }
-  }, [userDb, refetchLoad]);
-
-  const handleAdjustGoal = useCallback(() => {
-    router.push('/settings');
-  }, []);
-
-  const handleAcceptReduction = useCallback(() => {
-    const result = acceptPendingReduction(userDb);
-    if (result.ok) {
-      refetchLoad();
-    } else if (__DEV__) {
-      console.warn('[Home] acceptPendingReduction failed', result.error);
-    }
-  }, [userDb, refetchLoad]);
-
-  const handleDeclineReduction = useCallback(() => {
-    const result = declinePendingReduction(userDb);
-    if (result.ok) {
-      refetchLoad();
-    } else if (__DEV__) {
-      console.warn('[Home] declinePendingReduction failed', result.error);
-    }
-  }, [userDb, refetchLoad]);
   const {
     perType,
     overallPercent,
@@ -475,25 +432,6 @@ export default function HomeScreen() {
             <GuidanceCardNotice
               card={GUIDANCE_CARD_BY_ID['goal-overshoot']}
               onDismiss={goalOvershootCard.dismiss}
-            />
-          ) : null}
-
-          {!onVacation && pendingRiseTo !== null && pendingRiseTo !== dismissedRiseTo ? (
-            <GoalRisePrompt
-              proposedGoal={pendingRiseTo}
-              currentGoal={dailyGoal}
-              onAccept={handleAcceptRise}
-              onAdjust={handleAdjustGoal}
-              onDismiss={() => setDismissedRiseTo(pendingRiseTo)}
-            />
-          ) : null}
-
-          {!onVacation && pendingReductionTo !== null ? (
-            <GoalReductionPrompt
-              proposedGoal={pendingReductionTo}
-              currentGoal={dailyGoal}
-              onAccept={handleAcceptReduction}
-              onDecline={handleDeclineReduction}
             />
           ) : null}
 

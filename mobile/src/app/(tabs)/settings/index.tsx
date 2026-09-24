@@ -34,7 +34,6 @@ import {
 import { DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
 import { MaxContentWidth } from '@/constants/theme';
 import { formatLastBackedUp } from '@/core/backup/backupFreshness';
-import { initialGoalForIntensity } from '@/core/cognitive-load/thresholdCalculator';
 import {
   clearBackupPreview,
   getBackupPreview,
@@ -70,10 +69,6 @@ import {
   type NotificationTime,
   type ThemeMode,
 } from '@/data/user/preferencesRepository';
-import {
-  resolveDailyGoalTarget,
-  setDailyGoalTarget,
-} from '@/data/user/goalRingRepository';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = [
@@ -95,9 +90,6 @@ const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] 
   { value: 'shown', label: 'Always shown' },
   { value: 'hidden', label: 'Always hidden' },
 ];
-
-/** The daily goal moves in whole items. */
-const DAILY_GOAL_STEP = 5;
 
 /** Items-per-lesson stepper moves one item at a time. */
 const LESSON_ITEM_COUNT_STEP = 1;
@@ -192,7 +184,6 @@ export default function SettingsScreen() {
   const [notificationsEnabled, setNotificationsEnabledState] = useState(false);
   const [notificationTime, setNotificationTimeState] = useState<NotificationTime>('evening');
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
-  const [dailyGoal, setDailyGoal] = useState(DAILY_GOAL_STEP);
   const [lessonItemCount, setLessonItemCountState] = useState(DEFAULT_LESSON_ITEM_COUNT);
   const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
   const [openCardId, setOpenCardId] = useState<GuidanceCardId | null>(null);
@@ -220,17 +211,9 @@ export default function SettingsScreen() {
     setWeaknessBiasEnabledState(getWeaknessBiasEnabled(userDb));
     setNotificationsEnabledState(getNotificationsEnabled(userDb));
     setNotificationTimeState(getNotificationTime(userDb));
-    setDailyGoal(resolveDailyGoalTarget(userDb));
     setLessonItemCountState(getLessonItemCount(userDb));
     setLastBackedUpAtState(getLastBackedUpAt(userDb));
   }, [userDb, settingsVersion]);
-
-  const handleGoalChange = (next: number) => {
-    const result = setDailyGoalTarget(userDb, next);
-    if (result.ok) {
-      setDailyGoal(resolveDailyGoalTarget(userDb));
-    }
-  };
 
   const handleLessonItemCountChange = (next: number) => {
     setLessonItemCount(userDb, next);
@@ -240,9 +223,6 @@ export default function SettingsScreen() {
   const handleSelect = (intensity: SessionIntensity) => {
     setSessionIntensity(userDb, intensity);
     setSelectedIntensity(intensity);
-    // Picking a preset in Settings is an explicit choice of daily goal.
-    setDailyGoalTarget(userDb, initialGoalForIntensity(intensity));
-    setDailyGoal(resolveDailyGoalTarget(userDb));
   };
 
   const handleWeaknessBiasToggle = (value: boolean) => {
@@ -462,21 +442,9 @@ export default function SettingsScreen() {
             />
           </View>
 
-          <SettingsCard>
-            <StepperRow
-              label="Daily goal"
-              description="items per day · no upper limit"
-              value={dailyGoal}
-              onValueChange={handleGoalChange}
-              step={DAILY_GOAL_STEP}
-              min={DAILY_GOAL_STEP}
-              unitLabel="items"
-              testID="settings-daily-goal"
-            />
-          </SettingsCard>
           <Text className="mt-space-xs text-caption font-ui-medium text-muted">
-            Your goal ring fills toward this many items per day. It also rises with a prompt when
-            you keep beating it.
+            New lesson items per day. Reviews have no limit. Your goal ring is today&apos;s lessons
+            plus today&apos;s reviews.
           </Text>
 
           <SettingsCard>

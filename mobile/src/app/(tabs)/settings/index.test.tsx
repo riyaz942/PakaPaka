@@ -198,54 +198,21 @@ jest.mock('@/config/notifications', () => ({
   cancelAllNotifications: jest.fn(),
 }));
 
-let mockDailyGoalTarget = 30;
-const mockSetDailyGoalTarget = jest.fn((_db: unknown, target: number) => {
-  mockDailyGoalTarget = target;
-  return { ok: true as const, value: undefined };
-});
-
 let mockLessonItemCount = 5;
 const mockSetLessonItemCount = jest.fn((_db: unknown, count: number) => {
   mockLessonItemCount = count;
 });
 
-jest.mock('@/data/user/goalRingRepository', () => ({
-  resolveDailyGoalTarget: () => mockDailyGoalTarget,
-  setDailyGoalTarget: (db: unknown, target: number) => mockSetDailyGoalTarget(db, target),
-}));
-
-describe('SettingsScreen daily goal (Story 2.1, FR57 / UX-DR33)', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    mockDailyGoalTarget = 30;
+describe('SettingsScreen session pace', () => {
+  it('labels each preset with new lesson items per day', () => {
+    render(<SettingsScreen />);
+    expect(screen.getByText('15 new items/day')).toBeTruthy();
+    expect(screen.getByText('40 new items/day')).toBeTruthy();
   });
 
-  it('shows the current goal in the stepper', () => {
+  it('has no daily goal stepper — the goal ring follows lessons + reviews', () => {
     render(<SettingsScreen />);
-    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('30');
-  });
-
-  it('persists a raised goal and reads it back', () => {
-    render(<SettingsScreen />);
-    fireEvent.press(screen.getByTestId('settings-daily-goal-increment'));
-    expect(mockSetDailyGoalTarget).toHaveBeenCalledWith(expect.anything(), 35);
-    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('35');
-  });
-
-  it('has no upper bound — the increment never disables', () => {
-    mockDailyGoalTarget = 200;
-    render(<SettingsScreen />);
-    expect(
-      screen.getByTestId('settings-daily-goal-increment').props.accessibilityState.disabled,
-    ).toBe(false);
-  });
-
-  it('cannot step below one goal step, so no non-positive goal is ever written', () => {
-    mockDailyGoalTarget = 5;
-    render(<SettingsScreen />);
-    fireEvent.press(screen.getByTestId('settings-daily-goal-decrement'));
-    expect(mockSetDailyGoalTarget).not.toHaveBeenCalled();
-    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('5');
+    expect(screen.queryByTestId('settings-daily-goal')).toBeNull();
   });
 });
 

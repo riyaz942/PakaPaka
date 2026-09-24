@@ -1,6 +1,5 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { anchorGoalWeek } from '@/data/user/goalRingRepository';
 import {
   getVacationStartedAt,
   setVacationStartedAt,
@@ -31,9 +30,6 @@ export function startVacation(userDb: SQLiteDatabase, now: Date = new Date()): v
  * Ends vacation mode and gives back the time: every not-yet-due card is pushed
  * forward by the length of the break, so the user returns to the queue they
  * left rather than a wall of overdue items.
- *
- * The goal ratchet is re-anchored to the current week at the same time, so the
- * weeks spent away are never judged as missed.
  */
 export function endVacation(
   userDb: SQLiteDatabase,
@@ -50,9 +46,6 @@ export function endVacation(
     // off, or the user is stuck paused until the clock catches up.
     const shiftMs = Math.max(0, now.getTime() - new Date(startedAt).getTime());
     const shiftedCount = shiftDueDatesAfter(userDb, startedAt, shiftMs);
-
-    const anchorResult = anchorGoalWeek(userDb, now);
-    if (!anchorResult.ok) return anchorResult;
 
     setVacationStartedAt(userDb, null);
 

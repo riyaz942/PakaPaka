@@ -40,6 +40,10 @@ jest.mock('@/data/user/cognitiveLoadRepository', () => ({
   todayKey: () => '2026-06-28',
 }));
 
+jest.mock('@/data/user/goalRingRepository', () => ({
+  resolveDailyGoalTarget: () => 15,
+}));
+
 jest.mock('@/data/user/preferencesRepository', () => ({
   getSessionIntensity: (...args: unknown[]) => mockGetSessionIntensity(...args),
 }));

@@ -15,6 +15,7 @@ import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository
 import { listLessonOptInIds } from '@/data/user/lessonOptInRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
+  getDailyLessonItems,
   getLessonItemCount,
   getStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
@@ -150,6 +151,7 @@ export function useLessonPlan(
       const size = getLessonItemCount(userDb);
 
       const allowance = computeDailyAllowance({
+        dailyLessonItems: getDailyLessonItems(userDb),
         itemsPerLesson: size,
         itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
         reviewsDueCount: getDueSrsStates(userDb).length,

@@ -75,7 +75,7 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 
 - Content: radical → kanji → vocabulary dependency graph + structured grammar + reading passages
 - SRS: FSRS with weakness biasing (`0.7 × fsrs + 0.3 × weakness`); unified interleaved review
-- Engagement: adaptive **goal ring** (lessons + reviews, may overshoot 100%, weekly ratchet up only — not a capacity ceiling). No Home streak; days-studied lives in Stats
+- Engagement: **goal ring** = today's lesson allowance + today's reviews (done + still due), may overshoot 100%; no stored goal, no weekly ratchet. Intensity preset = new lesson items/day; reviews are never capped. No Home streak; days-studied lives in Stats
 - Discovery: single **Browse** surface (search + filters); passages unlock at ≥90% Guru+ coverage — no separate Read tab
 - Review: **two-card kanji** (meaning + on'yomi; kun'yomi via vocab); worst-of-both SRS grade; Return-to-advance
 - AI Conversation (Talk tab): BYOK (OpenAI-compatible + Anthropic); curriculum furigana-bracket replies; unknown words flagged only (no direct SRS injection). **Only network-required feature** (NFR24). Voice (on-device TTS/STT) is in scope

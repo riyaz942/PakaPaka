@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { ChoiceCard } from '@/components/common/ChoiceCard';
-import { COGNITIVE_LOAD_THRESHOLD_BASE } from '@/config/constants';
+import { DAILY_LESSON_ITEMS_BY_INTENSITY } from '@/config/constants';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 type IntensityOption = {
@@ -25,7 +25,7 @@ const INTENSITY_OPTIONS: IntensityOption[] = [
 ];
 
 function sublabelFor(intensity: SessionIntensity): string {
-  return `${COGNITIVE_LOAD_THRESHOLD_BASE[intensity]} items/day · lessons + reviews`;
+  return `${DAILY_LESSON_ITEMS_BY_INTENSITY[intensity]} new items/day`;
 }
 
 type SessionIntensityPickerProps = {

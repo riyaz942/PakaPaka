@@ -34,8 +34,6 @@ jest.mock('@/data/curriculum/greetingRepository', () => ({
 }));
 
 const mockRefetchLoad = jest.fn();
-let mockPendingRiseTo: number | null = null;
-let mockPendingReductionTo: number | null = null;
 
 let mockLoadPercent = 42;
 let mockIsOvershoot = false;
@@ -47,29 +45,10 @@ jest.mock('@/data/hooks/useCognitiveLoad', () => ({
     percent: mockLoadPercent,
     isComplete: mockLoadPercent >= 100,
     isOvershoot: mockIsOvershoot,
-    pendingRiseTo: mockPendingRiseTo,
-    pendingReductionTo: mockPendingReductionTo,
     isLoading: false,
     error: null,
     refetch: mockRefetchLoad,
   }),
-}));
-
-// Union return type so tests can simulate failures (pre-existing tsc error fix).
-type MockGoalResult =
-  | { ok: true; value: undefined }
-  | { ok: false; error: { code: string; message: string } };
-
-const mockAcceptPendingRise = jest.fn(
-  (): MockGoalResult => ({ ok: true, value: undefined }),
-);
-const mockAcceptPendingReduction = jest.fn(() => ({ ok: true as const, value: undefined }));
-const mockDeclinePendingReduction = jest.fn(() => ({ ok: true as const, value: undefined }));
-
-jest.mock('@/data/user/goalRingRepository', () => ({
-  acceptPendingRise: () => mockAcceptPendingRise(),
-  acceptPendingReduction: () => mockAcceptPendingReduction(),
-  declinePendingReduction: () => mockDeclinePendingReduction(),
 }));
 
 const mockRefetchForecast = jest.fn();
@@ -236,8 +215,6 @@ describe('HomeScreen', () => {
     mockCountServableDueItems.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockPendingRiseTo = null;
-    mockPendingReductionTo = null;
     mockGreetingSentence = null;
     mockForecast = null;
     mockReadingTarget = null;
@@ -468,57 +445,6 @@ describe('HomeScreen', () => {
     expect(screen.getByText('All caught up')).toBeTruthy();
   });
 
-  it('shows no goal prompts when nothing is pending', () => {
-    render(<HomeScreen />);
-    expect(screen.queryByTestId('goal-rise-prompt')).toBeNull();
-    expect(screen.queryByTestId('goal-reduction-prompt')).toBeNull();
-  });
-
-  it('shows the rise prompt when a rise is pending; accepting persists and refetches', () => {
-    mockPendingRiseTo = 45;
-    render(<HomeScreen />);
-
-    expect(screen.getByTestId('goal-rise-prompt')).toBeTruthy();
-    fireEvent.press(screen.getByTestId('goal-rise-accept'));
-    expect(mockAcceptPendingRise).toHaveBeenCalledTimes(1);
-    expect(mockRefetchLoad).toHaveBeenCalled();
-  });
-
-  it('does not refetch when accepting a rise fails', () => {
-    mockPendingRiseTo = 45;
-    mockAcceptPendingRise.mockReturnValueOnce({
-      ok: false as const,
-      error: { code: 'goal_ring_persist_failed', message: 'fail' },
-    });
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    mockRefetchLoad.mockClear();
-    render(<HomeScreen />);
-    const callsAfterMount = mockRefetchLoad.mock.calls.length;
-
-    fireEvent.press(screen.getByTestId('goal-rise-accept'));
-    expect(mockAcceptPendingRise).toHaveBeenCalledTimes(1);
-    expect(mockRefetchLoad).toHaveBeenCalledTimes(callsAfterMount);
-    warnSpy.mockRestore();
-  });
-
-  it('dismissing the rise prompt hides it without accepting', () => {
-    mockPendingRiseTo = 45;
-    render(<HomeScreen />);
-
-    fireEvent.press(screen.getByTestId('goal-rise-dismiss'));
-    expect(screen.queryByTestId('goal-rise-prompt')).toBeNull();
-    expect(mockAcceptPendingRise).not.toHaveBeenCalled();
-  });
-
-  it('shows the reduction offer when pending; declining clears it', () => {
-    mockPendingReductionTo = 20;
-    render(<HomeScreen />);
-
-    expect(screen.getByTestId('goal-reduction-prompt')).toBeTruthy();
-    fireEvent.press(screen.getByTestId('goal-reduction-decline'));
-    expect(mockDeclinePendingReduction).toHaveBeenCalledTimes(1);
-  });
-
   it('does not render the shadow mode switch prompt when shouldShowSwitchPrompt is false (feature off or <14 days)', () => {
     mockShouldShowSwitchPrompt = false;
     render(<HomeScreen />);
@@ -563,10 +489,8 @@ describe('HomeScreen', () => {
       expect(screen.queryByText(/45 items ready/)).toBeNull();
     });
 
-    it('hides the forecast, at-risk section and goal prompts', () => {
+    it('hides the forecast and at-risk section', () => {
       mockOnVacation = true;
-      mockPendingRiseTo = 40;
-      mockPendingReductionTo = 20;
       mockAtRisk = {
         totalCount: 3,
         topItems: [
@@ -580,8 +504,6 @@ describe('HomeScreen', () => {
       render(<HomeScreen />);
 
       expect(screen.queryByTestId('review-forecast')).toBeNull();
-      expect(screen.queryByTestId('goal-rise-prompt')).toBeNull();
-      expect(screen.queryByTestId('goal-reduction-prompt')).toBeNull();
     });
 
     it('routes to Settings from the vacation card', () => {
@@ -612,8 +534,6 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
     mockCountServableDueItems.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockPendingRiseTo = null;
-    mockPendingReductionTo = null;
     mockGreetingSentence = null;
     mockForecast = null;
     mockReadingTarget = null;
@@ -778,8 +698,6 @@ describe('HomeScreen — customizable layout (Step 4)', () => {
     mockCountServableDueItems.mockReturnValue(2);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockPendingRiseTo = null;
-    mockPendingReductionTo = null;
     mockGreetingSentence = null;
     mockForecast = null;
     mockReadingTarget = null;

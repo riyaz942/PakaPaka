@@ -6,7 +6,7 @@ import { Banner } from '@/components/common/Banner';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
-import { initialGoalForIntensity } from '@/core/cognitive-load/thresholdCalculator';
+import { DAILY_LESSON_ITEMS_BY_INTENSITY } from '@/config/constants';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { isImportOnboardingPath } from '@/data/user/onboardingPathUtils';
 import { getOnboardingPath, setSessionIntensity } from '@/data/user/preferencesRepository';
@@ -20,7 +20,7 @@ export default function IntensityScreen() {
   const importPath = isImportOnboardingPath(userDb);
   const onboardingPath = getOnboardingPath(userDb);
 
-  const dailyGoal = initialGoalForIntensity(selectedIntensity ?? 'relaxed');
+  const dailyLessonItems = DAILY_LESSON_ITEMS_BY_INTENSITY[selectedIntensity ?? 'relaxed'];
 
   const handleContinue = () => {
     if (!selectedIntensity) {
@@ -65,8 +65,8 @@ export default function IntensityScreen() {
           className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm"
           testID="intensity-lesson-preview">
           <Text className="text-body-sm font-ui-medium text-secondary">
-            Your daily goal at this pace:{' '}
-            <Text className="font-ui-extrabold text-primary">{dailyGoal} items</Text>
+            New items per day at this pace:{' '}
+            <Text className="font-ui-extrabold text-primary">{dailyLessonItems} items</Text>
             {importPath ? ' — layered on top of your imported progress.' : '.'}
           </Text>
         </View>
@@ -76,7 +76,7 @@ export default function IntensityScreen() {
         <Banner
           visible
           variant="info"
-          message="This sets your daily goal, not a hard cap — reviews grow on top of it as you learn."
+          message="This limits only new lessons. Reviews have no limit — they come on top as you learn."
           className="mt-space-sm"
           testID="intensity-reviews-note"
         />

@@ -5,7 +5,6 @@ export { BackupNudgeCard } from './BackupNudgeCard';
 export { DailyThresholdNotice } from './DailyThresholdNotice';
 export { DaysStudiedStat } from './DaysStudiedStat';
 export { GoalRing } from './GoalRing';
-export { GoalReductionPrompt, GoalRisePrompt } from './GoalRisePrompt';
 export { ImportNudgeCard } from './ImportNudgeCard';
 export { LevelProgressBar, accessibilitySummary } from './LevelProgressBar';
 export { LevelOverviewCard } from './LevelOverviewCard';

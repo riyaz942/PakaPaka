@@ -120,7 +120,7 @@ type Props = {
 };
 
 export function ReviewSessionProvider({ children }: Props) {
-  const { userDb } = useDatabase();
+  const { curriculumDb, userDb } = useDatabase();
   const { queue, isLoading, error, refetch } = useReviewQueue();
   const [cursor, setCursor] = useState(0);
   // Incorrect cards re-asked later in the session. Always appended at the tail
@@ -200,10 +200,11 @@ export function ReviewSessionProvider({ children }: Props) {
 
     const today = todayKey();
     const daily = getDailyLoad(userDb, today);
-    // Sticky daily goal — same denominator as the Home ring (FR55).
-    thresholdRef.current = resolveDailyGoalTarget(userDb);
+    // Same denominator as the Home ring (FR55). Answering a review moves it
+    // from "due" to "done", so the target holds steady for the session.
+    thresholdRef.current = resolveDailyGoalTarget(curriculumDb, userDb);
     setBaseLoad(daily?.load ?? 0);
-  }, [userDb, isLoading]);
+  }, [curriculumDb, userDb, isLoading]);
 
   useEffect(() => {
     return () => {
@@ -556,7 +557,7 @@ export function ReviewSessionProvider({ children }: Props) {
     sessionEndAt: sessionEndAtRef.current ?? Date.now(),
     goalPercent: cognitiveLoadPercent,
     // What this session alone put on the ring — the same load the header has
-    // been counting up, expressed against the same sticky denominator.
+    // been counting up, expressed against the same denominator.
     goalDeltaPercent: computeLoadPercent(sessionLoad, thresholdRef.current),
     slipped: slippedRef.current,
   };

@@ -1,10 +1,11 @@
 import {
-  DAILY_LESSON_BATCHES,
   LESSON_BACKLOG_THROTTLE_FULL,
   LESSON_BACKLOG_THROTTLE_START,
 } from '@/config/constants';
 
 export type DailyAllowanceInput = {
+  /** New items per day from the session intensity preset. */
+  dailyLessonItems: number;
   /** New items shown per lesson (Settings-configurable, independent of pace). */
   itemsPerLesson: number;
   /** Lesson items already started today (from daily_lesson_log). */
@@ -24,14 +25,14 @@ export type DailyAllowance = {
  * Daily lesson allowance, WaniKani-style: a per-day cap on new items so a
  * motivated evening doesn't become 900 apprentice reviews next week.
  *
- * Base allowance is a few lesson batches per day, shrunk linearly toward zero
+ * Base allowance is the intensity preset's items per day, shrunk linearly toward zero
  * as the review backlog grows past LESSON_BACKLOG_THROTTLE_START. A user who
  * has started nothing today is always allowed at least one batch, so a
  * returning user with a backlog is never locked out entirely.
  */
 export function computeDailyAllowance(input: DailyAllowanceInput): DailyAllowance {
-  const { itemsPerLesson, itemsStartedToday, reviewsDueCount } = input;
-  const base = itemsPerLesson * DAILY_LESSON_BATCHES;
+  const { dailyLessonItems, itemsPerLesson, itemsStartedToday, reviewsDueCount } = input;
+  const base = dailyLessonItems;
 
   const throttleRange = LESSON_BACKLOG_THROTTLE_FULL - LESSON_BACKLOG_THROTTLE_START;
   const backlogOverage = Math.max(0, reviewsDueCount - LESSON_BACKLOG_THROTTLE_START);

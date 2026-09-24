@@ -4,27 +4,22 @@ import React from 'react';
 
 import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 
-import { addDaysToKey, weekStartKey } from '@/core/cognitive-load/thresholdCalculator';
 import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitive_load_history';
-import { migration015GoalRingState } from '@/data/migrations/015_goal_ring_state';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { addDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
-import { runWeeklyGoalCheck, setDailyGoalTarget } from '@/data/user/goalRingRepository';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
-jest.mock('@/data/user/preferencesRepository', () => ({
-  getSessionIntensity: jest.fn(() => null),
-  // Read by isVacationActive: the ratchet is skipped while paused.
-  getVacationStartedAt: jest.fn(() => mockVacationStartedAt),
-}));
+let mockGoalTarget = 15;
 
-let mockVacationStartedAt: string | null = null;
+jest.mock('@/data/user/goalRingRepository', () => ({
+  resolveDailyGoalTarget: jest.fn(() => mockGoalTarget),
+}));
 
 describe('useCognitiveLoad', () => {
   beforeEach(() => {
     __mockResetSqlite();
-    mockVacationStartedAt = null;
+    mockGoalTarget = 15;
   });
 
   async function createWrapper(userDb: Awaited<ReturnType<typeof openDatabaseAsync>>) {
@@ -44,7 +39,7 @@ describe('useCognitiveLoad', () => {
 
   it('transitions from loading to loaded with percent from seeded data', async () => {
     const userDb = await openDatabaseAsync('user.db');
-    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
+    runMigrations(userDb, [migration008CognitiveLoadHistory]);
     addDailyLoad(userDb, { date: todayKey(), increment: 15, threshold: 30 });
 
     const wrapper = await createWrapper(userDb);
@@ -59,24 +54,10 @@ describe('useCognitiveLoad', () => {
     expect(result.current.error).toBeNull();
   });
 
-  it('defaults intensity to relaxed when unset', async () => {
+  it('uses the daily goal target as denominator and reports raw overshoot', async () => {
     const userDb = await openDatabaseAsync('user.db');
-    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
-    const wrapper = await createWrapper(userDb);
-
-    const { result } = renderHook(() => useCognitiveLoad(), { wrapper });
-
-    await waitFor(() => {
-      expect(result.current.isLoading).toBe(false);
-    });
-
-    expect(result.current.threshold).toBe(15);
-  });
-
-  it('uses the sticky goal as denominator and reports raw overshoot', async () => {
-    const userDb = await openDatabaseAsync('user.db');
-    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
-    expect(setDailyGoalTarget(userDb, 20).ok).toBe(true);
+    runMigrations(userDb, [migration008CognitiveLoadHistory]);
+    mockGoalTarget = 20;
     addDailyLoad(userDb, { date: todayKey(), increment: 30, threshold: 20 });
 
     const wrapper = await createWrapper(userDb);
@@ -90,65 +71,6 @@ describe('useCognitiveLoad', () => {
     expect(result.current.percent).toBe(150);
     expect(result.current.isComplete).toBe(true);
     expect(result.current.isOvershoot).toBe(true);
-  });
-
-  it('runs the weekly check on read and surfaces a pending rise', async () => {
-    const userDb = await openDatabaseAsync('user.db');
-    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
-
-    // Anchor the ratchet in the prior week, then seed three strong active days
-    // there. The hook's read runs the weekly check for the current week.
-    const thisWeekStart = weekStartKey(new Date());
-    const priorWeekStart = addDaysToKey(thisWeekStart, -7);
-    const [py, pm, pd] = priorWeekStart.split('-').map(Number);
-    runWeeklyGoalCheck(userDb, new Date(py, pm - 1, pd));
-    for (let day = 0; day < 3; day++) {
-      addDailyLoad(userDb, {
-        date: addDaysToKey(priorWeekStart, day),
-        increment: 60,
-        threshold: 30,
-      });
-    }
-
-    const wrapper = await createWrapper(userDb);
-    const { result } = renderHook(() => useCognitiveLoad(), { wrapper });
-
-    await waitFor(() => {
-      expect(result.current.isLoading).toBe(false);
-    });
-
-    expect(result.current.pendingRiseTo).toBe(60);
-    // The goal itself is untouched until the user accepts.
-    expect(result.current.threshold).toBe(15);
-  });
-
-  it('skips the weekly check during vacation mode so weeks away are not judged', async () => {
-    const userDb = await openDatabaseAsync('user.db');
-    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
-
-    const thisWeekStart = weekStartKey(new Date());
-    const priorWeekStart = addDaysToKey(thisWeekStart, -7);
-    const [py, pm, pd] = priorWeekStart.split('-').map(Number);
-    runWeeklyGoalCheck(userDb, new Date(py, pm - 1, pd));
-    for (let day = 0; day < 3; day++) {
-      addDailyLoad(userDb, {
-        date: addDaysToKey(priorWeekStart, day),
-        increment: 60,
-        threshold: 30,
-      });
-    }
-
-    mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
-
-    const wrapper = await createWrapper(userDb);
-    const { result } = renderHook(() => useCognitiveLoad(), { wrapper });
-
-    await waitFor(() => {
-      expect(result.current.isLoading).toBe(false);
-    });
-
-    // Same setup that produces a rise offer above — suppressed while paused.
-    expect(result.current.pendingRiseTo).toBeNull();
   });
 
   it('surfaces error state on read failure', async () => {
