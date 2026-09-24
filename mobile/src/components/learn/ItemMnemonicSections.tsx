@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
+import { GlyphText } from '@/components/common/GlyphText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import type {
@@ -20,6 +21,8 @@ type ItemMnemonicSectionsProps = {
    */
   readingSlot?: React.ReactNode;
 };
+
+const COMPOSITION_TEXT = 'text-body-sm font-jp-medium text-muted';
 
 /**
  * Mnemonic and description prose across the detail scroll: 14px body copy in the
@@ -52,15 +55,20 @@ export function ItemMnemonicSections({
     item.itemType === 'kanji' &&
     parents.length > 0 &&
     !(parents.length === 1 && parents[0].primaryForm === item.primaryForm);
-  const compositionLine = showsComposition
-    ? `${parents.map((parent) => parent.primaryForm).join(' + ')} = ${item.primaryForm}`
-    : null;
 
   return (
     <View testID="item-mnemonics">
-      {compositionLine ? (
-        <View className="mt-space-md" testID="kanji-composition-line">
-          <Text className="text-body-sm font-jp-medium text-muted">{compositionLine}</Text>
+      {showsComposition ? (
+        // One glyph per part, so a form no font can draw still gets its outline.
+        <View className="mt-space-md flex-row flex-wrap items-center" testID="kanji-composition-line">
+          {parents.map((parent, index) => (
+            <React.Fragment key={parent.id}>
+              {index > 0 ? <Text className={COMPOSITION_TEXT}> + </Text> : null}
+              <GlyphText className={COMPOSITION_TEXT}>{parent.primaryForm}</GlyphText>
+            </React.Fragment>
+          ))}
+          <Text className={COMPOSITION_TEXT}> = </Text>
+          <GlyphText className={COMPOSITION_TEXT}>{item.primaryForm}</GlyphText>
         </View>
       ) : null}
 

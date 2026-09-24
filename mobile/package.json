@@ -94,6 +94,7 @@
       "react-native-gesture-handler/jestSetup"
     ],
     "moduleNameMapper": {
+      "^@/assets/curriculum-seed/curriculum-seed\\.json$": "<rootDir>/test-support/curriculum-seed.json",
       "^@/assets/(.*)$": "<rootDir>/assets/$1",
       "^@/test-support/(.*)$": "<rootDir>/test-support/$1",
       "^@/(.*)$": "<rootDir>/src/$1",

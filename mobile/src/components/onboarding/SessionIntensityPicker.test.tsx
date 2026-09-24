@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import React from 'react';
 
-import { SESSION_INTENSITY_MINUTES } from '@/config/constants';
+import { COGNITIVE_LOAD_THRESHOLD_BASE } from '@/config/constants';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import { SESSION_INTENSITY_VALUES } from '@/data/user/sessionIntensity.types';
 
@@ -25,7 +25,7 @@ describe('SessionIntensityPicker', () => {
     expect(screen.getByText('Immersive')).toBeTruthy();
   });
 
-  it('derives each sublabel from the minutes map', () => {
+  it('derives each sublabel from the daily goal map', () => {
     render(
       <SessionIntensityPicker
         selectedIntensity={null}
@@ -35,18 +35,18 @@ describe('SessionIntensityPicker', () => {
     );
 
     for (const intensity of SESSION_INTENSITY_VALUES) {
-      const minutes = SESSION_INTENSITY_MINUTES[intensity];
-      expect(screen.getByText(`~${minutes} min/day`)).toBeTruthy();
+      const items = COGNITIVE_LOAD_THRESHOLD_BASE[intensity];
+      expect(screen.getByText(`${items} items/day · lessons + reviews`)).toBeTruthy();
     }
   });
 
-  it('pins the minutes for each tier', () => {
-    expect(SESSION_INTENSITY_MINUTES).toEqual({
-      light: 5,
+  it('pins the daily goal for each tier', () => {
+    expect(COGNITIVE_LOAD_THRESHOLD_BASE).toEqual({
+      light: 8,
       relaxed: 15,
-      steady: 22,
-      intense: 30,
-      immersive: 45,
+      steady: 21,
+      intense: 28,
+      immersive: 40,
     });
   });
 

@@ -46,7 +46,7 @@ describe('compile-curriculum', () => {
         .prepare('SELECT version, content_hash, item_count FROM curriculum_metadata')
         .get() as { version: string; content_hash: string; item_count: number };
 
-      expect(metadata.version).toBe('0.0.1-test');
+      expect(metadata.version).toBe('1');
       expect(metadata.content_hash).toMatch(/^[a-f0-9]{64}$/);
       expect(metadata.item_count).toBe(5);
 

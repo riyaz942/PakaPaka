@@ -39,7 +39,7 @@ describe('initializeDatabases', () => {
       PREFERENCE_KEYS.curriculumUpdateSource,
     );
 
-    expect(curriculumVersion?.version).toBe('1.0.0-n5-seed');
+    expect(curriculumVersion?.version).toBe('1');
     expect(migrationCount?.count).toBe(migrations.length);
     expect(updateSource?.value).toBe('bundled');
   });
@@ -83,7 +83,7 @@ describe('initializeDatabases', () => {
     }
 
     setCurriculumInstallMetadata(first.value.userDb, {
-      version: '1.0.1-n5-seed-mock',
+      version: '2',
       source: 'downloaded',
     });
 

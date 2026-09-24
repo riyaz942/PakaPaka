@@ -9,6 +9,7 @@ import { validateCurriculum } from './validate-schema';
 const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
 const DEFAULT_OUTPUT = path.join(REPO_ROOT, 'mobile', 'assets', 'curriculum-seed', 'curriculum.db');
+const SEED_INFO_FILE = 'curriculum-seed.json';
 
 const ITEM_TYPE_ORDER: Record<ItemType, number> = {
   radical: 0,
@@ -30,7 +31,7 @@ function levelRank(level: string): number {
 }
 
 type MetadataJson = {
-  version: string;
+  version: number;
   jlpt_levels: string[];
   description: string;
   maintainer_notes?: string;
@@ -957,7 +958,7 @@ export function compileCurriculum(
         @radical_count, @kanji_count, @vocabulary_count, @grammar_count
       )
     `).run({
-      version: metadata.version,
+      version: String(metadata.version),
       build_date: new Date().toISOString(),
       content_hash: contentHash,
       item_count: itemCount,
@@ -979,6 +980,13 @@ export function compileCurriculum(
     fs.unlinkSync(outputPath);
   }
   fs.renameSync(tempPath, outputPath);
+
+  // Sidecar the app reads at launch to tell whether the bundled seed is newer
+  // than the curriculum already installed on the device.
+  fs.writeFileSync(
+    path.join(path.dirname(outputPath), SEED_INFO_FILE),
+    `${JSON.stringify({ version: metadata.version }, null, 2)}\n`,
+  );
 }
 
 function main(): void {
@@ -988,10 +996,19 @@ function main(): void {
   const failOnDraft =
     process.argv.includes('--fail-on-draft') || process.env.COMPILE_FAIL_ON_DRAFT === '1';
 
+  // Every compile ships a new curriculum version: raise it by 1 first, and put
+  // it back if the compile fails.
+  const metadataPath = path.join(CURRICULUM_DIR, 'metadata.json');
+  const originalMetadata = fs.readFileSync(metadataPath, 'utf8');
+  const metadata = JSON.parse(originalMetadata) as MetadataJson;
+  metadata.version += 1;
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+
   try {
     compileCurriculum(outputPath, undefined, { failOnDraft });
-    console.log(`Compiled curriculum database: ${outputPath}`);
+    console.log(`Compiled curriculum database: ${outputPath} (version ${metadata.version})`);
   } catch (error) {
+    fs.writeFileSync(metadataPath, originalMetadata);
     console.error(error instanceof Error ? error.message : String(error));
     process.exit(1);
   }

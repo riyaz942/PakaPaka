@@ -88,6 +88,9 @@ FORM_ALIASES = {
     "ハ": "八",   # KanjiVG writes the katakana for 八 in a few glyphs
     "⺤": "爪",   # PAW ONE -> the taught "claw"; folding keeps its reviewed prose
     "⺦": "爿",   # SIMPLIFIED HALF TREE TRUNK -> the taught "left-side kata"
+    # KanjiVG writes the 八-topped 兌 in 説 税 脱 鋭 悦 閲, but every one of
+    # them is drawn with the 丷 horns of 兑 — the form the learner sees.
+    "兌": "兑",
 }
 
 #: KANJIDIC has no gloss for these, so the learner would meet a nameless chip.
@@ -194,14 +197,14 @@ FORM_EXPANSIONS = {
 #: history in `user.db` and the prose in the mnemonic sidecar keyed by it. The
 #: only move so far is "horns", which named 䒑 and now names the two strokes
 #: alone; `frozen_slugs` seeds it so the re-cut shape inherits the address.
-SLUG_MOVES = {"丷": "horns"}
+SLUG_MOVES = {"丷": "horns", "兑": "exchange"}
 
 #: Stroke counts for components KanjiVG ships no glyph of. Every other count is
 #: read off the glyph itself; these are the ones that would otherwise be
 #: unverifiable, and they are what the completeness check below runs on.
 HAND_STROKES = {
     "𠂇": 2, "丷": 2, "⺕": 3, "𠂉": 2, "𦥑": 4, "𠂊": 2, "龶": 4, "𡗗": 5,
-    "龷": 4, "乚": 1, "电": 5, "丂": 2,
+    "龷": 4, "乚": 1, "电": 5, "丂": 2, "兑": 7,
     # KanjiVG draws the standalone 辶 with the four-stroke 辵 head; the form
     # every kanji here actually carries is the three-stroke ⻌.
     "辶": 3,

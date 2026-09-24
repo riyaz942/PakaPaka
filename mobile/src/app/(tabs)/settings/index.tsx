@@ -34,6 +34,7 @@ import {
 import { DEFAULT_LESSON_ITEM_COUNT } from '@/config/constants';
 import { MaxContentWidth } from '@/constants/theme';
 import { formatLastBackedUp } from '@/core/backup/backupFreshness';
+import { initialGoalForIntensity } from '@/core/cognitive-load/thresholdCalculator';
 import {
   clearBackupPreview,
   getBackupPreview,
@@ -239,8 +240,8 @@ export default function SettingsScreen() {
   const handleSelect = (intensity: SessionIntensity) => {
     setSessionIntensity(userDb, intensity);
     setSelectedIntensity(intensity);
-    // Intensity only seeds the goal while it is unset — refresh the displayed
-    // value, but never overwrite a user-set goal.
+    // Picking a preset in Settings is an explicit choice of daily goal.
+    setDailyGoalTarget(userDb, initialGoalForIntensity(intensity));
     setDailyGoal(resolveDailyGoalTarget(userDb));
   };
 

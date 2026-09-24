@@ -5,6 +5,7 @@ import {
 } from 'expo-sqlite';
 
 import { CURRICULUM_DB_NAME } from '@/data/curriculum/curriculumConfig';
+import { isCurriculumVersionNewer } from '@/data/curriculum/curriculumVersion';
 import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
@@ -17,6 +18,10 @@ const USER_DB_NAME = 'user.db';
 
 // Metro bundles .db assets when required from the data layer.
 const CURRICULUM_ASSET = require('@/assets/curriculum-seed/curriculum.db');
+// Written next to the seed by scripts/compile-curriculum.ts.
+const BUNDLED_SEED = require('@/assets/curriculum-seed/curriculum-seed.json') as {
+  version: number;
+};
 
 export type DatabaseHandles = {
   curriculumDb: SQLiteDatabase;
@@ -30,18 +35,24 @@ function readCurriculumVersion(curriculumDb: SQLiteDatabase): string | null {
   return metadata?.version ?? null;
 }
 
+/** True when the seed bundled in this app build is newer than the installed curriculum. */
+function bundledSeedIsNewer(curriculumDb: SQLiteDatabase): boolean {
+  const installed = readCurriculumVersion(curriculumDb);
+  return installed === null || isCurriculumVersionNewer(BUNDLED_SEED.version, installed);
+}
+
 /**
- * Imports bundled seed only on first launch (no curriculum_update_source preference yet).
- * Downloaded curriculum (Story 1.6) must never be overwritten by the bundled asset.
+ * Imports the bundled seed on first launch, and again when an app update ships
+ * a newer seed version — over a bundled or a downloaded (Story 1.6) curriculum.
  */
 export async function openCurriculumDatabase(
   userDb: SQLiteDatabase,
 ): Promise<Result<SQLiteDatabase, AppError>> {
   try {
     const updateSource = getCurriculumUpdateSource(userDb);
-    const shouldImportBundled = updateSource === null;
+    let importedBundled = updateSource === null;
 
-    if (shouldImportBundled) {
+    if (importedBundled) {
       // importDatabaseFromAssetAsync is @hidden in expo-sqlite typings but matches the
       // architecture dual-DB init contract (imperative bundled import, not SQLiteProvider).
       await importDatabaseFromAssetAsync(CURRICULUM_DB_NAME, {
@@ -49,9 +60,19 @@ export async function openCurriculumDatabase(
       });
     }
 
-    const curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
+    let curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
 
-    if (shouldImportBundled) {
+    if (updateSource !== null && bundledSeedIsNewer(curriculumDb)) {
+      await curriculumDb.closeAsync();
+      await importDatabaseFromAssetAsync(CURRICULUM_DB_NAME, {
+        assetId: CURRICULUM_ASSET,
+        forceOverwrite: true,
+      });
+      curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
+      importedBundled = true;
+    }
+
+    if (importedBundled) {
       const version = readCurriculumVersion(curriculumDb);
       if (version) {
         const metadata = curriculumDb.getFirstSync<{ content_hash: string | null }>(

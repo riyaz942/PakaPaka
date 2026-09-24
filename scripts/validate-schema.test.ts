@@ -25,7 +25,7 @@ function writeTempCurriculumDir(vocabularyItem: Record<string, unknown>): string
   fs.writeFileSync(
     path.join(tempDir, 'metadata.json'),
     JSON.stringify({
-      version: '0.0.1-test',
+      version: 1,
       jlpt_levels: ['N5'],
       description: 'Fixture metadata for furigana validation tests',
     }),
@@ -181,7 +181,7 @@ function writeTempGrammarDir(grammarItem: Record<string, unknown>): string {
   fs.writeFileSync(
     path.join(tempDir, 'metadata.json'),
     JSON.stringify({
-      version: '0.0.1-test',
+      version: 1,
       jlpt_levels: ['N5'],
       description: 'Fixture metadata for cloze validation tests',
     }),
@@ -345,7 +345,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     fs.writeFileSync(
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
-        version: '0.0.1-test',
+        version: 1,
         jlpt_levels: ['N5'],
         description: 'Fixture metadata for readings validation tests',
       }),
@@ -433,7 +433,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     fs.writeFileSync(
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
-        version: '0.0.1-test',
+        version: 1,
         jlpt_levels: ['N5'],
         description: 'Fixture metadata for kanji validation tests',
       }),
@@ -483,7 +483,7 @@ describe('validateCurriculum Rev 1 fields', () => {
     fs.writeFileSync(
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
-        version: '0.0.1-test',
+        version: 1,
         jlpt_levels: ['N5'],
         description: 'Fixture metadata for radical validation tests',
       }),

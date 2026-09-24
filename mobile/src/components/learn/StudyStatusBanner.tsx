@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { Banner } from '@/components/common/Banner';
+import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 import type { StudyStatus } from '@/data/user/studyStatus.types';
@@ -56,11 +57,11 @@ export function StudyStatusBanner({
           </Text>
           <View className="mt-[2px] flex-row flex-wrap gap-space-sm">
             {unmetPrerequisites.map((parent) => (
-              <Text
+              <GlyphText
                 key={parent.id}
                 className="text-body font-jp-medium text-feedback-warning-deep">
                 {parent.primaryForm}
-              </Text>
+              </GlyphText>
             ))}
           </View>
         </View>

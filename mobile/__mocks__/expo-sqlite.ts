@@ -8,9 +8,10 @@ type MockDatabaseState = {
 
 const databases = new Map<string, MockDatabaseState>();
 const importedAssets = new Map<number, string>();
+let lastImportForceOverwrite = false;
 
 const SEED_METADATA: Row = {
-  version: '1.0.0-n5-seed',
+  version: '1',
   build_date: '2026-05-25T00:00:00.000Z',
   content_hash: 'mock-content-hash',
   item_count: 114,
@@ -21,7 +22,7 @@ const SEED_METADATA: Row = {
 };
 
 const DOWNLOAD_METADATA: Row = {
-  version: '1.0.1-n5-seed-mock',
+  version: '2',
   build_date: '2026-06-01T00:00:00.000Z',
   content_hash: '7cd5775ec3adfb962f406348983f5f72d81224602c1dad34ecc47d2568724c20',
   item_count: 114,
@@ -1551,6 +1552,7 @@ export async function importDatabaseFromAssetAsync(
   assetSource: { assetId: number; forceOverwrite?: boolean },
 ) {
   importedAssets.set(assetSource.assetId, databaseName);
+  lastImportForceOverwrite = assetSource.forceOverwrite ?? false;
 
   const state = getDatabaseState(databaseName);
   state.tables.set('curriculum_metadata', [{ ...SEED_METADATA }]);
@@ -1560,6 +1562,15 @@ export function __mockApplyDownloadedCurriculumToActive() {
   const state = getDatabaseState('curriculum.db');
   state.tables.set('curriculum_metadata', [{ ...DOWNLOAD_METADATA }]);
   databases.delete('curriculum.db.download');
+}
+
+export function __mockSetCurriculumMetadata(databaseName: string, row: Row) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('curriculum_metadata', [{ ...row }]);
+}
+
+export function __mockGetLastImportForceOverwrite() {
+  return lastImportForceOverwrite;
 }
 
 export function __mockSetItems(databaseName: string, rows: Row[]) {

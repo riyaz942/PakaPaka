@@ -16,14 +16,15 @@ import {
   __mockApplyDownloadedCurriculumToActive,
   __mockClearImportedAssets,
   __mockGetImportedAssetCount,
+  __mockGetLastImportForceOverwrite,
   __mockResetSqlite,
+  __mockSetCurriculumMetadata,
 } from '../../../__mocks__/expo-sqlite';
 
 import {
   checkForCurriculumUpdate,
   computeFileSha256Hex,
   downloadAndSwapCurriculum,
-  isCurriculumVersionNewer,
   parseCurriculumManifest,
   validateDownloadedCurriculumFile,
 } from '@/data/curriculum/curriculumUpdate';
@@ -32,6 +33,7 @@ import { initializeDatabases, openCurriculumDatabase } from '@/data/database';
 import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  getPreference,
   PREFERENCE_KEYS,
   setCurriculumInstallMetadata,
 } from '@/data/user/preferencesRepository';
@@ -66,23 +68,12 @@ describe('curriculumUpdate', () => {
     setMockCurriculumSwapCallback(__mockApplyDownloadedCurriculumToActive);
   });
 
-  describe('isCurriculumVersionNewer', () => {
-    it('returns true when remote semver is newer than local seed', () => {
-      expect(isCurriculumVersionNewer('1.0.1-n5-seed-mock', '1.0.0-n5-seed')).toBe(true);
-    });
-
-    it('returns false when versions are equal or older', () => {
-      expect(isCurriculumVersionNewer('1.0.0-n5-seed', '1.0.0-n5-seed')).toBe(false);
-      expect(isCurriculumVersionNewer('0.9.0-n5-seed', '1.0.0-n5-seed')).toBe(false);
-    });
-  });
-
   describe('parseCurriculumManifest', () => {
     it('parses a valid manifest', () => {
       const result = parseCurriculumManifest(MOCK_MANIFEST);
       expect(result.ok).toBe(true);
       if (result.ok) {
-        expect(result.value.version).toBe('1.0.1-n5-seed-mock');
+        expect(result.value.version).toBe('2');
         expect(result.value.sha256).toBe(MOCK_MANIFEST.sha256.toLowerCase());
       }
     });
@@ -95,15 +86,15 @@ describe('curriculumUpdate', () => {
 
   describe('checkForCurriculumUpdate', () => {
     it('returns manifest when remote is newer', async () => {
-      const result = await checkForCurriculumUpdate('1.0.0-n5-seed');
+      const result = await checkForCurriculumUpdate('1');
       expect(result.ok).toBe(true);
       if (result.ok) {
-        expect(result.value?.version).toBe('1.0.1-n5-seed-mock');
+        expect(result.value?.version).toBe('2');
       }
     });
 
     it('returns null when local is already current', async () => {
-      const result = await checkForCurriculumUpdate('1.0.1-n5-seed-mock');
+      const result = await checkForCurriculumUpdate('2');
       expect(result.ok).toBe(true);
       if (result.ok) {
         expect(result.value).toBeNull();
@@ -130,7 +121,7 @@ describe('curriculumUpdate', () => {
       const result = await validateDownloadedCurriculumFile(tempUri, fixtureSha256Hex());
       expect(result.ok).toBe(true);
       if (result.ok) {
-        expect(result.value.version).toBe('1.0.1-n5-seed-mock');
+        expect(result.value.version).toBe('2');
       }
     });
   });
@@ -152,7 +143,7 @@ describe('curriculumUpdate', () => {
         throw new Error(`swap failed: ${swapResult.error.code} ${swapResult.error.message}`);
       }
 
-      expect(swapResult.value.version).toBe('1.0.1-n5-seed-mock');
+      expect(swapResult.value.version).toBe('2');
 
       const installedVersion = init.value.userDb.getFirstSync<{ value: string }>(
         'SELECT value FROM user_preferences WHERE key = ?',
@@ -163,13 +154,13 @@ describe('curriculumUpdate', () => {
         PREFERENCE_KEYS.curriculumUpdateSource,
       );
 
-      expect(installedVersion?.value).toBe('1.0.1-n5-seed-mock');
+      expect(installedVersion?.value).toBe('2');
       expect(updateSource?.value).toBe('downloaded');
 
       const metadata = swapResult.value.curriculumDb.getFirstSync<{ version: string }>(
         'SELECT version FROM curriculum_metadata LIMIT 1',
       );
-      expect(metadata?.version).toBe('1.0.1-n5-seed-mock');
+      expect(metadata?.version).toBe('2');
     });
 
     it('leaves prior curriculum when checksum validation fails', async () => {
@@ -187,7 +178,7 @@ describe('curriculumUpdate', () => {
       const metadata = init.value.curriculumDb.getFirstSync<{ version: string }>(
         'SELECT version FROM curriculum_metadata LIMIT 1',
       );
-      expect(metadata?.version).toBe('1.0.0-n5-seed');
+      expect(metadata?.version).toBe('1');
     });
   });
 
@@ -232,12 +223,71 @@ describe('openCurriculumDatabase bundled import gating', () => {
     const userDb = await openDatabaseAsync('user.db');
     runMigrations(userDb, migrations);
     setCurriculumInstallMetadata(userDb, {
-      version: '1.0.1-n5-seed-mock',
+      version: '2',
       source: 'downloaded',
     });
+    __mockApplyDownloadedCurriculumToActive();
 
     const result = await openCurriculumDatabase(userDb);
     expect(result.ok).toBe(true);
     expect(__mockGetImportedAssetCount()).toBe(0);
+  });
+
+  it('keeps the installed curriculum when its version equals the bundled seed', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, migrations);
+    expect((await openCurriculumDatabase(userDb)).ok).toBe(true);
+
+    // A different build date alone does not trigger a re-import.
+    __mockSetCurriculumMetadata('curriculum.db', {
+      version: '1',
+      build_date: '2026-05-01T00:00:00.000Z',
+      content_hash: 'old-hash',
+    });
+    __mockClearImportedAssets();
+
+    expect((await openCurriculumDatabase(userDb)).ok).toBe(true);
+    expect(__mockGetImportedAssetCount()).toBe(0);
+  });
+
+  it('re-imports when an app update ships a newer bundled seed version', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, migrations);
+    expect((await openCurriculumDatabase(userDb)).ok).toBe(true);
+
+    // Installed before whole-number versions: parses as 0, older than seed 1.
+    __mockSetCurriculumMetadata('curriculum.db', {
+      version: '1.13.1-jlpt-first-bands',
+      build_date: '2026-05-01T00:00:00.000Z',
+      content_hash: 'old-hash',
+    });
+    __mockClearImportedAssets();
+
+    const result = await openCurriculumDatabase(userDb);
+    expect(result.ok).toBe(true);
+    expect(__mockGetImportedAssetCount()).toBe(1);
+    expect(__mockGetLastImportForceOverwrite()).toBe(true);
+    expect(getPreference(userDb, PREFERENCE_KEYS.installedCurriculumContentHash)).toBe(
+      'mock-content-hash',
+    );
+    expect(getPreference(userDb, PREFERENCE_KEYS.curriculumUpdateSource)).toBe('bundled');
+  });
+
+  it('replaces a downloaded curriculum only when the bundled version is newer', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, migrations);
+    setCurriculumInstallMetadata(userDb, { version: '0', source: 'downloaded' });
+    __mockSetCurriculumMetadata('curriculum.db', {
+      version: '0',
+      build_date: '2026-04-01T00:00:00.000Z',
+      content_hash: 'old-hash',
+    });
+
+    const result = await openCurriculumDatabase(userDb);
+    expect(result.ok).toBe(true);
+    expect(__mockGetImportedAssetCount()).toBe(1);
+    expect(__mockGetLastImportForceOverwrite()).toBe(true);
+    expect(getPreference(userDb, PREFERENCE_KEYS.installedCurriculumVersion)).toBe('1');
+    expect(getPreference(userDb, PREFERENCE_KEYS.curriculumUpdateSource)).toBe('bundled');
   });
 });

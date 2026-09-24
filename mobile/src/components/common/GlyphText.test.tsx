@@ -10,6 +10,12 @@ describe('GlyphText', () => {
     expect(screen.getByLabelText('𢆉')).toBeTruthy();
   });
 
+  it('draws the 丷-topped 兑, which is in the BMP but outside both bundled fonts', () => {
+    render(<GlyphText testID="glyph">兑</GlyphText>);
+    expect(screen.queryByText('兑')).toBeNull();
+    expect(screen.getByLabelText('兑')).toBeTruthy();
+  });
+
   it('renders any other form as text', () => {
     render(<GlyphText testID="glyph">幸</GlyphText>);
     expect(screen.getByText('幸')).toBeTruthy();

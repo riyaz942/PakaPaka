@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import React from 'react';
 
@@ -208,7 +208,10 @@ describe('KanjiDetail Rev 1 content', () => {
       />,
     );
 
-    expect(screen.getByText('木 + 日 = 東')).toBeTruthy();
+    const line = within(screen.getByTestId('kanji-composition-line'));
+    for (const part of ['木', ' + ', '日', ' = ', '東']) {
+      expect(line.getByText(part)).toBeTruthy();
+    }
     expect(screen.getByText('Meaning mnemonic')).toBeTruthy();
     expect(
       screen.getByText('The sun climbs the tree until it hangs over the east.'),

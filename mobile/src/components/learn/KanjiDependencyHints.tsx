@@ -2,6 +2,7 @@ import { type Href, router } from 'expo-router';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 
 /**
@@ -44,9 +45,9 @@ export function KanjiDependencyHints({
             onPress={() => router.push(`/browse/item/${parent.id}` as Href)}
             testID={testID ? `${testID}-${parent.id}` : undefined}
             className="min-h-[44px] min-w-[44px] justify-center px-2 py-1">
-            <Text className="text-caption font-jp-medium text-brand-text">
+            <GlyphText className="text-caption font-jp-medium text-brand-text">
               {parent.primaryForm}
-            </Text>
+            </GlyphText>
           </Pressable>
         </React.Fragment>
       ))}

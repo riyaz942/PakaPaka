@@ -1,13 +1,5 @@
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
-export const SESSION_INTENSITY_MINUTES: Record<SessionIntensity, number> = {
-  light: 5,
-  relaxed: 15,
-  steady: 22,
-  intense: 30,
-  immersive: 45,
-};
-
 /** Max items held in the prefetch buffer ahead of the current item. */
 export const MAX_PREFETCH = 5;
 

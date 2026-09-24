@@ -7,7 +7,7 @@
       "additionalProperties": false,
       "required": ["version", "jlpt_levels", "description"],
       "properties": {
-        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+" },
+        "version": { "type": "integer", "minimum": 1 },
         "jlpt_levels": {
           "type": "array",
           "items": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },

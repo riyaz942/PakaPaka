@@ -22,7 +22,7 @@ npm run validate-schema
 npm run compile-curriculum
 ```
 
-Commit the updated `curriculum.db` when JSON changes. CI (`.github/workflows/compile-curriculum.yml`) validates and compiles to `dist/curriculum.db` but does **not** auto-commit the LFS binary.
+Commit the updated `curriculum.db` and `curriculum-seed.json` together when JSON changes. `npm run compile-curriculum` raises the whole-number `version` in `curriculum/metadata.json` by 1 on every run (do not edit it by hand) and writes it to `curriculum-seed.json`. The app reads `curriculum-seed.json` at launch and re-imports the seed when its `version` is higher than the installed curriculum's, whether that was bundled or downloaded. CI (`.github/workflows/compile-curriculum.yml`) validates and compiles to `dist/curriculum.db` but does **not** auto-commit the LFS binary.
 
 ## Without Git LFS
 

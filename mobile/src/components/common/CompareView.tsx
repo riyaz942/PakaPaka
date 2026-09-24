@@ -126,13 +126,13 @@ function ComponentChips({
               // stay readable while differences still stand out.
               shared ? 'bg-surface-elevated' : 'border border-border bg-surface',
             )}>
-            <Text
+            <GlyphText
               className={cn(
                 'text-body font-jp-medium',
                 shared ? 'text-secondary' : 'text-primary',
               )}>
               {parent.primaryForm}
-            </Text>
+            </GlyphText>
           </View>
         );
       })}

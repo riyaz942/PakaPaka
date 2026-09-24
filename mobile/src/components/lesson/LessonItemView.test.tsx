@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { render, screen, within } from '@testing-library/react-native';
 import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 
@@ -199,7 +199,10 @@ describe('LessonItemView sections', () => {
 
     mount(curriculumDb, userDb, 1);
 
-    expect(screen.getByText('一 = 日')).toBeTruthy();
+    const line = within(screen.getByTestId('kanji-composition-line'));
+    for (const part of ['一', ' = ', '日']) {
+      expect(line.getByText(part)).toBeTruthy();
+    }
     expect(screen.getByText('One flat horizon with the sun pinned to it: a day.')).toBeTruthy();
     expect(screen.getByText('ニチ — the sun knocks twice and says nichi.')).toBeTruthy();
     expect(screen.queryByTestId('item-description')).toBeNull();

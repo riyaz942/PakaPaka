@@ -11,7 +11,6 @@ import {
 import { Asset } from 'expo-asset';
 import * as Network from 'expo-network';
 import { openDatabaseAsync, type SQLiteDatabase } from 'expo-sqlite';
-import semver from 'semver';
 
 import {
   BUNDLED_FIXTURE_SCHEME,
@@ -23,6 +22,7 @@ import {
   getSqliteDirectoryUri,
 } from '@/data/curriculum/curriculumConfig';
 import type { CurriculumManifest } from '@/data/curriculum/curriculumManifest.types';
+import { isCurriculumVersionNewer } from '@/data/curriculum/curriculumVersion';
 import { attachCurriculumForQuery, reopenCurriculumDatabase } from '@/data/database';
 import {
   PREFERENCE_KEYS,
@@ -32,15 +32,6 @@ import type { AppError, Result } from '@/types/result.types';
 
 const MOCK_MANIFEST = require('@/assets/curriculum-manifest/mock-manifest.json') as CurriculumManifest;
 const MOCK_UPDATE_DB = require('@/assets/curriculum-manifest/curriculum-mock-update.db');
-
-export function isCurriculumVersionNewer(remoteVersion: string, localVersion: string): boolean {
-  const remote = semver.coerce(remoteVersion);
-  const local = semver.coerce(localVersion);
-  if (!remote || !local) {
-    return false;
-  }
-  return semver.gt(remote, local);
-}
 
 export function parseCurriculumManifest(payload: unknown): Result<CurriculumManifest, AppError> {
   if (!payload || typeof payload !== 'object') {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
@@ -48,9 +49,9 @@ export function LinkedItemTile({
       {/* 20px keeps the base-hue form on a plain surface inside WCAG's
           large-text allowance; the soft variant sits on its own tint and takes
           the deep step instead. */}
-      <Text className={cn('text-title font-jp-bold', isSoft ? accent.deep : accent.glyph)}>
+      <GlyphText className={cn('text-title font-jp-bold', isSoft ? accent.deep : accent.glyph)}>
         {form}
-      </Text>
+      </GlyphText>
       {meaning ? (
         <Text
           className={cn(
