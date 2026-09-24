@@ -17,6 +17,12 @@ import {
 } from '@/data/ai/voice/modelDownloadManager';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
+// jest-expo's setup stubs this path with a stateless getInfoAsync that always says
+// "exists". Use the project mock, whose store the resource-fetcher mock writes to.
+jest.mock('expo-file-system/legacy', () =>
+  jest.requireActual('../../../../__mocks__/expo-file-system'),
+);
+
 describe('modelDownloadManager', () => {
   beforeEach(() => {
     __mockResetResourceFetcher();
@@ -46,12 +52,24 @@ describe('modelDownloadManager', () => {
       expect(result).toEqual({ ok: true, value: true });
     });
 
-    it('treats a missing model directory as not downloaded, not a check failure', async () => {
-      __mockFailListDownloaded(new Error('Directory could not be read: path does not exist'));
+    it('reports false without listing when the model directory does not exist yet', async () => {
+      __mockFailListDownloaded(new Error('listing a missing directory must not happen'));
 
       const result = await areVoiceModelsDownloaded();
 
       expect(result).toEqual({ ok: true, value: false });
+    });
+
+    it('reports a check failure when the directory exists but cannot be listed', async () => {
+      __mockMarkDownloaded();
+      __mockFailListDownloaded(new Error('permission denied'));
+
+      const result = await areVoiceModelsDownloaded();
+
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.error.code).toBe('voice_model_check_failed');
+      }
     });
   });
 

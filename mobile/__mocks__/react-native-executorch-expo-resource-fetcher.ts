@@ -5,7 +5,13 @@
  * half-written file never appears in the directory `listDownloadedFiles` reads.
  * This mock keeps that property: `fetch` only records a file as present once it
  * resolves, so an interrupted download leaves nothing behind.
+ *
+ * The directory itself is registered in the shared mock file system once a file
+ * lands, so `getInfoAsync` reports it missing before the first download, as on
+ * a fresh device.
  */
+
+import { getMockFileStore } from '../test-support/file-system-test-state';
 
 const RNE_DIRECTORY = 'file:///mock-documents/react-native-executorch/';
 
@@ -26,7 +32,12 @@ const state = {
   cancelCallCount: 0,
 };
 
+function markDirectoryCreated(): void {
+  getMockFileStore().set(RNE_DIRECTORY, '');
+}
+
 export function __mockResetResourceFetcher(): void {
+  getMockFileStore().delete(RNE_DIRECTORY);
   state.downloaded.clear();
   state.sizeByUri.clear();
   state.fetchError = null;
@@ -39,6 +50,7 @@ export function __mockResetResourceFetcher(): void {
 
 /** Marks these source URLs as already present on disk. */
 export function __mockMarkDownloaded(...uris: string[]): void {
+  markDirectoryCreated();
   for (const uri of uris) {
     state.downloaded.add(filenameFromUri(uri));
   }
@@ -100,6 +112,7 @@ export const ExpoResourceFetcher = {
       // cache-then-move behaviour.
       throw state.fetchError;
     }
+    markDirectoryCreated();
     const paths: string[] = [];
     for (const source of sources) {
       if (typeof source !== 'string') {

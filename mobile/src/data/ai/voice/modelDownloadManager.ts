@@ -1,3 +1,4 @@
+import { documentDirectory, getInfoAsync } from 'expo-file-system/legacy';
 import { ResourceFetcherUtils } from 'react-native-executorch';
 import { ExpoResourceFetcher } from 'react-native-executorch-expo-resource-fetcher';
 
@@ -19,25 +20,15 @@ import type { AppError, Result } from '@/types/result.types';
  * the silent failure this feature must not have.
  */
 
+/** Where the fetcher stores models. Mirrors its `RNEDirectory`, which the package does not export. */
+const MODEL_DIRECTORY = `${documentDirectory}react-native-executorch/`;
+
 function fileNameOf(source: unknown): string | null {
   return typeof source === 'string' ? ResourceFetcherUtils.getFilenameFromUri(source) : null;
 }
 
 function toError(code: string, userMessage: string, cause: unknown): AppError {
   return { code, message: String(cause), userMessage, cause };
-}
-
-/** Before the first download the model directory often does not exist yet. */
-function isMissingModelDirectory(cause: unknown): boolean {
-  const message = String(cause).toLowerCase();
-  return (
-    message.includes('not found') ||
-    message.includes('does not exist') ||
-    message.includes('no such file') ||
-    message.includes('could not be read') ||
-    message.includes('cannot be read') ||
-    message.includes('directory could not')
-  );
 }
 
 function isInactiveDownload(cause: unknown): boolean {
@@ -48,6 +39,10 @@ function isInactiveDownload(cause: unknown): boolean {
 export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
   try {
     ensureExecutorchInitialised();
+    // Before the first download the directory does not exist, and listing it throws.
+    if (!(await getInfoAsync(MODEL_DIRECTORY)).exists) {
+      return { ok: true, value: false };
+    }
     const present = new Set(
       (await ExpoResourceFetcher.listDownloadedFiles()).map((path) =>
         path.slice(path.lastIndexOf('/') + 1),
@@ -59,9 +54,6 @@ export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
       value: required.every((name) => name !== null && present.has(name)),
     };
   } catch (cause) {
-    if (isMissingModelDirectory(cause)) {
-      return { ok: true, value: false };
-    }
     return {
       ok: false,
       error: toError(
