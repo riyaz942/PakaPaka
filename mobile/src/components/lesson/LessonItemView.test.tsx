@@ -153,6 +153,14 @@ describe('LessonItemView sections', () => {
     expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
   });
 
+  it('labels the kanji third step Vocabulary, not Examples', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    mount(curriculumDb, userDb, 2);
+
+    expect(screen.getByText('Vocabulary')).toBeTruthy();
+    expect(screen.queryByText('Examples')).toBeNull();
+  });
+
   function setRev1Kanji() {
     __mockSetItems('curriculum.db.test', [
       {

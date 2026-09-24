@@ -1,26 +1,27 @@
-Task: Generate Kanji/Vocab Example Sentences via Gemini Web
+Task: Generate Vocab Example Sentences via Gemini Web
 
 Use the existing logged-in Gemini session in my Chrome browser to generate Phase 2c
-example sentences. This run is for ONE content type at a time and **auto-selects the
-next batch of not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug
-list.
+example sentences for vocabulary. This run **auto-selects the next batch of
+not-yet-done slugs** (Step 1) — you do NOT paste a slug list.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 <level = n5>
 
-Content type (one of `kanji` or `vocab`):
+Content type (always `vocab`):
 
-<type = kaji>
+<type = vocab>
 
 This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_examples.py`. Only the "call the
 model" step moves to the browser; the context builder, the allowed-vocab
-constraints, the target-word requirement, and the mechanical gate are identical to
+constraints, and the mechanical gate are identical to
 the API path. See `docs/workflows/example-sentences-web-chat-workflow.md`.
 
-Note: there is NO `radical` type in this flow — radicals do not get example
-sentences. The only content types are `kanji` and `vocab`.
+Note: the only content type is `vocab`. Do NOT generate examples for kanji — a kanji
+rarely stands alone as a word, so the app lists the vocabulary written with it
+instead. Radicals get no example sentences. Grammar examples are authored with the
+grammar lessons.
 
 Run size (BATCH_LIMIT = 10)
 
@@ -65,9 +66,8 @@ neither generated (absent from the committed sidecar) nor drafted (no record und
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', 10   # KIND: 'vocab' or 'kanji'
-subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
-sidecar = f'../{subdir}/examples/{LEVEL}.json'
+LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', 10
+sidecar = f'../vocabulary/examples/{LEVEL}.json'
 generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
@@ -224,8 +224,7 @@ Instead:
 
 2. Verify the downloaded file:
    - Confirm it parses as valid JSON.
-   - Confirm it matches the output contract. It is the SAME contract for both
-     content types (kanji and vocab): a single top-level `example_sentences` array
+   - Confirm it matches the output contract: a single top-level `example_sentences` array
      of 2–4 objects, each with exactly these keys:
      - japanese
      - english
@@ -257,10 +256,8 @@ Run:
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar:
-
-- kanji → curriculum/kanji/examples/<level>.json
-- vocab → curriculum/vocabulary/examples/<level>.json
+The item is merged into the per-level sidecar
+curriculum/vocabulary/examples/<level>.json.
 
 Record the slug as successful and proceed to the next slug.
 
@@ -318,10 +315,10 @@ Repair Procedure
    - Do not edit `<slug>.prompt.md`.
    - Do not modify validators, ingestion code, curriculum source data, the allowed-vocab derivation, or the assembled sidecar.
    - Preserve the required reply-file format (a single fenced ```json block).
-   - Preserve the exact output contract: one top-level `example_sentences` array whose elements each have exactly `japanese`, `english`, and `vocabulary_slugs`. This contract is the same for kanji and vocab.
+   - Preserve the exact output contract: one top-level `example_sentences` array whose elements each have exactly `japanese`, `english`, and `vocabulary_slugs`.
    - Keep the array at 2–4 sentences.
    - Ensure the repaired content parses as valid JSON.
-   - Every sentence must actually use the target: for vocab, the word's dictionary form (a natural conjugation counts — 食べました exemplifies 食べる); for kanji, the character must appear inside a taught target word listed in the prompt.
+   - Every sentence must actually use the target: the word's dictionary form (a natural conjugation counts — 食べました exemplifies 食べる).
    - Every slug in a sentence's `vocabulary_slugs` must be in the prompt's allowed-vocabulary list; do not reference any word outside it.
    - Every content word in each Japanese sentence must be in-level per the prompt's allowed vocabulary (no out-of-level words the level-check will reject).
    - Keep every Japanese sentence fully annotatable by the tokenizer (avoid constructions that fail the furigana round-trip).
@@ -371,9 +368,8 @@ Do not waste additional Gemini turns.
 
 Ordering Note
 
-Each run is a single content type and covers only its auto-selected BATCH_LIMIT
-slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
-runs, and finish <level> fully before moving to the next level. On the first run of a fresh type, read the assembled
+Each run covers only its auto-selected BATCH_LIMIT slugs, so finishing a whole
+level takes several runs. Finish <level> fully before moving to the next level. On the first run, read the assembled
 output before launching more runs — the batch size is already pilot-sized, so one run
 doubles as the pilot.
 
@@ -400,7 +396,7 @@ And:
 
 npm run compile-curriculum
 
-`generate.py` inlines the example sidecars into the shipped kanji/vocab JSON and adds
+`generate.py` inlines the example sidecars into the shipped vocab JSON and adds
 furigana with the tokenizer. Use the current project-specific `generate.py`
 invocation and flags found under `curriculum/_build/`. Do not guess if the documented
 invocation has changed.
@@ -446,12 +442,11 @@ Important Constraints
 
 Notes on differences from the mnemonic automation prompt
 
-- This flow is parameterized by `--type` (kanji or vocab), NOT kanji/radical.
-  Radicals do not get example sentences.
-- The output contract is the same for both types: a single `example_sentences`
-  array of `japanese` / `english` / `vocabulary_slugs` objects (Step 7, Step 8) —
-  there are no per-type key differences as there are for mnemonics.
+- This flow takes `--type vocab` only. Kanji and radicals do not get example
+  sentences.
+- The output contract is a single `example_sentences` array of `japanese` /
+  `english` / `vocabulary_slugs` objects (Step 7, Step 8).
 - The committed artifact is a per-level, keyed-by-slug sidecar
-  (`curriculum/<kanji|vocabulary>/examples/<level>.json`) that `ingest` merges into —
+  (`curriculum/vocabulary/examples/<level>.json`) that `ingest` merges into —
   not a per-slug file as with grammar lessons. Inspect the sidecar entry.
 - Step 4 explicitly strips the prompt file's HTML header comment before pasting.

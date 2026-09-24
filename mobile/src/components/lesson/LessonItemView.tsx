@@ -4,6 +4,7 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import { SectionStepper } from '@/components/common/SectionStepper';
 import {
   GRAMMAR_SECTION_STEPS,
+  KANJI_SECTION_STEPS,
   LESSON_SECTION_STEPS,
   LessonExamplesSection,
   LessonHero,
@@ -97,7 +98,13 @@ export function LessonItemView({
   return (
     <View className="gap-space-md">
       <SectionStepper
-        sections={item.itemType === 'grammar' ? GRAMMAR_SECTION_STEPS : LESSON_SECTION_STEPS}
+        sections={
+          item.itemType === 'grammar'
+            ? GRAMMAR_SECTION_STEPS
+            : item.itemType === 'kanji'
+              ? KANJI_SECTION_STEPS
+              : LESSON_SECTION_STEPS
+        }
         activeIndex={sectionIndex}
         itemType={item.itemType}
         testID="lesson-section-stepper"

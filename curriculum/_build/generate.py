@@ -54,9 +54,9 @@ RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
 VOCAB_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics")
 
 #: Phase 2c example-sentence sidecars (generate_content/generate_examples.py),
-#: inlined into the kanji/vocab items below keyed by slug. Absent when 2c has
-#: not run.
-KANJI_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "kanji", "examples")
+#: inlined into the vocab items below keyed by slug. Absent when 2c has not
+#: run. Kanji carry no example sentences: a kanji is taught through the
+#: vocabulary that uses it, which the app lists instead.
 VOCAB_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "examples")
 
 #: Sidecar _meta keys carried through to the shipped item (matches grammar).
@@ -159,7 +159,7 @@ def _cloze_furigana(jp_cloze, answer, known_readings):
 
 
 def _inline_examples(item, entry, known_readings, vocab_forms, label, errors):
-    """Inlines a 2c example-sentence sidecar entry into a kanji/vocab item.
+    """Inlines a 2c example-sentence sidecar entry into a vocab item.
     Furigana comes from the tokenizer at build time (never the LLM); the 2c
     gate already rejected drafts the tokenizer can't annotate, so a failure
     here means a hand edit needs fixing and is only warned about."""
@@ -261,12 +261,9 @@ def _build_radical_items(slug_prefix, radical_entries):
     return items
 
 
-def _build_kanji_items(slug_prefix, kanji_entries, known_readings=None,
-                       vocab_forms=None):
+def _build_kanji_items(slug_prefix, kanji_entries):
     """Items for one source dataset. See `_build_radical_items` on prefixes."""
     mnemonics = _load_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
-    examples = _load_sidecar(KANJI_EXAMPLES_DIR, slug_prefix)
-    errors = []
     items = []
     for k in kanji_entries:
         readings = []
@@ -311,13 +308,7 @@ def _build_kanji_items(slug_prefix, kanji_entries, known_readings=None,
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta
-        example_entry = examples.get(slug)
-        if example_entry:
-            _inline_examples(item, example_entry, known_readings, vocab_forms or {},
-                             f"kanji {slug}", errors)
         items.append(item)
-    if errors:
-        raise ValueError(f"{slug_prefix} kanji reference errors:\n" + "\n".join(errors))
     return items
 
 
@@ -403,10 +394,10 @@ def build_n5_radicals():
     return _build_radical_items("n5", N5_RADICALS)
 
 
-def build_n5_kanji(known_readings=None, vocab_forms=None):
+def build_n5_kanji():
     from n5_kanji import N5_KANJI
 
-    return _build_kanji_items("n5", N5_KANJI, known_readings, vocab_forms)
+    return _build_kanji_items("n5", N5_KANJI)
 
 
 def build_n5_vocab(known_readings=None):
@@ -687,10 +678,10 @@ def build_n4_radicals():
     return _build_radical_items("n4", N4_RADICALS)
 
 
-def build_n4_kanji(known_readings=None, vocab_forms=None):
+def build_n4_kanji():
     from n4_kanji import N4_KANJI
 
-    return _build_kanji_items("n4", N4_KANJI, known_readings, vocab_forms)
+    return _build_kanji_items("n4", N4_KANJI)
 
 
 def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
@@ -788,23 +779,9 @@ def _write_banded(kind, items, bands):
 
 def generate_bands():
     """Rebuild all five radical and kanji level files from every source."""
-    from n4_vocab import N4_VOCAB
-    from n5_vocab import N5_VOCAB
-
     skeleton = load_skeleton()
     decomposition = load_decomposition()
     bands = load_bands()
-
-    # Per source, with that source's own reference scope: an N5 kanji example
-    # may only name N5 words, an N4 one may also reinforce N5. The "k" source
-    # is itself banded across every level (bands.json), so its examples are
-    # generated under whichever band the kanji lands in — currently always N5
-    # or N4 (N3+ has no example-sentence pipeline yet) — and n4_forms, being
-    # the N5+N4 union already, is a safe superset reference scope for it.
-    n5_readings = _vocab_reading_map(N5_VOCAB)
-    n5_forms = {v["slug"]: v["form"] for v in N5_VOCAB}
-    n4_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
-    n4_forms = {**n5_forms, **{v["slug"]: v["form"] for v in N4_VOCAB}}
 
     radicals = (
         build_n5_radicals()
@@ -812,9 +789,9 @@ def generate_bands():
         + _build_radical_items("k", decomposition["radicals"])
     )
     kanji = (
-        build_n5_kanji(n5_readings, n5_forms)
-        + build_n4_kanji(n4_readings, n4_forms)
-        + _build_kanji_items("k", skeleton["kanji"], n4_readings, n4_forms)
+        build_n5_kanji()
+        + build_n4_kanji()
+        + _build_kanji_items("k", skeleton["kanji"])
     )
     rad_counts = _write_banded("radicals", radicals, bands["radicals"])
     kanji_counts = _write_banded("kanji", kanji, bands["kanji"])

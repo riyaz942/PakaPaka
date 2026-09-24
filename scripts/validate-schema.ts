@@ -167,22 +167,9 @@ export function runFuriganaChecks(
 
   if (validatorKey === 'kanjiFile') {
     const file = data as {
-      items: {
-        slug: string;
-        visually_similar_slugs?: string[];
-        example_sentences?: { japanese: string; furigana?: string }[];
-      }[];
+      items: { slug: string; visually_similar_slugs?: string[] }[];
     };
     for (const item of file.items) {
-      for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
-        checkFuriganaField(
-          `${relative} kanji:${item.slug} example[${index}]`,
-          sentence.japanese,
-          sentence.furigana,
-          errors,
-          warnings,
-        );
-      }
       checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, item, errors);
     }
     return;
@@ -413,7 +400,7 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
         // _build is the tooling workspace (datasets, importers, generation
         // drafts) — its JSON never ships and has no schema mapping. `mnemonics`
         // holds the Phase 2b generated sidecars (kanji/radicals/mnemonics/*.json)
-        // and `examples` the Phase 2c ones (kanji/vocabulary/examples/*.json)
+        // and `examples` the Phase 2c ones (vocabulary/examples/*.json)
         // that generate.py inlines into the item files; they are keyed-by-slug
         // build inputs, not standalone curriculum files, so they have no schema
         // mapping of their own (their contents are validated once inlined).

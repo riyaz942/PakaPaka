@@ -475,6 +475,14 @@ rather than intent.
 
 ### 2c. Example sentences (kanji + vocab)
 
+> **2026-09-24: kanji examples removed.** Only vocab gets example sentences from
+> this phase (grammar examples come with 2a). A kanji rarely stands alone as a
+> word, so its sentences only showed the vocabulary written with it (説 in 説明,
+> 小説). The kanji lesson's third step is now "Vocabulary" and lists those words.
+> `curriculum/kanji/examples/`, `prompts/kanji-examples.md` and the `--type kanji`
+> path are deleted, and the schema rejects `example_sentences` on a kanji item.
+> The kanji text below is history.
+
 Generate original sentences, using in-level Tatoeba candidates (filtered by the
 tokenizer) as style anchors in the prompt only — per the lane decision in ground
 rule 2, no Tatoeba text is shipped verbatim or adapted. Every sentence gets furigana

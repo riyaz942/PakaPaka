@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
-"""Phase 2c example-sentence generator for kanji + vocab
+"""Phase 2c example-sentence generator for vocab
 (docs/content/content-pipeline-plan.md 2c).
+
+Kanji get no example sentences. A kanji rarely stands alone as a word, so its
+sentences only ever showed the vocabulary written with it; the app lists that
+vocabulary on the kanji instead. Grammar examples are authored with the
+grammar lessons, not here.
 
 Build-time generation on the maintainer machine, mirroring the 2a/2b pipelines:
 one Message Batches request per item (50% cost, latency irrelevant), structured
 output via a single forced tool call, drafts written under
 generate_content/drafts/examples/, and — only after passing the mechanical gate
-(validate_examples.py) — assembled into sidecars that generate.py inlines into
-the shipped kanji/vocab JSON. Vocab is unbanded, so its sidecar is named by
-level; kanji is banded (reports/kanji_bands.py) and a band mixes source
-datasets, so its sidecar is named by *source dataset* instead (see
-BANDED_KINDS below — mirrors generate_mnemonics.py):
+(validate_examples.py) — assembled into a per-level sidecar that generate.py
+inlines into the shipped vocab JSON:
 
-    curriculum/kanji/examples/<source>.json      # source: n5, n4 or k
     curriculum/vocabulary/examples/<level>.json
 
-Both carry `_meta` (generator_model, prompt_version, review_status: draft) per
+It carries `_meta` (generator_model, prompt_version, review_status: draft) per
 item, so compile-curriculum warns on unreviewed prose and nothing ships
 silently. Nothing here writes shipped JSON directly.
 
@@ -29,9 +30,9 @@ capped at MAX_ATTEMPTS, then recorded `review_status: flagged_for_rewrite`.
 
 Usage (from curriculum/_build, venv with `anthropic` installed):
     .venv/bin/python -m generate_content.generate_examples requests --type vocab
-    .venv/bin/python -m generate_content.generate_examples run --type kanji     # needs API credentials
+    .venv/bin/python -m generate_content.generate_examples run --type vocab     # needs API credentials
     .venv/bin/python -m generate_content.generate_examples assemble --type vocab
-    .venv/bin/python -m generate_content.generate_examples collect --type kanji --batch-id msgbatch_...
+    .venv/bin/python -m generate_content.generate_examples collect --type vocab --batch-id msgbatch_...
 
 The no-API web-chat lane (webprompts/ingest) mirrors 2a/2b for the cost swap.
 """
@@ -97,7 +98,7 @@ SUBMIT_TOOL = {
     },
 }
 
-PROMPT_FILES = {"kanji": "kanji-examples.md", "vocab": "vocab-examples.md"}
+PROMPT_FILES = {"vocab": "vocab-examples.md"}
 
 
 def _read_prompt(name):
@@ -126,23 +127,15 @@ def build_user_prompt(kind, ctx, validator_errors=None):
         "{{STYLE_ANCHORS}}": tatoeba.format_anchors(ctx["anchors"]),
         "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
     }
-    if kind == "kanji":
-        subs.update({
-            "{{CHAR}}": ctx["char"],
-            "{{MEANING}}": ctx["meaning"],
-            "{{READINGS}}": "、".join(ctx["readings"]) or "(none)",
-            "{{TARGET_WORDS}}": ec.format_target_words(ctx["target_words"]),
-        })
-    else:
-        kana_line = (
-            f"\n- Reading: **{ctx['reading']}**"
-            if ctx["reading"] and ctx["reading"] != ctx["form"] else ""
-        )
-        subs.update({
-            "{{FORM}}": ctx["form"],
-            "{{KANA_LINE}}": kana_line,
-            "{{MEANING}}": ctx["meaning"],
-        })
+    kana_line = (
+        f"\n- Reading: **{ctx['reading']}**"
+        if ctx["reading"] and ctx["reading"] != ctx["form"] else ""
+    )
+    subs.update({
+        "{{FORM}}": ctx["form"],
+        "{{KANA_LINE}}": kana_line,
+        "{{MEANING}}": ctx["meaning"],
+    })
     for token, value in subs.items():
         template = template.replace(token, value)
     return template
@@ -357,34 +350,18 @@ def cmd_assemble(args):
 
 # --- assembly into sidecars generate.py inlines ----------------------------
 
-SIDECAR_KIND_DIR = {"kanji": "kanji", "vocab": "vocabulary"}
-
-#: Vocab is still authored per level, so its sidecar is still named by one.
-#: Kanji is banded (reports/kanji_bands.py) and a band mixes source datasets,
-#: so its sidecar is named by the *source dataset* — the thing that stays put
-#: when the band moves. generate.py reads it back the same way. Mirrors
-#: BANDED_KINDS in generate_mnemonics.py (which covers kanji + radical; there
-#: is no radical kind here since radicals get no example sentences).
-BANDED_KINDS = ("kanji",)
+SIDECAR_KIND_DIR = {"vocab": "vocabulary"}
 
 
-def _source_map():
-    """{slug: source} from bands.json, for kanji."""
-    with open(os.path.join(grammar_context.BUILD_DIR, "bands.json"), encoding="utf-8") as f:
-        bands = json.load(f)
-    return {slug: entry["source"] for slug, entry in bands["kanji"].items()}
-
-
-def sidecar_path(name, kind):
-    """`name` is a level for vocab, a source for kanji."""
+def sidecar_path(level, kind):
     return os.path.join(
-        grammar_context.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "examples", f"{name}.json"
+        grammar_context.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "examples", f"{level}.json"
     )
 
 
 def write_sidecar(level, kind, only_slugs=None):
     """Rebuild the per-level sidecar from gate-passing drafts on disk. The
-    sidecar is keyed by slug; generate.py inlines it into the kanji/vocab
+    sidecar is keyed by slug; generate.py inlines it into the vocab
     JSON (adding tokenizer furigana). Idempotent — re-running reconstructs
     from the drafts.
 
@@ -401,10 +378,6 @@ def write_sidecar(level, kind, only_slugs=None):
     draft file — a full rebuild would silently drop that review work for every
     slug not just ingested."""
     level_dir = os.path.join(DRAFTS_DIR, level, kind)
-    # One level's drafts can land in more than one sidecar: a band mixes source
-    # datasets, and the sidecar follows the source. Vocab is unbanded, so its
-    # "source" is the level itself.
-    source_by_slug = _source_map() if kind in BANDED_KINDS else {}
     drafted = {}
 
     only_slugs = set(only_slugs) if only_slugs is not None else None
@@ -426,36 +399,24 @@ def write_sidecar(level, kind, only_slugs=None):
                 "prompt_version": str(record.get("prompt_version", PROMPT_VERSION)),
                 "review_status": "draft",
             }
-            source = source_by_slug.get(record["slug"], level)
-            drafted.setdefault(source, {})[record["slug"]] = {
-                **record["tool_input"], "_meta": meta,
-            }
+            drafted[record["slug"]] = {**record["tool_input"], "_meta": meta}
 
-    # A full rebuild of an unbanded kind still rewrites the level's sidecar
-    # from scratch, drafts being its sole source of truth. A banded sidecar is
-    # shared by every level that draws on that source, so a rebuild driven by
-    # one level's drafts must merge — rewriting it would drop the other
-    # levels' entries, which no draft of *this* level can restore.
-    banded = kind in BANDED_KINDS
-    sources = set(drafted) if banded or only_slugs is not None else {level}
-    paths = []
-    for source in sorted(sources):
-        path = sidecar_path(source, kind)
-        entries = {}
-        if (banded or only_slugs is not None) and os.path.exists(path):
-            with open(path, encoding="utf-8") as f:
-                entries = json.load(f)
-        entries.update(drafted.get(source, {}))
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(entries, f, ensure_ascii=False, indent=2)
-            f.write("\n")
-        print(f"wrote {len(entries)} {kind} example set(s) to {path}")
-        paths.append(path)
-    print("run generate.py "
-          + ("--bands" if kind in BANDED_KINDS else f"--level {level}")
-          + ", then validate-schema + compile-curriculum from the repo root.")
-    return paths[0] if len(paths) == 1 else paths
+    # A full rebuild rewrites the level's sidecar from scratch, drafts being
+    # its sole source of truth; an ingest merges into it.
+    path = sidecar_path(level, kind)
+    entries = {}
+    if only_slugs is not None and os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            entries = json.load(f)
+    entries.update(drafted)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print(f"wrote {len(entries)} {kind} example set(s) to {path}")
+    print(f"run generate.py --level {level}, then validate-schema + "
+          "compile-curriculum from the repo root.")
+    return path
 
 
 # --- web-chat (no-API) lane, mirroring 2a/2b --------------------------------
@@ -582,7 +543,7 @@ def main():
     parser.add_argument("command",
                         choices=["requests", "run", "assemble", "collect",
                                  "webprompts", "ingest"])
-    parser.add_argument("--type", dest="kind", choices=["kanji", "vocab"], required=True)
+    parser.add_argument("--type", dest="kind", choices=["vocab"], required=True)
     parser.add_argument("--level", default="n5")
     parser.add_argument("--slugs", default=None,
                         help="comma-separated slugs (default: every item of the type)")

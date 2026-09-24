@@ -8,7 +8,7 @@ Run on every batch output before any human sees it
      line, plain prose (no markdown/furigana brackets), length bounds
   2. target presence — every sentence actually uses the item: a vocab item's
      dictionary form must appear (verbatim or as a token's lemma, so natural
-     conjugations pass); a kanji item's character must appear
+     conjugations pass)
   3. every referenced vocabulary_slugs is in the item's allowed set
   4. tokenizer level-check: no out-of-level content words
   5. furigana annotation succeeds — annotate_sentence returning None is a
@@ -79,8 +79,6 @@ def _sentence_structural_errors(i, sentence):
 
 def _contains_target(text, ctx):
     """Whether the sentence actually uses the item being exemplified."""
-    if ctx["type"] == "kanji":
-        return ctx["char"] in text
     if any(form in text for form in ctx["target_forms"]):
         return True
     # Conjugated usage: any token whose dictionary form is the target passes
@@ -113,7 +111,7 @@ def validate_draft(level, kind, slug, draft, ctx=None):
         errors.append(f"expected {lo}-{hi} example sentences, got {len(sentences)}")
 
     known_readings = _known_readings(level)
-    target_label = ctx["char"] if kind == "kanji" else ctx["form"]
+    target_label = ctx["form"]
 
     for i, sentence in enumerate(sentences):
         structural = _sentence_structural_errors(i, sentence)
@@ -157,7 +155,7 @@ def validate_draft(level, kind, slug, draft, ctx=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--level", default="n5")
-    parser.add_argument("--type", dest="kind", choices=["kanji", "vocab"], required=True)
+    parser.add_argument("--type", dest="kind", choices=["vocab"], required=True)
     args = parser.parse_args()
 
     level_dir = os.path.join(DRAFTS_DIR, args.level, args.kind)

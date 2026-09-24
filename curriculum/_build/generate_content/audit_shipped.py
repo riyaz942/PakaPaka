@@ -47,7 +47,6 @@ import audit_facts  # noqa: E402
 from generate_content import (  # noqa: E402
     check_cloze,
     context,
-    example_context,
     mnemonic_context,
     reading_context,
     reading_seeds,
@@ -352,27 +351,21 @@ def rerun_mnemonic_gates(level):
 
 
 def rerun_example_gates(level):
-    """Plan check 2: `validate_examples` re-run on shipped kanji/vocab.
+    """Plan check 2: `validate_examples` re-run on shipped vocab.
 
-    Kanji the generator never queues — no in-scope vocabulary word is written
-    with the character, so `example_context.all_slugs` skips them — are graded
-    INFO, not ERROR. Their examples are absent by design ("no examples beat
-    wrong ones"); the remedy is adding vocabulary that uses the kanji, not
-    generating usage for a character nothing taught demonstrates.
+    Kanji ship no example sentences — a kanji is taught through the vocabulary
+    written with it, which the app lists instead — so any found is an ERROR.
     """
     results = []
-    for kind, dirname in (("kanji", "kanji"), ("vocab", "vocabulary")):
-        queued = set(example_context.all_slugs(level, kind))
-        for item in context.load_items(dirname, level):
-            slug = item["slug"]
-            if kind == "kanji" and slug not in queued and not item.get("example_sentences"):
-                results.append(("INFO", f"{kind} {slug}: no example sentences — no taught "
-                                        f"vocabulary is written with {item['primary_form']}, "
-                                        f"so the generator never queues it"))
-                continue
-            errors = validate_examples.validate_draft(level, kind, slug, item)
-            for e in errors:
-                results.append(("ERROR", f"{kind} {slug}: {e}"))
+    for item in context.load_items("kanji", level):
+        if item.get("example_sentences"):
+            results.append(("ERROR", f"kanji {item['slug']}: ships example sentences; "
+                                     f"kanji carry none (list the vocabulary instead)"))
+    for item in context.load_items("vocabulary", level):
+        slug = item["slug"]
+        errors = validate_examples.validate_draft(level, "vocab", slug, item)
+        for e in errors:
+            results.append(("ERROR", f"vocab {slug}: {e}"))
     return results
 
 
@@ -922,14 +915,13 @@ def span_diff_errors(text, vocabulary_slugs, shipped_spans, primary_form_by_slug
 
 def span_rederivation_errors(level, primary_form_by_slug):
     results = []
-    for kind_dir in ("kanji", "vocabulary"):
-        for item in audit_facts.load_json(kind_dir, f"{level}.json")["items"]:
-            for i, sentence in enumerate(item.get("example_sentences") or []):
-                label = f"{kind_dir[:-3] if kind_dir == 'kanji' else 'vocab'} {item['slug']} example[{i}]"
-                results.extend(span_diff_errors(
-                    sentence["japanese"], sentence.get("vocabulary_slugs") or [],
-                    sentence.get("word_spans"), primary_form_by_slug, label,
-                ))
+    for item in audit_facts.load_json("vocabulary", f"{level}.json")["items"]:
+        for i, sentence in enumerate(item.get("example_sentences") or []):
+            label = f"vocab {item['slug']} example[{i}]"
+            results.extend(span_diff_errors(
+                sentence["japanese"], sentence.get("vocabulary_slugs") or [],
+                sentence.get("word_spans"), primary_form_by_slug, label,
+            ))
     for passage in audit_facts.load_json("readings", f"{level}.json")["passages"]:
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         results.extend(span_diff_errors(

@@ -1,28 +1,30 @@
-Task: Generate Kanji/Vocab Example Sentences via Subagents
+Task: Generate Vocab Example Sentences via Subagents
 
 Generate Phase 2c example sentences using in-session subagents (model configurable
 below; a strong reasoning model is recommended) — no API credentials and no
 browser. This is the no-API, no-browser sibling of the Gemini automation prompt:
 only the "call the model" step differs. Here each item's reply is produced by a
 fresh subagent instead of a web chat or the Message
-Batches API; the context builder, the allowed-vocab constraints, the target-word
-requirement, and the mechanical gate are identical to every other lane. See
+Batches API; the context builder, the allowed-vocab constraints, and the
+mechanical gate are identical to every other lane. See
 `docs/workflows/example-sentences-web-chat-workflow.md` for the shared pipeline
 background.
 
-This run is for ONE content type at a time and **auto-selects the next batch of
-not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
+This run **auto-selects the next batch of not-yet-done slugs** (Step 1) — you do
+NOT paste a slug list.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 <level = n4>
 
-Content type (one of `kanji` or `vocab`):
+Content type (always `vocab`):
 
-<type = kanji>
+<type = vocab>
 
-Note: there is NO `radical` type in this flow — radicals do not get example
-sentences. The only content types are `kanji` and `vocab`.
+Note: the only content type is `vocab`. Do NOT generate examples for kanji — a kanji
+rarely stands alone as a word, so the app lists the vocabulary written with it
+instead. Radicals get no example sentences. Grammar examples are authored with the
+grammar lessons.
 
 Subagent model (which model every subagent in this run uses):
 
@@ -74,22 +76,9 @@ BATCH_LIMIT, then run:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <batch-size>   # KIND: 'vocab' or 'kanji'
-subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
-sidecar_dir = f'../{subdir}/examples'
-if KIND == 'kanji':
-    # Kanji is banded: an N5-taught kanji can be sourced from n4 or k, and its
-    # sidecar follows the source (bands.json), not this run's <level> — so
-    # "already generated" means present in ANY of the source sidecars, not
-    # just {LEVEL}.json, or already-done slugs would be regenerated.
-    generated = set()
-    for name in ('n5.json', 'n4.json', 'k.json'):
-        path = os.path.join(sidecar_dir, name)
-        if os.path.exists(path):
-            generated |= set(json.load(open(path)))
-else:
-    path = os.path.join(sidecar_dir, f'{LEVEL}.json')
-    generated = set(json.load(open(path))) if os.path.exists(path) else set()
+LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', <batch-size>
+path = f'../vocabulary/examples/{LEVEL}.json'
+generated = set(json.load(open(path))) if os.path.exists(path) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
 drafted.discard('requests-preview')
@@ -147,12 +136,10 @@ Give the subagent these instructions:
     preamble, no commentary before or after.
   - Use the exact output contract from the prompt: one top-level `example_sentences`
     array whose elements each have exactly `japanese`, `english`, and
-    `vocabulary_slugs`. This contract is the same for kanji and vocab.
+    `vocabulary_slugs`.
   - Include 2–4 sentences (the prompt asks for 3; stay in that range).
-  - Every sentence must actually use the target: for vocab, the word's dictionary
-    form (a natural conjugation counts — 食べました exemplifies 食べる); for kanji,
-    the character must appear inside one of the taught target words listed in the
-    prompt.
+  - Every sentence must actually use the target: the word's dictionary form (a
+    natural conjugation counts — 食べました exemplifies 食べる).
   - Every slug you put in a sentence's `vocabulary_slugs` must come from the
     prompt's allowed-vocabulary list; never reference a word outside it, and never
     invent slugs.
@@ -182,15 +169,8 @@ pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
-The item is merged into its sidecar. Vocab is unbanded, so its sidecar is
-named by level; kanji is banded (a band mixes source datasets — see
-`curriculum/_build/bands.json`) so its sidecar is named by the item's own
-*source dataset* (`n5`, `n4` or `k`), not by `<level>` — a kanji taught at N5
-can be sourced from `n4` or `k` and its example sentence lands in that
-source's file instead:
-
-- kanji → curriculum/kanji/examples/<source>.json (source per `bands.json`, not `<level>`)
-- vocab → curriculum/vocabulary/examples/<level>.json
+The item is merged into the per-level sidecar
+curriculum/vocabulary/examples/<level>.json.
 
 Record the slug as successful and proceed to the next slug.
 
@@ -232,8 +212,8 @@ them exactly as a repair subagent would):
   - Preserve the reply-file format (a single fenced ```json block) and the exact
     output contract (one `example_sentences` array of `japanese` / `english` /
     `vocabulary_slugs` objects, 2–4 sentences).
-  - Every sentence must use the target (vocab dictionary form incl. natural
-    conjugations; kanji character inside a taught target word).
+  - Every sentence must use the target (the word's dictionary form incl. natural
+    conjugations).
   - Every `vocabulary_slugs` entry must be in the prompt's allowed list; every
     content word must be in-level.
   - Keep every Japanese sentence fully annotatable by the tokenizer (avoid
@@ -272,9 +252,8 @@ If the fourth ingestion attempt fails:
 
 Ordering Note
 
-Each run is a single content type and covers only its auto-selected <batch-size>
-slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
-runs, and finish <level> fully before moving to the next level. On the first run of a fresh type, read the assembled
+Each run covers only its auto-selected <batch-size> slugs, so finishing a whole
+level takes several runs. Finish <level> fully before moving to the next level. On the first run, read the assembled
 output before launching more runs — the batch size is already pilot-sized, so one run
 doubles as the pilot.
 
@@ -293,11 +272,6 @@ Then run:
 
 generate.py --level <level>
 
-For a `kanji` run, also run `generate.py --bands` — kanji is a band spanning
-every source dataset (`n5`, `n4`, `k`), and `--level` alone never rebuilds it;
-only `--bands` reads the per-source example sidecars back in. Vocab is
-unbanded, so `--level` alone is sufficient for a `vocab` run.
-
 Followed by:
 
 npm run validate-schema
@@ -306,7 +280,7 @@ And:
 
 npm run compile-curriculum
 
-`generate.py` inlines the example sidecars into the shipped kanji/vocab JSON and adds
+`generate.py` inlines the example sidecars into the shipped vocab JSON and adds
 furigana with the tokenizer. Use the current project-specific `generate.py`
 invocation and flags found under `curriculum/_build/`. Do not guess if the documented
 invocation has changed.

@@ -42,7 +42,7 @@ const MNEMONIC_FIELDS: Record<ContentType, readonly string[]> = {
 
 const HAS_EXAMPLES_SIDECAR: Record<ContentType, boolean> = {
   radical: false,
-  kanji: true,
+  kanji: false,
   vocabulary: true,
   grammar: false,
   reading: false,
@@ -309,7 +309,7 @@ export function checkReviewStatusTarget(
 
 /**
  * Writes a review-status flip to the sidecar(s) generate.py reads it back from.
- * A kanji or vocabulary item can carry both a mnemonic and an examples sidecar,
+ * A vocabulary item can carry both a mnemonic and an examples sidecar,
  * and generate.py keeps the least-reviewed of the two, so a flip has to reach
  * every sidecar that holds the item.
  */

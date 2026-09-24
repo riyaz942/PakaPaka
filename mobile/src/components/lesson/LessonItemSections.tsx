@@ -55,6 +55,9 @@ export const LESSON_SECTION_STEPS = ['Intro', 'Mnemonic', 'Examples'] as const;
 /** Grammar carries no mnemonic: its second section teaches the rules instead. */
 export const GRAMMAR_SECTION_STEPS = ['Intro', 'Usage', 'Examples'] as const;
 
+/** Kanji carry no example sentences: their third section lists the vocabulary that uses them. */
+export const KANJI_SECTION_STEPS = ['Intro', 'Mnemonic', 'Vocabulary'] as const;
+
 export type LessonSectionProps = {
   item: CurriculumItemDetail;
   kanjiReadings: KanjiReading[];

@@ -138,7 +138,7 @@ function mnemonicLanes(kind: 'radical' | 'kanji' | 'vocab'): GuideLane[] {
   ];
 }
 
-function exampleLanes(kind: 'kanji' | 'vocab'): GuideLane[] {
+function exampleLanes(kind: 'vocab'): GuideLane[] {
   return [
     {
       id: 'web-chat',
@@ -150,7 +150,7 @@ function exampleLanes(kind: 'kanji' | 'vocab'): GuideLane[] {
         {
           title: 'Build the prompts',
           detail:
-            'Only kanji and vocab get example sentences — there is no radical type here, and the two types are separate runs with different allowed-vocab derivations.',
+            'Only vocab gets example sentences here. Kanji get none (the app lists the vocabulary written with them), radicals get none, and grammar examples are authored with the grammar lessons.',
           commands: [
             'cd curriculum/_build',
             `${PY} -m generate_content.generate_examples webprompts --type ${kind} --level ${LEVEL_TOKEN} --slugs <slug,slug,...>`,
@@ -304,19 +304,8 @@ export const GUIDE_STAGES: GuideStage[] = [
     produces: [{ type: 'vocabulary', field: 'example_sentences' }],
     requires: ['facts'],
     requiresNote:
-      'Independent of the mnemonic layers — the allowed-vocab list comes from sort order, not from prose. Do vocab and kanji as separate runs.',
+      'Independent of the mnemonic layers — the allowed-vocab list comes from sort order, not from prose.',
     lanes: exampleLanes('vocab'),
-    finish: assembleSteps(),
-  },
-  {
-    id: 'examples-kanji',
-    title: 'Kanji example sentences',
-    what: 'Sentences that use one of the in-scope vocabulary words written with that character.',
-    produces: [{ type: 'kanji', field: 'example_sentences' }],
-    requires: ['facts'],
-    requiresNote:
-      'The kanji prompt additionally lists the target words the sentence must use, derived from the vocabulary — so vocabulary items must exist (their prose need not).',
-    lanes: exampleLanes('kanji'),
     finish: assembleSteps(),
   },
   {

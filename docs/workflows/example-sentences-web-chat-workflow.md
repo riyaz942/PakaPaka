@@ -1,4 +1,4 @@
-# Generating kanji + vocab example sentences via web chat (no API cost)
+# Generating vocab example sentences via web chat (no API cost)
 
 This is the **no-API alternative** to the Message Batches driver for producing
 the Phase 2c example sentences (`docs/content/content-pipeline-plan.md`, 2c).
@@ -10,9 +10,12 @@ the model" step moves to the browser — nothing about the allowed-vocabulary
 constraint, the target-word requirement, the level-check, or the furigana
 round-trip changes.
 
-**Only kanji and vocab get example sentences.** There is no `radical` type here —
-radicals do not carry example sentences. The two content types (`kanji` and
-`vocab`) are generated separately.
+**Only vocab gets example sentences here. Do not generate examples for kanji.**
+A kanji rarely stands alone as a word, so its sentences only ever show the
+vocabulary written with it (説 appears in 説明 and 小説, not by itself). The app
+lists that vocabulary on the kanji instead ("Vocabulary using this kanji").
+Radicals get no example sentences. Grammar examples are authored with the grammar
+lessons, not with this workflow.
 
 For a copy-paste browser-automation task (Gemini web), see
 [`example-sentences-web-chat-workflow-automation-prompt.md`](./example-sentences-web-chat-workflow-automation-prompt.md).
@@ -25,8 +28,8 @@ cd curriculum/_build
 ```
 
 The one command you use is the example generator with two subcommands,
-`webprompts` and `ingest`. **Every command takes `--type kanji` or
-`--type vocab`** — the two content types are generated separately. Slugs are
+`webprompts` and `ingest`. **Every command takes `--type vocab`** (the only
+type). Slugs are
 existing curriculum ids — list them first (see "List remaining slugs" below),
 then pass them to `webprompts`:
 
@@ -40,25 +43,16 @@ then pass them to `webprompts`:
 `curriculum/_build/generate_content/web/examples/<level>/<type>/` and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
 **not** a per-item file; it is the keyed-by-slug **sidecar** that `ingest`
-merges each passing item into. Vocab is unbanded, so its sidecar is named by
-level. Kanji is banded (a band mixes source datasets — see
-`curriculum/_build/bands.json`), so its sidecar is named by the item's own
-**source dataset** (`n5`, `n4` or `k`), not by `<level>` — a kanji taught at
-N5 can be sourced from `n4` or `k`, and `ingest` writes its entry to that
-source's file instead:
+merges each passing item into, named by level:
+`curriculum/vocabulary/examples/<level>.json`.
 
-- kanji → `curriculum/kanji/examples/<source>.json` (source per `bands.json`, not `<level>`)
-- vocab → `curriculum/vocabulary/examples/<level>.json`
-
-`generate.py` inlines those sidecars into the shipped kanji/vocab JSON at build
+`generate.py` inlines that sidecar into the shipped vocab JSON at build
 time as each item's `example_sentences`, **adding furigana with the tokenizer**
 (bracket notation via `furigana.py`, never the LLM), and each entry carries
 `_meta.review_status: draft`.
 
-Slug sources (curriculum, sort order):
-
-- vocab: `curriculum/vocabulary/n5.json` (e.g. `watashi`, `taberu`)
-- kanji: `curriculum/kanji/n5.json` (e.g. `n5-ichi`, `n5-higashi`)
+Slug source (curriculum, sort order): `curriculum/vocabulary/n5.json` (e.g.
+`watashi`, `taberu`).
 
 ---
 
@@ -71,9 +65,7 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
   yourself. A **vocab** prompt lists the exact allowed-vocab list (the item's
   own `sort_order` prefix + all lower levels + core seeds) and requires every
   sentence to use the word (natural conjugations count: 食べました exemplifies
-  食べる). A **kanji** prompt additionally lists the *target words* — every
-  in-scope vocab word written with that character — and requires each sentence
-  to use one of them (`example_context.py`).
+  食べる) (`example_context.py`).
 - **The mechanical gate** (`validate_examples.py`) runs on ingest exactly as it
   does in the API path. It rejects a set that: doesn't actually use the target;
   references a `vocabulary_slugs` outside the allowed set; contains an
@@ -101,7 +93,7 @@ varied*. Read the assembled examples before flipping `review_status` to
 ## List remaining slugs
 
 Slugs already exist as curriculum ids (`taberu` is one vocab item; they live in
-the files listed under "Slug sources" above). `webprompts` writes a prompt *for*
+the file named under "Slug source" above). `webprompts` writes a prompt *for*
 a slug; it does not invent the slug. From `curriculum/_build`, list the items of
 this type that have **no** sidecar entry yet:
 
@@ -110,20 +102,9 @@ this type that have **no** sidecar entry yet:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-level, kind = 'n5', 'vocab'                 # kind: 'vocab' or 'kanji'
-subdir = 'vocabulary' if kind == 'vocab' else 'kanji'
-sidecar_dir = f'../{subdir}/examples'
-if kind == 'kanji':
-    # Kanji is banded: "done" means present in ANY source sidecar
-    # (n5/n4/k.json), not just {level}.json — see bands.json.
-    done = set()
-    for name in ('n5.json', 'n4.json', 'k.json'):
-        path = os.path.join(sidecar_dir, name)
-        if os.path.exists(path):
-            done |= set(json.load(open(path)))
-else:
-    path = os.path.join(sidecar_dir, f'{level}.json')
-    done = set(json.load(open(path))) if os.path.exists(path) else set()
+level, kind = 'n5', 'vocab'
+path = f'../vocabulary/examples/{level}.json'
+done = set(json.load(open(path))) if os.path.exists(path) else set()
 todo = [s for s in ec.all_slugs(level, kind) if s not in done]
 print(f'{len(todo)} {level} {kind} items left:')
 print(','.join(todo))
@@ -148,7 +129,7 @@ type — useful for a full-level dump, not for a sitting of ~10.
 
 Writes `generate_content/web/examples/n5/vocab/taberu.prompt.md`. Open it.
 Everything below the `<!-- ... -->` header is one self-contained block: the
-teaching-voice sheet, the word (or kanji) being exemplified, the allowed
+teaching-voice sheet, the word being exemplified, the allowed
 vocabulary list, the Tatoeba style anchors, the writing rules, and a JSON output
 contract.
 
@@ -177,8 +158,8 @@ generate_content/web/examples/n5/vocab/taberu.reply.md
 
 The filename must match the slug and the `--type` subfolder.
 
-The JSON contract is the **same for both types** — a single `example_sentences`
-array, each element carrying three keys:
+The JSON contract is a single `example_sentences` array, each element carrying
+three keys:
 
 | Key | Meaning |
 |---|---|
@@ -223,12 +204,10 @@ work them one chat at a time.
 
 Run the listing snippet above. Paste that comma list into
 `webprompts --type vocab --slugs ...`. Work in
-curriculum order (the list is already sorted by `sort_order`). **Do vocab and
-kanji as separate runs** — they use different prompts and different allowed-vocab
-derivations, and each run is one type. And do **N5 fully before N4**
+curriculum order (the list is already sorted by `sort_order`). Do **N5 fully before N4**
 (`--level n4`).
 
-**Pilot first.** Before committing to a full level, run **~10 items per type** and
+**Pilot first.** Before committing to a full level, run **~10 items** and
 read the assembled output. Examples are cheaper to review than grammar lessons
 (bulk-skim, 10–20 per screen), but a bad prompt tune shows up fastest on a small
 batch. Only widen to the whole level once the pilot reads well.
@@ -246,12 +225,8 @@ validate. From the **repo root** (check the current `generate.py` invocation und
 doc):
 
 ```bash
-# 1. inline the sidecars into the kanji/vocab JSON (adds tokenizer furigana)
+# 1. inline the sidecar into the vocab JSON (adds tokenizer furigana)
 cd curriculum/_build && .venv/bin/python generate.py --level n5 && cd -
-# kanji is a band spanning every source dataset (n5, n4, k) — `--level` alone
-# never rebuilds it, only `--bands` reads the per-source example sidecars
-# back in. Run this too whenever the batch included any kanji:
-cd curriculum/_build && .venv/bin/python generate.py --bands && cd -
 # 2. validate + compile
 npm run validate-schema
 npm run compile-curriculum
@@ -265,7 +240,8 @@ unreviewed prose can't silently ship.
 > The `examples/` sidecar directories are deliberately **excluded** from
 > `validate-schema`'s file walk (they are keyed-by-slug build inputs, not
 > standalone curriculum files); their contents are validated once `generate.py`
-> inlines them into `kanji/<level>.json` / `vocabulary/<level>.json`.
+> inlines them into `vocabulary/<level>.json`. The schema rejects
+> `example_sentences` on a kanji item.
 
 ---
 
