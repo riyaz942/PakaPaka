@@ -2430,50 +2430,56 @@
           ]
         },
         {
-          "japanese": "椅子に座ります。",
-          "english": "I sit on the chair.",
+          "japanese": "彼は家に帰ります。",
+          "english": "He returns home.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "isu",
-            "suwaru"
+            "kare",
+            "ie",
+            "kaeru-v"
           ],
-          "furigana": "椅[い]子[す]に座[すわ]ります。",
+          "furigana": "彼[かれ]は家[いえ]に帰[かえ]ります。",
           "word_spans": [
             {
-              "vocabulary_slug": "isu",
+              "vocabulary_slug": "kare",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "suwaru",
-              "start": 3,
-              "end": 7,
-              "surface_form": "座ります",
+              "vocabulary_slug": "ie",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 4,
+              "end": 8,
+              "surface_form": "帰ります",
               "inflection": "masu"
             }
           ]
         },
         {
-          "japanese": "日本に住んでいます。",
-          "english": "I live in Japan.",
+          "japanese": "先生に聞きます。",
+          "english": "I ask the teacher.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "nihon",
-            "sumu"
+            "sensei",
+            "kiku-v"
           ],
-          "furigana": "日本[にほん]に住[す]んでいます。",
+          "furigana": "先[せん]生[せい]に聞[き]きます。",
           "word_spans": [
             {
-              "vocabulary_slug": "nihon",
+              "vocabulary_slug": "sensei",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "sumu",
+              "vocabulary_slug": "kiku-v",
               "start": 3,
-              "end": 6,
-              "surface_form": "住んで",
-              "inflection": "te"
+              "end": 7,
+              "surface_form": "聞きます",
+              "inflection": "masu"
             }
           ]
         }
@@ -2484,6 +2490,29 @@
         "tomodachi"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Destination — \"to\"",
+          "structure": "Place + に + motion verb (行く / 来る / 帰る)",
+          "japanese": "私は学校に行きます。",
+          "english": "I go to school.",
+          "furigana": "私[わたし]は学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "label": "Point in time — \"at / on\"",
+          "structure": "Specific time + に + Verb",
+          "japanese": "何時に起きますか。",
+          "english": "What time do you wake up?",
+          "furigana": "何[なん]時[じ]に起[お]きますか。"
+        },
+        {
+          "label": "Target person — \"meet / ask\"",
+          "structure": "Person + に + 会う / 聞く",
+          "japanese": "友達に会います。",
+          "english": "I meet a friend.",
+          "furigana": "友[とも]達[だち]に会[あ]います。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "彼は家＿＿＿帰ります。",
@@ -2838,6 +2867,22 @@
         "hashi-chopsticks"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Place of action — \"at / in\"",
+          "structure": "Place + で + action verb",
+          "japanese": "家で映画を見る。",
+          "english": "I watch movies at home.",
+          "furigana": "家[いえ]で映[えい]画[が]を見[み]る。"
+        },
+        {
+          "label": "Means or tool — \"by / with\"",
+          "structure": "Tool / transport + で + Verb",
+          "japanese": "バスで学校に行く。",
+          "english": "I go to school by bus.",
+          "furigana": "バスで学[がっ]校[こう]に行[い]く。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "家＿＿＿映画を見る。",
@@ -3023,6 +3068,22 @@
         "tomodachi"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Complete list — \"and\"",
+          "structure": "Noun + と + Noun",
+          "japanese": "肉と魚と卵を買います。",
+          "english": "I will buy meat, fish, and eggs.",
+          "furigana": "肉[にく]と魚[さかな]と卵[たまご]を買[か]います。"
+        },
+        {
+          "label": "Companion — \"with\"",
+          "structure": "Person + と + Verb",
+          "japanese": "私は友達と公園へ行きます。",
+          "english": "I will go to the park with a friend.",
+          "furigana": "私[わたし]は友[とも]達[だち]と公[こう]園[えん]へ行[い]きます。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "パン＿＿＿卵",
@@ -9646,7 +9707,7 @@
         },
         {
           "japanese": "彼は学生でしょう。",
-          "english": "He's a student, right?",
+          "english": "He is probably a student.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
@@ -9689,6 +9750,22 @@
         "daijoubu"
       ],
       "family": "copula",
+      "uses": [
+        {
+          "label": "Polite guess — \"probably\"",
+          "structure": "Plain form + でしょう (flat tone; Noun / な-adj without だ)",
+          "japanese": "明日、彼は来るでしょう。",
+          "english": "Tomorrow, he will probably come.",
+          "furigana": "明日[あした]、彼[かれ]は来[く]るでしょう。"
+        },
+        {
+          "label": "Seeking agreement — \"…, right?\"",
+          "structure": "Plain form + でしょう？ (rising tone)",
+          "japanese": "昨日の映画は面白かったでしょう？",
+          "english": "Yesterday's movie was interesting, right?",
+          "furigana": "昨日[きのう]の映[えい]画[が]は面白[おもしろ]かったでしょう？"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "明日、彼は来る＿＿＿。",
@@ -11358,6 +11435,22 @@
         "kazoku"
       ],
       "family": "connectors",
+      "uses": [
+        {
+          "label": "Purpose — \"in order to\"",
+          "structure": "Verb (dictionary form) + ために",
+          "japanese": "日本へ行くために、日本語を勉強します。",
+          "english": "I am studying Japanese in order to go to Japan.",
+          "furigana": "日本[にほん]へ行[い]くために、日本[にほん]語[ご]を勉[べん]強[きょう]します。"
+        },
+        {
+          "label": "Benefit — \"for the sake of\"",
+          "structure": "Noun + の + ために",
+          "japanese": "家族のために、毎日働きます。",
+          "english": "I work every day for the sake of my family.",
+          "furigana": "家[か]族[ぞく]のために、毎[まい]日[にち]働[はたら]きます。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "日本へ行く＿＿＿、日本語を勉強します。",

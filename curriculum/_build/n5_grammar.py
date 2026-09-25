@@ -331,11 +331,31 @@ N5_GRAMMAR = [
             ex("学校に行きます。", "I go to school.", ["gakkou-v", "iku-v"]),
             ex("七時に起きます。", "I wake up at seven.", ["okiru"]),
             ex("友達に会います。", "I meet a friend.", ["tomodachi", "au"]),
-            ex("椅子に座ります。", "I sit on the chair.", ["isu", "suwaru"]),
-            ex("日本に住んでいます。", "I live in Japan.", ["nihon", "sumu"]),
+            ex("彼は家に帰ります。", "He returns home.", ["kare", "ie", "kaeru-v"]),
+            ex("先生に聞きます。", "I ask the teacher.", ["sensei", "kiku-v"]),
         ],
         "vocabulary_slugs": ["gakkou-v", "iku-v", "tomodachi"],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Destination — \"to\"",
+                "structure": "Place + に + motion verb (行く / 来る / 帰る)",
+                "japanese": "私は学校に行きます。",
+                "english": "I go to school.",
+            },
+            {
+                "label": "Point in time — \"at / on\"",
+                "structure": "Specific time + に + Verb",
+                "japanese": "何時に起きますか。",
+                "english": "What time do you wake up?",
+            },
+            {
+                "label": "Target person — \"meet / ask\"",
+                "structure": "Person + に + 会う / 聞く",
+                "japanese": "友達に会います。",
+                "english": "I meet a friend.",
+            },
+        ],
         "cloze_variants": [
             {"jp_cloze": "彼は家＿＿＿帰ります。", "english": "He returns home.", "answer": "に", "nudge": "家 is the endpoint of the going."},
             {"jp_cloze": "何時＿＿＿起きますか。", "english": "What time do you wake up?", "answer": "に", "nudge": "The clock reading is the moment it happens."},
@@ -384,6 +404,20 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["toshokan", "basu", "hashi-chopsticks"],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Place of action — \"at / in\"",
+                "structure": "Place + で + action verb",
+                "japanese": "家で映画を見る。",
+                "english": "I watch movies at home.",
+            },
+            {
+                "label": "Means or tool — \"by / with\"",
+                "structure": "Tool / transport + で + Verb",
+                "japanese": "バスで学校に行く。",
+                "english": "I go to school by bus.",
+            },
+        ],
         "cloze_variants": [
             {"jp_cloze": "家＿＿＿映画を見る。", "english": "I watch movies at home.", "answer": "で", "nudge": "家 is where the watching happens, not the thing watched."},
             {"jp_cloze": "バス＿＿＿学校に行く。", "english": "I go to school by bus.", "answer": "で", "nudge": "バス is how you get there."},
@@ -408,6 +442,20 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["pan", "tamago", "tomodachi"],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Complete list — \"and\"",
+                "structure": "Noun + と + Noun",
+                "japanese": "肉と魚と卵を買います。",
+                "english": "I will buy meat, fish, and eggs.",
+            },
+            {
+                "label": "Companion — \"with\"",
+                "structure": "Person + と + Verb",
+                "japanese": "私は友達と公園へ行きます。",
+                "english": "I will go to the park with a friend.",
+            },
+        ],
         "cloze_variants": [
             {"jp_cloze": "パン＿＿＿卵", "english": "Bread plus eggs.", "answer": "と", "nudge": "A complete pair: bread plus eggs, nothing left out."},
             {"jp_cloze": "肉＿＿＿魚と卵を買います。", "english": "I will buy meat, fish, eggs.", "answer": "と", "nudge": "The list is closed; these three are the whole of it."},
@@ -1440,11 +1488,25 @@ N5_GRAMMAR = [
         "accepted_forms": ["でしょう", "でしょうか"],
         "examples": [
             ex("明日は暑いでしょう。", "It will probably be hot tomorrow.", ["ashita", "atsui-hot"]),
-            ex("彼は学生でしょう。", "He's a student, right?", ["kare", "gakusei"]),
+            ex("彼は学生でしょう。", "He is probably a student.", ["kare", "gakusei"]),
             ex("大丈夫でしょうか。", "Will it be all right?", ["daijoubu"]),
         ],
         "vocabulary_slugs": ["ashita", "atsui-hot", "daijoubu"],
         "family": "copula",
+        "uses": [
+            {
+                "label": "Polite guess — \"probably\"",
+                "structure": "Plain form + でしょう (flat tone; Noun / な-adj without だ)",
+                "japanese": "明日、彼は来るでしょう。",
+                "english": "Tomorrow, he will probably come.",
+            },
+            {
+                "label": "Seeking agreement — \"…, right?\"",
+                "structure": "Plain form + でしょう？ (rising tone)",
+                "japanese": "昨日の映画は面白かったでしょう？",
+                "english": "Yesterday's movie was interesting, right?",
+            },
+        ],
         "cloze_variants": [
             {"jp_cloze": "明日、彼は来る＿＿＿。", "english": "Tomorrow, he will probably come.", "answer": "でしょう", "nudge": "A courteous guess about 彼's arrival."},
             {"jp_cloze": "そのカメラは高い＿＿＿。", "english": "That camera is probably expensive.", "answer": "でしょう", "nudge": "You're estimating the camera's price for a listener."},
@@ -1725,6 +1787,20 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["aruku", "nihongo", "kazoku"],
         "family": "connectors",
+        "uses": [
+            {
+                "label": "Purpose — \"in order to\"",
+                "structure": "Verb (dictionary form) + ために",
+                "japanese": "日本へ行くために、日本語を勉強します。",
+                "english": "I am studying Japanese in order to go to Japan.",
+            },
+            {
+                "label": "Benefit — \"for the sake of\"",
+                "structure": "Noun + の + ために",
+                "japanese": "家族のために、毎日働きます。",
+                "english": "I work every day for the sake of my family.",
+            },
+        ],
         "cloze_variants": [
             {"jp_cloze": "日本へ行く＿＿＿、日本語を勉強します。", "english": "I am studying Japanese so that I can go to Japan.", "answer": "ために", "nudge": "The studying serves the trip."},
             {"jp_cloze": "家族の＿＿＿、毎日働きます。", "english": "I work every day on behalf of my family.", "answer": "ために", "nudge": "The family is the beneficiary of all that work."},
