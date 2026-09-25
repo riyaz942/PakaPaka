@@ -338,7 +338,7 @@ describe('HomeScreen', () => {
 
     fireEvent.press(screen.getByTestId('reading-readiness'));
     // Passages live under Browse now (FR63); `/read/[id]` still redirects here.
-    expect(mockRouterPush).toHaveBeenCalledWith('/browse/passage/7');
+    expect(mockRouterPush).toHaveBeenCalledWith('/browse/passage/7', { withAnchor: true });
     expect(mockRefetchReadiness).toHaveBeenCalled();
   });
 

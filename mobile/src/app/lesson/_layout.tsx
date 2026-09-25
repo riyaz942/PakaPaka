@@ -11,6 +11,7 @@ export default function LessonLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="complete" />
         <Stack.Screen name="item/[id]" />
+        <Stack.Screen name="preview/[id]" />
       </Stack>
     </GestureHandlerRootView>
   );

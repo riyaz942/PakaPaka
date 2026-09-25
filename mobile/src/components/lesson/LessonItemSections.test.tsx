@@ -59,6 +59,7 @@ const grammarRule: GrammarRule = {
     'Very soon you will meet が.',
   ].join('\n'),
   cautionNotes: ['は is pronounced wa, not ha.'],
+  uses: [],
 };
 
 const props: LessonSectionProps = {
@@ -98,6 +99,42 @@ describe('LessonIntroSection — grammar', () => {
     expect(screen.queryByText('Accepted forms')).toBeNull();
     expect(screen.queryByText('Conjugation rules')).toBeNull();
     expect(screen.queryByText('は is pronounced wa, not ha.')).toBeNull();
+  });
+
+  it('lists each use in place of the single structure line', () => {
+    render(
+      <ItemLinkProvider base="/lesson/item">
+        <LessonIntroSection
+          {...props}
+          grammarRule={{
+            ...grammarRule,
+            uses: [
+              {
+                label: 'Nostalgic habit',
+                structure: 'Verb-た + ものだ',
+                japanese: 'よく遊んだものだ。',
+                furigana: null,
+                english: 'I used to play a lot.',
+              },
+              {
+                label: 'Emotional reason',
+                structure: 'Plain form + もの',
+                japanese: 'だって、忙しかったもの。',
+                furigana: null,
+                english: 'Well, I was busy, okay?',
+              },
+            ],
+          }}
+        />
+      </ItemLinkProvider>,
+    );
+
+    expect(screen.getByText('2 uses')).toBeTruthy();
+    expect(screen.getByText('1. Nostalgic habit')).toBeTruthy();
+    expect(screen.getByText('Verb-た + ものだ')).toBeTruthy();
+    expect(screen.getByText('2. Emotional reason')).toBeTruthy();
+    expect(screen.getByText('Well, I was busy, okay?')).toBeTruthy();
+    expect(screen.queryByText('Noun + は + comment')).toBeNull();
   });
 
   it('opens the detail screen inside the lesson stack', () => {

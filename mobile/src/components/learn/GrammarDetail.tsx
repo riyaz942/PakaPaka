@@ -5,7 +5,9 @@ import { Icon } from '@/components/common/Icon';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
+import { DevLessonPreviewButton } from '@/components/learn/DevLessonPreviewButton';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
+import { GrammarUsesSection } from '@/components/learn/GrammarUsesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import {
   DETAIL_HERO_FONT_SIZE,
@@ -65,6 +67,8 @@ export function GrammarDetail({
 
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
 
+      <DevLessonPreviewButton itemId={item.id} />
+
       {grammarRule?.explanationMarkdown ? (
         <View className="mt-space-md" testID="grammar-lesson-body">
           <LessonMarkdown
@@ -77,12 +81,16 @@ export function GrammarDetail({
 
       {grammarRule ? (
         <>
-          <View className="mt-space-md">
-            <SectionHeading label="Structure" />
-            <Text className="mt-space-xs text-body-lg font-jp-medium text-primary">
-              {grammarRule.structure}
-            </Text>
-          </View>
+          {grammarRule.uses.length > 0 ? (
+            <GrammarUsesSection uses={grammarRule.uses} />
+          ) : (
+            <View className="mt-space-md">
+              <SectionHeading label="Structure" />
+              <Text className="mt-space-xs text-body-lg font-jp-medium text-primary">
+                {grammarRule.structure}
+              </Text>
+            </View>
+          )}
 
           {grammarRule.acceptedForms.length > 0 ? (
             <View className="mt-space-md">

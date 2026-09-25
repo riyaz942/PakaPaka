@@ -64,7 +64,8 @@ CREATE TABLE grammar_rules (
   accepted_forms TEXT NOT NULL,
   family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns')),
   explanation_markdown TEXT,
-  caution_notes TEXT
+  caution_notes TEXT,
+  uses TEXT
 );
 
 CREATE TABLE grammar_related_links (

@@ -1,6 +1,13 @@
 import { router, useLocalSearchParams, type Href } from 'expo-router';
-import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Icon } from '@/components/common/Icon';
@@ -10,6 +17,9 @@ import { PassageReader } from '@/components/read/PassageReader';
 import { MaxContentWidth } from '@/constants/theme';
 import { usePassageDetail } from '@/data/hooks/usePassageDetail';
 import type { PassagePracticeResult } from '@/data/user/passagePracticeRepository';
+
+/** Room kept below the focused answer box so its Submit button also shows. */
+const ANSWER_ACTION_CLEARANCE = 96;
 
 /**
  * Passage reader body, shared by the Browse passage route
@@ -38,6 +48,26 @@ export function PassageDetailScreen() {
     setLocalPracticeResults(practiceResults);
   }, [practiceResults, passageId]);
 
+  const scrollRef = useRef<ScrollView>(null);
+  const scrollYRef = useRef(0);
+
+  // When the keyboard shrinks the scroll area, bring the focused answer box
+  // (and its Submit button) back into view.
+  const revealFocusedInput = useCallback(() => {
+    const input = TextInput.State.currentlyFocusedInput();
+    const scroll = scrollRef.current;
+    const scrollHost = scroll?.getNativeScrollRef();
+    if (!input || !scroll || !scrollHost) return;
+    scrollHost.measureInWindow((_sx, scrollY, _sw, scrollHeight) => {
+      input.measureInWindow((_x, y, _width, height) => {
+        const overlap = y + height + ANSWER_ACTION_CLEARANCE - (scrollY + scrollHeight);
+        if (overlap > 0) {
+          scroll.scrollTo({ y: scrollYRef.current + overlap, animated: true });
+        }
+      });
+    });
+  }, []);
+
   const handleAnswerSubmitted = useCallback((result: PassagePracticeResult) => {
     setLocalPracticeResults((current) => {
       const withoutQuestion = current.filter((entry) => entry.questionId !== result.questionId);
@@ -46,7 +76,9 @@ export function PassageDetailScreen() {
   }, []);
 
   return (
-    <View className="flex-1 bg-background">
+    // Wraps the whole screen: KeyboardAvoidingView measures itself against its
+    // parent, so nesting it below the header under-counts the keyboard overlap.
+    <KeyboardAvoidingView behavior="padding" className="flex-1 bg-background">
       <ScreenHeader backTestID="read-passage-back">
         <View className="self-start rounded-radius-full bg-content-passage-soft px-space-sm py-[5px]">
           <Text className="text-overline font-ui-bold uppercase tracking-[0.1em] text-content-passage-deep">
@@ -80,7 +112,15 @@ export function PassageDetailScreen() {
         ) : notFound || !passage ? (
           <Text className="mt-8 text-body text-secondary">Passage not found.</Text>
         ) : (
-          <ScrollView contentContainerClassName="pb-space-xl">
+          <ScrollView
+            ref={scrollRef}
+            onLayout={revealFocusedInput}
+            onScroll={(event) => {
+              scrollYRef.current = event.nativeEvent.contentOffset.y;
+            }}
+            scrollEventThrottle={16}
+            contentContainerClassName="pb-space-xl"
+            keyboardShouldPersistTaps="handled">
             {isUnlocked ? (
               <PassageReader
                 passage={passage}
@@ -101,6 +141,6 @@ export function PassageDetailScreen() {
           </ScrollView>
         )}
       </SafeAreaView>
-    </View>
+    </KeyboardAvoidingView>
   );
 }

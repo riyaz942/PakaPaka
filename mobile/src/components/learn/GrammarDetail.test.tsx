@@ -44,6 +44,7 @@ const grammarRule: GrammarRule = {
   family: 'copula',
   explanationMarkdown: null,
   cautionNotes: [],
+  uses: [],
 };
 
 const exampleSentences: ExampleSentence[] = [

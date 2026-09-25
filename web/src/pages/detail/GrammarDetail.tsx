@@ -21,6 +21,32 @@ export function GrammarDetail({ raw, showReadings }: Props) {
       <p className="grammar-structure">{raw.structure}</p>
       {raw.family ? <span className="grammar-family">{raw.family}</span> : null}
 
+      {raw.uses && raw.uses.length > 0 ? (
+        <>
+          <h3 className="panel-title">Uses ({raw.uses.length})</h3>
+          <ol className="example-list">
+            {raw.uses.map((use, i) => (
+              <li key={i} className="example-item">
+                <p>
+                  <strong>
+                    {i + 1}. {use.label}
+                  </strong>
+                </p>
+                <p className="grammar-structure">{use.structure}</p>
+                <p className="example-japanese">
+                  <AnnotatedSentence
+                    text={use.japanese}
+                    furigana={use.furigana}
+                    showReadings={showReadings}
+                  />
+                </p>
+                <p className="example-english">{use.english}</p>
+              </li>
+            ))}
+          </ol>
+        </>
+      ) : null}
+
       {raw.explanation_markdown ? (
         <>
           <h3 className="panel-title">Explanation</h3>

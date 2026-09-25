@@ -525,6 +525,15 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
         }
         if "family" in g:
             item["family"] = g["family"]
+        if g.get("uses"):
+            uses = []
+            for use in g["uses"]:
+                entry = dict(use)
+                use_furigana = furigana_lib.annotate_sentence(use["japanese"], known_readings)
+                if use_furigana:
+                    entry["furigana"] = use_furigana
+                uses.append(entry)
+            item["uses"] = uses
         if g.get("cloze_variants"):
             variants = []
             for j, cv in enumerate(g["cloze_variants"]):

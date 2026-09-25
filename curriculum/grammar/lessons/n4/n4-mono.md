@@ -46,15 +46,15 @@ Notice both of those lean on よく ("often"). もの itself doesn't mean "repea
 
 There's also a quiet assumption baked into every one of these sentences: you don't do this anymore, or at least not the way you used to. 弟とよく公園で遊んだものだ carries the sense that those park afternoons belong to a chapter that's closed now — you and your brother grew up, moved on, stopped going. Swap in a habit you still keep up today and もの starts to feel wrong, because there's no distance yet for the nostalgia to sit in.
 
-The second job もの does is give a reason, and the flavor is emotional rather than logical — closer to "well, I was busy, okay?" than to a calm から explanation. Here the plain form comes straight from an い-adjective, and もの attaches with nothing in between:
+The second job もの does is give a reason, and the flavor is emotional rather than logical — closer to "well, I was busy, okay?" than to a calm から explanation. This もの closes the sentence, often after だって ("but, well"). Here the plain form comes straight from an い-adjective, and もの attaches with nothing in between:
 
 ```jp
-忙しいもの、電話ができなかった。
+だって、忙しかったもの。
 ```
 
-*I was busy — that's why I couldn't call.*
+*Well, I was busy, okay?*
 
-忙しい is already a complete plain-form adjective, so もの just clips onto the end. You're not reporting your schedule to a stranger; you're defending yourself a little, the way you would to someone who already half-knows the excuse.
+忙しかった is already a complete plain-form adjective, so もの just clips onto the end. You're not reporting your schedule to a stranger; you're defending yourself a little, the way you would to someone who already half-knows the excuse.
 
 The two uses share more than they look like they do. In both cases もの is pointing at something the listener can't argue with directly — a memory that already happened, or a feeling that's already true. から would let someone push back on your logic; もの just states the fact of the feeling and leaves it there.
 
@@ -63,10 +63,10 @@ The two uses share more than they look like they do. In both cases もの is poi
 For nouns and な-adjectives, you can't attach もの straight onto the plain form the way you can with an い-adjective — you need だ in between, giving you だもの:
 
 ```jp
-子供だもの、まだ分からない。
+まだ分からないよ。子供だもの。
 ```
 
-*Well, they're a kid — they still don't understand.*
+*They still don't understand. They're a kid, after all.*
 
 子供 is a noun, so it needs だ before もの can land. Think of だもの as one fused unit for nouns and な-adjectives, the same way ものだ is one fused unit closing off a nostalgic verb sentence — the だ moves to whichever side keeps the whole thing sounding complete.
 
@@ -81,12 +81,12 @@ So the checklist, once you strip away the categories, is short: verbs and い-ad
 In relaxed conversation, もの often shrinks to もん. The meaning doesn't change at all, only the register does — the same way わからない can shrink to わかんない among friends.
 
 ```jp
-忙しいもの、電話ができなかった。
-忙しいもん、電話ができなかった。
+だって、忙しかったもの。
+だって、忙しかったもん。
 ```
 
-*I was busy — that's why I couldn't call.*
-*I was busy — that's why I couldn't call.*
+*Well, I was busy, okay?*
+*Well, I was busy, okay?*
 
 Say the first one to your teacher and the second one to your little brother. Same excuse, same grammar underneath, different company.
 

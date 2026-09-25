@@ -224,6 +224,18 @@
         "sort_order": { "type": "integer", "minimum": 0 }
       }
     },
+    "grammarUse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "structure", "japanese", "english"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "structure": { "type": "string", "minLength": 1 },
+        "japanese": { "type": "string", "minLength": 1 },
+        "furigana": { "type": "string", "minLength": 1 },
+        "english": { "type": "string", "minLength": 1 }
+      }
+    },
     "grammarItem": {
       "type": "object",
       "additionalProperties": false,
@@ -260,6 +272,11 @@
           "type": "array",
           "items": { "$ref": "#/$defs/grammarClozeVariant" },
           "minItems": 1
+        },
+        "uses": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/grammarUse" },
+          "minItems": 2
         },
         "example_sentences": {
           "type": "array",

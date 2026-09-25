@@ -536,6 +536,17 @@ export type GrammarRule = {
   explanationMarkdown: string | null;
   /** "Watch out" notes; [] when unauthored or on older DBs. */
   cautionNotes: string[];
+  /** Distinct uses of a multi-use pattern; [] for single-use grammar or on older DBs. */
+  uses: GrammarUse[];
+};
+
+/** One use of a grammar point that does more than one job (e.g. もの). */
+export type GrammarUse = {
+  label: string;
+  structure: string;
+  japanese: string;
+  furigana: string | null;
+  english: string;
 };
 
 /** Sibling/contrast grammar point linked from a lesson (content pipeline Phase 0). */
@@ -790,10 +801,32 @@ function parseCautionNotes(raw: string | null | undefined): string[] {
   }
 }
 
+function parseGrammarUses(raw: string | null | undefined): GrammarUse[] {
+  if (!raw) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.map((use: Record<string, string | undefined>) => ({
+      label: use.label ?? '',
+      structure: use.structure ?? '',
+      japanese: use.japanese ?? '',
+      furigana: use.furigana ?? null,
+      english: use.english ?? '',
+    }));
+  } catch {
+    return [];
+  }
+}
+
 type OptionalGrammarColumns = {
   family?: string | null;
   explanation_markdown?: string | null;
   caution_notes?: string | null;
+  uses?: string | null;
 };
 
 export function getGrammarRule(
@@ -801,10 +834,12 @@ export function getGrammarRule(
   itemId: string,
 ): GrammarRule | null {
   // Newer columns arrived over time (`family` in Plan 09,
-  // `explanation_markdown`/`caution_notes` in the content pipeline Phase 0);
+  // `explanation_markdown`/`caution_notes` in the content pipeline Phase 0,
+  // `uses` for multi-use patterns);
   // installed devices may still carry a curriculum.db compiled before any of
   // them existed, so fall back column set by column set.
   const columnVariants = [
+    `structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes, uses`,
     `structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes`,
     `structure, conjugation_rules, accepted_forms, family`,
     `structure, conjugation_rules, accepted_forms`,
@@ -832,6 +867,7 @@ export function getGrammarRule(
     family: (row.family as GrammarFamily | undefined) ?? null,
     explanationMarkdown: row.explanation_markdown ?? null,
     cautionNotes: parseCautionNotes(row.caution_notes),
+    uses: parseGrammarUses(row.uses),
   };
 }
 

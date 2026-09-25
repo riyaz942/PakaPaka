@@ -727,6 +727,7 @@ describe('itemRepository', () => {
       family: null,
       explanationMarkdown: null,
       cautionNotes: [],
+      uses: [],
     });
     expect(getGrammarRule(db, '999')).toBeNull();
   });
@@ -754,7 +755,54 @@ describe('itemRepository', () => {
       family: 'copula',
       explanationMarkdown: '# です\n\nThe polite copula.',
       cautionNotes: ['Never attaches directly to verbs.'],
+      uses: [],
     });
+  });
+
+  it('returns the distinct uses of a multi-use grammar point', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetGrammarRules('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 50,
+        structure: 'Plain form + もの / だもの',
+        conjugation_rules: '{}',
+        accepted_forms: '["もの"]',
+        uses: JSON.stringify([
+          {
+            label: 'Nostalgic habit',
+            structure: 'Verb-た + ものだ',
+            japanese: 'よく遊んだものだ。',
+            furigana: 'よく遊[あそ]んだものだ。',
+            english: 'I used to play a lot.',
+          },
+          {
+            label: 'Emotional reason',
+            structure: 'Plain form + もの',
+            japanese: 'だって、忙しかったもの。',
+            english: 'Well, I was busy, okay?',
+          },
+        ]),
+      },
+    ]);
+
+    expect(getGrammarRule(db, '50')?.uses).toEqual([
+      {
+        label: 'Nostalgic habit',
+        structure: 'Verb-た + ものだ',
+        japanese: 'よく遊んだものだ。',
+        furigana: 'よく遊[あそ]んだものだ。',
+        english: 'I used to play a lot.',
+      },
+      {
+        label: 'Emotional reason',
+        structure: 'Plain form + もの',
+        japanese: 'だって、忙しかったもの。',
+        furigana: null,
+        english: 'Well, I was busy, okay?',
+      },
+    ]);
   });
 
   it('returns the Rev 1 split mnemonics and description on item detail', async () => {

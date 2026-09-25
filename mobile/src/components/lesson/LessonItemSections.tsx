@@ -18,6 +18,7 @@ import {
 } from '@/components/learn/ItemDetailHeader';
 import { ItemCrossReferences, KanjiBuiltFromSection } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
+import { GrammarUsesSection } from '@/components/learn/GrammarUsesSection';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
 import {
   hasCurriculumMnemonic,
@@ -158,10 +159,14 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
             </View>
           ) : null}
 
-          <View className="mt-4">
-            <SectionHeading label="Structure" />
-            <Text className="mt-1 text-body text-primary">{grammarRule.structure}</Text>
-          </View>
+          {grammarRule.uses.length > 0 ? (
+            <GrammarUsesSection uses={grammarRule.uses} />
+          ) : (
+            <View className="mt-4">
+              <SectionHeading label="Structure" />
+              <Text className="mt-1 text-body text-primary">{grammarRule.structure}</Text>
+            </View>
+          )}
 
           {/* Accepted forms, conjugation rules and the caution notes are
               reference material: they live on the detail screen with the rest

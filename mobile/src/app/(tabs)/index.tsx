@@ -350,7 +350,9 @@ export default function HomeScreen() {
         return readingTarget ? (
           <ReadingReadiness
             target={readingTarget}
-            onPress={() => router.push(`/browse/passage/${readingTarget.passageId}`)}
+            onPress={() =>
+              router.push(`/browse/passage/${readingTarget.passageId}`, { withAnchor: true })
+            }
           />
         ) : null;
       case 'at-risk':

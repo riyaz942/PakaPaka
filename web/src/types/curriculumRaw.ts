@@ -37,6 +37,15 @@ export type ExampleSentence = {
   word_spans?: WordSpan[];
 };
 
+/** One use of a grammar point that does more than one job (e.g. もの). */
+export type GrammarUse = {
+  label: string;
+  structure: string;
+  japanese: string;
+  furigana?: string;
+  english: string;
+};
+
 export type GrammarClozeVariant = {
   jp_cloze: string;
   jp_cloze_furigana?: string;
@@ -108,6 +117,7 @@ export type GrammarRaw = {
   meaning: string;
   explanation_markdown?: string;
   caution_notes?: string[];
+  uses?: GrammarUse[];
   related_grammar_slugs?: string[];
   sort_order?: number;
   structure: string;

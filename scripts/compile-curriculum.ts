@@ -128,6 +128,14 @@ type GrammarClozeVariant = {
   sort_order?: number;
 };
 
+type GrammarUse = {
+  label: string;
+  structure: string;
+  japanese: string;
+  furigana?: string;
+  english: string;
+};
+
 type GrammarItem = {
   _meta?: SidecarMeta;
   slug: string;
@@ -135,6 +143,7 @@ type GrammarItem = {
   meaning: string;
   explanation_markdown?: string;
   caution_notes?: string[];
+  uses?: GrammarUse[];
   related_grammar_slugs?: string[];
   sort_order?: number;
   structure: string;
@@ -720,8 +729,8 @@ export function compileCurriculum(
     }
 
     const insertGrammarRule = db.prepare(`
-      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes)
-      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family, @explanation_markdown, @caution_notes)
+      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes, uses)
+      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family, @explanation_markdown, @caution_notes, @uses)
     `);
     const insertGrammarRelatedLink = db.prepare(`
       INSERT INTO grammar_related_links (grammar_item_id, related_item_id, sort_order)
@@ -774,6 +783,7 @@ export function compileCurriculum(
         caution_notes: grammarItem.caution_notes
           ? JSON.stringify(grammarItem.caution_notes)
           : null,
+        uses: grammarItem.uses ? JSON.stringify(grammarItem.uses) : null,
       });
 
       for (const [index, relatedSlug] of (grammarItem.related_grammar_slugs ?? []).entries()) {

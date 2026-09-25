@@ -911,17 +911,31 @@ N4_GRAMMAR = [
         "accepted_forms": ["もの", "もん"],
         "examples": [
             ex("子供の頃、よく遊んだものです。", "As a child, I used to play a lot.", ["kodomo-v", "asobu"]),
-            ex("疲れたもの、休みたいです。", "I'm tired, so I want to rest.", []),
+            ex("もう歩けない。疲れたもの。", "I can't walk any more. I'm tired, okay?", []),
         ],
         "vocabulary_slugs": ["kodomo-v", "asobu"],
         "cloze_variants": [
             {"jp_cloze": "毎晩星を見た＿＿＿だ。", "english": "I used to watch the stars every night.", "answer": "もの", "nudge": "Every night, watching stars — what does that repetition tell you about when this happened?"},
             {"jp_cloze": "弟とよく公園で遊んだ＿＿＿だ。", "english": "My little brother and I used to play in the park a lot.", "answer": "もの", "nudge": "Picture yourself years later, telling someone about afternoons with your brother — what tone are you using?"},
-            {"jp_cloze": "忙しい＿＿＿、電話ができなかった。", "english": "I was busy — that's why I couldn't call.", "answer": "もの", "nudge": "The speaker sounds a little defensive here — what one word lets them justify themselves?"},
-            {"jp_cloze": "忙しい＿＿＿、電話ができなかった。", "english": "I was busy — that's why I couldn't call.", "answer": "もん", "nudge": "Same excuse, but said among close friends instead of a teacher — which shorter form fits?"},
+            {"jp_cloze": "だって、忙しかった＿＿＿。", "english": "Well, I was busy, okay?", "answer": "もの", "nudge": "The speaker sounds a little defensive here — what one word lets them justify themselves?"},
+            {"jp_cloze": "だって、忙しかった＿＿＿。", "english": "Well, I was busy, okay?", "answer": "もん", "nudge": "Same excuse, but said among close friends instead of a teacher — which shorter form fits?"},
             {"jp_cloze": "母はよく歌を歌った＿＿＿だ。", "english": "My mother used to sing songs often.", "answer": "もの", "nudge": "This sentence looks back on something repeated long ago — what's doing that looking-back work at the end?"},
         ],
         "family": "patterns",
+        "uses": [
+            {
+                "label": "Nostalgic habit — \"used to\"",
+                "structure": "Verb-た + ものだ",
+                "japanese": "子供の頃、よく遊んだものです。",
+                "english": "As a child, I used to play a lot.",
+            },
+            {
+                "label": "Emotional reason — \"because, okay?\"",
+                "structure": "Plain form + もの (Noun / な-adj + だもの), at the end of the sentence",
+                "japanese": "だって、忙しかったもの。",
+                "english": "Well, I was busy, okay?",
+            },
+        ],
     },
     {
         "slug": "n4-bakari",

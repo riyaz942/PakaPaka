@@ -102,6 +102,19 @@ export const EDIT_SCHEMAS: Record<ContentType, FieldSpec[]> = {
     { key: 'meaning', label: 'Meaning', kind: 'text', readOnly: true },
     { key: 'structure', label: 'Structure', kind: 'text', readOnly: true },
     {
+      key: 'uses',
+      label: 'Uses',
+      kind: 'objectArray',
+      readOnly: true,
+      itemFields: [
+        { key: 'label', label: 'Label', kind: 'text', readOnly: true },
+        { key: 'structure', label: 'Structure', kind: 'text', readOnly: true },
+        { key: 'japanese', label: 'Japanese', kind: 'text', readOnly: true },
+        { key: 'furigana', label: 'Furigana', kind: 'text', readOnly: true },
+        { key: 'english', label: 'English', kind: 'text', readOnly: true },
+      ],
+    },
+    {
       key: 'family',
       label: 'Family',
       kind: 'select',
