@@ -445,7 +445,20 @@ describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)'
     render(<ReviewCard item={cloze} state="incorrect" displayAnswer="は" />);
     expect(screen.getByText('Incorrect')).toBeTruthy();
     expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
-    expect(screen.getByText('Correct answer: は')).toBeTruthy();
+    expect(screen.getByText('は')).toBeTruthy();
+    expect(screen.queryByText(/Correct answer:/)).toBeNull();
+  });
+
+  it('shows the pattern and the variant form together in the hero card', () => {
+    render(
+      <ReviewCard
+        item={{ ...cloze, primaryForm: 'もの', clozeAnswer: 'もん' }}
+        state="incorrect"
+        displayAnswer="もん"
+      />,
+    );
+    expect(screen.getByText('もの / もん')).toBeTruthy();
+    expect(screen.queryByText(/Correct answer:/)).toBeNull();
   });
 });
 
@@ -681,7 +694,7 @@ describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
   it('plain incorrect keeps the standard reveal', () => {
     render(<ReviewCard item={waTopic} state="incorrect" displayAnswer="は" />);
     expect(screen.getByText('Incorrect')).toBeTruthy();
-    expect(screen.getByText('Correct answer: は')).toBeTruthy();
+    expect(screen.getByText('は')).toBeTruthy();
     expect(screen.queryByText(/right idea/)).toBeNull();
   });
 });

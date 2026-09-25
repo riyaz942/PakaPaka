@@ -74,6 +74,15 @@ export function IncorrectReveal({
   const completedSentence = isIncomplete
     ? resolveCompletedSentence(clozeSentence, displayAnswer)
     : null;
+  // Grammar: the hero card carries the answer itself, so no separate
+  // "Correct answer" line. A variant form (もん for もの) shows beside the
+  // pattern rather than contradicting it underneath.
+  const isGrammar = item.itemType === 'grammar';
+  const heroText = isIncomplete
+    ? displayAnswer
+    : isGrammar && displayAnswer && displayAnswer !== item.primaryForm
+      ? `${item.primaryForm} / ${displayAnswer}`
+      : item.primaryForm;
 
   const canOfferSynonym =
     Boolean(onAddSynonym) &&
@@ -116,10 +125,10 @@ export function IncorrectReveal({
           <GlyphText
             className={cn(
               'text-display text-center',
-              heroFontClassForWeight(isIncomplete ? displayAnswer : item.primaryForm, 'bold'),
+              heroFontClassForWeight(heroText, 'bold'),
               accent.deep,
             )}>
-            {isIncomplete ? displayAnswer : item.primaryForm}
+            {heroText}
           </GlyphText>
         </View>
         {isIncomplete ? (
@@ -131,7 +140,7 @@ export function IncorrectReveal({
               className="text-body-lg text-primary text-center"
             />
           ) : null
-        ) : (
+        ) : isGrammar ? null : (
           <Text className="text-body-lg font-ui-semibold text-primary text-center">
             Correct answer: {displayAnswer}
           </Text>
