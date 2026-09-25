@@ -96,7 +96,7 @@ function ComparePicker({ leftId, leftType }: { leftId: string; leftType?: ItemTy
                 <Text className="text-body text-primary">
                   {row.kind === 'item' ? row.primaryForm : ''}
                 </Text>
-                <Text className="text-caption text-secondary">
+                <Text className="text-caption font-ui-medium text-secondary">
                   {row.kind === 'item' ? row.meaning : ''}
                 </Text>
               </Pressable>

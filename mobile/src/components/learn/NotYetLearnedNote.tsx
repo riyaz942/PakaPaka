@@ -48,7 +48,7 @@ export function NotYetLearnedNote({
 
   return (
     <View>
-      <Text className="mt-space-sm text-caption text-muted" testID={testID}>
+      <Text className="mt-space-sm text-caption font-ui-medium text-muted" testID={testID}>
         {caption(items)}
       </Text>
       {items.map((item) => {

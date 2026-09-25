@@ -170,7 +170,7 @@ export function WordLookupSheet({
               contentContainerClassName="p-space-md">
               {selected.kind === 'curriculum' ? (
                 <>
-                  <Text className="text-title text-primary">{selected.primaryForm}</Text>
+                  <Text className="text-title font-jp-bold text-primary">{selected.primaryForm}</Text>
                   <Text className="mt-space-xs text-body text-secondary">{selected.meaning}</Text>
                   <Text className="mt-space-sm text-body-sm text-secondary">
                     {selected.studied
@@ -187,7 +187,7 @@ export function WordLookupSheet({
                 </>
               ) : selected.kind === 'off_curriculum_pending' ? (
                 <>
-                  <Text className="text-title text-primary">{selected.text}</Text>
+                  <Text className="text-title font-jp-bold text-primary">{selected.text}</Text>
                   <View className="mt-space-md flex-row items-center gap-space-sm">
                     <ActivityIndicator accessibilityLabel="Looking up translation" />
                     <Text className="text-body-sm text-secondary">Asking your provider…</Text>
@@ -195,7 +195,7 @@ export function WordLookupSheet({
                 </>
               ) : selected.kind === 'off_curriculum_failed' ? (
                 <>
-                  <Text className="text-title text-primary">{selected.text}</Text>
+                  <Text className="text-title font-jp-bold text-primary">{selected.text}</Text>
                   <Text
                     accessibilityLiveRegion="polite"
                     className="mt-space-sm text-body font-ui text-feedback-incorrect-deep">
@@ -207,7 +207,7 @@ export function WordLookupSheet({
                 </>
               ) : selected.kind === 'off_curriculum_plain' ? (
                 <>
-                  <Text className="text-title text-primary">{selected.text}</Text>
+                  <Text className="text-title font-jp-bold text-primary">{selected.text}</Text>
                   <Text className="mt-space-sm text-body-sm text-secondary">
                     Not part of your curriculum — here for reference only. It will not be added to
                     your reviews.
@@ -219,7 +219,7 @@ export function WordLookupSheet({
                 </>
               ) : (
                 <>
-                  <Text className="text-title text-primary">{selected.translation.text}</Text>
+                  <Text className="text-title font-jp-bold text-primary">{selected.translation.text}</Text>
                   {selected.translation.reading.length > 0 ? (
                     <Text className="mt-space-xs text-body text-secondary">
                       {selected.translation.reading}

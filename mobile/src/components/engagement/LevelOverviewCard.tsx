@@ -131,7 +131,7 @@ export function LevelOverviewCard({
             testID={testID ? `${testID}-set-active` : undefined}
           />
         ) : (
-          <Text className="text-caption text-faint">
+          <Text className="text-caption font-ui-medium text-faint">
             {`Kanji and vocabulary only — grammar and passages aren't available for ${level} yet.`}
           </Text>
         )}

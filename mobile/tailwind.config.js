@@ -101,18 +101,20 @@ module.exports = {
         'jp-hero': ['ZenKakuGothicNew_500Medium'],
         'jp-hero-bold': ['ZenKakuGothicNew_700Bold'],
       },
-      // v2 — typography scale
+      // v2 — typography scale. No fontWeight here: weight comes from the
+      // font-* family. On Android a bold fontWeight on a bundled font drops to
+      // the system CJK font, which draws Chinese glyph forms (言 with a lid).
       fontSize: {
-        display: ['40px', { lineHeight: '1.05', fontWeight: '800' }],
-        'title-lg': ['28px', { lineHeight: '1.1', fontWeight: '800' }],
-        title: ['20px', { lineHeight: '1.2', fontWeight: '700' }],
-        'body-lg': ['18px', { lineHeight: '1.5', fontWeight: '400' }],
-        body: ['16px', { lineHeight: '1.5', fontWeight: '400' }],
-        'body-sm': ['14px', { lineHeight: '1.4', fontWeight: '400' }],
-        label: ['14px', { lineHeight: '1.4', fontWeight: '600' }],
-        caption: ['12px', { lineHeight: '1.4', fontWeight: '500' }],
-        overline: ['12px', { lineHeight: '1.2', fontWeight: '700' }],
-        furigana: ['9px', { lineHeight: '1.1', fontWeight: '400' }],
+        display: ['40px', { lineHeight: '1.05' }],
+        'title-lg': ['28px', { lineHeight: '1.1' }],
+        title: ['20px', { lineHeight: '1.2' }],
+        'body-lg': ['18px', { lineHeight: '1.5' }],
+        body: ['16px', { lineHeight: '1.5' }],
+        'body-sm': ['14px', { lineHeight: '1.4' }],
+        label: ['14px', { lineHeight: '1.4' }],
+        caption: ['12px', { lineHeight: '1.4' }],
+        overline: ['12px', { lineHeight: '1.2' }],
+        furigana: ['9px', { lineHeight: '1.1' }],
       },
       // v2 — spacing (4px base, 16 = screen gutter)
       spacing: {
