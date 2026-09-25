@@ -579,6 +579,20 @@ N4_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ashita", "mado", "kippu"],
         "family": "conjugations",
+        "uses": [
+            {
+                "label": "Do in advance",
+                "structure": "Te-form + おく",
+                "japanese": "チケットを買っておきました。",
+                "english": "I bought the tickets in advance.",
+            },
+            {
+                "label": "Leave as it is",
+                "structure": "Te-form + おく (keep the result in place)",
+                "japanese": "窓を開けておいてください。",
+                "english": "Please leave the window open.",
+            },
+        ],
         # Drafted variants left て outside the blank and asked only for おく,
         # which is not an accepted form — the blank has to take the whole ておく.
         "cloze_variants": [
@@ -614,6 +628,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "遊ん＿＿＿。", "english": "I'll go and play (when I shouldn't).", "answer": "じゃう", "nudge": "This blank sounds different from the last one even though the job is the same — what about the verb before it causes that?"},
         ],
         "family": "conjugations",
+        "uses": [
+            {
+                "label": "Finish completely",
+                "structure": "Te-form + しまう",
+                "japanese": "もう食べてしまいました。",
+                "english": "I've already finished eating.",
+            },
+            {
+                "label": "Regret — \"end up doing\"",
+                "structure": "Te-form + しまう (unwanted result)",
+                "japanese": "財布を無くしてしまいました。",
+                "english": "I ended up losing my wallet.",
+            },
+        ],
     },
     {
         "slug": "n4-teiku-tekuru",
@@ -638,6 +666,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "犬が公園から走っ＿＿＿。", "english": "The dog comes running out of the park.", "answer": "てくる", "nudge": "から marks where the dog started — so where does the running end up relative to the person watching?"},
         ],
         "family": "conjugations",
+        "uses": [
+            {
+                "label": "Direction — toward or away from the speaker",
+                "structure": "Motion verb te-form + くる (toward) / いく (away)",
+                "japanese": "友達がこちらへ歩いてくる。",
+                "english": "My friend is walking this way (toward me).",
+            },
+            {
+                "label": "Change over time",
+                "structure": "Te-form + くる (up to now) / いく (from now on)",
+                "japanese": "日本語が上手になってきました。",
+                "english": "My Japanese has been getting better.",
+            },
+        ],
     },
     {
         "slug": "n4-temo",
@@ -839,7 +881,7 @@ N4_GRAMMAR = [
         "examples": [
             ex("日本へ行ったことがあります。", "I have been to Japan before.", ["nihon", "iku-v"]),
             ex("寿司を食べたことがあります。", "I have eaten sushi before.", ["sushi", "taberu"]),
-            ex("たまに遅刻することがあります。", "I sometimes am late.", ["tama-ni", "chikoku-suru"]),
+            ex("たまに遅刻することがあります。", "I am sometimes late.", ["tama-ni", "chikoku-suru"]),
         ],
         "vocabulary_slugs": ["nihon", "sushi", "tama-ni"],
         # Drafted variants blanked か and the negative ありません, neither an accepted
@@ -853,6 +895,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "山に登った＿＿＿か。", "english": "Have you ever climbed a mountain?", "answer": "ことがあります", "nudge": "You're asking about their whole life, not one specific climb — the か is already there, so what goes in front of it?"},
         ],
         "family": "patterns",
+        "uses": [
+            {
+                "label": "Experience — \"have done before\"",
+                "structure": "Verb-た + ことがある",
+                "japanese": "日本へ行ったことがあります。",
+                "english": "I have been to Japan before.",
+            },
+            {
+                "label": "Sometimes happens",
+                "structure": "Dictionary form + ことがある",
+                "japanese": "たまに遅刻することがあります。",
+                "english": "I am sometimes late.",
+            },
+        ],
     },
     {
         "slug": "n4-koto-ni-suru",
@@ -959,6 +1015,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "私は日本に行った＿＿＿だ。", "english": "I just went to Japan.", "answer": "ばかり", "nudge": "Compare this to a claim about having gone there at some point in life — what's different about the timing here?"},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Nothing but — \"only this\"",
+                "structure": "Noun + ばかり",
+                "japanese": "彼はゲームばかりしています。",
+                "english": "He does nothing but play games.",
+            },
+            {
+                "label": "Just did — still feels recent",
+                "structure": "Verb-た + ばかり",
+                "japanese": "さっき着いたばかりです。",
+                "english": "I just arrived a moment ago.",
+            },
+        ],
     },
     {
         "slug": "n4-tokoro",
@@ -982,6 +1052,26 @@ N4_GRAMMAR = [
             {"jp_cloze": "今、宿題をした＿＿＿です。", "english": "I just finished my homework.", "answer": "ところ", "nudge": "Another た-form verb — what word turns 'did homework' into 'did it this instant'?"},
         ],
         "family": "patterns",
+        "uses": [
+            {
+                "label": "About to — right before the action",
+                "structure": "Dictionary form + ところ",
+                "japanese": "今から出かけるところです。",
+                "english": "I'm just about to leave now.",
+            },
+            {
+                "label": "In the middle of — right inside the action",
+                "structure": "Verb-ている + ところ",
+                "japanese": "今、食べているところです。",
+                "english": "I'm in the middle of eating right now.",
+            },
+            {
+                "label": "Just did — right after the action",
+                "structure": "Verb-た + ところ",
+                "japanese": "ちょうど終わったところです。",
+                "english": "I just finished.",
+            },
+        ],
     },
     {
         "slug": "n4-aida",
@@ -1097,6 +1187,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "家に帰る＿＿＿、雨だった。", "english": "I got home, and it was raining.", "answer": "と", "nudge": "Coming home is the moment the rain got noticed — what particle sits right after 帰る here?"},
         ],
         "family": "conjugations",
+        "uses": [
+            {
+                "label": "Natural result — \"when / if\"",
+                "structure": "Plain present + と",
+                "japanese": "春になると、花が咲きます。",
+                "english": "When spring comes, flowers bloom.",
+            },
+            {
+                "label": "Discovery — \"when I…, I found…\"",
+                "structure": "Plain present + と + past-tense result",
+                "japanese": "家に帰ると、雨だった。",
+                "english": "I got home, and it was raining.",
+            },
+        ],
     },
     {
         "slug": "n4-node-vs-kara",
@@ -1578,6 +1682,26 @@ N4_GRAMMAR = [
             {"jp_cloze": "話せば話す＿＿＿楽しくなる", "english": "The more we talk, the more fun it gets.", "answer": "ほど", "nudge": "Same doubled-verb setup as before — what single word follows it here?"},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Not as … as",
+                "structure": "Noun + ほど + negative",
+                "japanese": "彼ほど頑張っている人はいません。",
+                "english": "There's no one who works as hard as him.",
+            },
+            {
+                "label": "To the extent that",
+                "structure": "Plain form + ほど",
+                "japanese": "頭が痛くなるほど勉強した。",
+                "english": "I studied until my head started to hurt.",
+            },
+            {
+                "label": "The more … the more",
+                "structure": "Verb-ば + same verb + ほど",
+                "japanese": "練習すればするほど、上手になります。",
+                "english": "The more you practice, the better you get.",
+            },
+        ],
     },
     {
         "slug": "n4-kurai-degree",
@@ -1600,6 +1724,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "千円＿＿＿で新しい傘が買えます。", "english": "You can buy a new umbrella for about a thousand yen.", "answer": "ぐらい", "nudge": "What comes right after the price to say it's not a precise figure?"},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "About — a rough amount",
+                "structure": "Number / Noun + くらい・ぐらい",
+                "japanese": "駅まで五分くらいかかります。",
+                "english": "It takes about five minutes to get to the station.",
+            },
+            {
+                "label": "To the extent that",
+                "structure": "Plain form + くらい",
+                "japanese": "泣きたいくらい嬉しいです。",
+                "english": "I'm happy to the point of wanting to cry.",
+            },
+        ],
     },
     {
         "slug": "n4-dake-de-naku",
@@ -1751,6 +1889,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "先生が優しい＿＿＿。", "english": "The teacher is kind, they say.", "answer": "って", "nudge": "No follow-up verb here — can the missing word carry that meaning by itself?"},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Casual quote — \"they said…\"",
+                "structure": "Plain form + って (casual と言う)",
+                "japanese": "明日雨が降るって聞きました。",
+                "english": "I heard it's going to rain tomorrow.",
+            },
+            {
+                "label": "Casual topic — \"X って…\"",
+                "structure": "Noun + って (in place of は)",
+                "japanese": "田中さんって、優しいですね。",
+                "english": "Tanaka is kind, isn't he.",
+            },
+        ],
     },
     {
         "slug": "n4-tteba",
@@ -1773,6 +1925,20 @@ N4_GRAMMAR = [
             {"jp_cloze": "友達＿＿＿、また遅刻した。", "english": "My friend, honestly, was late again.", "answer": "ってば", "nudge": "Compare this to a flat って report — what extra piece turns a neutral mention of a friend into a complaint about them?"},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Calling someone out — \"honestly, X…\"",
+                "structure": "Noun (a person) + ったら・ってば",
+                "japanese": "もう、太郎ったら、また忘れたの。",
+                "english": "Ugh, Taro, you forgot again?",
+            },
+            {
+                "label": "Insisting — \"I told you!\"",
+                "structure": "Plain-form sentence + ってば",
+                "japanese": "分かったってば。",
+                "english": "I said I get it.",
+            },
+        ],
     },
     {
         "slug": "n4-ka-douka",
@@ -2161,6 +2327,32 @@ N4_GRAMMAR = [
             {"jp_cloze": "会議＿＿＿、新しい予定が決まった。", "english": "The new schedule was settled through the meeting.", "answer": "によって", "nudge": "The meeting is the process that produced the decision."},
         ],
         "family": "particles",
+        "uses": [
+            {
+                "label": "Cause — \"because of\"",
+                "structure": "Noun + によって",
+                "japanese": "台風によって、電車が止まりました。",
+                "english": "Due to the typhoon, trains stopped.",
+            },
+            {
+                "label": "Means — \"through\"",
+                "structure": "Noun + によって",
+                "japanese": "会議によって、新しい予定が決まった。",
+                "english": "The new schedule was settled through the meeting.",
+            },
+            {
+                "label": "Doer in a passive sentence — \"by\"",
+                "structure": "Noun + によって + passive verb",
+                "japanese": "この歌は有名な人によって作られた。",
+                "english": "This song was made by a famous person.",
+            },
+            {
+                "label": "Depending on",
+                "structure": "Noun + によって + a result that changes",
+                "japanese": "人によって、考え方が違います。",
+                "english": "Depending on the person, ways of thinking differ.",
+            },
+        ],
     },
     {
         "slug": "n4-tsuide-ni",

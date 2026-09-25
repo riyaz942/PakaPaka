@@ -3663,6 +3663,22 @@
         "kippu"
       ],
       "family": "conjugations",
+      "uses": [
+        {
+          "label": "Do in advance",
+          "structure": "Te-form + おく",
+          "japanese": "チケットを買っておきました。",
+          "english": "I bought the tickets in advance.",
+          "furigana": "チケットを買[か]っておきました。"
+        },
+        {
+          "label": "Leave as it is",
+          "structure": "Te-form + おく (keep the result in place)",
+          "japanese": "窓を開けておいてください。",
+          "english": "Please leave the window open.",
+          "furigana": "窓[まど]を開[あ]けておいてください。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "部屋を掃除し＿＿＿。",
@@ -3817,6 +3833,22 @@
         "taberu"
       ],
       "family": "conjugations",
+      "uses": [
+        {
+          "label": "Finish completely",
+          "structure": "Te-form + しまう",
+          "japanese": "もう食べてしまいました。",
+          "english": "I've already finished eating.",
+          "furigana": "もう食[た]べてしまいました。"
+        },
+        {
+          "label": "Regret — \"end up doing\"",
+          "structure": "Te-form + しまう (unwanted result)",
+          "japanese": "財布を無くしてしまいました。",
+          "english": "I ended up losing my wallet.",
+          "furigana": "財[さい]布[ふ]を無[な]くしてしまいました。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "宿題を忘れ＿＿＿。",
@@ -3955,6 +3987,22 @@
         "furu-rain"
       ],
       "family": "conjugations",
+      "uses": [
+        {
+          "label": "Direction — toward or away from the speaker",
+          "structure": "Motion verb te-form + くる (toward) / いく (away)",
+          "japanese": "友達がこちらへ歩いてくる。",
+          "english": "My friend is walking this way (toward me).",
+          "furigana": "友[とも]達[だち]がこちらへ歩[ある]いてくる。"
+        },
+        {
+          "label": "Change over time",
+          "structure": "Te-form + くる (up to now) / いく (from now on)",
+          "japanese": "日本語が上手になってきました。",
+          "english": "My Japanese has been getting better.",
+          "furigana": "日本[にほん]語[ご]が上手[じょうず]になってきました。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "天気がだんだん暖かくなっ＿＿＿。",
@@ -5168,7 +5216,7 @@
         },
         {
           "japanese": "たまに遅刻することがあります。",
-          "english": "I sometimes am late.",
+          "english": "I am sometimes late.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "tama-ni",
@@ -5195,6 +5243,22 @@
         "tama-ni"
       ],
       "family": "patterns",
+      "uses": [
+        {
+          "label": "Experience — \"have done before\"",
+          "structure": "Verb-た + ことがある",
+          "japanese": "日本へ行ったことがあります。",
+          "english": "I have been to Japan before.",
+          "furigana": "日本[にほん]へ行[い]ったことがあります。"
+        },
+        {
+          "label": "Sometimes happens",
+          "structure": "Dictionary form + ことがある",
+          "japanese": "たまに遅刻することがあります。",
+          "english": "I am sometimes late.",
+          "furigana": "たまに遅[ち]刻[こく]することがあります。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "すしを食べた＿＿＿か。",
@@ -5711,6 +5775,22 @@
         "amai"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Nothing but — \"only this\"",
+          "structure": "Noun + ばかり",
+          "japanese": "彼はゲームばかりしています。",
+          "english": "He does nothing but play games.",
+          "furigana": "彼[かれ]はゲームばかりしています。"
+        },
+        {
+          "label": "Just did — still feels recent",
+          "structure": "Verb-た + ばかり",
+          "japanese": "さっき着いたばかりです。",
+          "english": "I just arrived a moment ago.",
+          "furigana": "さっき着[つ]いたばかりです。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "弟はお菓子＿＿＿食べている。",
@@ -5849,6 +5929,29 @@
         "owaru"
       ],
       "family": "patterns",
+      "uses": [
+        {
+          "label": "About to — right before the action",
+          "structure": "Dictionary form + ところ",
+          "japanese": "今から出かけるところです。",
+          "english": "I'm just about to leave now.",
+          "furigana": "今[いま]から出[で]かけるところです。"
+        },
+        {
+          "label": "In the middle of — right inside the action",
+          "structure": "Verb-ている + ところ",
+          "japanese": "今、食べているところです。",
+          "english": "I'm in the middle of eating right now.",
+          "furigana": "今[いま]、食[た]べているところです。"
+        },
+        {
+          "label": "Just did — right after the action",
+          "structure": "Verb-た + ところ",
+          "japanese": "ちょうど終わったところです。",
+          "english": "I just finished.",
+          "furigana": "ちょうど終[お]わったところです。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "今、出る＿＿＿です。",
@@ -6524,6 +6627,22 @@
         "eki"
       ],
       "family": "conjugations",
+      "uses": [
+        {
+          "label": "Natural result — \"when / if\"",
+          "structure": "Plain present + と",
+          "japanese": "春になると、花が咲きます。",
+          "english": "When spring comes, flowers bloom.",
+          "furigana": "春[はる]になると、花[はな]が咲[さ]きます。"
+        },
+        {
+          "label": "Discovery — \"when I…, I found…\"",
+          "structure": "Plain present + と + past-tense result",
+          "japanese": "家に帰ると、雨だった。",
+          "english": "I got home, and it was raining.",
+          "furigana": "家[いえ]に帰[かえ]ると、雨[あめ]だった。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "窓を開ける＿＿＿、風が入る。",
@@ -9077,6 +9196,29 @@
         "renshuu-suru"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Not as … as",
+          "structure": "Noun + ほど + negative",
+          "japanese": "彼ほど頑張っている人はいません。",
+          "english": "There's no one who works as hard as him.",
+          "furigana": "彼[かれ]ほど頑張[がんば]っている人[ひと]はいません。"
+        },
+        {
+          "label": "To the extent that",
+          "structure": "Plain form + ほど",
+          "japanese": "頭が痛くなるほど勉強した。",
+          "english": "I studied until my head started to hurt.",
+          "furigana": "頭[あたま]が痛[いた]くなるほど勉[べん]強[きょう]した。"
+        },
+        {
+          "label": "The more … the more",
+          "structure": "Verb-ば + same verb + ほど",
+          "japanese": "練習すればするほど、上手になります。",
+          "english": "The more you practice, the better you get.",
+          "furigana": "練[れん]習[しゅう]すればするほど、上手[じょうず]になります。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "これはそれ＿＿＿難しくない",
@@ -9179,6 +9321,22 @@
         "ureshii"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "About — a rough amount",
+          "structure": "Number / Noun + くらい・ぐらい",
+          "japanese": "駅まで五分くらいかかります。",
+          "english": "It takes about five minutes to get to the station.",
+          "furigana": "駅[えき]まで五[ご]分[ふん]くらいかかります。"
+        },
+        {
+          "label": "To the extent that",
+          "structure": "Plain form + くらい",
+          "japanese": "泣きたいくらい嬉しいです。",
+          "english": "I'm happy to the point of wanting to cry.",
+          "furigana": "泣[な]きたいくらい嬉[うれ]しいです。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "駅まで五分＿＿＿かかります。",
@@ -9920,6 +10078,22 @@
         "furu-rain"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Casual quote — \"they said…\"",
+          "structure": "Plain form + って (casual と言う)",
+          "japanese": "明日雨が降るって聞きました。",
+          "english": "I heard it's going to rain tomorrow.",
+          "furigana": "明日[あした]雨[あめ]が降[ふ]るって聞[き]きました。"
+        },
+        {
+          "label": "Casual topic — \"X って…\"",
+          "structure": "Noun + って (in place of は)",
+          "japanese": "田中さんって、優しいですね。",
+          "english": "Tanaka is kind, isn't he.",
+          "furigana": "田中[たなか]さんって、優[やさ]しいですね。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "兄が忙しい＿＿＿言ってた。",
@@ -10024,6 +10198,22 @@
         "wasureru"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Calling someone out — \"honestly, X…\"",
+          "structure": "Noun (a person) + ったら・ってば",
+          "japanese": "もう、太郎ったら、また忘れたの。",
+          "english": "Ugh, Taro, you forgot again?",
+          "furigana": "もう、太[た]郎[ろう]ったら、また忘[わす]れたの。"
+        },
+        {
+          "label": "Insisting — \"I told you!\"",
+          "structure": "Plain-form sentence + ってば",
+          "japanese": "分かったってば。",
+          "english": "I said I get it.",
+          "furigana": "分[わ]かったってば。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "兄＿＿＿、話を聞いてない。",
@@ -11837,6 +12027,36 @@
         "hito"
       ],
       "family": "particles",
+      "uses": [
+        {
+          "label": "Cause — \"because of\"",
+          "structure": "Noun + によって",
+          "japanese": "台風によって、電車が止まりました。",
+          "english": "Due to the typhoon, trains stopped.",
+          "furigana": "台[たい]風[ふう]によって、電[でん]車[しゃ]が止[と]まりました。"
+        },
+        {
+          "label": "Means — \"through\"",
+          "structure": "Noun + によって",
+          "japanese": "会議によって、新しい予定が決まった。",
+          "english": "The new schedule was settled through the meeting.",
+          "furigana": "会[かい]議[ぎ]によって、新[あたら]しい予[よ]定[てい]が決[き]まった。"
+        },
+        {
+          "label": "Doer in a passive sentence — \"by\"",
+          "structure": "Noun + によって + passive verb",
+          "japanese": "この歌は有名な人によって作られた。",
+          "english": "This song was made by a famous person.",
+          "furigana": "この歌[うた]は有[ゆう]名[めい]な人[ひと]によって作[つく]られた。"
+        },
+        {
+          "label": "Depending on",
+          "structure": "Noun + によって + a result that changes",
+          "japanese": "人によって、考え方が違います。",
+          "english": "Depending on the person, ways of thinking differ.",
+          "furigana": "人[ひと]によって、考[かんが]え方[かた]が違[ちが]います。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "台風＿＿＿、電車が止まった。",

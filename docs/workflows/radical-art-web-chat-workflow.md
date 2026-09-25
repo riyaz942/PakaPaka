@@ -1,4 +1,4 @@
-# Generating radical mnemonic art via Gemini web
+# Generating radical mnemonic art via web chat
 
 Phase 3 Tier 2 of `docs/content/content-pipeline-plan.md`: the illustrated mnemonic
 image each radical shows next to its `mnemonic_text`. **Radicals only** — kanji,
@@ -7,16 +7,17 @@ vocabulary and grammar get text mnemonics and no art.
 ## How to run this
 
 **Generation is manual. The agent does the bookkeeping either side of it.** The browser is
-not automated in this lane — you drive Gemini yourself, because hand-driving it turned out
-to be more reliable than automating it and it puts you in front of every image as it
-appears.
+not automated in this lane — you drive the web chat yourself, because hand-driving it
+turned out to be more reliable than automating it and it puts you in front of every image
+as it appears. Any chat tool with image generation works (Gemini, ChatGPT, etc.) — pick
+whichever is producing good results at the time; nothing in this lane names one.
 
 A run is two asks and one manual stretch:
 
 | | Who | What |
 | --- | --- | --- |
 | **1. Build the batch** | Agent | *"Generate radical art prompts for the next `<batch-size>`."* It picks the radicals, writes one **self-contained prompt per radical** — style block and scene in a single copyable block — and saves them to a batch file. |
-| **2. Generate** | You | One **fresh Gemini chat per radical**. Paste that radical's whole prompt as the only message, generate, download. Leave the downloads where they land. |
+| **2. Generate** | You | One **fresh chat per radical**, in whichever tool you're using. Paste that radical's whole prompt as the only message, generate, download. Leave the downloads where they land. |
 | **3. Install** | Agent | *"Images are downloaded, install them."* It collects them from `~/Downloads`, matches each to its radical, converts to WebP, installs, runs the gates, and reports. |
 | **4. Judge** | You | Open the installed images. Reply "all good", or name the slugs to redo and why. |
 | **5. Re-roll** | Agent | Revises just those prompts and hands them back for step 2. |
@@ -39,9 +40,9 @@ STYLE block.
 | | |
 | --- | --- |
 | `<batch-size>` | How many radicals one run covers. Each gets its own chat, so this is purely how much you want to paste in one sitting |
-| Sessions | **One fresh Gemini chat per radical**, single message. No chat is reused, and chat history carries nothing |
+| Sessions | **One fresh chat per radical**, single message. No chat is reused, and chat history carries nothing |
 | Levels | Counted by *band*, not by source dataset — run Step 0 for the live number. As of 2026-08-22: N5 122 radicals, 122 reviewed, 25 still need art · N4 40 radicals, 23 reviewed, 5 in this batch · N3 44/8/0 · N2 17/1/0 · N1 15/0/0 |
-| Model | Gemini web, Pro with extended thinking. AI Studio was tried and rejected |
+| Model | Any web chat tool with image generation — Gemini, ChatGPT, whatever is working well that day. Not pinned to one; switch freely between runs |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
 | Committed | `mobile/assets/radicals/{source}/{slug}.webp` — `{source}` is the dataset that wrote the radical (`n5`/`n4`/`k`), not its band (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
@@ -181,7 +182,7 @@ radical:
     Three small separate droplets stacked down the LEFT edge of the square, …
     ```
 
-The fenced block is the copy unit — everything inside it goes into Gemini, nothing else.
+The fenced block is the copy unit — everything inside it goes into the chat, nothing else.
 Keep the `## <slug>` heading outside the fence so it names the file to expect but never
 reaches the model.
 
@@ -193,16 +194,16 @@ another.
 
 For each section in the batch file:
 
-1. Open a **brand new** Gemini chat. Never reuse one, not even for the next radical in the
-   batch.
-2. Set the model to **Pro** and enable **extended thinking**.
+1. Open a **brand new** chat in whichever tool you're using. Never reuse one, not even for
+   the next radical in the batch.
+2. If the tool has quality/thinking settings, turn them up (e.g. Gemini's Pro + extended
+   thinking).
 3. Paste the whole fenced block as the only message. Send.
 4. Download the image.
 
-Leave the downloads in `~/Downloads` under whatever name Gemini gives them — the agent
+Leave the downloads in `~/Downloads` under whatever name the tool gives them — the agent
 identifies them in Step 3, so there's no renaming to do. Do not clear out unrelated
-`Gemini_Generated_Image_*.png` files from an earlier run first; tell the agent if any are
-left over.
+image files from an earlier run first; tell the agent if any are left over.
 
 Order matters slightly: generating in batch-file order gives the agent a download-time
 ordering to check its identification against. It isn't required, but say so if you jump
@@ -214,14 +215,16 @@ them at real size.
 
 ## Step 3 — agent: identify the downloads and stage them
 
-Gemini names every download `Gemini_Generated_Image_<random>.png`. Nothing in the filename
-says which radical it is, so the agent has to work that out — and it has to be **right**,
+Nothing in the downloaded filename says which radical an image is — whatever pattern the
+tool used (Gemini's `Gemini_Generated_Image_<random>.png`, ChatGPT's `ChatGPT Image <date>,
+<time>.png`, or otherwise) — so the agent has to work that out, and it has to be **right**,
 because a mis-assigned image ships a picture of a tree on the radical for "power".
 
-List the candidates newest-last:
+List the candidates newest-last — check `~/Downloads` for whatever the tool actually named
+them (`ls -t ~/Downloads | head -30` first if the pattern isn't already known):
 
 ```bash
-ls -t -r ~/Downloads/Gemini_Generated_Image_*.png
+ls -t -r ~/Downloads/<pattern>
 ```
 
 Then, for each file **open it and look at it**, and match it against the scenes in the
@@ -238,7 +241,7 @@ Stage each one under its curriculum slug — from `curriculum/radicals/{level}.j
 from memory of the radical's name (`sanzui`, not `sansui`):
 
 ```bash
-mv ~/Downloads/Gemini_Generated_Image_<random>.png \
+mv ~/Downloads/<downloaded-filename>.png \
    curriculum/_build/generate_content/web/radical-art/<slug>.png
 ```
 
@@ -324,11 +327,12 @@ prompt revision, so "the drop reads as a leaf" is useful and "looks off" is not.
 radical can also be left with no art: it falls back to its mnemonic text (NFR20), which
 is safe. A wrong image is not. Do not "fix it in post" — there is no post.
 
-Gemini stamps a pale sparkle in the bottom-right of every image. The off-white margin
-required on all four sides is enough to make it inconspicuous, so **nothing in this lane
-reserves that corner.** An earlier version of the STYLE block asked for the bottom-right
-eighth to be left bare and the model over-obeyed, cutting a visible bite out of the
-composition. If you find that instruction anywhere, delete it.
+Some tools stamp a small watermark in a corner of every image (e.g. Gemini's pale
+sparkle, bottom-right). The off-white margin required on all four sides is enough to make
+it inconspicuous, so **nothing in this lane reserves that corner.** An earlier version of
+the STYLE block asked for the bottom-right eighth to be left bare and the model
+over-obeyed, cutting a visible bite out of the composition. If you find that instruction
+anywhere, delete it.
 
 ## Step 6 — re-roll round (only for the slugs you name)
 
