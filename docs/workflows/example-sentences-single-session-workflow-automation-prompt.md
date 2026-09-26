@@ -124,14 +124,16 @@ Do not write a combined file. Requirements:
 - Include 2–4 sentences (the prompt asks for 3; stay in that range).
 - Every sentence must actually use the target: the word's dictionary form (a
   natural conjugation counts — 食べました exemplifies 食べる).
-- **Treat each item's allowed-vocabulary list as its own.** The lists grow
-  through the level, so a word allowed for a later item in this run may be
-  out of level for an earlier one. Check every word against the list in THAT
-  item's prompt, never against a list you read for another item.
+- **Treat each item's vocabulary lists as its own.** Each prompt splits the
+  level into "Already known" (words before this item) and "Later in this
+  level". The split moves through the level, so a word that is known for a
+  later item in this run may still be "later" for an earlier one. Prefer the
+  "Already known" list in THAT item's prompt; use a "later" word only when a
+  sentence needs it, at most one per sentence.
 - Every slug in a sentence's `vocabulary_slugs` must come from that prompt's
-  allowed-vocabulary list; never invent slugs. Every content word in each
-  Japanese sentence must be in that list (the level-check rejects
-  out-of-level words).
+  two vocabulary lists; never invent slugs. Every content word in each
+  Japanese sentence must be in one of those lists (the level-check rejects
+  words from a higher level).
 - Write all Japanese as plain text — no furigana, no romaji, no markdown, no
   brackets. The build pipeline adds furigana with a tokenizer.
 - Keep sentences short and everyday (roughly ≤ 40 Japanese characters each)

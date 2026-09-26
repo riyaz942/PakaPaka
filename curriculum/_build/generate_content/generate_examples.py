@@ -60,7 +60,8 @@ MODEL = "claude-opus-4-8"
 #: Bump together with the example prompts and persona.md. Exception: the
 #: allowed-grammar list added to both prompts only narrows what a *future*
 #: generation may use, so it was not bumped — a bump would requeue ~1,100
-#: reviewed example sets to no purpose.
+#: reviewed example sets to no purpose. Same for the "later in this level"
+#: vocab/grammar lists: they only widen what a future generation may use.
 PROMPT_VERSION = 1
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 1500
@@ -122,8 +123,10 @@ def build_user_prompt(kind, ctx, validator_errors=None):
     subs = {
         "{{LEVEL}}": ctx["level"].upper(),
         "{{ALLOWED_VOCAB}}": grammar_context.format_vocab_list(ctx["allowed"]),
+        "{{LATER_VOCAB}}": grammar_context.format_vocab_list(ctx["later"]) if ctx["later"] else "(none)",
         "{{RECENT_GRAMMAR}}": ec.format_grammar_list(ctx["recent_grammar"]),
         "{{EARLIER_GRAMMAR}}": ec.format_grammar_list(ctx["earlier_grammar"]),
+        "{{LATER_GRAMMAR}}": ec.format_grammar_list(ctx["later_grammar"]) if ctx["later_grammar"] else "(none)",
         "{{STYLE_ANCHORS}}": tatoeba.format_anchors(ctx["anchors"]),
         "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
     }

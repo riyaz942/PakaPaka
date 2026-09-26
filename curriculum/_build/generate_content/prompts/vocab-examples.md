@@ -11,18 +11,26 @@ voice above.
 
 ## Vocabulary you may use
 
-Every content word in your sentences must come from this list (plus particles,
-numbers, names, and everyday grammatical machinery). The learner knows nothing
-else yet.
+Every content word in your sentences must come from the two lists below (plus
+particles, numbers, names, and everyday grammatical machinery).
+
+**Already known** — the learner has met these by the time they meet this
+word. Build your sentences from these first, so the example feels familiar.
 
 {{ALLOWED_VOCAB}}
 
+**Later in this level** — the learner has not met these yet, but they are the
+same level. Use one only when the sentence would be stiff or unnatural
+without it, and keep it to one such word per sentence at most.
+
+{{LATER_VOCAB}}
+
 ## Grammar you may use
 
-These are the patterns the learner has been taught by the time they meet this
-word. Build your sentences from these plus basic particles, the copula, and
-plain/polite verb and adjective endings. Do not use a pattern that is not on
-this list — a later pattern is as unreadable to this learner as a later word.
+Build your sentences from the patterns below plus basic particles, the
+copula, and plain/polite verb and adjective endings. Do not use a pattern that
+is on none of these lists — a higher-level pattern is as unreadable to this
+learner as a higher-level word.
 
 **Just taught** — when a sentence needs more than a plain statement, reach for
 one of these first; they are what the learner is still consolidating. Do not
@@ -33,6 +41,11 @@ force one into every sentence.
 **Taught earlier** — also fine to use:
 
 {{EARLIER_GRAMMAR}}
+
+**Later in this level** — not taught yet; use one only when the sentence needs
+it, and prefer the lists above:
+
+{{LATER_GRAMMAR}}
 
 ## Real usage, for style only
 
