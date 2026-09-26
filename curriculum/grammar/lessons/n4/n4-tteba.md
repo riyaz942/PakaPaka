@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ったら・ってば only appear in casual speech and never combine with です or ます — the whole pattern exists to drop formality, not keep it."
   - "This ったら is unrelated to the conditional ったら (if/when) — don't reach for it when you mean \"when I get home, I'll call.\""

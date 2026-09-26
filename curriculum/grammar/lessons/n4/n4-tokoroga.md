@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ところが needs a genuine turn of events; using it to link two facts that were never in tension just sounds like a false alarm."
   - "Nothing about the first sentence changes form for ところが — it simply opens the next sentence on its own, followed by a comma."

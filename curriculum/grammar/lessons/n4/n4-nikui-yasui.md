@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "にくい and やすい attach to the verb's stem (the ます-form minus ます), never to the dictionary form."
   - "Once attached, the whole word behaves like a regular い-adjective, so negate and conjugate the ending itself, not the verb underneath."

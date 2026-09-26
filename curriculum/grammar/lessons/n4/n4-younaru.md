@@ -1,7 +1,7 @@
 ---
 generator_model: claude-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The ない must lose its い before なる — 飲まなくなる, never 飲まないなる or 飲まないになる."
   - "All tense and politeness go on なる at the end; the verb inside the pattern stays plain."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Attach ほかない only to a plain dictionary-form verb, never to a past, negative, or polite stem, and never to a bare noun or na-adjective."
   - "Use only ほかない or the polite ほかありません; this course has no past or negated version of the ending."

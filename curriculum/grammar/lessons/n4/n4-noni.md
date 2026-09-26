@@ -1,7 +1,7 @@
 ---
 generator_model: opus-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "After a noun or a な-adjective, change だ to な before のに (学生なのに)."
   - "Never follow a のに clause with a request, a command, or an invitation — use ので for those."

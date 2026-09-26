@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ついでに only fits when the two actions belong to the same outing — it cannot link errands done on separate trips."
   - "The tacked-on action must be the minor one; if it is your real goal, ついでに sounds wrong."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "限り reports the boundary of what you personally know, see, or feel — treat it as a hedge, not a claim of certainty."
   - "Don't insert だ before 限り on a verb or an i-adjective — the plain form already ends the clause on its own."

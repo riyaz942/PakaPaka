@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "について needs a plain noun in front of it — it can't attach directly to a verb."
   - "につき is the formal, written-notice version of について; use について when you're speaking."

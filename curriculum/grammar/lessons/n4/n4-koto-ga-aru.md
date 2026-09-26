@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ことがある only attaches to a verb's plain past (た-form) — putting it on the dictionary form instead changes the meaning to an occasional habit, not a past experience."
   - "Use ことがある for experience in general, not to narrate one specific known event from last week — plain past alone tells that kind of story."

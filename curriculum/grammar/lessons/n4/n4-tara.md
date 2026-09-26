@@ -1,7 +1,7 @@
 ---
 generator_model: opus-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Build たら from the plain past form, not the dictionary form — if the past tense ends in だ, the conditional ends in だら."
   - "Politeness is decided by the final verb only, so the たら clause itself stays plain even inside a polite sentence."

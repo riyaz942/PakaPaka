@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "おく still conjugates on its own as a regular u-verb (おかない, おきます, おいて) — only the verb in front of it stays frozen in te-form."
   - "とく is the casual, spoken contraction of ておく; don't write it anywhere formal."

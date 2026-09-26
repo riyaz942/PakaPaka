@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "つつある is formal, written-register Japanese — in everyday conversation, use 〜ている instead."
   - "つつある attaches to the verb stem, never to the plain dictionary form or the て-form."

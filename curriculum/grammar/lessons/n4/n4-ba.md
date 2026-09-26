@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Don't end a ば sentence with a command, invitation, or \"let's\" when the ば clause is a plain action verb — use たら there instead."
   - "ければ only attaches to the plain form of an い-adjective (or the plain negative), never to a -です or -ます shape."

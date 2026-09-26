@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "でしょう shrinks to だろう in casual speech, but だろう only fits people you'd already speak plainly to — don't use it with a teacher or stranger."
   - "Rising-intonation でしょう？ works like a tag question, checking for agreement, not stating an uncertain guess like falling-intonation でしょう does."

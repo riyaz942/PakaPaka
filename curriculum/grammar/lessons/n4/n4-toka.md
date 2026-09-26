@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "とか is casual — swap it out (or drop it) in formal writing and careful speech, since its vagueness reads as sloppy rather than friendly there."
   - "A single noun plus とか already implies \"and other things like it\" — you don't need a second とか to make that reading valid, even though pairing two examples is the more common shape."

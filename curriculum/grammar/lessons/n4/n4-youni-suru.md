@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ようにする describes a repeated effort, not a single one-off action — don't use it for something you only did once."
   - "The よう is required — dropping it (as in `食べるにする`) isn't a shortcut, it's a mistake."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "はずがない needs a concrete reason behind it — used for a bare hunch with nothing backing it, it sounds far too forceful."
   - "Attaching はずがない after an already-negative verb or adjective (ない form) flips the meaning to definitely must be true, not a stronger no way."

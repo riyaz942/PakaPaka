@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Dropping the も and leaving only the te-form turns a concession into a plain reason, so 忙しくて means 'because I'm busy,' not 'even though I'm busy.'"
   - "でも attached to a noun or な-adjective is the same word as the conjunction でも (but) — only its position in the sentence tells you which job it's doing."

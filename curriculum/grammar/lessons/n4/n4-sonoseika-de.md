@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "そのため only works when the sentence right before it (or clearly established just before) states a cause — don't open with it out of nowhere."
   - "そのため itself never conjugates or changes with politeness level; only the sentences around it do."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "な-adjectives and nouns need な inserted before んです or んだ in the plain present — skipping it is one of the most common early mistakes."
   - "んです and its casual form んだ can sound dramatic or accusatory when used for a neutral fact nobody asked about, so save them for moments that actually need explaining."

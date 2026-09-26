@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "かもしれない attaches to the bare な-adjective or noun — never leave だ or な in front of it (大丈夫なかもしれない, 病気だかもしれない are both wrong)."
   - "です never follows かもしれない — the polite form is already built into かもしれません, not かもしれないです."

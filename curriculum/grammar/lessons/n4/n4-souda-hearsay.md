@@ -1,7 +1,7 @@
 ---
 generator_model: opus-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "そうだ never conjugates itself — put every tense and negation on the plain form in front of it, never on そうだ."
   - "After a な-adjective or a noun you need だ before そうだ, not the な that ので and のに take."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "わけだ points back at a fact you already know or just noticed — it doesn't hand over a brand new reason the way から or ので does."
   - "Nouns and な-adjectives take な in front of わけ instead of だ (病気なわけだ, not 病気だわけだ)."

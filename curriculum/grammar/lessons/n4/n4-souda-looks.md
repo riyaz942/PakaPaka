@@ -1,7 +1,7 @@
 ---
 generator_model: opus-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Attach this そう to a bare stem — an い-adjective without its い, a な-adjective with nothing after it, a verb's ます-stem — never to a full plain form and never to a noun."
   - "いい becomes よさそう and ない becomes なさそう; the chopped forms いそう and なそう are wrong."

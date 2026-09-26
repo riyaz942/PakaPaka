@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "に限らず attaches only to a noun — it never sits directly after an adjective or a verb."
   - "The sentence almost always needs a も or でも later on to name what else is included; without it, the widening never lands."

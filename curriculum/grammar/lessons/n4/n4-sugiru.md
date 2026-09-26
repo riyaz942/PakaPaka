@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "すぎる attaches to a stem, never to the full dictionary form of a verb or to an い-adjective that still has its い — 食べるすぎる and 高いすぎる are both wrong."
   - "いい is irregular: it becomes よすぎる, borrowed from its formal twin 良い, not いすぎる."

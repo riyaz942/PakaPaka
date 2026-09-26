@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "てもいい answers whether something is allowed, not whether it's necessary — a different pattern covers having to do something."
   - "Don't tack a negative verb onto てもいい to mean it isn't allowed — that reads as a rhetorical question instead of a denial."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Don't confuse なくてもいい with てはいけない — one grants release from a rule, the other forbids the action entirely."
   - "なくてもいい needs a correctly formed ない-stem underneath it, so double-check that form first if the sentence feels off."

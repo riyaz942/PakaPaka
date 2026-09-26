@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "っけ only fits when the fact was once yours — don't reach for it on a genuinely new question."
   - "I-adjectives need their own past tense before っけ; you can't glue だ onto them the way nouns take it."

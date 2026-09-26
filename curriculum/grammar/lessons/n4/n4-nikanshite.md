@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "に関して is formal and reads as stiff or press-conference-like in casual conversation, where people usually just drop it."
   - "に関して needs a real topic noun; it can't be used for physical nearness or for marking who something is done for."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "反面 needs な after a na-adjective (便利な反面) but attaches directly to the plain form after verbs and i-adjectives — dropping the な is a common mistake."
   - "Both halves joined by 反面 must describe the same subject or topic; if you're contrasting two different people or unrelated situations, でも or しかし fits better, not 反面."

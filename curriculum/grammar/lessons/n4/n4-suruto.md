@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "すると cannot introduce your own deliberate next move — use そこで when the second half is a choice you made rather than something you noticed happen."
   - "Never follow すると with a request, invitation, or volitional form (〜ましょう, 〜よう); it only narrates what happened or what reliably happens, never what you intend to do."

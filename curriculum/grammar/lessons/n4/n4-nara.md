@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "なら reacts to something already said or already known — it is not for two events happening one after another in time, which is たら's job."
   - "な-adjectives and nouns drop だ before なら — 静かだなら keeps an extra だ that does not belong there."

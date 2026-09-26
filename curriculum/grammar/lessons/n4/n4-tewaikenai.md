@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "てはいけない only attaches to the affirmative te-form; there is no negative version that softens the meaning."
   - "てはいけない and てはだめだ carry the same blunt meaning — putting です/ます in front does not make either one softer."

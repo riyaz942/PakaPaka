@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "一方で attaches only to the plain form — a polite です/ます form right before it, like 忙しいです一方で, is not something native speakers write."
   - "一方で joins two clauses inside one sentence; it can't open a fresh sentence on its own the way でも does."

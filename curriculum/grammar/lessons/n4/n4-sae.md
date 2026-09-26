@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "さえ replaces は, が, and を on the noun it marks — never stack the old particle back on top of it."
   - "さえ attaches to a noun, not directly to a verb; it can't be used to mark an entire action on its own."

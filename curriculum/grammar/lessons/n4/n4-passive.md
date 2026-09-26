@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The passive can attach to intransitive verbs like 来る and 降る to show an event landed on you against your will, and this 'adversity' reading has no direct English equivalent, so avoid translating it word for word."
   - "For ichidan verbs and 来る, the passive form is identical to the potential form — only the surrounding context tells you which meaning is intended."

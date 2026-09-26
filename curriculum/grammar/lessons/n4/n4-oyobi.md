@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "および joins nouns only — it can never connect two verbs, two adjectives, or two whole clauses."
   - "および belongs to written and formal notices; in ordinary conversation と or や is what you actually say."

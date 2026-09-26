@@ -1,7 +1,7 @@
 ---
 generator_model: opus-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Nouns and な-adjectives need な before ので (学生なので, 静かなので) — 学生ので and 学生だので are both wrong."
   - "い-adjectives and plain verbs attach straight to ので, so 寒いなので is an over-correction."

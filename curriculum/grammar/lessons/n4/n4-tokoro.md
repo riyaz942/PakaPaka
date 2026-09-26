@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ところ marks a single instant, not a stretch of time, so it clashes with repeated or habitual phrasing like 毎日勉強しているところです."
   - "ところ only attaches after a conjugated verb, never directly after a plain adjective, so 暑いところです is not a way to talk about right now."

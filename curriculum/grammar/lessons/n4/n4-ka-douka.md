@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never add だ before かどうか after a noun or な-adjective — it's 元気かどうか, not 元気だかどうか."
   - "かどうか only works for yes-or-no uncertainty; a question word like 誰 or 何 pairs with plain か instead, never with かどうか."

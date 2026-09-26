@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Don't use か何か when you mean one specific, known thing — 友達か何か sounds like you doubt the person even is your friend."
   - "Once か何か is in the sentence, drop the object marker を — a bare noun plus を plus か何か is never said together."

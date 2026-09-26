@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never put a request, invitation, order, or suggestion in the clause after と — for those, use 場合 instead."
   - "The clause right before と must stay in plain present form even when the second half describes something in the past, like a discovery."

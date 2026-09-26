@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "として only ever follows a bare noun — never an i-adjective, a na-adjective, or a verb on its own."
   - "Don't insert の before として; unlike some patterns you've learned, として attaches straight to the noun."

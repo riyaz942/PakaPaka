@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "なりません is the polite negative of なる, not a separate negation you can remove from the ending."
   - "なくてもいい and なければならない use the identical ない-stem but land on opposite meanings, so double-check which one you actually wrote."

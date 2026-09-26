@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "かなり never takes な, even in the exact slot a な-adjective would use it — you still need an actual adjective between かなり and any noun."
   - "かなり reports a real amount without judging it, so it's the wrong choice when you actually mean the amount became a problem — that's すぎる's job."

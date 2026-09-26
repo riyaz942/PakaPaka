@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Attach だけでなく directly after the plain form of a verb or い-adjective, but insert な after a noun or な-adjective first — だ never survives directly in front of だけでなく."
   - "だけでなく almost always needs も or でも in the second half to name the added item; leaving that marker off makes the sentence sound cut off."

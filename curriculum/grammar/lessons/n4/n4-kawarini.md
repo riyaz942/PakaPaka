@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "代わりに never attaches directly to a noun — always insert の first (兄の代わりに, not 兄代わりに)."
   - "With verbs, 代わりに attaches only to the dictionary form, never to the て-form or the stem."

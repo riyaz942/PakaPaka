@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "わけがない states the speaker's own conviction, not a neutral fact, so use it carefully about someone else's claim in polite settings."
   - "な-adjectives and nouns take な before わけがない; plain verbs and い-adjectives attach directly with no な and no だ inserted."

@@ -1,7 +1,7 @@
 ---
 generator_model: claude-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "な-adjectives keep their な and plain nouns take の before はず — 静かなはず and 医者のはず, never 静かはず or 医者はず."
   - "はず never gives advice or states an obligation; it only says what you calculate to be true from the facts you have."

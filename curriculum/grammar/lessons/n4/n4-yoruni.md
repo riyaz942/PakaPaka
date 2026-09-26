@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Attach によって straight to the noun — write 地震によって, never 地震のによって."
   - "により is only the formal, written contraction of によって; keep it out of casual conversation."

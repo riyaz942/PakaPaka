@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "によると always attaches directly to a noun naming the source — never to a verb or full clause."
   - "によると relays someone else's information; for your own opinion or reasoning, use a different pattern, not 私によると."

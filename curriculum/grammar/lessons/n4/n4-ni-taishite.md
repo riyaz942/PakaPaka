@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "に対する must come directly before the noun it modifies; if no noun follows, use に対して instead."
   - "Do not use に対して for the plain recipient of giving, lending, sending, or saying something to a person, where に by itself is the correct particle."

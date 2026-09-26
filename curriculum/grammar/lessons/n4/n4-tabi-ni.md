@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Keep the verb right before たびに in dictionary form even when the whole sentence is about the past — たびに itself never follows a past-tense verb."
   - "Don't drop の when a noun leads into たびに; 旅行のたびに needs that の the same way any noun phrase does."
