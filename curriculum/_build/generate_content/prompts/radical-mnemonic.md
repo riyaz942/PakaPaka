@@ -22,6 +22,23 @@ is made of, then give one simple picture that leads to the meaning. No riddle,
 no build-up, no clever phrasing to decode. If the reader has to think about
 what a sentence means, it is too clever.
 
+The test is simple: after one read, does the picture make the learner remember
+this radical's meaning? The scene must make sense — the parts (or the shape)
+must lead to the meaning in a way the learner can follow.
+
+## Funny, when it fits
+
+A funny picture is easier to remember, so make it funny when you can: an
+object that behaves badly, a person caught mid-action, a scale that is wrong on
+purpose. For 動, the person with power could be straining so hard that their
+face turns red, and the heavy boxes still barely move.
+
+But funny is a bonus, not a rule. Simple and clear always comes first. If the
+only jokes you can find make the scene harder to follow, or break the link
+between the parts and the meaning, leave the joke out and write the plain
+version. A plain mnemonic that makes sense beats a funny one that does not.
+Never force a pun, and never add a second sentence just to hold a joke.
+
 ## The radical
 
 - Form: **{{FORM}}**
@@ -61,8 +78,9 @@ the meaning:
   Longer is fine here: the illustrator needs the objects, positions and action
   specified, and nobody skims a prompt.
 
-Padding is the failure mode — no joke on top of the picture, no restated
-ending, no sentence that adds words without adding picture.
+Padding is the failure mode — no restated ending, no sentence that adds words
+without adding picture. Any humour lives inside the one scene, not in an extra
+line.
 
 ## Sentence shape
 
