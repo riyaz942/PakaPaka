@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function BadgeLegend({
-  skeletonLabel = 'skeleton (<60% complete)',
+  skeletonLabel = 'skeleton (≤60% complete)',
   showAudit = true,
 }: Props) {
   return (

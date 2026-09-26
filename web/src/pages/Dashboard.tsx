@@ -512,7 +512,7 @@ export default function Dashboard() {
                           <StatusBadge status={item.reviewStatus} />
                           <CompletenessPill
                             percent={item.completeness.percent}
-                            skeleton={item.completeness.percent < 0.6}
+                            skeleton={item.completeness.percent <= 0.6}
                             skeletonLabel={data.skeletonLabel}
                           />
                         </li>

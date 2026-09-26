@@ -104,5 +104,5 @@ export function itemKey(type: ContentType, slug: string): string {
 export const SKELETON_THRESHOLD = 0.6;
 
 export function isSkeleton(item: ContentItem): boolean {
-  return item.completeness.percent < SKELETON_THRESHOLD;
+  return item.completeness.percent <= SKELETON_THRESHOLD;
 }

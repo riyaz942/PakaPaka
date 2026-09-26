@@ -18,7 +18,7 @@ const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 const REASON_LABELS: Record<string, string> = {
   missing: 'missing',
   draft: 'draft',
-  skeleton: 'skeleton (<60%)',
+  skeleton: 'skeleton (≤60%)',
 };
 
 export default function Graph() {
@@ -163,7 +163,7 @@ export default function Graph() {
         <h2 className="panel-title">Build order — finish these first</h2>
         <p className="panel-muted">
           {level} items whose prerequisites are missing from the corpus, still a draft, or a
-          skeleton (&lt;60% complete), sorted by how many downstream items they unblock.
+          skeleton (≤60% complete), sorted by how many downstream items they unblock.
         </p>
         {buildOrder.status === 'loading' ? <p className="panel-muted">Loading…</p> : null}
         {buildOrder.status === 'error' ? (

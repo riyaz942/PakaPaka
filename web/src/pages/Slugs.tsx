@@ -345,7 +345,7 @@ export default function Slugs() {
                         <td>
                           <CompletenessPill
                             percent={row.item.completeness.percent}
-                            skeleton={row.item.completeness.percent < 0.6}
+                            skeleton={row.item.completeness.percent <= 0.6}
                             href={stageId ? guideHref(`stage-${stageId}`, row.item.level) : undefined}
                             title={
                               row.item.completeness.missing.length > 0

@@ -404,7 +404,7 @@ export function createCurriculumRouter(
       byTypeLevel,
       totals,
       skeletonThreshold: SKELETON_THRESHOLD,
-      skeletonLabel: 'skeleton (<60% complete)',
+      skeletonLabel: 'skeleton (≤60% complete)',
     });
   });
 

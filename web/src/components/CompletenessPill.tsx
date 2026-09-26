@@ -16,7 +16,7 @@ function formatPercent(percent: number): string {
 export function CompletenessPill({
   percent,
   skeleton = false,
-  skeletonLabel = 'skeleton (<60% complete)',
+  skeletonLabel = 'skeleton (≤60% complete)',
   href,
   title,
 }: Props) {

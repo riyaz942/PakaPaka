@@ -376,7 +376,7 @@ export default function ContentList() {
             checked={skeleton}
             onChange={(e) => updateParams({ skeleton: e.target.checked ? 'true' : null })}
           />
-          Skeleton only (&lt;60%)
+          Skeleton only (≤60%)
         </label>
 
         <select
@@ -550,7 +550,7 @@ export default function ContentList() {
                         <td>
                           <CompletenessPill
                             percent={item.completeness.percent}
-                            skeleton={item.completeness.percent < 0.6}
+                            skeleton={item.completeness.percent <= 0.6}
                             href={stageId ? guideHref(`stage-${stageId}`, item.level) : undefined}
                             title={
                               item.completeness.missing.length > 0
