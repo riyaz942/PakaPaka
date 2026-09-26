@@ -423,5 +423,397 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "gimu": {
+    "example_sentences": [
+      {
+        "japanese": "学校を掃除するのは学生の義務です。",
+        "english": "Cleaning the school is the students' duty.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "souji-suru",
+          "gakusei",
+          "gimu"
+        ]
+      },
+      {
+        "japanese": "息子は家族を手伝う義務があります。",
+        "english": "The son has a duty to help his family.",
+        "vocabulary_slugs": [
+          "musuko",
+          "kazoku",
+          "tetsudau",
+          "aru",
+          "gimu"
+        ]
+      },
+      {
+        "japanese": "義務を忘れる人もいます。",
+        "english": "There are also people who forget their duties.",
+        "vocabulary_slugs": [
+          "gimu",
+          "wasureru",
+          "hito",
+          "iru-exist"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shinbun-sha": {
+    "example_sentences": [
+      {
+        "japanese": "兄は新聞社で働いています。",
+        "english": "My older brother works at a newspaper company.",
+        "vocabulary_slugs": [
+          "ani",
+          "shinbun-sha",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "姉はその新聞社で働きたいです。",
+        "english": "My older sister wants to work at that newspaper company.",
+        "vocabulary_slugs": [
+          "ane",
+          "sono",
+          "shinbun-sha",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "新聞社の人が学校に来ました。",
+        "english": "Someone from the newspaper company came to the school.",
+        "vocabulary_slugs": [
+          "shinbun-sha",
+          "hito",
+          "gakkou-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kigyou": {
+    "example_sentences": [
+      {
+        "japanese": "あの企業はとても有名です。",
+        "english": "That enterprise is very famous.",
+        "vocabulary_slugs": [
+          "ano",
+          "kigyou",
+          "totemo",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "彼はその企業に入りたいです。",
+        "english": "He wants to join that enterprise.",
+        "vocabulary_slugs": [
+          "kare",
+          "sono",
+          "kigyou",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "新しい企業が駅の近くにできました。",
+        "english": "A new enterprise was built near the station.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "kigyou",
+          "eki",
+          "chikaku",
+          "dekiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "boueki": {
+    "example_sentences": [
+      {
+        "japanese": "日本は外国と貿易をしています。",
+        "english": "Japan trades with foreign countries.",
+        "vocabulary_slugs": [
+          "nihon",
+          "gaikoku",
+          "boueki",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "貿易の仕事はおもしろいです。",
+        "english": "Trade work is interesting.",
+        "vocabulary_slugs": [
+          "boueki",
+          "shigoto",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "父は貿易の会社で働いています。",
+        "english": "My father works at a trading company.",
+        "vocabulary_slugs": [
+          "chichi",
+          "boueki",
+          "kaisha",
+          "hataraku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yushutsu": {
+    "example_sentences": [
+      {
+        "japanese": "この会社は野菜を輸出しています。",
+        "english": "This company exports vegetables.",
+        "vocabulary_slugs": [
+          "kono",
+          "kaisha",
+          "yasai",
+          "yushutsu"
+        ]
+      },
+      {
+        "japanese": "日本は車をたくさん輸出します。",
+        "english": "Japan exports a lot of cars.",
+        "vocabulary_slugs": [
+          "nihon",
+          "kuruma",
+          "takusan",
+          "yushutsu"
+        ]
+      },
+      {
+        "japanese": "貿易には輸出も輸入もあります。",
+        "english": "Trade includes both exports and imports.",
+        "vocabulary_slugs": [
+          "boueki",
+          "yushutsu",
+          "yunyuu",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yunyuu": {
+    "example_sentences": [
+      {
+        "japanese": "日本は米をあまり輸入しません。",
+        "english": "Japan doesn't import much rice.",
+        "vocabulary_slugs": [
+          "nihon",
+          "kome-v",
+          "amari",
+          "yunyuu"
+        ]
+      },
+      {
+        "japanese": "この店ではコーヒーを輸入しています。",
+        "english": "This shop imports coffee.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "koohii",
+          "yunyuu"
+        ]
+      },
+      {
+        "japanese": "輸入の服は高いです。",
+        "english": "Imported clothes are expensive.",
+        "vocabulary_slugs": [
+          "yunyuu",
+          "fuku",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zeikin": {
+    "example_sentences": [
+      {
+        "japanese": "税金を払うのは私たちの義務です。",
+        "english": "Paying taxes is our duty.",
+        "vocabulary_slugs": [
+          "zeikin",
+          "harau",
+          "watashitachi",
+          "gimu"
+        ]
+      },
+      {
+        "japanese": "税金を忘れると大変です。",
+        "english": "If you forget about taxes, it becomes a big problem.",
+        "vocabulary_slugs": [
+          "zeikin",
+          "wasureru",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "税金が高すぎて困っています。",
+        "english": "The taxes are too high, and it's a problem for me.",
+        "vocabulary_slugs": [
+          "zeikin",
+          "takai-adj",
+          "komaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kakaku": {
+    "example_sentences": [
+      {
+        "japanese": "店で価格を見てからかばんを選びました。",
+        "english": "I looked at the price at the store, then chose a bag.",
+        "vocabulary_slugs": [
+          "mise",
+          "kakaku",
+          "miru-v",
+          "kaban",
+          "erabu"
+        ]
+      },
+      {
+        "japanese": "店員が新しい価格を教えてくれました。",
+        "english": "The shop clerk told me the new price.",
+        "vocabulary_slugs": [
+          "ten-in",
+          "atarashii-adj",
+          "kakaku",
+          "oshieru",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "このコートの価格はいくらですか。",
+        "english": "How much is the price of this coat?",
+        "vocabulary_slugs": [
+          "kono",
+          "kooto",
+          "kakaku",
+          "ikura"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shijou": {
+    "example_sentences": [
+      {
+        "japanese": "僕は魚を市場に売りに行きます。",
+        "english": "I go to the market to sell fish.",
+        "vocabulary_slugs": [
+          "boku",
+          "sakana",
+          "shijou",
+          "uru",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この市場は野菜が安いです。",
+        "english": "Vegetables are cheap at this market.",
+        "vocabulary_slugs": [
+          "kono",
+          "shijou",
+          "yasai",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "新しい市場が町にできました。",
+        "english": "A new market was built in the town.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "shijou",
+          "machi-v",
+          "dekiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koujou": {
+    "example_sentences": [
+      {
+        "japanese": "この工場では車を作っています。",
+        "english": "This factory makes cars.",
+        "vocabulary_slugs": [
+          "kono",
+          "koujou",
+          "kuruma",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "工場の近くに大きい川があります。",
+        "english": "There is a big river near the factory.",
+        "vocabulary_slugs": [
+          "koujou",
+          "chikaku",
+          "ookii",
+          "kawa-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "友達はその工場を見に行きました。",
+        "english": "My friend went to see that factory.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "sono",
+          "koujou",
+          "miru-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

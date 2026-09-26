@@ -60,7 +60,7 @@ MODEL = "claude-opus-4-8"
 #: Bump together with the example prompts and persona.md. Exception: the
 #: allowed-grammar list added to both prompts only narrows what a *future*
 #: generation may use, so it was not bumped — a bump would requeue ~1,100
-#: reviewed example sets to no purpose. Same for the "later in this level"
+#: reviewed example sets to no purpose. Same for the "coming up next"
 #: vocab/grammar lists: they only widen what a future generation may use.
 PROMPT_VERSION = 1
 MAX_ATTEMPTS = 3

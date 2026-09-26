@@ -1569,8 +1569,122 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "学校を掃除するのは学生の義務です。",
+          "english": "Cleaning the school is the students' duty.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "souji-suru",
+            "gakusei",
+            "gimu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "gakkou-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "souji-suru",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "gimu",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "furigana": "学[がっ]校[こう]を掃[そう]除[じ]するのは学[がく]生[せい]の義[ぎ]務[む]です。"
+        },
+        {
+          "japanese": "息子は家族を手伝う義務があります。",
+          "english": "The son has a duty to help his family.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "musuko",
+            "kazoku",
+            "tetsudau",
+            "aru",
+            "gimu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "musuko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tetsudau",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "gimu",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "息子[むすこ]は家[か]族[ぞく]を手伝[てつだ]う義[ぎ]務[む]があります。"
+        },
+        {
+          "japanese": "義務を忘れる人もいます。",
+          "english": "There are also people who forget their duties.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gimu",
+            "wasureru",
+            "hito",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "gimu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 11,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "義[ぎ]務[む]を忘[わす]れる人[ひと]もいます。"
+        }
+      ]
     },
     {
       "slug": "shinbun-sha",
@@ -1596,8 +1710,105 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "兄は新聞社で働いています。",
+          "english": "My older brother works at a newspaper company.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ani",
+            "shinbun-sha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shinbun-sha",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 6,
+              "end": 9,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "兄[あに]は新[しん]聞[ぶん]社[しゃ]で働[はたら]いています。"
+        },
+        {
+          "japanese": "姉はその新聞社で働きたいです。",
+          "english": "My older sister wants to work at that newspaper company.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ane",
+            "sono",
+            "shinbun-sha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shinbun-sha",
+              "start": 4,
+              "end": 7
+            }
+          ],
+          "furigana": "姉[あね]はその新[しん]聞[ぶん]社[しゃ]で働[はたら]きたいです。"
+        },
+        {
+          "japanese": "新聞社の人が学校に来ました。",
+          "english": "Someone from the newspaper company came to the school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shinbun-sha",
+            "hito",
+            "gakkou-v",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shinbun-sha",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "gakkou-v",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "来ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "新[しん]聞[ぶん]社[しゃ]の人[ひと]が学[がっ]校[こう]に来[き]ました。"
+        }
+      ]
     },
     {
       "slug": "kigyou",
@@ -1623,8 +1834,115 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの企業はとても有名です。",
+          "english": "That enterprise is very famous.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "kigyou",
+            "totemo",
+            "yuumei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kigyou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yuumei",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "あの企[き]業[ぎょう]はとても有[ゆう]名[めい]です。"
+        },
+        {
+          "japanese": "彼はその企業に入りたいです。",
+          "english": "He wants to join that enterprise.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "sono",
+            "kigyou",
+            "hairu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kigyou",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "彼[かれ]はその企[き]業[ぎょう]に入[はい]りたいです。"
+        },
+        {
+          "japanese": "新しい企業が駅の近くにできました。",
+          "english": "A new enterprise was built near the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "kigyou",
+            "eki",
+            "chikaku",
+            "dekiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kigyou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "dekiru",
+              "start": 11,
+              "end": 16,
+              "surface_form": "できました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "新[あたら]しい企[き]業[ぎょう]が駅[えき]の近[ちか]くにできました。"
+        }
+      ]
     },
     {
       "slug": "boueki",
@@ -1650,8 +1968,105 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "日本は外国と貿易をしています。",
+          "english": "Japan trades with foreign countries.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "gaikoku",
+            "boueki",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gaikoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "boueki",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 9,
+              "end": 11,
+              "surface_form": "して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "日本[にほん]は外[がい]国[こく]と貿[ぼう]易[えき]をしています。"
+        },
+        {
+          "japanese": "貿易の仕事はおもしろいです。",
+          "english": "Trade work is interesting.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boueki",
+            "shigoto",
+            "omoshiroi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boueki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "furigana": "貿[ぼう]易[えき]の仕[し]事[ごと]はおもしろいです。"
+        },
+        {
+          "japanese": "父は貿易の会社で働いています。",
+          "english": "My father works at a trading company.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chichi",
+            "boueki",
+            "kaisha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "boueki",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 8,
+              "end": 11,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "父[ちち]は貿[ぼう]易[えき]の会[かい]社[しゃ]で働[はたら]いています。"
+        }
+      ]
     },
     {
       "slug": "yushutsu",
@@ -1677,8 +2092,114 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この会社は野菜を輸出しています。",
+          "english": "This company exports vegetables.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kaisha",
+            "yasai",
+            "yushutsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yushutsu",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "この会[かい]社[しゃ]は野[や]菜[さい]を輸[ゆ]出[しゅつ]しています。"
+        },
+        {
+          "japanese": "日本は車をたくさん輸出します。",
+          "english": "Japan exports a lot of cars.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihon",
+            "kuruma",
+            "takusan",
+            "yushutsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "yushutsu",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "日本[にほん]は車[くるま]をたくさん輸[ゆ]出[しゅつ]します。"
+        },
+        {
+          "japanese": "貿易には輸出も輸入もあります。",
+          "english": "Trade includes both exports and imports.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boueki",
+            "yushutsu",
+            "yunyuu",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boueki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yushutsu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "yunyuu",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "貿[ぼう]易[えき]には輸[ゆ]出[しゅつ]も輸[ゆ]入[にゅう]もあります。"
+        }
+      ]
     },
     {
       "slug": "yunyuu",
@@ -1704,8 +2225,106 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "日本は米をあまり輸入しません。",
+          "english": "Japan doesn't import much rice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "kome-v",
+            "amari",
+            "yunyuu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kome-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "amari",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yunyuu",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "日本[にほん]は米[こめ]をあまり輸[ゆ]入[にゅう]しません。"
+        },
+        {
+          "japanese": "この店ではコーヒーを輸入しています。",
+          "english": "This shop imports coffee.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "koohii",
+            "yunyuu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "yunyuu",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "furigana": "この店[みせ]ではコーヒーを輸[ゆ]入[にゅう]しています。"
+        },
+        {
+          "japanese": "輸入の服は高いです。",
+          "english": "Imported clothes are expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yunyuu",
+            "fuku",
+            "takai-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "yunyuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "輸[ゆ]入[にゅう]の服[ふく]は高[たか]いです。"
+        }
+      ]
     },
     {
       "slug": "zeikin",
@@ -1731,8 +2350,97 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "税金を払うのは私たちの義務です。",
+          "english": "Paying taxes is our duty.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "zeikin",
+            "harau",
+            "watashitachi",
+            "gimu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "zeikin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "harau",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "gimu",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "furigana": "税[ぜい]金[きん]を払[はら]うのは私[わたし]たちの義[ぎ]務[む]です。"
+        },
+        {
+          "japanese": "税金を忘れると大変です。",
+          "english": "If you forget about taxes, it becomes a big problem.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "zeikin",
+            "wasureru",
+            "taihen"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "zeikin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "税[ぜい]金[きん]を忘[わす]れると大[たい]変[へん]です。"
+        },
+        {
+          "japanese": "税金が高すぎて困っています。",
+          "english": "The taxes are too high, and it's a problem for me.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "zeikin",
+            "takai-adj",
+            "komaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "zeikin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "komaru",
+              "start": 7,
+              "end": 10,
+              "surface_form": "困って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "税[ぜい]金[きん]が高[たか]すぎて困[こま]っています。"
+        }
+      ]
     },
     {
       "slug": "kakaku",
@@ -1758,8 +2466,132 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "店で価格を見てからかばんを選びました。",
+          "english": "I looked at the price at the store, then chose a bag.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mise",
+            "kakaku",
+            "miru-v",
+            "kaban",
+            "erabu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "mise",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kakaku",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 5,
+              "end": 7,
+              "surface_form": "見て",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "erabu",
+              "start": 13,
+              "end": 18,
+              "surface_form": "選びました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "店[みせ]で価[か]格[かく]を見[み]てからかばんを選[えら]びました。"
+        },
+        {
+          "japanese": "店員が新しい価格を教えてくれました。",
+          "english": "The shop clerk told me the new price.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ten-in",
+            "atarashii-adj",
+            "kakaku",
+            "oshieru",
+            "kureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ten-in",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kakaku",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "oshieru",
+              "start": 9,
+              "end": 12,
+              "surface_form": "教えて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 12,
+              "end": 17,
+              "surface_form": "くれました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "店[てん]員[いん]が新[あたら]しい価[か]格[かく]を教[おし]えてくれました。"
+        },
+        {
+          "japanese": "このコートの価格はいくらですか。",
+          "english": "How much is the price of this coat?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "kooto",
+            "kakaku",
+            "ikura"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kooto",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kakaku",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "ikura",
+              "start": 9,
+              "end": 12
+            }
+          ],
+          "furigana": "このコートの価[か]格[かく]はいくらですか。"
+        }
+      ]
     },
     {
       "slug": "shijou",
@@ -1786,8 +2618,117 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "僕は魚を市場に売りに行きます。",
+          "english": "I go to the market to sell fish.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "boku",
+            "sakana",
+            "shijou",
+            "uru",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shijou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "僕[ぼく]は魚[さかな]を市[し]場[じょう]に売[う]りに行[い]きます。"
+        },
+        {
+          "japanese": "この市場は野菜が安いです。",
+          "english": "Vegetables are cheap at this market.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "shijou",
+            "yasai",
+            "yasui-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shijou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "この市[し]場[じょう]は野[や]菜[さい]が安[やす]いです。"
+        },
+        {
+          "japanese": "新しい市場が町にできました。",
+          "english": "A new market was built in the town.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "shijou",
+            "machi-v",
+            "dekiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shijou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "dekiru",
+              "start": 8,
+              "end": 13,
+              "surface_form": "できました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "新[あたら]しい市[し]場[じょう]が町[まち]にできました。"
+        }
+      ]
     },
     {
       "slug": "koujou",
@@ -1813,8 +2754,125 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この工場では車を作っています。",
+          "english": "This factory makes cars.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "koujou",
+            "kuruma",
+            "tsukuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koujou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "作って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この工[こう]場[じょう]では車[くるま]を作[つく]っています。"
+        },
+        {
+          "japanese": "工場の近くに大きい川があります。",
+          "english": "There is a big river near the factory.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koujou",
+            "chikaku",
+            "ookii",
+            "kawa-v",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "koujou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ookii",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kawa-v",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "工[こう]場[じょう]の近[ちか]くに大[おお]きい川[かわ]があります。"
+        },
+        {
+          "japanese": "友達はその工場を見に行きました。",
+          "english": "My friend went to see that factory.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "sono",
+            "koujou",
+            "miru-v",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "koujou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 15,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "友[とも]達[だち]はその工[こう]場[じょう]を見[み]に行[い]きました。"
+        }
+      ]
     },
     {
       "slug": "nouka",

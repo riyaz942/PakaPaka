@@ -15,13 +15,14 @@ Every content word in your sentences must come from the two lists below (plus
 particles, numbers, names, and everyday grammatical machinery).
 
 **Already known** — the learner has met these by the time they meet this
-word. Build your sentences from these first, so the example feels familiar.
+word. Build your sentences from these, so the example feels familiar. Most
+sentences should use nothing else.
 
 {{ALLOWED_VOCAB}}
 
-**Later in this level** — the learner has not met these yet, but they are the
-same level. Use one only when the sentence would be stiff or unnatural
-without it, and keep it to one such word per sentence at most.
+**Coming up next** — the learner meets these in the next few lessons, so
+they are close to what they know. Use one only when a sentence would be stiff
+or unnatural without it, and use at most one such word in the whole set.
 
 {{LATER_VOCAB}}
 
@@ -42,8 +43,8 @@ force one into every sentence.
 
 {{EARLIER_GRAMMAR}}
 
-**Later in this level** — not taught yet; use one only when the sentence needs
-it, and prefer the lists above:
+**Coming up next** — taught in the next few lessons. Prefer the lists above;
+use one only when a sentence needs it, and at most one in the whole set:
 
 {{LATER_GRAMMAR}}
 

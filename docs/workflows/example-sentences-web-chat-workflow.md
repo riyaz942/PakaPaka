@@ -64,9 +64,10 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
   computed from the curriculum and baked into each prompt — you never pick these
   yourself. A **vocab** prompt lists the allowed vocab in two parts: "Already
   known" (the item's own `sort_order` prefix + all lower levels + core seeds),
-  preferred, and "Later in this level" (the rest of the level), allowed when a
-  sentence needs it. Grammar is split the same way. The gate accepts both
-  parts, so it rejects only words from a higher level. The prompt requires every
+  preferred, and "Coming up next" (the next 50 words of the level), allowed
+  when a sentence needs it. Grammar is split the same way. The gate accepts
+  both parts and rejects every other word, including words further ahead in
+  the same level. The prompt requires every
   sentence to use the word (natural conjugations count: 食べました exemplifies
   食べる) (`example_context.py`).
 - **The mechanical gate** (`validate_examples.py`) runs on ingest exactly as it
