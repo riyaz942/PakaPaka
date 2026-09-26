@@ -25,8 +25,135 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "世界で一番高い山はどこですか。",
+          "english": "Where is the tallest mountain in the world?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sekai",
+            "ichiban",
+            "takai-adj",
+            "yama-v",
+            "doko"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sekai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ichiban",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "世[せ]界[かい]で一[いち]番[ばん]高[たか]い山[やま]はどこですか。"
+        },
+        {
+          "japanese": "祖父は船で世界を旅行しました。",
+          "english": "My grandfather traveled around the world by ship.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sofu",
+            "fune",
+            "sekai",
+            "ryokou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sofu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "fune",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sekai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "ryokou-suru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "旅行しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "祖[そ]父[ふ]は船[ふね]で世[せ]界[かい]を旅[りょ]行[こう]しました。"
+        },
+        {
+          "japanese": "娘は地図を見ながら、世界の海の名前を覚えています。",
+          "english": "My daughter is memorizing the names of the world's oceans while looking at a map.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "musume",
+            "chizu",
+            "miru-v",
+            "sekai",
+            "umi",
+            "namae",
+            "oboeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "musume",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chizu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sekai",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "umi",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "namae",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "oboeru",
+              "start": 18,
+              "end": 21,
+              "surface_form": "覚えて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "娘[むすめ]は地[ち]図[ず]を見[み]ながら、世[せ]界[かい]の海[うみ]の名[な]前[まえ]を覚[おぼ]えています。"
+        }
+      ]
     },
     {
       "slug": "seiji",
@@ -52,8 +179,121 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "叔父は政治の話が好きなので、晩ご飯が長くなります。",
+          "english": "My uncle loves talking politics, so dinner always runs long.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "oji",
+            "seiji",
+            "hanashi",
+            "suki",
+            "bangohan",
+            "nagai-adj",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "oji",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "seiji",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 14,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 20,
+              "end": 24,
+              "surface_form": "なります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "叔父[おじ]は政[せい]治[じ]の話[はなし]が好[す]きなので、晩[ばん]ご飯[はん]が長[なが]くなります。"
+        },
+        {
+          "japanese": "私は政治のことがあまり分かりません。",
+          "english": "I don't really understand much about politics.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "seiji",
+            "koto",
+            "wakaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "seiji",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 11,
+              "end": 17,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は政[せい]治[じ]のことがあまり分[わ]かりません。"
+        },
+        {
+          "japanese": "大学で政治を勉強したいと思っています。",
+          "english": "I'm thinking I'd like to study politics at university.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "daigaku",
+            "seiji",
+            "benkyou-suru",
+            "omou"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "daigaku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "seiji",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "omou",
+              "start": 12,
+              "end": 15,
+              "surface_form": "思って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "大[だい]学[がく]で政[せい]治[じ]を勉[べん]強[きょう]したいと思[おも]っています。"
+        }
+      ]
     },
     {
       "slug": "iken",
@@ -79,8 +319,146 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "会議で自分の意見を言うのは難しいです。",
+          "english": "It's hard to give your own opinion in a meeting.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaigi",
+            "jibun",
+            "iken",
+            "iu-v",
+            "muzukashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "jibun",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iken",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 13,
+              "end": 16
+            }
+          ],
+          "furigana": "会[かい]議[ぎ]で自[じ]分[ぶん]の意[い]見[けん]を言[い]うのは難[むずか]しいです。"
+        },
+        {
+          "japanese": "先生はみんなの意見を聞いてから、答えを教えてくれました。",
+          "english": "The teacher heard everyone's opinions first, then told us the answer.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "minna",
+            "iken",
+            "kiku-v",
+            "kotae",
+            "oshieru",
+            "kureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "minna",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iken",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 10,
+              "end": 13,
+              "surface_form": "聞いて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kotae",
+              "start": 16,
+              "end": 18
+            },
+            {
+              "vocabulary_slug": "oshieru",
+              "start": 19,
+              "end": 22,
+              "surface_form": "教えて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 22,
+              "end": 27,
+              "surface_form": "くれました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "先[せん]生[せい]はみんなの意[い]見[けん]を聞[き]いてから、答[こた]えを教[おし]えてくれました。"
+        },
+        {
+          "japanese": "姉に電話して、意見を聞きました。",
+          "english": "I called my older sister and asked for her opinion.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ane",
+            "denwa-suru",
+            "iken",
+            "kiku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "denwa-suru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "電話して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iken",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 10,
+              "end": 15,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "姉[あね]に電[でん]話[わ]して、意[い]見[けん]を聞[き]きました。"
+        }
+      ]
     },
     {
       "slug": "bunka",
@@ -106,8 +484,142 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "外国人の友達に日本の文化を紹介しました。",
+          "english": "I introduced Japanese culture to a friend from abroad.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gaikokujin",
+            "tomodachi",
+            "nihon",
+            "bunka",
+            "shoukai-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "gaikokujin",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "shoukai-suru",
+              "start": 13,
+              "end": 19,
+              "surface_form": "紹介しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "外[がい]国[こく]人[じん]の友[とも]達[だち]に日本[にほん]の文[ぶん]化[か]を紹[しょう]介[かい]しました。"
+        },
+        {
+          "japanese": "外国の文化を知るために、よく映画を見ます。",
+          "english": "I often watch movies to learn about other cultures.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gaikoku",
+            "bunka",
+            "shiru",
+            "yoku",
+            "eiga",
+            "miru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "gaikoku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 17,
+              "end": 20,
+              "surface_form": "見ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "外[がい]国[こく]の文[ぶん]化[か]を知[し]るために、よく映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "この町には古い文化が残っています。",
+          "english": "This town still keeps its old culture.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "furui-adj",
+            "bunka",
+            "nokoru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "furui-adj",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "nokoru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "残って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この町[まち]には古[ふる]い文[ぶん]化[か]が残[のこ]っています。"
+        }
+      ]
     },
     {
       "slug": "dentou",
@@ -133,8 +645,140 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎年、祖母と伝統の料理を作ります。",
+          "english": "Every year I make traditional dishes with my grandmother.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainen",
+            "sobo",
+            "dentou",
+            "ryouri",
+            "tsukuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "mainen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sobo",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "dentou",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "作ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "毎[まい]年[ねん]、祖[そ]母[ぼ]と伝[でん]統[とう]の料[りょう]理[り]を作[つく]ります。"
+        },
+        {
+          "japanese": "この店には百年の伝統があります。",
+          "english": "This shop has a hundred years of tradition.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "hyaku-v",
+            "nen-year",
+            "dentou",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "dentou",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この店[みせ]には百[ひゃく]年[ねん]の伝[でん]統[とう]があります。"
+        },
+        {
+          "japanese": "若い人は、あまり伝統の服を着なくなりました。",
+          "english": "Young people don't wear traditional clothes much anymore.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "wakai",
+            "hito",
+            "dentou",
+            "fuku",
+            "kiru-wear",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "wakai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "dentou",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 13,
+              "end": 16,
+              "surface_form": "着なく",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 16,
+              "end": 21,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "若[わか]い人[ひと]は、あまり伝[でん]統[とう]の服[ふく]を着[き]なくなりました。"
+        }
+      ]
     },
     {
       "slug": "shakai",
@@ -160,8 +804,111 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "息子は春から社会に出ます。",
+          "english": "My son goes out into the working world this spring.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "musuko",
+            "haru",
+            "shakai",
+            "deru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "musuko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "haru",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shakai",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 9,
+              "end": 12,
+              "surface_form": "出ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "息子[むすこ]は春[はる]から社[しゃ]会[かい]に出[で]ます。"
+        },
+        {
+          "japanese": "社会はだんだん便利になりました。",
+          "english": "Society has gradually become more convenient.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shakai",
+            "dandan",
+            "benri",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shakai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "dandan",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "benri",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 10,
+              "end": 15,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "社[しゃ]会[かい]はだんだん便[べん]利[り]になりました。"
+        },
+        {
+          "japanese": "社会のために働く人になりたいです。",
+          "english": "I want to become someone who works for the good of society.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shakai",
+            "hataraku",
+            "hito",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shakai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 8,
+              "end": 9
+            }
+          ],
+          "furigana": "社[しゃ]会[かい]のために働[はたら]く人[ひと]になりたいです。"
+        }
+      ]
     },
     {
       "slug": "kokusai",
@@ -188,8 +935,146 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は国際会議で英語を話しました。",
+          "english": "She spoke English at an international conference.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kokusai",
+            "kaigi",
+            "eigo",
+            "hanasu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kokusai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "eigo",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "話しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は国[こく]際[さい]会[かい]議[ぎ]で英[えい]語[ご]を話[はな]しました。"
+        },
+        {
+          "japanese": "兄は国際問題の本をたくさん読んでいます。",
+          "english": "My older brother reads lots of books on international issues.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ani",
+            "kokusai",
+            "mondai",
+            "hon",
+            "takusan",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kokusai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 13,
+              "end": 16,
+              "surface_form": "読んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "兄[あに]は国[こく]際[さい]問[もん]題[だい]の本[ほん]をたくさん読[よ]んでいます。"
+        },
+        {
+          "japanese": "国際社会の中で、日本は何ができるでしょうか。",
+          "english": "What can Japan do within the international community?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kokusai",
+            "shakai",
+            "naka",
+            "nihon",
+            "nani",
+            "dekiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kokusai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shakai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "dekiru",
+              "start": 13,
+              "end": 16
+            }
+          ],
+          "furigana": "国[こく]際[さい]社[しゃ]会[かい]の中[なか]で、日本[にほん]は何[なに]ができるでしょうか。"
+        }
+      ]
     },
     {
       "slug": "seifu",
@@ -215,8 +1100,134 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "政府は町に新しい病院を作ります。",
+          "english": "The government is going to build a new hospital in the town.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "seifu",
+            "machi-v",
+            "atarashii-adj",
+            "byouin",
+            "tsukuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "seifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "byouin",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "作ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "政[せい]府[ふ]は町[まち]に新[あたら]しい病[びょう]院[いん]を作[つく]ります。"
+        },
+        {
+          "japanese": "叔母は政府の仕事をしています。",
+          "english": "My aunt works for the government.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "oba",
+            "seifu",
+            "shigoto",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "oba",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "seifu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 9,
+              "end": 11,
+              "surface_form": "して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "叔母[おば]は政[せい]府[ふ]の仕[し]事[ごと]をしています。"
+        },
+        {
+          "japanese": "政府の意見に反対する人も多いです。",
+          "english": "Plenty of people disagree with the government's view.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "seifu",
+            "iken",
+            "hantai",
+            "suru",
+            "hito",
+            "ooi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "seifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "iken",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hantai",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "ooi",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "furigana": "政[せい]府[ふ]の意[い]見[けん]に反[はん]対[たい]する人[ひと]も多[おお]いです。"
+        }
+      ]
     },
     {
       "slug": "houritsu",
@@ -242,8 +1253,128 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "法律で、ここに車を止めてはいけません。",
+          "english": "By law, you can't park your car here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "houritsu",
+            "koko",
+            "kuruma",
+            "tomeru-stop"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "houritsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tomeru-stop",
+              "start": 9,
+              "end": 12,
+              "surface_form": "止めて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "法[ほう]律[りつ]で、ここに車[くるま]を止[と]めてはいけません。"
+        },
+        {
+          "japanese": "法律の本は、言葉がとても難しいです。",
+          "english": "The words in law books are really difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "houritsu",
+            "hon",
+            "kotoba",
+            "totemo",
+            "muzukashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "houritsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kotoba",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 12,
+              "end": 15
+            }
+          ],
+          "furigana": "法[ほう]律[りつ]の本[ほん]は、言[こと]葉[ば]がとても難[むずか]しいです。"
+        },
+        {
+          "japanese": "来月から法律が変わるので、会社は準備しています。",
+          "english": "The law changes next month, so the company is getting ready.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "houritsu",
+            "kawaru",
+            "kaisha",
+            "junbi-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "raigetsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "houritsu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kawaru",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "junbi-suru",
+              "start": 16,
+              "end": 20,
+              "surface_form": "準備して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "来[らい]月[げつ]から法[ほう]律[りつ]が変[か]わるので、会[かい]社[しゃ]は準[じゅん]備[び]しています。"
+        }
+      ]
     },
     {
       "slug": "kenri",
@@ -269,8 +1400,150 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "子供にも遊ぶ権利があります。",
+          "english": "Children have the right to play, too.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "asobu",
+            "kenri",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kenri",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "子[こ]供[ども]にも遊[あそ]ぶ権[けん]利[り]があります。"
+        },
+        {
+          "japanese": "働く人には休む権利があります。",
+          "english": "Working people have the right to rest.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hataraku",
+            "hito",
+            "yasumu",
+            "kenri",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kenri",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "働[はたら]く人[ひと]には休[やす]む権[けん]利[り]があります。"
+        },
+        {
+          "japanese": "お金を払ったので、私たちにはこの席に座る権利があります。",
+          "english": "We paid, so we have every right to sit in these seats.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane",
+            "harau",
+            "watashitachi",
+            "kono",
+            "seki-seat",
+            "suwaru",
+            "kenri",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "okane",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "harau",
+              "start": 3,
+              "end": 6,
+              "surface_form": "払った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "seki-seat",
+              "start": 16,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "suwaru",
+              "start": 18,
+              "end": 20
+            },
+            {
+              "vocabulary_slug": "kenri",
+              "start": 20,
+              "end": 22
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 23,
+              "end": 27,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "お金[かね]を払[はら]ったので、私[わたし]たちにはこの席[せき]に座[すわ]る権[けん]利[り]があります。"
+        }
+      ]
     },
     {
       "slug": "gimu",

@@ -1,0 +1,427 @@
+{
+  "sekai": {
+    "example_sentences": [
+      {
+        "japanese": "世界で一番高い山はどこですか。",
+        "english": "Where is the tallest mountain in the world?",
+        "vocabulary_slugs": [
+          "sekai",
+          "ichiban",
+          "takai-adj",
+          "yama-v",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "祖父は船で世界を旅行しました。",
+        "english": "My grandfather traveled around the world by ship.",
+        "vocabulary_slugs": [
+          "sofu",
+          "fune",
+          "sekai",
+          "ryokou-suru"
+        ]
+      },
+      {
+        "japanese": "娘は地図を見ながら、世界の海の名前を覚えています。",
+        "english": "My daughter is memorizing the names of the world's oceans while looking at a map.",
+        "vocabulary_slugs": [
+          "musume",
+          "chizu",
+          "miru-v",
+          "sekai",
+          "umi",
+          "namae",
+          "oboeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seiji": {
+    "example_sentences": [
+      {
+        "japanese": "叔父は政治の話が好きなので、晩ご飯が長くなります。",
+        "english": "My uncle loves talking politics, so dinner always runs long.",
+        "vocabulary_slugs": [
+          "oji",
+          "seiji",
+          "hanashi",
+          "suki",
+          "bangohan",
+          "nagai-adj",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "私は政治のことがあまり分かりません。",
+        "english": "I don't really understand much about politics.",
+        "vocabulary_slugs": [
+          "watashi",
+          "seiji",
+          "koto",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "大学で政治を勉強したいと思っています。",
+        "english": "I'm thinking I'd like to study politics at university.",
+        "vocabulary_slugs": [
+          "daigaku",
+          "seiji",
+          "benkyou-suru",
+          "omou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "iken": {
+    "example_sentences": [
+      {
+        "japanese": "会議で自分の意見を言うのは難しいです。",
+        "english": "It's hard to give your own opinion in a meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "jibun",
+          "iken",
+          "iu-v",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "先生はみんなの意見を聞いてから、答えを教えてくれました。",
+        "english": "The teacher heard everyone's opinions first, then told us the answer.",
+        "vocabulary_slugs": [
+          "sensei",
+          "minna",
+          "iken",
+          "kiku-v",
+          "kotae",
+          "oshieru",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "姉に電話して、意見を聞きました。",
+        "english": "I called my older sister and asked for her opinion.",
+        "vocabulary_slugs": [
+          "ane",
+          "denwa-suru",
+          "iken",
+          "kiku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bunka": {
+    "example_sentences": [
+      {
+        "japanese": "外国人の友達に日本の文化を紹介しました。",
+        "english": "I introduced Japanese culture to a friend from abroad.",
+        "vocabulary_slugs": [
+          "gaikokujin",
+          "tomodachi",
+          "nihon",
+          "bunka",
+          "shoukai-suru"
+        ]
+      },
+      {
+        "japanese": "外国の文化を知るために、よく映画を見ます。",
+        "english": "I often watch movies to learn about other cultures.",
+        "vocabulary_slugs": [
+          "gaikoku",
+          "bunka",
+          "shiru",
+          "yoku",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この町には古い文化が残っています。",
+        "english": "This town still keeps its old culture.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "furui-adj",
+          "bunka",
+          "nokoru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dentou": {
+    "example_sentences": [
+      {
+        "japanese": "毎年、祖母と伝統の料理を作ります。",
+        "english": "Every year I make traditional dishes with my grandmother.",
+        "vocabulary_slugs": [
+          "mainen",
+          "sobo",
+          "dentou",
+          "ryouri",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "この店には百年の伝統があります。",
+        "english": "This shop has a hundred years of tradition.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "hyaku-v",
+          "nen-year",
+          "dentou",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "若い人は、あまり伝統の服を着なくなりました。",
+        "english": "Young people don't wear traditional clothes much anymore.",
+        "vocabulary_slugs": [
+          "wakai",
+          "hito",
+          "dentou",
+          "fuku",
+          "kiru-wear",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shakai": {
+    "example_sentences": [
+      {
+        "japanese": "息子は春から社会に出ます。",
+        "english": "My son goes out into the working world this spring.",
+        "vocabulary_slugs": [
+          "musuko",
+          "haru",
+          "shakai",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "社会はだんだん便利になりました。",
+        "english": "Society has gradually become more convenient.",
+        "vocabulary_slugs": [
+          "shakai",
+          "dandan",
+          "benri",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "社会のために働く人になりたいです。",
+        "english": "I want to become someone who works for the good of society.",
+        "vocabulary_slugs": [
+          "shakai",
+          "hataraku",
+          "hito",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kokusai": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は国際会議で英語を話しました。",
+        "english": "She spoke English at an international conference.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kokusai",
+          "kaigi",
+          "eigo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "兄は国際問題の本をたくさん読んでいます。",
+        "english": "My older brother reads lots of books on international issues.",
+        "vocabulary_slugs": [
+          "ani",
+          "kokusai",
+          "mondai",
+          "hon",
+          "takusan",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "国際社会の中で、日本は何ができるでしょうか。",
+        "english": "What can Japan do within the international community?",
+        "vocabulary_slugs": [
+          "kokusai",
+          "shakai",
+          "naka",
+          "nihon",
+          "nani",
+          "dekiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seifu": {
+    "example_sentences": [
+      {
+        "japanese": "政府は町に新しい病院を作ります。",
+        "english": "The government is going to build a new hospital in the town.",
+        "vocabulary_slugs": [
+          "seifu",
+          "machi-v",
+          "atarashii-adj",
+          "byouin",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "叔母は政府の仕事をしています。",
+        "english": "My aunt works for the government.",
+        "vocabulary_slugs": [
+          "oba",
+          "seifu",
+          "shigoto",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "政府の意見に反対する人も多いです。",
+        "english": "Plenty of people disagree with the government's view.",
+        "vocabulary_slugs": [
+          "seifu",
+          "iken",
+          "hantai",
+          "suru",
+          "hito",
+          "ooi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kenri": {
+    "example_sentences": [
+      {
+        "japanese": "子供にも遊ぶ権利があります。",
+        "english": "Children have the right to play, too.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "asobu",
+          "kenri",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "働く人には休む権利があります。",
+        "english": "Working people have the right to rest.",
+        "vocabulary_slugs": [
+          "hataraku",
+          "hito",
+          "yasumu",
+          "kenri",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "お金を払ったので、私たちにはこの席に座る権利があります。",
+        "english": "We paid, so we have every right to sit in these seats.",
+        "vocabulary_slugs": [
+          "okane",
+          "harau",
+          "watashitachi",
+          "kono",
+          "seki-seat",
+          "suwaru",
+          "kenri",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "houritsu": {
+    "example_sentences": [
+      {
+        "japanese": "法律で、ここに車を止めてはいけません。",
+        "english": "By law, you can't park your car here.",
+        "vocabulary_slugs": [
+          "houritsu",
+          "koko",
+          "kuruma",
+          "tomeru-stop"
+        ]
+      },
+      {
+        "japanese": "法律の本は、言葉がとても難しいです。",
+        "english": "The words in law books are really difficult.",
+        "vocabulary_slugs": [
+          "houritsu",
+          "hon",
+          "kotoba",
+          "totemo",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "来月から法律が変わるので、会社は準備しています。",
+        "english": "The law changes next month, so the company is getting ready.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "houritsu",
+          "kawaru",
+          "kaisha",
+          "junbi-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  }
+}

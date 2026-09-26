@@ -26,8 +26,10 @@ position i of N gets **all lower-level grammar** + the level's first
 ceil(i/N * G) points. A sentence for an N4 word may therefore lean on N5 and
 early-N4 patterns, never on N3 ones or on N4 patterns taught much later. The
 prompt carries this list; the mechanical gate does not check it (level_check
-works token by token on content words, so grammar patterns pass through it as
-particles and auxiliaries either way).
+works token by token on content words, so most grammar patterns pass through
+it as particles and auxiliaries either way). Patterns whose machinery tags as
+a content word (すぎる) are accepted via `level_check.pattern_words`
+of the allowed grammar, as reading_context does for passages.
 
 The list is split for the prompt: the last RECENT_GRAMMAR_COUNT points are the
 ones taught just before this item, so the prompt offers them first (a sentence
@@ -122,7 +124,7 @@ def vocab_context(level, slug):
         "recent_grammar": recent_grammar,
         "allowed_slugs": seen,
         "allowed_index": allowed_index,
-        "extra_allowed": {form},
+        "extra_allowed": {form} | level_check.pattern_words(earlier_grammar + recent_grammar),
         "target_forms": [form] + ([reading] if reading and reading != form else []),
         "anchors": anchors,
     }
