@@ -209,7 +209,6 @@ export const MISSING_FIELD_OPTIONS: Record<ContentType, string[]> = {
     'meaning_mnemonic',
     'reading_mnemonic',
     'description',
-    'example_sentences',
   ],
   vocabulary: [
     'furigana',

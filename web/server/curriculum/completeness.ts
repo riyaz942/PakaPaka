@@ -71,7 +71,6 @@ const CHECKLISTS: Record<ContentType, FieldCheck[]> = {
       ok: (r) => isNonEmptyString(r.description),
       required: hasLookAlikes,
     },
-    { name: 'example_sentences', ok: (r) => isNonEmptyArray(r.example_sentences, 1) },
   ],
   vocabulary: [
     { name: 'furigana', ok: (r) => isNonEmptyString(r.furigana) },
