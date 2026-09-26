@@ -12,6 +12,7 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/k/all.webp': require('../../assets/radicals/k/all.webp'),
   'radicals/k/amai.webp': require('../../assets/radicals/k/amai.webp'),
   'radicals/k/and-yet.webp': require('../../assets/radicals/k/and-yet.webp'),
   'radicals/k/army.webp': require('../../assets/radicals/k/army.webp'),
@@ -51,6 +52,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/flat-lid.webp': require('../../assets/radicals/k/flat-lid.webp'),
   'radicals/k/fly.webp': require('../../assets/radicals/k/fly.webp'),
   'radicals/k/food-left.webp': require('../../assets/radicals/k/food-left.webp'),
+  'radicals/k/formerly.webp': require('../../assets/radicals/k/formerly.webp'),
   'radicals/k/fortune-telling.webp': require('../../assets/radicals/k/fortune-telling.webp'),
   'radicals/k/frontier-gate.webp': require('../../assets/radicals/k/frontier-gate.webp'),
   'radicals/k/gandare.webp': require('../../assets/radicals/k/gandare.webp'),
@@ -62,6 +64,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/hashiru-run.webp': require('../../assets/radicals/k/hashiru-run.webp'),
   'radicals/k/head.webp': require('../../assets/radicals/k/head.webp'),
   'radicals/k/heavy.webp': require('../../assets/radicals/k/heavy.webp'),
+  'radicals/k/hidden.webp': require('../../assets/radicals/k/hidden.webp'),
   'radicals/k/hiding-enclosure.webp': require('../../assets/radicals/k/hiding-enclosure.webp'),
   'radicals/k/hill-left.webp': require('../../assets/radicals/k/hill-left.webp'),
   'radicals/k/holy.webp': require('../../assets/radicals/k/holy.webp'),
@@ -118,11 +121,13 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/sell.webp': require('../../assets/radicals/k/sell.webp'),
   'radicals/k/separate.webp': require('../../assets/radicals/k/separate.webp'),
   'radicals/k/seven.webp': require('../../assets/radicals/k/seven.webp'),
+  'radicals/k/shallow.webp': require('../../assets/radicals/k/shallow.webp'),
   'radicals/k/shou-esteem.webp': require('../../assets/radicals/k/shou-esteem.webp'),
   'radicals/k/sit.webp': require('../../assets/radicals/k/sit.webp'),
   'radicals/k/slash.webp': require('../../assets/radicals/k/slash.webp'),
   'radicals/k/snout.webp': require('../../assets/radicals/k/snout.webp'),
   'radicals/k/sound.webp': require('../../assets/radicals/k/sound.webp'),
+  'radicals/k/southeast.webp': require('../../assets/radicals/k/southeast.webp'),
   'radicals/k/sprout.webp': require('../../assets/radicals/k/sprout.webp'),
   'radicals/k/stop.webp': require('../../assets/radicals/k/stop.webp'),
   'radicals/k/street.webp': require('../../assets/radicals/k/street.webp'),
