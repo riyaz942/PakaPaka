@@ -112,7 +112,10 @@ DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", 
 #: image_prompt keeps the old stroke-walked size band.
 LEN_BOUNDS = {
     "radical": {
-        "mnemonic_text": (80, 400),
+        # The straightforward rewrite ("This radical is a combination of heavy
+        # and power. ...") lands at 60–170, so the floor drops to 50. A lower
+        # floor can only pass more stored drafts, never fail one.
+        "mnemonic_text": (50, 400),
         "image_prompt": (120, 500),
         "description": (60, 400),
     },
@@ -258,9 +261,12 @@ VOCAB_READING_STORY_FRESH_BOUNDS = (90, 240)
 #:                            <vocabulary>alone</vocabulary>  (Rev 5: the
 #:                             meaning the sound belongs to)
 #:
-#: A radical borrows nothing from below, so the piece it highlights is its own
-#: meaning — the word the story lands on, and the exact word a kanji story will
-#: later reuse. Tagging it makes the two ends of the chain match visually.
+#: A radical's <radical> tag wraps its own meaning — the word the story lands
+#: on, and the exact word a kanji story will later reuse. Tagging it makes the
+#: two ends of the chain match visually. A radical that is itself a combination
+#: of taught radicals (動 = 重 + 力, `mnemonic_context.radical_parts`) also
+#: wraps each part's meaning in <part>, which the app renders in its own colour
+#: so "a piece I know" and "the answer" never look the same.
 #: A kanji's meaning_mnemonic does both: <radical> highlights each borrowed
 #: component (as before), and <kanji> highlights the kanji's own landing word
 #: — the two must render in different colours, or the learner cannot tell "a
@@ -294,7 +300,7 @@ VOCAB_KANA_MEANING_TAGS = ("kanji", "vocabulary", "reading")
 _FORM_ATTR = r'(?: form="([^"<>]*)")?'
 
 ALLOWED_TAG = {
-    ("radical", "mnemonic_text"): "radical",
+    ("radical", "mnemonic_text"): ("radical", "part"),
     ("radical", "image_prompt"): "radical",
     ("kanji", "meaning_mnemonic"): ("radical", "kanji"),
     ("kanji", "reading_mnemonic"): ("reading", "kanji"),
@@ -815,7 +821,7 @@ def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
     # to — the same word every kanji built on this radical will pull upward.
     words = _meaning_words(ctx["meaning_synonyms"])
     if words:
-        plain = _strip_tags(text, "radical")
+        plain = _strip_tags(text, ("radical", "part"))
         spans = _tagged_spans(text, "radical")
         if not _references(plain, words):
             errors.append(
@@ -834,6 +840,22 @@ def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
     # picture might try to draw.
     errors += _glyph_errors("mnemonic_text", text, "radical",
                             [(ctx["form"], words)], enforce_readability)
+
+    # A combination names the radicals it is built from, each in <part>, so the
+    # learner sees which pieces they already know. Fresh drafts only: every
+    # stored radical predates the rule, and re-validation must not requeue it.
+    parts = ctx.get("components", [])
+    if parts and enforce_readability:
+        errors += _component_errors(
+            "mnemonic_text", text, "part", parts, "part",
+            "a combination radical names every part it is built from")
+    if parts:
+        errors += _glyph_errors("mnemonic_text", text, "part",
+                                _glyph_candidates(parts, "form"), enforce_readability)
+    elif _tagged_spans(text, "part"):
+        errors.append(
+            "mnemonic_text has <part> tags, but this radical is one shape, not a "
+            "combination of taught radicals; remove them")
     if isinstance(image_prompt, str) and image_prompt.strip():
         errors += _glyph_errors("image_prompt", image_prompt, "radical", (), False)
 

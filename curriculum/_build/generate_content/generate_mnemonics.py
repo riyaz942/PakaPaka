@@ -184,6 +184,14 @@ MODEL = "claude-opus-4-8"
 #: reaches ~800 of the 9,474 kanji words; a version bump would requeue every
 #: reviewed draft to no purpose, so the affected drafts are stamped back to 5 by
 #: hand instead.
+#:
+#: The radical "straightforward" rewrite also bumps NOTHING. A radical that is
+#: a combination of taught radicals (動 = 重 + 力, from decomposition.json via
+#: `mnemonic_context.radical_parts`) now opens by naming its parts, each in a
+#: `<part>` tag the app colours apart from the `<radical>` answer; a single
+#: shape says what it looks like, then the meaning. The part check rides the
+#: enforce_readability lane, so stored radicals keep their prose. Restyle them
+#: by slug (`--slugs`) — a bump would requeue every reviewed radical.
 PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
@@ -329,6 +337,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{FORM}}": ctx["form"],
             "{{MEANING}}": ctx["meaning"],
             "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{COMPONENTS}}": mc.format_radical_parts(ctx["components"]),
             "{{LOOK_ALIKES}}": mc.format_look_alikes(ctx["look_alikes"]),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
         }
