@@ -32,23 +32,7 @@ Number of slugs this session targets (this session drafts, ingests and
 repairs exactly this many slugs, then stops — fewer only if the auto-select
 prints fewer because the level is nearly done):
 
-<slug-count = 8>
-
-Keep <slug-count> small — this is one session's entire attention span, not a
-batch to delegate. Every prompt stays in this session's context, and each
-prompt carries the item's full allowed-vocabulary list, which grows through
-the level: an N4 prompt is roughly 13k tokens at the first slug, 18k at the
-middle and 23k at the last (N5 prompts are roughly 8k). Past the limit below,
-the last item gets noticeably less care. Recommended values:
-
-| Session model | Slugs 1–~250 of the level | Slugs ~250 onward |
-| --- | --- | --- |
-| Opus 5.5 | 8 | 6 |
-| Sonnet 5 | 5 | 4 |
-
-If you want a bigger batch, run this prompt again in a new session rather
-than raising <slug-count>. For a whole level in few runs, use the subagent
-lane instead — it gives each slug a fresh context.
+<slug-count = 10>
 
 Model/effort notes
 
