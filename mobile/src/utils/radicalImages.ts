@@ -12,12 +12,15 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/k/abrupt.webp': require('../../assets/radicals/k/abrupt.webp'),
   'radicals/k/all.webp': require('../../assets/radicals/k/all.webp'),
+  'radicals/k/also.webp': require('../../assets/radicals/k/also.webp'),
   'radicals/k/amai.webp': require('../../assets/radicals/k/amai.webp'),
   'radicals/k/and-yet.webp': require('../../assets/radicals/k/and-yet.webp'),
   'radicals/k/army.webp': require('../../assets/radicals/k/army.webp'),
   'radicals/k/asia.webp': require('../../assets/radicals/k/asia.webp'),
   'radicals/k/assembly.webp': require('../../assets/radicals/k/assembly.webp'),
+  'radicals/k/banner.webp': require('../../assets/radicals/k/banner.webp'),
   'radicals/k/before.webp': require('../../assets/radicals/k/before.webp'),
   'radicals/k/beginning.webp': require('../../assets/radicals/k/beginning.webp'),
   'radicals/k/big-brother.webp': require('../../assets/radicals/k/big-brother.webp'),
@@ -93,6 +96,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/mingle.webp': require('../../assets/radicals/k/mingle.webp'),
   'radicals/k/mizukara.webp': require('../../assets/radicals/k/mizukara.webp'),
   'radicals/k/mochiiru.webp': require('../../assets/radicals/k/mochiiru.webp'),
+  'radicals/k/moreover.webp': require('../../assets/radicals/k/moreover.webp'),
   'radicals/k/move.webp': require('../../assets/radicals/k/move.webp'),
   'radicals/k/mow.webp': require('../../assets/radicals/k/mow.webp'),
   'radicals/k/music.webp': require('../../assets/radicals/k/music.webp'),
@@ -149,6 +153,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/tsukue.webp': require('../../assets/radicals/k/tsukue.webp'),
   'radicals/k/tsume.webp': require('../../assets/radicals/k/tsume.webp'),
   'radicals/k/ukebako.webp': require('../../assets/radicals/k/ukebako.webp'),
+  'radicals/k/walled-path.webp': require('../../assets/radicals/k/walled-path.webp'),
   'radicals/k/warifu.webp': require('../../assets/radicals/k/warifu.webp'),
   'radicals/k/west.webp': require('../../assets/radicals/k/west.webp'),
   'radicals/k/wind.webp': require('../../assets/radicals/k/wind.webp'),
