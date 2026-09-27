@@ -372,12 +372,12 @@
       "slug": "move",
       "primary_form": "動",
       "meaning": "move",
-      "mnemonic_text": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
-      "image_prompt": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
+      "mnemonic_text": "This radical is a combination of <part form=\"重\">heavy</part> and <part form=\"力\">power</part>. A tower of <part form=\"重\">heavy</part> boxes sits on the left. A strongman pushes with all his <part form=\"力\">power</part>, red in the face, until they finally <radical form=\"動\">move</radical>.",
+      "image_prompt": "A tall tower of heavy wooden crates stands on the left side. On the right, a muscular strongman presses his shoulder and bent arm into the crates, pushing with all his power, his face bright red from the effort. The crates finally begin to <radical>move</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/move.webp",
       "sort_order": 26

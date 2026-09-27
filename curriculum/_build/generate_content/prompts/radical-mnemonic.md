@@ -15,6 +15,24 @@ The two fields have different readers, which is why they are different texts:
 Every kanji built from this radical will later reuse *this exact image* in its
 own story, so the picture you choose here is permanent. Make it easy to recall.
 
+## What matters, in order
+
+Required — a mnemonic that misses any of these is wrong:
+
+1. **Simple.** Short, plain sentences in everyday words. One quick read is
+   enough.
+2. **Connected.** The picture leads to the meaning “{{MEANING}}”. When this
+   radical is a combination of smaller radicals, the picture also uses each of
+   those parts, so the learner sees how the pieces make the whole.
+3. **Makes sense.** Every sentence says something a reader can picture and
+   follow. Never write a sentence that only exists to force a connection, and
+   never use an idiom or fancy phrase the reader has to decode.
+
+Optional — only when the required three still hold:
+
+4. **Funny.** Try for it. If a joke would make the mnemonic less simple, less
+   clear or less connected, drop the joke.
+
 ## Straightforward first
 
 The learner must get the idea in one quick read. Say plainly what the radical
