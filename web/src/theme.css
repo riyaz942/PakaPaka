@@ -954,6 +954,13 @@ rt {
   color: #a9cdef;
 }
 
+/* A radical a combination radical is built from (動 = 重 + 力). The app uses
+   its brand text colour, `--color-brand-text` / `--color-brand-soft`. */
+.mnemonic-tag--part {
+  background: #21382e;
+  color: #66cbab;
+}
+
 .mnemonic-tag--kanji {
   background: #462931;
   color: #f5a9c4;

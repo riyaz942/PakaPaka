@@ -7,7 +7,7 @@ import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
 type Segment = {
   text: string;
-  tag: 'radical' | 'kanji' | 'vocabulary' | 'reading' | null;
+  tag: 'radical' | 'part' | 'kanji' | 'vocabulary' | 'reading' | null;
   /** The character this highlight stands for, when the tag names one. */
   form?: string;
 };
@@ -47,9 +47,16 @@ const READING_HIGHLIGHT = 'text-mnemonic-reading';
  * it takes the vocabulary accent — the same purple the word's own glyph is
  * drawn in, which is what tells the learner "this is the thing being taught"
  * apart from "this is a kanji I already know".
+ *
+ * `<part>` marks a radical a combination radical is built from — "heavy (重)
+ * and power (力)" in the story of 動 "move". Both are radicals, so the part
+ * cannot take the radical accent too, or the pieces and the answer would look
+ * the same. It takes the brand text colour, already held to AA on every
+ * surface.
  */
 const TAG_ACCENT = {
   radical: CONTENT_TYPE_ACCENT.radical.deep,
+  part: 'text-brand-text',
   kanji: CONTENT_TYPE_ACCENT.kanji.deep,
   vocabulary: CONTENT_TYPE_ACCENT.vocabulary.deep,
   reading: READING_HIGHLIGHT,

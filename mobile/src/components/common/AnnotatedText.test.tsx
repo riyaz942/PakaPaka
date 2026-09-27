@@ -39,6 +39,19 @@ describe('AnnotatedText', () => {
     expect(borrowed).toContain('text-content-kanji');
   });
 
+  it('colors a radical part apart from the radical it builds', () => {
+    render(
+      <AnnotatedText text='<part form="重">heavy</part> boxes you <radical form="動">move</radical>' />,
+    );
+
+    const part = screen.getByText('heavy (重)').props.className;
+    const landing = screen.getByText('move (動)').props.className;
+
+    expect(part).toContain('text-brand-text');
+    expect(part).not.toContain('text-content-radical');
+    expect(landing).toContain('text-content-radical');
+  });
+
   it('gives a reading highlight its own color, not the kanji accent', () => {
     render(
       <AnnotatedText text="<reading>Shin</reading> unveils something <kanji>new</kanji>" />,

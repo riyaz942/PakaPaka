@@ -335,6 +335,41 @@ def kanji_context(level, slug, cast=None):
     }
 
 
+DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
+
+
+def radical_parts(form):
+    """The taught radicals a radical is itself built from: 動 -> 重 "heavy" +
+    力 "power". [] for a radical that is one indivisible shape (口, 一) or one
+    whose split is not in the KanjiVG decomposition.
+
+    Some radicals are whole kanji promoted into the radical layer, and the
+    learner already knows their pieces. A mnemonic that names those pieces —
+    "heavy boxes and someone with power to move them" — is shorter and easier
+    than one that invents a new picture for the whole shape."""
+    parts = _load_json(DECOMPOSITION_PATH)["decomposition"].get(form, [])
+    if len(parts) < 2 or form in parts:
+        return []
+    by_form = {}
+    for lvl in ALL_LEVELS:
+        for r in load_items("radicals", lvl):
+            by_form.setdefault(r["primary_form"], r)
+    out = []
+    for part in parts:
+        r = by_form.get(part)
+        if not r:
+            # An untaught piece cannot be named to the learner, so the split
+            # is not usable: fall back to one picture of the whole shape.
+            return []
+        out.append({
+            "slug": r["slug"],
+            "form": part,
+            "meaning": r["meaning"],
+            "meaning_synonyms": _meaning_answers(r) or [r["meaning"]],
+        })
+    return out
+
+
 def radical_context(level, slug):
     radicals = _by_slug(load_items("radicals", level))
     if slug not in radicals:
@@ -349,6 +384,7 @@ def radical_context(level, slug):
         "meaning_synonyms": _meaning_answers(item) or [item["meaning"]],
         "existing_mnemonic": item.get("mnemonic_text", ""),
         "look_alikes": look_alikes(slug),
+        "components": radical_parts(item["primary_form"]),
     }
 
 
@@ -852,6 +888,19 @@ def format_components(components):
         syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
         lines.append(f"- {c['form']} — “{syn}”\n  Its established image, which your "
                      f"story must continue: {c['image']}")
+    return "\n".join(lines)
+
+
+def format_radical_parts(components):
+    """The `{{COMPONENTS}}` block of the radical prompt."""
+    if not components:
+        return ("(none — this radical is one shape, not a combination of taught "
+                "radicals. Use the \"single shape\" pattern below, and do NOT "
+                "name any other radical.)")
+    lines = []
+    for c in components:
+        syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
+        lines.append(f"- {c['form']} — “{syn}”")
     return "\n".join(lines)
 
 

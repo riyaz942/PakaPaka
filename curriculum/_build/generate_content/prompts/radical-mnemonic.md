@@ -2,65 +2,118 @@
 
 Radicals are the building blocks the learner combines into kanji, and this is
 the shortest thing they will read all session. You write **two texts for one
-scene**: a single strange, funny, concrete picture that turns this shape into
-its meaning, told twice. Follow the teaching voice above.
+scene**, told twice. Follow the teaching voice above.
 
 The two fields have different readers, which is why they are different texts:
 
 1. **`image_prompt`** is read by the illustrator only. It is the prompt the
-   radical's illustration is generated from — the full scene, walked stroke by
-   stroke, with every visual detail spelled out. The learner never sees it.
+   radical's illustration is generated from — the full scene, with every
+   visual detail spelled out. The learner never sees it.
 2. **`mnemonic_text`** is what the learner reads beside that illustration: the
-   *same scene*, retold in short, skimmable sentences with the detail trimmed.
+   *same scene*, said as simply as possible.
 
 Every kanji built from this radical will later reuse *this exact image* in its
-own story, so the picture you choose here is permanent. Make it worth reusing.
+own story, so the picture you choose here is permanent. Make it easy to recall.
 
-## How long
+## What matters, in order
 
-- `mnemonic_text`: **roughly 100–180 characters** — one or two short
-  sentences. One look at the shape, one thing happening in it, and the
-  meaning. It is short on purpose. A radical is a part, not a lesson.
-- `image_prompt`: **roughly 150–300 characters** — two to three sentences.
-  Longer is fine here: the illustrator needs the strokes, the positions and
-  the action specified, and nobody skims a prompt.
+Required — a mnemonic that misses any of these is wrong:
 
-Treat both as targets, not rules. Going a little over to finish a picture is
-fine. Padding is not — no second joke, no restated ending, no sentence that
-adds words without adding picture.
+1. **Simple.** Short, plain sentences in everyday words. One quick read is
+   enough.
+2. **Connected.** The picture leads to the meaning “{{MEANING}}”. When this
+   radical is a combination of smaller radicals, the picture also uses each of
+   those parts, so the learner sees how the pieces make the whole.
+3. **Makes sense.** Every sentence says something a reader can picture and
+   follow. Never write a sentence that only exists to force a connection, and
+   never use an idiom or fancy phrase the reader has to decode.
 
-## Sentence shape
+Optional — only when the required three still hold:
 
-This governs `mnemonic_text`. Short sentences. One idea per sentence — most
-under 18 words, none over 25. The learner reads this tired, on a phone, often
-in English as a second language, so the picture has to survive a skim. When a
-sentence wants a second clause, a dash, or an "-ing" tail ("roots gripping the
-soil"), make it two sentences instead. Concrete everyday words are always
-fine; a long winding sentence never is.
+4. **Funny.** Try for it. If a joke would make the mnemonic less simple, less
+   clear or less connected, drop the joke.
 
-**No idioms.** A figure of speech means something other than the sum of its
-words, and a second-language reader has to decode it before they can see the
-picture: *rakes off* → *takes*, *butts against* → *presses against*, *snags on*
-→ *catches on*. Invented compound nouns are the same trap — *the board you
-scratch a mark into*, never *the shield-board*. If a phrase would need its own
-dictionary entry, use the plain words underneath it.
+## Straightforward first
 
-`image_prompt` is exempt — clause-stacked specification is a virtue in a
-prompt for an illustrator.
+The learner must get the idea in one quick read. Say plainly what the radical
+is made of, then give one simple picture that leads to the meaning. No riddle,
+no build-up, no clever phrasing to decode. If the reader has to think about
+what a sentence means, it is too clever.
 
-## How funny
+The test is simple: after one read, does the picture make the learner remember
+this radical's meaning? The scene must make sense — the parts (or the shape)
+must lead to the meaning in a way the learner can follow.
 
-Lean funnier than you think you should. At this length you cannot build up to
-anything, so the image itself has to be the joke: something absurd caught
-mid-action, an object behaving badly, a scale that is wrong on purpose. Tasteful
-and forgettable is the failure mode here — the picture the learner can't unsee
-is the one that survives a week of reviews. Keep it a picture, though; a pun
-with nothing to look at draws nothing.
+## Funny, when it fits
+
+A funny picture is easier to remember, so make it funny when you can: an
+object that behaves badly, a person caught mid-action, a scale that is wrong on
+purpose. For 動, the person with power could be straining so hard that their
+face turns red, and the heavy boxes still barely move.
+
+But funny is a bonus, not a rule. Simple and clear always comes first. If the
+only jokes you can find make the scene harder to follow, or break the link
+between the parts and the meaning, leave the joke out and write the plain
+version. A plain mnemonic that makes sense beats a funny one that does not.
+Never force a pun, and never add a second sentence just to hold a joke.
 
 ## The radical
 
 - Form: **{{FORM}}**
 - Meaning we teach: **{{MEANING}}** (accepted answers: {{MEANING_SYNONYMS}})
+
+## Taught radicals this radical is built from
+
+{{COMPONENTS}}
+
+Pick the pattern that fits the list above.
+
+**A combination of radicals** (the list names two or more). Open by naming the
+parts — "This radical is a combination of X and Y." — then one sentence that
+puts those parts in a simple scene which lands on the meaning. Use each part's
+meaning word as written above, so the learner connects it to the radical they
+already know. Worked example, for 動 built from 重 “heavy” and 力 “power”:
+
+    This radical is a combination of <part form="重">heavy</part> and
+    <part form="力">power</part>. Imagine <part form="重">heavy</part> boxes
+    on the left, and someone with <part form="力">power</part> trying to
+    <radical form="動">move</radical> them.
+
+Vary the opening wording a little ("is made of", "combines", "puts together")
+but keep it that direct. Do not describe strokes — the parts are the shapes.
+
+**A single shape** (the list says none). Say what the shape looks like, then
+the meaning:
+
+    This radical looks like two chopsticks lying side by side. Two lines, two
+    chopsticks — that is <radical form="二">two</radical>.
+
+## How long
+
+- `mnemonic_text`: **roughly 60–170 characters** — one or two short
+  sentences. It is short on purpose. A radical is a part, not a lesson.
+- `image_prompt`: **roughly 150–300 characters** — two to three sentences.
+  Longer is fine here: the illustrator needs the objects, positions and action
+  specified, and nobody skims a prompt.
+
+Padding is the failure mode — no restated ending, no sentence that adds words
+without adding picture. Any humour lives inside the one scene, not in an extra
+line.
+
+## Sentence shape
+
+This governs `mnemonic_text`. Short sentences, one idea each — most under 18
+words, none over 25. The learner reads this tired, on a phone, often in
+English as a second language. Plain everyday words only.
+
+**No idioms.** A figure of speech means something other than the sum of its
+words, and a second-language reader has to decode it before they can see the
+picture: *rakes off* → *takes*, *butts against* → *presses against*. Invented
+compound nouns are the same trap. If a phrase would need its own dictionary
+entry, use the plain words underneath it.
+
+`image_prompt` is exempt — clause-stacked specification is a virtue in a
+prompt for an illustrator.
 
 ## Look-alikes the learner will confuse this with
 
@@ -74,16 +127,15 @@ teaches a wrong contrast.
 
 Call the `submit_radical_mnemonic` tool exactly once with:
 
-1. **`image_prompt`** — the scene for the illustrator. Walk the strokes — say
-   what *that* line and *that* hook look like, where each sits, what it is
-   doing — and let the picture grow out of them, so the shape and the meaning
-   are glued together. Specify **one** image that can actually be drawn.
+1. **`image_prompt`** — the scene for the illustrator. For a combination,
+   draw each part as the thing its meaning names, placed where that part sits
+   in the character (heavy boxes on the left, a strong figure on the right).
+   For a single shape, walk the strokes and let the picture grow out of them.
+   Specify **one** image that can actually be drawn.
 
-2. **`mnemonic_text`** — the same scene for the learner, simplified. Keep the
-   actor, the setting and the action; cut the measurements and the second
-   clause of every pair. Keep one short shape phrase ("curls shut", "split
-   apart"). End on the meaning “{{MEANING}}”, so the last thing in their head
-   is the answer, and wrap that word in `<radical>...</radical>` — see
+2. **`mnemonic_text`** — the same scene for the learner, in the pattern above.
+   The meaning “{{MEANING}}” should be the last idea, so it is the last thing
+   in their head, and it is wrapped in `<radical>...</radical>` — see
    "Highlighting" below.
 
 3. **`description`** — **optional. Omit this key entirely unless this radical
@@ -105,35 +157,45 @@ Call the `submit_radical_mnemonic` tool exactly once with:
 
 ## Highlighting
 
-Wrap the word the picture resolves to — the meaning “{{MEANING}}”, or whichever
-accepted answer you actually used — in `<radical>...</radical>`. Do this in
-**both** fields: the app renders it in the radical accent colour in
-`mnemonic_text`, so the learner's eye lands on the answer; in `image_prompt`
-it marks the word the picture must resolve to (the image pipeline strips the
-tag before drawing).
+The app colours the words the learner is meant to connect, so you mark them
+inline. Two tags, and nothing else:
 
-In `mnemonic_text` the tag also **names the character it stands for**, in a
-`form` attribute holding this radical `{{FORM}}`:
+- `<radical>` wraps the word the picture resolves to — the meaning
+  “{{MEANING}}”, or whichever accepted answer you actually used. Exactly one
+  per field, around the meaning word itself and nothing else.
+- `<part>` wraps each part's meaning word in `mnemonic_text`, every time the
+  text uses it, when this radical is a combination. The app renders parts in a
+  different colour from the meaning, so the learner sees at a glance "these are
+  pieces I know" and "this is the answer". A single-shape radical has no
+  `<part>` tags.
 
-    ...and the whole thing tips over into a shouting
-    <radical form="口">mouth</radical>.
+In `mnemonic_text` every tag also **names the character it stands for**, in a
+`form` attribute: `{{FORM}}` on the `<radical>` tag, and the part's own
+character (from the list above) on each `<part>` tag.
 
-reaches the learner as “…tips over into a shouting mouth (口).” Write the
-character in the attribute and **never in the prose** — the parentheses, the
-font and the colour are the app's, and a character typed into the sentence would
-be read out by a screen reader in the middle of it. `image_prompt` takes **no**
-`form`: it is the illustrator's copy, and a character dropped into an art prompt
-is a thing the picture might try to draw.
+    ...someone with <part form="力">power</part> trying to
+    <radical form="動">move</radical> them.
 
-Exactly one tag per field, around the meaning word itself and nothing else —
-not the sentence it sits in. `<kanji>` and `<reading>` belong to the layers
-above; never use them here. Neither the tag nor its character counts toward the
-length, and the `description` carries no tags at all.
+reaches the learner as “…someone with power (力) trying to move (動) them.”
+Write the character in the attribute and **never in the prose** — the
+parentheses, the font and the colour are the app's, and a character typed into
+the sentence would be read out by a screen reader in the middle of it.
+
+`image_prompt` takes only the `<radical>` tag, with **no** `form`: it is the
+illustrator's copy, and a character dropped into an art prompt is a thing the
+picture might try to draw. The image pipeline strips the tag before drawing.
+
+`<kanji>` and `<reading>` belong to the layers above; never use them here.
+Tags and their characters do not count toward the length, and the
+`description` carries no tags at all.
 
 ## Hard rules
 
 - Plain prose only. No markdown, headings, lists, bold/italic, furigana, or
-  romaji. Stored as plain strings. `<radical>` is the one exception.
+  romaji. Stored as plain strings. `<radical>` and `<part>` are the only
+  exceptions.
+- A combination names **every** part listed above, each in a `<part>` tag,
+  and no other radical. A single shape names no other radical.
 - The meaning “{{MEANING}}” (or one of its accepted answers) must be
   recognisable in `mnemonic_text`, inside the `<radical>` tag. That tag carries
   `form="{{FORM}}"`; the one in `image_prompt` carries no `form`. Never type the
