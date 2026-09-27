@@ -278,7 +278,7 @@ def discover_levels():
     found = {
         os.path.splitext(os.path.basename(p))[0]
         for kind in ("radicals", "kanji", "vocabulary", "grammar")
-        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "*.json"))
+        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "n[1-5].json"))
     }
     ordered = [lvl for lvl in context.LEVEL_ORDER if lvl in found]
     ordered += sorted(found - set(ordered))

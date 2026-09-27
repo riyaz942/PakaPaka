@@ -7,6 +7,13 @@ const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
 const SCHEMA_PATH = path.join(CURRICULUM_DIR, 'schema', 'curriculum.schema.json');
 
+/**
+ * Sidecars next to the level files (`kanji/mnemonics.json`,
+ * `vocabulary/examples.json`, …) that generate.py inlines into the items. They
+ * are keyed-by-slug build inputs with no schema mapping of their own; their
+ * contents are validated once inlined.
+ */
+export const SIDECAR_FILE_NAMES: ReadonlySet<string> = new Set(['mnemonics.json', 'examples.json']);
 
 export function resolveValidatorKey(relativePath: string): string {
   if (relativePath === 'metadata.json') {
@@ -419,18 +426,17 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         // _build is the tooling workspace (datasets, importers, generation
-        // drafts) — its JSON never ships and has no schema mapping. `mnemonics`
-        // holds the Phase 2b generated sidecars (kanji/radicals/mnemonics/*.json)
-        // and `examples` the Phase 2c ones (vocabulary/examples/*.json)
-        // that generate.py inlines into the item files; they are keyed-by-slug
-        // build inputs, not standalone curriculum files, so they have no schema
-        // mapping of their own (their contents are validated once inlined).
-        if (entry.name !== '_build' && entry.name !== 'mnemonics' && entry.name !== 'examples') {
+        // drafts) — its JSON never ships and has no schema mapping.
+        if (entry.name !== '_build') {
           walk(fullPath);
         }
         continue;
       }
-      if (entry.name.endsWith('.json') && !fullPath.includes(`${path.sep}schema${path.sep}`)) {
+      if (
+        entry.name.endsWith('.json') &&
+        !SIDECAR_FILE_NAMES.has(entry.name) &&
+        !fullPath.includes(`${path.sep}schema${path.sep}`)
+      ) {
         files.push(fullPath);
       }
     }

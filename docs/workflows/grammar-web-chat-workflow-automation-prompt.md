@@ -20,7 +20,7 @@ If that is still the placeholder `<slug, slug>` (or empty), list remaining unwri
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
 level = '<level>'
-done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{level}')} if os.path.isdir(f'../grammar/lessons/{level}') else set()
+done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
 todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
 print(f'{len(todo)} {level} points left:')
 print(','.join(todo[:10]))
@@ -374,7 +374,7 @@ The lesson should be assembled at:
 
 
 
-curriculum/grammar/lessons/<level>/<slug>.md
+curriculum/grammar/lessons/<slug>.md
 
 
 

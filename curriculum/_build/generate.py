@@ -47,17 +47,18 @@ _SIMILAR_REFS = build_similar_map()
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
 #: Phase 2b/2d mnemonic sidecars (generate_content/generate_mnemonics.py),
-#: inlined into the radical/kanji/vocab items below keyed by slug. Absent when
-#: the generator has not run for that type.
-KANJI_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics")
-RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
-VOCAB_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics")
+#: one file per kind for every level, inlined into the radical/kanji/vocab
+#: items below keyed by slug. Absent when the generator has not run for that
+#: type.
+KANJI_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics.json")
+RADICAL_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
+VOCAB_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics.json")
 
-#: Phase 2c example-sentence sidecars (generate_content/generate_examples.py),
+#: Phase 2c example-sentence sidecar (generate_content/generate_examples.py),
 #: inlined into the vocab items below keyed by slug. Absent when 2c has not
 #: run. Kanji carry no example sentences: a kanji is taught through the
 #: vocabulary that uses it, which the app lists instead.
-VOCAB_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "examples")
+VOCAB_EXAMPLES_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "examples.json")
 
 #: Sidecar _meta keys carried through to the shipped item (matches grammar).
 _SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "reviewed_by")
@@ -82,14 +83,13 @@ def write_json(path, data):
         f.write("\n")
 
 
-def _load_sidecar(sidecar_dir, level):
-    """{slug: entry} from <sidecar_dir>/<level>.json, or {} when the relevant
-    Phase 2 generator hasn't run.
+def _load_sidecar(path):
+    """{slug: entry} from a sidecar file, or {} when the relevant Phase 2
+    generator hasn't run.
 
     Each entry carries the generated mnemonic field(s) plus a `_meta` block
     (generator_model, prompt_version, review_status). Reviewer-authored entries
     may add `reviewed_by` / flip `review_status`."""
-    path = os.path.join(sidecar_dir, f"{level}.json")
     if not os.path.exists(path):
         return {}
     with open(path, encoding="utf-8") as f:
@@ -203,14 +203,13 @@ def _vocab_reading_map(*vocab_entry_lists):
     return mapping
 
 
-def _build_radical_items(slug_prefix, radical_entries):
+def _build_radical_items(radical_entries):
     """Items for one *source* dataset — n5, n4 or the derived corpus (`k`).
 
     No `sort_order` and no level: `_write_banded` assigns both from bands.json.
-    `slug_prefix` names the dataset that wrote the entry, which is what the
-    sidecar files and the bundled art are keyed by, and it does not move when
-    the band does."""
-    mnemonics = _load_sidecar(RADICAL_MNEMONICS_DIR, slug_prefix)
+    The sidecar and the bundled art are keyed by slug alone, so neither moves
+    when the band does."""
+    mnemonics = _load_sidecar(RADICAL_MNEMONICS_PATH)
     items = []
     for r in radical_entries:
         item = {
@@ -245,12 +244,8 @@ def _build_radical_items(slug_prefix, radical_entries):
             # mobile/assets/radicals/. Missing files fall back to mnemonic text.
             # Radicals with no mnemonic text at all (raw or sidecar) carry
             # neither field rather than pointing at a file nobody has drawn.
-            # The directory is `slug_prefix` — the dataset that wrote the entry,
-            # including the derived `k` corpus, which has its own directory. It
-            # is deliberately not the band: a slug does not follow its band, so
-            # keying the ref to the band would point it at a path the file never
-            # moves to the moment a radical rebands.
-            item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
+            # The ref holds no level: a radical that rebands keeps its art.
+            item["visual_mnemonic_url"] = f"radicals/{r['slug']}.webp"
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
                 {"answer_type": "meaning", "answer_text": m} if j else
@@ -261,9 +256,9 @@ def _build_radical_items(slug_prefix, radical_entries):
     return items
 
 
-def _build_kanji_items(slug_prefix, kanji_entries):
-    """Items for one source dataset. See `_build_radical_items` on prefixes."""
-    mnemonics = _load_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
+def _build_kanji_items(kanji_entries):
+    """Items for one source dataset. See `_build_radical_items`."""
+    mnemonics = _load_sidecar(KANJI_MNEMONICS_PATH)
     items = []
     for k in kanji_entries:
         readings = []
@@ -326,8 +321,8 @@ def _load_vocab_word_types():
 
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
-    mnemonics = _load_sidecar(VOCAB_MNEMONICS_DIR, jlpt_level.lower())
-    examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
+    mnemonics = _load_sidecar(VOCAB_MNEMONICS_PATH)
+    examples = _load_sidecar(VOCAB_EXAMPLES_PATH)
     word_types = _load_vocab_word_types()
     vocab_forms = {**(extra_vocab_forms or {}),
                    **{v["slug"]: v["form"] for v in vocab_entries}}
@@ -391,13 +386,13 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
 def build_n5_radicals():
     from n5_radicals import N5_RADICALS
 
-    return _build_radical_items("n5", N5_RADICALS)
+    return _build_radical_items(N5_RADICALS)
 
 
 def build_n5_kanji():
     from n5_kanji import N5_KANJI
 
-    return _build_kanji_items("n5", N5_KANJI)
+    return _build_kanji_items(N5_KANJI)
 
 
 def build_n5_vocab(known_readings=None):
@@ -475,15 +470,15 @@ def _annotate_lesson_markdown(body, known_readings, label):
     return "\n".join(out)
 
 
-def _load_lesson(level_slug, slug, known_readings):
-    """(sidecar_meta, annotated_body) for grammar/lessons/<level>/<slug>.md,
-    or None when the grammar point has no long-form lesson yet."""
-    path = os.path.join(LESSONS_DIR, level_slug, f"{slug}.md")
+def _load_lesson(slug, known_readings):
+    """(sidecar_meta, annotated_body) for grammar/lessons/<slug>.md, or None
+    when the grammar point has no long-form lesson yet."""
+    path = os.path.join(LESSONS_DIR, f"{slug}.md")
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8") as f:
         meta, body = frontmatter_lib.parse(f.read())
-    label = f"grammar lesson {level_slug}/{slug}"
+    label = f"grammar lesson {slug}"
     return meta, _annotate_lesson_markdown(body, known_readings, label)
 
 
@@ -546,7 +541,7 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                     variant["jp_cloze_furigana"] = cloze_furigana
                 variants.append(variant)
             item["cloze_variants"] = variants
-        lesson = _load_lesson(jlpt_level.lower(), g["slug"], known_readings)
+        lesson = _load_lesson(g["slug"], known_readings)
         if lesson:
             meta, body = lesson
             item["explanation_markdown"] = body
@@ -692,13 +687,13 @@ def build_n5_readings(known_readings=None, vocab_forms=None):
 def build_n4_radicals():
     from n4_radicals import N4_RADICALS
 
-    return _build_radical_items("n4", N4_RADICALS)
+    return _build_radical_items(N4_RADICALS)
 
 
 def build_n4_kanji():
     from n4_kanji import N4_KANJI
 
-    return _build_kanji_items("n4", N4_KANJI)
+    return _build_kanji_items(N4_KANJI)
 
 
 def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
@@ -804,12 +799,12 @@ def generate_bands():
     radicals = (
         build_n5_radicals()
         + build_n4_radicals()
-        + _build_radical_items("k", decomposition["radicals"])
+        + _build_radical_items(decomposition["radicals"])
     )
     kanji = (
         build_n5_kanji()
         + build_n4_kanji()
-        + _build_kanji_items("k", skeleton["kanji"])
+        + _build_kanji_items(skeleton["kanji"])
     )
     rad_counts = _write_banded("radicals", radicals, bands["radicals"])
     kanji_counts = _write_banded("kanji", kanji, bands["kanji"])

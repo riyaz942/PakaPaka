@@ -528,7 +528,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
       slug: 'one',
       primary_form: '一',
       meaning: 'one',
-      visual_mnemonic_url: 'radicals/n5/ichi.webp',
+      visual_mnemonic_url: 'radicals/ichi.webp',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
@@ -561,7 +561,7 @@ describe('validateCurriculum Rev 1 fields', () => {
     slug: 'ichi',
     primary_form: '一',
     meaning: 'one',
-    visual_mnemonic_url: 'radicals/n5/ichi.webp',
+    visual_mnemonic_url: 'radicals/ichi.webp',
   };
 
   it('accepts a radical description and visually_similar_slugs', () => {
@@ -580,7 +580,7 @@ describe('validateCurriculum Rev 1 fields', () => {
   it('rejects a remote radical visual_mnemonic_url — art is bundled, not hosted', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visual_mnemonic_url: 'https://assets.example/radicals/n5/ichi.webp',
+      visual_mnemonic_url: 'https://assets.example/radicals/ichi.webp',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
@@ -592,10 +592,37 @@ describe('validateCurriculum Rev 1 fields', () => {
   it('rejects a radical visual_mnemonic_url that is not WebP', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visual_mnemonic_url: 'radicals/n5/ichi.png',
+      visual_mnemonic_url: 'radicals/ichi.png',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a radical visual_mnemonic_url under a level folder — art is keyed by slug alone', () => {
+    const tempDir = writeTempRadicalDir({
+      ...baseRadical,
+      visual_mnemonic_url: 'radicals/n5/ichi.webp',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('skips a mnemonics.json sidecar next to the level files', () => {
+    const tempDir = writeTempRadicalDir(baseRadical);
+    fs.writeFileSync(
+      path.join(tempDir, 'radicals', 'mnemonics.json'),
+      JSON.stringify({ ichi: { mnemonic_text: 'One flat stroke.' } }),
+    );
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(true);
+      expect(result.ok && result.fileCount).toBe(2);
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }

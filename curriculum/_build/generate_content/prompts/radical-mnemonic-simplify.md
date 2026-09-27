@@ -9,7 +9,7 @@ the prose, not reimagining the picture.
 
 - The mark list: `curriculum/_build/reports/radical-simplify-list.json`
   (produced by `radical-mnemonic-triage.md`)
-- The sidecars: `curriculum/radicals/mnemonics/{n5,n4,k}.json`
+- The sidecar: `curriculum/radicals/mnemonics.json` (every level)
 
 ## Rewriting rules, in order
 
@@ -50,7 +50,7 @@ carries one idea.
 
 ## Write back into the sidecar
 
-For each **marked** slug, in its dataset's sidecar file:
+For each **marked** slug, in the sidecar file:
 
 - `image_prompt`: the **original** `mnemonic_text`, copied verbatim. This is
   what the existing illustration was drawn from — do not paraphrase it.

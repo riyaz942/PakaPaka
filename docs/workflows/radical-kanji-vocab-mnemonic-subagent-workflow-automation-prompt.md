@@ -136,30 +136,20 @@ Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import (
-    KIND_DIR, PROMPT_VERSION, BANDED_KINDS, _source_map, sidecar_path,
-)
+from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION, sidecar_path
 LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = '<level>', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji' or 'vocab'
 # Read "done" from the checked-in sidecar, not from drafts/. A draft is filed
 # under the level an item had when it was WRITTEN; a banded kind (radical,
 # kanji) can be re-filed to a different level by a reband, so drafts_dir keyed
 # by the current LEVEL silently misses every drafted item that moved. The
-# sidecar has no such drift: it is keyed by slug within a file named for the
-# item's SOURCE dataset (band-stable), not its level, and write_sidecar()
-# keeps it band-aware already. Vocabulary is unbanded, so its own sidecar
-# stays keyed by level.
+# sidecar has no such drift: it is one file for every level, keyed by slug.
 slugs = mc.all_slugs(LEVEL, KIND_DIR[KIND])
-source_by_slug = _source_map(KIND) if KIND in BANDED_KINDS else {}
-sidecar_cache = {}
-done = set()
-for slug in slugs:
-    source = source_by_slug.get(slug, LEVEL)
-    if source not in sidecar_cache:
-        path = sidecar_path(source, KIND)
-        sidecar_cache[source] = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
-    entry = sidecar_cache[source].get(slug)
-    if entry and entry.get('_meta', {}).get('prompt_version') == str(PROMPT_VERSION[KIND]):
-        done.add(slug)
+path = sidecar_path(KIND)
+sidecar = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
+done = {
+    slug for slug in slugs
+    if sidecar.get(slug, {}).get('_meta', {}).get('prompt_version') == str(PROMPT_VERSION[KIND])
+}
 todo = [s for s in slugs if s not in done][:BATCH_LIMIT]
 # Shared-component data for grouping; radicals have no components, so they fall
 # back to sequential chunks (curriculum order already clusters related radicals).
@@ -550,11 +540,11 @@ pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar:
+The item is merged into the sidecar (one file for every level):
 
-- radical → curriculum/radicals/mnemonics/<level>.json
-- kanji   → curriculum/kanji/mnemonics/<level>.json
-- vocab   → curriculum/vocabulary/mnemonics/<level>.json
+- radical → curriculum/radicals/mnemonics.json
+- kanji   → curriculum/kanji/mnemonics.json
+- vocab   → curriculum/vocabulary/mnemonics.json
 
 Record the slug as successful and proceed to the next slug.
 
@@ -706,7 +696,7 @@ fails with `command not found`, while the two `npm` commands after it still
 succeed — so the build looks like it ran, `curriculum.db` gets rebuilt, and the
 new mnemonics are silently missing because nothing ever inlined them. If the
 inlining step worked, `curriculum/<type>/<level>.json` is newer than
-`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
+`curriculum/<type>/mnemonics.json`; if the sidecar is the newer file,
 `generate.py` did not run.
 
 `generate.py` inlines the mnemonic sidecars into the shipped radical/kanji/vocab
@@ -792,5 +782,5 @@ Notes on differences from the Gemini web-chat automation prompt
 - Everything else is identical: the same auto-select + grouping (Step 1a), the
   same `webprompts`/`ingest` commands and gate, the same per-slug repair rules
   (inline fix under 7 errors, 3-attempt cap plus one last-resort inline fix),
-  the same per-level keyed-by-slug sidecar, the same layer ordering, and the
+  the same keyed-by-slug sidecar, the same layer ordering, and the
   same draft/`review_status` discipline.

@@ -43,7 +43,7 @@ const baseItem: CurriculumItemDetail = {
   meaningMnemonic: null,
   readingMnemonic: null,
   description: null,
-  visualMnemonicUrl: 'radicals/n5/person.webp',
+  visualMnemonicUrl: 'radicals/person.webp',
 };
 
 const lookAlikes: VisuallySimilarItem[] = [

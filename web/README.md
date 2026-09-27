@@ -78,10 +78,10 @@ pulling changes that touch its `package.json`.
   lesson frontmatter). Everything else — meanings, readings, accepted answers,
   furigana, word spans, grammar and reading bodies — is authored in
   `curriculum/_build/` and has to be edited there.
-- Sidecars for radicals and kanji are keyed by **source dataset**, not by the
-  level the item is taught at (a band mixes sources), so a save for a radical
-  taught at N5 can land in `curriculum/radicals/mnemonics/n4.json`. The source
-  comes from `curriculum/_build/bands.json`.
+- Each content type has one sidecar of each kind for every level, keyed by
+  slug (`curriculum/radicals/mnemonics.json`, `curriculum/vocabulary/examples.json`),
+  and each grammar point has one lesson (`curriculum/grammar/lessons/<slug>.md`).
+  A save never depends on the level the item is taught at.
 - The **Pipeline → compile-curriculum** run writes to a scratch path
   (`web/.build/curriculum.db`, gitignored) — it never overwrites
   `mobile/assets/curriculum-seed/curriculum.db`. Run the real
@@ -89,8 +89,8 @@ pulling changes that touch its `package.json`.
   override) when you actually want to update the shipped seed, then commit it
   through Git LFS as usual.
 - This tool never writes to `curriculum/_build/` or
-  `curriculum/dependencies/graph.json`. It does write `*/mnemonics/` and
-  `*/examples/` sidecars — those are the generator's *inputs*, and the only
+  `curriculum/dependencies/graph.json`. It does write the `*/mnemonics.json` and
+  `*/examples.json` sidecars — those are the generator's *inputs*, and the only
   place an edit survives a regeneration.
 
 ## Targets and audit

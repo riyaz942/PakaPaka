@@ -21,7 +21,7 @@ describe('radicalRepository', () => {
         primary_form: '二',
         meaning: 'two',
         mnemonic_text: 'Radical two (二)',
-        visual_mnemonic_url: 'radicals/n5/ni.webp',
+        visual_mnemonic_url: 'radicals/ni.webp',
         sort_order: 2,
       },
       {
@@ -32,7 +32,7 @@ describe('radicalRepository', () => {
         primary_form: '一',
         meaning: 'one',
         mnemonic_text: 'Radical one (一)',
-        visual_mnemonic_url: 'radicals/n5/ichi.webp',
+        visual_mnemonic_url: 'radicals/ichi.webp',
         sort_order: 1,
       },
       {
@@ -57,7 +57,7 @@ describe('radicalRepository', () => {
       primaryForm: '一',
       meaning: 'one',
       mnemonicText: 'Radical one (一)',
-      visualMnemonicUrl: 'radicals/n5/ichi.webp',
+      visualMnemonicUrl: 'radicals/ichi.webp',
       sortOrder: 1,
     });
     expect(radicals[1]?.slug).toBe('ni');

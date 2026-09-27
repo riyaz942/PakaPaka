@@ -6,12 +6,13 @@ Build-time generation on the maintainer machine, mirroring the 2a grammar
 pipeline (generate_grammar_lessons.py): one Message Batches request per item
 (50% cost, latency irrelevant), structured output via a single forced tool
 call, drafts written under generate_content/drafts/mnemonics/, and — only after
-passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
-sidecars that generate.py inlines into the shipped JSON:
+passing the mechanical gate (validate_mnemonics.py) — assembled into one
+sidecar per kind (every level, keyed by slug) that generate.py inlines into the
+shipped JSON:
 
-    curriculum/radicals/mnemonics/<level>.json    (mnemonic + image prompt + optional description)
-    curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + optional description)
-    curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + optional description)
+    curriculum/radicals/mnemonics.json    (mnemonic + image prompt + optional description)
+    curriculum/kanji/mnemonics.json       (meaning/reading mnemonic + optional description)
+    curriculum/vocabulary/mnemonics.json  (meaning/reading mnemonic + optional description)
 
 All three carry `_meta` (generator_model, prompt_version, review_status: draft)
 per item, so compile-curriculum warns on unreviewed prose and nothing ships
@@ -577,48 +578,29 @@ def cmd_assemble(args):
 
 # --- assembly into sidecars generate.py inlines ----------------------------
 
-#: Vocabulary is still authored per level, so its sidecar is still named by
-#: one. Radicals and kanji are banded (reports/kanji_bands.py) and a band mixes
-#: sources, so their sidecar is named by the *source dataset* — the thing that
-#: stays put when the band moves. generate.py reads them back the same way.
+#: Radicals and kanji are banded (reports/kanji_bands.py): generate.py writes
+#: every level of them in one `--bands` run.
 BANDED_KINDS = ("kanji", "radical")
 
 
-def _source_map(kind):
-    """{slug: source} from bands.json, for the kinds a band can move."""
-    with open(os.path.join(mc.BUILD_DIR, "bands.json"), encoding="utf-8") as f:
-        bands = json.load(f)
-    return {slug: entry["source"]
-            for slug, entry in bands["radicals" if kind == "radical" else "kanji"].items()}
-
-
-def sidecar_path(name, kind):
-    """`name` is a level for vocabulary, a source for radicals and kanji."""
-    return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics", f"{name}.json")
+def sidecar_path(kind):
+    """The one sidecar for this kind: every level, keyed by slug."""
+    return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics.json")
 
 
 def write_sidecar(level, kind, only_slugs=None):
-    """Rebuild the per-level sidecar from gate-passing drafts on disk. The
-    sidecar is keyed by slug; generate.py inlines it into the kanji/radical
-    JSON.
+    """Merge this level's gate-passing drafts on disk into the kind's sidecar.
+    The sidecar is keyed by slug; generate.py inlines it into the shipped JSON.
 
     With `only_slugs=None` (the batch/API lane's usage — cmd_run, cmd_collect,
-    cmd_assemble), this reconstructs the WHOLE sidecar from every draft file on
-    disk, as before. That is only safe when the on-disk drafts are the sidecar's
-    sole source of truth for every slug in this level+kind.
-
-    With `only_slugs` given (the ingest lane's usage — cmd_ingest), only those
-    slugs' entries are (re)written; every other slug's existing entry in the
-    on-disk sidecar is carried through untouched. This is required because a
-    human reviewer may promote a sidecar entry's `review_status` to `reviewed`
-    or add a `description` directly in the sidecar, without that change ever
-    being written back to the (gitignored) per-slug draft file — a full rebuild
-    would silently drop that review work for every slug not just ingested."""
+    cmd_assemble), every draft of this level+kind is (re)written. With
+    `only_slugs` given (the ingest lane's usage — cmd_ingest), only those slugs'
+    entries are. Either way every other entry in the on-disk sidecar is carried
+    through untouched: the file is shared by every level, and a human reviewer
+    may promote an entry's `review_status` to `reviewed` or add a `description`
+    directly in the sidecar, without that change ever being written back to the
+    (gitignored) per-slug draft file."""
     level_dir = os.path.join(DRAFTS_DIR, level, kind)
-    # One level's drafts can land in more than one sidecar: a band mixes source
-    # datasets, and the sidecar follows the source. Vocabulary is unbanded, so
-    # its "source" is the level itself.
-    source_by_slug = _source_map(kind) if kind in BANDED_KINDS else {}
     drafted = {}
 
     only_slugs = set(only_slugs) if only_slugs is not None else None
@@ -641,36 +623,24 @@ def write_sidecar(level, kind, only_slugs=None):
                 "prompt_version": str(record.get("prompt_version", PROMPT_VERSION[kind])),
                 "review_status": "draft",
             }
-            source = source_by_slug.get(record["slug"], level)
-            drafted.setdefault(source, {})[record["slug"]] = {
-                **record["tool_input"], "_meta": meta,
-            }
+            drafted[record["slug"]] = {**record["tool_input"], "_meta": meta}
 
-    # A full rebuild of an unbanded kind still rewrites the level's sidecar from
-    # scratch, drafts being its sole source of truth. A banded sidecar is shared
-    # by every level that draws on that source, so a rebuild driven by one
-    # level's drafts must merge — rewriting it would drop the other levels'
-    # entries, which no draft of *this* level can restore.
-    banded = kind in BANDED_KINDS
-    sources = set(drafted) if banded or only_slugs is not None else {level}
-    paths = []
-    for source in sorted(sources):
-        path = sidecar_path(source, kind)
-        entries = {}
-        if (banded or only_slugs is not None) and os.path.exists(path):
-            with open(path, encoding="utf-8") as f:
-                entries = json.load(f)
-        entries.update(drafted.get(source, {}))
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(entries, f, ensure_ascii=False, indent=2)
-            f.write("\n")
-        print(f"wrote {len(entries)} {kind} mnemonic(s) to {path}")
-        paths.append(path)
+    path = sidecar_path(kind)
+    entries = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            entries = json.load(f)
+    entries.update(drafted)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print(f"wrote {len(drafted)} {level} {kind} mnemonic(s) to {path} "
+          f"({len(entries)} entries in total)")
     print("run generate.py "
           + ("--bands" if kind in BANDED_KINDS else f"--level {level}")
           + ", then validate-schema + compile-curriculum from the repo root.")
-    return paths[0] if len(paths) == 1 else paths
+    return path
 
 
 # --- web-chat (no-API) lane, mirroring 2a ----------------------------------

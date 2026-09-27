@@ -81,14 +81,14 @@ already written). Substitute this run's <level> and <batch-size>, then run:
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
 LEVEL, BATCH_LIMIT = '<level>', <batch-size>
-done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{LEVEL}')} if os.path.isdir(f'../grammar/lessons/{LEVEL}') else set()
+done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
 todo = [g['slug'] for g in context.load_grammar(LEVEL) if g['slug'] not in done]
 print(f'{len(todo)} {LEVEL} point(s) left; selecting {min(len(todo), BATCH_LIMIT)} (BATCH_LIMIT={BATCH_LIMIT}):')
 print(','.join(todo[:BATCH_LIMIT]))
 PY
 
 "Done" here means an assembled lesson file exists at
-`curriculum/grammar/lessons/<level>/<slug>.md`. That is the committed artifact;
+`curriculum/grammar/lessons/<slug>.md`. That is the committed artifact;
 draft records under `generate_content/drafts/<level>/` are working state and are
 deliberately not consulted. Consequence: a slug that burned its repair budget in
 an earlier run **will** be selected again and gets a fresh generation. That is
@@ -197,7 +197,7 @@ If ingestion succeeds:
 
 The lesson is assembled at
 
-curriculum/grammar/lessons/<level>/<slug>.md
+curriculum/grammar/lessons/<slug>.md
 
 with `review_status: draft`, and its cloze candidates are stashed at
 

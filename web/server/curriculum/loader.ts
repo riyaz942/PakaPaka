@@ -32,11 +32,14 @@ function readJson<T>(filePath: string): T {
 
 /**
  * Same skip rules as discoverJsonFilesIn in scripts/validate-schema.ts:
- * skip _build/, mnemonics/, examples/, and anything under schema/.
+ * skip _build/, anything under schema/, and the mnemonics.json /
+ * examples.json sidecars next to the level files.
  */
 function shouldSkipDir(name: string): boolean {
-  return name === '_build' || name === 'mnemonics' || name === 'examples' || name === 'schema';
+  return name === '_build' || name === 'schema';
 }
+
+const SIDECAR_FILE_NAMES: ReadonlySet<string> = new Set(['mnemonics.json', 'examples.json']);
 
 function discoverShippedFiles(curriculumDir: string): string[] {
   const files: string[] = [];
@@ -50,7 +53,7 @@ function discoverShippedFiles(curriculumDir: string): string[] {
         }
         continue;
       }
-      if (entry.name.endsWith('.json')) {
+      if (entry.name.endsWith('.json') && !SIDECAR_FILE_NAMES.has(entry.name)) {
         files.push(fullPath);
       }
     }

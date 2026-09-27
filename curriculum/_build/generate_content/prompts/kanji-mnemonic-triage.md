@@ -13,13 +13,11 @@ building toward" in the same colour. The landing word gets its own `<kanji>`
 tag instead. Your job is to read every kanji mnemonic and produce the list of
 slugs that need work. You are **marking only** — do not rewrite anything.
 
-## Files to read
+## File to read
 
-- `curriculum/kanji/mnemonics/n5.json`
-- `curriculum/kanji/mnemonics/n4.json`
-- `curriculum/kanji/mnemonics/k.json`
+- `curriculum/kanji/mnemonics.json` (every level)
 
-Each is `{ "<slug>": { "meaning_mnemonic": ..., "reading_mnemonic": ...,
+It is `{ "<slug>": { "meaning_mnemonic": ..., "reading_mnemonic": ...,
 "description"?: ..., "_meta": ... } }`. Judge only `meaning_mnemonic` and
 `reading_mnemonic`. Never judge `description` — it is reference prose for
 look-alike disambiguation, shown on demand, and follows different rules.
@@ -45,72 +43,71 @@ from generate_content import mnemonic_context as mc
 from generate_content.validate_mnemonics import (
     _hira, _meaning_words, _references, _strip_tags, _tagged_spans)
 
-# A sidecar is keyed by source dataset, but banding can move a kanji between
-# level files — resolve each slug to the level file it currently lives in.
+# The sidecar holds every level — resolve each slug to the level file it
+# currently lives in.
 slug_level = {}
 for lvl in mc.ALL_LEVELS:
     for it in mc.load_items("kanji", lvl):
         slug_level[it["slug"]] = lvl
 
 report = {}
-for ds in ("n5", "n4", "k"):
-    with open(f"curriculum/kanji/mnemonics/{ds}.json", encoding="utf-8") as f:
-        sidecar = json.load(f)
-    for slug, entry in sidecar.items():
-        level = slug_level.get(slug)
-        if level is None:
-            report.setdefault(ds, {})[slug] = {
-                "components": [], "landing": "unresolved", "landing_meaning": None,
-                "reading": "unresolved", "primary_reading": None}
+with open("curriculum/kanji/mnemonics.json", encoding="utf-8") as f:
+    sidecar = json.load(f)
+for slug, entry in sidecar.items():
+    level = slug_level.get(slug)
+    if level is None:
+        report[slug] = {
+            "components": [], "landing": "unresolved", "landing_meaning": None,
+            "reading": "unresolved", "primary_reading": None}
+        continue
+    ctx = mc.kanji_context(level, slug)
+    text = entry["meaning_mnemonic"]
+    plain = _strip_tags(text, "radical")
+    spans = _tagged_spans(text, "radical")
+    comps = []
+    for c in ctx["components"]:
+        words = _meaning_words(c["meaning_synonyms"])
+        if not words:
             continue
-        ctx = mc.kanji_context(level, slug)
-        text = entry["meaning_mnemonic"]
-        plain = _strip_tags(text, "radical")
-        spans = _tagged_spans(text, "radical")
-        comps = []
-        for c in ctx["components"]:
-            words = _meaning_words(c["meaning_synonyms"])
-            if not words:
-                continue
-            if not _references(plain, words):
-                status = "missing"    # the story never uses the taught word
-            elif not any(_references(span, words) for span in spans):
-                status = "untagged"   # the word is there but not highlighted
-            else:
-                continue
-            comps.append({"form": c["form"], "meaning": c["meaning"], "status": status})
-        # The landing word: the kanji's own meaning, which must be wrapped in
-        # <kanji> — not <radical>, even though the old convention used to
-        # allow that. Present-but-in-a-<radical>-tag still counts as untagged
-        # here, since _strip_tags(text, "kanji") only removes <kanji> spans.
-        own_words = _meaning_words(ctx["meaning_synonyms"])
-        landing = "ok"
-        if own_words:
-            own_plain = _strip_tags(text, "kanji")
-            own_spans = _tagged_spans(text, "kanji")
-            if not _references(own_plain, own_words):
-                landing = "missing"
-            elif not any(_references(span, own_words) for span in own_spans):
-                landing = "untagged"
-        reading = "ok"
-        primary = ctx["primary_reading"]
-        if primary:
-            rtext = entry["reading_mnemonic"]
-            if _hira(primary) not in _hira(_strip_tags(rtext, "reading")):
-                reading = "missing"
-            elif not any(_hira(primary) in _hira(s)
-                         for s in _tagged_spans(rtext, "reading")):
-                reading = "untagged"
-        if comps or landing != "ok" or reading != "ok":
-            report.setdefault(ds, {})[slug] = {
-                "components": comps, "landing": landing,
-                "landing_meaning": ctx["meaning"] if landing != "ok" else None,
-                "reading": reading, "primary_reading": primary}
+        if not _references(plain, words):
+            status = "missing"    # the story never uses the taught word
+        elif not any(_references(span, words) for span in spans):
+            status = "untagged"   # the word is there but not highlighted
+        else:
+            continue
+        comps.append({"form": c["form"], "meaning": c["meaning"], "status": status})
+    # The landing word: the kanji's own meaning, which must be wrapped in
+    # <kanji> — not <radical>, even though the old convention used to
+    # allow that. Present-but-in-a-<radical>-tag still counts as untagged
+    # here, since _strip_tags(text, "kanji") only removes <kanji> spans.
+    own_words = _meaning_words(ctx["meaning_synonyms"])
+    landing = "ok"
+    if own_words:
+        own_plain = _strip_tags(text, "kanji")
+        own_spans = _tagged_spans(text, "kanji")
+        if not _references(own_plain, own_words):
+            landing = "missing"
+        elif not any(_references(span, own_words) for span in own_spans):
+            landing = "untagged"
+    reading = "ok"
+    primary = ctx["primary_reading"]
+    if primary:
+        rtext = entry["reading_mnemonic"]
+        if _hira(primary) not in _hira(_strip_tags(rtext, "reading")):
+            reading = "missing"
+        elif not any(_hira(primary) in _hira(s)
+                     for s in _tagged_spans(rtext, "reading")):
+            reading = "untagged"
+    if comps or landing != "ok" or reading != "ok":
+        report[slug] = {
+            "components": comps, "landing": landing,
+            "landing_meaning": ctx["meaning"] if landing != "ok" else None,
+            "reading": reading, "primary_reading": primary}
 
 with open("curriculum/_build/reports/kanji-chain-check.json", "w", encoding="utf-8") as f:
     json.dump(report, f, ensure_ascii=False, indent=2)
     f.write("\n")
-print({ds: len(v) for ds, v in report.items()})
+print(f"{len(report)} slug(s) chain-marked")
 ```
 
 It takes a few seconds and writes
@@ -118,23 +115,19 @@ It takes a few seconds and writes
 
 ```json
 {
-  "k": {
-    "tooth": {
-      "components": [{ "form": "歯", "meaning": "tooth", "status": "untagged" }],
-      "landing": "ok",
-      "landing_meaning": null,
-      "reading": "ok",
-      "primary_reading": "し"
-    }
+  "tooth": {
+    "components": [{ "form": "歯", "meaning": "tooth", "status": "untagged" }],
+    "landing": "ok",
+    "landing_meaning": null,
+    "reading": "ok",
+    "primary_reading": "し"
   },
-  "n5": {
-    "new": {
-      "components": [],
-      "landing": "untagged",
-      "landing_meaning": "new",
-      "reading": "ok",
-      "primary_reading": "しん"
-    }
+  "new": {
+    "components": [],
+    "landing": "untagged",
+    "landing_meaning": "new",
+    "reading": "ok",
+    "primary_reading": "しん"
   }
 }
 ```
@@ -249,13 +242,11 @@ Write `curriculum/_build/reports/kanji-simplify-list.json`:
   "marked": [
     {
       "slug": "north",
-      "dataset": "n5",
       "fields": ["meaning"],
       "reason": "57-word scene-chain sentence; stacked qualifiers"
     },
     {
       "slug": "tooth",
-      "dataset": "k",
       "fields": ["meaning"],
       "reason": "chain: component “tooth” present but untagged"
     }
@@ -265,13 +256,12 @@ Write `curriculum/_build/reports/kanji-simplify-list.json`:
 }
 ```
 
-- `dataset` is the sidecar file the slug lives in: `n5`, `n4`, or `k`.
 - `fields`: which of `"meaning"` / `"reading"` need work — one or both. The
   rewrite touches only the listed fields.
 - `reason`: under 12 words, naming the failure mode(s) from the list above,
   or `chain: …` from step 1, or both — it feeds the rewrite step.
-- Every slug from the three files appears exactly once, in `marked` or `kept`.
+- Every slug in the sidecar appears exactly once, in `marked` or `kept`.
 - `stats.total` must equal the actual slug count; `stats.marked` the length of
   `marked`.
-- Finish by printing a one-line-per-dataset summary to the chat
-  (`n5: 12/150 marked`, …) plus the full marked list with reasons.
+- Finish by printing a one-line summary to the chat (`12/469 marked`) plus
+  the full marked list with reasons.

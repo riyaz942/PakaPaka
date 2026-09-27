@@ -87,22 +87,15 @@ BATCH_LIMIT, then run:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import (
-    KIND_DIR, PROMPT_VERSION, BANDED_KINDS, _source_map, sidecar_path,
-)
+from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION, sidecar_path
 LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <slug-count>   # KIND: 'radical', 'kanji' or 'vocab'
 slugs = mc.all_slugs(LEVEL, KIND_DIR[KIND])
-source_by_slug = _source_map(KIND) if KIND in BANDED_KINDS else {}
-sidecar_cache = {}
-done = set()
-for slug in slugs:
-    source = source_by_slug.get(slug, LEVEL)
-    if source not in sidecar_cache:
-        path = sidecar_path(source, KIND)
-        sidecar_cache[source] = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
-    entry = sidecar_cache[source].get(slug)
-    if entry and entry.get('_meta', {}).get('prompt_version') == str(PROMPT_VERSION[KIND]):
-        done.add(slug)
+path = sidecar_path(KIND)
+sidecar = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
+done = {
+    slug for slug in slugs
+    if sidecar.get(slug, {}).get('_meta', {}).get('prompt_version') == str(PROMPT_VERSION[KIND])
+}
 todo = [s for s in slugs if s not in done][:BATCH_LIMIT]
 print(f'{len(todo)} slug(s) selected (target={BATCH_LIMIT}, done={len(done)}):')
 print(','.join(todo))
@@ -288,8 +281,8 @@ For each slug, run:
 
 .venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level <level> --slug <slug> --model <this session's model name>
 
-If ingestion succeeds, the item is merged into the per-level sidecar
-(`curriculum/<radicals|kanji|vocabulary>/mnemonics/<level>.json`) — record it
+If ingestion succeeds, the item is merged into the sidecar
+(`curriculum/<radicals|kanji|vocabulary>/mnemonics.json`) — record it
 as successful and move to the next slug.
 
 If ingestion fails, the process rewrites `<slug>.prompt.md` with the
@@ -352,7 +345,7 @@ file, not the sidecar, so running this promptly after each session keeps a
 same-level, cross-type chain (radical → kanji → vocab) unblocked without
 needing a separate coordinating session. If the inlining step worked,
 `curriculum/<type>/<level>.json` is newer than
-`curriculum/<type>/mnemonics/<level>.json`; if the sidecar is the newer file,
+`curriculum/<type>/mnemonics.json`; if the sidecar is the newer file,
 `generate.py` did not run.
 
 Still do NOT run `npm run validate-schema` or `npm run compile-curriculum` in
@@ -440,6 +433,6 @@ Notes on differences from the subagent workflow
   finishes.
 - Everything else is identical: the same auto-select (Step 1, reading "done"
   from the checked-in sidecar), the same `webprompts`/`ingest` commands and
-  gate, the same per-slug repair rules and retry budget, the same per-level
+  gate, the same per-slug repair rules and retry budget, the same
   sidecar, the same layer ordering, and the same draft/`review_status`
   discipline.

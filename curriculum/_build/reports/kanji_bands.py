@@ -371,14 +371,12 @@ def load_radicals(decomposition):
     from n4_radicals import N4_RADICALS
     from n5_radicals import N5_RADICALS
 
-    def sidecar(source):
-        path = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics", f"{source}.json")
-        return load(path) if os.path.exists(path) else {}
+    sidecar_path = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
+    written = load(sidecar_path) if os.path.exists(sidecar_path) else {}
 
     radicals = {}
     for source, entries in (("n5", N5_RADICALS), ("n4", N4_RADICALS), ("k", None)):
         entries = decomposition["radicals"] if entries is None else entries
-        written = sidecar(source)
         for i, r in enumerate(entries, start=1):
             radicals[r["slug"]] = {
                 "form": r["form"],

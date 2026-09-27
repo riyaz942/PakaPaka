@@ -11,10 +11,10 @@ Build-time generation on the maintainer machine, mirroring the 2a/2b pipelines:
 one Message Batches request per item (50% cost, latency irrelevant), structured
 output via a single forced tool call, drafts written under
 generate_content/drafts/examples/, and — only after passing the mechanical gate
-(validate_examples.py) — assembled into a per-level sidecar that generate.py
-inlines into the shipped vocab JSON:
+(validate_examples.py) — assembled into one sidecar (every level, keyed by
+slug) that generate.py inlines into the shipped vocab JSON:
 
-    curriculum/vocabulary/examples/<level>.json
+    curriculum/vocabulary/examples.json
 
 It carries `_meta` (generator_model, prompt_version, review_status: draft) per
 item, so compile-curriculum warns on unreviewed prose and nothing ships
@@ -356,30 +356,25 @@ def cmd_assemble(args):
 SIDECAR_KIND_DIR = {"vocab": "vocabulary"}
 
 
-def sidecar_path(level, kind):
+def sidecar_path(kind):
+    """The one sidecar for this kind: every level, keyed by slug."""
     return os.path.join(
-        grammar_context.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "examples", f"{level}.json"
+        grammar_context.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "examples.json"
     )
 
 
 def write_sidecar(level, kind, only_slugs=None):
-    """Rebuild the per-level sidecar from gate-passing drafts on disk. The
-    sidecar is keyed by slug; generate.py inlines it into the vocab
-    JSON (adding tokenizer furigana). Idempotent — re-running reconstructs
-    from the drafts.
+    """Merge this level's gate-passing drafts on disk into the kind's sidecar.
+    The sidecar is keyed by slug; generate.py inlines it into the vocab JSON
+    (adding tokenizer furigana).
 
     With `only_slugs=None` (the batch/API lane's usage — cmd_run, cmd_collect,
-    cmd_assemble), this reconstructs the WHOLE sidecar from every draft file on
-    disk. That is only safe when the on-disk drafts are the sidecar's sole
-    source of truth for every slug in this level+kind.
-
-    With `only_slugs` given (the ingest lane's usage — cmd_ingest), only those
-    slugs' entries are (re)written; every other slug's existing entry in the
-    on-disk sidecar is carried through untouched. This is required because a
-    human reviewer may promote a sidecar entry's `review_status` to `reviewed`
-    without that change ever being written back to the (gitignored) per-slug
-    draft file — a full rebuild would silently drop that review work for every
-    slug not just ingested."""
+    cmd_assemble), every draft of this level+kind is (re)written. With
+    `only_slugs` given (the ingest lane's usage — cmd_ingest), only those slugs'
+    entries are. Either way every other entry in the on-disk sidecar is carried
+    through untouched: the file is shared by every level, and a human reviewer
+    may promote an entry's `review_status` to `reviewed` without that change
+    ever being written back to the (gitignored) per-slug draft file."""
     level_dir = os.path.join(DRAFTS_DIR, level, kind)
     drafted = {}
 
@@ -404,11 +399,9 @@ def write_sidecar(level, kind, only_slugs=None):
             }
             drafted[record["slug"]] = {**record["tool_input"], "_meta": meta}
 
-    # A full rebuild rewrites the level's sidecar from scratch, drafts being
-    # its sole source of truth; an ingest merges into it.
-    path = sidecar_path(level, kind)
+    path = sidecar_path(kind)
     entries = {}
-    if only_slugs is not None and os.path.exists(path):
+    if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             entries = json.load(f)
     entries.update(drafted)
@@ -416,7 +409,8 @@ def write_sidecar(level, kind, only_slugs=None):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(f"wrote {len(entries)} {kind} example set(s) to {path}")
+    print(f"wrote {len(drafted)} {level} {kind} example set(s) to {path} "
+          f"({len(entries)} entries in total)")
     print(f"run generate.py --level {level}, then validate-schema + "
           "compile-curriculum from the repo root.")
     return path

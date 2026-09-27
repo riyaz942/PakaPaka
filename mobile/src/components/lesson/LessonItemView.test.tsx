@@ -302,7 +302,7 @@ describe('LessonItemView sections', () => {
         primary_form: '人',
         meaning: 'person',
         mnemonic_text: 'Two legs mid-stride and no head at all: a person.',
-        visual_mnemonic_url: 'radicals/n5/person.webp',
+        visual_mnemonic_url: 'radicals/person.webp',
         sort_order: 1,
       },
     ]);

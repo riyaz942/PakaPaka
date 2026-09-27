@@ -139,7 +139,7 @@ export function saveItem(
     return { ok: false, errors };
   }
 
-  const persisted = persistItemEdit(repoRoot, type, level, slug, currentRaw, updatedRaw);
+  const persisted = persistItemEdit(repoRoot, type, slug, currentRaw, updatedRaw);
   if (!persisted.ok) {
     return persisted;
   }
@@ -182,7 +182,7 @@ export function updateReviewStatus(
     return { ok: false, errors };
   }
 
-  const persisted = persistReviewStatus(repoRoot, type, level, slug, reviewStatus);
+  const persisted = persistReviewStatus(repoRoot, type, slug, reviewStatus);
   if (!persisted.ok) {
     return persisted;
   }
@@ -213,7 +213,7 @@ export function updateReviewStatusBulk(
   const errors: string[] = [];
 
   for (const item of items) {
-    errors.push(...checkReviewStatusTarget(repoRoot, item.type, item.level, item.slug));
+    errors.push(...checkReviewStatusTarget(repoRoot, item.type, item.slug));
   }
   if (errors.length > 0) {
     return { ok: false, errors };
@@ -270,7 +270,7 @@ export function updateReviewStatusBulk(
 
   for (const item of items) {
     const persisted = persistReviewStatus(
-      repoRoot, item.type, item.level, item.slug, reviewStatus,
+      repoRoot, item.type, item.slug, reviewStatus,
     );
     if (!persisted.ok) {
       return { ok: false, errors: persisted.errors };

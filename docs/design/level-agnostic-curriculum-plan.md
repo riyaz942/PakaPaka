@@ -1,7 +1,8 @@
 # Level-agnostic curriculum plan
 
 **Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
-"Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 not started.
+"Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 done 2026-09-27 (see
+"Phase 3 results"). Phase 4 not started.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -381,6 +382,69 @@ Implement **Phase A of the schema migration plan** as written, with these change
 
 - The shipped `n1`–`n5.json` files are **byte-identical** to the phase 2 output.
 - Every radical that had art before still has art. Count the files before and after.
+
+### Phase 3 results (2026-09-27)
+
+**What changed:**
+
+- **Sidecars.** The 10 per-level or per-dataset files are now 4 files, keyed by slug and sorted by
+  slug: `radicals/mnemonics.json` (303 entries), `kanji/mnemonics.json` (469),
+  `vocabulary/mnemonics.json` (1,247), `vocabulary/examples.json` (1,028). Before the merge, 0 slugs
+  collided in each kind. The entries did not change.
+- **Lessons.** All 161 lessons moved from `grammar/lessons/{n5,n4}/` to `grammar/lessons/<slug>.md`
+  (`git mv`, so history follows them).
+- **Radical art.** All 290 files moved from `mobile/assets/radicals/{n5,n4,k}/` to
+  `mobile/assets/radicals/<slug>.webp`. `generate.py` now writes `visual_mnemonic_url` as
+  `radicals/<slug>.webp`, and the schema pattern is `^radicals/[a-z0-9-]+\.webp$`. The asset-map
+  script reads one folder and rejects a subfolder. `radicalImages.ts` is regenerated.
+- **Readers and writers.** `generate.py`, `generate_mnemonics.py`, `generate_examples.py`,
+  `assemble.py` / `generate_grammar_lessons.py`, `reports/kanji_bands.py` (radical prose check)
+  and `audit_shipped.py` (level discovery now globs `n[1-5].json`). `validate-schema`,
+  `compile-curriculum` and the Studio loader skip a file named `mnemonics.json` or
+  `examples.json` (`SIDECAR_FILE_NAMES`). The Studio write-back (`web/server/curriculum/sidecar.ts`)
+  no longer looks up a source in `bands.json`, and its functions no longer take a level.
+- **Writer behavior.** `write_sidecar` (mnemonics and examples) now always merges one level's
+  drafts into the shared file. Before, a full rebuild of vocabulary rewrote its level file from
+  the drafts alone. That is not safe when the file holds every level. Result: an entry with no
+  draft stays in the file, it is not removed.
+- **Docs.** The workflow runbooks in `docs/workflows/`, the 4 triage and simplify prompts, the
+  Studio guide text and README, `curriculum/README.md` and
+  `docs/content/radical-mnemonic-images.md`. The runbook "done" snippets that imported the removed
+  `_source_map` now read the one sidecar. The kanji and radical triage outputs no longer carry a
+  `dataset` field (it only named the sidecar file), and `kanji-chain-check.json` is now one map
+  keyed by slug.
+
+**Checks:**
+
+- Shipped JSON compared with the phase 2 output (`/tmp/level-agnostic-phase2/`): 14 of 19 files
+  are byte-identical. The 5 `radicals/n*.json` files differ only in 296 `visual_mnemonic_url`
+  lines, and each new value is the old value without its level folder. This difference is
+  necessary: the plan moves the art, and the ref names the art path.
+- The compiled seed (version **27**) compared table by table with the phase 2 seed (version 26):
+  every table is identical except `items.visual_mnemonic_url` (the same 296 values) and
+  `curriculum_metadata` (version, date, hash). `id-registry.json` did not change.
+- Art: 290 files before and after. 285 radicals had a ref to an existing file before, and the
+  same 285 have one after (0 lost, 0 gained).
+- `validate-schema` passes (22 files, the sidecars are skipped). Repo-root tests: 81 pass (2 new:
+  a level folder in `visual_mnemonic_url` fails, and a `mnemonics.json` next to the level files
+  is skipped). `mobile/` tests: 2,216 pass in 250 suites. `mobile/` lint: 0 errors, the same
+  1 warning. `web/` lint and type check pass.
+- On a temporary folder, both `write_sidecar` functions merge a new draft and keep an existing
+  reviewed entry. `kanji_bands.load_radicals` finds the same 296 radicals with prose as the old
+  layout. The rewritten kanji triage snippet runs.
+
+**For the maintainer:**
+
+- Old drift, not fixed: 11 radicals have a `visual_mnemonic_url` but no art file, and 5 art files
+  are not named by any radical. The counts are the same as before the move.
+- `curriculum/_build/rename_slugs.py` (phase 2, one-time) still names the old sidecar paths. It is
+  a record of the phase 2 rename and must not run again.
+- `curriculum/_build/reports/kanji-simplify-list.json` is from an older triage run. Its 395 marks
+  still have a `dataset` field. No code reads that field, and the next triage run writes the new
+  shape. The committed `kanji-chain-check.json` is an empty map. A run of the new snippet on the
+  current sidecar marks 37 slugs (the file was not written).
+- Local, gitignored staging under `generate_content/web/` and `drafts/` is still per level. That
+  is correct: it is working state, not content.
 
 ---
 

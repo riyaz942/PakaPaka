@@ -108,7 +108,7 @@ function mnemonicLanes(kind: 'radical' | 'kanji' | 'vocab'): GuideLane[] {
         {
           title: 'Ingest — this is the gate',
           detail:
-            'On pass it merges into the per-level sidecar as `review_status: draft`. On failure nothing is merged and the gate errors are appended to the prompt file: re-paste that rewritten prompt and try again. If an item fights the gate 3+ times, skip it and come back.',
+            'On pass it merges into the sidecar (curriculum/<type>/mnemonics.json) as `review_status: draft`. On failure nothing is merged and the gate errors are appended to the prompt file: re-paste that rewritten prompt and try again. If an item fights the gate 3+ times, skip it and come back.',
           commands: [
             `${PY} -m generate_content.generate_mnemonics ingest --type ${kind} --level ${LEVEL_TOKEN} --slug <slug> --model gemini-web`,
           ],
@@ -346,7 +346,7 @@ export const GUIDE_STAGES: GuideStage[] = [
           {
             title: 'Ingest — this is the gate',
             detail:
-              'On pass it assembles curriculum/grammar/lessons/<level>/<slug>.md as `review_status: draft` and stashes cloze candidates in drafts/. Common failures: a stray out-of-level word, or a fence that disagrees with `example_sentences`.',
+              'On pass it assembles curriculum/grammar/lessons/<slug>.md as `review_status: draft` and stashes cloze candidates in drafts/. Common failures: a stray out-of-level word, or a fence that disagrees with `example_sentences`.',
             commands: [
               `${PY} -m generate_content.generate_grammar_lessons ingest --level ${LEVEL_TOKEN} --slug <slug> --model gemini-web`,
             ],
@@ -481,7 +481,7 @@ export const GUIDE_STAGES: GuideStage[] = [
           {
             title: 'Agent: install',
             detail:
-              'It matches each download to its radical, converts to WebP, installs under mobile/assets/radicals/<source>/ (the dataset that wrote the radical, not its band), regenerates radicalImages.ts and runs the gates.',
+              'It matches each download to its radical, converts to WebP, installs it as mobile/assets/radicals/<slug>.webp, regenerates radicalImages.ts and runs the gates.',
           },
           {
             title: 'You: judge, then re-roll',

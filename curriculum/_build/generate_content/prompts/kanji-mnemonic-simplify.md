@@ -17,7 +17,7 @@ kanji.
 - The chain detail: `curriculum/_build/reports/kanji-chain-check.json` (same
   run — which components are `missing` or `untagged`, whether the `landing`
   word needs its `<kanji>` tag, and the primary reading, per slug)
-- The sidecars: `curriculum/kanji/mnemonics/{n5,n4,k}.json`
+- The sidecar: `curriculum/kanji/mnemonics.json` (every level)
 
 ## Rewriting rules — `meaning` field
 
@@ -105,7 +105,7 @@ different, and each gets its own tag where it naturally falls in the story.
 
 ## Write back into the sidecar
 
-For each **marked** slug, in its dataset's sidecar file:
+For each **marked** slug, in the sidecar file:
 
 - Replace only the fields listed in `fields`. An unlisted field stays
   byte-for-byte identical.
@@ -136,5 +136,5 @@ on a machine without it this step is a no-op — but then never run
 - Regenerate the shipped JSON: from `curriculum/_build` run
   `python generate.py --bands`, then from the repo root
   `npm run validate-schema && npm run compile-curriculum`.
-- Report: how many fields rewritten per dataset, and any slug you could not
+- Report: how many fields rewritten, and any slug you could not
   fix without changing the scene — list those; the maintainer decides.

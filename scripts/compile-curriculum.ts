@@ -13,7 +13,7 @@ import {
   resolveRegistryIds,
   writeIdRegistry,
 } from './id-registry';
-import { validateCurriculum } from './validate-schema';
+import { SIDECAR_FILE_NAMES, validateCurriculum } from './validate-schema';
 
 const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
@@ -318,7 +318,7 @@ function discoverJsonFilesInDir(dir: string): string[] {
   }
   return fs
     .readdirSync(dir)
-    .filter((name) => name.endsWith('.json'))
+    .filter((name) => name.endsWith('.json') && !SIDECAR_FILE_NAMES.has(name))
     .sort()
     .map((name) => path.join(dir, name));
 }
