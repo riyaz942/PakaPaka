@@ -1,0 +1,32 @@
+{
+  "items": {
+    "next_id": 8,
+    "ids": {
+      "kanji:n5-ichi": 2,
+      "grammar:desu": 3,
+      "radical:ichi": 4,
+      "vocabulary:ichi-v": 5,
+      "grammar:ja-nai": 7
+    },
+    "retired": {
+      "vocabulary:removed-word": 6
+    },
+    "aliases": {}
+  },
+  "passages": {
+    "next_id": 5,
+    "ids": {
+      "passage:test-passage": 4
+    },
+    "retired": {},
+    "aliases": {}
+  },
+  "passage_questions": {
+    "next_id": 10,
+    "ids": {
+      "test-passage#0": 9
+    },
+    "retired": {},
+    "aliases": {}
+  }
+}

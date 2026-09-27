@@ -72,7 +72,9 @@ npm run validate-schema
 npm run compile-curriculum
 ```
 
-Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`).
+Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`). Add
+`-- --update-registry` when the change adds or removes an item, passage or question (see
+[Item ID assignment](#item-id-assignment)).
 
 ## Radical mnemonic images (FR37b)
 
@@ -84,7 +86,22 @@ See **[docs/content/radical-mnemonic-images.md](../docs/content/radical-mnemonic
 
 ## Item ID assignment
 
-Compile assigns integer `items.id` deterministically: sort by JLPT level (`N5` → `N4` → `N3` → `N2` → `N1`), then `item_type` (`radical` → `kanji` → `vocabulary` → `grammar`), then `slug` ascending within each level/type group. Adding a new level appends IDs after existing levels without renumbering prior items.
+`user.db` stores progress by id, so an id never changes after it first ships. Compile reads every id from [`id-registry.json`](id-registry.json), which has one section for each id space:
+
+| Section | Key | Table |
+| --- | --- | --- |
+| `items` | `<item_type>:<slug>` | `items.id` |
+| `passages` | `passage:<slug>` | `reading_passages.id` |
+| `passage_questions` | `<passage-slug>#<question index>` | `passage_questions.id` |
+
+Moving an item to a different level, re-sorting, or adding items elsewhere does not change an id. Each section has `next_id`, `ids`, `retired` and `aliases`.
+
+- **Add an item, passage or question:** run `npm run compile-curriculum -- --update-registry`, then commit the registry. The new key gets `next_id`.
+- **Remove one:** the same command moves its key to `retired`. The id is never given to a different key.
+- **Rename a slug after launch:** add `"<old key>": "<new key>"` to `aliases`. The new key keeps the old id.
+- **Never edit an id by hand.**
+
+Without `--update-registry`, the compile fails when a key has no id, or when a registry key is not in the build. So CI cannot make or drop an id without a person seeing it.
 
 ## Content hash
 

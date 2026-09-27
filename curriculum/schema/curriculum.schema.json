@@ -338,7 +338,7 @@
     "readingPassage": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["title", "body"],
+      "required": ["slug", "title", "body"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
@@ -408,6 +408,36 @@
           "items": { "$ref": "#/$defs/dependencyEdge" },
           "minItems": 1
         }
+      }
+    },
+    "idRegistrySection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["next_id", "ids", "retired", "aliases"],
+      "properties": {
+        "next_id": { "type": "integer", "minimum": 1 },
+        "ids": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "retired": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "aliases": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "idRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items", "passages", "passage_questions"],
+      "properties": {
+        "items": { "$ref": "#/$defs/idRegistrySection" },
+        "passages": { "$ref": "#/$defs/idRegistrySection" },
+        "passage_questions": { "$ref": "#/$defs/idRegistrySection" }
       }
     }
   }

@@ -645,6 +645,9 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
                 question["prompt_furigana"] = prompt_furigana
             questions.append(question)
         passage = {
+            # The passage's key in curriculum/id-registry.json: it must never
+            # change once shipped, or the passage gets a new id.
+            "slug": p["slug"],
             "title": p["title"],
             "body": p["body"],
             "sort_order": i,

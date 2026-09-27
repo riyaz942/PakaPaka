@@ -353,10 +353,25 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     fs.mkdirSync(path.join(tempDir, 'readings'));
     fs.writeFileSync(
       path.join(tempDir, 'readings', 'n5.json'),
-      JSON.stringify({ jlpt_level: 'N5', passages: [passage] }),
+      JSON.stringify({ jlpt_level: 'N5', passages: [{ slug: 'test', ...passage }] }),
     );
     return tempDir;
   }
+
+  it('rejects a passage without a slug', () => {
+    const tempDir = writeTempReadingsDir({ slug: undefined, title: 'Test', body: '一です。' });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.errors.some((e) => e.includes("must have required property 'slug'"))).toBe(
+          true,
+        );
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
 
   it('accepts passage english_translation, slug lists, and word_count', () => {
     const tempDir = writeTempReadingsDir({

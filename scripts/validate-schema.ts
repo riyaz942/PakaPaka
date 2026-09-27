@@ -12,6 +12,9 @@ export function resolveValidatorKey(relativePath: string): string {
   if (relativePath === 'metadata.json') {
     return 'metadata';
   }
+  if (relativePath === 'id-registry.json') {
+    return 'idRegistry';
+  }
   if (relativePath.startsWith('radicals/')) {
     return 'radicalsFile';
   }

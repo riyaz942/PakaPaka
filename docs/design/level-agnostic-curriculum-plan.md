@@ -1,7 +1,7 @@
 # Level-agnostic curriculum plan
 
-**Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 not started. No code or
-content has changed yet.
+**Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
+"Phase 1 results"). Phase 2 not started.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -190,6 +190,50 @@ Implement **Phase A of the schema migration plan** as written, with these change
 - Add one N5 item in the middle of the sort order and compile again. Only the new row gets a new id.
 - Move one item to a different level and compile again. No id changes.
 - A compile that meets an unknown key without `--update-registry` fails.
+
+### Phase 1 results (2026-09-27)
+
+**What changed:**
+
+- `curriculum/id-registry.json` has **3 sections**, one for each id space that `user.db` stores:
+  `items` (`<type>:<slug>`), `passages` (`passage:<slug>`) and `passage_questions`
+  (`<passage-slug>#<question index>`). Each section has the Phase A shape (`next_id`, `ids`,
+  `retired`, `aliases`). This is one registry with sections, not a second registry.
+- `scripts/seed-id-registry.ts` (one-off) created the registry from the phase 0 build (version 22):
+  12,735 items (`next_id` 12736), 60 passages (61), 213 questions (214).
+- `scripts/id-registry.ts` holds the id logic. `assignItemIds` in `compile-curriculum.ts` uses it,
+  and passages and questions now get their ids from it too (before, they got insert-order ids).
+- Without `--update-registry`, the compile fails on a key with no id **and** on a registry key that
+  is not in the build. With the flag, a new key gets `next_id`, a removed key moves to `retired`, a
+  retired key that comes back gets its old id, and the registry is written after a successful
+  compile. `validate-schema` checks the registry shape.
+- Every passage has a permanent `slug`: its existing seed slug from
+  `generate_content/passages/<level>.json`. It is in `n5_readings.py` / `n4_readings.py`,
+  `generate.py` emits it, and the schema now requires it. The wire-in runbook
+  (`docs/content/phase-4-reading-passage-tooling.md`) no longer strips it.
+- `curriculum.db` DDL did not change. The shipped `readings/*.json` changed by the 60 slug lines
+  only.
+
+**Checks:**
+
+- The compiled seed (version **23**) compared with the phase 0 baseline: every item id, level and
+  `sort_order` is the same, every passage id and question id is the same, and the link tables
+  (relationships, look-alikes, examples, spans, passage links) are identical.
+- On a copy of `curriculum/`: an N5 radical added in the middle of the sort order changed 0 ids,
+  and only the new row got a new id (12736). Moving `vocabulary:watashi` and the hand-written
+  `kanji:n5-ichi` to N4 changed 0 ids and needed no flag. A compile with an unknown key and no
+  flag failed.
+- Repo-root tests: 73 pass. `validate-schema` passes (22 files). The generator reproduces the
+  committed JSON. `mobile/` tests: 2,216 pass in 250 suites. `mobile/` lint: 0 errors, the same 1
+  warning as before.
+
+**For later phases:**
+
+- Phase 2 rewrites the `items` keys in `id-registry.json` and keeps the ids, as planned.
+- Curriculum Studio (`web/`) runs `compile-curriculum` without the flag, so a Studio compile fails
+  after it adds an item. Run the compile with `--update-registry` from the terminal for that.
+- Backups still store passage and question results by raw id (`backup.types.ts`). The ids are now
+  stable, so this is safe. Phase 5 does not need to change it.
 
 ---
 
