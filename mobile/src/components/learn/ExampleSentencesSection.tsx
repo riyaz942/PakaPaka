@@ -2,6 +2,7 @@ import { router, type Href } from 'expo-router';
 import React, { useMemo } from 'react';
 import { type AccessibilityActionEvent, Pressable, Text, View } from 'react-native';
 
+import { ContentPlaceholderNotice } from '@/components/common/ContentPlaceholderNotice';
 import { FuriganaText, isWordFuriganaVisible } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
@@ -21,11 +22,19 @@ type ExampleSentencesSectionProps = {
   sentences: ExampleSentence[];
   /** Prefix for per-sentence testIDs, e.g. `kanji-example`. */
   testIDPrefix: string;
+  /**
+   * Shown in place of the section when `sentences` is empty. Opt-in: most
+   * item types render nothing until examples exist, but vocabulary and
+   * grammar detail screens want a "not authored yet" notice instead of
+   * silence.
+   */
+  emptyPlaceholder?: string;
 };
 
 /**
  * Example sentences, shared by the lesson "Examples & links" section and the
- * details scroll so the rows are authored once. Empty set renders nothing.
+ * details scroll so the rows are authored once. Empty set renders nothing,
+ * unless `emptyPlaceholder` is given.
  *
  * Linked vocabulary (Plan 11.6) is pressable via tap and long-press (NFR29),
  * located by the compiled spans shipped with the sentence (14.1a) — every
@@ -35,12 +44,25 @@ type ExampleSentencesSectionProps = {
 export function ExampleSentencesSection({
   sentences,
   testIDPrefix,
+  emptyPlaceholder,
 }: ExampleSentencesSectionProps) {
   const { mode: furiganaMode, knownKanji, modeForItem, setOverride } = useFuriganaPreference();
   const hrefFor = useItemHref();
 
   if (sentences.length === 0) {
-    return null;
+    if (!emptyPlaceholder) {
+      return null;
+    }
+
+    return (
+      <View className="mt-space-md">
+        <SectionHeading label="Examples" />
+        <ContentPlaceholderNotice
+          label={emptyPlaceholder}
+          testID={`${testIDPrefix}-placeholder`}
+        />
+      </View>
+    );
   }
 
   return (
