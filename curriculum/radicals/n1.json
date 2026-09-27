@@ -287,12 +287,12 @@
       "slug": "takai",
       "primary_form": "高",
       "meaning": "tall",
-      "mnemonic_text": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
-      "image_prompt": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
+      "mnemonic_text": "This radical combines <part form=\"亠\">lid</part>, <part form=\"口\">mouth</part> and <part form=\"冋\">prairie</part>. A tower stands on a wide <part form=\"冋\">prairie</part>. It has a <part form=\"亠\">lid</part> for a roof and a window shaped like a <part form=\"口\">mouth</part>. It is very <radical form=\"高\">tall</radical>.",
+      "image_prompt": "A slender tower stands alone on a wide, flat prairie of grass. A pointed lid sits on top as its roof. Just below the roof is one square window shaped like an open mouth. Wider rooms stack below it, and the tower rises into the clouds, very <radical>tall</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/n5/takai.webp",
       "sort_order": 48
@@ -367,12 +367,12 @@
       "slug": "and-yet",
       "primary_form": "而",
       "meaning": "and yet",
-      "mnemonic_text": "A flat bar sits atop 而 like a stiff upper lip, with four strokes drooping below it as a long beard someone strokes while stalling for a comeback. Each slow stroke buys one more second before the words finally arrive: <radical>and yet</radical>.",
-      "image_prompt": "A flat bar sits atop 而 like a stiff upper lip, with four strokes drooping below it as a long beard someone strokes while stalling for a comeback. Each slow stroke buys one more second before the words finally arrive: <radical>and yet</radical>.",
+      "mnemonic_text": "This radical looks like a flat line with a long beard hanging below it. An old man strokes his beard while he thinks of an answer. Then he says, \"<radical form=\"而\">and yet</radical>...\"",
+      "image_prompt": "An old man with a flat, stiff upper lip and a long beard of four strands hanging straight down. He slowly strokes the beard with one hand, eyes up, thinking of a reply. A speech bubble begins to form with the words <radical>and yet</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/and-yet.webp",
       "sort_order": 60
@@ -447,10 +447,10 @@
       "slug": "put-together",
       "primary_form": "并",
       "meaning": "put together",
-      "mnemonic_text": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
-      "image_prompt": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
+      "mnemonic_text": "This radical looks like two posts standing on the same two boards. The boards hold both posts as one piece. The posts are <radical form=\"并\">put together</radical>.",
+      "image_prompt": "Two wooden posts stand upright side by side. Two long flat boards run under and across both of them, nailed to each post so they form one solid frame. A carpenter with a hammer nods at the two posts, now <radical>put together</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
         "review_status": "draft"
       },
@@ -683,12 +683,12 @@
       "slug": "kuro",
       "primary_form": "黒",
       "meaning": "black",
-      "mnemonic_text": "Picture an old cast-iron stove: the grid at the top is the fuel packed inside, and the four dots along the bottom are the flames licking up underneath it. Burn it long enough and the whole thing is caked in soot — that's why this shape means <radical>black</radical>.",
-      "image_prompt": "Picture an old cast-iron stove: the grid at the top is the fuel packed inside, and the four dots along the bottom are the flames licking up underneath it. Burn it long enough and the whole thing is caked in soot — that's why this shape means <radical>black</radical>.",
+      "mnemonic_text": "This radical is made of <part form=\"里\">village</part> and <part form=\"灬\">fire (bottom)</part>. A big <part form=\"灬\">fire</part> burns under a small <part form=\"里\">village</part>. The smoke turns every house <radical form=\"黒\">black</radical>.",
+      "image_prompt": "A small village of houses with fields sits in the upper part of the picture. Right below it, four big flames of a fire burn. Thick smoke rises through the village, and every house and roof is covered in soot, completely <radical>black</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/n5/kuro.webp",
       "sort_order": 110
@@ -877,12 +877,12 @@
       "slug": "hakogamae",
       "primary_form": "匚",
       "meaning": "box on its side",
-      "mnemonic_text": "Three strokes: a lid across the top, a floor across the bottom, and one wall joining them down the left. The right-hand side is simply missing. The whole container has been tipped over so its open mouth faces you, and now it is a <radical>box on its side</radical>, waiting for something to be slid straight in.",
-      "image_prompt": "Three strokes: a lid across the top, a floor across the bottom, and one wall joining them down the left. The right-hand side is simply missing. The whole container has been tipped over so its open mouth faces you, and now it is a <radical>box on its side</radical>, waiting for something to be slid straight in.",
+      "mnemonic_text": "This radical looks like a box with a top, a bottom and a left wall, but no right side. The open side faces you. It is a <radical form=\"匚\">box on its side</radical>.",
+      "image_prompt": "A wooden box tipped over so it lies on its side. Its top, bottom and left wall are visible, and the open right side faces the viewer. A hand slides a small parcel straight into it. It is a <radical>box on its side</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/hakogamae.webp",
       "sort_order": 141
@@ -897,10 +897,10 @@
       "slug": "goods",
       "primary_form": "品",
       "meaning": "goods",
-      "mnemonic_text": "Look at 品 from the front and you see three square crates in a stack. One box sits on top. Two more sit side by side beneath it. Together they're one delivery of <radical>goods</radical>.",
-      "image_prompt": "Trace 品 stroke by stroke: one square crate sits alone on top, and two more identical square crates sit side by side directly beneath it, stacked like a delivery pallet outside a shop's back door. Three sealed boxes, boxed and ready to ship — that whole stack is <radical>goods</radical>.",
+      "mnemonic_text": "This radical looks like three boxes in a stack: one on top and two side by side below. A stack of boxes like that at a shop is full of <radical form=\"品\">goods</radical>.",
+      "image_prompt": "Outside the back door of a shop, three square cardboard crates are stacked: one on top, two side by side below it. A delivery worker leans on the stack, checking a list. The boxes are full of <radical>goods</radical> for sale.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
         "review_status": "draft"
       },
@@ -1547,12 +1547,12 @@
       "slug": "wind",
       "primary_form": "風",
       "meaning": "wind",
-      "mnemonic_text": "風's outer stroke curves out then hooks under like a curtain caught mid-billow, the whole panel bulging and snapping taut in one direction — exactly the shape a sheet takes on a clothesline when a sudden gust of <radical>wind</radical> grabs it.",
-      "image_prompt": "風's outer stroke curves out then hooks under like a curtain caught mid-billow, the whole panel bulging and snapping taut in one direction — exactly the shape a sheet takes on a clothesline when a sudden gust of <radical>wind</radical> grabs it.",
+      "mnemonic_text": "This radical combines <part form=\"几\">table</part>, <part form=\"丿\">slash</part> and <part form=\"虫\">insect</part>. An <part form=\"虫\">insect</part> hides under a <part form=\"几\">table</part>. A strong gust hits in one quick <part form=\"丿\">slash</part>. It is the <radical form=\"風\">wind</radical>.",
+      "image_prompt": "A small table stands outdoors. A beetle hides underneath, gripping the floor with all six legs. A strong gust cuts across the top of the table in one diagonal slash, blowing leaves past. The beetle holds on against the <radical>wind</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/wind.webp",
       "sort_order": 250

@@ -107,12 +107,12 @@
       "slug": "beginning",
       "primary_form": "元",
       "meaning": "beginning",
-      "mnemonic_text": "Two short strokes stacked at the top flare like a catching flame, and the two legs splayed below are the matchstick still smoking from the strike — the exact instant a fire, and everything after it, gets its <radical>beginning</radical>.",
-      "image_prompt": "Two short strokes stacked at the top flare like a catching flame, and the two legs splayed below are the matchstick still smoking from the strike — the exact instant a fire, and everything after it, gets its <radical>beginning</radical>.",
+      "mnemonic_text": "This radical is a combination of <part form=\"二\">two</part> and <part form=\"儿\">human legs</part>. A baby stands on its little <part form=\"儿\">human legs</part> and takes its first <part form=\"二\">two</part> steps. That is the <radical form=\"元\">beginning</radical> of walking.",
+      "image_prompt": "A chubby baby in a diaper stands on wobbly little legs in a living room, arms out for balance. Two small footprints mark the floor behind it, its very first two steps. Proud parents clap in the background. It is the <radical>beginning</radical> of walking.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/beginning.webp",
       "sort_order": 18
@@ -163,10 +163,10 @@
       "slug": "measuring-box",
       "primary_form": "升",
       "meaning": "measuring box",
-      "mnemonic_text": "Two uprights stand either side of a bar, with one stroke cut across to mark the fill line partway up. Pour past that mark and it is no longer the amount anybody agreed on. A container marked that way is a <radical>measuring box</radical>.",
-      "image_prompt": "Two uprights stand either side of a bar, with one stroke cut across to mark the fill line partway up. Pour past that mark and it is no longer the amount anybody agreed on. A container marked that way is a <radical>measuring box</radical>.",
+      "mnemonic_text": "This radical puts together a <part form=\"丿\">slash</part> and <part form=\"廾\">two hands</part>. <part form=\"廾\">Two hands</part> hold a wooden box full of rice. A stick makes one <part form=\"丿\">slash</part> across the top to level it. Now it is a <radical form=\"升\">measuring box</radical>.",
+      "image_prompt": "Two hands hold a small square wooden box heaped with rice. A flat stick sweeps in one diagonal slash across the top, knocking the extra rice off so it is exactly level. Loose grains fall onto the table. It is a <radical>measuring box</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
         "review_status": "draft"
       },
@@ -375,12 +375,12 @@
       "slug": "uo",
       "primary_form": "魚",
       "meaning": "fish",
-      "mnemonic_text": "A flat wedge caps the top like a hat. The boxy grid below presses scales into the body. The strokes at the tail flare and curl — a <radical>fish</radical>.",
-      "image_prompt": "A flat wedge caps the top like a chef's hat clamped on too tight. Below it, a boxy grid presses down as if a waffle iron branded scales straight into the body. At the tail, four short strokes flare and curl against the hot pan, sizzling into a stubborn <radical>fish</radical>.",
+      "mnemonic_text": "This radical is made of <part form=\"𠂊\">crouch</part>, <part form=\"田\">rice field</part> and <part form=\"灬\">fire (bottom)</part>. A man <part form=\"𠂊\">crouches</part> in a wet <part form=\"田\">rice field</part> and grabs his dinner. He cooks it over a <part form=\"灬\">fire</part>. It is a <radical form=\"魚\">fish</radical>.",
+      "image_prompt": "At the top, a man crouches low at the edge of a flooded rice field, grabbing a wriggling fish from the water. The square rice field fills the middle. At the bottom, a small campfire with four flames grills the <radical>fish</radical> on a stick.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/n4/uo.webp",
       "sort_order": 60
@@ -497,12 +497,12 @@
       "slug": "extend",
       "primary_form": "隶",
       "meaning": "extend",
-      "mnemonic_text": "隶 draws a hand at full stretch, fingers hooked forward, closing on a tail that whips away just below it. That final desperate lunge, arm straining past its limit to close the gap, is <radical>extend</radical>.",
-      "image_prompt": "隶 draws a hand at full stretch, fingers hooked forward, closing on a tail that whips away just below it. That final desperate lunge, arm straining past its limit to close the gap, is <radical>extend</radical>.",
+      "mnemonic_text": "This radical looks like a hand at the top reaching down for a tail below. The tail slips away, so the arm stretches as far as it can. That is <radical form=\"隶\">extend</radical>.",
+      "image_prompt": "A hand at the top of the picture reaches down, fingers hooked, arm stretched to its limit. Just below, the tail of an animal whips away out of reach. The arm strains longer and longer to <radical>extend</radical> and catch it.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/extend.webp",
       "sort_order": 79
@@ -601,12 +601,12 @@
       "slug": "amai",
       "primary_form": "甘",
       "meaning": "sweet",
-      "mnemonic_text": "Two uprights with a bar across them and one short stroke floating in the middle of the gap. That stroke is a mouthful being held on the tongue, right between the teeth, and nobody is in a hurry to swallow it. You only hold food in your mouth like that when it is <radical>sweet</radical>.",
-      "image_prompt": "Two uprights with a bar across them and one short stroke floating in the middle of the gap. That stroke is a mouthful being held on the tongue, right between the teeth, and nobody is in a hurry to swallow it. You only hold food in your mouth like that when it is <radical>sweet</radical>.",
+      "mnemonic_text": "This radical looks like an open mouth with a piece of candy held on the tongue. You keep food in your mouth like that only when it is <radical form=\"甘\">sweet</radical>.",
+      "image_prompt": "A wide open mouth seen from the front, square in shape, with upper and lower teeth. A small piece of candy rests on the tongue in the middle, held there and not swallowed. The person's eyes are closed in pleasure because it is so <radical>sweet</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/amai.webp",
       "sort_order": 95
