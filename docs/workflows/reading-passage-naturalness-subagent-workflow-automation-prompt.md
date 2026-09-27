@@ -66,7 +66,7 @@ and grammar window**. This is the part that makes the lane work, and it is not
 optional.
 
 An outside review of seed 12 got the diagnosis right — 箱が待っています is wrong —
-and proposed 置いてあります, which is `n4-tearu`, N4 grammar, off the list at every
+and proposed 置いてあります, which is `tearu`, N4 grammar, off the list at every
 N5 seed. It also proposed the counter 二着, which is in neither level. Both
 corrections were unusable. A reviewer that cannot see the window can only
 complain; a reviewer that can see it can fix.

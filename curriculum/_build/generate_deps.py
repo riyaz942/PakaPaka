@@ -276,7 +276,6 @@ def build_edges(levels):
 
     kanji_by_suffix = {}
     for k in kanji:
-        # slug is like "n5-ichi"; suffix after first dash-level prefix
         kanji_by_suffix[k["slug"]] = k
 
     edges = []

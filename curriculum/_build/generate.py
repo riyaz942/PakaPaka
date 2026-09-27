@@ -40,9 +40,9 @@ from generate_content.mnemonic_context import reading_composition  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
-#: radical/kanji items. compile-curriculum resolves and hard-fails on any
-#: slug that is not a taught radical/kanji.
-_SIMILAR_SLUGS = build_similar_map()
+#: radical/kanji items, keyed and valued by "<kind>:<slug>". compile-curriculum
+#: resolves and hard-fails on any ref that is not a taught radical/kanji.
+_SIMILAR_REFS = build_similar_map()
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
@@ -220,8 +220,8 @@ def _build_radical_items(slug_prefix, radical_entries):
         }
         if r.get("mnemonic"):
             item["mnemonic_text"] = r["mnemonic"]
-        if r["slug"] in _SIMILAR_SLUGS:
-            item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
+        if f"radical:{r['slug']}" in _SIMILAR_REFS:
+            item["visually_similar_slugs"] = _SIMILAR_REFS[f"radical:{r['slug']}"]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
             # A radical carries two texts for one scene: `image_prompt` is the
@@ -282,7 +282,7 @@ def _build_kanji_items(slug_prefix, kanji_entries):
             accepted.append({"answer_type": "reading", "answer_text": primary_reading})
         for extra in k.get("extra_meanings", []):
             accepted.append({"answer_type": "meaning", "answer_text": extra})
-        slug = k.get("slug") or f"{slug_prefix}-{k['suffix']}"
+        slug = k["slug"]
         item = {
             "slug": slug,
             "primary_form": k["char"],
@@ -294,8 +294,8 @@ def _build_kanji_items(slug_prefix, kanji_entries):
             item["mnemonic_text"] = k["mnemonic"]
         item["readings"] = readings
         item["accepted_answers"] = accepted
-        if slug in _SIMILAR_SLUGS:
-            item["visually_similar_slugs"] = _SIMILAR_SLUGS[slug]
+        if f"kanji:{slug}" in _SIMILAR_REFS:
+            item["visually_similar_slugs"] = _SIMILAR_REFS[f"kanji:{slug}"]
         mnemonic = mnemonics.get(slug)
         if mnemonic:
             # Phase 2b split mnemonics (docs/content/content-pipeline-plan.md 2b): the
@@ -487,7 +487,8 @@ def _load_lesson(level_slug, slug, known_readings):
     return meta, _annotate_lesson_markdown(body, known_readings, label)
 
 
-def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None):
+def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
+                         lower_grammar_slugs=()):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
@@ -553,7 +554,11 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                 item["caution_notes"] = meta["caution_notes"]
             related = meta.get("related_grammar_slugs") or []
             if related:
-                grammar_slugs = {entry["slug"] for entry in grammar_entries}
+                # A lesson may point at an earlier level's point: N4 lessons
+                # relate to the N5 points their N4 duplicates were merged into.
+                grammar_slugs = {entry["slug"] for entry in grammar_entries} | set(
+                    lower_grammar_slugs
+                )
                 for rs in related:
                     if rs == g["slug"] or rs not in grammar_slugs:
                         errors.append(
@@ -704,8 +709,10 @@ def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
 
 def build_n4_grammar(vocab_forms, known_readings=None):
     from n4_grammar import N4_GRAMMAR
+    from n5_grammar import N5_GRAMMAR
 
-    return _build_grammar_level("N4", N4_GRAMMAR, vocab_forms, known_readings)
+    return _build_grammar_level("N4", N4_GRAMMAR, vocab_forms, known_readings,
+                                {g["slug"] for g in N5_GRAMMAR})
 
 
 def build_n4_readings(known_readings=None, vocab_forms=None):
@@ -723,10 +730,9 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 # hand-authored in n4_kanji.py can sit in the N5 band, and one derived from
 # KANJIDIC in the N3 band.
 #
-# Slugs do not follow. `n5-en` keeps its prefix wherever it lands, because the
-# mnemonic sidecars, the bundled radical art and `user.db` are all keyed by it,
-# and because a slug that named a level would be a second, stale copy of the
-# label the band already carries.
+# Slugs do not follow and name no level: `yen` is `yen` in whichever band it
+# lands, because `user.db` and the id registry are keyed by it, and a slug that
+# named a level would be a second, stale copy of the label the band carries.
 # ---------------------------------------------------------------------------
 
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")

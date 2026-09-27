@@ -1,76 +1,104 @@
 ---
-generator_model: gemini-web
+generator_model: sonnet-5
 prompt_version: 2
 review_status: reviewed
 caution_notes:
-  - "Never use だ before でしょう; attach it directly to nouns and na-adjectives."
-  - "A flat intonation means 'probably', while a rising intonation means 'right?'."
+  - "でしょう shrinks to だろう in casual speech, but だろう only fits people you'd already speak plainly to — don't use it with a teacher or stranger."
+  - "Rising-intonation でしょう？ works like a tag question, checking for agreement, not stating an uncertain guess like falling-intonation でしょう does."
+  - "でしょう states your own read on a situation; when you're passing along information from a source, によると is the right tool instead."
+  - "Drop だ before attaching でしょう to a noun or na-adjective — the copula doesn't stack on top of the ending."
 related_grammar_slugs:
+  - "kamoshirenai"
   - "darou"
   - "janai-desu-ka"
 ---
 
-You're looking at your textbook, and there's a big test tomorrow. You want to tell your classmate, "The test will probably be difficult." You can't just say "The test is difficult" because you haven't taken it yet and don't know for sure. You need a way to express a guess or probability without sounding like you know everything as a hard fact.
-
-Enter `でしょう`. It's the polite way to say "probably" or "I think."
-
-## How it attaches
-
-`でしょう` acts a lot like `です`, sitting at the very end of your sentence. But instead of stating a fact, it softens the statement into a polite guess. To use it, you attach it directly to the **plain form** of whatever word comes right before it.
+You're looking out the window at a sky full of dark clouds. You don't have a weather report open, you're not psychic, but you do have an opinion — and you have to decide whether to grab an umbrella on the way out. Japanese has an ending built exactly for this moment: stating something you believe without claiming you're sure of it.
 
 ```jp
-明日、彼は来るでしょう。
-そのカメラは高いでしょう。
+明日は雨でしょう。
 ```
-*Tomorrow, he will probably come.*
-*That camera is probably expensive.*
+*Tomorrow it'll probably rain.*
 
-Here is the one rule that trips everyone up the first week: when you use a noun or a na-adjective, do not use `だ`. Just stick `でしょう` straight onto the word itself.
+That's でしょう. Tack it onto the end of a sentence and a flat statement turns into an educated read on the situation — confident enough to say out loud, honest enough to admit you could be wrong.
+
+## How it works
+
+でしょう attaches to the plain form of whatever you're making a call about — the same plain form you already use in casual sentences, not the polite ます／です form. For a verb or an i-adjective, that part is easy: the plain form already ends the way it needs to, so でしょう just goes straight on afterward.
 
 ```jp
-この人は先生でしょう。
+彼はもう忙しいでしょう。
 ```
-*This person is probably a teacher.*
+*He's probably busy already.*
 
-> Never say `先生だでしょう`. The `だ` is dropped completely. `でしょう` replaces it!
+彼 hasn't said anything, you haven't called him — you're just going off what you already know about his week.
 
-## Two flavors: "Probably" and "Right?"
-
-`でしょう` does double duty depending entirely on your tone of voice.
-
-If you say it with a flat or slightly falling pitch, it means "probably" or "I guess." You are making a polite prediction.
-
-But if you angle your voice up at the end—like you're asking a question—it transforms into a way of seeking agreement. It becomes "..., right?" or "..., isn't it?".
+Nouns and na-adjectives look almost the same, with one catch. On their own they'd need だ (the plain form of です) to close the sentence. でしょう doesn't stack on top of that だ; it takes its spot instead.
 
 ```jp
-昨日の映画は面白かったでしょう？
-これはあなたの傘でしょう？
+静かだ → 静かでしょう
 ```
-*Yesterday's movie was interesting, right?*
-*This is your umbrella, isn't it?*
 
-## Softening a question with でしょうか
-
-Sometimes, asking a direct question with `ですか` feels a little too blunt. If you add `か` to `でしょう`, you get `でしょうか`—a beautifully soft, tentative way to ask a question. It turns "Will it rain?" into "I wonder if it will rain?"
+Drop the だ, add でしょう, and you're done — no double copula, no leftover piece sitting in the middle.
 
 ```jp
-明日は雨でしょうか。
-誰が来るでしょうか。
+この部屋は静かでしょう。
 ```
-*I wonder if it will rain tomorrow?*
-*Who do you think will come?*
+*This room is probably quiet.*
 
-## でしょう vs だろう
+Same move with a plain noun: 雨 (rain) doesn't take だ before でしょう either, which is exactly what happened in the very first example above.
 
-You already know `だろう`. These two are exact twins, just dressed for different occasions. `だろう` is the casual, plain-speech version. `でしょう` is the polite, `です/ます` level version.
+でしょう also shows up teamed with 多分 (probably) at the front of the sentence. The two aren't redundant — 多分 flags that a guess is coming, and でしょう is the ending that follows through on it.
 
 ```jp
-あのレストランはおいしいだろう。
-あのレストランはおいしいでしょう。
+多分明日は雪でしょう。
 ```
-*That restaurant is probably delicious. (Casual, talking to a close friend)*
-*That restaurant is probably delicious. (Polite, talking to a coworker)*
+*Tomorrow will probably be snow.*
 
-Even though `でしょう` attaches to plain forms (like `来る` or `おいしい`), adding it makes the entire sentence polite.
+## Rules and exceptions
 
-Keep this "seeking agreement" idea in your back pocket. Soon, you'll learn `じゃないですか`, which does a very similar job of asking "isn't it?", but with a bit more of a playful push!
+でしょう is a read, not a report. It has to come from something you're piecing together yourself — what you can see, what you know, what seems likely — not something someone told you directly. Save that job for another pattern; more on that below.
+
+It also undersells confidence you actually have, so don't reach for it out of habit. If the rain has already started outside your window, just say 雨です. Adding でしょう when you're not actually guessing at anything reads as strangely unsure of yourself.
+
+There's a spoken trick worth knowing before you hear it and get thrown off, too. Say でしょう with your voice rising at the end, and it stops working as a guess. It becomes a check for agreement — closer to "isn't it?" than "I think so."
+
+```jp
+今日は寒いでしょう？
+```
+*It's cold today, isn't it?*
+
+> With rising intonation, でしょう isn't hedging anymore — it's fishing for a nod back from whoever's listening.
+
+Falling intonation, same exact sentence, and you're back to a plain guess. Context and tone carry the whole difference; the words on the page never change.
+
+## Casual speech
+
+Among friends, でしょう shrinks down to だろう — same job, plainer register, the kind of ending that fits with 僕 or 君 far more comfortably than with a stranger or a teacher.
+
+```jp
+彼女は先生だろう。
+```
+*She's probably a teacher.*
+
+だろう also pairs naturally with ね when you're thinking out loud and inviting whoever's next to you to agree, rather than stating a fact.
+
+```jp
+明日は忙しいだろうね。
+```
+*I bet tomorrow will be busy.*
+
+Keep でしょう for anyone you'd address politely, and save だろう for people you'd already speak plainly to — the swap is entirely about who's listening, not about how sure you are.
+
+## Contrast
+
+You've already got によると for passing along someone else's information — Noun + によると, "according to X." That's a report: the information came from somewhere outside your own head.
+
+```jp
+新聞によると明日は雨です。
+```
+*According to the newspaper, tomorrow is rain.*
+
+でしょう is the opposite move. No source, no article, nobody told you anything — you looked at the sky, or you know the season, or you just have a hunch, and でしょう marks the sentence as coming from you. Swap によると for でしょう in that same sentence and the meaning shifts from "here's what I read" to "here's what I think," even though the topic never changed.
+
+Reach for でしょう whenever you believe something but can't fully back it up — it lets you commit to an answer without overstating how sure you are. Hold onto that not-quite-certain feeling: かもしれない sits right next to でしょう on the confidence scale, for guesses that are even shakier than this one.

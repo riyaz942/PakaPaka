@@ -139,8 +139,8 @@
       "meaning": "enclosure",
       "mnemonic_text": "This radical is a big closed square, like four walls with no door. You walk all the way around and find no way out. It is an <radical form=\"囗\">enclosure</radical>.",
       "visually_similar_slugs": [
-        "keigamae",
-        "kuchi"
+        "radical:keigamae",
+        "radical:kuchi"
       ],
       "description": "囗 is a closed square drawn big enough to surround whatever sits inside it. 冂 is the same frame with its bottom left open. 口 is the same closed square kept small, standing as a mouth rather than wrapping anything.",
       "image_prompt": "Four solid walls form one big, unbroken square, with no door and no window. You could walk all the way around the walls and never find a way in or out. The closed square of walls is an <radical>enclosure</radical>.",
@@ -158,7 +158,7 @@
       "meaning": "mouth",
       "mnemonic_text": "This radical is a small square, like a mouth open wide in a big yawn. The four lines are the lips around the open hole. It is a <radical form=\"口\">mouth</radical>.",
       "visually_similar_slugs": [
-        "kunigamae"
+        "radical:kunigamae"
       ],
       "description": "口 and 囗 are drawn the same way, as a closed square. Size and job separate them: 口 stays small and stands on its own as the mouth, while 囗 is drawn large enough to wrap around other parts and always has something inside it.",
       "image_prompt": "A small, perfect square made of four straight strokes frames a wide-open mouth caught in the middle of a big yawn. The square edges are the lips, and inside is the dark, open hole of the <radical>mouth</radical>.",
@@ -233,7 +233,7 @@
       "meaning": "eight / split",
       "mnemonic_text": "This radical looks like a log split by an axe. The two strokes are the halves falling apart. The shape means split, and also <radical form=\"八\">eight</radical>.",
       "visually_similar_slugs": [
-        "hito"
+        "radical:hito"
       ],
       "description": "八 and 人 are the same two falling strokes, apart or joined. 八 keeps them separate, both leaning away from a gap at the top. 人 brings them together into a single sharp peak. An open top means 八.",
       "image_prompt": "A single log stands on a chopping block just after an axe has come down on it. The two halves fall apart, leaning away from each other, with a clean gap at the top where the blade split them. The fresh split marks <radical>eight</radical>.",
@@ -359,7 +359,7 @@
       "meaning": "white",
       "mnemonic_text": "This radical looks like a drop of milk with a small spark of light on top. The spark is the short stroke. The drop is bright, pure <radical form=\"白\">white</radical>.",
       "visually_similar_slugs": [
-        "hi-sun"
+        "radical:hi-sun"
       ],
       "description": "白 is 日 with one extra stroke: a small flick sitting on top of the box. Everything below it is identical, so that little cap is the only thing to check.",
       "image_prompt": "A single drop of milk shaped like a tall box, with a tiny slanted spark of light flicking off its top where it catches the sun. The small stroke above the box is that shine. The whole drop glows the brightest, purest <radical>white</radical>.",
@@ -405,8 +405,8 @@
       "meaning": "wide box",
       "mnemonic_text": "This radical looks like a flat roof with two tall walls and no floor. Those three sides make an open <radical form=\"冂\">wide box</radical>.",
       "visually_similar_slugs": [
-        "wakanmuri",
-        "kunigamae"
+        "radical:wakanmuri",
+        "radical:kunigamae"
       ],
       "description": "Three open frames, told apart by their walls. 冂 drops two tall walls from a flat top and leaves the bottom open. 冖 has the same top but only tiny stubs instead of walls. 囗 closes the bottom as well, making a complete square.",
       "image_prompt": "A flat roof with two tall walls dropping straight down from its ends, open at the bottom like a doorway with no floor. The three sides form the top, left and right of a <radical>wide box</radical> that is open toward the ground.",
@@ -424,10 +424,10 @@
       "meaning": "sun / day",
       "mnemonic_text": "This radical looks like a tall window with one bar across the middle. Behind the glass, the sun rises to start a new <radical form=\"日\">day</radical>.",
       "visually_similar_slugs": [
-        "iwaku",
-        "me",
-        "shiro",
-        "ta"
+        "radical:iwaku",
+        "radical:me",
+        "radical:shiro",
+        "radical:ta"
       ],
       "description": "Check the shape of the box and count what is inside it. 日 is taller than wide with one bar across the middle. 曰 has the same single bar but sits squat and wide. 目 carries two bars, 田 adds a vertical to make a full cross, and 白 is 日 with a small flick on top.",
       "image_prompt": "A tall, narrow window with one bar across the middle, dividing the glass into two squares. Behind the glass, a bright blazing sun climbs up into the morning sky to start a new <radical>day</radical>.",
@@ -753,8 +753,8 @@
       "meaning": "dry / shield",
       "mnemonic_text": "This radical looks like a wooden shield: one long plank with two boards nailed across it. It sat in the sun so long that it is cracked and <radical form=\"干\">dry</radical>.",
       "visually_similar_slugs": [
-        "n5-sen",
-        "ushi"
+        "kanji:thousand",
+        "radical:ushi"
       ],
       "description": "Look at the top stroke and count the bars. 干 starts with a flat horizontal and has two of them. 千 starts with a slanting flick and keeps only one bar beneath it. 牛 also starts with a flick but keeps two bars, the upper one short and pushed left.",
       "image_prompt": "A wooden shield made of one long vertical plank with two crossbars nailed across it, the top one longer. It lies out in hot, bright sun until the wood is pale, cracked and completely <radical>dry</radical>.",
@@ -842,8 +842,8 @@
       "meaning": "person",
       "mnemonic_text": "This radical looks like two legs walking: one leg stands still and the other steps forward. Two slanting lines make one walking <radical form=\"人\">person</radical>.",
       "visually_similar_slugs": [
-        "ireru",
-        "hachigashira"
+        "radical:ireru",
+        "radical:hachigashira"
       ],
       "description": "All three are two falling strokes. 人 joins them at one clean peak. 入 slides the short stroke under the long one so the top overhangs instead of meeting. 八 never lets them touch at all.",
       "image_prompt": "Two slanting strokes are two legs mid-stride, joined at the top: one leg planted, one swinging forward, the whole body balanced on that walking step. A single <radical>person</radical> striding across the page.",
@@ -889,8 +889,8 @@
       "meaning": "rice field",
       "mnemonic_text": "This radical looks like a field seen from above. Two paths cross in the middle and cut it into four squares. Those green squares are a <radical form=\"田\">rice field</radical>.",
       "visually_similar_slugs": [
-        "hi-sun",
-        "me"
+        "radical:hi-sun",
+        "radical:me"
       ],
       "description": "田 is the only one of the three with a vertical inside the box, splitting it into four. 日 has a single horizontal bar and 目 has two, but neither is ever divided down the middle.",
       "image_prompt": "Seen from above, a big square of farmland. Two narrow dirt paths cross in the middle, cutting it into four neat green squares of flooded young rice. A farmer stands at the edge of the <radical>rice field</radical>.",
@@ -922,8 +922,8 @@
       "meaning": "eye",
       "mnemonic_text": "This radical looks like an eye turned on its side. The box is the eyelid, and the two lines inside are the pupil. It is an <radical form=\"目\">eye</radical> staring back at you.",
       "visually_similar_slugs": [
-        "hi-sun",
-        "ta"
+        "radical:hi-sun",
+        "radical:ta"
       ],
       "description": "Count what is inside the box. 目 is tall with two horizontal bars. 日 has one. 田 has one horizontal and one vertical crossing into a full grid.",
       "image_prompt": "An eye turned upright on its end: the tall outer box is the eyelid framing everything, and the two lines inside hold the pupil between them, staring straight back at the viewer. One vertical <radical>eye</radical>.",
@@ -1123,7 +1123,7 @@
       "meaning": "cover",
       "mnemonic_text": "This radical looks like a blanket thrown over a sleeping cat. The flat top lies across, and the two short sides tuck in the edges. Nothing pokes out. It is a <radical form=\"冖\">cover</radical>.",
       "visually_similar_slugs": [
-        "keigamae"
+        "radical:keigamae"
       ],
       "description": "冂 is tall and open — its two vertical sides run most of the character's height, like a doorway frame with nothing under it. 冖's sides are short, barely drooping below the top stroke at all, more lid than frame.",
       "image_prompt": "A cat curled up asleep on a wooden porch, completely hidden under a thrown blanket. The blanket lies flat across the top, and its two ends droop down only a little on each side, just enough to tuck in the edges. Not even the tail pokes out. A snug <radical>cover</radical>.",
@@ -1267,7 +1267,7 @@
       "meaning": "rice",
       "mnemonic_text": "This radical looks like one grain in the middle with husks flying off in every direction, up and down. A farmer has just hit it hard. It is a grain of <radical form=\"米\">rice</radical>.",
       "visually_similar_slugs": [
-        "n5-kuru-rai"
+        "kanji:come"
       ],
       "description": "来 is 米 with one extra horizontal laid across the top. Count the horizontal strokes: 米 has one, 来 has two.",
       "image_prompt": "A single grain sits in the centre while its husks fly off in every direction: the top strokes spray upward, the bottom strokes kick downward. It is bursting apart the moment it is threshed. That little explosion is a grain of <radical>rice</radical>.",
@@ -1313,7 +1313,7 @@
       "meaning": "enter",
       "mnemonic_text": "This radical looks like a person leaning forward, one leg stepping ahead of the other, as they duck under a low doorway. They are about to <radical form=\"入\">enter</radical>.",
       "visually_similar_slugs": [
-        "hito"
+        "radical:hito"
       ],
       "description": "入 and 人 use the same two strokes. In 人 they meet at the very top. In 入 the short left stroke begins partway down the long one, leaving a small overhang above it rather than a point.",
       "image_prompt": "A person leans forward mid-stride, one leg swinging ahead of the other, ducking their head under a very low doorway. Their body forms the two strokes of the shape. They are just about to step inside and <radical>enter</radical>.",
@@ -1345,8 +1345,8 @@
       "meaning": "cliff / shelter",
       "mnemonic_text": "This radical looks like a roof built into the side of a cliff. The dot is the top of the rock, and the roof slopes down over open air with no floor. It is a small <radical form=\"广\">shelter</radical>.",
       "visually_similar_slugs": [
-        "yamaidare",
-        "shikabane"
+        "radical:yamaidare",
+        "radical:shikabane"
       ],
       "description": "广 is a bare lean-to: dot, beam, sweeping eave, open underneath. 疒 draws the same roof but adds two extra strokes tucked inside, like something lying under the eave. 尸 drops the dot and folds into one bent stroke, like a seated figure's back and leg — no roof.",
       "image_prompt": "A tall rock cliff. A single dot marks the clifftop, a short beam sticks out from the rock, and a wide roof sweeps down diagonally over open air. It is a lean-to nailed straight into the rock face, with nothing underneath for a floor: a small <radical>shelter</radical>.",
@@ -1378,7 +1378,7 @@
       "meaning": "shell / money",
       "mnemonic_text": "This radical combines <part form=\"目\">eye</part> and <part form=\"八\">eight</part>. A big clam shell with an <part form=\"目\">eye</part> on top tips open, and <part form=\"八\">eight</part> gold coins spill out. Long ago, shells like this were used as <radical form=\"貝\">money</radical>.",
       "visually_similar_slugs": [
-        "miru"
+        "radical:miru"
       ],
       "description": "Both stand a box on two legs, and the legs decide it. 貝 finishes with two short straight strokes dropping away like little feet. 見 finishes with a straight left leg and a right leg that curves out and hooks upward.",
       "image_prompt": "A big clam shell with one large cartoon eye on its ridged top stands on two short legs. The shell tips open, and exactly eight shiny gold coins spill out onto the ground below. The eye looks proudly at the coins, because long ago shells were used as <radical>money</radical>.",
@@ -1452,7 +1452,7 @@
       "meaning": "lack / yawn",
       "mnemonic_text": "This radical looks like a tired person slumped sideways in a chair. His mouth is wide open in a big yawn. He does not have the energy to sit up. He shows a <radical form=\"欠\">lack</radical> of energy.",
       "visually_similar_slugs": [
-        "bokuzukuri"
+        "radical:bokuzukuri"
       ],
       "description": "欠 starts with a slash and then a short stroke that bends down like a small roof, then ends in two strokes spreading into a peak. 攵 has a straight, flat bar under its opening slash, with no bend. That bent roof versus the flat bar is the difference.",
       "image_prompt": "A tired person slumped sideways in a chair, the upper body leaning to one side like the top stroke, legs sprawled out below. The mouth is wide open in a huge, jaw-stretching yawn. The person is too worn out to sit up and shows a <radical>lack</radical> of energy.",
@@ -1694,7 +1694,7 @@
       "meaning": "father",
       "mnemonic_text": "This radical looks like a man with two arms up and two legs spread wide. He stands at the barbecue, holds up the tongs, and says dinner is ready. He is <radical form=\"父\">father</radical>.",
       "visually_similar_slugs": [
-        "bokuzukuri"
+        "radical:bokuzukuri"
       ],
       "description": "父 and 攵 both open with a short slash, but they part company underneath. 父 crosses its two lower strokes into a clear X. 攵 lays a flat horizontal bar under the slash first, and 父 has no horizontal stroke anywhere.",
       "image_prompt": "A man stands over a barbecue grill. Two short strokes at the top are his raised arms, holding up tongs. Below, two long strokes cross as his legs spread wide. He smiles proudly and calls that dinner is ready. He is <radical>father</radical>.",
@@ -1796,8 +1796,8 @@
       "meaning": "cow",
       "mnemonic_text": "This radical looks like an animal seen from the front. The slanted top stroke is one horn, and the two bars below are its shoulders and back. It is a <radical form=\"牛\">cow</radical>.",
       "visually_similar_slugs": [
-        "n5-hidariuma",
-        "mannaka"
+        "kanji:noon",
+        "radical:mannaka"
       ],
       "description": "All three are bars crossed by a vertical. 干 starts flat, with no slash on top. 牛 and 午 both start with a slanting flick, but 牛's vertical pushes up above the upper bar while 午's stops at it.",
       "image_prompt": "An animal seen from the front. A slanted stroke on top is a single horn tilting on its head. Two horizontal bars below are its strong shoulders and back, with a vertical line through the middle as its body. It is a <radical>cow</radical>.",
@@ -1857,7 +1857,7 @@
       "meaning": "sickness",
       "mnemonic_text": "This radical looks like a slanted roof with two small marks by the wall. Under the roof, a man shakes so hard that his thermometer snaps in two. This house is full of <radical form=\"疒\">sickness</radical>.",
       "visually_similar_slugs": [
-        "madare"
+        "radical:madare"
       ],
       "description": "Both have a dot over a long roof and a wall slanting down on the left. This radical adds two short ticks on the left side of that wall. 广 (cliff / shelter) has no ticks.",
       "image_prompt": "A small house drawn with a dot on top, a long flat roof, and a wall slanting down on the left, with two short tick marks beside that wall. Under the roof, a pale man in a blanket shivers so hard that the thermometer in his hand snaps in two. The whole room shows <radical>sickness</radical>.",
@@ -1959,8 +1959,8 @@
       "meaning": "corpse / body",
       "mnemonic_text": "This radical looks like a person lying face down with one leg kicked out. He fell asleep on the floor at a party hours ago. The guests step around the <radical form=\"尸\">body</radical>.",
       "visually_similar_slugs": [
-        "tobira",
-        "madare"
+        "radical:tobira",
+        "radical:madare"
       ],
       "description": "戸 (door) is the same shape with one extra short stroke lying across the top. 广 (cliff / shelter) has a dot on top and only a roof line with a wall under it; it has no closed box.",
       "image_prompt": "A party in a Japanese room with tatami floor. A man lies face down on the tatami, bent over, one leg kicked out to the side. He has not moved for hours. Guests in party clothes carefully step around the sprawled <radical>body</radical>.",
@@ -2216,7 +2216,7 @@
       "meaning": "say",
       "mnemonic_text": "This radical looks like a wide open mouth with a flat tongue across the middle. The tongue is moving, pushing out a word. The mouth is about to <radical form=\"曰\">say</radical> something.",
       "visually_similar_slugs": [
-        "hi-sun"
+        "radical:hi-sun"
       ],
       "description": "曰 and 日 are the same box with one bar inside, told apart by proportion. 曰 is squat, wider than it is tall, and its inner bar often stops short of the right wall. 日 is clearly taller than it is wide.",
       "image_prompt": "A wide, squat open mouth seen from the front, wider than it is tall. One flat tongue lies across the middle, moving mid-word. A small speech bubble starts to come out. The mouth is about to <radical>say</radical> something.",

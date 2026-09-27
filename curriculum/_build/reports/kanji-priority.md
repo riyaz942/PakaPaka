@@ -25,28 +25,28 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 
 | # | Kanji | Meaning | Level | Band pos. | Words | Components missing |
 | ---: | --- | --- | --- | ---: | ---: | --- |
-| 1 | 乗 `k-ride` | ride | N4 | 105 | 1 | — |
-| 2 | 洋 `k-ocean` | ocean | N4 | 114 | 1 | — |
-| 3 | 菜 `k-vegetable` | vegetable | N4 | 117 | 1 | — |
-| 4 | 品 `k-goods` | goods | N4 | 119 | 1 | 品 |
-| 5 | 研 `k-polish` | polish | N4 | 129 | 1 | — |
-| 6 | 究 `k-research` | research | N4 | 130 | 1 | — |
-| 7 | 民 `k-people` | people | N4 | 136 | 0 | — |
-| 8 | 開 `k-open` | open | N4 | 137 | 0 | — |
-| 9 | 代 `k-substitute` | substitute | N4 | 138 | 0 | — |
-| 10 | 区 `k-ward` | ward | N4 | 141 | 0 | — |
-| 11 | 県 `k-prefecture` | prefecture | N4 | 142 | 0 | — |
-| 12 | 進 `k-advance` | advance | N4 | 143 | 0 | — |
-| 13 | 産 `k-products` | products | N4 | 144 | 0 | — |
-| 14 | 有 `k-possess` | possess | N4 | 147 | 0 | — |
-| 15 | 建 `k-build` | build | N4 | 148 | 0 | — |
-| 16 | 起 `k-rouse` | rouse | N4 | 149 | 0 | — |
-| 17 | 銀 `k-silver` | silver | N4 | 151 | 0 | — |
-| 18 | 英 `k-england` | England | N4 | 153 | 0 | — |
-| 19 | 低 `k-lower` | lower | N4 | 155 | 0 | — |
-| 20 | 写 `k-copy` | copy | N4 | 157 | 0 | — |
-| 21 | 短 `k-short` | short | N4 | 165 | 0 | — |
-| 22 | 堂 `k-public-chamber` | public chamber | N4 | 169 | 0 | — |
-| 23 | 暑 `k-sultry` | sultry | N4 | 173 | 0 | — |
-| 24 | 寒 `k-cold` | cold | N4 | 174 | 0 | 井 |
-| 25 | 漢 `k-sino` | Sino- | N4 | 175 | 0 | — |
+| 1 | 乗 `ride` | ride | N4 | 105 | 1 | — |
+| 2 | 洋 `ocean` | ocean | N4 | 114 | 1 | — |
+| 3 | 菜 `vegetable` | vegetable | N4 | 117 | 1 | — |
+| 4 | 品 `goods` | goods | N4 | 119 | 1 | 品 |
+| 5 | 研 `polish` | polish | N4 | 129 | 1 | — |
+| 6 | 究 `research` | research | N4 | 130 | 1 | — |
+| 7 | 民 `people` | people | N4 | 136 | 0 | — |
+| 8 | 開 `open` | open | N4 | 137 | 0 | — |
+| 9 | 代 `substitute` | substitute | N4 | 138 | 0 | — |
+| 10 | 区 `ward` | ward | N4 | 141 | 0 | — |
+| 11 | 県 `prefecture` | prefecture | N4 | 142 | 0 | — |
+| 12 | 進 `advance` | advance | N4 | 143 | 0 | — |
+| 13 | 産 `products` | products | N4 | 144 | 0 | — |
+| 14 | 有 `possess` | possess | N4 | 147 | 0 | — |
+| 15 | 建 `build` | build | N4 | 148 | 0 | — |
+| 16 | 起 `rouse` | rouse | N4 | 149 | 0 | — |
+| 17 | 銀 `silver` | silver | N4 | 151 | 0 | — |
+| 18 | 英 `england` | England | N4 | 153 | 0 | — |
+| 19 | 低 `lower` | lower | N4 | 155 | 0 | — |
+| 20 | 写 `copy` | copy | N4 | 157 | 0 | — |
+| 21 | 短 `short` | short | N4 | 165 | 0 | — |
+| 22 | 堂 `public-chamber` | public chamber | N4 | 169 | 0 | — |
+| 23 | 暑 `sultry` | sultry | N4 | 173 | 0 | — |
+| 24 | 寒 `cold` | cold | N4 | 174 | 0 | 井 |
+| 25 | 漢 `sino` | Sino- | N4 | 175 | 0 | — |

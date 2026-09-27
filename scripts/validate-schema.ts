@@ -147,6 +147,7 @@ export function runFuriganaChecks(
       }[];
     };
     for (const item of file.items) {
+      checkLevelFreeSlug(`${relative} vocabulary:${item.slug}`, item.slug, errors);
       checkVocabularyReading(`${relative} vocabulary:${item.slug}`, item, errors);
       checkFuriganaField(
         `${relative} vocabulary:${item.slug}`,
@@ -173,7 +174,8 @@ export function runFuriganaChecks(
       items: { slug: string; visually_similar_slugs?: string[] }[];
     };
     for (const item of file.items) {
-      checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, item, errors);
+      checkLevelFreeSlug(`${relative} kanji:${item.slug}`, item.slug, errors);
+      checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, 'kanji', item, errors);
     }
     return;
   }
@@ -183,7 +185,8 @@ export function runFuriganaChecks(
       items: { slug: string; visually_similar_slugs?: string[] }[];
     };
     for (const item of file.items) {
-      checkVisuallySimilarSlugs(`${relative} radical:${item.slug}`, item, errors);
+      checkLevelFreeSlug(`${relative} radical:${item.slug}`, item.slug, errors);
+      checkVisuallySimilarSlugs(`${relative} radical:${item.slug}`, 'radical', item, errors);
     }
     return;
   }
@@ -199,6 +202,7 @@ export function runFuriganaChecks(
       }[];
     };
     for (const item of file.items) {
+      checkLevelFreeSlug(`${relative} grammar:${item.slug}`, item.slug, errors);
       for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
         checkFuriganaField(
           `${relative} grammar:${item.slug} example[${index}]`,
@@ -230,6 +234,9 @@ export function runFuriganaChecks(
     };
     for (const [index, passage] of file.passages.entries()) {
       const label = passage.slug ?? passage.title ?? `passage[${index}]`;
+      if (passage.slug) {
+        checkLevelFreeSlug(`${relative} passage:${label}`, passage.slug, errors);
+      }
       checkFuriganaField(
         `${relative} passage:${label}`,
         passage.body,
@@ -270,14 +277,25 @@ function checkVocabularyReading(
   }
 }
 
+const LEVEL_PREFIX_RE = /^(n[1-5]|k)-/;
+
+/** A slug is permanent and an item can change level, so a slug must not name a
+ * level (docs/design/level-agnostic-curriculum-plan.md). */
+function checkLevelFreeSlug(label: string, slug: string, errors: string[]): void {
+  if (LEVEL_PREFIX_RE.test(slug)) {
+    errors.push(`${label}: slug must not start with a level prefix (n1-–n5-, k-)`);
+  }
+}
+
 /** Rev 1 look-alikes: an item must not list itself. Cross-file slug existence
  * is enforced at compile time when the links are resolved to item ids. */
 function checkVisuallySimilarSlugs(
   label: string,
+  kind: 'radical' | 'kanji',
   item: { slug: string; visually_similar_slugs?: string[] },
   errors: string[],
 ): void {
-  if ((item.visually_similar_slugs ?? []).includes(item.slug)) {
+  if ((item.visually_similar_slugs ?? []).includes(`${kind}:${item.slug}`)) {
     errors.push(`${label}: visually_similar_slugs must not reference the item itself`);
   }
 }

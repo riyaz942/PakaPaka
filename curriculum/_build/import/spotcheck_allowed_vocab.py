@@ -45,14 +45,21 @@ def load_items(kind, level):
         return json.load(f)["items"]
 
 
+def ref(item_type, slug):
+    """"<kind>:<slug>": items of different kinds may share a slug."""
+    return f"{item_type}:{slug}"
+
+
 def load_requires_parents():
-    """{child_slug: [parent_slug, ...]} for relationship_type == 'requires'."""
+    """{child_ref: [parent_ref, ...]} for relationship_type == 'requires'."""
     with open(os.path.join(CURRICULUM_DIR, "dependencies", "graph.json"), encoding="utf-8") as f:
         edges = json.load(f)["edges"]
     parents = {}
     for e in edges:
         if e["relationship_type"] == "requires":
-            parents.setdefault(e["to_slug"], []).append(e["from_slug"])
+            parents.setdefault(ref(e["to_type"], e["to_slug"]), []).append(
+                ref(e["from_type"], e["from_slug"])
+            )
     return parents
 
 
@@ -67,9 +74,9 @@ def plan_lesson(candidates, started, parents_by_slug, learned, size):
 
     buckets = {item_type: [] for item_type, _quota in ROUND_QUOTAS}
     for c in candidates:
-        if c["slug"] in started:
+        if c["ref"] in started:
             continue
-        parents = parents_by_slug.get(c["slug"], [])
+        parents = parents_by_slug.get(c["ref"], [])
         if any(p not in learned for p in parents):
             continue
         buckets[c["type"]].append(c)
@@ -136,6 +143,7 @@ def simulate(lesson_size):
         ]:
             for item in load_items(kind, level):
                 candidates.append({
+                    "ref": ref(item_type, item["slug"]),
                     "slug": item["slug"],
                     "type": item_type,
                     "sort_order": item["sort_order"],
@@ -143,6 +151,7 @@ def simulate(lesson_size):
                     "level": level,
                 })
         candidates_by_level[level] = candidates
+    level_of = {c["ref"]: c["level"] for cs in candidates_by_level.values() for c in cs}
 
     learned = set()
     started = set()
@@ -165,18 +174,18 @@ def simulate(lesson_size):
                 n4_started = True
             elif n4_started:
                 missing_at_n5 = [
-                    p for p in parents_by_slug.get(c["slug"], []) if p.startswith("n4-")
+                    p for p in parents_by_slug.get(c["ref"], []) if level_of.get(p) == "n4"
                 ]
                 deferred.append({**c, "n4_parents": missing_at_n5})
             order.append(c)
-            started.add(c["slug"])
-            learned.add(c["slug"])
+            started.add(c["ref"])
+            learned.add(c["ref"])
 
     stuck = []
     for level in LEVELS:
         for c in candidates_by_level[level]:
-            if c["slug"] not in started:
-                missing = [p for p in parents_by_slug.get(c["slug"], []) if p not in learned]
+            if c["ref"] not in started:
+                missing = [p for p in parents_by_slug.get(c["ref"], []) if p not in learned]
                 stuck.append({**c, "missing_parents": missing})
 
     return order, deferred, stuck
@@ -184,7 +193,7 @@ def simulate(lesson_size):
 
 def check_grammar_points(order):
     """For each grammar point, verify its vocabulary_slugs are unlocked first."""
-    position = {c["slug"]: i for i, c in enumerate(order)}
+    position = {c["ref"]: i for i, c in enumerate(order)}
     vocab_before = []
     seen_vocab = set()
     for c in order:
@@ -196,9 +205,9 @@ def check_grammar_points(order):
     for level in LEVELS:
         for g in load_items("grammar", level):
             slug = g["slug"]
-            if slug not in position:
+            if ref("grammar", slug) not in position:
                 continue  # reported separately as stuck
-            pos = position[slug]
+            pos = position[ref("grammar", slug)]
             allowed = vocab_before[pos]
             linked = g.get("vocabulary_slugs", [])
             missing = [v for v in linked if v not in allowed]

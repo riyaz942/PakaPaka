@@ -1,128 +1,93 @@
 ---
-generator_model: claude-opus-4-8
+generator_model: sonnet-5
 prompt_version: 2
 review_status: reviewed
 caution_notes:
-  - "Use たことがある for life experience, not for something you just did — 'I ate breakfast this morning' is 食べました, not 食べたことがあります."
-  - "Negate the ある (ありません / ない), never the front verb; the verb stays in casual past."
-  - "In casual speech the polite tail drops to ある/ない and が is often omitted (行ったことある)."
+  - "ことがある only attaches to a verb's plain past (た-form) — putting it on the dictionary form instead changes the meaning to an occasional habit, not a past experience."
+  - "Use ことがある for experience in general, not to narrate one specific known event from last week — plain past alone tells that kind of story."
+  - "In casual speech が can drop and あります can shrink to ある, but the underlying ことがある structure stays the same."
+  - "つもり points forward to an intention and ことがある points backward to an experience — they can never substitute for each other."
 related_grammar_slugs:
   - "te-iru"
   - "tari-tari"
 ---
 
-You're at a party and someone mentions they just got back from Japan. You want to say "Oh, I've been to Japan too!" — not "I'm going," not "I went yesterday," but the bigger thing: *this is part of my life experience.* Japanese has a dedicated shape for exactly that, and it's built from parts you already own.
-
-Here's the move:
+Your friend just got back from a trip and asks if you've ever eaten sushi. Not "do you eat sushi" — "have you ever, at any point in your life, eaten it." English handles this with "have" plus a past participle. Japanese handles it with a little noun, こと (the word that turns a whole action into "a thing" you can talk about), sitting after a verb in its past form, followed by ある (to exist). Literally: "the thing of having eaten exists." That's the whole idea behind ことがある.
 
 ```jp
-私は日本に行ったことがあります。
+すしを食べたことがありますか。
 ```
 
-*I have been to Japan.*
-
-That last chunk, ことがあります, is the whole trick. Literally it's saying "the fact of having gone exists" — and once you hear it that way, it stops feeling like a weird idiom and starts feeling logical.
+*Have you ever eaten sushi?*
 
 ## How it works
 
-You take a verb, put it in its plain past form (the た-form, the casual "did" version), and then bolt on ことがある.
-
-The recipe is always the same:
+The recipe is simple: take a verb, put it in its plain past (た-form), and add ことがある after it.
 
 ```jp
-食べる → 食べた → 食べたことがある
+話す → 話した
 ```
 
-*eat → ate → have eaten (before)*
-
-Let's break down that tail. こと is a nominalizer — a little word that turns a whole verb phrase into a *thing* you can talk about. So 食べた ("ate") becomes 食べたこと ("the experience of having eaten"). Then が marks it as the subject, and ある means "exists." Put together: "the experience of having eaten exists." That's your "I have eaten before."
-
-So the two halves you're managing are the た-form on the left and the fixed ことがある on the right. If your た-form is right, you're done.
+食べる becomes 食べた, 行く becomes 行った, 乗る becomes 乗った — whatever past form you already know, that's the piece that slots in front of こと. The ある at the end conjugates like the plain "to exist" verb you already know: あります in polite speech, ない in the negative, あった if you're describing a past state of "having had that experience" (rare, but it shows up).
 
 ```jp
-私はあの映画を見たことがあります。
+日本語を勉強したことがあります。
 ```
 
-*I have seen that movie before.*
+*I have studied Japanese before.*
+
+Notice what's *not* changing: the main verb stays frozen in its plain past form no matter how polite the sentence around it gets. You're not conjugating 食べる for politeness — you're conjugating ある. That's the part that carries です/ます, and it's the part that turns negative when you want "never."
 
 ```jp
-彼はお酒を飲んだことがあります。
+いいえ、食べたことがありません。
 ```
 
-*He has drunk alcohol before.*
-
-Notice the polite ending lives all the way at the end: あります for polite, ある for plain. The verb in front stays in casual past no matter how polite you're being — that's normal, and it trips people up the first week. The politeness of the whole sentence is decided by that final ある / あります, not by the た-form.
-
-To ask about experience, just add か, same as any polite question:
+*No, I've never eaten it.*
 
 ```jp
-日本の料理を食べたことがありますか。
+飛行機に乗ったことがあります。
 ```
 
-*Have you ever eaten Japanese food?*
+*I've been on a plane before.*
+
+That last one is worth sitting with. In English you might say "I've flown before" or "I've been on a plane," and neither maps cleanly onto Japanese word order — but ことがある doesn't care about your English phrasing. It only asks one question: has this specific action, this specific verb, ever happened to you at least once? One time counts. A hundred times counts. The pattern is blind to frequency; it just confirms the experience exists somewhere in your past.
 
 ## Rules and exceptions
 
-The big one: this pattern is about *life experience*, not about "one specific time in the recent past." If you did something yesterday, you use plain past (食べた), not this. Save ことがある for "at some point in my life, this has happened."
-
-> Don't use たことがある for things you literally just did or do routinely. "I ate breakfast this morning" is 朝ご飯を食べました, not 食べたことがあります — the experience frame would sound like you're marveling that breakfast has ever occurred in your life.
-
-To say you *haven't* ever done something, you make the ある negative — turn あります into ありません (or ある into ない in plain speech). The verb in front stays exactly the same.
+The biggest trap is reaching for ことがある when you actually mean "I did X yesterday" or "I did X once, at a specific known time." ことがある is for experience in the abstract — "at some point, ever" — not for narrating a specific past event. If your friend asks "what did you do last weekend," answering with a lifetime-experience statement sounds like you're dodging the question with a resume bullet point instead of just telling the story. For a one-off specific event, plain た-form alone does the job: 猫と一緒に泳ぎました.
 
 ```jp
-私はまだこの魚を食べたことがありません。
+猫と一緒に泳いだことがあります。
 ```
 
-*I have never eaten this fish yet.*
+*I've swum together with a cat before.*
 
-A common wrong guess is to negate the verb instead of ある — learners write things like `食べないことがあります`, which means something totally different ("there are times I don't eat"). Keep the verb positive and past; move the negation to the very end.
+That sentence, said flatly, describes a fact about your life history — somewhere, at some point, a cat was involved in your swimming. It doesn't say when, doesn't say how many times, and doesn't say whether it was on purpose.
 
-> The negative goes on ある, never on the front verb. 食べたことがありません = "have never eaten." `食べなかったことがある` is a real but rare and confusing shape — as a beginner, don't reach for it.
+> Don't drop ことがある onto a dictionary-form verb expecting the same meaning. `食べることがある` is grammatical, but it means something completely different — "it sometimes happens that I eat [this]," a statement about habits, not history. Past tense + ことがある = experience. Dictionary form + ことがある = occasional occurrence. Same skeleton, opposite job, and mixing them up is one of the most common beginner slips with this pattern.
+
+Another edge worth knowing: because ある is the verb doing all the conjugating, questions form exactly the way you'd expect — swap ます for ますか, or drop the polite ending entirely in casual speech and just raise your voice at the end.
+
+```jp
+山に登ったことがありますか。
+```
+
+*Have you ever climbed a mountain?*
 
 ## Casual speech
 
-In relaxed conversation, two things happen. First, the polite tail drops to plain: あります becomes ある, ありません becomes ない. Second — and this is the one you'll hear constantly — the が simply gets dropped.
-
-```jp
-私は日本に行ったことがある。
-```
-
-*I've been to Japan.*
-
-Drop the が and you get the everyday spoken version:
-
-```jp
-私は日本に行ったことある。
-```
-
-*I've been to Japan. (casual)*
-
-Both are fine in casual speech; the が-less one just sounds more like talking than writing. For the negative, ない does the same job: 見たことない means "never seen it." When you're writing or being polite, keep the が and use あります.
+In relaxed conversation, が often just disappears: ことがある becomes ことある, said quickly, almost like one word. あります shrinks the same way informal verbs always do — あります becomes ある, ありません becomes ない. So a casual friend asking about your sushi history might say すし食べたことある? instead of the full すしを食べたことがありますか. Same question, same structure underneath, just worn down the way frequently used phrases always wear down in speech.
 
 ## Contrast
 
-The closest thing you already know is plain ている — the ongoing-state pattern (Verb-て + いる). It's worth lining these up because both can touch the past, but they point in opposite directions.
-
-ている tells you about a *current* state or an action in progress right now:
+You've already met つもり for talking about the future — 日本に行くつもりです, "I intend to go to Japan." ことがある lives in the opposite direction entirely: it only ever looks backward.
 
 ```jp
-彼は今ご飯を食べています。
+日本に行くつもりです。
 ```
 
-*He is eating a meal right now.*
+*I intend to go to Japan.*
 
-たことがある tells you about a *past experience* that colors the present:
+Swap the tense and the verb form and the sentence flips its whole orientation. つもり sits on a dictionary-form verb and points forward, toward a plan that hasn't happened yet. ことがある sits on a た-form verb and points backward, toward something that's already settled into your history. Neither one can do the other's job — you can't use つもり to report an experience you already had, and you can't use ことがある to state an intention. If you're ever unsure which one you need, ask yourself: is this pointing at tomorrow, or at a memory?
 
-```jp
-彼はこの料理を食べたことがあります。
-```
-
-*He has eaten this dish before.*
-
-Swap one for the other and the meaning flips completely: 食べています is "eating now," 食べたことがあります is "has eaten at some point in life." One is a live camera, the other is a résumé line.
-
-It's also worth separating this from the plain past you already use. 見た is "saw (a specific time)"; 見たことがある is "have seen (ever)." If a friend asks どの映画を見た — "which movie did you watch?" — they mean last night. If they ask あの映画を見たことがある, they mean "in your whole life, ever?"
-
-Hold onto the こと nominalizer here — that trick of turning a verb into a thing shows up again soon, and the た-form muscle you're building will pay off directly when we meet たり〜たりする for listing actions.
-
-Recap: verb in casual past + ことがある = "have done it before." Negate the ある, not the verb, and drop the が when you're being casual.
+Hold onto this shape, too — you're about to meet ことにする, which reuses the same こと (turning an action into "a thing") but glues it to a completely different verb, and lands on "I've decided to." Same building block, new direction.

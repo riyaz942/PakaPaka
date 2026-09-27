@@ -70,7 +70,7 @@ kanji or radical character that is not a taught component of this kanji.
 
 ## Worked example
 
-The marked original (`k-tooth`, meaning — component 歯 “tooth” present but
+The marked original (`tooth`, meaning — component 歯 “tooth” present but
 untagged, no `<kanji>` landing tag, and two clause-stacked sentences):
 
 > See the whole character as one wide gear-wheel rim, its edge cut into a ring
@@ -94,7 +94,7 @@ satisfy the gate — the tagged span must contain the taught word itself. This
 example passes the chain check, the Rev 4 readability gate, and the length
 band, and is shorter than the original.)
 
-`k-tooth` is the rare case where a taught component shares its meaning word
+`tooth` is the rare case where a taught component shares its meaning word
 with the kanji's own meaning — 歯 is a whole-character pictograph whose only
 "component" is itself, registered as a radical for later kanji that build on
 it. Retagging the same word "tooth" a second time in `<kanji>` would be an

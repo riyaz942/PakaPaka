@@ -11,6 +11,7 @@ related_grammar_slugs:
   - "te-kudasai"
   - "masen-ka"
   - "te-wa-ikenai"
+  - "nakutemo-ii"
 ---
 
 You're at a friend's place in Tokyo, and the tea on the table smells amazing. You want a cup, but it's not yours to just grab. In English you'd ask "can I have some?" — in Japanese you reach for てもいい, the pattern that asks *is it okay if I…?*

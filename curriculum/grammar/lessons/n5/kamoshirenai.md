@@ -1,80 +1,111 @@
 ---
-generator_model: gemini-web
+generator_model: sonnet-5
 prompt_version: 2
 review_status: reviewed
 caution_notes:
-  - "Do not use the copula だ before かもしれない; attach it directly to the bare noun or Na-adjective."
+  - "かもしれない attaches to the bare な-adjective or noun — never leave だ or な in front of it (大丈夫なかもしれない, 病気だかもしれない are both wrong)."
+  - "です never follows かもしれない — the polite form is already built into かもしれません, not かもしれないです."
+  - "かも is a casual contraction of かもしれない — keep it for friends, not for anyone you'd otherwise use polite speech with."
+  - "かもしれない only marks something as unconfirmed; it doesn't say how likely it is, unlike でしょう which leans toward a confident guess."
 related_grammar_slugs:
+  - "deshou"
+  - "sugiru"
   - "dictionary-koto-ga-dekiru"
   - "to-omou"
 ---
 
-You look at the dark sky. The weather is getting worse, and you want to warn your friend that tomorrow's plans are looking a bit uncertain. How do you tell them "it might rain" when you aren't a meteorologist?
+Your friend was supposed to meet you at the coffee shop at three, and it's already past the hour. The seat across from you is still empty. You could say 友達が来ません — "my friend isn't coming" — flat, as a fact you're sure of. But you don't actually know that. What you know is that the train could be running late, and the bus could be stuck, and a dozen other things could be true. That's the gap かもしれない was built for: a way to say something you think is possible without claiming you're sure of it.
 
 ```jp
-明日は雨かもしれません。
+友達が来ません。
+電車が遅れているかもしれません。
 ```
-*It might rain tomorrow.*
 
-Enter かもしれない, your go-to pattern for expressing a guess or possibility. When you aren't one hundred percent sure about something, this pattern softens your statement from a hard fact to a "maybe." The pattern literally builds on the idea that the truth "cannot be known" for sure.
+*My friend hasn't come.*
+*The train might be delayed.*
+
+Notice what かもしれません is *not* doing here. It isn't an apology, and it isn't a question. It's a plain statement of "here's a possibility I'm holding onto" — useful the moment you're guessing rather than reporting.
+
+This comes up constantly once you notice it. You don't always know why your friend is late, why your cat isn't in the room, or whether it'll rain tomorrow — and English handles that with "might," "maybe," "could be." かもしれない is doing the same job in Japanese: naming a possibility out loud without pretending it's settled.
 
 ## How it works
 
-Building this pattern is mostly a matter of taking the plain form of a word—the dictionary version without the polite *masu* or *desu* endings—and attaching かもしれない.
-
-If you want to be polite to the person you are talking to, you swap the ending to its formal version: かもしれません.
+かもしれない attaches straight onto the **plain form** of whatever you're describing. For verbs, that plain form is whatever you'd already use before you learned to be polite — present, negative, て-form-plus-いる, past — and かもしれない just rides on the end of it, no connector needed.
 
 ```jp
-彼は明日来るかもしれません。
+今日は忙しいかもしれない。
 ```
-*He might come tomorrow.*
+
+*I might be busy today.*
+
+い-adjectives work exactly the same way. 忙しい already ends the sentence cleanly on its own, so かもしれない simply follows it with nothing in between — the same shape you'd use if you dropped です off the end.
+
+な-adjectives and nouns are where the rule actually changes something, and it's worth sitting with. Both of these normally want a だ or な in front of the next word — 大丈夫だ, 病気だ, 大丈夫な人. かもしれない refuses that. It attaches to the bare word instead, as if the だ or な were never there.
 
 ```jp
-この映画はつまらないかもしれない。
+猫は大丈夫かもしれない。
 ```
-*This movie might be boring.*
 
-## The "da" exception
-
-There is exactly one sharp edge to watch out for. When you use a noun or a Na-adjective, you do not use the plain copula だ (the casual word for *is/am/are*). You just attach かもしれない directly to the bare word.
-
-> Do not say `雨だかもしれない`. Drop the だ entirely: 雨かもしれない.
+*The cat might be okay.*
 
 ```jp
-ここは病院かもしれない。
+彼は病気かもしれない。
 ```
-*This place might be a hospital.*
+
+*He might be sick.*
+
+大丈夫 and 病気 are doing exactly the same job here that they'd do with だ attached in a plain statement — the difference is only that かもしれない strips the だ away and sits directly on the word.
+
+It helps to think of かもしれない as picking up whatever shape the word already has right before だ or です would normally land, and simply standing in that spot instead. Verbs and い-adjectives never had a だ there to begin with, so nothing changes for them. な-adjectives and nouns did, so something visibly drops.
+
+Time still works the way you'd expect underneath かもしれない — put the verb in whatever tense actually fits the situation, then add かもしれない on top of that. A past-tense verb under かもしれない reads as "might have," a guess about something that's already finished rather than something still coming.
 
 ```jp
-先生は暇かもしれません。
+夜の間に猫が外に出たかもしれない。
 ```
-*The teacher might be free.*
+
+*The cat may have gone outside during the night.*
+
+The polite version just swaps the ending: かもしれません instead of かもしれない. Nothing about how it attaches to the word in front of it changes — only the last few syllables do.
+
+## Rules and exceptions
+
+The mistake almost everyone makes once is leaving the な or だ in front of かもしれない, because every other sentence-ending pattern built on 大丈夫 or 病気 wants one there. `大丈夫なかもしれない` and `病気だかもしれない` are both wrong — かもしれない wants the bare word, nothing riding in front of it.
+
+> です does not go after かもしれない. The polite form is already built in as かもしれません — `かもしれないです` isn't the standard pattern, even though you'll hear native speakers use it casually.
+
+かもしれない doesn't tell your listener *how* likely something is, only that it's possible and unconfirmed. It covers everything from a near coin-flip down to a faint chance — the word itself doesn't distinguish between those; your tone and the situation carry that weight instead.
+
+That flatness is also why かもしれない sounds natural in almost any situation, serious or small. Whether you're guessing about a missing cat or a delayed train, the grammar underneath doesn't change — only the stakes of what you're guessing about do.
 
 ## Casual speech
 
-In real, everyday conversations with friends, かもしれない is a bit of a mouthful. People almost always chop it down to just かも.
+In relaxed conversation, かもしれない often shrinks down to just かも, with しれない dropped off entirely. It's common enough that you'll hear it constantly the moment you start listening for it, but it stays firmly casual — save the full form for anyone you'd otherwise use polite speech with.
 
 ```jp
-あれは犬かも。
+彼は大丈夫かもしれない。
+彼、大丈夫かも。
 ```
-*That over there might be a dog.*
 
-It works exactly the same way as the full version, just shorter. You will hear this constantly in casual Japanese.
+*He might be okay.*
+*He might be okay.*
 
-## Possibility vs. Ability
+Same meaning, same grammar underneath — just the ending clipped short, the way "I don't know" turns into "dunno" between friends.
 
-You already know ことができる for talking about what is possible. It helps to see how these two patterns live in different spaces.
+The trade-off is the same one every casual contraction makes: かも is quick and natural with people you're relaxed around, but it reads as too loose in front of a teacher, a stranger, or anyone you'd bow to. When in doubt, keep the full かもしれない or かもしれません and let the other person set the casual tone first.
+
+## Contrast: かもしれない vs でしょう
+
+You've already met でしょう for a softened guess, and the two sit close enough together that it's easy to reach for the wrong one. でしょう leans toward confidence — the way a forecaster says it's going to rain because the pattern mostly points that way. かもしれない admits you're genuinely unsure; it's the shrug, not the forecast.
 
 ```jp
-明日、彼は来ることができます。
+明日は雨でしょう。
+明日は雨かもしれない。
 ```
-*Tomorrow, he is able to come.*
 
-```jp
-明日、彼は来るかもしれません。
-```
-*Tomorrow, he might come.*
+*It will probably rain tomorrow.*
+*It might rain tomorrow.*
 
-Use ことができる when you are talking about ability or physical capability (he has the time and the means to show up). Use かもしれない when you are making a prediction about what will actually happen (you are guessing about his actions).
+Swap one for the other and you change how committed you sound, not just the words. でしょう says "I'd bet on it." かもしれない says "it's on the table — that's all I actually know." Reach for かもしれない when you genuinely don't know, and でしょう when you're willing to stake a guess.
 
-Get comfortable with leaving things a little uncertain here. Soon, you'll learn と思う (I think that), which will give you another great way to express your own thoughts without stating them as absolute facts.
+Hold onto that instinct — how far you commit to a claim — because you'll meet another ending soon, すぎる, that adjusts how far a description goes in a completely different direction: not "maybe," but "too much." Different job, same habit of matching your grammar to exactly how far you mean to go.

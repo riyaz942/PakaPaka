@@ -463,7 +463,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
 
   it('accepts split kanji mnemonics and description', () => {
     const tempDir = writeTempKanjiDir({
-      slug: 'n5-ichi',
+      slug: 'one',
       primary_form: '一',
       meaning: 'one',
       meaning_mnemonic: 'A single stroke: one.',
@@ -477,9 +477,55 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
+  it.each(['n5-ichi', 'n4-ichi', 'n1-ichi', 'k-ichi'])(
+    'rejects a slug that names a level: %s',
+    (slug) => {
+      const tempDir = writeTempKanjiDir({ slug, primary_form: '一', meaning: 'one' });
+      try {
+        const result = validateCurriculum(tempDir);
+        expect(result.ok).toBe(false);
+        if (!result.ok) {
+          expect(result.errors.some((e) => e.includes('must not start with a level prefix'))).toBe(
+            true,
+          );
+        }
+      } finally {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+      }
+    },
+  );
+
+  it('accepts a kanji look-alike that is a radical with the same slug', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'ichi',
+      primary_form: '一',
+      meaning: 'one',
+      visually_similar_slugs: ['radical:ichi'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a look-alike ref without its kind', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'one',
+      primary_form: '一',
+      meaning: 'one',
+      visually_similar_slugs: ['ichi'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('rejects visual_mnemonic_url on kanji — mnemonic art stops at the radical layer', () => {
     const tempDir = writeTempKanjiDir({
-      slug: 'n5-ichi',
+      slug: 'one',
       primary_form: '一',
       meaning: 'one',
       visual_mnemonic_url: 'radicals/n5/ichi.webp',
@@ -522,7 +568,7 @@ describe('validateCurriculum Rev 1 fields', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
       description: 'A single stroke lying flat: the ground.',
-      visually_similar_slugs: ['n5-ichi'],
+      visually_similar_slugs: ['kanji:one'],
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(true);
@@ -558,7 +604,7 @@ describe('validateCurriculum Rev 1 fields', () => {
   it('errors when radical visually_similar_slugs references the item itself', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visually_similar_slugs: ['ichi'],
+      visually_similar_slugs: ['radical:ichi'],
     });
     try {
       const result = validateCurriculum(tempDir);

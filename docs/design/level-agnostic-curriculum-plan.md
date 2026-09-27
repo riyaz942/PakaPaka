@@ -1,7 +1,7 @@
 # Level-agnostic curriculum plan
 
 **Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
-"Phase 1 results"). Phase 2 not started.
+"Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 not started.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -283,6 +283,77 @@ Implement **Phase A of the schema migration plan** as written, with these change
 - Compare the compiled `items` table with the baseline CSV. Each row is the same except for the slug
   text, and the merged grammar rows are gone. Merged-away ids go to `retired` in the registry.
 - All tests from phase 0 pass.
+
+### Phase 2 results (2026-09-27)
+
+**What changed:**
+
+- `curriculum/_build/slug-renames.json` has 2,107 entries: all 2,000 kanji, the 97 N4 grammar
+  points, and an identity entry for each of the 10 N5 merge targets (so that each merge is two old
+  keys with one new key).
+  - The derived kanji lose `k-`. The 192 hand-written kanji get the first word or two of their
+    meaning. The maintainer approved 29 slugs picked by hand for clashes, for example `n5-go` →
+    `five`, `k-go` → `go-game`, `n4-ri` → `reason`, `k-ri` → `hamlet`.
+  - 87 N4 grammar points lose `n4-`. 10 merge into their N5 point.
+- `curriculum/_build/rename_slugs.py` (one-time) did the rename from the map. It edits sources
+  only: the kanji datasets (`suffix` → `slug`), grammar datasets and lessons, `bands.json`,
+  `skeleton.json`, `visually_similar.py`, sidecars, `generate_content/` (seeds, passages, drafts),
+  reports, and the registry. Then `generate.py` and `generate_deps.py` rebuilt the shipped JSON.
+- **Kind in refs.** `visually_similar_slugs` is the only shipped list that can name two kinds. It now
+  holds `"radical:<slug>"` / `"kanji:<slug>"` refs (schema pattern), compile resolves each ref by
+  kind and slug, and Curriculum Studio links each chip to its own kind. Graph edges already carried
+  `from_type` / `to_type`. Python tables that mixed kinds are now keyed by kind. 396 kanji now share
+  a slug with a radical. The app always looks up an item by type and slug.
+- **Grammar merges** (approved): `node`, `teiru-progressive`, `tewaikenai`, `nakutemoii`,
+  `nakerebanaranai`, `temoii`, `sugiru`, `deshou`, `kamoshirenai` and `koto-ga-aru` merged into
+  `node-because`, `te-iru`, `te-wa-ikenai`, `nakutemo-ii`, `nakereba-naranai`, `te-mo-ii`, `sugiru`,
+  `deshou`, `kamoshirenai` and `ta-koto-ga-aru`.
+  - The merged item keeps the N5 form, meaning, structure and mnemonic. It gets the union of
+    `accepted_forms` and `vocabulary_slugs`, and the N4 examples and cloze variants that are not
+    duplicates. `ta-koto-ga-aru` takes the 2 N4 `uses`.
+  - The longer lesson stays, with its caution notes: N5 for `te-wa-ikenai` and `te-mo-ii`, N4 for
+    the other 8.
+  - N4 has 87 points and N5 has 74. The registry keeps every id, and the 10 merged-away keys are
+    in `items.retired` under their old keys.
+- **Reading seeds.** The merged points are removed from 7 N4 seeds' `required_grammar`, and each N4
+  `grammar_cutoff` is recounted. `ladder_errors` does not let an N4 seed require an N5 point, so
+  the N5 slug does not replace them. `reizouko-no-ruuru` now requires no N4 point.
+- `validate-schema` rejects a slug that matches `^(n[1-5]|k)-` (items and passages).
+
+**Checks:**
+
+- Search for `\b(n[1-5]|k)-[a-z]` in tracked files under `curriculum/`, `scripts/`, `mobile/src/`
+  and `web/`. Results are only in `slug-renames.json` (excluded from the search), the 10 retired
+  keys in `id-registry.json`, the new level-prefix tests, and text that is not a slug (`k-car` in a
+  meaning, "n1-n5" in a runbook).
+- The compiled seed (version 26) compared by id with the phase 0 baseline: 12,725 of 12,735 rows
+  are the same except for the slug. The 10 merged N4 rows are gone. All 87 N4 grammar rows have a
+  new `sort_order`, because the first N4 point (`node`) merged. The other tables change only for
+  the 10 merged items (example and span rows compared through their sentence text).
+- `graph.json` mapped through the rename map: the same edges, less 1 (`ta-koto-ga-aru` →
+  `sushi`, see below).
+- Repo-root tests: 79 pass (6 new). `validate-schema` passes. `mobile/` tests: 2,216 pass in 250
+  suites. `mobile/` lint: 0 errors, the same 1 warning. `web/` lint and type check pass.
+- `grammar_detect` self-test 37/37 and calibration 100%. N5 and N4 seeds pass `ladder_errors` and
+  `grammar_coverage_errors`. `validate_readings` passes (drafts and fixtures).
+
+**For the maintainer:**
+
+- **Cloze variants removed (maintainer decision).** After the merge, `check_cloze` failed 25
+  variants (it had 0 failures before). 21 were N4 cloze variants merged into N5 items: they used
+  N4-window words at an N5 position. 4 were N4 cloze variants of `kagirazu` and `nikanshite`: the
+  proportional vocabulary window of a point shrank when the points before it merged. All 25 are
+  removed, and `check_cloze` passes again (N5 404 variants, N4 453). The compiled seed is version 26.
+- An N5 lesson may link only N5 points, so the merged lessons lost their links to N4-only points
+  (for example `te-iru` lost `rashii`, `youda`, `mitai`, `teiru-result`).
+- `ta-koto-ga-aru`: `chikoku-suru` and `sushi` are N4 words, so they are removed from its
+  vocabulary lists. The example text did not change.
+- Old drift, not fixed: `kanji_bands.py` was not run, because a rerun moves radicals `nine` and
+  `the-latter` and changes 58 radical `sort_order` values. `metadata.json` `content_counts` for
+  radicals, total items and dependency edges were already wrong. Only `grammar` (161) is updated.
+- Local, gitignored drafts keep some old names that are not in the map (batch request ids such as
+  `n5-yon--attempt1`, and old `n2-*` prompt files).
+- `mobile/assets/curriculum-manifest/curriculum-mock-update.db` (a test mock) still has old slugs.
 
 ---
 

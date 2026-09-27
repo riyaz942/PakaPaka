@@ -36,10 +36,10 @@ the exam and appear in two shipped words each, so they wait.
 `python3 curriculum/_build/reports/kanji_bands.py`, which also writes
 [`_build/reports/kanji-bands.md`](_build/reports/kanji-bands.md).
 
-**A slug does not follow its band.** `n5-en` keeps its prefix wherever it lands, because the
-mnemonic sidecars, the bundled radical art and `user.db` are all keyed by it. The prefix names
-the dataset that wrote the item — `n5`/`n4` for the hand-authored lists, `k` for the corpus
-derived from KANJIDIC2 — and never a level.
+**A slug does not follow its band, and names no level.** `yen` is `yen` wherever it lands,
+because `user.db` and the id registry are keyed by it. `validate-schema` rejects a slug that
+starts with `n1-`–`n5-` or `k-`. `_build/slug-renames.json` records every old slug and the slug
+that replaced it.
 
 ### Regenerating
 

@@ -81,29 +81,30 @@ def meaning_matches(ours, theirs):
     return False
 
 
-# Reviewed-and-accepted divergences from the sources. Keyed so that any edit
-# to the underlying item re-raises the warning. Each entry needs a rationale.
+# Reviewed-and-accepted divergences from the sources. Keyed ("<kind>:<slug>",
+# meaning) so that any edit to the underlying item re-raises the warning. Each
+# entry needs a rationale.
 ACCEPTED_MEANINGS = {
-    ("n5-otoko", "man"): "KANJIDIC2 says 'male'; 'man' is the natural learner gloss",
-    ("n5-kaeru", "return"): "KANJIDIC2 'homecoming'; 'return' matches 帰る usage",
-    ("n4-ken-exam", "examine"): "KANJIDIC2 'verification/testing'; same concept",
-    ("n4-hitsu", "necessary"): "KANJIDIC2 'invariably/certain'; 必要 usage gloss",
-    ("ee", "yeah"): "JMdict 'yes'; 'yeah' captures the casual register",
-    ("itadakimasu", "let's eat (thanks for food)"): "set phrase; JMdict glosses literally",
-    ("mendokusai", "troublesome"): "JMdict 'bothersome/tiresome'; synonym",
-    ("tokui", "good at / proud"): "JMdict lists 'one's strong point' in later senses",
-    ("supootsuman", "athlete"): "JMdict 'sportsman'; same meaning",
-    ("zehi", "by all means"): "JMdict 'certainly/without fail'; same meaning",
-    ("sono-ue", "moreover"): "JMdict 'in addition; furthermore'; synonym",
+    ("kanji:man", "man"): "KANJIDIC2 says 'male'; 'man' is the natural learner gloss",
+    ("kanji:return", "return"): "KANJIDIC2 'homecoming'; 'return' matches 帰る usage",
+    ("kanji:examine", "examine"): "KANJIDIC2 'verification/testing'; same concept",
+    ("kanji:necessary", "necessary"): "KANJIDIC2 'invariably/certain'; 必要 usage gloss",
+    ("vocabulary:ee", "yeah"): "JMdict 'yes'; 'yeah' captures the casual register",
+    ("vocabulary:itadakimasu", "let's eat (thanks for food)"): "set phrase; JMdict glosses literally",
+    ("vocabulary:mendokusai", "troublesome"): "JMdict 'bothersome/tiresome'; synonym",
+    ("vocabulary:tokui", "good at / proud"): "JMdict lists 'one's strong point' in later senses",
+    ("vocabulary:supootsuman", "athlete"): "JMdict 'sportsman'; same meaning",
+    ("vocabulary:zehi", "by all means"): "JMdict 'certainly/without fail'; same meaning",
+    ("vocabulary:sono-ue", "moreover"): "JMdict 'in addition; furthermore'; synonym",
 }
 
 ACCEPTED_EDGES = {
-    ("ichi", "n5-hidariuma"): "一 is visually the top of 午; mnemonic: 'a marker at the top'",
-    ("kuchi", "n5-yon"): "mnemonic reads the enclosure as a mouth ('a mouth boxing in legs')",
-    ("kuchi", "n5-iu-gen"): "言 visually contains 口; KRADFILE treats 言 as a primitive",
-    ("tsuchi", "n5-sei-life"): "mnemonic 'sprout pushing up from the ground' uses 土 as ground",
-    ("inu", "n4-modoru"): "mnemonic teaches traditional form 戾 (dog under door 戸)",
-    ("kuruma", "n4-omoi"): "mnemonic 'cart's heavy load' leans on 重's resemblance to 車",
+    ("ichi", "noon"): "一 is visually the top of 午; mnemonic: 'a marker at the top'",
+    ("kuchi", "four"): "mnemonic reads the enclosure as a mouth ('a mouth boxing in legs')",
+    ("kuchi", "say"): "言 visually contains 口; KRADFILE treats 言 as a primitive",
+    ("tsuchi", "life"): "mnemonic 'sprout pushing up from the ground' uses 土 as ground",
+    ("inu", "go-back"): "mnemonic teaches traditional form 戾 (dog under door 戸)",
+    ("kuruma", "heavy"): "mnemonic 'cart's heavy load' leans on 重's resemblance to 車",
 }
 
 GRAMMATICAL_POS = {"助動詞", "助詞"}
@@ -191,7 +192,7 @@ def audit_kanji(levels, kanjidic):
                     f"({', '.join(kd['kunyomi']) or 'none'})",
                 ))
             if not meaning_matches(normalize_meanings(item["meaning"]), kd["meanings"]):
-                accepted = ACCEPTED_MEANINGS.get((slug, item["meaning"]))
+                accepted = ACCEPTED_MEANINGS.get((f"kanji:{slug}", item["meaning"]))
                 if accepted:
                     findings.append((
                         "INFO", f"`{slug}` ({char}): accepted divergence — {accepted}"
@@ -245,7 +246,7 @@ def audit_vocab(levels, jmdict):
                 ))
             glosses = [g for e in entries for g in e["glosses"]]
             if not meaning_matches(normalize_meanings(item["meaning"]), glosses):
-                accepted = ACCEPTED_MEANINGS.get((slug, item["meaning"]))
+                accepted = ACCEPTED_MEANINGS.get((f"vocabulary:{slug}", item["meaning"]))
                 if accepted:
                     findings.append((
                         "INFO", f"`{slug}` ({form}): accepted divergence — {accepted}"
@@ -282,10 +283,14 @@ def audit_decomposition(levels, kradfile):
         for variant in KRAD_VARIANTS.get(char, [char]):
             taught_chars[variant] = slug
 
-    edges = load_json("dependencies", "graph.json")["edges"]
+    # Radical -> kanji only: a kanji -> vocabulary edge could otherwise match a
+    # radical and a kanji that share its slugs.
+    edges = [
+        e for e in load_json("dependencies", "graph.json")["edges"]
+        if e["relationship_type"] == "builds_on"
+        and e["from_type"] == "radical" and e["to_type"] == "kanji"
+    ]
     for e in edges:
-        if e["relationship_type"] != "builds_on":
-            continue
         rad = radical_char.get(e["from_slug"])
         kan = kanji_char.get(e["to_slug"])
         if rad is None or kan is None:
@@ -313,7 +318,7 @@ def audit_decomposition(levels, kradfile):
 
     # Candidate missing edges: KRADFILE components that are taught radicals but
     # have no builds_on edge to that kanji.
-    edge_set = {(e["from_slug"], e["to_slug"]) for e in edges if e["relationship_type"] == "builds_on"}
+    edge_set = {(e["from_slug"], e["to_slug"]) for e in edges}
     missing = []
     for kslug, kan in kanji_char.items():
         for comp in kradfile.get(kan, []):

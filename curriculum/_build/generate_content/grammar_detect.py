@@ -37,11 +37,11 @@ original text.
 ## What it refuses to decide
 
 `MANUAL_SLUGS` are points whose forms are indistinguishable from another
-point's by any mechanical rule — `n4-node-vs-kara` is から, the same から as
+point's by any mechanical rule — `node-vs-kara` is から, the same から as
 `kara-because`. They are reported in `manual`, never silently counted.
 
 A form shared by several slugs (ません is both `masu` and `masen`; れる is both
-`n4-potential` and `n4-passive`) yields a match per slug, each flagged
+`potential` and `passive`) yields a match per slug, each flagged
 `ambiguous`. Recall is the point here; the extras are a review list, not a
 verdict.
 
@@ -67,9 +67,9 @@ from generate_content import context  # noqa: E402
 
 
 #: Points no mechanical rule can separate from another point. Reported, never
-#: counted: `n4-node-vs-kara` is the N5 から taught again as formal reason, so
+#: counted: `node-vs-kara` is the N5 から taught again as formal reason, so
 #: nothing in the text distinguishes it from `kara-because`.
-MANUAL_SLUGS = {"n4-node-vs-kara"}
+MANUAL_SLUGS = {"node-vs-kara"}
 
 #: Forms pulled out of the substring table because a POS rule decides them
 #: instead — every one-character form, plus forms that are another point's
@@ -95,14 +95,14 @@ FORM_OVERRIDES = {
     "adj-na-adverb": "*",
     "toki": "*",
     "goro": "*",
-    "n4-to-conditional": "*",
-    "n4-ba": "*",
-    "n4-aida": "*",
+    "to-conditional": "*",
+    "ba": "*",
+    "aida": "*",
     "demo-suggestion": "*",
-    "n4-temo": "*",
+    "temo": "*",
     "kara-from": "*",
     "kara-because": {"から"},
-    "n4-node-vs-kara": "*",
+    "node-vs-kara": "*",
     "ya-among": {"や"},
     "ne-tag": {"ね"},
     "yo-emphasis": {"よ"},
@@ -258,8 +258,8 @@ _PARTICLE_RULES = {
     "ne-tag": ("ね", "助詞", {"終助詞"}),
     "yo-emphasis": ("よ", "助詞", {"終助詞"}),
     "te-form": ("て", "助詞", {"接続助詞"}),
-    "n4-to-conditional": ("と", "助詞", {"接続助詞"}),
-    "n4-ba": ("ば", "助詞", {"接続助詞"}),
+    "to-conditional": ("と", "助詞", {"接続助詞"}),
+    "ba": ("ば", "助詞", {"接続助詞"}),
 }
 
 #: Lemmas that make a preceding に行く / に来る a purpose rather than a
@@ -530,13 +530,13 @@ POS_RULES = {
     "adj-na-adverb": _rule_adj_na_adverb,
     "toki": _rule_toki,
     "goro": _rule_goro,
-    "n4-aida": _rule_n4_aida,
+    "aida": _rule_n4_aida,
     "kara-from": _rule_kara_from,
     "kara-because": _rule_kara_because,
     "mae-ni": _rule_mae_ni,
     "ni-iku": _rule_ni_iku,
     "demo-suggestion": _rule_demo_suggestion,
-    "n4-temo": _rule_n4_temo,
+    "temo": _rule_n4_temo,
 }
 
 #: Rules describing the *word's own* form, not a pattern built on it. They run
@@ -900,20 +900,20 @@ SELFTEST = [
     ("n5", "宿題をしました。でも、出しません。", [],
      ["de-location", "mo-also", "demo-suggestion"]),
     ("n5", "公園でも遊びます。", ["de-location", "mo-also"], []),
-    ("n4", "ケーキを全部食べてしまった。", ["n4-teshimau"], []),
-    ("n4", "「いつから働けますか」と聞かれました。", ["n4-passive", "n4-potential"], []),
-    ("n4", "毎朝走るようにしています。", ["n4-youni-suru"], []),
-    ("n4", "日本語が話せるようになりました。", ["n4-youninaru"], []),
-    ("n4", "時間があったら、電話します。", ["n4-tara"], []),
+    ("n4", "ケーキを全部食べてしまった。", ["teshimau"], []),
+    ("n4", "「いつから働けますか」と聞かれました。", ["passive", "potential"], []),
+    ("n4", "毎朝走るようにしています。", ["youni-suru"], []),
+    ("n4", "日本語が話せるようになりました。", ["youninaru"], []),
+    ("n4", "時間があったら、電話します。", ["tara"], []),
     ("n4", "女の人に「郵便局はどちらですか。」と聞きました。", ["ni-indirect"], []),
-    ("n4", "駅から近いです。", ["kara-from"], ["n4-node-vs-kara"]),
+    ("n4", "駅から近いです。", ["kara-from"], ["node-vs-kara"]),
     ("n5", "お金は千円しかありません。", ["shika-nai"], []),
     ("n5", "宿題はまだ終わっていません。", ["mada-teinai"], []),
-    ("n4", "雨が降っても、公園に行きます。", ["n4-temo"], ["te-form", "mo-also"]),
-    ("n4", "高くても、買います。", ["n4-temo"], ["te-form", "mo-also"]),
-    ("n4", "日曜日でも働きます。", ["de-location", "mo-also"], ["n4-temo"]),
-    ("n4", "友達に手伝ってもらいました。", ["moraru-ageru-kureru"], ["n4-temo"]),
-    ("n4", "写真を撮ってもいいですか。", ["n4-temoii", "te-mo-ii"], ["n4-temo"]),
+    ("n4", "雨が降っても、公園に行きます。", ["temo"], ["te-form", "mo-also"]),
+    ("n4", "高くても、買います。", ["temo"], ["te-form", "mo-also"]),
+    ("n4", "日曜日でも働きます。", ["de-location", "mo-also"], ["temo"]),
+    ("n4", "友達に手伝ってもらいました。", ["moraru-ageru-kureru"], ["temo"]),
+    ("n4", "写真を撮ってもいいですか。", ["te-mo-ii"], ["temo"]),
 ]
 
 

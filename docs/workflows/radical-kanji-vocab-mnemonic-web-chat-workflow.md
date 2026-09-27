@@ -96,7 +96,7 @@ to `reviewed`.
 
 ## List remaining slugs
 
-Slugs already exist as curriculum ids (`n5-higashi` is one kanji; they live in
+Slugs already exist as curriculum ids (`east` is one kanji; they live in
 `curriculum/{radicals|kanji|vocabulary}/<level>.json`). `webprompts` writes a
 prompt *for* a slug; it does not invent the slug. From `curriculum/_build`, list
 the items of this type that have **no** sidecar entry yet:
@@ -153,13 +153,13 @@ type — useful for a full-level dump, not for a sitting of ~10.
 
 ### 1. Generate the prompt
 
-`n5-higashi` is a worked example. Substitute a slug from the list above.
+`east` is a worked example. Substitute a slug from the list above.
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs n5-higashi
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs east
 ```
 
-Writes `generate_content/web/mnemonics/n5/kanji/n5-higashi.prompt.md`. Open it.
+Writes `generate_content/web/mnemonics/n5/kanji/east.prompt.md`. Open it.
 Everything below the `<!-- ... -->` header is one self-contained block: the
 teaching-voice sheet, the character + meaning + readings, the taught
 decomposition, the cast block, the formatting rules, and a JSON output contract.
@@ -184,7 +184,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into the reply path the prompt header names:
 
 ```
-generate_content/web/mnemonics/n5/kanji/n5-higashi.reply.md
+generate_content/web/mnemonics/n5/kanji/east.reply.md
 ```
 
 The filename must match the slug and the `--type` subfolder.
@@ -204,7 +204,7 @@ otherwise is correct, not incomplete.
 ### 4. Ingest
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --level n5 --slug n5-higashi --model claude-web
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --level n5 --slug east --model claude-web
 ```
 
 **On pass:** it merges the item into `curriculum/kanji/mnemonics/n5.json`
@@ -215,10 +215,10 @@ the next item.
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/mnemonics/n5/kanji/n5-higashi.prompt.md`.
+1. Open the rewritten `web/mnemonics/n5/kanji/east.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
-3. Save the new reply over `n5-higashi.reply.md`.
+3. Save the new reply over `east.reply.md`.
 4. Run `ingest` again.
 
 The common kanji failures are a meaning mnemonic that skipped a taught component,

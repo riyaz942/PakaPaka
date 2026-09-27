@@ -1,94 +1,110 @@
 ---
-generator_model: gemini-web
+generator_model: sonnet-5
 prompt_version: 2
 review_status: reviewed
 caution_notes:
-  - "Do not confuse なくてもいい (don't have to) with なければならない (must)."
-  - "Do not confuse なくてもいい (it's okay if you don't) with ないでください (please don't)."
-  - "なくてもいい literally translates to 'is it okay even if I don't?', so it gives the listener permission to skip an action."
+  - "Don't confuse なくてもいい with てはいけない — one grants release from a rule, the other forbids the action entirely."
+  - "なくてもいい needs a correctly formed ない-stem underneath it, so double-check that form first if the sentence feels off."
+  - "なくてもかまわない means the same thing as なくてもいい but reads a little more formal."
+  - "The casual よ often tacked onto the end is a separate softening particle, not part of this pattern's grammar."
 related_grammar_slugs:
   - "te-mo-ii"
+  - "te-wa-ikenai"
   - "nakereba-naranai"
   - "naide-kudasai"
   - "tai"
 ---
 
-Your friend starts walking really fast toward the cinema because they think the movie starts soon. You just checked the clock, and you know you have plenty of time. How do you tell them, "You don't have to hurry"?
+It's the night before a test, and your desk is covered in 宿題 you haven't touched. You message a classmate to panic together, and they text back something that stops you cold: not everything on that pile is actually due tomorrow.
 
 ```jp
-急がなくてもいいです。
+今日は宿題を全部しなくてもいい。
 ```
-*You don't have to hurry.*
+
+*You don't have to finish all the homework today.*
+
+That's なくてもいい — "don't have to," "it's fine even without doing." It tells you a rule you assumed was strict actually has slack in it.
 
 ## How it works
 
-You already know how to say that something is permitted using `てもいい` (it's okay to do). To say that someone *doesn't have to* do something, we just apply that same idea to a negative action: "it is okay even if you don't do it."
-
-To build it, take the negative `ない` form of a verb, drop the final `い`, and add `くてもいい`. For example, `食べる` (to eat) becomes `食べない`, which then becomes `食べなくてもいい` (don't have to eat). It behaves exactly like an *i-adjective* (a describing word ending in "i").
-
-Let's look at it in a few complete sentences. Notice how we add `です` at the end to keep things polite.
+Start from the plain negative (ない-form) of the verb, drop the final い, and add くてもいい. しない becomes しなくて, and もいい tacks on the same "it's fine" feeling you already know from てもいい.
 
 ```jp
-野菜を食べなくてもいいです。
+行く → 行かなくてもいい
 ```
-*You don't have to eat the vegetables.*
+
+*to go → don't have to go*
 
 ```jp
-新しい本を買わなくてもいいです。
+食べる → 食べなくてもいい
 ```
-*You don't have to buy a new book.*
+
+*to eat → don't have to eat*
+
+U-verbs like 行く shift to the あ-row before ない (行か-), and ru-verbs like 食べる just drop る and add ない — the same split you already learned for building the plain negative in the first place. なくてもいい just rides on top of a form you can already produce.
+
+You'll also see です tacked on for politeness, and a slightly stiffer cousin, なくてもかまわない ("it doesn't matter if you don't"), which leans a little more formal but means the same thing.
 
 ```jp
-明日は学校に行かなくてもいいです。
+明日は早く起きなくてもいいです。
 ```
-*I don't have to go to school tomorrow.*
 
-## Asking for permission to skip
-
-Because `なくてもいい` literally means "is it okay if I don't?", you can easily turn it into a question to ask if something is optional. Just add the question particle `か` at the end.
+*You don't have to wake up early tomorrow.*
 
 ```jp
-この新聞を読まなくてもいいですか。
+今日は学校へ行かなくてもかまわない。
 ```
-*Do I not have to read this newspaper? (Is it okay if I don't read this newspaper?)*
+
+*It's fine even if you don't go to school today.*
+
+## Rules and exceptions
+
+The trap almost everyone falls into first: なくてもいい looks like it should mean "must not," because it has ない sitting right there next to a rule word. It doesn't. It means the opposite of forced — permission to skip, not a ban.
+
+> Don't reach for なくてもいい when you mean "must not." That's a completely different pattern — てはいけない, which you already know — and mixing them up flips the meaning of your sentence.
+
+There's no irregular twist here: any verb that has a plain negative can take なくてもいい, including する and 来る once they're in their ない-forms (しない, 来ない). The pattern is mechanical once the ない-form is solid, which is exactly why it's worth double-checking that form first if a sentence feels off.
 
 ## Casual speech
 
-Like most patterns ending in `いいです`, dropping the `です` makes the sentence casual. You will hear this constantly among friends and family.
+In relaxed conversation, もいい often just shrinks the sentence's weight rather than changing its wording — you'll hear なくてもいい said fast and clipped, sometimes with いい swapped for a shrug-toned よ at the end for warmth.
 
 ```jp
-今日は急がなくてもいい。
+そんなに急がなくてもいいよ。
 ```
-*You don't have to hurry today.*
 
-> If you want to sound even softer when talking to a friend, you can add the particle `よ` to the end (`なくてもいいよ`). It makes it sound like a helpful tip rather than a cold fact.
-
-## Must, must not, or don't have to?
-
-When speaking English, we often mix up "must not" and "don't have to." In Japanese, it is crucial to keep these concepts completely separate.
-
-If you want to say someone absolutely *must* do something, use `なければならない`. If they are free to skip it, use `なくてもいい`.
+*You don't have to hurry that much.*
 
 ```jp
-今日、学校に行かなければならない。
+心配しなくてもいいよ。
 ```
-*I must go to school today.*
+
+*You don't have to worry.*
+
+That よ isn't part of the grammar — it's the same softening particle you've seen elsewhere — but it shows up on this pattern constantly because なくてもいい is so often said to reassure someone.
+
+## Contrast
+
+You already have two close relatives of this pattern, and lining them up side by side is the fastest way to keep them separate.
+
+てもいい gives permission to do something; なくてもいい gives permission to skip it. Same もいい ending, opposite verb form feeding into it.
 
 ```jp
-明日、学校に行かなくてもいい。
+宿題をしてもいいですか。
 ```
-*I don't have to go to school tomorrow.*
 
-Likewise, if you are actively asking someone *not* to do something, use `ないでください` (please don't). Use `なくてもいい` only when you are giving them the freedom to choose.
+*Is it okay if I do the homework?*
+
+Compare that to the very first example above — 宿題を全部しなくてもいい, "you don't have to do all the homework" — and the difference is entirely in that one syllable, ない, sitting in front of くてもいい.
+
+てはいけない sits at the opposite end from both of them: it forbids, full stop.
 
 ```jp
-その水を飲まないでください。
+今日は宿題をしなくてはいけない。
 ```
-*Please don't drink that water.*
 
-```jp
-その水を飲まなくてもいいです。
-```
-*You don't have to drink that water.*
+*You have to do the homework today.*
 
-Once you are comfortable talking about what you have to do (and what you can skip), we will introduce `たい` — how to talk about what you actually *want* to do!
+Notice that sentence isn't even なくてもいい's opposite — しなくてはいけない ("must do") is built the same way as なくてもいい but swaps いい for はいけない, and the meaning flips to an obligation instead of a release from one. Three patterns, three feelings: いい lets you off the hook, はいけない locks you to it, and mixing up which one you reached for is the single most common mistake with this whole family.
+
+Hold onto that hook feeling — it's the flip side of なければならない, which you'll meet soon and which says "you must" using the same ない-stem this pattern already taught you to build.

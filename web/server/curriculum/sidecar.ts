@@ -57,8 +57,8 @@ const EXAMPLE_SIDECAR_KEYS = ['japanese', 'english', 'vocabulary_slugs'] as cons
 
 /** Where a field that has no sidecar is actually authored. */
 const AUTHORED_IN: Record<ContentType, string> = {
-  radical: 'curriculum/_build/{n5,n4}_radicals.py (or skeleton.json for k-corpus radicals)',
-  kanji: 'curriculum/_build/{n5,n4}_kanji.py (or skeleton.json for k-corpus kanji)',
+  radical: 'curriculum/_build/{n5,n4}_radicals.py (or skeleton.json for KANJIDIC2-derived radicals)',
+  kanji: 'curriculum/_build/{n5,n4}_kanji.py (or skeleton.json for KANJIDIC2-derived kanji)',
   vocabulary: 'curriculum/_build/{n5,n4}_vocab.py (or vocab_skeleton.json)',
   grammar: 'curriculum/_build/{n5,n4}_grammar.py and curriculum/grammar/lessons/',
   reading: 'curriculum/_build/{n5,n4}_readings.py',

@@ -18,7 +18,7 @@ Run after the drafts exist, one batch at a time:
 
     .venv/bin/python -m generate_content.promote_cloze --level n4 --dry-run
     .venv/bin/python -m generate_content.promote_cloze --level n4 --limit 8
-    .venv/bin/python -m generate_content.promote_cloze --level n4 --slugs n4-node,n4-hazu
+    .venv/bin/python -m generate_content.promote_cloze --level n4 --slugs node-because,hazu
 
 Then regenerate and re-gate from `curriculum/_build`:
 

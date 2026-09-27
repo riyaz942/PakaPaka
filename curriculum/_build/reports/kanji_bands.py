@@ -130,11 +130,11 @@ RESERVED_BY_REUSE = {"n5": 10, "n4": 6}
 SIMPLE_GRADE = 3
 
 PINNED_DERIVED = {
-    "k-private": "n5",  # 私 watashi — N5 vocabulary word #1 ("I / me")
-    "k-me": "n5",  # 僕 boku — N5 vocabulary word #3
-    "k-mister": "n5",  # 君 kimi — N5 vocabulary word #5
-    "k-he": "n5",  # 彼 kare — N5 vocabulary word #6
-    "k-who": "n5",  # 誰 dare — N5 vocabulary word #27
+    "private": "n5",  # 私 watashi — N5 vocabulary word #1 ("I / me")
+    "me": "n5",  # 僕 boku — N5 vocabulary word #3
+    "mister": "n5",  # 君 kimi — N5 vocabulary word #5
+    "he": "n5",  # 彼 kare — N5 vocabulary word #6
+    "who": "n5",  # 誰 dare — N5 vocabulary word #27
 }
 
 
@@ -156,7 +156,7 @@ def load_corpus():
     corpus = {}
     for source, entries in (("n5", N5_KANJI), ("n4", N4_KANJI)):
         for i, k in enumerate(entries, start=1):
-            corpus[f"{source}-{k['suffix']}"] = {
+            corpus[k["slug"]] = {
                 "char": k["char"],
                 "meaning": k["meaning"],
                 "source": source,

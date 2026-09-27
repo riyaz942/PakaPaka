@@ -11,6 +11,7 @@ related_grammar_slugs:
   - "te-mo-ii"
   - "te-kudasai"
   - "naide-kudasai"
+  - "nakereba-naranai"
 ---
 
 You're standing in a quiet library, and your friend pulls out their phone to make a call. Before they even tap the screen, you want to stop them — not with a polite "please don't," but with the flat, no-exceptions "you can't do that here." That's the job of てはいけない.

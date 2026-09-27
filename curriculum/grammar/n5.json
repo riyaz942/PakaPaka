@@ -3975,7 +3975,8 @@
       },
       "accepted_forms": [
         "ので",
-        "んで"
+        "んで",
+        "なので"
       ],
       "example_sentences": [
         {
@@ -4049,12 +4050,138 @@
               "inflection": "masu"
             }
           ]
+        },
+        {
+          "japanese": "雨が降っているので、傘を持って行きます。",
+          "english": "Since it's raining, I'll take an umbrella.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "furu-rain",
+            "kasa"
+          ],
+          "furigana": "雨[あめ]が降[ふ]っているので、傘[かさ]を持[も]って行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 10,
+              "end": 11
+            }
+          ]
+        },
+        {
+          "japanese": "時間がないので、急ぎましょう。",
+          "english": "Since there's no time, let's hurry.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "jikan",
+            "isogu"
+          ],
+          "furigana": "時[じ]間[かん]がないので、急[いそ]ぎましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "jikan",
+              "start": 0,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "japanese": "疲れたので、早く寝ます。",
+          "english": "Since I'm tired, I'll sleep early.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "neru"
+          ],
+          "furigana": "疲[つか]れたので、早[はや]く寝[ね]ます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "寝ます",
+              "inflection": "masu"
+            }
+          ]
+        },
+        {
+          "japanese": "道が混んでいるので、遅れます。",
+          "english": "Since the road is crowded, I'll be late.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "michi-v",
+            "okureru"
+          ],
+          "furigana": "道[みち]が混[こ]んでいるので、遅[おく]れます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "遅れます",
+              "inflection": "masu"
+            }
+          ]
+        },
+        {
+          "japanese": "休みなので、家にいます。",
+          "english": "Since it's a day off, I'm staying home.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "yasumu",
+            "ie"
+          ],
+          "furigana": "休[やす]みなので、家[いえ]にいます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ie",
+              "start": 6,
+              "end": 7
+            }
+          ]
+        },
+        {
+          "japanese": "安いので、これを買います。",
+          "english": "Since it's cheap, I'll buy this.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "kau-v"
+          ],
+          "furigana": "安[やす]いので、これを買[か]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 8,
+              "end": 12,
+              "surface_form": "買います",
+              "inflection": "masu"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "jikan",
         "byouki",
-        "yasui-adj"
+        "yasui-adj",
+        "furu-rain",
+        "yasumu"
       ],
       "family": "connectors",
       "cloze_variants": [
@@ -4097,22 +4224,30 @@
           "nudge": "The baby is the quiet grounds for steering them elsewhere.",
           "sort_order": 4,
           "jp_cloze_furigana": "赤[あか]ちゃんです＿＿＿、こちらはどうですか。"
+        },
+        {
+          "jp_cloze": "妹はまだ子供＿＿＿、お酒を飲みません。",
+          "english": "My little sister is still a child, so she doesn't drink alcohol.",
+          "answer": "なので",
+          "nudge": "子供 is a bare noun sitting right against the gap, and a bare noun cannot touch this joint on its own.",
+          "sort_order": 5,
+          "jp_cloze_furigana": "妹[いもうと]はまだ子[こ]供[ども]＿＿＿、お酒[さけ]を飲[の]みません。"
         }
       ],
-      "explanation_markdown": "You're at your friend's place and their little sister is asleep on the couch. Someone turns the music up and you want to gently explain *why* everyone should keep it down — not bark an order, just point at the reason. In Japanese, the soft way to lay a reason on the table is ので.\n\nYou already have から for \"because.\" ので lives in the same room, but it wears softer shoes. It presents the reason as a plain fact of the situation rather than as your personal push, which makes it perfect for explanations, apologies, and polite requests.\n\n```jp\n赤[あか]ちゃんですので、こちらはどうですか。\n```\n\n*It's a baby, so how about over here?*\n\n## How it works\n\nThe core move is dead simple: take a clause in its **plain form** (the dictionary-style, non-polite form of a verb, adjective, or です), and stick ので on the end. The whole thing means \"because [clause].\"\n\nWith a plain verb, you just attach it directly.\n\n```jp\n明日[あした]、病[びょう]院[いん]ので、今日[きょう]は家[いえ]にいます。\n```\n\n*Because I have the hospital tomorrow, today I'm staying home.*\n\nWith an い-adjective, same deal — the adjective is already plain, so ので slots right on.\n\n```jp\nこれは安[やす]いので、これにします。\n```\n\n*This one's cheap, so I'll go with this one.*\n\nHere's the one spot that trips everyone up the first week — that's normal. With **nouns and な-adjectives**, the plain form of です is だ, but before ので that だ becomes **な**, not だ. So it's `noun + な + ので`, never `noun + だ + ので`.\n\n```jp\n彼[かれ]は医[い]者[しゃ]なので、こちらがいいです。\n```\n\n*He's a doctor, so this way is better.*\n\n```jp\n父[ちち]は今[いま]、病[びょう]気[き]なので、私[わたし]が行[い]きます。\n```\n\n*My father is sick right now, so I'll go.*\n\nNotice 病[びょう]気[き] (a noun/な-type word here) takes な before ので. Say it out loud a few times — 医[い]者[しゃ]なので, 病[びょう]気[き]なので — and let the な feel automatic.\n\n## Rules and exceptions\n\nThe big constraint: ので points at the reason, and the reason clause comes **first**. You don't lead with the result. The shape is always `[reason]ので、[result]`.\n\n> ので attaches to the **plain** form even when your main sentence is polite. So you get 病[びょう]気[き]なので、行[い]きます — plain before ので, polite です/ます at the very end. Mixing plain-then-polite like this is correct and normal.\n\nBecause ので frames things as objective fact, it clashes with strong personal commands and blunt opinions. If you're barking an order or insisting on your own will, ので feels too soft and から fits better. For explanations and polite requests, ので is your friend.\n\nOne more: don't drop the な with noun sentences. 学[がく]生[せい]ので is a classic beginner slip; it must be 学[がく]生[せい]なので.\n\n## Casual speech\n\nIn fast, casual speech ので often squeezes down to んで. It means exactly the same thing — it just sounds more relaxed and spoken.\n\n```jp\n今日[きょう]は病[びょう]気[き]なんで、うちにいます。\n```\n\n*I'm sick today, so I'm staying home. (casual)*\n\nYou'll hear んで constantly in conversation, especially tacked onto a light apology or excuse. It's not rude, just informal — keep the full ので for writing and polite situations.\n\n## Contrast\n\nHere's the pairing that matters. You know から; both から and ので mean \"because.\" The difference is attitude.\n\n- から pushes: it's *your* reason, and it can carry a bit of \"so there.\" It happily sits under commands and strong opinions.\n- ので lays a fact down gently: it's just how the situation is. It softens requests and apologies.\n\nSwap them in a request and you can feel it:\n\n```jp\n安[やす]いので、これにします。\n```\n\n*It's cheap, so I'll go with this one. (calm, matter-of-fact)*\n\n```jp\n安[やす]いから、これにします。\n```\n\n*It's cheap, so I'll go with this one. (a touch more \"because I say so\")*\n\nSame information, different temperature. When you want to sound considerate — to a teacher, a station worker, anyone you're being polite with — reach for ので.\n\nThat's the whole trick: ので is から's gentler twin, plain form in front, な glued onto nouns. Hold onto this reason-first shape — it's the same instinct you'll lean on soon when we start ordering events in time with てから (\"after doing\").\n",
+      "explanation_markdown": "Your friend messages on Thursday afternoon: lunch on Saturday? You want to go. You also have work that day. In English you would say \"I can't, I've got work on Saturday\" — and notice that the *because* buried in there is doing quiet, factual work. You are not arguing your case or pushing back on the invitation. You are putting a fact on the table and letting it explain itself. Japanese has a joint built for exactly that move, and it is ので.\n\n```jp\n土[ど]曜[よう]日[び]は仕[し]事[ごと]があるので、日[にち]曜[よう]日[び]に会[あ]います。\n```\n\n*I have work on Saturday, so we'll meet on Sunday.*\n\nLook at the shape for a second rather than the words. The reason comes first. ので sits at the seam. The result follows. One sentence, two halves, nobody raising their voice. That order is not a stylistic preference you get to play with — it is the pattern itself, and putting the halves the wrong way round is the single most common way this goes wrong in the first week.\n\n## How it works\n\nので is two small pieces stuck together, and once you see which two, almost everything about its behaviour becomes predictable instead of memorised.\n\nThe の is a **nominalizer** — a little word that takes a whole clause and turns it into a thing you can point at. The で is the same で you already use for *by means of*: タクシーで is \"by taxi\". So 仕[し]事[ごと]があるので packages up \"there is work\" into a single thing, and then says \"by that thing\". You are not pleading a case. You are naming a fact and letting it sit there.\n\nThat is also the intuition for the register. Because the reason arrives pre-packaged as a thing rather than asserted as a claim, ので comes out neutral and slightly soft. It is the connector of timetables, of doctor's notes, and of politely getting out of Saturday lunch.\n\n### Verbs and い-adjectives attach directly\n\nPut the first clause in plain form — dictionary form, plain past, plain negative — and stick ので on the end. Nothing changes shape.\n\n```jp\n雨[あめ]が降[ふ]るので、傘[かさ]を持[も]ちます。\n今日[きょう]はとても寒[さむ]いので、コートを着[き]ます。\n```\n\n*It's going to rain, so I'll take an umbrella.*\n*It's very cold today, so I'll wear a coat.*\n\n降[ふ]る is a bare dictionary form. 寒[さむ]い is a bare い-adjective. Neither one needs any help. A good working test: if the first half could stand on its own as a short, plain sentence, you can bolt ので onto it and keep going.\n\n### Nouns and な-adjectives need な first\n\nThis is the one place where everybody slips, usually for about a week, so it is worth understanding rather than drilling. A noun or a な-adjective cannot touch ので directly. Remember that the の in there is a real の — the same one in 私[わたし]の本[ほん] — and it wants something in front of it that is already shaped to modify. Nouns and な-adjectives take that shape with な.\n\nSo 静[しず]か becomes 静[しず]かなので, and 子[こ]供[ども] becomes 子[こ]供[ども]なので.\n\n```jp\nこの部屋[へや]は静[しず]かなので、よく勉[べん]強[きょう]します。\n妹[いもうと]はまだ子[こ]供[ども]なので、お酒[さけ]を飲[の]みません。\n```\n\n*This room is quiet, so I study a lot.*\n*My little sister is still a child, so she doesn't drink alcohol.*\n\nThat is where the form なので comes from, and it is why you will see なので written up as though it were a second, separate pattern. It is not. It is ので with the connector its own grammar demands, and nothing more.\n\n### ので itself never conjugates\n\nTense, negation and politeness all live in the clause in front of ので. ので has no past form, no negative form, and no polite form of its own. That is genuinely good news: there is nothing extra to learn here, only something to leave alone.\n\n```jp\n昨日[きのう]は頭[あたま]が痛[いた]かったので、早[はや]く寝[ね]ました。\n意[い]味[み]が分[わ]からないので、先[せん]生[せい]に質[しつ]問[もん]します。\n```\n\n*My head hurt yesterday, so I went to bed early.*\n*I don't understand the meaning, so I'm going to ask the teacher.*\n\n痛[いた]かった is past. 分[わ]からない is negative. ので does not react to either of them. The same holds for nouns and な-adjectives in the past: 学[がく]生[せい]だったので and 元[げん]気[き]だったので are both correct, and notice that the な has quietly disappeared in those — だった has already done the connecting work, so nothing else is needed.\n\nWhat is never correct is `学生だので`. Plain だ cannot sit in front of ので at all, and な exists precisely to fill that gap.\n\n### The polite exception: ますので and ですので\n\nHere is a rule that ので politely breaks. Normally the polite endings ます and です live only at the very end of a sentence, and any clause sitting before a connector drops down to plain form. ので is one of the very few connectors that lets you keep the polite ending in the first half.\n\n```jp\n電[でん]車[しゃ]が遅[おく]れますので、タクシーで行[い]きます。\n```\n\n*The train is going to be late, so I'll go by taxi.*\n\n遅[おく]れるので is completely correct, and it is what you will say most of the time. 遅[おく]れますので is a register dial, not a correction: it lifts the whole sentence into announcement territory — station platforms, shop staff, an email to somebody well above you. After a noun the same move gives you ですので, as in 今日[きょう]は雨[あめ]ですので.\n\nReach for the polite version when you are addressing a customer, a stranger you want to be careful with, or a whole room. Use the plain version with everybody else, or you will sound like you are reading off a laminated card.\n\n## Rules and exceptions\n\n> The reason always comes first. ので is a seam in the middle of one sentence, not a word you can slide to the end and hope for the best.\n\nThe sharp edges, roughly in the order you will hit them:\n\n- `寒いなので` is wrong. An い-adjective already ends in something the の can grab, and adding な is like fitting a second hinge to a door that swings fine.\n- `静かので` and `学生ので` are wrong for the mirror reason — those two are exactly the cases that do need な.\n- `学生だので` is wrong. だ never appears in front of ので. If you catch yourself writing だ there, swap it for な and move on.\n- In writing, ので does not begin a sentence. It joins two halves, so if there is no first half, there is nothing for it to join.\n\nThere is a softer rule about the second half too. Because ので presents its reason as a plain fact rather than as an argument, it sits comfortably in front of requests, apologies and quiet announcements, and it is the safe default whenever you are explaining yourself to somebody you do not know well. That softness is the entire reason the pattern earns its keep.\n\n> That last written rule leaks badly in real life. Plenty of people start a fresh sentence with なので, using it much the way an English speaker opens with \"So…\". A teacher will mark it. Everybody says it anyway. Hold both facts at once.\n\nOne more piece of honest mess, and it will do more for you than any drill: a ので clause can be left hanging with nothing after it at all. That is not an unfinished sentence — it is a politeness move. You state the fact, you trail off, and you let the other person finish the thought in their own head. A large share of how adults decline invitations in Japanese is exactly this shape.\n\n## Casual speech\n\nIn relaxed, fast speech ので contracts to んで. Same attachment rules, same meaning, much lower register.\n\n```jp\nちょっと用[よう]事[じ]があるので、失[しつ]礼[れい]します。\nちょっと用[よう]事[じ]があるんで、また明日[あした]。\n```\n\n*I've got something to take care of, so I'll be off.*\n*I've got a thing on, so — see you tomorrow.*\n\nThe first line is what you say standing up from a meeting: still polite, still a complete sentence. The second is what you say to a friend on the way out the door, and it is doing that trailing-off thing on purpose — the fact is stated, the apology is implied, and nobody has to say anything awkward out loud.\n\nOne warning about the contraction. なので shrinks to なんで, which is also how people say 何[なに]で, \"why\". Context sorts it out almost every time, and *almost* is the honest word. If a sentence with なんで in the middle suddenly refuses to make sense as a question, try reading it as a squashed なので instead.\n\n## One sentence, or two\n\nので is the first connector of this kind you are meeting, so the useful contrast is not against another connector — it is against not using one at all. You already have だから and それで, and they do a related job from outside the sentence. Compare 今日[きょう]は忙[いそが]しいです。だから、行[い]きません。 with 今日[きょう]は忙[いそが]しいので、行[い]きません。\n\nThe first version is two separate sentences. You assert that you are busy, full stop, and then you announce a consequence of it. It is punchier and faintly more combative, because the reason got its own moment standing there as a claim that somebody could disagree with.\n\nThe second version is one sentence. Your being busy never gets asserted on its own — it arrives already folded into the background, and the actual point of the sentence is that you are not going. That is why ので feels smoother inside an apology, and why だから can read like the opening move of an argument. Neither one is more correct than the other. They simply put the weight in different places, and you now have both.\n\n## The short version\n\nPlain form plus ので. な after nouns and な-adjectives. Reason first, result second. ので itself never changes, and in polite settings the first half is allowed to stay in ます or です form.\n\nHold onto the shape of that の, because it comes back very soon. Swap the で for に and you get のに — the same clause turned into a thing, but the sentence flips from \"this followed from that\" to \"this happened in spite of that\", and the whole tone turns over with it.\n",
       "caution_notes": [
-        "With nouns and な-adjectives, use な before ので (医者なので), never だ — 学生ので is wrong.",
-        "The reason clause with ので comes first, and ので attaches to the plain form even when the sentence ends politely.",
-        "ので frames the reason as objective fact, so prefer から under strong commands or blunt opinions.",
-        "In casual speech ので often contracts to んで with the same meaning."
+        "Nouns and な-adjectives need な before ので (学生なので, 静かなので) — 学生ので and 学生だので are both wrong.",
+        "い-adjectives and plain verbs attach straight to ので, so 寒いなので is an over-correction.",
+        "The reason clause always comes first; ので is a seam inside one sentence, not a sentence opener in writing.",
+        "ので never conjugates — tense, negation and politeness all belong to the clause in front of it."
       ],
       "related_grammar_slugs": [
         "kara-because",
         "te-kara"
       ],
       "_meta": {
-        "generator_model": "claude-opus-4-8",
-        "prompt_version": "1",
+        "generator_model": "opus-5",
+        "prompt_version": "2",
         "review_status": "reviewed"
       }
     },
@@ -5217,12 +5352,73 @@
               "inflection": "te"
             }
           ]
+        },
+        {
+          "japanese": "今、映画を見ています。",
+          "english": "I'm watching a movie right now.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "ima",
+            "eiga"
+          ],
+          "furigana": "今[いま]、映[えい]画[が]を見[み]ています。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "japanese": "彼は宿題をしています。",
+          "english": "He's doing homework.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kare",
+            "shukudai"
+          ],
+          "furigana": "彼[かれ]は宿[しゅく]題[だい]をしています。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "japanese": "音楽を聞いています。",
+          "english": "I'm listening to music.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "ongaku"
+          ],
+          "furigana": "音[おん]楽[がく]を聞[き]いています。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ongaku",
+              "start": 0,
+              "end": 2
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "ima",
         "benkyou",
-        "furu-rain"
+        "furu-rain",
+        "eiga"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -5265,19 +5461,29 @@
           "nudge": "Knowing him is a condition you're in, not an act you perform.",
           "sort_order": 4,
           "jp_cloze_furigana": "彼[かれ]を知[し]っ＿＿＿。"
+        },
+        {
+          "jp_cloze": "母は料理をし＿＿＿。",
+          "english": "My mother is cooking.",
+          "answer": "ている",
+          "nudge": "She's not just someone who cooks in general — what turns 料理をし into something you'd notice her doing if you walked in?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "母[はは]は料[りょう]理[り]をし＿＿＿。"
         }
       ],
-      "explanation_markdown": "You get a message from a friend asking what you are up to. You're in the middle of a meal. If you reply with 食[た]べます, it sounds like you're stating a daily habit or telling them you will eat later. To say \"I *am eating* right now,\" you need the pattern ている.\n\n## How it works\nTo show that an action is currently in progress, take the **て-form** of a verb (which you already know from making requests like てください) and add いる. In polite speech, this becomes います.\n\n```jp\n朝[あさ]ご飯[はん]を食[た]べています。\n```\n*I am eating breakfast.*\n\n```jp\n友[とも]達[だち]を待[ま]っています。\n```\n*I am waiting for a friend.*\n\nThis pattern is the Japanese equivalent of the English \"-ing\" ending. It frames the verb as an ongoing action.\n\n```jp\n今[いま]、雨[あめ]が降[ふ]っています。\n```\n*It is raining right now.*\n\n## Rules and exceptions\nFor most verbs, the ている pattern means \"is currently doing.\" But for a few specific verbs, it means a lasting state. Think of instantaneous actions, like \"getting to know\" someone. Once you cross that threshold, you remain in the state of knowing them. Because of this, knowing a person or a fact is almost always expressed with ている.\n\n```jp\n彼[かれ]を知[し]っています。\n```\n*I know him.*\n\n> Watch out for the verb 分[わ]かる (to understand). It already describes a continuous state of mind all on its own, so we normally just use 分[わ]かります. Using `分かっている` usually sounds like an annoyed \"I already know that!\"\n\n## Casual speech: dropping the \"i\"\nWhen speaking casually with friends, native speakers naturally take shortcuts. It is incredibly common to drop the い entirely. Instead of saying ている, they just say てる.\n\n```jp\nテレビを見[み]てるの？\n```\n*Are you watching TV?*\n\n*(Notice the explanatory の you learned earlier making an appearance here to ask for context!)*\n\n## Contrast: Habit vs. Happening Now\nIt is very easy to default to standard dictionary or ます forms for everything you want to say, but they have distinct jobs. A standard verb talks about general truths, routines, or the future. The ている pattern snaps the focus to right now.\n\n```jp\n毎[まい]日[にち]、お茶[ちゃ]を飲[の]みます。\n```\n*I drink tea every day.*\n\n```jp\n今[いま]、お茶[ちゃ]を飲[の]んでいます。\n```\n*I am drinking tea right now.*\n\nHold onto this continuous state pattern—it becomes a crucial building block later when we talk about rules and things you *must not* do (てはいけない).\n",
+      "explanation_markdown": "You get home, keys still in your hand, and call out ただいま — but nobody answers right away. Everyone in the house is already mid-task, and you can hear it before you even reach the living room: something's cooking, someone's humming along to a song. Nobody planned any of this for you, and none of it is a habit you could look up on a schedule — it's just what's happening in the house at this exact second, and that's precisely the gap ている exists to fill.\n\nYou open the door and look around.\n\n```jp\n父[ちち]は新[しん]聞[ぶん]を読[よ]んでいる。\n```\n\n*My father is reading the newspaper.*\n\n```jp\n母[はは]は料[りょう]理[り]をしている。\n```\n\n*My mother is cooking.*\n\n```jp\n妹[いもうと]は歌[うた]を歌[うた]っている。\n```\n\n*My little sister is singing.*\n\nNone of that is what your family generally does. Your father doesn't spend his life reading the newspaper, and your sister isn't a professional singer — this is just what each of them happens to be doing at this exact second, and freezing an action mid-swing like that is the entire job of ている.\n\nJapanese doesn't mark this the way English bolts -ing onto a verb. It literally glues \"exist\" onto the action, so a sentence like this says something closer to \"reading, existing\" — reading is the state your father exists in right now. Once that clicks, the whole pattern stops feeling like a separate tense and starts feeling like exactly what it is: one verb sitting on top of another. You already know いる as a standalone word meaning \"to exist\" for people and animals; this is that exact same いる, just borrowed to describe existing in the middle of doing something instead of existing in a place.\n\n## How ている Works\n\nThe shape is simple once you already have the te-form — the て／で shape you use to connect actions and ask for things. Take a verb's te-form and add いる right after it. That's the whole rule: ている isn't a separate conjugation with its own quirks, it's always somebody's te-form plus this one extra verb sitting on top of it.\n\n```jp\n料[りょう]理[り]する → 料[りょう]理[り]して → 料[りょう]理[り]している\n```\n\n*to cook → te-form → is cooking*\n\n```jp\n歌[うた]う → 歌[うた]って → 歌[うた]っている\n```\n\n*to sing → te-form → is singing*\n\n```jp\n泣[な]く → 泣[な]いて → 泣[な]いている\n```\n\n*to cry → te-form → is crying*\n\nWhatever sound change the te-form already goes through — する becoming して, う becoming って, く becoming いて — just rides along into ている unchanged. There's nothing new to memorize about the verb itself here; you're gluing a familiar shape onto a form you can already build with your eyes closed.\n\nIt also helps to notice what ている is replacing. The plain form 読[よ]む on its own usually points at something general — a habit, a fact, a plan already on the calendar — not something unfolding this second. That gap between \"reads\" and \"is reading\" is exactly the space ている exists to fill, and every ている sentence is quietly doing two things at once: naming the base action, and timestamping it to right now.\n\nContext carries some of that weight too. 今[いま] (right now) often shows up right next to ている specifically to nail the timing down, because the same shape can also describe something a person does repeatedly over a stretch of time, not only this literal second. Nothing in the grammar itself decides which reading is meant — the sentence around it does that work.\n\n## Rules and Exceptions\n\n> ている always sits on top of the te-form, never the plain dictionary form. There's no such word as `泣くいる` — it has to be 泣[な]いている.\n\nThis mix-up is common in the first few weeks, because いる by itself just means \"to exist\" (for people and animals), and it's tempting to tack it straight onto the dictionary form the way you'd add any second verb. It doesn't work like that — いる leans entirely on the te-form underneath it.\n\n> ある and いる already describe a state on their own, so they never take ている. There's no `あっている` or `いている` — the plain forms already do that job.\n\nThis one trips people up precisely because ている usually signals \"something is happening,\" and existing feels like the most basic kind of happening there is. But existing isn't an action you can catch someone partway through — a thing either exists right now or it doesn't — so the plain forms already carry that meaning without any help from ている.\n\nOne more thing worth knowing: every example above is in plain form, which is exactly how you'd talk to family or close friends. Swap いる for います and you get the polite version instead — 読[よ]んでいます, 歌[うた]っています — for anyone you'd normally address politely. The rule underneath doesn't change at all; only the last piece does. Nothing else in the sentence moves around for any of this, either — particles, time words, and objects all stay exactly where they already were, since ている is simply replacing the verb's ending, not rearranging anything around it.\n\n## Casual Speech\n\nIn fast, everyday speech, ている often loses its い entirely and shrinks down to てる. You'll hear this constantly between friends and family members — it isn't sloppy Japanese, it's just how the spoken language moves once nobody's being careful about it.\n\n```jp\n妹[いもうと]は今[いま]、宿[しゅく]題[だい]をしてる。\n```\n\n*My little sister's doing her homework right now.*\n\n```jp\n父[ちち]も今[いま]、テレビを見[み]てる。\n```\n\n*My father's watching TV right now too.*\n\nThe dropped い isn't random, either — casual spoken Japanese regularly thins out a weak, unstressed vowel sitting in the middle of a word, and ている's い is a textbook case of exactly that. You'll notice the same instinct at work elsewhere the further you get into casual speech.\n\nKeep the full ている for anything even slightly formal — a note to a teacher, a conversation with someone you've just met, anything written carefully — and save てる for the people you're already relaxed around. Nobody will misunderstand you either way; it's a register choice, not a correctness one.\n\n## Contrast: ている vs らしい\n\nYou've already met らしい for reporting something you picked up from evidence or heard secondhand rather than confirmed yourself. ている and らしい aren't fighting over the same job — they actually stack — but the difference between using one alone and adding the other on top is worth feeling out carefully.\n\n```jp\n妹[いもうと]が泣[な]いている。\n```\n\n*My little sister is crying.*\n\n```jp\n妹[いもうと]が泣[な]いているらしい。\n```\n\n*Sounds like my little sister is crying.*\n\nThe first sentence is something you're witnessing directly — you're in the room, you can hear it and see it happening. The second is something you're relaying secondhand — a phone call, a message, a closed door you haven't opened yet. ている states the moment as a plain fact you're standing right in front of; stacking らしい on top of that same ている quietly tells the listener you weren't actually there to confirm it yourself. Swap one for the other and you've changed whether you're a witness or a messenger, even though the underlying event is identical.\n\nようだ and みたいだ can layer on top of ている the same way らしい does — the flavor of your evidence shifts a little between them, but the underlying move, adding a layer of distance on top of a plain fact, stays the same across all three.\n\nThis is worth sitting with, because it's easy to assume ている is only ever about certainty. It isn't — ている just states what's unfolding; how sure you are, or how you found out, is a separate layer you add or leave off on top of it.\n\nている is going to keep showing up for the rest of your Japanese, and it won't always be doing this exact job. Soon you'll run into verbs where this same shape describes a state that already happened rather than one still unfolding — but that's a story for another lesson, and nothing you need to worry about yet. For now, every time you catch somebody mid-action — reading, cooking, singing, crying — this is the shape that says so.\n",
       "caution_notes": [
-        "The verb 分かる (to understand) already describes a state, so it usually remains as 分かります rather than taking ている.",
-        "When speaking casually, it is extremely common to drop the い and say てる instead of ている."
+        "ている only attaches to the te-form, never to the plain dictionary form — there's no such word as 泣くいる, only 泣いている.",
+        "ある and いる already describe a state on their own, so they never take ている — there's no いている or あっている.",
+        "Casual speech drops the い in ている to give てる, but keep the full ている in polite contexts (います).",
+        "らしい layered onto ている adds hearsay or secondhand inference on top of the plain fact ている states — swapping them changes whether you saw it yourself or were told about it."
       ],
       "related_grammar_slugs": [
         "no-nominalizer",
         "te-wa-ikenai"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -5294,7 +5500,8 @@
       "accepted_forms": [
         "てもいい",
         "てもいいです",
-        "てもかまいません"
+        "てもかまいません",
+        "てもかまわない"
       ],
       "example_sentences": [
         {
@@ -5354,12 +5561,47 @@
               "inflection": "te"
             }
           ]
+        },
+        {
+          "japanese": "写真を撮ってもいいですか。",
+          "english": "May I take a photo?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "shashin"
+          ],
+          "furigana": "写[しゃ]真[しん]を撮[と]ってもいいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shashin",
+              "start": 0,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "japanese": "先に帰ってもいいです。",
+          "english": "It's fine if you go home first.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kaeru-v"
+          ],
+          "furigana": "先[さき]に帰[かえ]ってもいいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "帰って",
+              "inflection": "te"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "koko",
         "suwaru",
-        "shashin"
+        "shashin",
+        "kaeru-v"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -5410,6 +5652,30 @@
           "nudge": "Asking whether tagging along is welcome.",
           "sort_order": 5,
           "jp_cloze_furigana": "一[いっ]緒[しょ]に行[い]っ＿＿＿ですか。"
+        },
+        {
+          "jp_cloze": "もう帰っ＿＿＿よ。",
+          "english": "You may go home now.",
+          "answer": "てもいいです",
+          "nudge": "This isn't a question anymore — someone is telling another person they can leave. Who's speaking here?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "もう帰[かえ]っ＿＿＿よ。"
+        },
+        {
+          "jp_cloze": "電話を使っ＿＿＿ですか。",
+          "english": "May I use the phone?",
+          "answer": "てもいい",
+          "nudge": "を marks 電話 as the thing being acted on — but whose say-so does the speaker still need first?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "電[でん]話[わ]を使[つか]っ＿＿＿ですか。"
+        },
+        {
+          "jp_cloze": "もう帰っ＿＿＿。",
+          "english": "It's fine if you go home already.",
+          "answer": "てもかまわない",
+          "nudge": "Compare this to the other 帰る sentence — what changes about how much the speaker seems to care?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "もう帰[かえ]っ＿＿＿。"
         }
       ],
       "explanation_markdown": "You're at a friend's place in Tokyo, and the tea on the table smells amazing. You want a cup, but it's not yours to just grab. In English you'd ask \"can I have some?\" — in Japanese you reach for てもいい, the pattern that asks *is it okay if I…?*\n\n```jp\nこのお茶[ちゃ]を飲[の]んでもいいですか。\n```\n\n*Is it okay if I drink this tea?*\n\nThat's the whole job of てもいい: you describe an action, then ask whether doing it is permitted — or, without the question, you *grant* that permission to someone else. It's the polite handshake around \"may I\" and \"you may.\"\n\n## How it works\n\nThe build is simple because you already own the hard part. Take a verb, put it into its て-form (the same form you learned for てください and ている), then bolt on もいい.\n\n```jp\n食[た]べる → 食[た]べて → 食[た]べてもいい\n```\n\n*eat → eating(-form) → may eat*\n\nThe literal pieces are worth seeing once. も means *even*, and いい means *good*. So 食[た]べてもいい is *even if I eat, it's good* — \"even doing this is fine,\" which is exactly how permission feels. That's your *why*: the も is what makes it *permission* rather than a command.\n\nTo make it polite, add です on the end. Both of these are correct; the first is plain, the second is the one you'll say to a stranger or a teacher.\n\n```jp\nここに座[すわ]ってもいい。\nここに座[すわ]ってもいいですか。\n```\n\n*I may sit here. / Is it okay if I sit here?*\n\nWhen you're the one *giving* permission, drop the question and just state it. A parent to a child, a host to a guest:\n\n```jp\nテレビを見[み]てもいいですよ。\n```\n\n*You may watch TV.*\n\nThere's also a more formal, more generous-sounding variant: てもかまいません, literally *even doing it, I don't mind*. Use it when you want to sound extra accommodating — a station attendant, say, telling you it's no trouble.\n\n```jp\nここで待[ま]ってもかまいません。\n```\n\n*You may wait here (I don't mind at all).*\n\n## Rules and exceptions\n\nThe most common early mistake is dropping the も. Learners hear that permission is \"て + いい\" and write `食べていい` thinking that's the neutral form. In casual speech that contraction does happen (more on that below), but in careful, polite Japanese the も carries the *permission* meaning — leave it out in a formal setting and it sounds unfinished. When in doubt, keep the も.\n\n> てもいい asks about *your own* action or grants one to someone else. It does **not** work as a general \"is X allowed here?\" sign-style rule. For that broader \"is it forbidden?\" feeling you'll want a different pattern (coming very soon).\n\nAnother sharp edge: adding か makes it a genuine request for permission, and the answer matters. If you ask 飲[の]んでもいいですか and the host says だめ (no good), you don't drink. Without か, you're not asking — you're telling someone it's fine. Mixing those up can make you sound like you're granting yourself permission out loud, which is a little odd.\n\nOne more: because いい is an adjective, some learners try to bend it like `食べてもいかった` for the past. Don't chase that at N5 — stick to the present *may / it's okay* meaning, which covers almost every situation you'll meet.\n\n## Casual speech\n\nAmong friends, two things happen. First, the polite です falls away. Second — and this is the big one — the も itself often contracts out, so てもいい becomes ていい in fast speech.\n\n```jp\nこれ食[た]べてもいい。\nこれ食[た]べていい。\n```\n\n*Can I eat this? (both casual)*\n\nBoth are casual and both are fine between friends; the second, with the も gone, is the more relaxed of the two. The tone alone (a rising, questioning tone) does the work that か does in polite speech.\n\n> Keep the も in anything written, formal, or spoken to someone above you. The dropped-も version is friends-and-family territory only.\n\n## Contrast\n\nYou've met てください — *please do this* — and it lives right next door, because both attach to the て-form. But they point in opposite directions. てください *asks the other person to act*; てもいい asks whether *you* may act, or tells the other person they *may*.\n\n```jp\n窓[まど]を開[あ]けてください。\n窓[まど]を開[あ]けてもいいですか。\n```\n\n*Please open the window. / Is it okay if I open the window?*\n\nThe first hands the job to your listener. The second keeps the action with you and just checks permission. Swap one for the other and you've flipped who's doing the opening — a real change in meaning, not just politeness.\n\nIt's also worth setting てもいい beside ませんか, the invitation you learned. ませんか pulls the other person into an activity with you — *won't you…?* — while てもいい is purely about whether an action is allowed.\n\n```jp\n一[いっ]緒[しょ]に行[い]きませんか。\n一[いっ]緒[しょ]に行[い]ってもいいですか。\n```\n\n*Won't you go together (with me)? / Is it okay if I come along?*\n\nThe first is a warm invitation you extend; the second is you asking to be let in. Same activity, completely different social move.\n\nHere's the one-line recap: て-form + もいい asks or grants permission — *may I / you may*. Hold onto the shape, because the moment you can say \"you may,\" the natural next question is \"and what may I *not* do?\" — that's てはいけない, *must not*, waiting for you just around the corner.\n",
@@ -5422,7 +5688,8 @@
       "related_grammar_slugs": [
         "te-kudasai",
         "masen-ka",
-        "te-wa-ikenai"
+        "te-wa-ikenai",
+        "nakutemo-ii"
       ],
       "_meta": {
         "generator_model": "claude-opus-4-8",
@@ -5442,7 +5709,9 @@
       "accepted_forms": [
         "てはいけない",
         "てはいけません",
-        "ちゃいけない"
+        "ちゃいけない",
+        "てはだめだ",
+        "ちゃだめ"
       ],
       "example_sentences": [
         {
@@ -5508,12 +5777,52 @@
               "inflection": "te"
             }
           ]
+        },
+        {
+          "japanese": "ここでタバコを吸ってはいけません。",
+          "english": "You must not smoke here.",
+          "sort_order": 3,
+          "vocabulary_slugs": [],
+          "furigana": "ここでタバコを吸[す]ってはいけません。"
+        },
+        {
+          "japanese": "授業中に話してはいけません。",
+          "english": "You must not talk during class.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "jugyou",
+            "hanasu-v"
+          ],
+          "furigana": "授[じゅ]業[ぎょう]中[ちゅう]に話[はな]してはいけません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 4,
+              "end": 7,
+              "surface_form": "話して",
+              "inflection": "te"
+            }
+          ]
+        },
+        {
+          "japanese": "うそをついてはいけません。",
+          "english": "You must not lie.",
+          "sort_order": 5,
+          "vocabulary_slugs": [],
+          "furigana": "うそをついてはいけません。"
         }
       ],
       "vocabulary_slugs": [
         "koko",
         "shashin",
-        "osake"
+        "osake",
+        "jugyou",
+        "hanasu-v"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -5556,6 +5865,38 @@
           "nudge": "A blunt, contracted warning off the food.",
           "sort_order": 4,
           "jp_cloze_furigana": "それを食[た]べ＿＿＿。"
+        },
+        {
+          "jp_cloze": "図書館の本にペンで書い＿＿＿。",
+          "english": "You must not write in library books with a pen.",
+          "answer": "てはいけない",
+          "nudge": "What is 書い doing right before the blank, and what job does the piece after it do to the whole sentence?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "図[と]書[しょ]館[かん]の本[ほん]にペンで書[か]い＿＿＿。"
+        },
+        {
+          "jp_cloze": "図書館で大きい声で話し＿＿＿。",
+          "english": "Don't talk in a loud voice in the library.",
+          "answer": "てはいけない",
+          "nudge": "The library and a loud voice are both already in the sentence — what does the blank add on top of them?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "図[と]書[しょ]館[かん]で大[おお]きい声[こえ]で話[はな]し＿＿＿。"
+        },
+        {
+          "jp_cloze": "ここに座っ＿＿＿。",
+          "english": "You mustn't sit here.",
+          "answer": "てはだめだ",
+          "nudge": "だめ shows up elsewhere meaning 'no good' — what's it doing paired with this chair?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "ここに座[すわ]っ＿＿＿。"
+        },
+        {
+          "jp_cloze": "話し＿＿＿。",
+          "english": "Don't talk.",
+          "answer": "ちゃだめ",
+          "nudge": "This one is shorter than the library sign version — what got worn down in casual speech?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "話[はな]し＿＿＿。"
         }
       ],
       "explanation_markdown": "You're standing in a quiet library, and your friend pulls out their phone to make a call. Before they even tap the screen, you want to stop them — not with a polite \"please don't,\" but with the flat, no-exceptions \"you can't do that here.\" That's the job of てはいけない.\n\nThis is the pattern for rules and prohibitions: the sign on the wall, the thing the teacher says, the line you don't cross. It's the mirror image of something you already know — てもいい, which grants permission. Where てもいい opens a door, てはいけない slams it shut.\n\n```jp\nここで電[でん]話[わ]を使[つか]ってはいけません。\n```\n\n*You must not use the phone here.*\n\n## How it works\n\nThe build is simple because you already own half of it. Take a verb, put it in its て-form (the same て-form you use for てください and てもいい), and attach はいけない. That's the whole machine.\n\n```jp\n食[た]べる → 食[た]べて → 食[た]べてはいけない\n飲[の]む → 飲[の]んで → 飲[の]んではいけない\n```\n\n*eat → (te-form) → must not eat*\n*drink → (te-form) → must not drink*\n\nThe polite version just swaps いけない for いけません. Same meaning, more formal register — the kind of thing you'd see on a posted notice or hear from station staff.\n\n```jp\nここでお酒[さけ]を飲[の]んではいけません。\n```\n\n*You must not drink alcohol here.*\n\nWhy はいけない? Literally いけない is a word meaning \"it won't do\" or \"it's no good.\" So the whole thing reads like \"doing X won't do.\" That's a useful intuition: you're not commanding a person directly, you're declaring that a certain *action* is not acceptable. The は in the middle is the topic particle — it's marking \"as for doing this thing\" — which is exactly why it's pronounced *wa*, not *ha*.\n\n```jp\n夜[よる]にコーヒーを飲[の]んではいけない。\n```\n\n*You must not drink coffee at night.*\n\n## Rules and exceptions\n\nThe て-form does the heavy lifting, so every irregular て-form you've already met carries straight over. 行[い]く becomes 行[い]って (not `行きて`), 話[はな]す becomes 話[はな]して, 待[ま]つ becomes 待[ま]って. If your て-form is right, the prohibition is right.\n\n```jp\nその部屋[へや]に入[はい]ってはいけません。\n```\n\n*You must not enter that room.*\n\nOne thing to watch: because いけない ends like a negative, learners sometimes try to negate it again to say \"don't have to.\" That's a different pattern entirely, and stacking negatives here just produces something broken. Don't reach for `食べてはいけなくない` — it isn't a thing.\n\n> てはいけない is genuinely strong. It's the register of laws, safety signs, and adults laying down rules to children. Saying it to your host at a dinner party — even about something small — lands like scolding. For softening someone's behavior gently, this is the wrong tool.\n\nThe subject is usually left unspoken, because a prohibition tends to apply to everyone or to \"you.\" But you can name who's bound by the rule with は or が when you need to be clear about it.\n\n```jp\n子[こ]供[ども]はお酒[さけ]を飲[の]んではいけません。\n```\n\n*Children must not drink alcohol.*\n\n## Casual speech\n\nIn real conversation, てはいけない contracts hard. The ては collapses into ちゃ, so 食[た]べてはいけない becomes 食[た]べちゃいけない. This is everywhere in casual speech — friends, family, anyone you'd already be speaking plainly with.\n\n```jp\nそれを食[た]べちゃいけない。\n```\n\n*You can't eat that.*\n\nThe で-form verbs (the ones whose て-form is で, like 飲[の]む → 飲[の]んで) shift to じゃ instead: 飲[の]んではいけない → 飲[の]んじゃいけない. Same logic, just following the voicing of the sound before it.\n\n```jp\n今[いま]、帰[かえ]っちゃいけない。\n```\n\n*You can't go home right now.*\n\nEven the ending often gets trimmed — people drop off after ちゃ and just let the tone or a trailing だめ carry the \"no good\" meaning. But for now, ちゃいけない is the reliable casual form to lock in.\n\n## Contrast\n\nLine てはいけない up against てもいい, the permission pattern you learned right before it. They share the て-form base and differ only in the tail, but they're opposites — and that's the cleanest way to feel the meaning.\n\n```jp\nここで写[しゃ]真[しん]を見[み]てはいけません。\n```\n\n*You must not look at photos here.*\n\n```jp\nここで写[しゃ]真[しん]を見[み]てもいいです。\n```\n\n*You may look at photos here.*\n\nOne tail says \"no,\" the other says \"yes.\" If you can build one, you can build the other — same verb, same て-form, just choose the door.\n\nIt's also worth separating this from てください, your request pattern. てください asks someone to *do* something as a favor; てはいけない tells them an action is *off-limits* as a rule. \"Please close the door\" and \"you must not close the door\" are not two shades of the same idea — one is a polite ask, the other is a prohibition.\n\nSo: て-form plus はいけない is your \"off-limits\" stamp, softening to ちゃいけない among friends. When you later want to say \"please *don't*\" as a gentle request rather than a hard rule, you'll meet ないでください — a much softer way to hold someone back, and the natural next step from here.\n",
@@ -5568,7 +5909,8 @@
       "related_grammar_slugs": [
         "te-mo-ii",
         "te-kudasai",
-        "naide-kudasai"
+        "naide-kudasai",
+        "nakereba-naranai"
       ],
       "_meta": {
         "generator_model": "claude-opus-4-8",
@@ -6036,7 +6378,9 @@
         "なければならない",
         "なければなりません",
         "なきゃ",
-        "なくてはいけない"
+        "なくてはいけない",
+        "なければいけない",
+        "なきゃいけない"
       ],
       "example_sentences": [
         {
@@ -6081,12 +6425,39 @@
             "kaeru-v"
           ],
           "furigana": "早[はや]く帰[かえ]らなければなりません。"
+        },
+        {
+          "japanese": "宿題をしなければなりません。",
+          "english": "I must do my homework.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "shukudai"
+          ],
+          "furigana": "宿[しゅく]題[だい]をしなければなりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "japanese": "九時までに行かなければなりません。",
+          "english": "I have to go by nine o'clock.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "iku-v"
+          ],
+          "furigana": "九[く]時[じ]までに行[い]かなければなりません。"
         }
       ],
       "vocabulary_slugs": [
         "benkyou",
         "kusuri",
-        "kaeru-v"
+        "kaeru-v",
+        "shukudai",
+        "iku-v"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -6129,21 +6500,54 @@
           "nudge": "The book purchase is compulsory, muttered casually.",
           "sort_order": 4,
           "jp_cloze_furigana": "明日[あした]、本[ほん]を買[か]わ＿＿＿。"
+        },
+        {
+          "jp_cloze": "本も読ま＿＿＿。",
+          "english": "I also have to read the book.",
+          "answer": "なければならない",
+          "nudge": "読む swapped む for ま before this blank — what usually follows that particular stem shape?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "本[ほん]も読[よ]ま＿＿＿。"
+        },
+        {
+          "jp_cloze": "学校に行か＿＿＿。",
+          "english": "I have to go to school.",
+          "answer": "なければならない",
+          "nudge": "行く just did the same stem swap you'd use before なくてもいい — what comes next this time?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "学[がっ]校[こう]に行[い]か＿＿＿。"
+        },
+        {
+          "jp_cloze": "宿題、し＿＿＿。",
+          "english": "Gotta do the homework.",
+          "answer": "なきゃいけない",
+          "nudge": "This is the shrunk-down, spoken cousin of the full ending — what got clipped off なければ?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "宿[しゅく]題[だい]、し＿＿＿。"
+        },
+        {
+          "jp_cloze": "明日は早く起き＿＿＿。",
+          "english": "I have to wake up early tomorrow.",
+          "answer": "なければならない",
+          "nudge": "起きる is already missing its dictionary ending here — this one continues in the opposite direction from なくてもいい.",
+          "sort_order": 8,
+          "jp_cloze_furigana": "明日[あした]は早[はや]く起[お]き＿＿＿。"
         }
       ],
-      "explanation_markdown": "You're at a friend's house. The food is delicious, and everyone is having a good time, but you look at the clock. It's late. How do you tell everyone that you really have to leave?\n\n```jp\n私[わたし]は帰[かえ]らなければなりません。\n```\n*I have to go home.*\n\n## How it works\n\nHow does this tongue-twister actually work? It attaches to the negative stem of a verb—the same form you use for `ないでください`. Take `飲む` (to drink), change it to `飲まない` (don't drink), drop the `ない`, and stick `なければならない` right on the end.\n\nWhy is it so long? It's actually a logical combination of two ideas. `なければ` means \"if you don't,\" and `ならない` means \"it won't do\" or \"it is no good.\" Literally, \"if you don't do it, it's no good.\" That is how Japanese expresses \"must.\"\n\n```jp\n薬[くすり]を飲[の]まなければなりません。\n```\n*I have to take medicine.*\n\n```jp\n明日[あした]、学[がっ]校[こう]に行[い]かなければなりません。\n```\n*I have to go to school tomorrow.*\n\n## Rules and exceptions\n\n> Because `ならない` is just a verb sitting at the end of the phrase, its politeness needs to match your situation. Change it to `なりません` when speaking politely, but leave it as `ならない` with friends.\n\nJapanese also has a nearly identical twin to this pattern: `なくてはいけない`. It follows the exact same rules and means the exact same thing (literally, \"as for not doing it, it's bad\"). You will hear both used interchangeably, so just pick the one that feels easier to say for now.\n\n```jp\n今日[きょう]、会[かい]社[しゃ]に行[い]かなくてはいけません。\n```\n*I have to go to the office today.*\n\n## Casual speech\n\nSaying `なければならない` every single time you need to do something takes entirely too much breath. In casual conversation, native speakers almost never say the whole thing out loud. Instead, they squish it down into a single, snappy word: `なきゃ`.\n\nJust take the negative stem and add `なきゃ`. It immediately makes you sound natural and relaxed.\n\n```jp\n今[いま]、寝[ね]なきゃ。\n```\n*I have to sleep now.*\n\n```jp\n明日[あした]、本[ほん]を買[か]わなきゃ。\n```\n*I have to buy a book tomorrow.*\n\n## Two sides of the rules\n\nYou already know how to lay down the law with `てはいけない` (must not). These two patterns are two sides of the strict-rule coin. One forces you to do something, and the other forces you *not* to. Notice how they look side by side.\n\n```jp\nお酒[さけ]を飲[の]んではいけません。\n```\n*You must not drink alcohol.*\n\n```jp\n薬[くすり]を飲[の]まなければなりません。\n```\n*I have to take medicine.*\n\nNow you can clearly talk about your obligations. But what if you *don't* have to do something? Hold onto this negative stem—it will come in handy again when we look at `なくてもいい` to finally let yourself off the hook!\n",
+      "explanation_markdown": "Your friend texts you: 明日[あした]試[し]験[けん]があります。There's a version of tonight where you watch TV until you fall asleep, and a version where you don't get to choose — because tomorrow's exam doesn't care how you feel about it. Japanese marks that second kind of night with a single ending: なければならない, \"must / have to.\" It turns a plain verb into something you don't get to skip.\n\n## How It Works\n\nなければならない attaches to the same stem you already met in なくてもいい — the ない-stem, the shape a verb takes right before ない. You already know how to build it; this ending just replaces くてもいい with ければならない.\n\n```jp\n今日[きょう]は漢[かん]字[じ]を覚[おぼ]えなければならない。\n```\n*I have to memorize kanji today.*\n\n覚[おぼ]える drops its る and takes the ない-stem 覚[おぼ]え, then ければならない tacks straight on. ならない is just the negative of なる (to become) — more on that shape in a moment.\n\n```jp\n本[ほん]も読[よ]まなければならない。\n```\n*I also have to read the book.*\n\n読[よ]む is a different kind of verb — its stem swaps む for ま before any ない-family ending, the same swap you'd make for なくてもいい. も here just means \"also,\" stacking a second obligation on top of the first.\n\nThe same swap works for 行[い]く, which turns its く into か:\n\n```jp\n学[がっ]校[こう]に行[い]かなければならない。\n```\n*I have to go to school.*\n\n## Rules and Exceptions\n\nThat なりません isn't a random polite tag — it's the negative of なる, \"to become.\" Read the whole phrase literally and it says something like \"if [this] doesn't happen, it won't become [okay]\" — which is exactly the shape of an obligation: skip the verb, and things don't turn out right. Once you see that, なければならない stops looking like a memorized chunk and starts looking like ordinary grammar wearing a long coat.\n\n> Don't split なければ off as its own negative clause. It's one fused ending, not \"if not\" plus a separate sentence — you can't remove ならない and still mean the same thing.\n\nなければいけない means the same thing and swaps in freely; いけない reads as \"it won't do,\" which lands in the same place as \"won't become okay.\" Some verbs favor one variant over the other for no reason beyond habit, and native speakers mix both without thinking about it.\n\n```jp\n今[こん]週[しゅう]、本[ほん]を返[かえ]さなければいけません。\n```\n*I have to return the book this week.*\n\n返[かえ]す swaps す for さ before this ending, same pattern as every verb so far.\n\n## Casual Speech\n\nIn speech, なければ shrinks hard — down to なきゃ — and いけない often drops entirely, leaving a bare なきゃ standing in for the whole obligation.\n\n```jp\n宿[しゅく]題[だい]、しなきゃいけない。\n```\n*Gotta do the homework.*\n\nYou'll also hear just 宿[しゅく]題[だい]、しなきゃ。 with nothing after it — the いけない is implied, understood, gone. That's normal, not sloppy; write out the full form in anything that isn't a text message to a friend.\n\n## Contrast\n\nYou already know なくてもいい from a few lessons back — it says a verb is optional, not required. Swap it in against なければならない and the meaning flips completely, not just softens.\n\n```jp\n音[おん]楽[がく]を聞[き]かなくてもいいです。\n```\n*I don't have to listen to music.*\n\nSame ない-stem, opposite conclusion: なくてもいい clears the requirement; なければならない installs it. And てはいけない — \"must not\" — sits on the far side of なければならない, not next to it: one demands an action, the other forbids one.\n\n```jp\n遅[おそ]く寝[ね]てはいけません。\n```\n*I must not go to bed late.*\n\nMixing these up is an easy early mistake: saying `寝なくてもいい` when you mean \"you must not sleep late\" tells someone the opposite of what you intended — that sleeping late is fine, just not required.\n\nFor a fast mental shortcut, the dictionary form and the obligation form line up directly:\n\n```jp\n行[い]く → 行[い]かなければならない\n```\n*to go → have to go*\n\nThat's the whole engine: find the ない-stem you already know, and decide whether you're forbidding it (てはいけない), excusing it (なくてもいい), or locking it in (なければならない). Later, when you meet ようにする, you'll see the same instinct pointed at habits instead of single obligations — making something happen on purpose, rather than being told it must.\n",
       "caution_notes": [
-        "This pattern literally means \"if you don't do it, it's no good,\" which is how Japanese expresses \"must.\"",
-        "Because the pattern ends in a verb, you must conjugate the end to なります or ならない to match the politeness of your conversation.",
-        "In everyday casual speech, this long phrase is almost always contracted down to just なきゃ."
+        "なりません is the polite negative of なる, not a separate negation you can remove from the ending.",
+        "なくてもいい and なければならない use the identical ない-stem but land on opposite meanings, so double-check which one you actually wrote.",
+        "なきゃいけない and the even shorter なきゃ belong to speech and texts, not formal writing.",
+        "てはいけない forbids an action, while なければならない requires one — they are not two strengths of the same rule."
       ],
       "related_grammar_slugs": [
-        "naide-kudasai",
+        "nakutemo-ii",
         "te-wa-ikenai",
-        "nakutemo-ii"
+        "naide-kudasai"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -6159,7 +6563,8 @@
       },
       "accepted_forms": [
         "なくてもいい",
-        "なくてもいいです"
+        "なくてもいいです",
+        "なくてもかまわない"
       ],
       "example_sentences": [
         {
@@ -6221,12 +6626,56 @@
               "inflection": "nai"
             }
           ]
+        },
+        {
+          "japanese": "明日は来なくてもいいです。",
+          "english": "You don't have to come tomorrow.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ashita",
+            "kuru-v"
+          ],
+          "furigana": "明日[あした]は来[こ]なくてもいいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 7,
+              "surface_form": "来なくて",
+              "inflection": "nai"
+            }
+          ]
+        },
+        {
+          "japanese": "心配しなくてもいいです。",
+          "english": "You don't have to worry.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "shinpai-suru"
+          ],
+          "furigana": "心[しん]配[ぱい]しなくてもいいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shinpai-suru",
+              "start": 0,
+              "end": 6,
+              "surface_form": "心配しなくて",
+              "inflection": "nai"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "kuru-v",
         "okane",
-        "isogu"
+        "isogu",
+        "ashita",
+        "shinpai-suru"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -6269,22 +6718,56 @@
           "nudge": "You're checking whether the reading is optional.",
           "sort_order": 4,
           "jp_cloze_furigana": "この新[しん]聞[ぶん]を読[よ]ま＿＿＿ですか。"
+        },
+        {
+          "jp_cloze": "明日は早く起き＿＿＿。",
+          "english": "You don't have to wake up early tomorrow.",
+          "answer": "なくてもいいです",
+          "nudge": "早く describes how you'd get up if you did — does the rest of the sentence say that's required?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "明日[あした]は早[はや]く起[お]き＿＿＿。"
+        },
+        {
+          "jp_cloze": "そんなに急が＿＿＿よ。",
+          "english": "You don't have to hurry that much.",
+          "answer": "なくてもいい",
+          "nudge": "そんなに points at a level of hurrying someone assumed was needed — what is the blank doing to that assumption?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "そんなに急[いそ]が＿＿＿よ。"
+        },
+        {
+          "jp_cloze": "心配し＿＿＿よ。",
+          "english": "You don't have to worry.",
+          "answer": "なくてもいい",
+          "nudge": "The speaker is talking someone down from worry — what would make that reassurance land?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "心[しん]配[ぱい]し＿＿＿よ。"
+        },
+        {
+          "jp_cloze": "今日は学校へ行か＿＿＿。",
+          "english": "It's fine even if you don't go to school today.",
+          "answer": "なくてもかまわない",
+          "nudge": "行く is already in its negative form here — what is the blank adding on top of that ない?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "今日[きょう]は学[がっ]校[こう]へ行[い]か＿＿＿。"
         }
       ],
-      "explanation_markdown": "Your friend starts walking really fast toward the cinema because they think the movie starts soon. You just checked the clock, and you know you have plenty of time. How do you tell them, \"You don't have to hurry\"?\n\n```jp\n急[いそ]がなくてもいいです。\n```\n*You don't have to hurry.*\n\n## How it works\n\nYou already know how to say that something is permitted using `てもいい` (it's okay to do). To say that someone *doesn't have to* do something, we just apply that same idea to a negative action: \"it is okay even if you don't do it.\"\n\nTo build it, take the negative `ない` form of a verb, drop the final `い`, and add `くてもいい`. For example, `食べる` (to eat) becomes `食べない`, which then becomes `食べなくてもいい` (don't have to eat). It behaves exactly like an *i-adjective* (a describing word ending in \"i\").\n\nLet's look at it in a few complete sentences. Notice how we add `です` at the end to keep things polite.\n\n```jp\n野[や]菜[さい]を食[た]べなくてもいいです。\n```\n*You don't have to eat the vegetables.*\n\n```jp\n新[あたら]しい本[ほん]を買[か]わなくてもいいです。\n```\n*You don't have to buy a new book.*\n\n```jp\n明日[あした]は学[がっ]校[こう]に行[い]かなくてもいいです。\n```\n*I don't have to go to school tomorrow.*\n\n## Asking for permission to skip\n\nBecause `なくてもいい` literally means \"is it okay if I don't?\", you can easily turn it into a question to ask if something is optional. Just add the question particle `か` at the end.\n\n```jp\nこの新[しん]聞[ぶん]を読[よ]まなくてもいいですか。\n```\n*Do I not have to read this newspaper? (Is it okay if I don't read this newspaper?)*\n\n## Casual speech\n\nLike most patterns ending in `いいです`, dropping the `です` makes the sentence casual. You will hear this constantly among friends and family.\n\n```jp\n今日[きょう]は急[いそ]がなくてもいい。\n```\n*You don't have to hurry today.*\n\n> If you want to sound even softer when talking to a friend, you can add the particle `よ` to the end (`なくてもいいよ`). It makes it sound like a helpful tip rather than a cold fact.\n\n## Must, must not, or don't have to?\n\nWhen speaking English, we often mix up \"must not\" and \"don't have to.\" In Japanese, it is crucial to keep these concepts completely separate.\n\nIf you want to say someone absolutely *must* do something, use `なければならない`. If they are free to skip it, use `なくてもいい`.\n\n```jp\n今日[きょう]、学[がっ]校[こう]に行[い]かなければならない。\n```\n*I must go to school today.*\n\n```jp\n明日[あした]、学[がっ]校[こう]に行[い]かなくてもいい。\n```\n*I don't have to go to school tomorrow.*\n\nLikewise, if you are actively asking someone *not* to do something, use `ないでください` (please don't). Use `なくてもいい` only when you are giving them the freedom to choose.\n\n```jp\nその水[みず]を飲[の]まないでください。\n```\n*Please don't drink that water.*\n\n```jp\nその水[みず]を飲[の]まなくてもいいです。\n```\n*You don't have to drink that water.*\n\nOnce you are comfortable talking about what you have to do (and what you can skip), we will introduce `たい` — how to talk about what you actually *want* to do!\n",
+      "explanation_markdown": "It's the night before a test, and your desk is covered in 宿[しゅく]題[だい] you haven't touched. You message a classmate to panic together, and they text back something that stops you cold: not everything on that pile is actually due tomorrow.\n\n```jp\n今日[きょう]は宿[しゅく]題[だい]を全[ぜん]部[ぶ]しなくてもいい。\n```\n\n*You don't have to finish all the homework today.*\n\nThat's なくてもいい — \"don't have to,\" \"it's fine even without doing.\" It tells you a rule you assumed was strict actually has slack in it.\n\n## How it works\n\nStart from the plain negative (ない-form) of the verb, drop the final い, and add くてもいい. しない becomes しなくて, and もいい tacks on the same \"it's fine\" feeling you already know from てもいい.\n\n```jp\n行[い]く → 行[い]かなくてもいい\n```\n\n*to go → don't have to go*\n\n```jp\n食[た]べる → 食[た]べなくてもいい\n```\n\n*to eat → don't have to eat*\n\nU-verbs like 行[い]く shift to the あ-row before ない (行[い]か-), and ru-verbs like 食[た]べる just drop る and add ない — the same split you already learned for building the plain negative in the first place. なくてもいい just rides on top of a form you can already produce.\n\nYou'll also see です tacked on for politeness, and a slightly stiffer cousin, なくてもかまわない (\"it doesn't matter if you don't\"), which leans a little more formal but means the same thing.\n\n```jp\n明日[あした]は早[はや]く起[お]きなくてもいいです。\n```\n\n*You don't have to wake up early tomorrow.*\n\n```jp\n今日[きょう]は学[がっ]校[こう]へ行[い]かなくてもかまわない。\n```\n\n*It's fine even if you don't go to school today.*\n\n## Rules and exceptions\n\nThe trap almost everyone falls into first: なくてもいい looks like it should mean \"must not,\" because it has ない sitting right there next to a rule word. It doesn't. It means the opposite of forced — permission to skip, not a ban.\n\n> Don't reach for なくてもいい when you mean \"must not.\" That's a completely different pattern — てはいけない, which you already know — and mixing them up flips the meaning of your sentence.\n\nThere's no irregular twist here: any verb that has a plain negative can take なくてもいい, including する and 来[く]る once they're in their ない-forms (しない, 来[こ]ない). The pattern is mechanical once the ない-form is solid, which is exactly why it's worth double-checking that form first if a sentence feels off.\n\n## Casual speech\n\nIn relaxed conversation, もいい often just shrinks the sentence's weight rather than changing its wording — you'll hear なくてもいい said fast and clipped, sometimes with いい swapped for a shrug-toned よ at the end for warmth.\n\n```jp\nそんなに急[いそ]がなくてもいいよ。\n```\n\n*You don't have to hurry that much.*\n\n```jp\n心[しん]配[ぱい]しなくてもいいよ。\n```\n\n*You don't have to worry.*\n\nThat よ isn't part of the grammar — it's the same softening particle you've seen elsewhere — but it shows up on this pattern constantly because なくてもいい is so often said to reassure someone.\n\n## Contrast\n\nYou already have two close relatives of this pattern, and lining them up side by side is the fastest way to keep them separate.\n\nてもいい gives permission to do something; なくてもいい gives permission to skip it. Same もいい ending, opposite verb form feeding into it.\n\n```jp\n宿[しゅく]題[だい]をしてもいいですか。\n```\n\n*Is it okay if I do the homework?*\n\nCompare that to the very first example above — 宿[しゅく]題[だい]を全[ぜん]部[ぶ]しなくてもいい, \"you don't have to do all the homework\" — and the difference is entirely in that one syllable, ない, sitting in front of くてもいい.\n\nてはいけない sits at the opposite end from both of them: it forbids, full stop.\n\n```jp\n今日[きょう]は宿[しゅく]題[だい]をしなくてはいけない。\n```\n\n*You have to do the homework today.*\n\nNotice that sentence isn't even なくてもいい's opposite — しなくてはいけない (\"must do\") is built the same way as なくてもいい but swaps いい for はいけない, and the meaning flips to an obligation instead of a release from one. Three patterns, three feelings: いい lets you off the hook, はいけない locks you to it, and mixing up which one you reached for is the single most common mistake with this whole family.\n\nHold onto that hook feeling — it's the flip side of なければならない, which you'll meet soon and which says \"you must\" using the same ない-stem this pattern already taught you to build.\n",
       "caution_notes": [
-        "Do not confuse なくてもいい (don't have to) with なければならない (must).",
-        "Do not confuse なくてもいい (it's okay if you don't) with ないでください (please don't).",
-        "なくてもいい literally translates to 'is it okay even if I don't?', so it gives the listener permission to skip an action."
+        "Don't confuse なくてもいい with てはいけない — one grants release from a rule, the other forbids the action entirely.",
+        "なくてもいい needs a correctly formed ない-stem underneath it, so double-check that form first if the sentence feels off.",
+        "なくてもかまわない means the same thing as なくてもいい but reads a little more formal.",
+        "The casual よ often tacked onto the end is a separate softening particle, not part of this pattern's grammar."
       ],
       "related_grammar_slugs": [
         "te-mo-ii",
+        "te-wa-ikenai",
         "nakereba-naranai",
         "naide-kudasai",
         "tai"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -6451,7 +6934,9 @@
         "たことがある",
         "たことがあります",
         "たことがない",
-        "たことがありません"
+        "たことがありません",
+        "ことがある",
+        "ことがあります"
       ],
       "example_sentences": [
         {
@@ -6525,14 +7010,47 @@
               "inflection": "ta"
             }
           ]
+        },
+        {
+          "japanese": "たまに遅刻することがあります。",
+          "english": "I am sometimes late.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "tama-ni"
+          ],
+          "furigana": "たまに遅[ち]刻[こく]することがあります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tama-ni",
+              "start": 0,
+              "end": 3
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "nihon",
         "iku-v",
-        "eiga"
+        "eiga",
+        "tama-ni"
       ],
       "family": "patterns",
+      "uses": [
+        {
+          "label": "Experience — \"have done before\"",
+          "structure": "Verb-た + ことがある",
+          "japanese": "日本へ行ったことがあります。",
+          "english": "I have been to Japan before.",
+          "furigana": "日本[にほん]へ行[い]ったことがあります。"
+        },
+        {
+          "label": "Sometimes happens",
+          "structure": "Dictionary form + ことがある",
+          "japanese": "たまに遅刻することがあります。",
+          "english": "I am sometimes late.",
+          "furigana": "たまに遅[ち]刻[こく]することがあります。"
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は日本に行っ＿＿＿。",
@@ -6581,20 +7099,29 @@
           "nudge": "彼 has made the trip at least once.",
           "sort_order": 5,
           "jp_cloze_furigana": "彼[かれ]は日本[にほん]に来[き]＿＿＿。"
+        },
+        {
+          "jp_cloze": "この映画を見た＿＿＿。",
+          "english": "I have seen this movie before.",
+          "answer": "ことがあります",
+          "nudge": "見た on its own is just one evening — the blank has to stretch it across your whole past.",
+          "sort_order": 6,
+          "jp_cloze_furigana": "この映[えい]画[が]を見[み]た＿＿＿。"
         }
       ],
-      "explanation_markdown": "You're at a party and someone mentions they just got back from Japan. You want to say \"Oh, I've been to Japan too!\" — not \"I'm going,\" not \"I went yesterday,\" but the bigger thing: *this is part of my life experience.* Japanese has a dedicated shape for exactly that, and it's built from parts you already own.\n\nHere's the move:\n\n```jp\n私[わたし]は日本[にほん]に行[い]ったことがあります。\n```\n\n*I have been to Japan.*\n\nThat last chunk, ことがあります, is the whole trick. Literally it's saying \"the fact of having gone exists\" — and once you hear it that way, it stops feeling like a weird idiom and starts feeling logical.\n\n## How it works\n\nYou take a verb, put it in its plain past form (the た-form, the casual \"did\" version), and then bolt on ことがある.\n\nThe recipe is always the same:\n\n```jp\n食[た]べる → 食[た]べた → 食[た]べたことがある\n```\n\n*eat → ate → have eaten (before)*\n\nLet's break down that tail. こと is a nominalizer — a little word that turns a whole verb phrase into a *thing* you can talk about. So 食[た]べた (\"ate\") becomes 食[た]べたこと (\"the experience of having eaten\"). Then が marks it as the subject, and ある means \"exists.\" Put together: \"the experience of having eaten exists.\" That's your \"I have eaten before.\"\n\nSo the two halves you're managing are the た-form on the left and the fixed ことがある on the right. If your た-form is right, you're done.\n\n```jp\n私[わたし]はあの映[えい]画[が]を見[み]たことがあります。\n```\n\n*I have seen that movie before.*\n\n```jp\n彼[かれ]はお酒[さけ]を飲[の]んだことがあります。\n```\n\n*He has drunk alcohol before.*\n\nNotice the polite ending lives all the way at the end: あります for polite, ある for plain. The verb in front stays in casual past no matter how polite you're being — that's normal, and it trips people up the first week. The politeness of the whole sentence is decided by that final ある / あります, not by the た-form.\n\nTo ask about experience, just add か, same as any polite question:\n\n```jp\n日本[にほん]の料[りょう]理[り]を食[た]べたことがありますか。\n```\n\n*Have you ever eaten Japanese food?*\n\n## Rules and exceptions\n\nThe big one: this pattern is about *life experience*, not about \"one specific time in the recent past.\" If you did something yesterday, you use plain past (食[た]べた), not this. Save ことがある for \"at some point in my life, this has happened.\"\n\n> Don't use たことがある for things you literally just did or do routinely. \"I ate breakfast this morning\" is 朝[あさ]ご飯[はん]を食[た]べました, not 食[た]べたことがあります — the experience frame would sound like you're marveling that breakfast has ever occurred in your life.\n\nTo say you *haven't* ever done something, you make the ある negative — turn あります into ありません (or ある into ない in plain speech). The verb in front stays exactly the same.\n\n```jp\n私[わたし]はまだこの魚[さかな]を食[た]べたことがありません。\n```\n\n*I have never eaten this fish yet.*\n\nA common wrong guess is to negate the verb instead of ある — learners write things like `食べないことがあります`, which means something totally different (\"there are times I don't eat\"). Keep the verb positive and past; move the negation to the very end.\n\n> The negative goes on ある, never on the front verb. 食[た]べたことがありません = \"have never eaten.\" `食べなかったことがある` is a real but rare and confusing shape — as a beginner, don't reach for it.\n\n## Casual speech\n\nIn relaxed conversation, two things happen. First, the polite tail drops to plain: あります becomes ある, ありません becomes ない. Second — and this is the one you'll hear constantly — the が simply gets dropped.\n\n```jp\n私[わたし]は日本[にほん]に行[い]ったことがある。\n```\n\n*I've been to Japan.*\n\nDrop the が and you get the everyday spoken version:\n\n```jp\n私[わたし]は日本[にほん]に行[い]ったことある。\n```\n\n*I've been to Japan. (casual)*\n\nBoth are fine in casual speech; the が-less one just sounds more like talking than writing. For the negative, ない does the same job: 見[み]たことない means \"never seen it.\" When you're writing or being polite, keep the が and use あります.\n\n## Contrast\n\nThe closest thing you already know is plain ている — the ongoing-state pattern (Verb-て + いる). It's worth lining these up because both can touch the past, but they point in opposite directions.\n\nている tells you about a *current* state or an action in progress right now:\n\n```jp\n彼[かれ]は今[いま]ご飯[はん]を食[た]べています。\n```\n\n*He is eating a meal right now.*\n\nたことがある tells you about a *past experience* that colors the present:\n\n```jp\n彼[かれ]はこの料[りょう]理[り]を食[た]べたことがあります。\n```\n\n*He has eaten this dish before.*\n\nSwap one for the other and the meaning flips completely: 食[た]べています is \"eating now,\" 食[た]べたことがあります is \"has eaten at some point in life.\" One is a live camera, the other is a résumé line.\n\nIt's also worth separating this from the plain past you already use. 見[み]た is \"saw (a specific time)\"; 見[み]たことがある is \"have seen (ever).\" If a friend asks どの映[えい]画[が]を見[み]た — \"which movie did you watch?\" — they mean last night. If they ask あの映[えい]画[が]を見[み]たことがある, they mean \"in your whole life, ever?\"\n\nHold onto the こと nominalizer here — that trick of turning a verb into a thing shows up again soon, and the た-form muscle you're building will pay off directly when we meet たり〜たりする for listing actions.\n\nRecap: verb in casual past + ことがある = \"have done it before.\" Negate the ある, not the verb, and drop the が when you're being casual.\n",
+      "explanation_markdown": "Your friend just got back from a trip and asks if you've ever eaten sushi. Not \"do you eat sushi\" — \"have you ever, at any point in your life, eaten it.\" English handles this with \"have\" plus a past participle. Japanese handles it with a little noun, こと (the word that turns a whole action into \"a thing\" you can talk about), sitting after a verb in its past form, followed by ある (to exist). Literally: \"the thing of having eaten exists.\" That's the whole idea behind ことがある.\n\n```jp\nすしを食[た]べたことがありますか。\n```\n\n*Have you ever eaten sushi?*\n\n## How it works\n\nThe recipe is simple: take a verb, put it in its plain past (た-form), and add ことがある after it.\n\n```jp\n話[はな]す → 話[はな]した\n```\n\n食[た]べる becomes 食[た]べた, 行[い]く becomes 行[い]った, 乗[の]る becomes 乗[の]った — whatever past form you already know, that's the piece that slots in front of こと. The ある at the end conjugates like the plain \"to exist\" verb you already know: あります in polite speech, ない in the negative, あった if you're describing a past state of \"having had that experience\" (rare, but it shows up).\n\n```jp\n日本[にほん]語[ご]を勉[べん]強[きょう]したことがあります。\n```\n\n*I have studied Japanese before.*\n\nNotice what's *not* changing: the main verb stays frozen in its plain past form no matter how polite the sentence around it gets. You're not conjugating 食[た]べる for politeness — you're conjugating ある. That's the part that carries です/ます, and it's the part that turns negative when you want \"never.\"\n\n```jp\nいいえ、食[た]べたことがありません。\n```\n\n*No, I've never eaten it.*\n\n```jp\n飛[ひ]行[こう]機[き]に乗[の]ったことがあります。\n```\n\n*I've been on a plane before.*\n\nThat last one is worth sitting with. In English you might say \"I've flown before\" or \"I've been on a plane,\" and neither maps cleanly onto Japanese word order — but ことがある doesn't care about your English phrasing. It only asks one question: has this specific action, this specific verb, ever happened to you at least once? One time counts. A hundred times counts. The pattern is blind to frequency; it just confirms the experience exists somewhere in your past.\n\n## Rules and exceptions\n\nThe biggest trap is reaching for ことがある when you actually mean \"I did X yesterday\" or \"I did X once, at a specific known time.\" ことがある is for experience in the abstract — \"at some point, ever\" — not for narrating a specific past event. If your friend asks \"what did you do last weekend,\" answering with a lifetime-experience statement sounds like you're dodging the question with a resume bullet point instead of just telling the story. For a one-off specific event, plain た-form alone does the job: 猫[ねこ]と一[いっ]緒[しょ]に泳[およ]ぎました.\n\n```jp\n猫[ねこ]と一[いっ]緒[しょ]に泳[およ]いだことがあります。\n```\n\n*I've swum together with a cat before.*\n\nThat sentence, said flatly, describes a fact about your life history — somewhere, at some point, a cat was involved in your swimming. It doesn't say when, doesn't say how many times, and doesn't say whether it was on purpose.\n\n> Don't drop ことがある onto a dictionary-form verb expecting the same meaning. `食べることがある` is grammatical, but it means something completely different — \"it sometimes happens that I eat [this],\" a statement about habits, not history. Past tense + ことがある = experience. Dictionary form + ことがある = occasional occurrence. Same skeleton, opposite job, and mixing them up is one of the most common beginner slips with this pattern.\n\nAnother edge worth knowing: because ある is the verb doing all the conjugating, questions form exactly the way you'd expect — swap ます for ますか, or drop the polite ending entirely in casual speech and just raise your voice at the end.\n\n```jp\n山[やま]に登[のぼ]ったことがありますか。\n```\n\n*Have you ever climbed a mountain?*\n\n## Casual speech\n\nIn relaxed conversation, が often just disappears: ことがある becomes ことある, said quickly, almost like one word. あります shrinks the same way informal verbs always do — あります becomes ある, ありません becomes ない. So a casual friend asking about your sushi history might say すし食[た]べたことある? instead of the full すしを食[た]べたことがありますか. Same question, same structure underneath, just worn down the way frequently used phrases always wear down in speech.\n\n## Contrast\n\nYou've already met つもり for talking about the future — 日本[にほん]に行[い]くつもりです, \"I intend to go to Japan.\" ことがある lives in the opposite direction entirely: it only ever looks backward.\n\n```jp\n日本[にほん]に行[い]くつもりです。\n```\n\n*I intend to go to Japan.*\n\nSwap the tense and the verb form and the sentence flips its whole orientation. つもり sits on a dictionary-form verb and points forward, toward a plan that hasn't happened yet. ことがある sits on a た-form verb and points backward, toward something that's already settled into your history. Neither one can do the other's job — you can't use つもり to report an experience you already had, and you can't use ことがある to state an intention. If you're ever unsure which one you need, ask yourself: is this pointing at tomorrow, or at a memory?\n\nHold onto this shape, too — you're about to meet ことにする, which reuses the same こと (turning an action into \"a thing\") but glues it to a completely different verb, and lands on \"I've decided to.\" Same building block, new direction.\n",
       "caution_notes": [
-        "Use たことがある for life experience, not for something you just did — 'I ate breakfast this morning' is 食べました, not 食べたことがあります.",
-        "Negate the ある (ありません / ない), never the front verb; the verb stays in casual past.",
-        "In casual speech the polite tail drops to ある/ない and が is often omitted (行ったことある)."
+        "ことがある only attaches to a verb's plain past (た-form) — putting it on the dictionary form instead changes the meaning to an occasional habit, not a past experience.",
+        "Use ことがある for experience in general, not to narrate one specific known event from last week — plain past alone tells that kind of story.",
+        "In casual speech が can drop and あります can shrink to ある, but the underlying ことがある structure stays the same.",
+        "つもり points forward to an intention and ことがある points backward to an experience — they can never substitute for each other."
       ],
       "related_grammar_slugs": [
         "te-iru",
         "tari-tari"
       ],
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -9027,12 +9554,76 @@
               "end": 3
             }
           ]
+        },
+        {
+          "japanese": "明日は雪が降るかもしれません。",
+          "english": "It might snow tomorrow.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ashita",
+            "yuki"
+          ],
+          "furigana": "明日[あした]は雪[ゆき]が降[ふ]るかもしれません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yuki",
+              "start": 3,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "japanese": "彼は来ないかもしれません。",
+          "english": "He might not come.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ],
+          "furigana": "彼[かれ]は来[こ]ないかもしれません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "来ない",
+              "inflection": "nai"
+            }
+          ]
+        },
+        {
+          "japanese": "これは高いかもしれません。",
+          "english": "This might be expensive.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "takai-adj"
+          ],
+          "furigana": "これは高[たか]いかもしれません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 3,
+              "end": 5
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "ashita",
         "yuki",
-        "isogashii"
+        "isogashii",
+        "kare",
+        "takai-adj"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -9075,18 +9666,55 @@
           "nudge": "His arrival is uncertain, and you're being polite about it.",
           "sort_order": 4,
           "jp_cloze_furigana": "彼[かれ]は明日[あした]来[く]る＿＿＿。"
+        },
+        {
+          "jp_cloze": "今日は忙しい＿＿＿。",
+          "english": "I might be busy today.",
+          "answer": "かもしれない",
+          "nudge": "忙しい already ends the way a plain adjective should — what follows it with nothing added in between?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "今日[きょう]は忙[いそが]しい＿＿＿。"
+        },
+        {
+          "jp_cloze": "猫は大丈夫＿＿＿。",
+          "english": "The cat might be okay.",
+          "answer": "かもしれない",
+          "nudge": "大丈夫 usually wants something right after it in a plain statement — what's missing here, and what sits in its place instead?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "猫[ねこ]は大[だい]丈[じょう]夫[ぶ]＿＿＿。"
+        },
+        {
+          "jp_cloze": "夜の間に猫が外に出た＿＿＿。",
+          "english": "The cat may have gone outside during the night.",
+          "answer": "かもしれない",
+          "nudge": "出た already points to something finished — what turns that finished fact into an open question rather than a settled one?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "夜[よる]の間[あいだ]に猫[ねこ]が外[そと]に出[で]た＿＿＿。"
+        },
+        {
+          "jp_cloze": "明日は雨＿＿＿。",
+          "english": "It might rain tomorrow.",
+          "answer": "かもしれない",
+          "nudge": "This sentence sits right beside a でしょう version in the lesson — what ending leaves the rain as an open possibility instead of a confident call?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "明日[あした]は雨[あめ]＿＿＿。"
         }
       ],
-      "explanation_markdown": "You look at the dark sky. The weather is getting worse, and you want to warn your friend that tomorrow's plans are looking a bit uncertain. How do you tell them \"it might rain\" when you aren't a meteorologist?\n\n```jp\n明日[あした]は雨[あめ]かもしれません。\n```\n*It might rain tomorrow.*\n\nEnter かもしれない, your go-to pattern for expressing a guess or possibility. When you aren't one hundred percent sure about something, this pattern softens your statement from a hard fact to a \"maybe.\" The pattern literally builds on the idea that the truth \"cannot be known\" for sure.\n\n## How it works\n\nBuilding this pattern is mostly a matter of taking the plain form of a word—the dictionary version without the polite *masu* or *desu* endings—and attaching かもしれない.\n\nIf you want to be polite to the person you are talking to, you swap the ending to its formal version: かもしれません.\n\n```jp\n彼[かれ]は明日[あした]来[く]るかもしれません。\n```\n*He might come tomorrow.*\n\n```jp\nこの映[えい]画[が]はつまらないかもしれない。\n```\n*This movie might be boring.*\n\n## The \"da\" exception\n\nThere is exactly one sharp edge to watch out for. When you use a noun or a Na-adjective, you do not use the plain copula だ (the casual word for *is/am/are*). You just attach かもしれない directly to the bare word.\n\n> Do not say `雨だかもしれない`. Drop the だ entirely: 雨[あめ]かもしれない.\n\n```jp\nここは病[びょう]院[いん]かもしれない。\n```\n*This place might be a hospital.*\n\n```jp\n先[せん]生[せい]は暇[ひま]かもしれません。\n```\n*The teacher might be free.*\n\n## Casual speech\n\nIn real, everyday conversations with friends, かもしれない is a bit of a mouthful. People almost always chop it down to just かも.\n\n```jp\nあれは犬[いぬ]かも。\n```\n*That over there might be a dog.*\n\nIt works exactly the same way as the full version, just shorter. You will hear this constantly in casual Japanese.\n\n## Possibility vs. Ability\n\nYou already know ことができる for talking about what is possible. It helps to see how these two patterns live in different spaces.\n\n```jp\n明日[あした]、彼[かれ]は来[く]ることができます。\n```\n*Tomorrow, he is able to come.*\n\n```jp\n明日[あした]、彼[かれ]は来[く]るかもしれません。\n```\n*Tomorrow, he might come.*\n\nUse ことができる when you are talking about ability or physical capability (he has the time and the means to show up). Use かもしれない when you are making a prediction about what will actually happen (you are guessing about his actions).\n\nGet comfortable with leaving things a little uncertain here. Soon, you'll learn と思[おも]う (I think that), which will give you another great way to express your own thoughts without stating them as absolute facts.\n",
+      "explanation_markdown": "Your friend was supposed to meet you at the coffee shop at three, and it's already past the hour. The seat across from you is still empty. You could say 友[とも]達[だち]が来[き]ません — \"my friend isn't coming\" — flat, as a fact you're sure of. But you don't actually know that. What you know is that the train could be running late, and the bus could be stuck, and a dozen other things could be true. That's the gap かもしれない was built for: a way to say something you think is possible without claiming you're sure of it.\n\n```jp\n友[とも]達[だち]が来[き]ません。\n電[でん]車[しゃ]が遅[おく]れているかもしれません。\n```\n\n*My friend hasn't come.*\n*The train might be delayed.*\n\nNotice what かもしれません is *not* doing here. It isn't an apology, and it isn't a question. It's a plain statement of \"here's a possibility I'm holding onto\" — useful the moment you're guessing rather than reporting.\n\nThis comes up constantly once you notice it. You don't always know why your friend is late, why your cat isn't in the room, or whether it'll rain tomorrow — and English handles that with \"might,\" \"maybe,\" \"could be.\" かもしれない is doing the same job in Japanese: naming a possibility out loud without pretending it's settled.\n\n## How it works\n\nかもしれない attaches straight onto the **plain form** of whatever you're describing. For verbs, that plain form is whatever you'd already use before you learned to be polite — present, negative, て-form-plus-いる, past — and かもしれない just rides on the end of it, no connector needed.\n\n```jp\n今日[きょう]は忙[いそが]しいかもしれない。\n```\n\n*I might be busy today.*\n\nい-adjectives work exactly the same way. 忙[いそが]しい already ends the sentence cleanly on its own, so かもしれない simply follows it with nothing in between — the same shape you'd use if you dropped です off the end.\n\nな-adjectives and nouns are where the rule actually changes something, and it's worth sitting with. Both of these normally want a だ or な in front of the next word — 大[だい]丈[じょう]夫[ぶ]だ, 病[びょう]気[き]だ, 大[だい]丈[じょう]夫[ぶ]な人[ひと]. かもしれない refuses that. It attaches to the bare word instead, as if the だ or な were never there.\n\n```jp\n猫[ねこ]は大[だい]丈[じょう]夫[ぶ]かもしれない。\n```\n\n*The cat might be okay.*\n\n```jp\n彼[かれ]は病[びょう]気[き]かもしれない。\n```\n\n*He might be sick.*\n\n大[だい]丈[じょう]夫[ぶ] and 病[びょう]気[き] are doing exactly the same job here that they'd do with だ attached in a plain statement — the difference is only that かもしれない strips the だ away and sits directly on the word.\n\nIt helps to think of かもしれない as picking up whatever shape the word already has right before だ or です would normally land, and simply standing in that spot instead. Verbs and い-adjectives never had a だ there to begin with, so nothing changes for them. な-adjectives and nouns did, so something visibly drops.\n\nTime still works the way you'd expect underneath かもしれない — put the verb in whatever tense actually fits the situation, then add かもしれない on top of that. A past-tense verb under かもしれない reads as \"might have,\" a guess about something that's already finished rather than something still coming.\n\n```jp\n夜[よる]の間[あいだ]に猫[ねこ]が外[そと]に出[で]たかもしれない。\n```\n\n*The cat may have gone outside during the night.*\n\nThe polite version just swaps the ending: かもしれません instead of かもしれない. Nothing about how it attaches to the word in front of it changes — only the last few syllables do.\n\n## Rules and exceptions\n\nThe mistake almost everyone makes once is leaving the な or だ in front of かもしれない, because every other sentence-ending pattern built on 大[だい]丈[じょう]夫[ぶ] or 病[びょう]気[き] wants one there. `大丈夫なかもしれない` and `病気だかもしれない` are both wrong — かもしれない wants the bare word, nothing riding in front of it.\n\n> です does not go after かもしれない. The polite form is already built in as かもしれません — `かもしれないです` isn't the standard pattern, even though you'll hear native speakers use it casually.\n\nかもしれない doesn't tell your listener *how* likely something is, only that it's possible and unconfirmed. It covers everything from a near coin-flip down to a faint chance — the word itself doesn't distinguish between those; your tone and the situation carry that weight instead.\n\nThat flatness is also why かもしれない sounds natural in almost any situation, serious or small. Whether you're guessing about a missing cat or a delayed train, the grammar underneath doesn't change — only the stakes of what you're guessing about do.\n\n## Casual speech\n\nIn relaxed conversation, かもしれない often shrinks down to just かも, with しれない dropped off entirely. It's common enough that you'll hear it constantly the moment you start listening for it, but it stays firmly casual — save the full form for anyone you'd otherwise use polite speech with.\n\n```jp\n彼[かれ]は大[だい]丈[じょう]夫[ぶ]かもしれない。\n彼[かれ]、大[だい]丈[じょう]夫[ぶ]かも。\n```\n\n*He might be okay.*\n*He might be okay.*\n\nSame meaning, same grammar underneath — just the ending clipped short, the way \"I don't know\" turns into \"dunno\" between friends.\n\nThe trade-off is the same one every casual contraction makes: かも is quick and natural with people you're relaxed around, but it reads as too loose in front of a teacher, a stranger, or anyone you'd bow to. When in doubt, keep the full かもしれない or かもしれません and let the other person set the casual tone first.\n\n## Contrast: かもしれない vs でしょう\n\nYou've already met でしょう for a softened guess, and the two sit close enough together that it's easy to reach for the wrong one. でしょう leans toward confidence — the way a forecaster says it's going to rain because the pattern mostly points that way. かもしれない admits you're genuinely unsure; it's the shrug, not the forecast.\n\n```jp\n明日[あした]は雨[あめ]でしょう。\n明日[あした]は雨[あめ]かもしれない。\n```\n\n*It will probably rain tomorrow.*\n*It might rain tomorrow.*\n\nSwap one for the other and you change how committed you sound, not just the words. でしょう says \"I'd bet on it.\" かもしれない says \"it's on the table — that's all I actually know.\" Reach for かもしれない when you genuinely don't know, and でしょう when you're willing to stake a guess.\n\nHold onto that instinct — how far you commit to a claim — because you'll meet another ending soon, すぎる, that adjusts how far a description goes in a completely different direction: not \"maybe,\" but \"too much.\" Different job, same habit of matching your grammar to exactly how far you mean to go.\n",
       "caution_notes": [
-        "Do not use the copula だ before かもしれない; attach it directly to the bare noun or Na-adjective."
+        "かもしれない attaches to the bare な-adjective or noun — never leave だ or な in front of it (大丈夫なかもしれない, 病気だかもしれない are both wrong).",
+        "です never follows かもしれない — the polite form is already built into かもしれません, not かもしれないです.",
+        "かも is a casual contraction of かもしれない — keep it for friends, not for anyone you'd otherwise use polite speech with.",
+        "かもしれない only marks something as unconfirmed; it doesn't say how likely it is, unlike でしょう which leans toward a confident guess."
       ],
       "related_grammar_slugs": [
+        "deshou",
+        "sugiru",
         "dictionary-koto-ga-dekiru",
         "to-omou"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -9454,12 +10082,48 @@
               "end": 2
             }
           ]
+        },
+        {
+          "japanese": "このコーヒーは熱すぎます。",
+          "english": "This coffee is too hot.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "koohii",
+            "atsui-obj"
+          ],
+          "furigana": "このコーヒーは熱[あつ]すぎます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koohii",
+              "start": 2,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "japanese": "働きすぎるのは体に悪いです。",
+          "english": "Working too much is bad for your health.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "hataraku",
+            "karada"
+          ],
+          "furigana": "働[はたら]きすぎるのは体[からだ]に悪[わる]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "karada",
+              "start": 7,
+              "end": 8
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "taberu",
         "fuku",
-        "nomu-v"
+        "nomu-v",
+        "koohii",
+        "hataraku"
       ],
       "family": "patterns",
       "cloze_variants": [
@@ -9502,18 +10166,61 @@
           "nudge": "That shop's prices exceed reason, politely put.",
           "sort_order": 4,
           "jp_cloze_furigana": "あの店[みせ]は高[たか]＿＿＿。"
+        },
+        {
+          "jp_cloze": "このシャツは高＿＿＿。",
+          "english": "This shirt is too expensive.",
+          "answer": "すぎる",
+          "nudge": "Look at the price reaction — what ending pushes 'expensive' past a comfortable line, into a complaint?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "このシャツは高[たか]＿＿＿。"
+        },
+        {
+          "jp_cloze": "この部屋は静か＿＿＿。",
+          "english": "This room is too quiet.",
+          "answer": "すぎる",
+          "nudge": "The silence here isn't neutral — what ending turns plain 'quiet' into something worth remarking on?",
+          "sort_order": 6,
+          "jp_cloze_furigana": "この部屋[へや]は静[しず]か＿＿＿。"
+        },
+        {
+          "jp_cloze": "昨日、働き＿＿＿。",
+          "english": "I worked too much yesterday.",
+          "answer": "すぎました",
+          "nudge": "This is a finished action told politely — which ending is carrying both the politeness and the sense that the amount of work went past what it should have?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "昨日[きのう]、働[はたら]き＿＿＿。"
+        },
+        {
+          "jp_cloze": "彼は勉強し＿＿＿。",
+          "english": "He studies too much.",
+          "answer": "すぎる",
+          "nudge": "Nothing here names a problem outright, but the sentence structure hints his studying has gone further than normal — what ending signals that?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "彼[かれ]は勉[べん]強[きょう]し＿＿＿。"
+        },
+        {
+          "jp_cloze": "肉を切り＿＿＿。",
+          "english": "You're cutting the meat too much.",
+          "answer": "すぎる",
+          "nudge": "Picture more cuts than the meat actually needed, not just one — what ending turns 'cut' into a complaint about quantity?",
+          "sort_order": 9,
+          "jp_cloze_furigana": "肉[にく]を切[き]り＿＿＿。"
         }
       ],
-      "explanation_markdown": "You are at a shop looking at a nice bag. You check the price tag, and it has way too many zeros. You need a way to express that it crosses the line from just \"expensive\" to \"too expensive.\"\n\nWhen an action or a state goes beyond a reasonable limit, Japanese uses the helper verb すぎる. It attaches right to the end of your existing verbs and adjectives to mean \"too much\" or \"excessively.\"\n\n## How it works\n\nTo use すぎる, you need the stem of your word. For verbs, this is the stem (the base part you normally attach ます to).\n\n```jp\n彼[かれ]は働[はたら]きすぎる。\n```\n*He works too much.*\n\n```jp\n昨日[きのう]、パンを食[た]べすぎた。\n```\n*Yesterday, I ate too much bread.*\n\nFor adjectives ending in い, simply drop the final い and attach your new ending. The whole package now behaves just like a regular verb.\n\n```jp\nこのかばんは高[たか]すぎる。\n```\n*This bag is too expensive.*\n\n```jp\n部屋[へや]が寒[さむ]すぎます。\n```\n*The room is too cold.*\n\n## Rules and exceptions\n\nBecause すぎる translates to \"too much,\" it inherently carries a negative feeling. You are saying a boundary was crossed. In English, you might say \"this cake is too good!\" as a compliment. In Japanese, traditionally, attaching this to a positive word implies a problem.\n\n> If you say someone is 親[しん]切[せつ]すぎる (too kind), it might sound like they are overbearing or naive, rather than it being a pure compliment.\n\nBecause すぎる acts just like a regular verb that ends in る, you can conjugate it into polite speech or the past tense. Notice how we used すぎます for politeness and すぎた for the past tense in the examples above.\n\n## Contrast: The most vs. too much\n\nIt is easy to mix up saying something has the highest degree of a trait versus saying it has too much of it. If you want to say something is the absolute peak of a category, you already know to use 一[いち]番[ばん].\n\n```jp\nあの店[みせ]が一[いち]番[ばん]高[たか]いです。\n```\n*That shop is the most expensive.*\n\nBut being the most expensive doesn't necessarily mean it is unreasonable. If you want to express that the price is out of bounds, you swap in our new pattern.\n\n```jp\nあの店[みせ]は高[たか]すぎます。\n```\n*That shop is too expensive.*\n\nHold onto this concept of attaching patterns to verb stems. You will see a similar structural shift when we meet ほうがいい (had better) to give strong advice later on.\n",
+      "explanation_markdown": "Imagine you try on a jacket at a shop, glance at the price tag, and quietly put it back on the rack without a word. Your friend asks what happened. You don't need a whole sentence explaining that the price is \"high\" — you need one word that says the price crossed a line you weren't willing to cross. That word is すぎる: it takes almost any adjective or verb you already know and turns it into \"too much of that.\" You didn't say the jacket was ugly or the wrong color — the whole complaint was about degree, about how far past reasonable the number on the tag had gone. すぎる is built exactly for that shape of complaint, and once you have it, you'll reach for it constantly: for prices, for weather, for how spicy something turned out to be.\n\n```jp\nこのシャツは高[たか]すぎる。\n```\n*This shirt is too expensive.*\n\n## How it works\n\nすぎる is, underneath everything, a completely ordinary verb — it's built on the same ichidan pattern as 食[た]べる or 見[み]る. Once you attach it to something, the whole phrase conjugates as if すぎる were the only verb in the sentence: すぎます, すぎました, すぎない. That's actually good news: instead of memorizing a separate ending for adjectives and a separate one for verbs, you only ever memorize one ending, and then you memorize one small rule about what to feed it. What actually changes from case to case is what you glue it onto, and that depends on whether you're starting from an adjective or a verb.\n\nFor an い-adjective, you drop the final い and add すぎる directly onto what's left. 高[たか]い loses its い, leaving 高[こう], and 高[たか]すぎる is what you get — the sentence you just read. For a verb, you reach for the stem you already use before ます: drop ます, and whatever's left is what すぎる attaches to. If you can already put a verb into its polite ます-form, you already know the exact piece すぎる needs — there's no separate stem to learn.\n\n```jp\n飲[の]む → 飲[の]みすぎる\n```\n*to drink → to drink too much*\n\nな-adjectives are the simplest of the three: you attach すぎる straight onto the adjective with nothing in between — no な, no い, nothing to drop first.\n\n```jp\nこの部屋[へや]は静[しず]かすぎる。\n```\n*This room is too quiet.*\n\nA silent room doesn't sound like a complaint in English, but picture walking into one expecting normal background noise and getting nothing — that's exactly the kind of mild unease すぎる is built to report.\n\nBecause すぎる takes over as the main verb once it's attached, tense and politeness live on it, not on the original word. A polite past sentence just adds ました the same way any other ichidan verb would.\n\n```jp\n昨日[きのう]、働[はたら]きすぎました。\n```\n*I worked too much yesterday.*\n\nNotice that the original verb never changes past its stem here — all the grammatical weight of \"yesterday,\" \"finished,\" and \"politely\" sits on すぎました, while the stem just tells you what kind of excess happened.\n\n## Rules and exceptions\n\nすぎる has to land on a stem — never on the full dictionary form of a verb, and never on an い-adjective that's still wearing its い. `食べるすぎる` and `高いすぎる` are both wrong for the same reason: the stem has already done the job of marking \"this is a verb\" or \"this is an adjective,\" so すぎる doesn't need that ending spelled out a second time before it can attach. Think of the stem as すぎる's way of asking \"how much of *what*?\" — it needs the bare core of the word, not the finished, already-conjugated version of it, or the question doesn't parse.\n\n> いい is the one word that refuses to follow its own rule. It doesn't become `いすぎる` — instead it quietly borrows the stem of its older, more formal twin 良[よ]い, so what you actually get is よすぎる.\n\n```jp\nいい → よすぎる\n```\n*good → too good (to be true)*\n\nThis one trips people up the first time they meet it, mostly because nothing about いい looks like it's hiding a second word inside it. It's worth just memorizing よすぎる as its own small fact rather than trying to derive it from a rule.\n\nSuru-verbs follow the ordinary verb logic, not some special exception: strip する down to the pre-し stem, the same stem you'd use before other suffixes, and attach すぎる there.\n\n```jp\n彼[かれ]は勉[べん]強[きょう]しすぎる。\n```\n*He studies too much.*\n\nすぎる leans negative most of the time — nobody reaches for \"too much\" to describe something they're happy about — but it isn't grammatically required to be a complaint. よすぎる, from just a moment ago, is the clearest proof of that: something can be so good it starts to feel suspicious, and すぎる is exactly the tool for saying so without a separate word for \"suspiciously.\"\n\n## Contrast\n\nYou've already learned にくい and やすい, and they attach to a verb's stem exactly the way すぎる does — which means, on paper, three totally different sentences can look almost identical until you read past the ending. It helps to be precise about what each one is actually reporting. にくい and やすい describe how *difficult* or *easy* an action is to carry out. すぎる doesn't care about difficulty at all — it's reporting *how much* of something happened, full stop.\n\n```jp\n肉[にく]を切[き]りすぎる。\n```\n*You're cutting the meat too much.*\n\n```jp\nこの肉[にく]は切[き]りにくい。\n```\n*This meat is hard to cut.*\n\nSame verb, same stem, and yet those two sentences describe completely different problems. The first one is about quantity — too many cuts, pieces sliced smaller than they needed to be. The second is about resistance — the knife is struggling, maybe the meat is too tough, and no amount of stopping earlier would have fixed that. Swap one ending for the other and you've accidentally complained about the wrong thing entirely, which is a very normal mistake the first few times you use both patterns in the same week.\n\nOne quick way to keep them apart in the moment: にくい and やすい only ever make sense as a description of the action itself, independent of how many times anyone's actually done it — a rusty lock is 開[あ]けにくい whether you've turned the key once or fifty times. すぎる, on the other hand, is always keeping a running total. It only shows up once that total has gotten out of hand, which is why it so often lands on a completed action, like 昨日[きのう]、働[はたら]きすぎました, rather than a general property of the world.\n\nOnce you can reliably spot \"an amount that crossed a line,\" you're set up nicely for あげく later on — the pattern for describing what finally happens *after* you've kept doing too much of something for too long. すぎる tells you the moment it became too much; あげく tells you what that excess eventually cost you.\n",
       "caution_notes": [
-        "Because すぎる implies an excess that crosses a reasonable boundary, using it with positive traits can sound like a complaint rather than a compliment."
+        "すぎる attaches to a stem, never to the full dictionary form of a verb or to an い-adjective that still has its い — 食べるすぎる and 高いすぎる are both wrong.",
+        "いい is irregular: it becomes よすぎる, borrowed from its formal twin 良い, not いすぎる.",
+        "な-adjectives attach すぎる directly with no な in between.",
+        "すぎる and にくい/やすい both attach to a verb's stem but answer different questions — quantity versus difficulty — so swapping one for the other changes what you're complaining about."
       ],
       "related_grammar_slugs": [
         "superlative-ichiban",
         "hou-ga-ii"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }
@@ -9680,7 +10387,8 @@
       },
       "accepted_forms": [
         "でしょう",
-        "でしょうか"
+        "でしょうか",
+        "だろう"
       ],
       "example_sentences": [
         {
@@ -9742,12 +10450,61 @@
               "end": 3
             }
           ]
+        },
+        {
+          "japanese": "明日は雨でしょう。",
+          "english": "It will probably rain tomorrow.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ashita"
+          ],
+          "furigana": "明日[あした]は雨[あめ]でしょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "japanese": "彼はもう知っているでしょう。",
+          "english": "He probably already knows.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kare",
+            "shiru"
+          ],
+          "furigana": "彼[かれ]はもう知[し]っているでしょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 4,
+              "end": 7,
+              "surface_form": "知って",
+              "inflection": "te"
+            }
+          ]
+        },
+        {
+          "japanese": "これでいいでしょう。",
+          "english": "This should be fine, right?",
+          "sort_order": 5,
+          "vocabulary_slugs": [],
+          "furigana": "これでいいでしょう。"
         }
       ],
       "vocabulary_slugs": [
         "ashita",
         "atsui-hot",
-        "daijoubu"
+        "daijoubu",
+        "kare",
+        "shiru"
       ],
       "family": "copula",
       "uses": [
@@ -9806,19 +10563,62 @@
           "nudge": "You're wondering aloud about tomorrow's weather.",
           "sort_order": 4,
           "jp_cloze_furigana": "明日[あした]は雨[あめ]＿＿＿。"
+        },
+        {
+          "jp_cloze": "明日は雨＿＿＿。",
+          "english": "Tomorrow it'll probably rain.",
+          "answer": "でしょう",
+          "nudge": "Nothing here confirms it's actually raining yet — what ending makes 雨です less certain?",
+          "sort_order": 5,
+          "jp_cloze_furigana": "明日[あした]は雨[あめ]＿＿＿。"
+        },
+        {
+          "jp_cloze": "彼はもう忙しい＿＿＿。",
+          "english": "He's probably busy already.",
+          "answer": "でしょう",
+          "nudge": "もう already covers the timing — what's left to add is how sure the speaker sounds.",
+          "sort_order": 6,
+          "jp_cloze_furigana": "彼[かれ]はもう忙[いそが]しい＿＿＿。"
+        },
+        {
+          "jp_cloze": "この部屋は静か＿＿＿。",
+          "english": "This room is probably quiet.",
+          "answer": "でしょう",
+          "nudge": "静か has no だ sitting in front of it here — what took that spot instead?",
+          "sort_order": 7,
+          "jp_cloze_furigana": "この部屋[へや]は静[しず]か＿＿＿。"
+        },
+        {
+          "jp_cloze": "今日は寒い＿＿＿？",
+          "english": "It's cold today, isn't it?",
+          "answer": "でしょう",
+          "nudge": "The question mark and rising voice change the job of this ending — what word turns a plain statement into a check for agreement?",
+          "sort_order": 8,
+          "jp_cloze_furigana": "今日[きょう]は寒[さむ]い＿＿＿？"
+        },
+        {
+          "jp_cloze": "彼女は先生＿＿＿。",
+          "english": "She's probably a teacher.",
+          "answer": "だろう",
+          "nudge": "です is nowhere in this sentence — what plain, casual word fills that role instead?",
+          "sort_order": 9,
+          "jp_cloze_furigana": "彼[かの]女[じょ]は先[せん]生[せい]＿＿＿。"
         }
       ],
-      "explanation_markdown": "You're looking at your textbook, and there's a big test tomorrow. You want to tell your classmate, \"The test will probably be difficult.\" You can't just say \"The test is difficult\" because you haven't taken it yet and don't know for sure. You need a way to express a guess or probability without sounding like you know everything as a hard fact.\n\nEnter `でしょう`. It's the polite way to say \"probably\" or \"I think.\"\n\n## How it attaches\n\n`でしょう` acts a lot like `です`, sitting at the very end of your sentence. But instead of stating a fact, it softens the statement into a polite guess. To use it, you attach it directly to the **plain form** of whatever word comes right before it.\n\n```jp\n明日[あした]、彼[かれ]は来[く]るでしょう。\nそのカメラは高[たか]いでしょう。\n```\n*Tomorrow, he will probably come.*\n*That camera is probably expensive.*\n\nHere is the one rule that trips everyone up the first week: when you use a noun or a na-adjective, do not use `だ`. Just stick `でしょう` straight onto the word itself.\n\n```jp\nこの人[ひと]は先[せん]生[せい]でしょう。\n```\n*This person is probably a teacher.*\n\n> Never say `先生だでしょう`. The `だ` is dropped completely. `でしょう` replaces it!\n\n## Two flavors: \"Probably\" and \"Right?\"\n\n`でしょう` does double duty depending entirely on your tone of voice.\n\nIf you say it with a flat or slightly falling pitch, it means \"probably\" or \"I guess.\" You are making a polite prediction.\n\nBut if you angle your voice up at the end—like you're asking a question—it transforms into a way of seeking agreement. It becomes \"..., right?\" or \"..., isn't it?\".\n\n```jp\n昨日[きのう]の映[えい]画[が]は面白[おもしろ]かったでしょう？\nこれはあなたの傘[かさ]でしょう？\n```\n*Yesterday's movie was interesting, right?*\n*This is your umbrella, isn't it?*\n\n## Softening a question with でしょうか\n\nSometimes, asking a direct question with `ですか` feels a little too blunt. If you add `か` to `でしょう`, you get `でしょうか`—a beautifully soft, tentative way to ask a question. It turns \"Will it rain?\" into \"I wonder if it will rain?\"\n\n```jp\n明日[あした]は雨[あめ]でしょうか。\n誰[だれ]が来[く]るでしょうか。\n```\n*I wonder if it will rain tomorrow?*\n*Who do you think will come?*\n\n## でしょう vs だろう\n\nYou already know `だろう`. These two are exact twins, just dressed for different occasions. `だろう` is the casual, plain-speech version. `でしょう` is the polite, `です/ます` level version.\n\n```jp\nあのレストランはおいしいだろう。\nあのレストランはおいしいでしょう。\n```\n*That restaurant is probably delicious. (Casual, talking to a close friend)*\n*That restaurant is probably delicious. (Polite, talking to a coworker)*\n\nEven though `でしょう` attaches to plain forms (like `来る` or `おいしい`), adding it makes the entire sentence polite.\n\nKeep this \"seeking agreement\" idea in your back pocket. Soon, you'll learn `じゃないですか`, which does a very similar job of asking \"isn't it?\", but with a bit more of a playful push!\n",
+      "explanation_markdown": "You're looking out the window at a sky full of dark clouds. You don't have a weather report open, you're not psychic, but you do have an opinion — and you have to decide whether to grab an umbrella on the way out. Japanese has an ending built exactly for this moment: stating something you believe without claiming you're sure of it.\n\n```jp\n明日[あした]は雨[あめ]でしょう。\n```\n*Tomorrow it'll probably rain.*\n\nThat's でしょう. Tack it onto the end of a sentence and a flat statement turns into an educated read on the situation — confident enough to say out loud, honest enough to admit you could be wrong.\n\n## How it works\n\nでしょう attaches to the plain form of whatever you're making a call about — the same plain form you already use in casual sentences, not the polite ます／です form. For a verb or an i-adjective, that part is easy: the plain form already ends the way it needs to, so でしょう just goes straight on afterward.\n\n```jp\n彼[かれ]はもう忙[いそが]しいでしょう。\n```\n*He's probably busy already.*\n\n彼[かれ] hasn't said anything, you haven't called him — you're just going off what you already know about his week.\n\nNouns and na-adjectives look almost the same, with one catch. On their own they'd need だ (the plain form of です) to close the sentence. でしょう doesn't stack on top of that だ; it takes its spot instead.\n\n```jp\n静[しず]かだ → 静[しず]かでしょう\n```\n\nDrop the だ, add でしょう, and you're done — no double copula, no leftover piece sitting in the middle.\n\n```jp\nこの部屋[へや]は静[しず]かでしょう。\n```\n*This room is probably quiet.*\n\nSame move with a plain noun: 雨[あめ] (rain) doesn't take だ before でしょう either, which is exactly what happened in the very first example above.\n\nでしょう also shows up teamed with 多[た]分[ぶん] (probably) at the front of the sentence. The two aren't redundant — 多[た]分[ぶん] flags that a guess is coming, and でしょう is the ending that follows through on it.\n\n```jp\n多[た]分[ぶん]明日[あした]は雪[ゆき]でしょう。\n```\n*Tomorrow will probably be snow.*\n\n## Rules and exceptions\n\nでしょう is a read, not a report. It has to come from something you're piecing together yourself — what you can see, what you know, what seems likely — not something someone told you directly. Save that job for another pattern; more on that below.\n\nIt also undersells confidence you actually have, so don't reach for it out of habit. If the rain has already started outside your window, just say 雨[あめ]です. Adding でしょう when you're not actually guessing at anything reads as strangely unsure of yourself.\n\nThere's a spoken trick worth knowing before you hear it and get thrown off, too. Say でしょう with your voice rising at the end, and it stops working as a guess. It becomes a check for agreement — closer to \"isn't it?\" than \"I think so.\"\n\n```jp\n今日[きょう]は寒[さむ]いでしょう？\n```\n*It's cold today, isn't it?*\n\n> With rising intonation, でしょう isn't hedging anymore — it's fishing for a nod back from whoever's listening.\n\nFalling intonation, same exact sentence, and you're back to a plain guess. Context and tone carry the whole difference; the words on the page never change.\n\n## Casual speech\n\nAmong friends, でしょう shrinks down to だろう — same job, plainer register, the kind of ending that fits with 僕[ぼく] or 君[きみ] far more comfortably than with a stranger or a teacher.\n\n```jp\n彼[かの]女[じょ]は先[せん]生[せい]だろう。\n```\n*She's probably a teacher.*\n\nだろう also pairs naturally with ね when you're thinking out loud and inviting whoever's next to you to agree, rather than stating a fact.\n\n```jp\n明日[あした]は忙[いそが]しいだろうね。\n```\n*I bet tomorrow will be busy.*\n\nKeep でしょう for anyone you'd address politely, and save だろう for people you'd already speak plainly to — the swap is entirely about who's listening, not about how sure you are.\n\n## Contrast\n\nYou've already got によると for passing along someone else's information — Noun + によると, \"according to X.\" That's a report: the information came from somewhere outside your own head.\n\n```jp\n新[しん]聞[ぶん]によると明日[あした]は雨[あめ]です。\n```\n*According to the newspaper, tomorrow is rain.*\n\nでしょう is the opposite move. No source, no article, nobody told you anything — you looked at the sky, or you know the season, or you just have a hunch, and でしょう marks the sentence as coming from you. Swap によると for でしょう in that same sentence and the meaning shifts from \"here's what I read\" to \"here's what I think,\" even though the topic never changed.\n\nReach for でしょう whenever you believe something but can't fully back it up — it lets you commit to an answer without overstating how sure you are. Hold onto that not-quite-certain feeling: かもしれない sits right next to でしょう on the confidence scale, for guesses that are even shakier than this one.\n",
       "caution_notes": [
-        "Never use だ before でしょう; attach it directly to nouns and na-adjectives.",
-        "A flat intonation means 'probably', while a rising intonation means 'right?'."
+        "でしょう shrinks to だろう in casual speech, but だろう only fits people you'd already speak plainly to — don't use it with a teacher or stranger.",
+        "Rising-intonation でしょう？ works like a tag question, checking for agreement, not stating an uncertain guess like falling-intonation でしょう does.",
+        "でしょう states your own read on a situation; when you're passing along information from a source, によると is the right tool instead.",
+        "Drop だ before attaching でしょう to a noun or na-adjective — the copula doesn't stack on top of the ending."
       ],
       "related_grammar_slugs": [
+        "kamoshirenai",
         "darou",
         "janai-desu-ka"
       ],
       "_meta": {
-        "generator_model": "gemini-web",
+        "generator_model": "sonnet-5",
         "prompt_version": "2",
         "review_status": "reviewed"
       }

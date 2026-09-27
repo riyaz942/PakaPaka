@@ -615,7 +615,7 @@ export function compileCurriculum(
     `);
     // Look-alikes can point at items later in the compile order (or the other
     // item type), so links are resolved up front and inserted after all item
-    // rows exist. A slug may name a radical or a kanji — never ambiguously both.
+    // rows exist. Each ref is "<kind>:<slug>", the same form as an item key.
     const pendingSimilarLinks: {
       item_id: number;
       similar_item_id: number;
@@ -624,19 +624,12 @@ export function compileCurriculum(
     const collectSimilarLinks = (
       itemId: number,
       label: string,
-      slugs: string[] | undefined,
+      refs: string[] | undefined,
     ) => {
-      for (const [index, similarSlug] of (slugs ?? []).entries()) {
-        const radicalId = idByKey.get(itemKey('radical', similarSlug));
-        const kanjiId = idByKey.get(itemKey('kanji', similarSlug));
-        if (radicalId && kanjiId) {
-          throw new Error(
-            `Ambiguous visually similar link: ${label} -> ${similarSlug} matches both a radical and a kanji`,
-          );
-        }
-        const similarId = radicalId ?? kanjiId;
+      for (const [index, ref] of (refs ?? []).entries()) {
+        const similarId = idByKey.get(ref);
         if (!similarId) {
-          throw new Error(`Unresolved visually similar link: ${label} -> ${similarSlug}`);
+          throw new Error(`Unresolved visually similar link: ${label} -> ${ref}`);
         }
         pendingSimilarLinks.push({
           item_id: itemId,

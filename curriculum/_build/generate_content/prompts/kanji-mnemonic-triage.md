@@ -119,7 +119,7 @@ It takes a few seconds and writes
 ```json
 {
   "k": {
-    "k-tooth": {
+    "tooth": {
       "components": [{ "form": "歯", "meaning": "tooth", "status": "untagged" }],
       "landing": "ok",
       "landing_meaning": null,
@@ -128,7 +128,7 @@ It takes a few seconds and writes
     }
   },
   "n5": {
-    "n5-atarashii": {
+    "new": {
       "components": [],
       "landing": "untagged",
       "landing_meaning": "new",
@@ -248,19 +248,19 @@ Write `curriculum/_build/reports/kanji-simplify-list.json`:
 {
   "marked": [
     {
-      "slug": "n5-kita",
+      "slug": "north",
       "dataset": "n5",
       "fields": ["meaning"],
       "reason": "57-word scene-chain sentence; stacked qualifiers"
     },
     {
-      "slug": "k-tooth",
+      "slug": "tooth",
       "dataset": "k",
       "fields": ["meaning"],
       "reason": "chain: component “tooth” present but untagged"
     }
   ],
-  "kept": ["n5-aka"],
+  "kept": ["red"],
   "stats": { "total": 0, "marked": 0 }
 }
 ```

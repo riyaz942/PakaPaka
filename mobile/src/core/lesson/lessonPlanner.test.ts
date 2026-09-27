@@ -144,12 +144,12 @@ describe('planLesson', () => {
     // kanji merged into an N5 pool has no comparable position — and a learner
     // who just asked for it should not wait out the rest of the level.
     const candidates = [
-      candidate('n5-a', 'kanji', 1),
-      candidate('n5-b', 'kanji', 2),
+      candidate('kanji-a', 'kanji', 1),
+      candidate('kanji-b', 'kanji', 2),
       { ...candidate('opted-in', 'kanji', 67), optedIn: true },
     ];
     const result = planLesson(emptyInput(candidates, 3));
-    expect(result.map((item) => item.id)).toEqual(['opted-in', 'n5-a', 'n5-b']);
+    expect(result.map((item) => item.id)).toEqual(['opted-in', 'kanji-a', 'kanji-b']);
   });
 
   it('keeps an opted-in kanji behind its radicals, which lead every round', () => {

@@ -1,79 +1,94 @@
 ---
-generator_model: gemini-web
+generator_model: sonnet-5
 prompt_version: 2
 review_status: reviewed
 caution_notes:
-  - "This pattern literally means \"if you don't do it, it's no good,\" which is how Japanese expresses \"must.\""
-  - "Because the pattern ends in a verb, you must conjugate the end to なります or ならない to match the politeness of your conversation."
-  - "In everyday casual speech, this long phrase is almost always contracted down to just なきゃ."
+  - "なりません is the polite negative of なる, not a separate negation you can remove from the ending."
+  - "なくてもいい and なければならない use the identical ない-stem but land on opposite meanings, so double-check which one you actually wrote."
+  - "なきゃいけない and the even shorter なきゃ belong to speech and texts, not formal writing."
+  - "てはいけない forbids an action, while なければならない requires one — they are not two strengths of the same rule."
 related_grammar_slugs:
-  - "naide-kudasai"
-  - "te-wa-ikenai"
   - "nakutemo-ii"
+  - "te-wa-ikenai"
+  - "naide-kudasai"
 ---
 
-You're at a friend's house. The food is delicious, and everyone is having a good time, but you look at the clock. It's late. How do you tell everyone that you really have to leave?
+Your friend texts you: 明日試験があります。There's a version of tonight where you watch TV until you fall asleep, and a version where you don't get to choose — because tomorrow's exam doesn't care how you feel about it. Japanese marks that second kind of night with a single ending: なければならない, "must / have to." It turns a plain verb into something you don't get to skip.
+
+## How It Works
+
+なければならない attaches to the same stem you already met in なくてもいい — the ない-stem, the shape a verb takes right before ない. You already know how to build it; this ending just replaces くてもいい with ければならない.
 
 ```jp
-私は帰らなければなりません。
+今日は漢字を覚えなければならない。
 ```
-*I have to go home.*
+*I have to memorize kanji today.*
 
-## How it works
-
-How does this tongue-twister actually work? It attaches to the negative stem of a verb—the same form you use for `ないでください`. Take `飲む` (to drink), change it to `飲まない` (don't drink), drop the `ない`, and stick `なければならない` right on the end.
-
-Why is it so long? It's actually a logical combination of two ideas. `なければ` means "if you don't," and `ならない` means "it won't do" or "it is no good." Literally, "if you don't do it, it's no good." That is how Japanese expresses "must."
+覚える drops its る and takes the ない-stem 覚え, then ければならない tacks straight on. ならない is just the negative of なる (to become) — more on that shape in a moment.
 
 ```jp
-薬を飲まなければなりません。
+本も読まなければならない。
 ```
-*I have to take medicine.*
+*I also have to read the book.*
+
+読む is a different kind of verb — its stem swaps む for ま before any ない-family ending, the same swap you'd make for なくてもいい. も here just means "also," stacking a second obligation on top of the first.
+
+The same swap works for 行く, which turns its く into か:
 
 ```jp
-明日、学校に行かなければなりません。
+学校に行かなければならない。
 ```
-*I have to go to school tomorrow.*
+*I have to go to school.*
 
-## Rules and exceptions
+## Rules and Exceptions
 
-> Because `ならない` is just a verb sitting at the end of the phrase, its politeness needs to match your situation. Change it to `なりません` when speaking politely, but leave it as `ならない` with friends.
+That なりません isn't a random polite tag — it's the negative of なる, "to become." Read the whole phrase literally and it says something like "if [this] doesn't happen, it won't become [okay]" — which is exactly the shape of an obligation: skip the verb, and things don't turn out right. Once you see that, なければならない stops looking like a memorized chunk and starts looking like ordinary grammar wearing a long coat.
 
-Japanese also has a nearly identical twin to this pattern: `なくてはいけない`. It follows the exact same rules and means the exact same thing (literally, "as for not doing it, it's bad"). You will hear both used interchangeably, so just pick the one that feels easier to say for now.
+> Don't split なければ off as its own negative clause. It's one fused ending, not "if not" plus a separate sentence — you can't remove ならない and still mean the same thing.
+
+なければいけない means the same thing and swaps in freely; いけない reads as "it won't do," which lands in the same place as "won't become okay." Some verbs favor one variant over the other for no reason beyond habit, and native speakers mix both without thinking about it.
 
 ```jp
-今日、会社に行かなくてはいけません。
+今週、本を返さなければいけません。
 ```
-*I have to go to the office today.*
+*I have to return the book this week.*
 
-## Casual speech
+返す swaps す for さ before this ending, same pattern as every verb so far.
 
-Saying `なければならない` every single time you need to do something takes entirely too much breath. In casual conversation, native speakers almost never say the whole thing out loud. Instead, they squish it down into a single, snappy word: `なきゃ`.
+## Casual Speech
 
-Just take the negative stem and add `なきゃ`. It immediately makes you sound natural and relaxed.
+In speech, なければ shrinks hard — down to なきゃ — and いけない often drops entirely, leaving a bare なきゃ standing in for the whole obligation.
 
 ```jp
-今、寝なきゃ。
+宿題、しなきゃいけない。
 ```
-*I have to sleep now.*
+*Gotta do the homework.*
+
+You'll also hear just 宿題、しなきゃ。 with nothing after it — the いけない is implied, understood, gone. That's normal, not sloppy; write out the full form in anything that isn't a text message to a friend.
+
+## Contrast
+
+You already know なくてもいい from a few lessons back — it says a verb is optional, not required. Swap it in against なければならない and the meaning flips completely, not just softens.
 
 ```jp
-明日、本を買わなきゃ。
+音楽を聞かなくてもいいです。
 ```
-*I have to buy a book tomorrow.*
+*I don't have to listen to music.*
 
-## Two sides of the rules
-
-You already know how to lay down the law with `てはいけない` (must not). These two patterns are two sides of the strict-rule coin. One forces you to do something, and the other forces you *not* to. Notice how they look side by side.
+Same ない-stem, opposite conclusion: なくてもいい clears the requirement; なければならない installs it. And てはいけない — "must not" — sits on the far side of なければならない, not next to it: one demands an action, the other forbids one.
 
 ```jp
-お酒を飲んではいけません。
+遅く寝てはいけません。
 ```
-*You must not drink alcohol.*
+*I must not go to bed late.*
+
+Mixing these up is an easy early mistake: saying `寝なくてもいい` when you mean "you must not sleep late" tells someone the opposite of what you intended — that sleeping late is fine, just not required.
+
+For a fast mental shortcut, the dictionary form and the obligation form line up directly:
 
 ```jp
-薬を飲まなければなりません。
+行く → 行かなければならない
 ```
-*I have to take medicine.*
+*to go → have to go*
 
-Now you can clearly talk about your obligations. But what if you *don't* have to do something? Hold onto this negative stem—it will come in handy again when we look at `なくてもいい` to finally let yourself off the hook!
+That's the whole engine: find the ない-stem you already know, and decide whether you're forbidding it (てはいけない), excusing it (なくてもいい), or locking it in (なければならない). Later, when you meet ようにする, you'll see the same instinct pointed at habits instead of single obligations — making something happen on purpose, rather than being told it must.

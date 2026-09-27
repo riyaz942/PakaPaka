@@ -56,8 +56,9 @@
         },
         "description": { "type": "string", "minLength": 1 },
         "visually_similar_slugs": {
+          "description": "Look-alikes as \"<kind>:<slug>\" (\"kanji:person\", \"radical:hito\"). A radical and a kanji may share a slug, so the kind is part of the reference.",
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": { "type": "string", "pattern": "^(radical|kanji):[a-z0-9-]+$" },
           "uniqueItems": true
         },
         "visual_mnemonic_url": {
@@ -119,8 +120,9 @@
         "reading_mnemonic": { "type": "string", "minLength": 1 },
         "description": { "type": "string", "minLength": 1 },
         "visually_similar_slugs": {
+          "description": "Look-alikes as \"<kind>:<slug>\" (\"kanji:person\", \"radical:hito\"). A radical and a kanji may share a slug, so the kind is part of the reference.",
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": { "type": "string", "pattern": "^(radical|kanji):[a-z0-9-]+$" },
           "uniqueItems": true
         },
         "sort_order": { "type": "integer", "minimum": 0 },

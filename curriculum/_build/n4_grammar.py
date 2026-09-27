@@ -16,34 +16,7 @@ def ex(jp, en, vocab=None):
 
 N4_GRAMMAR = [
     {
-        "slug": "n4-node",
-        "primary_form": "ので",
-        "meaning": "because (neutral reason)",
-        "structure": "Plain form + ので",
-        "mnemonic": "ので gives an objective, softer reason than から.",
-        "conjugation_rules": {"reason": True, "polite_before": True},
-        "accepted_forms": ["ので", "なので"],
-        "examples": [
-            ex("雨が降っているので、傘を持って行きます。", "Since it's raining, I'll take an umbrella.", ["furu-rain", "kasa"]),
-            ex("時間がないので、急ぎましょう。", "Since there's no time, let's hurry.", ["jikan", "isogu"]),
-            ex("疲れたので、早く寝ます。", "Since I'm tired, I'll sleep early.", ["neru"]),
-            ex("道が混んでいるので、遅れます。", "Since the road is crowded, I'll be late.", ["michi-v", "okureru"]),
-            ex("休みなので、家にいます。", "Since it's a day off, I'm staying home.", ["yasumu", "ie"]),
-            ex("安いので、これを買います。", "Since it's cheap, I'll buy this.", ["yasui-adj", "kau-v"]),
-        ],
-        "vocabulary_slugs": ["furu-rain", "jikan", "yasumu"],
-        "cloze_variants": [
-            {"jp_cloze": "雨が降る＿＿＿、傘を持ちます。", "english": "It's going to rain, so I'll take an umbrella.", "answer": "ので", "nudge": "A weather clause and an umbrella clause, one single sentence — what welds them together at the middle?"},
-            {"jp_cloze": "妹はまだ子供＿＿＿、お酒を飲みません。", "english": "My little sister is still a child, so she doesn't drink alcohol.", "answer": "なので", "nudge": "子供 is a bare noun sitting right against the gap, and a bare noun cannot touch this joint on its own."},
-            {"jp_cloze": "この部屋は静か＿＿＿、よく勉強します。", "english": "This room is quiet, so I study a lot.", "answer": "なので", "nudge": "静か is the kind of adjective that wants な in front of a noun, and the same な shows up in the gap."},
-            {"jp_cloze": "昨日は頭が痛かった＿＿＿、早く寝ました。", "english": "My head hurt yesterday, so I went to bed early.", "answer": "ので", "nudge": "痛かった is already past and already plain, so nothing in front of the gap has to change at all."},
-            {"jp_cloze": "意味が分からない＿＿＿、先生に質問します。", "english": "I don't understand the meaning, so I'm going to ask the teacher.", "answer": "ので", "nudge": "The first half ends in a negative plain form; the joint clips onto it exactly as it would onto an affirmative one."},
-            {"jp_cloze": "電車が遅れます＿＿＿、タクシーで行きます。", "english": "The train is going to be late, so I'll go by taxi.", "answer": "ので", "nudge": "The first half keeps its polite ending, the way a station announcement would — what still links it to the taxi half?"},
-        ],
-        "family": "connectors",
-    },
-    {
-        "slug": "n4-noni",
+        "slug": "noni",
         "primary_form": "のに",
         "meaning": "although / even though",
         "structure": "Plain form + のに",
@@ -69,7 +42,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-souda-hearsay",
+        "slug": "souda-hearsay",
         "primary_form": "そうだ (hearsay)",
         "meaning": "I heard that / apparently",
         "structure": "Plain form + そうだ",
@@ -95,7 +68,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-souda-looks",
+        "slug": "souda-looks",
         "primary_form": "そうだ (looks like)",
         "meaning": "looks like / seems (appearance)",
         "structure": "い-adj stem / な-adj / Verb stem + そうだ",
@@ -120,7 +93,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-tara",
+        "slug": "tara",
         "primary_form": "たら",
         "meaning": "if / when (conditional)",
         "structure": "Ta-form + ら",
@@ -149,7 +122,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-ba",
+        "slug": "ba",
         "primary_form": "ば",
         "meaning": "if (conditional, general truth)",
         "structure": "Verb/adj ba-form + ば",
@@ -177,7 +150,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-nara",
+        "slug": "nara",
         "primary_form": "なら",
         "meaning": "if (topic-based conditional)",
         "structure": "Noun / Plain form + なら",
@@ -201,7 +174,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-potential",
+        "slug": "potential",
         "primary_form": "れる・られる",
         "meaning": "potential form (can do)",
         "structure": "Verb stem + れる / られる",
@@ -228,7 +201,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-passive",
+        "slug": "passive",
         "primary_form": "れる・られる (passive)",
         "meaning": "passive voice",
         "structure": "Verb stem + れる / られる",
@@ -255,7 +228,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-causative",
+        "slug": "causative",
         "primary_form": "せる・させる",
         "meaning": "causative (make/let someone do)",
         "structure": "Verb stem + せる / させる",
@@ -279,7 +252,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-causative-passive",
+        "slug": "causative-passive",
         "primary_form": "せられる・させられる",
         "meaning": "causative-passive (made to do, against one's will)",
         "structure": "Verb stem + せられる / させられる",
@@ -302,7 +275,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-youni",
+        "slug": "youni",
         "primary_form": "ように",
         "meaning": "in order to / so that",
         "structure": "Dictionary form / ない form + ように",
@@ -326,7 +299,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-youninaru",
+        "slug": "youninaru",
         "primary_form": "ようになる",
         "meaning": "come to be able to / reach the point of",
         "structure": "Dictionary form / potential form + ようになる",
@@ -349,7 +322,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-younaru",
+        "slug": "younaru",
         "primary_form": "なくなる",
         "meaning": "come to no longer / stop doing",
         "structure": "Verb ない-stem + なくなる",
@@ -372,7 +345,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-hazu",
+        "slug": "hazu",
         "primary_form": "はず",
         "meaning": "should be / expected to be",
         "structure": "Plain form + はず",
@@ -395,7 +368,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-hazuganai",
+        "slug": "hazuganai",
         "primary_form": "はずがない",
         "meaning": "there's no way / can't be",
         "structure": "Plain form + はずがない",
@@ -418,7 +391,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-rashii",
+        "slug": "rashii",
         "primary_form": "らしい",
         "meaning": "seems like / I heard (based on evidence)",
         "structure": "Plain form + らしい",
@@ -442,7 +415,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-youda",
+        "slug": "youda",
         "primary_form": "ようだ",
         "meaning": "seems / appears (based on inference)",
         "structure": "Plain form / Noun + の + ようだ",
@@ -467,7 +440,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-mitai",
+        "slug": "mitai",
         "primary_form": "みたいだ",
         "meaning": "seems like (casual)",
         "structure": "Plain form + みたいだ",
@@ -491,31 +464,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-teiru-progressive",
-        "primary_form": "ている",
-        "meaning": "progressive / ongoing action",
-        "structure": "Te-form + いる",
-        "mnemonic": "ている shows an action currently in progress.",
-        "conjugation_rules": {"progressive": True},
-        "accepted_forms": ["ている", "てる"],
-        "examples": [
-            ex("今、映画を見ています。", "I'm watching a movie right now.", ["ima", "eiga"]),
-            ex("雨が降っています。", "It's raining.", ["furu-rain"]),
-            ex("彼は宿題をしています。", "He's doing homework.", ["kare", "shukudai"]),
-            ex("音楽を聞いています。", "I'm listening to music.", ["ongaku"]),
-        ],
-        "vocabulary_slugs": ["ima", "eiga", "furu-rain"],
-        "cloze_variants": [
-            {"jp_cloze": "母は料理をし＿＿＿。", "english": "My mother is cooking.", "answer": "ている", "nudge": "She's not just someone who cooks in general — what turns 料理をし into something you'd notice her doing if you walked in?"},
-            {"jp_cloze": "妹は歌を歌っ＿＿＿。", "english": "My little sister is singing.", "answer": "ている", "nudge": "She isn't a singer by trade — what comes after 歌っ to say this is what she's doing as you listen?"},
-            {"jp_cloze": "妹は今、宿題をし＿＿＿。", "english": "My little sister's doing her homework right now.", "answer": "てる", "nudge": "This is the clipped, relaxed version of the same shape — what short ending does し pick up when nobody's being careful with their speech?"},
-            {"jp_cloze": "妹が泣い＿＿＿。", "english": "My little sister is crying.", "answer": "ている", "nudge": "You can hear this from another room — what tells you it's true this second, not that she cries often?"},
-            {"jp_cloze": "妹が泣い＿＿＿らしい。", "english": "Sounds like my little sister is crying.", "answer": "ている", "nudge": "らしい after this gap means you didn't check for yourself — what would fill it if you had actually walked in and seen her?"},
-        ],
-        "family": "conjugations",
-    },
-    {
-        "slug": "n4-teiru-result",
+        "slug": "teiru-result",
         "primary_form": "ている (resultant state)",
         "meaning": "resulting state (has become / is)",
         "structure": "Te-form + いる",
@@ -540,7 +489,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-tearu",
+        "slug": "tearu",
         "primary_form": "てある",
         "meaning": "has been done (resultant state, tr. verb)",
         "structure": "Te-form (transitive) + ある",
@@ -565,7 +514,7 @@ N4_GRAMMAR = [
         "family": "conjugations",
     },
     {
-        "slug": "n4-teoku",
+        "slug": "teoku",
         "primary_form": "ておく",
         "meaning": "to do in advance / leave as is",
         "structure": "Te-form + おく",
@@ -604,7 +553,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-teshimau",
+        "slug": "teshimau",
         "primary_form": "てしまう",
         "meaning": "to finish completely / end up doing (regret)",
         "structure": "Te-form + しまう",
@@ -644,7 +593,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-teiku-tekuru",
+        "slug": "teiku-tekuru",
         "primary_form": "ていく・てくる",
         "meaning": "to go on doing / to come to do (direction of change)",
         "structure": "Te-form + いく / くる",
@@ -682,7 +631,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-temo",
+        "slug": "temo",
         "primary_form": "ても",
         "meaning": "even if / even though",
         "structure": "Te-form + も",
@@ -704,104 +653,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-temoii",
-        "primary_form": "てもいい",
-        "meaning": "may / it's okay to",
-        "structure": "Te-form + もいい",
-        "mnemonic": "てもいい grants permission: it's fine if you do this.",
-        "conjugation_rules": {"permission": True},
-        "accepted_forms": ["てもいい", "てもいいです", "てもかまわない"],
-        "examples": [
-            ex("ここに座ってもいいですか。", "May I sit here?", ["suwaru"]),
-            ex("写真を撮ってもいいですか。", "May I take a photo?", ["shashin"]),
-            ex("先に帰ってもいいです。", "It's fine if you go home first.", ["kaeru-v"]),
-        ],
-        "vocabulary_slugs": ["suwaru", "shashin", "kaeru-v"],
-        # Drafted variants swallowed the preceding って; the blank starts at て.
-        "cloze_variants": [
-            {"jp_cloze": "ここに座っ＿＿＿ですか。", "english": "May I sit here?", "answer": "てもいい", "nudge": "This is a question about sitting — whose go-ahead does the speaker need before doing it?"},
-            {"jp_cloze": "窓を開け＿＿＿ですか。", "english": "May I open the window?", "answer": "てもいい", "nudge": "The window is still closed — what does the speaker need from the listener before touching it?"},
-            {"jp_cloze": "もう帰っ＿＿＿よ。", "english": "You may go home now.", "answer": "てもいいです", "nudge": "This isn't a question anymore — someone is telling another person they can leave. Who's speaking here?"},
-            {"jp_cloze": "電話を使っ＿＿＿ですか。", "english": "May I use the phone?", "answer": "てもいい", "nudge": "を marks 電話 as the thing being acted on — but whose say-so does the speaker still need first?"},
-            {"jp_cloze": "もう帰っ＿＿＿。", "english": "It's fine if you go home already.", "answer": "てもかまわない", "nudge": "Compare this to the other 帰る sentence — what changes about how much the speaker seems to care?"},
-        ],
-        "family": "conjugations",
-    },
-    {
-        "slug": "n4-tewaikenai",
-        "primary_form": "てはいけない",
-        "meaning": "must not / not allowed to",
-        "structure": "Te-form + はいけない",
-        "mnemonic": "てはいけない forbids an action outright.",
-        "conjugation_rules": {"prohibition": True},
-        "accepted_forms": ["てはいけない", "てはだめだ", "ちゃだめ"],
-        "examples": [
-            ex("ここでタバコを吸ってはいけません。", "You must not smoke here.", []),
-            ex("授業中に話してはいけません。", "You must not talk during class.", ["jugyou", "hanasu-v"]),
-            ex("うそをついてはいけません。", "You must not lie.", []),
-        ],
-        "vocabulary_slugs": ["jugyou", "hanasu-v"],
-        "cloze_variants": [
-            {"jp_cloze": "図書館の本にペンで書い＿＿＿。", "english": "You must not write in library books with a pen.", "answer": "てはいけない", "nudge": "What is 書い doing right before the blank, and what job does the piece after it do to the whole sentence?"},
-            {"jp_cloze": "図書館で大きい声で話し＿＿＿。", "english": "Don't talk in a loud voice in the library.", "answer": "てはいけない", "nudge": "The library and a loud voice are both already in the sentence — what does the blank add on top of them?"},
-            {"jp_cloze": "財布を忘れ＿＿＿。", "english": "You must not forget your wallet.", "answer": "てはいけない", "nudge": "Is this describing a possibility, or shutting a door on one option entirely?"},
-            {"jp_cloze": "ここに座っ＿＿＿。", "english": "You mustn't sit here.", "answer": "てはだめだ", "nudge": "だめ shows up elsewhere meaning 'no good' — what's it doing paired with this chair?"},
-            {"jp_cloze": "話し＿＿＿。", "english": "Don't talk.", "answer": "ちゃだめ", "nudge": "This one is shorter than the library sign version — what got worn down in casual speech?"},
-            {"jp_cloze": "忘れ＿＿＿。", "english": "Don't forget it.", "answer": "ちゃだめ", "nudge": "Compare this to the wallet sentence earlier — same warning, different register. What changed?"},
-        ],
-        "family": "conjugations",
-    },
-    {
-        "slug": "n4-nakutemoii",
-        "primary_form": "なくてもいい",
-        "meaning": "don't have to / not necessary",
-        "structure": "Verb ない-stem + くてもいい",
-        "mnemonic": "なくてもいい lifts an obligation: it's fine not to.",
-        "conjugation_rules": {"non_obligation": True},
-        "accepted_forms": ["なくてもいい", "なくてもいいです", "なくてもかまわない"],
-        "examples": [
-            ex("明日は来なくてもいいです。", "You don't have to come tomorrow.", ["ashita", "kuru-v"]),
-            ex("心配しなくてもいいです。", "You don't have to worry.", ["shinpai-suru"]),
-            ex("お金を払わなくてもいいです。", "You don't have to pay.", ["okane", "harau"]),
-        ],
-        "vocabulary_slugs": ["ashita", "shinpai-suru", "okane"],
-        "cloze_variants": [
-            {"jp_cloze": "今日は宿題を全部し＿＿＿。", "english": "You don't have to finish all the homework today.", "answer": "なくてもいい", "nudge": "全部 sits right before the blank — is it saying every item must get done, or that skipping some is fine?"},
-            {"jp_cloze": "明日は早く起き＿＿＿。", "english": "You don't have to wake up early tomorrow.", "answer": "なくてもいいです", "nudge": "早く describes how you'd get up if you did — does the rest of the sentence say that's required?"},
-            {"jp_cloze": "そんなに急が＿＿＿よ。", "english": "You don't have to hurry that much.", "answer": "なくてもいい", "nudge": "そんなに points at a level of hurrying someone assumed was needed — what is the blank doing to that assumption?"},
-            {"jp_cloze": "心配し＿＿＿よ。", "english": "You don't have to worry.", "answer": "なくてもいい", "nudge": "The speaker is talking someone down from worry — what would make that reassurance land?"},
-            {"jp_cloze": "今日は学校へ行か＿＿＿。", "english": "It's fine even if you don't go to school today.", "answer": "なくてもかまわない", "nudge": "行く is already in its negative form here — what is the blank adding on top of that ない?"},
-        ],
-        "family": "conjugations",
-    },
-    {
-        "slug": "n4-nakerebanaranai",
-        "primary_form": "なければならない",
-        "meaning": "must / have to",
-        "structure": "Verb ない-stem + ければならない",
-        "mnemonic": "なければならない says: if you don't, it won't do — you must.",
-        "conjugation_rules": {"obligation": True},
-        "accepted_forms": ["なければならない", "なければいけない", "なきゃいけない"],
-        "examples": [
-            ex("宿題をしなければなりません。", "I must do my homework.", ["shukudai"]),
-            ex("薬を飲まなければなりません。", "I have to take medicine.", ["kusuri"]),
-            ex("九時までに行かなければなりません。", "I have to go by nine o'clock.", ["iku-v"]),
-        ],
-        "vocabulary_slugs": ["shukudai", "kusuri", "iku-v"],
-        # Drafted variants blanked whole polite predicates (読まなければなりません); plain
-        # form leaves exactly the taught ending in the blank.
-        "cloze_variants": [
-            {"jp_cloze": "今日は漢字を覚え＿＿＿。", "english": "I have to memorize kanji today.", "answer": "なければならない", "nudge": "覚える already lost its る here — what usually rides on that bare stem when skipping it isn't an option?"},
-            {"jp_cloze": "本も読ま＿＿＿。", "english": "I also have to read the book.", "answer": "なければならない", "nudge": "読む swapped む for ま before this blank — what usually follows that particular stem shape?"},
-            {"jp_cloze": "学校に行か＿＿＿。", "english": "I have to go to school.", "answer": "なければならない", "nudge": "行く just did the same stem swap you'd use before なくてもいい — what comes next this time?"},
-            {"jp_cloze": "今週、本を返さ＿＿＿。", "english": "I have to return the book this week.", "answer": "なければいけない", "nudge": "返す turned its す into さ — this is the いける-flavored version of the ending, not the ならない one."},
-            {"jp_cloze": "宿題、し＿＿＿。", "english": "Gotta do the homework.", "answer": "なきゃいけない", "nudge": "This is the shrunk-down, spoken cousin of the full ending — what got clipped off なければ?"},
-            {"jp_cloze": "明日は早く起き＿＿＿。", "english": "I have to wake up early tomorrow.", "answer": "なければならない", "nudge": "起きる is already missing its dictionary ending here — this one continues in the opposite direction from なくてもいい."},
-        ],
-        "family": "conjugations",
-    },
-    {
-        "slug": "n4-souni-naru",
+        "slug": "souni-naru",
         "primary_form": "そうになる",
         "meaning": "almost / on the verge of",
         "structure": "Verb stem + そうになる",
@@ -824,7 +676,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-tsumori",
+        "slug": "tsumori",
         "primary_form": "つもり",
         "meaning": "intend to / plan to",
         "structure": "Dictionary form + つもり",
@@ -848,7 +700,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-youni-suru",
+        "slug": "youni-suru",
         "primary_form": "ようにする",
         "meaning": "to try to make it so / make a habit of",
         "structure": "Dictionary form / ない form + ようにする",
@@ -871,47 +723,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-koto-ga-aru",
-        "primary_form": "ことがある",
-        "meaning": "have (done) before / sometimes happens",
-        "structure": "Ta-form + ことがある",
-        "mnemonic": "ことがある points to a past experience or occasional event.",
-        "conjugation_rules": {"experience": True},
-        "accepted_forms": ["ことがある", "ことがあります"],
-        "examples": [
-            ex("日本へ行ったことがあります。", "I have been to Japan before.", ["nihon", "iku-v"]),
-            ex("寿司を食べたことがあります。", "I have eaten sushi before.", ["sushi", "taberu"]),
-            ex("たまに遅刻することがあります。", "I am sometimes late.", ["tama-ni", "chikoku-suru"]),
-        ],
-        "vocabulary_slugs": ["nihon", "sushi", "tama-ni"],
-        # Drafted variants blanked か and the negative ありません, neither an accepted
-        # form — か moved outside the blank, the negative replaced.
-        "cloze_variants": [
-            {"jp_cloze": "すしを食べた＿＿＿か。", "english": "Have you ever eaten sushi?", "answer": "ことがあります", "nudge": "食べた is locked into the past and the か is already asking — what goes between them to make it about your whole life?"},
-            {"jp_cloze": "日本語を勉強した＿＿＿。", "english": "I have studied Japanese before.", "answer": "ことがあります", "nudge": "This isn't naming when the studying happened — what's it confirming about your life instead?"},
-            {"jp_cloze": "この映画を見た＿＿＿。", "english": "I have seen this movie before.", "answer": "ことがあります", "nudge": "見た on its own is just one evening — the blank has to stretch it across your whole past."},
-            {"jp_cloze": "飛行機に乗った＿＿＿。", "english": "I've been on a plane before.", "answer": "ことがあります", "nudge": "乗った already tells you the riding happened once — what's left to add is that it happened at some point in your life."},
-            {"jp_cloze": "猫と一緒に泳いだ＿＿＿。", "english": "I've swum together with a cat before.", "answer": "ことがあります", "nudge": "泳いだ sits frozen in the past — what phrase turns that single fact into something true of your whole history?"},
-            {"jp_cloze": "山に登った＿＿＿か。", "english": "Have you ever climbed a mountain?", "answer": "ことがあります", "nudge": "You're asking about their whole life, not one specific climb — the か is already there, so what goes in front of it?"},
-        ],
-        "family": "patterns",
-        "uses": [
-            {
-                "label": "Experience — \"have done before\"",
-                "structure": "Verb-た + ことがある",
-                "japanese": "日本へ行ったことがあります。",
-                "english": "I have been to Japan before.",
-            },
-            {
-                "label": "Sometimes happens",
-                "structure": "Dictionary form + ことがある",
-                "japanese": "たまに遅刻することがあります。",
-                "english": "I am sometimes late.",
-            },
-        ],
-    },
-    {
-        "slug": "n4-koto-ni-suru",
+        "slug": "koto-ni-suru",
         "primary_form": "ことにする",
         "meaning": "to decide to (one's own choice)",
         "structure": "Dictionary form / ない form + ことにする",
@@ -934,7 +746,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-koto-ni-naru",
+        "slug": "koto-ni-naru",
         "primary_form": "ことになる",
         "meaning": "it has been decided that / turns out that",
         "structure": "Dictionary form / ない form + ことになる",
@@ -958,7 +770,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-mono",
+        "slug": "mono",
         "primary_form": "もの",
         "meaning": "used to (nostalgic habit) / because (emotional)",
         "structure": "Plain form + もの / だもの",
@@ -994,7 +806,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-bakari",
+        "slug": "bakari",
         "primary_form": "ばかり",
         "meaning": "only / just did",
         "structure": "Noun + ばかり / Ta-form + ばかり",
@@ -1031,7 +843,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-tokoro",
+        "slug": "tokoro",
         "primary_form": "ところ",
         "meaning": "just about to / in the middle of / just finished",
         "structure": "Dictionary/て-form/Ta-form + ところ",
@@ -1074,7 +886,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-aida",
+        "slug": "aida",
         "primary_form": "間・間に",
         "meaning": "while / during the interval",
         "structure": "Verb-ている / Noun の + 間(に)",
@@ -1097,7 +909,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-uchi-ni",
+        "slug": "uchi-ni",
         "primary_form": "うちに",
         "meaning": "while (before it's too late) / during",
         "structure": "Plain form + うちに",
@@ -1120,7 +932,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-tabi-ni",
+        "slug": "tabi-ni",
         "primary_form": "たびに",
         "meaning": "every time / whenever",
         "structure": "Dictionary form / Noun の + たびに",
@@ -1142,7 +954,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-baai",
+        "slug": "baai",
         "primary_form": "場合",
         "meaning": "in the case of / if the situation is",
         "structure": "Plain form / Noun の + 場合",
@@ -1166,7 +978,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-to-conditional",
+        "slug": "to-conditional",
         "primary_form": "と",
         "meaning": "if / when (natural/automatic result)",
         "structure": "Plain form (present) + と",
@@ -1203,7 +1015,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-node-vs-kara",
+        "slug": "node-vs-kara",
         "primary_form": "から (formal reason, reused)",
         "meaning": "because (subjective reason)",
         "structure": "Plain form + から",
@@ -1229,7 +1041,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-kawarini",
+        "slug": "kawarini",
         "primary_form": "代わりに",
         "meaning": "instead of / in exchange for",
         "structure": "Noun の / Dictionary form + 代わりに",
@@ -1251,7 +1063,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-kawari-ni-formal",
+        "slug": "kawari-ni-formal",
         "primary_form": "というより",
         "meaning": "rather than say / more accurately",
         "structure": "Plain form + というより",
@@ -1273,7 +1085,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-toshite",
+        "slug": "toshite",
         "primary_form": "として",
         "meaning": "as (in the role/capacity of)",
         "structure": "Noun + として",
@@ -1296,7 +1108,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-nitsuite",
+        "slug": "nitsuite",
         "primary_form": "について",
         "meaning": "about / regarding",
         "structure": "Noun + について",
@@ -1318,7 +1130,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-niyoruto",
+        "slug": "niyoruto",
         "primary_form": "によると",
         "meaning": "according to",
         "structure": "Noun + によると",
@@ -1341,7 +1153,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-tame",
+        "slug": "tame",
         "primary_form": "ため (cause)",
         "meaning": "due to / because of (formal cause)",
         "structure": "Plain form / Noun の + ため",
@@ -1364,7 +1176,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-kagiri",
+        "slug": "kagiri",
         "primary_form": "限り",
         "meaning": "as far as / as long as",
         "structure": "Plain form + 限り",
@@ -1387,7 +1199,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-tatoe-temo",
+        "slug": "tatoe-temo",
         "primary_form": "たとえ〜ても",
         "meaning": "even if (hypothetical emphasis)",
         "structure": "たとえ + Te-form + も",
@@ -1402,7 +1214,7 @@ N4_GRAMMAR = [
             ex("たとえ難しくても、挑戦します。", "Even if it's difficult, I'll try.", ["muzukashii"]),
         ],
         "vocabulary_slugs": ["furu-rain", "muzukashii"],
-        # Only たとえ is blankable here — 〜ても is its own point (n4-temo) and the paired
+        # Only たとえ is blankable here — 〜ても is its own point (temo) and the paired
         # form is not a literal accepted_form — so every blank sits at the opener.
         "cloze_variants": [
             {"jp_cloze": "＿＿＿雨が降っても、私たちは山に登ります。", "english": "Even if it rains, we will climb the mountain.", "answer": "たとえ", "nudge": "The rain clause already does all the conceding by itself — what three-kana flag can open the sentence to mark the rain as a pure what-if?"},
@@ -1414,7 +1226,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-kke",
+        "slug": "kke",
         "primary_form": "っけ",
         "meaning": "wasn't it? / trying to recall",
         "structure": "Plain form + っけ",
@@ -1436,7 +1248,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-noda",
+        "slug": "noda",
         "primary_form": "のだ・んだ",
         "meaning": "explanatory emphasis (the thing is...)",
         "structure": "Plain form + のだ / んです",
@@ -1458,54 +1270,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-deshou",
-        "primary_form": "でしょう",
-        "meaning": "probably / I guess (softened assertion)",
-        "structure": "Plain form + でしょう",
-        "mnemonic": "でしょう softens a guess into a polite probability.",
-        "conjugation_rules": {"probability": True},
-        "accepted_forms": ["でしょう", "だろう"],
-        "examples": [
-            ex("明日は雨でしょう。", "It will probably rain tomorrow.", ["ashita"]),
-            ex("彼はもう知っているでしょう。", "He probably already knows.", ["kare", "shiru"]),
-            ex("これでいいでしょう。", "This should be fine, right?", []),
-        ],
-        "vocabulary_slugs": ["ashita", "kare", "shiru"],
-        "cloze_variants": [
-            {"jp_cloze": "明日は雨＿＿＿。", "english": "Tomorrow it'll probably rain.", "answer": "でしょう", "nudge": "Nothing here confirms it's actually raining yet — what ending makes 雨です less certain?"},
-            {"jp_cloze": "彼はもう忙しい＿＿＿。", "english": "He's probably busy already.", "answer": "でしょう", "nudge": "もう already covers the timing — what's left to add is how sure the speaker sounds."},
-            {"jp_cloze": "この部屋は静か＿＿＿。", "english": "This room is probably quiet.", "answer": "でしょう", "nudge": "静か has no だ sitting in front of it here — what took that spot instead?"},
-            {"jp_cloze": "今日は寒い＿＿＿？", "english": "It's cold today, isn't it?", "answer": "でしょう", "nudge": "The question mark and rising voice change the job of this ending — what word turns a plain statement into a check for agreement?"},
-            {"jp_cloze": "彼女は先生＿＿＿。", "english": "She's probably a teacher.", "answer": "だろう", "nudge": "です is nowhere in this sentence — what plain, casual word fills that role instead?"},
-        ],
-        "family": "copula",
-    },
-    {
-        "slug": "n4-kamoshirenai",
-        "primary_form": "かもしれない",
-        "meaning": "might / maybe",
-        "structure": "Plain form + かもしれない",
-        "mnemonic": "かもしれない leaves the door open — it might be true.",
-        "conjugation_rules": {"possibility": True},
-        "accepted_forms": ["かもしれない", "かもしれません"],
-        "examples": [
-            ex("明日は雪が降るかもしれません。", "It might snow tomorrow.", ["ashita", "yuki"]),
-            ex("彼は来ないかもしれません。", "He might not come.", ["kare", "kuru-v"]),
-            ex("これは高いかもしれません。", "This might be expensive.", ["takai-adj"]),
-        ],
-        "vocabulary_slugs": ["ashita", "kare", "takai-adj"],
-        "cloze_variants": [
-            {"jp_cloze": "電車が遅れている＿＿＿。", "english": "The train might be delayed.", "answer": "かもしれません", "nudge": "This whole sentence stays polite — what ending keeps that same register while leaving the delay unconfirmed?"},
-            {"jp_cloze": "今日は忙しい＿＿＿。", "english": "I might be busy today.", "answer": "かもしれない", "nudge": "忙しい already ends the way a plain adjective should — what follows it with nothing added in between?"},
-            {"jp_cloze": "猫は大丈夫＿＿＿。", "english": "The cat might be okay.", "answer": "かもしれない", "nudge": "大丈夫 usually wants something right after it in a plain statement — what's missing here, and what sits in its place instead?"},
-            {"jp_cloze": "彼は病気＿＿＿。", "english": "He might be sick.", "answer": "かもしれない", "nudge": "病気 is a bare noun with nothing attached — what comes directly after it, with no だ anywhere nearby?"},
-            {"jp_cloze": "夜の間に猫が外に出た＿＿＿。", "english": "The cat may have gone outside during the night.", "answer": "かもしれない", "nudge": "出た already points to something finished — what turns that finished fact into an open question rather than a settled one?"},
-            {"jp_cloze": "明日は雨＿＿＿。", "english": "It might rain tomorrow.", "answer": "かもしれない", "nudge": "This sentence sits right beside a でしょう version in the lesson — what ending leaves the rain as an open possibility instead of a confident call?"},
-        ],
-        "family": "copula",
-    },
-    {
-        "slug": "n4-nikui-yasui",
+        "slug": "nikui-yasui",
         "primary_form": "にくい・やすい",
         "meaning": "hard to / easy to (do)",
         "structure": "Verb stem + にくい / やすい",
@@ -1528,30 +1293,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-sugiru",
-        "primary_form": "すぎる",
-        "meaning": "too much / excessively",
-        "structure": "Verb stem / adj stem + すぎる",
-        "mnemonic": "すぎる spills past the reasonable limit — too much of it.",
-        "conjugation_rules": {"excess": True},
-        "accepted_forms": ["すぎる", "すぎました"],
-        "examples": [
-            ex("食べすぎました。", "I ate too much.", ["taberu"]),
-            ex("このコーヒーは熱すぎます。", "This coffee is too hot.", ["koohii", "atsui-obj"]),
-            ex("働きすぎるのは体に悪いです。", "Working too much is bad for your health.", ["hataraku", "karada"]),
-        ],
-        "vocabulary_slugs": ["taberu", "koohii", "hataraku"],
-        "cloze_variants": [
-            {"jp_cloze": "このシャツは高＿＿＿。", "english": "This shirt is too expensive.", "answer": "すぎる", "nudge": "Look at the price reaction — what ending pushes 'expensive' past a comfortable line, into a complaint?"},
-            {"jp_cloze": "この部屋は静か＿＿＿。", "english": "This room is too quiet.", "answer": "すぎる", "nudge": "The silence here isn't neutral — what ending turns plain 'quiet' into something worth remarking on?"},
-            {"jp_cloze": "昨日、働き＿＿＿。", "english": "I worked too much yesterday.", "answer": "すぎました", "nudge": "This is a finished action told politely — which ending is carrying both the politeness and the sense that the amount of work went past what it should have?"},
-            {"jp_cloze": "彼は勉強し＿＿＿。", "english": "He studies too much.", "answer": "すぎる", "nudge": "Nothing here names a problem outright, but the sentence structure hints his studying has gone further than normal — what ending signals that?"},
-            {"jp_cloze": "肉を切り＿＿＿。", "english": "You're cutting the meat too much.", "answer": "すぎる", "nudge": "Picture more cuts than the meat actually needed, not just one — what ending turns 'cut' into a complaint about quantity?"},
-        ],
-        "family": "patterns",
-    },
-    {
-        "slug": "n4-tsutsu-aru",
+        "slug": "tsutsu-aru",
         "primary_form": "つつある",
         "meaning": "in the process of (formal, ongoing change)",
         "structure": "Verb stem + つつある",
@@ -1573,7 +1315,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-ageku",
+        "slug": "ageku",
         "primary_form": "あげく",
         "meaning": "in the end (after much effort, often bad result)",
         "structure": "Ta-form + あげく",
@@ -1595,7 +1337,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-wake",
+        "slug": "wake",
         "primary_form": "わけ",
         "meaning": "reason / makes sense that",
         "structure": "Plain form + わけ",
@@ -1617,7 +1359,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-wakeganai",
+        "slug": "wakeganai",
         "primary_form": "わけがない",
         "meaning": "there's no way that",
         "structure": "Plain form + わけがない",
@@ -1639,7 +1381,7 @@ N4_GRAMMAR = [
         "family": "copula",
     },
     {
-        "slug": "n4-kanaru",
+        "slug": "kanaru",
         "primary_form": "かなり",
         "meaning": "quite / fairly (degree)",
         "structure": "かなり + adjective/verb",
@@ -1662,7 +1404,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-hodo",
+        "slug": "hodo",
         "primary_form": "ほど",
         "meaning": "to the extent of / the more...the more",
         "structure": "Noun / Plain form + ほど",
@@ -1704,7 +1446,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-kurai-degree",
+        "slug": "kurai-degree",
         "primary_form": "くらい (degree)",
         "meaning": "to the extent that / about as much as",
         "structure": "Plain form + くらい",
@@ -1740,7 +1482,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-dake-de-naku",
+        "slug": "dake-de-naku",
         "primary_form": "だけでなく",
         "meaning": "not only... but also",
         "structure": "Noun / Plain form + だけでなく",
@@ -1763,7 +1505,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-kagirazu",
+        "slug": "kagirazu",
         "primary_form": "に限らず",
         "meaning": "not limited to",
         "structure": "Noun + に限らず",
@@ -1775,7 +1517,6 @@ N4_GRAMMAR = [
         ],
         "vocabulary_slugs": ["nihon", "sekai"],
         "cloze_variants": [
-            {"jp_cloze": "残業は会社＿＿＿、銀行でも多いです。", "english": "Overtime isn't limited to companies — it's common at banks too.", "answer": "に限らず", "nudge": "銀行でも sits at the end — what is that でも adding on top of 会社?"},
             {"jp_cloze": "動物が好きなのは女の子＿＿＿、男の子も好きです。", "english": "Liking animals isn't limited to girls — boys like them too.", "answer": "に限らず", "nudge": "男の子も好きです closes the sentence — what job is that も doing next to 女の子?"},
             {"jp_cloze": "忙しいのは会社員＿＿＿、学生も忙しいです。", "english": "Being busy isn't limited to office workers — students are busy too.", "answer": "に限らず", "nudge": "Two groups get called 忙しい here — which one comes first, and which one carries the も?"},
             {"jp_cloze": "病気になるのは大人＿＿＿、子供もなります。", "english": "Getting sick isn't limited to adults — children get sick too.", "answer": "に限らず", "nudge": "子供もなります repeats なる from earlier in the sentence — what does that repetition tell you about 大人?"},
@@ -1784,7 +1525,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-ippou-de",
+        "slug": "ippou-de",
         "primary_form": "一方で",
         "meaning": "on the other hand",
         "structure": "Plain form + 一方で",
@@ -1805,7 +1546,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-nitotte",
+        "slug": "nitotte",
         "primary_form": "にとって",
         "meaning": "for / from the perspective of",
         "structure": "Noun + にとって",
@@ -1825,7 +1566,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-nikanshite",
+        "slug": "nikanshite",
         "primary_form": "に関して",
         "meaning": "regarding / concerning (formal)",
         "structure": "Noun + に関して",
@@ -1837,16 +1578,13 @@ N4_GRAMMAR = [
         ],
         "vocabulary_slugs": ["shitsumon"],
         "cloze_variants": [
-            {"jp_cloze": "経済＿＿＿、説明します。", "english": "I'll explain regarding the economy.", "answer": "に関して", "nudge": "What comes right after 経済 here — is it setting up the topic, or comparing two things?"},
-            {"jp_cloze": "経済＿＿＿問題があります。", "english": "There are problems regarding the economy.", "answer": "に関する", "nudge": "Look at what follows the blank — is it a full sentence ending, or another noun like 問題?"},
             {"jp_cloze": "会議で、部長は文化＿＿＿質問した。", "english": "At the meeting, the department head asked a question about culture.", "answer": "に関して", "nudge": "The department head is asking something specific — what word is doing the pointing toward 文化?"},
             {"jp_cloze": "環境＿＿＿、色々な意見があります。", "english": "There are various opinions regarding the environment.", "answer": "に関して", "nudge": "色々な意見 belongs to some subject — what links 環境 to the rest of the sentence?"},
-            {"jp_cloze": "経済＿＿＿、専門家に聞きます。", "english": "Regarding the economy, I'll ask a specialist.", "answer": "に関して", "nudge": "The speaker isn't asking the economy itself anything — so what is 経済 doing in this sentence?"},
         ],
         "family": "particles",
     },
     {
-        "slug": "n4-souiu",
+        "slug": "souiu",
         "primary_form": "そういう・こういう",
         "meaning": "that kind of / this kind of",
         "structure": "そういう / こういう + Noun",
@@ -1868,7 +1606,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-tte",
+        "slug": "tte",
         "primary_form": "って",
         "meaning": "casual quotation / topic marker",
         "structure": "Plain form + って",
@@ -1905,7 +1643,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-tteba",
+        "slug": "tteba",
         "primary_form": "ったら・ってば",
         "meaning": "emphatic address / exasperation",
         "structure": "Noun/Plain form + ったら・ってば",
@@ -1941,7 +1679,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-ka-douka",
+        "slug": "ka-douka",
         "primary_form": "かどうか",
         "meaning": "whether or not",
         "structure": "Plain form + かどうか",
@@ -1963,7 +1701,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-ka-nanka",
+        "slug": "ka-nanka",
         "primary_form": "か何か",
         "meaning": "or something",
         "structure": "Noun + か何か",
@@ -1985,7 +1723,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-toka",
+        "slug": "toka",
         "primary_form": "とか",
         "meaning": "things like / and so on (casual listing)",
         "structure": "Noun + とか + Noun + とか",
@@ -2006,7 +1744,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-kke2",
+        "slug": "kke2",
         "primary_form": "反面",
         "meaning": "while at the same time / conversely",
         "structure": "Plain form + 反面",
@@ -2028,7 +1766,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-tokoroga",
+        "slug": "tokoroga",
         "primary_form": "ところが",
         "meaning": "however / unexpectedly",
         "structure": "Sentence. + ところが + Sentence.",
@@ -2049,7 +1787,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-soredemo",
+        "slug": "soredemo",
         "primary_form": "それでも",
         "meaning": "even so / nevertheless",
         "structure": "Sentence. + それでも + Sentence.",
@@ -2071,7 +1809,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-sokode",
+        "slug": "sokode",
         "primary_form": "そこで",
         "meaning": "so / therefore (leading to action)",
         "structure": "Sentence. + そこで + Sentence.",
@@ -2092,7 +1830,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-sonoseika-de",
+        "slug": "sonoseika-de",
         "primary_form": "そのため",
         "meaning": "for that reason / because of that",
         "structure": "Sentence. + そのため + Sentence.",
@@ -2113,7 +1851,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-suruto",
+        "slug": "suruto",
         "primary_form": "すると",
         "meaning": "then / and then (sequential)",
         "structure": "Sentence. + すると + Sentence.",
@@ -2134,7 +1872,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-igai",
+        "slug": "igai",
         "primary_form": "以外",
         "meaning": "except / other than",
         "structure": "Noun + 以外",
@@ -2156,7 +1894,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-igo-formal",
+        "slug": "igo-formal",
         "primary_form": "以来",
         "meaning": "ever since",
         "structure": "Noun / Te-form + 以来",
@@ -2177,7 +1915,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-hantai-ni",
+        "slug": "hantai-ni",
         "primary_form": "反対に",
         "meaning": "on the contrary / conversely",
         "structure": "反対に + Sentence.",
@@ -2198,7 +1936,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-koso",
+        "slug": "koso",
         "primary_form": "こそ",
         "meaning": "precisely / for sure (emphasis)",
         "structure": "Noun + こそ",
@@ -2219,7 +1957,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-sae",
+        "slug": "sae",
         "primary_form": "さえ",
         "meaning": "even (extreme example)",
         "structure": "Noun + さえ",
@@ -2241,7 +1979,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-saeba",
+        "slug": "saeba",
         "primary_form": "さえ〜ば",
         "meaning": "if only / as long as",
         "structure": "Noun + さえ + Verb-ば",
@@ -2265,7 +2003,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-nomi",
+        "slug": "nomi",
         "primary_form": "のみ",
         "meaning": "only (formal)",
         "structure": "Noun + のみ",
@@ -2286,7 +2024,7 @@ N4_GRAMMAR = [
         "family": "particles",
     },
     {
-        "slug": "n4-hoka-nai",
+        "slug": "hoka-nai",
         "primary_form": "ほかない",
         "meaning": "have no choice but to",
         "structure": "Dictionary form + ほかない",
@@ -2307,7 +2045,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-yoruni",
+        "slug": "yoruni",
         "primary_form": "によって",
         "meaning": "by / due to / depending on",
         "structure": "Noun + によって",
@@ -2355,7 +2093,7 @@ N4_GRAMMAR = [
         ],
     },
     {
-        "slug": "n4-tsuide-ni",
+        "slug": "tsuide-ni",
         "primary_form": "ついでに",
         "meaning": "while I'm at it / incidentally",
         "structure": "Dictionary form / Noun の + ついでに",
@@ -2376,7 +2114,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-ue-de",
+        "slug": "ue-de",
         "primary_form": "上で",
         "meaning": "after / on the basis of (formal)",
         "structure": "Ta-form + 上で",
@@ -2396,7 +2134,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-saichuu-ni",
+        "slug": "saichuu-ni",
         "primary_form": "最中に",
         "meaning": "right in the middle of",
         "structure": "Verb-ている / Noun の + 最中に",
@@ -2417,7 +2155,7 @@ N4_GRAMMAR = [
         "family": "patterns",
     },
     {
-        "slug": "n4-oyobi",
+        "slug": "oyobi",
         "primary_form": "および",
         "meaning": "and / as well as (formal)",
         "structure": "Noun + および + Noun",
@@ -2438,7 +2176,7 @@ N4_GRAMMAR = [
         "family": "connectors",
     },
     {
-        "slug": "n4-ni-taishite",
+        "slug": "ni-taishite",
         "primary_form": "に対して",
         "meaning": "towards / in contrast to",
         "structure": "Noun + に対して",

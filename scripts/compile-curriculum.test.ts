@@ -130,7 +130,7 @@ describe('compile-curriculum', () => {
     const db = new Database(dbPath, { readonly: true });
     try {
       expect(readItemIds(dbPath)).toEqual({
-        'kanji:n5-ichi': 2,
+        'kanji:one': 2,
         'grammar:desu': 3,
         'radical:ichi': 4,
         'vocabulary:ichi-v': 5,
@@ -155,11 +155,11 @@ describe('compile-curriculum', () => {
     fs.writeFileSync(path.join(curriculumDir, 'kanji', 'n4.json'), JSON.stringify(kanjiFile));
     try {
       compileCurriculum(dbPath, curriculumDir);
-      expect(readItemIds(dbPath)['kanji:n5-ichi']).toBe(2);
+      expect(readItemIds(dbPath)['kanji:one']).toBe(2);
       const db = new Database(dbPath, { readonly: true });
       try {
         expect(
-          db.prepare("SELECT jlpt_level FROM items WHERE slug = 'n5-ichi'").get(),
+          db.prepare("SELECT jlpt_level FROM items WHERE slug = 'one'").get(),
         ).toEqual({ jlpt_level: 'N4' });
       } finally {
         db.close();
@@ -187,7 +187,7 @@ describe('compile-curriculum', () => {
       compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
       expect(readItemIds(dbPath)).toEqual({
         'radical:aaa': 8,
-        'kanji:n5-ichi': 2,
+        'kanji:one': 2,
         'grammar:desu': 3,
         'radical:ichi': 4,
         'vocabulary:ichi-v': 5,
@@ -307,7 +307,7 @@ describe('compile-curriculum', () => {
         .prepare(
           'SELECT meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url FROM items WHERE item_type = ? AND slug = ?',
         )
-        .get('kanji', 'n5-ichi') as {
+        .get('kanji', 'one') as {
         meaning_mnemonic: string | null;
         reading_mnemonic: string | null;
         description: string | null;
@@ -443,8 +443,8 @@ describe('compile-curriculum', () => {
         )
         .all() as { from_slug: string; to_slug: string }[];
       expect(links).toEqual([
-        { from_slug: 'ichi', to_slug: 'n5-ichi' },
-        { from_slug: 'n5-ichi', to_slug: 'ichi' },
+        { from_slug: 'ichi', to_slug: 'one' },
+        { from_slug: 'one', to_slug: 'ichi' },
       ]);
 
       const grammarMnemonic = db
@@ -464,12 +464,12 @@ describe('compile-curriculum', () => {
 
     const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
     const kanjiFile = JSON.parse(fs.readFileSync(kanjiPath, 'utf8'));
-    kanjiFile.items[0].visually_similar_slugs = ['no-such-item'];
+    kanjiFile.items[0].visually_similar_slugs = ['kanji:no-such-item'];
     fs.writeFileSync(kanjiPath, JSON.stringify(kanjiFile));
 
     try {
       expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
-        'Unresolved visually similar link: kanji:n5-ichi -> no-such-item',
+        'Unresolved visually similar link: kanji:one -> kanji:no-such-item',
       );
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });

@@ -84,7 +84,7 @@ CORE_SEED_SLUGS = {
         # 置く — word 591 of 718, so 25 of the 30 seeds could open a box
         # (開ける, 417) and close it (閉める, 418) but not put it down. The
         # only other way to say a thing sits somewhere is 置いてあります,
-        # which is N4 grammar (n4-tearu), so every early passage that had to
+        # which is N4 grammar (tearu), so every early passage that had to
         # leave an object somewhere bent a verb instead — 角に持っていきました
         # for 角に置きました, and 箱が待っています for 箱があります. See the
         # same doc, § An object is not a person.
