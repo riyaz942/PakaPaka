@@ -44032,8 +44032,130 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "店員が注文を間違えて、カレーが来ました。",
+          "english": "The clerk got the order wrong, and I was brought curry.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ten-in",
+            "chuumon",
+            "machigaeru",
+            "karee",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ten-in",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chuumon",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "間違えて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "karee",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 15,
+              "end": 19,
+              "surface_form": "来ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "店[てん]員[いん]が注[ちゅう]文[もん]を間[ま]違[ちが]えて、カレーが来[き]ました。"
+        },
+        {
+          "japanese": "兄の注文はいつも同じラーメンなんです。",
+          "english": "My older brother orders the same ramen every time.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ani",
+            "chuumon",
+            "itsumo",
+            "onaji",
+            "raamen"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chuumon",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "onaji",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "raamen",
+              "start": 10,
+              "end": 14
+            }
+          ],
+          "furigana": "兄[あに]の注[ちゅう]文[もん]はいつも同[おな]じラーメンなんです。"
+        },
+        {
+          "japanese": "電話で弁当の注文をしました。",
+          "english": "I placed an order for boxed lunches over the phone.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "denwa",
+            "bentou",
+            "chuumon",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "denwa",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bentou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "chuumon",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "電[でん]話[わ]で弁[べん]当[とう]の注[ちゅう]文[もん]をしました。"
+        }
+      ]
     },
     {
       "slug": "koukan-suru",
@@ -44059,8 +44181,130 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "サイズが小さかったので、靴を交換しました。",
+          "english": "The shoes were too small, so I exchanged them.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "saizu",
+            "chiisai",
+            "kutsu",
+            "koukan-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "saizu",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "chiisai",
+              "start": 4,
+              "end": 9,
+              "surface_form": "小さかった",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "kutsu",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "koukan-suru",
+              "start": 14,
+              "end": 20,
+              "surface_form": "交換しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "サイズが小[ちい]さかったので、靴[くつ]を交[こう]換[かん]しました。"
+        },
+        {
+          "japanese": "駅で会った人と電話番号を交換した。",
+          "english": "I swapped phone numbers with someone I met at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "au",
+            "hito",
+            "denwabangou",
+            "koukan-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 2,
+              "end": 5,
+              "surface_form": "会った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "denwabangou",
+              "start": 7,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "koukan-suru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "交換した",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "駅[えき]で会[あ]った人[ひと]と電[でん]話[わ]番[ばん]号[ごう]を交[こう]換[かん]した。"
+        },
+        {
+          "japanese": "時計が壊れているので、新しいのと交換してください。",
+          "english": "This watch is broken, so please exchange it for a new one.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tokei",
+            "kowareru",
+            "atarashii-adj",
+            "koukan-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tokei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kowareru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "壊れて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "koukan-suru",
+              "start": 16,
+              "end": 20,
+              "surface_form": "交換して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "時計[とけい]が壊[こわ]れているので、新[あたら]しいのと交[こう]換[かん]してください。"
+        }
+      ]
     },
     {
       "slug": "henpin-suru",
@@ -44086,8 +44330,119 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "領収書がないと、返品することができません。",
+          "english": "Without the receipt, you can't return the item.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ryoushuusho",
+            "aru",
+            "henpin-suru",
+            "dekiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryoushuusho",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "henpin-suru",
+              "start": 8,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "dekiru",
+              "start": 15,
+              "end": 20,
+              "surface_form": "できません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "領[りょう]収[しゅう]書[しょ]がないと、返[へん]品[ぴん]することができません。"
+        },
+        {
+          "japanese": "姉は買ったばかりのバッグを返品しました。",
+          "english": "My sister returned the bag she had only just bought.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ane",
+            "kau-v",
+            "baggu",
+            "henpin-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "買った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "baggu",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "henpin-suru",
+              "start": 13,
+              "end": 19,
+              "surface_form": "返品しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "姉[あね]は買[か]ったばかりのバッグを返[へん]品[ぴん]しました。"
+        },
+        {
+          "japanese": "間違えて注文した本を返品しました。",
+          "english": "I returned a book I had ordered by mistake.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "machigaeru",
+            "chuumon-suru",
+            "hon",
+            "henpin-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "間違えて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "chuumon-suru",
+              "start": 4,
+              "end": 8,
+              "surface_form": "注文した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "henpin-suru",
+              "start": 10,
+              "end": 16,
+              "surface_form": "返品しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "間[ま]違[ちが]えて注[ちゅう]文[もん]した本[ほん]を返[へん]品[ぴん]しました。"
+        }
+      ]
     },
     {
       "slug": "kenkou",
@@ -44113,8 +44468,112 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "祖父は健康のために毎日一時間歩いています。",
+          "english": "My grandfather walks for an hour every day for his health.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sofu",
+            "kenkou",
+            "mainichi",
+            "jikan-counter",
+            "aruku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sofu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kenkou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 14,
+              "end": 17,
+              "surface_form": "歩いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "祖[そ]父[ふ]は健[けん]康[こう]のために毎[まい]日[にち]一[いち]時[じ]間[かん]歩[ある]いています。"
+        },
+        {
+          "japanese": "お酒を飲みすぎるのは健康に悪いですよ。",
+          "english": "Drinking too much is bad for your health, you know.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "osake",
+            "nomu-v",
+            "kenkou",
+            "warui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "osake",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kenkou",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "warui",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "furigana": "お酒[さけ]を飲[の]みすぎるのは健[けん]康[こう]に悪[わる]いですよ。"
+        },
+        {
+          "japanese": "医者と自分の健康について話しました。",
+          "english": "I talked with the doctor about my own health.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "isha",
+            "jibun",
+            "kenkou",
+            "hanasu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "isha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "jibun",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kenkou",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 12,
+              "end": 17,
+              "surface_form": "話しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "医[い]者[しゃ]と自[じ]分[ぶん]の健[けん]康[こう]について話[はな]しました。"
+        }
+      ]
     },
     {
       "slug": "taiju",
@@ -44140,8 +44599,125 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "冬の間に体重が増えてしまった。",
+          "english": "I put on weight over the winter.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "fuyu",
+            "aida",
+            "taiju",
+            "fueru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "aida",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taiju",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "fueru-v",
+              "start": 7,
+              "end": 10,
+              "surface_form": "増えて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "冬[ふゆ]の間[あいだ]に体[たい]重[じゅう]が増[ふ]えてしまった。"
+        },
+        {
+          "japanese": "医者によると、うちの猫は体重が重すぎるそうです。",
+          "english": "According to the vet, our cat weighs too much.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "isha",
+            "uchi",
+            "neko",
+            "taiju",
+            "omoi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "isha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "uchi",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "taiju",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "furigana": "医[い]者[しゃ]によると、うちの猫[ねこ]は体[たい]重[じゅう]が重[おも]すぎるそうです。"
+        },
+        {
+          "japanese": "甘い物を食べなくなったら、体重が減りました。",
+          "english": "Once I stopped eating sweets, my weight went down.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "amai",
+            "mono",
+            "taberu",
+            "taiju",
+            "heru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "amai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 8,
+              "surface_form": "食べなく",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "taiju",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "heru-v",
+              "start": 16,
+              "end": 21,
+              "surface_form": "減りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "甘[あま]い物[もの]を食[た]べなくなったら、体[たい]重[じゅう]が減[へ]りました。"
+        }
+      ]
     },
     {
       "slug": "shinchou",
@@ -44167,8 +44743,131 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "弟は去年より身長が高くなりました。",
+          "english": "My little brother is taller than he was last year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "otouto",
+            "kyonen",
+            "shinchou",
+            "takai-adj",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kyonen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shinchou",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 11,
+              "end": 16,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "弟[おとうと]は去[きょ]年[ねん]より身[しん]長[ちょう]が高[たか]くなりました。"
+        },
+        {
+          "japanese": "この紙に名前と身長を書いてください。",
+          "english": "Please write your name and height on this sheet.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kami-paper",
+            "namae",
+            "shinchou",
+            "kaku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kami-paper",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "namae",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shinchou",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 10,
+              "end": 13,
+              "surface_form": "書いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この紙[かみ]に名[な]前[まえ]と身[しん]長[ちょう]を書[か]いてください。"
+        },
+        {
+          "japanese": "友人と身長が同じなので、よく服を借ります。",
+          "english": "My friend and I are the same height, so I often borrow their clothes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yuujin",
+            "shinchou",
+            "onaji",
+            "yoku",
+            "fuku",
+            "kariru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuujin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shinchou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "onaji",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 14,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "kariru",
+              "start": 16,
+              "end": 20,
+              "surface_form": "借ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "友[ゆう]人[じん]と身[しん]長[ちょう]が同[おな]じなので、よく服[ふく]を借[か]ります。"
+        }
+      ]
     },
     {
       "slug": "netsu",
@@ -44194,8 +44893,129 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "熱があるので、今日は早く寝ます。",
+          "english": "I have a fever, so I'm going to bed early tonight.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "netsu",
+            "aru",
+            "kyou",
+            "hayai-early",
+            "neru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "netsu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kyou",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 12,
+              "end": 15,
+              "surface_form": "寝ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "熱[ねつ]があるので、今日[きょう]は早[はや]く寝[ね]ます。"
+        },
+        {
+          "japanese": "赤ちゃんの熱が夜になっても下がらない。",
+          "english": "The baby's fever still hasn't come down, even now that it's night.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akachan",
+            "netsu",
+            "yoru",
+            "naru-become",
+            "sagaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "netsu",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "yoru",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 9,
+              "end": 12,
+              "surface_form": "なって",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "sagaru",
+              "start": 13,
+              "end": 18,
+              "surface_form": "下がらない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "赤[あか]ちゃんの熱[ねつ]が夜[よる]になっても下[さ]がらない。"
+        },
+        {
+          "japanese": "パソコンが熱を持って、動かなくなった。",
+          "english": "The computer got hot and stopped working.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "pasokon",
+            "netsu",
+            "motsu",
+            "ugoku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "pasokon",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "netsu",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 7,
+              "end": 10,
+              "surface_form": "持って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "ugoku",
+              "start": 11,
+              "end": 15,
+              "surface_form": "動かなく",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "パソコンが熱[ねつ]を持[も]って、動[うご]かなくなった。"
+        }
+      ]
     },
     {
       "slug": "seki",
@@ -44222,8 +45042,136 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "夜になると咳が止まらないんです。",
+          "english": "Once night comes, my cough just won't stop.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yoru",
+            "naru-become",
+            "seki",
+            "tomaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "yoru",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "seki",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tomaru",
+              "start": 7,
+              "end": 12,
+              "surface_form": "止まらない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "夜[よる]になると咳[せき]が止[と]まらないんです。"
+        },
+        {
+          "japanese": "映画館で隣の人が何回も咳をしていた。",
+          "english": "The person next to me at the cinema kept coughing.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eigakan",
+            "tonari",
+            "hito",
+            "nan",
+            "kai-times",
+            "seki",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eigakan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tonari",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "seki",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 13,
+              "end": 15,
+              "surface_form": "して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "映[えい]画[が]館[かん]で隣[となり]の人[ひと]が何[なん]回[かい]も咳[せき]をしていた。"
+        },
+        {
+          "japanese": "咳が出るときは、熱いお茶を飲むといいですよ。",
+          "english": "When you have a cough, hot tea helps.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "seki",
+            "deru-v",
+            "atsui-obj",
+            "ocha",
+            "nomu-v",
+            "ii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "seki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "atsui-obj",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 16,
+              "end": 18
+            }
+          ],
+          "furigana": "咳[せき]が出[で]るときは、熱[あつ]いお茶[ちゃ]を飲[の]むといいですよ。"
+        }
+      ]
     },
     {
       "slug": "kaze-illness",
@@ -44250,8 +45198,92 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "雨に濡れて、風邪をひいてしまった。",
+          "english": "I got caught in the rain and ended up catching a cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ame-v",
+            "nureru",
+            "kaze-illness"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nureru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "濡れて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "雨[あめ]に濡[ぬ]れて、風邪[かぜ]をひいてしまった。"
+        },
+        {
+          "japanese": "風邪をひかないように、コートを着て出かけましょう。",
+          "english": "Let's put our coats on before we go out so we don't catch a cold.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kaze-illness",
+            "kooto",
+            "kiru-wear",
+            "dekakeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kooto",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 15,
+              "end": 17,
+              "surface_form": "着て",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "風邪[かぜ]をひかないように、コートを着[き]て出[で]かけましょう。"
+        },
+        {
+          "japanese": "娘が風邪をひいたので、会社を休みました。",
+          "english": "My daughter caught a cold, so I took the day off work.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "musume",
+            "kaze-illness",
+            "kaisha",
+            "yasumu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "musume",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 14,
+              "end": 19,
+              "surface_form": "休みました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "娘[むすめ]が風邪[かぜ]をひいたので、会[かい]社[しゃ]を休[やす]みました。"
+        }
+      ]
     },
     {
       "slug": "chiryou",
@@ -44277,8 +45309,115 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この病気の治療には時間がかかります。",
+          "english": "Treating this illness takes time.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "byouki",
+            "chiryou",
+            "jikan",
+            "kakaru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "byouki",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "chiryou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "jikan",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "この病[びょう]気[き]の治[ち]療[りょう]には時[じ]間[かん]がかかります。"
+        },
+        {
+          "japanese": "医者の治療が良かったので、すぐ治りました。",
+          "english": "The doctor's treatment was good, so I got better quickly.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "isha",
+            "chiryou",
+            "yoi",
+            "sugu",
+            "naoru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "isha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chiryou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yoi",
+              "start": 6,
+              "end": 10,
+              "surface_form": "良かった",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "sugu",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "naoru",
+              "start": 15,
+              "end": 20,
+              "surface_form": "治りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "医[い]者[しゃ]の治[ち]療[りょう]が良[よ]かったので、すぐ治[なお]りました。"
+        },
+        {
+          "japanese": "犬の治療に三万円も払いました。",
+          "english": "I paid a whole thirty thousand yen for the dog's treatment.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "chiryou",
+            "man-v",
+            "en-money",
+            "harau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chiryou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "harau",
+              "start": 9,
+              "end": 14,
+              "surface_form": "払いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "犬[いぬ]の治[ち]療[りょう]に三[さん]万[まん]円[えん]も払[はら]いました。"
+        }
+      ]
     },
     {
       "slug": "chuusha",

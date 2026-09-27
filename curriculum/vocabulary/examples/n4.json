@@ -12463,5 +12463,412 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "chuumon": {
+    "example_sentences": [
+      {
+        "japanese": "店員が注文を間違えて、カレーが来ました。",
+        "english": "The clerk got the order wrong, and I was brought curry.",
+        "vocabulary_slugs": [
+          "ten-in",
+          "chuumon",
+          "machigaeru",
+          "karee",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "兄の注文はいつも同じラーメンなんです。",
+        "english": "My older brother orders the same ramen every time.",
+        "vocabulary_slugs": [
+          "ani",
+          "chuumon",
+          "itsumo",
+          "onaji",
+          "raamen"
+        ]
+      },
+      {
+        "japanese": "電話で弁当の注文をしました。",
+        "english": "I placed an order for boxed lunches over the phone.",
+        "vocabulary_slugs": [
+          "denwa",
+          "bentou",
+          "chuumon",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koukan-suru": {
+    "example_sentences": [
+      {
+        "japanese": "サイズが小さかったので、靴を交換しました。",
+        "english": "The shoes were too small, so I exchanged them.",
+        "vocabulary_slugs": [
+          "saizu",
+          "chiisai",
+          "kutsu",
+          "koukan-suru"
+        ]
+      },
+      {
+        "japanese": "駅で会った人と電話番号を交換した。",
+        "english": "I swapped phone numbers with someone I met at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "au",
+          "hito",
+          "denwabangou",
+          "koukan-suru"
+        ]
+      },
+      {
+        "japanese": "時計が壊れているので、新しいのと交換してください。",
+        "english": "This watch is broken, so please exchange it for a new one.",
+        "vocabulary_slugs": [
+          "tokei",
+          "kowareru",
+          "atarashii-adj",
+          "koukan-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kenkou": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は健康のために毎日一時間歩いています。",
+        "english": "My grandfather walks for an hour every day for his health.",
+        "vocabulary_slugs": [
+          "sofu",
+          "kenkou",
+          "mainichi",
+          "jikan-counter",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "お酒を飲みすぎるのは健康に悪いですよ。",
+        "english": "Drinking too much is bad for your health, you know.",
+        "vocabulary_slugs": [
+          "osake",
+          "nomu-v",
+          "kenkou",
+          "warui"
+        ]
+      },
+      {
+        "japanese": "医者と自分の健康について話しました。",
+        "english": "I talked with the doctor about my own health.",
+        "vocabulary_slugs": [
+          "isha",
+          "jibun",
+          "kenkou",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taiju": {
+    "example_sentences": [
+      {
+        "japanese": "冬の間に体重が増えてしまった。",
+        "english": "I put on weight over the winter.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "aida",
+          "taiju",
+          "fueru-v"
+        ]
+      },
+      {
+        "japanese": "医者によると、うちの猫は体重が重すぎるそうです。",
+        "english": "According to the vet, our cat weighs too much.",
+        "vocabulary_slugs": [
+          "isha",
+          "uchi",
+          "neko",
+          "taiju",
+          "omoi"
+        ]
+      },
+      {
+        "japanese": "甘い物を食べなくなったら、体重が減りました。",
+        "english": "Once I stopped eating sweets, my weight went down.",
+        "vocabulary_slugs": [
+          "amai",
+          "mono",
+          "taberu",
+          "taiju",
+          "heru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shinchou": {
+    "example_sentences": [
+      {
+        "japanese": "弟は去年より身長が高くなりました。",
+        "english": "My little brother is taller than he was last year.",
+        "vocabulary_slugs": [
+          "otouto",
+          "kyonen",
+          "shinchou",
+          "takai-adj",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "この紙に名前と身長を書いてください。",
+        "english": "Please write your name and height on this sheet.",
+        "vocabulary_slugs": [
+          "kami-paper",
+          "namae",
+          "shinchou",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "友人と身長が同じなので、よく服を借ります。",
+        "english": "My friend and I are the same height, so I often borrow their clothes.",
+        "vocabulary_slugs": [
+          "yuujin",
+          "shinchou",
+          "onaji",
+          "yoku",
+          "fuku",
+          "kariru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "netsu": {
+    "example_sentences": [
+      {
+        "japanese": "熱があるので、今日は早く寝ます。",
+        "english": "I have a fever, so I'm going to bed early tonight.",
+        "vocabulary_slugs": [
+          "netsu",
+          "aru",
+          "kyou",
+          "hayai-early",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの熱が夜になっても下がらない。",
+        "english": "The baby's fever still hasn't come down, even now that it's night.",
+        "vocabulary_slugs": [
+          "akachan",
+          "netsu",
+          "yoru",
+          "naru-become",
+          "sagaru"
+        ]
+      },
+      {
+        "japanese": "パソコンが熱を持って、動かなくなった。",
+        "english": "The computer got hot and stopped working.",
+        "vocabulary_slugs": [
+          "pasokon",
+          "netsu",
+          "motsu",
+          "ugoku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seki": {
+    "example_sentences": [
+      {
+        "japanese": "夜になると咳が止まらないんです。",
+        "english": "Once night comes, my cough just won't stop.",
+        "vocabulary_slugs": [
+          "yoru",
+          "naru-become",
+          "seki",
+          "tomaru"
+        ]
+      },
+      {
+        "japanese": "映画館で隣の人が何回も咳をしていた。",
+        "english": "The person next to me at the cinema kept coughing.",
+        "vocabulary_slugs": [
+          "eigakan",
+          "tonari",
+          "hito",
+          "nan",
+          "kai-times",
+          "seki",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "咳が出るときは、熱いお茶を飲むといいですよ。",
+        "english": "When you have a cough, hot tea helps.",
+        "vocabulary_slugs": [
+          "seki",
+          "deru-v",
+          "atsui-obj",
+          "ocha",
+          "nomu-v",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaze-illness": {
+    "example_sentences": [
+      {
+        "japanese": "雨に濡れて、風邪をひいてしまった。",
+        "english": "I got caught in the rain and ended up catching a cold.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "nureru",
+          "kaze-illness"
+        ]
+      },
+      {
+        "japanese": "風邪をひかないように、コートを着て出かけましょう。",
+        "english": "Let's put our coats on before we go out so we don't catch a cold.",
+        "vocabulary_slugs": [
+          "kaze-illness",
+          "kooto",
+          "kiru-wear",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "娘が風邪をひいたので、会社を休みました。",
+        "english": "My daughter caught a cold, so I took the day off work.",
+        "vocabulary_slugs": [
+          "musume",
+          "kaze-illness",
+          "kaisha",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chiryou": {
+    "example_sentences": [
+      {
+        "japanese": "この病気の治療には時間がかかります。",
+        "english": "Treating this illness takes time.",
+        "vocabulary_slugs": [
+          "byouki",
+          "chiryou",
+          "jikan",
+          "kakaru-v"
+        ]
+      },
+      {
+        "japanese": "医者の治療が良かったので、すぐ治りました。",
+        "english": "The doctor's treatment was good, so I got better quickly.",
+        "vocabulary_slugs": [
+          "isha",
+          "chiryou",
+          "yoi",
+          "sugu",
+          "naoru"
+        ]
+      },
+      {
+        "japanese": "犬の治療に三万円も払いました。",
+        "english": "I paid a whole thirty thousand yen for the dog's treatment.",
+        "vocabulary_slugs": [
+          "inu",
+          "chiryou",
+          "man-v",
+          "en-money",
+          "harau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "henpin-suru": {
+    "example_sentences": [
+      {
+        "japanese": "領収書がないと、返品することができません。",
+        "english": "Without the receipt, you can't return the item.",
+        "vocabulary_slugs": [
+          "ryoushuusho",
+          "aru",
+          "henpin-suru",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "姉は買ったばかりのバッグを返品しました。",
+        "english": "My sister returned the bag she had only just bought.",
+        "vocabulary_slugs": [
+          "ane",
+          "kau-v",
+          "baggu",
+          "henpin-suru"
+        ]
+      },
+      {
+        "japanese": "間違えて注文した本を返品しました。",
+        "english": "I returned a book I had ordered by mistake.",
+        "vocabulary_slugs": [
+          "machigaeru",
+          "chuumon-suru",
+          "hon",
+          "henpin-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
