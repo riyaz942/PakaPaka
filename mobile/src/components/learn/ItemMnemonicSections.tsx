@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
+import { ContentPlaceholderNotice } from '@/components/common/ContentPlaceholderNotice';
 import { GlyphText } from '@/components/common/GlyphText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
@@ -50,6 +51,11 @@ export function ItemMnemonicSections({
   readingSlot = null,
 }: ItemMnemonicSectionsProps) {
   const hasSplitMnemonics = Boolean(item.meaningMnemonic || item.readingMnemonic);
+  // Vocabulary's meaning mnemonic is authored for every taught word, so its
+  // absence means the content pipeline hasn't reached this word yet — worth a
+  // "coming soon" notice rather than silence. Kanji/radical mnemonics don't
+  // get this treatment; their gaps are handled elsewhere.
+  const isVocabulary = item.itemType === 'vocabulary';
   // Skip tautologies like 三 = 三 (sole radical parent shares the kanji glyph).
   const showsComposition =
     item.itemType === 'kanji' &&
@@ -82,6 +88,11 @@ export function ItemMnemonicSections({
                 className={MNEMONIC_PROSE}
               />
             </View>
+          ) : isVocabulary ? (
+            <View className="mt-space-md" testID="meaning-mnemonic-placeholder">
+              <SectionHeading label="Meaning mnemonic" />
+              <ContentPlaceholderNotice label="Meaning mnemonic coming soon" />
+            </View>
           ) : null}
 
           {readingSlot}
@@ -98,7 +109,14 @@ export function ItemMnemonicSections({
         </>
       ) : (
         <>
-          {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
+          {item.mnemonicText ? (
+            <MnemonicSection mnemonicText={item.mnemonicText} />
+          ) : isVocabulary ? (
+            <View className="mt-space-md" testID="meaning-mnemonic-placeholder">
+              <SectionHeading label="Meaning mnemonic" />
+              <ContentPlaceholderNotice label="Meaning mnemonic coming soon" />
+            </View>
+          ) : null}
           {readingSlot}
         </>
       )}

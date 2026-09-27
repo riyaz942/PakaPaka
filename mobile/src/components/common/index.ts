@@ -2,6 +2,7 @@ export { Banner, type BannerVariant } from '@/components/common/Banner';
 export { Button, type ButtonVariant } from '@/components/common/Button';
 export { ChoiceCard } from '@/components/common/ChoiceCard';
 export { ContentListRow } from '@/components/common/ContentListRow';
+export { ContentPlaceholderNotice } from '@/components/common/ContentPlaceholderNotice';
 export { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 export { FuriganaText } from '@/components/common/FuriganaText';
 export { Icon, type IconName } from '@/components/common/Icon';

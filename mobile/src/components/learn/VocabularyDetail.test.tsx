@@ -477,6 +477,55 @@ describe('VocabularyDetail Rev 1 content', () => {
   });
 });
 
+describe('VocabularyDetail — content-not-generated placeholders', () => {
+  it('shows a coming-soon notice when the reading mnemonic is authored but the meaning mnemonic is not', () => {
+    render(
+      <VocabularyDetail
+        item={{
+          ...baseItem,
+          mnemonicText: null,
+          readingMnemonic: 'You already know わたし from 私 — the reading comes straight across.',
+        }}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('meaning-mnemonic-placeholder')).toBeTruthy();
+    expect(screen.getByText('Meaning mnemonic coming soon')).toBeTruthy();
+    expect(screen.getByText('Reading mnemonic')).toBeTruthy();
+  });
+
+  it('shows a coming-soon notice when the word has no mnemonic content at all', () => {
+    render(
+      <VocabularyDetail
+        item={{ ...baseItem, mnemonicText: null }}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('meaning-mnemonic-placeholder')).toBeTruthy();
+    expect(screen.getByText('Meaning mnemonic coming soon')).toBeTruthy();
+  });
+
+  it('shows a coming-soon notice instead of the examples section when there are none', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={[]}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocab-example-placeholder')).toBeTruthy();
+    expect(screen.getByText('Examples coming soon')).toBeTruthy();
+  });
+});
+
 describe('VocabularyDetail — furigana auto-hide guidance (Epic 7)', () => {
   beforeEach(() => {
     mockPush.mockClear();
