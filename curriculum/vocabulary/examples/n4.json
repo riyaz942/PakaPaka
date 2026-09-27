@@ -6605,5 +6605,5863 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "teishutsu-suru": {
+    "example_sentences": [
+      {
+        "japanese": "銀行の窓口で書類を提出しました。",
+        "english": "I handed in the documents at the bank counter.",
+        "vocabulary_slugs": [
+          "ginkou",
+          "madoguchi",
+          "shorui",
+          "teishutsu-suru"
+        ]
+      },
+      {
+        "japanese": "名前を書いてから提出してください。",
+        "english": "Please write your name before you hand it in.",
+        "vocabulary_slugs": [
+          "namae",
+          "kaku",
+          "teishutsu-suru"
+        ]
+      },
+      {
+        "japanese": "テストを提出した後で、答えを一つ間違えたことが分かった。",
+        "english": "After turning in the test, I realized I'd gotten one answer wrong.",
+        "vocabulary_slugs": [
+          "tesuto",
+          "teishutsu-suru",
+          "kotae",
+          "hitotsu",
+          "machigaeru",
+          "koto",
+          "wakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "moushikomu": {
+    "example_sentences": [
+      {
+        "japanese": "来月の日本語の試験に申し込みました。",
+        "english": "I signed up for next month's Japanese exam.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "nihongo",
+          "shiken",
+          "moushikomu"
+        ]
+      },
+      {
+        "japanese": "電話でも申し込むことができますよ。",
+        "english": "You can apply by phone, too.",
+        "vocabulary_slugs": [
+          "denwa",
+          "moushikomu"
+        ]
+      },
+      {
+        "japanese": "早く申し込まなければ、席が無くなるかもしれません。",
+        "english": "If you don't sign up soon, the seats might run out.",
+        "vocabulary_slugs": [
+          "hayai-early",
+          "moushikomu",
+          "seki-seat",
+          "nakunaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mousu": {
+    "example_sentences": [
+      {
+        "japanese": "はじめまして、山田と申します。",
+        "english": "Nice to meet you. My name is Yamada.",
+        "vocabulary_slugs": [
+          "hajimemashite",
+          "mousu"
+        ]
+      },
+      {
+        "japanese": "母が「ありがとう」と申していました。",
+        "english": "My mother asked me to tell you thank you.",
+        "vocabulary_slugs": [
+          "haha",
+          "arigatou",
+          "mousu"
+        ]
+      },
+      {
+        "japanese": "一つ意見を申してもいいですか。",
+        "english": "May I offer one opinion?",
+        "vocabulary_slugs": [
+          "hitotsu",
+          "iken",
+          "mousu",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itasu": {
+    "example_sentences": [
+      {
+        "japanese": "夕方、もう一度電話致します。",
+        "english": "I'll call you once more this evening.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "mou",
+          "ichi-v",
+          "do-degree",
+          "denwa",
+          "itasu"
+        ]
+      },
+      {
+        "japanese": "料理は私が致しますので、テレビでも見ていてください。",
+        "english": "I'll take care of the cooking, so why not watch some TV?",
+        "vocabulary_slugs": [
+          "ryouri",
+          "watashi",
+          "itasu",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "飲み物はコーヒーに致します。",
+        "english": "For my drink, I'll have coffee.",
+        "vocabulary_slugs": [
+          "nomimono",
+          "koohii",
+          "itasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mairu": {
+    "example_sentences": [
+      {
+        "japanese": "明日の朝十時に、駅まで参ります。",
+        "english": "I'll come to the station at ten tomorrow morning.",
+        "vocabulary_slugs": [
+          "ashita",
+          "asa",
+          "juu-v",
+          "ji-oclock",
+          "eki",
+          "mairu"
+        ]
+      },
+      {
+        "japanese": "電車が参ります。危ないですから、下がってください。",
+        "english": "A train is arriving. It's dangerous, so please step back.",
+        "vocabulary_slugs": [
+          "densha",
+          "mairu",
+          "abunai",
+          "sagaru"
+        ]
+      },
+      {
+        "japanese": "母はすぐ参りますので、こちらの椅子に座ってください。",
+        "english": "My mother will be right here, so please have a seat in this chair.",
+        "vocabulary_slugs": [
+          "haha",
+          "sugu",
+          "mairu",
+          "kochira",
+          "isu",
+          "suwaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ukagau": {
+    "example_sentences": [
+      {
+        "japanese": "来週の火曜日に、そちらへ伺ってもいいですか。",
+        "english": "May I come and visit you next Tuesday?",
+        "vocabulary_slugs": [
+          "raishuu",
+          "kayoubi",
+          "sochira",
+          "ukagau",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "そのお話は、会議の後でゆっくり伺います。",
+        "english": "I'll hear about that properly after the meeting.",
+        "vocabulary_slugs": [
+          "sono",
+          "hanashi",
+          "kaigi",
+          "yukkuri",
+          "ukagau"
+        ]
+      },
+      {
+        "japanese": "駅員に道を伺ったら、親切に教えてくれました。",
+        "english": "When I asked the station staff for directions, they explained kindly.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "michi-v",
+          "ukagau",
+          "shinsetsu",
+          "oshieru",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "haiken-suru": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、お手紙を拝見しました。",
+        "english": "I read your letter yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tegami",
+          "haiken-suru"
+        ]
+      },
+      {
+        "japanese": "すみません、切符を拝見します。",
+        "english": "Excuse me, may I see your ticket?",
+        "vocabulary_slugs": [
+          "sumimasen",
+          "kippu",
+          "haiken-suru"
+        ]
+      },
+      {
+        "japanese": "おじいさんの古い写真を拝見して、とても驚きました。",
+        "english": "I was really surprised when I saw your grandfather's old photos.",
+        "vocabulary_slugs": [
+          "ojiisan",
+          "furui-adj",
+          "shashin",
+          "haiken-suru",
+          "totemo",
+          "odoroku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shinjiru": {
+    "example_sentences": [
+      {
+        "japanese": "私の言葉を信じる人は、弟だけでした。",
+        "english": "The only one who believed what I said was my little brother.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kotoba",
+          "shinjiru",
+          "hito",
+          "otouto"
+        ]
+      },
+      {
+        "japanese": "母はいつも「自分の力を信じる」と言っています。",
+        "english": "My mom always says, \"Believe in your own strength.\"",
+        "vocabulary_slugs": [
+          "haha",
+          "itsumo",
+          "jibun",
+          "chikara-v",
+          "shinjiru",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "猫が冷蔵庫を開けた話は、誰も信じるはずがない。",
+        "english": "There's no way anyone will believe the story about the cat opening the fridge.",
+        "vocabulary_slugs": [
+          "neko",
+          "reizouko",
+          "akeru",
+          "hanashi",
+          "dare",
+          "shinjiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kanjiru": {
+    "example_sentences": [
+      {
+        "japanese": "冬の朝、窓を開けたときに感じる冷たい風が好きです。",
+        "english": "I love the cold air you feel when you open the window on a winter morning.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "asa",
+          "mado",
+          "akeru",
+          "kanjiru",
+          "tsumetai",
+          "kaze-wind",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "新しい町に引っ越してから、少し寂しく感じる日が多い。",
+        "english": "Since moving to a new town, I often have days when I feel a little lonely.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "machi-v",
+          "hikkosu",
+          "sukoshi",
+          "sabishii",
+          "kanjiru",
+          "hi-sun-v",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "試験の前は、一時間がとても短く感じる。",
+        "english": "Right before an exam, an hour feels really short.",
+        "vocabulary_slugs": [
+          "shiken",
+          "mae",
+          "ichi-v",
+          "jikan-counter",
+          "totemo",
+          "mijikai",
+          "kanjiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "goran-ni-naru": {
+    "example_sentences": [
+      {
+        "japanese": "先生がご覧になる前に、この絵を直しておきましょう。",
+        "english": "Let's fix this drawing before the teacher sees it.",
+        "vocabulary_slugs": [
+          "sensei",
+          "goran-ni-naru",
+          "kono",
+          "e-picture",
+          "naosu"
+        ]
+      },
+      {
+        "japanese": "右の窓からご覧になる海は、とてもきれいですよ。",
+        "english": "The sea you'll see from the window on your right is really beautiful.",
+        "vocabulary_slugs": [
+          "migi-v",
+          "mado",
+          "goran-ni-naru",
+          "umi",
+          "totemo",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "おばあさんは毎朝、庭の花をご覧になるのが好きです。",
+        "english": "The old lady loves looking at the flowers in the garden every morning.",
+        "vocabulary_slugs": [
+          "obaasan",
+          "maiasa",
+          "niwa",
+          "hana-v",
+          "goran-ni-naru",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "meshiagaru": {
+    "example_sentences": [
+      {
+        "japanese": "お茶とコーヒー、どちらを召し上がりますか。",
+        "english": "Which would you like, tea or coffee?",
+        "vocabulary_slugs": [
+          "ocha",
+          "koohii",
+          "dochira",
+          "meshiagaru"
+        ]
+      },
+      {
+        "japanese": "先生は昼ご飯に弁当を召し上がりました。",
+        "english": "The teacher had a boxed lunch for lunch.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hirugohan",
+          "bentou",
+          "meshiagaru"
+        ]
+      },
+      {
+        "japanese": "熱いので、ゆっくり召し上がってください。",
+        "english": "It's hot, so please take your time with it.",
+        "vocabulary_slugs": [
+          "atsui-obj",
+          "yukkuri",
+          "meshiagaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "irassharu": {
+    "example_sentences": [
+      {
+        "japanese": "来週、先生のご主人が日本にいらっしゃいます。",
+        "english": "My teacher's husband is coming to Japan next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "sensei",
+          "go-shujin",
+          "nihon",
+          "irassharu"
+        ]
+      },
+      {
+        "japanese": "おばあさんは今、庭にいらっしゃいますよ。",
+        "english": "Grandma is out in the garden right now.",
+        "vocabulary_slugs": [
+          "obaasan",
+          "ima",
+          "niwa",
+          "irassharu"
+        ]
+      },
+      {
+        "japanese": "どちらからいらっしゃいましたか。",
+        "english": "Where have you come from?",
+        "vocabulary_slugs": [
+          "dochira",
+          "irassharu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ossharu": {
+    "example_sentences": [
+      {
+        "japanese": "すみません、もっとゆっくりおっしゃってください。",
+        "english": "Sorry, could you say that a bit more slowly?",
+        "vocabulary_slugs": [
+          "sumimasen",
+          "motto",
+          "yukkuri",
+          "ossharu"
+        ]
+      },
+      {
+        "japanese": "お名前は何とおっしゃいますか。",
+        "english": "May I ask your name?",
+        "vocabulary_slugs": [
+          "namae",
+          "nan",
+          "ossharu"
+        ]
+      },
+      {
+        "japanese": "奥さんは、この料理が一番おいしいとおっしゃいました。",
+        "english": "His wife said this dish was the most delicious.",
+        "vocabulary_slugs": [
+          "okusan",
+          "kono",
+          "ryouri",
+          "ichiban",
+          "oishii",
+          "ossharu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nasaru": {
+    "example_sentences": [
+      {
+        "japanese": "週末は何をなさいますか。",
+        "english": "What are you doing this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "nani",
+          "nasaru"
+        ]
+      },
+      {
+        "japanese": "お父さんは日曜日も仕事をなさるんですか。",
+        "english": "Does your father work on Sundays too?",
+        "vocabulary_slugs": [
+          "otousan",
+          "nichiyoubi",
+          "shigoto",
+          "nasaru"
+        ]
+      },
+      {
+        "japanese": "来月、ご家族と旅行をなさるそうですね。",
+        "english": "I hear you're taking a trip with your family next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "kazoku",
+          "ryokou",
+          "nasaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "gozonji": {
+    "example_sentences": [
+      {
+        "japanese": "この近くに郵便局があるか、ご存じですか。",
+        "english": "Do you know if there's a post office near here?",
+        "vocabulary_slugs": [
+          "kono",
+          "chikaku",
+          "yuubinkyoku",
+          "aru",
+          "gozonji"
+        ]
+      },
+      {
+        "japanese": "駅員なら、バスの時間をご存じだと思います。",
+        "english": "The station staff should know the bus times.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "basu",
+          "jikan",
+          "gozonji",
+          "omou"
+        ]
+      },
+      {
+        "japanese": "あの方は日本の歴史をよくご存じです。",
+        "english": "That gentleman knows Japanese history very well.",
+        "vocabulary_slugs": [
+          "ano",
+          "kata-person",
+          "nihon",
+          "rekishi",
+          "yoku",
+          "gozonji"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itadaku": {
+    "example_sentences": [
+      {
+        "japanese": "隣の方から野菜をたくさん頂きました。",
+        "english": "Our neighbor gave us a whole lot of vegetables.",
+        "vocabulary_slugs": [
+          "tonari",
+          "kata-person",
+          "yasai",
+          "takusan",
+          "itadaku"
+        ]
+      },
+      {
+        "japanese": "お水を少し頂いてもいいですか。",
+        "english": "Could I have a little water?",
+        "vocabulary_slugs": [
+          "mizu",
+          "sukoshi",
+          "itadaku"
+        ]
+      },
+      {
+        "japanese": "駅で親切な女性に地図を頂きました。",
+        "english": "A kind woman at the station gave me a map.",
+        "vocabulary_slugs": [
+          "eki",
+          "shinsetsu",
+          "josei",
+          "chizu",
+          "itadaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sashiageru": {
+    "example_sentences": [
+      {
+        "japanese": "お客さんにお茶を差し上げてください。",
+        "english": "Please serve our guest some tea.",
+        "vocabulary_slugs": [
+          "okyakusan",
+          "ocha",
+          "sashiageru"
+        ]
+      },
+      {
+        "japanese": "旅館の方に、外国のお菓子を差し上げました。",
+        "english": "I gave the staff at the inn some sweets from abroad.",
+        "vocabulary_slugs": [
+          "ryokan",
+          "kata-person",
+          "gaikoku",
+          "okashi",
+          "sashiageru"
+        ]
+      },
+      {
+        "japanese": "この本、よかったら差し上げます。",
+        "english": "If you'd like this book, it's yours.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yoi",
+          "sashiageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kudasaru": {
+    "example_sentences": [
+      {
+        "japanese": "医者が新しい薬を下さいました。",
+        "english": "The doctor gave me a new medicine.",
+        "vocabulary_slugs": [
+          "isha",
+          "atarashii-adj",
+          "kusuri",
+          "kudasaru"
+        ]
+      },
+      {
+        "japanese": "叔父が古いカメラを下さいました。",
+        "english": "My uncle gave me his old camera.",
+        "vocabulary_slugs": [
+          "oji",
+          "furui-adj",
+          "kamera",
+          "kudasaru"
+        ]
+      },
+      {
+        "japanese": "雨の中、迎えに来て下さって、本当に助かりました。",
+        "english": "You came to pick me up in the rain, and it really saved me.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "naka",
+          "mukaeru",
+          "kuru-v",
+          "kudasaru",
+          "hontou-ni",
+          "tasukaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shouchi-suru": {
+    "example_sentences": [
+      {
+        "japanese": "はい、承知しました。書類は明日の朝までに送ります。",
+        "english": "Yes, understood. I'll send the documents by tomorrow morning.",
+        "vocabulary_slugs": [
+          "hai",
+          "shouchi-suru",
+          "shorui",
+          "ashita",
+          "asa",
+          "okuru"
+        ]
+      },
+      {
+        "japanese": "店員は「承知しました」と言って、すぐ席を準備した。",
+        "english": "The clerk said \"Certainly\" and got a seat ready right away.",
+        "vocabulary_slugs": [
+          "ten-in",
+          "shouchi-suru",
+          "iu-v",
+          "sugu",
+          "seki-seat",
+          "junbi-suru"
+        ]
+      },
+      {
+        "japanese": "値段が高いことは承知していますが、これを買います。",
+        "english": "I'm well aware it's expensive, but I'll take this one.",
+        "vocabulary_slugs": [
+          "nedan",
+          "takai-adj",
+          "koto",
+          "shouchi-suru",
+          "kore",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hanaseru": {
+    "example_sentences": [
+      {
+        "japanese": "弟は英語が少し話せます。",
+        "english": "My little brother can speak a bit of English.",
+        "vocabulary_slugs": [
+          "otouto",
+          "eigo",
+          "sukoshi",
+          "hanaseru"
+        ]
+      },
+      {
+        "japanese": "風邪で声が出ないので、今日はあまり話せません。",
+        "english": "I've lost my voice to a cold, so I can't talk much today.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "koe",
+          "deru-v",
+          "kyou",
+          "amari",
+          "hanaseru"
+        ]
+      },
+      {
+        "japanese": "犬と話せたら、楽しいでしょうね。",
+        "english": "It would be fun if I could talk with my dog.",
+        "vocabulary_slugs": [
+          "inu",
+          "hanaseru",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kakeru-write-potential": {
+    "example_sentences": [
+      {
+        "japanese": "妹はもうひらがなで自分の名前が書けます。",
+        "english": "My little sister can already write her own name in hiragana.",
+        "vocabulary_slugs": [
+          "imouto",
+          "mou",
+          "hiragana",
+          "jibun",
+          "namae",
+          "kakeru-write-potential"
+        ]
+      },
+      {
+        "japanese": "このペンは古いですが、まだよく書けますよ。",
+        "english": "This pen is old, but it still writes well.",
+        "vocabulary_slugs": [
+          "kono",
+          "pen",
+          "furui-adj",
+          "mada",
+          "yoku",
+          "kakeru-write-potential"
+        ]
+      },
+      {
+        "japanese": "チョークがないので、黒板に書けません。",
+        "english": "There's no chalk, so I can't write on the blackboard.",
+        "vocabulary_slugs": [
+          "chooku",
+          "aru",
+          "kokuban",
+          "kakeru-write-potential"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yomeru": {
+    "example_sentences": [
+      {
+        "japanese": "この漢字、読めますか。",
+        "english": "Can you read this kanji?",
+        "vocabulary_slugs": [
+          "kono",
+          "kanji-word",
+          "yomeru"
+        ]
+      },
+      {
+        "japanese": "眼鏡がなければ、祖父は新聞が読めません。",
+        "english": "Without his glasses, my grandfather can't read the newspaper.",
+        "vocabulary_slugs": [
+          "megane",
+          "aru",
+          "sofu",
+          "shinbun",
+          "yomeru"
+        ]
+      },
+      {
+        "japanese": "部屋が暗くて、地図がよく読めません。",
+        "english": "The room is dark, so I can't really read the map.",
+        "vocabulary_slugs": [
+          "heya",
+          "kurai",
+          "chizu",
+          "yomeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsukaeru": {
+    "example_sentences": [
+      {
+        "japanese": "この店では現金しか使えません。",
+        "english": "This shop only takes cash.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "genkin",
+          "tsukaeru"
+        ]
+      },
+      {
+        "japanese": "父はパソコンが全然使えません。",
+        "english": "My dad can't use a computer at all.",
+        "vocabulary_slugs": [
+          "chichi",
+          "pasokon",
+          "zenzen",
+          "tsukaeru"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫が壊れて使えないので、困っています。",
+        "english": "The fridge broke and won't work, so I'm stuck.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "kowareru",
+          "tsukaeru",
+          "komaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ikeru": {
+    "example_sentences": [
+      {
+        "japanese": "駅までは歩いて五分で行けます。",
+        "english": "You can get to the station in five minutes on foot.",
+        "vocabulary_slugs": [
+          "eki",
+          "aruku",
+          "go-v",
+          "fun-counter",
+          "ikeru"
+        ]
+      },
+      {
+        "japanese": "明日は用事があるから、山には行けません。",
+        "english": "I have something to do tomorrow, so I can't go to the mountains.",
+        "vocabulary_slugs": [
+          "ashita",
+          "youji",
+          "aru",
+          "yama-v",
+          "ikeru"
+        ]
+      },
+      {
+        "japanese": "自転車なら、あの公園まで行けるよ。",
+        "english": "By bike, you can make it to that park.",
+        "vocabulary_slugs": [
+          "jitensha",
+          "ano",
+          "kouen",
+          "ikeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koreru": {
+    "example_sentences": [
+      {
+        "japanese": "田中さんは来週の会議に来られますか。",
+        "english": "Can Mr. Tanaka come to next week's meeting?",
+        "vocabulary_slugs": [
+          "raishuu",
+          "kaigi",
+          "koreru"
+        ]
+      },
+      {
+        "japanese": "雪が多くて、先生は学校に来られませんでした。",
+        "english": "There was so much snow that the teacher couldn't make it to school.",
+        "vocabulary_slugs": [
+          "yuki",
+          "ooi",
+          "sensei",
+          "gakkou-v",
+          "koreru"
+        ]
+      },
+      {
+        "japanese": "日曜日なら、うちに来られる？",
+        "english": "Can you come over to my place on Sunday?",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "uchi",
+          "koreru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taberareru": {
+    "example_sentences": [
+      {
+        "japanese": "息子は辛い料理が食べられません。",
+        "english": "My son can't eat spicy food.",
+        "vocabulary_slugs": [
+          "musuko",
+          "karai",
+          "ryouri",
+          "taberareru"
+        ]
+      },
+      {
+        "japanese": "この花は食べられるんですか。",
+        "english": "Wait, you can eat this flower?",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "taberareru"
+        ]
+      },
+      {
+        "japanese": "お腹が痛くて、昼ご飯が半分しか食べられなかった。",
+        "english": "My stomach hurt, so I could only eat half my lunch.",
+        "vocabulary_slugs": [
+          "onaka",
+          "itai",
+          "hirugohan",
+          "hanbun",
+          "taberareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nomeru": {
+    "example_sentences": [
+      {
+        "japanese": "このお茶は熱すぎて、まだ飲めません。",
+        "english": "This tea is too hot to drink yet.",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "atsui-obj",
+          "mada",
+          "nomeru"
+        ]
+      },
+      {
+        "japanese": "夫はお酒があまり飲めません。",
+        "english": "My husband can't drink much alcohol.",
+        "vocabulary_slugs": [
+          "otto",
+          "osake",
+          "amari",
+          "nomeru"
+        ]
+      },
+      {
+        "japanese": "この薬はご飯の前に飲めますか。",
+        "english": "Can I take this medicine before meals?",
+        "vocabulary_slugs": [
+          "kono",
+          "kusuri",
+          "gohan",
+          "mae",
+          "nomeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mirareru": {
+    "example_sentences": [
+      {
+        "japanese": "このホテルの部屋から海が見られます。",
+        "english": "You can see the sea from this hotel room.",
+        "vocabulary_slugs": [
+          "kono",
+          "hoteru",
+          "heya",
+          "umi",
+          "mirareru"
+        ]
+      },
+      {
+        "japanese": "仕事が忙しくて、映画が見られなかった。",
+        "english": "Work was so busy that I couldn't see the movie.",
+        "vocabulary_slugs": [
+          "shigoto",
+          "isogashii",
+          "eiga",
+          "mirareru"
+        ]
+      },
+      {
+        "japanese": "夏の夜は、湖の上にたくさんの星が見られます。",
+        "english": "On summer nights, you can see lots of stars over the lake.",
+        "vocabulary_slugs": [
+          "natsu",
+          "yoru",
+          "mizuumi",
+          "ue",
+          "takusan",
+          "hoshi",
+          "mirareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dekiru-potential": {
+    "example_sentences": [
+      {
+        "japanese": "この仕事は一人で出来ますか。",
+        "english": "Can you handle this job on your own?",
+        "vocabulary_slugs": [
+          "kono",
+          "shigoto",
+          "hitori-de",
+          "dekiru-potential"
+        ]
+      },
+      {
+        "japanese": "図書館の中では電話が出来ません。",
+        "english": "You can't make phone calls inside the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "naka",
+          "denwa",
+          "dekiru-potential"
+        ]
+      },
+      {
+        "japanese": "姉は英語と日本語が出来ます。",
+        "english": "My older sister can speak English and Japanese.",
+        "vocabulary_slugs": [
+          "ane",
+          "eigo",
+          "nihongo",
+          "dekiru-potential"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oyogeru": {
+    "example_sentences": [
+      {
+        "japanese": "犬は泳げますが、うちの猫は泳げません。",
+        "english": "Dogs can swim, but our cat can't.",
+        "vocabulary_slugs": [
+          "inu",
+          "uchi",
+          "neko",
+          "oyogeru"
+        ]
+      },
+      {
+        "japanese": "この川は浅いから、子供でも泳げます。",
+        "english": "This river is shallow, so even kids can swim in it.",
+        "vocabulary_slugs": [
+          "kono",
+          "kawa-v",
+          "asai",
+          "kodomo-v",
+          "oyogeru"
+        ]
+      },
+      {
+        "japanese": "娘は去年から泳げるようになりました。",
+        "english": "My daughter learned to swim last year.",
+        "vocabulary_slugs": [
+          "musume",
+          "kyonen",
+          "oyogeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hashireru": {
+    "example_sentences": [
+      {
+        "japanese": "足が痛くて、今日は走れません。",
+        "english": "My leg hurts, so I can't run today.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "itai",
+          "kyou",
+          "hashireru"
+        ]
+      },
+      {
+        "japanese": "祖父は八十歳ですが、まだ速く走れます。",
+        "english": "My grandfather is eighty, but he can still run fast.",
+        "vocabulary_slugs": [
+          "sofu",
+          "sai-age",
+          "mada",
+          "hayai-fast",
+          "hashireru"
+        ]
+      },
+      {
+        "japanese": "この靴なら、雨の道でも走れるよ。",
+        "english": "In these shoes, you can run even on a wet road.",
+        "vocabulary_slugs": [
+          "kono",
+          "kutsu",
+          "ame-v",
+          "michi-v",
+          "hashireru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aeru-potential": {
+    "example_sentences": [
+      {
+        "japanese": "来月、外国に住んでいる姉に会えます。",
+        "english": "Next month I get to see my sister who lives abroad.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "gaikoku",
+          "sumu",
+          "ane",
+          "aeru-potential"
+        ]
+      },
+      {
+        "japanese": "忙しくて、恋人に全然会えない。",
+        "english": "I'm so busy I never get to see my partner.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "koibito",
+          "zenzen",
+          "aeru-potential"
+        ]
+      },
+      {
+        "japanese": "駅の出口で待っていれば、すぐ会えるでしょう。",
+        "english": "If you wait at the station exit, you'll find each other right away.",
+        "vocabulary_slugs": [
+          "eki",
+          "deguchi",
+          "matsu",
+          "sugu",
+          "aeru-potential"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaeru-potential": {
+    "example_sentences": [
+      {
+        "japanese": "切手はコンビニでも買えますよ。",
+        "english": "You can buy stamps at a convenience store too.",
+        "vocabulary_slugs": [
+          "kitte",
+          "konbini",
+          "kaeru-potential"
+        ]
+      },
+      {
+        "japanese": "千円で、弁当が二つ買えました。",
+        "english": "I was able to buy two boxed lunches for a thousand yen.",
+        "vocabulary_slugs": [
+          "sen-v",
+          "en-money",
+          "bentou",
+          "futatsu",
+          "kaeru-potential"
+        ]
+      },
+      {
+        "japanese": "値段が高すぎて、あの時計は買えなかった。",
+        "english": "That watch was way too expensive, so I couldn't buy it.",
+        "vocabulary_slugs": [
+          "nedan",
+          "takai-adj",
+          "ano",
+          "tokei",
+          "kaeru-potential"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "noreru": {
+    "example_sentences": [
+      {
+        "japanese": "妹は六歳で自転車に乗れるようになった。",
+        "english": "My little sister learned to ride a bike at six.",
+        "vocabulary_slugs": [
+          "imouto",
+          "roku-v",
+          "sai-age",
+          "jitensha",
+          "noreru"
+        ]
+      },
+      {
+        "japanese": "荷物が多くて、バスに乗れませんでした。",
+        "english": "I had too much luggage to get on the bus.",
+        "vocabulary_slugs": [
+          "nimotsu",
+          "ooi",
+          "basu",
+          "noreru"
+        ]
+      },
+      {
+        "japanese": "この車は七人乗れます。",
+        "english": "This car seats seven people.",
+        "vocabulary_slugs": [
+          "kono",
+          "kuruma",
+          "nana-v",
+          "nin-counter",
+          "noreru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ikaseru": {
+    "example_sentences": [
+      {
+        "japanese": "雨が強いので、子供を一人で学校に行かせたくない。",
+        "english": "The rain is heavy, so I don't want to let my kid go to school alone.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "tsuyoi",
+          "kodomo-v",
+          "hitori-de",
+          "gakkou-v",
+          "ikaseru"
+        ]
+      },
+      {
+        "japanese": "会社は来年、夫を外国の工場に行かせるそうです。",
+        "english": "I hear the company is sending my husband to a factory abroad next year.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "rainen",
+          "otto",
+          "gaikoku",
+          "koujou",
+          "ikaseru"
+        ]
+      },
+      {
+        "japanese": "気分が悪いなら、娘を病院に行かせましょう。",
+        "english": "If she feels sick, let's send our daughter to the hospital.",
+        "vocabulary_slugs": [
+          "kibun",
+          "warui",
+          "musume",
+          "byouin",
+          "ikaseru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taberasaseru": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎朝、弟に野菜を食べさせます。",
+        "english": "Every morning, my mother makes my little brother eat vegetables.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiasa",
+          "otouto",
+          "yasai",
+          "taberasaseru"
+        ]
+      },
+      {
+        "japanese": "猫に人の食べ物を食べさせないでください。",
+        "english": "Please don't feed the cat people food.",
+        "vocabulary_slugs": [
+          "neko",
+          "hito",
+          "tabemono",
+          "taberasaseru"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんにスプーンでご飯を食べさせた。",
+        "english": "I fed the baby rice with a spoon.",
+        "vocabulary_slugs": [
+          "akachan",
+          "supuun",
+          "gohan",
+          "taberasaseru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yaraseru": {
+    "example_sentences": [
+      {
+        "japanese": "先生は生徒に同じ問題を三回やらせた。",
+        "english": "The teacher made the students do the same problem three times.",
+        "vocabulary_slugs": [
+          "sensei",
+          "seito",
+          "onaji",
+          "mondai",
+          "san-v",
+          "kai-times",
+          "yaraseru"
+        ]
+      },
+      {
+        "japanese": "難しい仕事ですが、新しい店員にやらせることにしました。",
+        "english": "It's a hard job, but I've decided to let the new clerk do it.",
+        "vocabulary_slugs": [
+          "muzukashii",
+          "shigoto",
+          "atarashii-adj",
+          "ten-in",
+          "yaraseru"
+        ]
+      },
+      {
+        "japanese": "兄は自分の宿題をいつも僕にやらせる。",
+        "english": "My big brother always makes me do his homework.",
+        "vocabulary_slugs": [
+          "ani",
+          "jibun",
+          "shukudai",
+          "itsumo",
+          "boku",
+          "yaraseru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "matasareru": {
+    "example_sentences": [
+      {
+        "japanese": "銀行の窓口で一時間も待たされた。",
+        "english": "I was kept waiting a whole hour at the bank counter.",
+        "vocabulary_slugs": [
+          "ginkou",
+          "madoguchi",
+          "ichi-v",
+          "jikan-counter",
+          "matasareru"
+        ]
+      },
+      {
+        "japanese": "彼女は約束に遅れるから、私はよく待たされる。",
+        "english": "She's always late for our plans, so I often end up waiting.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "yakusoku",
+          "okureru",
+          "watashi",
+          "yoku",
+          "matasareru"
+        ]
+      },
+      {
+        "japanese": "雪で電車が止まって、寒い外で待たされた。",
+        "english": "The snow stopped the trains, and we were left waiting out in the cold.",
+        "vocabulary_slugs": [
+          "yuki",
+          "densha",
+          "tomaru",
+          "samui",
+          "soto",
+          "matasareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shikarareru": {
+    "example_sentences": [
+      {
+        "japanese": "夜遅く帰ったら、父に叱られた。",
+        "english": "I got home late at night and got scolded by my dad.",
+        "vocabulary_slugs": [
+          "yoru",
+          "osoi",
+          "kaeru-v",
+          "chichi",
+          "shikarareru"
+        ]
+      },
+      {
+        "japanese": "図書館で大きい声で話して、叱られました。",
+        "english": "I talked loudly in the library and got told off.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "ookii",
+          "koe",
+          "hanasu-v",
+          "shikarareru"
+        ]
+      },
+      {
+        "japanese": "犬がテーブルの肉を食べて、叱られている。",
+        "english": "The dog ate the meat off the table and is getting scolded.",
+        "vocabulary_slugs": [
+          "inu",
+          "teeburu",
+          "niku",
+          "taberu",
+          "shikarareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "homerareru": {
+    "example_sentences": [
+      {
+        "japanese": "料理が上手だと、祖母に褒められた。",
+        "english": "My grandmother praised me for being a good cook.",
+        "vocabulary_slugs": [
+          "ryouri",
+          "jouzu",
+          "sobo",
+          "homerareru"
+        ]
+      },
+      {
+        "japanese": "褒められたら、誰でも嬉しいです。",
+        "english": "Anyone is happy when they're praised.",
+        "vocabulary_slugs": [
+          "dare",
+          "ureshii",
+          "homerareru"
+        ]
+      },
+      {
+        "japanese": "私の絵が美術の授業で褒められた。",
+        "english": "My painting got praised in art class.",
+        "vocabulary_slugs": [
+          "watashi",
+          "e-picture",
+          "bijutsu",
+          "jugyou",
+          "homerareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nakareru": {
+    "example_sentences": [
+      {
+        "japanese": "電車の中で赤ちゃんに泣かれて、困りました。",
+        "english": "A baby started crying right next to me on the train, and I didn't know what to do.",
+        "vocabulary_slugs": [
+          "densha",
+          "naka",
+          "akachan",
+          "nakareru",
+          "komaru"
+        ]
+      },
+      {
+        "japanese": "妹に泣かれたので、お菓子を半分あげました。",
+        "english": "My little sister burst into tears, so I gave her half my snacks.",
+        "vocabulary_slugs": [
+          "imouto",
+          "nakareru",
+          "okashi",
+          "hanbun",
+          "ageru"
+        ]
+      },
+      {
+        "japanese": "空港で母に泣かれて、少し恥ずかしかったです。",
+        "english": "My mom cried at the airport, and I was a little embarrassed.",
+        "vocabulary_slugs": [
+          "kuukou",
+          "haha",
+          "nakareru",
+          "sukoshi",
+          "hazukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "korosu": {
+    "example_sentences": [
+      {
+        "japanese": "図書館で声を殺して笑いました。",
+        "english": "I laughed in the library, trying not to make a sound.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "koe",
+          "korosu",
+          "warau"
+        ]
+      },
+      {
+        "japanese": "部屋の蚊を殺すまで、寝ることができなかった。",
+        "english": "I couldn't sleep until I'd killed the mosquito in my room.",
+        "vocabulary_slugs": [
+          "heya",
+          "ka-mosquito",
+          "korosu",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "祖父は「動物を殺してはいけない」とよく言っていました。",
+        "english": "My grandfather often said you must never kill animals.",
+        "vocabulary_slugs": [
+          "sofu",
+          "doubutsu",
+          "korosu",
+          "yoku",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "korosareru": {
+    "example_sentences": [
+      {
+        "japanese": "昨日見た映画では、最初に医者が殺されました。",
+        "english": "In the movie I saw yesterday, the doctor is the first one killed.",
+        "vocabulary_slugs": [
+          "kinou",
+          "miru-v",
+          "eiga",
+          "saisho",
+          "isha",
+          "korosareru"
+        ]
+      },
+      {
+        "japanese": "兄のカメラを壊したので、殺されるかもしれません。",
+        "english": "I broke my brother's camera, so he might just kill me.",
+        "vocabulary_slugs": [
+          "ani",
+          "kamera",
+          "kowasu",
+          "korosareru"
+        ]
+      },
+      {
+        "japanese": "その男の人は殺されたと警官が言いました。",
+        "english": "The police officer said the man had been killed.",
+        "vocabulary_slugs": [
+          "sono",
+          "otokonohito",
+          "korosareru",
+          "keikan",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dekakeru": {
+    "example_sentences": [
+      {
+        "japanese": "日曜日は雨だったので、どこにも出かけませんでした。",
+        "english": "It rained on Sunday, so I didn't go out anywhere.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "ame-v",
+          "doko",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "祖母は毎朝、近くの公園へ出かけます。",
+        "english": "Every morning my grandmother heads out to the park nearby.",
+        "vocabulary_slugs": [
+          "sobo",
+          "maiasa",
+          "chikaku",
+          "kouen",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "出かける前に、窓を閉めてください。",
+        "english": "Please close the windows before you head out.",
+        "vocabulary_slugs": [
+          "dekakeru",
+          "mae",
+          "mado",
+          "shimeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "torikaeru": {
+    "example_sentences": [
+      {
+        "japanese": "台所の電気が暗くなったので、新しいのに取り替えました。",
+        "english": "The kitchen light had gotten dim, so I replaced it with a new one.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "denki",
+          "kurai",
+          "naru-become",
+          "atarashii-adj",
+          "torikaeru"
+        ]
+      },
+      {
+        "japanese": "このシャツは小さすぎたので、店で大きいのと取り替えてもらいました。",
+        "english": "This shirt was too small, so the shop swapped it for a bigger one.",
+        "vocabulary_slugs": [
+          "kono",
+          "shatsu",
+          "chiisai",
+          "mise",
+          "ookii",
+          "torikaeru",
+          "morau"
+        ]
+      },
+      {
+        "japanese": "汚いタオルは毎日取り替えるようにしています。",
+        "english": "I make a point of changing out dirty towels every day.",
+        "vocabulary_slugs": [
+          "kitanai",
+          "taoru",
+          "mainichi",
+          "torikaeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kurikaesu": {
+    "example_sentences": [
+      {
+        "japanese": "先生は同じ質問をもう一度繰り返しました。",
+        "english": "The teacher repeated the same question one more time.",
+        "vocabulary_slugs": [
+          "sensei",
+          "onaji",
+          "shitsumon",
+          "mou",
+          "ichi-v",
+          "do-degree",
+          "kurikaesu"
+        ]
+      },
+      {
+        "japanese": "弟はテレビで聞いた歌を何回も繰り返して歌っています。",
+        "english": "My little brother keeps singing a song he heard on TV, over and over.",
+        "vocabulary_slugs": [
+          "otouto",
+          "terebi",
+          "kiku-v",
+          "uta",
+          "nan",
+          "kai-times",
+          "kurikaesu",
+          "utau"
+        ]
+      },
+      {
+        "japanese": "覚えるまで、声に出して繰り返しましょう。",
+        "english": "Let's say it out loud again and again until it sticks.",
+        "vocabulary_slugs": [
+          "oboeru",
+          "koe",
+          "dasu",
+          "kurikaesu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "torikakaru": {
+    "example_sentences": [
+      {
+        "japanese": "晩ご飯の後で、すぐ宿題に取り掛かりました。",
+        "english": "Right after dinner, I got straight to work on my homework.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "sugu",
+          "shukudai",
+          "torikakaru"
+        ]
+      },
+      {
+        "japanese": "来週から新しい本に取り掛かるつもりです。",
+        "english": "I'm planning to start on a new book next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "atarashii-adj",
+          "hon",
+          "torikakaru"
+        ]
+      },
+      {
+        "japanese": "お客さんが来るので、夫は午後から料理に取り掛かりました。",
+        "english": "Guests were coming, so my husband started on the cooking in the afternoon.",
+        "vocabulary_slugs": [
+          "okyakusan",
+          "kuru-v",
+          "otto",
+          "gogo",
+          "ryouri",
+          "torikakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mochikaeru": {
+    "example_sentences": [
+      {
+        "japanese": "残った食べ物を持ち帰ってもいいですか。",
+        "english": "Is it okay if I take the leftover food home?",
+        "vocabulary_slugs": [
+          "nokoru",
+          "tabemono",
+          "mochikaeru"
+        ]
+      },
+      {
+        "japanese": "仕事は家に持ち帰らないようにしています。",
+        "english": "I try not to bring work home.",
+        "vocabulary_slugs": [
+          "shigoto",
+          "ie",
+          "mochikaeru"
+        ]
+      },
+      {
+        "japanese": "山で使った物は、全部持ち帰りましょう。",
+        "english": "Let's take everything we used on the mountain back home with us.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "tsukau",
+          "mono",
+          "zenbu",
+          "mochikaeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuredeiku": {
+    "example_sentences": [
+      {
+        "japanese": "夏になったら、娘を海へ連れて行くと約束しました。",
+        "english": "I promised my daughter I'd take her to the sea when summer comes.",
+        "vocabulary_slugs": [
+          "natsu",
+          "naru-become",
+          "musume",
+          "umi",
+          "tsuredeiku",
+          "yakusoku"
+        ]
+      },
+      {
+        "japanese": "犬を店の中に連れて行くことはできません。",
+        "english": "You can't take dogs inside the shop.",
+        "vocabulary_slugs": [
+          "inu",
+          "mise",
+          "naka",
+          "tsuredeiku"
+        ]
+      },
+      {
+        "japanese": "友達を駅の近くのいい喫茶店に連れて行くことにしました。",
+        "english": "I've decided to take my friend to a nice coffee shop near the station.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "eki",
+          "chikaku",
+          "ii",
+          "kissaten",
+          "tsuredeiku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuretekuru": {
+    "example_sentences": [
+      {
+        "japanese": "息子が恋人を家に連れて来ることになりました。",
+        "english": "It turns out my son is bringing his girlfriend home.",
+        "vocabulary_slugs": [
+          "musuko",
+          "koibito",
+          "ie",
+          "tsuretekuru"
+        ]
+      },
+      {
+        "japanese": "明日の会議に、他の会社の人を連れて来るつもりです。",
+        "english": "I'm planning to bring someone from another company to tomorrow's meeting.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaigi",
+          "hoka",
+          "kaisha",
+          "hito",
+          "tsuretekuru"
+        ]
+      },
+      {
+        "japanese": "隣の猫は、よく小さい猫を三匹連れて来る。",
+        "english": "The neighbor's cat often shows up trailing three little kittens.",
+        "vocabulary_slugs": [
+          "tonari",
+          "neko",
+          "yoku",
+          "chiisai",
+          "san-v",
+          "hiki",
+          "tsuretekuru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mottekuru": {
+    "example_sentences": [
+      {
+        "japanese": "明日の授業に、自分のパソコンを持って来てください。",
+        "english": "Please bring your own computer to tomorrow's class.",
+        "vocabulary_slugs": [
+          "ashita",
+          "jugyou",
+          "jibun",
+          "pasokon",
+          "mottekuru"
+        ]
+      },
+      {
+        "japanese": "兄が台所から冷たい水を持って来てくれました。",
+        "english": "My older brother brought me cold water from the kitchen.",
+        "vocabulary_slugs": [
+          "ani",
+          "daidokoro",
+          "tsumetai",
+          "mizu",
+          "mottekuru",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "猫が庭から小さい花を持って来ました。",
+        "english": "The cat brought a small flower in from the garden.",
+        "vocabulary_slugs": [
+          "neko",
+          "niwa",
+          "chiisai",
+          "hana-v",
+          "mottekuru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "motteiku": {
+    "example_sentences": [
+      {
+        "japanese": "週末、祖父の家へ果物を持って行くつもりです。",
+        "english": "This weekend I plan to take some fruit to my grandfather's house.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "sofu",
+          "ie",
+          "kudamono",
+          "motteiku"
+        ]
+      },
+      {
+        "japanese": "図書館に辞書を持って行ってもいいですか。",
+        "english": "Is it okay to take a dictionary into the library?",
+        "vocabulary_slugs": [
+          "toshokan",
+          "jisho",
+          "motteiku"
+        ]
+      },
+      {
+        "japanese": "旅行には軽いかばんを持って行ったほうがいいですよ。",
+        "english": "You'd better take a light bag on the trip.",
+        "vocabulary_slugs": [
+          "ryokou",
+          "karui",
+          "kaban",
+          "motteiku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hanashiau": {
+    "example_sentences": [
+      {
+        "japanese": "夫と来年の旅行の予定を話し合いました。",
+        "english": "My husband and I talked over our plans for next year's trip.",
+        "vocabulary_slugs": [
+          "otto",
+          "rainen",
+          "ryokou",
+          "yotei",
+          "hanashiau"
+        ]
+      },
+      {
+        "japanese": "兄弟で、親にあげる物を話し合っています。",
+        "english": "The siblings are discussing what to give their parents.",
+        "vocabulary_slugs": [
+          "kyoudai",
+          "oya",
+          "ageru",
+          "mono",
+          "hanashiau"
+        ]
+      },
+      {
+        "japanese": "困ったことがあったら、家族でよく話し合いましょう。",
+        "english": "When something's wrong, let's talk it through properly as a family.",
+        "vocabulary_slugs": [
+          "komaru",
+          "koto",
+          "aru",
+          "kazoku",
+          "yoku",
+          "hanashiau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "miokuru": {
+    "example_sentences": [
+      {
+        "japanese": "空港で娘を見送ったとき、少し泣いてしまいました。",
+        "english": "When I saw my daughter off at the airport, I cried a little.",
+        "vocabulary_slugs": [
+          "kuukou",
+          "musume",
+          "miokuru",
+          "sukoshi",
+          "naku"
+        ]
+      },
+      {
+        "japanese": "お客さんが帰るときは、外まで出て見送りましょう。",
+        "english": "When guests leave, let's go outside and see them off.",
+        "vocabulary_slugs": [
+          "okyakusan",
+          "kaeru-v",
+          "soto",
+          "deru-v",
+          "miokuru"
+        ]
+      },
+      {
+        "japanese": "犬は毎朝、窓から祖母を見送ります。",
+        "english": "Every morning the dog watches Grandma leave from the window.",
+        "vocabulary_slugs": [
+          "inu",
+          "maiasa",
+          "mado",
+          "sobo",
+          "miokuru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mimawasu": {
+    "example_sentences": [
+      {
+        "japanese": "電車を降りてから、駅の中を見回しました。",
+        "english": "After getting off the train, I looked around the station.",
+        "vocabulary_slugs": [
+          "densha",
+          "oriru",
+          "eki",
+          "naka",
+          "mimawasu"
+        ]
+      },
+      {
+        "japanese": "弟は知らない町で、不安そうに見回していました。",
+        "english": "In the unfamiliar town, my little brother was looking around nervously.",
+        "vocabulary_slugs": [
+          "otouto",
+          "shiru",
+          "machi-v",
+          "fuan",
+          "mimawasu"
+        ]
+      },
+      {
+        "japanese": "教室を見回したが、先生はまだ来ていなかった。",
+        "english": "I looked around the classroom, but the teacher hadn't come yet.",
+        "vocabulary_slugs": [
+          "kyoushitsu",
+          "mimawasu",
+          "sensei",
+          "mada",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mitsukedasu": {
+    "example_sentences": [
+      {
+        "japanese": "警官は、無くなった自転車を二日で見つけ出しました。",
+        "english": "The police officer tracked down the missing bicycle in two days.",
+        "vocabulary_slugs": [
+          "keikan",
+          "nakunaru",
+          "jitensha",
+          "futsuka",
+          "mitsukedasu"
+        ]
+      },
+      {
+        "japanese": "古い地図で、叔母が生まれた場所を見つけ出した。",
+        "english": "I found the place where my aunt was born on an old map.",
+        "vocabulary_slugs": [
+          "furui-adj",
+          "chizu",
+          "oba",
+          "umareru",
+          "basho",
+          "mitsukedasu"
+        ]
+      },
+      {
+        "japanese": "妹は、たくさんの写真の中から自分の顔を見つけ出した。",
+        "english": "My little sister picked out her own face from among lots of photos.",
+        "vocabulary_slugs": [
+          "imouto",
+          "takusan",
+          "shashin",
+          "naka",
+          "jibun",
+          "kao",
+          "mitsukedasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kangaedasu": {
+    "example_sentences": [
+      {
+        "japanese": "息子は、朝早く起きない理由をいろいろ考え出す。",
+        "english": "My son thinks up all sorts of reasons not to get up early in the morning.",
+        "vocabulary_slugs": [
+          "musuko",
+          "asa",
+          "hayai-early",
+          "okiru",
+          "riyuu",
+          "iroiro",
+          "kangaedasu"
+        ]
+      },
+      {
+        "japanese": "この料理は、叔父が考え出したものです。",
+        "english": "This dish is one my uncle came up with.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "oji",
+          "kangaedasu",
+          "mono"
+        ]
+      },
+      {
+        "japanese": "会社のみんなで、新しい名前を考え出しました。",
+        "english": "Everyone at the company came up with a new name together.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "minna",
+          "atarashii-adj",
+          "namae",
+          "kangaedasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yarinaosu": {
+    "example_sentences": [
+      {
+        "japanese": "数学の問題を間違えたので、最初からやり直しました。",
+        "english": "I got the math problem wrong, so I redid it from the start.",
+        "vocabulary_slugs": [
+          "suugaku",
+          "mondai",
+          "machigaeru",
+          "saisho",
+          "yarinaosu"
+        ]
+      },
+      {
+        "japanese": "部屋がまだ汚いと言われて、少年は掃除をやり直した。",
+        "english": "Told his room was still dirty, the boy did the cleaning over again.",
+        "vocabulary_slugs": [
+          "heya",
+          "mada",
+          "kitanai",
+          "iu-v",
+          "shounen",
+          "souji-suru",
+          "yarinaosu"
+        ]
+      },
+      {
+        "japanese": "大丈夫、何度でもやり直せますよ。",
+        "english": "It's fine — you can start over as many times as you like.",
+        "vocabulary_slugs": [
+          "daijoubu",
+          "nan",
+          "do-degree",
+          "yarinaosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yatte-ageru": {
+    "example_sentences": [
+      {
+        "japanese": "時間がないなら、その仕事は私がやってあげますよ。",
+        "english": "If you don't have time, I'll do that job for you.",
+        "vocabulary_slugs": [
+          "jikan",
+          "sono",
+          "shigoto",
+          "watashi",
+          "yatte-ageru"
+        ]
+      },
+      {
+        "japanese": "弟の宿題をやってあげたら、母に叱られました。",
+        "english": "I did my little brother's homework for him and got scolded by Mom.",
+        "vocabulary_slugs": [
+          "otouto",
+          "shukudai",
+          "yatte-ageru",
+          "haha",
+          "shikaru"
+        ]
+      },
+      {
+        "japanese": "彼女が忙しそうだったので、洗濯をやってあげました。",
+        "english": "My girlfriend looked busy, so I did the laundry for her.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "isogashii",
+          "sentaku-suru",
+          "yatte-ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yatte-kureru": {
+    "example_sentences": [
+      {
+        "japanese": "病気で寝ていたとき、隣の人が買い物をやってくれた。",
+        "english": "When I was sick in bed, my neighbor did the shopping for me.",
+        "vocabulary_slugs": [
+          "byouki",
+          "neru",
+          "tonari",
+          "hito",
+          "kaimono",
+          "yatte-kureru"
+        ]
+      },
+      {
+        "japanese": "父はいつも、面倒くさいことを笑ってやってくれる。",
+        "english": "Dad always does the tedious stuff for me with a smile.",
+        "vocabulary_slugs": [
+          "chichi",
+          "itsumo",
+          "mendokusai",
+          "koto",
+          "warau",
+          "yatte-kureru"
+        ]
+      },
+      {
+        "japanese": "会議の準備は、全部田中さんがやってくれました。",
+        "english": "Tanaka-san did all the preparation for the meeting for us.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "junbi-suru",
+          "zenbu",
+          "yatte-kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yatte-morau": {
+    "example_sentences": [
+      {
+        "japanese": "難しい問題は、専門家にやってもらいましょう。",
+        "english": "Let's leave the difficult part to an expert.",
+        "vocabulary_slugs": [
+          "muzukashii",
+          "mondai",
+          "senmonka",
+          "yatte-morau"
+        ]
+      },
+      {
+        "japanese": "面倒くさい仕事は弟にやってもらった。",
+        "english": "I got my little brother to do the tedious job.",
+        "vocabulary_slugs": [
+          "mendokusai",
+          "shigoto",
+          "otouto",
+          "yatte-morau"
+        ]
+      },
+      {
+        "japanese": "自分でできないので、店員さんにやってもらいました。",
+        "english": "I couldn't do it myself, so I had the shop clerk do it.",
+        "vocabulary_slugs": [
+          "jibun",
+          "dekiru",
+          "ten-in",
+          "yatte-morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsukutte-ageru": {
+    "example_sentences": [
+      {
+        "japanese": "明日、彼女に弁当を作ってあげるつもりです。",
+        "english": "Tomorrow I'm planning to make a boxed lunch for my girlfriend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kanojo",
+          "bentou",
+          "tsukutte-ageru"
+        ]
+      },
+      {
+        "japanese": "夫が風邪なので、私が晩ご飯を作ってあげました。",
+        "english": "My husband has a cold, so I made dinner for him.",
+        "vocabulary_slugs": [
+          "otto",
+          "kaze-cold",
+          "watashi",
+          "bangohan",
+          "tsukutte-ageru"
+        ]
+      },
+      {
+        "japanese": "子供に紙で小さい箱を作ってあげましょう。",
+        "english": "Let's make a little paper box for the kids.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kami-paper",
+          "chiisai",
+          "hako",
+          "tsukutte-ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "misete-kureru": {
+    "example_sentences": [
+      {
+        "japanese": "祖父が古い写真を見せてくれました。",
+        "english": "My grandfather showed me some old photos.",
+        "vocabulary_slugs": [
+          "sofu",
+          "furui-adj",
+          "shashin",
+          "misete-kureru"
+        ]
+      },
+      {
+        "japanese": "駅員さんが地図を見せてくれたので、道が分かりました。",
+        "english": "The station attendant showed me a map, so I figured out the way.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "chizu",
+          "michi-v",
+          "wakaru",
+          "misete-kureru"
+        ]
+      },
+      {
+        "japanese": "昨日のノート、ちょっと見せてくれる？",
+        "english": "Could you show me your notes from yesterday for a sec?",
+        "vocabulary_slugs": [
+          "kinou",
+          "nooto",
+          "chotto",
+          "misete-kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oshiete-morau": {
+    "example_sentences": [
+      {
+        "japanese": "隣の人に駅までの道を教えてもらいました。",
+        "english": "The person next to me told me the way to the station.",
+        "vocabulary_slugs": [
+          "tonari",
+          "hito",
+          "eki",
+          "michi-v",
+          "oshiete-morau"
+        ]
+      },
+      {
+        "japanese": "毎週土曜日、姉に料理を教えてもらっています。",
+        "english": "Every Saturday, my older sister teaches me how to cook.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "doyoubi",
+          "ane",
+          "ryouri",
+          "oshiete-morau"
+        ]
+      },
+      {
+        "japanese": "分からない漢字は、先生に教えてもらったほうがいいですよ。",
+        "english": "You'd better have your teacher explain the kanji you don't know.",
+        "vocabulary_slugs": [
+          "wakaru",
+          "kanji-word",
+          "sensei",
+          "oshiete-morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaite-ageru": {
+    "example_sentences": [
+      {
+        "japanese": "祖母は目が悪いので、私が手紙を書いてあげます。",
+        "english": "My grandmother's eyesight is poor, so I write her letters for her.",
+        "vocabulary_slugs": [
+          "sobo",
+          "me-v",
+          "warui",
+          "watashi",
+          "tegami",
+          "kaite-ageru"
+        ]
+      },
+      {
+        "japanese": "外国人のお客さんに、ホテルの住所を紙に書いてあげた。",
+        "english": "I wrote the hotel's address on a piece of paper for a foreign guest.",
+        "vocabulary_slugs": [
+          "gaikokujin",
+          "okyakusan",
+          "hoteru",
+          "juusho",
+          "kami-paper",
+          "kaite-ageru"
+        ]
+      },
+      {
+        "japanese": "息子の名前をカタカナで書いてあげたら、とても喜びました。",
+        "english": "When I wrote my son's name in katakana for him, he was really happy.",
+        "vocabulary_slugs": [
+          "musuko",
+          "namae",
+          "katakana",
+          "totemo",
+          "yorokobu",
+          "kaite-ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tetsudatte-kureru": {
+    "example_sentences": [
+      {
+        "japanese": "引っ越すとき、仲間がみんな手伝ってくれました。",
+        "english": "When I moved, all my friends pitched in and helped.",
+        "vocabulary_slugs": [
+          "hikkosu",
+          "nakama",
+          "minna",
+          "tetsudatte-kureru"
+        ]
+      },
+      {
+        "japanese": "重い荷物を持っていたら、若い男の人が手伝ってくれた。",
+        "english": "I was carrying heavy bags, and a young man helped me.",
+        "vocabulary_slugs": [
+          "omoi",
+          "nimotsu",
+          "motsu",
+          "wakai",
+          "otokonohito",
+          "tetsudatte-kureru"
+        ]
+      },
+      {
+        "japanese": "会議の準備は、山田さんが手伝ってくれるそうです。",
+        "english": "I hear Yamada-san is going to help me get ready for the meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "junbi-suru",
+          "tetsudatte-kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kashite-morau": {
+    "example_sentences": [
+      {
+        "japanese": "雨が降ってきたので、店で傘を貸してもらいました。",
+        "english": "It started to rain, so the shop lent me an umbrella.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "mise",
+          "kasa",
+          "kashite-morau"
+        ]
+      },
+      {
+        "japanese": "財布を忘れたので、兄にお金を貸してもらった。",
+        "english": "I forgot my wallet, so I got my older brother to lend me some money.",
+        "vocabulary_slugs": [
+          "saifu",
+          "wasureru",
+          "ani",
+          "okane",
+          "kashite-morau"
+        ]
+      },
+      {
+        "japanese": "旅館で自転車を貸してもらって、町を回りました。",
+        "english": "The inn lent us bicycles, and we rode around town.",
+        "vocabulary_slugs": [
+          "ryokan",
+          "jitensha",
+          "machi-v",
+          "mawaru",
+          "kashite-morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "okutte-ageru": {
+    "example_sentences": [
+      {
+        "japanese": "もう遅いから、家まで送ってあげるよ。",
+        "english": "It's late, so I'll take you home.",
+        "vocabulary_slugs": [
+          "mou",
+          "osoi",
+          "ie",
+          "okutte-ageru"
+        ]
+      },
+      {
+        "japanese": "叔母に赤ちゃんの写真をたくさん送ってあげました。",
+        "english": "I sent my aunt lots of photos of the baby.",
+        "vocabulary_slugs": [
+          "oba",
+          "akachan",
+          "shashin",
+          "takusan",
+          "okutte-ageru"
+        ]
+      },
+      {
+        "japanese": "外国に住んでいる娘に、日本のお菓子を送ってあげたい。",
+        "english": "I want to send some Japanese snacks to my daughter who lives abroad.",
+        "vocabulary_slugs": [
+          "gaikoku",
+          "sumu",
+          "musume",
+          "nihon",
+          "okashi",
+          "okutte-ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mushi": {
+    "example_sentences": [
+      {
+        "japanese": "窓を開けたら、部屋に虫が入ってきた。",
+        "english": "When I opened the window, a bug flew into the room.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "heya",
+          "mushi",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "夏の夜は、電気の近くに虫が多いです。",
+        "english": "On summer nights, there are lots of bugs around the lights.",
+        "vocabulary_slugs": [
+          "natsu",
+          "yoru",
+          "denki",
+          "chikaku",
+          "mushi",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "母が育てた野菜を、虫が全部食べてしまった。",
+        "english": "The bugs ate every one of the vegetables my mother grew.",
+        "vocabulary_slugs": [
+          "haha",
+          "sodateru",
+          "yasai",
+          "mushi",
+          "zenbu",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chou": {
+    "example_sentences": [
+      {
+        "japanese": "女の子が庭で黄色の蝶を追いかけています。",
+        "english": "A little girl is chasing a yellow butterfly around the garden.",
+        "vocabulary_slugs": [
+          "onnanoko",
+          "niwa",
+          "kiiro",
+          "chou",
+          "oikakeru"
+        ]
+      },
+      {
+        "japanese": "春の山では、たくさんの蝶が見られます。",
+        "english": "In the mountains in spring, you can see lots of butterflies.",
+        "vocabulary_slugs": [
+          "haru",
+          "yama-v",
+          "takusan",
+          "chou",
+          "mirareru"
+        ]
+      },
+      {
+        "japanese": "蝶が猫の鼻の上に止まって、猫がびっくりした。",
+        "english": "A butterfly landed on the cat's nose, and the cat jumped.",
+        "vocabulary_slugs": [
+          "chou",
+          "neko",
+          "hana-nose",
+          "ue",
+          "tomaru",
+          "bikkuri-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "saru": {
+    "example_sentences": [
+      {
+        "japanese": "猿が窓を開けて台所に入ってきた。",
+        "english": "A monkey opened the window and came into the kitchen.",
+        "vocabulary_slugs": [
+          "saru",
+          "mado",
+          "akeru",
+          "daidokoro",
+          "hairu-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "猿が木の上からこちらを見ています。",
+        "english": "A monkey is watching us from up in the tree.",
+        "vocabulary_slugs": [
+          "saru",
+          "ki-tree-v",
+          "ue",
+          "kochira",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "帽子を猿に取られてしまった。",
+        "english": "A monkey snatched my hat.",
+        "vocabulary_slugs": [
+          "boushi",
+          "saru",
+          "toru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uma": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は若いとき、毎日馬に乗って学校に通っていたそうです。",
+        "english": "Apparently my grandfather rode a horse to school every day when he was young.",
+        "vocabulary_slugs": [
+          "sofu",
+          "wakai",
+          "mainichi",
+          "uma",
+          "noru",
+          "gakkou-v",
+          "kayou"
+        ]
+      },
+      {
+        "japanese": "あの馬は体が大きいのに、とても優しい。",
+        "english": "That horse is huge, but it is really gentle.",
+        "vocabulary_slugs": [
+          "ano",
+          "uma",
+          "karada",
+          "ookii",
+          "totemo",
+          "yasashii-n4"
+        ]
+      },
+      {
+        "japanese": "馬に野菜をあげてもいいですか。",
+        "english": "Is it okay to give the horse some vegetables?",
+        "vocabulary_slugs": [
+          "uma",
+          "yasai",
+          "ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ushi": {
+    "example_sentences": [
+      {
+        "japanese": "農家の牛が道の真ん中で寝ていて、車が止まった。",
+        "english": "A farmer's cow was lying asleep in the middle of the road, so the cars stopped.",
+        "vocabulary_slugs": [
+          "nouka",
+          "ushi",
+          "michi-v",
+          "mannaka",
+          "neru",
+          "kuruma",
+          "tomaru"
+        ]
+      },
+      {
+        "japanese": "牛は水をたくさん飲むそうです。",
+        "english": "I hear cows drink a lot of water.",
+        "vocabulary_slugs": [
+          "ushi",
+          "mizu",
+          "takusan",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "子供のころ、牛が怖くて近くに行けなかった。",
+        "english": "As a kid, I was so scared of cows that I couldn't go near them.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "ushi",
+          "kowai",
+          "chikaku",
+          "ikeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "buta": {
+    "example_sentences": [
+      {
+        "japanese": "豚はきれいな動物だと先生が言っていました。",
+        "english": "Our teacher said that pigs are actually clean animals.",
+        "vocabulary_slugs": [
+          "buta",
+          "kirei",
+          "doubutsu",
+          "sensei",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "豚の鼻は丸くて、ちょっとかわいい。",
+        "english": "A pig's nose is round and kind of cute.",
+        "vocabulary_slugs": [
+          "buta",
+          "hana-nose",
+          "marui",
+          "chotto",
+          "kawaii"
+        ]
+      },
+      {
+        "japanese": "叔父は家で豚を三匹育てています。",
+        "english": "My uncle is raising three pigs at his house.",
+        "vocabulary_slugs": [
+          "oji",
+          "ie",
+          "buta",
+          "san-v",
+          "hiki",
+          "sodateru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hitsuji-anim": {
+    "example_sentences": [
+      {
+        "japanese": "羊の赤ちゃんが生まれたので、みんなで見に行った。",
+        "english": "A lamb was born, so we all went to see it.",
+        "vocabulary_slugs": [
+          "hitsuji-anim",
+          "akachan",
+          "umareru",
+          "minna",
+          "miru-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この羊は人が好きで、呼ぶとすぐ来ます。",
+        "english": "This sheep loves people and comes right away when you call it.",
+        "vocabulary_slugs": [
+          "kono",
+          "hitsuji-anim",
+          "hito",
+          "suki",
+          "yobu",
+          "sugu",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "雪の中で、羊たちが静かに立っていた。",
+        "english": "The sheep stood quietly in the snow.",
+        "vocabulary_slugs": [
+          "yuki",
+          "naka",
+          "hitsuji-anim",
+          "shizuka",
+          "tatsu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kitsune": {
+    "example_sentences": [
+      {
+        "japanese": "夜になると、狐が町に来ることがあります。",
+        "english": "At night, foxes sometimes come into town.",
+        "vocabulary_slugs": [
+          "yoru",
+          "naru-become",
+          "kitsune",
+          "machi-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "森の中で狐を見たことがありますか。",
+        "english": "Have you ever seen a fox in the forest?",
+        "vocabulary_slugs": [
+          "mori",
+          "naka",
+          "kitsune",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "あの狐、また僕の靴を持って行った。",
+        "english": "That fox made off with my shoe again.",
+        "vocabulary_slugs": [
+          "ano",
+          "kitsune",
+          "mata",
+          "boku",
+          "kutsu",
+          "motteiku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kuma": {
+    "example_sentences": [
+      {
+        "japanese": "山で熊に会った場合は、走って逃げてはいけません。",
+        "english": "If you run into a bear in the mountains, don't turn and run.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "kuma",
+          "au",
+          "hashiru",
+          "nigeru"
+        ]
+      },
+      {
+        "japanese": "熊は冬の間、何も食べないで寝ている。",
+        "english": "Bears sleep all winter without eating anything.",
+        "vocabulary_slugs": [
+          "kuma",
+          "fuyu",
+          "aida",
+          "nani",
+          "taberu",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "川で熊が魚を取っているのが見えた。",
+        "english": "I could see a bear catching fish in the river.",
+        "vocabulary_slugs": [
+          "kawa-v",
+          "kuma",
+          "sakana",
+          "toru",
+          "mieru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zou": {
+    "example_sentences": [
+      {
+        "japanese": "象の鼻は手のように使えるそうです。",
+        "english": "Apparently an elephant can use its trunk like a hand.",
+        "vocabulary_slugs": [
+          "zou",
+          "hana-nose",
+          "te-v",
+          "tsukaeru"
+        ]
+      },
+      {
+        "japanese": "象はとても重いので、この橋を渡ることができません。",
+        "english": "The elephant is far too heavy to cross this bridge.",
+        "vocabulary_slugs": [
+          "zou",
+          "totemo",
+          "omoi",
+          "kono",
+          "hashi-bridge",
+          "watar"
+        ]
+      },
+      {
+        "japanese": "象が水を飲むところを、息子と一緒に見ました。",
+        "english": "My son and I watched an elephant drinking water.",
+        "vocabulary_slugs": [
+          "zou",
+          "mizu",
+          "nomu-v",
+          "musuko",
+          "issho-ni",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hebi": {
+    "example_sentences": [
+      {
+        "japanese": "階段の下に蛇がいて、父がびっくりしていた。",
+        "english": "There was a snake under the stairs, and my dad got a real shock.",
+        "vocabulary_slugs": [
+          "kaidan",
+          "shita-v",
+          "hebi",
+          "iru-exist",
+          "chichi",
+          "bikkuri-suru"
+        ]
+      },
+      {
+        "japanese": "蛇は足がないのに、速く動くことができる。",
+        "english": "Snakes have no legs, yet they can move fast.",
+        "vocabulary_slugs": [
+          "hebi",
+          "ashi-v",
+          "hayai-fast",
+          "ugoku"
+        ]
+      },
+      {
+        "japanese": "蛇を見るたびに、姉は大きい声を出す。",
+        "english": "Every time she sees a snake, my big sister shrieks.",
+        "vocabulary_slugs": [
+          "hebi",
+          "miru-v",
+          "ane",
+          "ookii",
+          "koe",
+          "dasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kumo-spider": {
+    "example_sentences": [
+      {
+        "japanese": "朝起きたら、窓に黒い蜘蛛がいた。",
+        "english": "When I got up this morning, there was a black spider on the window.",
+        "vocabulary_slugs": [
+          "asa",
+          "okiru",
+          "mado",
+          "kuroi",
+          "kumo-spider",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "蜘蛛は虫を食べるから、殺さないで。",
+        "english": "Spiders eat bugs, so don't kill it.",
+        "vocabulary_slugs": [
+          "kumo-spider",
+          "mushi",
+          "taberu",
+          "korosu"
+        ]
+      },
+      {
+        "japanese": "蜘蛛が怖いので、夫に外へ出してもらった。",
+        "english": "I'm scared of spiders, so I had my husband put it outside.",
+        "vocabulary_slugs": [
+          "kumo-spider",
+          "kowai",
+          "otto",
+          "soto",
+          "dasu",
+          "morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ka-mosquito": {
+    "example_sentences": [
+      {
+        "japanese": "夏の夜は窓を開けると、蚊が部屋に入ってきます。",
+        "english": "On summer nights, the moment you open the window, mosquitoes come into the room.",
+        "vocabulary_slugs": [
+          "natsu",
+          "yoru",
+          "mado",
+          "akeru",
+          "ka-mosquito",
+          "heya",
+          "hairu-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "足が痒いと思ったら、蚊が三匹もいた。",
+        "english": "I thought my leg felt itchy, and there were three mosquitoes on it.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "kayui",
+          "omou",
+          "ka-mosquito",
+          "san-v",
+          "hiki",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "弟は蚊を殺すまで寝ないと言っています。",
+        "english": "My little brother says he isn't going to sleep until he kills the mosquito.",
+        "vocabulary_slugs": [
+          "otouto",
+          "ka-mosquito",
+          "korosu",
+          "neru",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hae": {
+    "example_sentences": [
+      {
+        "japanese": "台所のテーブルに蝿が止まっている。",
+        "english": "A fly has landed on the kitchen table.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "teeburu",
+          "hae",
+          "tomaru"
+        ]
+      },
+      {
+        "japanese": "料理に蝿が入らないように、皿の上に紙を置いておきましょう。",
+        "english": "Let's put some paper over the plates so no flies get into the food.",
+        "vocabulary_slugs": [
+          "ryouri",
+          "hae",
+          "hairu-v",
+          "sara",
+          "ue",
+          "kami-paper",
+          "oku"
+        ]
+      },
+      {
+        "japanese": "ドアを開けてあげたのに、蝿は出ていかなかった。",
+        "english": "I opened the door for it, but the fly still wouldn't leave.",
+        "vocabulary_slugs": [
+          "doa",
+          "akeru",
+          "ageru",
+          "hae",
+          "deru-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shizen": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は自然の多い町に住みたいそうです。",
+        "english": "Apparently my grandfather wants to live in a town with lots of nature.",
+        "vocabulary_slugs": [
+          "sofu",
+          "shizen",
+          "ooi",
+          "machi-v",
+          "sumu"
+        ]
+      },
+      {
+        "japanese": "週末は自然を見に、川へ出かけることにしました。",
+        "english": "I decided to head out to the river this weekend to enjoy some nature.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "shizen",
+          "miru-v",
+          "kawa-v",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "子供のうちに、自然の中でたくさん遊んだほうがいい。",
+        "english": "Kids should play outdoors in nature as much as they can while they are young.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "shizen",
+          "naka",
+          "takusan",
+          "asobu",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taiyou": {
+    "example_sentences": [
+      {
+        "japanese": "太陽が海に沈むところを、夫婦で静かに見ていた。",
+        "english": "The couple quietly watched the sun sinking into the sea.",
+        "vocabulary_slugs": [
+          "taiyou",
+          "umi",
+          "shizumu",
+          "fuufu",
+          "shizuka",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "太陽が出ている間に、シャツを乾かしておきましょう。",
+        "english": "Let's get the shirts dried while the sun is out.",
+        "vocabulary_slugs": [
+          "taiyou",
+          "deru-v",
+          "aida",
+          "shatsu",
+          "kawakasu",
+          "oku"
+        ]
+      },
+      {
+        "japanese": "太陽を見ると、目が痛くなりますよ。",
+        "english": "If you look at the sun, your eyes will start to hurt.",
+        "vocabulary_slugs": [
+          "taiyou",
+          "miru-v",
+          "me-v",
+          "itai",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hoshizora": {
+    "example_sentences": [
+      {
+        "japanese": "山の上に登ると、星空がとてもきれいでした。",
+        "english": "When we climbed to the top of the mountain, the starry sky was beautiful.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "ue",
+          "noboru",
+          "hoshizora",
+          "totemo",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "娘は星空を見ながら寝てしまった。",
+        "english": "My daughter fell asleep while gazing at the starry sky.",
+        "vocabulary_slugs": [
+          "musume",
+          "hoshizora",
+          "miru-v",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "明日の夜は、雲がなければ星空が見えるだろう。",
+        "english": "Tomorrow night we should see a starry sky, as long as there are no clouds.",
+        "vocabulary_slugs": [
+          "ashita",
+          "yoru",
+          "kumo",
+          "aru",
+          "hoshizora",
+          "mieru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nami": {
+    "example_sentences": [
+      {
+        "japanese": "波が高い日は、海に入らないほうがいい。",
+        "english": "On days when the waves are high, you had better stay out of the sea.",
+        "vocabulary_slugs": [
+          "nami",
+          "takai-adj",
+          "hi-sun-v",
+          "umi",
+          "hairu-v",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "大きい波が来て、兄の靴を持っていってしまった。",
+        "english": "A big wave came in and carried off my older brother's shoes.",
+        "vocabulary_slugs": [
+          "ookii",
+          "nami",
+          "kuru-v",
+          "ani",
+          "kutsu",
+          "motteiku"
+        ]
+      },
+      {
+        "japanese": "波の上に、古い箱が浮かんでいる。",
+        "english": "An old box is floating on the waves.",
+        "vocabulary_slugs": [
+          "nami",
+          "ue",
+          "furui-adj",
+          "hako",
+          "ukabu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mori": {
+    "example_sentences": [
+      {
+        "japanese": "この森には熊がいるらしいから、一人で入らないで。",
+        "english": "There are supposed to be bears in this forest, so don't go in alone.",
+        "vocabulary_slugs": [
+          "kono",
+          "mori",
+          "kuma",
+          "iru-exist",
+          "hitori-de",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "森で道が分からなくなってしまった。",
+        "english": "I lost my way in the forest.",
+        "vocabulary_slugs": [
+          "mori",
+          "michi-v",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "森の中は涼しくて、鳥の声がよく聞こえる。",
+        "english": "It's cool inside the forest, and you can hear the birds clearly.",
+        "vocabulary_slugs": [
+          "mori",
+          "naka",
+          "suzushii",
+          "tori",
+          "koe",
+          "yoku",
+          "kikoeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hayashi": {
+    "example_sentences": [
+      {
+        "japanese": "学校の後ろに小さい林があります。",
+        "english": "There is a small grove of trees behind the school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "ushiro",
+          "chiisai",
+          "hayashi",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "犬と散歩するときは、いつも林を通って帰ります。",
+        "english": "When I walk the dog, I always go home through the woods.",
+        "vocabulary_slugs": [
+          "inu",
+          "sanpo-suru",
+          "itsumo",
+          "hayashi",
+          "tooru",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "秋になると、林の木が赤や黄色に変わります。",
+        "english": "When autumn comes, the trees in the grove turn red and yellow.",
+        "vocabulary_slugs": [
+          "aki",
+          "naru-become",
+          "hayashi",
+          "ki-tree-v",
+          "aka-color",
+          "kiiro",
+          "kawaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ike": {
+    "example_sentences": [
+      {
+        "japanese": "公園の池で、子供が魚にパンをあげています。",
+        "english": "At the pond in the park, a child is feeding bread to the fish.",
+        "vocabulary_slugs": [
+          "kouen",
+          "ike",
+          "kodomo-v",
+          "sakana",
+          "pan",
+          "ageru"
+        ]
+      },
+      {
+        "japanese": "寒い朝、池の水が凍っていた。",
+        "english": "On a cold morning, the water in the pond had frozen.",
+        "vocabulary_slugs": [
+          "samui",
+          "asa",
+          "ike",
+          "mizu",
+          "kooru"
+        ]
+      },
+      {
+        "japanese": "父は池に携帯を落として、とても困っていた。",
+        "english": "My dad dropped his phone in the pond and was completely stuck.",
+        "vocabulary_slugs": [
+          "chichi",
+          "ike",
+          "keitai",
+          "otosu",
+          "totemo",
+          "komaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "iwa": {
+    "example_sentences": [
+      {
+        "japanese": "丸い岩の上に座って、弁当を食べました。",
+        "english": "I sat on a round boulder and ate my boxed lunch.",
+        "vocabulary_slugs": [
+          "marui",
+          "iwa",
+          "ue",
+          "suwaru",
+          "bentou",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この岩は重すぎて、三人でも動かすことができない。",
+        "english": "This rock is so heavy that even three of us cannot move it.",
+        "vocabulary_slugs": [
+          "kono",
+          "iwa",
+          "omoi",
+          "san-v",
+          "nin-counter",
+          "ugokasu",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "山の道に岩が落ちてきて、バスが止まってしまった。",
+        "english": "A boulder came down onto the mountain road, and the bus had to stop.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "michi-v",
+          "iwa",
+          "ochiru",
+          "kuru-v",
+          "basu",
+          "tomaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "suna": {
+    "example_sentences": [
+      {
+        "japanese": "子供が公園で砂の山を作っています。",
+        "english": "A child is building a mountain of sand in the park.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kouen",
+          "suna",
+          "yama-v",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "靴の中に砂が入って、歩くのが痛いです。",
+        "english": "Sand got into my shoes, and it hurts to walk.",
+        "vocabulary_slugs": [
+          "kutsu",
+          "naka",
+          "suna",
+          "hairu-v",
+          "aruku",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "海の砂は白くて、とても熱かったです。",
+        "english": "The sand at the beach was white and really hot.",
+        "vocabulary_slugs": [
+          "umi",
+          "suna",
+          "shiroi",
+          "totemo",
+          "atsui-obj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "doro": {
+    "example_sentences": [
+      {
+        "japanese": "雨が降った後で、犬の足が泥で黒くなりました。",
+        "english": "After the rain, the dog's paws turned black with mud.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "inu",
+          "ashi-v",
+          "doro",
+          "kuroi",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "弟の服が泥で汚いから、すぐ洗います。",
+        "english": "My little brother's clothes are filthy with mud, so I'll wash them right away.",
+        "vocabulary_slugs": [
+          "otouto",
+          "fuku",
+          "doro",
+          "kitanai",
+          "sugu",
+          "arau"
+        ]
+      },
+      {
+        "japanese": "農家の人は毎日泥の中で働いています。",
+        "english": "Farmers work in the mud every day.",
+        "vocabulary_slugs": [
+          "nouka",
+          "hito",
+          "mainichi",
+          "doro",
+          "naka",
+          "hataraku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kemuri": {
+    "example_sentences": [
+      {
+        "japanese": "台所から黒い煙が出ています。",
+        "english": "Black smoke is coming out of the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "kuroi",
+          "kemuri",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "窓を開けて、煙を外に出しましょう。",
+        "english": "Let's open the window and let the smoke out.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "kemuri",
+          "soto",
+          "dasu"
+        ]
+      },
+      {
+        "japanese": "駅の近くで白い煙が上がっています。",
+        "english": "White smoke is rising near the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikaku",
+          "shiroi",
+          "kemuri",
+          "agaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "honoo": {
+    "example_sentences": [
+      {
+        "japanese": "炎が急に大きくなって、みんなびっくりしました。",
+        "english": "The flames suddenly grew big, and everyone jumped.",
+        "vocabulary_slugs": [
+          "honoo",
+          "ookii",
+          "naru-become",
+          "minna",
+          "bikkuri-suru"
+        ]
+      },
+      {
+        "japanese": "暗い部屋で、炎だけが明るく光っていました。",
+        "english": "In the dark room, only the flame was shining brightly.",
+        "vocabulary_slugs": [
+          "kurai",
+          "heya",
+          "honoo",
+          "akarui",
+          "hikaru"
+        ]
+      },
+      {
+        "japanese": "青い炎は赤い炎より熱いそうです。",
+        "english": "Apparently a blue flame is hotter than a red one.",
+        "vocabulary_slugs": [
+          "aoi",
+          "honoo",
+          "akai",
+          "atsui-obj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koori": {
+    "example_sentences": [
+      {
+        "japanese": "冷たいお茶に氷を三つ入れました。",
+        "english": "I put three ice cubes in the cold tea.",
+        "vocabulary_slugs": [
+          "tsumetai",
+          "ocha",
+          "koori",
+          "mittsu",
+          "ireru-v"
+        ]
+      },
+      {
+        "japanese": "冬になると、池の上に氷ができます。",
+        "english": "When winter comes, ice forms on the pond.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "naru-become",
+          "ike",
+          "ue",
+          "koori",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "暑い日だったので、氷がもう溶けてしまいました。",
+        "english": "It was a hot day, so the ice has already melted.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "hi-sun-v",
+          "koori",
+          "mou",
+          "tokeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "arashi": {
+    "example_sentences": [
+      {
+        "japanese": "嵐の夜は怖くて、全然寝られませんでした。",
+        "english": "The stormy night was so scary that I couldn't sleep at all.",
+        "vocabulary_slugs": [
+          "arashi",
+          "yoru",
+          "kowai",
+          "zenzen",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "嵐が来る前に、庭の椅子を家の中に入れました。",
+        "english": "Before the storm came, I brought the garden chairs inside.",
+        "vocabulary_slugs": [
+          "arashi",
+          "kuru-v",
+          "niwa",
+          "isu",
+          "ie",
+          "naka",
+          "ireru-v"
+        ]
+      },
+      {
+        "japanese": "嵐で電車が止まったので、会社を休みました。",
+        "english": "The trains stopped because of the storm, so I took the day off work.",
+        "vocabulary_slugs": [
+          "arashi",
+          "densha",
+          "tomaru",
+          "kaisha",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taifuu": {
+    "example_sentences": [
+      {
+        "japanese": "台風の日は、外に出ないでください。",
+        "english": "Please don't go outside on typhoon days.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "hi-sun-v",
+          "soto",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "台風の風で、傘が壊れてしまいました。",
+        "english": "The typhoon wind broke my umbrella.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "kaze-wind",
+          "kasa",
+          "kowareru"
+        ]
+      },
+      {
+        "japanese": "台風が来る場合は、飛行機が遅れることがあります。",
+        "english": "When a typhoon comes, flights are sometimes delayed.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "kuru-v",
+          "hikouki",
+          "okureru",
+          "koto"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jishin": {
+    "example_sentences": [
+      {
+        "japanese": "地震が起きたら、ドアを開けてください。",
+        "english": "If an earthquake hits, please open the door.",
+        "vocabulary_slugs": [
+          "jishin",
+          "okiru",
+          "doa",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "先週、小さい地震がありました。",
+        "english": "There was a small earthquake last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "chiisai",
+          "jishin",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "地震のたびに、猫がベッドの下に逃げます。",
+        "english": "Every time there's an earthquake, the cat runs under the bed.",
+        "vocabulary_slugs": [
+          "jishin",
+          "neko",
+          "beddo",
+          "shita-v",
+          "nigeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wafuu": {
+    "example_sentences": [
+      {
+        "japanese": "このホテルの部屋は和風で、とても静かです。",
+        "english": "The rooms at this hotel are Japanese-style and very quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "hoteru",
+          "heya",
+          "wafuu",
+          "totemo",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "彼女は和風のお菓子をよく作ります。",
+        "english": "She often makes Japanese-style sweets.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "wafuu",
+          "okashi",
+          "yoku",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "古い和風の家に住むのが夢です。",
+        "english": "My dream is to live in an old Japanese-style house.",
+        "vocabulary_slugs": [
+          "furui-adj",
+          "wafuu",
+          "ie",
+          "sumu",
+          "yume"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youshoku": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は洋食より和食のほうが好きです。",
+        "english": "My grandfather likes Japanese food better than Western food.",
+        "vocabulary_slugs": [
+          "sofu",
+          "youshoku",
+          "washoku",
+          "hou",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "駅の前の喫茶店は、洋食もおいしいです。",
+        "english": "The coffee shop in front of the station does good Western food, too.",
+        "vocabulary_slugs": [
+          "eki",
+          "mae",
+          "kissaten",
+          "youshoku",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "週末は、家族で洋食を食べに行きます。",
+        "english": "On weekends, my family goes out for Western food.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kazoku",
+          "youshoku",
+          "taberu",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "washoku": {
+    "example_sentences": [
+      {
+        "japanese": "祖母の家に泊まると、毎朝和食が出ます。",
+        "english": "Whenever I stay at my grandmother's, I get Japanese food every morning.",
+        "vocabulary_slugs": [
+          "sobo",
+          "ie",
+          "tomaru-stay",
+          "maiasa",
+          "washoku",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "明日は洋食の代わりに和食にしましょう。",
+        "english": "Tomorrow, let's have Japanese food instead of Western.",
+        "vocabulary_slugs": [
+          "ashita",
+          "youshoku",
+          "washoku"
+        ]
+      },
+      {
+        "japanese": "外国人の友人を和食の店に連れて行きました。",
+        "english": "I took a friend from abroad to a Japanese restaurant.",
+        "vocabulary_slugs": [
+          "gaikokujin",
+          "yuujin",
+          "washoku",
+          "mise",
+          "tsuredeiku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chuuka": {
+    "example_sentences": [
+      {
+        "japanese": "駅の近くに新しい中華の店ができたそうです。",
+        "english": "I heard a new Chinese place opened near the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikaku",
+          "atarashii-adj",
+          "chuuka",
+          "mise",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "忙しい日は、中華を持ち帰ることにしています。",
+        "english": "On busy days, I make a point of getting Chinese takeout.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "hi-sun-v",
+          "chuuka",
+          "mochikaeru"
+        ]
+      },
+      {
+        "japanese": "父は中華料理を作るのが得意です。",
+        "english": "My dad is great at cooking Chinese food.",
+        "vocabulary_slugs": [
+          "chichi",
+          "chuuka",
+          "ryouri",
+          "tsukuru",
+          "tokui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "menyuu": {
+    "example_sentences": [
+      {
+        "japanese": "このメニューは写真が多いので、外国人にも便利です。",
+        "english": "This menu has lots of photos, so it's handy for visitors from abroad too.",
+        "vocabulary_slugs": [
+          "menyuu",
+          "shashin",
+          "ooi",
+          "gaikokujin",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "店員さんに英語のメニューがあるか聞きました。",
+        "english": "I asked the clerk if they had an English menu.",
+        "vocabulary_slugs": [
+          "ten-in",
+          "eigo",
+          "menyuu",
+          "aru",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "メニューを見ながら、娘は二十分も悩んでいます。",
+        "english": "My daughter has been agonizing over the menu for twenty whole minutes.",
+        "vocabulary_slugs": [
+          "menyuu",
+          "miru-v",
+          "musume",
+          "ni-v",
+          "juu-v",
+          "fun-counter",
+          "nayamu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chuumon-suru": {
+    "example_sentences": [
+      {
+        "japanese": "電話でお弁当を三つ注文しました。",
+        "english": "We ordered three boxed lunches by phone.",
+        "vocabulary_slugs": [
+          "denwa",
+          "bentou",
+          "mittsu",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "兄はいつも一番安いものを注文する。",
+        "english": "My older brother always orders the cheapest thing.",
+        "vocabulary_slugs": [
+          "ani",
+          "itsumo",
+          "ichiban",
+          "yasui-adj",
+          "mono",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "注文した料理がまだ来ていません。",
+        "english": "The dish I ordered still hasn't come.",
+        "vocabulary_slugs": [
+          "chuumon-suru",
+          "ryouri",
+          "mada",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "amami": {
+    "example_sentences": [
+      {
+        "japanese": "冬の野菜は甘みが強いです。",
+        "english": "Winter vegetables have a strong sweetness.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "yasai",
+          "amami",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "砂糖を入れなくても、果物の甘みで十分です。",
+        "english": "Even without sugar, the sweetness of the fruit is enough.",
+        "vocabulary_slugs": [
+          "satou",
+          "ireru-v",
+          "kudamono",
+          "amami",
+          "juubun"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんは甘みがある物が好きだそうです。",
+        "english": "Apparently babies like things with a bit of sweetness.",
+        "vocabulary_slugs": [
+          "akachan",
+          "amami",
+          "aru",
+          "mono",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shoppai": {
+    "example_sentences": [
+      {
+        "japanese": "塩を入れすぎて、卵がしょっぱくなってしまった。",
+        "english": "I put in too much salt, and the eggs ended up salty.",
+        "vocabulary_slugs": [
+          "shio",
+          "ireru-v",
+          "sugiru",
+          "tamago",
+          "shoppai",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "海で泳ぐと、口の中がしょっぱい。",
+        "english": "When you swim in the sea, your mouth tastes salty.",
+        "vocabulary_slugs": [
+          "umi",
+          "oyogu",
+          "kuchi-v",
+          "naka",
+          "shoppai"
+        ]
+      },
+      {
+        "japanese": "祖父の料理は、いつも少ししょっぱいです。",
+        "english": "Grandpa's cooking is always a little salty.",
+        "vocabulary_slugs": [
+          "sofu",
+          "ryouri",
+          "itsumo",
+          "sukoshi",
+          "shoppai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nigai": {
+    "example_sentences": [
+      {
+        "japanese": "子供のとき、苦い薬が嫌いでした。",
+        "english": "When I was a kid, I hated bitter medicine.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "nigai",
+          "kusuri",
+          "kirai"
+        ]
+      },
+      {
+        "japanese": "息子は苦い野菜だけ食べなかった。",
+        "english": "My son ate everything except the bitter vegetables.",
+        "vocabulary_slugs": [
+          "musuko",
+          "nigai",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "最初にビールを飲んだとき、苦くてびっくりしました。",
+        "english": "The first time I drank beer, I was shocked at how bitter it was.",
+        "vocabulary_slugs": [
+          "saisho",
+          "biiru",
+          "nomu-v",
+          "nigai",
+          "bikkuri-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "suppai": {
+    "example_sentences": [
+      {
+        "japanese": "夏になると、酸っぱい物が食べたくなる。",
+        "english": "When summer comes, I start craving sour things.",
+        "vocabulary_slugs": [
+          "natsu",
+          "naru-become",
+          "suppai",
+          "mono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫の牛乳が酸っぱくなっていた。",
+        "english": "The milk in the fridge had gone sour.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "gyuunyuu",
+          "suppai",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "妹は「酸っぱい」と言って、すぐ水を飲みました。",
+        "english": "My little sister said \"Sour!\" and drank some water right away.",
+        "vocabulary_slugs": [
+          "imouto",
+          "suppai",
+          "iu-v",
+          "sugu",
+          "mizu",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dashi": {
+    "example_sentences": [
+      {
+        "japanese": "叔父は、だしがおいしい店にしか行きません。",
+        "english": "My uncle only goes to places with good soup stock.",
+        "vocabulary_slugs": [
+          "oji",
+          "dashi",
+          "oishii",
+          "mise",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "だしがおいしいと、塩は少しでいい。",
+        "english": "When the stock is good, you only need a little salt.",
+        "vocabulary_slugs": [
+          "dashi",
+          "oishii",
+          "shio",
+          "sukoshi",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "魚でだしを取るのは、思ったより簡単でした。",
+        "english": "Making stock from fish was easier than I thought.",
+        "vocabulary_slugs": [
+          "sakana",
+          "dashi",
+          "toru",
+          "omou",
+          "kantan-n4"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "misoshiru": {
+    "example_sentences": [
+      {
+        "japanese": "夫は朝ご飯の前に、自分で味噌汁を作ります。",
+        "english": "My husband makes the miso soup himself before breakfast.",
+        "vocabulary_slugs": [
+          "otto",
+          "asagohan",
+          "mae",
+          "jibun",
+          "misoshiru",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "味噌汁を飲むと、うちに帰ってきた気持ちになる。",
+        "english": "A bowl of miso soup makes me feel like I'm back home.",
+        "vocabulary_slugs": [
+          "misoshiru",
+          "nomu-v",
+          "uchi",
+          "kaeru-v",
+          "kimochi",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "旅館の味噌汁は、だしがとてもおいしかったです。",
+        "english": "The miso soup at the inn had really good stock.",
+        "vocabulary_slugs": [
+          "ryokan",
+          "misoshiru",
+          "dashi",
+          "totemo",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nabe": {
+    "example_sentences": [
+      {
+        "japanese": "冬になると、家族で鍋をよく食べます。",
+        "english": "Once winter comes, my family often eats hotpot together.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "naru-become",
+          "kazoku",
+          "nabe",
+          "yoku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この鍋は重いから、一緒に運びましょう。",
+        "english": "This pot is heavy, so let's carry it together.",
+        "vocabulary_slugs": [
+          "kono",
+          "nabe",
+          "omoi",
+          "issho-ni",
+          "hakobu"
+        ]
+      },
+      {
+        "japanese": "鍋に肉を入れて、少し待ってください。",
+        "english": "Put the meat in the pot and wait a little.",
+        "vocabulary_slugs": [
+          "nabe",
+          "niku",
+          "ireru-v",
+          "sukoshi",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yasai-itame": {
+    "example_sentences": [
+      {
+        "japanese": "弟は野菜炒めを作るのが上手です。",
+        "english": "My younger brother is good at making stir-fried vegetables.",
+        "vocabulary_slugs": [
+          "otouto",
+          "yasai-itame",
+          "tsukuru",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "今日の昼ご飯は、野菜炒めとご飯だけでした。",
+        "english": "Today's lunch was just stir-fried vegetables and rice.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hirugohan",
+          "yasai-itame",
+          "gohan"
+        ]
+      },
+      {
+        "japanese": "この店の野菜炒めは、ちょっとしょっぱいですね。",
+        "english": "The stir-fried vegetables at this place are a bit salty, aren't they?",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "yasai-itame",
+          "chotto",
+          "shoppai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sushi": {
+    "example_sentences": [
+      {
+        "japanese": "祖父が来るから、寿司の店を予約しました。",
+        "english": "My grandfather is coming, so I booked a sushi restaurant.",
+        "vocabulary_slugs": [
+          "sofu",
+          "kuru-v",
+          "sushi",
+          "mise",
+          "yoyaku-suru"
+        ]
+      },
+      {
+        "japanese": "回る寿司は安くて楽しいです。",
+        "english": "Conveyor-belt sushi is cheap and fun.",
+        "vocabulary_slugs": [
+          "mawaru",
+          "sushi",
+          "yasui-adj",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "寿司は箸で食べても、手で食べてもいいですよ。",
+        "english": "You can eat sushi with chopsticks or with your hands.",
+        "vocabulary_slugs": [
+          "sushi",
+          "hashi-chopsticks",
+          "taberu",
+          "te-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "soba": {
+    "example_sentences": [
+      {
+        "japanese": "駅でそばを食べてから、電車に乗りました。",
+        "english": "I had soba at the station, then got on the train.",
+        "vocabulary_slugs": [
+          "eki",
+          "soba",
+          "taberu",
+          "densha",
+          "noru"
+        ]
+      },
+      {
+        "japanese": "暑い日は、冷たいそばが一番おいしい。",
+        "english": "On hot days, cold soba tastes best.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "hi-sun-v",
+          "tsumetai",
+          "soba",
+          "ichiban",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "姉の趣味は、そばを自分で作ることです。",
+        "english": "My older sister's hobby is making soba herself.",
+        "vocabulary_slugs": [
+          "ane",
+          "shumi",
+          "soba",
+          "jibun",
+          "tsukuru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "udon": {
+    "example_sentences": [
+      {
+        "japanese": "風邪のときは、熱いうどんがいいですよ。",
+        "english": "When you have a cold, hot udon is just the thing.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "atsui-obj",
+          "udon",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "うどんとそば、どちらにしますか。",
+        "english": "Udon or soba — which will you have?",
+        "vocabulary_slugs": [
+          "udon",
+          "soba",
+          "dochira",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "この町のうどんは、太くて有名です。",
+        "english": "This town's udon is famous for being thick.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "udon",
+          "futoi-adj",
+          "yuumei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "karee": {
+    "example_sentences": [
+      {
+        "japanese": "母のカレーは、あまり辛くないです。",
+        "english": "My mom's curry isn't very spicy.",
+        "vocabulary_slugs": [
+          "haha",
+          "karee",
+          "amari",
+          "karai"
+        ]
+      },
+      {
+        "japanese": "カレーは次の日のほうがおいしいと思う。",
+        "english": "I think curry tastes better the next day.",
+        "vocabulary_slugs": [
+          "karee",
+          "tsugi",
+          "hi-sun-v",
+          "hou",
+          "oishii",
+          "omou"
+        ]
+      },
+      {
+        "japanese": "子供たちはカレーをスプーンで食べています。",
+        "english": "The kids are eating curry with spoons.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "karee",
+          "supuun",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sarada": {
+    "example_sentences": [
+      {
+        "japanese": "肉の前に、サラダを食べるようにしています。",
+        "english": "I make a point of eating salad before meat.",
+        "vocabulary_slugs": [
+          "niku",
+          "mae",
+          "sarada",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "レストランで、サラダを二つ注文しました。",
+        "english": "At the restaurant, we ordered two salads.",
+        "vocabulary_slugs": [
+          "resutoran",
+          "sarada",
+          "futatsu",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "妹は、毎朝サラダしか食べません。",
+        "english": "My younger sister eats nothing but salad every morning.",
+        "vocabulary_slugs": [
+          "imouto",
+          "maiasa",
+          "sarada",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sandoicchi": {
+    "example_sentences": [
+      {
+        "japanese": "朝、コンビニでサンドイッチを買いました。",
+        "english": "This morning I bought a sandwich at the convenience store.",
+        "vocabulary_slugs": [
+          "asa",
+          "konbini",
+          "sandoicchi",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "このサンドイッチには、卵が入っています。",
+        "english": "This sandwich has egg in it.",
+        "vocabulary_slugs": [
+          "kono",
+          "sandoicchi",
+          "tamago",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "忙しいときは、机でサンドイッチを食べながら働きます。",
+        "english": "When I'm busy, I eat a sandwich at my desk while I work.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "tsukue",
+          "sandoicchi",
+          "taberu",
+          "hataraku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aisukuriimu": {
+    "example_sentences": [
+      {
+        "japanese": "暑いので、アイスクリームがすぐ溶けてしまった。",
+        "english": "It was so hot that the ice cream melted right away.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "aisukuriimu",
+          "sugu",
+          "tokeru"
+        ]
+      },
+      {
+        "japanese": "晩ご飯の後で、アイスクリームを食べてもいい？",
+        "english": "Can I have ice cream after dinner?",
+        "vocabulary_slugs": [
+          "bangohan",
+          "aisukuriimu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫にあった私のアイスクリーム、誰が食べたの？",
+        "english": "Who ate my ice cream that was in the fridge?",
+        "vocabulary_slugs": [
+          "reizouko",
+          "aru",
+          "watashi",
+          "aisukuriimu",
+          "dare",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "raamen": {
+    "example_sentences": [
+      {
+        "japanese": "仕事の後で、会社の人とラーメンを食べに行った。",
+        "english": "After work, I went for ramen with people from the office.",
+        "vocabulary_slugs": [
+          "shigoto",
+          "kaisha",
+          "hito",
+          "raamen",
+          "taberu",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "毎晩ラーメンを食べないほうがいいですよ。",
+        "english": "You'd better not eat ramen every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "raamen",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "大学の近くに新しいラーメンの店ができました。",
+        "english": "A new ramen shop opened near the university.",
+        "vocabulary_slugs": [
+          "daigaku",
+          "chikaku",
+          "atarashii-adj",
+          "raamen",
+          "mise",
+          "dekiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "keeki": {
+    "example_sentences": [
+      {
+        "japanese": "冷蔵庫のケーキを半分食べてしまった。",
+        "english": "I ended up eating half the cake in the fridge.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "keeki",
+          "hanbun",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "祖母の作るケーキは甘すぎない。",
+        "english": "The cakes my grandmother makes aren't too sweet.",
+        "vocabulary_slugs": [
+          "sobo",
+          "tsukuru",
+          "keeki",
+          "amai"
+        ]
+      },
+      {
+        "japanese": "駅の前の店でケーキを三つ買いました。",
+        "english": "I bought three pieces of cake at the shop in front of the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "mae",
+          "mise",
+          "keeki",
+          "mittsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chokoreeto": {
+    "example_sentences": [
+      {
+        "japanese": "夏はチョコレートがすぐ溶けます。",
+        "english": "In summer, chocolate melts right away.",
+        "vocabulary_slugs": [
+          "natsu",
+          "chokoreeto",
+          "sugu",
+          "tokeru"
+        ]
+      },
+      {
+        "japanese": "兄は晩ご飯の代わりにチョコレートを食べた。",
+        "english": "My older brother ate chocolate instead of dinner.",
+        "vocabulary_slugs": [
+          "ani",
+          "bangohan",
+          "chokoreeto",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "苦いチョコレートは苦手です。",
+        "english": "I don't do well with bitter chocolate.",
+        "vocabulary_slugs": [
+          "nigai",
+          "chokoreeto",
+          "nigate"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "juusu": {
+    "example_sentences": [
+      {
+        "japanese": "喫茶店でジュースを注文しました。",
+        "english": "I ordered a juice at the coffee shop.",
+        "vocabulary_slugs": [
+          "kissaten",
+          "juusu",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんがジュースのコップを落とした。",
+        "english": "The baby dropped the glass of juice.",
+        "vocabulary_slugs": [
+          "akachan",
+          "juusu",
+          "koppu",
+          "otosu"
+        ]
+      },
+      {
+        "japanese": "車で来たので、私はジュースにします。",
+        "english": "I came by car, so I'll have juice.",
+        "vocabulary_slugs": [
+          "kuruma",
+          "kuru-v",
+          "watashi",
+          "juusu",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wain": {
+    "example_sentences": [
+      {
+        "japanese": "父は毎晩ワインを少しだけ飲みます。",
+        "english": "My father drinks just a little wine every night.",
+        "vocabulary_slugs": [
+          "chichi",
+          "maiban",
+          "wain",
+          "sukoshi",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "姉が結婚したので、みんなでワインを開けました。",
+        "english": "My sister got married, so we all opened some wine.",
+        "vocabulary_slugs": [
+          "ane",
+          "kekkon-suru",
+          "minna",
+          "wain",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "ホテルの部屋にワインが置いてありました。",
+        "english": "There was a bottle of wine waiting in the hotel room.",
+        "vocabulary_slugs": [
+          "hoteru",
+          "heya",
+          "wain",
+          "oku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fukusou": {
+    "example_sentences": [
+      {
+        "japanese": "明日の会議にはどんな服装で行けばいいですか。",
+        "english": "What should I wear to tomorrow's meeting?",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaigi",
+          "donna",
+          "fukusou",
+          "iku-v",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "山に登るときは、動きやすい服装がいいですよ。",
+        "english": "When you climb a mountain, clothes you can move in easily are best.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "noboru",
+          "ugoku",
+          "fukusou",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "先生は生徒の服装に厳しい。",
+        "english": "The teacher is strict about how the students dress.",
+        "vocabulary_slugs": [
+          "sensei",
+          "seito",
+          "fukusou",
+          "kibishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seifuku": {
+    "example_sentences": [
+      {
+        "japanese": "妹は新しい制服を着て、嬉しそうです。",
+        "english": "My little sister put on her new uniform and looks happy.",
+        "vocabulary_slugs": [
+          "imouto",
+          "atarashii-adj",
+          "seifuku",
+          "kiru-wear",
+          "ureshii"
+        ]
+      },
+      {
+        "japanese": "夏になると、駅員の制服が変わります。",
+        "english": "When summer comes, the station staff's uniforms change.",
+        "vocabulary_slugs": [
+          "natsu",
+          "naru-become",
+          "ekiin",
+          "seifuku",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "雨で制服が濡れてしまったので、乾かしました。",
+        "english": "My uniform got soaked in the rain, so I dried it.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "seifuku",
+          "nureru",
+          "kawakasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nekutai": {
+    "example_sentences": [
+      {
+        "japanese": "夫のネクタイはどれも青い。",
+        "english": "Every one of my husband's ties is blue.",
+        "vocabulary_slugs": [
+          "otto",
+          "nekutai",
+          "dore",
+          "aoi"
+        ]
+      },
+      {
+        "japanese": "暑いので、ネクタイを取ってもいいですよ。",
+        "english": "It's hot, so feel free to take off your tie.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "nekutai",
+          "toru"
+        ]
+      },
+      {
+        "japanese": "息子のネクタイが曲がっていたので、直してあげた。",
+        "english": "My son's tie was crooked, so I straightened it for him.",
+        "vocabulary_slugs": [
+          "musuko",
+          "nekutai",
+          "magaru",
+          "naosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sukaato": {
+    "example_sentences": [
+      {
+        "japanese": "風が強いので、今日はスカートじゃなくてズボンにします。",
+        "english": "It's windy, so today I'll wear trousers instead of a skirt.",
+        "vocabulary_slugs": [
+          "kaze-wind",
+          "tsuyoi",
+          "kyou",
+          "sukaato",
+          "zubon",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "このスカートは少しきついので、取り替えたいです。",
+        "english": "This skirt is a little tight, so I'd like to exchange it.",
+        "vocabulary_slugs": [
+          "kono",
+          "sukaato",
+          "sukoshi",
+          "kitsui",
+          "torikaeru"
+        ]
+      },
+      {
+        "japanese": "娘のスカートを洗濯したら、小さくなった。",
+        "english": "I washed my daughter's skirt and it shrank.",
+        "vocabulary_slugs": [
+          "musume",
+          "sukaato",
+          "sentaku-suru",
+          "chiisai",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zubon": {
+    "example_sentences": [
+      {
+        "japanese": "犬と遊んだら、ズボンが泥で汚くなった。",
+        "english": "I played with the dog, and my trousers got all muddy.",
+        "vocabulary_slugs": [
+          "inu",
+          "asobu",
+          "zubon",
+          "doro",
+          "kitanai",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "このズボンは長すぎるので、短くしてもらった。",
+        "english": "These trousers were too long, so I had them shortened.",
+        "vocabulary_slugs": [
+          "kono",
+          "zubon",
+          "nagai-adj",
+          "mijikai",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "自転車に乗るときは、ズボンのほうが便利です。",
+        "english": "Trousers are more practical when you ride a bike.",
+        "vocabulary_slugs": [
+          "jitensha",
+          "noru",
+          "zubon",
+          "hou",
+          "benri"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seetaa": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は冬になると、同じ茶色のセーターを毎日着ている。",
+        "english": "Every winter, my grandfather wears the same brown sweater every day.",
+        "vocabulary_slugs": [
+          "sofu",
+          "fuyu",
+          "naru-become",
+          "onaji",
+          "chairo",
+          "seetaa",
+          "mainichi",
+          "kiru-wear"
+        ]
+      },
+      {
+        "japanese": "夜は寒いかもしれないから、セーターを持って行って。",
+        "english": "It might get cold at night, so take a sweater.",
+        "vocabulary_slugs": [
+          "yoru",
+          "samui",
+          "seetaa",
+          "motteiku"
+        ]
+      },
+      {
+        "japanese": "このセーターを着ると、首が痒くなる。",
+        "english": "When I wear this sweater, my neck gets itchy.",
+        "vocabulary_slugs": [
+          "kono",
+          "seetaa",
+          "kiru-wear",
+          "kubi",
+          "kayui",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kutsushita": {
+    "example_sentences": [
+      {
+        "japanese": "雨で靴下が濡れてしまいました。",
+        "english": "My socks got soaked in the rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "kutsushita",
+          "nureru"
+        ]
+      },
+      {
+        "japanese": "洗濯した後で、白い靴下が見つかりません。",
+        "english": "After doing the laundry, I can't find my white socks.",
+        "vocabulary_slugs": [
+          "sentaku-suru",
+          "shiroi",
+          "kutsushita",
+          "mitsukaru"
+        ]
+      },
+      {
+        "japanese": "弟は赤い靴下が一番好きです。",
+        "english": "My little brother likes red socks best.",
+        "vocabulary_slugs": [
+          "otouto",
+          "akai",
+          "kutsushita",
+          "ichiban",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tebukuro": {
+    "example_sentences": [
+      {
+        "japanese": "自転車に乗るときは、手袋をしたほうがいいですよ。",
+        "english": "When you ride a bike, you should wear gloves.",
+        "vocabulary_slugs": [
+          "jitensha",
+          "noru",
+          "tebukuro",
+          "suru",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "公園で小さい手袋を見つけたので、交番に届けました。",
+        "english": "I found a small glove in the park, so I took it to the police box.",
+        "vocabulary_slugs": [
+          "kouen",
+          "chiisai",
+          "tebukuro",
+          "mitsukeru",
+          "kouban",
+          "todokeru"
+        ]
+      },
+      {
+        "japanese": "この手袋は古いのに、とても暖かいです。",
+        "english": "These gloves are old, but they're still really warm.",
+        "vocabulary_slugs": [
+          "kono",
+          "tebukuro",
+          "furui-adj",
+          "totemo",
+          "atatakai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yubiwa": {
+    "example_sentences": [
+      {
+        "japanese": "夫は結婚した日に、この指輪をくれました。",
+        "english": "My husband gave me this ring on the day we got married.",
+        "vocabulary_slugs": [
+          "otto",
+          "kekkon-suru",
+          "nichi-day",
+          "kono",
+          "yubiwa",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "料理する前に、指輪を取って箱に入れます。",
+        "english": "Before I cook, I take off my ring and put it in a box.",
+        "vocabulary_slugs": [
+          "ryouri-suru",
+          "mae",
+          "yubiwa",
+          "toru",
+          "hako",
+          "ireru-v"
+        ]
+      },
+      {
+        "japanese": "砂の中に指輪を落として、みんなで探しました。",
+        "english": "I dropped my ring in the sand, and we all searched for it.",
+        "vocabulary_slugs": [
+          "suna",
+          "naka",
+          "yubiwa",
+          "otosu",
+          "minna",
+          "sagasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nekkuresu": {
+    "example_sentences": [
+      {
+        "japanese": "姉のネックレスを借りてもいいですか。",
+        "english": "Can I borrow my sister's necklace?",
+        "vocabulary_slugs": [
+          "ane",
+          "nekkuresu",
+          "kariru",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "猫がネックレスで遊んでいます。",
+        "english": "The cat is playing with my necklace.",
+        "vocabulary_slugs": [
+          "neko",
+          "nekkuresu",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "このネックレスは高すぎて、買うことができません。",
+        "english": "This necklace is too expensive for me to buy.",
+        "vocabulary_slugs": [
+          "kono",
+          "nekkuresu",
+          "takai-adj",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "baggu": {
+    "example_sentences": [
+      {
+        "japanese": "電車の席にバッグを置かないでください。",
+        "english": "Please don't put your bag on the train seats.",
+        "vocabulary_slugs": [
+          "densha",
+          "seki-seat",
+          "baggu",
+          "oku"
+        ]
+      },
+      {
+        "japanese": "財布と携帯と鍵を、小さいバッグに入れて出かけました。",
+        "english": "I put my wallet, phone and keys in a small bag and headed out.",
+        "vocabulary_slugs": [
+          "saifu",
+          "keitai",
+          "kagi",
+          "chiisai",
+          "baggu",
+          "ireru-v",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "その素敵なバッグは、どこで買いましたか。",
+        "english": "Where did you buy that lovely bag?",
+        "vocabulary_slugs": [
+          "sono",
+          "suteki",
+          "baggu",
+          "doko",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "saizu": {
+    "example_sentences": [
+      {
+        "japanese": "このシャツは、もう少し大きいサイズがありますか。",
+        "english": "Do you have this shirt in a slightly bigger size?",
+        "vocabulary_slugs": [
+          "kono",
+          "shatsu",
+          "mou",
+          "sukoshi",
+          "ookii",
+          "saizu",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "子供の足はすぐ大きくなるので、靴のサイズがよく変わります。",
+        "english": "Kids' feet grow fast, so their shoe size changes often.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "ashi-v",
+          "sugu",
+          "ookii",
+          "naru-become",
+          "kutsu",
+          "saizu",
+          "yoku",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "箱のサイズを間違えて、荷物が入りませんでした。",
+        "english": "I got the box size wrong, and the things wouldn't fit.",
+        "vocabulary_slugs": [
+          "hako",
+          "saizu",
+          "machigaeru",
+          "nimotsu",
+          "hairu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "waribiki": {
+    "example_sentences": [
+      {
+        "japanese": "毎週水曜日は、映画館の割引の日です。",
+        "english": "Every Wednesday is discount day at the cinema.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "suiyoubi",
+          "eigakan",
+          "waribiki",
+          "hi-sun-v"
+        ]
+      },
+      {
+        "japanese": "夜になると、スーパーの弁当は割引になります。",
+        "english": "When night comes, the supermarket's boxed lunches get discounted.",
+        "vocabulary_slugs": [
+          "yoru",
+          "naru-become",
+          "suupaa",
+          "bentou",
+          "waribiki"
+        ]
+      },
+      {
+        "japanese": "この割引は、来月まで使うことができます。",
+        "english": "You can use this discount until next month.",
+        "vocabulary_slugs": [
+          "kono",
+          "waribiki",
+          "raigetsu",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uriba": {
+    "example_sentences": [
+      {
+        "japanese": "野菜売り場の店員は、とても親切です。",
+        "english": "The clerk in the produce section is really kind.",
+        "vocabulary_slugs": [
+          "yasai",
+          "uriba",
+          "ten-in",
+          "totemo",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "デパートの地下の食べ物売り場は、いつも賑やかです。",
+        "english": "The food floor in the department store basement is always busy.",
+        "vocabulary_slugs": [
+          "depaato",
+          "chika",
+          "tabemono",
+          "uriba",
+          "itsumo",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "エスカレーターを降りると、すぐ右にかばん売り場があります。",
+        "english": "Step off the escalator and the bag counter is right there on your right.",
+        "vocabulary_slugs": [
+          "esukareetaa",
+          "oriru",
+          "sugu",
+          "migi-v",
+          "kaban",
+          "uriba",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shiharau": {
+    "example_sentences": [
+      {
+        "japanese": "税金は来週までに支払わなければなりません。",
+        "english": "The tax has to be paid by next week.",
+        "vocabulary_slugs": [
+          "zeikin",
+          "raishuu",
+          "shiharau"
+        ]
+      },
+      {
+        "japanese": "予約するときに、半分を支払います。",
+        "english": "You pay half when you make the reservation.",
+        "vocabulary_slugs": [
+          "yoyaku-suru",
+          "hanbun",
+          "shiharau"
+        ]
+      },
+      {
+        "japanese": "食事のお金は、父が支払ってくれました。",
+        "english": "My dad paid for the meal.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "okane",
+          "chichi",
+          "shiharau",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ryoushuu": {
+    "example_sentences": [
+      {
+        "japanese": "引き出しに古い領収書がたくさんあります。",
+        "english": "My drawer is full of old receipts.",
+        "vocabulary_slugs": [
+          "hikidashi",
+          "furui-adj",
+          "ryoushuu",
+          "ryoushuusho",
+          "takusan",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "犬が領収書を食べてしまいました。",
+        "english": "The dog ate my receipt.",
+        "vocabulary_slugs": [
+          "inu",
+          "ryoushuu",
+          "ryoushuusho",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "領収書の名前は、会社の名前にしてください。",
+        "english": "Please put the company name on the receipt.",
+        "vocabulary_slugs": [
+          "ryoushuu",
+          "ryoushuusho",
+          "namae",
+          "kaisha",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

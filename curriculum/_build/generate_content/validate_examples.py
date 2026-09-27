@@ -93,12 +93,21 @@ def _contains_target(text, ctx):
             if value and value != "*":
                 candidates.add(value)
                 candidates.add(furigana_lib.katakana_to_hiragana(value))
-        # Words the tokenizer splits in two: する-verbs (感謝 + しています)
-        # and stem + auxiliary (知ら + せました → 知らせる).
-        if i + 1 < len(tokens):
-            next_base = getattr(tokens[i + 1].feature, "orthBase", None)
-            if next_base and next_base != "*":
-                candidates.add(token.surface + next_base)
+        # Words the tokenizer splits in two or three: する-verbs (感謝 +
+        # しています), stem + auxiliary (知ら + せました → 知らせる) and
+        # て-compounds (連れ + て + 行きます → 連れて行く). The kana join lets
+        # 連れてきた match the target's reading つれてくる.
+        for span in (2, 3):
+            if i + span > len(tokens):
+                break
+            head, last = tokens[i:i + span - 1], tokens[i + span - 1]
+            last_base = getattr(last.feature, "orthBase", None)
+            if last_base and last_base != "*":
+                candidates.add("".join(t.surface for t in head) + last_base)
+            kanas = [getattr(t.feature, "kana", None) for t in head]
+            last_kana = getattr(last.feature, "kanaBase", None)
+            if all(k and k != "*" for k in kanas) and last_kana and last_kana != "*":
+                candidates.add(furigana_lib.katakana_to_hiragana("".join(kanas) + last_kana))
         if candidates & targets:
             return True
     return False
