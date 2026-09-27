@@ -15,7 +15,7 @@ Last verified against the codebase: **2026-09-02**
 | --- | ---: | ---: | ---: |
 | Product plans (`docs/feedback/`) | 14 | 1 | 0 |
 | Content plans (`docs/content/`) | 2 | 5 | 0 |
-| Design & platform (`docs/design/`) | 4 | 0 | 3 |
+| Design & platform (`docs/design/`) | 4 | 0 | 4 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
 
 ---
@@ -67,6 +67,7 @@ Last verified against the codebase: **2026-09-02**
 | [AI reading & community contribution](./design/ai-reading-and-community-contribution-design-note.md) | Done — design note only, no app work by intent |
 | [Customizable Home screen](./design/customizable-home-screen-plan.md) | Done — all 7 steps shipped: settings route restructure, catalog + reconciler, `ActionCard` extraction, Home rewired to the stored layout, customizer screen with drag/eye/lock/reset, Settings entry row |
 | [Curriculum schema migration](./design/curriculum-schema-migration-plan.md) | **Not started** — queued to run after content is finalized, before first public release. Phases A–C + F (frozen item ids, `schema_version` contract, seed re-import on app update, CI guardrails) and the Phase G runner are launch blockers; D (OTA gate) and E (orphan tolerance) follow. Three ladders: user schema (exists), curriculum replacement, content-change ops shipped inside `curriculum.db` |
+| [Level-agnostic curriculum](./design/level-agnostic-curriculum-plan.md) | **Not started** — planned 2026-09-27. Phase 0 (baseline, no code change) done 2026-09-27; phase 1 next. Makes a level change a one-line edit: permanent item ids (Phase A of the schema migration plan), no JLPT level in slugs, N5/N4 duplicate grammar merged, one content sidecar per kind, radical art in one folder, one level-override file. Ends with a one-time rewrite of the maintainer's backup file to the new slugs |
 
 ## BMAD stories — `_bmad-output/implementation-artifacts/`
 
