@@ -6184,5 +6184,426 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "machigaeru": {
+    "example_sentences": [
+      {
+        "japanese": "電車を間違えて、知らない町に行ってしまいました。",
+        "english": "I got on the wrong train and ended up in a town I didn't know.",
+        "vocabulary_slugs": [
+          "densha",
+          "machigaeru",
+          "shiru",
+          "machi-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "喫茶店の店員は、いつも私の名前を間違えます。",
+        "english": "The clerk at the coffee shop always gets my name wrong.",
+        "vocabulary_slugs": [
+          "kissaten",
+          "ten-in",
+          "itsumo",
+          "watashi",
+          "namae",
+          "machigaeru"
+        ]
+      },
+      {
+        "japanese": "塩と砂糖を間違えないでください。",
+        "english": "Please don't mix up the salt and the sugar.",
+        "vocabulary_slugs": [
+          "shio",
+          "satou",
+          "machigaeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "machigau": {
+    "example_sentences": [
+      {
+        "japanese": "この地図は間違っていますよ。",
+        "english": "This map is wrong, you know.",
+        "vocabulary_slugs": [
+          "kono",
+          "chizu",
+          "machigau"
+        ]
+      },
+      {
+        "japanese": "数学のテストで、答えが一つだけ間違っていました。",
+        "english": "On the math test, only one answer was wrong.",
+        "vocabulary_slugs": [
+          "suugaku",
+          "tesuto",
+          "kotae",
+          "hitotsu",
+          "machigau"
+        ]
+      },
+      {
+        "japanese": "間違ってもいいですから、日本語で話してください。",
+        "english": "It's fine to get it wrong, so please speak in Japanese.",
+        "vocabulary_slugs": [
+          "machigau",
+          "nihongo",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kakaru-v": {
+    "example_sentences": [
+      {
+        "japanese": "家から駅まで歩いて二十分掛かります。",
+        "english": "It takes twenty minutes to walk from home to the station.",
+        "vocabulary_slugs": [
+          "ie",
+          "eki",
+          "aruku",
+          "fun-counter",
+          "kakaru-v"
+        ]
+      },
+      {
+        "japanese": "引っ越すのに、お金がたくさん掛かりました。",
+        "english": "Moving cost a lot of money.",
+        "vocabulary_slugs": [
+          "hikkosu",
+          "okane",
+          "takusan",
+          "kakaru-v"
+        ]
+      },
+      {
+        "japanese": "部屋には母の絵が掛かっています。",
+        "english": "My mother's painting hangs in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "haha",
+          "e-picture",
+          "kakaru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kakeru-hang": {
+    "example_sentences": [
+      {
+        "japanese": "帰ったら、コートはここに掛けてください。",
+        "english": "When you get home, hang your coat here.",
+        "vocabulary_slugs": [
+          "kaeru-v",
+          "kooto",
+          "koko",
+          "kakeru-hang"
+        ]
+      },
+      {
+        "japanese": "弟はいつも椅子に服を掛けておきます。",
+        "english": "My younger brother always leaves his clothes hanging over the chair.",
+        "vocabulary_slugs": [
+          "otouto",
+          "itsumo",
+          "isu",
+          "fuku",
+          "kakeru-hang"
+        ]
+      },
+      {
+        "japanese": "この料理には時間を掛けました。",
+        "english": "I put a lot of time into this dish.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "jikan",
+          "kakeru-hang"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kasanaru": {
+    "example_sentences": [
+      {
+        "japanese": "会議と約束の時間が重なってしまいました。",
+        "english": "The meeting ended up at the same time as my appointment.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "yakusoku",
+          "jikan",
+          "kasanaru"
+        ]
+      },
+      {
+        "japanese": "机の上に本が重なっています。",
+        "english": "Books are piled up on the desk.",
+        "vocabulary_slugs": [
+          "tsukue",
+          "ue",
+          "hon",
+          "kasanaru"
+        ]
+      },
+      {
+        "japanese": "仕事が重なって、今週はとても忙しいです。",
+        "english": "Work has piled up, so I'm very busy this week.",
+        "vocabulary_slugs": [
+          "shigoto",
+          "kasanaru",
+          "konshuu",
+          "totemo",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kasaneru": {
+    "example_sentences": [
+      {
+        "japanese": "食べた後で、皿を重ねて台所に運んでください。",
+        "english": "After eating, please stack the plates and carry them to the kitchen.",
+        "vocabulary_slugs": [
+          "taberu",
+          "sara",
+          "kasaneru",
+          "daidokoro",
+          "hakobu"
+        ]
+      },
+      {
+        "japanese": "寒い日は、シャツを二枚重ねて着ます。",
+        "english": "On cold days, I wear two shirts, one over the other.",
+        "vocabulary_slugs": [
+          "samui",
+          "hi-sun-v",
+          "shatsu",
+          "mai-counter",
+          "kasaneru",
+          "kiru-wear"
+        ]
+      },
+      {
+        "japanese": "箱を三つ重ねたら、猫がその上に座った。",
+        "english": "When I stacked three boxes, the cat sat on top of them.",
+        "vocabulary_slugs": [
+          "hako",
+          "mittsu",
+          "kasaneru",
+          "neko",
+          "sono",
+          "ue",
+          "suwaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "todokederu": {
+    "example_sentences": [
+      {
+        "japanese": "財布を無くしたので、交番に届け出ました。",
+        "english": "I lost my wallet, so I reported it at the police box.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nakusu",
+          "kouban",
+          "todokederu"
+        ]
+      },
+      {
+        "japanese": "引っ越したら、新しい住所を市に届け出なければなりません。",
+        "english": "When you move, you have to report your new address to the city.",
+        "vocabulary_slugs": [
+          "hikkosu",
+          "atarashii-adj",
+          "juusho",
+          "shi-city",
+          "todokederu"
+        ]
+      },
+      {
+        "japanese": "会社を休むときは、前の日に届け出てください。",
+        "english": "If you're taking a day off work, please file notice the day before.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "yasumu",
+          "mae",
+          "hi-sun-v",
+          "todokederu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kansha-suru": {
+    "example_sentences": [
+      {
+        "japanese": "手伝ってくれた友達に、感謝する気持ちを伝えました。",
+        "english": "I told my friend how grateful I was for the help.",
+        "vocabulary_slugs": [
+          "tetsudau",
+          "kureru",
+          "tomodachi",
+          "kansha-suru",
+          "kimochi",
+          "tsutaeru"
+        ]
+      },
+      {
+        "japanese": "父は、困ったときに助けてくれた人に感謝することを忘れない。",
+        "english": "My father never forgets to thank the people who helped him when he was in trouble.",
+        "vocabulary_slugs": [
+          "chichi",
+          "komaru",
+          "tasukeru",
+          "kureru",
+          "hito",
+          "kansha-suru",
+          "koto",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "今日はお客さんに感謝する日なので、コーヒーが安いです。",
+        "english": "Today is customer appreciation day, so coffee is cheap.",
+        "vocabulary_slugs": [
+          "kyou",
+          "okyakusan",
+          "kansha-suru",
+          "hi-sun-v",
+          "koohii",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shuuri-suru": {
+    "example_sentences": [
+      {
+        "japanese": "兄は壊れたラジオを修理するのが得意です。",
+        "english": "My older brother is good at repairing broken radios.",
+        "vocabulary_slugs": [
+          "ani",
+          "kowareru",
+          "rajio",
+          "shuuri-suru",
+          "tokui"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫が動かないので、明日修理する人が来ます。",
+        "english": "The fridge isn't working, so someone is coming tomorrow to repair it.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "ugoku",
+          "ashita",
+          "shuuri-suru",
+          "hito",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "古い靴を修理する店が、駅の近くにあります。",
+        "english": "There's a shop near the station that repairs old shoes.",
+        "vocabulary_slugs": [
+          "furui-adj",
+          "kutsu",
+          "shuuri-suru",
+          "mise",
+          "eki",
+          "chikaku",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shiraseru": {
+    "example_sentences": [
+      {
+        "japanese": "会議の場所が変わったことを、みんなに知らせるのを忘れた。",
+        "english": "I forgot to tell everyone that the meeting place had changed.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "basho",
+          "kawaru",
+          "koto",
+          "minna",
+          "shiraseru",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんが生まれたら、姉は電話で知らせると言っていた。",
+        "english": "My older sister said she'd call to let us know when the baby is born.",
+        "vocabulary_slugs": [
+          "akachan",
+          "umareru",
+          "ane",
+          "denwa",
+          "shiraseru",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "授業に遅れるときは、先生に知らせるほうがいいですよ。",
+        "english": "If you're going to be late for class, you should let your teacher know.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "okureru",
+          "sensei",
+          "shiraseru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

@@ -21917,8 +21917,169 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "手伝ってくれた友達に、感謝する気持ちを伝えました。",
+          "english": "I told my friend how grateful I was for the help.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tetsudau",
+            "kureru",
+            "tomodachi",
+            "kansha-suru",
+            "kimochi",
+            "tsutaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tetsudau",
+              "start": 0,
+              "end": 4,
+              "surface_form": "手伝って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 4,
+              "end": 7,
+              "surface_form": "くれた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kansha-suru",
+              "start": 11,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "kimochi",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "vocabulary_slug": "tsutaeru",
+              "start": 19,
+              "end": 24,
+              "surface_form": "伝えました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "手伝[てつだ]ってくれた友[とも]達[だち]に、感[かん]謝[しゃ]する気[き]持[も]ちを伝[つた]えました。"
+        },
+        {
+          "japanese": "父は、困ったときに助けてくれた人に感謝することを忘れない。",
+          "english": "My father never forgets to thank the people who helped him when he was in trouble.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "komaru",
+            "tasukeru",
+            "kureru",
+            "hito",
+            "kansha-suru",
+            "koto",
+            "wasureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "komaru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "困った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "tasukeru",
+              "start": 9,
+              "end": 12,
+              "surface_form": "助けて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 12,
+              "end": 15,
+              "surface_form": "くれた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "kansha-suru",
+              "start": 17,
+              "end": 21
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 24,
+              "end": 28,
+              "surface_form": "忘れない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "父[ちち]は、困[こま]ったときに助[たす]けてくれた人[ひと]に感[かん]謝[しゃ]することを忘[わす]れない。"
+        },
+        {
+          "japanese": "今日はお客さんに感謝する日なので、コーヒーが安いです。",
+          "english": "Today is customer appreciation day, so coffee is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "okyakusan",
+            "kansha-suru",
+            "hi-sun-v",
+            "koohii",
+            "yasui-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okyakusan",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kansha-suru",
+              "start": 8,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "hi-sun-v",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 17,
+              "end": 21
+            },
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 22,
+              "end": 24
+            }
+          ],
+          "furigana": "今日[きょう]はお客[きゃく]さんに感[かん]謝[しゃ]する日[ひ]なので、コーヒーが安[やす]いです。"
+        }
+      ]
     },
     {
       "slug": "machigaeru",
@@ -21944,8 +22105,134 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "電車を間違えて、知らない町に行ってしまいました。",
+          "english": "I got on the wrong train and ended up in a town I didn't know.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "densha",
+            "machigaeru",
+            "shiru",
+            "machi-v",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "間違えて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "知らない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 14,
+              "end": 17,
+              "surface_form": "行って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "電[でん]車[しゃ]を間[ま]違[ちが]えて、知[し]らない町[まち]に行[い]ってしまいました。"
+        },
+        {
+          "japanese": "喫茶店の店員は、いつも私の名前を間違えます。",
+          "english": "The clerk at the coffee shop always gets my name wrong.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kissaten",
+            "ten-in",
+            "itsumo",
+            "watashi",
+            "namae",
+            "machigaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kissaten",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ten-in",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "namae",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 16,
+              "end": 21,
+              "surface_form": "間違えます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "喫[きっ]茶[さ]店[てん]の店[てん]員[いん]は、いつも私[わたし]の名[な]前[まえ]を間[ま]違[ちが]えます。"
+        },
+        {
+          "japanese": "塩と砂糖を間違えないでください。",
+          "english": "Please don't mix up the salt and the sugar.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shio",
+            "satou",
+            "machigaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shio",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "satou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 5,
+              "end": 11,
+              "surface_form": "間違えないで",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "塩[しお]と砂[さ]糖[とう]を間[ま]違[ちが]えないでください。"
+        }
+      ]
     },
     {
       "slug": "machigau",
@@ -21971,8 +22258,114 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この地図は間違っていますよ。",
+          "english": "This map is wrong, you know.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "chizu",
+            "machigau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chizu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "machigau",
+              "start": 5,
+              "end": 9,
+              "surface_form": "間違って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この地[ち]図[ず]は間違[まちが]っていますよ。"
+        },
+        {
+          "japanese": "数学のテストで、答えが一つだけ間違っていました。",
+          "english": "On the math test, only one answer was wrong.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "suugaku",
+            "tesuto",
+            "kotae",
+            "hitotsu",
+            "machigau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "suugaku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tesuto",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kotae",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hitotsu",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "machigau",
+              "start": 15,
+              "end": 19,
+              "surface_form": "間違って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "数[すう]学[がく]のテストで、答[こた]えが一[ひと]つだけ間違[まちが]っていました。"
+        },
+        {
+          "japanese": "間違ってもいいですから、日本語で話してください。",
+          "english": "It's fine to get it wrong, so please speak in Japanese.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "machigau",
+            "nihongo",
+            "hanasu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "machigau",
+              "start": 0,
+              "end": 4,
+              "surface_form": "間違って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 16,
+              "end": 19,
+              "surface_form": "話して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "間違[まちが]ってもいいですから、日本[にほん]語[ご]で話[はな]してください。"
+        }
+      ]
     },
     {
       "slug": "shuuri-suru",
@@ -21998,8 +22391,156 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "兄は壊れたラジオを修理するのが得意です。",
+          "english": "My older brother is good at repairing broken radios.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ani",
+            "kowareru",
+            "rajio",
+            "shuuri-suru",
+            "tokui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kowareru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "壊れた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "rajio",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "shuuri-suru",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "tokui",
+              "start": 15,
+              "end": 17
+            }
+          ],
+          "furigana": "兄[あに]は壊[こわ]れたラジオを修[しゅう]理[り]するのが得[とく]意[い]です。"
+        },
+        {
+          "japanese": "冷蔵庫が動かないので、明日修理する人が来ます。",
+          "english": "The fridge isn't working, so someone is coming tomorrow to repair it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "reizouko",
+            "ugoku",
+            "ashita",
+            "shuuri-suru",
+            "hito",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "reizouko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ugoku",
+              "start": 4,
+              "end": 8,
+              "surface_form": "動かない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "ashita",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "shuuri-suru",
+              "start": 13,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 17,
+              "end": 18
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 19,
+              "end": 22,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "冷[れい]蔵[ぞう]庫[こ]が動[うご]かないので、明日[あした]修[しゅう]理[り]する人[ひと]が来[き]ます。"
+        },
+        {
+          "japanese": "古い靴を修理する店が、駅の近くにあります。",
+          "english": "There's a shop near the station that repairs old shoes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "furui-adj",
+            "kutsu",
+            "shuuri-suru",
+            "mise",
+            "eki",
+            "chikaku",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "furui-adj",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kutsu",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shuuri-suru",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 16,
+              "end": 20,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "古[ふる]い靴[くつ]を修[しゅう]理[り]する店[みせ]が、駅[えき]の近[ちか]くにあります。"
+        }
+      ]
     },
     {
       "slug": "kakaru-v",
@@ -22026,8 +22567,121 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "家から駅まで歩いて二十分掛かります。",
+          "english": "It takes twenty minutes to walk from home to the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ie",
+            "eki",
+            "aruku",
+            "fun-counter",
+            "kakaru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ie",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 6,
+              "end": 9,
+              "surface_form": "歩いて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kakaru-v",
+              "start": 12,
+              "end": 17,
+              "surface_form": "掛かります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "家[いえ]から駅[えき]まで歩[ある]いて二[に]十[じゅう]分[ふん]掛[か]かります。"
+        },
+        {
+          "japanese": "引っ越すのに、お金がたくさん掛かりました。",
+          "english": "Moving cost a lot of money.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hikkosu",
+            "okane",
+            "takusan",
+            "kakaru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hikkosu",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "okane",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 10,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kakaru-v",
+              "start": 14,
+              "end": 20,
+              "surface_form": "掛かりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "引[ひ]っ越[こ]すのに、お金[かね]がたくさん掛[か]かりました。"
+        },
+        {
+          "japanese": "部屋には母の絵が掛かっています。",
+          "english": "My mother's painting hangs in the room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "heya",
+            "haha",
+            "e-picture",
+            "kakaru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "haha",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "e-picture",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kakaru-v",
+              "start": 8,
+              "end": 12,
+              "surface_form": "掛かって",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "部屋[へや]には母[はは]の絵[え]が掛[か]かっています。"
+        }
+      ]
     },
     {
       "slug": "kakeru-hang",
@@ -22054,8 +22708,119 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "帰ったら、コートはここに掛けてください。",
+          "english": "When you get home, hang your coat here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaeru-v",
+            "kooto",
+            "koko",
+            "kakeru-hang"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kooto",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kakeru-hang",
+              "start": 12,
+              "end": 15,
+              "surface_form": "掛けて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "帰[かえ]ったら、コートはここに掛[か]けてください。"
+        },
+        {
+          "japanese": "弟はいつも椅子に服を掛けておきます。",
+          "english": "My younger brother always leaves his clothes hanging over the chair.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "itsumo",
+            "isu",
+            "fuku",
+            "kakeru-hang"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "isu",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kakeru-hang",
+              "start": 10,
+              "end": 13,
+              "surface_form": "掛けて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "弟[おとうと]はいつも椅[い]子[す]に服[ふく]を掛[か]けておきます。"
+        },
+        {
+          "japanese": "この料理には時間を掛けました。",
+          "english": "I put a lot of time into this dish.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "jikan",
+            "kakeru-hang"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "jikan",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kakeru-hang",
+              "start": 9,
+              "end": 14,
+              "surface_form": "掛けました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この料[りょう]理[り]には時[じ]間[かん]を掛[か]けました。"
+        }
+      ]
     },
     {
       "slug": "kasanaru",
@@ -22082,8 +22847,124 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "会議と約束の時間が重なってしまいました。",
+          "english": "The meeting ended up at the same time as my appointment.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaigi",
+            "yakusoku",
+            "jikan",
+            "kasanaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yakusoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "jikan",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kasanaru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "重なって",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "会[かい]議[ぎ]と約[やく]束[そく]の時[じ]間[かん]が重[かさ]なってしまいました。"
+        },
+        {
+          "japanese": "机の上に本が重なっています。",
+          "english": "Books are piled up on the desk.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tsukue",
+            "ue",
+            "hon",
+            "kasanaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tsukue",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kasanaru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "重なって",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "机[つくえ]の上[うえ]に本[ほん]が重[かさ]なっています。"
+        },
+        {
+          "japanese": "仕事が重なって、今週はとても忙しいです。",
+          "english": "Work has piled up, so I'm very busy this week.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shigoto",
+            "kasanaru",
+            "konshuu",
+            "totemo",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kasanaru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "重なって",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "konshuu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 14,
+              "end": 17
+            }
+          ],
+          "furigana": "仕[し]事[ごと]が重[かさ]なって、今[こん]週[しゅう]はとても忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "kasaneru",
@@ -22110,8 +22991,150 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "食べた後で、皿を重ねて台所に運んでください。",
+          "english": "After eating, please stack the plates and carry them to the kitchen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taberu",
+            "sara",
+            "kasaneru",
+            "daidokoro",
+            "hakobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "taberu",
+              "start": 0,
+              "end": 3,
+              "surface_form": "食べた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "sara",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kasaneru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "重ねて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "daidokoro",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "hakobu",
+              "start": 14,
+              "end": 17,
+              "surface_form": "運んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "食[た]べた後[あと]で、皿[さら]を重[かさ]ねて台[だい]所[どころ]に運[はこ]んでください。"
+        },
+        {
+          "japanese": "寒い日は、シャツを二枚重ねて着ます。",
+          "english": "On cold days, I wear two shirts, one over the other.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "samui",
+            "hi-sun-v",
+            "shatsu",
+            "mai-counter",
+            "kasaneru",
+            "kiru-wear"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "samui",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hi-sun-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shatsu",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kasaneru",
+              "start": 11,
+              "end": 14,
+              "surface_form": "重ねて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 14,
+              "end": 17,
+              "surface_form": "着ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "寒[さむ]い日[ひ]は、シャツを二[に]枚[まい]重[かさ]ねて着[き]ます。"
+        },
+        {
+          "japanese": "箱を三つ重ねたら、猫がその上に座った。",
+          "english": "When I stacked three boxes, the cat sat on top of them.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hako",
+            "mittsu",
+            "kasaneru",
+            "neko",
+            "sono",
+            "ue",
+            "suwaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hako",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mittsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "suwaru",
+              "start": 15,
+              "end": 18,
+              "surface_form": "座った",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "箱[はこ]を三[みっ]つ重[かさ]ねたら、猫[ねこ]がその上[うえ]に座[すわ]った。"
+        }
+      ]
     },
     {
       "slug": "shiraseru",
@@ -22138,8 +23161,138 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "会議の場所が変わったことを、みんなに知らせるのを忘れた。",
+          "english": "I forgot to tell everyone that the meeting place had changed.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaigi",
+            "basho",
+            "kawaru",
+            "koto",
+            "minna",
+            "shiraseru",
+            "wasureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "basho",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kawaru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "変わった",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "minna",
+              "start": 14,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "shiraseru",
+              "start": 18,
+              "end": 22
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 24,
+              "end": 27,
+              "surface_form": "忘れた",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "会[かい]議[ぎ]の場[ば]所[しょ]が変[か]わったことを、みんなに知[し]らせるのを忘[わす]れた。"
+        },
+        {
+          "japanese": "赤ちゃんが生まれたら、姉は電話で知らせると言っていた。",
+          "english": "My older sister said she'd call to let us know when the baby is born.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akachan",
+            "umareru",
+            "ane",
+            "denwa",
+            "shiraseru",
+            "iu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ane",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "denwa",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "shiraseru",
+              "start": 16,
+              "end": 20
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 21,
+              "end": 24,
+              "surface_form": "言って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "赤[あか]ちゃんが生[う]まれたら、姉[あね]は電[でん]話[わ]で知[し]らせると言[い]っていた。"
+        },
+        {
+          "japanese": "授業に遅れるときは、先生に知らせるほうがいいですよ。",
+          "english": "If you're going to be late for class, you should let your teacher know.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "jugyou",
+            "okureru",
+            "sensei",
+            "shiraseru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "shiraseru",
+              "start": 13,
+              "end": 17
+            }
+          ],
+          "furigana": "授[じゅ]業[ぎょう]に遅[おく]れるときは、先[せん]生[せい]に知[し]らせるほうがいいですよ。"
+        }
+      ]
     },
     {
       "slug": "todokederu",
@@ -22165,8 +23318,120 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "財布を無くしたので、交番に届け出ました。",
+          "english": "I lost my wallet, so I reported it at the police box.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "saifu",
+            "nakusu",
+            "kouban",
+            "todokederu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "saifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nakusu",
+              "start": 3,
+              "end": 7,
+              "surface_form": "無くした",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "kouban",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "todokederu",
+              "start": 13,
+              "end": 19,
+              "surface_form": "届け出ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "財[さい]布[ふ]を無[な]くしたので、交[こう]番[ばん]に届[とど]け出[で]ました。"
+        },
+        {
+          "japanese": "引っ越したら、新しい住所を市に届け出なければなりません。",
+          "english": "When you move, you have to report your new address to the city.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hikkosu",
+            "atarashii-adj",
+            "juusho",
+            "shi-city",
+            "todokederu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "juusho",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "shi-city",
+              "start": 13,
+              "end": 14
+            }
+          ],
+          "furigana": "引[ひ]っ越[こ]したら、新[あたら]しい住[じゅう]所[しょ]を市[し]に届[とど]け出[で]なければなりません。"
+        },
+        {
+          "japanese": "会社を休むときは、前の日に届け出てください。",
+          "english": "If you're taking a day off work, please file notice the day before.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaisha",
+            "yasumu",
+            "mae",
+            "hi-sun-v",
+            "todokederu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hi-sun-v",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "todokederu",
+              "start": 13,
+              "end": 17,
+              "surface_form": "届け出て",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "会[かい]社[しゃ]を休[やす]むときは、前[まえ]の日[ひ]に届[とど]け出[で]てください。"
+        }
+      ]
     },
     {
       "slug": "shinjiru",

@@ -85,13 +85,20 @@ def _contains_target(text, ctx):
     # (食べました exemplifies 食べる).
     tagger = furigana_lib.get_tagger()
     targets = set(ctx["target_forms"])
-    for token in tagger(text):
+    tokens = list(tagger(text))
+    for i, token in enumerate(tokens):
         candidates = {token.surface}
         for feat in ("orthBase", "lemma", "pronBase", "lForm"):
             value = getattr(token.feature, feat, None)
             if value and value != "*":
                 candidates.add(value)
                 candidates.add(furigana_lib.katakana_to_hiragana(value))
+        # Words the tokenizer splits in two: する-verbs (感謝 + しています)
+        # and stem + auxiliary (知ら + せました → 知らせる).
+        if i + 1 < len(tokens):
+            next_base = getattr(tokens[i + 1].feature, "orthBase", None)
+            if next_base and next_base != "*":
+                candidates.add(token.surface + next_base)
         if candidates & targets:
             return True
     return False
