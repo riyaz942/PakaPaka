@@ -1,7 +1,7 @@
 ---
 generator_model: claude-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Potential form before ようになる means a new ability; plain dictionary form means a new habit, and both sentences are grammatical, so nothing will flag the wrong choice."
   - "Verbs that already mean 'can' — 分かる, できる, 見える, 聞こえる — attach directly, never in a potential form."

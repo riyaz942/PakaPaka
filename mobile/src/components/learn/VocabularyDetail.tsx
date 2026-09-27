@@ -142,7 +142,11 @@ export function VocabularyDetail({
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />
 
-      <ExampleSentencesSection sentences={exampleSentences} testIDPrefix="vocab-example" />
+      <ExampleSentencesSection
+        sentences={exampleSentences}
+        testIDPrefix="vocab-example"
+        emptyPlaceholder="Examples coming soon"
+      />
 
       <ItemCrossReferences
         item={item}

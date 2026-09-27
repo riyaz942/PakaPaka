@@ -1,7 +1,7 @@
 ---
 generator_model: claude-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The shortened ending belongs only to う-verbs that do not end in す; ichidan verbs and す-verbs keep the long ending."
   - "話す gives 話させられる and never `話さされる`, because two さ in a row is blocked."

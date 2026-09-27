@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "って is purely casual — swap back to と言う / と思う, or their polite forms, with teachers, bosses, or anyone you'd normally speak politely to."
   - "The same って sentence can be reporting someone's words or casually picking up a topic — only the conversation around it tells you which, so don't expect a grammatical flag to disambiguate."

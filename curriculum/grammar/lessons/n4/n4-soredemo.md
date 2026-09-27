@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "それでも always needs a real, already-stated obstacle in the sentence before it — used on something trivial, it can sound like you're overreacting."
   - "それでも can't point at a hypothetical; the sentence before it has to describe something that already happened or is already true, not a future guess."

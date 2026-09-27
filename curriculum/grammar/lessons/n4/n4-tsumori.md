@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "つもり states your current intention, not a guarantee — the plan itself can still fall through."
   - "Stating someone else's つもり as fact can sound presumptuous unless you know them well."

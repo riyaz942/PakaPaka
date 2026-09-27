@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "そこで looks and sounds exactly like そこ (there) plus the particle で, so check whether the previous sentence just named a place before reading it as the connector."
   - "The sentence after そこで needs to be a real action the speaker chose to take, not just another fact or feeling — pairing it with a state instead of a decision reads oddly."

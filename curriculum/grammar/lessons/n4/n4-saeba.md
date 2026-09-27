@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "さえ〜ば and plain さえ (the \"even\" sibling you already know) share the same word, but only the version paired with a ば-form verb draws a minimum-requirement line — drop the ば and you're back to a plain extreme example."
   - "さえ attaches to a noun directly, but to a verb's masu-stem (not the dictionary form) when the condition is an action, right before すれば."

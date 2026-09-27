@@ -1,7 +1,7 @@
 ---
 generator_model: claude-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The verb before ように must be plain and non-past — politeness belongs only to the final verb of the sentence."
   - "A past-tense verb before ように stops meaning purpose and starts meaning 'as if'."

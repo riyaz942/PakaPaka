@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "だ always drops before らしい after nouns and な-adjectives — say 有名らしい and 医者らしい, never 有名だらしい or 医者だらしい."
   - "If you add です for politeness, it goes after らしい, never before — 忙しいらしいです is fine, 忙しいですらしい is not."

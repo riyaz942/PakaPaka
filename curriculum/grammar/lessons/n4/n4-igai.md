@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "以外 needs a noun right in front of it — a bare plain-form verb has to become a noun with こと first, as in 泳ぐこと以外."
   - "以外 only marks what's left out of the group; it says nothing about how large the rest of the group is."

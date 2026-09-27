@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Both endings require the te-form first — an adjective like 大きい cannot take てくる directly; you need the verb なる carrying the ending, as in 大きくなってくる."
   - "てくる with 来る itself (来てくる) is grammatically valid but very rare — don't treat it as the standard pattern."

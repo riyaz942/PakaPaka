@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Dropping the negative predicate after ほど turns a comparison into a plain degree statement, not 'not as much as.'"
   - "Word order matters: the thing being judged comes before the yardstick, then ほど, then the negative predicate — swapping the nouns reverses who's being judged."

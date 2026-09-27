@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ことにする reports a decision the speaker themselves made — use ことになる instead when the outcome was decided by someone else or by circumstances."
   - "The slot before ことにする takes only the plain dictionary form or the plain ない form, never the て-form or the ます-stem."

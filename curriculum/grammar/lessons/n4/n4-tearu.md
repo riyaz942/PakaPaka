@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "てある needs a transitive verb behind it — an intransitive twin like 止まる can't take this pattern at all."
   - "The object of the original action is marked with が, not を, once てある turns the sentence into a state description."

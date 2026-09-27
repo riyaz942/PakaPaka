@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Na-adjectives take な before ようだ, not だ — 暇なようだ is correct, not 暇だようだ."
   - "With みたいだ, drop の and な entirely: it's 病気みたいだ and 暇みたいだ, never 病気のみたいだ or 暇なみたいだ."

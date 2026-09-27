@@ -85,13 +85,29 @@ def _contains_target(text, ctx):
     # (食べました exemplifies 食べる).
     tagger = furigana_lib.get_tagger()
     targets = set(ctx["target_forms"])
-    for token in tagger(text):
+    tokens = list(tagger(text))
+    for i, token in enumerate(tokens):
         candidates = {token.surface}
         for feat in ("orthBase", "lemma", "pronBase", "lForm"):
             value = getattr(token.feature, feat, None)
             if value and value != "*":
                 candidates.add(value)
                 candidates.add(furigana_lib.katakana_to_hiragana(value))
+        # Words the tokenizer splits in two or three: する-verbs (感謝 +
+        # しています), stem + auxiliary (知ら + せました → 知らせる) and
+        # て-compounds (連れ + て + 行きます → 連れて行く). The kana join lets
+        # 連れてきた match the target's reading つれてくる.
+        for span in (2, 3):
+            if i + span > len(tokens):
+                break
+            head, last = tokens[i:i + span - 1], tokens[i + span - 1]
+            last_base = getattr(last.feature, "orthBase", None)
+            if last_base and last_base != "*":
+                candidates.add("".join(t.surface for t in head) + last_base)
+            kanas = [getattr(t.feature, "kana", None) for t in head]
+            last_kana = getattr(last.feature, "kanaBase", None)
+            if all(k and k != "*" for k in kanas) and last_kana and last_kana != "*":
+                candidates.add(furigana_lib.katakana_to_hiragana("".join(kanas) + last_kana))
         if candidates & targets:
             return True
     return False

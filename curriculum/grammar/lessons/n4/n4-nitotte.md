@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "にとって attaches only to a noun, never directly to a verb or plain adjective, so an idea like 'for it to be difficult' needs to become a noun before にとって can attach to it."
   - "にとって and は are not interchangeable: にとって says whose judgment a statement belongs to, while は only marks the topic, so swapping one for the other changes who or what the sentence is actually about."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "というより corrects or refines a description you already put into words — it doesn't mean instead of the way 代わりに does, so don't swap the two."
   - "Before a noun or na-adjective, drop だ — say 先生というより, never `先生だというより`."

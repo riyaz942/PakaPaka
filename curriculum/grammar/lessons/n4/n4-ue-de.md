@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use only a plain-past (ta-form) verb or a process noun plus の before this 上で; a dictionary form or te-form is wrong for the 'having done X' meaning."
   - "Both clauses must share one subject and be deliberate, controllable actions, not accidents or events like weather or delays."

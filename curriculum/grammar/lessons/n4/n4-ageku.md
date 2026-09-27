@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "あげく almost always leads to a disappointing, wasted, or absurd outcome — it sounds strange attached to a clean, happy result."
   - "The verb right before あげく must be in the plain past (ta-form); `探すあげく` in the present tense is wrong."

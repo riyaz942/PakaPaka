@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "てしまう attaches only to verb te-forms — it cannot attach directly to an adjective or a noun."
   - "The same grammar can read as either an unwanted result or plain emphatic completion — the feeling comes from context, not the words themselves."

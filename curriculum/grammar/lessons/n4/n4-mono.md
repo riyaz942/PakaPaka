@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "もの needs genuine wistfulness or self-justification behind it — using it on a flat, purely factual statement sounds off."
   - "もの follows the plain form only; it never attaches after the polite ます-form."

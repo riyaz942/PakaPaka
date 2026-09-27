@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "こそ replaces は, が, and を on the noun it attaches to — never stack it on top of those particles."
   - "からこそ means \"precisely because,\" not \"even though\" — it doubles down on a reason rather than conceding it."

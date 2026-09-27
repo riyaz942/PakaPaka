@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Don't add な before みたいだ after a na-adjective, like in 静かなみたいだ — go straight to 静かみたいだ."
   - "Don't add の before みたいだ after a noun the way you would with ようだ, like in 料理のみたいだ — say 料理みたいだ instead."

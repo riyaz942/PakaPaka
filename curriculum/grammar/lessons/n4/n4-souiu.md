@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "そういう, こういう, and ああいう never stand alone at the end of a sentence — they always need a noun (or こと / もの) directly after them."
   - "Don't confuse そういう with こんな / そんな / あんな — those can end a sentence or modify a verb, but そういう can only sit in front of a noun."

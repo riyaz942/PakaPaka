@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Potential-form sentences usually mark the thing you can do with が, not を — 日本語が話せる is the default, even though the を version shows up in casual speech."
   - "見える and 聞こえる are their own vocabulary words, not the potential forms of 見る and 聞く, which are actually 見られる and 聞ける."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "そうになる attaches to the verb stem, not the dictionary form — 食べるそうになる is wrong; it must be 食べそうになる."
   - "Don't confuse そうになる (the subject is right at the edge of an event) with そうだ (a guess about something you're observing)."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Attach 最中に only to a verb in its ている form or to a noun plus の, never to a plain dictionary or past form."
   - "The clause after 最中に should be a sudden, usually unwelcome event, not a calm or planned action."

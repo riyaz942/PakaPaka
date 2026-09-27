@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "以来 needs a te-form verb or a time noun in front of it — a plain past tense like 来た以来 is not a form native speakers use, so use 来て以来 instead."
   - "以来 marks an unbroken ongoing state that continues to the present, not a single one-off event somewhere in the past."

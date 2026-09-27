@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Reserve ことになる for outcomes decided by someone or something else — for your own choice, use ことにする instead."
   - "The negative goes on the verb (行かないことになる), never on なる itself."

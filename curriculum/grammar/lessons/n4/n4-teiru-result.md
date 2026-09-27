@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "With one-time change verbs like 壊れる, 決まる, or 死ぬ, ている describes the state left behind, not the change happening live."
   - "死んでいる can only mean 'is dead' — Japanese has no way to say 'is dying' with this pattern."

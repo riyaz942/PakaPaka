@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "反対に needs a stated or implied expectation before it — without one, it has nothing to reverse and reads like an empty connector."
   - "Don't confuse 反対に with bare 反対, which just states someone's opposition (話に反対だ) rather than reversing an expectation."

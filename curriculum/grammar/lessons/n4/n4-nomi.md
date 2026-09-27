@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "のみ is formal, written-register Japanese — using it in ordinary conversation sounds like you're reading from a notice board."
   - "This lesson's のみ attaches directly after a noun with nothing in between; don't insert a particle before it."

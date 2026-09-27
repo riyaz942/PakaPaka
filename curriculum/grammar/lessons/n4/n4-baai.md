@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Between a noun and 場合 you always need の — `病気場合` is wrong; it must be `病気の場合`."
   - "場合 lays out a possible scenario without claiming it will happen, so don't dress the clause in front of it with a guessing form like だろう."

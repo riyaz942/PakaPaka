@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use plain 間 only when the main clause describes a state or action that fills the entire stretch of time, not something that happens once."
   - "Use 間に when the main-clause event is a single occurrence landing somewhere inside the background stretch, not something continuous."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Nouns and な-adjectives never take だ before ため — it has to be 病気のため and 静かなため, never 病気だため or 静かだため."
   - "When ため follows a plain non-past verb describing something someone chose to do, like 勉強するため, it usually means 'in order to' rather than 'because of' — the cause reading shows up with adjectives, nouns, and verbs describing states or already-finished events."

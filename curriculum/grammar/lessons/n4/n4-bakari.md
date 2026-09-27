@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ばかり only gives the 'just did' meaning when it follows the Ta-form — attaching it to a dictionary-form verb doesn't work."
   - "Noun + ばかり almost always sounds like a complaint in real conversation, even though it's grammatically just a neutral statement of exclusivity."

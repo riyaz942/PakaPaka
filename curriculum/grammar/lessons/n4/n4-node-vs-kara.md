@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ので presents a reason as a plain fact you're reporting, not an opinion you're pushing — reach for it in notes, apologies, and requests instead of から."
   - "Commands, invitations, and volitional sentences almost always take から; ので sounds strange right in front of them."

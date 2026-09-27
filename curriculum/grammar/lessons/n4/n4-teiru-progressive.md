@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ている only attaches to the te-form, never to the plain dictionary form — there's no such word as 泣くいる, only 泣いている."
   - "ある and いる already describe a state on their own, so they never take ている — there's no いている or あっている."

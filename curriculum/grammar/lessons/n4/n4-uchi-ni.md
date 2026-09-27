@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "うちに needs the state in its clause to still be open, so pair it with the nonpast plain form or ている — never the た-form, since a finished state has no window left to race."
   - "Reach for the negative shape (ない form + うちに) when you mean 'before X happens' — it's the version you'll hear far more often than the plain affirmative."

@@ -1,7 +1,7 @@
 ---
 generator_model: kimi-k3
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "たとえ only pairs with hypotheticals — for something that actually happened, drop it and concede the fact with plain ても or name the cause with ため."
   - "The concession must be built from the te-form every time — 降っても and 高くても, never straight off the dictionary form."

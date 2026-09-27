@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "くらい needs a number, noun, or plain-form verb/adjective in front of it — it can't open a sentence or stand for the comparison on its own."
   - "くらい can sound dismissive when it follows something small someone did or offered to do, so watch your tone before using it about another person's effort."

@@ -1,7 +1,7 @@
 ---
 generator_model: sonnet-5
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Mixing up causative せる／させる with potential／passive れる・られる produces a real but wrong-meaning verb, so always check who is actually performing the action."
   - "Ichidan verbs always take させる, never a bare せる — writing 食べせる instead of 食べさせる is the single most common slip."

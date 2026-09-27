@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { ContentPlaceholderNotice } from '@/components/common/ContentPlaceholderNotice';
 import { Icon } from '@/components/common/Icon';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { SectionHeading } from '@/components/common/SectionHeading';
@@ -77,7 +78,11 @@ export function GrammarDetail({
             knownKanji={knownKanji}
           />
         </View>
-      ) : null}
+      ) : (
+        <View className="mt-space-md" testID="grammar-lesson-body-placeholder">
+          <ContentPlaceholderNotice label="Explanation coming soon" />
+        </View>
+      )}
 
       {grammarRule ? (
         <>
@@ -147,7 +152,11 @@ export function GrammarDetail({
 
       <PersonalMnemonicEditor itemId={item.id} />
 
-      <ExampleSentencesSection sentences={exampleSentences} testIDPrefix="grammar-example" />
+      <ExampleSentencesSection
+        sentences={exampleSentences}
+        testIDPrefix="grammar-example"
+        emptyPlaceholder="Examples coming soon"
+      />
 
       <ItemCrossReferences item={item} related={related} relatedGrammar={relatedGrammar} />
     </View>
