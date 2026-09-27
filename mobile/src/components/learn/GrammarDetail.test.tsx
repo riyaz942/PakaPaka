@@ -139,3 +139,33 @@ describe('GrammarDetail', () => {
     expect(screen.getByText('negative copula')).toBeTruthy();
   });
 });
+
+describe('GrammarDetail — content-not-generated placeholders', () => {
+  it('shows a coming-soon notice in place of the lesson body when unauthored', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={grammarRule}
+        exampleSentences={exampleSentences}
+      />,
+    );
+
+    expect(screen.getByTestId('grammar-lesson-body-placeholder')).toBeTruthy();
+    expect(screen.getByText('Explanation coming soon')).toBeTruthy();
+  });
+
+  it('shows a coming-soon notice instead of the examples section when there are none', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={grammarRule}
+        exampleSentences={[]}
+      />,
+    );
+
+    expect(screen.getByTestId('grammar-example-placeholder')).toBeTruthy();
+    expect(screen.getByText('Examples coming soon')).toBeTruthy();
+  });
+});
