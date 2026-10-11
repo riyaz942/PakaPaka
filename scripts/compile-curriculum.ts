@@ -44,7 +44,18 @@ type MetadataJson = {
   jlpt_levels: string[];
   description: string;
   maintainer_notes?: string;
-  content_counts?: Record<string, number>;
+  content_counts?: ContentCounts;
+};
+
+/** What one compile wrote; `metadata.json` `content_counts` records it. */
+export type ContentCounts = {
+  radicals: number;
+  kanji: number;
+  vocabulary: number;
+  grammar: number;
+  total_items: number;
+  reading_passages: number;
+  dependency_edges: number;
 };
 
 /**
@@ -489,7 +500,7 @@ export function compileCurriculum(
   outputPath: string,
   curriculumDir: string = CURRICULUM_DIR,
   options: CompileOptions = {},
-): void {
+): ContentCounts {
   const validation = validateCurriculum(curriculumDir);
   for (const warning of validation.warnings) {
     console.warn(`warning: ${warning}`);
@@ -1067,6 +1078,42 @@ export function compileCurriculum(
     path.join(path.dirname(outputPath), SEED_INFO_FILE),
     `${JSON.stringify({ version: metadata.version }, null, 2)}\n`,
   );
+
+  return {
+    radicals: radicals.length,
+    kanji: kanji.length,
+    vocabulary: vocabulary.length,
+    grammar: grammar.length,
+    total_items: radicals.length + kanji.length + vocabulary.length + grammar.length,
+    reading_passages: passages.length,
+    dependency_edges: dependenciesFile.edges.length,
+  };
+}
+
+/**
+ * Every compile ships a new curriculum version: raise `metadata.json` `version`
+ * by 1 first, and put the file back if the compile fails. After a good compile,
+ * record what was compiled in `content_counts`, so the counts cannot drift.
+ */
+export function compileAndRecordMetadata(
+  outputPath: string,
+  curriculumDir: string = CURRICULUM_DIR,
+  options: CompileOptions = {},
+): MetadataJson {
+  const metadataPath = path.join(curriculumDir, 'metadata.json');
+  const originalMetadata = fs.readFileSync(metadataPath, 'utf8');
+  const metadata = JSON.parse(originalMetadata) as MetadataJson;
+  metadata.version += 1;
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+
+  try {
+    metadata.content_counts = compileCurriculum(outputPath, curriculumDir, options);
+  } catch (error) {
+    fs.writeFileSync(metadataPath, originalMetadata);
+    throw error;
+  }
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+  return metadata;
 }
 
 function main(): void {
@@ -1077,19 +1124,13 @@ function main(): void {
     process.argv.includes('--fail-on-draft') || process.env.COMPILE_FAIL_ON_DRAFT === '1';
   const updateRegistry = process.argv.includes('--update-registry');
 
-  // Every compile ships a new curriculum version: raise it by 1 first, and put
-  // it back if the compile fails.
-  const metadataPath = path.join(CURRICULUM_DIR, 'metadata.json');
-  const originalMetadata = fs.readFileSync(metadataPath, 'utf8');
-  const metadata = JSON.parse(originalMetadata) as MetadataJson;
-  metadata.version += 1;
-  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
-
   try {
-    compileCurriculum(outputPath, undefined, { failOnDraft, updateRegistry });
+    const metadata = compileAndRecordMetadata(outputPath, undefined, {
+      failOnDraft,
+      updateRegistry,
+    });
     console.log(`Compiled curriculum database: ${outputPath} (version ${metadata.version})`);
   } catch (error) {
-    fs.writeFileSync(metadataPath, originalMetadata);
     console.error(error instanceof Error ? error.message : String(error));
     process.exit(1);
   }

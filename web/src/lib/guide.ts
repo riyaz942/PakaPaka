@@ -633,7 +633,7 @@ export const AUDIT_FIXES: AuditFixSection[] = [
       'Duplicate slug / sort_order: fix the item list in the level’s fact module — these are generated, not hand-authored.',
       '“Taught N times across levels”: the later level must reuse the first level’s slug rather than re-teaching the form, or the learner sees one shape as two review cards.',
       'Radical + kanji share a form with no `builds_on` edge: add the edge, otherwise the kanji ships with no component chip.',
-      'content_counts drift: re-assemble and rebuild the graph — the counts are written from the corpus, so drift means the last build was skipped.',
+      'content_counts drift: run `npm run compile-curriculum` — each compile writes the counts it compiled, so drift means content changed after the last compile.',
     ],
     commands: [
       `cd curriculum/_build && ${PY} generate.py --level ${LEVEL_TOKEN} && ${PY} generate_deps.py && cd -`,

@@ -10,12 +10,12 @@
   "description": "JLPT N5 and N4 full-depth curriculum — radicals, kanji, vocabulary, grammar, readings, and a precomputed dependency graph for bundled app import. Kanji and radicals are banded: each level teaches a fixed budget (150 / 175 / 375 / 300 / 1,000 kanji, 2,000 cumulative) ranked by the old-JLPT level KANJIDIC2 tags, then by school grade 1-3 first inside that level, then by how many of that level's own words each kanji unlocks; the first 10 N5 and 6 N4 slots go to the kanji those levels' own words lean on hardest. Radicals file at the level of the first kanji that needs them. N4 holds 175 so that all 181 kanji the JLPT tests at N4 fit inside the N5+N4 bands. A band is a teaching budget, not a coverage gate — words outside it are still taught: a kanji banded at or before a word's level emits a gating `requires` edge, and an out-of-band kanji a non-gating `builds_on` edge, which withholds the word's reading prompt instead of the word. N3/N2/N1 carry a derived skeleton: kanji, radicals and 8,500 frequency-ranked words (2,250 / 2,250 / 4,000) with readings, meanings and furigana, but no mnemonics, examples, grammar or reading passages (docs/content/kanji-coverage-and-dependency-order-plan.md).",
   "maintainer_notes": "version is a whole number that npm run compile-curriculum raises by 1 on every run — do not edit it by hand. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {
-    "radicals": 238,
+    "radicals": 817,
     "kanji": 2000,
     "vocabulary": 9747,
     "grammar": 161,
-    "total_items": 12156,
+    "total_items": 12725,
     "reading_passages": 60,
-    "dependency_edges": 25134
+    "dependency_edges": 23290
   }
 }
