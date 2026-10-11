@@ -2,7 +2,8 @@
 
 **Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
 "Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 done 2026-09-27 (see
-"Phase 3 results"). Phase 4 done 2026-10-11 (see "Phase 4 results"). Phase 5 not started.
+"Phase 3 results"). Phase 4 done 2026-10-11 (see "Phase 4 results"). Phase 5 script done
+2026-10-11 (see "Phase 5 results"). The restore on the phone is not yet checked.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -607,6 +608,50 @@ Implement **Phase A of the schema migration plan** as written, with these change
   (progress on both sides) and one unchanged vocabulary item.
 - The restore preview on the phone shows 0 unmatched items. Spot-check `n5-go`, `k-go` and `n4-ri`
   (under their new slugs) in Browse.
+
+
+### Phase 5 results (2026-10-11)
+
+**What changed:**
+
+- **`scripts/rewrite-backup-slugs.ts`** (TypeScript, next to the compile scripts, so it can use
+  `better-sqlite3` and the repo-root Jest tests). Usage:
+  `npx tsx scripts/rewrite-backup-slugs.ts <backup.json.gz> [--dry-run] [--db path]`.
+  - It reads `curriculum/_build/slug-renames.json` and rewrites the `item` of each row,
+    `aiSessions.topicItem`, `aiSessions.topicItems` (duplicates removed) and
+    `wordsMet[].item` in `aiSessions.summaryJson`.
+  - It applies the merge rules in the table above. `weaknessStats` also keeps the later
+    `updatedAt`. `userSynonyms` removes only rows with the same item, answer type and answer text
+    (the `user_synonyms` primary key).
+  - It checks every ref against `items` in `curriculum.db` (default:
+    `mobile/assets/curriculum-seed/curriculum.db`) and prints the row count of each table, before
+    and after.
+  - It writes `<name>-migrated.json.gz` next to the input only if 0 refs are unmatched. It opens the
+    output with the `wx` flag, so it never overwrites a file. `--dry-run` writes nothing.
+- 11 Jest tests in `scripts/rewrite-backup-slugs.test.ts`: the fixture has 1 renamed kanji
+  (`k-go` → `go-game`), 1 merged grammar pair with progress on both sides (`sugiru` /
+  `n4-sugiru`) and 1 unchanged word (`ginkou`).
+
+**The maintainer's backup:**
+
+- Input: `~/Downloads/kizamu-backup-2026-10-11T07-11-51-305Z.json.gz` (`schemaVersion 20`,
+  `curriculumVersion "19"`). Output: `~/Downloads/kizamu-backup-2026-10-11T07-11-51-305Z-migrated.json.gz`.
+  The input did not change.
+- Against seed v29: **0 unmatched slugs**. 571 refs renamed.
+- Row counts: `itemStudyStatus` 1,300 → 1,294. Every other table keeps its count
+  (`relatedItemBoosts` 563, `srsStates` 82, `weaknessStats` 82, `userSynonyms` 19,
+  `furiganaOverrides` 1). `aiSessions`, `personalMnemonics` and `passagePracticeResults` are empty.
+- The 6 merges are the N5/N4 pairs `nakereba-naranai`, `nakutemo-ii`, `node-because`, `te-iru`,
+  `te-mo-ii` and `te-wa-ikenai`. Both sides were `known`.
+- Spot-check: `n5-go` → `five` (known), `n4-ri` → `reason` (known), `k-go` → `go-game` (a related
+  boost). The backup has no `k-ri` row.
+- Every output row is an input row with only its item ref renamed. The envelope did not change.
+
+**Checks:** repo-root tests 94 pass (11 new). `tsc --noEmit` passes.
+
+**For the maintainer (still to do):** the phone steps above. If you study again before you install
+the new build, export a new backup and run the script on it. Then check that the restore preview
+shows 0 unmatched items, and find `five`, `go-game` and `reason` in Browse.
 
 ---
 
