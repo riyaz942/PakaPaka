@@ -18170,21 +18170,11 @@
       "art": false
     },
     {
-      "slug": "slash",
-      "form": "丿",
-      "meaning": "slash",
+      "slug": "nine",
+      "form": "九",
+      "meaning": "nine",
       "level": "n5",
       "sort_order": 17,
-      "first_kanji": "九",
-      "prose": true,
-      "art": false
-    },
-    {
-      "slug": "the-latter",
-      "form": "乙",
-      "meaning": "second",
-      "level": "n5",
-      "sort_order": 18,
       "first_kanji": "九",
       "prose": true,
       "art": false
@@ -18194,7 +18184,7 @@
       "form": "十",
       "meaning": "ten / cross",
       "level": "n5",
-      "sort_order": 19,
+      "sort_order": 18,
       "first_kanji": "十",
       "prose": true,
       "art": true
@@ -18204,10 +18194,20 @@
       "form": "白",
       "meaning": "white",
       "level": "n5",
-      "sort_order": 20,
+      "sort_order": 19,
       "first_kanji": "百",
       "prose": true,
       "art": true
+    },
+    {
+      "slug": "slash",
+      "form": "丿",
+      "meaning": "slash",
+      "level": "n5",
+      "sort_order": 20,
+      "first_kanji": "千",
+      "prose": true,
+      "art": false
     },
     {
       "slug": "ten-thousand",
@@ -20320,21 +20320,11 @@
       "art": true
     },
     {
-      "slug": "nine",
-      "form": "九",
-      "meaning": "nine",
-      "level": "n4",
-      "sort_order": 84,
-      "first_kanji": "究",
-      "prose": true,
-      "art": false
-    },
-    {
       "slug": "every",
       "form": "毎",
       "meaning": "every",
       "level": "n4",
-      "sort_order": 85,
+      "sort_order": 84,
       "first_kanji": "海",
       "prose": true,
       "art": false
@@ -20344,7 +20334,7 @@
       "form": "阝",
       "meaning": "village (right)",
       "level": "n4",
-      "sort_order": 86,
+      "sort_order": 85,
       "first_kanji": "都",
       "prose": true,
       "art": true
@@ -20354,7 +20344,7 @@
       "form": "者",
       "meaning": "someone",
       "level": "n4",
-      "sort_order": 87,
+      "sort_order": 86,
       "first_kanji": "都",
       "prose": true,
       "art": false
@@ -20364,7 +20354,7 @@
       "form": "民",
       "meaning": "people",
       "level": "n4",
-      "sort_order": 88,
+      "sort_order": 87,
       "first_kanji": "民",
       "prose": true,
       "art": false
@@ -20374,7 +20364,7 @@
       "form": "弋",
       "meaning": "stake / ceremony",
       "level": "n4",
-      "sort_order": 89,
+      "sort_order": 88,
       "first_kanji": "代",
       "prose": true,
       "art": true
@@ -20384,7 +20374,7 @@
       "form": "用",
       "meaning": "use",
       "level": "n4",
-      "sort_order": 90,
+      "sort_order": 89,
       "first_kanji": "用",
       "prose": true,
       "art": false
@@ -20394,7 +20384,7 @@
       "form": "厂",
       "meaning": "cliff",
       "level": "n4",
-      "sort_order": 91,
+      "sort_order": 90,
       "first_kanji": "産",
       "prose": true,
       "art": false
@@ -20404,7 +20394,7 @@
       "form": "寸",
       "meaning": "inch / measure",
       "level": "n4",
-      "sort_order": 92,
+      "sort_order": 91,
       "first_kanji": "村",
       "prose": true,
       "art": true
@@ -20414,7 +20404,7 @@
       "form": "廴",
       "meaning": "long stride or stretching",
       "level": "n4",
-      "sort_order": 93,
+      "sort_order": 92,
       "first_kanji": "建",
       "prose": true,
       "art": false
@@ -20424,7 +20414,7 @@
       "form": "走",
       "meaning": "run",
       "level": "n4",
-      "sort_order": 94,
+      "sort_order": 93,
       "first_kanji": "起",
       "prose": true,
       "art": false
@@ -20434,7 +20424,7 @@
       "form": "艮",
       "meaning": "stopping",
       "level": "n4",
-      "sort_order": 95,
+      "sort_order": 94,
       "first_kanji": "銀",
       "prose": true,
       "art": false
@@ -20444,7 +20434,7 @@
       "form": "央",
       "meaning": "center",
       "level": "n4",
-      "sort_order": 96,
+      "sort_order": 95,
       "first_kanji": "映",
       "prose": true,
       "art": false
@@ -20454,7 +20444,7 @@
       "form": "豆",
       "meaning": "beans",
       "level": "n4",
-      "sort_order": 97,
+      "sort_order": 96,
       "first_kanji": "頭",
       "prose": true,
       "art": false
@@ -20464,7 +20454,7 @@
       "form": "与",
       "meaning": "bestow",
       "level": "n4",
-      "sort_order": 98,
+      "sort_order": 97,
       "first_kanji": "写",
       "prose": true,
       "art": false
@@ -20474,7 +20464,7 @@
       "form": "兀",
       "meaning": "flat top",
       "level": "n4",
-      "sort_order": 99,
+      "sort_order": 98,
       "first_kanji": "光",
       "prose": true,
       "art": false
@@ -20484,7 +20474,7 @@
       "form": "𡗗",
       "meaning": "three and big",
       "level": "n4",
-      "sort_order": 100,
+      "sort_order": 99,
       "first_kanji": "春",
       "prose": true,
       "art": false
@@ -20494,7 +20484,7 @@
       "form": "彦",
       "meaning": "lad",
       "level": "n4",
-      "sort_order": 101,
+      "sort_order": 100,
       "first_kanji": "顔",
       "prose": true,
       "art": false
@@ -20504,7 +20494,7 @@
       "form": "更",
       "meaning": "renew",
       "level": "n4",
-      "sort_order": 102,
+      "sort_order": 101,
       "first_kanji": "便",
       "prose": true,
       "art": false
@@ -20514,7 +20504,7 @@
       "form": "肉",
       "meaning": "meat",
       "level": "n4",
-      "sort_order": 103,
+      "sort_order": 102,
       "first_kanji": "肉",
       "prose": true,
       "art": true
@@ -20524,7 +20514,7 @@
       "form": "尚",
       "meaning": "esteem",
       "level": "n4",
-      "sort_order": 104,
+      "sort_order": 103,
       "first_kanji": "堂",
       "prose": true,
       "art": false
@@ -20534,7 +20524,7 @@
       "form": "鳥",
       "meaning": "bird",
       "level": "n4",
-      "sort_order": 105,
+      "sort_order": 104,
       "first_kanji": "鳥",
       "prose": true,
       "art": true
@@ -20544,7 +20534,7 @@
       "form": "井",
       "meaning": "well",
       "level": "n4",
-      "sort_order": 106,
+      "sort_order": 105,
       "first_kanji": "寒",
       "prose": true,
       "art": false
@@ -20554,7 +20544,7 @@
       "form": "夫",
       "meaning": "husband",
       "level": "n4",
-      "sort_order": 107,
+      "sort_order": 106,
       "first_kanji": "漢",
       "prose": true,
       "art": false
@@ -22060,11 +22050,21 @@
       "art": false
     },
     {
+      "slug": "the-latter",
+      "form": "乙",
+      "meaning": "second",
+      "level": "n3",
+      "sort_order": 151,
+      "first_kanji": "札",
+      "prose": true,
+      "art": false
+    },
+    {
       "slug": "kneel",
       "form": "㔾",
       "meaning": "kneel",
       "level": "n3",
-      "sort_order": 151,
+      "sort_order": 152,
       "first_kanji": "犯",
       "prose": false,
       "art": false
@@ -22074,7 +22074,7 @@
       "form": "玄",
       "meaning": "mysterious",
       "level": "n3",
-      "sort_order": 152,
+      "sort_order": 153,
       "first_kanji": "率",
       "prose": false,
       "art": false
@@ -22084,7 +22084,7 @@
       "form": "斉",
       "meaning": "adjusted",
       "level": "n3",
-      "sort_order": 153,
+      "sort_order": 154,
       "first_kanji": "済",
       "prose": false,
       "art": false
@@ -22094,7 +22094,7 @@
       "form": "及",
       "meaning": "reach out",
       "level": "n3",
-      "sort_order": 154,
+      "sort_order": 155,
       "first_kanji": "級",
       "prose": false,
       "art": false
@@ -22104,7 +22104,7 @@
       "form": "示",
       "meaning": "altar / show",
       "level": "n3",
-      "sort_order": 155,
+      "sort_order": 156,
       "first_kanji": "示",
       "prose": true,
       "art": true
@@ -22114,7 +22114,7 @@
       "form": "夭",
       "meaning": "early death",
       "level": "n3",
-      "sort_order": 156,
+      "sort_order": 157,
       "first_kanji": "笑",
       "prose": false,
       "art": false
@@ -22124,7 +22124,7 @@
       "form": "丗",
       "meaning": "thirty",
       "level": "n3",
-      "sort_order": 157,
+      "sort_order": 158,
       "first_kanji": "帯",
       "prose": false,
       "art": false
@@ -22134,7 +22134,7 @@
       "form": "任",
       "meaning": "responsibility",
       "level": "n3",
-      "sort_order": 158,
+      "sort_order": 159,
       "first_kanji": "賃",
       "prose": false,
       "art": false
@@ -22144,7 +22144,7 @@
       "form": "啇",
       "meaning": "the stalk",
       "level": "n3",
-      "sort_order": 159,
+      "sort_order": 160,
       "first_kanji": "適",
       "prose": false,
       "art": false
@@ -22154,7 +22154,7 @@
       "form": "暴",
       "meaning": "outburst",
       "level": "n3",
-      "sort_order": 160,
+      "sort_order": 161,
       "first_kanji": "爆",
       "prose": false,
       "art": false
@@ -22164,7 +22164,7 @@
       "form": "票",
       "meaning": "ballot",
       "level": "n3",
-      "sort_order": 161,
+      "sort_order": 162,
       "first_kanji": "標",
       "prose": false,
       "art": false
@@ -22174,7 +22174,7 @@
       "form": "建",
       "meaning": "build",
       "level": "n3",
-      "sort_order": 162,
+      "sort_order": 163,
       "first_kanji": "健",
       "prose": false,
       "art": false
@@ -22184,7 +22184,7 @@
       "form": "垂",
       "meaning": "droop",
       "level": "n3",
-      "sort_order": 163,
+      "sort_order": 164,
       "first_kanji": "郵",
       "prose": false,
       "art": false
@@ -22194,7 +22194,7 @@
       "form": "枼",
       "meaning": "table",
       "level": "n3",
-      "sort_order": 164,
+      "sort_order": 165,
       "first_kanji": "葉",
       "prose": false,
       "art": false
@@ -22204,7 +22204,7 @@
       "form": "奇",
       "meaning": "strange",
       "level": "n3",
-      "sort_order": 165,
+      "sort_order": 166,
       "first_kanji": "寄",
       "prose": false,
       "art": false
@@ -22214,7 +22214,7 @@
       "form": "洛",
       "meaning": "Kyoto",
       "level": "n3",
-      "sort_order": 166,
+      "sort_order": 167,
       "first_kanji": "落",
       "prose": false,
       "art": false
@@ -22224,7 +22224,7 @@
       "form": "昷",
       "meaning": "to feed a prisoner",
       "level": "n3",
-      "sort_order": 167,
+      "sort_order": 168,
       "first_kanji": "温",
       "prose": false,
       "art": false
@@ -22234,7 +22234,7 @@
       "form": "卯",
       "meaning": "sign of the hare or rabbit",
       "level": "n3",
-      "sort_order": 168,
+      "sort_order": 169,
       "first_kanji": "留",
       "prose": false,
       "art": false
@@ -22244,7 +22244,7 @@
       "form": "坴",
       "meaning": "clod of earth",
       "level": "n3",
-      "sort_order": 169,
+      "sort_order": 170,
       "first_kanji": "陸",
       "prose": false,
       "art": false
@@ -22254,7 +22254,7 @@
       "form": "㕣",
       "meaning": "a marsh at the foot of the hills",
       "level": "n3",
-      "sort_order": 170,
+      "sort_order": 171,
       "first_kanji": "船",
       "prose": false,
       "art": false
@@ -22264,7 +22264,7 @@
       "form": "佰",
       "meaning": "hundred",
       "level": "n3",
-      "sort_order": 171,
+      "sort_order": 172,
       "first_kanji": "宿",
       "prose": false,
       "art": false
@@ -22274,7 +22274,7 @@
       "form": "何",
       "meaning": "what",
       "level": "n3",
-      "sort_order": 172,
+      "sort_order": 173,
       "first_kanji": "荷",
       "prose": false,
       "art": false
@@ -22284,7 +22284,7 @@
       "form": "喬",
       "meaning": "high",
       "level": "n3",
-      "sort_order": 173,
+      "sort_order": 174,
       "first_kanji": "橋",
       "prose": false,
       "art": false
@@ -22294,7 +22294,7 @@
       "form": "毛",
       "meaning": "fur",
       "level": "n3",
-      "sort_order": 174,
+      "sort_order": 175,
       "first_kanji": "毛",
       "prose": true,
       "art": false
@@ -22304,7 +22304,7 @@
       "form": "彔",
       "meaning": "to carve wood",
       "level": "n3",
-      "sort_order": 175,
+      "sort_order": 176,
       "first_kanji": "緑",
       "prose": false,
       "art": false
@@ -22314,7 +22314,7 @@
       "form": "永",
       "meaning": "eternity",
       "level": "n3",
-      "sort_order": 176,
+      "sort_order": 177,
       "first_kanji": "泳",
       "prose": false,
       "art": false
@@ -22324,7 +22324,7 @@
       "form": "灰",
       "meaning": "ashes",
       "level": "n3",
-      "sort_order": 177,
+      "sort_order": 178,
       "first_kanji": "炭",
       "prose": false,
       "art": false
@@ -22334,7 +22334,7 @@
       "form": "胡",
       "meaning": "barbarian",
       "level": "n3",
-      "sort_order": 178,
+      "sort_order": 179,
       "first_kanji": "湖",
       "prose": false,
       "art": false
@@ -22344,7 +22344,7 @@
       "form": "畀",
       "meaning": "to give",
       "level": "n3",
-      "sort_order": 179,
+      "sort_order": 180,
       "first_kanji": "鼻",
       "prose": false,
       "art": false
@@ -22354,7 +22354,7 @@
       "form": "皿",
       "meaning": "dish",
       "level": "n3",
-      "sort_order": 180,
+      "sort_order": 181,
       "first_kanji": "皿",
       "prose": true,
       "art": false

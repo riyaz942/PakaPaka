@@ -293,32 +293,18 @@
       "sort_order": 16
     },
     {
-      "slug": "slash",
-      "primary_form": "丿",
-      "meaning": "slash",
-      "mnemonic_text": "This radical is one line from top right to bottom left, like a single ski track on a white mountain. One skier made one <radical form=\"丿\">slash</radical>.",
-      "image_prompt": "A single diagonal stroke crosses the frame from upper right to lower left, wide at the start and thin at the end with a small flick. It is a lone ski track in deep snow on a smooth white mountain. A small skier stands at the bottom, looking back at the <radical>slash</radical>.",
+      "slug": "nine",
+      "primary_form": "九",
+      "meaning": "nine",
+      "mnemonic_text": "This radical looks like a fishing line that shoots out straight, then curls into a hook. His bucket holds <radical form=\"九\">nine</radical> fish, one short of ten.",
+      "image_prompt": "A fishing line shoots out long and straight from a rod, then curls into a tight hook at the bottom right. The fisherman is yanking it back. Beside him a bucket holds exactly <radical>nine</radical> fish, and he looks hopeful for one more.",
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
         "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/slash.webp",
+      "visual_mnemonic_url": "radicals/nine.webp",
       "sort_order": 17
-    },
-    {
-      "slug": "the-latter",
-      "primary_form": "乙",
-      "meaning": "second",
-      "mnemonic_text": "This radical looks like a swan with a long bent neck. It stands on the lower step of a podium, biting a silver medal. It came <radical form=\"乙\">second</radical>.",
-      "image_prompt": "One curved stroke forms a swan seen from the side: a short top stroke for the head, a long S-curve for the neck and body, and a small upward hook for the tail. It stands on the lower step of a podium, biting a big silver medal stamped 2. It came <radical>second</radical>.",
-      "_meta": {
-        "generator_model": "claude-web",
-        "prompt_version": "1",
-        "review_status": "draft"
-      },
-      "visual_mnemonic_url": "radicals/the-latter.webp",
-      "sort_order": 18
     },
     {
       "slug": "juu",
@@ -351,7 +337,7 @@
           "answer_text": "10"
         }
       ],
-      "sort_order": 19
+      "sort_order": 18
     },
     {
       "slug": "shiro",
@@ -369,6 +355,20 @@
         "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/shiro.webp",
+      "sort_order": 19
+    },
+    {
+      "slug": "slash",
+      "primary_form": "丿",
+      "meaning": "slash",
+      "mnemonic_text": "This radical is one line from top right to bottom left, like a single ski track on a white mountain. One skier made one <radical form=\"丿\">slash</radical>.",
+      "image_prompt": "A single diagonal stroke crosses the frame from upper right to lower left, wide at the start and thin at the end with a small flick. It is a lone ski track in deep snow on a smooth white mountain. A small skier stands at the bottom, looking back at the <radical>slash</radical>.",
+      "_meta": {
+        "generator_model": "claude-web",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/slash.webp",
       "sort_order": 20
     },
     {

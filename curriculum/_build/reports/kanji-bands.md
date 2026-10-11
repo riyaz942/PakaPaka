@@ -9,8 +9,8 @@ A band is a teaching budget, not a coverage gate. Kanji outside a learner's band
 | Level | Kanji | Cum. | Radicals | Rad. cum. | Reuse floor |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | N5 | 150 | 150 | 148 | 148 | 1 |
-| N4 | 175 | 325 | 107 | 255 | 0 |
-| N3 | 375 | 700 | 180 | 435 | 0 |
+| N4 | 175 | 325 | 106 | 254 | 0 |
+| N3 | 375 | 700 | 181 | 435 | 0 |
 | N2 | 300 | 1000 | 105 | 540 | 0 |
 | N1 | 1000 | 2000 | 277 | 817 | 0 |
 
@@ -37,7 +37,7 @@ Words every kanji of which is inside the cumulative band — the population that
 
 ## Radicals in the N5+N4 band without prose
 
-255 radicals file at a level that ships full content. 146 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
+254 radicals file at a level that ships full content. 145 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
 
 Every one of them has a mnemonic.
 
