@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Promote drafted cloze candidates into the shipped `_build/<level>_grammar.py`.
+"""Promote drafted cloze candidates into the shipped `_build/<n5|n4>_grammar.py`.
 
 The grammar-lesson lane already writes cloze candidates per point
 (`drafts/<level>/<slug>-cloze-candidates.json`, see assemble.py), but nothing
@@ -45,8 +45,9 @@ def candidates_path(level, slug):
     return os.path.join(DRAFTS_DIR, level, f"{slug}-cloze-candidates.json")
 
 
-def dataset_path(level):
-    return os.path.join(BUILD_DIR, f"{level}_grammar.py")
+#: Every grammar dataset. A point is written into the file that defines it,
+#: which is not its shipped level when `_build/levels.json` moved it.
+DATASET_PATHS = [os.path.join(BUILD_DIR, f"{level}_grammar.py") for level in ("n5", "n4")]
 
 
 def surviving_variants(level, item, known_readings):
@@ -122,9 +123,11 @@ def main():
     args = parser.parse_args()
 
     level = args.level
-    path = dataset_path(level)
-    with open(path, encoding="utf-8") as f:
-        source = f.read()
+    sources = {}
+    for path in DATASET_PATHS:
+        with open(path, encoding="utf-8") as f:
+            sources[path] = f.read()
+    written = set()
 
     items = {item["slug"]: item for item in context.load_grammar(level)}
     if args.slugs:
@@ -144,11 +147,15 @@ def main():
         if len(kept) < args.min_variants:
             skipped.append((slug, len(kept), rejections))
             continue
-        updated = insert_into_dataset(source, slug, render_block(kept))
-        if updated is None:
+        for path, source in sources.items():
+            updated = insert_into_dataset(source, slug, render_block(kept))
+            if updated is not None:
+                sources[path] = updated
+                written.add(path)
+                break
+        else:
             skipped.append((slug, len(kept), [("-", ["already has cloze_variants / no anchor"])]))
             continue
-        source = updated
         promoted.append((slug, len(kept), len(rejections)))
 
     for slug, kept, dropped in promoted:
@@ -160,11 +167,13 @@ def main():
                 print(f"          [{index}] {error}")
 
     if args.dry_run:
-        print(f"\ndry run — {path} not written")
+        print("\ndry run — no dataset written")
     elif promoted:
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(source)
-        print(f"\nwrote {len(promoted)} point(s) into {os.path.relpath(path, BUILD_DIR)}")
+        for path in sorted(written):
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(sources[path])
+        names = ", ".join(os.path.relpath(path, BUILD_DIR) for path in sorted(written))
+        print(f"\nwrote {len(promoted)} point(s) into {names}")
     print(f"{len(promoted)} promoted, {len(skipped)} skipped")
 
 

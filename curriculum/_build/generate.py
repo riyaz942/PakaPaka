@@ -15,11 +15,18 @@
 
 Radicals and kanji cannot be written per level, because their level is a *band*
 assigned by reports/kanji_bands.py and a band draws from every source dataset.
-Run kanji_bands.py first whenever the datasets change.
+Whenever the datasets or levels.json change, run --level for every level, then
+kanji_bands.py (it ranks on the generated words), then --bands.
+
+An item's level is its source dataset's level (or its band) unless
+`levels.json` names it (see levels.py). So --level n5 reads every dataset, not
+only the n5 ones.
 
 Cross-references (grammar vocabulary_slugs, example vocabulary_slugs,
-dependency edges) are validated against the known item slug sets; unresolved
-references abort generation with a clear error.
+dependency edges) are validated against the known item slug sets of every
+level; unresolved references abort generation with a clear error. A reference
+to an item at a later level is not an error here: reports/level_report.py
+lists it.
 """
 
 import argparse
@@ -37,6 +44,7 @@ import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 from generate_content.mnemonic_context import reading_composition  # noqa: E402
+from levels import place  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
@@ -395,12 +403,6 @@ def build_n5_kanji():
     return _build_kanji_items(N5_KANJI)
 
 
-def build_n5_vocab(known_readings=None):
-    from n5_vocab import N5_VOCAB
-
-    return _build_vocab_level("N5", N5_VOCAB, known_readings)
-
-
 def _annotate_prose_line(line, known_readings):
     """Annotates kanji-bearing Japanese runs embedded in prose. Runs already
     followed by a bracket annotation are left alone, so reviewer hand-edits
@@ -483,7 +485,7 @@ def _load_lesson(slug, known_readings):
 
 
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
-                         lower_grammar_slugs=()):
+                         all_grammar_slugs=()):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
@@ -549,10 +551,12 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                 item["caution_notes"] = meta["caution_notes"]
             related = meta.get("related_grammar_slugs") or []
             if related:
-                # A lesson may point at an earlier level's point: N4 lessons
+                # A lesson may point at another level's point: N4 lessons
                 # relate to the N5 points their N4 duplicates were merged into.
+                # One at a later level is a ladder problem for
+                # reports/level_report.py, not a build error.
                 grammar_slugs = {entry["slug"] for entry in grammar_entries} | set(
-                    lower_grammar_slugs
+                    all_grammar_slugs
                 )
                 for rs in related:
                     if rs == g["slug"] or rs not in grammar_slugs:
@@ -572,12 +576,6 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
     if errors:
         raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))
     return {"jlpt_level": jlpt_level, "items": items}
-
-
-def build_n5_grammar(vocab_forms, known_readings=None):
-    from n5_grammar import N5_GRAMMAR
-
-    return _build_grammar_level("N5", N5_GRAMMAR, vocab_forms, known_readings)
 
 
 #: Passage fields authored in the n5/n4 readings datasets and copied through
@@ -674,12 +672,6 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
     return {"jlpt_level": jlpt_level, "passages": passages}
 
 
-def build_n5_readings(known_readings=None, vocab_forms=None):
-    from n5_readings import N5_READINGS
-
-    return _build_readings_level("N5", N5_READINGS, known_readings, vocab_forms)
-
-
 # ---------------------------------------------------------------------------
 # N4 builders (mirror the N5 shape; datasets defined in n4_*.py)
 # ---------------------------------------------------------------------------
@@ -694,26 +686,6 @@ def build_n4_kanji():
     from n4_kanji import N4_KANJI
 
     return _build_kanji_items(N4_KANJI)
-
-
-def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
-    from n4_vocab import N4_VOCAB
-
-    return _build_vocab_level("N4", N4_VOCAB, known_readings, extra_vocab_forms)
-
-
-def build_n4_grammar(vocab_forms, known_readings=None):
-    from n4_grammar import N4_GRAMMAR
-    from n5_grammar import N5_GRAMMAR
-
-    return _build_grammar_level("N4", N4_GRAMMAR, vocab_forms, known_readings,
-                                {g["slug"] for g in N5_GRAMMAR})
-
-
-def build_n4_readings(known_readings=None, vocab_forms=None):
-    from n4_readings import N4_READINGS
-
-    return _build_readings_level("N4", N4_READINGS, known_readings, vocab_forms)
 
 
 # ---------------------------------------------------------------------------
@@ -817,21 +789,26 @@ def generate_bands():
 # Level orchestration
 # ---------------------------------------------------------------------------
 
-def build_skeleton_vocab(level):
-    """One skeleton level's vocabulary, from the derived corpus.
+def _vocab_sources():
+    """[(default level, entries)] for every word: the hand-authored N5/N4
+    datasets, then the derived corpus. A derived word's default level is its
+    frequency rank, which `import/build_vocab_skeleton.py` owns; the corpus is
+    written most-frequent-first, and that is the teaching order."""
+    from n4_vocab import N4_VOCAB
+    from n5_vocab import N5_VOCAB
 
-    The level is already assigned — a word's level is its frequency rank, which
-    `import/build_vocab_skeleton.py` owns — so this only filters and orders. The
-    corpus is written most-frequent-first, and that is the teaching order."""
     with open(VOCAB_SKELETON_PATH, encoding="utf-8") as f:
         words = json.load(f)["words"]
-    entries = [w for w in words if w["level"] == level]
-    if not entries:
-        raise ValueError(
-            f"no {level.upper()} words in vocab_skeleton.json; run "
-            "import/build_vocab_skeleton.py"
-        )
-    return _build_vocab_level(level.upper(), entries)
+    sources = [("n5", N5_VOCAB), ("n4", N4_VOCAB)]
+    for level in SKELETON_VOCAB_LEVELS:
+        entries = [w for w in words if w["level"] == level]
+        if not entries:
+            raise ValueError(
+                f"no {level.upper()} words in vocab_skeleton.json; run "
+                "import/build_vocab_skeleton.py"
+            )
+        sources.append((level, entries))
+    return sources
 
 
 def generate_level(level):
@@ -839,55 +816,47 @@ def generate_level(level):
 
     Radicals and kanji are not here: their level is a band spanning every source
     dataset, so they are written together by `generate_bands`."""
+    from n4_grammar import N4_GRAMMAR
+    from n4_readings import N4_READINGS
+    from n5_grammar import N5_GRAMMAR
+    from n5_readings import N5_READINGS
+
     level = level.lower()
+    vocab_by_level = place("vocabulary", _vocab_sources())
+    # {slug: dictionary form} of every word at every level: the cross-reference
+    # check, and the spans of the words a sentence links.
+    all_vocab_forms = {
+        v["slug"]: v["form"] for entries in vocab_by_level.values() for v in entries
+    }
+    # The words a learner knows by the end of this level: their readings
+    # override the tokenizer, and a passage links every one it contains.
+    known = [v for lower in BAND_LEVELS[: BAND_LEVELS.index(level) + 1]
+             for v in vocab_by_level[lower]]
+    known_readings = _vocab_reading_map(known)
+    vocab = _build_vocab_level(level.upper(), vocab_by_level[level], known_readings,
+                               all_vocab_forms)
+    write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
     if level in SKELETON_VOCAB_LEVELS:
         # Vocabulary only: N3+ grammar and reading passages are out of scope for
         # this plan (docs/content/kanji-coverage-and-dependency-order-plan.md).
-        vocab = build_skeleton_vocab(level)
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
         print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
         return
-    if level == "n5":
-        from n5_vocab import N5_VOCAB
 
-        known_readings = _vocab_reading_map(N5_VOCAB)
-        vocab = build_n5_vocab(known_readings)
-        # {slug: primary_form}: the cross-reference check *and* the span
-        # derivation, which needs the dictionary form to recognise inflections.
-        vocab_forms = {v["slug"]: v["primary_form"] for v in vocab["items"]}
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n5.json"), vocab)
-        write_json(
-            os.path.join(CURRICULUM_DIR, "grammar", "n5.json"),
-            build_n5_grammar(vocab_forms, known_readings),
-        )
-        write_json(
-            os.path.join(CURRICULUM_DIR, "readings", "n5.json"),
-            build_n5_readings(known_readings, vocab_forms),
-        )
-    elif level == "n4":
-        from n4_vocab import N4_VOCAB
-        from n5_vocab import N5_VOCAB
-
-        known_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
-        n5_vocab_forms = {v["slug"]: v["form"] for v in N5_VOCAB}
-        # N4 is additive on N5: examples may reinforce previously learned N5
-        # vocabulary, so validate against the combined slug set.
-        vocab = build_n4_vocab(known_readings, n5_vocab_forms)
-        vocab_forms = {
-            **n5_vocab_forms,
-            **{v["slug"]: v["primary_form"] for v in vocab["items"]},
-        }
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)
-        write_json(
-            os.path.join(CURRICULUM_DIR, "grammar", "n4.json"),
-            build_n4_grammar(vocab_forms, known_readings),
-        )
-        write_json(
-            os.path.join(CURRICULUM_DIR, "readings", "n4.json"),
-            build_n4_readings(known_readings, vocab_forms),
-        )
-    else:
-        raise ValueError(f"unknown level {level}")
+    grammar_by_level = place("grammar", [("n5", N5_GRAMMAR), ("n4", N4_GRAMMAR)])
+    all_grammar_slugs = {
+        g["slug"] for entries in grammar_by_level.values() for g in entries
+    }
+    write_json(
+        os.path.join(CURRICULUM_DIR, "grammar", f"{level}.json"),
+        _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
+                             known_readings, all_grammar_slugs),
+    )
+    passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
+    write_json(
+        os.path.join(CURRICULUM_DIR, "readings", f"{level}.json"),
+        _build_readings_level(level.upper(), passages_by_level[level], known_readings,
+                              {v["slug"]: v["form"] for v in known}),
+    )
     print(f"Generated {level.upper()} JSON files.")
 
 

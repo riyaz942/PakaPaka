@@ -40,6 +40,23 @@ the exam and appear in two shipped words each, so they wait.
 `python3 curriculum/_build/reports/kanji_bands.py`, which also writes
 [`_build/reports/kanji-bands.md`](_build/reports/kanji-bands.md).
 
+### Moving an item to another level
+
+**Edit `_build/levels.json` only.** It maps `"<kind>:<slug>"` to a level, for any radical, kanji,
+word, grammar point or passage (grammar and passages: N5 or N4 only), and it wins over the
+default level: the dataset file that defines the item (`n5_vocab.py`, `n4_grammar.py`, …), a
+derived word's frequency rank, or a kanji's band. Then run every step in
+[Regenerating](#regenerating). The slug, the id and the content files stay the same.
+
+A pinned kanji takes its band slot ahead of the ranking, so the band keeps its size: move a
+kanji out of N5 and N5 ranks one more derived kanji in. A radical follows its first kanji
+unless `levels.json` names it.
+
+The build does not stop when a move breaks the ladder.
+[`_build/reports/level-report.md`](_build/reports/level-report.md) lists every sentence, link,
+edge and reading seed that now leans on a later item, and the words that wait for a moved
+kanji. Some lines were there before any move, so read `git diff` of the report.
+
 **A slug does not follow its band, and names no level.** `yen` is `yen` wherever it lands,
 because `user.db` and the id registry are keyed by it. `validate-schema` rejects a slug that
 starts with `n1-`–`n5-` or `k-`. `_build/slug-renames.json` records every old slug and the slug
@@ -49,15 +66,19 @@ that replaced it.
 
 ```bash
 python3 curriculum/_build/import/build_skeleton.py   # needs EDRDG archives
-python3 curriculum/_build/reports/kanji_bands.py
-curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n5
-curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n4
+for level in n5 n4 n3 n2 n1; do
+  curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level $level
+done
+curriculum/_build/.venv/bin/python curriculum/_build/reports/kanji_bands.py
 curriculum/_build/.venv/bin/python curriculum/_build/generate.py --bands
 curriculum/_build/.venv/bin/python curriculum/_build/generate_deps.py
+curriculum/_build/.venv/bin/python curriculum/_build/reports/level_report.py
 ```
 
 `--level` writes one level's vocabulary, grammar and readings; `--bands` writes radicals and
-kanji for all five levels at once, because a band draws from every source dataset.
+kanji for all five levels at once, because a band draws from every source dataset. Words come
+before bands: `kanji_bands.py` ranks kanji on each level's generated word list, so after a word
+moves, run `--level` for every level first.
 
 ### Authoring queue
 
