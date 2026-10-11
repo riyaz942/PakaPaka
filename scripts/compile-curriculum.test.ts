@@ -4,7 +4,7 @@ import path from 'node:path';
 
 import Database from 'better-sqlite3';
 
-import { assignItemIds, compileCurriculum } from './compile-curriculum';
+import { assignItemIds, compileAndRecordMetadata, compileCurriculum } from './compile-curriculum';
 import { type IdRegistry, type IdRegistrySection, resolveRegistryIds } from './id-registry';
 
 const FIXTURE_DIR = path.join(__dirname, '__fixtures__', 'valid');
@@ -214,6 +214,58 @@ describe('compile-curriculum', () => {
       );
       compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
       expect(fs.existsSync(path.join(curriculumDir, 'id-registry.json'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('raises metadata.json version and records the compiled content_counts', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const metadataPath = path.join(curriculumDir, 'metadata.json');
+    try {
+      compileAndRecordMetadata(dbPath, curriculumDir);
+      const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+      expect(metadata.version).toBe(2);
+      expect(metadata.content_counts).toEqual({
+        radicals: 1,
+        kanji: 1,
+        vocabulary: 1,
+        grammar: 2,
+        total_items: 5,
+        reading_passages: 1,
+        dependency_edges: 2,
+      });
+
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        const count = (sql: string) => (db.prepare(sql).get() as { count: number }).count;
+        expect(count('SELECT COUNT(*) AS count FROM items')).toBe(
+          metadata.content_counts.total_items,
+        );
+        expect(count('SELECT COUNT(*) AS count FROM reading_passages')).toBe(
+          metadata.content_counts.reading_passages,
+        );
+        expect(count('SELECT COUNT(*) AS count FROM item_relationships')).toBe(
+          metadata.content_counts.dependency_edges,
+        );
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('leaves metadata.json unchanged when the compile fails', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const metadataPath = path.join(curriculumDir, 'metadata.json');
+    const before = fs.readFileSync(metadataPath, 'utf8');
+    fs.rmSync(path.join(curriculumDir, 'id-registry.json'));
+    try {
+      expect(() => compileAndRecordMetadata(dbPath, curriculumDir)).toThrow(
+        /curriculum\/id-registry\.json not found/,
+      );
+      expect(fs.readFileSync(metadataPath, 'utf8')).toBe(before);
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
