@@ -14,7 +14,7 @@ function kanaTypoThreshold(len: number): number {
 }
 
 export function normalizeKana(text: string): string {
-  return wanakana.toHiragana(text.trim());
+  return wanakana.toHiragana(text.trim().toLowerCase());
 }
 
 export function evaluateReading(
