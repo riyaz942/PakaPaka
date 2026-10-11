@@ -2,7 +2,7 @@
 
 **Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
 "Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 done 2026-09-27 (see
-"Phase 3 results"). Phase 4 not started.
+"Phase 3 results"). Phase 4 done 2026-10-11 (see "Phase 4 results"). Phase 5 not started.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -470,6 +470,84 @@ Implement **Phase A of the schema migration plan** as written, with these change
   `vocabulary/n4.json`, with the same slug, the same id and the same mnemonic and examples. The
   report lists the N5 sentences that use it.
 - Move one hand-written kanji the same way, with the same result.
+
+### Phase 4 results (2026-10-11)
+
+**What changed:**
+
+- **Band rerun first, in its own commit.** `kanji_bands.py` ran on the phase 3 state before any
+  code change (the maintainer accepted the drift). No kanji changed. Radical `nine` moved N4 → N5,
+  `the-latter` moved N5 → N3, and 58 radical `sort_order` values changed.
+- **`curriculum/_build/levels.json`** maps `"<kind>:<slug>"` to a level. Kinds: radical, kanji,
+  vocabulary, grammar, passage. Grammar and passages can only be N5 or N4 (no N3+ files exist for
+  them). Keys that start with `_` are notes. It holds the 5 pronoun kanji that `PINNED_DERIVED`
+  held. `PINNED_DERIVED` is gone.
+- **`curriculum/_build/levels.py`** loads and checks the file. A bad key, a bad level or an
+  unknown slug stops the build with a clear message. `place()` puts each item at its override
+  level or its default level. Inside a level, items keep the global teaching order (default level,
+  then source position). So an item that moves one level later is taught first there, and an item
+  that moves earlier is taught last.
+- **`generate.py`.** `--level` reads every vocabulary, grammar and passage dataset and takes its
+  level's items from `place()`. Furigana `known_readings` and the passage span words are the words
+  at this level and all earlier levels. A link to an item at another level is checked for
+  existence only. Before, an N5 example that linked an N4 word stopped the build. Now the report
+  lists it. The per-level builder functions (`build_n5_vocab`, …) are removed.
+- **`kanji_bands.py`.** A kanji in `levels.json` takes its slot before the ranking, the same way a
+  hand-written kanji does, and wins over the dataset level. The band keeps its size: move a kanji
+  out of N5 and N5 ranks one more derived kanji in. A radical in `levels.json` files at that level,
+  just before the first kanji there that needs it.
+- **`reports/level_report.py`** writes `reports/level-report.md`. It lists sentences (examples,
+  grammar uses, cloze, passages) that use a word from a later level (`level_check`), links to a
+  later item, edges from a later prerequisite, reading seed errors (`ladder_errors`,
+  `grammar_coverage_errors`, `CORE_SEED_SLUGS`), and the words that wait for a kanji that
+  `levels.json` moved. It never fails. It runs in about 2 seconds.
+- **`promote_cloze.py`** writes a cloze into the dataset file that defines the point, not into
+  `<level>_grammar.py`, because a moved point is not in its level's file.
+- **Regenerate order** (`curriculum/README.md`): `--level` for all 5 levels, then
+  `kanji_bands.py` (it ranks on the generated words), then `--bands`, `generate_deps.py` and
+  `level_report.py`.
+
+**Checks:**
+
+- With only the 5 pronoun pins, every generated file is byte-identical to the output before the
+  change.
+- **Word:** `"vocabulary:ginkou": "n4"` was the only source change. 銀行 ships in
+  `vocabulary/n4.json` at sort 1, with the same id (437), the same mnemonic, answers and 3
+  examples. No other item changed level or id. The compile needed no `--update-registry`. The
+  report listed the 8 N5 example sentences and the N5 passage that use 銀行, 9 links, and 2 N5
+  seeds whose `vocab_cutoff` (718) is now past the end of N5.
+- **Hand-written kanji:** `"kanji:five": "n4"`. 五 ships at N4 with the same id (210) and content.
+  Two other items moved, as designed: kanji `character` (字) N4 → N5 (it fills the N5 slot), and
+  radical `five` N5 → N4 (it follows its first kanji). The report listed the 3 N5 words that now
+  wait for 五.
+- **Grammar and passage:** `grammar:te-iru` and `passage:saigo-no-hi` to N4. Ids 1077 and 60 did
+  not change. The report listed 10 links and 34 seed errors.
+- A bad level for a kind, an unknown slug and a bad key each stop the build with a message.
+- Before any move, the report has 41 sentence lines: hand-written N5/N4 grammar examples that use a
+  later word (for example 「疲れたので」 at N5 uses N4 疲れる). Links, edges and seeds are clean.
+- The new seed (version **28**) compared with the version 27 seed: the same ids; only the 2 radical
+  levels and 58 radical `sort_order` values changed.
+- `validate-schema` passes. Repo-root tests: 83 pass. `mobile/` tests: 2,216 pass in 250 suites.
+  `mobile/` lint: 0 errors, the same 1 warning. `web/` lint and type check pass.
+
+**Earlier-phase leftovers (fixed in the same branch):**
+
+- `metadata.json` `content_counts`: compile now writes them from what it compiled (radicals 817,
+  total items 12,725, edges 23,290). 2 new repo-root tests.
+- Curriculum Studio compiles with `--update-registry`. The terminal compile stays strict.
+- `curriculum-mock-update.db`: 17 kanji slugs mapped through `slug-renames.json`. 39 slugs are older
+  than the map (for example `n5-gakkou`) and stay. No script made this file; tests read only its
+  bytes.
+- Radical art: not changed. The 11 refs with no file are the art queue by design
+  (`docs/workflows/radical-art-web-chat-workflow.md` finds radicals that need art by the ref). The
+  5 files that no radical names (`bou-stick`, `no-slide`, `first-time`, `kau-buy`, `stop`) still
+  ship in `radicalImages.ts`, about 62 KB.
+
+**For the maintainer:**
+
+- CI `generator-drift` runs `--level` only. It does not run `kanji_bands.py`, `--bands` or
+  `generate_deps.py`, so a kanji or radical move that is not regenerated is not caught.
+- There are still no Python tests in `curriculum/_build/`. The checks above were run by hand.
 
 ---
 
