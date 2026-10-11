@@ -4,6 +4,11 @@ describe('normalizeKana', () => {
   it('converts katakana to hiragana', () => {
     expect(normalizeKana('イチ')).toBe('いち');
   });
+
+  it('ignores romaji letter case', () => {
+    expect(normalizeKana('ICHI')).toBe('いち');
+    expect(normalizeKana('Ichi')).toBe('いち');
+  });
 });
 
 describe('evaluateReading', () => {
@@ -11,6 +16,10 @@ describe('evaluateReading', () => {
 
   it('returns correct for exact kana', () => {
     expect(evaluateReading('いち', readings).result).toBe('correct');
+  });
+
+  it('accepts uppercase romaji as equivalent', () => {
+    expect(evaluateReading('ICHI', readings).result).toBe('correct');
   });
 
   it('accepts katakana as equivalent', () => {

@@ -57,6 +57,11 @@ describe('meaningTypoThreshold', () => {
 describe('evaluateMeaning', () => {
   const meanings = ['eat', 'food'];
 
+  it('ignores letter case', () => {
+    expect(evaluateMeaning('EAT', meanings).result).toBe('correct');
+    expect(evaluateMeaning('Food', ['FOOD']).result).toBe('correct');
+  });
+
   it('returns correct for exact match', () => {
     expect(evaluateMeaning('eat', meanings).result).toBe('correct');
   });
