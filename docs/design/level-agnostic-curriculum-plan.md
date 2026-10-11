@@ -540,8 +540,10 @@ Implement **Phase A of the schema migration plan** as written, with these change
   bytes.
 - Radical art: not changed. The 11 refs with no file are the art queue by design
   (`docs/workflows/radical-art-web-chat-workflow.md` finds radicals that need art by the ref). The
-  5 files that no radical names (`bou-stick`, `no-slide`, `first-time`, `kau-buy`, `stop`) still
-  ship in `radicalImages.ts`, about 62 KB.
+  5 files that no radical named (`bou-stick`, `no-slide`, `first-time`, `kau-buy`, `stop`, about
+  62 KB) were KRADFILE-era radicals that the KanjiVG switch (`ffd42ab`, 2026-09-01) removed. They
+  are deleted, with their 5 entries in `radicals/mnemonics.json` (maintainer decision). `bou.webp`
+  and `slash.webp` already draw the same shapes as `bou-stick` and `no-slide`. Seed v29.
 
 **For the maintainer:**
 

@@ -252,15 +252,6 @@
       "review_status": "draft"
     }
   },
-  "bou-stick": {
-    "mnemonic_text": "One clean vertical line, top to bottom. No hook, no lean, no second stroke to keep it company. It is the plainest mark in the whole system: a <radical>stick</radical> stood on its end, the kind you drive into the ground to mark a spot or prop something upright before it topples.",
-    "_meta": {
-      "generator_model": "claude-opus-5",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    },
-    "image_prompt": "One clean vertical line, top to bottom. No hook, no lean, no second stroke to keep it company. It is the plainest mark in the whole system: a <radical>stick</radical> stood on its end, the kind you drive into the ground to mark a spot or prop something upright before it topples."
-  },
   "bristles": {
     "mnemonic_text": "This radical looks like a flat bar with short stiff lines standing up on it. They are all the same height and none of them bend, like on a brush. They are <radical form=\"业\">bristles</radical>.",
     "image_prompt": "A flat horizontal bar runs along the bottom, with short stiff uprights standing along its length. All of them are the same height and point straight up; not one bends or lies down, like the head of a brush. They are <radical>bristles</radical>.",
@@ -513,15 +504,6 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
-  },
-  "first-time": {
-    "mnemonic_text": "初 splits into two working parts: the cloth folds on the left are a fresh bolt of fabric laid on the cutting table, and the blade on the right is the tailor's knife coming down through it. That first slice into untouched cloth is the <radical>first time</radical>.",
-    "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    },
-    "image_prompt": "初 splits into two working parts: the cloth folds on the left are a fresh bolt of fabric laid on the cutting table, and the blade on the right is the tailor's knife coming down through it. That first slice into untouched cloth is the <radical>first time</radical>."
   },
   "fit": {
     "mnemonic_text": "This radical is made of <part form=\"人\">person</part>, <part form=\"一\">one</part> and <part form=\"口\">mouth</part>. A <part form=\"人\">person</part> puts <part form=\"一\">one</part> pointed lid on a jar's <part form=\"口\">mouth</part>. It closes with no gap. A perfect <radical form=\"合\">fit</radical>.",
@@ -1146,15 +1128,6 @@
       "review_status": "draft"
     }
   },
-  "kau-buy": {
-    "mnemonic_text": "A net stretched flat across the top, and underneath it a shell — the old money, before coins. You spread the net, you sweep the shells in, and you hand them over the counter for whatever was on the shelf. Shells going out under a net is what it looks like to <radical>buy</radical> something.",
-    "_meta": {
-      "generator_model": "claude-opus-5",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    },
-    "image_prompt": "A net stretched flat across the top, and underneath it a shell — the old money, before coins. You spread the net, you sweep the shells in, and you hand them over the counter for whatever was on the shelf. Shells going out under a net is what it looks like to <radical>buy</radical> something."
-  },
   "kawa": {
     "mnemonic_text": "This radical looks like three long lines of water flowing down side by side. Three streams running together make a <radical form=\"川\">river</radical>.",
     "image_prompt": "Seen from a grassy bank, three long streams of water pour down the picture side by side, the outer two bending gently with the current. The three flowing channels together form one wide <radical>river</radical>.",
@@ -1731,15 +1704,6 @@
       "review_status": "draft"
     }
   },
-  "no-slide": {
-    "mnemonic_text": "One stroke, starting high on the right and falling away to the left, thinning as it goes. Nothing interrupts it and nothing catches it at the bottom end. It is a <radical>slide</radical>: set anything down at the top and it is off the left edge and gone before you can get a hand to it.",
-    "_meta": {
-      "generator_model": "claude-opus-5",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    },
-    "image_prompt": "One stroke, starting high on the right and falling away to the left, thinning as it goes. Nothing interrupts it and nothing catches it at the bottom end. It is a <radical>slide</radical>: set anything down at the top and it is off the left edge and gone before you can get a hand to it."
-  },
   "nogihen": {
     "mnemonic_text": "This radical looks like a tree with one extra stroke on top, bent to the left. The top is so full of seeds that it droops. That ripe plant is <radical form=\"禾\">grain</radical>.",
     "image_prompt": "A single stalk stands upright like a small tree, with two leaves sweeping down to the sides. Across its top, one short stroke droops to the left, as if the head of the plant is bent over by its own weight. The stalk is heavy with ripe seeds: <radical>grain</radical>.",
@@ -2247,15 +2211,6 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
-  },
-  "stop": {
-    "mnemonic_text": "Trace 已 and the stroke curls round like it means to close the loop, then quits — the line lifting off mid-curve exactly like a parking-gate arm that drops halfway and jams, refusing to swing the rest of the way down. Everything behind it just has to <radical>stop</radical>.",
-    "_meta": {
-      "generator_model": "sonnet-5",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    },
-    "image_prompt": "Trace 已 and the stroke curls round like it means to close the loop, then quits — the line lifting off mid-curve exactly like a parking-gate arm that drops halfway and jams, refusing to swing the rest of the way down. Everything behind it just has to <radical>stop</radical>."
   },
   "street": {
     "mnemonic_text": "This radical combines <part form=\"一\">ground</part> and <part form=\"亅\">barb</part>. A flat <part form=\"一\">ground</part> line is the main road. A side road drops from it and bends like a <part form=\"亅\">barb</part>. It is a <radical form=\"丁\">street</radical>.",
