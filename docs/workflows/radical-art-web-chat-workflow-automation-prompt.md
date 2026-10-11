@@ -78,13 +78,6 @@ Workflow
 
 Step 1: Select This Run's Radicals and Split Them into Sessions
 
-WARNING (2026-08-21): the selector below is WRONG and must not be copied. A
-level is a band and a band mixes source datasets, so a radical taught at N5 can
-have its art at radicals/n4/<slug>.webp; listing mobile/assets/radicals/<level>/
-reports every such radical as missing art and regenerates work that already
-shipped. Select on the item's own visual_mnemonic_url instead — see Step 0 of
-radical-art-web-chat-workflow.md, which is the live lane.
-
 Do NOT hand-pick radicals. From the repository root, substituting <level>,
 <images-per-session> and <session-count>:
 
@@ -92,7 +85,7 @@ python3 - <<'PY'
 import json, os
 LEVEL, IMAGES_PER_SESSION, SESSION_COUNT = '<level>', <images-per-session>, <session-count>
 items = json.load(open(f'curriculum/radicals/{LEVEL}.json'))['items']
-art_dir = f'mobile/assets/radicals/{LEVEL}'
+art_dir = 'mobile/assets/radicals'
 have = {f[:-5] for f in os.listdir(art_dir) if f.endswith('.webp')}
 todo = [i for i in items
         if i['slug'] not in have
@@ -305,7 +298,7 @@ Step 8: Install All Staged Images — once, after every session
 Only after all <session-count> sessions are done, from the repository root:
 
 STAGE=curriculum/_build/generate_content/web/radical-art
-DEST=mobile/assets/radicals/<level>
+DEST=mobile/assets/radicals
 for f in "$STAGE"/*.png; do
   cwebp -quiet -resize 640 0 -q 80 "$f" -o "$DEST/$(basename "$f" .png).webp"
 done
@@ -316,12 +309,12 @@ cd mobile && npm run generate-radical-assets && npm run typecheck && npm run lin
 density with headroom, and flat art lands at 4–20 KB against an 80 KB budget.
 
 `generate-radical-assets` is the mechanical gate. It fails on any file not named
-`{n1-n5}/{slug}.webp` and on any file over 80 KB. If it fails on size, the image is not
+`{slug}.webp` (no subfolders) and on any file over 80 KB. If it fails on size, the image is not
 flat enough — re-roll that radical rather than lowering quality, because grain is a
 style failure, not a compression problem.
 
 No curriculum JSON changes are needed. `generate.py` already writes
-`visual_mnemonic_url: radicals/{level}/{slug}.webp` for every radical, so the ref exists
+`visual_mnemonic_url: radicals/{slug}.webp` for every radical, so the ref exists
 before the art does and resolves to text until the file lands.
 
 Step 9: Hand the Run Back to Me for Review
@@ -378,7 +371,7 @@ Report facts, not opinions about the art. Provide:
   for this run (count vs. the <images-per-session> × <session-count> target)
 - The sessions as run, listing each session's slugs in order, so I can tell which images
   came from which chat when I look for style drift
-- Every image produced, as `slug → mobile/assets/radicals/<level>/<slug>.webp`, with its
+- Every image produced, as `slug → mobile/assets/radicals/<slug>.webp`, with its
   WebP size — this is the list I review against
 - ⚠️ Any radical where Gemini produced no usable file after two attempts, and what it did
   instead (errored, refused, returned non-image)

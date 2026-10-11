@@ -2,7 +2,7 @@
   "jlpt_level": "N4",
   "items": [
     {
-      "slug": "k-generation",
+      "slug": "generation",
       "primary_form": "世",
       "meaning": "generation",
       "readings": [
@@ -46,7 +46,7 @@
       "sort_order": 1
     },
     {
-      "slug": "k-world",
+      "slug": "world",
       "primary_form": "界",
       "meaning": "world",
       "readings": [
@@ -81,7 +81,7 @@
       "sort_order": 2
     },
     {
-      "slug": "n4-kai",
+      "slug": "meet",
       "primary_form": "会",
       "meaning": "meet",
       "mnemonic_text": "A roof gathering people below it: a meeting, to meet.",
@@ -109,7 +109,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n5-kon-now"
+        "kanji:now"
       ],
       "meaning_mnemonic": "A <radical>person</radical> who walks the trail head-down and a <radical>cloud</radical> parked at face height are bound to <kanji>meet</kanji> with a soft, damp bump.",
       "reading_mnemonic": "Up where the trail vanishes into low cloud, a hiker named <reading>Kai</reading> has set up beside the one vending machine. Every climber who finally reaches him calls out <reading>かい</reading>, so his name is also the sound two people make when they meet.",
@@ -122,7 +122,7 @@
       "sort_order": 3
     },
     {
-      "slug": "n4-dou",
+      "slug": "same",
       "primary_form": "同",
       "meaning": "same",
       "mnemonic_text": "A box repeating the same shape inside: the same.",
@@ -159,7 +159,7 @@
       "sort_order": 4
     },
     {
-      "slug": "k-idea",
+      "slug": "idea",
       "primary_form": "意",
       "meaning": "idea",
       "readings": [
@@ -198,7 +198,7 @@
       "sort_order": 5
     },
     {
-      "slug": "n4-koto",
+      "slug": "matter",
       "primary_form": "事",
       "meaning": "matter / thing",
       "mnemonic_text": "A hand holding a skewer of tasks: a matter to handle.",
@@ -236,7 +236,7 @@
       "sort_order": 6
     },
     {
-      "slug": "n4-ji-self",
+      "slug": "self",
       "primary_form": "自",
       "meaning": "self",
       "mnemonic_text": "A nose pointing at oneself: 'me', self.",
@@ -264,8 +264,8 @@
         }
       ],
       "visually_similar_slugs": [
-        "n5-shiro-white",
-        "n5-me-eye"
+        "kanji:white",
+        "kanji:eye"
       ],
       "meaning_mnemonic": "You get this one for free, because the <radical>self</radical> radical you already know and the <kanji>self</kanji> kanji are the exact same character.",
       "reading_mnemonic": "A genie drifts up from the offering box at Grandma Kane's shrine, and when you ask who he takes orders from, he points a finger straight at his own nose and says <reading>じ</reading>. It comes out like a flat <reading>Gee</reading>, the sound you make when the answer was always going to be yourself.",
@@ -278,7 +278,7 @@
       "sort_order": 7
     },
     {
-      "slug": "n4-sha",
+      "slug": "company",
       "primary_form": "社",
       "meaning": "company / shrine",
       "mnemonic_text": "An altar (示) marking earth (土): a shrine, and by extension a company.",
@@ -315,7 +315,7 @@
       "sort_order": 8
     },
     {
-      "slug": "n4-hatsu",
+      "slug": "depart",
       "primary_form": "発",
       "meaning": "depart / emit",
       "mnemonic_text": "Legs launching outward from a bow: departure, emitting.",
@@ -347,7 +347,7 @@
       "sort_order": 9
     },
     {
-      "slug": "n4-mono",
+      "slug": "someone",
       "primary_form": "者",
       "meaning": "person",
       "mnemonic_text": "An old man bent over a stick: a person.",
@@ -385,7 +385,7 @@
       "sort_order": 10
     },
     {
-      "slug": "n4-chi",
+      "slug": "ground",
       "primary_form": "地",
       "meaning": "ground / earth",
       "mnemonic_text": "Earth (土) twisting like a snake (also): the ground.",
@@ -418,7 +418,7 @@
       "sort_order": 11
     },
     {
-      "slug": "n4-gyou",
+      "slug": "business",
       "primary_form": "業",
       "meaning": "business / occupation",
       "mnemonic_text": "A workbench stacked with tools: one's trade, business.",
@@ -455,7 +455,7 @@
       "sort_order": 12
     },
     {
-      "slug": "n4-hou",
+      "slug": "direction",
       "primary_form": "方",
       "meaning": "direction / person",
       "mnemonic_text": "A flag on a pole pointing a direction.",
@@ -483,7 +483,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n5-man"
+        "kanji:ten-thousand"
       ],
       "meaning_mnemonic": "The <radical>direction</radical> radical and the <kanji>direction</kanji> kanji are the same, and it also works as a polite word for a person, since pointing someone's way is a soft way to point them out.",
       "reading_mnemonic": "Where the shrine path splits three ways, an old gardener leans on his <reading>hoe</reading> and never says a word. Ask him which fork to take and he simply swings the hoe to point down one of them with a low, breathy <reading>ほう</reading>.",
@@ -496,7 +496,7 @@
       "sort_order": 13
     },
     {
-      "slug": "n4-ba",
+      "slug": "location",
       "primary_form": "場",
       "meaning": "place",
       "mnemonic_text": "Earth (土) where the sun (陽 implied) opens up a place.",
@@ -533,7 +533,7 @@
       "sort_order": 14
     },
     {
-      "slug": "n4-tokoro",
+      "slug": "place",
       "primary_form": "所",
       "meaning": "place",
       "mnemonic_text": "An axe (斤) beside a door (戸): the place where work is done.",
@@ -570,7 +570,7 @@
       "sort_order": 15
     },
     {
-      "slug": "n4-shin-heart",
+      "slug": "heart",
       "primary_form": "心",
       "meaning": "heart / mind",
       "mnemonic_text": "A stylized heart shape with three drips of feeling.",
@@ -598,7 +598,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n4-hitsu"
+        "kanji:necessary"
       ],
       "meaning_mnemonic": "The <radical>heart</radical> radical and the <kanji>heart</kanji> kanji are one and the same, and because old Japanese placed thought in the chest rather than the head, the shape also means mind.",
       "reading_mnemonic": "Shin the jogger stops at Grandma Kane's shrine every morning to complain about his <reading>しん</reading>, his aching <reading>shin</reading>. One morning a cat on the mossy steps trips him, and the fall finally gives his hammering heart something else to worry about.",
@@ -611,7 +611,7 @@
       "sort_order": 16
     },
     {
-      "slug": "n4-mise",
+      "slug": "shop",
       "primary_form": "店",
       "meaning": "shop",
       "mnemonic_text": "A roof (广) over a stopping point (占): a shop.",
@@ -648,7 +648,7 @@
       "sort_order": 17
     },
     {
-      "slug": "n4-ie-kanji",
+      "slug": "house",
       "primary_form": "家",
       "meaning": "house",
       "mnemonic_text": "A roof over a pig (豕): the traditional house.",
@@ -686,7 +686,7 @@
       "sort_order": 18
     },
     {
-      "slug": "n4-shitsu",
+      "slug": "room",
       "primary_form": "室",
       "meaning": "room",
       "mnemonic_text": "A roof (宀) reaching (至) to enclose a room.",
@@ -724,7 +724,7 @@
       "sort_order": 19
     },
     {
-      "slug": "n4-zu",
+      "slug": "diagram",
       "primary_form": "図",
       "meaning": "diagram / map",
       "mnemonic_text": "A box enclosing plotted lines: a diagram, a map.",
@@ -761,7 +761,7 @@
       "sort_order": 20
     },
     {
-      "slug": "n4-shi-try",
+      "slug": "try",
       "primary_form": "試",
       "meaning": "try / test",
       "mnemonic_text": "Words (言) given a式 (form/ceremony): a formal test.",
@@ -798,7 +798,7 @@
       "sort_order": 21
     },
     {
-      "slug": "n4-ken-exam",
+      "slug": "examine",
       "primary_form": "験",
       "meaning": "examine",
       "mnemonic_text": "A horse (馬) inspected all over (侴): to test, examine.",
@@ -830,7 +830,7 @@
       "sort_order": 22
     },
     {
-      "slug": "k-craft",
+      "slug": "craft",
       "primary_form": "工",
       "meaning": "craft",
       "readings": [
@@ -865,7 +865,7 @@
       "sort_order": 23
     },
     {
-      "slug": "n4-kyou-teach",
+      "slug": "teach",
       "primary_form": "教",
       "meaning": "teach",
       "mnemonic_text": "An old man's staff (攵) guiding a child (孝): to teach.",
@@ -902,7 +902,7 @@
       "sort_order": 24
     },
     {
-      "slug": "n4-omou",
+      "slug": "think",
       "primary_form": "思",
       "meaning": "think",
       "mnemonic_text": "A field (田) sitting over the heart (心): thoughts forming.",
@@ -939,7 +939,7 @@
       "sort_order": 25
     },
     {
-      "slug": "n4-hiku",
+      "slug": "pull",
       "primary_form": "引",
       "meaning": "pull",
       "mnemonic_text": "A bow (弓) with its string pulled taut: to pull.",
@@ -976,7 +976,7 @@
       "sort_order": 26
     },
     {
-      "slug": "n4-uta",
+      "slug": "song",
       "primary_form": "歌",
       "meaning": "song",
       "mnemonic_text": "Repeated breaths (可可) beside a yawning mouth (欠): a song.",
@@ -1013,7 +1013,7 @@
       "sort_order": 27
     },
     {
-      "slug": "n4-motsu",
+      "slug": "hold",
       "primary_form": "持",
       "meaning": "hold",
       "mnemonic_text": "A hand (扌) keeping something steady like a temple (寺): to hold.",
@@ -1051,7 +1051,7 @@
       "sort_order": 28
     },
     {
-      "slug": "n4-tsukau",
+      "slug": "use",
       "primary_form": "使",
       "meaning": "use",
       "mnemonic_text": "A person (亻) directing an official (吏): to use, to employ.",
@@ -1088,7 +1088,7 @@
       "sort_order": 29
     },
     {
-      "slug": "n4-hataraku",
+      "slug": "work",
       "primary_form": "働",
       "meaning": "work",
       "mnemonic_text": "A person (亻) in motion (動): working.",
@@ -1126,7 +1126,7 @@
       "sort_order": 30
     },
     {
-      "slug": "n4-kariru",
+      "slug": "borrow",
       "primary_form": "借",
       "meaning": "borrow",
       "mnemonic_text": "A person (亻) relying on old (昔) favors: to borrow.",
@@ -1164,7 +1164,7 @@
       "sort_order": 31
     },
     {
-      "slug": "n4-kasu",
+      "slug": "lend",
       "primary_form": "貸",
       "meaning": "lend",
       "mnemonic_text": "Money (貝) replacing (代) what's missing: to lend.",
@@ -1201,7 +1201,7 @@
       "sort_order": 32
     },
     {
-      "slug": "n4-shiru",
+      "slug": "know",
       "primary_form": "知",
       "meaning": "know",
       "mnemonic_text": "An arrow (矢) hitting the mouth's (口) point: to know for certain.",
@@ -1238,7 +1238,7 @@
       "sort_order": 33
     },
     {
-      "slug": "n4-hajimeru",
+      "slug": "begin",
       "primary_form": "始",
       "meaning": "begin",
       "mnemonic_text": "A woman (女) with her own (台) fresh start: to begin.",
@@ -1275,7 +1275,7 @@
       "sort_order": 34
     },
     {
-      "slug": "n4-owaru",
+      "slug": "end",
       "primary_form": "終",
       "meaning": "end",
       "mnemonic_text": "Thread (糸) wound to its winter (冬) finish: to end.",
@@ -1312,7 +1312,7 @@
       "sort_order": 35
     },
     {
-      "slug": "n4-isogu",
+      "slug": "hurry",
       "primary_form": "急",
       "meaning": "hurry",
       "mnemonic_text": "Grasping (⺈) at the heart (心): an urgent hurry.",
@@ -1349,7 +1349,7 @@
       "sort_order": 36
     },
     {
-      "slug": "n4-hashiru",
+      "slug": "run",
       "primary_form": "走",
       "meaning": "run",
       "mnemonic_text": "A person (土-like legs) bounding forward: to run.",
@@ -1386,7 +1386,7 @@
       "sort_order": 37
     },
     {
-      "slug": "n4-tobu",
+      "slug": "fly",
       "primary_form": "飛",
       "meaning": "fly",
       "mnemonic_text": "Wings spread mid-motion: to fly.",
@@ -1423,7 +1423,7 @@
       "sort_order": 38
     },
     {
-      "slug": "n4-arau",
+      "slug": "wash",
       "primary_form": "洗",
       "meaning": "wash",
       "mnemonic_text": "Water (氵) poured over first (先) rinse: to wash.",
@@ -1460,7 +1460,7 @@
       "sort_order": 39
     },
     {
-      "slug": "n4-shinu",
+      "slug": "die",
       "primary_form": "死",
       "meaning": "die",
       "mnemonic_text": "Bad luck (歹) beside a person collapsed: to die.",
@@ -1497,7 +1497,7 @@
       "sort_order": 40
     },
     {
-      "slug": "n4-asobu",
+      "slug": "play",
       "primary_form": "遊",
       "meaning": "play",
       "mnemonic_text": "A wandering road (辶) with a flag (斿) of fun: to play.",
@@ -1534,7 +1534,7 @@
       "sort_order": 41
     },
     {
-      "slug": "n4-kiru-wear",
+      "slug": "wear",
       "primary_form": "着",
       "meaning": "wear / arrive",
       "mnemonic_text": "Sheep (羊) settling onto the eye's (目) view: to arrive, to wear.",
@@ -1572,7 +1572,7 @@
       "sort_order": 42
     },
     {
-      "slug": "n4-chigau",
+      "slug": "differ",
       "primary_form": "違",
       "meaning": "differ",
       "mnemonic_text": "A road (辶) that splits away (韋): to differ.",
@@ -1610,7 +1610,7 @@
       "sort_order": 43
     },
     {
-      "slug": "n4-atsumeru",
+      "slug": "gather",
       "primary_form": "集",
       "meaning": "gather",
       "mnemonic_text": "A bird (隹) landing on a tree (木) with the flock: to gather.",
@@ -1647,7 +1647,7 @@
       "sort_order": 44
     },
     {
-      "slug": "n4-betsu",
+      "slug": "separate",
       "primary_form": "別",
       "meaning": "separate",
       "mnemonic_text": "A knife (刂) cutting a shape (另) apart: to separate.",
@@ -1685,7 +1685,7 @@
       "sort_order": 45
     },
     {
-      "slug": "n4-shu-main",
+      "slug": "main",
       "primary_form": "主",
       "meaning": "main / lord",
       "mnemonic_text": "A lamp's flame steady atop its stand: the main, central one.",
@@ -1713,7 +1713,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "ou-king"
+        "radical:ou-king"
       ],
       "meaning_mnemonic": "Screw a <radical>lid</radical> down over the <radical>king</radical>'s crown and you seal in the one <kanji>lord</kanji> whose word the whole house has to follow.",
       "reading_mnemonic": "A footman called <reading>Shoe</reading> greets just one man each morning with a crisp 「<reading>しゅ</reading>」, since that is the only <kanji>lord</kanji> whose boots he is paid to kneel over.",
@@ -1726,7 +1726,7 @@
       "sort_order": 46
     },
     {
-      "slug": "n4-ani",
+      "slug": "older-brother",
       "primary_form": "兄",
       "meaning": "older brother",
       "mnemonic_text": "A mouth (口) atop legs (儿): the elder brother who speaks first.",
@@ -1763,7 +1763,7 @@
       "sort_order": 47
     },
     {
-      "slug": "n4-otouto",
+      "slug": "younger-brother",
       "primary_form": "弟",
       "meaning": "younger brother",
       "mnemonic_text": "A cord wound down a post: the younger, lower-ranked brother.",
@@ -1800,7 +1800,7 @@
       "sort_order": 48
     },
     {
-      "slug": "k-gate",
+      "slug": "gate",
       "primary_form": "門",
       "meaning": "gate",
       "readings": [
@@ -1840,7 +1840,7 @@
       "sort_order": 49
     },
     {
-      "slug": "n4-ane",
+      "slug": "older-sister",
       "primary_form": "姉",
       "meaning": "older sister",
       "mnemonic_text": "A woman (女) who is already (市-like) senior: the older sister.",
@@ -1868,7 +1868,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n4-imouto"
+        "kanji:younger-sister"
       ],
       "meaning_mnemonic": "Your <kanji>older sister</kanji> is the one <radical>woman</radical> in the house old enough to be sent to the <radical>market</radical> alone with the grocery money.",
       "reading_mnemonic": "Being oldest, the <kanji>older sister</kanji> gets left in charge, so she keeps the little ones quiet with one sharp 「<reading>し</reading>」. It is the same <reading>shh</reading> a librarian would use, and the only word they hear all evening.",
@@ -1881,7 +1881,7 @@
       "sort_order": 50
     },
     {
-      "slug": "n4-imouto",
+      "slug": "younger-sister",
       "primary_form": "妹",
       "meaning": "younger sister",
       "mnemonic_text": "A woman (女) not yet (未) grown: the younger sister.",
@@ -1909,7 +1909,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n4-ane"
+        "kanji:older-sister"
       ],
       "meaning_mnemonic": "A <radical>woman</radical> who is <radical>not yet</radical> old enough for anyone to call her one is the <kanji>younger sister</kanji> of the house.",
       "reading_mnemonic": "At Grandma Kane's shrine a toddler chases every cat down the mossy steps, grabbing fur and howling <reading>my</reading>, my, mine, which comes out of her as <reading>まい</reading>. She is too little to know the shrine cats belong to no one. Grandma Kane scoops her up before she reaches the big bell.",
@@ -1922,7 +1922,7 @@
       "sort_order": 51
     },
     {
-      "slug": "n4-oya",
+      "slug": "parent",
       "primary_form": "親",
       "meaning": "parent",
       "mnemonic_text": "Standing (立) by a tree (木) watching (見): a parent's love.",
@@ -1959,7 +1959,7 @@
       "sort_order": 52
     },
     {
-      "slug": "n4-iro",
+      "slug": "color",
       "primary_form": "色",
       "meaning": "color",
       "mnemonic_text": "A person kneeling beside a seal: the color of one's mood.",
@@ -1996,7 +1996,7 @@
       "sort_order": 53
     },
     {
-      "slug": "n4-aji",
+      "slug": "taste",
       "primary_form": "味",
       "meaning": "taste",
       "mnemonic_text": "A mouth (口) not yet (未) full: tasting a bit.",
@@ -2034,7 +2034,7 @@
       "sort_order": 54
     },
     {
-      "slug": "n4-suki",
+      "slug": "like",
       "primary_form": "好",
       "meaning": "like / fond",
       "mnemonic_text": "A woman (女) beside her child (子): a fondness, to like.",
@@ -2071,7 +2071,7 @@
       "sort_order": 55
     },
     {
-      "slug": "n4-warui",
+      "slug": "bad",
       "primary_form": "悪",
       "meaning": "bad",
       "mnemonic_text": "A twisted shape over the heart (心): a bad feeling.",
@@ -2109,7 +2109,7 @@
       "sort_order": 56
     },
     {
-      "slug": "k-mask",
+      "slug": "mask",
       "primary_form": "面",
       "meaning": "mask",
       "readings": [
@@ -2153,7 +2153,7 @@
       "sort_order": 57
     },
     {
-      "slug": "n4-futoi",
+      "slug": "plump",
       "primary_form": "太",
       "meaning": "thick / fat",
       "mnemonic_text": "Big (大) with an extra drop of size: thick, fat.",
@@ -2181,8 +2181,8 @@
         }
       ],
       "visually_similar_slugs": [
-        "n5-dai-big",
-        "inu"
+        "kanji:big",
+        "radical:inu"
       ],
       "meaning_mnemonic": "One extra <radical>drop</radical> of fat on someone already stretched as <radical>big</radical> as they can stand is all it takes to turn big into <kanji>fat</kanji>.",
       "reading_mnemonic": "The one necktie in Sei's school lost-and-found has been knotted so many times its knot swelled <kanji>fat</kanji>, and 「<reading>たい</reading>」 is the only name anyone gives that sad <reading>tie</reading> now.",
@@ -2195,7 +2195,7 @@
       "sort_order": 58
     },
     {
-      "slug": "n4-hosoi",
+      "slug": "thin",
       "primary_form": "細",
       "meaning": "thin / fine",
       "mnemonic_text": "Thread (糸) drawn out fine over a field (田): thin, detailed.",
@@ -2232,7 +2232,7 @@
       "sort_order": 59
     },
     {
-      "slug": "n4-karui",
+      "slug": "light-weight",
       "primary_form": "軽",
       "meaning": "light (weight)",
       "mnemonic_text": "A cart (車) that passes lightly (圣): not heavy.",
@@ -2269,7 +2269,7 @@
       "sort_order": 60
     },
     {
-      "slug": "n4-omoi",
+      "slug": "heavy",
       "primary_form": "重",
       "meaning": "heavy",
       "mnemonic_text": "A cart's heavy load stacked high: heavy, important.",
@@ -2297,7 +2297,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n5-sha-car"
+        "kanji:car"
       ],
       "meaning_mnemonic": "A <radical>village</radical> told to shift a <radical>thousand</radical> rice sacks finds out fast that a thousand of anything at once is too <kanji>heavy</kanji> to move.",
       "reading_mnemonic": "The village hires a furniture mover named <reading>Jude</reading> to bring its thousand rice sacks up from the riverbank in one load. He gets three sacks onto his back, sinks to his knees in the mud, and stays there groaning <reading>じゅう</reading> until the tide comes in.",
@@ -2310,7 +2310,7 @@
       "sort_order": 61
     },
     {
-      "slug": "n4-yowai",
+      "slug": "weak",
       "primary_form": "弱",
       "meaning": "weak",
       "mnemonic_text": "Two bent bows losing their tension: weak.",
@@ -2348,7 +2348,7 @@
       "sort_order": 62
     },
     {
-      "slug": "n4-tsuyoi",
+      "slug": "strong",
       "primary_form": "強",
       "meaning": "strong",
       "mnemonic_text": "A bow (弓) reinforced with a hard shell (虽): strong.",
@@ -2386,7 +2386,7 @@
       "sort_order": 63
     },
     {
-      "slug": "n4-kurai",
+      "slug": "dark",
       "primary_form": "暗",
       "meaning": "dark",
       "mnemonic_text": "The sun (日) hidden behind sound (音) of night: dark.",
@@ -2423,7 +2423,7 @@
       "sort_order": 64
     },
     {
-      "slug": "n4-akarui",
+      "slug": "bright",
       "primary_form": "明",
       "meaning": "bright",
       "mnemonic_text": "The sun (日) beside the moon (月): both lighting up, bright.",
@@ -2460,7 +2460,7 @@
       "sort_order": 65
     },
     {
-      "slug": "n4-hiroi",
+      "slug": "wide",
       "primary_form": "広",
       "meaning": "wide / spacious",
       "mnemonic_text": "A shelter (广) opening onto open ground: wide, spacious.",
@@ -2497,7 +2497,7 @@
       "sort_order": 66
     },
     {
-      "slug": "n4-kimeru",
+      "slug": "decide",
       "primary_form": "決",
       "meaning": "decide",
       "mnemonic_text": "Water (氵) breaking through a levee (夬): a decisive break.",
@@ -2534,7 +2534,7 @@
       "sort_order": 67
     },
     {
-      "slug": "n4-kangaeru",
+      "slug": "consider",
       "primary_form": "考",
       "meaning": "think",
       "mnemonic_text": "An old man's (耂) bent posture, deep in thought.",
@@ -2572,7 +2572,7 @@
       "sort_order": 68
     },
     {
-      "slug": "n4-shiraberu",
+      "slug": "investigate",
       "primary_form": "調",
       "meaning": "investigate",
       "mnemonic_text": "Words (言) matched all around (周): to check, investigate.",
@@ -2610,7 +2610,7 @@
       "sort_order": 69
     },
     {
-      "slug": "n4-narau",
+      "slug": "learn",
       "primary_form": "習",
       "meaning": "learn / practice",
       "mnemonic_text": "Feathers (羽) over white (白): a bird practicing to fly, to learn.",
@@ -2647,7 +2647,7 @@
       "sort_order": 70
     },
     {
-      "slug": "n4-oboeru",
+      "slug": "remember",
       "primary_form": "覚",
       "meaning": "remember",
       "mnemonic_text": "Learning (⺍) opening one's view (見): to remember, realize.",
@@ -2685,7 +2685,7 @@
       "sort_order": 71
     },
     {
-      "slug": "n4-wasureru",
+      "slug": "forget",
       "primary_form": "忘",
       "meaning": "forget",
       "mnemonic_text": "A dying (亡) heart (心) losing its memory: to forget.",
@@ -2722,7 +2722,7 @@
       "sort_order": 72
     },
     {
-      "slug": "n4-hakobu",
+      "slug": "carry",
       "primary_form": "運",
       "meaning": "carry / luck",
       "mnemonic_text": "A wagon (軍) moving down a road (辶): to carry, one's fortune.",
@@ -2759,7 +2759,7 @@
       "sort_order": 73
     },
     {
-      "slug": "n4-okuru",
+      "slug": "send",
       "primary_form": "送",
       "meaning": "send",
       "mnemonic_text": "A road (辶) release (关) sending something off: to send.",
@@ -2796,7 +2796,7 @@
       "sort_order": 74
     },
     {
-      "slug": "n4-shitsu-quality",
+      "slug": "quality",
       "primary_form": "質",
       "meaning": "quality / question",
       "mnemonic_text": "Two axes (斤斤) weighing shells (貝) of value: quality, substance.",
@@ -2828,7 +2828,7 @@
       "sort_order": 75
     },
     {
-      "slug": "k-whole",
+      "slug": "whole",
       "primary_form": "全",
       "meaning": "whole",
       "readings": [
@@ -2872,7 +2872,7 @@
       "sort_order": 76
     },
     {
-      "slug": "n4-kotae",
+      "slug": "answer",
       "primary_form": "答",
       "meaning": "answer",
       "mnemonic_text": "Bamboo (竹) matching (合) the right response: an answer.",
@@ -2909,7 +2909,7 @@
       "sort_order": 77
     },
     {
-      "slug": "n4-zoku",
+      "slug": "family",
       "primary_form": "族",
       "meaning": "family / clan",
       "mnemonic_text": "A flag (方 side) rallying an arrow's (矢) clan together: family.",
@@ -2942,7 +2942,7 @@
       "sort_order": 78
     },
     {
-      "slug": "k-negative",
+      "slug": "negative",
       "primary_form": "不",
       "meaning": "negative",
       "readings": [
@@ -2982,7 +2982,7 @@
       "sort_order": 79
     },
     {
-      "slug": "n4-ryou-fee",
+      "slug": "fee",
       "primary_form": "料",
       "meaning": "fee / materials",
       "mnemonic_text": "Rice (米) measured with a dipper (斗): materials, a fee.",
@@ -3014,7 +3014,7 @@
       "sort_order": 80
     },
     {
-      "slug": "n4-ri",
+      "slug": "reason",
       "primary_form": "理",
       "meaning": "reason / logic",
       "mnemonic_text": "A jewel (王) cut along its natural grain (里): reason, logic.",
@@ -3046,7 +3046,7 @@
       "sort_order": 81
     },
     {
-      "slug": "n4-hitsu",
+      "slug": "necessary",
       "primary_form": "必",
       "meaning": "necessary",
       "mnemonic_text": "A heart (心) pierced by a single resolved stroke: certainly necessary.",
@@ -3074,7 +3074,7 @@
         }
       ],
       "visually_similar_slugs": [
-        "n4-shin-heart"
+        "kanji:heart"
       ],
       "meaning_mnemonic": "At the river crossing, a <radical>slash</radical> swinging toward your <radical>heart</radical> makes stepping aside less a choice than a <kanji>necessary</kanji> reflex.",
       "reading_mnemonic": "<reading>ひつ</reading> is the only word the riverbank ferryman ever says. He will not row you across until you beat him in a quick bout, and the moment his pole taps your chest he spits it out, clipped and flat, sounding just like <reading>hit you</reading>.",
@@ -3087,7 +3087,7 @@
       "sort_order": 82
     },
     {
-      "slug": "k-hit",
+      "slug": "hit",
       "primary_form": "当",
       "meaning": "hit",
       "readings": [
@@ -3131,7 +3131,7 @@
       "sort_order": 83
     },
     {
-      "slug": "n4-you-need",
+      "slug": "need",
       "primary_form": "要",
       "meaning": "need / important",
       "mnemonic_text": "A woman (女) under a covering (覀): the essential point, needed.",
@@ -3168,7 +3168,7 @@
       "sort_order": 84
     },
     {
-      "slug": "k-correct",
+      "slug": "correct",
       "primary_form": "正",
       "meaning": "correct",
       "readings": [
@@ -3212,7 +3212,7 @@
       "sort_order": 85
     },
     {
-      "slug": "k-straightaway",
+      "slug": "straightaway",
       "primary_form": "直",
       "meaning": "straightaway",
       "readings": [
@@ -3257,7 +3257,7 @@
       "sort_order": 86
     },
     {
-      "slug": "n4-kei-pass",
+      "slug": "pass-through",
       "primary_form": "経",
       "meaning": "pass through / sutra",
       "mnemonic_text": "Thread (糸) running straight through the loom (圣): to pass through time.",
@@ -3294,7 +3294,7 @@
       "sort_order": 87
     },
     {
-      "slug": "n4-tsuzukeru",
+      "slug": "continue",
       "primary_form": "続",
       "meaning": "continue",
       "mnemonic_text": "Thread (糸) sold (売) onward without a break: to continue.",
@@ -3331,7 +3331,7 @@
       "sort_order": 88
     },
     {
-      "slug": "n4-kuraberu",
+      "slug": "compare",
       "primary_form": "比",
       "meaning": "compare",
       "mnemonic_text": "Two people standing side by side: to compare.",
@@ -3368,7 +3368,7 @@
       "sort_order": 89
     },
     {
-      "slug": "n4-erabu",
+      "slug": "choose",
       "primary_form": "選",
       "meaning": "choose",
       "mnemonic_text": "Feet advancing (辶) among matched (巽) options: to choose.",
@@ -3405,7 +3405,7 @@
       "sort_order": 90
     },
     {
-      "slug": "n4-nokoru",
+      "slug": "remain",
       "primary_form": "残",
       "meaning": "remain",
       "mnemonic_text": "Bones (歹) left over after the cut (戔): what remains.",
@@ -3442,7 +3442,7 @@
       "sort_order": 91
     },
     {
-      "slug": "n4-fueru",
+      "slug": "increase",
       "primary_form": "増",
       "meaning": "increase",
       "mnemonic_text": "Earth (土) piled ever higher (曽): to increase.",
@@ -3479,7 +3479,7 @@
       "sort_order": 92
     },
     {
-      "slug": "n4-heru-decrease",
+      "slug": "decrease",
       "primary_form": "減",
       "meaning": "decrease",
       "mnemonic_text": "Water (氵) cut down (咸) to less: to decrease.",
@@ -3516,7 +3516,7 @@
       "sort_order": 93
     },
     {
-      "slug": "n4-kawaru",
+      "slug": "change",
       "primary_form": "変",
       "meaning": "change",
       "mnemonic_text": "Threads (糸-like) twisted into something strange: to change.",
@@ -3554,7 +3554,7 @@
       "sort_order": 94
     },
     {
-      "slug": "n4-modoru",
+      "slug": "go-back",
       "primary_form": "戻",
       "meaning": "return",
       "mnemonic_text": "A dog (犬) squeezing back under a door (戸): to return.",
@@ -3592,7 +3592,7 @@
       "sort_order": 95
     },
     {
-      "slug": "n4-todoku",
+      "slug": "reach",
       "primary_form": "届",
       "meaning": "reach / deliver",
       "mnemonic_text": "A body (尸) stretching (由) out to reach: to deliver, arrive.",
@@ -3629,7 +3629,7 @@
       "sort_order": 96
     },
     {
-      "slug": "n4-hitsuji",
+      "slug": "sheep",
       "primary_form": "羊",
       "meaning": "sheep",
       "mnemonic_text": "Horns flaring above a frame of stiff crossed legs: a sheep.",
@@ -3666,7 +3666,7 @@
       "sort_order": 97
     },
     {
-      "slug": "k-bring-up",
+      "slug": "bring-up",
       "primary_form": "育",
       "meaning": "bring up",
       "readings": [
@@ -3710,7 +3710,7 @@
       "sort_order": 98
     },
     {
-      "slug": "k-current",
+      "slug": "current",
       "primary_form": "流",
       "meaning": "current",
       "readings": [
@@ -3754,7 +3754,7 @@
       "sort_order": 99
     },
     {
-      "slug": "k-times",
+      "slug": "times",
       "primary_form": "回",
       "meaning": "-times",
       "readings": [
@@ -3798,7 +3798,7 @@
       "sort_order": 100
     },
     {
-      "slug": "k-traffic",
+      "slug": "traffic",
       "primary_form": "通",
       "meaning": "traffic",
       "readings": [
@@ -3842,7 +3842,7 @@
       "sort_order": 101
     },
     {
-      "slug": "k-help",
+      "slug": "help",
       "primary_form": "助",
       "meaning": "help",
       "readings": [
@@ -3886,7 +3886,7 @@
       "sort_order": 102
     },
     {
-      "slug": "k-wait",
+      "slug": "wait",
       "primary_form": "待",
       "meaning": "wait",
       "readings": [
@@ -3926,7 +3926,7 @@
       "sort_order": 103
     },
     {
-      "slug": "k-emotion",
+      "slug": "emotion",
       "primary_form": "感",
       "meaning": "emotion",
       "readings": [
@@ -3965,7 +3965,7 @@
       "sort_order": 104
     },
     {
-      "slug": "k-ride",
+      "slug": "ride",
       "primary_form": "乗",
       "meaning": "ride",
       "readings": [
@@ -4010,7 +4010,7 @@
       "sort_order": 105
     },
     {
-      "slug": "k-take",
+      "slug": "take",
       "primary_form": "取",
       "meaning": "take",
       "readings": [
@@ -4054,7 +4054,7 @@
       "sort_order": 106
     },
     {
-      "slug": "k-fit",
+      "slug": "fit",
       "primary_form": "合",
       "meaning": "fit",
       "readings": [
@@ -4098,7 +4098,7 @@
       "sort_order": 107
     },
     {
-      "slug": "k-make",
+      "slug": "make",
       "primary_form": "作",
       "meaning": "make",
       "readings": [
@@ -4142,7 +4142,7 @@
       "sort_order": 108
     },
     {
-      "slug": "k-cow",
+      "slug": "cow",
       "primary_form": "牛",
       "meaning": "cow",
       "readings": [
@@ -4178,7 +4178,7 @@
       "sort_order": 109
     },
     {
-      "slug": "k-forest",
+      "slug": "forest",
       "primary_form": "森",
       "meaning": "forest",
       "readings": [
@@ -4218,7 +4218,7 @@
       "sort_order": 110
     },
     {
-      "slug": "k-grove",
+      "slug": "grove",
       "primary_form": "林",
       "meaning": "grove",
       "readings": [
@@ -4258,7 +4258,7 @@
       "sort_order": 111
     },
     {
-      "slug": "k-pond",
+      "slug": "pond",
       "primary_form": "池",
       "meaning": "pond",
       "readings": [
@@ -4302,7 +4302,7 @@
       "sort_order": 112
     },
     {
-      "slug": "k-harmony",
+      "slug": "harmony",
       "primary_form": "和",
       "meaning": "harmony",
       "readings": [
@@ -4347,7 +4347,7 @@
       "sort_order": 113
     },
     {
-      "slug": "k-ocean",
+      "slug": "ocean",
       "primary_form": "洋",
       "meaning": "ocean",
       "readings": [
@@ -4386,7 +4386,7 @@
       "sort_order": 114
     },
     {
-      "slug": "k-pour",
+      "slug": "pour",
       "primary_form": "注",
       "meaning": "pour",
       "readings": [
@@ -4430,7 +4430,7 @@
       "sort_order": 115
     },
     {
-      "slug": "k-plains",
+      "slug": "plains",
       "primary_form": "野",
       "meaning": "plains",
       "readings": [
@@ -4474,7 +4474,7 @@
       "sort_order": 116
     },
     {
-      "slug": "k-vegetable",
+      "slug": "vegetable",
       "primary_form": "菜",
       "meaning": "vegetable",
       "readings": [
@@ -4518,7 +4518,7 @@
       "sort_order": 117
     },
     {
-      "slug": "k-clothing",
+      "slug": "clothing",
       "primary_form": "服",
       "meaning": "clothing",
       "readings": [
@@ -4558,7 +4558,7 @@
       "sort_order": 118
     },
     {
-      "slug": "k-goods",
+      "slug": "goods",
       "primary_form": "品",
       "meaning": "goods",
       "readings": [
@@ -4603,7 +4603,7 @@
       "sort_order": 119
     },
     {
-      "slug": "k-distant",
+      "slug": "distant",
       "primary_form": "遠",
       "meaning": "distant",
       "readings": [
@@ -4643,7 +4643,7 @@
       "sort_order": 120
     },
     {
-      "slug": "k-opinion",
+      "slug": "opinion",
       "primary_form": "説",
       "meaning": "opinion",
       "readings": [
@@ -4688,7 +4688,7 @@
       "sort_order": 121
     },
     {
-      "slug": "k-scribe",
+      "slug": "scribe",
       "primary_form": "記",
       "meaning": "scribe",
       "readings": [
@@ -4732,7 +4732,7 @@
       "sort_order": 122
     },
     {
-      "slug": "k-accept",
+      "slug": "accept",
       "primary_form": "受",
       "meaning": "accept",
       "readings": [
@@ -4776,7 +4776,7 @@
       "sort_order": 123
     },
     {
-      "slug": "k-plot",
+      "slug": "plot",
       "primary_form": "計",
       "meaning": "plot",
       "readings": [
@@ -4821,7 +4821,7 @@
       "sort_order": 124
     },
     {
-      "slug": "k-by-means",
+      "slug": "by-means",
       "primary_form": "以",
       "meaning": "by means of",
       "readings": [
@@ -4865,7 +4865,7 @@
       "sort_order": 125
     },
     {
-      "slug": "k-special",
+      "slug": "special",
       "primary_form": "特",
       "meaning": "special",
       "readings": [
@@ -4896,7 +4896,7 @@
       "sort_order": 126
     },
     {
-      "slug": "k-happiness",
+      "slug": "happiness",
       "primary_form": "幸",
       "meaning": "happiness",
       "readings": [
@@ -4940,7 +4940,7 @@
       "sort_order": 127
     },
     {
-      "slug": "k-degrees",
+      "slug": "degrees",
       "primary_form": "度",
       "meaning": "degrees",
       "readings": [
@@ -4984,7 +4984,7 @@
       "sort_order": 128
     },
     {
-      "slug": "k-polish",
+      "slug": "polish",
       "primary_form": "研",
       "meaning": "polish",
       "readings": [
@@ -5028,7 +5028,7 @@
       "sort_order": 129
     },
     {
-      "slug": "k-research",
+      "slug": "research",
       "primary_form": "究",
       "meaning": "research",
       "readings": [
@@ -5069,7 +5069,7 @@
       "sort_order": 130
     },
     {
-      "slug": "k-inside",
+      "slug": "inside",
       "primary_form": "内",
       "meaning": "inside",
       "readings": [
@@ -5113,7 +5113,7 @@
       "sort_order": 131
     },
     {
-      "slug": "k-sea",
+      "slug": "sea",
       "primary_form": "海",
       "meaning": "sea",
       "readings": [
@@ -5153,7 +5153,7 @@
       "sort_order": 132
     },
     {
-      "slug": "k-rice-field",
+      "slug": "rice-field",
       "primary_form": "田",
       "meaning": "rice field",
       "readings": [
@@ -5193,7 +5193,7 @@
       "sort_order": 133
     },
     {
-      "slug": "k-metropolis",
+      "slug": "metropolis",
       "primary_form": "都",
       "meaning": "metropolis",
       "readings": [
@@ -5237,7 +5237,7 @@
       "sort_order": 134
     },
     {
-      "slug": "k-neck",
+      "slug": "neck",
       "primary_form": "首",
       "meaning": "neck",
       "readings": [
@@ -5274,7 +5274,7 @@
       "sort_order": 135
     },
     {
-      "slug": "k-people",
+      "slug": "people",
       "primary_form": "民",
       "meaning": "people",
       "readings": [
@@ -5318,7 +5318,7 @@
       "sort_order": 136
     },
     {
-      "slug": "k-open",
+      "slug": "open",
       "primary_form": "開",
       "meaning": "open",
       "readings": [
@@ -5362,7 +5362,7 @@
       "sort_order": 137
     },
     {
-      "slug": "k-substitute",
+      "slug": "substitute",
       "primary_form": "代",
       "meaning": "substitute",
       "readings": [
@@ -5406,7 +5406,7 @@
       "sort_order": 138
     },
     {
-      "slug": "k-capital",
+      "slug": "capital",
       "primary_form": "京",
       "meaning": "capital",
       "readings": [
@@ -5446,7 +5446,7 @@
       "sort_order": 139
     },
     {
-      "slug": "k-utilize",
+      "slug": "utilize",
       "primary_form": "用",
       "meaning": "utilize",
       "readings": [
@@ -5490,7 +5490,7 @@
       "sort_order": 140
     },
     {
-      "slug": "k-ward",
+      "slug": "ward",
       "primary_form": "区",
       "meaning": "ward",
       "readings": [
@@ -5525,7 +5525,7 @@
       "sort_order": 141
     },
     {
-      "slug": "k-prefecture",
+      "slug": "prefecture",
       "primary_form": "県",
       "meaning": "prefecture",
       "readings": [
@@ -5561,7 +5561,7 @@
       "sort_order": 142
     },
     {
-      "slug": "k-advance",
+      "slug": "advance",
       "primary_form": "進",
       "meaning": "advance",
       "readings": [
@@ -5605,7 +5605,7 @@
       "sort_order": 143
     },
     {
-      "slug": "k-products",
+      "slug": "products",
       "primary_form": "産",
       "meaning": "products",
       "readings": [
@@ -5649,7 +5649,7 @@
       "sort_order": 144
     },
     {
-      "slug": "k-beginning",
+      "slug": "beginning",
       "primary_form": "元",
       "meaning": "beginning",
       "readings": [
@@ -5694,7 +5694,7 @@
       "sort_order": 145
     },
     {
-      "slug": "k-village",
+      "slug": "village",
       "primary_form": "村",
       "meaning": "village",
       "readings": [
@@ -5734,7 +5734,7 @@
       "sort_order": 146
     },
     {
-      "slug": "k-possess",
+      "slug": "possess",
       "primary_form": "有",
       "meaning": "possess",
       "readings": [
@@ -5778,7 +5778,7 @@
       "sort_order": 147
     },
     {
-      "slug": "k-build",
+      "slug": "build",
       "primary_form": "建",
       "meaning": "build",
       "readings": [
@@ -5814,7 +5814,7 @@
       "sort_order": 148
     },
     {
-      "slug": "k-rouse",
+      "slug": "rouse",
       "primary_form": "起",
       "meaning": "rouse",
       "readings": [
@@ -5858,7 +5858,7 @@
       "sort_order": 149
     },
     {
-      "slug": "k-voice",
+      "slug": "voice",
       "primary_form": "声",
       "meaning": "voice",
       "readings": [
@@ -5894,7 +5894,7 @@
       "sort_order": 150
     },
     {
-      "slug": "k-silver",
+      "slug": "silver",
       "primary_form": "銀",
       "meaning": "silver",
       "readings": [
@@ -5930,7 +5930,7 @@
       "sort_order": 151
     },
     {
-      "slug": "k-reflect",
+      "slug": "reflect",
       "primary_form": "映",
       "meaning": "reflect",
       "readings": [
@@ -5974,7 +5974,7 @@
       "sort_order": 152
     },
     {
-      "slug": "k-england",
+      "slug": "england",
       "primary_form": "英",
       "meaning": "England",
       "readings": [
@@ -6019,7 +6019,7 @@
       "sort_order": 153
     },
     {
-      "slug": "k-head",
+      "slug": "head",
       "primary_form": "頭",
       "meaning": "head",
       "readings": [
@@ -6055,7 +6055,7 @@
       "sort_order": 154
     },
     {
-      "slug": "k-lower",
+      "slug": "lower",
       "primary_form": "低",
       "meaning": "lower",
       "readings": [
@@ -6099,7 +6099,7 @@
       "sort_order": 155
     },
     {
-      "slug": "k-gone",
+      "slug": "gone",
       "primary_form": "去",
       "meaning": "gone",
       "readings": [
@@ -6143,7 +6143,7 @@
       "sort_order": 156
     },
     {
-      "slug": "k-copy",
+      "slug": "copy",
       "primary_form": "写",
       "meaning": "copy",
       "readings": [
@@ -6188,7 +6188,7 @@
       "sort_order": 157
     },
     {
-      "slug": "k-character",
+      "slug": "character",
       "primary_form": "字",
       "meaning": "character",
       "readings": [
@@ -6232,7 +6232,7 @@
       "sort_order": 158
     },
     {
-      "slug": "k-night",
+      "slug": "night",
       "primary_form": "夜",
       "meaning": "night",
       "readings": [
@@ -6272,7 +6272,7 @@
       "sort_order": 159
     },
     {
-      "slug": "k-ray",
+      "slug": "ray",
       "primary_form": "光",
       "meaning": "ray",
       "readings": [
@@ -6312,7 +6312,7 @@
       "sort_order": 160
     },
     {
-      "slug": "k-springtime",
+      "slug": "springtime",
       "primary_form": "春",
       "meaning": "springtime",
       "readings": [
@@ -6348,7 +6348,7 @@
       "sort_order": 161
     },
     {
-      "slug": "k-autumn",
+      "slug": "autumn",
       "primary_form": "秋",
       "meaning": "autumn",
       "readings": [
@@ -6384,7 +6384,7 @@
       "sort_order": 162
     },
     {
-      "slug": "k-summer",
+      "slug": "summer",
       "primary_form": "夏",
       "meaning": "summer",
       "readings": [
@@ -6420,7 +6420,7 @@
       "sort_order": 163
     },
     {
-      "slug": "k-face",
+      "slug": "face",
       "primary_form": "顔",
       "meaning": "face",
       "readings": [
@@ -6460,7 +6460,7 @@
       "sort_order": 164
     },
     {
-      "slug": "k-short",
+      "slug": "short",
       "primary_form": "短",
       "meaning": "short",
       "readings": [
@@ -6505,7 +6505,7 @@
       "sort_order": 165
     },
     {
-      "slug": "k-convenience",
+      "slug": "convenience",
       "primary_form": "便",
       "meaning": "convenience",
       "readings": [
@@ -6549,7 +6549,7 @@
       "sort_order": 166
     },
     {
-      "slug": "k-evening",
+      "slug": "evening",
       "primary_form": "夕",
       "meaning": "evening",
       "readings": [
@@ -6585,7 +6585,7 @@
       "sort_order": 167
     },
     {
-      "slug": "k-meat",
+      "slug": "meat",
       "primary_form": "肉",
       "meaning": "meat",
       "readings": [
@@ -6621,7 +6621,7 @@
       "sort_order": 168
     },
     {
-      "slug": "k-public-chamber",
+      "slug": "public-chamber",
       "primary_form": "堂",
       "meaning": "public chamber",
       "readings": [
@@ -6657,7 +6657,7 @@
       "sort_order": 169
     },
     {
-      "slug": "k-bird",
+      "slug": "bird",
       "primary_form": "鳥",
       "meaning": "bird",
       "readings": [
@@ -6697,7 +6697,7 @@
       "sort_order": 170
     },
     {
-      "slug": "k-winter",
+      "slug": "winter",
       "primary_form": "冬",
       "meaning": "winter",
       "readings": [
@@ -6733,7 +6733,7 @@
       "sort_order": 171
     },
     {
-      "slug": "k-dog",
+      "slug": "dog",
       "primary_form": "犬",
       "meaning": "dog",
       "readings": [
@@ -6769,7 +6769,7 @@
       "sort_order": 172
     },
     {
-      "slug": "k-sultry",
+      "slug": "sultry",
       "primary_form": "暑",
       "meaning": "sultry",
       "readings": [
@@ -6814,7 +6814,7 @@
       "sort_order": 173
     },
     {
-      "slug": "k-cold",
+      "slug": "cold",
       "primary_form": "寒",
       "meaning": "cold",
       "readings": [
@@ -6851,7 +6851,7 @@
       "sort_order": 174
     },
     {
-      "slug": "k-sino",
+      "slug": "sino",
       "primary_form": "漢",
       "meaning": "Sino-",
       "readings": [

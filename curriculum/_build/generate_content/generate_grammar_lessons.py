@@ -5,7 +5,7 @@ Build-time generation on the maintainer machine: one Message Batches request
 per grammar point (50% cost, latency irrelevant), structured output via a
 single forced tool call, drafts written under generate_content/drafts/ and —
 only after passing the mechanical gate — assembled into
-curriculum/grammar/lessons/<level>/<slug>.md with `review_status: draft`
+curriculum/grammar/lessons/<slug>.md with `review_status: draft`
 frontmatter. Nothing here writes shipped JSON directly; generate.py inlines
 lesson files at build time.
 
@@ -399,9 +399,9 @@ def cmd_ingest(args):
               f"{reply_path}, and run ingest again.")
         raise SystemExit(1)
 
-    assemble.write_lesson_file(args.level, args.slug, tool_input, args.model, PROMPT_VERSION)
+    assemble.write_lesson_file(args.slug, tool_input, args.model, PROMPT_VERSION)
     assemble.write_cloze_candidates(args.level, args.slug, tool_input)
-    print(f"{args.slug}: PASS — assembled curriculum/grammar/lessons/{args.level}/{args.slug}.md")
+    print(f"{args.slug}: PASS — assembled curriculum/grammar/lessons/{args.slug}.md")
     prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
     _remove_staging_files(reply_path, prompt_path)
     print("When a batch of lessons is in, run generate.py --level "
@@ -546,7 +546,7 @@ def _assemble(level, records):
         if record["status"] != "draft" or not record["tool_input"]:
             continue
         path = assemble.write_lesson_file(
-            level, record["slug"], record["tool_input"],
+            record["slug"], record["tool_input"],
             record.get("generator_model", MODEL),
             record.get("prompt_version", PROMPT_VERSION),
         )

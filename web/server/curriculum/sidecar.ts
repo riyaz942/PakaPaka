@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { ContentType, JlptLevel, ReviewStatus } from './types.js';
+import type { ContentType, ReviewStatus } from './types.js';
 
 /**
  * Durable write-back for Studio edits.
@@ -12,10 +12,10 @@ import type { ContentType, JlptLevel, ReviewStatus } from './types.js';
  * back, and reports the fields that have no such input so the API can refuse
  * them instead of accepting an edit that will not survive.
  *
- * Sidecars for radicals and kanji are keyed by *source dataset*, not by the
- * level the item is taught at — a band mixes sources (see
- * generate_content/generate_mnemonics.py). Vocabulary is unbanded, so its
- * sidecar is keyed by level.
+ * A content type has one sidecar of each kind for every level, keyed by slug
+ * (`curriculum/<type>/mnemonics.json`, `curriculum/vocabulary/examples.json`),
+ * and a grammar point has one lesson file (`curriculum/grammar/lessons/<slug>.md`).
+ * No sidecar path depends on the level.
  */
 
 type SidecarKind = 'mnemonics' | 'examples';
@@ -27,9 +27,6 @@ const CONTENT_DIR: Record<ContentType, string> = {
   grammar: 'grammar',
   reading: 'readings',
 };
-
-/** Kinds whose sidecar name is a source dataset resolved through bands.json. */
-const BANDED: ReadonlySet<ContentType> = new Set<ContentType>(['radical', 'kanji']);
 
 /** Item fields generate.py inlines from the mnemonic sidecar, per type. */
 const MNEMONIC_FIELDS: Record<ContentType, readonly string[]> = {
@@ -57,8 +54,8 @@ const EXAMPLE_SIDECAR_KEYS = ['japanese', 'english', 'vocabulary_slugs'] as cons
 
 /** Where a field that has no sidecar is actually authored. */
 const AUTHORED_IN: Record<ContentType, string> = {
-  radical: 'curriculum/_build/{n5,n4}_radicals.py (or skeleton.json for k-corpus radicals)',
-  kanji: 'curriculum/_build/{n5,n4}_kanji.py (or skeleton.json for k-corpus kanji)',
+  radical: 'curriculum/_build/{n5,n4}_radicals.py (or skeleton.json for KANJIDIC2-derived radicals)',
+  kanji: 'curriculum/_build/{n5,n4}_kanji.py (or skeleton.json for KANJIDIC2-derived kanji)',
   vocabulary: 'curriculum/_build/{n5,n4}_vocab.py (or vocab_skeleton.json)',
   grammar: 'curriculum/_build/{n5,n4}_grammar.py and curriculum/grammar/lessons/',
   reading: 'curriculum/_build/{n5,n4}_readings.py',
@@ -79,31 +76,12 @@ function writeJsonFile(filePath: string, data: unknown): void {
   fs.renameSync(tmpPath, filePath);
 }
 
-/** The sidecar name for this item: its source dataset, or its level. */
-function sidecarName(repoRoot: string, type: ContentType, level: JlptLevel, slug: string): string {
-  if (!BANDED.has(type)) {
-    return level.toLowerCase();
-  }
-  const bandsPath = path.join(repoRoot, 'curriculum', '_build', 'bands.json');
-  const bands = readJsonFile<Record<string, Record<string, { source?: string }>>>(bandsPath, {});
-  const group = type === 'radical' ? bands.radicals : bands.kanji;
-  const source = group?.[slug]?.source;
-  if (!source) {
-    throw new Error(
-      `${type} "${slug}" has no entry in curriculum/_build/bands.json — ` +
-        'run reports/kanji_bands.py before editing it.',
-    );
-  }
-  return source;
+function sidecarPath(repoRoot: string, type: ContentType, kind: SidecarKind): string {
+  return path.join(repoRoot, 'curriculum', CONTENT_DIR[type], `${kind}.json`);
 }
 
-function sidecarPath(
-  repoRoot: string,
-  type: ContentType,
-  kind: SidecarKind,
-  name: string,
-): string {
-  return path.join(repoRoot, 'curriculum', CONTENT_DIR[type], kind, `${name}.json`);
+function lessonPath(repoRoot: string, slug: string): string {
+  return path.join(repoRoot, 'curriculum', 'grammar', 'lessons', `${slug}.md`);
 }
 
 type SidecarFile = Record<string, Record<string, unknown>>;
@@ -146,7 +124,6 @@ function isEmptyValue(value: unknown): boolean {
 export function persistItemEdit(
   repoRoot: string,
   type: ContentType,
-  level: JlptLevel,
   slug: string,
   currentRaw: Record<string, unknown>,
   updatedRaw: Record<string, unknown>,
@@ -191,11 +168,9 @@ export function persistItemEdit(
     return { ok: false, errors };
   }
 
-  const name = sidecarName(repoRoot, type, level, slug);
-
   const touchedMnemonicFields = changed.filter((key) => mnemonicFields.includes(key));
   if (touchedMnemonicFields.length > 0) {
-    const filePath = sidecarPath(repoRoot, type, 'mnemonics', name);
+    const filePath = sidecarPath(repoRoot, type, 'mnemonics');
     const file = readJsonFile<SidecarFile>(filePath, {});
     const entry = { ...(file[slug] ?? {}) };
     for (const key of touchedMnemonicFields) {
@@ -213,7 +188,7 @@ export function persistItemEdit(
   }
 
   if (nextExamples) {
-    const filePath = sidecarPath(repoRoot, type, 'examples', name);
+    const filePath = sidecarPath(repoRoot, type, 'examples');
     const file = readJsonFile<SidecarFile>(filePath, {});
     const entry = { ...(file[slug] ?? {}) };
     if (nextExamples.length === 0) {
@@ -231,23 +206,15 @@ export function persistItemEdit(
 /** Rewrites `review_status:` in a grammar lesson's YAML frontmatter. */
 function persistGrammarReviewStatus(
   repoRoot: string,
-  level: JlptLevel,
   slug: string,
   reviewStatus: Exclude<ReviewStatus, 'none'>,
 ): PersistResult {
-  const filePath = path.join(
-    repoRoot,
-    'curriculum',
-    'grammar',
-    'lessons',
-    level.toLowerCase(),
-    `${slug}.md`,
-  );
+  const filePath = lessonPath(repoRoot, slug);
   if (!fs.existsSync(filePath)) {
     return {
       ok: false,
       errors: [
-        `${slug} has no lesson at curriculum/grammar/lessons/${level.toLowerCase()}/${slug}.md, ` +
+        `${slug} has no lesson at curriculum/grammar/lessons/${slug}.md, ` +
           'which is where a grammar point\'s review status is stored.',
       ],
     };
@@ -279,7 +246,6 @@ function persistGrammarReviewStatus(
 export function checkReviewStatusTarget(
   repoRoot: string,
   type: ContentType,
-  level: JlptLevel,
   slug: string,
 ): string[] {
   if (type === 'reading') {
@@ -289,22 +255,14 @@ export function checkReviewStatusTarget(
     ];
   }
   if (type === 'grammar') {
-    const lesson = path.join(
-      repoRoot, 'curriculum', 'grammar', 'lessons', level.toLowerCase(), `${slug}.md`,
-    );
-    return fs.existsSync(lesson)
+    return fs.existsSync(lessonPath(repoRoot, slug))
       ? []
       : [
-          `${slug}: no lesson at curriculum/grammar/lessons/${level.toLowerCase()}/${slug}.md, ` +
+          `${slug}: no lesson at curriculum/grammar/lessons/${slug}.md, ` +
             "which is where a grammar point's review status is stored.",
         ];
   }
-  try {
-    sidecarName(repoRoot, type, level, slug);
-    return [];
-  } catch (error) {
-    return [error instanceof Error ? error.message : String(error)];
-  }
+  return [];
 }
 
 /**
@@ -316,25 +274,23 @@ export function checkReviewStatusTarget(
 export function persistReviewStatus(
   repoRoot: string,
   type: ContentType,
-  level: JlptLevel,
   slug: string,
   reviewStatus: Exclude<ReviewStatus, 'none'>,
 ): PersistResult {
-  const blocked = checkReviewStatusTarget(repoRoot, type, level, slug);
+  const blocked = checkReviewStatusTarget(repoRoot, type, slug);
   if (blocked.length > 0) {
     return { ok: false, errors: blocked };
   }
   if (type === 'grammar') {
-    return persistGrammarReviewStatus(repoRoot, level, slug, reviewStatus);
+    return persistGrammarReviewStatus(repoRoot, slug, reviewStatus);
   }
 
-  const name = sidecarName(repoRoot, type, level, slug);
   const kinds: SidecarKind[] = HAS_EXAMPLES_SIDECAR[type]
     ? ['mnemonics', 'examples']
     : ['mnemonics'];
 
   const files = kinds.map((kind) => {
-    const filePath = sidecarPath(repoRoot, type, kind, name);
+    const filePath = sidecarPath(repoRoot, type, kind);
     return { filePath, file: readJsonFile<SidecarFile>(filePath, {}) };
   });
 

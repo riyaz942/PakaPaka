@@ -14,24 +14,24 @@ Rationale: the taught radical set is small and finite (~150 for N5+N4; Kangxi ce
 
 - **FR34** — Maintainers manage mnemonic image assets (in-repo files + curriculum refs).
 - **FR4b** — Learners see radical mnemonic images in the app.
-- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** in `items.visual_mnemonic_url`: `radicals/n[1-5]/{slug}.webp`, relative to `mobile/assets/`. The directory is the radical's *source dataset*, which is not always the level it is taught at — see "Curriculum / app wiring" below. The schema rejects `https://` values, so a remote URL cannot be reintroduced by accident.
+- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** in `items.visual_mnemonic_url`: `radicals/{slug}.webp`, relative to `mobile/assets/`. The path holds no level — see "Curriculum / app wiring" below. The schema rejects `https://` values, so a remote URL cannot be reintroduced by accident.
 - **NFR20** — Missing or unloadable assets fall back to text (`mnemonic_text` / meaning). No broken-image icon.
 
 ## Where files live
 
 | Role | Path |
 | --- | --- |
-| Radical art (source of truth) | `mobile/assets/radicals/{source}/{slug}.webp` — `{source}` is the dataset that wrote the radical (`n5`, `n4`, `k`), never its band |
+| Radical art (source of truth) | `mobile/assets/radicals/{slug}.webp` — one folder for every level |
 | Git | **Git LFS**, via `mobile/assets/radicals/**/*.webp` in `.gitattributes` (same pattern as `curriculum.db`) so clones stay lean |
 | App | `mobile/src/utils/radicalImages.ts` — generated `require()` map; never hand-edited |
 | App | Expo packs `mobile/assets/` into the binary; images update with app releases, not a separate media deploy |
 
-Slug must match the radical entry in `curriculum/radicals/*.json`. The source segment is lowercase (`n5`, `n4`, `k`).
+Slug must match the radical entry in `curriculum/radicals/*.json`.
 
 Examples:
 
-- `mobile/assets/radicals/n5/ichi.webp`
-- `mobile/assets/radicals/n5/ni.webp`
+- `mobile/assets/radicals/ichi.webp`
+- `mobile/assets/radicals/ni.webp`
 
 ## Asset specification
 
@@ -60,14 +60,9 @@ Every radical that has `mnemonic_text` already carries its ref, written by
 `curriculum/_build/generate.py`. Adding art is therefore just dropping the file in and
 regenerating the map — no curriculum edit needed unless the slug changes.
 
-**The first path segment is the *source dataset*, not the band the radical is taught
-at.** `generate.py` keys the ref to whoever authored the radical: `n5`/`n4` for the
-hand-authored datasets, `k` for the KANJIDIC2-derived corpus, which has an asset
-directory of its own for exactly this reason. A band mixes sources, so 厶 (`mu`) is taught
-at N5 and its art lives at `radicals/n4/mu.webp`. Keying to the band instead would be a
-silent-loss bug: a radical that rebands would move its ref while the file stayed put, and
-the art would vanish behind the text fallback. Always read the destination off the item's
-own `visual_mnemonic_url`; never derive it from the level the radical is taught at.
+**The path holds no level.** `generate.py` writes `radicals/{slug}.webp` for every
+radical, so a radical that moves to another level keeps its ref and its file. Always read
+the destination off the item's own `visual_mnemonic_url`.
 
 1. Save the image at the path the item's `visual_mnemonic_url` names, under
    `mobile/assets/` (≤80 KB).

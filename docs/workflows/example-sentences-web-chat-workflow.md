@@ -43,8 +43,8 @@ then pass them to `webprompts`:
 `curriculum/_build/generate_content/web/examples/<level>/<type>/` and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
 **not** a per-item file; it is the keyed-by-slug **sidecar** that `ingest`
-merges each passing item into, named by level:
-`curriculum/vocabulary/examples/<level>.json`.
+merges each passing item into, one file for every level:
+`curriculum/vocabulary/examples.json`.
 
 `generate.py` inlines that sidecar into the shipped vocab JSON at build
 time as each item's `example_sentences`, **adding furigana with the tokenizer**
@@ -107,7 +107,7 @@ this type that have **no** sidecar entry yet:
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 level, kind = 'n5', 'vocab'
-path = f'../vocabulary/examples/{level}.json'
+path = '../vocabulary/examples.json'
 done = set(json.load(open(path))) if os.path.exists(path) else set()
 todo = [s for s in ec.all_slugs(level, kind) if s not in done]
 print(f'{len(todo)} {level} {kind} items left:')
@@ -177,7 +177,7 @@ three keys:
 .venv/bin/python -m generate_content.generate_examples ingest --type vocab --level n5 --slug taberu --model claude-web
 ```
 
-**On pass:** it merges the item into `curriculum/vocabulary/examples/n5.json`
+**On pass:** it merges the item into `curriculum/vocabulary/examples.json`
 (`_meta.review_status: draft`) and reports the new sidecar count. Done — move to
 the next item.
 
@@ -241,9 +241,9 @@ Then review the assembled examples (Phase 5) — read them and set
 `compile-curriculum` warns on `draft` content, and CI can fail on it, so
 unreviewed prose can't silently ship.
 
-> The `examples/` sidecar directories are deliberately **excluded** from
-> `validate-schema`'s file walk (they are keyed-by-slug build inputs, not
-> standalone curriculum files); their contents are validated once `generate.py`
+> The `examples.json` sidecar is deliberately **excluded** from
+> `validate-schema`'s file walk (it is a keyed-by-slug build input, not a
+> standalone curriculum file); its contents are validated once `generate.py`
 > inlines them into `vocabulary/<level>.json`. The schema rejects
 > `example_sentences` on a kanji item.
 

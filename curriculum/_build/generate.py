@@ -15,11 +15,18 @@
 
 Radicals and kanji cannot be written per level, because their level is a *band*
 assigned by reports/kanji_bands.py and a band draws from every source dataset.
-Run kanji_bands.py first whenever the datasets change.
+Whenever the datasets or levels.json change, run --level for every level, then
+kanji_bands.py (it ranks on the generated words), then --bands.
+
+An item's level is its source dataset's level (or its band) unless
+`levels.json` names it (see levels.py). So --level n5 reads every dataset, not
+only the n5 ones.
 
 Cross-references (grammar vocabulary_slugs, example vocabulary_slugs,
-dependency edges) are validated against the known item slug sets; unresolved
-references abort generation with a clear error.
+dependency edges) are validated against the known item slug sets of every
+level; unresolved references abort generation with a clear error. A reference
+to an item at a later level is not an error here: reports/level_report.py
+lists it.
 """
 
 import argparse
@@ -37,27 +44,29 @@ import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 from generate_content.mnemonic_context import reading_composition  # noqa: E402
+from levels import place  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
-#: radical/kanji items. compile-curriculum resolves and hard-fails on any
-#: slug that is not a taught radical/kanji.
-_SIMILAR_SLUGS = build_similar_map()
+#: radical/kanji items, keyed and valued by "<kind>:<slug>". compile-curriculum
+#: resolves and hard-fails on any ref that is not a taught radical/kanji.
+_SIMILAR_REFS = build_similar_map()
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
 #: Phase 2b/2d mnemonic sidecars (generate_content/generate_mnemonics.py),
-#: inlined into the radical/kanji/vocab items below keyed by slug. Absent when
-#: the generator has not run for that type.
-KANJI_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics")
-RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
-VOCAB_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics")
+#: one file per kind for every level, inlined into the radical/kanji/vocab
+#: items below keyed by slug. Absent when the generator has not run for that
+#: type.
+KANJI_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics.json")
+RADICAL_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
+VOCAB_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics.json")
 
-#: Phase 2c example-sentence sidecars (generate_content/generate_examples.py),
+#: Phase 2c example-sentence sidecar (generate_content/generate_examples.py),
 #: inlined into the vocab items below keyed by slug. Absent when 2c has not
 #: run. Kanji carry no example sentences: a kanji is taught through the
 #: vocabulary that uses it, which the app lists instead.
-VOCAB_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "examples")
+VOCAB_EXAMPLES_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "examples.json")
 
 #: Sidecar _meta keys carried through to the shipped item (matches grammar).
 _SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "reviewed_by")
@@ -82,14 +91,13 @@ def write_json(path, data):
         f.write("\n")
 
 
-def _load_sidecar(sidecar_dir, level):
-    """{slug: entry} from <sidecar_dir>/<level>.json, or {} when the relevant
-    Phase 2 generator hasn't run.
+def _load_sidecar(path):
+    """{slug: entry} from a sidecar file, or {} when the relevant Phase 2
+    generator hasn't run.
 
     Each entry carries the generated mnemonic field(s) plus a `_meta` block
     (generator_model, prompt_version, review_status). Reviewer-authored entries
     may add `reviewed_by` / flip `review_status`."""
-    path = os.path.join(sidecar_dir, f"{level}.json")
     if not os.path.exists(path):
         return {}
     with open(path, encoding="utf-8") as f:
@@ -203,14 +211,13 @@ def _vocab_reading_map(*vocab_entry_lists):
     return mapping
 
 
-def _build_radical_items(slug_prefix, radical_entries):
+def _build_radical_items(radical_entries):
     """Items for one *source* dataset — n5, n4 or the derived corpus (`k`).
 
     No `sort_order` and no level: `_write_banded` assigns both from bands.json.
-    `slug_prefix` names the dataset that wrote the entry, which is what the
-    sidecar files and the bundled art are keyed by, and it does not move when
-    the band does."""
-    mnemonics = _load_sidecar(RADICAL_MNEMONICS_DIR, slug_prefix)
+    The sidecar and the bundled art are keyed by slug alone, so neither moves
+    when the band does."""
+    mnemonics = _load_sidecar(RADICAL_MNEMONICS_PATH)
     items = []
     for r in radical_entries:
         item = {
@@ -220,8 +227,8 @@ def _build_radical_items(slug_prefix, radical_entries):
         }
         if r.get("mnemonic"):
             item["mnemonic_text"] = r["mnemonic"]
-        if r["slug"] in _SIMILAR_SLUGS:
-            item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
+        if f"radical:{r['slug']}" in _SIMILAR_REFS:
+            item["visually_similar_slugs"] = _SIMILAR_REFS[f"radical:{r['slug']}"]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
             # A radical carries two texts for one scene: `image_prompt` is the
@@ -245,12 +252,8 @@ def _build_radical_items(slug_prefix, radical_entries):
             # mobile/assets/radicals/. Missing files fall back to mnemonic text.
             # Radicals with no mnemonic text at all (raw or sidecar) carry
             # neither field rather than pointing at a file nobody has drawn.
-            # The directory is `slug_prefix` — the dataset that wrote the entry,
-            # including the derived `k` corpus, which has its own directory. It
-            # is deliberately not the band: a slug does not follow its band, so
-            # keying the ref to the band would point it at a path the file never
-            # moves to the moment a radical rebands.
-            item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
+            # The ref holds no level: a radical that rebands keeps its art.
+            item["visual_mnemonic_url"] = f"radicals/{r['slug']}.webp"
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
                 {"answer_type": "meaning", "answer_text": m} if j else
@@ -261,9 +264,9 @@ def _build_radical_items(slug_prefix, radical_entries):
     return items
 
 
-def _build_kanji_items(slug_prefix, kanji_entries):
-    """Items for one source dataset. See `_build_radical_items` on prefixes."""
-    mnemonics = _load_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
+def _build_kanji_items(kanji_entries):
+    """Items for one source dataset. See `_build_radical_items`."""
+    mnemonics = _load_sidecar(KANJI_MNEMONICS_PATH)
     items = []
     for k in kanji_entries:
         readings = []
@@ -282,7 +285,7 @@ def _build_kanji_items(slug_prefix, kanji_entries):
             accepted.append({"answer_type": "reading", "answer_text": primary_reading})
         for extra in k.get("extra_meanings", []):
             accepted.append({"answer_type": "meaning", "answer_text": extra})
-        slug = k.get("slug") or f"{slug_prefix}-{k['suffix']}"
+        slug = k["slug"]
         item = {
             "slug": slug,
             "primary_form": k["char"],
@@ -294,8 +297,8 @@ def _build_kanji_items(slug_prefix, kanji_entries):
             item["mnemonic_text"] = k["mnemonic"]
         item["readings"] = readings
         item["accepted_answers"] = accepted
-        if slug in _SIMILAR_SLUGS:
-            item["visually_similar_slugs"] = _SIMILAR_SLUGS[slug]
+        if f"kanji:{slug}" in _SIMILAR_REFS:
+            item["visually_similar_slugs"] = _SIMILAR_REFS[f"kanji:{slug}"]
         mnemonic = mnemonics.get(slug)
         if mnemonic:
             # Phase 2b split mnemonics (docs/content/content-pipeline-plan.md 2b): the
@@ -326,8 +329,8 @@ def _load_vocab_word_types():
 
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
-    mnemonics = _load_sidecar(VOCAB_MNEMONICS_DIR, jlpt_level.lower())
-    examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
+    mnemonics = _load_sidecar(VOCAB_MNEMONICS_PATH)
+    examples = _load_sidecar(VOCAB_EXAMPLES_PATH)
     word_types = _load_vocab_word_types()
     vocab_forms = {**(extra_vocab_forms or {}),
                    **{v["slug"]: v["form"] for v in vocab_entries}}
@@ -391,19 +394,13 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
 def build_n5_radicals():
     from n5_radicals import N5_RADICALS
 
-    return _build_radical_items("n5", N5_RADICALS)
+    return _build_radical_items(N5_RADICALS)
 
 
 def build_n5_kanji():
     from n5_kanji import N5_KANJI
 
-    return _build_kanji_items("n5", N5_KANJI)
-
-
-def build_n5_vocab(known_readings=None):
-    from n5_vocab import N5_VOCAB
-
-    return _build_vocab_level("N5", N5_VOCAB, known_readings)
+    return _build_kanji_items(N5_KANJI)
 
 
 def _annotate_prose_line(line, known_readings):
@@ -475,19 +472,20 @@ def _annotate_lesson_markdown(body, known_readings, label):
     return "\n".join(out)
 
 
-def _load_lesson(level_slug, slug, known_readings):
-    """(sidecar_meta, annotated_body) for grammar/lessons/<level>/<slug>.md,
-    or None when the grammar point has no long-form lesson yet."""
-    path = os.path.join(LESSONS_DIR, level_slug, f"{slug}.md")
+def _load_lesson(slug, known_readings):
+    """(sidecar_meta, annotated_body) for grammar/lessons/<slug>.md, or None
+    when the grammar point has no long-form lesson yet."""
+    path = os.path.join(LESSONS_DIR, f"{slug}.md")
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8") as f:
         meta, body = frontmatter_lib.parse(f.read())
-    label = f"grammar lesson {level_slug}/{slug}"
+    label = f"grammar lesson {slug}"
     return meta, _annotate_lesson_markdown(body, known_readings, label)
 
 
-def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None):
+def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
+                         all_grammar_slugs=()):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
@@ -545,7 +543,7 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                     variant["jp_cloze_furigana"] = cloze_furigana
                 variants.append(variant)
             item["cloze_variants"] = variants
-        lesson = _load_lesson(jlpt_level.lower(), g["slug"], known_readings)
+        lesson = _load_lesson(g["slug"], known_readings)
         if lesson:
             meta, body = lesson
             item["explanation_markdown"] = body
@@ -553,7 +551,13 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                 item["caution_notes"] = meta["caution_notes"]
             related = meta.get("related_grammar_slugs") or []
             if related:
-                grammar_slugs = {entry["slug"] for entry in grammar_entries}
+                # A lesson may point at another level's point: N4 lessons
+                # relate to the N5 points their N4 duplicates were merged into.
+                # One at a later level is a ladder problem for
+                # reports/level_report.py, not a build error.
+                grammar_slugs = {entry["slug"] for entry in grammar_entries} | set(
+                    all_grammar_slugs
+                )
                 for rs in related:
                     if rs == g["slug"] or rs not in grammar_slugs:
                         errors.append(
@@ -572,12 +576,6 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
     if errors:
         raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))
     return {"jlpt_level": jlpt_level, "items": items}
-
-
-def build_n5_grammar(vocab_forms, known_readings=None):
-    from n5_grammar import N5_GRAMMAR
-
-    return _build_grammar_level("N5", N5_GRAMMAR, vocab_forms, known_readings)
 
 
 #: Passage fields authored in the n5/n4 readings datasets and copied through
@@ -645,6 +643,9 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
                 question["prompt_furigana"] = prompt_furigana
             questions.append(question)
         passage = {
+            # The passage's key in curriculum/id-registry.json: it must never
+            # change once shipped, or the passage gets a new id.
+            "slug": p["slug"],
             "title": p["title"],
             "body": p["body"],
             "sort_order": i,
@@ -671,12 +672,6 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
     return {"jlpt_level": jlpt_level, "passages": passages}
 
 
-def build_n5_readings(known_readings=None, vocab_forms=None):
-    from n5_readings import N5_READINGS
-
-    return _build_readings_level("N5", N5_READINGS, known_readings, vocab_forms)
-
-
 # ---------------------------------------------------------------------------
 # N4 builders (mirror the N5 shape; datasets defined in n4_*.py)
 # ---------------------------------------------------------------------------
@@ -684,31 +679,13 @@ def build_n5_readings(known_readings=None, vocab_forms=None):
 def build_n4_radicals():
     from n4_radicals import N4_RADICALS
 
-    return _build_radical_items("n4", N4_RADICALS)
+    return _build_radical_items(N4_RADICALS)
 
 
 def build_n4_kanji():
     from n4_kanji import N4_KANJI
 
-    return _build_kanji_items("n4", N4_KANJI)
-
-
-def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
-    from n4_vocab import N4_VOCAB
-
-    return _build_vocab_level("N4", N4_VOCAB, known_readings, extra_vocab_forms)
-
-
-def build_n4_grammar(vocab_forms, known_readings=None):
-    from n4_grammar import N4_GRAMMAR
-
-    return _build_grammar_level("N4", N4_GRAMMAR, vocab_forms, known_readings)
-
-
-def build_n4_readings(known_readings=None, vocab_forms=None):
-    from n4_readings import N4_READINGS
-
-    return _build_readings_level("N4", N4_READINGS, known_readings, vocab_forms)
+    return _build_kanji_items(N4_KANJI)
 
 
 # ---------------------------------------------------------------------------
@@ -720,10 +697,9 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 # hand-authored in n4_kanji.py can sit in the N5 band, and one derived from
 # KANJIDIC in the N3 band.
 #
-# Slugs do not follow. `n5-en` keeps its prefix wherever it lands, because the
-# mnemonic sidecars, the bundled radical art and `user.db` are all keyed by it,
-# and because a slug that named a level would be a second, stale copy of the
-# label the band already carries.
+# Slugs do not follow and name no level: `yen` is `yen` in whichever band it
+# lands, because `user.db` and the id registry are keyed by it, and a slug that
+# named a level would be a second, stale copy of the label the band carries.
 # ---------------------------------------------------------------------------
 
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
@@ -795,12 +771,12 @@ def generate_bands():
     radicals = (
         build_n5_radicals()
         + build_n4_radicals()
-        + _build_radical_items("k", decomposition["radicals"])
+        + _build_radical_items(decomposition["radicals"])
     )
     kanji = (
         build_n5_kanji()
         + build_n4_kanji()
-        + _build_kanji_items("k", skeleton["kanji"])
+        + _build_kanji_items(skeleton["kanji"])
     )
     rad_counts = _write_banded("radicals", radicals, bands["radicals"])
     kanji_counts = _write_banded("kanji", kanji, bands["kanji"])
@@ -813,21 +789,26 @@ def generate_bands():
 # Level orchestration
 # ---------------------------------------------------------------------------
 
-def build_skeleton_vocab(level):
-    """One skeleton level's vocabulary, from the derived corpus.
+def _vocab_sources():
+    """[(default level, entries)] for every word: the hand-authored N5/N4
+    datasets, then the derived corpus. A derived word's default level is its
+    frequency rank, which `import/build_vocab_skeleton.py` owns; the corpus is
+    written most-frequent-first, and that is the teaching order."""
+    from n4_vocab import N4_VOCAB
+    from n5_vocab import N5_VOCAB
 
-    The level is already assigned — a word's level is its frequency rank, which
-    `import/build_vocab_skeleton.py` owns — so this only filters and orders. The
-    corpus is written most-frequent-first, and that is the teaching order."""
     with open(VOCAB_SKELETON_PATH, encoding="utf-8") as f:
         words = json.load(f)["words"]
-    entries = [w for w in words if w["level"] == level]
-    if not entries:
-        raise ValueError(
-            f"no {level.upper()} words in vocab_skeleton.json; run "
-            "import/build_vocab_skeleton.py"
-        )
-    return _build_vocab_level(level.upper(), entries)
+    sources = [("n5", N5_VOCAB), ("n4", N4_VOCAB)]
+    for level in SKELETON_VOCAB_LEVELS:
+        entries = [w for w in words if w["level"] == level]
+        if not entries:
+            raise ValueError(
+                f"no {level.upper()} words in vocab_skeleton.json; run "
+                "import/build_vocab_skeleton.py"
+            )
+        sources.append((level, entries))
+    return sources
 
 
 def generate_level(level):
@@ -835,55 +816,47 @@ def generate_level(level):
 
     Radicals and kanji are not here: their level is a band spanning every source
     dataset, so they are written together by `generate_bands`."""
+    from n4_grammar import N4_GRAMMAR
+    from n4_readings import N4_READINGS
+    from n5_grammar import N5_GRAMMAR
+    from n5_readings import N5_READINGS
+
     level = level.lower()
+    vocab_by_level = place("vocabulary", _vocab_sources())
+    # {slug: dictionary form} of every word at every level: the cross-reference
+    # check, and the spans of the words a sentence links.
+    all_vocab_forms = {
+        v["slug"]: v["form"] for entries in vocab_by_level.values() for v in entries
+    }
+    # The words a learner knows by the end of this level: their readings
+    # override the tokenizer, and a passage links every one it contains.
+    known = [v for lower in BAND_LEVELS[: BAND_LEVELS.index(level) + 1]
+             for v in vocab_by_level[lower]]
+    known_readings = _vocab_reading_map(known)
+    vocab = _build_vocab_level(level.upper(), vocab_by_level[level], known_readings,
+                               all_vocab_forms)
+    write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
     if level in SKELETON_VOCAB_LEVELS:
         # Vocabulary only: N3+ grammar and reading passages are out of scope for
         # this plan (docs/content/kanji-coverage-and-dependency-order-plan.md).
-        vocab = build_skeleton_vocab(level)
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
         print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
         return
-    if level == "n5":
-        from n5_vocab import N5_VOCAB
 
-        known_readings = _vocab_reading_map(N5_VOCAB)
-        vocab = build_n5_vocab(known_readings)
-        # {slug: primary_form}: the cross-reference check *and* the span
-        # derivation, which needs the dictionary form to recognise inflections.
-        vocab_forms = {v["slug"]: v["primary_form"] for v in vocab["items"]}
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n5.json"), vocab)
-        write_json(
-            os.path.join(CURRICULUM_DIR, "grammar", "n5.json"),
-            build_n5_grammar(vocab_forms, known_readings),
-        )
-        write_json(
-            os.path.join(CURRICULUM_DIR, "readings", "n5.json"),
-            build_n5_readings(known_readings, vocab_forms),
-        )
-    elif level == "n4":
-        from n4_vocab import N4_VOCAB
-        from n5_vocab import N5_VOCAB
-
-        known_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
-        n5_vocab_forms = {v["slug"]: v["form"] for v in N5_VOCAB}
-        # N4 is additive on N5: examples may reinforce previously learned N5
-        # vocabulary, so validate against the combined slug set.
-        vocab = build_n4_vocab(known_readings, n5_vocab_forms)
-        vocab_forms = {
-            **n5_vocab_forms,
-            **{v["slug"]: v["primary_form"] for v in vocab["items"]},
-        }
-        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)
-        write_json(
-            os.path.join(CURRICULUM_DIR, "grammar", "n4.json"),
-            build_n4_grammar(vocab_forms, known_readings),
-        )
-        write_json(
-            os.path.join(CURRICULUM_DIR, "readings", "n4.json"),
-            build_n4_readings(known_readings, vocab_forms),
-        )
-    else:
-        raise ValueError(f"unknown level {level}")
+    grammar_by_level = place("grammar", [("n5", N5_GRAMMAR), ("n4", N4_GRAMMAR)])
+    all_grammar_slugs = {
+        g["slug"] for entries in grammar_by_level.values() for g in entries
+    }
+    write_json(
+        os.path.join(CURRICULUM_DIR, "grammar", f"{level}.json"),
+        _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
+                             known_readings, all_grammar_slugs),
+    )
+    passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
+    write_json(
+        os.path.join(CURRICULUM_DIR, "readings", f"{level}.json"),
+        _build_readings_level(level.upper(), passages_by_level[level], known_readings,
+                              {v["slug"]: v["form"] for v in known}),
+    )
     print(f"Generated {level.upper()} JSON files.")
 
 

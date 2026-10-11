@@ -7,10 +7,20 @@ const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
 const SCHEMA_PATH = path.join(CURRICULUM_DIR, 'schema', 'curriculum.schema.json');
 
+/**
+ * Sidecars next to the level files (`kanji/mnemonics.json`,
+ * `vocabulary/examples.json`, …) that generate.py inlines into the items. They
+ * are keyed-by-slug build inputs with no schema mapping of their own; their
+ * contents are validated once inlined.
+ */
+export const SIDECAR_FILE_NAMES: ReadonlySet<string> = new Set(['mnemonics.json', 'examples.json']);
 
 export function resolveValidatorKey(relativePath: string): string {
   if (relativePath === 'metadata.json') {
     return 'metadata';
+  }
+  if (relativePath === 'id-registry.json') {
+    return 'idRegistry';
   }
   if (relativePath.startsWith('radicals/')) {
     return 'radicalsFile';
@@ -144,6 +154,7 @@ export function runFuriganaChecks(
       }[];
     };
     for (const item of file.items) {
+      checkLevelFreeSlug(`${relative} vocabulary:${item.slug}`, item.slug, errors);
       checkVocabularyReading(`${relative} vocabulary:${item.slug}`, item, errors);
       checkFuriganaField(
         `${relative} vocabulary:${item.slug}`,
@@ -170,7 +181,8 @@ export function runFuriganaChecks(
       items: { slug: string; visually_similar_slugs?: string[] }[];
     };
     for (const item of file.items) {
-      checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, item, errors);
+      checkLevelFreeSlug(`${relative} kanji:${item.slug}`, item.slug, errors);
+      checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, 'kanji', item, errors);
     }
     return;
   }
@@ -180,7 +192,8 @@ export function runFuriganaChecks(
       items: { slug: string; visually_similar_slugs?: string[] }[];
     };
     for (const item of file.items) {
-      checkVisuallySimilarSlugs(`${relative} radical:${item.slug}`, item, errors);
+      checkLevelFreeSlug(`${relative} radical:${item.slug}`, item.slug, errors);
+      checkVisuallySimilarSlugs(`${relative} radical:${item.slug}`, 'radical', item, errors);
     }
     return;
   }
@@ -196,6 +209,7 @@ export function runFuriganaChecks(
       }[];
     };
     for (const item of file.items) {
+      checkLevelFreeSlug(`${relative} grammar:${item.slug}`, item.slug, errors);
       for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
         checkFuriganaField(
           `${relative} grammar:${item.slug} example[${index}]`,
@@ -227,6 +241,9 @@ export function runFuriganaChecks(
     };
     for (const [index, passage] of file.passages.entries()) {
       const label = passage.slug ?? passage.title ?? `passage[${index}]`;
+      if (passage.slug) {
+        checkLevelFreeSlug(`${relative} passage:${label}`, passage.slug, errors);
+      }
       checkFuriganaField(
         `${relative} passage:${label}`,
         passage.body,
@@ -267,14 +284,25 @@ function checkVocabularyReading(
   }
 }
 
+const LEVEL_PREFIX_RE = /^(n[1-5]|k)-/;
+
+/** A slug is permanent and an item can change level, so a slug must not name a
+ * level (docs/design/level-agnostic-curriculum-plan.md). */
+function checkLevelFreeSlug(label: string, slug: string, errors: string[]): void {
+  if (LEVEL_PREFIX_RE.test(slug)) {
+    errors.push(`${label}: slug must not start with a level prefix (n1-–n5-, k-)`);
+  }
+}
+
 /** Rev 1 look-alikes: an item must not list itself. Cross-file slug existence
  * is enforced at compile time when the links are resolved to item ids. */
 function checkVisuallySimilarSlugs(
   label: string,
+  kind: 'radical' | 'kanji',
   item: { slug: string; visually_similar_slugs?: string[] },
   errors: string[],
 ): void {
-  if ((item.visually_similar_slugs ?? []).includes(item.slug)) {
+  if ((item.visually_similar_slugs ?? []).includes(`${kind}:${item.slug}`)) {
     errors.push(`${label}: visually_similar_slugs must not reference the item itself`);
   }
 }
@@ -398,18 +426,17 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         // _build is the tooling workspace (datasets, importers, generation
-        // drafts) — its JSON never ships and has no schema mapping. `mnemonics`
-        // holds the Phase 2b generated sidecars (kanji/radicals/mnemonics/*.json)
-        // and `examples` the Phase 2c ones (vocabulary/examples/*.json)
-        // that generate.py inlines into the item files; they are keyed-by-slug
-        // build inputs, not standalone curriculum files, so they have no schema
-        // mapping of their own (their contents are validated once inlined).
-        if (entry.name !== '_build' && entry.name !== 'mnemonics' && entry.name !== 'examples') {
+        // drafts) — its JSON never ships and has no schema mapping.
+        if (entry.name !== '_build') {
           walk(fullPath);
         }
         continue;
       }
-      if (entry.name.endsWith('.json') && !fullPath.includes(`${path.sep}schema${path.sep}`)) {
+      if (
+        entry.name.endsWith('.json') &&
+        !SIDECAR_FILE_NAMES.has(entry.name) &&
+        !fullPath.includes(`${path.sep}schema${path.sep}`)
+      ) {
         files.push(fullPath);
       }
     }

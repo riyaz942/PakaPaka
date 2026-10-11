@@ -5,13 +5,11 @@ written with long, clause-stacked sentences that a tired learner cannot skim.
 Your job is to read every radical mnemonic and produce the list of slugs that
 need a rewrite. You are **marking only** — do not rewrite anything.
 
-## Files to read
+## File to read
 
-- `curriculum/radicals/mnemonics/n5.json`
-- `curriculum/radicals/mnemonics/n4.json`
-- `curriculum/radicals/mnemonics/k.json`
+- `curriculum/radicals/mnemonics.json` (every level)
 
-Each is `{ "<slug>": { "mnemonic_text": ..., "description"?: ..., "_meta": ... } }`.
+It is `{ "<slug>": { "mnemonic_text": ..., "description"?: ..., "_meta": ... } }`.
 Judge only `mnemonic_text`. Never judge `description` — it is reference prose
 for look-alike disambiguation, shown on demand, and follows different rules.
 
@@ -107,7 +105,6 @@ Write `curriculum/_build/reports/radical-simplify-list.json`:
   "marked": [
     {
       "slug": "hitoyane",
-      "dataset": "n5",
       "reason": "two stroke-specs per sentence; bolted-on resolution"
     }
   ],
@@ -116,11 +113,10 @@ Write `curriculum/_build/reports/radical-simplify-list.json`:
 }
 ```
 
-- `dataset` is the sidecar file the slug lives in: `n5`, `n4`, or `k`.
 - `reason`: under 12 words, naming the failure mode(s) from the list above —
   it feeds the rewrite step.
-- Every slug from the three files appears exactly once, in `marked` or `kept`.
+- Every slug in the sidecar appears exactly once, in `marked` or `kept`.
 - `stats.total` must equal the actual slug count; `stats.marked` the length of
   `marked`.
-- Finish by printing a one-line-per-dataset summary to the chat
-  (`n5: 12/86 marked`, …) plus the full marked list with reasons.
+- Finish by printing a one-line summary to the chat (`12/303 marked`) plus
+  the full marked list with reasons.

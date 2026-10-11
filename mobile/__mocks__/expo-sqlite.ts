@@ -24,7 +24,7 @@ const SEED_METADATA: Row = {
 const DOWNLOAD_METADATA: Row = {
   version: '2',
   build_date: '2026-06-01T00:00:00.000Z',
-  content_hash: '7cd5775ec3adfb962f406348983f5f72d81224602c1dad34ecc47d2568724c20',
+  content_hash: '8ce01b2f45395586417b698ed910a8c6e1a7d745c65489244f0098976a65a424',
   item_count: 114,
   radical_count: 25,
   kanji_count: 32,

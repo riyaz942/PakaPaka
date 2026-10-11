@@ -216,15 +216,16 @@ _SIMILAR_MAP = None
 
 
 def _item_index():
-    """{slug: {slug, form, meaning, type}} for every taught radical and kanji,
-    across levels — look-alike pairs cross both level and item type."""
+    """{"<kind>:<slug>": {slug, form, meaning, type}} for every taught radical
+    and kanji, across levels — look-alike pairs cross both level and item type,
+    and a radical and a kanji may share a slug."""
     global _ITEM_INDEX
     if _ITEM_INDEX is None:
         index = {}
         for level in ALL_LEVELS:
             for kind, item_type in (("radicals", "radical"), ("kanji", "kanji")):
                 for it in load_items(kind, level):
-                    index[it["slug"]] = {
+                    index[f"{item_type}:{it['slug']}"] = {
                         "slug": it["slug"],
                         "form": it["primary_form"],
                         "meaning": it["meaning"],
@@ -234,20 +235,21 @@ def _item_index():
     return _ITEM_INDEX
 
 
-def look_alikes(slug):
-    """The reviewed confusables for a radical/kanji slug, resolved to forms.
+def look_alikes(item_type, slug):
+    """The reviewed confusables for a radical/kanji, resolved to forms.
 
-    Raises on an unknown slug: the pair dataset is reviewed and compiled, so a
-    dangling slug is a dataset bug, not something to paper over."""
+    Raises on an unknown ref: the pair dataset is reviewed and compiled, so a
+    dangling ref is a dataset bug, not something to paper over."""
     global _SIMILAR_MAP
     if _SIMILAR_MAP is None:
         _SIMILAR_MAP = build_similar_map()
     index = _item_index()
     out = []
-    for other in _SIMILAR_MAP.get(slug, []):
+    ref = f"{item_type}:{slug}"
+    for other in _SIMILAR_MAP.get(ref, []):
         if other not in index:
             raise KeyError(
-                f"visually_similar pair references unknown slug {other!r} (from {slug!r})"
+                f"visually_similar pair references unknown ref {other!r} (from {ref!r})"
             )
         out.append(index[other])
     return out
@@ -258,10 +260,7 @@ def decomposition_edges():
     Self/kanji-kanji edges are ignored: mnemonics decompose into taught
     *radicals* only.
 
-    Not filtered by level: `to_slug` naming is not consistent across the
-    dataset (legacy slugs carry a level prefix like `n5-ichi`, newer ones
-    don't, e.g. `k-overdo`), so a level-prefix filter here silently dropped
-    components for any slug in the second convention. The caller narrows to
+    Not filtered by level: slugs carry no level, and the caller narrows to
     one kanji via `.get(slug, [])`, so no level filter is needed."""
     graph = _load_json(GRAPH_PATH)
     out = {}
@@ -329,7 +328,7 @@ def kanji_context(level, slug, cast=None):
         "primary_reading": primary,
         "components": components,
         "identical_radical": identical_radical(item, components),
-        "look_alikes": look_alikes(slug),
+        "look_alikes": look_alikes("kanji", slug),
         "reading_lore": reading_lore,
         "cast": cast,
     }
@@ -383,7 +382,7 @@ def radical_context(level, slug):
         "meaning": item["meaning"],
         "meaning_synonyms": _meaning_answers(item) or [item["meaning"]],
         "existing_mnemonic": item.get("mnemonic_text", ""),
-        "look_alikes": look_alikes(slug),
+        "look_alikes": look_alikes("radical", slug),
         "components": radical_parts(item["primary_form"]),
     }
 

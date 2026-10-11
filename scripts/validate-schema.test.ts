@@ -353,10 +353,25 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     fs.mkdirSync(path.join(tempDir, 'readings'));
     fs.writeFileSync(
       path.join(tempDir, 'readings', 'n5.json'),
-      JSON.stringify({ jlpt_level: 'N5', passages: [passage] }),
+      JSON.stringify({ jlpt_level: 'N5', passages: [{ slug: 'test', ...passage }] }),
     );
     return tempDir;
   }
+
+  it('rejects a passage without a slug', () => {
+    const tempDir = writeTempReadingsDir({ slug: undefined, title: 'Test', body: '一です。' });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.errors.some((e) => e.includes("must have required property 'slug'"))).toBe(
+          true,
+        );
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
 
   it('accepts passage english_translation, slug lists, and word_count', () => {
     const tempDir = writeTempReadingsDir({
@@ -448,7 +463,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
 
   it('accepts split kanji mnemonics and description', () => {
     const tempDir = writeTempKanjiDir({
-      slug: 'n5-ichi',
+      slug: 'one',
       primary_form: '一',
       meaning: 'one',
       meaning_mnemonic: 'A single stroke: one.',
@@ -462,12 +477,58 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
-  it('rejects visual_mnemonic_url on kanji — mnemonic art stops at the radical layer', () => {
+  it.each(['n5-ichi', 'n4-ichi', 'n1-ichi', 'k-ichi'])(
+    'rejects a slug that names a level: %s',
+    (slug) => {
+      const tempDir = writeTempKanjiDir({ slug, primary_form: '一', meaning: 'one' });
+      try {
+        const result = validateCurriculum(tempDir);
+        expect(result.ok).toBe(false);
+        if (!result.ok) {
+          expect(result.errors.some((e) => e.includes('must not start with a level prefix'))).toBe(
+            true,
+          );
+        }
+      } finally {
+        fs.rmSync(tempDir, { recursive: true, force: true });
+      }
+    },
+  );
+
+  it('accepts a kanji look-alike that is a radical with the same slug', () => {
     const tempDir = writeTempKanjiDir({
-      slug: 'n5-ichi',
+      slug: 'ichi',
       primary_form: '一',
       meaning: 'one',
-      visual_mnemonic_url: 'radicals/n5/ichi.webp',
+      visually_similar_slugs: ['radical:ichi'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a look-alike ref without its kind', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'one',
+      primary_form: '一',
+      meaning: 'one',
+      visually_similar_slugs: ['ichi'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects visual_mnemonic_url on kanji — mnemonic art stops at the radical layer', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'one',
+      primary_form: '一',
+      meaning: 'one',
+      visual_mnemonic_url: 'radicals/ichi.webp',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
@@ -500,14 +561,14 @@ describe('validateCurriculum Rev 1 fields', () => {
     slug: 'ichi',
     primary_form: '一',
     meaning: 'one',
-    visual_mnemonic_url: 'radicals/n5/ichi.webp',
+    visual_mnemonic_url: 'radicals/ichi.webp',
   };
 
   it('accepts a radical description and visually_similar_slugs', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
       description: 'A single stroke lying flat: the ground.',
-      visually_similar_slugs: ['n5-ichi'],
+      visually_similar_slugs: ['kanji:one'],
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(true);
@@ -519,7 +580,7 @@ describe('validateCurriculum Rev 1 fields', () => {
   it('rejects a remote radical visual_mnemonic_url — art is bundled, not hosted', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visual_mnemonic_url: 'https://assets.example/radicals/n5/ichi.webp',
+      visual_mnemonic_url: 'https://assets.example/radicals/ichi.webp',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
@@ -531,7 +592,7 @@ describe('validateCurriculum Rev 1 fields', () => {
   it('rejects a radical visual_mnemonic_url that is not WebP', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visual_mnemonic_url: 'radicals/n5/ichi.png',
+      visual_mnemonic_url: 'radicals/ichi.png',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
@@ -540,10 +601,37 @@ describe('validateCurriculum Rev 1 fields', () => {
     }
   });
 
+  it('rejects a radical visual_mnemonic_url under a level folder — art is keyed by slug alone', () => {
+    const tempDir = writeTempRadicalDir({
+      ...baseRadical,
+      visual_mnemonic_url: 'radicals/n5/ichi.webp',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('skips a mnemonics.json sidecar next to the level files', () => {
+    const tempDir = writeTempRadicalDir(baseRadical);
+    fs.writeFileSync(
+      path.join(tempDir, 'radicals', 'mnemonics.json'),
+      JSON.stringify({ ichi: { mnemonic_text: 'One flat stroke.' } }),
+    );
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(true);
+      expect(result.ok && result.fileCount).toBe(2);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('errors when radical visually_similar_slugs references the item itself', () => {
     const tempDir = writeTempRadicalDir({
       ...baseRadical,
-      visually_similar_slugs: ['ichi'],
+      visually_similar_slugs: ['radical:ichi'],
     });
     try {
       const result = validateCurriculum(tempDir);

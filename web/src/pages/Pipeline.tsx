@@ -90,7 +90,7 @@ export default function Pipeline() {
       />
       <PipelinePanel
         title="compile-curriculum"
-        description="npm run compile-curriculum — compiles curriculum/ into a scratch SQLite database."
+        description="npm run compile-curriculum -- --update-registry — compiles curriculum/ into a scratch SQLite database and gives new items ids in curriculum/id-registry.json."
         endpoint="/api/pipeline/compile"
       />
     </div>

@@ -1,6 +1,6 @@
 import re
 
-with open('/Users/riyazahmed/Projects/japanese-learning/curriculum/_build/generate_content/web/examples/n5/kanji/n5-ooi-ta.prompt.md', 'r') as f:
+with open('/Users/riyazahmed/Projects/japanese-learning/curriculum/_build/generate_content/web/examples/n5/kanji/many.prompt.md', 'r') as f:
     text = f.read()
 
 # Extract vocabulary list

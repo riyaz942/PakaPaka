@@ -77,7 +77,7 @@ BATCH_LIMIT, then run:
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', <batch-size>
-path = f'../vocabulary/examples/{LEVEL}.json'
+path = '../vocabulary/examples.json'
 generated = set(json.load(open(path))) if os.path.exists(path) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
@@ -169,8 +169,8 @@ pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar
-curriculum/vocabulary/examples/<level>.json.
+The item is merged into the sidecar
+curriculum/vocabulary/examples.json.
 
 Record the slug as successful and proceed to the next slug.
 
@@ -333,4 +333,4 @@ Notes on differences from the Gemini web-chat automation prompt
 - Everything else is identical: the same auto-select (Step 1), the same
   `webprompts`/`ingest` commands and gate, the same repair rules (inline fix
   under 7 errors, 3-attempt cap plus one last-resort inline fix), the same
-  per-level keyed-by-slug sidecar, and the same draft/`review_status` discipline.
+  keyed-by-slug sidecar, and the same draft/`review_status` discipline.

@@ -2,13 +2,13 @@
   "jlpt_level": "N5",
   "items": [
     {
-      "slug": "n5-ichi",
+      "slug": "one",
       "primary_form": "一",
       "meaning": "one",
       "meaning_mnemonic": "A single horizontal stroke lying on the ground: one.",
       "reading_mnemonic": "You itch (いち) after lying on one straw mat.",
       "description": "The simplest kanji — a single stroke meaning one.",
-      "visually_similar_slugs": ["ichi"],
+      "visually_similar_slugs": ["radical:ichi"],
       "readings": [{ "reading_type": "onyomi", "reading": "いち" }],
       "accepted_answers": [{ "answer_type": "meaning", "answer_text": "one", "is_primary": true }]
     }

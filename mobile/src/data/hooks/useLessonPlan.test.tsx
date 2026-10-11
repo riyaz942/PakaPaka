@@ -74,10 +74,10 @@ describe('useLessonPlan opt-in unlock', () => {
       [
         'N5',
         [
-          listItem('n5-r1', 'radical', 1),
-          listItem('n5-k1', 'kanji', 1),
-          listItem('n5-k2', 'kanji', 2),
-          listItem('n5-v1', 'vocabulary', 1),
+          listItem('r1', 'radical', 1),
+          listItem('k1', 'kanji', 1),
+          listItem('k2', 'kanji', 2),
+          listItem('v1', 'vocabulary', 1),
         ],
       ],
     ]);
@@ -110,8 +110,8 @@ describe('useLessonPlan opt-in unlock', () => {
     expect(ids.indexOf('1091')).toBeLessThan(ids.indexOf('2552'));
     // Ahead of the level's own items of the same type, despite a higher
     // sortOrder, because the learner asked for it.
-    expect(ids.indexOf('2552')).toBeLessThan(ids.indexOf('n5-k1'));
-    expect(ids.indexOf('1091')).toBeLessThan(ids.indexOf('n5-r1'));
+    expect(ids.indexOf('2552')).toBeLessThan(ids.indexOf('k1'));
+    expect(ids.indexOf('1091')).toBeLessThan(ids.indexOf('r1'));
   });
 
   it('does not displace the rest of the level', () => {
@@ -121,16 +121,16 @@ describe('useLessonPlan opt-in unlock', () => {
 
     // The relaxed batch is 5, and every N5 type still gets its floor slot.
     expect(planned(result.current.items)).toEqual(
-      expect.arrayContaining(['n5-v1', 'n5-r1', 'n5-k1']),
+      expect.arrayContaining(['v1', 'r1', 'k1']),
     );
   });
 
   it('lists an item once when the learner has caught up to their own opt-in', () => {
-    mockOptInIds = ['n5-k2'];
-    mockOptInPool = [{ ...listItem('n5-k2', 'kanji', 2), jlptLevel: 'N5' }];
+    mockOptInIds = ['k2'];
+    mockOptInPool = [{ ...listItem('k2', 'kanji', 2), jlptLevel: 'N5' }];
 
     const { result } = renderHook(() => useLessonPlan());
 
-    expect(planned(result.current.items).filter((id) => id === 'n5-k2')).toHaveLength(1);
+    expect(planned(result.current.items).filter((id) => id === 'k2')).toHaveLength(1);
   });
 });

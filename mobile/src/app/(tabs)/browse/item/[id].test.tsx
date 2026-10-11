@@ -76,7 +76,7 @@ describe('BrowseItemDetailRoute', () => {
         primary_form: '一',
         meaning: 'one',
         mnemonic_text: 'Radical one (一)',
-        visual_mnemonic_url: 'radicals/n5/ichi.webp',
+        visual_mnemonic_url: 'radicals/ichi.webp',
         sort_order: 1,
       },
       {

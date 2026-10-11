@@ -7,6 +7,10 @@ Authoritative curriculum content for the mobile app. JSON files here are validat
 - `schema/curriculum.schema.json` — JSON Schema (`$defs` per file type)
 - `metadata.json` — semantic version and maintainer counts
 - `radicals/`, `kanji/`, `vocabulary/`, `grammar/`, `readings/` — per-level seed slices (`n5.json`, `n4.json`, …)
+- `radicals/mnemonics.json`, `kanji/mnemonics.json`, `vocabulary/mnemonics.json`,
+  `vocabulary/examples.json` and `grammar/lessons/<slug>.md` — generated content, one file (or
+  one lesson) for every level, keyed by slug. `_build/generate.py` inlines it into the level
+  slices, so moving an item to another level does not move its content
 - `dependencies/graph.json` — precomputed radical → kanji → vocabulary edges. A kanji → word
   edge is `requires` (gates the lesson) only when the kanji is banded at or before the word's
   level; an out-of-band kanji gets the non-gating `builds_on` form, which is what withholds
@@ -36,24 +40,45 @@ the exam and appear in two shipped words each, so they wait.
 `python3 curriculum/_build/reports/kanji_bands.py`, which also writes
 [`_build/reports/kanji-bands.md`](_build/reports/kanji-bands.md).
 
-**A slug does not follow its band.** `n5-en` keeps its prefix wherever it lands, because the
-mnemonic sidecars, the bundled radical art and `user.db` are all keyed by it. The prefix names
-the dataset that wrote the item — `n5`/`n4` for the hand-authored lists, `k` for the corpus
-derived from KANJIDIC2 — and never a level.
+### Moving an item to another level
+
+**Edit `_build/levels.json` only.** It maps `"<kind>:<slug>"` to a level, for any radical, kanji,
+word, grammar point or passage (grammar and passages: N5 or N4 only), and it wins over the
+default level: the dataset file that defines the item (`n5_vocab.py`, `n4_grammar.py`, …), a
+derived word's frequency rank, or a kanji's band. Then run every step in
+[Regenerating](#regenerating). The slug, the id and the content files stay the same.
+
+A pinned kanji takes its band slot ahead of the ranking, so the band keeps its size: move a
+kanji out of N5 and N5 ranks one more derived kanji in. A radical follows its first kanji
+unless `levels.json` names it.
+
+The build does not stop when a move breaks the ladder.
+[`_build/reports/level-report.md`](_build/reports/level-report.md) lists every sentence, link,
+edge and reading seed that now leans on a later item, and the words that wait for a moved
+kanji. Some lines were there before any move, so read `git diff` of the report.
+
+**A slug does not follow its band, and names no level.** `yen` is `yen` wherever it lands,
+because `user.db` and the id registry are keyed by it. `validate-schema` rejects a slug that
+starts with `n1-`–`n5-` or `k-`. `_build/slug-renames.json` records every old slug and the slug
+that replaced it.
 
 ### Regenerating
 
 ```bash
 python3 curriculum/_build/import/build_skeleton.py   # needs EDRDG archives
-python3 curriculum/_build/reports/kanji_bands.py
-curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n5
-curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n4
+for level in n5 n4 n3 n2 n1; do
+  curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level $level
+done
+curriculum/_build/.venv/bin/python curriculum/_build/reports/kanji_bands.py
 curriculum/_build/.venv/bin/python curriculum/_build/generate.py --bands
 curriculum/_build/.venv/bin/python curriculum/_build/generate_deps.py
+curriculum/_build/.venv/bin/python curriculum/_build/reports/level_report.py
 ```
 
 `--level` writes one level's vocabulary, grammar and readings; `--bands` writes radicals and
-kanji for all five levels at once, because a band draws from every source dataset.
+kanji for all five levels at once, because a band draws from every source dataset. Words come
+before bands: `kanji_bands.py` ranks kanji on each level's generated word list, so after a word
+moves, run `--level` for every level first.
 
 ### Authoring queue
 
@@ -72,11 +97,13 @@ npm run validate-schema
 npm run compile-curriculum
 ```
 
-Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`).
+Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`). Add
+`-- --update-registry` when the change adds or removes an item, passage or question (see
+[Item ID assignment](#item-id-assignment)).
 
 ## Radical mnemonic images (FR37b)
 
-**Decision:** radical images live **in the repo and are bundled with the app** — no CDN, and **no kanji images**. Files go under `mobile/assets/radicals/{source}/{slug}.webp` (Git LFS preferred), with a hard per-image size budget so the pack stays small (~5–12 MB for ~150 radicals). `{source}` is the dataset that wrote the radical — `n5`/`n4`/`k`, the same prefix its slug carries — and never its band, so art does not move when a radical rebands.
+**Decision:** radical images live **in the repo and are bundled with the app** — no CDN, and **no kanji images**. Files go under `mobile/assets/radicals/{slug}.webp` (Git LFS preferred), with a hard per-image size budget so the pack stays small (~5–12 MB for ~150 radicals). The path holds no level, so art does not move when a radical rebands.
 
 Curriculum rows will point at those bundled assets (schema/app wiring lands with Phase 3). Seed data may still carry legacy placeholder `https://…` values until then; the app shows **text fallback** when an image is missing — that is expected, not a hosting plan.
 
@@ -84,7 +111,22 @@ See **[docs/content/radical-mnemonic-images.md](../docs/content/radical-mnemonic
 
 ## Item ID assignment
 
-Compile assigns integer `items.id` deterministically: sort by JLPT level (`N5` → `N4` → `N3` → `N2` → `N1`), then `item_type` (`radical` → `kanji` → `vocabulary` → `grammar`), then `slug` ascending within each level/type group. Adding a new level appends IDs after existing levels without renumbering prior items.
+`user.db` stores progress by id, so an id never changes after it first ships. Compile reads every id from [`id-registry.json`](id-registry.json), which has one section for each id space:
+
+| Section | Key | Table |
+| --- | --- | --- |
+| `items` | `<item_type>:<slug>` | `items.id` |
+| `passages` | `passage:<slug>` | `reading_passages.id` |
+| `passage_questions` | `<passage-slug>#<question index>` | `passage_questions.id` |
+
+Moving an item to a different level, re-sorting, or adding items elsewhere does not change an id. Each section has `next_id`, `ids`, `retired` and `aliases`.
+
+- **Add an item, passage or question:** run `npm run compile-curriculum -- --update-registry`, then commit the registry. The new key gets `next_id`.
+- **Remove one:** the same command moves its key to `retired`. The id is never given to a different key.
+- **Rename a slug after launch:** add `"<old key>": "<new key>"` to `aliases`. The new key keeps the old id.
+- **Never edit an id by hand.**
+
+Without `--update-registry`, the compile fails when a key has no id, or when a registry key is not in the build. So CI cannot make or drop an id without a person seeing it.
 
 ## Content hash
 

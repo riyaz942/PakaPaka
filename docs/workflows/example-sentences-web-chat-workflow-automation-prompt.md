@@ -67,7 +67,7 @@ neither generated (absent from the committed sidecar) nor drafted (no record und
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', 10
-sidecar = f'../vocabulary/examples/{LEVEL}.json'
+sidecar = '../vocabulary/examples.json'
 generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
@@ -256,8 +256,8 @@ Run:
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar
-curriculum/vocabulary/examples/<level>.json.
+The item is merged into the sidecar
+curriculum/vocabulary/examples.json.
 
 Record the slug as successful and proceed to the next slug.
 
@@ -446,7 +446,7 @@ Notes on differences from the mnemonic automation prompt
   sentences.
 - The output contract is a single `example_sentences` array of `japanese` /
   `english` / `vocabulary_slugs` objects (Step 7, Step 8).
-- The committed artifact is a per-level, keyed-by-slug sidecar
-  (`curriculum/vocabulary/examples/<level>.json`) that `ingest` merges into —
+- The committed artifact is a keyed-by-slug sidecar
+  (`curriculum/vocabulary/examples.json`) that `ingest` merges into —
   not a per-slug file as with grammar lessons. Inspect the sidecar entry.
 - Step 4 explicitly strips the prompt file's HTML header comment before pasting.

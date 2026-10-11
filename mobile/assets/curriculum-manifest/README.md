@@ -7,6 +7,8 @@ Bundled artifacts for Story 1.6 local version check and atomic on-device `curric
 | `mock-manifest.json` | Dev default manifest (`1.0.1-n5-seed-mock`) with SHA-256 of `curriculum-mock-update.db` |
 | `curriculum-mock-update.db` | Fixture DB copied from seed with bumped `curriculum_metadata.version` |
 
+The fixture is a copy of the early 114-item N5 seed. Its item slugs went through `curriculum/_build/slug-renames.json` (17 kanji renamed); slugs from before that map are unchanged. Tests read only its bytes, so after any change to the file update `sha256` in `mock-manifest.json` and `content_hash` in `mobile/__mocks__/expo-sqlite.ts`.
+
 ## Manifest URL configuration
 
 Set one of:

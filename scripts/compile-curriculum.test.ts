@@ -4,34 +4,298 @@ import path from 'node:path';
 
 import Database from 'better-sqlite3';
 
-import { assignItemIds, compileCurriculum } from './compile-curriculum';
+import { assignItemIds, compileAndRecordMetadata, compileCurriculum } from './compile-curriculum';
+import { type IdRegistry, type IdRegistrySection, resolveRegistryIds } from './id-registry';
 
 const FIXTURE_DIR = path.join(__dirname, '__fixtures__', 'valid');
 
-describe('compile-curriculum', () => {
-  it('assigns deterministic item ids by type then level then slug', () => {
-    const ids = assignItemIds(
-      [{ slug: 'b', primary_form: 'B', meaning: 'b', visual_mnemonic_url: 'https://a.example/b.png', jlpt_level: 'N5' }],
-      [{ slug: 'a', primary_form: 'A', meaning: 'a', jlpt_level: 'N4' }],
+function section(
+  ids: Record<string, number>,
+  extra: Partial<IdRegistrySection> = {},
+): IdRegistrySection {
+  return { next_id: 100, ids, retired: {}, aliases: {}, ...extra };
+}
+
+function copyFixture(): { tempDir: string; curriculumDir: string; dbPath: string } {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+  const curriculumDir = path.join(tempDir, 'curriculum');
+  fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+  return { tempDir, curriculumDir, dbPath: path.join(tempDir, 'curriculum.db') };
+}
+
+function readItemIds(dbPath: string): Record<string, number> {
+  const db = new Database(dbPath, { readonly: true });
+  try {
+    const rows = db.prepare('SELECT item_type, slug, id FROM items').all() as {
+      item_type: string;
+      slug: string;
+      id: number;
+    }[];
+    return Object.fromEntries(rows.map((row) => [`${row.item_type}:${row.slug}`, row.id]));
+  } finally {
+    db.close();
+  }
+}
+
+const radical = (slug: string, jlpt_level: string) => ({
+  slug,
+  primary_form: slug,
+  meaning: slug,
+  jlpt_level,
+});
+
+describe('item id registry', () => {
+  it('keeps recorded ids whatever the level and sort order', () => {
+    const { idByKey } = assignItemIds(
+      [radical('a', 'N4'), radical('b', 'N5')],
       [],
       [],
+      [],
+      section({ 'radical:a': 7, 'radical:b': 3 }),
     );
-    expect(ids.get('radical:b')).toBe(1);
-    expect(ids.get('kanji:a')).toBe(2);
+    expect(idByKey.get('radical:a')).toBe(7);
+    expect(idByKey.get('radical:b')).toBe(3);
   });
 
-  it('preserves N5 ids before N4 within the same type', () => {
-    const ids = assignItemIds(
-      [
-        { slug: 'n4-z', primary_form: 'Z', meaning: 'z', visual_mnemonic_url: 'https://a.example/z.png', jlpt_level: 'N4' },
-        { slug: 'n5-a', primary_form: 'A', meaning: 'a', visual_mnemonic_url: 'https://a.example/a.png', jlpt_level: 'N5' },
-      ],
+  it('fails on a key with no id unless updateRegistry is set', () => {
+    const registry = section({ 'radical:b': 3 });
+    expect(() =>
+      assignItemIds([radical('a', 'N5'), radical('b', 'N5')], [], [], [], registry),
+    ).toThrow(/items: 1 key\(s\) have no id: radical:a\. .*--update-registry/);
+  });
+
+  it('gives a new key next_id, and never a retired id', () => {
+    const { idByKey, section: updated } = assignItemIds(
+      [radical('a', 'N5'), radical('b', 'N5')],
       [],
       [],
       [],
+      section({ 'radical:b': 3 }, { next_id: 5, retired: { 'radical:gone': 4 } }),
+      true,
     );
-    expect(ids.get('radical:n5-a')).toBe(1);
-    expect(ids.get('radical:n4-z')).toBe(2);
+    expect(idByKey.get('radical:a')).toBe(5);
+    expect(idByKey.get('radical:b')).toBe(3);
+    expect(updated.next_id).toBe(6);
+    expect(updated.ids).toEqual({ 'radical:b': 3, 'radical:a': 5 });
+    expect(updated.retired).toEqual({ 'radical:gone': 4 });
+  });
+
+  it('fails on a registry key that left the build, and retires it with updateRegistry', () => {
+    const registry = section({ 'radical:a': 1, 'radical:b': 2 });
+    expect(() => resolveRegistryIds(registry, 'items', ['radical:a'], false)).toThrow(
+      /1 registry key\(s\) are not in the build: radical:b/,
+    );
+    const { section: updated } = resolveRegistryIds(registry, 'items', ['radical:a'], true);
+    expect(updated.ids).toEqual({ 'radical:a': 1 });
+    expect(updated.retired).toEqual({ 'radical:b': 2 });
+    expect(registry.ids).toEqual({ 'radical:a': 1, 'radical:b': 2 });
+  });
+
+  it('gives a retired key that comes back its old id', () => {
+    const { idByKey, section: updated } = resolveRegistryIds(
+      section({}, { retired: { 'radical:a': 4 } }),
+      'items',
+      ['radical:a'],
+      true,
+    );
+    expect(idByKey.get('radical:a')).toBe(4);
+    expect(updated.retired).toEqual({});
+  });
+
+  it('resolves an alias to the id of its old key', () => {
+    const { idByKey } = resolveRegistryIds(
+      section({ 'vocabulary:old': 9 }, { aliases: { 'vocabulary:old': 'vocabulary:new' } }),
+      'items',
+      ['vocabulary:new'],
+      false,
+    );
+    expect(idByKey.get('vocabulary:new')).toBe(9);
+  });
+
+  it('fails when two keys share an id or an id is not below next_id', () => {
+    expect(() =>
+      resolveRegistryIds(section({ 'radical:a': 1, 'radical:b': 1 }), 'items', [], true),
+    ).toThrow(/id 1 belongs to both radical:a and radical:b/);
+    expect(() =>
+      resolveRegistryIds(section({ 'radical:a': 1 }, { next_id: 1 }), 'items', [], true),
+    ).toThrow(/radical:a has id 1, but next_id is 1/);
+  });
+});
+
+describe('compile-curriculum', () => {
+  it('takes item, passage and question ids from the registry', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const dbPath = path.join(tempDir, 'curriculum.db');
+    compileCurriculum(dbPath, FIXTURE_DIR);
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      expect(readItemIds(dbPath)).toEqual({
+        'kanji:one': 2,
+        'grammar:desu': 3,
+        'radical:ichi': 4,
+        'vocabulary:ichi-v': 5,
+        'grammar:ja-nai': 7,
+      });
+      expect(db.prepare('SELECT id FROM reading_passages').all()).toEqual([{ id: 4 }]);
+      expect(db.prepare('SELECT id, passage_id FROM passage_questions').all()).toEqual([
+        { id: 9, passage_id: 4 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('keeps every id when an item moves to a different level', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
+    fs.renameSync(kanjiPath, path.join(curriculumDir, 'kanji', 'n4.json'));
+    const kanjiFile = JSON.parse(fs.readFileSync(path.join(curriculumDir, 'kanji', 'n4.json'), 'utf8'));
+    kanjiFile.jlpt_level = 'N4';
+    fs.writeFileSync(path.join(curriculumDir, 'kanji', 'n4.json'), JSON.stringify(kanjiFile));
+    try {
+      compileCurriculum(dbPath, curriculumDir);
+      expect(readItemIds(dbPath)['kanji:one']).toBe(2);
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        expect(
+          db.prepare("SELECT jlpt_level FROM items WHERE slug = 'one'").get(),
+        ).toEqual({ jlpt_level: 'N4' });
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('gives only the new item a new id, and only with updateRegistry', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const radicalsPath = path.join(curriculumDir, 'radicals', 'n5.json');
+    const radicalsFile = JSON.parse(fs.readFileSync(radicalsPath, 'utf8'));
+    // "aaa" sorts before every fixture item, so a positional id would move all of them.
+    radicalsFile.items.unshift({ slug: 'aaa', primary_form: '丶', meaning: 'dot' });
+    fs.writeFileSync(radicalsPath, JSON.stringify(radicalsFile));
+    const registryPath = path.join(curriculumDir, 'id-registry.json');
+    const registryBefore = fs.readFileSync(registryPath, 'utf8');
+    try {
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(
+        /items: 1 key\(s\) have no id: radical:aaa/,
+      );
+      expect(fs.readFileSync(registryPath, 'utf8')).toBe(registryBefore);
+
+      compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
+      expect(readItemIds(dbPath)).toEqual({
+        'radical:aaa': 8,
+        'kanji:one': 2,
+        'grammar:desu': 3,
+        'radical:ichi': 4,
+        'vocabulary:ichi-v': 5,
+        'grammar:ja-nai': 7,
+      });
+      const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8')) as IdRegistry;
+      expect(registry.items.ids['radical:aaa']).toBe(8);
+      expect(registry.items.next_id).toBe(9);
+      expect(registry.items.retired).toEqual({ 'vocabulary:removed-word': 6 });
+
+      compileCurriculum(dbPath, curriculumDir);
+      expect(readItemIds(dbPath)['radical:aaa']).toBe(8);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('fails without a registry file unless updateRegistry is set', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    fs.rmSync(path.join(curriculumDir, 'id-registry.json'));
+    try {
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(
+        /curriculum\/id-registry\.json not found/,
+      );
+      compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
+      expect(fs.existsSync(path.join(curriculumDir, 'id-registry.json'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('raises metadata.json version and records the compiled content_counts', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const metadataPath = path.join(curriculumDir, 'metadata.json');
+    try {
+      compileAndRecordMetadata(dbPath, curriculumDir);
+      const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+      expect(metadata.version).toBe(2);
+      expect(metadata.content_counts).toEqual({
+        radicals: 1,
+        kanji: 1,
+        vocabulary: 1,
+        grammar: 2,
+        total_items: 5,
+        reading_passages: 1,
+        dependency_edges: 2,
+      });
+
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        const count = (sql: string) => (db.prepare(sql).get() as { count: number }).count;
+        expect(count('SELECT COUNT(*) AS count FROM items')).toBe(
+          metadata.content_counts.total_items,
+        );
+        expect(count('SELECT COUNT(*) AS count FROM reading_passages')).toBe(
+          metadata.content_counts.reading_passages,
+        );
+        expect(count('SELECT COUNT(*) AS count FROM item_relationships')).toBe(
+          metadata.content_counts.dependency_edges,
+        );
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('leaves metadata.json unchanged when the compile fails', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const metadataPath = path.join(curriculumDir, 'metadata.json');
+    const before = fs.readFileSync(metadataPath, 'utf8');
+    fs.rmSync(path.join(curriculumDir, 'id-registry.json'));
+    try {
+      expect(() => compileAndRecordMetadata(dbPath, curriculumDir)).toThrow(
+        /curriculum\/id-registry\.json not found/,
+      );
+      expect(fs.readFileSync(metadataPath, 'utf8')).toBe(before);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('gives a new passage question an id without moving the others', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
+    readingsFile.passages[0].questions.push({ prompt: 'Why?', accepted_answers: ['because'] });
+    fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
+    try {
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(
+        /passage_questions: 1 key\(s\) have no id: test-passage#1/,
+      );
+      compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        expect(
+          db.prepare('SELECT id, prompt FROM passage_questions ORDER BY sort_order').all(),
+        ).toEqual([
+          { id: 9, prompt: 'What?' },
+          { id: 10, prompt: 'Why?' },
+        ]);
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 
   it('compiles fixture JSON to sqlite with metadata and relationships', () => {
@@ -95,7 +359,7 @@ describe('compile-curriculum', () => {
         .prepare(
           'SELECT meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url FROM items WHERE item_type = ? AND slug = ?',
         )
-        .get('kanji', 'n5-ichi') as {
+        .get('kanji', 'one') as {
         meaning_mnemonic: string | null;
         reading_mnemonic: string | null;
         description: string | null;
@@ -231,8 +495,8 @@ describe('compile-curriculum', () => {
         )
         .all() as { from_slug: string; to_slug: string }[];
       expect(links).toEqual([
-        { from_slug: 'ichi', to_slug: 'n5-ichi' },
-        { from_slug: 'n5-ichi', to_slug: 'ichi' },
+        { from_slug: 'ichi', to_slug: 'one' },
+        { from_slug: 'one', to_slug: 'ichi' },
       ]);
 
       const grammarMnemonic = db
@@ -252,12 +516,12 @@ describe('compile-curriculum', () => {
 
     const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
     const kanjiFile = JSON.parse(fs.readFileSync(kanjiPath, 'utf8'));
-    kanjiFile.items[0].visually_similar_slugs = ['no-such-item'];
+    kanjiFile.items[0].visually_similar_slugs = ['kanji:no-such-item'];
     fs.writeFileSync(kanjiPath, JSON.stringify(kanjiFile));
 
     try {
       expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
-        'Unresolved visually similar link: kanji:n5-ichi -> no-such-item',
+        'Unresolved visually similar link: kanji:one -> kanji:no-such-item',
       );
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
@@ -368,7 +632,7 @@ describe('compile-curriculum', () => {
 
     try {
       expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
-        'Unresolved passage grammar link: Test -> grammar:no-such-grammar',
+        'Unresolved passage grammar link: test-passage -> grammar:no-such-grammar',
       );
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
@@ -391,7 +655,7 @@ describe('compile-curriculum', () => {
   it('throws on a word span with an unresolved vocabulary slug', () => {
     expect(
       compileWithWordSpans([{ vocabulary_slug: 'no-such-vocab', start: 0, end: 3 }]),
-    ).toThrow('Unresolved passage word span: Test -> vocabulary:no-such-vocab');
+    ).toThrow('Unresolved passage word span: test-passage -> vocabulary:no-such-vocab');
   });
 
   it('throws on a word span whose end offset runs past the body', () => {

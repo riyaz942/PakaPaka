@@ -61,7 +61,7 @@ for BATCH_LIMIT, then run:
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', <slug-count>
-path = f'../vocabulary/examples/{LEVEL}.json'
+path = '../vocabulary/examples.json'
 generated = set(json.load(open(path))) if os.path.exists(path) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
@@ -156,8 +156,8 @@ For each slug, run:
 
 .venv/bin/python -m generate_content.generate_examples ingest --type vocab --level <level> --slug <slug> --model <this session's model name>
 
-If ingestion succeeds, the item is merged into the per-level sidecar
-`curriculum/vocabulary/examples/<level>.json` and its prompt and reply files
+If ingestion succeeds, the item is merged into the sidecar
+`curriculum/vocabulary/examples.json` and its prompt and reply files
 are deleted — record it as successful and move to the next slug.
 
 If ingestion fails, the process rewrites `<slug>.prompt.md` with the
@@ -264,4 +264,4 @@ Notes on differences from the subagent workflow
   the last session.
 - Everything else is identical: the same auto-select, the same
   `webprompts`/`ingest` commands and gate, the same per-slug retry budget,
-  the same per-level sidecar, and the same draft/`review_status` discipline.
+  the same sidecar, and the same draft/`review_status` discipline.

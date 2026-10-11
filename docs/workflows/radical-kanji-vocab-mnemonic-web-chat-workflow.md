@@ -40,12 +40,13 @@ them first (see "List remaining slugs" below), then pass them to `webprompts`:
 Working files live under
 `curriculum/_build/generate_content/web/mnemonics/<level>/<type>/` and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
-**not** a per-item file (that's how grammar lessons work); it is the per-level,
-keyed-by-slug **sidecar** that `ingest` merges each passing item into:
+**not** a per-item file (that's how grammar lessons work); it is the
+keyed-by-slug **sidecar** (one file for every level) that `ingest` merges each
+passing item into:
 
-- radicals → `curriculum/radicals/mnemonics/<level>.json`
-- kanji → `curriculum/kanji/mnemonics/<level>.json`
-- vocabulary → `curriculum/vocabulary/mnemonics/<level>.json`
+- radicals → `curriculum/radicals/mnemonics.json`
+- kanji → `curriculum/kanji/mnemonics.json`
+- vocabulary → `curriculum/vocabulary/mnemonics.json`
 
 `generate.py` inlines those sidecars into the shipped JSON at build time (kanji and
 vocabulary get `meaning_mnemonic` / `reading_mnemonic`; radicals get
@@ -96,7 +97,7 @@ to `reviewed`.
 
 ## List remaining slugs
 
-Slugs already exist as curriculum ids (`n5-higashi` is one kanji; they live in
+Slugs already exist as curriculum ids (`east` is one kanji; they live in
 `curriculum/{radicals|kanji|vocabulary}/<level>.json`). `webprompts` writes a
 prompt *for* a slug; it does not invent the slug. From `curriculum/_build`, list
 the items of this type that have **no** sidecar entry yet:
@@ -106,31 +107,16 @@ the items of this type that have **no** sidecar entry yet:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import (
-    KIND_DIR, BANDED_KINDS, _source_map, sidecar_path)
+from generate_content.generate_mnemonics import KIND_DIR, sidecar_path
 level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
 subdir = KIND_DIR[kind]
-# Radicals and kanji are banded: an item taught at this level may have been
-# written by another dataset, and its sidecar entry follows the *source*, not
-# the band. Reading only <level>.json reports those as not-yet-generated.
-source = _source_map(kind) if kind in BANDED_KINDS else {}
-done = {}
-for name in sorted({source.get(s, level) for s in mc.all_slugs(level, subdir)}):
-    p = sidecar_path(name, kind)
-    if os.path.exists(p):
-        done[name] = set(json.load(open(p)))
-todo = [s for s in mc.all_slugs(level, subdir)
-        if s not in done.get(source.get(s, level), set())]
+p = sidecar_path(kind)
+done = set(json.load(open(p))) if os.path.exists(p) else set()
+todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
 print(f'{len(todo)} {level} {kind} items left:')
 print(','.join(todo))
 PY
 ```
-
-**Do not swap this for `set(json.load(open(f'../{subdir}/mnemonics/{level}.json')))`.**
-A level is a *band* (`curriculum/_build/bands.json`) and a band mixes source datasets, so
-the level file holds only the entries this level's own dataset wrote. Reading it alone
-reports every item sourced elsewhere — including the whole derived `k` corpus — as
-un-generated, and following that regenerates prose that already exists and is reviewed.
 
 Take one slug from that list for the one-item loop below, or keep the whole comma
 list for a batch. Omitting `--slugs` writes a prompt for **every** item of the
@@ -153,13 +139,13 @@ type — useful for a full-level dump, not for a sitting of ~10.
 
 ### 1. Generate the prompt
 
-`n5-higashi` is a worked example. Substitute a slug from the list above.
+`east` is a worked example. Substitute a slug from the list above.
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs n5-higashi
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs east
 ```
 
-Writes `generate_content/web/mnemonics/n5/kanji/n5-higashi.prompt.md`. Open it.
+Writes `generate_content/web/mnemonics/n5/kanji/east.prompt.md`. Open it.
 Everything below the `<!-- ... -->` header is one self-contained block: the
 teaching-voice sheet, the character + meaning + readings, the taught
 decomposition, the cast block, the formatting rules, and a JSON output contract.
@@ -184,7 +170,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into the reply path the prompt header names:
 
 ```
-generate_content/web/mnemonics/n5/kanji/n5-higashi.reply.md
+generate_content/web/mnemonics/n5/kanji/east.reply.md
 ```
 
 The filename must match the slug and the `--type` subfolder.
@@ -204,10 +190,10 @@ otherwise is correct, not incomplete.
 ### 4. Ingest
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --level n5 --slug n5-higashi --model claude-web
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --level n5 --slug east --model claude-web
 ```
 
-**On pass:** it merges the item into `curriculum/kanji/mnemonics/n5.json`
+**On pass:** it merges the item into `curriculum/kanji/mnemonics.json`
 (`_meta.review_status: draft`) and reports the new sidecar count. Done — move to
 the next item.
 
@@ -215,10 +201,10 @@ the next item.
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/mnemonics/n5/kanji/n5-higashi.prompt.md`.
+1. Open the rewritten `web/mnemonics/n5/kanji/east.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
-3. Save the new reply over `n5-higashi.reply.md`.
+3. Save the new reply over `east.reply.md`.
 4. Run `ingest` again.
 
 The common kanji failures are a meaning mnemonic that skipped a taught component,
@@ -269,7 +255,7 @@ cast-coherence check, and set `_meta.review_status: reviewed` on each entry in t
 sidecar once it clears. `compile-curriculum` warns on `draft` content, and CI can
 fail on it, so unreviewed prose can't silently ship.
 
-> The `mnemonics/` sidecar directories are deliberately **excluded** from
+> The `mnemonics.json` sidecars are deliberately **excluded** from
 > `validate-schema`'s file walk (they are keyed-by-slug build inputs, not
 > standalone curriculum files); their contents are validated once `generate.py`
 > inlines them into `kanji/<level>.json` / `radicals/<level>.json`.

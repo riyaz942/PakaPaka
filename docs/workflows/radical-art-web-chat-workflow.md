@@ -45,7 +45,7 @@ STYLE block.
 | Model | Any web chat tool with image generation — Gemini, ChatGPT, whatever is working well that day. Not pinned to one; switch freely between runs |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
-| Committed | `mobile/assets/radicals/{source}/{slug}.webp` — `{source}` is the dataset that wrote the radical (`n5`/`n4`/`k`), not its band (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
+| Committed | `mobile/assets/radicals/{slug}.webp` — one folder for every level (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
 
 Batch size is a comfort setting now, not a quality one. The old lane capped a session at 5
 because a chat's grip on the style loosened after that; with one chat per radical there is
@@ -82,14 +82,10 @@ for i in todo[:BATCH_SIZE]:
 PY
 ```
 
-**A radical's art does not necessarily live under the level it is taught at.** A level is a
-*band* (`curriculum/_build/bands.json`) and a band mixes source datasets, so an N4-authored
-radical can be taught at N5 while its art stays at `radicals/n4/{slug}.webp` — the path the
-item's own `visual_mnemonic_url` names. The three source directories are `n5`, `n4` and
-`k` (the KANJIDIC2-derived corpus); a band can draw from all three. Select on that field
-and on whether the file it names exists, never on `ls mobile/assets/radicals/{level}/`:
-listing the level directory reports every banded-elsewhere radical as missing art, and
-following it regenerates and overwrites art that already shipped.
+**Art is keyed by slug, not by level.** Every radical's art is at
+`mobile/assets/radicals/{slug}.webp`, the path its own `visual_mnemonic_url` names, so a
+radical that moves to another level keeps its art. Select on that field and on whether the
+file it names exists.
 
 If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
 selects fewer than `<batch-size>`, the level is running out; use what it found.
@@ -252,9 +248,8 @@ visible to a human before it becomes a commit.
 
 Once the whole batch is staged. From the repo root:
 
-Each image goes where **its own `visual_mnemonic_url` says**, which for a banded-elsewhere
-radical is not the level directory you selected from. Step 0 printed the destination per
-slug; this derives it again rather than trusting a single `DEST`:
+Each image goes where **its own `visual_mnemonic_url` says** (`radicals/{slug}.webp`).
+Step 0 printed the destination per slug; this derives it again from the curriculum:
 
 ```bash
 STAGE=curriculum/_build/generate_content/web/radical-art

@@ -4,7 +4,16 @@ import path from 'node:path';
 import Database from 'better-sqlite3';
 
 import { CURRICULUM_DDL, type ItemType, type RelationshipType } from './curriculum-schema';
-import { validateCurriculum } from './validate-schema';
+import {
+  emptyIdRegistrySection,
+  ID_REGISTRY_FILE,
+  type IdRegistry,
+  type IdRegistrySection,
+  readIdRegistry,
+  resolveRegistryIds,
+  writeIdRegistry,
+} from './id-registry';
+import { SIDECAR_FILE_NAMES, validateCurriculum } from './validate-schema';
 
 const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
@@ -35,7 +44,18 @@ type MetadataJson = {
   jlpt_levels: string[];
   description: string;
   maintainer_notes?: string;
-  content_counts?: Record<string, number>;
+  content_counts?: ContentCounts;
+};
+
+/** What one compile wrote; `metadata.json` `content_counts` records it. */
+export type ContentCounts = {
+  radicals: number;
+  kanji: number;
+  vocabulary: number;
+  grammar: number;
+  total_items: number;
+  reading_passages: number;
+  dependency_edges: number;
 };
 
 /**
@@ -276,7 +296,7 @@ function resolveWordSpans(
 
 type ReadingPassage = {
   _meta?: SidecarMeta;
-  slug?: string;
+  slug: string;
   title: string;
   body: string;
   body_furigana?: string;
@@ -309,7 +329,7 @@ function discoverJsonFilesInDir(dir: string): string[] {
   }
   return fs
     .readdirSync(dir)
-    .filter((name) => name.endsWith('.json'))
+    .filter((name) => name.endsWith('.json') && !SIDECAR_FILE_NAMES.has(name))
     .sort()
     .map((name) => path.join(dir, name));
 }
@@ -376,12 +396,19 @@ function itemKey(itemType: ItemType, slug: string): string {
 
 type ItemWithLevel = { itemType: ItemType; slug: string; jlpt_level: string };
 
+/**
+ * Item ids come from the `items` section of the id registry, so an id never
+ * changes when an item is added, moved to a different level or re-sorted. The
+ * (level, type, slug) order only sets the order in which new keys get ids.
+ */
 export function assignItemIds(
   radicals: (RadicalItem & { jlpt_level: string })[],
   kanji: (KanjiItem & { jlpt_level: string })[],
   vocabulary: (VocabItem & { jlpt_level: string })[],
   grammar: (GrammarItem & { jlpt_level: string })[],
-): Map<string, number> {
+  registry: IdRegistrySection,
+  updateRegistry = false,
+): { idByKey: Map<string, number>; section: IdRegistrySection } {
   const sorted: ItemWithLevel[] = [
     ...radicals.map((item) => ({
       itemType: 'radical' as const,
@@ -415,11 +442,20 @@ export function assignItemIds(
     return a.slug.localeCompare(b.slug);
   });
 
-  const idByKey = new Map<string, number>();
-  sorted.forEach((entry, index) => {
-    idByKey.set(itemKey(entry.itemType, entry.slug), index + 1);
-  });
-  return idByKey;
+  return resolveRegistryIds(
+    registry,
+    'items',
+    sorted.map((entry) => itemKey(entry.itemType, entry.slug)),
+    updateRegistry,
+  );
+}
+
+function passageKey(slug: string): string {
+  return `passage:${slug}`;
+}
+
+function passageQuestionKey(passageSlug: string, questionIndex: number): string {
+  return `${passageSlug}#${questionIndex}`;
 }
 
 /** `<type>:<slug|title> (<status>)` labels for content whose sidecar marks it unreviewed. */
@@ -452,13 +488,19 @@ export function collectUnreviewedContent(
 export type CompileOptions = {
   /** Fail (instead of warn) when content carries a non-reviewed review_status (CI release gate). */
   failOnDraft?: boolean;
+  /**
+   * Give new keys ids, retire keys that left the build, and write
+   * `curriculum/id-registry.json` after a successful compile. Without it, any
+   * difference between the build and the registry fails the compile.
+   */
+  updateRegistry?: boolean;
 };
 
 export function compileCurriculum(
   outputPath: string,
   curriculumDir: string = CURRICULUM_DIR,
   options: CompileOptions = {},
-): void {
+): ContentCounts {
   const validation = validateCurriculum(curriculumDir);
   for (const warning of validation.warnings) {
     console.warn(`warning: ${warning}`);
@@ -491,7 +533,43 @@ export function compileCurriculum(
     }
   }
 
-  const idByKey = assignItemIds(radicals, kanji, vocabulary, grammar);
+  const updateRegistry = options.updateRegistry ?? false;
+  const storedRegistry = readIdRegistry(curriculumDir);
+  if (!storedRegistry && !updateRegistry) {
+    throw new Error(
+      `curriculum/${ID_REGISTRY_FILE} not found. Run \`npm run compile-curriculum -- --update-registry\` to create it.`,
+    );
+  }
+  const registry: IdRegistry = storedRegistry ?? {
+    items: emptyIdRegistrySection(),
+    passages: emptyIdRegistrySection(),
+    passage_questions: emptyIdRegistrySection(),
+  };
+
+  const itemIds = assignItemIds(
+    radicals,
+    kanji,
+    vocabulary,
+    grammar,
+    registry.items,
+    updateRegistry,
+  );
+  const idByKey = itemIds.idByKey;
+  const passages = readingsFiles.flatMap((file) => file.passages);
+  const passageIds = resolveRegistryIds(
+    registry.passages,
+    'passages',
+    passages.map((passage) => passageKey(passage.slug)),
+    updateRegistry,
+  );
+  const questionIds = resolveRegistryIds(
+    registry.passage_questions,
+    'passage_questions',
+    passages.flatMap((passage) =>
+      (passage.questions ?? []).map((_question, index) => passageQuestionKey(passage.slug, index)),
+    ),
+    updateRegistry,
+  );
   const primaryFormByVocabSlug = new Map(
     vocabulary.map((item) => [item.slug, item.primary_form] as const),
   );
@@ -548,7 +626,7 @@ export function compileCurriculum(
     `);
     // Look-alikes can point at items later in the compile order (or the other
     // item type), so links are resolved up front and inserted after all item
-    // rows exist. A slug may name a radical or a kanji — never ambiguously both.
+    // rows exist. Each ref is "<kind>:<slug>", the same form as an item key.
     const pendingSimilarLinks: {
       item_id: number;
       similar_item_id: number;
@@ -557,19 +635,12 @@ export function compileCurriculum(
     const collectSimilarLinks = (
       itemId: number,
       label: string,
-      slugs: string[] | undefined,
+      refs: string[] | undefined,
     ) => {
-      for (const [index, similarSlug] of (slugs ?? []).entries()) {
-        const radicalId = idByKey.get(itemKey('radical', similarSlug));
-        const kanjiId = idByKey.get(itemKey('kanji', similarSlug));
-        if (radicalId && kanjiId) {
-          throw new Error(
-            `Ambiguous visually similar link: ${label} -> ${similarSlug} matches both a radical and a kanji`,
-          );
-        }
-        const similarId = radicalId ?? kanjiId;
+      for (const [index, ref] of (refs ?? []).entries()) {
+        const similarId = idByKey.get(ref);
         if (!similarId) {
-          throw new Error(`Unresolved visually similar link: ${label} -> ${similarSlug}`);
+          throw new Error(`Unresolved visually similar link: ${label} -> ${ref}`);
         }
         pendingSimilarLinks.push({
           item_id: itemId,
@@ -865,16 +936,16 @@ export function compileCurriculum(
     }
 
     const insertPassage = db.prepare(`
-      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, english_translation, summary_ja, summary_en, word_count, sort_order)
-      VALUES (@jlpt_level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
+      INSERT INTO reading_passages (id, jlpt_level, title, body, body_furigana, english_translation, summary_ja, summary_en, word_count, sort_order)
+      VALUES (@id, @jlpt_level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
     `);
     const insertPassageWordSpan = db.prepare(`
       INSERT INTO passage_word_spans (passage_id, vocabulary_item_id, start_offset, end_offset, inflection, sort_order)
       VALUES (@passage_id, @vocabulary_item_id, @start_offset, @end_offset, @inflection, @sort_order)
     `);
     const insertQuestion = db.prepare(`
-      INSERT INTO passage_questions (passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
-      VALUES (@passage_id, @prompt, @prompt_furigana, @accepted_answers, @sort_order)
+      INSERT INTO passage_questions (id, passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
+      VALUES (@id, @passage_id, @prompt, @prompt_furigana, @accepted_answers, @sort_order)
     `);
     const insertPassageGrammarLink = db.prepare(`
       INSERT INTO passage_grammar_links (passage_id, grammar_item_id)
@@ -887,7 +958,9 @@ export function compileCurriculum(
 
     for (const readingsFile of readingsFiles) {
       for (const [index, passage] of readingsFile.passages.entries()) {
-        const passageResult = insertPassage.run({
+        const passageId = passageIds.idByKey.get(passageKey(passage.slug))!;
+        insertPassage.run({
+          id: passageId,
           jlpt_level: readingsFile.jlpt_level,
           title: passage.title,
           body: passage.body,
@@ -898,7 +971,6 @@ export function compileCurriculum(
           word_count: passage.word_count ?? null,
           sort_order: passage.sort_order ?? index,
         });
-        const passageId = Number(passageResult.lastInsertRowid);
         const passageLabel = passage.slug ?? passage.title;
 
         for (const grammarSlug of passage.grammar_slugs ?? []) {
@@ -942,6 +1014,7 @@ export function compileCurriculum(
 
         for (const [qIndex, question] of (passage.questions ?? []).entries()) {
           insertQuestion.run({
+            id: questionIds.idByKey.get(passageQuestionKey(passage.slug, qIndex))!,
             passage_id: passageId,
             prompt: question.prompt,
             prompt_furigana: question.prompt_furigana ?? null,
@@ -991,12 +1064,56 @@ export function compileCurriculum(
   }
   fs.renameSync(tempPath, outputPath);
 
+  if (updateRegistry) {
+    writeIdRegistry(curriculumDir, {
+      items: itemIds.section,
+      passages: passageIds.section,
+      passage_questions: questionIds.section,
+    });
+  }
+
   // Sidecar the app reads at launch to tell whether the bundled seed is newer
   // than the curriculum already installed on the device.
   fs.writeFileSync(
     path.join(path.dirname(outputPath), SEED_INFO_FILE),
     `${JSON.stringify({ version: metadata.version }, null, 2)}\n`,
   );
+
+  return {
+    radicals: radicals.length,
+    kanji: kanji.length,
+    vocabulary: vocabulary.length,
+    grammar: grammar.length,
+    total_items: radicals.length + kanji.length + vocabulary.length + grammar.length,
+    reading_passages: passages.length,
+    dependency_edges: dependenciesFile.edges.length,
+  };
+}
+
+/**
+ * Every compile ships a new curriculum version: raise `metadata.json` `version`
+ * by 1 first, and put the file back if the compile fails. After a good compile,
+ * record what was compiled in `content_counts`, so the counts cannot drift.
+ */
+export function compileAndRecordMetadata(
+  outputPath: string,
+  curriculumDir: string = CURRICULUM_DIR,
+  options: CompileOptions = {},
+): MetadataJson {
+  const metadataPath = path.join(curriculumDir, 'metadata.json');
+  const originalMetadata = fs.readFileSync(metadataPath, 'utf8');
+  const metadata = JSON.parse(originalMetadata) as MetadataJson;
+  metadata.version += 1;
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+
+  try {
+    metadata.content_counts = compileCurriculum(outputPath, curriculumDir, options);
+  } catch (error) {
+    fs.writeFileSync(metadataPath, originalMetadata);
+    throw error;
+  }
+  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+  return metadata;
 }
 
 function main(): void {
@@ -1005,20 +1122,15 @@ function main(): void {
     : DEFAULT_OUTPUT;
   const failOnDraft =
     process.argv.includes('--fail-on-draft') || process.env.COMPILE_FAIL_ON_DRAFT === '1';
-
-  // Every compile ships a new curriculum version: raise it by 1 first, and put
-  // it back if the compile fails.
-  const metadataPath = path.join(CURRICULUM_DIR, 'metadata.json');
-  const originalMetadata = fs.readFileSync(metadataPath, 'utf8');
-  const metadata = JSON.parse(originalMetadata) as MetadataJson;
-  metadata.version += 1;
-  fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
+  const updateRegistry = process.argv.includes('--update-registry');
 
   try {
-    compileCurriculum(outputPath, undefined, { failOnDraft });
+    const metadata = compileAndRecordMetadata(outputPath, undefined, {
+      failOnDraft,
+      updateRegistry,
+    });
     console.log(`Compiled curriculum database: ${outputPath} (version ${metadata.version})`);
   } catch (error) {
-    fs.writeFileSync(metadataPath, originalMetadata);
     console.error(error instanceof Error ? error.message : String(error));
     process.exit(1);
   }

@@ -108,7 +108,7 @@ function mnemonicLanes(kind: 'radical' | 'kanji' | 'vocab'): GuideLane[] {
         {
           title: 'Ingest — this is the gate',
           detail:
-            'On pass it merges into the per-level sidecar as `review_status: draft`. On failure nothing is merged and the gate errors are appended to the prompt file: re-paste that rewritten prompt and try again. If an item fights the gate 3+ times, skip it and come back.',
+            'On pass it merges into the sidecar (curriculum/<type>/mnemonics.json) as `review_status: draft`. On failure nothing is merged and the gate errors are appended to the prompt file: re-paste that rewritten prompt and try again. If an item fights the gate 3+ times, skip it and come back.',
           commands: [
             `${PY} -m generate_content.generate_mnemonics ingest --type ${kind} --level ${LEVEL_TOKEN} --slug <slug> --model gemini-web`,
           ],
@@ -346,7 +346,7 @@ export const GUIDE_STAGES: GuideStage[] = [
           {
             title: 'Ingest — this is the gate',
             detail:
-              'On pass it assembles curriculum/grammar/lessons/<level>/<slug>.md as `review_status: draft` and stashes cloze candidates in drafts/. Common failures: a stray out-of-level word, or a fence that disagrees with `example_sentences`.',
+              'On pass it assembles curriculum/grammar/lessons/<slug>.md as `review_status: draft` and stashes cloze candidates in drafts/. Common failures: a stray out-of-level word, or a fence that disagrees with `example_sentences`.',
             commands: [
               `${PY} -m generate_content.generate_grammar_lessons ingest --level ${LEVEL_TOKEN} --slug <slug> --model gemini-web`,
             ],
@@ -481,7 +481,7 @@ export const GUIDE_STAGES: GuideStage[] = [
           {
             title: 'Agent: install',
             detail:
-              'It matches each download to its radical, converts to WebP, installs under mobile/assets/radicals/<source>/ (the dataset that wrote the radical, not its band), regenerates radicalImages.ts and runs the gates.',
+              'It matches each download to its radical, converts to WebP, installs it as mobile/assets/radicals/<slug>.webp, regenerates radicalImages.ts and runs the gates.',
           },
           {
             title: 'You: judge, then re-roll',
@@ -633,7 +633,7 @@ export const AUDIT_FIXES: AuditFixSection[] = [
       'Duplicate slug / sort_order: fix the item list in the level’s fact module — these are generated, not hand-authored.',
       '“Taught N times across levels”: the later level must reuse the first level’s slug rather than re-teaching the form, or the learner sees one shape as two review cards.',
       'Radical + kanji share a form with no `builds_on` edge: add the edge, otherwise the kanji ships with no component chip.',
-      'content_counts drift: re-assemble and rebuild the graph — the counts are written from the corpus, so drift means the last build was skipped.',
+      'content_counts drift: run `npm run compile-curriculum` — each compile writes the counts it compiled, so drift means content changed after the last compile.',
     ],
     commands: [
       `cd curriculum/_build && ${PY} generate.py --level ${LEVEL_TOKEN} && ${PY} generate_deps.py && cd -`,
@@ -684,7 +684,7 @@ export const AUDIT_COMMANDS: { title: string; detail: string; commands: string[]
   {
     title: 'Compile',
     detail:
-      'Compiles curriculum/ into SQLite and warns on draft content. From the Pipeline tab this writes to a scratch database (web/.build/curriculum.db); run it from the repo root when you actually want to update the shipped seed.',
+      'Compiles curriculum/ into SQLite and warns on draft content. From the Pipeline tab this writes to a scratch database (web/.build/curriculum.db) and runs with --update-registry, so a new item gets an id in curriculum/id-registry.json (commit that change); run it from the repo root when you actually want to update the shipped seed. From the terminal, add `-- --update-registry` after you add or remove an item — without it the compile fails on a key that has no id.',
     commands: ['npm run compile-curriculum'],
   },
   {

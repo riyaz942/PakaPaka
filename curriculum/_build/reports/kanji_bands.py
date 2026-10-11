@@ -17,20 +17,24 @@ N4 holds 175 rather than 150 so that all 181 kanji the JLPT tests at N4 fit
 inside the N5+N4 bands. The 25 slots come out of N3, which the same shift
 relieves, and the ladder still totals 2,000.
 
-**Hand-authored kanji are pinned to their dataset's level.** The N5/N4 curated
-lists are the real exam list for those 192 kanji, and a learner expects 水 and
-川 at N5 because that is where every course and exam puts them — so `source`
-(which dataset defines the kanji: `n5`/`n4`/`k`) doubles as its band for those
-two sources; it is never reranked out. This does mean a low-reuse authored
-kanji occupies a budget slot a higher-reuse derived kanji could have filled,
-which is accepted deliberately: matching the exam's placement matters more
-than squeezing every slot for reuse.
+**Hand-authored kanji are pinned to their dataset's level by default.** The
+N5/N4 curated lists are the real exam list for those 192 kanji, and a learner
+expects 水 and 川 at N5 because that is where every course and exam puts them —
+so `source` (which dataset defines the kanji: `n5`/`n4`/`k`) doubles as its band
+for those two sources; it is never reranked out. This does mean a low-reuse
+authored kanji occupies a budget slot a higher-reuse derived kanji could have
+filled, which is accepted deliberately: matching the exam's placement matters
+more than squeezing every slot for reuse.
 
-**A named handful of derived kanji are pinned the same way.** `PINNED_DERIVED`
-below lists personal pronouns (私/僕/君/彼/誰) — real KANJIDIC school grades of
-6, 8, or a grade 3 that still loses the reuse race, none of which match where
-every JLPT course actually teaches them (N5, day one). Same mechanism as the
-authored pin, just keyed by slug instead of by whole dataset.
+**`levels.json` pins any kanji by name, and wins over the dataset pin.** A
+pinned kanji takes its slot ahead of the ranking, the same way an authored one
+does, so the band keeps its budget: move one kanji out of N5 and N5 ranks one
+more derived kanji in. Today it pins the personal pronouns 私/僕/君/彼/誰
+(`private`, `me`, `mister`, `he`, `who`) to N5. Every JLPT course teaches them
+as some of the first N5 words, but KANJIDIC tags them old-JLPT 3 (私), 2
+(君/彼), 1 (僕) or nothing at all (誰), and their school grades lose the reuse
+race too. A radical named there files at that level instead of at its first
+kanji's level.
 
 **The derived (`k`-sourced) corpus ranks by JLPT level first, reuse second.**
 Each band's authored count is subtracted from its budget; the remainder is
@@ -89,6 +93,8 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 sys.path.insert(0, BUILD_DIR)
 
+from levels import load_overrides  # noqa: E402
+
 # Curated N5/N4 decomposition maps are no longer read here; see load_decomposition.
 
 #: The ladder. Sums to the 2,000 `import/build_skeleton.py` derives.
@@ -105,12 +111,6 @@ AUTHORED_LEVELS = ["n5", "n4"]
 #: ranking a band on that level's words is not circular.
 VOCAB_LEVELS = LEVELS
 
-#: Derived-corpus kanji pinned to a level by name, ahead of jlpt/reuse
-#: ranking. Personal pronouns: every JLPT course teaches them as some of the
-#: first N5 words, but KANJIDIC tags them old-JLPT 3 (私), 2 (君/彼), 1 (僕) or
-#: nothing at all (誰) — none of which reads as N5. JLPT-first ranking is right
-#: for the derived corpus in general; this is the deliberately named exception
-#: for words no JLPT course defers.
 #: Slots each band fills by its own words' reuse *before* the JLPT rank runs.
 #: JLPT rank is right about the exam and blind to this app's word list, so a
 #: kanji the exam grades late but N5 leans on hard — 番, which 6 of N5's own
@@ -128,14 +128,6 @@ RESERVED_BY_REUSE = {"n5": 10, "n4": 6}
 #: Simplicity is not a strong enough signal to outrank the exam — it sits
 #: *inside* a JLPT tier, never across tiers.
 SIMPLE_GRADE = 3
-
-PINNED_DERIVED = {
-    "k-private": "n5",  # 私 watashi — N5 vocabulary word #1 ("I / me")
-    "k-me": "n5",  # 僕 boku — N5 vocabulary word #3
-    "k-mister": "n5",  # 君 kimi — N5 vocabulary word #5
-    "k-he": "n5",  # 彼 kare — N5 vocabulary word #6
-    "k-who": "n5",  # 誰 dare — N5 vocabulary word #27
-}
 
 
 def load(path):
@@ -156,7 +148,7 @@ def load_corpus():
     corpus = {}
     for source, entries in (("n5", N5_KANJI), ("n4", N4_KANJI)):
         for i, k in enumerate(entries, start=1):
-            corpus[f"{source}-{k['suffix']}"] = {
+            corpus[k["slug"]] = {
                 "char": k["char"],
                 "meaning": k["meaning"],
                 "source": source,
@@ -240,19 +232,23 @@ def reserved_by_reuse(level, remaining, reuse):
     )[:size]
 
 
-def assign_bands(corpus, words):
+def assign_bands(corpus, words, pinned):
     """{slug: level}, plus the per-level reuse map the report prints.
 
     Hand-authored kanji (`source` in LEVELS) are pinned to their dataset's
     level up front, outside the ranking loop entirely — they never compete for
-    a slot and never lose one. PINNED_DERIVED pins a few named derived-corpus
-    exceptions the same way. Everything else in the derived corpus is ranked
-    by JLPT level then reuse, filling whatever each band's budget has left
-    after the pinned count is subtracted — except for the RESERVED_BY_REUSE
-    slots at the front, which this level's own words claim outright."""
+    a slot and never lose one. `pinned` (levels.json) pins any kanji by name the
+    same way and wins over the dataset pin. Everything else in the derived
+    corpus is ranked by JLPT level then reuse, filling whatever each band's
+    budget has left after the pinned count is subtracted — except for the
+    RESERVED_BY_REUSE slots at the front, which this level's own words claim
+    outright."""
+    unknown = sorted(set(pinned) - set(corpus))
+    if unknown:
+        raise SystemExit(f"levels.json names unknown kanji: {', '.join(unknown)}")
     bands = {slug: info["source"] for slug, info in corpus.items()
               if info["source"] in LEVELS}
-    bands.update(PINNED_DERIVED)
+    bands.update(pinned)
     remaining = {slug: info for slug, info in corpus.items()
                  if slug not in bands}
     reuse_by_level = {}
@@ -312,7 +308,9 @@ def assign_bands(corpus, words):
         }
     if remaining:
         raise SystemExit(f"{len(remaining)} kanji fit no band; BAND_SIZES is short")
-    for slug, level in PINNED_DERIVED.items():
+    for slug, level in pinned.items():
+        if corpus[slug]["source"] == level:
+            continue  # keeps its curated position (kanji_sort_orders)
         # Never entered the ranking loop, so kanji_sort_orders below would
         # otherwise sort it last (no first-encounter data) instead of at the
         # position its own pinning was meant to fix.
@@ -371,14 +369,12 @@ def load_radicals(decomposition):
     from n4_radicals import N4_RADICALS
     from n5_radicals import N5_RADICALS
 
-    def sidecar(source):
-        path = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics", f"{source}.json")
-        return load(path) if os.path.exists(path) else {}
+    sidecar_path = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
+    written = load(sidecar_path) if os.path.exists(sidecar_path) else {}
 
     radicals = {}
     for source, entries in (("n5", N5_RADICALS), ("n4", N4_RADICALS), ("k", None)):
         entries = decomposition["radicals"] if entries is None else entries
-        written = sidecar(source)
         for i, r in enumerate(entries, start=1):
             radicals[r["slug"]] = {
                 "form": r["form"],
@@ -410,11 +406,16 @@ def decomposition(decomposition_data, corpus):
     return edges
 
 
-def radical_bands(radicals, edges, bands, kanji_order):
+def radical_bands(radicals, edges, bands, kanji_order, pinned):
     """A radical files at the level of the first kanji that needs it.
 
     Derived, not chosen — and it is the one rule that keeps a component from
-    being studied after the kanji it builds."""
+    being studied after the kanji it builds. `pinned` (levels.json) overrides
+    it by name; reports/level_report.py lists a kanji that then comes before
+    one of its radicals."""
+    unknown = sorted(set(pinned) - set(radicals))
+    if unknown:
+        raise SystemExit(f"levels.json names unknown radicals: {', '.join(unknown)}")
     rank = {level: i for i, level in enumerate(LEVELS)}
     first = {}
     for rad_slug, kanji_slugs in edges.items():
@@ -440,6 +441,13 @@ def radical_bands(radicals, edges, bands, kanji_order):
                 raise SystemExit(f"derived radical {slug!r} builds no kanji")
             levels[slug] = info["source"]
             keys[slug] = (LEVELS.index(info["source"]), float("inf"), info["order"])
+    for slug, level in pinned.items():
+        # Just ahead of the first kanji at the new level that needs it, or after
+        # everything there when none does.
+        here = [kanji_order[k] for k in edges.get(slug, ()) if bands[k] == level]
+        levels[slug] = level
+        keys[slug] = ((rank[level], min(here)) if here
+                      else (rank[level], float("inf"), radicals[slug]["order"]))
     order = {}
     for level in LEVELS:
         members = sorted(
@@ -541,14 +549,16 @@ def is_kanji(ch):
 def main():
     corpus, skeleton = load_corpus()
     words = load_vocabulary()
-    bands, reuse_by_level, encounter_by_level = assign_bands(corpus, words)
+    bands, reuse_by_level, encounter_by_level = assign_bands(
+        corpus, words, load_overrides("kanji")
+    )
     kanji_order = kanji_sort_orders(corpus, bands, encounter_by_level)
 
     decomposition_data = load_decomposition()
     radicals = load_radicals(decomposition_data)
     edges = decomposition(decomposition_data, corpus)
     radical_levels, radical_order, radical_first = radical_bands(
-        radicals, edges, bands, kanji_order
+        radicals, edges, bands, kanji_order, load_overrides("radical")
     )
 
     with open(os.path.join(BUILD_DIR, "bands.json"), "w", encoding="utf-8") as f:

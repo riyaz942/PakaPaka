@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Assembly: gate-passing drafts → curriculum/grammar/lessons/<level>/<slug>.md.
+"""Assembly: gate-passing drafts → curriculum/grammar/lessons/<slug>.md.
 
 The lesson file is the reviewable artifact: frontmatter carries the sidecar
 metadata (generator_model, prompt_version, review_status — drafts ship as
@@ -29,11 +29,11 @@ LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts")
 
 
-def lesson_path(level, slug):
-    return os.path.join(LESSONS_DIR, level, f"{slug}.md")
+def lesson_path(slug):
+    return os.path.join(LESSONS_DIR, f"{slug}.md")
 
 
-def write_lesson_file(level, slug, tool_input, generator_model, prompt_version):
+def write_lesson_file(slug, tool_input, generator_model, prompt_version):
     meta = {
         "generator_model": generator_model,
         "prompt_version": prompt_version,
@@ -41,7 +41,7 @@ def write_lesson_file(level, slug, tool_input, generator_model, prompt_version):
         "caution_notes": tool_input.get("caution_notes", []),
         "related_grammar_slugs": tool_input.get("related_grammar_slugs", []),
     }
-    path = lesson_path(level, slug)
+    path = lesson_path(slug)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(frontmatter.serialize(meta, tool_input["lesson_markdown"]))

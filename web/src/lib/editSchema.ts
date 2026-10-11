@@ -31,7 +31,7 @@ export const GENERATED_FIELD_NOTE: Record<ContentType, string> = {
   radical: 'Locked fields come from curriculum/_build/{n5,n4}_radicals.py (or skeleton.json) and are rebuilt by generate.py.',
   kanji: 'Locked fields come from curriculum/_build/{n5,n4}_kanji.py (or skeleton.json) and are rebuilt by generate.py.',
   vocabulary: 'Locked fields come from curriculum/_build/{n5,n4}_vocab.py (or vocab_skeleton.json) and are rebuilt by generate.py.',
-  grammar: 'Grammar is rebuilt from curriculum/_build/{n5,n4}_grammar.py and curriculum/grammar/lessons/<level>/<slug>.md — edit those files, not this form.',
+  grammar: 'Grammar is rebuilt from curriculum/_build/{n5,n4}_grammar.py and curriculum/grammar/lessons/<slug>.md — edit those files, not this form.',
   reading: 'Reading passages are rebuilt from curriculum/_build/{n5,n4}_readings.py — edit that dataset, not this form.',
 };
 

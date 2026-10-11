@@ -114,7 +114,7 @@ describe('itemRepository', () => {
         id: 900,
         item_type: 'kanji',
         jlpt_level: 'N3',
-        slug: 'n3-copy',
+        slug: 'copy',
         primary_form: '写',
         meaning: 'copy',
         mnemonic_text: null,
@@ -386,7 +386,7 @@ describe('itemRepository', () => {
           id: 2,
           item_type: 'kanji',
           jlpt_level: 'N3',
-          slug: 'n3-copy',
+          slug: 'copy',
           primary_form: '写',
           meaning: 'copy',
           mnemonic_text: null,
@@ -397,7 +397,7 @@ describe('itemRepository', () => {
           id: 3,
           item_type: 'kanji',
           jlpt_level: 'N3',
-          slug: 'n3-true',
+          slug: 'true',
           primary_form: '真',
           meaning: 'true',
           mnemonic_text: null,
@@ -408,7 +408,7 @@ describe('itemRepository', () => {
           id: 4,
           item_type: 'kanji',
           jlpt_level: 'N5',
-          slug: 'n5-nichi',
+          slug: 'day',
           primary_form: '日',
           meaning: 'day',
           mnemonic_text: null,
@@ -419,7 +419,7 @@ describe('itemRepository', () => {
           id: 5,
           item_type: 'radical',
           jlpt_level: 'N3',
-          slug: 'n3-crown',
+          slug: 'crown',
           primary_form: '冖',
           meaning: 'crown',
           mnemonic_text: null,
@@ -458,9 +458,9 @@ describe('itemRepository', () => {
       const bySlug = new Map(pool.map((item) => [item.slug, item]));
 
       // The N5 level's own items and nothing else: no N3 kanji, no N3 radical.
-      expect([...bySlug.keys()].sort()).toEqual(['n5-nichi', 'nihon', 'shashin']);
+      expect([...bySlug.keys()].sort()).toEqual(['day', 'nihon', 'shashin']);
       // Each item keeps its own authored position — nothing is reseated.
-      expect(bySlug.get('n5-nichi')?.sortOrder).toBe(1);
+      expect(bySlug.get('day')?.sortOrder).toBe(1);
       expect(bySlug.get('shashin')?.sortOrder).toBe(261);
     });
 
@@ -512,7 +512,7 @@ describe('itemRepository', () => {
       const db = await openDatabaseAsync('curriculum.db.test');
       setPhotoCurriculum();
 
-      expect(getItemBySlug(db, 'kanji', 'n3-copy')?.jlptLevel).toBe('N3');
+      expect(getItemBySlug(db, 'kanji', 'copy')?.jlptLevel).toBe('N3');
       expect(getItemById(db, '2')?.jlptLevel).toBe('N3');
     });
 
@@ -523,7 +523,7 @@ describe('itemRepository', () => {
       // 写 (N3) drags 冖 (N3) along — an N5 learner opting in takes both.
       const pool = getOptInPoolForItems(db, ['2']);
 
-      expect(pool.map((item) => item.slug)).toEqual(['n3-crown', 'n3-copy']);
+      expect(pool.map((item) => item.slug)).toEqual(['crown', 'copy']);
       expect(pool.map((item) => item.jlptLevel)).toEqual(['N3', 'N3']);
     });
 
@@ -536,10 +536,10 @@ describe('itemRepository', () => {
       // 写真 → 写 + 真 (`builds_on`) → 冖 (写's radical). Both component edge
       // kinds are walked; the seed itself is always in the set.
       expect([...pool.map((item) => item.slug)].sort()).toEqual([
-        'n3-copy',
-        'n3-crown',
-        'n3-true',
+        'copy',
+        'crown',
         'shashin',
+        'true',
       ]);
     });
 
@@ -550,7 +550,7 @@ describe('itemRepository', () => {
       // 写 reaches 冖 directly and 写真 reaches it through 写.
       const pool = getOptInPoolForItems(db, ['1', '2']);
 
-      expect(pool.filter((item) => item.slug === 'n3-crown')).toHaveLength(1);
+      expect(pool.filter((item) => item.slug === 'crown')).toHaveLength(1);
     });
 
     it('costs nothing for an empty opt-in set', async () => {
@@ -611,7 +611,7 @@ describe('itemRepository', () => {
         id: 1,
         item_type: 'kanji',
         jlpt_level: 'N5',
-        slug: 'n5-nichi',
+        slug: 'day',
         primary_form: '日',
         meaning: 'day',
         mnemonic_text: null,
@@ -622,7 +622,7 @@ describe('itemRepository', () => {
         id: 2,
         item_type: 'kanji',
         jlpt_level: 'N3',
-        slug: 'n3-record',
+        slug: 'record',
         primary_form: '記',
         meaning: 'record',
         mnemonic_text: null,

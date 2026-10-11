@@ -489,11 +489,11 @@ For each slug in the group, run:
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar:
+The item is merged into the sidecar (one file for every level):
 
-- radical → curriculum/radicals/mnemonics/<level>.json
-- kanji   → curriculum/kanji/mnemonics/<level>.json
-- vocab   → curriculum/vocabulary/mnemonics/<level>.json
+- radical → curriculum/radicals/mnemonics.json
+- kanji   → curriculum/kanji/mnemonics.json
+- vocab   → curriculum/vocabulary/mnemonics.json
 
 Record the slug as successful and proceed to the next slug.
 
@@ -794,6 +794,6 @@ Notes on differences from the subagent automation prompt
 - Everything else is identical: the same auto-select + grouping (Step 1a), the
   same `webprompts`/`ingest` commands and gate, the same per-slug repair rules
   (inline fix under 7 errors, 3-attempt cap plus one last-resort inline fix),
-  the same per-level keyed-by-slug sidecar, the same layer ordering
+  the same keyed-by-slug sidecar, the same layer ordering
   (including `generate.py` between layers), and the same draft/`review_status`
   discipline.

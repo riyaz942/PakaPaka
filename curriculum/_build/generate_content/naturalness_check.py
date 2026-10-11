@@ -22,7 +22,7 @@ same gate.
 The obvious way to build this is to hand a passage to a model and ask "is this
 natural?". That produces suggestions the level cannot use. Real example, from an
 outside review of seed 12: the reviewer was right that 箱が待っています is wrong,
-and proposed 置いてあります — which is `n4-tearu`, N4 grammar, off the list at
+and proposed 置いてあります — which is `tearu`, N4 grammar, off the list at
 every N5 seed. It also proposed the counter 二着, which is in neither level.
 
 So the prompt carries the seed's **whole allowed vocabulary and grammar window**,

@@ -146,7 +146,10 @@ the mechanical swap, and it waits on review, not on a judgement call.
    sees. Flip `_meta.review_status` to `reviewed` as you go.
 3. Replace `N5_READINGS` with the artifact's passages in seed position order —
    the `passage` object of each entry in `generate_content/passages/n5.json`,
-   minus `slug` and `_meta`. The shapes already match; `generate.py` adds
+   minus `_meta`. **Keep `slug`**: it is the passage's key in
+   `curriculum/id-registry.json`, so it must never change after the passage
+   ships. A new passage needs `npm run compile-curriculum -- --update-registry`
+   to get an id. The shapes already match; `generate.py` adds
    `sort_order` from list position and re-derives the furigana itself, so
    carrying `body_furigana` through or dropping it makes no difference.
 4. Rebuild and compile from the repo root:

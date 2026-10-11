@@ -149,7 +149,7 @@ def _grammar_errors(result, body, ctx):
     """Check 6, over detected grammar rather than declared.
 
     A surface with several readings (ません is `masu` and `masen`; れる is
-    `n4-potential` and `n4-passive`) is out of level only when **every** reading
+    `potential` and `passive`) is out of level only when **every** reading
     is: the passage cannot be blamed for an interpretation it did not intend
     when a taught one fits the same characters. `grammar_detect.MANUAL_SLUGS`
     never reach `matches`, so a point no rule can separate from another is not

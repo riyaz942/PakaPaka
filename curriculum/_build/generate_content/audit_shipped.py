@@ -85,7 +85,7 @@ REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 #: gone. An exception here should now mean "KRADFILE and pedagogy genuinely
 #: disagree", never "we haven't got to it".
 DECOMPOSITION_EXCEPTIONS = {
-    # ("radical-slug", "n5-kanji-slug"): "reason",
+    # ("radical-slug", "kanji-slug"): "reason",
 
     # --- 1. component radical bands after the kanji -------------------------
     # A radical is no longer filed by the dataset that wrote it: banding files
@@ -95,128 +95,128 @@ DECOMPOSITION_EXCEPTIONS = {
     # `generate_deps.N5_DECOMPOSITION` now. One case survives the reband, and it
     # is the only shape that still can: the radical's *first* kanji sits in an
     # earlier band than this one.
-    ("furutori", "n5-nichiyou"): "隹 bands N4 — 集 is the first kanji that needs it — while 曜 bands N5, so the learner meets 曜 first and the edge would be an ordering inversion.",
+    ("furutori", "weekday"): "隹 bands N4 — 集 is the first kanji that needs it — while 曜 bands N5, so the learner meets 曜 first and the edge would be an ordering inversion.",
 
     # --- 2. KRADFILE splits a sub-kanji the taught story does not -----------
-    ("me", "n5-kau"): "目 is the top of 貝; 買 already builds on 貝 whole.",
-    ("hachigashira", "n5-kau"): "八 is the two legs of 貝; 買 already builds on 貝 whole.",
-    ("ten", "n5-kuni"): "丶 is the dot of 玉 inside the enclosure; 国 is taught from 囗.",
-    ("hito", "n5-hana"): "人 is the left half of 化, which the curriculum does not teach; 花's taught story does not split it.",
-    ("hi-spoon", "n5-hana"): "匕 is the right half of that same untaught 化; 花 is taught from 艹.",
-    ("ten", "n5-ki-spirit"): "丶 is an interior stroke of 气/㐅; 気 is taught as one whole shape.",
-    ("ten", "n5-eki-station"): "丶 is an interior stroke of 尺; 駅 is taught from 馬.",
-    ("kuchi", "n5-shu-week"): "口 is a stroke-lookup piece of 周; 週's taught story does not split 周.",
-    ("tsuchi", "n5-shu-week"): "土 is a stroke-lookup piece of 周; 週's taught story does not split 周.",
-    ("keigamae", "n5-shu-week"): "冂 is the outer frame of 周; 週's taught story does not split 周.",
-    ("ta", "n5-higashi"): "田 is how KRADFILE indexes the middle of 東; the taught reading of those same strokes is the 日/木 overlay.",
-    ("ichi", "n5-higashi"): "一 is a stroke of the same 日/木 overlay 東 is already taught from.",
+    ("me", "buy"): "目 is the top of 貝; 買 already builds on 貝 whole.",
+    ("hachigashira", "buy"): "八 is the two legs of 貝; 買 already builds on 貝 whole.",
+    ("ten", "country"): "丶 is the dot of 玉 inside the enclosure; 国 is taught from 囗.",
+    ("hito", "flower"): "人 is the left half of 化, which the curriculum does not teach; 花's taught story does not split it.",
+    ("hi-spoon", "flower"): "匕 is the right half of that same untaught 化; 花 is taught from 艹.",
+    ("ten", "spirit"): "丶 is an interior stroke of 气/㐅; 気 is taught as one whole shape.",
+    ("ten", "station"): "丶 is an interior stroke of 尺; 駅 is taught from 馬.",
+    ("kuchi", "week"): "口 is a stroke-lookup piece of 周; 週's taught story does not split 周.",
+    ("tsuchi", "week"): "土 is a stroke-lookup piece of 周; 週's taught story does not split 周.",
+    ("keigamae", "week"): "冂 is the outer frame of 周; 週's taught story does not split 周.",
+    ("ta", "east"): "田 is how KRADFILE indexes the middle of 東; the taught reading of those same strokes is the 日/木 overlay.",
+    ("ichi", "east"): "一 is a stroke of the same 日/木 overlay 東 is already taught from.",
 
     # --- 3. bare search strokes --------------------------------------------
-    ("ni", "n5-ao"): "二 indexes two strokes of 青's 龶 top; not a meaning-bearing component.",
-    ("hitoyane", "n5-ao"): "亠 indexes the top strokes of 青's 龶; not a meaning-bearing component.",
-    ("tsuchi", "n5-ao"): "土 indexes the 龶 top of 青 by shape; not a meaning-bearing component.",
-    ("hachigashira", "n5-atarashii"): "八 indexes the splayed strokes under 立 in 新; not a meaning-bearing component.",
-    ("hitoyane", "n5-atarashii"): "亠 is the top stroke of 立, which 新 already builds on.",
-    ("hitoyane", "n5-en"): "亠 indexes the top stroke of 円; not a meaning-bearing component.",
-    ("ichi", "n5-en"): "一 indexes an interior stroke of 円; not a meaning-bearing component.",
-    ("ni", "n5-hantime"): "二 indexes two of 半's horizontal strokes; not a meaning-bearing component.",
-    ("hachigashira", "n5-hantime"): "八 indexes 半's 丷 top; not a meaning-bearing component.",
-    ("juu", "n5-hidariuma"): "十 indexes the bottom cross of 午; 午 is taught from 一.",
-    ("mannaka", "n5-hidariuma"): "干 is a whole-shape lookup for 午; 午 is taught from 一.",
-    ("ichi", "n5-kon-now"): "一 indexes the stroke under 今's roof; 今 is taught from 人.",
-    ("hito", "n5-kin"): "人 indexes the 亼 roof of 金; 金 is taught as one whole shape.",
-    ("hachigashira", "n5-kin"): "八 indexes the two dots inside 金; 金 is taught as one whole shape.",
-    ("ni", "n5-kuru-rai"): "二 indexes 来's horizontal strokes; not a meaning-bearing component.",
-    ("hitoyane", "n5-kuru-rai"): "亠 indexes 来's top stroke; not a meaning-bearing component.",
-    ("kome", "n5-kuru-rai"): "米 is a whole-shape lookup for 来 (the two characters are near-homographs by stroke); not a component.",
-    ("ichi", "n5-machi"): "一 indexes a stroke of 丁; 町's taught story does not split 丁.",
-    ("ichi", "n5-mae"): "一 indexes a horizontal stroke of 前; not a meaning-bearing component.",
-    ("hachigashira", "n5-mae"): "八 indexes 前's 丷 top; not a meaning-bearing component.",
-    ("hachigashira", "n5-michi"): "八 indexes the 丷 top of 首; 道 builds on 首 whole, and on 辶.",
-    ("mannaka", "n5-minami"): "干 is a stroke-lookup shape inside 南; not a meaning-bearing component.",
-    ("hachigashira", "n5-minami"): "八 indexes 南's interior 丷; not a meaning-bearing component.",
-    ("ichi", "n5-nen"): "一 indexes a horizontal stroke of 年; not a meaning-bearing component.",
-    ("tsuchi", "n5-sensei-saki"): "土 indexes the 生-like top strokes of 先; 先 is taught from 儿.",
-    ("hitoyane", "n5-takai"): "亠 indexes 高's top stroke; not a meaning-bearing component.",
-    ("keigamae", "n5-takai"): "冂 indexes 高's lower frame; 高 is already taught from 口 and its own radical.",
-    ("ni", "n5-ten"): "二 indexes 天's two horizontals; 天 is taught from 一 over the whole 大 shape, which is a kanji, not a radical.",
-    ("hitoashi", "n5-yon"): "儿 indexes the interior strokes of 四; 四 is already taught from 口 and 囗.",
-    ("katana", "n5-kaeru"): "刀 indexes the ⺈ strokes at 帰's top left; the reviewed story builds 帰 from the broom and the cloth.",
-    ("katana", "n5-mae"): "刂 is the right edge of 前 and a real etymological piece, but the reviewed story builds 前 from 月 under an awning; adding the edge would oblige a mnemonic rewrite of shipped N5 content.",
+    ("ni", "blue"): "二 indexes two strokes of 青's 龶 top; not a meaning-bearing component.",
+    ("hitoyane", "blue"): "亠 indexes the top strokes of 青's 龶; not a meaning-bearing component.",
+    ("tsuchi", "blue"): "土 indexes the 龶 top of 青 by shape; not a meaning-bearing component.",
+    ("hachigashira", "new"): "八 indexes the splayed strokes under 立 in 新; not a meaning-bearing component.",
+    ("hitoyane", "new"): "亠 is the top stroke of 立, which 新 already builds on.",
+    ("hitoyane", "yen"): "亠 indexes the top stroke of 円; not a meaning-bearing component.",
+    ("ichi", "yen"): "一 indexes an interior stroke of 円; not a meaning-bearing component.",
+    ("ni", "half"): "二 indexes two of 半's horizontal strokes; not a meaning-bearing component.",
+    ("hachigashira", "half"): "八 indexes 半's 丷 top; not a meaning-bearing component.",
+    ("juu", "noon"): "十 indexes the bottom cross of 午; 午 is taught from 一.",
+    ("mannaka", "noon"): "干 is a whole-shape lookup for 午; 午 is taught from 一.",
+    ("ichi", "now"): "一 indexes the stroke under 今's roof; 今 is taught from 人.",
+    ("hito", "gold"): "人 indexes the 亼 roof of 金; 金 is taught as one whole shape.",
+    ("hachigashira", "gold"): "八 indexes the two dots inside 金; 金 is taught as one whole shape.",
+    ("ni", "come"): "二 indexes 来's horizontal strokes; not a meaning-bearing component.",
+    ("hitoyane", "come"): "亠 indexes 来's top stroke; not a meaning-bearing component.",
+    ("kome", "come"): "米 is a whole-shape lookup for 来 (the two characters are near-homographs by stroke); not a component.",
+    ("ichi", "town"): "一 indexes a stroke of 丁; 町's taught story does not split 丁.",
+    ("ichi", "front"): "一 indexes a horizontal stroke of 前; not a meaning-bearing component.",
+    ("hachigashira", "front"): "八 indexes 前's 丷 top; not a meaning-bearing component.",
+    ("hachigashira", "road"): "八 indexes the 丷 top of 首; 道 builds on 首 whole, and on 辶.",
+    ("mannaka", "south"): "干 is a stroke-lookup shape inside 南; not a meaning-bearing component.",
+    ("hachigashira", "south"): "八 indexes 南's interior 丷; not a meaning-bearing component.",
+    ("ichi", "year"): "一 indexes a horizontal stroke of 年; not a meaning-bearing component.",
+    ("tsuchi", "previous"): "土 indexes the 生-like top strokes of 先; 先 is taught from 儿.",
+    ("hitoyane", "tall"): "亠 indexes 高's top stroke; not a meaning-bearing component.",
+    ("keigamae", "tall"): "冂 indexes 高's lower frame; 高 is already taught from 口 and its own radical.",
+    ("ni", "heaven"): "二 indexes 天's two horizontals; 天 is taught from 一 over the whole 大 shape, which is a kanji, not a radical.",
+    ("hitoashi", "four"): "儿 indexes the interior strokes of 四; 四 is already taught from 口 and 囗.",
+    ("katana", "return"): "刀 indexes the ⺈ strokes at 帰's top left; the reviewed story builds 帰 from the broom and the cloth.",
+    ("katana", "front"): "刂 is the right edge of 前 and a real etymological piece, but the reviewed story builds 前 from 月 under an awning; adding the edge would oblige a mnemonic rewrite of shipped N5 content.",
 
     # --- 4. taught as one whole shape --------------------------------------
-    ("tsuchi", "n5-aka"): "赤 is taught as its own whole-shape radical; 土 is only how KRADFILE indexes its top.",
-    ("kunigamae", "n5-kuchi"): "囗 and 口 are the same box at two sizes; 口 already builds on its own radical.",
-    ("ichi", "n5-man"): "万 is taught as one whole shape; 一 is only its top stroke.",
-    ("ichi", "n5-san"): "三 is taught as its own whole-shape radical; 一 and 二 are the strokes it is drawn from, not pieces it borrows.",
-    ("ni", "n5-san"): "三 is taught as its own whole-shape radical; 二 is a stroke subset of it, not a component.",
+    ("tsuchi", "red"): "赤 is taught as its own whole-shape radical; 土 is only how KRADFILE indexes its top.",
+    ("kunigamae", "mouth"): "囗 and 口 are the same box at two sizes; 口 already builds on its own radical.",
+    ("ichi", "ten-thousand"): "万 is taught as one whole shape; 一 is only its top stroke.",
+    ("ichi", "three"): "三 is taught as its own whole-shape radical; 一 and 二 are the strokes it is drawn from, not pieces it borrows.",
+    ("ni", "three"): "三 is taught as its own whole-shape radical; 二 is a stroke subset of it, not a component.",
 
     # --- N4 pass (2026-08-10, skeleton fix ahead of content generation) ----
     # Same four kinds as the N5 pass above. The 亻 group is a fifth,
     # KRADFILE-specific case: 化 is its index entry for 亻, and 人 claims 化
     # before 亻 does, so the confirmed 亻 edge still leaves a 人 diff.
-    ("hachigashira", "n4-aji"): "ハ indexes 未's splayed lower strokes.",
-    ("hitoyane", "n4-aji"): "亠 indexes the top stroke of that same 未.",
-    ("ni", "n4-aji"): "二 indexes the two horizontals of 未; 味 builds on 木.",
-    ("tsuchi", "n4-arau"): "土 indexes the 生-like top of 先; 洗 is taught from 氵 and 儿.",
-    ("tsutsumu", "n4-betsu"): "勹 indexes the hooked stroke of 另; 別 is taught from 口 and 力.",
-    ("hachigashira", "n4-erabu"): "ハ/并 index the splayed strokes of that same 巽.",
-    ("ni", "n4-erabu"): "二 indexes a horizontal of 巽, a sub-kanji the curriculum does not teach.",
-    ("hachigashira", "n4-fueru"): "并 indexes the 丷 top of 曽; not a meaning-bearing component.",
-    ("hachigashira", "n4-gyou"): "并 indexes the splayed strokes of that same 丵.",
-    ("ou-king", "n4-gyou"): "王 indexes the same 丵 top 業 already builds on through 羊.",
-    ("hito", "n4-hataraku"): "化 is how KRADFILE indexes 亻; 働 builds on 亻 (ninben) directly.",
-    ("itoko", "n4-hosoi"): "幺 is the upper half of 糸; 細 builds on 糸 whole.",
-    ("shou", "n4-hosoi"): "小 is the lower half of that same 糸.",
-    ("hachigashira", "n4-imouto"): "ハ indexes 未's splayed lower strokes.",
-    ("hitoyane", "n4-imouto"): "亠 indexes the top stroke of that same 未.",
-    ("ni", "n4-imouto"): "二 indexes the two horizontals of 未; 妹 builds on 木.",
-    ("hito", "n4-kariru"): "化 is how KRADFILE indexes 亻; 借 builds on 亻 (ninben) directly.",
-    ("hachigashira", "n4-kasu"): "ハ is the two legs of that same 貝.",
-    ("hito", "n4-kasu"): "化 is how KRADFILE indexes 亻; 貸 builds on 亻 (ninben) directly.",
-    ("me", "n4-kasu"): "目 is the top of 貝; 貸 already builds on 貝 whole.",
-    ("itoko", "n4-kei-pass"): "幺 is the upper half of 糸; 経 builds on 糸 whole.",
-    ("shou", "n4-kei-pass"): "小 is the lower half of that same 糸.",
-    ("hito", "n4-ken-exam"): "人/个 index the 亼 roof of 僉, a sub-kanji the curriculum never teaches; 験 is taught from 馬.",
-    ("kuchi", "n4-ken-exam"): "口 indexes the paired mouths inside that same untaught 僉.",
-    ("hito", "n4-kimeru"): "人 indexes the splayed foot of 夬, a sub-kanji the curriculum does not teach.",
-    ("ni", "n4-kimeru"): "二 indexes a horizontal of that same 夬.",
-    ("hachigashira", "n4-kiru-wear"): "并 indexes 着's 丷 top; 着 builds on 羊 whole.",
-    ("ou-king", "n4-kiru-wear"): "王 indexes the same 羊 top 着 already builds on.",
-    ("hito", "n4-kotae"): "个 indexes the 亼 roof of 合; 答 is taught from 竹 over 口.",
-    ("ichi", "n4-modoru"): "一 is the top stroke of 戸, which 戻 already builds on whole.",
-    ("shikabane", "n4-modoru"): "尸 is the body of that same 戸.",
-    ("nisui", "n4-narau"): "冫 indexes the interior ticks of 羽; 習 builds on 羽 whole.",
-    ("ni", "n4-nokoru"): "二 indexes the paired horizontals of 戔; 残 builds on 戈.",
-    ("hachigashira", "n4-okuru"): "并 indexes 关's 丷 top.",
-    ("ichi", "n4-okuru"): "一 indexes a horizontal of 关, a sub-kanji the curriculum does not teach.",
-    ("ni", "n4-okuru"): "二 indexes the paired horizontals of that same 关.",
-    ("hachigashira", "n4-otouto"): "并 indexes 弟's 丷 top; not a meaning-bearing component.",
-    ("itoko", "n4-owaru"): "幺 is the upper half of 糸; 終 builds on 糸 whole.",
-    ("shou", "n4-owaru"): "小 is the lower half of that same 糸.",
-    ("hachigashira", "n4-oya"): "并 indexes 亲's splayed strokes.",
-    ("hitoyane", "n4-oya"): "亠 is the top stroke of that same 立.",
-    ("karai", "n4-oya"): "辛 is a whole-shape lookup for 亲; 親 is taught from 立 over 木.",
-    ("ichi", "n4-shinu"): "一 is the top stroke of 歹; 死 builds on 歹 whole.",
-    ("yuu-evening", "n4-shinu"): "夕 is the body of that same 歹.",
-    ("keigamae", "n4-shiraberu"): "冂 is the outer frame of that same 周.",
-    ("kuchi", "n4-shiraberu"): "口 is a stroke-lookup piece of 周; 調's taught story does not split 周.",
-    ("tsuchi", "n4-shiraberu"): "土 is a stroke-lookup piece of that same 周.",
-    ("mu", "n4-shitsu"): "厶 is the waist of that same 至.",
-    ("tsuchi", "n4-shitsu"): "土 is the foot of 至; 室 builds on 至 whole.",
-    ("hachigashira", "n4-shitsu-quality"): "ハ is the two legs of that same 貝.",
-    ("me", "n4-shitsu-quality"): "目 is the top of 貝; 質 already builds on 貝 whole.",
-    ("hi-sun", "n4-todoku"): "日 indexes the boxed lower half of 由; 届 is taught from 尸.",
-    ("ta", "n4-todoku"): "田 is a whole-shape lookup for that same 由.",
-    ("ichi", "n4-tokoro"): "一 is the top stroke of that same 戸.",
-    ("shikabane", "n4-tokoro"): "尸 is the top of 戸; 所 builds on 戸 whole.",
-    ("hito", "n4-tsukau"): "化 is how KRADFILE indexes 亻; 使 builds on 亻 (ninben) directly.",
-    ("itoko", "n4-tsuzukeru"): "幺 is the upper half of 糸; 続 builds on 糸 whole.",
-    ("shou", "n4-tsuzukeru"): "小 is the lower half of that same 糸.",
-    ("ichi", "n4-warui"): "一 indexes a stroke of 亜, a sub-kanji the curriculum does not teach.",
-    ("kuchi", "n4-warui"): "口 indexes the boxed interior of that same 亜.",
-    ("hitoyane", "n4-wasureru"): "亠 is the top stroke of 亡, which the curriculum does not teach as a piece.",
-    ("to-dipper", "n4-zu"): "斗 is a stroke-lookup shape for 図's interior; the taught story is the enclosure.",
+    ("hachigashira", "taste"): "ハ indexes 未's splayed lower strokes.",
+    ("hitoyane", "taste"): "亠 indexes the top stroke of that same 未.",
+    ("ni", "taste"): "二 indexes the two horizontals of 未; 味 builds on 木.",
+    ("tsuchi", "wash"): "土 indexes the 生-like top of 先; 洗 is taught from 氵 and 儿.",
+    ("tsutsumu", "separate"): "勹 indexes the hooked stroke of 另; 別 is taught from 口 and 力.",
+    ("hachigashira", "choose"): "ハ/并 index the splayed strokes of that same 巽.",
+    ("ni", "choose"): "二 indexes a horizontal of 巽, a sub-kanji the curriculum does not teach.",
+    ("hachigashira", "increase"): "并 indexes the 丷 top of 曽; not a meaning-bearing component.",
+    ("hachigashira", "business"): "并 indexes the splayed strokes of that same 丵.",
+    ("ou-king", "business"): "王 indexes the same 丵 top 業 already builds on through 羊.",
+    ("hito", "work"): "化 is how KRADFILE indexes 亻; 働 builds on 亻 (ninben) directly.",
+    ("itoko", "thin"): "幺 is the upper half of 糸; 細 builds on 糸 whole.",
+    ("shou", "thin"): "小 is the lower half of that same 糸.",
+    ("hachigashira", "younger-sister"): "ハ indexes 未's splayed lower strokes.",
+    ("hitoyane", "younger-sister"): "亠 indexes the top stroke of that same 未.",
+    ("ni", "younger-sister"): "二 indexes the two horizontals of 未; 妹 builds on 木.",
+    ("hito", "borrow"): "化 is how KRADFILE indexes 亻; 借 builds on 亻 (ninben) directly.",
+    ("hachigashira", "lend"): "ハ is the two legs of that same 貝.",
+    ("hito", "lend"): "化 is how KRADFILE indexes 亻; 貸 builds on 亻 (ninben) directly.",
+    ("me", "lend"): "目 is the top of 貝; 貸 already builds on 貝 whole.",
+    ("itoko", "pass-through"): "幺 is the upper half of 糸; 経 builds on 糸 whole.",
+    ("shou", "pass-through"): "小 is the lower half of that same 糸.",
+    ("hito", "examine"): "人/个 index the 亼 roof of 僉, a sub-kanji the curriculum never teaches; 験 is taught from 馬.",
+    ("kuchi", "examine"): "口 indexes the paired mouths inside that same untaught 僉.",
+    ("hito", "decide"): "人 indexes the splayed foot of 夬, a sub-kanji the curriculum does not teach.",
+    ("ni", "decide"): "二 indexes a horizontal of that same 夬.",
+    ("hachigashira", "wear"): "并 indexes 着's 丷 top; 着 builds on 羊 whole.",
+    ("ou-king", "wear"): "王 indexes the same 羊 top 着 already builds on.",
+    ("hito", "answer"): "个 indexes the 亼 roof of 合; 答 is taught from 竹 over 口.",
+    ("ichi", "go-back"): "一 is the top stroke of 戸, which 戻 already builds on whole.",
+    ("shikabane", "go-back"): "尸 is the body of that same 戸.",
+    ("nisui", "learn"): "冫 indexes the interior ticks of 羽; 習 builds on 羽 whole.",
+    ("ni", "remain"): "二 indexes the paired horizontals of 戔; 残 builds on 戈.",
+    ("hachigashira", "send"): "并 indexes 关's 丷 top.",
+    ("ichi", "send"): "一 indexes a horizontal of 关, a sub-kanji the curriculum does not teach.",
+    ("ni", "send"): "二 indexes the paired horizontals of that same 关.",
+    ("hachigashira", "younger-brother"): "并 indexes 弟's 丷 top; not a meaning-bearing component.",
+    ("itoko", "end"): "幺 is the upper half of 糸; 終 builds on 糸 whole.",
+    ("shou", "end"): "小 is the lower half of that same 糸.",
+    ("hachigashira", "parent"): "并 indexes 亲's splayed strokes.",
+    ("hitoyane", "parent"): "亠 is the top stroke of that same 立.",
+    ("karai", "parent"): "辛 is a whole-shape lookup for 亲; 親 is taught from 立 over 木.",
+    ("ichi", "die"): "一 is the top stroke of 歹; 死 builds on 歹 whole.",
+    ("yuu-evening", "die"): "夕 is the body of that same 歹.",
+    ("keigamae", "investigate"): "冂 is the outer frame of that same 周.",
+    ("kuchi", "investigate"): "口 is a stroke-lookup piece of 周; 調's taught story does not split 周.",
+    ("tsuchi", "investigate"): "土 is a stroke-lookup piece of that same 周.",
+    ("mu", "room"): "厶 is the waist of that same 至.",
+    ("tsuchi", "room"): "土 is the foot of 至; 室 builds on 至 whole.",
+    ("hachigashira", "quality"): "ハ is the two legs of that same 貝.",
+    ("me", "quality"): "目 is the top of 貝; 質 already builds on 貝 whole.",
+    ("hi-sun", "reach"): "日 indexes the boxed lower half of 由; 届 is taught from 尸.",
+    ("ta", "reach"): "田 is a whole-shape lookup for that same 由.",
+    ("ichi", "place"): "一 is the top stroke of that same 戸.",
+    ("shikabane", "place"): "尸 is the top of 戸; 所 builds on 戸 whole.",
+    ("hito", "use"): "化 is how KRADFILE indexes 亻; 使 builds on 亻 (ninben) directly.",
+    ("itoko", "continue"): "幺 is the upper half of 糸; 続 builds on 糸 whole.",
+    ("shou", "continue"): "小 is the lower half of that same 糸.",
+    ("ichi", "bad"): "一 indexes a stroke of 亜, a sub-kanji the curriculum does not teach.",
+    ("kuchi", "bad"): "口 indexes the boxed interior of that same 亜.",
+    ("hitoyane", "forget"): "亠 is the top stroke of 亡, which the curriculum does not teach as a piece.",
+    ("to-dipper", "diagram"): "斗 is a stroke-lookup shape for 図's interior; the taught story is the enclosure.",
 }
 
 #: Non-kanji characters KRADFILE and JmdictFurigana still treat as "carries
@@ -278,7 +278,7 @@ def discover_levels():
     found = {
         os.path.splitext(os.path.basename(p))[0]
         for kind in ("radicals", "kanji", "vocabulary", "grammar")
-        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "*.json"))
+        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "n[1-5].json"))
     }
     ordered = [lvl for lvl in context.LEVEL_ORDER if lvl in found]
     ordered += sorted(found - set(ordered))
@@ -585,7 +585,11 @@ def decomposition_gaps(level, all_levels_present, kradfile):
             taught_chars.setdefault(variant, slug)
 
     edges = audit_facts.load_json("dependencies", "graph.json")["edges"]
-    edge_set = {(e["from_slug"], e["to_slug"]) for e in edges if e["relationship_type"] == "builds_on"}
+    edge_set = {
+        (e["from_slug"], e["to_slug"]) for e in edges
+        if e["relationship_type"] == "builds_on"
+        and e["from_type"] == "radical" and e["to_type"] == "kanji"
+    }
 
     # A component can also be taught as a *kanji* rather than a radical. The
     # graph only carries radical -> kanji `builds_on`, so no edge is expressible
@@ -595,11 +599,12 @@ def decomposition_gaps(level, all_levels_present, kradfile):
     for kslug, kan in kanji_char.items():
         kanji_by_char.setdefault(kan, kslug)
 
+    level_kanji = {k["slug"] for k in load_items("kanji", level)}
     missing_edge = []
     untaught = {}
     taught_as_kanji = {}
     for kslug, kan in kanji_char.items():
-        if not kslug.startswith(f"{level}-"):
+        if kslug not in level_kanji:
             continue
         for comp in kradfile.get(kan, []):
             if comp == kan:
@@ -720,11 +725,13 @@ def passage_grammar_usage_errors(level):
 # --- check 7: look-alike symmetry -------------------------------------------
 
 def symmetry_errors(all_levels_present):
+    # Keyed "<kind>:<slug>", the form visually_similar_slugs refs use: a radical
+    # and a kanji may share a slug.
     items = {}
     for lvl in all_levels_present:
-        for kind_dir in ("radicals", "kanji"):
+        for kind_dir, kind in (("radicals", "radical"), ("kanji", "kanji")):
             for it in load_items(kind_dir, lvl):
-                items[it["slug"]] = it
+                items[f"{kind}:{it['slug']}"] = it
     seen_pairs = set()
     results = []
     for slug, it in items.items():
@@ -806,6 +813,7 @@ def hygiene_errors(all_levels_present):
         (e["from_slug"], e["to_slug"])
         for e in audit_facts.load_json("dependencies", "graph.json")["edges"]
         if e["relationship_type"] == "builds_on"
+        and e["from_type"] == "radical" and e["to_type"] == "kanji"
     }
     for form, rslug in sorted(radical_by_form.items()):
         kslug = kanji_by_form.get(form)
@@ -978,7 +986,6 @@ def audit_level(level, all_levels_present, kradfile):
 #: check), so `--json` recovers them by pattern-matching the message text
 #: each check already writes — good enough for the studio UI to link a
 #: finding back to an item; not a guarantee every slug mentioned is caught.
-_SLUG_PREFIXED_RE = re.compile(r"\bn[45]-[a-z][a-z0-9-]*\b")
 _SLUG_KIND_LEAD_RE = re.compile(r"^(radical|kanji|vocab|grammar) (\S+?):")
 _SLUG_BACKTICK_RE = re.compile(r"`([a-zA-Z][a-zA-Z0-9_-]*)`")
 _SLUG_KRADFILE_RE = re.compile(r"KRADFILE lists \S+ \(([a-zA-Z][a-zA-Z0-9_-]*)\)")
@@ -990,7 +997,7 @@ _SLUG_PASSAGE_RE = re.compile(r"passage\[sort_order=(\d+)\]")
 
 
 def extract_slugs(message, level):
-    found = set(_SLUG_PREFIXED_RE.findall(message))
+    found = set()
 
     m = _SLUG_KIND_LEAD_RE.match(message)
     if m:

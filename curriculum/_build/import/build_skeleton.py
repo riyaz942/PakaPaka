@@ -13,10 +13,10 @@ No mnemonics, no examples and no art — a mnemonic is owed when a learner
 **This file assigns no levels.** Under plan v1 it did: the old-JLPT tag picked
 n3/n2/n1 and the slug carried that prefix. v2 makes the level a *band* — a
 teaching budget — so `reports/kanji_bands.py` owns level assignment and every
-kanji here is level-free. Slugs are prefixed `k-` for the same reason: a slug
-that named a level would be a second, stale label for the one the band already
-carries. The old-JLPT tag survives as the `jlpt` field: a rank input the band
-sorts on, not a level it copies.
+kanji here is level-free, slug included: a slug that named a level would be a
+second, stale label for the one the band already carries. The old-JLPT tag
+survives as the `jlpt` field: a rank input the band sorts on, not a level it
+copies.
 
 Corpus selection, in priority order:
   1. every kanji a shipped N5/N4 word is written with — dropping one would
@@ -56,9 +56,6 @@ AUTHORED_LEVELS = ("n5", "n4")
 #: Total kanji on the ladder (plan v2, "The ladder"): 150 + 150 + 400 + 300 +
 #: 1,000. 2,136 kanji carry a jōyō grade, so 136 of the rarest are left out.
 CORPUS_SIZE = 2000
-
-#: Slug prefix for every derived kanji. Not a level — see the module docstring.
-SLUG_PREFIX = "k"
 
 #: New radicals for the skeleton levels.
 #:
@@ -170,6 +167,15 @@ def is_kanji_char(ch):
     return "一" <= ch <= "鿿"
 
 
+def authored_slugs():
+    """The slugs `n5_kanji.py` / `n4_kanji.py` use, which a derived kanji must
+    not take."""
+    from n4_kanji import N4_KANJI
+    from n5_kanji import N5_KANJI
+
+    return {k["slug"] for k in N5_KANJI} | {k["slug"] for k in N4_KANJI}
+
+
 def authored_chars():
     """The kanji `n5_kanji.py` / `n4_kanji.py` define.
 
@@ -228,11 +234,9 @@ def select_corpus(kanjidic, required):
 
 
 def slugify(meaning):
-    """A slug suffix from a primary English gloss.
+    """A slug from a primary English gloss.
 
-    The shipped N5/N4 suffixes are hand-picked romaji; 1,808 generated entries
-    need a rule instead, and the gloss is the one field that is short, ASCII and
-    near-unique. Two words is enough to stay readable (`brush-stroke`) without
+    The gloss is the one field that is short, ASCII and near-unique. Two words is enough to stay readable (`brush-stroke`) without
     turning a gloss like "counter for occurrences" into a sentence."""
     words = re.sub(r"[^a-z0-9]+", "-", meaning.lower()).strip("-").split("-")
     return "-".join(w for w in words[:2] if w)
@@ -248,7 +252,7 @@ def clean_gloss(meaning):
 def clean_kunyomi(reading):
     """KANJIDIC keeps okurigana behind a '.' (乗: の.る) and marks prefixes and
     suffixes with '-'. The curriculum stores the stem alone, as the shipped
-    datasets do (n5-ichi's kunyomi is ひと, not ひと.つ)."""
+    datasets do (one's kunyomi is ひと, not ひと.つ)."""
     return reading.split(".")[0].strip("-")
 
 
@@ -267,9 +271,9 @@ def load_previous_slugs():
     if isinstance(kanji, dict):
         # v1 shape: {level: [{suffix, char, ...}]}, slug "n3-<suffix>". The
         # suffix is the identity and survives; the level prefix was the label
-        # v2 deleted, so it is rewritten rather than frozen.
+        # v2 deleted, so it is dropped rather than frozen.
         return {
-            entry["char"]: f"{SLUG_PREFIX}-{entry['suffix']}"
+            entry["char"]: entry["suffix"]
             for entries in kanji.values()
             for entry in entries
         }
@@ -283,7 +287,7 @@ def build_kanji_entries(corpus, authored, uses, kanjidic):
     is emitted in frequency order only so a diff of skeleton.json stays legible.
     """
     previous = load_previous_slugs()
-    taken = set(previous.values())
+    taken = set(previous.values()) | authored_slugs()
     suffix_counts = Counter()
     entries = []
     for char in corpus:
@@ -294,10 +298,10 @@ def build_kanji_entries(corpus, authored, uses, kanjidic):
         if not slug:
             suffix = slugify(kd["meanings"][0])
             suffix_counts[suffix] += 1
-            slug = f"{SLUG_PREFIX}-{suffix}"
+            slug = suffix
             while slug in taken:
                 suffix_counts[suffix] += 1
-                slug = f"{SLUG_PREFIX}-{suffix}-{suffix_counts[suffix]}"
+                slug = f"{suffix}-{suffix_counts[suffix]}"
             taken.add(slug)
         extras = [
             m

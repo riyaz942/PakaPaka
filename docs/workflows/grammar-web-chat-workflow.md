@@ -33,7 +33,7 @@ The one command you use is the grammar generator with two new subcommands,
 
 Files live under `curriculum/_build/generate_content/web/grammar/<level>/` and are
 **gitignored** (like `drafts/`) — they are throwaway working files. The committed
-artifact is the assembled lesson at `curriculum/grammar/lessons/<level>/<slug>.md`.
+artifact is the assembled lesson at `curriculum/grammar/lessons/<slug>.md`.
 
 ---
 
@@ -72,7 +72,7 @@ points that have **no** assembled lesson yet:
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
 level = 'n5'
-done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{level}')} if os.path.isdir(f'../grammar/lessons/{level}') else set()
+done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
 todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
 print(f'{len(todo)} {level} points left:')
 print(','.join(todo))
@@ -129,7 +129,7 @@ path so you don't have to remember it.)
 .venv/bin/python -m generate_content.generate_grammar_lessons ingest --level n5 --slug mo-also --model claude-web
 ```
 
-**On pass:** it assembles `curriculum/grammar/lessons/n5/mo-also.md`
+**On pass:** it assembles `curriculum/grammar/lessons/mo-also.md`
 (`review_status: draft`), stashes cloze candidates in
 `drafts/n5/mo-also-cloze-candidates.json`, and deletes the staged
 `mo-also.prompt.md` / `mo-also.reply.md`. Done — move to the next point.

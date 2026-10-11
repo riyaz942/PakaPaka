@@ -56,14 +56,15 @@
         },
         "description": { "type": "string", "minLength": 1 },
         "visually_similar_slugs": {
+          "description": "Look-alikes as \"<kind>:<slug>\" (\"kanji:person\", \"radical:hito\"). A radical and a kanji may share a slug, so the kind is part of the reference.",
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": { "type": "string", "pattern": "^(radical|kanji):[a-z0-9-]+$" },
           "uniqueItems": true
         },
         "visual_mnemonic_url": {
-          "description": "Optional: skeleton-level radicals (kanji-coverage plan Phase 2) ship with no art, and a ref to a file nobody has drawn would be a lie. Every authored radical carries one. The directory is the *source dataset* that wrote the radical (n5/n4 for the hand-authored lists, k for the KANJIDIC2-derived corpus), never its band — a slug does not follow its band, and keying art to the band would move the ref away from the file whenever a radical rebands.",
+          "description": "Optional: skeleton-level radicals (kanji-coverage plan Phase 2) ship with no art, and a ref to a file nobody has drawn would be a lie. Every authored radical carries one. The ref is `radicals/<slug>.webp` and holds no level, so a radical that moves to another level keeps its art.",
           "type": "string",
-          "pattern": "^radicals/(n[1-5]|k)/[a-z0-9-]+\\.webp$"
+          "pattern": "^radicals/[a-z0-9-]+\\.webp$"
         },
         "sort_order": { "type": "integer", "minimum": 0 },
         "accepted_answers": {
@@ -119,8 +120,9 @@
         "reading_mnemonic": { "type": "string", "minLength": 1 },
         "description": { "type": "string", "minLength": 1 },
         "visually_similar_slugs": {
+          "description": "Look-alikes as \"<kind>:<slug>\" (\"kanji:person\", \"radical:hito\"). A radical and a kanji may share a slug, so the kind is part of the reference.",
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": { "type": "string", "pattern": "^(radical|kanji):[a-z0-9-]+$" },
           "uniqueItems": true
         },
         "sort_order": { "type": "integer", "minimum": 0 },
@@ -338,7 +340,7 @@
     "readingPassage": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["title", "body"],
+      "required": ["slug", "title", "body"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
@@ -408,6 +410,36 @@
           "items": { "$ref": "#/$defs/dependencyEdge" },
           "minItems": 1
         }
+      }
+    },
+    "idRegistrySection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["next_id", "ids", "retired", "aliases"],
+      "properties": {
+        "next_id": { "type": "integer", "minimum": 1 },
+        "ids": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "retired": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1 }
+        },
+        "aliases": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "idRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items", "passages", "passage_questions"],
+      "properties": {
+        "items": { "$ref": "#/$defs/idRegistrySection" },
+        "passages": { "$ref": "#/$defs/idRegistrySection" },
+        "passage_questions": { "$ref": "#/$defs/idRegistrySection" }
       }
     }
   }
