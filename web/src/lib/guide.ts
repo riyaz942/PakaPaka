@@ -684,7 +684,7 @@ export const AUDIT_COMMANDS: { title: string; detail: string; commands: string[]
   {
     title: 'Compile',
     detail:
-      'Compiles curriculum/ into SQLite and warns on draft content. From the Pipeline tab this writes to a scratch database (web/.build/curriculum.db); run it from the repo root when you actually want to update the shipped seed.',
+      'Compiles curriculum/ into SQLite and warns on draft content. From the Pipeline tab this writes to a scratch database (web/.build/curriculum.db) and runs with --update-registry, so a new item gets an id in curriculum/id-registry.json (commit that change); run it from the repo root when you actually want to update the shipped seed. From the terminal, add `-- --update-registry` after you add or remove an item — without it the compile fails on a key that has no id.',
     commands: ['npm run compile-curriculum'],
   },
   {

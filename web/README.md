@@ -49,8 +49,9 @@ pulling changes that touch its `package.json`.
   of what's blocked on missing/draft/skeleton prerequisites.
 - **Audit** — runs `curriculum/_build/generate_content/audit_shipped.py` and
   browses its findings, with links back into Content.
-- **Pipeline** — runs `npm run validate-schema` and `npm run compile-curriculum`
-  from the UI and shows their output.
+- **Pipeline** — runs `npm run validate-schema` and
+  `npm run compile-curriculum -- --update-registry` from the UI and shows their
+  output.
 - **Guide** — the generation playbook: stage order, the exact commands per
   content type and lane, and one "how to fix" card per audit check. Every
   completeness percentage, remaining count, missing field and audit finding
@@ -88,6 +89,12 @@ pulling changes that touch its `package.json`.
   `npm run compile-curriculum` from the repo root (no `COMPILE_OUTPUT_PATH`
   override) when you actually want to update the shipped seed, then commit it
   through Git LFS as usual.
+- The studio compile runs with `--update-registry`, so an item, passage or
+  question you added gets an id in `curriculum/id-registry.json` (and a key that
+  left the build is retired). Review and commit the registry change. Like every
+  compile, it also raises `curriculum/metadata.json` `version` and rewrites its
+  `content_counts`. The terminal `npm run compile-curriculum` stays strict: with
+  no flag it fails on a key that has no id.
 - This tool never writes to `curriculum/_build/` or
   `curriculum/dependencies/graph.json`. It does write the `*/mnemonics.json` and
   `*/examples.json` sidecars — those are the generator's *inputs*, and the only
