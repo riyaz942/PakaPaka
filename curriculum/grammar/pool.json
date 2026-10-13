@@ -4238,5 +4238,699 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "naide-kudasai": {
+    "accepted_meanings": [
+      "please don't",
+      "don't",
+      "please do not",
+      "do not"
+    ],
+    "sentences": [
+      {
+        "japanese": "心配しないでください。",
+        "english": "Please don't worry.",
+        "vocabulary_slugs": [
+          "shinpai-suru"
+        ]
+      },
+      {
+        "japanese": "忘れないでください。",
+        "english": "Please don't forget.",
+        "vocabulary_slugs": [
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "窓を開けないでください。",
+        "english": "Please don't open the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "窓を開けてください。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "傘を忘れないでください。",
+        "english": "Please don't forget your umbrella.",
+        "vocabulary_slugs": [
+          "kasa",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "その水を飲まないでください。",
+        "english": "Please don't drink that water.",
+        "vocabulary_slugs": [
+          "sono",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "今日は学校に行かないでください。",
+        "english": "Please don't go to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は学校へ行かないでください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私の部屋に入らないでください。",
+        "english": "Please don't enter my room.",
+        "vocabulary_slugs": [
+          "watashi",
+          "heya",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんが寝ましたから、大きい声で話さないでください。",
+        "english": "The baby has gone to sleep, so please don't talk loudly.",
+        "vocabulary_slugs": [
+          "akachan",
+          "neru",
+          "ookii",
+          "koe",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "この椅子に座らないでください。",
+        "english": "Please don't sit on this chair.",
+        "vocabulary_slugs": [
+          "kono",
+          "isu",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "財布を机に置かないでください。",
+        "english": "Please don't leave your wallet on the desk.",
+        "vocabulary_slugs": [
+          "saifu",
+          "tsukue",
+          "oku"
+        ],
+        "alternates": [
+          {
+            "japanese": "机に財布を置かないでください。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ta-form": {
+    "accepted_meanings": [
+      "past",
+      "plain past",
+      "past tense",
+      "did"
+    ],
+    "sentences": [
+      {
+        "japanese": "昨日、映画を見た。",
+        "english": "I watched a movie yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "もう食べた。",
+        "english": "I already ate.",
+        "vocabulary_slugs": [
+          "mou",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "昨日友達と昼ご飯を食べた。",
+        "english": "Yesterday I had lunch with a friend.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "先週海に行った。",
+        "english": "Last week I went to the sea.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週海へ行った。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日学校で友達に会った。",
+        "english": "Today I met my friend at school.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "手紙を書いて、寝た。",
+        "english": "I wrote a letter and went to sleep.",
+        "vocabulary_slugs": [
+          "tegami",
+          "kaku",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "犬が私の靴を食べた。",
+        "english": "The dog ate my shoes.",
+        "vocabulary_slugs": [
+          "inu",
+          "watashi",
+          "kutsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "昨日の夜、何を食べた？",
+        "english": "What did you eat last night?",
+        "vocabulary_slugs": [
+          "kinou",
+          "yoru",
+          "nani",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "父が新しいカメラを買った。",
+        "english": "My father bought a new camera.",
+        "vocabulary_slugs": [
+          "chichi",
+          "atarashii-adj",
+          "kamera",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ta-koto-ga-aru": {
+    "accepted_meanings": [
+      "have done before",
+      "have ever",
+      "have done",
+      "have experienced"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本へ行ったことがあります。",
+        "english": "I have been to Japan.",
+        "vocabulary_slugs": [
+          "nihon",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本に行ったことがあります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "その映画を見たことがない。",
+        "english": "I have never seen that movie.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私はあの映画を見たことがあります。",
+        "english": "I have seen that movie.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ano",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あの映画を見たことがあります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "日本の料理を食べたことがありますか。",
+        "english": "Have you ever eaten Japanese food?",
+        "vocabulary_slugs": [
+          "nihon",
+          "ryouri",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "私はこの魚を食べたことがあります。",
+        "english": "I have eaten this fish.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kono",
+          "sakana",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "この魚を食べたことがあります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼はこの料理を食べたことがあります。",
+        "english": "He has eaten this dish.",
+        "vocabulary_slugs": [
+          "kare",
+          "kono",
+          "ryouri",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼は日本に来たことがあります。",
+        "english": "He has been to Japan.",
+        "vocabulary_slugs": [
+          "kare",
+          "nihon",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "雪を見たことがありません。",
+        "english": "I have never seen snow.",
+        "vocabulary_slugs": [
+          "yuki",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "たまに朝ご飯を食べないことがあります。",
+        "english": "Sometimes I skip breakfast.",
+        "vocabulary_slugs": [
+          "tama-ni",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "先生に手紙を書いたことがあります。",
+        "english": "I have written a letter to my teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "tegami",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nakereba-naranai": {
+    "accepted_meanings": [
+      "must",
+      "have to",
+      "need to",
+      "have got to"
+    ],
+    "sentences": [
+      {
+        "japanese": "薬を飲まなければなりません。",
+        "english": "I must take my medicine.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "薬を飲まなくてもいいです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今日、会社に行かなくてはいけない。",
+        "english": "I have to go to the office today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、会社へ行かなくてはいけない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "勉強しなければなりません。",
+        "english": "I have to study.",
+        "vocabulary_slugs": [
+          "benkyou",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "宿題をしなければなりません。",
+        "english": "I have to do my homework.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "母が待っていますから、帰らなければなりません。",
+        "english": "My mother is waiting, so I have to go home.",
+        "vocabulary_slugs": [
+          "haha",
+          "matsu",
+          "kaeru-v",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "今、寝なきゃ。",
+        "english": "I've got to sleep now.",
+        "vocabulary_slugs": [
+          "ima",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "明日、本を買わなきゃ。",
+        "english": "I have to buy a book tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "先生に手紙を書かなければならない。",
+        "english": "I have to write a letter to my teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "明日も来なければなりませんか。",
+        "english": "Do I have to come tomorrow too?",
+        "vocabulary_slugs": [
+          "ashita",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "毎朝、犬と公園に行かなければなりません。",
+        "english": "Every morning I have to go to the park with the dog.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "inu",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nakutemo-ii": {
+    "accepted_meanings": [
+      "don't have to",
+      "don't need to",
+      "no need to",
+      "needn't",
+      "it's okay not to"
+    ],
+    "sentences": [
+      {
+        "japanese": "明日は来なくてもいいです。",
+        "english": "You don't have to come tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "そんなに急がなくてもいいよ。",
+        "english": "You don't have to hurry that much.",
+        "vocabulary_slugs": [
+          "sonna",
+          "isogu"
+        ]
+      },
+      {
+        "japanese": "心配しなくてもいいです。",
+        "english": "You don't have to worry.",
+        "vocabulary_slugs": [
+          "shinpai-suru"
+        ]
+      },
+      {
+        "japanese": "野菜を食べなくてもいいです。",
+        "english": "You don't have to eat the vegetables.",
+        "vocabulary_slugs": [
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "新しい本を買わなくてもいいです。",
+        "english": "You don't have to buy a new book.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "その水を飲まなくてもいいです。",
+        "english": "You don't have to drink that water.",
+        "vocabulary_slugs": [
+          "sono",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "この新聞を読まなくてもいいですか。",
+        "english": "Is it okay if I don't read this newspaper?",
+        "vocabulary_slugs": [
+          "kono",
+          "shinbun",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "今日は学校へ行かなくてもかまわない。",
+        "english": "It's fine if you don't go to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は学校に行かなくてもかまわない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日は学校へ行かなくてもいい。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "暖かいですから、窓を閉めなくてもいいですよ。",
+        "english": "It's warm, so you don't have to close the window.",
+        "vocabulary_slugs": [
+          "atatakai",
+          "mado",
+          "shimeru"
+        ]
+      },
+      {
+        "japanese": "この紙に書かなくてもいいです。",
+        "english": "You don't have to write on this paper.",
+        "vocabulary_slugs": [
+          "kono",
+          "kami-paper",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tari-tari": {
+    "accepted_meanings": [
+      "doing things like",
+      "things like",
+      "and so on",
+      "such as",
+      "and stuff"
+    ],
+    "sentences": [
+      {
+        "japanese": "週末は本を読んだり、映画を見たりします。",
+        "english": "On weekends I do things like read books and watch movies.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "hon",
+          "yomu",
+          "eiga",
+          "miru-v",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "食べたり飲んだりしました。",
+        "english": "We ate, drank, and so on.",
+        "vocabulary_slugs": [
+          "taberu",
+          "nomu-v",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "明日、町へ行ったり、服を買ったりします。",
+        "english": "Tomorrow I'll do things like go into town and buy clothes.",
+        "vocabulary_slugs": [
+          "ashita",
+          "machi-v",
+          "iku-v",
+          "fuku",
+          "kau-v",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "昨日は、家で寝たりしました。",
+        "english": "Yesterday I did things like sleep at home.",
+        "vocabulary_slugs": [
+          "kinou",
+          "ie",
+          "neru",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "公園で遊んだり、弁当を食べたりしました。",
+        "english": "We played in the park, ate boxed lunches, and so on.",
+        "vocabulary_slugs": [
+          "kouen",
+          "asobu",
+          "bentou",
+          "taberu",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "図書館では話したり、電話を使ったりしません。",
+        "english": "In the library, I don't talk, use my phone, or anything like that.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "hanasu-v",
+          "denwa",
+          "tsukau",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "夏は海で遊んだり、山へ行ったりしますか。",
+        "english": "In summer, do you do things like play at the sea and go to the mountains?",
+        "vocabulary_slugs": [
+          "natsu",
+          "umi",
+          "asobu",
+          "yama-v",
+          "iku-v",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "うちの猫は、毎日寝たり食べたりしています。",
+        "english": "Every day our cat just sleeps, eats, and so on.",
+        "vocabulary_slugs": [
+          "uchi",
+          "neko",
+          "mainichi",
+          "neru",
+          "taberu",
+          "suru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "父はいつも新聞を読んだり、コーヒーを飲んだりしています。",
+        "english": "My father is always reading the newspaper, drinking coffee, and so on.",
+        "vocabulary_slugs": [
+          "chichi",
+          "itsumo",
+          "shinbun",
+          "yomu",
+          "koohii",
+          "nomu-v",
+          "suru",
+          "iru-exist"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
