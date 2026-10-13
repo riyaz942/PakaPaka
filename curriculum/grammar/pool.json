@@ -7544,5 +7544,674 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "shika-nai": {
+    "accepted_meanings": [
+      "only",
+      "nothing but",
+      "no more than",
+      "just"
+    ],
+    "sentences": [
+      {
+        "japanese": "水しか飲みません。",
+        "english": "I drink nothing but water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "朝ご飯はパンしか食べませんでした。",
+        "english": "Bread was all I ate for breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "部屋には猫しかいませんでした。",
+        "english": "There was nobody in the room but the cat.",
+        "vocabulary_slugs": [
+          "heya",
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "部屋に猫しかいませんでした。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "弟はひらがなしか分かりません。",
+        "english": "Hiragana is all my little brother understands.",
+        "vocabulary_slugs": [
+          "otouto",
+          "hiragana",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "昨日は少ししか寝ませんでした。",
+        "english": "I only slept a little last night.",
+        "vocabulary_slugs": [
+          "kinou",
+          "sukoshi",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "駅まではバスしかありません。",
+        "english": "The bus is the only way to get to the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "basu",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "現金しか持っていません。",
+        "english": "I only have cash on me.",
+        "vocabulary_slugs": [
+          "genkin",
+          "motsu",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "肉しか食べないんですか。",
+        "english": "You eat nothing but meat?",
+        "vocabulary_slugs": [
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼は英語しか話しません。",
+        "english": "He speaks only English.",
+        "vocabulary_slugs": [
+          "kare",
+          "eigo",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "gurai": {
+    "accepted_meanings": [
+      "about",
+      "approximately",
+      "around",
+      "roughly",
+      "as much as"
+    ],
+    "sentences": [
+      {
+        "japanese": "駅までどのぐらいですか。",
+        "english": "About how far is it to the station?",
+        "vocabulary_slugs": [
+          "eki",
+          "dono"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅までどのくらいですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "このかばんはいくらぐらいですか。",
+        "english": "Roughly how much is this bag?",
+        "vocabulary_slugs": [
+          "kono",
+          "kaban",
+          "ikura"
+        ],
+        "alternates": [
+          {
+            "japanese": "このかばんはいくらくらいですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎日どれぐらい勉強しますか。",
+        "english": "About how much do you study every day?",
+        "vocabulary_slugs": [
+          "mainichi",
+          "dore",
+          "benkyou",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎日どれくらい勉強しますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "宿題は半分ぐらい終わりました。",
+        "english": "I've finished about half of the homework.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "hanbun",
+          "owaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "宿題は半分くらい終わりました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "これぐらいの箱を探しています。",
+        "english": "I'm looking for a box about this size.",
+        "vocabulary_slugs": [
+          "kore",
+          "hako",
+          "sagasu",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "これくらいの箱を探しています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄は父ぐらい大きいです。",
+        "english": "My older brother is about as big as my father.",
+        "vocabulary_slugs": [
+          "ani",
+          "chichi",
+          "ookii"
+        ],
+        "alternates": [
+          {
+            "japanese": "兄は父くらい大きいです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "それぐらい分かりますよ。",
+        "english": "I understand that much, you know.",
+        "vocabulary_slugs": [
+          "sore",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "それくらい分かりますよ。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "どれぐらい待ちましたか。",
+        "english": "About how long did you wait?",
+        "vocabulary_slugs": [
+          "dore",
+          "matsu"
+        ],
+        "alternates": [
+          {
+            "japanese": "どれくらい待ちましたか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "このぐらいの雨は大丈夫です。",
+        "english": "Rain like this is no problem.",
+        "vocabulary_slugs": [
+          "kono",
+          "ame-v",
+          "daijoubu"
+        ],
+        "alternates": [
+          {
+            "japanese": "このくらいの雨は大丈夫です。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "goro": {
+    "accepted_meanings": [
+      "around",
+      "about",
+      "approximately",
+      "at about"
+    ],
+    "sentences": [
+      {
+        "japanese": "昼ごろ食べます。",
+        "english": "I eat around noon.",
+        "vocabulary_slugs": [
+          "hiru",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "昼頃食べます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "子供の頃、毎日牛乳を飲みました。",
+        "english": "When I was a child, I drank milk every day.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "mainichi",
+          "gyuunyuu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "来週ごろ、新しい車を買います。",
+        "english": "I will buy a new car around next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "atarashii-adj",
+          "kuruma",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "十日ごろ帰ります。",
+        "english": "I will return home around the 10th.",
+        "vocabulary_slugs": [
+          "tooka",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "夕方ごろに雨が降ります。",
+        "english": "It will rain around evening.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "ame-v",
+          "furu-rain"
+        ],
+        "alternates": [
+          {
+            "japanese": "夕方ごろ雨が降ります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "何時ごろ来ますか。",
+        "english": "Around what time will you come?",
+        "vocabulary_slugs": [
+          "nannji",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "先月ごろ、日本に行きました。",
+        "english": "I went to Japan sometime around last month.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "nihon",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "荷物は明後日ごろ来ます。",
+        "english": "The package will arrive around the day after tomorrow.",
+        "vocabulary_slugs": [
+          "nimotsu",
+          "asatte",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "母は夕方ごろまで帰りません。",
+        "english": "My mother won't be home until around evening.",
+        "vocabulary_slugs": [
+          "haha",
+          "yuugata",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zenzen-nai": {
+    "accepted_meanings": [
+      "not at all",
+      "not in the least",
+      "not even a little",
+      "never"
+    ],
+    "sentences": [
+      {
+        "japanese": "全然分かりません。",
+        "english": "I don't understand at all.",
+        "vocabulary_slugs": [
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "ぜんぜん分かりません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "お金が全然ありません。",
+        "english": "I have no money at all.",
+        "vocabulary_slugs": [
+          "okane",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "お金がぜんぜんありません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "全然おいしくないです。",
+        "english": "It's not tasty at all.",
+        "vocabulary_slugs": [
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "漢字が全然分かりません。",
+        "english": "I do not understand the kanji in the slightest.",
+        "vocabulary_slugs": [
+          "kanji-word",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "今日は全然忙しくないです。",
+        "english": "I am not the least bit busy today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "あの映画は全然面白くなかったです。",
+        "english": "That movie was not the least bit interesting.",
+        "vocabulary_slugs": [
+          "ano",
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "その話は全然知りませんでした。",
+        "english": "I knew nothing at all about that story.",
+        "vocabulary_slugs": [
+          "sono",
+          "hanashi",
+          "shiru"
+        ]
+      },
+      {
+        "japanese": "私は野菜を全然食べません。",
+        "english": "I never eat vegetables, ever.",
+        "vocabulary_slugs": [
+          "watashi",
+          "yasai",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "野菜を全然食べません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "猫は全然動きませんでした。",
+        "english": "The cat didn't move at all.",
+        "vocabulary_slugs": [
+          "neko",
+          "ugoku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "amari-nai": {
+    "accepted_meanings": [
+      "not very",
+      "not much",
+      "not really",
+      "not often"
+    ],
+    "sentences": [
+      {
+        "japanese": "あまり食べません。",
+        "english": "I don't eat much.",
+        "vocabulary_slugs": [
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "あんまり食べません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あまり高くないです。",
+        "english": "It's not very expensive.",
+        "vocabulary_slugs": [
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "あまり分かりません。",
+        "english": "I don't understand very well.",
+        "vocabulary_slugs": [
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "その映画はあまり面白くないです。",
+        "english": "That movie isn't very interesting.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "今日はあまり寒くないです。",
+        "english": "Today is not very cold.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "私はあまり肉を食べません。",
+        "english": "I do not eat meat much.",
+        "vocabulary_slugs": [
+          "watashi",
+          "niku",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "あまり肉を食べません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼はあんまり勉強しません。",
+        "english": "He doesn't study much.",
+        "vocabulary_slugs": [
+          "kare",
+          "benkyou",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼はあまり勉強しません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "日本語はあまり難しくないです。",
+        "english": "Japanese is not very difficult.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "昨日の晩ご飯はあまりおいしくなかったです。",
+        "english": "Last night's dinner wasn't very good.",
+        "vocabulary_slugs": [
+          "kinou",
+          "bangohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "先週はあまり雨が降りませんでした。",
+        "english": "It didn't rain much last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "ame-v",
+          "furu-rain"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "demo-suggestion": {
+    "accepted_meanings": [
+      "or something",
+      "or the like",
+      "say",
+      "how about"
+    ],
+    "sentences": [
+      {
+        "japanese": "お茶でも飲みませんか。",
+        "english": "Won't you have some tea or something?",
+        "vocabulary_slugs": [
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "映画でも見ましょう。",
+        "english": "Let's watch a movie or something.",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "買い物でもしませんか。",
+        "english": "How about doing some shopping or something?",
+        "vocabulary_slugs": [
+          "kaimono",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "お茶でもどうですか。",
+        "english": "How about some tea or something?",
+        "vocabulary_slugs": [
+          "ocha",
+          "dou"
+        ]
+      },
+      {
+        "japanese": "コーヒーでも飲みませんか。",
+        "english": "Would you like to drink coffee or something?",
+        "vocabulary_slugs": [
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "週末、映画でも見ませんか。",
+        "english": "Shall we watch a movie or something this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "公園でも歩きませんか。",
+        "english": "Shall we walk in the park or something?",
+        "vocabulary_slugs": [
+          "kouen",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "昼ご飯でも食べに行きませんか。",
+        "english": "Want to go get lunch or something?",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "taberu",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "待つ間、雑誌でも読みましょう。",
+        "english": "Let's read a magazine or something while we wait.",
+        "vocabulary_slugs": [
+          "matsu",
+          "aida",
+          "zasshi",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

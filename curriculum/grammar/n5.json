@@ -28060,33 +28060,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "百円しかありません。",
-          "english": "I only have a hundred yen.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "en-money",
-            "aru"
-          ],
-          "furigana": "百[ひゃく]円[えん]しかありません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "aru",
-              "start": 4,
-              "end": 9,
-              "surface_form": "ありません",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "水しか飲みません。",
           "english": "I drink nothing but water.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "mizu",
             "nomu-v"
@@ -28113,67 +28089,9 @@
           "register": "polite"
         },
         {
-          "japanese": "一人しか来ませんでした。",
-          "english": "Only one person came.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kuru-v"
-          ],
-          "furigana": "一人[ひとり]しか来[き]ませんでした。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 11,
-              "surface_form": "来ませんでした",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "財布の中に百円しかありません。",
-          "english": "I have just 100 yen in my wallet.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "saifu",
-            "naka",
-            "aru"
-          ],
-          "furigana": "財[さい]布[ふ]の中[なか]に百[ひゃく]円[えん]しかありません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "saifu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "naka",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 9,
-              "end": 14,
-              "surface_form": "ありません",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "朝ご飯はパンしか食べませんでした。",
           "english": "Bread was all I ate for breakfast.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "asagohan",
             "pan",
@@ -28206,30 +28124,244 @@
           "register": "polite"
         },
         {
-          "japanese": "私は家でしか勉強しません。",
-          "english": "Home is the one place I study.",
-          "sort_order": 5,
+          "japanese": "部屋には猫しかいませんでした。",
+          "english": "There was nobody in the room but the cat.",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "watashi",
-            "ie",
-            "benkyou"
+            "heya",
+            "neko",
+            "iru-exist"
           ],
-          "furigana": "私[わたし]は家[いえ]でしか勉[べん]強[きょう]しません。",
+          "furigana": "部屋[へや]には猫[ねこ]しかいませんでした。",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 14,
+              "surface_form": "いませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "部屋[へや]に猫[ねこ]しかいませんでした。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "弟はひらがなしか分かりません。",
+          "english": "Hiragana is all my little brother understands.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "otouto",
+            "hiragana",
+            "wakaru"
+          ],
+          "furigana": "弟[おとうと]はひらがなしか分[わ]かりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "ie",
+              "vocabulary_slug": "hiragana",
               "start": 2,
-              "end": 3
+              "end": 6
             },
             {
-              "vocabulary_slug": "benkyou",
+              "vocabulary_slug": "wakaru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日は少ししか寝ませんでした。",
+          "english": "I only slept a little last night.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kinou",
+            "sukoshi",
+            "neru"
+          ],
+          "furigana": "昨日[きのう]は少[すこ]ししか寝[ね]ませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sukoshi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 7,
+              "end": 14,
+              "surface_form": "寝ませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "駅まではバスしかありません。",
+          "english": "The bus is the only way to get to the station.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "eki",
+            "basu",
+            "aru"
+          ],
+          "furigana": "駅[えき]まではバスしかありません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "basu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 8,
+              "end": 13,
+              "surface_form": "ありません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "現金しか持っていません。",
+          "english": "I only have cash on me.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "genkin",
+            "motsu",
+            "iru-exist"
+          ],
+          "furigana": "現[げん]金[きん]しか持[も]っていません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "genkin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 4,
+              "end": 7,
+              "surface_form": "持って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 11,
+              "surface_form": "いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "肉しか食べないんですか。",
+          "english": "You eat nothing but meat?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "niku",
+            "taberu"
+          ],
+          "furigana": "肉[にく]しか食[た]べないんですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "niku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 3,
+              "end": 7,
+              "surface_form": "食べない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼は英語しか話しません。",
+          "english": "He speaks only English.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kare",
+            "eigo",
+            "hanasu-v"
+          ],
+          "furigana": "彼[かれ]は英[えい]語[ご]しか話[はな]しません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "eigo",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
               "start": 6,
-              "end": 8
+              "end": 11,
+              "surface_form": "話しません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -28237,27 +28369,6 @@
             "end": 6
           },
           "register": "polite"
-        },
-        {
-          "japanese": "今日は千円しかない。",
-          "english": "A thousand yen is all I have today.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "kyou"
-          ],
-          "furigana": "今日[きょう]は千[せん]円[えん]しかない。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyou",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 9
-          },
-          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -28266,6 +28377,28 @@
         "nomu-v"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "only",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nothing but",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "no more than",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "財布の中に百円＿＿＿ありません。",
@@ -28338,89 +28471,48 @@
       ],
       "example_sentences": [
         {
-          "japanese": "三十分ぐらいかかります。",
-          "english": "It takes about thirty minutes.",
+          "japanese": "駅までどのぐらいですか。",
+          "english": "About how far is it to the station?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "fun-counter"
+            "eki",
+            "dono"
           ],
-          "furigana": "三[さん]十[じゅう]分[ふん]ぐらいかかります。",
+          "furigana": "駅[えき]までどのぐらいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "dono",
+              "start": 3,
+              "end": 5
+            }
+          ],
           "grammar_span": {
-            "start": 3,
-            "end": 6
+            "start": 5,
+            "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "駅[えき]までどのくらいですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "千円ぐらいです。",
-          "english": "It's about a thousand yen.",
+          "japanese": "このかばんはいくらぐらいですか。",
+          "english": "Roughly how much is this bag?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "sen-v",
-            "en-money"
-          ],
-          "furigana": "千[せん]円[えん]ぐらいです。",
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "十人ぐらい来ました。",
-          "english": "About ten people came.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kuru-v"
-          ],
-          "furigana": "十[じゅう]人[にん]ぐらい来[き]ました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 5,
-              "end": 9,
-              "surface_form": "来ました",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "一時間ぐらい待ちます。",
-          "english": "I will wait for about one hour.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "matsu"
-          ],
-          "furigana": "一[いち]時[じ]間[かん]ぐらい待[ま]ちます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "matsu",
-              "start": 6,
-              "end": 10,
-              "surface_form": "待ちます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "この本は千円くらいです。",
-          "english": "This book is about one thousand yen.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
             "kono",
-            "hon"
+            "kaban",
+            "ikura"
           ],
-          "furigana": "この本[ほん]は千[せん]円[えん]くらいです。",
+          "furigana": "このかばんはいくらぐらいですか。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -28428,60 +28520,101 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "hon",
+              "vocabulary_slug": "kaban",
               "start": 2,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "何時間ぐらい寝ますか。",
-          "english": "About how many hours do you sleep?",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "neru"
-          ],
-          "furigana": "何[なん]時[じ]間[かん]ぐらい寝[ね]ますか。",
-          "word_spans": [
+              "end": 5
+            },
             {
-              "vocabulary_slug": "neru",
+              "vocabulary_slug": "ikura",
               "start": 6,
-              "end": 9,
-              "surface_form": "寝ます",
-              "inflection": "masu"
+              "end": 9
             }
           ],
           "grammar_span": {
-            "start": 3,
-            "end": 6
+            "start": 9,
+            "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "このかばんはいくらくらいですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "明日、三時ぐらいに行きます。",
-          "english": "I will go at about three o'clock tomorrow.",
-          "sort_order": 6,
+          "japanese": "毎日どれぐらい勉強しますか。",
+          "english": "About how much do you study every day?",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "ashita",
-            "iku-v"
+            "mainichi",
+            "dore",
+            "benkyou",
+            "suru"
           ],
-          "furigana": "明日[あした]、三[さん]時[じ]ぐらいに行[い]きます。",
+          "furigana": "毎[まい]日[にち]どれぐらい勉[べん]強[きょう]しますか。",
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "mainichi",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "iku-v",
+              "vocabulary_slug": "dore",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "benkyou",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "suru",
               "start": 9,
-              "end": 13,
-              "surface_form": "行きます",
+              "end": 12,
+              "surface_form": "します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]どれくらい勉[べん]強[きょう]しますか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "宿題は半分ぐらい終わりました。",
+          "english": "I've finished about half of the homework.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "shukudai",
+            "hanbun",
+            "owaru"
+          ],
+          "furigana": "宿[しゅく]題[だい]は半[はん]分[ぶん]ぐらい終[お]わりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanbun",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "終わりました",
               "inflection": "masu"
             }
           ],
@@ -28489,22 +28622,48 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]は半[はん]分[ぶん]くらい終[お]わりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "百円ぐらいあります。",
-          "english": "I have about one hundred yen.",
-          "sort_order": 7,
+          "japanese": "これぐらいの箱を探しています。",
+          "english": "I'm looking for a box about this size.",
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "aru"
+            "kore",
+            "hako",
+            "sagasu",
+            "iru-exist"
           ],
-          "furigana": "百[ひゃく]円[えん]ぐらいあります。",
+          "furigana": "これぐらいの箱[はこ]を探[さが]しています。",
           "word_spans": [
             {
-              "vocabulary_slug": "aru",
-              "start": 5,
-              "end": 9,
-              "surface_form": "あります",
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hako",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sagasu",
+              "start": 8,
+              "end": 11,
+              "surface_form": "探して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 11,
+              "end": 14,
+              "surface_form": "います",
               "inflection": "masu"
             }
           ],
@@ -28512,7 +28671,161 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "これくらいの箱[はこ]を探[さが]しています。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "兄は父ぐらい大きいです。",
+          "english": "My older brother is about as big as my father.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ani",
+            "chichi",
+            "ookii"
+          ],
+          "furigana": "兄[あに]は父[ちち]ぐらい大[おお]きいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chichi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ookii",
+              "start": 6,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は父[ちち]くらい大[おお]きいです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "それぐらい分かりますよ。",
+          "english": "I understand that much, you know.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "sore",
+            "wakaru"
+          ],
+          "furigana": "それぐらい分[わ]かりますよ。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 5,
+              "end": 10,
+              "surface_form": "分かります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "それくらい分[わ]かりますよ。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "どれぐらい待ちましたか。",
+          "english": "About how long did you wait?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dore",
+            "matsu"
+          ],
+          "furigana": "どれぐらい待[ま]ちましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 5,
+              "end": 10,
+              "surface_form": "待ちました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "どれくらい待[ま]ちましたか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "このぐらいの雨は大丈夫です。",
+          "english": "Rain like this is no problem.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "ame-v",
+            "daijoubu"
+          ],
+          "furigana": "このぐらいの雨[あめ]は大[だい]丈[じょう]夫[ぶ]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "daijoubu",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "このくらいの雨[あめ]は大[だい]丈[じょう]夫[ぶ]です。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -28521,6 +28834,33 @@
         "kuru-v"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "about",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "approximately",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "around",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "roughly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as much as",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "一時間＿＿＿待ちます。",
@@ -28592,55 +28932,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "七時ごろ起きます。",
-          "english": "I get up around seven.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "okiru"
-          ],
-          "furigana": "七[しち]時[じ]ごろ起[お]きます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "okiru",
-              "start": 4,
-              "end": 8,
-              "surface_form": "起きます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "三時ごろ来てください。",
-          "english": "Please come around three.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kuru-v"
-          ],
-          "furigana": "三[さん]時[じ]ごろ来[き]てください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 6,
-              "surface_form": "来て",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "昼ごろ食べます。",
           "english": "I eat around noon.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "hiru",
             "taberu"
@@ -28664,41 +28958,18 @@
             "start": 1,
             "end": 3
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "三時ごろ駅で会いますか。",
-          "english": "Shall we meet at the station around three o'clock?",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "eki",
-            "au"
-          ],
-          "furigana": "三[さん]時[じ]ごろ駅[えき]で会[あ]いますか。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "eki",
-              "start": 4,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "au",
-              "start": 6,
-              "end": 10,
-              "surface_form": "会います",
-              "inflection": "masu"
+              "furigana": "昼[ひる]頃[ごろ]食[た]べます。",
+              "kind": "valid"
             }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "子供の頃、毎日牛乳を飲みました。",
           "english": "When I was a child, I drank milk every day.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kodomo-v",
             "mainichi",
@@ -28739,7 +29010,7 @@
         {
           "japanese": "来週ごろ、新しい車を買います。",
           "english": "I will buy a new car around next week.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "raishuu",
             "atarashii-adj",
@@ -28780,7 +29051,7 @@
         {
           "japanese": "十日ごろ帰ります。",
           "english": "I will return home around the 10th.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "tooka",
             "kaeru-v"
@@ -28809,7 +29080,7 @@
         {
           "japanese": "夕方ごろに雨が降ります。",
           "english": "It will rain around evening.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "yuugata",
             "ame-v",
@@ -28839,6 +29110,146 @@
             "start": 2,
             "end": 4
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "夕[ゆう]方[がた]ごろ雨[あめ]が降[ふ]ります。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "何時ごろ来ますか。",
+          "english": "Around what time will you come?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "nannji",
+            "kuru-v"
+          ],
+          "furigana": "何[なん]時[じ]ごろ来[き]ますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nannji",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 4,
+              "end": 7,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先月ごろ、日本に行きました。",
+          "english": "I went to Japan sometime around last month.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "sengetsu",
+            "nihon",
+            "iku-v"
+          ],
+          "furigana": "先[せん]月[げつ]ごろ、日本[にほん]に行[い]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sengetsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "荷物は明後日ごろ来ます。",
+          "english": "The package will arrive around the day after tomorrow.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "nimotsu",
+            "asatte",
+            "kuru-v"
+          ],
+          "furigana": "荷[に]物[もつ]は明後日[あさって]ごろ来[き]ます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "asatte",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 8,
+              "end": 11,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "母は夕方ごろまで帰りません。",
+          "english": "My mother won't be home until around evening.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "haha",
+            "yuugata",
+            "kaeru-v"
+          ],
+          "furigana": "母[はは]は夕[ゆう]方[がた]ごろまで帰[かえ]りません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "yuugata",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "帰りません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
           "register": "polite"
         }
       ],
@@ -28848,6 +29259,28 @@
         "taberu"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "around",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "about",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "approximately",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "at about",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "三時＿＿＿駅で会いますか。",
@@ -28924,16 +29357,10 @@
           "english": "I don't understand at all.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "zenzen",
             "wakaru"
           ],
           "furigana": "全[ぜん]然[ぜん]分[わ]かりません。",
           "word_spans": [
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 0,
-              "end": 2
-            },
             {
               "vocabulary_slug": "wakaru",
               "start": 2,
@@ -28946,7 +29373,13 @@
             "start": 0,
             "end": 2
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "ぜんぜん分[わ]かりません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お金が全然ありません。",
@@ -28954,7 +29387,7 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "okane",
-            "zenzen"
+            "aru"
           ],
           "furigana": "お金[かね]が全[ぜん]然[ぜん]ありません。",
           "word_spans": [
@@ -28964,32 +29397,34 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "zenzen",
-              "start": 3,
-              "end": 5
+              "vocabulary_slug": "aru",
+              "start": 5,
+              "end": 10,
+              "surface_form": "ありません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "お金[かね]がぜんぜんありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "全然おいしくないです。",
           "english": "It's not tasty at all.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "zenzen",
             "oishii"
           ],
           "furigana": "全[ぜん]然[ぜん]おいしくないです。",
           "word_spans": [
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 0,
-              "end": 2
-            },
             {
               "vocabulary_slug": "oishii",
               "start": 2,
@@ -29098,23 +29533,37 @@
           "register": "polite"
         },
         {
-          "japanese": "お金が全然ないです。",
-          "english": "I have absolutely no money.",
+          "japanese": "その話は全然知りませんでした。",
+          "english": "I knew nothing at all about that story.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "okane"
+            "sono",
+            "hanashi",
+            "shiru"
           ],
-          "furigana": "お金[かね]が全[ぜん]然[ぜん]ないです。",
+          "furigana": "その話[はなし]は全[ぜん]然[ぜん]知[し]りませんでした。",
           "word_spans": [
             {
-              "vocabulary_slug": "okane",
+              "vocabulary_slug": "sono",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 6,
+              "end": 14,
+              "surface_form": "知りませんでした",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 3,
-            "end": 5
+            "start": 4,
+            "end": 6
           },
           "register": "polite"
         },
@@ -29151,6 +29600,41 @@
             "start": 5,
             "end": 7
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "野[や]菜[さい]を全[ぜん]然[ぜん]食[た]べません。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "猫は全然動きませんでした。",
+          "english": "The cat didn't move at all.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "neko",
+            "ugoku"
+          ],
+          "furigana": "猫[ねこ]は全[ぜん]然[ぜん]動[うご]きませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ugoku",
+              "start": 4,
+              "end": 12,
+              "surface_form": "動きませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
           "register": "polite"
         }
       ],
@@ -29160,6 +29644,28 @@
         "okane"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "not at all",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not in the least",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not even a little",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "never",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "漢字が＿＿＿分かりません。",
@@ -29237,16 +29743,10 @@
           "english": "I don't eat much.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "amari",
             "taberu"
           ],
           "furigana": "あまり食[た]べません。",
           "word_spans": [
-            {
-              "vocabulary_slug": "amari",
-              "start": 0,
-              "end": 3
-            },
             {
               "vocabulary_slug": "taberu",
               "start": 3,
@@ -29259,23 +29759,23 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あんまり食[た]べません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あまり高くないです。",
           "english": "It's not very expensive.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "amari",
             "takai-adj"
           ],
           "furigana": "あまり高[たか]くないです。",
           "word_spans": [
-            {
-              "vocabulary_slug": "amari",
-              "start": 0,
-              "end": 3
-            },
             {
               "vocabulary_slug": "takai-adj",
               "start": 3,
@@ -29295,16 +29795,10 @@
           "english": "I don't understand very well.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "amari",
             "wakaru"
           ],
           "furigana": "あまり分[わ]かりません。",
           "word_spans": [
-            {
-              "vocabulary_slug": "amari",
-              "start": 0,
-              "end": 3
-            },
             {
               "vocabulary_slug": "wakaru",
               "start": 3,
@@ -29416,7 +29910,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あまり肉[にく]を食[た]べません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼はあんまり勉強しません。",
@@ -29424,7 +29924,8 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "kare",
-            "benkyou"
+            "benkyou",
+            "suru"
           ],
           "furigana": "彼[かれ]はあんまり勉[べん]強[きょう]しません。",
           "word_spans": [
@@ -29437,13 +29938,26 @@
               "vocabulary_slug": "benkyou",
               "start": 6,
               "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "しません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]はあまり勉[べん]強[きょう]しません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "日本語はあまり難しくないです。",
@@ -29473,6 +29987,76 @@
             "end": 7
           },
           "register": "polite"
+        },
+        {
+          "japanese": "昨日の晩ご飯はあまりおいしくなかったです。",
+          "english": "Last night's dinner wasn't very good.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kinou",
+            "bangohan",
+            "oishii"
+          ],
+          "furigana": "昨日[きのう]の晩[ばん]ご飯[はん]はあまりおいしくなかったです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "oishii",
+              "start": 10,
+              "end": 18,
+              "surface_form": "おいしくなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先週はあまり雨が降りませんでした。",
+          "english": "It didn't rain much last week.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "senshuu",
+            "ame-v",
+            "furu-rain"
+          ],
+          "furigana": "先[せん]週[しゅう]はあまり雨[あめ]が降[ふ]りませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "senshuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 8,
+              "end": 16,
+              "surface_form": "降りませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -29481,6 +30065,28 @@
         "takai-adj"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "not very",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not much",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not really",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not often",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "その映画は＿＿＿面白くないです。",
@@ -29610,16 +30216,31 @@
           "register": "polite"
         },
         {
-          "japanese": "散歩でもしませんか。",
-          "english": "How about a walk or something?",
+          "japanese": "買い物でもしませんか。",
+          "english": "How about doing some shopping or something?",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "sanpo-suru"
+            "kaimono",
+            "suru"
           ],
-          "furigana": "散[さん]歩[ぽ]でもしませんか。",
+          "furigana": "買[か]い物[もの]でもしませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaimono",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 5,
+              "end": 9,
+              "surface_form": "しません",
+              "inflection": "masu"
+            }
+          ],
           "grammar_span": {
-            "start": 2,
-            "end": 4
+            "start": 3,
+            "end": 5
           },
           "register": "polite"
         },
@@ -29744,31 +30365,82 @@
           "register": "polite"
         },
         {
-          "japanese": "お茶でも飲む？",
-          "english": "Want to drink tea or something?",
+          "japanese": "昼ご飯でも食べに行きませんか。",
+          "english": "Want to go get lunch or something?",
           "sort_order": 7,
           "vocabulary_slugs": [
-            "ocha",
-            "nomu-v"
+            "hirugohan",
+            "taberu",
+            "iku-v"
           ],
-          "furigana": "お茶[ちゃ]でも飲[の]む？",
+          "furigana": "昼[ひる]ご飯[はん]でも食[た]べに行[い]きませんか。",
           "word_spans": [
             {
-              "vocabulary_slug": "ocha",
+              "vocabulary_slug": "hirugohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "行きません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "待つ間、雑誌でも読みましょう。",
+          "english": "Let's read a magazine or something while we wait.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "matsu",
+            "aida",
+            "zasshi",
+            "yomu"
+          ],
+          "furigana": "待[ま]つ間[あいだ]、雑[ざっ]誌[し]でも読[よ]みましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "matsu",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "nomu-v",
+              "vocabulary_slug": "aida",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "zasshi",
               "start": 4,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "読み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 4
+            "start": 6,
+            "end": 8
           },
-          "register": "plain"
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -29777,6 +30449,28 @@
         "sanpo-suru"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "or something",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "or the like",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "say",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "how about",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "お茶＿＿＿どうですか。",
