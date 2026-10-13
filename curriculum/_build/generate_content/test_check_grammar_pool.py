@@ -68,11 +68,31 @@ class SentenceRulesTest(unittest.TestCase):
             {"furigana": "寒[さむ]いので、コートを着[き]ます。", "kind": "valid"},
             {"furigana": "寒[さむ]いから、コートを着[き]ます。", "kind": "other_grammar"},
             {"furigana": "寒[さむ", "kind": "valid"},
+            {"furigana": "暑[あつ]いので、コートを着[き]ます。", "kind": "other_grammar"},
+            {"furigana": "寒[さむ]いので、コートを着[き]ません。", "kind": "other_grammar"},
         ])
         errors = [e for e in self.errors(s) if "rule 6" in e]
-        # alt 3 drops コート; alt 4 lacks から; alt 5 has no other-grammar form;
-        # alt 6 does not parse.
-        self.assertEqual(len(errors), 4)
+        # 3 drops コート; 4 lacks から; 5 has no other-grammar form; 6 does not
+        # parse; 7 drops 寒い (暑い is a different word); 8 has every word and
+        # ので, but swapped back it is 寒いから、コートを着ません。, which is not
+        # an accepted answer (only the swap-back check catches this one).
+        self.assertEqual(len(errors), 6)
+        self.assertTrue(any("alternate[7]" in e for e in errors))
+
+    def test_rule6_pronoun_may_be_dropped(self):
+        s = sentence(
+            "私は寒いから、コートを着ます。",
+            [{"vocabulary_slug": "watashi", "start": 0, "end": 1},
+             {"vocabulary_slug": "samui", "start": 2, "end": 4},
+             {"vocabulary_slug": "kooto", "start": 7, "end": 10},
+             {"vocabulary_slug": "kiru-wear", "start": 11, "end": 14, "inflection": "masu"}],
+            {"start": 4, "end": 6},
+            alts=[{"furigana": "寒[さむ]いから、コートを着[き]ます。", "kind": "valid"}],
+        )
+        vocab = {**VOCAB, "watashi": "私"}
+        errors = pool.sentence_errors(s, item([s]), ALLOWED | {"私"}, OTHER, vocab,
+                                      pronoun_slugs=frozenset({"watashi"}))
+        self.assertEqual([e for e in errors if "rule 6" in e], [])
 
 
 class FamilyScopeTest(unittest.TestCase):

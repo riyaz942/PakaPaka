@@ -95,7 +95,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 - **Accepted meanings:** 3–6 English answers per grammar point (e.g. `because, since, so, as`; particles state function, e.g. `object marker`). Stored as `accepted_answers` rows, `answer_type = 'meaning'`.
 - **Sentences:** new / replacement sentences with English and furigana until §4.4 passes.
-- **Alternate Build answers** per sentence, in furigana bracket notation (e.g. `寒[さむ]いですから、コートを着[き]ます`), each tagged `valid` (other word order, dropped 私は, ですから for から…) or `other_grammar` (same meaning with another grammar point of the same `family`).
+- **Alternate Build answers** per sentence, authored as plain Japanese (e.g. `寒いですから、コートを着ます`) — the build adds the furigana notation — each tagged `valid` (other word order, dropped 私は, ですから for から…) or `other_grammar` (same meaning with another grammar point of the same `family`).
 
 ### 4.4 Validator rules (compile fails on any)
 
@@ -104,7 +104,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 3. No out-of-range content word: `level_check.find_violations(sentence, build_allowed_index(allowed_vocab_for(level, slug)), accepted_forms)` is empty.
 4. A grammar point has ≥ 8 passing sentences.
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
-6. Every alternate parses as furigana notation and contains every listed word **except pronouns** (代名詞 — 私, あなた, 彼…, which natural Japanese drops). Every `valid` alternate contains the grammar chunk. Every `other_grammar` alternate has a form of another same-family point (any level up to the current one) **at the grammar position** — the text in place of the chunk, not anywhere in the sentence.
+6. Every alternate parses as furigana notation and contains every listed word **except pronouns** (代名詞 — 私, あなた, 彼…, which natural Japanese drops). Every `valid` alternate contains the grammar chunk. Every `other_grammar` alternate, with its first same-family form (any level up to the current one) replaced by the grammar chunk, equals the main sentence or a `valid` alternate.
 7. Every grammar point has ≥ 3 accepted meanings.
 
 ---

@@ -39,30 +39,42 @@ def _parse_alternate(furigana):
     return None if "[" in plain or "]" in plain else plain
 
 
-def _alternate_errors(sentence, item, other_family_forms, vocab_forms):
+def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_slugs):
     errors = []
     span = sentence.get("grammar_span")
     chunk = sentence["japanese"][span["start"]:span["end"]] if span else None
-    forms_by_slug = {s: vocab_forms[s] for s in sentence.get("vocabulary_slugs", []) if s in vocab_forms}
-    for index, alt in enumerate(sentence.get("build_alternates", [])):
+    linked = {s: vocab_forms[s] for s in sentence.get("vocabulary_slugs", []) if s in vocab_forms}
+    required = set(linked) - set(pronoun_slugs)
+    alternates = sentence.get("build_alternates", [])
+    plains = [_parse_alternate(alt["furigana"]) for alt in alternates]
+    accepted_plain = {sentence["japanese"]} | {
+        plain for plain, alt in zip(plains, alternates) if plain and alt["kind"] == "valid"
+    }
+    for index, (alt, plain) in enumerate(zip(alternates, plains)):
         label = f"rule 6 alternate[{index}]"
-        plain = _parse_alternate(alt["furigana"])
         if plain is None:
             errors.append(f"{label}: furigana does not parse: {alt['furigana']!r}")
             continue
-        found = {s["vocabulary_slug"] for s in spans_lib.derive_spans(plain, forms_by_slug)}
-        missing = sorted(set(forms_by_slug) - found)
+        found = {s["vocabulary_slug"] for s in spans_lib.derive_spans(plain, linked)}
+        missing = sorted(required - found)
         if missing:
             errors.append(f"{label}: missing words {missing} in {plain!r}")
             continue
         if alt["kind"] == "valid" and chunk and chunk not in plain:
             errors.append(f"{label}: valid alternate lacks the grammar {chunk!r}: {plain!r}")
-        if alt["kind"] == "other_grammar" and not any(f in plain for f in other_family_forms):
-            errors.append(f"{label}: other_grammar alternate has no same-family form: {plain!r}")
+        if alt["kind"] == "other_grammar" and not (chunk and any(
+            f in plain and plain.replace(f, chunk, 1) in accepted_plain
+            for f in other_family_forms
+        )):
+            errors.append(
+                f"{label}: other_grammar alternate is not an accepted answer with a "
+                f"same-family form in place of {chunk!r}: {plain!r}"
+            )
     return errors
 
 
-def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms):
+def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
+                    pronoun_slugs=frozenset()):
     jp = sentence["japanese"]
     errors = []
     span = sentence.get("grammar_span")
@@ -74,15 +86,17 @@ def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_for
     violations = level_check.find_violations(jp, allowed_index, item.get("accepted_forms", []))
     if violations:
         errors.append(f"rule 3: out of range {violations}")
-    errors.extend(_alternate_errors(sentence, item, other_family_forms, vocab_forms))
+    errors.extend(_alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_slugs))
     return [f"{jp} — {e}" for e in errors]
 
 
-def point_errors(item, allowed_index, other_family_forms, vocab_forms):
+def point_errors(item, allowed_index, other_family_forms, vocab_forms,
+                 pronoun_slugs=frozenset()):
     errors = []
     passing = []
     for sentence in item.get("example_sentences", []):
-        found = sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms)
+        found = sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
+                                pronoun_slugs)
         errors.extend(found)
         if not found:
             passing.append(sentence)
@@ -123,22 +137,33 @@ def grammar_through(level):
     ]
 
 
-def check_level(level):
-    """{slug: [errors]} for every grammar point at `level`."""
-    grammar = context.load_grammar(level)
-    family_pool = grammar_through(level)
+def pronoun_slugs_through(level):
+    return frozenset(
+        v["slug"]
+        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
+        for v in context.load_vocab(lower)
+        if "pronoun" in (v.get("word_type") or "")
+    )
+
+
+def check_point(level, item):
+    """Every rule for one built grammar item, with the same context as
+    check_level — used by the content lane's ingest before anything is written."""
     vocab_forms = {
         v["slug"]: v["primary_form"]
         for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
         for v in context.load_vocab(lower)
     }
-    results = {}
-    for item in grammar:
-        allowed = level_check.build_allowed_index(context.allowed_vocab_for(level, item["slug"]))
-        results[item["slug"]] = point_errors(
-            item, allowed, _other_family_forms(item, family_pool), vocab_forms
-        )
-    return results
+    allowed = level_check.build_allowed_index(context.allowed_vocab_for(level, item["slug"]))
+    return point_errors(
+        item, allowed, _other_family_forms(item, grammar_through(level)), vocab_forms,
+        pronoun_slugs_through(level),
+    )
+
+
+def check_level(level):
+    """{slug: [errors]} for every grammar point at `level`."""
+    return {item["slug"]: check_point(level, item) for item in context.load_grammar(level)}
 
 
 def _report(results_by_level):

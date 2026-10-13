@@ -24,8 +24,8 @@ def entry(**overrides):
         "examples": [
             generate_ex("寒いから、コートを着ます。", "Because it's cold, I'll wear a coat.",
                         ["samui", "kooto", "kiru-wear"],
-                        alts=[("寒[さむ]いですから、コートを着[き]ます。", "valid"),
-                              ("寒[さむ]いので、コートを着[き]ます。", "other_grammar")]),
+                        alts=[("寒いですから、コートを着ます。", "valid"),
+                              ("寒いので、コートを着ます。", "other_grammar")]),
         ],
         "vocabulary_slugs": ["samui"],
         "family": "connectors",
@@ -117,6 +117,14 @@ class GrammarLevelTest(unittest.TestCase):
         spans_ = item["example_sentences"][0]["word_spans"]
         self.assertIn({"vocabulary_slug": "iku-v", "start": 3, "end": 5,
                        "surface_form": "行き", "inflection": "stem"}, spans_)
+
+    def test_unannotatable_kanji_alternate_is_a_build_error(self):
+        bad = entry(examples=[generate_ex("寒いから、コートを着ます。", "x",
+                                          ["samui", "kooto", "kiru-wear"],
+                                          alts=[("寒[いから", "valid")])],
+                    cloze_variants=[])
+        with self.assertRaises(ValueError):
+            build([bad])
 
     def test_cloze_variants_still_ship(self):
         self.assertEqual(len(build([entry()])["cloze_variants"]), 2)

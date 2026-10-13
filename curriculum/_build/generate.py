@@ -520,10 +520,16 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     if span:
         sentence["grammar_span"] = span
     sentence["register"] = grammar_sentences_lib.register_of(jp)
-    if example.get("alts"):
-        sentence["build_alternates"] = [
-            {"furigana": furigana, "kind": kind} for furigana, kind in example["alts"]
-        ]
+    alternates = []
+    for plain, kind in example.get("alts") or []:
+        furigana = furigana_lib.annotate_sentence(plain, known_readings)
+        if furigana is None or "[" in plain:
+            errors.append(f"grammar {g['slug']} example {sort_order}: alternate "
+                          f"{plain!r} cannot be annotated (write plain Japanese)")
+            continue
+        alternates.append({"furigana": furigana, "kind": kind})
+    if alternates:
+        sentence["build_alternates"] = alternates
     return sentence
 
 

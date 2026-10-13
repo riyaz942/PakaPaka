@@ -13,7 +13,8 @@ Example sentences may reference both N5 and N4 vocabulary slugs.
 def ex(jp, en, vocab=None, *, form=None, alts=None):
     """One example sentence. `form` names the grammar chunk to highlight when
     the accepted forms alone are ambiguous; `alts` lists other Build-card
-    answers as (furigana, kind) with kind "valid" or "other_grammar"."""
+    answers as (plain Japanese, kind) with kind "valid" or "other_grammar";
+    the build adds the furigana."""
     return {"jp": jp, "en": en, "vocab": vocab or [], "form": form, "alts": alts or []}
 
 
