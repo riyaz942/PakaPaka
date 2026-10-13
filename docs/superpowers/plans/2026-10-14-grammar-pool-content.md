@@ -372,11 +372,15 @@ In `test_check_grammar_pool.py`, replace `test_rule6_alternates` with:
             {"furigana": "寒[さむ]いから、コートを着[き]ます。", "kind": "other_grammar"},
             {"furigana": "寒[さむ", "kind": "valid"},
             {"furigana": "暑[あつ]いので、コートを着[き]ます。", "kind": "other_grammar"},
+            {"furigana": "寒[さむ]いので、コートを着[き]ません。", "kind": "other_grammar"},
         ])
         errors = [e for e in self.errors(s) if "rule 6" in e]
         # 3 drops コート; 4 lacks から; 5 has no other-grammar form; 6 does not
-        # parse; 7 drops 寒い (暑い is a different word).
-        self.assertEqual(len(errors), 5)
+        # parse; 7 drops 寒い (暑い is a different word); 8 has every word and
+        # ので, but swapped back it is 寒いから、コートを着ません。, which is not
+        # an accepted answer (only the swap-back check catches this one).
+        self.assertEqual(len(errors), 6)
+        self.assertTrue(any("alternate[7]" in e for e in errors))
 
     def test_rule6_pronoun_may_be_dropped(self):
         s = sentence(
