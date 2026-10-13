@@ -12,7 +12,8 @@ export type GrammarBuildAnswers = {
   userAnswers: readonly string[];
 };
 
-const IGNORED_RE = /[\s、。！？!?,.　]/g;
+// Quote brackets too: romaji input cannot type 「」, so a quoted word must match without them.
+const IGNORED_RE = /[\s、。！？!?,.　「」『』]/g;
 
 /** Katakana → hiragana by code point. ー is left alone (wanakana would turn it into a vowel). */
 function toHiragana(text: string): string {

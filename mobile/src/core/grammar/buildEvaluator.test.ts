@@ -66,3 +66,21 @@ describe('matchesFuriganaAnswer', () => {
     expect(matchesFuriganaAnswer(normalizeBuildText('僕は学生です'), SENTENCE)).toBe(false);
   });
 });
+
+describe('evaluateGrammarBuild — shipped sentences with 々 and 「」', () => {
+  const only = (answer: string) => ({ answers: [answer], otherGrammarAnswers: [], userAnswers: [] });
+
+  it.each([
+    ['as written', '時々、朝ご飯を食べません。'],
+    ['all kana', 'ときどきあさごはんをたべません'],
+  ])('時々 %s → correct', (_label, input) => {
+    expect(evaluateGrammarBuild(input, only('時[とき]々[どき]、朝[あさ]ご飯[はん]を食[た]べません。'))).toBe('correct');
+  });
+
+  it.each([
+    ['with the quotes', '「猫」という映画を見ました。'],
+    ['without the quotes (romaji input cannot type 「」)', 'ねこというえいがをみました'],
+  ])('「」 %s → correct', (_label, input) => {
+    expect(evaluateGrammarBuild(input, only('「猫[ねこ]」という映[えい]画[が]を見[み]ました。'))).toBe('correct');
+  });
+});

@@ -16,6 +16,13 @@ describe('parseFurigana', () => {
     expect(segments).toContainEqual({ text: '食', reading: 'た' });
   });
 
+  it('treats the repeat mark 々 as kanji, so it carries its own reading', () => {
+    expect(parseFurigana('時[とき]々[どき]')).toEqual([
+      { text: '時', reading: 'とき' },
+      { text: '々', reading: 'どき' },
+    ]);
+  });
+
   it('splits unannotated kana into single-character segments', () => {
     const segments = parseFurigana('たべる');
     expect(segments).toEqual([{ text: 'た' }, { text: 'べ' }, { text: 'る' }]);

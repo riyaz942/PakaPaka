@@ -5,12 +5,14 @@ export type FuriganaSegment = {
 
 const KANJI_MIN = 0x4e00;
 const KANJI_MAX = 0x9fff;
+/** 々 repeats the kanji before it and is annotated like one (時[とき]々[どき]). */
+const KANJI_REPEAT_MARK = 0x3005;
 const KANA_ONLY_RE = /^[぀-ヿ]*$/;
 const TRAILING_PUNCTUATION_RE = /^[。、！？」』,.)）"'…～]$/;
 
 function isKanji(ch: string): boolean {
   const code = ch.codePointAt(0) ?? 0;
-  return code >= KANJI_MIN && code <= KANJI_MAX;
+  return (code >= KANJI_MIN && code <= KANJI_MAX) || code === KANJI_REPEAT_MARK;
 }
 
 /** Validates balanced, non-nested `[reading]` brackets with kana-only readings. */
