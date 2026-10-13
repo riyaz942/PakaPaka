@@ -63,6 +63,12 @@ NAI = "nai"
 TA = "ta"
 TAUGHT_INFLECTIONS = (MASU, TE, NAI, TA)
 
+#: A conjugated stem whose ending is the grammar point being taught (行き of
+#: 行きましょう, 早く of 早く起きる). The span claims only the stem, never a
+#: named form; compile stores it with inflection NULL, so the app says "a
+#: conjugated form of 行く" instead of naming an untaught pattern.
+STEM = "stem"
+
 #: unidic conjugation types for the auxiliaries the four families are built of.
 _AUX_MASU = "助動詞-マス"
 _AUX_TA = "助動詞-タ"
@@ -274,6 +280,37 @@ def build_inflected_spans(text, forms_by_slug, tokens=None):
             "end": end,
             "surface_form": surface,
             "inflection": inflection,
+        })
+    return spans
+
+
+def build_stem_spans(text, forms_by_slug, tokens=None):
+    """Stem-only spans for linked verbs/adjectives that no taught-inflection
+    span covers (grammar pool sentences only). One token per span; the same
+    stem invariant as every other inflected span."""
+    tokens = tokens if tokens is not None else tokens_with_offsets(text)
+    slug_by_form = {}
+    for slug, form in forms_by_slug.items():
+        slug_by_form.setdefault(form, slug)
+    spans = []
+    for token in tokens:
+        if token["pos1"] not in ("動詞", "形容詞"):
+            continue
+        base = token["orth_base"] or token["lemma"]
+        slug = slug_by_form.get(base) if base else None
+        if slug is None:
+            continue
+        surface = token["surface"]
+        primary_form = forms_by_slug[slug]
+        stem = inflection_stem(primary_form)
+        if surface == primary_form or not surface.startswith(stem) or len(surface) <= len(stem):
+            continue
+        spans.append({
+            "vocabulary_slug": slug,
+            "start": token["start"],
+            "end": token["end"],
+            "surface_form": surface,
+            "inflection": STEM,
         })
     return spans
 

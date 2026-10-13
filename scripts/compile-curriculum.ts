@@ -275,7 +275,10 @@ function resolveWordSpans(
       );
     }
     if (span.inflection !== undefined) {
-      if (!TAUGHT_INFLECTIONS.has(span.inflection)) {
+      // 'stem' is a grammar-pool stem span (行き of 行きましょう): verified by
+      // the same stem invariant, stored with a null inflection so the app
+      // never names an untaught pattern.
+      if (span.inflection !== 'stem' && !TAUGHT_INFLECTIONS.has(span.inflection)) {
         throw new Error(
           `${Kind} inflection not taught: ${target} claims "${span.inflection}"`,
         );
@@ -292,7 +295,7 @@ function resolveWordSpans(
       item_id: vocabId,
       start_offset: span.start,
       end_offset: span.end,
-      inflection: span.inflection ?? null,
+      inflection: span.inflection === undefined || span.inflection === 'stem' ? null : span.inflection,
       sort_order: spanIndex,
     });
   }

@@ -105,6 +105,19 @@ class GrammarLevelTest(unittest.TestCase):
         self.assertEqual(sentence["japanese"], "コートを着ています。")
         self.assertEqual(sentence["vocabulary_slugs"], ["kooto", "kiru-wear"])
 
+    def test_grammar_example_gets_stem_span(self):
+        vocab = {**VOCAB, "iku-v": "行く"}
+        item = generate._build_grammar_level(
+            "N5",
+            [entry(slug="zz-test-mashou", primary_form="ましょう", accepted_forms=["ましょう"],
+                   examples=[generate_ex("一緒に行きましょう。", "Let's go together.", ["iku-v"])],
+                   cloze_variants=[])],
+            vocab, None, (), known_vocab_forms=vocab,
+        )["items"][0]
+        spans_ = item["example_sentences"][0]["word_spans"]
+        self.assertIn({"vocabulary_slug": "iku-v", "start": 3, "end": 5,
+                       "surface_form": "行き", "inflection": "stem"}, spans_)
+
     def test_cloze_variants_still_ship(self):
         self.assertEqual(len(build([entry()])["cloze_variants"]), 2)
 

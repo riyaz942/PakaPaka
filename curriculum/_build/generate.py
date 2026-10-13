@@ -502,6 +502,10 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     if sentence_furigana:
         sentence["furigana"] = sentence_furigana
     word_spans = _example_word_spans(jp, vslugs, vocab_forms)
+    # Pool sentences also link the stem in front of the grammar (行き of
+    # 行きましょう), which the taught-inflection spans deliberately skip.
+    forms_by_slug = {s: vocab_forms[s] for s in vslugs if s in vocab_forms}
+    word_spans = spans_lib.merge_spans(word_spans, spans_lib.build_stem_spans(jp, forms_by_slug))
     if word_spans:
         sentence["word_spans"] = word_spans
     if example.get("start") is not None:

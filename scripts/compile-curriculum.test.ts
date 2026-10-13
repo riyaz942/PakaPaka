@@ -775,6 +775,24 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('stores a stem span with a null inflection after checking the stem', () => {
+    // "一があります。" — あり is a stem of the fixture's ichi-v stand-in.
+    const { dbPath, tempDir, run } = compileWithExampleSpans([
+      { vocabulary_slug: 'ichi-v', start: 2, end: 4, surface_form: 'あり', inflection: 'stem' },
+    ]);
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const span = db
+        .prepare('SELECT start_offset, end_offset, inflection FROM example_sentence_spans')
+        .get();
+      expect(span).toEqual({ start_offset: 2, end_offset: 4, inflection: null });
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('throws when an example sentence span does not slice its own surface', () => {
     const { tempDir, run } = compileWithExampleSpans([
       { vocabulary_slug: 'ichi-v', start: 2, end: 4, surface_form: 'あります', inflection: 'masu' },

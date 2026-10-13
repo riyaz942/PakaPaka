@@ -356,7 +356,7 @@
           "exclusiveMinimum": { "$data": "1/start" }
         },
         "surface_form": { "type": "string", "minLength": 1 },
-        "inflection": { "type": "string", "enum": ["masu", "te", "nai", "ta"] }
+        "inflection": { "type": "string", "enum": ["masu", "te", "nai", "ta", "stem"] }
       },
       "dependencies": {
         "surface_form": ["inflection"],
