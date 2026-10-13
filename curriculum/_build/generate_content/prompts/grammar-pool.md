@@ -36,6 +36,11 @@ use but do not list is a word the learner cannot write.
 
 ## Grammar you may use besides this point
 
+Use no other grammar: the learner has not met it, and the validator rejects
+it. That includes conjugated forms such as 寒かった, 高くない, 行って or
+行きたい when their point is not in this list. Plain dictionary-form words
+(暑い, 好き, もう) are vocabulary, not grammar.
+
 {{EARLIER_GRAMMAR}}
 
 ## What to write

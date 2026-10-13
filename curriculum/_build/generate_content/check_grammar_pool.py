@@ -18,7 +18,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
-from generate_content import context, level_check  # noqa: E402
+from generate_content import context, grammar_detect, level_check  # noqa: E402
 from generate_content import grammar_sentences as gs  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 
@@ -82,8 +82,46 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
     return errors
 
 
+#: Grammar any pool sentence may use before its lesson: without these
+#: particles and the です/ます forms the first lessons cannot make a sentence.
+CORE_GRAMMAR = frozenset({
+    "wa-topic", "desu", "dewa-arimasen", "masu", "masen", "mashita", "wo", "ga",
+    "no-possessive", "ni-direction", "ni-indirect", "he-direction", "de-location",
+    "to-and", "mo-also", "ka-question",
+})
+
+
+def allowed_grammar_for(level, item):
+    """Slugs a sentence for `item` may use: every lower level, this level up
+    to and including `item`, and CORE_GRAMMAR."""
+    lower = context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
+    return CORE_GRAMMAR | frozenset(
+        [g["slug"] for lv in lower for g in context.load_grammar(lv)]
+        + [g["slug"] for g in context.load_grammar(level) if g["sort_order"] <= item["sort_order"]]
+    )
+
+
+def _later_grammar(sentence, level, allowed_grammar):
+    """Detected grammar the learner has not met. A hit inside this point's own
+    span, or inside a word shown in dictionary form (暑い, 一緒に, もう), is not
+    later grammar; a conjugated word (寒かった) is. Same-span matches are one
+    hit (ました is masu and mashita); it passes when any of them is allowed."""
+    jp = sentence["japanese"]
+    covered = [(w["start"], w["end"]) for w in sentence.get("word_spans", [])
+               if not w.get("inflection")]
+    if sentence.get("grammar_span"):
+        covered.append((sentence["grammar_span"]["start"], sentence["grammar_span"]["end"]))
+    hits = {}
+    for m in grammar_detect.detect(jp, level)["matches"]:
+        if any(start <= m["start"] and m["end"] <= end for start, end in covered):
+            continue
+        hits.setdefault((m["start"], m["form"]), set()).add(m["slug"])
+    return sorted(f"{form} ({'/'.join(sorted(slugs))})"
+                  for (_, form), slugs in hits.items() if not slugs & allowed_grammar)
+
+
 def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
-                    pronoun_slugs=frozenset()):
+                    pronoun_slugs=frozenset(), level=None, allowed_grammar=None):
     jp = sentence["japanese"]
     errors = []
     span = sentence.get("grammar_span")
@@ -95,17 +133,21 @@ def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_for
     violations = level_check.find_violations(jp, allowed_index, item.get("accepted_forms", []))
     if violations:
         errors.append(f"rule 3: out of range {violations}")
+    if allowed_grammar is not None:
+        later = _later_grammar(sentence, level, allowed_grammar)
+        if later:
+            errors.append(f"rule 8: grammar from a later lesson {later}")
     errors.extend(_alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_slugs))
     return [f"{jp} — {e}" for e in errors]
 
 
 def point_errors(item, allowed_index, other_family_forms, vocab_forms,
-                 pronoun_slugs=frozenset()):
+                 pronoun_slugs=frozenset(), level=None, allowed_grammar=None):
     errors = []
     passing = []
     for sentence in item.get("example_sentences", []):
         found = sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
-                                pronoun_slugs)
+                                pronoun_slugs, level, allowed_grammar)
         errors.extend(found)
         if not found:
             passing.append(sentence)
@@ -174,7 +216,7 @@ def check_point(level, item):
     allowed = level_check.build_allowed_index(context.allowed_vocab_for(level, item["slug"]))
     return point_errors(
         item, allowed, _other_family_forms(item, grammar_through(level)), vocab_forms,
-        pronoun_slugs_through(level),
+        pronoun_slugs_through(level), level, allowed_grammar_for(level, item),
     )
 
 

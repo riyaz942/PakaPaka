@@ -108,6 +108,47 @@ class SentenceRulesTest(unittest.TestCase):
         self.assertIn("alternate[1]", errors[0])
 
 
+class GrammarOrderTest(unittest.TestCase):
+    """Rule 8: a sentence uses only grammar the learner has met (or the core)."""
+
+    def rule8(self, allowed):
+        errors = pool.sentence_errors(GOOD, item([GOOD], slug="kara-because"), ALLOWED, OTHER,
+                                      VOCAB, level="n5", allowed_grammar=frozenset(allowed))
+        return [e for e in errors if "rule 8" in e]
+
+    def test_core_and_earlier_grammar_pass(self):
+        self.assertEqual(self.rule8(pool.CORE_GRAMMAR | {"kara-because"}), [])
+
+    def test_later_grammar_is_an_error(self):
+        errors = self.rule8({"kara-because", "masu"})
+        self.assertEqual(len(errors), 1)
+        self.assertIn("を", errors[0])
+
+    def test_conjugated_word_counts_but_dictionary_form_does_not(self):
+        # GOOD's 寒い is a word in dictionary form; 寒かった is the past tense.
+        s = sentence("寒かったから、コートを着ます。",
+                     [{"vocabulary_slug": "samui", "start": 0, "end": 4, "inflection": "ta"},
+                      {"vocabulary_slug": "kooto", "start": 7, "end": 10},
+                      {"vocabulary_slug": "kiru-wear", "start": 11, "end": 14, "inflection": "masu"}],
+                     {"start": 4, "end": 6})
+        errors = pool.sentence_errors(s, item([s], slug="kara-because"), ALLOWED, OTHER, VOCAB,
+                                      level="n5",
+                                      allowed_grammar=pool.CORE_GRAMMAR | {"kara-because"})
+        later = [e for e in errors if "rule 8" in e]
+        self.assertEqual(len(later), 1)
+        self.assertIn("寒かっ", later[0])
+
+    def test_allowed_grammar_follows_lesson_order(self):
+        def point(level, slug):
+            return next(g for g in pool.context.load_grammar(level) if g["slug"] == slug)
+        first = pool.allowed_grammar_for("n5", point("n5", "wa-topic"))
+        self.assertIn("wa-topic", first)
+        self.assertIn("wo", first)            # core
+        self.assertNotIn("te-form", first)    # a later lesson
+        n4_first = pool.context.load_grammar("n4")[0]
+        self.assertIn("te-form", pool.allowed_grammar_for("n4", n4_first))
+
+
 class SwapBackPositionTest(unittest.TestCase):
     """The other-grammar swap happens at the grammar position, not at the
     first occurrence of the same-family form."""

@@ -106,6 +106,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
 6. Every alternate parses as furigana notation and contains every listed word **except personal pronouns** (私, あなた, 彼…, which natural Japanese drops; question words and demonstratives such as 何, どこ, これ are content and stay required). Every `valid` alternate contains the grammar chunk or another of the point's accepted forms (the author keeps meaning and politeness the same: じゃありません for ではありません, not でした for です). Every `other_grammar` alternate equals the main sentence or a `valid` alternate with the grammar chunk, **at the grammar position**, replaced by a same-family form (any level up to the current one).
 7. Every grammar point has ≥ 3 accepted meanings.
+8. No grammar from a later lesson: `grammar_detect.detect` finds nothing outside every lower level, this level up to the point itself, and a core set (は, です, ではありません, ます/ません/ました, を, が, の, に, へ, で, と, も, か) without which the first lessons cannot make a sentence. A hit inside the point's own span or inside a word span with no inflection is vocabulary, not grammar (暑い, 一緒に); a conjugated word (寒かった) counts.
 
 ---
 

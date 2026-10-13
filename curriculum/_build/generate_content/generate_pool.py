@@ -110,8 +110,9 @@ def prompt_text(level, slug, validator_errors=None):
     item = next(g for g in grammar if g["slug"] == slug)
     family = [g for g in pool_check.grammar_through(level)
               if g["slug"] != slug and item.get("family") and g.get("family") == item.get("family")]
+    allowed = pool_check.allowed_grammar_for(level, item)
     earlier = [g for g in pool_check.grammar_through(level)
-               if g["slug"] != slug and (g["sort_order"] < item["sort_order"] or g not in grammar)]
+               if g["slug"] != slug and g["slug"] in allowed]
     feedback = ""
     if validator_errors:
         feedback = ("\n## Fix these errors from the last attempt\n\n"
