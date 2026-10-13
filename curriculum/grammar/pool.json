@@ -5603,5 +5603,709 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "dictionary-koto-ga-dekiru": {
+    "accepted_meanings": [
+      "can",
+      "be able to",
+      "able to",
+      "can do",
+      "ability"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本語を話すことができます。",
+        "english": "I can speak Japanese.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "漢字を読むことができます。",
+        "english": "I can read kanji.",
+        "vocabulary_slugs": [
+          "kanji-word",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "泳ぐことができません。",
+        "english": "I cannot swim.",
+        "vocabulary_slugs": [
+          "oyogu"
+        ]
+      },
+      {
+        "japanese": "彼女は日本語を話すことができます。",
+        "english": "She can speak Japanese.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "nihongo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "このパソコンでテレビを見ることができます。",
+        "english": "You can watch TV on this computer.",
+        "vocabulary_slugs": [
+          "kono",
+          "pasokon",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビをこのパソコンで見ることができます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ここで本を読むことができますか。",
+        "english": "Can I read a book here?",
+        "vocabulary_slugs": [
+          "koko",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "本をここで読むことができますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "僕は漢字を書くことができる。",
+        "english": "I can write kanji.",
+        "vocabulary_slugs": [
+          "boku",
+          "kanji-word",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "漢字を書くことができる。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ここで寝ることができる。",
+        "english": "You are able to sleep here.",
+        "vocabulary_slugs": [
+          "koko",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "うちの猫はドアを開けることができます。",
+        "english": "Our cat can open the door.",
+        "vocabulary_slugs": [
+          "uchi",
+          "neko",
+          "doa",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "昨日は寝ることができませんでした。",
+        "english": "I couldn't sleep last night.",
+        "vocabulary_slugs": [
+          "kinou",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "adj-i-conjugation": {
+    "accepted_meanings": [
+      "i-adjective conjugation",
+      "i-adjective past and negative",
+      "was",
+      "is not",
+      "wasn't"
+    ],
+    "sentences": [
+      {
+        "japanese": "昨日は暑かったです。",
+        "english": "Yesterday was hot.",
+        "vocabulary_slugs": [
+          "kinou",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "この本は高くないです。",
+        "english": "This book is not expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "takai-adj"
+        ],
+        "form": "高くない"
+      },
+      {
+        "japanese": "映画は面白かった。",
+        "english": "The movie was interesting.",
+        "vocabulary_slugs": [
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "このカメラは重くないです。",
+        "english": "This camera is not heavy.",
+        "vocabulary_slugs": [
+          "kono",
+          "kamera",
+          "omoi"
+        ],
+        "form": "重くない"
+      },
+      {
+        "japanese": "レストランの料理はおいしかったです。",
+        "english": "The restaurant's food was delicious.",
+        "vocabulary_slugs": [
+          "resutoran",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "その本は難しくなかったです。",
+        "english": "That book was not difficult.",
+        "vocabulary_slugs": [
+          "sono",
+          "hon",
+          "muzukashii"
+        ],
+        "form": "難しくなかった"
+      },
+      {
+        "japanese": "今日の天気はよくないです。",
+        "english": "Today's weather is not good.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tenki",
+          "ii"
+        ],
+        "form": "よくない"
+      },
+      {
+        "japanese": "昨日は寒かったです。",
+        "english": "Yesterday was cold.",
+        "vocabulary_slugs": [
+          "kinou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "昨日の晩ご飯はまずかったです。",
+        "english": "Last night's dinner tasted bad.",
+        "vocabulary_slugs": [
+          "kinou",
+          "bangohan",
+          "mazui"
+        ]
+      },
+      {
+        "japanese": "週末は楽しかったですか。",
+        "english": "Was your weekend fun?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "adj-na-conjugation": {
+    "accepted_meanings": [
+      "na-adjective",
+      "na-adjective usage",
+      "na-adjective conjugation",
+      "is",
+      "was"
+    ],
+    "sentences": [
+      {
+        "japanese": "静かな部屋です。",
+        "english": "It's a quiet room.",
+        "vocabulary_slugs": [
+          "shizuka",
+          "heya"
+        ]
+      },
+      {
+        "japanese": "彼は親切です。",
+        "english": "He is kind.",
+        "vocabulary_slugs": [
+          "kare",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "ここは便利な町です。",
+        "english": "This is a convenient town.",
+        "vocabulary_slugs": [
+          "koko",
+          "benri",
+          "machi-v"
+        ]
+      },
+      {
+        "japanese": "部屋はきれいでした。",
+        "english": "The room was clean.",
+        "vocabulary_slugs": [
+          "heya",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "ここは静かな町です。",
+        "english": "This is a quiet town.",
+        "vocabulary_slugs": [
+          "koko",
+          "shizuka",
+          "machi-v"
+        ]
+      },
+      {
+        "japanese": "私は暇ではありません。",
+        "english": "I am not free.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hima"
+        ],
+        "alternates": [
+          {
+            "japanese": "暇ではありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は暇じゃないです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "有名な人に会いました。",
+        "english": "I met a famous person.",
+        "vocabulary_slugs": [
+          "yuumei",
+          "hito",
+          "au"
+        ]
+      },
+      {
+        "japanese": "犬が好きではありません。",
+        "english": "I do not like dogs.",
+        "vocabulary_slugs": [
+          "inu",
+          "suki"
+        ],
+        "alternates": [
+          {
+            "japanese": "犬が好きじゃないです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あの先生は有名ですか。",
+        "english": "Is that teacher famous?",
+        "vocabulary_slugs": [
+          "ano",
+          "sensei",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "昨日の公園は賑やかでした。",
+        "english": "The park was lively yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kouen",
+          "nigiyaka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "adj-i-adverb": {
+    "accepted_meanings": [
+      "adverb",
+      "-ly",
+      "adverb form",
+      "in a way"
+    ],
+    "sentences": [
+      {
+        "japanese": "早く起きます。",
+        "english": "I get up early.",
+        "vocabulary_slugs": [
+          "hayai-early",
+          "okiru"
+        ],
+        "form": "早く"
+      },
+      {
+        "japanese": "安く買いました。",
+        "english": "I bought it cheaply.",
+        "vocabulary_slugs": [
+          "yasui-adj",
+          "kau-v"
+        ],
+        "form": "安く"
+      },
+      {
+        "japanese": "毎朝早く家を出ます。",
+        "english": "I leave home early every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "hayai-early",
+          "ie",
+          "deru-v"
+        ],
+        "form": "早く"
+      },
+      {
+        "japanese": "部屋を明るくしました。",
+        "english": "I made the room brighter.",
+        "vocabulary_slugs": [
+          "heya",
+          "akarui",
+          "suru"
+        ],
+        "form": "明るく"
+      },
+      {
+        "japanese": "彼は速く走ります。",
+        "english": "He runs fast.",
+        "vocabulary_slugs": [
+          "kare",
+          "hayai-fast",
+          "hashiru"
+        ],
+        "form": "速く"
+      },
+      {
+        "japanese": "ノートに大きく書きました。",
+        "english": "I wrote big in the notebook.",
+        "vocabulary_slugs": [
+          "nooto",
+          "ookii",
+          "kaku"
+        ],
+        "form": "大きく"
+      },
+      {
+        "japanese": "子供は公園で楽しく遊びました。",
+        "english": "The child played happily in the park.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kouen",
+          "tanoshii",
+          "asobu"
+        ],
+        "form": "楽しく"
+      },
+      {
+        "japanese": "彼女は速く歩きません。",
+        "english": "She doesn't walk fast.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "hayai-fast",
+          "aruku"
+        ],
+        "form": "速く"
+      },
+      {
+        "japanese": "明日は早く来ますか。",
+        "english": "Are you coming early tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "hayai-early",
+          "kuru-v"
+        ],
+        "form": "早く"
+      },
+      {
+        "japanese": "髪を短く切りました。",
+        "english": "I cut my hair short.",
+        "vocabulary_slugs": [
+          "kami-hair",
+          "mijikai",
+          "kiru-cut"
+        ],
+        "form": "短く"
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "adj-na-adverb": {
+    "accepted_meanings": [
+      "adverb",
+      "-ly",
+      "adverb form",
+      "in a way"
+    ],
+    "sentences": [
+      {
+        "japanese": "きれいに書きます。",
+        "english": "I write neatly.",
+        "vocabulary_slugs": [
+          "kirei",
+          "kaku"
+        ],
+        "form": "きれいに"
+      },
+      {
+        "japanese": "元気に遊びます。",
+        "english": "They play energetically.",
+        "vocabulary_slugs": [
+          "genki",
+          "asobu"
+        ],
+        "form": "元気に"
+      },
+      {
+        "japanese": "図書館で静かに本を読みました。",
+        "english": "I read a book quietly in the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "shizuka",
+          "hon",
+          "yomu"
+        ],
+        "form": "静かに",
+        "alternates": [
+          {
+            "japanese": "図書館で本を静かに読みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "うちの犬は静かに待ちません。",
+        "english": "Our dog does not wait quietly.",
+        "vocabulary_slugs": [
+          "uchi",
+          "inu",
+          "shizuka",
+          "matsu"
+        ],
+        "form": "静かに"
+      },
+      {
+        "japanese": "彼女は上手に歌います。",
+        "english": "She sings skillfully.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "jouzu",
+          "utau"
+        ],
+        "form": "上手に"
+      },
+      {
+        "japanese": "手紙を丁寧に書きます。",
+        "english": "I write the letter carefully.",
+        "vocabulary_slugs": [
+          "tegami",
+          "teinei",
+          "kaku"
+        ],
+        "form": "丁寧に",
+        "alternates": [
+          {
+            "japanese": "丁寧に手紙を書きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "部屋をきれいに掃除します。",
+        "english": "I clean the room until it is spotless.",
+        "vocabulary_slugs": [
+          "heya",
+          "kirei",
+          "souji-suru"
+        ],
+        "form": "きれいに"
+      },
+      {
+        "japanese": "子供は元気に遊びます。",
+        "english": "The child plays energetically.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "genki",
+          "asobu"
+        ],
+        "form": "元気に"
+      },
+      {
+        "japanese": "部屋をきれいにしましたか。",
+        "english": "Did you tidy up the room?",
+        "vocabulary_slugs": [
+          "heya",
+          "kirei",
+          "suru"
+        ],
+        "form": "きれいに"
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "comparative-yori": {
+    "accepted_meanings": [
+      "more than",
+      "than",
+      "compared to",
+      "rather than"
+    ],
+    "sentences": [
+      {
+        "japanese": "去年の夏は今年より暑かったです。",
+        "english": "Last summer was hotter than this year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "natsu",
+          "kotoshi",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "今日は昨日より暑いです。",
+        "english": "Today is hotter than yesterday.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kinou",
+          "atsui-hot"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日より今日は暑いです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "犬は猫より大きいです。",
+        "english": "Dogs are bigger than cats.",
+        "vocabulary_slugs": [
+          "inu",
+          "neko",
+          "ookii"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫より犬は大きいです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "タクシーはバスより速いです。",
+        "english": "Taxis are faster than buses.",
+        "vocabulary_slugs": [
+          "takushii",
+          "basu",
+          "hayai-fast"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスよりタクシーは速いです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ひらがなより漢字は難しいです。",
+        "english": "Compared to hiragana, kanji is difficult.",
+        "vocabulary_slugs": [
+          "hiragana",
+          "kanji-word",
+          "muzukashii"
+        ],
+        "alternates": [
+          {
+            "japanese": "漢字はひらがなより難しいです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "肉は魚より好きです。",
+        "english": "I like meat more than fish.",
+        "vocabulary_slugs": [
+          "niku",
+          "sakana",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "あの店よりこの店は安いです。",
+        "english": "Compared to that shop over there, this shop is cheaper.",
+        "vocabulary_slugs": [
+          "ano",
+          "mise",
+          "kono",
+          "yasui-adj"
+        ],
+        "alternates": [
+          {
+            "japanese": "この店はあの店より安いです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーよりお茶が好きですか。",
+        "english": "Do you like tea more than coffee?",
+        "vocabulary_slugs": [
+          "koohii",
+          "ocha",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "母は私より早く起きます。",
+        "english": "My mother gets up earlier than me.",
+        "vocabulary_slugs": [
+          "haha",
+          "watashi",
+          "hayai-early",
+          "okiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

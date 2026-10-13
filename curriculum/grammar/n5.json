@@ -20652,37 +20652,49 @@
           "register": "polite"
         },
         {
-          "japanese": "あの鳥は高く飛ぶことができます。",
-          "english": "That bird can fly high.",
+          "japanese": "このパソコンでテレビを見ることができます。",
+          "english": "You can watch TV on this computer.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "ano",
-            "tori",
-            "tobu"
+            "kono",
+            "pasokon",
+            "terebi",
+            "miru-v"
           ],
-          "furigana": "あの鳥[とり]は高[たか]く飛[と]ぶことができます。",
+          "furigana": "このパソコンでテレビを見[み]ることができます。",
           "word_spans": [
             {
-              "vocabulary_slug": "ano",
+              "vocabulary_slug": "kono",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "tori",
+              "vocabulary_slug": "pasokon",
               "start": 2,
-              "end": 3
+              "end": 6
             },
             {
-              "vocabulary_slug": "tobu",
-              "start": 6,
-              "end": 8
+              "vocabulary_slug": "terebi",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 11,
+              "end": 13
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 15
+            "start": 13,
+            "end": 20
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "テレビをこのパソコンで見[み]ることができます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "ここで本を読むことができますか。",
@@ -20715,7 +20727,13 @@
             "start": 7,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "本[ほん]をここで読[よ]むことができますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "僕は漢字を書くことができる。",
@@ -20748,7 +20766,13 @@
             "start": 7,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "漢[かん]字[じ]を書[か]くことができる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "ここで寝ることができる。",
@@ -20776,6 +20800,72 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "うちの猫はドアを開けることができます。",
+          "english": "Our cat can open the door.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "uchi",
+            "neko",
+            "doa",
+            "akeru"
+          ],
+          "furigana": "うちの猫[ねこ]はドアを開[あ]けることができます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "uchi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "doa",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 18
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日は寝ることができませんでした。",
+          "english": "I couldn't sleep last night.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kinou",
+            "neru"
+          ],
+          "furigana": "昨日[きのう]は寝[ね]ることができませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 13
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -20784,6 +20874,33 @@
         "kanji-word"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "can",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be able to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "able to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "can do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ability",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "彼女は日本語を話す＿＿＿。",
@@ -20918,7 +21035,7 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
+            "start": 4,
             "end": 8
           },
           "register": "polite"
@@ -20953,15 +21070,15 @@
           "register": "plain"
         },
         {
-          "japanese": "このカメラは高くないです。",
-          "english": "This camera is not expensive.",
+          "japanese": "このカメラは重くないです。",
+          "english": "This camera is not heavy.",
           "sort_order": 3,
           "vocabulary_slugs": [
             "kono",
             "kamera",
-            "takai-adj"
+            "omoi"
           ],
-          "furigana": "このカメラは高[たか]くないです。",
+          "furigana": "このカメラは重[おも]くないです。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -20974,15 +21091,15 @@
               "end": 5
             },
             {
-              "vocabulary_slug": "takai-adj",
+              "vocabulary_slug": "omoi",
               "start": 6,
               "end": 10,
-              "surface_form": "高くない",
+              "surface_form": "重くない",
               "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 7,
+            "start": 6,
             "end": 10
           },
           "register": "polite"
@@ -21052,7 +21169,7 @@
             }
           ],
           "grammar_span": {
-            "start": 6,
+            "start": 4,
             "end": 11
           },
           "register": "polite"
@@ -21064,7 +21181,7 @@
           "vocabulary_slugs": [
             "kyou",
             "tenki",
-            "yoku"
+            "ii"
           ],
           "furigana": "今日[きょう]の天[てん]気[き]はよくないです。",
           "word_spans": [
@@ -21077,15 +21194,10 @@
               "vocabulary_slug": "tenki",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "yoku",
-              "start": 6,
-              "end": 8
             }
           ],
           "grammar_span": {
-            "start": 7,
+            "start": 6,
             "end": 10
           },
           "register": "polite"
@@ -21118,6 +21230,70 @@
             "end": 7
           },
           "register": "polite"
+        },
+        {
+          "japanese": "昨日の晩ご飯はまずかったです。",
+          "english": "Last night's dinner tasted bad.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kinou",
+            "bangohan",
+            "mazui"
+          ],
+          "furigana": "昨日[きのう]の晩[ばん]ご飯[はん]はまずかったです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "mazui",
+              "start": 7,
+              "end": 12,
+              "surface_form": "まずかった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "週末は楽しかったですか。",
+          "english": "Was your weekend fun?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "tanoshii"
+          ],
+          "furigana": "週[しゅう]末[まつ]は楽[たの]しかったですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tanoshii",
+              "start": 3,
+              "end": 8,
+              "surface_form": "楽しかった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -21126,6 +21302,33 @@
         "omoshiroi"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "i-adjective conjugation",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "i-adjective past and negative",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "was",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is not",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "wasn't",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "このカメラは高＿＿＿です。",
@@ -21343,8 +21546,8 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 6
+            "start": 7,
+            "end": 9
           },
           "register": "polite"
         },
@@ -21373,7 +21576,17 @@
             "start": 3,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "暇[ひま]ではありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は暇[ひま]じゃないです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "有名な人に会いました。",
@@ -21435,6 +21648,78 @@
             "start": 4,
             "end": 11
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "犬[いぬ]が好[す]きじゃないです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "あの先生は有名ですか。",
+          "english": "Is that teacher famous?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ano",
+            "sensei",
+            "yuumei"
+          ],
+          "furigana": "あの先[せん]生[せい]は有[ゆう]名[めい]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yuumei",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日の公園は賑やかでした。",
+          "english": "The park was lively yesterday.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kinou",
+            "kouen",
+            "nigiyaka"
+          ],
+          "furigana": "昨日[きのう]の公[こう]園[えん]は賑[にぎ]やかでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nigiyaka",
+              "start": 6,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
           "register": "polite"
         }
       ],
@@ -21444,6 +21729,33 @@
         "benri"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "na-adjective",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "na-adjective usage",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "na-adjective conjugation",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "was",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "部屋はきれい＿＿＿。",
@@ -21540,46 +21852,15 @@
             }
           ],
           "grammar_span": {
-            "start": 1,
+            "start": 0,
             "end": 2
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "大きく書いてください。",
-          "english": "Please write it big.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "ookii",
-            "kaku"
-          ],
-          "furigana": "大[おお]きく書[か]いてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ookii",
-              "start": 0,
-              "end": 3,
-              "surface_form": "大きく",
-              "inflection": "stem"
-            },
-            {
-              "vocabulary_slug": "kaku",
-              "start": 3,
-              "end": 6,
-              "surface_form": "書いて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 3
           },
           "register": "polite"
         },
         {
           "japanese": "安く買いました。",
           "english": "I bought it cheaply.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "yasui-adj",
             "kau-v"
@@ -21602,75 +21883,98 @@
             }
           ],
           "grammar_span": {
-            "start": 1,
+            "start": 0,
             "end": 2
           },
           "register": "polite"
         },
         {
-          "japanese": "明日は早く起きます。",
-          "english": "I will wake up early tomorrow.",
-          "sort_order": 3,
+          "japanese": "毎朝早く家を出ます。",
+          "english": "I leave home early every morning.",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "ashita",
-            "okiru"
+            "maiasa",
+            "hayai-early",
+            "ie",
+            "deru-v"
           ],
-          "furigana": "明日[あした]は早[はや]く起[お]きます。",
+          "furigana": "毎[まい]朝[あさ]早[はや]く家[いえ]を出[で]ます。",
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "maiasa",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "okiru",
-              "start": 5,
+              "vocabulary_slug": "hayai-early",
+              "start": 2,
+              "end": 4,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 6,
               "end": 9,
-              "surface_form": "起きます",
+              "surface_form": "出ます",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 5
+            "start": 2,
+            "end": 4
           },
           "register": "polite"
         },
         {
-          "japanese": "これを安く買いました。",
-          "english": "I bought this cheaply.",
-          "sort_order": 4,
+          "japanese": "部屋を明るくしました。",
+          "english": "I made the room brighter.",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "kore",
-            "kau-v"
+            "heya",
+            "akarui",
+            "suru"
           ],
-          "furigana": "これを安[やす]く買[か]いました。",
+          "furigana": "部屋[へや]を明[あか]るくしました。",
           "word_spans": [
             {
-              "vocabulary_slug": "kore",
+              "vocabulary_slug": "heya",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "kau-v",
-              "start": 5,
+              "vocabulary_slug": "akarui",
+              "start": 3,
+              "end": 6,
+              "surface_form": "明るく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 6,
               "end": 10,
-              "surface_form": "買いました",
+              "surface_form": "しました",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 5
+            "start": 3,
+            "end": 6
           },
           "register": "polite"
         },
         {
           "japanese": "彼は速く走ります。",
           "english": "He runs fast.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kare",
+            "hayai-fast",
             "hashiru"
           ],
           "furigana": "彼[かれ]は速[はや]く走[はし]ります。",
@@ -21681,6 +21985,13 @@
               "end": 1
             },
             {
+              "vocabulary_slug": "hayai-fast",
+              "start": 2,
+              "end": 4,
+              "surface_form": "速く",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "hashiru",
               "start": 4,
               "end": 8,
@@ -21689,7 +22000,7 @@
             }
           ],
           "grammar_span": {
-            "start": 3,
+            "start": 2,
             "end": 4
           },
           "register": "polite"
@@ -21697,9 +22008,10 @@
         {
           "japanese": "ノートに大きく書きました。",
           "english": "I wrote big in the notebook.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "nooto",
+            "ookii",
             "kaku"
           ],
           "furigana": "ノートに大[おお]きく書[か]きました。",
@@ -21710,6 +22022,13 @@
               "end": 3
             },
             {
+              "vocabulary_slug": "ookii",
+              "start": 4,
+              "end": 7,
+              "surface_form": "大きく",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "kaku",
               "start": 7,
               "end": 12,
@@ -21718,40 +22037,161 @@
             }
           ],
           "grammar_span": {
-            "start": 6,
+            "start": 4,
             "end": 7
           },
           "register": "polite"
         },
         {
-          "japanese": "毎日よく勉強します。",
-          "english": "I study well every day.",
-          "sort_order": 7,
+          "japanese": "子供は公園で楽しく遊びました。",
+          "english": "The child played happily in the park.",
+          "sort_order": 6,
           "vocabulary_slugs": [
-            "mainichi",
-            "yoku",
-            "benkyou"
+            "kodomo-v",
+            "kouen",
+            "tanoshii",
+            "asobu"
           ],
-          "furigana": "毎[まい]日[にち]よく勉[べん]強[きょう]します。",
+          "furigana": "子[こ]供[ども]は公[こう]園[えん]で楽[たの]しく遊[あそ]びました。",
           "word_spans": [
             {
-              "vocabulary_slug": "mainichi",
+              "vocabulary_slug": "kodomo-v",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "yoku",
-              "start": 2,
-              "end": 4
+              "vocabulary_slug": "kouen",
+              "start": 3,
+              "end": 5
             },
             {
-              "vocabulary_slug": "benkyou",
-              "start": 4,
-              "end": 6
+              "vocabulary_slug": "tanoshii",
+              "start": 6,
+              "end": 9,
+              "surface_form": "楽しく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 9,
+              "end": 14,
+              "surface_form": "遊びました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼女は速く歩きません。",
+          "english": "She doesn't walk fast.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kanojo",
+            "hayai-fast",
+            "aruku"
+          ],
+          "furigana": "彼[かの]女[じょ]は速[はや]く歩[ある]きません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hayai-fast",
+              "start": 3,
+              "end": 5,
+              "surface_form": "速く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 5,
+              "end": 10,
+              "surface_form": "歩きません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "明日は早く来ますか。",
+          "english": "Are you coming early tomorrow?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ashita",
+            "hayai-early",
+            "kuru-v"
+          ],
+          "furigana": "明日[あした]は早[はや]く来[き]ますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 3,
+              "end": 5,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 5,
+              "end": 8,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "髪を短く切りました。",
+          "english": "I cut my hair short.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kami-hair",
+            "mijikai",
+            "kiru-cut"
+          ],
+          "furigana": "髪[かみ]を短[みじか]く切[き]りました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kami-hair",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mijikai",
+              "start": 2,
+              "end": 4,
+              "surface_form": "短く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kiru-cut",
+              "start": 4,
+              "end": 9,
+              "surface_form": "切りました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
             "end": 4
           },
           "register": "polite"
@@ -21763,6 +22203,28 @@
         "yasui-adj"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "adverb",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "-ly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "adverb form",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in a way",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "明日は早＿＿＿起きます。",
@@ -21834,30 +22296,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "静かにしてください。",
-          "english": "Please be quiet.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "shizuka"
-          ],
-          "furigana": "静[しず]かにしてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 3
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "きれいに書きます。",
           "english": "I write neatly.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kirei",
             "kaku"
@@ -21878,7 +22319,7 @@
             }
           ],
           "grammar_span": {
-            "start": 3,
+            "start": 0,
             "end": 4
           },
           "register": "polite"
@@ -21886,7 +22327,7 @@
         {
           "japanese": "元気に遊びます。",
           "english": "They play energetically.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "genki",
             "asobu"
@@ -21907,41 +22348,96 @@
             }
           ],
           "grammar_span": {
-            "start": 2,
+            "start": 0,
             "end": 3
           },
           "register": "polite"
         },
         {
-          "japanese": "私は静かに勉強します。",
-          "english": "I study quietly.",
-          "sort_order": 3,
+          "japanese": "図書館で静かに本を読みました。",
+          "english": "I read a book quietly in the library.",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "watashi",
+            "toshokan",
             "shizuka",
-            "benkyou"
+            "hon",
+            "yomu"
           ],
-          "furigana": "私[わたし]は静[しず]かに勉[べん]強[きょう]します。",
+          "furigana": "図[と]書[しょ]館[かん]で静[しず]かに本[ほん]を読[よ]みました。",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "toshokan",
               "start": 0,
-              "end": 1
+              "end": 3
             },
             {
               "vocabulary_slug": "shizuka",
-              "start": 2,
-              "end": 4
+              "start": 4,
+              "end": 6
             },
             {
-              "vocabulary_slug": "benkyou",
-              "start": 5,
-              "end": 7
+              "vocabulary_slug": "hon",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 9,
+              "end": 14,
+              "surface_form": "読みました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 4,
-            "end": 5
+            "end": 7
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "図[と]書[しょ]館[かん]で本[ほん]を静[しず]かに読[よ]みました。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "うちの犬は静かに待ちません。",
+          "english": "Our dog does not wait quietly.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "uchi",
+            "inu",
+            "shizuka",
+            "matsu"
+          ],
+          "furigana": "うちの犬[いぬ]は静[しず]かに待[ま]ちません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "uchi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 8,
+              "end": 13,
+              "surface_form": "待ちません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
           },
           "register": "polite"
         },
@@ -21975,7 +22471,7 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
+            "start": 3,
             "end": 6
           },
           "register": "polite"
@@ -22010,10 +22506,16 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
+            "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "丁[てい]寧[ねい]に手[て]紙[がみ]を書[か]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "部屋をきれいに掃除します。",
@@ -22045,7 +22547,7 @@
             }
           ],
           "grammar_span": {
-            "start": 6,
+            "start": 3,
             "end": 7
           },
           "register": "polite"
@@ -22080,8 +22582,43 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
+            "start": 3,
             "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "部屋をきれいにしましたか。",
+          "english": "Did you tidy up the room?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "heya",
+            "kirei",
+            "suru"
+          ],
+          "furigana": "部屋[へや]をきれいにしましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kirei",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 7
           },
           "register": "polite"
         }
@@ -22092,6 +22629,28 @@
         "genki"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "adverb",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "-ly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "adverb form",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in a way",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は静か＿＿＿勉強します。",
@@ -22163,29 +22722,43 @@
       ],
       "example_sentences": [
         {
-          "japanese": "電車はバスより速いです。",
-          "english": "Trains are faster than buses.",
+          "japanese": "去年の夏は今年より暑かったです。",
+          "english": "Last summer was hotter than this year.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "basu",
-            "hayai-fast"
+            "kyonen",
+            "natsu",
+            "kotoshi",
+            "atsui-hot"
           ],
-          "furigana": "電[でん]車[しゃ]はバスより速[はや]いです。",
+          "furigana": "去[きょ]年[ねん]の夏[なつ]は今年[ことし]より暑[あつ]かったです。",
           "word_spans": [
             {
-              "vocabulary_slug": "basu",
-              "start": 3,
-              "end": 5
+              "vocabulary_slug": "kyonen",
+              "start": 0,
+              "end": 2
             },
             {
-              "vocabulary_slug": "hayai-fast",
-              "start": 7,
-              "end": 9
+              "vocabulary_slug": "natsu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kotoshi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "atsui-hot",
+              "start": 9,
+              "end": 13,
+              "surface_form": "暑かった",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 7
+            "start": 7,
+            "end": 9
           },
           "register": "polite"
         },
@@ -22220,7 +22793,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]より今日[きょう]は暑[あつ]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "犬は猫より大きいです。",
@@ -22253,7 +22832,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "猫[ねこ]より犬[いぬ]は大[おお]きいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "タクシーはバスより速いです。",
@@ -22286,7 +22871,13 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "バスよりタクシーは速[はや]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "ひらがなより漢字は難しいです。",
@@ -22319,7 +22910,13 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "漢[かん]字[じ]はひらがなより難[むずか]しいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "肉は魚より好きです。",
@@ -22396,6 +22993,88 @@
             "start": 3,
             "end": 5
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]はあの店[みせ]より安[やす]いです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "コーヒーよりお茶が好きですか。",
+          "english": "Do you like tea more than coffee?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "koohii",
+            "ocha",
+            "suki"
+          ],
+          "furigana": "コーヒーよりお茶[ちゃ]が好[す]きですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koohii",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "母は私より早く起きます。",
+          "english": "My mother gets up earlier than me.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "haha",
+            "watashi",
+            "hayai-early",
+            "okiru"
+          ],
+          "furigana": "母[はは]は私[わたし]より早[はや]く起[お]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 5,
+              "end": 7,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "起きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
           "register": "polite"
         }
       ],
@@ -22405,6 +23084,28 @@
         "inu"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "more than",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "than",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "compared to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "rather than",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "タクシーはバス＿＿＿速いです。",
