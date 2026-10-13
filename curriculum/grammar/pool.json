@@ -6952,5 +6952,597 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "sugiru": {
+    "accepted_meanings": [
+      "too much",
+      "too",
+      "excessively",
+      "overly",
+      "over-"
+    ],
+    "sentences": [
+      {
+        "japanese": "食べすぎました。",
+        "english": "I ate too much.",
+        "vocabulary_slugs": [
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この服は高すぎます。",
+        "english": "These clothes are too expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "昨日は飲みすぎた。",
+        "english": "I drank too much yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "この部屋は静かすぎる。",
+        "english": "This room is too quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "このコーヒーは熱すぎます。",
+        "english": "This coffee is too hot.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "atsui-obj"
+        ]
+      },
+      {
+        "japanese": "彼は働きすぎます。",
+        "english": "He works too much.",
+        "vocabulary_slugs": [
+          "kare",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "この問題は難しすぎますか。",
+        "english": "Is this problem too difficult?",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "今日は暑すぎますね。",
+        "english": "It's too hot today, isn't it?",
+        "vocabulary_slugs": [
+          "kyou",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "このかばんは重すぎました。",
+        "english": "This bag was too heavy.",
+        "vocabulary_slugs": [
+          "kono",
+          "kaban",
+          "omoi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hou-ga-ii": {
+    "accepted_meanings": [
+      "had better",
+      "should",
+      "it's better to",
+      "you'd better"
+    ],
+    "sentences": [
+      {
+        "japanese": "早く寝たほうがいいです。",
+        "english": "You had better sleep early.",
+        "vocabulary_slugs": [
+          "hayai-early",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "薬を飲んだほうがいい。",
+        "english": "You should take medicine.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "行かないほうがいいです。",
+        "english": "You had better not go.",
+        "vocabulary_slugs": [
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "病院に行ったほうがいいですよ。",
+        "english": "You should go to the hospital.",
+        "vocabulary_slugs": [
+          "byouin",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "病院へ行ったほうがいいですよ。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "そのお酒を飲まないほうがいいです。",
+        "english": "You'd better not drink that alcohol.",
+        "vocabulary_slugs": [
+          "sono",
+          "osake",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "今日は泳がないほうがいいですよ。",
+        "english": "You'd better not swim today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "oyogu"
+        ]
+      },
+      {
+        "japanese": "傘を持ったほうがいいですよ。",
+        "english": "You'd better take an umbrella.",
+        "vocabulary_slugs": [
+          "kasa",
+          "motsu"
+        ]
+      },
+      {
+        "japanese": "先生に聞いたほうがいいですか。",
+        "english": "Should I ask the teacher?",
+        "vocabulary_slugs": [
+          "sensei",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "少し休んだほうがいいです。",
+        "english": "You should rest a little.",
+        "vocabulary_slugs": [
+          "sukoshi",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "deshou": {
+    "accepted_meanings": [
+      "probably",
+      "right?",
+      "I suppose",
+      "isn't it?"
+    ],
+    "sentences": [
+      {
+        "japanese": "明日は暑いでしょう。",
+        "english": "It will probably be hot tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "彼は学生でしょう。",
+        "english": "He is probably a student.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "大丈夫でしょうか。",
+        "english": "Will it be all right?",
+        "vocabulary_slugs": [
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "明日、彼は来るでしょう。",
+        "english": "He will probably come tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kare",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼は明日来るでしょう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "そのカメラは高いでしょう。",
+        "english": "That camera is probably expensive.",
+        "vocabulary_slugs": [
+          "sono",
+          "kamera",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "昨日の映画は面白かったでしょう？",
+        "english": "Yesterday's movie was interesting, right?",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "明日は雨でしょうか。",
+        "english": "Will it rain tomorrow, I wonder?",
+        "vocabulary_slugs": [
+          "ashita",
+          "ame-v"
+        ]
+      },
+      {
+        "japanese": "この部屋は静かでしょう。",
+        "english": "This room is probably quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "今日は寒いでしょう？",
+        "english": "It's cold today, isn't it?",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "彼女は先生だろう。",
+        "english": "She's probably a teacher.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "sensei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mada-teinai": {
+    "accepted_meanings": [
+      "not yet",
+      "have not yet",
+      "still haven't",
+      "haven't done yet"
+    ],
+    "sentences": [
+      {
+        "japanese": "まだ食べていません。",
+        "english": "I haven't eaten yet.",
+        "vocabulary_slugs": [
+          "mada",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "宿題はまだ終わっていません。",
+        "english": "The homework isn't finished yet.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "mada",
+          "owaru"
+        ]
+      },
+      {
+        "japanese": "彼はまだ来ていません。",
+        "english": "He hasn't come yet.",
+        "vocabulary_slugs": [
+          "kare",
+          "mada",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "友達はまだ起きていない。",
+        "english": "My friend hasn't woken up yet.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "mada",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "母はまだ帰っていません。",
+        "english": "My mother hasn't come home yet.",
+        "vocabulary_slugs": [
+          "haha",
+          "mada",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "その映画はまだ見ていません。",
+        "english": "I haven't seen that movie yet.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "mada",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "まだ切符を買っていませんか。",
+        "english": "Haven't you bought the ticket yet?",
+        "vocabulary_slugs": [
+          "mada",
+          "kippu",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "切符をまだ買っていませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "授業はまだ始まっていない。",
+        "english": "Class hasn't started yet.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "mada",
+          "hajimaru"
+        ]
+      },
+      {
+        "japanese": "手紙をまだ出していません。",
+        "english": "I haven't sent the letter yet.",
+        "vocabulary_slugs": [
+          "tegami",
+          "mada",
+          "dasu"
+        ],
+        "alternates": [
+          {
+            "japanese": "まだ手紙を出していません。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mou-past": {
+    "accepted_meanings": [
+      "already",
+      "already did",
+      "have already"
+    ],
+    "sentences": [
+      {
+        "japanese": "もう食べました。",
+        "english": "I already ate.",
+        "vocabulary_slugs": [
+          "mou",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "電車はもう出ました。",
+        "english": "The train already left.",
+        "vocabulary_slugs": [
+          "densha",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "もう切符を買いました。",
+        "english": "I already bought the ticket.",
+        "vocabulary_slugs": [
+          "kippu",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "切符をもう買いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "もう映画が終わりました。",
+        "english": "The movie has already ended.",
+        "vocabulary_slugs": [
+          "eiga",
+          "owaru"
+        ]
+      },
+      {
+        "japanese": "彼はもう帰りました。",
+        "english": "He already went home.",
+        "vocabulary_slugs": [
+          "kare",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "宿題はもうしましたか。",
+        "english": "Have you already done the homework?",
+        "vocabulary_slugs": [
+          "shukudai",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "薬はもう飲みましたか。",
+        "english": "Have you already taken the medicine?",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "もう手紙を書きました。",
+        "english": "I already wrote the letter.",
+        "vocabulary_slugs": [
+          "tegami",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "手紙をもう書きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "赤ちゃんはもう寝ました。",
+        "english": "The baby has already gone to sleep.",
+        "vocabulary_slugs": [
+          "akachan",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dake": {
+    "accepted_meanings": [
+      "only",
+      "just",
+      "merely"
+    ],
+    "sentences": [
+      {
+        "japanese": "水だけ飲みます。",
+        "english": "I'll drink only water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "水だけを飲みます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "見るだけです。",
+        "english": "I'm just looking.",
+        "vocabulary_slugs": [
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼だけに話します。",
+        "english": "I will speak only to him.",
+        "vocabulary_slugs": [
+          "kare",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "野菜だけ食べました。",
+        "english": "I ate only vegetables.",
+        "vocabulary_slugs": [
+          "yasai",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "野菜だけを食べました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日だけ休みます。",
+        "english": "I'm taking just today off.",
+        "vocabulary_slugs": [
+          "kyou",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "コーヒーだけですか。",
+        "english": "Just coffee?",
+        "vocabulary_slugs": [
+          "koohii"
+        ]
+      },
+      {
+        "japanese": "週末だけ働きます。",
+        "english": "I work only on weekends.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "名前だけ書きましたか。",
+        "english": "Did you write only your name?",
+        "vocabulary_slugs": [
+          "namae",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "母だけ知っています。",
+        "english": "Only my mother knows.",
+        "vocabulary_slugs": [
+          "haha",
+          "shiru",
+          "iru-exist"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
