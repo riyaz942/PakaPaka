@@ -11518,5 +11518,662 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "souni-naru": {
+    "accepted_meanings": [
+      "almost",
+      "nearly",
+      "on the verge of",
+      "close to"
+    ],
+    "sentences": [
+      {
+        "japanese": "電車に遅れそうになりました。",
+        "english": "I almost missed the train.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "泣きそうになりました。",
+        "english": "I almost cried.",
+        "vocabulary_slugs": [
+          "naku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "授業で寝そうになりました。",
+        "english": "In class, I nearly fell asleep.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "neru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "約束を忘れそうになりました。",
+        "english": "I nearly forgot the appointment.",
+        "vocabulary_slugs": [
+          "yakusoku",
+          "wasureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "階段で落ちそうになりました。",
+        "english": "I nearly fell on the stairs.",
+        "vocabulary_slugs": [
+          "kaidan",
+          "ochiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "財布を無くしそうになりました。",
+        "english": "I nearly lost my wallet.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nakusu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "重い荷物は、いつも落としそうになる。",
+        "english": "I always nearly drop heavy luggage.",
+        "vocabulary_slugs": [
+          "omoi",
+          "nimotsu",
+          "itsumo",
+          "otosu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたも、その映画で泣きそうになりましたか。",
+        "english": "Did you almost cry at that movie too?",
+        "vocabulary_slugs": [
+          "anata",
+          "sono",
+          "eiga",
+          "naku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "強い風で、傘が壊れそうになりました。",
+        "english": "The strong wind nearly broke my umbrella.",
+        "vocabulary_slugs": [
+          "tsuyoi",
+          "kaze-wind",
+          "kasa",
+          "kowareru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsumori": {
+    "accepted_meanings": [
+      "intend to",
+      "plan to",
+      "going to",
+      "mean to",
+      "intention"
+    ],
+    "sentences": [
+      {
+        "japanese": "来年、日本へ行くつもりです。",
+        "english": "I intend to go to Japan next year.",
+        "vocabulary_slugs": [
+          "rainen",
+          "nihon",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は勉強するつもりです。",
+        "english": "I intend to study today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "benkyou-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼と結婚するつもりです。",
+        "english": "I intend to marry him.",
+        "vocabulary_slugs": [
+          "kare",
+          "kekkon-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末、映画を見るつもりです。",
+        "english": "This weekend, I'm planning to watch a movie.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、図書館で勉強するつもりだ。",
+        "english": "Tomorrow, I'm planning to study at the library.",
+        "vocabulary_slugs": [
+          "ashita",
+          "toshokan",
+          "benkyou-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "もう甘い物は食べないつもりです。",
+        "english": "I intend not to eat sweets anymore.",
+        "vocabulary_slugs": [
+          "mou",
+          "amai",
+          "mono",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼はもう帰るつもりだ。",
+        "english": "He's already planning to go home.",
+        "vocabulary_slugs": [
+          "kare",
+          "mou",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私は来月引っ越すつもりです。",
+        "english": "I'm planning to move next month.",
+        "vocabulary_slugs": [
+          "watashi",
+          "raigetsu",
+          "hikkosu"
+        ],
+        "alternates": [
+          {
+            "japanese": "来月引っ越すつもりです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "明日、宿題をするつもりだ。",
+        "english": "I'm planning to do my homework tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shukudai",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末は何をするつもりですか。",
+        "english": "What are you planning to do this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "nani",
+          "suru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youni-suru": {
+    "accepted_meanings": [
+      "try to",
+      "make a point of",
+      "make a habit of",
+      "make sure to",
+      "make an effort to"
+    ],
+    "sentences": [
+      {
+        "japanese": "毎朝、野菜を食べるようにしている。",
+        "english": "I make a point of eating vegetables every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "yasai",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "甘い物を食べないようにしている。",
+        "english": "I try not to eat sweets.",
+        "vocabulary_slugs": [
+          "amai",
+          "mono",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "野菜をもっと食べるようにしている。",
+        "english": "I make a point of eating more vegetables.",
+        "vocabulary_slugs": [
+          "yasai",
+          "motto",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎日散歩するようにしている。",
+        "english": "I make a point of taking a walk every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "sanpo-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎晩早く寝るようにする。",
+        "english": "I'm going to make a habit of going to bed early.",
+        "vocabulary_slugs": [
+          "maiban",
+          "hayai-early",
+          "neru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "夜はコーヒーを飲まないようにしている。",
+        "english": "I try not to drink coffee at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "知らない言葉は、ノートに書くようにしている。",
+        "english": "I make a point of writing words I don't know in a notebook.",
+        "vocabulary_slugs": [
+          "shiru",
+          "kotoba",
+          "nooto",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "会社では階段を使うようにしている。",
+        "english": "At the office, I make a point of using the stairs.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "kaidan",
+          "tsukau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家族に毎週電話するようにしている。",
+        "english": "I make sure to phone my family every week.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "maishuu",
+          "denwa-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎週家族に電話するようにしている。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koto-ni-suru": {
+    "accepted_meanings": [
+      "decide to",
+      "decided to",
+      "choose to",
+      "make up one's mind to"
+    ],
+    "sentences": [
+      {
+        "japanese": "今年は日本語を習うことにしました。",
+        "english": "I've decided to learn Japanese this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "nihongo",
+          "naru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "甘い物を食べないことにする。",
+        "english": "I've decided not to eat sweets.",
+        "vocabulary_slugs": [
+          "amai",
+          "mono",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末はレストランで食事をすることにしました。",
+        "english": "I've decided to have a meal at a restaurant this weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "resutoran",
+          "shokuji",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お酒を飲まないことにしました。",
+        "english": "I've decided not to drink alcohol.",
+        "vocabulary_slugs": [
+          "osake",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日から毎朝早く起きることにする。",
+        "english": "I've decided to start getting up early every morning from tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "maiasa",
+          "hayai-early",
+          "okiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日はタクシーで帰ることにしました。",
+        "english": "Today I decided to go home by taxi.",
+        "vocabulary_slugs": [
+          "kyou",
+          "takushii",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "古いパソコンを売ることにしました。",
+        "english": "I decided to sell my old computer.",
+        "vocabulary_slugs": [
+          "furui-adj",
+          "pasokon",
+          "uru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どの店で買うことにしましたか。",
+        "english": "Which shop did you decide to buy it at?",
+        "vocabulary_slugs": [
+          "dono",
+          "mise",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎朝、駅まで歩くことにしました。",
+        "english": "I decided to walk to the station every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "eki",
+          "aruku"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koto-ni-naru": {
+    "accepted_meanings": [
+      "it has been decided",
+      "it was decided",
+      "turns out that",
+      "it is arranged that",
+      "end up"
+    ],
+    "sentences": [
+      {
+        "japanese": "来月、外国に引っ越すことになりました。",
+        "english": "It's been decided that I'll move abroad next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "gaikoku",
+          "hikkosu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "来月、新しい会社で働くことになりました。",
+        "english": "Next month, it's been decided that I'll work at a new company.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "atarashii-adj",
+          "kaisha",
+          "hataraku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "来年から宿題が増えることになる。",
+        "english": "Starting next year, it turns out homework increases.",
+        "vocabulary_slugs": [
+          "rainen",
+          "shukudai",
+          "fueru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日は会社に行かないことになりました。",
+        "english": "It's been decided that I won't go to the company tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎週月曜日に会議があることになっている。",
+        "english": "There's a standing arrangement that there's a meeting every Monday.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "getsuyoubi",
+          "kaigi",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私たち、結婚することになりました。",
+        "english": "We're getting married.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kekkon-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "大学で日本語を勉強することになりました。",
+        "english": "It was decided that I'd study Japanese at university.",
+        "vocabulary_slugs": [
+          "daigaku",
+          "nihongo",
+          "benkyou-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私が晩ご飯を作ることになりました。",
+        "english": "It was decided that I'd make dinner.",
+        "vocabulary_slugs": [
+          "watashi",
+          "bangohan",
+          "tsukuru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "誰が会議で説明することになりましたか。",
+        "english": "Who ended up explaining at the meeting?",
+        "vocabulary_slugs": [
+          "dare",
+          "kaigi",
+          "setsumei-suru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mono": {
+    "accepted_meanings": [
+      "used to",
+      "because",
+      "after all",
+      "would (habitually)"
+    ],
+    "sentences": [
+      {
+        "japanese": "毎晩星を見たものだ。",
+        "english": "I used to watch the stars every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "hoshi",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "弟とよく公園で遊んだものだ。",
+        "english": "My little brother and I used to play in the park a lot.",
+        "vocabulary_slugs": [
+          "otouto",
+          "yoku",
+          "kouen",
+          "asobu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母はよく歌を歌ったものだ。",
+        "english": "My mother used to sing songs often.",
+        "vocabulary_slugs": [
+          "haha",
+          "yoku",
+          "uta",
+          "utau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "夏はよく川で泳いだものです。",
+        "english": "In summer, I used to swim in the river a lot.",
+        "vocabulary_slugs": [
+          "natsu",
+          "yoku",
+          "kawa-v",
+          "oyogu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "祖母はよくお菓子を作ったものだ。",
+        "english": "My grandmother used to make sweets a lot.",
+        "vocabulary_slugs": [
+          "sobo",
+          "yoku",
+          "okashi",
+          "tsukuru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "大学ではよく図書館で寝たものです。",
+        "english": "At university, I often used to fall asleep in the library.",
+        "vocabulary_slugs": [
+          "daigaku",
+          "yoku",
+          "toshokan",
+          "neru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は行かない。雨が降っているもの。",
+        "english": "I'm not going today. It's raining, after all!",
+        "vocabulary_slugs": [
+          "kyou",
+          "iku-v",
+          "ame-v",
+          "furu-rain",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ごめんなさい。知らなかったもん。",
+        "english": "Sorry! I didn't know, okay?",
+        "vocabulary_slugs": [
+          "gomennasai",
+          "shiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "夜は一人で歩かない。暗いもん。",
+        "english": "I don't walk alone at night. It's dark!",
+        "vocabulary_slugs": [
+          "yoru",
+          "hitori-de",
+          "aruku",
+          "kurai"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

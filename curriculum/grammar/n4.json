@@ -11579,21 +11579,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "転びそうになりました。",
-          "english": "I almost fell over.",
-          "sort_order": 0,
-          "vocabulary_slugs": [],
-          "furigana": "転[ころ]びそうになりました。",
-          "grammar_span": {
-            "start": 2,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "電車に遅れそうになりました。",
           "english": "I almost missed the train.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "densha",
             "okureru"
@@ -11622,7 +11610,7 @@
         {
           "japanese": "泣きそうになりました。",
           "english": "I almost cried.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "naku"
           ],
@@ -11645,9 +11633,10 @@
         {
           "japanese": "授業で寝そうになりました。",
           "english": "In class, I nearly fell asleep.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "jugyou"
+            "jugyou",
+            "neru"
           ],
           "furigana": "授[じゅ]業[ぎょう]で寝[ね]そうになりました。",
           "word_spans": [
@@ -11655,6 +11644,13 @@
               "vocabulary_slug": "jugyou",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 3,
+              "end": 4,
+              "surface_form": "寝",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -11666,9 +11662,10 @@
         {
           "japanese": "約束を忘れそうになりました。",
           "english": "I nearly forgot the appointment.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "yakusoku"
+            "yakusoku",
+            "wasureru"
           ],
           "furigana": "約[やく]束[そく]を忘[わす]れそうになりました。",
           "word_spans": [
@@ -11676,6 +11673,13 @@
               "vocabulary_slug": "yakusoku",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "忘れ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -11687,9 +11691,10 @@
         {
           "japanese": "階段で落ちそうになりました。",
           "english": "I nearly fell on the stairs.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "kaidan"
+            "kaidan",
+            "ochiru"
           ],
           "furigana": "階[かい]段[だん]で落[お]ちそうになりました。",
           "word_spans": [
@@ -11697,6 +11702,13 @@
               "vocabulary_slug": "kaidan",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "ochiru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "落ち",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -11706,37 +11718,154 @@
           "register": "polite"
         },
         {
-          "japanese": "悲しい映画を見て、泣きそうになりました。",
-          "english": "I watched a sad movie and nearly cried.",
-          "sort_order": 6,
+          "japanese": "財布を無くしそうになりました。",
+          "english": "I nearly lost my wallet.",
+          "sort_order": 5,
           "vocabulary_slugs": [
-            "kanashii",
-            "eiga",
-            "miru-v"
+            "saifu",
+            "nakusu"
           ],
-          "furigana": "悲[かな]しい映[えい]画[が]を見[み]て、泣[な]きそうになりました。",
+          "furigana": "財[さい]布[ふ]を無[な]くしそうになりました。",
           "word_spans": [
             {
-              "vocabulary_slug": "kanashii",
+              "vocabulary_slug": "saifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nakusu",
+              "start": 3,
+              "end": 6,
+              "surface_form": "無くし",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "重い荷物は、いつも落としそうになる。",
+          "english": "I always nearly drop heavy luggage.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "omoi",
+            "nimotsu",
+            "itsumo",
+            "otosu"
+          ],
+          "furigana": "重[おも]い荷[に]物[もつ]は、いつも落[お]としそうになる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "omoi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "otosu",
+              "start": 9,
+              "end": 12,
+              "surface_form": "落とし",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 17
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "あなたも、その映画で泣きそうになりましたか。",
+          "english": "Did you almost cry at that movie too?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "anata",
+            "sono",
+            "eiga",
+            "naku"
+          ],
+          "furigana": "あなたも、その映[えい]画[が]で泣[な]きそうになりましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "anata",
               "start": 0,
               "end": 3
             },
             {
-              "vocabulary_slug": "eiga",
-              "start": 3,
-              "end": 5
+              "vocabulary_slug": "sono",
+              "start": 5,
+              "end": 7
             },
             {
-              "vocabulary_slug": "miru-v",
-              "start": 6,
-              "end": 8,
-              "surface_form": "見て",
-              "inflection": "te"
+              "vocabulary_slug": "eiga",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "naku",
+              "start": 10,
+              "end": 12,
+              "surface_form": "泣き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 19
+            "start": 12,
+            "end": 20
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "強い風で、傘が壊れそうになりました。",
+          "english": "The strong wind nearly broke my umbrella.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "tsuyoi",
+            "kaze-wind",
+            "kasa",
+            "kowareru"
+          ],
+          "furigana": "強[つよ]い風[かぜ]で、傘[かさ]が壊[こわ]れそうになりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tsuyoi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaze-wind",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kowareru",
+              "start": 7,
+              "end": 9,
+              "surface_form": "壊れ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 17
           },
           "register": "polite"
         }
@@ -11747,6 +11876,28 @@
         "naku"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "almost",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nearly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the verge of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "close to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "授業で寝＿＿＿。",
@@ -11936,7 +12087,7 @@
           ],
           "grammar_span": {
             "start": 8,
-            "end": 11
+            "end": 13
           },
           "register": "polite"
         },
@@ -11969,40 +12120,48 @@
           ],
           "grammar_span": {
             "start": 11,
-            "end": 14
+            "end": 15
           },
           "register": "plain"
         },
         {
-          "japanese": "来年、日本語を勉強するつもりです。",
-          "english": "Next year, I'm planning to study Japanese.",
+          "japanese": "もう甘い物は食べないつもりです。",
+          "english": "I intend not to eat sweets anymore.",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "rainen",
-            "nihongo",
-            "benkyou-suru"
+            "mou",
+            "amai",
+            "mono",
+            "taberu"
           ],
-          "furigana": "来[らい]年[ねん]、日本[にほん]語[ご]を勉[べん]強[きょう]するつもりです。",
+          "furigana": "もう甘[あま]い物[もの]は食[た]べないつもりです。",
           "word_spans": [
             {
-              "vocabulary_slug": "rainen",
+              "vocabulary_slug": "mou",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "nihongo",
-              "start": 3,
-              "end": 6
+              "vocabulary_slug": "amai",
+              "start": 2,
+              "end": 4
             },
             {
-              "vocabulary_slug": "benkyou-suru",
-              "start": 7,
-              "end": 11
+              "vocabulary_slug": "mono",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 10,
+              "surface_form": "食べない",
+              "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 14
+            "start": 10,
+            "end": 15
           },
           "register": "polite"
         },
@@ -12035,7 +12194,7 @@
           ],
           "grammar_span": {
             "start": 6,
-            "end": 9
+            "end": 10
           },
           "register": "plain"
         },
@@ -12068,9 +12227,15 @@
           ],
           "grammar_span": {
             "start": 8,
-            "end": 11
+            "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "来[らい]月[げつ]引[ひ]っ越[こ]すつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日、宿題をするつもりだ。",
@@ -12101,9 +12266,42 @@
           ],
           "grammar_span": {
             "start": 8,
-            "end": 11
+            "end": 12
           },
           "register": "plain"
+        },
+        {
+          "japanese": "週末は何をするつもりですか。",
+          "english": "What are you planning to do this weekend?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "nani",
+            "suru"
+          ],
+          "furigana": "週[しゅう]末[まつ]は何[なに]をするつもりですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 12
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -12112,6 +12310,33 @@
         "kyou"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "intend to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "plan to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "going to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "mean to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "intention",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "週末、映画を見る＿＿＿です。",
@@ -12194,80 +12419,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "毎日運動するようにしています。",
-          "english": "I try to exercise every day.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "mainichi",
-            "undou-suru"
-          ],
-          "furigana": "毎[まい]日[にち]運[うん]動[どう]するようにしています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mainichi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "undou-suru",
-              "start": 2,
-              "end": 6
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "野菜を食べるようにしています。",
-          "english": "I make it a habit to eat vegetables.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "yasai",
-            "taberu"
-          ],
-          "furigana": "野[や]菜[さい]を食[た]べるようにしています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "yasai",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "taberu",
-              "start": 3,
-              "end": 6
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "早く寝るようにしましょう。",
-          "english": "Let's make an effort to sleep early.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "hayai-early",
-            "neru"
-          ],
-          "furigana": "早[はや]く寝[ね]るようにしましょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hayai-early",
-              "start": 0,
-              "end": 2,
-              "surface_form": "早く",
-              "inflection": "stem"
-            },
-            {
-              "vocabulary_slug": "neru",
-              "start": 2,
-              "end": 4
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "毎朝、野菜を食べるようにしている。",
           "english": "I make a point of eating vegetables every morning.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "maiasa",
             "yasai",
@@ -12300,7 +12454,7 @@
         {
           "japanese": "甘い物を食べないようにしている。",
           "english": "I try not to eat sweets.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "amai",
             "mono",
@@ -12333,36 +12487,9 @@
           "register": "plain"
         },
         {
-          "japanese": "毎晩早く寝るようにする。",
-          "english": "I'm going to make a habit of going to bed early.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "maiban",
-            "neru"
-          ],
-          "furigana": "毎[まい]晩[ばん]早[はや]く寝[ね]るようにする。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "maiban",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "neru",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 11
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "野菜をもっと食べるようにしている。",
           "english": "I make a point of eating more vegetables.",
-          "sort_order": 6,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "yasai",
             "motto",
@@ -12395,7 +12522,7 @@
         {
           "japanese": "毎日散歩するようにしている。",
           "english": "I make a point of taking a walk every day.",
-          "sort_order": 7,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "mainichi",
             "sanpo-suru"
@@ -12418,6 +12545,189 @@
             "end": 13
           },
           "register": "plain"
+        },
+        {
+          "japanese": "毎晩早く寝るようにする。",
+          "english": "I'm going to make a habit of going to bed early.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "maiban",
+            "hayai-early",
+            "neru"
+          ],
+          "furigana": "毎[まい]晩[ばん]早[はや]く寝[ね]るようにする。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "maiban",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 2,
+              "end": 4,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "夜はコーヒーを飲まないようにしている。",
+          "english": "I try not to drink coffee at night.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "yoru",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "夜[よる]はコーヒーを飲[の]まないようにしている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yoru",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "飲まない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 18
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "知らない言葉は、ノートに書くようにしている。",
+          "english": "I make a point of writing words I don't know in a notebook.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "shiru",
+            "kotoba",
+            "nooto",
+            "kaku"
+          ],
+          "furigana": "知[し]らない言[こと]葉[ば]は、ノートに書[か]くようにしている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "知らない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "kotoba",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nooto",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 14,
+            "end": 21
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "会社では階段を使うようにしている。",
+          "english": "At the office, I make a point of using the stairs.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kaisha",
+            "kaidan",
+            "tsukau"
+          ],
+          "furigana": "会[かい]社[しゃ]では階[かい]段[だん]を使[つか]うようにしている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaidan",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 16
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "家族に毎週電話するようにしている。",
+          "english": "I make sure to phone my family every week.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kazoku",
+            "maishuu",
+            "denwa-suru"
+          ],
+          "furigana": "家[か]族[ぞく]に毎[まい]週[しゅう]電[でん]話[わ]するようにしている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "maishuu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "denwa-suru",
+              "start": 5,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 16
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]週[しゅう]家[か]族[ぞく]に電[でん]話[わ]するようにしている。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -12426,6 +12736,33 @@
         "hayai-early"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "try to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make a point of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make a habit of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make sure to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make an effort to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "毎朝、野菜を食べる＿＿＿。",
@@ -12500,98 +12837,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "来年、留学することにしました。",
-          "english": "I decided to study abroad next year.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "rainen"
-          ],
-          "furigana": "来[らい]年[ねん]、留[りゅう]学[がく]することにしました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "rainen",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 14
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "タバコをやめることにしました。",
-          "english": "I decided to quit smoking.",
-          "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "タバコをやめることにしました。",
-          "grammar_span": {
-            "start": 7,
-            "end": 14
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "毎朝散歩することにしています。",
-          "english": "I've made it a rule to walk every morning.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "maiasa",
-            "sanpo-suru"
-          ],
-          "furigana": "毎[まい]朝[あさ]散[さん]歩[ぽ]することにしています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "maiasa",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "sanpo-suru",
-              "start": 2,
-              "end": 6
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "明日から毎朝早く起きることにする。",
-          "english": "I've decided to start getting up early every morning from tomorrow.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "ashita",
-            "maiasa",
-            "okiru"
-          ],
-          "furigana": "明日[あした]から毎[まい]朝[あさ]早[はや]く起[お]きることにする。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "maiasa",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "okiru",
-              "start": 8,
-              "end": 11
-            }
-          ],
-          "grammar_span": {
-            "start": 11,
-            "end": 16
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "今年は日本語を習うことにしました。",
           "english": "I've decided to learn Japanese this year.",
-          "sort_order": 4,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kotoshi",
             "nihongo",
@@ -12624,7 +12872,7 @@
         {
           "japanese": "甘い物を食べないことにする。",
           "english": "I've decided not to eat sweets.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "amai",
             "mono",
@@ -12659,7 +12907,7 @@
         {
           "japanese": "週末はレストランで食事をすることにしました。",
           "english": "I've decided to have a meal at a restaurant this weekend.",
-          "sort_order": 6,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "shuumatsu",
             "resutoran",
@@ -12705,7 +12953,7 @@
         {
           "japanese": "お酒を飲まないことにしました。",
           "english": "I've decided not to drink alcohol.",
-          "sort_order": 7,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "osake",
             "nomu-v"
@@ -12730,6 +12978,179 @@
             "end": 14
           },
           "register": "polite"
+        },
+        {
+          "japanese": "明日から毎朝早く起きることにする。",
+          "english": "I've decided to start getting up early every morning from tomorrow.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "ashita",
+            "maiasa",
+            "hayai-early",
+            "okiru"
+          ],
+          "furigana": "明日[あした]から毎[まい]朝[あさ]早[はや]く起[お]きることにする。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 6,
+              "end": 8,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 16
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "今日はタクシーで帰ることにしました。",
+          "english": "Today I decided to go home by taxi.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kyou",
+            "takushii",
+            "kaeru-v"
+          ],
+          "furigana": "今日[きょう]はタクシーで帰[かえ]ることにしました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "takushii",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 17
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "古いパソコンを売ることにしました。",
+          "english": "I decided to sell my old computer.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "furui-adj",
+            "pasokon",
+            "uru"
+          ],
+          "furigana": "古[ふる]いパソコンを売[う]ることにしました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "furui-adj",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "pasokon",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "uru",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 16
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "どの店で買うことにしましたか。",
+          "english": "Which shop did you decide to buy it at?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dono",
+            "mise",
+            "kau-v"
+          ],
+          "furigana": "どの店[みせ]で買[か]うことにしましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "毎朝、駅まで歩くことにしました。",
+          "english": "I decided to walk to the station every morning.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "maiasa",
+            "eki",
+            "aruku"
+          ],
+          "furigana": "毎[まい]朝[あさ]、駅[えき]まで歩[ある]くことにしました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 15
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -12738,6 +13159,28 @@
         "sanpo-suru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "decide to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "decided to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "choose to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make up one's mind to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "明日から毎朝早く起きる＿＿＿。",
@@ -12814,19 +13257,30 @@
       ],
       "example_sentences": [
         {
-          "japanese": "来月、大阪に引っ越すことになりました。",
-          "english": "It has been decided I'll move to Osaka next month.",
+          "japanese": "来月、外国に引っ越すことになりました。",
+          "english": "It's been decided that I'll move abroad next month.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "raigetsu",
-            "hikkoshi"
+            "gaikoku",
+            "hikkosu"
           ],
-          "furigana": "来[らい]月[げつ]、大[おお]阪[さか]に引[ひ]っ越[こ]すことになりました。",
+          "furigana": "来[らい]月[げつ]、外[がい]国[こく]に引[ひ]っ越[こ]すことになりました。",
           "word_spans": [
             {
               "vocabulary_slug": "raigetsu",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "gaikoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hikkosu",
+              "start": 6,
+              "end": 10
             }
           ],
           "grammar_span": {
@@ -12836,47 +13290,9 @@
           "register": "polite"
         },
         {
-          "japanese": "会議は中止することになりました。",
-          "english": "It was decided the meeting would be cancelled.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kaigi"
-          ],
-          "furigana": "会[かい]議[ぎ]は中[ちゅう]止[し]することになりました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kaigi",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 15
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "毎週レポートを出すことになっています。",
-          "english": "It's arranged that we submit a report every week.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "maishuu"
-          ],
-          "furigana": "毎[まい]週[しゅう]レポートを出[だ]すことになっています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "maishuu",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "来月、新しい会社で働くことになりました。",
           "english": "Next month, it's been decided that I'll work at a new company.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "raigetsu",
             "atarashii-adj",
@@ -12915,7 +13331,7 @@
         {
           "japanese": "来年から宿題が増えることになる。",
           "english": "Starting next year, it turns out homework increases.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "rainen",
             "shukudai",
@@ -12948,7 +13364,7 @@
         {
           "japanese": "明日は会社に行かないことになりました。",
           "english": "It's been decided that I won't go to the company tomorrow.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "ashita",
             "kaisha",
@@ -12983,7 +13399,7 @@
         {
           "japanese": "毎週月曜日に会議があることになっている。",
           "english": "There's a standing arrangement that there's a meeting every Monday.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "maishuu",
             "getsuyoubi",
@@ -13022,7 +13438,7 @@
         {
           "japanese": "私たち、結婚することになりました。",
           "english": "We're getting married.",
-          "sort_order": 7,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "watashitachi",
             "kekkon-suru"
@@ -13049,7 +13465,7 @@
         {
           "japanese": "大学で日本語を勉強することになりました。",
           "english": "It was decided that I'd study Japanese at university.",
-          "sort_order": 8,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "daigaku",
             "nihongo",
@@ -13078,6 +13494,72 @@
             "end": 19
           },
           "register": "polite"
+        },
+        {
+          "japanese": "私が晩ご飯を作ることになりました。",
+          "english": "It was decided that I'd make dinner.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "watashi",
+            "bangohan",
+            "tsukuru"
+          ],
+          "furigana": "私[わたし]が晩[ばん]ご飯[はん]を作[つく]ることになりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 16
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "誰が会議で説明することになりましたか。",
+          "english": "Who ended up explaining at the meeting?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "dare",
+            "kaigi",
+            "setsumei-suru"
+          ],
+          "furigana": "誰[だれ]が会[かい]議[ぎ]で説[せつ]明[めい]することになりましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "setsumei-suru",
+              "start": 5,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 17
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -13086,6 +13568,33 @@
         "maishuu"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "it has been decided",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "it was decided",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "turns out that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "it is arranged that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "end up",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "来月、新しい会社で働く＿＿＿。",
@@ -13168,50 +13677,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "子供の頃、よく遊んだものです。",
-          "english": "As a child, I used to play a lot.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "asobu"
-          ],
-          "furigana": "子[こ]供[ども]の頃[ころ]、よく遊[あそ]んだものです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "asobu",
-              "start": 7,
-              "end": 10,
-              "surface_form": "遊んだ",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 10,
-            "end": 12
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "もう歩けない。疲れたもの。",
-          "english": "I can't walk any more. I'm tired, okay?",
-          "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "もう歩[ある]けない。疲[つか]れたもの。",
-          "grammar_span": {
-            "start": 10,
-            "end": 12
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "毎晩星を見たものだ。",
           "english": "I used to watch the stars every night.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "maiban",
             "hoshi",
@@ -13246,7 +13714,7 @@
         {
           "japanese": "弟とよく公園で遊んだものだ。",
           "english": "My little brother and I used to play in the park a lot.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "otouto",
             "yoku",
@@ -13285,55 +13753,9 @@
           "register": "plain"
         },
         {
-          "japanese": "だって、忙しかったもの。",
-          "english": "Well, I was busy, okay?",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "isogashii"
-          ],
-          "furigana": "だって、忙[いそが]しかったもの。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 4,
-              "end": 9,
-              "surface_form": "忙しかった",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 11
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "だって、忙しかったもん。",
-          "english": "Well, I was busy, okay?",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "isogashii"
-          ],
-          "furigana": "だって、忙[いそが]しかったもん。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 4,
-              "end": 9,
-              "surface_form": "忙しかった",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 11
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "母はよく歌を歌ったものだ。",
           "english": "My mother used to sing songs often.",
-          "sort_order": 6,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "haha",
             "yoku",
@@ -13370,6 +13792,248 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "夏はよく川で泳いだものです。",
+          "english": "In summer, I used to swim in the river a lot.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "natsu",
+            "yoku",
+            "kawa-v",
+            "oyogu"
+          ],
+          "furigana": "夏[なつ]はよく川[かわ]で泳[およ]いだものです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "natsu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kawa-v",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "oyogu",
+              "start": 6,
+              "end": 9,
+              "surface_form": "泳いだ",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "祖母はよくお菓子を作ったものだ。",
+          "english": "My grandmother used to make sweets a lot.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "sobo",
+            "yoku",
+            "okashi",
+            "tsukuru"
+          ],
+          "furigana": "祖[そ]母[ぼ]はよくお菓[か]子[し]を作[つく]ったものだ。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sobo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "okashi",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 9,
+              "end": 12,
+              "surface_form": "作った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 14
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "大学ではよく図書館で寝たものです。",
+          "english": "At university, I often used to fall asleep in the library.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "daigaku",
+            "yoku",
+            "toshokan",
+            "neru"
+          ],
+          "furigana": "大[だい]学[がく]ではよく図[と]書[しょ]館[かん]で寝[ね]たものです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "daigaku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 10,
+              "end": 12,
+              "surface_form": "寝た",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "今日は行かない。雨が降っているもの。",
+          "english": "I'm not going today. It's raining, after all!",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kyou",
+            "iku-v",
+            "ame-v",
+            "furu-rain",
+            "iru-exist"
+          ],
+          "furigana": "今日[きょう]は行[い]かない。雨[あめ]が降[ふ]っているもの。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 3,
+              "end": 7,
+              "surface_form": "行かない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 10,
+              "end": 13,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 15,
+            "end": 17
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "ごめんなさい。知らなかったもん。",
+          "english": "Sorry! I didn't know, okay?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "gomennasai",
+            "shiru"
+          ],
+          "furigana": "ごめんなさい。知[し]らなかったもん。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "gomennasai",
+              "start": 0,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 7,
+              "end": 13,
+              "surface_form": "知らなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 15
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "夜は一人で歩かない。暗いもん。",
+          "english": "I don't walk alone at night. It's dark!",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "yoru",
+            "hitori-de",
+            "aruku",
+            "kurai"
+          ],
+          "furigana": "夜[よる]は一人[ひとり]で歩[ある]かない。暗[くら]いもん。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yoru",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hitori-de",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 5,
+              "end": 9,
+              "surface_form": "歩かない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "kurai",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 14
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -13377,6 +14041,28 @@
         "asobu"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "used to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "because",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "after all",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "would (habitually)",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Nostalgic habit — \"used to\"",
