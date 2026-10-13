@@ -40,7 +40,7 @@ Last verified against the codebase: **2026-09-02**
 | [13 — Vacation mode](./feedback/13-vacation-mode.md) | Done |
 | [14 — Conjugated-form linking & furigana gesture](./feedback/14-conjugated-form-linking-and-furigana-gesture.md) | Done |
 | [15 — ChatBubble word linking & furigana toggle](./feedback/15-chatbubble-word-linking-and-furigana-toggle.md) | Done |
-| [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Partial — Plan 1 (pipeline) done 2026-10-13: pool fields, cloze-derived sentences, grammar meanings in accepted_answers, report-only validator (baseline: curriculum/_build/reports/grammar-pool-baseline.md). Plan 2 (content) and Plan 3 (app) not started |
+| [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Partial — Plans 1–2 done 2026-10-13: every N5/N4 grammar point has a passing pool (curriculum/grammar/pool.json, report curriculum/_build/reports/grammar-pool-final.md); generate.py gates on it. Plan 3 (app) not started |
 
 ## Content plans — `docs/content/`
 

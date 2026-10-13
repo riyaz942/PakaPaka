@@ -160,6 +160,15 @@ class GrammarLevelTest(unittest.TestCase):
     def test_cloze_variants_still_ship(self):
         self.assertEqual(len(build([entry()])["cloze_variants"]), 2)
 
+    def test_generate_level_refuses_a_failing_pool(self):
+        from unittest import mock
+        with mock.patch.object(generate.pool_check, "check_level",
+                               return_value={"kara-because": ["rule 4: 2 passing sentences, need 8"]}), \
+             mock.patch.object(generate, "write_json"):
+            with self.assertRaises(SystemExit) as raised:
+                generate.generate_level("n5")
+        self.assertIn("kara-because", str(raised.exception))
+
 
 if __name__ == "__main__":
     unittest.main()

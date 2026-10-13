@@ -41,6 +41,7 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from generate_content import check_grammar_pool as pool_check  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
@@ -972,6 +973,14 @@ def generate_level(level):
                              known_vocab_forms={v["slug"]: v["form"] for v in known},
                              pool_entries=load_pool_sidecar()),
     )
+    # Grammar Read + Build cards need every point's pool to pass (spec §4.4).
+    failing = {slug: errs for slug, errs in pool_check.check_level(level).items() if errs}
+    if failing:
+        lines = [f"{slug}: {errs[0]}" for slug, errs in failing.items()]
+        raise SystemExit(
+            f"{level.upper()} grammar pool fails for {len(failing)} point(s) — run "
+            "generate_content.check_grammar_pool for the full report:\n" + "\n".join(lines)
+        )
     passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
     write_json(
         os.path.join(CURRICULUM_DIR, "readings", f"{level}.json"),
