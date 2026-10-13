@@ -16491,5 +16491,692 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "toka": {
+    "accepted_meanings": [
+      "things like",
+      "and so on",
+      "such as",
+      "among other things",
+      "like"
+    ],
+    "sentences": [
+      {
+        "japanese": "週末はテレビとか見ます。",
+        "english": "This weekend I'll watch stuff like TV, among other things.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "果物とか野菜とかが体にいいです。",
+        "english": "Things like fruit and vegetables are good for your body.",
+        "vocabulary_slugs": [
+          "kudamono",
+          "yasai",
+          "karada",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "明日は映画とかテレビとか見ませんか。",
+        "english": "Want to watch stuff like a movie or TV tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "eiga",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "寿司とかラーメンとかが好きです。",
+        "english": "I like things like sushi and ramen.",
+        "vocabulary_slugs": [
+          "sushi",
+          "raamen",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "机の上に本とかペンとかがあります。",
+        "english": "There are things like books and pens on the desk.",
+        "vocabulary_slugs": [
+          "tsukue",
+          "ue",
+          "hon",
+          "pen",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "昨日は雑誌とか漫画とかを読みました。",
+        "english": "Yesterday I read things like magazines and comics.",
+        "vocabulary_slugs": [
+          "kinou",
+          "zasshi",
+          "manga",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "弟は魚とか肉とかを食べません。",
+        "english": "My little brother doesn't eat things like fish or meat.",
+        "vocabulary_slugs": [
+          "otouto",
+          "sakana",
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "かばんに傘とか薬とかを入れました。",
+        "english": "I put things like an umbrella and medicine in my bag.",
+        "vocabulary_slugs": [
+          "kaban",
+          "kasa",
+          "kusuri",
+          "ireru-v"
+        ]
+      },
+      {
+        "japanese": "犬とか猫とか、動物が好きですか。",
+        "english": "Do you like animals — dogs, cats, that sort of thing?",
+        "vocabulary_slugs": [
+          "inu",
+          "neko",
+          "doubutsu",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kke2": {
+    "accepted_meanings": [
+      "on the other hand",
+      "while",
+      "conversely",
+      "but at the same time",
+      "on the flip side"
+    ],
+    "sentences": [
+      {
+        "japanese": "便利な反面、危険もあります。",
+        "english": "While it's convenient, there's also danger.",
+        "vocabulary_slugs": [
+          "benri",
+          "kiken",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "彼女の新しい仕事は給料がいい反面、休暇が短い。",
+        "english": "Her new job pays well, but the flip side is that vacation is short.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "atarashii-adj",
+          "shigoto",
+          "kyuuryou",
+          "ii",
+          "kyuuka",
+          "mijikai"
+        ]
+      },
+      {
+        "japanese": "この店の料理はおいしい反面、値段が高い。",
+        "english": "This restaurant's food is delicious, but on the other hand the price is high.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "ryouri",
+          "oishii",
+          "nedan",
+          "takai-adj"
+        ],
+        "alternates": [
+          {
+            "japanese": "この店の料理はおいしい一方で、値段が高い。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "この町は便利な反面、人が多い。",
+        "english": "This town is convenient, but on the other hand there are a lot of people.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "benri",
+          "hito",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "彼は日本語を話せる反面、書くのが苦手だ。",
+        "english": "He can speak Japanese, but on the other hand he's bad at writing.",
+        "vocabulary_slugs": [
+          "kare",
+          "nihongo",
+          "hanaseru",
+          "kaku",
+          "nigate"
+        ]
+      },
+      {
+        "japanese": "彼女はお酒を飲まない反面、よく食べる。",
+        "english": "She doesn't drink alcohol, but on the other hand she eats a lot.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "osake",
+          "nomu-v",
+          "yoku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼の仕事は忙しい反面、楽しい。",
+        "english": "His job is busy, but on the flip side, it's fun.",
+        "vocabulary_slugs": [
+          "kare",
+          "shigoto",
+          "isogashii",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "一人で住むのは自由な反面、寂しくないですか。",
+        "english": "Living alone gives you freedom, but isn't it lonely at the same time?",
+        "vocabulary_slugs": [
+          "hitori-de",
+          "sumu",
+          "jiyuu",
+          "sabishii"
+        ]
+      },
+      {
+        "japanese": "その旅行は楽しかった反面、大変だった。",
+        "english": "That trip was fun, but at the same time it was hard work.",
+        "vocabulary_slugs": [
+          "sono",
+          "ryokou",
+          "tanoshii",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "子供はかわいい反面、育てるのが難しい。",
+        "english": "Kids are cute, but on the other hand they're hard to raise.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kawaii",
+          "sodateru",
+          "muzukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tokoroga": {
+    "accepted_meanings": [
+      "however",
+      "but",
+      "but unexpectedly",
+      "contrary to expectations",
+      "yet"
+    ],
+    "sentences": [
+      {
+        "japanese": "試験は簡単だと思った。ところが、とても難しかった。",
+        "english": "I thought the exam would be easy. However, it was really hard.",
+        "vocabulary_slugs": [
+          "shiken",
+          "kantan-n4",
+          "omou",
+          "totemo",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "新しい靴を買った。とても安かった。ところが、すぐに壊れた。",
+        "english": "I bought new shoes. They were very cheap. However, they broke right away.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "kutsu",
+          "kau-v",
+          "totemo",
+          "yasui-adj",
+          "sugu",
+          "kowareru"
+        ]
+      },
+      {
+        "japanese": "新しいレストランに行った。料理はおいしかった。ところが、値段がとても高かった。",
+        "english": "I went to a new restaurant. The food was delicious. However, the price was very expensive.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "resutoran",
+          "iku-v",
+          "ryouri",
+          "oishii",
+          "nedan",
+          "totemo",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "友達を駅で待った。ところが、友達は来なかった。",
+        "english": "I waited for my friend at the station. However, my friend didn't come.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "eki",
+          "matsu",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "兄はいつも厳しい。ところが、今日は優しかった。",
+        "english": "My older brother is always strict. However, today he was kind.",
+        "vocabulary_slugs": [
+          "ani",
+          "itsumo",
+          "kibishii",
+          "kyou",
+          "yasashii-n4"
+        ]
+      },
+      {
+        "japanese": "手紙を送った。ところが、届かなかった。",
+        "english": "I sent a letter. However, it didn't arrive.",
+        "vocabulary_slugs": [
+          "tegami",
+          "okuru",
+          "todoku-v"
+        ]
+      },
+      {
+        "japanese": "店に行った。ところが、財布を忘れた。",
+        "english": "I went to the shop. But then I realized I'd forgotten my wallet.",
+        "vocabulary_slugs": [
+          "mise",
+          "iku-v",
+          "saifu",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "弟は野菜が嫌いだ。ところが、このサラダは全部食べた。",
+        "english": "My little brother hates vegetables. Yet he ate this whole salad.",
+        "vocabulary_slugs": [
+          "otouto",
+          "yasai",
+          "kirai",
+          "kono",
+          "sarada",
+          "zenbu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "早く家を出た。ところが、電車が遅れた。",
+        "english": "I left home early. However, the train was late.",
+        "vocabulary_slugs": [
+          "hayai-early",
+          "ie",
+          "deru-v",
+          "densha",
+          "okureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "soredemo": {
+    "accepted_meanings": [
+      "even so",
+      "nevertheless",
+      "still",
+      "even then",
+      "despite that"
+    ],
+    "sentences": [
+      {
+        "japanese": "このケーキは高いです。それでも買いますか。",
+        "english": "This cake is expensive. Will you still buy it?",
+        "vocabulary_slugs": [
+          "kono",
+          "keeki",
+          "takai-adj",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "兄は熱があった。それでも仕事に行った。",
+        "english": "My older brother had a fever. Even so, he went to work.",
+        "vocabulary_slugs": [
+          "ani",
+          "netsu",
+          "aru",
+          "shigoto",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "雨が降っていた。それでも兄は散歩した。",
+        "english": "It was raining. Even so, my brother went for a walk.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "iru-exist",
+          "ani",
+          "sanpo-suru"
+        ]
+      },
+      {
+        "japanese": "兄は薬を飲んだが、それでも熱は下がらなかった。",
+        "english": "My brother took his medicine, but even then his fever didn't go down.",
+        "vocabulary_slugs": [
+          "ani",
+          "kusuri",
+          "nomu-v",
+          "netsu",
+          "sagaru"
+        ]
+      },
+      {
+        "japanese": "先生は丁寧に説明した。それでも私は意味が分からなかった。",
+        "english": "The teacher explained it carefully. Even so, I didn't understand the meaning.",
+        "vocabulary_slugs": [
+          "sensei",
+          "teinei",
+          "setsumei-suru",
+          "watashi",
+          "imi",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "天気は悪かった。それでも私たちは公園を歩いた。",
+        "english": "The weather was bad. Even so, we walked through the park.",
+        "vocabulary_slugs": [
+          "tenki",
+          "warui",
+          "watashitachi",
+          "kouen",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "毎日練習した。それでもピアノは上手にならなかった。",
+        "english": "I practiced every day. Even so, I didn't get good at the piano.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "renshuu-suru",
+          "piano",
+          "jouzu",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "このかばんは古い。それでもまだ使える。",
+        "english": "This bag is old. Even so, it can still be used.",
+        "vocabulary_slugs": [
+          "kono",
+          "kaban",
+          "furui-adj",
+          "mada",
+          "tsukaeru"
+        ]
+      },
+      {
+        "japanese": "彼女は忙しい。それでも毎晩電話をくれる。",
+        "english": "She's busy. Even so, she calls me every night.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "isogashii",
+          "maiban",
+          "denwa",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sokode": {
+    "accepted_meanings": [
+      "so",
+      "therefore",
+      "and so",
+      "so then",
+      "that's why"
+    ],
+    "sentences": [
+      {
+        "japanese": "道が分かりませんでした。そこで、地図を見ました。",
+        "english": "I didn't know the way. So I looked at a map.",
+        "vocabulary_slugs": [
+          "michi-v",
+          "wakaru",
+          "chizu",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "雨が降った。そこで、近くの喫茶店に入った。",
+        "english": "It rained. So I went into a nearby coffee shop.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "chikaku",
+          "kissaten",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "宿題の意味が分からなかった。そこで、先生に聞いた。",
+        "english": "I didn't understand what the homework meant. So I asked the teacher.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "imi",
+          "wakaru",
+          "sensei",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "頭が痛かった。そこで、薬を飲んだ。",
+        "english": "My head hurt. So I took some medicine.",
+        "vocabulary_slugs": [
+          "atama",
+          "itai",
+          "kusuri",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "電車が遅れた。そこで、タクシーに乗った。",
+        "english": "The train was late. So I took a taxi.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru",
+          "takushii",
+          "noru"
+        ]
+      },
+      {
+        "japanese": "天気が悪かった。そこで、傘を持って出かけた。",
+        "english": "The weather was bad. So I took an umbrella and went out.",
+        "vocabulary_slugs": [
+          "tenki",
+          "warui",
+          "kasa",
+          "motsu",
+          "dekakeru"
+        ]
+      },
+      {
+        "japanese": "部屋が暗い。そこで、電気をつける。",
+        "english": "The room is dark. So I turn on the light.",
+        "vocabulary_slugs": [
+          "heya",
+          "kurai",
+          "denki",
+          "tsukeru"
+        ]
+      },
+      {
+        "japanese": "荷物が重かった。そこで、友達に手伝ってもらった。",
+        "english": "My luggage was heavy. So I got a friend to help me.",
+        "vocabulary_slugs": [
+          "nimotsu",
+          "omoi",
+          "tomodachi",
+          "tetsudau",
+          "morau"
+        ]
+      },
+      {
+        "japanese": "バスが来ません。そこで、どうしましょうか。",
+        "english": "The bus isn't coming. So what should we do?",
+        "vocabulary_slugs": [
+          "basu",
+          "kuru-v",
+          "dou",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sonoseika-de": {
+    "accepted_meanings": [
+      "for that reason",
+      "because of that",
+      "therefore",
+      "as a result",
+      "so"
+    ],
+    "sentences": [
+      {
+        "japanese": "台風が来ました。そのため、電車が止まりました。",
+        "english": "A typhoon came. Because of that, the trains stopped.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "kuru-v",
+          "densha",
+          "tomaru"
+        ]
+      },
+      {
+        "japanese": "電車が遅れた。そのため、会議に遅刻した。",
+        "english": "The train was delayed. Because of that, I was late to the meeting.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru",
+          "kaigi",
+          "chikoku-suru"
+        ]
+      },
+      {
+        "japanese": "熱があった。そのため、学校を休んだ。",
+        "english": "I had a fever. Because of that, I stayed home from school.",
+        "vocabulary_slugs": [
+          "netsu",
+          "aru",
+          "gakkou-v",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "財布を忘れました。そのため、何も買いませんでした。",
+        "english": "I forgot my wallet. Because of that, I didn't buy anything.",
+        "vocabulary_slugs": [
+          "saifu",
+          "wasureru",
+          "nani-mo",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "雨が降った。そのため、服が濡れた。",
+        "english": "It rained. Because of that, my clothes got wet.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "fuku",
+          "nureru"
+        ]
+      },
+      {
+        "japanese": "頭が痛かった。そのため、薬を飲んだ。",
+        "english": "My head hurt. Because of that, I took some medicine.",
+        "vocabulary_slugs": [
+          "atama",
+          "itai",
+          "kusuri",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "雪が降っている。そのため、バスは遅れますか。",
+        "english": "It's snowing. Will the bus be late because of that?",
+        "vocabulary_slugs": [
+          "yuki",
+          "furu-rain",
+          "iru-exist",
+          "basu",
+          "okureru"
+        ]
+      },
+      {
+        "japanese": "この店は安い。そのため、いつも客が多い。",
+        "english": "This shop is cheap. For that reason, it always has lots of customers.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "yasui-adj",
+          "itsumo",
+          "kyaku",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "兄は毎日練習した。そのため、試験に合格した。",
+        "english": "My older brother practiced every day. As a result, he passed the exam.",
+        "vocabulary_slugs": [
+          "ani",
+          "mainichi",
+          "renshuu-suru",
+          "shiken",
+          "goukaku-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

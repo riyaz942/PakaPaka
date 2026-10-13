@@ -31213,54 +31213,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "りんごとかバナナとかが好きです。",
-          "english": "I like things like apples and bananas.",
-          "sort_order": 0,
-          "vocabulary_slugs": [],
-          "furigana": "りんごとかバナナとかが好[す]きです。",
-          "grammar_span": {
-            "start": 3,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "週末は映画とか買い物とかしたいです。",
-          "english": "I want to do things like watch a movie or go shopping this weekend.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "shuumatsu",
-            "eiga",
-            "kaimono"
-          ],
-          "furigana": "週[しゅう]末[まつ]は映[えい]画[が]とか買[か]い物[もの]とかしたいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shuumatsu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "eiga",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "kaimono",
-              "start": 7,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "週末はテレビとか見ます。",
           "english": "This weekend I'll watch stuff like TV, among other things.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "shuumatsu",
             "terebi",
@@ -31295,7 +31250,7 @@
         {
           "japanese": "果物とか野菜とかが体にいいです。",
           "english": "Things like fruit and vegetables are good for your body.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kudamono",
             "yasai",
@@ -31334,7 +31289,7 @@
         {
           "japanese": "明日は映画とかテレビとか見ませんか。",
           "english": "Want to watch stuff like a movie or TV tomorrow?",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ashita",
             "eiga",
@@ -31373,16 +31328,15 @@
           "register": "polite"
         },
         {
-          "japanese": "寿司とかラーメンとか、そういう料理が好きです。",
-          "english": "I like that kind of food — sushi, ramen, things along those lines.",
-          "sort_order": 5,
+          "japanese": "寿司とかラーメンとかが好きです。",
+          "english": "I like things like sushi and ramen.",
+          "sort_order": 3,
           "vocabulary_slugs": [
             "sushi",
             "raamen",
-            "ryouri",
             "suki"
           ],
-          "furigana": "寿[す]司[し]とかラーメンとか、そういう料[りょう]理[り]が好[す]きです。",
+          "furigana": "寿[す]司[し]とかラーメンとかが好[す]きです。",
           "word_spans": [
             {
               "vocabulary_slug": "sushi",
@@ -31395,14 +31349,9 @@
               "end": 8
             },
             {
-              "vocabulary_slug": "ryouri",
-              "start": 15,
-              "end": 17
-            },
-            {
               "vocabulary_slug": "suki",
-              "start": 18,
-              "end": 20
+              "start": 11,
+              "end": 13
             }
           ],
           "grammar_span": {
@@ -31410,10 +31359,246 @@
             "end": 4
           },
           "register": "polite"
+        },
+        {
+          "japanese": "机の上に本とかペンとかがあります。",
+          "english": "There are things like books and pens on the desk.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "tsukue",
+            "ue",
+            "hon",
+            "pen",
+            "aru"
+          ],
+          "furigana": "机[つくえ]の上[うえ]に本[ほん]とかペンとかがあります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tsukue",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "pen",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日は雑誌とか漫画とかを読みました。",
+          "english": "Yesterday I read things like magazines and comics.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kinou",
+            "zasshi",
+            "manga",
+            "yomu"
+          ],
+          "furigana": "昨日[きのう]は雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "zasshi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "manga",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 12,
+              "end": 17,
+              "surface_form": "読みました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "弟は魚とか肉とかを食べません。",
+          "english": "My little brother doesn't eat things like fish or meat.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "otouto",
+            "sakana",
+            "niku",
+            "taberu"
+          ],
+          "furigana": "弟[おとうと]は魚[さかな]とか肉[にく]とかを食[た]べません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "niku",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 9,
+              "end": 14,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "かばんに傘とか薬とかを入れました。",
+          "english": "I put things like an umbrella and medicine in my bag.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kaban",
+            "kasa",
+            "kusuri",
+            "ireru-v"
+          ],
+          "furigana": "かばんに傘[かさ]とか薬[くすり]とかを入[い]れました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaban",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kusuri",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "入れました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "犬とか猫とか、動物が好きですか。",
+          "english": "Do you like animals — dogs, cats, that sort of thing?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "inu",
+            "neko",
+            "doubutsu",
+            "suki"
+          ],
+          "furigana": "犬[いぬ]とか猫[ねこ]とか、動[どう]物[ぶつ]が好[す]きですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "doubutsu",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "things like",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "and so on",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "such as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "among other things",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "like",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "週末は映画＿＿＿買い物＿＿＿したいです。",
@@ -31493,7 +31678,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "benri",
-            "kiken"
+            "kiken",
+            "aru"
           ],
           "furigana": "便[べん]利[り]な反[はん]面[めん]、危[き]険[けん]もあります。",
           "word_spans": [
@@ -31506,6 +31692,13 @@
               "vocabulary_slug": "kiken",
               "start": 6,
               "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "あります",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -31620,7 +31813,13 @@
             "start": 11,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]の料[りょう]理[り]はおいしい一[いっ]方[ぽう]で、値[ね]段[だん]が高[たか]い。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "この町は便利な反面、人が多い。",
@@ -31797,6 +31996,127 @@
             "end": 10
           },
           "register": "plain"
+        },
+        {
+          "japanese": "一人で住むのは自由な反面、寂しくないですか。",
+          "english": "Living alone gives you freedom, but isn't it lonely at the same time?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "hitori-de",
+            "sumu",
+            "jiyuu",
+            "sabishii"
+          ],
+          "furigana": "一人[ひとり]で住[す]むのは自[じ]由[ゆう]な反[はん]面[めん]、寂[さび]しくないですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hitori-de",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sumu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "jiyuu",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "sabishii",
+              "start": 13,
+              "end": 18,
+              "surface_form": "寂しくない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "その旅行は楽しかった反面、大変だった。",
+          "english": "That trip was fun, but at the same time it was hard work.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sono",
+            "ryokou",
+            "tanoshii",
+            "taihen"
+          ],
+          "furigana": "その旅[りょ]行[こう]は楽[たの]しかった反[はん]面[めん]、大[たい]変[へん]だった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tanoshii",
+              "start": 5,
+              "end": 10,
+              "surface_form": "楽しかった",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "子供はかわいい反面、育てるのが難しい。",
+          "english": "Kids are cute, but on the other hand they're hard to raise.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "kawaii",
+            "sodateru",
+            "muzukashii"
+          ],
+          "furigana": "子[こ]供[ども]はかわいい反[はん]面[めん]、育[そだ]てるのが難[むずか]しい。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kawaii",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sodateru",
+              "start": 10,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 15,
+              "end": 18
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -31804,6 +32124,33 @@
         "kiken"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the other hand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "conversely",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "but at the same time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the flip side",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "彼女の新しい仕事は給料がいい＿＿＿、休暇が短い。",
@@ -31885,27 +32232,53 @@
       ],
       "example_sentences": [
         {
-          "japanese": "晴れると思いました。ところが、雨が降りました。",
-          "english": "I thought it would be sunny. However, it rained.",
+          "japanese": "試験は簡単だと思った。ところが、とても難しかった。",
+          "english": "I thought the exam would be easy. However, it was really hard.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "furu-rain"
+            "shiken",
+            "kantan-n4",
+            "omou",
+            "totemo",
+            "muzukashii"
           ],
-          "furigana": "晴[は]れると思[おも]いました。ところが、雨[あめ]が降[ふ]りました。",
+          "furigana": "試[し]験[けん]は簡[かん]単[たん]だと思[おも]った。ところが、とても難[むずか]しかった。",
           "word_spans": [
             {
-              "vocabulary_slug": "furu-rain",
-              "start": 17,
-              "end": 22,
-              "surface_form": "降りました",
-              "inflection": "masu"
+              "vocabulary_slug": "shiken",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kantan-n4",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "omou",
+              "start": 7,
+              "end": 10,
+              "surface_form": "思った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 16,
+              "end": 19
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 19,
+              "end": 24,
+              "surface_form": "難しかった",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 10,
-            "end": 14
+            "start": 11,
+            "end": 15
           },
-          "register": "polite"
+          "register": "plain"
         },
         {
           "japanese": "新しい靴を買った。とても安かった。ところが、すぐに壊れた。",
@@ -32170,12 +32543,192 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "店に行った。ところが、財布を忘れた。",
+          "english": "I went to the shop. But then I realized I'd forgotten my wallet.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "mise",
+            "iku-v",
+            "saifu",
+            "wasureru"
+          ],
+          "furigana": "店[みせ]に行[い]った。ところが、財[さい]布[ふ]を忘[わす]れた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mise",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "行った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "saifu",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 14,
+              "end": 17,
+              "surface_form": "忘れた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "弟は野菜が嫌いだ。ところが、このサラダは全部食べた。",
+          "english": "My little brother hates vegetables. Yet he ate this whole salad.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "otouto",
+            "yasai",
+            "kirai",
+            "kono",
+            "sarada",
+            "zenbu",
+            "taberu"
+          ],
+          "furigana": "弟[おとうと]は野[や]菜[さい]が嫌[きら]いだ。ところが、このサラダは全[ぜん]部[ぶ]食[た]べた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kirai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "sarada",
+              "start": 16,
+              "end": 19
+            },
+            {
+              "vocabulary_slug": "zenbu",
+              "start": 20,
+              "end": 22
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 22,
+              "end": 25,
+              "surface_form": "食べた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "早く家を出た。ところが、電車が遅れた。",
+          "english": "I left home early. However, the train was late.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "ie",
+            "deru-v",
+            "densha",
+            "okureru"
+          ],
+          "furigana": "早[はや]く家[いえ]を出[で]た。ところが、電[でん]車[しゃ]が遅[おく]れた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 4,
+              "end": 6,
+              "surface_form": "出た",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 15,
+              "end": 18,
+              "surface_form": "遅れた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
         "furu-rain"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "however",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "but",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "but unexpectedly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "contrary to expectations",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "yet",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "新しい靴を買った。とても安かった。＿＿＿、すぐに壊れた。",
@@ -32249,25 +32802,43 @@
       ],
       "example_sentences": [
         {
-          "japanese": "雨が降っていました。それでも、出かけました。",
-          "english": "It was raining. Even so, I went out.",
+          "japanese": "このケーキは高いです。それでも買いますか。",
+          "english": "This cake is expensive. Will you still buy it?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "furu-rain"
+            "kono",
+            "keeki",
+            "takai-adj",
+            "kau-v"
           ],
-          "furigana": "雨[あめ]が降[ふ]っていました。それでも、出[で]かけました。",
+          "furigana": "このケーキは高[たか]いです。それでも買[か]いますか。",
           "word_spans": [
             {
-              "vocabulary_slug": "furu-rain",
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "keeki",
               "start": 2,
-              "end": 5,
-              "surface_form": "降って",
-              "inflection": "te"
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 15,
+              "end": 19,
+              "surface_form": "買います",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 10,
-            "end": 14
+            "start": 11,
+            "end": 15
           },
           "register": "polite"
         },
@@ -32421,18 +32992,18 @@
           "register": "plain"
         },
         {
-          "japanese": "先生は説明を三回した。それでも私は意味が分からなかった。",
-          "english": "The teacher explained it three times. Even so, I didn't understand the meaning.",
+          "japanese": "先生は丁寧に説明した。それでも私は意味が分からなかった。",
+          "english": "The teacher explained it carefully. Even so, I didn't understand the meaning.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "sensei",
-            "setsumei",
-            "suru",
+            "teinei",
+            "setsumei-suru",
             "watashi",
             "imi",
             "wakaru"
           ],
-          "furigana": "先[せん]生[せい]は説[せつ]明[めい]を三[さん]回[かい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
+          "furigana": "先[せん]生[せい]は丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
           "word_spans": [
             {
               "vocabulary_slug": "sensei",
@@ -32440,15 +33011,15 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "setsumei",
+              "vocabulary_slug": "teinei",
               "start": 3,
               "end": 5
             },
             {
-              "vocabulary_slug": "suru",
-              "start": 8,
+              "vocabulary_slug": "setsumei-suru",
+              "start": 6,
               "end": 10,
-              "surface_form": "した",
+              "surface_form": "説明した",
               "inflection": "ta"
             },
             {
@@ -32525,45 +33096,141 @@
           "register": "plain"
         },
         {
-          "japanese": "薬を飲んだ。それでも熱は下がらなかった。",
-          "english": "I took the medicine. Even so, my fever didn't go down.",
+          "japanese": "毎日練習した。それでもピアノは上手にならなかった。",
+          "english": "I practiced every day. Even so, I didn't get good at the piano.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "kusuri",
-            "nomu-v",
-            "netsu",
-            "sagaru"
+            "mainichi",
+            "renshuu-suru",
+            "piano",
+            "jouzu",
+            "naru-become"
           ],
-          "furigana": "薬[くすり]を飲[の]んだ。それでも熱[ねつ]は下[さ]がらなかった。",
+          "furigana": "毎[まい]日[にち]練[れん]習[しゅう]した。それでもピアノは上手[じょうず]にならなかった。",
           "word_spans": [
             {
-              "vocabulary_slug": "kusuri",
+              "vocabulary_slug": "mainichi",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "nomu-v",
+              "vocabulary_slug": "renshuu-suru",
               "start": 2,
-              "end": 5,
-              "surface_form": "飲んだ",
+              "end": 6,
+              "surface_form": "練習した",
               "inflection": "ta"
             },
             {
-              "vocabulary_slug": "netsu",
-              "start": 10,
-              "end": 11
+              "vocabulary_slug": "piano",
+              "start": 11,
+              "end": 14
             },
             {
-              "vocabulary_slug": "sagaru",
-              "start": 12,
-              "end": 19,
-              "surface_form": "下がらなかった",
+              "vocabulary_slug": "jouzu",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 18,
+              "end": 24,
+              "surface_form": "ならなかった",
               "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 6,
-            "end": 10
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "このかばんは古い。それでもまだ使える。",
+          "english": "This bag is old. Even so, it can still be used.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kono",
+            "kaban",
+            "furui-adj",
+            "mada",
+            "tsukaeru"
+          ],
+          "furigana": "このかばんは古[ふる]い。それでもまだ使[つか]える。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "furui-adj",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "mada",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "tsukaeru",
+              "start": 15,
+              "end": 18
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "彼女は忙しい。それでも毎晩電話をくれる。",
+          "english": "She's busy. Even so, she calls me every night.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kanojo",
+            "isogashii",
+            "maiban",
+            "denwa",
+            "kureru"
+          ],
+          "furigana": "彼[かの]女[じょ]は忙[いそが]しい。それでも毎[まい]晩[ばん]電[でん]話[わ]をくれる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "maiban",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "denwa",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 16,
+              "end": 19
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
           },
           "register": "plain"
         }
@@ -32572,6 +33239,33 @@
         "furu-rain"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "even so",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nevertheless",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "still",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "even then",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "despite that",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "兄は熱があった。＿＿＿仕事に行った。",
@@ -32658,7 +33352,9 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "michi-v",
-            "chizu"
+            "wakaru",
+            "chizu",
+            "miru-v"
           ],
           "furigana": "道[みち]が分[わ]かりませんでした。そこで、地[ち]図[ず]を見[み]ました。",
           "word_spans": [
@@ -32668,9 +33364,23 @@
               "end": 1
             },
             {
+              "vocabulary_slug": "wakaru",
+              "start": 2,
+              "end": 11,
+              "surface_form": "分かりませんでした",
+              "inflection": "masu"
+            },
+            {
               "vocabulary_slug": "chizu",
               "start": 16,
               "end": 18
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 19,
+              "end": 23,
+              "surface_form": "見ました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -32913,6 +33623,139 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "部屋が暗い。そこで、電気をつける。",
+          "english": "The room is dark. So I turn on the light.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "heya",
+            "kurai",
+            "denki",
+            "tsukeru"
+          ],
+          "furigana": "部屋[へや]が暗[くら]い。そこで、電[でん]気[き]をつける。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kurai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "denki",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "tsukeru",
+              "start": 13,
+              "end": 16
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "荷物が重かった。そこで、友達に手伝ってもらった。",
+          "english": "My luggage was heavy. So I got a friend to help me.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "nimotsu",
+            "omoi",
+            "tomodachi",
+            "tetsudau",
+            "morau"
+          ],
+          "furigana": "荷[に]物[もつ]が重[おも]かった。そこで、友[とも]達[だち]に手伝[てつだ]ってもらった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 3,
+              "end": 7,
+              "surface_form": "重かった",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "tetsudau",
+              "start": 15,
+              "end": 19,
+              "surface_form": "手伝って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "morau",
+              "start": 19,
+              "end": 23,
+              "surface_form": "もらった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "バスが来ません。そこで、どうしましょうか。",
+          "english": "The bus isn't coming. So what should we do?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "basu",
+            "kuru-v",
+            "dou",
+            "suru"
+          ],
+          "furigana": "バスが来[き]ません。そこで、どうしましょうか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "basu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 7,
+              "surface_form": "来ません",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "dou",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 14,
+              "end": 15,
+              "surface_form": "し",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -32920,6 +33763,33 @@
         "chizu"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "so",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "therefore",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "and so",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so then",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "that's why",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "雨が降った。＿＿＿、近くの喫茶店に入った。",
@@ -32994,11 +33864,13 @@
       "example_sentences": [
         {
           "japanese": "台風が来ました。そのため、電車が止まりました。",
-          "english": "A typhoon came. Because of that, trains stopped.",
+          "english": "A typhoon came. Because of that, the trains stopped.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "taifuu",
-            "densha"
+            "kuru-v",
+            "densha",
+            "tomaru"
           ],
           "furigana": "台[たい]風[ふう]が来[き]ました。そのため、電[でん]車[しゃ]が止[と]まりました。",
           "word_spans": [
@@ -33008,9 +33880,23 @@
               "end": 2
             },
             {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 7,
+              "surface_form": "来ました",
+              "inflection": "masu"
+            },
+            {
               "vocabulary_slug": "densha",
               "start": 13,
               "end": 15
+            },
+            {
+              "vocabulary_slug": "tomaru",
+              "start": 16,
+              "end": 22,
+              "surface_form": "止まりました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -33063,50 +33949,59 @@
           "register": "plain"
         },
         {
-          "japanese": "風邪をひいた。そのため、学校を休んだ。",
-          "english": "I caught a cold. Because of that, I stayed home from school.",
+          "japanese": "熱があった。そのため、学校を休んだ。",
+          "english": "I had a fever. Because of that, I stayed home from school.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kaze-cold",
+            "netsu",
+            "aru",
             "gakkou-v",
             "yasumu"
           ],
-          "furigana": "風邪[かぜ]をひいた。そのため、学[がっ]校[こう]を休[やす]んだ。",
+          "furigana": "熱[ねつ]があった。そのため、学[がっ]校[こう]を休[やす]んだ。",
           "word_spans": [
             {
-              "vocabulary_slug": "kaze-cold",
+              "vocabulary_slug": "netsu",
               "start": 0,
-              "end": 2
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "あった",
+              "inflection": "ta"
             },
             {
               "vocabulary_slug": "gakkou-v",
-              "start": 12,
-              "end": 14
+              "start": 11,
+              "end": 13
             },
             {
               "vocabulary_slug": "yasumu",
-              "start": 15,
-              "end": 18,
+              "start": 14,
+              "end": 17,
               "surface_form": "休んだ",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 6,
+            "end": 10
           },
           "register": "plain"
         },
         {
-          "japanese": "財布をなくしました。そのため、お金がありませんでした。",
-          "english": "I lost my wallet. Because of that, I didn't have any money.",
+          "japanese": "財布を忘れました。そのため、何も買いませんでした。",
+          "english": "I forgot my wallet. Because of that, I didn't buy anything.",
           "sort_order": 3,
           "vocabulary_slugs": [
             "saifu",
-            "okane",
-            "aru"
+            "wasureru",
+            "nani-mo",
+            "kau-v"
           ],
-          "furigana": "財[さい]布[ふ]をなくしました。そのため、お金[かね]がありませんでした。",
+          "furigana": "財[さい]布[ふ]を忘[わす]れました。そのため、何[なに]も買[か]いませんでした。",
           "word_spans": [
             {
               "vocabulary_slug": "saifu",
@@ -33114,21 +34009,28 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "okane",
-              "start": 15,
-              "end": 17
+              "vocabulary_slug": "wasureru",
+              "start": 3,
+              "end": 8,
+              "surface_form": "忘れました",
+              "inflection": "masu"
             },
             {
-              "vocabulary_slug": "aru",
-              "start": 18,
-              "end": 26,
-              "surface_form": "ありませんでした",
+              "vocabulary_slug": "nani-mo",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 16,
+              "end": 24,
+              "surface_form": "買いませんでした",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 10,
-            "end": 14
+            "start": 9,
+            "end": 13
           },
           "register": "polite"
         },
@@ -33217,6 +34119,155 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "雪が降っている。そのため、バスは遅れますか。",
+          "english": "It's snowing. Will the bus be late because of that?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "yuki",
+            "furu-rain",
+            "iru-exist",
+            "basu",
+            "okureru"
+          ],
+          "furigana": "雪[ゆき]が降[ふ]っている。そのため、バスは遅[おく]れますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "basu",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 16,
+              "end": 20,
+              "surface_form": "遅れます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この店は安い。そのため、いつも客が多い。",
+          "english": "This shop is cheap. For that reason, it always has lots of customers.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "yasui-adj",
+            "itsumo",
+            "kyaku",
+            "ooi"
+          ],
+          "furigana": "この店[みせ]は安[やす]い。そのため、いつも客[きゃく]が多[おお]い。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "kyaku",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "ooi",
+              "start": 17,
+              "end": 19
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "兄は毎日練習した。そのため、試験に合格した。",
+          "english": "My older brother practiced every day. As a result, he passed the exam.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ani",
+            "mainichi",
+            "renshuu-suru",
+            "shiken",
+            "goukaku-suru"
+          ],
+          "furigana": "兄[あに]は毎[まい]日[にち]練[れん]習[しゅう]した。そのため、試[し]験[けん]に合[ごう]格[かく]した。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 4,
+              "end": 8,
+              "surface_form": "練習した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "goukaku-suru",
+              "start": 17,
+              "end": 21,
+              "surface_form": "合格した",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -33224,6 +34275,33 @@
         "densha"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "for that reason",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "because of that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "therefore",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as a result",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "電車が遅れた。＿＿＿、会議に遅刻した。",
