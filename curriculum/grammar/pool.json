@@ -10761,5 +10761,762 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "teiru-result": {
+    "accepted_meanings": [
+      "resulting state",
+      "is (in a state)",
+      "has become",
+      "has been",
+      "state after a change"
+    ],
+    "sentences": [
+      {
+        "japanese": "窓が壊れている。",
+        "english": "The window is broken.",
+        "vocabulary_slugs": [
+          "mado",
+          "kowareru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "本が机の下に落ちている。",
+        "english": "The book has fallen and is under the desk.",
+        "vocabulary_slugs": [
+          "hon",
+          "tsukue",
+          "shita-v",
+          "ochiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "机の下に本が落ちている。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私は先生を知っている。",
+        "english": "I know the teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "shiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生を知っている。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "会議の時間はもう決まっている。",
+        "english": "The meeting time has already been decided.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "jikan",
+          "mou",
+          "kimaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "授業はもう始まっている。",
+        "english": "Class has already started.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "mou",
+          "hajimaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雨で服が濡れている。",
+        "english": "My clothes are wet from the rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "fuku",
+          "nureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "乾いているタオルを使いました。",
+        "english": "I used the dry towel.",
+        "vocabulary_slugs": [
+          "kawaku",
+          "taoru",
+          "tsukau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お兄さんはもう結婚している？",
+        "english": "Is your older brother married yet?",
+        "vocabulary_slugs": [
+          "oniisan",
+          "mou",
+          "kekkon-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電車が止まっているので、今日は会社に行かない。",
+        "english": "The trains have stopped, so I'm not going to the office today.",
+        "vocabulary_slugs": [
+          "densha",
+          "tomaru",
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "山の上にはまだ雪が残っている。",
+        "english": "There is still snow left on top of the mountain.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "ue",
+          "mada",
+          "yuki",
+          "nokoru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tearu": {
+    "accepted_meanings": [
+      "has been done",
+      "has been left done",
+      "is done (on purpose)",
+      "resulting state",
+      "has been prepared"
+    ],
+    "sentences": [
+      {
+        "japanese": "窓が開けてある。",
+        "english": "The window has been opened (and left that way).",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "名前が書いてある。",
+        "english": "A name is written (there).",
+        "vocabulary_slugs": [
+          "namae",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "机の上に手紙が置いてある。",
+        "english": "There's a letter placed on the desk.",
+        "vocabulary_slugs": [
+          "tsukue",
+          "ue",
+          "tegami",
+          "oku"
+        ],
+        "alternates": [
+          {
+            "japanese": "手紙が机の上に置いてある。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "自転車が止めてある。",
+        "english": "The bicycle has been parked.",
+        "vocabulary_slugs": [
+          "jitensha",
+          "tomeru-stop"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ビールは冷蔵庫に入れてある。",
+        "english": "The beer has been put in the fridge.",
+        "vocabulary_slugs": [
+          "biiru",
+          "reizouko",
+          "ireru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "冷蔵庫にビールが入れてある。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "会議の部屋はもう予約してある。",
+        "english": "The meeting room has already been booked.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "heya",
+          "mou",
+          "yoyaku-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "テーブルに並べてある皿を使いました。",
+        "english": "I used the plates that had been laid out on the table.",
+        "vocabulary_slugs": [
+          "teeburu",
+          "naraberu",
+          "sara",
+          "tsukau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "切符はもう買ってある？",
+        "english": "Have the tickets been bought already?",
+        "vocabulary_slugs": [
+          "kippu",
+          "mou",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "部屋の電気がつけてあるから、暗くない。",
+        "english": "The room light has been left on, so it isn't dark.",
+        "vocabulary_slugs": [
+          "heya",
+          "denki",
+          "tsukeru",
+          "kurai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "晩ご飯はもう作ってある。",
+        "english": "Dinner has already been made.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "mou",
+          "tsukuru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teoku": {
+    "accepted_meanings": [
+      "do in advance",
+      "do ahead of time",
+      "leave as is",
+      "get it done for later",
+      "prepare by doing"
+    ],
+    "sentences": [
+      {
+        "japanese": "部屋を掃除しておく。",
+        "english": "I'll clean the room ahead of time.",
+        "vocabulary_slugs": [
+          "heya",
+          "souji-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ビールを買っておく。",
+        "english": "I'll buy beer in advance.",
+        "vocabulary_slugs": [
+          "biiru",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "窓を開けておく。",
+        "english": "I'll leave the window open (ahead of time).",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お金を持っておく。",
+        "english": "I'll have money on me (just in case).",
+        "vocabulary_slugs": [
+          "okane",
+          "motsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "試験の前に漢字を覚えておく。",
+        "english": "I'll memorize the kanji before the exam.",
+        "vocabulary_slugs": [
+          "shiken",
+          "mae",
+          "kanji-word",
+          "oboeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "漢字を試験の前に覚えておく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "客が来るので、お茶を準備しておく。",
+        "english": "A guest is coming, so I'll get the tea ready.",
+        "vocabulary_slugs": [
+          "kyaku",
+          "kuru-v",
+          "ocha",
+          "junbi-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ホテルを予約しておく？",
+        "english": "Shall I book the hotel in advance?",
+        "vocabulary_slugs": [
+          "hoteru",
+          "yoyaku-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "財布をかばんに入れておくから、忘れない。",
+        "english": "I'll put my wallet in my bag now, so I won't forget it.",
+        "vocabulary_slugs": [
+          "saifu",
+          "wasureru",
+          "kaban",
+          "ireru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "皿は台所に置いとく。",
+        "english": "I'll leave the plates in the kitchen.",
+        "vocabulary_slugs": [
+          "sara",
+          "daidokoro",
+          "oku"
+        ],
+        "alternates": [
+          {
+            "japanese": "皿は台所に置いておく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "明日は雨なので、傘を出しておく。",
+        "english": "It's going to rain tomorrow, so I'll get my umbrella out now.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ame-v",
+          "kasa",
+          "dasu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teshimau": {
+    "accepted_meanings": [
+      "end up doing",
+      "finish doing",
+      "do completely",
+      "accidentally do",
+      "do (with regret)"
+    ],
+    "sentences": [
+      {
+        "japanese": "宿題を忘れてしまう。",
+        "english": "I'll end up forgetting the homework.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "wasureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お菓子を全部食べてしまう。",
+        "english": "I'll eat up all the snacks.",
+        "vocabulary_slugs": [
+          "okashi",
+          "zenbu",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "財布を無くしてしまう。",
+        "english": "I'll end up losing my wallet.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nakusu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "宿題を全部してしまう。",
+        "english": "I'll get all the homework done.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "zenbu",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "急がなければ、電車に遅れてしまう。",
+        "english": "If I don't hurry, I'll end up missing the train.",
+        "vocabulary_slugs": [
+          "isogu",
+          "densha",
+          "okureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あの話、彼女に言ってしまう？",
+        "english": "Are you going to go and tell her that story?",
+        "vocabulary_slugs": [
+          "ano",
+          "hanashi",
+          "kanojo",
+          "iu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私が作った料理を、犬が食べてしまう。",
+        "english": "The dog ends up eating the food I made.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tsukuru",
+          "ryouri",
+          "inu",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電車で寝てしまう。",
+        "english": "I end up falling asleep on the train.",
+        "vocabulary_slugs": [
+          "densha",
+          "neru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "鍵を無くしちゃう。",
+        "english": "I'll go and lose the key.",
+        "vocabulary_slugs": [
+          "kagi",
+          "nakusu"
+        ],
+        "alternates": [
+          {
+            "japanese": "鍵を無くしてしまう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "その話を聞いて、泣いてしまう。",
+        "english": "I end up crying when I hear that story.",
+        "vocabulary_slugs": [
+          "sono",
+          "hanashi",
+          "kiku-v",
+          "naku"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teiku-tekuru": {
+    "accepted_meanings": [
+      "go on doing",
+      "come to do",
+      "start to",
+      "keep changing",
+      "gradually become",
+      "go and do / come and do"
+    ],
+    "sentences": [
+      {
+        "japanese": "友達がこちらへ歩いてくる。",
+        "english": "My friend is walking this way.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kochira",
+          "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達がこちらに歩いてくる。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私は駅まで歩いていく。",
+        "english": "I'll walk to the station.",
+        "vocabulary_slugs": [
+          "watashi",
+          "eki",
+          "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅まで歩いていく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "犬が公園から走ってくる。",
+        "english": "The dog comes running out of the park.",
+        "vocabulary_slugs": [
+          "inu",
+          "kouen",
+          "hashiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "天気がだんだん暖かくなってくる。",
+        "english": "The weather is gradually getting warmer.",
+        "vocabulary_slugs": [
+          "tenki",
+          "dandan",
+          "atatakai",
+          "naru-become"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "子供はこれから大きくなっていく。",
+        "english": "The child will keep growing bigger from now on.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kore",
+          "ookii",
+          "naru-become"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は毎晩遅く帰ってくる。",
+        "english": "He comes home late every night.",
+        "vocabulary_slugs": [
+          "kare",
+          "maiban",
+          "osoi",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母が作った弁当を持っていく。",
+        "english": "I'll take along the lunch my mother made.",
+        "vocabulary_slugs": [
+          "haha",
+          "tsukuru",
+          "bentou",
+          "motsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "コンビニで何か買ってくる？",
+        "english": "Shall I go and buy something at the convenience store?",
+        "vocabulary_slugs": [
+          "konbini",
+          "nani",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雨が降ってくるので、窓を開けない。",
+        "english": "It's going to start raining, so I won't open the window.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "鳥が山の方へ帰っていく。",
+        "english": "The bird is heading back toward the mountain.",
+        "vocabulary_slugs": [
+          "tori",
+          "yama-v",
+          "hou",
+          "kaeru-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "temo": {
+    "accepted_meanings": [
+      "even if",
+      "even though",
+      "no matter",
+      "even when",
+      "although"
+    ],
+    "sentences": [
+      {
+        "japanese": "元気でも、今日は休む。",
+        "english": "Even though I'm fine, I'm resting today.",
+        "vocabulary_slugs": [
+          "genki",
+          "kyou",
+          "yasumu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "高くても、あの時計を買う。",
+        "english": "Even if it's expensive, I'll buy that watch.",
+        "vocabulary_slugs": [
+          "takai-adj",
+          "ano",
+          "tokei",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雨が降っても、行きます。",
+        "english": "Even if it rains, I'll go.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎日練習しても、上手にならない。",
+        "english": "Even if I practice every day, I don't get any better.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "renshuu-suru",
+          "jouzu",
+          "naru-become"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "薬を飲んでも、治らなかった。",
+        "english": "Even though I took medicine, I didn't get better.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "naoru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "寒くても、泳ぎますか。",
+        "english": "Will you swim even if it's cold?",
+        "vocabulary_slugs": [
+          "samui",
+          "oyogu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "安くても、まずい物は買わない。",
+        "english": "Even if it's cheap, I don't buy food that tastes bad.",
+        "vocabulary_slugs": [
+          "yasui-adj",
+          "mazui",
+          "mono",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生に叱られても、彼は笑っている。",
+        "english": "Even when the teacher scolds him, he keeps smiling.",
+        "vocabulary_slugs": [
+          "sensei",
+          "shikaru",
+          "kare",
+          "warau",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電話しても、彼女は出ない。",
+        "english": "Even when I call, she doesn't pick up.",
+        "vocabulary_slugs": [
+          "denwa-suru",
+          "kanojo",
+          "deru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "暇でも、テレビは見ない。",
+        "english": "Even when I'm free, I don't watch TV.",
+        "vocabulary_slugs": [
+          "hima",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

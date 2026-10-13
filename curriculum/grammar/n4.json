@@ -8582,80 +8582,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "窓が開いています。",
-          "english": "The window is open.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "mado"
-          ],
-          "furigana": "窓[まど]が開[ひら]いています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mado",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "結婚しています。",
-          "english": "I am married.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kekkon-suru"
-          ],
-          "furigana": "結[けっ]婚[こん]しています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kekkon-suru",
-              "start": 0,
-              "end": 4,
-              "surface_form": "結婚して",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "この店は閉まっています。",
-          "english": "This shop is closed.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "mise",
-            "shimeru"
-          ],
-          "furigana": "この店[みせ]は閉[し]まっています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mise",
-              "start": 2,
-              "end": 3
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "道が混んでいます。",
-          "english": "The road is crowded.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "michi-v"
-          ],
-          "furigana": "道[みち]が混[こ]んでいます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "michi-v",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "窓が壊れている。",
           "english": "The window is broken.",
-          "sort_order": 4,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "mado",
             "kowareru"
@@ -8684,7 +8613,7 @@
         {
           "japanese": "本が机の下に落ちている。",
           "english": "The book has fallen and is under the desk.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "hon",
             "tsukue",
@@ -8720,12 +8649,18 @@
             "start": 8,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "机[つくえ]の下[した]に本[ほん]が落[お]ちている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私は先生を知っている。",
           "english": "I know the teacher.",
-          "sort_order": 6,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "watashi",
             "sensei",
@@ -8755,12 +8690,18 @@
             "start": 7,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]を知[し]っている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会議の時間はもう決まっている。",
           "english": "The meeting time has already been decided.",
-          "sort_order": 7,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kaigi",
             "jikan",
@@ -8799,38 +8740,9 @@
           "register": "plain"
         },
         {
-          "japanese": "猫が死んている。",
-          "english": "The cat is dead.",
-          "sort_order": 8,
-          "vocabulary_slugs": [
-            "neko",
-            "shinu"
-          ],
-          "furigana": "猫[ねこ]が死[し]んている。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "neko",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "shinu",
-              "start": 2,
-              "end": 5,
-              "surface_form": "死んて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "授業はもう始まっている。",
           "english": "Class has already started.",
-          "sort_order": 9,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "jugyou",
             "mou",
@@ -8861,6 +8773,209 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "雨で服が濡れている。",
+          "english": "My clothes are wet from the rain.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ame-v",
+            "fuku",
+            "nureru"
+          ],
+          "furigana": "雨[あめ]で服[ふく]が濡[ぬ]れている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nureru",
+              "start": 4,
+              "end": 7,
+              "surface_form": "濡れて",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "乾いているタオルを使いました。",
+          "english": "I used the dry towel.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kawaku",
+            "taoru",
+            "tsukau"
+          ],
+          "furigana": "乾[かわ]いているタオルを使[つか]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kawaku",
+              "start": 0,
+              "end": 3,
+              "surface_form": "乾いて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "taoru",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 9,
+              "end": 14,
+              "surface_form": "使いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "お兄さんはもう結婚している？",
+          "english": "Is your older brother married yet?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "oniisan",
+            "mou",
+            "kekkon-suru"
+          ],
+          "furigana": "お兄[あに]さんはもう結[けっ]婚[こん]している？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "oniisan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kekkon-suru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "結婚して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "電車が止まっているので、今日は会社に行かない。",
+          "english": "The trains have stopped, so I'm not going to the office today.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "densha",
+            "tomaru",
+            "kyou",
+            "kaisha",
+            "iku-v"
+          ],
+          "furigana": "電[でん]車[しゃ]が止[と]まっているので、今日[きょう]は会[かい]社[しゃ]に行[い]かない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tomaru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "止まって",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kyou",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 18,
+              "end": 22,
+              "surface_form": "行かない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "山の上にはまだ雪が残っている。",
+          "english": "There is still snow left on top of the mountain.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "yama-v",
+            "ue",
+            "mada",
+            "yuki",
+            "nokoru"
+          ],
+          "furigana": "山[やま]の上[うえ]にはまだ雪[ゆき]が残[のこ]っている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mada",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yuki",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "nokoru",
+              "start": 9,
+              "end": 12,
+              "surface_form": "残って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 14
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -8869,6 +8984,33 @@
         "mise"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "resulting state",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is (in a state)",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "has become",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "has been",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "state after a change",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "窓が壊れ＿＿＿。",
@@ -8950,70 +9092,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "壁に絵が飾ってあります。",
-          "english": "A picture is displayed on the wall.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "e-picture"
-          ],
-          "furigana": "壁[かべ]に絵[え]が飾[かざ]ってあります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "e-picture",
-              "start": 2,
-              "end": 3
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "窓が開けてあります。",
-          "english": "The window has been left open.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "mado",
-            "akeru"
-          ],
-          "furigana": "窓[まど]が開[あ]けてあります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mado",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "akeru",
-              "start": 2,
-              "end": 5,
-              "surface_form": "開けて",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "もう準備してあります。",
-          "english": "Preparations have already been made.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "junbi-suru"
-          ],
-          "furigana": "もう準[じゅん]備[び]してあります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "junbi-suru",
-              "start": 2,
-              "end": 6,
-              "surface_form": "準備して",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "窓が開けてある。",
           "english": "The window has been opened (and left that way).",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "mado",
             "akeru"
@@ -9042,7 +9123,7 @@
         {
           "japanese": "名前が書いてある。",
           "english": "A name is written (there).",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "namae",
             "kaku"
@@ -9071,7 +9152,7 @@
         {
           "japanese": "机の上に手紙が置いてある。",
           "english": "There's a letter placed on the desk.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "tsukue",
             "ue",
@@ -9107,12 +9188,18 @@
             "start": 9,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "手[て]紙[がみ]が机[つくえ]の上[うえ]に置[お]いてある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "自転車が止めてある。",
           "english": "The bicycle has been parked.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "jitensha",
             "tomeru-stop"
@@ -9139,31 +9226,240 @@
           "register": "plain"
         },
         {
-          "japanese": "電気がつけてあるんだ。",
-          "english": "The light's on, see (someone left it on).",
-          "sort_order": 7,
+          "japanese": "ビールは冷蔵庫に入れてある。",
+          "english": "The beer has been put in the fridge.",
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "denki",
-            "tsukeru"
+            "biiru",
+            "reizouko",
+            "ireru-v"
           ],
-          "furigana": "電[でん]気[き]がつけてあるんだ。",
+          "furigana": "ビールは冷[れい]蔵[ぞう]庫[こ]に入[い]れてある。",
           "word_spans": [
             {
-              "vocabulary_slug": "denki",
+              "vocabulary_slug": "biiru",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
-              "vocabulary_slug": "tsukeru",
-              "start": 3,
-              "end": 6,
-              "surface_form": "つけて",
+              "vocabulary_slug": "reizouko",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 8,
+              "end": 11,
+              "surface_form": "入れて",
               "inflection": "te"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 10,
+            "end": 13
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "冷[れい]蔵[ぞう]庫[こ]にビールが入[い]れてある。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "会議の部屋はもう予約してある。",
+          "english": "The meeting room has already been booked.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kaigi",
+            "heya",
+            "mou",
+            "yoyaku-suru"
+          ],
+          "furigana": "会[かい]議[ぎ]の部屋[へや]はもう予[よ]約[やく]してある。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yoyaku-suru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "予約して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 14
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "テーブルに並べてある皿を使いました。",
+          "english": "I used the plates that had been laid out on the table.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "teeburu",
+            "naraberu",
+            "sara",
+            "tsukau"
+          ],
+          "furigana": "テーブルに並[なら]べてある皿[さら]を使[つか]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "teeburu",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "naraberu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "並べて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "sara",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 12,
+              "end": 17,
+              "surface_form": "使いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "切符はもう買ってある？",
+          "english": "Have the tickets been bought already?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kippu",
+            "mou",
+            "kau-v"
+          ],
+          "furigana": "切[きっ]符[ぷ]はもう買[か]ってある？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kippu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 5,
+              "end": 8,
+              "surface_form": "買って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "部屋の電気がつけてあるから、暗くない。",
+          "english": "The room light has been left on, so it isn't dark.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "heya",
+            "denki",
+            "tsukeru",
+            "kurai"
+          ],
+          "furigana": "部屋[へや]の電[でん]気[き]がつけてあるから、暗[くら]くない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "denki",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tsukeru",
+              "start": 6,
+              "end": 9,
+              "surface_form": "つけて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kurai",
+              "start": 14,
+              "end": 18,
+              "surface_form": "暗くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "晩ご飯はもう作ってある。",
+          "english": "Dinner has already been made.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "bangohan",
+            "mou",
+            "tsukuru"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]はもう作[つく]ってある。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 6,
+              "end": 9,
+              "surface_form": "作って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
           },
           "register": "plain"
         }
@@ -9174,6 +9470,33 @@
         "junbi-suru"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "has been done",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "has been left done",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is done (on purpose)",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "resulting state",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "has been prepared",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "窓が開け＿＿＿。",
@@ -9248,79 +9571,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "明日のために、準備しておきます。",
-          "english": "I'll prepare in advance for tomorrow.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "ashita",
-            "junbi-suru"
-          ],
-          "furigana": "明日[あした]のために、準[じゅん]備[び]しておきます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "junbi-suru",
-              "start": 7,
-              "end": 11,
-              "surface_form": "準備して",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "窓を開けておいてください。",
-          "english": "Please leave the window open.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "mado",
-            "akeru"
-          ],
-          "furigana": "窓[まど]を開[あ]けておいてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mado",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "akeru",
-              "start": 2,
-              "end": 5,
-              "surface_form": "開けて",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "チケットを買っておきました。",
-          "english": "I bought the tickets in advance.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kippu",
-            "kau-v"
-          ],
-          "furigana": "チケットを買[か]っておきました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kau-v",
-              "start": 5,
-              "end": 8,
-              "surface_form": "買って",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "部屋を掃除しておく。",
           "english": "I'll clean the room ahead of time.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "heya",
             "souji-suru"
@@ -9349,7 +9602,7 @@
         {
           "japanese": "ビールを買っておく。",
           "english": "I'll buy beer in advance.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "biiru",
             "kau-v"
@@ -9378,7 +9631,7 @@
         {
           "japanese": "窓を開けておく。",
           "english": "I'll leave the window open (ahead of time).",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "mado",
             "akeru"
@@ -9407,7 +9660,7 @@
         {
           "japanese": "お金を持っておく。",
           "english": "I'll have money on me (just in case).",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "okane",
             "motsu"
@@ -9434,23 +9687,244 @@
           "register": "plain"
         },
         {
-          "japanese": "窓、開けとく。",
-          "english": "I'll leave the window open.",
-          "sort_order": 7,
+          "japanese": "試験の前に漢字を覚えておく。",
+          "english": "I'll memorize the kanji before the exam.",
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "mado"
+            "shiken",
+            "mae",
+            "kanji-word",
+            "oboeru"
           ],
-          "furigana": "窓[まど]、開[あ]けとく。",
+          "furigana": "試[し]験[けん]の前[まえ]に漢[かん]字[じ]を覚[おぼ]えておく。",
           "word_spans": [
             {
-              "vocabulary_slug": "mado",
+              "vocabulary_slug": "shiken",
               "start": 0,
-              "end": 1
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kanji-word",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "oboeru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "覚えて",
+              "inflection": "te"
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 6
+            "start": 10,
+            "end": 13
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "漢[かん]字[じ]を試[し]験[けん]の前[まえ]に覚[おぼ]えておく。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "客が来るので、お茶を準備しておく。",
+          "english": "A guest is coming, so I'll get the tea ready.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kyaku",
+            "kuru-v",
+            "ocha",
+            "junbi-suru"
+          ],
+          "furigana": "客[きゃく]が来[く]るので、お茶[ちゃ]を準[じゅん]備[び]しておく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyaku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "junbi-suru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "準備して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 16
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "ホテルを予約しておく？",
+          "english": "Shall I book the hotel in advance?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "hoteru",
+            "yoyaku-suru"
+          ],
+          "furigana": "ホテルを予[よ]約[やく]しておく？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hoteru",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yoyaku-suru",
+              "start": 4,
+              "end": 8,
+              "surface_form": "予約して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "財布をかばんに入れておくから、忘れない。",
+          "english": "I'll put my wallet in my bag now, so I won't forget it.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "saifu",
+            "wasureru",
+            "kaban",
+            "ireru-v"
+          ],
+          "furigana": "財[さい]布[ふ]をかばんに入[い]れておくから、忘[わす]れない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "saifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 7,
+              "end": 10,
+              "surface_form": "入れて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 15,
+              "end": 19,
+              "surface_form": "忘れない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "皿は台所に置いとく。",
+          "english": "I'll leave the plates in the kitchen.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sara",
+            "daidokoro",
+            "oku"
+          ],
+          "furigana": "皿[さら]は台[だい]所[どころ]に置[お]いとく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sara",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "daidokoro",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "oku",
+              "start": 5,
+              "end": 7,
+              "surface_form": "置い",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "皿[さら]は台[だい]所[どころ]に置[お]いておく。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "明日は雨なので、傘を出しておく。",
+          "english": "It's going to rain tomorrow, so I'll get my umbrella out now.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "ashita",
+            "ame-v",
+            "kasa",
+            "dasu"
+          ],
+          "furigana": "明日[あした]は雨[あめ]なので、傘[かさ]を出[だ]しておく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "dasu",
+              "start": 10,
+              "end": 13,
+              "surface_form": "出して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 15
           },
           "register": "plain"
         }
@@ -9461,6 +9935,33 @@
         "kippu"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "do in advance",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "do ahead of time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "leave as is",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "get it done for later",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "prepare by doing",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Do in advance",
@@ -9553,84 +10054,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "宿題を全部忘れてしまいました。",
-          "english": "I ended up forgetting all my homework.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "shukudai",
-            "zenbu",
-            "wasureru"
-          ],
-          "furigana": "宿[しゅく]題[だい]を全[ぜん]部[ぶ]忘[わす]れてしまいました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shukudai",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "zenbu",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "wasureru",
-              "start": 5,
-              "end": 8,
-              "surface_form": "忘れて",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "財布を無くしてしまいました。",
-          "english": "I ended up losing my wallet.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "saifu",
-            "nakusu"
-          ],
-          "furigana": "財[さい]布[ふ]を無[な]くしてしまいました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "saifu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "nakusu",
-              "start": 3,
-              "end": 7,
-              "surface_form": "無くして",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "もう食べてしまいました。",
-          "english": "I've already finished eating.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "taberu"
-          ],
-          "furigana": "もう食[た]べてしまいました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "taberu",
-              "start": 2,
-              "end": 5,
-              "surface_form": "食べて",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "宿題を忘れてしまう。",
           "english": "I'll end up forgetting the homework.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "shukudai",
             "wasureru"
@@ -9659,7 +10085,7 @@
         {
           "japanese": "お菓子を全部食べてしまう。",
           "english": "I'll eat up all the snacks.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "okashi",
             "zenbu",
@@ -9694,7 +10120,7 @@
         {
           "japanese": "財布を無くしてしまう。",
           "english": "I'll end up losing my wallet.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "saifu",
             "nakusu"
@@ -9723,7 +10149,7 @@
         {
           "japanese": "宿題を全部してしまう。",
           "english": "I'll get all the homework done.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "shukudai",
             "zenbu",
@@ -9756,26 +10182,236 @@
           "register": "plain"
         },
         {
-          "japanese": "忘れちゃう。",
-          "english": "I'll totally forget.",
-          "sort_order": 7,
-          "vocabulary_slugs": [],
-          "furigana": "忘[わす]れちゃう。",
+          "japanese": "急がなければ、電車に遅れてしまう。",
+          "english": "If I don't hurry, I'll end up missing the train.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "isogu",
+            "densha",
+            "okureru"
+          ],
+          "furigana": "急[いそ]がなければ、電[でん]車[しゃ]に遅[おく]れてしまう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "isogu",
+              "start": 0,
+              "end": 2,
+              "surface_form": "急が",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "遅れて",
+              "inflection": "te"
+            }
+          ],
           "grammar_span": {
-            "start": 2,
-            "end": 5
+            "start": 12,
+            "end": 16
           },
           "register": "plain"
         },
         {
-          "japanese": "遊んじゃう。",
-          "english": "I'll go and play (when I shouldn't).",
-          "sort_order": 8,
-          "vocabulary_slugs": [],
-          "furigana": "遊[あそ]んじゃう。",
+          "japanese": "あの話、彼女に言ってしまう？",
+          "english": "Are you going to go and tell her that story?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ano",
+            "hanashi",
+            "kanojo",
+            "iu-v"
+          ],
+          "furigana": "あの話[はなし]、彼[かの]女[じょ]に言[い]ってしまう？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 7,
+              "end": 10,
+              "surface_form": "言って",
+              "inflection": "te"
+            }
+          ],
           "grammar_span": {
-            "start": 2,
-            "end": 5
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "私が作った料理を、犬が食べてしまう。",
+          "english": "The dog ends up eating the food I made.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "watashi",
+            "tsukuru",
+            "ryouri",
+            "inu",
+            "taberu"
+          ],
+          "furigana": "私[わたし]が作[つく]った料[りょう]理[り]を、犬[いぬ]が食[た]べてしまう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "作った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 11,
+              "end": 14,
+              "surface_form": "食べて",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 17
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "電車で寝てしまう。",
+          "english": "I end up falling asleep on the train.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "densha",
+            "neru"
+          ],
+          "furigana": "電[でん]車[しゃ]で寝[ね]てしまう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "寝て",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "鍵を無くしちゃう。",
+          "english": "I'll go and lose the key.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kagi",
+            "nakusu"
+          ],
+          "furigana": "鍵[かぎ]を無[な]くしちゃう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kagi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nakusu",
+              "start": 2,
+              "end": 5,
+              "surface_form": "無くし",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "鍵[かぎ]を無[な]くしてしまう。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "その話を聞いて、泣いてしまう。",
+          "english": "I end up crying when I hear that story.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "sono",
+            "hanashi",
+            "kiku-v",
+            "naku"
+          ],
+          "furigana": "その話[はなし]を聞[き]いて、泣[な]いてしまう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 4,
+              "end": 7,
+              "surface_form": "聞いて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "naku",
+              "start": 8,
+              "end": 11,
+              "surface_form": "泣いて",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 14
           },
           "register": "plain"
         }
@@ -9786,6 +10422,33 @@
         "taberu"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "end up doing",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "finish doing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "do completely",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "accidentally do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "do (with regret)",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Finish completely",
@@ -9885,179 +10548,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "これから寒くなっていくでしょう。",
-          "english": "It will probably keep getting colder.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "samui"
-          ],
-          "furigana": "これから寒[さむ]くなっていくでしょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "samui",
-              "start": 4,
-              "end": 6,
-              "surface_form": "寒く",
-              "inflection": "stem"
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 11
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "日本語が上手になってきました。",
-          "english": "My Japanese has been getting better.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "nihongo",
-            "jouzu"
-          ],
-          "furigana": "日本[にほん]語[ご]が上手[じょうず]になってきました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nihongo",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "jouzu",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "雨が降ってきました。",
-          "english": "It has started raining.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "furu-rain"
-          ],
-          "furigana": "雨[あめ]が降[ふ]ってきました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "furu-rain",
-              "start": 2,
-              "end": 5,
-              "surface_form": "降って",
-              "inflection": "te"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "天気がだんだん暖かくなってくる。",
-          "english": "The weather is gradually getting warmer.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "tenki",
-            "dandan",
-            "naru-become"
-          ],
-          "furigana": "天[てん]気[き]がだんだん暖[あたた]かくなってくる。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "tenki",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "dandan",
-              "start": 3,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 10,
-              "end": 13,
-              "surface_form": "なって",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 12,
-            "end": 15
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "子供はだんだん大きくなっていく。",
-          "english": "The child keeps growing bigger and bigger.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "dandan",
-            "naru-become"
-          ],
-          "furigana": "子[こ]供[ども]はだんだん大[おお]きくなっていく。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "dandan",
-              "start": 3,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 10,
-              "end": 13,
-              "surface_form": "なって",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 12,
-            "end": 15
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "彼は毎晩遅く帰ってくる。",
-          "english": "He comes home late every night.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "kare",
-            "maiban",
-            "kaeru-v"
-          ],
-          "furigana": "彼[かれ]は毎[まい]晩[ばん]遅[おそ]く帰[かえ]ってくる。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "maiban",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kaeru-v",
-              "start": 6,
-              "end": 9,
-              "surface_form": "帰って",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 11
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "友達がこちらへ歩いてくる。",
           "english": "My friend is walking this way.",
-          "sort_order": 6,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "tomodachi",
             "kochira",
@@ -10087,12 +10580,18 @@
             "start": 9,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]がこちらに歩[ある]いてくる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私は駅まで歩いていく。",
           "english": "I'll walk to the station.",
-          "sort_order": 7,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "watashi",
             "eki",
@@ -10122,12 +10621,18 @@
             "start": 7,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "駅[えき]まで歩[ある]いていく。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "犬が公園から走ってくる。",
           "english": "The dog comes running out of the park.",
-          "sort_order": 8,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "inu",
             "kouen",
@@ -10158,6 +10663,297 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "天気がだんだん暖かくなってくる。",
+          "english": "The weather is gradually getting warmer.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "tenki",
+            "dandan",
+            "atatakai",
+            "naru-become"
+          ],
+          "furigana": "天[てん]気[き]がだんだん暖[あたた]かくなってくる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tenki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "dandan",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "atatakai",
+              "start": 7,
+              "end": 10,
+              "surface_form": "暖かく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 10,
+              "end": 13,
+              "surface_form": "なって",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 15
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "子供はこれから大きくなっていく。",
+          "english": "The child will keep growing bigger from now on.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "kore",
+            "ookii",
+            "naru-become"
+          ],
+          "furigana": "子[こ]供[ども]はこれから大[おお]きくなっていく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kore",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ookii",
+              "start": 7,
+              "end": 10,
+              "surface_form": "大きく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 10,
+              "end": 13,
+              "surface_form": "なって",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 15
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "彼は毎晩遅く帰ってくる。",
+          "english": "He comes home late every night.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kare",
+            "maiban",
+            "osoi",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かれ]は毎[まい]晩[ばん]遅[おそ]く帰[かえ]ってくる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "maiban",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "osoi",
+              "start": 4,
+              "end": 6,
+              "surface_form": "遅く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 6,
+              "end": 9,
+              "surface_form": "帰って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "母が作った弁当を持っていく。",
+          "english": "I'll take along the lunch my mother made.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "haha",
+            "tsukuru",
+            "bentou",
+            "motsu"
+          ],
+          "furigana": "母[はは]が作[つく]った弁[べん]当[とう]を持[も]っていく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "作った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "bentou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 8,
+              "end": 11,
+              "surface_form": "持って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "コンビニで何か買ってくる？",
+          "english": "Shall I go and buy something at the convenience store?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "konbini",
+            "nani",
+            "kau-v"
+          ],
+          "furigana": "コンビニで何[なに]か買[か]ってくる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "konbini",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 7,
+              "end": 10,
+              "surface_form": "買って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "雨が降ってくるので、窓を開けない。",
+          "english": "It's going to start raining, so I won't open the window.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "雨[あめ]が降[ふ]ってくるので、窓[まど]を開[あ]けない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "開けない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "鳥が山の方へ帰っていく。",
+          "english": "The bird is heading back toward the mountain.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "tori",
+            "yama-v",
+            "hou",
+            "kaeru-v"
+          ],
+          "furigana": "鳥[とり]が山[やま]の方[ほう]へ帰[かえ]っていく。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tori",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hou",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 6,
+              "end": 9,
+              "surface_form": "帰って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -10166,6 +10962,38 @@
         "furu-rain"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "go on doing",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "come to do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "start to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "keep changing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "gradually become",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "go and do / come and do",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Direction — toward or away from the speaker",
@@ -10267,79 +11095,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "雨が降っても、行きます。",
-          "english": "Even if it rains, I'll go.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "furu-rain"
-          ],
-          "furigana": "雨[あめ]が降[ふ]っても、行[い]きます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "furu-rain",
-              "start": 2,
-              "end": 5,
-              "surface_form": "降って",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "高くても、買います。",
-          "english": "Even if it's expensive, I'll buy it.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "takai-adj"
-          ],
-          "furigana": "高[たか]くても、買[か]います。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "takai-adj",
-              "start": 0,
-              "end": 3,
-              "surface_form": "高くて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "何回聞いても、分かりません。",
-          "english": "No matter how many times I ask, I don't understand.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kai-times",
-            "wakaru"
-          ],
-          "furigana": "何[なん]回[かい]聞[き]いても、分[わ]かりません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wakaru",
-              "start": 7,
-              "end": 13,
-              "surface_form": "分かりません",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "元気でも、今日は休む。",
           "english": "Even though I'm fine, I'm resting today.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "genki",
             "kyou",
@@ -10370,40 +11128,9 @@
           "register": "plain"
         },
         {
-          "japanese": "何回聞いても、分からない。",
-          "english": "No matter how many times I ask, I don't understand.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "kiku-v",
-            "wakaru"
-          ],
-          "furigana": "何[なん]回[かい]聞[き]いても、分[わ]からない。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kiku-v",
-              "start": 2,
-              "end": 5,
-              "surface_form": "聞いて",
-              "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "wakaru",
-              "start": 7,
-              "end": 12,
-              "surface_form": "分からない",
-              "inflection": "nai"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "高くても、あの時計を買う。",
           "english": "Even if it's expensive, I'll buy that watch.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "takai-adj",
             "ano",
@@ -10440,6 +11167,318 @@
             "end": 4
           },
           "register": "plain"
+        },
+        {
+          "japanese": "雨が降っても、行きます。",
+          "english": "Even if it rains, I'll go.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain",
+            "iku-v"
+          ],
+          "furigana": "雨[あめ]が降[ふ]っても、行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "毎日練習しても、上手にならない。",
+          "english": "Even if I practice every day, I don't get any better.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "mainichi",
+            "renshuu-suru",
+            "jouzu",
+            "naru-become"
+          ],
+          "furigana": "毎[まい]日[にち]練[れん]習[しゅう]しても、上手[じょうず]にならない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "練習して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 11,
+              "end": 15,
+              "surface_form": "ならない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "薬を飲んでも、治らなかった。",
+          "english": "Even though I took medicine, I didn't get better.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kusuri",
+            "nomu-v",
+            "naoru"
+          ],
+          "furigana": "薬[くすり]を飲[の]んでも、治[なお]らなかった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kusuri",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "飲んで",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "naoru",
+              "start": 7,
+              "end": 13,
+              "surface_form": "治らなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "寒くても、泳ぎますか。",
+          "english": "Will you swim even if it's cold?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "samui",
+            "oyogu"
+          ],
+          "furigana": "寒[さむ]くても、泳[およ]ぎますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "samui",
+              "start": 0,
+              "end": 3,
+              "surface_form": "寒くて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "oyogu",
+              "start": 5,
+              "end": 9,
+              "surface_form": "泳ぎます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "安くても、まずい物は買わない。",
+          "english": "Even if it's cheap, I don't buy food that tastes bad.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "mazui",
+            "mono",
+            "kau-v"
+          ],
+          "furigana": "安[やす]くても、まずい物[もの]は買[か]わない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 0,
+              "end": 3,
+              "surface_form": "安くて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "mazui",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "買わない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "先生に叱られても、彼は笑っている。",
+          "english": "Even when the teacher scolds him, he keeps smiling.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "sensei",
+            "shikaru",
+            "kare",
+            "warau",
+            "iru-exist"
+          ],
+          "furigana": "先[せん]生[せい]に叱[しか]られても、彼[かれ]は笑[わら]っている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shikaru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "叱ら",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kare",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "warau",
+              "start": 11,
+              "end": 14,
+              "surface_form": "笑って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "電話しても、彼女は出ない。",
+          "english": "Even when I call, she doesn't pick up.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "denwa-suru",
+            "kanojo",
+            "deru-v"
+          ],
+          "furigana": "電[でん]話[わ]しても、彼[かの]女[じょ]は出[で]ない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "denwa-suru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "電話して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 9,
+              "end": 12,
+              "surface_form": "出ない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "暇でも、テレビは見ない。",
+          "english": "Even when I'm free, I don't watch TV.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "hima",
+            "terebi",
+            "miru-v"
+          ],
+          "furigana": "暇[ひま]でも、テレビは見[み]ない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "terebi",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 8,
+              "end": 11,
+              "surface_form": "見ない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -10448,6 +11487,33 @@
         "wakaru"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "even if",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "even though",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "no matter",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "even when",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "although",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "元気＿＿＿、今日は休む。",
