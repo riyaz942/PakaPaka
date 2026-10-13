@@ -40306,30 +40306,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "食事の最中に、電話が鳴りました。",
-          "english": "Right in the middle of the meal, the phone rang.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "shokuji"
-          ],
-          "furigana": "食[しょく]事[じ]の最[さい]中[ちゅう]に、電[でん]話[わ]が鳴[な]りました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shokuji",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "会議の最中に、携帯が鳴った。",
           "english": "My phone rang right in the middle of the meeting.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kaigi",
             "keitai",
@@ -40364,7 +40343,7 @@
         {
           "japanese": "昼ご飯を食べている最中に、部長が来た。",
           "english": "The department head showed up right in the middle of my lunch.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "hirugohan",
             "taberu",
@@ -40408,59 +40387,18 @@
             "start": 9,
             "end": 12
           },
-          "register": "plain"
-        },
-        {
-          "japanese": "友達と電話している最中に、赤ちゃんが泣いた。",
-          "english": "The baby cried right in the middle of my phone call with a friend.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "tomodachi",
-            "denwa",
-            "iru-exist",
-            "akachan",
-            "naku"
-          ],
-          "furigana": "友[とも]達[だち]と電[でん]話[わ]している最[さい]中[ちゅう]に、赤[あか]ちゃんが泣[な]いた。",
-          "word_spans": [
+          "register": "plain",
+          "build_alternates": [
             {
-              "vocabulary_slug": "tomodachi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "denwa",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 7,
-              "end": 9
-            },
-            {
-              "vocabulary_slug": "akachan",
-              "start": 13,
-              "end": 17
-            },
-            {
-              "vocabulary_slug": "naku",
-              "start": 18,
-              "end": 21,
-              "surface_form": "泣いた",
-              "inflection": "ta"
+              "furigana": "昼[ひる]ご飯[はん]を食[た]べている間[あいだ]に、部[ぶ]長[ちょう]が来[き]た。",
+              "kind": "other_grammar"
             }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 12
-          },
-          "register": "plain"
+          ]
         },
         {
           "japanese": "映画を見ている最中に、地震が起きた。",
           "english": "An earthquake hit right in the middle of the movie.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "eiga",
             "miru-v",
@@ -40504,12 +40442,18 @@
             "start": 7,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "映[えい]画[が]を見[み]ている間[あいだ]に、地[じ]震[しん]が起[お]きた。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "食事の最中に、社長から電話が来た。",
           "english": "A call from the company president came in right in the middle of dinner.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "shokuji",
             "shachou",
@@ -40546,12 +40490,311 @@
             "end": 6
           },
           "register": "plain"
+        },
+        {
+          "japanese": "友達と電話している最中に、赤ちゃんが泣いた。",
+          "english": "The baby cried right in the middle of my phone call with a friend.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "denwa",
+            "suru",
+            "iru-exist",
+            "akachan",
+            "naku"
+          ],
+          "furigana": "友[とも]達[だち]と電[でん]話[わ]している最[さい]中[ちゅう]に、赤[あか]ちゃんが泣[な]いた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "denwa",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "akachan",
+              "start": 13,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "naku",
+              "start": 18,
+              "end": 21,
+              "surface_form": "泣いた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "授業の最中に、携帯は使いません。",
+          "english": "I don't use my phone in the middle of class.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "jugyou",
+            "keitai",
+            "tsukau"
+          ],
+          "furigana": "授[じゅ]業[ぎょう]の最[さい]中[ちゅう]に、携[けい]帯[たい]は使[つか]いません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "keitai",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 10,
+              "end": 15,
+              "surface_form": "使いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先生の話の最中に、寝ましたか。",
+          "english": "Did you fall asleep right in the middle of the teacher's talk?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "sensei",
+            "hanashi",
+            "neru"
+          ],
+          "furigana": "先[せん]生[せい]の話[はなし]の最[さい]中[ちゅう]に、寝[ね]ましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "寝ました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "試験の最中に、お腹が痛くなった。",
+          "english": "My stomach started to hurt right in the middle of the exam.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shiken",
+            "onaka",
+            "itai",
+            "naru-become"
+          ],
+          "furigana": "試[し]験[けん]の最[さい]中[ちゅう]に、お腹[なか]が痛[いた]くなった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiken",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "onaka",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 10,
+              "end": 12,
+              "surface_form": "痛く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 12,
+              "end": 15,
+              "surface_form": "なった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "寝ている最中に、猫が顔の上に乗った。",
+          "english": "Right in the middle of my sleep, the cat climbed onto my face.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "neru",
+            "iru-exist",
+            "neko",
+            "kao",
+            "ue",
+            "noru"
+          ],
+          "furigana": "寝[ね]ている最[さい]中[ちゅう]に、猫[ねこ]が顔[かお]の上[うえ]に乗[の]った。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neru",
+              "start": 0,
+              "end": 2,
+              "surface_form": "寝て",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kao",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "noru",
+              "start": 14,
+              "end": 17,
+              "surface_form": "乗った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "料理をしている最中に、卵を落とした。",
+          "english": "I dropped an egg right in the middle of cooking.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "ryouri",
+            "suru",
+            "iru-exist",
+            "tamago",
+            "otosu"
+          ],
+          "furigana": "料[りょう]理[り]をしている最[さい]中[ちゅう]に、卵[たまご]を落[お]とした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "して",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tamago",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "otosu",
+              "start": 13,
+              "end": 17,
+              "surface_form": "落とした",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
         "shokuji"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "right in the middle of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the middle of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the midst of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "during",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "会議の＿＿＿、携帯が鳴った。",
@@ -40625,36 +40868,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "名前および住所を書いてください。",
-          "english": "Please write your name and address.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "namae",
-            "juusho"
-          ],
-          "furigana": "名[な]前[まえ]および住[じゅう]所[しょ]を書[か]いてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "namae",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "juusho",
-              "start": 5,
-              "end": 7
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "会議の場所および時間は、まだ決まっていません。",
           "english": "The meeting's location and time have not been decided yet.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kaigi",
             "basho",
@@ -40707,97 +40923,9 @@
           "register": "polite"
         },
         {
-          "japanese": "名前および住所を、ここに書いてください。",
-          "english": "Please write your name and address here.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "namae",
-            "juusho",
-            "koko",
-            "kaku"
-          ],
-          "furigana": "名[な]前[まえ]および住[じゅう]所[しょ]を、ここに書[か]いてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "namae",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "juusho",
-              "start": 5,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "koko",
-              "start": 9,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "kaku",
-              "start": 12,
-              "end": 15,
-              "surface_form": "書いて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "学生および先生は、この入口から入ってください。",
-          "english": "Students and teachers, please enter through this entrance.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "gakusei",
-            "sensei",
-            "kono",
-            "iriguchi",
-            "hairu-v"
-          ],
-          "furigana": "学[がく]生[せい]および先[せん]生[せい]は、この入[いり]口[ぐち]から入[はい]ってください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "gakusei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "sensei",
-              "start": 5,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "kono",
-              "start": 9,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "iriguchi",
-              "start": 11,
-              "end": 13
-            },
-            {
-              "vocabulary_slug": "hairu-v",
-              "start": 15,
-              "end": 18,
-              "surface_form": "入って",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "試験の結果および説明は、金曜日に伝えます。",
           "english": "The exam results and the explanation will be given on Friday.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "shiken",
             "kekka",
@@ -40839,19 +40967,119 @@
             "start": 5,
             "end": 8
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "金[きん]曜[よう]日[び]に、試[し]験[けん]の結[けっ]果[か]および説[せつ]明[めい]を伝[つた]えます。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "名前および住所を、ここに書きます。",
+          "english": "You write your name and address here.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "namae",
+            "juusho",
+            "koko",
+            "kaku"
+          ],
+          "furigana": "名[な]前[まえ]および住[じゅう]所[しょ]を、ここに書[か]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "namae",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "juusho",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 12,
+              "end": 16,
+              "surface_form": "書きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "ここに名[な]前[まえ]および住[じゅう]所[しょ]を書[か]きます。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "学生および先生は、この入口から入ります。",
+          "english": "Students and teachers enter through this entrance.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "gakusei",
+            "sensei",
+            "kono",
+            "iriguchi",
+            "hairu-v"
+          ],
+          "furigana": "学[がく]生[せい]および先[せん]生[せい]は、この入[いり]口[ぐち]から入[はい]ります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "iriguchi",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "hairu-v",
+              "start": 15,
+              "end": 19,
+              "surface_form": "入ります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
           "register": "polite"
         },
         {
-          "japanese": "書類および荷物は、受付に出してください。",
-          "english": "Please hand in your documents and luggage at the reception desk.",
-          "sort_order": 5,
+          "japanese": "書類および荷物は、受付に出します。",
+          "english": "Documents and luggage are handed in at the reception desk.",
+          "sort_order": 4,
           "vocabulary_slugs": [
             "shorui",
             "nimotsu",
             "uketsuke",
             "dasu"
           ],
-          "furigana": "書[しょ]類[るい]および荷[に]物[もつ]は、受[うけ]付[つけ]に出[だ]してください。",
+          "furigana": "書[しょ]類[るい]および荷[に]物[もつ]は、受[うけ]付[つけ]に出[だ]します。",
           "word_spans": [
             {
               "vocabulary_slug": "shorui",
@@ -40871,9 +41099,258 @@
             {
               "vocabulary_slug": "dasu",
               "start": 12,
-              "end": 15,
-              "surface_form": "出して",
+              "end": 16,
+              "surface_form": "出します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "図書館では、飲み物および食べ物を売っていません。",
+          "english": "The library doesn't sell drinks or food.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "toshokan",
+            "nomimono",
+            "tabemono",
+            "uru",
+            "iru-exist"
+          ],
+          "furigana": "図[と]書[しょ]館[かん]では、飲[の]み物[もの]および食[た]べ物[もの]を売[う]っていません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nomimono",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "tabemono",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "uru",
+              "start": 16,
+              "end": 19,
+              "surface_form": "売って",
               "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 19,
+              "end": 23,
+              "surface_form": "いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "日本の文化および歴史に興味がありますか。",
+          "english": "Are you interested in Japanese culture and history?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "nihon",
+            "bunka",
+            "rekishi",
+            "kyoumi",
+            "aru"
+          ],
+          "furigana": "日本[にほん]の文[ぶん]化[か]および歴[れき]史[し]に興[きょう]味[み]がありますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "rekishi",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kyoumi",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 14,
+              "end": 18,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "去年、輸出および輸入が増えました。",
+          "english": "Last year, exports and imports went up.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kyonen",
+            "yushutsu",
+            "yunyuu",
+            "fueru-v"
+          ],
+          "furigana": "去[きょ]年[ねん]、輸[ゆ]出[しゅつ]および輸[ゆ]入[にゅう]が増[ふ]えました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyonen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yushutsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yunyuu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "fueru-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "増えました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "輸[ゆ]出[しゅつ]および輸[ゆ]入[にゅう]が去[きょ]年[ねん]増[ふ]えました。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "社員およびその家族は、この病院を使います。",
+          "english": "Employees and their families use this hospital.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "shain",
+            "sono",
+            "kazoku",
+            "kono",
+            "byouin",
+            "tsukau"
+          ],
+          "furigana": "社[しゃ]員[いん]およびその家[か]族[ぞく]は、この病[びょう]院[いん]を使[つか]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shain",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "byouin",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 16,
+              "end": 20,
+              "surface_form": "使います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "環境および健康の問題を、専門家が説明しました。",
+          "english": "An expert explained the environmental and health issues.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kankyou",
+            "kenkou",
+            "mondai",
+            "senmonka",
+            "setsumei",
+            "suru"
+          ],
+          "furigana": "環[かん]境[きょう]および健[けん]康[こう]の問[もん]題[だい]を、専[せん]門[もん]家[か]が説[せつ]明[めい]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kankyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kenkou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "senmonka",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "setsumei",
+              "start": 16,
+              "end": 18
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 18,
+              "end": 22,
+              "surface_form": "しました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -40888,6 +41365,28 @@
         "juusho"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "and",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as well as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "and also",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "along with",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "会議の場所＿＿＿時間は、まだ決まっていません。",
@@ -40962,36 +41461,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "先生に対して失礼な態度を取りました。",
-          "english": "He took a rude attitude towards the teacher.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "sensei",
-            "taido"
-          ],
-          "furigana": "先[せん]生[せい]に対[たい]して失[しつ]礼[れい]な態[たい]度[ど]を取[と]りました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "taido",
-              "start": 9,
-              "end": 11
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "先生は生徒の質問に対して丁寧に答えます。",
           "english": "The teacher answers students' questions politely.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "sensei",
             "seito",
@@ -41036,7 +41508,7 @@
         {
           "japanese": "彼は動物に対してとても優しいです。",
           "english": "He is very gentle toward animals.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "doubutsu",
@@ -41075,7 +41547,7 @@
         {
           "japanese": "彼の子供に対する態度は厳しいです。",
           "english": "His attitude toward the children is strict.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kare",
             "kodomo-v",
@@ -41114,7 +41586,7 @@
         {
           "japanese": "私の意見に対して、彼女は反対しました。",
           "english": "In response to my opinion, she objected.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "watashi",
             "iken",
@@ -41156,51 +41628,18 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "彼の説明に対して、みんなは質問しました。",
-          "english": "In response to his explanation, everyone asked questions.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "kare",
-            "setsumei",
-            "minna",
-            "shitsumon"
-          ],
-          "furigana": "彼[かれ]の説[せつ]明[めい]に対[たい]して、みんなは質[しつ]問[もん]しました。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "setsumei",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "minna",
-              "start": 9,
-              "end": 12
-            },
-            {
-              "vocabulary_slug": "shitsumon",
-              "start": 13,
-              "end": 15
+              "furigana": "彼[かの]女[じょ]は私[わたし]の意[い]見[けん]に対[たい]して反[はん]対[たい]しました。",
+              "kind": "valid"
             }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 8
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "あの店員はどのお客さんに対しても親切です。",
           "english": "That clerk is kind toward every customer.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "ano",
             "ten-in",
@@ -41241,6 +41680,223 @@
             "end": 15
           },
           "register": "polite"
+        },
+        {
+          "japanese": "弟は、親に対して全然謝りません。",
+          "english": "My younger brother never apologizes to our parents.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "otouto",
+            "oya",
+            "zenzen",
+            "ayamaru"
+          ],
+          "furigana": "弟[おとうと]は、親[おや]に対[たい]して全[ぜん]然[ぜん]謝[あやま]りません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "oya",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "zenzen",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "ayamaru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "謝りません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼の説明に対して、みんなは質問しました。",
+          "english": "In response to his explanation, everyone asked questions.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kare",
+            "setsumei",
+            "minna",
+            "shitsumon",
+            "suru"
+          ],
+          "furigana": "彼[かれ]の説[せつ]明[めい]に対[たい]して、みんなは質[しつ]問[もん]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "setsumei",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "minna",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "shitsumon",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 15,
+              "end": 19,
+              "surface_form": "しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "社長に対して、どんな言葉を使いますか。",
+          "english": "What kind of words do you use toward the company president?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shachou",
+            "donna",
+            "kotoba",
+            "tsukau"
+          ],
+          "furigana": "社[しゃ]長[ちょう]に対[たい]して、どんな言[こと]葉[ば]を使[つか]いますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shachou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "donna",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kotoba",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 13,
+              "end": 17,
+              "surface_form": "使います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "父は私の夢に対して何も言いませんでした。",
+          "english": "My father said nothing about my dream.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "chichi",
+            "watashi",
+            "yume",
+            "nani-mo",
+            "iu-v"
+          ],
+          "furigana": "父[ちち]は私[わたし]の夢[ゆめ]に対[たい]して何[なに]も言[い]いませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yume",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nani-mo",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 11,
+              "end": 19,
+              "surface_form": "言いませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "その質問に対する答えが分かりません。",
+          "english": "I don't know the answer to that question.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "sono",
+            "shitsumon",
+            "kotae",
+            "wakaru"
+          ],
+          "furigana": "その質[しつ]問[もん]に対[たい]する答[こた]えが分[わ]かりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shitsumon",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kotae",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 11,
+              "end": 17,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -41248,6 +41904,38 @@
         "taido"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "towards",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "toward",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "against",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in response to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in contrast to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "先生は生徒の質問＿＿＿丁寧に答えます。",

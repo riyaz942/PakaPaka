@@ -18589,5 +18589,408 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "saichuu-ni": {
+    "accepted_meanings": [
+      "right in the middle of",
+      "in the middle of",
+      "in the midst of",
+      "during",
+      "while"
+    ],
+    "sentences": [
+      {
+        "japanese": "会議の最中に、携帯が鳴った。",
+        "english": "My phone rang right in the middle of the meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "keitai",
+          "naru-ring"
+        ]
+      },
+      {
+        "japanese": "昼ご飯を食べている最中に、部長が来た。",
+        "english": "The department head showed up right in the middle of my lunch.",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "taberu",
+          "iru-exist",
+          "buchou",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "昼ご飯を食べている間に、部長が来た。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "映画を見ている最中に、地震が起きた。",
+        "english": "An earthquake hit right in the middle of the movie.",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v",
+          "iru-exist",
+          "jishin",
+          "okiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画を見ている間に、地震が起きた。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "食事の最中に、社長から電話が来た。",
+        "english": "A call from the company president came in right in the middle of dinner.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "shachou",
+          "denwa",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "友達と電話している最中に、赤ちゃんが泣いた。",
+        "english": "The baby cried right in the middle of my phone call with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "denwa",
+          "suru",
+          "iru-exist",
+          "akachan",
+          "naku"
+        ]
+      },
+      {
+        "japanese": "授業の最中に、携帯は使いません。",
+        "english": "I don't use my phone in the middle of class.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "keitai",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "先生の話の最中に、寝ましたか。",
+        "english": "Did you fall asleep right in the middle of the teacher's talk?",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanashi",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "試験の最中に、お腹が痛くなった。",
+        "english": "My stomach started to hurt right in the middle of the exam.",
+        "vocabulary_slugs": [
+          "shiken",
+          "onaka",
+          "itai",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "寝ている最中に、猫が顔の上に乗った。",
+        "english": "Right in the middle of my sleep, the cat climbed onto my face.",
+        "vocabulary_slugs": [
+          "neru",
+          "iru-exist",
+          "neko",
+          "kao",
+          "ue",
+          "noru"
+        ]
+      },
+      {
+        "japanese": "料理をしている最中に、卵を落とした。",
+        "english": "I dropped an egg right in the middle of cooking.",
+        "vocabulary_slugs": [
+          "ryouri",
+          "suru",
+          "iru-exist",
+          "tamago",
+          "otosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oyobi": {
+    "accepted_meanings": [
+      "and",
+      "as well as",
+      "and also",
+      "along with"
+    ],
+    "sentences": [
+      {
+        "japanese": "会議の場所および時間は、まだ決まっていません。",
+        "english": "The meeting's location and time have not been decided yet.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "basho",
+          "jikan",
+          "mada",
+          "kimaru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "試験の結果および説明は、金曜日に伝えます。",
+        "english": "The exam results and the explanation will be given on Friday.",
+        "vocabulary_slugs": [
+          "shiken",
+          "kekka",
+          "setsumei",
+          "kinyoubi",
+          "tsutaeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "金曜日に、試験の結果および説明を伝えます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "名前および住所を、ここに書きます。",
+        "english": "You write your name and address here.",
+        "vocabulary_slugs": [
+          "namae",
+          "juusho",
+          "koko",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここに名前および住所を書きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "学生および先生は、この入口から入ります。",
+        "english": "Students and teachers enter through this entrance.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "sensei",
+          "kono",
+          "iriguchi",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "書類および荷物は、受付に出します。",
+        "english": "Documents and luggage are handed in at the reception desk.",
+        "vocabulary_slugs": [
+          "shorui",
+          "nimotsu",
+          "uketsuke",
+          "dasu"
+        ]
+      },
+      {
+        "japanese": "図書館では、飲み物および食べ物を売っていません。",
+        "english": "The library doesn't sell drinks or food.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "nomimono",
+          "tabemono",
+          "uru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "日本の文化および歴史に興味がありますか。",
+        "english": "Are you interested in Japanese culture and history?",
+        "vocabulary_slugs": [
+          "nihon",
+          "bunka",
+          "rekishi",
+          "kyoumi",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "去年、輸出および輸入が増えました。",
+        "english": "Last year, exports and imports went up.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "yushutsu",
+          "yunyuu",
+          "fueru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "輸出および輸入が去年増えました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "社員およびその家族は、この病院を使います。",
+        "english": "Employees and their families use this hospital.",
+        "vocabulary_slugs": [
+          "shain",
+          "sono",
+          "kazoku",
+          "kono",
+          "byouin",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "環境および健康の問題を、専門家が説明しました。",
+        "english": "An expert explained the environmental and health issues.",
+        "vocabulary_slugs": [
+          "kankyou",
+          "kenkou",
+          "mondai",
+          "senmonka",
+          "setsumei",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-taishite": {
+    "accepted_meanings": [
+      "towards",
+      "toward",
+      "to",
+      "against",
+      "in response to",
+      "in contrast to"
+    ],
+    "sentences": [
+      {
+        "japanese": "先生は生徒の質問に対して丁寧に答えます。",
+        "english": "The teacher answers students' questions politely.",
+        "vocabulary_slugs": [
+          "sensei",
+          "seito",
+          "shitsumon",
+          "teinei",
+          "kotae"
+        ]
+      },
+      {
+        "japanese": "彼は動物に対してとても優しいです。",
+        "english": "He is very gentle toward animals.",
+        "vocabulary_slugs": [
+          "kare",
+          "doubutsu",
+          "totemo",
+          "yasashii-n4"
+        ]
+      },
+      {
+        "japanese": "彼の子供に対する態度は厳しいです。",
+        "english": "His attitude toward the children is strict.",
+        "vocabulary_slugs": [
+          "kare",
+          "kodomo-v",
+          "taido",
+          "kibishii"
+        ]
+      },
+      {
+        "japanese": "私の意見に対して、彼女は反対しました。",
+        "english": "In response to my opinion, she objected.",
+        "vocabulary_slugs": [
+          "watashi",
+          "iken",
+          "kanojo",
+          "hantai",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼女は私の意見に対して反対しました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あの店員はどのお客さんに対しても親切です。",
+        "english": "That clerk is kind toward every customer.",
+        "vocabulary_slugs": [
+          "ano",
+          "ten-in",
+          "dono",
+          "okyakusan",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "弟は、親に対して全然謝りません。",
+        "english": "My younger brother never apologizes to our parents.",
+        "vocabulary_slugs": [
+          "otouto",
+          "oya",
+          "zenzen",
+          "ayamaru"
+        ]
+      },
+      {
+        "japanese": "彼の説明に対して、みんなは質問しました。",
+        "english": "In response to his explanation, everyone asked questions.",
+        "vocabulary_slugs": [
+          "kare",
+          "setsumei",
+          "minna",
+          "shitsumon",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "社長に対して、どんな言葉を使いますか。",
+        "english": "What kind of words do you use toward the company president?",
+        "vocabulary_slugs": [
+          "shachou",
+          "donna",
+          "kotoba",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "父は私の夢に対して何も言いませんでした。",
+        "english": "My father said nothing about my dream.",
+        "vocabulary_slugs": [
+          "chichi",
+          "watashi",
+          "yume",
+          "nani-mo",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "その質問に対する答えが分かりません。",
+        "english": "I don't know the answer to that question.",
+        "vocabulary_slugs": [
+          "sono",
+          "shitsumon",
+          "kotae",
+          "wakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
