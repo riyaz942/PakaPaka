@@ -42,6 +42,7 @@ sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 from generate_content.mnemonic_context import reading_composition  # noqa: E402
 from levels import place  # noqa: E402
@@ -484,29 +485,65 @@ def _load_lesson(slug, known_readings):
     return meta, _annotate_lesson_markdown(body, known_readings, label)
 
 
+def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors):
+    """One grammar example sentence with the Read/Build card fields
+    (docs/superpowers/specs/2026-10-13-grammar-read-build-srs-design.md §4.2)."""
+    jp, vslugs = example["jp"], example["vocab"]
+    for vs in vslugs:
+        if vs not in vocab_forms:
+            errors.append(f"grammar {g['slug']} example {sort_order} references unknown vocab '{vs}'")
+    sentence = {
+        "japanese": jp,
+        "english": example["en"],
+        "sort_order": sort_order,
+        "vocabulary_slugs": vslugs,
+    }
+    sentence_furigana = furigana_lib.annotate_sentence(jp, known_readings)
+    if sentence_furigana:
+        sentence["furigana"] = sentence_furigana
+    word_spans = _example_word_spans(jp, vslugs, vocab_forms)
+    if word_spans:
+        sentence["word_spans"] = word_spans
+    try:
+        span = grammar_sentences_lib.grammar_span(jp, g["accepted_forms"], example.get("form"))
+    except ValueError as error:
+        errors.append(f"grammar {g['slug']} example {sort_order}: {error}")
+        span = None
+    if span:
+        sentence["grammar_span"] = span
+    sentence["register"] = grammar_sentences_lib.register_of(jp)
+    if example.get("alts"):
+        sentence["build_alternates"] = [
+            {"furigana": furigana, "kind": kind} for furigana, kind in example["alts"]
+        ]
+    return sentence
+
+
+def _cloze_derived_examples(g, known_vocab_forms):
+    """Filled cloze variants as extra pool sentences (spec §4.1 source 2).
+    Their vocabulary links are derived from the level's taught words, the
+    same way a passage links every word it contains."""
+    derived = []
+    existing = {e["jp"] for e in g["examples"]}
+    for example in grammar_sentences_lib.cloze_examples(g.get("cloze_variants", []), existing):
+        slugs = []
+        for span in spans_lib.derive_spans(example["jp"], known_vocab_forms):
+            if span["vocabulary_slug"] not in slugs:
+                slugs.append(span["vocabulary_slug"])
+        derived.append({**example, "vocab": slugs, "alts": []})
+    return derived
+
+
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
-                         all_grammar_slugs=()):
+                         all_grammar_slugs=(), known_vocab_forms=None):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
-        example_sentences = []
-        for j, (jp, en, vslugs) in enumerate(g["examples"]):
-            for vs in vslugs:
-                if vs not in vocab_forms:
-                    errors.append(f"grammar {g['slug']} example {j} references unknown vocab '{vs}'")
-            sentence = {
-                "japanese": jp,
-                "english": en,
-                "sort_order": j,
-                "vocabulary_slugs": vslugs,
-            }
-            sentence_furigana = furigana_lib.annotate_sentence(jp, known_readings)
-            if sentence_furigana:
-                sentence["furigana"] = sentence_furigana
-            word_spans = _example_word_spans(jp, vslugs, vocab_forms)
-            if word_spans:
-                sentence["word_spans"] = word_spans
-            example_sentences.append(sentence)
+        examples = list(g["examples"]) + _cloze_derived_examples(g, known_vocab_forms or {})
+        example_sentences = [
+            _grammar_example(example, j, g, vocab_forms, known_readings, errors)
+            for j, example in enumerate(examples)
+        ]
         for vs in g["vocabulary_slugs"]:
             if vs not in vocab_forms:
                 errors.append(f"grammar {g['slug']} vocabulary_slugs references unknown vocab '{vs}'")
@@ -523,6 +560,11 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
         }
         if "family" in g:
             item["family"] = g["family"]
+        if g.get("accepted_meanings"):
+            item["accepted_answers"] = [
+                {"answer_type": "meaning", "answer_text": meaning, "is_primary": index == 0}
+                for index, meaning in enumerate(g["accepted_meanings"])
+            ]
         if g.get("uses"):
             uses = []
             for use in g["uses"]:
@@ -849,7 +891,8 @@ def generate_level(level):
     write_json(
         os.path.join(CURRICULUM_DIR, "grammar", f"{level}.json"),
         _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
-                             known_readings, all_grammar_slugs),
+                             known_readings, all_grammar_slugs,
+                             known_vocab_forms={v["slug"]: v["form"] for v in known}),
     )
     passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
     write_json(

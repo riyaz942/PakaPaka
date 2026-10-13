@@ -4,7 +4,8 @@
 Each entry is a dict:
   slug, primary_form, meaning, structure, mnemonic, conjugation_rules (dict),
   accepted_forms (list[str]), examples (list of (jp, en, [vocab_slugs])),
-  vocabulary_slugs (list[str]), family (str), and optionally cloze_variants
+  vocabulary_slugs (list[str]), family (str), accepted_meanings (list[str]),
+  and optionally cloze_variants
   (list of dicts with jp_cloze, english, answer, nudge; sort_order is assigned
   at generation time).
 
@@ -12,8 +13,11 @@ Example sentences reference real N5 vocabulary slugs defined in n5_vocab.py.
 """
 
 # Shorthand for building an example tuple.
-def ex(jp, en, vocab=None):
-    return (jp, en, vocab or [])
+def ex(jp, en, vocab=None, *, form=None, alts=None):
+    """One example sentence. `form` names the grammar chunk to highlight when
+    the accepted forms alone are ambiguous; `alts` lists other Build-card
+    answers as (furigana, kind) with kind "valid" or "other_grammar"."""
+    return {"jp": jp, "en": en, "vocab": vocab or [], "form": form, "alts": alts or []}
 
 
 N5_GRAMMAR = [
