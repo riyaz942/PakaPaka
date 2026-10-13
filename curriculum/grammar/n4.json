@@ -22590,11 +22590,17 @@
           "english": "These shoes are easy to walk in.",
           "sort_order": 0,
           "vocabulary_slugs": [
+            "kono",
             "kutsu",
             "aruku"
           ],
           "furigana": "この靴[くつ]は歩[ある]きやすいです。",
           "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
             {
               "vocabulary_slug": "kutsu",
               "start": 2,
@@ -22619,11 +22625,17 @@
           "english": "This kanji is hard to read.",
           "sort_order": 1,
           "vocabulary_slugs": [
+            "kono",
             "kanji-word",
             "yomu"
           ],
           "furigana": "この漢[かん]字[じ]は読[よ]みにくいです。",
           "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
             {
               "vocabulary_slug": "kanji-word",
               "start": 2,
@@ -22644,43 +22656,50 @@
           "register": "polite"
         },
         {
-          "japanese": "この本は分かりやすいです。",
-          "english": "This book is easy to understand.",
+          "japanese": "先生の話は分かりやすいです。",
+          "english": "The teacher's talk is easy to understand.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "hon",
+            "sensei",
+            "hanashi",
             "wakaru"
           ],
-          "furigana": "この本[ほん]は分[わ]かりやすいです。",
+          "furigana": "先[せん]生[せい]の話[はなし]は分[わ]かりやすいです。",
           "word_spans": [
             {
-              "vocabulary_slug": "hon",
-              "start": 2,
-              "end": 3
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 3,
+              "end": 4
             },
             {
               "vocabulary_slug": "wakaru",
-              "start": 4,
-              "end": 7,
+              "start": 5,
+              "end": 8,
               "surface_form": "分かり",
               "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 10
+            "start": 8,
+            "end": 11
           },
           "register": "polite"
         },
         {
-          "japanese": "このペンは書きにくいです。",
-          "english": "This pen is hard to write with.",
+          "japanese": "このペンは書きにくいですね。",
+          "english": "This pen is hard to write with, isn't it?",
           "sort_order": 3,
           "vocabulary_slugs": [
             "kono",
-            "pen"
+            "pen",
+            "kaku"
           ],
-          "furigana": "このペンは書[か]きにくいです。",
+          "furigana": "このペンは書[か]きにくいですね。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -22691,6 +22710,13 @@
               "vocabulary_slug": "pen",
               "start": 2,
               "end": 4
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 5,
+              "end": 7,
+              "surface_form": "書き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -22700,24 +22726,67 @@
           "register": "polite"
         },
         {
-          "japanese": "この本は読みやすいです。",
-          "english": "This book is easy to read.",
+          "japanese": "冬は朝起きにくいです。",
+          "english": "In winter it's hard to get up in the morning.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "kono",
-            "hon"
+            "fuyu",
+            "asa",
+            "okiru"
           ],
-          "furigana": "この本[ほん]は読[よ]みやすいです。",
+          "furigana": "冬[ふゆ]は朝[あさ]起[お]きにくいです。",
           "word_spans": [
             {
-              "vocabulary_slug": "kono",
+              "vocabulary_slug": "fuyu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "asa",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "起き",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "その箸は使いやすいですか。",
+          "english": "Are those chopsticks easy to use?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "sono",
+            "hashi-chopsticks",
+            "tsukau"
+          ],
+          "furigana": "その箸[はし]は使[つか]いやすいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "hon",
+              "vocabulary_slug": "hashi-chopsticks",
               "start": 2,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 4,
+              "end": 6,
+              "surface_form": "使い",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -22727,39 +22796,99 @@
           "register": "polite"
         },
         {
-          "japanese": "彼の話は分かりやすいです。",
-          "english": "His talk is easy to understand.",
-          "sort_order": 5,
+          "japanese": "昨日買ったかばんは持ちやすいです。",
+          "english": "The bag I bought yesterday is easy to carry.",
+          "sort_order": 6,
           "vocabulary_slugs": [
-            "kare",
-            "hanashi"
+            "kinou",
+            "kau-v",
+            "kaban",
+            "motsu"
           ],
-          "furigana": "彼[かれ]の話[はなし]は分[わ]かりやすいです。",
+          "furigana": "昨日[きのう]買[か]ったかばんは持[も]ちやすいです。",
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "kinou",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "hanashi",
+              "vocabulary_slug": "kau-v",
               "start": 2,
-              "end": 3
+              "end": 5,
+              "surface_form": "買った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 9,
+              "end": 11,
+              "surface_form": "持ち",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 10
+            "start": 11,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この地図は分かりにくいので、使いません。",
+          "english": "This map is hard to understand, so I don't use it.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kono",
+            "chizu",
+            "wakaru",
+            "tsukau"
+          ],
+          "furigana": "この地[ち]図[ず]は分[わ]かりにくいので、使[つか]いません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chizu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 5,
+              "end": 8,
+              "surface_form": "分かり",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 14,
+              "end": 19,
+              "surface_form": "使いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
           },
           "register": "polite"
         },
         {
           "japanese": "この皿は壊れやすいです。",
-          "english": "This dish breaks easily.",
-          "sort_order": 6,
+          "english": "This plate breaks easily.",
+          "sort_order": 8,
           "vocabulary_slugs": [
             "kono",
-            "sara"
+            "sara",
+            "kowareru"
           ],
           "furigana": "この皿[さら]は壊[こわ]れやすいです。",
           "word_spans": [
@@ -22772,11 +22901,53 @@
               "vocabulary_slug": "sara",
               "start": 2,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "kowareru",
+              "start": 4,
+              "end": 6,
+              "surface_form": "壊れ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
             "start": 6,
             "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "日本語の歌は覚えやすいですか。",
+          "english": "Are Japanese songs easy to memorize?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "nihongo",
+            "uta",
+            "oboeru"
+          ],
+          "furigana": "日本[にほん]語[ご]の歌[うた]は覚[おぼ]えやすいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "oboeru",
+              "start": 6,
+              "end": 8,
+              "surface_form": "覚え",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
           },
           "register": "polite"
         }
@@ -22787,6 +22958,33 @@
         "hon"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "easy to / hard to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "hard to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "easy to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "difficult to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "easily",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "このペンは書き＿＿＿です。",
@@ -22861,46 +23059,85 @@
       ],
       "example_sentences": [
         {
-          "japanese": "経済は回復しつつあります。",
-          "english": "The economy is in the process of recovering.",
+          "japanese": "私の町は変わりつつある。",
+          "english": "My town is changing.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "keizai"
+            "watashi",
+            "machi-v",
+            "kawaru"
           ],
-          "furigana": "経[けい]済[ざい]は回[かい]復[ふく]しつつあります。",
+          "furigana": "私[わたし]の町[まち]は変[か]わりつつある。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kawaru",
+              "start": 4,
+              "end": 7,
+              "surface_form": "変わり",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "経済が悪くなりつつある。",
+          "english": "The economy is gradually getting worse.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "keizai",
+            "warui",
+            "naru-become"
+          ],
+          "furigana": "経[けい]済[ざい]が悪[わる]くなりつつある。",
           "word_spans": [
             {
               "vocabulary_slug": "keizai",
               "start": 0,
               "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "環境は変わりつつあります。",
-          "english": "The environment is gradually changing.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kankyou"
-          ],
-          "furigana": "環[かん]境[きょう]は変[か]わりつつあります。",
-          "word_spans": [
+            },
             {
-              "vocabulary_slug": "kankyou",
-              "start": 0,
-              "end": 2
+              "vocabulary_slug": "warui",
+              "start": 3,
+              "end": 5,
+              "surface_form": "悪く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 5,
+              "end": 7,
+              "surface_form": "なり",
+              "inflection": "stem"
             }
           ],
-          "register": "polite"
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
         },
         {
           "japanese": "会社の仕事が増えつつある。",
-          "english": "Work at the company is on the increase.",
+          "english": "The work at the company is steadily increasing.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "kaisha",
-            "shigoto"
+            "shigoto",
+            "fueru-v"
           ],
           "furigana": "会[かい]社[しゃ]の仕[し]事[ごと]が増[ふ]えつつある。",
           "word_spans": [
@@ -22913,6 +23150,13 @@
               "vocabulary_slug": "shigoto",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "fueru-v",
+              "start": 6,
+              "end": 8,
+              "surface_form": "増え",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -22922,39 +23166,63 @@
           "register": "plain"
         },
         {
-          "japanese": "経済が悪くなりつつある。",
-          "english": "The economy is gradually getting worse.",
+          "japanese": "日が沈みつつある。",
+          "english": "The sun is going down.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "keizai"
+            "hi-sun-v",
+            "shizumu"
           ],
-          "furigana": "経[けい]済[ざい]が悪[わる]くなりつつある。",
+          "furigana": "日[ひ]が沈[しず]みつつある。",
           "word_spans": [
             {
-              "vocabulary_slug": "keizai",
+              "vocabulary_slug": "hi-sun-v",
               "start": 0,
-              "end": 2
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shizumu",
+              "start": 2,
+              "end": 4,
+              "surface_form": "沈み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 4,
+            "end": 8
           },
           "register": "plain"
         },
         {
-          "japanese": "世界は変わりつつある。",
-          "english": "The world is changing.",
+          "japanese": "雨が強くなりつつある。",
+          "english": "The rain is getting heavier.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "sekai"
+            "ame-v",
+            "tsuyoi",
+            "naru-become"
           ],
-          "furigana": "世[せ]界[かい]は変[か]わりつつある。",
+          "furigana": "雨[あめ]が強[つよ]くなりつつある。",
           "word_spans": [
             {
-              "vocabulary_slug": "sekai",
+              "vocabulary_slug": "ame-v",
               "start": 0,
-              "end": 2
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tsuyoi",
+              "start": 2,
+              "end": 4,
+              "surface_form": "強く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 4,
+              "end": 6,
+              "surface_form": "なり",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -22964,44 +23232,203 @@
           "register": "plain"
         },
         {
-          "japanese": "名前を忘れつつある。",
-          "english": "I'm gradually forgetting the name.",
+          "japanese": "日本語が上手になりつつあると思います。",
+          "english": "I think my Japanese is getting better.",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "namae"
+            "nihongo",
+            "jouzu",
+            "naru-become",
+            "omou"
           ],
-          "furigana": "名[な]前[まえ]を忘[わす]れつつある。",
+          "furigana": "日本[にほん]語[ご]が上手[じょうず]になりつつあると思[おも]います。",
           "word_spans": [
             {
-              "vocabulary_slug": "namae",
+              "vocabulary_slug": "nihongo",
               "start": 0,
-              "end": 2
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 7,
+              "end": 9,
+              "surface_form": "なり",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "omou",
+              "start": 14,
+              "end": 18,
+              "surface_form": "思います",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 9
+            "start": 9,
+            "end": 13
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
-          "japanese": "仕事が増えつつある。",
-          "english": "Work is still increasing.",
+          "japanese": "森が無くなりつつあると聞きました。",
+          "english": "I heard the forests are disappearing.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "shigoto"
+            "mori",
+            "nakunaru",
+            "kiku-v"
           ],
-          "furigana": "仕[し]事[ごと]が増[ふ]えつつある。",
+          "furigana": "森[もり]が無[な]くなりつつあると聞[き]きました。",
           "word_spans": [
             {
-              "vocabulary_slug": "shigoto",
+              "vocabulary_slug": "mori",
               "start": 0,
-              "end": 2
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nakunaru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "無くなり",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "聞きました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 9
+            "start": 6,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "雪が溶けつつあるのを見ました。",
+          "english": "I watched the snow melting away.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "yuki",
+            "tokeru",
+            "miru-v"
+          ],
+          "furigana": "雪[ゆき]が溶[と]けつつあるのを見[み]ました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tokeru",
+              "start": 2,
+              "end": 4,
+              "surface_form": "溶け",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "見ました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "母の病気は治りつつあるでしょうか。",
+          "english": "Is my mother's illness getting better, I wonder?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "haha",
+            "byouki",
+            "naoru"
+          ],
+          "furigana": "母[はは]の病[びょう]気[き]は治[なお]りつつあるでしょうか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "byouki",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "naoru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "治り",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "店が減りつつあるので、町に人が来ない。",
+          "english": "Shops are disappearing, so people don't come to town.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "mise",
+            "heru-v",
+            "machi-v",
+            "hito",
+            "kuru-v"
+          ],
+          "furigana": "店[みせ]が減[へ]りつつあるので、町[まち]に人[ひと]が来[こ]ない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mise",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "heru-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "減り",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 15,
+              "end": 18,
+              "surface_form": "来ない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
           },
           "register": "plain"
         }
@@ -23011,6 +23438,33 @@
         "kankyou"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the process of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is gradually",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is steadily",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is becoming",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ongoing change",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "会社の仕事が増え＿＿＿。",
@@ -23086,69 +23540,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "さんざん悩んだあげく、諦めました。",
-          "english": "After much agonizing, I gave up in the end.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "nayamu"
-          ],
-          "furigana": "さんざん悩[なや]んだあげく、諦[あきら]めました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nayamu",
-              "start": 4,
-              "end": 7,
-              "surface_form": "悩んだ",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "一時間待ったあげく、バスは来ませんでした。",
-          "english": "After waiting for an hour, in the end the bus never came.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "matsu",
-            "basu",
-            "kuru-v"
-          ],
-          "furigana": "一[いち]時[じ]間[かん]待[ま]ったあげく、バスは来[き]ませんでした。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "matsu",
-              "start": 3,
-              "end": 6,
-              "surface_form": "待った",
-              "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "basu",
-              "start": 10,
-              "end": 12
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 13,
-              "end": 20,
-              "surface_form": "来ませんでした",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "財布を長い時間探したあげくに、見つかりませんでした。",
           "english": "After searching for my wallet for a long time, in the end I couldn't find it.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "saifu",
             "nagai-adj",
@@ -23195,57 +23589,9 @@
           "register": "polite"
         },
         {
-          "japanese": "何を買うか長く悩んだあげく、何も買いませんでした。",
-          "english": "After agonizing for a long time over what to buy, in the end I bought nothing.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "nani",
-            "kau-v",
-            "nayamu",
-            "nani-mo"
-          ],
-          "furigana": "何[なに]を買[か]うか長[なが]く悩[なや]んだあげく、何[なに]も買[か]いませんでした。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nani",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kau-v",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "nayamu",
-              "start": 7,
-              "end": 10,
-              "surface_form": "悩んだ",
-              "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "nani-mo",
-              "start": 14,
-              "end": 16
-            },
-            {
-              "vocabulary_slug": "kau-v",
-              "start": 16,
-              "end": 24,
-              "surface_form": "買いませんでした",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 10,
-            "end": 13
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "財布を探したあげくに、犬のかばんの中から見つかりました。",
           "english": "After searching for my wallet, in the end it turned up inside the dog's bag.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "saifu",
             "sagasu",
@@ -23300,7 +23646,7 @@
         {
           "japanese": "頑張ったあげく、困りました。",
           "english": "After trying so hard, in the end I was in trouble.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ganbaru",
             "komaru"
@@ -23329,45 +23675,317 @@
           "register": "polite"
         },
         {
-          "japanese": "天気が悪くなったあげく、家にいました。",
-          "english": "After the weather kept getting worse, in the end we stayed home.",
-          "sort_order": 6,
+          "japanese": "雨の中で待ったあげく、バスは来ませんでした。",
+          "english": "After waiting in the rain, in the end the bus never came.",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "tenki",
-            "naru-become",
-            "ie",
-            "iru-exist"
+            "ame-v",
+            "naka",
+            "matsu",
+            "basu",
+            "kuru-v"
           ],
-          "furigana": "天[てん]気[き]が悪[わる]くなったあげく、家[いえ]にいました。",
+          "furigana": "雨[あめ]の中[なか]で待[ま]ったあげく、バスは来[き]ませんでした。",
           "word_spans": [
             {
-              "vocabulary_slug": "tenki",
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 4,
+              "end": 7,
+              "surface_form": "待った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "basu",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 14,
+              "end": 21,
+              "surface_form": "来ませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]の中[なか]で待[ま]ったあげくに、バスは来[き]ませんでした。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "何を買うか長く悩んだあげく、何も買いませんでした。",
+          "english": "After agonizing for a long time over what to buy, in the end I bought nothing.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "nani",
+            "kau-v",
+            "nagai-adj",
+            "nayamu"
+          ],
+          "furigana": "何[なに]を買[か]うか長[なが]く悩[なや]んだあげく、何[なに]も買[か]いませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nagai-adj",
+              "start": 5,
+              "end": 7,
+              "surface_form": "長く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "nayamu",
+              "start": 7,
+              "end": 10,
+              "surface_form": "悩んだ",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 14,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 16,
+              "end": 24,
+              "surface_form": "買いませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "色々な店を回ったあげく、最初の店で買いました。",
+          "english": "After going around all sorts of shops, in the end I bought it at the first one.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "iroiro",
+            "mise",
+            "mawaru",
+            "saisho",
+            "kau-v"
+          ],
+          "furigana": "色[いろ]々[いろ]な店[みせ]を回[まわ]ったあげく、最[さい]初[しょ]の店[みせ]で買[か]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "iroiro",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "naru-become",
+              "vocabulary_slug": "mise",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mawaru",
               "start": 5,
               "end": 8,
-              "surface_form": "なった",
+              "surface_form": "回った",
               "inflection": "ta"
             },
             {
-              "vocabulary_slug": "ie",
+              "vocabulary_slug": "saisho",
               "start": 12,
-              "end": 13
+              "end": 14
             },
             {
-              "vocabulary_slug": "iru-exist",
-              "start": 14,
-              "end": 18,
-              "surface_form": "いました",
+              "vocabulary_slug": "mise",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 17,
+              "end": 22,
+              "surface_form": "買いました",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 8,
             "end": 11
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "色[いろ]々[いろ]な店[みせ]を回[まわ]ったあげくに、最[さい]初[しょ]の店[みせ]で買[か]いました。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "毎日練習したあげく、試験に落ちました。",
+          "english": "After practicing every day, in the end I failed the exam.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "mainichi",
+            "renshuu-suru",
+            "shiken",
+            "ochiru"
+          ],
+          "furigana": "毎[まい]日[にち]練[れん]習[しゅう]したあげく、試[し]験[けん]に落[お]ちました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "練習した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "ochiru",
+              "start": 13,
+              "end": 18,
+              "surface_form": "落ちました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "地図を見ながら歩いたあげく、道が分からなくなりました。",
+          "english": "After walking while looking at the map, in the end I lost my way.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "chizu",
+            "miru-v",
+            "aruku",
+            "michi-v",
+            "wakaru",
+            "naru-become"
+          ],
+          "furigana": "地[ち]図[ず]を見[み]ながら歩[ある]いたあげく、道[みち]が分[わ]からなくなりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chizu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 3,
+              "end": 4,
+              "surface_form": "見",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 7,
+              "end": 10,
+              "surface_form": "歩いた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 14,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 16,
+              "end": 21,
+              "surface_form": "分からなく",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 21,
+              "end": 26,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "長い間考えたあげく、行きませんでした。",
+          "english": "After thinking it over for a long time, in the end I didn't go.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "nagai-adj",
+            "aida",
+            "kangaeru",
+            "iku-v"
+          ],
+          "furigana": "長[なが]い間[あいだ]考[かんが]えたあげく、行[い]きませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nagai-adj",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "aida",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kangaeru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "考えた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 18,
+              "surface_form": "行きませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
           },
           "register": "polite"
         }
@@ -23376,6 +23994,33 @@
         "nayamu"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the end",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "after all that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "after much",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "finally (bad result)",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ended up",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "一時間待った＿＿＿、バスは来ませんでした。",
@@ -23459,102 +24104,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "道理で、寒いわけです。今日は雪ですから。",
-          "english": "No wonder it's cold — it's snowing today.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "samui",
-            "yuki"
-          ],
-          "furigana": "道[どう]理[り]で、寒[さむ]いわけです。今日[きょう]は雪[ゆき]ですから。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "samui",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "yuki",
-              "start": 14,
-              "end": 15
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "彼はアメリカ育ちだから、英語が上手なわけです。",
-          "english": "He grew up in America, so it makes sense his English is good.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "eigo",
-            "jouzu"
-          ],
-          "furigana": "彼[かれ]はアメリカ育[そだ]ちだから、英[えい]語[ご]が上手[じょうず]なわけです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "eigo",
-              "start": 12,
-              "end": 14
-            },
-            {
-              "vocabulary_slug": "jouzu",
-              "start": 15,
-              "end": 17
-            }
-          ],
-          "grammar_span": {
-            "start": 18,
-            "end": 22
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "彼は毎日勉強しているわけだ。",
-          "english": "So he studies every day — that explains the pattern.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kare",
-            "mainichi",
-            "benkyou",
-            "iru-exist"
-          ],
-          "furigana": "彼[かれ]は毎[まい]日[にち]勉[べん]強[きょう]しているわけだ。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "mainichi",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "benkyou",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 8,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 10,
-            "end": 13
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "今週は忙しいわけだ。",
           "english": "No wonder this week is busy.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "konshuu",
             "isogashii"
@@ -23581,7 +24133,7 @@
         {
           "japanese": "電車が遅れたわけだ。",
           "english": "So the train was late — that's what happened.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "densha",
             "okureru"
@@ -23610,7 +24162,7 @@
         {
           "japanese": "彼は病気なわけだ。",
           "english": "So he's sick — that explains it.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kare",
             "byouki"
@@ -23637,7 +24189,7 @@
         {
           "japanese": "空が暗いから、雨が降るわけだ。",
           "english": "The sky's gone dark, so of course it's about to rain.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "sora",
             "kurai",
@@ -23672,6 +24224,233 @@
             "end": 14
           },
           "register": "plain"
+        },
+        {
+          "japanese": "雪が降っているから、寒いわけです。",
+          "english": "It's snowing, so no wonder it's cold.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "yuki",
+            "furu-rain",
+            "iru-exist",
+            "samui"
+          ],
+          "furigana": "雪[ゆき]が降[ふ]っているから、寒[さむ]いわけです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 16
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼は日本に住んでいたから、日本語が上手なわけです。",
+          "english": "He lived in Japan, so it makes sense his Japanese is good.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kare",
+            "nihon",
+            "sumu",
+            "iru-exist",
+            "nihongo",
+            "jouzu"
+          ],
+          "furigana": "彼[かれ]は日本[にほん]に住[す]んでいたから、日本[にほん]語[ご]が上手[じょうず]なわけです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sumu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "住んで",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 10,
+              "surface_form": "いた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 13,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 17,
+              "end": 19
+            }
+          ],
+          "grammar_span": {
+            "start": 20,
+            "end": 24
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]に住[す]んでいたから、日本[にほん]語[ご]が上手[じょうず]なわけです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "毎日練習したから、上手になったわけだ。",
+          "english": "You practiced every day, so that's why you got good.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "mainichi",
+            "renshuu-suru",
+            "jouzu",
+            "naru-become"
+          ],
+          "furigana": "毎[まい]日[にち]練[れん]習[しゅう]したから、上手[じょうず]になったわけだ。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "練習した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 12,
+              "end": 15,
+              "surface_form": "なった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 15,
+            "end": 18
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "だから、彼女は来なかったわけですか。",
+          "english": "So that's why she didn't come?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dakara",
+            "kanojo",
+            "kuru-v"
+          ],
+          "furigana": "だから、彼[かの]女[じょ]は来[こ]なかったわけですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dakara",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 7,
+              "end": 12,
+              "surface_form": "来なかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 16
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "窓が開けてあるから、部屋が寒いわけです。",
+          "english": "The window's been left open, so no wonder the room is cold.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "mado",
+            "akeru",
+            "aru",
+            "heya",
+            "samui"
+          ],
+          "furigana": "窓[まど]が開[あ]けてあるから、部屋[へや]が寒[さむ]いわけです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mado",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "開けて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 15,
+            "end": 19
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -23680,6 +24459,33 @@
         "jouzu"
       ],
       "family": "copula",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "no wonder",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "that's why",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "it makes sense that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "that explains it",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so that's the reason",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "彼は毎日勉強している＿＿＿。",
@@ -23755,37 +24561,67 @@
       ],
       "example_sentences": [
         {
-          "japanese": "彼がそんなことを言うわけがありません。",
-          "english": "There's no way he'd say something like that.",
+          "japanese": "彼がそんな物を買うわけがありません。",
+          "english": "There's no way he'd buy a thing like that.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "kare"
+            "kare",
+            "sonna",
+            "mono",
+            "kau-v"
           ],
-          "furigana": "彼[かれ]がそんなことを言[い]うわけがありません。",
+          "furigana": "彼[かれ]がそんな物[もの]を買[か]うわけがありません。",
           "word_spans": [
             {
               "vocabulary_slug": "kare",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "sonna",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 7,
+              "end": 9
             }
           ],
           "grammar_span": {
-            "start": 10,
-            "end": 18
+            "start": 9,
+            "end": 17
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]がそんな物[もの]を買[か]うはずがありません。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "こんなに簡単な問題が分からないわけがない。",
           "english": "There's no way you wouldn't understand such an easy problem.",
           "sort_order": 1,
           "vocabulary_slugs": [
+            "konna",
             "kantan-n4",
             "mondai",
             "wakaru"
           ],
           "furigana": "こんなに簡[かん]単[たん]な問[もん]題[だい]が分[わ]からないわけがない。",
           "word_spans": [
+            {
+              "vocabulary_slug": "konna",
+              "start": 0,
+              "end": 3
+            },
             {
               "vocabulary_slug": "kantan-n4",
               "start": 4,
@@ -23811,20 +24647,26 @@
           "register": "plain"
         },
         {
-          "japanese": "弟が五分で部屋を掃除したわけがない。",
-          "english": "There's no way my brother cleaned his room in five minutes.",
+          "japanese": "弟が自分で部屋を掃除したわけがない。",
+          "english": "There's no way my little brother cleaned his room by himself.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "otouto",
+            "jibun",
             "heya",
             "souji-suru"
           ],
-          "furigana": "弟[おとうと]が五[ご]分[ふん]で部屋[へや]を掃[そう]除[じ]したわけがない。",
+          "furigana": "弟[おとうと]が自[じ]分[ぶん]で部屋[へや]を掃[そう]除[じ]したわけがない。",
           "word_spans": [
             {
               "vocabulary_slug": "otouto",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "jibun",
+              "start": 2,
+              "end": 4
             },
             {
               "vocabulary_slug": "heya",
@@ -23876,7 +24718,13 @@
             "start": 7,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "猫[ねこ]が英[えい]語[ご]を話[はな]すはずがない。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "この店のケーキが安いわけがない。",
@@ -23965,6 +24813,92 @@
             "start": 5,
             "end": 10
           },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]が忘[わす]れたはずがない。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "そんなに早く宿題が終わるわけがありません。",
+          "english": "There's no way the homework will be done that quickly.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "sonna",
+            "hayai-early",
+            "shukudai",
+            "owaru"
+          ],
+          "furigana": "そんなに早[はや]く宿[しゅく]題[だい]が終[お]わるわけがありません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sonna",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 4,
+              "end": 6,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 9,
+              "end": 12
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 20
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あの優しい先生が怒るわけがない。",
+          "english": "There's no way that gentle teacher would get angry.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ano",
+            "yasashii-n4",
+            "sensei",
+            "okoru-angry"
+          ],
+          "furigana": "あの優[やさ]しい先[せん]生[せい]が怒[おこ]るわけがない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yasashii-n4",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "okoru-angry",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 15
+          },
           "register": "plain"
         }
       ],
@@ -23974,6 +24908,33 @@
         "mondai"
       ],
       "family": "copula",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "there's no way",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "no way that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "can't possibly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "it's impossible that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "couldn't possibly",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "弟が五分で部屋を掃除した＿＿＿。",
@@ -24048,48 +25009,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "このテストはかなり難しいです。",
-          "english": "This test is quite difficult.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "tesuto",
-            "muzukashii"
-          ],
-          "furigana": "このテストはかなり難[むずか]しいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "tesuto",
-              "start": 2,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "muzukashii",
-              "start": 9,
-              "end": 12
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "かなり疲れました。",
-          "english": "I got quite tired.",
-          "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "かなり疲[つか]れました。",
-          "grammar_span": {
-            "start": 0,
-            "end": 3
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "今日の試験はかなり難しかった。",
           "english": "Today's exam was quite difficult.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kyou",
             "shiken",
@@ -24124,7 +25046,7 @@
         {
           "japanese": "彼はかなり足が速い。",
           "english": "He's quite a fast runner.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "ashi-v",
@@ -24152,12 +25074,18 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は足[あし]がかなり速[はや]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼女はかなり親切だ。",
           "english": "She's quite kind.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kanojo",
             "shinsetsu"
@@ -24184,7 +25112,7 @@
         {
           "japanese": "彼はご飯をかなり食べた。",
           "english": "He ate quite a lot of rice.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kare",
             "gohan",
@@ -24214,12 +25142,18 @@
             "start": 5,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]はかなりご飯[はん]を食[た]べた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼はかなり忙しいから、あまり寝ない。",
           "english": "He's quite busy, so he doesn't sleep much.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kare",
             "isogashii",
@@ -24260,7 +25194,7 @@
         {
           "japanese": "この問題はかなり難しい。",
           "english": "This problem is quite difficult.",
-          "sort_order": 7,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "kono",
             "mondai",
@@ -24289,6 +25223,95 @@
             "end": 8
           },
           "register": "plain"
+        },
+        {
+          "japanese": "この部屋はかなり寒いですね。",
+          "english": "This room is pretty cold, isn't it?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "samui"
+          ],
+          "furigana": "この部屋[へや]はかなり寒[さむ]いですね。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "今日はかなり歩きました。",
+          "english": "I walked quite a lot today.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kyou",
+            "aruku"
+          ],
+          "furigana": "今日[きょう]はかなり歩[ある]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 6,
+              "end": 11,
+              "surface_form": "歩きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "駅までかなり遠いですか。",
+          "english": "Is it quite far to the station?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "eki",
+            "tooi"
+          ],
+          "furigana": "駅[えき]までかなり遠[とお]いですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tooi",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -24296,6 +25319,33 @@
         "muzukashii"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "quite",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "fairly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "considerably",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "pretty",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "rather",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "今日の試験は＿＿＿難しかった。",

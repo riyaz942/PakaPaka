@@ -14324,5 +14324,677 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "nikui-yasui": {
+    "accepted_meanings": [
+      "easy to / hard to",
+      "hard to",
+      "easy to",
+      "difficult to",
+      "easily"
+    ],
+    "sentences": [
+      {
+        "japanese": "この靴は歩きやすいです。",
+        "english": "These shoes are easy to walk in.",
+        "vocabulary_slugs": [
+          "kono",
+          "kutsu",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "この漢字は読みにくいです。",
+        "english": "This kanji is hard to read.",
+        "vocabulary_slugs": [
+          "kono",
+          "kanji-word",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "先生の話は分かりやすいです。",
+        "english": "The teacher's talk is easy to understand.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanashi",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "このペンは書きにくいですね。",
+        "english": "This pen is hard to write with, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "pen",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "冬は朝起きにくいです。",
+        "english": "In winter it's hard to get up in the morning.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "asa",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "その箸は使いやすいですか。",
+        "english": "Are those chopsticks easy to use?",
+        "vocabulary_slugs": [
+          "sono",
+          "hashi-chopsticks",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "昨日買ったかばんは持ちやすいです。",
+        "english": "The bag I bought yesterday is easy to carry.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kau-v",
+          "kaban",
+          "motsu"
+        ]
+      },
+      {
+        "japanese": "この地図は分かりにくいので、使いません。",
+        "english": "This map is hard to understand, so I don't use it.",
+        "vocabulary_slugs": [
+          "kono",
+          "chizu",
+          "wakaru",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "この皿は壊れやすいです。",
+        "english": "This plate breaks easily.",
+        "vocabulary_slugs": [
+          "kono",
+          "sara",
+          "kowareru"
+        ]
+      },
+      {
+        "japanese": "日本語の歌は覚えやすいですか。",
+        "english": "Are Japanese songs easy to memorize?",
+        "vocabulary_slugs": [
+          "nihongo",
+          "uta",
+          "oboeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsutsu-aru": {
+    "accepted_meanings": [
+      "in the process of",
+      "is gradually",
+      "is steadily",
+      "is becoming",
+      "ongoing change"
+    ],
+    "sentences": [
+      {
+        "japanese": "私の町は変わりつつある。",
+        "english": "My town is changing.",
+        "vocabulary_slugs": [
+          "watashi",
+          "machi-v",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "経済が悪くなりつつある。",
+        "english": "The economy is gradually getting worse.",
+        "vocabulary_slugs": [
+          "keizai",
+          "warui",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "会社の仕事が増えつつある。",
+        "english": "The work at the company is steadily increasing.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "shigoto",
+          "fueru-v"
+        ]
+      },
+      {
+        "japanese": "日が沈みつつある。",
+        "english": "The sun is going down.",
+        "vocabulary_slugs": [
+          "hi-sun-v",
+          "shizumu"
+        ]
+      },
+      {
+        "japanese": "雨が強くなりつつある。",
+        "english": "The rain is getting heavier.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "tsuyoi",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "日本語が上手になりつつあると思います。",
+        "english": "I think my Japanese is getting better.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "jouzu",
+          "naru-become",
+          "omou"
+        ]
+      },
+      {
+        "japanese": "森が無くなりつつあると聞きました。",
+        "english": "I heard the forests are disappearing.",
+        "vocabulary_slugs": [
+          "mori",
+          "nakunaru",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "雪が溶けつつあるのを見ました。",
+        "english": "I watched the snow melting away.",
+        "vocabulary_slugs": [
+          "yuki",
+          "tokeru",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "母の病気は治りつつあるでしょうか。",
+        "english": "Is my mother's illness getting better, I wonder?",
+        "vocabulary_slugs": [
+          "haha",
+          "byouki",
+          "naoru"
+        ]
+      },
+      {
+        "japanese": "店が減りつつあるので、町に人が来ない。",
+        "english": "Shops are disappearing, so people don't come to town.",
+        "vocabulary_slugs": [
+          "mise",
+          "heru-v",
+          "machi-v",
+          "hito",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ageku": {
+    "accepted_meanings": [
+      "in the end",
+      "after all that",
+      "after much",
+      "finally (bad result)",
+      "ended up"
+    ],
+    "sentences": [
+      {
+        "japanese": "財布を長い時間探したあげくに、見つかりませんでした。",
+        "english": "After searching for my wallet for a long time, in the end I couldn't find it.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nagai-adj",
+          "jikan",
+          "sagasu",
+          "mitsukaru"
+        ]
+      },
+      {
+        "japanese": "財布を探したあげくに、犬のかばんの中から見つかりました。",
+        "english": "After searching for my wallet, in the end it turned up inside the dog's bag.",
+        "vocabulary_slugs": [
+          "saifu",
+          "sagasu",
+          "inu",
+          "kaban",
+          "naka",
+          "mitsukaru"
+        ]
+      },
+      {
+        "japanese": "頑張ったあげく、困りました。",
+        "english": "After trying so hard, in the end I was in trouble.",
+        "vocabulary_slugs": [
+          "ganbaru",
+          "komaru"
+        ]
+      },
+      {
+        "japanese": "雨の中で待ったあげく、バスは来ませんでした。",
+        "english": "After waiting in the rain, in the end the bus never came.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "naka",
+          "matsu",
+          "basu",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨の中で待ったあげくに、バスは来ませんでした。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "何を買うか長く悩んだあげく、何も買いませんでした。",
+        "english": "After agonizing for a long time over what to buy, in the end I bought nothing.",
+        "vocabulary_slugs": [
+          "nani",
+          "kau-v",
+          "nagai-adj",
+          "nayamu"
+        ]
+      },
+      {
+        "japanese": "色々な店を回ったあげく、最初の店で買いました。",
+        "english": "After going around all sorts of shops, in the end I bought it at the first one.",
+        "vocabulary_slugs": [
+          "iroiro",
+          "mise",
+          "mawaru",
+          "saisho",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "色々な店を回ったあげくに、最初の店で買いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎日練習したあげく、試験に落ちました。",
+        "english": "After practicing every day, in the end I failed the exam.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "renshuu-suru",
+          "shiken",
+          "ochiru"
+        ]
+      },
+      {
+        "japanese": "地図を見ながら歩いたあげく、道が分からなくなりました。",
+        "english": "After walking while looking at the map, in the end I lost my way.",
+        "vocabulary_slugs": [
+          "chizu",
+          "miru-v",
+          "aruku",
+          "michi-v",
+          "wakaru",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "長い間考えたあげく、行きませんでした。",
+        "english": "After thinking it over for a long time, in the end I didn't go.",
+        "vocabulary_slugs": [
+          "nagai-adj",
+          "aida",
+          "kangaeru",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wake": {
+    "accepted_meanings": [
+      "no wonder",
+      "that's why",
+      "it makes sense that",
+      "that explains it",
+      "so that's the reason"
+    ],
+    "sentences": [
+      {
+        "japanese": "今週は忙しいわけだ。",
+        "english": "No wonder this week is busy.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "電車が遅れたわけだ。",
+        "english": "So the train was late — that's what happened.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru"
+        ]
+      },
+      {
+        "japanese": "彼は病気なわけだ。",
+        "english": "So he's sick — that explains it.",
+        "vocabulary_slugs": [
+          "kare",
+          "byouki"
+        ]
+      },
+      {
+        "japanese": "空が暗いから、雨が降るわけだ。",
+        "english": "The sky's gone dark, so of course it's about to rain.",
+        "vocabulary_slugs": [
+          "sora",
+          "kurai",
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "雪が降っているから、寒いわけです。",
+        "english": "It's snowing, so no wonder it's cold.",
+        "vocabulary_slugs": [
+          "yuki",
+          "furu-rain",
+          "iru-exist",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "彼は日本に住んでいたから、日本語が上手なわけです。",
+        "english": "He lived in Japan, so it makes sense his Japanese is good.",
+        "vocabulary_slugs": [
+          "kare",
+          "nihon",
+          "sumu",
+          "iru-exist",
+          "nihongo",
+          "jouzu"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本に住んでいたから、日本語が上手なわけです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎日練習したから、上手になったわけだ。",
+        "english": "You practiced every day, so that's why you got good.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "renshuu-suru",
+          "jouzu",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "だから、彼女は来なかったわけですか。",
+        "english": "So that's why she didn't come?",
+        "vocabulary_slugs": [
+          "dakara",
+          "kanojo",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "窓が開けてあるから、部屋が寒いわけです。",
+        "english": "The window's been left open, so no wonder the room is cold.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "aru",
+          "heya",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wakeganai": {
+    "accepted_meanings": [
+      "there's no way",
+      "no way that",
+      "can't possibly",
+      "it's impossible that",
+      "couldn't possibly"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼がそんな物を買うわけがありません。",
+        "english": "There's no way he'd buy a thing like that.",
+        "vocabulary_slugs": [
+          "kare",
+          "sonna",
+          "mono",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼がそんな物を買うはずがありません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "こんなに簡単な問題が分からないわけがない。",
+        "english": "There's no way you wouldn't understand such an easy problem.",
+        "vocabulary_slugs": [
+          "konna",
+          "kantan-n4",
+          "mondai",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "弟が自分で部屋を掃除したわけがない。",
+        "english": "There's no way my little brother cleaned his room by himself.",
+        "vocabulary_slugs": [
+          "otouto",
+          "jibun",
+          "heya",
+          "souji-suru"
+        ]
+      },
+      {
+        "japanese": "猫が英語を話すわけがない。",
+        "english": "There's no way a cat can speak English.",
+        "vocabulary_slugs": [
+          "neko",
+          "eigo",
+          "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫が英語を話すはずがない。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "この店のケーキが安いわけがない。",
+        "english": "There's no way this shop's cake is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "keeki",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "元気なわけがない。",
+        "english": "There's no way he's doing fine.",
+        "vocabulary_slugs": [
+          "genki"
+        ]
+      },
+      {
+        "japanese": "彼が忘れたわけがない。",
+        "english": "There's no way he forgot.",
+        "vocabulary_slugs": [
+          "kare",
+          "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼が忘れたはずがない。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "そんなに早く宿題が終わるわけがありません。",
+        "english": "There's no way the homework will be done that quickly.",
+        "vocabulary_slugs": [
+          "sonna",
+          "hayai-early",
+          "shukudai",
+          "owaru"
+        ]
+      },
+      {
+        "japanese": "あの優しい先生が怒るわけがない。",
+        "english": "There's no way that gentle teacher would get angry.",
+        "vocabulary_slugs": [
+          "ano",
+          "yasashii-n4",
+          "sensei",
+          "okoru-angry"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kanaru": {
+    "accepted_meanings": [
+      "quite",
+      "fairly",
+      "considerably",
+      "pretty",
+      "rather"
+    ],
+    "sentences": [
+      {
+        "japanese": "今日の試験はかなり難しかった。",
+        "english": "Today's exam was quite difficult.",
+        "vocabulary_slugs": [
+          "kyou",
+          "shiken",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "彼はかなり足が速い。",
+        "english": "He's quite a fast runner.",
+        "vocabulary_slugs": [
+          "kare",
+          "ashi-v",
+          "hayai-fast"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼は足がかなり速い。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女はかなり親切だ。",
+        "english": "She's quite kind.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "彼はご飯をかなり食べた。",
+        "english": "He ate quite a lot of rice.",
+        "vocabulary_slugs": [
+          "kare",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼はかなりご飯を食べた。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼はかなり忙しいから、あまり寝ない。",
+        "english": "He's quite busy, so he doesn't sleep much.",
+        "vocabulary_slugs": [
+          "kare",
+          "isogashii",
+          "amari",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "この問題はかなり難しい。",
+        "english": "This problem is quite difficult.",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "この部屋はかなり寒いですね。",
+        "english": "This room is pretty cold, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "今日はかなり歩きました。",
+        "english": "I walked quite a lot today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "駅までかなり遠いですか。",
+        "english": "Is it quite far to the station?",
+        "vocabulary_slugs": [
+          "eki",
+          "tooi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
