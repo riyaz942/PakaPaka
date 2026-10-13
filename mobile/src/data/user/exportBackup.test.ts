@@ -45,6 +45,8 @@ function fakeUserDb(options: {
     [/FROM passage_practice_results/i, tables.passage_practice_results ?? []],
     [/FROM ai_sessions/i, tables.ai_sessions ?? []],
     [/FROM ai_messages/i, tables.ai_messages ?? []],
+    [/FROM user_grammar_answers/i, tables.user_grammar_answers ?? []],
+    [/FROM grammar_sentence_history/i, tables.grammar_sentence_history ?? []],
   ];
 
   return {
@@ -455,5 +457,34 @@ describe('exportBackup', () => {
     expect(json).not.toContain('sk-super-secret-value');
 
     getItemSpy.mockRestore();
+  });
+
+  it('exports saved grammar answers and sentence history by item slug', async () => {
+    const db = fakeUserDb({
+      curriculumItems: [...CURRICULUM_ITEMS, { id: 3, item_type: 'grammar', slug: 'kara-because' }],
+      tables: {
+        user_grammar_answers: [
+          { item_id: 3, sentence_key: '寒いから、コートを着ます。', answer_text: 'さむいからこーときます', created_at: '2026-10-13T00:00:00.000Z' },
+        ],
+        grammar_sentence_history: [
+          { item_id: 3, sentence_keys: '["S1","S2"]', updated_at: '2026-10-13T00:00:00.000Z' },
+        ],
+      },
+    });
+
+    const result = await exportBackup(db);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+
+    const item = { itemType: 'grammar', slug: 'kara-because' };
+    expect(parsed.value.data.grammarAnswers).toEqual([
+      { item, sentenceKey: '寒いから、コートを着ます。', answerText: 'さむいからこーときます', createdAt: '2026-10-13T00:00:00.000Z' },
+    ]);
+    expect(parsed.value.data.grammarSentenceHistory).toEqual([
+      { item, sentenceKeys: ['S1', 'S2'], updatedAt: '2026-10-13T00:00:00.000Z' },
+    ]);
   });
 });

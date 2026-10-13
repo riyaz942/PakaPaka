@@ -48,6 +48,8 @@ function emptyData(): BackupData {
     furiganaOverrides: [],
     cardSeen: [],
     passagePracticeResults: [],
+    grammarAnswers: [],
+    grammarSentenceHistory: [],
     aiSessions: [],
     aiMessages: [],
   };
@@ -491,6 +493,27 @@ describe('restoreBackup', () => {
     ]);
     expect(rows(userDb, 'goal_ring_state')[0].id).toBe(1);
     expect(rows(userDb, 'goal_ring_state')[0].daily_goal_target).toBe(25);
+  });
+
+  it('restores grammar answers and sentence history on the current item id', async () => {
+    const userDb = await createUserDb([...CURRICULUM_ITEMS, { id: 3, item_type: 'grammar', slug: 'kara-because' }]);
+    const item = { itemType: 'grammar' as const, slug: 'kara-because' };
+    writeBackupFixture(
+      makeBundle({
+        grammarAnswers: [{ item, sentenceKey: 'S1', answerText: 'A1', createdAt: '2026-10-13T00:00:00.000Z' }],
+        grammarSentenceHistory: [{ item, sentenceKeys: ['S1', 'S2'], updatedAt: '2026-10-13T00:00:00.000Z' }],
+      }),
+    );
+
+    const preview = await previewOrThrow(userDb);
+    expect(restoreBackup(userDb, preview, 'settings').ok).toBe(true);
+
+    expect(rows(userDb, 'user_grammar_answers')).toEqual([
+      { item_id: 3, sentence_key: 'S1', answer_text: 'A1', created_at: '2026-10-13T00:00:00.000Z' },
+    ]);
+    expect(rows(userDb, 'grammar_sentence_history')).toEqual([
+      { item_id: 3, sentence_keys: '["S1","S2"]', updated_at: '2026-10-13T00:00:00.000Z' },
+    ]);
   });
 
   it('writes furigana override item ids as TEXT', async () => {

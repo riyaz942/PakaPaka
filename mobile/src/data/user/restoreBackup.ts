@@ -86,6 +86,8 @@ const RESTORE_TABLES: readonly string[] = [
   'furigana_overrides',
   'card_seen',
   'passage_practice_results',
+  'user_grammar_answers',
+  'grammar_sentence_history',
 ];
 
 function failure(
@@ -157,6 +159,8 @@ function collectItemRefs(data: BackupData): ItemRef[] {
     ...data.weaknessStats.map((row) => row.item),
     ...data.userSynonyms.map((row) => row.item),
     ...data.furiganaOverrides.map((row) => row.item),
+    ...data.grammarAnswers.map((row) => row.item),
+    ...data.grammarSentenceHistory.map((row) => row.item),
   ];
   for (const session of data.aiSessions) {
     if (session.topicItem) refs.push(session.topicItem);
@@ -594,6 +598,29 @@ function writeRestore(
       boolToInt(row.isCorrect),
       row.userAnswer,
       row.answeredAt,
+    ]),
+  );
+
+  writtenRows += insertRows(
+    userDb,
+    'user_grammar_answers',
+    ['item_id', 'sentence_key', 'answer_text', 'created_at'],
+    resolvedRows(data.grammarAnswers, refToId).map(({ row, itemId }) => [
+      itemId,
+      row.sentenceKey,
+      row.answerText,
+      row.createdAt,
+    ]),
+  );
+
+  writtenRows += insertRows(
+    userDb,
+    'grammar_sentence_history',
+    ['item_id', 'sentence_keys', 'updated_at'],
+    resolvedRows(data.grammarSentenceHistory, refToId).map(({ row, itemId }) => [
+      itemId,
+      JSON.stringify(row.sentenceKeys),
+      row.updatedAt,
     ]),
   );
 

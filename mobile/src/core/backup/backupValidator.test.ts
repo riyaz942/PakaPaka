@@ -18,6 +18,8 @@ function emptyData(): BackupData {
     furiganaOverrides: [],
     cardSeen: [],
     passagePracticeResults: [],
+    grammarAnswers: [],
+    grammarSentenceHistory: [],
     aiSessions: [],
     aiMessages: [],
   };

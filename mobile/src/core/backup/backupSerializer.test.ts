@@ -104,6 +104,21 @@ function seededData(): BackupData {
         answeredAt: '2026-08-01T00:00:00.000Z',
       },
     ],
+    grammarAnswers: [
+      {
+        item: { itemType: 'grammar', slug: 'kara-because' },
+        sentenceKey: '寒いから、コートを着ます。',
+        answerText: 'さむいからこーときます',
+        createdAt: '2026-08-01T00:00:00.000Z',
+      },
+    ],
+    grammarSentenceHistory: [
+      {
+        item: { itemType: 'grammar', slug: 'kara-because' },
+        sentenceKeys: ['S1', 'S2'],
+        updatedAt: '2026-08-01T00:00:00.000Z',
+      },
+    ],
     aiSessions: [],
     aiMessages: [],
   };
@@ -238,5 +253,28 @@ describe('parseBackupBundle validation', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
     expect(result.value.curriculumVersion).toBeNull();
+  });
+});
+
+describe('parseBackupBundle — files from before 021', () => {
+  it('reads a file with no grammar answer tables as empty tables', () => {
+    const data = Object.fromEntries(BACKUP_DATA_KEYS.map((key) => [key, []])) as unknown as BackupData;
+    const json = JSON.parse(
+      serializeBackupBundle(
+        buildBackupBundle(
+          { schemaVersion: 20, curriculumVersion: '31', exportedAt: '2026-10-01T00:00:00.000Z', includesConversations: false },
+          data,
+        ),
+      ),
+    );
+    delete json.data.grammarAnswers;
+    delete json.data.grammarSentenceHistory;
+
+    const parsed = parseBackupBundle(JSON.stringify(json));
+
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+    expect(parsed.value.data.grammarAnswers).toEqual([]);
+    expect(parsed.value.data.grammarSentenceHistory).toEqual([]);
   });
 });

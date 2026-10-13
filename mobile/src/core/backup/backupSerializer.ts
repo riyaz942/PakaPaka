@@ -34,6 +34,15 @@ function invalidShape(message: string): Result<BackupBundle, AppError> {
   };
 }
 
+/**
+ * Tables added after files were already being written: a file from an older
+ * app has no key for them, which is "no rows", not a damaged file.
+ */
+const OPTIONAL_DATA_KEYS: ReadonlySet<keyof BackupData> = new Set([
+  'grammarAnswers',
+  'grammarSentenceHistory',
+]);
+
 export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppError> {
   let parsed: unknown;
   try {
@@ -91,6 +100,10 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
 
   const data = record.data as Record<string, unknown>;
   for (const key of BACKUP_DATA_KEYS) {
+    if (data[key] === undefined && OPTIONAL_DATA_KEYS.has(key)) {
+      data[key] = [];
+      continue;
+    }
     if (!Array.isArray(data[key])) {
       return invalidShape(`Missing or invalid table: ${key}`);
     }

@@ -14,6 +14,8 @@ const ITEM_KEYED_KEYS: readonly (keyof BackupData)[] = [
   'weaknessStats',
   'userSynonyms',
   'furiganaOverrides',
+  'grammarAnswers',
+  'grammarSentenceHistory',
 ];
 
 function invalidShape(message: string): Result<BackupData, AppError> {

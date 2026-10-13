@@ -89,6 +89,21 @@ export type UserSynonymEntry = {
   createdAt: string;
 };
 
+/** A Build answer the learner marked correct (021). The sentence is keyed by its plain Japanese. */
+export type GrammarAnswerEntry = {
+  item: ItemRef;
+  sentenceKey: string;
+  answerText: string;
+  createdAt: string;
+};
+
+/** The last review's two sentence keys for one grammar item (021). */
+export type GrammarSentenceHistoryEntry = {
+  item: ItemRef;
+  sentenceKeys: string[];
+  updatedAt: string;
+};
+
 export type DailyLessonLogEntry = {
   date: string;
   itemsStarted: number;
@@ -167,6 +182,8 @@ export type BackupData = {
   furiganaOverrides: FuriganaOverrideEntry[];
   cardSeen: CardSeenEntry[];
   passagePracticeResults: PassagePracticeResultEntry[];
+  grammarAnswers: GrammarAnswerEntry[];
+  grammarSentenceHistory: GrammarSentenceHistoryEntry[];
   aiSessions: AiSessionEntry[];
   aiMessages: AiMessageEntry[];
 };
@@ -187,6 +204,8 @@ export const BACKUP_DATA_KEYS: readonly (keyof BackupData)[] = [
   'furiganaOverrides',
   'cardSeen',
   'passagePracticeResults',
+  'grammarAnswers',
+  'grammarSentenceHistory',
   'aiSessions',
   'aiMessages',
 ];

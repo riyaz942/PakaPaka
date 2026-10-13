@@ -305,6 +305,38 @@ function readUserSynonyms(
   }));
 }
 
+function readGrammarAnswers(
+  userDb: SQLiteDatabase,
+  idToRef: ReadonlyMap<number, ItemRef>,
+): MappedRows<BackupData['grammarAnswers'][number]> {
+  const rows = userDb.getAllSync<{
+    item_id: number | string;
+    sentence_key: string;
+    answer_text: string;
+    created_at: string;
+  }>('SELECT item_id, sentence_key, answer_text, created_at FROM user_grammar_answers');
+  return mapItemRows(rows, idToRef, (row) => row.item_id, (row, item) => ({
+    item,
+    sentenceKey: row.sentence_key,
+    answerText: row.answer_text,
+    createdAt: row.created_at,
+  }));
+}
+
+function readGrammarSentenceHistory(
+  userDb: SQLiteDatabase,
+  idToRef: ReadonlyMap<number, ItemRef>,
+): MappedRows<BackupData['grammarSentenceHistory'][number]> {
+  const rows = userDb.getAllSync<{ item_id: number | string; sentence_keys: string; updated_at: string }>(
+    'SELECT item_id, sentence_keys, updated_at FROM grammar_sentence_history',
+  );
+  return mapItemRows(rows, idToRef, (row) => row.item_id, (row, item) => ({
+    item,
+    sentenceKeys: JSON.parse(row.sentence_keys) as string[],
+    updatedAt: row.updated_at,
+  }));
+}
+
 function readDailyLessonLog(userDb: SQLiteDatabase): BackupData['dailyLessonLog'] {
   return userDb.getAllSync<{ date: string; items_started: number }>(
     'SELECT date, items_started FROM daily_lesson_log',
@@ -528,6 +560,8 @@ function readExportSnapshot(
   const weaknessStats = readWeaknessStats(userDb, idToRef);
   const userSynonyms = readUserSynonyms(userDb, idToRef);
   const furiganaOverrides = readFuriganaOverrides(userDb, idToRef);
+  const grammarAnswers = readGrammarAnswers(userDb, idToRef);
+  const grammarSentenceHistory = readGrammarSentenceHistory(userDb, idToRef);
 
   const omittedCount =
     itemStudyStatus.omitted +
@@ -536,7 +570,9 @@ function readExportSnapshot(
     relatedItemBoosts.omitted +
     weaknessStats.omitted +
     userSynonyms.omitted +
-    furiganaOverrides.omitted;
+    furiganaOverrides.omitted +
+    grammarAnswers.omitted +
+    grammarSentenceHistory.omitted;
 
   if (idToRef.size === 0 && omittedCount > 0) {
     throw new Error(CURRICULUM_LOOKUP_EMPTY);
@@ -562,6 +598,8 @@ function readExportSnapshot(
       furiganaOverrides: furiganaOverrides.entries,
       cardSeen: readCardSeen(userDb),
       passagePracticeResults: readPassagePracticeResults(userDb),
+      grammarAnswers: grammarAnswers.entries,
+      grammarSentenceHistory: grammarSentenceHistory.entries,
       aiSessions: includeConversations ? readAiSessions(userDb, idToRef) : [],
       aiMessages: includeConversations ? readAiMessages(userDb) : [],
     },
