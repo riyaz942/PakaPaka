@@ -123,14 +123,15 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 **`user.db`** — migration `021`:
 
-- `user_grammar_answers (sentence_id INTEGER, answer_text TEXT, created_at TEXT, PRIMARY KEY (sentence_id, answer_text))` — stored as typed (kana and/or kanji), normalised as below.
-- `grammar_sentence_history (item_id TEXT PRIMARY KEY, sentence_ids TEXT, updated_at TEXT)` — JSON array of the last review's two sentence ids.
+- `user_grammar_answers (item_id INTEGER, sentence_key TEXT, answer_text TEXT, created_at TEXT, PRIMARY KEY (item_id, sentence_key, answer_text))` — stored as typed (kana and/or kanji), normalised as below.
+- `grammar_sentence_history (item_id INTEGER PRIMARY KEY, sentence_keys TEXT, updated_at TEXT)` — JSON array of the last review's two sentence keys.
+- A sentence is identified by its grammar item id plus its plain Japanese text (`sentence_key`), never by `example_sentences.id`: compile assigns sentence ids in insert order, so they change when a curriculum update adds or removes a sentence. If a sentence's text changes, its saved answers no longer apply, which is correct.
 - Both tables included in backup export / import / validator, like `user_synonyms`.
 - Existing grammar `srs_states` rows untouched.
 
 ### 5.2 Core logic (pure, unit-tested)
 
-- `core/grammar/sentencePicker.ts` — `pickGrammarSentences(pool, lastIds, rng) → { read, build }`: two distinct sentences, excluding `lastIds`. Precondition, guaranteed by validator rule 4: pool ≥ 8 and `lastIds` ≤ 2, so ≥ 6 candidates always remain. No fallback path.
+- `core/grammar/sentencePicker.ts` — `pickGrammarSentences(pool, lastKeys, rng) → { read, build }`: two distinct sentences, excluding `lastKeys`. Precondition, guaranteed by validator rule 4: pool ≥ 8 and `lastKeys` ≤ 2, so ≥ 6 candidates always remain. No fallback path: fewer than 2 candidates is an error that fails the queue build visibly.
 - `core/grammar/buildEvaluator.ts` — `evaluateGrammarBuild(input, { answers, otherGrammarAnswers, userAnswers }) → 'correct' | 'other_grammar' | 'incorrect'`.
   - Normalise input and every expected text: katakana → hiragana, strip whitespace and punctuation (`、。！？!?,. ` and full-width space).
   - Curriculum answers (`answers`, `otherGrammarAnswers`) are furigana notation, parsed with the existing `parseFurigana`. Each annotated segment matches its base text **or** its reading; plain segments match their normalised text. Segments match independently, so kanji and kana can mix (`寒いから、コートをきます`). A different word (僕 for 私) does not match.
