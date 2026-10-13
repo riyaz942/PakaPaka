@@ -20,6 +20,10 @@ export type PassageBodyPart = {
    * 来る" (14.1). Null on dictionary-form spans and on inert text.
    */
   inflection: WordInflection | null;
+  /** The grammar span of a grammar sentence (Read card highlight). Set only when true. */
+  isGrammar?: true;
+  /** A word span cut short by the grammar span (食べ of 食べた). Set only when true. */
+  overlapsGrammar?: true;
 };
 
 function toAnnotated(segments: FuriganaSegment[]): string {
@@ -48,36 +52,57 @@ export function buildPassageBodyParts(
   body: string,
   bodyFurigana: string | null,
   spans: PassageWordSpan[],
+  grammarSpan?: { start: number; end: number },
 ): PassageBodyPart[] {
   const segments = parseFurigana(bodyFurigana ?? body);
 
-  const validSpans = spans
-    .filter(
-      (span) =>
-        span.startOffset >= 0 &&
-        span.endOffset <= body.length &&
-        span.startOffset < span.endOffset,
-    )
-    .sort((left, right) => left.startOffset - right.startOffset);
+  type Run = PassageWordSpan & { isGrammar?: true; overlapsGrammar?: true };
+
+  const wordSpans: Run[] = spans.filter(
+    (span) =>
+      span.startOffset >= 0 &&
+      span.endOffset <= body.length &&
+      span.startOffset < span.endOffset,
+  );
+
+  // The grammar span wins over any word span it overlaps: the word keeps
+  // only the part outside it, so the grammar is never hidden inside a link.
+  let runs: Run[] = wordSpans;
+  if (grammarSpan) {
+    const { start, end } = grammarSpan;
+    runs = [];
+    for (const span of wordSpans) {
+      if (span.endOffset <= start || span.startOffset >= end) {
+        runs.push(span);
+        continue;
+      }
+      if (span.startOffset < start) runs.push({ ...span, endOffset: start, overlapsGrammar: true });
+      if (span.endOffset > end) runs.push({ ...span, startOffset: end, overlapsGrammar: true });
+    }
+    runs.push({ vocabularyItemId: '', startOffset: start, endOffset: end, isGrammar: true });
+  }
+  const validSpans = runs.sort((left, right) => left.startOffset - right.startOffset);
 
   const parts: PassageBodyPart[] = [];
   // Tracked by span identity, not id: two adjacent spans must stay separate
   // runs even when they point at the same vocabulary item.
-  let runSpan: PassageWordSpan | null = null;
+  let runSpan: Run | null = null;
   let runSegments: FuriganaSegment[] = [];
 
   const flush = (): void => {
     if (runSegments.length === 0) return;
     parts.push({
-      vocabularyItemId: runSpan?.vocabularyItemId ?? null,
+      vocabularyItemId: runSpan && !runSpan.isGrammar ? runSpan.vocabularyItemId : null,
       text: toAnnotated(runSegments),
       surface: toSurface(runSegments),
-      inflection: runSpan?.inflection ?? null,
+      inflection: runSpan && !runSpan.isGrammar ? (runSpan.inflection ?? null) : null,
+      ...(runSpan?.isGrammar ? { isGrammar: true as const } : {}),
+      ...(runSpan?.overlapsGrammar ? { overlapsGrammar: true as const } : {}),
     });
     runSegments = [];
   };
 
-  const push = (segment: FuriganaSegment, span: PassageWordSpan | null): void => {
+  const push = (segment: FuriganaSegment, span: Run | null): void => {
     if (span !== runSpan) {
       flush();
       runSpan = span;
