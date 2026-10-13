@@ -1,7 +1,7 @@
 # Grammar SRS — Read + Build cards
 
 **Date:** 2026-10-13
-**Status:** Plans 1–2 done; Plan 3 not started
+**Status:** Plans 1–3 code done; simulator check pending
 **Replaces (review side):** Plans 07, 08 and 10 in `docs/feedback/` (cloze contract, MC → type-in ladder, hint ladder). Plan 09 content (cloze variants) is reused as sentence source.
 
 ---

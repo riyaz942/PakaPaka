@@ -40,7 +40,7 @@ Last verified against the codebase: **2026-09-02**
 | [13 — Vacation mode](./feedback/13-vacation-mode.md) | Done |
 | [14 — Conjugated-form linking & furigana gesture](./feedback/14-conjugated-form-linking-and-furigana-gesture.md) | Done |
 | [15 — ChatBubble word linking & furigana toggle](./feedback/15-chatbubble-word-linking-and-furigana-toggle.md) | Done |
-| [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Partial — Plans 1–2 done 2026-10-13: every N5/N4 grammar point has a passing pool (curriculum/grammar/pool.json, report curriculum/_build/reports/grammar-pool-final.md); generate.py gates on it. Plan 3 (app) not started |
+| [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Partial — Plans 1–2 done 2026-10-13: every N5/N4 grammar point has a passing pool (curriculum/grammar/pool.json, report curriculum/_build/reports/grammar-pool-final.md); generate.py gates on it. Plan 3 (app, [plan](./superpowers/plans/2026-10-14-grammar-read-build-app.md)) code done 2026-10-13: Read + Build cards replace the cloze / MC / hint review; cloze variants no longer ship (curriculum v33). Simulator check not yet run |
 
 ## Content plans — `docs/content/`
 
@@ -109,6 +109,9 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 ---
 
 ## What's left
+
+### Grammar Read + Build SRS
+- Simulator check (spec §6, manual list) not yet run by the maintainer.
 
 ### 09 — Cloze variants & families
 - N4 cloze variants (Wave C): zero authored, so every N4 nudge is the blanked structure frame. Blocked on N4 grammar lessons.
