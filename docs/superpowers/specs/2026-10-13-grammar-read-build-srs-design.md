@@ -86,7 +86,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 | Field | Source |
 |-------|--------|
 | Word spans | `curriculum/_build/generate_content/spans.py` |
-| Grammar span (start/end) | Cloze-derived: blank position. Others: longest match of an `accepted_forms` entry (logic of `mobile/src/core/grammar/clozeBuilder.ts`, ported) |
+| Grammar span (start/end) | Cloze-derived: blank position. Authored `form`: its position; anchor syntax `form="今日|は"` locates `今日は` and highlights only `は` (text before `|` is context only, and stays a normal word). Otherwise: longest match of an `accepted_forms` entry |
 | Build answer | The sentence's `furigana` itself — the main accepted answer. No separate kana column |
 | Vocabulary list | Dictionary forms of the sentence's span vocabulary, in sentence order |
 | Register tag | `polite` when the main clause ends in a です/ます form, else `plain` |
@@ -104,7 +104,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 3. No out-of-range content word: `level_check.find_violations(sentence, build_allowed_index(allowed_vocab_for(level, slug)), accepted_forms)` is empty.
 4. A grammar point has ≥ 8 passing sentences.
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
-6. Every alternate parses as furigana notation. Every `valid` alternate contains the grammar form and every listed word (by reading). Every `other_grammar` alternate contains every listed word and a form of another same-family point.
+6. Every alternate parses as furigana notation and contains every listed word **except pronouns** (代名詞 — 私, あなた, 彼…, which natural Japanese drops). Every `valid` alternate contains the grammar chunk. Every `other_grammar` alternate has a form of another same-family point (any level up to the current one) **at the grammar position** — the text in place of the chunk, not anywhere in the sentence.
 7. Every grammar point has ≥ 3 accepted meanings.
 
 ---
