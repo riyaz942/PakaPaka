@@ -25432,7 +25432,9 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare",
-            "ganbaru"
+            "ganbaru",
+            "iru-exist",
+            "hito"
           ],
           "furigana": "彼[かれ]ほど頑張[がんば]っている人[ひと]はいません。",
           "word_spans": [
@@ -25447,6 +25449,23 @@
               "end": 7,
               "surface_form": "頑張って",
               "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 11,
+              "end": 15,
+              "surface_form": "いません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -25461,7 +25480,9 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "renshuu-suru",
-            "jouzu"
+            "suru",
+            "jouzu",
+            "naru-become"
           ],
           "furigana": "練[れん]習[しゅう]すればするほど、上手[じょうず]になります。",
           "word_spans": [
@@ -25473,9 +25494,21 @@
               "inflection": "stem"
             },
             {
+              "vocabulary_slug": "suru",
+              "start": 5,
+              "end": 7
+            },
+            {
               "vocabulary_slug": "jouzu",
               "start": 10,
               "end": 12
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 13,
+              "end": 17,
+              "surface_form": "なります",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -25520,30 +25553,40 @@
           "register": "plain"
         },
         {
-          "japanese": "頭が痛くなるほど勉強した",
-          "english": "I studied until my head started to hurt.",
+          "japanese": "足が痛くなるほど歩いた",
+          "english": "I walked until my feet hurt.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "atama",
-            "naruhodo",
-            "benkyou"
+            "ashi-v",
+            "itai",
+            "naru-become",
+            "aruku"
           ],
-          "furigana": "頭[あたま]が痛[いた]くなるほど勉[べん]強[きょう]した",
+          "furigana": "足[あし]が痛[いた]くなるほど歩[ある]いた",
           "word_spans": [
             {
-              "vocabulary_slug": "atama",
+              "vocabulary_slug": "ashi-v",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "naruhodo",
-              "start": 4,
-              "end": 8
+              "vocabulary_slug": "itai",
+              "start": 2,
+              "end": 4,
+              "surface_form": "痛く",
+              "inflection": "stem"
             },
             {
-              "vocabulary_slug": "benkyou",
+              "vocabulary_slug": "naru-become",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aruku",
               "start": 8,
-              "end": 10
+              "end": 11,
+              "surface_form": "歩いた",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
@@ -25590,37 +25633,39 @@
           "register": "plain"
         },
         {
-          "japanese": "練習すればするほど上手になる",
-          "english": "The more you practice, the better you get.",
+          "japanese": "考えれば考えるほど分からなくなる",
+          "english": "The more I think about it, the less I understand.",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "suru",
-            "jouzu",
+            "kangaeru",
+            "wakaru",
             "naru-become"
           ],
-          "furigana": "練[れん]習[しゅう]すればするほど上手[じょうず]になる",
+          "furigana": "考[かんが]えれば考[かんが]えるほど分[わ]からなくなる",
           "word_spans": [
             {
-              "vocabulary_slug": "suru",
-              "start": 2,
-              "end": 4,
-              "surface_form": "すれ",
+              "vocabulary_slug": "kangaeru",
+              "start": 0,
+              "end": 3,
+              "surface_form": "考えれ",
               "inflection": "stem"
             },
             {
-              "vocabulary_slug": "suru",
-              "start": 5,
+              "vocabulary_slug": "kangaeru",
+              "start": 4,
               "end": 7
             },
             {
-              "vocabulary_slug": "jouzu",
+              "vocabulary_slug": "wakaru",
               "start": 9,
-              "end": 11
+              "end": 14,
+              "surface_form": "分からなく",
+              "inflection": "nai"
             },
             {
               "vocabulary_slug": "naru-become",
-              "start": 12,
-              "end": 14
+              "start": 14,
+              "end": 16
             }
           ],
           "grammar_span": {
@@ -25635,6 +25680,7 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "hanasu-v",
+            "tanoshii",
             "naru-become"
           ],
           "furigana": "話[はな]せば話[はな]すほど楽[たの]しくなる",
@@ -25652,6 +25698,13 @@
               "end": 5
             },
             {
+              "vocabulary_slug": "tanoshii",
+              "start": 7,
+              "end": 10,
+              "surface_form": "楽しく",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "naru-become",
               "start": 10,
               "end": 12
@@ -25662,6 +25715,111 @@
             "end": 7
           },
           "register": "plain"
+        },
+        {
+          "japanese": "泣くほど痛かったですか。",
+          "english": "Did it hurt so much that you cried?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "naku",
+            "itai"
+          ],
+          "furigana": "泣[な]くほど痛[いた]かったですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "naku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 4,
+              "end": 8,
+              "surface_form": "痛かった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "今日は昨日ほど寒くないです。",
+          "english": "Today isn't as cold as yesterday.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kyou",
+            "kinou",
+            "samui"
+          ],
+          "furigana": "今日[きょう]は昨日[きのう]ほど寒[さむ]くないです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kinou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 7,
+              "end": 11,
+              "surface_form": "寒くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "宿題が山ほどあります。",
+          "english": "I have a mountain of homework.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "shukudai",
+            "yama-v",
+            "aru"
+          ],
+          "furigana": "宿[しゅく]題[だい]が山[やま]ほどあります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "山[やま]ほど宿[しゅく]題[だい]があります。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -25670,6 +25828,33 @@
         "renshuu-suru"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to the extent of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so much that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as ... as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "the more ... the more",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "to the point that",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Not as … as",
@@ -25769,13 +25954,21 @@
       "example_sentences": [
         {
           "japanese": "泣きたいくらい嬉しいです。",
-          "english": "I'm happy to the point of wanting to cry.",
+          "english": "I'm so happy I could cry.",
           "sort_order": 0,
           "vocabulary_slugs": [
+            "naku",
             "ureshii"
           ],
           "furigana": "泣[な]きたいくらい嬉[うれ]しいです。",
           "word_spans": [
+            {
+              "vocabulary_slug": "naku",
+              "start": 0,
+              "end": 2,
+              "surface_form": "泣き",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "ureshii",
               "start": 7,
@@ -25789,44 +25982,98 @@
           "register": "polite"
         },
         {
-          "japanese": "死ぬくらい疲れました。",
-          "english": "I'm tired to death (extremely tired).",
+          "japanese": "声が出なくなるくらい歌いました。",
+          "english": "We sang until we lost our voices.",
           "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "死[し]ぬくらい疲[つか]れました。",
+          "vocabulary_slugs": [
+            "koe",
+            "deru-v",
+            "naru-become",
+            "utau"
+          ],
+          "furigana": "声[こえ]が出[で]なくなるくらい歌[うた]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koe",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 2,
+              "end": 5,
+              "surface_form": "出なく",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "utau",
+              "start": 10,
+              "end": 15,
+              "surface_form": "歌いました",
+              "inflection": "masu"
+            }
+          ],
           "grammar_span": {
-            "start": 2,
-            "end": 5
+            "start": 7,
+            "end": 10
           },
           "register": "polite"
         },
         {
-          "japanese": "駅まで五分くらいかかります。",
-          "english": "It takes about five minutes to get to the station.",
+          "japanese": "前が見えないくらい雪が降りました。",
+          "english": "It snowed so hard I couldn't see ahead.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "eki"
+            "mae",
+            "mieru",
+            "yuki",
+            "furu-rain"
           ],
-          "furigana": "駅[えき]まで五[ご]分[ふん]くらいかかります。",
+          "furigana": "前[まえ]が見[み]えないくらい雪[ゆき]が降[ふ]りました。",
           "word_spans": [
             {
-              "vocabulary_slug": "eki",
+              "vocabulary_slug": "mae",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "mieru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "見えない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "yuki",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 11,
+              "end": 16,
+              "surface_form": "降りました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 6,
+            "end": 9
           },
           "register": "polite"
         },
         {
           "japanese": "頭が痛くなるくらい忙しかった。",
-          "english": "I was busy enough that my head started to hurt.",
+          "english": "I was so busy my head started to hurt.",
           "sort_order": 3,
           "vocabulary_slugs": [
             "atama",
+            "itai",
             "naru-become",
             "isogashii"
           ],
@@ -25836,6 +26083,13 @@
               "vocabulary_slug": "atama",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 2,
+              "end": 4,
+              "surface_form": "痛く",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "naru-become",
@@ -25941,45 +26195,184 @@
           "register": "plain"
         },
         {
-          "japanese": "千円ぐらいで新しい傘が買えます。",
-          "english": "You can buy a new umbrella for about a thousand yen.",
+          "japanese": "このカレーは口が痛いくらい辛いです。",
+          "english": "This curry is so spicy it makes my mouth hurt.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "atarashii-adj",
-            "kasa",
-            "kaeru-potential"
+            "kono",
+            "karee",
+            "kuchi-v",
+            "itai",
+            "karai"
           ],
-          "furigana": "千[せん]円[えん]ぐらいで新[あたら]しい傘[かさ]が買[か]えます。",
+          "furigana": "このカレーは口[くち]が痛[いた]いくらい辛[から]いです。",
           "word_spans": [
             {
-              "vocabulary_slug": "atarashii-adj",
-              "start": 6,
-              "end": 9
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
             },
             {
-              "vocabulary_slug": "kasa",
-              "start": 9,
+              "vocabulary_slug": "karee",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kuchi-v",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 8,
               "end": 10
             },
             {
-              "vocabulary_slug": "kaeru-potential",
-              "start": 11,
-              "end": 15,
-              "surface_form": "買えます",
+              "vocabulary_slug": "karai",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "このカレーは口[くち]が痛[いた]いぐらい辛[から]いです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "寝るのを忘れるくらい面白い本ですか。",
+          "english": "Is it a book so good you forget to sleep?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "neru",
+            "wasureru",
+            "omoshiroi",
+            "hon"
+          ],
+          "furigana": "寝[ね]るのを忘[わす]れるくらい面[おも]白[しろ]い本[ほん]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neru",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 10,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 13,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あの店ぐらいおいしいラーメンはありません。",
+          "english": "No ramen is as good as that shop's.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ano",
+            "mise",
+            "oishii",
+            "raamen",
+            "aru"
+          ],
+          "furigana": "あの店[みせ]ぐらいおいしいラーメンはありません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "oishii",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "raamen",
+              "start": 10,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 15,
+              "end": 20,
+              "surface_form": "ありません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 5
+            "start": 3,
+            "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あの店[みせ]くらいおいしいラーメンはありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "あの店[みせ]ほどおいしいラーメンはありません。",
+              "kind": "other_grammar"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
         "ureshii"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to the extent that",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so much that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "to the point that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "about as much as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "enough to",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "About — a rough amount",
@@ -26071,25 +26464,51 @@
       ],
       "example_sentences": [
         {
-          "japanese": "英語だけでなく、中国語も話せます。",
-          "english": "Not only English, I can also speak Chinese.",
+          "japanese": "英語だけでなく、日本語も勉強しました。",
+          "english": "I studied not only English but Japanese too.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "eigo"
+            "eigo",
+            "nihongo",
+            "benkyou",
+            "suru"
           ],
-          "furigana": "英[えい]語[ご]だけでなく、中[ちゅう]国[ごく]語[ご]も話[はな]せます。",
+          "furigana": "英[えい]語[ご]だけでなく、日本[にほん]語[ご]も勉[べん]強[きょう]しました。",
           "word_spans": [
             {
               "vocabulary_slug": "eigo",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "benkyou",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 14,
+              "end": 18,
+              "surface_form": "しました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 2,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "英[えい]語[ご]だけじゃなく、日本[にほん]語[ご]も勉[べん]強[きょう]しました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は頭がいいだけでなく、優しいです。",
@@ -26097,6 +26516,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
+            "atama",
+            "ii",
             "yasashii-n4"
           ],
           "furigana": "彼[かれ]は頭[あたま]がいいだけでなく、優[やさ]しいです。",
@@ -26105,6 +26526,16 @@
               "vocabulary_slug": "kare",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "atama",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 4,
+              "end": 6
             },
             {
               "vocabulary_slug": "yasashii-n4",
@@ -26188,7 +26619,13 @@
             "start": 7,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]語[ご]は難[むずか]しいだけじゃなく、面[おも]白[しろ]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は先生だけでなく、医者でもあります。",
@@ -26295,7 +26732,13 @@
             "start": 2,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "高[たか]いだけでなく、まずい。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は忙しいだけでなく、宿題も多い。",
@@ -26335,6 +26778,86 @@
             "end": 11
           },
           "register": "plain"
+        },
+        {
+          "japanese": "彼女は歌だけでなく、ダンスも上手ですか。",
+          "english": "Is she good not only at singing but at dancing too?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kanojo",
+            "uta",
+            "dansu",
+            "jouzu"
+          ],
+          "furigana": "彼[かの]女[じょ]は歌[うた]だけでなく、ダンスも上手[じょうず]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "dansu",
+              "start": 10,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "弟は肉だけでなく、野菜も食べない。",
+          "english": "My little brother won't eat meat, and he won't eat vegetables either.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "otouto",
+            "niku",
+            "yasai",
+            "taberu"
+          ],
+          "furigana": "弟[おとうと]は肉[にく]だけでなく、野[や]菜[さい]も食[た]べない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "niku",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 12,
+              "end": 16,
+              "surface_form": "食べない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 8
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -26343,6 +26866,33 @@
         "yasashii-n4"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "not only",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not just",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not only ... but also",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as well as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not merely",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "このレストランは安い＿＿＿、おいしいです。",
@@ -26423,14 +26973,17 @@
       ],
       "example_sentences": [
         {
-          "japanese": "日本に限らず、世界中で人気があります。",
-          "english": "It's popular not just in Japan, but worldwide.",
+          "japanese": "日本に限らず、世界の人は寿司が好きです。",
+          "english": "Not just in Japan — people all over the world like sushi.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "nihon",
-            "sekai"
+            "sekai",
+            "hito",
+            "sushi",
+            "suki"
           ],
-          "furigana": "日本[にほん]に限[かぎ]らず、世[せ]界[かい]中[じゅう]で人[にん]気[き]があります。",
+          "furigana": "日本[にほん]に限[かぎ]らず、世[せ]界[かい]の人[ひと]は寿[す]司[し]が好[す]きです。",
           "word_spans": [
             {
               "vocabulary_slug": "nihon",
@@ -26441,6 +26994,21 @@
               "vocabulary_slug": "sekai",
               "start": 7,
               "end": 9
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "sushi",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 15,
+              "end": 17
             }
           ],
           "grammar_span": {
@@ -26620,6 +27188,218 @@
             "end": 11
           },
           "register": "polite"
+        },
+        {
+          "japanese": "夏に限らず、冬もこの海に来る人が多い。",
+          "english": "Not just in summer — lots of people come to this sea in winter too.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "natsu",
+            "fuyu",
+            "kono",
+            "umi",
+            "kuru-v",
+            "hito",
+            "ooi"
+          ],
+          "furigana": "夏[なつ]に限[かぎ]らず、冬[ふゆ]もこの海[うみ]に来[く]る人[ひと]が多[おお]い。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "natsu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "umi",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 14,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "ooi",
+              "start": 16,
+              "end": 18
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 5
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "先週は週末に限らず、毎日雨が降った。",
+          "english": "Last week it rained every day, not just on the weekend.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "senshuu",
+            "shuumatsu",
+            "mainichi",
+            "ame-v",
+            "furu-rain"
+          ],
+          "furigana": "先[せん]週[しゅう]は週[しゅう]末[まつ]に限[かぎ]らず、毎[まい]日[にち]雨[あめ]が降[ふ]った。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "senshuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 14,
+              "end": 17,
+              "surface_form": "降った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "その歌は若い人に限らず、みんなが知っていますか。",
+          "english": "Does everyone know that song, not just young people?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "sono",
+            "uta",
+            "wakai",
+            "hito",
+            "minna",
+            "shiru",
+            "iru-exist"
+          ],
+          "furigana": "その歌[うた]は若[わか]い人[ひと]に限[かぎ]らず、みんなが知[し]っていますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "wakai",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "minna",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 16,
+              "end": 19,
+              "surface_form": "知って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 19,
+              "end": 22,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "お酒に限らず、彼女は甘い飲み物も飲まない。",
+          "english": "It's not just alcohol — she doesn't drink sweet drinks either.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "osake",
+            "kanojo",
+            "amai",
+            "nomimono",
+            "nomu-v"
+          ],
+          "furigana": "お酒[さけ]に限[かぎ]らず、彼[かの]女[じょ]は甘[あま]い飲[の]み物[もの]も飲[の]まない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "osake",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "amai",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "nomimono",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 16,
+              "end": 20,
+              "surface_form": "飲まない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -26627,6 +27407,33 @@
         "sekai"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "not limited to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not only",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not just",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not restricted to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "including",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "動物が好きなのは女の子＿＿＿、男の子も好きです。",
@@ -26695,7 +27502,9 @@
           "english": "It's convenient, but on the other hand, it's expensive.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "benri"
+            "benri",
+            "nedan",
+            "takai-adj"
           ],
           "furigana": "便[べん]利[り]な一[いっ]方[ぽう]で、値[ね]段[だん]が高[たか]いです。",
           "word_spans": [
@@ -26703,6 +27512,16 @@
               "vocabulary_slug": "benri",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nedan",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 10,
+              "end": 12
             }
           ],
           "grammar_span": {
@@ -26800,7 +27619,13 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "部屋[へや]は広[ひろ]いのに、駅[えき]から遠[とお]いです。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "兄は料理が上手な一方で、妹は下手です。",
@@ -26848,17 +27673,16 @@
           "register": "polite"
         },
         {
-          "japanese": "その店は安い一方で、あまりきれいじゃない。",
-          "english": "That shop is cheap, but on the other hand it's not very clean.",
+          "japanese": "その店は安い一方で、汚いです。",
+          "english": "That shop is cheap, but on the other hand it's dirty.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "sono",
             "mise",
             "yasui-adj",
-            "amari",
-            "kirei"
+            "kitanai"
           ],
-          "furigana": "その店[みせ]は安[やす]い一[いっ]方[ぽう]で、あまりきれいじゃない。",
+          "furigana": "その店[みせ]は安[やす]い一[いっ]方[ぽう]で、汚[きたな]いです。",
           "word_spans": [
             {
               "vocabulary_slug": "sono",
@@ -26876,21 +27700,16 @@
               "end": 6
             },
             {
-              "vocabulary_slug": "amari",
+              "vocabulary_slug": "kitanai",
               "start": 10,
-              "end": 13
-            },
-            {
-              "vocabulary_slug": "kirei",
-              "start": 13,
-              "end": 16
+              "end": 12
             }
           ],
           "grammar_span": {
             "start": 6,
             "end": 9
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "姉は真面目な一方で、厳しいです。",
@@ -26924,12 +27743,176 @@
             "end": 9
           },
           "register": "polite"
+        },
+        {
+          "japanese": "姉は大学を卒業した一方で、兄はまだ学生です。",
+          "english": "My older sister graduated from university, while my older brother is still a student.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "ane",
+            "daigaku",
+            "sotsugyou-suru",
+            "ani",
+            "mada",
+            "gakusei"
+          ],
+          "furigana": "姉[あね]は大[だい]学[がく]を卒[そつ]業[ぎょう]した一[いっ]方[ぽう]で、兄[あに]はまだ学[がく]生[せい]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "daigaku",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sotsugyou-suru",
+              "start": 5,
+              "end": 9,
+              "surface_form": "卒業した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "ani",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "mada",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 17,
+              "end": 19
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この町は静かな一方で、不便ですか。",
+          "english": "This town is quiet, but is it inconvenient on the other hand?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "shizuka",
+            "fuben"
+          ],
+          "furigana": "この町[まち]は静[しず]かな一[いっ]方[ぽう]で、不[ふ]便[べん]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "fuben",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この仕事は面白い一方で、とても忙しいです。",
+          "english": "This job is interesting, but on the other hand it's very busy.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "shigoto",
+            "omoshiroi",
+            "totemo",
+            "isogashii"
+          ],
+          "furigana": "この仕[し]事[ごと]は面[おも]白[しろ]い一[いっ]方[ぽう]で、とても忙[いそが]しいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 12,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 15,
+              "end": 18
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
         "benri"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the other hand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "whereas",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "but at the same time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "meanwhile",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "兄はよく働く＿＿＿、弟はあまり働かない。",
@@ -27003,29 +27986,41 @@
       ],
       "example_sentences": [
         {
-          "japanese": "私にとって、家族が一番大切です。",
-          "english": "For me, family is the most important.",
+          "japanese": "赤ちゃんにとって、この部屋は寒いです。",
+          "english": "This room is cold for a baby.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "kazoku",
-            "ichiban"
+            "akachan",
+            "kono",
+            "heya",
+            "samui"
           ],
-          "furigana": "私[わたし]にとって、家[か]族[ぞく]が一[いち]番[ばん]大[たい]切[せつ]です。",
+          "furigana": "赤[あか]ちゃんにとって、この部屋[へや]は寒[さむ]いです。",
           "word_spans": [
             {
-              "vocabulary_slug": "kazoku",
-              "start": 6,
-              "end": 8
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
             },
             {
-              "vocabulary_slug": "ichiban",
+              "vocabulary_slug": "kono",
               "start": 9,
               "end": 11
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 14,
+              "end": 16
             }
           ],
           "grammar_span": {
-            "start": 1,
-            "end": 5
+            "start": 4,
+            "end": 8
           },
           "register": "polite"
         },
@@ -27147,17 +28142,16 @@
           "register": "plain"
         },
         {
-          "japanese": "この問題は学生だけでなく、先生にとっても難しい。",
-          "english": "This problem is hard not only for the students, but for the teacher too.",
+          "japanese": "この問題は先生にとっても難しかった。",
+          "english": "This problem was hard even for the teacher.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
             "mondai",
-            "gakusei",
             "sensei",
             "muzukashii"
           ],
-          "furigana": "この問[もん]題[だい]は学[がく]生[せい]だけでなく、先[せん]生[せい]にとっても難[むずか]しい。",
+          "furigana": "この問[もん]題[だい]は先[せん]生[せい]にとっても難[むずか]しかった。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -27170,24 +28164,175 @@
               "end": 4
             },
             {
-              "vocabulary_slug": "gakusei",
+              "vocabulary_slug": "sensei",
               "start": 5,
               "end": 7
             },
             {
-              "vocabulary_slug": "sensei",
-              "start": 13,
-              "end": 15
-            },
-            {
               "vocabulary_slug": "muzukashii",
-              "start": 20,
-              "end": 23
+              "start": 12,
+              "end": 17,
+              "surface_form": "難しかった",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 15,
-            "end": 19
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "あなたにとって、いい先生はどんな人ですか。",
+          "english": "To you, what makes a good teacher?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "anata",
+            "ii",
+            "sensei",
+            "donna",
+            "hito"
+          ],
+          "furigana": "あなたにとって、いい先[せん]生[せい]はどんな人[ひと]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "anata",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "donna",
+              "start": 13,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 16,
+              "end": 17
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この荷物は父にとって重くない。",
+          "english": "This luggage isn't heavy for my father.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kono",
+            "nimotsu",
+            "chichi",
+            "omoi"
+          ],
+          "furigana": "この荷[に]物[もつ]は父[ちち]にとって重[おも]くない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "chichi",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 10,
+              "end": 14,
+              "surface_form": "重くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "猫にとって、箱は家です。",
+          "english": "To a cat, a box is a home.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "neko",
+            "hako",
+            "ie"
+          ],
+          "furigana": "猫[ねこ]にとって、箱[はこ]は家[いえ]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hako",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 8,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "外国人にとって、漢字は覚えにくい。",
+          "english": "For foreigners, kanji are hard to memorize.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "gaikokujin",
+            "kanji-word",
+            "oboeru"
+          ],
+          "furigana": "外[がい]国[こく]人[じん]にとって、漢[かん]字[じ]は覚[おぼ]えにくい。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "gaikokujin",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kanji-word",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "oboeru",
+              "start": 11,
+              "end": 13,
+              "surface_form": "覚え",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 7
           },
           "register": "plain"
         }
@@ -27197,6 +28342,33 @@
         "ichiban"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "for",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "from the perspective of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as far as ... is concerned",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "for someone",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "この映画は君＿＿＿面白い。",

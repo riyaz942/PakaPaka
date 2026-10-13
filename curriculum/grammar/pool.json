@@ -14996,5 +14996,706 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "hodo": {
+    "accepted_meanings": [
+      "to the extent of",
+      "so much that",
+      "as ... as",
+      "the more ... the more",
+      "to the point that"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼ほど頑張っている人はいません。",
+        "english": "There's no one who works as hard as him.",
+        "vocabulary_slugs": [
+          "kare",
+          "ganbaru",
+          "iru-exist",
+          "hito"
+        ]
+      },
+      {
+        "japanese": "練習すればするほど、上手になります。",
+        "english": "The more you practice, the better you get.",
+        "vocabulary_slugs": [
+          "renshuu-suru",
+          "suru",
+          "jouzu",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "これはそれほど難しくない",
+        "english": "This one isn't as difficult as that one.",
+        "vocabulary_slugs": [
+          "kore",
+          "sore",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "足が痛くなるほど歩いた",
+        "english": "I walked until my feet hurt.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "itai",
+          "naru-become",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "声が出ないほど笑った",
+        "english": "I laughed until my voice gave out.",
+        "vocabulary_slugs": [
+          "koe",
+          "deru-v",
+          "warau"
+        ]
+      },
+      {
+        "japanese": "考えれば考えるほど分からなくなる",
+        "english": "The more I think about it, the less I understand.",
+        "vocabulary_slugs": [
+          "kangaeru",
+          "wakaru",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "話せば話すほど楽しくなる",
+        "english": "The more we talk, the more fun it gets.",
+        "vocabulary_slugs": [
+          "hanasu-v",
+          "tanoshii",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "泣くほど痛かったですか。",
+        "english": "Did it hurt so much that you cried?",
+        "vocabulary_slugs": [
+          "naku",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "今日は昨日ほど寒くないです。",
+        "english": "Today isn't as cold as yesterday.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kinou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "宿題が山ほどあります。",
+        "english": "I have a mountain of homework.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "yama-v",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "山ほど宿題があります。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kurai-degree": {
+    "accepted_meanings": [
+      "to the extent that",
+      "so much that",
+      "to the point that",
+      "about as much as",
+      "enough to"
+    ],
+    "sentences": [
+      {
+        "japanese": "泣きたいくらい嬉しいです。",
+        "english": "I'm so happy I could cry.",
+        "vocabulary_slugs": [
+          "naku",
+          "ureshii"
+        ]
+      },
+      {
+        "japanese": "声が出なくなるくらい歌いました。",
+        "english": "We sang until we lost our voices.",
+        "vocabulary_slugs": [
+          "koe",
+          "deru-v",
+          "naru-become",
+          "utau"
+        ]
+      },
+      {
+        "japanese": "前が見えないくらい雪が降りました。",
+        "english": "It snowed so hard I couldn't see ahead.",
+        "vocabulary_slugs": [
+          "mae",
+          "mieru",
+          "yuki",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "頭が痛くなるくらい忙しかった。",
+        "english": "I was so busy my head started to hurt.",
+        "vocabulary_slugs": [
+          "atama",
+          "itai",
+          "naru-become",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "これくらいの雨なら傘は要らない。",
+        "english": "If it's only about this much rain, you don't need an umbrella.",
+        "vocabulary_slugs": [
+          "kore",
+          "ame-v",
+          "kasa",
+          "iru-need"
+        ]
+      },
+      {
+        "japanese": "少しくらい手伝ってくれてもいい。",
+        "english": "You could at least help a little.",
+        "vocabulary_slugs": [
+          "sukoshi",
+          "tetsudau",
+          "kureru",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "このカレーは口が痛いくらい辛いです。",
+        "english": "This curry is so spicy it makes my mouth hurt.",
+        "vocabulary_slugs": [
+          "kono",
+          "karee",
+          "kuchi-v",
+          "itai",
+          "karai"
+        ],
+        "alternates": [
+          {
+            "japanese": "このカレーは口が痛いぐらい辛いです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "寝るのを忘れるくらい面白い本ですか。",
+        "english": "Is it a book so good you forget to sleep?",
+        "vocabulary_slugs": [
+          "neru",
+          "wasureru",
+          "omoshiroi",
+          "hon"
+        ]
+      },
+      {
+        "japanese": "あの店ぐらいおいしいラーメンはありません。",
+        "english": "No ramen is as good as that shop's.",
+        "vocabulary_slugs": [
+          "ano",
+          "mise",
+          "oishii",
+          "raamen",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "あの店くらいおいしいラーメンはありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あの店ほどおいしいラーメンはありません。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dake-de-naku": {
+    "accepted_meanings": [
+      "not only",
+      "not just",
+      "not only ... but also",
+      "as well as",
+      "not merely"
+    ],
+    "sentences": [
+      {
+        "japanese": "英語だけでなく、日本語も勉強しました。",
+        "english": "I studied not only English but Japanese too.",
+        "vocabulary_slugs": [
+          "eigo",
+          "nihongo",
+          "benkyou",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "英語だけじゃなく、日本語も勉強しました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼は頭がいいだけでなく、優しいです。",
+        "english": "He's not only smart, but also kind.",
+        "vocabulary_slugs": [
+          "kare",
+          "atama",
+          "ii",
+          "yasashii-n4"
+        ]
+      },
+      {
+        "japanese": "このレストランは安いだけでなく、おいしいです。",
+        "english": "This restaurant isn't only cheap — it's delicious too.",
+        "vocabulary_slugs": [
+          "kono",
+          "resutoran",
+          "yasui-adj",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "日本語は難しいだけでなく、面白い。",
+        "english": "Japanese isn't only difficult — it's interesting too.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "muzukashii",
+          "omoshiroi"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本語は難しいだけじゃなく、面白い。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼は先生だけでなく、医者でもあります。",
+        "english": "He isn't only a teacher — he's also a doctor.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei",
+          "isha",
+          "demo",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "彼は親切なだけでなく、有名だ。",
+        "english": "He isn't only kind — he's also famous.",
+        "vocabulary_slugs": [
+          "kare",
+          "shinsetsu",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "高いだけじゃなく、まずい。",
+        "english": "It's not only expensive — it's bad-tasting too.",
+        "vocabulary_slugs": [
+          "takai-adj",
+          "mazui"
+        ],
+        "alternates": [
+          {
+            "japanese": "高いだけでなく、まずい。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は忙しいだけでなく、宿題も多い。",
+        "english": "Today isn't only busy — there's a lot of homework too.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii",
+          "shukudai",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "彼女は歌だけでなく、ダンスも上手ですか。",
+        "english": "Is she good not only at singing but at dancing too?",
+        "vocabulary_slugs": [
+          "kanojo",
+          "uta",
+          "dansu",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "弟は肉だけでなく、野菜も食べない。",
+        "english": "My little brother won't eat meat, and he won't eat vegetables either.",
+        "vocabulary_slugs": [
+          "otouto",
+          "niku",
+          "yasai",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kagirazu": {
+    "accepted_meanings": [
+      "not limited to",
+      "not only",
+      "not just",
+      "not restricted to",
+      "including"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本に限らず、世界の人は寿司が好きです。",
+        "english": "Not just in Japan — people all over the world like sushi.",
+        "vocabulary_slugs": [
+          "nihon",
+          "sekai",
+          "hito",
+          "sushi",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "動物が好きなのは女の子に限らず、男の子も好きです。",
+        "english": "Liking animals isn't limited to girls — boys like them too.",
+        "vocabulary_slugs": [
+          "doubutsu",
+          "suki",
+          "onnanoko",
+          "otokonoko"
+        ]
+      },
+      {
+        "japanese": "忙しいのは会社員に限らず、学生も忙しいです。",
+        "english": "Being busy isn't limited to office workers — students are busy too.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "kaishain",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "病気になるのは大人に限らず、子供もなります。",
+        "english": "Getting sick isn't limited to adults — children get sick too.",
+        "vocabulary_slugs": [
+          "byouki",
+          "naru-become",
+          "otona",
+          "kodomo-v"
+        ]
+      },
+      {
+        "japanese": "環境問題は日本に限らず、世界の問題です。",
+        "english": "Environmental problems aren't limited to Japan — they're a global issue.",
+        "vocabulary_slugs": [
+          "kankyou",
+          "mondai",
+          "nihon",
+          "sekai"
+        ]
+      },
+      {
+        "japanese": "夏に限らず、冬もこの海に来る人が多い。",
+        "english": "Not just in summer — lots of people come to this sea in winter too.",
+        "vocabulary_slugs": [
+          "natsu",
+          "fuyu",
+          "kono",
+          "umi",
+          "kuru-v",
+          "hito",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "先週は週末に限らず、毎日雨が降った。",
+        "english": "Last week it rained every day, not just on the weekend.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "shuumatsu",
+          "mainichi",
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "その歌は若い人に限らず、みんなが知っていますか。",
+        "english": "Does everyone know that song, not just young people?",
+        "vocabulary_slugs": [
+          "sono",
+          "uta",
+          "wakai",
+          "hito",
+          "minna",
+          "shiru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "お酒に限らず、彼女は甘い飲み物も飲まない。",
+        "english": "It's not just alcohol — she doesn't drink sweet drinks either.",
+        "vocabulary_slugs": [
+          "osake",
+          "kanojo",
+          "amai",
+          "nomimono",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ippou-de": {
+    "accepted_meanings": [
+      "on the other hand",
+      "while",
+      "whereas",
+      "but at the same time",
+      "meanwhile"
+    ],
+    "sentences": [
+      {
+        "japanese": "便利な一方で、値段が高いです。",
+        "english": "It's convenient, but on the other hand, it's expensive.",
+        "vocabulary_slugs": [
+          "benri",
+          "nedan",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "兄はよく働く一方で、弟はあまり働かない。",
+        "english": "My older brother works a lot; my younger brother, on the other hand, doesn't work much.",
+        "vocabulary_slugs": [
+          "ani",
+          "yoku",
+          "hataraku",
+          "otouto",
+          "amari"
+        ]
+      },
+      {
+        "japanese": "部屋は広い一方で、駅から遠いです。",
+        "english": "The room is spacious, but on the other hand it's far from the station.",
+        "vocabulary_slugs": [
+          "heya",
+          "hiroi",
+          "eki",
+          "tooi"
+        ],
+        "alternates": [
+          {
+            "japanese": "部屋は広いのに、駅から遠いです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "兄は料理が上手な一方で、妹は下手です。",
+        "english": "My older brother is good at cooking, but on the other hand my younger sister is bad at it.",
+        "vocabulary_slugs": [
+          "ani",
+          "ryouri",
+          "jouzu",
+          "imouto",
+          "heta"
+        ]
+      },
+      {
+        "japanese": "その店は安い一方で、汚いです。",
+        "english": "That shop is cheap, but on the other hand it's dirty.",
+        "vocabulary_slugs": [
+          "sono",
+          "mise",
+          "yasui-adj",
+          "kitanai"
+        ]
+      },
+      {
+        "japanese": "姉は真面目な一方で、厳しいです。",
+        "english": "My older sister is serious, but on the other hand she's strict.",
+        "vocabulary_slugs": [
+          "ane",
+          "majime",
+          "kibishii"
+        ]
+      },
+      {
+        "japanese": "姉は大学を卒業した一方で、兄はまだ学生です。",
+        "english": "My older sister graduated from university, while my older brother is still a student.",
+        "vocabulary_slugs": [
+          "ane",
+          "daigaku",
+          "sotsugyou-suru",
+          "ani",
+          "mada",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "この町は静かな一方で、不便ですか。",
+        "english": "This town is quiet, but is it inconvenient on the other hand?",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "shizuka",
+          "fuben"
+        ]
+      },
+      {
+        "japanese": "この仕事は面白い一方で、とても忙しいです。",
+        "english": "This job is interesting, but on the other hand it's very busy.",
+        "vocabulary_slugs": [
+          "kono",
+          "shigoto",
+          "omoshiroi",
+          "totemo",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nitotte": {
+    "accepted_meanings": [
+      "for",
+      "to",
+      "from the perspective of",
+      "as far as ... is concerned",
+      "for someone"
+    ],
+    "sentences": [
+      {
+        "japanese": "赤ちゃんにとって、この部屋は寒いです。",
+        "english": "This room is cold for a baby.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "この映画は君にとって面白い。",
+        "english": "This movie is interesting to you.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "kimi",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "私にとって、日本語の勉強は大変だ。",
+        "english": "Studying Japanese is tough for me.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihongo",
+          "benkyou",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "この仕事は彼にとって簡単だ。",
+        "english": "This job is easy for him.",
+        "vocabulary_slugs": [
+          "kono",
+          "shigoto",
+          "kare",
+          "kantan-n4"
+        ]
+      },
+      {
+        "japanese": "この問題は先生にとっても難しかった。",
+        "english": "This problem was hard even for the teacher.",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "sensei",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "あなたにとって、いい先生はどんな人ですか。",
+        "english": "To you, what makes a good teacher?",
+        "vocabulary_slugs": [
+          "anata",
+          "ii",
+          "sensei",
+          "donna",
+          "hito"
+        ]
+      },
+      {
+        "japanese": "この荷物は父にとって重くない。",
+        "english": "This luggage isn't heavy for my father.",
+        "vocabulary_slugs": [
+          "kono",
+          "nimotsu",
+          "chichi",
+          "omoi"
+        ]
+      },
+      {
+        "japanese": "猫にとって、箱は家です。",
+        "english": "To a cat, a box is a home.",
+        "vocabulary_slugs": [
+          "neko",
+          "hako",
+          "ie"
+        ]
+      },
+      {
+        "japanese": "外国人にとって、漢字は覚えにくい。",
+        "english": "For foreigners, kanji are hard to memorize.",
+        "vocabulary_slugs": [
+          "gaikokujin",
+          "kanji-word",
+          "oboeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
