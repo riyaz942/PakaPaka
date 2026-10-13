@@ -16,6 +16,20 @@ class GrammarSpanTest(unittest.TestCase):
             {"start": 4, "end": 8},
         )
 
+    def test_anchor_highlights_only_the_grammar(self):
+        self.assertEqual(
+            gs.grammar_span("こんにちは、今日は寒いです。", ["は"], form="今日|は"),
+            {"start": 8, "end": 9},
+        )
+
+    def test_anchor_missing_raises(self):
+        with self.assertRaises(ValueError):
+            gs.grammar_span("こんにちは。", ["は"], form="今日|は")
+
+    def test_anchor_without_grammar_raises(self):
+        with self.assertRaises(ValueError):
+            gs.grammar_span("今日は寒い。", ["は"], form="今日|")
+
     def test_authored_form_beats_search(self):
         # は inside こんにちは must not be picked when the author names the
         # topic は after 今日.

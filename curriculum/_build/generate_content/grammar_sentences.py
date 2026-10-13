@@ -38,15 +38,21 @@ _SYMBOL_POS = {"補助記号", "空白"}
 def grammar_span(japanese, accepted_forms, form=None):
     """Where the grammar sits in `japanese`, for the Read-card highlight.
 
-    `form` is the authored chunk (a cloze answer, or a disambiguating chunk
-    like 今日は); when given it must be present. Otherwise the longest
+    `form` is the authored chunk; `今日|は` finds 今日は and highlights only は
+    (text before `|` is context). When given it must be present. Otherwise the longest
     contiguous accepted form wins, first occurrence. Forms containing 〜 are
     discontinuous and never matched literally."""
     if form is not None:
-        start = japanese.find(form)
+        context_text, sep, grammar_text = form.partition("|")
+        if not sep:
+            context_text, grammar_text = "", form
+        if not grammar_text:
+            raise ValueError(f"grammar form {form!r} names no grammar after '|'")
+        start = japanese.find(context_text + grammar_text)
         if start < 0:
             raise ValueError(f"grammar form {form!r} not found in {japanese!r}")
-        return {"start": start, "end": start + len(form)}
+        start += len(context_text)
+        return {"start": start, "end": start + len(grammar_text)}
     candidates = sorted(
         (f for f in accepted_forms if f and "〜" not in f), key=len, reverse=True
     )
