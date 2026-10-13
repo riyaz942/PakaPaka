@@ -22,7 +22,24 @@
           "sort_order": 0
         }
       ],
-      "vocabulary_slugs": ["ichi-v"]
+      "vocabulary_slugs": ["ichi-v"],
+      "accepted_answers": [
+        { "answer_type": "meaning", "answer_text": "is", "is_primary": true },
+        { "answer_type": "meaning", "answer_text": "copula" }
+      ],
+      "example_sentences": [
+        {
+          "japanese": "一です。",
+          "english": "It is one.",
+          "sort_order": 0,
+          "grammar_span": { "start": 1, "end": 3 },
+          "register": "polite",
+          "build_alternates": [
+            { "furigana": "一[いち]だ。", "kind": "valid" },
+            { "furigana": "一[いち]じゃない。", "kind": "other_grammar" }
+          ]
+        }
+      ]
     },
     {
       "slug": "ja-nai",

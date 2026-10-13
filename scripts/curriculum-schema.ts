@@ -103,7 +103,13 @@ CREATE TABLE example_sentences (
   furigana TEXT,
   english TEXT NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0,
-  reinforcement_tags TEXT
+  reinforcement_tags TEXT,
+  -- Grammar sentence pool (grammar Read + Build cards): where the grammar sits
+  -- in japanese (same offsets as example_sentence_spans) and whether the
+  -- sentence is polite or plain. Null on every non-grammar row.
+  grammar_start INTEGER,
+  grammar_end INTEGER,
+  register TEXT CHECK(register IN ('polite', 'plain'))
 );
 
 -- Authored vocabulary links on example sentences (Plan 11.6). Which characters
@@ -128,6 +134,18 @@ CREATE TABLE example_sentence_spans (
   start_offset INTEGER NOT NULL,
   end_offset INTEGER NOT NULL,
   inflection TEXT CHECK(inflection IN ('masu', 'te', 'nai', 'ta')),
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+-- Other accepted Build-card answers for a grammar pool sentence, in furigana
+-- bracket notation. 'other_grammar' answers are correct Japanese that use a
+-- different same-family grammar point; the app answers them with a retry
+-- nudge instead of a grade. The sentence's own furigana is the main answer.
+CREATE TABLE grammar_sentence_answers (
+  id INTEGER PRIMARY KEY NOT NULL,
+  sentence_id INTEGER NOT NULL REFERENCES example_sentences(id),
+  answer_furigana TEXT NOT NULL,
+  kind TEXT NOT NULL CHECK(kind IN ('valid', 'other_grammar')),
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
@@ -212,6 +230,7 @@ CREATE INDEX idx_passage_grammar_links_passage ON passage_grammar_links(passage_
 CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(passage_id);
 CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);
 CREATE INDEX idx_example_sentence_spans_sentence ON example_sentence_spans(sentence_id);
+CREATE INDEX idx_grammar_sentence_answers_sentence ON grammar_sentence_answers(sentence_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

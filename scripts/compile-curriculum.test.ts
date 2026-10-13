@@ -782,4 +782,87 @@ describe('compile-curriculum', () => {
     expect(run).toThrow(/Example sentence span surface mismatch/);
     fs.rmSync(tempDir, { recursive: true, force: true });
   });
+
+  function compileGrammarFixture(
+    mutate?: (grammarFile: { items: Record<string, unknown>[] }) => void,
+  ): { dbPath: string; tempDir: string; run: () => void } {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+    mutate?.(grammarFile);
+    fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+    return { dbPath, tempDir, run: () => compileCurriculum(dbPath, curriculumDir) };
+  }
+
+  it('compiles grammar pool fields, build alternates and grammar meanings', () => {
+    const { dbPath, tempDir, run } = compileGrammarFixture();
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const sentence = db
+        .prepare(
+          `SELECT s.id, s.grammar_start, s.grammar_end, s.register
+           FROM example_sentences s JOIN items i ON i.id = s.item_id
+           WHERE i.slug = 'desu'`,
+        )
+        .get() as { id: number; grammar_start: number; grammar_end: number; register: string };
+      expect(sentence).toMatchObject({ grammar_start: 1, grammar_end: 3, register: 'polite' });
+
+      const answers = db
+        .prepare(
+          `SELECT answer_furigana, kind, sort_order FROM grammar_sentence_answers
+           WHERE sentence_id = ? ORDER BY sort_order`,
+        )
+        .all(sentence.id);
+      expect(answers).toEqual([
+        { answer_furigana: '一[いち]だ。', kind: 'valid', sort_order: 0 },
+        { answer_furigana: '一[いち]じゃない。', kind: 'other_grammar', sort_order: 1 },
+      ]);
+
+      const meanings = db
+        .prepare(
+          `SELECT a.answer_text, a.is_primary FROM accepted_answers a
+           JOIN items i ON i.id = a.item_id
+           WHERE i.slug = 'desu' AND a.answer_type = 'meaning' ORDER BY a.id`,
+        )
+        .all();
+      expect(meanings).toEqual([
+        { answer_text: 'is', is_primary: 1 },
+        { answer_text: 'copula', is_primary: 0 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('leaves grammar pool columns null on non-grammar example sentences', () => {
+    const { dbPath, tempDir, run } = compileGrammarFixture();
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const rows = db
+        .prepare(
+          `SELECT s.grammar_start, s.grammar_end, s.register FROM example_sentences s
+           JOIN items i ON i.id = s.item_id WHERE i.item_type != 'grammar'`,
+        )
+        .all();
+      expect(rows.length).toBeGreaterThan(0);
+      for (const row of rows) {
+        expect(row).toEqual({ grammar_start: null, grammar_end: null, register: null });
+      }
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on a grammar span outside its sentence', () => {
+    const { tempDir, run } = compileGrammarFixture((file) => {
+      const desu = file.items[0] as { example_sentences: { grammar_span: unknown }[] };
+      desu.example_sentences[0].grammar_span = { start: 2, end: 9 };
+    });
+    expect(run).toThrow(/Grammar span out of range: grammar:desu example\[0\]/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
 });

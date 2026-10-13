@@ -210,6 +210,28 @@
         "word_spans": {
           "type": "array",
           "items": { "$ref": "#/$defs/wordSpan" }
+        },
+        "grammar_span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": "integer", "minimum": 0 },
+            "end": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "register": { "type": "string", "enum": ["polite", "plain"] },
+        "build_alternates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["furigana", "kind"],
+            "properties": {
+              "furigana": { "type": "string", "minLength": 1 },
+              "kind": { "type": "string", "enum": ["valid", "other_grammar"] }
+            }
+          }
         }
       }
     },
@@ -283,6 +305,10 @@
         "example_sentences": {
           "type": "array",
           "items": { "$ref": "#/$defs/exampleSentence" }
+        },
+        "accepted_answers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/acceptedAnswer" }
         },
         "vocabulary_slugs": {
           "type": "array",

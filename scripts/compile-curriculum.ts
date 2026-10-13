@@ -136,6 +136,10 @@ type ExampleSentence = {
   reinforcement_tags?: string[];
   vocabulary_slugs?: string[];
   word_spans?: WordSpan[];
+  /** Grammar pool only: where the grammar sits in `japanese`. */
+  grammar_span?: { start: number; end: number };
+  register?: 'polite' | 'plain';
+  build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar' }[];
 };
 
 type GrammarClozeVariant = {
@@ -172,6 +176,7 @@ type GrammarItem = {
   family?: 'particles' | 'copula' | 'conjugations' | 'connectors' | 'patterns';
   cloze_variants?: GrammarClozeVariant[];
   example_sentences?: ExampleSentence[];
+  accepted_answers?: AcceptedAnswer[];
   vocabulary_slugs?: string[];
 };
 
@@ -600,8 +605,12 @@ export function compileCurriculum(
       VALUES (@item_id, @answer_type, @answer_text, @is_primary)
     `);
     const insertExample = db.prepare(`
-      INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
-      VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
+      INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags, grammar_start, grammar_end, register)
+      VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags, @grammar_start, @grammar_end, @register)
+    `);
+    const insertGrammarSentenceAnswer = db.prepare(`
+      INSERT INTO grammar_sentence_answers (sentence_id, answer_furigana, kind, sort_order)
+      VALUES (@sentence_id, @answer_furigana, @kind, @sort_order)
     `);
     const insertExampleVocab = db.prepare(`
       INSERT INTO example_sentence_vocab (sentence_id, item_id, sort_order)
@@ -652,6 +661,12 @@ export function compileCurriculum(
 
     const insertExamples = (itemId: number, sentences: ExampleSentence[], ownerLabel: string) => {
       for (const [index, sentence] of sentences.entries()) {
+        const span = sentence.grammar_span;
+        if (span && !(span.start >= 0 && span.start < span.end && span.end <= sentence.japanese.length)) {
+          throw new Error(
+            `Grammar span out of range: ${ownerLabel} example[${index}] [${span.start}, ${span.end}) in "${sentence.japanese}"`,
+          );
+        }
         const result = insertExample.run({
           item_id: itemId,
           japanese: sentence.japanese,
@@ -661,8 +676,19 @@ export function compileCurriculum(
           reinforcement_tags: sentence.reinforcement_tags
             ? JSON.stringify(sentence.reinforcement_tags)
             : null,
+          grammar_start: span?.start ?? null,
+          grammar_end: span?.end ?? null,
+          register: sentence.register ?? null,
         });
         const sentenceId = Number(result.lastInsertRowid);
+        for (const [altIndex, alternate] of (sentence.build_alternates ?? []).entries()) {
+          insertGrammarSentenceAnswer.run({
+            sentence_id: sentenceId,
+            answer_furigana: alternate.furigana,
+            kind: alternate.kind,
+            sort_order: altIndex,
+          });
+        }
         for (const [slugIndex, vocabSlug] of (sentence.vocabulary_slugs ?? []).entries()) {
           const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
           if (!vocabId) {
@@ -856,6 +882,15 @@ export function compileCurriculum(
           : null,
         uses: grammarItem.uses ? JSON.stringify(grammarItem.uses) : null,
       });
+
+      for (const answer of grammarItem.accepted_answers ?? []) {
+        insertAnswer.run({
+          item_id: id,
+          answer_type: answer.answer_type,
+          answer_text: answer.answer_text,
+          is_primary: answer.is_primary ? 1 : 0,
+        });
+      }
 
       for (const [index, relatedSlug] of (grammarItem.related_grammar_slugs ?? []).entries()) {
         const relatedId = idByKey.get(itemKey('grammar', relatedSlug));
