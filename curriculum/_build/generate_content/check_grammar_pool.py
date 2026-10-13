@@ -47,9 +47,15 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
     required = set(linked) - set(pronoun_slugs)
     alternates = sentence.get("build_alternates", [])
     plains = [_parse_alternate(alt["furigana"]) for alt in alternates]
-    accepted_plain = {sentence["japanese"]} | {
-        plain for plain, alt in zip(plains, alternates) if plain and alt["kind"] == "valid"
-    }
+    # (text, grammar start) of every answer an other_grammar alternate may be
+    # a swap of: the main sentence at its span, a valid alternate wherever its
+    # chunk sits.
+    bases = [(sentence["japanese"], span["start"])] if span else []
+    if chunk:
+        for plain, alt in zip(plains, alternates):
+            if plain and alt["kind"] == "valid":
+                bases.extend((plain, k) for k in range(len(plain))
+                             if plain.startswith(chunk, k))
     for index, (alt, plain) in enumerate(zip(alternates, plains)):
         label = f"rule 6 alternate[{index}]"
         if plain is None:
@@ -63,8 +69,8 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
         if alt["kind"] == "valid" and chunk and chunk not in plain:
             errors.append(f"{label}: valid alternate lacks the grammar {chunk!r}: {plain!r}")
         if alt["kind"] == "other_grammar" and not (chunk and any(
-            f in plain and plain.replace(f, chunk, 1) in accepted_plain
-            for f in other_family_forms
+            plain == base[:k] + f + base[k + len(chunk):]
+            for base, k in bases for f in other_family_forms
         )):
             errors.append(
                 f"{label}: other_grammar alternate is not an accepted answer with a "

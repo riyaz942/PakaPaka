@@ -95,6 +95,32 @@ class SentenceRulesTest(unittest.TestCase):
         self.assertEqual([e for e in errors if "rule 6" in e], [])
 
 
+class SwapBackPositionTest(unittest.TestCase):
+    """The other-grammar swap happens at the grammar position, not at the
+    first occurrence of the same-family form."""
+
+    def rule6(self, jp, grammar, alt_plain, forms):
+        spans = [{"vocabulary_slug": "mizu", "start": 0, "end": 1},
+                 {"vocabulary_slug": "kyou", "start": 2, "end": 4},
+                 {"vocabulary_slug": "nomu", "start": 5, "end": 8, "inflection": "masu"}]
+        s = sentence(jp, spans, grammar,
+                     alts=[{"furigana": alt_plain, "kind": "other_grammar"}])
+        errors = pool.sentence_errors(s, item([s]), ALLOWED, forms, VOCAB)
+        return [e for e in errors if "rule 6" in e]
+
+    def test_swap_at_the_wrong_occurrence_is_rejected(self):
+        # Grammar is the second は; the alternate swaps the first one.
+        errors = self.rule6("水は今日は飲みます。", {"start": 4, "end": 5},
+                            "水が今日は飲みます。", ["が"])
+        self.assertEqual(len(errors), 1)
+
+    def test_swap_at_the_grammar_position_is_accepted_after_an_earlier_match(self):
+        # Grammar is が; the alternate's first は is not the swap target.
+        errors = self.rule6("水は今日が飲みます。", {"start": 4, "end": 5},
+                            "水は今日は飲みます。", ["は"])
+        self.assertEqual(errors, [])
+
+
 class FamilyScopeTest(unittest.TestCase):
     def test_n4_family_forms_include_n5_points(self):
         n5 = {g["slug"] for g in pool.context.load_grammar("n5")}
