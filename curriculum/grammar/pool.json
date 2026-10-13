@@ -3553,5 +3553,690 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "te-kudasai": {
+    "accepted_meanings": [
+      "please do",
+      "please",
+      "request",
+      "could you"
+    ],
+    "sentences": [
+      {
+        "japanese": "ちょっと待ってください。",
+        "english": "Please wait a moment.",
+        "vocabulary_slugs": [
+          "chotto",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "ここに座ってください。",
+        "english": "Please sit here.",
+        "vocabulary_slugs": [
+          "koko",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "名前を書いてください。",
+        "english": "Please write your name.",
+        "vocabulary_slugs": [
+          "namae",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "口を開けてください。",
+        "english": "Open your mouth, please.",
+        "vocabulary_slugs": [
+          "kuchi-v",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "ここに名前を書いてください。",
+        "english": "Please write your name here.",
+        "vocabulary_slugs": [
+          "koko",
+          "namae",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "名前をここに書いてください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "水を飲んでください。",
+        "english": "Please drink some water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日、うちに来てください。",
+        "english": "Please come to my place tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "uchi",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日うちに来てください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ここでちょっと待ってください。",
+        "english": "Please wait here a moment.",
+        "vocabulary_slugs": [
+          "koko",
+          "chotto",
+          "matsu"
+        ],
+        "alternates": [
+          {
+            "japanese": "ちょっとここで待ってください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "鍵がありませんから、ドアを開けてください。",
+        "english": "I don't have a key, so please open the door.",
+        "vocabulary_slugs": [
+          "kagi",
+          "aru",
+          "doa",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "パンを買いましたから、一緒に食べてください。",
+        "english": "I bought bread, so please eat it with me.",
+        "vocabulary_slugs": [
+          "pan",
+          "kau-v",
+          "issho-ni",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-iru": {
+    "accepted_meanings": [
+      "is doing",
+      "-ing",
+      "be doing",
+      "progressive",
+      "ongoing state"
+    ],
+    "sentences": [
+      {
+        "japanese": "雨が降っています。",
+        "english": "It is raining.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "彼はパンを食べています。",
+        "english": "He is eating bread.",
+        "vocabulary_slugs": [
+          "kare",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "友達を待っています。",
+        "english": "I am waiting for a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "彼を知っています。",
+        "english": "I know him.",
+        "vocabulary_slugs": [
+          "kare",
+          "shiru"
+        ]
+      },
+      {
+        "japanese": "母は料理をしている。",
+        "english": "My mother is cooking.",
+        "vocabulary_slugs": [
+          "haha",
+          "ryouri",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "今、勉強しています。",
+        "english": "I am studying now.",
+        "vocabulary_slugs": [
+          "ima",
+          "benkyou",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今勉強しています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今、映画を見ています。",
+        "english": "I'm watching a movie right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画を今見ています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "テレビを見てるの？",
+        "english": "Are you watching TV?",
+        "vocabulary_slugs": [
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "何をしていますか。",
+        "english": "What are you doing?",
+        "vocabulary_slugs": [
+          "nani",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "猫がベッドで寝ています。",
+        "english": "The cat is sleeping on the bed.",
+        "vocabulary_slugs": [
+          "neko",
+          "beddo",
+          "neru"
+        ],
+        "alternates": [
+          {
+            "japanese": "ベッドで猫が寝ています。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-mo-ii": {
+    "accepted_meanings": [
+      "may",
+      "it's okay to",
+      "can",
+      "allowed to",
+      "permission"
+    ],
+    "sentences": [
+      {
+        "japanese": "ここに座ってもいいですか。",
+        "english": "May I sit here?",
+        "vocabulary_slugs": [
+          "koko",
+          "suwaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここに座ってもかまいませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "帰ってもいいですか。",
+        "english": "May I go home?",
+        "vocabulary_slugs": [
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "ここでご飯を食べてもいいですか。",
+        "english": "Is it okay if I eat here?",
+        "vocabulary_slugs": [
+          "koko",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "ご飯をここで食べてもいいですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "テレビを見てもいいですよ。",
+        "english": "You can watch TV.",
+        "vocabulary_slugs": [
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "ここで待ってもかまいません。",
+        "english": "You can wait here; I don't mind.",
+        "vocabulary_slugs": [
+          "koko",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "窓を開けてもいいですか。",
+        "english": "Is it okay if I open the window?",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "窓を開けてもかまいませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "一緒に行ってもいいですか。",
+        "english": "Can I come along with you?",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "電話を使ってもいいですか。",
+        "english": "May I use the phone?",
+        "vocabulary_slugs": [
+          "denwa",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "この傘を使ってもいいですよ。",
+        "english": "You can use this umbrella.",
+        "vocabulary_slugs": [
+          "kono",
+          "kasa",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-wa-ikenai": {
+    "accepted_meanings": [
+      "must not",
+      "may not",
+      "not allowed to",
+      "mustn't",
+      "can't"
+    ],
+    "sentences": [
+      {
+        "japanese": "授業中に話してはいけません。",
+        "english": "You must not talk during class.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "ここで電話を使ってはいけません。",
+        "english": "You must not use the phone here.",
+        "vocabulary_slugs": [
+          "koko",
+          "denwa",
+          "tsukau"
+        ],
+        "alternates": [
+          {
+            "japanese": "電話をここで使ってはいけません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "その部屋に入ってはいけません。",
+        "english": "You must not go into that room.",
+        "vocabulary_slugs": [
+          "sono",
+          "heya",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "子供はお酒を買ってはいけません。",
+        "english": "Children are not allowed to buy alcohol.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "osake",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "夜にテレビを見てはいけない。",
+        "english": "You're not allowed to watch TV at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "夜にテレビを見ちゃいけない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "それを食べちゃいけない。",
+        "english": "You can't eat that.",
+        "vocabulary_slugs": [
+          "sore",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "それを食べてはいけない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "図書館の本にペンで書いてはいけない。",
+        "english": "You must not write in library books with a pen.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "hon",
+          "pen",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "ここに座ってはだめだ。",
+        "english": "You mustn't sit here.",
+        "vocabulary_slugs": [
+          "koko",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "ここに鍵を置いてはいけません。",
+        "english": "You must not leave the key here.",
+        "vocabulary_slugs": [
+          "koko",
+          "kagi",
+          "oku"
+        ],
+        "alternates": [
+          {
+            "japanese": "鍵をここに置いてはいけません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ベッドでパンを食べちゃだめ。",
+        "english": "No eating bread in bed.",
+        "vocabulary_slugs": [
+          "beddo",
+          "pan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nai-form": {
+    "accepted_meanings": [
+      "not",
+      "don't",
+      "plain negative",
+      "negative"
+    ],
+    "sentences": [
+      {
+        "japanese": "今日は行かない。",
+        "english": "I'm not going today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "肉を食べない。",
+        "english": "I don't eat meat.",
+        "vocabulary_slugs": [
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "お金がない。",
+        "english": "I have no money.",
+        "vocabulary_slugs": [
+          "okane"
+        ]
+      },
+      {
+        "japanese": "彼は来なかった。",
+        "english": "He didn't come.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "今日は学校に行かない。",
+        "english": "I won't go to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は学校へ行かない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "新しい靴を買わない。",
+        "english": "I won't buy new shoes.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "kutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "昨日は遊ばなかった。",
+        "english": "I didn't play yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "猫は魚を食べなかった。",
+        "english": "The cat didn't eat the fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "冬は窓を開けない。",
+        "english": "I don't open the window in winter.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "mado",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "朝ご飯を食べなかったの？",
+        "english": "Didn't you eat breakfast?",
+        "vocabulary_slugs": [
+          "asagohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-kara": {
+    "accepted_meanings": [
+      "after doing",
+      "after",
+      "once",
+      "after that"
+    ],
+    "sentences": [
+      {
+        "japanese": "手を洗ってから、ご飯を食べます。",
+        "english": "I eat once I have washed my hands.",
+        "vocabulary_slugs": [
+          "te-v",
+          "arau",
+          "gohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "うちに帰ってから、寝ます。",
+        "english": "I'll go to bed after I get home.",
+        "vocabulary_slugs": [
+          "uchi",
+          "kaeru-v",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "映画を見てから、帰ります。",
+        "english": "I'll go home after I watch the movie.",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "窓を閉めてから、出ました。",
+        "english": "I left after I closed the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "shimeru",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "宿題をしてから、遊びます。",
+        "english": "I'll play after I do my homework.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "suru",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "毎朝起きてから、コーヒーを飲みます。",
+        "english": "Every morning, I drink coffee after I get up.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "okiru",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "駅で友達に会ってから、映画館へ行きます。",
+        "english": "I'll meet my friend at the station, then go to the cinema.",
+        "vocabulary_slugs": [
+          "eki",
+          "tomodachi",
+          "au",
+          "eigakan",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅で友達に会ってから、映画館に行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "電話してから、行きます。",
+        "english": "I'll call first, then go.",
+        "vocabulary_slugs": [
+          "denwa",
+          "suru",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "晩ご飯を食べてから、何をしますか。",
+        "english": "What will you do after dinner?",
+        "vocabulary_slugs": [
+          "bangohan",
+          "taberu",
+          "nani",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
