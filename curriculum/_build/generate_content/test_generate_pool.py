@@ -44,6 +44,20 @@ class ReplyShapeTest(unittest.TestCase):
         self.assertTrue(any("sentences[1].alternates[0]" in e and "object" in e for e in errors))
 
 
+    def test_null_alternates_and_nested_slugs_are_errors_not_crashes(self):
+        bad = {"accepted_meanings": ["a", "b", "c"],
+               "sentences": [{"japanese": "寒い。", "english": "x",
+                              "vocabulary_slugs": ["samui"], "alternates": None},
+                             {"japanese": "寒い。", "english": "x",
+                              "vocabulary_slugs": [["samui"]]},
+                             {"japanese": "寒い。", "english": "x",
+                              "vocabulary_slugs": ["samui"], "alternates": "寒いです。"}]}
+        errors = gp.reply_errors(bad)
+        self.assertTrue(any("sentences[0]" in e and "alternates" in e for e in errors))
+        self.assertTrue(any("sentences[1]" in e and "vocabulary_slugs" in e for e in errors))
+        self.assertTrue(any("sentences[2]" in e and "alternates" in e for e in errors))
+
+
 class SelectTest(unittest.TestCase):
     def test_skips_sidecar_points_in_sort_order(self):
         slugs = gp.select_slugs("n5", 3, sidecar={"wa-topic": {}})

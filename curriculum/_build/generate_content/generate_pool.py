@@ -51,11 +51,16 @@ def reply_errors(reply):
         for key in ("japanese", "english"):
             if not isinstance(s.get(key), str) or not s.get(key):
                 errors.append(f"{label}: {key} must be a non-empty string")
-        if not isinstance(s.get("vocabulary_slugs"), list):
-            errors.append(f"{label}: vocabulary_slugs must be a list")
+        slugs = s.get("vocabulary_slugs")
+        if not (isinstance(slugs, list) and all(isinstance(v, str) and v for v in slugs)):
+            errors.append(f"{label}: vocabulary_slugs must be a list of non-empty strings")
         if "form" in s and not (isinstance(s["form"], str) and s["form"]):
             errors.append(f"{label}: form must be a non-empty string when present")
-        for j, alt in enumerate(s.get("alternates", [])):
+        alternates = s.get("alternates", [])
+        if not isinstance(alternates, list):
+            errors.append(f"{label}: alternates must be a list when present")
+            alternates = []
+        for j, alt in enumerate(alternates):
             if not isinstance(alt, dict):
                 errors.append(f"{label}.alternates[{j}]: must be an object")
                 continue
