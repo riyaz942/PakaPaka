@@ -95,6 +95,19 @@ class SentenceRulesTest(unittest.TestCase):
         self.assertEqual([e for e in errors if "rule 6" in e], [])
 
 
+    def test_rule6_valid_alternate_may_use_another_accepted_form(self):
+        s = sentence("水ではありません。", [{"vocabulary_slug": "mizu", "start": 0, "end": 1}],
+                     {"start": 1, "end": 7},
+                     alts=[{"furigana": "水[みず]じゃありません。", "kind": "valid"},
+                           {"furigana": "水[みず]でした。", "kind": "valid"}])
+        point = dict(item([s], slug="dewa-arimasen"),
+                     accepted_forms=["ではありません", "じゃありません"])
+        errors = [e for e in pool.sentence_errors(s, point, ALLOWED, [], VOCAB) if "rule 6" in e]
+        # じゃありません is this point's own form; でした is not.
+        self.assertEqual(len(errors), 1)
+        self.assertIn("alternate[1]", errors[0])
+
+
 class SwapBackPositionTest(unittest.TestCase):
     """The other-grammar swap happens at the grammar position, not at the
     first occurrence of the same-family form."""

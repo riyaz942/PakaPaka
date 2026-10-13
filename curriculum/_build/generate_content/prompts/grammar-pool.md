@@ -57,7 +57,9 @@ One JSON object:
   - `alternates`: other answers a learner could correctly type on the Build
     card, plain Japanese:
     - `"valid"` — same grammar, different but natural wording: another word
-      order, without 私は/あなたは, the other accepted form.
+      order, without 私は/あなたは, another accepted form with the same
+      meaning and politeness (じゃありません for ではありません — not でした
+      for です, not だ for です).
     - `"other_grammar"` — the same sentence with a same-family point swapped
       in for this one (only swap the grammar; change nothing else).
     Give 0–3 alternates per sentence; only ones a learner would really type.

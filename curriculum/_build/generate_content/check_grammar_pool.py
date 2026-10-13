@@ -66,7 +66,10 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
         if missing:
             errors.append(f"{label}: missing words {missing} in {plain!r}")
             continue
-        if alt["kind"] == "valid" and chunk and chunk not in plain:
+        # A valid alternate keeps this point: its own chunk, or another of the
+        # point's accepted forms (じゃありません for ではありません).
+        if alt["kind"] == "valid" and chunk and not any(
+                f in plain for f in [chunk, *item.get("accepted_forms", [])]):
             errors.append(f"{label}: valid alternate lacks the grammar {chunk!r}: {plain!r}")
         if alt["kind"] == "other_grammar" and not (chunk and any(
             plain == base[:k] + f + base[k + len(chunk):]
