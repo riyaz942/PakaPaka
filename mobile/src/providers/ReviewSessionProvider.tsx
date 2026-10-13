@@ -3,6 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { MAX_PREFETCH } from '@/config/constants';
 import { normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import { normalizeKana } from '@/core/answer/readingEvaluator';
+import { normalizeBuildText } from '@/core/grammar/buildEvaluator';
 import { computeLoadPercent } from '@/core/cognitive-load/loadTracker';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
@@ -19,6 +20,7 @@ import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
 import { addDailyLoad, getDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
 import { resolveDailyGoalTarget } from '@/data/user/goalRingRepository';
+import { addGrammarAnswer, setGrammarSentenceHistory } from '@/data/user/grammarAnswerRepository';
 import { applyBoosts, clearBoosts } from '@/data/user/relatedItemBoostRepository';
 import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
@@ -95,12 +97,20 @@ type ReviewSessionState = {
     answerText: string,
     options?: { force?: boolean },
   ) => AddSynonymOutcome;
+  /**
+   * "My answer is correct too" on a grammar Build card (D4): save the answer
+   * for this sentence and patch it into the card so a same-session retry
+   * accepts it. The screen regrades the card itself.
+   */
+  addGrammarAnswerForCurrentItem: (answerText: string) => AddGrammarAnswerOutcome;
 };
 
 export type AddSynonymOutcome =
   | { status: 'added' }
   | { status: 'collision'; collidesWith: string }
   | { status: 'error' };
+
+export type AddGrammarAnswerOutcome = { status: 'added' } | { status: 'error' };
 
 /** A card in the session working queue. Retries are pedagogical re-asks: they write nothing. */
 type QueueEntry = { item: ReviewItem; isRetry: boolean };
@@ -159,11 +169,11 @@ export function ReviewSessionProvider({ children }: Props) {
   // Streak credit is earned by the first graded item of a session (any review
   // activity that day counts), not by finishing the whole queue.
   const streakRecordedRef = useRef(false);
-  // First-attempt terminal grades per two-card kanji item, held until both the
-  // meaning and reading cards are terminal — then a single worst-of-both FSRS
+  // First-attempt terminal grades per two-card item (kanji, vocabulary, grammar),
+  // keyed by the card's promptType, held until both cards are terminal — then a single worst-of-both FSRS
   // write fires (FR83). In-memory only; abandoning the session mid-pair writes
   // nothing, exactly like abandoning before a single card's first attempt.
-  const pairGradesRef = useRef<Map<string, { meaning?: ReviewGrade; reading?: ReviewGrade }>>(
+  const pairGradesRef = useRef<Map<string, Partial<Record<ReviewItem['promptType'], ReviewGrade>>>>(
     new Map(),
   );
 
@@ -283,6 +293,17 @@ export function ReviewSessionProvider({ children }: Props) {
           const clearBoostResult = clearBoosts(userDb, [itemId]);
           if (!clearBoostResult.ok && __DEV__) {
             console.warn('[ReviewSession] boost clear failed', clearBoostResult.error);
+          }
+
+          // D9: the next review of this grammar point avoids both sentences.
+          if (item.grammarRead && item.grammarBuild) {
+            const historyResult = setGrammarSentenceHistory(userDb, itemId, [
+              item.grammarRead.sentenceKey,
+              item.grammarBuild.sentenceKey,
+            ]);
+            if (!historyResult.ok && __DEV__) {
+              console.warn('[ReviewSession] grammar history write failed', historyResult.error);
+            }
           }
 
           // Streak credit: first graded item of the session counts as review
@@ -413,12 +434,15 @@ export function ReviewSessionProvider({ children }: Props) {
           });
 
         const entry = pairGradesRef.current.get(itemId) ?? {};
-        entry[currentItem.promptType === 'meaning' ? 'meaning' : 'reading'] = grade;
+        entry[currentItem.promptType] = grade;
         pairGradesRef.current.set(itemId, entry);
 
-        if (entry.meaning !== undefined && entry.reading !== undefined) {
+        const grades = Object.values(entry).filter(
+          (value): value is ReviewGrade => value !== undefined,
+        );
+        if (grades.length === 2) {
           pairGradesRef.current.delete(itemId);
-          applyItemGrade(currentItem, combinePairGrades(entry.meaning, entry.reading), {
+          applyItemGrade(currentItem, combinePairGrades(grades[0], grades[1]), {
             recordWeakness: false,
           });
         }
@@ -441,7 +465,9 @@ export function ReviewSessionProvider({ children }: Props) {
         // The item-level grade is unknown until both cards are terminal — only
         // the pair-completing card may peek, and it peeks the combined grade.
         const entry = pairGradesRef.current.get(item.itemId);
-        const otherGrade = item.promptType === 'meaning' ? entry?.reading : entry?.meaning;
+        const otherGrade = Object.entries(entry ?? {}).find(
+          ([prompt]) => prompt !== item.promptType,
+        )?.[1];
         if (otherGrade === undefined) return null;
         effectiveGrade = combinePairGrades(otherGrade, grade);
       }
@@ -528,6 +554,23 @@ export function ReviewSessionProvider({ children }: Props) {
     [currentEntry, queue, userDb],
   );
 
+  const addGrammarAnswerForCurrentItem = useCallback(
+    (answerText: string): AddGrammarAnswerOutcome => {
+      const item = currentEntry?.item;
+      const card = item?.promptType === 'production' ? item.grammarBuild : undefined;
+      if (!item || !card) return { status: 'error' };
+      const normalized = normalizeBuildText(answerText);
+      if (!normalized) return { status: 'error' };
+
+      const result = addGrammarAnswer(userDb, item.itemId, card.sentenceKey, normalized);
+      if (!result.ok) return { status: 'error' };
+      // Same object the retry re-queues (see addSynonymForCurrentItem).
+      card.userAnswers.push(normalized);
+      return { status: 'added' };
+    },
+    [currentEntry, userDb],
+  );
+
   const totalLoad = baseLoad + sessionLoad;
   const cognitiveLoadPercent = computeLoadPercent(totalLoad, thresholdRef.current);
   const cognitiveLoadComplete = cognitiveLoadPercent >= 100;
@@ -580,6 +623,7 @@ export function ReviewSessionProvider({ children }: Props) {
     peekStageTransition,
     recordTypoForCurrentItem,
     addSynonymForCurrentItem,
+    addGrammarAnswerForCurrentItem,
   };
 
   return (

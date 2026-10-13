@@ -1,4 +1,5 @@
 import type { RelatedItem, ReinforcementLink } from '@/core/content/content.types';
+import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 
 export type SRSStageLabel = 'apprentice' | 'guru' | 'master' | 'enlightened' | 'burned';
 
@@ -46,6 +47,40 @@ export type ReviewAnswerKey = {
   };
 };
 
+/** One word of a grammar sentence, as the Build card lists it (dictionary form). */
+export type GrammarVocabEntry = {
+  itemId: string;
+  primaryForm: string;
+  /** Bracket furigana of the dictionary form; null for kana-only words. */
+  furigana: string | null;
+  /** The learner has started this word (in_progress or known) — drives D12 link timing. */
+  started: boolean;
+};
+
+/** The sentence one grammar card asks about (spec §5.3). */
+export type GrammarSentenceCard = {
+  /** The sentence's plain Japanese — its identity in user.db (spec §5.1). */
+  sentenceKey: string;
+  japanese: string;
+  furigana: string | null;
+  english: string;
+  spans: PassageWordSpan[];
+  grammarSpan: { start: number; end: number };
+  register: 'polite' | 'plain';
+  /** Distinct span words in sentence order. */
+  vocabulary: GrammarVocabEntry[];
+  /** Furigana notation graded correct: the sentence, then its `valid` alternates. */
+  answers: string[];
+  /** Furigana notation that triggers the same-family nudge (D6). */
+  otherGrammarAnswers: string[];
+  /**
+   * Normalised answers the learner saved for this sentence. Mutable on
+   * purpose: "My answer is correct too" appends here so a same-session retry
+   * of this card (same object) accepts it at once.
+   */
+  userAnswers: string[];
+};
+
 export type ReviewItem = {
   itemId: string;
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar';
@@ -63,11 +98,15 @@ export type ReviewItem = {
   srsState: SRSState;
   promptType: 'reading' | 'meaning' | 'production';
   /**
-   * True on both cards of a two-card kanji pair (meaning + on'yomi reading).
+   * True on both cards of a two-card pair (kanji meaning + on'yomi, vocabulary meaning + reading, grammar Read + Build).
    * The session provider holds the pair's first-attempt outcomes and applies a
    * single worst-of-both FSRS write when both are terminal (FR83).
    */
   isTwoCardItem?: boolean;
+  /** Grammar pair only: the Read card's sentence (spec §3.1). Set on both cards of the pair. */
+  grammarRead?: GrammarSentenceCard;
+  /** Grammar pair only: the Build card's sentence (spec §3.2). Set on both cards of the pair. */
+  grammarBuild?: GrammarSentenceCard;
   /**
    * v2 rule 3: a vocabulary item asked for its meaning only, because some kanji
    * written in it is not yet at guru. Its FSRS interval is capped at the master

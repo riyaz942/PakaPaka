@@ -10,7 +10,7 @@ import type {
 } from '@/core/content/content.types';
 
 import { isVocabularyReadingUnlocked, resolvePromptType } from './promptResolver';
-import type { ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
+import type { GrammarSentenceCard, ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
 import { computePriority, normalizeFsrsUrgency } from './weaknessEngine';
 
 /**
@@ -54,6 +54,9 @@ export type QueueInputItem = {
   inputMode?: 'mc' | 'type_in';
   /** Shuffled MC options when inputMode === 'mc'; null when no distractors. */
   mcOptions?: string[] | null;
+  /** Grammar pair payloads (spec §5.3); grammar only. */
+  grammarRead?: GrammarSentenceCard;
+  grammarBuild?: GrammarSentenceCard;
   /**
    * True when a kanji item has at least one on'yomi row — it is emitted as a
    * two-card pair (meaning + on'yomi reading). Kanji without on'yomi get a
@@ -163,34 +166,38 @@ export function buildReviewQueue(
 
   // Two-card expansion (Story 1.1, extended by v2 rule 2): each kanji with
   // on'yomi becomes a meaning card plus an on'yomi reading card, and so does
-  // each vocabulary item whose kanji are all learned. The reading card is
+  // each vocabulary item whose kanji are all learned; each grammar item becomes
+  // a Read (meaning) card plus a Build (production) card. The second card is
   // deferred at least PAIR_MIN_GAP cards so the pair never lands back-to-back
   // unless the queue is too short to allow it.
   const result: ReviewItem[] = [];
-  const pendingReadingCards: { earliestIndex: number; card: ReviewItem }[] = [];
-  const flushReadyReadingCards = () => {
+  const pendingSecondCards: { earliestIndex: number; card: ReviewItem }[] = [];
+  const flushReadySecondCards = () => {
     while (
-      pendingReadingCards.length > 0 &&
-      pendingReadingCards[0].earliestIndex <= result.length
+      pendingSecondCards.length > 0 &&
+      pendingSecondCards[0].earliestIndex <= result.length
     ) {
-      result.push(pendingReadingCards.shift()!.card);
+      result.push(pendingSecondCards.shift()!.card);
     }
   };
   for (const input of ordered) {
-    flushReadyReadingCards();
+    flushReadySecondCards();
     if (isTwoCardInput(input)) {
       result.push(mapToReviewItem(input, { promptType: 'meaning', isTwoCardItem: true }));
-      pendingReadingCards.push({
+      pendingSecondCards.push({
         earliestIndex: result.length + PAIR_MIN_GAP,
-        card: mapToReviewItem(input, { promptType: 'reading', isTwoCardItem: true }),
+        card: mapToReviewItem(input, {
+          promptType: input.curriculumItem.itemType === 'grammar' ? 'production' : 'reading',
+          isTwoCardItem: true,
+        }),
       });
     } else {
       result.push(mapToReviewItem(input));
     }
-    flushReadyReadingCards();
+    flushReadySecondCards();
   }
-  while (pendingReadingCards.length > 0) {
-    result.push(pendingReadingCards.shift()!.card);
+  while (pendingSecondCards.length > 0) {
+    result.push(pendingSecondCards.shift()!.card);
   }
 
   if (options.limit !== undefined) {
@@ -255,8 +262,10 @@ export const PAIR_MIN_GAP = 2;
 /**
  * Which items emit both a meaning and a reading card: kanji that have an
  * on'yomi to ask for, and vocabulary whose every kanji has reached guru.
+ * Every grammar item is a Read + Build pair at every stage (D1, D7).
  */
 function isTwoCardInput(item: QueueInputItem): boolean {
+  if (item.curriculumItem.itemType === 'grammar') return true;
   if (item.curriculumItem.itemType === 'kanji') return item.kanjiHasOnyomi === true;
   if (item.curriculumItem.itemType === 'vocabulary') {
     return isVocabularyReadingUnlocked(
@@ -269,7 +278,7 @@ function isTwoCardInput(item: QueueInputItem): boolean {
 
 function mapToReviewItem(
   item: QueueInputItem,
-  overrides?: { promptType: 'reading' | 'meaning'; isTwoCardItem: boolean },
+  overrides?: { promptType: ReviewItem['promptType']; isTwoCardItem: boolean },
 ): ReviewItem {
   // v2 rule 3: a word still waiting on its kanji is capped at master, and the
   // card says which kanji it is waiting for.
@@ -288,6 +297,8 @@ function mapToReviewItem(
     srsState: item.srsState,
     promptType: overrides?.promptType ?? resolvePromptType(item.curriculumItem.itemType),
     isTwoCardItem: overrides?.isTwoCardItem,
+    grammarRead: item.grammarRead,
+    grammarBuild: item.grammarBuild,
     readingLocked: readingLockedBy !== undefined,
     readingLockedBy,
     clozePrompt: item.clozePrompt ?? null,

@@ -1,7 +1,7 @@
 import type { ContentItemSummary } from '@/core/content/content.types';
 
 import { buildReviewQueue, INTERLEAVE_WEIGHTS, type QueueInputItem } from './queueBuilder';
-import type { SRSState } from './srs.types';
+import type { GrammarSentenceCard, SRSState } from './srs.types';
 
 const NOW = new Date('2026-06-27T10:00:00.000Z');
 const PAST = new Date('2026-06-26T10:00:00.000Z');
@@ -176,7 +176,8 @@ describe('buildReviewQueue', () => {
       makeQueueItem('r2', 'radical', new Date('2026-06-26T02:00:00Z')),
     ];
 
-    const result = buildReviewQueue(items, { now: NOW });
+    // Build cards are deferred partners; the pair tests cover them.
+    const result = buildReviewQueue(items, { now: NOW }).filter((card) => card.promptType !== 'production');
     expect(result).toHaveLength(12);
 
     // First round: kanji:2, vocabulary:2, grammar:1, radical:1
@@ -202,7 +203,7 @@ describe('buildReviewQueue', () => {
       makeQueueItem('g1', 'grammar', PAST),
     ];
     const result = buildReviewQueue(items, { now: NOW });
-    expect(result).toHaveLength(2);
+    expect(result).toHaveLength(3);
     // vocabulary weight=2, grammar weight=1 → v1, g1 (single items each)
     const types = result.map((i) => i.itemType);
     expect(types).toContain('vocabulary');
@@ -354,7 +355,7 @@ describe('buildReviewQueue', () => {
         makeQueueItem('2', 'grammar', PAST),
       ];
       const result = buildReviewQueue(items);
-      expect(result).toHaveLength(2);
+      expect(result).toHaveLength(3);
     });
 
     it('interleaving structure is preserved when bias is enabled', () => {
@@ -372,7 +373,10 @@ describe('buildReviewQueue', () => {
         ['k1', 0.0], ['k2', 0.0], ['v1', 0.0], ['v2', 0.0], ['g1', 0.0], ['r1', 0.0],
       ]);
 
-      const result = buildReviewQueue(items, { now: NOW, weaknessScores, weaknessBiasEnabled: true });
+      // Build cards are deferred partners; the pair tests cover them.
+      const result = buildReviewQueue(items, { now: NOW, weaknessScores, weaknessBiasEnabled: true }).filter(
+        (card) => card.promptType !== 'production',
+      );
 
       // Should still interleave: k,k,v,v,g,r
       expect(result[0].itemType).toBe('kanji');
@@ -416,17 +420,14 @@ describe('buildReviewQueue', () => {
       expect(result[0].isTwoCardItem).toBeUndefined();
     });
 
-    it('keeps vocabulary and grammar single-card with existing prompt behavior', () => {
+    it('keeps kana-only vocabulary single-card', () => {
       const items = [
         makeQueueItem('v1', 'vocabulary', PAST),
-        makeQueueItem('g1', 'grammar', PAST),
       ];
       const result = buildReviewQueue(items, { now: NOW });
 
-      expect(result).toHaveLength(2);
+      expect(result).toHaveLength(1);
       expect(result.every((card) => card.isTwoCardItem === undefined)).toBe(true);
-      const grammar = result.find((card) => card.itemType === 'grammar')!;
-      expect(grammar.promptType).toBe('production');
       // Kana-only vocabulary (the fixture's `form-v1`) never gets a reading card.
       const vocab = result.find((card) => card.itemType === 'vocabulary')!;
       expect(vocab.promptType).toBe('meaning');
@@ -522,6 +523,39 @@ describe('buildReviewQueue', () => {
     it('carries the word furigana onto the card so a locked meaning prompt stays readable', () => {
       const result = buildReviewQueue([makeWord('v1', { unlearnedKanji: ['写'] })], { now: NOW });
       expect(result[0].furigana).toBe('写[しゃ]真[しん]');
+    });
+  });
+
+  describe('grammar Read + Build pair (spec §5.3)', () => {
+    function card(key: string): GrammarSentenceCard {
+      return {
+        sentenceKey: key, japanese: key, furigana: null, english: 'e', spans: [],
+        grammarSpan: { start: 0, end: 1 }, register: 'polite', vocabulary: [],
+        answers: [key], otherGrammarAnswers: [], userAnswers: [],
+      };
+    }
+    const grammarInput = (id: string) =>
+      makeQueueItem(id, 'grammar', PAST, { grammarRead: card(`${id}-r`), grammarBuild: card(`${id}-b`) });
+
+    it('emits a Read (meaning) and a Build (production) card sharing srsState and payloads', () => {
+      const result = buildReviewQueue([grammarInput('g1')], { now: NOW });
+
+      expect(result.map((c) => c.promptType)).toEqual(['meaning', 'production']);
+      expect(result.every((c) => c.isTwoCardItem)).toBe(true);
+      expect(result[0].srsState).toBe(result[1].srsState);
+      expect(result[0].grammarBuild).toBe(result[1].grammarBuild);
+      expect(result[0].grammarRead?.sentenceKey).toBe('g1-r');
+    });
+
+    it('a limit that cuts the pair pulls the Build card in', () => {
+      const items = [
+        grammarInput('g1'),
+        makeQueueItem('r1', 'radical', PAST),
+        makeQueueItem('r2', 'radical', PAST),
+      ];
+      const result = buildReviewQueue(items, { now: NOW, limit: 1 });
+
+      expect(result.map((c) => `${c.itemId}:${c.promptType}`)).toEqual(['g1:meaning', 'g1:production']);
     });
   });
 });

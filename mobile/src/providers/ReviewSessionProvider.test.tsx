@@ -5,7 +5,7 @@ import React from 'react';
 import { __mockResetSqlite } from '../../__mocks__/expo-sqlite';
 
 import { MAX_PREFETCH } from '@/config/constants';
-import type { ReviewItem } from '@/core/srs/srs.types';
+import type { GrammarSentenceCard, ReviewItem } from '@/core/srs/srs.types';
 import { ReviewSessionProvider, useReviewSession } from '@/providers/ReviewSessionProvider';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
@@ -62,6 +62,14 @@ const mockAddSynonym = jest.fn();
 
 jest.mock('@/data/user/userSynonymRepository', () => ({
   addSynonym: (...args: unknown[]) => mockAddSynonym(...args),
+}));
+
+const mockSetGrammarSentenceHistory = jest.fn();
+const mockAddGrammarAnswer = jest.fn();
+
+jest.mock('@/data/user/grammarAnswerRepository', () => ({
+  setGrammarSentenceHistory: (...args: unknown[]) => mockSetGrammarSentenceHistory(...args),
+  addGrammarAnswer: (...args: unknown[]) => mockAddGrammarAnswer(...args),
 }));
 
 const NOW = '2026-06-27T10:00:00.000Z';
@@ -127,6 +135,8 @@ describe('ReviewSessionProvider', () => {
     });
     mockAddSynonym.mockReset();
     mockAddSynonym.mockReturnValue({ ok: true, value: undefined });
+    mockSetGrammarSentenceHistory.mockReset().mockReturnValue({ ok: true, value: undefined });
+    mockAddGrammarAnswer.mockReset().mockReturnValue({ ok: true, value: undefined });
     mockUseReviewQueue.mockReturnValue({
       queue: makeQueue(10),
       isLoading: false,
@@ -1245,6 +1255,92 @@ describe('ReviewSessionProvider', () => {
 
       expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
       expect(result.current.isComplete).toBe(true);
+    });
+  });
+
+  describe('grammar Read + Build pair', () => {
+    function sentence(key: string): GrammarSentenceCard {
+      return {
+        sentenceKey: key, japanese: key, furigana: null, english: 'e', spans: [],
+        grammarSpan: { start: 0, end: 1 }, register: 'polite', vocabulary: [],
+        answers: [key], otherGrammarAnswers: [], userAnswers: [],
+      };
+    }
+
+    function mockGrammarPair() {
+      const base = {
+        ...makeReviewItem('g1', 'grammar'),
+        isTwoCardItem: true,
+        grammarRead: sentence('READ'),
+        grammarBuild: sentence('BUILD'),
+      };
+      mockUseReviewQueue.mockReturnValue({
+        queue: [
+          { ...base, promptType: 'meaning' },
+          { ...base, promptType: 'production' },
+        ],
+        isLoading: false,
+        error: null,
+        refetch: jest.fn(),
+        queueBuildMs: 12,
+      });
+    }
+
+    it('Read wrong + Build right → one Again write and the two sentences saved as history', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockGrammarPair();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(1);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      expect(mockUpsertSrsState).not.toHaveBeenCalled();
+      expect(mockSetGrammarSentenceHistory).not.toHaveBeenCalled();
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      expect(mockUpsertSrsState.mock.calls[0][1].fsrsState).toBe('relearning');
+      expect(mockSetGrammarSentenceHistory).toHaveBeenCalledWith(db, 'g1', ['READ', 'BUILD']);
+    });
+
+    it('a saved Build answer is patched into the card object the retry reuses', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockGrammarPair();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('production');
+      });
+
+      let outcome: { status: string } = { status: 'idle' };
+      act(() => {
+        outcome = result.current.addGrammarAnswerForCurrentItem('寒い から、コート着ます。');
+      });
+
+      expect(outcome).toEqual({ status: 'added' });
+      expect(mockAddGrammarAnswer).toHaveBeenCalledWith(db, 'g1', 'BUILD', '寒いからこーと着ます');
+      expect(result.current.currentItem?.grammarBuild?.userAnswers).toEqual(['寒いからこーと着ます']);
     });
   });
 });
