@@ -104,7 +104,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 3. No out-of-range content word: `level_check.find_violations(sentence, build_allowed_index(allowed_vocab_for(level, slug)), accepted_forms)` is empty.
 4. A grammar point has ≥ 8 passing sentences.
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
-6. Every alternate parses as furigana notation and contains every listed word **except pronouns** (代名詞 — 私, あなた, 彼…, which natural Japanese drops). Every `valid` alternate contains the grammar chunk. Every `other_grammar` alternate equals the main sentence or a `valid` alternate with the grammar chunk, **at the grammar position**, replaced by a same-family form (any level up to the current one).
+6. Every alternate parses as furigana notation and contains every listed word **except personal pronouns** (私, あなた, 彼…, which natural Japanese drops; question words and demonstratives such as 何, どこ, これ are content and stay required). Every `valid` alternate contains the grammar chunk. Every `other_grammar` alternate equals the main sentence or a `valid` alternate with the grammar chunk, **at the grammar position**, replaced by a same-family form (any level up to the current one).
 7. Every grammar point has ≥ 3 accepted meanings.
 
 ---

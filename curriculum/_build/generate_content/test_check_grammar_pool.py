@@ -121,6 +121,28 @@ class SwapBackPositionTest(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+class PronounExemptionTest(unittest.TestCase):
+    def test_only_droppable_personal_pronouns_are_exempt(self):
+        exempt = pool.pronoun_slugs_through("n5")
+        self.assertTrue({"watashi", "anata", "kare", "kanojo", "boku"} <= exempt)
+        # Question words and demonstratives are content: dropping 何 changes
+        # the sentence.
+        self.assertEqual(exempt & {"nani", "nan", "doko", "dare", "kore", "sore", "itsu"}, set())
+
+    def test_dropping_a_question_word_is_an_error(self):
+        vocab = {**VOCAB, "nani": "何"}
+        s = sentence(
+            "何を飲みますか。",
+            [{"vocabulary_slug": "nani", "start": 0, "end": 1},
+             {"vocabulary_slug": "nomu", "start": 2, "end": 5, "inflection": "masu"}],
+            {"start": 1, "end": 2},
+            alts=[{"furigana": "飲[の]みますか。", "kind": "valid"}],
+        )
+        errors = pool.sentence_errors(s, item([s]), ALLOWED | {"何"}, OTHER, vocab,
+                                      pronoun_slugs=pool.pronoun_slugs_through("n5"))
+        self.assertTrue(any("rule 6" in e and "nani" in e for e in errors))
+
+
 class FamilyScopeTest(unittest.TestCase):
     def test_n4_family_forms_include_n5_points(self):
         n5 = {g["slug"] for g in pool.context.load_grammar("n5")}

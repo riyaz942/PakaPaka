@@ -143,12 +143,20 @@ def grammar_through(level):
     ]
 
 
+#: Personal pronouns natural Japanese drops; a Build alternate may omit them.
+#: Question words and demonstratives (何, どこ, これ) are tagged pronoun in the
+#: vocabulary too, but dropping them changes the sentence.
+DROPPABLE_PRONOUNS = frozenset({
+    "watashi", "watashitachi", "boku", "anata", "kimi", "kare", "kanojo",
+})
+
+
 def pronoun_slugs_through(level):
     return frozenset(
         v["slug"]
         for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
         for v in context.load_vocab(lower)
-        if "pronoun" in (v.get("word_type") or "")
+        if v["slug"] in DROPPABLE_PRONOUNS and "pronoun" in (v.get("word_type") or "")
     )
 
 
