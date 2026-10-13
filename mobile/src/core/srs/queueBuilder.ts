@@ -40,20 +40,6 @@ export type QueueInputItem = {
   studyStatus: ContentStudyStatus | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;
-  /** Grammar cloze prompt derived at load time; null/absent for non-grammar items. */
-  clozePrompt?: string | null;
-  /** Furigana-annotated cloze prompt (Plan 11.8); grammar only. */
-  clozePromptFurigana?: string | null;
-  /** Chunk the cloze blanks (authored variant answer); grammar only. */
-  clozeAnswer?: string | null;
-  /** Hint rung 1 content (Plan 10); grammar only. */
-  clozeNudge?: string | null;
-  /** Hint rung 2 content (Plan 10); grammar only, gated at Enlightened+. */
-  clozeEnglish?: string | null;
-  /** Stage-resolved grammar input mode (Plan 08); grammar only. */
-  inputMode?: 'mc' | 'type_in';
-  /** Shuffled MC options when inputMode === 'mc'; null when no distractors. */
-  mcOptions?: string[] | null;
   /** Grammar pair payloads (spec §5.3); grammar only. */
   grammarRead?: GrammarSentenceCard;
   grammarBuild?: GrammarSentenceCard;
@@ -301,13 +287,6 @@ function mapToReviewItem(
     grammarBuild: item.grammarBuild,
     readingLocked: readingLockedBy !== undefined,
     readingLockedBy,
-    clozePrompt: item.clozePrompt ?? null,
-    clozePromptFurigana: item.clozePromptFurigana ?? null,
-    clozeAnswer: item.clozeAnswer ?? null,
-    clozeNudge: item.clozeNudge ?? null,
-    clozeEnglish: item.clozeEnglish ?? null,
-    inputMode: item.inputMode,
-    mcOptions: item.mcOptions ?? null,
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
     answerKey: item.answerKey,

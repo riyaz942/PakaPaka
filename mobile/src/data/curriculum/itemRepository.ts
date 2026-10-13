@@ -556,25 +556,6 @@ export type RelatedGrammarItem = {
   meaning: string;
 };
 
-/** Authored review-specific cloze variant (Plan 09). */
-export type GrammarClozeVariant = {
-  id: string;
-  /** JP sentence with the grammar chunk replaced by ＿＿＿. */
-  jpCloze: string;
-  /**
-   * Bracket-notation cloze with blank preserved (Plan 11.8). Null when the
-   * variant was authored without furigana.
-   */
-  jpClozeFurigana: string | null;
-  /** Full-sentence English — hint rung 2, never on-card by default. */
-  english: string;
-  /** The chunk the blank expects; aligns with accepted_forms. */
-  answer: string;
-  /** Short pedagogical poke — hint rung 1. */
-  nudge: string;
-  sortOrder: number;
-};
-
 export type ExampleSentenceVocabLink = {
   itemId: string;
   primaryForm: string;
@@ -938,91 +919,6 @@ export function getVisuallySimilarItems(
   } catch {
     return [];
   }
-}
-
-/**
- * Authored cloze variants for a grammar item (Plan 09), in sort order.
- * Returns [] on curriculum DBs compiled before the table existed — callers
- * fall back to the Plan 07 sentence-derived cloze.
- */
-export function getGrammarClozeVariants(
-  db: SQLiteDatabase,
-  itemId: string,
-): GrammarClozeVariant[] {
-  try {
-    const rows = db.getAllSync<{
-      id: number | string;
-      jp_cloze: string;
-      jp_cloze_furigana: string | null;
-      english: string;
-      answer: string;
-      nudge: string;
-      sort_order: number;
-    }>(
-      `SELECT id, jp_cloze, jp_cloze_furigana, english, answer, nudge, sort_order
-       FROM grammar_cloze_variants WHERE item_id = ? ORDER BY sort_order ASC`,
-      Number(itemId),
-    );
-    return rows.map((row) => ({
-      id: String(row.id),
-      jpCloze: row.jp_cloze,
-      jpClozeFurigana: row.jp_cloze_furigana ?? null,
-      english: row.english,
-      answer: row.answer,
-      nudge: row.nudge,
-      sortOrder: row.sort_order,
-    }));
-  } catch {
-    return [];
-  }
-}
-
-/**
- * Accepted forms of *other* grammar points, for MC distractors (Plan 08):
- * same-family forms first (when this item has a family), then same-JLPT-level
- * forms as the fallback pool. Forms are the parsed accepted_forms entries.
- */
-export function getGrammarDistractorPools(
-  db: SQLiteDatabase,
-  itemId: string,
-): { familyForms: string[]; levelForms: string[] } {
-  const parseForms = (rows: { accepted_forms: string }[]): string[] => {
-    const forms: string[] = [];
-    for (const row of rows) {
-      try {
-        forms.push(...(JSON.parse(row.accepted_forms) as string[]));
-      } catch {
-        // Skip malformed rows — distractors are best-effort.
-      }
-    }
-    return [...new Set(forms)];
-  };
-
-  let familyForms: string[] = [];
-  try {
-    const familyRows = db.getAllSync<{ accepted_forms: string }>(
-      `SELECT gr.accepted_forms FROM grammar_rules gr
-       WHERE gr.item_id != ?
-         AND gr.family IS NOT NULL
-         AND gr.family = (SELECT family FROM grammar_rules WHERE item_id = ?)`,
-      Number(itemId),
-      Number(itemId),
-    );
-    familyForms = parseForms(familyRows);
-  } catch {
-    // Pre-Plan-09 DB without the family column.
-  }
-
-  const levelRows = db.getAllSync<{ accepted_forms: string }>(
-    `SELECT gr.accepted_forms FROM grammar_rules gr
-     JOIN items i ON i.id = gr.item_id
-     WHERE gr.item_id != ?
-       AND i.jlpt_level = (SELECT jlpt_level FROM items WHERE id = ?)`,
-    Number(itemId),
-    Number(itemId),
-  );
-
-  return { familyForms, levelForms: parseForms(levelRows) };
 }
 
 export function getExampleSentences(

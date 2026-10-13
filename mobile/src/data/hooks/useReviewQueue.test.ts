@@ -14,8 +14,6 @@ jest.mock('@/data/curriculum/itemRepository', () => ({
   getRelatedItemsForItems: jest.fn(),
   getRequiredParentsForItems: jest.fn(),
   getExampleSentences: jest.fn(),
-  getGrammarClozeVariants: jest.fn(),
-  getGrammarDistractorPools: jest.fn(),
 }));
 
 const db = {} as SQLiteDatabase;

@@ -2,13 +2,10 @@ import { type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { GlyphText } from '@/components/common/GlyphText';
-import { FuriganaText } from '@/components/common/FuriganaText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
-import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
-import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
 import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
@@ -31,8 +28,6 @@ type IncorrectRevealProps = {
   detail: ReviewRevealDetail | null;
   stageTransition?: StageTransition | null;
   resultRef?: Ref<View>;
-  /** Near-miss (Plan 10): the answer contained the right chunk but more than the blank wants */
-  incompleteAnswer?: boolean;
   /** The rejected answer, offered as a one-tap user synonym; empty for "Don't know" */
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
@@ -61,7 +56,6 @@ export function IncorrectReveal({
   detail,
   stageTransition,
   resultRef,
-  incompleteAnswer,
   rejectedAnswer,
   synonymState = { status: 'idle' },
   onAddSynonym,
@@ -69,17 +63,8 @@ export function IncorrectReveal({
   onSaveGrammarAnswer,
   grammarAnswerError,
 }: IncorrectRevealProps) {
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const accent = CONTENT_TYPE_ACCENT[item.itemType];
 
-  // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
-  // and show the completed sentence so the blank's scope is unmistakable.
-  const isIncomplete = !!incompleteAnswer && item.itemType === 'grammar';
-  const clozeSentence =
-    item.itemType === 'grammar' ? (item.clozePromptFurigana ?? item.clozePrompt) : null;
-  const completedSentence = isIncomplete
-    ? resolveCompletedSentence(clozeSentence, displayAnswer)
-    : null;
   // Grammar: the hero card carries the answer itself, so no separate
   // "Correct answer" line. A variant form (もん for もの) shows beside the
   // pattern rather than contradicting it underneath.
@@ -97,12 +82,11 @@ export function IncorrectReveal({
     Boolean(rejectedAnswer?.trim());
   // A Build answer is a whole sentence: the card below shows it, so the hero
   // keeps to the grammar form instead of repeating the sentence at display size.
-  const heroText = isIncomplete
-    ? displayAnswer
-    : isGrammar &&
-        !(grammarCard && item.promptType === 'production') &&
-        displayAnswer &&
-        displayAnswer !== item.primaryForm
+  const heroText =
+    isGrammar &&
+    !(grammarCard && item.promptType === 'production') &&
+    displayAnswer &&
+    displayAnswer !== item.primaryForm
       ? `${item.primaryForm} / ${displayAnswer}`
       : item.primaryForm;
 
@@ -117,32 +101,9 @@ export function IncorrectReveal({
       <View
         ref={resultRef}
         accessible
-        accessibilityLabel={
-          isIncomplete
-            ? `Close, but you need just the grammar piece: ${displayAnswer}`
-            : `Incorrect, correct answer is ${displayAnswer}`
-        }
+        accessibilityLabel={`Incorrect, correct answer is ${displayAnswer}`}
         className="gap-space-sm items-center">
-        {isIncomplete ? (
-          <>
-            <VerdictLine label="Not quite" />
-            <Text className="text-body font-ui-medium text-feedback-warning-deep text-center">
-              You had the right idea — we need just the grammar piece:
-            </Text>
-          </>
-        ) : (
-          <VerdictLine label="Incorrect" />
-        )}
-        {/* Plan 12.4: keep the sentence the blank came from on screen, so the
-            revealed chunk has context. */}
-        {!isIncomplete && clozeSentence ? (
-          <FuriganaText
-            text={clozeSentence}
-            mode={furiganaMode}
-            knownKanji={knownKanji}
-            className="text-body-lg text-secondary text-center"
-          />
-        ) : null}
+        <VerdictLine label="Incorrect" />
         <View className={cn('w-full items-center rounded-radius-xl p-space-lg', accent.soft)}>
           <GlyphText
             className={cn(
@@ -153,16 +114,7 @@ export function IncorrectReveal({
             {heroText}
           </GlyphText>
         </View>
-        {isIncomplete ? (
-          completedSentence ? (
-            <FuriganaText
-              text={completedSentence}
-              mode={furiganaMode}
-              knownKanji={knownKanji}
-              className="text-body-lg text-primary text-center"
-            />
-          ) : null
-        ) : isGrammar ? null : (
+        {isGrammar ? null : (
           <Text className="text-body-lg font-ui-semibold text-primary text-center">
             Correct answer: {displayAnswer}
           </Text>

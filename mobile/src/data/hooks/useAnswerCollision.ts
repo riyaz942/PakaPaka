@@ -28,7 +28,7 @@ export function useAnswerCollision(): (
       const trimmed = userAnswer.trim();
       if (!trimmed) return null;
 
-      // Production prompts are cloze/form fills — not meaning/reading lookups.
+      // Production prompts are grammar Build sentences — not meaning/reading lookups.
       // Mapping them to 'reading' would miss grammar collisions or false-hit kana.
       if (item.promptType === 'production') return null;
 

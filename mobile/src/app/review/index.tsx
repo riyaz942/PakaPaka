@@ -21,7 +21,6 @@ import { DailyThresholdNotice } from '@/components/engagement';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import {
-  GrammarMcOptions,
   ReviewCard,
   resolveCorrectReveal,
   SessionExitSheet,
@@ -101,7 +100,6 @@ export default function ReviewScreen() {
     status: 'idle',
   });
   // Near-miss teaching flag for the incorrect reveal (Plan 10).
-  const [incompleteAnswer, setIncompleteAnswer] = useState(false);
   // The submitted answer matched a different item's accepted answer (FR86).
   const [answerCollision, setAnswerCollision] = useState<AnswerCollision | null>(null);
 
@@ -218,7 +216,6 @@ export default function ReviewScreen() {
     setRejectedAnswer('');
     setSynonymState({ status: 'idle' });
     setGrammarAnswerError(false);
-    setIncompleteAnswer(false);
     setAnswerCollision(null);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
@@ -297,7 +294,7 @@ export default function ReviewScreen() {
     router.replace('/review/summary' as Href);
   }, [isComplete]);
 
-  const submitAnswer = useCallback((submittedAnswer: string, options?: { fromMc?: boolean }) => {
+  const submitAnswer = useCallback((submittedAnswer: string) => {
     if (!currentItem || !canSubmitAnswer) return;
     if (!submittedAnswer.trim()) return;
     // Guard against a second submit (e.g. rapid double return-key) racing the
@@ -306,18 +303,7 @@ export default function ReviewScreen() {
     isSubmittingRef.current = true;
 
     setCardState('evaluating');
-    let evaluation = evaluateReviewAnswer(currentItem, submittedAnswer);
-
-    // MC has no "try again" affordance: a picked option is a committed answer,
-    // so the non-terminal typo/wrong_script states collapse to incorrect.
-    if (
-      options?.fromMc &&
-      (evaluation.result === 'typo' ||
-        evaluation.result === 'wrong_script' ||
-        evaluation.result === 'wrong_reading_type')
-    ) {
-      evaluation = { result: 'incorrect' };
-    }
+    const evaluation = evaluateReviewAnswer(currentItem, submittedAnswer);
 
     if (currentItem.promptType !== 'meaning') {
       AccessibilityInfo.announceForAccessibility(submittedAnswer);
@@ -381,7 +367,6 @@ export default function ReviewScreen() {
     const answer = evaluation.displayAnswer ?? currentItem.displayMeaning;
     setDisplayAnswer(answer);
     setRejectedAnswer(submittedAnswer.trim());
-    setIncompleteAnswer(evaluation.feedbackKind === 'incomplete');
     // Sync curriculum lookup — never blocks the <100ms feedback path (NFR1).
     // Guard throws so a DB/lookup failure cannot leave the card stuck evaluating.
     let collision: AnswerCollision | null = null;
@@ -396,7 +381,7 @@ export default function ReviewScreen() {
     setCardState('incorrect');
   }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
 
-  // Second Return (or MC Continue) after a correct answer: apply the deferred
+  // Second Return (or Continue) after a correct answer: apply the deferred
   // grade and advance. Never re-evaluates input — the answer already graded.
   const advanceFromCorrect = useCallback(() => {
     if (cardState !== 'correct') return;
@@ -561,14 +546,6 @@ export default function ReviewScreen() {
           ? 'wrong-script'
           : 'idle';
 
-  // Apprentice grammar answers by multiple choice (Plan 08). Options are
-  // built at queue time; absence means fall back to type-in.
-  const isMcCard =
-    currentItem.itemType === 'grammar' &&
-    currentItem.inputMode === 'mc' &&
-    !!currentItem.mcOptions &&
-    currentItem.mcOptions.length > 1;
-
   return (
     <SafeAreaView className="flex-1 bg-background">
       <SessionHeader
@@ -598,8 +575,7 @@ export default function ReviewScreen() {
               stageTransition={stageTransition}
               resultRef={resultRef}
               revealDetail={getRevealDetail(currentItem.itemId)}
-              incompleteAnswer={incompleteAnswer}
-              rejectedAnswer={rejectedAnswer}
+                rejectedAnswer={rejectedAnswer}
               synonymState={synonymState}
               onAddSynonym={handleAddSynonym}
               answerCollision={answerCollision}
@@ -650,56 +626,32 @@ export default function ReviewScreen() {
             />
           </View>
         ) : cardState === 'correct' ? (
-          // Visible Continue for typed and MC correct (touch / soft-keyboard).
+          // Visible Continue on correct (touch / soft-keyboard).
           // Typed path also keeps the input mounted so second Return still
           // advances (FR84). Continue doubles as early advance while Lightning
           // Mode's timer is pending.
           <View className="gap-space-sm px-space-md pb-space-md">
-            {!isMcCard ? (
-              <WanaKanaInput
-                ref={inputRef}
-                mode={inputMode}
-                value={answerText}
-                onChangeText={setAnswerText}
-                onSubmit={handleSubmit}
-                placeholder={
-                  currentItem.itemType === 'grammar'
-                    ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
-                    : PLACEHOLDER[currentItem.promptType]
-                }
-                editable={inputEditable}
-                autoFocus={inputEditable}
-                state={inputState}
-              />
-            ) : null}
+            <WanaKanaInput
+              ref={inputRef}
+              mode={inputMode}
+              value={answerText}
+              onChangeText={setAnswerText}
+              onSubmit={handleSubmit}
+              placeholder={
+                currentItem.itemType === 'grammar'
+                  ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
+                  : PLACEHOLDER[currentItem.promptType]
+              }
+              editable={inputEditable}
+              autoFocus={inputEditable}
+              state={inputState}
+            />
             <Button
               ref={continueButtonRef}
               label="Continue"
               onPress={advanceFromCorrect}
               variant="primary"
             />
-          </View>
-        ) : isMcCard ? (
-          <View
-            className={cn(
-              'gap-space-sm px-space-md pb-space-md',
-              !canSubmitAnswer && 'opacity-50',
-            )}>
-            <GrammarMcOptions
-              key={cursor}
-              options={currentItem.mcOptions!}
-              onSelect={(option) => submitAnswer(option, { fromMc: true })}
-              disabled={!canSubmitAnswer}
-            />
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Don't know"
-              accessibilityState={{ disabled: !canSubmitAnswer }}
-              className="min-h-[44px] items-center justify-center"
-              disabled={!canSubmitAnswer}
-              onPress={handleDontKnow}>
-              <Text className="text-label font-ui-semibold text-muted">Don&apos;t know</Text>
-            </Pressable>
           </View>
         ) : (
           // Dim (never hide) the input while feedback is showing — the input

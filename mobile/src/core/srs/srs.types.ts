@@ -115,37 +115,6 @@ export type ReviewItem = {
   readingLocked?: boolean;
   /** The un-learned kanji holding `readingLocked`, in teaching order. */
   readingLockedBy?: string[];
-  /**
-   * Grammar cloze prompt (Plan 07): a JP sentence or structure frame with the
-   * grammar chunk blanked. When present, the review card shows this instead of
-   * primaryForm so a particle is never prompted with itself. Grading still
-   * targets the chunk (answerKey.grammar), never the full sentence.
-   */
-  clozePrompt?: string | null;
-  /**
-   * The specific chunk this cloze blanks (authored variant answer, Plan 09).
-   * Falls back to answerKey.grammar.acceptedForms[0] when absent.
-   */
-  clozeAnswer?: string | null;
-  /**
-   * Furigana-annotated cloze prompt (Plan 11.8). When present, the review card
-   * renders through FuriganaText; otherwise falls back to plain clozePrompt.
-   */
-  clozePromptFurigana?: string | null;
-  /** Hint rung 1 (Plan 10): short pedagogical poke, allowed at every stage. */
-  clozeNudge?: string | null;
-  /** Hint rung 2 (Plan 10): English sentence/meaning — gated off at Enlightened+. */
-  clozeEnglish?: string | null;
-  /**
-   * Grammar input mode by SRS stage (Plan 08): apprentice → 'mc',
-   * everything else → 'type_in'. Absent for non-grammar items.
-   */
-  inputMode?: 'mc' | 'type_in';
-  /**
-   * Shuffled MC options (correct answer included) when inputMode === 'mc'.
-   * Null/absent when no distractors could be built — render type-in instead.
-   */
-  mcOptions?: string[] | null;
   mnemonic?: string | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;

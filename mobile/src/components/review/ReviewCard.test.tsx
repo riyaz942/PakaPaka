@@ -84,15 +84,6 @@ describe('ReviewCard — prompting state', () => {
     expect(screen.getByText('Meaning')).toBeTruthy();
   });
 
-  it('shows "Grammar" mode label for grammar production (never "Production" or "Reading")', () => {
-    render(
-      <ReviewCard item={makeItem({ itemType: 'grammar', promptType: 'production' })} state="prompting" />,
-    );
-    expect(screen.getByText('Grammar')).toBeTruthy();
-    expect(screen.queryByText('Production')).toBeNull();
-    expect(screen.queryByText('Reading')).toBeNull();
-  });
-
   it('hides meanings during reading prompt', () => {
     render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="prompting" />);
     expect(screen.queryByText('eat, food')).toBeNull();
@@ -144,68 +135,6 @@ describe('ReviewCard — prompting state', () => {
       />,
     );
     expect(screen.getByText('私は＿します')).toBeTruthy();
-  });
-});
-
-describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
-  const waTopic = (overrides: Partial<ReviewItem> = {}) =>
-    makeItem({
-      itemType: 'grammar',
-      promptType: 'production',
-      primaryForm: 'は',
-      displayMeaning: 'topic marker',
-      clozePrompt: '私＿＿＿学生です。',
-      answerKey: {
-        acceptedMeanings: ['topic marker'],
-        acceptedReadings: [],
-        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
-      },
-      ...overrides,
-    });
-
-  it('prompts with the cloze sentence, never the bare particle', () => {
-    render(<ReviewCard item={waTopic()} state="prompting" />);
-    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
-    expect(screen.queryByText('は')).toBeNull();
-  });
-
-  it('renders authored cloze furigana through FuriganaText (Plan 11.8)', () => {
-    render(
-      <ReviewCard
-        item={waTopic({ clozePromptFurigana: '私[わたし]＿＿＿学[がく]生[せい]です。' })}
-        state="prompting"
-      />,
-    );
-    // Annotated runs expose the surface via accessibilityLabel.
-    expect(screen.getByLabelText('私＿＿＿学生です。')).toBeTruthy();
-    expect(screen.getByText('わたし')).toBeTruthy();
-    expect(screen.queryByText('は')).toBeNull();
-  });
-
-  it('does not show English on the cloze prompt', () => {
-    render(<ReviewCard item={waTopic()} state="prompting" />);
-    expect(screen.queryByText(/topic marker/)).toBeNull();
-    expect(screen.queryByText(/I am a student/)).toBeNull();
-  });
-
-  it('falls back to primaryForm when no cloze is available', () => {
-    render(<ReviewCard item={waTopic({ clozePrompt: null })} state="prompting" />);
-    expect(screen.getByText('は')).toBeTruthy();
-  });
-
-  it('shows the cloze sentence (not the bare form) on wrong_script', () => {
-    render(<ReviewCard item={waTopic()} state="wrong_script" />);
-    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
-    expect(screen.queryByText('は')).toBeNull();
-  });
-
-  it('announces the grammar chunk as "answer" (not "reading") on correct', () => {
-    render(<ReviewCard item={waTopic()} state="correct" />);
-    // The graded chunk is announced via the result region; the visible reveal
-    // is the shared trimmed panel (Story 1.2, FR85).
-    expect(screen.getByLabelText('Correct, answer: は')).toBeTruthy();
-    expect(screen.queryByText(/Reading:/)).toBeNull();
-    expect(screen.getByText('topic marker')).toBeTruthy();
   });
 });
 
@@ -409,12 +338,11 @@ describe('ReviewCard — result states', () => {
 });
 
 describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)', () => {
-  const cloze = makeItem({
+  const grammar = makeItem({
     itemType: 'grammar',
     promptType: 'production',
     primaryForm: 'は',
     displayMeaning: 'topic marker',
-    clozePrompt: '私＿＿＿学生です。',
     answerKey: {
       acceptedMeanings: ['topic marker'],
       acceptedReadings: [],
@@ -427,12 +355,6 @@ describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)'
     expect(screen.getByText('食')).toBeTruthy();
     expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
     expect(screen.getByText('Correct')).toBeTruthy();
-  });
-
-  it('fills the blank in the cloze sentence on a correct grammar answer', () => {
-    render(<ReviewCard item={cloze} state="correct" />);
-    expect(screen.getByText('私は学生です。')).toBeTruthy();
-    expect(screen.queryByText('私＿＿＿学生です。')).toBeNull();
   });
 
   it('keeps the prompt, mode label, and stage indicator on a typo nudge', () => {
@@ -451,18 +373,10 @@ describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)'
     expect(screen.getByLabelText('SRS stage: Apprentice')).toBeTruthy();
   });
 
-  it('shows the cloze sentence on a terminal incorrect grammar reveal', () => {
-    render(<ReviewCard item={cloze} state="incorrect" displayAnswer="は" />);
-    expect(screen.getByText('Incorrect')).toBeTruthy();
-    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
-    expect(screen.getByText('は')).toBeTruthy();
-    expect(screen.queryByText(/Correct answer:/)).toBeNull();
-  });
-
   it('shows the pattern and the variant form together in the hero card', () => {
     render(
       <ReviewCard
-        item={{ ...cloze, primaryForm: 'もの', clozeAnswer: 'もん' }}
+        item={{ ...grammar, primaryForm: 'もの' }}
         state="incorrect"
         displayAnswer="もん"
       />,
@@ -482,24 +396,6 @@ describe('ReviewCard — hints and reinforcement', () => {
     recencyPhrase: 'you learned this yesterday',
     displayText: '食べる — you learned this yesterday',
   };
-
-  it('shows Hint button for grammar prompting state', () => {
-    render(
-      <ReviewCard
-        item={makeItem({
-          itemType: 'grammar',
-          promptType: 'production',
-          answerKey: {
-            acceptedMeanings: ['copula'],
-            acceptedReadings: [],
-            grammar: { structure: 'Noun + です', conjugationRules: {}, acceptedForms: ['です'] },
-          },
-        })}
-        state="prompting"
-      />,
-    );
-    expect(screen.getByLabelText('Hint')).toBeTruthy();
-  });
 
   it('does not show Hint for non-grammar prompting state', () => {
     render(<ReviewCard item={makeItem()} state="prompting" />);
@@ -528,184 +424,6 @@ describe('ReviewCard — hints and reinforcement', () => {
 
     render(<ReviewCard item={item} state="typo" />);
     expect(screen.queryByText('食べる — you learned this yesterday')).toBeNull();
-  });
-});
-
-describe('ReviewCard — stage-gated grammar hints (Plans 08/10)', () => {
-  const grammarAtStage = (stage: 'guru' | 'enlightened') =>
-    makeItem({
-      itemType: 'grammar',
-      promptType: 'production',
-      primaryForm: 'は',
-      displayMeaning: 'topic marker',
-      clozePrompt: '私＿＿＿学生です。',
-      clozeNudge: 'Marks the topic — what is being talked about.',
-      clozeEnglish: 'I am a student.',
-      answerKey: {
-        acceptedMeanings: ['topic marker'],
-        acceptedReadings: [],
-        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
-      },
-      srsState: {
-        itemId: 'test-1',
-        stability: 1,
-        difficulty: 5,
-        dueDate: new Date().toISOString(),
-        fsrsState: 'review',
-        reps: 8,
-        lapses: 0,
-        learningSteps: 0,
-        isBurned: false,
-        srsStageLabel: stage,
-        lastReviewedAt: null,
-        updatedAt: new Date().toISOString(),
-      },
-    });
-
-  it('pre-Enlightened: nudge then English are revealable', () => {
-    render(<ReviewCard item={grammarAtStage('guru')} state="prompting" />);
-    fireEvent.press(screen.getByLabelText('Hint'));
-    expect(screen.getByText('Marks the topic — what is being talked about.')).toBeTruthy();
-    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
-    expect(screen.getByText('I am a student.')).toBeTruthy();
-  });
-
-  it('Enlightened: English rung is absent; nudge remains', () => {
-    render(<ReviewCard item={grammarAtStage('enlightened')} state="prompting" />);
-    fireEvent.press(screen.getByLabelText('Hint'));
-    expect(screen.getByText('Marks the topic — what is being talked about.')).toBeTruthy();
-    // Hint ladder exhausted after the nudge — no second rung, no English anywhere.
-    expect(screen.queryByLabelText(/Hint \(/)).toBeNull();
-    expect(screen.queryByText('I am a student.')).toBeNull();
-    expect(screen.queryByText(/topic marker/)).toBeNull();
-  });
-
-  it('drops the nudge fallback when it would just repeat the visible cloze prompt (no example-sentence match, structure fallback on both)', () => {
-    // Mirrors an unauthored N4 item: clozePrompt has no example-sentence
-    // match, so it falls back to the same blanked structure frame the nudge
-    // fallback would also produce — showing it as a "hint" would repeat the
-    // question verbatim.
-    const item = makeItem({
-      itemType: 'grammar',
-      promptType: 'production',
-      primaryForm: 'ようにする',
-      // Empty so the English rung's displayMeaning fallback doesn't mask what
-      // this test is isolating: the nudge-only fallback path.
-      displayMeaning: '',
-      clozePrompt: 'Dictionary form / ない form + ＿＿＿',
-      clozeNudge: null,
-      clozeEnglish: null,
-      answerKey: {
-        acceptedMeanings: ['to try to make it so'],
-        acceptedReadings: [],
-        grammar: {
-          structure: 'Dictionary form / ない form + ようにする',
-          conjugationRules: {},
-          acceptedForms: ['ようにする', 'ようにしている'],
-        },
-      },
-    });
-    render(<ReviewCard item={item} state="prompting" />);
-    expect(screen.queryByLabelText('Hint')).toBeNull();
-    expect(screen.getAllByText('Dictionary form / ない form + ＿＿＿')).toHaveLength(1);
-  });
-
-  it('authored N4 variant: apprentice gets a real nudge about the sentence, not the prompt again', () => {
-    // The same point as the test above, now that Plan 09 covers N4: the queue
-    // supplies the authored variant's cloze, nudge and English instead of the
-    // structure frame, so rung 1 says something the prompt does not.
-    const item = makeItem({
-      itemType: 'grammar',
-      promptType: 'production',
-      primaryForm: 'ようにする',
-      displayMeaning: 'to try to make it so / make a habit of',
-      clozePrompt: '毎朝、野菜を食べる＿＿＿。',
-      clozeNudge: 'Is this describing one bite of vegetables, or something aimed at every single morning?',
-      clozeEnglish: 'I make a point of eating vegetables every morning.',
-      answerKey: {
-        acceptedMeanings: ['to try to make it so'],
-        acceptedReadings: [],
-        grammar: {
-          structure: 'Dictionary form / ない form + ようにする',
-          conjugationRules: {},
-          acceptedForms: ['ようにする', 'ようにしている'],
-        },
-      },
-      srsState: {
-        itemId: 'test-2',
-        stability: 1,
-        difficulty: 5,
-        dueDate: new Date().toISOString(),
-        fsrsState: 'learning',
-        reps: 1,
-        lapses: 0,
-        learningSteps: 0,
-        isBurned: false,
-        srsStageLabel: 'apprentice',
-        lastReviewedAt: null,
-        updatedAt: new Date().toISOString(),
-      },
-    });
-
-    render(<ReviewCard item={item} state="prompting" />);
-    fireEvent.press(screen.getByLabelText('Hint'));
-    const nudge = 'Is this describing one bite of vegetables, or something aimed at every single morning?';
-    expect(screen.getByText(nudge)).toBeTruthy();
-    // The bug: the "hint" repeating the question the learner is already reading.
-    expect(nudge).not.toBe(item.clozePrompt);
-    expect(screen.queryAllByText('毎朝、野菜を食べる＿＿＿。')).toHaveLength(1);
-    // Apprentice is below the Enlightened gate, so the English rung is there too.
-    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
-    expect(screen.getByText('I make a point of eating vegetables every morning.')).toBeTruthy();
-  });
-});
-
-describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
-  const waTopic = makeItem({
-    itemType: 'grammar',
-    promptType: 'production',
-    primaryForm: 'は',
-    displayMeaning: 'topic marker',
-    clozePrompt: '私＿＿＿学生です。',
-    answerKey: {
-      acceptedMeanings: ['topic marker'],
-      acceptedReadings: [],
-      grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
-    },
-  });
-
-  it('shows teaching copy, the chunk, and the completed sentence', () => {
-    render(
-      <ReviewCard item={waTopic} state="incorrect" displayAnswer="は" incompleteAnswer />,
-    );
-    expect(screen.getByText('Not quite')).toBeTruthy();
-    expect(
-      screen.getByText('You had the right idea — we need just the grammar piece:'),
-    ).toBeTruthy();
-    expect(screen.getByText('私は学生です。')).toBeTruthy();
-  });
-
-  it('renders the completed sentence with furigana when authored (Plan 11.8)', () => {
-    render(
-      <ReviewCard
-        item={{
-          ...waTopic,
-          clozePromptFurigana: '私[わたし]＿＿＿学[がく]生[せい]です。',
-        }}
-        state="incorrect"
-        displayAnswer="は"
-        incompleteAnswer
-      />,
-    );
-    expect(screen.getByLabelText('私は学生です。')).toBeTruthy();
-    expect(screen.getByText('わたし')).toBeTruthy();
-  });
-
-  it('plain incorrect keeps the standard reveal', () => {
-    render(<ReviewCard item={waTopic} state="incorrect" displayAnswer="は" />);
-    expect(screen.getByText('Incorrect')).toBeTruthy();
-    expect(screen.getByText('は')).toBeTruthy();
-    expect(screen.queryByText(/right idea/)).toBeNull();
   });
 });
 

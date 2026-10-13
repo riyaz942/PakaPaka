@@ -8,10 +8,6 @@ import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
-import { buildGrammarHintLevels } from '@/core/content/hintLevels';
-import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
-import { englishHintsAllowed } from '@/core/grammar/inputMode';
-import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -24,7 +20,6 @@ import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 import { GrammarBuildCard } from './GrammarBuildCard';
 import { GrammarReadCard } from './GrammarReadCard';
 import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
-import { ProgressiveHint } from './ProgressiveHint';
 import { ReinforcementHighlight } from './ReinforcementHighlight';
 
 export type ReviewCardState =
@@ -44,13 +39,10 @@ type ReviewCardProps = {
   displayAnswer?: string;
   /** Stage movement caused by this answer; null/undefined when unchanged (no transition chrome) */
   stageTransition?: StageTransition | null;
-  onHintReveal?: (count: number) => void;
   /** Ref attached to the accessible result region in correct/incorrect/typo states */
   resultRef?: Ref<View>;
   /** Prefetched full detail rendered on the incorrect reveal */
   revealDetail?: ReviewRevealDetail | null;
-  /** Near-miss flag (Plan 10): answer contained the right chunk but more than the blank wants */
-  incompleteAnswer?: boolean;
   /** The rejected answer, offered as a one-tap user synonym on the incorrect reveal */
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
@@ -101,8 +93,8 @@ function promptFontSize(display: string) {
 
 /**
  * Resolves the label + value revealed on a correct answer so the displayed text
- * and the screen-reader announcement always agree. Grammar reveals the graded
- * chunk as "Answer" (never "Reading" — Plan 07); reading/production prompts
+ * and the screen-reader announcement always agree. A grammar Build card reveals
+ * its sentence as "Answer", a Read card the meaning; reading/production prompts
  * reveal the actual accepted reading; otherwise (or when no reading is seeded)
  * fall back to the meanings.
  */
@@ -113,12 +105,7 @@ export function resolveCorrectReveal(item: ReviewItem): { label: string; value: 
   if (item.itemType === 'grammar' && item.promptType === 'meaning' && item.grammarRead) {
     return { label: 'Meaning', value: item.displayMeaning };
   }
-  const { itemType, promptType, displayMeaning, answerKey } = item;
-  if (itemType === 'grammar') {
-    // Prefer the chunk this cloze actually blanked (authored variant answer).
-    const form = item.clozeAnswer ?? answerKey?.grammar?.acceptedForms?.[0];
-    if (form) return { label: 'Answer', value: form };
-  }
+  const { promptType, displayMeaning, answerKey } = item;
   if (promptType === 'reading' || promptType === 'production') {
     const reading = answerKey?.acceptedReadings?.[0];
     if (reading) return { label: 'Reading', value: reading };
@@ -155,10 +142,8 @@ export function ReviewCard({
   state,
   displayAnswer,
   stageTransition,
-  onHintReveal,
   resultRef,
   revealDetail,
-  incompleteAnswer,
   rejectedAnswer,
   synonymState,
   onAddSynonym,
@@ -166,9 +151,8 @@ export function ReviewCard({
   onSaveGrammarAnswer,
   grammarAnswerError,
 }: ReviewCardProps) {
-  const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
-    item;
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink } = item;
+  const { mode: furiganaMode } = useFuriganaPreference();
   const accent = CONTENT_TYPE_ACCENT[itemType];
   // Grammar pair (spec §3): the Read card asks about one sentence, the Build
   // card about another; both payloads ride on both cards of the pair.
@@ -179,21 +163,13 @@ export function ReviewCard({
         : item.grammarRead
       : undefined;
 
-  // Grammar cloze contract (Plan 07): prompt with the blanked sentence/frame,
-  // never the bare form (for particles the form IS the answer). Label the mode
-  // "Grammar", not "Production", to stop implying kanji-style drills.
-  const isGrammarCloze = itemType === 'grammar' && !!item.clozePrompt;
-  const promptDisplay = isGrammarCloze
-    ? (item.clozePromptFurigana ?? item.clozePrompt!)
-    : primaryForm;
+  const promptDisplay = primaryForm;
   // Kanji reading cards validate on'yomi only (FR81) — the label must say so.
   const modeLabel =
     itemType === 'grammar'
-      ? grammarCard
-        ? promptType === 'production'
-          ? 'Grammar · Build'
-          : 'Grammar · Read'
-        : 'Grammar'
+      ? promptType === 'production'
+        ? 'Grammar · Build'
+        : 'Grammar · Read'
       : itemType === 'kanji' && promptType === 'reading'
         ? "Reading — on'yomi"
         : MODE_LABEL[promptType];
@@ -201,7 +177,6 @@ export function ReviewCard({
   // The prompt sits on the item's soft type fill, same as the Browse/lesson
   // hero, so the glyph's family (radical/kanji/vocabulary/grammar) reads at a
   // glance instead of relying on the kicker text alone.
-  const grammarPromptClass = cn('text-title-lg font-jp-bold text-center', accent.deep);
   // v2 rule 1/5: a meaning prompt on a word whose kanji are untaught is
   // unreadable as bare text, so it is annotated. Only the meaning card of a
   // reading-locked word — on any word that also gets a reading card, printing
@@ -209,14 +184,7 @@ export function ReviewCard({
   const annotatedPrompt =
     item.readingLocked && promptType === 'meaning' ? item.furigana : null;
   const renderPrompt = (display: string) =>
-    isGrammarCloze ? (
-      <FuriganaText
-        text={display}
-        mode={furiganaMode}
-        knownKanji={knownKanji}
-        className={grammarPromptClass}
-      />
-    ) : annotatedPrompt ? (
+    annotatedPrompt ? (
       <FuriganaText
         testID="review-prompt-glyph"
         text={annotatedPrompt}
@@ -245,7 +213,6 @@ export function ReviewCard({
           item={item}
           displayAnswer={displayAnswer ?? displayMeaning}
           detail={revealDetail ?? null}
-          incompleteAnswer={incompleteAnswer}
           stageTransition={stageTransition}
           resultRef={resultRef}
           rejectedAnswer={rejectedAnswer}
@@ -274,46 +241,16 @@ export function ReviewCard({
             : null;
 
   const correctReveal = state === 'correct' ? resolveCorrectReveal(item) : null;
-  // A correct grammar cloze reads best with the blank filled in.
   const promptNode = grammarCard ? (
     promptType === 'production' ? (
       <GrammarBuildCard item={item} answered={state === 'correct'} />
     ) : (
       <GrammarReadCard item={item} answered={state === 'correct'} />
     )
-  ) : correctReveal && isGrammarCloze ? (
-    renderPrompt(resolveCompletedSentence(promptDisplay, correctReveal.value) ?? promptDisplay)
   ) : (
     grammarPrompt
   );
 
-  // Two-rung hint ladder (Plan 10): nudge → English, with the English rung
-  // gated off at Enlightened+ (Plan 08 scaffolding gate). Interim fallbacks
-  // until authored variants cover every item: the structure frame as the nudge
-  // — blanked, since "Noun + を + Verb" hands over a one-particle answer
-  // (R1.5) — and the labeled meaning as the English rung.
-  //
-  // When the cloze prompt itself had no example-sentence match, it also falls
-  // back to this same blanked structure frame (clozeBuilder.ts), so the
-  // fallback nudge would just repeat the question verbatim — drop it instead
-  // of "hinting" with the prompt the learner is already looking at.
-  const structureNudge = blankFormsInStructure(answerKey.grammar?.structure, [
-    ...(item.clozeAnswer ? [item.clozeAnswer] : []),
-    ...(answerKey.grammar?.acceptedForms ?? []),
-  ]);
-  const hintLevels =
-    itemType === 'grammar'
-      ? buildGrammarHintLevels({
-          nudge:
-            item.clozeNudge ??
-            (structureNudge && structureNudge !== item.clozePrompt ? structureNudge : null),
-          english:
-            item.clozeEnglish ??
-            (displayMeaning ? `Meaning (hint): ${displayMeaning}` : null),
-          englishAllowed: englishHintsAllowed(srsState.srsStageLabel),
-          reinforcementLink,
-        })
-      : [];
 
   return (
     <View className="gap-space-md w-full items-center">
@@ -343,10 +280,6 @@ export function ReviewCard({
         <Text testID="reading-locked-note" className="text-caption font-ui-medium text-secondary text-center">
           Master until you learn {joinForms(item.readingLockedBy)}
         </Text>
-      ) : null}
-
-      {itemType === 'grammar' && !grammarCard && !correctReveal ? (
-        <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />
       ) : null}
 
       {correctReveal ? (

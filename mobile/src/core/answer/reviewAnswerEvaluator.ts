@@ -3,8 +3,6 @@ import { evaluateMeaning, normalizeMeaning } from '@/core/answer/meaningEvaluato
 import { evaluateReading, normalizeKana } from '@/core/answer/readingEvaluator';
 import { hasJapaneseScript } from '@/core/answer/scriptDetection';
 import { evaluateGrammarBuild } from '@/core/grammar/buildEvaluator';
-import { evaluateGrammarAnswer } from '@/core/grammar/answerEvaluator';
-import { assessGrammarNearMiss } from '@/core/grammar/nearMiss';
 import type { ReviewItem } from '@/core/srs/srs.types';
 
 /**
@@ -85,35 +83,6 @@ export function evaluateReviewAnswer(
         matchesAcceptedMeaning(userAnswer, answerKey.acceptedMeanings)
       ) {
         return { result: 'wrong_script' };
-      }
-    }
-    return evaluation;
-  }
-
-  if (answerKey.grammar) {
-    // MC options are built from clozeAnswer when a card carries one (Plan 08/09);
-    // grading must accept that same string, not just the rule's general
-    // acceptedForms, or a tap on the card's own displayed correct answer can
-    // grade as wrong.
-    const targetForms =
-      item.clozeAnswer && !answerKey.grammar.acceptedForms.includes(item.clozeAnswer)
-        ? [item.clozeAnswer, ...answerKey.grammar.acceptedForms]
-        : answerKey.grammar.acceptedForms;
-    const grammarContext =
-      targetForms === answerKey.grammar.acceptedForms
-        ? answerKey.grammar
-        : { ...answerKey.grammar, acceptedForms: targetForms };
-    const evaluation = evaluateGrammarAnswer(userAnswer, grammarContext);
-    // Near-miss honesty (Plan 10): an answer that contains the right chunk
-    // but more than the blank wants stays incorrect for SRS, but is flagged
-    // so the reveal can teach instead of flatly rejecting.
-    if (evaluation.result === 'incorrect') {
-      if (assessGrammarNearMiss(userAnswer, { acceptedForms: targetForms }) === 'incomplete') {
-        return {
-          ...evaluation,
-          displayAnswer: evaluation.displayAnswer ?? targetForms[0],
-          feedbackKind: 'incomplete',
-        };
       }
     }
     return evaluation;
