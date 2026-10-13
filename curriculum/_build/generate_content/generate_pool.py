@@ -51,6 +51,8 @@ def reply_errors(reply):
         for key in ("japanese", "english"):
             if not isinstance(s.get(key), str) or not s.get(key):
                 errors.append(f"{label}: {key} must be a non-empty string")
+        if "[" in str(s.get("japanese")):
+            errors.append(f"{label}: japanese must be plain Japanese (no [furigana])")
         slugs = s.get("vocabulary_slugs")
         if not (isinstance(slugs, list) and all(isinstance(v, str) and v for v in slugs)):
             errors.append(f"{label}: vocabulary_slugs must be a list of non-empty strings")

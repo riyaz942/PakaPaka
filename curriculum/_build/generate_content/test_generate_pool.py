@@ -57,6 +57,15 @@ class ReplyShapeTest(unittest.TestCase):
         self.assertTrue(any("sentences[1]" in e and "vocabulary_slugs" in e for e in errors))
         self.assertTrue(any("sentences[2]" in e and "alternates" in e for e in errors))
 
+    def test_bracket_furigana_in_sentence_is_an_error(self):
+        # Furigana is derived; a bracket in the sentence would show to the
+        # learner and drop the kana path of the Build answer.
+        bad = {"accepted_meanings": ["a", "b", "c"],
+               "sentences": [{"japanese": "寒[さむ]いです。", "english": "x",
+                              "vocabulary_slugs": ["samui"]}]}
+        errors = gp.reply_errors(bad)
+        self.assertTrue(any("sentences[0]" in e and "plain Japanese" in e for e in errors))
+
 
 class SelectTest(unittest.TestCase):
     def test_skips_sidecar_points_in_sort_order(self):
