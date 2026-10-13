@@ -14,6 +14,8 @@ import { cn } from '@/utils/cn';
 import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
+import { GrammarBuildCard } from './GrammarBuildCard';
+import { GrammarReadCard } from './GrammarReadCard';
 
 export type AddSynonymUiState =
   | { status: 'idle' }
@@ -37,6 +39,8 @@ type IncorrectRevealProps = {
   onAddSynonym?: (options?: { force?: boolean }) => void;
   /** Another item's accepted answer matched the submission (FR86) */
   answerCollision?: AnswerCollision | null;
+  onSaveGrammarAnswer?: () => void;
+  grammarAnswerError?: boolean;
 };
 
 /** The verdict headline: drawn × plus the word, both in the danger family. */
@@ -62,6 +66,8 @@ export function IncorrectReveal({
   synonymState = { status: 'idle' },
   onAddSynonym,
   answerCollision,
+  onSaveGrammarAnswer,
+  grammarAnswerError,
 }: IncorrectRevealProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const accent = CONTENT_TYPE_ACCENT[item.itemType];
@@ -78,9 +84,25 @@ export function IncorrectReveal({
   // "Correct answer" line. A variant form (もん for もの) shows beside the
   // pattern rather than contradicting it underneath.
   const isGrammar = item.itemType === 'grammar';
+  const grammarCard =
+    item.itemType === 'grammar'
+      ? item.promptType === 'production'
+        ? item.grammarBuild
+        : item.grammarRead
+      : undefined;
+  const canSaveGrammarAnswer =
+    item.itemType === 'grammar' &&
+    item.promptType === 'production' &&
+    Boolean(onSaveGrammarAnswer) &&
+    Boolean(rejectedAnswer?.trim());
+  // A Build answer is a whole sentence: the card below shows it, so the hero
+  // keeps to the grammar form instead of repeating the sentence at display size.
   const heroText = isIncomplete
     ? displayAnswer
-    : isGrammar && displayAnswer && displayAnswer !== item.primaryForm
+    : isGrammar &&
+        !(grammarCard && item.promptType === 'production') &&
+        displayAnswer &&
+        displayAnswer !== item.primaryForm
       ? `${item.primaryForm} / ${displayAnswer}`
       : item.primaryForm;
 
@@ -147,6 +169,21 @@ export function IncorrectReveal({
         )}
       </View>
 
+      {grammarCard ? (
+        <View className="w-full items-center gap-space-sm">
+          {item.promptType === 'production' ? (
+            <GrammarBuildCard item={item} answered />
+          ) : (
+            <GrammarReadCard item={item} answered />
+          )}
+          {item.answerKey.grammar?.structure ? (
+            <Text className="text-body font-ui text-secondary text-center">
+              {item.answerKey.grammar.structure}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
+
       {stageTransition ? (
         <View className="items-center">
           <SRSStageTransitionBadge transition={stageTransition} />
@@ -157,7 +194,22 @@ export function IncorrectReveal({
           examples moved to the details route under review/. */}
       <AnswerReveal item={item} detail={detail} collision={answerCollision} />
 
-      {synonymState.status === 'added' ? (
+      {canSaveGrammarAnswer ? (
+        <View className="items-center gap-space-xs">
+          {grammarAnswerError ? (
+            <Text className="text-center text-body-sm font-ui text-feedback-incorrect-deep">
+              Couldn&apos;t save your answer. Try again.
+            </Text>
+          ) : null}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`My answer ${rejectedAnswer} is correct too`}
+            onPress={onSaveGrammarAnswer}
+            className="min-h-[44px] justify-center px-space-md">
+            <Text className="text-body font-ui-semibold text-brand-text">My answer is correct too</Text>
+          </Pressable>
+        </View>
+      ) : synonymState.status === 'added' ? (
         <Text className="text-center text-body-sm font-ui text-feedback-correct-deep">
           Added — it will be accepted on this item&apos;s next review.
         </Text>

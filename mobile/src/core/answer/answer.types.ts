@@ -3,7 +3,9 @@ export type AnswerResult =
   | 'incorrect'
   | 'typo'
   | 'wrong_script'
-  | 'wrong_reading_type';
+  | 'wrong_reading_type'
+  /** Grammar Build: same meaning with a same-family grammar point (D6) — non-terminal, no grade. */
+  | 'other_grammar';
 
 /**
  * Another curriculum item whose accepted answer matches what the user

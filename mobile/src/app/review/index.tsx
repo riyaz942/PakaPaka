@@ -18,6 +18,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/common/Button';
 import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { DailyThresholdNotice } from '@/components/engagement';
+import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import {
   GrammarMcOptions,
@@ -53,8 +54,13 @@ const PLACEHOLDER: Record<PromptType, string> = {
   production: 'Type the conjugated form in romaji...',
 };
 
-// Grammar prompts are cloze (Plan 07) — the field wants the missing chunk.
-const GRAMMAR_PLACEHOLDER = 'Type the missing piece...';
+// Grammar pair (spec §3): Read asks for the grammar's meaning; Build for the
+// whole sentence in Japanese.
+const GRAMMAR_PLACEHOLDER: Record<PromptType, string> = {
+  meaning: 'Type what the highlighted grammar means...',
+  production: 'Type the sentence in Japanese...',
+  reading: 'Type the sentence in Japanese...',
+};
 
 export default function ReviewScreen() {
   const {
@@ -71,6 +77,7 @@ export default function ReviewScreen() {
     peekStageTransition,
     recordTypoForCurrentItem,
     addSynonymForCurrentItem,
+    addGrammarAnswerForCurrentItem,
     cognitiveLoadPercent,
     cognitiveLoadComplete,
     snapshotSessionDuration,
@@ -84,6 +91,7 @@ export default function ReviewScreen() {
   const thresholdNoticeShownRef = useRef(false);
   const navigatedToSummaryRef = useRef(false);
   const [cardState, setCardState] = useState<ReviewCardState>('prompting');
+  const [grammarAnswerError, setGrammarAnswerError] = useState(false);
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
   const [stageTransition, setStageTransition] = useState<StageTransition | null>(null);
@@ -144,7 +152,8 @@ export default function ReviewScreen() {
     cardState === 'prompting' ||
     cardState === 'typo' ||
     cardState === 'wrong_script' ||
-    cardState === 'wrong_reading_type';
+    cardState === 'wrong_reading_type' ||
+    cardState === 'other_grammar';
 
   // The input stays editable (and focused — submitBehavior="submit") through the
   // correct state so the second Return can advance without re-tapping (FR84).
@@ -208,6 +217,7 @@ export default function ReviewScreen() {
     setStageTransition(null);
     setRejectedAnswer('');
     setSynonymState({ status: 'idle' });
+    setGrammarAnswerError(false);
     setIncompleteAnswer(false);
     setAnswerCollision(null);
     isSubmittingRef.current = false;
@@ -227,7 +237,8 @@ export default function ReviewScreen() {
       cardState !== 'incorrect' &&
       cardState !== 'typo' &&
       cardState !== 'wrong_script' &&
-      cardState !== 'wrong_reading_type'
+      cardState !== 'wrong_reading_type' &&
+      cardState !== 'other_grammar'
     ) {
       return;
     }
@@ -250,7 +261,8 @@ export default function ReviewScreen() {
           if (
             cardState === 'typo' ||
             cardState === 'wrong_script' ||
-            cardState === 'wrong_reading_type'
+            cardState === 'wrong_reading_type' ||
+            cardState === 'other_grammar'
           ) {
             typoInputTimer = setTimeout(
               () => inputRef.current?.focus(),
@@ -358,6 +370,14 @@ export default function ReviewScreen() {
       return;
     }
 
+    if (evaluation.result === 'other_grammar') {
+      // Same meaning with a same-family grammar point (D6): nudge, no grade.
+      // The typed sentence stays so only the grammar needs changing.
+      setCardState('other_grammar');
+      isSubmittingRef.current = false;
+      return;
+    }
+
     const answer = evaluation.displayAnswer ?? currentItem.displayMeaning;
     setDisplayAnswer(answer);
     setRejectedAnswer(submittedAnswer.trim());
@@ -410,6 +430,22 @@ export default function ReviewScreen() {
   function handleAddSynonym(options?: { force?: boolean }) {
     if (!rejectedAnswer) return;
     setSynonymState(addSynonymForCurrentItem(rejectedAnswer, options));
+  }
+
+  // "My answer is correct too" (D4): save the rejected sentence, then regrade
+  // this card Good. The incorrect grade has not been written yet — Continue
+  // writes it — so the regrade simply replaces it.
+  function handleSaveGrammarAnswer() {
+    if (cardState !== 'incorrect' || !rejectedAnswer) return;
+    if (addGrammarAnswerForCurrentItem(rejectedAnswer).status !== 'added') {
+      setGrammarAnswerError(true);
+      return;
+    }
+    const grade = gradeForResult('correct') ?? 3;
+    setStageTransition(peekStageTransition(grade));
+    pendingGradeRef.current = grade;
+    isSubmittingRef.current = false;
+    setCardState('correct');
   }
 
   // "Don't know" — reveal the correct answer and mark the item incorrect,
@@ -519,7 +555,9 @@ export default function ReviewScreen() {
       ? 'correct'
       : cardState === 'typo'
         ? 'near-miss'
-        : cardState === 'wrong_script' || cardState === 'wrong_reading_type'
+        : cardState === 'wrong_script' ||
+            cardState === 'wrong_reading_type' ||
+            cardState === 'other_grammar'
           ? 'wrong-script'
           : 'idle';
 
@@ -552,19 +590,23 @@ export default function ReviewScreen() {
           className="flex-1 px-space-md"
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
           keyboardShouldPersistTaps="handled">
-          <ReviewCard
-            item={currentItem}
-            state={cardState}
-            displayAnswer={displayAnswer}
-            stageTransition={stageTransition}
-            resultRef={resultRef}
-            revealDetail={getRevealDetail(currentItem.itemId)}
-            incompleteAnswer={incompleteAnswer}
-            rejectedAnswer={rejectedAnswer}
-            synonymState={synonymState}
-            onAddSynonym={handleAddSynonym}
-            answerCollision={answerCollision}
-          />
+          <ItemLinkProvider base="/review/item">
+            <ReviewCard
+              item={currentItem}
+              state={cardState}
+              displayAnswer={displayAnswer}
+              stageTransition={stageTransition}
+              resultRef={resultRef}
+              revealDetail={getRevealDetail(currentItem.itemId)}
+              incompleteAnswer={incompleteAnswer}
+              rejectedAnswer={rejectedAnswer}
+              synonymState={synonymState}
+              onAddSynonym={handleAddSynonym}
+              answerCollision={answerCollision}
+              onSaveGrammarAnswer={handleSaveGrammarAnswer}
+              grammarAnswerError={grammarAnswerError}
+            />
+          </ItemLinkProvider>
 
           {firstMissCard.visible ? (
             <GuidanceCardNotice
@@ -622,7 +664,7 @@ export default function ReviewScreen() {
                 onSubmit={handleSubmit}
                 placeholder={
                   currentItem.itemType === 'grammar'
-                    ? GRAMMAR_PLACEHOLDER
+                    ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
                     : PLACEHOLDER[currentItem.promptType]
                 }
                 editable={inputEditable}
@@ -676,7 +718,7 @@ export default function ReviewScreen() {
               onSubmit={handleSubmit}
               placeholder={
                 currentItem.itemType === 'grammar'
-                  ? GRAMMAR_PLACEHOLDER
+                  ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
                   : PLACEHOLDER[currentItem.promptType]
               }
               editable={inputEditable}

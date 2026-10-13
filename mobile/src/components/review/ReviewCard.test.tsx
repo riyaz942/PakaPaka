@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 
-import type { ReviewItem } from '@/core/srs/srs.types';
+import type { GrammarSentenceCard, ReviewItem } from '@/core/srs/srs.types';
 
 import { ReviewCard } from './ReviewCard';
 
@@ -9,8 +9,18 @@ jest.mock('expo-router', () => ({
 }));
 
 jest.mock('@/data/hooks/useFuriganaPreference', () => ({
-  useFuriganaPreference: () => ({ mode: 'shown', knownKanji: new Set<string>() }),
+  useFuriganaPreference: () => ({
+    mode: 'shown',
+    knownKanji: new Set<string>(),
+    modeForItem: () => 'shown',
+    setOverride: jest.fn(),
+  }),
 }));
+
+jest.mock('@/data/hooks/useDatabase', () => {
+  const databases = { userDb: { getFirstSync: jest.fn(() => null) }, curriculumDb: {} };
+  return { useDatabase: () => databases };
+});
 
 jest.mock('@/data/hooks/useReducedMotion', () => ({
   useReducedMotion: () => ({ reducedMotion: false }),
@@ -764,5 +774,69 @@ describe('ReviewCard — reading-locked vocabulary (v2 rules 1/3/5)', () => {
     expect(screen.getByTestId('review-prompt-glyph').props.children).toBe('写真');
     expect(screen.queryByText('しゃ')).toBeNull();
     expect(screen.queryByTestId('reading-locked-note')).toBeNull();
+  });
+});
+
+const SENTENCE: GrammarSentenceCard = {
+  sentenceKey: '寒いから、コートを着ます。',
+  japanese: '寒いから、コートを着ます。',
+  furigana: '寒[さむ]いから、コートを着[き]ます。',
+  english: "Because it's cold, I'll wear a coat.",
+  spans: [
+    { vocabularyItemId: '20', startOffset: 0, endOffset: 2, inflection: null },
+    { vocabularyItemId: '21', startOffset: 5, endOffset: 8, inflection: null },
+  ],
+  grammarSpan: { start: 2, end: 4 },
+  register: 'polite',
+  vocabulary: [
+    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
+    { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
+  ],
+  answers: ['寒[さむ]いから、コートを着[き]ます。'],
+  otherGrammarAnswers: [],
+  userAnswers: [],
+};
+
+describe('ReviewCard — grammar pair', () => {
+  const grammar = (promptType: 'meaning' | 'production') =>
+    makeItem({
+      itemType: 'grammar', primaryForm: 'から', promptType, isTwoCardItem: true,
+      grammarRead: SENTENCE, grammarBuild: SENTENCE,
+    });
+
+  it('labels the Read and Build cards', () => {
+    render(<ReviewCard item={grammar('meaning')} state="prompting" />);
+    expect(screen.getByText('Grammar · Read')).toBeTruthy();
+    render(<ReviewCard item={grammar('production')} state="prompting" />);
+    expect(screen.getByText('Grammar · Build')).toBeTruthy();
+  });
+
+  it('shows the other-grammar nudge', () => {
+    render(<ReviewCard item={grammar('production')} state="other_grammar" />);
+    expect(screen.getByText('That works, but it uses a different grammar point. Try again.')).toBeTruthy();
+  });
+
+  it('offers "My answer is correct too" on a wrong Build answer', () => {
+    const onSave = jest.fn();
+    render(
+      <ReviewCard
+        item={grammar('production')}
+        state="incorrect"
+        displayAnswer={SENTENCE.japanese}
+        rejectedAnswer="さむいからこーと"
+        onSaveGrammarAnswer={onSave}
+      />,
+    );
+    fireEvent.press(screen.getByText('My answer is correct too'));
+    expect(onSave).toHaveBeenCalled();
+  });
+
+  it('a wrong Build answer keeps the hero to the grammar form; the sentence shows in the card', () => {
+    render(
+      <ReviewCard item={grammar('production')} state="incorrect" displayAnswer={SENTENCE.japanese} />,
+    );
+    expect(screen.getAllByText('から').length).toBeGreaterThan(0);
+    expect(screen.queryByText(`から / ${SENTENCE.japanese}`)).toBeNull();
+    expect(screen.getByTestId(`grammar-build-answer-${SENTENCE.sentenceKey}-linked`)).toBeTruthy();
   });
 });

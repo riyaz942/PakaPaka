@@ -206,3 +206,36 @@ describe('gradeForResult', () => {
     expect(gradeForResult.length).toBe(1);
   });
 });
+
+describe('grammar Build card', () => {
+  const build = {
+    sentenceKey: 'k', japanese: '寒いから、コートを着ます。', furigana: '寒[さむ]いから、コートを着[き]ます。',
+    english: 'e', spans: [], grammarSpan: { start: 2, end: 4 }, register: 'polite' as const, vocabulary: [],
+    answers: ['寒[さむ]いから、コートを着[き]ます。'],
+    otherGrammarAnswers: ['寒[さむ]いので、コートを着[き]ます。'],
+    userAnswers: [],
+  };
+  const item = {
+    itemId: '99', itemType: 'grammar' as const, primaryForm: 'から', displayMeaning: 'because',
+    meanings: ['because'], promptType: 'production' as const, grammarBuild: build,
+    answerKey: { acceptedMeanings: ['because'], acceptedReadings: [] },
+    relatedItems: [], reinforcementLink: null,
+    srsState: { itemId: '99', stability: 1, difficulty: 5, dueDate: '', fsrsState: 'review' as const, reps: 1, lapses: 0, learningSteps: 0, isBurned: false, srsStageLabel: 'apprentice' as const, lastReviewedAt: null, updatedAt: '' },
+  };
+
+  it('grades the sentence', () => {
+    expect(evaluateReviewAnswer(item, 'さむいからこーとをきます').result).toBe('correct');
+  });
+
+  it('nudges a same-family grammar answer without grading', () => {
+    expect(evaluateReviewAnswer(item, '寒いので、コートを着ます').result).toBe('other_grammar');
+    expect(gradeForResult('other_grammar')).toBeNull();
+  });
+
+  it('a wrong sentence reveals the plain sentence', () => {
+    expect(evaluateReviewAnswer(item, '暑いから')).toEqual({
+      result: 'incorrect',
+      displayAnswer: '寒いから、コートを着ます。',
+    });
+  });
+});

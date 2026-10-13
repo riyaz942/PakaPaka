@@ -21,6 +21,8 @@ import { cn } from '@/utils/cn';
 import { heroFontClass } from '@/utils/heroGlyphFont';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
+import { GrammarBuildCard } from './GrammarBuildCard';
+import { GrammarReadCard } from './GrammarReadCard';
 import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
 import { ProgressiveHint } from './ProgressiveHint';
 import { ReinforcementHighlight } from './ReinforcementHighlight';
@@ -32,7 +34,8 @@ export type ReviewCardState =
   | 'incorrect'
   | 'typo'
   | 'wrong_script'
-  | 'wrong_reading_type';
+  | 'wrong_reading_type'
+  | 'other_grammar';
 
 type ReviewCardProps = {
   item: ReviewItem;
@@ -54,6 +57,10 @@ type ReviewCardProps = {
   onAddSynonym?: (options?: { force?: boolean }) => void;
   /** Another item's accepted answer matched the submission (FR86) */
   answerCollision?: AnswerCollision | null;
+  /** Grammar Build, incorrect state: "My answer is correct too" (D4) */
+  onSaveGrammarAnswer?: () => void;
+  /** The last save attempt failed */
+  grammarAnswerError?: boolean;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -100,6 +107,12 @@ function promptFontSize(display: string) {
  * fall back to the meanings.
  */
 export function resolveCorrectReveal(item: ReviewItem): { label: string; value: string } {
+  if (item.itemType === 'grammar' && item.promptType === 'production' && item.grammarBuild) {
+    return { label: 'Answer', value: item.grammarBuild.japanese };
+  }
+  if (item.itemType === 'grammar' && item.promptType === 'meaning' && item.grammarRead) {
+    return { label: 'Meaning', value: item.displayMeaning };
+  }
   const { itemType, promptType, displayMeaning, answerKey } = item;
   if (itemType === 'grammar') {
     // Prefer the chunk this cloze actually blanked (authored variant answer).
@@ -125,6 +138,8 @@ const WRONG_READING_TYPE_NUDGE = "We're looking for the on'yomi reading.";
 
 const TYPO_NUDGE = '~ Close! Try again.';
 
+const OTHER_GRAMMAR_NUDGE = 'That works, but it uses a different grammar point. Try again.';
+
 /** "写", "写 and 真", "写, 真 and 番" */
 function joinForms(forms: string[]): string {
   if (forms.length <= 1) return forms.join('');
@@ -148,11 +163,21 @@ export function ReviewCard({
   synonymState,
   onAddSynonym,
   answerCollision,
+  onSaveGrammarAnswer,
+  grammarAnswerError,
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const accent = CONTENT_TYPE_ACCENT[itemType];
+  // Grammar pair (spec §3): the Read card asks about one sentence, the Build
+  // card about another; both payloads ride on both cards of the pair.
+  const grammarCard =
+    itemType === 'grammar'
+      ? promptType === 'production'
+        ? item.grammarBuild
+        : item.grammarRead
+      : undefined;
 
   // Grammar cloze contract (Plan 07): prompt with the blanked sentence/frame,
   // never the bare form (for particles the form IS the answer). Label the mode
@@ -164,7 +189,11 @@ export function ReviewCard({
   // Kanji reading cards validate on'yomi only (FR81) — the label must say so.
   const modeLabel =
     itemType === 'grammar'
-      ? 'Grammar'
+      ? grammarCard
+        ? promptType === 'production'
+          ? 'Grammar · Build'
+          : 'Grammar · Read'
+        : 'Grammar'
       : itemType === 'kanji' && promptType === 'reading'
         ? "Reading — on'yomi"
         : MODE_LABEL[promptType];
@@ -223,6 +252,8 @@ export function ReviewCard({
           synonymState={synonymState}
           onAddSynonym={onAddSynonym}
           answerCollision={answerCollision}
+          onSaveGrammarAnswer={onSaveGrammarAnswer}
+          grammarAnswerError={grammarAnswerError}
         />
       </FadeSlideIn>
     );
@@ -236,18 +267,25 @@ export function ReviewCard({
       ? TYPO_NUDGE
       : state === 'wrong_reading_type'
         ? WRONG_READING_TYPE_NUDGE
-        : state === 'wrong_script'
-          ? WRONG_SCRIPT_NUDGE[promptType]
-          : null;
+        : state === 'other_grammar'
+          ? OTHER_GRAMMAR_NUDGE
+          : state === 'wrong_script'
+            ? WRONG_SCRIPT_NUDGE[promptType]
+            : null;
 
   const correctReveal = state === 'correct' ? resolveCorrectReveal(item) : null;
   // A correct grammar cloze reads best with the blank filled in.
-  const promptNode =
-    correctReveal && isGrammarCloze
-      ? renderPrompt(
-          resolveCompletedSentence(promptDisplay, correctReveal.value) ?? promptDisplay,
-        )
-      : grammarPrompt;
+  const promptNode = grammarCard ? (
+    promptType === 'production' ? (
+      <GrammarBuildCard item={item} answered={state === 'correct'} />
+    ) : (
+      <GrammarReadCard item={item} answered={state === 'correct'} />
+    )
+  ) : correctReveal && isGrammarCloze ? (
+    renderPrompt(resolveCompletedSentence(promptDisplay, correctReveal.value) ?? promptDisplay)
+  ) : (
+    grammarPrompt
+  );
 
   // Two-rung hint ladder (Plan 10): nudge → English, with the English rung
   // gated off at Enlightened+ (Plan 08 scaffolding gate). Interim fallbacks
@@ -307,7 +345,7 @@ export function ReviewCard({
         </Text>
       ) : null}
 
-      {itemType === 'grammar' && !correctReveal ? (
+      {itemType === 'grammar' && !grammarCard && !correctReveal ? (
         <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />
       ) : null}
 

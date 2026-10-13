@@ -2,6 +2,7 @@ import type { EvaluationResult } from '@/core/answer/answer.types';
 import { evaluateMeaning, normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import { evaluateReading, normalizeKana } from '@/core/answer/readingEvaluator';
 import { hasJapaneseScript } from '@/core/answer/scriptDetection';
+import { evaluateGrammarBuild } from '@/core/grammar/buildEvaluator';
 import { evaluateGrammarAnswer } from '@/core/grammar/answerEvaluator';
 import { assessGrammarNearMiss } from '@/core/grammar/nearMiss';
 import type { ReviewItem } from '@/core/srs/srs.types';
@@ -29,6 +30,15 @@ export function evaluateReviewAnswer(
   userAnswer: string,
 ): EvaluationResult {
   const { promptType, answerKey } = item;
+
+  // Grammar Build card (spec §5.2): the whole sentence, no typo tolerance.
+  // The Read card is a meaning prompt and takes the meaning path below.
+  if (promptType === 'production' && item.grammarBuild) {
+    const result = evaluateGrammarBuild(userAnswer, item.grammarBuild);
+    return result === 'incorrect'
+      ? { result, displayAnswer: item.grammarBuild.japanese }
+      : { result };
+  }
 
   if (promptType === 'meaning') {
     if (hasJapaneseScript(userAnswer)) {
@@ -122,7 +132,7 @@ export function evaluateReviewAnswer(
 
 /**
  * FSRS grade mapping: correct → Good (3); incorrect → Again (1); typo,
- * wrong_script and wrong_reading_type → no grade (non-terminal). Revealing
+ * wrong_script, wrong_reading_type and other_grammar → no grade (non-terminal). Revealing
  * hints never changes the grade — the hint ladder is scaffolding, not a
  * penalty (Plan 10).
  */

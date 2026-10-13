@@ -2,7 +2,7 @@ import React from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { AccessibilityInfo } from 'react-native';
 
-import type { ReviewItem } from '@/core/srs/srs.types';
+import type { GrammarSentenceCard, ReviewItem } from '@/core/srs/srs.types';
 
 import ReviewScreen from './index';
 
@@ -10,6 +10,7 @@ const mockGradeCurrentItem = jest.fn();
 const mockDetectAnswerCollision = jest.fn();
 const mockRecordTypoForCurrentItem = jest.fn();
 const mockAddSynonymForCurrentItem = jest.fn().mockReturnValue({ status: 'added' });
+const mockAddGrammarAnswerForCurrentItem = jest.fn().mockReturnValue({ status: 'added' });
 const mockInputFocus = jest.fn();
 const mockFocusScreenReaderOn = jest.fn().mockResolvedValue(undefined);
 
@@ -91,6 +92,7 @@ jest.mock('@/providers/ReviewSessionProvider', () => ({
     peekStageTransition: jest.fn().mockReturnValue(null),
     recordTypoForCurrentItem: mockRecordTypoForCurrentItem,
     addSynonymForCurrentItem: mockAddSynonymForCurrentItem,
+    addGrammarAnswerForCurrentItem: mockAddGrammarAnswerForCurrentItem,
     cognitiveLoadPercent: 10,
     cognitiveLoadComplete: false,
     snapshotSessionDuration: jest.fn(),
@@ -107,6 +109,7 @@ jest.mock('@/data/hooks/useFuriganaPreference', () => ({
     knownKanji: new Set<string>(),
     setMode: jest.fn(),
     modeForItem: () => 'shown',
+    setOverride: jest.fn(),
   }),
 }));
 
@@ -129,7 +132,7 @@ jest.mock('@/data/hooks/useAnswerCollision', () => ({
 }));
 
 // Stable handle: an unstable identity would re-fire every [userDb] effect.
-const mockDatabaseHandles = { curriculumDb: {}, userDb: {}, isReady: true, error: null };
+const mockDatabaseHandles = { curriculumDb: {}, userDb: { getFirstSync: () => null }, isReady: true, error: null };
 
 jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => mockDatabaseHandles,
@@ -1115,5 +1118,69 @@ describe('ReviewScreen — contextual guidance cards (Epic 7)', () => {
     });
 
     expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
+  });
+});
+
+const SENTENCE: GrammarSentenceCard = {
+  sentenceKey: '寒いから、コートを着ます。',
+  japanese: '寒いから、コートを着ます。',
+  furigana: '寒[さむ]いから、コートを着[き]ます。',
+  english: "Because it's cold, I'll wear a coat.",
+  spans: [
+    { vocabularyItemId: '20', startOffset: 0, endOffset: 2, inflection: null },
+    { vocabularyItemId: '21', startOffset: 5, endOffset: 8, inflection: null },
+  ],
+  grammarSpan: { start: 2, end: 4 },
+  register: 'polite',
+  vocabulary: [
+    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
+    { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
+  ],
+  answers: ['寒[さむ]いから、コートを着[き]ます。'],
+  otherGrammarAnswers: [],
+  userAnswers: [],
+};
+
+describe('grammar Build card', () => {
+  beforeEach(() => {
+    mockGradeCurrentItem.mockReset();
+    mockAddGrammarAnswerForCurrentItem.mockClear();
+    mockCurrentItem = makeReviewItem({
+      itemId: '99', itemType: 'grammar', primaryForm: 'から', promptType: 'production',
+      isTwoCardItem: true, grammarRead: SENTENCE, grammarBuild: SENTENCE,
+      answerKey: { acceptedMeanings: ['because'], acceptedReadings: [] },
+    });
+  });
+
+  it('"My answer is correct too" saves the answer and grades the card Good', async () => {
+    render(<ReviewScreen />);
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'さむいからこーと');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('My answer is correct too'));
+    });
+    expect(mockAddGrammarAnswerForCurrentItem).toHaveBeenCalledWith('さむいからこーと');
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Continue'));
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('an other-grammar answer keeps the typed text and grades nothing', async () => {
+    const withOther = { ...SENTENCE, otherGrammarAnswers: ['寒[さむ]いので、コートを着[き]ます。'] };
+    mockCurrentItem = { ...mockCurrentItem!, grammarBuild: withOther };
+    render(<ReviewScreen />);
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'さむいので、こーとをきます');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(screen.getByText('That works, but it uses a different grammar point. Try again.')).toBeTruthy();
+    expect(screen.getByTestId('review-answer-input').props.value).toBe('さむいので、こーとをきます');
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
   });
 });
