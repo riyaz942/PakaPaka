@@ -126,6 +126,37 @@ class GrammarLevelTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             build([bad])
 
+    POOL = {
+        "accepted_meanings": ["because", "since", "so", "as"],
+        "sentences": [
+            {"japanese": "寒いから、コートを着ます。", "english": "Because it's cold, I'll wear a coat.",
+             "vocabulary_slugs": ["samui", "kooto", "kiru-wear"],
+             "alternates": [{"japanese": "寒いですから、コートを着ます。", "kind": "valid"}]},
+            {"japanese": "今日は寒いから。", "english": "Because it's cold today.",
+             "vocabulary_slugs": ["kyou", "samui"], "form": "寒い|から"},
+        ],
+        "_meta": {"generator_model": "test", "prompt_version": "1", "review_status": "draft"},
+    }
+
+    def test_pool_entry_replaces_examples_cloze_and_meanings(self):
+        item = generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, (), known_vocab_forms=VOCAB,
+            pool_entries={"zz-test-kara": self.POOL},
+        )["items"][0]
+        self.assertEqual([s["japanese"] for s in item["example_sentences"]],
+                         ["寒いから、コートを着ます。", "今日は寒いから。"])
+        self.assertEqual(item["example_sentences"][1]["grammar_span"], {"start": 5, "end": 7})
+        self.assertEqual([a["answer_text"] for a in item["accepted_answers"]],
+                         ["because", "since", "so", "as"])
+        self.assertEqual(item["example_sentences"][0]["build_alternates"][0]["kind"], "valid")
+        self.assertNotIn("_meta", item)
+
+    def test_point_without_pool_entry_is_unchanged(self):
+        item = generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, (), known_vocab_forms=VOCAB, pool_entries={},
+        )["items"][0]
+        self.assertEqual(len(item["example_sentences"]), 2)
+
     def test_cloze_variants_still_ship(self):
         self.assertEqual(len(build([entry()])["cloze_variants"]), 2)
 

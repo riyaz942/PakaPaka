@@ -971,6 +971,15 @@
             "furu-rain"
           ],
           "furigana": "雨[あめ]が降[ふ]りそうです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 4,
+              "surface_form": "降り",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 4,
             "end": 8
@@ -1332,6 +1341,15 @@
             "furu-rain"
           ],
           "furigana": "雨[あめ]が降[ふ]ったら、行[い]きません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 4,
+              "surface_form": "降っ",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 4,
             "end": 6
@@ -1375,6 +1393,15 @@
             "yasui-adj"
           ],
           "furigana": "安[やす]かったら、買[か]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 0,
+              "end": 3,
+              "surface_form": "安かっ",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 3,
             "end": 5
@@ -1396,6 +1423,13 @@
               "vocabulary_slug": "shukudai",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "終わっ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -1419,6 +1453,13 @@
               "vocabulary_slug": "sensei",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "聞い",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "wakaru",
@@ -1774,6 +1815,15 @@
             "yasui-adj"
           ],
           "furigana": "安[やす]ければ、買[か]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 0,
+              "end": 3,
+              "surface_form": "安けれ",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 1,
             "end": 4
@@ -1839,6 +1889,15 @@
             "isogu"
           ],
           "furigana": "急[いそ]げば、間[ま]に合[あ]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "isogu",
+              "start": 0,
+              "end": 2,
+              "surface_form": "急げ",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 2,
             "end": 3
@@ -2352,6 +2411,13 @@
               "vocabulary_slug": "boku",
               "start": 6,
               "end": 7
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 10,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -2520,6 +2586,15 @@
             "okiru"
           ],
           "furigana": "早[はや]く起[お]きられません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            }
+          ],
           "register": "polite"
         },
         {
@@ -2812,6 +2887,15 @@
             "furu-rain"
           ],
           "furigana": "雨[あめ]に降[ふ]られて、困[こま]りました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 4,
+              "surface_form": "降ら",
+              "inflection": "stem"
+            }
+          ],
           "register": "polite"
         },
         {
@@ -7738,6 +7822,15 @@
             "samui"
           ],
           "furigana": "これから寒[さむ]くなっていくでしょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "samui",
+              "start": 4,
+              "end": 6,
+              "surface_form": "寒く",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 8,
             "end": 11
@@ -8391,6 +8484,15 @@
             "naku"
           ],
           "furigana": "泣[な]きそうになりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "naku",
+              "start": 0,
+              "end": 2,
+              "surface_form": "泣き",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 2,
             "end": 10
@@ -9004,6 +9106,13 @@
           ],
           "furigana": "早[はや]く寝[ね]るようにしましょう。",
           "word_spans": [
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "neru",
               "start": 2,
@@ -16306,6 +16415,13 @@
               "vocabulary_slug": "kutsu",
               "start": 2,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 4,
+              "end": 6,
+              "surface_form": "歩き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -16328,6 +16444,13 @@
               "vocabulary_slug": "kanji-word",
               "start": 2,
               "end": 4
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "読み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -16350,6 +16473,13 @@
               "vocabulary_slug": "hon",
               "start": 2,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 4,
+              "end": 7,
+              "surface_form": "分かり",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -18231,6 +18361,13 @@
           "word_spans": [
             {
               "vocabulary_slug": "suru",
+              "start": 2,
+              "end": 4,
+              "surface_form": "すれ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "suru",
               "start": 5,
               "end": 7
             },
@@ -18261,6 +18398,13 @@
           ],
           "furigana": "話[はな]せば話[はな]すほど楽[たの]しくなる",
           "word_spans": [
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 0,
+              "end": 2,
+              "surface_form": "話せ",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "hanasu-v",
               "start": 3,

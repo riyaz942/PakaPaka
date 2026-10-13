@@ -55,6 +55,26 @@ _SIMILAR_REFS = build_similar_map()
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
+#: Grammar sentence pool sidecar (docs/superpowers/plans/2026-10-14-grammar-pool-content.md):
+#: a point with an entry takes all its pool sentences and meanings from here.
+POOL_SIDECAR = os.path.join(CURRICULUM_DIR, "grammar", "pool.json")
+
+
+def load_pool_sidecar():
+    if not os.path.exists(POOL_SIDECAR):
+        return {}
+    with open(POOL_SIDECAR, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _pool_examples(pool_entry):
+    return [
+        {"jp": s["japanese"], "en": s["english"], "vocab": s["vocabulary_slugs"],
+         "form": s.get("form"),
+         "alts": [(a["japanese"], a["kind"]) for a in s.get("alternates", [])]}
+        for s in pool_entry["sentences"]
+    ]
+
 #: Phase 2b/2d mnemonic sidecars (generate_content/generate_mnemonics.py),
 #: one file per kind for every level, inlined into the radical/kanji/vocab
 #: items below keyed by slug. Absent when the generator has not run for that
@@ -554,11 +574,15 @@ def _cloze_derived_examples(g, known_vocab_forms):
 
 
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
-                         all_grammar_slugs=(), known_vocab_forms=None):
+                         all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
-        examples = list(g["examples"]) + _cloze_derived_examples(g, known_vocab_forms or {})
+        pool_entry = (pool_entries or {}).get(g["slug"])
+        if pool_entry:
+            examples = _pool_examples(pool_entry)
+        else:
+            examples = list(g["examples"]) + _cloze_derived_examples(g, known_vocab_forms or {})
         example_sentences = [
             _grammar_example(example, j, g, vocab_forms, known_readings, errors)
             for j, example in enumerate(examples)
@@ -579,10 +603,11 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
         }
         if "family" in g:
             item["family"] = g["family"]
-        if g.get("accepted_meanings"):
+        meanings = pool_entry["accepted_meanings"] if pool_entry else g.get("accepted_meanings")
+        if meanings:
             item["accepted_answers"] = [
                 {"answer_type": "meaning", "answer_text": meaning, "is_primary": index == 0}
-                for index, meaning in enumerate(g["accepted_meanings"])
+                for index, meaning in enumerate(meanings)
             ]
         if g.get("uses"):
             uses = []
@@ -872,28 +897,64 @@ def _vocab_sources():
     return sources
 
 
+def _grammar_inputs(level):
+    from n4_grammar import N4_GRAMMAR
+    from n5_grammar import N5_GRAMMAR
+    vocab_by_level = place("vocabulary", _vocab_sources())
+    all_vocab_forms = {
+        v["slug"]: v["form"] for entries in vocab_by_level.values() for v in entries
+    }
+    known = [v for lower in BAND_LEVELS[: BAND_LEVELS.index(level) + 1]
+             for v in vocab_by_level[lower]]
+    grammar_by_level = place("grammar", [("n5", N5_GRAMMAR), ("n4", N4_GRAMMAR)])
+    return {
+        "vocab_by_level": vocab_by_level,
+        "all_vocab_forms": all_vocab_forms,
+        "known": known,
+        "known_readings": _vocab_reading_map(known),
+        "grammar_by_level": grammar_by_level,
+        "all_grammar_slugs": {g["slug"] for entries in grammar_by_level.values() for g in entries},
+    }
+
+
+def build_grammar_point(level, slug, pool_entry):
+    """One grammar item as generate_level would write it with `pool_entry` in
+    the sidecar. The content lane validates this before writing anything."""
+    level = level.lower()
+    inputs = _grammar_inputs(level)
+    entries = [g for g in inputs["grammar_by_level"][level] if g["slug"] == slug]
+    if not entries:
+        raise KeyError(f"unknown grammar slug {slug!r} in {level}")
+    item = _build_grammar_level(
+        level.upper(), entries, inputs["all_vocab_forms"], inputs["known_readings"],
+        inputs["all_grammar_slugs"],
+        known_vocab_forms={v["slug"]: v["form"] for v in inputs["known"]},
+        pool_entries={slug: pool_entry},
+    )["items"][0]
+    item["sort_order"] = next(
+        i for i, g in enumerate(inputs["grammar_by_level"][level], start=1) if g["slug"] == slug
+    )
+    return item
+
+
 def generate_level(level):
     """Vocabulary, grammar and readings for one level.
 
     Radicals and kanji are not here: their level is a band spanning every source
     dataset, so they are written together by `generate_bands`."""
-    from n4_grammar import N4_GRAMMAR
     from n4_readings import N4_READINGS
-    from n5_grammar import N5_GRAMMAR
     from n5_readings import N5_READINGS
 
     level = level.lower()
-    vocab_by_level = place("vocabulary", _vocab_sources())
+    inputs = _grammar_inputs(level)
+    vocab_by_level = inputs["vocab_by_level"]
     # {slug: dictionary form} of every word at every level: the cross-reference
     # check, and the spans of the words a sentence links.
-    all_vocab_forms = {
-        v["slug"]: v["form"] for entries in vocab_by_level.values() for v in entries
-    }
+    all_vocab_forms = inputs["all_vocab_forms"]
     # The words a learner knows by the end of this level: their readings
     # override the tokenizer, and a passage links every one it contains.
-    known = [v for lower in BAND_LEVELS[: BAND_LEVELS.index(level) + 1]
-             for v in vocab_by_level[lower]]
-    known_readings = _vocab_reading_map(known)
+    known = inputs["known"]
+    known_readings = inputs["known_readings"]
     vocab = _build_vocab_level(level.upper(), vocab_by_level[level], known_readings,
                                all_vocab_forms)
     write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
@@ -903,15 +964,13 @@ def generate_level(level):
         print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
         return
 
-    grammar_by_level = place("grammar", [("n5", N5_GRAMMAR), ("n4", N4_GRAMMAR)])
-    all_grammar_slugs = {
-        g["slug"] for entries in grammar_by_level.values() for g in entries
-    }
+    grammar_by_level = inputs["grammar_by_level"]
     write_json(
         os.path.join(CURRICULUM_DIR, "grammar", f"{level}.json"),
         _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
-                             known_readings, all_grammar_slugs,
-                             known_vocab_forms={v["slug"]: v["form"] for v in known}),
+                             known_readings, inputs["all_grammar_slugs"],
+                             known_vocab_forms={v["slug"]: v["form"] for v in known},
+                             pool_entries=load_pool_sidecar()),
     )
     passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
     write_json(

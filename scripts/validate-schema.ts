@@ -13,7 +13,7 @@ const SCHEMA_PATH = path.join(CURRICULUM_DIR, 'schema', 'curriculum.schema.json'
  * are keyed-by-slug build inputs with no schema mapping of their own; their
  * contents are validated once inlined.
  */
-export const SIDECAR_FILE_NAMES: ReadonlySet<string> = new Set(['mnemonics.json', 'examples.json']);
+export const SIDECAR_FILE_NAMES: ReadonlySet<string> = new Set(['mnemonics.json', 'examples.json', 'pool.json']);
 
 export function resolveValidatorKey(relativePath: string): string {
   if (relativePath === 'metadata.json') {

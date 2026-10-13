@@ -2101,6 +2101,13 @@
               "vocabulary_slug": "issho-ni",
               "start": 0,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -2123,6 +2130,13 @@
               "vocabulary_slug": "ocha",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "飲み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -4293,6 +4307,13 @@
               "vocabulary_slug": "umi",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -6982,6 +7003,13 @@
               "vocabulary_slug": "jikan",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "isogu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "急ぎ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -11962,6 +11990,13 @@
               "vocabulary_slug": "kusuri",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "飲ま",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -11979,6 +12014,22 @@
             "kaeru-v"
           ],
           "furigana": "早[はや]く帰[かえ]らなければなりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "帰ら",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 4,
             "end": 13
@@ -12014,6 +12065,15 @@
             "iku-v"
           ],
           "furigana": "九[く]時[じ]までに行[い]かなければなりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 5,
+              "end": 7,
+              "surface_form": "行か",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 7,
             "end": 16
@@ -13677,6 +13737,13 @@
               "end": 4
             },
             {
+              "vocabulary_slug": "yomu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "読ん",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "eiga",
               "start": 10,
               "end": 12
@@ -13697,6 +13764,15 @@
             "nomu-v"
           ],
           "furigana": "食[た]べたり飲[の]んだりしました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 4,
+              "end": 6,
+              "surface_form": "飲ん",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 2,
             "end": 4
@@ -13987,6 +14063,13 @@
               "vocabulary_slug": "nihon",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -14009,6 +14092,13 @@
               "vocabulary_slug": "mizu",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "飲み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -14053,6 +14143,13 @@
               "vocabulary_slug": "sukoshi",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 2,
+              "end": 4,
+              "surface_form": "休み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -14546,6 +14643,13 @@
               "end": 1
             },
             {
+              "vocabulary_slug": "kau-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "買い",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "iku-v",
               "start": 5,
               "end": 10,
@@ -14574,6 +14678,13 @@
               "vocabulary_slug": "tomodachi",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 3,
+              "end": 5,
+              "surface_form": "会い",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "kuru-v",
@@ -16879,6 +16990,13 @@
           "furigana": "早[はや]く起[お]きます。",
           "word_spans": [
             {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "okiru",
               "start": 2,
               "end": 6,
@@ -16903,6 +17021,13 @@
           "furigana": "大[おお]きく書[か]いてください。",
           "word_spans": [
             {
+              "vocabulary_slug": "ookii",
+              "start": 0,
+              "end": 3,
+              "surface_form": "大きく",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "kaku",
               "start": 3,
               "end": 6,
@@ -16926,6 +17051,13 @@
           ],
           "furigana": "安[やす]く買[か]いました。",
           "word_spans": [
+            {
+              "vocabulary_slug": "yasui-adj",
+              "start": 0,
+              "end": 2,
+              "surface_form": "安く",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "kau-v",
               "start": 2,
@@ -19956,6 +20088,13 @@
               "vocabulary_slug": "kinou",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "飲み",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -19996,6 +20135,13 @@
           ],
           "furigana": "働[はたら]きすぎるのは体[からだ]に悪[わる]いです。",
           "word_spans": [
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 0,
+              "end": 2,
+              "surface_form": "働き",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "karada",
               "start": 7,
@@ -20392,6 +20538,13 @@
           ],
           "furigana": "早[はや]く寝[ね]たほうがいいです。",
           "word_spans": [
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 0,
+              "end": 2,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "neru",
               "start": 2,
@@ -23805,6 +23958,13 @@
               "end": 2
             },
             {
+              "vocabulary_slug": "kiku-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "聞き",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "benkyou",
               "start": 8,
               "end": 10
@@ -23826,6 +23986,13 @@
           ],
           "furigana": "歩[ある]きながら話[はな]します。",
           "word_spans": [
+            {
+              "vocabulary_slug": "aruku",
+              "start": 0,
+              "end": 2,
+              "surface_form": "歩き",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "hanasu-v",
               "start": 5,
@@ -24778,6 +24945,15 @@
             "samui"
           ],
           "furigana": "寒[さむ]くなりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "samui",
+              "start": 0,
+              "end": 2,
+              "surface_form": "寒く",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 1,
             "end": 7
