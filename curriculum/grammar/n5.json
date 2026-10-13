@@ -39,7 +39,13 @@
             "start": 1,
             "end": 2
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が学[がく]生[せい]です。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "これは本です。",
@@ -96,16 +102,55 @@
           "register": "polite"
         },
         {
-          "japanese": "田中さんは先生です。",
-          "english": "Mr. Tanaka is a teacher.",
+          "japanese": "彼は先生です。",
+          "english": "He is a teacher.",
           "sort_order": 3,
           "vocabulary_slugs": [
+            "kare",
             "sensei"
           ],
-          "furigana": "田中[たなか]さんは先[せん]生[せい]です。",
+          "furigana": "彼[かれ]は先[せん]生[せい]です。",
           "word_spans": [
             {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
               "vocabulary_slug": "sensei",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 2
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]が先[せん]生[せい]です。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "コーヒーは安いです。",
+          "english": "Coffee is cheap.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "koohii",
+            "yasui-adj"
+          ],
+          "furigana": "コーヒーは安[やす]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koohii",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yasui-adj",
               "start": 5,
               "end": 7
             }
@@ -117,57 +162,140 @@
           "register": "polite"
         },
         {
-          "japanese": "この水は冷たいです。",
-          "english": "This water is cold.",
-          "sort_order": 4,
+          "japanese": "あれは学校ですか。",
+          "english": "Is that over there a school?",
+          "sort_order": 5,
           "vocabulary_slugs": [
-            "kono",
-            "mizu",
-            "tsumetai"
+            "are",
+            "gakkou-v"
           ],
-          "furigana": "この水[みず]は冷[つめ]たいです。",
+          "furigana": "あれは学[がっ]校[こう]ですか。",
           "word_spans": [
             {
-              "vocabulary_slug": "kono",
+              "vocabulary_slug": "are",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "mizu",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "tsumetai",
-              "start": 4,
-              "end": 7
+              "vocabulary_slug": "gakkou-v",
+              "start": 3,
+              "end": 5
             }
           ],
           "grammar_span": {
-            "start": 3,
-            "end": 4
+            "start": 2,
+            "end": 3
           },
           "register": "polite"
         },
         {
-          "japanese": "犬は好きです。",
-          "english": "I like dogs.",
-          "sort_order": 5,
+          "japanese": "昨日は寒かったです。",
+          "english": "Yesterday was cold.",
+          "sort_order": 6,
           "vocabulary_slugs": [
-            "inu",
-            "suki"
+            "kinou",
+            "samui"
           ],
-          "furigana": "犬[いぬ]は好[す]きです。",
+          "furigana": "昨日[きのう]は寒[さむ]かったです。",
           "word_spans": [
             {
-              "vocabulary_slug": "inu",
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 3,
+              "end": 7,
+              "surface_form": "寒かった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 3
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "明日は忙しいです。",
+          "english": "I'm busy tomorrow.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "ashita",
+            "isogashii"
+          ],
+          "furigana": "明日[あした]は忙[いそが]しいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 3
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "それはお茶ですか。",
+          "english": "Is that tea?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sore",
+            "ocha"
+          ],
+          "furigana": "それはお茶[ちゃ]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 3
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "肉はとてもおいしいです。",
+          "english": "The meat is really good.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "niku",
+            "totemo",
+            "oishii"
+          ],
+          "furigana": "肉[にく]はとてもおいしいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "niku",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "suki",
+              "vocabulary_slug": "totemo",
               "start": 2,
-              "end": 4
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "oishii",
+              "start": 5,
+              "end": 9
             }
           ],
           "grammar_span": {
@@ -184,6 +312,28 @@
         "hon"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "topic marker",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as for",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "speaking of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "topic",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私＿＿＿学生です。",
@@ -317,76 +467,55 @@
           "register": "polite"
         },
         {
-          "japanese": "昨日は休みでした。",
-          "english": "Yesterday was a day off.",
+          "japanese": "昨日の晩ご飯は魚でした。",
+          "english": "Last night's dinner was fish.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kinou"
+            "kinou",
+            "bangohan",
+            "sakana"
           ],
-          "furigana": "昨日[きのう]は休[やす]みでした。",
+          "furigana": "昨日[きのう]の晩[ばん]ご飯[はん]は魚[さかな]でした。",
           "word_spans": [
             {
               "vocabulary_slug": "kinou",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 7,
+              "end": 8
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 8,
+            "end": 11
           },
           "register": "polite"
         },
         {
-          "japanese": "この店は静かです。",
-          "english": "This shop is quiet.",
+          "japanese": "ここは学校です。",
+          "english": "This place is a school.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "kono",
-            "mise",
-            "shizuka"
+            "koko",
+            "gakkou-v"
           ],
-          "furigana": "この店[みせ]は静[しず]かです。",
+          "furigana": "ここは学[がっ]校[こう]です。",
           "word_spans": [
             {
-              "vocabulary_slug": "kono",
+              "vocabulary_slug": "koko",
               "start": 0,
               "end": 2
             },
-            {
-              "vocabulary_slug": "mise",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "学校は近いです。",
-          "english": "The school is nearby.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "gakkou-v",
-            "chikai"
-          ],
-          "furigana": "学[がっ]校[こう]は近[ちか]いです。",
-          "word_spans": [
             {
               "vocabulary_slug": "gakkou-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "chikai",
               "start": 3,
               "end": 5
             }
@@ -398,31 +527,184 @@
           "register": "polite"
         },
         {
-          "japanese": "私は元気です。",
-          "english": "I am fine.",
-          "sort_order": 5,
+          "japanese": "公園はどこですか。",
+          "english": "Where is the park?",
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "watashi",
-            "genki"
+            "kouen",
+            "doko"
           ],
-          "furigana": "私[わたし]は元[げん]気[き]です。",
+          "furigana": "公[こう]園[えん]はどこですか。",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "kouen",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "genki",
-              "start": 2,
-              "end": 4
+              "vocabulary_slug": "doko",
+              "start": 3,
+              "end": 5
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 6
+            "start": 5,
+            "end": 7
           },
           "register": "polite"
+        },
+        {
+          "japanese": "この写真は高いです。",
+          "english": "This photo is expensive.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kono",
+            "shashin",
+            "takai-adj"
+          ],
+          "furigana": "この写[しゃ]真[しん]は高[たか]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shashin",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あれは彼の家です。",
+          "english": "That over there is his house.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "are",
+            "kare",
+            "ie"
+          ],
+          "furigana": "あれは彼[かれ]の家[いえ]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "are",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kare",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 5,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あそこは公園でした。",
+          "english": "That place over there used to be a park.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "asoko",
+            "kouen"
+          ],
+          "furigana": "あそこは公[こう]園[えん]でした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "asoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "それはコーヒーですか。",
+          "english": "Is that coffee?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sore",
+            "koohii"
+          ],
+          "furigana": "それはコーヒーですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 3,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "私たちは友達です。",
+          "english": "We are friends.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "tomodachi"
+          ],
+          "furigana": "私[わたし]たちは友[とも]達[だち]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]です。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -431,6 +713,33 @@
         "sensei"
       ],
       "family": "copula",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "is",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "to be",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "am",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "are",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "copula",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "これは水＿＿＿。",
@@ -560,86 +869,9 @@
           "register": "polite"
         },
         {
-          "japanese": "今日は暑くないです。",
-          "english": "Today is not hot.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kyou"
-          ],
-          "furigana": "今日[きょう]は暑[あつ]くないです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyou",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "あの人は先生じゃないです。",
-          "english": "That person is not a teacher.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "ano",
-            "hito",
-            "sensei"
-          ],
-          "furigana": "あの人[ひと]は先[せん]生[せい]じゃないです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ano",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "hito",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "sensei",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 12
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "私の車ではありません。",
-          "english": "It is not my car.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "watashi",
-            "kuruma"
-          ],
-          "furigana": "私[わたし]の車[くるま]ではありません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kuruma",
-              "start": 2,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "これは水じゃないです。",
           "english": "This is not water.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kore",
             "mizu"
@@ -666,7 +898,7 @@
         {
           "japanese": "私は学生ではありません。",
           "english": "I am not a student.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "watashi",
             "gakusei"
@@ -688,12 +920,18 @@
             "start": 4,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "学[がく]生[せい]ではありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は先生じゃありません。",
           "english": "He is not a teacher.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kare",
             "sensei"
@@ -719,8 +957,8 @@
         },
         {
           "japanese": "あれは学校じゃないです。",
-          "english": "That is not a school.",
-          "sort_order": 8,
+          "english": "That over there is not a school.",
+          "sort_order": 5,
           "vocabulary_slugs": [
             "are",
             "gakkou-v"
@@ -747,7 +985,7 @@
         {
           "japanese": "これは肉ではない。",
           "english": "This is not meat.",
-          "sort_order": 9,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "kore",
             "niku"
@@ -770,6 +1008,105 @@
             "end": 8
           },
           "register": "plain"
+        },
+        {
+          "japanese": "それはあなたの本ではありませんか。",
+          "english": "Isn't that your book?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "sore",
+            "anata",
+            "hon"
+          ],
+          "furigana": "それはあなたの本[ほん]ではありませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "anata",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 7,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 15
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日の昼ご飯はパンではありませんでした。",
+          "english": "Yesterday's lunch was not bread.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kinou",
+            "hirugohan",
+            "pan"
+          ],
+          "furigana": "昨日[きのう]の昼[ひる]ご飯[はん]はパンではありませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hirugohan",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "pan",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 16
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "ここは私の家じゃないです。",
+          "english": "This is not my house.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "koko",
+            "watashi",
+            "ie"
+          ],
+          "furigana": "ここは私[わたし]の家[いえ]じゃないです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 5,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 12
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -778,6 +1115,33 @@
         "gakusei"
       ],
       "family": "copula",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "is not",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "isn't",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "am not",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "are not",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "これは水＿＿＿。",
@@ -854,20 +1218,21 @@
       ],
       "example_sentences": [
         {
-          "japanese": "毎日日本語を勉強します。",
-          "english": "I study Japanese every day.",
+          "japanese": "家で日本語を勉強します。",
+          "english": "I study Japanese at home.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "mainichi",
+            "ie",
             "nihongo",
-            "benkyou"
+            "benkyou",
+            "suru"
           ],
-          "furigana": "毎[まい]日[にち]日本[にほん]語[ご]を勉[べん]強[きょう]します。",
+          "furigana": "家[いえ]で日本[にほん]語[ご]を勉[べん]強[きょう]します。",
           "word_spans": [
             {
-              "vocabulary_slug": "mainichi",
+              "vocabulary_slug": "ie",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
               "vocabulary_slug": "nihongo",
@@ -878,6 +1243,13 @@
               "vocabulary_slug": "benkyou",
               "start": 6,
               "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "します",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -942,7 +1314,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "学[がっ]校[こう]に行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "本を読みます。",
@@ -974,38 +1352,9 @@
           "register": "polite"
         },
         {
-          "japanese": "音楽を聞きます。",
-          "english": "I listen to music.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "ongaku",
-            "kiku-v"
-          ],
-          "furigana": "音[おん]楽[がく]を聞[き]きます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ongaku",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "kiku-v",
-              "start": 3,
-              "end": 7,
-              "surface_form": "聞きます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "朝ご飯を食べます。",
           "english": "I eat breakfast.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "asagohan",
             "taberu"
@@ -1034,7 +1383,7 @@
         {
           "japanese": "私はパンを食べます。",
           "english": "I eat bread.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "watashi",
             "pan",
@@ -1064,12 +1413,18 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "パンを食[た]べます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "コーヒーを飲みます。",
           "english": "I drink coffee.",
-          "sort_order": 7,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "koohii",
             "nomu-v"
@@ -1098,7 +1453,7 @@
         {
           "japanese": "先生は学校に行きます。",
           "english": "The teacher goes to school.",
-          "sort_order": 8,
+          "sort_order": 7,
           "vocabulary_slugs": [
             "sensei",
             "gakkou-v",
@@ -1128,12 +1483,18 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]は学[がっ]校[こう]へ行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日、映画を見ました。",
           "english": "Yesterday, I watched a movie.",
-          "sort_order": 9,
+          "sort_order": 8,
           "vocabulary_slugs": [
             "kinou",
             "eiga",
@@ -1163,12 +1524,18 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "映[えい]画[が]を昨日[きのう]見[み]ました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達は来ません。",
           "english": "My friend is not coming.",
-          "sort_order": 10,
+          "sort_order": 9,
           "vocabulary_slugs": [
             "tomodachi",
             "kuru-v"
@@ -1201,6 +1568,28 @@
         "nomu-v"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite verb ending",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite form",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite present",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私はパンを食べ＿＿＿。",
@@ -1362,31 +1751,31 @@
           "register": "polite"
         },
         {
-          "japanese": "テレビを見ません。",
-          "english": "I don't watch TV.",
+          "japanese": "窓を開けません。",
+          "english": "I won't open the window.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "terebi",
-            "miru-v"
+            "mado",
+            "akeru"
           ],
-          "furigana": "テレビを見[み]ません。",
+          "furigana": "窓[まど]を開[あ]けません。",
           "word_spans": [
             {
-              "vocabulary_slug": "terebi",
+              "vocabulary_slug": "mado",
               "start": 0,
-              "end": 3
+              "end": 1
             },
             {
-              "vocabulary_slug": "miru-v",
-              "start": 4,
-              "end": 8,
-              "surface_form": "見ません",
+              "vocabulary_slug": "akeru",
+              "start": 2,
+              "end": 7,
+              "surface_form": "開けません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 4,
+            "end": 7
           },
           "register": "polite"
         },
@@ -1452,7 +1841,17 @@
             "start": 8,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]は学[がっ]校[こう]に行[い]きません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今日[きょう]、学[がっ]校[こう]へ行[い]きません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日、一緒に公園に行きませんか。",
@@ -1493,7 +1892,13 @@
             "start": 11,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]、公[こう]園[えん]に一[いっ]緒[しょ]に行[い]きませんか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日、本を読みませんでした。",
@@ -1563,6 +1968,47 @@
             "start": 9,
             "end": 12
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "コーヒーを飲[の]みません。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "猫は魚を食べません。",
+          "english": "The cat won't eat the fish.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "neko",
+            "sakana",
+            "taberu"
+          ],
+          "furigana": "猫[ねこ]は魚[さかな]を食[た]べません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 9,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
           "register": "polite"
         }
       ],
@@ -1572,6 +2018,33 @@
         "taberu"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite negative",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "don't",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "do not",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "won't",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "今日、学校に行き＿＿＿。",
@@ -1735,70 +2208,47 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]と会[あ]いました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "手紙を書きました。",
-          "english": "I wrote a letter.",
+          "japanese": "晩ご飯を食べましたか。",
+          "english": "Did you eat dinner?",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "tegami",
-            "kaku"
+            "bangohan",
+            "taberu"
           ],
-          "furigana": "手[て]紙[がみ]を書[か]きました。",
+          "furigana": "晩[ばん]ご飯[はん]を食[た]べましたか。",
           "word_spans": [
             {
-              "vocabulary_slug": "tegami",
+              "vocabulary_slug": "bangohan",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
-              "vocabulary_slug": "kaku",
-              "start": 3,
-              "end": 8,
-              "surface_form": "書きました",
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 9,
+              "surface_form": "食べました",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "駅まで歩きました。",
-          "english": "I walked to the station.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "eki",
-            "aruku"
-          ],
-          "furigana": "駅[えき]まで歩[ある]きました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "eki",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "aruku",
-              "start": 3,
-              "end": 8,
-              "surface_form": "歩きました",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 6,
+            "end": 9
           },
           "register": "polite"
         },
         {
           "japanese": "昨日、本を読みました。",
           "english": "Yesterday, I read a book.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kinou",
             "hon",
@@ -1833,7 +2283,7 @@
         {
           "japanese": "今日、コーヒーを飲みませんでした。",
           "english": "I did not drink coffee today.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "kyou",
             "koohii",
@@ -1868,7 +2318,7 @@
         {
           "japanese": "先生は今日、学校に来ました。",
           "english": "The teacher came to school today.",
-          "sort_order": 7,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "sensei",
             "kyou",
@@ -1904,12 +2354,18 @@
             "start": 10,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]、先[せん]生[せい]は学[がっ]校[こう]に来[き]ました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、起きました。",
           "english": "I woke up just now.",
-          "sort_order": 8,
+          "sort_order": 7,
           "vocabulary_slugs": [
             "ima",
             "okiru"
@@ -1938,7 +2394,7 @@
         {
           "japanese": "一緒に遊びました。",
           "english": "We played together.",
-          "sort_order": 9,
+          "sort_order": 8,
           "vocabulary_slugs": [
             "issho-ni",
             "asobu"
@@ -1967,7 +2423,7 @@
         {
           "japanese": "昨日、肉を食べました。",
           "english": "Yesterday, I ate meat.",
-          "sort_order": 10,
+          "sort_order": 9,
           "vocabulary_slugs": [
             "kinou",
             "niku",
@@ -2006,6 +2462,28 @@
         "miru-v"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "polite past",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "did",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "past tense",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "past",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "昨日、本を読み＿＿＿。",

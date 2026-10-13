@@ -1,0 +1,728 @@
+{
+  "wa-topic": {
+    "accepted_meanings": [
+      "topic marker",
+      "as for",
+      "speaking of",
+      "topic"
+    ],
+    "sentences": [
+      {
+        "japanese": "私は学生です。",
+        "english": "I am a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "gakusei"
+        ],
+        "alternates": [
+          {
+            "japanese": "私が学生です。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "これは本です。",
+        "english": "This is a book.",
+        "vocabulary_slugs": [
+          "kore",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は暑いです。",
+        "english": "Today is hot.",
+        "vocabulary_slugs": [
+          "kyou",
+          "atsui-hot"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は先生です。",
+        "english": "He is a teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼が先生です。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーは安いです。",
+        "english": "Coffee is cheap.",
+        "vocabulary_slugs": [
+          "koohii",
+          "yasui-adj"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれは学校ですか。",
+        "english": "Is that over there a school?",
+        "vocabulary_slugs": [
+          "are",
+          "gakkou-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日は寒かったです。",
+        "english": "Yesterday was cold.",
+        "vocabulary_slugs": [
+          "kinou",
+          "samui"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日は忙しいです。",
+        "english": "I'm busy tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "isogashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはお茶ですか。",
+        "english": "Is that tea?",
+        "vocabulary_slugs": [
+          "sore",
+          "ocha"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "肉はとてもおいしいです。",
+        "english": "The meat is really good.",
+        "vocabulary_slugs": [
+          "niku",
+          "totemo",
+          "oishii"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "desu": {
+    "accepted_meanings": [
+      "is",
+      "to be",
+      "am",
+      "are",
+      "copula"
+    ],
+    "sentences": [
+      {
+        "japanese": "これは水です。",
+        "english": "This is water.",
+        "vocabulary_slugs": [
+          "kore",
+          "mizu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は先生です。",
+        "english": "He is a teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日の晩ご飯は魚でした。",
+        "english": "Last night's dinner was fish.",
+        "vocabulary_slugs": [
+          "kinou",
+          "bangohan",
+          "sakana"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここは学校です。",
+        "english": "This place is a school.",
+        "vocabulary_slugs": [
+          "koko",
+          "gakkou-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "公園はどこですか。",
+        "english": "Where is the park?",
+        "vocabulary_slugs": [
+          "kouen",
+          "doko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この写真は高いです。",
+        "english": "This photo is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "shashin",
+          "takai-adj"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれは彼の家です。",
+        "english": "That over there is his house.",
+        "vocabulary_slugs": [
+          "are",
+          "kare",
+          "ie"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あそこは公園でした。",
+        "english": "That place over there used to be a park.",
+        "vocabulary_slugs": [
+          "asoko",
+          "kouen"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはコーヒーですか。",
+        "english": "Is that coffee?",
+        "vocabulary_slugs": [
+          "sore",
+          "koohii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私たちは友達です。",
+        "english": "We are friends.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "tomodachi"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達です。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dewa-arimasen": {
+    "accepted_meanings": [
+      "is not",
+      "isn't",
+      "not",
+      "am not",
+      "are not"
+    ],
+    "sentences": [
+      {
+        "japanese": "これは本ではありません。",
+        "english": "This is not a book.",
+        "vocabulary_slugs": [
+          "kore",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は学生ではありません。",
+        "english": "He is not a student.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "これは水じゃないです。",
+        "english": "This is not water.",
+        "vocabulary_slugs": [
+          "kore",
+          "mizu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私は学生ではありません。",
+        "english": "I am not a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "gakusei"
+        ],
+        "alternates": [
+          {
+            "japanese": "学生ではありません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼は先生じゃありません。",
+        "english": "He is not a teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれは学校じゃないです。",
+        "english": "That over there is not a school.",
+        "vocabulary_slugs": [
+          "are",
+          "gakkou-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "これは肉ではない。",
+        "english": "This is not meat.",
+        "vocabulary_slugs": [
+          "kore",
+          "niku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはあなたの本ではありませんか。",
+        "english": "Isn't that your book?",
+        "vocabulary_slugs": [
+          "sore",
+          "anata",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日の昼ご飯はパンではありませんでした。",
+        "english": "Yesterday's lunch was not bread.",
+        "vocabulary_slugs": [
+          "kinou",
+          "hirugohan",
+          "pan"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここは私の家じゃないです。",
+        "english": "This is not my house.",
+        "vocabulary_slugs": [
+          "koko",
+          "watashi",
+          "ie"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "masu": {
+    "accepted_meanings": [
+      "polite verb ending",
+      "polite form",
+      "polite",
+      "polite present"
+    ],
+    "sentences": [
+      {
+        "japanese": "家で日本語を勉強します。",
+        "english": "I study Japanese at home.",
+        "vocabulary_slugs": [
+          "ie",
+          "nihongo",
+          "benkyou",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "水を飲みます。",
+        "english": "I drink water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "学校へ行きます。",
+        "english": "I go to school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校に行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "本を読みます。",
+        "english": "I read a book.",
+        "vocabulary_slugs": [
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "朝ご飯を食べます。",
+        "english": "I eat breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私はパンを食べます。",
+        "english": "I eat bread.",
+        "vocabulary_slugs": [
+          "watashi",
+          "pan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "パンを食べます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーを飲みます。",
+        "english": "I drink coffee.",
+        "vocabulary_slugs": [
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生は学校に行きます。",
+        "english": "The teacher goes to school.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生は学校へ行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、映画を見ました。",
+        "english": "Yesterday, I watched a movie.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画を昨日見ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "友達は来ません。",
+        "english": "My friend is not coming.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kuru-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "masen": {
+    "accepted_meanings": [
+      "polite negative",
+      "not",
+      "don't",
+      "do not",
+      "won't"
+    ],
+    "sentences": [
+      {
+        "japanese": "お酒を飲みません。",
+        "english": "I don't drink alcohol.",
+        "vocabulary_slugs": [
+          "osake",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "肉を食べません。",
+        "english": "I don't eat meat.",
+        "vocabulary_slugs": [
+          "niku",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は行きません。",
+        "english": "I won't go today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "窓を開けません。",
+        "english": "I won't open the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は来ません。",
+        "english": "He is not coming.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日、学校に行きません。",
+        "english": "I will not go to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は学校に行きません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日、学校へ行きません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "明日、一緒に公園に行きませんか。",
+        "english": "Won't you go to the park together tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "issho-ni",
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日、公園に一緒に行きませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、本を読みませんでした。",
+        "english": "I did not read the book yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私はコーヒーを飲みません。",
+        "english": "I do not drink coffee.",
+        "vocabulary_slugs": [
+          "watashi",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "コーヒーを飲みません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "猫は魚を食べません。",
+        "english": "The cat won't eat the fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "taberu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mashita": {
+    "accepted_meanings": [
+      "polite past",
+      "did",
+      "past tense",
+      "past"
+    ],
+    "sentences": [
+      {
+        "japanese": "昨日映画を見ました。",
+        "english": "I watched a movie yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ご飯を食べました。",
+        "english": "I ate a meal.",
+        "vocabulary_slugs": [
+          "gohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達に会いました。",
+        "english": "I met a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "au"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達と会いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "晩ご飯を食べましたか。",
+        "english": "Did you eat dinner?",
+        "vocabulary_slugs": [
+          "bangohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日、本を読みました。",
+        "english": "Yesterday, I read a book.",
+        "vocabulary_slugs": [
+          "kinou",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日、コーヒーを飲みませんでした。",
+        "english": "I did not drink coffee today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生は今日、学校に来ました。",
+        "english": "The teacher came to school today.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kyou",
+          "gakkou-v",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、先生は学校に来ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今、起きました。",
+        "english": "I woke up just now.",
+        "vocabulary_slugs": [
+          "ima",
+          "okiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "一緒に遊びました。",
+        "english": "We played together.",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "asobu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日、肉を食べました。",
+        "english": "Yesterday, I ate meat.",
+        "vocabulary_slugs": [
+          "kinou",
+          "niku",
+          "taberu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  }
+}
