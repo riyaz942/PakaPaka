@@ -13638,5 +13638,691 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "niyoruto": {
+    "accepted_meanings": [
+      "according to",
+      "based on",
+      "from what",
+      "reportedly"
+    ],
+    "sentences": [
+      {
+        "japanese": "新聞によると、明日は雨です。",
+        "english": "According to the newspaper, tomorrow it will rain.",
+        "vocabulary_slugs": [
+          "shinbun",
+          "ashita",
+          "ame-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "新聞によれば、明日は雨です。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ラジオによると、今日は雪です。",
+        "english": "According to the radio, today it's snowing.",
+        "vocabulary_slugs": [
+          "rajio",
+          "kyou",
+          "yuki"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達の話によると、テストは来週です。",
+        "english": "According to what my friend said, the test is next week.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "hanashi",
+          "tesuto",
+          "raishuu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生によると、宿題は明日までです。",
+        "english": "According to the teacher, the homework is due tomorrow.",
+        "vocabulary_slugs": [
+          "sensei",
+          "shukudai",
+          "ashita"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "医者によると、病気はすぐ治ります。",
+        "english": "According to the doctor, the illness will heal soon.",
+        "vocabulary_slugs": [
+          "isha",
+          "byouki",
+          "sugu",
+          "naoru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達によれば、彼は元気です。",
+        "english": "According to my friend, he's doing well.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kare",
+          "genki"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達によると、彼は元気です。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "テレビによると、昨日地震がありました。",
+        "english": "According to the TV, there was an earthquake yesterday.",
+        "vocabulary_slugs": [
+          "terebi",
+          "kinou",
+          "jishin",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母によると、その店はもうありません。",
+        "english": "According to my mother, that shop isn't there anymore.",
+        "vocabulary_slugs": [
+          "haha",
+          "sono",
+          "mise",
+          "mou",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "姉によると、あのレストランは高くないです。",
+        "english": "According to my older sister, that restaurant isn't expensive.",
+        "vocabulary_slugs": [
+          "ane",
+          "ano",
+          "resutoran",
+          "takai-adj"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tame": {
+    "accepted_meanings": [
+      "because of",
+      "due to",
+      "owing to",
+      "because",
+      "since"
+    ],
+    "sentences": [
+      {
+        "japanese": "雪のため、電車が止まりました。",
+        "english": "Due to the snow, the trains stopped.",
+        "vocabulary_slugs": [
+          "yuki",
+          "densha",
+          "tomaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "雪のために、電車が止まりました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "雨が降ったため、川の水が増えました。",
+        "english": "Because it rained, the river's water rose.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "kawa-v",
+          "mizu",
+          "fueru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "台風のため、電車が遅れています。",
+        "english": "Because of the typhoon, the trains are running late.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "densha",
+          "okureru",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "風邪のため、学校を休みました。",
+        "english": "I took the day off school because of a cold.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "gakkou-v",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "風邪のために、学校を休みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この公園は静かなため、よく散歩します。",
+        "english": "Because this park is quiet, I often take walks here.",
+        "vocabulary_slugs": [
+          "kono",
+          "kouen",
+          "shizuka",
+          "yoku",
+          "sanpo-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今週は忙しいため、旅行に行けません。",
+        "english": "Because this week is busy, I can't go on the trip.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "isogashii",
+          "ryokou",
+          "ikeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "天気が悪いために、服が乾きません。",
+        "english": "Because the weather is bad, the clothes won't dry.",
+        "vocabulary_slugs": [
+          "tenki",
+          "warui",
+          "fuku",
+          "kawaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "天気が悪いため、服が乾きません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "電車が遅れたため、会議に遅れました。",
+        "english": "Because the train was late, I was late for the meeting.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru",
+          "kaigi"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "道が狭いため、バスは通りません。",
+        "english": "Because the road is narrow, buses don't go through.",
+        "vocabulary_slugs": [
+          "michi-v",
+          "semai",
+          "basu",
+          "tooru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kagiri": {
+    "accepted_meanings": [
+      "as long as",
+      "as far as",
+      "as much as",
+      "to the extent"
+    ],
+    "sentences": [
+      {
+        "japanese": "私が知っている限り、彼は正直です。",
+        "english": "As far as I know, he's honest.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shiru",
+          "iru-exist",
+          "kare",
+          "shoujiki"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "覚えている限り、その店は安かった。",
+        "english": "As far as I remember, that shop was cheap.",
+        "vocabulary_slugs": [
+          "oboeru",
+          "iru-exist",
+          "sono",
+          "mise",
+          "yasui-adj"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私の知る限り、彼女は今日、家にいる。",
+        "english": "As far as I know, she's home today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shiru",
+          "kanojo",
+          "kyou",
+          "ie",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "見る限り、今日の天気はいい。",
+        "english": "As far as I can see, today's weather is good.",
+        "vocabulary_slugs": [
+          "miru-v",
+          "kyou",
+          "tenki",
+          "ii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "忙しい限り、彼は休まない。",
+        "english": "As long as he's busy, he doesn't rest.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "kare",
+          "yasumu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "元気な限り、彼は毎朝走る。",
+        "english": "As long as he's healthy, he runs every morning.",
+        "vocabulary_slugs": [
+          "genki",
+          "kare",
+          "maiasa",
+          "hashiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "できる限り、私は手伝う。",
+        "english": "I'll help as much as I possibly can.",
+        "vocabulary_slugs": [
+          "dekiru",
+          "watashi",
+          "tetsudau"
+        ],
+        "alternates": [
+          {
+            "japanese": "私はできる限り手伝う。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "時間がある限り、彼は本を読む。",
+        "english": "As long as he has time, he reads books.",
+        "vocabulary_slugs": [
+          "jikan",
+          "aru",
+          "kare",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私が聞いた限り、試験は難しくないです。",
+        "english": "From what I've heard, the exam isn't difficult.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kiku-v",
+          "shiken",
+          "muzukashii"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tatoe-temo": {
+    "accepted_meanings": [
+      "even if",
+      "even though",
+      "no matter",
+      "even supposing"
+    ],
+    "sentences": [
+      {
+        "japanese": "たとえ雨が降っても、私たちは山に登ります。",
+        "english": "Even if it rains, we will climb the mountain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "watashitachi",
+          "yama-v",
+          "noboru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "たとえこの本が高くても、買います。",
+        "english": "Even if this book is expensive, I will buy it.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "takai-adj",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "たとえ明日雪でも、学校はあります。",
+        "english": "Even if it snows tomorrow, there will still be school.",
+        "vocabulary_slugs": [
+          "ashita",
+          "yuki",
+          "gakkou-v",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "たとえ試験が難しくても、私は頑張ります。",
+        "english": "Even if the exam is difficult, I will do my best.",
+        "vocabulary_slugs": [
+          "shiken",
+          "muzukashii",
+          "watashi",
+          "ganbaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "たとえ試験が難しくても、頑張ります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "たとえ暇でも、あの店には行かない。",
+        "english": "Even if I'm free, I won't go to that shop.",
+        "vocabulary_slugs": [
+          "hima",
+          "ano",
+          "mise",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "たとえ風が強くても、毎朝散歩します。",
+        "english": "Even if the wind is strong, I take a walk every morning.",
+        "vocabulary_slugs": [
+          "kaze-wind",
+          "tsuyoi",
+          "maiasa",
+          "sanpo-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "たとえ遠くても、私は歩いて行きます。",
+        "english": "Even if it's far, I'll walk there.",
+        "vocabulary_slugs": [
+          "tooi",
+          "watashi",
+          "aruku",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "たとえ遠くても、歩いて行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "たとえ水が冷たくても、海で泳ぎますか。",
+        "english": "Will you swim in the sea even if the water is cold?",
+        "vocabulary_slugs": [
+          "mizu",
+          "tsumetai",
+          "umi",
+          "oyogu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kke": {
+    "accepted_meanings": [
+      "again?",
+      "wasn't it?",
+      "did I?",
+      "remind me",
+      "I forget"
+    ],
+    "sentences": [
+      {
+        "japanese": "これ、いくらだったっけ。",
+        "english": "How much was this again?",
+        "vocabulary_slugs": [
+          "kore",
+          "ikura"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "駅はどこだっけ。",
+        "english": "Where's the station again?",
+        "vocabulary_slugs": [
+          "eki",
+          "doko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "映画は何時だっけ。",
+        "english": "What time was the movie again?",
+        "vocabulary_slugs": [
+          "eiga",
+          "nannji"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先週、彼と会ったっけ。",
+        "english": "Did I meet him last week?",
+        "vocabulary_slugs": [
+          "senshuu",
+          "kare",
+          "au"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あのラーメン、辛かったっけ。",
+        "english": "Was that ramen spicy?",
+        "vocabulary_slugs": [
+          "ano",
+          "raamen",
+          "karai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼女の名前、何だったっけ。",
+        "english": "What was her name again?",
+        "vocabulary_slugs": [
+          "kanojo",
+          "namae",
+          "nan"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、試験があったっけ。",
+        "english": "Wasn't there an exam tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "shiken",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "窓を閉めたっけ。",
+        "english": "Did I close the window?",
+        "vocabulary_slugs": [
+          "mado",
+          "shimeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼はお酒を飲まなかったっけ。",
+        "english": "Doesn't he drink alcohol?",
+        "vocabulary_slugs": [
+          "kare",
+          "osake",
+          "nomu-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "noda": {
+    "accepted_meanings": [
+      "the thing is",
+      "you see",
+      "it's that",
+      "explanation"
+    ],
+    "sentences": [
+      {
+        "japanese": "頭が痛いんです。",
+        "english": "The thing is, I have a headache.",
+        "vocabulary_slugs": [
+          "atama",
+          "itai"
+        ],
+        "alternates": [
+          {
+            "japanese": "頭が痛いのです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "どうして泣いているんですか。",
+        "english": "Why are you crying?",
+        "vocabulary_slugs": [
+          "doushite",
+          "naku",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "財布を忘れたんです。",
+        "english": "The thing is, I forgot my wallet.",
+        "vocabulary_slugs": [
+          "saifu",
+          "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "財布を忘れたのです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "病気だったんです。",
+        "english": "I was sick, you see.",
+        "vocabulary_slugs": [
+          "byouki"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達が来るんです。",
+        "english": "A friend is coming over, you see.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は忙しいんだ。",
+        "english": "I'm busy today, you see.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日、どうしたんですか。",
+        "english": "What happened yesterday?",
+        "vocabulary_slugs": [
+          "kinou",
+          "dou",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "肉は食べないんです。",
+        "english": "The thing is, I don't eat meat.",
+        "vocabulary_slugs": [
+          "niku",
+          "taberu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
