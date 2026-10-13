@@ -37340,6 +37340,7 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "okane",
+            "aru",
             "shiawase"
           ],
           "furigana": "お金[かね]さえあれば、幸[しあわ]せです。",
@@ -37348,6 +37349,13 @@
               "vocabulary_slug": "okane",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 4,
+              "end": 6,
+              "surface_form": "あれ",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "shiawase",
@@ -37367,7 +37375,7 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "okane",
-            "are",
+            "aru",
             "ryokou",
             "dekiru"
           ],
@@ -37379,9 +37387,11 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "are",
+              "vocabulary_slug": "aru",
               "start": 4,
-              "end": 6
+              "end": 6,
+              "surface_form": "あれ",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "ryokou",
@@ -37403,16 +37413,18 @@
           "register": "polite"
         },
         {
-          "japanese": "毎日勉強さえすれば、試験に合格できます。",
-          "english": "As long as you just study every day, you'll pass the exam.",
+          "japanese": "毎日勉強さえすれば、日本語が上手になります。",
+          "english": "As long as you just study every day, your Japanese will get good.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "mainichi",
             "benkyou",
-            "shiken",
-            "dekiru"
+            "suru",
+            "nihongo",
+            "jouzu",
+            "naru-become"
           ],
-          "furigana": "毎[まい]日[にち]勉[べん]強[きょう]さえすれば、試[し]験[けん]に合[ごう]格[かく]できます。",
+          "furigana": "毎[まい]日[にち]勉[べん]強[きょう]さえすれば、日本[にほん]語[ご]が上手[じょうず]になります。",
           "word_spans": [
             {
               "vocabulary_slug": "mainichi",
@@ -37425,49 +37437,26 @@
               "end": 4
             },
             {
-              "vocabulary_slug": "shiken",
-              "start": 10,
-              "end": 12
+              "vocabulary_slug": "suru",
+              "start": 6,
+              "end": 8,
+              "surface_form": "すれ",
+              "inflection": "stem"
             },
             {
-              "vocabulary_slug": "dekiru",
-              "start": 15,
-              "end": 19,
-              "surface_form": "できます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "少し休みさえすれば、元気になります。",
-          "english": "As long as you just rest a little, you'll feel better.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "sukoshi",
-            "genki",
-            "naru-become"
-          ],
-          "furigana": "少[すこ]し休[やす]みさえすれば、元[げん]気[き]になります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sukoshi",
-              "start": 0,
-              "end": 2
+              "vocabulary_slug": "nihongo",
+              "start": 10,
+              "end": 13
             },
             {
-              "vocabulary_slug": "genki",
-              "start": 10,
-              "end": 12
+              "vocabulary_slug": "jouzu",
+              "start": 14,
+              "end": 16
             },
             {
               "vocabulary_slug": "naru-become",
-              "start": 13,
-              "end": 17,
+              "start": 17,
+              "end": 21,
               "surface_form": "なります",
               "inflection": "masu"
             }
@@ -37479,12 +37468,63 @@
           "register": "polite"
         },
         {
+          "japanese": "少し寝さえすれば、元気になります。",
+          "english": "As long as I just sleep a little, I'll feel better.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "sukoshi",
+            "neru",
+            "suru",
+            "genki",
+            "naru-become"
+          ],
+          "furigana": "少[すこ]し寝[ね]さえすれば、元[げん]気[き]になります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sukoshi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 2,
+              "end": 3,
+              "surface_form": "寝",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "すれ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "genki",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 12,
+              "end": 16,
+              "surface_form": "なります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
           "japanese": "時間さえあれば、大丈夫です。",
           "english": "As long as I just have time, I'll be fine.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "jikan",
-            "are",
+            "aru",
             "daijoubu-desu"
           ],
           "furigana": "時[じ]間[かん]さえあれば、大[だい]丈[じょう]夫[ぶ]です。",
@@ -37495,9 +37535,11 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "are",
+              "vocabulary_slug": "aru",
               "start": 4,
-              "end": 6
+              "end": 6,
+              "surface_form": "あれ",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "daijoubu-desu",
@@ -37517,7 +37559,7 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "jisho",
-            "are",
+            "aru",
             "kotoba",
             "wakaru"
           ],
@@ -37529,9 +37571,11 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "are",
+              "vocabulary_slug": "aru",
               "start": 4,
-              "end": 6
+              "end": 6,
+              "surface_form": "あれ",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "kotoba",
@@ -37551,6 +37595,168 @@
             "end": 4
           },
           "register": "polite"
+        },
+        {
+          "japanese": "薬さえ飲めば、治りますか。",
+          "english": "If I just take the medicine, will I get better?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kusuri",
+            "nomu-v",
+            "naoru"
+          ],
+          "furigana": "薬[くすり]さえ飲[の]めば、治[なお]りますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kusuri",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "飲め",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naoru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "治ります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "傘さえ持っていれば、濡れなかったのに。",
+          "english": "If only I'd had an umbrella, I wouldn't have gotten wet.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kasa",
+            "motsu",
+            "iru-exist",
+            "nureru"
+          ],
+          "furigana": "傘[かさ]さえ持[も]っていれば、濡[ぬ]れなかったのに。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kasa",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 3,
+              "end": 6,
+              "surface_form": "持って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 6,
+              "end": 8,
+              "surface_form": "いれ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "nureru",
+              "start": 10,
+              "end": 16,
+              "surface_form": "濡れなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "名前さえ書けば、問題ありません。",
+          "english": "As long as you write your name, there's no problem.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "namae",
+            "kaku",
+            "mondai",
+            "aru"
+          ],
+          "furigana": "名[な]前[まえ]さえ書[か]けば、問[もん]題[だい]ありません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "namae",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 4,
+              "end": 6,
+              "surface_form": "書け",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "ありません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "犬さえいれば、寂しくないです。",
+          "english": "As long as I have my dog, I'm not lonely.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "inu",
+            "iru-exist",
+            "sabishii"
+          ],
+          "furigana": "犬[いぬ]さえいれば、寂[さび]しくないです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 3,
+              "end": 5,
+              "surface_form": "いれ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "sabishii",
+              "start": 7,
+              "end": 12,
+              "surface_form": "寂しくない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -37558,6 +37764,28 @@
         "shiawase"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "as long as",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "if only",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "if just",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "provided that",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "お金＿＿＿あれば、旅行できます。",
@@ -37631,16 +37859,43 @@
       ],
       "example_sentences": [
         {
-          "japanese": "会員のみ入場できます。",
-          "english": "Only members may enter.",
+          "japanese": "この席は女性のみです。",
+          "english": "This seat is for women only.",
           "sort_order": 0,
-          "vocabulary_slugs": [],
-          "furigana": "会[かい]員[いん]のみ入[にゅう]場[じょう]できます。",
+          "vocabulary_slugs": [
+            "kono",
+            "seki-seat",
+            "josei"
+          ],
+          "furigana": "この席[せき]は女[じょ]性[せい]のみです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "seki-seat",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "josei",
+              "start": 4,
+              "end": 6
+            }
+          ],
           "grammar_span": {
-            "start": 2,
-            "end": 4
+            "start": 6,
+            "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この席[せき]は女[じょ]性[せい]だけです。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "会社の入口は社員のみ使えます。",
@@ -37681,7 +37936,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]社[しゃ]の入[いり]口[ぐち]は社[しゃ]員[いん]だけ使[つか]えます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "このレストランは現金のみです。",
@@ -37714,7 +37975,13 @@
             "start": 10,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "このレストランは現[げん]金[きん]だけです。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "試験の間は日本語のみ話せます。",
@@ -37755,7 +38022,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "試[し]験[けん]の間[あいだ]は日本[にほん]語[ご]だけ話[はな]せます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "日曜日のみ休みます。",
@@ -37784,7 +38057,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "日[にち]曜[よう]日[び]だけ休[やす]みます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "この仕事は大人のみできます。",
@@ -37825,11 +38104,199 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この仕[し]事[ごと]は大人[おとな]だけできます。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "入口はここのみですか。",
+          "english": "Is this the only entrance?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "iriguchi",
+            "koko"
+          ],
+          "furigana": "入[いり]口[ぐち]はここのみですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "iriguchi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "入[いり]口[ぐち]はここだけですか。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "昨日の会議には部長のみ出席した。",
+          "english": "Only the department manager attended yesterday's meeting.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kinou",
+            "kaigi",
+            "buchou",
+            "shusseki-suru"
+          ],
+          "furigana": "昨日[きのう]の会[かい]議[ぎ]には部[ぶ]長[ちょう]のみ出[しゅっ]席[せき]した。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "buchou",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "shusseki-suru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "出席した",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 11
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]の会[かい]議[ぎ]には部[ぶ]長[ちょう]だけ出[しゅっ]席[せき]した。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "朝は果物のみで、ご飯は食べません。",
+          "english": "In the morning I have only fruit; I don't eat rice.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "asa",
+            "kudamono",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "朝[あさ]は果物[くだもの]のみで、ご飯[はん]は食[た]べません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "asa",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kudamono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "gohan",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 11,
+              "end": 16,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "朝[あさ]は果物[くだもの]だけで、ご飯[はん]は食[た]べません。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "注文はインターネットのみです。",
+          "english": "Orders are taken online only.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "chuumon",
+            "intaanetto"
+          ],
+          "furigana": "注[ちゅう]文[もん]はインターネットのみです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chuumon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "intaanetto",
+              "start": 3,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 12
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "注[ちゅう]文[もん]はインターネットだけです。",
+              "kind": "other_grammar"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "only",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "solely",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nothing but",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "会社の入口は社員＿＿＿使えます。",
@@ -37905,25 +38372,45 @@
       ],
       "example_sentences": [
         {
-          "japanese": "もう謝るほかありません。",
-          "english": "There's nothing to do but apologize.",
+          "japanese": "鍵を無くしたから、窓から入るほかない。",
+          "english": "I lost my key, so I have no choice but to go in through the window.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "ayamaru"
+            "kagi",
+            "nakusu",
+            "mado",
+            "hairu-v"
           ],
-          "furigana": "もう謝[あやま]るほかありません。",
+          "furigana": "鍵[かぎ]を無[な]くしたから、窓[まど]から入[はい]るほかない。",
           "word_spans": [
             {
-              "vocabulary_slug": "ayamaru",
+              "vocabulary_slug": "kagi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nakusu",
               "start": 2,
-              "end": 4
+              "end": 6,
+              "surface_form": "無くした",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hairu-v",
+              "start": 12,
+              "end": 14
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 11
+            "start": 14,
+            "end": 18
           },
-          "register": "polite"
+          "register": "plain"
         },
         {
           "japanese": "歩いて帰るほかない。",
@@ -38023,17 +38510,17 @@
           "register": "polite"
         },
         {
-          "japanese": "もう一度やり直すほかない。",
-          "english": "There's nothing for it but to start over once more.",
+          "japanese": "最初からやり直すほかない。",
+          "english": "There's nothing for it but to start over from the beginning.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "mou",
+            "saisho",
             "yarinaosu"
           ],
-          "furigana": "もう一[いち]度[ど]やり直[なお]すほかない。",
+          "furigana": "最[さい]初[しょ]からやり直[なお]すほかない。",
           "word_spans": [
             {
-              "vocabulary_slug": "mou",
+              "vocabulary_slug": "saisho",
               "start": 0,
               "end": 2
             },
@@ -38093,12 +38580,155 @@
             "end": 16
           },
           "register": "plain"
+        },
+        {
+          "japanese": "答えが分からないなら、先生に聞くほかありませんか。",
+          "english": "If we don't know the answer, is asking the teacher our only option?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kotae",
+            "wakaru",
+            "sensei",
+            "kiku-v"
+          ],
+          "furigana": "答[こた]えが分[わ]からないなら、先[せん]生[せい]に聞[き]くほかありませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kotae",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 3,
+              "end": 8,
+              "surface_form": "分からない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "grammar_span": {
+            "start": 16,
+            "end": 23
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "宿題が多いから、週末も勉強するほかない。",
+          "english": "I have so much homework that I have no choice but to study on the weekend too.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shukudai",
+            "ooi",
+            "shuumatsu",
+            "benkyou-suru"
+          ],
+          "furigana": "宿[しゅく]題[だい]が多[おお]いから、週[しゅう]末[まつ]も勉[べん]強[きょう]するほかない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ooi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 11,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 15,
+            "end": 19
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "車が壊れたので、自転車で行くほかありません。",
+          "english": "My car broke down, so I have no choice but to go by bicycle.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kuruma",
+            "kowareru",
+            "jitensha",
+            "iku-v"
+          ],
+          "furigana": "車[くるま]が壊[こわ]れたので、自[じ]転[てん]車[しゃ]で行[い]くほかありません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kowareru",
+              "start": 2,
+              "end": 5,
+              "surface_form": "壊れた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "jitensha",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 14,
+            "end": 21
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
         "ayamaru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "have no choice but to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "can only",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nothing to do but",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "have to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "歩いて帰る＿＿＿。",
@@ -38173,45 +38803,83 @@
       ],
       "example_sentences": [
         {
-          "japanese": "台風によって、電車が止まりました。",
-          "english": "Due to the typhoon, trains stopped.",
+          "japanese": "雪によって、飛行機が遅れました。",
+          "english": "The plane was delayed because of the snow.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "taifuu",
-            "densha"
+            "yuki",
+            "hikouki",
+            "okureru"
           ],
-          "furigana": "台[たい]風[ふう]によって、電[でん]車[しゃ]が止[と]まりました。",
+          "furigana": "雪[ゆき]によって、飛[ひ]行[こう]機[き]が遅[おく]れました。",
           "word_spans": [
             {
-              "vocabulary_slug": "taifuu",
+              "vocabulary_slug": "yuki",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "densha",
-              "start": 7,
+              "vocabulary_slug": "hikouki",
+              "start": 6,
               "end": 9
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "遅れました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 6
+            "start": 1,
+            "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雪[ゆき]により、飛[ひ]行[こう]機[き]が遅[おく]れました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "雪[ゆき]で、飛[ひ]行[こう]機[き]が遅[おく]れました。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
-          "japanese": "人によって、考え方が違います。",
-          "english": "Depending on the person, ways of thinking differ.",
+          "japanese": "店によって、ビールの値段が変わりますか。",
+          "english": "Does the price of beer change depending on the shop?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "hito"
+            "mise",
+            "biiru",
+            "nedan",
+            "kawaru"
           ],
-          "furigana": "人[ひと]によって、考[かんが]え方[かた]が違[ちが]います。",
+          "furigana": "店[みせ]によって、ビールの値[ね]段[だん]が変[か]わりますか。",
           "word_spans": [
             {
-              "vocabulary_slug": "hito",
+              "vocabulary_slug": "mise",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "biiru",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "nedan",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kawaru",
+              "start": 13,
+              "end": 18,
+              "surface_form": "変わります",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -38253,7 +38921,17 @@
             "start": 2,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "台[たい]風[ふう]により、電[でん]車[しゃ]が止[と]まった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "台[たい]風[ふう]で、電[でん]車[しゃ]が止[と]まった。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "彼女は祖母によって育てられた。",
@@ -38261,7 +38939,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "kanojo",
-            "sobo"
+            "sobo",
+            "sodateru"
           ],
           "furigana": "彼[かの]女[じょ]は祖[そ]母[ぼ]によって育[そだ]てられた。",
           "word_spans": [
@@ -38274,6 +38953,13 @@
               "vocabulary_slug": "sobo",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "sodateru",
+              "start": 9,
+              "end": 11,
+              "surface_form": "育て",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -38354,7 +39040,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "地[じ]震[しん]によって、たくさんの人[ひと]が困[こま]った。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会議によって、新しい予定が決まった。",
@@ -38396,6 +39088,100 @@
             "end": 6
           },
           "register": "plain"
+        },
+        {
+          "japanese": "時間によって、このバスは駅に止まりません。",
+          "english": "Depending on the time, this bus doesn't stop at the station.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "jikan",
+            "kono",
+            "basu",
+            "eki",
+            "tomaru"
+          ],
+          "furigana": "時[じ]間[かん]によって、このバスは駅[えき]に止[と]まりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "jikan",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "basu",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "tomaru",
+              "start": 14,
+              "end": 20,
+              "surface_form": "止まりません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この小説は若い女性によって書かれた。",
+          "english": "This novel was written by a young woman.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "shousetsu",
+            "wakai",
+            "josei",
+            "kaku"
+          ],
+          "furigana": "この小[しょう]説[せつ]は若[わか]い女[じょ]性[せい]によって書[か]かれた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shousetsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "wakai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "josei",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 13,
+              "end": 15,
+              "surface_form": "書か",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -38404,6 +39190,33 @@
         "hito"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "by",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "due to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "depending on",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "because of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "by means of",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Cause — \"because of\"",
@@ -38508,11 +39321,12 @@
       "example_sentences": [
         {
           "japanese": "買い物のついでに、郵便局へ行きました。",
-          "english": "While shopping, I went to the post office.",
+          "english": "While I was out shopping, I stopped by the post office.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "kaimono",
-            "yuubinkyoku"
+            "yuubinkyoku",
+            "iku-v"
           ],
           "furigana": "買[か]い物[もの]のついでに、郵[ゆう]便[びん]局[きょく]へ行[い]きました。",
           "word_spans": [
@@ -38525,17 +39339,30 @@
               "vocabulary_slug": "yuubinkyoku",
               "start": 9,
               "end": 12
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 13,
+              "end": 18,
+              "surface_form": "行きました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "買[か]い物[もの]のついでに、郵[ゆう]便[びん]局[きょく]に行[い]きました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "コンビニに行くついでに、牛乳を買ってくる。",
-          "english": "While I'm going to the convenience store, I'll pick up some milk.",
+          "japanese": "コンビニに行くついでに、牛乳を買いましょうか。",
+          "english": "Since I'm going to the convenience store anyway, shall I buy some milk?",
           "sort_order": 1,
           "vocabulary_slugs": [
             "konbini",
@@ -38543,7 +39370,7 @@
             "gyuunyuu",
             "kau-v"
           ],
-          "furigana": "コンビニに行[い]くついでに、牛[ぎゅう]乳[にゅう]を買[か]ってくる。",
+          "furigana": "コンビニに行[い]くついでに、牛[ぎゅう]乳[にゅう]を買[か]いましょうか。",
           "word_spans": [
             {
               "vocabulary_slug": "konbini",
@@ -38563,16 +39390,16 @@
             {
               "vocabulary_slug": "kau-v",
               "start": 15,
-              "end": 18,
-              "surface_form": "買って",
-              "inflection": "te"
+              "end": 17,
+              "surface_form": "買い",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "買い物のついでに、図書館で本を返す。",
@@ -38741,6 +39568,142 @@
             "end": 10
           },
           "register": "plain"
+        },
+        {
+          "japanese": "父は散歩するついでに、パンを買いました。",
+          "english": "My father bought bread while he was out on his walk.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "chichi",
+            "sanpo-suru",
+            "pan",
+            "kau-v"
+          ],
+          "furigana": "父[ちち]は散[さん]歩[ぽ]するついでに、パンを買[か]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sanpo-suru",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "pan",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 14,
+              "end": 19,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "友達に会うついでに、借りた本を返しました。",
+          "english": "While I was meeting my friend, I returned the book I'd borrowed.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "au",
+            "kariru",
+            "hon",
+            "kaesu"
+          ],
+          "furigana": "友[とも]達[だち]に会[あ]うついでに、借[か]りた本[ほん]を返[かえ]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kariru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "借りた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "kaesu",
+              "start": 15,
+              "end": 20,
+              "surface_form": "返しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "お茶を入れるついでに、私のも入れてくれる？",
+          "english": "While you're making tea, will you make mine too?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ocha",
+            "ireru-v",
+            "watashi",
+            "kureru"
+          ],
+          "furigana": "お茶[ちゃ]を入[い]れるついでに、私[わたし]のも入[い]れてくれる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ocha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 14,
+              "end": 17,
+              "surface_form": "入れて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 17,
+              "end": 20
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -38748,6 +39711,33 @@
         "yuubinkyoku"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "while I'm at it",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while you're at it",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the way",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while doing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "incidentally",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "コンビニに行く＿＿＿、牛乳を買ってくる。",
@@ -38821,25 +39811,51 @@
       ],
       "example_sentences": [
         {
-          "japanese": "よく考えた上で、返事します。",
-          "english": "I'll reply after thinking it over carefully.",
+          "japanese": "説明をよく聞いた上で、契約します。",
+          "english": "I'll sign the contract after listening carefully to the explanation.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "kangaeru"
+            "setsumei",
+            "yoku",
+            "kiku-v",
+            "keiyaku",
+            "suru"
           ],
-          "furigana": "よく考[かんが]えた上[うえ]で、返[へん]事[じ]します。",
+          "furigana": "説[せつ]明[めい]をよく聞[き]いた上[うえ]で、契[けい]約[やく]します。",
           "word_spans": [
             {
-              "vocabulary_slug": "kangaeru",
-              "start": 2,
-              "end": 5,
-              "surface_form": "考えた",
+              "vocabulary_slug": "setsumei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 5,
+              "end": 8,
+              "surface_form": "聞いた",
               "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "keiyaku",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 13,
+              "end": 16,
+              "surface_form": "します",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 7
+            "start": 8,
+            "end": 10
           },
           "register": "polite"
         },
@@ -39020,12 +40036,211 @@
             "end": 10
           },
           "register": "polite"
+        },
+        {
+          "japanese": "弁護士に聞いた上で、書類に署名しました。",
+          "english": "I signed the papers after asking a lawyer.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "bengoshi",
+            "kiku-v",
+            "shorui",
+            "shomei",
+            "suru"
+          ],
+          "furigana": "弁[べん]護[ご]士[し]に聞[き]いた上[うえ]で、書[しょ]類[るい]に署[しょ]名[めい]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "bengoshi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 4,
+              "end": 7,
+              "surface_form": "聞いた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "shorui",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "shomei",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 15,
+              "end": 19,
+              "surface_form": "しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "説明を読んだ上で、申し込みますか。",
+          "english": "Will you apply after reading the explanation?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "setsumei",
+            "yomu",
+            "moushikomu"
+          ],
+          "furigana": "説[せつ]明[めい]を読[よ]んだ上[うえ]で、申[もう]し込[こ]みますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "setsumei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 3,
+              "end": 6,
+              "surface_form": "読んだ",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "moushikomu",
+              "start": 9,
+              "end": 15,
+              "surface_form": "申し込みます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "妻と話し合った上で、田舎には引っ越しません。",
+          "english": "After talking it over with my wife, I'm not moving to the countryside.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "tsuma",
+            "hanashiau",
+            "inaka",
+            "hikkosu"
+          ],
+          "furigana": "妻[つま]と話し合[はなしあ]った上[うえ]で、田舎[いなか]には引[ひ]っ越[こ]しません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tsuma",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hanashiau",
+              "start": 2,
+              "end": 7,
+              "surface_form": "話し合った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "inaka",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "hikkosu",
+              "start": 14,
+              "end": 21,
+              "surface_form": "引っ越しません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "地図をよく見た上で、出かけましょう。",
+          "english": "Let's head out after taking a good look at the map.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "chizu",
+            "yoku",
+            "miru-v",
+            "dekakeru"
+          ],
+          "furigana": "地[ち]図[ず]をよく見[み]た上[うえ]で、出[で]かけましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chizu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 5,
+              "end": 7,
+              "surface_form": "見た",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "dekakeru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "出かけ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
         "kangaeru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "after",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "after doing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "upon",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "once",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "on the basis of",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "書類を全部読んだ＿＿＿、決めます。",

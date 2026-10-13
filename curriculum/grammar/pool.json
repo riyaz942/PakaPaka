@@ -17856,5 +17856,738 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "saeba": {
+    "accepted_meanings": [
+      "as long as",
+      "if only",
+      "if just",
+      "provided that"
+    ],
+    "sentences": [
+      {
+        "japanese": "お金さえあれば、幸せです。",
+        "english": "As long as I have money, I'm happy.",
+        "vocabulary_slugs": [
+          "okane",
+          "aru",
+          "shiawase"
+        ]
+      },
+      {
+        "japanese": "お金さえあれば、旅行できます。",
+        "english": "If you just had the money, you could travel.",
+        "vocabulary_slugs": [
+          "okane",
+          "aru",
+          "ryokou",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "毎日勉強さえすれば、日本語が上手になります。",
+        "english": "As long as you just study every day, your Japanese will get good.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "benkyou",
+          "suru",
+          "nihongo",
+          "jouzu",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "少し寝さえすれば、元気になります。",
+        "english": "As long as I just sleep a little, I'll feel better.",
+        "vocabulary_slugs": [
+          "sukoshi",
+          "neru",
+          "suru",
+          "genki",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "時間さえあれば、大丈夫です。",
+        "english": "As long as I just have time, I'll be fine.",
+        "vocabulary_slugs": [
+          "jikan",
+          "aru",
+          "daijoubu-desu"
+        ]
+      },
+      {
+        "japanese": "辞書さえあれば、言葉が分かります。",
+        "english": "As long as I just have a dictionary, I'll understand the words.",
+        "vocabulary_slugs": [
+          "jisho",
+          "aru",
+          "kotoba",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "薬さえ飲めば、治りますか。",
+        "english": "If I just take the medicine, will I get better?",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "naoru"
+        ]
+      },
+      {
+        "japanese": "傘さえ持っていれば、濡れなかったのに。",
+        "english": "If only I'd had an umbrella, I wouldn't have gotten wet.",
+        "vocabulary_slugs": [
+          "kasa",
+          "motsu",
+          "iru-exist",
+          "nureru"
+        ]
+      },
+      {
+        "japanese": "名前さえ書けば、問題ありません。",
+        "english": "As long as you write your name, there's no problem.",
+        "vocabulary_slugs": [
+          "namae",
+          "kaku",
+          "mondai",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "犬さえいれば、寂しくないです。",
+        "english": "As long as I have my dog, I'm not lonely.",
+        "vocabulary_slugs": [
+          "inu",
+          "iru-exist",
+          "sabishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nomi": {
+    "accepted_meanings": [
+      "only",
+      "just",
+      "solely",
+      "nothing but"
+    ],
+    "sentences": [
+      {
+        "japanese": "この席は女性のみです。",
+        "english": "This seat is for women only.",
+        "vocabulary_slugs": [
+          "kono",
+          "seki-seat",
+          "josei"
+        ],
+        "alternates": [
+          {
+            "japanese": "この席は女性だけです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "会社の入口は社員のみ使えます。",
+        "english": "Only employees can use the company entrance.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "iriguchi",
+          "shain",
+          "tsukaeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "会社の入口は社員だけ使えます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "このレストランは現金のみです。",
+        "english": "This restaurant is cash only.",
+        "vocabulary_slugs": [
+          "kono",
+          "resutoran",
+          "genkin"
+        ],
+        "alternates": [
+          {
+            "japanese": "このレストランは現金だけです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "試験の間は日本語のみ話せます。",
+        "english": "During the exam, only Japanese may be spoken.",
+        "vocabulary_slugs": [
+          "shiken",
+          "aida",
+          "nihongo",
+          "hanaseru"
+        ],
+        "alternates": [
+          {
+            "japanese": "試験の間は日本語だけ話せます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "日曜日のみ休みます。",
+        "english": "I only rest on Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "日曜日だけ休みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "この仕事は大人のみできます。",
+        "english": "Only adults can do this job.",
+        "vocabulary_slugs": [
+          "kono",
+          "shigoto",
+          "otona",
+          "dekiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "この仕事は大人だけできます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "入口はここのみですか。",
+        "english": "Is this the only entrance?",
+        "vocabulary_slugs": [
+          "iriguchi",
+          "koko"
+        ],
+        "alternates": [
+          {
+            "japanese": "入口はここだけですか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日の会議には部長のみ出席した。",
+        "english": "Only the department manager attended yesterday's meeting.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kaigi",
+          "buchou",
+          "shusseki-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日の会議には部長だけ出席した。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "朝は果物のみで、ご飯は食べません。",
+        "english": "In the morning I have only fruit; I don't eat rice.",
+        "vocabulary_slugs": [
+          "asa",
+          "kudamono",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝は果物だけで、ご飯は食べません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "注文はインターネットのみです。",
+        "english": "Orders are taken online only.",
+        "vocabulary_slugs": [
+          "chuumon",
+          "intaanetto"
+        ],
+        "alternates": [
+          {
+            "japanese": "注文はインターネットだけです。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hoka-nai": {
+    "accepted_meanings": [
+      "have no choice but to",
+      "can only",
+      "nothing to do but",
+      "have to"
+    ],
+    "sentences": [
+      {
+        "japanese": "鍵を無くしたから、窓から入るほかない。",
+        "english": "I lost my key, so I have no choice but to go in through the window.",
+        "vocabulary_slugs": [
+          "kagi",
+          "nakusu",
+          "mado",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "歩いて帰るほかない。",
+        "english": "I have no choice but to walk home.",
+        "vocabulary_slugs": [
+          "aruku",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "電車が止まったから、駅で待つほかない。",
+        "english": "Since the trains have stopped, I have no choice but to wait at the station.",
+        "vocabulary_slugs": [
+          "densha",
+          "tomaru",
+          "eki",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "彼に謝るほかありません。",
+        "english": "I have no choice but to apologize to him.",
+        "vocabulary_slugs": [
+          "kare",
+          "ayamaru"
+        ]
+      },
+      {
+        "japanese": "最初からやり直すほかない。",
+        "english": "There's nothing for it but to start over from the beginning.",
+        "vocabulary_slugs": [
+          "saisho",
+          "yarinaosu"
+        ]
+      },
+      {
+        "japanese": "今日は雨だから、家にいるほかない。",
+        "english": "It's raining today, so I have no choice but to stay home.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ame-v",
+          "dakara",
+          "ie",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "答えが分からないなら、先生に聞くほかありませんか。",
+        "english": "If we don't know the answer, is asking the teacher our only option?",
+        "vocabulary_slugs": [
+          "kotae",
+          "wakaru",
+          "sensei",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "宿題が多いから、週末も勉強するほかない。",
+        "english": "I have so much homework that I have no choice but to study on the weekend too.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "ooi",
+          "shuumatsu",
+          "benkyou-suru"
+        ]
+      },
+      {
+        "japanese": "車が壊れたので、自転車で行くほかありません。",
+        "english": "My car broke down, so I have no choice but to go by bicycle.",
+        "vocabulary_slugs": [
+          "kuruma",
+          "kowareru",
+          "jitensha",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yoruni": {
+    "accepted_meanings": [
+      "by",
+      "due to",
+      "depending on",
+      "because of",
+      "by means of"
+    ],
+    "sentences": [
+      {
+        "japanese": "雪によって、飛行機が遅れました。",
+        "english": "The plane was delayed because of the snow.",
+        "vocabulary_slugs": [
+          "yuki",
+          "hikouki",
+          "okureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "雪により、飛行機が遅れました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雪で、飛行機が遅れました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "店によって、ビールの値段が変わりますか。",
+        "english": "Does the price of beer change depending on the shop?",
+        "vocabulary_slugs": [
+          "mise",
+          "biiru",
+          "nedan",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "台風によって、電車が止まった。",
+        "english": "The trains stopped because of the typhoon.",
+        "vocabulary_slugs": [
+          "taifuu",
+          "densha",
+          "tomaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "台風により、電車が止まった。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "台風で、電車が止まった。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女は祖母によって育てられた。",
+        "english": "She was raised by her grandmother.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "sobo",
+          "sodateru"
+        ]
+      },
+      {
+        "japanese": "人によって意見が変わる。",
+        "english": "Opinions vary from one person to the next.",
+        "vocabulary_slugs": [
+          "hito",
+          "iken",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "地震により、たくさんの人が困った。",
+        "english": "The earthquake left many people in difficulty.",
+        "vocabulary_slugs": [
+          "jishin",
+          "takusan",
+          "hito",
+          "komaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "地震によって、たくさんの人が困った。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "会議によって、新しい予定が決まった。",
+        "english": "The new schedule was settled through the meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "atarashii-adj",
+          "yotei",
+          "kimaru"
+        ]
+      },
+      {
+        "japanese": "時間によって、このバスは駅に止まりません。",
+        "english": "Depending on the time, this bus doesn't stop at the station.",
+        "vocabulary_slugs": [
+          "jikan",
+          "kono",
+          "basu",
+          "eki",
+          "tomaru"
+        ]
+      },
+      {
+        "japanese": "この小説は若い女性によって書かれた。",
+        "english": "This novel was written by a young woman.",
+        "vocabulary_slugs": [
+          "kono",
+          "shousetsu",
+          "wakai",
+          "josei",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuide-ni": {
+    "accepted_meanings": [
+      "while I'm at it",
+      "while you're at it",
+      "on the way",
+      "while doing",
+      "incidentally"
+    ],
+    "sentences": [
+      {
+        "japanese": "買い物のついでに、郵便局へ行きました。",
+        "english": "While I was out shopping, I stopped by the post office.",
+        "vocabulary_slugs": [
+          "kaimono",
+          "yuubinkyoku",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "買い物のついでに、郵便局に行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "コンビニに行くついでに、牛乳を買いましょうか。",
+        "english": "Since I'm going to the convenience store anyway, shall I buy some milk?",
+        "vocabulary_slugs": [
+          "konbini",
+          "iku-v",
+          "gyuunyuu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "買い物のついでに、図書館で本を返す。",
+        "english": "While I'm out shopping, I'll return the books at the library.",
+        "vocabulary_slugs": [
+          "kaimono",
+          "toshokan",
+          "hon",
+          "kaesu"
+        ]
+      },
+      {
+        "japanese": "台所を掃除するついでに、冷蔵庫も洗う。",
+        "english": "While I'm cleaning the kitchen, I'll wash out the fridge too.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "souji-suru",
+          "reizouko",
+          "arau"
+        ]
+      },
+      {
+        "japanese": "郵便局に行くついでに、銀行にもお金を出す。",
+        "english": "While I'm at the post office, I'll also take out money at the bank.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "iku-v",
+          "ginkou",
+          "okane",
+          "dasu"
+        ]
+      },
+      {
+        "japanese": "会社から帰るついでに、スーパーで野菜を買う。",
+        "english": "On my way home from work, I'll buy vegetables at the supermarket.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "kaeru-v",
+          "suupaa",
+          "yasai",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "父は散歩するついでに、パンを買いました。",
+        "english": "My father bought bread while he was out on his walk.",
+        "vocabulary_slugs": [
+          "chichi",
+          "sanpo-suru",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "友達に会うついでに、借りた本を返しました。",
+        "english": "While I was meeting my friend, I returned the book I'd borrowed.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "au",
+          "kariru",
+          "hon",
+          "kaesu"
+        ]
+      },
+      {
+        "japanese": "お茶を入れるついでに、私のも入れてくれる？",
+        "english": "While you're making tea, will you make mine too?",
+        "vocabulary_slugs": [
+          "ocha",
+          "ireru-v",
+          "watashi",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ue-de": {
+    "accepted_meanings": [
+      "after",
+      "after doing",
+      "upon",
+      "once",
+      "on the basis of"
+    ],
+    "sentences": [
+      {
+        "japanese": "説明をよく聞いた上で、契約します。",
+        "english": "I'll sign the contract after listening carefully to the explanation.",
+        "vocabulary_slugs": [
+          "setsumei",
+          "yoku",
+          "kiku-v",
+          "keiyaku",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "書類を全部読んだ上で、決めます。",
+        "english": "I will decide after I have read all the documents.",
+        "vocabulary_slugs": [
+          "shorui",
+          "zenbu",
+          "yomu",
+          "kimeru-v"
+        ]
+      },
+      {
+        "japanese": "家族とよく話し合った上で、お答えします。",
+        "english": "I will answer once I have talked it over properly with my family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "yoku",
+          "hanashiau",
+          "kotae",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "医者に聞いた上で、薬を飲みます。",
+        "english": "I will take the medicine after checking with the doctor.",
+        "vocabulary_slugs": [
+          "isha",
+          "kiku-v",
+          "kusuri",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "値段をよく考えた上で、買います。",
+        "english": "I will buy it after thinking the price over carefully.",
+        "vocabulary_slugs": [
+          "nedan",
+          "yoku",
+          "kangaeru",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "弁護士に聞いた上で、書類に署名しました。",
+        "english": "I signed the papers after asking a lawyer.",
+        "vocabulary_slugs": [
+          "bengoshi",
+          "kiku-v",
+          "shorui",
+          "shomei",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "説明を読んだ上で、申し込みますか。",
+        "english": "Will you apply after reading the explanation?",
+        "vocabulary_slugs": [
+          "setsumei",
+          "yomu",
+          "moushikomu"
+        ]
+      },
+      {
+        "japanese": "妻と話し合った上で、田舎には引っ越しません。",
+        "english": "After talking it over with my wife, I'm not moving to the countryside.",
+        "vocabulary_slugs": [
+          "tsuma",
+          "hanashiau",
+          "inaka",
+          "hikkosu"
+        ]
+      },
+      {
+        "japanese": "地図をよく見た上で、出かけましょう。",
+        "english": "Let's head out after taking a good look at the map.",
+        "vocabulary_slugs": [
+          "chizu",
+          "yoku",
+          "miru-v",
+          "dekakeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
