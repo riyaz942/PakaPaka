@@ -504,11 +504,15 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     word_spans = _example_word_spans(jp, vslugs, vocab_forms)
     if word_spans:
         sentence["word_spans"] = word_spans
-    try:
-        span = grammar_sentences_lib.grammar_span(jp, g["accepted_forms"], example.get("form"))
-    except ValueError as error:
-        errors.append(f"grammar {g['slug']} example {sort_order}: {error}")
-        span = None
+    if example.get("start") is not None:
+        # Cloze-derived: the blank is the grammar; do not search for it.
+        span = {"start": example["start"], "end": example["start"] + len(example["form"])}
+    else:
+        try:
+            span = grammar_sentences_lib.grammar_span(jp, g["accepted_forms"], example.get("form"))
+        except ValueError as error:
+            errors.append(f"grammar {g['slug']} example {sort_order}: {error}")
+            span = None
     if span:
         sentence["grammar_span"] = span
     sentence["register"] = grammar_sentences_lib.register_of(jp)
@@ -526,8 +530,13 @@ def _cloze_derived_examples(g, known_vocab_forms):
     derived = []
     existing = {e["jp"] for e in g["examples"]}
     for example in grammar_sentences_lib.cloze_examples(g.get("cloze_variants", []), existing):
+        grammar = {"start": example["start"], "end": example["start"] + len(example["form"])}
         slugs = []
         for span in spans_lib.derive_spans(example["jp"], known_vocab_forms):
+            # A word inside the grammar is the grammar (います -> いる), not a
+            # word the Build card should list.
+            if grammar["start"] <= span["start"] and span["end"] <= grammar["end"]:
+                continue
             if span["vocabulary_slug"] not in slugs:
                 slugs.append(span["vocabulary_slug"])
         derived.append({**example, "vocab": slugs, "alts": []})

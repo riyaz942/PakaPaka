@@ -77,8 +77,37 @@ class ClozeTest(unittest.TestCase):
         ]
         self.assertEqual(
             gs.cloze_examples(variants, existing_japanese={"寒いから、行きません。"}),
-            [{"jp": "今日は寒いから。", "en": "Because it's cold today.", "form": "から"}],
+            [{"jp": "今日は寒いから。", "en": "Because it's cold today.", "form": "から", "start": 5}],
         )
+
+
+class ClozeEdgeCaseTest(unittest.TestCase):
+    def test_every_blank_is_filled(self):
+        self.assertEqual(
+            gs.fill_cloze("週末は映画＿＿＿買い物＿＿＿したいです。", "とか"),
+            "週末は映画とか買い物とかしたいです。",
+        )
+
+    def test_longer_blank_run_leaves_no_stray_mark(self):
+        self.assertEqual(
+            gs.fill_cloze("お酒を飲まない＿＿＿＿。", "ことにしました"),
+            "お酒を飲まないことにしました。",
+        )
+
+    def test_conjugation_chain_is_not_a_sentence(self):
+        variants = [{"jp_cloze": "書く → 書い＿＿＿", "english": "write", "answer": "て"}]
+        self.assertEqual(gs.cloze_examples(variants, existing_japanese=set()), [])
+
+    def test_start_is_the_blank_position_not_the_first_match(self):
+        variants = [{"jp_cloze": "どこから帰ります＿＿＿。", "english": "Where from?", "answer": "か"}]
+        [example] = gs.cloze_examples(variants, existing_japanese=set())
+        self.assertEqual(example["jp"], "どこから帰りますか。")
+        self.assertEqual(example["start"], 8)
+
+
+class PoliteRequestTest(unittest.TestCase):
+    def test_kudasai_is_polite(self):
+        self.assertEqual(gs.register_of("ちょっと待ってください。"), "polite")
 
 
 class UncoveredTest(unittest.TestCase):

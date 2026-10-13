@@ -113,9 +113,20 @@ def _other_family_forms(item, grammar):
     ]
 
 
+def grammar_through(level):
+    """Grammar points of every level up to and including `level`: an N4
+    alternate may use an N5 point of the same family."""
+    return [
+        g
+        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
+        for g in context.load_grammar(lower)
+    ]
+
+
 def check_level(level):
     """{slug: [errors]} for every grammar point at `level`."""
     grammar = context.load_grammar(level)
+    family_pool = grammar_through(level)
     vocab_forms = {
         v["slug"]: v["primary_form"]
         for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
@@ -125,7 +136,7 @@ def check_level(level):
     for item in grammar:
         allowed = level_check.build_allowed_index(context.allowed_vocab_for(level, item["slug"]))
         results[item["slug"]] = point_errors(
-            item, allowed, _other_family_forms(item, grammar), vocab_forms
+            item, allowed, _other_family_forms(item, family_pool), vocab_forms
         )
     return results
 

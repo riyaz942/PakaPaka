@@ -9,7 +9,8 @@ sys.path.insert(0, BUILD_DIR)
 
 import generate  # noqa: E402
 
-VOCAB = {"samui": "寒い", "kooto": "コート", "kiru-wear": "着る", "kyou": "今日"}
+VOCAB = {"samui": "寒い", "kooto": "コート", "kiru-wear": "着る", "kyou": "今日",
+         "iru": "いる", "kaeru": "帰る"}
 
 
 def entry(**overrides):
@@ -85,6 +86,24 @@ class GrammarLevelTest(unittest.TestCase):
                     cloze_variants=[])
         with self.assertRaises(ValueError):
             build([bad])
+
+    def test_cloze_span_is_the_blank_not_an_earlier_match(self):
+        # か inside から must not be highlighted for the question marker か.
+        ka = entry(accepted_forms=["か"], examples=[], cloze_variants=[
+            {"jp_cloze": "どこから帰ります＿＿＿。", "english": "Where from?",
+             "answer": "か", "nudge": "n"}])
+        [sentence] = build([ka])["example_sentences"]
+        self.assertEqual(sentence["japanese"], "どこから帰りますか。")
+        self.assertEqual(sentence["grammar_span"], {"start": 8, "end": 9})
+
+    def test_cloze_derived_links_skip_the_grammar_own_words(self):
+        # いる inside います is the grammar, not a word to list on a Build card.
+        te_iru = entry(accepted_forms=["ています"], examples=[], cloze_variants=[
+            {"jp_cloze": "コートを着て＿＿＿。", "english": "I am wearing a coat.",
+             "answer": "います", "nudge": "n"}])
+        [sentence] = build([te_iru])["example_sentences"]
+        self.assertEqual(sentence["japanese"], "コートを着ています。")
+        self.assertEqual(sentence["vocabulary_slugs"], ["kooto", "kiru-wear"])
 
     def test_cloze_variants_still_ship(self):
         self.assertEqual(len(build([entry()])["cloze_variants"]), 2)

@@ -75,6 +75,14 @@ class SentenceRulesTest(unittest.TestCase):
         self.assertEqual(len(errors), 4)
 
 
+class FamilyScopeTest(unittest.TestCase):
+    def test_n4_family_forms_include_n5_points(self):
+        n5 = {g["slug"] for g in pool.context.load_grammar("n5")}
+        n4 = {g["slug"] for g in pool.context.load_grammar("n4")}
+        through = {g["slug"] for g in pool.grammar_through("n4")}
+        self.assertEqual(through, n5 | n4)
+
+
 class PointRulesTest(unittest.TestCase):
     def test_rule4_too_few_sentences(self):
         errors = pool.point_errors(item([GOOD]), ALLOWED, OTHER, VOCAB)

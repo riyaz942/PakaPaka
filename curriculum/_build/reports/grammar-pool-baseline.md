@@ -194,7 +194,7 @@
 - 家に帰って、休みます。 — rule 3: out of range ['休み (休む)']
 - 駅へ行って、電車に乗ります。 — rule 2: words with no word span ['電車']
 - 駅へ行って、電車に乗ります。 — rule 3: out of range ['電車 (電車)', '乗り (乗る)']
-- rule 4: 7 passing sentences, need 8
+- rule 4: 5 passing sentences, need 8
 - rule 7: 0 accepted meanings, need 3
 
 ### te-kudasai
@@ -225,6 +225,7 @@
 - 写真を撮ってもいいですか。 — rule 3: out of range ['撮っ (撮る)']
 - 先に帰ってもいいです。 — rule 2: words with no word span ['先']
 - 先に帰ってもいいです。 — rule 3: out of range ['先 (先)']
+- rule 5: same words as 'もう帰ってもいいですよ。': 'もう帰ってもかまわない。'
 - rule 7: 0 accepted meanings, need 3
 
 ### te-wa-ikenai
@@ -275,6 +276,7 @@
 ### nakutemo-ii
 - お金を払わなくてもいいです。 — rule 3: out of range ['払わ (払う)']
 - 明日は早く起きなくてもいいです。 — rule 2: words with no word span ['早く']
+- rule 5: same words as '心配しなくてもいいです。': '心配しなくてもいいよ。'
 - rule 7: 0 accepted meanings, need 3
 
 ### ta-form
@@ -349,6 +351,7 @@
 ### toki
 - 日本へ行ったとき、写真を撮りました。 — rule 2: words with no word span ['撮り']
 - rule 4: 7 passing sentences, need 8
+- rule 5: same words as '暇なとき、本を読みます。': '暇な時、本を読みます。'
 - rule 7: 0 accepted meanings, need 3
 
 ### dictionary-koto-ga-dekiru
@@ -399,6 +402,7 @@
 - 日本の生活はどうですか。 — rule 2: words with no word span ['生活']
 - 日本の生活はどうですか。 — rule 3: out of range ['生活 (生活)']
 - rule 4: 7 passing sentences, need 8
+- rule 5: same words as 'お茶はどうですか。': 'お茶はいかがですか。'
 - rule 7: 0 accepted meanings, need 3
 
 ### darou
@@ -448,6 +452,7 @@
 - 早く寝たほうがいいです。 — rule 2: words with no word span ['早く']
 - 早く寝たほうがいいよ。 — rule 2: words with no word span ['早く']
 - rule 4: 7 passing sentences, need 8
+- rule 5: same words as '薬を飲んだほうがいい。': '薬を飲んだほうがいいです。'
 - rule 7: 0 accepted meanings, need 3
 
 ### deshou
@@ -524,6 +529,7 @@
 - 映画でも見ましょう。 — rule 2: words with no word span ['見']
 - 散歩でもしませんか。 — rule 2: words with no word span ['散歩', 'し']
 - rule 4: 6 passing sentences, need 8
+- rule 5: same words as 'お茶でも飲みませんか。': 'お茶でも飲む？'
 - rule 7: 0 accepted meanings, need 3
 
 ### nagara
@@ -848,7 +854,7 @@
 - 高くても、買います。 — rule 2: words with no word span ['買い']
 - 何回聞いても、分かりません。 — rule 2: words with no word span ['何', '回', '聞い']
 - 何回聞いても、分からない。 — rule 2: words with no word span ['何', '回']
-- rule 4: 3 passing sentences, need 8
+- rule 4: 2 passing sentences, need 8
 - rule 5: 1 sentence shape(s), need 2 (question/negative/past)
 - rule 7: 0 accepted meanings, need 3
 
@@ -1004,7 +1010,8 @@
 - 先生として、学生を指導します。 — rule 2: words with no word span ['指導', 'し']
 - 先生として、学生を指導します。 — rule 3: out of range ['指導 (指導)']
 - 友達として、彼を助けたいです。 — rule 2: words with no word span ['彼', '助け']
-- rule 4: 6 passing sentences, need 8
+- 先生として学生に説明しました。 — rule 2: words with no word span ['し']
+- rule 4: 5 passing sentences, need 8
 - rule 7: 0 accepted meanings, need 3
 
 ### nitsuite
@@ -1211,8 +1218,8 @@
 ### toka
 - りんごとかバナナとかが好きです。 — rule 2: words with no word span ['りんご', 'バナナ', '好き']
 - りんごとかバナナとかが好きです。 — rule 3: out of range ['りんご (りんご)', 'バナナ (バナナ)']
-- 週末は映画とか買い物＿＿＿したいです。 — rule 2: words with no word span ['し']
-- 寿司とかラーメン＿＿＿、そういう料理が好きです。 — rule 2: words with no word span ['そう', 'いう']
+- 週末は映画とか買い物とかしたいです。 — rule 2: words with no word span ['し']
+- 寿司とかラーメンとか、そういう料理が好きです。 — rule 2: words with no word span ['そう', 'いう']
 - rule 4: 3 passing sentences, need 8
 - rule 7: 0 accepted meanings, need 3
 

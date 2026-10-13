@@ -11,6 +11,7 @@ Offsets follow generate_content/spans.py: Python string indices into the
 """
 
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -18,6 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from generate_content import spans as spans_lib  # noqa: E402
 
 CLOZE_BLANK = "＿＿＿"
+#: A blank is a run of three or more ＿ (some authored variants use four).
+_BLANK_RUN = re.compile("＿{3,}")
 
 #: POS that make a token a word the learner must be given on the Build card.
 #: Wider than level_check.CONTENT_POS on purpose: pronouns (私) and adnominals
@@ -26,6 +29,8 @@ CLOZE_BLANK = "＿＿＿"
 BUILD_CONTENT_POS = frozenset({"名詞", "動詞", "形容詞", "形状詞", "副詞", "代名詞", "連体詞"})
 
 _POLITE_AUX = {"です", "ます"}
+#: Verbs that are polite on their own, with no です/ます after them (待ってください).
+_POLITE_VERBS = {"下さる", "為さる"}
 _NEGATIVE_AUX = {"ない", "ず"}
 _SYMBOL_POS = {"補助記号", "空白"}
 
@@ -63,6 +68,8 @@ def register_of(japanese):
     for i, token in enumerate(tokens):
         if token["pos1"] in BUILD_CONTENT_POS:
             last_content = i
+    if last_content >= 0 and tokens[last_content]["lemma"] in _POLITE_VERBS:
+        return "polite"
     tail = tokens[last_content + 1 :]
     if any(t["pos1"] == "助動詞" and t["lemma"] in _POLITE_AUX for t in tail):
         return "polite"
@@ -86,22 +93,33 @@ def sentence_shape(japanese):
 
 
 def fill_cloze(jp_cloze, answer):
-    if CLOZE_BLANK not in jp_cloze or not answer:
+    """The cloze with every blank filled (とか takes two), or None."""
+    if not _BLANK_RUN.search(jp_cloze) or not answer:
         return None
-    return jp_cloze.replace(CLOZE_BLANK, answer, 1)
+    return _BLANK_RUN.sub(lambda _match: answer, jp_cloze)
 
 
 def cloze_examples(cloze_variants, existing_japanese):
     """Filled cloze variants as example dicts, skipping any sentence already
-    present (in `existing_japanese` or earlier in the list)."""
+    present (in `existing_japanese` or earlier in the list) and conjugation
+    chains (書く → 書いて), which are not sentences. `start` is where the
+    answer sits in the filled sentence (the first blank), so the grammar span
+    never has to be searched for."""
     seen = set(existing_japanese)
     out = []
     for variant in cloze_variants:
+        if "→" in variant["jp_cloze"]:
+            continue
         jp = fill_cloze(variant["jp_cloze"], variant["answer"])
         if jp is None or jp in seen:
             continue
         seen.add(jp)
-        out.append({"jp": jp, "en": variant["english"], "form": variant["answer"]})
+        out.append({
+            "jp": jp,
+            "en": variant["english"],
+            "form": variant["answer"],
+            "start": _BLANK_RUN.search(variant["jp_cloze"]).start(),
+        })
     return out
 
 

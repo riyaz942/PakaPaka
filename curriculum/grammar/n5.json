@@ -669,8 +669,7 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "watashi",
-            "gakusei",
-            "aru"
+            "gakusei"
           ],
           "furigana": "私[わたし]は学[がく]生[せい]ではありません。",
           "word_spans": [
@@ -683,13 +682,6 @@
               "vocabulary_slug": "gakusei",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 6,
-              "end": 11,
-              "surface_form": "ありません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -704,8 +696,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "kare",
-            "sensei",
-            "aru"
+            "sensei"
           ],
           "furigana": "彼[かれ]は先[せん]生[せい]じゃありません。",
           "word_spans": [
@@ -718,13 +709,6 @@
               "vocabulary_slug": "sensei",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 6,
-              "end": 11,
-              "surface_form": "ありません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -5738,7 +5722,7 @@
             "start": 2,
             "end": 3
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "彼も来ます。",
@@ -8007,8 +7991,8 @@
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 3
+            "start": 8,
+            "end": 9
           },
           "register": "polite"
         },
@@ -9081,60 +9065,6 @@
             "end": 7
           },
           "register": "polite"
-        },
-        {
-          "japanese": "書く → 書いて",
-          "english": "to write → writing",
-          "sort_order": 8,
-          "vocabulary_slugs": [
-            "kaku"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kaku",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "kaku",
-              "start": 5,
-              "end": 8,
-              "surface_form": "書いて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 8
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "待つ → 待って",
-          "english": "to wait → waiting",
-          "sort_order": 9,
-          "vocabulary_slugs": [
-            "matsu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "matsu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "matsu",
-              "start": 5,
-              "end": 8,
-              "surface_form": "待って",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 8
-          },
-          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -9252,7 +9182,7 @@
             "start": 6,
             "end": 11
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "ここに座ってください。",
@@ -9281,7 +9211,7 @@
             "start": 5,
             "end": 10
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "名前を書いてください。",
@@ -9310,7 +9240,7 @@
             "start": 5,
             "end": 10
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "もう一度言ってください。",
@@ -9333,7 +9263,7 @@
             "start": 6,
             "end": 11
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "口を開けてください。",
@@ -9362,7 +9292,7 @@
             "start": 4,
             "end": 9
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "ここに名前を書いてください。",
@@ -9397,7 +9327,7 @@
             "start": 8,
             "end": 13
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "水を飲んでください。",
@@ -9426,7 +9356,7 @@
             "start": 4,
             "end": 9
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "明日、うちに来てください。",
@@ -9461,7 +9391,7 @@
             "start": 7,
             "end": 12
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "ここでちょっと待ってください。",
@@ -9496,7 +9426,7 @@
             "start": 9,
             "end": 14
           },
-          "register": "plain"
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -9768,8 +9698,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "asagohan",
-            "taberu",
-            "iru-exist"
+            "taberu"
           ],
           "furigana": "朝[あさ]ご飯[はん]を食[た]べています。",
           "word_spans": [
@@ -9784,13 +9713,6 @@
               "end": 7,
               "surface_form": "食べて",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 7,
-              "end": 10,
-              "surface_form": "います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -9806,8 +9728,7 @@
           "vocabulary_slugs": [
             "ima",
             "ame-v",
-            "furu-rain",
-            "iru-exist"
+            "furu-rain"
           ],
           "furigana": "今[いま]、雨[あめ]が降[ふ]っています。",
           "word_spans": [
@@ -9827,13 +9748,6 @@
               "end": 7,
               "surface_form": "降って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 7,
-              "end": 10,
-              "surface_form": "います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -9848,8 +9762,7 @@
           "sort_order": 9,
           "vocabulary_slugs": [
             "tomodachi",
-            "matsu",
-            "iru-exist"
+            "matsu"
           ],
           "furigana": "友[とも]達[だち]を待[ま]っています。",
           "word_spans": [
@@ -9864,13 +9777,6 @@
               "end": 6,
               "surface_form": "待って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 9,
-              "surface_form": "います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -9906,8 +9812,7 @@
           "sort_order": 11,
           "vocabulary_slugs": [
             "kare",
-            "shiru",
-            "iru-exist"
+            "shiru"
           ],
           "furigana": "彼[かれ]を知[し]っています。",
           "word_spans": [
@@ -9922,13 +9827,6 @@
               "end": 5,
               "surface_form": "知って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 5,
-              "end": 8,
-              "surface_form": "います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -9944,8 +9842,7 @@
           "vocabulary_slugs": [
             "haha",
             "ryouri",
-            "suru",
-            "iru-exist"
+            "suru"
           ],
           "furigana": "母[はは]は料[りょう]理[り]をしている。",
           "word_spans": [
@@ -9965,11 +9862,6 @@
               "end": 7,
               "surface_form": "して",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -10193,8 +10085,7 @@
           "vocabulary_slugs": [
             "koko",
             "gohan",
-            "taberu",
-            "ii"
+            "taberu"
           ],
           "furigana": "ここでご飯[はん]を食[た]べてもいいですか。",
           "word_spans": [
@@ -10214,11 +10105,6 @@
               "end": 9,
               "surface_form": "食べて",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 10,
-              "end": 12
             }
           ],
           "grammar_span": {
@@ -10233,8 +10119,7 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "terebi",
-            "miru-v",
-            "ii"
+            "miru-v"
           ],
           "furigana": "テレビを見[み]てもいいですよ。",
           "word_spans": [
@@ -10249,11 +10134,6 @@
               "end": 6,
               "surface_form": "見て",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -10297,8 +10177,7 @@
           "sort_order": 8,
           "vocabulary_slugs": [
             "mado",
-            "akeru",
-            "ii"
+            "akeru"
           ],
           "furigana": "窓[まど]を開[あ]けてもいいですか。",
           "word_spans": [
@@ -10313,11 +10192,6 @@
               "end": 5,
               "surface_form": "開けて",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 6,
-              "end": 8
             }
           ],
           "grammar_span": {
@@ -10332,8 +10206,7 @@
           "sort_order": 9,
           "vocabulary_slugs": [
             "issho-ni",
-            "iku-v",
-            "ii"
+            "iku-v"
           ],
           "furigana": "一[いっ]緒[しょ]に行[い]ってもいいですか。",
           "word_spans": [
@@ -10348,11 +10221,6 @@
               "end": 6,
               "surface_form": "行って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -10367,8 +10235,7 @@
           "sort_order": 10,
           "vocabulary_slugs": [
             "mou",
-            "kaeru-v",
-            "ii"
+            "kaeru-v"
           ],
           "furigana": "もう帰[かえ]ってもいいですよ。",
           "word_spans": [
@@ -10383,11 +10250,6 @@
               "end": 5,
               "surface_form": "帰って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 6,
-              "end": 8
             }
           ],
           "grammar_span": {
@@ -10402,8 +10264,7 @@
           "sort_order": 11,
           "vocabulary_slugs": [
             "denwa",
-            "tsukau",
-            "ii"
+            "tsukau"
           ],
           "furigana": "電[でん]話[わ]を使[つか]ってもいいですか。",
           "word_spans": [
@@ -10418,11 +10279,6 @@
               "end": 6,
               "surface_form": "使って",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -11777,7 +11633,7 @@
             "start": 9,
             "end": 16
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "心配しないでください。",
@@ -11800,7 +11656,7 @@
             "start": 3,
             "end": 10
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "忘れないでください。",
@@ -11823,7 +11679,7 @@
             "start": 2,
             "end": 9
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "窓を開けないでください。",
@@ -11852,7 +11708,7 @@
             "start": 4,
             "end": 11
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "傘を忘れないでください。",
@@ -11881,7 +11737,7 @@
             "start": 4,
             "end": 11
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "その水を飲まないでください。",
@@ -11916,7 +11772,7 @@
             "start": 6,
             "end": 13
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "今日は学校に行かないでください。",
@@ -11951,7 +11807,7 @@
             "start": 8,
             "end": 15
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "私の部屋に入らないでください。",
@@ -11986,7 +11842,7 @@
             "start": 7,
             "end": 14
           },
-          "register": "plain"
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -12169,8 +12025,7 @@
           "english": "I have to go home.",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "watashi",
-            "naru-become"
+            "watashi"
           ],
           "furigana": "私[わたし]は帰[かえ]らなければなりません。",
           "word_spans": [
@@ -12178,13 +12033,6 @@
               "vocabulary_slug": "watashi",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 8,
-              "end": 13,
-              "surface_form": "なりません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -12281,8 +12129,7 @@
           "english": "I also have to read the book.",
           "sort_order": 9,
           "vocabulary_slugs": [
-            "hon",
-            "naru-become"
+            "hon"
           ],
           "furigana": "本[ほん]も読[よ]まなければならない。",
           "word_spans": [
@@ -12290,13 +12137,6 @@
               "vocabulary_slug": "hon",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 8,
-              "end": 12,
-              "surface_form": "ならない",
-              "inflection": "nai"
             }
           ],
           "grammar_span": {
@@ -12310,8 +12150,7 @@
           "english": "I have to go to school.",
           "sort_order": 10,
           "vocabulary_slugs": [
-            "gakkou-v",
-            "naru-become"
+            "gakkou-v"
           ],
           "furigana": "学[がっ]校[こう]に行[い]かなければならない。",
           "word_spans": [
@@ -12319,13 +12158,6 @@
               "vocabulary_slug": "gakkou-v",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 9,
-              "end": 13,
-              "surface_form": "ならない",
-              "inflection": "nai"
             }
           ],
           "grammar_span": {
@@ -12360,8 +12192,7 @@
           "english": "I have to wake up early tomorrow.",
           "sort_order": 12,
           "vocabulary_slugs": [
-            "ashita",
-            "naru-become"
+            "ashita"
           ],
           "furigana": "明日[あした]は早[はや]く起[お]きなければならない。",
           "word_spans": [
@@ -12369,13 +12200,6 @@
               "vocabulary_slug": "ashita",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 11,
-              "end": 15,
-              "surface_form": "ならない",
-              "inflection": "nai"
             }
           ],
           "grammar_span": {
@@ -12633,8 +12457,7 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "yasai",
-            "taberu",
-            "ii"
+            "taberu"
           ],
           "furigana": "野[や]菜[さい]を食[た]べなくてもいいです。",
           "word_spans": [
@@ -12649,11 +12472,6 @@
               "end": 8,
               "surface_form": "食べなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 9,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -12669,8 +12487,7 @@
           "vocabulary_slugs": [
             "atarashii-adj",
             "hon",
-            "kau-v",
-            "ii"
+            "kau-v"
           ],
           "furigana": "新[あたら]しい本[ほん]を買[か]わなくてもいいです。",
           "word_spans": [
@@ -12690,11 +12507,6 @@
               "end": 10,
               "surface_form": "買わなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 11,
-              "end": 13
             }
           ],
           "grammar_span": {
@@ -12710,8 +12522,7 @@
           "vocabulary_slugs": [
             "ashita",
             "gakkou-v",
-            "iku-v",
-            "ii"
+            "iku-v"
           ],
           "furigana": "明日[あした]は学[がっ]校[こう]に行[い]かなくてもいいです。",
           "word_spans": [
@@ -12731,11 +12542,6 @@
               "end": 11,
               "surface_form": "行かなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 12,
-              "end": 14
             }
           ],
           "grammar_span": {
@@ -12751,8 +12557,7 @@
           "vocabulary_slugs": [
             "sono",
             "mizu",
-            "nomu-v",
-            "ii"
+            "nomu-v"
           ],
           "furigana": "その水[みず]を飲[の]まなくてもいいです。",
           "word_spans": [
@@ -12772,11 +12577,6 @@
               "end": 9,
               "surface_form": "飲まなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 10,
-              "end": 12
             }
           ],
           "grammar_span": {
@@ -12792,8 +12592,7 @@
           "vocabulary_slugs": [
             "kono",
             "shinbun",
-            "yomu",
-            "ii"
+            "yomu"
           ],
           "furigana": "この新[しん]聞[ぶん]を読[よ]まなくてもいいですか。",
           "word_spans": [
@@ -12813,11 +12612,6 @@
               "end": 10,
               "surface_form": "読まなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 11,
-              "end": 13
             }
           ],
           "grammar_span": {
@@ -12832,8 +12626,7 @@
           "sort_order": 10,
           "vocabulary_slugs": [
             "ashita",
-            "okiru",
-            "ii"
+            "okiru"
           ],
           "furigana": "明日[あした]は早[はや]く起[お]きなくてもいいです。",
           "word_spans": [
@@ -12848,11 +12641,6 @@
               "end": 10,
               "surface_form": "起きなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 11,
-              "end": 13
             }
           ],
           "grammar_span": {
@@ -12867,8 +12655,7 @@
           "sort_order": 11,
           "vocabulary_slugs": [
             "sonna",
-            "isogu",
-            "ii"
+            "isogu"
           ],
           "furigana": "そんなに急[いそ]がなくてもいいよ。",
           "word_spans": [
@@ -12883,11 +12670,6 @@
               "end": 9,
               "surface_form": "急がなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 10,
-              "end": 12
             }
           ],
           "grammar_span": {
@@ -12901,8 +12683,7 @@
           "english": "You don't have to worry.",
           "sort_order": 12,
           "vocabulary_slugs": [
-            "shinpai-suru",
-            "ii"
+            "shinpai-suru"
           ],
           "furigana": "心[しん]配[ぱい]しなくてもいいよ。",
           "word_spans": [
@@ -12912,11 +12693,6 @@
               "end": 6,
               "surface_form": "心配しなくて",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -13508,8 +13284,7 @@
           "vocabulary_slugs": [
             "watashi",
             "nihon",
-            "iku-v",
-            "aru"
+            "iku-v"
           ],
           "furigana": "私[わたし]は日本[にほん]に行[い]ったことがあります。",
           "word_spans": [
@@ -13529,13 +13304,6 @@
               "end": 8,
               "surface_form": "行った",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 11,
-              "end": 15,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13552,8 +13320,7 @@
             "watashi",
             "ano",
             "eiga",
-            "miru-v",
-            "aru"
+            "miru-v"
           ],
           "furigana": "私[わたし]はあの映[えい]画[が]を見[み]たことがあります。",
           "word_spans": [
@@ -13578,13 +13345,6 @@
               "end": 9,
               "surface_form": "見た",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 12,
-              "end": 16,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13600,8 +13360,7 @@
           "vocabulary_slugs": [
             "nihon",
             "ryouri",
-            "taberu",
-            "aru"
+            "taberu"
           ],
           "furigana": "日本[にほん]の料[りょう]理[り]を食[た]べたことがありますか。",
           "word_spans": [
@@ -13621,13 +13380,6 @@
               "end": 9,
               "surface_form": "食べた",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 12,
-              "end": 16,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13644,8 +13396,7 @@
             "watashi",
             "kono",
             "sakana",
-            "taberu",
-            "aru"
+            "taberu"
           ],
           "furigana": "私[わたし]はこの魚[さかな]を食[た]べたことがあります。",
           "word_spans": [
@@ -13670,13 +13421,6 @@
               "end": 9,
               "surface_form": "食べた",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 12,
-              "end": 16,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13693,8 +13437,7 @@
             "kare",
             "kono",
             "ryouri",
-            "taberu",
-            "aru"
+            "taberu"
           ],
           "furigana": "彼[かれ]はこの料[りょう]理[り]を食[た]べたことがあります。",
           "word_spans": [
@@ -13719,13 +13462,6 @@
               "end": 10,
               "surface_form": "食べた",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 13,
-              "end": 17,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13741,8 +13477,7 @@
           "vocabulary_slugs": [
             "kare",
             "nihon",
-            "kuru-v",
-            "aru"
+            "kuru-v"
           ],
           "furigana": "彼[かれ]は日本[にほん]に来[き]たことがあります。",
           "word_spans": [
@@ -13762,13 +13497,6 @@
               "end": 7,
               "surface_form": "来た",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 10,
-              "end": 14,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -13784,8 +13512,7 @@
           "vocabulary_slugs": [
             "kono",
             "eiga",
-            "miru-v",
-            "aru"
+            "miru-v"
           ],
           "furigana": "この映[えい]画[が]を見[み]たことがあります。",
           "word_spans": [
@@ -13805,13 +13532,6 @@
               "end": 7,
               "surface_form": "見た",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 10,
-              "end": 14,
-              "surface_form": "あります",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -14060,8 +13780,8 @@
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 9
+            "start": 14,
+            "end": 16
           },
           "register": "polite"
         },
@@ -14165,8 +13885,8 @@
             }
           ],
           "grammar_span": {
-            "start": 6,
-            "end": 8
+            "start": 14,
+            "end": 16
           },
           "register": "polite"
         }
@@ -14875,8 +14595,7 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "eigakan",
-            "eiga",
-            "iku-v"
+            "eiga"
           ],
           "furigana": "映[えい]画[が]館[かん]へ映[えい]画[が]を見[み]に行[い]く。",
           "word_spans": [
@@ -14889,11 +14608,6 @@
               "vocabulary_slug": "eiga",
               "start": 4,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 9,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -14908,8 +14622,7 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "tomodachi",
-            "uchi",
-            "kuru-v"
+            "uchi"
           ],
           "furigana": "友[とも]達[だち]がうちへ遊[あそ]びに来[く]る。",
           "word_spans": [
@@ -14922,11 +14635,6 @@
               "vocabulary_slug": "uchi",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 9,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -14942,8 +14650,7 @@
           "vocabulary_slugs": [
             "imouto",
             "maiban",
-            "bangohan",
-            "kaeru-v"
+            "bangohan"
           ],
           "furigana": "妹[いもうと]は毎[まい]晩[ばん]、晩[ばん]ご飯[はん]を食[た]べに帰[かえ]る。",
           "word_spans": [
@@ -14961,11 +14668,6 @@
               "vocabulary_slug": "bangohan",
               "start": 5,
               "end": 8
-            },
-            {
-              "vocabulary_slug": "kaeru-v",
-              "start": 12,
-              "end": 14
             }
           ],
           "grammar_span": {
@@ -14981,8 +14683,7 @@
           "vocabulary_slugs": [
             "mainichi",
             "gakkou-v",
-            "benkyou",
-            "iku-v"
+            "benkyou"
           ],
           "furigana": "毎[まい]日[にち]、学[がっ]校[こう]へ勉[べん]強[きょう]しに行[い]く。",
           "word_spans": [
@@ -15000,11 +14701,6 @@
               "vocabulary_slug": "benkyou",
               "start": 6,
               "end": 8
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 10,
-              "end": 12
             }
           ],
           "grammar_span": {
@@ -15020,8 +14716,7 @@
           "vocabulary_slugs": [
             "resutoran",
             "oishii",
-            "gohan",
-            "iku-v"
+            "gohan"
           ],
           "furigana": "レストランへおいしいご飯[はん]を食[た]べに行[い]く。",
           "word_spans": [
@@ -15039,11 +14734,6 @@
               "vocabulary_slug": "gohan",
               "start": 10,
               "end": 12
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 16,
-              "end": 18
             }
           ],
           "grammar_span": {
@@ -15228,7 +14918,6 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "taberu",
-            "mae",
             "te-v",
             "arau"
           ],
@@ -15238,11 +14927,6 @@
               "vocabulary_slug": "taberu",
               "start": 0,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "mae",
-              "start": 3,
-              "end": 4
             },
             {
               "vocabulary_slug": "te-v",
@@ -15267,7 +14951,6 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "bangohan",
-            "mae",
             "terebi",
             "miru-v"
           ],
@@ -15277,11 +14960,6 @@
               "vocabulary_slug": "bangohan",
               "start": 0,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "mae",
-              "start": 4,
-              "end": 5
             },
             {
               "vocabulary_slug": "terebi",
@@ -15306,7 +14984,6 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "neru",
-            "mae",
             "hon",
             "yomu"
           ],
@@ -15316,11 +14993,6 @@
               "vocabulary_slug": "neru",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "mae",
-              "start": 2,
-              "end": 3
             },
             {
               "vocabulary_slug": "hon",
@@ -15346,16 +15018,10 @@
           "english": "I came three hours ago.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "mae",
             "kuru-v"
           ],
           "furigana": "三[さん]時[じ]間[かん]前[まえ]に来[き]た。",
           "word_spans": [
-            {
-              "vocabulary_slug": "mae",
-              "start": 3,
-              "end": 4
-            },
             {
               "vocabulary_slug": "kuru-v",
               "start": 5,
@@ -15377,7 +15043,6 @@
           "vocabulary_slugs": [
             "tomodachi",
             "kuru-v",
-            "mae",
             "heya",
             "deru-v"
           ],
@@ -15392,11 +15057,6 @@
               "vocabulary_slug": "kuru-v",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "mae",
-              "start": 5,
-              "end": 6
             },
             {
               "vocabulary_slug": "heya",
@@ -15969,7 +15629,6 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "kodomo-v",
-            "ji-oclock",
             "yasai",
             "kirai"
           ],
@@ -15979,11 +15638,6 @@
               "vocabulary_slug": "kodomo-v",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "ji-oclock",
-              "start": 3,
-              "end": 4
             },
             {
               "vocabulary_slug": "yasai",
@@ -16008,7 +15662,6 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "hima",
-            "ji-oclock",
             "hon",
             "yomu"
           ],
@@ -16018,11 +15671,6 @@
               "vocabulary_slug": "hima",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "ji-oclock",
-              "start": 2,
-              "end": 3
             },
             {
               "vocabulary_slug": "hon",
@@ -16049,7 +15697,6 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "atsui-hot",
-            "ji-oclock",
             "tsumetai",
             "mizu",
             "nomu-v"
@@ -16060,11 +15707,6 @@
               "vocabulary_slug": "atsui-hot",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "ji-oclock",
-              "start": 2,
-              "end": 3
             },
             {
               "vocabulary_slug": "tsumetai",
@@ -16097,7 +15739,6 @@
           "vocabulary_slugs": [
             "ie",
             "kaeru-v",
-            "ji-oclock",
             "pan",
             "kau-v"
           ],
@@ -16112,11 +15753,6 @@
               "vocabulary_slug": "kaeru-v",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "ji-oclock",
-              "start": 4,
-              "end": 5
             },
             {
               "vocabulary_slug": "pan",
@@ -16144,7 +15780,6 @@
           "vocabulary_slugs": [
             "ie",
             "kaeru-v",
-            "ji-oclock",
             "terebi",
             "miru-v"
           ],
@@ -16161,11 +15796,6 @@
               "end": 5,
               "surface_form": "帰った",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "ji-oclock",
-              "start": 5,
-              "end": 6
             },
             {
               "vocabulary_slug": "terebi",
@@ -16349,8 +15979,7 @@
           "vocabulary_slugs": [
             "kanojo",
             "nihongo",
-            "hanasu-v",
-            "dekiru"
+            "hanasu-v"
           ],
           "furigana": "彼[かの]女[じょ]は日本[にほん]語[ご]を話[はな]すことができます。",
           "word_spans": [
@@ -16368,13 +15997,6 @@
               "vocabulary_slug": "hanasu-v",
               "start": 7,
               "end": 9
-            },
-            {
-              "vocabulary_slug": "dekiru",
-              "start": 12,
-              "end": 16,
-              "surface_form": "できます",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -16390,8 +16012,7 @@
           "vocabulary_slugs": [
             "ano",
             "tori",
-            "tobu",
-            "dekiru"
+            "tobu"
           ],
           "furigana": "あの鳥[とり]は高[たか]く飛[と]ぶことができます。",
           "word_spans": [
@@ -16409,13 +16030,6 @@
               "vocabulary_slug": "tobu",
               "start": 6,
               "end": 8
-            },
-            {
-              "vocabulary_slug": "dekiru",
-              "start": 11,
-              "end": 15,
-              "surface_form": "できます",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -16431,8 +16045,7 @@
           "vocabulary_slugs": [
             "koko",
             "hon",
-            "yomu",
-            "dekiru"
+            "yomu"
           ],
           "furigana": "ここで本[ほん]を読[よ]むことができますか。",
           "word_spans": [
@@ -16450,13 +16063,6 @@
               "vocabulary_slug": "yomu",
               "start": 5,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "dekiru",
-              "start": 10,
-              "end": 14,
-              "surface_form": "できます",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -16472,8 +16078,7 @@
           "vocabulary_slugs": [
             "boku",
             "kanji-word",
-            "kaku",
-            "dekiru"
+            "kaku"
           ],
           "furigana": "僕[ぼく]は漢[かん]字[じ]を書[か]くことができる。",
           "word_spans": [
@@ -16491,11 +16096,6 @@
               "vocabulary_slug": "kaku",
               "start": 5,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "dekiru",
-              "start": 10,
-              "end": 13
             }
           ],
           "grammar_span": {
@@ -16510,8 +16110,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "koko",
-            "neru",
-            "dekiru"
+            "neru"
           ],
           "furigana": "ここで寝[ね]ることができる。",
           "word_spans": [
@@ -16524,11 +16123,6 @@
               "vocabulary_slug": "neru",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "dekiru",
-              "start": 8,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -17114,8 +16708,7 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "watashi",
-            "hima",
-            "aru"
+            "hima"
           ],
           "furigana": "私[わたし]は暇[ひま]ではありません。",
           "word_spans": [
@@ -17128,13 +16721,6 @@
               "vocabulary_slug": "hima",
               "start": 2,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 5,
-              "end": 10,
-              "surface_form": "ありません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -17184,8 +16770,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "inu",
-            "suki",
-            "aru"
+            "suki"
           ],
           "furigana": "犬[いぬ]が好[す]きではありません。",
           "word_spans": [
@@ -17198,13 +16783,6 @@
               "vocabulary_slug": "suki",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 6,
-              "end": 11,
-              "surface_form": "ありません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -17336,7 +16914,7 @@
             "start": 2,
             "end": 3
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "安く買いました。",
@@ -17607,7 +17185,7 @@
             "start": 2,
             "end": 3
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "きれいに書きます。",
@@ -18319,7 +17897,6 @@
           "vocabulary_slugs": [
             "yama-v",
             "nihon",
-            "ichiban",
             "takai-adj"
           ],
           "furigana": "富[ふ]士[じ]山[やま]は日本[にほん]で一[いち]番[ばん]高[たか]い山[やま]です。",
@@ -18333,11 +17910,6 @@
               "vocabulary_slug": "nihon",
               "start": 4,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "ichiban",
-              "start": 7,
-              "end": 9
             },
             {
               "vocabulary_slug": "takai-adj",
@@ -18363,7 +17935,6 @@
           "vocabulary_slugs": [
             "kazoku",
             "dare",
-            "ichiban",
             "isogashii"
           ],
           "furigana": "家[か]族[ぞく]で誰[だれ]が一[いち]番[ばん]忙[いそが]しいですか。",
@@ -18377,11 +17948,6 @@
               "vocabulary_slug": "dare",
               "start": 3,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "ichiban",
-              "start": 5,
-              "end": 7
             },
             {
               "vocabulary_slug": "isogashii",
@@ -18402,7 +17968,6 @@
           "vocabulary_slugs": [
             "ima",
             "kamera",
-            "ichiban",
             "hoshii"
           ],
           "furigana": "今[いま]、カメラが一[いち]番[ばん]欲[ほ]しいです。",
@@ -18416,11 +17981,6 @@
               "vocabulary_slug": "kamera",
               "start": 2,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "ichiban",
-              "start": 6,
-              "end": 8
             },
             {
               "vocabulary_slug": "hoshii",
@@ -18474,7 +18034,6 @@
           "vocabulary_slugs": [
             "watashi",
             "niku",
-            "ichiban",
             "suki"
           ],
           "furigana": "私[わたし]は肉[にく]が一[いち]番[ばん]好[す]きです。",
@@ -18488,11 +18047,6 @@
               "vocabulary_slug": "niku",
               "start": 2,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "ichiban",
-              "start": 4,
-              "end": 6
             },
             {
               "vocabulary_slug": "suki",
@@ -18661,8 +18215,7 @@
           "english": "How about tomorrow?",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "ashita",
-            "dou"
+            "ashita"
           ],
           "furigana": "明日[あした]はどうですか。",
           "word_spans": [
@@ -18670,11 +18223,6 @@
               "vocabulary_slug": "ashita",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "dou",
-              "start": 3,
-              "end": 5
             }
           ],
           "grammar_span": {
@@ -18689,8 +18237,7 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "atarashii-adj",
-            "shigoto",
-            "dou"
+            "shigoto"
           ],
           "furigana": "新[あたら]しい仕[し]事[ごと]はどうですか。",
           "word_spans": [
@@ -18703,11 +18250,6 @@
               "vocabulary_slug": "shigoto",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "dou",
-              "start": 6,
-              "end": 8
             }
           ],
           "grammar_span": {
@@ -18722,8 +18264,7 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "kono",
-            "mise",
-            "dou"
+            "mise"
           ],
           "furigana": "この店[みせ]はどうですか。",
           "word_spans": [
@@ -18736,11 +18277,6 @@
               "vocabulary_slug": "mise",
               "start": 2,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "dou",
-              "start": 4,
-              "end": 6
             }
           ],
           "grammar_span": {
@@ -18754,8 +18290,7 @@
           "english": "How about some tea?",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "ocha",
-            "ikaga"
+            "ocha"
           ],
           "furigana": "お茶[ちゃ]はいかがですか。",
           "word_spans": [
@@ -18763,11 +18298,6 @@
               "vocabulary_slug": "ocha",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "ikaga",
-              "start": 3,
-              "end": 6
             }
           ],
           "grammar_span": {
@@ -18782,8 +18312,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "doyoubi",
-            "yoru",
-            "dou"
+            "yoru"
           ],
           "furigana": "土[ど]曜[よう]日[び]の夜[よる]はどうですか。",
           "word_spans": [
@@ -18796,11 +18325,6 @@
               "vocabulary_slug": "yoru",
               "start": 4,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "dou",
-              "start": 6,
-              "end": 8
             }
           ],
           "grammar_span": {
@@ -19828,8 +19352,7 @@
           "vocabulary_slugs": [
             "ano",
             "eiga",
-            "omoshiroi",
-            "omou"
+            "omoshiroi"
           ],
           "furigana": "あの映[えい]画[が]は面[おも]白[しろ]いと思[おも]います。",
           "word_spans": [
@@ -19847,13 +19370,6 @@
               "vocabulary_slug": "omoshiroi",
               "start": 5,
               "end": 8
-            },
-            {
-              "vocabulary_slug": "omou",
-              "start": 9,
-              "end": 13,
-              "surface_form": "思います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19869,8 +19385,7 @@
           "vocabulary_slugs": [
             "kare",
             "kyou",
-            "kuru-v",
-            "omou"
+            "kuru-v"
           ],
           "furigana": "彼[かれ]は今日[きょう]来[こ]ないと思[おも]います。",
           "word_spans": [
@@ -19890,13 +19405,6 @@
               "end": 7,
               "surface_form": "来ない",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "omou",
-              "start": 8,
-              "end": 12,
-              "surface_form": "思います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19912,8 +19420,7 @@
           "vocabulary_slugs": [
             "kono",
             "mise",
-            "shizuka",
-            "omou"
+            "shizuka"
           ],
           "furigana": "この店[みせ]は静[しず]かだと思[おも]います。",
           "word_spans": [
@@ -19931,13 +19438,6 @@
               "vocabulary_slug": "shizuka",
               "start": 4,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "omou",
-              "start": 8,
-              "end": 12,
-              "surface_form": "思います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19952,8 +19452,7 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "ashita",
-            "ame-v",
-            "omou"
+            "ame-v"
           ],
           "furigana": "明日[あした]は雨[あめ]だと思[おも]います。",
           "word_spans": [
@@ -19966,13 +19465,6 @@
               "vocabulary_slug": "ame-v",
               "start": 3,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "omou",
-              "start": 6,
-              "end": 10,
-              "surface_form": "思います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19987,8 +19479,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "kore",
-            "ii",
-            "omou"
+            "ii"
           ],
           "furigana": "これはいいと思[おも]いますか。",
           "word_spans": [
@@ -20001,13 +19492,6 @@
               "vocabulary_slug": "ii",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "omou",
-              "start": 6,
-              "end": 10,
-              "surface_form": "思います",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -20980,8 +20464,7 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "byouin",
-            "iku-v",
-            "ii"
+            "iku-v"
           ],
           "furigana": "病[びょう]院[いん]に行[い]ったほうがいいですよ。",
           "word_spans": [
@@ -20996,11 +20479,6 @@
               "end": 6,
               "surface_form": "行った",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 9,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -21015,8 +20493,7 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "kusuri",
-            "nomu-v",
-            "ii"
+            "nomu-v"
           ],
           "furigana": "薬[くすり]を飲[の]んだほうがいいです。",
           "word_spans": [
@@ -21031,11 +20508,6 @@
               "end": 5,
               "surface_form": "飲んだ",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 8,
-              "end": 10
             }
           ],
           "grammar_span": {
@@ -21051,8 +20523,7 @@
           "vocabulary_slugs": [
             "sono",
             "osake",
-            "nomu-v",
-            "ii"
+            "nomu-v"
           ],
           "furigana": "そのお酒[さけ]を飲[の]まないほうがいいです。",
           "word_spans": [
@@ -21072,11 +20543,6 @@
               "end": 9,
               "surface_form": "飲まない",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 12,
-              "end": 14
             }
           ],
           "grammar_span": {
@@ -21091,8 +20557,7 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "kyou",
-            "oyogu",
-            "ii"
+            "oyogu"
           ],
           "furigana": "今日[きょう]は泳[およ]がないほうがいいですよ。",
           "word_spans": [
@@ -21107,11 +20572,6 @@
               "end": 7,
               "surface_form": "泳がない",
               "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 10,
-              "end": 12
             }
           ],
           "grammar_span": {
@@ -21125,8 +20585,7 @@
           "english": "You'd better go to sleep early.",
           "sort_order": 7,
           "vocabulary_slugs": [
-            "neru",
-            "ii"
+            "neru"
           ],
           "furigana": "早[はや]く寝[ね]たほうがいいよ。",
           "word_spans": [
@@ -21136,11 +20595,6 @@
               "end": 4,
               "surface_form": "寝た",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 7,
-              "end": 9
             }
           ],
           "grammar_span": {
@@ -21155,8 +20609,7 @@
           "sort_order": 8,
           "vocabulary_slugs": [
             "kasa",
-            "motsu",
-            "ii"
+            "motsu"
           ],
           "furigana": "傘[かさ]を持[も]ったほうがいいですよ。",
           "word_spans": [
@@ -21171,11 +20624,6 @@
               "end": 5,
               "surface_form": "持った",
               "inflection": "ta"
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 8,
-              "end": 10
             }
           ],
           "grammar_span": {
@@ -21920,8 +21368,7 @@
           "vocabulary_slugs": [
             "kare",
             "mada",
-            "kuru-v",
-            "iru-exist"
+            "kuru-v"
           ],
           "furigana": "彼[かれ]はまだ来[き]ていません。",
           "word_spans": [
@@ -21941,13 +21388,6 @@
               "end": 6,
               "surface_form": "来て",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 10,
-              "surface_form": "いません",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -21963,8 +21403,7 @@
           "vocabulary_slugs": [
             "tomodachi",
             "mada",
-            "okiru",
-            "iru-exist"
+            "okiru"
           ],
           "furigana": "友[とも]達[だち]はまだ起[お]きていない。",
           "word_spans": [
@@ -21984,13 +21423,6 @@
               "end": 8,
               "surface_form": "起きて",
               "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 8,
-              "end": 11,
-              "surface_form": "いない",
-              "inflection": "nai"
             }
           ],
           "grammar_span": {
@@ -22165,17 +21597,11 @@
           "english": "I already bought the ticket.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "mou",
             "kippu",
             "kau-v"
           ],
           "furigana": "もう切[きっ]符[ぷ]を買[か]いました。",
           "word_spans": [
-            {
-              "vocabulary_slug": "mou",
-              "start": 0,
-              "end": 2
-            },
             {
               "vocabulary_slug": "kippu",
               "start": 2,
@@ -22200,17 +21626,11 @@
           "english": "The movie has already ended.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "mou",
             "eiga",
             "owari"
           ],
           "furigana": "もう映[えい]画[が]が終[お]わりました。",
           "word_spans": [
-            {
-              "vocabulary_slug": "mou",
-              "start": 0,
-              "end": 2
-            },
             {
               "vocabulary_slug": "eiga",
               "start": 2,
@@ -22234,7 +21654,6 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "kare",
-            "mou",
             "kaeru-v"
           ],
           "furigana": "彼[かれ]はもう帰[かえ]りました。",
@@ -22243,11 +21662,6 @@
               "vocabulary_slug": "kare",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "mou",
-              "start": 2,
-              "end": 4
             },
             {
               "vocabulary_slug": "kaeru-v",
@@ -22269,7 +21683,6 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "shukudai",
-            "mou",
             "suru"
           ],
           "furigana": "宿[しゅく]題[だい]はもうしましたか。",
@@ -22278,11 +21691,6 @@
               "vocabulary_slug": "shukudai",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "mou",
-              "start": 3,
-              "end": 5
             },
             {
               "vocabulary_slug": "suru",
@@ -22304,7 +21712,6 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "kusuri",
-            "mou",
             "nomu-v"
           ],
           "furigana": "薬[くすり]はもう飲[の]みましたか。",
@@ -22313,11 +21720,6 @@
               "vocabulary_slug": "kusuri",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "mou",
-              "start": 2,
-              "end": 4
             },
             {
               "vocabulary_slug": "nomu-v",
@@ -23182,7 +22584,7 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
           "japanese": "昼ごろ食べます。",
@@ -23557,7 +22959,6 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "kanji-word",
-            "zenzen",
             "wakaru"
           ],
           "furigana": "漢[かん]字[じ]が全[ぜん]然[ぜん]分[わ]かりません。",
@@ -23566,11 +22967,6 @@
               "vocabulary_slug": "kanji-word",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 3,
-              "end": 5
             },
             {
               "vocabulary_slug": "wakaru",
@@ -23592,7 +22988,6 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "kyou",
-            "zenzen",
             "isogashii"
           ],
           "furigana": "今日[きょう]は全[ぜん]然[ぜん]忙[いそが]しくないです。",
@@ -23601,11 +22996,6 @@
               "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 3,
-              "end": 5
             },
             {
               "vocabulary_slug": "isogashii",
@@ -23628,7 +23018,6 @@
           "vocabulary_slugs": [
             "ano",
             "eiga",
-            "zenzen",
             "omoshiroi"
           ],
           "furigana": "あの映[えい]画[が]は全[ぜん]然[ぜん]面白[おもしろ]くなかったです。",
@@ -23642,11 +23031,6 @@
               "vocabulary_slug": "eiga",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 5,
-              "end": 7
             },
             {
               "vocabulary_slug": "omoshiroi",
@@ -23667,8 +23051,7 @@
           "english": "I have absolutely no money.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "okane",
-            "zenzen"
+            "okane"
           ],
           "furigana": "お金[かね]が全[ぜん]然[ぜん]ないです。",
           "word_spans": [
@@ -23676,11 +23059,6 @@
               "vocabulary_slug": "okane",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 3,
-              "end": 5
             }
           ],
           "grammar_span": {
@@ -23696,7 +23074,6 @@
           "vocabulary_slugs": [
             "watashi",
             "yasai",
-            "zenzen",
             "taberu"
           ],
           "furigana": "私[わたし]は野[や]菜[さい]を全[ぜん]然[ぜん]食[た]べません。",
@@ -23710,11 +23087,6 @@
               "vocabulary_slug": "yasai",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "zenzen",
-              "start": 5,
-              "end": 7
             },
             {
               "vocabulary_slug": "taberu",
@@ -23903,7 +23275,6 @@
           "vocabulary_slugs": [
             "sono",
             "eiga",
-            "amari",
             "omoshiroi"
           ],
           "furigana": "その映[えい]画[が]はあまり面白[おもしろ]くないです。",
@@ -23917,11 +23288,6 @@
               "vocabulary_slug": "eiga",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "amari",
-              "start": 5,
-              "end": 8
             },
             {
               "vocabulary_slug": "omoshiroi",
@@ -23943,7 +23309,6 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "kyou",
-            "amari",
             "samui"
           ],
           "furigana": "今日[きょう]はあまり寒[さむ]くないです。",
@@ -23952,11 +23317,6 @@
               "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "amari",
-              "start": 3,
-              "end": 6
             },
             {
               "vocabulary_slug": "samui",
@@ -23978,7 +23338,6 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "watashi",
-            "amari",
             "niku",
             "taberu"
           ],
@@ -23988,11 +23347,6 @@
               "vocabulary_slug": "watashi",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "amari",
-              "start": 2,
-              "end": 5
             },
             {
               "vocabulary_slug": "niku",
@@ -24046,7 +23400,6 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "nihongo",
-            "amari",
             "muzukashii"
           ],
           "furigana": "日本[にほん]語[ご]はあまり難[むずか]しくないです。",
@@ -24055,11 +23408,6 @@
               "vocabulary_slug": "nihongo",
               "start": 0,
               "end": 3
-            },
-            {
-              "vocabulary_slug": "amari",
-              "start": 4,
-              "end": 7
             },
             {
               "vocabulary_slug": "muzukashii",
@@ -24223,7 +23571,6 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "ocha",
-            "demo",
             "dou"
           ],
           "furigana": "お茶[ちゃ]でもどうですか。",
@@ -24232,11 +23579,6 @@
               "vocabulary_slug": "ocha",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "demo",
-              "start": 2,
-              "end": 4
             },
             {
               "vocabulary_slug": "dou",
@@ -24256,7 +23598,6 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "koohii",
-            "demo",
             "nomu-v"
           ],
           "furigana": "コーヒーでも飲[の]みませんか。",
@@ -24265,11 +23606,6 @@
               "vocabulary_slug": "koohii",
               "start": 0,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "demo",
-              "start": 4,
-              "end": 6
             },
             {
               "vocabulary_slug": "nomu-v",
@@ -24292,7 +23628,6 @@
           "vocabulary_slugs": [
             "shuumatsu",
             "eiga",
-            "demo",
             "miru-v"
           ],
           "furigana": "週[しゅう]末[まつ]、映[えい]画[が]でも見[み]ませんか。",
@@ -24306,11 +23641,6 @@
               "vocabulary_slug": "eiga",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "demo",
-              "start": 5,
-              "end": 7
             },
             {
               "vocabulary_slug": "miru-v",
@@ -24332,7 +23662,6 @@
           "sort_order": 6,
           "vocabulary_slugs": [
             "kouen",
-            "demo",
             "aruku"
           ],
           "furigana": "公[こう]園[えん]でも歩[ある]きませんか。",
@@ -24341,11 +23670,6 @@
               "vocabulary_slug": "kouen",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "demo",
-              "start": 2,
-              "end": 4
             },
             {
               "vocabulary_slug": "aruku",
@@ -24367,7 +23691,6 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "ocha",
-            "demo",
             "nomu-v"
           ],
           "furigana": "お茶[ちゃ]でも飲[の]む？",
@@ -24376,11 +23699,6 @@
               "vocabulary_slug": "ocha",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "demo",
-              "start": 2,
-              "end": 4
             },
             {
               "vocabulary_slug": "nomu-v",
@@ -25519,8 +24837,7 @@
           "english": "Summer turns hot.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "natsu",
-            "naru-become"
+            "natsu"
           ],
           "furigana": "夏[なつ]は暑[あつ]くなる。",
           "word_spans": [
@@ -25528,11 +24845,6 @@
               "vocabulary_slug": "natsu",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 4,
-              "end": 6
             }
           ],
           "grammar_span": {
@@ -25547,8 +24859,7 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "musume",
-            "isha",
-            "naru-become"
+            "isha"
           ],
           "furigana": "娘[むすめ]は医[い]者[しゃ]になる。",
           "word_spans": [
@@ -25561,11 +24872,6 @@
               "vocabulary_slug": "isha",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 5,
-              "end": 7
             }
           ],
           "grammar_span": {
@@ -25580,8 +24886,7 @@
           "sort_order": 5,
           "vocabulary_slugs": [
             "machi-v",
-            "shizuka",
-            "naru-become"
+            "shizuka"
           ],
           "furigana": "町[まち]は静[しず]かになりました。",
           "word_spans": [
@@ -25594,13 +24899,6 @@
               "vocabulary_slug": "shizuka",
               "start": 2,
               "end": 4
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 5,
-              "end": 10,
-              "surface_form": "なりました",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -25614,8 +24912,7 @@
           "english": "The sky turned dark.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "sora",
-            "naru-become"
+            "sora"
           ],
           "furigana": "空[そら]が暗[くら]くなりました。",
           "word_spans": [
@@ -25623,13 +24920,6 @@
               "vocabulary_slug": "sora",
               "start": 0,
               "end": 1
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 4,
-              "end": 9,
-              "surface_form": "なりました",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -25644,8 +24934,7 @@
           "sort_order": 7,
           "vocabulary_slugs": [
             "benkyou",
-            "suki",
-            "naru-become"
+            "suki"
           ],
           "furigana": "勉[べん]強[きょう]が好[す]きになりました。",
           "word_spans": [
@@ -25658,13 +24947,6 @@
               "vocabulary_slug": "suki",
               "start": 3,
               "end": 5
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 6,
-              "end": 11,
-              "surface_form": "なりました",
-              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -25865,8 +25147,7 @@
           "vocabulary_slugs": [
             "watashi",
             "tomodachi",
-            "hon",
-            "ageru"
+            "hon"
           ],
           "furigana": "私[わたし]は友[とも]達[だち]に本[ほん]をあげる。",
           "word_spans": [
@@ -25884,11 +25165,6 @@
               "vocabulary_slug": "hon",
               "start": 5,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "ageru",
-              "start": 7,
-              "end": 10
             }
           ],
           "grammar_span": {
@@ -25904,8 +25180,7 @@
           "vocabulary_slugs": [
             "tomodachi",
             "watashi",
-            "jisho",
-            "kureru"
+            "jisho"
           ],
           "furigana": "友[とも]達[だち]が私[わたし]に辞[じ]書[しょ]をくれる。",
           "word_spans": [
@@ -25923,11 +25198,6 @@
               "vocabulary_slug": "jisho",
               "start": 5,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "kureru",
-              "start": 8,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -25943,8 +25213,7 @@
           "vocabulary_slugs": [
             "boku",
             "ani",
-            "tokei",
-            "morau"
+            "tokei"
           ],
           "furigana": "僕[ぼく]は兄[あに]から時計[とけい]をもらう。",
           "word_spans": [
@@ -25962,11 +25231,6 @@
               "vocabulary_slug": "tokei",
               "start": 5,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "morau",
-              "start": 8,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -25982,8 +25246,7 @@
           "vocabulary_slugs": [
             "kanojo",
             "tomodachi",
-            "inu",
-            "morau"
+            "inu"
           ],
           "furigana": "彼[かの]女[じょ]は友[とも]達[だち]に犬[いぬ]をもらう。",
           "word_spans": [
@@ -26001,11 +25264,6 @@
               "vocabulary_slug": "inu",
               "start": 6,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "morau",
-              "start": 8,
-              "end": 11
             }
           ],
           "grammar_span": {
@@ -26021,8 +25279,7 @@
           "vocabulary_slugs": [
             "sensei",
             "watashi",
-            "tegami",
-            "kureru"
+            "tegami"
           ],
           "furigana": "先[せん]生[せい]は私[わたし]に手[て]紙[がみ]をくれる。",
           "word_spans": [
@@ -26040,11 +25297,6 @@
               "vocabulary_slug": "tegami",
               "start": 5,
               "end": 7
-            },
-            {
-              "vocabulary_slug": "kureru",
-              "start": 8,
-              "end": 11
             }
           ],
           "grammar_span": {
