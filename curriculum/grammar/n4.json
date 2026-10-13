@@ -3069,129 +3069,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "日本語が話せます。",
-          "english": "I can speak Japanese.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "nihongo",
-            "hanaseru"
-          ],
-          "furigana": "日本[にほん]語[ご]が話[はな]せます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nihongo",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "hanaseru",
-              "start": 4,
-              "end": 8,
-              "surface_form": "話せます",
-              "inflection": "masu"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "漢字が読めます。",
-          "english": "I can read kanji.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kanji-word",
-            "yomeru"
-          ],
-          "furigana": "漢[かん]字[じ]が読[よ]めます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanji-word",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yomeru",
-              "start": 3,
-              "end": 7,
-              "surface_form": "読めます",
-              "inflection": "masu"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "辛い物が食べられます。",
-          "english": "I can eat spicy food.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "karai",
-            "taberareru"
-          ],
-          "furigana": "辛[から]い物[もの]が食[た]べられます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "karai",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "早く起きられません。",
-          "english": "I can't wake up early.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "hayai-early",
-            "okiru"
-          ],
-          "furigana": "早[はや]く起[お]きられません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hayai-early",
-              "start": 0,
-              "end": 2,
-              "surface_form": "早く",
-              "inflection": "stem"
-            },
-            {
-              "vocabulary_slug": "okiru",
-              "start": 2,
-              "end": 4,
-              "surface_form": "起き",
-              "inflection": "stem"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "この川で泳げます。",
-          "english": "You can swim in this river.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "kawa-v",
-            "oyogeru"
-          ],
-          "furigana": "この川[かわ]で泳[およ]げます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kawa-v",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "oyogeru",
-              "start": 4,
-              "end": 8,
-              "surface_form": "泳げます",
-              "inflection": "masu"
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "辛い料理も食べられる。",
           "english": "I can even eat spicy food.",
-          "sort_order": 5,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "karai",
             "ryouri",
@@ -3224,7 +3104,7 @@
         {
           "japanese": "傘が買える。",
           "english": "I can buy an umbrella.",
-          "sort_order": 6,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kasa",
             "kaeru-potential"
@@ -3251,7 +3131,7 @@
         {
           "japanese": "週末、来られる？",
           "english": "Can you come this weekend?",
-          "sort_order": 7,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "shuumatsu",
             "koreru"
@@ -3278,7 +3158,7 @@
         {
           "japanese": "自転車に乗れる？",
           "english": "Can you ride a bicycle?",
-          "sort_order": 8,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "jitensha",
             "noreru"
@@ -3305,7 +3185,7 @@
         {
           "japanese": "友達に会える。",
           "english": "I can meet my friend.",
-          "sort_order": 9,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "tomodachi",
             "aeru-potential"
@@ -3328,6 +3208,197 @@
             "end": 6
           },
           "register": "plain"
+        },
+        {
+          "japanese": "この服はまだ着られる？",
+          "english": "Can I still wear these clothes?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "mada",
+            "kiru-wear"
+          ],
+          "furigana": "この服[ふく]はまだ着[き]られる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mada",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 6,
+              "end": 7,
+              "surface_form": "着",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "一人で来られるので、大丈夫です。",
+          "english": "I can come on my own, so don't worry.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "hitori-de",
+            "kuru-v",
+            "daijoubu"
+          ],
+          "furigana": "一人[ひとり]で来[こ]られるので、大[だい]丈[じょう]夫[ぶ]です。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hitori-de",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 4,
+              "surface_form": "来",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "daijoubu",
+              "start": 10,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この漢字なら覚えられる。",
+          "english": "If it's this kanji, I can memorize it.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kono",
+            "kanji-word",
+            "oboeru"
+          ],
+          "furigana": "この漢[かん]字[じ]なら覚[おぼ]えられる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kanji-word",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "oboeru",
+              "start": 6,
+              "end": 8,
+              "surface_form": "覚え",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "冷蔵庫に全部入れられる？",
+          "english": "Can you fit it all in the fridge?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "reizouko",
+            "zenbu",
+            "ireru-v"
+          ],
+          "furigana": "冷[れい]蔵[ぞう]庫[こ]に全[ぜん]部[ぶ]入[い]れられる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "reizouko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "zenbu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "ireru-v",
+              "start": 6,
+              "end": 8,
+              "surface_form": "入れ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "明日は早く起きられるので、手伝います。",
+          "english": "I can get up early tomorrow, so I'll help.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "ashita",
+            "hayai-early",
+            "okiru",
+            "tetsudau"
+          ],
+          "furigana": "明日[あした]は早[はや]く起[お]きられるので、手伝[てつだ]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 3,
+              "end": 5,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "起き",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "tetsudau",
+              "start": 13,
+              "end": 18,
+              "surface_form": "手伝います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -3336,6 +3407,28 @@
         "hanaseru"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "can",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be able to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "can do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "able to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "辛い料理も食べ＿＿＿。",
@@ -3411,98 +3504,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "先生に褒められました。",
-          "english": "I was praised by the teacher.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "sensei",
-            "homerareru"
-          ],
-          "furigana": "先[せん]生[せい]に褒[ほ]められました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "犬に噛まれました。",
-          "english": "I was bitten by a dog.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "inu"
-          ],
-          "furigana": "犬[いぬ]に噛[か]まれました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "inu",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "雨に降られて、困りました。",
-          "english": "I got caught in the rain and was troubled.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "furu-rain"
-          ],
-          "furigana": "雨[あめ]に降[ふ]られて、困[こま]りました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "furu-rain",
-              "start": 2,
-              "end": 4,
-              "surface_form": "降ら",
-              "inflection": "stem"
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "親に叱られました。",
-          "english": "I was scolded by my parent.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "oya",
-            "shikarareru"
-          ],
-          "furigana": "親[おや]に叱[しか]られました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "oya",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "この本は多くの人に読まれています。",
-          "english": "This book is read by many people.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "hon"
-          ],
-          "furigana": "この本[ほん]は多[おお]くの人[ひと]に読[よ]まれています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hon",
-              "start": 2,
-              "end": 3
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "先生に褒められる。",
           "english": "I get praised by my teacher.",
-          "sort_order": 5,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "sensei",
             "homerareru"
@@ -3529,11 +3533,11 @@
         {
           "japanese": "弟にパンを食べられる。",
           "english": "My bread gets eaten by my little brother.",
-          "sort_order": 6,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "otouto",
             "pan",
-            "taberareru"
+            "taberu"
           ],
           "furigana": "弟[おとうと]にパンを食[た]べられる。",
           "word_spans": [
@@ -3548,9 +3552,11 @@
               "end": 4
             },
             {
-              "vocabulary_slug": "taberareru",
+              "vocabulary_slug": "taberu",
               "start": 5,
-              "end": 10
+              "end": 7,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -3560,33 +3566,12 @@
           "register": "plain"
         },
         {
-          "japanese": "手紙が読まれる。",
-          "english": "The letter is read.",
-          "sort_order": 7,
-          "vocabulary_slugs": [
-            "tegami"
-          ],
-          "furigana": "手[て]紙[がみ]が読[よ]まれる。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "tegami",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 7
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "友達に来られる。",
           "english": "A friend comes over on me, and it's a nuisance.",
-          "sort_order": 8,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "tomodachi",
-            "koreru"
+            "kuru-v"
           ],
           "furigana": "友[とも]達[だち]に来[こ]られる。",
           "word_spans": [
@@ -3596,9 +3581,11 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "koreru",
+              "vocabulary_slug": "kuru-v",
               "start": 3,
-              "end": 7
+              "end": 4,
+              "surface_form": "来",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -3608,24 +3595,32 @@
           "register": "plain"
         },
         {
-          "japanese": "これは食べられる？",
-          "english": "Can this be eaten?",
-          "sort_order": 9,
+          "japanese": "猫に魚を取られる。",
+          "english": "My fish gets taken by the cat.",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "kore",
-            "taberareru"
+            "neko",
+            "sakana",
+            "toru"
           ],
-          "furigana": "これは食[た]べられる？",
+          "furigana": "猫[ねこ]に魚[さかな]を取[と]られる。",
           "word_spans": [
             {
-              "vocabulary_slug": "kore",
+              "vocabulary_slug": "neko",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "taberareru",
-              "start": 3,
-              "end": 8
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "toru",
+              "start": 4,
+              "end": 6,
+              "surface_form": "取ら",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -3633,6 +3628,242 @@
             "end": 8
           },
           "register": "plain"
+        },
+        {
+          "japanese": "妹に使われるので、名前を書きます。",
+          "english": "My little sister keeps using it, so I write my name on it.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "imouto",
+            "tsukau",
+            "namae",
+            "kaku"
+          ],
+          "furigana": "妹[いもうと]に使[つか]われるので、名[な]前[まえ]を書[か]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 2,
+              "end": 4,
+              "surface_form": "使わ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "namae",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 12,
+              "end": 16,
+              "surface_form": "書きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "またお母さんに呼ばれる？",
+          "english": "Is your mom calling you again?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "mata",
+            "okaasan",
+            "yobu"
+          ],
+          "furigana": "またお母[かあ]さんに呼[よ]ばれる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mata",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okaasan",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "yobu",
+              "start": 7,
+              "end": 9,
+              "surface_form": "呼ば",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "みんなに読まれる本を書きたい。",
+          "english": "I want to write a book that everyone reads.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "minna",
+            "yomu",
+            "hon",
+            "kaku"
+          ],
+          "furigana": "みんなに読[よ]まれる本[ほん]を書[か]きたい。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "minna",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 4,
+              "end": 6,
+              "surface_form": "読ま",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 10,
+              "end": 12,
+              "surface_form": "書き",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "雨に降られるのは嫌いです。",
+          "english": "I hate getting caught in the rain.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain",
+            "kirai"
+          ],
+          "furigana": "雨[あめ]に降[ふ]られるのは嫌[きら]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 4,
+              "surface_form": "降ら",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kirai",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "友達に笑われるから、言いません。",
+          "english": "My friends will laugh at me, so I won't say it.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "warau",
+            "iu-v"
+          ],
+          "furigana": "友[とも]達[だち]に笑[わら]われるから、言[い]いません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "warau",
+              "start": 3,
+              "end": 5,
+              "surface_form": "笑わ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 10,
+              "end": 15,
+              "surface_form": "言いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "夜、赤ちゃんに泣かれるので、寝られません。",
+          "english": "The baby cries at night, so I can't sleep.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "yoru",
+            "akachan",
+            "naku",
+            "neru"
+          ],
+          "furigana": "夜[よる]、赤[あか]ちゃんに泣[な]かれるので、寝[ね]られません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yoru",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "akachan",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "naku",
+              "start": 7,
+              "end": 9,
+              "surface_form": "泣か",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 14,
+              "end": 15,
+              "surface_form": "寝",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 11
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -3641,6 +3872,33 @@
         "homerareru"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "passive",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be done (to)",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "get done",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be done by",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "is done",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "先生に褒め＿＿＿。",
@@ -3715,109 +3973,14 @@
       ],
       "example_sentences": [
         {
-          "japanese": "子供に野菜を食べさせます。",
-          "english": "I make the child eat vegetables.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "yasai",
-            "taberasaseru"
-          ],
-          "furigana": "子[こ]供[ども]に野[や]菜[さい]を食[た]べさせます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yasai",
-              "start": 3,
-              "end": 5
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "先生は学生に本を読ませました。",
-          "english": "The teacher made the students read the book.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "sensei",
-            "gakusei",
-            "hon"
-          ],
-          "furigana": "先[せん]生[せい]は学[がく]生[せい]に本[ほん]を読[よ]ませました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "gakusei",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "hon",
-              "start": 6,
-              "end": 7
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "母は私を買い物に行かせました。",
-          "english": "My mother made me go shopping.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "haha",
-            "kaimono",
-            "ikaseru"
-          ],
-          "furigana": "母[はは]は私[わたし]を買[か]い物[もの]に行[い]かせました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "haha",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kaimono",
-              "start": 4,
-              "end": 7
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "好きなようにやらせてください。",
-          "english": "Please let me do it the way I like.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "suki",
-            "yaraseru"
-          ],
-          "furigana": "好[す]きなようにやらせてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "suki",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "register": "polite"
-        },
-        {
           "japanese": "母は弟に野菜を食べさせる。",
-          "english": "Mother makes her little brother eat vegetables.",
-          "sort_order": 4,
+          "english": "Mother makes my little brother eat his vegetables.",
+          "sort_order": 0,
           "vocabulary_slugs": [
             "haha",
             "otouto",
             "yasai",
-            "taberasaseru"
+            "taberu"
           ],
           "furigana": "母[はは]は弟[おとうと]に野[や]菜[さい]を食[た]べさせる。",
           "word_spans": [
@@ -3837,9 +4000,11 @@
               "end": 6
             },
             {
-              "vocabulary_slug": "taberasaseru",
+              "vocabulary_slug": "taberu",
               "start": 7,
-              "end": 12
+              "end": 9,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -3849,14 +4014,16 @@
           "register": "plain"
         },
         {
-          "japanese": "先生は学生を走らせる。",
-          "english": "The teacher makes the students run.",
-          "sort_order": 5,
+          "japanese": "先生は生徒を校庭で走らせる。",
+          "english": "The teacher makes the pupils run in the schoolyard.",
+          "sort_order": 1,
           "vocabulary_slugs": [
             "sensei",
-            "gakusei"
+            "seito",
+            "koutei",
+            "hashiru"
           ],
-          "furigana": "先[せん]生[せい]は学[がく]生[せい]を走[はし]らせる。",
+          "furigana": "先[せん]生[せい]は生[せい]徒[と]を校[こう]庭[てい]で走[はし]らせる。",
           "word_spans": [
             {
               "vocabulary_slug": "sensei",
@@ -3864,75 +4031,173 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "gakusei",
+              "vocabulary_slug": "seito",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "koutei",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 9,
+              "end": 11,
+              "surface_form": "走ら",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 10
+            "start": 11,
+            "end": 13
           },
           "register": "plain"
         },
         {
-          "japanese": "私は弟に薬を飲ませる。",
-          "english": "I make my little brother drink the medicine.",
-          "sort_order": 6,
+          "japanese": "夫に皿を洗わせるのは大変です。",
+          "english": "Getting my husband to wash the dishes is hard work.",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "watashi",
-            "otouto",
-            "kusuri"
+            "otto",
+            "sara",
+            "arau",
+            "taihen"
           ],
-          "furigana": "私[わたし]は弟[おとうと]に薬[くすり]を飲[の]ませる。",
+          "furigana": "夫[おっと]に皿[さら]を洗[あら]わせるのは大[たい]変[へん]です。",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "otto",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "otouto",
+              "vocabulary_slug": "sara",
               "start": 2,
               "end": 3
             },
             {
-              "vocabulary_slug": "kusuri",
+              "vocabulary_slug": "arau",
               "start": 4,
-              "end": 5
+              "end": 6,
+              "surface_form": "洗わ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 10,
+              "end": 12
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 10
+            "start": 6,
+            "end": 8
           },
-          "register": "plain"
+          "register": "polite"
         },
         {
-          "japanese": "母は子供を公園で遊ばせる。",
-          "english": "Mother lets her child play in the park.",
-          "sort_order": 7,
+          "japanese": "犬を公園で遊ばせる。",
+          "english": "I let the dog play in the park.",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "haha",
-            "kodomo-v",
-            "kouen"
+            "inu",
+            "kouen",
+            "asobu"
           ],
-          "furigana": "母[はは]は子[こ]供[ども]を公[こう]園[えん]で遊[あそ]ばせる。",
+          "furigana": "犬[いぬ]を公[こう]園[えん]で遊[あそ]ばせる。",
           "word_spans": [
             {
-              "vocabulary_slug": "haha",
+              "vocabulary_slug": "inu",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "kodomo-v",
+              "vocabulary_slug": "kouen",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "asobu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "遊ば",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "弟に荷物を運ばせる？",
+          "english": "Are you going to make your little brother carry the luggage?",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "otouto",
+            "nimotsu",
+            "hakobu"
+          ],
+          "furigana": "弟[おとうと]に荷[に]物[もつ]を運[はこ]ばせる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hakobu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "運ば",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "彼はいつも友達を待たせる。",
+          "english": "He always keeps his friends waiting.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kare",
+            "itsumo",
+            "tomodachi",
+            "matsu"
+          ],
+          "furigana": "彼[かれ]はいつも友[とも]達[だち]を待[ま]たせる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tomodachi",
               "start": 5,
               "end": 7
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "待た",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -3942,35 +4207,162 @@
           "register": "plain"
         },
         {
-          "japanese": "母は妹に友達を呼ばせる。",
-          "english": "Mother makes her younger sister invite a friend.",
-          "sort_order": 8,
+          "japanese": "私に払わせるの？",
+          "english": "You're making me pay?",
+          "sort_order": 6,
           "vocabulary_slugs": [
-            "haha",
-            "imouto",
-            "tomodachi"
+            "watashi",
+            "harau"
           ],
-          "furigana": "母[はは]は妹[いもうと]に友[とも]達[だち]を呼[よ]ばせる。",
+          "furigana": "私[わたし]に払[はら]わせるの？",
           "word_spans": [
             {
-              "vocabulary_slug": "haha",
+              "vocabulary_slug": "watashi",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "imouto",
+              "vocabulary_slug": "harau",
               "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "tomodachi",
-              "start": 4,
-              "end": 6
+              "end": 4,
+              "surface_form": "払わ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 9,
-            "end": 11
+            "start": 4,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "赤ちゃんに冷たい水を飲ませるのは良くない。",
+          "english": "It's not good to make a baby drink cold water.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "akachan",
+            "tsumetai",
+            "mizu",
+            "nomu-v",
+            "yoi"
+          ],
+          "furigana": "赤[あか]ちゃんに冷[つめ]たい水[みず]を飲[の]ませるのは良[よ]くない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tsumetai",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "mizu",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 10,
+              "end": 12,
+              "surface_form": "飲ま",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "yoi",
+              "start": 16,
+              "end": 20,
+              "surface_form": "良くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 14
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "子供に好きな物を選ばせる。",
+          "english": "I let the child choose whatever they like.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "suki",
+            "mono",
+            "erabu"
+          ],
+          "furigana": "子[こ]供[ども]に好[す]きな物[もの]を選[えら]ばせる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "erabu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "選ば",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "娘に一人で電車に乗らせる？",
+          "english": "Will you let your daughter ride the train alone?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "musume",
+            "hitori-de",
+            "densha",
+            "noru"
+          ],
+          "furigana": "娘[むすめ]に一人[ひとり]で電[でん]車[しゃ]に乗[の]らせる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "musume",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hitori-de",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "noru",
+              "start": 8,
+              "end": 10,
+              "surface_form": "乗ら",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 12
           },
           "register": "plain"
         }
@@ -3981,6 +4373,33 @@
         "sensei"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "make (someone) do",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "let (someone) do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "make do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "let do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "causative",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "母は弟に野菜を食べ＿＿＿。",
@@ -4057,104 +4476,14 @@
       ],
       "example_sentences": [
         {
-          "japanese": "駅で一時間待たされました。",
-          "english": "I was made to wait an hour at the station.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "eki",
-            "matasareru"
-          ],
-          "furigana": "駅[えき]で一[いち]時[じ]間[かん]待[ま]たされました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "eki",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "子供の頃、野菜を食べさせられました。",
-          "english": "As a child, I was made to eat vegetables.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "yasai"
-          ],
-          "furigana": "子[こ]供[ども]の頃[ころ]、野[や]菜[さい]を食[た]べさせられました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yasai",
-              "start": 5,
-              "end": 7
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "上司に残業させられました。",
-          "english": "I was made to work overtime by my boss.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "zangyou"
-          ],
-          "furigana": "上[じょう]司[し]に残[ざん]業[ぎょう]させられました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "zangyou",
-              "start": 3,
-              "end": 5
-            }
-          ],
-          "register": "polite"
-        },
-        {
-          "japanese": "私は友達にお酒を飲まされる。",
-          "english": "My friend makes me drink.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "watashi",
-            "tomodachi",
-            "osake"
-          ],
-          "furigana": "私[わたし]は友[とも]達[だち]にお酒[さけ]を飲[の]まされる。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "tomodachi",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "osake",
-              "start": 5,
-              "end": 7
-            }
-          ],
-          "grammar_span": {
-            "start": 10,
-            "end": 13
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "弟は毎晩野菜を食べさせられる。",
           "english": "Every night my little brother is made to eat his vegetables.",
-          "sort_order": 4,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "otouto",
             "maiban",
-            "yasai"
+            "yasai",
+            "taberu"
           ],
           "furigana": "弟[おとうと]は毎[まい]晩[ばん]野[や]菜[さい]を食[た]べさせられる。",
           "word_spans": [
@@ -4172,6 +4501,13 @@
               "vocabulary_slug": "yasai",
               "start": 4,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 7,
+              "end": 9,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -4183,11 +4519,12 @@
         {
           "japanese": "私は会議で英語を話させられる。",
           "english": "At meetings I'm the one who gets made to speak English.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "watashi",
             "kaigi",
-            "eigo"
+            "eigo",
+            "hanasu-v"
           ],
           "furigana": "私[わたし]は会[かい]議[ぎ]で英[えい]語[ご]を話[はな]させられる。",
           "word_spans": [
@@ -4205,6 +4542,13 @@
               "vocabulary_slug": "eigo",
               "start": 5,
               "end": 7
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 8,
+              "end": 10,
+              "surface_form": "話さ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -4214,25 +4558,181 @@
           "register": "plain"
         },
         {
-          "japanese": "私は駅で一時間待たされる。",
-          "english": "I get left waiting at the station for an hour.",
-          "sort_order": 6,
+          "japanese": "今日もまた残業させられる？",
+          "english": "Are you being made to work overtime again today?",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "watashi",
-            "eki",
-            "matasareru"
+            "kyou",
+            "mata",
+            "zangyou"
           ],
-          "furigana": "私[わたし]は駅[えき]で一[いち]時[じ]間[かん]待[ま]たされる。",
+          "furigana": "今日[きょう]もまた残[ざん]業[ぎょう]させられる？",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mata",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "zangyou",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "みんなの前で歌わせられるのは嫌いです。",
+          "english": "I hate being made to sing in front of everyone.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "minna",
+            "mae",
+            "utau",
+            "kirai"
+          ],
+          "furigana": "みんなの前[まえ]で歌[うた]わせられるのは嫌[きら]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "minna",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "utau",
+              "start": 6,
+              "end": 8,
+              "surface_form": "歌わ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kirai",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "毎朝、犬に走らせられる。",
+          "english": "Every morning the dog makes me run.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "maiasa",
+            "inu",
+            "hashiru"
+          ],
+          "furigana": "毎[まい]朝[あさ]、犬[いぬ]に走[はし]らせられる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "走ら",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "兄に重い荷物を運ばせられる。",
+          "english": "My older brother makes me carry the heavy luggage.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ani",
+            "omoi",
+            "nimotsu",
+            "hakobu"
+          ],
+          "furigana": "兄[あに]に重[おも]い荷[に]物[もつ]を運[はこ]ばせられる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "eki",
+              "vocabulary_slug": "omoi",
               "start": 2,
-              "end": 3
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hakobu",
+              "start": 7,
+              "end": 9,
+              "surface_form": "運ば",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "病院で長い時間待たされる？",
+          "english": "Do they keep you waiting a long time at the hospital?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "byouin",
+            "nagai-adj",
+            "jikan",
+            "matasareru"
+          ],
+          "furigana": "病[びょう]院[いん]で長[なが]い時[じ]間[かん]待[ま]たされる？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "byouin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nagai-adj",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "jikan",
+              "start": 5,
+              "end": 7
             },
             {
               "vocabulary_slug": "matasareru",
@@ -4247,28 +4747,83 @@
           "register": "plain"
         },
         {
-          "japanese": "私は日曜日に掃除させられる。",
-          "english": "On Sundays I get put to work cleaning.",
+          "japanese": "授業でいつも教科書を読ませられる。",
+          "english": "In class I'm always made to read from the textbook.",
           "sort_order": 7,
           "vocabulary_slugs": [
-            "watashi",
-            "nichiyoubi"
+            "jugyou",
+            "itsumo",
+            "kyoukasho",
+            "yomu"
           ],
-          "furigana": "私[わたし]は日[にち]曜[よう]日[び]に掃[そう]除[じ]させられる。",
+          "furigana": "授[じゅ]業[ぎょう]でいつも教[きょう]科[か]書[しょ]を読[よ]ませられる。",
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "jugyou",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "nichiyoubi",
-              "start": 2,
-              "end": 5
+              "vocabulary_slug": "itsumo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kyoukasho",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 10,
+              "end": 12,
+              "surface_form": "読ま",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 8,
+            "start": 12,
+            "end": 16
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "週末は父に車を洗わせられる。",
+          "english": "On weekends my father makes me wash the car.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "chichi",
+            "kuruma",
+            "arau"
+          ],
+          "furigana": "週[しゅう]末[まつ]は父[ちち]に車[くるま]を洗[あら]わせられる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chichi",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "arau",
+              "start": 7,
+              "end": 9,
+              "surface_form": "洗わ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
             "end": 13
           },
           "register": "plain"
@@ -4280,6 +4835,33 @@
         "zangyou"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "be made to do",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "made to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "forced to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be forced to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "have to (against one's will)",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は友達にお酒を飲ま＿＿＿。",
@@ -4355,175 +4937,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "忘れないように、メモします。",
-          "english": "I'll take notes so I don't forget.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "wasureru"
-          ],
-          "furigana": "忘[わす]れないように、メモします。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wasureru",
-              "start": 0,
-              "end": 4,
-              "surface_form": "忘れない",
-              "inflection": "nai"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "よく聞こえるように、大きい声で話します。",
-          "english": "I'll speak loudly so it's easy to hear.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kikoeru"
-          ],
-          "furigana": "よく聞[き]こえるように、大[おお]きい声[こえ]で話[はな]します。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kikoeru",
-              "start": 2,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "遅れないように、早く出ます。",
-          "english": "I'll leave early so I'm not late.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "okureru"
-          ],
-          "furigana": "遅[おく]れないように、早[はや]く出[で]ます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "okureru",
-              "start": 0,
-              "end": 4,
-              "surface_form": "遅れない",
-              "inflection": "nai"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "風邪をひかないように、気をつけてください。",
-          "english": "Please be careful not to catch a cold.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "kaze-cold"
-          ],
-          "furigana": "風邪[かぜ]をひかないように、気[き]をつけてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kaze-cold",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "子供にも読めるように、大きく書きました。",
-          "english": "I wrote it big so that even a child could read it.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "yomeru",
-            "kaku"
-          ],
-          "furigana": "子[こ]供[ども]にも読[よ]めるように、大[おお]きく書[か]きました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yomeru",
-              "start": 4,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "kaku",
-              "start": 14,
-              "end": 19,
-              "surface_form": "書きました",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "電車に遅れないように、早く家を出ました。",
-          "english": "I left home early so that I wouldn't be late for the train.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "densha",
-            "okureru",
-            "ie",
-            "deru-v"
-          ],
-          "furigana": "電[でん]車[しゃ]に遅[おく]れないように、早[はや]く家[いえ]を出[で]ました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "densha",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "okureru",
-              "start": 3,
-              "end": 7,
-              "surface_form": "遅れない",
-              "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "ie",
-              "start": 13,
-              "end": 14
-            },
-            {
-              "vocabulary_slug": "deru-v",
-              "start": 15,
-              "end": 19,
-              "surface_form": "出ました",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "猫が入らないように、窓を閉めます。",
           "english": "I'll close the window so that the cat doesn't get in.",
-          "sort_order": 6,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "neko",
             "hairu-v",
@@ -4566,7 +4982,7 @@
         {
           "japanese": "忘れないように、ノートに書きます。",
           "english": "I write it in my notebook so I won't forget.",
-          "sort_order": 7,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "wasureru",
             "nooto",
@@ -4603,7 +5019,7 @@
         {
           "japanese": "みんなに聞こえるように、大きい声で話しました。",
           "english": "I spoke in a loud voice so that everyone could hear.",
-          "sort_order": 8,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "minna",
             "kikoeru",
@@ -4646,6 +5062,307 @@
             "end": 11
           },
           "register": "polite"
+        },
+        {
+          "japanese": "遅れないように、早く出ます。",
+          "english": "I'll leave early so I'm not late.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "okureru",
+            "hayai-early",
+            "deru-v"
+          ],
+          "furigana": "遅[おく]れないように、早[はや]く出[で]ます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "okureru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "遅れない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 8,
+              "end": 10,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 10,
+              "end": 13,
+              "surface_form": "出ます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "子供にも食べられるように、小さく切りました。",
+          "english": "I cut it small so that even a child can eat it.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "taberu",
+            "chiisai",
+            "kiru-cut"
+          ],
+          "furigana": "子[こ]供[ども]にも食[た]べられるように、小[ちい]さく切[き]りました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 6,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "chiisai",
+              "start": 13,
+              "end": 16,
+              "surface_form": "小さく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kiru-cut",
+              "start": 16,
+              "end": 21,
+              "surface_form": "切りました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "病気にならないように、野菜を食べます。",
+          "english": "I eat vegetables so that I don't get sick.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "byouki",
+            "naru-become",
+            "yasai",
+            "taberu"
+          ],
+          "furigana": "病[びょう]気[き]にならないように、野[や]菜[さい]を食[た]べます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "byouki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 3,
+              "end": 7,
+              "surface_form": "ならない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 14,
+              "end": 18,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "よく見えるように、前に座りませんか。",
+          "english": "Shall we sit at the front so we can see well?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "yoku",
+            "mieru",
+            "mae",
+            "suwaru"
+          ],
+          "furigana": "よく見[み]えるように、前[まえ]に座[すわ]りませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yoku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mieru",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "suwaru",
+              "start": 11,
+              "end": 16,
+              "surface_form": "座りません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "赤ちゃんが起きないように、静かに歩きました。",
+          "english": "I walked quietly so the baby wouldn't wake up.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "akachan",
+            "okiru",
+            "shizuka",
+            "aruku"
+          ],
+          "furigana": "赤[あか]ちゃんが起[お]きないように、静[しず]かに歩[ある]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 5,
+              "end": 9,
+              "surface_form": "起きない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 16,
+              "end": 21,
+              "surface_form": "歩きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "荷物が落ちないように、手で持ちました。",
+          "english": "I held the luggage with my hand so it wouldn't fall.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "nimotsu",
+            "ochiru",
+            "te-v",
+            "motsu"
+          ],
+          "furigana": "荷[に]物[もつ]が落[お]ちないように、手[て]で持[も]ちました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ochiru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "落ちない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "te-v",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 13,
+              "end": 18,
+              "surface_form": "持ちました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "日本語が上手になるように、毎日練習します。",
+          "english": "I practice every day so that my Japanese gets better.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "nihongo",
+            "jouzu",
+            "naru-become",
+            "mainichi",
+            "renshuu-suru"
+          ],
+          "furigana": "日本[にほん]語[ご]が上手[じょうず]になるように、毎[まい]日[にち]練[れん]習[しゅう]します。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 15,
+              "end": 20,
+              "surface_form": "練習します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -4654,6 +5371,28 @@
         "okureru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "so that",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in order to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so as to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in order that",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "子供にも読める＿＿＿、大きく書きました。",
@@ -4784,22 +5523,22 @@
           "register": "polite"
         },
         {
-          "japanese": "毎日運動するようになりました。",
-          "english": "I've started exercising every day.",
+          "japanese": "毎朝散歩するようになりました。",
+          "english": "I've started taking a walk every morning.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "mainichi",
-            "undou-suru"
+            "maiasa",
+            "sanpo-suru"
           ],
-          "furigana": "毎[まい]日[にち]運[うん]動[どう]するようになりました。",
+          "furigana": "毎[まい]朝[あさ]散[さん]歩[ぽ]するようになりました。",
           "word_spans": [
             {
-              "vocabulary_slug": "mainichi",
+              "vocabulary_slug": "maiasa",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "undou-suru",
+              "vocabulary_slug": "sanpo-suru",
               "start": 2,
               "end": 6
             }
@@ -4968,6 +5707,88 @@
             "end": 17
           },
           "register": "polite"
+        },
+        {
+          "japanese": "だんだん辛い物が食べられるようになる。",
+          "english": "Little by little, you'll be able to eat spicy food.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "dandan",
+            "karai",
+            "mono",
+            "taberu"
+          ],
+          "furigana": "だんだん辛[から]い物[もの]が食[た]べられるようになる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dandan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "karai",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 18
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "父は朝早く起きるようになりました。",
+          "english": "My father has started getting up early in the morning.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "chichi",
+            "asa",
+            "hayai-early",
+            "okiru"
+          ],
+          "furigana": "父[ちち]は朝[あさ]早[はや]く起[お]きるようになりました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "asa",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 3,
+              "end": 5,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 16
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -4976,6 +5797,33 @@
         "mainichi"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "come to (do)",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "become able to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reach the point of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "start to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "get to the point of",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は泳げる＿＿＿。",

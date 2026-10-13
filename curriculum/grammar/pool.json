@@ -9461,5 +9461,651 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "potential": {
+    "accepted_meanings": [
+      "can",
+      "be able to",
+      "can do",
+      "able to"
+    ],
+    "sentences": [
+      {
+        "japanese": "辛い料理も食べられる。",
+        "english": "I can even eat spicy food.",
+        "vocabulary_slugs": [
+          "karai",
+          "ryouri",
+          "taberareru"
+        ]
+      },
+      {
+        "japanese": "傘が買える。",
+        "english": "I can buy an umbrella.",
+        "vocabulary_slugs": [
+          "kasa",
+          "kaeru-potential"
+        ]
+      },
+      {
+        "japanese": "週末、来られる？",
+        "english": "Can you come this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "koreru"
+        ]
+      },
+      {
+        "japanese": "自転車に乗れる？",
+        "english": "Can you ride a bicycle?",
+        "vocabulary_slugs": [
+          "jitensha",
+          "noreru"
+        ]
+      },
+      {
+        "japanese": "友達に会える。",
+        "english": "I can meet my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "aeru-potential"
+        ]
+      },
+      {
+        "japanese": "この服はまだ着られる？",
+        "english": "Can I still wear these clothes?",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "mada",
+          "kiru-wear"
+        ]
+      },
+      {
+        "japanese": "一人で来られるので、大丈夫です。",
+        "english": "I can come on my own, so don't worry.",
+        "vocabulary_slugs": [
+          "hitori-de",
+          "kuru-v",
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "この漢字なら覚えられる。",
+        "english": "If it's this kanji, I can memorize it.",
+        "vocabulary_slugs": [
+          "kono",
+          "kanji-word",
+          "oboeru"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫に全部入れられる？",
+        "english": "Can you fit it all in the fridge?",
+        "vocabulary_slugs": [
+          "reizouko",
+          "zenbu",
+          "ireru-v"
+        ]
+      },
+      {
+        "japanese": "明日は早く起きられるので、手伝います。",
+        "english": "I can get up early tomorrow, so I'll help.",
+        "vocabulary_slugs": [
+          "ashita",
+          "hayai-early",
+          "okiru",
+          "tetsudau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "passive": {
+    "accepted_meanings": [
+      "passive",
+      "be done (to)",
+      "get done",
+      "be done by",
+      "is done"
+    ],
+    "sentences": [
+      {
+        "japanese": "先生に褒められる。",
+        "english": "I get praised by my teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "homerareru"
+        ]
+      },
+      {
+        "japanese": "弟にパンを食べられる。",
+        "english": "My bread gets eaten by my little brother.",
+        "vocabulary_slugs": [
+          "otouto",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "友達に来られる。",
+        "english": "A friend comes over on me, and it's a nuisance.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "猫に魚を取られる。",
+        "english": "My fish gets taken by the cat.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "toru"
+        ]
+      },
+      {
+        "japanese": "妹に使われるので、名前を書きます。",
+        "english": "My little sister keeps using it, so I write my name on it.",
+        "vocabulary_slugs": [
+          "imouto",
+          "tsukau",
+          "namae",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "またお母さんに呼ばれる？",
+        "english": "Is your mom calling you again?",
+        "vocabulary_slugs": [
+          "mata",
+          "okaasan",
+          "yobu"
+        ]
+      },
+      {
+        "japanese": "みんなに読まれる本を書きたい。",
+        "english": "I want to write a book that everyone reads.",
+        "vocabulary_slugs": [
+          "minna",
+          "yomu",
+          "hon",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "雨に降られるのは嫌いです。",
+        "english": "I hate getting caught in the rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "kirai"
+        ]
+      },
+      {
+        "japanese": "友達に笑われるから、言いません。",
+        "english": "My friends will laugh at me, so I won't say it.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "warau",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "夜、赤ちゃんに泣かれるので、寝られません。",
+        "english": "The baby cries at night, so I can't sleep.",
+        "vocabulary_slugs": [
+          "yoru",
+          "akachan",
+          "naku",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "causative": {
+    "accepted_meanings": [
+      "make (someone) do",
+      "let (someone) do",
+      "make do",
+      "let do",
+      "causative"
+    ],
+    "sentences": [
+      {
+        "japanese": "母は弟に野菜を食べさせる。",
+        "english": "Mother makes my little brother eat his vegetables.",
+        "vocabulary_slugs": [
+          "haha",
+          "otouto",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "先生は生徒を校庭で走らせる。",
+        "english": "The teacher makes the pupils run in the schoolyard.",
+        "vocabulary_slugs": [
+          "sensei",
+          "seito",
+          "koutei",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "夫に皿を洗わせるのは大変です。",
+        "english": "Getting my husband to wash the dishes is hard work.",
+        "vocabulary_slugs": [
+          "otto",
+          "sara",
+          "arau",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "犬を公園で遊ばせる。",
+        "english": "I let the dog play in the park.",
+        "vocabulary_slugs": [
+          "inu",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "弟に荷物を運ばせる？",
+        "english": "Are you going to make your little brother carry the luggage?",
+        "vocabulary_slugs": [
+          "otouto",
+          "nimotsu",
+          "hakobu"
+        ]
+      },
+      {
+        "japanese": "彼はいつも友達を待たせる。",
+        "english": "He always keeps his friends waiting.",
+        "vocabulary_slugs": [
+          "kare",
+          "itsumo",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "私に払わせるの？",
+        "english": "You're making me pay?",
+        "vocabulary_slugs": [
+          "watashi",
+          "harau"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんに冷たい水を飲ませるのは良くない。",
+        "english": "It's not good to make a baby drink cold water.",
+        "vocabulary_slugs": [
+          "akachan",
+          "tsumetai",
+          "mizu",
+          "nomu-v",
+          "yoi"
+        ]
+      },
+      {
+        "japanese": "子供に好きな物を選ばせる。",
+        "english": "I let the child choose whatever they like.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "suki",
+          "mono",
+          "erabu"
+        ]
+      },
+      {
+        "japanese": "娘に一人で電車に乗らせる？",
+        "english": "Will you let your daughter ride the train alone?",
+        "vocabulary_slugs": [
+          "musume",
+          "hitori-de",
+          "densha",
+          "noru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "causative-passive": {
+    "accepted_meanings": [
+      "be made to do",
+      "made to",
+      "forced to",
+      "be forced to",
+      "have to (against one's will)"
+    ],
+    "sentences": [
+      {
+        "japanese": "弟は毎晩野菜を食べさせられる。",
+        "english": "Every night my little brother is made to eat his vegetables.",
+        "vocabulary_slugs": [
+          "otouto",
+          "maiban",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "私は会議で英語を話させられる。",
+        "english": "At meetings I'm the one who gets made to speak English.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kaigi",
+          "eigo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "今日もまた残業させられる？",
+        "english": "Are you being made to work overtime again today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "mata",
+          "zangyou"
+        ]
+      },
+      {
+        "japanese": "みんなの前で歌わせられるのは嫌いです。",
+        "english": "I hate being made to sing in front of everyone.",
+        "vocabulary_slugs": [
+          "minna",
+          "mae",
+          "utau",
+          "kirai"
+        ]
+      },
+      {
+        "japanese": "毎朝、犬に走らせられる。",
+        "english": "Every morning the dog makes me run.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "inu",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "兄に重い荷物を運ばせられる。",
+        "english": "My older brother makes me carry the heavy luggage.",
+        "vocabulary_slugs": [
+          "ani",
+          "omoi",
+          "nimotsu",
+          "hakobu"
+        ]
+      },
+      {
+        "japanese": "病院で長い時間待たされる？",
+        "english": "Do they keep you waiting a long time at the hospital?",
+        "vocabulary_slugs": [
+          "byouin",
+          "nagai-adj",
+          "jikan",
+          "matasareru"
+        ]
+      },
+      {
+        "japanese": "授業でいつも教科書を読ませられる。",
+        "english": "In class I'm always made to read from the textbook.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "itsumo",
+          "kyoukasho",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "週末は父に車を洗わせられる。",
+        "english": "On weekends my father makes me wash the car.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "chichi",
+          "kuruma",
+          "arau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youni": {
+    "accepted_meanings": [
+      "so that",
+      "in order to",
+      "so as to",
+      "in order that"
+    ],
+    "sentences": [
+      {
+        "japanese": "猫が入らないように、窓を閉めます。",
+        "english": "I'll close the window so that the cat doesn't get in.",
+        "vocabulary_slugs": [
+          "neko",
+          "hairu-v",
+          "mado",
+          "shimeru"
+        ]
+      },
+      {
+        "japanese": "忘れないように、ノートに書きます。",
+        "english": "I write it in my notebook so I won't forget.",
+        "vocabulary_slugs": [
+          "wasureru",
+          "nooto",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "みんなに聞こえるように、大きい声で話しました。",
+        "english": "I spoke in a loud voice so that everyone could hear.",
+        "vocabulary_slugs": [
+          "minna",
+          "kikoeru",
+          "ookii",
+          "koe",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "遅れないように、早く出ます。",
+        "english": "I'll leave early so I'm not late.",
+        "vocabulary_slugs": [
+          "okureru",
+          "hayai-early",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "子供にも食べられるように、小さく切りました。",
+        "english": "I cut it small so that even a child can eat it.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "taberu",
+          "chiisai",
+          "kiru-cut"
+        ]
+      },
+      {
+        "japanese": "病気にならないように、野菜を食べます。",
+        "english": "I eat vegetables so that I don't get sick.",
+        "vocabulary_slugs": [
+          "byouki",
+          "naru-become",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "よく見えるように、前に座りませんか。",
+        "english": "Shall we sit at the front so we can see well?",
+        "vocabulary_slugs": [
+          "yoku",
+          "mieru",
+          "mae",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんが起きないように、静かに歩きました。",
+        "english": "I walked quietly so the baby wouldn't wake up.",
+        "vocabulary_slugs": [
+          "akachan",
+          "okiru",
+          "shizuka",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "荷物が落ちないように、手で持ちました。",
+        "english": "I held the luggage with my hand so it wouldn't fall.",
+        "vocabulary_slugs": [
+          "nimotsu",
+          "ochiru",
+          "te-v",
+          "motsu"
+        ]
+      },
+      {
+        "japanese": "日本語が上手になるように、毎日練習します。",
+        "english": "I practice every day so that my Japanese gets better.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "jouzu",
+          "naru-become",
+          "mainichi",
+          "renshuu-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youninaru": {
+    "accepted_meanings": [
+      "come to (do)",
+      "become able to",
+      "reach the point of",
+      "start to",
+      "get to the point of"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本語が話せるようになりました。",
+        "english": "I've become able to speak Japanese.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "hanaseru"
+        ]
+      },
+      {
+        "japanese": "漢字が読めるようになりました。",
+        "english": "I've become able to read kanji.",
+        "vocabulary_slugs": [
+          "kanji-word",
+          "yomeru"
+        ]
+      },
+      {
+        "japanese": "毎朝散歩するようになりました。",
+        "english": "I've started taking a walk every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "sanpo-suru"
+        ]
+      },
+      {
+        "japanese": "一人で行けるようになりました。",
+        "english": "I've become able to go alone.",
+        "vocabulary_slugs": [
+          "hitori-de",
+          "ikeru"
+        ]
+      },
+      {
+        "japanese": "私は泳げるようになりました。",
+        "english": "I've become able to swim.",
+        "vocabulary_slugs": [
+          "watashi",
+          "oyogeru"
+        ]
+      },
+      {
+        "japanese": "漢字が少し読めるようになりました。",
+        "english": "I've become able to read a little kanji.",
+        "vocabulary_slugs": [
+          "kanji-word",
+          "sukoshi",
+          "yomeru"
+        ]
+      },
+      {
+        "japanese": "猫が私のベッドで寝るようになりました。",
+        "english": "The cat has taken to sleeping on my bed.",
+        "vocabulary_slugs": [
+          "neko",
+          "watashi",
+          "beddo",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "一人で電車に乗れるようになりましたか。",
+        "english": "Have you become able to ride the train by yourself?",
+        "vocabulary_slugs": [
+          "hitori-de",
+          "densha",
+          "noreru"
+        ]
+      },
+      {
+        "japanese": "だんだん辛い物が食べられるようになる。",
+        "english": "Little by little, you'll be able to eat spicy food.",
+        "vocabulary_slugs": [
+          "dandan",
+          "karai",
+          "mono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "父は朝早く起きるようになりました。",
+        "english": "My father has started getting up early in the morning.",
+        "vocabulary_slugs": [
+          "chichi",
+          "asa",
+          "hayai-early",
+          "okiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
