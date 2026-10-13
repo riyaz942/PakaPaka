@@ -1964,5 +1964,893 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "to-and": {
+    "accepted_meanings": [
+      "and",
+      "with",
+      "together with",
+      "and (complete list)"
+    ],
+    "sentences": [
+      {
+        "japanese": "パンと卵を買います。",
+        "english": "I buy bread and eggs.",
+        "vocabulary_slugs": [
+          "pan",
+          "tamago",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "卵とパンを買います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンや卵を買います。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "友達と行きます。",
+        "english": "I go with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達も行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "犬と猫がいます。",
+        "english": "There are a dog and a cat.",
+        "vocabulary_slugs": [
+          "inu",
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫と犬がいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "犬や猫がいます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先生と話します。",
+        "english": "I talk with the teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生に話します。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "誰と昼ご飯を食べますか。",
+        "english": "Who are you having lunch with?",
+        "vocabulary_slugs": [
+          "dare",
+          "hirugohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "昼ご飯を誰と食べますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "肉と魚と卵を買います。",
+        "english": "I will buy meat, fish, eggs.",
+        "vocabulary_slugs": [
+          "niku",
+          "sakana",
+          "tamago",
+          "kau-v"
+        ],
+        "form": "肉|と",
+        "alternates": []
+      },
+      {
+        "japanese": "私は友達と公園へ行きます。",
+        "english": "I will go to the park together with a friend.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達と公園へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は友達と公園に行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女と一緒に映画を見ます。",
+        "english": "I will watch a movie together with my girlfriend.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画を彼女と一緒に見ます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "これとそれを使います。",
+        "english": "I will use this one plus that one.",
+        "vocabulary_slugs": [
+          "kore",
+          "sore",
+          "tsukau"
+        ],
+        "alternates": [
+          {
+            "japanese": "それとこれを使います。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、母と海へ行きました。",
+        "english": "Yesterday I went to the sea with my mother.",
+        "vocabulary_slugs": [
+          "kinou",
+          "haha",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日、母と海に行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昨日は母と海へ行きました。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ya-among": {
+    "accepted_meanings": [
+      "and (among others)",
+      "and so on",
+      "things like",
+      "such as",
+      "and"
+    ],
+    "sentences": [
+      {
+        "japanese": "野菜や果物を食べます。",
+        "english": "I eat vegetables, fruit, and so on.",
+        "vocabulary_slugs": [
+          "yasai",
+          "kudamono",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "野菜と果物を食べます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "本や雑誌を読みます。",
+        "english": "I read books, magazines, etc.",
+        "vocabulary_slugs": [
+          "hon",
+          "zasshi",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "本と雑誌を読みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "朝ご飯にパンや果物を食べます。",
+        "english": "For breakfast I eat bread, fruit, the like.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "pan",
+          "kudamono",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝ご飯にパンと果物を食べます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日、海や公園へ行きます。",
+        "english": "Tomorrow I will go to the sea, a park, so on.",
+        "vocabulary_slugs": [
+          "ashita",
+          "umi",
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日、海や公園に行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日、海と公園へ行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "学校で先生や学生に会います。",
+        "english": "At school I meet teachers, students, so on.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "sensei",
+          "gakusei",
+          "au"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校で先生と学生に会います。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今日、肉や魚を買います。",
+        "english": "Today I will buy meat, fish, so on.",
+        "vocabulary_slugs": [
+          "kyou",
+          "niku",
+          "sakana",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、肉と魚を買います。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "公園に犬や猫がいますか。",
+        "english": "Are there dogs, cats, or the like in the park?",
+        "vocabulary_slugs": [
+          "kouen",
+          "inu",
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "公園に犬と猫がいますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、お茶やコーヒーを飲みました。",
+        "english": "Yesterday I drank tea, coffee, and so on.",
+        "vocabulary_slugs": [
+          "kinou",
+          "ocha",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日、お茶とコーヒーを飲みました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "母は肉や魚を食べません。",
+        "english": "My mother doesn't eat meat, fish, and the like.",
+        "vocabulary_slugs": [
+          "haha",
+          "niku",
+          "sakana",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "母は肉と魚を食べません。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mo-also": {
+    "accepted_meanings": [
+      "also",
+      "too",
+      "as well",
+      "either"
+    ],
+    "sentences": [
+      {
+        "japanese": "私も学生です。",
+        "english": "I am a student too.",
+        "vocabulary_slugs": [
+          "watashi",
+          "gakusei"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は学生です。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "彼も来ます。",
+        "english": "He is coming as well.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼は来ます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "水も飲みます。",
+        "english": "I drink water too.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "水を飲みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "猫もいます。",
+        "english": "There is a cat too.",
+        "vocabulary_slugs": [
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫がいます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "これも高いですか。",
+        "english": "Is this one expensive too?",
+        "vocabulary_slugs": [
+          "kore",
+          "takai-adj"
+        ],
+        "alternates": [
+          {
+            "japanese": "これは高いですか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "弟も肉を食べません。",
+        "english": "My younger brother doesn't eat meat either.",
+        "vocabulary_slugs": [
+          "otouto",
+          "niku",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "弟は肉を食べません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日も公園へ行きました。",
+        "english": "I went to the park yesterday too.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日も公園に行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昨日は公園へ行きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今日も忙しいです。",
+        "english": "I'm busy today too.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は忙しいです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "子供も映画を見ましたか。",
+        "english": "Did the kids watch the movie too?",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "子供は映画を見ましたか。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kara-from": {
+    "accepted_meanings": [
+      "from",
+      "starting from",
+      "since",
+      "starting at"
+    ],
+    "sentences": [
+      {
+        "japanese": "駅から歩きます。",
+        "english": "I walk from the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅まで歩きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "日本から来ました。",
+        "english": "I came from Japan.",
+        "vocabulary_slugs": [
+          "nihon",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本へ来ました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "どこから来ましたか。",
+        "english": "Where did you come from?",
+        "vocabulary_slugs": [
+          "doko",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "何時からコーヒーを飲みますか。",
+        "english": "From what time will you drink coffee?",
+        "vocabulary_slugs": [
+          "nannji",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "何時までコーヒーを飲みますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "家から歩きます。",
+        "english": "I will walk from home.",
+        "vocabulary_slugs": [
+          "ie",
+          "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "家まで歩きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "朝から本を読みます。",
+        "english": "I will read a book from the morning.",
+        "vocabulary_slugs": [
+          "asa",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝まで本を読みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "来週から忙しいです。",
+        "english": "I'll be busy starting next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "isogashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母から聞きました。",
+        "english": "I heard it from my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "母に聞きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は家から出ません。",
+        "english": "Today I won't go out of the house.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ie",
+          "deru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は家を出ません。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "made-until": {
+    "accepted_meanings": [
+      "until",
+      "as far as",
+      "up to",
+      "till"
+    ],
+    "sentences": [
+      {
+        "japanese": "駅まで歩きます。",
+        "english": "I walk as far as the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅から歩きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "昼まで待ちます。",
+        "english": "I will wait until noon.",
+        "vocabulary_slugs": [
+          "hiru",
+          "matsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "朝から晩まで遊びます。",
+        "english": "I will play from morning until evening.",
+        "vocabulary_slugs": [
+          "asa",
+          "ban",
+          "asobu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家から学校まで歩きます。",
+        "english": "I will walk from the house to school.",
+        "vocabulary_slugs": [
+          "ie",
+          "gakkou-v",
+          "aruku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "海まで行きます。",
+        "english": "I will go as far as the sea.",
+        "vocabulary_slugs": [
+          "umi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "海へ行きます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "海に行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "何時まで学校にいますか。",
+        "english": "Until what time are you at school?",
+        "vocabulary_slugs": [
+          "nannji",
+          "gakkou-v",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "何時から学校にいますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日は夜まで本を読みました。",
+        "english": "Yesterday I read a book until night.",
+        "vocabulary_slugs": [
+          "kinou",
+          "yoru",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日、夜まで本を読みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "日曜日まで忙しいです。",
+        "english": "I'm busy until Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "isogashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日まで帰りません。",
+        "english": "I won't go home until tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaeru-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kara-because": {
+    "accepted_meanings": [
+      "because",
+      "since",
+      "so",
+      "because of"
+    ],
+    "sentences": [
+      {
+        "japanese": "寒いですから、窓を閉めます。",
+        "english": "It's cold, so I'll close the window.",
+        "vocabulary_slugs": [
+          "samui",
+          "mado",
+          "shimeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "窓を閉めます。寒いですから。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "忙しいから、行きません。",
+        "english": "I won't go because I'm busy.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "忙しいので、行きません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "高いから、買いません。",
+        "english": "I won't buy it because it's expensive.",
+        "vocabulary_slugs": [
+          "takai-adj",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "高いので、買いません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "暑いから、水を飲みました。",
+        "english": "It was hot, so I drank water.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "暑いので、水を飲みました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "私は学生ですから。",
+        "english": "Because I'm a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "gakusei"
+        ],
+        "alternates": [
+          {
+            "japanese": "学生ですから。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は忙しいですから、昼ご飯は肉です。",
+        "english": "Because I'm busy today, lunch is meat.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii",
+          "hirugohan",
+          "niku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "安いですから、このパンを買いませんか。",
+        "english": "It's cheap, so why don't we buy this bread?",
+        "vocabulary_slugs": [
+          "yasui-adj",
+          "kono",
+          "pan",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は寒いから。",
+        "english": "Because it's cold today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は寒いので。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "おいしいから、毎日この喫茶店へ行きます。",
+        "english": "It's delicious, so I go to this coffee shop every day.",
+        "vocabulary_slugs": [
+          "oishii",
+          "mainichi",
+          "kono",
+          "kissaten",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "おいしいから、毎日この喫茶店に行きます。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
