@@ -33,7 +33,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 | D7 | Cards per stage | Both cards at every stage; MC, cloze display and the English gate at Enlightened are removed |
 | D8 | Sentence pool | ≥ 8 sentences per grammar point; every sentence valid for both cards |
 | D9 | Repeats | The two cards in one review use different sentences; no sentence from the previous review is reused |
-| D10 | Vocab range (authoring) | Words up to the learner's vocab position when the grammar is taught **+ 10**, plus a fixed **core N5 set** (~50 words). N4 grammar may also use all N5 words |
+| D10 | Vocab range (authoring) | The existing pipeline rule `generate_content/context.allowed_vocab_for`: all lower-level words + same-level words up to a proportional cutoff + the point's own linked words + `CORE_SEED_SLUGS` (~85 survival words). A simulated lesson position was rejected: earlier pipeline work found it leaves the first point 1 word and ~100 of 161 points before their own linked words |
 | D11 | Word links | Per-word linked renderer (tap → detail page, long-press → furigana toggle, per-word mastery furigana) on both cards |
 | D12 | Link timing | Read card: every vocab word tappable at all times; grammar span locked until answered. Build card: words the learner has **started** link only after answering; words **not started** link before answering, with no grade penalty |
 
@@ -90,20 +90,18 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 | Build answer | The sentence's `furigana` itself — the main accepted answer. No separate kana column |
 | Vocabulary list | Dictionary forms of the sentence's span vocabulary, in sentence order |
 | Register tag | `polite` when the main clause ends in a です/ます form, else `plain` |
-| Vocab position per grammar point | Run the lesson planner rules (`ROUND_QUOTAS`, unlock on parent started) over N5 then N4; record vocab count started when each grammar point is first taught |
 
 ### 4.3 Authored (Gemini web lane + validator)
 
 - **Accepted meanings:** 3–6 English answers per grammar point (e.g. `because, since, so, as`; particles state function, e.g. `object marker`). Stored as `accepted_answers` rows, `answer_type = 'meaning'`.
 - **Sentences:** new / replacement sentences with English and furigana until §4.4 passes.
 - **Alternate Build answers** per sentence, in furigana bracket notation (e.g. `寒[さむ]いですから、コートを着[き]ます`), each tagged `valid` (other word order, dropped 私は, ですから for から…) or `other_grammar` (same meaning with another grammar point of the same `family`).
-- **Core N5 word set:** one list file in the pipeline (~50 words: 行く, 来る, 食べる, 飲む, 見る, する, ある, いる, 本, 水 …).
 
 ### 4.4 Validator rules (compile fails on any)
 
 1. Every sentence has a grammar span.
-2. Every content word in a sentence has a word span (particles and the grammar span excepted).
-3. Every spanned word is within range: vocab position at the grammar point's teach time + 10, or in the core N5 set, or (N4 grammar) any N5 word.
+2. Every token tagged noun, verb, adjective, na-adjective, adverb, pronoun or adnominal, outside the grammar span, lies inside a word span (a Build-card learner cannot write a word they are not shown).
+3. No out-of-range content word: `level_check.find_violations(sentence, build_allowed_index(allowed_vocab_for(level, slug)), accepted_forms)` is empty.
 4. A grammar point has ≥ 8 passing sentences.
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
 6. Every alternate parses as furigana notation. Every `valid` alternate contains the grammar form and every listed word (by reading). Every `other_grammar` alternate contains every listed word and a form of another same-family point.
@@ -184,4 +182,4 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 - **Content volume:** 161 points × ≥ 8 sentences plus alternates. Many existing cloze sentences repeat one frame and will fail variety. Expect most points to need new sentences.
 - **Wording-exact grading:** an answer correct in meaning but different in wording is marked wrong until saved. Mitigated by authored `valid` alternates and D4.
-- **Early N5 range:** the first ~15 grammar points have very few words in range; sentences there lean on the core set.
+- **Range vs real progress:** the proportional cutoff allows more words than a learner has started (point 10 of 74 → ~97 words vs ~20 started). Covered at runtime by D12 (unstarted words show furigana and link before answering).
