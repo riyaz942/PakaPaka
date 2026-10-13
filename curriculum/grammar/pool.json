@@ -17178,5 +17178,683 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "suruto": {
+    "accepted_meanings": [
+      "then",
+      "and then",
+      "thereupon",
+      "whereupon",
+      "upon which"
+    ],
+    "sentences": [
+      {
+        "japanese": "窓を開けた。すると雨が降っていた。",
+        "english": "I opened the window. Then I saw it was raining.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "ame-v",
+          "furu-rain",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "猫の名前を呼んだ。すると猫が起きた。",
+        "english": "I called the cat's name. Then the cat woke up.",
+        "vocabulary_slugs": [
+          "neko",
+          "namae",
+          "yobu",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "毎朝、電気をつける。すると猫が起きる。",
+        "english": "Every morning I turn on the light. Then the cat wakes up.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "denki",
+          "tsukeru",
+          "neko",
+          "okiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "電気を毎朝つける。すると猫が起きる。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "友達を呼んだ。すると友達が来た。",
+        "english": "I called my friend. Then my friend came.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "yobu",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "ドアを開けました。すると、犬が入りました。",
+        "english": "I opened the door. Then a dog came in.",
+        "vocabulary_slugs": [
+          "doa",
+          "akeru",
+          "inu",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "家に帰った。すると母が料理を作っていた。",
+        "english": "I got home. Then I found my mother cooking.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v",
+          "haha",
+          "ryouri",
+          "tsukuru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "薬を飲んだ。すると、熱が下がった。",
+        "english": "I took the medicine. Then my fever went down.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "netsu",
+          "sagaru"
+        ]
+      },
+      {
+        "japanese": "先生に質問した。すると、先生は何も言わなかった。",
+        "english": "I asked the teacher a question. Then the teacher said nothing.",
+        "vocabulary_slugs": [
+          "sensei",
+          "shitsumon-suru",
+          "nani-mo",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "角を右に曲がりました。すると、何がありましたか。",
+        "english": "You turned right at the corner. And then what was there?",
+        "vocabulary_slugs": [
+          "kado",
+          "migi-v",
+          "magaru",
+          "nani",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "igai": {
+    "accepted_meanings": [
+      "except",
+      "other than",
+      "besides",
+      "apart from",
+      "except for"
+    ],
+    "sentences": [
+      {
+        "japanese": "土曜日以外は毎日働いています。",
+        "english": "I work every day except Saturday.",
+        "vocabulary_slugs": [
+          "doyoubi",
+          "mainichi",
+          "hataraku",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "私以外はみんな来ます。",
+        "english": "Everyone except me is coming.",
+        "vocabulary_slugs": [
+          "watashi",
+          "minna",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "水泳以外、スポーツは苦手です。",
+        "english": "Other than swimming, I'm bad at sports.",
+        "vocabulary_slugs": [
+          "suiei",
+          "supootsu",
+          "nigate"
+        ]
+      },
+      {
+        "japanese": "音楽以外に趣味がありません。",
+        "english": "I don't have a hobby besides music.",
+        "vocabulary_slugs": [
+          "ongaku",
+          "shumi",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "日本語以外に英語も話せます。",
+        "english": "Besides Japanese, I can also speak English.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "eigo",
+          "hanaseru"
+        ]
+      },
+      {
+        "japanese": "肉以外は何でも食べます。",
+        "english": "I eat anything except meat.",
+        "vocabulary_slugs": [
+          "niku",
+          "nani-demo",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼以外は誰も知りません。",
+        "english": "No one knows except him.",
+        "vocabulary_slugs": [
+          "kare",
+          "dare-mo",
+          "shiru"
+        ]
+      },
+      {
+        "japanese": "水以外に何か飲みましたか。",
+        "english": "Did you drink anything other than water?",
+        "vocabulary_slugs": [
+          "mizu",
+          "nani",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "兄以外の家族はみんな犬が好きだ。",
+        "english": "Everyone in my family except my older brother likes dogs.",
+        "vocabulary_slugs": [
+          "ani",
+          "kazoku",
+          "minna",
+          "inu",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "昨日は傘以外、何も買わなかった。",
+        "english": "Yesterday I didn't buy anything except an umbrella.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kasa",
+          "nani-mo",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "igo-formal": {
+    "accepted_meanings": [
+      "ever since",
+      "since",
+      "since then",
+      "from then on"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本に来て以来、毎日忙しいです。",
+        "english": "Ever since I came to Japan, I've been busy every day.",
+        "vocabulary_slugs": [
+          "nihon",
+          "kuru-v",
+          "mainichi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "卒業して以来、先生に会っていません。",
+        "english": "I haven't seen my teacher since I graduated.",
+        "vocabulary_slugs": [
+          "sotsugyou-suru",
+          "sensei",
+          "au",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "先月以来、病気です。",
+        "english": "I've been sick since last month.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "byouki"
+        ]
+      },
+      {
+        "japanese": "結婚して以来、毎日料理をしています。",
+        "english": "Ever since I got married, I've been cooking every day.",
+        "vocabulary_slugs": [
+          "kekkon-suru",
+          "mainichi",
+          "ryouri",
+          "suru",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "結婚して以来、料理を毎日しています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "子供が生まれて以来、あまり寝ていません。",
+        "english": "Ever since our child was born, I haven't slept much.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "umareru",
+          "amari",
+          "neru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "去年以来、彼女から手紙が来ていない。",
+        "english": "No letter has come from her since last year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "kanojo",
+          "tegami",
+          "kuru-v",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "引っ越して以来、友達に会いましたか。",
+        "english": "Have you seen your friends since you moved?",
+        "vocabulary_slugs": [
+          "hikkosu",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "春以来、雨が降っていない。",
+        "english": "It hasn't rained since spring.",
+        "vocabulary_slugs": [
+          "haru",
+          "ame-v",
+          "furu-rain",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "眼鏡を変えて以来、よく見えます。",
+        "english": "Ever since I changed my glasses, I can see well.",
+        "vocabulary_slugs": [
+          "megane",
+          "kaeru-change",
+          "yoku",
+          "mieru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hantai-ni": {
+    "accepted_meanings": [
+      "on the contrary",
+      "conversely",
+      "the other way around",
+      "contrary to that",
+      "on the other hand"
+    ],
+    "sentences": [
+      {
+        "japanese": "兄は静かです。反対に、弟は賑やかです。",
+        "english": "My older brother is quiet. Conversely, my younger brother is lively.",
+        "vocabulary_slugs": [
+          "ani",
+          "shizuka",
+          "otouto",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "今日は暑いと思った。反対に、とても寒かった。",
+        "english": "I thought today would be hot. On the contrary, it was very cold.",
+        "vocabulary_slugs": [
+          "kyou",
+          "atsui-hot",
+          "omou",
+          "totemo",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "彼は忙しいと言ったが、反対に暇だった。",
+        "english": "He said he was busy, but on the contrary he was free.",
+        "vocabulary_slugs": [
+          "kare",
+          "isogashii",
+          "iu-v",
+          "hima"
+        ]
+      },
+      {
+        "japanese": "テストは簡単だと思ったが、反対にとても難しかった。",
+        "english": "I thought the test would be easy, but on the contrary it was very difficult.",
+        "vocabulary_slugs": [
+          "tesuto",
+          "kantan-n4",
+          "omou",
+          "totemo",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "雨が降ると思った。反対に、いい天気になった。",
+        "english": "I thought it would rain. On the contrary, it turned into good weather.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "omou",
+          "ii",
+          "tenki",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "彼女は優しいと思った。反対に、とても厳しかった。",
+        "english": "I thought she was kind. On the contrary, she was very strict.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "yasashii-n4",
+          "omou",
+          "totemo",
+          "kibishii"
+        ]
+      },
+      {
+        "japanese": "父は肉が好きです。反対に、母は肉を食べません。",
+        "english": "My father loves meat. My mother, on the other hand, doesn't eat it.",
+        "vocabulary_slugs": [
+          "chichi",
+          "niku",
+          "suki",
+          "haha",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "兄は野菜が嫌いです。反対に、あなたは好きですか。",
+        "english": "My older brother hates vegetables. Do you, the other way around, like them?",
+        "vocabulary_slugs": [
+          "ani",
+          "yasai",
+          "kirai",
+          "anata",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "薬を飲んだのに、反対に熱が上がった。",
+        "english": "I took medicine, but on the contrary my fever went up.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "netsu",
+          "agaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koso": {
+    "accepted_meanings": [
+      "for sure",
+      "precisely",
+      "the very",
+      "indeed",
+      "of all"
+    ],
+    "sentences": [
+      {
+        "japanese": "今年こそ、日本語を頑張ります。",
+        "english": "This year for sure, I'll work hard at Japanese.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "nihongo",
+          "ganbaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今年も、日本語を頑張ります。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "あなたこそ頑張りました。",
+        "english": "You're the one who really worked hard.",
+        "vocabulary_slugs": [
+          "anata",
+          "ganbaru"
+        ]
+      },
+      {
+        "japanese": "彼こそ私の一番の友達です。",
+        "english": "He, of all people, is my best friend.",
+        "vocabulary_slugs": [
+          "kare",
+          "watashi",
+          "ichiban",
+          "tomodachi"
+        ]
+      },
+      {
+        "japanese": "忙しいからこそ、休みたい。",
+        "english": "Precisely because I'm busy, I want to rest.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "彼女こそ真面目です。",
+        "english": "She is the one who's genuinely diligent.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "majime"
+        ]
+      },
+      {
+        "japanese": "今日こそ忙しいです。",
+        "english": "Today, of all days, is busy.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "明日こそ早く起きます。",
+        "english": "Tomorrow for sure, I'll get up early.",
+        "vocabulary_slugs": [
+          "ashita",
+          "hayai-early",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "次こそ試験に合格したい。",
+        "english": "Next time for sure, I want to pass the exam.",
+        "vocabulary_slugs": [
+          "tsugi",
+          "shiken",
+          "goukaku-suru"
+        ]
+      },
+      {
+        "japanese": "今日こそ遅刻しません。",
+        "english": "Today, for sure, I won't be late.",
+        "vocabulary_slugs": [
+          "kyou",
+          "chikoku-suru"
+        ]
+      },
+      {
+        "japanese": "あなたこそ大丈夫ですか。",
+        "english": "Are YOU okay, though?",
+        "vocabulary_slugs": [
+          "anata",
+          "daijoubu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sae": {
+    "accepted_meanings": [
+      "even",
+      "not even",
+      "so much as",
+      "even something like"
+    ],
+    "sentences": [
+      {
+        "japanese": "子供さえ分かります。",
+        "english": "Even a child can understand.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "子供も分かります。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "朝は忙しくて、水さえ飲まなかった。",
+        "english": "I was so busy this morning I didn't even drink water.",
+        "vocabulary_slugs": [
+          "asa",
+          "isogashii",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "彼は漢字さえ知らない。",
+        "english": "He doesn't even know kanji.",
+        "vocabulary_slugs": [
+          "kare",
+          "kanji-word",
+          "shiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "漢字さえ知らない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女はお金さえも持っていない。",
+        "english": "She doesn't even have money.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "okane",
+          "motsu",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼女はお金さえ持っていない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "友達は私の名前さえ忘れた。",
+        "english": "My friend even forgot my name.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "watashi",
+          "namae",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "そのテストは簡単で、子供さえ分かった。",
+        "english": "That test was easy; even a child understood it.",
+        "vocabulary_slugs": [
+          "sono",
+          "tesuto",
+          "kantan-n4",
+          "kodomo-v",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "今週は忙しくて、電話さえかけなかった。",
+        "english": "This week I was so busy that I didn't even make a phone call.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "isogashii",
+          "denwa",
+          "kakeru-call"
+        ]
+      },
+      {
+        "japanese": "弟は自分の部屋さえ掃除しないんですか。",
+        "english": "Your brother doesn't even clean his own room?",
+        "vocabulary_slugs": [
+          "otouto",
+          "jibun",
+          "heya",
+          "souji-suru"
+        ]
+      },
+      {
+        "japanese": "寒くて、猫さえ外に出ない。",
+        "english": "It's so cold that even the cat won't go outside.",
+        "vocabulary_slugs": [
+          "samui",
+          "neko",
+          "soto",
+          "deru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
