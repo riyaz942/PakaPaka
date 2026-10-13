@@ -24,6 +24,8 @@ type ItemDetailBodyProps = {
    */
   surface?: string | null;
   inflection?: WordInflection | null;
+  /** Set by `/review/item/[id]`: hides a grammar point's examples (see `GrammarDetail`). */
+  inReview?: boolean;
 };
 
 /**
@@ -40,6 +42,7 @@ export function ItemDetailBody({
   itemId,
   surface = null,
   inflection = null,
+  inReview = false,
 }: ItemDetailBodyProps) {
   const {
     item,
@@ -111,6 +114,7 @@ export function ItemDetailBody({
           exampleSentences={exampleSentences}
           relatedGrammar={relatedGrammar}
           related={related}
+          inReview={inReview}
         />
       ) : null}
 

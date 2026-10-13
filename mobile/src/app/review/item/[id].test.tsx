@@ -6,6 +6,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   __mockResetSqlite,
   __mockSetAcceptedAnswers,
+  __mockSetExampleSentences,
+  __mockSetGrammarRules,
   __mockSetItemRelationships,
   __mockSetItems,
   __mockSetKanjiReadings,
@@ -133,6 +135,45 @@ describe('ReviewItemDetailScreen (Story 1.2, FR85 — details under review/)', (
 
     // Pushing /browse/item from here would unmount ReviewSessionProvider.
     expect(mockPush).toHaveBeenCalledWith('/review/item/3');
+  });
+
+  // A grammar point's examples are its review sentences (spec §4): the next
+  // Build card's answer must not be one tap away.
+  it('hides a grammar point’s example sentences', async () => {
+    mockUseLocalSearchParams.mockReturnValue({ id: '4' });
+    const { curriculumDb, userDb } = await createDbs();
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 4,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be (polite)',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+    __mockSetGrammarRules('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 4,
+        structure: 'Noun + です',
+        conjugation_rules: '{}',
+        accepted_forms: '["です"]',
+      },
+    ]);
+    __mockSetExampleSentences('curriculum.db.test', [
+      { id: 1, item_id: 4, japanese: 'これは本です。', english: 'This is a book.', sort_order: 1 },
+    ]);
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('grammar-detail')).toBeTruthy();
+    });
+    expect(screen.queryByText('This is a book.')).toBeNull();
+    expect(screen.getByTestId('grammar-examples-hidden-in-review')).toBeTruthy();
   });
 
   it('shows a not-found message for an unknown id', async () => {

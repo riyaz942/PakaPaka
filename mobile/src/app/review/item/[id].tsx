@@ -47,6 +47,7 @@ export default function ReviewItemDetailScreen() {
               itemId={itemId}
               surface={params.surface ?? null}
               inflection={parseInflection(params.inflection)}
+              inReview
             />
           </ItemLinkProvider>
         </ScrollView>

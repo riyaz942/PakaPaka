@@ -138,6 +138,24 @@ describe('GrammarDetail', () => {
     expect(screen.getByText('じゃない')).toBeTruthy();
     expect(screen.getByText('negative copula')).toBeTruthy();
   });
+
+  // Every grammar example is a review sentence (spec §4), so listing them
+  // during a review would show the next Build answer with its English.
+  it('hides the example sentences during a review and says why', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={grammarRule}
+        exampleSentences={exampleSentences}
+        inReview
+      />,
+    );
+
+    expect(screen.queryByText('これは本です。')).toBeNull();
+    expect(screen.queryByText('This is a book.')).toBeNull();
+    expect(screen.getByTestId('grammar-examples-hidden-in-review')).toBeTruthy();
+  });
 });
 
 describe('GrammarDetail — content-not-generated placeholders', () => {

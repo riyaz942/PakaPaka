@@ -34,6 +34,11 @@ type GrammarDetailProps = {
   exampleSentences: ExampleSentence[];
   relatedGrammar?: RelatedGrammarItem[];
   related?: RelatedItem[];
+  /**
+   * Set on the review-nested detail screen. Every grammar example is a review
+   * sentence (spec §4), so the list would show the next Build answer.
+   */
+  inReview?: boolean;
 };
 
 function formatConjugationValue(value: unknown): string {
@@ -53,6 +58,7 @@ export function GrammarDetail({
   exampleSentences,
   relatedGrammar = [],
   related = [],
+  inReview = false,
 }: GrammarDetailProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
@@ -152,11 +158,20 @@ export function GrammarDetail({
 
       <PersonalMnemonicEditor itemId={item.id} />
 
-      <ExampleSentencesSection
-        sentences={exampleSentences}
-        testIDPrefix="grammar-example"
-        emptyPlaceholder="Examples coming soon"
-      />
+      {inReview ? (
+        <View className="mt-space-md" testID="grammar-examples-hidden-in-review">
+          <SectionHeading label="Examples" />
+          <Text className="mt-space-xs text-body-sm font-ui text-muted">
+            Hidden during reviews, because these sentences are your review questions.
+          </Text>
+        </View>
+      ) : (
+        <ExampleSentencesSection
+          sentences={exampleSentences}
+          testIDPrefix="grammar-example"
+          emptyPlaceholder="Examples coming soon"
+        />
+      )}
 
       <ItemCrossReferences item={item} related={related} relatedGrammar={relatedGrammar} />
     </View>
