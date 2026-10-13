@@ -10107,5 +10107,659 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "younaru": {
+    "accepted_meanings": [
+      "no longer",
+      "stop doing",
+      "not anymore",
+      "come to not",
+      "stopped"
+    ],
+    "sentences": [
+      {
+        "japanese": "兄はコーヒーを飲まなくなりました。",
+        "english": "My older brother stopped drinking coffee.",
+        "vocabulary_slugs": [
+          "ani",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "猫が魚を食べなくなりました。",
+        "english": "The cat stopped eating fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "雨で山が見えなくなりました。",
+        "english": "Because of the rain, the mountain became impossible to see.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "yama-v",
+          "mieru"
+        ]
+      },
+      {
+        "japanese": "彼の名前が分からなくなりました。",
+        "english": "I no longer know his name.",
+        "vocabulary_slugs": [
+          "kare",
+          "namae",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "漢字が読めなくなりました。",
+        "english": "I became unable to read kanji.",
+        "vocabulary_slugs": [
+          "kanji-word",
+          "yomeru"
+        ]
+      },
+      {
+        "japanese": "最近、お酒を飲まなくなりました。",
+        "english": "Recently, I stopped drinking alcohol.",
+        "vocabulary_slugs": [
+          "saikin",
+          "osake",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "忙しくて、本を読まなくなりました。",
+        "english": "I got busy and stopped reading books.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "時計が動かなくなりました。",
+        "english": "The clock stopped working.",
+        "vocabulary_slugs": [
+          "tokei",
+          "ugoku"
+        ]
+      },
+      {
+        "japanese": "どうして彼は学校に来なくなりましたか。",
+        "english": "Why did he stop coming to school?",
+        "vocabulary_slugs": [
+          "doushite",
+          "kare",
+          "gakkou-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "子供はだんだん泣かなくなる。",
+        "english": "Little by little, the child will stop crying.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "dandan",
+          "naku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hazu": {
+    "accepted_meanings": [
+      "should be",
+      "expected to",
+      "supposed to",
+      "ought to be",
+      "must be"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼はもう駅にいるはずです。",
+        "english": "He should be at the station by now.",
+        "vocabulary_slugs": [
+          "kare",
+          "mou",
+          "eki",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "母は昨日この手紙を出したはずです。",
+        "english": "My mother should have sent this letter yesterday.",
+        "vocabulary_slugs": [
+          "haha",
+          "kinou",
+          "kono",
+          "tegami",
+          "dasu"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日母はこの手紙を出したはずです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私たちは先週旅行するはずでした。",
+        "english": "We were supposed to travel last week.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "senshuu",
+          "ryokou-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週旅行するはずでした。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "鍵はかばんの中にあるはず。",
+        "english": "The key should be in the bag.",
+        "vocabulary_slugs": [
+          "kagi",
+          "kaban",
+          "naka",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "授業は明日のはずです。",
+        "english": "The class should be tomorrow.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "ashita"
+        ]
+      },
+      {
+        "japanese": "その店の値段は安いはずです。",
+        "english": "That shop's prices should be cheap.",
+        "vocabulary_slugs": [
+          "sono",
+          "mise",
+          "nedan",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "彼女は知っているはずです。",
+        "english": "She should know.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shiru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "父は今日会社に行かないはずです。",
+        "english": "My father isn't supposed to go to the office today.",
+        "vocabulary_slugs": [
+          "chichi",
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この問題は簡単なはずです。",
+        "english": "This problem should be easy.",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "kantan-n4"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hazuganai": {
+    "accepted_meanings": [
+      "there's no way",
+      "can't be",
+      "cannot possibly",
+      "no way that",
+      "impossible that"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼が知らないはずがありません。",
+        "english": "There's no way he doesn't know.",
+        "vocabulary_slugs": [
+          "kare",
+          "shiru"
+        ]
+      },
+      {
+        "japanese": "彼が宿題をしたはずがない。",
+        "english": "There's no way he did his homework.",
+        "vocabulary_slugs": [
+          "kare",
+          "shukudai",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "彼が今日休むはずがない。",
+        "english": "There's no way he's taking today off.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyou",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日彼が休むはずがない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この時計が安いはずがない。",
+        "english": "There's no way this watch is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "tokei",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "この家が便利なはずがない。",
+        "english": "There's no way this house is convenient.",
+        "vocabulary_slugs": [
+          "kono",
+          "ie",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "彼が学生のはずがない。",
+        "english": "There's no way he's a student.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "この問題がこんなに難しいはずがありません。",
+        "english": "There's no way this problem is this hard.",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "konna",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "母が約束を忘れるはずがありません。",
+        "english": "There's no way my mother would forget a promise.",
+        "vocabulary_slugs": [
+          "haha",
+          "yakusoku",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "猫が冷蔵庫を開けるはずがない。",
+        "english": "There's no way the cat opens the fridge.",
+        "vocabulary_slugs": [
+          "neko",
+          "reizouko",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "rashii": {
+    "accepted_meanings": [
+      "apparently",
+      "seems",
+      "I heard",
+      "it seems that",
+      "looks like"
+    ],
+    "sentences": [
+      {
+        "japanese": "試験は難しいらしいです。",
+        "english": "The exam seems difficult.",
+        "vocabulary_slugs": [
+          "shiken",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "彼は今日休むらしい。",
+        "english": "I heard he's taking today off.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyou",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日彼は休むらしい。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "友達は先週旅行に行ったらしい。",
+        "english": "It seems my friend went on a trip last week.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "senshuu",
+          "ryokou",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの店の料理はおいしいらしい。",
+        "english": "That restaurant's food is apparently delicious.",
+        "vocabulary_slugs": [
+          "ano",
+          "mise",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "新しいレストランは有名らしい。",
+        "english": "The new restaurant is apparently famous.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "resutoran",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "友達が言ったから、今日の午後は雨が降るらしい。",
+        "english": "My friend told me, so it seems it'll rain this afternoon.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "iu-v",
+          "kyou",
+          "gogo",
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "明日は雪が降るらしいです。",
+        "english": "It seems it'll snow tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "yuki",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "あの医者はとても親切らしいです。",
+        "english": "That doctor is apparently very kind.",
+        "vocabulary_slugs": [
+          "ano",
+          "isha",
+          "totemo",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "彼はもう結婚したらしいです。",
+        "english": "It seems he already got married.",
+        "vocabulary_slugs": [
+          "kare",
+          "mou",
+          "kekkon-suru"
+        ]
+      },
+      {
+        "japanese": "兄は今年の夏、帰らないらしい。",
+        "english": "Apparently my older brother isn't coming home this summer.",
+        "vocabulary_slugs": [
+          "ani",
+          "kotoshi",
+          "natsu",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youda": {
+    "accepted_meanings": [
+      "seems",
+      "appears",
+      "it seems that",
+      "looks like",
+      "apparently"
+    ],
+    "sentences": [
+      {
+        "japanese": "外は寒いようです。",
+        "english": "It seems cold outside.",
+        "vocabulary_slugs": [
+          "soto",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "誰も家にいないようだ。",
+        "english": "Looks like nobody's home.",
+        "vocabulary_slugs": [
+          "dare-mo",
+          "ie",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "雨が降るようだ。",
+        "english": "Looks like it's going to rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "今日は寒いようだ。",
+        "english": "Seems cold today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "先生は暇なようだ。",
+        "english": "The teacher seems free.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hima"
+        ]
+      },
+      {
+        "japanese": "友達は病気のようだ。",
+        "english": "My friend seems to be sick.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "byouki"
+        ]
+      },
+      {
+        "japanese": "弟は宿題をしているようです。",
+        "english": "My younger brother seems to be doing his homework.",
+        "vocabulary_slugs": [
+          "otouto",
+          "shukudai",
+          "suru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "この時計は壊れているようです。",
+        "english": "This watch seems to be broken.",
+        "vocabulary_slugs": [
+          "kono",
+          "tokei",
+          "kowareru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "猫が魚を全部食べたようです。",
+        "english": "It seems the cat ate all the fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "zenbu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "あの人は外国人のようです。",
+        "english": "That person seems to be a foreigner.",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "gaikokujin"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mitai": {
+    "accepted_meanings": [
+      "seems like",
+      "looks like",
+      "seems",
+      "apparently",
+      "it seems"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼は忙しいみたいです。",
+        "english": "He seems busy.",
+        "vocabulary_slugs": [
+          "kare",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "この料理はお菓子みたいだ。",
+        "english": "This dish tastes like candy.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "okashi"
+        ]
+      },
+      {
+        "japanese": "この部屋は静かみたいだ。",
+        "english": "This room seems quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "あの料理は辛いみたいだ。",
+        "english": "That dish looks spicy.",
+        "vocabulary_slugs": [
+          "ano",
+          "ryouri",
+          "karai"
+        ]
+      },
+      {
+        "japanese": "兄は晩に出るみたいだ。",
+        "english": "My older brother seems to be going out in the evening.",
+        "vocabulary_slugs": [
+          "ani",
+          "ban",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "雨みたいだね。",
+        "english": "Looks like rain, doesn't it.",
+        "vocabulary_slugs": [
+          "ame-v"
+        ]
+      },
+      {
+        "japanese": "夜から雨が降るみたいです。",
+        "english": "It looks like it'll rain from tonight.",
+        "vocabulary_slugs": [
+          "yoru",
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "この店、有名みたいです。",
+        "english": "This shop seems famous.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "弟はまだ起きていないみたいです。",
+        "english": "My younger brother doesn't seem to be up yet.",
+        "vocabulary_slugs": [
+          "otouto",
+          "mada",
+          "okiru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "犬が私の靴を食べたみたいです。",
+        "english": "It looks like the dog ate my shoes.",
+        "vocabulary_slugs": [
+          "inu",
+          "watashi",
+          "kutsu",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "私の靴を犬が食べたみたいです。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
