@@ -17134,78 +17134,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "春になると、花が咲きます。",
-          "english": "When spring comes, flowers bloom.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "haru"
-          ],
-          "furigana": "春[はる]になると、花[はな]が咲[さ]きます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "haru",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "このボタンを押すと、電気がつきます。",
-          "english": "If you press this button, the light turns on.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "denki"
-          ],
-          "furigana": "このボタンを押[お]すと、電[でん]気[き]がつきます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "denki",
-              "start": 10,
-              "end": 12
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "右に曲がると、駅があります。",
-          "english": "If you turn right, there's the station.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "magaru",
-            "eki"
-          ],
-          "furigana": "右[みぎ]に曲[ま]がると、駅[えき]があります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "magaru",
-              "start": 2,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "eki",
-              "start": 7,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "窓を開けると、風が入る。",
           "english": "Open the window, and wind comes in.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "mado",
             "akeru",
@@ -17242,48 +17173,9 @@
           "register": "plain"
         },
         {
-          "japanese": "お酒を飲むと、顔が赤くなる。",
-          "english": "Drink this, and your face turns red.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "osake",
-            "nomu-v",
-            "kao",
-            "naru-become"
-          ],
-          "furigana": "お酒[さけ]を飲[の]むと、顔[かお]が赤[あか]くなる。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "osake",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "nomu-v",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "kao",
-              "start": 7,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "naru-become",
-              "start": 11,
-              "end": 13
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 6
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "電話が鳴ると、猫が驚く。",
           "english": "The phone rings, and the cat gets startled.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "denwa",
             "naru-ring",
@@ -17322,7 +17214,7 @@
         {
           "japanese": "冬になると、雪が降る。",
           "english": "When winter comes, snow falls.",
-          "sort_order": 6,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "fuyu",
             "naru-become",
@@ -17361,7 +17253,7 @@
         {
           "japanese": "家に帰ると、雨だった。",
           "english": "I got home, and it was raining.",
-          "sort_order": 7,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "ie",
             "kaeru-v",
@@ -17390,6 +17282,213 @@
             "end": 5
           },
           "register": "plain"
+        },
+        {
+          "japanese": "右に曲がると、駅があります。",
+          "english": "If you turn right, there's the station.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "migi-v",
+            "magaru",
+            "eki",
+            "aru"
+          ],
+          "furigana": "右[みぎ]に曲[ま]がると、駅[えき]があります。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "migi-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "magaru",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "お酒を飲むと、顔が赤くなる。",
+          "english": "When I drink, my face turns red.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "osake",
+            "nomu-v",
+            "kao",
+            "akai",
+            "naru-become"
+          ],
+          "furigana": "お酒[さけ]を飲[の]むと、顔[かお]が赤[あか]くなる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "osake",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kao",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "akai",
+              "start": 9,
+              "end": 11,
+              "surface_form": "赤く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "電気を消すと、何も見えません。",
+          "english": "Turn off the light, and you can't see a thing.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "denki",
+            "kesu",
+            "nani",
+            "mieru"
+          ],
+          "furigana": "電[でん]気[き]を消[け]すと、何[なに]も見[み]えません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "denki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kesu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "mieru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "見えません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "駅まで歩くと、遠いですか。",
+          "english": "Is it far if I walk to the station?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "eki",
+            "aruku",
+            "tooi"
+          ],
+          "furigana": "駅[えき]まで歩[ある]くと、遠[とお]いですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "aruku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tooi",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "春になると、公園の花がきれいです。",
+          "english": "When spring comes, the flowers in the park are pretty.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "haru",
+            "naru-become",
+            "kouen",
+            "hana-v",
+            "kirei"
+          ],
+          "furigana": "春[はる]になると、公[こう]園[えん]の花[はな]がきれいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haru",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hana-v",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kirei",
+              "start": 11,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 5
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -17398,6 +17497,33 @@
         "eki"
       ],
       "family": "conjugations",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "if",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "when",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "whenever",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "every time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "and then",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Natural result — \"when / if\"",
@@ -17487,63 +17613,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "疲れたから、休みます。",
-          "english": "Because I'm tired, I'll rest.",
-          "sort_order": 0,
-          "vocabulary_slugs": [],
-          "furigana": "疲[つか]れたから、休[やす]みます。",
-          "grammar_span": {
-            "start": 3,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "危ないから、気をつけてください。",
-          "english": "Because it's dangerous, please be careful.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "abunai"
-          ],
-          "furigana": "危[あぶ]ないから、気[き]をつけてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "abunai",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "約束したから、行かなければなりません。",
-          "english": "Because I promised, I have to go.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "yakusoku"
-          ],
-          "furigana": "約[やく]束[そく]したから、行[い]かなければなりません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "yakusoku",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "忙しいから、行けない。",
           "english": "Busy, so [I] can't go.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "isogashii",
             "ikeru"
@@ -17567,15 +17639,20 @@
             "start": 3,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "忙[いそが]しいので、行[い]けない。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "静かだから、ここが好きです。",
           "english": "Because it's quiet, [I] like this place.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "shizuka",
-            "dakara",
             "koko",
             "suki"
           ],
@@ -17585,11 +17662,6 @@
               "vocabulary_slug": "shizuka",
               "start": 0,
               "end": 2
-            },
-            {
-              "vocabulary_slug": "dakara",
-              "start": 2,
-              "end": 5
             },
             {
               "vocabulary_slug": "koko",
@@ -17611,7 +17683,7 @@
         {
           "japanese": "今日は寒いから、家にいます。",
           "english": "It's cold today, so I'm staying home.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kyou",
             "samui",
@@ -17647,12 +17719,18 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "寒[さむ]いから、今日[きょう]は家[いえ]にいます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "頭が痛いから、休みます。",
           "english": "My head hurts, so I'll rest.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "atama",
             "itai",
@@ -17682,12 +17760,18 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "頭[あたま]が痛[いた]いので、休[やす]みます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "危ないから、走らないで。",
           "english": "It's dangerous, so don't run.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "abunai",
             "hashiru"
@@ -17714,23 +17798,181 @@
           "register": "plain"
         },
         {
-          "japanese": "時間がないから、急ぎましょう。",
-          "english": "There's no time, so let's hurry.",
-          "sort_order": 8,
+          "japanese": "雨が降ったから、出かけなかった。",
+          "english": "It rained, so I didn't go out.",
+          "sort_order": 5,
           "vocabulary_slugs": [
-            "jikan"
+            "ame-v",
+            "furu-rain",
+            "dekakeru"
           ],
-          "furigana": "時[じ]間[かん]がないから、急[いそ]ぎましょう。",
+          "furigana": "雨[あめ]が降[ふ]ったから、出[で]かけなかった。",
           "word_spans": [
             {
-              "vocabulary_slug": "jikan",
+              "vocabulary_slug": "ame-v",
               "start": 0,
-              "end": 2
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 5,
+              "surface_form": "降った",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "dekakeru",
+              "start": 8,
+              "end": 15,
+              "surface_form": "出かけなかった",
+              "inflection": "nai"
             }
           ],
           "grammar_span": {
             "start": 5,
             "end": 7
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "明日は試験だから、勉強します。",
+          "english": "I have an exam tomorrow, so I'll study.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "ashita",
+            "shiken",
+            "benkyou-suru"
+          ],
+          "furigana": "明日[あした]は試[し]験[けん]だから、勉[べん]強[きょう]します。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "勉強します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "約束したから、行きます。",
+          "english": "I promised, so I'll go.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "yakusoku",
+            "suru",
+            "iku-v"
+          ],
+          "furigana": "約[やく]束[そく]したから、行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yakusoku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 2,
+              "end": 4,
+              "surface_form": "した",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "もう遅いから、急ぎましょう。",
+          "english": "It's already late, so let's hurry.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "mou",
+            "osoi",
+            "isogu"
+          ],
+          "furigana": "もう遅[おそ]いから、急[いそ]ぎましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "osoi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogu",
+              "start": 7,
+              "end": 9,
+              "surface_form": "急ぎ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "暑いから、窓を開けましょうか。",
+          "english": "It's hot, so shall I open the window?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "atsui-hot",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "暑[あつ]いから、窓[まど]を開[あ]けましょうか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "atsui-hot",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 7,
+              "end": 9,
+              "surface_form": "開け",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
           },
           "register": "polite"
         }
@@ -17740,6 +17982,28 @@
         "yakusoku"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "because",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "since",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "so",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "忙しい＿＿＿、行けない。",
@@ -17821,21 +18085,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "兄の代わりに、私が行きます。",
-          "english": "I'll go instead of my older brother.",
-          "sort_order": 0,
-          "vocabulary_slugs": [],
-          "furigana": "兄[あに]の代[か]わりに、私[わたし]が行[い]きます。",
-          "grammar_span": {
-            "start": 2,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "お金を払う代わりに、手伝いました。",
           "english": "Instead of paying money, I helped out.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "okane",
             "harau",
@@ -17870,7 +18122,7 @@
         {
           "japanese": "母の代わりに、私が晩ご飯を作ります。",
           "english": "Instead of my mother, I'll make dinner.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "haha",
             "watashi",
@@ -17906,12 +18158,18 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "母[はは]の代[か]わりに、晩[ばん]ご飯[はん]を作[つく]ります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "兄が忙しいから、兄の代わりに弟が働きます。",
           "english": "Because my older brother is busy, my younger brother works in his place.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ani",
             "isogashii",
@@ -17957,7 +18215,7 @@
         {
           "japanese": "電話する代わりに、手紙を書きました。",
           "english": "Instead of calling, I wrote a letter.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "denwa-suru",
             "tegami",
@@ -17992,7 +18250,7 @@
         {
           "japanese": "傘を貸す代わりに、少しお金をもらいます。",
           "english": "In exchange for lending the umbrella, I get a little money.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kasa",
             "kasu",
@@ -18037,13 +18295,49 @@
           "register": "polite"
         },
         {
+          "japanese": "父の代わりに、私が行きます。",
+          "english": "I'll go instead of my father.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "chichi",
+            "watashi",
+            "iku-v"
+          ],
+          "furigana": "父[ちち]の代[か]わりに、私[わたし]が行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
           "japanese": "今日は忙しいです。代わりに、明日会いましょう。",
           "english": "Today I'm busy. Instead, let's meet tomorrow.",
           "sort_order": 6,
           "vocabulary_slugs": [
             "kyou",
             "isogashii",
-            "ashita"
+            "ashita",
+            "au"
           ],
           "furigana": "今日[きょう]は忙[いそが]しいです。代[か]わりに、明日[あした]会[あ]いましょう。",
           "word_spans": [
@@ -18061,11 +18355,129 @@
               "vocabulary_slug": "ashita",
               "start": 14,
               "end": 16
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 16,
+              "end": 18,
+              "surface_form": "会い",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
             "start": 9,
             "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "パンの代わりに、ご飯を食べますか。",
+          "english": "Will you eat rice instead of bread?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "pan",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "パンの代[か]わりに、ご飯[はん]を食[た]べますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "pan",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gohan",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 11,
+              "end": 15,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "コーヒーの代わりに、お茶を飲みませんか。",
+          "english": "Won't you have tea instead of coffee?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "koohii",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "コーヒーの代[か]わりに、お茶[ちゃ]を飲[の]みませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koohii",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 13,
+              "end": 18,
+              "surface_form": "飲みません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "ペンの代わりに、鉛筆を使ってもいいですか。",
+          "english": "May I use a pencil instead of a pen?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "pen",
+            "enpitsu",
+            "tsukau",
+            "ii"
+          ],
+          "furigana": "ペンの代[か]わりに、鉛[えん]筆[ぴつ]を使[つか]ってもいいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "pen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "enpitsu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 11,
+              "end": 14,
+              "surface_form": "使って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 15,
+              "end": 17
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 7
           },
           "register": "polite"
         }
@@ -18076,6 +18488,28 @@
         "tetsudau"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "instead of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in place of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in exchange for",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "instead",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "母の＿＿＿、私が晩ご飯を作ります。",
@@ -18149,51 +18583,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "忙しいというより、疲れています。",
-          "english": "Rather than busy, I'm tired.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "isogashii"
-          ],
-          "furigana": "忙[いそが]しいというより、疲[つか]れています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "好きというより、必要です。",
-          "english": "Rather than liking it, I need it.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "suki"
-          ],
-          "furigana": "好[す]きというより、必[ひつ]要[よう]です。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "suki",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "この試験は難しいというより面倒くさい。",
           "english": "This exam isn't so much difficult as it is annoying.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kono",
             "shiken",
@@ -18232,7 +18624,7 @@
         {
           "japanese": "彼は先生というより友達だ。",
           "english": "He's more a friend than a teacher.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "sensei",
@@ -18265,7 +18657,7 @@
         {
           "japanese": "今日は忙しいというより大変だ。",
           "english": "Today isn't so much busy as it is rough.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kyou",
             "isogashii",
@@ -18298,7 +18690,7 @@
         {
           "japanese": "この部屋は静かというより暗い。",
           "english": "This room isn't so much quiet as it is dark.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kono",
             "heya",
@@ -18337,7 +18729,7 @@
         {
           "japanese": "この映画はつまらないというより悲しい。",
           "english": "This movie isn't so much boring as it is sad.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
             "eiga",
@@ -18372,6 +18764,160 @@
             "end": 15
           },
           "register": "plain"
+        },
+        {
+          "japanese": "この料理は辛いというより痛いです。",
+          "english": "This dish isn't so much spicy as it is painful.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "karai",
+            "itai"
+          ],
+          "furigana": "この料[りょう]理[り]は辛[から]いというより痛[いた]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "karai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あの人は医者というより学者ですか。",
+          "english": "Is that person more a scholar than a doctor?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "ano",
+            "hito",
+            "isha",
+            "gakusha"
+          ],
+          "furigana": "あの人[ひと]は医[い]者[しゃ]というより学[がく]者[しゃ]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "isha",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "gakusha",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あの映画は怖いというより面白かった。",
+          "english": "That movie was more funny than scary.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "ano",
+            "eiga",
+            "kowai",
+            "omoshiroi"
+          ],
+          "furigana": "あの映[えい]画[が]は怖[こわ]いというより面白[おもしろ]かった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kowai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 12,
+              "end": 17,
+              "surface_form": "面白かった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "彼は下手というより練習しない。",
+          "english": "It's not so much that he's bad at it — he doesn't practice.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kare",
+            "heta",
+            "renshuu-suru"
+          ],
+          "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]しない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "heta",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "練習しない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 9
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -18379,6 +18925,28 @@
         "suki"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "rather than",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "more than",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "not so much as",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "more accurately",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "この試験は難しい＿＿＿面倒くさい。",
@@ -18453,65 +19021,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "先生として、学生を指導します。",
-          "english": "As a teacher, I guide the students.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "sensei",
-            "gakusei"
-          ],
-          "furigana": "先[せん]生[せい]として、学[がく]生[せい]を指[し]導[どう]します。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "gakusei",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "友達として、彼を助けたいです。",
-          "english": "As a friend, I want to help him.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "tomodachi",
-            "tasukeru"
-          ],
-          "furigana": "友[とも]達[だち]として、彼[かれ]を助[たす]けたいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "tomodachi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "tasukeru",
-              "start": 8,
-              "end": 10,
-              "surface_form": "助け",
-              "inflection": "stem"
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "私は友達として手伝っています。",
           "english": "I'm helping as a friend.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "watashi",
             "tomodachi",
@@ -18549,12 +19061,18 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]として手伝[てつだ]っています。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私は医者として病院で働いています。",
           "english": "I work at the hospital as a doctor.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "watashi",
             "isha",
@@ -18598,12 +19116,18 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "医[い]者[しゃ]として病[びょう]院[いん]で働[はたら]いています。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は客として来ました。",
           "english": "Today I came as a guest.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kyou",
             "kyaku",
@@ -18638,7 +19162,7 @@
         {
           "japanese": "箱を椅子として使いました。",
           "english": "I used the box as a chair.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "hako",
             "isu",
@@ -18671,42 +19195,9 @@
           "register": "polite"
         },
         {
-          "japanese": "先生として学生に説明しました。",
-          "english": "As the teacher, I explained it to the students.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "sensei",
-            "gakusei",
-            "setsumei"
-          ],
-          "furigana": "先[せん]生[せい]として学[がく]生[せい]に説[せつ]明[めい]しました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "gakusei",
-              "start": 5,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "setsumei",
-              "start": 8,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "家族として一緒に住んでいます。",
           "english": "We live together as a family.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kazoku",
             "issho-ni",
@@ -18745,6 +19236,160 @@
             "end": 5
           },
           "register": "polite"
+        },
+        {
+          "japanese": "先生として学生に説明しました。",
+          "english": "As the teacher, I explained it to the students.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "sensei",
+            "gakusei",
+            "setsumei-suru"
+          ],
+          "furigana": "先[せん]生[せい]として学[がく]生[せい]に説[せつ]明[めい]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "setsumei-suru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "説明しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "友達として、彼を助けたいです。",
+          "english": "As a friend, I want to help him.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kare",
+            "tasukeru"
+          ],
+          "furigana": "友[とも]達[だち]として、彼[かれ]を助[たす]けたいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kare",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tasukeru",
+              "start": 8,
+              "end": 10,
+              "surface_form": "助け",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼女は何として働いていますか。",
+          "english": "What does she work as?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kanojo",
+            "nani",
+            "hataraku",
+            "iru-exist"
+          ],
+          "furigana": "彼[かの]女[じょ]は何[なに]として働[はたら]いていますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 7,
+              "end": 10,
+              "surface_form": "働いて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 10,
+              "end": 13,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この部屋は教室として使いません。",
+          "english": "We don't use this room as a classroom.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "kyoushitsu",
+            "tsukau"
+          ],
+          "furigana": "この部屋[へや]は教[きょう]室[しつ]として使[つか]いません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kyoushitsu",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 10,
+              "end": 15,
+              "surface_form": "使いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -18753,6 +19398,28 @@
         "tasukeru"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "as",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "as a",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the role of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the capacity of",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は友達＿＿＿手伝っています。",
@@ -18835,83 +19502,14 @@
       ],
       "example_sentences": [
         {
-          "japanese": "日本の文化について話しました。",
-          "english": "We talked about Japanese culture.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "nihon",
-            "bunka"
-          ],
-          "furigana": "日本[にほん]の文[ぶん]化[か]について話[はな]しました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nihon",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "bunka",
-              "start": 3,
-              "end": 5
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "この問題について考えてください。",
-          "english": "Please think about this problem.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "mondai"
-          ],
-          "furigana": "この問[もん]題[だい]について考[かんが]えてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "mondai",
-              "start": 2,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "旅行について話しましょう。",
-          "english": "Let's talk about the trip.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "ryokou"
-          ],
-          "furigana": "旅[りょ]行[こう]について話[はな]しましょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ryokou",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "彼はその映画について何も知らない。",
           "english": "He doesn't know anything about that movie.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kare",
             "sono",
             "eiga",
-            "nani-mo",
+            "nani",
             "shiru"
           ],
           "furigana": "彼[かれ]はその映[えい]画[が]について何[なに]も知[し]らない。",
@@ -18932,9 +19530,9 @@
               "end": 6
             },
             {
-              "vocabulary_slug": "nani-mo",
+              "vocabulary_slug": "nani",
               "start": 10,
-              "end": 12
+              "end": 11
             },
             {
               "vocabulary_slug": "shiru",
@@ -18951,81 +19549,9 @@
           "register": "plain"
         },
         {
-          "japanese": "先生に日本の歴史について質問した。",
-          "english": "I asked the teacher a question about Japanese history.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "sensei",
-            "nihon",
-            "rekishi",
-            "shitsumon"
-          ],
-          "furigana": "先[せん]生[せい]に日本[にほん]の歴[れき]史[し]について質[しつ]問[もん]した。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "nihon",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "rekishi",
-              "start": 6,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "shitsumon",
-              "start": 12,
-              "end": 14
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 12
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "宿題の問題につき、説明します。",
-          "english": "Regarding the homework problem, I'll explain it.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "shukudai",
-            "mondai",
-            "setsumei"
-          ],
-          "furigana": "宿[しゅく]題[だい]の問[もん]題[だい]につき、説[せつ]明[めい]します。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shukudai",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "mondai",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "setsumei",
-              "start": 9,
-              "end": 11
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "その問題については明日考えます。",
           "english": "As for that problem, I'll think about it tomorrow.",
-          "sort_order": 6,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "sono",
             "mondai",
@@ -19062,6 +19588,245 @@
             "end": 8
           },
           "register": "polite"
+        },
+        {
+          "japanese": "日本の文化について話しました。",
+          "english": "We talked about Japanese culture.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nihon",
+            "bunka",
+            "hanasu-v"
+          ],
+          "furigana": "日本[にほん]の文[ぶん]化[か]について話[はな]しました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 9,
+              "end": 14,
+              "surface_form": "話しました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "環境について考えましょう。",
+          "english": "Let's think about the environment.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kankyou",
+            "kangaeru"
+          ],
+          "furigana": "環[かん]境[きょう]について考[かんが]えましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kankyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kangaeru",
+              "start": 6,
+              "end": 8,
+              "surface_form": "考え",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "旅行について話しましょう。",
+          "english": "Let's talk about the trip.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "ryokou",
+            "hanasu-v"
+          ],
+          "furigana": "旅[りょ]行[こう]について話[はな]しましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 6,
+              "end": 8,
+              "surface_form": "話し",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先生に日本の歴史について質問した。",
+          "english": "I asked the teacher a question about Japanese history.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "sensei",
+            "nihon",
+            "rekishi",
+            "shitsumon-suru"
+          ],
+          "furigana": "先[せん]生[せい]に日本[にほん]の歴[れき]史[し]について質[しつ]問[もん]した。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "rekishi",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "shitsumon-suru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "質問した",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 12
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "宿題の問題につき、説明します。",
+          "english": "Regarding the homework problem, I'll explain it.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "shukudai",
+            "mondai",
+            "setsumei-suru"
+          ],
+          "furigana": "宿[しゅく]題[だい]の問[もん]題[だい]につき、説[せつ]明[めい]します。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "setsumei-suru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "説明します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "何について書きますか。",
+          "english": "What will you write about?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "nani",
+            "kaku"
+          ],
+          "furigana": "何[なに]について書[か]きますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 5,
+              "end": 9,
+              "surface_form": "書きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "彼女は自分の夢について話さなかった。",
+          "english": "She didn't talk about her own dream.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kanojo",
+            "jibun",
+            "yume",
+            "hanasu-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は自[じ]分[ぶん]の夢[ゆめ]について話[はな]さなかった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "jibun",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yume",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 11,
+              "end": 17,
+              "surface_form": "話さなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -19070,6 +19835,28 @@
         "mondai"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "about",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "regarding",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "concerning",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "on",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "旅行＿＿＿話しましょう。",

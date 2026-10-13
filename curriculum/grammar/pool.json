@@ -12929,5 +12929,714 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "to-conditional": {
+    "accepted_meanings": [
+      "if",
+      "when",
+      "whenever",
+      "every time",
+      "and then"
+    ],
+    "sentences": [
+      {
+        "japanese": "窓を開けると、風が入る。",
+        "english": "Open the window, and wind comes in.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "kaze-wind",
+          "hairu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電話が鳴ると、猫が驚く。",
+        "english": "The phone rings, and the cat gets startled.",
+        "vocabulary_slugs": [
+          "denwa",
+          "naru-ring",
+          "neko",
+          "odoroku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "冬になると、雪が降る。",
+        "english": "When winter comes, snow falls.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "naru-become",
+          "yuki",
+          "furu-rain"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家に帰ると、雨だった。",
+        "english": "I got home, and it was raining.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v",
+          "ame-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "右に曲がると、駅があります。",
+        "english": "If you turn right, there's the station.",
+        "vocabulary_slugs": [
+          "migi-v",
+          "magaru",
+          "eki",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お酒を飲むと、顔が赤くなる。",
+        "english": "When I drink, my face turns red.",
+        "vocabulary_slugs": [
+          "osake",
+          "nomu-v",
+          "kao",
+          "akai",
+          "naru-become"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電気を消すと、何も見えません。",
+        "english": "Turn off the light, and you can't see a thing.",
+        "vocabulary_slugs": [
+          "denki",
+          "kesu",
+          "nani",
+          "mieru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "駅まで歩くと、遠いですか。",
+        "english": "Is it far if I walk to the station?",
+        "vocabulary_slugs": [
+          "eki",
+          "aruku",
+          "tooi"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "春になると、公園の花がきれいです。",
+        "english": "When spring comes, the flowers in the park are pretty.",
+        "vocabulary_slugs": [
+          "haru",
+          "naru-become",
+          "kouen",
+          "hana-v",
+          "kirei"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "node-vs-kara": {
+    "accepted_meanings": [
+      "because",
+      "since",
+      "so",
+      "as"
+    ],
+    "sentences": [
+      {
+        "japanese": "忙しいから、行けない。",
+        "english": "Busy, so [I] can't go.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "ikeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "忙しいので、行けない。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "静かだから、ここが好きです。",
+        "english": "Because it's quiet, [I] like this place.",
+        "vocabulary_slugs": [
+          "shizuka",
+          "koko",
+          "suki"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は寒いから、家にいます。",
+        "english": "It's cold today, so I'm staying home.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui",
+          "ie",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "寒いから、今日は家にいます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "頭が痛いから、休みます。",
+        "english": "My head hurts, so I'll rest.",
+        "vocabulary_slugs": [
+          "atama",
+          "itai",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "頭が痛いので、休みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "危ないから、走らないで。",
+        "english": "It's dangerous, so don't run.",
+        "vocabulary_slugs": [
+          "abunai",
+          "hashiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雨が降ったから、出かけなかった。",
+        "english": "It rained, so I didn't go out.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "dekakeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日は試験だから、勉強します。",
+        "english": "I have an exam tomorrow, so I'll study.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shiken",
+          "benkyou-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "約束したから、行きます。",
+        "english": "I promised, so I'll go.",
+        "vocabulary_slugs": [
+          "yakusoku",
+          "suru",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "もう遅いから、急ぎましょう。",
+        "english": "It's already late, so let's hurry.",
+        "vocabulary_slugs": [
+          "mou",
+          "osoi",
+          "isogu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "暑いから、窓を開けましょうか。",
+        "english": "It's hot, so shall I open the window?",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kawarini": {
+    "accepted_meanings": [
+      "instead of",
+      "in place of",
+      "in exchange for",
+      "instead"
+    ],
+    "sentences": [
+      {
+        "japanese": "お金を払う代わりに、手伝いました。",
+        "english": "Instead of paying money, I helped out.",
+        "vocabulary_slugs": [
+          "okane",
+          "harau",
+          "tetsudau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母の代わりに、私が晩ご飯を作ります。",
+        "english": "Instead of my mother, I'll make dinner.",
+        "vocabulary_slugs": [
+          "haha",
+          "watashi",
+          "bangohan",
+          "tsukuru"
+        ],
+        "alternates": [
+          {
+            "japanese": "母の代わりに、晩ご飯を作ります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄が忙しいから、兄の代わりに弟が働きます。",
+        "english": "Because my older brother is busy, my younger brother works in his place.",
+        "vocabulary_slugs": [
+          "ani",
+          "isogashii",
+          "otouto",
+          "hataraku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電話する代わりに、手紙を書きました。",
+        "english": "Instead of calling, I wrote a letter.",
+        "vocabulary_slugs": [
+          "denwa-suru",
+          "tegami",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "傘を貸す代わりに、少しお金をもらいます。",
+        "english": "In exchange for lending the umbrella, I get a little money.",
+        "vocabulary_slugs": [
+          "kasa",
+          "kasu",
+          "sukoshi",
+          "okane",
+          "morau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "父の代わりに、私が行きます。",
+        "english": "I'll go instead of my father.",
+        "vocabulary_slugs": [
+          "chichi",
+          "watashi",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は忙しいです。代わりに、明日会いましょう。",
+        "english": "Today I'm busy. Instead, let's meet tomorrow.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii",
+          "ashita",
+          "au"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "パンの代わりに、ご飯を食べますか。",
+        "english": "Will you eat rice instead of bread?",
+        "vocabulary_slugs": [
+          "pan",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "コーヒーの代わりに、お茶を飲みませんか。",
+        "english": "Won't you have tea instead of coffee?",
+        "vocabulary_slugs": [
+          "koohii",
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ペンの代わりに、鉛筆を使ってもいいですか。",
+        "english": "May I use a pencil instead of a pen?",
+        "vocabulary_slugs": [
+          "pen",
+          "enpitsu",
+          "tsukau",
+          "ii"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kawari-ni-formal": {
+    "accepted_meanings": [
+      "rather than",
+      "more than",
+      "not so much as",
+      "more accurately"
+    ],
+    "sentences": [
+      {
+        "japanese": "この試験は難しいというより面倒くさい。",
+        "english": "This exam isn't so much difficult as it is annoying.",
+        "vocabulary_slugs": [
+          "kono",
+          "shiken",
+          "muzukashii",
+          "mendokusai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は先生というより友達だ。",
+        "english": "He's more a friend than a teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei",
+          "tomodachi"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は忙しいというより大変だ。",
+        "english": "Today isn't so much busy as it is rough.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii",
+          "taihen"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この部屋は静かというより暗い。",
+        "english": "This room isn't so much quiet as it is dark.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka",
+          "kurai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この映画はつまらないというより悲しい。",
+        "english": "This movie isn't so much boring as it is sad.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "tsumaranai",
+          "kanashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この料理は辛いというより痛いです。",
+        "english": "This dish isn't so much spicy as it is painful.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "karai",
+          "itai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あの人は医者というより学者ですか。",
+        "english": "Is that person more a scholar than a doctor?",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "isha",
+          "gakusha"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あの映画は怖いというより面白かった。",
+        "english": "That movie was more funny than scary.",
+        "vocabulary_slugs": [
+          "ano",
+          "eiga",
+          "kowai",
+          "omoshiroi"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は下手というより練習しない。",
+        "english": "It's not so much that he's bad at it — he doesn't practice.",
+        "vocabulary_slugs": [
+          "kare",
+          "heta",
+          "renshuu-suru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "toshite": {
+    "accepted_meanings": [
+      "as",
+      "as a",
+      "in the role of",
+      "in the capacity of"
+    ],
+    "sentences": [
+      {
+        "japanese": "私は友達として手伝っています。",
+        "english": "I'm helping as a friend.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "tetsudau",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達として手伝っています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私は医者として病院で働いています。",
+        "english": "I work at the hospital as a doctor.",
+        "vocabulary_slugs": [
+          "watashi",
+          "isha",
+          "byouin",
+          "hataraku",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "医者として病院で働いています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は客として来ました。",
+        "english": "Today I came as a guest.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kyaku",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "箱を椅子として使いました。",
+        "english": "I used the box as a chair.",
+        "vocabulary_slugs": [
+          "hako",
+          "isu",
+          "tsukau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家族として一緒に住んでいます。",
+        "english": "We live together as a family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "issho-ni",
+          "sumu",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生として学生に説明しました。",
+        "english": "As the teacher, I explained it to the students.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakusei",
+          "setsumei-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達として、彼を助けたいです。",
+        "english": "As a friend, I want to help him.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kare",
+          "tasukeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼女は何として働いていますか。",
+        "english": "What does she work as?",
+        "vocabulary_slugs": [
+          "kanojo",
+          "nani",
+          "hataraku",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この部屋は教室として使いません。",
+        "english": "We don't use this room as a classroom.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "kyoushitsu",
+          "tsukau"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nitsuite": {
+    "accepted_meanings": [
+      "about",
+      "regarding",
+      "concerning",
+      "on"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼はその映画について何も知らない。",
+        "english": "He doesn't know anything about that movie.",
+        "vocabulary_slugs": [
+          "kare",
+          "sono",
+          "eiga",
+          "nani",
+          "shiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "その問題については明日考えます。",
+        "english": "As for that problem, I'll think about it tomorrow.",
+        "vocabulary_slugs": [
+          "sono",
+          "mondai",
+          "ashita",
+          "kangaeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "日本の文化について話しました。",
+        "english": "We talked about Japanese culture.",
+        "vocabulary_slugs": [
+          "nihon",
+          "bunka",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "環境について考えましょう。",
+        "english": "Let's think about the environment.",
+        "vocabulary_slugs": [
+          "kankyou",
+          "kangaeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "旅行について話しましょう。",
+        "english": "Let's talk about the trip.",
+        "vocabulary_slugs": [
+          "ryokou",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生に日本の歴史について質問した。",
+        "english": "I asked the teacher a question about Japanese history.",
+        "vocabulary_slugs": [
+          "sensei",
+          "nihon",
+          "rekishi",
+          "shitsumon-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "宿題の問題につき、説明します。",
+        "english": "Regarding the homework problem, I'll explain it.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "mondai",
+          "setsumei-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "何について書きますか。",
+        "english": "What will you write about?",
+        "vocabulary_slugs": [
+          "nani",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼女は自分の夢について話さなかった。",
+        "english": "She didn't talk about her own dream.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "jibun",
+          "yume",
+          "hanasu-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
