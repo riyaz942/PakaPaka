@@ -17920,6 +17920,7 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "kyou",
+            "nani",
             "taberu"
           ],
           "furigana": "今日[きょう]は何[なに]も食[た]べたくない。",
@@ -17928,6 +17929,11 @@
               "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 3,
+              "end": 4
             },
             {
               "vocabulary_slug": "taberu",
@@ -17944,68 +17950,13 @@
           "register": "plain"
         },
         {
-          "japanese": "少し休みたいです。",
-          "english": "I want to rest a little.",
+          "japanese": "今日は会社へ行きたくないです。",
+          "english": "I don't want to go to the office today.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "sukoshi",
-            "yasumu"
-          ],
-          "furigana": "少[すこ]し休[やす]みたいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "sukoshi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yasumu",
-              "start": 2,
-              "end": 4,
-              "surface_form": "休み",
-              "inflection": "stem"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "私は日本へ行きたいです。",
-          "english": "I would like to go to Japan.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "watashi",
-            "nihon"
-          ],
-          "furigana": "私[わたし]は日本[にほん]へ行[い]きたいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "nihon",
-              "start": 2,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "今日は会社へ行きたくないです。",
-          "english": "I would rather not go to the office today.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
             "kyou",
-            "kaisha"
+            "kaisha",
+            "iku-v"
           ],
           "furigana": "今日[きょう]は会[かい]社[しゃ]へ行[い]きたくないです。",
           "word_spans": [
@@ -18018,6 +17969,13 @@
               "vocabulary_slug": "kaisha",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 6,
+              "end": 8,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -18028,12 +17986,13 @@
         },
         {
           "japanese": "昨日、あの本を買いたかったです。",
-          "english": "Yesterday, I felt like buying that book.",
-          "sort_order": 6,
+          "english": "Yesterday, I wanted to buy that book.",
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kinou",
             "ano",
-            "hon"
+            "hon",
+            "kau-v"
           ],
           "furigana": "昨日[きのう]、あの本[ほん]を買[か]いたかったです。",
           "word_spans": [
@@ -18051,6 +18010,13 @@
               "vocabulary_slug": "hon",
               "start": 5,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 7,
+              "end": 9,
+              "surface_form": "買い",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -18061,10 +18027,11 @@
         },
         {
           "japanese": "週末は寝たいです。",
-          "english": "Sleeping is my weekend plan.",
-          "sort_order": 7,
+          "english": "On the weekend, I want to sleep.",
+          "sort_order": 5,
           "vocabulary_slugs": [
-            "shuumatsu"
+            "shuumatsu",
+            "neru"
           ],
           "furigana": "週[しゅう]末[まつ]は寝[ね]たいです。",
           "word_spans": [
@@ -18072,11 +18039,158 @@
               "vocabulary_slug": "shuumatsu",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 3,
+              "end": 4,
+              "surface_form": "寝",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
             "start": 4,
             "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "晩ご飯は何が食べたいですか。",
+          "english": "What do you want to eat for dinner?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "bangohan",
+            "nani",
+            "taberu"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]は何[なに]が食[た]べたいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "母に手紙を書きたいです。",
+          "english": "I want to write a letter to my mother.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "haha",
+            "tegami",
+            "kaku"
+          ],
+          "furigana": "母[はは]に手[て]紙[がみ]を書[か]きたいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tegami",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 5,
+              "end": 7,
+              "surface_form": "書き",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "今は誰にも会いたくないです。",
+          "english": "Right now, I don't want to see anyone.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ima",
+            "dare",
+            "au"
+          ],
+          "furigana": "今[いま]は誰[だれ]にも会[あ]いたくないです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "dare",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 5,
+              "end": 7,
+              "surface_form": "会い",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "犬と公園で遊びたいです。",
+          "english": "I want to play in the park with my dog.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "inu",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "犬[いぬ]と公[こう]園[えん]で遊[あそ]びたいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "遊び",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
           },
           "register": "polite"
         }
@@ -18087,6 +18201,28 @@
         "mizu"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "want to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "want to do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "would like to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "wanna",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私は日本へ行き＿＿＿です。",
@@ -18210,7 +18346,7 @@
         },
         {
           "japanese": "時間がほしいです。",
-          "english": "I want (more) time.",
+          "english": "I want more time.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "jikan"
@@ -18324,6 +18460,111 @@
             "end": 8
           },
           "register": "polite"
+        },
+        {
+          "japanese": "あなたは何がほしいですか。",
+          "english": "What do you want?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "anata",
+            "nani"
+          ],
+          "furigana": "あなたは何[なに]がほしいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "anata",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 4,
+              "end": 5
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "何[なに]がほしいですか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "私は大きい犬がほしいです。",
+          "english": "I want a big dog.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "watashi",
+            "ookii",
+            "inu"
+          ],
+          "furigana": "私[わたし]は大[おお]きい犬[いぬ]がほしいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ookii",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 5,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "大[おお]きい犬[いぬ]がほしいです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "冬は暖かいコートがほしいです。",
+          "english": "In winter, I want a warm coat.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "fuyu",
+            "atatakai",
+            "kooto"
+          ],
+          "furigana": "冬[ふゆ]は暖[あたた]かいコートがほしいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "atatakai",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kooto",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 12
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -18332,6 +18573,28 @@
         "okane"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "want",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "want something",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "would like",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "desire",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "水が＿＿＿です。",
@@ -18412,7 +18675,7 @@
       "example_sentences": [
         {
           "japanese": "映画を見に行きます。",
-          "english": "I go to see a movie.",
+          "english": "I'm going to see a movie.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "eiga",
@@ -18486,7 +18749,7 @@
         },
         {
           "japanese": "友達に会いに来ました。",
-          "english": "I came to meet a friend.",
+          "english": "I came to see a friend.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "tomodachi",
@@ -18522,39 +18785,14 @@
           "register": "polite"
         },
         {
-          "japanese": "映画館へ映画を見に行く。",
-          "english": "I'm going to the cinema to watch a movie.",
+          "japanese": "友達がうちへ遊びに来る。",
+          "english": "A friend is coming over to my place to hang out.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "eigakan",
-            "eiga"
-          ],
-          "furigana": "映[えい]画[が]館[かん]へ映[えい]画[が]を見[み]に行[い]く。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "eigakan",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "eiga",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 11
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "友達がうちへ遊びに来る。",
-          "english": "A friend is coming to my house to hang out.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
             "tomodachi",
-            "uchi"
+            "uchi",
+            "asobu",
+            "kuru-v"
           ],
           "furigana": "友[とも]達[だち]がうちへ遊[あそ]びに来[く]る。",
           "word_spans": [
@@ -18567,6 +18805,18 @@
               "vocabulary_slug": "uchi",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "遊び",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 9,
+              "end": 11
             }
           ],
           "grammar_span": {
@@ -18577,12 +18827,14 @@
         },
         {
           "japanese": "妹は毎晩、晩ご飯を食べに帰る。",
-          "english": "Every night, my younger sister returns home to eat dinner.",
-          "sort_order": 5,
+          "english": "Every night, my younger sister comes home to eat dinner.",
+          "sort_order": 4,
           "vocabulary_slugs": [
             "imouto",
             "maiban",
-            "bangohan"
+            "bangohan",
+            "taberu",
+            "kaeru-v"
           ],
           "furigana": "妹[いもうと]は毎[まい]晩[ばん]、晩[ばん]ご飯[はん]を食[た]べに帰[かえ]る。",
           "word_spans": [
@@ -18600,6 +18852,18 @@
               "vocabulary_slug": "bangohan",
               "start": 5,
               "end": 8
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 9,
+              "end": 11,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 12,
+              "end": 14
             }
           ],
           "grammar_span": {
@@ -18611,11 +18875,12 @@
         {
           "japanese": "毎日、学校へ勉強しに行く。",
           "english": "Every day, I go to school to study.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "mainichi",
             "gakkou-v",
-            "benkyou"
+            "benkyou-suru",
+            "iku-v"
           ],
           "furigana": "毎[まい]日[にち]、学[がっ]校[こう]へ勉[べん]強[きょう]しに行[い]く。",
           "word_spans": [
@@ -18630,9 +18895,16 @@
               "end": 5
             },
             {
-              "vocabulary_slug": "benkyou",
+              "vocabulary_slug": "benkyou-suru",
               "start": 6,
-              "end": 8
+              "end": 9,
+              "surface_form": "勉強し",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 12
             }
           ],
           "grammar_span": {
@@ -18643,12 +18915,14 @@
         },
         {
           "japanese": "レストランへおいしいご飯を食べに行く。",
-          "english": "I go to a restaurant to eat delicious food.",
-          "sort_order": 7,
+          "english": "I'm going to a restaurant to eat good food.",
+          "sort_order": 6,
           "vocabulary_slugs": [
             "resutoran",
             "oishii",
-            "gohan"
+            "gohan",
+            "taberu",
+            "iku-v"
           ],
           "furigana": "レストランへおいしいご飯[はん]を食[た]べに行[い]く。",
           "word_spans": [
@@ -18666,6 +18940,18 @@
               "vocabulary_slug": "gohan",
               "start": 10,
               "end": 12
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 13,
+              "end": 15,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 16,
+              "end": 18
             }
           ],
           "grammar_span": {
@@ -18673,6 +18959,86 @@
             "end": 18
           },
           "register": "plain"
+        },
+        {
+          "japanese": "週末、どこへ遊びに行きますか。",
+          "english": "Where are you going to hang out this weekend?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "doko",
+            "asobu",
+            "iku-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]、どこへ遊[あそ]びに行[い]きますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "遊び",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "海へ泳ぎに行きました。",
+          "english": "I went to the sea to swim.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "umi",
+            "oyogu",
+            "iku-v"
+          ],
+          "furigana": "海[うみ]へ泳[およ]ぎに行[い]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "umi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "oyogu",
+              "start": 2,
+              "end": 4,
+              "surface_form": "泳ぎ",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 5,
+              "end": 10,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 10
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -18681,6 +19047,33 @@
         "au"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "go to do",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "go in order to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in order to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "come to do",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "go and do",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "映画館へ映画を見＿＿＿。",
@@ -18754,65 +19147,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "寝る前に歯を磨きます。",
-          "english": "I brush my teeth before sleeping.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "neru",
-            "ha-tooth"
-          ],
-          "furigana": "寝[ね]る前[まえ]に歯[は]を磨[みが]きます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "neru",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ha-tooth",
-              "start": 4,
-              "end": 5
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "食事の前に手を洗います。",
-          "english": "I wash my hands before a meal.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "te-v",
-            "arau"
-          ],
-          "furigana": "食[しょく]事[じ]の前[まえ]に手[て]を洗[あら]います。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "te-v",
-              "start": 5,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "arau",
-              "start": 7,
-              "end": 11,
-              "surface_form": "洗います",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "授業の前に本を読みます。",
           "english": "I read a book before class.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "jugyou",
             "hon",
@@ -18842,12 +19179,18 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "授[じゅ]業[ぎょう]の後[あと]で本[ほん]を読[よ]みます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "食べる前に手を洗う。",
           "english": "I wash my hands before eating.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "taberu",
             "te-v",
@@ -18880,7 +19223,7 @@
         {
           "japanese": "晩ご飯の前にテレビを見る。",
           "english": "I watch TV before dinner.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "bangohan",
             "terebi",
@@ -18908,12 +19251,18 @@
             "start": 4,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "晩[ばん]ご飯[はん]の後[あと]でテレビを見[み]る。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "寝る前に本を読んだ。",
-          "english": "I read a book before sleeping.",
-          "sort_order": 5,
+          "english": "I read a book before going to sleep.",
+          "sort_order": 3,
           "vocabulary_slugs": [
             "neru",
             "hon",
@@ -18946,32 +19295,9 @@
           "register": "plain"
         },
         {
-          "japanese": "三時間前に来た。",
-          "english": "I came three hours ago.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "kuru-v"
-          ],
-          "furigana": "三[さん]時[じ]間[かん]前[まえ]に来[き]た。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 5,
-              "end": 7,
-              "surface_form": "来た",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 5
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "友達が来る前に、部屋を出る。",
           "english": "I leave the room before my friend comes.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "tomodachi",
             "kuru-v",
@@ -19006,6 +19332,170 @@
             "end": 7
           },
           "register": "plain"
+        },
+        {
+          "japanese": "学校へ行く前に、何を食べますか。",
+          "english": "What do you eat before you go to school?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "iku-v",
+            "nani",
+            "taberu"
+          ],
+          "furigana": "学[がっ]校[こう]へ行[い]く前[まえ]に、何[なに]を食[た]べますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "gakkou-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 10,
+              "end": 14,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "学[がっ]校[こう]に行[い]く前[まえ]に、何[なに]を食[た]べますか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "映画の前に、お手洗いへ行きます。",
+          "english": "I go to the restroom before the movie.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "eiga",
+            "otearai",
+            "iku-v"
+          ],
+          "furigana": "映[えい]画[が]の前[まえ]に、お手[て]洗[あら]いへ行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eiga",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "otearai",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 11,
+              "end": 15,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "映[えい]画[が]の前[まえ]に、お手[て]洗[あら]いに行[い]きます。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "朝ご飯の前にコーヒーは飲みません。",
+          "english": "I don't drink coffee before breakfast.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "asagohan",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "朝[あさ]ご飯[はん]の前[まえ]にコーヒーは飲[の]みません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "asagohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "飲みません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先生が来る前に、椅子に座りましょう。",
+          "english": "Let's sit down before the teacher comes.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sensei",
+            "kuru-v",
+            "isu",
+            "suwaru"
+          ],
+          "furigana": "先[せん]生[せい]が来[く]る前[まえ]に、椅[い]子[す]に座[すわ]りましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "isu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "suwaru",
+              "start": 11,
+              "end": 13,
+              "surface_form": "座り",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -19014,6 +19504,28 @@
         "jugyou"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "before",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "before doing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "prior to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ahead of",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "食べる＿＿＿手を洗う。",
@@ -19120,7 +19632,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "食[た]べたあとで、コーヒーを飲[の]みます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "授業の後で、遊びます。",
@@ -19149,7 +19667,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "授[じゅ]業[ぎょう]の前[まえ]に、遊[あそ]びます。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "仕事の後で、映画を見ます。",
@@ -19188,11 +19712,12 @@
         },
         {
           "japanese": "仕事の後で、電話します。",
-          "english": "After work, I will call.",
+          "english": "I'll call after work.",
           "sort_order": 3,
           "vocabulary_slugs": [
             "shigoto",
-            "denwa"
+            "denwa",
+            "suru"
           ],
           "furigana": "仕[し]事[ごと]の後[あと]で、電[でん]話[わ]します。",
           "word_spans": [
@@ -19205,6 +19730,13 @@
               "vocabulary_slug": "denwa",
               "start": 6,
               "end": 8
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "します",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19215,7 +19747,7 @@
         },
         {
           "japanese": "授業の後で、映画を見ます。",
-          "english": "After class, I will watch a movie.",
+          "english": "After class, I'll watch a movie.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "jugyou",
@@ -19330,7 +19862,7 @@
         },
         {
           "japanese": "映画を見たあとで、ご飯を食べます。",
-          "english": "After watching a movie, I will eat a meal.",
+          "english": "After watching a movie, I'll eat.",
           "sort_order": 7,
           "vocabulary_slugs": [
             "eiga",
@@ -19370,6 +19902,76 @@
             "end": 8
           },
           "register": "polite"
+        },
+        {
+          "japanese": "授業の後で、何をしますか。",
+          "english": "What are you doing after class?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "jugyou",
+            "nani",
+            "suru"
+          ],
+          "furigana": "授[じゅ]業[ぎょう]の後[あと]で、何[なに]をしますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "晩ご飯の後で、お菓子は食べません。",
+          "english": "I don't eat sweets after dinner.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "bangohan",
+            "okashi",
+            "taberu"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]の後[あと]で、お菓[か]子[し]は食[た]べません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "okashi",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 11,
+              "end": 16,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -19378,6 +19980,28 @@
         "shigoto"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "after",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "after doing",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "afterwards",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "later",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "仕事の＿＿＿、電話します。",
@@ -19483,11 +20107,17 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "子[こ]供[ども]の時[じ]、よく遊[あそ]びました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "暇なとき、本を読みます。",
-          "english": "When I'm free, I read a book.",
+          "english": "When I'm free, I read books.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "hima",
@@ -19521,32 +20151,38 @@
           "register": "polite"
         },
         {
-          "japanese": "日本へ行ったとき、写真を撮りました。",
-          "english": "When I went to Japan, I took photos.",
+          "japanese": "バスを降りるとき、傘を忘れました。",
+          "english": "When I got off the bus, I forgot my umbrella.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "nihon",
-            "iku-v",
-            "shashin"
+            "basu",
+            "oriru",
+            "kasa",
+            "wasureru"
           ],
-          "furigana": "日本[にほん]へ行[い]ったとき、写[しゃ]真[しん]を撮[と]りました。",
+          "furigana": "バスを降[お]りるとき、傘[かさ]を忘[わす]れました。",
           "word_spans": [
             {
-              "vocabulary_slug": "nihon",
+              "vocabulary_slug": "basu",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "iku-v",
+              "vocabulary_slug": "oriru",
               "start": 3,
-              "end": 6,
-              "surface_form": "行った",
-              "inflection": "ta"
+              "end": 6
             },
             {
-              "vocabulary_slug": "shashin",
+              "vocabulary_slug": "kasa",
               "start": 9,
-              "end": 11
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 11,
+              "end": 16,
+              "surface_form": "忘れました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
@@ -19589,15 +20225,15 @@
           "register": "polite"
         },
         {
-          "japanese": "暇な時、本を読みます。",
-          "english": "I read books during free moments.",
+          "japanese": "暇な時、何をしますか。",
+          "english": "What do you do when you're free?",
           "sort_order": 4,
           "vocabulary_slugs": [
             "hima",
-            "hon",
-            "yomu"
+            "nani",
+            "suru"
           ],
-          "furigana": "暇[ひま]な時[じ]、本[ほん]を読[よ]みます。",
+          "furigana": "暇[ひま]な時[じ]、何[なに]をしますか。",
           "word_spans": [
             {
               "vocabulary_slug": "hima",
@@ -19605,15 +20241,15 @@
               "end": 1
             },
             {
-              "vocabulary_slug": "hon",
+              "vocabulary_slug": "nani",
               "start": 4,
               "end": 5
             },
             {
-              "vocabulary_slug": "yomu",
+              "vocabulary_slug": "suru",
               "start": 6,
-              "end": 10,
-              "surface_form": "読みます",
+              "end": 9,
+              "surface_form": "します",
               "inflection": "masu"
             }
           ],
@@ -19625,7 +20261,7 @@
         },
         {
           "japanese": "暑い時、冷たい水を飲みます。",
-          "english": "On hot days I drink cold water.",
+          "english": "On hot days, I drink cold water.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "atsui-hot",
@@ -19703,11 +20339,21 @@
             "start": 4,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "家[いえ]に帰[かえ]る時[じ]、パンを買[か]いました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "家[いえ]へ帰[かえ]る前[まえ]に、パンを買[か]いました。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "家へ帰った時、テレビを見ました。",
-          "english": "Once home, I watched TV.",
+          "english": "When I got home, I watched TV.",
           "sort_order": 7,
           "vocabulary_slugs": [
             "ie",
@@ -19747,6 +20393,47 @@
             "end": 6
           },
           "register": "polite"
+        },
+        {
+          "japanese": "道を渡るとき、携帯は見ません。",
+          "english": "When I cross the road, I don't look at my phone.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "michi-v",
+            "watar",
+            "keitai",
+            "miru-v"
+          ],
+          "furigana": "道[みち]を渡[わた]るとき、携[けい]帯[たい]は見[み]ません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "watar",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "keitai",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "見ません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -19755,6 +20442,33 @@
         "shashin"
       ],
       "family": "connectors",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "when",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "at the time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "at the time of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "whenever",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "子供の＿＿＿、野菜が嫌いでした。",
