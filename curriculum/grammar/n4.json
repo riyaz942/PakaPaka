@@ -1841,6 +1841,13 @@
           "furigana": "練[れん]習[しゅう]すれば、上手[じょうず]になります。",
           "word_spans": [
             {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "練習すれ",
+              "inflection": "stem"
+            },
+            {
               "vocabulary_slug": "jouzu",
               "start": 6,
               "end": 8
@@ -2592,6 +2599,13 @@
               "start": 0,
               "end": 2,
               "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 2,
+              "end": 4,
+              "surface_form": "起き",
               "inflection": "stem"
             }
           ],
@@ -8468,6 +8482,13 @@
               "vocabulary_slug": "densha",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "遅れ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -13770,6 +13791,13 @@
               "vocabulary_slug": "tomodachi",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "tasukeru",
+              "start": 8,
+              "end": 10,
+              "surface_form": "助け",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -18231,6 +18259,13 @@
           ],
           "furigana": "練[れん]習[しゅう]すればするほど、上手[じょうず]になります。",
           "word_spans": [
+            {
+              "vocabulary_slug": "renshuu-suru",
+              "start": 0,
+              "end": 4,
+              "surface_form": "練習すれ",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "jouzu",
               "start": 10,

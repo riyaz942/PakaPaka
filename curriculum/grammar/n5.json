@@ -2201,6 +2201,13 @@
               "vocabulary_slug": "eiga",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 3,
+              "end": 4,
+              "surface_form": "見",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -13747,6 +13754,13 @@
               "vocabulary_slug": "eiga",
               "start": 10,
               "end": 12
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 13,
+              "end": 14,
+              "surface_form": "見",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -13765,6 +13779,13 @@
           ],
           "furigana": "食[た]べたり飲[の]んだりしました。",
           "word_spans": [
+            {
+              "vocabulary_slug": "taberu",
+              "start": 0,
+              "end": 2,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            },
             {
               "vocabulary_slug": "nomu-v",
               "start": 4,
@@ -14121,6 +14142,13 @@
               "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 5,
+              "end": 7,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -14611,6 +14639,13 @@
               "vocabulary_slug": "eiga",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 3,
+              "end": 4,
+              "surface_form": "見",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "iku-v",
@@ -20040,6 +20075,15 @@
             "taberu"
           ],
           "furigana": "食[た]べすぎました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "taberu",
+              "start": 0,
+              "end": 2,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            }
+          ],
           "grammar_span": {
             "start": 2,
             "end": 7
@@ -20066,6 +20110,13 @@
               "vocabulary_slug": "fuku",
               "start": 2,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 4,
+              "end": 5,
+              "surface_form": "高",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -20117,6 +20168,13 @@
               "vocabulary_slug": "koohii",
               "start": 2,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "atsui-obj",
+              "start": 7,
+              "end": 8,
+              "surface_form": "熱",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -23696,6 +23754,13 @@
               "vocabulary_slug": "eiga",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 4,
+              "end": 5,
+              "surface_form": "見",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -24022,6 +24087,13 @@
               "vocabulary_slug": "terebi",
               "start": 0,
               "end": 3
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 4,
+              "end": 5,
+              "surface_form": "見",
+              "inflection": "stem"
             },
             {
               "vocabulary_slug": "taberu",

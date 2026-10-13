@@ -22,6 +22,35 @@ class StemSpanTest(unittest.TestCase):
         self.assertEqual(result[0]["surface_form"], "早く")
         self.assertEqual((result[0]["start"], result[0]["end"]), (0, 2))
 
+    def test_stem_equal_to_the_whole_token_is_still_a_stem(self):
+        # 食べ, 見, 来, 寒 are the entire token: the stem is the form itself.
+        cases = [
+            ("一緒に食べましょう。", {"taberu": "食べる"}, "食べ", 3, 5),
+            ("映画を見ましょう。", {"miru": "見る"}, "見", 3, 4),
+            ("また来ましょう。", {"kuru": "来る"}, "来", 2, 3),
+            ("寒そうです。", {"samui": "寒い"}, "寒", 0, 1),
+            ("高すぎます。", {"takai": "高い"}, "高", 0, 1),
+        ]
+        for text, forms, surface, start, end in cases:
+            with self.subTest(text=text):
+                [span] = spans.build_stem_spans(text, forms)
+                self.assertEqual((span["surface_form"], span["start"], span["end"]),
+                                 (surface, start, end))
+                self.assertEqual(span["inflection"], "stem")
+
+    def test_suru_compound_stem_covers_noun_and_shi(self):
+        [span] = spans.build_stem_spans("勉強しましょう。", {"benkyou-suru": "勉強する"})
+        self.assertEqual((span["vocabulary_slug"], span["surface_form"], span["start"], span["end"]),
+                         ("benkyou-suru", "勉強し", 0, 3))
+
+    def test_suru_compound_does_not_overlap_a_dictionary_noun_span(self):
+        text = "勉強しましょう。"
+        forms = {"benkyou-suru": "勉強する", "benkyou": "勉強"}
+        merged = spans.merge_spans(spans.derive_spans(text, forms),
+                                   spans.build_stem_spans(text, forms))
+        for a, b in zip(merged, merged[1:]):
+            self.assertLessEqual(a["end"], b["start"])
+
     def test_dictionary_form_is_not_a_stem(self):
         self.assertEqual(spans.build_stem_spans("行く前に", {"iku-v": "行く"}), [])
 

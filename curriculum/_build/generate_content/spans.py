@@ -293,21 +293,33 @@ def build_stem_spans(text, forms_by_slug, tokens=None):
     for slug, form in forms_by_slug.items():
         slug_by_form.setdefault(form, slug)
     spans = []
-    for token in tokens:
+    for i, token in enumerate(tokens):
         if token["pos1"] not in ("動詞", "形容詞"):
             continue
         base = token["orth_base"] or token["lemma"]
-        slug = slug_by_form.get(base) if base else None
+        if not base:
+            continue
+        start, slug = token["start"], None
+        # する-verbs carry the entry on the noun in front (勉強し of
+        # 勉強しましょう → 勉強する), as in build_inflected_spans.
+        if base == "する" and i > 0 and tokens[i - 1]["pos1"] == "名詞":
+            slug = slug_by_form.get(tokens[i - 1]["surface"] + "する")
+            if slug:
+                start = tokens[i - 1]["start"]
+        if slug is None:
+            slug = slug_by_form.get(base)
         if slug is None:
             continue
-        surface = token["surface"]
+        surface = text[start:token["end"]]
         primary_form = forms_by_slug[slug]
         stem = inflection_stem(primary_form)
-        if surface == primary_form or not surface.startswith(stem) or len(surface) <= len(stem):
+        # The stem itself is a valid span (食べ of 食べましょう, 寒 of 寒そう);
+        # only the dictionary form is not.
+        if surface == primary_form or not surface.startswith(stem):
             continue
         spans.append({
             "vocabulary_slug": slug,
-            "start": token["start"],
+            "start": start,
             "end": token["end"],
             "surface_form": surface,
             "inflection": STEM,
