@@ -20,6 +20,7 @@ Three lanes, and most content types have more than one:
 | Radical mnemonic art | [workflow](./radical-art-web-chat-workflow.md) · [automation](./radical-art-web-chat-workflow-automation-prompt.md) | — | — |
 | Reading passages | — | [automation](./reading-passages-subagent-workflow-automation-prompt.md) | [automation](./reading-passages-single-session-workflow-automation-prompt.md) |
 | Reading passage naturalness review | — | [automation](./reading-passage-naturalness-subagent-workflow-automation-prompt.md) | — |
+| Grammar sentence pool | — | — | [automation](./grammar-pool-single-session-workflow-automation-prompt.md) |
 
 Grammar **cloze variants** have no lane of their own: the grammar-lesson lane already drafts them
 per point into `generate_content/drafts/<level>/`, and `promote_cloze.py` gates those drafts and
