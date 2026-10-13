@@ -1156,5 +1156,813 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "ga": {
+    "accepted_meanings": [
+      "subject marker",
+      "subject",
+      "marks the subject",
+      "subject particle"
+    ],
+    "sentences": [
+      {
+        "japanese": "猫がいます。",
+        "english": "There is a cat.",
+        "vocabulary_slugs": [
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "誰が来ますか。",
+        "english": "Who is coming?",
+        "vocabulary_slugs": [
+          "dare",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お金がありません。",
+        "english": "I have no money.",
+        "vocabulary_slugs": [
+          "okane",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "時間がありません。",
+        "english": "There is no time.",
+        "vocabulary_slugs": [
+          "jikan",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "部屋に犬がいました。",
+        "english": "There was a dog in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "inu",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "犬が部屋にいました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生が本を読みます。",
+        "english": "The teacher reads a book.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生は本を読みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "どれがいいですか。",
+        "english": "Which one is good?",
+        "vocabulary_slugs": [
+          "dore",
+          "ii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達が家に来ました。",
+        "english": "A friend came to my house.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ie",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "家に友達が来ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎晩、猫が窓を開けます。",
+        "english": "Every night, the cat opens the window.",
+        "vocabulary_slugs": [
+          "maiban",
+          "neko",
+          "mado",
+          "akeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫が毎晩窓を開けます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あそこに何がありますか。",
+        "english": "What is over there?",
+        "vocabulary_slugs": [
+          "asoko",
+          "nani",
+          "aru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-direction": {
+    "accepted_meanings": [
+      "to",
+      "at",
+      "on",
+      "in",
+      "direction marker",
+      "target marker"
+    ],
+    "sentences": [
+      {
+        "japanese": "学校に行きます。",
+        "english": "I go to school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校へ行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "友達に会います。",
+        "english": "I meet a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "au"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は家に帰ります。",
+        "english": "He returns home.",
+        "vocabulary_slugs": [
+          "kare",
+          "ie",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼は家へ帰ります。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先生に聞きます。",
+        "english": "I ask the teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kiku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "何時に起きますか。",
+        "english": "What time do you wake up?",
+        "vocabulary_slugs": [
+          "nannji",
+          "okiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "日曜日に公園に行きます。",
+        "english": "I will go to the park on Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "kouen",
+          "iku-v"
+        ],
+        "form": "公園|に",
+        "alternates": [
+          {
+            "japanese": "日曜日に公園へ行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "土曜日に映画を見ました。",
+        "english": "I watched a movie on Saturday.",
+        "vocabulary_slugs": [
+          "doyoubi",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "部屋に猫がいます。",
+        "english": "There is a cat in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "neko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫が部屋にいます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は学校に行きません。",
+        "english": "I'm not going to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は学校へ行きません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "部屋に本を置きました。",
+        "english": "I put the book in my room.",
+        "vocabulary_slugs": [
+          "heya",
+          "hon",
+          "oku"
+        ],
+        "alternates": [
+          {
+            "japanese": "本を部屋に置きました。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "he-direction": {
+    "accepted_meanings": [
+      "toward",
+      "towards",
+      "to",
+      "direction",
+      "direction marker"
+    ],
+    "sentences": [
+      {
+        "japanese": "どこへ行きますか。",
+        "english": "Where are you headed?",
+        "vocabulary_slugs": [
+          "doko",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "どこに行きますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "家へ帰ります。",
+        "english": "I return home.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "家に帰ります。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "学校へ来ました。",
+        "english": "I came to school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校に来ました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "週末、家族と海へ行きました。",
+        "english": "On the weekend, I went to the sea with my family.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kazoku",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "週末、家族と海に行きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "私は公園へ行きます。",
+        "english": "I am heading to the park.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "公園へ行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生が学校へ来ます。",
+        "english": "The teacher comes to the school.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakkou-v",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼は家へ帰ります。",
+        "english": "He is returning home.",
+        "vocabulary_slugs": [
+          "kare",
+          "ie",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、海へ行きます。",
+        "english": "Tomorrow, we will head to the sea.",
+        "vocabulary_slugs": [
+          "ashita",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お父さんは今日家へ帰りません。",
+        "english": "Dad isn't coming home today.",
+        "vocabulary_slugs": [
+          "otousan",
+          "kyou",
+          "ie",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "猫が部屋へ入りました。",
+        "english": "The cat went into the room.",
+        "vocabulary_slugs": [
+          "neko",
+          "heya",
+          "hairu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫が部屋に入りました。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "de-location": {
+    "accepted_meanings": [
+      "at",
+      "in",
+      "by",
+      "with",
+      "place of action",
+      "by means of"
+    ],
+    "sentences": [
+      {
+        "japanese": "公園で友達を待ちます。",
+        "english": "I'll wait for my friend at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "tomodachi",
+          "matsu"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達を公園で待ちます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "バスで行きます。",
+        "english": "I go by bus.",
+        "vocabulary_slugs": [
+          "basu",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "箸で食べます。",
+        "english": "I eat with chopsticks.",
+        "vocabulary_slugs": [
+          "hashi-chopsticks",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家で本を読みます。",
+        "english": "I read a book at home.",
+        "vocabulary_slugs": [
+          "ie",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "本を家で読みます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、学校で先生に会いました。",
+        "english": "Yesterday I met the teacher at school.",
+        "vocabulary_slugs": [
+          "kinou",
+          "gakkou-v",
+          "sensei",
+          "au"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家で映画を見る。",
+        "english": "I watch movies at home.",
+        "vocabulary_slugs": [
+          "ie",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "バスで学校に行く。",
+        "english": "I go to school by bus.",
+        "vocabulary_slugs": [
+          "basu",
+          "gakkou-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校にバスで行く。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "箸で魚を食べる。",
+        "english": "I eat fish with chopsticks.",
+        "vocabulary_slugs": [
+          "hashi-chopsticks",
+          "sakana",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "これ、どこで買う？",
+        "english": "Where do you buy this?",
+        "vocabulary_slugs": [
+          "kore",
+          "doko",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末、図書館で本を読む。",
+        "english": "On the weekend, I read books at the library.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "toshokan",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "no-possessive": {
+    "accepted_meanings": [
+      "possessive",
+      "of",
+      "'s",
+      "possessive particle",
+      "linking particle"
+    ],
+    "sentences": [
+      {
+        "japanese": "私の本です。",
+        "english": "It's my book.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "日本語の先生です。",
+        "english": "A teacher of Japanese.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "sensei"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それは私の本です。",
+        "english": "That is my book.",
+        "vocabulary_slugs": [
+          "sore",
+          "watashi",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "学校の写真を見ます。",
+        "english": "I will look at photos of the school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "shashin",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私の友達の猫は魚を食べます。",
+        "english": "My friend's cat eats fish.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "neko",
+          "sakana",
+          "taberu"
+        ],
+        "form": "私|の",
+        "alternates": []
+      },
+      {
+        "japanese": "これは誰の本ですか。",
+        "english": "Whose book is this?",
+        "vocabulary_slugs": [
+          "kore",
+          "dare",
+          "hon"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それは先生の写真ではありません。",
+        "english": "That isn't the teacher's photo.",
+        "vocabulary_slugs": [
+          "sore",
+          "sensei",
+          "shashin",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "それは先生の写真じゃありません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、友達の家に行きました。",
+        "english": "Yesterday I went to my friend's house.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "ie",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達の家に昨日行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "猫の水がありません。",
+        "english": "The cat's water is gone.",
+        "vocabulary_slugs": [
+          "neko",
+          "mizu",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "月曜日の朝はとても忙しいです。",
+        "english": "Monday mornings are very busy.",
+        "vocabulary_slugs": [
+          "getsuyoubi",
+          "asa",
+          "totemo",
+          "isogashii"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "no-nominalizer": {
+    "accepted_meanings": [
+      "explanatory",
+      "nominalizer",
+      "the thing is",
+      "it's that",
+      "-ing",
+      "explanation"
+    ],
+    "sentences": [
+      {
+        "japanese": "食べるのが好きです。",
+        "english": "I like eating.",
+        "vocabulary_slugs": [
+          "taberu",
+          "suki"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "帰るんですか。",
+        "english": "Are you going home?",
+        "vocabulary_slugs": [
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "帰るのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "明日行くんです。",
+        "english": "The thing is, I'm going tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日行くのです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "何を買うんですか。",
+        "english": "What is it that you are buying?",
+        "vocabulary_slugs": [
+          "nani",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "何を買うのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今食べるの？",
+        "english": "Are you eating now?",
+        "vocabulary_slugs": [
+          "ima",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "朝起きるのが好きではありません。",
+        "english": "I don't like getting up in the morning.",
+        "vocabulary_slugs": [
+          "asa",
+          "okiru",
+          "suki",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝起きるのが好きじゃありません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "なぜ海に行くんですか。",
+        "english": "Why is it that you're going to the sea?",
+        "vocabulary_slugs": [
+          "naze",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "なぜ海に行くのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "本を読むのは楽しいです。",
+        "english": "Reading books is fun.",
+        "vocabulary_slugs": [
+          "hon",
+          "yomu",
+          "tanoshii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どこに行くの？",
+        "english": "Where are you going?",
+        "vocabulary_slugs": [
+          "doko",
+          "iku-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
