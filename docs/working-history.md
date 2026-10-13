@@ -13,7 +13,7 @@ Last verified against the codebase: **2026-09-02**
 
 | Area | Done | Partial | Not started |
 | --- | ---: | ---: | ---: |
-| Product plans (`docs/feedback/`) | 14 | 1 | 0 |
+| Product plans (`docs/feedback/`) | 14 | 1 | 1 |
 | Content plans (`docs/content/`) | 2 | 5 | 0 |
 | Design & platform (`docs/design/`) | 4 | 0 | 4 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
@@ -40,6 +40,7 @@ Last verified against the codebase: **2026-09-02**
 | [13 — Vacation mode](./feedback/13-vacation-mode.md) | Done |
 | [14 — Conjugated-form linking & furigana gesture](./feedback/14-conjugated-form-linking-and-furigana-gesture.md) | Done |
 | [15 — ChatBubble word linking & furigana toggle](./feedback/15-chatbubble-word-linking-and-furigana-toggle.md) | Done |
+| [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Not started — spec approved; replaces the review side of 07 / 08 / 10 once built |
 
 ## Content plans — `docs/content/`
 
