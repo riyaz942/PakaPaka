@@ -8213,5 +8213,546 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "nagara": {
+    "accepted_meanings": [
+      "while",
+      "while doing",
+      "at the same time as",
+      "as"
+    ],
+    "sentences": [
+      {
+        "japanese": "歩きながら話します。",
+        "english": "We talk while walking.",
+        "vocabulary_slugs": [
+          "aruku",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "テレビを見ながら食べます。",
+        "english": "I eat while watching TV.",
+        "vocabulary_slugs": [
+          "terebi",
+          "miru-v",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビを見てから食べます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "音楽を聞きながら勉強します。",
+        "english": "I study while listening to music.",
+        "vocabulary_slugs": [
+          "ongaku",
+          "kiku-v",
+          "benkyou",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "病院で雑誌を読みながら待ちました。",
+        "english": "I waited at the hospital while reading a magazine.",
+        "vocabulary_slugs": [
+          "byouin",
+          "zasshi",
+          "yomu",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "歌いながら掃除しました。",
+        "english": "I cleaned while singing.",
+        "vocabulary_slugs": [
+          "utau",
+          "souji-suru"
+        ]
+      },
+      {
+        "japanese": "運転しながら携帯を使いません。",
+        "english": "I don't use my phone while driving.",
+        "vocabulary_slugs": [
+          "unten-suru",
+          "keitai",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "コーヒーを飲みながら新聞を読みますか。",
+        "english": "Do you read the newspaper while drinking coffee?",
+        "vocabulary_slugs": [
+          "koohii",
+          "nomu-v",
+          "shinbun",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "泣きながら手紙を書きました。",
+        "english": "I wrote the letter while crying.",
+        "vocabulary_slugs": [
+          "naku",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "母はラジオを聞きながら料理します。",
+        "english": "My mother cooks while listening to the radio.",
+        "vocabulary_slugs": [
+          "haha",
+          "rajio",
+          "kiku-v",
+          "ryouri-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "janai-desu-ka": {
+    "accepted_meanings": [
+      "isn't it?",
+      "right?",
+      "don't you think?",
+      "you know",
+      "isn't that so?"
+    ],
+    "sentences": [
+      {
+        "japanese": "いいじゃないですか。",
+        "english": "It's good, isn't it?",
+        "vocabulary_slugs": [
+          "ii"
+        ],
+        "alternates": [
+          {
+            "japanese": "いいではないですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "便利じゃないですか。",
+        "english": "It's convenient, right?",
+        "vocabulary_slugs": [
+          "benri"
+        ],
+        "alternates": [
+          {
+            "japanese": "便利ではないですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼は先生じゃないですか。",
+        "english": "He's a teacher, isn't he?",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "あれは学校じゃないですか。",
+        "english": "That is a school, isn't it?",
+        "vocabulary_slugs": [
+          "are",
+          "gakkou-v"
+        ]
+      },
+      {
+        "japanese": "このお茶、熱いじゃないですか。",
+        "english": "This tea is hot, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "atsui-obj"
+        ]
+      },
+      {
+        "japanese": "この町は賑やかじゃないですか。",
+        "english": "This town is lively, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "彼は毎日走るじゃないですか。",
+        "english": "He runs every day, doesn't he?",
+        "vocabulary_slugs": [
+          "kare",
+          "mainichi",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "この辞書は便利ではないですか。",
+        "english": "This dictionary is convenient, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "jisho",
+          "benri"
+        ],
+        "alternates": [
+          {
+            "japanese": "この辞書は便利じゃないですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日、言ったじゃないですか。",
+        "english": "I told you yesterday, didn't I?",
+        "vocabulary_slugs": [
+          "kinou",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "その映画、面白かったじゃないですか。",
+        "english": "That movie was interesting, wasn't it?",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "omoshiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tame-ni": {
+    "accepted_meanings": [
+      "in order to",
+      "for",
+      "for the sake of",
+      "so that",
+      "to"
+    ],
+    "sentences": [
+      {
+        "japanese": "体のために歩きます。",
+        "english": "I walk for my health.",
+        "vocabulary_slugs": [
+          "karada",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "日本語を勉強するために、日本へ来ました。",
+        "english": "I came to Japan to study Japanese.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "benkyou",
+          "suru",
+          "nihon",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本語を勉強するために、日本に来ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "家族のために働きます。",
+        "english": "I work for my family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "何のために日本語を勉強しますか。",
+        "english": "What are you studying Japanese for?",
+        "vocabulary_slugs": [
+          "nan",
+          "nihongo",
+          "benkyou",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "新しい車を買うために、仕事をします。",
+        "english": "I will work so that I can buy a new car.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "kuruma",
+          "kau-v",
+          "shigoto",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "旅行のため、カメラを買いました。",
+        "english": "I bought a camera for the trip.",
+        "vocabulary_slugs": [
+          "ryokou",
+          "kamera",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "旅行のために、カメラを買いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "母のために、晩ご飯を作りました。",
+        "english": "I made dinner for my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "bangohan",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "電車に乗るために、駅まで走りました。",
+        "english": "I ran to the station to catch the train.",
+        "vocabulary_slugs": [
+          "densha",
+          "noru",
+          "eki",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "子供のために、お酒を飲みません。",
+        "english": "For my child's sake, I don't drink alcohol.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "osake",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "naru-become": {
+    "accepted_meanings": [
+      "become",
+      "to become",
+      "get",
+      "turn",
+      "grow"
+    ],
+    "sentences": [
+      {
+        "japanese": "寒くなりました。",
+        "english": "It has become cold.",
+        "vocabulary_slugs": [
+          "samui"
+        ]
+      },
+      {
+        "japanese": "日本語が上手になりました。",
+        "english": "I've become good at Japanese.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "元気になりました。",
+        "english": "I got better.",
+        "vocabulary_slugs": [
+          "genki"
+        ]
+      },
+      {
+        "japanese": "夏は暑くなる。",
+        "english": "Summer turns hot.",
+        "vocabulary_slugs": [
+          "natsu",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "娘は医者になる。",
+        "english": "My daughter will be a doctor one day.",
+        "vocabulary_slugs": [
+          "musume",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "町は静かになりました。",
+        "english": "The town grew quiet.",
+        "vocabulary_slugs": [
+          "machi-v",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "空が暗くなりました。",
+        "english": "The sky turned dark.",
+        "vocabulary_slugs": [
+          "sora",
+          "kurai"
+        ]
+      },
+      {
+        "japanese": "勉強が好きになりました。",
+        "english": "I grew fond of studying.",
+        "vocabulary_slugs": [
+          "benkyou",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "部屋はきれいになりましたか。",
+        "english": "Has the room become clean?",
+        "vocabulary_slugs": [
+          "heya",
+          "kirei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "moraru-ageru-kureru": {
+    "accepted_meanings": [
+      "give",
+      "receive",
+      "give and receive",
+      "get",
+      "give to me"
+    ],
+    "sentences": [
+      {
+        "japanese": "友達に本をあげました。",
+        "english": "I gave a book to my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "hon",
+          "ageru"
+        ]
+      },
+      {
+        "japanese": "母がかばんをくれました。",
+        "english": "My mother gave me a bag.",
+        "vocabulary_slugs": [
+          "haha",
+          "kaban",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "先生に辞書をもらいました。",
+        "english": "I received a dictionary from my teacher.",
+        "vocabulary_slugs": [
+          "sensei",
+          "jisho",
+          "morau"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生から辞書をもらいました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私は妹にお菓子をあげる。",
+        "english": "I give sweets to my younger sister.",
+        "vocabulary_slugs": [
+          "watashi",
+          "imouto",
+          "okashi",
+          "ageru"
+        ],
+        "alternates": [
+          {
+            "japanese": "妹にお菓子をあげる。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "友達が私に辞書をくれる。",
+        "english": "A friend gives me a dictionary.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "watashi",
+          "jisho",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "僕は兄から時計をもらう。",
+        "english": "I receive a watch from my older brother.",
+        "vocabulary_slugs": [
+          "boku",
+          "ani",
+          "tokei",
+          "morau"
+        ],
+        "alternates": [
+          {
+            "japanese": "僕は兄に時計をもらう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女は友達に犬をもらう。",
+        "english": "She receives a dog from a friend.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "tomodachi",
+          "inu",
+          "morau"
+        ]
+      },
+      {
+        "japanese": "先生は私に手紙をくれる。",
+        "english": "The teacher gives me a letter.",
+        "vocabulary_slugs": [
+          "sensei",
+          "watashi",
+          "tegami",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "誰にその花をもらいましたか。",
+        "english": "Who did you get those flowers from?",
+        "vocabulary_slugs": [
+          "dare",
+          "sono",
+          "hana-v",
+          "morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
