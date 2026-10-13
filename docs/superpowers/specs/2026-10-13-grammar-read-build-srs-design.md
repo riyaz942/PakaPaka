@@ -26,7 +26,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 |---|----------|--------|
 | D1 | Card structure | Two cards per grammar point (Read + Build), one SRS record, worst-of-both grade — same as kanji |
 | D2 | Read card answer | Type the English meaning of the **highlighted grammar only**; auto-graded vs accepted meanings + user synonyms |
-| D3 | Build card answer | Type the **full Japanese sentence in kana**; vocabulary list (dictionary form) + polite/plain tag always shown |
+| D3 | Build card answer | Type the **full Japanese sentence** — kana, kanji, or a mix: each furigana-annotated word accepts its kanji or its reading; vocabulary list (dictionary form) + polite/plain tag always shown |
 | D4 | Wrong-but-valid Build answer | "My answer is correct too" saves the answer for that sentence and regrades to correct |
 | D5 | Hints | **None** on either grammar card |
 | D6 | Other same-family grammar on Build | Non-terminal retry nudge, no penalty, does not name the target |
@@ -55,7 +55,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 - English sentence, a vocabulary list of the sentence's words in dictionary form (e.g. `寒い・コート・着る`), and a `polite` / `plain` tag.
 - Vocabulary list renders per-word furigana by mastery, so a not-yet-learned word always shows its reading.
 - Links per D12. Before answering, a word the learner has started is plain text; a word not started is a link.
-- Kana input (existing `WanaKanaInput`). Return / **Check** submits.
+- Existing `WanaKanaInput` (romaji → kana; kanji typed with the system Japanese keyboard passes through unchanged). Return / **Check** submits.
 - Grading (see §5.2): correct, `other_grammar` nudge (non-terminal), or incorrect. No typo tolerance.
 - Wrong: the correct sentence (kanji + furigana, linked renderer) under the learner's answer, then the normal incorrect flow. Button **My answer is correct too** saves the answer and regrades the card to correct.
 - After any terminal result, every word in the list and the revealed sentence is a link.
@@ -87,7 +87,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 |-------|--------|
 | Word spans | `curriculum/_build/generate_content/spans.py` |
 | Grammar span (start/end) | Cloze-derived: blank position. Others: longest match of an `accepted_forms` entry (logic of `mobile/src/core/grammar/clozeBuilder.ts`, ported) |
-| Kana answer | From `furigana` (readings for bracketed runs, base text elsewhere), converted to hiragana |
+| Build answer | The sentence's `furigana` itself — the main accepted answer. No separate kana column |
 | Vocabulary list | Dictionary forms of the sentence's span vocabulary, in sentence order |
 | Register tag | `polite` when the main clause ends in a です/ます form, else `plain` |
 | Vocab position per grammar point | Run the lesson planner rules (`ROUND_QUOTAS`, unlock on parent started) over N5 then N4; record vocab count started when each grammar point is first taught |
@@ -96,7 +96,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 - **Accepted meanings:** 3–6 English answers per grammar point (e.g. `because, since, so, as`; particles state function, e.g. `object marker`). Stored as `accepted_answers` rows, `answer_type = 'meaning'`.
 - **Sentences:** new / replacement sentences with English and furigana until §4.4 passes.
-- **Alternate Build answers** per sentence, in kana, each tagged `valid` (other word order, dropped 私は, ですから for から…) or `other_grammar` (same meaning with another grammar point of the same `family`).
+- **Alternate Build answers** per sentence, in furigana bracket notation (e.g. `寒[さむ]いですから、コートを着[き]ます`), each tagged `valid` (other word order, dropped 私は, ですから for から…) or `other_grammar` (same meaning with another grammar point of the same `family`).
 - **Core N5 word set:** one list file in the pipeline (~50 words: 行く, 来る, 食べる, 飲む, 見る, する, ある, いる, 本, 水 …).
 
 ### 4.4 Validator rules (compile fails on any)
@@ -106,7 +106,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 3. Every spanned word is within range: vocab position at the grammar point's teach time + 10, or in the core N5 set, or (N4 grammar) any N5 word.
 4. A grammar point has ≥ 8 passing sentences.
 5. Variety: no two sentences of a point share the same set of vocabulary; the point's sentences cover ≥ 2 of {statement, question, negative, past} where the grammar allows (exemptions listed per point in the pipeline).
-6. Every `valid` alternate contains the grammar form and every listed word (by reading). Every `other_grammar` alternate contains every listed word and a form of another same-family point.
+6. Every alternate parses as furigana notation. Every `valid` alternate contains the grammar form and every listed word (by reading). Every `other_grammar` alternate contains every listed word and a form of another same-family point.
 7. Every grammar point has ≥ 3 accepted meanings.
 
 ---
@@ -117,14 +117,14 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 **`curriculum.db`** (compile output; rebuilt, not migrated):
 
-- `example_sentences` + nullable columns: `grammar_start`, `grammar_end`, `kana_answer`, `register` (`'polite' | 'plain'`). Set only on grammar rows.
-- New `grammar_sentence_answers (id, sentence_id → example_sentences, answer_kana, kind CHECK(kind IN ('valid','other_grammar')))`.
+- `example_sentences` + nullable columns: `grammar_start`, `grammar_end`, `register` (`'polite' | 'plain'`). Set only on grammar rows. The existing `furigana` column is the main Build answer.
+- New `grammar_sentence_answers (id, sentence_id → example_sentences, answer_furigana, kind CHECK(kind IN ('valid','other_grammar')))`.
 - Grammar meanings in `accepted_answers`.
 - `grammar_cloze_variants` dropped.
 
 **`user.db`** — migration `021`:
 
-- `user_grammar_answers (sentence_id INTEGER, answer_kana TEXT, created_at TEXT, PRIMARY KEY (sentence_id, answer_kana))`.
+- `user_grammar_answers (sentence_id INTEGER, answer_text TEXT, created_at TEXT, PRIMARY KEY (sentence_id, answer_text))` — stored as typed (kana and/or kanji), normalised as below.
 - `grammar_sentence_history (item_id TEXT PRIMARY KEY, sentence_ids TEXT, updated_at TEXT)` — JSON array of the last review's two sentence ids.
 - Both tables included in backup export / import / validator, like `user_synonyms`.
 - Existing grammar `srs_states` rows untouched.
@@ -132,7 +132,10 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 ### 5.2 Core logic (pure, unit-tested)
 
 - `core/grammar/sentencePicker.ts` — `pickGrammarSentences(pool, lastIds, rng) → { read, build }`: two distinct sentences, excluding `lastIds`. Precondition, guaranteed by validator rule 4: pool ≥ 8 and `lastIds` ≤ 2, so ≥ 6 candidates always remain. No fallback path.
-- `core/grammar/buildEvaluator.ts` — `evaluateGrammarBuild(input, { answers, otherGrammarAnswers, userAnswers }) → 'correct' | 'other_grammar' | 'incorrect'`. Normalise: katakana → hiragana, strip whitespace and punctuation (`、。！？!?,. ` and full-width space).
+- `core/grammar/buildEvaluator.ts` — `evaluateGrammarBuild(input, { answers, otherGrammarAnswers, userAnswers }) → 'correct' | 'other_grammar' | 'incorrect'`.
+  - Normalise input and every expected text: katakana → hiragana, strip whitespace and punctuation (`、。！？!?,. ` and full-width space).
+  - Curriculum answers (`answers`, `otherGrammarAnswers`) are furigana notation, parsed with the existing `parseFurigana`. Each annotated segment matches its base text **or** its reading; plain segments match their normalised text. Segments match independently, so kanji and kana can mix (`寒いから、コートをきます`). A different word (僕 for 私) does not match.
+  - User answers match by exact normalised text.
 - `core/srs/pairGrading.ts` — unchanged (`combinePairGrades`).
 - `core/grammar/linkPolicy.ts` — `isWordLinked({ card, answered, wordStarted }) → boolean` (D12).
 
@@ -159,10 +162,10 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 ## 6. Testing
 
-- **Unit:** `evaluateGrammarBuild` (kana normalisation, valid alternates, `other_grammar`, user answers, punctuation), `pickGrammarSentences` (distinct, excludes last review, shortfall rule), `isWordLinked` (all D12 cases), pair grading for a grammar pair (Read wrong + Build right → Again).
+- **Unit:** `evaluateGrammarBuild` (all-kana, all-kanji, mixed per segment, katakana ↔ hiragana, wrong kanji word rejected, valid alternates, `other_grammar`, user answers with kanji, punctuation), `pickGrammarSentences` (distinct, excludes last review), `isWordLinked` (all D12 cases), pair grading for a grammar pair (Read wrong + Build right → Again).
 - **Component:** `GrammarReadCard` (locked grammar span, links, synonym), `GrammarBuildCard` (link timing before/after answer, nudge non-terminal, save-answer regrade), `ExampleSentencesSection` regression after extraction.
 - **Migration:** `021` up on a populated `user.db`; backup round-trip with the two new tables.
-- **Pipeline:** one test per validator rule in §4.4; derived-field tests (kana answer, register, grammar span).
+- **Pipeline:** one test per validator rule in §4.4; derived-field tests (register, grammar span, vocabulary list).
 - **Manual (simulator):** full grammar pair in a review session; word tap → detail → back with text intact; save-answer then same sentence later graded correct.
 
 ---
@@ -180,5 +183,5 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 ## 8. Risks
 
 - **Content volume:** 161 points × ≥ 8 sentences plus alternates. Many existing cloze sentences repeat one frame and will fail variety. Expect most points to need new sentences.
-- **Kana-only grading:** an answer correct in meaning but different in wording is marked wrong until saved. Mitigated by authored `valid` alternates and D4.
+- **Wording-exact grading:** an answer correct in meaning but different in wording is marked wrong until saved. Mitigated by authored `valid` alternates and D4.
 - **Early N5 range:** the first ~15 grammar points have very few words in range; sentences there lean on the core set.
