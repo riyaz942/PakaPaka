@@ -204,7 +204,6 @@ export function runFuriganaChecks(
         slug: string;
         accepted_forms: string[];
         related_grammar_slugs?: string[];
-        cloze_variants?: { jp_cloze: string; answer: string }[];
         example_sentences?: { japanese: string; furigana?: string }[];
       }[];
     };
@@ -219,7 +218,6 @@ export function runFuriganaChecks(
           warnings,
         );
       }
-      runClozeVariantChecks(relative, item, errors);
       if ((item.related_grammar_slugs ?? []).includes(item.slug)) {
         errors.push(
           `${relative} grammar:${item.slug}: related_grammar_slugs must not reference the item itself`,
@@ -304,39 +302,6 @@ function checkVisuallySimilarSlugs(
 ): void {
   if ((item.visually_similar_slugs ?? []).includes(`${kind}:${item.slug}`)) {
     errors.push(`${label}: visually_similar_slugs must not reference the item itself`);
-  }
-}
-
-const CLOZE_BLANK_RE = /＿+/;
-
-/**
- * Cloze variant consistency (Plan 09): the blank must be present and the
- * answer must be one of the item's accepted forms (NFKC-normalized), or the
- * review evaluator would reject the variant's own answer.
- */
-function runClozeVariantChecks(
-  relative: string,
-  item: {
-    slug: string;
-    accepted_forms: string[];
-    cloze_variants?: { jp_cloze: string; jp_cloze_furigana?: string; answer: string }[];
-  },
-  errors: string[],
-): void {
-  const accepted = new Set(item.accepted_forms.map((form) => form.normalize('NFKC')));
-  for (const [index, variant] of (item.cloze_variants ?? []).entries()) {
-    const label = `${relative} grammar:${item.slug} cloze_variants[${index}]`;
-    if (!CLOZE_BLANK_RE.test(variant.jp_cloze)) {
-      errors.push(`${label}: jp_cloze has no ＿ blank`);
-    }
-    if (variant.jp_cloze_furigana !== undefined && !CLOZE_BLANK_RE.test(variant.jp_cloze_furigana)) {
-      errors.push(`${label}: jp_cloze_furigana has no ＿ blank`);
-    }
-    if (!accepted.has(variant.answer.normalize('NFKC'))) {
-      errors.push(
-        `${label}: answer "${variant.answer}" is not in accepted_forms [${item.accepted_forms.join(', ')}]`,
-      );
-    }
   }
 }
 

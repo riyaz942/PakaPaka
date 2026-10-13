@@ -205,52 +205,6 @@ describe('validateCurriculum cloze variant checks (Plan 09)', () => {
     family: 'particles',
   };
 
-  it('accepts a consistent variant', () => {
-    const tempDir = writeTempGrammarDir({
-      ...baseItem,
-      cloze_variants: [
-        { jp_cloze: '私＿＿＿学生です。', english: 'I am a student.', answer: 'は', nudge: 'Topic.' },
-      ],
-    });
-    try {
-      expect(validateCurriculum(tempDir).ok).toBe(true);
-    } finally {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-  });
-
-  it('errors when the variant answer is not an accepted form', () => {
-    const tempDir = writeTempGrammarDir({
-      ...baseItem,
-      cloze_variants: [
-        { jp_cloze: '私＿＿＿学生です。', english: 'I am a student.', answer: 'が', nudge: 'Topic.' },
-      ],
-    });
-    try {
-      const result = validateCurriculum(tempDir);
-      expect(result.ok).toBe(false);
-      if (!result.ok) {
-        expect(result.errors.some((e) => e.includes('not in accepted_forms'))).toBe(true);
-      }
-    } finally {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-  });
-
-  it('rejects a jp_cloze without a blank via the schema', () => {
-    const tempDir = writeTempGrammarDir({
-      ...baseItem,
-      cloze_variants: [
-        { jp_cloze: '私は学生です。', english: 'I am a student.', answer: 'は', nudge: 'Topic.' },
-      ],
-    });
-    try {
-      expect(validateCurriculum(tempDir).ok).toBe(false);
-    } finally {
-      fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-  });
-
   it('rejects an unknown family via the schema enum', () => {
     const tempDir = writeTempGrammarDir({ ...baseItem, family: 'other' });
     try {

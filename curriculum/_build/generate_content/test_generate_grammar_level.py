@@ -157,8 +157,8 @@ class GrammarLevelTest(unittest.TestCase):
         )["items"][0]
         self.assertEqual(len(item["example_sentences"]), 2)
 
-    def test_cloze_variants_still_ship(self):
-        self.assertEqual(len(build([entry()])["cloze_variants"]), 2)
+    def test_cloze_variants_do_not_ship(self):
+        self.assertNotIn("cloze_variants", build([entry()]))
 
     def test_generate_level_refuses_a_failing_pool(self):
         from unittest import mock

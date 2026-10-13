@@ -142,16 +142,6 @@ type ExampleSentence = {
   build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar' }[];
 };
 
-type GrammarClozeVariant = {
-  jp_cloze: string;
-  /** Bracket-notation cloze with blank preserved; optional (Plan 11.8). */
-  jp_cloze_furigana?: string;
-  english: string;
-  answer: string;
-  nudge: string;
-  sort_order?: number;
-};
-
 type GrammarUse = {
   label: string;
   structure: string;
@@ -174,7 +164,6 @@ type GrammarItem = {
   conjugation_rules: Record<string, unknown>;
   accepted_forms: string[];
   family?: 'particles' | 'copula' | 'conjugations' | 'connectors' | 'patterns';
-  cloze_variants?: GrammarClozeVariant[];
   example_sentences?: ExampleSentence[];
   accepted_answers?: AcceptedAnswer[];
   vocabulary_slugs?: string[];
@@ -836,10 +825,6 @@ export function compileCurriculum(
       INSERT INTO grammar_related_links (grammar_item_id, related_item_id, sort_order)
       VALUES (@grammar_item_id, @related_item_id, @sort_order)
     `);
-    const insertClozeVariant = db.prepare(`
-      INSERT INTO grammar_cloze_variants (item_id, jp_cloze, jp_cloze_furigana, english, answer, nudge, sort_order)
-      VALUES (@item_id, @jp_cloze, @jp_cloze_furigana, @english, @answer, @nudge, @sort_order)
-    `);
     const insertGrammarVocabLink = db.prepare(`
       INSERT INTO grammar_vocabulary_links (grammar_item_id, vocabulary_item_id)
       VALUES (@grammar_item_id, @vocabulary_item_id)
@@ -906,18 +891,6 @@ export function compileCurriculum(
           grammar_item_id: id,
           related_item_id: relatedId,
           sort_order: index,
-        });
-      }
-
-      for (const [index, variant] of (grammarItem.cloze_variants ?? []).entries()) {
-        insertClozeVariant.run({
-          item_id: id,
-          jp_cloze: variant.jp_cloze,
-          jp_cloze_furigana: variant.jp_cloze_furigana ?? null,
-          english: variant.english,
-          answer: variant.answer,
-          nudge: variant.nudge,
-          sort_order: variant.sort_order ?? index,
         });
       }
 

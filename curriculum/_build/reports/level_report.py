@@ -5,7 +5,7 @@ Run it after a move in `_build/levels.json` and the regenerate steps in
 `curriculum/README.md`. It reads the generated curriculum JSON and lists every
 place an item leans on an item taught at a *later* level:
 
-  * Sentences: a vocabulary or grammar example, a grammar use, a cloze, a
+  * Sentences: a vocabulary or grammar example, a grammar use, a
     passage body or question whose text uses a word taught later. The check is
     `level_check`, the same tokenizer gate content generation uses.
   * Links: an example's or grammar point's `vocabulary_slugs`, a lesson's
@@ -22,7 +22,7 @@ place an item leans on an item taught at a *later* level:
 
 It only reports, and it always exits 0. What to fix after a move is the
 maintainer's call. Words inside one level are not checked here: the
-generation gates (`validate_examples`, `validate_readings`, `check_cloze`)
+generation gates (`validate_examples`, `validate_readings`)
 own the position windows.
 
 Writes curriculum/_build/reports/level-report.md. Run (from anywhere):
@@ -42,7 +42,6 @@ sys.path.insert(0, BUILD_DIR)
 from generate_content import context, level_check, reading_seeds  # noqa: E402
 from levels import LEVEL_ORDER, LEVELS_PATH  # noqa: E402
 
-CLOZE_BLANK = "＿＿＿"
 
 #: item_type -> the folder its level files live in.
 KIND_DIRS = {
@@ -119,9 +118,6 @@ def sentences(items, passages):
                 yield level, f"grammar {g['slug']}", s["japanese"]
             for use in g.get("uses", []):
                 yield level, f"grammar {g['slug']} use", use["japanese"]
-            for cv in g.get("cloze_variants", []):
-                yield (level, f"grammar {g['slug']} cloze",
-                       cv["jp_cloze"].replace(CLOZE_BLANK, cv["answer"]))
         for p in passages[level]:
             yield level, f"passage {p['slug']}", p["body"]
             for q in p.get("questions", []):

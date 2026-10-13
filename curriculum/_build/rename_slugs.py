@@ -261,7 +261,7 @@ def file_kind(rel):
                         "visually-similar-candidates.md"}):
         return "kanji"
     if any(part in rel for part in ("grammar", "reading", "passage", "lessons",
-                                    "drafts/n4", "promote_cloze")):
+                                    "drafts/n4")):
         return "grammar"
     return None
 

@@ -20,8 +20,7 @@ Findings are graded ERROR / WARNING / INFO, mirroring `import/audit_facts.py`:
   INFO    context only (review-status counts, untaught KRADFILE primitives).
 
 Writes curriculum/_build/reports/content-audit-<level>.md per requested level
-and exits 1 if any level produced an ERROR — the same contract as
-`check_cloze.py`.
+and exits 1 if any level produced an ERROR.
 
 Run (from curriculum/_build):
     .venv/bin/python -m generate_content.audit_shipped
@@ -45,7 +44,6 @@ import furigana as furigana_lib  # noqa: E402
 import sources  # noqa: E402
 import audit_facts  # noqa: E402
 from generate_content import (  # noqa: E402
-    check_cloze,
     context,
     mnemonic_context,
     reading_context,
@@ -418,23 +416,6 @@ def rerun_grammar_example_gate(level):
                 f"grammar {item['slug']}: only {own_count} example line(s) use "
                 f"{item['primary_form']} itself; at least {minimum} must",
             ))
-    return results
-
-
-def rerun_cloze_gate(level):
-    """Plan check 2: `check_cloze`'s own logic, replicated the way it already
-    runs today — this audit absorbs it rather than shelling out, since
-    `check_cloze.main()` calls `sys.exit` itself."""
-    results = []
-    known_readings = validate_drafts._known_readings(level)
-    for item in context.load_grammar(level):
-        variants = item.get("cloze_variants") or []
-        if not variants:
-            continue
-        ctx = validate_drafts.item_context(level, item["slug"])
-        for i, cloze in enumerate(variants):
-            for e in check_cloze.variant_errors(cloze, item, ctx, known_readings):
-                results.append(("ERROR", f"grammar {item['slug']} cloze_variants[{i}]: {e}"))
     return results
 
 
@@ -953,7 +934,6 @@ def audit_level(level, all_levels_present, kradfile):
     reruns.extend(rerun_mnemonic_gates(level))
     reruns.extend(rerun_example_gates(level))
     reruns.extend(rerun_grammar_example_gate(level))
-    reruns.extend(rerun_cloze_gate(level))
     reruns.extend(rerun_passage_gate(level))
 
     invariants = findings.section("Accepted-answer invariants (check 1)")

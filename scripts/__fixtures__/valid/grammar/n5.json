@@ -12,16 +12,6 @@
       "explanation_markdown": "# です\n\nです is the polite copula — it closes a sentence with 'is / am / are'.",
       "caution_notes": ["です attaches to nouns and な-adjectives, never directly to verbs."],
       "related_grammar_slugs": ["ja-nai"],
-      "cloze_variants": [
-        {
-          "jp_cloze": "これは水＿＿＿。",
-          "jp_cloze_furigana": "これは水[みず]＿＿＿。",
-          "english": "This is water.",
-          "answer": "です",
-          "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 0
-        }
-      ],
       "vocabulary_slugs": ["ichi-v"],
       "accepted_answers": [
         { "answer_type": "meaning", "answer_text": "is", "is_primary": true },

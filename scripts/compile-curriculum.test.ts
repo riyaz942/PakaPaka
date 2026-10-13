@@ -322,25 +322,16 @@ describe('compile-curriculum', () => {
       expect(itemCount.count).toBe(5);
       expect(relationshipCount.count).toBe(2);
 
-      // Plan 09: family lands on grammar_rules, variants in their own table.
+      // Plan 09: family lands on grammar_rules.
       const rule = db
         .prepare('SELECT family FROM grammar_rules WHERE structure = ?')
         .get('Noun + です') as { family: string | null };
       expect(rule.family).toBe('copula');
 
-      const variant = db
-        .prepare('SELECT jp_cloze, jp_cloze_furigana, english, answer, nudge FROM grammar_cloze_variants')
-        .get() as {
-        jp_cloze: string;
-        jp_cloze_furigana: string | null;
-        english: string;
-        answer: string;
-        nudge: string;
-      };
-      expect(variant.jp_cloze).toBe('これは水＿＿＿。');
-      expect(variant.jp_cloze_furigana).toBe('これは水[みず]＿＿＿。');
-      expect(variant.answer).toBe('です');
-      expect(variant.nudge).toContain('copula');
+      const clozeTable = db
+        .prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'grammar_cloze_variants'")
+        .get();
+      expect(clozeTable).toBeUndefined();
     } finally {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });
