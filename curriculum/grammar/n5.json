@@ -23208,7 +23208,13 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]がいちばん安[やす]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "夏が一番好きです。",
@@ -23235,71 +23241,18 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "富士山が一番高いです。",
-          "english": "Mt. Fuji is the tallest.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "takai-adj"
-          ],
-          "furigana": "富[ふ]士[じ]山[やま]が一[いち]番[ばん]高[たか]いです。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "takai-adj",
-              "start": 6,
-              "end": 8
+              "furigana": "夏[なつ]がいちばん好[す]きです。",
+              "kind": "valid"
             }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "富士山は日本で一番高い山です。",
-          "english": "Mt. Fuji is the highest mountain in Japan.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "yama-v",
-            "nihon",
-            "takai-adj"
-          ],
-          "furigana": "富[ふ]士[じ]山[やま]は日本[にほん]で一[いち]番[ばん]高[たか]い山[やま]です。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "yama-v",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "nihon",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "takai-adj",
-              "start": 9,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "yama-v",
-              "start": 11,
-              "end": 12
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 9
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "家族で誰が一番忙しいですか。",
           "english": "Who is the busiest in your family?",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kazoku",
             "dare",
@@ -23327,12 +23280,18 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "誰[だれ]が家[か]族[ぞく]で一[いち]番[ばん]忙[いそが]しいですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、カメラが一番欲しいです。",
           "english": "A camera is what I want above all right now.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "ima",
             "kamera",
@@ -23365,7 +23324,7 @@
         {
           "japanese": "ここのご飯がいちばんおいしい！",
           "english": "The food here beats everywhere else!",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "koko",
             "gohan",
@@ -23398,7 +23357,7 @@
         {
           "japanese": "私は肉が一番好きです。",
           "english": "Meat is my favourite.",
-          "sort_order": 7,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "watashi",
             "niku",
@@ -23426,6 +23385,107 @@
             "start": 4,
             "end": 6
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "肉[にく]が一[いち]番[ばん]好[す]きです。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "去年の冬が一番寒かったです。",
+          "english": "Last year's winter was the coldest.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kyonen",
+            "fuyu",
+            "samui"
+          ],
+          "furigana": "去[きょ]年[ねん]の冬[ふゆ]が一[いち]番[ばん]寒[さむ]かったです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyonen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 7,
+              "end": 11,
+              "surface_form": "寒かった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "どの駅が一番近いですか。",
+          "english": "Which station is the closest?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dono",
+            "eki",
+            "chikai"
+          ],
+          "furigana": "どの駅[えき]が一[いち]番[ばん]近[ちか]いですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "chikai",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "犬が一番かわいいです。",
+          "english": "Dogs are the cutest.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "inu",
+            "kawaii"
+          ],
+          "furigana": "犬[いぬ]が一[いち]番[ばん]かわいいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kawaii",
+              "start": 4,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 4
+          },
           "register": "polite"
         }
       ],
@@ -23435,6 +23495,33 @@
         "suki"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "the most",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "most",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number one",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "the best",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "best",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "富士山は日本で＿＿＿高い山です。",
@@ -23528,33 +23615,18 @@
             "start": 3,
             "end": 8
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "日本の生活はどうですか。",
-          "english": "How is life in Japan?",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "nihon"
-          ],
-          "furigana": "日本[にほん]の生[せい]活[かつ]はどうですか。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "nihon",
-              "start": 0,
-              "end": 2
+              "furigana": "お茶[ちゃ]はいかがですか。",
+              "kind": "valid"
             }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 11
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "この映画はどうでしたか。",
           "english": "How was this movie?",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kono",
             "eiga"
@@ -23576,12 +23648,18 @@
             "start": 5,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この映[えい]画[が]はいかがでしたか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日はどうですか。",
           "english": "How about tomorrow?",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ashita"
           ],
@@ -23602,7 +23680,7 @@
         {
           "japanese": "新しい仕事はどうですか。",
           "english": "How is the new job?",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "atarashii-adj",
             "shigoto"
@@ -23629,7 +23707,7 @@
         {
           "japanese": "この店はどうですか。",
           "english": "How is this shop?",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
             "mise"
@@ -23654,30 +23732,9 @@
           "register": "polite"
         },
         {
-          "japanese": "お茶はいかがですか。",
-          "english": "How about some tea?",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "ocha"
-          ],
-          "furigana": "お茶[ちゃ]はいかがですか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ocha",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "土曜日の夜はどうですか。",
           "english": "How about Saturday night?",
-          "sort_order": 7,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "doyoubi",
             "yoru"
@@ -23700,6 +23757,87 @@
             "end": 11
           },
           "register": "polite"
+        },
+        {
+          "japanese": "コーヒーはいかがですか。",
+          "english": "Would you like some coffee?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "koohii"
+          ],
+          "furigana": "コーヒーはいかがですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koohii",
+              "start": 0,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 11
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "コーヒーはどうですか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "昨日の試験はどうでしたか。",
+          "english": "How was yesterday's exam?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kinou",
+            "shiken"
+          ],
+          "furigana": "昨日[きのう]の試[し]験[けん]はどうでしたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 12
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "旅行はいかがでしたか。",
+          "english": "How was your trip?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ryokou"
+          ],
+          "furigana": "旅[りょ]行[こう]はいかがでしたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 0,
+              "end": 2
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "旅[りょ]行[こう]はどうでしたか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -23708,6 +23846,33 @@
         "eiga"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "how is it",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "how about",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "how was it",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "what about",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "how do you like",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "明日は＿＿＿。",
@@ -23922,36 +24087,9 @@
           "register": "plain"
         },
         {
-          "japanese": "明日は雨だろう。",
-          "english": "Tomorrow will probably be rain.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "ashita",
-            "ame-v"
-          ],
-          "furigana": "明日[あした]は雨[あめ]だろう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ame-v",
-              "start": 3,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "猫はベッドにいるだろう。",
           "english": "The cat is probably on the bed.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "neko",
             "beddo",
@@ -23982,31 +24120,121 @@
           "register": "plain"
         },
         {
-          "japanese": "彼は医者じゃないだろう。",
-          "english": "He is probably not a doctor.",
-          "sort_order": 7,
+          "japanese": "母はお酒を飲まないだろう。",
+          "english": "My mother probably won't drink alcohol.",
+          "sort_order": 6,
           "vocabulary_slugs": [
-            "kare",
-            "isha"
+            "haha",
+            "osake",
+            "nomu-v"
           ],
-          "furigana": "彼[かれ]は医[い]者[しゃ]じゃないだろう。",
+          "furigana": "母[はは]はお酒[さけ]を飲[の]まないだろう。",
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "haha",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "isha",
+              "vocabulary_slug": "osake",
               "start": 2,
               "end": 4
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 5,
+              "end": 9,
+              "surface_form": "飲まない",
+              "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 11
+            "start": 9,
+            "end": 12
           },
           "register": "plain"
+        },
+        {
+          "japanese": "昨日の試験は難しかっただろう。",
+          "english": "Yesterday's exam was probably hard.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kinou",
+            "shiken",
+            "muzukashii"
+          ],
+          "furigana": "昨日[きのう]の試[し]験[けん]は難[むずか]しかっただろう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 6,
+              "end": 11,
+              "surface_form": "難しかった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 14
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "子供は公園で遊んでいるだろう。",
+          "english": "The kids are probably playing in the park.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "kouen",
+            "asobu",
+            "iru-exist"
+          ],
+          "furigana": "子[こ]供[ども]は公[こう]園[えん]で遊[あそ]んでいるだろう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 6,
+              "end": 9,
+              "surface_form": "遊んで",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 14
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "公[こう]園[えん]で子[こ]供[ども]は遊[あそ]んでいるだろう。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -24015,6 +24243,28 @@
         "muzukashii"
       ],
       "family": "copula",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "probably",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I guess",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I suppose",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "likely",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "彼は帰る＿＿＿。",
@@ -24142,57 +24392,9 @@
           "register": "plain"
         },
         {
-          "japanese": "遅れるかもしれません。",
-          "english": "I might be late.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "okureru"
-          ],
-          "furigana": "遅[おく]れるかもしれません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "okureru",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "明日は雪が降るかもしれません。",
-          "english": "It might snow tomorrow.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "ashita",
-            "yuki"
-          ],
-          "furigana": "明日[あした]は雪[ゆき]が降[ふ]るかもしれません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "yuki",
-              "start": 3,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 14
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "彼は来ないかもしれません。",
           "english": "He might not come.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "kare",
             "kuru-v"
@@ -24221,12 +24423,18 @@
         {
           "japanese": "これは高いかもしれません。",
           "english": "This might be expensive.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
+            "kore",
             "takai-adj"
           ],
           "furigana": "これは高[たか]いかもしれません。",
           "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
             {
               "vocabulary_slug": "takai-adj",
               "start": 3,
@@ -24240,36 +24448,9 @@
           "register": "polite"
         },
         {
-          "japanese": "明日は雨かもしれません。",
-          "english": "It might rain tomorrow.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "ashita",
-            "ame-v"
-          ],
-          "furigana": "明日[あした]は雨[あめ]かもしれません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ame-v",
-              "start": 3,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 11
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "この映画はつまらないかもしれない。",
           "english": "This movie might be boring.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
             "eiga",
@@ -24302,7 +24483,7 @@
         {
           "japanese": "ここは病院かもしれない。",
           "english": "This place might be a hospital.",
-          "sort_order": 8,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "koko",
             "byouin"
@@ -24329,7 +24510,7 @@
         {
           "japanese": "あれは犬かも。",
           "english": "That over there might be a dog.",
-          "sort_order": 9,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "are",
             "inu"
@@ -24354,69 +24535,9 @@
           "register": "plain"
         },
         {
-          "japanese": "彼は明日来るかもしれません。",
-          "english": "He might come tomorrow.",
-          "sort_order": 10,
-          "vocabulary_slugs": [
-            "kare",
-            "ashita",
-            "kuru-v"
-          ],
-          "furigana": "彼[かれ]は明日[あした]来[く]るかもしれません。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "ashita",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 13
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "今日は忙しいかもしれない。",
-          "english": "I might be busy today.",
-          "sort_order": 11,
-          "vocabulary_slugs": [
-            "kyou",
-            "isogashii"
-          ],
-          "furigana": "今日[きょう]は忙[いそが]しいかもしれない。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyou",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 3,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 12
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "猫は大丈夫かもしれない。",
           "english": "The cat might be okay.",
-          "sort_order": 12,
+          "sort_order": 7,
           "vocabulary_slugs": [
             "neko",
             "daijoubu"
@@ -24443,7 +24564,7 @@
         {
           "japanese": "夜の間に猫が外に出たかもしれない。",
           "english": "The cat may have gone outside during the night.",
-          "sort_order": 13,
+          "sort_order": 8,
           "vocabulary_slugs": [
             "yoru",
             "aida",
@@ -24485,34 +24606,54 @@
             "start": 10,
             "end": 16
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "猫[ねこ]が夜[よる]の間[あいだ]に外[そと]に出[で]たかもしれない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "明日は雨かもしれない。",
-          "english": "It might rain tomorrow.",
-          "sort_order": 14,
+          "japanese": "財布を家に忘れたかもしれません。",
+          "english": "I might have left my wallet at home.",
+          "sort_order": 9,
           "vocabulary_slugs": [
-            "ashita",
-            "ame-v"
+            "saifu",
+            "ie",
+            "wasureru"
           ],
-          "furigana": "明日[あした]は雨[あめ]かもしれない。",
+          "furigana": "財[さい]布[ふ]を家[いえ]に忘[わす]れたかもしれません。",
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "saifu",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "ame-v",
+              "vocabulary_slug": "ie",
               "start": 3,
               "end": 4
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 5,
+              "end": 8,
+              "surface_form": "忘れた",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 10
+            "start": 8,
+            "end": 15
           },
-          "register": "plain"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "家[いえ]に財[さい]布[ふ]を忘[わす]れたかもしれません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -24523,6 +24664,33 @@
         "takai-adj"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "might",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "maybe",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "may",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "perhaps",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "possibly",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "明日は雨＿＿＿。",
@@ -24631,30 +24799,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "明日は晴れると思います。",
-          "english": "I think it will be sunny tomorrow.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "ashita"
-          ],
-          "furigana": "明日[あした]は晴[は]れると思[おも]います。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 11
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "この本はいいと思います。",
           "english": "I think this book is good.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kono",
             "hon",
@@ -24687,7 +24834,7 @@
         {
           "japanese": "彼は来ないと思う。",
           "english": "I think he won't come.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "kuru-v"
@@ -24716,7 +24863,7 @@
         {
           "japanese": "あの映画は面白いと思います。",
           "english": "In my view that movie is interesting.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ano",
             "eiga",
@@ -24749,7 +24896,7 @@
         {
           "japanese": "彼は今日来ないと思います。",
           "english": "In my view he will not come today.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kare",
             "kyou",
@@ -24779,12 +24926,18 @@
             "start": 7,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]彼[かれ]は来[こ]ないと思[おも]います。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この店は静かだと思います。",
           "english": "In my view this shop is quiet.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
             "mise",
@@ -24817,7 +24970,7 @@
         {
           "japanese": "明日は雨だと思います。",
           "english": "In my view it will rain tomorrow.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "ashita",
             "ame-v"
@@ -24844,7 +24997,7 @@
         {
           "japanese": "これはいいと思いますか。",
           "english": "Is this good, in your view?",
-          "sort_order": 7,
+          "sort_order": 6,
           "vocabulary_slugs": [
             "kore",
             "ii"
@@ -24867,6 +25020,68 @@
             "end": 10
           },
           "register": "polite"
+        },
+        {
+          "japanese": "母の料理はおいしいと思います。",
+          "english": "I think my mother's cooking is delicious.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "haha",
+            "ryouri",
+            "oishii"
+          ],
+          "furigana": "母[はは]の料[りょう]理[り]はおいしいと思[おも]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "oishii",
+              "start": 5,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "試験は難しかったと思います。",
+          "english": "I think the exam was difficult.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "shiken",
+            "muzukashii"
+          ],
+          "furigana": "試[し]験[けん]は難[むずか]しかったと思[おも]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiken",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 3,
+              "end": 8,
+              "surface_form": "難しかった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 13
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -24875,6 +25090,33 @@
         "omou"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "I think",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "think that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I believe",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in my opinion",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I feel",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "あの映画は面白い＿＿＿。",
@@ -24948,30 +25190,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "田中という人です。",
-          "english": "It's a person called Tanaka.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "hito"
-          ],
-          "furigana": "田中[たなか]という人[ひと]です。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hito",
-              "start": 5,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "これは何という花ですか。",
           "english": "What is this flower called?",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kore",
             "nani",
@@ -24999,12 +25220,18 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "これは何[なに]っていう花[はな]ですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "「猫」という映画を見ました。",
           "english": "I watched a movie called 'Cat'.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "neko",
             "eiga",
@@ -25039,7 +25266,7 @@
         {
           "japanese": "春という喫茶店に行きました。",
           "english": "I went to a coffee shop by the name of Spring.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "haru",
             "kissaten",
@@ -25074,7 +25301,7 @@
         {
           "japanese": "白という犬がいます。",
           "english": "I have a dog by the name of White.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "shiro-color",
             "inu",
@@ -25109,7 +25336,7 @@
         {
           "japanese": "時間っていう映画を見ました。",
           "english": "I watched a movie by the name of Time.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "jikan",
             "eiga",
@@ -25144,7 +25371,7 @@
         {
           "japanese": "明日海に行くという約束があります。",
           "english": "I have a promise to go to the sea tomorrow.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "ashita",
             "umi",
@@ -25187,6 +25414,131 @@
             "end": 9
           },
           "register": "polite"
+        },
+        {
+          "japanese": "「雪」という歌を知っていますか。",
+          "english": "Do you know a song called 'Snow'?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "yuki",
+            "uta",
+            "shiru",
+            "iru-exist"
+          ],
+          "furigana": "「雪[ゆき]」という歌[うた]を知[し]っていますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuki",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "知って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 11,
+              "end": 14,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "「暇」という言葉の意味が分かりません。",
+          "english": "I don't understand the meaning of the word 'hima'.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "hima",
+            "kotoba",
+            "imi",
+            "wakaru"
+          ],
+          "furigana": "「暇[ひま]」という言[こと]葉[ば]の意[い]味[み]が分[わ]かりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hima",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kotoba",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "imi",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 12,
+              "end": 18,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "青という店で服を買いました。",
+          "english": "I bought clothes at a shop called Blue.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ao-color",
+            "mise",
+            "fuku",
+            "kau-v"
+          ],
+          "furigana": "青[あお]という店[みせ]で服[ふく]を買[か]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ao-color",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 4
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -25195,6 +25547,28 @@
         "eiga"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "called",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "named",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "by the name of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "known as",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "春＿＿＿喫茶店に行きました。",
