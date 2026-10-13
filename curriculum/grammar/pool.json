@@ -12175,5 +12175,759 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "bakari": {
+    "accepted_meanings": [
+      "only",
+      "nothing but",
+      "just did",
+      "have just",
+      "just"
+    ],
+    "sentences": [
+      {
+        "japanese": "弟はお菓子ばかり食べている。",
+        "english": "My younger brother eats nothing but sweets.",
+        "vocabulary_slugs": [
+          "otouto",
+          "okashi",
+          "taberu",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "弟はお菓子だけ食べている。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "私は宿題ばかりしている。",
+        "english": "I'm doing nothing but homework.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shukudai",
+          "suru",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "宿題ばかりしている。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今、起きたばかりです。",
+        "english": "I just woke up.",
+        "vocabulary_slugs": [
+          "ima",
+          "okiru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達は仕事を始めたばかりだ。",
+        "english": "My friend just started the job.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "shigoto",
+          "hajimeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私は日本に行ったばかりだ。",
+        "english": "I just went to Japan.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihon",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本に行ったばかりだ。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼はテレビばかり見ている。",
+        "english": "He does nothing but watch TV.",
+        "vocabulary_slugs": [
+          "kare",
+          "terebi",
+          "miru-v",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビばかり見ている。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この店は甘い物ばかり売っている。",
+        "english": "This shop sells nothing but sweet things.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "amai",
+          "mono",
+          "uru",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どうして肉ばかり食べるんですか。",
+        "english": "Why do you eat nothing but meat?",
+        "vocabulary_slugs": [
+          "doushite",
+          "niku",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "昨日は雨ばかりでした。",
+        "english": "Yesterday it did nothing but rain.",
+        "vocabulary_slugs": [
+          "kinou",
+          "ame-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この町に来たばかりなので、道が分かりません。",
+        "english": "I only just came to this town, so I don't know the streets.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "kuru-v",
+          "michi-v",
+          "wakaru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tokoro": {
+    "accepted_meanings": [
+      "about to",
+      "in the middle of",
+      "just finished",
+      "just did",
+      "right in the middle of"
+    ],
+    "sentences": [
+      {
+        "japanese": "今、食べているところです。",
+        "english": "I'm in the middle of eating right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今、出るところです。",
+        "english": "I'm just about to leave.",
+        "vocabulary_slugs": [
+          "ima",
+          "deru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今、電話するところです。",
+        "english": "I'm just about to make a phone call.",
+        "vocabulary_slugs": [
+          "ima",
+          "denwa-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今、朝ご飯を食べたところです。",
+        "english": "I just finished eating breakfast.",
+        "vocabulary_slugs": [
+          "ima",
+          "asagohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今、宿題をしたところです。",
+        "english": "I just finished my homework.",
+        "vocabulary_slugs": [
+          "ima",
+          "shukudai",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母は晩ご飯を作っているところです。",
+        "english": "My mother is in the middle of making dinner.",
+        "vocabulary_slugs": [
+          "haha",
+          "bangohan",
+          "tsukuru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "会議が終わったところだ。",
+        "english": "The meeting has just ended.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "owaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "弟は今、勉強しているところです。",
+        "english": "My younger brother is studying right now.",
+        "vocabulary_slugs": [
+          "otouto",
+          "ima",
+          "benkyou-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今、何をしているところですか。",
+        "english": "What are you in the middle of doing right now?",
+        "vocabulary_slugs": [
+          "ima",
+          "nani",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私は電車に乗るところでした。",
+        "english": "I was just about to get on the train.",
+        "vocabulary_slugs": [
+          "watashi",
+          "densha",
+          "noru"
+        ],
+        "alternates": [
+          {
+            "japanese": "電車に乗るところでした。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aida": {
+    "accepted_meanings": [
+      "while",
+      "during",
+      "during the time",
+      "in the time while"
+    ],
+    "sentences": [
+      {
+        "japanese": "会議の間、電話を消した。",
+        "english": "During the meeting, I turned off my phone.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "denwa",
+          "kesu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "会議の間に、雨が降った。",
+        "english": "It rained sometime during the meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "ame-v",
+          "furu-rain"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "授業の間、教室はとても静かだった。",
+        "english": "During class, the classroom was very quiet.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "kyoushitsu",
+          "totemo",
+          "shizuka"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "赤ちゃんが寝ている間に、本を読みます。",
+        "english": "While the baby is asleep, I read a book.",
+        "vocabulary_slugs": [
+          "akachan",
+          "neru",
+          "iru-exist",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母が料理を作っている間、私は皿を洗った。",
+        "english": "While my mother was cooking, I washed the dishes.",
+        "vocabulary_slugs": [
+          "haha",
+          "ryouri",
+          "tsukuru",
+          "iru-exist",
+          "watashi",
+          "sara",
+          "arau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "私が出かけている間に、誰か来ましたか。",
+        "english": "Did anyone come while I was out?",
+        "vocabulary_slugs": [
+          "watashi",
+          "dekakeru",
+          "iru-exist",
+          "dare",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "出かけている間に、誰か来ましたか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "電車に乗っている間は、電話をかけません。",
+        "english": "While I'm on the train, I don't make phone calls.",
+        "vocabulary_slugs": [
+          "densha",
+          "noru",
+          "iru-exist",
+          "denwa",
+          "kakeru-call"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "食事の間、彼は何も話さなかった。",
+        "english": "During the meal, he didn't say anything.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "kare",
+          "nani",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "旅行の間に、カメラを無くしました。",
+        "english": "I lost my camera sometime during the trip.",
+        "vocabulary_slugs": [
+          "ryokou",
+          "kamera",
+          "nakusu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達を待っている間、雑誌を読んだ。",
+        "english": "While I was waiting for my friend, I read a magazine.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "matsu",
+          "iru-exist",
+          "zasshi",
+          "yomu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uchi-ni": {
+    "accepted_meanings": [
+      "while",
+      "while still",
+      "before",
+      "before it's too late"
+    ],
+    "sentences": [
+      {
+        "japanese": "お茶が熱いうちに飲んだ方がいいですよ。",
+        "english": "You should drink the tea while it's still hot.",
+        "vocabulary_slugs": [
+          "ocha",
+          "atsui-obj",
+          "nomu-v",
+          "hou",
+          "ii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "忘れないうちに名前を書いた。",
+        "english": "I wrote down the name before I could forget it.",
+        "vocabulary_slugs": [
+          "wasureru",
+          "namae",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末のうちに宿題をした。",
+        "english": "I got my homework done while it was still the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "shukudai",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "暖かいうちに食べましょう。",
+        "english": "Let's eat it while it's warm.",
+        "vocabulary_slugs": [
+          "atatakai",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "若いうちに外国に住みたい。",
+        "english": "I want to live abroad while I'm young.",
+        "vocabulary_slugs": [
+          "wakai",
+          "gaikoku",
+          "sumu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雨が降らないうちに、帰りましょう。",
+        "english": "Let's go home before it starts raining.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "子供が寝ているうちに、ご飯を食べた。",
+        "english": "I ate while the kids were asleep.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "neru",
+          "iru-exist",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "子供が寝ている間に、ご飯を食べた。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明るいうちに帰りませんか。",
+        "english": "Shall we head home while it's still light?",
+        "vocabulary_slugs": [
+          "akarui",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "祖母が元気なうちに、会いに行きます。",
+        "english": "I'll go and see my grandmother while she's still well.",
+        "vocabulary_slugs": [
+          "sobo",
+          "genki",
+          "au",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "日が沈まないうちに、山を降りた。",
+        "english": "We came down the mountain before the sun set.",
+        "vocabulary_slugs": [
+          "hi-sun-v",
+          "shizumu",
+          "yama-v",
+          "oriru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tabi-ni": {
+    "accepted_meanings": [
+      "every time",
+      "whenever",
+      "each time"
+    ],
+    "sentences": [
+      {
+        "japanese": "妹が来るたびに、猫が逃げる。",
+        "english": "Every time my little sister comes over, the cat runs away.",
+        "vocabulary_slugs": [
+          "imouto",
+          "kuru-v",
+          "neko",
+          "nigeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼が来るたびに、猫が逃げた。",
+        "english": "Every time he came, the cat ran away.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v",
+          "neko",
+          "nigeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "旅行のたびに、新しい靴を買う。",
+        "english": "Every trip, I buy new shoes.",
+        "vocabulary_slugs": [
+          "ryokou",
+          "atarashii-adj",
+          "kutsu",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "会議のたびに、彼は遅れる。",
+        "english": "Every meeting, he's late.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "kare",
+          "okureru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼が話すたびに、私は笑う。",
+        "english": "Every time he talks, I laugh.",
+        "vocabulary_slugs": [
+          "kare",
+          "hanasu-v",
+          "watashi",
+          "warau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "祖母に会うたびに、お菓子をもらいます。",
+        "english": "Every time I see my grandmother, I get sweets.",
+        "vocabulary_slugs": [
+          "sobo",
+          "au",
+          "okashi",
+          "morau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どうして彼は会うたびに怒るんですか。",
+        "english": "Why does he get angry every time we meet?",
+        "vocabulary_slugs": [
+          "doushite",
+          "kare",
+          "au",
+          "okoru-angry"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "試験のたびに、弟はあまり寝ない。",
+        "english": "Every time there's an exam, my younger brother hardly sleeps.",
+        "vocabulary_slugs": [
+          "shiken",
+          "otouto",
+          "amari",
+          "neru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この歌を聞くたびに、悲しくなる。",
+        "english": "Whenever I hear this song, I get sad.",
+        "vocabulary_slugs": [
+          "kono",
+          "uta",
+          "kiku-v",
+          "kanashii",
+          "naru-become"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "baai": {
+    "accepted_meanings": [
+      "in case of",
+      "if",
+      "in the event of",
+      "in the case that"
+    ],
+    "sentences": [
+      {
+        "japanese": "雨の場合、傘を持って行きます。",
+        "english": "In case of rain, I'll bring an umbrella.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "kasa",
+          "motsu",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨の場合は、傘を持って行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "財布を無くした場合、警官に言います。",
+        "english": "If I lose my wallet, I'll tell a police officer.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nakusu",
+          "keikan",
+          "iu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "病気の場合、学校を休みます。",
+        "english": "If I'm sick, I take the day off school.",
+        "vocabulary_slugs": [
+          "byouki",
+          "gakkou-v",
+          "yasumu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "雪の場合は、電車で行きます。",
+        "english": "If it snows, I'll go by train.",
+        "vocabulary_slugs": [
+          "yuki",
+          "densha",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "遅れる場合は、先生に電話します。",
+        "english": "If I'm going to be late, I'll call the teacher.",
+        "vocabulary_slugs": [
+          "okureru",
+          "sensei",
+          "denwa-suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "分からない場合は、辞書を使います。",
+        "english": "If I don't understand, I use a dictionary.",
+        "vocabulary_slugs": [
+          "wakaru",
+          "jisho",
+          "tsukau"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電車が遅れた場合は、どうしますか。",
+        "english": "What will you do if the train is late?",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru",
+          "dou",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "子供の場合は、お酒を買えません。",
+        "english": "If you're a child, you can't buy alcohol.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "osake",
+          "kaeru-potential"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "道が分からない場合は、交番で聞きましょう。",
+        "english": "If we don't know the way, let's ask at the police box.",
+        "vocabulary_slugs": [
+          "michi-v",
+          "wakaru",
+          "kouban",
+          "kiku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "忙しい場合は、来なくてもいいですよ。",
+        "english": "If you're busy, you don't have to come.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "kuru-v",
+          "ii"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

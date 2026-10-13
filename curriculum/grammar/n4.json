@@ -14153,63 +14153,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "彼はゲームばかりしています。",
-          "english": "He does nothing but play games.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kare"
-          ],
-          "furigana": "彼[かれ]はゲームばかりしています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "さっき着いたばかりです。",
-          "english": "I just arrived a moment ago.",
-          "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "さっき着[つ]いたばかりです。",
-          "grammar_span": {
-            "start": 5,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "甘い物ばかり食べています。",
-          "english": "I only eat sweet things.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "amai"
-          ],
-          "furigana": "甘[あま]い物[もの]ばかり食[た]べています。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "amai",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "弟はお菓子ばかり食べている。",
           "english": "My younger brother eats nothing but sweets.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "otouto",
             "okashi",
@@ -14245,12 +14191,18 @@
             "start": 5,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]はお菓[か]子[し]だけ食[た]べている。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "私は宿題ばかりしている。",
           "english": "I'm doing nothing but homework.",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "watashi",
             "shukudai",
@@ -14286,12 +14238,18 @@
             "start": 4,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]ばかりしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、起きたばかりです。",
           "english": "I just woke up.",
-          "sort_order": 5,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ima",
             "okiru"
@@ -14312,7 +14270,7 @@
             }
           ],
           "grammar_span": {
-            "start": 5,
+            "start": 4,
             "end": 8
           },
           "register": "polite"
@@ -14320,7 +14278,7 @@
         {
           "japanese": "友達は仕事を始めたばかりだ。",
           "english": "My friend just started the job.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "tomodachi",
             "shigoto",
@@ -14347,7 +14305,7 @@
             }
           ],
           "grammar_span": {
-            "start": 9,
+            "start": 8,
             "end": 12
           },
           "register": "plain"
@@ -14355,7 +14313,7 @@
         {
           "japanese": "私は日本に行ったばかりだ。",
           "english": "I just went to Japan.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "watashi",
             "nihon",
@@ -14382,10 +14340,225 @@
             }
           ],
           "grammar_span": {
-            "start": 8,
+            "start": 7,
             "end": 11
           },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]に行[い]ったばかりだ。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "彼はテレビばかり見ている。",
+          "english": "He does nothing but watch TV.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kare",
+            "terebi",
+            "miru-v",
+            "iru-exist"
+          ],
+          "furigana": "彼[かれ]はテレビばかり見[み]ている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "terebi",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 8,
+              "end": 10,
+              "surface_form": "見て",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "テレビばかり見[み]ている。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "この店は甘い物ばかり売っている。",
+          "english": "This shop sells nothing but sweet things.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "amai",
+            "mono",
+            "uru",
+            "iru-exist"
+          ],
+          "furigana": "この店[みせ]は甘[あま]い物[もの]ばかり売[う]っている。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "amai",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "uru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "売って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
           "register": "plain"
+        },
+        {
+          "japanese": "どうして肉ばかり食べるんですか。",
+          "english": "Why do you eat nothing but meat?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "doushite",
+            "niku",
+            "taberu"
+          ],
+          "furigana": "どうして肉[にく]ばかり食[た]べるんですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "doushite",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "niku",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "昨日は雨ばかりでした。",
+          "english": "Yesterday it did nothing but rain.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kinou",
+            "ame-v"
+          ],
+          "furigana": "昨日[きのう]は雨[あめ]ばかりでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 3,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "この町に来たばかりなので、道が分かりません。",
+          "english": "I only just came to this town, so I don't know the streets.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "kuru-v",
+            "michi-v",
+            "wakaru"
+          ],
+          "furigana": "この町[まち]に来[き]たばかりなので、道[みち]が分[わ]かりません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "machi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 4,
+              "end": 6,
+              "surface_form": "来た",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 15,
+              "end": 21,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -14393,6 +14566,33 @@
         "amai"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "only",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "nothing but",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just did",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "have just",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Nothing but — \"only this\"",
@@ -14484,30 +14684,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "今から出かけるところです。",
-          "english": "I'm just about to leave now.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "ima"
-          ],
-          "furigana": "今[いま]から出[で]かけるところです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ima",
-              "start": 0,
-              "end": 1
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "今、食べているところです。",
           "english": "I'm in the middle of eating right now.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "ima",
             "taberu"
@@ -14534,32 +14713,9 @@
           "register": "polite"
         },
         {
-          "japanese": "ちょうど終わったところです。",
-          "english": "I just finished.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "owaru"
-          ],
-          "furigana": "ちょうど終[お]わったところです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "owaru",
-              "start": 4,
-              "end": 8,
-              "surface_form": "終わった",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 11
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "今、出るところです。",
           "english": "I'm just about to leave.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "ima",
             "deru-v"
@@ -14586,7 +14742,7 @@
         {
           "japanese": "今、電話するところです。",
           "english": "I'm just about to make a phone call.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ima",
             "denwa-suru"
@@ -14611,42 +14767,9 @@
           "register": "polite"
         },
         {
-          "japanese": "今、勉強しているところです。",
-          "english": "I'm right in the middle of studying.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "ima",
-            "benkyou",
-            "iru-exist"
-          ],
-          "furigana": "今[いま]、勉[べん]強[きょう]しているところです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ima",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "benkyou",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 11
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "今、朝ご飯を食べたところです。",
           "english": "I just finished eating breakfast.",
-          "sort_order": 6,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "ima",
             "asagohan",
@@ -14673,7 +14796,7 @@
             }
           ],
           "grammar_span": {
-            "start": 9,
+            "start": 8,
             "end": 12
           },
           "register": "polite"
@@ -14681,7 +14804,7 @@
         {
           "japanese": "今、宿題をしたところです。",
           "english": "I just finished my homework.",
-          "sort_order": 7,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "ima",
             "shukudai",
@@ -14708,10 +14831,183 @@
             }
           ],
           "grammar_span": {
-            "start": 7,
+            "start": 6,
             "end": 10
           },
           "register": "polite"
+        },
+        {
+          "japanese": "母は晩ご飯を作っているところです。",
+          "english": "My mother is in the middle of making dinner.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "haha",
+            "bangohan",
+            "tsukuru"
+          ],
+          "furigana": "母[はは]は晩[ばん]ご飯[はん]を作[つく]っているところです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 6,
+              "end": 9,
+              "surface_form": "作って",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "会議が終わったところだ。",
+          "english": "The meeting has just ended.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kaigi",
+            "owaru"
+          ],
+          "furigana": "会[かい]議[ぎ]が終[お]わったところだ。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "終わった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "弟は今、勉強しているところです。",
+          "english": "My younger brother is studying right now.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "otouto",
+            "ima",
+            "benkyou-suru"
+          ],
+          "furigana": "弟[おとうと]は今[いま]、勉[べん]強[きょう]しているところです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ima",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 4,
+              "end": 8,
+              "surface_form": "勉強して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 13
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "今、何をしているところですか。",
+          "english": "What are you in the middle of doing right now?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ima",
+            "nani",
+            "suru"
+          ],
+          "furigana": "今[いま]、何[なに]をしているところですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 4,
+              "end": 6,
+              "surface_form": "して",
+              "inflection": "te"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "私は電車に乗るところでした。",
+          "english": "I was just about to get on the train.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "watashi",
+            "densha",
+            "noru"
+          ],
+          "furigana": "私[わたし]は電[でん]車[しゃ]に乗[の]るところでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "noru",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]に乗[の]るところでした。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -14719,6 +15015,33 @@
         "owaru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "about to",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the middle of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just finished",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "just did",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "right in the middle of",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "About to — right before the action",
@@ -14816,194 +15139,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "子供が寝ている間に、掃除をします。",
-          "english": "While the child sleeps, I clean.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "neru"
-          ],
-          "furigana": "子[こ]供[ども]が寝[ね]ている間[あいだ]に、掃[そう]除[じ]をします。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "neru",
-              "start": 3,
-              "end": 5,
-              "surface_form": "寝て",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "夏休みの間、旅行しました。",
-          "english": "During summer vacation, I traveled.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "natsu",
-            "ryokou"
-          ],
-          "furigana": "夏[なつ]休[やす]みの間[あいだ]、旅[りょ]行[こう]しました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ryokou",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "彼が話している間、静かにしていました。",
-          "english": "While he was talking, I stayed quiet.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kare",
-            "shizuka"
-          ],
-          "furigana": "彼[かれ]が話[はな]している間[あいだ]、静[しず]かにしていました。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 9,
-              "end": 11
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "私が勉強している間、猫は寝ていた。",
-          "english": "While I was studying, the cat was sleeping.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "watashi",
-            "benkyou",
-            "iru-exist",
-            "neko",
-            "neru"
-          ],
-          "furigana": "私[わたし]が勉[べん]強[きょう]している間[あいだ]、猫[ねこ]は寝[ね]ていた。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "benkyou",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "neko",
-              "start": 10,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "neru",
-              "start": 12,
-              "end": 14,
-              "surface_form": "寝て",
-              "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 14,
-              "end": 16,
-              "surface_form": "いた",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 9
-          },
-          "register": "plain"
-        },
-        {
-          "japanese": "私が勉強している間に、猫が窓から出た。",
-          "english": "While I was studying, the cat went out through the window.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "watashi",
-            "benkyou",
-            "iru-exist",
-            "neko",
-            "mado",
-            "deru-v"
-          ],
-          "furigana": "私[わたし]が勉[べん]強[きょう]している間[あいだ]に、猫[ねこ]が窓[まど]から出[で]た。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "benkyou",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "neko",
-              "start": 11,
-              "end": 12
-            },
-            {
-              "vocabulary_slug": "mado",
-              "start": 13,
-              "end": 14
-            },
-            {
-              "vocabulary_slug": "deru-v",
-              "start": 16,
-              "end": 18,
-              "surface_form": "出た",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 10
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "会議の間、電話を消した。",
           "english": "During the meeting, I turned off my phone.",
-          "sort_order": 5,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kaigi",
             "denwa",
@@ -15037,8 +15175,8 @@
         },
         {
           "japanese": "会議の間に、雨が降った。",
-          "english": "It started raining sometime during the meeting.",
-          "sort_order": 6,
+          "english": "It rained sometime during the meeting.",
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kaigi",
             "ame-v",
@@ -15066,14 +15204,14 @@
           ],
           "grammar_span": {
             "start": 3,
-            "end": 4
+            "end": 5
           },
           "register": "plain"
         },
         {
           "japanese": "授業の間、教室はとても静かだった。",
           "english": "During class, the classroom was very quiet.",
-          "sort_order": 7,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "jugyou",
             "kyoushitsu",
@@ -15108,6 +15246,345 @@
             "end": 4
           },
           "register": "plain"
+        },
+        {
+          "japanese": "赤ちゃんが寝ている間に、本を読みます。",
+          "english": "While the baby is asleep, I read a book.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "akachan",
+            "neru",
+            "iru-exist",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "赤[あか]ちゃんが寝[ね]ている間[あいだ]に、本[ほん]を読[よ]みます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "akachan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "寝て",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 14,
+              "end": 18,
+              "surface_form": "読みます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "母が料理を作っている間、私は皿を洗った。",
+          "english": "While my mother was cooking, I washed the dishes.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "haha",
+            "ryouri",
+            "tsukuru",
+            "iru-exist",
+            "watashi",
+            "sara",
+            "arau"
+          ],
+          "furigana": "母[はは]が料[りょう]理[り]を作[つく]っている間[あいだ]、私[わたし]は皿[さら]を洗[あら]った。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 5,
+              "end": 8,
+              "surface_form": "作って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "sara",
+              "start": 14,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "arau",
+              "start": 16,
+              "end": 19,
+              "surface_form": "洗った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 11
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "私が出かけている間に、誰か来ましたか。",
+          "english": "Did anyone come while I was out?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "watashi",
+            "dekakeru",
+            "iru-exist",
+            "dare",
+            "kuru-v"
+          ],
+          "furigana": "私[わたし]が出[で]かけている間[あいだ]に、誰[だれ]か来[き]ましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "dekakeru",
+              "start": 2,
+              "end": 6,
+              "surface_form": "出かけて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "dare",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 13,
+              "end": 17,
+              "surface_form": "来ました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "出[で]かけている間[あいだ]に、誰[だれ]か来[き]ましたか。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "電車に乗っている間は、電話をかけません。",
+          "english": "While I'm on the train, I don't make phone calls.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "densha",
+            "noru",
+            "iru-exist",
+            "denwa",
+            "kakeru-call"
+          ],
+          "furigana": "電[でん]車[しゃ]に乗[の]っている間[あいだ]は、電[でん]話[わ]をかけません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "noru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "乗って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "denwa",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kakeru-call",
+              "start": 14,
+              "end": 19,
+              "surface_form": "かけません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "食事の間、彼は何も話さなかった。",
+          "english": "During the meal, he didn't say anything.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shokuji",
+            "kare",
+            "nani",
+            "hanasu-v"
+          ],
+          "furigana": "食[しょく]事[じ]の間[あいだ]、彼[かれ]は何[なに]も話[はな]さなかった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shokuji",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kare",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 9,
+              "end": 15,
+              "surface_form": "話さなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 4
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "旅行の間に、カメラを無くしました。",
+          "english": "I lost my camera sometime during the trip.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ryokou",
+            "kamera",
+            "nakusu"
+          ],
+          "furigana": "旅[りょ]行[こう]の間[あいだ]に、カメラを無[な]くしました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kamera",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "nakusu",
+              "start": 10,
+              "end": 16,
+              "surface_form": "無くしました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "友達を待っている間、雑誌を読んだ。",
+          "english": "While I was waiting for my friend, I read a magazine.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "matsu",
+            "iru-exist",
+            "zasshi",
+            "yomu"
+          ],
+          "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、雑[ざっ]誌[し]を読[よ]んだ。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 3,
+              "end": 6,
+              "surface_form": "待って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "zasshi",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 13,
+              "end": 16,
+              "surface_form": "読んだ",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 9
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -15116,6 +15593,28 @@
         "kare"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "during",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "during the time",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the time while",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "私が勉強している＿＿＿、猫は寝ていた。",
@@ -15189,74 +15688,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "暖かいうちに食べてください。",
-          "english": "Please eat it while it's warm.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "atatakai"
-          ],
-          "furigana": "暖[あたた]かいうちに食[た]べてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "atatakai",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "若いうちに、色々経験した方がいいです。",
-          "english": "You should experience a lot while you're young.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "wakai"
-          ],
-          "furigana": "若[わか]いうちに、色[いろ]々[いろ]経[けい]験[けん]した方[ほう]がいいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wakai",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "忘れないうちに、メモしておきます。",
-          "english": "I'll write it down before I forget.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "wasureru"
-          ],
-          "furigana": "忘[わす]れないうちに、メモしておきます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wasureru",
-              "start": 0,
-              "end": 4,
-              "surface_form": "忘れない",
-              "inflection": "nai"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "お茶が熱いうちに飲んだ方がいいですよ。",
           "english": "You should drink the tea while it's still hot.",
-          "sort_order": 3,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "ocha",
             "atsui-obj",
@@ -15301,44 +15735,9 @@
           "register": "polite"
         },
         {
-          "japanese": "子供が寝ているうちに掃除しましょう。",
-          "english": "Let's clean while the child is sleeping.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "kodomo-v",
-            "neru",
-            "iru-exist"
-          ],
-          "furigana": "子[こ]供[ども]が寝[ね]ているうちに掃[そう]除[じ]しましょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kodomo-v",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "neru",
-              "start": 3,
-              "end": 5,
-              "surface_form": "寝て",
-              "inflection": "te"
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 5,
-              "end": 7
-            }
-          ],
-          "grammar_span": {
-            "start": 7,
-            "end": 10
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "忘れないうちに名前を書いた。",
           "english": "I wrote down the name before I could forget it.",
-          "sort_order": 5,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "wasureru",
             "namae",
@@ -15373,54 +15772,9 @@
           "register": "plain"
         },
         {
-          "japanese": "若いうちにたくさん旅行した方がいい。",
-          "english": "You should travel a lot while you're young.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "wakai",
-            "takusan",
-            "ryokou",
-            "hou",
-            "ii"
-          ],
-          "furigana": "若[わか]いうちにたくさん旅[りょ]行[こう]した方[ほう]がいい。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wakai",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "takusan",
-              "start": 5,
-              "end": 9
-            },
-            {
-              "vocabulary_slug": "ryokou",
-              "start": 9,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "hou",
-              "start": 13,
-              "end": 14
-            },
-            {
-              "vocabulary_slug": "ii",
-              "start": 15,
-              "end": 17
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "週末のうちに宿題をした。",
           "english": "I got my homework done while it was still the weekend.",
-          "sort_order": 7,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "shuumatsu",
             "shukudai",
@@ -15451,6 +15805,277 @@
             "end": 6
           },
           "register": "plain"
+        },
+        {
+          "japanese": "暖かいうちに食べましょう。",
+          "english": "Let's eat it while it's warm.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "atatakai",
+            "taberu"
+          ],
+          "furigana": "暖[あたた]かいうちに食[た]べましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "atatakai",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "食べ",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "若いうちに外国に住みたい。",
+          "english": "I want to live abroad while I'm young.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "wakai",
+            "gaikoku",
+            "sumu"
+          ],
+          "furigana": "若[わか]いうちに外[がい]国[こく]に住[す]みたい。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "wakai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gaikoku",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sumu",
+              "start": 8,
+              "end": 10,
+              "surface_form": "住み",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "雨が降らないうちに、帰りましょう。",
+          "english": "Let's go home before it starts raining.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain",
+            "kaeru-v"
+          ],
+          "furigana": "雨[あめ]が降[ふ]らないうちに、帰[かえ]りましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 6,
+              "surface_form": "降らない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 10,
+              "end": 12,
+              "surface_form": "帰り",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "子供が寝ているうちに、ご飯を食べた。",
+          "english": "I ate while the kids were asleep.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "neru",
+            "iru-exist",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "子[こ]供[ども]が寝[ね]ているうちに、ご飯[はん]を食[た]べた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 3,
+              "end": 5,
+              "surface_form": "寝て",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "gohan",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 14,
+              "end": 17,
+              "surface_form": "食べた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "子[こ]供[ども]が寝[ね]ている間[あいだ]に、ご飯[はん]を食[た]べた。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "明るいうちに帰りませんか。",
+          "english": "Shall we head home while it's still light?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "akarui",
+            "kaeru-v"
+          ],
+          "furigana": "明[あか]るいうちに帰[かえ]りませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "akarui",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 6,
+              "end": 11,
+              "surface_form": "帰りません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "祖母が元気なうちに、会いに行きます。",
+          "english": "I'll go and see my grandmother while she's still well.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "sobo",
+            "genki",
+            "au",
+            "iku-v"
+          ],
+          "furigana": "祖[そ]母[ぼ]が元[げん]気[き]なうちに、会[あ]いに行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sobo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "genki",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 10,
+              "end": 12,
+              "surface_form": "会い",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 13,
+              "end": 17,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "日が沈まないうちに、山を降りた。",
+          "english": "We came down the mountain before the sun set.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "hi-sun-v",
+            "shizumu",
+            "yama-v",
+            "oriru"
+          ],
+          "furigana": "日[ひ]が沈[しず]まないうちに、山[やま]を降[お]りた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hi-sun-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shizumu",
+              "start": 2,
+              "end": 6,
+              "surface_form": "沈まない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "oriru",
+              "start": 12,
+              "end": 15,
+              "surface_form": "降りた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -15459,6 +16084,28 @@
         "wasureru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "while",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "while still",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "before",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "before it's too late",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "お茶が熱い＿＿＿飲んだ方がいいですよ。",
@@ -15532,63 +16179,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "彼に会うたびに、元気をもらいます。",
-          "english": "Every time I meet him, I get energized.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kare",
-            "genki"
-          ],
-          "furigana": "彼[かれ]に会[あ]うたびに、元[げん]気[き]をもらいます。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "genki",
-              "start": 8,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "旅行のたびに、写真を撮ります。",
-          "english": "Every time I travel, I take photos.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "ryokou",
-            "shashin"
-          ],
-          "furigana": "旅[りょ]行[こう]のたびに、写[しゃ]真[しん]を撮[と]ります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ryokou",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "shashin",
-              "start": 7,
-              "end": 9
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "妹が来るたびに、猫が逃げる。",
           "english": "Every time my little sister comes over, the cat runs away.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "imouto",
             "kuru-v",
@@ -15627,7 +16220,7 @@
         {
           "japanese": "彼が来るたびに、猫が逃げた。",
           "english": "Every time he came, the cat ran away.",
-          "sort_order": 3,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "kuru-v",
@@ -15668,7 +16261,7 @@
         {
           "japanese": "旅行のたびに、新しい靴を買う。",
           "english": "Every trip, I buy new shoes.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ryokou",
             "atarashii-adj",
@@ -15707,7 +16300,7 @@
         {
           "japanese": "会議のたびに、彼は遅れる。",
           "english": "Every meeting, he's late.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kaigi",
             "kare",
@@ -15740,7 +16333,7 @@
         {
           "japanese": "彼が話すたびに、私は笑う。",
           "english": "Every time he talks, I laugh.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "kare",
             "hanasu-v",
@@ -15775,6 +16368,174 @@
             "end": 7
           },
           "register": "plain"
+        },
+        {
+          "japanese": "祖母に会うたびに、お菓子をもらいます。",
+          "english": "Every time I see my grandmother, I get sweets.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "sobo",
+            "au",
+            "okashi",
+            "morau"
+          ],
+          "furigana": "祖[そ]母[ぼ]に会[あ]うたびに、お菓[か]子[し]をもらいます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sobo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "okashi",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "morau",
+              "start": 13,
+              "end": 18,
+              "surface_form": "もらいます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "どうして彼は会うたびに怒るんですか。",
+          "english": "Why does he get angry every time we meet?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "doushite",
+            "kare",
+            "au",
+            "okoru-angry"
+          ],
+          "furigana": "どうして彼[かれ]は会[あ]うたびに怒[おこ]るんですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "doushite",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kare",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "okoru-angry",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "試験のたびに、弟はあまり寝ない。",
+          "english": "Every time there's an exam, my younger brother hardly sleeps.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shiken",
+            "otouto",
+            "amari",
+            "neru"
+          ],
+          "furigana": "試[し]験[けん]のたびに、弟[おとうと]はあまり寝[ね]ない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiken",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "otouto",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "amari",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 12,
+              "end": 15,
+              "surface_form": "寝ない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "この歌を聞くたびに、悲しくなる。",
+          "english": "Whenever I hear this song, I get sad.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "uta",
+            "kiku-v",
+            "kanashii",
+            "naru-become"
+          ],
+          "furigana": "この歌[うた]を聞[き]くたびに、悲[かな]しくなる。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kanashii",
+              "start": 10,
+              "end": 13,
+              "surface_form": "悲しく",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 13,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
@@ -15783,6 +16544,23 @@
         "shashin"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "every time",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "whenever",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "each time",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "妹が来る＿＿＿、猫が逃げる。",
@@ -15857,118 +16635,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "雨の場合は、中止します。",
-          "english": "In the case of rain, it will be cancelled.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "furu-rain"
-          ],
-          "furigana": "雨[あめ]の場[ば]合[あい]は、中[ちゅう]止[し]します。",
-          "grammar_span": {
-            "start": 2,
-            "end": 5
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "遅れる場合は、連絡してください。",
-          "english": "If you're going to be late, please contact us.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "okureru",
-            "renraku-suru"
-          ],
-          "furigana": "遅[おく]れる場[ば]合[あい]は、連[れん]絡[らく]してください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "okureru",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "renraku-suru",
-              "start": 7,
-              "end": 11,
-              "surface_form": "連絡して",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 6
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "分からない場合は、聞いてください。",
-          "english": "If you don't understand, please ask.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "wakaru",
-            "kiku-v"
-          ],
-          "furigana": "分[わ]からない場[ば]合[あい]は、聞[き]いてください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "wakaru",
-              "start": 0,
-              "end": 5,
-              "surface_form": "分からない",
-              "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "kiku-v",
-              "start": 9,
-              "end": 12,
-              "surface_form": "聞いて",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "電車が遅れる場合は、連絡してください。",
-          "english": "If the train is late, please contact me.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "densha",
-            "okureru",
-            "renraku-suru"
-          ],
-          "furigana": "電[でん]車[しゃ]が遅[おく]れる場[ば]合[あい]は、連[れん]絡[らく]してください。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "densha",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "okureru",
-              "start": 3,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "renraku-suru",
-              "start": 10,
-              "end": 14,
-              "surface_form": "連絡して",
-              "inflection": "te"
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
           "japanese": "雨の場合、傘を持って行きます。",
           "english": "In case of rain, I'll bring an umbrella.",
-          "sort_order": 4,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "ame-v",
             "kasa",
@@ -16006,49 +16675,18 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "分からない場合は、先生に聞いてください。",
-          "english": "If you don't understand, please ask the teacher.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "wakaru",
-            "sensei",
-            "kiku-v"
-          ],
-          "furigana": "分[わ]からない場[ば]合[あい]は、先[せん]生[せい]に聞[き]いてください。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "wakaru",
-              "start": 0,
-              "end": 5,
-              "surface_form": "分からない",
-              "inflection": "nai"
-            },
-            {
-              "vocabulary_slug": "sensei",
-              "start": 9,
-              "end": 11
-            },
-            {
-              "vocabulary_slug": "kiku-v",
-              "start": 12,
-              "end": 15,
-              "surface_form": "聞いて",
-              "inflection": "te"
+              "furigana": "雨[あめ]の場[ば]合[あい]は、傘[かさ]を持[も]って行[い]きます。",
+              "kind": "valid"
             }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 8
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "財布を無くした場合、警官に言います。",
           "english": "If I lose my wallet, I'll tell a police officer.",
-          "sort_order": 6,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "saifu",
             "nakusu",
@@ -16091,7 +16729,7 @@
         {
           "japanese": "病気の場合、学校を休みます。",
           "english": "If I'm sick, I take the day off school.",
-          "sort_order": 7,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "byouki",
             "gakkou-v",
@@ -16124,14 +16762,243 @@
           "register": "polite"
         },
         {
-          "japanese": "忙しい場合は、手伝ってください。",
-          "english": "If you're busy, please help me.",
+          "japanese": "雪の場合は、電車で行きます。",
+          "english": "If it snows, I'll go by train.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "yuki",
+            "densha",
+            "iku-v"
+          ],
+          "furigana": "雪[ゆき]の場[ば]合[あい]は、電[でん]車[しゃ]で行[い]きます。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "遅れる場合は、先生に電話します。",
+          "english": "If I'm going to be late, I'll call the teacher.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "okureru",
+            "sensei",
+            "denwa-suru"
+          ],
+          "furigana": "遅[おく]れる場[ば]合[あい]は、先[せん]生[せい]に電[でん]話[わ]します。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "okureru",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "denwa-suru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "電話します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "分からない場合は、辞書を使います。",
+          "english": "If I don't understand, I use a dictionary.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "wakaru",
+            "jisho",
+            "tsukau"
+          ],
+          "furigana": "分[わ]からない場[ば]合[あい]は、辞[じ]書[しょ]を使[つか]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 0,
+              "end": 5,
+              "surface_form": "分からない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "jisho",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 12,
+              "end": 16,
+              "surface_form": "使います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "電車が遅れた場合は、どうしますか。",
+          "english": "What will you do if the train is late?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "densha",
+            "okureru",
+            "dou",
+            "suru"
+          ],
+          "furigana": "電[でん]車[しゃ]が遅[おく]れた場[ば]合[あい]は、どうしますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "遅れた",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "dou",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 12,
+              "end": 15,
+              "surface_form": "します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "子供の場合は、お酒を買えません。",
+          "english": "If you're a child, you can't buy alcohol.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "osake",
+            "kaeru-potential"
+          ],
+          "furigana": "子[こ]供[ども]の場[ば]合[あい]は、お酒[さけ]を買[か]えません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kodomo-v",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "osake",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kaeru-potential",
+              "start": 10,
+              "end": 15,
+              "surface_form": "買えません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "道が分からない場合は、交番で聞きましょう。",
+          "english": "If we don't know the way, let's ask at the police box.",
           "sort_order": 8,
           "vocabulary_slugs": [
-            "isogashii",
-            "tetsudau"
+            "michi-v",
+            "wakaru",
+            "kouban",
+            "kiku-v"
           ],
-          "furigana": "忙[いそが]しい場[ば]合[あい]は、手伝[てつだ]ってください。",
+          "furigana": "道[みち]が分[わ]からない場[ば]合[あい]は、交[こう]番[ばん]で聞[き]きましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 2,
+              "end": 7,
+              "surface_form": "分からない",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "kouban",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 14,
+              "end": 16,
+              "surface_form": "聞き",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "忙しい場合は、来なくてもいいですよ。",
+          "english": "If you're busy, you don't have to come.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "isogashii",
+            "kuru-v",
+            "ii"
+          ],
+          "furigana": "忙[いそが]しい場[ば]合[あい]は、来[こ]なくてもいいですよ。",
           "word_spans": [
             {
               "vocabulary_slug": "isogashii",
@@ -16139,11 +17006,16 @@
               "end": 3
             },
             {
-              "vocabulary_slug": "tetsudau",
+              "vocabulary_slug": "kuru-v",
               "start": 7,
               "end": 11,
-              "surface_form": "手伝って",
-              "inflection": "te"
+              "surface_form": "来なくて",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 12,
+              "end": 14
             }
           ],
           "grammar_span": {
@@ -16159,6 +17031,28 @@
         "wakaru"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "in case of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "if",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the event of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in the case that",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "電車が遅れる＿＿＿、連絡してください。",
