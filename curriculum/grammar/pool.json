@@ -8754,5 +8754,712 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "noni": {
+    "accepted_meanings": [
+      "even though",
+      "although",
+      "despite",
+      "in spite of",
+      "though"
+    ],
+    "sentences": [
+      {
+        "japanese": "昼ご飯を作ったのに、友達はもう食べました。",
+        "english": "Even though I made lunch, my friend had already eaten.",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "tsukuru",
+          "tomodachi",
+          "mou",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "兄は英語が上手なのに、あまり話しません。",
+        "english": "Even though my older brother is good at English, he hardly speaks it.",
+        "vocabulary_slugs": [
+          "ani",
+          "eigo",
+          "jouzu",
+          "amari",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "今日は日曜日なのに、父は会社へ行きました。",
+        "english": "Even though it is Sunday today, my father went to the office.",
+        "vocabulary_slugs": [
+          "kyou",
+          "nichiyoubi",
+          "chichi",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は日曜日なのに、父は会社に行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この店は安いのに、料理がおいしいです。",
+        "english": "Even though this shop is cheap, the food is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "yasui-adj",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "約束したのに。",
+        "english": "And you promised...",
+        "vocabulary_slugs": [
+          "yakusoku",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "毎日勉強したのに、全然分かりません。",
+        "english": "Even though I studied every day, I do not understand it at all.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "benkyou-suru",
+          "zenzen",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "薬を飲んだのに、まだ頭が痛いです。",
+        "english": "Even though I took medicine, my head still hurts.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "mada",
+          "atama",
+          "itai"
+        ],
+        "alternates": [
+          {
+            "japanese": "薬を飲んだのに、頭がまだ痛いです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "雨なのに、散歩しますか。",
+        "english": "Are you going for a walk even though it is raining?",
+        "vocabulary_slugs": [
+          "ame-v",
+          "sanpo-suru"
+        ]
+      },
+      {
+        "japanese": "猫は小さいのに、よく食べます。",
+        "english": "The cat is small, but it eats a lot.",
+        "vocabulary_slugs": [
+          "neko",
+          "chiisai",
+          "yoku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "電車に乗ったのに、会議に遅れました。",
+        "english": "Even though I took the train, I was late for the meeting.",
+        "vocabulary_slugs": [
+          "densha",
+          "noru",
+          "kaigi",
+          "okureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souda-hearsay": {
+    "accepted_meanings": [
+      "I heard that",
+      "apparently",
+      "I hear",
+      "they say",
+      "reportedly"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼女は結婚するそうです。",
+        "english": "I heard she is getting married.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kekkon-suru"
+        ]
+      },
+      {
+        "japanese": "兄は来年日本に行くそうです。",
+        "english": "I hear my older brother is going to Japan next year.",
+        "vocabulary_slugs": [
+          "ani",
+          "rainen",
+          "nihon",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "来年、兄は日本に行くそうです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼女のお父さんは医者だそうです。",
+        "english": "I hear her father is a doctor.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "otousan",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "今年の冬はとても寒いそうです。",
+        "english": "I hear this winter is going to be very cold.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "fuyu",
+          "totemo",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "あの人は去年まで学生だったそうです。",
+        "english": "I hear that person was a student until last year.",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "kyonen",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "彼は昨日の会議に来なかったそうだ。",
+        "english": "Apparently he did not come to yesterday's meeting.",
+        "vocabulary_slugs": [
+          "kare",
+          "kinou",
+          "kaigi",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "あの新しい店は安いそうです。",
+        "english": "I hear that new shop is cheap.",
+        "vocabulary_slugs": [
+          "ano",
+          "atarashii-adj",
+          "mise",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "明日は雨だそうです。",
+        "english": "Apparently it will rain tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ame-v"
+        ]
+      },
+      {
+        "japanese": "先生はもう帰ったそうです。",
+        "english": "I heard the teacher already went home.",
+        "vocabulary_slugs": [
+          "sensei",
+          "mou",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "来週、試験があるそうです。",
+        "english": "I heard there is an exam next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "shiken",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souda-looks": {
+    "accepted_meanings": [
+      "looks like",
+      "seems",
+      "looks",
+      "appears",
+      "looks as if"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼は元気そうです。",
+        "english": "He looks well.",
+        "vocabulary_slugs": [
+          "kare",
+          "genki"
+        ]
+      },
+      {
+        "japanese": "兄は今日とても元気そうです。",
+        "english": "My older brother looks really well today.",
+        "vocabulary_slugs": [
+          "ani",
+          "kyou",
+          "totemo",
+          "genki"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、兄はとても元気そうです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この料理はおいしそうです。",
+        "english": "This dish looks delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "雨が降りそうです。",
+        "english": "It looks like it is going to rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain"
+        ]
+      },
+      {
+        "japanese": "来週の試験は難しそうです。",
+        "english": "Next week's exam looks hard.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "shiken",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "その道は危なそうですね。",
+        "english": "That road looks dangerous, doesn't it?",
+        "vocabulary_slugs": [
+          "sono",
+          "michi-v",
+          "abunai"
+        ]
+      },
+      {
+        "japanese": "どの店が安そうですか。",
+        "english": "Which shop looks cheap?",
+        "vocabulary_slugs": [
+          "dono",
+          "mise",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "おいしそうなパンを買いました。",
+        "english": "I bought some delicious-looking bread.",
+        "vocabulary_slugs": [
+          "oishii",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "姉は嬉しそうな顔で帰りました。",
+        "english": "My older sister came home with a happy-looking face.",
+        "vocabulary_slugs": [
+          "ane",
+          "ureshii",
+          "kao",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "雪が降りそうなので、外に出ません。",
+        "english": "It looks like it will snow, so I will not go outside.",
+        "vocabulary_slugs": [
+          "yuki",
+          "furu-rain",
+          "soto",
+          "deru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tara": {
+    "accepted_meanings": [
+      "if",
+      "when",
+      "once",
+      "after"
+    ],
+    "sentences": [
+      {
+        "japanese": "先生に聞いたら、分かりました。",
+        "english": "When I asked the teacher, I understood.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kiku-v",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "明日暇だったら、一緒に映画を見ませんか。",
+        "english": "If you are free tomorrow, shall we watch a movie together?",
+        "vocabulary_slugs": [
+          "ashita",
+          "hima",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日暇だったら、映画を一緒に見ませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "雨が降ったら、公園に行きません。",
+        "english": "If it rains, we are not going to the park.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "furu-rain",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この本が安かったら、買います。",
+        "english": "If this book is cheap, I will buy it.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yasui-adj",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "家に帰ったら、すぐ電話します。",
+        "english": "When I get home, I will call you right away.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v",
+          "sugu",
+          "denwa-suru"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫を開けたら、猫がいました。",
+        "english": "When I opened the fridge, there was a cat inside.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "akeru",
+          "neko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "宿題が終わったら、テレビを見ます。",
+        "english": "Once my homework is done, I will watch TV.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "owaru",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "時間があったら、手紙を書きます。",
+        "english": "If I have time, I will write a letter.",
+        "vocabulary_slugs": [
+          "jikan",
+          "aru",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "電車を降りたら、右に曲がります。",
+        "english": "After you get off the train, you turn right.",
+        "vocabulary_slugs": [
+          "densha",
+          "oriru",
+          "migi-v",
+          "magaru"
+        ]
+      },
+      {
+        "japanese": "薬を飲んだら、元気になりました。",
+        "english": "When I took the medicine, I got better.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "genki",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ba": {
+    "accepted_meanings": [
+      "if",
+      "provided that",
+      "as long as",
+      "when"
+    ],
+    "sentences": [
+      {
+        "japanese": "静かなら、勉強できます。",
+        "english": "If it is quiet, I can study.",
+        "vocabulary_slugs": [
+          "shizuka",
+          "benkyou",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "学生であれば、安いです。",
+        "english": "If you are a student, it is cheap.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "この傘が安ければ、買います。",
+        "english": "If this umbrella is cheap, I will buy it.",
+        "vocabulary_slugs": [
+          "kono",
+          "kasa",
+          "yasui-adj",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "毎日練習すれば、上手になります。",
+        "english": "If you practice every day, you will get good at it.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "renshuu-suru",
+          "jouzu",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "急げば、会議に遅れません。",
+        "english": "If you hurry, you will not be late for the meeting.",
+        "vocabulary_slugs": [
+          "isogu",
+          "kaigi",
+          "okureru"
+        ]
+      },
+      {
+        "japanese": "ゆっくり話せば、分かります。",
+        "english": "If you speak slowly, I will understand.",
+        "vocabulary_slugs": [
+          "yukkuri",
+          "hanasu-v",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "薬を飲めば、すぐ元気になりますよ。",
+        "english": "If you take the medicine, you will soon feel better.",
+        "vocabulary_slugs": [
+          "kusuri",
+          "nomu-v",
+          "sugu",
+          "genki",
+          "naru-become"
+        ]
+      },
+      {
+        "japanese": "その時計が高ければ、買いません。",
+        "english": "If that watch is expensive, I will not buy it.",
+        "vocabulary_slugs": [
+          "sono",
+          "tokei",
+          "takai-adj",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "どうすれば、いいですか。",
+        "english": "What should I do?",
+        "vocabulary_slugs": [
+          "dou",
+          "suru",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "窓を開ければ、涼しくなります。",
+        "english": "If you open the window, it will get cooler.",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru",
+          "suzushii",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nara": {
+    "accepted_meanings": [
+      "if",
+      "if it is",
+      "in that case",
+      "speaking of",
+      "as for"
+    ],
+    "sentences": [
+      {
+        "japanese": "日本語なら、この本がいいですよ。",
+        "english": "If it is Japanese you want, this book is good.",
+        "vocabulary_slugs": [
+          "nihongo",
+          "kono",
+          "hon",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "静かなら、ここで勉強できます。",
+        "english": "If it is quiet, you can study here.",
+        "vocabulary_slugs": [
+          "shizuka",
+          "koko",
+          "benkyou",
+          "dekiru"
+        ]
+      },
+      {
+        "japanese": "行くんなら、僕も行きたいです。",
+        "english": "If you are going, I want to go too.",
+        "vocabulary_slugs": [
+          "iku-v",
+          "boku"
+        ]
+      },
+      {
+        "japanese": "暇なら、私の家に来ませんか。",
+        "english": "If you are free, why not come over to my house?",
+        "vocabulary_slugs": [
+          "hima",
+          "watashi",
+          "ie",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "雨なら、私は行きません。",
+        "english": "If it rains, I will not go.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "watashi",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨なら、行きません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "切符を買うなら、あそこの窓口です。",
+        "english": "If you are buying a ticket, it is that window over there.",
+        "vocabulary_slugs": [
+          "kippu",
+          "kau-v",
+          "asoko",
+          "madoguchi"
+        ]
+      },
+      {
+        "japanese": "コーヒーなら、あの喫茶店がおいしいです。",
+        "english": "If it is coffee, that coffee shop is good.",
+        "vocabulary_slugs": [
+          "koohii",
+          "ano",
+          "kissaten",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "旅行するなら、春がいいと思います。",
+        "english": "If you are going to travel, I think spring is best.",
+        "vocabulary_slugs": [
+          "ryokou-suru",
+          "haru",
+          "ii",
+          "omou"
+        ]
+      },
+      {
+        "japanese": "魚が嫌いなら、肉はどうですか。",
+        "english": "If you do not like fish, how about meat?",
+        "vocabulary_slugs": [
+          "sakana",
+          "kirai",
+          "niku",
+          "dou"
+        ]
+      },
+      {
+        "japanese": "お腹が痛いなら、今日は休みましょう。",
+        "english": "If your stomach hurts, let's take today off.",
+        "vocabulary_slugs": [
+          "onaka",
+          "itai",
+          "kyou",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
