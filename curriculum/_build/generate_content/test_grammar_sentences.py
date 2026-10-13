@@ -30,6 +30,15 @@ class GrammarSpanTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             gs.grammar_span("今日は寒い。", ["は"], form="今日|")
 
+    def test_anchor_on_text_that_is_not_the_grammar_raises(self):
+        # ので is present, but it is not an accepted form of a から point.
+        with self.assertRaises(ValueError):
+            gs.grammar_span("寒いので、コートを着ます。", ["から", "ですから"], form="寒い|ので")
+
+    def test_authored_form_without_any_accepted_form_raises(self):
+        with self.assertRaises(ValueError):
+            gs.grammar_span("寒いので、コートを着ます。", ["から"], form="ので")
+
     def test_authored_form_beats_search(self):
         # は inside こんにちは must not be picked when the author names the
         # topic は after 今日.

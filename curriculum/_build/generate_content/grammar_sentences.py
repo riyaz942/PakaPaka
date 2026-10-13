@@ -48,6 +48,12 @@ def grammar_span(japanese, accepted_forms, form=None):
             context_text, grammar_text = "", form
         if not grammar_text:
             raise ValueError(f"grammar form {form!r} names no grammar after '|'")
+        # The highlight must be the grammar being taught, not any text.
+        if not any(f in grammar_text for f in accepted_forms if f and "〜" not in f):
+            raise ValueError(
+                f"grammar form {form!r}: {grammar_text!r} contains none of the "
+                f"accepted forms {list(accepted_forms)}"
+            )
         start = japanese.find(context_text + grammar_text)
         if start < 0:
             raise ValueError(f"grammar form {form!r} not found in {japanese!r}")
