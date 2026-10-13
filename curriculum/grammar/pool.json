@@ -15697,5 +15697,799 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "nikanshite": {
+    "accepted_meanings": [
+      "regarding",
+      "concerning",
+      "about",
+      "with regard to",
+      "in relation to"
+    ],
+    "sentences": [
+      {
+        "japanese": "環境に関して、色々な意見があります。",
+        "english": "There are various opinions regarding the environment.",
+        "vocabulary_slugs": [
+          "kankyou",
+          "iroiro",
+          "iken",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "環境について、色々な意見があります。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "会議で、部長は文化に関して質問した。",
+        "english": "At the meeting, the department head asked a question about culture.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "buchou",
+          "bunka",
+          "shitsumon",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "会議で、部長は文化について質問した。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "この問題に関して、先生は何も言いませんでした。",
+        "english": "The teacher said nothing about this problem.",
+        "vocabulary_slugs": [
+          "kono",
+          "mondai",
+          "sensei",
+          "nani",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "この問題について、先生は何も言いませんでした。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "健康に関する本を読みました。",
+        "english": "I read a book about health.",
+        "vocabulary_slugs": [
+          "kenkou",
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "旅行に関して、何か質問はありますか。",
+        "english": "Do you have any questions regarding the trip?",
+        "vocabulary_slugs": [
+          "ryokou",
+          "nani",
+          "shitsumon",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "旅行について、何か質問はありますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "日本の文化に関する記事は面白いです。",
+        "english": "Articles about Japanese culture are interesting.",
+        "vocabulary_slugs": [
+          "nihon",
+          "bunka",
+          "kiji",
+          "omoshiroi"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "天気に関するニュースを見ませんでした。",
+        "english": "I didn't see the news about the weather.",
+        "vocabulary_slugs": [
+          "tenki",
+          "nyuusu",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "安全に関して、店の人に話を聞きました。",
+        "english": "I asked the shop staff about safety.",
+        "vocabulary_slugs": [
+          "anzen",
+          "mise",
+          "hito",
+          "hanashi",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "安全について、店の人に話を聞きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "歴史に関する話は、あまり面白くない。",
+        "english": "Talk about history isn't very interesting.",
+        "vocabulary_slugs": [
+          "rekishi",
+          "hanashi",
+          "amari",
+          "omoshiroi"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souiu": {
+    "accepted_meanings": [
+      "that kind of",
+      "this kind of",
+      "such",
+      "like that",
+      "like this"
+    ],
+    "sentences": [
+      {
+        "japanese": "こういう問題は難しいです。",
+        "english": "This kind of problem is difficult.",
+        "vocabulary_slugs": [
+          "mondai",
+          "muzukashii"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "そういう人は嫌いです。",
+        "english": "I don't like that kind of person.",
+        "vocabulary_slugs": [
+          "hito",
+          "kirai"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "こういう天気は苦手だ。",
+        "english": "I'm no good with this kind of weather.",
+        "vocabulary_slugs": [
+          "tenki",
+          "nigate"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼はそういう人だ。",
+        "english": "He's that kind of person.",
+        "vocabulary_slugs": [
+          "kare",
+          "hito"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "こういう話は前からあった。",
+        "english": "This kind of story has been around for a while.",
+        "vocabulary_slugs": [
+          "hanashi",
+          "mae",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ああいう店に行きたいです。",
+        "english": "I want to go to a shop like that one.",
+        "vocabulary_slugs": [
+          "mise",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "そういう話は聞きませんでした。",
+        "english": "I didn't hear anything like that.",
+        "vocabulary_slugs": [
+          "hanashi",
+          "kiku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どうして、そういう物を買ったの？",
+        "english": "Why did you buy that kind of thing?",
+        "vocabulary_slugs": [
+          "doushite",
+          "mono",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "どうしてそういう物を買ったの？",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ああいう車は高いですか。",
+        "english": "Is a car like that expensive?",
+        "vocabulary_slugs": [
+          "kuruma",
+          "takai-adj"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "こういう映画が好きです。",
+        "english": "I like this kind of movie.",
+        "vocabulary_slugs": [
+          "eiga",
+          "suki"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tte": {
+    "accepted_meanings": [
+      "casual quotation",
+      "casual topic marker",
+      "they say",
+      "speaking of",
+      "said that"
+    ],
+    "sentences": [
+      {
+        "japanese": "お兄さんって、優しいですね。",
+        "english": "Your older brother is kind, isn't he.",
+        "vocabulary_slugs": [
+          "oniisan",
+          "yasashii-n4"
+        ],
+        "alternates": [
+          {
+            "japanese": "お兄さんは、優しいですね。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日雨が降るって聞きました。",
+        "english": "I heard it's going to rain tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ame-v",
+          "furu-rain",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日雨が降ると聞きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "兄が忙しいって言ってた。",
+        "english": "My older brother said he's busy.",
+        "vocabulary_slugs": [
+          "ani",
+          "isogashii",
+          "iu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それって面白い？",
+        "english": "Is that thing interesting?",
+        "vocabulary_slugs": [
+          "sore",
+          "omoshiroi"
+        ],
+        "alternates": [
+          {
+            "japanese": "それは面白い？",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "これって面白いよね。",
+        "english": "This is interesting, right?",
+        "vocabulary_slugs": [
+          "kore",
+          "omoshiroi"
+        ],
+        "alternates": [
+          {
+            "japanese": "これは面白いよね。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "あれって難しい？",
+        "english": "Is that thing over there hard?",
+        "vocabulary_slugs": [
+          "are",
+          "muzukashii"
+        ],
+        "alternates": [
+          {
+            "japanese": "あれは難しい？",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "学校を休むって言った。",
+        "english": "He said he'd skip school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "yasumu",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学校を休むと言った。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先生が優しいって。",
+        "english": "The teacher is kind, they say.",
+        "vocabulary_slugs": [
+          "sensei",
+          "yasashii-n4"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この店のパンって、おいしい？",
+        "english": "Is the bread at this shop any good?",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "pan",
+          "oishii"
+        ],
+        "alternates": [
+          {
+            "japanese": "この店のパンは、おいしい？",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "猫って、本当に魚が好きだね。",
+        "english": "Cats really do love fish, don't they.",
+        "vocabulary_slugs": [
+          "neko",
+          "hontou-ni",
+          "sakana",
+          "suki"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫は、本当に魚が好きだね。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tteba": {
+    "accepted_meanings": [
+      "I told you",
+      "I said",
+      "seriously",
+      "honestly",
+      "ugh"
+    ],
+    "sentences": [
+      {
+        "japanese": "弟ったら、また傘を忘れたの？",
+        "english": "Ugh, my little brother — did he forget his umbrella again?",
+        "vocabulary_slugs": [
+          "otouto",
+          "mata",
+          "kasa",
+          "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "弟ってば、また傘を忘れたの？",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄ったら、話を全然聞かない。",
+        "english": "My older brother, seriously, doesn't listen at all.",
+        "vocabulary_slugs": [
+          "ani",
+          "hanashi",
+          "zenzen",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "兄ってば、話を全然聞かない。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "彼ったら、いつも宿題を忘れる。",
+        "english": "Him, honestly — he always forgets his homework.",
+        "vocabulary_slugs": [
+          "kare",
+          "itsumo",
+          "shukudai",
+          "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼ってば、いつも宿題を忘れる。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "分かったってば。",
+        "english": "I said I get it.",
+        "vocabulary_slugs": [
+          "wakaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "要らないってば。",
+        "english": "I said I don't need it.",
+        "vocabulary_slugs": [
+          "iru-need"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "猫がまた花を壊したってば。",
+        "english": "I'm telling you, the cat wrecked the flowers again.",
+        "vocabulary_slugs": [
+          "neko",
+          "mata",
+          "hana-v",
+          "kowasu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達ってば、また遅刻した。",
+        "english": "My friend, honestly, was late again.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "mata",
+          "chikoku-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達ったら、また遅刻した。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今行くってば。",
+        "english": "I said I'm coming now!",
+        "vocabulary_slugs": [
+          "ima",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "もう寝るってば。",
+        "english": "I told you, I'm going to bed now.",
+        "vocabulary_slugs": [
+          "mou",
+          "neru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ka-douka": {
+    "accepted_meanings": [
+      "whether or not",
+      "whether",
+      "if"
+    ],
+    "sentences": [
+      {
+        "japanese": "彼が来るかどうか分かりません。",
+        "english": "I don't know whether he'll come or not.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼が来るか分かりません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "友達が来るかどうか分からない。",
+        "english": "I don't know whether my friend is coming or not.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kuru-v",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達が来るか分からない。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日雨が降るかどうか分からない。",
+        "english": "I don't know whether it will rain tomorrow or not.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ame-v",
+          "furu-rain",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日雨が降るか分からない。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "彼が学生かどうか分からない。",
+        "english": "I don't know whether he is a student or not.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei",
+          "wakaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "試験に合格したかどうか、まだ分からない。",
+        "english": "I still don't know whether I passed the exam or not.",
+        "vocabulary_slugs": [
+          "shiken",
+          "goukaku-suru",
+          "mada",
+          "wakaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "でも、友達が本当に来るかどうか分からない。",
+        "english": "But I still don't know whether my friend is really coming or not.",
+        "vocabulary_slugs": [
+          "demo",
+          "tomodachi",
+          "hontou-ni",
+          "kuru-v",
+          "wakaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "この服が好きかどうか、母に聞きました。",
+        "english": "I asked my mother whether she likes these clothes.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "suki",
+          "haha",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "この服が好きか、母に聞きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日の会議に出席するかどうか、決めましたか。",
+        "english": "Have you decided whether you'll attend tomorrow's meeting?",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaigi",
+          "shusseki-suru",
+          "kimeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "電車が来るかどうか、駅の人に聞いた。",
+        "english": "I asked the station staff whether the train was coming.",
+        "vocabulary_slugs": [
+          "densha",
+          "kuru-v",
+          "eki",
+          "hito",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "電車が来るか、駅の人に聞いた。",
+            "kind": "other_grammar"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ka-nanka": {
+    "accepted_meanings": [
+      "or something",
+      "or something like that",
+      "or whatever",
+      "something like"
+    ],
+    "sentences": [
+      {
+        "japanese": "お茶か何か飲みませんか。",
+        "english": "Won't you have some tea or something?",
+        "vocabulary_slugs": [
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "お茶でも飲みませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "映画か何か見ない？",
+        "english": "Want to watch a movie or something?",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画でも見ない？",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーか何か飲みますか。",
+        "english": "Would you like coffee or something?",
+        "vocabulary_slugs": [
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "コーヒーでも飲みますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "机の上に紙か何かありますか。",
+        "english": "Is there paper or something on the desk?",
+        "vocabulary_slugs": [
+          "tsukue",
+          "ue",
+          "kami-paper",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "弟に本か何か買ってあげました。",
+        "english": "I bought my younger brother a book or something.",
+        "vocabulary_slugs": [
+          "otouto",
+          "hon",
+          "kau-v",
+          "ageru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "甘い物か何か食べたい。",
+        "english": "I want to eat something sweet or whatever.",
+        "vocabulary_slugs": [
+          "amai",
+          "mono",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "公園で音楽か何か聞きたい。",
+        "english": "I want to listen to music or something in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "ongaku",
+          "kiku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "週末はスポーツか何かしませんか。",
+        "english": "Shall we play a sport or something this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "supootsu",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "週末はスポーツでもしませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "ペンか何か持っていませんか。",
+        "english": "Don't you have a pen or something?",
+        "vocabulary_slugs": [
+          "pen",
+          "motsu",
+          "iru-exist"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

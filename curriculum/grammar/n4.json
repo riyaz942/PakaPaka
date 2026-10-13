@@ -28436,69 +28436,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "この件に関して、質問があります。",
-          "english": "Regarding this matter, I have a question.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "shitsumon"
-          ],
-          "furigana": "この件[けん]に関[かん]して、質[しつ]問[もん]があります。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shitsumon",
-              "start": 8,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 7
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "会議で、部長は文化に関して質問した。",
-          "english": "At the meeting, the department head asked a question about culture.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kaigi",
-            "buchou",
-            "bunka",
-            "shitsumon"
-          ],
-          "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]に関[かん]して質[しつ]問[もん]した。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kaigi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "buchou",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "bunka",
-              "start": 7,
-              "end": 9
-            },
-            {
-              "vocabulary_slug": "shitsumon",
-              "start": 13,
-              "end": 15
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 13
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "環境に関して、色々な意見があります。",
           "english": "There are various opinions regarding the environment.",
-          "sort_order": 2,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kankyou",
             "iroiro",
@@ -28534,13 +28474,402 @@
             "start": 2,
             "end": 6
           },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "環[かん]境[きょう]について、色[いろ]々[いろ]な意[い]見[けん]があります。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "会議で、部長は文化に関して質問した。",
+          "english": "At the meeting, the department head asked a question about culture.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kaigi",
+            "buchou",
+            "bunka",
+            "shitsumon",
+            "suru"
+          ],
+          "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]に関[かん]して質[しつ]問[もん]した。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "buchou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "shitsumon",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 15,
+              "end": 17,
+              "surface_form": "した",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 13
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]について質[しつ]問[もん]した。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "この問題に関して、先生は何も言いませんでした。",
+          "english": "The teacher said nothing about this problem.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "mondai",
+            "sensei",
+            "nani",
+            "iu-v"
+          ],
+          "furigana": "この問[もん]題[だい]に関[かん]して、先[せん]生[せい]は何[なに]も言[い]いませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 14,
+              "end": 22,
+              "surface_form": "言いませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 8
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この問[もん]題[だい]について、先[せん]生[せい]は何[なに]も言[い]いませんでした。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "健康に関する本を読みました。",
+          "english": "I read a book about health.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kenkou",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "健[けん]康[こう]に関[かん]する本[ほん]を読[よ]みました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kenkou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 8,
+              "end": 13,
+              "surface_form": "読みました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
           "register": "polite"
+        },
+        {
+          "japanese": "旅行に関して、何か質問はありますか。",
+          "english": "Do you have any questions regarding the trip?",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "ryokou",
+            "nani",
+            "shitsumon",
+            "aru"
+          ],
+          "furigana": "旅[りょ]行[こう]に関[かん]して、何[なに]か質[しつ]問[もん]はありますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "shitsumon",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "旅[りょ]行[こう]について、何[なに]か質[しつ]問[もん]はありますか。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "日本の文化に関する記事は面白いです。",
+          "english": "Articles about Japanese culture are interesting.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "nihon",
+            "bunka",
+            "kiji",
+            "omoshiroi"
+          ],
+          "furigana": "日本[にほん]の文[ぶん]化[か]に関[かん]する記[き]事[じ]は面[おも]白[しろ]いです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nihon",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "bunka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kiji",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 12,
+              "end": 15
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "天気に関するニュースを見ませんでした。",
+          "english": "I didn't see the news about the weather.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "tenki",
+            "nyuusu",
+            "miru-v"
+          ],
+          "furigana": "天[てん]気[き]に関[かん]するニュースを見[み]ませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tenki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nyuusu",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 11,
+              "end": 18,
+              "surface_form": "見ませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "安全に関して、店の人に話を聞きました。",
+          "english": "I asked the shop staff about safety.",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "anzen",
+            "mise",
+            "hito",
+            "hanashi",
+            "kiku-v"
+          ],
+          "furigana": "安[あん]全[ぜん]に関[かん]して、店[みせ]の人[ひと]に話[はなし]を聞[き]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "anzen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 13,
+              "end": 18,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "安[あん]全[ぜん]について、店[みせ]の人[ひと]に話[はなし]を聞[き]きました。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "歴史に関する話は、あまり面白くない。",
+          "english": "Talk about history isn't very interesting.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "rekishi",
+            "hanashi",
+            "amari",
+            "omoshiroi"
+          ],
+          "furigana": "歴[れき]史[し]に関[かん]する話[はなし]は、あまり面白[おもしろ]くない。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "rekishi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "amari",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 12,
+              "end": 17,
+              "surface_form": "面白くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 6
+          },
+          "register": "plain"
         }
       ],
       "vocabulary_slugs": [
         "shitsumon"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "regarding",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "concerning",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "about",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "with regard to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in relation to",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "会議で、部長は文化＿＿＿質問した。",
@@ -28619,16 +28948,22 @@
           "register": "polite"
         },
         {
-          "japanese": "そういう人は好きじゃないです。",
+          "japanese": "そういう人は嫌いです。",
           "english": "I don't like that kind of person.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "suki"
+            "hito",
+            "kirai"
           ],
-          "furigana": "そういう人[ひと]は好[す]きじゃないです。",
+          "furigana": "そういう人[ひと]は嫌[きら]いです。",
           "word_spans": [
             {
-              "vocabulary_slug": "suki",
+              "vocabulary_slug": "hito",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kirai",
               "start": 6,
               "end": 8
             }
@@ -28640,30 +28975,9 @@
           "register": "polite"
         },
         {
-          "japanese": "そういう話は聞きたくない。",
-          "english": "I don't want to hear that kind of talk.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "hanashi"
-          ],
-          "furigana": "そういう話[はなし]は聞[き]きたくない。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hanashi",
-              "start": 4,
-              "end": 5
-            }
-          ],
-          "grammar_span": {
-            "start": 0,
-            "end": 4
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "こういう天気は苦手だ。",
           "english": "I'm no good with this kind of weather.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "tenki",
             "nigate"
@@ -28688,30 +29002,9 @@
           "register": "plain"
         },
         {
-          "japanese": "ああいう人には会いたくない。",
-          "english": "I don't want to meet that kind of person.",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "hito"
-          ],
-          "furigana": "ああいう人[ひと]には会[あ]いたくない。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "hito",
-              "start": 4,
-              "end": 5
-            }
-          ],
-          "grammar_span": {
-            "start": 0,
-            "end": 4
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "彼はそういう人だ。",
           "english": "He's that kind of person.",
-          "sort_order": 5,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kare",
             "hito"
@@ -28738,7 +29031,7 @@
         {
           "japanese": "こういう話は前からあった。",
           "english": "This kind of story has been around for a while.",
-          "sort_order": 6,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "hanashi",
             "mae",
@@ -28769,6 +29062,159 @@
             "end": 4
           },
           "register": "plain"
+        },
+        {
+          "japanese": "ああいう店に行きたいです。",
+          "english": "I want to go to a shop like that one.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "mise",
+            "iku-v"
+          ],
+          "furigana": "ああいう店[みせ]に行[い]きたいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mise",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 6,
+              "end": 8,
+              "surface_form": "行き",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 0,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "そういう話は聞きませんでした。",
+          "english": "I didn't hear anything like that.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "hanashi",
+            "kiku-v"
+          ],
+          "furigana": "そういう話[はなし]は聞[き]きませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 6,
+              "end": 14,
+              "surface_form": "聞きませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 0,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "どうして、そういう物を買ったの？",
+          "english": "Why did you buy that kind of thing?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "doushite",
+            "mono",
+            "kau-v"
+          ],
+          "furigana": "どうして、そういう物[もの]を買[か]ったの？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "doushite",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 11,
+              "end": 14,
+              "surface_form": "買った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "どうしてそういう物[もの]を買[か]ったの？",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "ああいう車は高いですか。",
+          "english": "Is a car like that expensive?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kuruma",
+            "takai-adj"
+          ],
+          "furigana": "ああいう車[くるま]は高[たか]いですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takai-adj",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "grammar_span": {
+            "start": 0,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "こういう映画が好きです。",
+          "english": "I like this kind of movie.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "eiga",
+            "suki"
+          ],
+          "furigana": "こういう映[えい]画[が]が好[す]きです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "eiga",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "grammar_span": {
+            "start": 0,
+            "end": 4
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -28777,6 +29223,33 @@
         "suki"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that kind of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "this kind of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "such",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "like that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "like this",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "＿＿＿話は聞きたくない。",
@@ -28850,14 +29323,20 @@
       ],
       "example_sentences": [
         {
-          "japanese": "田中さんって、優しいですね。",
-          "english": "Tanaka is kind, isn't he.",
+          "japanese": "お兄さんって、優しいですね。",
+          "english": "Your older brother is kind, isn't he.",
           "sort_order": 0,
           "vocabulary_slugs": [
+            "oniisan",
             "yasashii-n4"
           ],
-          "furigana": "田中[たなか]さんって、優[やさ]しいですね。",
+          "furigana": "お兄[あに]さんって、優[やさ]しいですね。",
           "word_spans": [
+            {
+              "vocabulary_slug": "oniisan",
+              "start": 0,
+              "end": 4
+            },
             {
               "vocabulary_slug": "yasashii-n4",
               "start": 7,
@@ -28868,7 +29347,13 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "お兄[あに]さんは、優[やさ]しいですね。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "明日雨が降るって聞きました。",
@@ -28876,7 +29361,9 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "ashita",
-            "furu-rain"
+            "ame-v",
+            "furu-rain",
+            "kiku-v"
           ],
           "furigana": "明日[あした]雨[あめ]が降[ふ]るって聞[き]きました。",
           "word_spans": [
@@ -28886,16 +29373,34 @@
               "end": 2
             },
             {
+              "vocabulary_slug": "ame-v",
+              "start": 2,
+              "end": 3
+            },
+            {
               "vocabulary_slug": "furu-rain",
               "start": 4,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "聞きました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 6,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]雨[あめ]が降[ふ]ると聞[き]きました。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "兄が忙しいって言ってた。",
@@ -28903,7 +29408,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "ani",
-            "isogashii"
+            "isogashii",
+            "iu-v"
           ],
           "furigana": "兄[あに]が忙[いそが]しいって言[い]ってた。",
           "word_spans": [
@@ -28916,6 +29422,13 @@
               "vocabulary_slug": "isogashii",
               "start": 2,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 7,
+              "end": 9,
+              "surface_form": "言っ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -28949,7 +29462,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "それは面[おも]白[しろ]い？",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "これって面白いよね。",
@@ -28976,7 +29495,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "これは面[おも]白[しろ]いよね。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "あれって難しい？",
@@ -29003,7 +29528,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "あれは難[むずか]しい？",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "学校を休むって言った。",
@@ -29038,7 +29569,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "学[がっ]校[こう]を休[やす]むと言[い]った。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "先生が優しいって。",
@@ -29066,6 +29603,96 @@
             "end": 8
           },
           "register": "plain"
+        },
+        {
+          "japanese": "この店のパンって、おいしい？",
+          "english": "Is the bread at this shop any good?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "pan",
+            "oishii"
+          ],
+          "furigana": "この店[みせ]のパンって、おいしい？",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "pan",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "oishii",
+              "start": 9,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]のパンは、おいしい？",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "猫って、本当に魚が好きだね。",
+          "english": "Cats really do love fish, don't they.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "neko",
+            "hontou-ni",
+            "sakana",
+            "suki"
+          ],
+          "furigana": "猫[ねこ]って、本[ほん]当[とう]に魚[さかな]が好[す]きだね。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hontou-ni",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 3
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "猫[ねこ]は、本[ほん]当[とう]に魚[さかな]が好[す]きだね。",
+              "kind": "other_grammar"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -29074,6 +29701,33 @@
         "furu-rain"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "casual quotation",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "casual topic marker",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "they say",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "speaking of",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "said that",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Casual quote — \"they said…\"",
@@ -29172,37 +29826,63 @@
       ],
       "example_sentences": [
         {
-          "japanese": "もう、太郎ったら、また忘れたの。",
-          "english": "Ugh, Taro, you forgot again?",
+          "japanese": "弟ったら、また傘を忘れたの？",
+          "english": "Ugh, my little brother — did he forget his umbrella again?",
           "sort_order": 0,
           "vocabulary_slugs": [
+            "otouto",
+            "mata",
+            "kasa",
             "wasureru"
           ],
-          "furigana": "もう、太[た]郎[ろう]ったら、また忘[わす]れたの。",
+          "furigana": "弟[おとうと]ったら、また傘[かさ]を忘[わす]れたの？",
           "word_spans": [
             {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mata",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 7,
+              "end": 8
+            },
+            {
               "vocabulary_slug": "wasureru",
-              "start": 11,
-              "end": 14,
+              "start": 9,
+              "end": 12,
               "surface_form": "忘れた",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 8
+            "start": 1,
+            "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]ってば、また傘[かさ]を忘[わす]れたの？",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "兄ったら、話を聞いてない。",
-          "english": "My brother, seriously, isn't listening to what I'm saying.",
+          "japanese": "兄ったら、話を全然聞かない。",
+          "english": "My older brother, seriously, doesn't listen at all.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "ani",
-            "hanashi"
+            "hanashi",
+            "zenzen",
+            "kiku-v"
           ],
-          "furigana": "兄[あに]ったら、話[はなし]を聞[き]いてない。",
+          "furigana": "兄[あに]ったら、話[はなし]を全[ぜん]然[ぜん]聞[き]かない。",
           "word_spans": [
             {
               "vocabulary_slug": "ani",
@@ -29213,17 +29893,35 @@
               "vocabulary_slug": "hanashi",
               "start": 5,
               "end": 6
+            },
+            {
+              "vocabulary_slug": "zenzen",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "聞かない",
+              "inflection": "nai"
             }
           ],
           "grammar_span": {
             "start": 1,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]ってば、話[はなし]を全[ぜん]然[ぜん]聞[き]かない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼ったら、いつも宿題を忘れる。",
-          "english": "Him, honestly, he always forgets his homework.",
+          "english": "Him, honestly — he always forgets his homework.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "kare",
@@ -29258,7 +29956,13 @@
             "start": 1,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]ってば、いつも宿[しゅく]題[だい]を忘[わす]れる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "分かったってば。",
@@ -29308,7 +30012,7 @@
         },
         {
           "japanese": "猫がまた花を壊したってば。",
-          "english": "I said the cat broke the flower again.",
+          "english": "I'm telling you, the cat wrecked the flowers again.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "neko",
@@ -29380,6 +30084,66 @@
             "start": 2,
             "end": 5
           },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]ったら、また遅[ち]刻[こく]した。",
+              "kind": "valid"
+            }
+          ]
+        },
+        {
+          "japanese": "今行くってば。",
+          "english": "I said I'm coming now!",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "ima",
+            "iku-v"
+          ],
+          "furigana": "今[いま]行[い]くってば。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 1,
+              "end": 3
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "plain"
+        },
+        {
+          "japanese": "もう寝るってば。",
+          "english": "I told you, I'm going to bed now.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "mou",
+            "neru"
+          ],
+          "furigana": "もう寝[ね]るってば。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "mou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 7
+          },
           "register": "plain"
         }
       ],
@@ -29387,6 +30151,33 @@
         "wasureru"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "I told you",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I said",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "seriously",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "honestly",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ugh",
+          "is_primary": false
+        }
+      ],
       "uses": [
         {
           "label": "Calling someone out — \"honestly, X…\"",
@@ -29488,7 +30279,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare",
-            "kuru-v"
+            "kuru-v",
+            "wakaru"
           ],
           "furigana": "彼[かれ]が来[く]るかどうか分[わ]かりません。",
           "word_spans": [
@@ -29501,30 +30293,31 @@
               "vocabulary_slug": "kuru-v",
               "start": 2,
               "end": 4
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "分かりません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 4,
             "end": 8
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "これでいいかどうか、確認してください。",
-          "english": "Please check whether this is okay or not.",
-          "sort_order": 1,
-          "vocabulary_slugs": [],
-          "furigana": "これでいいかどうか、確[かく]認[にん]してください。",
-          "grammar_span": {
-            "start": 5,
-            "end": 9
-          },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]が来[く]るか分[わ]かりません。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "友達が来るかどうか分からない。",
           "english": "I don't know whether my friend is coming or not.",
-          "sort_order": 2,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "tomodachi",
             "kuru-v",
@@ -29554,12 +30347,18 @@
             "start": 5,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]が来[く]るか分[わ]からない。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "明日雨が降るかどうか分からない。",
           "english": "I don't know whether it will rain tomorrow or not.",
-          "sort_order": 3,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ashita",
             "ame-v",
@@ -29595,12 +30394,18 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]雨[あめ]が降[ふ]るか分[わ]からない。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "彼が学生かどうか分からない。",
           "english": "I don't know whether he is a student or not.",
-          "sort_order": 4,
+          "sort_order": 3,
           "vocabulary_slugs": [
             "kare",
             "gakusei",
@@ -29635,7 +30440,7 @@
         {
           "japanese": "試験に合格したかどうか、まだ分からない。",
           "english": "I still don't know whether I passed the exam or not.",
-          "sort_order": 5,
+          "sort_order": 4,
           "vocabulary_slugs": [
             "shiken",
             "goukaku-suru",
@@ -29678,7 +30483,7 @@
         {
           "japanese": "でも、友達が本当に来るかどうか分からない。",
           "english": "But I still don't know whether my friend is really coming or not.",
-          "sort_order": 6,
+          "sort_order": 5,
           "vocabulary_slugs": [
             "demo",
             "tomodachi",
@@ -29721,6 +30526,153 @@
             "end": 15
           },
           "register": "plain"
+        },
+        {
+          "japanese": "この服が好きかどうか、母に聞きました。",
+          "english": "I asked my mother whether she likes these clothes.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "suki",
+            "haha",
+            "kiku-v"
+          ],
+          "furigana": "この服[ふく]が好[す]きかどうか、母[はは]に聞[き]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "haha",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 13,
+              "end": 18,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この服[ふく]が好[す]きか、母[はは]に聞[き]きました。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "明日の会議に出席するかどうか、決めましたか。",
+          "english": "Have you decided whether you'll attend tomorrow's meeting?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "ashita",
+            "kaigi",
+            "shusseki-suru",
+            "kimeru-v"
+          ],
+          "furigana": "明日[あした]の会[かい]議[ぎ]に出[しゅっ]席[せき]するかどうか、決[き]めましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shusseki-suru",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kimeru-v",
+              "start": 15,
+              "end": 20,
+              "surface_form": "決めました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 14
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "電車が来るかどうか、駅の人に聞いた。",
+          "english": "I asked the station staff whether the train was coming.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "densha",
+            "kuru-v",
+            "eki",
+            "hito",
+            "kiku-v"
+          ],
+          "furigana": "電[でん]車[しゃ]が来[く]るかどうか、駅[えき]の人[ひと]に聞[き]いた。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 10,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 14,
+              "end": 17,
+              "surface_form": "聞いた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]が来[く]るか、駅[えき]の人[ひと]に聞[き]いた。",
+              "kind": "other_grammar"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -29728,6 +30680,23 @@
         "kuru-v"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "whether or not",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "whether",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "if",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "友達が来る＿＿＿分からない。",
@@ -29801,10 +30770,11 @@
       "example_sentences": [
         {
           "japanese": "お茶か何か飲みませんか。",
-          "english": "Won't you drink some tea or something?",
+          "english": "Won't you have some tea or something?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "ocha"
+            "ocha",
+            "nomu-v"
           ],
           "furigana": "お茶[ちゃ]か何[なに]か飲[の]みませんか。",
           "word_spans": [
@@ -29812,13 +30782,26 @@
               "vocabulary_slug": "ocha",
               "start": 0,
               "end": 2
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 5,
+              "end": 10,
+              "surface_form": "飲みません",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "お茶[ちゃ]でも飲[の]みませんか。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "映画か何か見ない？",
@@ -29847,7 +30830,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "映[えい]画[が]でも見[み]ない？",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "コーヒーか何か飲みますか。",
@@ -29876,7 +30865,13 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "コーヒーでも飲[の]みますか。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "机の上に紙か何かありますか。",
@@ -29920,15 +30915,16 @@
           "register": "polite"
         },
         {
-          "japanese": "弟に本か何か買ってあげよう。",
-          "english": "I'll buy my younger brother a book or something.",
+          "japanese": "弟に本か何か買ってあげました。",
+          "english": "I bought my younger brother a book or something.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "otouto",
             "hon",
-            "kau-v"
+            "kau-v",
+            "ageru"
           ],
-          "furigana": "弟[おとうと]に本[ほん]か何[なに]か買[か]ってあげよう。",
+          "furigana": "弟[おとうと]に本[ほん]か何[なに]か買[か]ってあげました。",
           "word_spans": [
             {
               "vocabulary_slug": "otouto",
@@ -29946,6 +30942,48 @@
               "end": 9,
               "surface_form": "買って",
               "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "ageru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "あげました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 3,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "甘い物か何か食べたい。",
+          "english": "I want to eat something sweet or whatever.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "amai",
+            "mono",
+            "taberu"
+          ],
+          "furigana": "甘[あま]い物[もの]か何[なに]か食[た]べたい。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "amai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mono",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -29955,39 +30993,13 @@
           "register": "plain"
         },
         {
-          "japanese": "忙しいから、甘いものか何か食べたい。",
-          "english": "I'm busy, so I want to eat something sweet or whatever.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "isogashii",
-            "amai"
-          ],
-          "furigana": "忙[いそが]しいから、甘[あま]いものか何[なに]か食[た]べたい。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "amai",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 10,
-            "end": 13
-          },
-          "register": "plain"
-        },
-        {
           "japanese": "公園で音楽か何か聞きたい。",
           "english": "I want to listen to music or something in the park.",
           "sort_order": 6,
           "vocabulary_slugs": [
             "kouen",
-            "ongaku"
+            "ongaku",
+            "kiku-v"
           ],
           "furigana": "公[こう]園[えん]で音[おん]楽[がく]か何[なに]か聞[き]きたい。",
           "word_spans": [
@@ -30000,6 +31012,13 @@
               "vocabulary_slug": "ongaku",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 8,
+              "end": 10,
+              "surface_form": "聞き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -30007,12 +31026,112 @@
             "end": 8
           },
           "register": "plain"
+        },
+        {
+          "japanese": "週末はスポーツか何かしませんか。",
+          "english": "Shall we play a sport or something this weekend?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "supootsu",
+            "suru"
+          ],
+          "furigana": "週[しゅう]末[まつ]はスポーツか何[なに]かしませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "supootsu",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "しません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 10
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]はスポーツでもしませんか。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "ペンか何か持っていませんか。",
+          "english": "Don't you have a pen or something?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "pen",
+            "motsu",
+            "iru-exist"
+          ],
+          "furigana": "ペンか何[なに]か持[も]っていませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "pen",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "持って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 12,
+              "surface_form": "いません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 2,
+            "end": 5
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
         "ocha"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "or something",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "or something like that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "or whatever",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "something like",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "映画＿＿＿見ない？",
