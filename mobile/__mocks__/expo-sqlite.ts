@@ -405,6 +405,32 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO user_grammar_answers/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, sentenceKey, answerText, createdAt] = params;
+    const rows = state.tables.get('user_grammar_answers') ?? [];
+    // DO NOTHING on conflict: one row per (item, sentence, answer).
+    if (
+      !rows.some(
+        (row) =>
+          row.item_id === itemId && row.sentence_key === sentenceKey && row.answer_text === answerText,
+      )
+    ) {
+      rows.push({ item_id: itemId, sentence_key: sentenceKey, answer_text: answerText, created_at: createdAt });
+    }
+    state.tables.set('user_grammar_answers', rows);
+    return;
+  }
+
+  if (/^INSERT INTO grammar_sentence_history/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, sentenceKeys, updatedAt] = params;
+    const rows = (state.tables.get('grammar_sentence_history') ?? []).filter(
+      (row) => row.item_id !== itemId,
+    );
+    rows.push({ item_id: itemId, sentence_keys: sentenceKeys, updated_at: updatedAt });
+    state.tables.set('grammar_sentence_history', rows);
+    return;
+  }
+
   if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertPassagePracticeResult(state, params);
     return;
@@ -1241,6 +1267,22 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM lesson_opt_ins/i.test(trimmed)) {
     let rows = [...(state.tables.get('lesson_opt_ins') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM user_grammar_answers/i.test(trimmed)) {
+    let rows = [...(state.tables.get('user_grammar_answers') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM grammar_sentence_history/i.test(trimmed)) {
+    let rows = [...(state.tables.get('grammar_sentence_history') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.item_id === params[0]);
     }
