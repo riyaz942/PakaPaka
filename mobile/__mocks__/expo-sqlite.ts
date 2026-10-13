@@ -963,6 +963,15 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       });
   }
 
+  if (/FROM grammar_sentence_answers/i.test(trimmed)) {
+    let rows = [...(state.tables.get('grammar_sentence_answers') ?? [])];
+    if (/WHERE sentence_id IN/i.test(trimmed)) {
+      rows = rows.filter((row) => params.includes(row.sentence_id as never));
+    }
+    rows.sort((left, right) => Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0));
+    return rows;
+  }
+
   if (/FROM example_sentence_spans/i.test(trimmed)) {
     const spans = [...(state.tables.get('example_sentence_spans') ?? [])];
 
@@ -1678,6 +1687,11 @@ export function __mockSetGrammarRules(databaseName: string, rows: Row[]) {
 export function __mockSetExampleSentences(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('example_sentences', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetGrammarSentenceAnswers(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('grammar_sentence_answers', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetExampleSentenceVocab(databaseName: string, rows: Row[]) {
