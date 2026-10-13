@@ -189,14 +189,15 @@
           "register": "polite"
         },
         {
-          "japanese": "昨日は寒かったです。",
-          "english": "Yesterday was cold.",
+          "japanese": "昨日は映画を見ました。",
+          "english": "Yesterday I watched a movie.",
           "sort_order": 6,
           "vocabulary_slugs": [
             "kinou",
-            "samui"
+            "eiga",
+            "miru-v"
           ],
-          "furigana": "昨日[きのう]は寒[さむ]かったです。",
+          "furigana": "昨日[きのう]は映[えい]画[が]を見[み]ました。",
           "word_spans": [
             {
               "vocabulary_slug": "kinou",
@@ -204,18 +205,29 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "samui",
+              "vocabulary_slug": "eiga",
               "start": 3,
-              "end": 7,
-              "surface_form": "寒かった",
-              "inflection": "ta"
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 6,
+              "end": 10,
+              "surface_form": "見ました",
+              "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 2,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]も映[えい]画[が]を見[み]ました。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "明日は忙しいです。",
@@ -839,7 +851,17 @@
             "start": 4,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "これは本[ほん]じゃありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "これは本[ほん]じゃないです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は学生ではありません。",
@@ -866,7 +888,17 @@
             "start": 4,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は学[がく]生[せい]じゃありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は学[がく]生[せい]じゃないです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "これは水じゃないです。",
@@ -893,7 +925,17 @@
             "start": 4,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "これは水[みず]ではありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "これは水[みず]じゃありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私は学生ではありません。",
@@ -925,6 +967,14 @@
             {
               "furigana": "学[がく]生[せい]ではありません。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は学[がく]生[せい]じゃありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は学[がく]生[せい]じゃないです。",
+              "kind": "valid"
             }
           ]
         },
@@ -953,7 +1003,17 @@
             "start": 4,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は先[せん]生[せい]ではありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は先[せん]生[せい]じゃないです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あれは学校じゃないです。",
@@ -980,7 +1040,17 @@
             "start": 5,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あれは学[がっ]校[こう]ではありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "あれは学[がっ]校[こう]じゃありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "これは肉ではない。",
@@ -1010,37 +1080,41 @@
           "register": "plain"
         },
         {
-          "japanese": "それはあなたの本ではありませんか。",
-          "english": "Isn't that your book?",
+          "japanese": "あそこは公園ではありません。",
+          "english": "That place over there is not a park.",
           "sort_order": 7,
           "vocabulary_slugs": [
-            "sore",
-            "anata",
-            "hon"
+            "asoko",
+            "kouen"
           ],
-          "furigana": "それはあなたの本[ほん]ではありませんか。",
+          "furigana": "あそこは公[こう]園[えん]ではありません。",
           "word_spans": [
             {
-              "vocabulary_slug": "sore",
+              "vocabulary_slug": "asoko",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
-              "vocabulary_slug": "anata",
-              "start": 3,
+              "vocabulary_slug": "kouen",
+              "start": 4,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "hon",
-              "start": 7,
-              "end": 8
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 15
+            "start": 6,
+            "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あそこは公[こう]園[えん]じゃありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "あそこは公[こう]園[えん]じゃないです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日の昼ご飯はパンではありませんでした。",
@@ -1073,7 +1147,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]の昼[ひる]ご飯[はん]はパンじゃありませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "ここは私の家じゃないです。",
@@ -1106,7 +1186,17 @@
             "start": 6,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "ここは私[わたし]の家[いえ]ではありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "ここは私[わたし]の家[いえ]じゃありません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -1854,51 +1944,39 @@
           ]
         },
         {
-          "japanese": "明日、一緒に公園に行きませんか。",
-          "english": "Won't you go to the park together tomorrow?",
+          "japanese": "時々、朝ご飯を食べません。",
+          "english": "Sometimes I don't eat breakfast.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "ashita",
-            "issho-ni",
-            "kouen",
-            "iku-v"
+            "tokidoki",
+            "asagohan",
+            "taberu"
           ],
-          "furigana": "明日[あした]、一[いっ]緒[しょ]に公[こう]園[えん]に行[い]きませんか。",
+          "furigana": "時[とき]々[どき]、朝[あさ]ご飯[はん]を食[た]べません。",
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "tokidoki",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "issho-ni",
+              "vocabulary_slug": "asagohan",
               "start": 3,
               "end": 6
             },
             {
-              "vocabulary_slug": "kouen",
-              "start": 6,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 9,
-              "end": 14,
-              "surface_form": "行きません",
+              "vocabulary_slug": "taberu",
+              "start": 7,
+              "end": 12,
+              "surface_form": "食べません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 14
+            "start": 9,
+            "end": 12
           },
-          "register": "polite",
-          "build_alternates": [
-            {
-              "furigana": "明日[あした]、公[こう]園[えん]に一[いっ]緒[しょ]に行[い]きませんか。",
-              "kind": "valid"
-            }
-          ]
+          "register": "polite"
         },
         {
           "japanese": "昨日、本を読みませんでした。",
@@ -2592,7 +2670,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "一[いっ]緒[しょ]に行[い]きませんか。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "お茶を飲みましょう。",
@@ -2621,54 +2705,18 @@
             "start": 5,
             "end": 9
           },
-          "register": "polite"
-        },
-        {
-          "japanese": "少し休みましょう。",
-          "english": "Let's rest a little.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "sukoshi"
-          ],
-          "furigana": "少[すこ]し休[やす]みましょう。",
-          "word_spans": [
+          "register": "polite",
+          "build_alternates": [
             {
-              "vocabulary_slug": "sukoshi",
-              "start": 0,
-              "end": 2
+              "furigana": "お茶[ちゃ]を飲[の]みませんか。",
+              "kind": "other_grammar"
             }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 8
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "写真を撮りましょうか。",
-          "english": "Shall I take a photo?",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "shashin"
-          ],
-          "furigana": "写[しゃ]真[しん]を撮[と]りましょうか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "shashin",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 10
-          },
-          "register": "polite"
+          ]
         },
         {
           "japanese": "映画を見ましょう。",
           "english": "Let's watch a movie.",
-          "sort_order": 4,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "eiga",
             "miru-v"
@@ -2695,12 +2743,71 @@
           "register": "polite"
         },
         {
+          "japanese": "ここで待ちましょう。",
+          "english": "Let's wait here.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "koko",
+            "matsu"
+          ],
+          "furigana": "ここで待[ま]ちましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "koko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 3,
+              "end": 5,
+              "surface_form": "待ち",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "部屋に入りましょうか。",
+          "english": "Shall we go into the room?",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "heya",
+            "hairu-v"
+          ],
+          "furigana": "部屋[へや]に入[はい]りましょうか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hairu-v",
+              "start": 3,
+              "end": 5,
+              "surface_form": "入り",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 10
+          },
+          "register": "polite"
+        },
+        {
           "japanese": "一緒にご飯を食べましょう。",
           "english": "Let's eat a meal together.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "issho-ni",
-            "gohan"
+            "gohan",
+            "taberu"
           ],
           "furigana": "一[いっ]緒[しょ]にご飯[はん]を食[た]べましょう。",
           "word_spans": [
@@ -2713,6 +2820,13 @@
               "vocabulary_slug": "gohan",
               "start": 3,
               "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 8,
+              "surface_form": "食べ",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -2722,32 +2836,47 @@
           "register": "polite"
         },
         {
-          "japanese": "コーヒーを飲みましょう。",
-          "english": "Let's drink coffee.",
+          "japanese": "公園で遊びましょう。",
+          "english": "Let's play in the park.",
           "sort_order": 6,
           "vocabulary_slugs": [
-            "koohii"
+            "kouen",
+            "asobu"
           ],
-          "furigana": "コーヒーを飲[の]みましょう。",
+          "furigana": "公[こう]園[えん]で遊[あそ]びましょう。",
           "word_spans": [
             {
-              "vocabulary_slug": "koohii",
+              "vocabulary_slug": "kouen",
               "start": 0,
-              "end": 4
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 3,
+              "end": 5,
+              "surface_form": "遊び",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 5,
+            "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "公[こう]園[えん]で遊[あそ]びませんか。",
+              "kind": "other_grammar"
+            }
+          ]
         },
         {
           "japanese": "窓を開けましょうか。",
           "english": "Shall I open the window?",
           "sort_order": 7,
           "vocabulary_slugs": [
-            "mado"
+            "mado",
+            "akeru"
           ],
           "furigana": "窓[まど]を開[あ]けましょうか。",
           "word_spans": [
@@ -2755,6 +2884,42 @@
               "vocabulary_slug": "mado",
               "start": 0,
               "end": 1
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 2,
+              "end": 4,
+              "surface_form": "開け",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 9
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "家に帰りましょう。",
+          "english": "Let's go home.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "家[いえ]に帰[かえ]りましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ie",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 2,
+              "end": 4,
+              "surface_form": "帰り",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
@@ -2764,35 +2929,15 @@
           "register": "polite"
         },
         {
-          "japanese": "ここで待ちましょう。",
-          "english": "Let's wait here.",
-          "sort_order": 8,
-          "vocabulary_slugs": [
-            "koko"
-          ],
-          "furigana": "ここで待[ま]ちましょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "koko",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 9
-          },
-          "register": "polite"
-        },
-        {
-          "japanese": "明日、映画を見ましょう。",
-          "english": "Let's watch a movie tomorrow.",
+          "japanese": "明日、海に行きましょうか。",
+          "english": "Shall we go to the sea tomorrow?",
           "sort_order": 9,
           "vocabulary_slugs": [
             "ashita",
-            "eiga"
+            "umi",
+            "iku-v"
           ],
-          "furigana": "明日[あした]、映[えい]画[が]を見[み]ましょう。",
+          "furigana": "明日[あした]、海[うみ]に行[い]きましょうか。",
           "word_spans": [
             {
               "vocabulary_slug": "ashita",
@@ -2800,14 +2945,21 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "eiga",
+              "vocabulary_slug": "umi",
               "start": 3,
-              "end": 5
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 5,
+              "end": 7,
+              "surface_form": "行き",
+              "inflection": "stem"
             }
           ],
           "grammar_span": {
             "start": 7,
-            "end": 11
+            "end": 12
           },
           "register": "polite"
         }
@@ -2818,6 +2970,28 @@
         "ocha"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "let's",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "shall we",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "let us",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "shall I",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "一緒にご飯を食べ＿＿＿。",
@@ -3002,88 +3176,82 @@
             "start": 5,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "公[こう]園[えん]に行[い]きませんか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "一緒に映画を見ませんか。",
-          "english": "Won't you watch a movie with me?",
+          "japanese": "ここに座りませんか。",
+          "english": "Won't you sit here?",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "issho-ni",
-            "eiga",
-            "miru-v"
+            "koko",
+            "suwaru"
           ],
-          "furigana": "一[いっ]緒[しょ]に映[えい]画[が]を見[み]ませんか。",
+          "furigana": "ここに座[すわ]りませんか。",
           "word_spans": [
             {
-              "vocabulary_slug": "issho-ni",
+              "vocabulary_slug": "koko",
               "start": 0,
-              "end": 3
+              "end": 2
             },
             {
-              "vocabulary_slug": "eiga",
+              "vocabulary_slug": "suwaru",
               "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "miru-v",
-              "start": 6,
-              "end": 10,
-              "surface_form": "見ません",
+              "end": 8,
+              "surface_form": "座りません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 5,
+            "end": 9
           },
           "register": "polite"
         },
         {
-          "japanese": "一緒にお茶を飲みませんか。",
-          "english": "Won't you have some tea with me?",
+          "japanese": "海で遊びませんか。",
+          "english": "Why don't we have fun at the sea?",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "issho-ni",
-            "ocha",
-            "nomu-v"
+            "umi",
+            "asobu"
           ],
-          "furigana": "一[いっ]緒[しょ]にお茶[ちゃ]を飲[の]みませんか。",
+          "furigana": "海[うみ]で遊[あそ]びませんか。",
           "word_spans": [
             {
-              "vocabulary_slug": "issho-ni",
+              "vocabulary_slug": "umi",
               "start": 0,
-              "end": 3
+              "end": 1
             },
             {
-              "vocabulary_slug": "ocha",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "nomu-v",
-              "start": 6,
-              "end": 11,
-              "surface_form": "飲みません",
+              "vocabulary_slug": "asobu",
+              "start": 2,
+              "end": 7,
+              "surface_form": "遊びません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 12
+            "start": 4,
+            "end": 8
           },
           "register": "polite"
         },
         {
-          "japanese": "今日、映画を見ませんか？",
-          "english": "Won't you watch a movie today?",
+          "japanese": "今日、家に来ませんか。",
+          "english": "Won't you come to my place today?",
           "sort_order": 6,
           "vocabulary_slugs": [
             "kyou",
-            "eiga",
-            "miru-v"
+            "ie",
+            "kuru-v"
           ],
-          "furigana": "今日[きょう]、映[えい]画[が]を見[み]ませんか？",
+          "furigana": "今日[きょう]、家[いえ]に来[き]ませんか。",
           "word_spans": [
             {
               "vocabulary_slug": "kyou",
@@ -3091,21 +3259,21 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "eiga",
+              "vocabulary_slug": "ie",
               "start": 3,
-              "end": 5
+              "end": 4
             },
             {
-              "vocabulary_slug": "miru-v",
-              "start": 6,
-              "end": 10,
-              "surface_form": "見ません",
+              "vocabulary_slug": "kuru-v",
+              "start": 5,
+              "end": 9,
+              "surface_form": "来ません",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 6,
+            "end": 10
           },
           "register": "polite"
         },
@@ -3190,6 +3358,55 @@
             "end": 14
           },
           "register": "polite"
+        },
+        {
+          "japanese": "友達が「一緒に映画を見ませんか」と言いました。",
+          "english": "My friend said, \"Won't you watch a movie with me?\"",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "issho-ni",
+            "eiga",
+            "miru-v",
+            "iu-v"
+          ],
+          "furigana": "友[とも]達[だち]が「一[いっ]緒[しょ]に映[えい]画[が]を見[み]ませんか」と言[い]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "issho-ni",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "見ません",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 17,
+              "end": 22,
+              "surface_form": "言いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 15
+          },
+          "register": "polite"
         }
       ],
       "vocabulary_slugs": [
@@ -3198,6 +3415,33 @@
         "eiga"
       ],
       "family": "patterns",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "won't you",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "would you like to",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "why don't we",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "shall we",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "invitation",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "一緒に映画を見＿＿＿。",
@@ -3357,60 +3601,247 @@
           "register": "polite"
         },
         {
-          "japanese": "音楽を聞きます。",
-          "english": "I listen to music.",
+          "japanese": "毎朝、コーヒーを飲みます。",
+          "english": "I drink coffee every morning.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "ongaku",
-            "kiku-v"
+            "maiasa",
+            "koohii",
+            "nomu-v"
           ],
-          "furigana": "音[おん]楽[がく]を聞[き]きます。",
+          "furigana": "毎[まい]朝[あさ]、コーヒーを飲[の]みます。",
           "word_spans": [
             {
-              "vocabulary_slug": "ongaku",
+              "vocabulary_slug": "maiasa",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "kiku-v",
+              "vocabulary_slug": "koohii",
               "start": 3,
-              "end": 7,
-              "surface_form": "聞きます",
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 8,
+              "end": 12,
+              "surface_form": "飲みます",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 3
+            "start": 7,
+            "end": 8
           },
           "register": "polite"
         },
         {
-          "japanese": "手紙を書きます。",
-          "english": "I write a letter.",
+          "japanese": "猫が魚を食べました。",
+          "english": "The cat ate the fish.",
           "sort_order": 4,
           "vocabulary_slugs": [
-            "tegami",
-            "kaku"
+            "neko",
+            "sakana",
+            "taberu"
           ],
-          "furigana": "手[て]紙[がみ]を書[か]きます。",
+          "furigana": "猫[ねこ]が魚[さかな]を食[た]べました。",
           "word_spans": [
             {
-              "vocabulary_slug": "tegami",
+              "vocabulary_slug": "neko",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "kaku",
-              "start": 3,
-              "end": 7,
-              "surface_form": "書きます",
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 9,
+              "surface_form": "食べました",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 3
+            "start": 3,
+            "end": 4
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "先週、映画を見ませんでした。",
+          "english": "I didn't watch a movie last week.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "senshuu",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "先[せん]週[しゅう]、映[えい]画[が]を見[み]ませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "senshuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 6,
+              "end": 13,
+              "surface_form": "見ませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]週[しゅう]、映[えい]画[が]は見[み]ませんでした。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "何を買いましたか。",
+          "english": "What did you buy?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "nani",
+            "kau-v"
+          ],
+          "furigana": "何[なに]を買[か]いましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 2,
+              "end": 7,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 2
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "誰を待ちますか。",
+          "english": "Who are you waiting for?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dare",
+            "matsu"
+          ],
+          "furigana": "誰[だれ]を待[ま]ちますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "matsu",
+              "start": 2,
+              "end": 6,
+              "surface_form": "待ちます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 1,
+            "end": 2
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "あの犬は肉を食べません。",
+          "english": "That dog doesn't eat meat.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ano",
+            "inu",
+            "niku",
+            "taberu"
+          ],
+          "furigana": "あの犬[いぬ]は肉[にく]を食[た]べません。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "niku",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 11,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite"
+        },
+        {
+          "japanese": "部屋の窓を開けましょう。",
+          "english": "Let's open the room's window.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "heya",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "部屋[へや]の窓[まど]を開[あ]けましょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "akeru",
+              "start": 5,
+              "end": 7,
+              "surface_form": "開け",
+              "inflection": "stem"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 5
           },
           "register": "polite"
         }
@@ -3421,6 +3852,28 @@
         "gohan"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "object marker",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "direct object marker",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "direct object",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "object",
+          "is_primary": false
+        }
+      ],
       "cloze_variants": [
         {
           "jp_cloze": "水＿＿＿飲みます。",

@@ -72,13 +72,19 @@
         "alternates": []
       },
       {
-        "japanese": "昨日は寒かったです。",
-        "english": "Yesterday was cold.",
+        "japanese": "昨日は映画を見ました。",
+        "english": "Yesterday I watched a movie.",
         "vocabulary_slugs": [
           "kinou",
-          "samui"
+          "eiga",
+          "miru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "昨日も映画を見ました。",
+            "kind": "other_grammar"
+          }
+        ]
       },
       {
         "japanese": "明日は忙しいです。",
@@ -245,7 +251,16 @@
           "kore",
           "hon"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "これは本じゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "これは本じゃないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "彼は学生ではありません。",
@@ -254,7 +269,16 @@
           "kare",
           "gakusei"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼は学生じゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼は学生じゃないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "これは水じゃないです。",
@@ -263,7 +287,16 @@
           "kore",
           "mizu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "これは水ではありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "これは水じゃありません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私は学生ではありません。",
@@ -276,6 +309,14 @@
           {
             "japanese": "学生ではありません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は学生じゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は学生じゃないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -286,7 +327,16 @@
           "kare",
           "sensei"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼は先生ではありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼は先生じゃないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あれは学校じゃないです。",
@@ -295,7 +345,16 @@
           "are",
           "gakkou-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あれは学校ではありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あれは学校じゃありません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "これは肉ではない。",
@@ -307,14 +366,22 @@
         "alternates": []
       },
       {
-        "japanese": "それはあなたの本ではありませんか。",
-        "english": "Isn't that your book?",
+        "japanese": "あそこは公園ではありません。",
+        "english": "That place over there is not a park.",
         "vocabulary_slugs": [
-          "sore",
-          "anata",
-          "hon"
+          "asoko",
+          "kouen"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あそこは公園じゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこは公園じゃないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "昨日の昼ご飯はパンではありませんでした。",
@@ -324,7 +391,12 @@
           "hirugohan",
           "pan"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "昨日の昼ご飯はパンじゃありませんでした。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "ここは私の家じゃないです。",
@@ -334,7 +406,16 @@
           "watashi",
           "ie"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "ここは私の家ではありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ここは私の家じゃありません。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
@@ -547,20 +628,14 @@
         ]
       },
       {
-        "japanese": "明日、一緒に公園に行きませんか。",
-        "english": "Won't you go to the park together tomorrow?",
+        "japanese": "時々、朝ご飯を食べません。",
+        "english": "Sometimes I don't eat breakfast.",
         "vocabulary_slugs": [
-          "ashita",
-          "issho-ni",
-          "kouen",
-          "iku-v"
+          "tokidoki",
+          "asagohan",
+          "taberu"
         ],
-        "alternates": [
-          {
-            "japanese": "明日、公園に一緒に行きませんか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "昨日、本を読みませんでした。",
@@ -715,6 +790,363 @@
           "kinou",
           "niku",
           "taberu"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wo": {
+    "accepted_meanings": [
+      "object marker",
+      "direct object marker",
+      "direct object",
+      "object"
+    ],
+    "sentences": [
+      {
+        "japanese": "水を飲みます。",
+        "english": "I drink water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "本を読みます。",
+        "english": "I read a book.",
+        "vocabulary_slugs": [
+          "hon",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ご飯を食べます。",
+        "english": "I eat a meal.",
+        "vocabulary_slugs": [
+          "gohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎朝、コーヒーを飲みます。",
+        "english": "I drink coffee every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "猫が魚を食べました。",
+        "english": "The cat ate the fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先週、映画を見ませんでした。",
+        "english": "I didn't watch a movie last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週、映画は見ませんでした。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "何を買いましたか。",
+        "english": "What did you buy?",
+        "vocabulary_slugs": [
+          "nani",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "誰を待ちますか。",
+        "english": "Who are you waiting for?",
+        "vocabulary_slugs": [
+          "dare",
+          "matsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あの犬は肉を食べません。",
+        "english": "That dog doesn't eat meat.",
+        "vocabulary_slugs": [
+          "ano",
+          "inu",
+          "niku",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "部屋の窓を開けましょう。",
+        "english": "Let's open the room's window.",
+        "vocabulary_slugs": [
+          "heya",
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mashou": {
+    "accepted_meanings": [
+      "let's",
+      "shall we",
+      "let us",
+      "shall I"
+    ],
+    "sentences": [
+      {
+        "japanese": "一緒に行きましょう。",
+        "english": "Let's go together.",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "一緒に行きませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "お茶を飲みましょう。",
+        "english": "Let's drink tea.",
+        "vocabulary_slugs": [
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "お茶を飲みませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "映画を見ましょう。",
+        "english": "Let's watch a movie.",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここで待ちましょう。",
+        "english": "Let's wait here.",
+        "vocabulary_slugs": [
+          "koko",
+          "matsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "部屋に入りましょうか。",
+        "english": "Shall we go into the room?",
+        "vocabulary_slugs": [
+          "heya",
+          "hairu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "一緒にご飯を食べましょう。",
+        "english": "Let's eat a meal together.",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "公園で遊びましょう。",
+        "english": "Let's play in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "asobu"
+        ],
+        "alternates": [
+          {
+            "japanese": "公園で遊びませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "窓を開けましょうか。",
+        "english": "Shall I open the window?",
+        "vocabulary_slugs": [
+          "mado",
+          "akeru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "家に帰りましょう。",
+        "english": "Let's go home.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、海に行きましょうか。",
+        "english": "Shall we go to the sea tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "umi",
+          "iku-v"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "masen-ka": {
+    "accepted_meanings": [
+      "won't you",
+      "would you like to",
+      "why don't we",
+      "shall we",
+      "invitation"
+    ],
+    "sentences": [
+      {
+        "japanese": "一緒に食べませんか。",
+        "english": "Won't you eat with me?",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "お茶を飲みませんか。",
+        "english": "Won't you have some tea?",
+        "vocabulary_slugs": [
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "映画を見ませんか。",
+        "english": "Would you like to see a movie?",
+        "vocabulary_slugs": [
+          "eiga",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "公園へ行きませんか。",
+        "english": "Shall we go to the park?",
+        "vocabulary_slugs": [
+          "kouen",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "公園に行きませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ここに座りませんか。",
+        "english": "Won't you sit here?",
+        "vocabulary_slugs": [
+          "koko",
+          "suwaru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "海で遊びませんか。",
+        "english": "Why don't we have fun at the sea?",
+        "vocabulary_slugs": [
+          "umi",
+          "asobu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日、家に来ませんか。",
+        "english": "Won't you come to my place today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "ie",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、一緒にご飯を食べませんか。",
+        "english": "Won't you eat a meal with me tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "issho-ni",
+          "gohan",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "彼と一緒にお茶を飲みませんか。",
+        "english": "Won't you have tea with him?",
+        "vocabulary_slugs": [
+          "kare",
+          "issho-ni",
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "友達が「一緒に映画を見ませんか」と言いました。",
+        "english": "My friend said, \"Won't you watch a movie with me?\"",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "issho-ni",
+          "eiga",
+          "miru-v",
+          "iu-v"
         ],
         "alternates": []
       }
