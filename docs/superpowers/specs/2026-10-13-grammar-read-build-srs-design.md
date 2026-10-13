@@ -85,7 +85,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 | Field | Source |
 |-------|--------|
-| Word spans | `curriculum/_build/generate_content/spans.py` |
+| Word spans | `curriculum/_build/generate_content/spans.py`, plus **stem spans** on pool sentences (行き of 行きましょう, 早く): one token, same stem invariant, stored with `inflection = NULL` so the app shows "a conjugated form of 行く" |
 | Grammar span (start/end) | Cloze-derived: blank position. Authored `form`: its position; anchor syntax `form="今日|は"` locates `今日は` and highlights only `は` (text before `|` is context only, and stays a normal word). Otherwise: longest match of an `accepted_forms` entry |
 | Build answer | The sentence's `furigana` itself — the main accepted answer. No separate kana column |
 | Vocabulary list | Dictionary forms of the sentence's span vocabulary, in sentence order |
