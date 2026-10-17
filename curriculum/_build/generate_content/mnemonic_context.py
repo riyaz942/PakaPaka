@@ -47,6 +47,9 @@ if BUILD_DIR not in sys.path:
 import furigana as furigana_lib  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 from generate_content import cast as cast_lib  # noqa: E402
+from generate_content import context as grammar_pool_context  # noqa: E402
+from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+from generate_content import level_check  # noqa: E402
 
 GRAPH_PATH = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
 
@@ -86,6 +89,7 @@ GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4")
 #: word its form comes from (おく = 置く "to put down") or to null, a recorded
 #: "no useful origin". The model never supplies an origin; this file does.
 GRAMMAR_ORIGINS_PATH = os.path.join(BUILD_DIR, "grammar_origins.json")
+LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
 _CJK_RE = re.compile(r"[㐀-䶿一-鿿々]")
 
@@ -1329,3 +1333,75 @@ def origin_table_errors(table, slugs):
                 "keywords list, or null"
             )
     return errors
+
+
+def grammar_lesson_opening(slug):
+    """The lesson's opening text — everything before its first `## ` heading —
+    from the source markdown (no build-time furigana or word markers). Every
+    point in scope has a lesson, so a missing file raises."""
+    path = os.path.join(LESSONS_DIR, f"{slug}.md")
+    with open(path, encoding="utf-8") as f:
+        _meta, body = frontmatter_lib.parse(f.read())
+    return re.split(r"^## ", body, flags=re.M)[0].strip()
+
+
+def grammar_context(level, slug, table=None):
+    items = _by_slug(load_items("grammar", level))
+    if slug not in items:
+        raise KeyError(f"unknown grammar slug {slug!r} in level {level}")
+    origins = (table or load_grammar_origins())["origins"]
+    if slug not in origins:
+        raise KeyError(
+            f"grammar_origins.json has no entry for {slug!r}; write an origin or null first"
+        )
+    item = items[slug]
+    allowed_vocab = grammar_pool_context.allowed_vocab_for(level, slug)
+    return {
+        "type": "grammar",
+        "level": level,
+        "slug": slug,
+        "form": item["primary_form"],
+        "accepted_forms": item["accepted_forms"],
+        "meaning": item["meaning"],
+        "structure": item["structure"],
+        "family": item.get("family", ""),
+        "lesson_opening": grammar_lesson_opening(slug),
+        "origin": origins[slug],
+        "allowed_vocab": allowed_vocab,
+        "allowed_index": level_check.build_allowed_index(allowed_vocab),
+        # The example renders without furigana, so its kanji must be ones the
+        # learner has already met inside an allowed word.
+        "allowed_kanji": {
+            ch for v in allowed_vocab for ch in v["primary_form"] if furigana_lib.is_kanji(ch)
+        },
+    }
+
+
+def format_grammar_origin(origin):
+    if origin is None:
+        return (
+            "This point has no origin to use. Do not say where the form comes from — "
+            "no \"really is\", \"comes from\", \"originally\", \"derived from\" or "
+            "\"short for\". The sound hook alone carries the meaning."
+        )
+    keywords = ", ".join(origin["keywords"])
+    return (
+        f"The form comes from {origin['word']} \"{origin['gloss']}\". Make that action "
+        f"the story's action, and name it with one of these words: {keywords}. Do not "
+        "explain the origin in a sentence of its own."
+    )
+
+
+def format_grammar_cast(cast=None):
+    """The cast as optional actors. Grammar forms get no fixed character: the
+    cast bible's one-reading-one-character rule is for kanji readings."""
+    cast = cast or cast_lib.load_cast()
+    seen = {}
+    for entry in cast["readings"].values():
+        seen.setdefault(entry["character"], entry["trait"])
+    lines = ["Cast you may use as the actor (optional — any ordinary person works too):"]
+    lines += [f"- **{name}**: {trait}" for name, trait in seen.items()]
+    if cast["settings"]:
+        lines.append("\nShared settings (reuse the fixed details when a scene calls for one):")
+        lines += [f"- **{s['setting']}**: {s['details']}" for s in cast["settings"]]
+    return "\n".join(lines)

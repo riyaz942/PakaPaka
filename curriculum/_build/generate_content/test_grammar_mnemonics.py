@@ -45,5 +45,44 @@ class OriginTableTest(unittest.TestCase):
         self.assertEqual(mc.origin_table_errors(table, mc.grammar_mnemonic_slugs()), [])
 
 
+class GrammarContextTest(unittest.TestCase):
+    TABLE = {
+        "review_status": "reviewed",
+        "origins": {"teoku": {"word": "置く", "gloss": "to put down", "keywords": ["put", "set"]},
+                    "wa-topic": None},
+    }
+
+    def test_context_carries_the_point_and_its_origin(self):
+        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
+        self.assertEqual(ctx["form"], "ておく")
+        self.assertIn("ておく", ctx["accepted_forms"])
+        self.assertEqual(ctx["origin"]["word"], "置く")
+        self.assertTrue(ctx["lesson_opening"])
+        self.assertNotIn("## ", ctx["lesson_opening"])
+        self.assertIn("買う", ctx["allowed_index"])
+        self.assertIn("買", ctx["allowed_kanji"])
+
+    def test_null_origin_is_kept_as_none(self):
+        self.assertIsNone(mc.grammar_context("n5", "wa-topic", self.TABLE)["origin"])
+
+    def test_slug_without_a_table_entry_raises(self):
+        with self.assertRaises(KeyError):
+            mc.grammar_context("n5", "ga", self.TABLE)
+
+    def test_missing_lesson_raises(self):
+        with self.assertRaises(FileNotFoundError):
+            mc.grammar_lesson_opening("zz-no-such-lesson")
+
+    def test_origin_formatter_states_both_cases(self):
+        self.assertIn("置く", mc.format_grammar_origin(self.TABLE["origins"]["teoku"]))
+        self.assertIn("put, set", mc.format_grammar_origin(self.TABLE["origins"]["teoku"]))
+        self.assertIn("no origin", mc.format_grammar_origin(None))
+
+    def test_cast_formatter_lists_characters_once(self):
+        # Jin has two readings in the cast bible; the block names him once.
+        block = mc.format_grammar_cast()
+        self.assertEqual(block.count("**Jin, the friendly giant**"), 1)
+
+
 if __name__ == "__main__":
     unittest.main()
