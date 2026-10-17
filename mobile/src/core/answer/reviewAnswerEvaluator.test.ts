@@ -82,6 +82,19 @@ describe('evaluateReviewAnswer', () => {
     expect(evaluateReviewAnswer(makeItem(), 'ni').result).toBe('incorrect');
   });
 
+  it('nudges (wrong_script) when a reading answer holds English letters that are not romaji', () => {
+    expect(evaluateReviewAnswer(makeItem(), 'hello').result).toBe('wrong_script');
+  });
+
+  it('nudges when a reading answer holds symbols or digits', () => {
+    expect(evaluateReviewAnswer(makeItem(), 'いち!').result).toBe('wrong_script');
+    expect(evaluateReviewAnswer(makeItem(), '1').result).toBe('wrong_script');
+  });
+
+  it('still accepts valid romaji and kana readings', () => {
+    expect(evaluateReviewAnswer(makeItem(), 'ichi').result).toBe('correct');
+  });
+
 });
 
 describe('wrong_reading_type — kanji on\'yomi card (Story 1.1, FR82)', () => {

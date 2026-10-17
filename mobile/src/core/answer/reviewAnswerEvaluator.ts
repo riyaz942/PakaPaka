@@ -17,6 +17,17 @@ function matchesAcceptedMeaning(userAnswer: string, acceptedMeanings: string[]):
   return acceptedMeanings.some((meaning) => normalizeMeaning(meaning) === normalized);
 }
 
+const NON_JAPANESE_CHAR_REGEX = /[^\s぀-ヿ㐀-䶿一-鿿豈-﫿]/;
+
+/**
+ * True when a reading answer still holds English letters, digits or symbols
+ * after romaji → kana conversion (so valid romaji never trips it). Such input
+ * is a nudge, not a miss.
+ */
+function hasNonJapaneseResidue(userAnswer: string): boolean {
+  return NON_JAPANESE_CHAR_REGEX.test(normalizeKana(userAnswer));
+}
+
 /**
  * Routes a review answer to the correct evaluator based on prompt type and answer key.
  * Vocab reading prompts with no accepted readings fall back to meaning validation (seed gap).
@@ -60,6 +71,9 @@ export function evaluateReviewAnswer(
       return evaluateMeaning(userAnswer, answerKey.acceptedMeanings);
     }
     const evaluation = evaluateReading(userAnswer, answerKey.acceptedReadings);
+    if (evaluation.result !== 'correct' && hasNonJapaneseResidue(userAnswer)) {
+      return { result: 'wrong_script' };
+    }
     // Right item, wrong reading type (FR82): an exact kun'yomi at the on'yomi
     // prompt nudges and re-prompts instead of grading. Checked on any
     // non-correct outcome so an exact alternate that also sits within on'yomi
@@ -89,6 +103,9 @@ export function evaluateReviewAnswer(
   }
 
   const evaluation = evaluateReading(userAnswer, answerKey.acceptedReadings);
+  if (evaluation.result !== 'correct' && hasNonJapaneseResidue(userAnswer)) {
+    return { result: 'wrong_script' };
+  }
   if (
     evaluation.result === 'incorrect' &&
     !hasJapaneseScript(userAnswer) &&
