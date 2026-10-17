@@ -1,7 +1,6 @@
 import {
   parseInlineSpans,
   parseLessonMarkdown,
-  spansHaveFurigana,
   splitWordMarkers,
   spansNeedTokens,
   tokenizeSpans,
@@ -106,14 +105,6 @@ describe('tokenizeSpans', () => {
     expect(tokens).toEqual([
       { kind: 'word', text: 'strong', bold: true, italic: undefined, code: undefined },
     ]);
-  });
-});
-
-describe('spansHaveFurigana', () => {
-  it('detects bracket annotations', () => {
-    expect(spansHaveFurigana([{ text: '私[わたし]は' }])).toBe(true);
-    expect(spansHaveFurigana([{ text: 'plain English' }])).toBe(false);
-    expect(spansHaveFurigana([{ text: 'ひらがなだけ' }])).toBe(false);
   });
 });
 

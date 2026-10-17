@@ -213,14 +213,12 @@ export function tokenizeSpans(spans: InlineSpan[]): RichToken[] {
   return tokens;
 }
 
-/** True when any span carries a furigana annotation (needs ruby layout). */
-export function spansHaveFurigana(spans: InlineSpan[]): boolean {
-  return spans.some((span) => parseFurigana(span.text).some((segment) => segment.reading));
-}
-
 /** True when any span needs token layout: a furigana annotation or a word link. */
 export function spansNeedTokens(spans: InlineSpan[]): boolean {
-  return spans.some((span) => span.link !== undefined) || spansHaveFurigana(spans);
+  return spans.some(
+    (span) =>
+      span.link !== undefined || parseFurigana(span.text).some((segment) => segment.reading),
+  );
 }
 
 export function parseLessonMarkdown(markdown: string): LessonBlock[] {

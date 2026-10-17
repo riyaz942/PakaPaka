@@ -3,6 +3,22 @@ import React from 'react';
 
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 
+const mockPush = jest.fn();
+const mockSetOverride = jest.fn();
+jest.mock('expo-router', () => ({ router: { push: (...args: unknown[]) => mockPush(...args) } }));
+jest.mock('@/data/hooks/useFuriganaPreference', () => ({
+  useFuriganaPreference: () => ({
+    mode: 'auto',
+    knownKanji: new Set<string>(),
+    modeForItem: () => 'auto',
+    setOverride: (...args: unknown[]) => mockSetOverride(...args),
+  }),
+}));
+jest.mock('@/data/hooks/useDatabase', () => {
+  const databases = { userDb: { getFirstSync: jest.fn(() => null) }, curriculumDb: {} };
+  return { useDatabase: () => databases };
+});
+
 const LESSON = [
   '# かどうか',
   '',
@@ -56,5 +72,46 @@ describe('LessonMarkdown', () => {
     expect(screen.getByText('がくせい')).toBeTruthy();
     expect(screen.getByText('The ')).toBeTruthy();
     expect(screen.getByText('student.')).toBeTruthy();
+  });
+
+  describe('linked words', () => {
+    beforeEach(() => {
+      mockPush.mockReset();
+      mockSetOverride.mockReset();
+    });
+
+    it('opens the word when a lesson word is tapped', () => {
+      render(<LessonMarkdown markdown={'Say {{7||明日[あした]}} now.'} mode="auto" />);
+      fireEvent.press(screen.getByTestId('lesson-word-7-1'));
+      expect(mockPush).toHaveBeenCalledWith('/browse/item/7');
+    });
+
+    it('passes surface and inflection for a conjugated word in a jp block', () => {
+      render(<LessonMarkdown markdown={'```jp\n{{12|masu|起[お]きます}}。\n```'} mode="auto" />);
+      fireEvent.press(screen.getByTestId('lesson-word-12-0'));
+      expect(mockPush).toHaveBeenCalledWith({
+        pathname: '/browse/item/12',
+        params: { surface: '起きます', inflection: 'masu' },
+      });
+    });
+
+    it('long-press hides a visible reading for that word', () => {
+      render(<LessonMarkdown markdown={'Say {{7||明日[あした]}} now.'} mode="auto" />);
+      // Auto mode and the word not yet known: the reading is showing.
+      expect(screen.getByText('あした')).toBeTruthy();
+      fireEvent(screen.getByTestId('lesson-word-7-1'), 'longPress');
+      expect(mockSetOverride).toHaveBeenCalledWith('7', 'hidden');
+    });
+
+    it('keeps each linked word reachable by screen readers', () => {
+      render(<LessonMarkdown markdown={'Say {{7||明日[あした]}} now.'} mode="auto" />);
+      expect(screen.getByTestId('lesson-word-7-1').props.accessibilityRole).toBe('button');
+      expect(screen.queryByLabelText('Say 明日 now.')).toBeNull();
+    });
+
+    it('keeps the line label when a line has furigana but no links', () => {
+      render(<LessonMarkdown markdown={'Say 明日[あした] now.'} mode="auto" />);
+      expect(screen.getByLabelText('Say 明日 now.')).toBeTruthy();
+    });
   });
 });

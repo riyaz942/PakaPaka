@@ -1,8 +1,9 @@
 import { router, type Href } from 'expo-router';
 import React, { useMemo } from 'react';
-import { type AccessibilityActionEvent, Pressable, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
-import { FuriganaText, isWordFuriganaVisible } from '@/components/common/FuriganaText';
+import { FuriganaText } from '@/components/common/FuriganaText';
+import { LinkedWord } from '@/components/common/LinkedWord';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
@@ -45,7 +46,7 @@ export function LinkedSentence({
   grammarSpan,
 }: LinkedSentenceProps) {
   const { userDb } = useDatabase();
-  const { mode: furiganaMode, knownKanji, modeForItem, setOverride } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem } = useFuriganaPreference();
   const hrefFor = useItemHref();
   const grammarStart = grammarSpan?.start;
   const grammarEnd = grammarSpan?.end;
@@ -149,58 +150,17 @@ export function LinkedSentence({
         // While the grammar is locked, a word cut by it must not name its
         // inflection: "食べた is the た-form" would hand over the answer.
         const inflection = grammarSpan?.locked && part.overlapsGrammar ? null : part.inflection;
-        const handlePress = (): void => {
-          const pathname = hrefFor(vocabularyItemId);
-          // A conjugated span opens the *base* word, so the detail screen is
-          // told which surface sent the learner there (14.1).
-          if (inflection) {
-            router.push({ pathname, params: { surface: part.surface, inflection } } as Href);
-            return;
-          }
-          router.push(pathname as Href);
-        };
-        const handleToggleFurigana = (): void => {
-          const visible = isWordFuriganaVisible(
-            part.text,
-            modeForItem(vocabularyItemId),
-            knownKanji,
-            isKnownWord,
-          );
-          setOverride(vocabularyItemId, visible ? 'hidden' : 'shown');
-        };
-        const handleAccessibilityAction = (event: AccessibilityActionEvent): void => {
-          if (event.nativeEvent.actionName === 'toggleFurigana') {
-            handleToggleFurigana();
-            return;
-          }
-          handlePress();
-        };
 
         return (
-          <Pressable
+          <LinkedWord
             key={key}
-            accessibilityRole="button"
-            accessibilityLabel={`${part.surface}, show word details`}
-            accessibilityActions={[
-              { name: 'activate', label: 'Show word details' },
-              { name: 'toggleFurigana', label: 'Toggle furigana' },
-            ]}
-            onAccessibilityAction={handleAccessibilityAction}
-            onPress={handlePress}
-            onLongPress={handleToggleFurigana}
-            testID={`${testIDPrefix}-word-${vocabularyItemId}-${index}`}>
-            <FuriganaText
-              text={part.text}
-              // A linked span *is* one vocabulary item, so its per-word
-              // override applies here just as it does on the word's own hero.
-              mode={modeForItem(vocabularyItemId)}
-              knownKanji={knownKanji}
-              isKnownWord={isKnownWord}
-              // Nested furigana toggles would steal the span tap (NFR29).
-              interactive={false}
-              className={cn(textClassName, 'text-content-vocabulary-deep underline')}
-            />
-          </Pressable>
+            text={part.text}
+            surface={part.surface}
+            vocabularyItemId={vocabularyItemId}
+            inflection={inflection}
+            textClassName={textClassName}
+            testID={`${testIDPrefix}-word-${vocabularyItemId}-${index}`}
+          />
         );
       })}
     </View>
