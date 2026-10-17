@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ContentType, ReviewStatus } from '../types/api';
 
-export const EDITABLE_STATUSES: Exclude<ReviewStatus, 'none'>[] = ['draft', 'reviewed', 'flagged_for_rewrite'];
+export const EDITABLE_STATUSES: ReviewStatus[] = ['draft', 'reviewed', 'flagged_for_rewrite', 'none'];
 
 type Props = {
   type: ContentType;

@@ -149,8 +149,23 @@ export function saveItem(
   return { ok: true };
 }
 
+/** Sets `_meta.review_status` on a row; 'none' removes it (and `_meta` if that leaves it empty). */
+function applyReviewStatus(
+  row: Record<string, unknown>,
+  meta: Record<string, unknown>,
+  reviewStatus: ReviewStatus,
+): void {
+  const { review_status: _dropped, ...rest } = meta;
+  const next = reviewStatus === 'none' ? rest : { ...rest, review_status: reviewStatus };
+  if (Object.keys(next).length > 0) {
+    row._meta = next;
+  } else {
+    delete row._meta;
+  }
+}
+
 /**
- * One-click draft/reviewed/flagged_for_rewrite flip. The status lives in the
+ * One-click draft/reviewed/flagged_for_rewrite/none flip. The status lives in the
  * sidecar `_meta` (or, for grammar, the lesson frontmatter); the shipped file
  * is updated to match so the UI reflects it without a generate run.
  */
@@ -159,7 +174,7 @@ export function updateReviewStatus(
   type: ContentType,
   level: JlptLevel,
   slug: string,
-  reviewStatus: Exclude<ReviewStatus, 'none'>,
+  reviewStatus: ReviewStatus,
 ): SaveResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
   const opened = openLevelFile(curriculumDir, type, level);
@@ -175,7 +190,7 @@ export function updateReviewStatus(
 
   const row = rows[index];
   const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
-  row._meta = { ...meta, review_status: reviewStatus };
+  applyReviewStatus(row, meta, reviewStatus);
 
   const { errors } = validateFile(curriculumDir, relative, file);
   if (errors.length > 0) {
@@ -207,7 +222,7 @@ export type BulkUpdateResult =
 export function updateReviewStatusBulk(
   repoRoot: string,
   items: BulkUpdateItem[],
-  reviewStatus: Exclude<ReviewStatus, 'none'>,
+  reviewStatus: ReviewStatus,
 ): BulkUpdateResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
   const errors: string[] = [];
@@ -252,7 +267,7 @@ export function updateReviewStatusBulk(
       }
       const row = rows[index];
       const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
-      row._meta = { ...meta, review_status: reviewStatus };
+      applyReviewStatus(row, meta, reviewStatus);
       updated += 1;
     }
 

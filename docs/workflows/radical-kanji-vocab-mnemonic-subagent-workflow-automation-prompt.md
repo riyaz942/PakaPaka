@@ -769,6 +769,31 @@ Important Constraints
 
 ---
 
+Reading-link fix — subagent variant
+
+Same seven steps as the "Reading-link fix" section of
+`radical-kanji-vocab-mnemonic-single-session-workflow-automation-prompt.md`,
+with two changes:
+
+- **Triage (step 3):** split `reports/reading-link-candidates.json` into
+  groups of ≤4 candidates. Each subagent gets `prompts/reading-link-triage.md`
+  and its group, and returns `marked` / `kept` rows only. The coordinator
+  merges the rows into `reports/reading-link-list.json`, writes `stats`, and
+  runs `check-list`. Calibration (step 2) and the maintainer stop are not
+  delegated.
+- **Rewrite (step 5):** chunks of about 25 marked items, kanji and vocab
+  never mixed in one chunk, 5 subagents in parallel per wave. Each subagent
+  gets `prompts/reading-link-rewrite.md` and its chunk, and returns rewrite
+  rows only. The coordinator checks that every row of the chunk came back,
+  appends them to `reports/reading-link-rewrites.json` and runs
+  `apply --dry-run`; a failing item goes back to the same chunk's subagent
+  with the printed errors (at most 2 attempts). After each wave: `apply`,
+  then commit. The pilot (step 4) is not delegated.
+
+Subagents never write the sidecars or the report files themselves.
+
+---
+
 Notes on differences from the Gemini web-chat automation prompt
 
 - The model is called via an in-session subagent (Step 2), not a browser chat,

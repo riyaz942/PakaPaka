@@ -277,10 +277,29 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
      a second image for a sound they already have competes with the first.
    - When it says to write a **full story**, write one sentence or two short
      ones in which the sound and this word's meaning are the same joke: the
-     reading's cast character does something the meaning explains, the kana
-     appears verbatim, and the meaning sits in a `<vocabulary>` tag. If the
-     sentence would still make sense with a different word's meaning dropped
-     into it, it is not finished.
+     reading's cast character walks into the scene your meaning mnemonic just
+     built — the same object, place or action — and does something the
+     meaning explains, the kana appears verbatim, and the meaning sits in a
+     `<vocabulary>` tag. Do not give the cast character a scene of its own:
+     two unrelated scenes compete for one memory. If the sentence would still
+     make sense with a different word's meaning dropped into it, or if it
+     would still make sense without your meaning mnemonic, it is not finished.
+     If this word IS its kanji ("Is this word just its kanji?" above says
+     so), your meaning mnemonic only points back and has no scene: continue
+     the kanji's own meaning story, which that section quotes.
+
+     Right — the trail from the meaning mnemonic comes back:
+
+     > Meaning: The rope bridge on the mountain trail is missing every third
+     > plank, and the river roars a long way down through each gap. Standing
+     > where one bad step drops you into that is
+     > <vocabulary form="危ない">dangerous</vocabulary>.
+     >
+     > Reading: A marmot on the mountain trail whistles something like
+     > <reading>'a boo, nigh'</reading> whenever a hiker drifts toward the
+     > cliff edge. Hikers learned that the shrill <reading>あぶない</reading>
+     > whistle means the next step is
+     > <vocabulary form="危ない">dangerous</vocabulary>.
 
 3. **`description`** — **optional. Omit this key entirely unless this word
    actually needs it.** The two mnemonics are what the learner reads; a

@@ -203,11 +203,11 @@ export function persistItemEdit(
   return { ok: true };
 }
 
-/** Rewrites `review_status:` in a grammar lesson's YAML frontmatter. */
+/** Rewrites `review_status:` in a grammar lesson's YAML frontmatter; 'none' drops the line. */
 function persistGrammarReviewStatus(
   repoRoot: string,
   slug: string,
-  reviewStatus: Exclude<ReviewStatus, 'none'>,
+  reviewStatus: ReviewStatus,
 ): PersistResult {
   const filePath = lessonPath(repoRoot, slug);
   if (!fs.existsSync(filePath)) {
@@ -228,9 +228,17 @@ function persistGrammarReviewStatus(
 
   const frontmatter = match[1];
   const line = `review_status: ${reviewStatus}`;
-  const updated = /^review_status:.*$/m.test(frontmatter)
-    ? frontmatter.replace(/^review_status:.*$/m, line)
-    : `${frontmatter}\n${line}`;
+  let updated: string;
+  if (reviewStatus === 'none') {
+    updated = frontmatter
+      .split('\n')
+      .filter((l) => !/^review_status:/.test(l))
+      .join('\n');
+  } else if (/^review_status:.*$/m.test(frontmatter)) {
+    updated = frontmatter.replace(/^review_status:.*$/m, line);
+  } else {
+    updated = `${frontmatter}\n${line}`;
+  }
 
   const tmpPath = `${filePath}.tmp`;
   fs.writeFileSync(tmpPath, `---\n${updated}\n---\n${source.slice(match[0].length)}`, 'utf8');
@@ -269,13 +277,13 @@ export function checkReviewStatusTarget(
  * Writes a review-status flip to the sidecar(s) generate.py reads it back from.
  * A vocabulary item can carry both a mnemonic and an examples sidecar,
  * and generate.py keeps the least-reviewed of the two, so a flip has to reach
- * every sidecar that holds the item.
+ * every sidecar that holds the item. 'none' clears the status instead.
  */
 export function persistReviewStatus(
   repoRoot: string,
   type: ContentType,
   slug: string,
-  reviewStatus: Exclude<ReviewStatus, 'none'>,
+  reviewStatus: ReviewStatus,
 ): PersistResult {
   const blocked = checkReviewStatusTarget(repoRoot, type, slug);
   if (blocked.length > 0) {
@@ -298,15 +306,23 @@ export function persistReviewStatus(
   // it is a skeleton) still gets one: an entry carrying only `_meta` is how
   // generate.py records a review with nothing generated to attach it to.
   const targets = files.filter(({ file }) => file[slug] !== undefined);
-  if (targets.length === 0) {
+  if (targets.length === 0 && reviewStatus !== 'none') {
     targets.push(files[0]);
   }
 
   for (const { filePath, file } of targets) {
     const entry = { ...(file[slug] ?? {}) };
     const meta = { ...((entry._meta as Record<string, unknown>) ?? {}) };
-    meta.review_status = reviewStatus;
-    entry._meta = meta;
+    if (reviewStatus === 'none') {
+      delete meta.review_status;
+    } else {
+      meta.review_status = reviewStatus;
+    }
+    if (Object.keys(meta).length > 0) {
+      entry._meta = meta;
+    } else {
+      delete entry._meta;
+    }
     file[slug] = entry;
     writeJsonFile(filePath, file);
   }

@@ -36,10 +36,11 @@ import {
 } from './types.js';
 import { saveItem, updateReviewStatus, updateReviewStatusBulk } from './writer.js';
 
-const EDITABLE_STATUSES: Exclude<ReviewStatus, 'none'>[] = [
+const EDITABLE_STATUSES: ReviewStatus[] = [
   'draft',
   'reviewed',
   'flagged_for_rewrite',
+  'none',
 ];
 
 const CONTENT_TYPES: ContentType[] = [
