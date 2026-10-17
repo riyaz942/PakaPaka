@@ -598,5 +598,349 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "noni": {
+    "mnemonic_text": "Chuu the mouse practises his samurai kneel all week, but at the ceremony his leg locks and he squeaks \"<reading>No knee!</reading>\", <grammar>even though</grammar> he trained. 練習した<reading>のに</reading>、できません。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souda-hearsay": {
+    "mnemonic_text": "At dinner, a small boy passes on every rumour with \"<reading>So, Da</reading>d says the river is dangerous\", which tells you it is only <grammar>something he heard</grammar>. その川は危ない<reading>そうです</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souda-looks": {
+    "mnemonic_text": "On the mountain trail, Jin the giant spots a fizzing puddle and booms \"<reading>Soda!</reading>\", purely because it <grammar>looks like</grammar> something sweet; he has not tasted it. この水は甘<reading>そうです</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tara": {
+    "mnemonic_text": "Sho the tiny magician keeps his \"<reading>Ta-ra!</reading>\" locked behind his teeth: <grammar>if</grammar> the dove comes out of the hat, he sings it, and not a second before. 鳥が出<reading>たら</reading>、歌います。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nitsuite": {
+    "mnemonic_text": "Sei sticks a giant label reading \"<reading>Knit sweater</reading>\" on her homework, so the teacher knows what the essay is <grammar>about</grammar>. 猫<reading>について</reading>話します。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "niyoruto": {
+    "mnemonic_text": "Jin the giant cannot see past his own belly, so he relies on Chuu the mouse, who squeaks \"<reading>Near your toe</reading>!\" at every puddle. Each step Jin takes goes <grammar>according to</grammar> the mouse. 先生<reading>によると</reading>、明日は雪です。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tame": {
+    "mnemonic_text": "Dai the giant baby wails until the town shakes, then pats his belly and sobs \"<reading>Tummy</reading>!\": the quake is <grammar>because of</grammar> one missed lunch. 風邪の<reading>ため</reading>、学校を休みます。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uchi-ni": {
+    "mnemonic_text": "The elevator doors are sliding shut. Jin the giant crams his knees inside, yelping \"<reading>Ouchie, knee!</reading>\", getting in <grammar>while the gap lasts, before it's too late</grammar>. お茶が熱い<reading>うちに</reading>飲む。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tabi-ni": {
+    "mnemonic_text": "Grandma Kane sits on the mossy shrine steps and sighs \"<reading>Tabby, knee</reading>\", because <grammar>every time</grammar> she sits, a tabby cat climbs onto her knee. 友達に会う<reading>たびに</reading>笑う。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "baai": {
+    "mnemonic_text": "At the vending machine atop the mountain trail, a sheep in a raincoat bleats \"<reading>Baa, aye</reading>\" and buys an umbrella, <grammar>in the case of</grammar> rain. 雨の<reading>場合</reading>は行かない。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "to-conditional": {
+    "mnemonic_text": "Ken the shiba treads on giant baby Dai's <reading>toe</reading>. Nobody decides anything: <grammar>when</grammar> that toe gets pressed, the earthquake wail <grammar>follows automatically</grammar>. 春になる<reading>と</reading>暖かくなる。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "node-vs-kara": {
+    "mnemonic_text": "Ken the shiba limps into the shrine an hour late, coated in puddle mud, points back at the road and yelps \"<reading>Car! Ah!</reading>\" That yelp is his whole <grammar>because</grammar>. 雨だ<reading>から</reading>、行きません。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kawarini": {
+    "mnemonic_text": "The onigiri truck never comes, so Koichi fills the shelf by the door with gray rocks under a sign reading \"<reading>Quarry</reading> special\": stones <grammar>instead of</grammar> rice. パンの<reading>代わりに</reading>ご飯を食べる。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kawari-ni-formal": {
+    "mnemonic_text": "Jin the giant peers down at a cottage and mumbles \"<reading>Toy... you're really</reading> a house\", trading his first word for <grammar>a more accurate one</grammar>. 彼は先生<reading>というより</reading>友達です。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "toshite": {
+    "mnemonic_text": "Chuu the mouse straps a slice of bread to his arm and salutes \"<reading>Toast, eh</reading>\". He charges into battle with it <grammar>in the role of</grammar> a shield. 父は医者<reading>として</reading>働いています。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsumori": {
+    "mnemonic_text": "Chuu, the loyal mouse, ties on a belt the size of a shoelace, squares up to Dai's big toe and squeaks \"<reading>Sumo, really!</reading>\", fully <grammar>intending to</grammar> wrestle the baby. 明日、山に行く<reading>つもりです</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youni-suru": {
+    "mnemonic_text": "Every morning on the school field, Sei slaps each leg and says \"<reading>Yo, knee!</reading>\" before her run, <grammar>making a habit of</grammar> it so they <grammar>keep going</grammar>. 毎朝、走る<reading>ようにしている</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koto-ni-suru": {
+    "mnemonic_text": "Ken, the sword-collecting dog, stares at the rain for ten minutes, then drags on his own yellow coat and barks \"<reading>Coat on? Sure!</reading>\": nobody asked, he <grammar>decided to</grammar> go <grammar>all by himself</grammar>. 傘を買う<reading>ことにしました</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koto-ni-naru": {
+    "mnemonic_text": "Jin, the friendly giant, reaches the inn and finds someone already booked him a cot; he stares at it and sighs \"<reading>Cot? Oh, knee-narrow!</reading>\", because <grammar>it has been decided</grammar> for him. 小さいベッドで寝る<reading>ことになりました</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mono": {
+    "mnemonic_text": "Grandma Kane plays a crackly old record and sighs \"Ah, <reading>mono</reading>\": back to the river she <grammar>used to</grammar> swim in every night. 毎晩川で泳いだ<reading>もの</reading>だ。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bakari": {
+    "mnemonic_text": "Han serves Ken the dog curry at breakfast, lunch and dinner. Ken shoves his bowl away and growls \"<reading>Bah, curry!</reading>\", because it is <grammar>only</grammar> ever curry. 毎日お菓子<reading>ばかり</reading>食べる。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tokoro": {
+    "mnemonic_text": "Shell loaded with doors, Toto the turtle stops dead on one spot of the doormat. He calls \"<reading>Taco Row</reading>, here I come!\", <grammar>just about to</grammar> set off. 今、家を出る<reading>ところ</reading>です。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aida": {
+    "mnemonic_text": "Chuu the mouse dives into the gap between two floorboards. \"<reading>Hide-a!</reading>\" he squeaks, and stays there the whole <grammar>while</grammar> the cat sleeps. 猫が寝ている<reading>間</reading>、私は待つ。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teshimau": {
+    "mnemonic_text": "A stray cat at Koichi's konbini puts away every last onigiri by the door, then purrs \"<reading>shee-MEOW</reading>\": <grammar>all gone, and Koichi sighs</grammar>. 猫が全部食べ<reading>てしまう</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teiku-tekuru": {
+    "mnemonic_text": "Sho flings his doves out over the crowd. They come flapping back to his white glove one by one, cooing \"<reading>coo-roo</reading>\" as they <grammar>come closer, bit by bit</grammar>. 鳥が帰っ<reading>てくる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "temo": {
+    "mnemonic_text": "Rain pours, but Toto the turtle props up a sample door and bellows \"<reading>Demo</reading> time!\" to an empty street, <grammar>even though</grammar> nobody comes. 呼ん<reading>でも</reading>、誰も来ない。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "souni-naru": {
+    "mnemonic_text": "Chuu the mouse claws up the mountain trail to one step below the vending machine, then slides to the bottom. He squeaks \"<reading>So near</reading>!\": he <grammar>almost</grammar> made it. 落ち<reading>そうになる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youda": {
+    "mnemonic_text": "Sei follows muddy paw prints from the window to an empty fish plate. She calls \"<reading>Yo, Dad</reading>\": <grammar>judging by the clues, it seems</grammar> the cat ate it. 猫が魚を食べた<reading>ようだ</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mitai": {
+    "mnemonic_text": "Dai the giant baby knots a bath towel under his chins and gurgles \"<reading>Me tie</reading>\". With a rattle for a pen, he <grammar>kind of seems like</grammar> an office worker. 赤ちゃんは会社員<reading>みたいだ</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teiru-result": {
+    "mnemonic_text": "Grandma Kane's cats crack a shrine window at dawn and stroll in. By dusk they still own every cushion, and she sighs \"<reading>They rule</reading>\": it <grammar>happened, and it is still so</grammar>. 窓が壊れ<reading>ている</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tearu": {
+    "mnemonic_text": "Sho the tiny magician sets a tiara on the empty stage, whispers \"<reading>Tiara</reading>\" and walks off. It sits there all night, <grammar>placed on purpose</grammar>. テーブルに帽子が置い<reading>てある</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "causative": {
+    "mnemonic_text": "Koichi ties an apron on a stray cat, points at the konbini till and barks \"<reading>Sah, sell!</reading>\": he <grammar>makes someone else do</grammar> the work. 弟に部屋を掃除<reading>させる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "causative-passive": {
+    "mnemonic_text": "In the school hallway, Jin the giant props a heavy door open with little Lou all afternoon. He rumbles \"<reading>Sorry, Lou</reading>\", because Lou is <grammar>made to do it, against his will</grammar>. 私は友達に待た<reading>される</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youni": {
+    "mnemonic_text": "On the mountain trail, Toto the turtle pats his leg and says \"<reading>Yo, knee</reading>\" as he tapes a cushion on. It is padded <grammar>so that</grammar> he can crawl to the vending machine at the top. 忘れない<reading>ように</reading>、手に書く。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youninaru": {
+    "mnemonic_text": "All summer Nina rides her bicycle off the bank into the river. Tonight she pedals straight across the bridge, and the fishermen yell \"<reading>Yo, Nina rules!</reading>\": she has <grammar>come to be able to</grammar> do it. 妹は自転車に乗れる<reading>ようになりました</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "younaru": {
+    "mnemonic_text": "Roo, the pigeon on Grandma Kane's shrine bell, cooed every dawn for years. Since the cats moved in, Grandma just sighs \"<reading>Nah, coo? Nah, Roo</reading>\": he <grammar>no longer coos</grammar>. 兄はお酒を飲ま<reading>なくなる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hazu": {
+    "mnemonic_text": "The onigiri truck left at six and the drive takes one hour. Koichi checks the till clock and announces \"It <reading>has</reading> to be here\": it <grammar>should be</grammar> at the door by now. 明日は雨が降る<reading>はず</reading>です。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hazuganai": {
+    "mnemonic_text": "A crow tells Chuu the loyal mouse that the whole zoo flew away overnight. Chuu, who walked past its gates at dawn, snorts \"<reading>Hah! Zoo gone? Nay!</reading>\": there is <grammar>no way</grammar>, it <grammar>can't be</grammar>. 猫が泳ぐ<reading>はずがない</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "rashii": {
+    "mnemonic_text": "Ken the shiba presses a paw to the red dots on Dai the giant baby's arm and barks \"<reading>Rash, see?</reading>\" at the nurse. By noon the whole town has heard that Dai <grammar>seems to be</grammar> ill. 彼は病気<reading>らしい</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ba": {
+    "mnemonic_text": "Koichi glues one-yen tags on every rice ball and grunts \"<reading>Bah!</reading>\", his whole shop law: <grammar>if</grammar> it is cheap, it sells. 安けれ<reading>ば</reading>、買います。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nara": {
+    "mnemonic_text": "A lady tells Toto the door-selling turtle she needs a bathroom door. He slides the thinnest one off his shell and says \"<reading>Narro</reading>w, then!\": <grammar>if it is the bathroom</grammar>, this one. 魚<reading>なら</reading>、あの店がいいです。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "potential": {
+    "mnemonic_text": "Sho's dove flops out of his tiny hat onto the stage. He bows, squeaks \"<reading>Rerun!</reading>\", and on the second go it flies: he <grammar>can do it</grammar>. 僕は走<reading>れる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "passive": {
+    "mnemonic_text": "At the riverbank, a duck bumps Ken the dog into the water. He climbs out dripping and growls \"<reading>Rail</reading>roaded!\": that was <grammar>done to him</grammar>. 弟に笑わ<reading>れる</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
