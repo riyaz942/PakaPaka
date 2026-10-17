@@ -170,5 +170,40 @@ class GrammarLevelTest(unittest.TestCase):
         self.assertIn("kara-because", str(raised.exception))
 
 
+from unittest import mock  # noqa: E402
+
+
+class GrammarMnemonicInlineTest(unittest.TestCase):
+    ENTRY = {"mnemonic_text": "A story. 寒いから。",
+             "_meta": {"generator_model": "m", "prompt_version": "1", "review_status": "draft"}}
+
+    def build_with(self, entries):
+        return generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, (), known_vocab_forms=VOCAB, mnemonic_entries=entries
+        )["items"][0]
+
+    def test_sidecar_text_is_inlined(self):
+        item = self.build_with({"zz-test-kara": self.ENTRY})
+        self.assertEqual(item["mnemonic_text"], "A story. 寒いから。")
+        self.assertEqual(item["_meta"]["review_status"], "draft")
+
+    def test_no_entry_means_no_field(self):
+        self.assertNotIn("mnemonic_text", self.build_with({}))
+
+    def test_draft_mnemonic_keeps_a_reviewed_lesson_behind_the_gate(self):
+        lesson = ({"review_status": "reviewed", "generator_model": "lesson-model"}, "Body.")
+        with mock.patch.object(generate, "_load_lesson", return_value=lesson):
+            item = self.build_with({"zz-test-kara": self.ENTRY})
+        self.assertEqual(item["_meta"]["review_status"], "draft")
+        self.assertEqual(item["_meta"]["generator_model"], "lesson-model")
+
+
+class GrammarSeedsRemovedTest(unittest.TestCase):
+    def test_no_skeleton_entry_has_a_mnemonic_seed(self):
+        from n4_grammar import N4_GRAMMAR
+        from n5_grammar import N5_GRAMMAR
+        self.assertEqual([g["slug"] for g in N5_GRAMMAR + N4_GRAMMAR if "mnemonic" in g], [])
+
+
 if __name__ == "__main__":
     unittest.main()

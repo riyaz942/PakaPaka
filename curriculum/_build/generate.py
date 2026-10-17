@@ -83,6 +83,10 @@ def _pool_examples(pool_entry):
 KANJI_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics.json")
 RADICAL_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
 VOCAB_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics.json")
+#: Grammar mnemonic sidecar (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md),
+#: inlined into grammar items as `mnemonic_text`. Absent until the grammar
+#: generator has run.
+GRAMMAR_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "grammar", "mnemonics.json")
 
 #: Phase 2c example-sentence sidecar (generate_content/generate_examples.py),
 #: inlined into the vocab items below keyed by slug. Absent when 2c has not
@@ -642,7 +646,8 @@ def _cloze_derived_examples(g, known_vocab_forms):
 
 
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
-                         all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None):
+                         all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None,
+                         mnemonic_entries=None):
     errors = []
     items = []
     forms = known_vocab_forms or {}
@@ -722,6 +727,12 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
             }
             if sidecar:
                 item["_meta"] = sidecar
+        mnemonic = (mnemonic_entries or {}).get(g["slug"])
+        if mnemonic and mnemonic.get("mnemonic_text"):
+            item["mnemonic_text"] = mnemonic["mnemonic_text"]
+            # The least reviewed of lesson and mnemonic wins, so a draft
+            # mnemonic keeps a reviewed lesson behind compile's draft gate.
+            _merge_sidecar_meta(item, _sidecar_meta(mnemonic))
         items.append(item)
     if errors:
         raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))
@@ -994,6 +1005,7 @@ def build_grammar_point(level, slug, pool_entry):
         inputs["all_grammar_slugs"],
         known_vocab_forms={v["slug"]: v["form"] for v in inputs["known"]},
         pool_entries={slug: pool_entry},
+        mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH),
     )["items"][0]
     item["sort_order"] = next(
         i for i, g in enumerate(inputs["grammar_by_level"][level], start=1) if g["slug"] == slug
@@ -1034,7 +1046,8 @@ def generate_level(level):
         _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
                              known_readings, inputs["all_grammar_slugs"],
                              known_vocab_forms={v["slug"]: v["form"] for v in known},
-                             pool_entries=load_pool_sidecar()),
+                             pool_entries=load_pool_sidecar(),
+                             mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH)),
     )
     # Grammar Read + Build cards need every point's pool to pass (spec §4.4).
     failing = {slug: errs for slug, errs in pool_check.check_level(level).items() if errs}
