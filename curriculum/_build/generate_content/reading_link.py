@@ -32,6 +32,7 @@ sys.path.insert(0, BUILD_DIR)
 
 from generate_content import cast as cast_lib  # noqa: E402
 from generate_content import mnemonic_context as mc  # noqa: E402
+from generate_content.validate_mnemonics import validate_draft  # noqa: E402
 
 LEVELS = ("n5", "n4")
 KINDS = ("kanji", "vocab")
@@ -135,12 +136,88 @@ def list_errors(candidates, listing):
     return errors
 
 
+def apply_rewrites(sidecars, listing, rewrites, model, levels=LEVELS):
+    """Gate each rewrite and return (updated sidecars, failures). Only the
+    `reading_mnemonic` errors count: a stored meaning mnemonic predates the
+    fresh-draft rules, and this lane does not touch it. A rewrite for an item
+    triage did not mark is refused."""
+    marked = {(row["kind"], row["slug"]) for row in listing.get("marked", [])}
+    level_of = {kind: levels_by_slug(kind, levels) for kind in KINDS}
+    updated = {kind: dict(entries) for kind, entries in sidecars.items()}
+    failures = {}
+    for row in rewrites:
+        kind, slug, text = row["kind"], row["slug"], row["reading_mnemonic"]
+        name = f"{kind}/{slug}"
+        if (kind, slug) not in marked:
+            failures[name] = ["not in the marked list"]
+            continue
+        entry = updated[kind][slug]
+        draft = {k: v for k, v in entry.items() if k != "_meta"}
+        draft["reading_mnemonic"] = text
+        errors = [e for e in validate_draft(level_of[kind][slug], kind, slug, draft,
+                                            enforce_readability=True)
+                  if e.startswith("reading_mnemonic")]
+        if errors:
+            failures[name] = errors
+            continue
+        updated[kind][slug] = {
+            **entry,
+            "reading_mnemonic": text,
+            "_meta": {**entry.get("_meta", {}), "generator_model": model,
+                      "review_status": "draft"},
+        }
+    return updated, failures
+
+
+def untouched_errors(base, current, listing):
+    """Unmarked entries byte-identical; on marked entries only
+    `reading_mnemonic` and `_meta` (minus prompt_version) may differ."""
+    marked = {(row["kind"], row["slug"]) for row in listing.get("marked", [])}
+    errors = []
+    for kind in KINDS:
+        b, c = base[kind], current[kind]
+        if set(b) != set(c):
+            errors.append(f"{kind}: slug set changed")
+        for slug in sorted(set(b) & set(c)):
+            if (kind, slug) not in marked:
+                if b[slug] != c[slug]:
+                    errors.append(f"{kind}/{slug} changed but is not marked")
+                continue
+            for field in sorted(set(b[slug]) | set(c[slug])):
+                if field in ("reading_mnemonic", "_meta"):
+                    continue
+                if b[slug].get(field) != c[slug].get(field):
+                    errors.append(f"{kind}/{slug} {field} changed")
+            if (b[slug].get("_meta", {}).get("prompt_version")
+                    != c[slug].get("_meta", {}).get("prompt_version")):
+                errors.append(f"{kind}/{slug} _meta.prompt_version changed")
+    return errors
+
+
+def _git_sidecars(ref):
+    repo = os.path.dirname(mc.CURRICULUM_DIR)
+    out = {}
+    for kind in KINDS:
+        rel = os.path.relpath(SIDECAR[kind], repo)
+        text = subprocess.run(["git", "show", f"{ref}:{rel}"], cwd=repo, check=True,
+                              capture_output=True, text=True).stdout
+        out[kind] = json.loads(text)
+    return out
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("select")
     sub.add_parser("check-list")
+    apply_p = sub.add_parser("apply")
+    apply_p.add_argument("--model", required=True,
+                         help="provenance recorded in _meta.generator_model")
+    apply_p.add_argument("--dry-run", action="store_true", help="gate only, write nothing")
+    verify_p = sub.add_parser("verify")
+    verify_p.add_argument("--base", required=True,
+                          help="git ref holding the sidecars before the rewrite")
     args = parser.parse_args(argv)
 
     sidecars = {kind: load_json(SIDECAR[kind]) for kind in KINDS}
@@ -156,6 +233,27 @@ def main(argv=None):
         for e in errors:
             print(f"  - {e}")
         print("list OK" if not errors else f"{len(errors)} list error(s)")
+        return 1 if errors else 0
+    if args.cmd == "apply":
+        rewrites = load_json(REWRITES_PATH)
+        updated, failures = apply_rewrites(sidecars, load_json(LIST_PATH), rewrites, args.model)
+        for name, errors in failures.items():
+            print(f"FAIL {name}")
+            for e in errors:
+                print(f"  - {e}")
+        if not args.dry_run:
+            for kind in KINDS:
+                if updated[kind] != sidecars[kind]:
+                    dump_json(SIDECAR[kind], updated[kind])
+        verb = "checked" if args.dry_run else "applied"
+        print(f"{verb} {len(rewrites) - len(failures)} of {len(rewrites)} rewrite(s); "
+              f"{len(failures)} failing")
+        return 1 if failures else 0
+    if args.cmd == "verify":
+        errors = untouched_errors(_git_sidecars(args.base), sidecars, load_json(LIST_PATH))
+        for e in errors:
+            print(f"  - {e}")
+        print("verify OK" if not errors else f"{len(errors)} unexpected change(s)")
         return 1 if errors else 0
     return 2
 

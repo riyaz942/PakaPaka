@@ -412,7 +412,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
   - `untouched_errors(base: dict, current: dict, listing: dict) -> list[str]`.
   - CLI: `apply --model <m> [--dry-run]`, `verify --base <ref>`.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Append to `test_reading_link.py` (above the `if __name__` line):
 
@@ -533,12 +533,12 @@ class UntouchedTest(unittest.TestCase):
                          ["kanji: slug set changed"])
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `.venv/bin/python -m unittest generate_content.test_reading_link -v`
 Expected: the 12 Task 1 tests PASS; the new ones ERROR with `AttributeError: module 'generate_content.reading_link' has no attribute 'apply_rewrites'` / `'untouched_errors'`.
 
-- [ ] **Step 3: Implement `apply_rewrites`, `untouched_errors` and the CLI**
+- [x] **Step 3: Implement `apply_rewrites`, `untouched_errors` and the CLI**
 
 In `reading_link.py`, add the import below the `mnemonic_context` import:
 
@@ -657,17 +657,17 @@ and replace the final `return 2` with:
     return 2
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `.venv/bin/python -m unittest generate_content.test_reading_link -v`
 Expected: all 24 tests PASS.
 
-- [ ] **Step 5: Run the other generate_content tests (no regressions)**
+- [x] **Step 5: Run the other generate_content tests (no regressions)**
 
 Run: `.venv/bin/python -m unittest discover -s generate_content -p "test_*.py" -t .`
 Expected: OK.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add generate_content/reading_link.py generate_content/test_reading_link.py

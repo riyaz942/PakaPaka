@@ -120,5 +120,121 @@ class ListErrorsTest(unittest.TestCase):
         self.assertTrue(any("stats.marked" in e for e in errors), errors)
 
 
+import copy  # noqa: E402
+
+SPECIAL_OK = ("The temple monk <reading>Took</reading> chants 「<reading>とく</reading>」 "
+              "over the one cow nobody may eat, which is exactly what makes it "
+              "<kanji form=\"特\">special</kanji>.")
+LISTING = {"marked": [{"kind": "kanji", "slug": "special", "reason": "konbini scene"}],
+           "kept": [], "stats": {"total": 1, "marked": 1, "kept": 0}}
+
+
+def stored():
+    # 特 special as stored today: its meaning mnemonic lacks `form` attributes,
+    # which the fresh-draft gate rejects — apply must ignore that.
+    return {
+        "kanji": {
+            "special": {
+                "meaning_mnemonic": "The one <radical>cow</radical> kept up at the "
+                                    "<radical>Buddhist temple</radical> is never for eating, "
+                                    "which makes it <kanji>special</kanji>.",
+                "reading_mnemonic": "The intercom at Koichi's konbini loops <reading>とく</reading>.",
+                "_meta": {"generator_model": "sonnet-5", "prompt_version": "4",
+                          "review_status": "reviewed"},
+            },
+            "polish": {"meaning_mnemonic": "M", "reading_mnemonic": "R",
+                       "_meta": {"generator_model": "x", "prompt_version": "4",
+                                 "review_status": "reviewed"}},
+        },
+        "vocab": {},
+    }
+
+
+class ApplyTest(unittest.TestCase):
+    def test_passing_rewrite_is_written_as_draft(self):
+        updated, failures = rl.apply_rewrites(
+            stored(), LISTING,
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "opus-5.5")
+        self.assertEqual(failures, {})
+        entry = updated["kanji"]["special"]
+        self.assertEqual(entry["reading_mnemonic"], SPECIAL_OK)
+        self.assertEqual(entry["meaning_mnemonic"], stored()["kanji"]["special"]["meaning_mnemonic"])
+        self.assertEqual(entry["_meta"], {"generator_model": "opus-5.5", "prompt_version": "4",
+                                          "review_status": "draft"})
+        self.assertEqual(list(entry), ["meaning_mnemonic", "reading_mnemonic", "_meta"])
+
+    def test_meaning_field_errors_are_ignored(self):
+        _, failures = rl.apply_rewrites(
+            stored(), LISTING,
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+        self.assertNotIn("kanji/special", failures)
+
+    def test_failing_rewrite_is_not_written(self):
+        before = stored()
+        updated, failures = rl.apply_rewrites(
+            before, LISTING,
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": "A temple cow."}], "m")
+        self.assertIn("kanji/special", failures)
+        self.assertTrue(all(e.startswith("reading_mnemonic") for e in failures["kanji/special"]))
+        self.assertEqual(updated, before)
+
+    def test_unmarked_rewrite_is_refused(self):
+        before = stored()
+        updated, failures = rl.apply_rewrites(
+            before, LISTING,
+            [{"kind": "kanji", "slug": "polish", "reading_mnemonic": SPECIAL_OK}], "m")
+        self.assertEqual(failures, {"kanji/polish": ["not in the marked list"]})
+        self.assertEqual(updated, before)
+
+    def test_input_is_not_mutated(self):
+        before = stored()
+        snapshot = copy.deepcopy(before)
+        rl.apply_rewrites(before, LISTING,
+                          [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+        self.assertEqual(before, snapshot)
+
+    def test_apply_twice_is_stable(self):
+        rows = [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}]
+        once, _ = rl.apply_rewrites(stored(), LISTING, rows, "m")
+        twice, failures = rl.apply_rewrites(once, LISTING, rows, "m")
+        self.assertEqual(failures, {})
+        self.assertEqual(once, twice)
+
+
+class UntouchedTest(unittest.TestCase):
+    def setUp(self):
+        self.base = stored()
+        self.current, _ = rl.apply_rewrites(
+            stored(), LISTING,
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+
+    def test_clean_apply_verifies(self):
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING), [])
+
+    def test_meaning_change_is_caught(self):
+        self.current["kanji"]["special"]["meaning_mnemonic"] = "changed"
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING),
+                         ["kanji/special meaning_mnemonic changed"])
+
+    def test_unmarked_change_is_caught(self):
+        self.current["kanji"]["polish"]["reading_mnemonic"] = "changed"
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING),
+                         ["kanji/polish changed but is not marked"])
+
+    def test_prompt_version_change_is_caught(self):
+        self.current["kanji"]["special"]["_meta"]["prompt_version"] = "5"
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING),
+                         ["kanji/special _meta.prompt_version changed"])
+
+    def test_review_status_change_on_marked_item_is_allowed(self):
+        self.current["kanji"]["special"]["_meta"]["review_status"] = "reviewed"
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING), [])
+
+    def test_slug_set_change_is_caught(self):
+        del self.current["kanji"]["polish"]
+        self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING),
+                         ["kanji: slug set changed"])
+
+
 if __name__ == "__main__":
     unittest.main()
