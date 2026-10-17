@@ -2,8 +2,9 @@
 
 **Status:** Phase 0 done 2026-09-27 (see "Phase 0 results"). Phase 1 done 2026-09-27 (see
 "Phase 1 results"). Phase 2 done 2026-09-27 (see "Phase 2 results"). Phase 3 done 2026-09-27 (see
-"Phase 3 results"). Phase 4 done 2026-10-11 (see "Phase 4 results"). Phase 5 script done
-2026-10-11 (see "Phase 5 results"). The restore on the phone is not yet checked.
+"Phase 3 results"). Phase 4 done 2026-10-11 (see "Phase 4 results"). Phase 5 done
+2026-10-17 (see "Phase 5 results"): script written 2026-10-11, restore on the phone checked
+2026-10-17. All phases are done.
 
 **Goal:** a radical, kanji, word, grammar point or passage can move to a different JLPT level by a
 one-line edit, and the move does not change its slug, its item id, its content files or the
@@ -649,9 +650,10 @@ Implement **Phase A of the schema migration plan** as written, with these change
 
 **Checks:** repo-root tests 94 pass (11 new). `tsc --noEmit` passes.
 
-**For the maintainer (still to do):** the phone steps above. If you study again before you install
-the new build, export a new backup and run the script on it. Then check that the restore preview
-shows 0 unmatched items, and find `five`, `go-game` and `reason` in Browse.
+**Restore on the phone (2026-10-17):** the maintainer installed the new build and restored the
+migrated backup. The restore worked: reviews and lessons are available. The maintainer did not
+record the restore preview count or the Browse spot-checks (`five`, `go-game`, `reason`), so
+those two checks are not recorded here.
 
 ---
 
