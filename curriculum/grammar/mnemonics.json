@@ -78,5 +78,165 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "ka-question": {
+    "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with her beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. 今何時です<reading>か</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ne-tag": {
+    "mnemonic_text": "Grandpa Sato grumbles at the frozen water trough, and his old horse leans her shaggy head on his shoulder with a long \"<reading>Neigh</reading>\": <grammar>yes, we both feel it, don't we</grammar>. 寒いです<reading>ね</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yo-emphasis": {
+    "mnemonic_text": "Jin the giant starts to sit on a park bench where a hedgehog is napping. Chuu the mouse leaps onto his knee and shouts \"<reading>Yo!</reading>\", <grammar>handing him news he did not know</grammar>. 危ないです<reading>よ</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-form": {
+    "mnemonic_text": "Sho the tiny magician tapes the dove to the vanishing hat, squeaking \"<reading>Te</reading>pe!\" as he slaps on each strip, so every trick runs <grammar>and then</grammar> into the next. 家に帰っ<reading>て</reading>、寝ます。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "de-location": {
+    "mnemonic_text": "Ken the shiba drags a whole fish past his sword wall into his den, thumps the floor twice and barks \"<reading>Den</reading>!\": dinner happens <grammar>at this spot</grammar>. 家<reading>で</reading>魚を食べる。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "to-and": {
+    "mnemonic_text": "At the beeping till, Koichi tapes one egg to one loaf of bread and announces \"<reading>Two</reading>!\": bread <grammar>and</grammar> egg, the complete list, nothing else. パン<reading>と</reading>卵を買う。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ya-among": {
+    "mnemonic_text": "Asked what they read all summer, Bun names one magazine and one cookbook, then Mon flaps a long ear and sighs \"<reading>Ya</reading>da yada\", meaning <grammar>those and other things</grammar>. 本<reading>や</reading>雑誌を読む。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mo-also": {
+    "mnemonic_text": "At the top of the mountain trail, a hiker gets one coffee from the vending machine, so Jin the giant ducks down and booms \"<reading>Mo</reading>re! For me!\": he wants one <grammar>too</grammar>. 僕<reading>も</reading>コーヒーを飲む。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "no-possessive": {
+    "mnemonic_text": "At Koichi's konbini, Chuu the mouse <reading>gnaw</reading>s his own name into every loaf on the shelf, so each one is now plainly <grammar>Chuu's bread</grammar>. 私<reading>の</reading>パンです。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "no-nominalizer": {
+    "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. 今帰る<reading>のです</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-direction": {
+    "mnemonic_text": "Dai the giant baby crawls to the park and drops one <reading>knee</reading> right on the swings, a bullseye landing <grammar>at that exact spot</grammar>. 公園<reading>に</reading>行く。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "he-direction": {
+    "mnemonic_text": "On a power line above the riverbank, Kaa the crow yells \"<reading>Hey!</reading>\", aims his beak at the distant sea and flaps off, puffing smoke, <grammar>heading toward</grammar> it. 海<reading>へ</reading>行く。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kara-from": {
+    "mnemonic_text": "Tiny Sho tugs an endless red scarf from his glove, and the crowd follows it out the door to a parked car. Sho taps the bumper and says \"<reading>Car, ah!</reading>\": the scarf starts <grammar>from</grammar> there. 駅<reading>から</reading>歩く。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "made-until": {
+    "mnemonic_text": "Ken the dog wades out into the river, and his paws sink. He sniffs, says \"<reading>Mud, eh?</reading>\", and goes <grammar>as far as</grammar> the mud, not one paw further. 海<reading>まで</reading>歩く。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "node-because": {
+    "mnemonic_text": "A customer wants the red door on Toto's shell, and Toto says calmly, \"<reading>No, the</reading> red one is my front door.\" That quiet fact is the whole <grammar>because</grammar>. 寒い<reading>ので</reading>家にいる。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-indirect": {
+    "mnemonic_text": "Chuu the mouse can't reach giant Jin's hands, so he squeaks \"<reading>Knee!</reading>\" and props his tiny letter there, sent <grammar>to</grammar> Jin. 友達<reading>に</reading>電話する。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dewa-arimasen": {
+    "mnemonic_text": "<reading>The wary mason</reading> taps Han's half-loaf with his trowel, hears a clunk, and rules it <grammar>is not</grammar> bread, just a brick. それはパン<reading>ではありません</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "masen": {
+    "mnemonic_text": "Up on his power line, Kaa the fire-breathing crow is offered a cup of sake and says, \"Thank you, but I <reading>mustn't</reading>.\" His last hiccup set the cup alight, so he <grammar>politely does not</grammar> drink. 私はお酒を飲み<reading>ません</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mashita": {
+    "mnemonic_text": "Jin the friendly giant sits on the rice-ball shelf in Koichi's shop by mistake. He stands up sticky and says \"Sorry, I <reading>mashed it</reading>,\" a <grammar>polite report of what already happened</grammar>. 昨日ご飯を食べ<reading>ました</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "masen-ka": {
+    "mnemonic_text": "Rain hammers the school gate, and the Mon-Bun twins lean out of a shoebox-sized car toward Sei. They pat the one tiny seat left and call \"<reading>Ma's in car</reading>, hop in?\", a gentle <grammar>won't you come with us?</grammar> 一緒に帰り<reading>ませんか</reading>。",
+    "_meta": {
+      "generator_model": "opus",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
