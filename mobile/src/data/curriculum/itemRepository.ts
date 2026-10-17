@@ -547,6 +547,8 @@ export type GrammarUse = {
   japanese: string;
   furigana: string | null;
   english: string;
+  /** Taught words in `japanese`; [] when unauthored or on older DBs. */
+  wordSpans: PassageWordSpan[];
 };
 
 /** Sibling/contrast grammar point linked from a lesson (content pipeline Phase 0). */
@@ -782,6 +784,20 @@ function parseCautionNotes(raw: string | null | undefined): string[] {
   }
 }
 
+type GrammarUseRaw = {
+  label?: string;
+  structure?: string;
+  japanese?: string;
+  furigana?: string;
+  english?: string;
+  word_spans?: {
+    vocabulary_item_id: number;
+    start: number;
+    end: number;
+    inflection: WordInflection | null;
+  }[];
+};
+
 function parseGrammarUses(raw: string | null | undefined): GrammarUse[] {
   if (!raw) {
     return [];
@@ -791,12 +807,18 @@ function parseGrammarUses(raw: string | null | undefined): GrammarUse[] {
     if (!Array.isArray(parsed)) {
       return [];
     }
-    return parsed.map((use: Record<string, string | undefined>) => ({
+    return parsed.map((use: GrammarUseRaw) => ({
       label: use.label ?? '',
       structure: use.structure ?? '',
       japanese: use.japanese ?? '',
       furigana: use.furigana ?? null,
       english: use.english ?? '',
+      wordSpans: (use.word_spans ?? []).map((span) => ({
+        vocabularyItemId: String(span.vocabulary_item_id),
+        startOffset: span.start,
+        endOffset: span.end,
+        inflection: span.inflection ?? null,
+      })),
     }));
   } catch {
     return [];
