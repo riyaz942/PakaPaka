@@ -781,12 +781,14 @@ with two changes:
   merges the rows into `reports/reading-link-list.json`, writes `stats`, and
   runs `check-list`. Calibration (step 2) and the maintainer stop are not
   delegated.
-- **Rewrite (step 5):** groups of ≤4 marked items. Each subagent gets
-  `prompts/reading-link-rewrite.md` and its group, and returns rewrite rows
-  only. The coordinator appends them to `reports/reading-link-rewrites.json`
-  and runs `apply --dry-run`; a failing item goes back to the same group's
-  subagent with the printed errors (at most 2 attempts). The pilot (step 4)
-  is not delegated.
+- **Rewrite (step 5):** chunks of about 25 marked items, kanji and vocab
+  never mixed in one chunk, 5 subagents in parallel per wave. Each subagent
+  gets `prompts/reading-link-rewrite.md` and its chunk, and returns rewrite
+  rows only. The coordinator checks that every row of the chunk came back,
+  appends them to `reports/reading-link-rewrites.json` and runs
+  `apply --dry-run`; a failing item goes back to the same chunk's subagent
+  with the printed errors (at most 2 attempts). After each wave: `apply`,
+  then commit. The pilot (step 4) is not delegated.
 
 Subagents never write the sidecars or the report files themselves.
 
