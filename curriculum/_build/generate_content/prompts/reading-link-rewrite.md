@@ -20,7 +20,9 @@ rewrite is built on them.
 ## Rules for the new `reading_mnemonic`
 
 1. **Continue the meaning scene.** Reuse its object, place or action. The
-   cast character walks into that scene.
+   cast character walks into that scene. If the meaning mnemonic only
+   points back ("the kanji and the radical are the same"), continue the
+   story it points to — see `reading-link-triage.md`.
 2. **Cast.** Use the cast character listed in `cast` for this item's
    `reading`. If none is listed for that reading, invent a character whose
    name carries the sound. Keep what the old reading did right — its sound

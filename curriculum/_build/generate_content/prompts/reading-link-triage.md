@@ -32,6 +32,15 @@ crates, the same cave, the same mountain trail.
   mnemonic.
 - A cast character's name is not a scene. Ken the dog appearing is not a
   link; Ken polishing *the sword* is.
+- A reused element must be more than the meaning word itself. A crow
+  singeing "a bloom" does not continue a meaning scene of grass turning
+  colour; Ken polishing "the sword" does continue the sword scene.
+- Some meaning mnemonics only point back ("the kanji and the radical are
+  the same", "the kanji and the word are the same") and build no scene.
+  Judge those against the story they point to: the radical's image for a
+  kanji (`kanji_context(...)["identical_radical"]["image"]`), the kanji's
+  meaning mnemonic for a word (`vocab_context(...)["identical_kanji"]`),
+  following the chain down to the radical if that kanji also only points.
 - Do not judge length, humour, tags or style. One question only.
 
 ## Calibration — these five are settled

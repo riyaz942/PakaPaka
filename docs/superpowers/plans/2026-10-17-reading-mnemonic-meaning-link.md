@@ -1239,16 +1239,16 @@ Report the calibration result to the maintainer and continue to Task 7 only if i
 **Files:**
 - Create (by running): `curriculum/_build/reports/reading-link-list.json`
 
-- [ ] **Step 1: Triage all 737 candidates**
+- [x] **Step 1: Triage all 737 candidates**
 
 Follow `reading-link-triage.md` for every candidate, in chunks of about 50, appending to `reports/reading-link-list.json`. (Subagent lane: groups of ≤4, per the subagent doc section.)
 
-- [ ] **Step 2: Check the list**
+- [x] **Step 2: Check the list**
 
 Run: `.venv/bin/python -m generate_content.reading_link check-list`
 Expected: `list OK`. Fix every printed error and rerun.
 
-- [ ] **Step 3: Commit and stop**
+- [x] **Step 3: Commit and stop**
 
 ```bash
 git add reports/reading-link-list.json
