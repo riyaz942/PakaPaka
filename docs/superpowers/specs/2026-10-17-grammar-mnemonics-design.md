@@ -126,9 +126,7 @@ The three `radical-kanji-vocab-mnemonic-*-automation-prompt.md` files and `radic
 - **Root:** `npm run check-contrast`.
 - **Studio:** mnemonic edit and "Mnemonic status" write only to the sidecar.
 
-## 11. Rollout (worktree `grammar-mnemonics`, from `origin/main` a3c6c8e)
-
-Do not check out `main` in the main checkout; another agent works there.
+## 11. Rollout (branch `grammar-mnemonics` in the main checkout, from `origin/main` a3c6c8e)
 
 1. Tooling, build, app and Studio code, with tests.
 2. Draft `grammar_origins.json` → **maintainer review** → `reviewed`.
