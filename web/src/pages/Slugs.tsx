@@ -140,7 +140,7 @@ export default function Slugs() {
     });
   }
 
-  async function applyBulkStatus(nextStatus: Exclude<ReviewStatus, 'none'>) {
+  async function applyBulkStatus(nextStatus: ReviewStatus) {
     if (selected.size === 0) return;
     setBulkSaving(nextStatus);
     setBulkError(null);
