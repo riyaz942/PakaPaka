@@ -955,9 +955,12 @@ def format_identity(ctx):
             "senses belong together — no more than that."
         )
     paras.append(
-        "The reading mnemonic is unaffected: the reading is not derivable from "
-        "the radical, so write it in full as described below."
+        "The reading mnemonic is still written in full: the reading is not "
+        "derivable from the radical. But this one-line meaning mnemonic has no "
+        "scene, so the reading continues the radical's own image instead — the "
+        "one the learner already saw:"
     )
+    paras.append(f"> {comp['image']}")
     return "\n\n".join(_wrap(p) for p in paras)
 
 
@@ -1125,8 +1128,12 @@ def format_vocab_identity(comp, meaning, form):
         "both ends of the chain; each span carries its own `form`. Where the "
         "word adds okurigana that changes "
         "what it *does* (白 the kanji, 白い the adjective), one more sentence "
-        "says so — see the word type block. The **reading** mnemonic is "
-        "unaffected and follows the reading section as usual."
+        "says so — see the word type block. The **reading** mnemonic follows "
+        "the reading section as usual, but if it is a full story it continues "
+        "the kanji's own meaning story, because this one-line meaning "
+        "mnemonic has no scene. The kanji's story, which the learner already "
+        "read:\n\n"
+        f"> {comp['meaning_mnemonic']}"
     )
 
 

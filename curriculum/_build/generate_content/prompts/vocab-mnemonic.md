@@ -284,6 +284,9 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
      two unrelated scenes compete for one memory. If the sentence would still
      make sense with a different word's meaning dropped into it, or if it
      would still make sense without your meaning mnemonic, it is not finished.
+     If this word IS its kanji ("Is this word just its kanji?" above says
+     so), your meaning mnemonic only points back and has no scene: continue
+     the kanji's own meaning story, which that section quotes.
 
      Right — the trail from the meaning mnemonic comes back:
 

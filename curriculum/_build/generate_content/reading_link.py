@@ -136,12 +136,19 @@ def list_errors(candidates, listing):
     return errors
 
 
-def apply_rewrites(sidecars, listing, rewrites, model, levels=LEVELS):
+EDITED_SINCE_SELECT = "reading_mnemonic changed since select (a Studio edit?); not overwritten"
+
+
+def apply_rewrites(sidecars, listing, rewrites, model, candidates, levels=LEVELS):
     """Gate each rewrite and return (updated sidecars, failures). Only the
     `reading_mnemonic` errors count: a stored meaning mnemonic predates the
     fresh-draft rules, and this lane does not touch it. A rewrite for an item
-    triage did not mark is refused."""
+    triage did not mark is refused. A row whose text is already stored is
+    skipped, so a re-run keeps its review status; a stored reading that is
+    neither the row nor the one select saw was edited after the rewrite and
+    is refused."""
     marked = {(row["kind"], row["slug"]) for row in listing.get("marked", [])}
+    selected = {(c["kind"], c["slug"]): c["reading_mnemonic"] for c in candidates}
     level_of = {kind: levels_by_slug(kind, levels) for kind in KINDS}
     updated = {kind: dict(entries) for kind, entries in sidecars.items()}
     failures = {}
@@ -152,6 +159,11 @@ def apply_rewrites(sidecars, listing, rewrites, model, levels=LEVELS):
             failures[name] = ["not in the marked list"]
             continue
         entry = updated[kind][slug]
+        if entry.get("reading_mnemonic") == text:
+            continue
+        if entry.get("reading_mnemonic") != selected.get((kind, slug)):
+            failures[name] = [EDITED_SINCE_SELECT]
+            continue
         draft = {k: v for k, v in entry.items() if k != "_meta"}
         draft["reading_mnemonic"] = text
         errors = [e for e in validate_draft(level_of[kind][slug], kind, slug, draft,
@@ -236,7 +248,8 @@ def main(argv=None):
         return 1 if errors else 0
     if args.cmd == "apply":
         rewrites = load_json(REWRITES_PATH)
-        updated, failures = apply_rewrites(sidecars, load_json(LIST_PATH), rewrites, args.model)
+        updated, failures = apply_rewrites(sidecars, load_json(LIST_PATH), rewrites, args.model,
+                                           load_json(CANDIDATES_PATH))
         for name, errors in failures.items():
             print(f"FAIL {name}")
             for e in errors:

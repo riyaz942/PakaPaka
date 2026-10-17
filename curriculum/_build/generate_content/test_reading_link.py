@@ -150,11 +150,15 @@ def stored():
     }
 
 
+CANDIDATES = [{"kind": "kanji", "slug": "special",
+               "reading_mnemonic": stored()["kanji"]["special"]["reading_mnemonic"]}]
+
+
 class ApplyTest(unittest.TestCase):
     def test_passing_rewrite_is_written_as_draft(self):
         updated, failures = rl.apply_rewrites(
             stored(), LISTING,
-            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "opus-5.5")
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "opus-5.5", CANDIDATES)
         self.assertEqual(failures, {})
         entry = updated["kanji"]["special"]
         self.assertEqual(entry["reading_mnemonic"], SPECIAL_OK)
@@ -166,14 +170,14 @@ class ApplyTest(unittest.TestCase):
     def test_meaning_field_errors_are_ignored(self):
         _, failures = rl.apply_rewrites(
             stored(), LISTING,
-            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m", CANDIDATES)
         self.assertNotIn("kanji/special", failures)
 
     def test_failing_rewrite_is_not_written(self):
         before = stored()
         updated, failures = rl.apply_rewrites(
             before, LISTING,
-            [{"kind": "kanji", "slug": "special", "reading_mnemonic": "A temple cow."}], "m")
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": "A temple cow."}], "m", CANDIDATES)
         self.assertIn("kanji/special", failures)
         self.assertTrue(all(e.startswith("reading_mnemonic") for e in failures["kanji/special"]))
         self.assertEqual(updated, before)
@@ -182,7 +186,7 @@ class ApplyTest(unittest.TestCase):
         before = stored()
         updated, failures = rl.apply_rewrites(
             before, LISTING,
-            [{"kind": "kanji", "slug": "polish", "reading_mnemonic": SPECIAL_OK}], "m")
+            [{"kind": "kanji", "slug": "polish", "reading_mnemonic": SPECIAL_OK}], "m", CANDIDATES)
         self.assertEqual(failures, {"kanji/polish": ["not in the marked list"]})
         self.assertEqual(updated, before)
 
@@ -190,15 +194,31 @@ class ApplyTest(unittest.TestCase):
         before = stored()
         snapshot = copy.deepcopy(before)
         rl.apply_rewrites(before, LISTING,
-                          [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+                          [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m", CANDIDATES)
         self.assertEqual(before, snapshot)
 
     def test_apply_twice_is_stable(self):
         rows = [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}]
-        once, _ = rl.apply_rewrites(stored(), LISTING, rows, "m")
-        twice, failures = rl.apply_rewrites(once, LISTING, rows, "m")
+        once, _ = rl.apply_rewrites(stored(), LISTING, rows, "m", CANDIDATES)
+        twice, failures = rl.apply_rewrites(once, LISTING, rows, "m", CANDIDATES)
         self.assertEqual(failures, {})
         self.assertEqual(once, twice)
+
+    def test_reapply_keeps_a_reviewed_rewrite(self):
+        rows = [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}]
+        once, _ = rl.apply_rewrites(stored(), LISTING, rows, "m", CANDIDATES)
+        once["kanji"]["special"]["_meta"]["review_status"] = "reviewed"
+        twice, failures = rl.apply_rewrites(once, LISTING, rows, "other-model", CANDIDATES)
+        self.assertEqual(failures, {})
+        self.assertEqual(twice, once)
+
+    def test_studio_edit_is_not_overwritten(self):
+        rows = [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}]
+        once, _ = rl.apply_rewrites(stored(), LISTING, rows, "m", CANDIDATES)
+        once["kanji"]["special"]["reading_mnemonic"] = SPECIAL_OK.replace("exactly", "just")
+        twice, failures = rl.apply_rewrites(once, LISTING, rows, "m", CANDIDATES)
+        self.assertEqual(failures, {"kanji/special": [rl.EDITED_SINCE_SELECT]})
+        self.assertEqual(twice, once)
 
 
 class UntouchedTest(unittest.TestCase):
@@ -206,7 +226,7 @@ class UntouchedTest(unittest.TestCase):
         self.base = stored()
         self.current, _ = rl.apply_rewrites(
             stored(), LISTING,
-            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m")
+            [{"kind": "kanji", "slug": "special", "reading_mnemonic": SPECIAL_OK}], "m", CANDIDATES)
 
     def test_clean_apply_verifies(self):
         self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING), [])
@@ -234,6 +254,25 @@ class UntouchedTest(unittest.TestCase):
         del self.current["kanji"]["polish"]
         self.assertEqual(rl.untouched_errors(self.base, self.current, LISTING),
                          ["kanji: slug set changed"])
+
+
+class IdentityNoteTest(unittest.TestCase):
+    # A pointer meaning mnemonic has no scene, so the generation prompt must
+    # hand the reading the parent story to continue.
+    def test_identity_kanji_note_quotes_the_radical_image(self):
+        from generate_content import mnemonic_context as mc
+        ctx = mc.kanji_context("n5", "mountain")
+        note = mc.format_identity(ctx)
+        self.assertIn("> " + ctx["identical_radical"]["image"], note)
+        self.assertIn("continues the radical's own image", note)
+
+    def test_identity_word_note_quotes_the_kanji_story(self):
+        from generate_content import mnemonic_context as mc
+        ctx = mc.vocab_context("n5", "watashi")
+        comp = ctx["identical_kanji"]
+        note = mc.format_vocab_identity(comp, ctx["meaning"], ctx["form"])
+        self.assertIn("> " + comp["meaning_mnemonic"], note)
+        self.assertIn("continues the kanji's own meaning story", note)
 
 
 if __name__ == "__main__":

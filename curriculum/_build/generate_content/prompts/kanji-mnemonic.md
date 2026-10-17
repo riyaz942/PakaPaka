@@ -180,6 +180,11 @@ chant, and nothing joins them to the sprout.
 
 No cow, no temple, and no *special* — a konbini that could belong to any kanji.
 
+**If this kanji IS a radical** ("Is this kanji just a radical it already
+knows?" below says so), the meaning mnemonic is one line that only points
+back, and it has no scene to continue. Continue the radical's own image, which
+that section quotes.
+
 **Check before you finish:** cover the meaning mnemonic. Does the reading
 still point back at it — the same sword, the same crates, the same cave? If
 not, it is not finished.
