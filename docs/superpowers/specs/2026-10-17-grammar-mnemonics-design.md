@@ -1,7 +1,7 @@
 # Grammar content — mnemonics
 
 **Date:** 2026-10-17
-**Status:** Design approved; plan not written
+**Status:** Design approved; plan written (`docs/superpowers/plans/2026-10-17-grammar-mnemonics.md`)
 **Scope:** N5 + N4 grammar (161 points). Sub-project B of two; sub-project A (linked words, PR #5) is merged into `main`.
 
 ---
@@ -36,10 +36,10 @@ Telling similar points apart (は vs が) is not a job of the mnemonic; the less
 
 ## 3. Content contract
 
-**Shape.** A story of one or two English sentences, then one Japanese example sentence. 120–240 characters in total, tags stripped. The existing readability check applies (no sentence over 35 words).
+**Shape.** A story of one or two English sentences, then one Japanese example sentence. 100–240 characters in total, tags stripped (the four reference examples are 112–133). The existing readability check applies (no sentence over 35 words). Punctuation inside quoted speech ("Oh! That one!") does not end a sentence.
 
 1. **Story:** a concrete scene, optionally with a cast character (`prompts/cast-bible.md`) as the actor. A character says or does the English sound-alike of the form, and that action *is* the meaning. For a long form the hook uses the part that carries the meaning (しまう in てしまう, not て). If the point has an origin, the story's action is the origin's meaning.
-2. **Example:** the last sentence, Japanese only, ending in `。`. The form is attached to at least one word. Every word is at or below the point's level.
+2. **Example:** the last sentence, Japanese only, ending in `。`. The form is attached to at least one word. Every word is at or below the point's level, and every kanji appears in a word the learner is allowed to know (the mnemonic shows no furigana).
 
 Cast characters are actors only. The cast bible's "one reading, one character" rule is for kanji readings; grammar forms do not get a fixed character.
 
@@ -71,7 +71,7 @@ Cast characters are actors only. The cast bible's "one reading, one character" r
 ```
 
 - **Every one of the 161 slugs has an entry**: an origin object or `null`. `null` is a recorded decision ("no useful origin"), never a gap. A missing or unknown slug is an error in the generator and in its test.
-- `keywords` are the English words that show the origin's action in a story (case-insensitive whole-word match).
+- `keywords` are the English words that show the origin's action in a story (case-insensitive word-start match, so `put` matches "puts").
 - I write the first draft; the maintainer reviews it and sets `"review_status": "reviewed"`. The generator refuses `--type grammar` while the file is not `reviewed`.
 - The file is build input only. It does not ship and the app never reads it.
 
@@ -81,12 +81,13 @@ Cast characters are actors only. The cast bible's "one reading, one character" r
 - **`mnemonic_context.py`** — a grammar context builder. Per point: `slug`, `primary_form`, `accepted_forms`, `meaning`, `structure`, `family`, level, the lesson's opening text (the part before its first `## ` heading), the origin entry (or the explicit "no origin: do not state any origin" note), and the vocabulary allowed in the example (at or below the point's level).
 - **`generate_mnemonics.py`** — `grammar` added to `--type` for `requests`, `run`, `collect`, `assemble`, `webprompts`, `ingest`. Drafts go under `drafts/mnemonics/` in the same layout as the other types. `PROMPT_VERSION["grammar"] = 1`. Failed drafts are requeued with the gate errors, capped at `MAX_ATTEMPTS`, then `flagged_for_rewrite` — unchanged behaviour.
 - **`validate_mnemonics.py`** — the grammar gate. A draft fails if:
-  1. the length (tags stripped) is outside 120–240, the story has more than two sentences, or a sentence is over the readability limit;
+  1. the length (tags stripped) is outside 100–240, the story has more than two sentences (quoted speech collapsed first), or a sentence is over the readability limit;
   2. it has a tag other than `<reading>` / `<grammar>`, or broken markup;
   3. no `<reading>` holds Latin letters, or no `<reading>` holds kana from the point's forms;
   4. it has no `<grammar>` tag;
   5. the last sentence is not Japanese-only ending in `。`, or holds no accepted form attached to another word;
   6. a Japanese word in it is above the point's level (`level_check.find_violations`, the point's own forms and the origin word allowed);
+  6b. a kanji in the example appears in no allowed word;
   7. the point has an origin and none of its `keywords` is in the story;
   8. the point has no origin and the story has an origin phrase (`really is`, `comes from`, `originally`, `derived from`, `short for`).
 - Output after the gate: **`curriculum/grammar/mnemonics.json`**, `{slug: {"mnemonic_text": ..., "_meta": {generator_model, prompt_version, review_status: "draft"}}}`, the same shape as the other sidecars.
