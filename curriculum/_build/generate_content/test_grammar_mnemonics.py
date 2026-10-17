@@ -260,5 +260,46 @@ class GeneratorWiringTest(unittest.TestCase):
         self.assertEqual(gm.PROMPT_VERSION["grammar"], 1)
 
 
+class GateReviewFixesTest(unittest.TestCase):
+    """Final-review findings: points whose own form is kanji, and Japanese or
+    form= attributes outside the checked example."""
+
+    @staticmethod
+    def real(slug):
+        return mc.grammar_context("n4", slug, mc.load_grammar_origins())
+
+    def test_point_whose_form_is_kanji_can_pass(self):
+        # 代 is in no allowed word, but it is the point's own form.
+        text = (
+            "Koichi has to stay at the shop, so little Sho goes to the market and shouts "
+            "\"<reading>Cow, wah, really!</reading>\": he will go <grammar>instead of him</grammar> today. "
+            "私が行く<reading>代わりに</reading>、弟が買う。"
+        )
+        ctx = self.real("kawarini")
+        self.assertEqual(validate_grammar("n4", "kawarini", {"mnemonic_text": text}, ctx), [])
+
+    def test_form_without_kana_takes_the_form_as_its_reading(self):
+        text = (
+            "Ken the dog barks \"<reading>Hang, men!</reading>\" at the cat, but the cat "
+            "only shows the <grammar>flip side</grammar> of a fluffy tail. 便利だが高い<reading>反面</reading>、"
+            "安い。"
+        )
+        ctx = self.real("kke2")
+        errors = validate_grammar("n4", "kke2", {"mnemonic_text": text}, ctx)
+        self.assertFalse(any("kana of the form" in e for e in errors), errors)
+
+    def test_japanese_in_the_story_is_rejected(self):
+        text = TEOKU_GOOD.replace("buys the drinks", "buys the 水 drinks")
+        self.assertTrue(any("story must be English" in e for e in check(text)))
+
+    def test_second_japanese_sentence_before_the_example_is_rejected(self):
+        text = WO_GOOD.replace("she will buy. ", "she will buy. 魚を食べる。 ")
+        self.assertTrue(any("story must be English" in e for e in check(text, wo_ctx())))
+
+    def test_form_attribute_on_a_tag_is_rejected(self):
+        text = TEOKU_GOOD.replace("<grammar>for later</grammar>", '<grammar form="過">for later</grammar>')
+        self.assertTrue(any("form=" in e for e in check(text)))
+
+
 if __name__ == "__main__":
     unittest.main()

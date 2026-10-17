@@ -1111,6 +1111,7 @@ _JP_CHARS = "぀-ヿ㐀-䶿一-鿿々〆ー、"
 #: The example: the last run of Japanese, ending in 。, after a space.
 _GRAMMAR_EXAMPLE_RE = re.compile(rf"(?:^|\s)([{_JP_CHARS}]+。)\s*$")
 _LATIN_RE = re.compile(r"[A-Za-z]")
+_STORY_JAPANESE_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿々〆ー]")
 _KANA_ONLY_RE = re.compile(r"[぀-ヿー]+")
 #: Quoted speech: its "Oh! That one!" punctuation is not a sentence end.
 _QUOTED_RE = re.compile(r'"[^"]*"')
@@ -1134,6 +1135,10 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
         return [f"{field} is missing or empty"]
 
     tags = ALLOWED_TAG[("grammar", field)]
+    # `form="…"` makes the app print a glyph the gate never reads (no furigana
+    # source for it), so a grammar tag carries none.
+    if re.search(r"<(?:reading|grammar)\s+form=", text):
+        return [f"{field} must not use form= on a tag; <reading> and <grammar> carry no glyph"]
     tag_errors = _tag_errors(field, text, tags)
     if tag_errors:
         return tag_errors
@@ -1146,12 +1151,16 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
             f"{field} has no English sound-alike in a <reading> tag; tag the English "
             "words that sound like the form, e.g. <reading>OK</reading> for おく"
         )
-    kana_forms = [_hira(f) for f in _bare_forms(ctx)]
-    if not any(_KANA_ONLY_RE.fullmatch(s) and any(_hira(s) in k for k in kana_forms)
+    bare_forms = _bare_forms(ctx)
+    kana_forms = [_hira(f) for f in bare_forms]
+    # A form written with kanji (代わりに, 反面) is tagged as written: the span
+    # may be any piece of the form itself, kana or not.
+    if not any((_KANA_ONLY_RE.fullmatch(s) and any(_hira(s) in k for k in kana_forms))
+               or any(s in f for f in bare_forms)
                for s in readings):
         errors.append(
-            f"{field} does not tag the kana of the form; wrap it in the example, e.g. "
-            f"<reading>{ctx['form']}</reading>"
+            f"{field} does not tag the kana of the form (or the form itself, when it is "
+            f"written with kanji); wrap it in the example, e.g. <reading>{ctx['form']}</reading>"
         )
 
     meanings = _tagged_spans(text, "grammar")
@@ -1185,14 +1194,25 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
                 f"{field}'s example uses words above {level.upper()}: "
                 f"{', '.join(violations)} — use only words the learner already has"
             )
+        # The point's own form (代わりに) and origin word are taught by its
+        # lesson, so their kanji need no allowed word.
+        own_kanji = {ch for w in extra_allowed for ch in w if furigana_lib.is_kanji(ch)}
         unknown_kanji = sorted({ch for ch in example if furigana_lib.is_kanji(ch)}
-                               - ctx["allowed_kanji"])
+                               - ctx["allowed_kanji"] - own_kanji)
         if unknown_kanji:
             errors.append(
                 f"{field}'s example has kanji {'、'.join(unknown_kanji)} that no allowed word "
                 "teaches; the mnemonic shows no furigana, so write those words with kanji "
                 "the learner already knows or in kana"
             )
+
+    # The story is English; Japanese belongs in the final example only. Nothing
+    # else is level- or kanji-checked, so none may slip in.
+    if match and _STORY_JAPANESE_RE.search(story):
+        errors.append(
+            f"{field}: the story must be English — Japanese belongs only in the final "
+            "example sentence"
+        )
 
     # The sound-alike is usually shouted ("Oh! That one!"); count sentences on
     # the story with quoted speech collapsed, so its ! and ? end nothing.

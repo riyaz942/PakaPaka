@@ -2,7 +2,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import type { AddressInfo } from 'node:net';
 import { test } from 'node:test';
+
+import express from 'express';
+
+import { createCurriculumRouter } from './api.js';
 
 import {
   mergeGrammarReviewStatus,
@@ -74,4 +79,23 @@ test('mnemonic review lifts the row once the lesson is reviewed too', () => {
   assert.deepEqual(updateGrammarMnemonicReviewStatus(root, 'N5', 'wa-topic', 'reviewed'), { ok: true });
   assert.equal(rowStatus(root, 'wa-topic'), 'reviewed');
   assert.equal(readGrammarLessonStatus(root, 'wa-topic'), 'reviewed');
+});
+
+test('item response gives the lesson status apart from the merged row status', async () => {
+  const root = scratchRepo();
+  assert.deepEqual(updateReviewStatus(root, 'grammar', 'N5', 'wa-topic', 'reviewed'), { ok: true });
+
+  const app = express();
+  app.use('/api', express.json(), createCurriculumRouter(root, path.join(REPO, 'web')));
+  const server = app.listen(0);
+  try {
+    const { port } = server.address() as AddressInfo;
+    const res = await fetch(`http://127.0.0.1:${port}/api/item/grammar/wa-topic`);
+    const body = (await res.json()) as Record<string, unknown>;
+    assert.equal(body.reviewStatus, 'draft'); // the row: least reviewed of lesson and mnemonic
+    assert.equal(body.lessonReviewStatus, 'reviewed');
+    assert.equal(body.mnemonicReviewStatus, 'draft');
+  } finally {
+    server.close();
+  }
 });

@@ -21,7 +21,7 @@ import {
 } from './graph.js';
 import { getCurriculum, loadTargets, reload } from './loader.js';
 import { runCompile, runValidate } from './pipeline.js';
-import { readGrammarMnemonicStatus } from './sidecar.js';
+import { readGrammarLessonStatus, readGrammarMnemonicStatus } from './sidecar.js';
 import {
   isSkeleton,
   itemKey,
@@ -589,6 +589,8 @@ export function createCurriculumRouter(
       isSkeleton: isSkeleton(item),
       dependencySummary: resolveDependencySummary(index, type, item.slug),
       auditFindings: getFindingsForItem(auditBySlug, type, item.slug),
+      // A grammar row's own status is the merge of these two; each has its own control.
+      lessonReviewStatus: type === 'grammar' ? readGrammarLessonStatus(repoRoot, item.slug) : null,
       mnemonicReviewStatus: type === 'grammar' ? readGrammarMnemonicStatus(repoRoot, item.slug) : null,
     });
   });

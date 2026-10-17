@@ -227,8 +227,15 @@ function ItemDetailBody({
             <div className="item-header__badges">
               <span className="item-header__slug">{item.slug}</span>
               <span className="item-header__level">{item.level}</span>
-              <StatusBadge status={item.reviewStatus} />
-              <ReviewStatusControl type={type} slug={slug} status={item.reviewStatus} onChanged={refresh} />
+              {/* A grammar row's status is lesson and mnemonic merged; its lesson
+                  control must show the lesson's own, or a reviewed lesson reads draft. */}
+              <StatusBadge status={item.lessonReviewStatus ?? item.reviewStatus} />
+              <ReviewStatusControl
+                type={type}
+                slug={slug}
+                status={item.lessonReviewStatus ?? item.reviewStatus}
+                onChanged={refresh}
+              />
               <CompletenessPill percent={item.completeness.percent} skeleton={item.isSkeleton} />
             </div>
             {item.meaning ? <p className="item-header__meaning">{item.meaning}</p> : null}
