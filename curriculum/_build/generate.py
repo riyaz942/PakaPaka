@@ -453,10 +453,12 @@ def _wrap_spans(plain, annotated, spans, label):
     return "".join(out)
 
 
-def _link_words(plain, annotated, forms_by_slug, label):
+def _link_words(plain, annotated, forms_by_slug, label, accepted_forms=()):
     """`annotated` with every taught word in `plain` wrapped in a lesson word
     marker. Candidates are the whole level's vocabulary; the spans are the
-    same ones a grammar pool sentence carries."""
+    same ones a grammar pool sentence carries. A span fully inside an
+    occurrence of the lesson's own grammar form is the grammar, not a word
+    (それで in それでも), so it is dropped; a partial overlap is kept."""
     if furigana_lib.strip_furigana(annotated) != plain:
         print(f"warning: {label}: annotation does not match text, words not linked: "
               f"{plain}", file=sys.stderr)
@@ -465,10 +467,19 @@ def _link_words(plain, annotated, forms_by_slug, label):
         spans_lib.derive_spans(plain, forms_by_slug),
         spans_lib.build_stem_spans(plain, forms_by_slug),
     )
+    occurrences = [
+        (m.start(), m.end())
+        for form in accepted_forms if form
+        for m in re.finditer(re.escape(form), plain)
+    ]
+    spans = [
+        span for span in spans
+        if not any(start <= span["start"] and span["end"] <= end for start, end in occurrences)
+    ]
     return _wrap_spans(plain, annotated, spans, label)
 
 
-def _annotate_prose_line(line, known_readings, forms_by_slug, label):
+def _annotate_prose_line(line, known_readings, forms_by_slug, label, accepted_forms=()):
     """Annotates kanji-bearing Japanese runs embedded in prose and links the
     taught words in every run, kana-only ones included. Runs already followed
     by a bracket annotation are left alone, so reviewer hand-edits that carry
@@ -488,7 +499,7 @@ def _annotate_prose_line(line, known_readings, forms_by_slug, label):
         if any(furigana_lib.is_kanji(ch) for ch in run):
             annotated = furigana_lib.annotate_sentence(run, known_readings) or run
         if forms_by_slug:
-            annotated = _link_words(run, annotated, forms_by_slug, label)
+            annotated = _link_words(run, annotated, forms_by_slug, label, accepted_forms)
         if annotated == run:
             continue
         out.append(line[pos:match.start()])
@@ -498,7 +509,7 @@ def _annotate_prose_line(line, known_readings, forms_by_slug, label):
     return "".join(out)
 
 
-def _annotate_lesson_markdown(body, known_readings, label, forms_by_slug):
+def _annotate_lesson_markdown(body, known_readings, label, forms_by_slug, accepted_forms=()):
     """Build-time furigana pass over a lesson body: ```jp fence lines are
     annotated as whole sentences, prose lines per Japanese run. Authors and
     generators write plain Japanese; the tokenizer — never the LLM — supplies
@@ -531,23 +542,25 @@ def _annotate_lesson_markdown(body, known_readings, label, forms_by_slug):
                     # Pedagogical non-sentences (conjugation arrows 食べる → 食べて)
                     # fail the whole-line round-trip; annotate per Japanese run.
                     annotated = _annotate_prose_line(stripped, known_readings, forms_by_slug,
-                                                     label)
+                                                     label, accepted_forms)
                     if annotated == stripped and any(
                         furigana_lib.is_kanji(ch) for ch in stripped
                     ):
                         print(f"warning: {label}: furigana failed for jp line: {stripped}",
                               file=sys.stderr)
                 else:
-                    annotated = _link_words(stripped, annotated, forms_by_slug, label)
+                    annotated = _link_words(stripped, annotated, forms_by_slug, label,
+                                            accepted_forms)
                 out.append(annotated)
             else:
                 out.append(line)
         else:
-            out.append(_annotate_prose_line(line, known_readings, forms_by_slug, label))
+            out.append(_annotate_prose_line(line, known_readings, forms_by_slug, label,
+                                            accepted_forms))
     return "\n".join(out)
 
 
-def _load_lesson(slug, known_readings, forms_by_slug):
+def _load_lesson(slug, known_readings, forms_by_slug, accepted_forms=()):
     """(sidecar_meta, annotated_body) for grammar/lessons/<slug>.md, or None
     when the grammar point has no long-form lesson yet."""
     path = os.path.join(LESSONS_DIR, f"{slug}.md")
@@ -556,7 +569,8 @@ def _load_lesson(slug, known_readings, forms_by_slug):
     with open(path, encoding="utf-8") as f:
         meta, body = frontmatter_lib.parse(f.read())
     label = f"grammar lesson {slug}"
-    return meta, _annotate_lesson_markdown(body, known_readings, label, forms_by_slug)
+    return meta, _annotate_lesson_markdown(body, known_readings, label, forms_by_slug,
+                                           accepted_forms)
 
 
 def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors):
@@ -679,7 +693,7 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                     entry["word_spans"] = word_spans
                 uses.append(entry)
             item["uses"] = uses
-        lesson = _load_lesson(g["slug"], known_readings, forms)
+        lesson = _load_lesson(g["slug"], known_readings, forms, g["accepted_forms"])
         if lesson:
             meta, body = lesson
             item["explanation_markdown"] = body

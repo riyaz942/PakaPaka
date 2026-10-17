@@ -45,6 +45,22 @@ class LessonWordLinksTest(unittest.TestCase):
                 out = generate._wrap_spans("時々", annotated, [span], "t")
                 self.assertEqual(out, "{{tokidoki||%s}}" % annotated)
 
+    def test_word_inside_the_lessons_own_grammar_form_is_not_linked(self):
+        out = generate._annotate_lesson_markdown(
+            "Use それでも here.", None, "t", {"sorede": "それで"}, ["それでも"])
+        self.assertEqual(out, "Use それでも here.")
+
+    def test_word_partly_overlapping_the_grammar_form_is_kept(self):
+        out = generate._annotate_lesson_markdown(
+            "Say 食べている here.", None, "t", {"taberu": "食べる"}, ["ている"])
+        self.assertIn("{{taberu|te|食[た]べて}}", out)
+
+    def test_word_outside_the_grammar_form_is_kept(self):
+        out = generate._annotate_lesson_markdown(
+            "Say これはそれでも here.", None, "t", {"kore": "これ", "sorede": "それで"},
+            ["それでも"])
+        self.assertEqual(out, "Say {{kore||これ}}はそれでも here.")
+
     def test_marker_characters_in_lesson_fail(self):
         with self.assertRaises(ValueError):
             generate._annotate_lesson_markdown("bad {{ text", None, "t", FORMS)
