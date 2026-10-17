@@ -399,12 +399,93 @@ def build_n5_kanji():
     return _build_kanji_items(N5_KANJI)
 
 
-def _annotate_prose_line(line, known_readings):
-    """Annotates kanji-bearing Japanese runs embedded in prose. Runs already
-    followed by a bracket annotation are left alone, so reviewer hand-edits
-    that carry notation survive a rebuild. Inline `code` spans are skipped —
-    lessons use them for deliberately-incorrect forms, which the renderer
-    shows without furigana."""
+_FURIGANA_BRACKET_RE = re.compile(r"\[([^\[\]]*)]")
+
+
+def _is_group_kanji(ch):
+    """Kanji for furigana grouping: parseFurigana also takes 々 into the run."""
+    return ch == "々" or furigana_lib.is_kanji(ch)
+
+
+def _wrap_spans(plain, annotated, spans, label):
+    """`annotated` with each span wrapped as `{{slug|inflection|text}}`.
+
+    `spans` are offsets into `plain` (`annotated` minus its `[readings]`). A
+    reading belongs to the maximal kanji run before it, as in the app's
+    parseFurigana; a span edge inside such a group would split a reading, so
+    that span is dropped with a warning instead."""
+    # Per plain char: where it starts in `annotated`, where it ends (a group's
+    # last kanji ends after its bracket), and which offsets fall inside a group.
+    starts, ends = [], []
+    inside = set()
+    cursor = 0
+    for match in _FURIGANA_BRACKET_RE.finditer(annotated):
+        group_start = match.start()
+        while group_start > cursor and _is_group_kanji(annotated[group_start - 1]):
+            group_start -= 1
+        for i in range(cursor, group_start):
+            starts.append(i)
+            ends.append(i + 1)
+        if group_start < match.start():
+            inside.update(range(len(starts) + 1, len(starts) + match.start() - group_start))
+            for i in range(group_start, match.start()):
+                starts.append(i)
+                ends.append(i + 1)
+            ends[-1] = match.end()
+        cursor = match.end()
+    for i in range(cursor, len(annotated)):
+        starts.append(i)
+        ends.append(i + 1)
+
+    out = []
+    pos = 0  # annotated index already emitted
+    for span in spans:
+        if span["start"] in inside or span["end"] in inside:
+            print(f"warning: {label}: span {span['vocabulary_slug']} cuts furigana "
+                  f"group in {plain}", file=sys.stderr)
+            continue
+        begin, end = starts[span["start"]], ends[span["end"] - 1]
+        out.append(annotated[pos:begin])
+        out.append("{{%s|%s|%s}}" % (span["vocabulary_slug"], span.get("inflection") or "",
+                                     annotated[begin:end]))
+        pos = end
+    out.append(annotated[pos:])
+    return "".join(out)
+
+
+def _link_words(plain, annotated, forms_by_slug, label, accepted_forms=()):
+    """`annotated` with every taught word in `plain` wrapped in a lesson word
+    marker. Candidates are the whole level's vocabulary; the spans are the
+    same ones a grammar pool sentence carries. A span fully inside an
+    occurrence of the lesson's own grammar form is the grammar, not a word
+    (それで in それでも), so it is dropped; a partial overlap is kept."""
+    if furigana_lib.strip_furigana(annotated) != plain:
+        print(f"warning: {label}: annotation does not match text, words not linked: "
+              f"{plain}", file=sys.stderr)
+        return annotated
+    spans = spans_lib.merge_spans(
+        spans_lib.derive_spans(plain, forms_by_slug),
+        spans_lib.build_stem_spans(plain, forms_by_slug),
+    )
+    occurrences = [
+        (m.start(), m.end())
+        for form in accepted_forms if form
+        for m in re.finditer(re.escape(form), plain)
+    ]
+    spans = [
+        span for span in spans
+        if not any(start <= span["start"] and span["end"] <= end for start, end in occurrences)
+    ]
+    return _wrap_spans(plain, annotated, spans, label)
+
+
+def _annotate_prose_line(line, known_readings, forms_by_slug, label, accepted_forms=()):
+    """Annotates kanji-bearing Japanese runs embedded in prose and links the
+    taught words in every run, kana-only ones included. Runs already followed
+    by a bracket annotation are left alone, so reviewer hand-edits that carry
+    notation survive a rebuild. Inline `code` spans are skipped — lessons use
+    them for deliberately-incorrect forms, which the renderer shows without
+    furigana."""
     code_spans = [m.span() for m in _CODE_SPAN_RE.finditer(line)]
     out = []
     pos = 0
@@ -412,12 +493,14 @@ def _annotate_prose_line(line, known_readings):
         if any(start <= match.start() < end for start, end in code_spans):
             continue
         run = match.group(0)
-        if not any(furigana_lib.is_kanji(ch) for ch in run):
-            continue
         if match.end() < len(line) and line[match.end()] == "[":
             continue
-        annotated = furigana_lib.annotate_sentence(run, known_readings)
-        if annotated is None or annotated == run:
+        annotated = run
+        if any(furigana_lib.is_kanji(ch) for ch in run):
+            annotated = furigana_lib.annotate_sentence(run, known_readings) or run
+        if forms_by_slug:
+            annotated = _link_words(run, annotated, forms_by_slug, label, accepted_forms)
+        if annotated == run:
             continue
         out.append(line[pos:match.start()])
         out.append(annotated)
@@ -426,13 +509,17 @@ def _annotate_prose_line(line, known_readings):
     return "".join(out)
 
 
-def _annotate_lesson_markdown(body, known_readings, label):
+def _annotate_lesson_markdown(body, known_readings, label, forms_by_slug, accepted_forms=()):
     """Build-time furigana pass over a lesson body: ```jp fence lines are
     annotated as whole sentences, prose lines per Japanese run. Authors and
     generators write plain Japanese; the tokenizer — never the LLM — supplies
     readings (docs/content/content-pipeline-plan.md Phase 0). Annotation failures
     leave the text plain and warn: for *generated* drafts the Phase 2 gate has
-    already rejected them, so a warning here means a human edit needs fixing."""
+    already rejected them, so a warning here means a human edit needs fixing.
+    Taught words are then wrapped in `{{slug|inflection|text}}` markers, which
+    is why a lesson may not contain `{{` or `}}` itself."""
+    if "{{" in body or "}}" in body:
+        raise ValueError(f"{label}: lesson text contains '{{{{' or '}}}}'")
     lines = body.replace("\r\n", "\n").split("\n")
     out = []
     in_fence = False
@@ -454,21 +541,26 @@ def _annotate_lesson_markdown(body, known_readings, label):
                 if annotated is None:
                     # Pedagogical non-sentences (conjugation arrows 食べる → 食べて)
                     # fail the whole-line round-trip; annotate per Japanese run.
-                    annotated = _annotate_prose_line(stripped, known_readings)
+                    annotated = _annotate_prose_line(stripped, known_readings, forms_by_slug,
+                                                     label, accepted_forms)
                     if annotated == stripped and any(
                         furigana_lib.is_kanji(ch) for ch in stripped
                     ):
                         print(f"warning: {label}: furigana failed for jp line: {stripped}",
                               file=sys.stderr)
+                else:
+                    annotated = _link_words(stripped, annotated, forms_by_slug, label,
+                                            accepted_forms)
                 out.append(annotated)
             else:
                 out.append(line)
         else:
-            out.append(_annotate_prose_line(line, known_readings))
+            out.append(_annotate_prose_line(line, known_readings, forms_by_slug, label,
+                                            accepted_forms))
     return "\n".join(out)
 
 
-def _load_lesson(slug, known_readings):
+def _load_lesson(slug, known_readings, forms_by_slug, accepted_forms=()):
     """(sidecar_meta, annotated_body) for grammar/lessons/<slug>.md, or None
     when the grammar point has no long-form lesson yet."""
     path = os.path.join(LESSONS_DIR, f"{slug}.md")
@@ -477,7 +569,8 @@ def _load_lesson(slug, known_readings):
     with open(path, encoding="utf-8") as f:
         meta, body = frontmatter_lib.parse(f.read())
     label = f"grammar lesson {slug}"
-    return meta, _annotate_lesson_markdown(body, known_readings, label)
+    return meta, _annotate_lesson_markdown(body, known_readings, label, forms_by_slug,
+                                           accepted_forms)
 
 
 def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors):
@@ -552,6 +645,7 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                          all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None):
     errors = []
     items = []
+    forms = known_vocab_forms or {}
     for i, g in enumerate(grammar_entries, start=1):
         pool_entry = (pool_entries or {}).get(g["slug"])
         if pool_entry:
@@ -591,9 +685,15 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
                 use_furigana = furigana_lib.annotate_sentence(use["japanese"], known_readings)
                 if use_furigana:
                     entry["furigana"] = use_furigana
+                word_spans = spans_lib.merge_spans(
+                    spans_lib.derive_spans(use["japanese"], forms),
+                    spans_lib.build_stem_spans(use["japanese"], forms),
+                )
+                if word_spans:
+                    entry["word_spans"] = word_spans
                 uses.append(entry)
             item["uses"] = uses
-        lesson = _load_lesson(g["slug"], known_readings)
+        lesson = _load_lesson(g["slug"], known_readings, forms, g["accepted_forms"])
         if lesson:
             meta, body = lesson
             item["explanation_markdown"] = body

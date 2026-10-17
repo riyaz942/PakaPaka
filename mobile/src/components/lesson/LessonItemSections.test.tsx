@@ -115,6 +115,7 @@ describe('LessonIntroSection — grammar', () => {
                 japanese: 'よく遊んだものだ。',
                 furigana: null,
                 english: 'I used to play a lot.',
+                wordSpans: [],
               },
               {
                 label: 'Emotional reason',
@@ -122,6 +123,7 @@ describe('LessonIntroSection — grammar', () => {
                 japanese: 'だって、忙しかったもの。',
                 furigana: null,
                 english: 'Well, I was busy, okay?',
+                wordSpans: [],
               },
             ],
           }}

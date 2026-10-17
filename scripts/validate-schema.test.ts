@@ -239,6 +239,27 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
+  it('accepts word_spans on a grammar use', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      uses: [
+        {
+          label: 'A',
+          structure: 'N は',
+          japanese: '学生です。',
+          english: 'I am a student.',
+          word_spans: [{ vocabulary_slug: 'gakusei', start: 0, end: 2 }],
+        },
+        { label: 'B', structure: 'N は', japanese: '私です。', english: 'It is me.' },
+      ],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('errors when related_grammar_slugs references the item itself', () => {
     const tempDir = writeTempGrammarDir({
       ...baseItem,

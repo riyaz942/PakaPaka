@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import { FuriganaText } from '@/components/common/FuriganaText';
+import { LinkedSentence } from '@/components/common/LinkedSentence';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import type { GrammarUse } from '@/data/curriculum/itemRepository';
-import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
 /**
  * A grammar point that does more than one job (e.g. もの: nostalgic habit and
@@ -13,8 +12,6 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
  * details scroll.
  */
 export function GrammarUsesSection({ uses }: { uses: GrammarUse[] }) {
-  const { mode, knownKanji } = useFuriganaPreference();
-
   return (
     <View className="mt-4" testID="grammar-uses">
       <SectionHeading label={`${uses.length} uses`} />
@@ -30,12 +27,15 @@ export function GrammarUsesSection({ uses }: { uses: GrammarUse[] }) {
             <Text className="mt-space-xs text-body font-jp-medium text-primary">
               {use.structure}
             </Text>
-            <FuriganaText
-              text={use.furigana ?? use.japanese}
-              mode={mode}
-              knownKanji={knownKanji}
-              className="mt-space-sm text-body-lg font-jp-medium text-primary"
-            />
+            <View className="mt-space-sm">
+              <LinkedSentence
+                japanese={use.japanese}
+                furigana={use.furigana}
+                spans={use.wordSpans}
+                testIDPrefix="grammar-use"
+                sentenceId={String(index)}
+              />
+            </View>
             <Text className="mt-[3px] text-body-sm font-ui text-muted">{use.english}</Text>
           </View>
         ))}

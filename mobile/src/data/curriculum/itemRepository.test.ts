@@ -776,6 +776,7 @@ describe('itemRepository', () => {
             japanese: 'よく遊んだものだ。',
             furigana: 'よく遊[あそ]んだものだ。',
             english: 'I used to play a lot.',
+            word_spans: [{ vocabulary_item_id: 5, start: 2, end: 4, inflection: 'ta' }],
           },
           {
             label: 'Emotional reason',
@@ -794,6 +795,7 @@ describe('itemRepository', () => {
         japanese: 'よく遊んだものだ。',
         furigana: 'よく遊[あそ]んだものだ。',
         english: 'I used to play a lot.',
+        wordSpans: [{ vocabularyItemId: '5', startOffset: 2, endOffset: 4, inflection: 'ta' }],
       },
       {
         label: 'Emotional reason',
@@ -801,6 +803,7 @@ describe('itemRepository', () => {
         japanese: 'だって、忙しかったもの。',
         furigana: null,
         english: 'Well, I was busy, okay?',
+        wordSpans: [],
       },
     ]);
   });
