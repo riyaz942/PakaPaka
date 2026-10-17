@@ -448,7 +448,9 @@ All commands run from `curriculum/_build`.
 6. Verify and build:
    `.venv/bin/python -m generate_content.reading_link verify --base <sha before step 4>`
    (must print `verify OK`), then `.venv/bin/python generate.py --level n5`,
-   `.venv/bin/python generate.py --level n4`, and from the repo root
+   `.venv/bin/python generate.py --level n4` (vocabulary),
+   `.venv/bin/python generate.py --bands` (kanji — `--level` does not write
+   them), and from the repo root
    `npm run validate-schema && npm run compile-curriculum`.
 7. Every rewritten item is now `review_status: draft`. The maintainer
    reviews them in Studio.
