@@ -356,7 +356,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{ACCEPTED_FORMS}}": "、".join(ctx["accepted_forms"]),
             "{{MEANING}}": ctx["meaning"],
             "{{STRUCTURE}}": ctx["structure"],
-            "{{FAMILY}}": ctx["family"] or "(none)",
+            "{{FAMILY}}": ctx["family"],
             "{{LESSON_OPENING}}": ctx["lesson_opening"],
             "{{ORIGIN}}": mc.format_grammar_origin(ctx["origin"]),
             "{{CAST_BLOCK}}": mc.format_grammar_cast(),

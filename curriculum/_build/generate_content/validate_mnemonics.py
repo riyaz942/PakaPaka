@@ -1114,7 +1114,9 @@ _LATIN_RE = re.compile(r"[A-Za-z]")
 _STORY_JAPANESE_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿々〆ー]")
 _KANA_ONLY_RE = re.compile(r"[぀-ヿー]+")
 #: Quoted speech: its "Oh! That one!" punctuation is not a sentence end.
-_QUOTED_RE = re.compile(r'"[^"]*"')
+#: Straight and curly double quotes, and curly single quotes (an apostrophe is
+#: a ’ followed by a letter, so it does not close one).
+_QUOTED_RE = re.compile(r'"[^"]*"|\u201c[^\u201d]*\u201d|\u2018.*?\u2019(?![A-Za-z])')
 
 
 def _bare_forms(ctx):
@@ -1229,7 +1231,7 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
                 f"{', '.join(origin['keywords'])}"
             )
     else:
-        found = [p for p in GRAMMAR_ORIGIN_PHRASES if p in lowered]
+        found = [p for p in GRAMMAR_ORIGIN_PHRASES if re.search(rf"\b{re.escape(p)}\b", lowered)]
         if found:
             errors.append(
                 f"{field} states an origin ({', '.join(found)}), but this point has none "

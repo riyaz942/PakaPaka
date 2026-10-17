@@ -198,6 +198,26 @@ class GrammarMnemonicInlineTest(unittest.TestCase):
         self.assertEqual(item["_meta"]["generator_model"], "lesson-model")
 
 
+class GrammarMnemonicSidecarErrorsTest(unittest.TestCase):
+    ENTRY = GrammarMnemonicInlineTest.ENTRY
+
+    def build_with(self, entries, all_slugs=("zz-test-kara",)):
+        return generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, all_slugs, known_vocab_forms=VOCAB,
+            mnemonic_entries=entries,
+        )
+
+    def test_empty_mnemonic_text_is_an_error(self):
+        with self.assertRaises(ValueError) as raised:
+            self.build_with({"zz-test-kara": {**self.ENTRY, "mnemonic_text": ""}})
+        self.assertIn("zz-test-kara", str(raised.exception))
+
+    def test_sidecar_slug_that_is_no_grammar_point_is_an_error(self):
+        with self.assertRaises(ValueError) as raised:
+            self.build_with({"zz-typo": self.ENTRY})
+        self.assertIn("zz-typo", str(raised.exception))
+
+
 class GrammarSeedsRemovedTest(unittest.TestCase):
     def test_no_skeleton_entry_has_a_mnemonic_seed(self):
         from n4_grammar import N4_GRAMMAR

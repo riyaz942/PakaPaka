@@ -278,10 +278,15 @@ export function readGrammarMnemonicStatus(repoRoot: string, slug: string): Revie
   return typeof status === 'string' ? (status as ReviewStatus) : 'none';
 }
 
-/** `review_status:` from a grammar lesson's frontmatter; 'none' when it has none. */
+/**
+ * `review_status:` from a grammar lesson's frontmatter; 'none' when it has none.
+ * Every grammar point has a lesson, so a missing file throws.
+ */
 export function readGrammarLessonStatus(repoRoot: string, slug: string): ReviewStatus {
   const filePath = lessonPath(repoRoot, slug);
-  if (!fs.existsSync(filePath)) return 'none';
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`${slug} has no lesson at curriculum/grammar/lessons/${slug}.md`);
+  }
   const match = /^---\n([\s\S]*?)\n---\n/.exec(fs.readFileSync(filePath, 'utf8'));
   const line = match ? /^review_status:\s*(\S+)\s*$/m.exec(match[1]) : null;
   return line ? (line[1] as ReviewStatus) : 'none';

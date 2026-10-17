@@ -1364,7 +1364,7 @@ def grammar_context(level, slug, table=None):
         "accepted_forms": item["accepted_forms"],
         "meaning": item["meaning"],
         "structure": item["structure"],
-        "family": item.get("family", ""),
+        "family": item["family"],
         "lesson_opening": grammar_lesson_opening(slug),
         "origin": origins[slug],
         "allowed_vocab": allowed_vocab,

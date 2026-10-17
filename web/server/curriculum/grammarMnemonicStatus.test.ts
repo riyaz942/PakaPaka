@@ -99,3 +99,11 @@ test('item response gives the lesson status apart from the merged row status', a
     server.close();
   }
 });
+
+test('a grammar point with no lesson file is an error, not status none', () => {
+  const root = scratchRepo();
+  fs.rmSync(path.join(root, 'curriculum', 'grammar', 'lessons', 'wa-topic.md'));
+  assert.throws(() => readGrammarLessonStatus(root, 'wa-topic'), /no lesson/);
+  const result = updateGrammarMnemonicReviewStatus(root, 'N5', 'wa-topic', 'reviewed');
+  assert.equal(result.ok, false);
+});

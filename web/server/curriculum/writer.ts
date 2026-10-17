@@ -227,6 +227,10 @@ export function updateGrammarMnemonicReviewStatus(
   slug: string,
   reviewStatus: ReviewStatus,
 ): SaveResult {
+  const blocked = checkReviewStatusTarget(repoRoot, 'grammar', slug);
+  if (blocked.length > 0) {
+    return { ok: false, errors: blocked };
+  }
   const curriculumDir = path.join(repoRoot, 'curriculum');
   const opened = openLevelFile(curriculumDir, 'grammar', level);
   if ('errors' in opened) {

@@ -301,5 +301,48 @@ class GateReviewFixesTest(unittest.TestCase):
         self.assertTrue(any("form=" in e for e in check(text)))
 
 
+class GateMinorFixesTest(unittest.TestCase):
+    KUDASAI = {"word": "下さる", "gloss": "to give (honorific)",
+               "keywords": ["give", "gives", "hand over", "hands over"]}
+    HAND_OVER = (
+        "At the counter, Sei smiles and says \"<reading>Tay, cool dah, sigh!</reading>\", so Koichi "
+        "must hand over the bag she wants, <grammar>please do it</grammar>. "
+        "買っ<reading>てください</reading>。"
+    )
+
+    def kudasai_ctx(self):
+        return gctx(slug="te-kudasai", form="てください", accepted=("てください",),
+                    origin=self.KUDASAI)
+
+    def test_multi_word_keyword_matches_at_a_word_start(self):
+        ctx = self.kudasai_ctx()
+        self.assertEqual(check(self.HAND_OVER, ctx), [])
+        without = self.HAND_OVER.replace("hand over", "pass along")
+        self.assertTrue(any("act out the origin 下さる" in e for e in check(without, ctx)))
+
+    def test_curly_double_quotes_collapse_like_straight_ones(self):
+        text = WO_GOOD.replace('"', "\u201c", 1).replace('"', "\u201d", 1)
+        self.assertEqual(check(text, wo_ctx()), [])
+
+    def test_curly_single_quotes_collapse_and_keep_apostrophes(self):
+        text = WO_GOOD.replace('"<reading>Oh!</reading> That one!"',
+                               "\u2018<reading>Oh!</reading> That one, it\u2019s fresh!\u2019")
+        self.assertEqual(check(text, wo_ctx()), [])
+
+    def test_origin_phrase_matches_whole_words_only(self):
+        ok = WA_GOOD.replace("in class", "in a short forest class")
+        self.assertEqual(check(ok, wa_ctx()), [])
+        bad = WA_GOOD.replace("in class", "in class, a word short for something")
+        self.assertTrue(any("states an origin" in e for e in check(bad, wa_ctx())))
+
+    def test_point_without_a_family_raises(self):
+        from unittest import mock
+        items = [{k: v for k, v in it.items() if k != "family"}
+                 for it in mc.load_items("grammar", "n4")]
+        with mock.patch.object(mc, "load_items", return_value=items):
+            with self.assertRaises(KeyError):
+                mc.grammar_context("n4", "teoku", GrammarContextTest.TABLE)
+
+
 if __name__ == "__main__":
     unittest.main()

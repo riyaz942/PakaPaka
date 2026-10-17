@@ -651,6 +651,10 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
     errors = []
     items = []
     forms = known_vocab_forms or {}
+    known_slugs = {g["slug"] for g in grammar_entries} | set(all_grammar_slugs)
+    for slug in mnemonic_entries or {}:
+        if slug not in known_slugs:
+            errors.append(f"grammar mnemonic sidecar has an entry for unknown slug '{slug}'")
     for i, g in enumerate(grammar_entries, start=1):
         pool_entry = (pool_entries or {}).get(g["slug"])
         if pool_entry:
@@ -728,7 +732,10 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
             if sidecar:
                 item["_meta"] = sidecar
         mnemonic = (mnemonic_entries or {}).get(g["slug"])
-        if mnemonic and mnemonic.get("mnemonic_text"):
+        if mnemonic is not None:
+            if not mnemonic.get("mnemonic_text"):
+                errors.append(f"grammar {g['slug']} mnemonic sidecar entry has no mnemonic_text")
+                continue
             item["mnemonic_text"] = mnemonic["mnemonic_text"]
             # The least reviewed of lesson and mnemonic wins, so a draft
             # mnemonic keeps a reviewed lesson behind compile's draft gate.
