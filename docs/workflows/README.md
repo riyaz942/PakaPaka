@@ -15,7 +15,7 @@ Three lanes, and most content types have more than one:
 | Content | Web-chat lane | Subagent lane | Single-session lane |
 | --- | --- | --- | --- |
 | Grammar lessons | [workflow](./grammar-web-chat-workflow.md) · [automation](./grammar-web-chat-workflow-automation-prompt.md) | [automation](./grammar-subagent-workflow-automation-prompt.md) | — |
-| Radical / kanji / vocab mnemonics | [workflow](./radical-kanji-vocab-mnemonic-web-chat-workflow.md) · [automation](./radical-kanji-vocab-mnemonic-web-chat-workflow-automation-prompt.md) | [automation](./radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md) | [automation](./radical-kanji-vocab-mnemonic-single-session-workflow-automation-prompt.md) |
+| Radical / kanji / vocab / grammar mnemonics | [workflow](./radical-kanji-vocab-mnemonic-web-chat-workflow.md) · [automation](./radical-kanji-vocab-mnemonic-web-chat-workflow-automation-prompt.md) | [automation](./radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md) | [automation](./radical-kanji-vocab-mnemonic-single-session-workflow-automation-prompt.md) |
 | Example sentences | [workflow](./example-sentences-web-chat-workflow.md) · [automation](./example-sentences-web-chat-workflow-automation-prompt.md) | [automation](./example-sentences-subagent-workflow-automation-prompt.md) | [automation](./example-sentences-single-session-workflow-automation-prompt.md) |
 | Radical mnemonic art | [workflow](./radical-art-web-chat-workflow.md) · [automation](./radical-art-web-chat-workflow-automation-prompt.md) | — | — |
 | Reading passages | — | [automation](./reading-passages-subagent-workflow-automation-prompt.md) | [automation](./reading-passages-single-session-workflow-automation-prompt.md) |

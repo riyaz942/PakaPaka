@@ -20,7 +20,7 @@ Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 <level = n4>
 
-Content type (one of `radical`, `kanji` or `vocab`):
+Content type (one of `radical`, `kanji`, `vocab` or `grammar`):
 
 <type = vocab>
 
@@ -68,6 +68,18 @@ if you try to skip ahead. Order for a level: **radicals → `generate.py
 <level> fully before moving to the next level. If Step 2 raises that error,
 stop and report it — the previous layer is not done.
 
+**Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
+other layer's prose, so it can run at any time. Two conditions instead:
+`curriculum/_build/grammar_origins.json` must cover every N5/N4 grammar slug and
+carry `"review_status": "reviewed"` (every command with `--type grammar` stops
+with an error otherwise — report it, do not edit the file yourself), and only
+`--level n5` and `--level n4` have grammar in scope. The gate rules are in
+`validate_mnemonics.validate_grammar`: one or two story sentences plus a
+Japanese example ending in 。, `<reading>` on the English sound-alike and on the
+form's kana, `<grammar>` on the meaning, example words and kanji at or below
+the level, and the origin's keyword in the story (or no origin claim at all).
+After ingesting grammar, run `generate.py --level <level>` (grammar is not banded).
+
 ---
 
 Workflow
@@ -88,7 +100,7 @@ BATCH_LIMIT, then run:
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION, sidecar_path
-LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <slug-count>   # KIND: 'radical', 'kanji' or 'vocab'
+LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <slug-count>   # KIND: 'radical', 'kanji', 'vocab' or 'grammar'
 slugs = mc.all_slugs(LEVEL, KIND_DIR[KIND])
 path = sidecar_path(KIND)
 sidecar = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
@@ -227,6 +239,7 @@ Do not write a combined file. Requirements:
   silent otherwise.
 - **Never name jukugo, on'yomi, kun'yomi, rendaku or gemination in a vocab
   mnemonic** — that is what the computed `reading_composition` field is for.
+- **For grammar, the sound-alike and the meaning are one joke** — a character says the English sound-alike while doing the meaning; the story acts out the origin when the prompt gives one, and never states an origin when it says there is none.
 - **For vocab, obey the reading block exactly** — it decides whether there is
   a reading mnemonic at all, and it is computed, not a judgement call:
     - *Regular or kana-only*: omit `reading_mnemonic` entirely. A fresh draft

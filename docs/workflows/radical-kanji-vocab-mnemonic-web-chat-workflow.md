@@ -27,9 +27,10 @@ cd curriculum/_build
 ```
 
 The one command you use is the mnemonic generator with two subcommands,
-`webprompts` and `ingest`. **Every command takes `--type radical`, `--type kanji` or
-`--type vocab`** — the three content types are generated separately, in that order
-(see "Doing a batch efficiently" below). Slugs are existing curriculum ids — list
+`webprompts` and `ingest`. **Every command takes `--type radical`, `--type kanji`,
+`--type vocab` or `--type grammar`** — the content types are generated separately;
+radical, kanji and vocab in that order, grammar at any time (see "Grammar" and
+"Doing a batch efficiently" below). Slugs are existing curriculum ids — list
 them first (see "List remaining slugs" below), then pass them to `webprompts`:
 
 ```bash
@@ -108,7 +109,7 @@ the items of this type that have **no** sidecar entry yet:
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, sidecar_path
-level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
+level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji', 'vocab' or 'grammar'
 subdir = KIND_DIR[kind]
 p = sidecar_path(kind)
 done = set(json.load(open(p))) if os.path.exists(p) else set()
@@ -126,8 +127,8 @@ type — useful for a full-level dump, not for a sitting of ~10.
 > `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
 > whole level rather than the gaps, and let `ingest` overwrite. The API path does
 > this for you — `run` re-queues any draft recorded under an older prompt version.
-> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6}`),
-> because the three prompts move independently. Radicals sitting at 1 is
+> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}`),
+> because the four prompts move independently. Radicals sitting at 1 is
 > deliberate: Rev 3 reverted the radical contract to the original shape — a
 > `mnemonic_text` of ~150–300 characters, description demoted to optional — so a
 > draft written under the original prompt is exactly what the current one asks
@@ -214,6 +215,22 @@ fights the gate for 3+ rolls, skip it and come back — don't burn a session on 
 stubborn item.
 
 ---
+
+## Grammar
+
+**Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
+other layer's prose, so it can run at any time. Two conditions instead:
+`curriculum/_build/grammar_origins.json` must cover every N5/N4 grammar slug and
+carry `"review_status": "reviewed"` (every command with `--type grammar` stops
+with an error otherwise — report it, do not edit the file yourself), and only
+`--level n5` and `--level n4` have grammar in scope. The gate rules are in
+`validate_mnemonics.validate_grammar`: one or two story sentences plus a
+Japanese example ending in 。, `<reading>` on the English sound-alike and on the
+form's kana, `<grammar>` on the meaning, example words and kanji at or below
+the level, and the origin's keyword in the story (or no origin claim at all).
+After ingesting grammar, run `generate.py --level <level>` (grammar is not banded).
+
+Design: `docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md`.
 
 ## Doing a batch efficiently
 
