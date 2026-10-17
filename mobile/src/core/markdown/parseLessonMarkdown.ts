@@ -68,6 +68,8 @@ const WORD_MARKER_RE = /\{\{(\d+)\|(masu|te|nai|ta|)\|([^{}]+?)\}\}/g;
 const CJK_CHAR_RE = /[　-ヿ㐀-䶿一-鿿＀-￯]/;
 // Characters that must not start a wrapped line; merged into the previous token.
 const JP_CLOSING_PUNCT_RE = /^[。、！？」』）,.）…～]$/;
+// Leading ASCII closing punctuation of a latin run (kept with a linked word).
+const LATIN_CLOSING_PUNCT_RE = /^[,.;:!?)'"]+/;
 
 /** Splits `{{id|inflection|text}}` markers out of a text run into link spans. */
 export function splitWordMarkers(
@@ -143,16 +145,29 @@ function pushPlainTokens(
   };
 
   let latinBuffer = '';
+  // Flush latin text as word tokens with trailing whitespace attached. Closing
+  // punctuation right after a linked word joins its trailing, so it cannot
+  // wrap onto the next line alone.
+  const flushLatin = () => {
+    let latin = latinBuffer;
+    const last = tokens[tokens.length - 1];
+    const closing = latin.match(LATIN_CLOSING_PUNCT_RE);
+    if (closing && last && last.kind === 'linked') {
+      last.trailing = (last.trailing ?? '') + closing[0];
+      latin = latin.slice(closing[0].length);
+    }
+    for (const word of latin.match(/\S+\s*|\s+/g) ?? []) {
+      pushWord(word);
+    }
+    latinBuffer = '';
+  };
+
   for (const ch of text) {
     if (!CJK_CHAR_RE.test(ch)) {
       latinBuffer += ch;
       continue;
     }
-    // Flush latin text as word tokens with trailing whitespace attached.
-    for (const word of latinBuffer.match(/\S+\s*|\s+/g) ?? []) {
-      pushWord(word);
-    }
-    latinBuffer = '';
+    flushLatin();
 
     const previous = tokens[tokens.length - 1];
     if (JP_CLOSING_PUNCT_RE.test(ch) && previous && previous.kind === 'word') {
@@ -163,9 +178,7 @@ function pushPlainTokens(
       pushWord(ch);
     }
   }
-  for (const word of latinBuffer.match(/\S+\s*|\s+/g) ?? []) {
-    pushWord(word);
-  }
+  flushLatin();
 }
 
 /**

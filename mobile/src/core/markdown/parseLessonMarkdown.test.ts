@@ -133,6 +133,42 @@ describe('linked word markers', () => {
     expect(token).toMatchObject({ kind: 'linked', trailing: '。' });
   });
 
+  it('attaches ASCII closing punctuation as trailing', () => {
+    const tokens = tokenizeSpans(parseInlineSpans('{{3||明日[あした]}}, then'));
+    expect(tokens.map((t) => ({ kind: t.kind, text: t.text, trailing: t.trailing }))).toEqual([
+      { kind: 'linked', text: '明日[あした]', trailing: ',' },
+      { kind: 'word', text: ' ', trailing: undefined },
+      { kind: 'word', text: 'then', trailing: undefined },
+    ]);
+  });
+
+  it('attaches a closing parenthesis but leaves the opening one alone', () => {
+    const tokens = tokenizeSpans(parseInlineSpans('({{3||明日[あした]}})'));
+    expect(tokens.map((t) => ({ kind: t.kind, text: t.text, trailing: t.trailing }))).toEqual([
+      { kind: 'word', text: '(', trailing: undefined },
+      { kind: 'linked', text: '明日[あした]', trailing: ')' },
+    ]);
+  });
+
+  it('gives two adjacent markers two linked tokens', () => {
+    const tokens = tokenizeSpans(splitWordMarkers('{{3||明日[あした]}}{{4||これ}}'));
+    expect(tokens.map((t) => [t.kind, t.vocabularyItemId])).toEqual([
+      ['linked', '3'],
+      ['linked', '4'],
+    ]);
+  });
+
+  it('attaches multi-character Japanese closing punctuation as trailing', () => {
+    const [token] = tokenizeSpans(splitWordMarkers('{{3||明日[あした]}}。」'));
+    expect(token).toMatchObject({ kind: 'linked', trailing: '。」' });
+  });
+
+  it('attaches punctuation after a bold marker as trailing', () => {
+    const tokens = tokenizeSpans(parseInlineSpans('**{{3||明日[あした]}}**。'));
+    expect(tokens).toHaveLength(1);
+    expect(tokens[0]).toMatchObject({ kind: 'linked', bold: true, trailing: '。' });
+  });
+
   it('splits a jp line into spans with links', () => {
     expect(splitWordMarkers('{{3||明日[あした]}}です')).toEqual([
       { text: '明日[あした]', link: { vocabularyItemId: '3', inflection: null } },
