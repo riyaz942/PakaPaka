@@ -1552,11 +1552,11 @@
   },
   "happiness": {
     "meaning_mnemonic": "A <radical>sprouting stalk</radical> coming up through your own patch of <radical>earth</radical> is the cheapest <kanji>happiness</kanji> going.",
-    "reading_mnemonic": "Koichi hears the shrine's jingling luck all the way across town and races back to <reading>coax</reading> every customer into buying charms, chanting <reading>こう</reading>, <reading>こう</reading> over the intercom until his shelves overflow with restocked fortune.",
+    "reading_mnemonic": "Koichi the konbini king kneels by his own patch of earth to <reading>coax</reading> the little stalk up, cooing 「<reading>こう</reading>」 until it sprouts and his face fills with <kanji form=\"幸\">happiness</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "harmony": {
@@ -3436,11 +3436,11 @@
   },
   "special": {
     "meaning_mnemonic": "The one <radical>cow</radical> kept up at the <radical>Buddhist temple</radical> is never for eating, which makes it <kanji>special</kanji>.",
-    "reading_mnemonic": "The intercom at Koichi's konbini loops the same announcement: that onigiri took first place today. The clerk's mumble flattens the word into <reading>とく</reading>, sounding just like <reading>took</reading>.",
+    "reading_mnemonic": "Brother <reading>Took</reading>, the temple monk, chants 「<reading>とく</reading>」 as he leads the one cow nobody may eat past the kitchen, because that cow is <kanji form=\"特\">special</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "spirit": {

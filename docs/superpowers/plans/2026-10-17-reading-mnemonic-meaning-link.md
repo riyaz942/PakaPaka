@@ -1269,7 +1269,7 @@ Report to the maintainer: totals (marked / kept, per kind) and 10 sample marked 
 
 - [ ] **Step 1: Record the base sha**
 
-Run: `git rev-parse HEAD` — keep it as `<base>` for Task 9's `verify`.
+Run: `git rev-parse HEAD` — keep it as `<base>` for Task 9's `verify`. **Recorded base: `d34fe867588e522151e206c037fea43f1c6a9341`.**
 
 - [ ] **Step 2: Rewrite `happiness` and `special`**
 
