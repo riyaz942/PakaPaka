@@ -917,7 +917,7 @@ Paste the 5 M/R pairs into the task report for the maintainer.
 - Consumes: `reports/reading-link-candidates.json` (Task 1 shape), the "Continue the meaning scene" section (Task 3), `reading_link check-list` / `apply` (Tasks 1–2).
 - Produces: `reports/reading-link-list.json` (`{"marked": [{"kind","slug","reason"}], "kept": [{"kind","slug"}], "stats": {"total","marked","kept"}}`) and `reports/reading-link-rewrites.json` (`[{"kind","slug","reading_mnemonic"}]`).
 
-- [ ] **Step 1: Write `prompts/reading-link-triage.md`**
+- [x] **Step 1: Write `prompts/reading-link-triage.md`**
 
 ```markdown
 # Triage reading mnemonics — mark the ones whose scene does not connect
@@ -998,7 +998,7 @@ Fix every error it prints. Then stop: the maintainer reviews the list before
 any rewrite.
 ```
 
-- [ ] **Step 2: Write `prompts/reading-link-rewrite.md`**
+- [x] **Step 2: Write `prompts/reading-link-rewrite.md`**
 
 ```markdown
 # Rewrite marked reading mnemonics so they continue the meaning scene
@@ -1063,12 +1063,12 @@ is removed from the rewrites file and reported to the maintainer. When the dry
 run shows 0 failing, apply for real (same command without `--dry-run`).
 ```
 
-- [ ] **Step 3: Check the two prompts agree with the code**
+- [x] **Step 3: Check the two prompts agree with the code**
 
 Run: `grep -n "reading-link-\(list\|candidates\|rewrites\|calibration\)\.json\|reading_link \(select\|check-list\|apply\)" generate_content/prompts/reading-link-*.md`
 Expected: every path matches a `*_PATH` constant in `reading_link.py`, and every command is a real subcommand (`select`, `check-list`, `apply`).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add generate_content/prompts/reading-link-triage.md generate_content/prompts/reading-link-rewrite.md
