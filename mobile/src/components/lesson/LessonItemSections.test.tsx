@@ -158,10 +158,25 @@ describe('LessonMnemonicSectionView — grammar', () => {
 
     expect(screen.queryByText('Contrast')).toBeNull();
     expect(screen.queryByText(/Very soon you will meet/)).toBeNull();
-    // The hook stays on section 1, and the mnemonic empty state is gone:
-    // grammar carries no curriculum mnemonic by design.
+    // The hook stays on section 1.
     expect(screen.queryByText(/You name your topic/)).toBeNull();
-    expect(screen.queryByTestId('lesson-mnemonic-empty')).toBeNull();
+    // No curriculum mnemonic yet on this fixture: the block says so.
+    expect(screen.getByTestId('grammar-mnemonic-placeholder')).toBeTruthy();
+  });
+
+  it('puts the mnemonic above the rules', () => {
+    render(
+      <LessonMnemonicSectionView
+        {...props}
+        item={{ ...item, mnemonicText: 'Sei asks "<reading>Wha</reading>t about me?": <grammar>the topic</grammar>. 私は学生です。' }}
+      />,
+    );
+
+    const ids = screen.UNSAFE_root
+      .findAll((node) => typeof node.props.testID === 'string')
+      .map((node) => node.props.testID as string);
+    expect(ids.indexOf('grammar-mnemonic')).toBeGreaterThan(-1);
+    expect(ids.indexOf('grammar-mnemonic')).toBeLessThan(ids.indexOf('grammar-how-it-works'));
   });
 
   it('renders only the personal mnemonic editor when the essay has no sections', () => {
