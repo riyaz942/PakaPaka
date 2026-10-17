@@ -65,10 +65,10 @@ describe('GrammarBuildCard', () => {
     expect(screen.queryByTestId('grammar-build-answer-' + SENTENCE.sentenceKey + '-linked')).toBeNull();
   });
 
-  it('before answering, only a word not started yet is a link (D12)', () => {
+  it('before answering, every word is a link, started or not', () => {
     render(<GrammarBuildCard item={grammarItem('production')} answered={false} />);
     fireEvent.press(screen.getByTestId('grammar-build-vocab-20'));
-    expect(mockPush).not.toHaveBeenCalled();
+    expect(mockPush).toHaveBeenCalledWith('/browse/item/20');
     fireEvent.press(screen.getByTestId('grammar-build-vocab-21'));
     expect(mockPush).toHaveBeenCalledWith('/browse/item/21');
   });

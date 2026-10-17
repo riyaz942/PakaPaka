@@ -1,25 +1,19 @@
-import { router, type Href } from 'expo-router';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { FuriganaText } from '@/components/common/FuriganaText';
 import { LinkedSentence } from '@/components/common/LinkedSentence';
-import { useItemHref } from '@/components/learn/ItemLinkContext';
-import { isWordLinked } from '@/core/grammar/linkPolicy';
-import type { GrammarVocabEntry, ReviewItem } from '@/core/srs/srs.types';
-import { useDatabase } from '@/data/hooks/useDatabase';
-import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
-import { isVocabularyItemKnown } from '@/data/user/masteryRepository';
+import { LinkedWord } from '@/components/common/LinkedWord';
+import type { ReviewItem } from '@/core/srs/srs.types';
 
 type GrammarBuildCardProps = {
   item: ReviewItem;
-  /** True once the card has a terminal result: every word links and the sentence shows. */
+  /** True once the card has a terminal result: the correct sentence shows. */
   answered: boolean;
 };
 
 /**
  * Build card (spec §3.2): the English sentence, its words in dictionary form
  * and a polite/plain tag; the learner types the whole sentence in Japanese.
- * Link timing follows D12 (isWordLinked).
+ * Every word links at all times, and its furigana follows its own mastery.
  */
 export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
   const sentence = item.grammarBuild;
@@ -32,10 +26,14 @@ export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
       </View>
       <View className="flex-row flex-wrap items-end justify-center gap-space-sm">
         {sentence.vocabulary.map((entry) => (
-          <VocabWord
+          <LinkedWord
             key={entry.itemId}
-            entry={entry}
-            linked={isWordLinked({ card: 'build', answered, wordStarted: entry.started })}
+            text={entry.furigana ?? entry.primaryForm}
+            surface={entry.primaryForm}
+            vocabularyItemId={entry.itemId}
+            inflection={null}
+            textClassName="text-body-lg font-jp-medium"
+            testID={`grammar-build-vocab-${entry.itemId}`}
           />
         ))}
       </View>
@@ -50,42 +48,5 @@ export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
         />
       ) : null}
     </View>
-  );
-}
-
-function VocabWord({ entry, linked }: { entry: GrammarVocabEntry; linked: boolean }) {
-  const { userDb } = useDatabase();
-  const { knownKanji, modeForItem } = useFuriganaPreference();
-  const hrefFor = useItemHref();
-  const word = (
-    <FuriganaText
-      text={entry.furigana ?? entry.primaryForm}
-      mode={modeForItem(entry.itemId)}
-      knownKanji={knownKanji}
-      // Per-word mastery: a word not learned yet always shows its reading.
-      isKnownWord={isVocabularyItemKnown(userDb, entry.itemId)}
-      interactive={false}
-      className={
-        linked
-          ? 'text-body-lg font-jp-medium text-content-vocabulary-deep underline'
-          : 'text-body-lg font-jp-medium text-primary'
-      }
-    />
-  );
-  if (!linked) {
-    return (
-      <View accessible accessibilityLabel={entry.primaryForm} testID={`grammar-build-vocab-${entry.itemId}`}>
-        {word}
-      </View>
-    );
-  }
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={`${entry.primaryForm}, show word details`}
-      onPress={() => router.push(hrefFor(entry.itemId) as Href)}
-      testID={`grammar-build-vocab-${entry.itemId}`}>
-      {word}
-    </Pressable>
   );
 }

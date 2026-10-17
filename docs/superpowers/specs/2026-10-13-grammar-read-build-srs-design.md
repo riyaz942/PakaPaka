@@ -35,7 +35,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 | D9 | Repeats | The two cards in one review use different sentences; no sentence from the previous review is reused |
 | D10 | Vocab range (authoring) | The existing pipeline rule `generate_content/context.allowed_vocab_for`: all lower-level words + same-level words up to a proportional cutoff + the point's own linked words + `CORE_SEED_SLUGS` (~85 survival words). A simulated lesson position was rejected: earlier pipeline work found it leaves the first point 1 word and ~100 of 161 points before their own linked words |
 | D11 | Word links | Per-word linked renderer (tap → detail page, long-press → furigana toggle, per-word mastery furigana) on both cards |
-| D12 | Link timing | Read card: every vocab word tappable at all times; grammar span locked until answered. Build card: words the learner has **started** link only after answering; words **not started** link before answering, with no grade penalty |
+| D12 | Link timing | Read card: every vocab word tappable at all times; grammar span locked until answered. Build card: every word links at all times (changed after feedback: learners need the meaning while building), with no grade penalty |
 
 ---
 
@@ -54,7 +54,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 
 - English sentence, a vocabulary list of the sentence's words in dictionary form (e.g. `寒い・コート・着る`), and a `polite` / `plain` tag.
 - Vocabulary list renders per-word furigana by mastery, so a not-yet-learned word always shows its reading.
-- Links per D12. Before answering, a word the learner has started is plain text; a word not started is a link.
+- Links per D12. Every word in the list is a link before and after answering.
 - Existing `WanaKanaInput` (romaji → kana; kanji typed with the system Japanese keyboard passes through unchanged). Return / **Check** submits.
 - Grading (see §5.2): correct, `other_grammar` nudge (non-terminal), or incorrect. No typo tolerance.
 - Wrong: the correct sentence (kanji + furigana, linked renderer) under the learner's answer, then the normal incorrect flow. Button **My answer is correct too** saves the answer and regrades the card to correct.
@@ -137,7 +137,6 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
   - Curriculum answers (`answers`, `otherGrammarAnswers`) are furigana notation, parsed with the existing `parseFurigana`. Each annotated segment matches its base text **or** its reading; plain segments match their normalised text. Segments match independently, so kanji and kana can mix (`寒いから、コートをきます`). A different word (僕 for 私) does not match.
   - User answers match by exact normalised text.
 - `core/srs/pairGrading.ts` — unchanged (`combinePairGrades`).
-- `core/grammar/linkPolicy.ts` — `isWordLinked({ card, answered, wordStarted }) → boolean` (D12).
 
 ### 5.3 Queue and session
 
@@ -162,7 +161,7 @@ Because pool sentences are ordinary example sentences, lessons and Browse show t
 
 ## 6. Testing
 
-- **Unit:** `evaluateGrammarBuild` (all-kana, all-kanji, mixed per segment, katakana ↔ hiragana, wrong kanji word rejected, valid alternates, `other_grammar`, user answers with kanji, punctuation), `pickGrammarSentences` (distinct, excludes last review), `isWordLinked` (all D12 cases), pair grading for a grammar pair (Read wrong + Build right → Again).
+- **Unit:** `evaluateGrammarBuild` (all-kana, all-kanji, mixed per segment, katakana ↔ hiragana, wrong kanji word rejected, valid alternates, `other_grammar`, user answers with kanji, punctuation), `pickGrammarSentences` (distinct, excludes last review), pair grading for a grammar pair (Read wrong + Build right → Again).
 - **Component:** `GrammarReadCard` (locked grammar span, links, synonym), `GrammarBuildCard` (link timing before/after answer, nudge non-terminal, save-answer regrade), `ExampleSentencesSection` regression after extraction.
 - **Migration:** `021` up on a populated `user.db`; backup round-trip with the two new tables.
 - **Pipeline:** one test per validator rule in §4.4; derived-field tests (register, grammar span, vocabulary list).
