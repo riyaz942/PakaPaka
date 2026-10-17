@@ -101,7 +101,7 @@ kanji — and it does that job only if the meaning is in the sentence too.
 A sound floating next to a scene that could belong to any kanji is a sound the
 learner will attach to the wrong character by Thursday.
 
-So it needs all four of these, in one or two short sentences:
+So it needs all five of these, in one or two short sentences:
 
 1. **The sound.** An English phonetic hook that really sounds like
    「{{PRIMARY_READING}}」, said by the cast character fixed to that reading.
@@ -111,6 +111,9 @@ So it needs all four of these, in one or two short sentences:
    meaning belong in the same sentence. That link is the whole mnemonic.
 4. **A laugh.** Absurd, petty, or undignified. Funny is what survives to the
    fourth review.
+5. **The meaning mnemonic's scene.** The reading continues the scene the
+   meaning mnemonic built — the same object, place or action. See "Continue
+   the meaning scene" below.
 
 **Right** — the hook and the meaning are the same event:
 
@@ -136,10 +139,53 @@ So it needs all four of these, in one or two short sentences:
 Three sentences, a whole scene, and nothing in it says *red*. The learner ends
 up with a sprinter, a sack and a sound, and no idea which kanji they belong to.
 
-Tie the scene to the meaning mnemonic where you can — the same place, the same
-aftermath — so the two reinforce each other instead of competing for the same
-memory. Don't re-explain the decomposition here; the components belong to the
-meaning mnemonic. This one is about the *sound*.
+### Continue the meaning scene
+
+This is a rule, not a preference. The reading mnemonic picks up the meaning
+mnemonic's scene — its object, its place or its action — and the reading's
+cast character walks into it. Do not give the cast character a scene of its
+own. Two unrelated scenes compete for the same memory; one scene told twice
+reinforces it.
+
+**Right** — the meaning mnemonic and the reading mnemonic share the sword:
+
+> Meaning: To <kanji form="研">polish</kanji> a sword you drag its blade back
+> and forth across a flat <radical form="石">stone</radical> propped on a
+> steady <radical form="开">bench</radical> until it shines back at you.
+>
+> Reading: No sword goes back on the wall until <reading>Ken</reading> the
+> sword-collecting dog has <kanji form="研">polish</kanji>ed it to a mirror,
+> and he growls 「<reading>けん</reading>」 at every last smudge.
+
+**Wrong** — the sound and the cast are right, but the scene is new:
+
+> Meaning: A <radical form="𢆉">sprouting stalk</radical> coming up through
+> your own patch of <radical form="土">earth</radical> is the cheapest
+> <kanji form="幸">happiness</kanji> going.
+>
+> Reading: Koichi hears the shrine's jingling luck all the way across town and
+> races back to <reading>coax</reading> every customer into buying charms,
+> chanting <reading>こう</reading>, <reading>こう</reading> over the intercom.
+
+The stalk and the earth never come back; the learner gets a shop and a
+chant, and nothing joins them to the sprout.
+
+> Meaning: The one <radical form="牛">cow</radical> kept up at the
+> <radical form="寺">Buddhist temple</radical> is never for eating, which makes
+> it <kanji form="特">special</kanji>.
+>
+> Reading: The intercom at Koichi's konbini loops the same announcement: that
+> onigiri took first place today. The clerk's mumble flattens the word into
+> <reading>とく</reading>, sounding just like <reading>took</reading>.
+
+No cow, no temple, and no *special* — a konbini that could belong to any kanji.
+
+**Check before you finish:** cover the meaning mnemonic. Does the reading
+still point back at it — the same sword, the same crates, the same cave? If
+not, it is not finished.
+
+Don't re-explain the decomposition here; the components belong to the
+meaning mnemonic. The reading reuses the *scene*, not the component list.
 
 ## The kanji
 
@@ -291,7 +337,8 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
    sound 「{{PRIMARY_READING}}」 and this kanji's meaning are the same joke.
    Follow "The reading mnemonic: the sound and the meaning in one joke" above:
    the reading's cast character (or, if none is fixed, a character whose name
-   carries the sound) does something the meaning explains, the kana
+   carries the sound) walks into the meaning mnemonic's scene and does
+   something the meaning explains (see "Continue the meaning scene"), the kana
    「{{PRIMARY_READING}}」 appears literally so the learner sees the sound they
    are recalling, and this kanji's taught meaning appears in `<kanji>` tags. If
    the sentence would still make sense with a different kanji's meaning dropped

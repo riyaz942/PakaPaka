@@ -688,7 +688,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - Consumes: `generate_mnemonics webprompts` (renders prompts into the gitignored `generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md`), `validate_draft`.
 - Produces: the rule text the triage and rewrite prompts (Task 4) point at by section name: **"Continue the meaning scene"**.
 
-- [ ] **Step 1: Kanji prompt — add the rule and examples**
+- [x] **Step 1: Kanji prompt — add the rule and examples**
 
 In `prompts/kanji-mnemonic.md`, in the list "So it needs all four of these…", change the intro line and add a fifth item after item 4:
 
@@ -770,7 +770,7 @@ Don't re-explain the decomposition here; the components belong to the
 meaning mnemonic. The reading reuses the *scene*, not the component list.
 ```
 
-- [ ] **Step 2: Kanji prompt — "What to write" item 2**
+- [x] **Step 2: Kanji prompt — "What to write" item 2**
 
 In the same file, in item `2. **\`reading_mnemonic\`**`, replace:
 
@@ -785,7 +785,7 @@ with:
    something the meaning explains (see "Continue the meaning scene"), the kana
 ```
 
-- [ ] **Step 3: Vocab prompt — full-story bullet**
+- [x] **Step 3: Vocab prompt — full-story bullet**
 
 In `prompts/vocab-mnemonic.md`, replace:
 
@@ -825,12 +825,12 @@ with:
      > <vocabulary form="危ない">dangerous</vocabulary>.
 ```
 
-- [ ] **Step 4: Confirm `PROMPT_VERSION` is unchanged**
+- [x] **Step 4: Confirm `PROMPT_VERSION` is unchanged**
 
 Run: `git diff --stat HEAD -- generate_content/generate_mnemonics.py`
 Expected: no output.
 
-- [ ] **Step 5: Fresh-draft check — render prompts for 3 N3 kanji and 2 N4 vocab**
+- [x] **Step 5: Fresh-draft check — render prompts for 3 N3 kanji and 2 N4 vocab**
 
 Pick the N3 kanji: the first 3 N3 kanji slugs in `kanji/n3.json` whose `webprompts` call succeeds (start with `protect,committee,anti`). Pick the N4 vocab with:
 
@@ -864,7 +864,7 @@ Then render (try the vocab slugs in order until two render; a `ValueError` about
 
 Confirm each rendered vocab prompt asks for a full-story reading: `grep -l "full story" generate_content/web/mnemonics/n4/vocab/*.prompt.md`.
 
-- [ ] **Step 6: Fresh-draft check — write the 5 replies and gate them (not saved)**
+- [x] **Step 6: Fresh-draft check — write the 5 replies and gate them (not saved)**
 
 For each rendered `web/mnemonics/<level>/<type>/<slug>.prompt.md`, read it fully and write the reply JSON yourself to `web/mnemonics/<level>/<type>/<slug>.reply.md`, following the prompt exactly. Then gate without ingesting:
 
@@ -889,12 +889,12 @@ EOF
 
 Expected: 5 × PASS, and for each, the `R:` line reuses an object, place or action from its `M:` line. If a reply fails the gate, fix it (max 2 attempts). If a reading does not continue the scene even though the prompt was followed, the prompt wording in Steps 1–3 is too weak — strengthen it and redo Steps 5–6.
 
-- [ ] **Step 7: Clean up the check files**
+- [x] **Step 7: Clean up the check files**
 
 Run: `rm -rf generate_content/web/mnemonics/n3/kanji generate_content/web/mnemonics/n4/vocab`
 (gitignored, but keep the working tree clean for the real lanes). Confirm the sidecars are untouched: `git diff --stat -- ../kanji/mnemonics.json ../vocabulary/mnemonics.json` → no output.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add generate_content/prompts/kanji-mnemonic.md generate_content/prompts/vocab-mnemonic.md
