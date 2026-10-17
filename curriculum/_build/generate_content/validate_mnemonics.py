@@ -86,6 +86,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from generate_content import level_check  # noqa: E402
 from generate_content import mnemonic_context  # noqa: E402
 
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", "mnemonics")
@@ -111,6 +112,13 @@ DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", 
 #: 80 — a lower floor can only pass more stored drafts, never fail one), and
 #: image_prompt keeps the old stroke-walked size band.
 LEN_BOUNDS = {
+    # Grammar mnemonics spec §3: a one- or two-sentence story plus a short
+    # Japanese example. The four reference examples land at 112–133
+    # characters tag-stripped, so the floor sits at 100. There is no stored
+    # grammar prose older than this contract, so one band serves every draft.
+    "grammar": {
+        "mnemonic_text": (100, 240),
+    },
     "radical": {
         # The straightforward rewrite ("This radical is a combination of heavy
         # and power. ...") lands at 60–170, so the floor drops to 50. A lower
@@ -300,6 +308,7 @@ VOCAB_KANA_MEANING_TAGS = ("kanji", "vocabulary", "reading")
 _FORM_ATTR = r'(?: form="([^"<>]*)")?'
 
 ALLOWED_TAG = {
+    ("grammar", "mnemonic_text"): ("reading", "grammar"),
     ("radical", "mnemonic_text"): ("radical", "part"),
     ("radical", "image_prompt"): "radical",
     ("kanji", "meaning_mnemonic"): ("radical", "kanji"),
@@ -1088,6 +1097,127 @@ def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
     return errors
 
 
+# --- grammar (grammar mnemonics spec §3, §5) --------------------------------
+
+#: The story before the example: one or two sentences.
+GRAMMAR_STORY_MAX_SENTENCES = 2
+
+#: Phrases that state an origin. A point whose table entry is null must not
+#: claim one: the model has no reviewed origin to state.
+GRAMMAR_ORIGIN_PHRASES = ("really is", "comes from", "came from", "originally",
+                          "derived from", "short for")
+
+_JP_CHARS = "぀-ヿ㐀-䶿一-鿿々〆ー、"
+#: The example: the last run of Japanese, ending in 。, after a space.
+_GRAMMAR_EXAMPLE_RE = re.compile(rf"(?:^|\s)([{_JP_CHARS}]+。)\s*$")
+_LATIN_RE = re.compile(r"[A-Za-z]")
+_KANA_ONLY_RE = re.compile(r"[぀-ヿー]+")
+#: Quoted speech: its "Oh! That one!" punctuation is not a sentence end.
+_QUOTED_RE = re.compile(r'"[^"]*"')
+
+
+def _bare_forms(ctx):
+    return [f.replace("〜", "") for f in (ctx["form"], *ctx["accepted_forms"]) if f.replace("〜", "")]
+
+
+def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
+    """Every rule always runs: no stored grammar prose predates this contract,
+    so there is no fresh-versus-stored lane (`enforce_readability` is accepted
+    for the dispatcher's signature and ignored)."""
+    ctx = ctx or mnemonic_context.grammar_context(level, slug)
+    field = "mnemonic_text"
+    extra = sorted(set(draft) - {field})
+    if extra:
+        return [f"unexpected key(s) {', '.join(extra)}; submit only {field}"]
+    text = draft.get(field)
+    if not isinstance(text, str) or not text.strip():
+        return [f"{field} is missing or empty"]
+
+    tags = ALLOWED_TAG[("grammar", field)]
+    tag_errors = _tag_errors(field, text, tags)
+    if tag_errors:
+        return tag_errors
+    plain = _strip_tags(text, tags).strip()
+    errors = _markup_errors(field, plain) + _length_errors(field, plain, LEN_BOUNDS["grammar"][field])
+
+    readings = [s.strip() for s in _tagged_spans(text, "reading")]
+    if not any(_LATIN_RE.search(s) for s in readings):
+        errors.append(
+            f"{field} has no English sound-alike in a <reading> tag; tag the English "
+            "words that sound like the form, e.g. <reading>OK</reading> for おく"
+        )
+    kana_forms = [_hira(f) for f in _bare_forms(ctx)]
+    if not any(_KANA_ONLY_RE.fullmatch(s) and any(_hira(s) in k for k in kana_forms)
+               for s in readings):
+        errors.append(
+            f"{field} does not tag the kana of the form; wrap it in the example, e.g. "
+            f"<reading>{ctx['form']}</reading>"
+        )
+
+    meanings = _tagged_spans(text, "grammar")
+    if not meanings:
+        errors.append(f"{field} has no <grammar> tag; wrap the English words that state the meaning")
+    elif not all(_LATIN_RE.search(m) for m in meanings):
+        errors.append(f"{field}: <grammar> must wrap English words (the meaning), not Japanese")
+
+    match = _GRAMMAR_EXAMPLE_RE.search(plain)
+    if not match:
+        errors.append(
+            f"{field} must end on a short Japanese example sentence ending in 。 "
+            "that shows where the form goes, e.g. 買っておく。"
+        )
+        story = plain
+    else:
+        example = match.group(1)
+        story = plain[:match.start(1)].strip()
+        body = example.rstrip("。")
+        if not any(f in body and len(body) > len(f) for f in _bare_forms(ctx)):
+            errors.append(
+                f"{field}'s example must show the form attached to a word "
+                "(e.g. 本を読む), not the form alone"
+            )
+        extra_allowed = set(_bare_forms(ctx))
+        if ctx["origin"]:
+            extra_allowed.add(ctx["origin"]["word"])
+        violations = level_check.find_violations(example, ctx["allowed_index"], extra_allowed)
+        if violations:
+            errors.append(
+                f"{field}'s example uses words above {level.upper()}: "
+                f"{', '.join(violations)} — use only words the learner already has"
+            )
+        unknown_kanji = sorted({ch for ch in example if furigana_lib.is_kanji(ch)}
+                               - ctx["allowed_kanji"])
+        if unknown_kanji:
+            errors.append(
+                f"{field}'s example has kanji {'、'.join(unknown_kanji)} that no allowed word "
+                "teaches; the mnemonic shows no furigana, so write those words with kanji "
+                "the learner already knows or in kana"
+            )
+
+    # The sound-alike is usually shouted ("Oh! That one!"); count sentences on
+    # the story with quoted speech collapsed, so its ! and ? end nothing.
+    errors += _readability_errors(field, _QUOTED_RE.sub('"…"', story),
+                                  GRAMMAR_STORY_MAX_SENTENCES, "sound-and-meaning")
+
+    lowered = story.lower()
+    origin = ctx["origin"]
+    if origin:
+        if not any(re.search(rf"\b{re.escape(k.lower())}", lowered) for k in origin["keywords"]):
+            errors.append(
+                f"{field}: the story must act out the origin {origin['word']} "
+                f"\"{origin['gloss']}\" — name the action with one of: "
+                f"{', '.join(origin['keywords'])}"
+            )
+    else:
+        found = [p for p in GRAMMAR_ORIGIN_PHRASES if p in lowered]
+        if found:
+            errors.append(
+                f"{field} states an origin ({', '.join(found)}), but this point has none "
+                "in grammar_origins.json — let the sound hook carry the meaning"
+            )
+    return errors
+
+
 def validate_draft(level, kind, slug, draft, ctx=None, enforce_readability=False):
     """`enforce_readability` turns on the Rev 4 sentence-shape gate. Pass it
     only for freshly generated drafts; stored drafts are re-validated without
@@ -1098,13 +1228,15 @@ def validate_draft(level, kind, slug, draft, ctx=None, enforce_readability=False
         return validate_radical(level, slug, draft, ctx, enforce_readability)
     if kind == "vocab":
         return validate_vocab(level, slug, draft, ctx, enforce_readability)
+    if kind == "grammar":
+        return validate_grammar(level, slug, draft, ctx, enforce_readability)
     raise ValueError(f"unknown mnemonic type {kind!r}")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--level", default="n5")
-    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab"],
+    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab", "grammar"],
                         required=True)
     args = parser.parse_args()
 
