@@ -45,6 +45,7 @@ function RubyToken({
   baseClassName,
   toggled,
   onToggle,
+  accessibilityLabel,
 }: {
   token: RichToken;
   mode: FuriganaDisplayMode;
@@ -52,13 +53,18 @@ function RubyToken({
   baseClassName: string;
   toggled: boolean;
   onToggle: () => void;
+  /** Set when this token speaks for its prose run (see `plainRunLabels`). */
+  accessibilityLabel?: string;
 }) {
   const segment = { text: token.text, reading: token.reading };
   const visibleByDefault = defaultFuriganaVisible(segment, mode, knownKanji);
   const isVisible = toggled ? !visibleByDefault : visibleByDefault;
 
   return (
-    <Pressable accessible={false} onPress={onToggle}>
+    <Pressable
+      accessible={accessibilityLabel !== undefined}
+      accessibilityLabel={accessibilityLabel}
+      onPress={onToggle}>
       <View className="items-center">
         {isVisible ? (
           <Text className="text-center text-furigana font-jp text-secondary" accessible={false}>
@@ -71,6 +77,34 @@ function RubyToken({
       </View>
     </Pressable>
   );
+}
+
+/**
+ * For a line with linked words: the first token of each run of non-linked
+ * tokens → the run's plain text (ruby contributes its base). That token speaks
+ * for the run, so prose between the word buttons stays reachable.
+ */
+function plainRunLabels(tokens: RichToken[]): Map<number, string> {
+  const runs = new Map<number, string>();
+  let runStart = -1;
+  tokens.forEach((token, index) => {
+    if (token.kind === 'linked') {
+      runStart = -1;
+      return;
+    }
+    if (runStart < 0) {
+      runStart = index;
+    }
+    runs.set(runStart, (runs.get(runStart) ?? '') + token.text);
+  });
+
+  const labels = new Map<number, string>();
+  for (const [index, text] of runs) {
+    if (text.trim()) {
+      labels.set(index, text.trim());
+    }
+  }
+  return labels;
 }
 
 /**
@@ -130,8 +164,10 @@ function RichLine({
   };
 
   // A line label would swallow the nested word buttons, so a line with a
-  // linked word leaves its container non-accessible and each word speaks for itself.
+  // linked word leaves its container non-accessible and each word speaks for
+  // itself, with each prose run between the words labelled on its first token.
   const hasLinked = tokens.some((token) => token.kind === 'linked');
+  const runLabels = hasLinked ? plainRunLabels(tokens) : new Map<number, string>();
 
   return (
     <View
@@ -163,11 +199,16 @@ function RichLine({
               baseClassName={baseClassName}
               toggled={toggled.has(index)}
               onToggle={() => toggleToken(index)}
+              accessibilityLabel={runLabels.get(index)}
             />
           );
         }
         return (
-          <Text key={index} className={cn(baseClassName, inlineModifiers(token))} accessible={false}>
+          <Text
+            key={index}
+            className={cn(baseClassName, inlineModifiers(token))}
+            accessible={runLabels.has(index)}
+            accessibilityLabel={runLabels.get(index)}>
             {token.text}
           </Text>
         );

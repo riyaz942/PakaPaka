@@ -103,10 +103,20 @@ describe('LessonMarkdown', () => {
       expect(mockSetOverride).toHaveBeenCalledWith('7', 'hidden');
     });
 
-    it('keeps each linked word reachable by screen readers', () => {
+    it('keeps each linked word and the prose around it reachable by screen readers', () => {
       render(<LessonMarkdown markdown={'Say {{7||明日[あした]}} now.'} mode="auto" />);
       expect(screen.getByTestId('lesson-word-7-1').props.accessibilityRole).toBe('button');
-      expect(screen.queryByLabelText('Say 明日 now.')).toBeNull();
+      expect(screen.getByLabelText('Say').props.accessible).toBe(true);
+      expect(screen.getByLabelText('now.').props.accessible).toBe(true);
+    });
+
+    it('labels a prose run that starts with a ruby token by its base text', () => {
+      render(
+        <LessonMarkdown markdown={'{{7||明日[あした]}}と今日[きょう]です。'} mode="auto" />,
+      );
+      expect(screen.getByLabelText('と今日です。').props.accessible).toBe(true);
+      render(<LessonMarkdown markdown={'{{7||明日[あした]}}今日[きょう]です。'} mode="auto" />);
+      expect(screen.getByLabelText('今日です。').props.accessible).toBe(true);
     });
 
     it('keeps the line label when a line has furigana but no links', () => {
