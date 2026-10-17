@@ -78,6 +78,15 @@ else:
 #: ("n5",) / ("n5", "n4") — see the note there.
 ALL_LEVELS = ("n5", "n4", "n3", "n2", "n1")
 
+#: Grammar mnemonics (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md)
+#: cover the N5 and N4 points only.
+GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4")
+
+#: The reviewed origin table: every grammar point in scope maps to the real
+#: word its form comes from (おく = 置く "to put down") or to null, a recorded
+#: "no useful origin". The model never supplies an origin; this file does.
+GRAMMAR_ORIGINS_PATH = os.path.join(BUILD_DIR, "grammar_origins.json")
+
 _CJK_RE = re.compile(r"[㐀-䶿一-鿿々]")
 
 
@@ -1275,3 +1284,48 @@ def format_regularity(ctx):
     return _STORY_BLOCK.format(
         reason=_STORY_REASON[kind].format(reading=ctx["reading"]),
         reading=ctx["reading"], composition=composition)
+
+
+# --- grammar (grammar mnemonics spec) ---------------------------------------
+
+def grammar_mnemonic_slugs():
+    """Every grammar slug in scope, N5 then N4, in curriculum order."""
+    return [slug for level in GRAMMAR_MNEMONIC_LEVELS for slug in all_slugs(level, "grammar")]
+
+
+def load_grammar_origins(path=GRAMMAR_ORIGINS_PATH):
+    """The origin table as stored: {"review_status": ..., "origins": {slug: entry|None}}."""
+    return _load_json(path)
+
+
+def origin_table_errors(table, slugs):
+    """Every reason the table cannot drive generation. A slug in scope with no
+    entry is an error, never an implicit null: "no origin" must be a decision
+    someone wrote down."""
+    errors = []
+    if table.get("review_status") not in ("draft", "reviewed"):
+        errors.append("grammar_origins.json review_status must be 'draft' or 'reviewed'")
+    origins = table.get("origins", {})
+    scope = set(slugs)
+    for slug in slugs:
+        if slug not in origins:
+            errors.append(f"grammar_origins.json has no entry for {slug!r} (write an origin or null)")
+    for slug, entry in origins.items():
+        if slug not in scope:
+            errors.append(f"grammar_origins.json lists unknown slug {slug!r}")
+            continue
+        if entry is None:
+            continue
+        ok = (
+            isinstance(entry, dict)
+            and isinstance(entry.get("word"), str) and entry["word"].strip()
+            and isinstance(entry.get("gloss"), str) and entry["gloss"].strip()
+            and isinstance(entry.get("keywords"), list) and entry["keywords"]
+            and all(isinstance(k, str) and k.strip() for k in entry["keywords"])
+        )
+        if not ok:
+            errors.append(
+                f"grammar_origins.json entry {slug!r} needs a non-empty word, gloss and "
+                "keywords list, or null"
+            )
+    return errors
