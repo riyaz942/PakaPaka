@@ -978,6 +978,12 @@ rt {
   color: #eac489;
 }
 
+/* A grammar mnemonic's meaning. The app shows it bold in the primary text
+   colour (the grammar gold is taken by <reading>), so no fill here either. */
+.mnemonic-tag--grammar {
+  color: var(--text);
+}
+
 .mnemonic-text {
   color: var(--text);
   line-height: 1.6;

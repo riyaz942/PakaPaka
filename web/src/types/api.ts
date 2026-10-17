@@ -170,6 +170,7 @@ export type ItemDetailResponse = ContentListItem & {
   isSkeleton: boolean;
   dependencySummary: DependencySummary;
   auditFindings: AuditFinding[];
+  mnemonicReviewStatus: ReviewStatus | null;
 };
 
 export const CONTENT_TYPES: ContentType[] = [

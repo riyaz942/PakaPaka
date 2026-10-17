@@ -27,7 +27,15 @@ function isContentType(value: string | undefined): value is ContentType {
   return !!value && (CONTENT_TYPES as string[]).includes(value);
 }
 
-function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showReadings: boolean }) {
+function TypeSection({
+  item,
+  showReadings,
+  onChanged,
+}: {
+  item: ItemDetailResponse;
+  showReadings: boolean;
+  onChanged: () => void;
+}) {
   switch (item.type) {
     case 'radical':
       return <RadicalDetail raw={item.raw as unknown as RadicalRaw} />;
@@ -36,7 +44,15 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
     case 'vocabulary':
       return <VocabularyDetail raw={item.raw as unknown as VocabRaw} showReadings={showReadings} />;
     case 'grammar':
-      return <GrammarDetail raw={item.raw as unknown as GrammarRaw} showReadings={showReadings} />;
+      return (
+        <GrammarDetail
+          raw={item.raw as unknown as GrammarRaw}
+          showReadings={showReadings}
+          slug={item.slug}
+          mnemonicReviewStatus={item.mnemonicReviewStatus}
+          onChanged={onChanged}
+        />
+      );
     case 'reading':
       return <ReadingDetail raw={item.raw as unknown as ReadingRaw} showReadings={showReadings} />;
   }
@@ -277,7 +293,7 @@ function ItemDetailBody({
             Show furigana readings
           </label>
 
-          <TypeSection item={item} showReadings={showReadings} />
+          <TypeSection item={item} showReadings={showReadings} onChanged={refresh} />
         </>
       )}
 

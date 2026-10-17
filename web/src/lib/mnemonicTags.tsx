@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 
-const TAG_PATTERN = /<(radical|part|kanji|vocabulary|reading)(?: form="([^"<>]*)")?>(.*?)<\/\1>/g;
+const TAG_PATTERN = /<(radical|part|kanji|vocabulary|reading|grammar)(?: form="([^"<>]*)")?>(.*?)<\/\1>/g;
 
 type Props = {
   text: string | undefined;
 };
 
 /**
- * Renders mnemonic prose, turning <radical>/<part>/<kanji>/<vocabulary>/<reading> tags
+ * Renders mnemonic prose, turning <radical>/<part>/<kanji>/<vocabulary>/<reading>/<grammar> tags
  * into highlighted chips.
  *
  * A tag may also name the character it stands for, in a `form` attribute; that
