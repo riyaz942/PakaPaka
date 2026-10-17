@@ -7,7 +7,7 @@ import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
 type Segment = {
   text: string;
-  tag: 'radical' | 'part' | 'kanji' | 'vocabulary' | 'reading' | null;
+  tag: 'radical' | 'part' | 'kanji' | 'vocabulary' | 'reading' | 'grammar' | null;
   /** The character this highlight stands for, when the tag names one. */
   form?: string;
 };
@@ -60,6 +60,10 @@ const TAG_ACCENT = {
   kanji: CONTENT_TYPE_ACCENT.kanji.deep,
   vocabulary: CONTENT_TYPE_ACCENT.vocabulary.deep,
   reading: READING_HIGHLIGHT,
+  // A grammar mnemonic's meaning. The grammar accent is the reading token's
+  // gold, and both tags sit in the same sentence, so the meaning takes the
+  // primary text colour: bold is the highlight.
+  grammar: 'text-primary',
 } as const;
 
 type AnnotatedTextProps = {

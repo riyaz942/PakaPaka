@@ -7,7 +7,8 @@
  * on. A kanji borrows `<radical>` and lands on `<kanji>`; a word borrows
  * `<kanji>` and lands on `<vocabulary>`. `<reading>` is the sound, at any layer.
  * A radical that combines other radicals (動 = 重 + 力) borrows `<part>` and
- * lands on `<radical>`.
+ * lands on `<radical>`. A grammar mnemonic marks its meaning with `<grammar>`
+ * (grammar mnemonics spec, 2026-10-17).
  *
  * A tag may also carry the character it stands for, in a `form` attribute:
  * `a <kanji form="少">few</kanji> <kanji form="年">years</kanji>` renders as
@@ -22,7 +23,7 @@
  * a screen reader reads out "less-than radical greater-than".
  */
 export const HIGHLIGHT_TAG_RE =
-  /<(radical|part|kanji|vocabulary|reading)(?: form="([^"<>]*)")?>([\s\S]*?)<\/\1>/g;
+  /<(radical|part|kanji|vocabulary|reading|grammar)(?: form="([^"<>]*)")?>([\s\S]*?)<\/\1>/g;
 
 /**
  * The prose with its highlight markup removed and nothing else changed. The

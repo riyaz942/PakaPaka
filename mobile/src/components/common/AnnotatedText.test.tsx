@@ -111,4 +111,20 @@ describe('AnnotatedText', () => {
     expect(screen.getByText('ground').props.className).toContain('text-content-radical');
     expect(screen.queryByText(/\(/)).toBeNull();
   });
+
+  it('marks a grammar meaning in bold primary text, apart from the gold reading', () => {
+    render(
+      <AnnotatedText text={'says "<reading>OK</reading>": all set <grammar>for later</grammar>.'} />,
+    );
+
+    const meaning = screen.getByText('for later').props.className;
+    const sound = screen.getByText('OK').props.className;
+
+    // The grammar accent is the same gold as the reading token, so the meaning
+    // takes the primary text colour instead (grammar mnemonics spec §2).
+    expect(meaning).toContain('font-ui-bold');
+    expect(meaning).toContain('text-primary');
+    expect(meaning).not.toContain('text-mnemonic-reading');
+    expect(sound).toContain('text-mnemonic-reading');
+  });
 });
