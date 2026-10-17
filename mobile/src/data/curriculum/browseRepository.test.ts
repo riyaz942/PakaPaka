@@ -36,6 +36,13 @@ function withFilters(filters: Partial<BrowseFilters>): BrowseQueryInput {
 }
 
 describe('buildBrowsePageQuery', () => {
+  it('treats grammar like every other type for the No mnemonic pill', () => {
+    const query = buildBrowsePageQuery(input(), { limit: 40, offset: 0 });
+
+    expect(query?.sql).not.toContain("i.item_type = 'grammar' OR");
+    expect(query?.sql).toContain('(i.mnemonic_text IS NOT NULL');
+  });
+
   it('unions items and reading passages by default', () => {
     const query = buildBrowsePageQuery(input(), { limit: 40, offset: 0 });
 
