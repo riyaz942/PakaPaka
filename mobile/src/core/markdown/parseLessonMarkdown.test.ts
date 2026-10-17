@@ -2,6 +2,8 @@ import {
   parseInlineSpans,
   parseLessonMarkdown,
   spansHaveFurigana,
+  splitWordMarkers,
+  spansNeedTokens,
   tokenizeSpans,
 } from '@/core/markdown/parseLessonMarkdown';
 
@@ -112,5 +114,52 @@ describe('spansHaveFurigana', () => {
     expect(spansHaveFurigana([{ text: '私[わたし]は' }])).toBe(true);
     expect(spansHaveFurigana([{ text: 'plain English' }])).toBe(false);
     expect(spansHaveFurigana([{ text: 'ひらがなだけ' }])).toBe(false);
+  });
+});
+
+describe('linked word markers', () => {
+  it('turns a marker into one linked token', () => {
+    const tokens = tokenizeSpans(parseInlineSpans('to {{12|masu|起[お]きます}} now'));
+    expect(tokens.filter((t) => t.kind === 'linked')).toEqual([
+      {
+        kind: 'linked',
+        text: '起[お]きます',
+        surface: '起きます',
+        vocabularyItemId: '12',
+        inflection: 'masu',
+      },
+    ]);
+  });
+
+  it('keeps bold on a marker inside **…**', () => {
+    expect(parseInlineSpans('**{{3||明日[あした]}}**')).toEqual([
+      { text: '明日[あした]', bold: true, link: { vocabularyItemId: '3', inflection: null } },
+    ]);
+  });
+
+  it('attaches closing punctuation as trailing', () => {
+    const [token] = tokenizeSpans(splitWordMarkers('{{3||明日[あした]}}。'));
+    expect(token).toMatchObject({ kind: 'linked', trailing: '。' });
+  });
+
+  it('splits a jp line into spans with links', () => {
+    expect(splitWordMarkers('{{3||明日[あした]}}です')).toEqual([
+      { text: '明日[あした]', link: { vocabularyItemId: '3', inflection: null } },
+      { text: 'です' },
+    ]);
+  });
+
+  it('leaves inline code with braces alone', () => {
+    expect(parseInlineSpans('`{{3||明日}}`')).toEqual([{ text: '{{3||明日}}', code: true }]);
+  });
+
+  it('leaves lines without markers unchanged', () => {
+    expect(splitWordMarkers('私[わたし]は')).toEqual([{ text: '私[わたし]は' }]);
+  });
+
+  it('reports spans needing tokens for furigana or links', () => {
+    expect(spansNeedTokens([{ text: '私[わたし]は' }])).toBe(true);
+    expect(spansNeedTokens(splitWordMarkers('{{3||明日}}'))).toBe(true);
+    expect(spansNeedTokens([{ text: 'plain English' }])).toBe(false);
   });
 });
