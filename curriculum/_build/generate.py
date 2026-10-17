@@ -402,6 +402,11 @@ def build_n5_kanji():
 _FURIGANA_BRACKET_RE = re.compile(r"\[([^\[\]]*)]")
 
 
+def _is_group_kanji(ch):
+    """Kanji for furigana grouping: parseFurigana also takes 々 into the run."""
+    return ch == "々" or furigana_lib.is_kanji(ch)
+
+
 def _wrap_spans(plain, annotated, spans, label):
     """`annotated` with each span wrapped as `{{slug|inflection|text}}`.
 
@@ -416,7 +421,7 @@ def _wrap_spans(plain, annotated, spans, label):
     cursor = 0
     for match in _FURIGANA_BRACKET_RE.finditer(annotated):
         group_start = match.start()
-        while group_start > cursor and furigana_lib.is_kanji(annotated[group_start - 1]):
+        while group_start > cursor and _is_group_kanji(annotated[group_start - 1]):
             group_start -= 1
         for i in range(cursor, group_start):
             starts.append(i)

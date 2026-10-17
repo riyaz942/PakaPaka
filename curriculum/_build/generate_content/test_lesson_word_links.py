@@ -38,6 +38,13 @@ class LessonWordLinksTest(unittest.TestCase):
         self.assertEqual(out, "明日[あした]")
         self.assertIn("warning", err.getvalue())
 
+    def test_repeat_mark_belongs_to_the_furigana_group(self):
+        span = {"vocabulary_slug": "tokidoki", "start": 0, "end": 2}
+        for annotated in ("時々[ときどき]", "時[とき]々[どき]"):
+            with self.subTest(annotated=annotated):
+                out = generate._wrap_spans("時々", annotated, [span], "t")
+                self.assertEqual(out, "{{tokidoki||%s}}" % annotated)
+
     def test_marker_characters_in_lesson_fail(self):
         with self.assertRaises(ValueError):
             generate._annotate_lesson_markdown("bad {{ text", None, "t", FORMS)
