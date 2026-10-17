@@ -188,7 +188,8 @@ Do not write a combined file. Requirements:
     vocab meaning            roughly **70–200** characters, one or two
                              sentences — hard ceiling 230 (but **40–200** when
                              the word just *is* its kanji — see below)
-    kanji reading            roughly **150–280** characters
+    kanji reading            roughly **90–200** characters, one sentence or
+                             two short ones, continuing the meaning scene
     vocab reading            roughly **90–220** characters when it is a
                              story; **60–170**, one sentence, when it points
                              back at a word that already taught the reading;
@@ -414,6 +415,43 @@ Important Constraints
   `npm run compile-curriculum` from this session — those stay a separate,
   later step run once per batch, after all its sessions finish.
 - No browser, no clipboard, no downloads.
+
+---
+
+Reading-link fix — stored N5 + N4 readings that do not continue the meaning scene
+
+A separate, one-off lane. It does not generate new items; it rewrites only
+the `reading_mnemonic` of stored items whose reading scene is unrelated to the
+meaning scene. Spec:
+`docs/superpowers/specs/2026-10-17-reading-mnemonic-meaning-link-design.md`.
+All commands run from `curriculum/_build`.
+
+1. Select. `.venv/bin/python -m generate_content.reading_link select` writes
+   `reports/reading-link-candidates.json` (reviewed N5 + N4 kanji; N5 + N4
+   vocabulary with a story reading).
+2. Calibrate. Follow `generate_content/prompts/reading-link-triage.md` for the
+   five calibration items only and write `reports/reading-link-calibration.json`.
+   Expected: keep polish, goods, research; mark happiness, special. If not,
+   fix the triage prompt and calibrate again. Do not start step 3 until it
+   matches.
+3. Triage. Follow `reading-link-triage.md` for every candidate, writing
+   `reports/reading-link-list.json`, then run
+   `.venv/bin/python -m generate_content.reading_link check-list` until it
+   prints `list OK`. **Stop.** The maintainer reviews the list and may move
+   rows between `marked` and `kept`.
+4. Pilot. Follow `generate_content/prompts/reading-link-rewrite.md` for
+   kanji `happiness` and `special` only; `apply --dry-run`, then `apply`.
+   **Stop.** The maintainer approves both new readings.
+5. Rewrite the rest of `marked`, in chunks of about 25: append to
+   `reports/reading-link-rewrites.json`, `apply --model <model> --dry-run`,
+   repair (at most 2 attempts per item), then `apply --model <model>`.
+6. Verify and build:
+   `.venv/bin/python -m generate_content.reading_link verify --base <sha before step 4>`
+   (must print `verify OK`), then `.venv/bin/python generate.py --level n5`,
+   `.venv/bin/python generate.py --level n4`, and from the repo root
+   `npm run validate-schema && npm run compile-curriculum`.
+7. Every rewritten item is now `review_status: draft`. The maintainer
+   reviews them in Studio.
 
 ---
 

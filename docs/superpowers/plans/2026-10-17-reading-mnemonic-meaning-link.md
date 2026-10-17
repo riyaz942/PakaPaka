@@ -1090,7 +1090,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - Consumes: the prompt files (Task 4) and CLI (Tasks 1–2) by exact name.
 - Produces: the runbook Tasks 6–9 follow.
 
-- [ ] **Step 1: Fix the stale band (single-session doc)**
+- [x] **Step 1: Fix the stale band (single-session doc)**
 
 Replace:
 ```
@@ -1102,7 +1102,7 @@ with:
                              two short ones, continuing the meaning scene
 ```
 
-- [ ] **Step 2: Add the "Reading-link fix" section (single-session doc)**
+- [x] **Step 2: Add the "Reading-link fix" section (single-session doc)**
 
 Insert before the line `Notes on differences from the subagent workflow`:
 
@@ -1143,7 +1143,7 @@ All commands run from `curriculum/_build`.
    reviews them in Studio.
 ```
 
-- [ ] **Step 3: Add the subagent-lane section (subagent doc)**
+- [x] **Step 3: Add the subagent-lane section (subagent doc)**
 
 Insert before the line `Notes on differences from the Gemini web-chat automation prompt`:
 
@@ -1170,7 +1170,7 @@ with two changes:
 Subagents never write the sidecars or the report files themselves.
 ```
 
-- [ ] **Step 4: Add the plan row (working history)**
+- [x] **Step 4: Add the plan row (working history)**
 
 In `docs/working-history.md`, in the `## Content plans — \`docs/content/\`` table, add after the `| [Radical mnemonic images]…` row:
 
@@ -1178,7 +1178,7 @@ In `docs/working-history.md`, in the `## Content plans — \`docs/content/\`` ta
 | [Reading mnemonics continue the meaning story (spec, 2026-10-17)](./superpowers/specs/2026-10-17-reading-mnemonic-meaning-link-design.md) | **In progress** — plan `docs/superpowers/plans/2026-10-17-reading-mnemonic-meaning-link.md`. Prompt rule, `reading_link.py`, triage/rewrite prompts and workflow docs done 2026-10-17; triage of 325 N5+N4 kanji + 412 vocab story readings not run yet |
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 cd /Users/riyazahmed/Projects/japanese-learning
