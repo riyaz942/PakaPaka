@@ -87,11 +87,11 @@
   },
   "akachan": {
     "meaning_mnemonic": "New babies are born with tightly scrunched, <kanji>red</kanji> faces, so a <vocabulary>baby</vocabulary> is the reddest person in any room.",
-    "reading_mnemonic": "Grandma Kane's <reading>car</reading> alarm chants itself hoarse in the shrine lot. The actual 「<reading>あかちゃん</reading>」 asleep inside never stirs, because nothing wakes a sound-sleeping <vocabulary>baby</vocabulary>.",
+    "reading_mnemonic": "Out in the hospital lot a <reading>car</reading> alarm blares, and the brand-new 「<reading>あかちゃん</reading>」 scrunches its face even redder, easily the reddest <vocabulary form=\"赤ちゃん\">baby</vocabulary> in the room.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "akai": {
@@ -158,11 +158,11 @@
   },
   "ame-v": {
     "meaning_mnemonic": "You have met this shape already: the <kanji>rain</kanji> kanji and the <vocabulary>rain</vocabulary> word are the very same character, so the meaning does not shift at all.",
-    "reading_mnemonic": "<reading>Amy</reading> plants herself on the riverbank through the whole storm and flatly refuses to come indoors. Every cold drop that lands on her she names aloud as 「<reading>あめ</reading>」, the <vocabulary>rain</vocabulary> she will not walk away from.",
+    "reading_mnemonic": "<reading>Amy</reading> presses her nose to the window under the flat roof and counts the four dashes falling down each side of the glass, calling every one 「<reading>あめ</reading>」, the <vocabulary form=\"雨\">rain</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "anata": {
@@ -176,21 +176,21 @@
   },
   "ane": {
     "meaning_mnemonic": "At Sei's school sports day, one loud kid bosses even the coaches around and nobody dares stop her. That commanding energy is exactly an <vocabulary>(my) older sister</vocabulary>.",
-    "reading_mnemonic": "At Grandma Kane's shrine, a boy begs to ring the huge bell, but his <vocabulary>(my) older sister</vocabulary> just says 「<reading>あね</reading>」, flat as '<reading>ah, nah</reading>,' and drags him home.",
+    "reading_mnemonic": "At Sei's sports day, a coach asks to change the relay order, and your bossy <vocabulary form=\"姉\">older sister</vocabulary> answers 「<reading>あね</reading>」, a flat '<reading>ah, nah</reading>', and nobody dares argue.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ani": {
     "meaning_mnemonic": "At Sei's school, the biggest kid in the yard always carries three backpacks at once. That's simply what an <vocabulary>(my) older brother</vocabulary> is for.",
-    "reading_mnemonic": "At Grandma Kane's shrine, your <vocabulary>(my) older brother</vocabulary> trips on the mossy steps and yelps, '<reading>ah, knee</reading>!' That yelp is exactly the sound of <reading>あに</reading>.",
+    "reading_mnemonic": "In Sei's school yard, three backpacks press down on your <vocabulary form=\"兄\">older brother</vocabulary> until his legs buckle and he yelps '<reading>ah, knee</reading>!', the exact sound of <reading>あに</reading>.",
     "description": "兄 is what you call your own older brother when speaking about him to an outsider. Addressing him directly calls for a warmer, more polite word instead.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "anna": {
@@ -313,11 +313,11 @@
   },
   "asa": {
     "meaning_mnemonic": "The <kanji>morning</kanji> kanji and the <vocabulary>morning</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "Koichi throws open the konbini shutters at first light and grumbles <reading>「あさ」, which sounds like 'ah, sir'</reading>, and that daily grumble is how <vocabulary>morning</vocabulary> greets him.",
+    "reading_mnemonic": "A butler opens the window on the striped sunrise light, the moon still hanging there, and says <reading>ah, sir</reading>, <reading>あさ</reading>: it is <vocabulary form=\"朝\">morning</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "asagohan": {
@@ -339,29 +339,29 @@
   },
   "asatte": {
     "meaning_mnemonic": "A <kanji>day</kanji> that falls <kanji>behind</kanji> the very next one is <vocabulary>the day after tomorrow</vocabulary>.",
-    "reading_mnemonic": "Koichi <reading>sautés</reading> the last onigiri filling, but the next batch won't land until <reading>あさって</reading>, when <vocabulary>the day after tomorrow</vocabulary> restocks the shelf.",
+    "reading_mnemonic": "Days stand in line; a cook <reading>sautés</reading> for the very next one, and the day falling behind it must wait for <reading>あさって</reading>, <vocabulary form=\"明後日\">the day after tomorrow</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ashi-v": {
     "meaning_mnemonic": "The <kanji>foot / leg</kanji> kanji is exactly the <vocabulary>foot / leg</vocabulary> word, one character doing both jobs, so the meaning never changes.",
-    "reading_mnemonic": "A hiker tugs off her boot on the mountain trail, sees the <vocabulary>foot / leg</vocabulary> inside caked grey and <reading>ashy</reading> with dust, and yelps 「<reading>あし</reading>」.",
+    "reading_mnemonic": "The legs skid to such a hard stop that the <vocabulary form=\"足\">foot</vocabulary> at the end comes up grey and <reading>ashy</reading> with dust, and the mouth on top yelps 「<reading>あし</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ashita": {
     "meaning_mnemonic": "The next <kanji>day</kanji> that hasn't arrived yet is always the one everyone calls <vocabulary>tomorrow</vocabulary>.",
-    "reading_mnemonic": "Koichi drapes <reading>a sheet</reading> over the pastry case and promises the shelves refill only <reading>あした</reading>, when <vocabulary>tomorrow</vocabulary> finally comes.",
+    "reading_mnemonic": "The next day has not arrived yet, so it waits covered by <reading>a sheet</reading>, and the tag on it says <reading>あした</reading>: it gets unveiled <vocabulary form=\"明日\">tomorrow</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "asobu": {
@@ -383,11 +383,11 @@
   },
   "atama": {
     "meaning_mnemonic": "The single body part that holds every thought you have, sits highest of all, and takes the worst sunburn every summer is your <vocabulary>head</vocabulary>.",
-    "reading_mnemonic": "At the riverbank, an <reading>otter mama</reading> balances a stone on her 「<reading>あたま</reading>」 to crack clams, and it never once slips off her rock-solid <vocabulary>head</vocabulary>.",
+    "reading_mnemonic": "Basking upright on a sunny rock all summer, an <reading>otter mama</reading> burns only her 「<reading>あたま</reading>」, the highest spot on her body, her peeling <vocabulary form=\"頭\">head</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "atarashii-adj": {
@@ -720,11 +720,11 @@
   },
   "chichi": {
     "meaning_mnemonic": "The <kanji>father</kanji> kanji and the <vocabulary>(my) father</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "Sei's <vocabulary>(my) father</vocabulary> gets so nervous at sports day that he chirps 「<reading>ちち</reading>」 like a startled <reading>chick</reading> whenever the whistle blows.",
+    "reading_mnemonic": "At the barbecue, your <vocabulary form=\"父\">father</vocabulary> holds the tongs high, arms up and legs spread wide, and every pop of fat makes him chirp 「<reading>ちち</reading>」 like a startled <reading>chick</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "chihou": {
@@ -1574,12 +1574,12 @@
   },
   "futatsu": {
     "meaning_mnemonic": "The <kanji>two</kanji> kanji doesn't change to make <vocabulary>two things</vocabulary> — it already means exactly that on its own.",
-    "reading_mnemonic": "At Grandma Kane's shrine, an owl in the rafters gives two flat <reading>hoots</reading> every night. The cats insist it's actually saying <reading>ふたつ</reading> — announcing <vocabulary>two things</vocabulary> to no one in particular.",
+    "reading_mnemonic": "An owl lands beside the two chopsticks lying on the table, one above the other, and gives two <reading>hoots</reading>, <reading>ふたつ</reading>, one for each of the <vocabulary form=\"二つ\">two things</vocabulary>.",
     "description": "This belongs to the native Japanese counting series for objects, used as a general default counter when no specific counter word applies.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "futoi-adj": {
@@ -1593,11 +1593,11 @@
   },
   "futsuka": {
     "meaning_mnemonic": "The <kanji>two</kanji> flat lines slide under the <kanji>day</kanji> mark without changing shape. That doubled mark means <vocabulary>two days</vocabulary> have passed.",
-    "reading_mnemonic": "At the riverbank, a hiker known as <reading>Foot Sucker</reading> steps in mud on <reading>ふつか</reading>, and the mud won't let go for the full <vocabulary>two days</vocabulary>.",
+    "reading_mnemonic": "Stuck in the mud, the hiker <reading>Foot Sucker</reading> slides two flat lines under the day mark in his diary and groans 「<reading>ふつか</reading>」, because that doubled mark means <vocabulary form=\"二日\">two days</vocabulary> gone.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "futsuu": {
@@ -1968,12 +1968,12 @@
   },
   "haha": {
     "meaning_mnemonic": "The <kanji>mother</kanji> kanji already means mother, and that is exactly what <vocabulary>(my) mother</vocabulary> means too.",
-    "reading_mnemonic": "At the riverbank, your <vocabulary>(my) mother</vocabulary> just laughs, '<reading>ha-ha</reading>.' That laugh is the exact sound of <reading>はは</reading>.",
+    "reading_mnemonic": "Your <vocabulary form=\"母\">mother</vocabulary> holds a small child tight under each arm, and when both wriggle at once she just laughs '<reading>ha-ha</reading>', the exact sound of <reading>はは</reading>.",
     "description": "母 is what you call your own mother when speaking about her to an outsider, never to her face — direct address uses a more polite word.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hai": {
@@ -2046,11 +2046,11 @@
   },
   "hako": {
     "meaning_mnemonic": "Anything with six stiff flat sides and a lid you must lift before you can see what is inside is a <vocabulary>box</vocabulary>.",
-    "reading_mnemonic": "A hawk at the riverbank keeps dropping fish into an open wooden crate on the bank, screeching <reading>hah-koh</reading> each time one thuds in. The fishermen named that crate 「<reading>はこ</reading>」, their word for a <vocabulary>box</vocabulary>.",
+    "reading_mnemonic": "A hawk stalks round all six stiff sides of a shut <vocabulary form=\"箱\">box</vocabulary>, screeching <reading>hah-koh</reading>, 「<reading>はこ</reading>」, until someone lifts the lid to show it what is inside.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hakobu": {
@@ -2073,11 +2073,11 @@
   },
   "hana-nose": {
     "meaning_mnemonic": "The single vending machine at the top of the mountain trail sells nothing but tissues, because everyone who finishes that climb arrives with a streaming <vocabulary>nose</vocabulary>.",
-    "reading_mnemonic": "A street mime wears a <reading>banana</reading> clipped over his face all day as a fake <vocabulary>nose</vocabulary>. When anyone asks why, he just taps it and says <reading>はな</reading>.",
+    "reading_mnemonic": "At the top of the mountain trail, a hiker with a <reading>banana</reading>-sized <vocabulary form=\"鼻\">nose</vocabulary> buys every tissue in the vending machine and honks 「<reading>はな</reading>」 into each one.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hana-v": {
@@ -2230,11 +2230,11 @@
   },
   "hatsuka": {
     "meaning_mnemonic": "Stack <kanji>two</kanji> blocks of <kanji>ten</kanji> <kanji>days</kanji> on the calendar and together they mark the <vocabulary>20th / twenty days</vocabulary>.",
-    "reading_mnemonic": "The vending machine on the mountain trail overheats every <vocabulary>20th / twenty days</vocabulary>, and hikers yelp 「<reading>はつか</reading>」 when the cocoa burns their tongues.",
+    "reading_mnemonic": "The hat van <reading>Hats-Car</reading> waits while two blocks of ten days stack up on the calendar, then honks 「<reading>はつか</reading>」 the moment all <vocabulary form=\"二十日\">twenty days</vocabulary> are crossed off.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hatsumei": {
@@ -2465,11 +2465,11 @@
   },
   "hiru": {
     "meaning_mnemonic": "The <kanji>daytime</kanji> kanji and the <vocabulary>noon</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "At the mountain trail's vending machine, a <reading>hero</reading> refuses to climb until 「<reading>ひる</reading>」 strikes, since he only fights at <vocabulary>noon</vocabulary>.",
+    "reading_mnemonic": "A <reading>hero</reading> holds the ruler up from the daybreak line, and when the sun climbs to its top mark he shouts <reading>ひる</reading>: it is <vocabulary form=\"昼\">noon</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hirugohan": {
@@ -2482,11 +2482,11 @@
   },
   "hito": {
     "meaning_mnemonic": "The <kanji>person</kanji> kanji and the <vocabulary>person</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "You brace for a crowd in the fog, but only one shape steps out and shouts <reading>“Hito!”</reading>, which sounds like <reading>ひと</reading>, because he is the only <vocabulary>person</vocabulary> there.",
+    "reading_mnemonic": "One leg stays planted while the other steps out on tiptoe, so you whisper '<reading>he toes</reading>' as the lone walker passes: a single <reading>ひと</reading>, one <vocabulary form=\"人\">person</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hitori-de": {
@@ -2499,12 +2499,12 @@
   },
   "hitotsu": {
     "meaning_mnemonic": "The <kanji>one</kanji> kanji and the <vocabulary>one thing</vocabulary> word share the very same stroke: nothing was added, nothing was changed.",
-    "reading_mnemonic": "At Koichi's konbini the tired cashier rings up a single item by barking <reading>ひとつ</reading>, which comes out sounding like <reading>hit two</reading>, and hands over exactly <vocabulary>one thing</vocabulary>.",
+    "reading_mnemonic": "A bowler tries to <reading>hit two</reading> pins, but only one falls and lies on the floor as a single flat line. The scorer calls <reading>ひとつ</reading>: <vocabulary form=\"一つ\">one thing</vocabulary> down.",
     "description": "One of the native Japanese counting words for generic objects, used instead of the ordinary number words when there is no specialized counter for whatever is being counted.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hitsuji-anim": {
@@ -2837,11 +2837,11 @@
   },
   "ima": {
     "meaning_mnemonic": "The <kanji>now</kanji> kanji and the <vocabulary>now</vocabulary> word are exactly the same, so whenever you say it, that is the only moment it ever points to.",
-    "reading_mnemonic": "A hiker at the mountain trail's vending machine slams the button and shouts <reading>いま</reading>, sounding just like shouting <reading>I'm-a</reading> grab this drink, because <vocabulary>now</vocabulary> is the only moment worth waiting for.",
+    "reading_mnemonic": "Under the giant arrow tip hanging in the air, a passer-by shouts <reading>いま</reading>, like <reading>I'm-a</reading> grab it, and snatches the coin <vocabulary form=\"今\">now</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "imi": {
@@ -3093,11 +3093,11 @@
   },
   "itsutsu": {
     "meaning_mnemonic": "The <kanji>five</kanji> kanji and the <vocabulary>five things</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "The mascot at Sei's school is so <reading>itchy</reading> that five spots erupt down its costume. That's exactly <vocabulary>five things</vocabulary> the coach counts as <reading>いつつ</reading> in his logbook.",
+    "reading_mnemonic": "Hand stuck flat to the low ceiling after a failed high-five, you feel <reading>itchy</reading> under each spread finger and count <reading>いつつ</reading>: <vocabulary form=\"五つ\">five things</vocabulary> you cannot scratch.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ittekimasu": {
@@ -3339,11 +3339,11 @@
   },
   "kado": {
     "meaning_mnemonic": "Every <vocabulary>corner</vocabulary> in the house is the spot where two walls give up going straight and slam into each other at a hard right angle.",
-    "reading_mnemonic": "A cabbie who only ever pulls over at the <vocabulary>corner</vocabulary> lets his <reading>car door</reading> swing wide open there and nowhere else. Hear that <reading>かど</reading> creak and you know a corner is coming up.",
+    "reading_mnemonic": "Movers swing an old <reading>car door</reading> through the house and jam it where two walls slam together at a hard right angle, and it sticks with a 「<reading>かど</reading>」 in that <vocabulary form=\"角\">corner</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kaeru-change": {
@@ -3409,11 +3409,11 @@
   },
   "kagi": {
     "meaning_mnemonic": "Every locked door has just one small metal shape that will turn it, and that shape is a <vocabulary>key / lock</vocabulary>.",
-    "reading_mnemonic": "The locksmith at Koichi's konbini turns <reading>cagey</reading> the second you ask how the till unlocks. He mutters 「<reading>かぎ</reading>」 and pockets the only <vocabulary>key / lock</vocabulary>.",
+    "reading_mnemonic": "The landlord turns <reading>cagey</reading> when you ask which small metal shape will turn your locked door, mutters 「<reading>かぎ</reading>」 and pockets the only <vocabulary form=\"鍵\">key</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kai-floor": {
@@ -3584,12 +3584,12 @@
   },
   "kami-hair": {
     "meaning_mnemonic": "The stuff that clogs the shower drain and slips out of every ponytail by noon is <vocabulary>hair</vocabulary>.",
-    "reading_mnemonic": "Grandma Kane sits on the mossy shrine steps, drawing a wide brush <reading>calm</reading>ly through her waist-length <vocabulary>hair</vocabulary>. With every slow stroke the bristles seem to whisper 「<reading>かみ</reading>」.",
+    "reading_mnemonic": "<reading>Cammy</reading> fishes a fat wet clump of <vocabulary form=\"髪\">hair</vocabulary> out of the clogged shower drain, then feels her ponytail slipping loose again and sighs 「<reading>かみ</reading>」.",
     "description": "髪 is specifically the hair on your head. Hair elsewhere on the body, or an animal's coat, is a different word, so do not stretch 髪 to cover it.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kami-paper": {
@@ -3736,20 +3736,20 @@
   },
   "kao": {
     "meaning_mnemonic": "Koichi hangs a mirror by the onigiri shelf so no customer walks past the beeping till without seeing their own <vocabulary>face</vocabulary> first.",
-    "reading_mnemonic": "A <reading>cow</reading> presses its 「<reading>かお</reading>」 against the mountain trail vending machine glass, and hikers pay double just to avoid meeting that <vocabulary>face</vocabulary> again.",
+    "reading_mnemonic": "A <reading>cow</reading> wanders into Koichi's konbini, stops at the mirror by the onigiri shelf and moos 「<reading>かお</reading>」 at the big hairy <vocabulary form=\"顔\">face</vocabulary> staring back.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "karada": {
     "meaning_mnemonic": "The <kanji>body</kanji> kanji and the <vocabulary>body</vocabulary> word are the same character, so the meaning carries straight across with nothing added.",
-    "reading_mnemonic": "At Koichi's konbini a bodybuilder tips the whole <reading>carrot</reading> shelf into his basket, sure the juice built his slab of a <vocabulary>body</vocabulary>. He tells the beeping till its name: 「<reading>からだ</reading>」.",
+    "reading_mnemonic": "Nurse Cara reads each patient's <vocabulary form=\"体\">body</vocabulary> like the one book they were born holding, finds the newest aching page and announces it with a proud 「<reading>からだ</reading>」, <reading>Cara-ta-da</reading>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "karai": {
@@ -3958,11 +3958,11 @@
   },
   "kaze-wind": {
     "meaning_mnemonic": "This character is an old friend by now: the <kanji>wind</kanji> kanji and the <vocabulary>wind</vocabulary> word are one and the same, so nothing about the meaning changes.",
-    "reading_mnemonic": "A school nurse tapes a long strip of <reading>gauze</reading> across the open hallway door, and the draught snaps it flat and rippling. She says 「<reading>かぜ</reading>」, because only real <vocabulary>wind</vocabulary> pulls a bandage out straight like that.",
+    "reading_mnemonic": "One slash of air lifts a beetle off the picnic table along with the strip of <reading>gauze</reading> it sat on, and the gauze snaps out flat: 「<reading>かぜ</reading>」, real <vocabulary form=\"風\">wind</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kazoku": {
@@ -4247,11 +4247,11 @@
   },
   "kimi": {
     "meaning_mnemonic": "The <kanji>mister</kanji> kanji and the word <vocabulary>you (familiar)</vocabulary> are exactly the same character, so they mean exactly the same thing.",
-    "reading_mnemonic": "At Koichi's konbini, a stranger jabs a finger at your chest and barks <reading>きみ</reading>, which lands like <reading>key, me</reading>. He means exactly the <vocabulary>you (familiar)</vocabulary> standing in front of him, nobody else in the store.",
+    "reading_mnemonic": "The official, mouth still hanging open mid-order, jabs a finger at your chest and barks <reading>きみ</reading>, like <reading>key, me</reading>, demanding the office key from <vocabulary form=\"君\">you</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kimochi": {
@@ -4264,11 +4264,11 @@
   },
   "kinou": {
     "meaning_mnemonic": "The <kanji>day</kanji> that already slipped past you, gone before you could grab it, is <vocabulary>yesterday</vocabulary>.",
-    "reading_mnemonic": "At the riverbank someone fishes a soggy calendar page out of the water and reads <reading>きのう</reading> off it, sounding like a rusty <reading>key</reading> to a day already washed downstream, and that lost page is <vocabulary>yesterday</vocabulary>.",
+    "reading_mnemonic": "You lunge for the day slipping past, but it locks its door with a rusty <reading>key</reading> that clicks <reading>きのう</reading>, and it is already <vocabulary form=\"昨日\">yesterday</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kinyoubi": {
@@ -4434,11 +4434,11 @@
   },
   "koe": {
     "meaning_mnemonic": "A ventriloquist's dummy sits alone on the stage and starts talking. The sound has to come from somewhere, and that somewhere, a throat pushing air, is a <vocabulary>voice</vocabulary>.",
-    "reading_mnemonic": "A hiker lost on the mountain trail cups their hands and shouts <reading>cooee</reading> across the valley. The only tool that reaches the far ridge is their <vocabulary>voice</vocabulary>, sent out as one long <reading>こえ</reading>.",
+    "reading_mnemonic": "The dummy alone on the stage calls <reading>cooee</reading> to the empty seats, one long 「<reading>こえ</reading>」 with no throat behind it, and still the hall fills with a <vocabulary form=\"声\">voice</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "koibito": {
@@ -4483,11 +4483,11 @@
   },
   "kokonotsu": {
     "meaning_mnemonic": "The <kanji>nine</kanji> kanji still means the same nine, and adding つ turns it into <vocabulary>nine things</vocabulary>. You're counting objects now, not just naming the number.",
-    "reading_mnemonic": "Koichi won't ring up a sale until <reading>ここのつ</reading> <reading>coconuts</reading> are stacked beside the till. Nine dusty coconuts is his idea of a proper <vocabulary>nine things</vocabulary> display.",
+    "reading_mnemonic": "The fishing line curls into its hook and pulls up <reading>coconuts</reading> instead of fish, until the bucket holds <reading>ここのつ</reading>: <vocabulary form=\"九つ\">nine things</vocabulary>, one short of ten.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kokuban": {
@@ -4518,11 +4518,11 @@
   },
   "kome-v": {
     "meaning_mnemonic": "The hard little grains straight from the sack, before a drop of water or any heat reaches them, are <vocabulary>uncooked rice</vocabulary>.",
-    "reading_mnemonic": "Old Mei drags a bamboo <reading>comb</reading> through the grains spread on her drying mat. Each pass she mutters <reading>こめ</reading>, and what stays behind is clean <vocabulary>uncooked rice</vocabulary>.",
+    "reading_mnemonic": "Old Mei pours the hard grains straight from the sack and drags a bamboo <reading>comb</reading> through them, muttering 「<reading>こめ</reading>」 before any water or heat touches her <vocabulary form=\"米\">uncooked rice</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "konbanwa": {
@@ -4703,11 +4703,11 @@
   },
   "kotoshi": {
     "meaning_mnemonic": "Whatever year is <kanji>now</kanji> is simply this <kanji>year</kanji> — nothing else counts as <vocabulary>this year</vocabulary>.",
-    "reading_mnemonic": "A tailor named <reading>Coat, She</reading> sews exactly one <vocabulary>this year</vocabulary> label, stitching 「<reading>ことし</reading>」 into the collar and burning every other date.",
+    "reading_mnemonic": "The tailor <reading>Coat, She</reading> stitches <reading>ことし</reading> into a coat for whatever year it is now and burns every other date, because only <vocabulary form=\"今年\">this year</vocabulary> counts.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kotowaru": {
@@ -4820,29 +4820,29 @@
   },
   "kubi": {
     "meaning_mnemonic": "An owl swivels its head almost all the way around. The bendy stalk that lets it do that, the piece joining head to shoulders, is the <vocabulary>neck</vocabulary>.",
-    "reading_mnemonic": "A shrine cat at Grandma Kane's tries to squeeze into a wooden <reading>cubby</reading> on the shelf. It only fits by folding its <vocabulary>neck</vocabulary> flat, and a muffled <reading>くび</reading> leaks out.",
+    "reading_mnemonic": "The owl backs into a wooden <reading>cubby</reading> and swivels its head almost all the way round on its bendy <vocabulary form=\"首\">neck</vocabulary>, hooting a muffled 「<reading>くび</reading>」 from inside.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kuchi-v": {
     "meaning_mnemonic": "The <kanji>mouth</kanji> kanji you already know and the <vocabulary>mouth</vocabulary> word are the exact same character, unchanged.",
-    "reading_mnemonic": "At the riverbank the smallest kids clamp a hand over each other's <vocabulary>mouth</vocabulary> and shriek <reading>くち</reading>. They are all convinced that is the one way to stop a <reading>cootie</reading> getting in.",
+    "reading_mnemonic": "A kid mid-yawn has his small square <vocabulary form=\"口\">mouth</vocabulary> stretched so wide that his sister claps a hand over the open hole and shrieks 「<reading>くち</reading>」, sure a <reading>cootie</reading> will fly in.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kudamono": {
     "meaning_mnemonic": "Out of everything hanging in a tree, the one <kanji>thing</kanji> sweet enough to be worth climbing for is <vocabulary>fruit</vocabulary>.",
-    "reading_mnemonic": "The new clerk at the greengrocer sniffs every <vocabulary>fruit</vocabulary> on the shelf and calls it a <reading>cardamom</reading>. Now the whole apple-and-pear aisle is filed under <reading>くだもの</reading>.",
+    "reading_mnemonic": "The farmer yells <reading>Cooda Moe, no!</reading> as his monkey climbs to the top of the tree for the one sweet <vocabulary form=\"果物\">fruit</vocabulary> worth the climb, and 「<reading>くだもの</reading>」 echoes through the orchard.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kudasaru": {
@@ -4865,11 +4865,11 @@
   },
   "kumo": {
     "meaning_mnemonic": "Koichi leaves a bag of cotton balls open by the till, the ceiling fan catches them, and a grey clump ends up hovering over the onigiri shelf where nobody can reach it. That floating, unreachable fluff is a <vocabulary>cloud</vocabulary>.",
-    "reading_mnemonic": "A pigeon on the goalpost of the school sports field coos 「<reading>くも</reading>」, a sound like <reading>coo, mow</reading>, every time the groundskeeper starts his mower below. The grey puff snagged on nothing above them is a <vocabulary>cloud</vocabulary>.",
+    "reading_mnemonic": "A pigeon perched on Koichi's onigiri shelf coos 「<reading>くも</reading>」, <reading>coo-moh</reading>, at the grey cotton fluff the ceiling fan keeps spinning just out of reach, its own little <vocabulary form=\"雲\">cloud</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kumo-spider": {
@@ -5011,11 +5011,11 @@
   },
   "kyou": {
     "meaning_mnemonic": "The <kanji>now</kanji> you are standing in belongs to whichever <kanji>day</kanji> the sun happens to be up, and that day is <vocabulary>today</vocabulary>.",
-    "reading_mnemonic": "Sei's teacher circles the date on the board and calls out <reading>きょう</reading>, which sounds exactly like calling <reading>cue</reading> for the pop quiz, because <vocabulary>today</vocabulary> is officially starting.",
+    "reading_mnemonic": "The moment the sun is up is your <reading>cue</reading>: a rooster crows <reading>きょう</reading> to claim the day you are standing in as <vocabulary form=\"今日\">today</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kyoudai": {
@@ -5118,11 +5118,11 @@
   },
   "mado": {
     "meaning_mnemonic": "Punch a square hole in a solid wall and fill it with a sheet of glass. Now you can watch the storm without a single drop landing on you, and that glass-filled square you stare through is a <vocabulary>window</vocabulary>.",
-    "reading_mnemonic": "A <reading>mad doe</reading> at the riverbank charges her own reflection head-first and cracks the <vocabulary>window</vocabulary>. Every deer downstream now calls that treacherous sheet of glass a 「<reading>まど</reading>」.",
+    "reading_mnemonic": "A <reading>mad doe</reading> out in the storm stares at you through the glass-filled square in the wall, rain streaming down her face but never yours, and you name that <vocabulary form=\"窓\">window</vocabulary> 「<reading>まど</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "madoguchi": {
@@ -5354,11 +5354,11 @@
   },
   "me-v": {
     "meaning_mnemonic": "The <kanji>eye</kanji> kanji and the <vocabulary>eye</vocabulary> word are one and the same character, so there is nothing new to learn here.",
-    "reading_mnemonic": "Sei's school nurse books the <vocabulary>eye</vocabulary> exam for <reading>May</reading> every single year. Any kid who flunks the tiny bottom row just sighs <reading>め</reading> and sits back down.",
+    "reading_mnemonic": "<reading>May</reading> the staring doll has one <vocabulary form=\"目\">eye</vocabulary> painted on its side, a box of eyelid with two lines for a pupil, and when it stares back you shiver 「<reading>め</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "meeru": {
@@ -5413,11 +5413,11 @@
   },
   "michi-v": {
     "meaning_mnemonic": "The <kanji>road</kanji> kanji and the <vocabulary>road / street</vocabulary> word are the exact same character, so they mean the exact same thing.",
-    "reading_mnemonic": "A hiker called <reading>Mitch</reading> will only walk the paved strip up the mountain trail and swears the wild grass bites. Any <reading>みち</reading> you point to is the <vocabulary>road / street</vocabulary> that Mitch trusts.",
+    "reading_mnemonic": "<reading>Mitch</reading> cranes his long neck to stare down the <vocabulary form=\"道\">road</vocabulary> before his feet will advance a single step, and only then mutters 「<reading>みち</reading>」 and walks it.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "midori": {
@@ -5482,11 +5482,11 @@
   },
   "mimi-v": {
     "meaning_mnemonic": "The <kanji>ear</kanji> kanji and the <vocabulary>ear</vocabulary> word are the very same character, so they mean the very same thing.",
-    "reading_mnemonic": "Grandma Kane's cat <reading>Mimi</reading> keeps one <vocabulary>ear</vocabulary> aimed at the shrine bell and the other flat against her head. That lopsided <reading>みみ</reading> tilt is how she earned the name.",
+    "reading_mnemonic": "Seen from the side, the cat <reading>Mimi</reading> is all tall outer rim and folded lines, one huge <vocabulary form=\"耳\">ear</vocabulary> that swivels whenever you whisper 「<reading>みみ</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "minami-v": {
@@ -5595,20 +5595,20 @@
   },
   "mittsu": {
     "meaning_mnemonic": "The <kanji>three</kanji> kanji and the <vocabulary>three things</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "At Koichi's konbini, a forgotten baseball <reading>mitt</reading> holds <vocabulary>three things</vocabulary> the same customer left behind. The till clerk marks it <reading>みっつ</reading> without looking up.",
+    "reading_mnemonic": "A catcher taps his <reading>mitt</reading> on each level rung of the stubby ladder and calls <reading>みっつ</reading> once he has touched all <vocabulary form=\"三つ\">three things</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "mizu": {
     "meaning_mnemonic": "The <kanji>water</kanji> kanji and the <vocabulary>water</vocabulary> word are the same, so they carry the same meaning.",
-    "reading_mnemonic": "Everyone here just calls the river the <reading>Mizzou</reading>. There is nothing in it but what that name promises, cold clear <reading>みず</reading>, plain <vocabulary>water</vocabulary> up to your knees.",
+    "reading_mnemonic": "<reading>Miss Sue</reading> stands under the falling stream as its two trickles splash out to each side, and she calls that cold <vocabulary form=\"水\">water</vocabulary> 「<reading>みず</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "mizuumi": {
@@ -5830,29 +5830,29 @@
   },
   "musuko": {
     "meaning_mnemonic": "This household's only <kanji>child</kanji> happens to be a boy, so the family just calls him their <vocabulary>son</vocabulary>.",
-    "reading_mnemonic": "Koichi hangs a sign over the register reading <reading>Moose Co.</reading>, because the boy running it is his own <reading>むすこ</reading>, his <vocabulary>son</vocabulary>.",
+    "reading_mnemonic": "The household's only child is a boy in a <reading>Moose Co.</reading> cap, so when the family calls 「<reading>むすこ</reading>」 at dinner, everyone knows they mean their <vocabulary form=\"息子\">son</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "musume": {
     "meaning_mnemonic": "Every family has one child who gets away with everything, and in this house that's always the <vocabulary>daughter</vocabulary>.",
-    "reading_mnemonic": "At the school gate, Sei introduces his <reading>むすめ</reading>, nicknamed <reading>Moose May</reading> for the toy moose she never puts down, as his proudest <vocabulary>daughter</vocabulary>.",
+    "reading_mnemonic": "In this house the one child who gets away with everything is <reading>Moose May</reading>, dragging her toy moose across the clean floor while her parents only sigh 「<reading>むすめ</reading>」 at their <vocabulary form=\"娘\">daughter</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "muttsu": {
     "meaning_mnemonic": "The <kanji>six</kanji> kanji and the <vocabulary>six things</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "A stray <reading>mutt</reading> wanders into Grandma Kane's shrine and steals <vocabulary>six things</vocabulary> off the offering step. The cats hiss, but she only sighs <reading>むっつ</reading> as it bolts.",
+    "reading_mnemonic": "A stray <reading>mutt</reading> knocks the little lid down onto the tall eight, and the pile under it shrinks to <reading>むっつ</reading>, just <vocabulary form=\"六つ\">six things</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "muzukashii": {
@@ -5989,12 +5989,12 @@
   },
   "nan": {
     "meaning_mnemonic": "The <kanji>what</kanji> kanji still needs no help here. This reading just carries it forward as <vocabulary>what (before counters)</vocabulary>.",
-    "reading_mnemonic": "At the mountain trail's vending machine, a hiker counts servings of <reading>naan</reading> bread. Before every number he blurts <reading>なん</reading>, as if <vocabulary>what (before counters)</vocabulary> always comes first.",
+    "reading_mnemonic": "The person who swears they can do anything boasts about stacks of <reading>naan</reading>, so you ask <reading>なん</reading> before each count: <vocabulary form=\"何\">what</vocabulary> number of loaves, really?",
     "description": "なん appears only right before a counter, as in questions about quantity or time. Used alone, 何 takes a different reading instead.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nan-desu-ka": {
@@ -6008,11 +6008,11 @@
   },
   "nana-v": {
     "meaning_mnemonic": "The <kanji>seven</kanji> kanji and the <vocabulary>seven</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "At Koichi's konbini, a regular named <reading>Nana</reading> orders <vocabulary>seven</vocabulary> onigiri every visit, counting each one aloud as <reading>なな</reading>.",
+    "reading_mnemonic": "A fan named <reading>Nana</reading> waves the big foam finger shaped like a <vocabulary form=\"七\">seven</vocabulary>, chanting <reading>なな</reading> as its soft long end bends and curls up.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nanatsu": {
@@ -6026,11 +6026,11 @@
   },
   "nani": {
     "meaning_mnemonic": "The <kanji>what</kanji> kanji needs no help to become a word. Alone, it already means <vocabulary>what</vocabulary>.",
-    "reading_mnemonic": "A <reading>nanny</reading> at Koichi's konbini opens a mystery tin and blurts <reading>なに</reading>. She still can't name <vocabulary>what</vocabulary> is inside.",
+    "reading_mnemonic": "A <reading>nanny</reading> hears the person swear they can do absolutely anything and asks only <reading>なに</reading>, meaning <vocabulary form=\"何\">what</vocabulary>, exactly?",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nani-demo": {
@@ -6375,11 +6375,11 @@
   },
   "niwa": {
     "meaning_mnemonic": "Picture the strip of bare ground that a Japanese house wraps itself around, half swept dirt and half stubborn weeds. The family still points at that patch and proudly calls it the <vocabulary>garden / yard</vocabulary>.",
-    "reading_mnemonic": "Every time Nao kneels in the mossy patch behind Grandma Kane's shrine, a resident cat leans in and yowls one long <reading>nee-wah</reading>. That is how <reading>にわ</reading> got stuck to the <vocabulary>garden / yard</vocabulary> she was weeding.",
+    "reading_mnemonic": "Nao kneels on the strip of swept dirt the house wraps around, and each stubborn weed she yanks makes her yelp <reading>nee-wah</reading>, 「<reading>にわ</reading>」, in the family's proud <vocabulary form=\"庭\">garden</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "noboru": {
@@ -6529,12 +6529,12 @@
   },
   "oba": {
     "meaning_mnemonic": "A <kanji>mother</kanji> figure who's still just a <kanji>youth</kanji> herself, holding kids anyway, is your <vocabulary>aunt</vocabulary>.",
-    "reading_mnemonic": "Your aunt hikes to the mountain trail's summit just to blast one horrible note on an oboe, and that screech is <reading>おば</reading> — <reading>\"oboe\"</reading> — the sound of your <vocabulary>aunt</vocabulary> announcing her arrival.",
+    "reading_mnemonic": "Still a youth herself, your <vocabulary form=\"叔母\">aunt</vocabulary> holds the little cousins on her lap anyway and calms them with one squeaky <reading>oboe</reading> note that sounds just like <reading>おば</reading>.",
     "description": "An aunt younger than your parent; an older one uses different kanji, same reading.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "obaasan": {
@@ -6626,12 +6626,12 @@
   },
   "oji": {
     "meaning_mnemonic": "A backup <kanji>father</kanji> who shows up every holiday, spoils you rotten, and sneaks you extra sweets is your <vocabulary>uncle</vocabulary>.",
-    "reading_mnemonic": "Your uncle trips over a shrine cat and yelps <reading>おじ</reading> — <reading>\"oh, gee!\"</reading> — the sound your <vocabulary>uncle</vocabulary> makes every single visit.",
+    "reading_mnemonic": "Every holiday the backup dad sneaks you so many extra sweets that your parents gasp '<reading>oh, gee</reading>', the <reading>おじ</reading> sound that follows your spoiling <vocabulary form=\"叔父\">uncle</vocabulary> everywhere.",
     "description": "An uncle younger than your parent; an older one uses different kanji, same reading.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ojiisan": {
@@ -6644,12 +6644,12 @@
   },
   "okaasan": {
     "meaning_mnemonic": "The <kanji>mother</kanji> kanji is already mother, so <vocabulary>mother (polite)</vocabulary> just wraps that same meaning in politeness.",
-    "reading_mnemonic": "At Koichi's konbini, your <vocabulary>mother (polite)</vocabulary> pulls up in a squealing <reading>car</reading> right through the automatic doors. The cashier just sighs, '<reading>おかあさん</reading>, not again'.",
+    "reading_mnemonic": "With a small child tucked under each arm, she cannot open the <reading>car</reading> door, so the kids politely call 「<reading>おかあさん</reading>」 until their <vocabulary form=\"お母さん\">mother</vocabulary> nudges it open with her hip.",
     "description": "Use お母さん to speak to or about someone else's mother. For your own mother, switch to the plainer 母 when talking to an outsider.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "okaerinasai": {
@@ -6743,11 +6743,11 @@
   },
   "okusan": {
     "meaning_mnemonic": "Whoever rules the <kanji>interior</kanji> of the house earns the title <vocabulary>wife</vocabulary>.",
-    "reading_mnemonic": "Everyone in the village calls her <reading>おくさん</reading>. She stands as sturdy as an <reading>oak</reading>, so of course she is the <vocabulary>wife</vocabulary> of the house.",
+    "reading_mnemonic": "From an <reading>oak</reading> chair deep in the house's interior she rules every room, so visitors bow and greet her 「<reading>おくさん</reading>」, the <vocabulary form=\"奥さん\">wife</vocabulary> of the house.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "okutte-ageru": {
@@ -6821,12 +6821,12 @@
   },
   "oneesan": {
     "meaning_mnemonic": "A lost traveler at the riverbank asks a young woman for directions, calling her <vocabulary>older sister (polite)</vocabulary> before he even learns her name.",
-    "reading_mnemonic": "At Koichi's konbini, the new clerk stretches her greeting into a horse-like 「<reading>おねえさん</reading>」, drawing out the <reading>neigh</reading> so long that customers laugh. They still call her an <vocabulary>older sister (polite)</vocabulary> right back.",
+    "reading_mnemonic": "At the riverbank, the lost traveler stretches his polite 「<reading>おねえさん</reading>」 into a long horse-like <reading>neigh</reading>, asking the way from a young woman he has never met but calls <vocabulary form=\"お姉さん\">older sister</vocabulary>.",
     "description": "Use お姉さん for any young woman addressed politely — a shop clerk, a stranger — not only an actual older sister.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "onegaishimasu": {
@@ -6856,12 +6856,12 @@
   },
   "oniisan": {
     "meaning_mnemonic": "A tired customer at Koichi's konbini calls the teenage clerk an <vocabulary>older brother (polite)</vocabulary> before he even rings up her onigiri, though they have never met.",
-    "reading_mnemonic": "On the mountain trail, a hiker clutches his aching <reading>knee</reading> and yells 「<reading>おにいさん</reading>」, begging the <vocabulary>older brother (polite)</vocabulary> leading the group to slow down.",
+    "reading_mnemonic": "At Koichi's konbini, the teenage clerk bangs his <reading>knee</reading> on the counter grabbing her onigiri, and the tired customer gasps 「<reading>おにいさん</reading>」, still politely calling a stranger her <vocabulary form=\"お兄さん\">older brother</vocabulary>.",
     "description": "Use お兄さん for any young man addressed politely — a waiter, a stranger — not only an actual older brother.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "onnanohito": {
@@ -6919,11 +6919,11 @@
   },
   "osake": {
     "meaning_mnemonic": "Leave cooked rice and clean river water together in a warm, dark cupboard for a few weeks. The mixture quietly ferments into <vocabulary>alcohol / sake</vocabulary>.",
-    "reading_mnemonic": "Grandma Kane's neighbour <reading>O'Sakey</reading> climbs the mossy steps each evening with one bottle and nothing else. Two cups of <reading>おさけ</reading> later he is asleep among the cats, and the name has stuck to the <vocabulary>alcohol / sake</vocabulary> in his hand.",
+    "reading_mnemonic": "Old <reading>O'Sakey</reading> opens the warm dark cupboard after three weeks, sniffs the fermented rice and river water inside, and raises a cup to 「<reading>おさけ</reading>」, his <vocabulary form=\"お酒\">sake</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "osewa-ni-naru": {
@@ -6996,12 +6996,12 @@
   },
   "otona": {
     "meaning_mnemonic": "Once a <kanji>person</kanji> gets <kanji>big</kanji> enough, everyone starts calling them an <vocabulary>adult</vocabulary>.",
-    "reading_mnemonic": "At Grandma Kane's shrine, only an <reading>おとな</reading> may ring the great bell, so the cats call the rule keeper <reading>Otto Nana</reading>, guardian of every <vocabulary>adult</vocabulary> visitor.",
+    "reading_mnemonic": "Once little <reading>Otto Nana</reading> grows big enough to bump his head on the doorframe, the whole family starts calling him 「<reading>おとな</reading>」, a full-grown <vocabulary form=\"大人\">adult</vocabulary>.",
     "description": "As a な adjective, it takes な directly before the noun it describes, not い like most descriptive words.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "otosu": {
@@ -7015,30 +7015,30 @@
   },
   "ototoi": {
     "meaning_mnemonic": "Count back <kanji>one</kanji> more <kanji>day</kanji> past yesterday and you land on <vocabulary>the day before yesterday</vocabulary>.",
-    "reading_mnemonic": "At the riverbank an <reading>otter toy</reading> washes ashore two days late, stamped <reading>おととい</reading> for <vocabulary>the day before yesterday</vocabulary> it went missing.",
+    "reading_mnemonic": "Counting back one more day past yesterday, you find the <reading>otter toy</reading> you lost, still tagged <reading>おととい</reading>: <vocabulary form=\"一昨日\">the day before yesterday</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "otousan": {
     "meaning_mnemonic": "The <kanji>father</kanji> kanji already means father, and <vocabulary>father (polite)</vocabulary> is simply the respectful way to say that very same word.",
-    "reading_mnemonic": "At the mountain trail, your <reading>おとうさん</reading> keeps <reading>towing</reading> your backpack up the last steep stretch. That's just what a <vocabulary>father (polite)</vocabulary> does for you.",
+    "reading_mnemonic": "At the barbecue, the kids call a polite 「<reading>おとうさん</reading>」 to the man raising the tongs and <reading>towing</reading> the heavy grill nearer, because that is how you nicely address a <vocabulary form=\"お父さん\">father</vocabulary>.",
     "description": "Use お父さん to speak to or about someone else's father. For your own father, switch to the plainer 父 when talking to an outsider.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "otouto": {
     "meaning_mnemonic": "On the mountain trail, the smallest hiker races ahead of everyone and falls straight into the vending machine at the top. That reckless little kid is exactly a <vocabulary>younger brother</vocabulary>.",
-    "reading_mnemonic": "At Sei's school, the team's littlest <vocabulary>younger brother</vocabulary> mascot revs an invisible <reading>auto</reading> down the hallway, yelling 「<reading>おとうと</reading>」 every time he nearly crashes.",
+    "reading_mnemonic": "On the mountain trail, the smallest hiker races ahead making <reading>auto</reading> engine noises and yelling 「<reading>おとうと</reading>」 until he crashes into the vending machine, a true <vocabulary form=\"弟\">younger brother</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "otsukaresama": {
@@ -7060,11 +7060,11 @@
   },
   "otto": {
     "meaning_mnemonic": "The one who groans the loudest fixing a leaky faucet at 2 AM is your <vocabulary>husband</vocabulary>.",
-    "reading_mnemonic": "He trips over the cat and yelps <reading>おっと</reading> every morning. It sounds exactly like <reading>oops</reading>, and that's exactly why he's the <vocabulary>husband</vocabulary>.",
+    "reading_mnemonic": "At 2 AM the leaky faucet sprays him in the face, and between groans your <vocabulary form=\"夫\">husband</vocabulary> yelps <reading>おっと</reading>, a startled '<reading>oh, toe</reading>' as the wrench lands on his foot.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "owari": {
@@ -7438,11 +7438,11 @@
   },
   "sakana": {
     "meaning_mnemonic": "The <kanji>fish</kanji> kanji and the <vocabulary>fish</vocabulary> word are the same, so they mean the same thing.",
-    "reading_mnemonic": "Down at the riverbank, Ana wrings out a soaking wet <reading>sock</reading> and a live <vocabulary>fish</vocabulary> drops out of the heel. Ana's sock full of fish is <reading>さかな</reading>.",
+    "reading_mnemonic": "Ana wades into the flooded rice field and scoops the crouching <vocabulary form=\"魚\">fish</vocabulary> up in her wet <reading>sock</reading>, so <reading>sock-Ana</reading>'s catch, 「<reading>さかな</reading>」, goes straight into the pan over the fire.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "sakkaa": {
@@ -8027,11 +8027,11 @@
   },
   "shio": {
     "meaning_mnemonic": "One shake of the white grit makes hot chips worth eating. The same pinch stings like fire in a small cut, because it is <vocabulary>salt</vocabulary>.",
-    "reading_mnemonic": "Sho the gull cracks white crystals off the <reading>seashore</reading> rocks with her beak. Each crunch sounds like <reading>しお</reading>, and every flake is pure <vocabulary>salt</vocabulary>.",
+    "reading_mnemonic": "A girl shakes <vocabulary form=\"塩\">salt</vocabulary> over her hot chips, a pinch lands in the cut on her thumb, and the sting pulls a sharp 「<reading>しお</reading>」 out of her, <reading>she-oh</reading>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "shippai-suru": {
@@ -8486,11 +8486,11 @@
   },
   "sora": {
     "meaning_mnemonic": "The <kanji>sky</kanji> kanji, the one you also met as 'empty', and the <vocabulary>sky</vocabulary> word are a single character doing both jobs, so one wide empty space overhead is all either of them means.",
-    "reading_mnemonic": "A hiker on the mountain trail tips his head back to watch a hawk circle until his neck seizes up and he groans 「<reading>そら</reading>」, which comes out like <reading>so raw</reading>. The endless blue he was staring into is the <vocabulary>sky</vocabulary>.",
+    "reading_mnemonic": "The digging crew punches clean through the roof of the empty hollow in the hill, looks up at the endless blue <vocabulary form=\"空\">sky</vocabulary>, and cheers 「<reading>そら</reading>」, <reading>so, rah</reading>!",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "sore": {
@@ -8942,11 +8942,11 @@
   },
   "tamago": {
     "meaning_mnemonic": "The smooth white thing in the carton that cracks if you look at it wrong and turns into breakfast the moment it hits a hot pan is an <vocabulary>egg</vocabulary>.",
-    "reading_mnemonic": "A hen at Grandma Kane's shrine has started laying one <reading>tomato</reading>-red <vocabulary>egg</vocabulary> every morning on the mossy step. A hen dropping tomatoes is your hook for <reading>たまご</reading>.",
+    "reading_mnemonic": "The cook cracks a smooth white <vocabulary form=\"卵\">egg</vocabulary> from the carton into the hot pan and yells 「<reading>たまご</reading>」, <reading>tomato, go</reading>, as the red slices slide in beside it.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tanomu": {
@@ -9022,11 +9022,11 @@
   },
   "te-v": {
     "meaning_mnemonic": "The <kanji>hand</kanji> kanji and the <vocabulary>hand</vocabulary> word are the very same character, so whatever one means, the other means too.",
-    "reading_mnemonic": "A masseuse leans her whole weight through one <reading>tender</reading> <vocabulary>hand</vocabulary> pressed flat to your spine, and the tool doing the work is called 「<reading>て</reading>」.",
+    "reading_mnemonic": "<reading>Ted</reading> the palm reader traces your open <vocabulary form=\"手\">hand</vocabulary> from the wrist up through the palm to the three spread fingers, then taps it once and names it 「<reading>て</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tebukuro": {
@@ -9203,11 +9203,11 @@
   },
   "tokei": {
     "meaning_mnemonic": "Back when the village told the <kanji>time</kanji> by the sun on the temple roof, someone built a pocket machine to <kanji>plot</kanji> the hours instead. That gadget is a <vocabulary>clock / watch</vocabulary>.",
-    "reading_mnemonic": "A <reading>tokay</reading> gecko clings to the wall and barks once an hour, right on the hour. The whole house tells time by the lizard now and calls it their <reading>とけい</reading>, a living <vocabulary>clock / watch</vocabulary>.",
+    "reading_mnemonic": "A <reading>tokay</reading> gecko on the temple roof barks the hours as the sun moves, until the village trades it for a pocket <vocabulary form=\"時計\">watch</vocabulary> and still calls that 「<reading>とけい</reading>」.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tokeru": {
@@ -9315,11 +9315,11 @@
   },
   "too": {
     "meaning_mnemonic": "The <kanji>ten</kanji> kanji and the <vocabulary>ten things</vocabulary> word are exactly the same, so counting up to ten is all this one ever means.",
-    "reading_mnemonic": "At Koichi's konbini he stubs his <reading>toe</reading> on the shelf ten times, yelping <reading>とお</reading> each time, and swears the broken onigiri come to exactly <vocabulary>ten things</vocabulary>.",
+    "reading_mnemonic": "You stub your <reading>toe</reading> on the two matchsticks crossed into a plus sign and yelp <reading>とお</reading>; that one small cross stands for <vocabulary form=\"十\">ten things</vocabulary>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tooi": {
@@ -9484,11 +9484,11 @@
   },
   "tsuitachi": {
     "meaning_mnemonic": "The flat line of <kanji>one</kanji> sits right against the <kanji>day</kanji> mark on the calendar. That opening pair is always the <vocabulary>1st of the month</vocabulary>.",
-    "reading_mnemonic": "Every <reading>ついたち</reading>, landlord <reading>Sweetie Tachi</reading> pounds on the door, because rent is only ever due on the <vocabulary>1st of the month</vocabulary>.",
+    "reading_mnemonic": "Landlord <reading>Sweetie Tachi</reading> taps the calendar where the flat line of one sits against the day mark and says <reading>ついたち</reading>: rent is due on the <vocabulary form=\"一日\">1st of the month</vocabulary>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tsukaeru": {
@@ -9555,11 +9555,11 @@
   },
   "tsuma": {
     "meaning_mnemonic": "The person who knows exactly where every spare key in the house is hidden is your <vocabulary>wife</vocabulary>.",
-    "reading_mnemonic": "The family dog barks <reading>つま</reading> every time the door opens. It sounds just like <reading>too-mah</reading>, which is somehow always right when your <vocabulary>wife</vocabulary> walks in.",
+    "reading_mnemonic": "You lose the house key again, and only your <vocabulary form=\"妻\">wife</vocabulary> knows where the spares hide. Digging one out, she sighs a weary <reading>too-mah</reading>, the <reading>つま</reading> sound of every lost-key morning.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tsumaranai": {
@@ -9974,11 +9974,11 @@
   },
   "watashi": {
     "meaning_mnemonic": "The <kanji>private</kanji> kanji and the <vocabulary>I / me</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "At Koichi's konbini, a hoarder snatches the last piece of sushi and snaps <reading>わたし</reading>, which sounds just like <reading>what a sushi</reading>, because only <vocabulary>me</vocabulary> gets to eat it.",
+    "reading_mnemonic": "Behind the grain stalk, a shy farmer named <reading>Wattashee</reading> hugs the one seed sealed in its cocoon and whispers <reading>わたし</reading>: it belongs to <vocabulary form=\"私\">me</vocabulary> alone.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "watashitachi": {
@@ -10167,11 +10167,11 @@
   },
   "yattsu": {
     "meaning_mnemonic": "The <kanji>eight</kanji> kanji and the <vocabulary>eight things</vocabulary> word are exactly the same, so they mean the same thing.",
-    "reading_mnemonic": "A toy <reading>yacht</reading> capsizes on the riverbank and spills <vocabulary>eight things</vocabulary> into the current. The kid wading after it yells <reading>やっつ</reading> as they float away.",
+    "reading_mnemonic": "A <reading>yacht</reading> builder swings his axe at the log, and the halves fall apart and split again until he counts <reading>やっつ</reading>: <vocabulary form=\"八つ\">eight things</vocabulary> to build with.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yobu": {
@@ -10236,12 +10236,12 @@
   },
   "yon-v": {
     "meaning_mnemonic": "The <kanji>four</kanji> kanji is the <vocabulary>four</vocabulary> word — nothing added, nothing changed to get here.",
-    "reading_mnemonic": "At the vending machine on the mountain trail, a hiker counts his water bottles. His huge <reading>yawn</reading> comes out sounding just like <reading>よん</reading> — he's short exactly <vocabulary>four</vocabulary>.",
+    "reading_mnemonic": "Pacing the doorless enclosure, you let out a huge <reading>yawn</reading> that sounds like <reading>よん</reading>, after counting all <vocabulary form=\"四\">four</vocabulary> walls and still finding no way out.",
     "description": "Native speakers use this reading rather than the kanji's other reading, because that other reading sounds identical to the word for death and is avoided when counting aloud, especially in hospitals and elevators.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yorokobu": {
@@ -10263,11 +10263,11 @@
   },
   "yoru": {
     "meaning_mnemonic": "Sei's school gates lock shut the moment <vocabulary>night</vocabulary> falls, leaving the sports field dark and silent.",
-    "reading_mnemonic": "A ghost at the riverbank moans 「<reading>よる</reading>」, which sounds just like calling <reading>your</reading> name, right as <vocabulary>night</vocabulary> falls.",
+    "reading_mnemonic": "Locked out at Sei's school gates, a ghost on the dark, silent sports field moans <reading>よる</reading>, like calling <reading>your</reading> name, because <vocabulary form=\"夜\">night</vocabulary> has fallen.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yosan": {
@@ -10288,11 +10288,11 @@
   },
   "yottsu": {
     "meaning_mnemonic": "The <kanji>four</kanji> kanji and the <vocabulary>four things</vocabulary> word share the same number, but the added つ turns a bare digit into four items you can point at and count.",
-    "reading_mnemonic": "At the riverbank, a collector proudly shows off four half-sunk <reading>yachts</reading>, insisting that's exactly why everyone says <reading>よっつ</reading> when they mean <vocabulary>four things</vocabulary>.",
+    "reading_mnemonic": "Trapped in the doorless enclosure, you find toy <reading>yachts</reading> wedged against its walls and count <reading>よっつ</reading>: <vocabulary form=\"四つ\">four things</vocabulary>, one per wall, and still no way out.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "youji": {
@@ -10346,11 +10346,11 @@
   },
   "yuki": {
     "meaning_mnemonic": "Rain that dawdled on the way down until it froze arrives as soft white clumps on your collar. That heaped, silent pile is <vocabulary>snow</vocabulary>.",
-    "reading_mnemonic": "A kid trudges down the mountain trail with both boots packed full of half-melted <vocabulary>snow</vocabulary>. Every squelching step makes her groan 「<reading>ゆき</reading>」, and she is right, because that is genuinely <reading>yucky</reading>.",
+    "reading_mnemonic": "A soft white clump slides off your collar and down your back, and the cold melt makes you groan 「<reading>ゆき</reading>」, because <vocabulary form=\"雪\">snow</vocabulary> down the neck is <reading>yucky</reading>.",
     "_meta": {
-      "generator_model": "claude-sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "6",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yukkuri": {
