@@ -1,7 +1,7 @@
 # Grammar content — linked words
 
 **Date:** 2026-10-17
-**Status:** Spec approved in brainstorm; plan not written
+**Status:** Code done; in-app check pending
 **Scope:** N5 + N4 grammar (161 points). Sub-project A of two; sub-project B (grammar mnemonics) gets its own spec.
 
 ---
