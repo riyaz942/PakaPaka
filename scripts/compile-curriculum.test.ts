@@ -493,7 +493,9 @@ describe('compile-curriculum', () => {
       const grammarMnemonic = db
         .prepare('SELECT mnemonic_text FROM items WHERE item_type = ? AND slug = ?')
         .get('grammar', 'desu') as { mnemonic_text: string | null };
-      expect(grammarMnemonic.mnemonic_text).toBeNull();
+      expect(grammarMnemonic.mnemonic_text).toBe(
+        'A waiter bows and says "<reading>dess</reading>": <grammar>polite is</grammar>. 本<reading>です</reading>。',
+      );
     } finally {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });

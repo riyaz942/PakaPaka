@@ -156,6 +156,7 @@ type GrammarItem = {
   slug: string;
   primary_form: string;
   meaning: string;
+  mnemonic_text?: string;
   explanation_markdown?: string;
   caution_notes?: string[];
   uses?: GrammarUse[];
@@ -895,7 +896,7 @@ export function compileCurriculum(
         meaning: grammarItem.meaning,
         word_type: null,
         reading_composition: null,
-        mnemonic_text: null,
+        mnemonic_text: grammarItem.mnemonic_text ?? null,
         meaning_mnemonic: null,
         reading_mnemonic: null,
         description: null,
