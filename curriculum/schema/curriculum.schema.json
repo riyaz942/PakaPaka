@@ -244,7 +244,11 @@
         "structure": { "type": "string", "minLength": 1 },
         "japanese": { "type": "string", "minLength": 1 },
         "furigana": { "type": "string", "minLength": 1 },
-        "english": { "type": "string", "minLength": 1 }
+        "english": { "type": "string", "minLength": 1 },
+        "word_spans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/wordSpan" }
+        }
       }
     },
     "grammarItem": {

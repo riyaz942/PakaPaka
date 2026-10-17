@@ -866,6 +866,95 @@ describe('compile-curriculum', () => {
     }
   });
 
+  function compileLessonText(
+    explanationMarkdown: string,
+    useWordSpans?: unknown[],
+  ): { dbPath: string; tempDir: string; run: () => void } {
+    return compileGrammarFixture((file) => {
+      const desu = file.items[0] as Record<string, unknown>;
+      desu.explanation_markdown = explanationMarkdown;
+      desu.uses = [
+        {
+          label: 'A',
+          structure: 'N です',
+          japanese: '一です。',
+          english: 'It is one.',
+          ...(useWordSpans ? { word_spans: useWordSpans } : {}),
+        },
+        { label: 'B', structure: 'N です', japanese: '二です。', english: 'It is two.' },
+      ];
+    });
+  }
+
+  function readDesuRule(dbPath: string): { explanation_markdown: string; uses: string } {
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      return db
+        .prepare(
+          `SELECT r.explanation_markdown, r.uses FROM grammar_rules r
+           JOIN items i ON i.id = r.item_id WHERE i.slug = 'desu'`,
+        )
+        .get() as { explanation_markdown: string; uses: string };
+    } finally {
+      db.close();
+    }
+  }
+
+  it('rewrites lesson word markers to item ids', () => {
+    const { dbPath, tempDir, run } = compileLessonText(
+      'x {{ichi-v||一[いち]}} {{ichi-v|masu|一[いち]です}} {{ichi-v|stem|一[いち]つ}}',
+    );
+    run();
+    const ichiId = readItemIds(dbPath)['vocabulary:ichi-v'];
+    expect(readDesuRule(dbPath).explanation_markdown).toBe(
+      `x {{${ichiId}||一[いち]}} {{${ichiId}|masu|一[いち]です}} {{${ichiId}||一[いち]つ}}`,
+    );
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws on a lesson marker with an unknown slug', () => {
+    const { tempDir, run } = compileLessonText('x {{nope||明日[あした]}}');
+    expect(run).toThrow(/Unresolved lesson word marker/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws when a lesson marker text does not match its word', () => {
+    const { tempDir, run } = compileLessonText('x {{ichi-v||二[に]}}');
+    expect(run).toThrow(/surface mismatch/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws on a malformed lesson marker', () => {
+    const { tempDir, run } = compileLessonText('x {{ichi-v|一');
+    expect(run).toThrow(/Malformed lesson word marker/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('stores uses word spans with item ids', () => {
+    const { dbPath, tempDir, run } = compileLessonText('plain', [
+      { vocabulary_slug: 'ichi-v', start: 0, end: 1 },
+      { vocabulary_slug: 'ichi-v', start: 1, end: 3, surface_form: 'です', inflection: 'stem' },
+    ]);
+    run();
+    const ichiId = readItemIds(dbPath)['vocabulary:ichi-v'];
+    const uses = JSON.parse(readDesuRule(dbPath).uses);
+    expect(uses[0].word_spans).toEqual([
+      { vocabulary_item_id: ichiId, start: 0, end: 1, inflection: null },
+      { vocabulary_item_id: ichiId, start: 1, end: 3, inflection: null },
+    ]);
+    expect(uses[0].label).toBe('A');
+    expect(uses[1]).not.toHaveProperty('word_spans');
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws when a uses word span does not match its text', () => {
+    const { tempDir, run } = compileLessonText('plain', [
+      { vocabulary_slug: 'ichi-v', start: 1, end: 2 },
+    ]);
+    expect(run).toThrow(/surface mismatch/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
   it('throws on a grammar span outside its sentence', () => {
     const { tempDir, run } = compileGrammarFixture((file) => {
       const desu = file.items[0] as { example_sentences: { grammar_span: unknown }[] };

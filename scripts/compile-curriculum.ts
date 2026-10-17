@@ -13,7 +13,7 @@ import {
   resolveRegistryIds,
   writeIdRegistry,
 } from './id-registry';
-import { SIDECAR_FILE_NAMES, validateCurriculum } from './validate-schema';
+import { SIDECAR_FILE_NAMES, stripFurigana, validateCurriculum } from './validate-schema';
 
 const REPO_ROOT = process.cwd();
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
@@ -148,6 +148,7 @@ type GrammarUse = {
   japanese: string;
   furigana?: string;
   english: string;
+  word_spans?: WordSpan[];
 };
 
 type GrammarItem = {
@@ -289,6 +290,50 @@ function resolveWordSpans(
     });
   }
   return resolved;
+}
+
+const LESSON_MARKER_RE = /\{\{([a-z0-9-]+)\|([a-z]*)\|([^{}]+?)\}\}/g;
+
+/**
+ * Rewrites the `{{<vocab-slug>|<inflection>|<annotated text>}}` markers the
+ * build writes into a grammar lesson to `{{<item-id>|<inflection>|<text>}}`.
+ * Each marker is checked as a one-span word span over its unannotated text, so
+ * a wrong slug, text or inflection fails here rather than in the app. `stem`
+ * compiles to an empty inflection, exactly as in `resolveWordSpans`.
+ */
+export function resolveLessonMarkers(
+  markdown: string,
+  label: string,
+  idByKey: Map<string, number>,
+  primaryFormByVocabSlug: Map<string, string>,
+): string {
+  // Whatever braces remain once every well-formed marker is gone are malformed.
+  const unmatched = markdown.replace(LESSON_MARKER_RE, '');
+  if (unmatched.includes('{{') || unmatched.includes('}}')) {
+    throw new Error(`Malformed lesson word marker in ${label}`);
+  }
+  return markdown.replace(
+    LESSON_MARKER_RE,
+    (_marker, slug: string, inflection: string, annotated: string) => {
+      const plain = stripFurigana(annotated);
+      const [resolved] = resolveWordSpans(
+        plain,
+        [
+          {
+            vocabulary_slug: slug,
+            start: 0,
+            end: plain.length,
+            ...(inflection ? { surface_form: plain, inflection } : {}),
+          },
+        ],
+        'lesson word marker',
+        label,
+        idByKey,
+        primaryFormByVocabSlug,
+      );
+      return `{{${resolved.item_id}|${resolved.inflection ?? ''}|${annotated}}}`;
+    },
+  );
 }
 
 type ReadingPassage = {
@@ -864,11 +909,42 @@ export function compileCurriculum(
         conjugation_rules: JSON.stringify(grammarItem.conjugation_rules),
         accepted_forms: JSON.stringify(grammarItem.accepted_forms),
         family: grammarItem.family ?? null,
-        explanation_markdown: grammarItem.explanation_markdown ?? null,
+        explanation_markdown:
+          grammarItem.explanation_markdown === undefined
+            ? null
+            : resolveLessonMarkers(
+                grammarItem.explanation_markdown,
+                `grammar:${grammarItem.slug}`,
+                idByKey,
+                primaryFormByVocabSlug,
+              ),
         caution_notes: grammarItem.caution_notes
           ? JSON.stringify(grammarItem.caution_notes)
           : null,
-        uses: grammarItem.uses ? JSON.stringify(grammarItem.uses) : null,
+        uses: grammarItem.uses
+          ? JSON.stringify(
+              grammarItem.uses.map((use, useIndex) => {
+                const { word_spans: spans, ...rest } = use;
+                if (!spans) return rest;
+                return {
+                  ...rest,
+                  word_spans: resolveWordSpans(
+                    use.japanese,
+                    spans,
+                    'grammar use word span',
+                    `grammar:${grammarItem.slug} use[${useIndex}]`,
+                    idByKey,
+                    primaryFormByVocabSlug,
+                  ).map((span) => ({
+                    vocabulary_item_id: span.item_id,
+                    start: span.start_offset,
+                    end: span.end_offset,
+                    inflection: span.inflection,
+                  })),
+                };
+              }),
+            )
+          : null,
       });
 
       for (const answer of grammarItem.accepted_answers ?? []) {
