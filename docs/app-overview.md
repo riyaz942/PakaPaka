@@ -13,7 +13,6 @@ An offline-first Expo (React Native) Japanese learning app for iOS and Android. 
 - **Content** is a dependency graph (radical → kanji → vocabulary) plus structured grammar and reading passages.
 - **Scheduling** is FSRS spaced repetition, biased toward weak points (`0.7 × fsrs + 0.3 × weakness`), served as one interleaved queue.
 - **Network** is required by exactly one feature: the AI conversation tab (bring-your-own API key). Everything else works fully offline.
-- **Kana is not taught.** The app does not teach hiragana or katakana — learn them first with another app, such as [Kana](https://apps.apple.com/us/app/kana-hiragana-and-katakana/id1454200955) on iOS or a free Android equivalent.
 
 ## Navigation shape
 
