@@ -15,7 +15,7 @@ import {
   readGrammarLessonStatus,
   readGrammarMnemonicStatus,
 } from './sidecar.js';
-import { updateGrammarMnemonicReviewStatus, updateReviewStatus } from './writer.js';
+import { saveItem, updateGrammarMnemonicReviewStatus, updateReviewStatus } from './writer.js';
 
 const REPO = path.resolve(import.meta.dirname, '../../..');
 
@@ -106,4 +106,21 @@ test('a grammar point with no lesson file is an error, not status none', () => {
   assert.throws(() => readGrammarLessonStatus(root, 'wa-topic'), /no lesson/);
   const result = updateGrammarMnemonicReviewStatus(root, 'N5', 'wa-topic', 'reviewed');
   assert.equal(result.ok, false);
+});
+
+test('a grammar mnemonic edit writes plain text to the sidecar, without word markers', () => {
+  const root = scratchRepo();
+  const file = JSON.parse(fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'n5.json'), 'utf8'));
+  const row = file.items.find((i: { slug: string }) => i.slug === 'wa-topic');
+  const edited = {
+    ...row,
+    mnemonic_text: 'Sei asks "<reading>Wha</reading>t?" {{12||私}}<reading>は</reading>{{13||学生}}です。',
+  };
+  assert.deepEqual(saveItem(root, 'grammar', 'N5', 'wa-topic', edited), { ok: true });
+  const sidecar = JSON.parse(
+    fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'mnemonics.json'), 'utf8'),
+  );
+  assert.equal(sidecar['wa-topic'].mnemonic_text, 'Sei asks "<reading>Wha</reading>t?" 私<reading>は</reading>学生です。');
+  // The shipped row is only a preview until generate.py runs; the sidecar is the source.
+  assert.equal(Object.keys(sidecar).length, 1);
 });

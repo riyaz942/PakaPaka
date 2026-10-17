@@ -54,4 +54,14 @@ describe('mnemonicAccessibilityLabel', () => {
       ),
     ).toBe('Koichi nods "OK": all set for later.');
   });
+
+  it('speaks a linked example word as plain text', () => {
+    expect(
+      buildMnemonicAccessibilityLabel(
+        'Sei asks "<reading>Wha</reading>t?" {{7||今日}}<reading>は</reading>{{9||寒い}}。',
+        'topic',
+        'は',
+      ),
+    ).toBe('Sei asks "What?" 今日は寒い。');
+  });
 });

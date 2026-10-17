@@ -1,3 +1,5 @@
+import { WORD_MARKER_RE } from '@/core/markdown/parseLessonMarkdown';
+
 /**
  * Highlight tags the mnemonic pipeline emits (content pipeline Rev 2, extended
  * to radical `mnemonic_text` in Rev 3 and to `<vocabulary>` in vocab Rev 5).
@@ -32,5 +34,7 @@ export const HIGHLIGHT_TAG_RE =
  * character in the wrong language.
  */
 export function stripHighlightTags(text: string): string {
-  return text.replace(HIGHLIGHT_TAG_RE, '$3');
+  // A grammar mnemonic's example also carries lesson word markers
+  // (`{{id|inflection|text}}`); like the tags, they are rendering instructions.
+  return text.replace(HIGHLIGHT_TAG_RE, '$3').replace(WORD_MARKER_RE, '$3');
 }

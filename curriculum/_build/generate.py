@@ -457,6 +457,32 @@ def _wrap_spans(plain, annotated, spans, label):
     return "".join(out)
 
 
+_MNEMONIC_EXAMPLE_RE = re.compile(
+    r"(?:^|\s)((?:[぀-ヿ㐀-䶿一-鿿々〆ー、]|</?reading>)+。)\s*$"
+)
+_READING_TAG_RE = re.compile(r"(<reading>.*?</reading>)")
+
+
+def _link_mnemonic_example(text, forms_by_slug, label):
+    """A grammar mnemonic with its example sentence's taught words wrapped in
+    lesson word markers (grammar mnemonics spec §6a). Only the example links:
+    the story is English. A `<reading>` tag holds the grammar form, so it is
+    never linked, and the text between tags is tokenised on its own — a verb
+    whose ending is the form (作っ|ておく) links as its stem."""
+    if "{{" in text or "}}" in text:
+        raise ValueError(f"grammar {label}: mnemonic_text must not contain word markers")
+    match = _MNEMONIC_EXAMPLE_RE.search(text)
+    if not match:
+        raise ValueError(f"grammar {label}: mnemonic_text has no Japanese example sentence")
+    parts = _READING_TAG_RE.split(match.group(1))
+    linked = "".join(
+        part if _READING_TAG_RE.fullmatch(part) or not part
+        else _link_words(part, part, forms_by_slug, label)
+        for part in parts
+    )
+    return text[:match.start(1)] + linked + text[match.end(1):]
+
+
 def _link_words(plain, annotated, forms_by_slug, label, accepted_forms=()):
     """`annotated` with every taught word in `plain` wrapped in a lesson word
     marker. Candidates are the whole level's vocabulary; the spans are the
@@ -736,7 +762,12 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
             if not mnemonic.get("mnemonic_text"):
                 errors.append(f"grammar {g['slug']} mnemonic sidecar entry has no mnemonic_text")
                 continue
-            item["mnemonic_text"] = mnemonic["mnemonic_text"]
+            try:
+                item["mnemonic_text"] = _link_mnemonic_example(
+                    mnemonic["mnemonic_text"], forms, g["slug"])
+            except ValueError as error:
+                errors.append(str(error))
+                continue
             # The least reviewed of lesson and mnemonic wins, so a draft
             # mnemonic keeps a reviewed lesson behind compile's draft gate.
             _merge_sidecar_meta(item, _sidecar_meta(mnemonic))

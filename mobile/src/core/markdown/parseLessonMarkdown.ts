@@ -61,7 +61,7 @@ const BULLET_RE = /^[-*]\s+(.*)$/;
 const ORDERED_RE = /^\d+[.)]\s+(.*)$/;
 const BLOCKQUOTE_RE = /^>\s?(.*)$/;
 const INLINE_RE = /\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`/g;
-const WORD_MARKER_RE = /\{\{(\d+)\|(masu|te|nai|ta|)\|([^{}]+?)\}\}/g;
+export const WORD_MARKER_RE = /\{\{(\d+)\|(masu|te|nai|ta|)\|([^{}]+?)\}\}/g;
 
 // Kana, kanji (incl. ext. A), CJK punctuation, and fullwidth forms — characters
 // Japanese typography allows breaking between, so each becomes its own token.

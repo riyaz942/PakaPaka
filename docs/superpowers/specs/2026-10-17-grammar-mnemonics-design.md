@@ -100,6 +100,16 @@ Cast characters are actors only. The cast bible's "one reading, one character" r
 - **`scripts/compile-curriculum.ts`** — the grammar insert writes `item.mnemonic_text ?? null` (today a literal `null`); `GrammarItem` type gains the field.
 - **Seed** — rebuild the bundled `curriculum.db` the same way as PR #5.
 
+### 6a. Linked example words (added 2026-10-17, after the pilot)
+
+The example sentence links its taught words, as a lesson does (sub-project A, `docs/superpowers/specs/2026-10-17-grammar-linked-words-design.md`). The sidecar and the gate stay on plain text; the markers are a build product.
+
+- **Build** — `generate.py._link_mnemonic_example` wraps each taught word of the example in `{{<vocab-slug>|<inflection>|<text>}}`. Words come from the level's `known_vocab_forms`; spans come from `spans.derive_spans` and `build_stem_spans`, the same as lessons. Only the example links (the story is English). A `<reading>` tag holds the grammar form and is never linked; the text between tags is tokenised on its own, so a verb that ends in the form (作っ|ておく) links as its stem. A sidecar text that holds `{{` or `}}`, or has no Japanese example, is a build error.
+- **Compile** — `resolveLessonMarkers` runs on grammar `mnemonic_text`: slug → vocabulary item id, with the same checks as a lesson marker (unknown slug, text mismatch, malformed marker fail the compile).
+- **App** — `GrammarMnemonicBlock` splits the story from the example. The story renders with `AnnotatedText`; the example is a row of text, `<reading>` highlights and `LinkedWord` (tap opens the word, long-press toggles its furigana). `AnnotatedText` and `stripHighlightTags` show a marker's text as plain text (Compare view, accessibility labels).
+- **Studio** — `MnemonicText` shows marker text as plain text. A grammar `mnemonic_text` edit strips markers before it writes the sidecar; the shipped row is a preview until `generate.py` runs again.
+- The example shows no furigana (decision in §3 stays); `LinkedWord`'s furigana toggle has nothing to show there.
+
 ## 7. App — `mobile/`
 
 - **`AnnotatedText`** — tag union gains `grammar`; style `font-ui-bold text-primary` (a family, not `font-bold`; see redesign-v2 notes).

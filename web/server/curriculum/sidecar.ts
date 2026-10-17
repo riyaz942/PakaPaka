@@ -61,6 +61,12 @@ const AUTHORED_IN: Record<ContentType, string> = {
   reading: 'curriculum/_build/{n5,n4}_readings.py',
 };
 
+const WORD_MARKER_RE = /\{\{[^|{}]+\|[^|{}]*\|([^{}]+)\}\}/g;
+
+function stripWordMarkers(text: string): string {
+  return text.replace(WORD_MARKER_RE, '$1');
+}
+
 export type PersistResult = { ok: true } | { ok: false; errors: string[] };
 
 function readJsonFile<T>(filePath: string, fallback: T): T {
@@ -174,7 +180,12 @@ export function persistItemEdit(
     const file = readJsonFile<SidecarFile>(filePath, {});
     const entry = { ...(file[slug] ?? {}) };
     for (const key of touchedMnemonicFields) {
-      const value = updatedRaw[key];
+      // A grammar row's mnemonic carries the build's word markers; the sidecar
+      // holds the authored text, and generate.py writes the markers again.
+      const value =
+        type === 'grammar' && typeof updatedRaw[key] === 'string'
+          ? stripWordMarkers(updatedRaw[key] as string)
+          : updatedRaw[key];
       // generate.py inlines a sidecar field only when it is truthy, so an
       // emptied field is stored as absent — that is what regeneration produces.
       if (isEmptyValue(value)) {

@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 
 const TAG_PATTERN = /<(radical|part|kanji|vocabulary|reading|grammar)(?: form="([^"<>]*)")?>(.*?)<\/\1>/g;
 
+const WORD_MARKER_PATTERN = /\{\{[^|{}]+\|[^|{}]*\|([^{}]+)\}\}/g;
+
 type Props = {
   text: string | undefined;
 };
@@ -14,8 +16,11 @@ type Props = {
  * character is printed after the word in parentheses — "a few (少) years (年)" —
  * inside the same chip, so the reviewer reads the pairing the learner will see.
  */
-export function MnemonicText({ text }: Props) {
-  if (!text) return null;
+export function MnemonicText({ text: markedText }: Props) {
+  if (!markedText) return null;
+  // A grammar mnemonic's example carries the build's word markers; the studio
+  // shows their words as plain text.
+  const text = markedText.replace(WORD_MARKER_PATTERN, '$1');
 
   const nodes = [];
   let cursor = 0;

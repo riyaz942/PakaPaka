@@ -127,4 +127,11 @@ describe('AnnotatedText', () => {
     expect(meaning).not.toContain('text-mnemonic-reading');
     expect(sound).toContain('text-mnemonic-reading');
   });
+
+  it('shows a linked example word as plain text where no link is available', () => {
+    render(<AnnotatedText text="Story. {{7||今日}}<reading>は</reading>{{9||寒い}}。" />);
+
+    expect(screen.queryByText(/\{\{/)).toBeNull();
+    expect(screen.getByText('は').props.className).toContain('text-mnemonic-reading');
+  });
 });

@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { cn } from '@/utils/cn';
+import { WORD_MARKER_RE } from '@/core/markdown/parseLessonMarkdown';
 import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
 type Segment = {
@@ -13,7 +14,11 @@ type Segment = {
 };
 
 /** Splits tagged prose into plain and highlighted runs, in order. */
-function parseSegments(text: string): Segment[] {
+function parseSegments(markedText: string): Segment[] {
+  // A grammar mnemonic's example carries lesson word markers; this renderer
+  // has no links, so it shows their words as plain text (the mnemonic block
+  // renders the linked example itself).
+  const text = markedText.replace(WORD_MARKER_RE, '$3');
   const segments: Segment[] = [];
   let cursor = 0;
 
