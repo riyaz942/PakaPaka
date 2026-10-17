@@ -53,6 +53,13 @@ export function parseFurigana(text: string): Segment[] {
   return segments;
 }
 
+const WORD_MARKER_PATTERN = /\{\{[^|}]*\|[^|}]*\|(.*?)\}\}/g;
+
+/** Lesson text marks taught words `{{word|inflection|text}}`; Studio shows only the text. */
+export function stripWordMarkers(text: string): string {
+  return text.replace(WORD_MARKER_PATTERN, '$1');
+}
+
 function renderBase(base: string, key: string | number): ReactNode {
   if (!base.includes(BLANK)) return <Fragment key={key}>{base}</Fragment>;
   const parts = base.split(BLANK);

@@ -1,3 +1,4 @@
+import type { WordInflection } from '@/core/content/inflection';
 import { parseFurigana } from '@/core/furigana/parseFurigana';
 
 /**
@@ -7,6 +8,10 @@ import { parseFurigana } from '@/core/furigana/parseFurigana';
  * anywhere in prose may carry JmdictFurigana bracket notation
  * (`私[わたし]は…`) — the build pipeline's tokenizer emits it; rendering
  * resolves it via `parseFurigana`.
+ *
+ * Taught vocabulary words arrive as markers `{{<item-id>|<inflection>|<annotated
+ * text>}}` (inflection empty or masu/te/nai/ta); `splitWordMarkers` turns them
+ * into link spans. Inline code is never scanned for markers.
  *
  * Fenced-block convention: a ```jp fence marks standalone Japanese lines
  * (example sentences) that render with full furigana treatment; any other
@@ -18,6 +23,8 @@ export type InlineSpan = {
   bold?: boolean;
   italic?: boolean;
   code?: boolean;
+  /** Set when the span is a taught vocabulary word; `text` is the annotated form. */
+  link?: { vocabularyItemId: string; inflection: WordInflection | null };
 };
 
 export type LessonBlock =
@@ -30,10 +37,19 @@ export type LessonBlock =
 
 /** One wrap-safe unit of a rich text line (flex-wrap layout child). */
 export type RichToken = {
-  /** 'word': plain text (latin word or single JP character). 'ruby': annotated JP run. */
-  kind: 'word' | 'ruby';
+  /**
+   * 'word': plain text (latin word or single JP character). 'ruby': annotated
+   * JP run. 'linked': a taught vocabulary word (one unbreakable unit).
+   */
+  kind: 'word' | 'ruby' | 'linked';
   text: string;
   reading?: string;
+  /** Linked only: the text without furigana brackets. */
+  surface?: string;
+  vocabularyItemId?: string;
+  inflection?: WordInflection | null;
+  /** Linked only: closing punctuation that followed the word, kept on its line. */
+  trailing?: string;
   bold?: boolean;
   italic?: boolean;
   code?: boolean;
@@ -45,27 +61,65 @@ const BULLET_RE = /^[-*]\s+(.*)$/;
 const ORDERED_RE = /^\d+[.)]\s+(.*)$/;
 const BLOCKQUOTE_RE = /^>\s?(.*)$/;
 const INLINE_RE = /\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`/g;
+const WORD_MARKER_RE = /\{\{(\d+)\|(masu|te|nai|ta|)\|([^{}]+?)\}\}/g;
 
 // Kana, kanji (incl. ext. A), CJK punctuation, and fullwidth forms — characters
 // Japanese typography allows breaking between, so each becomes its own token.
 const CJK_CHAR_RE = /[　-ヿ㐀-䶿一-鿿＀-￯]/;
 // Characters that must not start a wrapped line; merged into the previous token.
 const JP_CLOSING_PUNCT_RE = /^[。、！？」』）,.）…～]$/;
+// Leading ASCII closing punctuation of a latin run (kept with a linked word).
+const LATIN_CLOSING_PUNCT_RE = /^[,.;:!?)'"]+/;
+
+/** Splits `{{id|inflection|text}}` markers out of a text run into link spans. */
+export function splitWordMarkers(
+  text: string,
+  style: Pick<InlineSpan, 'bold' | 'italic' | 'code'> = {},
+): InlineSpan[] {
+  const spans: InlineSpan[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  const re = new RegExp(WORD_MARKER_RE);
+  while ((match = re.exec(text))) {
+    if (match.index > cursor) {
+      spans.push({ text: text.slice(cursor, match.index), ...style });
+    }
+    spans.push({
+      text: match[3],
+      ...style,
+      link: {
+        vocabularyItemId: match[1],
+        inflection: (match[2] || null) as WordInflection | null,
+      },
+    });
+    cursor = match.index + match[0].length;
+  }
+
+  if (cursor < text.length) {
+    spans.push({ text: text.slice(cursor), ...style });
+  }
+
+  return spans;
+}
 
 export function parseInlineSpans(text: string): InlineSpan[] {
   const spans: InlineSpan[] = [];
+  const pushSpans = (spanText: string, style: Pick<InlineSpan, 'bold' | 'italic'>) => {
+    spans.push(...splitWordMarkers(spanText, style));
+  };
   let cursor = 0;
   let match: RegExpExecArray | null;
 
   INLINE_RE.lastIndex = 0;
   while ((match = INLINE_RE.exec(text))) {
     if (match.index > cursor) {
-      spans.push({ text: text.slice(cursor, match.index) });
+      pushSpans(text.slice(cursor, match.index), {});
     }
     if (match[1] !== undefined) {
-      spans.push({ text: match[1], bold: true });
+      pushSpans(match[1], { bold: true });
     } else if (match[2] !== undefined) {
-      spans.push({ text: match[2], italic: true });
+      pushSpans(match[2], { italic: true });
     } else {
       spans.push({ text: match[3], code: true });
     }
@@ -73,7 +127,7 @@ export function parseInlineSpans(text: string): InlineSpan[] {
   }
 
   if (cursor < text.length) {
-    spans.push({ text: text.slice(cursor) });
+    pushSpans(text.slice(cursor), {});
   }
 
   return spans;
@@ -91,27 +145,40 @@ function pushPlainTokens(
   };
 
   let latinBuffer = '';
+  // Flush latin text as word tokens with trailing whitespace attached. Closing
+  // punctuation right after a linked word joins its trailing, so it cannot
+  // wrap onto the next line alone.
+  const flushLatin = () => {
+    let latin = latinBuffer;
+    const last = tokens[tokens.length - 1];
+    const closing = latin.match(LATIN_CLOSING_PUNCT_RE);
+    if (closing && last && last.kind === 'linked') {
+      last.trailing = (last.trailing ?? '') + closing[0];
+      latin = latin.slice(closing[0].length);
+    }
+    for (const word of latin.match(/\S+\s*|\s+/g) ?? []) {
+      pushWord(word);
+    }
+    latinBuffer = '';
+  };
+
   for (const ch of text) {
     if (!CJK_CHAR_RE.test(ch)) {
       latinBuffer += ch;
       continue;
     }
-    // Flush latin text as word tokens with trailing whitespace attached.
-    for (const word of latinBuffer.match(/\S+\s*|\s+/g) ?? []) {
-      pushWord(word);
-    }
-    latinBuffer = '';
+    flushLatin();
 
     const previous = tokens[tokens.length - 1];
     if (JP_CLOSING_PUNCT_RE.test(ch) && previous && previous.kind === 'word') {
       previous.text += ch;
+    } else if (JP_CLOSING_PUNCT_RE.test(ch) && previous && previous.kind === 'linked') {
+      previous.trailing = (previous.trailing ?? '') + ch;
     } else {
       pushWord(ch);
     }
   }
-  for (const word of latinBuffer.match(/\S+\s*|\s+/g) ?? []) {
-    pushWord(word);
-  }
+  flushLatin();
 }
 
 /**
@@ -125,6 +192,20 @@ export function tokenizeSpans(spans: InlineSpan[]): RichToken[] {
   for (const span of spans) {
     const style = { bold: span.bold, italic: span.italic, code: span.code };
     let plainRun = '';
+
+    if (span.link) {
+      tokens.push({
+        kind: 'linked',
+        text: span.text,
+        surface: parseFurigana(span.text)
+          .map((segment) => segment.text)
+          .join(''),
+        vocabularyItemId: span.link.vocabularyItemId,
+        inflection: span.link.inflection,
+        ...style,
+      });
+      continue;
+    }
 
     const flushPlain = () => {
       pushPlainTokens(plainRun, style, tokens);
@@ -145,9 +226,12 @@ export function tokenizeSpans(spans: InlineSpan[]): RichToken[] {
   return tokens;
 }
 
-/** True when any span carries a furigana annotation (needs ruby layout). */
-export function spansHaveFurigana(spans: InlineSpan[]): boolean {
-  return spans.some((span) => parseFurigana(span.text).some((segment) => segment.reading));
+/** True when any span needs token layout: a furigana annotation or a word link. */
+export function spansNeedTokens(spans: InlineSpan[]): boolean {
+  return spans.some(
+    (span) =>
+      span.link !== undefined || parseFurigana(span.text).some((segment) => segment.reading),
+  );
 }
 
 export function parseLessonMarkdown(markdown: string): LessonBlock[] {

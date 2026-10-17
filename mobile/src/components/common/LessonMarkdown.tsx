@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { defaultFuriganaVisible, FuriganaText } from '@/components/common/FuriganaText';
+import { defaultFuriganaVisible } from '@/components/common/FuriganaText';
+import { LinkedWord } from '@/components/common/LinkedWord';
 import {
   parseLessonMarkdown,
-  spansHaveFurigana,
+  spansNeedTokens,
+  splitWordMarkers,
   tokenizeSpans,
   type InlineSpan,
   type LessonBlock,
@@ -43,6 +45,7 @@ function RubyToken({
   baseClassName,
   toggled,
   onToggle,
+  accessibilityLabel,
 }: {
   token: RichToken;
   mode: FuriganaDisplayMode;
@@ -50,13 +53,18 @@ function RubyToken({
   baseClassName: string;
   toggled: boolean;
   onToggle: () => void;
+  /** Set when this token speaks for its prose run (see `plainRunLabels`). */
+  accessibilityLabel?: string;
 }) {
   const segment = { text: token.text, reading: token.reading };
   const visibleByDefault = defaultFuriganaVisible(segment, mode, knownKanji);
   const isVisible = toggled ? !visibleByDefault : visibleByDefault;
 
   return (
-    <Pressable accessible={false} onPress={onToggle}>
+    <Pressable
+      accessible={accessibilityLabel !== undefined}
+      accessibilityLabel={accessibilityLabel}
+      onPress={onToggle}>
       <View className="items-center">
         {isVisible ? (
           <Text className="text-center text-furigana font-jp text-secondary" accessible={false}>
@@ -69,6 +77,34 @@ function RubyToken({
       </View>
     </Pressable>
   );
+}
+
+/**
+ * For a line with linked words: the first token of each run of non-linked
+ * tokens → the run's plain text (ruby contributes its base). That token speaks
+ * for the run, so prose between the word buttons stays reachable.
+ */
+function plainRunLabels(tokens: RichToken[]): Map<number, string> {
+  const runs = new Map<number, string>();
+  let runStart = -1;
+  tokens.forEach((token, index) => {
+    if (token.kind === 'linked') {
+      runStart = -1;
+      return;
+    }
+    if (runStart < 0) {
+      runStart = index;
+    }
+    runs.set(runStart, (runs.get(runStart) ?? '') + token.text);
+  });
+
+  const labels = new Map<number, string>();
+  for (const [index, text] of runs) {
+    if (text.trim()) {
+      labels.set(index, text.trim());
+    }
+  }
+  return labels;
 }
 
 /**
@@ -88,15 +124,15 @@ function RichLine({
   knownKanji?: ReadonlySet<string>;
   baseClassName: string;
 }) {
-  const hasFurigana = useMemo(() => spansHaveFurigana(spans), [spans]);
-  const tokens = useMemo(() => (hasFurigana ? tokenizeSpans(spans) : []), [hasFurigana, spans]);
+  const needsTokens = useMemo(() => spansNeedTokens(spans), [spans]);
+  const tokens = useMemo(() => (needsTokens ? tokenizeSpans(spans) : []), [needsTokens, spans]);
   const [toggled, setToggled] = useState<Set<number>>(() => new Set());
 
   useEffect(() => {
     setToggled(new Set());
   }, [spans]);
 
-  if (!hasFurigana) {
+  if (!needsTokens) {
     return (
       <Text className={baseClassName}>
         {spans.map((span, index) => {
@@ -127,29 +163,78 @@ function RichLine({
     });
   };
 
+  // A line label would swallow the nested word buttons, so a line with a
+  // linked word leaves its container non-accessible and each word speaks for
+  // itself, with each prose run between the words labelled on its first token.
+  const hasLinked = tokens.some((token) => token.kind === 'linked');
+  const runLabels = hasLinked ? plainRunLabels(tokens) : new Map<number, string>();
+
   return (
     <View
       className="flex-row flex-wrap items-end gap-y-space-sm"
-      accessible
-      accessibilityLabel={plainLabel}>
-      {tokens.map((token, index) =>
-        token.kind === 'ruby' ? (
-          <RubyToken
+      accessible={hasLinked ? undefined : true}
+      accessibilityLabel={hasLinked ? undefined : plainLabel}>
+      {tokens.map((token, index) => {
+        if (token.kind === 'linked') {
+          return (
+            <LinkedWord
+              key={index}
+              text={token.text}
+              surface={token.surface ?? token.text}
+              vocabularyItemId={token.vocabularyItemId ?? ''}
+              inflection={token.inflection ?? null}
+              textClassName={cn(baseClassName, inlineModifiers(token))}
+              testID={`lesson-word-${token.vocabularyItemId}-${index}`}
+              trailing={token.trailing}
+            />
+          );
+        }
+        if (token.kind === 'ruby') {
+          return (
+            <RubyToken
+              key={index}
+              token={token}
+              mode={mode}
+              knownKanji={knownKanji}
+              baseClassName={baseClassName}
+              toggled={toggled.has(index)}
+              onToggle={() => toggleToken(index)}
+              accessibilityLabel={runLabels.get(index)}
+            />
+          );
+        }
+        return (
+          <Text
             key={index}
-            token={token}
-            mode={mode}
-            knownKanji={knownKanji}
-            baseClassName={baseClassName}
-            toggled={toggled.has(index)}
-            onToggle={() => toggleToken(index)}
-          />
-        ) : (
-          <Text key={index} className={cn(baseClassName, inlineModifiers(token))} accessible={false}>
+            className={cn(baseClassName, inlineModifiers(token))}
+            accessible={runLabels.has(index)}
+            accessibilityLabel={runLabels.get(index)}>
             {token.text}
           </Text>
-        ),
-      )}
+        );
+      })}
     </View>
+  );
+}
+
+/** One ```jp line; spans are memoised so a parent re-render keeps ruby peeks. */
+function JpLine({
+  line,
+  mode,
+  knownKanji,
+}: {
+  line: string;
+  mode: FuriganaDisplayMode;
+  knownKanji?: ReadonlySet<string>;
+}) {
+  const spans = useMemo(() => splitWordMarkers(line), [line]);
+  return (
+    <RichLine
+      spans={spans}
+      mode={mode}
+      knownKanji={knownKanji}
+      baseClassName="text-body-lg font-jp text-primary"
+    />
   );
 }
 
@@ -231,12 +316,7 @@ function BlockView({
           )}>
           {block.lines.map((line, index) => (
             <View key={index} className={index > 0 ? 'mt-space-sm' : undefined}>
-              <FuriganaText
-                text={line}
-                mode={mode}
-                knownKanji={knownKanji}
-                className="text-body-lg font-jp text-primary"
-              />
+              <JpLine line={line} mode={mode} knownKanji={knownKanji} />
             </View>
           ))}
         </View>

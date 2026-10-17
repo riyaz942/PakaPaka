@@ -1,7 +1,7 @@
 import { ExampleSentences } from '../../components/ExampleSentences';
 import { Markdown } from '../../components/Markdown';
 import { RelatedChips } from '../../components/RelatedChips';
-import { AnnotatedSentence } from '../../lib/furigana';
+import { AnnotatedSentence, stripWordMarkers } from '../../lib/furigana';
 import type { GrammarRaw } from '../../types/curriculumRaw';
 
 type Props = {
@@ -50,7 +50,7 @@ export function GrammarDetail({ raw, showReadings }: Props) {
       {raw.explanation_markdown ? (
         <>
           <h3 className="panel-title">Explanation</h3>
-          <Markdown text={raw.explanation_markdown} />
+          <Markdown text={stripWordMarkers(raw.explanation_markdown)} />
         </>
       ) : null}
 
