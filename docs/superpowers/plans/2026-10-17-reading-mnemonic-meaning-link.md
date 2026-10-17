@@ -1197,16 +1197,16 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 **Files:**
 - Create (by running): `curriculum/_build/reports/reading-link-candidates.json`, `curriculum/_build/reports/reading-link-calibration.json`
 
-- [ ] **Step 1: Select**
+- [x] **Step 1: Select**
 
 Run: `.venv/bin/python -m generate_content.reading_link select`
 Expected: `wrote 737 candidate(s) … (325 kanji, 412 vocab)`.
 
-- [ ] **Step 2: Calibrate**
+- [x] **Step 2: Calibrate**
 
 Follow `generate_content/prompts/reading-link-triage.md` in calibration mode for `polish`, `goods`, `research`, `happiness`, `special` — judge each from its candidate row **without looking at the calibration table's verdict first** (read the rows, decide, then compare). Write `reports/reading-link-calibration.json`.
 
-- [ ] **Step 3: Compare with the expected result**
+- [x] **Step 3: Compare with the expected result**
 
 ```bash
 .venv/bin/python - <<'EOF'
@@ -1221,7 +1221,7 @@ EOF
 
 Expected: `calibration OK`. On mismatch, sharpen the "one question" wording in `reading-link-triage.md`, commit that change, and redo Steps 2–3.
 
-- [ ] **Step 4: Commit and stop**
+- [x] **Step 4: Commit and stop**
 
 ```bash
 git add reports/reading-link-candidates.json reports/reading-link-calibration.json
