@@ -56,6 +56,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 from generate_content import cast as cast_lib  # noqa: E402
+from generate_content import context as grammar_pool_context  # noqa: E402
 from generate_content import mnemonic_context as mc  # noqa: E402
 from generate_content.validate_mnemonics import validate_draft  # noqa: E402
 
@@ -193,13 +194,28 @@ MODEL = "claude-opus-4-8"
 #: shape says what it looks like, then the meaning. The part check rides the
 #: enforce_readability lane, so stored radicals keep their prose. Restyle them
 #: by slug (`--slugs`) — a bump would requeue every reviewed radical.
-PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6}
+#: Grammar starts at 1 (grammar mnemonics spec, 2026-10-17): a one- or
+#: two-sentence story tying an English sound-alike of the form to its meaning,
+#: ending on a Japanese example. Prompt changes during the pilot need no bump:
+#: nothing is reviewed until the pilot is.
+PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
 POLL_SECONDS = 30
 POLL_TIMEOUT_SECONDS = 90 * 60
 
 SUBMIT_TOOLS = {
+    "grammar": {
+        "name": "submit_grammar_mnemonic",
+        "description": "Submit the completed mnemonic for one grammar point. Call exactly once.",
+        "strict": True,
+        "input_schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["mnemonic_text"],
+            "properties": {"mnemonic_text": {"type": "string"}},
+        },
+    },
     "kanji": {
         "name": "submit_kanji_mnemonic",
         "description": (
@@ -276,10 +292,11 @@ PROMPT_FILES = {
     "kanji": "kanji-mnemonic.md",
     "radical": "radical-mnemonic.md",
     "vocab": "vocab-mnemonic.md",
+    "grammar": "grammar-mnemonic.md",
 }
 
 #: Curriculum directory each type's items and sidecar live under.
-KIND_DIR = {"kanji": "kanji", "radical": "radicals", "vocab": "vocabulary"}
+KIND_DIR = {"kanji": "kanji", "radical": "radicals", "vocab": "vocabulary", "grammar": "grammar"}
 
 
 def _read_prompt(name):
@@ -332,6 +349,20 @@ def build_user_prompt(kind, ctx, validator_errors=None):
                 ctx["reading_lore"], ctx["cast"], subject="this word"),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
         }
+    elif kind == "grammar":
+        subs = {
+            "{{LEVEL}}": ctx["level"].upper(),
+            "{{FORM}}": ctx["form"],
+            "{{ACCEPTED_FORMS}}": "、".join(ctx["accepted_forms"]),
+            "{{MEANING}}": ctx["meaning"],
+            "{{STRUCTURE}}": ctx["structure"],
+            "{{FAMILY}}": ctx["family"] or "(none)",
+            "{{LESSON_OPENING}}": ctx["lesson_opening"],
+            "{{ORIGIN}}": mc.format_grammar_origin(ctx["origin"]),
+            "{{CAST_BLOCK}}": mc.format_grammar_cast(),
+            "{{ALLOWED_VOCAB}}": grammar_pool_context.format_vocab_list(ctx["allowed_vocab"]),
+            "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
+        }
     else:
         subs = {
             "{{LEVEL}}": ctx["level"].upper(),
@@ -349,7 +380,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
 
 def _context_for(level, kind, slug):
     builder = {"kanji": mc.kanji_context, "radical": mc.radical_context,
-               "vocab": mc.vocab_context}[kind]
+               "vocab": mc.vocab_context, "grammar": mc.grammar_context}[kind]
     return builder(level, slug)
 
 
@@ -488,6 +519,19 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
 
 def _default_slugs(level, kind):
     return mc.all_slugs(level, KIND_DIR[kind])
+
+
+def require_reviewed_origins(table=None):
+    """Grammar generation runs only on a complete, reviewed origin table: an
+    origin the maintainer has not checked must never reach a story."""
+    table = table or mc.load_grammar_origins()
+    errors = mc.origin_table_errors(table, mc.grammar_mnemonic_slugs())
+    if errors:
+        raise SystemExit("grammar_origins.json cannot drive generation:\n"
+                         + "\n".join(f"- {e}" for e in errors))
+    if table["review_status"] != "reviewed":
+        raise SystemExit("grammar_origins.json is not reviewed yet; the maintainer "
+                         "sets \"review_status\": \"reviewed\" after checking every origin")
 
 
 def cmd_requests(args):
@@ -673,6 +717,7 @@ _VOCAB_SKELETON = (
     '```json\n{\n  "meaning_mnemonic": "...",\n  "description": "..."\n}\n```'
 )
 WEB_SKELETON = {
+    "grammar": '```json\n{\n  "mnemonic_text": "..."\n}\n```',
     "kanji": _SPLIT_SKELETON,
     "vocab": _VOCAB_SKELETON,
     "radical": ('```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "..."\n}\n```'
@@ -794,7 +839,7 @@ def main():
     parser.add_argument("command",
                         choices=["requests", "run", "assemble", "collect",
                                  "webprompts", "ingest"])
-    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab"],
+    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab", "grammar"],
                         required=True)
     parser.add_argument("--level", default="n5")
     parser.add_argument("--slugs", default=None,
@@ -807,6 +852,8 @@ def main():
     parser.add_argument("--batch-id", default=None,
                         help="collect only: the msgbatch_... id to fetch results from")
     args = parser.parse_args()
+    if args.kind == "grammar":
+        require_reviewed_origins()
     if args.slugs:
         args.slugs = [s for s in args.slugs.split(",") if s]
     else:

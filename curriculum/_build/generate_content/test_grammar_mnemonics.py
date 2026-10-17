@@ -222,5 +222,43 @@ class GrammarGateTest(unittest.TestCase):
         self.assertEqual(check(text), [])
 
 
+from generate_content import generate_mnemonics as gm  # noqa: E402
+
+
+class GeneratorWiringTest(unittest.TestCase):
+    TABLE = GrammarContextTest.TABLE
+
+    def test_prompt_has_every_token_filled(self):
+        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
+        prompt = gm.build_user_prompt("grammar", ctx)
+        self.assertNotIn("{{", prompt)
+        self.assertIn("ておく", prompt)
+        self.assertIn("置く", prompt)
+        self.assertIn(gm.WEB_TOOL_LINE["grammar"], prompt)
+
+    def test_web_prompt_swaps_the_tool_line(self):
+        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
+        text = gm._web_prompt_text("n4", "grammar", ctx)
+        self.assertNotIn(gm.WEB_TOOL_LINE["grammar"], text)
+        self.assertIn('"mnemonic_text": "..."', text)
+
+    def test_unreviewed_table_is_refused(self):
+        # Complete, so the only thing wrong is the status.
+        draft = {"review_status": "draft",
+                 "origins": {slug: None for slug in mc.grammar_mnemonic_slugs()}}
+        with self.assertRaises(SystemExit) as raised:
+            gm.require_reviewed_origins(draft)
+        self.assertIn("not reviewed", str(raised.exception))
+
+    def test_incomplete_table_is_refused(self):
+        with self.assertRaises(SystemExit) as raised:
+            gm.require_reviewed_origins({"review_status": "reviewed", "origins": {}})
+        self.assertIn("has no entry for", str(raised.exception))
+
+    def test_sidecar_lives_with_grammar(self):
+        self.assertTrue(gm.sidecar_path("grammar").endswith("curriculum/grammar/mnemonics.json"))
+        self.assertEqual(gm.PROMPT_VERSION["grammar"], 1)
+
+
 if __name__ == "__main__":
     unittest.main()
