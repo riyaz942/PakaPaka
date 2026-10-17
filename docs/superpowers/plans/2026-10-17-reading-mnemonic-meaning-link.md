@@ -71,7 +71,7 @@ All commands below run from `curriculum/_build` unless stated.
   - Constants `LEVELS`, `CANDIDATES_PATH`, `CALIBRATION_PATH`, `LIST_PATH`, `REWRITES_PATH`, `SIDECAR`, `MAX_REASON_WORDS`, helpers `load_json(path)`, `dump_json(path, data)`.
   - CLI: `python -m generate_content.reading_link select` / `check-list`.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `curriculum/_build/generate_content/test_reading_link.py`:
 
@@ -202,12 +202,12 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `.venv/bin/python -m unittest generate_content.test_reading_link -v`
 Expected: ERROR — `ImportError: cannot import name 'reading_link'`.
 
-- [ ] **Step 3: Write the module (select + list check)**
+- [x] **Step 3: Write the module (select + list check)**
 
 Create `curriculum/_build/generate_content/reading_link.py`:
 
@@ -378,17 +378,17 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `.venv/bin/python -m unittest generate_content.test_reading_link -v`
 Expected: all 12 tests PASS.
 
-- [ ] **Step 5: Smoke-run `select` on the real sidecars**
+- [x] **Step 5: Smoke-run `select` on the real sidecars**
 
 Run: `.venv/bin/python -m generate_content.reading_link select`
 Expected: `wrote 737 candidate(s) to …/reports/reading-link-candidates.json (325 kanji, 412 vocab)`. If the numbers differ, check the sidecars have not changed since 2026-10-17 (`git log -1 -- ../kanji/mnemonics.json ../vocabulary/mnemonics.json`) and report the new numbers; do not change the selection rules. Delete the file afterwards (`rm reports/reading-link-candidates.json`) — Task 6 writes it again.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add generate_content/reading_link.py generate_content/test_reading_link.py
