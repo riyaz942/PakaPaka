@@ -395,13 +395,13 @@ describe('ReviewScreen accessibility', () => {
     jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
     render(<ReviewScreen />);
 
-    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'のむ');
     await act(async () => {
       fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
     });
 
     const rejected = screen.getByTestId('review-rejected-answer');
-    expect(rejected.props.value).toBe('wrong');
+    expect(rejected.props.value).toBe('のむ');
     expect(rejected.props.accessibilityHint).toBe('incorrect');
     expect(rejected.props.editable).toBe(false);
   });
@@ -721,7 +721,7 @@ describe('ReviewScreen — Return-to-advance pacing (Story 1.2, FR84)', () => {
     });
     render(<ReviewScreen />);
 
-    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'のむ');
     await act(async () => {
       fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
     });
@@ -757,7 +757,7 @@ describe('ReviewScreen — contextual guidance cards (Epic 7)', () => {
   });
 
   async function submitWrongAnswer() {
-    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'のむ');
     await act(async () => {
       fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
     });
