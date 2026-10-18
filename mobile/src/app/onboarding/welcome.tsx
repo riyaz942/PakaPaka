@@ -101,6 +101,13 @@ export default function WelcomeScreen() {
             </View>
           </LevelPathCard>
         </FadeSlideIn>
+
+        <FadeSlideIn index={3}>
+          <Text className="text-body-sm font-ui text-muted" testID="kana-note">
+            This app doesn&apos;t teach hiragana or katakana. Learn them first with another app,
+            such as Kana on iOS or a free Android equivalent.
+          </Text>
+        </FadeSlideIn>
       </View>
     </OnboardingStep>
   );

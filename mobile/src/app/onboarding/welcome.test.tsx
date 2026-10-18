@@ -97,6 +97,13 @@ describe('WelcomeScreen', () => {
     expect(screen.getByText('I have existing knowledge')).toBeTruthy();
   });
 
+  it('tells users the app does not teach hiragana or katakana', async () => {
+    const db = await createUserDb();
+    renderWelcomeScreen(db);
+
+    expect(screen.getByTestId('kana-note')).toHaveTextContent(/hiragana or katakana/);
+  });
+
   it('persists N5 and routes beginner path to intensity', async () => {
     const db = await createUserDb();
     renderWelcomeScreen(db);
