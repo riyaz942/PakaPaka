@@ -1,6 +1,8 @@
 # Curriculum schema migration plan
 
-**Status:** Not started. Run this before the first public release, after content is finalized.
+**Status:** Not started, except Phase A (frozen item ids): done 2026-09-27 as phase 1 of the
+[level-agnostic curriculum plan](./level-agnostic-curriculum-plan.md). Run the rest before the first
+public release, after content is finalized.
 
 **Written:** 2026-09-15, after a dev-device crash: `no such column: word_type`. The device held
 curriculum `1.12.1-vocabulary-skeleton`; the app code and the bundled seed were at `1.13.1`.
