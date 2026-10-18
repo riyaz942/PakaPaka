@@ -69,6 +69,7 @@ export function buildReviewQueue(
 ): ReviewItem[] {
   const now = options.now ?? new Date();
   const nowIso = now.toISOString();
+  const rng = options.rng ?? Math.random;
 
   // Filter: due, not burned, unlocked, not known
   const dueExempt = options.dueExemptItemIds;
@@ -169,11 +170,21 @@ export function buildReviewQueue(
   for (const input of ordered) {
     flushReadySecondCards();
     if (isTwoCardInput(input)) {
-      result.push(mapToReviewItem(input, { promptType: 'meaning', isTwoCardItem: true }));
+      const isGrammar = input.curriculumItem.itemType === 'grammar';
+      const secondType = isGrammar ? 'production' : 'reading';
+      // Kanji / vocabulary pairs lead with meaning or reading at random so the
+      // learner recalls both directions cold. Grammar stays Read → Build.
+      const readingFirst = !isGrammar && rng() < 0.5;
+      result.push(
+        mapToReviewItem(input, {
+          promptType: readingFirst ? 'reading' : 'meaning',
+          isTwoCardItem: true,
+        }),
+      );
       pendingSecondCards.push({
         earliestIndex: result.length + PAIR_MIN_GAP,
         card: mapToReviewItem(input, {
-          promptType: input.curriculumItem.itemType === 'grammar' ? 'production' : 'reading',
+          promptType: readingFirst ? 'meaning' : secondType,
           isTwoCardItem: true,
         }),
       });
