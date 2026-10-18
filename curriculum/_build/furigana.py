@@ -414,28 +414,78 @@ def suspect_compound_readings(text):
     return found
 
 
+def _surface_runs(surface):
+    """`surface` split into ("kanji" | "kana" | "other", text) runs.
+
+    々 and ヶ stay inside a kanji run, as they read as part of it (時々, 一ヶ月).
+    "other" is punctuation the tokenizer kept inside a token (二、三), which
+    has no sound in the reading."""
+    runs = []
+    for ch in surface:
+        if is_kanji(ch) or ch in "々ヶ":
+            kind = "kanji"
+        elif is_kana(ch):
+            kind = "kana"
+        else:
+            kind = "other"
+        if runs and runs[-1][0] == kind:
+            runs[-1] = (kind, runs[-1][1] + ch)
+        else:
+            runs.append((kind, ch))
+    return runs
+
+
+def _alignments(runs, reading):
+    """Every way to give each kanji run a non-empty slice of `reading`, with
+    the kana runs matching the reading literally. Yields one list of
+    per-kanji-run readings per alignment."""
+    if not runs:
+        if not reading:
+            yield []
+        return
+    kind, text = runs[0]
+    if kind == "other":
+        yield from _alignments(runs[1:], reading)
+    elif kind == "kana":
+        kana = katakana_to_hiragana(text)
+        if reading.startswith(kana):
+            yield from _alignments(runs[1:], reading[len(kana):])
+    else:
+        for cut in range(1, len(reading) + 1):
+            for rest in _alignments(runs[1:], reading[cut:]):
+                yield [reading[:cut]] + rest
+
+
 def _fallback_annotate_token(surface, reading):
-    """No dataset entry for this exact surface. Strip the trailing kana
-    okurigana common to both surface and reading, then wrap the remaining
-    kanji-only prefix in a single bracket (kinsoku-safe, round-trips)."""
-    i = 0
-    while (
-        i < len(surface)
-        and i < len(reading)
-        and surface[-(i + 1)] == reading[-(i + 1)]
-        and is_kana(surface[-(i + 1)])
-    ):
-        i += 1
+    """No dataset entry for this exact surface. Align the reading to each
+    kanji run, using the kana inside the token as anchors, so 召し上がり gets
+    召[め]し上[あ]がり rather than one bracket over the inner し.
 
-    prefix = surface[: len(surface) - i] if i else surface
-    suffix = surface[len(surface) - i :] if i else ""
-    prefix_reading = reading[: len(reading) - i] if i else reading
+    Where more than one alignment fits (二、三 read にさん could split as
+    に/さん or にさ/ん), only the one whose every kanji run carries a reading
+    the dictionary lists for it is taken. A token still ambiguous after that,
+    or with no alignment at all, is left bare: no furigana is better than
+    furigana over the wrong kanji."""
+    runs = _surface_runs(surface)
+    if not any(kind == "kanji" for kind, _text in runs):
+        return surface
 
-    if not prefix:
+    candidates = list(_alignments(runs, katakana_to_hiragana(reading)))
+    if len(candidates) > 1:
+        readings_by_word = _readings_by_word()
+        kanji_runs = [text for kind, text in runs if kind == "kanji"]
+        candidates = [
+            c for c in candidates
+            if all(r in readings_by_word.get(run, ()) for run, r in zip(kanji_runs, c))
+        ]
+    if len(candidates) != 1:
         return surface
-    if not any(is_kanji(ch) for ch in prefix):
-        return surface
-    return f"{prefix}[{prefix_reading}]{suffix}"
+
+    readings = iter(candidates[0])
+    return "".join(
+        f"{text}[{next(readings)}]" if kind == "kanji" else text
+        for kind, text in runs
+    )
 
 
 def annotate_sentence(text, known_readings=None):

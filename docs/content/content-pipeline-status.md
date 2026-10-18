@@ -5,7 +5,9 @@ files, `git log`) rather than trusting the plan doc's own prose, which lags
 behind commits. See [content-pipeline-plan.md](./content-pipeline-plan.md) for
 the full plan this snapshots.
 
-Last checked: 2026-08-03.
+Last checked: 2026-08-03. **Snapshot only — the counts below are out of date.** As of
+2026-10-18 all N5 + N4 content is reviewed; current status is in
+[working-history.md](../working-history.md).
 
 ## Revisions
 
