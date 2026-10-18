@@ -64,9 +64,9 @@
     }
   },
   "te-iru": {
-    "mnemonic_text": "Rain hits the power line, but Kaa's mother caws \"<reading>Stay here</reading>!\", so Kaa stays, still puffing hiss after hiss, his flame <grammar>going on right now</grammar>. 雨が降っ<reading>ている</reading>。",
+    "mnemonic_text": "At the riverbank, Sei points into the shallows and shouts \"<reading>The eel!</reading>\" It stays in one spot, still wriggling against the current, the swim <grammar>going on right now</grammar>. 猫が寝<reading>ている</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -80,7 +80,7 @@
     }
   },
   "ka-question": {
-    "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with her beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. 今何時です<reading>か</reading>。",
+    "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with his beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. 今何時です<reading>か</reading>。",
     "_meta": {
       "generator_model": "opus",
       "prompt_version": "1",
@@ -152,7 +152,7 @@
     }
   },
   "no-nominalizer": {
-    "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. 今帰る<reading>のです</reading>。",
+    "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. 今帰る<reading>んです</reading>。",
     "_meta": {
       "generator_model": "opus",
       "prompt_version": "1",
@@ -216,9 +216,9 @@
     }
   },
   "masen": {
-    "mnemonic_text": "Up on his power line, Kaa the fire-breathing crow is offered a cup of sake and says, \"Thank you, but I <reading>mustn't</reading>.\" His last hiccup set the cup alight, so he <grammar>politely does not</grammar> drink. 私はお酒を飲み<reading>ません</reading>。",
+    "mnemonic_text": "Koichi bows at the beeping till and points at the empty egg tray, sighing \"<reading>Ma's hen</reading>…\", and the customer understands: the hen <grammar>politely does not</grammar> lay on Sundays. 私は肉を食べ<reading>ません</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -240,9 +240,9 @@
     }
   },
   "moraru-ageru-kureru": {
-    "mnemonic_text": "Sho the tiny magician says \"<reading>A gear, Roo!</reading>\" and hands a shiny gear down to a kangaroo in the front row. The gift goes <grammar>away from me, out to someone else</grammar>. 私は友達に花を<reading>あげる</reading>。",
+    "mnemonic_text": "At my party I toss cake slices to the crowd, \"<reading>Again!</reading>\": <grammar>I give out</grammar>. Then Koichi hands me a <reading>cooler</reading> (<grammar>someone gives to me</grammar>), and I gasp \"<reading>More? Wow!</reading>\": <grammar>I receive</grammar>. 友達が私に本を<reading>くれる</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -544,17 +544,17 @@
     }
   },
   "naide-kudasai": {
-    "mnemonic_text": "Grandma Kane hands over the rope of the shrine's enormous bell to a sticky-fingered toddler. Then she taps his wrist and says \"<reading>Nay, dear</reading>\": <grammar>please don't</grammar> pull it. 写真を見<reading>ないでください</reading>。",
+    "mnemonic_text": "Han the chef hands over a bowl of soup split exactly in half, then grabs the diner's spoon: \"<reading>Nah, I'd</reading> rather you didn't\", so <grammar>please don't</grammar> stir it. この水を飲ま<reading>ないでください</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
   },
   "nakereba-naranai": {
-    "mnemonic_text": "Ken the dog drags his heaviest sword up the mountain trail, groaning \"<reading>Knackered, bah</reading>\". He drops it, sighs, and picks it up again, because he <grammar>has to</grammar>. 宿題をし<reading>なければならない</reading>。",
+    "mnemonic_text": "The last bus has gone, so Jin the giant groans \"<reading>Nah... carry Barry?</reading>\" at his sleeping friend, then lifts him up the mountain trail anyway, because he <grammar>has to</grammar>. 明日学校に行か<reading>なければならない</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -792,17 +792,17 @@
     }
   },
   "teiku-tekuru": {
-    "mnemonic_text": "Sho flings his doves out over the crowd. They come flapping back to his white glove one by one, cooing \"<reading>coo-roo</reading>\" as they <grammar>come closer, bit by bit</grammar>. 鳥が帰っ<reading>てくる</reading>。",
+    "mnemonic_text": "Koichi waves off the empty delivery truck, \"<reading>Take you</reading> away!\", and it goes, <grammar>moving away</grammar>. Then the <reading>tech crew</reading> comes in with a new fridge, <grammar>coming closer</grammar> step by step. 弟が出<reading>ていって</reading>、また帰っ<reading>てくる</reading>。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
   },
   "temo": {
-    "mnemonic_text": "Rain pours, but Toto the turtle props up a sample door and bellows \"<reading>Demo</reading> time!\" to an empty street, <grammar>even though</grammar> nobody comes. 呼ん<reading>でも</reading>、誰も来ない。",
+    "mnemonic_text": "Rain pours on the sports field, but the coach just yells \"<reading>Ten more!</reading>\", and Sei keeps running laps <grammar>even though</grammar> she is soaked to the bone. 寒く<reading>ても</reading>、学校に行く。",
     "_meta": {
-      "generator_model": "opus",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1272,7 +1272,7 @@
     }
   },
   "igo-formal": {
-    "mnemonic_text": "At harvest, a stalk of rye blew into Kaa the crow's ear. <grammar>Ever since</grammar>, she has sat on her power line puffing little flames at it and croaking \"<reading>Ear rye</reading>, still there.\" 日本に来て<reading>以来</reading>、ここに住んでいます。",
+    "mnemonic_text": "At harvest, a stalk of rye blew into Kaa the crow's ear. <grammar>Ever since</grammar>, he has sat on his power line puffing little flames at it and croaking \"<reading>Ear rye</reading>, still there.\" 日本に来て<reading>以来</reading>、ここに住んでいます。",
     "_meta": {
       "generator_model": "opus",
       "prompt_version": "1",
