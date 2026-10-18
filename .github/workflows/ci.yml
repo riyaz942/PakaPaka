@@ -28,6 +28,12 @@ jobs:
       - name: Check token contrast
         run: npm run check-contrast
 
+      - name: Install Studio dependencies
+        run: npm ci --prefix web
+
+      - name: Test Studio server
+        run: npm run test:studio
+
   mobile:
     name: mobile (lint, typecheck, test)
     runs-on: ubuntu-latest

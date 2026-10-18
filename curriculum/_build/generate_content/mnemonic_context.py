@@ -47,6 +47,9 @@ if BUILD_DIR not in sys.path:
 import furigana as furigana_lib  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 from generate_content import cast as cast_lib  # noqa: E402
+from generate_content import context as grammar_pool_context  # noqa: E402
+from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+from generate_content import level_check  # noqa: E402
 
 GRAPH_PATH = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
 
@@ -77,6 +80,16 @@ else:
 #: window, which slices this tuple by `index(level)` and so still resolves to
 #: ("n5",) / ("n5", "n4") — see the note there.
 ALL_LEVELS = ("n5", "n4", "n3", "n2", "n1")
+
+#: Grammar mnemonics (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md)
+#: cover the N5 and N4 points only.
+GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4")
+
+#: The reviewed origin table: every grammar point in scope maps to the real
+#: word its form comes from (おく = 置く "to put down") or to null, a recorded
+#: "no useful origin". The model never supplies an origin; this file does.
+GRAMMAR_ORIGINS_PATH = os.path.join(BUILD_DIR, "grammar_origins.json")
+LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
 _CJK_RE = re.compile(r"[㐀-䶿一-鿿々]")
 
@@ -1275,3 +1288,120 @@ def format_regularity(ctx):
     return _STORY_BLOCK.format(
         reason=_STORY_REASON[kind].format(reading=ctx["reading"]),
         reading=ctx["reading"], composition=composition)
+
+
+# --- grammar (grammar mnemonics spec) ---------------------------------------
+
+def grammar_mnemonic_slugs():
+    """Every grammar slug in scope, N5 then N4, in curriculum order."""
+    return [slug for level in GRAMMAR_MNEMONIC_LEVELS for slug in all_slugs(level, "grammar")]
+
+
+def load_grammar_origins(path=GRAMMAR_ORIGINS_PATH):
+    """The origin table as stored: {"review_status": ..., "origins": {slug: entry|None}}."""
+    return _load_json(path)
+
+
+def origin_table_errors(table, slugs):
+    """Every reason the table cannot drive generation. A slug in scope with no
+    entry is an error, never an implicit null: "no origin" must be a decision
+    someone wrote down."""
+    errors = []
+    if table.get("review_status") not in ("draft", "reviewed"):
+        errors.append("grammar_origins.json review_status must be 'draft' or 'reviewed'")
+    origins = table.get("origins", {})
+    scope = set(slugs)
+    for slug in slugs:
+        if slug not in origins:
+            errors.append(f"grammar_origins.json has no entry for {slug!r} (write an origin or null)")
+    for slug, entry in origins.items():
+        if slug not in scope:
+            errors.append(f"grammar_origins.json lists unknown slug {slug!r}")
+            continue
+        if entry is None:
+            continue
+        ok = (
+            isinstance(entry, dict)
+            and isinstance(entry.get("word"), str) and entry["word"].strip()
+            and isinstance(entry.get("gloss"), str) and entry["gloss"].strip()
+            and isinstance(entry.get("keywords"), list) and entry["keywords"]
+            and all(isinstance(k, str) and k.strip() for k in entry["keywords"])
+        )
+        if not ok:
+            errors.append(
+                f"grammar_origins.json entry {slug!r} needs a non-empty word, gloss and "
+                "keywords list, or null"
+            )
+    return errors
+
+
+def grammar_lesson_opening(slug):
+    """The lesson's opening text — everything before its first `## ` heading —
+    from the source markdown (no build-time furigana or word markers). Every
+    point in scope has a lesson, so a missing file raises."""
+    path = os.path.join(LESSONS_DIR, f"{slug}.md")
+    with open(path, encoding="utf-8") as f:
+        _meta, body = frontmatter_lib.parse(f.read())
+    return re.split(r"^## ", body, flags=re.M)[0].strip()
+
+
+def grammar_context(level, slug, table=None):
+    items = _by_slug(load_items("grammar", level))
+    if slug not in items:
+        raise KeyError(f"unknown grammar slug {slug!r} in level {level}")
+    origins = (table or load_grammar_origins())["origins"]
+    if slug not in origins:
+        raise KeyError(
+            f"grammar_origins.json has no entry for {slug!r}; write an origin or null first"
+        )
+    item = items[slug]
+    allowed_vocab = grammar_pool_context.allowed_vocab_for(level, slug)
+    return {
+        "type": "grammar",
+        "level": level,
+        "slug": slug,
+        "form": item["primary_form"],
+        "accepted_forms": item["accepted_forms"],
+        "meaning": item["meaning"],
+        "structure": item["structure"],
+        "family": item["family"],
+        "lesson_opening": grammar_lesson_opening(slug),
+        "origin": origins[slug],
+        "allowed_vocab": allowed_vocab,
+        "allowed_index": level_check.build_allowed_index(allowed_vocab),
+        # The example renders without furigana, so its kanji must be ones the
+        # learner has already met inside an allowed word.
+        "allowed_kanji": {
+            ch for v in allowed_vocab for ch in v["primary_form"] if furigana_lib.is_kanji(ch)
+        },
+    }
+
+
+def format_grammar_origin(origin):
+    if origin is None:
+        return (
+            "This point has no origin to use. Do not say where the form comes from — "
+            "no \"really is\", \"comes from\", \"originally\", \"derived from\" or "
+            "\"short for\". The sound hook alone carries the meaning."
+        )
+    keywords = ", ".join(origin["keywords"])
+    return (
+        f"The form comes from {origin['word']} \"{origin['gloss']}\". Make that action "
+        f"the story's action, and name it with one of these words: {keywords}. Do not "
+        "explain the origin in a sentence of its own."
+    )
+
+
+def format_grammar_cast(cast=None):
+    """The cast as optional actors. Grammar forms get no fixed character: the
+    cast bible's one-reading-one-character rule is for kanji readings."""
+    cast = cast or cast_lib.load_cast()
+    seen = {}
+    for entry in cast["readings"].values():
+        seen.setdefault(entry["character"], entry["trait"])
+    lines = ["Cast you may use as the actor (optional — any ordinary person works too):"]
+    lines += [f"- **{name}**: {trait}" for name, trait in seen.items()]
+    if cast["settings"]:
+        lines.append("\nShared settings (reuse the fixed details when a scene calls for one):")
+        lines += [f"- **{s['setting']}**: {s['details']}" for s in cast["settings"]]
+    return "\n".join(lines)

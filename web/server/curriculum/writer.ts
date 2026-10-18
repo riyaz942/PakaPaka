@@ -9,8 +9,12 @@ import {
 import { reload } from './loader.js';
 import {
   checkReviewStatusTarget,
+  mergeGrammarReviewStatus,
+  persistGrammarMnemonicReviewStatus,
   persistItemEdit,
   persistReviewStatus,
+  readGrammarLessonStatus,
+  readGrammarMnemonicStatus,
 } from './sidecar.js';
 import type { ContentType, JlptLevel, ReviewStatus } from './types.js';
 
@@ -190,7 +194,13 @@ export function updateReviewStatus(
 
   const row = rows[index];
   const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
-  applyReviewStatus(row, meta, reviewStatus);
+  // A grammar row carries the least reviewed of lesson and mnemonic, which is
+  // what generate.py writes; anything else fails CI's regeneration check.
+  const rowStatus =
+    type === 'grammar'
+      ? mergeGrammarReviewStatus(reviewStatus, readGrammarMnemonicStatus(repoRoot, slug))
+      : reviewStatus;
+  applyReviewStatus(row, meta, rowStatus);
 
   const { errors } = validateFile(curriculumDir, relative, file);
   if (errors.length > 0) {
@@ -202,6 +212,48 @@ export function updateReviewStatus(
     return persisted;
   }
 
+  writeLevelFile(filePath, file);
+  reload(repoRoot);
+  return { ok: true };
+}
+
+/**
+ * A grammar mnemonic's own review status. The sidecar takes the status; the
+ * shipped row takes the merge with the lesson's, as generate.py would write it.
+ */
+export function updateGrammarMnemonicReviewStatus(
+  repoRoot: string,
+  level: JlptLevel,
+  slug: string,
+  reviewStatus: ReviewStatus,
+): SaveResult {
+  const blocked = checkReviewStatusTarget(repoRoot, 'grammar', slug);
+  if (blocked.length > 0) {
+    return { ok: false, errors: blocked };
+  }
+  const curriculumDir = path.join(repoRoot, 'curriculum');
+  const opened = openLevelFile(curriculumDir, 'grammar', level);
+  if ('errors' in opened) {
+    return { ok: false, errors: opened.errors };
+  }
+  const { filePath, relative, file, rows } = opened;
+  const index = rows.findIndex((row, i) => rowSlug('grammar', row, level, i) === slug);
+  if (index === -1) {
+    return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
+  }
+
+  const row = rows[index];
+  const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
+  applyReviewStatus(row, meta, mergeGrammarReviewStatus(readGrammarLessonStatus(repoRoot, slug), reviewStatus));
+
+  const { errors } = validateFile(curriculumDir, relative, file);
+  if (errors.length > 0) {
+    return { ok: false, errors };
+  }
+  const persisted = persistGrammarMnemonicReviewStatus(repoRoot, slug, reviewStatus);
+  if (!persisted.ok) {
+    return persisted;
+  }
   writeLevelFile(filePath, file);
   reload(repoRoot);
   return { ok: true };
@@ -267,7 +319,11 @@ export function updateReviewStatusBulk(
       }
       const row = rows[index];
       const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
-      applyReviewStatus(row, meta, reviewStatus);
+      const rowStatus =
+        type === 'grammar'
+          ? mergeGrammarReviewStatus(reviewStatus, readGrammarMnemonicStatus(repoRoot, slug))
+          : reviewStatus;
+      applyReviewStatus(row, meta, rowStatus);
       updated += 1;
     }
 

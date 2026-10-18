@@ -19,7 +19,7 @@ Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 <level = n5>
 
-Content type (one of `radical`, `kanji` or `vocab`):
+Content type (one of `radical`, `kanji`, `vocab` or `grammar`):
 
 <type = vocab>
 
@@ -108,6 +108,18 @@ kanji` raises
 if you try to skip ahead. Order for a level: **radicals → `generate.py --level <level>` → kanji → `generate.py --level <level>` → vocab**. Finish <level> fully before moving to the next level. If Step
 1b raises that error, stop and report it — the previous layer is not done.
 
+**Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
+other layer's prose, so it can run at any time. Two conditions instead:
+`curriculum/_build/grammar_origins.json` must cover every N5/N4 grammar slug and
+carry `"review_status": "reviewed"` (every command with `--type grammar` stops
+with an error otherwise — report it, do not edit the file yourself), and only
+`--level n5` and `--level n4` have grammar in scope. The gate rules are in
+`validate_mnemonics.validate_grammar`: one or two story sentences plus a
+Japanese example ending in 。, `<reading>` on the English sound-alike and on the
+form's kana, `<grammar>` on the meaning, example words and kanji at or below
+the level, and the origin's keyword in the story (or no origin claim at all).
+After ingesting grammar, run `generate.py --level <level>` (grammar is not banded).
+
 ---
 
 Workflow
@@ -137,7 +149,7 @@ Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION, sidecar_path
-LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = '<level>', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji' or 'vocab'
+LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = '<level>', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji', 'vocab' or 'grammar'
 # Read "done" from the checked-in sidecar, not from drafts/. A draft is filed
 # under the level an item had when it was WRITTEN; a banded kind (radical,
 # kanji) can be re-filed to a different level by a reband, so drafts_dir keyed
@@ -185,8 +197,8 @@ PY
 Note what "done" means here: a draft recorded under an **older** prompt version is
 stale, not done, so a version bump correctly re-selects every out-of-date item for
 regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
-`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6}`),
-because the three prompts move independently. Radicals sitting at 1 is deliberate:
+`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}`),
+because the four prompts move independently. Radicals sitting at 1 is deliberate:
 Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
 ~150–300 characters, description demoted to optional — so the reviewed N5 radicals
 already match the current prompt and are correctly *not* re-selected.
@@ -478,6 +490,7 @@ Give the subagent these instructions:
     中 ちゅう → じゅう." It is derived from the word's kanji and their KANJIDIC
     readings, so a sentence paraphrasing it can only be less accurate, and it
     costs the reading mnemonic the one or two sentences it needed for the hook.
+  - **For grammar, the sound-alike and the meaning are one joke** — a character says the English sound-alike while doing the meaning; the story acts out the origin when the prompt gives one, and never states an origin when it says there is none.
   - **For vocab, obey the reading block exactly — it decides whether there is a
     reading mnemonic at all.** Three outcomes, all computed, none of them a
     judgement call:

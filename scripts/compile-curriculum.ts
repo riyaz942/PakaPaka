@@ -156,6 +156,7 @@ type GrammarItem = {
   slug: string;
   primary_form: string;
   meaning: string;
+  mnemonic_text?: string;
   explanation_markdown?: string;
   caution_notes?: string[];
   uses?: GrammarUse[];
@@ -895,7 +896,17 @@ export function compileCurriculum(
         meaning: grammarItem.meaning,
         word_type: null,
         reading_composition: null,
-        mnemonic_text: null,
+        // The example's words carry the same markers a lesson does (grammar
+        // mnemonics spec §6a), so they resolve to item ids the same way.
+        mnemonic_text:
+          grammarItem.mnemonic_text === undefined
+            ? null
+            : resolveLessonMarkers(
+                grammarItem.mnemonic_text,
+                `grammar:${grammarItem.slug} mnemonic`,
+                idByKey,
+                primaryFormByVocabSlug,
+              ),
         meaning_mnemonic: null,
         reading_mnemonic: null,
         description: null,

@@ -21,6 +21,7 @@ import {
 } from './graph.js';
 import { getCurriculum, loadTargets, reload } from './loader.js';
 import { runCompile, runValidate } from './pipeline.js';
+import { readGrammarLessonStatus, readGrammarMnemonicStatus } from './sidecar.js';
 import {
   isSkeleton,
   itemKey,
@@ -34,7 +35,12 @@ import {
   type JlptLevel,
   type ReviewStatus,
 } from './types.js';
-import { saveItem, updateReviewStatus, updateReviewStatusBulk } from './writer.js';
+import {
+  saveItem,
+  updateGrammarMnemonicReviewStatus,
+  updateReviewStatus,
+  updateReviewStatusBulk,
+} from './writer.js';
 
 const EDITABLE_STATUSES: ReviewStatus[] = [
   'draft',
@@ -583,6 +589,9 @@ export function createCurriculumRouter(
       isSkeleton: isSkeleton(item),
       dependencySummary: resolveDependencySummary(index, type, item.slug),
       auditFindings: getFindingsForItem(auditBySlug, type, item.slug),
+      // A grammar row's own status is the merge of these two; each has its own control.
+      lessonReviewStatus: type === 'grammar' ? readGrammarLessonStatus(repoRoot, item.slug) : null,
+      mnemonicReviewStatus: type === 'grammar' ? readGrammarMnemonicStatus(repoRoot, item.slug) : null,
     });
   });
 
@@ -645,6 +654,30 @@ export function createCurriculumRouter(
     }
 
     const updated = getCurriculum(repoRoot).bySlug.get(itemKey(type, req.params.slug));
+    res.json({ ok: true, item: updated });
+  });
+
+  router.patch('/item/grammar/:slug/mnemonic-meta', (req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+    const item = index.bySlug.get(itemKey('grammar', req.params.slug));
+    if (!item) {
+      res.status(404).json({ error: 'Item not found' });
+      return;
+    }
+    const reviewStatus = req.body?.review_status;
+    if (!EDITABLE_STATUSES.includes(reviewStatus)) {
+      res.status(400).json({
+        ok: false,
+        errors: [`review_status must be one of ${EDITABLE_STATUSES.join(', ')}`],
+      });
+      return;
+    }
+    const result = updateGrammarMnemonicReviewStatus(repoRoot, item.level, req.params.slug, reviewStatus);
+    if (!result.ok) {
+      res.status(400).json(result);
+      return;
+    }
+    const updated = getCurriculum(repoRoot).bySlug.get(itemKey('grammar', req.params.slug));
     res.json({ ok: true, item: updated });
   });
 

@@ -82,20 +82,22 @@ describe('GrammarDetail', () => {
     expect(screen.getByText('今日は月曜日です。')).toBeTruthy();
   });
 
-  // Rev 1: grammar teaches through the lesson body, so the curriculum mnemonic
-  // is gone from the schema and must not render even from stale sidecar data.
-  it('never renders a curriculum mnemonic, only the learner-owned one', () => {
+  it('renders the curriculum mnemonic before the lesson body, and the learner-owned one', () => {
     render(
       <GrammarDetail
-        item={baseItem}
+        item={{ ...baseItem, mnemonicText: 'A waiter says "<reading>dess</reading>": <grammar>polite is</grammar>. 本です。' }}
         acceptedAnswers={acceptedAnswers}
-        grammarRule={grammarRule}
+        grammarRule={{ ...grammarRule, explanationMarkdown: 'The lesson.' }}
         exampleSentences={exampleSentences}
       />,
     );
 
-    expect(screen.queryByText('Desu sounds like "deserve" politeness.')).toBeNull();
-    expect(screen.queryByText('Mnemonic')).toBeNull();
+    expect(screen.getByTestId('grammar-mnemonic')).toBeTruthy();
+    expect(screen.getByText('polite is')).toBeTruthy();
+    const ids = screen.UNSAFE_root
+      .findAll((node) => typeof node.props.testID === 'string')
+      .map((node) => node.props.testID as string);
+    expect(ids.indexOf('grammar-mnemonic')).toBeLessThan(ids.indexOf('grammar-lesson-body'));
     expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
   });
 

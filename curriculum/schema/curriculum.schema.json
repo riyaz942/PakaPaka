@@ -260,6 +260,7 @@
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
+        "mnemonic_text": { "type": "string", "minLength": 1 },
         "explanation_markdown": { "type": "string", "minLength": 1 },
         "caution_notes": {
           "type": "array",

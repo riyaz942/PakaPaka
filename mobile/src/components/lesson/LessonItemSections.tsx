@@ -18,6 +18,7 @@ import {
 } from '@/components/learn/ItemDetailHeader';
 import { ItemCrossReferences, KanjiBuiltFromSection } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
+import { GrammarMnemonicBlock } from '@/components/learn/GrammarMnemonicBlock';
 import { GrammarUsesSection } from '@/components/learn/GrammarUsesSection';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
 import {
@@ -53,7 +54,7 @@ export const LESSON_SECTION_LABELS = ['Introduction', 'Mnemonic', 'Examples & li
 /** The stepper's short forms — the pills have room for one word each. */
 export const LESSON_SECTION_STEPS = ['Intro', 'Mnemonic', 'Examples'] as const;
 
-/** Grammar carries no mnemonic: its second section teaches the rules instead. */
+/** Grammar's second section is its mnemonic followed by the rules, so its pill reads "Usage". */
 export const GRAMMAR_SECTION_STEPS = ['Intro', 'Usage', 'Examples'] as const;
 
 /** Kanji carry no example sentences: their third section lists the vocabulary that uses them. */
@@ -244,8 +245,8 @@ function GrammarRulesSection({ markdown }: { markdown: string }) {
  * replaces the old collapsed mnemonic disclosure, so nothing here hides behind
  * a tap.
  *
- * Grammar has no mnemonic of its own, so this page carries the essay's rules
- * section instead — the stepper calls it "Usage" for grammar.
+ * Grammar shows its curriculum mnemonic first, then the essay's rules section —
+ * the stepper calls the page "Usage" for grammar.
  *
  * A radical's `mnemonic_text` reads as the image's story, not under a "Mnemonic"
  * heading; its optional `description` (content pipeline Rev 3) is the separate
@@ -266,6 +267,8 @@ export function LessonMnemonicSectionView({
 
     return (
       <View testID="lesson-section-mnemonic">
+        <GrammarMnemonicBlock mnemonicText={item.mnemonicText} />
+
         {rules ? <GrammarRulesSection markdown={rules} /> : null}
 
         <PersonalMnemonicEditor itemId={item.id} />

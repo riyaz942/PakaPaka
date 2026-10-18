@@ -44,4 +44,24 @@ describe('mnemonicAccessibilityLabel', () => {
   it('returns default label when no descriptive props are provided', () => {
     expect(buildMnemonicAccessibilityLabel()).toBe('Mnemonic image unavailable');
   });
+
+  it('strips the reading and grammar tags a grammar mnemonic carries', () => {
+    expect(
+      buildMnemonicAccessibilityLabel(
+        'Koichi nods "<reading>OK</reading>": all set <grammar>for later</grammar>.',
+        'do in advance',
+        'ておく',
+      ),
+    ).toBe('Koichi nods "OK": all set for later.');
+  });
+
+  it('speaks a linked example word as plain text', () => {
+    expect(
+      buildMnemonicAccessibilityLabel(
+        'Sei asks "<reading>Wha</reading>t?" {{7||今日}}<reading>は</reading>{{9||寒い}}。',
+        'topic',
+        'は',
+      ),
+    ).toBe('Sei asks "What?" 今日は寒い。');
+  });
 });

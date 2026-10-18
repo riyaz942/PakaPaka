@@ -80,6 +80,7 @@ const CHECKLISTS: Record<ContentType, FieldCheck[]> = {
     { name: 'example_sentences', ok: (r) => isNonEmptyArray(r.example_sentences, 1) },
   ],
   grammar: [
+    { name: 'mnemonic_text', ok: (r) => isNonEmptyString(r.mnemonic_text) },
     {
       name: 'explanation_markdown',
       ok: (r) => isNonEmptyString(r.explanation_markdown),

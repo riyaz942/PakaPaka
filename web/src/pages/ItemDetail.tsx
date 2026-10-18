@@ -27,7 +27,15 @@ function isContentType(value: string | undefined): value is ContentType {
   return !!value && (CONTENT_TYPES as string[]).includes(value);
 }
 
-function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showReadings: boolean }) {
+function TypeSection({
+  item,
+  showReadings,
+  onChanged,
+}: {
+  item: ItemDetailResponse;
+  showReadings: boolean;
+  onChanged: () => void;
+}) {
   switch (item.type) {
     case 'radical':
       return <RadicalDetail raw={item.raw as unknown as RadicalRaw} />;
@@ -36,7 +44,15 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
     case 'vocabulary':
       return <VocabularyDetail raw={item.raw as unknown as VocabRaw} showReadings={showReadings} />;
     case 'grammar':
-      return <GrammarDetail raw={item.raw as unknown as GrammarRaw} showReadings={showReadings} />;
+      return (
+        <GrammarDetail
+          raw={item.raw as unknown as GrammarRaw}
+          showReadings={showReadings}
+          slug={item.slug}
+          mnemonicReviewStatus={item.mnemonicReviewStatus}
+          onChanged={onChanged}
+        />
+      );
     case 'reading':
       return <ReadingDetail raw={item.raw as unknown as ReadingRaw} showReadings={showReadings} />;
   }
@@ -211,8 +227,15 @@ function ItemDetailBody({
             <div className="item-header__badges">
               <span className="item-header__slug">{item.slug}</span>
               <span className="item-header__level">{item.level}</span>
-              <StatusBadge status={item.reviewStatus} />
-              <ReviewStatusControl type={type} slug={slug} status={item.reviewStatus} onChanged={refresh} />
+              {/* A grammar row's status is lesson and mnemonic merged; its lesson
+                  control must show the lesson's own, or a reviewed lesson reads draft. */}
+              <StatusBadge status={item.lessonReviewStatus ?? item.reviewStatus} />
+              <ReviewStatusControl
+                type={type}
+                slug={slug}
+                status={item.lessonReviewStatus ?? item.reviewStatus}
+                onChanged={refresh}
+              />
               <CompletenessPill percent={item.completeness.percent} skeleton={item.isSkeleton} />
             </div>
             {item.meaning ? <p className="item-header__meaning">{item.meaning}</p> : null}
@@ -277,7 +300,7 @@ function ItemDetailBody({
             Show furigana readings
           </label>
 
-          <TypeSection item={item} showReadings={showReadings} />
+          <TypeSection item={item} showReadings={showReadings} onChanged={refresh} />
         </>
       )}
 

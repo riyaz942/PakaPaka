@@ -70,7 +70,7 @@ function assembleSteps(): string[] {
   ];
 }
 
-function mnemonicLanes(kind: 'radical' | 'kanji' | 'vocab'): GuideLane[] {
+function mnemonicLanes(kind: 'radical' | 'kanji' | 'vocab' | 'grammar'): GuideLane[] {
   const dir = kind === 'vocab' ? 'vocab' : kind;
   return [
     {
@@ -295,6 +295,17 @@ export const GUIDE_STAGES: GuideStage[] = [
     requiresNote:
       'The vocab prompt carries the component kanji’s meaning mnemonics. Kanji must be generated and re-assembled first, or the prompt has nothing to hook into.',
     lanes: mnemonicLanes('vocab'),
+    finish: assembleSteps(),
+  },
+  {
+    id: 'mnemonics-grammar',
+    title: 'Grammar mnemonics',
+    what: 'A one- or two-sentence story in which an English sound-alike of the form is its meaning, ending on a Japanese example.',
+    produces: [{ type: 'grammar', field: 'mnemonic_text' }],
+    requires: ['facts'],
+    requiresNote:
+      'curriculum/_build/grammar_origins.json must be complete and set to "reviewed" first — the generator refuses otherwise.',
+    lanes: mnemonicLanes('grammar'),
     finish: assembleSteps(),
   },
   {

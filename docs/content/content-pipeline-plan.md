@@ -59,6 +59,8 @@ today — what is already built vs. missing is called out per point.
 | vocabulary | `meaning_mnemonic` (story connecting the component kanji → the word) + `reading_mnemonic` (full story; or a one-line "reading comes straight from 食 you already know" derivation note when the reading is regular) | meaning nuance, usage register, which kanji the word contains |
 | grammar | **none** — drop `mnemonic_text`; the `explanation_markdown` lesson is the teaching artifact | n/a |
 
+> Reversed 2026-10-17: grammar has a story mnemonic again — a sound-alike hook, not the old one-line summary. See docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md.
+
 Mnemonics chain **radical → kanji → vocabulary**: a kanji story reuses each
 component radical's established image (the kanji prompt already receives the
 radical text via `mnemonic_context.format_components`; keep that mechanism, feed

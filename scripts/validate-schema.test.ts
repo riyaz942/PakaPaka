@@ -623,16 +623,26 @@ describe('validateCurriculum Rev 1 fields', () => {
     }
   });
 
-  it('rejects grammar mnemonic_text via the schema', () => {
-    const tempDir = writeTempGrammarDir({
-      slug: 'wa-topic',
-      primary_form: 'は',
-      meaning: 'topic marker',
-      structure: 'Noun + は + comment',
-      conjugation_rules: {},
-      accepted_forms: ['は'],
-      mnemonic_text: 'は marks the topic.',
-    });
+  const wa = {
+    slug: 'wa-topic',
+    primary_form: 'は',
+    meaning: 'topic marker',
+    structure: 'Noun + は + comment',
+    conjugation_rules: {},
+    accepted_forms: ['は'],
+  };
+
+  it('accepts grammar mnemonic_text', () => {
+    const tempDir = writeTempGrammarDir({ ...wa, mnemonic_text: 'は marks the topic.' });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects an empty grammar mnemonic_text', () => {
+    const tempDir = writeTempGrammarDir({ ...wa, mnemonic_text: '' });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
     } finally {

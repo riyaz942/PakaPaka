@@ -228,9 +228,9 @@ function buildItemBranch(input: BrowseQueryInput): QueryFragment | null {
       `  WHERE aa.item_id = i.id AND aa.answer_type = 'reading'` +
       `  ORDER BY aa.is_primary DESC, aa.id ASC LIMIT 1) AS reading,` +
       ` s.status AS study_status, r.srs_stage_label AS srs_stage,` +
-      // Grammar carries its prose in `grammar_rules.explanation_markdown`, not
-      // in a mnemonic column, so it is never a skeleton row.
-      ` (i.item_type = 'grammar' OR i.mnemonic_text IS NOT NULL` +
+      // Grammar has a curriculum mnemonic too (grammar mnemonics spec), so it
+      // shows the pill like every other type until its mnemonic ships.
+      ` (i.mnemonic_text IS NOT NULL` +
       `  OR i.meaning_mnemonic IS NOT NULL OR i.reading_mnemonic IS NOT NULL) AS has_mnemonic,` +
       ` NULL AS title, NULL AS english_translation, NULL AS summary_ja, NULL AS summary_en` +
       ` FROM ${C}.items i` +
