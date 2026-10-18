@@ -83,6 +83,10 @@ def _pool_examples(pool_entry):
 KANJI_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics.json")
 RADICAL_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics.json")
 VOCAB_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics.json")
+#: Grammar mnemonic sidecar (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md),
+#: inlined into grammar items as `mnemonic_text`. Absent until the grammar
+#: generator has run.
+GRAMMAR_MNEMONICS_PATH = os.path.join(CURRICULUM_DIR, "grammar", "mnemonics.json")
 
 #: Phase 2c example-sentence sidecar (generate_content/generate_examples.py),
 #: inlined into the vocab items below keyed by slug. Absent when 2c has not
@@ -453,6 +457,32 @@ def _wrap_spans(plain, annotated, spans, label):
     return "".join(out)
 
 
+_MNEMONIC_EXAMPLE_RE = re.compile(
+    r"(?:^|\s)((?:[぀-ヿ㐀-䶿一-鿿々〆ー、]|</?reading>)+。)\s*$"
+)
+_READING_TAG_RE = re.compile(r"(<reading>.*?</reading>)")
+
+
+def _link_mnemonic_example(text, forms_by_slug, label):
+    """A grammar mnemonic with its example sentence's taught words wrapped in
+    lesson word markers (grammar mnemonics spec §6a). Only the example links:
+    the story is English. A `<reading>` tag holds the grammar form, so it is
+    never linked, and the text between tags is tokenised on its own — a verb
+    whose ending is the form (作っ|ておく) links as its stem."""
+    if "{{" in text or "}}" in text:
+        raise ValueError(f"grammar {label}: mnemonic_text must not contain word markers")
+    match = _MNEMONIC_EXAMPLE_RE.search(text)
+    if not match:
+        raise ValueError(f"grammar {label}: mnemonic_text has no Japanese example sentence")
+    parts = _READING_TAG_RE.split(match.group(1))
+    linked = "".join(
+        part if _READING_TAG_RE.fullmatch(part) or not part
+        else _link_words(part, part, forms_by_slug, label)
+        for part in parts
+    )
+    return text[:match.start(1)] + linked + text[match.end(1):]
+
+
 def _link_words(plain, annotated, forms_by_slug, label, accepted_forms=()):
     """`annotated` with every taught word in `plain` wrapped in a lesson word
     marker. Candidates are the whole level's vocabulary; the spans are the
@@ -642,10 +672,15 @@ def _cloze_derived_examples(g, known_vocab_forms):
 
 
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
-                         all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None):
+                         all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None,
+                         mnemonic_entries=None):
     errors = []
     items = []
     forms = known_vocab_forms or {}
+    known_slugs = {g["slug"] for g in grammar_entries} | set(all_grammar_slugs)
+    for slug in mnemonic_entries or {}:
+        if slug not in known_slugs:
+            errors.append(f"grammar mnemonic sidecar has an entry for unknown slug '{slug}'")
     for i, g in enumerate(grammar_entries, start=1):
         pool_entry = (pool_entries or {}).get(g["slug"])
         if pool_entry:
@@ -722,6 +757,20 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
             }
             if sidecar:
                 item["_meta"] = sidecar
+        mnemonic = (mnemonic_entries or {}).get(g["slug"])
+        if mnemonic is not None:
+            if not mnemonic.get("mnemonic_text"):
+                errors.append(f"grammar {g['slug']} mnemonic sidecar entry has no mnemonic_text")
+                continue
+            try:
+                item["mnemonic_text"] = _link_mnemonic_example(
+                    mnemonic["mnemonic_text"], forms, g["slug"])
+            except ValueError as error:
+                errors.append(str(error))
+                continue
+            # The least reviewed of lesson and mnemonic wins, so a draft
+            # mnemonic keeps a reviewed lesson behind compile's draft gate.
+            _merge_sidecar_meta(item, _sidecar_meta(mnemonic))
         items.append(item)
     if errors:
         raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))
@@ -994,6 +1043,7 @@ def build_grammar_point(level, slug, pool_entry):
         inputs["all_grammar_slugs"],
         known_vocab_forms={v["slug"]: v["form"] for v in inputs["known"]},
         pool_entries={slug: pool_entry},
+        mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH),
     )["items"][0]
     item["sort_order"] = next(
         i for i, g in enumerate(inputs["grammar_by_level"][level], start=1) if g["slug"] == slug
@@ -1034,7 +1084,8 @@ def generate_level(level):
         _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
                              known_readings, inputs["all_grammar_slugs"],
                              known_vocab_forms={v["slug"]: v["form"] for v in known},
-                             pool_entries=load_pool_sidecar()),
+                             pool_entries=load_pool_sidecar(),
+                             mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH)),
     )
     # Grammar Read + Build cards need every point's pool to pass (spec §4.4).
     failing = {slug: errs for slug, errs in pool_check.check_level(level).items() if errs}

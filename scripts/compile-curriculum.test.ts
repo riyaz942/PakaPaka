@@ -493,7 +493,9 @@ describe('compile-curriculum', () => {
       const grammarMnemonic = db
         .prepare('SELECT mnemonic_text FROM items WHERE item_type = ? AND slug = ?')
         .get('grammar', 'desu') as { mnemonic_text: string | null };
-      expect(grammarMnemonic.mnemonic_text).toBeNull();
+      expect(grammarMnemonic.mnemonic_text).toBe(
+        'A waiter bows and says "<reading>dess</reading>": <grammar>polite is</grammar>. 本<reading>です</reading>。',
+      );
     } finally {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });
@@ -926,6 +928,52 @@ describe('compile-curriculum', () => {
 
   it('throws on a malformed lesson marker', () => {
     const { tempDir, run } = compileLessonText('x {{ichi-v|一');
+    expect(run).toThrow(/Malformed lesson word marker/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  function compileMnemonicText(mnemonicText: string): {
+    dbPath: string;
+    tempDir: string;
+    run: () => void;
+  } {
+    return compileGrammarFixture((file) => {
+      (file.items[0] as Record<string, unknown>).mnemonic_text = mnemonicText;
+    });
+  }
+
+  function readDesuMnemonic(dbPath: string): string {
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const row = db
+        .prepare("SELECT mnemonic_text FROM items WHERE item_type = 'grammar' AND slug = 'desu'")
+        .get() as { mnemonic_text: string };
+      return row.mnemonic_text;
+    } finally {
+      db.close();
+    }
+  }
+
+  it('rewrites mnemonic word markers to item ids', () => {
+    const { dbPath, tempDir, run } = compileMnemonicText(
+      'Sei says "<reading>dess</reading>". {{ichi-v||一}}<reading>です</reading>。',
+    );
+    run();
+    const ichiId = readItemIds(dbPath)['vocabulary:ichi-v'];
+    expect(readDesuMnemonic(dbPath)).toBe(
+      `Sei says "<reading>dess</reading>". {{${ichiId}||一}}<reading>です</reading>。`,
+    );
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws on a mnemonic marker with an unknown slug', () => {
+    const { tempDir, run } = compileMnemonicText('x {{nope||一}}<reading>です</reading>。');
+    expect(run).toThrow(/Unresolved lesson word marker/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws on a malformed mnemonic marker', () => {
+    const { tempDir, run } = compileMnemonicText('x {{ichi-v|一<reading>です</reading>。');
     expect(run).toThrow(/Malformed lesson word marker/);
     fs.rmSync(tempDir, { recursive: true, force: true });
   });

@@ -33,7 +33,7 @@ const MNEMONIC_FIELDS: Record<ContentType, readonly string[]> = {
   radical: ['mnemonic_text', 'description'],
   kanji: ['meaning_mnemonic', 'reading_mnemonic', 'description'],
   vocabulary: ['meaning_mnemonic', 'reading_mnemonic', 'description'],
-  grammar: [],
+  grammar: ['mnemonic_text'],
   reading: [],
 };
 
@@ -60,6 +60,12 @@ const AUTHORED_IN: Record<ContentType, string> = {
   grammar: 'curriculum/_build/{n5,n4}_grammar.py and curriculum/grammar/lessons/',
   reading: 'curriculum/_build/{n5,n4}_readings.py',
 };
+
+const WORD_MARKER_RE = /\{\{[^|{}]+\|[^|{}]*\|([^{}]+)\}\}/g;
+
+function stripWordMarkers(text: string): string {
+  return text.replace(WORD_MARKER_RE, '$1');
+}
 
 export type PersistResult = { ok: true } | { ok: false; errors: string[] };
 
@@ -174,7 +180,12 @@ export function persistItemEdit(
     const file = readJsonFile<SidecarFile>(filePath, {});
     const entry = { ...(file[slug] ?? {}) };
     for (const key of touchedMnemonicFields) {
-      const value = updatedRaw[key];
+      // A grammar row's mnemonic carries the build's word markers; the sidecar
+      // holds the authored text, and generate.py writes the markers again.
+      const value =
+        type === 'grammar' && typeof updatedRaw[key] === 'string'
+          ? stripWordMarkers(updatedRaw[key] as string)
+          : updatedRaw[key];
       // generate.py inlines a sidecar field only when it is truthy, so an
       // emptied field is stored as absent — that is what regeneration produces.
       if (isEmptyValue(value)) {
@@ -243,6 +254,87 @@ function persistGrammarReviewStatus(
   const tmpPath = `${filePath}.tmp`;
   fs.writeFileSync(tmpPath, `---\n${updated}\n---\n${source.slice(match[0].length)}`, 'utf8');
   fs.renameSync(tmpPath, filePath);
+  return { ok: true };
+}
+
+/** generate.py's `_merge_sidecar_meta` order: the least reviewed status wins. */
+const STATUS_RANK: Record<Exclude<ReviewStatus, 'none'>, number> = {
+  flagged_for_rewrite: 0,
+  draft: 1,
+  reviewed: 2,
+};
+
+/**
+ * The status generate.py writes on a grammar row: the least reviewed of the
+ * lesson's and the mnemonic's. 'none' (and a point with no mnemonic) counts as
+ * absent, the same as a missing `review_status` key there.
+ */
+export function mergeGrammarReviewStatus(
+  lesson: ReviewStatus,
+  mnemonic: ReviewStatus | null,
+): ReviewStatus {
+  const present = [lesson, mnemonic].filter(
+    (s): s is Exclude<ReviewStatus, 'none'> => s !== null && s !== 'none',
+  );
+  if (present.length === 0) return 'none';
+  return present.reduce((a, b) => (STATUS_RANK[b] < STATUS_RANK[a] ? b : a));
+}
+
+/** The grammar mnemonic sidecar entry's own status; null when the point has no entry. */
+export function readGrammarMnemonicStatus(repoRoot: string, slug: string): ReviewStatus | null {
+  const file = readJsonFile<SidecarFile>(sidecarPath(repoRoot, 'grammar', 'mnemonics'), {});
+  const entry = file[slug];
+  if (!entry) return null;
+  const status = (entry._meta as Record<string, unknown> | undefined)?.review_status;
+  return typeof status === 'string' ? (status as ReviewStatus) : 'none';
+}
+
+/**
+ * `review_status:` from a grammar lesson's frontmatter; 'none' when it has none.
+ * Every grammar point has a lesson, so a missing file throws.
+ */
+export function readGrammarLessonStatus(repoRoot: string, slug: string): ReviewStatus {
+  const filePath = lessonPath(repoRoot, slug);
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`${slug} has no lesson at curriculum/grammar/lessons/${slug}.md`);
+  }
+  const match = /^---\n([\s\S]*?)\n---\n/.exec(fs.readFileSync(filePath, 'utf8'));
+  const line = match ? /^review_status:\s*(\S+)\s*$/m.exec(match[1]) : null;
+  return line ? (line[1] as ReviewStatus) : 'none';
+}
+
+/**
+ * Writes a grammar mnemonic's own review status to curriculum/grammar/mnemonics.json.
+ * The lesson frontmatter is never touched, so reviewing a mnemonic cannot change
+ * a reviewed lesson. A point with no mnemonic entry has nothing to review.
+ */
+export function persistGrammarMnemonicReviewStatus(
+  repoRoot: string,
+  slug: string,
+  reviewStatus: ReviewStatus,
+): PersistResult {
+  const filePath = sidecarPath(repoRoot, 'grammar', 'mnemonics');
+  const file = readJsonFile<SidecarFile>(filePath, {});
+  if (!file[slug]) {
+    return {
+      ok: false,
+      errors: [`${slug} has no entry in curriculum/grammar/mnemonics.json — generate its mnemonic first.`],
+    };
+  }
+  const entry = { ...file[slug] };
+  const meta = { ...((entry._meta as Record<string, unknown>) ?? {}) };
+  if (reviewStatus === 'none') {
+    delete meta.review_status;
+  } else {
+    meta.review_status = reviewStatus;
+  }
+  if (Object.keys(meta).length > 0) {
+    entry._meta = meta;
+  } else {
+    delete entry._meta;
+  }
+  file[slug] = entry;
+  writeJsonFile(filePath, file);
   return { ok: true };
 }
 

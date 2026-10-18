@@ -2,7 +2,7 @@
 """N4 grammar dataset (~100 points, additive on top of N5's ~80).
 
 Each entry is a dict:
-  slug, primary_form, meaning, structure, mnemonic, conjugation_rules (dict),
+  slug, primary_form, meaning, structure, conjugation_rules (dict),
   accepted_forms (list[str]), examples (list of (jp, en, [vocab_slugs])),
   vocabulary_slugs (list[str]).
 
@@ -24,7 +24,6 @@ N4_GRAMMAR = [
         "primary_form": "のに",
         "meaning": "although / even though",
         "structure": "Plain form + のに",
-        "mnemonic": "のに sets up a surprising contrast with what follows.",
         "conjugation_rules": {"contrast": True},
         "accepted_forms": ["のに"],
         "examples": [
@@ -50,7 +49,6 @@ N4_GRAMMAR = [
         "primary_form": "そうだ (hearsay)",
         "meaning": "I heard that / apparently",
         "structure": "Plain form + そうだ",
-        "mnemonic": "そうだ after a plain sentence reports something you heard.",
         "conjugation_rules": {"hearsay": True},
         "accepted_forms": ["そうだ", "そうです"],
         "examples": [
@@ -76,7 +74,6 @@ N4_GRAMMAR = [
         "primary_form": "そうだ (looks like)",
         "meaning": "looks like / seems (appearance)",
         "structure": "い-adj stem / な-adj / Verb stem + そうだ",
-        "mnemonic": "そうだ on a stem describes how something visually appears.",
         "conjugation_rules": {"appearance": True},
         "accepted_forms": ["そうだ", "そうです", "そうな"],
         "examples": [
@@ -101,7 +98,6 @@ N4_GRAMMAR = [
         "primary_form": "たら",
         "meaning": "if / when (conditional)",
         "structure": "Ta-form + ら",
-        "mnemonic": "たら sets a condition: once this happens, then...",
         "conjugation_rules": {"conditional": True},
         "accepted_forms": ["たら", "だら"],
         "examples": [
@@ -130,7 +126,6 @@ N4_GRAMMAR = [
         "primary_form": "ば",
         "meaning": "if (conditional, general truth)",
         "structure": "Verb/adj ba-form + ば",
-        "mnemonic": "ば describes a general or hypothetical if-then relationship.",
         "conjugation_rules": {"conditional": True, "form": "ba"},
         "accepted_forms": ["ば", "ければ", "であれば", "なら"],
         "examples": [
@@ -158,7 +153,6 @@ N4_GRAMMAR = [
         "primary_form": "なら",
         "meaning": "if (topic-based conditional)",
         "structure": "Noun / Plain form + なら",
-        "mnemonic": "なら reacts to a topic someone just raised: 'if that's the case...'",
         "conjugation_rules": {"conditional": True, "topic_based": True},
         "accepted_forms": ["なら", "んなら"],
         "examples": [
@@ -182,7 +176,6 @@ N4_GRAMMAR = [
         "primary_form": "れる・られる",
         "meaning": "potential form (can do)",
         "structure": "Verb stem + れる / られる",
-        "mnemonic": "The potential form expresses ability: what you can do.",
         "conjugation_rules": {"potential": True},
         "accepted_forms": ["れる", "られる", "える"],
         "examples": [
@@ -209,7 +202,6 @@ N4_GRAMMAR = [
         "primary_form": "れる・られる (passive)",
         "meaning": "passive voice",
         "structure": "Verb stem + れる / られる",
-        "mnemonic": "The passive form flips who receives the action.",
         "conjugation_rules": {"passive": True},
         "accepted_forms": ["れる", "られる"],
         "examples": [
@@ -236,7 +228,6 @@ N4_GRAMMAR = [
         "primary_form": "せる・させる",
         "meaning": "causative (make/let someone do)",
         "structure": "Verb stem + せる / させる",
-        "mnemonic": "The causative makes or lets someone else do the action.",
         "conjugation_rules": {"causative": True},
         "accepted_forms": ["せる", "させる"],
         "examples": [
@@ -260,7 +251,6 @@ N4_GRAMMAR = [
         "primary_form": "せられる・させられる",
         "meaning": "causative-passive (made to do, against one's will)",
         "structure": "Verb stem + せられる / させられる",
-        "mnemonic": "Causative + passive: being forced into doing something unwanted.",
         "conjugation_rules": {"causative_passive": True},
         "accepted_forms": ["せられる", "させられる", "される"],
         "examples": [
@@ -283,7 +273,6 @@ N4_GRAMMAR = [
         "primary_form": "ように",
         "meaning": "in order to / so that",
         "structure": "Dictionary form / ない form + ように",
-        "mnemonic": "ように sets a goal for a change or effort to reach.",
         "conjugation_rules": {"purpose": True},
         "accepted_forms": ["ように"],
         "examples": [
@@ -307,7 +296,6 @@ N4_GRAMMAR = [
         "primary_form": "ようになる",
         "meaning": "come to be able to / reach the point of",
         "structure": "Dictionary form / potential form + ようになる",
-        "mnemonic": "ようになる marks a gradual change reaching a new ability or state.",
         "conjugation_rules": {"change": True},
         "accepted_forms": ["ようになる", "ようになりました"],
         "examples": [
@@ -330,7 +318,6 @@ N4_GRAMMAR = [
         "primary_form": "なくなる",
         "meaning": "come to no longer / stop doing",
         "structure": "Verb ない-stem + なくなる",
-        "mnemonic": "なくなる marks the loss of a previous ability or habit.",
         "conjugation_rules": {"change": True, "negative": True},
         "accepted_forms": ["なくなる", "なくなりました"],
         "examples": [
@@ -353,7 +340,6 @@ N4_GRAMMAR = [
         "primary_form": "はず",
         "meaning": "should be / expected to be",
         "structure": "Plain form + はず",
-        "mnemonic": "はず is a confident expectation based on evidence or reason.",
         "conjugation_rules": {"expectation": True},
         "accepted_forms": ["はず", "はずだ", "はずです"],
         "examples": [
@@ -376,7 +362,6 @@ N4_GRAMMAR = [
         "primary_form": "はずがない",
         "meaning": "there's no way / can't be",
         "structure": "Plain form + はずがない",
-        "mnemonic": "はずがない strongly denies an expectation: impossible.",
         "conjugation_rules": {"strong_negative_expectation": True},
         "accepted_forms": ["はずがない", "はずがありません"],
         "examples": [
@@ -399,7 +384,6 @@ N4_GRAMMAR = [
         "primary_form": "らしい",
         "meaning": "seems like / I heard (based on evidence)",
         "structure": "Plain form + らしい",
-        "mnemonic": "らしい is a conjecture based on outside information or evidence.",
         "conjugation_rules": {"conjecture": True},
         "accepted_forms": ["らしい"],
         "examples": [
@@ -423,7 +407,6 @@ N4_GRAMMAR = [
         "primary_form": "ようだ",
         "meaning": "seems / appears (based on inference)",
         "structure": "Plain form / Noun + の + ようだ",
-        "mnemonic": "ようだ paints a picture of what seems true from what you sense.",
         "conjugation_rules": {"appearance": True},
         "accepted_forms": ["ようだ", "ようです", "みたいだ"],
         "examples": [
@@ -448,7 +431,6 @@ N4_GRAMMAR = [
         "primary_form": "みたいだ",
         "meaning": "seems like (casual)",
         "structure": "Plain form + みたいだ",
-        "mnemonic": "みたいだ is the casual cousin of ようだ.",
         "conjugation_rules": {"appearance": True, "casual": True},
         "accepted_forms": ["みたいだ", "みたいです"],
         "examples": [
@@ -472,7 +454,6 @@ N4_GRAMMAR = [
         "primary_form": "ている (resultant state)",
         "meaning": "resulting state (has become / is)",
         "structure": "Te-form + いる",
-        "mnemonic": "ている on a change verb shows the lasting result of that change.",
         "conjugation_rules": {"resultant_state": True},
         "accepted_forms": ["ている"],
         "examples": [
@@ -497,7 +478,6 @@ N4_GRAMMAR = [
         "primary_form": "てある",
         "meaning": "has been done (resultant state, tr. verb)",
         "structure": "Te-form (transitive) + ある",
-        "mnemonic": "てある shows a deliberate result left in place for a purpose.",
         "conjugation_rules": {"resultant": True},
         "accepted_forms": ["てある"],
         "examples": [
@@ -522,7 +502,6 @@ N4_GRAMMAR = [
         "primary_form": "ておく",
         "meaning": "to do in advance / leave as is",
         "structure": "Te-form + おく",
-        "mnemonic": "ておく sets something up ahead of time for later use.",
         "conjugation_rules": {"preparation": True},
         "accepted_forms": ["ておく", "とく"],
         "examples": [
@@ -561,7 +540,6 @@ N4_GRAMMAR = [
         "primary_form": "てしまう",
         "meaning": "to finish completely / end up doing (regret)",
         "structure": "Te-form + しまう",
-        "mnemonic": "てしまう completes an action, often with a note of regret.",
         "conjugation_rules": {"completion": True},
         "accepted_forms": ["てしまう", "ちゃう", "じゃう"],
         "examples": [
@@ -601,7 +579,6 @@ N4_GRAMMAR = [
         "primary_form": "ていく・てくる",
         "meaning": "to go on doing / to come to do (direction of change)",
         "structure": "Te-form + いく / くる",
-        "mnemonic": "ていく moves away in time; てくる moves toward now.",
         "conjugation_rules": {"directional_change": True},
         "accepted_forms": ["ていく", "てくる"],
         "examples": [
@@ -639,7 +616,6 @@ N4_GRAMMAR = [
         "primary_form": "ても",
         "meaning": "even if / even though",
         "structure": "Te-form + も",
-        "mnemonic": "ても keeps the result the same, no matter the condition.",
         "conjugation_rules": {"concession": True},
         "accepted_forms": ["ても", "でも"],
         "examples": [
@@ -661,7 +637,6 @@ N4_GRAMMAR = [
         "primary_form": "そうになる",
         "meaning": "almost / on the verge of",
         "structure": "Verb stem + そうになる",
-        "mnemonic": "そうになる is teetering right at the edge of happening.",
         "conjugation_rules": {"near_miss": True},
         "accepted_forms": ["そうになる", "そうになりました"],
         "examples": [
@@ -684,7 +659,6 @@ N4_GRAMMAR = [
         "primary_form": "つもり",
         "meaning": "intend to / plan to",
         "structure": "Dictionary form + つもり",
-        "mnemonic": "つもり holds your intention in mind before acting.",
         "conjugation_rules": {"intention": True},
         "accepted_forms": ["つもり", "つもりだ", "つもりです"],
         "examples": [
@@ -708,7 +682,6 @@ N4_GRAMMAR = [
         "primary_form": "ようにする",
         "meaning": "to try to make it so / make a habit of",
         "structure": "Dictionary form / ない form + ようにする",
-        "mnemonic": "ようにする is a conscious effort to bring about a habit.",
         "conjugation_rules": {"effort": True},
         "accepted_forms": ["ようにする", "ようにしている"],
         "examples": [
@@ -731,7 +704,6 @@ N4_GRAMMAR = [
         "primary_form": "ことにする",
         "meaning": "to decide to (one's own choice)",
         "structure": "Dictionary form / ない form + ことにする",
-        "mnemonic": "ことにする is a personal decision you settle on.",
         "conjugation_rules": {"decision": True},
         "accepted_forms": ["ことにする", "ことにしました"],
         "examples": [
@@ -754,7 +726,6 @@ N4_GRAMMAR = [
         "primary_form": "ことになる",
         "meaning": "it has been decided that / turns out that",
         "structure": "Dictionary form / ない form + ことになる",
-        "mnemonic": "ことになる marks a decision made by circumstance, not you.",
         "conjugation_rules": {"external_decision": True},
         "accepted_forms": ["ことになる", "ことになりました", "ことになっている"],
         "examples": [
@@ -778,7 +749,6 @@ N4_GRAMMAR = [
         "primary_form": "もの",
         "meaning": "used to (nostalgic habit) / because (emotional)",
         "structure": "Plain form + もの / だもの",
-        "mnemonic": "もの adds an emotional weight to a habitual memory or excuse.",
         "conjugation_rules": {"nostalgia": True},
         "accepted_forms": ["もの", "もん"],
         "examples": [
@@ -814,7 +784,6 @@ N4_GRAMMAR = [
         "primary_form": "ばかり",
         "meaning": "only / just did",
         "structure": "Noun + ばかり / Ta-form + ばかり",
-        "mnemonic": "ばかり piles onto just one thing, or marks something just finished.",
         "conjugation_rules": {"exclusive_or_recent": True},
         "accepted_forms": ["ばかり", "たばかり"],
         "examples": [
@@ -851,7 +820,6 @@ N4_GRAMMAR = [
         "primary_form": "ところ",
         "meaning": "just about to / in the middle of / just finished",
         "structure": "Dictionary/て-form/Ta-form + ところ",
-        "mnemonic": "ところ freezes a moment: right before, during, or right after.",
         "conjugation_rules": {"moment": True},
         "accepted_forms": ["ところ", "ているところ", "たところ"],
         "examples": [
@@ -894,7 +862,6 @@ N4_GRAMMAR = [
         "primary_form": "間・間に",
         "meaning": "while / during the interval",
         "structure": "Verb-ている / Noun の + 間(に)",
-        "mnemonic": "間 marks a stretch of time; 間に marks a moment within it.",
         "conjugation_rules": {"duration": True},
         "accepted_forms": ["間", "間に"],
         "examples": [
@@ -917,7 +884,6 @@ N4_GRAMMAR = [
         "primary_form": "うちに",
         "meaning": "while (before it's too late) / during",
         "structure": "Plain form + うちに",
-        "mnemonic": "うちに urges you to act before a window of opportunity closes.",
         "conjugation_rules": {"opportunity_window": True},
         "accepted_forms": ["うちに"],
         "examples": [
@@ -940,7 +906,6 @@ N4_GRAMMAR = [
         "primary_form": "たびに",
         "meaning": "every time / whenever",
         "structure": "Dictionary form / Noun の + たびに",
-        "mnemonic": "たびに repeats: each and every time this happens.",
         "conjugation_rules": {"repetition": True},
         "accepted_forms": ["たびに"],
         "examples": [
@@ -962,7 +927,6 @@ N4_GRAMMAR = [
         "primary_form": "場合",
         "meaning": "in the case of / if the situation is",
         "structure": "Plain form / Noun の + 場合",
-        "mnemonic": "場合 frames a specific hypothetical scenario.",
         "conjugation_rules": {"scenario": True},
         "accepted_forms": ["場合", "場合は"],
         "examples": [
@@ -986,7 +950,6 @@ N4_GRAMMAR = [
         "primary_form": "と",
         "meaning": "if / when (natural/automatic result)",
         "structure": "Plain form (present) + と",
-        "mnemonic": "と links a condition to an automatic, predictable outcome.",
         "conjugation_rules": {"conditional": True, "automatic": True},
         "accepted_forms": ["と"],
         "examples": [
@@ -1023,7 +986,6 @@ N4_GRAMMAR = [
         "primary_form": "から (formal reason, reused)",
         "meaning": "because (subjective reason)",
         "structure": "Plain form + から",
-        "mnemonic": "から gives your own subjective reason, more direct than ので.",
         "conjugation_rules": {"reason": True, "subjective": True},
         "accepted_forms": ["から"],
         "examples": [
@@ -1049,7 +1011,6 @@ N4_GRAMMAR = [
         "primary_form": "代わりに",
         "meaning": "instead of / in exchange for",
         "structure": "Noun の / Dictionary form + 代わりに",
-        "mnemonic": "代わりに swaps one thing in for another.",
         "conjugation_rules": {"substitution": True},
         "accepted_forms": ["代わりに"],
         "examples": [
@@ -1071,7 +1032,6 @@ N4_GRAMMAR = [
         "primary_form": "というより",
         "meaning": "rather than say / more accurately",
         "structure": "Plain form + というより",
-        "mnemonic": "というより revises a statement to something more accurate.",
         "conjugation_rules": {"correction": True},
         "accepted_forms": ["というより"],
         "examples": [
@@ -1093,7 +1053,6 @@ N4_GRAMMAR = [
         "primary_form": "として",
         "meaning": "as (in the role/capacity of)",
         "structure": "Noun + として",
-        "mnemonic": "として labels the role or capacity someone acts in.",
         "conjugation_rules": {"role": True},
         "accepted_forms": ["として"],
         "examples": [
@@ -1116,7 +1075,6 @@ N4_GRAMMAR = [
         "primary_form": "について",
         "meaning": "about / regarding",
         "structure": "Noun + について",
-        "mnemonic": "について zooms in on the topic you're discussing.",
         "conjugation_rules": {"topic": True},
         "accepted_forms": ["について", "につき"],
         "examples": [
@@ -1138,7 +1096,6 @@ N4_GRAMMAR = [
         "primary_form": "によると",
         "meaning": "according to",
         "structure": "Noun + によると",
-        "mnemonic": "によると cites a source before reporting hearsay.",
         "conjugation_rules": {"source": True},
         "accepted_forms": ["によると", "によれば"],
         "examples": [
@@ -1161,7 +1118,6 @@ N4_GRAMMAR = [
         "primary_form": "ため (cause)",
         "meaning": "due to / because of (formal cause)",
         "structure": "Plain form / Noun の + ため",
-        "mnemonic": "ため as a cause explains a formal, often negative, result.",
         "conjugation_rules": {"cause_formal": True},
         "accepted_forms": ["ため", "ために"],
         "examples": [
@@ -1184,7 +1140,6 @@ N4_GRAMMAR = [
         "primary_form": "限り",
         "meaning": "as far as / as long as",
         "structure": "Plain form + 限り",
-        "mnemonic": "限り marks the outer limit of what you know or can do.",
         "conjugation_rules": {"limit": True},
         "accepted_forms": ["限り"],
         "examples": [
@@ -1207,7 +1162,6 @@ N4_GRAMMAR = [
         "primary_form": "たとえ〜ても",
         "meaning": "even if (hypothetical emphasis)",
         "structure": "たとえ + Te-form + も",
-        "mnemonic": "たとえ〜ても stresses the concession, however extreme.",
         "conjugation_rules": {"strong_concession": True},
         # The 〜 template is the display shape; たとえ is the literal chunk a
         # learner actually types (and clozeBuilder can blank), mirroring
@@ -1234,7 +1188,6 @@ N4_GRAMMAR = [
         "primary_form": "っけ",
         "meaning": "wasn't it? / trying to recall",
         "structure": "Plain form + っけ",
-        "mnemonic": "っけ is a casual mutter trying to recall something forgotten.",
         "conjugation_rules": {"recollection": True, "casual": True},
         "accepted_forms": ["っけ"],
         "examples": [
@@ -1256,7 +1209,6 @@ N4_GRAMMAR = [
         "primary_form": "のだ・んだ",
         "meaning": "explanatory emphasis (the thing is...)",
         "structure": "Plain form + のだ / んです",
-        "mnemonic": "んです adds emphasis, explaining the reason behind a statement.",
         "conjugation_rules": {"explanation": True},
         "accepted_forms": ["んです", "のです", "んだ"],
         "examples": [
@@ -1278,7 +1230,6 @@ N4_GRAMMAR = [
         "primary_form": "にくい・やすい",
         "meaning": "hard to / easy to (do)",
         "structure": "Verb stem + にくい / やすい",
-        "mnemonic": "やすい makes it easy; にくい makes it a hassle.",
         "conjugation_rules": {"ease_difficulty": True},
         "accepted_forms": ["にくい", "やすい"],
         "examples": [
@@ -1301,7 +1252,6 @@ N4_GRAMMAR = [
         "primary_form": "つつある",
         "meaning": "in the process of (formal, ongoing change)",
         "structure": "Verb stem + つつある",
-        "mnemonic": "つつある marks a change quietly unfolding right now.",
         "conjugation_rules": {"ongoing_change": True, "formal": True},
         "accepted_forms": ["つつある"],
         "examples": [
@@ -1323,7 +1273,6 @@ N4_GRAMMAR = [
         "primary_form": "あげく",
         "meaning": "in the end (after much effort, often bad result)",
         "structure": "Ta-form + あげく",
-        "mnemonic": "あげく arrives at the end of a long struggle, often disappointing.",
         "conjugation_rules": {"final_outcome": True},
         "accepted_forms": ["あげく", "あげくに"],
         "examples": [
@@ -1345,7 +1294,6 @@ N4_GRAMMAR = [
         "primary_form": "わけ",
         "meaning": "reason / makes sense that",
         "structure": "Plain form + わけ",
-        "mnemonic": "わけ explains the logical reason things turned out this way.",
         "conjugation_rules": {"logical_reason": True},
         "accepted_forms": ["わけだ", "わけです"],
         "examples": [
@@ -1367,7 +1315,6 @@ N4_GRAMMAR = [
         "primary_form": "わけがない",
         "meaning": "there's no way that",
         "structure": "Plain form + わけがない",
-        "mnemonic": "わけがない firmly rejects a possibility as illogical.",
         "conjugation_rules": {"strong_denial": True},
         "accepted_forms": ["わけがない", "わけがありません"],
         "examples": [
@@ -1389,7 +1336,6 @@ N4_GRAMMAR = [
         "primary_form": "かなり",
         "meaning": "quite / fairly (degree)",
         "structure": "かなり + adjective/verb",
-        "mnemonic": "かなり pushes the degree up to 'quite a lot'.",
         "conjugation_rules": {"degree": True},
         "accepted_forms": ["かなり"],
         "examples": [
@@ -1412,7 +1358,6 @@ N4_GRAMMAR = [
         "primary_form": "ほど",
         "meaning": "to the extent of / the more...the more",
         "structure": "Noun / Plain form + ほど",
-        "mnemonic": "ほど measures just how far something reaches.",
         "conjugation_rules": {"degree_comparison": True},
         "accepted_forms": ["ほど", "ば〜ほど"],
         "examples": [
@@ -1454,7 +1399,6 @@ N4_GRAMMAR = [
         "primary_form": "くらい (degree)",
         "meaning": "to the extent that / about as much as",
         "structure": "Plain form + くらい",
-        "mnemonic": "くらい marks the rough extent something reaches to.",
         "conjugation_rules": {"extent": True},
         "accepted_forms": ["くらい", "ぐらい"],
         "examples": [
@@ -1490,7 +1434,6 @@ N4_GRAMMAR = [
         "primary_form": "だけでなく",
         "meaning": "not only... but also",
         "structure": "Noun / Plain form + だけでなく",
-        "mnemonic": "だけでなく breaks past 'only' to add even more.",
         "conjugation_rules": {"addition": True},
         "accepted_forms": ["だけでなく", "だけじゃなく"],
         "examples": [
@@ -1513,7 +1456,6 @@ N4_GRAMMAR = [
         "primary_form": "に限らず",
         "meaning": "not limited to",
         "structure": "Noun + に限らず",
-        "mnemonic": "に限らず widens the scope beyond just one example.",
         "conjugation_rules": {"scope_extension": True},
         "accepted_forms": ["に限らず"],
         "examples": [
@@ -1533,7 +1475,6 @@ N4_GRAMMAR = [
         "primary_form": "一方で",
         "meaning": "on the other hand",
         "structure": "Plain form + 一方で",
-        "mnemonic": "一方で shows the flip side of the same coin.",
         "conjugation_rules": {"contrast": True},
         "accepted_forms": ["一方で"],
         "examples": [
@@ -1554,7 +1495,6 @@ N4_GRAMMAR = [
         "primary_form": "にとって",
         "meaning": "for / from the perspective of",
         "structure": "Noun + にとって",
-        "mnemonic": "にとって views things through someone's standpoint.",
         "conjugation_rules": {"perspective": True},
         "accepted_forms": ["にとって"],
         "examples": [
@@ -1574,7 +1514,6 @@ N4_GRAMMAR = [
         "primary_form": "に関して",
         "meaning": "regarding / concerning (formal)",
         "structure": "Noun + に関して",
-        "mnemonic": "に関して formally connects the discussion to its topic.",
         "conjugation_rules": {"topic_formal": True},
         "accepted_forms": ["に関して", "に関する"],
         "examples": [
@@ -1592,7 +1531,6 @@ N4_GRAMMAR = [
         "primary_form": "そういう・こういう",
         "meaning": "that kind of / this kind of",
         "structure": "そういう / こういう + Noun",
-        "mnemonic": "こういう points at 'this sort'; そういう points at 'that sort'.",
         "conjugation_rules": {"demonstrative_kind": True},
         "accepted_forms": ["そういう", "こういう", "ああいう"],
         "examples": [
@@ -1614,7 +1552,6 @@ N4_GRAMMAR = [
         "primary_form": "って",
         "meaning": "casual quotation / topic marker",
         "structure": "Plain form + って",
-        "mnemonic": "って is the casual shortcut for と or は in speech.",
         "conjugation_rules": {"casual_quote": True},
         "accepted_forms": ["って"],
         "examples": [
@@ -1651,7 +1588,6 @@ N4_GRAMMAR = [
         "primary_form": "ったら・ってば",
         "meaning": "emphatic address / exasperation",
         "structure": "Noun/Plain form + ったら・ってば",
-        "mnemonic": "ってば expresses mild exasperation calling someone out.",
         "conjugation_rules": {"emphasis": True, "casual": True},
         "accepted_forms": ["ったら", "ってば"],
         "examples": [
@@ -1687,7 +1623,6 @@ N4_GRAMMAR = [
         "primary_form": "かどうか",
         "meaning": "whether or not",
         "structure": "Plain form + かどうか",
-        "mnemonic": "かどうか leaves the yes/no question hanging, unresolved.",
         "conjugation_rules": {"uncertainty": True},
         "accepted_forms": ["かどうか"],
         "examples": [
@@ -1709,7 +1644,6 @@ N4_GRAMMAR = [
         "primary_form": "か何か",
         "meaning": "or something",
         "structure": "Noun + か何か",
-        "mnemonic": "か何か leaves room for something similar, unspecified.",
         "conjugation_rules": {"vague_example": True},
         "accepted_forms": ["か何か"],
         "examples": [
@@ -1731,7 +1665,6 @@ N4_GRAMMAR = [
         "primary_form": "とか",
         "meaning": "things like / and so on (casual listing)",
         "structure": "Noun + とか + Noun + とか",
-        "mnemonic": "とか casually tosses out a few loose examples.",
         "conjugation_rules": {"casual_listing": True},
         "accepted_forms": ["とか"],
         "examples": [
@@ -1752,7 +1685,6 @@ N4_GRAMMAR = [
         "primary_form": "反面",
         "meaning": "while at the same time / conversely",
         "structure": "Plain form + 反面",
-        "mnemonic": "反面 flips to show the opposite face of the same situation.",
         "conjugation_rules": {"contrast": True},
         "accepted_forms": ["反面"],
         "examples": [
@@ -1774,7 +1706,6 @@ N4_GRAMMAR = [
         "primary_form": "ところが",
         "meaning": "however / unexpectedly",
         "structure": "Sentence. + ところが + Sentence.",
-        "mnemonic": "ところが flips the story with an unexpected twist.",
         "conjugation_rules": {"unexpected_contrast": True},
         "accepted_forms": ["ところが"],
         "examples": [
@@ -1795,7 +1726,6 @@ N4_GRAMMAR = [
         "primary_form": "それでも",
         "meaning": "even so / nevertheless",
         "structure": "Sentence. + それでも + Sentence.",
-        "mnemonic": "それでも holds firm despite what was just said.",
         "conjugation_rules": {"concession_connector": True},
         "accepted_forms": ["それでも"],
         "examples": [
@@ -1817,7 +1747,6 @@ N4_GRAMMAR = [
         "primary_form": "そこで",
         "meaning": "so / therefore (leading to action)",
         "structure": "Sentence. + そこで + Sentence.",
-        "mnemonic": "そこで pivots from a situation straight into action.",
         "conjugation_rules": {"resulting_action": True},
         "accepted_forms": ["そこで"],
         "examples": [
@@ -1838,7 +1767,6 @@ N4_GRAMMAR = [
         "primary_form": "そのため",
         "meaning": "for that reason / because of that",
         "structure": "Sentence. + そのため + Sentence.",
-        "mnemonic": "そのため links a stated cause directly to its consequence.",
         "conjugation_rules": {"consequence_connector": True},
         "accepted_forms": ["そのため"],
         "examples": [
@@ -1859,7 +1787,6 @@ N4_GRAMMAR = [
         "primary_form": "すると",
         "meaning": "then / and then (sequential)",
         "structure": "Sentence. + すると + Sentence.",
-        "mnemonic": "すると narrates what happened right after, in sequence.",
         "conjugation_rules": {"sequence": True},
         "accepted_forms": ["すると"],
         "examples": [
@@ -1880,7 +1807,6 @@ N4_GRAMMAR = [
         "primary_form": "以外",
         "meaning": "except / other than",
         "structure": "Noun + 以外",
-        "mnemonic": "以外 steps outside the boundary of what was named.",
         "conjugation_rules": {"exception": True},
         "accepted_forms": ["以外", "以外に", "以外は"],
         "examples": [
@@ -1902,7 +1828,6 @@ N4_GRAMMAR = [
         "primary_form": "以来",
         "meaning": "ever since",
         "structure": "Noun / Te-form + 以来",
-        "mnemonic": "以来 marks a starting point stretching all the way to now.",
         "conjugation_rules": {"since": True},
         "accepted_forms": ["以来"],
         "examples": [
@@ -1923,7 +1848,6 @@ N4_GRAMMAR = [
         "primary_form": "反対に",
         "meaning": "on the contrary / conversely",
         "structure": "反対に + Sentence.",
-        "mnemonic": "反対に turns the situation completely around.",
         "conjugation_rules": {"opposite": True},
         "accepted_forms": ["反対に"],
         "examples": [
@@ -1944,7 +1868,6 @@ N4_GRAMMAR = [
         "primary_form": "こそ",
         "meaning": "precisely / for sure (emphasis)",
         "structure": "Noun + こそ",
-        "mnemonic": "こそ underlines exactly this one, and no other.",
         "conjugation_rules": {"emphasis": True},
         "accepted_forms": ["こそ"],
         "examples": [
@@ -1965,7 +1888,6 @@ N4_GRAMMAR = [
         "primary_form": "さえ",
         "meaning": "even (extreme example)",
         "structure": "Noun + さえ",
-        "mnemonic": "さえ picks the most extreme example to prove a point.",
         "conjugation_rules": {"extreme_example": True},
         "accepted_forms": ["さえ", "さえも"],
         "examples": [
@@ -1987,7 +1909,6 @@ N4_GRAMMAR = [
         "primary_form": "さえ〜ば",
         "meaning": "if only / as long as",
         "structure": "Noun + さえ + Verb-ば",
-        "mnemonic": "さえ〜ば narrows a condition down to just one crucial thing.",
         "conjugation_rules": {"minimal_condition": True},
         # The 〜 template is the display shape; さえ is the literal chunk a
         # learner actually types (and clozeBuilder can blank), mirroring
@@ -2011,7 +1932,6 @@ N4_GRAMMAR = [
         "primary_form": "のみ",
         "meaning": "only (formal)",
         "structure": "Noun + のみ",
-        "mnemonic": "のみ is the formal, written cousin of だけ.",
         "conjugation_rules": {"exclusive_formal": True},
         "accepted_forms": ["のみ"],
         "examples": [
@@ -2032,7 +1952,6 @@ N4_GRAMMAR = [
         "primary_form": "ほかない",
         "meaning": "have no choice but to",
         "structure": "Dictionary form + ほかない",
-        "mnemonic": "ほかない leaves no other road but the one ahead.",
         "conjugation_rules": {"no_alternative": True},
         "accepted_forms": ["ほかない", "ほかありません"],
         "examples": [
@@ -2053,7 +1972,6 @@ N4_GRAMMAR = [
         "primary_form": "によって",
         "meaning": "by / due to / depending on",
         "structure": "Noun + によって",
-        "mnemonic": "によって traces the cause or agent behind the result.",
         "conjugation_rules": {"agent_or_dependency": True},
         "accepted_forms": ["によって", "により"],
         "examples": [
@@ -2101,7 +2019,6 @@ N4_GRAMMAR = [
         "primary_form": "ついでに",
         "meaning": "while I'm at it / incidentally",
         "structure": "Dictionary form / Noun の + ついでに",
-        "mnemonic": "ついでに tacks on an extra errand while already out.",
         "conjugation_rules": {"incidental": True},
         "accepted_forms": ["ついでに"],
         "examples": [
@@ -2122,7 +2039,6 @@ N4_GRAMMAR = [
         "primary_form": "上で",
         "meaning": "after / on the basis of (formal)",
         "structure": "Ta-form + 上で",
-        "mnemonic": "上で builds the next step on top of a completed one.",
         "conjugation_rules": {"formal_sequence": True},
         "accepted_forms": ["上で"],
         "examples": [
@@ -2142,7 +2058,6 @@ N4_GRAMMAR = [
         "primary_form": "最中に",
         "meaning": "right in the middle of",
         "structure": "Verb-ている / Noun の + 最中に",
-        "mnemonic": "最中に interrupts right at the peak of an action.",
         "conjugation_rules": {"interruption": True},
         "accepted_forms": ["最中に"],
         "examples": [
@@ -2163,7 +2078,6 @@ N4_GRAMMAR = [
         "primary_form": "および",
         "meaning": "and / as well as (formal)",
         "structure": "Noun + および + Noun",
-        "mnemonic": "および formally joins two items in written Japanese.",
         "conjugation_rules": {"formal_conjunction": True},
         "accepted_forms": ["および"],
         "examples": [
@@ -2184,7 +2098,6 @@ N4_GRAMMAR = [
         "primary_form": "に対して",
         "meaning": "towards / in contrast to",
         "structure": "Noun + に対して",
-        "mnemonic": "に対して directs an attitude or action right at its target.",
         "conjugation_rules": {"directed_toward": True},
         "accepted_forms": ["に対して", "に対する"],
         "examples": [

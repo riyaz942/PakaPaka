@@ -2,7 +2,7 @@
 """N5 grammar dataset (~80 points).
 
 Each entry is a dict:
-  slug, primary_form, meaning, structure, mnemonic, conjugation_rules (dict),
+  slug, primary_form, meaning, structure, conjugation_rules (dict),
   accepted_forms (list[str]), examples (list of (jp, en, [vocab_slugs])),
   vocabulary_slugs (list[str]), family (str), accepted_meanings (list[str]),
   and optionally cloze_variants
@@ -27,7 +27,6 @@ N5_GRAMMAR = [
         "primary_form": "は",
         "meaning": "topic marker",
         "structure": "Noun + は + comment",
-        "mnemonic": "は marks what the sentence is about — the topic on the table.",
         "conjugation_rules": {"particle": "topic"},
         "accepted_forms": ["は"],
         "examples": [
@@ -53,7 +52,6 @@ N5_GRAMMAR = [
         "primary_form": "です",
         "meaning": "copula (to be)",
         "structure": "Noun / na-adj + です",
-        "mnemonic": "です is the polite 'is/am/are' that ends a statement.",
         "conjugation_rules": {"polite": True, "past": "でした", "negative": "ではありません"},
         "accepted_forms": ["です", "だ", "でした", "ではありません"],
         "examples": [
@@ -79,7 +77,6 @@ N5_GRAMMAR = [
         "primary_form": "ではありません",
         "meaning": "negative copula (is not)",
         "structure": "Noun + ではありません / じゃないです",
-        "mnemonic": "The polite way to say something is NOT the case.",
         "conjugation_rules": {"polite": True, "negative": True},
         "accepted_forms": ["ではありません", "じゃないです", "じゃありません", "ではない"],
         "examples": [
@@ -104,7 +101,6 @@ N5_GRAMMAR = [
         "primary_form": "ます",
         "meaning": "polite verb ending",
         "structure": "Verb stem + ます",
-        "mnemonic": "ます turns any verb into its polite form.",
         "conjugation_rules": {"polite": True, "past": "ました", "negative": "ません"},
         "accepted_forms": ["ます", "ました", "ません", "ませんでした"],
         "examples": [
@@ -130,7 +126,6 @@ N5_GRAMMAR = [
         "primary_form": "ません",
         "meaning": "polite negative verb ending",
         "structure": "Verb stem + ません",
-        "mnemonic": "Swap ます for ません to say you do NOT do it.",
         "conjugation_rules": {"polite": True, "negative": True},
         "accepted_forms": ["ません", "ませんでした"],
         "examples": [
@@ -155,7 +150,6 @@ N5_GRAMMAR = [
         "primary_form": "ました",
         "meaning": "polite past tense",
         "structure": "Verb stem + ました",
-        "mnemonic": "ました is the polite past — it already happened.",
         "conjugation_rules": {"polite": True, "past": True},
         "accepted_forms": ["ました", "ませんでした"],
         "examples": [
@@ -181,7 +175,6 @@ N5_GRAMMAR = [
         "primary_form": "ましょう",
         "meaning": "let's / shall we",
         "structure": "Verb stem + ましょう",
-        "mnemonic": "ましょう invites everyone: let's do it together.",
         "conjugation_rules": {"polite": True, "volitional": True},
         "accepted_forms": ["ましょう", "ましょうか"],
         "examples": [
@@ -206,7 +199,6 @@ N5_GRAMMAR = [
         "primary_form": "ませんか",
         "meaning": "won't you? (invitation)",
         "structure": "Verb stem + ませんか",
-        "mnemonic": "A soft negative question that means 'won't you join me?'",
         "conjugation_rules": {"polite": True, "invitation": True},
         "accepted_forms": ["ませんか"],
         "examples": [
@@ -230,7 +222,6 @@ N5_GRAMMAR = [
         "primary_form": "を",
         "meaning": "direct object marker",
         "structure": "Noun + を + Verb",
-        "mnemonic": "を tags the thing the verb acts on.",
         "conjugation_rules": {"particle": "object"},
         "accepted_forms": ["を"],
         "examples": [
@@ -255,7 +246,6 @@ N5_GRAMMAR = [
         "primary_form": "が",
         "meaning": "subject marker",
         "structure": "Noun + が + Predicate",
-        "mnemonic": "が spotlights the subject, often something new.",
         "conjugation_rules": {"particle": "subject"},
         "accepted_forms": ["が"],
         "examples": [
@@ -280,7 +270,6 @@ N5_GRAMMAR = [
         "primary_form": "の",
         "meaning": "possessive / linking particle",
         "structure": "Noun + の + Noun",
-        "mnemonic": "の links two nouns: A's B, or B of A.",
         "conjugation_rules": {"particle": "possessive"},
         "accepted_forms": ["の"],
         "examples": [
@@ -305,7 +294,6 @@ N5_GRAMMAR = [
         "primary_form": "の",
         "meaning": "nominalizer / explanatory",
         "structure": "Verb (plain) + の / んです",
-        "mnemonic": "の turns a whole action into a noun, or explains why.",
         "conjugation_rules": {"nominalizer": True},
         "accepted_forms": ["の", "んです", "のです"],
         "examples": [
@@ -329,7 +317,6 @@ N5_GRAMMAR = [
         "primary_form": "に",
         "meaning": "to / at (direction, time, target)",
         "structure": "Noun + に",
-        "mnemonic": "に pins an action to a point in time or a destination.",
         "conjugation_rules": {"particle": "target"},
         "accepted_forms": ["に"],
         "examples": [
@@ -374,7 +361,6 @@ N5_GRAMMAR = [
         "primary_form": "へ",
         "meaning": "toward (direction)",
         "structure": "Noun + へ",
-        "mnemonic": "へ points the way you are heading.",
         "conjugation_rules": {"particle": "direction"},
         "accepted_forms": ["へ"],
         "examples": [
@@ -397,7 +383,6 @@ N5_GRAMMAR = [
         "primary_form": "で",
         "meaning": "at / by / with (place of action, means)",
         "structure": "Noun + で + Verb",
-        "mnemonic": "で marks where an action happens or the means used.",
         "conjugation_rules": {"particle": "location_means"},
         "accepted_forms": ["で"],
         "examples": [
@@ -436,7 +421,6 @@ N5_GRAMMAR = [
         "primary_form": "と",
         "meaning": "and / with (exhaustive)",
         "structure": "Noun + と + Noun",
-        "mnemonic": "と ties a full list of nouns or a companion together.",
         "conjugation_rules": {"particle": "and_with"},
         "accepted_forms": ["と"],
         "examples": [
@@ -474,7 +458,6 @@ N5_GRAMMAR = [
         "primary_form": "や",
         "meaning": "and (among others)",
         "structure": "Noun + や + Noun (など)",
-        "mnemonic": "や lists examples — 'things like A and B'.",
         "conjugation_rules": {"particle": "nonexhaustive_and"},
         "accepted_forms": ["や", "やなど"],
         "examples": [
@@ -497,7 +480,6 @@ N5_GRAMMAR = [
         "primary_form": "も",
         "meaning": "also / too",
         "structure": "Noun + も",
-        "mnemonic": "も adds 'as well' — me too, this too.",
         "conjugation_rules": {"particle": "also"},
         "accepted_forms": ["も"],
         "examples": [
@@ -521,7 +503,6 @@ N5_GRAMMAR = [
         "primary_form": "から",
         "meaning": "from (starting point)",
         "structure": "Noun + から",
-        "mnemonic": "から marks the start: from here, from then.",
         "conjugation_rules": {"particle": "start"},
         "accepted_forms": ["から"],
         "examples": [
@@ -545,7 +526,6 @@ N5_GRAMMAR = [
         "primary_form": "まで",
         "meaning": "until / as far as",
         "structure": "Noun + まで",
-        "mnemonic": "まで marks the end point: up to here, until then.",
         "conjugation_rules": {"particle": "end"},
         "accepted_forms": ["まで"],
         "examples": [
@@ -569,7 +549,6 @@ N5_GRAMMAR = [
         "primary_form": "から",
         "meaning": "because (reason)",
         "structure": "Clause (plain/polite) + から",
-        "mnemonic": "から after a clause gives the reason: because...",
         "conjugation_rules": {"reason": True},
         "accepted_forms": ["から", "ですから"],
         "examples": [
@@ -593,7 +572,6 @@ N5_GRAMMAR = [
         "primary_form": "ので",
         "meaning": "because (soft/objective)",
         "structure": "Clause (plain) + ので",
-        "mnemonic": "ので is a gentler 'because' than から.",
         "conjugation_rules": {"reason": True, "soft": True},
         "accepted_forms": ["ので", "んで", "なので"],
         "examples": [
@@ -623,7 +601,6 @@ N5_GRAMMAR = [
         "primary_form": "に (相手)",
         "meaning": "to (recipient / indirect object)",
         "structure": "Person + に + Verb",
-        "mnemonic": "に marks who receives the action.",
         "conjugation_rules": {"particle": "recipient"},
         "accepted_forms": ["に"],
         "examples": [
@@ -647,7 +624,6 @@ N5_GRAMMAR = [
         "primary_form": "か",
         "meaning": "question marker",
         "structure": "Sentence + か",
-        "mnemonic": "か at the end turns a statement into a question.",
         "conjugation_rules": {"particle": "question"},
         "accepted_forms": ["か"],
         "examples": [
@@ -672,7 +648,6 @@ N5_GRAMMAR = [
         "primary_form": "ね",
         "meaning": "confirmation / agreement tag",
         "structure": "Sentence + ね",
-        "mnemonic": "ね seeks agreement: '..., right?'",
         "conjugation_rules": {"particle": "confirmation"},
         "accepted_forms": ["ね", "ねえ"],
         "examples": [
@@ -696,7 +671,6 @@ N5_GRAMMAR = [
         "primary_form": "よ",
         "meaning": "assertion / emphasis tag",
         "structure": "Sentence + よ",
-        "mnemonic": "よ tells the listener something they don't know: 'you know!'",
         "conjugation_rules": {"particle": "emphasis"},
         "accepted_forms": ["よ"],
         "examples": [
@@ -719,7 +693,6 @@ N5_GRAMMAR = [
         "primary_form": "て形",
         "meaning": "te-form (connective)",
         "structure": "Verb → て form",
-        "mnemonic": "The て-form chains actions and links to many endings.",
         "conjugation_rules": {"connective": True, "godan": "き→いて、ぎ→いで、び/み/に→んで、し→して、い/ち/り→って", "ichidan": "る→て"},
         "accepted_forms": ["て", "で"],
         "examples": [
@@ -744,7 +717,6 @@ N5_GRAMMAR = [
         "primary_form": "てください",
         "meaning": "please do (request)",
         "structure": "Verb-て + ください",
-        "mnemonic": "Add ください to the て-form to politely ask someone to do it.",
         "conjugation_rules": {"request": True, "polite": True},
         "accepted_forms": ["てください", "でください"],
         "examples": [
@@ -768,7 +740,6 @@ N5_GRAMMAR = [
         "primary_form": "ている",
         "meaning": "progressive / ongoing state",
         "structure": "Verb-て + いる",
-        "mnemonic": "て + いる = doing right now, or an ongoing state.",
         "conjugation_rules": {"aspect": "progressive"},
         "accepted_forms": ["ている", "てる", "ています"],
         "examples": [
@@ -796,7 +767,6 @@ N5_GRAMMAR = [
         "primary_form": "てもいい",
         "meaning": "may / it's okay to",
         "structure": "Verb-て + もいい(です)",
-        "mnemonic": "て + もいい gives permission: 'you may...'",
         "conjugation_rules": {"permission": True},
         "accepted_forms": ["てもいい", "てもいいです", "てもかまいません", "てもかまわない"],
         "examples": [
@@ -825,7 +795,6 @@ N5_GRAMMAR = [
         "primary_form": "てはいけない",
         "meaning": "must not / may not",
         "structure": "Verb-て + はいけない",
-        "mnemonic": "て + はいけない forbids it: 'you must not...'",
         "conjugation_rules": {"prohibition": True},
         "accepted_forms": ["てはいけない", "てはいけません", "ちゃいけない", "てはだめだ", "ちゃだめ"],
         "examples": [
@@ -855,7 +824,6 @@ N5_GRAMMAR = [
         "primary_form": "てから",
         "meaning": "after doing",
         "structure": "Verb-て + から",
-        "mnemonic": "て + から = only after this action does the next happen.",
         "conjugation_rules": {"sequence": True},
         "accepted_forms": ["てから"],
         "examples": [
@@ -877,7 +845,6 @@ N5_GRAMMAR = [
         "primary_form": "ない形",
         "meaning": "plain negative",
         "structure": "Verb → ない form",
-        "mnemonic": "The ない-form is the casual 'do not'.",
         "conjugation_rules": {"negative": True, "plain": True},
         "accepted_forms": ["ない", "なかった"],
         "examples": [
@@ -901,7 +868,6 @@ N5_GRAMMAR = [
         "primary_form": "ないでください",
         "meaning": "please don't",
         "structure": "Verb-ない + でください",
-        "mnemonic": "Politely ask someone NOT to do something.",
         "conjugation_rules": {"request": True, "negative": True},
         "accepted_forms": ["ないでください"],
         "examples": [
@@ -924,7 +890,6 @@ N5_GRAMMAR = [
         "primary_form": "なければならない",
         "meaning": "must / have to",
         "structure": "Verb-ない stem + なければならない",
-        "mnemonic": "If you don't, it won't do — so you MUST.",
         "conjugation_rules": {"obligation": True},
         "accepted_forms": ["なければならない", "なければなりません", "なきゃ", "なくてはいけない", "なければいけない", "なきゃいけない"],
         "examples": [
@@ -953,7 +918,6 @@ N5_GRAMMAR = [
         "primary_form": "なくてもいい",
         "meaning": "don't have to",
         "structure": "Verb-ない stem + なくてもいい",
-        "mnemonic": "Even if you don't, it's fine — no need to.",
         "conjugation_rules": {"no_obligation": True},
         "accepted_forms": ["なくてもいい", "なくてもいいです", "なくてもかまわない"],
         "examples": [
@@ -982,7 +946,6 @@ N5_GRAMMAR = [
         "primary_form": "た形",
         "meaning": "plain past",
         "structure": "Verb → た form",
-        "mnemonic": "The た-form is the casual past tense.",
         "conjugation_rules": {"past": True, "plain": True},
         "accepted_forms": ["た", "だ"],
         "examples": [
@@ -1004,7 +967,6 @@ N5_GRAMMAR = [
         "primary_form": "たことがある",
         "meaning": "have done before (experience)",
         "structure": "Verb-た + ことがある",
-        "mnemonic": "There's a past 'thing' you've experienced.",
         "conjugation_rules": {"experience": True},
         "accepted_forms": [
             "たことがある", "たことがあります", "たことがない", "たことがありません", "ことがある", "ことがあります",
@@ -1046,7 +1008,6 @@ N5_GRAMMAR = [
         "primary_form": "たり〜たりする",
         "meaning": "doing things like (listing actions)",
         "structure": "Verb-たり + Verb-たり + する",
-        "mnemonic": "List a few sample actions among others.",
         "conjugation_rules": {"listing": True},
         "accepted_forms": ["たり", "だり"],
         "examples": [
@@ -1068,7 +1029,6 @@ N5_GRAMMAR = [
         "primary_form": "たい",
         "meaning": "want to (do)",
         "structure": "Verb stem + たい",
-        "mnemonic": "たい expresses your own desire to do something.",
         "conjugation_rules": {"desire": True, "conjugates_like": "i-adjective"},
         "accepted_forms": ["たい", "たくない", "たかった"],
         "examples": [
@@ -1092,7 +1052,6 @@ N5_GRAMMAR = [
         "primary_form": "がほしい",
         "meaning": "want (a thing)",
         "structure": "Noun + がほしい",
-        "mnemonic": "ほしい is wanting to HAVE a thing, not to do.",
         "conjugation_rules": {"desire": True, "object": "noun"},
         "accepted_forms": ["ほしい", "ほしくない", "ほしかった"],
         "examples": [
@@ -1115,7 +1074,6 @@ N5_GRAMMAR = [
         "primary_form": "に行く",
         "meaning": "go in order to (purpose)",
         "structure": "Verb stem + に + 行く/来る/帰る",
-        "mnemonic": "に + a motion verb marks the purpose of going.",
         "conjugation_rules": {"purpose": True},
         # The motion verb conjugates freely — the taught point is the purpose
         # construction, not the tense — so each of the three is accepted plain,
@@ -1145,7 +1103,6 @@ N5_GRAMMAR = [
         "primary_form": "前に",
         "meaning": "before (doing)",
         "structure": "Verb (dict) / Noun の + 前に",
-        "mnemonic": "前に places an action before another.",
         "conjugation_rules": {"time_order": "before"},
         "accepted_forms": ["前に", "まえに"],
         "examples": [
@@ -1168,7 +1125,6 @@ N5_GRAMMAR = [
         "primary_form": "後で",
         "meaning": "after (doing)",
         "structure": "Verb-た / Noun の + 後で",
-        "mnemonic": "後で places an action after another.",
         "conjugation_rules": {"time_order": "after"},
         "accepted_forms": ["後で", "あとで"],
         "examples": [
@@ -1191,7 +1147,6 @@ N5_GRAMMAR = [
         "primary_form": "とき",
         "meaning": "when / at the time of",
         "structure": "Clause (plain) + とき",
-        "mnemonic": "とき marks the moment 'when' something happens.",
         "conjugation_rules": {"time": True},
         "accepted_forms": ["とき", "時"],
         "examples": [
@@ -1214,7 +1169,6 @@ N5_GRAMMAR = [
         "primary_form": "ことができる",
         "meaning": "can / be able to",
         "structure": "Verb (dict) + ことができる",
-        "mnemonic": "The 'thing' of doing is possible: you can do it.",
         "conjugation_rules": {"ability": True},
         "accepted_forms": [
             "ことができる", "ことができます", "ことができない", "ことができません",
@@ -1239,7 +1193,6 @@ N5_GRAMMAR = [
         "primary_form": "い形容詞",
         "meaning": "i-adjective conjugation",
         "structure": "い-adj → past くかった / neg くない",
-        "mnemonic": "Drop the い and add くない / かった to conjugate.",
         "conjugation_rules": {"past": "かった", "negative": "くない", "adverbial": "く"},
         "accepted_forms": ["い", "くない", "かった", "くなかった"],
         "examples": [
@@ -1262,7 +1215,6 @@ N5_GRAMMAR = [
         "primary_form": "な形容詞",
         "meaning": "na-adjective usage",
         "structure": "な-adj + な + Noun / + です",
-        "mnemonic": "na-adjectives borrow な before a noun and です to end.",
         "conjugation_rules": {"attributive": "な", "past": "でした", "negative": "ではありません"},
         "accepted_forms": ["な", "です", "でした", "ではありません"],
         "examples": [
@@ -1285,7 +1237,6 @@ N5_GRAMMAR = [
         "primary_form": "く (副詞化)",
         "meaning": "make an i-adjective into an adverb",
         "structure": "い-adj (drop い) + く",
-        "mnemonic": "はやい → はやく: describe HOW an action is done.",
         "conjugation_rules": {"adverbial": "く"},
         "accepted_forms": ["く"],
         "examples": [
@@ -1308,7 +1259,6 @@ N5_GRAMMAR = [
         "primary_form": "に (副詞化)",
         "meaning": "make a na-adjective into an adverb",
         "structure": "な-adj + に",
-        "mnemonic": "しずか → しずかに: describe HOW with a na-adjective.",
         "conjugation_rules": {"adverbial": "に"},
         "accepted_forms": ["に"],
         "examples": [
@@ -1331,7 +1281,6 @@ N5_GRAMMAR = [
         "primary_form": "より",
         "meaning": "more than (comparison)",
         "structure": "A は B より + adj",
-        "mnemonic": "より marks the thing you compare against.",
         "conjugation_rules": {"comparison": True},
         "accepted_forms": ["より"],
         "examples": [
@@ -1354,7 +1303,6 @@ N5_GRAMMAR = [
         "primary_form": "一番",
         "meaning": "the most / number one",
         "structure": "(の中で) 一番 + adj",
-        "mnemonic": "一番 crowns the top of the group.",
         "conjugation_rules": {"superlative": True},
         "accepted_forms": ["一番", "いちばん"],
         "examples": [
@@ -1377,7 +1325,6 @@ N5_GRAMMAR = [
         "primary_form": "どうですか",
         "meaning": "how is it? / how about?",
         "structure": "Noun + はどうですか",
-        "mnemonic": "Ask an opinion or make an offer with どうですか.",
         "conjugation_rules": {"question": True},
         "accepted_forms": ["どうですか", "いかがですか", "どうでしたか", "いかがでしたか"],
         "examples": [
@@ -1400,7 +1347,6 @@ N5_GRAMMAR = [
         "primary_form": "だろう",
         "meaning": "probably (plain)",
         "structure": "Plain form + だろう",
-        "mnemonic": "だろう guesses: 'probably so'.",
         "conjugation_rules": {"probability": True},
         "accepted_forms": ["だろう", "でしょう"],
         "examples": [
@@ -1423,7 +1369,6 @@ N5_GRAMMAR = [
         "primary_form": "かもしれない",
         "meaning": "might / maybe",
         "structure": "Plain form + かもしれない",
-        "mnemonic": "It might be so — you can't be sure.",
         "conjugation_rules": {"possibility": True},
         "accepted_forms": ["かもしれない", "かもしれません", "かも"],
         "examples": [
@@ -1453,7 +1398,6 @@ N5_GRAMMAR = [
         "primary_form": "と思う",
         "meaning": "I think that",
         "structure": "Plain form + と思う",
-        "mnemonic": "と quotes your thought before 思う.",
         "conjugation_rules": {"opinion": True},
         "accepted_forms": ["と思う", "と思います"],
         "examples": [
@@ -1476,7 +1420,6 @@ N5_GRAMMAR = [
         "primary_form": "という",
         "meaning": "called / named (quotation)",
         "structure": "X という + Noun",
-        "mnemonic": "という introduces what something is called.",
         "conjugation_rules": {"quotation": True},
         "accepted_forms": ["という", "っていう"],
         "examples": [
@@ -1499,7 +1442,6 @@ N5_GRAMMAR = [
         "primary_form": "すぎる",
         "meaning": "too much / excessively",
         "structure": "Verb stem / adj stem + すぎる",
-        "mnemonic": "すぎる pushes past the limit: too ___.",
         "conjugation_rules": {"excess": True},
         "accepted_forms": ["すぎる", "すぎます", "すぎた", "すぎました"],
         "examples": [
@@ -1529,7 +1471,6 @@ N5_GRAMMAR = [
         "primary_form": "ほうがいい",
         "meaning": "had better / should",
         "structure": "Verb-た / Verb-ない + ほうがいい",
-        "mnemonic": "One side (ほう) is better — advice.",
         "conjugation_rules": {"advice": True},
         "accepted_forms": ["ほうがいい", "ほうがいいです"],
         "examples": [
@@ -1553,7 +1494,6 @@ N5_GRAMMAR = [
         "primary_form": "でしょう",
         "meaning": "probably / right? (polite)",
         "structure": "Plain form + でしょう",
-        "mnemonic": "The polite guess or confirmation.",
         "conjugation_rules": {"probability": True, "polite": True},
         "accepted_forms": ["でしょう", "でしょうか", "だろう"],
         "examples": [
@@ -1598,7 +1538,6 @@ N5_GRAMMAR = [
         "primary_form": "まだ〜ていない",
         "meaning": "have not yet done",
         "structure": "まだ + Verb-て + いない",
-        "mnemonic": "Still not done — まだ + ていない.",
         "conjugation_rules": {"not_yet": True},
         # The 〜 templates are the display shape; the two literal chunks after
         # them are what a learner actually types (and what clozeBuilder can
@@ -1626,7 +1565,6 @@ N5_GRAMMAR = [
         "primary_form": "もう〜ました",
         "meaning": "already did",
         "structure": "もう + Verb-ました",
-        "mnemonic": "もう means it's already done.",
         "conjugation_rules": {"already": True},
         "accepted_forms": ["もう〜ました", "もう"],
         "examples": [
@@ -1649,7 +1587,6 @@ N5_GRAMMAR = [
         "primary_form": "だけ",
         "meaning": "only / just",
         "structure": "Noun / Verb + だけ",
-        "mnemonic": "だけ limits it to only that.",
         "conjugation_rules": {"limit": True},
         "accepted_forms": ["だけ"],
         "examples": [
@@ -1671,7 +1608,6 @@ N5_GRAMMAR = [
         "primary_form": "しか〜ない",
         "meaning": "only / nothing but",
         "structure": "Noun + しか + Verb-ない",
-        "mnemonic": "しか + negative = nothing but this.",
         "conjugation_rules": {"limit": True, "negative": True},
         "accepted_forms": ["しか", "しかない"],
         "examples": [
@@ -1694,7 +1630,6 @@ N5_GRAMMAR = [
         "primary_form": "ぐらい / くらい",
         "meaning": "about / approximately",
         "structure": "Quantity + ぐらい",
-        "mnemonic": "ぐらい rounds it off: about that much.",
         "conjugation_rules": {"approximation": True},
         "accepted_forms": ["ぐらい", "くらい"],
         "examples": [
@@ -1717,7 +1652,6 @@ N5_GRAMMAR = [
         "primary_form": "ごろ",
         "meaning": "around (a point in time)",
         "structure": "Time + ごろ",
-        "mnemonic": "ごろ rounds a clock time: around then.",
         "conjugation_rules": {"approximate_time": True},
         "accepted_forms": ["ごろ", "頃"],
         "examples": [
@@ -1740,7 +1674,6 @@ N5_GRAMMAR = [
         "primary_form": "全然〜ない",
         "meaning": "not at all",
         "structure": "全然 + negative",
-        "mnemonic": "全然 pairs with a negative: not in the least.",
         "conjugation_rules": {"negative_emphasis": True},
         "accepted_forms": ["全然", "ぜんぜん"],
         "examples": [
@@ -1763,7 +1696,6 @@ N5_GRAMMAR = [
         "primary_form": "あまり〜ない",
         "meaning": "not very / not much",
         "structure": "あまり + negative",
-        "mnemonic": "あまり + negative softens to 'not very'.",
         "conjugation_rules": {"negative_degree": True},
         "accepted_forms": ["あまり", "あんまり"],
         "examples": [
@@ -1786,7 +1718,6 @@ N5_GRAMMAR = [
         "primary_form": "でも (suggestion)",
         "meaning": "or something (soft suggestion)",
         "structure": "Noun + でも",
-        "mnemonic": "でも offers a loose example: '...or something'.",
         "conjugation_rules": {"suggestion": True},
         "accepted_forms": ["でも"],
         "examples": [
@@ -1809,7 +1740,6 @@ N5_GRAMMAR = [
         "primary_form": "ながら",
         "meaning": "while doing (simultaneous)",
         "structure": "Verb stem + ながら",
-        "mnemonic": "ながら does two things at once.",
         "conjugation_rules": {"simultaneous": True},
         "accepted_forms": ["ながら"],
         "examples": [
@@ -1832,7 +1762,6 @@ N5_GRAMMAR = [
         "primary_form": "じゃないですか",
         "meaning": "isn't it? (seeking agreement)",
         "structure": "Plain form + じゃないですか",
-        "mnemonic": "A negative question that expects a yes.",
         "conjugation_rules": {"confirmation": True},
         "accepted_forms": ["じゃないですか", "ではないですか"],
         "examples": [
@@ -1855,7 +1784,6 @@ N5_GRAMMAR = [
         "primary_form": "ため(に)",
         "meaning": "for the sake of / in order to",
         "structure": "Verb (dict) / Noun の + ため(に)",
-        "mnemonic": "ため marks the goal you act for.",
         "conjugation_rules": {"purpose": True},
         "accepted_forms": ["ために", "ため"],
         "examples": [
@@ -1892,7 +1820,6 @@ N5_GRAMMAR = [
         "primary_form": "くなる / になる",
         "meaning": "become",
         "structure": "adj-く / na-adj/Noun に + なる",
-        "mnemonic": "なる marks a change into a new state.",
         "conjugation_rules": {"change_of_state": True},
         "accepted_forms": ["くなる", "になる", "くなりました", "になりました"],
         "examples": [
@@ -1915,7 +1842,6 @@ N5_GRAMMAR = [
         "primary_form": "あげる・くれる・もらう",
         "meaning": "giving and receiving verbs",
         "structure": "Person に + あげる / が + くれる / から + もらう",
-        "mnemonic": "Direction of the gift decides which verb you use.",
         "conjugation_rules": {"giving_receiving": True},
         "accepted_forms": [
             "あげる", "あげます", "あげました",

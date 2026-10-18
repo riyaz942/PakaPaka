@@ -8,6 +8,7 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { DevLessonPreviewButton } from '@/components/learn/DevLessonPreviewButton';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
+import { GrammarMnemonicBlock } from '@/components/learn/GrammarMnemonicBlock';
 import { GrammarUsesSection } from '@/components/learn/GrammarUsesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import {
@@ -73,6 +74,8 @@ export function GrammarDetail({
       </ItemDetailHeader>
 
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
+
+      <GrammarMnemonicBlock mnemonicText={item.mnemonicText} />
 
       <DevLessonPreviewButton itemId={item.id} />
 

@@ -170,5 +170,110 @@ class GrammarLevelTest(unittest.TestCase):
         self.assertIn("kara-because", str(raised.exception))
 
 
+from unittest import mock  # noqa: E402
+
+
+class GrammarMnemonicInlineTest(unittest.TestCase):
+    ENTRY = {"mnemonic_text": "A story. 寒いから。",
+             "_meta": {"generator_model": "m", "prompt_version": "1", "review_status": "draft"}}
+
+    def build_with(self, entries):
+        return generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, (), known_vocab_forms=VOCAB, mnemonic_entries=entries
+        )["items"][0]
+
+    def test_sidecar_text_is_inlined(self):
+        item = self.build_with({"zz-test-kara": self.ENTRY})
+        self.assertEqual(item["mnemonic_text"], "A story. {{samui||寒い}}から。")
+        self.assertEqual(item["_meta"]["review_status"], "draft")
+
+    def test_no_entry_means_no_field(self):
+        self.assertNotIn("mnemonic_text", self.build_with({}))
+
+    def test_draft_mnemonic_keeps_a_reviewed_lesson_behind_the_gate(self):
+        lesson = ({"review_status": "reviewed", "generator_model": "lesson-model"}, "Body.")
+        with mock.patch.object(generate, "_load_lesson", return_value=lesson):
+            item = self.build_with({"zz-test-kara": self.ENTRY})
+        self.assertEqual(item["_meta"]["review_status"], "draft")
+        self.assertEqual(item["_meta"]["generator_model"], "lesson-model")
+
+
+class GrammarMnemonicSidecarErrorsTest(unittest.TestCase):
+    ENTRY = GrammarMnemonicInlineTest.ENTRY
+
+    def build_with(self, entries, all_slugs=("zz-test-kara",)):
+        return generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, all_slugs, known_vocab_forms=VOCAB,
+            mnemonic_entries=entries,
+        )
+
+    def test_empty_mnemonic_text_is_an_error(self):
+        with self.assertRaises(ValueError) as raised:
+            self.build_with({"zz-test-kara": {**self.ENTRY, "mnemonic_text": ""}})
+        self.assertIn("zz-test-kara", str(raised.exception))
+
+    def test_sidecar_slug_that_is_no_grammar_point_is_an_error(self):
+        with self.assertRaises(ValueError) as raised:
+            self.build_with({"zz-typo": self.ENTRY})
+        self.assertIn("zz-typo", str(raised.exception))
+
+
+class GrammarMnemonicLinkTest(unittest.TestCase):
+    """The example sentence of a mnemonic links its taught words like a lesson
+    does; the story, the tags and the grammar form itself stay as they are."""
+
+    TEXT = ('Jin grunts "<reading>Car, ah</reading>", which is <grammar>because</grammar>. '
+            '寒い<reading>から</reading>、コートを着<reading>ている</reading>。')
+
+    def link(self, text=None):
+        return generate._link_mnemonic_example(text or self.TEXT, VOCAB, "zz-test-kara")
+
+    def test_words_in_the_example_get_markers(self):
+        linked = self.link()
+        self.assertIn("{{samui||寒い}}", linked)
+        self.assertIn("{{kooto||コート}}", linked)
+
+    def test_story_tags_and_form_are_untouched(self):
+        linked = self.link()
+        self.assertTrue(linked.startswith(self.TEXT.split("寒")[0]))
+        self.assertIn("<reading>から</reading>", linked)
+        self.assertIn("<reading>ている</reading>", linked)
+
+    def test_a_word_inside_the_grammar_tag_is_not_linked(self):
+        # いる is a taught word, and it is also the end of ている.
+        self.assertNotIn("{{iru", self.link())
+
+    def test_a_verb_stem_before_the_tag_links_as_a_stem(self):
+        self.assertIn("{{kiru-wear|stem|着}}<reading>ている</reading>", self.link())
+
+    def test_removing_the_markers_gives_the_original_text(self):
+        import re
+        linked = self.link()
+        self.assertEqual(re.sub(r"\{\{[^|{}]+\|[^|{}]*\|([^{}]+)\}\}", r"\1", linked), self.TEXT)
+
+    def test_an_authored_marker_is_rejected(self):
+        with self.assertRaises(ValueError):
+            self.link(self.TEXT.replace("寒い", "{{samui||寒い}}"))
+
+    def test_text_without_a_japanese_example_is_an_error(self):
+        with self.assertRaises(ValueError):
+            self.link("Only English here, no example.")
+
+    def test_inlined_mnemonic_carries_the_markers(self):
+        item = generate._build_grammar_level(
+            "N5", [entry()], VOCAB, None, (), known_vocab_forms=VOCAB,
+            mnemonic_entries={"zz-test-kara": {**GrammarMnemonicInlineTest.ENTRY,
+                                               "mnemonic_text": self.TEXT}},
+        )["items"][0]
+        self.assertIn("{{samui||寒い}}", item["mnemonic_text"])
+
+
+class GrammarSeedsRemovedTest(unittest.TestCase):
+    def test_no_skeleton_entry_has_a_mnemonic_seed(self):
+        from n4_grammar import N4_GRAMMAR
+        from n5_grammar import N5_GRAMMAR
+        self.assertEqual([g["slug"] for g in N5_GRAMMAR + N4_GRAMMAR if "mnemonic" in g], [])
+
+
 if __name__ == "__main__":
     unittest.main()

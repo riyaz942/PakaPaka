@@ -3,17 +3,22 @@ import { Text } from 'react-native';
 
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { cn } from '@/utils/cn';
+import { WORD_MARKER_RE } from '@/core/markdown/parseLessonMarkdown';
 import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
 type Segment = {
   text: string;
-  tag: 'radical' | 'part' | 'kanji' | 'vocabulary' | 'reading' | null;
+  tag: 'radical' | 'part' | 'kanji' | 'vocabulary' | 'reading' | 'grammar' | null;
   /** The character this highlight stands for, when the tag names one. */
   form?: string;
 };
 
 /** Splits tagged prose into plain and highlighted runs, in order. */
-function parseSegments(text: string): Segment[] {
+function parseSegments(markedText: string): Segment[] {
+  // A grammar mnemonic's example carries lesson word markers; this renderer
+  // has no links, so it shows their words as plain text (the mnemonic block
+  // renders the linked example itself).
+  const text = markedText.replace(WORD_MARKER_RE, '$3');
   const segments: Segment[] = [];
   let cursor = 0;
 
@@ -60,6 +65,10 @@ const TAG_ACCENT = {
   kanji: CONTENT_TYPE_ACCENT.kanji.deep,
   vocabulary: CONTENT_TYPE_ACCENT.vocabulary.deep,
   reading: READING_HIGHLIGHT,
+  // A grammar mnemonic's meaning. The grammar accent is the reading token's
+  // gold, and both tags sit in the same sentence, so the meaning takes the
+  // primary text colour: bold is the highlight.
+  grammar: 'text-primary',
 } as const;
 
 type AnnotatedTextProps = {

@@ -1,3 +1,5 @@
+import { WORD_MARKER_RE } from '@/core/markdown/parseLessonMarkdown';
+
 /**
  * Highlight tags the mnemonic pipeline emits (content pipeline Rev 2, extended
  * to radical `mnemonic_text` in Rev 3 and to `<vocabulary>` in vocab Rev 5).
@@ -7,7 +9,8 @@
  * on. A kanji borrows `<radical>` and lands on `<kanji>`; a word borrows
  * `<kanji>` and lands on `<vocabulary>`. `<reading>` is the sound, at any layer.
  * A radical that combines other radicals (動 = 重 + 力) borrows `<part>` and
- * lands on `<radical>`.
+ * lands on `<radical>`. A grammar mnemonic marks its meaning with `<grammar>`
+ * (grammar mnemonics spec, 2026-10-17).
  *
  * A tag may also carry the character it stands for, in a `form` attribute:
  * `a <kanji form="少">few</kanji> <kanji form="年">years</kanji>` renders as
@@ -22,7 +25,7 @@
  * a screen reader reads out "less-than radical greater-than".
  */
 export const HIGHLIGHT_TAG_RE =
-  /<(radical|part|kanji|vocabulary|reading)(?: form="([^"<>]*)")?>([\s\S]*?)<\/\1>/g;
+  /<(radical|part|kanji|vocabulary|reading|grammar)(?: form="([^"<>]*)")?>([\s\S]*?)<\/\1>/g;
 
 /**
  * The prose with its highlight markup removed and nothing else changed. The
@@ -31,5 +34,7 @@ export const HIGHLIGHT_TAG_RE =
  * character in the wrong language.
  */
 export function stripHighlightTags(text: string): string {
-  return text.replace(HIGHLIGHT_TAG_RE, '$3');
+  // A grammar mnemonic's example also carries lesson word markers
+  // (`{{id|inflection|text}}`); like the tags, they are rendering instructions.
+  return text.replace(HIGHLIGHT_TAG_RE, '$3').replace(WORD_MARKER_RE, '$3');
 }

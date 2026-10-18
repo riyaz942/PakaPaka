@@ -1,15 +1,22 @@
 import { ExampleSentences } from '../../components/ExampleSentences';
 import { Markdown } from '../../components/Markdown';
 import { RelatedChips } from '../../components/RelatedChips';
+import { ReviewStatusControl } from '../../components/ReviewStatusControl';
+import { StatusBadge } from '../../components/StatusBadge';
 import { AnnotatedSentence, stripWordMarkers } from '../../lib/furigana';
+import { MnemonicText } from '../../lib/mnemonicTags';
+import type { ReviewStatus } from '../../types/api';
 import type { GrammarRaw } from '../../types/curriculumRaw';
 
 type Props = {
   raw: GrammarRaw;
   showReadings: boolean;
+  slug: string;
+  mnemonicReviewStatus: ReviewStatus | null;
+  onChanged: () => void;
 };
 
-export function GrammarDetail({ raw, showReadings }: Props) {
+export function GrammarDetail({ raw, showReadings, slug, mnemonicReviewStatus, onChanged }: Props) {
   const clozeVariants = [...(raw.cloze_variants ?? [])].sort(
     (a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0),
   );
@@ -20,6 +27,28 @@ export function GrammarDetail({ raw, showReadings }: Props) {
       <h3 className="panel-title">Structure</h3>
       <p className="grammar-structure">{raw.structure}</p>
       {raw.family ? <span className="grammar-family">{raw.family}</span> : null}
+
+      <h3 className="panel-title">Mnemonic</h3>
+      {raw.mnemonic_text ? (
+        <>
+          <p className="mnemonic-text">
+            <MnemonicText text={raw.mnemonic_text} />
+          </p>
+          <div className="item-header__badges">
+            <span className="panel-muted">Mnemonic status:</span>
+            <StatusBadge status={mnemonicReviewStatus ?? 'none'} />
+            <ReviewStatusControl
+              type="grammar"
+              slug={slug}
+              status={mnemonicReviewStatus ?? 'none'}
+              endpoint="mnemonic-meta"
+              onChanged={onChanged}
+            />
+          </div>
+        </>
+      ) : (
+        <p className="panel-muted">No mnemonic yet.</p>
+      )}
 
       {raw.uses && raw.uses.length > 0 ? (
         <>

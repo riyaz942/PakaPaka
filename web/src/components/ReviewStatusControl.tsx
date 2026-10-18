@@ -7,10 +7,11 @@ type Props = {
   type: ContentType;
   slug: string;
   status: ReviewStatus;
+  endpoint?: 'meta' | 'mnemonic-meta';
   onChanged: () => void;
 };
 
-export function ReviewStatusControl({ type, slug, status, onChanged }: Props) {
+export function ReviewStatusControl({ type, slug, status, endpoint = 'meta', onChanged }: Props) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,7 +20,7 @@ export function ReviewStatusControl({ type, slug, status, onChanged }: Props) {
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch(`/api/item/${type}/${slug}/meta`, {
+      const res = await fetch(`/api/item/${type}/${slug}/${endpoint}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ review_status: next }),

@@ -115,6 +115,7 @@ export type GrammarRaw = {
   slug: string;
   primary_form: string;
   meaning: string;
+  mnemonic_text?: string;
   explanation_markdown?: string;
   caution_notes?: string[];
   uses?: GrammarUse[];
