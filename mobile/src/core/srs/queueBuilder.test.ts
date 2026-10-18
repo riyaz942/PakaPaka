@@ -424,7 +424,7 @@ describe('buildReviewQueue', () => {
         makeQueueItem('v3', 'vocabulary', PAST),
         makeQueueItem('v4', 'vocabulary', PAST),
       ];
-      const result = buildReviewQueue(items, { now: NOW });
+      const result = buildReviewQueue(items, { now: NOW, rng: () => 0.9 });
 
       expect(result).toHaveLength(6);
       const meaningIndex = result.findIndex(
@@ -442,8 +442,29 @@ describe('buildReviewQueue', () => {
       const items = [
         makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
       ];
-      const result = buildReviewQueue(items, { now: NOW });
+      const result = buildReviewQueue(items, { now: NOW, rng: () => 0.9 });
       expect(result.map((card) => card.promptType)).toEqual(['meaning', 'reading']);
+    });
+
+    it('leads with the reading card when the random draw says so (kanji)', () => {
+      const items = [
+        makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+      ];
+      const result = buildReviewQueue(items, { now: NOW, rng: () => 0.1 });
+      expect(result.map((card) => card.promptType)).toEqual(['reading', 'meaning']);
+      expect(result.every((card) => card.isTwoCardItem)).toBe(true);
+    });
+
+    it('mixes which card leads across kanji pairs', () => {
+      const items = Array.from({ length: 40 }, (_, i) =>
+        makeQueueItem(`k${i}`, 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+      );
+      const result = buildReviewQueue(items, { now: NOW });
+      const firstCards = items.map(
+        (item) => result.find((card) => card.itemId === item.srsState.itemId)!.promptType,
+      );
+      expect(firstCards).toContain('meaning');
+      expect(firstCards).toContain('reading');
     });
 
     it('does not orphan a two-card pair when limit cuts between meaning and reading', () => {

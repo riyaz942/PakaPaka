@@ -134,6 +134,8 @@ export type QueueBuildOptions = {
    * still apply.
    */
   dueExemptItemIds?: Set<string>;
+  /** Random source in [0, 1) for choosing which card of a kanji/vocabulary pair leads. Default: Math.random. */
+  rng?: () => number;
 };
 
 /**
