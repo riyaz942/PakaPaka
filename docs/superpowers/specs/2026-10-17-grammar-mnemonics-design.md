@@ -1,7 +1,7 @@
 # Grammar content — mnemonics
 
 **Date:** 2026-10-17
-**Status:** Design approved; plan written (`docs/superpowers/plans/2026-10-17-grammar-mnemonics.md`)
+**Status:** Partial — built, 161 mnemonics reviewed, tests green (2026-10-18); in-app check pending (`docs/superpowers/plans/2026-10-17-grammar-mnemonics.md`)
 **Scope:** N5 + N4 grammar (161 points). Sub-project B of two; sub-project A (linked words, PR #5) is merged into `main`.
 
 ---

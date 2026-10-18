@@ -13,7 +13,7 @@ Last verified against the codebase: **2026-09-02**
 
 | Area | Done | Partial | Not started |
 | --- | ---: | ---: | ---: |
-| Product plans (`docs/feedback/`) | 14 | 3 | 0 |
+| Product plans (`docs/feedback/`) | 14 | 4 | 0 |
 | Content plans (`docs/content/`) | 2 | 5 | 0 |
 | Design & platform (`docs/design/`) | 4 | 0 | 4 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
@@ -42,6 +42,7 @@ Last verified against the codebase: **2026-09-02**
 | [15 — ChatBubble word linking & furigana toggle](./feedback/15-chatbubble-word-linking-and-furigana-toggle.md) | Done |
 | [Grammar Read + Build SRS (spec, 2026-10-13)](./superpowers/specs/2026-10-13-grammar-read-build-srs-design.md) | Partial — Plans 1–2 done 2026-10-13: every N5/N4 grammar point has a passing pool (curriculum/grammar/pool.json, report curriculum/_build/reports/grammar-pool-final.md); generate.py gates on it. Plan 3 (app, [plan](./superpowers/plans/2026-10-14-grammar-read-build-app.md)) code done 2026-10-13: Read + Build cards replace the cloze / MC / hint review; cloze variants no longer ship (curriculum v33). Simulator check not yet run |
 | [Grammar content — linked words (spec, 2026-10-17)](./superpowers/specs/2026-10-17-grammar-linked-words-design.md) | Partial — code and content done 2026-10-17: the build wraps taught vocabulary words in grammar lessons as `{{slug\|inflection\|text}}` markers and adds `word_spans` to grammar `uses`; the compile checks markers and rewrites slugs to item ids; the app renders linked words with per-word furigana. N5 + N4 rebuilt and compiled into the seed (curriculum v34): 161/161 points carry markers (6,320 total; none inside the lesson's own grammar form), 40 of 41 `uses` carry spans. In-app check pending |
+| [Grammar content — mnemonics (spec, 2026-10-17)](./superpowers/specs/2026-10-17-grammar-mnemonics-design.md) | Partial — pipeline, gate, app, Studio and content done 2026-10-18: all 161 N5 + N4 grammar points carry a story mnemonic (sound-alike hook plus a Japanese example), all reviewed by the maintainer (`curriculum/grammar/mnemonics.json`, `review_status: reviewed`); the compile warns about no unreviewed grammar. §6a: the example links its taught words (`{{slug\|inflection\|text}}` markers, resolved at compile; tap opens the word, long-press toggles its furigana). Seed rebuilt (curriculum v36). Tests green; in-app check not run |
 
 ## Content plans — `docs/content/`
 
@@ -117,6 +118,9 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 
 ### Grammar content — linked words
 - In-app check pending (tap / long-press on a grammar page): tap on a lesson word opens its page, long-press toggles only that word's furigana, a "Uses" sentence word opens its page.
+
+### Grammar content — mnemonics
+- In-app check pending: a grammar detail page (ておく) shows the Mnemonic block under the header; lesson step 2 "Usage" shows it above "How it works"; a linked word in the example opens its page on tap; Browse grammar rows show no "No mnemonic" pill. Not run on 2026-10-18: no simulator or emulator on the build machine, and Expo web fails on the `expo-sqlite` wasm import.
 
 ### Content quality pipeline
 - **N4 remaining**: grammar 0/97 reviewed, radicals 0/33, vocab mnemonics 0. Kanji mnemonics are in progress — shipped N4 is 90 reviewed / 85 draft of 175.
