@@ -1,5 +1,9 @@
 # Phase 4 — reading-passage tooling (N5)
 
+> **Note (2026-10-20):** this covers the first 10-passage N5 run. The corpus is now 30 N5 + 30 N4
+> passages (curriculum v19) — see [reading-passage-expansion-plan.md](./reading-passage-expansion-plan.md).
+> The wire-in procedure below is still the one in use.
+
 Status: **wired in (2026-08-04).** All 10 N5 seeds generated, gate-passed, and
 human-reviewed; `curriculum/_build/n5_readings.py` now holds the generated set
 and `curriculum/readings/n5.json` / the compiled `curriculum.db` reflect it.

@@ -10,7 +10,7 @@ Written 2026-08-10, after the N5 radical repair landed (`f3bbd1a`). Scope: the
 radical layer end to end — the authored datasets (`_build/n{5,4}_radicals.py`),
 the decomposition map that produces `builds_on` edges (`_build/generate_deps.py`),
 the shipped JSON, and the compiled `curriculum.db`. Companion to
-[content-audit-plan.md](./content-audit-plan.md); numbers reproduced with
+[content-audit-plan.md](../content/content-audit-plan.md); numbers reproduced with
 KRADFILE via `import/sources.py`.
 
 ## Verdict

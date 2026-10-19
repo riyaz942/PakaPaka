@@ -1,7 +1,7 @@
 # SRS system vs. WaniKani
 
 Reference note on how this app's spaced-repetition system works and how it compares to
-WaniKani's. Written 2026-08-24 from a codebase audit; not a plan, not tracked in
+WaniKani's. Written 2026-08-24 from a codebase audit; rechecked 2026-10-20. Not a plan, not tracked in
 [working-history.md](./working-history.md).
 
 ## This app's SRS system
@@ -26,7 +26,7 @@ Defined by FSRS "stability" (days until ~90% recall), not by a fixed timer:
 
 | Stage | Stability range | Typical time to reach it |
 | --- | --- | --- |
-| Apprentice | New/Learning, or Review with stability < 7 days | Starting stage. One 10-min learning step, then first real interval |
+| Apprentice | New, Learning or Relearning (lapsed), or Review with stability < 7 days | Starting stage. One 10-min learning step, then first real interval |
 | Guru | 7 – 21 days | ~1–3 weeks in, after 2–3 correct reviews |
 | Master | 21 – 120 days | ~1–4 months in |
 | Enlightened | 120 – 365 days | ~4–12 months in |
@@ -38,10 +38,15 @@ FSRS grows the interval from the item's own recall history.
 
 ### What each stage gates
 
-- **Guru+** → item counts as "known" for kanji; contributes to the ≥90% Guru+ coverage
+- **Guru+** → item counts as "known"; contributes to the ≥90% Guru+ coverage
   needed to unlock a reading passage (`mobile/src/core/content/passageUnlock.ts`)
-- **Master+** → vocab furigana auto-hides
-- **Enlightened+** → English hints removed in grammar drills (`mobile/src/core/grammar/inputMode.ts`)
+- **Guru+ kanji** → a word's reading card goes live only when every kanji in it is Guru+
+  (`readingLiveSql` in `mobile/src/data/user/masteryRepository.ts`)
+- **Master+** → vocab furigana auto-hides, but only once the word's reading card is also live
+- **Master cap** → a word with no live reading card (meaning-only) is held at Master; it cannot
+  reach Enlightened until its reading is tested (`capAtMaster` in `fsrsScheduler.ts`)
+
+Grammar has no stage-based rules. Read and Build cards are the same at every stage.
 
 ### Source references
 
@@ -51,7 +56,7 @@ FSRS grows the interval from the item's own recall history.
 - `mobile/src/core/import/fsrsConverter.ts` — WaniKani/Bunpro/Anki stage import mapping
 - `mobile/src/data/user/masteryRepository.ts` — `KNOWN_SRS_STAGES`, `MASTERED_SRS_STAGES`
 - `docs/feedback/01-srs-scheduling-correctness.md` — design rationale, names the app "a WaniKani-style app"
-- `docs/feedback/08-grammar-stage-ladder.md` — input-mode ladder by stage
+- `docs/superpowers/specs/2026-10-13-grammar-read-build-srs-design.md` — grammar Read + Build cards (replaced the old stage ladder)
 - `CLAUDE.md`, `docs/app-overview.md` — one-line summaries of the formula and Guru+ unlock rule
 
 ### Item-level, not account-level

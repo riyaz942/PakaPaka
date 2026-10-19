@@ -5,7 +5,7 @@ Baseline: `npm run typecheck`, `npm run lint`, and `npm test` all pass — every
 
 Severity: **High** = user-visible breakage or data loss · **Medium** = incorrect behavior in real scenarios · **Low** = code quality / fragile-but-working.
 
-> **Status update (2026-07-05):** H1 and M1–M8 are fixed (see git history). Low items L1–L10 remain open.
+> **Status update (2026-10-20):** H1, M1–M8, L5 and L7 are fixed (see git history). L1–L4, L6 and L8–L10 remain open. Line numbers below are from 2026-07-05 and may have moved.
 
 ---
 
@@ -127,7 +127,7 @@ If `curriculum_metadata.version` is missing, `setCurriculumInstallMetadata` is s
 
 The current load is read, incremented in JS, then upserted. Safe today (single JS thread), but `ON CONFLICT ... SET load = load + excluded.load`-style arithmetic in SQL would remove the lost-update hazard entirely.
 
-### L5. Dev grade buttons can double-grade with a pending auto-advance timer
+### L5. ~~Dev grade buttons can double-grade with a pending auto-advance timer~~ — fixed (`DevGradeButtons` removed)
 `mobile/src/app/review/index.tsx:372`, `mobile/src/app/review/index.tsx:208-210`
 
 `__DEV__`-only: after a correct answer, pressing a `DevGradeButtons` grade during the 800ms window grades the current item, then the timer fires and grades the *next* item unseen. Clear `autoAdvanceTimer` inside `gradeCurrentItem` or the dev handler.
@@ -137,7 +137,7 @@ The current load is read, incremented in JS, then upserted. Safe today (single J
 
 Loses key exhaustiveness — a typo'd or missing item type wouldn't be a type error. The re-export in `queueBuilder.ts` is properly typed; the source constant should be `Record<ContentItemType, number>` too.
 
-### L7. Curriculum update error path can leak a database handle
+### L7. ~~Curriculum update error path can leak a database handle~~ — fixed (reopens only after a close for swap)
 `mobile/src/data/curriculum/curriculumUpdate.ts:556-562`
 
 When `downloadAndSwapCurriculum` fails *before* `curriculumDb.closeAsync()` (e.g. download failure), `checkAndApplyCurriculumUpdate` still calls `reopenCurriculumDatabase()` and hands back a **second** open handle while the original remains open in the provider. expo-sqlite tolerates multiple handles, but the old one is never closed.

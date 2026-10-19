@@ -2,7 +2,7 @@
 
 Verified against the repo (item counts, `review_status` fields, existing tooling
 files, `git log`) rather than trusting the plan doc's own prose, which lags
-behind commits. See [content-pipeline-plan.md](./content-pipeline-plan.md) for
+behind commits. See [content-pipeline-plan.md](../content/content-pipeline-plan.md) for
 the full plan this snapshots.
 
 Last checked: 2026-08-03. **Snapshot only — the counts below are out of date.** As of
@@ -82,7 +82,7 @@ Tier 2 (curated AI art) has started.
 Full tooling shipped 2026-08-03 (`reading_seeds.py`, `reading_context.py`,
 `prompts/reading-passage.md`, `validate_readings.py`, `generate_readings.py`,
 fixtures, subagent workflow doc — see
-[phase-4-reading-passage-tooling.md](./phase-4-reading-passage-tooling.md)).
+[phase-4-reading-passage-tooling.md](../content/phase-4-reading-passage-tooling.md)).
 Only 1 of 10 N5 seeds drafted so far (uncommitted, `review_status: draft`);
 0/9 N4. Still owed: the other 9 N5 seeds, all N4 seeds, the Phase 5 read, and
 the wire-in — the generated set retires all 10 hand-written N5 passages

@@ -4,7 +4,7 @@ Analysis of playtest feedback and follow-on design sessions, grouped into focuse
 
 **Status of these plans lives in [../working-history.md](../working-history.md)**, not here — this page is the index and sequencing.
 
-Plans **01–06** came from the first playtest pass. Plans **07–10** come from the [2026-07-11 grammar review brainstorm](../../_bmad-output/brainstorming/brainstorming-session-2026-07-11-1800.md) — see the [grammar review overview](07-grammar-review-overview.md).
+Plans **01–06** came from the first playtest pass. Plans **07–10** came from the [2026-07-11 grammar review brainstorm](../../_bmad-output/brainstorming/brainstorming-session-2026-07-11-1800.md). Their cloze review was replaced on 2026-10-13 by [Grammar Read + Build SRS](../superpowers/specs/2026-10-13-grammar-read-build-srs-design.md), so they are in [../archive/](../archive/README.md).
 
 ## Plans
 
@@ -16,11 +16,7 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 | [04](04-lesson-pacing-and-grammar-coverage.md) | Lesson pacing & grammar coverage | P1 | Daily lesson cap; no grammar lessons/SRS |
 | [05](05-session-ux-polish.md) | Session UX polish | P2 | Streak animation; remove "8 min across apps"; lesson back/forward; hide mnemonic |
 | [06](06-ui-navigation-and-polish.md) | UI navigation & polish | P0–P3 | Coloured nav header + status bar; back icon; keyboard covers mnemonic input; Save button contrast; Learn detail can't scroll; auto-hide chrome on scroll |
-| [07 overview](07-grammar-review-overview.md) | Grammar review redesign | — | Index for 07–10; locked cloze matrix |
-| [07](07-grammar-cloze-contract.md) | Grammar cloze contract | **P0** | Kill は→は; universal JP cloze |
-| [08](08-grammar-stage-ladder.md) | Grammar stage ladder | P1 | MC → type-in; Enlightened no-English |
-| [09](09-grammar-cloze-curriculum.md) | Cloze variants & families | P2 | Schema, 5 variants, family distractors |
-| [10](10-grammar-hints-and-nearmiss.md) | Grammar hints & near-miss | P1 | Nudge→EN hints; incomplete = incorrect |
+| 07–10 | Grammar cloze review (archived) | — | Replaced by [Grammar Read + Build SRS](../superpowers/specs/2026-10-13-grammar-read-build-srs-design.md). Plans: [07 overview](../archive/07-grammar-review-overview.md) · [07](../archive/07-grammar-cloze-contract.md) · [08](../archive/08-grammar-stage-ladder.md) · [09](../archive/09-grammar-cloze-curriculum.md) · [10](../archive/10-grammar-hints-and-nearmiss.md) |
 | [11](11-lesson-content-order-navigation-and-grammar-furigana.md) | Lesson content order, navigation & grammar furigana | P0–P2 | Content order; duplicate radical mnemonic; swipe between cards; word lookup; detail pages must stack; grammar review furigana |
 | [12](12-android-playtest-round-2.md) | Android playtest round 2 | P0–P3 | Status bar unreadable; refresher opens "No Reviews Due"; prompt disappears on correct/typo; abrupt feedback; forecast detail; remove "separate apps" claim |
 | [13](13-vacation-mode.md) | Vacation mode | — | WaniKani-style pause; due dates shift forward on resume; closes goal-ring O4 |
@@ -37,23 +33,16 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 4. **Plan 02** — the in-session re-queue; builds on Plan 01's now-working stage transitions.
 5. **Plan 04 §4.2** (daily cap) and **Plan 05** — polish, parallelizable, each item ships alone.
 
-### Grammar review cluster (07–10)
-
-1. **Plan 07** — cloze contract (stop tautological particle prompts).
-2. **Plan 08 + Plan 10** in parallel — stage input modes and hint/near-miss UX.
-3. **Plan 09** in parallel for schema + Wave A content; swap interim cloze derivation when variants ship.
-
 ## Decisions — all resolved
 
 - **Plan 14** (2026-08-10) — expand passage `vocabulary_slugs` to include conjugation-only words, accepting the ≥90% Guru+ unlock bar moving on affected passages. Shipped. ChatBubble per-word linking/furigana toggle was split out into [Plan 15](15-chatbubble-word-linking-and-furigana-toggle.md), also shipped.
 - **Plan 05 §5.1** — resolved: the time-compression display was removed, along with post-session sharing (see [Plan 12.7](12-android-playtest-round-2.md)).
 - **Plan 02 Q1** — one FSRS card per item, or one per (item, prompt type)? Closed without the DB split: two-card kanji grading (worst-of-both) delivered the WaniKani "meaning *and* reading" behaviour without splitting `srs_states`.
 
-Grammar matrix decisions from the brainstorm are **locked** (see overview); reopen only with a fresh stress-test.
+The brainstorm's grammar matrix (cloze, MC → type-in ladder, hints) is retired. Grammar review decisions now live in the [Read + Build spec](../superpowers/specs/2026-10-13-grammar-read-build-srs-design.md).
 
 ## Relationship to BMAD
 
 Plans 01–15 came from playtesting, ahead of the BMAD story pipeline. Most have since been absorbed by
-wave-2 stories (see [`_bmad-output/README.md`](../../_bmad-output/README.md)); the content-authoring
-leftovers in Plan 09 are tracked in [../working-history.md](../working-history.md), not in
-`sprint-status.yaml`.
+wave-2 stories (see [`_bmad-output/README.md`](../../_bmad-output/README.md)). All of them are done;
+status is in [../working-history.md](../working-history.md).
