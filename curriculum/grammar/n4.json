@@ -14499,7 +14499,13 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "お茶[ちゃ]は熱[あつ]いうちに飲[の]んだ方[ほう]がいいですよ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "忘れないうちに名前を書いた。",
