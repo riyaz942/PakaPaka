@@ -941,3 +941,15 @@ describe('SettingsScreen — Home screen section', () => {
     expect(mockPush).toHaveBeenCalledWith('/settings/home-layout');
   });
 });
+
+describe('SettingsScreen — About section', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('navigates to the About screen', () => {
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-about'));
+    expect(mockPush).toHaveBeenCalledWith('/settings/about');
+  });
+});

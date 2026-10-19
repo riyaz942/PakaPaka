@@ -778,6 +778,21 @@ export default function SettingsScreen() {
           ) : null}
         </View>
 
+        <View className="mt-space-lg">
+          <SectionHeading label="About" />
+          <SettingsCard>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="About and data sources"
+              onPress={() => router.push('/settings/about')}
+              testID="settings-about"
+              className="min-h-[44px] flex-row items-center justify-between py-space-sm">
+              <Text className="text-body font-ui-medium text-primary">About and data sources</Text>
+              <Icon name="chevron" size={18} strokeWidth={2.2} className="text-faint" />
+            </Pressable>
+          </SettingsCard>
+        </View>
+
         {__DEV__ ? (
           <View className="mt-space-lg">
             <SectionHeading label="Developer" />

@@ -319,7 +319,7 @@ GitHub Actions:
 - **Curriculum content** (`curriculum/` and the compiled `curriculum.db`) contains data derived from JMdict, KANJIDIC2, KRADFILE and JmdictFurigana, and is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - **Stroke-order data and kanji/radical images** are derived from [KanjiVG](https://kanjivg.tagaini.net/) and are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
-See [NOTICE](NOTICE) for the full third-party attributions.
+See [NOTICE](NOTICE) for the full third-party attributions. The app also shows them in **Settings → About and data sources**.
 
 ## Acknowledgements
 

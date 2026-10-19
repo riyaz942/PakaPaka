@@ -93,6 +93,7 @@ Days studied, items in review, SRS stage breakdown, and weak-pattern clusters. D
 - **Backup:** export your progress (optionally with AI conversations) and restore from a file.
 - **Daily reminders**, **BYOK** provider and key, **shadow mode** (run alongside your existing tools and compare results before switching).
 - **Customize Home** (`settings/home-layout.tsx`) and **How this works** — the library of guidance cards.
+- **About and data sources** (`settings/about.tsx`) — app version, licences, and the third-party attributions from `NOTICE`.
 
 ## Known gaps
 
