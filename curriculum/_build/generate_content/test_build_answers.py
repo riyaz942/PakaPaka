@@ -183,20 +183,27 @@ class GateTest(unittest.TestCase):
     def test_suru_wo_alternate_passes_on_baai(self):
         entry = self.entry("baai")
         sentence = next(s for s in entry["sentences"] if s["japanese"] == "遅れる場合は、先生に電話します。")
-        sentence.setdefault("alternates", []).append(
-            {"japanese": "遅れる場合は、先生に電話をします。", "kind": "valid"})
+        sentence["alternates"] = [{"japanese": "遅れる場合は、先生に電話をします。", "kind": "valid"}]
         self.assertEqual(ba.point_gate_errors("n4", "baai", entry), [])
 
     def fixed_aida(self, fixed):
+        """The aida entry with its meeting/phone sentence (whichever form the
+        pool holds now) fixed to `fixed`."""
+        entry = self.entry("aida")
+        current = next(s["japanese"] for s in entry["sentences"] if "電話を消した" in s["japanese"])
+        self.assertNotEqual(current, fixed)
         reply = {"sentences": [
             {"japanese": s["japanese"], "verdict": "ok", "reason": "x"}
-            if s["japanese"] != MEETING else
-            {"japanese": MEETING, "verdict": "fix", "fixed": fixed, "reason": "x"}
-            for s in self.entry("aida")["sentences"]]}
-        return ba.apply_fixes(self.entry("aida"), reply)[0]
+            if s["japanese"] != current else
+            {"japanese": current, "verdict": "fix", "fixed": fixed, "reason": "x"}
+            for s in entry["sentences"]]}
+        return ba.apply_fixes(entry, reply)[0]
 
     def test_fix_on_aida_passes_the_gate(self):
-        self.assertEqual(ba.fix_gate_errors("n4", "aida", self.fixed_aida(MEETING_FIXED)), [])
+        current = next(s["japanese"] for s in self.entry("aida")["sentences"]
+                       if "電話を消した" in s["japanese"])
+        fixed = MEETING if current == MEETING_FIXED else MEETING_FIXED
+        self.assertEqual(ba.fix_gate_errors("n4", "aida", self.fixed_aida(fixed)), [])
 
     def test_fix_that_drops_a_word_is_rejected(self):
         # The pool gate alone passes this: it never checks the main sentence
