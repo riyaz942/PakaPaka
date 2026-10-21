@@ -6,7 +6,8 @@
 when the sentence uses the plain form (電話します), and the reverse is not
 changed. The fix is build-time content: no app or evaluator change.
 
-**Status:** Not started (2026-10-21).
+**Status:** Superseded 2026-10-21, not started — replaced by
+`docs/superpowers/specs/2026-10-21-grammar-build-accepted-answers-design.md`.
 
 ## Why
 

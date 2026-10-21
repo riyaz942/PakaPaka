@@ -21,7 +21,7 @@ Three lanes, and most content types have more than one:
 | Reading passages | — | [automation](./reading-passages-subagent-workflow-automation-prompt.md) | [automation](./reading-passages-single-session-workflow-automation-prompt.md) |
 | Reading passage naturalness review | — | [automation](./reading-passage-naturalness-subagent-workflow-automation-prompt.md) | — |
 | Grammar sentence pool | — | — | [automation](./grammar-pool-single-session-workflow-automation-prompt.md) |
-| Grammar particle-swap alternates | — | — | [automation](./particle-alternates-single-session-workflow-automation-prompt.md) |
+| Grammar Build accepted answers (sentence check + alternates) | — | — | [automation](./build-answers-single-session-workflow-automation-prompt.md) |
 
 The naturalness review is built into **both** reading-passage generation lanes —
 Step 4 of the subagent lane, Step 5 of the single-session lane — so a passage
