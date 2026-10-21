@@ -11,6 +11,7 @@ single status index for every plan in this repo, docs and BMAD alike. Nothing el
 | --- | --- |
 | [working-history.md](./working-history.md) | **Status index** — one status per plan, plus what's left |
 | [app-overview.md](./app-overview.md) | What the app is, the learner flow, what each screen does |
+| [app-summary.md](./app-summary.md) | Super summary: features, what is different, competitor search terms |
 | [srs-system-vs-wanikani.md](./srs-system-vs-wanikani.md) | How SRS stages work and what each stage gates |
 | [../README.md](../README.md) | Setup, build, and run instructions |
 
