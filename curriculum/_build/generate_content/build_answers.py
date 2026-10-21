@@ -13,7 +13,9 @@ entry. A parser cannot do the judging: GiNZA kept 子供は寝ているうちに
 (the child now eats) and rejected the correct お茶は熱いうちに….
 """
 
+import argparse
 import copy
+import json
 import os
 import re
 import sys
@@ -21,7 +23,17 @@ import sys
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
+import furigana as furigana_lib  # noqa: E402
+import generate  # noqa: E402
+from generate_content import check_grammar_pool as pool_check  # noqa: E402
 from generate_content import context  # noqa: E402
+from generate_content import grammar_sentences as gs  # noqa: E402
+from generate_content.generate_examples import _first_json_object  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+WEB_DIR = os.path.join(HERE, "web", "answers")
+PROMPTS_DIR = os.path.join(HERE, "prompts")
+MODULE = "generate_content.build_answers"
 
 CHECK_VERSION = "1"
 VERDICTS = ("valid", "contrast", "wrong")
@@ -181,3 +193,319 @@ def select_slugs(level, limit, sidecar):
             if g["slug"] in sidecar
             and sidecar[g["slug"]].get("_meta", {}).get("answers_check", {}).get("version")
             != CHECK_VERSION][:limit]
+
+
+# --- gate -------------------------------------------------------------------
+
+def point_gate_errors(level, slug, entry):
+    """Every pool-gate error for the point built from `entry`; [] means it may be written."""
+    try:
+        return pool_check.check_point(level, generate.build_grammar_point(level, slug, entry))
+    except (ValueError, KeyError) as error:
+        return [str(error)]
+
+
+def fix_gate_errors(level, slug, entry):
+    """point_gate_errors, plus: every fixed sentence still holds each of its
+    listed words. The pool gate never checks that, and a fix must not drop one."""
+    errors = point_gate_errors(level, slug, entry)
+    if errors:
+        return errors
+    _, built = _built(level, slug, entry)
+    fixed = {f["new"] for f in entry.get("_meta", {}).get("sentence_fixes", [])}
+    for s in entry["sentences"]:
+        if s["japanese"] not in fixed:
+            continue
+        found = {w["vocabulary_slug"] for w in built[s["japanese"]].get("word_spans", [])}
+        missing = sorted(set(s["vocabulary_slugs"]) - found)
+        if missing:
+            errors.append(f"{s['japanese']} — missing listed words {missing}")
+    return errors
+
+
+def gate_context(level):
+    """What candidate_errors needs, built once per point (same sources as check_point)."""
+    return {
+        "vocab_forms": {
+            v["slug"]: v["primary_form"]
+            for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
+            for v in context.load_vocab(lower)
+        },
+        "pronouns": pool_check.pronoun_slugs_through(level),
+        "known_readings": generate._grammar_inputs(level)["known_readings"],
+    }
+
+
+def candidate_errors(candidate, built, item, ctx):
+    """Why the pool gate would reject `candidate` as a valid alternate of the
+    built sentence `built` ([] when it would not)."""
+    furigana = None if "[" in candidate else furigana_lib.annotate_sentence(
+        candidate, ctx["known_readings"])
+    if furigana is None:
+        return ["cannot be annotated with furigana"]
+    if gs.register_of(candidate) != built.get("register"):
+        return [f"register is not {built.get('register')}"]
+    sentence = dict(built, build_alternates=[{"furigana": furigana, "kind": "valid"}])
+    return pool_check._alternate_errors(sentence, item, [], ctx["vocab_forms"], ctx["pronouns"])
+
+
+def _built(level, slug, entry):
+    """(built item, {japanese: built sentence})."""
+    item = generate.build_grammar_point(level, slug, entry)
+    return item, {s["japanese"]: s for s in item["example_sentences"]}
+
+
+# --- files and prompts ------------------------------------------------------
+
+def _path(level, slug, name):
+    return os.path.join(WEB_DIR, level, f"{slug}.{name}")
+
+
+def _remove(*paths):
+    for path in paths:
+        if os.path.exists(path):
+            os.remove(path)
+
+
+def _write(path, text):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+def _read_reply(path):
+    if not os.path.exists(path):
+        raise SystemExit(f"no reply at {path}")
+    with open(path, encoding="utf-8") as f:
+        return _first_json_object(f.read())
+
+
+def _write_sidecar(entries):
+    with open(generate.POOL_SIDECAR, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+def _sentence_lines(level, entry, built, ctx):
+    lines = []
+    for s in entry["sentences"]:
+        register = built.get(s["japanese"], {}).get("register", "?")
+        words = ", ".join(ctx["vocab_forms"].get(v, v) for v in s["vocabulary_slugs"])
+        lines.append(f"- {s['japanese']} — {s['english']} ({register}; words: {words})")
+    return "\n".join(lines)
+
+
+def _prompt(template, level, slug, item, reply_name, next_command, body, errors=None):
+    feedback = ""
+    if errors:
+        feedback = ("\n## Fix these errors from the last attempt\n\n"
+                    + "\n".join(f"- {e}" for e in errors) + "\n")
+    notes = "\n".join(f"- {n}" for n in item.get("caution_notes", [])) or "- (none)"
+    with open(os.path.join(PROMPTS_DIR, template), encoding="utf-8") as f:
+        text = (f.read()
+                .replace("{{LEVEL}}", level.upper())
+                .replace("{{FORM}}", item["primary_form"])
+                .replace("{{MEANING}}", item["meaning"])
+                .replace("{{STRUCTURE}}", item.get("structure") or "")
+                .replace("{{CAUTION_NOTES}}", notes)
+                .replace("{{SENTENCES}}", body)
+                .replace("{{CANDIDATES}}", body)
+                .replace("{{VALIDATOR_FEEDBACK}}", feedback))
+    header = (f"<!-- Build answers prompt for {level}/{slug}. Write the reply to "
+              f"web/answers/{level}/{slug}.{reply_name}, then run:\n"
+              f"  .venv/bin/python -m {MODULE} {next_command} --level {level} --slug {slug}"
+              f"{' --model <model>' if next_command != 'judgeprompts' else ''}\n-->\n\n")
+    return (header + text.strip()
+            + "\n\nReply with exactly one fenced ```json code block and nothing else.\n")
+
+
+def _check_prompt(level, slug, entry, errors=None):
+    item, built = _built(level, slug, entry)
+    body = _sentence_lines(level, entry, built, gate_context(level))
+    return _prompt("build-answers-check.md", level, slug, item, "check.reply.md",
+                   "checkingest", body, errors)
+
+
+def _propose_prompt(level, slug, entry, errors=None):
+    item, built = _built(level, slug, entry)
+    body = _sentence_lines(level, entry, built, gate_context(level))
+    return _prompt("build-answers-propose.md", level, slug, item, "propose.reply.md",
+                   "judgeprompts", body, errors)
+
+
+def _judge_prompt(level, slug, entry, candidates, errors=None):
+    item, _ = _built(level, slug, entry)
+    lines = []
+    for i, s in enumerate(entry["sentences"]):
+        own = [c for k, c in candidates if k == i]
+        if own:
+            lines.append(f"- {s['japanese']} — {s['english']}")
+            lines += [f"  - {c}" for c in own]
+    return _prompt("build-answers-judge.md", level, slug, item, "judge.reply.md",
+                   "ingest", "\n".join(lines), errors)
+
+
+# --- commands ---------------------------------------------------------------
+
+def cmd_select(args):
+    slugs = select_slugs(args.level, args.limit, generate.load_pool_sidecar())
+    print(f"{len(slugs)} point(s) selected:")
+    print(",".join(slugs))
+
+
+def cmd_checkprompts(args):
+    sidecar = generate.load_pool_sidecar()
+    for slug in args.slugs.split(","):
+        path = _path(args.level, slug, "check.prompt.md")
+        _write(path, _check_prompt(args.level, slug, sidecar[slug]))
+        print(f"wrote {path}")
+
+
+def cmd_checkingest(args):
+    sidecar = generate.load_pool_sidecar()
+    entry = sidecar[args.slug]
+    prompt_path = _path(args.level, args.slug, "check.prompt.md")
+    reply_path = _path(args.level, args.slug, "check.reply.md")
+    reply = _read_reply(reply_path)
+    errors = check_reply_errors(reply, [s["japanese"] for s in entry["sentences"]])
+    if not errors:
+        unfixable = [v for v in reply["sentences"] if v["verdict"] == "unfixable"]
+        if unfixable:
+            print(f"{args.slug}: SKIP — {len(unfixable)} unfixable sentence(s), nothing written:")
+            for v in unfixable:
+                print(f"  - {v['japanese']} ({v.get('reason', '')})")
+            raise SystemExit(2)
+        fixed, fixes = apply_fixes(entry, reply)
+        if fixes:
+            errors = fix_gate_errors(args.level, args.slug, fixed)
+    if errors:
+        _write(prompt_path, _check_prompt(args.level, args.slug, entry, errors))
+        _remove(reply_path)
+        print(f"{args.slug}: {len(errors)} error(s) — NOT written:")
+        for e in errors:
+            print(f"  - {e}")
+        raise SystemExit(1)
+    if fixes:
+        sidecar[args.slug] = fixed
+        _write_sidecar(sidecar)
+    _remove(prompt_path, reply_path)
+    print(f"{args.slug}: PASS — {len(fixes)} sentence(s) fixed")
+    for fix in fixes:
+        print(f"  - {fix['old']} → {fix['new']} ({fix['reason']})")
+
+
+def cmd_proposeprompts(args):
+    sidecar = generate.load_pool_sidecar()
+    for slug in args.slugs.split(","):
+        path = _path(args.level, slug, "propose.prompt.md")
+        _write(path, _propose_prompt(args.level, slug, sidecar[slug]))
+        print(f"wrote {path}")
+
+
+def cmd_judgeprompts(args):
+    entry = generate.load_pool_sidecar()[args.slug]
+    reply_path = _path(args.level, args.slug, "propose.reply.md")
+    reply = _read_reply(reply_path)
+    errors = propose_reply_errors(reply, [s["japanese"] for s in entry["sentences"]])
+    if errors:
+        _write(_path(args.level, args.slug, "propose.prompt.md"),
+               _propose_prompt(args.level, args.slug, entry, errors))
+        _remove(reply_path)
+        print(f"{args.slug}: {len(errors)} error(s) in the proposal:")
+        for e in errors:
+            print(f"  - {e}")
+        raise SystemExit(1)
+    item, built = _built(args.level, args.slug, entry)
+    ctx = gate_context(args.level)
+    proposed = {a["japanese"]: a["candidates"] for a in reply["answers"]}
+    candidates = []
+    for i, s in enumerate(entry["sentences"]):
+        known = [s["japanese"]] + [a["japanese"] for a in s.get("alternates", [])]
+        kept, dropped = filter_candidates(
+            proposed[s["japanese"]], known,
+            lambda c, b=built[s["japanese"]]: candidate_errors(c, b, item, ctx))
+        candidates += [(i, c) for c in kept]
+        for c, reason in dropped:
+            print(f"  dropped {c} ({reason})")
+    _write(_path(args.level, args.slug, "candidates.json"),
+           json.dumps(candidates, ensure_ascii=False, indent=2) + "\n")
+    if not candidates:
+        print(f"{args.slug}: 0 candidates — no judge prompt; run ingest")
+        return
+    path = _path(args.level, args.slug, "judge.prompt.md")
+    _write(path, _judge_prompt(args.level, args.slug, entry, candidates))
+    print(f"wrote {path} ({len(candidates)} candidate(s))")
+
+
+def cmd_ingest(args):
+    candidates_path = _path(args.level, args.slug, "candidates.json")
+    if not os.path.exists(candidates_path):
+        raise SystemExit(f"no {candidates_path} — run judgeprompts first")
+    with open(candidates_path, encoding="utf-8") as f:
+        candidates = [tuple(c) for c in json.load(f)]
+    sidecar = generate.load_pool_sidecar()
+    entry = sidecar[args.slug]
+    prompt_path = _path(args.level, args.slug, "judge.prompt.md")
+    reply_path = _path(args.level, args.slug, "judge.reply.md")
+    reply = _read_reply(reply_path) if candidates else {"verdicts": []}
+    errors = verdict_errors(reply, candidates)
+    if not errors:
+        _, built = _built(args.level, args.slug, entry)
+        chunks = {}
+        for i, s in enumerate(entry["sentences"]):
+            span = built[s["japanese"]].get("grammar_span")
+            if span:
+                chunks[i] = s["japanese"][span["start"]:span["end"]]
+        updated = merged_entry(entry, candidates, reply, args.model, chunks)
+        errors = point_gate_errors(args.level, args.slug, updated)
+    if errors:
+        _write(prompt_path, _judge_prompt(args.level, args.slug, entry, candidates, errors))
+        _remove(reply_path)
+        print(f"{args.slug}: {len(errors)} error(s) — NOT written:")
+        for e in errors:
+            print(f"  - {e}")
+        raise SystemExit(1)
+    sidecar[args.slug] = updated
+    _write_sidecar(sidecar)
+    _remove(prompt_path, reply_path, candidates_path,
+            _path(args.level, args.slug, "propose.prompt.md"),
+            _path(args.level, args.slug, "propose.reply.md"))
+    counts = {k: sum(v["verdict"] == k for v in reply["verdicts"]) for k in VERDICTS}
+    print(f"{args.slug}: PASS — {counts['valid']} valid, "
+          f"{counts['contrast']} contrast, {counts['wrong']} wrong")
+    before = {(i, a["japanese"]) for i, s in enumerate(entry["sentences"])
+              for a in s.get("alternates", [])}
+    for i, s in enumerate(updated["sentences"]):
+        for a in s.get("alternates", []):
+            if (i, a["japanese"]) not in before:
+                print(f"  + [{a['kind']}] {a['japanese']}")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    sub = parser.add_subparsers(dest="command", required=True)
+    levels = context.LEVEL_ORDER
+    p = sub.add_parser("select")
+    p.add_argument("--level", required=True, choices=levels)
+    p.add_argument("--limit", type=int, default=6)
+    p.set_defaults(func=cmd_select)
+    for name, func in (("checkprompts", cmd_checkprompts), ("proposeprompts", cmd_proposeprompts)):
+        p = sub.add_parser(name)
+        p.add_argument("--level", required=True, choices=levels)
+        p.add_argument("--slugs", required=True)
+        p.set_defaults(func=func)
+    for name, func, needs_model in (("checkingest", cmd_checkingest, True),
+                                    ("judgeprompts", cmd_judgeprompts, False),
+                                    ("ingest", cmd_ingest, True)):
+        p = sub.add_parser(name)
+        p.add_argument("--level", required=True, choices=levels)
+        p.add_argument("--slug", required=True)
+        if needs_model:
+            p.add_argument("--model", required=True)
+        p.set_defaults(func=func)
+    args = parser.parse_args()
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()

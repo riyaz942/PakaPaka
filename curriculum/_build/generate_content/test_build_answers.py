@@ -1,8 +1,14 @@
 # curriculum/_build/generate_content/test_build_answers.py
 # -*- coding: utf-8 -*-
+import argparse
+import copy
+import json
 import os
+import shutil
 import sys
+import tempfile
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -162,6 +168,78 @@ class SelectTest(unittest.TestCase):
         sidecar = {slugs[0]: {"_meta": {"answers_check": {"version": ba.CHECK_VERSION}}},
                    slugs[1]: {"_meta": {"particle_check": {"version": "1"}}}}
         self.assertEqual(ba.select_slugs("n4", 5, sidecar), [slugs[1]])
+
+
+class GateTest(unittest.TestCase):
+    """Real n4 data: the three cases from the spec."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.sidecar = ba.generate.load_pool_sidecar()
+
+    def entry(self, slug):
+        return copy.deepcopy(self.sidecar[slug])
+
+    def test_suru_wo_alternate_passes_on_baai(self):
+        entry = self.entry("baai")
+        sentence = next(s for s in entry["sentences"] if s["japanese"] == "遅れる場合は、先生に電話します。")
+        sentence.setdefault("alternates", []).append(
+            {"japanese": "遅れる場合は、先生に電話をします。", "kind": "valid"})
+        self.assertEqual(ba.point_gate_errors("n4", "baai", entry), [])
+
+    def fixed_aida(self, fixed):
+        reply = {"sentences": [
+            {"japanese": s["japanese"], "verdict": "ok", "reason": "x"}
+            if s["japanese"] != MEETING else
+            {"japanese": MEETING, "verdict": "fix", "fixed": fixed, "reason": "x"}
+            for s in self.entry("aida")["sentences"]]}
+        return ba.apply_fixes(self.entry("aida"), reply)[0]
+
+    def test_fix_on_aida_passes_the_gate(self):
+        self.assertEqual(ba.fix_gate_errors("n4", "aida", self.fixed_aida(MEETING_FIXED)), [])
+
+    def test_fix_that_drops_a_word_is_rejected(self):
+        # The pool gate alone passes this: it never checks the main sentence
+        # still holds its listed words.
+        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、消した。"))
+        self.assertTrue(any("denwa" in e for e in errors))
+
+    def test_errors_for_uchi_ni(self):
+        item = ba.generate.build_grammar_point("n4", "uchi-ni", self.entry("uchi-ni"))
+        built = next(s for s in item["example_sentences"] if s["japanese"] == TEA)
+        ctx = ba.gate_context("n4")
+        errors = lambda c: ba.candidate_errors(c, built, item, ctx)  # noqa: E731
+        self.assertEqual(errors(TEA_WA), [])
+        self.assertTrue(errors("おちゃはあついうちにのんだほうがいいですよ。"))
+        self.assertTrue(errors("お茶は熱いうちに飲んだ方がいいよ。"))
+
+
+class IngestTest(unittest.TestCase):
+    def test_ingest_without_reply_files_exits(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            pool_path = os.path.join(tmp, "pool.json")
+            shutil.copy(ba.generate.POOL_SIDECAR, pool_path)
+            with open(pool_path, encoding="utf-8") as f:
+                before = f.read()
+            with mock.patch.object(ba.generate, "POOL_SIDECAR", pool_path), \
+                    mock.patch.object(ba, "WEB_DIR", tmp):
+                os.makedirs(os.path.join(tmp, "n4"))
+                with open(os.path.join(tmp, "n4", "uchi-ni.candidates.json"), "w",
+                          encoding="utf-8") as f:
+                    json.dump([[0, TEA_WA]], f)
+                args = argparse.Namespace(level="n4", slug="uchi-ni", model="m")
+                with self.assertRaises(SystemExit) as raised:
+                    ba.cmd_ingest(args)
+                self.assertIn("uchi-ni.judge.reply.md", str(raised.exception))
+            with open(pool_path, encoding="utf-8") as f:
+                self.assertEqual(f.read(), before)
+
+    def test_ingest_without_candidates_file_exits(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(ba, "WEB_DIR", tmp):
+            args = argparse.Namespace(level="n4", slug="uchi-ni", model="m")
+            with self.assertRaises(SystemExit) as raised:
+                ba.cmd_ingest(args)
+            self.assertIn("judgeprompts", str(raised.exception))
 
 
 if __name__ == "__main__":
