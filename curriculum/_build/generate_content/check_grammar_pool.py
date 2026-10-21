@@ -72,7 +72,10 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
         if plain is None:
             errors.append(f"{label}: furigana does not parse: {alt['furigana']!r}")
             continue
+        # Same span sources as the build: a stem-only verb (帰りましょう) has
+        # no derive_spans span.
         found = ({s["vocabulary_slug"] for s in spans_lib.derive_spans(plain, linked)}
+                 | {s["vocabulary_slug"] for s in spans_lib.build_stem_spans(plain, linked)}
                  | split_suru_slugs(plain, linked))
         missing = sorted(required - found)
         if missing:

@@ -105,6 +105,17 @@ class SentenceRulesTest(unittest.TestCase):
         errors = pool._alternate_errors(s, item([s]), [], vocab, frozenset())
         self.assertEqual(errors, [])
 
+    def test_rule6_finds_a_verb_in_its_masu_stem(self):
+        s = sentence("寒いから、帰りましょう。",
+                     [{"vocabulary_slug": "samui", "start": 0, "end": 2},
+                      {"vocabulary_slug": "kaeru-v", "start": 5, "end": 7}],
+                     {"start": 2, "end": 4},
+                     alts=[{"furigana": "寒[さむ]いので、帰[かえ]りましょう。", "kind": "valid"}])
+        vocab = {**VOCAB, "kaeru-v": "帰る"}
+        point = dict(item([s]), accepted_forms=["から", "ので"])
+        errors = pool._alternate_errors(s, point, [], vocab, frozenset())
+        self.assertEqual(errors, [])
+
     def test_split_suru_slugs(self):
         linked = {"denwa-suru": "電話する", "bikkuri-suru": "びっくりする", "sensei": "先生"}
         self.assertEqual(pool.split_suru_slugs("先生に電話をしました。", linked), {"denwa-suru"})
