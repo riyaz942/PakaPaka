@@ -95,6 +95,33 @@ class SentenceRulesTest(unittest.TestCase):
         self.assertEqual([e for e in errors if "rule 6" in e], [])
 
 
+    def test_rule6_suru_verb_may_take_wo(self):
+        s = sentence("先生に電話します。",
+                     [{"vocabulary_slug": "sensei", "start": 0, "end": 2},
+                      {"vocabulary_slug": "denwa-suru", "start": 3, "end": 8, "inflection": "masu"}],
+                     None,
+                     alts=[{"furigana": "先[せん]生[せい]に電[でん]話[わ]をします。", "kind": "valid"}])
+        vocab = {**VOCAB, "sensei": "先生", "denwa-suru": "電話する"}
+        errors = pool._alternate_errors(s, item([s]), [], vocab, frozenset())
+        self.assertEqual(errors, [])
+
+    def test_rule6_finds_a_verb_in_its_masu_stem(self):
+        s = sentence("寒いから、帰りましょう。",
+                     [{"vocabulary_slug": "samui", "start": 0, "end": 2},
+                      {"vocabulary_slug": "kaeru-v", "start": 5, "end": 7}],
+                     {"start": 2, "end": 4},
+                     alts=[{"furigana": "寒[さむ]いので、帰[かえ]りましょう。", "kind": "valid"}])
+        vocab = {**VOCAB, "kaeru-v": "帰る"}
+        point = dict(item([s]), accepted_forms=["から", "ので"])
+        errors = pool._alternate_errors(s, point, [], vocab, frozenset())
+        self.assertEqual(errors, [])
+
+    def test_split_suru_slugs(self):
+        linked = {"denwa-suru": "電話する", "bikkuri-suru": "びっくりする", "sensei": "先生"}
+        self.assertEqual(pool.split_suru_slugs("先生に電話をしました。", linked), {"denwa-suru"})
+        self.assertEqual(pool.split_suru_slugs("電話を見ました。", linked), set())
+        self.assertEqual(pool.split_suru_slugs("先生に電話します。", linked), set())
+
     def test_rule6_valid_alternate_may_use_another_accepted_form(self):
         s = sentence("水ではありません。", [{"vocabulary_slug": "mizu", "start": 0, "end": 1}],
                      {"start": 1, "end": 7},

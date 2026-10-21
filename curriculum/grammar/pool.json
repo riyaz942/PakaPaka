@@ -12444,7 +12444,7 @@
     ],
     "sentences": [
       {
-        "japanese": "会議の間、電話を消した。",
+        "japanese": "会議の間に、電話を消した。",
         "english": "During the meeting, I turned off my phone.",
         "vocabulary_slugs": [
           "kaigi",
@@ -12475,7 +12475,7 @@
         "alternates": []
       },
       {
-        "japanese": "赤ちゃんが寝ている間に、本を読みます。",
+        "japanese": "赤ちゃんが寝ている間、本を読みます。",
         "english": "While the baby is asleep, I read a book.",
         "vocabulary_slugs": [
           "akachan",
@@ -12484,7 +12484,16 @@
           "hon",
           "yomu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "赤ちゃんの寝ている間、本を読みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんが寝ている間、私は本を読みます。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "母が料理を作っている間、私は皿を洗った。",
@@ -12498,7 +12507,16 @@
           "sara",
           "arau"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "母が料理を作っている間、皿を洗った。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は母が料理を作っている間、皿を洗った。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私が出かけている間に、誰か来ましたか。",
@@ -12514,6 +12532,14 @@
           {
             "japanese": "出かけている間に、誰か来ましたか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私が出かけている間に、誰かが来ましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "出かけている間に、誰かが来ましたか。",
+            "kind": "valid"
           }
         ]
       },
@@ -12527,7 +12553,12 @@
           "denwa",
           "kakeru-call"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "電車に乗っている間、電話をかけません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "食事の間、彼は何も話さなかった。",
@@ -12538,7 +12569,12 @@
           "nani",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼は食事の間、何も話さなかった。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "旅行の間に、カメラを無くしました。",
@@ -12548,7 +12584,12 @@
           "kamera",
           "nakusu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "カメラを旅行の間に無くしました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "友達を待っている間、雑誌を読んだ。",
@@ -12560,13 +12601,34 @@
           "zasshi",
           "yomu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "友達を待っている間、私は雑誌を読んだ。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "会議の間、電話を消した。",
+          "new": "会議の間に、電話を消した。",
+          "reason": "Turning off the phone is one event inside the meeting, so it takes 間に."
+        },
+        {
+          "old": "赤ちゃんが寝ている間に、本を読みます。",
+          "new": "赤ちゃんが寝ている間、本を読みます。",
+          "reason": "Reading fills the stretch, so the lesson rule takes plain 間 (matches the magazine sentence)."
+        }
+      ],
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "uchi-ni": {
@@ -12587,7 +12649,20 @@
           "hou",
           "ii"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "お茶は熱いうちに飲んだ方がいいですよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "熱いうちにお茶を飲んだ方がいいですよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "お茶が熱いうちに飲んだ方がいいです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "忘れないうちに名前を書いた。",
@@ -12597,7 +12672,12 @@
           "namae",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "名前を忘れないうちに書いた。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "週末のうちに宿題をした。",
@@ -12607,7 +12687,12 @@
           "shukudai",
           "suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "宿題を週末のうちにした。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "暖かいうちに食べましょう。",
@@ -12636,7 +12721,12 @@
           "furu-rain",
           "kaeru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "雨の降らないうちに、帰りましょう。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "子供が寝ているうちに、ご飯を食べた。",
@@ -12651,6 +12741,22 @@
         "alternates": [
           {
             "japanese": "子供が寝ている間に、ご飯を食べた。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "子供の寝ているうちに、ご飯を食べた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "子供の寝ている間に、ご飯を食べた。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "子供が寝ているうちに、私はご飯を食べた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "子供が寝ている間に、私はご飯を食べた。",
             "kind": "other_grammar"
           }
         ]
@@ -12673,7 +12779,12 @@
           "au",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "祖母の元気なうちに、会いに行きます。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "日が沈まないうちに、山を降りた。",
@@ -12684,13 +12795,30 @@
           "yama-v",
           "oriru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "日の沈まないうちに、山を降りた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日が沈まないうちに、山から降りた。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "particle_check": {
+        "version": "1",
+        "model": "claude-code"
+      },
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tabi-ni": {
@@ -12827,6 +12955,10 @@
           {
             "japanese": "雨の場合は、傘を持って行きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "雨の場合には、傘を持って行きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -12839,7 +12971,16 @@
           "keikan",
           "iu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "財布を無くした場合は、警官に言います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "財布を無くした場合には、警官に言います。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "病気の場合、学校を休みます。",
@@ -12849,7 +12990,16 @@
           "gakkou-v",
           "yasumu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "病気の場合は、学校を休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "病気の場合には、学校を休みます。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "雪の場合は、電車で行きます。",
@@ -12859,7 +13009,16 @@
           "densha",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "雪の場合、電車で行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雪の場合には、電車で行きます。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "遅れる場合は、先生に電話します。",
@@ -12869,7 +13028,28 @@
           "sensei",
           "denwa-suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "遅れる場合は、先生に電話をします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "遅れる場合、先生に電話します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "遅れる場合、先生に電話をします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "遅れる場合には、先生に電話します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "遅れる場合には、先生に電話をします。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "分からない場合は、辞書を使います。",
@@ -12879,7 +13059,16 @@
           "jisho",
           "tsukau"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "分からない場合、辞書を使います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "分からない場合には、辞書を使います。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "電車が遅れた場合は、どうしますか。",
@@ -12890,7 +13079,12 @@
           "dou",
           "suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "電車が遅れた場合、どうしますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "子供の場合は、お酒を買えません。",
@@ -12900,7 +13094,20 @@
           "osake",
           "kaeru-potential"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "子供の場合、お酒を買えません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "子供の場合は、お酒が買えません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "子供の場合、お酒が買えません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "道が分からない場合は、交番で聞きましょう。",
@@ -12911,7 +13118,16 @@
           "kouban",
           "kiku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "道が分からない場合、交番で聞きましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "道が分からない場合には、交番で聞きましょう。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "忙しい場合は、来なくてもいいですよ。",
@@ -12921,13 +13137,30 @@
           "kuru-v",
           "ii"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "忙しい場合、来なくてもいいですよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "忙しい場合は、来なくてもいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "忙しい場合、来なくてもいいです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "to-conditional": {

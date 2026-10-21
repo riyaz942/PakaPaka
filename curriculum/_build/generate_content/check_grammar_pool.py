@@ -39,6 +39,17 @@ def _parse_alternate(furigana):
     return None if "[" in plain or "]" in plain else plain
 
 
+def split_suru_slugs(plain, linked):
+    """Slugs of する-verbs in `linked` that `plain` writes with を between the
+    noun and する (電話をします for 電話する). derive_spans finds only the
+    unsplit form, and both are correct answers."""
+    return {
+        slug for slug, form in linked.items()
+        if form.endswith("する") and len(form) > 2
+        and any(form[:-2] + "を" + s in plain for s in "しすさせ")
+    }
+
+
 def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_slugs):
     errors = []
     span = sentence.get("grammar_span")
@@ -61,7 +72,11 @@ def _alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_s
         if plain is None:
             errors.append(f"{label}: furigana does not parse: {alt['furigana']!r}")
             continue
-        found = {s["vocabulary_slug"] for s in spans_lib.derive_spans(plain, linked)}
+        # Same span sources as the build: a stem-only verb (帰りましょう) has
+        # no derive_spans span.
+        found = ({s["vocabulary_slug"] for s in spans_lib.derive_spans(plain, linked)}
+                 | {s["vocabulary_slug"] for s in spans_lib.build_stem_spans(plain, linked)}
+                 | split_suru_slugs(plain, linked))
         missing = sorted(required - found)
         if missing:
             errors.append(f"{label}: missing words {missing} in {plain!r}")

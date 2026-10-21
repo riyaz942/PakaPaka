@@ -64,7 +64,9 @@ One JSON object:
     - `"valid"` — same grammar, different but natural wording: another word
       order, without 私は/あなたは, another accepted form with the same
       meaning and politeness (じゃありません for ではありません — not でした
-      for です, not だ for です).
+      for です, not だ for です), another particle with the same meaning
+      (お茶は熱いうちに… for お茶が熱いうちに… — not a contrastive は the
+      English does not have).
     - `"other_grammar"` — the same sentence with a same-family point swapped
       in for this one (only swap the grammar; change nothing else).
     Give 0–3 alternates per sentence; only ones a learner would really type.

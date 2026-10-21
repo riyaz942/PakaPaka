@@ -13947,7 +13947,7 @@
       ],
       "example_sentences": [
         {
-          "japanese": "会議の間、電話を消した。",
+          "japanese": "会議の間に、電話を消した。",
           "english": "During the meeting, I turned off my phone.",
           "sort_order": 0,
           "vocabulary_slugs": [
@@ -13955,7 +13955,7 @@
             "denwa",
             "kesu"
           ],
-          "furigana": "会[かい]議[ぎ]の間[あいだ]、電[でん]話[わ]を消[け]した。",
+          "furigana": "会[かい]議[ぎ]の間[あいだ]に、電[でん]話[わ]を消[け]した。",
           "word_spans": [
             {
               "vocabulary_slug": "kaigi",
@@ -13964,20 +13964,20 @@
             },
             {
               "vocabulary_slug": "denwa",
-              "start": 5,
-              "end": 7
+              "start": 6,
+              "end": 8
             },
             {
               "vocabulary_slug": "kesu",
-              "start": 8,
-              "end": 11,
+              "start": 9,
+              "end": 12,
               "surface_form": "消した",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
             "start": 3,
-            "end": 4
+            "end": 5
           },
           "register": "plain"
         },
@@ -14056,7 +14056,7 @@
           "register": "plain"
         },
         {
-          "japanese": "赤ちゃんが寝ている間に、本を読みます。",
+          "japanese": "赤ちゃんが寝ている間、本を読みます。",
           "english": "While the baby is asleep, I read a book.",
           "sort_order": 3,
           "vocabulary_slugs": [
@@ -14066,7 +14066,7 @@
             "hon",
             "yomu"
           ],
-          "furigana": "赤[あか]ちゃんが寝[ね]ている間[あいだ]に、本[ほん]を読[よ]みます。",
+          "furigana": "赤[あか]ちゃんが寝[ね]ている間[あいだ]、本[ほん]を読[よ]みます。",
           "word_spans": [
             {
               "vocabulary_slug": "akachan",
@@ -14087,22 +14087,32 @@
             },
             {
               "vocabulary_slug": "hon",
-              "start": 12,
-              "end": 13
+              "start": 11,
+              "end": 12
             },
             {
               "vocabulary_slug": "yomu",
-              "start": 14,
-              "end": 18,
+              "start": 13,
+              "end": 17,
               "surface_form": "読みます",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 9,
-            "end": 11
+            "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "赤[あか]ちゃんの寝[ね]ている間[あいだ]、本[ほん]を読[よ]みます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "赤[あか]ちゃんが寝[ね]ている間[あいだ]、私[わたし]は本[ほん]を読[よ]みます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母が料理を作っている間、私は皿を洗った。",
@@ -14163,7 +14173,17 @@
             "start": 10,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "母[はは]が料[りょう]理[り]を作[つく]っている間[あいだ]、皿[さら]を洗[あら]った。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は母[はは]が料[りょう]理[り]を作[つく]っている間[あいだ]、皿[さら]を洗[あら]った。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私が出かけている間に、誰か来ましたか。",
@@ -14217,6 +14237,14 @@
             {
               "furigana": "出[で]かけている間[あいだ]に、誰[だれ]か来[き]ましたか。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]が出[で]かけている間[あいだ]に、誰[だれ]かが来[き]ましたか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "出[で]かけている間[あいだ]に、誰[だれ]かが来[き]ましたか。",
+              "kind": "valid"
             }
           ]
         },
@@ -14267,7 +14295,13 @@
             "start": 8,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]に乗[の]っている間[あいだ]、電[でん]話[わ]をかけません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "食事の間、彼は何も話さなかった。",
@@ -14308,7 +14342,13 @@
             "start": 3,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は食[しょく]事[じ]の間[あいだ]、何[なに]も話[はな]さなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "旅行の間に、カメラを無くしました。",
@@ -14343,7 +14383,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "カメラを旅[りょ]行[こう]の間[あいだ]に無[な]くしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達を待っている間、雑誌を読んだ。",
@@ -14392,7 +14438,13 @@
             "start": 8,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、私[わたし]は雑[ざっ]誌[し]を読[よ]んだ。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -14499,7 +14551,21 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "お茶[ちゃ]は熱[あつ]いうちに飲[の]んだ方[ほう]がいいですよ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "熱[あつ]いうちにお茶[ちゃ]を飲[の]んだ方[ほう]がいいですよ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "お茶[ちゃ]が熱[あつ]いうちに飲[の]んだ方[ほう]がいいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "忘れないうちに名前を書いた。",
@@ -14536,7 +14602,13 @@
             "start": 4,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "名[な]前[まえ]を忘[わす]れないうちに書[か]いた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "週末のうちに宿題をした。",
@@ -14571,7 +14643,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]を週[しゅう]末[まつ]のうちにした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "暖かいうちに食べましょう。",
@@ -14672,7 +14750,13 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]の降[ふ]らないうちに、帰[かえ]りましょう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "子供が寝ているうちに、ご飯を食べた。",
@@ -14725,6 +14809,22 @@
           "build_alternates": [
             {
               "furigana": "子[こ]供[ども]が寝[ね]ている間[あいだ]に、ご飯[はん]を食[た]べた。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "子[こ]供[ども]の寝[ね]ているうちに、ご飯[はん]を食[た]べた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]の寝[ね]ている間[あいだ]に、ご飯[はん]を食[た]べた。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "子[こ]供[ども]が寝[ね]ているうちに、私[わたし]はご飯[はん]を食[た]べた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]が寝[ね]ている間[あいだ]に、私[わたし]はご飯[はん]を食[た]べた。",
               "kind": "other_grammar"
             }
           ]
@@ -14799,7 +14899,13 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "祖[そ]母[ぼ]の元[げん]気[き]なうちに、会[あ]いに行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "日が沈まないうちに、山を降りた。",
@@ -14842,7 +14948,17 @@
             "start": 6,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日[ひ]の沈[しず]まないうちに、山[やま]を降[お]りた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "日[ひ]が沈[しず]まないうちに、山[やま]から降[お]りた。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -15365,6 +15481,10 @@
             {
               "furigana": "雨[あめ]の場[ば]合[あい]は、傘[かさ]を持[も]って行[い]きます。",
               "kind": "valid"
+            },
+            {
+              "furigana": "雨[あめ]の場[ば]合[あい]には、傘[かさ]を持[も]って行[い]きます。",
+              "kind": "valid"
             }
           ]
         },
@@ -15409,7 +15529,17 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "財[さい]布[ふ]を無[な]くした場[ば]合[あい]は、警[けい]官[かん]に言[い]います。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "財[さい]布[ふ]を無[な]くした場[ば]合[あい]には、警[けい]官[かん]に言[い]います。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "病気の場合、学校を休みます。",
@@ -15444,7 +15574,17 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "病[びょう]気[き]の場[ば]合[あい]は、学[がっ]校[こう]を休[やす]みます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "病[びょう]気[き]の場[ば]合[あい]には、学[がっ]校[こう]を休[やす]みます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雪の場合は、電車で行きます。",
@@ -15479,7 +15619,17 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雪[ゆき]の場[ば]合[あい]、電[でん]車[しゃ]で行[い]きます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "雪[ゆき]の場[ば]合[あい]には、電[でん]車[しゃ]で行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "遅れる場合は、先生に電話します。",
@@ -15514,7 +15664,29 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "遅[おく]れる場[ば]合[あい]は、先[せん]生[せい]に電[でん]話[わ]をします。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "遅[おく]れる場[ば]合[あい]、先[せん]生[せい]に電[でん]話[わ]します。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "遅[おく]れる場[ば]合[あい]、先[せん]生[せい]に電[でん]話[わ]をします。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "遅[おく]れる場[ば]合[あい]には、先[せん]生[せい]に電[でん]話[わ]します。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "遅[おく]れる場[ば]合[あい]には、先[せん]生[せい]に電[でん]話[わ]をします。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "分からない場合は、辞書を使います。",
@@ -15551,7 +15723,17 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "分[わ]からない場[ば]合[あい]、辞[じ]書[しょ]を使[つか]います。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "分[わ]からない場[ば]合[あい]には、辞[じ]書[しょ]を使[つか]います。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電車が遅れた場合は、どうしますか。",
@@ -15594,7 +15776,13 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]が遅[おく]れた場[ば]合[あい]、どうしますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "子供の場合は、お酒を買えません。",
@@ -15629,7 +15817,21 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "子[こ]供[ども]の場[ば]合[あい]、お酒[さけ]を買[か]えません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]の場[ば]合[あい]は、お酒[さけ]が買[か]えません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]の場[ば]合[あい]、お酒[さけ]が買[か]えません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "道が分からない場合は、交番で聞きましょう。",
@@ -15672,7 +15874,17 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "道[みち]が分[わ]からない場[ば]合[あい]、交[こう]番[ばん]で聞[き]きましょう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "道[みち]が分[わ]からない場[ば]合[あい]には、交[こう]番[ばん]で聞[き]きましょう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "忙しい場合は、来なくてもいいですよ。",
@@ -15707,7 +15919,21 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "忙[いそが]しい場[ば]合[あい]、来[こ]なくてもいいですよ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "忙[いそが]しい場[ば]合[あい]は、来[こ]なくてもいいです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "忙[いそが]しい場[ば]合[あい]、来[こ]なくてもいいです。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
