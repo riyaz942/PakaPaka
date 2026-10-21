@@ -10010,7 +10010,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は宿[しゅく]題[だい]を忘[わす]れてしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お菓子を全部食べてしまう。",
@@ -10045,7 +10051,17 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "全[ぜん]部[ぶ]お菓[か]子[し]を食[た]べてしまう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はお菓[か]子[し]を全[ぜん]部[ぶ]食[た]べてしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "財布を無くしてしまう。",
@@ -10074,7 +10090,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は財[さい]布[ふ]を無[な]くしてしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "宿題を全部してしまう。",
@@ -10109,7 +10131,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "全[ぜん]部[ぶ]宿[しゅく]題[だい]をしてしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "急がなければ、電車に遅れてしまう。",
@@ -10187,7 +10215,17 @@
             "start": 9,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "あの話[はなし]を彼[かの]女[じょ]に言[い]ってしまう？",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かの]女[じょ]にあの話[はなし]を言[い]ってしまう？",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私が作った料理を、犬が食べてしまう。",
@@ -10236,7 +10274,21 @@
             "start": 13,
             "end": 17
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "犬[いぬ]が私[わたし]が作[つく]った料[りょう]理[り]を食[た]べてしまう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]の作[つく]った料[りょう]理[り]を、犬[いぬ]が食[た]べてしまう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "犬[いぬ]が私[わたし]の作[つく]った料[りょう]理[り]を食[た]べてしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電車で寝てしまう。",
@@ -10265,7 +10317,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は電[でん]車[しゃ]で寝[ね]てしまう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "鍵を無くしちゃう。",
@@ -10298,6 +10356,14 @@
           "build_alternates": [
             {
               "furigana": "鍵[かぎ]を無[な]くしてしまう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は鍵[かぎ]を無[な]くしちゃう。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は鍵[かぎ]を無[な]くしてしまう。",
               "kind": "valid"
             }
           ]
@@ -10343,7 +10409,13 @@
             "start": 10,
             "end": 14
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]はその話[はなし]を聞[き]いて、泣[な]いてしまう。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -10494,6 +10566,22 @@
             {
               "furigana": "友[とも]達[だち]がこちらに歩[ある]いてくる。",
               "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]はこちらへ歩[ある]いてくる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]はこちらに歩[ある]いてくる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "こちらへ友[とも]達[だち]が歩[ある]いてくる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "こちらに友[とも]達[だち]が歩[ある]いてくる。",
+              "kind": "valid"
             }
           ]
         },
@@ -10571,7 +10659,17 @@
             "start": 8,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "公[こう]園[えん]から犬[いぬ]が走[はし]ってくる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "犬[いぬ]は公[こう]園[えん]から走[はし]ってくる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "天気がだんだん暖かくなってくる。",
@@ -10614,7 +10712,17 @@
             "start": 12,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "だんだん天[てん]気[き]が暖[あたた]かくなってくる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "天[てん]気[き]はだんだん暖[あたた]かくなってくる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "子供はこれから大きくなっていく。",
@@ -10657,7 +10765,13 @@
             "start": 12,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "これから子[こ]供[ども]は大[おお]きくなっていく。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は毎晩遅く帰ってくる。",
@@ -10700,7 +10814,13 @@
             "start": 8,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]晩[ばん]彼[かれ]は遅[おそ]く帰[かえ]ってくる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母が作った弁当を持っていく。",
@@ -10743,7 +10863,25 @@
             "start": 10,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "母[はは]の作[つく]った弁[べん]当[とう]を持[も]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "母[はは]が作[つく]ったお弁[べん]当[とう]を持[も]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "母[はは]の作[つく]ったお弁[べん]当[とう]を持[も]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は母[はは]が作[つく]った弁[べん]当[とう]を持[も]っていく。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "コンビニで何か買ってくる？",
@@ -10778,7 +10916,13 @@
             "start": 9,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "何[なに]かコンビニで買[か]ってくる？",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨が降ってくるので、窓を開けない。",
@@ -10862,7 +11006,29 @@
             "start": 8,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "鳥[とり]が山[やま]の方[ほう]に帰[かえ]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "鳥[とり]は山[やま]の方[ほう]へ帰[かえ]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "鳥[とり]は山[やま]の方[ほう]に帰[かえ]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "山[やま]の方[ほう]へ鳥[とり]が帰[かえ]っていく。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "山[やま]の方[ほう]に鳥[とり]が帰[かえ]っていく。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -11064,7 +11230,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "あの時計[とけい]は高[たか]くても買[か]う。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨が降っても、行きます。",
@@ -11101,7 +11273,13 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]が降[ふ]っても、私[わたし]は行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "毎日練習しても、上手にならない。",
@@ -11144,7 +11322,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]練[れん]習[しゅう]をしても、上手[じょうず]にならない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "薬を飲んでも、治らなかった。",
@@ -11212,7 +11396,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あなたは寒[さむ]くても泳[およ]ぎますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "安くても、まずい物は買わない。",
@@ -11255,7 +11445,17 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "まずい物[もの]は安[やす]くても買[か]わない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "安[やす]くても、まずい物[もの]を買[か]わない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先生に叱られても、彼は笑っている。",
@@ -11304,7 +11504,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は先[せん]生[せい]に叱[しか]られても笑[わら]っている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電話しても、彼女は出ない。",
@@ -11341,7 +11547,21 @@
             "start": 3,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]話[わ]をしても、彼[かの]女[じょ]は出[で]ない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かの]女[じょ]に電[でん]話[わ]しても、出[で]ない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かの]女[じょ]に電[でん]話[わ]をしても、出[で]ない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "暇でも、テレビは見ない。",
@@ -11376,7 +11596,17 @@
             "start": 1,
             "end": 3
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "暇[ひま]でも、テレビを見[み]ない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は暇[ひま]でも、テレビは見[み]ない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -11471,7 +11701,13 @@
             "start": 5,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は電[でん]車[しゃ]に遅[おく]れそうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "泣きそうになりました。",
@@ -11494,7 +11730,13 @@
             "start": 2,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は泣[な]きそうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "授業で寝そうになりました。",
@@ -11523,7 +11765,13 @@
             "start": 4,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は授[じゅ]業[ぎょう]で寝[ね]そうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "約束を忘れそうになりました。",
@@ -11552,7 +11800,13 @@
             "start": 5,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は約[やく]束[そく]を忘[わす]れそうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "階段で落ちそうになりました。",
@@ -11581,7 +11835,13 @@
             "start": 5,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "階[かい]段[だん]から落[お]ちそうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "財布を無くしそうになりました。",
@@ -11610,7 +11870,13 @@
             "start": 6,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は財[さい]布[ふ]を無[な]くしそうになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "重い荷物は、いつも落としそうになる。",
@@ -11651,7 +11917,17 @@
             "start": 12,
             "end": 17
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "いつも重[おも]い荷[に]物[もつ]を落[お]としそうになる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "重[おも]い荷[に]物[もつ]を、いつも落[お]としそうになる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あなたも、その映画で泣きそうになりましたか。",
@@ -11733,7 +12009,17 @@
             "start": 9,
             "end": 17
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "傘[かさ]が強[つよ]い風[かぜ]で壊[こわ]れそうになりました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "強[つよ]い風[かぜ]で、私[わたし]の傘[かさ]が壊[こわ]れそうになりました。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -11827,7 +12113,21 @@
             "start": 8,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "来[らい]年[ねん]、日本[にほん]に行[い]くつもりです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は来[らい]年[ねん]、日本[にほん]へ行[い]くつもりです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は来[らい]年[ねん]、日本[にほん]に行[い]くつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は勉強するつもりです。",
@@ -11854,7 +12154,21 @@
             "start": 7,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]勉[べん]強[きょう]するつもりです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今日[きょう]は勉[べん]強[きょう]をするつもりです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今日[きょう]勉[べん]強[きょう]をするつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼と結婚するつもりです。",
@@ -11881,7 +12195,13 @@
             "start": 6,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は彼[かれ]と結[けっ]婚[こん]するつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "週末、映画を見るつもりです。",
@@ -11914,7 +12234,17 @@
             "start": 8,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]は映[えい]画[が]を見[み]るつもりです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]に映[えい]画[が]を見[み]るつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日、図書館で勉強するつもりだ。",
@@ -11947,7 +12277,17 @@
             "start": 11,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]、図[と]書[しょ]館[かん]で勉[べん]強[きょう]をするつもりだ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]は図[と]書[しょ]館[かん]で勉[べん]強[きょう]するつもりだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "もう甘い物は食べないつもりです。",
@@ -11988,7 +12328,13 @@
             "start": 10,
             "end": 15
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "もう甘[あま]い物[もの]を食[た]べないつもりです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼はもう帰るつもりだ。",
@@ -12093,7 +12439,13 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は宿[しゅく]題[だい]をするつもりだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "週末は何をするつもりですか。",
@@ -12126,7 +12478,17 @@
             "start": 7,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]、何[なに]をするつもりですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]に何[なに]をするつもりですか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -12225,7 +12587,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "野[や]菜[さい]を毎[まい]朝[あさ]食[た]べるようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "甘い物を食べないようにしている。",
@@ -12293,7 +12661,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "もっと野[や]菜[さい]を食[た]べるようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "毎日散歩するようにしている。",
@@ -12320,7 +12694,13 @@
             "start": 6,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]散[さん]歩[ぽ]をするようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "毎晩早く寝るようにする。",
@@ -12390,7 +12770,13 @@
             "start": 11,
             "end": 18
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "夜[よる]、コーヒーを飲[の]まないようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "知らない言葉は、ノートに書くようにしている。",
@@ -12431,7 +12817,17 @@
             "start": 14,
             "end": 21
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "知[し]らない言[こと]葉[ば]を、ノートに書[か]くようにしている。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "ノートに知[し]らない言[こと]葉[ば]を書[か]くようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会社では階段を使うようにしている。",
@@ -12464,7 +12860,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]社[しゃ]で階[かい]段[だん]を使[つか]うようにしている。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "家族に毎週電話するようにしている。",
@@ -12501,6 +12903,14 @@
           "build_alternates": [
             {
               "furigana": "毎[まい]週[しゅう]家[か]族[ぞく]に電[でん]話[わ]するようにしている。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "家[か]族[ぞく]に毎[まい]週[しゅう]電[でん]話[わ]をするようにしている。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "毎[まい]週[しゅう]家[か]族[ぞく]に電[でん]話[わ]をするようにしている。",
               "kind": "valid"
             }
           ]
@@ -12602,7 +13012,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今年[ことし]、日本[にほん]語[ご]を習[なら]うことにしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "甘い物を食べないことにする。",
@@ -12683,7 +13099,21 @@
             "start": 14,
             "end": 21
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]はレストランで食[しょく]事[じ]することにしました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]、レストランで食[しょく]事[じ]をすることにしました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]にレストランで食[しょく]事[じ]をすることにしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お酒を飲まないことにしました。",
@@ -12786,7 +13216,13 @@
             "start": 10,
             "end": 17
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]、タクシーで帰[かえ]ることにしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "古いパソコンを売ることにしました。",
@@ -12819,7 +13255,13 @@
             "start": 9,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は古[ふる]いパソコンを売[う]ることにしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "どの店で買うことにしましたか。",
@@ -12885,7 +13327,13 @@
             "start": 8,
             "end": 15
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "駅[えき]まで毎[まい]朝[あさ]歩[ある]くことにしました。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -12981,7 +13429,13 @@
             "start": 10,
             "end": 18
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "来[らい]月[げつ]、外[がい]国[こく]へ引[ひ]っ越[こ]すことになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "来月、新しい会社で働くことになりました。",
@@ -13053,7 +13507,13 @@
             "start": 10,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]が来[らい]年[ねん]から増[ふ]えることになる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日は会社に行かないことになりました。",
@@ -13088,7 +13548,13 @@
             "start": 10,
             "end": 18
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は会[かい]社[しゃ]へ行[い]かないことになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "毎週月曜日に会議があることになっている。",
@@ -13154,7 +13620,13 @@
             "start": 8,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]たちは結[けっ]婚[こん]することになりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "大学で日本語を勉強することになりました。",
@@ -13253,7 +13725,13 @@
             "start": 9,
             "end": 17
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]議[ぎ]で誰[だれ]が説[せつ]明[めい]することになりましたか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -13395,7 +13873,17 @@
             "start": 10,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]と公[こう]園[えん]でよく遊[あそ]んだものだ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "よく弟[おとうと]と公[こう]園[えん]で遊[あそ]んだものだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母はよく歌を歌ったものだ。",
@@ -13477,7 +13965,13 @@
             "start": 9,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "夏[なつ]は川[かわ]でよく泳[およ]いだものです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "祖母はよくお菓子を作ったものだ。",
@@ -13559,7 +14053,13 @@
             "start": 12,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "大[だい]学[がく]では図[と]書[しょ]館[かん]でよく寝[ね]たものです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は行かない。雨が降っているもの。",
@@ -13608,7 +14108,13 @@
             "start": 15,
             "end": 17
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]は行[い]かない。雨[あめ]が降[ふ]っているもん。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "ごめんなさい。知らなかったもん。",
@@ -13637,7 +14143,13 @@
             "start": 13,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "ごめんなさい。知[し]らなかったもの。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "夜は一人で歩かない。暗いもん。",
@@ -13678,7 +14190,13 @@
             "start": 12,
             "end": 14
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "夜[よる]は一人[ひとり]で歩[ある]かない。暗[くら]いもの。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -13980,6 +14498,14 @@
             {
               "furigana": "日本[にほん]に行[い]ったばかりだ。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は日本[にほん]へ行[い]ったばかりだ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "日本[にほん]へ行[い]ったばかりだ。",
+              "kind": "valid"
             }
           ]
         },
@@ -14190,7 +14716,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この町[まち]へ来[き]たばかりなので、道[みち]が分[わ]かりません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -14327,7 +14859,13 @@
             "start": 4,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今[いま]、食[た]べているところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、出るところです。",
@@ -14354,7 +14892,17 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今[いま]、出[で]るところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今[いま]から出[で]るところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、電話するところです。",
@@ -14381,7 +14929,29 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今[いま]、電[でん]話[わ]をするところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は今[いま]、電[でん]話[わ]するところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は今[いま]、電[でん]話[わ]をするところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今[いま]から電[でん]話[わ]するところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今[いま]から電[でん]話[わ]をするところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、朝ご飯を食べたところです。",
@@ -14416,7 +14986,13 @@
             "start": 8,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今[いま]、朝[あさ]ご飯[はん]を食[た]べたところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、宿題をしたところです。",
@@ -14451,7 +15027,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今[いま]、宿[しゅく]題[だい]をしたところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母は晩ご飯を作っているところです。",
@@ -14515,7 +15097,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]議[ぎ]は終[お]わったところだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "弟は今、勉強しているところです。",
@@ -14550,7 +15138,21 @@
             "start": 7,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今[いま]、弟[おとうと]は勉[べん]強[きょう]しているところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "弟[おとうと]は今[いま]、勉[べん]強[きょう]をしているところです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今[いま]、弟[おとうと]は勉[べん]強[きょう]をしているところです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今、何をしているところですか。",
@@ -15865,7 +16467,17 @@
             "start": 4,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "妹[いもうと]が来[く]るたびに、猫[ねこ]は逃[に]げる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "猫[ねこ]は妹[いもうと]が来[く]るたびに逃[に]げる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼が来るたびに、猫が逃げた。",
@@ -15906,7 +16518,17 @@
             "start": 4,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]が来[く]るたびに、猫[ねこ]は逃[に]げた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "猫[ねこ]は彼[かれ]が来[く]るたびに逃[に]げた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "旅行のたびに、新しい靴を買う。",
@@ -15945,7 +16567,21 @@
             "start": 3,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は旅[りょ]行[こう]のたびに、新[あたら]しい靴[くつ]を買[か]う。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "旅[りょ]行[こう]のたびに、私[わたし]は新[あたら]しい靴[くつ]を買[か]う。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "旅[りょ]行[こう]に行[い]くたびに、新[あたら]しい靴[くつ]を買[か]う。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会議のたびに、彼は遅れる。",
@@ -15978,7 +16614,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は会[かい]議[ぎ]のたびに遅[おく]れる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼が話すたびに、私は笑う。",
@@ -16017,7 +16659,13 @@
             "start": 4,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は彼[かれ]が話[はな]すたびに笑[わら]う。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "祖母に会うたびに、お菓子をもらいます。",
@@ -16058,7 +16706,17 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は祖[そ]母[ぼ]に会[あ]うたびに、お菓[か]子[し]をもらいます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "祖[そ]母[ぼ]に会[あ]うたびに、私[わたし]はお菓[か]子[し]をもらいます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "どうして彼は会うたびに怒るんですか。",
@@ -16097,7 +16755,21 @@
             "start": 8,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "どうして彼[かれ]は会[あ]うたびに怒[おこ]るのですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]はどうして会[あ]うたびに怒[おこ]るんですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]はどうして会[あ]うたびに怒[おこ]るのですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "試験のたびに、弟はあまり寝ない。",
@@ -16138,7 +16810,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]は試[し]験[けん]のたびに、あまり寝[ね]ない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この歌を聞くたびに、悲しくなる。",
@@ -16185,7 +16863,17 @@
             "start": 6,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "この歌[うた]を聞[き]くたびに、私[わたし]は悲[かな]しくなる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はこの歌[うた]を聞[き]くたびに、悲[かな]しくなる。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -16840,7 +17528,13 @@
             "start": 5,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "窓[まど]を開[あ]けると、風[かぜ]が入[はい]ってくる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電話が鳴ると、猫が驚く。",
@@ -16951,7 +17645,21 @@
             "start": 4,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "家[いえ]に帰[かえ]ると、雨[あめ]が降[ふ]っていた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "家[いえ]へ帰[かえ]ると、雨[あめ]だった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "家[いえ]へ帰[かえ]ると、雨[あめ]が降[ふ]っていた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "右に曲がると、駅があります。",
@@ -16992,7 +17700,13 @@
             "start": 5,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "右[みぎ]へ曲[ま]がると、駅[えき]があります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お酒を飲むと、顔が赤くなる。",
@@ -17039,7 +17753,13 @@
             "start": 5,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]はお酒[さけ]を飲[の]むと、顔[かお]が赤[あか]くなる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電気を消すと、何も見えません。",
@@ -17387,6 +18107,10 @@
             {
               "furigana": "寒[さむ]いから、今日[きょう]は家[いえ]にいます。",
               "kind": "valid"
+            },
+            {
+              "furigana": "今日[きょう]は寒[さむ]いから、私[わたし]は家[いえ]にいます。",
+              "kind": "valid"
             }
           ]
         },
@@ -17530,7 +18254,21 @@
             "start": 6,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は試[し]験[けん]だから、勉[べん]強[きょう]をします。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]は試[し]験[けん]があるから、勉[べん]強[きょう]します。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]は試[し]験[けん]があるから、勉[べん]強[きょう]をします。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "約束したから、行きます。",
@@ -17567,7 +18305,13 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "約[やく]束[そく]をしたから、行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "もう遅いから、急ぎましょう。",
@@ -17777,6 +18521,18 @@
             {
               "furigana": "母[はは]の代[か]わりに、晩[ばん]ご飯[はん]を作[つく]ります。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]が母[はは]の代[か]わりに晩[ばん]ご飯[はん]を作[つく]ります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は母[はは]の代[か]わりに晩[ばん]ご飯[はん]を作[つく]ります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "母[はは]の代[か]わりに、私[わたし]は晩[ばん]ご飯[はん]を作[つく]ります。",
+              "kind": "valid"
             }
           ]
         },
@@ -17824,7 +18580,21 @@
             "start": 10,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は忙[いそが]しいから、兄[あに]の代[か]わりに弟[おとうと]が働[はたら]きます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "兄[あに]が忙[いそが]しいから、弟[おとうと]が兄[あに]の代[か]わりに働[はたら]きます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "兄[あに]は忙[いそが]しいから、弟[おとうと]が兄[あに]の代[か]わりに働[はたら]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電話する代わりに、手紙を書きました。",
@@ -17859,7 +18629,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]話[わ]をする代[か]わりに、手[て]紙[がみ]を書[か]きました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "傘を貸す代わりに、少しお金をもらいます。",
@@ -17906,7 +18682,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "傘[かさ]を貸[か]す代[か]わりに、お金[かね]を少[すこ]しもらいます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "父の代わりに、私が行きます。",
@@ -17941,7 +18723,17 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が父[ちち]の代[か]わりに行[い]きます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は父[ちち]の代[か]わりに行[い]きます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は忙しいです。代わりに、明日会いましょう。",
@@ -17982,7 +18774,13 @@
             "start": 9,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]は忙[いそが]しいです。その代[か]わりに、明日[あした]会[あ]いましょう。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "パンの代わりに、ご飯を食べますか。",
@@ -18093,7 +18891,13 @@
             "start": 3,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "鉛[えん]筆[ぴつ]をペンの代[か]わりに使[つか]ってもいいですか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -18458,7 +19262,7 @@
           "register": "plain"
         },
         {
-          "japanese": "彼は下手というより練習しない。",
+          "japanese": "彼は下手というより練習しないのだ。",
           "english": "It's not so much that he's bad at it — he doesn't practice.",
           "sort_order": 8,
           "vocabulary_slugs": [
@@ -18466,7 +19270,7 @@
             "heta",
             "renshuu-suru"
           ],
-          "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]しない。",
+          "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]しないのだ。",
           "word_spans": [
             {
               "vocabulary_slug": "kare",
@@ -18490,7 +19294,21 @@
             "start": 4,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]しないんだ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]をしないのだ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は下手[へた]というより練[れん]習[しゅう]をしないんだ。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -18653,6 +19471,10 @@
             {
               "furigana": "医[い]者[しゃ]として病[びょう]院[いん]で働[はたら]いています。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は病[びょう]院[いん]で医[い]者[しゃ]として働[はたら]いています。",
+              "kind": "valid"
             }
           ]
         },
@@ -18802,7 +19624,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]として学[がく]生[せい]に説[せつ]明[めい]をしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達として、彼を助けたいです。",
@@ -18921,7 +19749,13 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この部屋[へや]を教[きょう]室[しつ]として使[つか]いません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -19204,10 +20038,24 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]の歴[れき]史[し]について先[せん]生[せい]に質[しつ]問[もん]した。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]に日本[にほん]の歴[れき]史[し]について質[しつ]問[もん]をした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "日本[にほん]の歴[れき]史[し]について先[せん]生[せい]に質[しつ]問[もん]をした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "宿題の問題につき、説明します。",
+          "japanese": "宿題の問題について、説明します。",
           "english": "Regarding the homework problem, I'll explain it.",
           "sort_order": 6,
           "vocabulary_slugs": [
@@ -19215,7 +20063,7 @@
             "mondai",
             "setsumei-suru"
           ],
-          "furigana": "宿[しゅく]題[だい]の問[もん]題[だい]につき、説[せつ]明[めい]します。",
+          "furigana": "宿[しゅく]題[だい]の問[もん]題[だい]について、説[せつ]明[めい]します。",
           "word_spans": [
             {
               "vocabulary_slug": "shukudai",
@@ -19229,17 +20077,23 @@
             },
             {
               "vocabulary_slug": "setsumei-suru",
-              "start": 9,
-              "end": 14,
+              "start": 10,
+              "end": 15,
               "surface_form": "説明します",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
             "start": 5,
-            "end": 8
+            "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]の問[もん]題[だい]について、説[せつ]明[めい]をします。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "何について書きますか。",
@@ -19409,6 +20263,14 @@
             {
               "furigana": "新[しん]聞[ぶん]によれば、明日[あした]は雨[あめ]です。",
               "kind": "valid"
+            },
+            {
+              "furigana": "新[しん]聞[ぶん]によると、明日[あした]は雨[あめ]だそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "新[しん]聞[ぶん]によれば、明日[あした]は雨[あめ]だそうです。",
+              "kind": "valid"
             }
           ]
         },
@@ -19443,7 +20305,21 @@
             "start": 3,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "ラジオによると、今日[きょう]は雪[ゆき]だそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "ラジオによれば、今日[きょう]は雪[ゆき]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "ラジオによれば、今日[きょう]は雪[ゆき]だそうです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達の話によると、テストは来週です。",
@@ -19482,7 +20358,21 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]の話[はなし]によると、テストは来[らい]週[しゅう]だそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]の話[はなし]によれば、テストは来[らい]週[しゅう]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]の話[はなし]によれば、テストは来[らい]週[しゅう]だそうです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先生によると、宿題は明日までです。",
@@ -19515,7 +20405,21 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]によると、宿[しゅく]題[だい]は明日[あした]までだそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]によれば、宿[しゅく]題[だい]は明日[あした]までです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]によれば、宿[しゅく]題[だい]は明日[あした]までだそうです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "医者によると、病気はすぐ治ります。",
@@ -19556,7 +20460,21 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "医[い]者[しゃ]によると、病[びょう]気[き]はすぐ治[なお]るそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "医[い]者[しゃ]によれば、病[びょう]気[き]はすぐ治[なお]ります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "医[い]者[しゃ]によれば、病[びょう]気[き]はすぐ治[なお]るそうです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達によれば、彼は元気です。",
@@ -19593,6 +20511,14 @@
           "build_alternates": [
             {
               "furigana": "友[とも]達[だち]によると、彼[かれ]は元[げん]気[き]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]によれば、彼[かれ]は元[げん]気[き]だそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]によると、彼[かれ]は元[げん]気[き]だそうです。",
               "kind": "valid"
             }
           ]
@@ -19636,7 +20562,21 @@
             "start": 3,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "テレビによると、昨日[きのう]地[じ]震[しん]があったそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "テレビによれば、昨日[きのう]地[じ]震[しん]がありました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "テレビによれば、昨日[きのう]地[じ]震[しん]があったそうです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母によると、その店はもうありません。",
@@ -19683,7 +20623,13 @@
             "start": 1,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "母[はは]によれば、その店[みせ]はもうありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "姉によると、あのレストランは高くないです。",
@@ -19724,7 +20670,29 @@
             "start": 1,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "姉[あね]によると、あのレストランは高[たか]くありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "姉[あね]によると、あのレストランは高[たか]くないそうです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "姉[あね]によれば、あのレストランは高[たか]くないです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "姉[あね]によれば、あのレストランは高[たか]くありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "姉[あね]によれば、あのレストランは高[たか]くないそうです。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -19876,7 +20844,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]が降[ふ]ったために、川[かわ]の水[みず]が増[ふ]えました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "台風のため、電車が遅れています。",
@@ -19919,7 +20893,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "台[たい]風[ふう]のために、電[でん]車[しゃ]が遅[おく]れています。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "風邪のため、学校を休みました。",
@@ -20007,7 +20987,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この公[こう]園[えん]は静[しず]かなために、よく散[さん]歩[ぽ]します。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今週は忙しいため、旅行に行けません。",
@@ -20048,7 +21034,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今[こん]週[しゅう]は忙[いそが]しいために、旅[りょ]行[こう]に行[い]けません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "天気が悪いために、服が乾きません。",
@@ -20137,7 +21129,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]が遅[おく]れたために、会[かい]議[ぎ]に遅[おく]れました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "道が狭いため、バスは通りません。",
@@ -20178,7 +21176,21 @@
             "start": 4,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "道[みち]が狭[せま]いために、バスは通[とお]りません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "道[みち]が狭[せま]いため、バスが通[とお]りません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "道[みち]が狭[せま]いために、バスが通[とお]りません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -20289,7 +21301,21 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]の知[し]っている限[かぎ]り、彼[かれ]は正[しょう]直[じき]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "知[し]っている限[かぎ]り、彼[かれ]は正[しょう]直[じき]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は、私[わたし]が知[し]っている限[かぎ]り、正[しょう]直[じき]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "覚えている限り、その店は安かった。",
@@ -20338,7 +21364,17 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が覚[おぼ]えている限[かぎ]り、その店[みせ]は安[やす]かった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]の覚[おぼ]えている限[かぎ]り、その店[みせ]は安[やす]かった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私の知る限り、彼女は今日、家にいる。",
@@ -20389,7 +21425,21 @@
             "start": 4,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が知[し]る限[かぎ]り、彼[かの]女[じょ]は今日[きょう]、家[いえ]にいる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]の知[し]る限[かぎ]り、今日[きょう]、彼[かの]女[じょ]は家[いえ]にいる。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]が知[し]る限[かぎ]り、今日[きょう]、彼[かの]女[じょ]は家[いえ]にいる。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "見る限り、今日の天気はいい。",
@@ -20428,7 +21478,21 @@
             "start": 2,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が見[み]る限[かぎ]り、今日[きょう]の天[てん]気[き]はいい。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]の見[み]る限[かぎ]り、今日[きょう]の天[てん]気[き]はいい。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "見[み]る限[かぎ]り、今日[きょう]は天[てん]気[き]がいい。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "忙しい限り、彼は休まない。",
@@ -20463,7 +21527,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は忙[いそが]しい限[かぎ]り、休[やす]まない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "元気な限り、彼は毎朝走る。",
@@ -20502,7 +21572,17 @@
             "start": 3,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は元[げん]気[き]な限[かぎ]り、毎[まい]朝[あさ]走[はし]る。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "元[げん]気[き]な限[かぎ]り、毎[まい]朝[あさ]彼[かれ]は走[はし]る。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "できる限り、私は手伝う。",
@@ -20539,6 +21619,10 @@
           "build_alternates": [
             {
               "furigana": "私[わたし]はできる限[かぎ]り手伝[てつだ]う。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "できる限[かぎ]り、手伝[てつだ]う。",
               "kind": "valid"
             }
           ]
@@ -20586,7 +21670,21 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "時[じ]間[かん]のある限[かぎ]り、彼[かれ]は本[ほん]を読[よ]む。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は時[じ]間[かん]がある限[かぎ]り、本[ほん]を読[よ]む。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は時[じ]間[かん]のある限[かぎ]り、本[ほん]を読[よ]む。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私が聞いた限り、試験は難しくないです。",
@@ -20629,7 +21727,29 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]の聞[き]いた限[かぎ]り、試[し]験[けん]は難[むずか]しくないです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "聞[き]いた限[かぎ]り、試[し]験[けん]は難[むずか]しくないです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]が聞[き]いた限[かぎ]り、試[し]験[けん]は難[むずか]しくありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]の聞[き]いた限[かぎ]り、試[し]験[けん]は難[むずか]しくありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "聞[き]いた限[かぎ]り、試[し]験[けん]は難[むずか]しくありません。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -20739,7 +21859,17 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]たちはたとえ雨[あめ]が降[ふ]っても、山[やま]に登[のぼ]ります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "たとえ雨[あめ]が降[ふ]っても、私[わたし]たちは山[やま]を登[のぼ]ります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "たとえこの本が高くても、買います。",
@@ -20782,7 +21912,17 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "たとえこの本[ほん]が高[たか]くても、私[わたし]は買[か]います。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はたとえこの本[ほん]が高[たか]くても、買[か]います。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "たとえ明日雪でも、学校はあります。",
@@ -20823,7 +21963,17 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "たとえ明日[あした]が雪[ゆき]でも、学[がっ]校[こう]はあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]、たとえ雪[ゆき]でも、学[がっ]校[こう]はあります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "たとえ試験が難しくても、私は頑張ります。",
@@ -20871,6 +22021,10 @@
             {
               "furigana": "たとえ試[し]験[けん]が難[むずか]しくても、頑[がん]張[ば]ります。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はたとえ試[し]験[けん]が難[むずか]しくても、頑[がん]張[ば]ります。",
+              "kind": "valid"
             }
           ]
         },
@@ -20913,7 +22067,21 @@
             "start": 0,
             "end": 3
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "たとえ暇[ひま]でも、あの店[みせ]に行[い]かない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "たとえ暇[ひま]でも、私[わたし]はあの店[みせ]には行[い]かない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "たとえ暇[ひま]でも、あの店[みせ]へは行[い]かない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "たとえ風が強くても、毎朝散歩します。",
@@ -20956,7 +22124,21 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "たとえ風[かぜ]が強[つよ]くても、毎[まい]朝[あさ]散[さん]歩[ぽ]をします。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "たとえ風[かぜ]が強[つよ]くても、私[わたし]は毎[まい]朝[あさ]散[さん]歩[ぽ]します。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "毎[まい]朝[あさ]、たとえ風[かぜ]が強[つよ]くても散[さん]歩[ぽ]します。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "たとえ遠くても、私は歩いて行きます。",
@@ -21006,6 +22188,10 @@
             {
               "furigana": "たとえ遠[とお]くても、歩[ある]いて行[い]きます。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はたとえ遠[とお]くても、歩[ある]いて行[い]きます。",
+              "kind": "valid"
             }
           ]
         },
@@ -21050,7 +22236,17 @@
             "start": 0,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "たとえ水[みず]が冷[つめ]たくても、あなたは海[うみ]で泳[およ]ぎますか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "あなたはたとえ水[みず]が冷[つめ]たくても、海[うみ]で泳[およ]ぎますか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -21138,7 +22334,21 @@
             "start": 9,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "これはいくらだったっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "これ、いくらだっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "これはいくらだっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "駅はどこだっけ。",
@@ -21165,7 +22375,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "駅[えき]はどこだったっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "映画は何時だっけ。",
@@ -21192,7 +22408,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "映[えい]画[が]は何[なん]時[じ]だったっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先週、彼と会ったっけ。",
@@ -21227,7 +22449,21 @@
             "start": 8,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]週[しゅう]、彼[かれ]に会[あ]ったっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]と先[せん]週[しゅう]会[あ]ったっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]に先[せん]週[しゅう]会[あ]ったっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あのラーメン、辛かったっけ。",
@@ -21262,7 +22498,13 @@
             "start": 11,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "あのラーメンは辛[つら]かったっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼女の名前、何だったっけ。",
@@ -21295,7 +22537,21 @@
             "start": 10,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かの]女[じょ]の名[な]前[まえ]は何[なに]だったっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かの]女[じょ]の名[な]前[まえ]、何[なに]だっけ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かの]女[じょ]の名[な]前[まえ]は何[なに]だっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日、試験があったっけ。",
@@ -21330,7 +22586,13 @@
             "start": 9,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は試[し]験[けん]があったっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "窓を閉めたっけ。",
@@ -21359,7 +22621,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "窓[まど]、閉[し]めたっけ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼はお酒を飲まなかったっけ。",
@@ -21394,7 +22662,13 @@
             "start": 11,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]、お酒[さけ]を飲[の]まなかったっけ。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -21491,6 +22765,10 @@
             {
               "furigana": "頭[あたま]が痛[いた]いのです。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は頭[あたま]が痛[いた]いんです。",
+              "kind": "valid"
             }
           ]
         },
@@ -21527,7 +22805,17 @@
             "start": 9,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "どうして泣[な]いているのですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "あなたはどうして泣[な]いているんですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "財布を忘れたんです。",
@@ -21561,6 +22849,10 @@
             {
               "furigana": "財[さい]布[ふ]を忘[わす]れたのです。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は財[さい]布[ふ]を忘[わす]れたんです。",
+              "kind": "valid"
             }
           ]
         },
@@ -21583,7 +22875,17 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "病[びょう]気[き]だったのです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は病[びょう]気[き]だったんです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達が来るんです。",
@@ -21610,7 +22912,13 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]が来[く]るのです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は忙しいんだ。",
@@ -21637,7 +22945,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今日[きょう]忙[いそが]しいんだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日、どうしたんですか。",
@@ -21672,7 +22986,17 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]、どうしたのですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "昨日[きのう]はどうしたんですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "肉は食べないんです。",
@@ -21701,7 +23025,25 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "肉[にく]は食[た]べないのです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は肉[にく]は食[た]べないんです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は肉[にく]を食[た]べないんです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "肉[にく]を食[た]べないんです。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -21938,7 +23280,13 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "冬[ふゆ]の朝[あさ]は起[お]きにくいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "その箸は使いやすいですか。",
@@ -22016,7 +23364,17 @@
             "start": 11,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]が昨日[きのう]買[か]ったかばんは持[も]ちやすいです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "昨日[きのう]私[わたし]が買[か]ったかばんは持[も]ちやすいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この地図は分かりにくいので、使いません。",
@@ -22059,7 +23417,13 @@
             "start": 8,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この地[ち]図[ず]は分[わ]かりにくいので、私[わたし]は使[つか]いません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この皿は壊れやすいです。",
@@ -22230,7 +23594,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]の町[まち]が変[か]わりつつある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "経済が悪くなりつつある。",
@@ -22267,7 +23637,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "経[けい]済[ざい]は悪[わる]くなりつつある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会社の仕事が増えつつある。",
@@ -22302,7 +23678,17 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]社[しゃ]の仕[し]事[ごと]は増[ふ]えつつある。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "会[かい]社[しゃ]で仕[し]事[ごと]が増[ふ]えつつある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "日が沈みつつある。",
@@ -22331,7 +23717,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日[ひ]は沈[しず]みつつある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨が強くなりつつある。",
@@ -22368,7 +23760,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]は強[つよ]くなりつつある。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "日本語が上手になりつつあると思います。",
@@ -22411,7 +23809,21 @@
             "start": 9,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]の日本[にほん]語[ご]が上手[じょうず]になりつつあると思[おも]います。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "日本[にほん]語[ご]は上手[じょうず]になりつつあると思[おも]います。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は日本[にほん]語[ご]が上手[じょうず]になりつつあると思[おも]います。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "森が無くなりつつあると聞きました。",
@@ -22448,7 +23860,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "森[もり]は無[な]くなりつつあると聞[き]きました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雪が溶けつつあるのを見ました。",
@@ -22485,7 +23903,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は雪[ゆき]が溶[と]けつつあるのを見[み]ました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "母の病気は治りつつあるでしょうか。",
@@ -22520,7 +23944,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "母[はは]の病[びょう]気[き]が治[なお]りつつあるでしょうか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "店が減りつつあるので、町に人が来ない。",
@@ -22569,7 +23999,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "店[みせ]が減[へ]りつつあるので、人[ひと]が町[まち]に来[こ]ない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -22684,7 +24120,21 @@
             "start": 10,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "財[さい]布[ふ]を長[なが]い時[じ]間[かん]探[さが]したあげく、見[み]つかりませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "長[なが]い時[じ]間[かん]財[さい]布[ふ]を探[さが]したあげくに、見[み]つかりませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "長[なが]い時[じ]間[かん]財[さい]布[ふ]を探[さが]したあげく、見[み]つかりませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "財布を探したあげくに、犬のかばんの中から見つかりました。",
@@ -22739,7 +24189,21 @@
             "start": 6,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "財[さい]布[ふ]を探[さが]したあげく、犬[いぬ]のかばんの中[なか]から見[み]つかりました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "財[さい]布[ふ]を探[さが]したあげくに、犬[いぬ]のかばんの中[なか]で見[み]つかりました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "財[さい]布[ふ]を探[さが]したあげく、犬[いぬ]のかばんの中[なか]で見[み]つかりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "頑張ったあげく、困りました。",
@@ -22770,7 +24234,17 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "頑張[がんば]ったあげくに、困[こま]りました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は頑張[がんば]ったあげく、困[こま]りました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨の中で待ったあげく、バスは来ませんでした。",
@@ -22823,6 +24297,14 @@
           "build_alternates": [
             {
               "furigana": "雨[あめ]の中[なか]で待[ま]ったあげくに、バスは来[き]ませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "雨[あめ]の中[なか]で待[ま]ったあげく、バスが来[き]ませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "雨[あめ]の中[なか]待[ま]ったあげく、バスは来[き]ませんでした。",
               "kind": "valid"
             }
           ]
@@ -22880,7 +24362,13 @@
             "start": 10,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "何[なに]を買[か]うか長[なが]く悩[なや]んだあげくに、何[なに]も買[か]いませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "色々な店を回ったあげく、最初の店で買いました。",
@@ -22983,7 +24471,17 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]練[れん]習[しゅう]したあげくに、試[し]験[けん]に落[お]ちました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "毎[まい]日[にち]練[れん]習[しゅう]をしたあげく、試[し]験[けん]に落[お]ちました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "地図を見ながら歩いたあげく、道が分からなくなりました。",
@@ -23042,7 +24540,13 @@
             "start": 10,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "地[ち]図[ず]を見[み]ながら歩[ある]いたあげくに、道[みち]が分[わ]からなくなりました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "長い間考えたあげく、行きませんでした。",
@@ -23085,7 +24589,17 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "長[なが]い間[あいだ]考[かんが]えたあげくに、行[い]きませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は長[なが]い間[あいだ]考[かんが]えたあげく、行[い]きませんでした。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -23610,6 +25124,14 @@
             {
               "furigana": "彼[かれ]がそんな物[もの]を買[か]うはずがありません。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "彼[かれ]はそんな物[もの]を買[か]うわけがありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]はそんな物[もの]を買[か]うはずがありません。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -23693,7 +25215,17 @@
             "start": 12,
             "end": 17
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]は自[じ]分[ぶん]で部屋[へや]を掃[そう]除[じ]したわけがない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "弟[おとうと]が部屋[へや]を自[じ]分[ぶん]で掃[そう]除[じ]したわけがない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "猫が英語を話すわけがない。",
@@ -23730,6 +25262,14 @@
           "build_alternates": [
             {
               "furigana": "猫[ねこ]が英[えい]語[ご]を話[はな]すはずがない。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "猫[ねこ]は英[えい]語[ご]を話[はな]すわけがない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "猫[ねこ]は英[えい]語[ご]を話[はな]すはずがない。",
               "kind": "other_grammar"
             }
           ]
@@ -23771,7 +25311,13 @@
             "start": 10,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]のケーキは安[やす]いわけがない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "元気なわけがない。",
@@ -23792,7 +25338,17 @@
             "start": 3,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]が元[げん]気[き]なわけがない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は元[げん]気[き]なわけがない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼が忘れたわけがない。",
@@ -23825,6 +25381,14 @@
           "build_alternates": [
             {
               "furigana": "彼[かれ]が忘[わす]れたはずがない。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "彼[かれ]は忘[わす]れたわけがない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は忘[わす]れたはずがない。",
               "kind": "other_grammar"
             }
           ]
@@ -23868,7 +25432,17 @@
             "start": 12,
             "end": 20
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "宿[しゅく]題[だい]がそんなに早[はや]く終[お]わるわけがありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "宿[しゅく]題[だい]はそんなに早[はや]く終[お]わるわけがありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あの優しい先生が怒るわけがない。",
@@ -23907,7 +25481,13 @@
             "start": 10,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "あの優[やさ]しい先[せん]生[せい]は怒[おこ]るわけがない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -24011,7 +25591,7 @@
           "register": "plain"
         },
         {
-          "japanese": "彼はかなり足が速い。",
+          "japanese": "彼は足がかなり速い。",
           "english": "He's quite a fast runner.",
           "sort_order": 1,
           "vocabulary_slugs": [
@@ -24019,7 +25599,7 @@
             "ashi-v",
             "hayai-fast"
           ],
-          "furigana": "彼[かれ]はかなり足[あし]が速[はや]い。",
+          "furigana": "彼[かれ]は足[あし]がかなり速[はや]い。",
           "word_spans": [
             {
               "vocabulary_slug": "kare",
@@ -24028,8 +25608,8 @@
             },
             {
               "vocabulary_slug": "ashi-v",
-              "start": 5,
-              "end": 6
+              "start": 2,
+              "end": 3
             },
             {
               "vocabulary_slug": "hayai-fast",
@@ -24038,16 +25618,10 @@
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 5
+            "start": 4,
+            "end": 7
           },
-          "register": "plain",
-          "build_alternates": [
-            {
-              "furigana": "彼[かれ]は足[あし]がかなり速[はや]い。",
-              "kind": "valid"
-            }
-          ]
+          "register": "plain"
         },
         {
           "japanese": "彼女はかなり親切だ。",
@@ -24156,7 +25730,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "かなり忙[いそが]しいから、彼[かれ]はあまり寝[ね]ない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この問題はかなり難しい。",
@@ -24251,7 +25831,17 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は今日[きょう]かなり歩[ある]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "今日[きょう]、私[わたし]はかなり歩[ある]きました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "駅までかなり遠いですか。",
@@ -24433,7 +26023,13 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "練[れん]習[しゅう]をすればするほど、上手[じょうず]になります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "これはそれほど難しくない",
@@ -24511,7 +26107,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は足[あし]が痛[いた]くなるほど歩[ある]いた",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "声が出ないほど笑った",
@@ -24548,7 +26150,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は声[こえ]が出[で]ないほど笑[わら]った",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "考えれば考えるほど分からなくなる",
@@ -24661,7 +26269,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "泣[な]くほど痛[いた]かったんですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今日は昨日ほど寒くないです。",
@@ -24696,7 +26310,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]は昨日[きのう]ほど寒[さむ]くありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "宿題が山ほどあります。",
@@ -24933,7 +26553,17 @@
             "start": 4,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "泣[な]きたいぐらい嬉[うれ]しいです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は泣[な]きたいくらい嬉[うれ]しいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "声が出なくなるくらい歌いました。",
@@ -24976,7 +26606,17 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "声[こえ]が出[で]なくなるぐらい歌[うた]いました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]たちは声[こえ]が出[で]なくなるくらい歌[うた]いました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "前が見えないくらい雪が降りました。",
@@ -25019,7 +26659,13 @@
             "start": 6,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "前[まえ]が見[み]えないぐらい雪[ゆき]が降[ふ]りました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "頭が痛くなるくらい忙しかった。",
@@ -25062,7 +26708,17 @@
             "start": 6,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "頭[あたま]が痛[いた]くなるぐらい忙[いそが]しかった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は頭[あたま]が痛[いた]くなるくらい忙[いそが]しかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "これくらいの雨なら傘は要らない。",
@@ -25103,10 +26759,16 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "これぐらいの雨[あめ]なら傘[かさ]は要[い]らない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "少しくらい手伝ってくれてもいい。",
+          "japanese": "少しくらい手伝ってくれてもいいのに。",
           "english": "You could at least help a little.",
           "sort_order": 5,
           "vocabulary_slugs": [
@@ -25115,7 +26777,7 @@
             "kureru",
             "ii"
           ],
-          "furigana": "少[すこ]しくらい手伝[てつだ]ってくれてもいい。",
+          "furigana": "少[すこ]しくらい手伝[てつだ]ってくれてもいいのに。",
           "word_spans": [
             {
               "vocabulary_slug": "sukoshi",
@@ -25146,7 +26808,13 @@
             "start": 2,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "少[すこ]しぐらい手伝[てつだ]ってくれてもいいのに。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "このカレーは口が痛いくらい辛いです。",
@@ -25236,7 +26904,13 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "寝[ね]るのを忘[わす]れるぐらい面[おも]白[しろ]い本[ほん]ですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あの店ぐらいおいしいラーメンはありません。",
@@ -25441,6 +27115,14 @@
             {
               "furigana": "英[えい]語[ご]だけじゃなく、日本[にほん]語[ご]も勉[べん]強[きょう]しました。",
               "kind": "valid"
+            },
+            {
+              "furigana": "英[えい]語[ご]だけでなく、日本[にほん]語[ご]も勉[べん]強[きょう]をしました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は英[えい]語[ご]だけでなく、日本[にほん]語[ご]も勉[べん]強[きょう]しました。",
+              "kind": "valid"
             }
           ]
         },
@@ -25606,7 +27288,13 @@
             "start": 4,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は先[せん]生[せい]であるだけでなく、医[い]者[しゃ]でもあります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は親切なだけでなく、有名だ。",
@@ -25639,7 +27327,13 @@
             "start": 5,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は親[しん]切[せつ]なだけじゃなく、有[ゆう]名[めい]だ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "高いだけじゃなく、まずい。",
@@ -25711,7 +27405,13 @@
             "start": 6,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "今日[きょう]は忙[いそが]しいだけじゃなく、宿[しゅく]題[だい]も多[おお]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼女は歌だけでなく、ダンスも上手ですか。",
@@ -25791,7 +27491,13 @@
             "start": 3,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]は肉[にく]だけじゃなく、野[や]菜[さい]も食[た]べない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -25858,7 +27564,7 @@
       ],
       "example_sentences": [
         {
-          "japanese": "日本に限らず、世界の人は寿司が好きです。",
+          "japanese": "日本に限らず、世界の人も寿司が好きです。",
           "english": "Not just in Japan — people all over the world like sushi.",
           "sort_order": 0,
           "vocabulary_slugs": [
@@ -25868,7 +27574,7 @@
             "sushi",
             "suki"
           ],
-          "furigana": "日本[にほん]に限[かぎ]らず、世[せ]界[かい]の人[ひと]は寿[す]司[し]が好[す]きです。",
+          "furigana": "日本[にほん]に限[かぎ]らず、世[せ]界[かい]の人[ひと]も寿[す]司[し]が好[す]きです。",
           "word_spans": [
             {
               "vocabulary_slug": "nihon",
@@ -25903,7 +27609,7 @@
           "register": "polite"
         },
         {
-          "japanese": "動物が好きなのは女の子に限らず、男の子も好きです。",
+          "japanese": "女の子に限らず、男の子も動物が好きです。",
           "english": "Liking animals isn't limited to girls — boys like them too.",
           "sort_order": 1,
           "vocabulary_slugs": [
@@ -25912,42 +27618,43 @@
             "onnanoko",
             "otokonoko"
           ],
-          "furigana": "動[どう]物[ぶつ]が好[す]きなのは女[おんな]の子[こ]に限[かぎ]らず、男[おとこ]の子[こ]も好[す]きです。",
+          "furigana": "女[おんな]の子[こ]に限[かぎ]らず、男[おとこ]の子[こ]も動[どう]物[ぶつ]が好[す]きです。",
           "word_spans": [
             {
-              "vocabulary_slug": "doubutsu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "suki",
-              "start": 3,
-              "end": 5
-            },
-            {
               "vocabulary_slug": "onnanoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "otokonoko",
               "start": 8,
               "end": 11
             },
             {
-              "vocabulary_slug": "otokonoko",
-              "start": 16,
-              "end": 19
+              "vocabulary_slug": "doubutsu",
+              "start": 12,
+              "end": 14
             },
             {
               "vocabulary_slug": "suki",
-              "start": 20,
-              "end": 22
+              "start": 15,
+              "end": 17
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 15
+            "start": 3,
+            "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "動[どう]物[ぶつ]は女[おんな]の子[こ]に限[かぎ]らず、男[おとこ]の子[こ]も好[す]きです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "忙しいのは会社員に限らず、学生も忙しいです。",
+          "japanese": "会社員に限らず、学生も忙しいです。",
           "english": "Being busy isn't limited to office workers — students are busy too.",
           "sort_order": 2,
           "vocabulary_slugs": [
@@ -25955,37 +27662,32 @@
             "kaishain",
             "gakusei"
           ],
-          "furigana": "忙[いそが]しいのは会[かい]社[しゃ]員[いん]に限[かぎ]らず、学[がく]生[せい]も忙[いそが]しいです。",
+          "furigana": "会[かい]社[しゃ]員[いん]に限[かぎ]らず、学[がく]生[せい]も忙[いそが]しいです。",
           "word_spans": [
             {
-              "vocabulary_slug": "isogashii",
+              "vocabulary_slug": "kaishain",
               "start": 0,
               "end": 3
             },
             {
-              "vocabulary_slug": "kaishain",
-              "start": 5,
-              "end": 8
-            },
-            {
               "vocabulary_slug": "gakusei",
-              "start": 13,
-              "end": 15
+              "start": 8,
+              "end": 10
             },
             {
               "vocabulary_slug": "isogashii",
-              "start": 16,
-              "end": 19
+              "start": 11,
+              "end": 14
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 12
+            "start": 3,
+            "end": 7
           },
           "register": "polite"
         },
         {
-          "japanese": "病気になるのは大人に限らず、子供もなります。",
+          "japanese": "大人に限らず、子供も病気になります。",
           "english": "Getting sick isn't limited to adults — children get sick too.",
           "sort_order": 3,
           "vocabulary_slugs": [
@@ -25994,39 +27696,34 @@
             "otona",
             "kodomo-v"
           ],
-          "furigana": "病[びょう]気[き]になるのは大人[おとな]に限[かぎ]らず、子[こ]供[ども]もなります。",
+          "furigana": "大人[おとな]に限[かぎ]らず、子[こ]供[ども]も病[びょう]気[き]になります。",
           "word_spans": [
             {
-              "vocabulary_slug": "byouki",
+              "vocabulary_slug": "otona",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "naru-become",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "otona",
+              "vocabulary_slug": "kodomo-v",
               "start": 7,
               "end": 9
             },
             {
-              "vocabulary_slug": "kodomo-v",
-              "start": 14,
-              "end": 16
+              "vocabulary_slug": "byouki",
+              "start": 10,
+              "end": 12
             },
             {
               "vocabulary_slug": "naru-become",
-              "start": 17,
-              "end": 21,
+              "start": 13,
+              "end": 17,
               "surface_form": "なります",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 9,
-            "end": 13
+            "start": 2,
+            "end": 6
           },
           "register": "polite"
         },
@@ -26072,7 +27769,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "環[かん]境[きょう]の問[もん]題[だい]は日本[にほん]に限[かぎ]らず、世[せ]界[かい]の問[もん]題[だい]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "夏に限らず、冬もこの海に来る人が多い。",
@@ -26129,7 +27832,17 @@
             "start": 1,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "夏[なつ]に限[かぎ]らず、冬[ふゆ]もこの海[うみ]に来[く]る人[ひと]は多[おお]い。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "この海[うみ]に来[く]る人[ひと]は夏[なつ]に限[かぎ]らず、冬[ふゆ]も多[おお]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先週は週末に限らず、毎日雨が降った。",
@@ -26176,7 +27889,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]に限[かぎ]らず、先[せん]週[しゅう]は毎[まい]日[にち]雨[あめ]が降[ふ]った。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "その歌は若い人に限らず、みんなが知っていますか。",
@@ -26237,7 +27956,17 @@
             "start": 7,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "その歌[うた]は若[わか]い人[ひと]に限[かぎ]らず、みんな知[し]っていますか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "若[わか]い人[ひと]に限[かぎ]らず、みんながその歌[うた]を知[し]っていますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お酒に限らず、彼女は甘い飲み物も飲まない。",
@@ -26284,7 +28013,13 @@
             "start": 2,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かの]女[じょ]はお酒[さけ]に限[かぎ]らず、甘[あま]い飲[の]み物[もの]も飲[の]まない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -26380,7 +28115,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "便[べん]利[り]な一[いっ]方[ぽう]で、値[ね]段[だん]は高[たか]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "兄はよく働く一方で、弟はあまり働かない。",
@@ -26432,7 +28173,13 @@
             "start": 6,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]がよく働[はたら]く一[いっ]方[ぽう]で、弟[おとうと]はあまり働[はたら]かない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "部屋は広い一方で、駅から遠いです。",
@@ -26522,7 +28269,13 @@
             "start": 8,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は料[りょう]理[り]が上手[じょうず]な一[いっ]方[ぽう]で、妹[いもうと]は料[りょう]理[り]が下手[へた]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "その店は安い一方で、汚いです。",
@@ -26647,10 +28400,16 @@
             "start": 9,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "姉[あね]が大[だい]学[がく]を卒[そつ]業[ぎょう]した一[いっ]方[ぽう]で、兄[あに]はまだ学[がく]生[せい]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "この町は静かな一方で、不便ですか。",
+          "japanese": "この町は静かな一方で、不便なんですか。",
           "english": "This town is quiet, but is it inconvenient on the other hand?",
           "sort_order": 7,
           "vocabulary_slugs": [
@@ -26659,7 +28418,7 @@
             "shizuka",
             "fuben"
           ],
-          "furigana": "この町[まち]は静[しず]かな一[いっ]方[ぽう]で、不[ふ]便[べん]ですか。",
+          "furigana": "この町[まち]は静[しず]かな一[いっ]方[ぽう]で、不[ふ]便[べん]なんですか。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -26686,7 +28445,13 @@
             "start": 7,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この町[まち]は静[しず]かな一[いっ]方[ぽう]で、不[ふ]便[べん]なのですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この仕事は面白い一方で、とても忙しいです。",
@@ -26833,7 +28598,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この部屋[へや]は赤[あか]ちゃんにとって寒[さむ]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この映画は君にとって面白い。",
@@ -26872,7 +28643,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "君[きみ]にとって、この映[えい]画[が]は面[おも]白[しろ]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私にとって、日本語の勉強は大変だ。",
@@ -26911,7 +28688,13 @@
             "start": 1,
             "end": 5
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]語[ご]の勉[べん]強[きょう]は私[わたし]にとって大[たい]変[へん]だ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この仕事は彼にとって簡単だ。",
@@ -26950,7 +28733,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]にとって、この仕[し]事[ごと]は簡[かん]単[たん]だ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この問題は先生にとっても難しかった。",
@@ -26991,7 +28780,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]にとっても、この問[もん]題[だい]は難[むずか]しかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あなたにとって、いい先生はどんな人ですか。",
@@ -27036,7 +28831,13 @@
             "start": 3,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あなたにとって、いい先[せん]生[せい]とはどんな人[ひと]ですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この荷物は父にとって重くない。",
@@ -27077,7 +28878,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "父[ちち]にとって、この荷[に]物[もつ]は重[おも]くない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "猫にとって、箱は家です。",
@@ -27110,7 +28917,13 @@
             "start": 1,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "箱[はこ]は猫[ねこ]にとって家[いえ]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "外国人にとって、漢字は覚えにくい。",
@@ -27145,7 +28958,13 @@
             "start": 3,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "漢[かん]字[じ]は外[がい]国[こく]人[じん]にとって覚[おぼ]えにくい。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -27310,6 +29129,22 @@
             {
               "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]について質[しつ]問[もん]した。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]に関[かん]して質[しつ]問[もん]をした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "会[かい]議[ぎ]で、部[ぶ]長[ちょう]は文[ぶん]化[か]について質[しつ]問[もん]をした。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "部[ぶ]長[ちょう]は会[かい]議[ぎ]で文[ぶん]化[か]に関[かん]して質[しつ]問[もん]した。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "部[ぶ]長[ちょう]は会[かい]議[ぎ]で文[ぶん]化[か]について質[しつ]問[もん]した。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -27363,6 +29198,14 @@
             {
               "furigana": "この問[もん]題[だい]について、先[せん]生[せい]は何[なに]も言[い]いませんでした。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "先[せん]生[せい]はこの問[もん]題[だい]に関[かん]して何[なに]も言[い]いませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]はこの問[もん]題[だい]について何[なに]も言[い]いませんでした。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -27399,7 +29242,13 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は健[けん]康[こう]に関[かん]する本[ほん]を読[よ]みました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "旅行に関して、何か質問はありますか。",
@@ -27444,6 +29293,14 @@
           "build_alternates": [
             {
               "furigana": "旅[りょ]行[こう]について、何[なに]か質[しつ]問[もん]はありますか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "旅[りょ]行[こう]に関[かん]して、何[なに]か質[しつ]問[もん]がありますか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "旅[りょ]行[こう]について、何[なに]か質[しつ]問[もん]がありますか。",
               "kind": "other_grammar"
             }
           ]
@@ -27520,7 +29377,13 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は天[てん]気[き]に関[かん]するニュースを見[み]ませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "安全に関して、店の人に話を聞きました。",
@@ -27571,6 +29434,22 @@
           "build_alternates": [
             {
               "furigana": "安[あん]全[ぜん]について、店[みせ]の人[ひと]に話[はなし]を聞[き]きました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "店[みせ]の人[ひと]に安[あん]全[ぜん]に関[かん]して話[はなし]を聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "店[みせ]の人[ひと]に安[あん]全[ぜん]について話[はなし]を聞[き]きました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "安[あん]全[ぜん]に関[かん]して、店[みせ]の人[ひと]から話[はなし]を聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "安[あん]全[ぜん]について、店[みせ]の人[ひと]から話[はなし]を聞[き]きました。",
               "kind": "other_grammar"
             }
           ]
@@ -27733,7 +29612,17 @@
             "start": 0,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "そういう人[ひと]が嫌[きら]いです。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はそういう人[ひと]が嫌[きら]いです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "こういう天気は苦手だ。",
@@ -27760,7 +29649,17 @@
             "start": 0,
             "end": 4
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "こういう天[てん]気[き]が苦[にが]手[て]だ。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はこういう天[てん]気[き]が苦[にが]手[て]だ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼はそういう人だ。",
@@ -27851,7 +29750,13 @@
             "start": 0,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]はああいう店[みせ]に行[い]きたいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "そういう話は聞きませんでした。",
@@ -27880,7 +29785,13 @@
             "start": 0,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "そういう話[はなし]を聞[き]きませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "どうして、そういう物を買ったの？",
@@ -27975,7 +29886,13 @@
             "start": 0,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]はこういう映[えい]画[が]が好[す]きです。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -28119,6 +30036,14 @@
             {
               "furigana": "明日[あした]雨[あめ]が降[ふ]ると聞[き]きました。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "明日[あした]は雨[あめ]が降[ふ]るって聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]は雨[あめ]が降[ふ]ると聞[き]きました。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -28155,7 +30080,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は忙[いそが]しいって言[い]ってた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "それって面白い？",
@@ -28294,6 +30225,14 @@
             {
               "furigana": "学[がっ]校[こう]を休[やす]むと言[い]った。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "彼[かれ]は学[がっ]校[こう]を休[やす]むって言[い]った。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は学[がっ]校[こう]を休[やす]むと言[い]った。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -28322,7 +30261,13 @@
             "start": 6,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]は優[やさ]しいって。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この店のパンって、おいしい？",
@@ -28992,6 +30937,14 @@
             {
               "furigana": "彼[かれ]が来[く]るか分[わ]かりません。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたし]は彼[かれ]が来[く]るかどうか分[わ]かりません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は彼[かれ]が来[く]るか分[わ]かりません。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -29032,6 +30985,14 @@
           "build_alternates": [
             {
               "furigana": "友[とも]達[だち]が来[く]るか分[わ]からない。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたし]は友[とも]達[だち]が来[く]るかどうか分[わ]からない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は友[とも]達[だち]が来[く]るか分[わ]からない。",
               "kind": "other_grammar"
             }
           ]
@@ -29080,6 +31041,14 @@
             {
               "furigana": "明日[あした]雨[あめ]が降[ふ]るか分[わ]からない。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "雨[あめ]が明日[あした]降[ふ]るかどうか分[わ]からない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "雨[あめ]が明日[あした]降[ふ]るか分[わ]からない。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -29116,7 +31085,13 @@
             "start": 4,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は彼[かれ]が学[がく]生[せい]かどうか分[わ]からない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "試験に合格したかどうか、まだ分からない。",
@@ -29159,7 +31134,17 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "まだ試[し]験[けん]に合[ごう]格[かく]したかどうか分[わ]からない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は試[し]験[けん]に合[ごう]格[かく]したかどうか、まだ分[わ]からない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "でも、友達が本当に来るかどうか分からない。",
@@ -29258,6 +31243,38 @@
             {
               "furigana": "この服[ふく]が好[す]きか、母[はは]に聞[き]きました。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "母[はは]にこの服[ふく]が好[す]きかどうか聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "母[はは]にこの服[ふく]が好[す]きか聞[き]きました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "この服[ふく]が好[す]きかどうかを母[はは]に聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "この服[ふく]が好[す]きかを母[はは]に聞[き]きました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "母[はは]にこの服[ふく]が好[す]きかどうかを聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "母[はは]にこの服[ふく]が好[す]きかを聞[き]きました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたし]はこの服[ふく]が好[す]きかどうか、母[はは]に聞[き]きました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はこの服[ふく]が好[す]きか、母[はは]に聞[き]きました。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -29300,7 +31317,13 @@
             "start": 10,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]の会[かい]議[ぎ]に出[しゅっ]席[せき]するかどうかを決[き]めましたか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電車が来るかどうか、駅の人に聞いた。",
@@ -29351,6 +31374,30 @@
           "build_alternates": [
             {
               "furigana": "電[でん]車[しゃ]が来[く]るか、駅[えき]の人[ひと]に聞[き]いた。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "駅[えき]の人[ひと]に電[でん]車[しゃ]が来[く]るかどうか聞[き]いた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "駅[えき]の人[ひと]に電[でん]車[しゃ]が来[く]るか聞[き]いた。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "電[でん]車[しゃ]が来[く]るかどうかを駅[えき]の人[ひと]に聞[き]いた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "電[でん]車[しゃ]が来[く]るかを駅[えき]の人[ひと]に聞[き]いた。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "駅[えき]の人[ひと]に電[でん]車[しゃ]が来[く]るかどうかを聞[き]いた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "駅[えき]の人[ひと]に電[でん]車[しゃ]が来[く]るかを聞[き]いた。",
               "kind": "other_grammar"
             }
           ]
@@ -29552,7 +31599,17 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "机[つくえ]の上[うえ]に紙[かみ]か何[なに]かがありますか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "紙[かみ]か何[なに]か机[つくえ]の上[うえ]にありますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "弟に本か何か買ってあげました。",
@@ -29595,7 +31652,17 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "本[ほん]か何[なに]か弟[おとうと]に買[か]ってあげました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は弟[おとうと]に本[ほん]か何[なに]か買[か]ってあげました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "甘い物か何か食べたい。",
@@ -29630,7 +31697,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "甘[あま]い物[もの]か何[なに]かが食[た]べたい。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "公園で音楽か何か聞きたい。",
@@ -29665,7 +31738,17 @@
             "start": 5,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "公[こう]園[えん]で音[おん]楽[がく]か何[なに]かが聞[き]きたい。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "音[おん]楽[がく]か何[なに]か公[こう]園[えん]で聞[き]きたい。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "週末はスポーツか何かしませんか。",
@@ -29704,6 +31787,14 @@
           "build_alternates": [
             {
               "furigana": "週[しゅう]末[まつ]はスポーツでもしませんか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]にスポーツか何[なに]かしませんか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]にスポーツでもしませんか。",
               "kind": "other_grammar"
             }
           ]
@@ -29836,7 +31927,25 @@
             "start": 6,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "週[しゅう]末[まつ]はテレビとかを見[み]ます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]にテレビとか見[み]ます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "週[しゅう]末[まつ]にはテレビとか見[み]ます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は週[しゅう]末[まつ]はテレビとか見[み]ます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "果物とか野菜とかが体にいいです。",
@@ -29875,7 +31984,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "果物[くだもの]とか野[や]菜[さい]とかは体[からだ]にいいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "明日は映画とかテレビとか見ませんか。",
@@ -29916,7 +32031,21 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は映[えい]画[が]とかテレビとかを見[み]ませんか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]、映[えい]画[が]とかテレビとか見[み]ませんか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "明日[あした]、映[えい]画[が]とかテレビとかを見[み]ませんか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "寿司とかラーメンとかが好きです。",
@@ -29949,7 +32078,13 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は寿[す]司[し]とかラーメンとかが好[す]きです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "机の上に本とかペンとかがあります。",
@@ -29996,7 +32131,21 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "机[つくえ]の上[うえ]には本[ほん]とかペンとかがあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "本[ほん]とかペンとかが机[つくえ]の上[うえ]にあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "机[つくえ]の上[うえ]に本[ほん]とかペンとかあります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日は雑誌とか漫画とかを読みました。",
@@ -30037,7 +32186,25 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]は雑[ざっ]誌[し]とか漫[まん]画[が]とか読[よ]みました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "昨日[きのう]、雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は昨日[きのう]雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "昨日[きのう]は漫[まん]画[が]とか雑[ざっ]誌[し]とかを読[よ]みました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "弟は魚とか肉とかを食べません。",
@@ -30078,7 +32245,13 @@
             "start": 3,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]は魚[さかな]とか肉[にく]とか食[た]べません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "かばんに傘とか薬とかを入れました。",
@@ -30119,7 +32292,21 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "傘[かさ]とか薬[くすり]とかをかばんに入[い]れました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "かばんに傘[かさ]とか薬[くすり]とか入[い]れました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]はかばんに傘[かさ]とか薬[くすり]とかを入[い]れました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "犬とか猫とか、動物が好きですか。",
@@ -30158,7 +32345,13 @@
             "start": 1,
             "end": 3
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "犬[いぬ]とか猫[ねこ]とか、動[どう]物[ぶつ]は好[す]きですか。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [],
@@ -30459,7 +32652,13 @@
             "start": 9,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は日本[にほん]語[ご]が話[はな]せる反[はん]面[めん]、書[か]くのが苦[にが]手[て]だ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼女はお酒を飲まない反面、よく食べる。",
@@ -31349,7 +33548,13 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は熱[ねつ]があった。それでも仕[し]事[ごと]へ行[い]った。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨が降っていた。それでも兄は散歩した。",
@@ -31400,7 +33605,13 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "雨[あめ]が降[ふ]っていた。それでも兄[あに]は散[さん]歩[ぽ]をした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "兄は薬を飲んだが、それでも熱は下がらなかった。",
@@ -31449,7 +33660,13 @@
             "start": 9,
             "end": 13
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]は薬[くすり]を飲[の]んだが、それでも熱[ねつ]が下[さ]がらなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先生は丁寧に説明した。それでも私は意味が分からなかった。",
@@ -31504,7 +33721,17 @@
             "start": 11,
             "end": 15
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]が丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]は丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも意[い]味[み]が分[わ]からなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "天気は悪かった。それでも私たちは公園を歩いた。",
@@ -31553,7 +33780,13 @@
             "start": 8,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "天[てん]気[き]が悪[わる]かった。それでも私[わたし]たちは公[こう]園[えん]を歩[ある]いた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "毎日練習した。それでもピアノは上手にならなかった。",
@@ -31602,7 +33835,21 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]練[れん]習[しゅう]をした。それでもピアノは上手[じょうず]にならなかった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "毎[まい]日[にち]練[れん]習[しゅう]した。それでもピアノが上手[じょうず]にならなかった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は毎[まい]日[にち]練[れん]習[しゅう]した。それでもピアノは上手[じょうず]にならなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "このかばんは古い。それでもまだ使える。",
@@ -31692,7 +33939,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "彼[かの]女[じょ]は忙[いそが]しい。それでも毎[まい]晩[ばん]私[わたし]に電[でん]話[わ]をくれる。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -32316,7 +34569,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]が遅[おく]れた。そのため、私[わたし]は会[かい]議[ぎ]に遅[ち]刻[こく]した。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "熱があった。そのため、学校を休んだ。",
@@ -32359,7 +34618,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "熱[ねつ]があった。そのため、私[わたし]は学[がっ]校[こう]を休[やす]んだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "財布を忘れました。そのため、何も買いませんでした。",
@@ -32402,7 +34667,17 @@
             "start": 9,
             "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は財[さい]布[ふ]を忘[わす]れました。そのため、何[なに]も買[か]いませんでした。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "財[さい]布[ふ]を忘[わす]れました。そのため、私[わたし]は何[なに]も買[か]いませんでした。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雨が降った。そのため、服が濡れた。",
@@ -32488,10 +34763,16 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "頭[あたま]が痛[いた]かった。そのため、私[わたし]は薬[くすり]を飲[の]んだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "雪が降っている。そのため、バスは遅れますか。",
+          "japanese": "雪が降っています。そのため、バスは遅れますか。",
           "english": "It's snowing. Will the bus be late because of that?",
           "sort_order": 6,
           "vocabulary_slugs": [
@@ -32501,7 +34782,7 @@
             "basu",
             "okureru"
           ],
-          "furigana": "雪[ゆき]が降[ふ]っている。そのため、バスは遅[おく]れますか。",
+          "furigana": "雪[ゆき]が降[ふ]っています。そのため、バスは遅[おく]れますか。",
           "word_spans": [
             {
               "vocabulary_slug": "yuki",
@@ -32518,26 +34799,34 @@
             {
               "vocabulary_slug": "iru-exist",
               "start": 5,
-              "end": 7
+              "end": 8,
+              "surface_form": "います",
+              "inflection": "masu"
             },
             {
               "vocabulary_slug": "basu",
-              "start": 13,
-              "end": 15
+              "start": 14,
+              "end": 16
             },
             {
               "vocabulary_slug": "okureru",
-              "start": 16,
-              "end": 20,
+              "start": 17,
+              "end": 21,
               "surface_form": "遅れます",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 12
+            "start": 9,
+            "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "雪[ゆき]が降[ふ]っています。そのため、バスが遅[おく]れますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この店は安い。そのため、いつも客が多い。",
@@ -32588,7 +34877,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "この店[みせ]は安[やす]い。そのため、客[きゃく]がいつも多[おお]い。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "兄は毎日練習した。そのため、試験に合格した。",
@@ -33241,7 +35536,17 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "土[ど]曜[よう]日[び]以[い]外[がい]、毎[まい]日[にち]働[はたら]いています。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は土[ど]曜[よう]日[び]以[い]外[がい]は毎[まい]日[にち]働[はたら]いています。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私以外はみんな来ます。",
@@ -33276,7 +35581,17 @@
             "start": 1,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]以[い]外[がい]みんな来[き]ます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]以[い]外[がい]のみんなが来[き]ます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "水泳以外、スポーツは苦手です。",
@@ -33309,7 +35624,17 @@
             "start": 2,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "水[すい]泳[えい]以[い]外[がい]のスポーツは苦[にが]手[て]です。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は水[すい]泳[えい]以[い]外[がい]、スポーツは苦[にが]手[て]です。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "音楽以外に趣味がありません。",
@@ -33344,7 +35669,25 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "音[おん]楽[がく]以[い]外[がい]に趣[しゅ]味[み]はありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "音[おん]楽[がく]以[い]外[がい]の趣[しゅ]味[み]はありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "音[おん]楽[がく]以[い]外[がい]の趣[しゅ]味[み]がありません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は音[おん]楽[がく]以[い]外[がい]に趣[しゅ]味[み]がありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "日本語以外に英語も話せます。",
@@ -33379,7 +35722,13 @@
             "start": 3,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は日本[にほん]語[ご]以[い]外[がい]に英[えい]語[ご]も話[はな]せます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "肉以外は何でも食べます。",
@@ -33414,7 +35763,17 @@
             "start": 1,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "肉[にく]以[い]外[がい]何[なに]でも食[た]べます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は肉[にく]以[い]外[がい]は何[なに]でも食[た]べます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼以外は誰も知りません。",
@@ -33449,7 +35808,13 @@
             "start": 1,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]以[い]外[がい]、誰[だれ]も知[し]りません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "水以外に何か飲みましたか。",
@@ -33484,7 +35849,13 @@
             "start": 1,
             "end": 4
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "水[みず]以[い]外[がい]に何[なに]かを飲[の]みましたか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "兄以外の家族はみんな犬が好きだ。",
@@ -33529,7 +35900,13 @@
             "start": 1,
             "end": 3
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]以[い]外[がい]、家[か]族[ぞく]はみんな犬[いぬ]が好[す]きだ。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "昨日は傘以外、何も買わなかった。",
@@ -33570,7 +35947,17 @@
             "start": 4,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]は傘[かさ]以[い]外[がい]は何[なに]も買[か]わなかった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "昨日[きのう]、傘[かさ]以[い]外[がい]、何[なに]も買[か]わなかった。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -33674,7 +36061,13 @@
             "start": 5,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "日本[にほん]へ来[き]て以[い]来[らい]、毎[まい]日[にち]忙[いそが]しいです。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "卒業して以来、先生に会っていません。",
@@ -33802,6 +36195,10 @@
             {
               "furigana": "結[けっ]婚[こん]して以[い]来[らい]、料[りょう]理[り]を毎[まい]日[にち]しています。",
               "kind": "valid"
+            },
+            {
+              "furigana": "結[けっ]婚[こん]して以[い]来[らい]、毎[まい]日[にち]料[りょう]理[り]しています。",
+              "kind": "valid"
             }
           ]
         },
@@ -33854,7 +36251,13 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "子[こ]供[ども]が生[う]まれて以[い]来[らい]、私[わたし]はあまり寝[ね]ていません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "去年以来、彼女から手紙が来ていない。",
@@ -34990,6 +37393,26 @@
             {
               "furigana": "子[こ]供[ども]も分[わ]かります。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "子[こ]供[ども]でさえ分[わ]かります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]でも分[わ]かります。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "子[こ]供[ども]さえも分[わ]かります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "子[こ]供[ども]もも分[わ]かります。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "子[こ]供[ども]でもも分[わ]かります。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -35034,7 +37457,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "朝[あさ]は忙[いそが]しくて、水[みず]さえも飲[の]まなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は漢字さえ知らない。",
@@ -35073,6 +37502,10 @@
           "build_alternates": [
             {
               "furigana": "漢[かん]字[じ]さえ知[し]らない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "彼[かれ]は漢[かん]字[じ]さえも知[し]らない。",
               "kind": "valid"
             }
           ]
@@ -35165,7 +37598,17 @@
             "start": 7,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "友[とも]達[だち]は私[わたし]の名[な]前[まえ]さえも忘[わす]れた。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "友[とも]達[だち]が私[わたし]の名[な]前[まえ]さえ忘[わす]れた。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "そのテストは簡単で、子供さえ分かった。",
@@ -35212,7 +37655,17 @@
             "start": 12,
             "end": 14
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "そのテストは簡[かん]単[たん]で、子[こ]供[ども]でさえ分[わ]かった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "そのテストは簡[かん]単[たん]で、子[こ]供[ども]さえも分[わ]かった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "今週は忙しくて、電話さえかけなかった。",
@@ -35255,10 +37708,16 @@
             "start": 10,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "今[こん]週[しゅう]は忙[いそが]しくて、電[でん]話[わ]さえもかけなかった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "弟は自分の部屋さえ掃除しないんですか。",
+          "japanese": "弟さんは自分の部屋さえ掃除しないんですか。",
           "english": "Your brother doesn't even clean his own room?",
           "sort_order": 7,
           "vocabulary_slugs": [
@@ -35267,7 +37726,7 @@
             "heya",
             "souji-suru"
           ],
-          "furigana": "弟[おとうと]は自[じ]分[ぶん]の部屋[へや]さえ掃[そう]除[じ]しないんですか。",
+          "furigana": "弟[おとうと]さんは自[じ]分[ぶん]の部屋[へや]さえ掃[そう]除[じ]しないんですか。",
           "word_spans": [
             {
               "vocabulary_slug": "otouto",
@@ -35276,27 +37735,37 @@
             },
             {
               "vocabulary_slug": "jibun",
-              "start": 2,
-              "end": 4
+              "start": 4,
+              "end": 6
             },
             {
               "vocabulary_slug": "heya",
-              "start": 5,
-              "end": 7
+              "start": 7,
+              "end": 9
             },
             {
               "vocabulary_slug": "souji-suru",
-              "start": 9,
-              "end": 14,
+              "start": 11,
+              "end": 16,
               "surface_form": "掃除しない",
               "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 9
+            "start": 9,
+            "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "弟[おとうと]さんは自[じ]分[ぶん]の部屋[へや]さえも掃[そう]除[じ]しないんですか。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "弟[おとうと]さんは自[じ]分[ぶん]の部屋[へや]さえ掃[そう]除[じ]しないのですか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "寒くて、猫さえ外に出ない。",
@@ -35339,7 +37808,21 @@
             "start": 5,
             "end": 7
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "寒[さむ]くて、猫[ねこ]さえも外[そと]に出[で]ない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "寒[さむ]くて、猫[ねこ]でさえ外[そと]に出[で]ない。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "寒[さむ]くて、猫[ねこ]さえ外[そと]へ出[で]ない。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -36395,7 +38878,13 @@
             "start": 14,
             "end": 18
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "鍵[かぎ]を無[な]くしたから、窓[まど]から入[はい]るよりほかない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "歩いて帰るほかない。",
@@ -36424,7 +38913,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "歩[ある]いて帰[かえ]るよりほかない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "電車が止まったから、駅で待つほかない。",
@@ -36788,6 +39283,14 @@
             {
               "furigana": "雪[ゆき]で、飛[ひ]行[こう]機[き]が遅[おく]れました。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "飛[ひ]行[こう]機[き]が雪[ゆき]によって遅[おく]れました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "飛[ひ]行[こう]機[き]が雪[ゆき]で遅[おく]れました。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -36830,7 +39333,13 @@
             "start": 1,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "ビールの値[ね]段[だん]は店[みせ]によって変[か]わりますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "台風によって、電車が止まった。",
@@ -36873,6 +39382,14 @@
             },
             {
               "furigana": "台[たい]風[ふう]で、電[でん]車[しゃ]が止[と]まった。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "電[でん]車[しゃ]が台[たい]風[ふう]によって止[と]まった。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "電[でん]車[しゃ]が台[たい]風[ふう]で止[と]まった。",
               "kind": "other_grammar"
             }
           ]
@@ -36946,7 +39463,7 @@
           "register": "plain"
         },
         {
-          "japanese": "地震により、たくさんの人が困った。",
+          "japanese": "地震によって、たくさんの人が困った。",
           "english": "The earthquake left many people in difficulty.",
           "sort_order": 5,
           "vocabulary_slugs": [
@@ -36955,7 +39472,7 @@
             "hito",
             "komaru"
           ],
-          "furigana": "地[じ]震[しん]により、たくさんの人[ひと]が困[こま]った。",
+          "furigana": "地[じ]震[しん]によって、たくさんの人[ひと]が困[こま]った。",
           "word_spans": [
             {
               "vocabulary_slug": "jishin",
@@ -36964,33 +39481,27 @@
             },
             {
               "vocabulary_slug": "takusan",
-              "start": 6,
-              "end": 10
+              "start": 7,
+              "end": 11
             },
             {
               "vocabulary_slug": "hito",
-              "start": 11,
-              "end": 12
+              "start": 12,
+              "end": 13
             },
             {
               "vocabulary_slug": "komaru",
-              "start": 13,
-              "end": 16,
+              "start": 14,
+              "end": 17,
               "surface_form": "困った",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
             "start": 2,
-            "end": 5
+            "end": 6
           },
-          "register": "plain",
-          "build_alternates": [
-            {
-              "furigana": "地[じ]震[しん]によって、たくさんの人[ひと]が困[こま]った。",
-              "kind": "valid"
-            }
-          ]
+          "register": "plain"
         },
         {
           "japanese": "会議によって、新しい予定が決まった。",
@@ -37031,10 +39542,16 @@
             "start": 2,
             "end": 6
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "新[あたら]しい予[よ]定[てい]が会[かい]議[ぎ]によって決[き]まった。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "時間によって、このバスは駅に止まりません。",
+          "japanese": "時間によっては、このバスは駅に止まりません。",
           "english": "Depending on the time, this bus doesn't stop at the station.",
           "sort_order": 7,
           "vocabulary_slugs": [
@@ -37044,7 +39561,7 @@
             "eki",
             "tomaru"
           ],
-          "furigana": "時[じ]間[かん]によって、このバスは駅[えき]に止[と]まりません。",
+          "furigana": "時[じ]間[かん]によっては、このバスは駅[えき]に止[と]まりません。",
           "word_spans": [
             {
               "vocabulary_slug": "jikan",
@@ -37053,23 +39570,23 @@
             },
             {
               "vocabulary_slug": "kono",
-              "start": 7,
-              "end": 9
+              "start": 8,
+              "end": 10
             },
             {
               "vocabulary_slug": "basu",
-              "start": 9,
-              "end": 11
+              "start": 10,
+              "end": 12
             },
             {
               "vocabulary_slug": "eki",
-              "start": 12,
-              "end": 13
+              "start": 13,
+              "end": 14
             },
             {
               "vocabulary_slug": "tomaru",
-              "start": 14,
-              "end": 20,
+              "start": 15,
+              "end": 21,
               "surface_form": "止まりません",
               "inflection": "masu"
             }
@@ -37078,7 +39595,13 @@
             "start": 2,
             "end": 6
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "このバスは時[じ]間[かん]によっては駅[えき]に止[と]まりません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "この小説は若い女性によって書かれた。",
@@ -37388,7 +39911,13 @@
             "start": 7,
             "end": 11
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "コンビニへ行[い]くついでに、牛[ぎゅう]乳[にゅう]を買[か]いましょうか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "買い物のついでに、図書館で本を返す。",
@@ -37427,7 +39956,21 @@
             "start": 4,
             "end": 8
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "買[か]い物[もの]のついでに、図[と]書[しょ]館[かん]に本[ほん]を返[かえ]す。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "買[か]い物[もの]のついでに、本[ほん]を図[と]書[しょ]館[かん]で返[かえ]す。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "買[か]い物[もの]のついでに、本[ほん]を図[と]書[しょ]館[かん]に返[かえ]す。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "台所を掃除するついでに、冷蔵庫も洗う。",
@@ -37466,10 +40009,16 @@
             "start": 7,
             "end": 11
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "台[だい]所[どころ]の掃[そう]除[じ]をするついでに、冷[れい]蔵[ぞう]庫[こ]も洗[あら]う。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "郵便局に行くついでに、銀行にもお金を出す。",
+          "japanese": "郵便局に行くついでに、銀行でもお金を出す。",
           "english": "While I'm at the post office, I'll also take out money at the bank.",
           "sort_order": 4,
           "vocabulary_slugs": [
@@ -37479,7 +40028,7 @@
             "okane",
             "dasu"
           ],
-          "furigana": "郵[ゆう]便[びん]局[きょく]に行[い]くついでに、銀[ぎん]行[こう]にもお金[かね]を出[だ]す。",
+          "furigana": "郵[ゆう]便[びん]局[きょく]に行[い]くついでに、銀[ぎん]行[こう]でもお金[かね]を出[だ]す。",
           "word_spans": [
             {
               "vocabulary_slug": "yuubinkyoku",
@@ -37511,7 +40060,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "郵[ゆう]便[びん]局[きょく]へ行[い]くついでに、銀[ぎん]行[こう]でもお金[かね]を出[だ]す。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "会社から帰るついでに、スーパーで野菜を買う。",
@@ -37556,7 +40111,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]社[しゃ]から帰[かえ]るついでに、野[や]菜[さい]をスーパーで買[か]う。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "父は散歩するついでに、パンを買いました。",
@@ -37597,7 +40158,13 @@
             "start": 6,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "父[ちち]は散[さん]歩[ぽ]をするついでに、パンを買[か]いました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "友達に会うついでに、借りた本を返しました。",
@@ -37646,7 +40213,13 @@
             "start": 5,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は友[とも]達[だち]に会[あ]うついでに、借[か]りた本[ほん]を返[かえ]しました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "お茶を入れるついでに、私のも入れてくれる？",
@@ -37805,7 +40378,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "説[せつ]明[めい]をよく聞[き]いた上[うえ]で、契[けい]約[やく]をします。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "書類を全部読んだ上で、決めます。",
@@ -37848,7 +40427,13 @@
             "start": 8,
             "end": 10
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "全[ぜん]部[ぶ]の書[しょ]類[るい]を読[よ]んだ上[うえ]で、決[き]めます。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "家族とよく話し合った上で、お答えします。",
@@ -38032,7 +40617,13 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "弁[べん]護[ご]士[し]に聞[き]いた上[うえ]で、書[しょ]類[るい]に署[しょ]名[めい]をしました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "説明を読んだ上で、申し込みますか。",
@@ -38112,7 +40703,17 @@
             "start": 7,
             "end": 9
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "妻[つま]と話[はな]し合[あ]った上[うえ]で、田舎[いなか]へは引[ひ]っ越[こ]しません。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "妻[つま]と話[はな]し合[あ]った上[うえ]で、田舎[いなか]に引[ひ]っ越[こ]しません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "地図をよく見た上で、出かけましょう。",
@@ -38794,7 +41395,13 @@
             "start": 5,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "会[かい]議[ぎ]の場[ば]所[しょ]および時[じ]間[かん]が、まだ決[き]まっていません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "試験の結果および説明は、金曜日に伝えます。",
@@ -38845,6 +41452,10 @@
           "build_alternates": [
             {
               "furigana": "金[きん]曜[よう]日[び]に、試[し]験[けん]の結[けっ]果[か]および説[せつ]明[めい]を伝[つた]えます。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "試[し]験[けん]の結[けっ]果[か]および説[せつ]明[めい]を、金[きん]曜[よう]日[び]に伝[つた]えます。",
               "kind": "valid"
             }
           ]
@@ -38982,7 +41593,17 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "書[しょ]類[るい]および荷[に]物[もつ]を、受[うけ]付[つけ]に出[だ]します。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "受[うけ]付[つけ]に書[しょ]類[るい]および荷[に]物[もつ]を出[だ]します。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "図書館では、飲み物および食べ物を売っていません。",
@@ -39231,7 +41852,17 @@
             "start": 2,
             "end": 5
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "専[せん]門[もん]家[か]が環[かん]境[きょう]および健[けん]康[こう]の問[もん]題[だい]を説[せつ]明[めい]しました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "専[せん]門[もん]家[か]は環[かん]境[きょう]および健[けん]康[こう]の問[もん]題[だい]を説[せつ]明[めい]しました。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -39378,7 +42009,7 @@
           "register": "polite"
         },
         {
-          "japanese": "彼の子供に対する態度は厳しいです。",
+          "japanese": "子供に対する彼の態度は厳しいです。",
           "english": "His attitude toward the children is strict.",
           "sort_order": 2,
           "vocabulary_slugs": [
@@ -39387,17 +42018,17 @@
             "taido",
             "kibishii"
           ],
-          "furigana": "彼[かれ]の子[こ]供[ども]に対[たい]する態[たい]度[ど]は厳[きび]しいです。",
+          "furigana": "子[こ]供[ども]に対[たい]する彼[かれ]の態[たい]度[ど]は厳[きび]しいです。",
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "kodomo-v",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "kodomo-v",
-              "start": 2,
-              "end": 4
+              "vocabulary_slug": "kare",
+              "start": 6,
+              "end": 7
             },
             {
               "vocabulary_slug": "taido",
@@ -39411,8 +42042,8 @@
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 8
+            "start": 2,
+            "end": 6
           },
           "register": "polite"
         },
@@ -39600,7 +42231,17 @@
             "start": 4,
             "end": 8
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]の説[せつ]明[めい]に対[たい]して、みんなが質[しつ]問[もん]しました。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "みんなは彼[かれ]の説[せつ]明[めい]に対[たい]して質[しつ]問[もん]しました。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "社長に対して、どんな言葉を使いますか。",
