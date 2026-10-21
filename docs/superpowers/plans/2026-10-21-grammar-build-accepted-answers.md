@@ -41,8 +41,11 @@ via the existing `spans` / `furigana` modules.
 - A sentence check `fix` that changes the listed words or the register →
   rejected by the gate, prompt rewritten with errors; nothing written.
   (Task 3, `test_fix_that_drops_a_word_is_rejected`.)
-- A candidate in all kana or with a word swapped (僕 for 私) → dropped
-  before judging with a reason, so it cannot fail the whole ingest.
+- A candidate in all kana or with a listed word swapped out → dropped
+  before judging with a reason, so it cannot fail the whole ingest. (A
+  swapped or added pronoun, or an added word, is not dropped: the gate only
+  checks for missing words, and the judge decides meaning — ruled at the
+  final review.)
   (Task 2, `test_filter_drops_gate_failures_with_reason`.)
 - A candidate that only differs by punctuation or katakana → dropped as a
   duplicate. (Task 2, `test_filter_drops_normalised_duplicates`.)

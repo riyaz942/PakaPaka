@@ -188,6 +188,13 @@ def merged_entry(entry, candidates, reply, model, chunks):
     return entry
 
 
+def skipped_entry(entry, reason):
+    """A copy of `entry` marked checked-and-skipped, so select moves past it."""
+    entry = copy.deepcopy(entry)
+    entry.setdefault("_meta", {})["answers_check"] = {"version": CHECK_VERSION, "skipped": reason}
+    return entry
+
+
 def select_slugs(level, limit, sidecar):
     return [g["slug"] for g in context.load_grammar(level)
             if g["slug"] in sidecar
@@ -206,9 +213,19 @@ def point_gate_errors(level, slug, entry):
 
 
 def fix_gate_errors(level, slug, entry):
-    """point_gate_errors, plus: every fixed sentence still holds each of its
-    listed words. The pool gate never checks that, and a fix must not drop one."""
-    errors = point_gate_errors(level, slug, entry)
+    """point_gate_errors, plus: every fixed sentence keeps the old one's
+    register (plain/polite), shape (question/negative/past) and listed words.
+    The pool gate checks none of that against the old sentence."""
+    errors = []
+    texts = {s["japanese"] for s in entry["sentences"]}
+    for fix in entry.get("_meta", {}).get("sentence_fixes", []):
+        if fix["new"] not in texts:
+            continue
+        if gs.register_of(fix["old"]) != gs.register_of(fix["new"]):
+            errors.append(f"{fix['new']} — register differs from {fix['old']}")
+        if gs.sentence_shape(fix["old"]) != gs.sentence_shape(fix["new"]):
+            errors.append(f"{fix['new']} — shape (question/negative/past) differs from {fix['old']}")
+    errors += point_gate_errors(level, slug, entry)
     if errors:
         return errors
     _, built = _built(level, slug, entry)
@@ -371,9 +388,12 @@ def cmd_checkingest(args):
     if not errors:
         unfixable = [v for v in reply["sentences"] if v["verdict"] == "unfixable"]
         if unfixable:
-            print(f"{args.slug}: SKIP — {len(unfixable)} unfixable sentence(s), nothing written:")
-            for v in unfixable:
-                print(f"  - {v['japanese']} ({v.get('reason', '')})")
+            reason = "unfixable: " + "; ".join(
+                f"{v['japanese']} ({v.get('reason', '')})" for v in unfixable)
+            sidecar[args.slug] = skipped_entry(entry, reason)
+            _write_sidecar(sidecar)
+            _remove(prompt_path, reply_path)
+            print(f"{args.slug}: SKIP — recorded as skipped, no sentence changed: {reason}")
             raise SystemExit(2)
         fixed, fixes = apply_fixes(entry, reply)
         if fixes:
@@ -481,6 +501,13 @@ def cmd_ingest(args):
                 print(f"  + [{a['kind']}] {a['japanese']}")
 
 
+def cmd_skip(args):
+    sidecar = generate.load_pool_sidecar()
+    sidecar[args.slug] = skipped_entry(sidecar[args.slug], args.reason)
+    _write_sidecar(sidecar)
+    print(f"{args.slug}: recorded as skipped ({args.reason})")
+
+
 def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
@@ -503,6 +530,11 @@ def main():
         if needs_model:
             p.add_argument("--model", required=True)
         p.set_defaults(func=func)
+    p = sub.add_parser("skip")
+    p.add_argument("--level", required=True, choices=levels)
+    p.add_argument("--slug", required=True)
+    p.add_argument("--reason", required=True)
+    p.set_defaults(func=cmd_skip)
     args = parser.parse_args()
     args.func(args)
 

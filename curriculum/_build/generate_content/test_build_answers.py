@@ -163,6 +163,16 @@ class MergeTest(unittest.TestCase):
 
 
 class SelectTest(unittest.TestCase):
+    def test_skipped_points_are_not_selected_again(self):
+        slugs = [g["slug"] for g in ba.context.load_grammar("n4")][:2]
+        sidecar = {slugs[0]: {"_meta": {}}, slugs[1]: {"_meta": {}}}
+        skipped = ba.skipped_entry(sidecar[slugs[0]], "unfixable: x")
+        self.assertEqual(skipped["_meta"]["answers_check"],
+                         {"version": ba.CHECK_VERSION, "skipped": "unfixable: x"})
+        self.assertEqual(sidecar[slugs[0]]["_meta"], {})  # input untouched
+        sidecar[slugs[0]] = skipped
+        self.assertEqual(ba.select_slugs("n4", 5, sidecar), [slugs[1]])
+
     def test_skips_checked_points(self):
         slugs = [g["slug"] for g in ba.context.load_grammar("n4")][:2]
         sidecar = {slugs[0]: {"_meta": {"answers_check": {"version": ba.CHECK_VERSION}}},
@@ -210,6 +220,21 @@ class GateTest(unittest.TestCase):
         # still holds its listed words.
         errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、消した。"))
         self.assertTrue(any("denwa" in e for e in errors))
+
+    def test_fix_that_changes_register_is_rejected(self):
+        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、電話を消しました。"))
+        self.assertTrue(any("register" in e for e in errors))
+
+    def test_fix_that_changes_tense_is_rejected(self):
+        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、電話を消す。"))
+        self.assertTrue(any("shape" in e for e in errors))
+
+    def test_judge_prompt_carries_the_lesson_rules(self):
+        entry = self.entry("aida")
+        text = ba._judge_prompt("n4", "aida", entry, [(0, "x")])
+        item = ba.generate.build_grammar_point("n4", "aida", entry)
+        self.assertIn(item["caution_notes"][0], text)
+        self.assertIn(item["structure"], text)
 
     def test_errors_for_uchi_ni(self):
         item = ba.generate.build_grammar_point("n4", "uchi-ni", self.entry("uchi-ni"))

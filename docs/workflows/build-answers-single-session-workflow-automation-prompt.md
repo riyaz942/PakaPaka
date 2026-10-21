@@ -46,10 +46,11 @@ checkingest --level <level> --slug <slug> --model claude-code
 - PASS: fixes (if any) are written to `pool.json` and printed. Keep the
   printed lines for the report.
 - Exit 1: the prompt is rewritten with the errors; spawn a fresh subagent on
-  it. Budget: 4 attempts, then record the point as skipped and drop it from
-  this run.
-- Exit 2 (`unfixable`): record the point as skipped with the printed
-  sentences and reasons, and drop it from this run.
+  it. Budget: 4 attempts, then run
+  `skip --level <level> --slug <slug> --reason "<last errors>"` and drop the
+  point from this run.
+- Exit 2 (`unfixable`): the point is already recorded as skipped in
+  `pool.json` with the printed reason; drop it from this run.
 
 Step 3: Propose answers (this session)
 
@@ -75,7 +76,10 @@ On PASS the valid answers and their `other_grammar` pairs are added, the
 point gets `_meta.answers_check`, and its files are deleted; keep the printed
 `+` lines for the report. On failure the judge prompt is rewritten with the
 errors: spawn a fresh subagent on it. Budget: 4 attempts per point, then
-skip it.
+run `skip --level <level> --slug <slug> --reason "<last errors>"`.
+
+A skipped point carries `_meta.answers_check.skipped`, so `select` moves past
+it; the reason is in `pool.json` for the maintainer.
 
 Rules:
 

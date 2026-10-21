@@ -2,7 +2,16 @@
 
 A learner reviews **{{FORM}}** ({{MEANING}}) on a Build card: they see the
 English sentence and type the whole Japanese sentence. Each sentence below
-has candidate answers that differ from it. Judge every candidate:
+has candidate answers that differ from it.
+
+Structure: {{STRUCTURE}}
+
+What the lesson teaches about this point (a candidate that breaks it is
+`"wrong"`, even when it is the sentence's original form):
+
+{{CAUTION_NOTES}}
+
+Judge every candidate:
 
 - `"valid"` — natural Japanese, uses {{FORM}} the same way, and means what the
   English says. A teacher would mark it fully correct
