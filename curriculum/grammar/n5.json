@@ -11203,7 +11203,13 @@
             "start": 6,
             "end": 7
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "天[てん]気[き]がいいですね。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "暑いですね。",
@@ -11353,31 +11359,43 @@
           "register": "polite"
         },
         {
-          "japanese": "ねえ、お母さんはどこですか。",
-          "english": "Hey, where is Mom?",
+          "japanese": "お母さんは毎日忙しいですね。",
+          "english": "Your mother is busy every day, isn't she?",
           "sort_order": 6,
           "vocabulary_slugs": [
             "okaasan",
-            "doko"
+            "mainichi",
+            "isogashii"
           ],
-          "furigana": "ねえ、お母[かあ]さんはどこですか。",
+          "furigana": "お母[かあ]さんは毎[まい]日[にち]忙[いそが]しいですね。",
           "word_spans": [
             {
               "vocabulary_slug": "okaasan",
-              "start": 3,
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 5,
               "end": 7
             },
             {
-              "vocabulary_slug": "doko",
-              "start": 8,
+              "vocabulary_slug": "isogashii",
+              "start": 7,
               "end": 10
             }
           ],
           "grammar_span": {
-            "start": 0,
-            "end": 2
+            "start": 12,
+            "end": 13
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]日[にち]お母[かあ]さんは忙[いそが]しいですね。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "あの人は医者ですね。",
@@ -11451,7 +11469,17 @@
             "start": 13,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "先[せん]週[しゅう]、映[えい]画[が]を一[いっ]緒[しょ]に見[み]ましたね。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]たちは先[せん]週[しゅう]、一[いっ]緒[しょ]に映[えい]画[が]を見[み]ましたね。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は来ませんね。",
@@ -16896,6 +16924,14 @@
             {
               "furigana": "日本[にほん]に行[い]ったことがあります。",
               "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は日本[にほん]へ行[い]ったことがあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は日本[にほん]に行[い]ったことがあります。",
+              "kind": "valid"
             }
           ]
         },
@@ -16932,7 +16968,13 @@
             "start": 6,
             "end": 12
           },
-          "register": "plain"
+          "register": "plain",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]はその映[えい]画[が]を見[み]たことがない。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私はあの映画を見たことがあります。",
@@ -17014,7 +17056,13 @@
             "start": 8,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あなたは日本[にほん]の料[りょう]理[り]を食[た]べたことがありますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "私はこの魚を食べたことがあります。",
@@ -17102,7 +17150,13 @@
             "start": 9,
             "end": 17
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "この料[りょう]理[り]を彼[かれ]は食[た]べたことがあります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "彼は日本に来たことがあります。",
@@ -17137,7 +17191,13 @@
             "start": 6,
             "end": 14
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "彼[かれ]は日本[にほん]へ来[き]たことがあります。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "雪を見たことがありません。",
@@ -17166,42 +17226,54 @@
             "start": 3,
             "end": 12
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は雪[ゆき]を見[み]たことがありません。",
+              "kind": "valid"
+            }
+          ]
         },
         {
-          "japanese": "たまに朝ご飯を食べないことがあります。",
-          "english": "Sometimes I skip breakfast.",
+          "japanese": "この雑誌を読んだことがありますか。",
+          "english": "Have you ever read this magazine?",
           "sort_order": 8,
           "vocabulary_slugs": [
-            "tama-ni",
-            "asagohan",
-            "taberu"
+            "kono",
+            "zasshi",
+            "yomu"
           ],
-          "furigana": "たまに朝[あさ]ご飯[はん]を食[た]べないことがあります。",
+          "furigana": "この雑[ざっ]誌[し]を読[よ]んだことがありますか。",
           "word_spans": [
             {
-              "vocabulary_slug": "tama-ni",
+              "vocabulary_slug": "kono",
               "start": 0,
-              "end": 3
+              "end": 2
             },
             {
-              "vocabulary_slug": "asagohan",
-              "start": 3,
-              "end": 6
+              "vocabulary_slug": "zasshi",
+              "start": 2,
+              "end": 4
             },
             {
-              "vocabulary_slug": "taberu",
-              "start": 7,
-              "end": 11,
-              "surface_form": "食べない",
-              "inflection": "nai"
+              "vocabulary_slug": "yomu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "読んだ",
+              "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 18
+            "start": 8,
+            "end": 15
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "あなたはこの雑[ざっ]誌[し]を読[よ]んだことがありますか。",
+              "kind": "valid"
+            }
+          ]
         },
         {
           "japanese": "先生に手紙を書いたことがあります。",
@@ -17236,7 +17308,25 @@
             "start": 8,
             "end": 16
           },
-          "register": "polite"
+          "register": "polite",
+          "build_alternates": [
+            {
+              "furigana": "手[て]紙[がみ]を先[せん]生[せい]に書[か]いたことがあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は先[せん]生[せい]に手[て]紙[がみ]を書[か]いたことがあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "先[せん]生[せい]へ手[て]紙[がみ]を書[か]いたことがあります。",
+              "kind": "valid"
+            },
+            {
+              "furigana": "私[わたし]は手[て]紙[がみ]を先[せん]生[せい]に書[か]いたことがあります。",
+              "kind": "valid"
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [

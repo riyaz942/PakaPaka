@@ -161,6 +161,24 @@ class MergeTest(unittest.TestCase):
         self.assertEqual(merged["_meta"]["answers_check"], {"version": "1", "model": "m"})
         self.assertEqual(len(self.ENTRY["sentences"][0]["alternates"]), 1)  # input untouched
 
+    def test_pairs_come_only_from_the_sentence_own_other_grammar(self):
+        """A pair added for one valid answer is not a swap for the next one
+        (nomi: 社員だけが… gave 社員だけがが…)."""
+        entry = {"sentences": [{"japanese": "会社の入口は社員のみ使えます。", "english": "x",
+                                "vocabulary_slugs": [],
+                                "alternates": [{"japanese": "会社の入口は社員だけ使えます。",
+                                                "kind": "other_grammar"}]}]}
+        candidates = [(0, "会社の入口は社員のみが使えます。"), (0, "会社の入口は社員のみも使えます。")]
+        reply = {"verdicts": [{"candidate": c, "verdict": "valid"} for _, c in candidates]}
+        merged = ba.merged_entry(entry, candidates, reply, "m", {0: "のみ"})
+        self.assertEqual([a["japanese"] for a in merged["sentences"][0]["alternates"]], [
+            "会社の入口は社員だけ使えます。",
+            "会社の入口は社員のみが使えます。",
+            "会社の入口は社員だけが使えます。",
+            "会社の入口は社員のみも使えます。",
+            "会社の入口は社員だけも使えます。",
+        ])
+
 
 class SelectTest(unittest.TestCase):
     def test_skipped_points_are_not_selected_again(self):

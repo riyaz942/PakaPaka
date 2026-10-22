@@ -4132,6 +4132,12 @@
         "vocabulary_slugs": [
           "ii",
           "tenki"
+        ],
+        "alternates": [
+          {
+            "japanese": "天気がいいですね。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -4187,11 +4193,18 @@
         ]
       },
       {
-        "japanese": "ねえ、お母さんはどこですか。",
-        "english": "Hey, where is Mom?",
+        "japanese": "お母さんは毎日忙しいですね。",
+        "english": "Your mother is busy every day, isn't she?",
         "vocabulary_slugs": [
           "okaasan",
-          "doko"
+          "mainichi",
+          "isogashii"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎日お母さんは忙しいですね。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -4211,6 +4224,16 @@
           "issho-ni",
           "eiga",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週、映画を一緒に見ましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たちは先週、一緒に映画を見ましたね。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -4232,9 +4255,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "ねえ、お母さんはどこですか。",
+          "new": "お母さんは毎日忙しいですね。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: ねえ、お母さんはどこですか。 (ねえ here is an attention-getting interjection, not the sentence-final confirmation tag; a real question about where Mom is cannot take the ね tag without changing the English to 'I wonder'.)"
+        "model": "claude-code"
       }
     }
   },
@@ -6181,6 +6211,14 @@
           {
             "japanese": "日本に行ったことがあります。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は日本へ行ったことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は日本に行ったことがあります。",
+            "kind": "valid"
           }
         ]
       },
@@ -6191,6 +6229,12 @@
           "sono",
           "eiga",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私はその映画を見たことがない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6216,6 +6260,12 @@
           "nihon",
           "ryouri",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたは日本の料理を食べたことがありますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6242,6 +6292,12 @@
           "kono",
           "ryouri",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "この料理を彼は食べたことがあります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6251,6 +6307,12 @@
           "kare",
           "nihon",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼は日本へ来たことがあります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6259,15 +6321,27 @@
         "vocabulary_slugs": [
           "yuki",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は雪を見たことがありません。",
+            "kind": "valid"
+          }
         ]
       },
       {
-        "japanese": "たまに朝ご飯を食べないことがあります。",
-        "english": "Sometimes I skip breakfast.",
+        "japanese": "この雑誌を読んだことがありますか。",
+        "english": "Have you ever read this magazine?",
         "vocabulary_slugs": [
-          "tama-ni",
-          "asagohan",
-          "taberu"
+          "kono",
+          "zasshi",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたはこの雑誌を読んだことがありますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6277,6 +6351,24 @@
           "sensei",
           "tegami",
           "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "手紙を先生に書いたことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は先生に手紙を書いたことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生へ手紙を書いたことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は手紙を先生に書いたことがあります。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -6284,9 +6376,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "たまに朝ご飯を食べないことがあります。",
+          "new": "この雑誌を読んだことがありますか。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: たまに朝ご飯を食べないことがあります。 (This is the non-past ないことがある habit pattern, not たことがある; 'sometimes I skip breakfast' with たまに cannot be said with たことがある.)"
+        "model": "claude-code"
       }
     }
   },
@@ -21185,6 +21284,12 @@
         "vocabulary_slugs": [
           "densha",
           "okureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "電車は遅れたわけだ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -21196,13 +21301,20 @@
         ]
       },
       {
-        "japanese": "空が暗いから、雨が降るわけだ。",
-        "english": "The sky's gone dark, so of course it's about to rain.",
+        "japanese": "雨が降っているから、空が暗いわけだ。",
+        "english": "It's raining, so no wonder the sky is dark.",
         "vocabulary_slugs": [
-          "sora",
-          "kurai",
           "ame-v",
-          "furu-rain"
+          "furu-rain",
+          "iru-exist",
+          "sora",
+          "kurai"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨が降っているから、空は暗いわけだ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -21230,6 +21342,14 @@
           {
             "japanese": "日本に住んでいたから、日本語が上手なわけです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "日本に住んでいたから、彼は日本語が上手なわけです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が日本に住んでいたから、日本語が上手なわけです。",
+            "kind": "valid"
           }
         ]
       },
@@ -21241,6 +21361,12 @@
           "renshuu-suru",
           "jouzu",
           "naru-become"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎日練習をしたから、上手になったわけだ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -21250,6 +21376,12 @@
           "dakara",
           "kanojo",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "だから、彼女が来なかったわけですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -21261,6 +21393,12 @@
           "aru",
           "heya",
           "samui"
+        ],
+        "alternates": [
+          {
+            "japanese": "窓が開けてあるから、部屋は寒いわけです。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -21268,9 +21406,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "空が暗いから、雨が降るわけだ。",
+          "new": "雨が降っているから、空が暗いわけだ。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 空が暗いから、雨が降るわけだ。 (Rain is a guess, not an established fact, so わけだ sounds wrong here (natural is はずだ/だろう); no わけ sentence with these words says the English naturally.)"
+        "model": "claude-code"
       }
     }
   },
@@ -23158,6 +23303,10 @@
           {
             "japanese": "弟ってば、また傘を忘れたの？",
             "kind": "valid"
+          },
+          {
+            "japanese": "弟ったら、傘をまた忘れたの？",
+            "kind": "valid"
           }
         ]
       },
@@ -23174,6 +23323,10 @@
           {
             "japanese": "兄ってば、話を全然聞かない。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄ったら、全然話を聞かない。",
+            "kind": "valid"
           }
         ]
       },
@@ -23189,6 +23342,10 @@
         "alternates": [
           {
             "japanese": "彼ってば、いつも宿題を忘れる。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼ったら、宿題をいつも忘れる。",
             "kind": "valid"
           }
         ]
@@ -23210,15 +23367,25 @@
         "alternates": []
       },
       {
-        "japanese": "猫がまた花を壊したってば。",
-        "english": "I'm telling you, the cat wrecked the flowers again.",
+        "japanese": "猫がまた私の魚を食べたってば。",
+        "english": "I'm telling you, the cat ate my fish again.",
         "vocabulary_slugs": [
           "neko",
           "mata",
-          "hana-v",
-          "kowasu"
+          "watashi",
+          "sakana",
+          "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "また猫が私の魚を食べたってば。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "猫が私の魚をまた食べたってば。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "友達ってば、また遅刻した。",
@@ -23258,9 +23425,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "猫がまた花を壊したってば。",
+          "new": "猫がまた私の魚を食べたってば。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 猫がまた花を壊したってば。 (花を壊す is not a natural collocation for living flowers; keeping 花 and 壊す with the English 'wrecked the flowers' has no natural sentence.)"
+        "model": "claude-code"
       }
     }
   },
@@ -24057,17 +24231,20 @@
         ]
       },
       {
-        "japanese": "新しいレストランに行った。料理はおいしかった。ところが、値段がとても高かった。",
-        "english": "I went to a new restaurant. The food was delicious. However, the price was very expensive.",
+        "japanese": "新しいレストランに行った。ところが、料理はおいしくなかった。",
+        "english": "I went to a new restaurant. However, the food wasn't good.",
         "vocabulary_slugs": [
           "atarashii-adj",
           "resutoran",
           "iku-v",
           "ryouri",
-          "oishii",
-          "nedan",
-          "totemo",
-          "takai-adj"
+          "oishii"
+        ],
+        "alternates": [
+          {
+            "japanese": "新しいレストランに行った。ところが、料理がおいしくなかった。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24078,6 +24255,20 @@
           "eki",
           "matsu",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅で友達を待った。ところが、友達は来なかった。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "友達を駅で待った。ところが、友達が来なかった。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "駅で友達を待った。ところが、友達が来なかった。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24108,6 +24299,12 @@
           "iku-v",
           "saifu",
           "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "店へ行った。ところが、財布を忘れた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24121,6 +24318,12 @@
           "sarada",
           "zenbu",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "弟は野菜が嫌いだ。ところが、このサラダを全部食べた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24132,6 +24335,12 @@
           "deru-v",
           "densha",
           "okureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "家を早く出た。ところが、電車が遅れた。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -24139,9 +24348,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "新しいレストランに行った。料理はおいしかった。ところが、値段がとても高かった。",
+          "new": "新しいレストランに行った。ところが、料理はおいしくなかった。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 新しいレストランに行った。料理はおいしかった。ところが、値段がとても高かった。 (Good food and high price are two simultaneous qualities of one place (反面/でも territory), not an overturned expectation.)"
+        "model": "claude-code"
       }
     }
   },
@@ -24412,23 +24628,31 @@
         ]
       },
       {
-        "japanese": "バスが来ません。そこで、どうしましょうか。",
-        "english": "The bus isn't coming. So what should we do?",
+        "japanese": "バスが来ませんでした。そこで、駅まで歩きました。",
+        "english": "The bus didn't come. So I walked to the station.",
         "vocabulary_slugs": [
           "basu",
           "kuru-v",
-          "dou",
-          "suru"
-        ]
+          "eki",
+          "aruku"
+        ],
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "バスが来ません。そこで、どうしましょうか。",
+          "new": "バスが来ませんでした。そこで、駅まで歩きました。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: バスが来ません。そこで、どうしましょうか。 (そこで must lead to an action taken, not a question; the English 'So what should we do?' needs それで/じゃあ, so no そこで sentence says it.)"
+        "model": "claude-code"
       }
     }
   },
@@ -24669,6 +24893,12 @@
           "ryouri",
           "tsukuru",
           "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "家へ帰った。すると母が料理を作っていた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24682,13 +24912,27 @@
         ]
       },
       {
-        "japanese": "先生に質問した。すると、先生は何も言わなかった。",
-        "english": "I asked the teacher a question. Then the teacher said nothing.",
+        "japanese": "先生に質問した。すると、先生はゆっくり説明した。",
+        "english": "I asked the teacher a question. Then the teacher explained it slowly.",
         "vocabulary_slugs": [
           "sensei",
           "shitsumon-suru",
-          "nani-mo",
-          "iu-v"
+          "yukkuri",
+          "setsumei-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生に質問をした。すると、先生はゆっくり説明した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生に質問した。すると、先生がゆっくり説明した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生に質問をした。すると、先生がゆっくり説明した。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -24700,6 +24944,12 @@
           "magaru",
           "nani",
           "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "角を右へ曲がりました。すると、何がありましたか。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -24707,9 +24957,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "先生に質問した。すると、先生は何も言わなかった。",
+          "new": "先生に質問した。すると、先生はゆっくり説明した。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 先生に質問した。すると、先生は何も言わなかった。 (Asking sets up an answer; getting silence contradicts it, which the lesson assigns to ところが, and the English needs that meaning.)"
+        "model": "claude-code"
       }
     }
   },
@@ -25136,15 +25393,16 @@
         ]
       },
       {
-        "japanese": "兄は野菜が嫌いです。反対に、あなたは好きですか。",
-        "english": "My older brother hates vegetables. Do you, the other way around, like them?",
+        "japanese": "兄は野菜が嫌いです。反対に、姉は野菜が好きです。",
+        "english": "My older brother hates vegetables. My older sister, on the other hand, likes them.",
         "vocabulary_slugs": [
           "ani",
           "yasai",
           "kirai",
-          "anata",
+          "ane",
           "suki"
-        ]
+        ],
+        "alternates": []
       },
       {
         "japanese": "薬を飲んだのに、反対に熱が上がった。",
@@ -25161,9 +25419,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "兄は野菜が嫌いです。反対に、あなたは好きですか。",
+          "new": "兄は野菜が嫌いです。反対に、姉は野菜が好きです。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 兄は野菜が嫌いです。反対に、あなたは好きですか。 (反対に states a reversed outcome; it cannot attach to a question that asks whether the reverse is true, and no word order with these words fixes that.)"
+        "model": "claude-code"
       }
     }
   },
@@ -25207,6 +25472,12 @@
           "watashi",
           "ichiban",
           "tomodachi"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼こそ一番の友達です。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25226,11 +25497,22 @@
         ]
       },
       {
-        "japanese": "今日こそ忙しいです。",
-        "english": "Today, of all days, is busy.",
+        "japanese": "今日こそ部屋を掃除します。",
+        "english": "Today for sure, I'll clean my room.",
         "vocabulary_slugs": [
           "kyou",
-          "isogashii"
+          "heya",
+          "souji-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日こそ部屋の掃除をします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日こそ私の部屋を掃除します。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25257,6 +25539,12 @@
         "vocabulary_slugs": [
           "kyou",
           "chikoku-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日こそ遅刻をしません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25272,9 +25560,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "今日こそ忙しいです。",
+          "new": "今日こそ部屋を掃除します。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 今日こそ忙しいです。 (Time word + こそ expresses resolve or hope, not a plain busy state; 'of all days' needs よりによって, not こそ.)"
+        "model": "claude-code"
       }
     }
   },
@@ -25569,14 +25864,15 @@
         ]
       },
       {
-        "japanese": "傘さえ持っていれば、濡れなかったのに。",
-        "english": "If only I'd had an umbrella, I wouldn't have gotten wet.",
+        "japanese": "傘さえ持っていれば、濡れません。",
+        "english": "As long as you have an umbrella, you won't get wet.",
         "vocabulary_slugs": [
           "kasa",
           "motsu",
           "iru-exist",
           "nureru"
-        ]
+        ],
+        "alternates": []
       },
       {
         "japanese": "名前さえ書けば、問題ありません。",
@@ -25586,6 +25882,12 @@
           "kaku",
           "mondai",
           "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "名前さえ書けば、問題はありません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25595,6 +25897,12 @@
           "inu",
           "iru-exist",
           "sabishii"
+        ],
+        "alternates": [
+          {
+            "japanese": "犬さえいれば、寂しくありません。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -25602,9 +25910,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "傘さえ持っていれば、濡れなかったのに。",
+          "new": "傘さえ持っていれば、濡れません。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 傘さえ持っていれば、濡れなかったのに。 (Past counterfactual regret; the lesson says さえ〜ば only covers conditions still open, and the English needs the past.)"
+        "model": "claude-code"
       }
     }
   },
@@ -25644,6 +25959,14 @@
           {
             "japanese": "会社の入口は社員だけ使えます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "会社の入口は社員のみが使えます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "会社の入口は社員だけが使えます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -25675,6 +25998,22 @@
           {
             "japanese": "試験の間は日本語だけ話せます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "試験の間は日本語のみが話せます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "試験の間は日本語だけが話せます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "試験の間、日本語のみ話せます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "試験の間、日本語だけ話せます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -25705,6 +26044,14 @@
           {
             "japanese": "この仕事は大人だけできます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "この仕事は大人のみができます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この仕事は大人だけができます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -25734,6 +26081,30 @@
         "alternates": [
           {
             "japanese": "昨日の会議には部長だけ出席した。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "昨日の会議には部長のみが出席した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昨日の会議には部長だけが出席した。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "昨日の会議に部長のみ出席した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昨日の会議に部長だけ出席した。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "部長のみ昨日の会議に出席した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "部長だけ昨日の会議に出席した。",
             "kind": "other_grammar"
           }
         ]
@@ -25775,7 +26146,7 @@
       "review_status": "draft",
       "answers_check": {
         "version": "1",
-        "skipped": "ingest rule 6: derived other_grammar pairs are malformed (社員だけがが…, 日本語だけがを…, 大人だけがが…, 部長だけがが…) or rejected (会社の入口を社員だけが使えます。, 試験の間、日本語だけが話せます。); rule 4: 6 passing sentences, need 8. Cause is other_grammar_pairs chaining on のみが/のみを candidates, not the judge verdicts."
+        "model": "claude-code"
       }
     }
   },
@@ -26457,16 +26828,24 @@
           "iru-exist",
           "akachan",
           "naku"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達と電話をしている最中に、赤ちゃんが泣いた。",
+            "kind": "valid"
+          }
         ]
       },
       {
-        "japanese": "授業の最中に、携帯は使いません。",
-        "english": "I don't use my phone in the middle of class.",
+        "japanese": "授業の最中に、友達の携帯が鳴りました。",
+        "english": "A friend's phone rang right in the middle of class.",
         "vocabulary_slugs": [
           "jugyou",
+          "tomodachi",
           "keitai",
-          "tsukau"
-        ]
+          "naru-ring"
+        ],
+        "alternates": []
       },
       {
         "japanese": "先生の話の最中に、寝ましたか。",
@@ -26497,6 +26876,12 @@
           "kao",
           "ue",
           "noru"
+        ],
+        "alternates": [
+          {
+            "japanese": "寝ている最中に、猫が私の顔の上に乗った。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26508,6 +26893,12 @@
           "iru-exist",
           "tamago",
           "otosu"
+        ],
+        "alternates": [
+          {
+            "japanese": "料理している最中に、卵を落とした。",
+            "kind": "valid"
+          }
         ]
       }
     ],
@@ -26515,9 +26906,16 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "授業の最中に、携帯は使いません。",
+          "new": "授業の最中に、友達の携帯が鳴りました。",
+          "reason": "hand fix: checker marked it unfixable"
+        }
+      ],
       "answers_check": {
         "version": "1",
-        "skipped": "unfixable: 授業の最中に、携帯は使いません。 (A habitual rule, not a sudden event; 最中に cannot carry this English (授業中に would).)"
+        "model": "claude-code"
       }
     }
   },

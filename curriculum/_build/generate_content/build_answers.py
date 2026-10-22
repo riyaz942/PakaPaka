@@ -172,12 +172,16 @@ def merged_entry(entry, candidates, reply, model, chunks):
     pairs added. review_status is left alone."""
     entry = copy.deepcopy(entry)
     valid = {v["candidate"] for v in reply["verdicts"] if v["verdict"] == "valid"}
+    # The sentence's own swaps only: a pair added for one candidate is not a
+    # swap of the sentence (社員だけが… would give 社員だけがが…).
+    own_others = [[a["japanese"] for a in s.get("alternates", []) if a["kind"] == "other_grammar"]
+                  for s in entry["sentences"]]
     for i, candidate in candidates:
         if candidate not in valid:
             continue
         sentence = entry["sentences"][i]
         alternates = sentence.setdefault("alternates", [])
-        others = [a["japanese"] for a in alternates if a["kind"] == "other_grammar"]
+        others = own_others[i]
         alternates.append({"japanese": candidate, "kind": "valid"})
         present = {a["japanese"] for a in alternates}
         for pair in other_grammar_pairs(sentence["japanese"], chunks.get(i), others, candidate):
