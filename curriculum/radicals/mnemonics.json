@@ -267,7 +267,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "bun-writing": {
@@ -1125,7 +1125,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "kawa": {
@@ -1520,7 +1520,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "miru": {
@@ -2091,7 +2091,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "shiro": {
@@ -2105,8 +2105,8 @@
     }
   },
   "shita": {
-    "mnemonic_text": "This radical combines <part form=\"千\">thousand</part> and <part form=\"口\">mouth</part>. A wide open <part form=\"口\">mouth</part> sits below a tower of a <part form=\"千\">thousand</part> ice cream scoops. A long pink <radical form=\"舌\">tongue</radical> reaches up to lick them all.",
-    "image_prompt": "A huge, wide open mouth at the bottom of the scene. Above it rises a very tall, wobbly tower of a thousand colourful ice cream scoops. A long pink <radical>tongue</radical> stretches up out of the mouth and licks the whole tower, stripe by stripe. Flat cartoon style.",
+    "mnemonic_text": "This radical combines <part form=\"千\">thousand</part> and <part form=\"口\">mouth</part>. A doctor sees a <part form=\"千\">thousand</part> patients, and each one opens a wide <part form=\"口\">mouth</part> and sticks out a long <radical form=\"舌\">tongue</radical> to say ahh.",
+    "image_prompt": "A wide open mouth at the bottom of the scene. A long pink <radical>tongue</radical> sticks straight up out of it. A flat wooden stick lies across the tongue, and a small torch leans on its top. Flat cartoon style.",
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
@@ -2602,7 +2602,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "walled-path": {
