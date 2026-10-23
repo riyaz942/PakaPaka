@@ -619,7 +619,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "gandare": {
@@ -866,7 +866,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "hitoashi": {
@@ -1023,7 +1023,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "iwaku": {
@@ -1207,7 +1207,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "ko": {
@@ -1438,7 +1438,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "market": {
@@ -1466,7 +1466,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "measuring-box": {
@@ -1511,7 +1511,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "mingle": {
@@ -2337,7 +2337,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "tehen": {
@@ -2442,12 +2442,12 @@
     }
   },
   "tomeru": {
-    "mnemonic_text": "This radical looks like a foot planted flat on the ground, with the heel and toes dug in. The foot will not take one more step. It has come to a <radical form=\"止\">stop</radical>.",
-    "image_prompt": "A single cartoon foot planted flat on the ground, seen from the side. The long bottom stroke is the flat sole; the tall upright and the short side stem stick up like the heel and toes, dug firmly into the ground. The foot is frozen mid-stride and will not move: a full <radical>stop</radical>.",
+    "mnemonic_text": "This radical looks like a roadblock barricade. A long beam lies along the bottom, a tall post rises from it with one short arm sticking out to the side, and a shorter post stands at the far end. Its red and white stripes tell every walker to <radical form=\"止\">stop</radical>.",
+    "image_prompt": "A striped roadwork barricade seen from the front. A long beam lies along the bottom on two stubby feet. A tall post rises from left of centre with one short arm sticking out to the right halfway up, and a second, shorter post stands at the right end, separate from the first. The red and white stripes mean <radical>stop</radical>.",
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "tool": {
@@ -2638,7 +2638,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "wind": {

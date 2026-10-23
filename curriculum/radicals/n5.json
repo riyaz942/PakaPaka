@@ -728,7 +728,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/west.webp",
       "sort_order": 45
@@ -761,7 +761,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/mannaka.webp",
       "sort_order": 47
@@ -803,7 +803,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/knife.webp",
       "sort_order": 50
@@ -817,7 +817,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/fuyugashira.webp",
       "sort_order": 51
@@ -831,7 +831,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/itoko.webp",
       "sort_order": 52
@@ -850,7 +850,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/hito.webp",
       "sort_order": 53
@@ -930,7 +930,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/me.webp",
       "sort_order": 58
@@ -944,7 +944,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/mimi.webp",
       "sort_order": 59
@@ -958,7 +958,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/te.webp",
       "sort_order": 60
@@ -967,12 +967,12 @@
       "slug": "tomeru",
       "primary_form": "止",
       "meaning": "stop",
-      "mnemonic_text": "This radical looks like a foot planted flat on the ground, with the heel and toes dug in. The foot will not take one more step. It has come to a <radical form=\"止\">stop</radical>.",
-      "image_prompt": "A single cartoon foot planted flat on the ground, seen from the side. The long bottom stroke is the flat sole; the tall upright and the short side stem stick up like the heel and toes, dug firmly into the ground. The foot is frozen mid-stride and will not move: a full <radical>stop</radical>.",
+      "mnemonic_text": "This radical looks like a roadblock barricade. A long beam lies along the bottom, a tall post rises from it with one short arm sticking out to the side, and a shorter post stands at the far end. Its red and white stripes tell every walker to <radical form=\"止\">stop</radical>.",
+      "image_prompt": "A striped roadwork barricade seen from the front. A long beam lies along the bottom on two stubby feet. A tall post rises from left of centre with one short arm sticking out to the right halfway up, and a second, shorter post stands at the right end, separate from the first. The red and white stripes mean <radical>stop</radical>.",
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/tomeru.webp",
       "sort_order": 61
