@@ -123,6 +123,34 @@ describe('KanjiDetail', () => {
     await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
   });
 
+  it("leads with on'yomi and demotes kun'yomi to a note pointing at vocabulary", () => {
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+      />,
+    );
+
+    expect(screen.getByTestId('kanji-onyomi-card')).toBeTruthy();
+    expect(screen.queryByTestId('kanji-kunyomi-card')).toBeNull();
+    expect(screen.getByTestId('kanji-kunyomi-note')).toBeTruthy();
+    expect(screen.getByText('You learn these with the vocabulary')).toBeTruthy();
+  });
+
+  it("keeps the full card for a kanji with only kun'yomi", () => {
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={[{ id: '2', readingType: 'kunyomi', reading: 'ひ', sortOrder: 2 }]}
+        acceptedAnswers={acceptedAnswers}
+      />,
+    );
+
+    expect(screen.getByTestId('kanji-kunyomi-card')).toBeTruthy();
+    expect(screen.queryByTestId('kanji-kunyomi-note')).toBeNull();
+  });
+
   it('opens the reading primer from the readings heading, on any path', () => {
     render(
       <KanjiDetail
