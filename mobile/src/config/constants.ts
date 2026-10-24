@@ -70,6 +70,15 @@ export const LESSON_BACKLOG_THROTTLE_START = 50;
 /** Review backlog size at which the daily lesson allowance reaches zero. */
 export const LESSON_BACKLOG_THROTTLE_FULL = 150;
 
+/** Daily lesson items per new grammar point per day (D6: cap = max(1, round(daily / this))). */
+export const LESSON_GRAMMAR_DAILY_PER_ITEMS = 15;
+
+/** New grammar waits while recent Apprentice grammar reaches this many times the daily cap. */
+export const LESSON_GRAMMAR_PILE_LIMIT_PER_DAILY_CAP = 10;
+
+/** Only grammar started within this many days counts toward the pile limit. */
+export const LESSON_GRAMMAR_PILE_WINDOW_DAYS = 14;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 
