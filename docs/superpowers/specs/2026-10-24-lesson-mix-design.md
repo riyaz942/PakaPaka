@@ -1,7 +1,7 @@
 # Lesson mix — WaniKani-style waves, weights and a grammar brake
 
 **Date:** 2026-10-24
-**Status:** Design approved 2026-10-24 — not built ([plan](../plans/2026-10-24-lesson-mix.md))
+**Status:** Code done; in-app check pending ([plan](../plans/2026-10-24-lesson-mix.md))
 **Scope:** Which new items a lesson picks, and in what mix. Lesson planner, lesson-only readiness gates, grammar pacing, the "waiting" state on Lesson / Home / goal ring. Reviews are not changed.
 
 ---
