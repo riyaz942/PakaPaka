@@ -307,6 +307,42 @@ function BlockView({
           ))}
         </View>
       );
+    case 'table':
+      return (
+        <View
+          className={cn(
+            'rounded-radius-md border border-border bg-surface px-space-md py-space-sm',
+            !first && 'mt-space-md',
+          )}
+          testID="lesson-table">
+          <View className="flex-row gap-space-sm">
+            {block.header.map((cellSpans, cellIndex) => (
+              <View key={cellIndex} className="flex-1">
+                <RichLine
+                  spans={cellSpans}
+                  mode={mode}
+                  knownKanji={knownKanji}
+                  baseClassName="text-body-sm font-ui-medium text-secondary"
+                />
+              </View>
+            ))}
+          </View>
+          {block.rows.map((row, rowIndex) => (
+            <View key={rowIndex} className="mt-space-sm flex-row gap-space-sm">
+              {row.map((cellSpans, cellIndex) => (
+                <View key={cellIndex} className="flex-1">
+                  <RichLine
+                    spans={cellSpans}
+                    mode={mode}
+                    knownKanji={knownKanji}
+                    baseClassName={PROSE_CLASS}
+                  />
+                </View>
+              ))}
+            </View>
+          ))}
+        </View>
+      );
     case 'jp':
       return (
         <View
@@ -335,7 +371,7 @@ function BlockView({
 /**
  * Renders a grammar lesson body (`explanation_markdown`, content pipeline
  * Phase 0.5). Supports the minimal markdown the lesson generator emits —
- * headings, paragraphs, lists, `>` callouts, and ```jp example fences — with
+ * headings, paragraphs, lists, `>` callouts, pipe tables, and ```jp example fences — with
  * furigana bracket notation resolved anywhere Japanese appears.
  */
 export function LessonMarkdown({ markdown, mode, knownKanji }: LessonMarkdownProps) {
