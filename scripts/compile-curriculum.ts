@@ -118,6 +118,7 @@ type VocabItem = {
   furigana?: string;
   meaning: string;
   word_type?: string;
+  conjugation_class?: string;
   reading_composition?: string;
   mnemonic_text?: string;
   meaning_mnemonic?: string;
@@ -630,8 +631,8 @@ export function compileCurriculum(
     db.exec(CURRICULUM_DDL);
 
     const insertItem = db.prepare(`
-      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, word_type, reading_composition, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
-      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @word_type, @reading_composition, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
+      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, word_type, conjugation_class, reading_composition, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
+      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @word_type, @conjugation_class, @reading_composition, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
     `);
 
     const insertReading = db.prepare(`
@@ -764,6 +765,7 @@ export function compileCurriculum(
         furigana: null,
         meaning: radical.meaning,
         word_type: null,
+        conjugation_class: null,
         reading_composition: null,
         mnemonic_text: radical.mnemonic_text ?? null,
         meaning_mnemonic: null,
@@ -798,6 +800,7 @@ export function compileCurriculum(
         furigana: null,
         meaning: kanjiItem.meaning,
         word_type: null,
+        conjugation_class: null,
         reading_composition: null,
         mnemonic_text: kanjiItem.mnemonic_text ?? null,
         meaning_mnemonic: kanjiItem.meaning_mnemonic ?? null,
@@ -842,6 +845,7 @@ export function compileCurriculum(
         furigana: vocab.furigana ?? null,
         meaning: vocab.meaning,
         word_type: vocab.word_type ?? null,
+        conjugation_class: vocab.conjugation_class ?? null,
         reading_composition: vocab.reading_composition ?? null,
         mnemonic_text: vocab.mnemonic_text ?? null,
         meaning_mnemonic: vocab.meaning_mnemonic ?? null,
@@ -895,6 +899,7 @@ export function compileCurriculum(
         furigana: null,
         meaning: grammarItem.meaning,
         word_type: null,
+        conjugation_class: null,
         reading_composition: null,
         // The example's words carry the same markers a lesson does (grammar
         // mnemonics spec §6a), so they resolve to item ids the same way.

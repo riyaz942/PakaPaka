@@ -502,6 +502,36 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('compiles conjugation_class for vocabulary and NULL when absent or not vocabulary', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      compileCurriculum(dbPath, curriculumDir);
+      const readClasses = () => {
+        const db = new Database(dbPath, { readonly: true });
+        try {
+          return db
+            .prepare('SELECT item_type, slug, conjugation_class FROM items ORDER BY id')
+            .all() as { item_type: string; slug: string; conjugation_class: string | null }[];
+        } finally {
+          db.close();
+        }
+      };
+      expect(readClasses().every((row) => row.conjugation_class === null)).toBe(true);
+
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+      vocabFile.items[0].conjugation_class = 'godan';
+      fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+      compileCurriculum(dbPath, curriculumDir);
+
+      const rows = readClasses();
+      expect(rows.find((row) => row.slug === 'ichi-v')?.conjugation_class).toBe('godan');
+      expect(rows.filter((row) => row.conjugation_class !== null)).toHaveLength(1);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('throws on an unresolved visually similar slug', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
     const curriculumDir = path.join(tempDir, 'curriculum');

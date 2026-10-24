@@ -104,6 +104,11 @@ _SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "rev
 #: means the item ships with no `word_type`, never an empty or guessed one.
 VOCAB_WORD_TYPES_PATH = os.path.join(BUILD_DIR, "vocab_word_types.json")
 
+#: Conjugation class per vocabulary slug, from the same script (plus reviewed
+#: overrides). A missing entry means the item ships with no `conjugation_class`
+#: and the app shows no conjugation table for it.
+VOCAB_CONJUGATION_CLASSES_PATH = os.path.join(BUILD_DIR, "vocab_conjugation_classes.json")
+
 # Kanji/kana runs (incl. 々〆 and the long-vowel mark) for the lesson-markdown
 # furigana pass below.
 _JP_RUN_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿々〆ー]+")
@@ -327,11 +332,20 @@ def _load_vocab_word_types():
         return {slug: ", ".join(labels) for slug, labels in json.load(f).items()}
 
 
+def _load_vocab_conjugation_classes():
+    """{slug: "godan"} from the checked-in distillation, or {} when absent."""
+    if not os.path.exists(VOCAB_CONJUGATION_CLASSES_PATH):
+        return {}
+    with open(VOCAB_CONJUGATION_CLASSES_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
     mnemonics = _load_sidecar(VOCAB_MNEMONICS_PATH)
     examples = _load_sidecar(VOCAB_EXAMPLES_PATH)
     word_types = _load_vocab_word_types()
+    conjugation_classes = _load_vocab_conjugation_classes()
     vocab_forms = {**(extra_vocab_forms or {}),
                    **{v["slug"]: v["form"] for v in vocab_entries}}
     errors = []
@@ -350,6 +364,9 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
         word_type = word_types.get(v["slug"])
         if word_type:
             item["word_type"] = word_type
+        conjugation_class = conjugation_classes.get(v["slug"])
+        if conjugation_class:
+            item["conjugation_class"] = conjugation_class
         # Rev 6: how the reading is built, computed from the word's kanji and
         # their KANJIDIC readings rather than written. It replaces the derivation
         # note the reading mnemonic used to carry, which is why 745 of N5+N4's
