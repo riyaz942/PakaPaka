@@ -187,7 +187,7 @@ All in `mobile/src/config/constants.ts`, each with a one-line comment in the fil
 
 | Name | Value |
 | --- | --- |
-| `LESSON_TYPE_LEAD` | `{ radical: 4, kanji: 2, vocabulary: 1 }` |
+| `LESSON_TYPE_LEAD` | `{ radical: 3, kanji: 1.5, vocabulary: 1 }` (tuned 2026-10-24, was `4 / 2 / 1`) |
 | `LESSON_VOCAB_OPEN_MIN_KANJI` | 5 |
 | `LESSON_GRAMMAR_OPEN_MIN_VOCAB` | 10 |
 | `LESSON_GRAMMAR_DAILY_PER_ITEMS` | 15 |
@@ -195,6 +195,8 @@ All in `mobile/src/config/constants.ts`, each with a one-line comment in the fil
 | `LESSON_GRAMMAR_PILE_WINDOW_DAYS` | 14 |
 | `LESSON_HEAVY_PER_ITEMS` | 5 |
 | `LESSON_HEAVY_LOOKAHEAD` | 10 |
+
+**Tuning 2026-10-24:** after the final review fixed D9 (leftover slots are now drawn without replacement, so a type moves at most ±1), the simulator's Immersive "all correct" run failed the variation line with lead `4 / 2 / 1`: 74 of 104 consecutive lessons differed (71% < 80%). Six lead values were tried. Only `3 / 1.5 / 1` passes every line: relaxed 81%, immersive 84%. The margin is small; recheck after any change to the mix.
 
 Remove `ROUND_QUOTAS` and the floor pass. Plan 04's starvation test ("≥1 grammar whenever grammar exists") is replaced by D5–D7 tests.
 

@@ -2,10 +2,11 @@ import { createSeededRng } from '@/utils/seededRng';
 
 import { allocateTypeSlots, type MixBucket } from './lessonMix';
 
+// Sizes assume LESSON_TYPE_LEAD 3 / 1.5 / 1.
 const early: MixBucket[] = [
-  { type: 'radical', available: 50, remaining: 118 }, // weight 472
-  { type: 'kanji', available: 50, remaining: 150 }, // weight 300
-  { type: 'vocabulary', available: 50, remaining: 718 }, // weight 718 → quotas 1.58 / 1.01 / 2.41
+  { type: 'radical', available: 50, remaining: 472 }, // weight 1416
+  { type: 'kanji', available: 50, remaining: 600 }, // weight 900
+  { type: 'vocabulary', available: 50, remaining: 2154 }, // weight 2154 → quotas 1.58 / 1.01 / 2.41
 ];
 
 it('gives the leftover slot by the fractional parts', () => {
@@ -42,15 +43,15 @@ it('returns zeros for no buckets', () =>
 it('never moves a type more than one from its floor with two leftover slots', () => {
   // Quotas 1.7 / 1.6 / 1.7: floors 1/1/1, two leftover slots to draw.
   const even: MixBucket[] = [
-    { type: 'radical', available: 50, remaining: 85 },
-    { type: 'kanji', available: 50, remaining: 160 },
-    { type: 'vocabulary', available: 50, remaining: 340 },
+    { type: 'radical', available: 50, remaining: 340 },
+    { type: 'kanji', available: 50, remaining: 640 },
+    { type: 'vocabulary', available: 50, remaining: 1020 },
   ];
   // Quotas 3.4 / 0.8 / 0.8: floors 3/0/0, two leftover slots to draw.
   const skewed: MixBucket[] = [
-    { type: 'radical', available: 50, remaining: 17 },
-    { type: 'kanji', available: 50, remaining: 8 },
-    { type: 'vocabulary', available: 50, remaining: 16 },
+    { type: 'radical', available: 50, remaining: 68 },
+    { type: 'kanji', available: 50, remaining: 32 },
+    { type: 'vocabulary', available: 50, remaining: 48 },
   ];
   for (let s = 0; s < 1000; s++) {
     const a = allocateTypeSlots(5, even, createSeededRng(`even:${s}`));

@@ -80,7 +80,7 @@ export const LESSON_GRAMMAR_PILE_LIMIT_PER_DAILY_CAP = 10;
 export const LESSON_GRAMMAR_PILE_WINDOW_DAYS = 14;
 
 /** Lesson type share ∝ lead × unstarted items of that type in the level (D8). */
-export const LESSON_TYPE_LEAD = { radical: 4, kanji: 2, vocabulary: 1 } as const;
+export const LESSON_TYPE_LEAD = { radical: 3, kanji: 1.5, vocabulary: 1 } as const;
 
 /** Started-or-known kanji before a word with no `requires` kanji is ready for lessons (D4). */
 export const LESSON_VOCAB_OPEN_MIN_KANJI = 5;
