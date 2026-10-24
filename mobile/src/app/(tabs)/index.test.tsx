@@ -118,7 +118,18 @@ let mockOnboardingCompleted = true;
 // and ordering guarantees, not a re-implementation of them.
 let mockHomeLayoutStored: string | null = null;
 
+// Lesson settings for the Home lesson card. Unset (null) keeps the allowance
+// read failing, so the card shows its generic subtitle as before.
+let mockLessonSettings: { daily: number; size: number } | null = null;
+
+function mockLessonSetting(key: 'daily' | 'size'): number {
+  if (!mockLessonSettings) throw new Error('lesson settings not set');
+  return mockLessonSettings[key];
+}
+
 jest.mock('@/data/user/preferencesRepository', () => ({
+  getDailyLessonItems: () => mockLessonSetting('daily'),
+  getLessonItemCount: () => mockLessonSetting('size'),
   getStartingJlptLevel: () => 'N5',
   getReducedMotionEnabled: () => null,
   setReducedMotionEnabled: jest.fn(),
@@ -131,6 +142,16 @@ jest.mock('@/data/user/preferencesRepository', () => ({
 }));
 
 let mockLastBackedUpAt: string | null = null;
+
+jest.mock('@/data/user/lessonProgressRepository', () => ({
+  getLessonItemsStartedOn: () => 5,
+}));
+
+let mockLessonPlan: { items: unknown[]; waiting: boolean } = { items: [], waiting: false };
+
+jest.mock('@/data/lessonPlan', () => ({
+  buildLessonPlan: () => mockLessonPlan,
+}));
 
 /**
  * The backup nudge is web-only, so its tests have to move `Platform.OS`.
@@ -231,6 +252,8 @@ describe('HomeScreen', () => {
     mockIsOvershoot = false;
     mockSeenGuidanceCards.clear();
     clearReviewPriority();
+    mockLessonSettings = null;
+    mockLessonPlan = { items: [], waiting: false };
   });
 
   function seedBigBacklog(count = 45) {
@@ -790,5 +813,23 @@ describe('HomeScreen — customizable layout (Step 4)', () => {
 
     expect(screen.getByTestId('home-review-button')).toBeTruthy();
     expect(screen.getByTestId('home-learn-button')).toBeTruthy();
+  });
+  it('says new lesson items are waiting on reviews', () => {
+    // 15 a day, 5 started → 10 remaining, but nothing is ready yet.
+    mockLessonSettings = { daily: 15, size: 5 };
+    mockLessonPlan = { items: [], waiting: true };
+    render(<HomeScreen />);
+
+    expect(screen.getByText('New items unlock as your reviews level up')).toBeTruthy();
+    const card = screen.getByTestId('home-learn-button');
+    expect(card.props.accessibilityLabel).toBe('New lesson items are waiting on reviews');
+  });
+
+  it('keeps the remaining count when lesson items are ready', () => {
+    mockLessonSettings = { daily: 15, size: 5 };
+    mockLessonPlan = { items: [{ id: '1' }], waiting: false };
+    render(<HomeScreen />);
+
+    expect(screen.getByText('10 of 15 lesson items remaining today')).toBeTruthy();
   });
 });

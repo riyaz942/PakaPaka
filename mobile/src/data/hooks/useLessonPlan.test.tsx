@@ -1,9 +1,7 @@
-import { renderHook } from '@testing-library/react-native';
+import { act, renderHook } from '@testing-library/react-native';
 
-import type { LessonCandidate } from '@/core/lesson/lessonPlanner';
-import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
-import type { CurriculumListItem, OptInPoolItem } from '@/data/curriculum/itemRepository';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
+import { buildLessonPlan, type LessonPlan } from '@/data/lessonPlan';
 
 // One stable handle object: a fresh literal per render would re-fire the
 // db-keyed effect forever.
@@ -12,125 +10,54 @@ jest.mock('@/data/hooks/useDatabase', () => {
   return { useDatabase: () => handles };
 });
 
-let mockLevelPools = new Map<JLPTLevel, CurriculumListItem[]>();
-let mockOptInPool: OptInPoolItem[] = [];
-let mockOptInIds: string[] = [];
-
-jest.mock('@/data/curriculum/itemRepository', () => ({
-  listLessonCandidatePool: (_db: unknown, level: JLPTLevel) => mockLevelPools.get(level) ?? [],
-  getOptInPoolForItems: (_db: unknown, ids: string[]) => (ids.length > 0 ? mockOptInPool : []),
-  getRequiredParentsForItems: () => new Map(),
+jest.mock('@/data/lessonPlan', () => ({
+  ...jest.requireActual('@/data/lessonPlan'),
+  buildLessonPlan: jest.fn(),
 }));
 
-jest.mock('@/data/user/lessonOptInRepository', () => ({
-  listLessonOptInIds: () => mockOptInIds,
-}));
+const mockBuild = buildLessonPlan as jest.MockedFunction<typeof buildLessonPlan>;
 
-jest.mock('@/data/user/itemStudyStatusRepository', () => ({
-  listStudyStatusesForItems: () => new Map(),
-}));
+const plan: LessonPlan = {
+  items: [],
+  level: 'N5',
+  grammarLevel: 'N5',
+  size: 5,
+  allowance: { total: 15, remaining: 15 },
+  capReached: false,
+  waiting: true,
+};
 
-jest.mock('@/data/user/srsStateRepository', () => ({
-  getSrsStatesForItems: () => new Map(),
-  getDueSrsStates: () => [],
-}));
-
-jest.mock('@/data/user/lessonProgressRepository', () => ({
-  getLessonItemsStartedOn: () => 0,
-}));
-
-jest.mock('@/data/user/preferencesRepository', () => ({
-  getStartingJlptLevel: () => 'N5' as JLPTLevel,
-  getLessonItemCount: () => 5,
-  getDailyLessonItems: () => 15,
-}));
-
-jest.mock('@/data/user/vacationRepository', () => ({
-  isVacationActive: () => false,
-}));
-
-function listItem(
-  id: string,
-  itemType: CurriculumListItem['itemType'],
-  sortOrder: number,
-): CurriculumListItem {
-  return {
-    id,
-    slug: `slug-${id}`,
-    primaryForm: `form-${id}`,
-    meaning: `meaning-${id}`,
-    itemType,
-    sortOrder,
-  };
-}
-
-function planned(items: LessonCandidate[]): string[] {
-  return items.map((item) => item.id);
-}
-
-describe('useLessonPlan opt-in unlock', () => {
+describe('useLessonPlan', () => {
   beforeEach(() => {
-    mockLevelPools = new Map([
-      [
-        'N5',
-        [
-          listItem('r1', 'radical', 1),
-          listItem('k1', 'kanji', 1),
-          listItem('k2', 'kanji', 2),
-          listItem('v1', 'vocabulary', 1),
-        ],
-      ],
-    ]);
-    // 昨 (N3) and the N4 radical 乍 it is built from. `sort_order` restarts per
-    // level, so both collide with N5 numbering.
-    mockOptInPool = [
-      { ...listItem('1091', 'radical', 70), jlptLevel: 'N4' },
-      { ...listItem('2552', 'kanji', 67), jlptLevel: 'N3' },
-    ];
-    mockOptInIds = [];
+    mockBuild.mockReset();
+    mockBuild.mockReturnValue(plan);
   });
 
-  it('offers only the level pool when nothing is opted into', () => {
-    const { result } = renderHook(() => useLessonPlan());
+  it('returns the built plan and passes ignoreAllowance through', () => {
+    const { result } = renderHook(() => useLessonPlan({ ignoreAllowance: true }));
 
-    expect(planned(result.current.items)).not.toContain('2552');
-    expect(result.current.level).toBe('N5');
+    expect(result.current.waiting).toBe(true);
+    expect(result.current.isLoading).toBe(false);
+    expect(mockBuild).toHaveBeenCalledWith({}, {}, { ignoreAllowance: true });
   });
 
-  it('unions the opt-in and everything it is built from into the N5 pool', () => {
-    mockOptInIds = ['2552'];
-
+  it('builds again on refetch', () => {
     const { result } = renderHook(() => useLessonPlan());
-    const ids = planned(result.current.items);
+    const calls = mockBuild.mock.calls.length;
 
-    expect(ids).toContain('2552');
-    expect(ids).toContain('1091');
-    // Priority is per bucket, and radicals lead each round — so the radical the
-    // kanji needs is never taught after it.
-    expect(ids.indexOf('1091')).toBeLessThan(ids.indexOf('2552'));
-    // Ahead of the level's own items of the same type, despite a higher
-    // sortOrder, because the learner asked for it.
-    expect(ids.indexOf('2552')).toBeLessThan(ids.indexOf('k1'));
-    expect(ids.indexOf('1091')).toBeLessThan(ids.indexOf('r1'));
+    act(() => result.current.refetch());
+
+    expect(mockBuild.mock.calls.length).toBe(calls + 1);
   });
 
-  it('does not displace the rest of the level', () => {
-    mockOptInIds = ['2552'];
-
+  it('falls back to the empty plan when building throws', () => {
+    mockBuild.mockImplementation(() => {
+      throw new Error('db');
+    });
     const { result } = renderHook(() => useLessonPlan());
 
-    // The relaxed batch is 5, and every N5 type still gets its floor slot.
-    expect(planned(result.current.items)).toEqual(
-      expect.arrayContaining(['v1', 'r1', 'k1']),
-    );
-  });
-
-  it('lists an item once when the learner has caught up to their own opt-in', () => {
-    mockOptInIds = ['k2'];
-    mockOptInPool = [{ ...listItem('k2', 'kanji', 2), jlptLevel: 'N5' }];
-
-    const { result } = renderHook(() => useLessonPlan());
-
-    expect(planned(result.current.items).filter((id) => id === 'k2')).toHaveLength(1);
+    expect(result.current.items).toEqual([]);
+    expect(result.current.level).toBeNull();
+    expect(result.current.waiting).toBe(false);
   });
 });

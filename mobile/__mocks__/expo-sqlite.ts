@@ -822,6 +822,13 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows.filter((row) => allowedIds.has(row.item_id));
     }
 
+    // Lesson grammar starts: before the generic path, which would return
+    // known rows too and make the status filter look like it works.
+    if (/WHERE status = 'in_progress' AND item_id IN/i.test(trimmed)) {
+      const allowedIds = new Set(params);
+      return rows.filter((row) => row.status === 'in_progress' && allowedIds.has(row.item_id));
+    }
+
     if (/WHERE status = \?/i.test(trimmed)) {
       return rows.filter((row) => row.status === params[0]);
     }
@@ -1487,6 +1494,12 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
         rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
       }
       return rows;
+    }
+
+    // Ids of one type across every level (lesson learner counts). Without
+    // this the generic path returns every type.
+    if (/^SELECT id FROM items WHERE item_type = \?$/i.test(trimmed)) {
+      return rows.filter((row) => row.item_type === params[0]).map((row) => ({ id: row.id }));
     }
 
     if (/item_type = 'radical'/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {

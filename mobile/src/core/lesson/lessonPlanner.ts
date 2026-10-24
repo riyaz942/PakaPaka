@@ -1,5 +1,17 @@
+import {
+  LESSON_GRAMMAR_OPEN_MIN_VOCAB,
+  LESSON_HEAVY_LOOKAHEAD,
+  LESSON_HEAVY_PER_ITEMS,
+  LESSON_VOCAB_OPEN_MIN_KANJI,
+} from '@/config/constants';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
+import { GURU_PLUS } from '@/core/content/passageUnlock';
+import type { SRSStageLabel } from '@/core/srs/srs.types';
+
+import { isGrammarSlotOpen, type GrammarPace } from './grammarPace';
+import { allocateTypeSlots, type MixBucket, type MixType } from './lessonMix';
+import type { LessonWeight } from './lessonWeight';
 
 export type LessonItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
@@ -11,7 +23,7 @@ export type LessonCandidate = {
   sortOrder: number;
   /**
    * The learner asked for this item ahead of its level (opt-in unlock), so it
-   * sorts to the front of its type bucket.
+   * goes first in the lesson and keeps the started-parents rule (D13).
    *
    * Not a nicety: `sort_order` restarts at 1 per level *and* per type, so an
    * opted-in N3 kanji merged into an N5 pool would otherwise land wherever its
@@ -19,6 +31,18 @@ export type LessonCandidate = {
    * what the learner just asked for is a queue they stop trusting.
    */
   optedIn?: boolean;
+  /** D3: a lower-level radical or kanji pulled in because an active-level item needs it. */
+  lowerLevelPart?: boolean;
+  weight: LessonWeight;
+  /** Lesson-only gate: kanji → radical component ids; vocabulary → `requires` kanji ids; else []. */
+  gateParentIds: string[];
+};
+
+export type LessonLearnerContext = {
+  kanjiStartedOrKnown: number;
+  vocabStartedOrKnown: number;
+  grammarPace: GrammarPace;
+  dailyLessonItems: number;
 };
 
 export type LessonPlanInput = {
@@ -27,102 +51,154 @@ export type LessonPlanInput = {
   studyStatuses: Map<string, ContentStudyStatus>;
   /** Item ids that already have an SRS state (imported or previously started). */
   startedItemIds: Set<string>;
-  /** Required parents per item id, for dependency gating. */
+  /** `requires` parents — today's review-safe rule. */
   parentsByItemId: Map<string, ContentParentItem[]>;
-  /** Study status per parent id (superset of studyStatuses is fine). */
+  /** Statuses of every `requires` and gate parent. */
   parentStatuses: Map<string, ContentStudyStatus>;
+  /** Stored `srs_stage_label` of every `requires` and gate parent that has an SRS row. */
+  parentStages: Map<string, SRSStageLabel>;
+  learner: LessonLearnerContext;
   size: number;
+  rng: () => number;
 };
 
-/**
- * Interleave order and per-round quotas. Radicals lead each round because they
- * unlock kanji; grammar is throttled to one per round to keep lessons light.
- */
-const ROUND_QUOTAS: readonly { type: LessonItemType; quota: number }[] = [
-  { type: 'radical', quota: 2 },
-  { type: 'kanji', quota: 2 },
-  { type: 'vocabulary', quota: 2 },
-  { type: 'grammar', quota: 1 },
-];
+const TYPE_ORDER: readonly LessonItemType[] = ['radical', 'kanji', 'vocabulary', 'grammar'];
+const MIX_TYPES: readonly MixType[] = ['radical', 'kanji', 'vocabulary'];
+
+function isUnstarted(candidate: LessonCandidate, input: LessonPlanInput): boolean {
+  const status = input.studyStatuses.get(candidate.id);
+  return status !== 'known' && status !== 'in_progress' && !input.startedItemIds.has(candidate.id);
+}
+
+function passesStartedRule(candidate: LessonCandidate, input: LessonPlanInput): boolean {
+  return isItemUnlocked(input.parentsByItemId.get(candidate.id) ?? [], input.parentStatuses);
+}
+
+function isKnownOrGuru(parentId: string, input: LessonPlanInput): boolean {
+  if (input.parentStatuses.get(parentId) === 'known') return true;
+  const stage = input.parentStages.get(parentId);
+  return stage !== undefined && GURU_PLUS.has(stage);
+}
 
 /**
- * Picks today's lesson: unlocked, not-yet-started items in curriculum order
- * (opted-in items first), interleaved across types so a lesson is never a wall
- * of one item type.
- *
- * Every type with available candidates is guaranteed at least one slot when
- * size allows, so grammar (which has no unlock prerequisites) is never starved
- * by a deep radical bucket and radicals never monopolise a first-day lesson.
+ * Lesson-only readiness (D1–D5, D13). Always at least as strict as the review
+ * rule, so everything a lesson gives is also reviewable.
+ */
+export function isReadyToLearn(candidate: LessonCandidate, input: LessonPlanInput): boolean {
+  if (!passesStartedRule(candidate, input)) return false;
+  if (candidate.optedIn) return true;
+
+  const gatesMet = () => candidate.gateParentIds.every((id) => isKnownOrGuru(id, input));
+  switch (candidate.itemType) {
+    case 'radical':
+      return true;
+    case 'kanji':
+      return gatesMet();
+    case 'vocabulary':
+      return candidate.gateParentIds.length > 0
+        ? gatesMet()
+        : input.learner.kanjiStartedOrKnown >= LESSON_VOCAB_OPEN_MIN_KANJI;
+    case 'grammar':
+      return input.learner.vocabStartedOrKnown >= LESSON_GRAMMAR_OPEN_MIN_VOCAB;
+  }
+}
+
+/** D11: any unstarted radical/kanji/word that passes `isItemUnlocked`. */
+export function hasStartableItems(input: LessonPlanInput): boolean {
+  return input.candidates.some(
+    (candidate) =>
+      candidate.itemType !== 'grammar' &&
+      isUnstarted(candidate, input) &&
+      passesStartedRule(candidate, input),
+  );
+}
+
+function bySortKey(a: LessonCandidate, b: LessonCandidate): number {
+  return (
+    Number(b.optedIn ?? false) - Number(a.optedIn ?? false) ||
+    Number(b.lowerLevelPart ?? false) - Number(a.lowerLevelPart ?? false) ||
+    a.sortOrder - b.sortOrder
+  );
+}
+
+function byTypeThenSortKey(a: LessonCandidate, b: LessonCandidate): number {
+  return TYPE_ORDER.indexOf(a.itemType) - TYPE_ORDER.indexOf(b.itemType) || bySortKey(a, b);
+}
+
+/**
+ * Picks today's lesson (spec §5): opt-ins first, at most one grammar when its
+ * pace allows, then radical / kanji / vocabulary slots split by lead-weighted
+ * shares with randomized rounding, with heavy items capped per lesson.
  */
 export function planLesson(input: LessonPlanInput): LessonCandidate[] {
-  const { candidates, studyStatuses, startedItemIds, parentsByItemId, parentStatuses, size } =
-    input;
+  const { size, learner } = input;
+  if (size <= 0) return [];
 
-  if (size <= 0) {
-    return [];
+  const unstarted = input.candidates.filter((candidate) => isUnstarted(candidate, input));
+  const ready = unstarted.filter((candidate) => isReadyToLearn(candidate, input));
+
+  const heavyCap = Math.max(1, Math.round(size / LESSON_HEAVY_PER_ITEMS));
+  let heavy = 0;
+  const take = (candidate: LessonCandidate, into: LessonCandidate[]) => {
+    into.push(candidate);
+    if (candidate.weight === 'heavy') heavy++;
+  };
+
+  const optIns: LessonCandidate[] = [];
+  for (const candidate of ready.filter((item) => item.optedIn).sort(byTypeThenSortKey)) {
+    if (optIns.length >= size) break;
+    take(candidate, optIns);
   }
 
-  const buckets = new Map<LessonItemType, LessonCandidate[]>();
-  for (const { type } of ROUND_QUOTAS) {
-    buckets.set(type, []);
+  const rest: LessonCandidate[] = [];
+  const left = () => size - optIns.length - rest.length;
+
+  const grammar = ready
+    .filter((item) => item.itemType === 'grammar' && !item.optedIn)
+    .sort(bySortKey)[0];
+  if (
+    grammar &&
+    left() > 0 &&
+    heavy < heavyCap &&
+    isGrammarSlotOpen(learner.grammarPace, learner.dailyLessonItems)
+  ) {
+    take(grammar, rest);
   }
 
-  for (const candidate of candidates) {
-    const status = studyStatuses.get(candidate.id);
-    if (status === 'known' || status === 'in_progress') continue;
-    if (startedItemIds.has(candidate.id)) continue;
-
-    const parents = parentsByItemId.get(candidate.id) ?? [];
-    if (!isItemUnlocked(parents, parentStatuses)) continue;
-
-    buckets.get(candidate.itemType)?.push(candidate);
-  }
-
-  for (const bucket of buckets.values()) {
-    bucket.sort(
-      (a, b) =>
-        Number(b.optedIn ?? false) - Number(a.optedIn ?? false) || a.sortOrder - b.sortOrder,
-    );
-  }
-
-  const result: LessonCandidate[] = [];
-  const indices = new Map<LessonItemType, number>(
-    ROUND_QUOTAS.map(({ type }) => [type, 0] as const),
+  const queues = new Map<MixType, LessonCandidate[]>(
+    MIX_TYPES.map((type) => [
+      type,
+      ready.filter((item) => item.itemType === type && !item.optedIn).sort(bySortKey),
+    ]),
+  );
+  const remaining = new Map<MixType, number>(
+    MIX_TYPES.map((type) => [type, unstarted.filter((item) => item.itemType === type).length]),
   );
 
-  // Floor pass: one slot per type that has candidates, so no type is starved.
-  for (const { type } of ROUND_QUOTAS) {
-    if (result.length >= size) break;
-    const bucket = buckets.get(type)!;
-    if (bucket.length > 0) {
-      result.push(bucket[0]);
-      indices.set(type, 1);
-    }
-  }
+  while (left() > 0) {
+    const buckets: MixBucket[] = MIX_TYPES.filter((type) => queues.get(type)!.length > 0).map(
+      (type) => ({ type, available: queues.get(type)!.length, remaining: remaining.get(type)! }),
+    );
+    if (buckets.length === 0) break;
 
-  // Weighted round-robin for the remainder. The first round's quotas count
-  // the floor slot, so per-round proportions stay at ROUND_QUOTAS.
-  let firstRound = true;
-  let progressed = true;
-  while (progressed && result.length < size) {
-    progressed = false;
-    for (const { type, quota } of ROUND_QUOTAS) {
-      const bucket = buckets.get(type)!;
-      const start = indices.get(type)!;
-      const roundBase = firstRound ? 0 : start;
-      const end = Math.min(roundBase + quota, bucket.length);
-      for (let i = start; i < end && result.length < size; i++) {
-        result.push(bucket[i]);
-        indices.set(type, i + 1);
-        progressed = true;
+    const alloc = allocateTypeSlots(left(), buckets, input.rng);
+    let took = 0;
+    for (const type of MIX_TYPES) {
+      const queue = queues.get(type)!;
+      for (let n = 0; n < alloc[type]; n++) {
+        const j = queue
+          .slice(0, LESSON_HEAVY_LOOKAHEAD + 1)
+          .findIndex((item) => item.weight !== 'heavy' || heavy < heavyCap);
+        if (j < 0) {
+          queue.length = 0;
+          break;
+        }
+        take(queue.splice(j, 1)[0], rest);
+        took++;
       }
-      if (result.length >= size) break;
     }
-    // Floor slots can absorb all of round one's quotas; only a full round
-    // with untouched quotas means the buckets are exhausted.
-    if (firstRound) progressed = true;
-    firstRound = false;
+    if (took === 0) break;
   }
 
-  return result;
+  return [...optIns, ...rest.sort(byTypeThenSortKey)];
 }

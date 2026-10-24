@@ -41,6 +41,7 @@ import { useReadingReadiness } from '@/data/hooks/useReadingReadiness';
 import { useReviewForecast } from '@/data/hooks/useReviewForecast';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
+import { buildLessonPlan } from '@/data/lessonPlan';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
   getDailyLessonItems,
@@ -69,6 +70,8 @@ export default function HomeScreen() {
   const [dueCount, setDueCount] = useState(0);
   const [dueCountLoading, setDueCountLoading] = useState(true);
   const [lessonAllowance, setLessonAllowance] = useState<DailyAllowance | null>(null);
+  // New items exist but none is ready yet — they unlock as reviews reach Guru.
+  const [lessonWaiting, setLessonWaiting] = useState(false);
   const [welcomeBackOffer, setWelcomeBackOffer] = useState<WelcomeBackOffer | null>(null);
   // Visit-scoped dismissals (mirrors risePromptHidden semantics from 2.1).
   const [welcomeBackDismissed, setWelcomeBackDismissed] = useState(false);
@@ -94,11 +97,14 @@ export default function HomeScreen() {
             reviewsDueCount,
           }),
         );
+        const plan = buildLessonPlan(curriculumDb, userDb);
+        setLessonWaiting(plan.items.length === 0 && plan.waiting);
       } catch {
         setLessonAllowance(null);
+        setLessonWaiting(false);
       }
     },
-    [userDb],
+    [curriculumDb, userDb],
   );
 
   const {
@@ -313,19 +319,27 @@ export default function HomeScreen() {
                 : lessonAllowance === null
                   ? 'A guided lesson picked for you'
                   : lessonAllowance.remaining > 0
-                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                    ? lessonWaiting
+                      ? 'New items unlock as your reviews level up'
+                      : `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
                     : "You've learned enough today. Come back tomorrow, or clear some reviews."
             }
             glyph="学"
             disabled={onVacation}
-            muted={!onVacation && lessonAllowance !== null && lessonAllowance.remaining === 0}
+            muted={
+              !onVacation &&
+              lessonAllowance !== null &&
+              (lessonAllowance.remaining === 0 || lessonWaiting)
+            }
             onPress={() => router.push('/lesson')}
             accessibilityLabel={
               onVacation
                 ? 'Lessons paused for vacation mode'
                 : lessonAllowance !== null && lessonAllowance.remaining === 0
                   ? 'Daily lesson limit reached'
-                  : "Start today's lesson"
+                  : lessonAllowance !== null && lessonWaiting
+                    ? 'New lesson items are waiting on reviews'
+                    : "Start today's lesson"
             }
             testID="home-learn-button"
           />

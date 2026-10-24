@@ -17,10 +17,37 @@ jest.mock('@/data/reviewEligibility', () => ({
   countServableDueItems: (...args: unknown[]) => mockCountServableDueItems(...args),
 }));
 
+const mockBuildLessonPlan = jest.fn();
+
+jest.mock('@/data/lessonPlan', () => ({
+  buildLessonPlan: (...args: unknown[]) => mockBuildLessonPlan(...args),
+}));
+
+const mockComputeDailyGoalTarget = jest.fn();
+
+jest.mock('@/core/cognitive-load/thresholdCalculator', () => {
+  const actual = jest.requireActual('@/core/cognitive-load/thresholdCalculator');
+  return {
+    ...actual,
+    computeDailyGoalTarget: (input: unknown) => {
+      mockComputeDailyGoalTarget(input);
+      return actual.computeDailyGoalTarget(input);
+    },
+  };
+});
+
+/** A plan with as many items as asked for — every remaining slot is learnable. */
+function fullPlan(_cur: unknown, _user: unknown, options: { sizeOverride: number }) {
+  return { items: Array.from({ length: options.sizeOverride }, (_, i) => ({ id: String(i) })) };
+}
+
 describe('resolveDailyGoalTarget', () => {
   beforeEach(() => {
     __mockResetSqlite();
     mockCountServableDueItems.mockReturnValue(0);
+    mockBuildLessonPlan.mockReset();
+    mockBuildLessonPlan.mockImplementation(fullPlan);
+    mockComputeDailyGoalTarget.mockReset();
   });
 
   async function createDbs() {
@@ -78,6 +105,33 @@ describe('resolveDailyGoalTarget', () => {
     logLessons(userDb, DAILY_LESSON_ITEMS_BY_INTENSITY.relaxed + 10);
     expect(resolveDailyGoalTarget(curriculumDb, userDb)).toBe(
       DAILY_LESSON_ITEMS_BY_INTENSITY.relaxed,
+    );
+  });
+  it('caps the lesson part to what can be learned today', async () => {
+    const { curriculumDb, userDb } = await createDbs();
+    logLessons(userDb, 5);
+    mockBuildLessonPlan.mockReturnValue({ items: [{ id: 'a' }, { id: 'b' }, { id: 'c' }] });
+
+    resolveDailyGoalTarget(curriculumDb, userDb);
+
+    expect(mockBuildLessonPlan).toHaveBeenCalledWith(curriculumDb, userDb, {
+      ignoreAllowance: true,
+      sizeOverride: 10,
+    });
+    expect(mockComputeDailyGoalTarget).toHaveBeenCalledWith(
+      expect.objectContaining({ lessonAllowanceTotal: 8 }),
+    );
+  });
+
+  it('uses the full allowance without planning once it is used up', async () => {
+    const { curriculumDb, userDb } = await createDbs();
+    logLessons(userDb, DAILY_LESSON_ITEMS_BY_INTENSITY.relaxed);
+
+    resolveDailyGoalTarget(curriculumDb, userDb);
+
+    expect(mockBuildLessonPlan).not.toHaveBeenCalled();
+    expect(mockComputeDailyGoalTarget).toHaveBeenCalledWith(
+      expect.objectContaining({ lessonAllowanceTotal: DAILY_LESSON_ITEMS_BY_INTENSITY.relaxed }),
     );
   });
 });

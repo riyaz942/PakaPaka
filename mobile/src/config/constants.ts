@@ -70,6 +70,30 @@ export const LESSON_BACKLOG_THROTTLE_START = 50;
 /** Review backlog size at which the daily lesson allowance reaches zero. */
 export const LESSON_BACKLOG_THROTTLE_FULL = 150;
 
+/** Daily lesson items per new grammar point per day (D6: cap = max(1, round(daily / this))). */
+export const LESSON_GRAMMAR_DAILY_PER_ITEMS = 15;
+
+/** New grammar waits while recent Apprentice grammar reaches this many times the daily cap. */
+export const LESSON_GRAMMAR_PILE_LIMIT_PER_DAILY_CAP = 10;
+
+/** Only grammar started within this many days counts toward the pile limit. */
+export const LESSON_GRAMMAR_PILE_WINDOW_DAYS = 14;
+
+/** Lesson type share ∝ lead × unstarted items of that type in the level (D8). */
+export const LESSON_TYPE_LEAD = { radical: 3, kanji: 1.5, vocabulary: 1 } as const;
+
+/** Started-or-known kanji before a word with no `requires` kanji is ready for lessons (D4). */
+export const LESSON_VOCAB_OPEN_MIN_KANJI = 5;
+
+/** Started-or-known words before grammar is ready for lessons (D5). */
+export const LESSON_GRAMMAR_OPEN_MIN_VOCAB = 10;
+
+/** Lesson size per heavy item allowed (D10: cap = max(1, round(size / this))). */
+export const LESSON_HEAVY_PER_ITEMS = 5;
+
+/** Items past a blocked heavy item searched for a non-heavy one. */
+export const LESSON_HEAVY_LOOKAHEAD = 10;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 
