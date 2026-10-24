@@ -167,6 +167,7 @@ type GrammarItem = {
   conjugation_rules: Record<string, unknown>;
   accepted_forms: string[];
   family?: 'particles' | 'copula' | 'conjugations' | 'connectors' | 'patterns';
+  read_once?: boolean;
   example_sentences?: ExampleSentence[];
   accepted_answers?: AcceptedAnswer[];
   vocabulary_slugs?: string[];
@@ -868,8 +869,8 @@ export function compileCurriculum(
     }
 
     const insertGrammarRule = db.prepare(`
-      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes, uses)
-      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family, @explanation_markdown, @caution_notes, @uses)
+      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes, uses, read_once)
+      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family, @explanation_markdown, @caution_notes, @uses, @read_once)
     `);
     const insertGrammarRelatedLink = db.prepare(`
       INSERT INTO grammar_related_links (grammar_item_id, related_item_id, sort_order)
@@ -925,6 +926,7 @@ export function compileCurriculum(
         conjugation_rules: JSON.stringify(grammarItem.conjugation_rules),
         accepted_forms: JSON.stringify(grammarItem.accepted_forms),
         family: grammarItem.family ?? null,
+        read_once: grammarItem.read_once ? 1 : 0,
         explanation_markdown:
           grammarItem.explanation_markdown === undefined
             ? null

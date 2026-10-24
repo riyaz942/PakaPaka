@@ -40,6 +40,9 @@ class OriginTableTest(unittest.TestCase):
         self.assertEqual(len(slugs), 161)
         self.assertEqual(len(set(slugs)), 161)
 
+    def test_scope_leaves_out_the_read_once_primer(self):
+        self.assertNotIn("conjugation-primer", mc.grammar_mnemonic_slugs())
+
     def test_shipped_table_covers_exactly_the_scope(self):
         table = mc.load_grammar_origins()
         self.assertEqual(mc.origin_table_errors(table, mc.grammar_mnemonic_slugs()), [])

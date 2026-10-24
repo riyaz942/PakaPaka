@@ -97,6 +97,19 @@ N5_GRAMMAR = [
         ],
     },
     {
+        "slug": "conjugation-primer",
+        "primary_form": "活用",
+        "meaning": "How words change",
+        "structure": "Word group → ending",
+        "conjugation_rules": {},
+        "accepted_forms": [],
+        "examples": [],
+        "vocabulary_slugs": ["taberu", "nomu-v", "shiru", "takai-adj", "shizuka"],
+        "family": "conjugations",
+        # Read once, never reviewed: no pool, no Read/Build cards.
+        "read_once": True,
+    },
+    {
         "slug": "masu",
         "primary_form": "ます",
         "meaning": "polite verb ending",

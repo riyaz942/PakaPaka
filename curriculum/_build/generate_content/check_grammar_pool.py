@@ -236,8 +236,13 @@ def check_point(level, item):
 
 
 def check_level(level):
-    """{slug: [errors]} for every grammar point at `level`."""
-    return {item["slug"]: check_point(level, item) for item in context.load_grammar(level)}
+    """{slug: [errors]} for every grammar point at `level`. A read-once card is
+    never reviewed, so it has no pool to check."""
+    return {
+        item["slug"]: check_point(level, item)
+        for item in context.load_grammar(level)
+        if not item.get("read_once")
+    }
 
 
 def _report(results_by_level):

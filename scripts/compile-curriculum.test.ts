@@ -532,6 +532,39 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('compiles grammar read_once as 1 when set and 0 otherwise', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      const readFlags = () => {
+        const db = new Database(dbPath, { readonly: true });
+        try {
+          return db
+            .prepare(
+              `SELECT i.slug, g.read_once FROM grammar_rules g JOIN items i ON i.id = g.item_id ORDER BY i.id`,
+            )
+            .all() as { slug: string; read_once: number }[];
+        } finally {
+          db.close();
+        }
+      };
+      compileCurriculum(dbPath, curriculumDir);
+      expect(readFlags().length).toBeGreaterThan(0);
+      expect(readFlags().every((row) => row.read_once === 0)).toBe(true);
+
+      const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+      const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+      grammarFile.items[0].read_once = true;
+      fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+      compileCurriculum(dbPath, curriculumDir);
+
+      const flags = readFlags();
+      expect(flags.find((row) => row.slug === grammarFile.items[0].slug)?.read_once).toBe(1);
+      expect(flags.filter((row) => row.read_once === 1)).toHaveLength(1);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('throws on an unresolved visually similar slug', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
     const curriculumDir = path.join(tempDir, 'curriculum');

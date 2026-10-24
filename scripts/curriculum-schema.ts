@@ -70,7 +70,10 @@ CREATE TABLE grammar_rules (
   family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns')),
   explanation_markdown TEXT,
   caution_notes TEXT,
-  uses TEXT
+  uses TEXT,
+  -- 1 for a card that is read once and never reviewed (the conjugation primer):
+  -- finishing its lesson marks it known instead of seeding SRS.
+  read_once INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE grammar_related_links (

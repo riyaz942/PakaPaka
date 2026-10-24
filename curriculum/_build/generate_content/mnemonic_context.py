@@ -1293,8 +1293,14 @@ def format_regularity(ctx):
 # --- grammar (grammar mnemonics spec) ---------------------------------------
 
 def grammar_mnemonic_slugs():
-    """Every grammar slug in scope, N5 then N4, in curriculum order."""
-    return [slug for level in GRAMMAR_MNEMONIC_LEVELS for slug in all_slugs(level, "grammar")]
+    """Every grammar slug in scope, N5 then N4, in curriculum order. A read-once
+    card is never reviewed, so it has no mnemonic to write."""
+    return [
+        item["slug"]
+        for level in GRAMMAR_MNEMONIC_LEVELS
+        for item in load_items("grammar", level)
+        if not item.get("read_once")
+    ]
 
 
 def load_grammar_origins(path=GRAMMAR_ORIGINS_PATH):

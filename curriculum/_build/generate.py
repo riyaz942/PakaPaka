@@ -724,6 +724,9 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
         }
         if "family" in g:
             item["family"] = g["family"]
+        if g.get("read_once"):
+            # Read once, never reviewed: no pool, no Read/Build cards.
+            item["read_once"] = True
         meanings = pool_entry["accepted_meanings"] if pool_entry else g.get("accepted_meanings")
         if meanings:
             item["accepted_answers"] = [

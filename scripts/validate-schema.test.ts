@@ -43,6 +43,34 @@ function writeTempCurriculumDir(vocabularyItem: Record<string, unknown>): string
   return tempDir;
 }
 
+describe('grammarItem accepted_forms', () => {
+  function compileGrammarItemValidator() {
+    const schemaRaw = JSON.parse(fs.readFileSync(SCHEMA_PATH, 'utf8')) as { $id?: string };
+    const ajv = new Ajv({ allErrors: true, strict: false, $data: true });
+    addFormats(ajv);
+    const schemaId = schemaRaw.$id ?? 'curriculum.schema.json';
+    ajv.addSchema(schemaRaw, schemaId);
+    return ajv.compile({ $ref: `${schemaId}#/$defs/grammarItem` });
+  }
+  const point = {
+    slug: 'primer',
+    primary_form: '活用',
+    meaning: 'How words change',
+    structure: 'x',
+    conjugation_rules: {},
+    accepted_forms: [],
+  };
+
+  it('rejects an empty accepted_forms on a reviewed grammar point', () => {
+    expect(compileGrammarItemValidator()(point)).toBe(false);
+    expect(compileGrammarItemValidator()({ ...point, read_once: false })).toBe(false);
+  });
+
+  it('allows an empty accepted_forms on a read-once card, which has nothing to answer', () => {
+    expect(compileGrammarItemValidator()({ ...point, read_once: true })).toBe(true);
+  });
+});
+
 describe('stripFurigana', () => {
   it('round-trips a multi-bracket sentence to its plain form', () => {
     expect(stripFurigana('私[わたし]は学生[がくせい]です。')).toBe('私は学生です。');
