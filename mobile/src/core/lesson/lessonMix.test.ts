@@ -38,3 +38,29 @@ it('fills at most what is available in total', () =>
 
 it('returns zeros for no buckets', () =>
   expect(allocateTypeSlots(5, [], () => 0)).toEqual({ radical: 0, kanji: 0, vocabulary: 0 }));
+
+it('never moves a type more than one from its floor with two leftover slots', () => {
+  // Quotas 1.7 / 1.6 / 1.7: floors 1/1/1, two leftover slots to draw.
+  const even: MixBucket[] = [
+    { type: 'radical', available: 50, remaining: 85 },
+    { type: 'kanji', available: 50, remaining: 160 },
+    { type: 'vocabulary', available: 50, remaining: 340 },
+  ];
+  // Quotas 3.4 / 0.8 / 0.8: floors 3/0/0, two leftover slots to draw.
+  const skewed: MixBucket[] = [
+    { type: 'radical', available: 50, remaining: 17 },
+    { type: 'kanji', available: 50, remaining: 8 },
+    { type: 'vocabulary', available: 50, remaining: 16 },
+  ];
+  for (let s = 0; s < 1000; s++) {
+    const a = allocateTypeSlots(5, even, createSeededRng(`even:${s}`));
+    expect(Math.max(a.radical, a.kanji, a.vocabulary)).toBeLessThanOrEqual(2);
+    expect(Math.min(a.radical, a.kanji, a.vocabulary)).toBeGreaterThanOrEqual(1);
+
+    const b = allocateTypeSlots(5, skewed, createSeededRng(`skewed:${s}`));
+    expect(b.radical).toBeGreaterThanOrEqual(3);
+    expect(b.radical).toBeLessThanOrEqual(4);
+    expect(b.kanji).toBeLessThanOrEqual(1);
+    expect(b.vocabulary).toBeLessThanOrEqual(1);
+  }
+});

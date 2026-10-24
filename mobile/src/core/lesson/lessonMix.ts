@@ -30,7 +30,7 @@ export function allocateTypeSlots(
 
   let left = slots;
   while (left > 0) {
-    let open = MIX_ORDER.filter(
+    const open = MIX_ORDER.filter(
       (type) => capacity(type) > 0 && (byType.get(type)?.remaining ?? 0) > 0,
     );
     if (open.length === 0) break;
@@ -45,25 +45,29 @@ export function allocateTypeSlots(
     left = slots - total();
     if (left === 0) break;
 
-    open = open.filter((type) => capacity(type) > 0);
-    if (open.length === 0) break;
-
-    const fracs = open.map((type) => {
-      const q = quotas.get(type)!;
-      return q - Math.floor(q) || 1e-9;
-    });
-    const r = rng() * fracs.reduce((sum, f) => sum + f, 0);
-    let cumulative = 0;
-    let pick = open[open.length - 1];
-    for (let i = 0; i < open.length; i++) {
-      cumulative += fracs[i];
-      if (cumulative > r) {
-        pick = open[i];
-        break;
+    // Draw every leftover slot from these quotas, without replacement: a type
+    // wins at most one, so no type moves more than one from its floor. Only a
+    // type that hits its capacity sends slots back round the loop.
+    const pool = open.filter((type) => capacity(type) > 0);
+    while (left > 0 && pool.length > 0) {
+      const fracs = pool.map((type) => {
+        const q = quotas.get(type)!;
+        return q - Math.floor(q) || 1e-9;
+      });
+      const r = rng() * fracs.reduce((sum, f) => sum + f, 0);
+      let cumulative = 0;
+      let pickIndex = pool.length - 1;
+      for (let i = 0; i < pool.length; i++) {
+        cumulative += fracs[i];
+        if (cumulative > r) {
+          pickIndex = i;
+          break;
+        }
       }
+      alloc[pool[pickIndex]] += 1;
+      pool.splice(pickIndex, 1);
+      left -= 1;
     }
-    alloc[pick] += 1;
-    left -= 1;
   }
   return alloc;
 }
