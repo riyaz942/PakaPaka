@@ -53,7 +53,7 @@ type SwipeDirection = 'next' | 'back';
 export default function LessonScreen() {
   const { curriculumDb, userDb } = useDatabase();
   const [learnAnyway, setLearnAnyway] = useState(false);
-  const { items, level, isLoading, capReached } = useLessonPlan({
+  const { items, level, isLoading, capReached, waiting } = useLessonPlan({
     ignoreAllowance: learnAnyway,
   });
   const [index, setIndex] = useState(0);
@@ -338,6 +338,23 @@ export default function LessonScreen() {
             testID="lesson-learn-anyway"
           />
           <Button label="Back" variant="ghost" onPress={safeBack} />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (items.length === 0 && waiting) {
+    return (
+      <SafeAreaView className="flex-1 bg-background px-space-lg">
+        <View className="flex-1 justify-center gap-space-md" testID="lesson-waiting">
+          <Text className="text-title-lg font-ui-extrabold text-primary">
+            New items are on the way
+          </Text>
+          <Text className="text-body text-secondary">
+            Your next items unlock when the items they build on reach Guru. Do your reviews,
+            then check back.
+          </Text>
+          <Button label="Back" variant="secondary" onPress={safeBack} />
         </View>
       </SafeAreaView>
     );

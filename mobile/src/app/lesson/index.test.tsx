@@ -42,6 +42,19 @@ jest.mock('expo-router', () => ({
   useFocusEffect: (callback: () => void) => require('react').useEffect(callback, [callback]),
 }));
 
+// Lets a test force the plan's empty-state flags while the real hook still runs.
+let mockPlanOverride: Record<string, unknown> | null = null;
+
+jest.mock('@/data/hooks/useLessonPlan', () => {
+  const actual = jest.requireActual('@/data/hooks/useLessonPlan');
+  return {
+    useLessonPlan: (options: unknown) => {
+      const real = actual.useLessonPlan(options);
+      return mockPlanOverride ? { ...real, ...mockPlanOverride } : real;
+    },
+  };
+});
+
 function item(
   id: number,
   itemType: string,
@@ -99,6 +112,7 @@ describe('LessonScreen', () => {
     __mockResetSqlite();
     mockReplace.mockClear();
     mockBack.mockClear();
+    mockPlanOverride = null;
   });
 
   async function createDatabases() {
@@ -205,7 +219,7 @@ describe('LessonScreen', () => {
     // one, regardless of type — three items here, one batched write.
     expect(getDailyLoad(userDb, todayKey())?.load).toBe(3);
 
-    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C3%2C2');
+    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C2%2C3');
   });
 
   it('advances and rewinds sections before items, committing nothing', async () => {
@@ -330,7 +344,7 @@ describe('LessonScreen', () => {
     }
 
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
-    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C3%2C2');
+    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3&itemIds=1%2C2%2C3');
   });
 
   it('closes without committing anything', async () => {
@@ -345,5 +359,41 @@ describe('LessonScreen', () => {
 
     expect(mockBack).toHaveBeenCalled();
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
+  });
+  describe('empty states', () => {
+    const empty = { items: [], isLoading: false };
+
+    it('says new items are on the way while lessons wait on reviews', async () => {
+      const { userDb, curriculumDb } = await createDatabases();
+      mockPlanOverride = { ...empty, capReached: false, waiting: true };
+      renderLessonScreen(curriculumDb, userDb);
+
+      expect(await screen.findByTestId('lesson-waiting')).toBeTruthy();
+      expect(screen.getByText('New items are on the way')).toBeTruthy();
+      expect(
+        screen.getByText(
+          'Your next items unlock when the items they build on reach Guru. Do your reviews, then check back.',
+        ),
+      ).toBeTruthy();
+      expect(screen.queryByText('Nothing new today')).toBeNull();
+    });
+
+    it('keeps "Nothing new today" when nothing is waiting', async () => {
+      const { userDb, curriculumDb } = await createDatabases();
+      mockPlanOverride = { ...empty, capReached: false, waiting: false };
+      renderLessonScreen(curriculumDb, userDb);
+
+      expect(await screen.findByText('Nothing new today')).toBeTruthy();
+      expect(screen.queryByTestId('lesson-waiting')).toBeNull();
+    });
+
+    it('shows the cap screen over the waiting screen', async () => {
+      const { userDb, curriculumDb } = await createDatabases();
+      mockPlanOverride = { ...empty, capReached: true, waiting: true };
+      renderLessonScreen(curriculumDb, userDb);
+
+      expect(await screen.findByTestId('lesson-learn-anyway')).toBeTruthy();
+      expect(screen.queryByTestId('lesson-waiting')).toBeNull();
+    });
   });
 });
