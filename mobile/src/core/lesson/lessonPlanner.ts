@@ -33,6 +33,8 @@ export type LessonCandidate = {
   optedIn?: boolean;
   /** D3: a lower-level radical or kanji pulled in because an active-level item needs it. */
   lowerLevelPart?: boolean;
+  /** A grammar card read once and never reviewed: finishing it marks it known. */
+  readOnce?: boolean;
   weight: LessonWeight;
   /** Lesson-only gate: kanji → radical component ids; vocabulary → `requires` kanji ids; else []. */
   gateParentIds: string[];

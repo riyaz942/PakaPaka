@@ -43,6 +43,7 @@ import {
   listItemsByLevelAndType,
   listLessonCandidatePool,
   listLevelsWithContent,
+  listReadOnceGrammarIds,
   listSamePatternWords,
 } from '@/data/curriculum/itemRepository';
 import { planLesson } from '@/core/lesson/lessonPlanner';
@@ -1133,6 +1134,27 @@ describe('itemRepository', () => {
     ]);
 
     expect(getTaughtConjugatedForms(db, '20')).toEqual([]);
+  });
+
+  describe('read-once grammar', () => {
+    it('lists the ids of read-once grammar cards only', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      __mockSetGrammarRules('curriculum.db.test', [
+        { item_id: 4, structure: 'x', conjugation_rules: '{}', accepted_forms: '[]', read_once: 1 },
+        { item_id: 5, structure: 'x', conjugation_rules: '{}', accepted_forms: '[]', read_once: 0 },
+      ]);
+
+      expect(listReadOnceGrammarIds(db)).toEqual(new Set(['4']));
+    });
+
+    it('lists none from a curriculum.db compiled before the column existed', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      __mockSetGrammarRules('curriculum.db.test', [
+        { item_id: 4, structure: 'x', conjugation_rules: '{}', accepted_forms: '[]' },
+      ]);
+
+      expect(listReadOnceGrammarIds(db)).toEqual(new Set());
+    });
   });
 
   describe('conjugation class', () => {

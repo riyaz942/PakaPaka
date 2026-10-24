@@ -1058,6 +1058,9 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM grammar_rules/i.test(trimmed)) {
     const rows = state.tables.get('grammar_rules') ?? [];
+    if (/WHERE read_once = 1/i.test(trimmed)) {
+      return rows.filter((row) => Number(row.read_once) === 1);
+    }
     if (/WHERE item_id = \?/i.test(trimmed)) {
       return rows.filter((row) => row.item_id === params[0]);
     }

@@ -17,6 +17,8 @@ export default function LessonCompleteScreen() {
     ? decodeURIComponent(params.itemIds).split(',').filter(Boolean)
     : [];
 
+  const hasReviewable = sessionItemIds.length > 0;
+
   const handleQuizMeNow = () => {
     setReviewPriority({ itemIds: sessionItemIds, limit: null });
     router.replace('/review');
@@ -30,20 +32,28 @@ export default function LessonCompleteScreen() {
         <View className="flex-1 items-center justify-center gap-space-md">
           <SessionCompleteHeader
             title={count > 0 ? `${count} ${itemWord} learned` : 'Lesson complete'}
-            caption="They're in your review queue now."
+            caption={
+              hasReviewable
+                ? "They're in your review queue now."
+                : 'Nothing to review from this lesson.'
+            }
             testID="lesson-complete-title"
             mascot="goal-achieved"
           />
 
-          <FadeSlideIn index={2}>
-            <Text className="text-center text-body text-secondary">
-              Quiz me now tests only what you just learned, while it&apos;s fresh.
-            </Text>
-          </FadeSlideIn>
+          {hasReviewable ? (
+            <FadeSlideIn index={2}>
+              <Text className="text-center text-body text-secondary">
+                Quiz me now tests only what you just learned, while it&apos;s fresh.
+              </Text>
+            </FadeSlideIn>
+          ) : null}
         </View>
 
         <View className="gap-space-sm pb-space-md">
-          <Button label="Quiz me now" onPress={handleQuizMeNow} testID="lesson-complete-quiz" />
+          {hasReviewable ? (
+            <Button label="Quiz me now" onPress={handleQuizMeNow} testID="lesson-complete-quiz" />
+          ) : null}
           <Button
             label="Done for today"
             variant="ghost"

@@ -1174,6 +1174,22 @@ export function listSamePatternWords(
   }
 }
 
+/**
+ * Ids of grammar cards that are read once and never reviewed. Empty for a
+ * curriculum.db compiled before the column existed: no read-once cards.
+ */
+export function listReadOnceGrammarIds(db: SQLiteDatabase): Set<string> {
+  try {
+    const rows = db.getAllSync<{ item_id: number }>(
+      'SELECT item_id FROM grammar_rules WHERE read_once = 1',
+    );
+    return new Set(rows.map((row) => String(row.item_id)));
+  } catch {
+    // Older DB without the read_once column.
+    return new Set();
+  }
+}
+
 export function getGrammarLinksForVocab(
   db: SQLiteDatabase,
   vocabItemId: string,
