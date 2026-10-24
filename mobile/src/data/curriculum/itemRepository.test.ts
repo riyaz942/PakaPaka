@@ -469,17 +469,27 @@ describe('itemRepository', () => {
       setPhotoCurriculum();
 
       const pool = listLessonCandidatePool(db, 'N5');
+      const parentsByItemId = getRequiredParentsForItems(
+        db,
+        pool.map((item) => item.id),
+      );
+      // The lesson gate on a word is its `requires` kanji; 日 has no radical parent here.
       const candidates = pool.map((item) => ({
         id: item.id,
         itemType: item.itemType,
         primaryForm: item.primaryForm,
         meaning: item.meaning,
         sortOrder: item.sortOrder,
+        weight: 'normal' as const,
+        gateParentIds: (parentsByItemId.get(item.id) ?? []).map((parent) => parent.id),
       }));
-      const parentsByItemId = getRequiredParentsForItems(
-        db,
-        candidates.map((candidate) => candidate.id),
-      );
+      // Enough started kanji that a word with no in-band kanji is ready.
+      const learner = {
+        kanjiStartedOrKnown: 5,
+        vocabStartedOrKnown: 0,
+        grammarPace: { startedToday: 0, recentApprentice: 0 },
+        dailyLessonItems: 15,
+      };
 
       const firstLesson = planLesson({
         candidates,
@@ -487,7 +497,10 @@ describe('itemRepository', () => {
         startedItemIds: new Set(),
         parentsByItemId,
         parentStatuses: new Map(),
+        parentStages: new Map(),
+        learner,
         size: 10,
+        rng: () => 0,
       });
       const offered = firstLesson.map((item) => item.primaryForm);
 
@@ -502,7 +515,10 @@ describe('itemRepository', () => {
         startedItemIds: new Set(['1', '4']),
         parentsByItemId,
         parentStatuses: new Map([['4', 'in_progress' as const]]),
+        parentStages: new Map([['4', 'guru' as const]]),
+        learner,
         size: 10,
+        rng: () => 0,
       });
 
       expect(afterKanji.map((item) => item.primaryForm)).toEqual(['日本']);

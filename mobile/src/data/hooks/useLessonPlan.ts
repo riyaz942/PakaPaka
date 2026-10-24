@@ -3,6 +3,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { computeDailyAllowance, type DailyAllowance } from '@/core/lesson/lessonAllowance';
 import { planLesson, type LessonCandidate } from '@/core/lesson/lessonPlanner';
+import { lessonWeight } from '@/core/lesson/lessonWeight';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import {
   getOptInPoolForItems,
@@ -76,6 +77,8 @@ function buildPlanForLevel(
       meaning: item.meaning,
       sortOrder: item.sortOrder,
       optedIn,
+      weight: lessonWeight({ itemType: item.itemType }),
+      gateParentIds: [],
     });
   }
 
@@ -99,7 +102,16 @@ function buildPlanForLevel(
     startedItemIds,
     parentsByItemId,
     parentStatuses,
+    // Bridge until buildLessonPlan: no Guru gates and no grammar pace yet.
+    parentStages: new Map(),
+    learner: {
+      kanjiStartedOrKnown: Number.MAX_SAFE_INTEGER,
+      vocabStartedOrKnown: Number.MAX_SAFE_INTEGER,
+      grammarPace: { startedToday: 0, recentApprentice: 0 },
+      dailyLessonItems: Number.MAX_SAFE_INTEGER,
+    },
     size,
+    rng: Math.random,
   });
 }
 

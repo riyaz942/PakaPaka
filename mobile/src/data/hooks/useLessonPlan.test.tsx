@@ -119,10 +119,9 @@ describe('useLessonPlan opt-in unlock', () => {
 
     const { result } = renderHook(() => useLessonPlan());
 
-    // The relaxed batch is 5, and every N5 type still gets its floor slot.
-    expect(planned(result.current.items)).toEqual(
-      expect.arrayContaining(['v1', 'r1', 'k1']),
-    );
+    // The relaxed batch is 5: the two opt-ins leave three slots for the level.
+    const levelIds = ['r1', 'k1', 'k2', 'v1'];
+    expect(planned(result.current.items).filter((id) => levelIds.includes(id))).toHaveLength(3);
   });
 
   it('lists an item once when the learner has caught up to their own opt-in', () => {

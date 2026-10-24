@@ -82,6 +82,18 @@ export const LESSON_GRAMMAR_PILE_WINDOW_DAYS = 14;
 /** Lesson type share ∝ lead × unstarted items of that type in the level (D8). */
 export const LESSON_TYPE_LEAD = { radical: 4, kanji: 2, vocabulary: 1 } as const;
 
+/** Started-or-known kanji before a word with no `requires` kanji is ready for lessons (D4). */
+export const LESSON_VOCAB_OPEN_MIN_KANJI = 5;
+
+/** Started-or-known words before grammar is ready for lessons (D5). */
+export const LESSON_GRAMMAR_OPEN_MIN_VOCAB = 10;
+
+/** Lesson size per heavy item allowed (D10: cap = max(1, round(size / this))). */
+export const LESSON_HEAVY_PER_ITEMS = 5;
+
+/** Items past a blocked heavy item searched for a non-heavy one. */
+export const LESSON_HEAVY_LOOKAHEAD = 10;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 
