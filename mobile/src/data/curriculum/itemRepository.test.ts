@@ -33,8 +33,10 @@ import {
   getRequiredParentsForItems,
   getRelatedGrammarItems,
   getRelatedItemsForItems,
+  getRadicalComponentsForItems,
   getTaughtConjugatedForms,
   getVisuallySimilarItems,
+  getVocabularyWeightFacts,
   ITEM_TYPES,
   listItemsByLevelAndType,
   listLessonCandidatePool,
@@ -1396,5 +1398,63 @@ describe('itemRepository answer-collision lookup (Story 1.2, FR86)', () => {
     const db = await createCollisionDb();
 
     expect(findItemsByAcceptedAnswer(db, 'meaning', ['', '  '], '1')).toEqual([]);
+  });
+});
+
+describe('itemRepository lesson weight inputs', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  function item(id: number, itemType: string, extra: Record<string, unknown> = {}) {
+    return {
+      id,
+      item_type: itemType,
+      jlpt_level: 'N5',
+      slug: `${itemType}-${id}`,
+      primary_form: `${itemType}-${id}`,
+      meaning: `meaning-${id}`,
+      sort_order: id,
+      ...extra,
+    };
+  }
+
+  it('lists the radical components of each kanji', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      item(1, 'radical'),
+      item(2, 'radical'),
+      item(10, 'kanji'),
+      item(20, 'vocabulary'),
+    ]);
+    __mockSetItemRelationships('curriculum.db.test', [
+      { child_item_id: 10, parent_item_id: 1, relationship_type: 'builds_on' },
+      { child_item_id: 10, parent_item_id: 2, relationship_type: 'builds_on' },
+      { child_item_id: 20, parent_item_id: 10, relationship_type: 'builds_on' },
+    ]);
+
+    const components = getRadicalComponentsForItems(db, ['10', '20']);
+
+    expect(components.get('10')?.map((parent) => parent.id)).toEqual(['1', '2']);
+    expect(components.get('20')).toBeUndefined();
+  });
+
+  it('reads reading_composition and word_type for vocabulary', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      item(20, 'vocabulary', {
+        reading_composition: "Kun'yomi — 私（わたし）.",
+        word_type: 'pronoun',
+      }),
+      item(21, 'vocabulary', { reading_composition: null, word_type: null }),
+    ]);
+
+    const facts = getVocabularyWeightFacts(db, ['20', '21']);
+
+    expect(facts.get('20')).toEqual({
+      readingComposition: "Kun'yomi — 私（わたし）.",
+      wordType: 'pronoun',
+    });
+    expect(facts.get('21')).toEqual({ readingComposition: null, wordType: null });
   });
 });

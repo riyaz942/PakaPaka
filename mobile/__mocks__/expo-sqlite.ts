@@ -822,6 +822,13 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows.filter((row) => allowedIds.has(row.item_id));
     }
 
+    // Lesson grammar starts: before the generic path, which would return
+    // known rows too and make the status filter look like it works.
+    if (/WHERE status = 'in_progress' AND item_id IN/i.test(trimmed)) {
+      const allowedIds = new Set(params);
+      return rows.filter((row) => row.status === 'in_progress' && allowedIds.has(row.item_id));
+    }
+
     if (/WHERE status = \?/i.test(trimmed)) {
       return rows.filter((row) => row.status === params[0]);
     }

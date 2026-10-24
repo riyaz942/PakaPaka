@@ -362,6 +362,50 @@ function getParentsByRelationshipType(
   return result;
 }
 
+/**
+ * Radical parents (`builds_on`, parent type radical) per kanji id — the lesson
+ * gate for a kanji. Radical → kanji edges are always in-band (see below).
+ */
+export function getRadicalComponentsForItems(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, CurriculumParentItem[]> {
+  const result = new Map<string, CurriculumParentItem[]>();
+  for (const [itemId, parents] of getParentsByRelationshipType(db, itemIds, 'builds_on', true)) {
+    const radicals = parents.filter((parent) => parent.itemType === 'radical');
+    if (radicals.length > 0) result.set(itemId, radicals);
+  }
+  return result;
+}
+
+export type VocabularyWeightFacts = { readingComposition: string | null; wordType: string | null };
+
+/** `reading_composition` and `word_type` per item id, for lesson weights. */
+export function getVocabularyWeightFacts(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, VocabularyWeightFacts> {
+  const result = new Map<string, VocabularyWeightFacts>();
+  if (itemIds.length === 0) return result;
+
+  const numericIds = itemIds.map((id) => Number(id));
+  for (const chunk of chunkForSqlVariables(numericIds)) {
+    const placeholders = chunk.map(() => '?').join(', ');
+    const rows = db.getAllSync<{
+      id: number | string;
+      reading_composition: string | null;
+      word_type: string | null;
+    }>(`SELECT id, reading_composition, word_type FROM items WHERE id IN (${placeholders})`, ...chunk);
+    for (const row of rows) {
+      result.set(String(row.id), {
+        readingComposition: row.reading_composition ?? null,
+        wordType: row.word_type ?? null,
+      });
+    }
+  }
+  return result;
+}
+
 export function getRequiredParentLabels(
   db: SQLiteDatabase,
   itemId: string,
