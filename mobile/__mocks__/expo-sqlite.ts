@@ -1475,6 +1475,19 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return Array.from(levels).map((jlpt_level) => ({ jlpt_level }));
     }
 
+    // Same-class words of one level, excluding the word itself (conjugation
+    // table "Same pattern as"). params = (class, level, excluded id).
+    if (/conjugation_class = \?/i.test(trimmed)) {
+      return rows
+        .filter(
+          (row) =>
+            row.conjugation_class === params[0] &&
+            row.jlpt_level === params[1] &&
+            Number(row.id) !== Number(params[2]),
+        )
+        .sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+
     if (/WHERE id = \?/i.test(trimmed)) {
       return rows.filter((row) => row.id === params[0]);
     }

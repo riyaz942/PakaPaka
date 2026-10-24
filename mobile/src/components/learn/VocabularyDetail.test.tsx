@@ -42,6 +42,9 @@ jest.mock('expo-router', () => ({
 /** Rows the curriculum `example_sentence_spans` join returns for this word. */
 let mockConjugatedSpanRows: Record<string, unknown>[] = [];
 
+/** The conjugation class `items.conjugation_class` holds for the shown word. */
+let mockConjugationClass: string | null = null;
+
 jest.mock('@/data/hooks/useDatabase', () => {
   // Stable object: an unstable identity would re-fire db-keyed effects every render.
   const databases = {
@@ -51,7 +54,11 @@ jest.mock('@/data/hooks/useDatabase', () => {
       runSync: jest.fn(),
     },
     curriculumDb: {
-      getFirstSync: jest.fn(() => null),
+      getFirstSync: jest.fn((sql: string) =>
+        /SELECT conjugation_class/i.test(sql) && mockConjugationClass
+          ? { conjugation_class: mockConjugationClass }
+          : null,
+      ),
       getAllSync: jest.fn(() => mockConjugatedSpanRows),
       runSync: jest.fn(),
     },
@@ -654,5 +661,64 @@ describe('VocabularyDetail — conjugated forms (14.1)', () => {
 
     expect(screen.queryByTestId('conjugated-forms-section')).toBeNull();
     expect(screen.queryByText('Conjugated forms')).toBeNull();
+  });
+});
+
+describe('VocabularyDetail — conjugation table', () => {
+  const kuru: CurriculumItemDetail = {
+    ...baseItem,
+    id: '537',
+    slug: 'kuru-v',
+    primaryForm: '来る',
+    furigana: '来[く]る',
+    meaning: 'to come',
+  };
+
+  beforeEach(() => {
+    mockIsKnownWord = false;
+    mockFuriganaModeForItem = 'shown';
+    mockSeenGuidanceCards.clear();
+    mockConjugationClass = null;
+    mockConjugatedSpanRows = [
+      { inflection: 'masu', start_offset: 7, end_offset: 10, japanese: '二十日に彼女が来ます。' },
+    ];
+  });
+
+  afterEach(() => {
+    mockConjugationClass = null;
+  });
+
+  function renderKuru() {
+    return render(
+      <VocabularyDetail
+        item={kuru}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+  }
+
+  it('replaces the conjugated-forms list with the table for a word that has one', () => {
+    mockConjugationClass = 'kuru';
+    renderKuru();
+
+    expect(screen.getByTestId('conjugation-table')).toBeTruthy();
+    expect(screen.queryByTestId('conjugated-forms-section')).toBeNull();
+  });
+
+  it('keeps the conjugated-forms list for a word with no table', () => {
+    renderKuru();
+
+    expect(screen.queryByTestId('conjugation-table')).toBeNull();
+    expect(screen.getByTestId('conjugated-forms-section')).toBeTruthy();
+  });
+
+  it('keeps the conjugated-forms list when the class does not fit the word', () => {
+    mockConjugationClass = 'adj-i';
+    renderKuru();
+
+    expect(screen.queryByTestId('conjugation-table')).toBeNull();
+    expect(screen.getByTestId('conjugated-forms-section')).toBeTruthy();
   });
 });

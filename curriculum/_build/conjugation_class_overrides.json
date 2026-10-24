@@ -3,5 +3,6 @@
   "ii": { "class": "adj-ii", "reason": "first sense tagged adverb; いい is the yoi/ii adjective" },
   "takusan": { "class": null, "reason": "adverb/noun in use; たくさんじゃない is not taught" },
   "taitei": { "class": null, "reason": "adverb/noun in use; たいていじゃない is not a form" },
-  "kanari": { "class": null, "reason": "used as an adverb (かなり高い); かなりじゃない is not taught" }
+  "kanari": { "class": null, "reason": "used as an adverb (かなり高い); かなりじゃない is not taught" },
+  "dekiru": { "class": "ichidan", "reason": "matched a godan JMdict entry by form+reading; できる is ichidan (できない, できた, できます)" }
 }

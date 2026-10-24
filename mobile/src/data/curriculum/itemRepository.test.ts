@@ -21,6 +21,7 @@ import {
   findItemsByAcceptedAnswer,
   getAcceptedAnswers,
   getComponentParentsForItem,
+  getConjugationClass,
   getExampleSentences,
   getGrammarLinksForVocab,
   getGrammarRule,
@@ -42,6 +43,7 @@ import {
   listItemsByLevelAndType,
   listLessonCandidatePool,
   listLevelsWithContent,
+  listSamePatternWords,
 } from '@/data/curriculum/itemRepository';
 import { planLesson } from '@/core/lesson/lessonPlanner';
 
@@ -1131,6 +1133,78 @@ describe('itemRepository', () => {
     ]);
 
     expect(getTaughtConjugatedForms(db, '20')).toEqual([]);
+  });
+
+  describe('conjugation class', () => {
+    const verb = (
+      id: number,
+      primaryForm: string,
+      furigana: string | null,
+      conjugationClass: string | null,
+      jlptLevel = 'N5',
+    ) => ({
+      id,
+      item_type: 'vocabulary',
+      jlpt_level: jlptLevel,
+      slug: `verb-${id}`,
+      primary_form: primaryForm,
+      furigana,
+      meaning: `meaning-${id}`,
+      conjugation_class: conjugationClass,
+      sort_order: id,
+    });
+
+    it('reads a known class, and treats an unknown class string as no class', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      __mockSetItems('curriculum.db.test', [
+        verb(1, '知る', '知[し]る', 'godan'),
+        verb(2, '帰る', '帰[かえ]る', 'v5r'),
+      ]);
+
+      expect(getConjugationClass(db, '1')).toBe('godan');
+      expect(getConjugationClass(db, '2')).toBeNull();
+    });
+
+    it('reads no class from a curriculum.db compiled before the column existed', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      const { conjugation_class: _omitted, ...legacyRow } = verb(1, '知る', '知[し]る', 'godan');
+      __mockSetItems('curriculum.db.test', [legacyRow]);
+
+      expect(getConjugationClass(db, '1')).toBeNull();
+    });
+
+    it('lists only look-alike godan verbs of the same level, never the word itself', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      __mockSetItems('curriculum.db.test', [
+        verb(1, '知る', '知[し]る', 'godan'),
+        verb(2, '帰る', '帰[かえ]る', 'godan'),
+        verb(3, '飲む', '飲[の]む', 'godan'),
+        verb(4, '食べる', '食[た]べる', 'ichidan'),
+        verb(5, '入る', '入[はい]る', 'godan', 'N4'),
+        verb(6, '走る', '走[はし]る', 'godan'),
+      ]);
+
+      expect(listSamePatternWords(db, '1', 'godan', true)).toEqual([
+        { id: '2', primaryForm: '帰る' },
+        { id: '6', primaryForm: '走る' },
+      ]);
+    });
+
+    it('lists same-class words in sort order up to the limit when look-alikes are not required', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      __mockSetItems('curriculum.db.test', [
+        verb(1, '知る', '知[し]る', 'godan'),
+        verb(2, '帰る', '帰[かえ]る', 'godan'),
+        verb(3, '飲む', '飲[の]む', 'godan'),
+        verb(4, '食べる', '食[た]べる', 'ichidan'),
+        verb(5, '書く', '書[か]く', 'godan'),
+      ]);
+
+      expect(listSamePatternWords(db, '1', 'godan', false, 2)).toEqual([
+        { id: '2', primaryForm: '帰る' },
+        { id: '3', primaryForm: '飲む' },
+      ]);
+    });
   });
 
   it('returns grammar links for vocabulary with grammar item details', async () => {

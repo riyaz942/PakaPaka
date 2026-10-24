@@ -6,6 +6,7 @@ import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ConjugatedFormsSection } from '@/components/learn/ConjugatedFormsSection';
+import { ConjugationTableSection } from '@/components/learn/ConjugationTableSection';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
@@ -30,6 +31,7 @@ import type {
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
 import type { ComponentParent } from '@/data/hooks/useComponentParents';
+import { useConjugationTable } from '@/data/hooks/useConjugationTable';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
@@ -62,6 +64,7 @@ export function VocabularyDetail({
   const heroSize = isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word;
   const { modeForItem } = useFuriganaPreference();
   const isKnownWord = useIsKnownWord(item.id);
+  const hasConjugationTable = useConjugationTable(item) !== null;
   // Mastery is what hid the reading; an explicit per-word override means it was
   // not auto-hidden, so there is nothing to explain.
   const furiganaAutoHideCard = useGuidanceCard(
@@ -137,7 +140,12 @@ export function VocabularyDetail({
 
       <ItemDescriptionSection item={item} />
 
-      <ConjugatedFormsSection itemId={item.id} />
+      {/* The table covers every form the list would show, so it replaces it. */}
+      {hasConjugationTable ? (
+        <ConjugationTableSection item={item} />
+      ) : (
+        <ConjugatedFormsSection itemId={item.id} />
+      )}
 
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />
