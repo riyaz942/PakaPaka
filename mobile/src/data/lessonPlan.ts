@@ -18,11 +18,11 @@ import {
   getRadicalComponentsForItems,
   getRequiredParentsForItems,
   getVocabularyWeightFacts,
+  listItemIdsByType,
   listItemsByLevelAndType,
   listItemSummariesByIds,
   listLessonCandidatePool,
   type CurriculumListItem,
-  type ItemType,
 } from '@/data/curriculum/itemRepository';
 import { todayKey } from '@/data/user/cognitiveLoadRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
@@ -80,12 +80,6 @@ export const EMPTY_LESSON_PLAN: LessonPlan = {
 };
 
 type PoolEntry = { item: CurriculumListItem; optedIn: boolean; lowerLevelPart: boolean };
-
-function idsOfType(curriculumDb: SQLiteDatabase, itemType: ItemType): string[] {
-  return JLPT_LEVELS.flatMap((level) =>
-    listItemsByLevelAndType(curriculumDb, level, itemType).map((item) => item.id),
-  );
-}
 
 function isUnstarted(
   itemId: string,
@@ -289,10 +283,10 @@ export function buildLessonPlan(
   const effectiveSize = ignoreAllowance ? size : Math.min(size, allowance.remaining);
 
   const learner: LessonLearnerContext = {
-    kanjiStartedOrKnown: countStartedOrKnownItems(userDb, idsOfType(curriculumDb, 'kanji')),
-    vocabStartedOrKnown: countStartedOrKnownItems(userDb, idsOfType(curriculumDb, 'vocabulary')),
+    kanjiStartedOrKnown: countStartedOrKnownItems(userDb, listItemIdsByType(curriculumDb, 'kanji')),
+    vocabStartedOrKnown: countStartedOrKnownItems(userDb, listItemIdsByType(curriculumDb, 'vocabulary')),
     grammarPace: summarizeGrammarStarts(
-      listGrammarStarts(userDb, idsOfType(curriculumDb, 'grammar')),
+      listGrammarStarts(userDb, listItemIdsByType(curriculumDb, 'grammar')),
       now,
     ),
     dailyLessonItems,

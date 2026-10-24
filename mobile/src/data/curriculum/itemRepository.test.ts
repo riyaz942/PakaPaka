@@ -38,6 +38,7 @@ import {
   getVisuallySimilarItems,
   getVocabularyWeightFacts,
   ITEM_TYPES,
+  listItemIdsByType,
   listItemsByLevelAndType,
   listLessonCandidatePool,
   listLevelsWithContent,
@@ -1437,6 +1438,18 @@ describe('itemRepository lesson weight inputs', () => {
 
     expect(components.get('10')?.map((parent) => parent.id)).toEqual(['1', '2']);
     expect(components.get('20')).toBeUndefined();
+  });
+
+  it('lists the ids of one item type across every level', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      item(1, 'radical'),
+      item(10, 'kanji'),
+      item(11, 'kanji', { jlpt_level: 'N3' }),
+      item(20, 'vocabulary'),
+    ]);
+
+    expect(listItemIdsByType(db, 'kanji').sort()).toEqual(['10', '11']);
   });
 
   it('reads reading_composition and word_type for vocabulary', async () => {

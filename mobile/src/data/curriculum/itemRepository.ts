@@ -362,6 +362,13 @@ function getParentsByRelationshipType(
   return result;
 }
 
+/** Ids of every item of one type, all levels — ids only, for learner counts. */
+export function listItemIdsByType(db: SQLiteDatabase, itemType: ItemType): string[] {
+  return db
+    .getAllSync<{ id: number | string }>('SELECT id FROM items WHERE item_type = ?', itemType)
+    .map((row) => String(row.id));
+}
+
 /**
  * Radical parents (`builds_on`, parent type radical) per kanji id — the lesson
  * gate for a kanji. Radical → kanji edges are always in-band (see below).

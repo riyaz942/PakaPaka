@@ -69,6 +69,8 @@ jest.mock('@/data/curriculum/itemRepository', () => ({
     mockState.items
       .filter((item) => item.level === level && item.type === type)
       .map(mockListItem),
+  listItemIdsByType: (_db: unknown, type: ItemType) =>
+    mockState.items.filter((item) => item.type === type).map((item) => item.id),
   listItemSummariesByIds: (_db: unknown, ids: string[]) =>
     mockState.items.filter((item) => ids.includes(item.id)).map(mockListItem),
   getOptInPoolForItems: (_db: unknown, ids: string[]) =>

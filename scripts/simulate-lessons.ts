@@ -18,8 +18,7 @@ import {
   summarizeGrammarStarts,
 } from '@/core/lesson/grammarPace';
 import { createInitialSrsState } from '@/core/srs/fsrsScheduler';
-import { JLPT_LEVELS } from '@/data/curriculum/curriculum.types';
-import { listItemsByLevelAndType, type ItemType } from '@/data/curriculum/itemRepository';
+import { listItemIdsByType } from '@/data/curriculum/itemRepository';
 import { buildLessonPlan } from '@/data/lessonPlan';
 import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
@@ -103,12 +102,8 @@ function simulate(curriculumDb: SQLiteDatabase, preset: Preset, wrong: boolean):
   setLessonItemCount(userDb, preset.perLesson);
   setStartingJlptLevel(userDb, 'N5');
 
-  const idsOf = (type: ItemType) =>
-    JLPT_LEVELS.flatMap((level) =>
-      listItemsByLevelAndType(curriculumDb, level, type).map((item) => item.id),
-    );
-  const grammarIds = idsOf('grammar');
-  const vocabIds = idsOf('vocabulary');
+  const grammarIds = listItemIdsByType(curriculumDb, 'grammar');
+  const vocabIds = listItemIdsByType(curriculumDb, 'vocabulary');
 
   const rng = createSeededRng(`${preset.name}:${wrong ? 'wrong' : 'correct'}`);
   /** Day index (0-based) on whose morning an item is at Guru. */

@@ -1496,6 +1496,12 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows;
     }
 
+    // Ids of one type across every level (lesson learner counts). Without
+    // this the generic path returns every type.
+    if (/^SELECT id FROM items WHERE item_type = \?$/i.test(trimmed)) {
+      return rows.filter((row) => row.item_type === params[0]).map((row) => ({ id: row.id }));
+    }
+
     if (/item_type = 'radical'/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {
       rows = rows.filter(
         (row) => row.item_type === 'radical' && row.jlpt_level === params[0],
