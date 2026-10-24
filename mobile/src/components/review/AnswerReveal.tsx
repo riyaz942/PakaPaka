@@ -1,6 +1,7 @@
 import { router, type Href } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import type { AnswerCollision } from '@/core/answer/answer.types';
 import { deriveMeaningCandidates, normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import type { ReviewItem } from '@/core/srs/srs.types';
@@ -106,7 +107,11 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
       {collision ? (
         <View>
           <Text className="text-body-sm font-ui text-feedback-warning-deep">
-            Your answer belongs to a different item: {collision.primaryForm}.
+            Your answer belongs to a different item:{' '}
+            <GlyphText className="text-body-sm font-jp-medium text-feedback-warning-deep">
+              {collision.primaryForm}
+            </GlyphText>
+            .
           </Text>
           <Pressable
             accessibilityRole="button"

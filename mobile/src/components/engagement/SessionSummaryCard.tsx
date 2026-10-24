@@ -1,5 +1,6 @@
 import { Text, View } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import { AccuracyRing } from '@/components/engagement/AccuracyRing';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
@@ -145,7 +146,11 @@ export function SessionSummaryCard({
           className="flex-row items-center gap-space-sm rounded-radius-md bg-feedback-incorrect-soft px-space-md py-space-sm">
           <Icon name="weakness" size={17} strokeWidth={2} className="text-feedback-incorrect" />
           <Text className="flex-1 text-caption font-ui-semibold text-feedback-incorrect-deep">
-            {slippedLine(slipped)}
+            {/* The line opens on the first slipped form; it may be one no font can draw. */}
+            <GlyphText className="text-caption font-jp-bold text-feedback-incorrect-deep">
+              {slipped[0].primaryForm}
+            </GlyphText>
+            {slippedLine(slipped).slice(slipped[0].primaryForm.length)}
           </Text>
         </View>
       ) : null}

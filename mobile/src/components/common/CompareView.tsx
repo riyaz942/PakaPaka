@@ -170,9 +170,10 @@ function Prose({
 
   return (
     <View className="mt-space-md" testID={`${testIDPrefix}-${side}`}>
-      <Text className={cn('text-caption font-jp-medium', CONTENT_TYPE_ACCENT[item.itemType].deep)}>
+      <GlyphText
+        className={cn('text-caption font-jp-medium', CONTENT_TYPE_ACCENT[item.itemType].deep)}>
         {item.primaryForm}
-      </Text>
+      </GlyphText>
       <AnnotatedText text={text} className={MNEMONIC_PROSE} />
     </View>
   );

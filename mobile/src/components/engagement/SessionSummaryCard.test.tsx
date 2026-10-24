@@ -63,6 +63,20 @@ describe('SessionSummaryCard', () => {
     expect(screen.queryByText(/八/)).toBeNull();
   });
 
+  it('draws a slipped form no font covers as an outline', () => {
+    render(
+      <SessionSummaryCard
+        {...BASE_PROPS}
+        slipped={[{ itemId: '1', primaryForm: '兑', from: 'guru', to: 'apprentice' }]}
+      />,
+    );
+
+    expect(screen.getByLabelText('兑')).toBeTruthy();
+    expect(screen.getByTestId('session-slipped-note')).toHaveTextContent(
+      /slipped — queued sooner next time\./,
+    );
+  });
+
   it('shows no slipped note when nothing dropped a stage', () => {
     render(<SessionSummaryCard {...BASE_PROPS} />);
     expect(screen.queryByTestId('session-slipped-note')).toBeNull();

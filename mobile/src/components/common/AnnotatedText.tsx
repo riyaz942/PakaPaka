@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text } from 'react-native';
 
+import { GlyphText } from '@/components/common/GlyphText';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { DRAWN_GLYPH_PATHS } from '@/constants/drawnGlyphs';
 import { cn } from '@/utils/cn';
 import { WORD_MARKER_RE } from '@/core/markdown/parseLessonMarkdown';
 import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
@@ -114,7 +116,17 @@ export function AnnotatedText({ text, className, testID }: AnnotatedTextProps) {
           <Text key={index} className={cn('font-ui-bold', color)}>
             {segment.text}
             {segment.form ? (
-              <Text className={cn('font-jp-bold', color)}> ({segment.form})</Text>
+              <Text className={cn('font-jp-bold', color)}>
+                {' ('}
+                {/* A form no font can draw renders as an inline outline sized
+                    to the prose; GlyphText drops the layout classes. */}
+                {segment.form in DRAWN_GLYPH_PATHS ? (
+                  <GlyphText className={cn(className, color)}>{segment.form}</GlyphText>
+                ) : (
+                  segment.form
+                )}
+                {')'}
+              </Text>
             ) : null}
           </Text>
         );

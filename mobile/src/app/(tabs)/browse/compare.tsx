@@ -4,6 +4,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 
 
 import { Button } from '@/components/common/Button';
 import { CompareView } from '@/components/common/CompareView';
+import { GlyphText } from '@/components/common/GlyphText';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { EMPTY_BROWSE_FILTERS } from '@/core/browse/browseFilters';
 import { ITEM_TYPES, type ItemType } from '@/data/curriculum/itemRepository';
@@ -93,9 +94,9 @@ function ComparePicker({ leftId, leftType }: { leftId: string; leftType?: ItemTy
                 onPress={() => router.setParams({ left: leftId, right: row.id })}
                 testID={`compare-picker-item-${row.id}`}
                 className="min-h-[44px] justify-center border-b border-border py-space-sm">
-                <Text className="text-body text-primary">
+                <GlyphText className="text-body text-primary">
                   {row.kind === 'item' ? row.primaryForm : ''}
-                </Text>
+                </GlyphText>
                 <Text className="text-caption font-ui-medium text-secondary">
                   {row.kind === 'item' ? row.meaning : ''}
                 </Text>

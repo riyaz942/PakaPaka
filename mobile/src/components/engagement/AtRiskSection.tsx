@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
+import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -19,12 +20,14 @@ type AtRiskSectionProps = {
 /** A slipping item as a glyph chip: the form on a surface tile in its type hue. */
 function AtRiskChip({ item }: { item: AtRiskListItem }) {
   return (
-    <View className="rounded-radius-sm bg-surface px-space-sm py-space-xs">
-      <Text
-        accessibilityLabel={`${item.primaryForm}, ${item.meaning}`}
+    <View
+      accessible
+      accessibilityLabel={`${item.primaryForm}, ${item.meaning}`}
+      className="rounded-radius-sm bg-surface px-space-sm py-space-xs">
+      <GlyphText
         className={cn('text-body-lg font-jp-bold', CONTENT_TYPE_ACCENT[item.itemType].glyph)}>
         {item.primaryForm}
-      </Text>
+      </GlyphText>
     </View>
   );
 }
@@ -32,9 +35,10 @@ function AtRiskChip({ item }: { item: AtRiskListItem }) {
 function AtRiskRow({ item }: { item: AtRiskListItem }) {
   return (
     <View className="flex-row items-baseline gap-space-sm py-space-xs">
-      <Text className={cn('text-body-lg font-jp-bold', CONTENT_TYPE_ACCENT[item.itemType].glyph)}>
+      <GlyphText
+        className={cn('text-body-lg font-jp-bold', CONTENT_TYPE_ACCENT[item.itemType].glyph)}>
         {item.primaryForm}
-      </Text>
+      </GlyphText>
       <Text className="flex-1 text-body-sm font-ui-medium text-secondary" numberOfLines={1}>
         {item.meaning}
       </Text>

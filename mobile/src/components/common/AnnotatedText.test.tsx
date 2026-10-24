@@ -99,6 +99,13 @@ describe('AnnotatedText', () => {
     expect(screen.getByText(' (年)').props.className).toContain('font-jp-bold');
   });
 
+  it('draws a character no font covers as an outline, inside the parentheses', () => {
+    render(<AnnotatedText text='at an <radical form="兑">exchange</radical>.' />);
+
+    expect(screen.queryByText(/兑/)).toBeNull();
+    expect(screen.getByLabelText('兑')).toBeTruthy();
+  });
+
   it('prints the whole written form on the word a vocabulary story lands on', () => {
     render(<AnnotatedText text='he is a <vocabulary form="少年">boy</vocabulary>' />);
 
