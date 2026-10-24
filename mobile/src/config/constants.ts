@@ -79,6 +79,9 @@ export const LESSON_GRAMMAR_PILE_LIMIT_PER_DAILY_CAP = 10;
 /** Only grammar started within this many days counts toward the pile limit. */
 export const LESSON_GRAMMAR_PILE_WINDOW_DAYS = 14;
 
+/** Lesson type share ∝ lead × unstarted items of that type in the level (D8). */
+export const LESSON_TYPE_LEAD = { radical: 4, kanji: 2, vocabulary: 1 } as const;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 
