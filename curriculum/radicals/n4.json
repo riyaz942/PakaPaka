@@ -52,7 +52,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/sound.webp",
       "sort_order": 4
@@ -108,7 +108,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/cult.webp",
       "sort_order": 8
@@ -150,7 +150,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/nari.webp",
       "sort_order": 11
@@ -256,7 +256,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/style.webp",
       "sort_order": 18
@@ -289,7 +289,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/bokuzukuri.webp",
       "sort_order": 20
@@ -340,16 +340,16 @@
       "slug": "tehen",
       "primary_form": "扌",
       "meaning": "hand (left)",
-      "mnemonic_text": "This radical looks like an arm with three short fingers sticking out to the side. It sits on the left of a kanji and grabs what is next to it. It is a <radical form=\"扌\">hand (left)</radical>.",
+      "mnemonic_text": "This radical looks like a hand gripping an upright stick. The stick is the long vertical line, and the fingers wrapped around it are the short strokes that cross it. It sits on the left of a kanji and grabs what is next to it. It is a <radical form=\"扌\">hand (left)</radical>.",
       "visually_similar_slugs": [
         "radical:sun"
       ],
       "description": "Both are built on a hooked vertical. 扌 ends with a flick rising from the lower left into that vertical and never carries a dot. 寸 is the reverse: no rising flick, one clear dot set to the right of the hook.",
-      "image_prompt": "A vertical arm with a hook at the bottom stands at the left edge. Three short strokes branch off to the side like a thumb and fingers curling out, reaching right to grab whatever comes next. It is a <radical>hand (left)</radical>.",
+      "image_prompt": "A hand grips a tall upright stick, fingers wrapped around it. The stick is one long vertical line, and the fingers cross it as short strokes, ready to grab whatever comes next. It is a <radical>hand (left)</radical>.",
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/tehen.webp",
       "sort_order": 24
@@ -419,7 +419,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/pedestal.webp",
       "sort_order": 29
@@ -493,7 +493,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/gatsuhen.webp",
       "sort_order": 34
@@ -521,7 +521,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/swim.webp",
       "sort_order": 36
@@ -595,7 +595,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/market.webp",
       "sort_order": 41
@@ -627,7 +627,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/miru.webp",
       "sort_order": 43
@@ -669,7 +669,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/men-face.webp",
       "sort_order": 46
@@ -1103,7 +1103,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/oneself.webp",
       "sort_order": 77
@@ -1307,7 +1307,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/sun.webp",
       "sort_order": 91
@@ -1489,7 +1489,7 @@
       "_meta": {
         "generator_model": "claude-web",
         "prompt_version": "1",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/tori-bird.webp",
       "sort_order": 104

@@ -231,7 +231,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "book": {
@@ -394,7 +394,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "dai-big": {
@@ -637,7 +637,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "generation": {
@@ -1447,7 +1447,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "mata": {
@@ -1493,7 +1493,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "mi-body": {
@@ -1530,7 +1530,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "mizu": {
@@ -1638,7 +1638,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "net": {
@@ -1800,7 +1800,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "onna": {
@@ -1864,7 +1864,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "people": {
@@ -2182,7 +2182,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "southeast": {
@@ -2227,7 +2227,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "substitute": {
@@ -2246,7 +2246,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "sunbeam": {
@@ -2282,7 +2282,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "ta": {
@@ -2341,13 +2341,13 @@
     }
   },
   "tehen": {
-    "mnemonic_text": "This radical looks like an arm with three short fingers sticking out to the side. It sits on the left of a kanji and grabs what is next to it. It is a <radical form=\"扌\">hand (left)</radical>.",
-    "image_prompt": "A vertical arm with a hook at the bottom stands at the left edge. Three short strokes branch off to the side like a thumb and fingers curling out, reaching right to grab whatever comes next. It is a <radical>hand (left)</radical>.",
+    "mnemonic_text": "This radical looks like a hand gripping an upright stick. The stick is the long vertical line, and the fingers wrapped around it are the short strokes that cross it. It sits on the left of a kanji and grabs what is next to it. It is a <radical form=\"扌\">hand (left)</radical>.",
+    "image_prompt": "A hand grips a tall upright stick, fingers wrapped around it. The stick is one long vertical line, and the fingers cross it as short strokes, ready to grab whatever comes next. It is a <radical>hand (left)</radical>.",
     "description": "Both are built on a hooked vertical. 扌 ends with a flick rising from the lower left into that vertical and never carries a dot. 寸 is the reverse: no rising flick, one clear dot set to the right of the hook.",
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "ten": {
@@ -2474,7 +2474,7 @@
     "_meta": {
       "generator_model": "claude-web",
       "prompt_version": "1",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "tsuchi": {
