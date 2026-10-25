@@ -22,7 +22,7 @@ single status index for every plan in this repo, docs and BMAD alike. Nothing el
 | [feedback/](./feedback/README.md) | Playtest follow-ups, plans 01–06 and 11–15 — all done (07–10 archived) |
 | [superpowers/](./superpowers/) | Recent design specs and implementation plans (grammar Read + Build, grammar pool, linked words, grammar mnemonics, reading mnemonics) |
 | [content/](./content/) | Curriculum content quality: pipeline plan, audit plan, furigana, radical images, passages, kanji coverage |
-| [design/](./design/) | Design System v2 restyle, Curriculum Studio, backup/web build, customizable Home, level-agnostic curriculum, schema migration, platform spikes |
+| [design/](./design/) | Design System v2 restyle, Curriculum Studio, backup/web build, customizable Home, level-agnostic curriculum, schema migration, README screenshots, platform spikes |
 | [workflows/](./workflows/README.md) | Maintainer generation runbooks (web-chat, subagent and single-session lanes) |
 
 ## Defects
