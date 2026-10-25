@@ -203,7 +203,7 @@ def _load_overrides():
     path = os.path.join(BUILD_DIR, "conjugation_class_overrides.json")
     with open(path, encoding="utf-8") as f:
         raw = json.load(f)
-    overrides = {}
+    overrides, word_types = {}, {}
     for slug, entry in raw.items():
         if slug.startswith("_"):
             continue
@@ -213,7 +213,9 @@ def _load_overrides():
         if not entry.get("reason"):
             raise ValueError(f"override {slug}: a reason is required")
         overrides[slug] = cls
-    return overrides
+        if "word_type" in entry:
+            word_types[slug] = entry["word_type"]
+    return overrides, word_types
 
 
 def _n5_n4_slugs():
@@ -353,12 +355,14 @@ def main():
                 lost.append((slug, form, candidates))
         matched[how] += 1
 
+    overrides, word_type_overrides = _load_overrides()
+    out.update(word_type_overrides)
+
     path = os.path.join(BUILD_DIR, "vocab_word_types.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, sort_keys=True, indent=0)
         f.write("\n")
 
-    overrides = _load_overrides()
     for slug, cls in overrides.items():
         if cls is None:
             classes.pop(slug, None)

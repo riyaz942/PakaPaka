@@ -12,6 +12,11 @@ jest.mock('@/data/hooks/useDatabase', () => {
   return { useDatabase: () => databases };
 });
 
+let mockReadOnceIds = new Set<string>();
+jest.mock('@/data/curriculum/itemRepository', () => ({
+  listReadOnceGrammarIds: () => mockReadOnceIds,
+}));
+
 let mockStatus: StudyStatus = 'known';
 jest.mock('@/data/hooks/useItemStudyStatus', () => ({
   useItemStudyStatus: () => mockStatus,
@@ -29,6 +34,7 @@ describe('StudyStatusControl', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockStatus = 'known';
+    mockReadOnceIds = new Set();
     jest.mocked(getSrsState).mockReturnValue(null);
   });
 
@@ -39,6 +45,21 @@ describe('StudyStatusControl', () => {
       selected: true,
     });
     expect(screen.getByText('Kept out of your lessons and reviews.')).toBeTruthy();
+  });
+
+  it('offers a read-once card no In progress option, since it is never reviewed', () => {
+    mockReadOnceIds = new Set(['42']);
+    render(<StudyStatusControl itemId="42" />);
+
+    expect(screen.queryByTestId('study-status-set-in_progress')).toBeNull();
+    expect(screen.getByTestId('study-status-set-known')).toBeTruthy();
+    expect(screen.getByTestId('study-status-set-not_started')).toBeTruthy();
+  });
+
+  it('still offers In progress for an ordinary item', () => {
+    render(<StudyStatusControl itemId="42" />);
+
+    expect(screen.getByTestId('study-status-set-in_progress')).toBeTruthy();
   });
 
   it('returns an over-estimated item to the lesson pool', () => {

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
+import { listReadOnceGrammarIds } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useItemStudyStatus } from '@/data/hooks/useItemStudyStatus';
 import { setStudyStatus } from '@/data/user/itemStudyStatusRepository';
@@ -40,16 +41,27 @@ function statusHint(status: StudyStatus, hasSrsState: boolean): string {
  * so an item the learner already knows can be dropped straight into reviews
  * without sitting through its lesson.
  *
+ * A read-once card (the conjugation primer) is never reviewed, so it cannot be
+ * put in progress: a review row for it has no sentences to quiz.
+ *
  * Disabled once an item has burned: `queueBuilder` drops burned items whatever
  * their status, so the pill could not deliver what it offered there.
  */
 export function StudyStatusControl({ itemId }: { itemId: string }) {
-  const { userDb } = useDatabase();
+  const { userDb, curriculumDb } = useDatabase();
   const recordedStatus = useItemStudyStatus(itemId);
   // Local: the status hook is a plain memo over the db and does not re-run after
   // the write below.
   const [chosenStatus, setChosenStatus] = useState<StudyStatus | null>(null);
   const status = chosenStatus ?? recordedStatus;
+
+  const options = useMemo(
+    () =>
+      listReadOnceGrammarIds(curriculumDb).has(itemId)
+        ? STATUS_OPTIONS.filter((option) => option.value !== 'in_progress')
+        : STATUS_OPTIONS,
+    [curriculumDb, itemId],
+  );
 
   const srsState = useMemo(() => getSrsState(userDb, itemId), [userDb, itemId]);
 
@@ -60,7 +72,7 @@ export function StudyStatusControl({ itemId }: { itemId: string }) {
       <Text className="text-label font-ui-semibold text-primary">Your status</Text>
 
       <SegmentedPill
-        options={STATUS_OPTIONS}
+        options={options}
         value={status}
         onChange={(next) => {
           setStudyStatus(userDb, itemId, next);

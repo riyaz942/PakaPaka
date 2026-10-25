@@ -73,6 +73,13 @@ class GeneratedMapTest(unittest.TestCase):
         for slug, cls in expected.items():
             self.assertEqual(self.classes.get(slug), cls, slug)
 
+    def test_word_type_agrees_with_an_overridden_class(self):
+        # The page shows the word type beside the table's group tag; they must not disagree.
+        with open(os.path.join(BUILD_DIR, "vocab_word_types.json"), encoding="utf-8") as f:
+            word_types = json.load(f)
+        self.assertEqual(word_types["dekiru"], ["ichidan verb", "intransitive verb"])
+        self.assertEqual(word_types["ii"], ["い adjective"])
+
     def test_overridden_to_none_are_absent(self):
         self.assertNotIn("takusan", self.classes)
         self.assertNotIn("taitei", self.classes)

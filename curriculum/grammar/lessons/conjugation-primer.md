@@ -66,7 +66,7 @@ The word itself never changes. The helper after it changes.
 
 Look at the tag on the word's page. Watch for two traps.
 
-> Some verbs look ichidan but are godan. 知る ends in an i-sound + る, but its negative is 知らない, not 知ない. 帰る, 入る and 走る work the same way.
+> Some verbs look ichidan but are godan. 知る ends in an i-sound + る, but its negative is 知らない, not `知ない`. 帰る, 入る and 走る work the same way.
 
 > きれい and 嫌い end in い, but they are な adjectives: きれいじゃない, not きれくない.
 
