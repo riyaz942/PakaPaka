@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-5-5
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Some verbs that end in an e- or i-sound + る are godan, not ichidan: 知る, 帰る, 入る, 走る."
   - "きれい and 嫌い end in い, but they are な adjectives: きれいじゃない, not きれくない."
