@@ -12,8 +12,10 @@ import {
   __mockSetSynthesis,
 } from '../../../__mocks__/react-native-executorch';
 import {
+  __mockFetchCallCount,
   __mockMarkDownloaded,
   __mockResetResourceFetcher,
+  __mockSetRemoteSize,
 } from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
 
 import { PronunciationButton } from '@/components/learn/PronunciationButton';
@@ -79,5 +81,49 @@ describe('PronunciationButton', () => {
 
     await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
     expect(screen.queryByTestId('pronunciation-button-error')).toBeNull();
+  });
+
+  describe('when the voice models are not downloaded', () => {
+    beforeEach(() => {
+      __mockResetResourceFetcher();
+      for (const source of voiceModelSources()) {
+        if (typeof source === 'string') {
+          __mockSetRemoteSize(source, 150_000_000);
+        }
+      }
+    });
+
+    it('offers the download instead of only showing an error', async () => {
+      render(<PronunciationButton text="日" />);
+
+      fireEvent.press(screen.getByTestId('pronunciation-button'));
+
+      await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+      expect(screen.queryByTestId('pronunciation-button-error')).toBeNull();
+      expect(__mockFetchCallCount()).toBe(0);
+    });
+
+    it('plays the word once the learner downloads the models', async () => {
+      render(<PronunciationButton text="日" />);
+
+      fireEvent.press(screen.getByTestId('pronunciation-button'));
+      await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+      fireEvent.press(screen.getByTestId('voice-model-download'));
+
+      await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
+      expect(__mockFetchCallCount()).toBe(1);
+      expect(screen.queryByTestId('voice-model-download')).toBeNull();
+    });
+
+    it('closes the download prompt on Not now without playing', async () => {
+      render(<PronunciationButton text="日" />);
+
+      fireEvent.press(screen.getByTestId('pronunciation-button'));
+      await waitFor(() => expect(screen.getByTestId('voice-model-cancel')).toBeTruthy());
+      fireEvent.press(screen.getByTestId('voice-model-cancel'));
+
+      await waitFor(() => expect(screen.queryByTestId('voice-model-cancel')).toBeNull());
+      expect(__mockPlayedBuffers()).toHaveLength(0);
+    });
   });
 });

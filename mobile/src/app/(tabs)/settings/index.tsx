@@ -19,6 +19,7 @@ import { SegmentedPill, type SegmentedPillOption } from '@/components/common/Seg
 import { StepperRow } from '@/components/common/StepperRow';
 import { ToggleRow } from '@/components/common/ToggleRow';
 import { ByokSettingsSection } from '@/components/converse/ByokSettingsSection';
+import { VoiceModelsSettingsSection } from '@/components/converse/VoiceModelsSettingsSection';
 import {
   GUIDANCE_CARD_BY_ID,
   GUIDANCE_CARDS,
@@ -733,6 +734,8 @@ export default function SettingsScreen() {
             </SettingsCard>
           </View>
         ) : null}
+
+        <VoiceModelsSettingsSection />
 
         <ByokSettingsSection />
 

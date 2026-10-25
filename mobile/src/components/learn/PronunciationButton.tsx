@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Modal, Pressable, Text, View } from 'react-native';
 
 import { Icon } from '@/components/common/Icon';
+import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { playWaveform } from '@/data/ai/voice/audioSession';
 import { synthesizeJapanese } from '@/data/ai/voice/ttsClient';
 
@@ -28,10 +29,15 @@ type PronunciationButtonProps = {
  * swallowed: the icon and label switch to an error state and a short message
  * appears beside it, mirroring how `PttOverlay` surfaces the same two
  * failure points instead of failing silently.
+ *
+ * Missing voice models are the one failure with a fix the learner can do here,
+ * so instead of an error the button opens the same explicit download prompt
+ * Talk's mic uses, and speaks the word once the download finishes.
  */
 export function PronunciationButton({ text, testID = 'pronunciation-button' }: PronunciationButtonProps) {
   const [phase, setPhase] = useState<Phase>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showDownload, setShowDownload] = useState(false);
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -49,6 +55,11 @@ export function PronunciationButton({ text, testID = 'pronunciation-button' }: P
 
     const synthesized = await synthesizeJapanese(text);
     if (!mountedRef.current) {
+      return;
+    }
+    if (!synthesized.ok && synthesized.error.code === 'voice_tts_models_missing') {
+      setPhase('idle');
+      setShowDownload(true);
       return;
     }
     if (!synthesized.ok) {
@@ -101,6 +112,23 @@ export function PronunciationButton({ text, testID = 'pronunciation-button' }: P
           {errorMessage}
         </Text>
       ) : null}
+      {/* No backdrop dismiss: a stray tap would cancel a large download.
+          Not now / Cancel and Android back are the ways out. */}
+      <Modal
+        visible={showDownload}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setShowDownload(false)}>
+        <View className="flex-1 justify-end bg-black/40 p-space-md">
+          <VoiceModelDownloadPrompt
+            onCancel={() => setShowDownload(false)}
+            onDownloaded={() => {
+              setShowDownload(false);
+              void handlePress();
+            }}
+          />
+        </View>
+      </Modal>
     </View>
   );
 }

@@ -53,6 +53,10 @@ jest.mock('expo-router', () => ({
     push: (...args: unknown[]) => mockPush(...args),
     replace: (...args: unknown[]) => mockReplace(...args),
   },
+  useFocusEffect: (cb: () => void) => {
+    const { useEffect } = jest.requireActual<typeof import('react')>('react');
+    useEffect(cb, [cb]);
+  },
 }));
 
 /** In-memory stand-in for the `card_seen` table (Epic 7). */

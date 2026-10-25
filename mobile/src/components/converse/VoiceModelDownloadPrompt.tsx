@@ -23,7 +23,9 @@ function formatBytes(bytes: number): string {
  *
  * Renders inline rather than as a modal on purpose: chat has to stay fully
  * usable while this is open and while the download runs. Voice is the only part
- * of the app waiting on it.
+ * of the app waiting on it. The same card also opens from the pronunciation
+ * button and Settings, so its copy names no single caller and the caller owns
+ * the spacing around it.
  *
  * The size shown is read from the server, never estimated — and if it cannot be
  * read, no Download button appears at all. Offering a download under a made-up
@@ -105,14 +107,14 @@ export function VoiceModelDownloadPrompt({
   const isDownloading = progress !== null;
 
   return (
-    <View className="mx-space-md mb-space-sm rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+    <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
       <Text accessibilityRole="header" className="text-body font-ui-extrabold text-primary">
-        Speaking practice needs a one-time download
+        Voice needs a one-time download
       </Text>
       <Text className="mt-space-sm text-body-sm font-ui text-secondary">
-        The Japanese voice and speech models run on this device by default, so chat stays usable
-        while they download. Optional cloud transcription is a separate Settings toggle — it is
-        never used unless you turn it on.
+        The Japanese voice and speech models run on this device, so pronunciation and speaking
+        practice need them on your phone first. Optional cloud transcription is a separate
+        Settings toggle — it is never used unless you turn it on.
       </Text>
 
       {sizeBytes !== null ? (

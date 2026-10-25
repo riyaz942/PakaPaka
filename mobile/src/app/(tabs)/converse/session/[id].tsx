@@ -431,10 +431,12 @@ export default function ConversationSessionScreen() {
           ) : null}
 
           {showVoiceDownload ? (
-            <VoiceModelDownloadPrompt
-              onCancel={() => setShowVoiceDownload(false)}
-              onDownloaded={enterPttMode}
-            />
+            <View className="mx-space-md mb-space-sm">
+              <VoiceModelDownloadPrompt
+                onCancel={() => setShowVoiceDownload(false)}
+                onDownloaded={enterPttMode}
+              />
+            </View>
           ) : null}
 
           {!ended ? (
