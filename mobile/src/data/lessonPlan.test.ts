@@ -20,6 +20,7 @@ const mockState = {
   stages: new Map<string, SRSStageLabel>(),
   startedAt: new Map<string, string>(),
   optInIds: [] as string[],
+  readOnceIds: [] as string[],
   optInPool: [] as OptInPoolItem[],
   startedToday: 0,
   vacation: false,
@@ -79,6 +80,7 @@ jest.mock('@/data/curriculum/itemRepository', () => ({
   getRadicalComponentsForItems: (_db: unknown, ids: string[]) =>
     mockParents(ids, 'builds_on', 'radical'),
   getVocabularyWeightFacts: () => new Map(),
+  listReadOnceGrammarIds: () => new Set(mockState.readOnceIds),
 }));
 
 jest.mock('@/data/user/lessonOptInRepository', () => ({
@@ -158,6 +160,7 @@ beforeEach(() => {
   mockState.stages = new Map();
   mockState.startedAt = new Map();
   mockState.optInIds = [];
+  mockState.readOnceIds = [];
   mockState.optInPool = [];
   mockState.startedToday = 0;
   mockState.vacation = false;
@@ -332,5 +335,61 @@ describe('buildLessonPlan levels and waves', () => {
     const plan = buildLessonPlan(db, db);
     expect(plan.items).toEqual([]);
     expect(plan.level).toBeNull();
+  });
+});
+
+describe('buildLessonPlan read-once primer', () => {
+  // は / です / ではありません, then the primer, then ます — the N5 order after the
+  // primer was added. Ten started words open the grammar slot.
+  const words = Array.from({ length: 10 }, (_, i) => item(`v${i}`, 'vocabulary', 'N5', i + 1));
+
+  beforeEach(() => {
+    mockState.items = [
+      item('r1', 'radical', 'N5', 1),
+      item('k1', 'kanji', 'N5', 1),
+      ...words,
+      item('wa', 'grammar', 'N5', 1),
+      item('desu', 'grammar', 'N5', 2),
+      item('dewa', 'grammar', 'N5', 3),
+      item('primer', 'grammar', 'N5', 4),
+      item('masu', 'grammar', 'N5', 5),
+      item('g4', 'grammar', 'N4', 1),
+    ];
+    mockState.readOnceIds = ['primer'];
+    for (const { id } of [mockState.items[0], mockState.items[1], ...words]) start(id, 'guru');
+    for (const id of ['wa', 'desu', 'dewa']) start(id, 'guru');
+  });
+
+  it('offers the read-once primer before masu to a fresh learner', () => {
+    const grammar = ids(buildLessonPlan(db, db).items).filter((id) => id === 'primer' || id === 'masu');
+    expect(grammar[0]).toBe('primer');
+  });
+
+  it('marks the primer as read-once on its candidate', () => {
+    const primer = buildLessonPlan(db, db).items.find((candidate) => candidate.id === 'primer');
+    expect(primer?.readOnce).toBe(true);
+  });
+
+  it('hides the read-once primer once masu is started', () => {
+    start('masu');
+
+    expect(ids(buildLessonPlan(db, db).items)).not.toContain('primer');
+  });
+
+  it('grammar level advances past a hidden read-once item', () => {
+    start('masu', 'guru');
+
+    const plan = buildLessonPlan(db, db);
+    expect(plan.grammarLevel).toBe('N4');
+    expect(ids(plan.items)).not.toContain('primer');
+  });
+
+  it('N4 starter never gets the primer', () => {
+    mockState.startingLevel = 'N4';
+
+    const plan = buildLessonPlan(db, db);
+    expect(plan.grammarLevel).toBe('N4');
+    expect(ids(plan.items)).not.toContain('primer');
+    expect(ids(plan.items)).not.toContain('masu');
   });
 });

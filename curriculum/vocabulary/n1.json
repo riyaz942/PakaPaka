@@ -834,6 +834,7 @@
       "primary_form": "深める",
       "meaning": "to deepen / to heighten / to intensify",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 深（ふか）＋める.",
       "sort_order": 40,
       "accepted_answers": [
@@ -878,6 +879,7 @@
       "primary_form": "真っ暗",
       "meaning": "pitch-dark / pitch-black / completely dark",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 真（ま）＋っ＋暗（くら）.",
       "sort_order": 42,
       "accepted_answers": [
@@ -1006,6 +1008,7 @@
       "primary_form": "性的",
       "meaning": "sexual (i.e. relating to biological sex)",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 性（せい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 48,
       "accepted_answers": [
@@ -1086,6 +1089,7 @@
       "primary_form": "切らす",
       "meaning": "to run out of / to be short of / to be out of stock",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 切（き）＋らす.",
       "sort_order": 52,
       "accepted_answers": [
@@ -1270,6 +1274,7 @@
       "primary_form": "素朴",
       "meaning": "simple / artless / naive",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 素（そ）＋朴（ぼく）, each kanji read with its on'yomi.",
       "sort_order": 61,
       "accepted_answers": [
@@ -1294,6 +1299,7 @@
       "primary_form": "組織的",
       "meaning": "systematic / organized / organizational",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 組（そ）＋織（しき）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 62,
       "accepted_answers": [
@@ -1314,6 +1320,7 @@
       "primary_form": "争う",
       "meaning": "to compete / to contest / to contend",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 争（あらそ）＋う.",
       "sort_order": 63,
       "accepted_answers": [
@@ -1506,6 +1513,7 @@
       "primary_form": "打ち出す",
       "meaning": "to emboss",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 打（う）＋ち＋出（だ）＋す.",
       "sort_order": 72,
       "accepted_answers": [
@@ -1826,6 +1834,7 @@
       "primary_form": "地道",
       "meaning": "steady / honest / sober",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Mixed — 地（じ）on'yomi ＋ 道（みち）kun'yomi.",
       "sort_order": 87,
       "accepted_answers": [
@@ -2634,6 +2643,7 @@
       "primary_form": "特異",
       "meaning": "unique / peculiar / singular",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 特（とく）＋異（い）, each kanji read with its on'yomi.",
       "sort_order": 126,
       "accepted_answers": [
@@ -2902,6 +2912,7 @@
       "primary_form": "濃厚",
       "meaning": "rich (flavor, color, etc.) / strong (e.g. odor) / heavy",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 濃（のう）＋厚（こう）, each kanji read with its on'yomi.",
       "sort_order": 139,
       "accepted_answers": [
@@ -3006,6 +3017,7 @@
       "primary_form": "抜群",
       "meaning": "outstanding / excellent / exceptional",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 抜（ばつ）＋群（ぐん）, each kanji read with its on'yomi.",
       "sort_order": 144,
       "accepted_answers": [
@@ -3310,6 +3322,7 @@
       "primary_form": "不自然",
       "meaning": "unnatural / artificial / affected",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋自（し）＋然（ぜん）, each kanji read with its on'yomi.",
       "sort_order": 158,
       "accepted_answers": [
@@ -3618,6 +3631,7 @@
       "primary_form": "募る",
       "meaning": "to become stronger / to grow in intensity / to grow violent",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 募（つの）＋る.",
       "sort_order": 172,
       "accepted_answers": [
@@ -3870,6 +3884,7 @@
       "primary_form": "満たす",
       "meaning": "to satisfy (conditions, one's appetite, etc.) / to meet (e.g. demands) / to fulfill",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 満（み）＋たす.",
       "sort_order": 184,
       "accepted_answers": [
@@ -4014,6 +4029,7 @@
       "primary_form": "明快",
       "meaning": "clear / clear-cut / lucid",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 明（めい）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 191,
       "accepted_answers": [
@@ -4178,6 +4194,7 @@
       "primary_form": "優勢",
       "meaning": "superiority / superior power / predominance",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 優（ゆう）＋勢（せい）, each kanji read with its on'yomi.",
       "sort_order": 198,
       "accepted_answers": [
@@ -4202,6 +4219,7 @@
       "primary_form": "予想外",
       "meaning": "unexpected / unforeseen / strange",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 予（よ）＋想（そう）＋外（がい）, each kanji read with its on'yomi.",
       "sort_order": 199,
       "accepted_answers": [
@@ -4726,6 +4744,7 @@
       "primary_form": "永久",
       "meaning": "eternity / permanence / perpetuity",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 永（えい）＋久（きゅう）, each kanji read with its on'yomi.",
       "sort_order": 223,
       "accepted_answers": [
@@ -5006,6 +5025,7 @@
       "primary_form": "覆う",
       "meaning": "to cover / to hide / to conceal",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 覆（おお）＋う.",
       "sort_order": 236,
       "accepted_answers": [
@@ -5114,6 +5134,7 @@
       "primary_form": "過酷",
       "meaning": "severe / harsh / hard",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 過（か）＋酷（こく）, each kanji read with its on'yomi.",
       "sort_order": 241,
       "accepted_answers": [
@@ -5214,6 +5235,7 @@
       "primary_form": "越える",
       "meaning": "to cross over / to cross / to pass through",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 越（こ）＋える.",
       "sort_order": 245,
       "accepted_answers": [
@@ -5310,6 +5332,7 @@
       "primary_form": "乗せる",
       "meaning": "to place on (something)",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 乗（の）＋せる.",
       "sort_order": 249,
       "accepted_answers": [
@@ -5602,6 +5625,7 @@
       "primary_form": "純",
       "meaning": "innocent / chaste / naive",
       "word_type": "な adjective, adverb",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 純（じゅん）.",
       "sort_order": 263,
       "accepted_answers": [
@@ -5622,6 +5646,7 @@
       "primary_form": "順当",
       "meaning": "proper / right / reasonable",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 順（じゅん）＋当（とう）, each kanji read with its on'yomi.",
       "sort_order": 264,
       "accepted_answers": [
@@ -6274,6 +6299,7 @@
       "primary_form": "相手取る",
       "meaning": "to challenge (esp. in a lawsuit) / to take on an opponent (in negotiations, contest, etc.)",
       "word_type": "godan verb, transitive verb, expression",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 相（あい）＋手（て）＋取（ど）＋る.",
       "sort_order": 296,
       "accepted_answers": [
@@ -6414,6 +6440,7 @@
       "primary_form": "辞す",
       "meaning": "to take one's leave / to excuse oneself / to leave",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "On'yomi — 辞（じ）＋す.",
       "sort_order": 303,
       "accepted_answers": [
@@ -6526,6 +6553,7 @@
       "primary_form": "異色",
       "meaning": "unique / distinctive / novel",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 異（い）＋色（しょく）, each kanji read with its on'yomi.",
       "sort_order": 308,
       "accepted_answers": [
@@ -6786,6 +6814,7 @@
       "primary_form": "隠す",
       "meaning": "to hide / to conceal",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 隠（かく）＋す.",
       "sort_order": 320,
       "accepted_answers": [
@@ -7302,6 +7331,7 @@
       "primary_form": "楽観的",
       "meaning": "optimistic / hopeful",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 楽（らっ）＋観（かん）＋的（てき）, each kanji read with its on'yomi. Gemination: 楽 らく → らっ.",
       "sort_order": 345,
       "accepted_answers": [
@@ -7542,6 +7572,7 @@
       "primary_form": "間接的",
       "meaning": "indirect",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 間（かん）＋接（せつ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 356,
       "accepted_answers": [
@@ -7974,6 +8005,7 @@
       "primary_form": "競る",
       "meaning": "to compete",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 競（せ）＋る.",
       "sort_order": 376,
       "accepted_answers": [
@@ -8014,6 +8046,7 @@
       "primary_form": "叫ぶ",
       "meaning": "to shout / to cry (out) / to scream",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 叫（さけ）＋ぶ.",
       "sort_order": 378,
       "accepted_answers": [
@@ -8410,6 +8443,7 @@
       "primary_form": "撃つ",
       "meaning": "to shoot (a gun, person, etc.) / to fire",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 撃（う）＋つ.",
       "sort_order": 395,
       "accepted_answers": [
@@ -8518,6 +8552,7 @@
       "primary_form": "見直す",
       "meaning": "to look at again",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 見（み）＋直（なお）＋す.",
       "sort_order": 400,
       "accepted_answers": [
@@ -9846,6 +9881,7 @@
       "primary_form": "持ち越す",
       "meaning": "to carry over (an issue, decision, work, etc.) / to carry forward / to put off",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 持（も）＋ち＋越（こ）＋す.",
       "sort_order": 463,
       "accepted_answers": [
@@ -9934,6 +9970,7 @@
       "primary_form": "自在",
       "meaning": "being able to do as one pleases / doing at will",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 自（じ）＋在（ざい）, each kanji read with its on'yomi.",
       "sort_order": 467,
       "accepted_answers": [
@@ -10118,6 +10155,7 @@
       "primary_form": "受け取る",
       "meaning": "to receive / to get / to accept",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 受（う）＋け＋取（と）＋る.",
       "sort_order": 475,
       "accepted_answers": [
@@ -10650,6 +10688,7 @@
       "primary_form": "小柄",
       "meaning": "small build / small stature / petite",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 小（こ）＋柄（がら）.",
       "sort_order": 500,
       "accepted_answers": [
@@ -10922,6 +10961,7 @@
       "primary_form": "飾る",
       "meaning": "to decorate / to ornament / to adorn",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 飾（かざ）＋る.",
       "sort_order": 513,
       "accepted_answers": [
@@ -11082,6 +11122,7 @@
       "primary_form": "親しむ",
       "meaning": "to be intimate with / to befriend",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 親（した）＋しむ.",
       "sort_order": 520,
       "accepted_answers": [
@@ -11122,6 +11163,7 @@
       "primary_form": "迅速",
       "meaning": "(very) quick / rapid / swift",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 迅（じん）＋速（そく）, each kanji read with its on'yomi.",
       "sort_order": 522,
       "accepted_answers": [
@@ -11214,6 +11256,7 @@
       "primary_form": "清潔",
       "meaning": "clean / hygienic / sanitary",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 清（せい）＋潔（けつ）, each kanji read with its on'yomi.",
       "sort_order": 526,
       "accepted_answers": [
@@ -11298,6 +11341,7 @@
       "primary_form": "精密",
       "meaning": "precise / exact / detailed",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 精（せい）＋密（みつ）, each kanji read with its on'yomi.",
       "sort_order": 530,
       "accepted_answers": [
@@ -11430,6 +11474,7 @@
       "primary_form": "切実",
       "meaning": "earnest / sincere / acute",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 切（せつ）＋実（じつ）, each kanji read with its on'yomi.",
       "sort_order": 536,
       "accepted_answers": [
@@ -11682,6 +11727,7 @@
       "primary_form": "組み込む",
       "meaning": "to insert / to include / to incorporate",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 組（く）＋み＋込（こ）＋む.",
       "sort_order": 548,
       "accepted_answers": [
@@ -11710,6 +11756,7 @@
       "primary_form": "壮大",
       "meaning": "magnificent / grand / majestic",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 壮（そう）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 549,
       "accepted_answers": [
@@ -11846,6 +11893,7 @@
       "primary_form": "多大",
       "meaning": "great (quantity, amount, etc.) / huge / enormous",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 555,
       "accepted_answers": [
@@ -12002,6 +12050,7 @@
       "primary_form": "代表的",
       "meaning": "representative / exemplary / model",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 代（だい）＋表（ひょう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 562,
       "accepted_answers": [
@@ -12690,6 +12739,7 @@
       "primary_form": "転じる",
       "meaning": "to turn / to shift / to switch",
       "word_type": "ichidan verb, transitive verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "On'yomi — 転（てん）＋じる.",
       "sort_order": 594,
       "accepted_answers": [
@@ -12970,6 +13020,7 @@
       "primary_form": "得",
       "meaning": "profit / advantage / benefit",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 得（とく）.",
       "sort_order": 607,
       "accepted_answers": [
@@ -13194,6 +13245,7 @@
       "primary_form": "悩ます",
       "meaning": "to afflict / to torment / to harass",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 悩（なや）＋ます.",
       "sort_order": 618,
       "accepted_answers": [
@@ -13418,6 +13470,7 @@
       "primary_form": "縛る",
       "meaning": "to tie / to bind / to fasten",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 縛（しば）＋る.",
       "sort_order": 628,
       "accepted_answers": [
@@ -13582,6 +13635,7 @@
       "primary_form": "非合法",
       "meaning": "illegal / unlawful",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 非（ひ）＋合（ごう）＋法（ほう）, each kanji read with its on'yomi.",
       "sort_order": 636,
       "accepted_answers": [
@@ -13602,6 +13656,7 @@
       "primary_form": "飛び出す",
       "meaning": "to jump out / to leap out / to fly out",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 飛（と）＋び＋出（だ）＋す.",
       "sort_order": 637,
       "accepted_answers": [
@@ -13722,6 +13777,7 @@
       "primary_form": "不可分",
       "meaning": "inseparable / indivisible / undetachable",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋可（か）＋分（ぶん）, each kanji read with its on'yomi.",
       "sort_order": 642,
       "accepted_answers": [
@@ -13782,6 +13838,7 @@
       "primary_form": "文化的",
       "meaning": "cultural",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 文（ぶん）＋化（か）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 645,
       "accepted_answers": [
@@ -13934,6 +13991,7 @@
       "primary_form": "暮れる",
       "meaning": "to get dark / to grow dark",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 暮（く）＋れる.",
       "sort_order": 652,
       "accepted_answers": [
@@ -14098,6 +14156,7 @@
       "primary_form": "望む",
       "meaning": "to desire / to want / to wish for",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 望（のぞ）＋む.",
       "sort_order": 659,
       "accepted_answers": [
@@ -14290,6 +14349,7 @@
       "primary_form": "無数",
       "meaning": "innumerable / countless / numberless",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋数（すう）, each kanji read with its on'yomi.",
       "sort_order": 668,
       "accepted_answers": [
@@ -14310,6 +14370,7 @@
       "primary_form": "無責任",
       "meaning": "irresponsibility",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋責（せき）＋任（にん）, each kanji read with its on'yomi.",
       "sort_order": 669,
       "accepted_answers": [
@@ -14398,6 +14459,7 @@
       "primary_form": "猛烈",
       "meaning": "fierce / intense / severe",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 猛（もう）＋烈（れつ）, each kanji read with its on'yomi.",
       "sort_order": 673,
       "accepted_answers": [
@@ -14446,6 +14508,7 @@
       "primary_form": "有望",
       "meaning": "promising / hopeful / full of promise",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 有（ゆう）＋望（ぼう）, each kanji read with its on'yomi.",
       "sort_order": 675,
       "accepted_answers": [
@@ -14486,6 +14549,7 @@
       "primary_form": "余計",
       "meaning": "extra / more / too much",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 余（よ）＋計（けい）, each kanji read with its on'yomi.",
       "sort_order": 677,
       "accepted_answers": [
@@ -14666,6 +14730,7 @@
       "primary_form": "落ち込む",
       "meaning": "to feel down / to feel sad / to be depressed",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 落（お）＋ち＋込（こ）＋む.",
       "sort_order": 684,
       "accepted_answers": [
@@ -14782,6 +14847,7 @@
       "primary_form": "裏腹",
       "meaning": "opposite / reverse / contrary",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 裏（うら）＋腹（はら）.",
       "sort_order": 689,
       "accepted_answers": [
@@ -14842,6 +14908,7 @@
       "primary_form": "流動的",
       "meaning": "fluid / unsettled",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 流（りゅう）＋動（どう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 692,
       "accepted_answers": [
@@ -15298,6 +15365,7 @@
       "primary_form": "不定",
       "meaning": "unsettled / uncertain / indefinite",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋定（てい）, each kanji read with its on'yomi.",
       "sort_order": 713,
       "accepted_answers": [
@@ -15346,6 +15414,7 @@
       "primary_form": "生かす",
       "meaning": "to make (the best) use of / to put to good use / to leverage (skills, attributes, experience, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 生（い）＋かす.",
       "sort_order": 715,
       "accepted_answers": [
@@ -15502,6 +15571,7 @@
       "primary_form": "堅実",
       "meaning": "steady / sound / stable",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 堅（けん）＋実（じつ）, each kanji read with its on'yomi.",
       "sort_order": 722,
       "accepted_answers": [
@@ -15550,6 +15620,7 @@
       "primary_form": "絞る",
       "meaning": "to wring (towel, rag) / to squeeze",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 絞（しぼ）＋る.",
       "sort_order": 724,
       "accepted_answers": [
@@ -15726,6 +15797,7 @@
       "primary_form": "図る",
       "meaning": "to plan / to attempt / to devise",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 図（はか）＋る.",
       "sort_order": 732,
       "accepted_answers": [
@@ -15746,6 +15818,7 @@
       "primary_form": "冷ややか",
       "meaning": "cold / chilly / cool",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 冷（ひ）＋ややか.",
       "sort_order": 733,
       "accepted_answers": [
@@ -15766,6 +15839,7 @@
       "primary_form": "膨れる",
       "meaning": "to swell (out) / to expand / to be inflated",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 膨（ふく）＋れる.",
       "sort_order": 734,
       "accepted_answers": [
@@ -15794,6 +15868,7 @@
       "primary_form": "見つめる",
       "meaning": "to stare (at) / to gaze (at) / to look hard (at)",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 見（み）＋つめる.",
       "sort_order": 735,
       "accepted_answers": [
@@ -15838,6 +15913,7 @@
       "primary_form": "割高",
       "meaning": "comparatively high / fairly expensive",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 割（わり）＋高（だか）.",
       "sort_order": 737,
       "accepted_answers": [
@@ -15858,6 +15934,7 @@
       "primary_form": "割安",
       "meaning": "economical / comparatively cheap",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 割（わり）＋安（やす）.",
       "sort_order": 738,
       "accepted_answers": [
@@ -16058,6 +16135,7 @@
       "primary_form": "競り合う",
       "meaning": "to struggle for / to compete with / to vie with",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 競（せ）＋り＋合（あ）＋う.",
       "sort_order": 748,
       "accepted_answers": [
@@ -16418,6 +16496,7 @@
       "primary_form": "取りまとめる",
       "meaning": "to collect / to gather / to compile",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 取（と）＋りまとめる.",
       "sort_order": 765,
       "accepted_answers": [
@@ -16902,6 +16981,7 @@
       "primary_form": "扱う",
       "meaning": "to deal with (a person) / to treat / to handle",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 扱（あつか）＋う.",
       "sort_order": 788,
       "accepted_answers": [
@@ -17042,6 +17122,7 @@
       "primary_form": "移す",
       "meaning": "to transfer (to a different place, group, etc.) / to change / to move (something)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 移（うつ）＋す.",
       "sort_order": 794,
       "accepted_answers": [
@@ -17234,6 +17315,7 @@
       "primary_form": "一様",
       "meaning": "uniform / equal / even",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 一（いち）＋様（よう）, each kanji read with its on'yomi.",
       "sort_order": 803,
       "accepted_answers": [
@@ -17614,6 +17696,7 @@
       "primary_form": "華麗",
       "meaning": "splendid / magnificent / gorgeous",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 華（か）＋麗（れい）, each kanji read with its on'yomi.",
       "sort_order": 821,
       "accepted_answers": [
@@ -17634,6 +17717,7 @@
       "primary_form": "過大",
       "meaning": "excessive / too much / unreasonable",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 過（か）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 822,
       "accepted_answers": [
@@ -17974,6 +18058,7 @@
       "primary_form": "楽",
       "meaning": "comfort / ease / relief",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 楽（らく）.",
       "sort_order": 838,
       "accepted_answers": [
@@ -18238,6 +18323,7 @@
       "primary_form": "起こす",
       "meaning": "to raise / to raise up / to set up",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 起（お）＋こす.",
       "sort_order": 850,
       "accepted_answers": [
@@ -18966,6 +19052,7 @@
       "primary_form": "建設的",
       "meaning": "constructive",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 建（けん）＋設（せつ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 884,
       "accepted_answers": [
@@ -19006,6 +19093,7 @@
       "primary_form": "見当たる",
       "meaning": "to be found",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 見（み）＋当（あ）＋たる.",
       "sort_order": 886,
       "accepted_answers": [
@@ -19026,6 +19114,7 @@
       "primary_form": "謙虚",
       "meaning": "modest / humble",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 謙（けん）＋虚（きょ）, each kanji read with its on'yomi.",
       "sort_order": 887,
       "accepted_answers": [
@@ -19106,6 +19195,7 @@
       "primary_form": "厳密",
       "meaning": "strict / close / precise",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 厳（げん）＋密（みつ）, each kanji read with its on'yomi.",
       "sort_order": 891,
       "accepted_answers": [
@@ -19150,6 +19240,7 @@
       "primary_form": "互角",
       "meaning": "equal (in ability) / even / evenly matched",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 互（ご）＋角（かく）, each kanji read with its on'yomi.",
       "sort_order": 893,
       "accepted_answers": [
@@ -19358,6 +19449,7 @@
       "primary_form": "孝行",
       "meaning": "filial piety",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 孝（こう）＋行（こう）, each kanji read with its on'yomi.",
       "sort_order": 903,
       "accepted_answers": [
@@ -19542,6 +19634,7 @@
       "primary_form": "豪快",
       "meaning": "hearty / tremendous / magnificent",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 豪（ごう）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 912,
       "accepted_answers": [
@@ -19650,6 +19743,7 @@
       "primary_form": "細か",
       "meaning": "small / fine / detailed",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 細（こま）＋か.",
       "sort_order": 917,
       "accepted_answers": [
@@ -19930,6 +20024,7 @@
       "primary_form": "時期尚早",
       "meaning": "premature",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 時（じ）＋期（き）＋尚（しょう）＋早（そう）, each kanji read with its on'yomi.",
       "sort_order": 930,
       "accepted_answers": [
@@ -20190,6 +20285,7 @@
       "primary_form": "取り残す",
       "meaning": "to leave behind",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 取（と）＋り＋残（のこ）＋す.",
       "sort_order": 942,
       "accepted_answers": [
@@ -20866,6 +20962,7 @@
       "primary_form": "振り返る",
       "meaning": "to turn one's head / to look over one's shoulder / to turn around",
       "word_type": "godan verb, transitive verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 振（ふ）＋り＋返（かえ）＋る.",
       "sort_order": 973,
       "accepted_answers": [
@@ -21574,6 +21671,7 @@
       "primary_form": "狙う",
       "meaning": "to aim at (with a weapon, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 狙（ねら）＋う.",
       "sort_order": 1006,
       "accepted_answers": [
@@ -21594,6 +21692,7 @@
       "primary_form": "素早い",
       "meaning": "quick / swift / nimble",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Mixed — 素（す）on'yomi ＋ 早（ばや）kun'yomi ＋ い. Rendaku: 早 はや → ばや.",
       "sort_order": 1007,
       "accepted_answers": [
@@ -21618,6 +21717,7 @@
       "primary_form": "阻む",
       "meaning": "to keep someone from doing / to stop / to prevent",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 阻（はば）＋む.",
       "sort_order": 1008,
       "accepted_answers": [
@@ -21686,6 +21786,7 @@
       "primary_form": "相対的",
       "meaning": "relative",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 相（そう）＋対（たい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1011,
       "accepted_answers": [
@@ -22310,6 +22411,7 @@
       "primary_form": "張る",
       "meaning": "to stick / to paste / to affix",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 張（は）＋る.",
       "sort_order": 1040,
       "accepted_answers": [
@@ -22402,6 +22504,7 @@
       "primary_form": "低水準",
       "meaning": "substandard / low-level",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 低（てい）＋水（すい）＋準（じゅん）, each kanji read with its on'yomi.",
       "sort_order": 1044,
       "accepted_answers": [
@@ -22422,6 +22525,7 @@
       "primary_form": "低調",
       "meaning": "inactive / slow / sluggish",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 低（てい）＋調（ちょう）, each kanji read with its on'yomi.",
       "sort_order": 1045,
       "accepted_answers": [
@@ -23054,6 +23158,7 @@
       "primary_form": "任す",
       "meaning": "to entrust (to someone) / to leave (in someone's hands)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 任（まか）＋す.",
       "sort_order": 1075,
       "accepted_answers": [
@@ -23286,6 +23391,7 @@
       "primary_form": "不景気",
       "meaning": "economic slump / hard times / depression",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋景（けい）＋気（き）, each kanji read with its on'yomi.",
       "sort_order": 1086,
       "accepted_answers": [
@@ -23310,6 +23416,7 @@
       "primary_form": "不公平",
       "meaning": "unfairness / injustice / partiality",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋公（こう）＋平（へい）, each kanji read with its on'yomi.",
       "sort_order": 1087,
       "accepted_answers": [
@@ -23330,6 +23437,7 @@
       "primary_form": "不思議",
       "meaning": "wonderful / marvelous / strange",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋思（し）＋議（ぎ）, each kanji read with its on'yomi.",
       "sort_order": 1088,
       "accepted_answers": [
@@ -23378,6 +23486,7 @@
       "primary_form": "負う",
       "meaning": "to carry on one's back / to bear / to shoulder",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 負（お）＋う.",
       "sort_order": 1090,
       "accepted_answers": [
@@ -23418,6 +23527,7 @@
       "primary_form": "分かつ",
       "meaning": "to divide / to separate",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 分（わ）＋かつ.",
       "sort_order": 1092,
       "accepted_answers": [
@@ -24034,6 +24144,7 @@
       "primary_form": "無用",
       "meaning": "useless / futile",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋用（よう）, each kanji read with its on'yomi.",
       "sort_order": 1120,
       "accepted_answers": [
@@ -24214,6 +24325,7 @@
       "primary_form": "躍起",
       "meaning": "desperate / frantic / excited",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 躍（やっ）＋起（き）, each kanji read with its on'yomi. Gemination: 躍 やく → やっ.",
       "sort_order": 1129,
       "accepted_answers": [
@@ -24302,6 +24414,7 @@
       "primary_form": "預け入れる",
       "meaning": "to make a deposit",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 預（あず）＋け＋入（い）＋れる.",
       "sort_order": 1133,
       "accepted_answers": [
@@ -24370,6 +24483,7 @@
       "primary_form": "略式",
       "meaning": "informal / simplified",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 略（りゃく）＋式（しき）, each kanji read with its on'yomi.",
       "sort_order": 1136,
       "accepted_answers": [
@@ -24570,6 +24684,7 @@
       "primary_form": "露骨",
       "meaning": "open / unconcealed / undisguised",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 露（ろ）＋骨（こつ）, each kanji read with its on'yomi.",
       "sort_order": 1146,
       "accepted_answers": [
@@ -24886,6 +25001,7 @@
       "primary_form": "強固",
       "meaning": "firm / strong / solid",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 強（きょう）＋固（こ）, each kanji read with its on'yomi.",
       "sort_order": 1161,
       "accepted_answers": [
@@ -24970,6 +25086,7 @@
       "primary_form": "上々",
       "meaning": "the very best / excellent / superb",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Irregular — じょうじょう cannot be assembled from the dictionary readings of 上々.",
       "sort_order": 1165,
       "accepted_answers": [
@@ -25450,6 +25567,7 @@
       "primary_form": "急ピッチ",
       "meaning": "quick pace",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 急（きゅう）＋ピッチ.",
       "sort_order": 1188,
       "accepted_answers": [
@@ -25470,6 +25588,7 @@
       "primary_form": "多角的",
       "meaning": "multilateral / many-sided / diversified",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋角（かく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1189,
       "accepted_answers": [
@@ -26602,6 +26721,7 @@
       "primary_form": "象徴的",
       "meaning": "symbolic / symbolical",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 象（しょう）＋徴（ちょう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1244,
       "accepted_answers": [
@@ -26702,6 +26822,7 @@
       "primary_form": "見当たらない",
       "meaning": "not be found",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 見（み）＋当（あ）＋たらない.",
       "sort_order": 1249,
       "accepted_answers": [
@@ -26802,6 +26923,7 @@
       "primary_form": "解きほぐす",
       "meaning": "to disentangle / to untangle / to unravel",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 解（と）＋きほぐす.",
       "sort_order": 1254,
       "accepted_answers": [
@@ -26822,6 +26944,7 @@
       "primary_form": "間違いない",
       "meaning": "certain / sure / no doubt",
       "word_type": "い adjective, expression",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 間（ま）＋違（ちが）＋いない.",
       "sort_order": 1255,
       "accepted_answers": [
@@ -26862,6 +26985,7 @@
       "primary_form": "愛しい",
       "meaning": "lovely / dear / beloved",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 愛（いと）＋しい.",
       "sort_order": 1257,
       "accepted_answers": [
@@ -27070,6 +27194,7 @@
       "primary_form": "意図的",
       "meaning": "intentional / on purpose",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 意（い）＋図（と）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1266,
       "accepted_answers": [
@@ -27902,6 +28027,7 @@
       "primary_form": "外す",
       "meaning": "to remove / to take off / to detach",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 外（はず）＋す.",
       "sort_order": 1305,
       "accepted_answers": [
@@ -28014,6 +28140,7 @@
       "primary_form": "格安",
       "meaning": "(very) cheap / (very) inexpensive / cut-price",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Mixed — 格（かく）on'yomi ＋ 安（やす）kun'yomi.",
       "sort_order": 1310,
       "accepted_answers": [
@@ -28034,6 +28161,7 @@
       "primary_form": "格段",
       "meaning": "dramatic (improvement) / remarkable (difference) / marked",
       "word_type": "な adjective, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 格（かく）＋段（だん）, each kanji read with its on'yomi.",
       "sort_order": 1311,
       "accepted_answers": [
@@ -28118,6 +28246,7 @@
       "primary_form": "危うい",
       "meaning": "dangerous / in danger / facing imminent danger",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 危（あや）＋うい.",
       "sort_order": 1315,
       "accepted_answers": [
@@ -28294,6 +28423,7 @@
       "primary_form": "疑う",
       "meaning": "to doubt / to distrust / to be suspicious of",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 疑（うたが）＋う.",
       "sort_order": 1323,
       "accepted_answers": [
@@ -28806,6 +28936,7 @@
       "primary_form": "経る",
       "meaning": "to pass / to elapse / to go by",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 経（へ）＋る.",
       "sort_order": 1346,
       "accepted_answers": [
@@ -29034,6 +29165,7 @@
       "primary_form": "賢明",
       "meaning": "wise / sensible / well-advised",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 賢（けん）＋明（めい）, each kanji read with its on'yomi.",
       "sort_order": 1357,
       "accepted_answers": [
@@ -29274,6 +29406,7 @@
       "primary_form": "光栄",
       "meaning": "honour / honor / glory",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 光（こう）＋栄（えい）, each kanji read with its on'yomi.",
       "sort_order": 1368,
       "accepted_answers": [
@@ -29386,6 +29519,7 @@
       "primary_form": "構う",
       "meaning": "to mind / to care about / to be concerned about",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 構（かま）＋う.",
       "sort_order": 1373,
       "accepted_answers": [
@@ -29410,6 +29544,7 @@
       "primary_form": "高性能",
       "meaning": "high efficiency / high performance",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 高（こう）＋性（せい）＋能（のう）, each kanji read with its on'yomi.",
       "sort_order": 1374,
       "accepted_answers": [
@@ -29430,6 +29565,7 @@
       "primary_form": "刻む",
       "meaning": "to mince / to cut fine / to chop up",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 刻（きざ）＋む.",
       "sort_order": 1375,
       "accepted_answers": [
@@ -29682,6 +29818,7 @@
       "primary_form": "残酷",
       "meaning": "cruel / brutal / ruthless",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 残（ざん）＋酷（こく）, each kanji read with its on'yomi.",
       "sort_order": 1386,
       "accepted_answers": [
@@ -29934,6 +30071,7 @@
       "primary_form": "自発的",
       "meaning": "spontaneous / voluntary",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 自（じ）＋発（はつ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1398,
       "accepted_answers": [
@@ -29974,6 +30112,7 @@
       "primary_form": "質的",
       "meaning": "qualitative",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 質（しつ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1400,
       "accepted_answers": [
@@ -30054,6 +30193,7 @@
       "primary_form": "邪魔",
       "meaning": "hindrance / obstacle / nuisance",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 邪（じゃ）＋魔（ま）, each kanji read with its on'yomi.",
       "sort_order": 1404,
       "accepted_answers": [
@@ -30214,6 +30354,7 @@
       "primary_form": "受身",
       "meaning": "the defensive",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Irregular — うけみ cannot be assembled from the dictionary readings of 受身.",
       "sort_order": 1411,
       "accepted_answers": [
@@ -30906,6 +31047,7 @@
       "primary_form": "人間的",
       "meaning": "human / human-like / as a person",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 人（にん）＋間（げん）＋的（てき）, each kanji read with its on'yomi. Rendaku: 間 けん → げん.",
       "sort_order": 1444,
       "accepted_answers": [
@@ -31318,6 +31460,7 @@
       "primary_form": "専門的",
       "meaning": "technical / specialist / professional",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 専（せん）＋門（もん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1464,
       "accepted_answers": [
@@ -31402,6 +31545,7 @@
       "primary_form": "繊細",
       "meaning": "dainty / delicate (e.g. fingers) / fine",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 繊（せん）＋細（さい）, each kanji read with its on'yomi.",
       "sort_order": 1468,
       "accepted_answers": [
@@ -31558,6 +31702,7 @@
       "primary_form": "騒ぐ",
       "meaning": "to make noise / to make racket / to be noisy",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 騒（さわ）＋ぐ.",
       "sort_order": 1475,
       "accepted_answers": [
@@ -31626,6 +31771,7 @@
       "primary_form": "多量",
       "meaning": "large quantity / large amount",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋量（りょう）, each kanji read with its on'yomi.",
       "sort_order": 1478,
       "accepted_answers": [
@@ -31826,6 +31972,7 @@
       "primary_form": "丹念",
       "meaning": "painstaking / careful / meticulous",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 丹（たん）＋念（ねん）, each kanji read with its on'yomi.",
       "sort_order": 1487,
       "accepted_answers": [
@@ -32086,6 +32233,7 @@
       "primary_form": "直接的",
       "meaning": "direct",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 直（ちょく）＋接（せつ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1499,
       "accepted_answers": [
@@ -32130,6 +32278,7 @@
       "primary_form": "漬ける",
       "meaning": "to soak (in) / to steep / to dip",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 漬（つ）＋ける.",
       "sort_order": 1501,
       "accepted_answers": [
@@ -32238,6 +32387,7 @@
       "primary_form": "典型的",
       "meaning": "typical / representative / archetypal",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 典（てん）＋型（けい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1506,
       "accepted_answers": [
@@ -32774,6 +32924,7 @@
       "primary_form": "破る",
       "meaning": "to tear / to rip / to break",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 破（やぶ）＋る.",
       "sort_order": 1531,
       "accepted_answers": [
@@ -32882,6 +33033,7 @@
       "primary_form": "配る",
       "meaning": "to distribute / to hand out / to deliver",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 配（くば）＋る.",
       "sort_order": 1536,
       "accepted_answers": [
@@ -32978,6 +33130,7 @@
       "primary_form": "皮肉",
       "meaning": "irony / sarcasm / cynicism",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 皮（ひ）＋肉（にく）, each kanji read with its on'yomi.",
       "sort_order": 1540,
       "accepted_answers": [
@@ -33130,6 +33283,7 @@
       "primary_form": "不気味",
       "meaning": "weird / eerie / ominous",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ぶ）＋気（き）＋味（み）, each kanji read with its on'yomi.",
       "sort_order": 1547,
       "accepted_answers": [
@@ -33178,6 +33332,7 @@
       "primary_form": "不能",
       "meaning": "impossible / incapable (of doing) / unable (to do)",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋能（のう）, each kanji read with its on'yomi.",
       "sort_order": 1549,
       "accepted_answers": [
@@ -33258,6 +33413,7 @@
       "primary_form": "部分的",
       "meaning": "partial",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 部（ぶ）＋分（ぶん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1553,
       "accepted_answers": [
@@ -33378,6 +33534,7 @@
       "primary_form": "平穏",
       "meaning": "tranquil / calm / restful",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 平（へい）＋穏（おん）, each kanji read with its on'yomi.",
       "sort_order": 1559,
       "accepted_answers": [
@@ -33406,6 +33563,7 @@
       "primary_form": "閉ざす",
       "meaning": "to shut / to close / to fasten",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 閉（と）＋ざす.",
       "sort_order": 1560,
       "accepted_answers": [
@@ -33654,6 +33812,7 @@
       "primary_form": "未解決",
       "meaning": "unsolved / unresolved / unsettled",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 未（み）＋解（かい）＋決（けつ）, each kanji read with its on'yomi.",
       "sort_order": 1572,
       "accepted_answers": [
@@ -33946,6 +34105,7 @@
       "primary_form": "優雅",
       "meaning": "elegant / graceful / refined",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 優（ゆう）＋雅（が）, each kanji read with its on'yomi.",
       "sort_order": 1586,
       "accepted_answers": [
@@ -34210,6 +34370,7 @@
       "primary_form": "良質",
       "meaning": "good quality / fine quality / superior quality",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 良（りょう）＋質（しつ）, each kanji read with its on'yomi.",
       "sort_order": 1599,
       "accepted_answers": [
@@ -34254,6 +34415,7 @@
       "primary_form": "量的",
       "meaning": "quantitative / concerning the quantity",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 量（りょう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1601,
       "accepted_answers": [
@@ -34274,6 +34436,7 @@
       "primary_form": "力強い",
       "meaning": "powerful / strong / forceful",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 力（ちから）＋強（づよ）＋い. Rendaku: 強 つよ → づよ.",
       "sort_order": 1602,
       "accepted_answers": [
@@ -34802,6 +34965,7 @@
       "primary_form": "位置付ける",
       "meaning": "to place (in relation to the whole) / to rank / to position",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Mixed — 位（い）on'yomi ＋ 置（ち）on'yomi ＋ 付（づ）kun'yomi ＋ け ＋ る.",
       "sort_order": 1626,
       "accepted_answers": [
@@ -34894,6 +35058,7 @@
       "primary_form": "交わす",
       "meaning": "to exchange (messages, greetings, arguments, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 交（か）＋わす.",
       "sort_order": 1630,
       "accepted_answers": [
@@ -35050,6 +35215,7 @@
       "primary_form": "少量",
       "meaning": "small quantity / small amount",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 少（しょう）＋量（りょう）, each kanji read with its on'yomi.",
       "sort_order": 1637,
       "accepted_answers": [
@@ -35290,6 +35456,7 @@
       "primary_form": "まし",
       "meaning": "better / preferable / less objectionable",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kana only — the word is written exactly as it is read.",
       "sort_order": 1648,
       "accepted_answers": [
@@ -35774,6 +35941,7 @@
       "primary_form": "計画的",
       "meaning": "planned / scheduled / systematic",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 計（けい）＋画（かく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1671,
       "accepted_answers": [
@@ -36602,6 +36770,7 @@
       "primary_form": "継続的",
       "meaning": "continuous",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 継（けい）＋続（ぞく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1711,
       "accepted_answers": [
@@ -36742,6 +36911,7 @@
       "primary_form": "支配的",
       "meaning": "dominant / ruling",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 支（し）＋配（はい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1718,
       "accepted_answers": [
@@ -37022,6 +37192,7 @@
       "primary_form": "安価",
       "meaning": "low-priced / cheap / inexpensive",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 安（あん）＋価（か）, each kanji read with its on'yomi.",
       "sort_order": 1732,
       "accepted_answers": [
@@ -37102,6 +37273,7 @@
       "primary_form": "異様",
       "meaning": "strange / odd / peculiar",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 異（い）＋様（よう）, each kanji read with its on'yomi.",
       "sort_order": 1736,
       "accepted_answers": [
@@ -37242,6 +37414,7 @@
       "primary_form": "一級",
       "meaning": "one grade / first-class / primary",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 一（いっ）＋級（きゅう）, each kanji read with its on'yomi. Gemination: 一 いち → いっ.",
       "sort_order": 1742,
       "accepted_answers": [
@@ -37810,6 +37983,7 @@
       "primary_form": "果敢",
       "meaning": "resolute / determined / bold",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 果（か）＋敢（かん）, each kanji read with its on'yomi.",
       "sort_order": 1769,
       "accepted_answers": [
@@ -38350,6 +38524,7 @@
       "primary_form": "頑固",
       "meaning": "stubborn / obstinate / pigheaded",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 頑（がん）＋固（こ）, each kanji read with its on'yomi.",
       "sort_order": 1795,
       "accepted_answers": [
@@ -38390,6 +38565,7 @@
       "primary_form": "危ぶむ",
       "meaning": "to fear / to doubt / to have misgivings about",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 危（あや）＋ぶむ.",
       "sort_order": 1797,
       "accepted_answers": [
@@ -38518,6 +38694,7 @@
       "primary_form": "起こる",
       "meaning": "to occur / to happen",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 起（お）＋こる.",
       "sort_order": 1803,
       "accepted_answers": [
@@ -38642,6 +38819,7 @@
       "primary_form": "救う",
       "meaning": "to rescue (someone) / to save / to help (out of a difficulty)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 救（すく）＋う.",
       "sort_order": 1809,
       "accepted_answers": [
@@ -39318,6 +39496,7 @@
       "primary_form": "巧妙",
       "meaning": "ingenious / skillful / clever",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 巧（こう）＋妙（みょう）, each kanji read with its on'yomi.",
       "sort_order": 1842,
       "accepted_answers": [
@@ -39346,6 +39525,7 @@
       "primary_form": "幸い",
       "meaning": "happiness / blessedness / luck",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 幸（さいわ）＋い.",
       "sort_order": 1843,
       "accepted_answers": [
@@ -39518,6 +39698,7 @@
       "primary_form": "合法的",
       "meaning": "legal / lawful / legitimate",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 合（ごう）＋法（ほう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1851,
       "accepted_answers": [
@@ -39546,6 +39727,7 @@
       "primary_form": "克明",
       "meaning": "detailed / scrupulous / careful",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 克（こく）＋明（めい）, each kanji read with its on'yomi.",
       "sort_order": 1852,
       "accepted_answers": [
@@ -39854,6 +40036,7 @@
       "primary_form": "思い出す",
       "meaning": "to recall / to remember / to recollect",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 思（おも）＋い＋出（だ）＋す.",
       "sort_order": 1866,
       "accepted_answers": [
@@ -40230,6 +40413,7 @@
       "primary_form": "斜め",
       "meaning": "slanting / tilted / sloping",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 斜（なな）＋め.",
       "sort_order": 1883,
       "accepted_answers": [
@@ -40258,6 +40442,7 @@
       "primary_form": "煮る",
       "meaning": "to boil / to simmer / to stew",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 煮（に）＋る.",
       "sort_order": 1884,
       "accepted_answers": [
@@ -40566,6 +40751,7 @@
       "primary_form": "勝手",
       "meaning": "one's own convenience / one's way / selfishness",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 勝（かっ）＋手（て）. Gemination: 勝 かつ → かっ.",
       "sort_order": 1899,
       "accepted_answers": [
@@ -40754,6 +40940,7 @@
       "primary_form": "振り回す",
       "meaning": "to wield / to brandish / to flourish",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 振（ふ）＋り＋回（まわ）＋す.",
       "sort_order": 1908,
       "accepted_answers": [
@@ -40818,6 +41005,7 @@
       "primary_form": "神経質",
       "meaning": "nervous / highly strung / sensitive",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 神（しん）＋経（けい）＋質（しつ）, each kanji read with its on'yomi.",
       "sort_order": 1911,
       "accepted_answers": [
@@ -40838,6 +41026,7 @@
       "primary_form": "親密",
       "meaning": "intimacy / friendship",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 親（しん）＋密（みつ）, each kanji read with its on'yomi.",
       "sort_order": 1912,
       "accepted_answers": [
@@ -40998,6 +41187,7 @@
       "primary_form": "水平",
       "meaning": "horizontal / level / even",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 水（すい）＋平（へい）, each kanji read with its on'yomi.",
       "sort_order": 1920,
       "accepted_answers": [
@@ -41090,6 +41280,7 @@
       "primary_form": "成り立つ",
       "meaning": "to consist of / to be made up of / to be composed of",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 成（な）＋り＋立（た）＋つ.",
       "sort_order": 1924,
       "accepted_answers": [
@@ -41334,6 +41525,7 @@
       "primary_form": "絶妙",
       "meaning": "exquisite / superb / perfect",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 絶（ぜつ）＋妙（みょう）, each kanji read with its on'yomi.",
       "sort_order": 1935,
       "accepted_answers": [
@@ -41678,6 +41870,7 @@
       "primary_form": "多目的",
       "meaning": "multipurpose",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋目（もく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1951,
       "accepted_answers": [
@@ -41862,6 +42055,7 @@
       "primary_form": "単調",
       "meaning": "monotony / monotone / dullness",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 単（たん）＋調（ちょう）, each kanji read with its on'yomi.",
       "sort_order": 1960,
       "accepted_answers": [
@@ -42026,6 +42220,7 @@
       "primary_form": "抽象的",
       "meaning": "abstract",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 抽（ちゅう）＋象（しょう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 1968,
       "accepted_answers": [
@@ -42278,6 +42473,7 @@
       "primary_form": "定める",
       "meaning": "to decide / to determine",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 定（さだ）＋める.",
       "sort_order": 1980,
       "accepted_answers": [
@@ -42322,6 +42518,7 @@
       "primary_form": "適法",
       "meaning": "legal / lawful / legitimate",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 適（てき）＋法（ほう）, each kanji read with its on'yomi.",
       "sort_order": 1982,
       "accepted_answers": [
@@ -42926,6 +43123,7 @@
       "primary_form": "粘り強い",
       "meaning": "tenacious / persevering / persistent",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 粘（ねば）＋り＋強（づよ）＋い. Rendaku: 強 つよ → づよ.",
       "sort_order": 2011,
       "accepted_answers": [
@@ -43378,6 +43576,7 @@
       "primary_form": "不必要",
       "meaning": "unnecessary / needless",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋必（ひつ）＋要（よう）, each kanji read with its on'yomi.",
       "sort_order": 2033,
       "accepted_answers": [
@@ -43578,6 +43777,7 @@
       "primary_form": "変",
       "meaning": "strange / odd / peculiar",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 変（へん）.",
       "sort_order": 2042,
       "accepted_answers": [
@@ -44010,6 +44210,7 @@
       "primary_form": "無関係",
       "meaning": "unrelated",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋関（かん）＋係（けい）, each kanji read with its on'yomi.",
       "sort_order": 2062,
       "accepted_answers": [
@@ -44030,6 +44231,7 @@
       "primary_form": "無難",
       "meaning": "safe (e.g. choice) / secure / innocuous",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（ぶ）＋難（なん）, each kanji read with its on'yomi.",
       "sort_order": 2063,
       "accepted_answers": [
@@ -44322,6 +44524,7 @@
       "primary_form": "理想的",
       "meaning": "ideal",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 理（り）＋想（そう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2077,
       "accepted_answers": [
@@ -44342,6 +44545,7 @@
       "primary_form": "裏切る",
       "meaning": "to betray / to turn traitor (to) / to double-cross",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 裏（うら）＋切（ぎ）＋る.",
       "sort_order": 2078,
       "accepted_answers": [
@@ -44722,6 +44926,7 @@
       "primary_form": "縦横",
       "meaning": "length and width / length and breadth / lengthwise and crosswise",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 縦（じゅう）＋横（おう）, each kanji read with its on'yomi.",
       "sort_order": 2095,
       "accepted_answers": [
@@ -44770,6 +44975,7 @@
       "primary_form": "丈夫",
       "meaning": "healthy / robust / strong",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 丈（じょう）＋夫（ぶ）, each kanji read with its on'yomi.",
       "sort_order": 2097,
       "accepted_answers": [
@@ -44798,6 +45004,7 @@
       "primary_form": "真っ白",
       "meaning": "pure white",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 真（ま）＋っ＋白（しろ）.",
       "sort_order": 2098,
       "accepted_answers": [
@@ -44982,6 +45189,7 @@
       "primary_form": "恐れる",
       "meaning": "to fear / to be afraid of",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 恐（おそ）＋れる.",
       "sort_order": 2107,
       "accepted_answers": [
@@ -45090,6 +45298,7 @@
       "primary_form": "希薄",
       "meaning": "thin (air) / weak (liquid) / dilute",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 希（き）＋薄（はく）, each kanji read with its on'yomi.",
       "sort_order": 2112,
       "accepted_answers": [
@@ -45274,6 +45483,7 @@
       "primary_form": "引き上げる",
       "meaning": "to pull up / to drag up / to lift up",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 引（ひ）＋き＋上（あ）＋げる.",
       "sort_order": 2120,
       "accepted_answers": [
@@ -45294,6 +45504,7 @@
       "primary_form": "引き下げる",
       "meaning": "to lower (a price, tax, standard, etc.) / to bring down / to reduce",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 引（ひ）＋き＋下（さ）＋げる.",
       "sort_order": 2121,
       "accepted_answers": [
@@ -45462,6 +45673,7 @@
       "primary_form": "映し出す",
       "meaning": "to project / to show (on a screen) / to reflect (of a mirror, lake, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 映（うつ）＋し＋出（だ）＋す.",
       "sort_order": 2129,
       "accepted_answers": [
@@ -45542,6 +45754,7 @@
       "primary_form": "喜ばす",
       "meaning": "to delight / to please / to make (someone) happy",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 喜（よろこ）＋ばす.",
       "sort_order": 2133,
       "accepted_answers": [
@@ -45662,6 +45875,7 @@
       "primary_form": "普遍的",
       "meaning": "universal / omnipresent / ubiquitous",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 普（ふ）＋遍（へん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2139,
       "accepted_answers": [
@@ -46510,6 +46724,7 @@
       "primary_form": "常識的",
       "meaning": "ordinary / sensible / commonplace",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 常（じょう）＋識（しき）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2181,
       "accepted_answers": [
@@ -46590,6 +46805,7 @@
       "primary_form": "洗い上げる",
       "meaning": "to finish washing / to wash well / to investigate thoroughly",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 洗（あら）＋い＋上（あ）＋げる.",
       "sort_order": 2185,
       "accepted_answers": [
@@ -47154,6 +47370,7 @@
       "primary_form": "円満",
       "meaning": "harmonious / peaceful / happy",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 円（えん）＋満（まん）, each kanji read with its on'yomi.",
       "sort_order": 2212,
       "accepted_answers": [
@@ -47222,6 +47439,7 @@
       "primary_form": "押し入る",
       "meaning": "to push in / to force into / to break in (e.g. into a house)",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 押（お）＋し＋入（い）＋る.",
       "sort_order": 2215,
       "accepted_answers": [
@@ -47326,6 +47544,7 @@
       "primary_form": "加算",
       "meaning": "addition / adding / supplement",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 加（か）＋算（さん）, each kanji read with its on'yomi.",
       "sort_order": 2220,
       "accepted_answers": [
@@ -47386,6 +47605,7 @@
       "primary_form": "過密",
       "meaning": "overcrowding / congestion / overpopulation",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 過（か）＋密（みつ）, each kanji read with its on'yomi.",
       "sort_order": 2223,
       "accepted_answers": [
@@ -47446,6 +47666,7 @@
       "primary_form": "皆無",
       "meaning": "nonexistent / nil / none",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 皆（かい）＋無（む）, each kanji read with its on'yomi.",
       "sort_order": 2226,
       "accepted_answers": [
@@ -47722,6 +47943,7 @@
       "primary_form": "楽しむ",
       "meaning": "to enjoy / to take pleasure in / to have a good time",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 楽（たの）＋しむ.",
       "sort_order": 2239,
       "accepted_answers": [
@@ -47790,6 +48012,7 @@
       "primary_form": "堪能",
       "meaning": "proficient / skilled / skillful",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 堪（たん）＋能（のう）, each kanji read with its on'yomi.",
       "sort_order": 2242,
       "accepted_answers": [
@@ -47818,6 +48041,7 @@
       "primary_form": "寛容",
       "meaning": "tolerance / open-mindedness / forbearance",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 寛（かん）＋容（よう）, each kanji read with its on'yomi.",
       "sort_order": 2243,
       "accepted_answers": [
@@ -48038,6 +48262,7 @@
       "primary_form": "希少",
       "meaning": "scarce / rare",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 希（き）＋少（しょう）, each kanji read with its on'yomi.",
       "sort_order": 2252,
       "accepted_answers": [
@@ -48206,6 +48431,7 @@
       "primary_form": "強大",
       "meaning": "powerful / strong / mighty",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 強（きょう）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 2260,
       "accepted_answers": [
@@ -48274,6 +48500,7 @@
       "primary_form": "驚かす",
       "meaning": "to surprise / to frighten / to create a stir",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 驚（おどろ）＋かす.",
       "sort_order": 2263,
       "accepted_answers": [
@@ -48566,6 +48793,7 @@
       "primary_form": "嫌う",
       "meaning": "to hate / to dislike / to loathe",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 嫌（きら）＋う.",
       "sort_order": 2277,
       "accepted_answers": [
@@ -48650,6 +48878,7 @@
       "primary_form": "見極める",
       "meaning": "to watch to the end",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 見（み）＋極（きわ）＋める.",
       "sort_order": 2281,
       "accepted_answers": [
@@ -48710,6 +48939,7 @@
       "primary_form": "厳粛",
       "meaning": "grave / solemn / serious",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 厳（げん）＋粛（しゅく）, each kanji read with its on'yomi.",
       "sort_order": 2284,
       "accepted_answers": [
@@ -48730,6 +48960,7 @@
       "primary_form": "限りない",
       "meaning": "unlimited / endless / boundless",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 限（かぎ）＋りない.",
       "sort_order": 2285,
       "accepted_answers": [
@@ -48774,6 +49005,7 @@
       "primary_form": "呼びかける",
       "meaning": "to call out to / to hail / to address",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 呼（よ）＋びかける.",
       "sort_order": 2287,
       "accepted_answers": [
@@ -48862,6 +49094,7 @@
       "primary_form": "交える",
       "meaning": "to mix / to combine / to include",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 交（まじ）＋える.",
       "sort_order": 2291,
       "accepted_answers": [
@@ -49390,6 +49623,7 @@
       "primary_form": "最良",
       "meaning": "the best / ideal",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 最（さい）＋良（りょう）, each kanji read with its on'yomi.",
       "sort_order": 2316,
       "accepted_answers": [
@@ -49650,6 +49884,7 @@
       "primary_form": "指し示す",
       "meaning": "to indicate / to show / to point to",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 指（さ）＋し＋示（しめ）＋す.",
       "sort_order": 2328,
       "accepted_answers": [
@@ -49858,6 +50093,7 @@
       "primary_form": "次ぐ",
       "meaning": "to follow / to come after / to come next (to)",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 次（つ）＋ぐ.",
       "sort_order": 2338,
       "accepted_answers": [
@@ -50198,6 +50434,7 @@
       "primary_form": "受ける",
       "meaning": "to receive / to get",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 受（う）＋ける.",
       "sort_order": 2354,
       "accepted_answers": [
@@ -50298,6 +50535,7 @@
       "primary_form": "出迎える",
       "meaning": "to meet / to greet",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 出（で）＋迎（むか）＋える.",
       "sort_order": 2359,
       "accepted_answers": [
@@ -50502,6 +50740,7 @@
       "primary_form": "少ない",
       "meaning": "few / little / small (amount)",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 少（すく）＋ない.",
       "sort_order": 2369,
       "accepted_answers": [
@@ -50550,6 +50789,7 @@
       "primary_form": "上る",
       "meaning": "to ascend / to go up / to climb",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 上（のぼ）＋る.",
       "sort_order": 2371,
       "accepted_answers": [
@@ -50742,6 +50982,7 @@
       "primary_form": "深まる",
       "meaning": "to deepen / to heighten / to intensify",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 深（ふか）＋まる.",
       "sort_order": 2380,
       "accepted_answers": [
@@ -51054,6 +51295,7 @@
       "primary_form": "積む",
       "meaning": "to pile up / to stack",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 積（つ）＋む.",
       "sort_order": 2395,
       "accepted_answers": [
@@ -51258,6 +51500,7 @@
       "primary_form": "組む",
       "meaning": "to cross (legs or arms) / to link (arms)",
       "word_type": "godan verb, transitive verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 組（く）＋む.",
       "sort_order": 2405,
       "accepted_answers": [
@@ -51358,6 +51601,7 @@
       "primary_form": "多岐",
       "meaning": "diverse / various / wide-ranging",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋岐（き）, each kanji read with its on'yomi.",
       "sort_order": 2410,
       "accepted_answers": [
@@ -51482,6 +51726,7 @@
       "primary_form": "大々的",
       "meaning": "great / grand / extensive",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Irregular — だいだいてき cannot be assembled from the dictionary readings of 大々的.",
       "sort_order": 2416,
       "accepted_answers": [
@@ -51610,6 +51855,7 @@
       "primary_form": "端的",
       "meaning": "frank / direct / plain",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 端（たん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2422,
       "accepted_answers": [
@@ -51658,6 +51904,7 @@
       "primary_form": "知り合う",
       "meaning": "to get to know each other / to make acquaintance",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 知（し）＋り＋合（あ）＋う.",
       "sort_order": 2424,
       "accepted_answers": [
@@ -51766,6 +52013,7 @@
       "primary_form": "珍",
       "meaning": "rare",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "On'yomi — 珍（ちん）.",
       "sort_order": 2429,
       "accepted_answers": [
@@ -51806,6 +52054,7 @@
       "primary_form": "痛烈",
       "meaning": "severe / bitter / scathing",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 痛（つう）＋烈（れつ）, each kanji read with its on'yomi.",
       "sort_order": 2431,
       "accepted_answers": [
@@ -52042,6 +52291,7 @@
       "primary_form": "唐突",
       "meaning": "abrupt / sudden",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 唐（とう）＋突（とつ）, each kanji read with its on'yomi.",
       "sort_order": 2442,
       "accepted_answers": [
@@ -52210,6 +52460,7 @@
       "primary_form": "難解",
       "meaning": "difficult to understand / unintelligible / abstruse",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 難（なん）＋解（かい）, each kanji read with its on'yomi.",
       "sort_order": 2450,
       "accepted_answers": [
@@ -52418,6 +52669,7 @@
       "primary_form": "売り出す",
       "meaning": "to put on the market / to put out for sale / to put on sale",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 売（う）＋り＋出（だ）＋す.",
       "sort_order": 2460,
       "accepted_answers": [
@@ -52514,6 +52766,7 @@
       "primary_form": "半端",
       "meaning": "remnant / fragment / incomplete set",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Mixed — 半（はん）on'yomi ＋ 端（ぱ）kun'yomi. Handakuon: 端 は → ぱ.",
       "sort_order": 2464,
       "accepted_answers": [
@@ -52578,6 +52831,7 @@
       "primary_form": "不平等",
       "meaning": "inequality / unfairness",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋平（びょう）＋等（どう）, each kanji read with its on'yomi. Rendaku: 等 とう → どう.",
       "sort_order": 2467,
       "accepted_answers": [
@@ -52598,6 +52852,7 @@
       "primary_form": "不本意",
       "meaning": "reluctant / unwilling / involuntary",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋本（ほん）＋意（い）, each kanji read with its on'yomi.",
       "sort_order": 2468,
       "accepted_answers": [
@@ -52694,6 +52949,7 @@
       "primary_form": "舞う",
       "meaning": "to dance (orig. a whirling dance)",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 舞（ま）＋う.",
       "sort_order": 2472,
       "accepted_answers": [
@@ -52794,6 +53050,7 @@
       "primary_form": "覆す",
       "meaning": "to overturn / to capsize / to upset",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 覆（くつがえ）＋す.",
       "sort_order": 2477,
       "accepted_answers": [
@@ -53030,6 +53287,7 @@
       "primary_form": "保つ",
       "meaning": "to keep / to preserve / to hold",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 保（たも）＋つ.",
       "sort_order": 2488,
       "accepted_answers": [
@@ -53058,6 +53316,7 @@
       "primary_form": "歩き回る",
       "meaning": "to walk about / to walk around / to walk to and fro",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 歩（ある）＋き＋回（まわ）＋る.",
       "sort_order": 2489,
       "accepted_answers": [
@@ -53286,6 +53545,7 @@
       "primary_form": "無関心",
       "meaning": "apathetic / indifferent / nonchalant",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋関（かん）＋心（しん）, each kanji read with its on'yomi.",
       "sort_order": 2500,
       "accepted_answers": [
@@ -53310,6 +53570,7 @@
       "primary_form": "無念",
       "meaning": "regret / chagrin / mortification",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋念（ねん）, each kanji read with its on'yomi.",
       "sort_order": 2501,
       "accepted_answers": [
@@ -53350,6 +53611,7 @@
       "primary_form": "明朗",
       "meaning": "cheerful / bright",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 明（めい）＋朗（ろう）, each kanji read with its on'yomi.",
       "sort_order": 2503,
       "accepted_answers": [
@@ -53498,6 +53760,7 @@
       "primary_form": "問い合わせる",
       "meaning": "to enquire / to inquire / to seek information",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 問（と）＋い＋合（あ）＋わせる.",
       "sort_order": 2510,
       "accepted_answers": [
@@ -53586,6 +53849,7 @@
       "primary_form": "有意義",
       "meaning": "significant / useful / meaningful",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 有（ゆう）＋意（い）＋義（ぎ）, each kanji read with its on'yomi.",
       "sort_order": 2514,
       "accepted_answers": [
@@ -53614,6 +53878,7 @@
       "primary_form": "有益",
       "meaning": "beneficial / profitable / useful",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 有（ゆう）＋益（えき）, each kanji read with its on'yomi.",
       "sort_order": 2515,
       "accepted_answers": [
@@ -53642,6 +53907,7 @@
       "primary_form": "余る",
       "meaning": "to remain / to be left over / to be in excess",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 余（あま）＋る.",
       "sort_order": 2516,
       "accepted_answers": [
@@ -53850,6 +54116,7 @@
       "primary_form": "例外的",
       "meaning": "exceptional / unusual",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 例（れい）＋外（がい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2526,
       "accepted_answers": [
@@ -53890,6 +54157,7 @@
       "primary_form": "連れる",
       "meaning": "to take (someone) with one / to bring along / to go with",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 連（つ）＋れる.",
       "sort_order": 2528,
       "accepted_answers": [
@@ -54142,6 +54410,7 @@
       "primary_form": "追いつく",
       "meaning": "to catch up (with) / to draw level / to pull even",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 追（お）＋いつく.",
       "sort_order": 2540,
       "accepted_answers": [
@@ -54206,6 +54475,7 @@
       "primary_form": "画一",
       "meaning": "uniformity / standardization / standardisation",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 画（かく）＋一（いつ）, each kanji read with its on'yomi.",
       "sort_order": 2543,
       "accepted_answers": [
@@ -54246,6 +54516,7 @@
       "primary_form": "凶悪",
       "meaning": "atrocious / heinous / fiendish",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 凶（きょう）＋悪（あく）, each kanji read with its on'yomi.",
       "sort_order": 2545,
       "accepted_answers": [
@@ -54274,6 +54545,7 @@
       "primary_form": "締め切る",
       "meaning": "to close up / to shut up (e.g. behind doors)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 締（し）＋め＋切（き）＋る.",
       "sort_order": 2546,
       "accepted_answers": [
@@ -54314,6 +54586,7 @@
       "primary_form": "損なう",
       "meaning": "to harm / to hurt / to injure",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 損（そこ）＋なう.",
       "sort_order": 2548,
       "accepted_answers": [
@@ -54402,6 +54675,7 @@
       "primary_form": "保守的",
       "meaning": "conservative",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 保（ほ）＋守（しゅ）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2552,
       "accepted_answers": [
@@ -54702,6 +54976,7 @@
       "primary_form": "生鮮",
       "meaning": "fresh",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 生（せい）＋鮮（せん）, each kanji read with its on'yomi.",
       "sort_order": 2566,
       "accepted_answers": [
@@ -55866,6 +56141,7 @@
       "primary_form": "記録的",
       "meaning": "record / record-setting / record-breaking",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 記（き）＋録（ろく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2624,
       "accepted_answers": [
@@ -55946,6 +56222,7 @@
       "primary_form": "肉体的",
       "meaning": "bodily / physical / corporeal",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 肉（にく）＋体（たい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2628,
       "accepted_answers": [
@@ -56234,6 +56511,7 @@
       "primary_form": "重点的",
       "meaning": "prioritized / focused / concentrated",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 重（じゅう）＋点（てん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2642,
       "accepted_answers": [
@@ -56326,6 +56604,7 @@
       "primary_form": "意気込む",
       "meaning": "to be enthusiastic (about) / to be eager (to do) / to be keen",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Mixed — 意（い）on'yomi ＋ 気（き）on'yomi ＋ 込（ご）kun'yomi ＋ む. Rendaku: 込 こ → ご.",
       "sort_order": 2646,
       "accepted_answers": [
@@ -56626,6 +56905,7 @@
       "primary_form": "下る",
       "meaning": "to descend / to go down / to come down",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 下（くだ）＋る.",
       "sort_order": 2660,
       "accepted_answers": [
@@ -57558,6 +57838,7 @@
       "primary_form": "苦しめる",
       "meaning": "to torment / to pain / to inflict (physical) pain",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 苦（くる）＋しめる.",
       "sort_order": 2703,
       "accepted_answers": [
@@ -57682,6 +57963,7 @@
       "primary_form": "軽快",
       "meaning": "light (of movements) / nimble / sprightly",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 軽（けい）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 2709,
       "accepted_answers": [
@@ -57802,6 +58084,7 @@
       "primary_form": "健在",
       "meaning": "in good health / alive and well / going strong",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 健（けん）＋在（ざい）, each kanji read with its on'yomi.",
       "sort_order": 2714,
       "accepted_answers": [
@@ -58242,6 +58525,7 @@
       "primary_form": "好む",
       "meaning": "to like / to prefer",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 好（この）＋む.",
       "sort_order": 2735,
       "accepted_answers": [
@@ -58302,6 +58586,7 @@
       "primary_form": "慌てる",
       "meaning": "to become confused (disconcerted, disorganized, disorganised) / to be flustered / to panic",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 慌（あわ）＋てる.",
       "sort_order": 2738,
       "accepted_answers": [
@@ -58706,6 +58991,7 @@
       "primary_form": "催す",
       "meaning": "to hold (an event) / to give (a dinner, party, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 催（もよお）＋す.",
       "sort_order": 2757,
       "accepted_answers": [
@@ -59046,6 +59332,7 @@
       "primary_form": "残虐",
       "meaning": "cruel / brutal / savage",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 残（ざん）＋虐（ぎゃく）, each kanji read with its on'yomi.",
       "sort_order": 2773,
       "accepted_answers": [
@@ -59406,6 +59693,7 @@
       "primary_form": "写る",
       "meaning": "to be photographed / to be projected",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 写（うつ）＋る.",
       "sort_order": 2790,
       "accepted_answers": [
@@ -59486,6 +59774,7 @@
       "primary_form": "邪",
       "meaning": "wicked / evil / wrong",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Irregular — よこしま cannot be assembled from the dictionary readings of 邪.",
       "sort_order": 2794,
       "accepted_answers": [
@@ -59530,6 +59819,7 @@
       "primary_form": "弱気",
       "meaning": "timid / weak-kneed / fainthearted",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Mixed — 弱（よわ）kun'yomi ＋ 気（き）on'yomi.",
       "sort_order": 2796,
       "accepted_answers": [
@@ -59570,6 +59860,7 @@
       "primary_form": "手渡す",
       "meaning": "to hand (over) / to deliver in person",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 手（て）＋渡（わた）＋す.",
       "sort_order": 2798,
       "accepted_answers": [
@@ -59730,6 +60021,7 @@
       "primary_form": "重る",
       "meaning": "to get heavy",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 重（おも）＋る.",
       "sort_order": 2806,
       "accepted_answers": [
@@ -59854,6 +60146,7 @@
       "primary_form": "唱える",
       "meaning": "to recite / to chant",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 唱（とな）＋える.",
       "sort_order": 2812,
       "accepted_answers": [
@@ -60014,6 +60307,7 @@
       "primary_form": "乗り越える",
       "meaning": "to climb over / to get over / to cross (a mountain)",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 乗（の）＋り＋越（こ）＋える.",
       "sort_order": 2820,
       "accepted_answers": [
@@ -60114,6 +60408,7 @@
       "primary_form": "侵す",
       "meaning": "to invade / to raid / to violate (airspace, etc.)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 侵（おか）＋す.",
       "sort_order": 2825,
       "accepted_answers": [
@@ -60182,6 +60477,7 @@
       "primary_form": "申し上げる",
       "meaning": "to say / to tell / to state",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 申（もう）＋し＋上（あ）＋げる.",
       "sort_order": 2828,
       "accepted_answers": [
@@ -60342,6 +60638,7 @@
       "primary_form": "数える",
       "meaning": "to count / to enumerate",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 数（かぞ）＋える.",
       "sort_order": 2835,
       "accepted_answers": [
@@ -60362,6 +60659,7 @@
       "primary_form": "性急",
       "meaning": "hasty / rash / rushed",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 性（せい）＋急（きゅう）, each kanji read with its on'yomi.",
       "sort_order": 2836,
       "accepted_answers": [
@@ -60494,6 +60792,7 @@
       "primary_form": "声高",
       "meaning": "loud (of a voice)",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 声（こわ）＋高（だか）.",
       "sort_order": 2842,
       "accepted_answers": [
@@ -60514,6 +60813,7 @@
       "primary_form": "請け負う",
       "meaning": "to contract (to do) / to undertake / to take on (work)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 請（う）＋け＋負（お）＋う.",
       "sort_order": 2843,
       "accepted_answers": [
@@ -60654,6 +60954,7 @@
       "primary_form": "先駆ける",
       "meaning": "to do (something) before (something or someone else) / to be ahead of (others, the times, etc.)",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 先（さき）＋駆（が）＋ける. Rendaku: 駆 か → が.",
       "sort_order": 2850,
       "accepted_answers": [
@@ -61126,6 +61427,7 @@
       "primary_form": "多重",
       "meaning": "multiple / multiplex",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋重（じゅう）, each kanji read with its on'yomi.",
       "sort_order": 2872,
       "accepted_answers": [
@@ -61146,6 +61448,7 @@
       "primary_form": "打ち切る",
       "meaning": "to stop / to abort / to discontinue",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 打（う）＋ち＋切（き）＋る.",
       "sort_order": 2873,
       "accepted_answers": [
@@ -61466,6 +61769,7 @@
       "primary_form": "忠誠",
       "meaning": "loyalty / sincerity / allegiance",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 忠（ちゅう）＋誠（せい）, each kanji read with its on'yomi.",
       "sort_order": 2888,
       "accepted_answers": [
@@ -61970,6 +62274,7 @@
       "primary_form": "同等",
       "meaning": "equality / equal / same rights",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 同（どう）＋等（とう）, each kanji read with its on'yomi.",
       "sort_order": 2912,
       "accepted_answers": [
@@ -62162,6 +62467,7 @@
       "primary_form": "熱烈",
       "meaning": "ardent / passionate / vehement",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 熱（ねつ）＋烈（れつ）, each kanji read with its on'yomi.",
       "sort_order": 2921,
       "accepted_answers": [
@@ -62446,6 +62752,7 @@
       "primary_form": "微小",
       "meaning": "microscopic",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 微（び）＋小（しょう）, each kanji read with its on'yomi.",
       "sort_order": 2934,
       "accepted_answers": [
@@ -62506,6 +62813,7 @@
       "primary_form": "必然的",
       "meaning": "inevitable / necessary",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 必（ひつ）＋然（ぜん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2937,
       "accepted_answers": [
@@ -62574,6 +62882,7 @@
       "primary_form": "不可避",
       "meaning": "inevitable / inescapable / unavoidable",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋可（か）＋避（ひ）, each kanji read with its on'yomi.",
       "sort_order": 2940,
       "accepted_answers": [
@@ -62594,6 +62903,7 @@
       "primary_form": "不快",
       "meaning": "displeasure / discomfort / unpleasantness",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 2941,
       "accepted_answers": [
@@ -62658,6 +62968,7 @@
       "primary_form": "不備",
       "meaning": "defect / deficiency / imperfection",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋備（び）, each kanji read with its on'yomi.",
       "sort_order": 2944,
       "accepted_answers": [
@@ -62734,6 +63045,7 @@
       "primary_form": "浮かび上がる",
       "meaning": "to rise to the surface",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 浮（う）＋かび＋上（あ）＋がる.",
       "sort_order": 2947,
       "accepted_answers": [
@@ -63190,6 +63502,7 @@
       "primary_form": "無残",
       "meaning": "cruel / merciless / atrocious",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋残（ざん）, each kanji read with its on'yomi.",
       "sort_order": 2969,
       "accepted_answers": [
@@ -63422,6 +63735,7 @@
       "primary_form": "優先的",
       "meaning": "preferential",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 優（ゆう）＋先（せん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 2980,
       "accepted_answers": [
@@ -63902,6 +64216,7 @@
       "primary_form": "重厚",
       "meaning": "profound / deep / grave",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 重（じゅう）＋厚（こう）, each kanji read with its on'yomi.",
       "sort_order": 3003,
       "accepted_answers": [
@@ -64330,6 +64645,7 @@
       "primary_form": "種々",
       "meaning": "various / a variety of / all kinds of",
       "word_type": "な adjective, adverb, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Irregular — しゅじゅ cannot be assembled from the dictionary readings of 種々.",
       "sort_order": 3023,
       "accepted_answers": [
@@ -64438,6 +64754,7 @@
       "primary_form": "建つ",
       "meaning": "to be erected / to be built",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 建（た）＋つ.",
       "sort_order": 3028,
       "accepted_answers": [
@@ -64810,6 +65127,7 @@
       "primary_form": "清新",
       "meaning": "fresh / new",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 清（せい）＋新（しん）, each kanji read with its on'yomi.",
       "sort_order": 3046,
       "accepted_answers": [
@@ -65766,6 +66084,7 @@
       "primary_form": "意識的",
       "meaning": "conscious / deliberate / intentional",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 意（い）＋識（しき）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3093,
       "accepted_answers": [
@@ -66506,6 +66825,7 @@
       "primary_form": "引きずる",
       "meaning": "to drag / to trail / to pull along the ground",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 引（ひ）＋きずる.",
       "sort_order": 3129,
       "accepted_answers": [
@@ -66682,6 +67002,7 @@
       "primary_form": "応分",
       "meaning": "according to one's abilities / appropriate / reasonable",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 応（おう）＋分（ぶん）, each kanji read with its on'yomi.",
       "sort_order": 3137,
       "accepted_answers": [
@@ -66786,6 +67107,7 @@
       "primary_form": "くださる",
       "meaning": "to give / to confer / to bestow",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan-honorific",
       "reading_composition": "Kana only — the word is written exactly as it is read.",
       "sort_order": 3142,
       "accepted_answers": [
@@ -66906,6 +67228,7 @@
       "primary_form": "過当",
       "meaning": "excessive / exorbitant",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 過（か）＋当（とう）, each kanji read with its on'yomi.",
       "sort_order": 3148,
       "accepted_answers": [
@@ -67254,6 +67577,7 @@
       "primary_form": "刈り込む",
       "meaning": "to prune / to trim / to cut back",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 刈（か）＋り＋込（こ）＋む.",
       "sort_order": 3164,
       "accepted_answers": [
@@ -67278,6 +67602,7 @@
       "primary_form": "刈る",
       "meaning": "to cut (grass, hair, etc.) / to mow / to clip",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 刈（か）＋る.",
       "sort_order": 3165,
       "accepted_answers": [
@@ -67566,6 +67891,7 @@
       "primary_form": "輝かしい",
       "meaning": "brilliant / glorious / glittering",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 輝（かがや）＋かしい.",
       "sort_order": 3179,
       "accepted_answers": [
@@ -67614,6 +67940,7 @@
       "primary_form": "詰まらせる",
       "meaning": "to clog / to block / to choke up",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 詰（つ）＋まらせる.",
       "sort_order": 3181,
       "accepted_answers": [
@@ -67642,6 +67969,7 @@
       "primary_form": "詰まる",
       "meaning": "to be packed (with) / to be filled / to be full (e.g. of a schedule)",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 詰（つ）＋まる.",
       "sort_order": 3182,
       "accepted_answers": [
@@ -67782,6 +68110,7 @@
       "primary_form": "強いる",
       "meaning": "to force / to compel / to coerce",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 強（し）＋いる.",
       "sort_order": 3189,
       "accepted_answers": [
@@ -67870,6 +68199,7 @@
       "primary_form": "禁じる",
       "meaning": "to forbid / to ban / to prohibit",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "On'yomi — 禁（きん）＋じる.",
       "sort_order": 3193,
       "accepted_answers": [
@@ -67910,6 +68240,7 @@
       "primary_form": "近代的",
       "meaning": "modern",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 近（きん）＋代（だい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3195,
       "accepted_answers": [
@@ -67930,6 +68261,7 @@
       "primary_form": "苦しい",
       "meaning": "painful / difficult / tough",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 苦（くる）＋しい.",
       "sort_order": 3196,
       "accepted_answers": [
@@ -68078,6 +68410,7 @@
       "primary_form": "形式的",
       "meaning": "formal",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 形（けい）＋式（しき）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3203,
       "accepted_answers": [
@@ -68118,6 +68451,7 @@
       "primary_form": "計り知れない",
       "meaning": "unfathomable / inestimable / immeasurable",
       "word_type": "い adjective, expression",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 計（はか）＋り＋知（し）＋れない.",
       "sort_order": 3205,
       "accepted_answers": [
@@ -68782,6 +69116,7 @@
       "primary_form": "根ざす",
       "meaning": "to come from / to have roots in",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 根（ね）＋ざす.",
       "sort_order": 3236,
       "accepted_answers": [
@@ -69078,6 +69413,7 @@
       "primary_form": "試す",
       "meaning": "to try (out) / to have a try (at) / to test",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 試（ため）＋す.",
       "sort_order": 3250,
       "accepted_answers": [
@@ -69306,6 +69642,7 @@
       "primary_form": "主体的",
       "meaning": "independent / responsible / active",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 主（しゅ）＋体（たい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3261,
       "accepted_answers": [
@@ -69330,6 +69667,7 @@
       "primary_form": "手ごろ",
       "meaning": "handy / convenient",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 手（て）＋ごろ.",
       "sort_order": 3262,
       "accepted_answers": [
@@ -69434,6 +69772,7 @@
       "primary_form": "十二分",
       "meaning": "more than enough / more than ample / exhaustive",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 十（じゅう）＋二（に）＋分（ぶん）, each kanji read with its on'yomi.",
       "sort_order": 3267,
       "accepted_answers": [
@@ -69794,6 +70133,7 @@
       "primary_form": "伸び悩む",
       "meaning": "to be sluggish / to make little progress / to show little growth",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 伸（の）＋び＋悩（なや）＋む.",
       "sort_order": 3285,
       "accepted_answers": [
@@ -69870,6 +70210,7 @@
       "primary_form": "振り込む",
       "meaning": "to make a payment via bank deposit transfer",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 振（ふ）＋り＋込（こ）＋む.",
       "sort_order": 3288,
       "accepted_answers": [
@@ -69930,6 +70271,7 @@
       "primary_form": "人工的",
       "meaning": "artificial / unnatural",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 人（じん）＋工（こう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3291,
       "accepted_answers": [
@@ -69970,6 +70312,7 @@
       "primary_form": "垂直",
       "meaning": "vertical",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 垂（すい）＋直（ちょく）, each kanji read with its on'yomi.",
       "sort_order": 3293,
       "accepted_answers": [
@@ -70074,6 +70417,7 @@
       "primary_form": "正統",
       "meaning": "legitimate / orthodox / traditional",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 正（せい）＋統（とう）, each kanji read with its on'yomi.",
       "sort_order": 3298,
       "accepted_answers": [
@@ -70226,6 +70570,7 @@
       "primary_form": "絶大",
       "meaning": "tremendous / immense / enormous",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 絶（ぜつ）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 3305,
       "accepted_answers": [
@@ -70462,6 +70807,7 @@
       "primary_form": "相応",
       "meaning": "suitable / appropriate / befitting",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 相（そう）＋応（おう）, each kanji read with its on'yomi.",
       "sort_order": 3316,
       "accepted_answers": [
@@ -70594,6 +70940,7 @@
       "primary_form": "存分",
       "meaning": "to one's heart's content / as much as one likes / without reserve",
       "word_type": "な adjective, adverb",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 存（ぞん）＋分（ぶん）, each kanji read with its on'yomi.",
       "sort_order": 3322,
       "accepted_answers": [
@@ -70642,6 +70989,7 @@
       "primary_form": "多難",
       "meaning": "full of troubles, difficulties",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 多（た）＋難（なん）, each kanji read with its on'yomi.",
       "sort_order": 3324,
       "accepted_answers": [
@@ -70662,6 +71010,7 @@
       "primary_form": "太っ腹",
       "meaning": "generous / magnanimous / big-hearted",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Kun'yomi — 太（ふと）＋っ＋腹（ぱら）. Handakuon: 腹 はら → ぱら.",
       "sort_order": 3325,
       "accepted_answers": [
@@ -70822,6 +71171,7 @@
       "primary_form": "短命",
       "meaning": "short life / short lived",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 短（たん）＋命（めい）, each kanji read with its on'yomi.",
       "sort_order": 3332,
       "accepted_answers": [
@@ -71254,6 +71604,7 @@
       "primary_form": "適格",
       "meaning": "eligible / qualified / competent",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 適（てき）＋格（かく）, each kanji read with its on'yomi.",
       "sort_order": 3353,
       "accepted_answers": [
@@ -71902,6 +72253,7 @@
       "primary_form": "薄れる",
       "meaning": "to fade / to become dim",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 薄（うす）＋れる.",
       "sort_order": 3384,
       "accepted_answers": [
@@ -71986,6 +72338,7 @@
       "primary_form": "漂う",
       "meaning": "to drift / to float",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 漂（ただよ）＋う.",
       "sort_order": 3388,
       "accepted_answers": [
@@ -72026,6 +72379,7 @@
       "primary_form": "貧しい",
       "meaning": "poor / needy",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 貧（まず）＋しい.",
       "sort_order": 3390,
       "accepted_answers": [
@@ -72046,6 +72400,7 @@
       "primary_form": "貧乏",
       "meaning": "poverty-stricken / destitute / poor",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 貧（びん）＋乏（ぼう）, each kanji read with its on'yomi.",
       "sort_order": 3391,
       "accepted_answers": [
@@ -72070,6 +72425,7 @@
       "primary_form": "不可",
       "meaning": "wrong / bad / improper",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋可（か）, each kanji read with its on'yomi.",
       "sort_order": 3392,
       "accepted_answers": [
@@ -72098,6 +72454,7 @@
       "primary_form": "不合理",
       "meaning": "irrational / illogical / unreasonable",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋合（ごう）＋理（り）, each kanji read with its on'yomi.",
       "sort_order": 3393,
       "accepted_answers": [
@@ -72126,6 +72483,7 @@
       "primary_form": "不倫",
       "meaning": "adultery / impropriety / (an) affair",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋倫（りん）, each kanji read with its on'yomi.",
       "sort_order": 3394,
       "accepted_answers": [
@@ -72410,6 +72768,7 @@
       "primary_form": "膨らます",
       "meaning": "to swell / to expand / to inflate",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 膨（ふく）＋らます.",
       "sort_order": 3407,
       "accepted_answers": [
@@ -72434,6 +72793,7 @@
       "primary_form": "膨らむ",
       "meaning": "to expand / to swell (out) / to get big",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 膨（ふく）＋らむ.",
       "sort_order": 3408,
       "accepted_answers": [
@@ -72546,6 +72906,7 @@
       "primary_form": "未熟",
       "meaning": "unripe / green / immature",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 未（み）＋熟（じゅく）, each kanji read with its on'yomi.",
       "sort_order": 3413,
       "accepted_answers": [
@@ -72722,6 +73083,7 @@
       "primary_form": "綿密",
       "meaning": "minute / detailed / careful",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 綿（めん）＋密（みつ）, each kanji read with its on'yomi.",
       "sort_order": 3421,
       "accepted_answers": [
@@ -72922,6 +73284,7 @@
       "primary_form": "乱れる",
       "meaning": "to be disordered / to be disarranged / to be disarrayed",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 乱（みだ）＋れる.",
       "sort_order": 3430,
       "accepted_answers": [
@@ -72970,6 +73333,7 @@
       "primary_form": "乱暴",
       "meaning": "violence / assault / rowdiness",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 乱（らん）＋暴（ぼう）, each kanji read with its on'yomi.",
       "sort_order": 3432,
       "accepted_answers": [
@@ -73158,6 +73522,7 @@
       "primary_form": "励ます",
       "meaning": "to encourage / to cheer on / to cheer (someone) up",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 励（はげ）＋ます.",
       "sort_order": 3441,
       "accepted_answers": [
@@ -73178,6 +73543,7 @@
       "primary_form": "零細",
       "meaning": "insignificant / trifling / paltry",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 零（れい）＋細（さい）, each kanji read with its on'yomi.",
       "sort_order": 3442,
       "accepted_answers": [
@@ -73258,6 +73624,7 @@
       "primary_form": "脅かす",
       "meaning": "to threaten / to menace / to intimidate",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 脅（おど）＋かす.",
       "sort_order": 3446,
       "accepted_answers": [
@@ -73462,6 +73829,7 @@
       "primary_form": "注ぐ",
       "meaning": "to pour (into)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 注（そそ）＋ぐ.",
       "sort_order": 3455,
       "accepted_answers": [
@@ -73670,6 +74038,7 @@
       "primary_form": "幸運",
       "meaning": "good luck / fortune",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 幸（こう）＋運（うん）, each kanji read with its on'yomi.",
       "sort_order": 3465,
       "accepted_answers": [
@@ -73690,6 +74059,7 @@
       "primary_form": "探し回る",
       "meaning": "to search about for / to hunt around for / to look high and low for",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 探（さが）＋し＋回（まわ）＋る.",
       "sort_order": 3466,
       "accepted_answers": [
@@ -73762,6 +74132,7 @@
       "primary_form": "断つ",
       "meaning": "to sever / to cut off",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 断（た）＋つ.",
       "sort_order": 3469,
       "accepted_answers": [
@@ -73986,6 +74357,7 @@
       "primary_form": "行き過ぎる",
       "meaning": "to go too far / to go past",
       "word_type": "ichidan verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 行（い）＋き＋過（す）＋ぎる.",
       "sort_order": 3479,
       "accepted_answers": [
@@ -74050,6 +74422,7 @@
       "primary_form": "揺るがす",
       "meaning": "to shake / to swing / to sway",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 揺（ゆ）＋るがす.",
       "sort_order": 3482,
       "accepted_answers": [
@@ -74074,6 +74447,7 @@
       "primary_form": "安らぐ",
       "meaning": "to feel at ease",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 安（やす）＋らぐ.",
       "sort_order": 3483,
       "accepted_answers": [
@@ -74194,6 +74568,7 @@
       "primary_form": "感情的",
       "meaning": "emotional / sentimental",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 感（かん）＋情（じょう）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3489,
       "accepted_answers": [
@@ -74690,6 +75065,7 @@
       "primary_form": "待たせる",
       "meaning": "to keep (a person) waiting",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 待（ま）＋たせる.",
       "sort_order": 3513,
       "accepted_answers": [
@@ -74890,6 +75266,7 @@
       "primary_form": "混ぜ合わす",
       "meaning": "to mix together / to blend / to compound",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 混（ま）＋ぜ＋合（あ）＋わす.",
       "sort_order": 3523,
       "accepted_answers": [
@@ -75154,6 +75531,7 @@
       "primary_form": "現代的",
       "meaning": "modern / modernistic",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 現（げん）＋代（だい）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3536,
       "accepted_answers": [
@@ -75278,6 +75656,7 @@
       "primary_form": "試験的",
       "meaning": "experimental / provisional",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 試（し）＋験（けん）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3542,
       "accepted_answers": [
@@ -75398,6 +75777,7 @@
       "primary_form": "利便",
       "meaning": "convenience",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 利（り）＋便（べん）, each kanji read with its on'yomi.",
       "sort_order": 3548,
       "accepted_answers": [
@@ -75418,6 +75798,7 @@
       "primary_form": "持続的",
       "meaning": "continuous / sustained / sustainable",
       "word_type": "な adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 持（じ）＋続（ぞく）＋的（てき）, each kanji read with its on'yomi.",
       "sort_order": 3549,
       "accepted_answers": [
@@ -76298,6 +76679,7 @@
       "primary_form": "引き継ぐ",
       "meaning": "to take over (someone's duties, business, etc.) / to inherit / to succeed to",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 引（ひ）＋き＋継（つ）＋ぐ.",
       "sort_order": 3591,
       "accepted_answers": [
@@ -76322,6 +76704,7 @@
       "primary_form": "引き取る",
       "meaning": "to take into one's possession / to receive / to accept",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 引（ひ）＋き＋取（と）＋る.",
       "sort_order": 3592,
       "accepted_answers": [
@@ -76846,6 +77229,7 @@
       "primary_form": "快調",
       "meaning": "good (condition) / going well / fine",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 快（かい）＋調（ちょう）, each kanji read with its on'yomi.",
       "sort_order": 3617,
       "accepted_answers": [
@@ -76930,6 +77314,7 @@
       "primary_form": "格別",
       "meaning": "particular / special / exceptional",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 格（かく）＋別（べつ）, each kanji read with its on'yomi.",
       "sort_order": 3621,
       "accepted_answers": [
@@ -77014,6 +77399,7 @@
       "primary_form": "活況",
       "meaning": "activity / briskness / prosperity",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 活（かっ）＋況（きょう）, each kanji read with its on'yomi. Gemination: 活 かつ → かっ.",
       "sort_order": 3625,
       "accepted_answers": [
@@ -77598,6 +77984,7 @@
       "primary_form": "均一",
       "meaning": "uniformity / equality",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 均（きん）＋一（いつ）, each kanji read with its on'yomi.",
       "sort_order": 3653,
       "accepted_answers": [
@@ -77870,6 +78257,7 @@
       "primary_form": "軽率",
       "meaning": "rash / thoughtless / careless",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 軽（けい）＋率（そつ）, each kanji read with its on'yomi.",
       "sort_order": 3666,
       "accepted_answers": [
@@ -78106,6 +78494,7 @@
       "primary_form": "誇る",
       "meaning": "to boast of / to be proud of / to take pride in",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 誇（ほこ）＋る.",
       "sort_order": 3677,
       "accepted_answers": [
@@ -78454,6 +78843,7 @@
       "primary_form": "高品質",
       "meaning": "high quality",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 高（こう）＋品（ひん）＋質（しつ）, each kanji read with its on'yomi.",
       "sort_order": 3694,
       "accepted_answers": [
@@ -78878,6 +79268,7 @@
       "primary_form": "至難",
       "meaning": "most difficult / next to impossible",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 至（し）＋難（なん）, each kanji read with its on'yomi.",
       "sort_order": 3714,
       "accepted_answers": [
@@ -79246,6 +79637,7 @@
       "primary_form": "周到",
       "meaning": "careful / thorough / meticulous",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 周（しゅう）＋到（とう）, each kanji read with its on'yomi.",
       "sort_order": 3732,
       "accepted_answers": [
@@ -79622,6 +80014,7 @@
       "primary_form": "上機嫌",
       "meaning": "good humour (humor) / good mood",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 上（じょう）＋機（き）＋嫌（げん）, each kanji read with its on'yomi.",
       "sort_order": 3750,
       "accepted_answers": [
@@ -79642,6 +80035,7 @@
       "primary_form": "譲り渡す",
       "meaning": "to hand over / to turn over / to cede",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 譲（ゆず）＋り＋渡（わた）＋す.",
       "sort_order": 3751,
       "accepted_answers": [
@@ -80138,6 +80532,7 @@
       "primary_form": "据える",
       "meaning": "to place (in position) / to fix / to set (e.g. table)",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 据（す）＋える.",
       "sort_order": 3775,
       "accepted_answers": [
@@ -80182,6 +80577,7 @@
       "primary_form": "清涼",
       "meaning": "cool / refreshing",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 清（せい）＋涼（りょう）, each kanji read with its on'yomi.",
       "sort_order": 3777,
       "accepted_answers": [
@@ -80242,6 +80638,7 @@
       "primary_form": "盛る",
       "meaning": "to serve (in a bowl, on a plate, etc.) / to dish out / to dish up",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 盛（も）＋る.",
       "sort_order": 3780,
       "accepted_answers": [
@@ -80262,6 +80659,7 @@
       "primary_form": "盛大",
       "meaning": "grand / magnificent / lavish",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 盛（せい）＋大（だい）, each kanji read with its on'yomi.",
       "sort_order": 3781,
       "accepted_answers": [
@@ -80350,6 +80748,7 @@
       "primary_form": "潜む",
       "meaning": "to lurk / to be hidden / to be concealed",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 潜（ひそ）＋む.",
       "sort_order": 3785,
       "accepted_answers": [
@@ -80502,6 +80901,7 @@
       "primary_form": "粗末",
       "meaning": "crude / rough / plain",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 粗（そ）＋末（まつ）, each kanji read with its on'yomi.",
       "sort_order": 3792,
       "accepted_answers": [
@@ -80674,6 +81074,7 @@
       "primary_form": "待ち受ける",
       "meaning": "to await / to wait for / to expect",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 待（ま）＋ち＋受（う）＋ける.",
       "sort_order": 3800,
       "accepted_answers": [
@@ -80954,6 +81355,7 @@
       "primary_form": "中途半端",
       "meaning": "halfway / half measures / unfinished",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Mixed — 中（ちゅう）on'yomi ＋ 途（と）on'yomi ＋ 半（はん）on'yomi ＋ 端（ぱ）kun'yomi. Handakuon: 端 は → ぱ.",
       "sort_order": 3812,
       "accepted_answers": [
@@ -81214,6 +81616,7 @@
       "primary_form": "適度",
       "meaning": "moderate (degree) / proper (amount) / temperate",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 適（てき）＋度（ど）, each kanji read with its on'yomi.",
       "sort_order": 3824,
       "accepted_answers": [
@@ -81290,6 +81693,7 @@
       "primary_form": "塗り替える",
       "meaning": "to repaint / to paint again / to paint (a different colour)",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 塗（ぬ）＋り＋替（か）＋える.",
       "sort_order": 3827,
       "accepted_answers": [
@@ -81310,6 +81714,7 @@
       "primary_form": "投じる",
       "meaning": "to throw / to cast (e.g. vote, light, shadow)",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "On'yomi — 投（とう）＋じる.",
       "sort_order": 3828,
       "accepted_answers": [
@@ -81330,6 +81735,7 @@
       "primary_form": "踏む",
       "meaning": "to step on / to tread on / to trample on",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 踏（ふ）＋む.",
       "sort_order": 3829,
       "accepted_answers": [
@@ -81370,6 +81776,7 @@
       "primary_form": "働きかける",
       "meaning": "to work on (someone) / to appeal to / to make approaches to",
       "word_type": "ichidan verb, transitive verb, intransitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 働（はたら）＋きかける.",
       "sort_order": 3831,
       "accepted_answers": [
@@ -81890,6 +82297,7 @@
       "primary_form": "必然",
       "meaning": "inevitable / necessary / certain",
       "word_type": "な adjective, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 必（ひつ）＋然（ぜん）, each kanji read with its on'yomi.",
       "sort_order": 3855,
       "accepted_answers": [
@@ -82002,6 +82410,7 @@
       "primary_form": "表立つ",
       "meaning": "to become public / to become known / to come out in the open",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 表（おもて）＋立（だ）＋つ.",
       "sort_order": 3860,
       "accepted_answers": [
@@ -82050,6 +82459,7 @@
       "primary_form": "不規則",
       "meaning": "irregular / unsystematic / unsteady",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋規（き）＋則（そく）, each kanji read with its on'yomi.",
       "sort_order": 3862,
       "accepted_answers": [
@@ -82126,6 +82536,7 @@
       "primary_form": "不変",
       "meaning": "eternal / everlasting / unchangeable",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋変（へん）, each kanji read with its on'yomi.",
       "sort_order": 3865,
       "accepted_answers": [
@@ -82154,6 +82565,7 @@
       "primary_form": "不愉快",
       "meaning": "unpleasant / disagreeable / displeasing",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 不（ふ）＋愉（ゆ）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 3866,
       "accepted_answers": [
@@ -82182,6 +82594,7 @@
       "primary_form": "浮かべる",
       "meaning": "to float / to set afloat / to launch",
       "word_type": "ichidan verb, transitive verb",
+      "conjugation_class": "ichidan",
       "reading_composition": "Kun'yomi — 浮（う）＋かべる.",
       "sort_order": 3867,
       "accepted_answers": [
@@ -82562,6 +82975,7 @@
       "primary_form": "望ましい",
       "meaning": "desirable / hoped for / preferable",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 望（のぞ）＋ましい.",
       "sort_order": 3885,
       "accepted_answers": [
@@ -82750,6 +83164,7 @@
       "primary_form": "無制限",
       "meaning": "unlimited / unrestricted / limitless",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 無（む）＋制（せい）＋限（げん）, each kanji read with its on'yomi.",
       "sort_order": 3894,
       "accepted_answers": [
@@ -82898,6 +83313,7 @@
       "primary_form": "愉快",
       "meaning": "pleasant / delightful / enjoyable",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 愉（ゆ）＋快（かい）, each kanji read with its on'yomi.",
       "sort_order": 3901,
       "accepted_answers": [
@@ -82926,6 +83342,7 @@
       "primary_form": "有能",
       "meaning": "able / capable / competent",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 有（ゆう）＋能（のう）, each kanji read with its on'yomi.",
       "sort_order": 3902,
       "accepted_answers": [
@@ -82954,6 +83371,7 @@
       "primary_form": "有用",
       "meaning": "useful / helpful",
       "word_type": "な adjective, noun",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 有（ゆう）＋用（よう）, each kanji read with its on'yomi.",
       "sort_order": 3903,
       "accepted_answers": [
@@ -83354,6 +83772,7 @@
       "primary_form": "劣勢",
       "meaning": "inferiority (e.g. numerical) / inferior position / disadvantage",
       "word_type": "な adjective, noun, の adjective",
+      "conjugation_class": "adj-na",
       "reading_composition": "Jukugo — 劣（れっ）＋勢（せい）, each kanji read with its on'yomi. Gemination: 劣 れつ → れっ.",
       "sort_order": 3922,
       "accepted_answers": [
@@ -83486,6 +83905,7 @@
       "primary_form": "おる",
       "meaning": "to be (animate) / to be / to exist",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kana only — the word is written exactly as it is read.",
       "sort_order": 3928,
       "accepted_answers": [
@@ -83610,6 +84030,7 @@
       "primary_form": "注ぎ込む",
       "meaning": "to pour in (liquids)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 注（そそ）＋ぎ＋込（こ）＋む.",
       "sort_order": 3934,
       "accepted_answers": [
@@ -83630,6 +84051,7 @@
       "primary_form": "つぎ込む",
       "meaning": "to invest in / to sink money into / to put into",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — つぎ＋込（こ）＋む.",
       "sort_order": 3935,
       "accepted_answers": [
@@ -83718,6 +84140,7 @@
       "primary_form": "揺る",
       "meaning": "to shake / to jolt / to rock (cradle)",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 揺（ゆ）＋る.",
       "sort_order": 3939,
       "accepted_answers": [
@@ -83970,6 +84393,7 @@
       "primary_form": "戦う",
       "meaning": "to make war (on) / to wage war (against) / to go to war (with)",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 戦（たたか）＋う.",
       "sort_order": 3950,
       "accepted_answers": [
@@ -83990,6 +84414,7 @@
       "primary_form": "頼る",
       "meaning": "to rely on / to depend on / to count on",
       "word_type": "godan verb, transitive verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 頼（たよ）＋る.",
       "sort_order": 3951,
       "accepted_answers": [
@@ -84030,6 +84455,7 @@
       "primary_form": "出会う",
       "meaning": "to meet (by chance) / to come across / to run across",
       "word_type": "godan verb, intransitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 出（で）＋会（あ）＋う.",
       "sort_order": 3953,
       "accepted_answers": [
@@ -84102,6 +84528,7 @@
       "primary_form": "引っ張る",
       "meaning": "to pull / to draw / to pull tight",
       "word_type": "godan verb, transitive verb",
+      "conjugation_class": "godan",
       "reading_composition": "Kun'yomi — 引（ひ）＋っ＋張（ぱ）＋る. Handakuon: 張 は → ぱ.",
       "sort_order": 3956,
       "accepted_answers": [
@@ -84290,6 +84717,7 @@
       "primary_form": "喜ばしい",
       "meaning": "joyful (news, event, etc.) / joyous / delightful (e.g. result)",
       "word_type": "い adjective",
+      "conjugation_class": "adj-i",
       "reading_composition": "Kun'yomi — 喜（よろこ）＋ばしい.",
       "sort_order": 3965,
       "accepted_answers": [

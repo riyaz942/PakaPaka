@@ -4,7 +4,7 @@ import { parseFurigana } from '@/core/furigana/parseFurigana';
 /**
  * Minimal markdown model for grammar lesson bodies (`explanation_markdown`,
  * content pipeline Phase 0.5). Deliberately small: headings, paragraphs,
- * bullet/numbered lists, blockquote callouts, and fenced blocks. Japanese
+ * bullet/numbered lists, blockquote callouts, pipe tables, and fenced blocks. Japanese
  * anywhere in prose may carry JmdictFurigana bracket notation
  * (`私[わたし]は…`) — the build pipeline's tokenizer emits it; rendering
  * resolves it via `parseFurigana`.
@@ -32,6 +32,7 @@ export type LessonBlock =
   | { type: 'paragraph'; spans: InlineSpan[] }
   | { type: 'callout'; spans: InlineSpan[] }
   | { type: 'list'; ordered: boolean; items: InlineSpan[][] }
+  | { type: 'table'; header: InlineSpan[][]; rows: InlineSpan[][][] }
   | { type: 'jp'; lines: string[] }
   | { type: 'code'; lines: string[] };
 
@@ -60,6 +61,8 @@ const FENCE_RE = /^```([A-Za-z]*)\s*$/;
 const BULLET_RE = /^[-*]\s+(.*)$/;
 const ORDERED_RE = /^\d+[.)]\s+(.*)$/;
 const BLOCKQUOTE_RE = /^>\s?(.*)$/;
+const TABLE_ROW_RE = /^\|.*\|$/;
+const TABLE_SEPARATOR_RE = /^\|[\s:|-]*-[\s:|-]*\|$/;
 const INLINE_RE = /\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`/g;
 export const WORD_MARKER_RE = /\{\{(\d+)\|(masu|te|nai|ta|)\|([^{}]+?)\}\}/g;
 
@@ -234,6 +237,41 @@ export function spansNeedTokens(spans: InlineSpan[]): boolean {
   );
 }
 
+/**
+ * Splits `| a | b |` into trimmed cell texts. A `|` inside a `{{id|inflection|text}}`
+ * word marker belongs to the marker, not to the table.
+ */
+function splitTableCells(line: string): string[] {
+  const inner = line.trim().slice(1, -1);
+  const cells: string[] = [];
+  let current = '';
+  let markerDepth = 0;
+  for (let i = 0; i < inner.length; i += 1) {
+    if (inner.startsWith('{{', i)) {
+      markerDepth += 1;
+    } else if (inner.startsWith('}}', i) && markerDepth > 0) {
+      markerDepth -= 1;
+    }
+    if (inner[i] === '|' && markerDepth === 0) {
+      cells.push(current.trim());
+      current = '';
+    } else {
+      current += inner[i];
+    }
+  }
+  cells.push(current.trim());
+  return cells;
+}
+
+/** A header row followed by a separator row: the only shape that makes a table. */
+function startsTable(lines: string[], index: number): boolean {
+  return (
+    TABLE_ROW_RE.test(lines[index].trim()) &&
+    index + 1 < lines.length &&
+    TABLE_SEPARATOR_RE.test(lines[index + 1].trim())
+  );
+}
+
 export function parseLessonMarkdown(markdown: string): LessonBlock[] {
   const blocks: LessonBlock[] = [];
   const lines = markdown.replace(/\r\n/g, '\n').split('\n');
@@ -296,6 +334,18 @@ export function parseLessonMarkdown(markdown: string): LessonBlock[] {
       continue;
     }
 
+    if (startsTable(lines, index)) {
+      const header = splitTableCells(trimmed).map(parseInlineSpans);
+      const rows: InlineSpan[][][] = [];
+      index += 2; // header + separator
+      while (index < lines.length && TABLE_ROW_RE.test(lines[index].trim())) {
+        rows.push(splitTableCells(lines[index]).map(parseInlineSpans));
+        index += 1;
+      }
+      blocks.push({ type: 'table', header, rows });
+      continue;
+    }
+
     const bulletMatch = trimmed.match(BULLET_RE);
     const orderedMatch = trimmed.match(ORDERED_RE);
     if (bulletMatch || orderedMatch) {
@@ -324,7 +374,8 @@ export function parseLessonMarkdown(markdown: string): LessonBlock[] {
         HEADING_RE.test(paragraphLine) ||
         BLOCKQUOTE_RE.test(paragraphLine) ||
         BULLET_RE.test(paragraphLine) ||
-        ORDERED_RE.test(paragraphLine)
+        ORDERED_RE.test(paragraphLine) ||
+        startsTable(lines, index)
       ) {
         break;
       }

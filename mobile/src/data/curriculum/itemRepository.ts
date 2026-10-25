@@ -2,6 +2,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import type { RelatedItem } from '@/core/content/content.types';
+import { lookAlike, parseConjugationClass, type ConjugationClass } from '@/core/content/conjugation';
 import { WORD_INFLECTIONS, type WordInflection } from '@/core/content/inflection';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 import { chunkForSqlVariables } from '@/data/sqlChunk';
@@ -1109,6 +1110,84 @@ export function getTaughtConjugatedForms(
   return WORD_INFLECTIONS.filter((inflection) => surfaceByInflection.has(inflection)).map(
     (inflection) => ({ inflection, surface: surfaceByInflection.get(inflection) as string }),
   );
+}
+
+/**
+ * The conjugation class the content pipeline derived for a word, or null: no
+ * class, an unknown class string, or a curriculum.db compiled before the
+ * column existed. Null means "show no conjugation table", never a guess.
+ */
+export function getConjugationClass(db: SQLiteDatabase, itemId: string): ConjugationClass | null {
+  try {
+    const row = db.getFirstSync<{ conjugation_class: string | null }>(
+      'SELECT conjugation_class FROM items WHERE id = ?',
+      Number(itemId),
+    );
+    return parseConjugationClass(row?.conjugation_class);
+  } catch {
+    // Older DB without the conjugation_class column.
+    return null;
+  }
+}
+
+type SamePatternRow = { id: number; primary_form: string; furigana: string | null };
+
+/**
+ * Other words of the same class and JLPT level, lowest sort order first. With
+ * `lookAlikesOnly`, only words that are themselves look-alike exceptions, so an
+ * exception's page points at other exceptions and not at ordinary verbs.
+ */
+export function listSamePatternWords(
+  db: SQLiteDatabase,
+  itemId: string,
+  cls: ConjugationClass,
+  lookAlikesOnly: boolean,
+  limit = 3,
+): { id: string; primaryForm: string }[] {
+  try {
+    const self = db.getFirstSync<{ jlpt_level: string }>(
+      'SELECT jlpt_level FROM items WHERE id = ?',
+      Number(itemId),
+    );
+    if (!self) {
+      return [];
+    }
+    const rows = db.getAllSync<SamePatternRow>(
+      `SELECT id, primary_form, furigana FROM items
+       WHERE item_type = 'vocabulary' AND conjugation_class = ? AND jlpt_level = ? AND id != ?
+       ORDER BY sort_order ASC`,
+      cls,
+      self.jlpt_level,
+      Number(itemId),
+    );
+    return rows
+      .filter(
+        (row) =>
+          !lookAlikesOnly ||
+          lookAlike({ primaryForm: row.primary_form, furigana: row.furigana }, cls) !== null,
+      )
+      .slice(0, limit)
+      .map((row) => ({ id: String(row.id), primaryForm: row.primary_form }));
+  } catch {
+    // Older DB without the conjugation_class column.
+    return [];
+  }
+}
+
+/**
+ * Ids of grammar cards that are read once and never reviewed. Empty for a
+ * curriculum.db compiled before the column existed: no read-once cards.
+ */
+export function listReadOnceGrammarIds(db: SQLiteDatabase): Set<string> {
+  try {
+    const rows = db.getAllSync<{ item_id: number }>(
+      'SELECT item_id FROM grammar_rules WHERE read_once = 1',
+    );
+    return new Set(rows.map((row) => String(row.item_id)));
+  } catch {
+    // Older DB without the read_once column.
+    return new Set();
+  }
 }
 
 export function getGrammarLinksForVocab(

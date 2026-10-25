@@ -3,6 +3,7 @@
 import os
 import sys
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -174,6 +175,27 @@ class GrammarOrderTest(unittest.TestCase):
         self.assertNotIn("te-form", first)    # a later lesson
         n4_first = pool.context.load_grammar("n4")[0]
         self.assertIn("te-form", pool.allowed_grammar_for("n4", n4_first))
+
+
+class ReadOnceTest(unittest.TestCase):
+    """A read-once card has no review pool, so check_level has nothing to check."""
+
+    def point(self, **extra):
+        return dict({"slug": "primer", "primary_form": "活用", "meaning": "How words change",
+                     "structure": "x", "sort_order": 1, "accepted_forms": [],
+                     "accepted_answers": [], "example_sentences": [],
+                     "vocabulary_slugs": []}, **extra)
+
+    def check(self, point):
+        with mock.patch.object(pool.context, "load_grammar", return_value=[point]):
+            return pool.check_level("n5")
+
+    def test_read_once_point_without_a_pool_is_skipped(self):
+        self.assertEqual(self.check(self.point(read_once=True)), {})
+
+    def test_the_same_point_without_the_flag_still_fails(self):
+        results = self.check(self.point())
+        self.assertTrue(results["primer"])
 
 
 class SwapBackPositionTest(unittest.TestCase):

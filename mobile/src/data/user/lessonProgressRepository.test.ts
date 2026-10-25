@@ -36,6 +36,19 @@ describe('lessonProgressRepository', () => {
     expect(getLessonItemsStartedOn(db, todayKey())).toBe(3);
   });
 
+  it('marks a read-once item known with no SRS state, but still counts it as started today', async () => {
+    const db = await createUserDb();
+
+    const result = startLessonItems(db, ['10', '11'], new Set(['10']));
+    expect(result.ok).toBe(true);
+
+    expect(getStudyStatus(db, '10')).toBe('known');
+    expect(getSrsState(db, '10')).toBeNull();
+    expect(getStudyStatus(db, '11')).toBe('in_progress');
+    expect(getSrsState(db, '11')).not.toBeNull();
+    expect(getLessonItemsStartedOn(db, todayKey())).toBe(2);
+  });
+
   it('accumulates the daily log across multiple lesson batches', async () => {
     const db = await createUserDb();
 

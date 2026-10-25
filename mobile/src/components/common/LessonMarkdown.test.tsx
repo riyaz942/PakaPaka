@@ -46,6 +46,19 @@ describe('LessonMarkdown', () => {
     expect(screen.getByText('second rule')).toBeTruthy();
   });
 
+  it('renders a pipe table with its cells', () => {
+    render(
+      <LessonMarkdown
+        markdown={'|  | Non-past | Past |\n|---|---|---|\n| Negative, casual | 食べない | 食べなかった |'}
+        mode="shown"
+      />,
+    );
+
+    expect(screen.getByTestId('lesson-table')).toBeTruthy();
+    expect(screen.getByText('食べなかった')).toBeTruthy();
+    expect(screen.getByText('Non-past')).toBeTruthy();
+  });
+
   it('renders jp fences with furigana readings when mode is shown', () => {
     render(<LessonMarkdown markdown={LESSON} mode="shown" />);
 

@@ -45,6 +45,42 @@ describe('parseLessonMarkdown', () => {
     ]);
   });
 
+  it('parses a pipe table with a separator line into a table block', () => {
+    const blocks = parseLessonMarkdown(
+      '|  | Non-past | Past |\n|---|---|---|\n| Positive, casual | 食べる | 食べた |',
+    );
+
+    expect(blocks).toHaveLength(1);
+    const table = blocks[0];
+    expect(table.type).toBe('table');
+    if (table.type !== 'table') return;
+    expect(table.header).toHaveLength(3);
+    expect(table.header[1]).toEqual([{ text: 'Non-past' }]);
+    expect(table.rows).toHaveLength(1);
+    expect(table.rows[0][1]).toEqual([{ text: '食べる' }]);
+  });
+
+  it('keeps the pipes inside a word marker within one table cell', () => {
+    const blocks = parseLessonMarkdown(
+      '| Word | Past |\n|---|---|\n| {{12|masu|食[た]べます}} | 食べた |',
+    );
+
+    const table = blocks[0];
+    if (table.type !== 'table') throw new Error('expected a table');
+    expect(table.rows[0]).toHaveLength(2);
+    expect(table.rows[0][0]).toEqual([
+      { text: '食[た]べます', link: { vocabularyItemId: '12', inflection: 'masu' } },
+    ]);
+  });
+
+  it('keeps pipe lines without a separator line as a paragraph', () => {
+    const blocks = parseLessonMarkdown('| a | b |\n| c | d |');
+
+    expect(blocks.some((block) => block.type === 'table')).toBe(false);
+    expect(blocks).toHaveLength(1);
+    expect(blocks[0].type).toBe('paragraph');
+  });
+
   it('survives an unclosed fence without dropping content', () => {
     const blocks = parseLessonMarkdown('```jp\n猫[ねこ]です。');
 

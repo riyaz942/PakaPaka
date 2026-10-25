@@ -10,6 +10,7 @@ import {
   type LessonLearnerContext,
   type LessonPlanInput,
 } from '@/core/lesson/lessonPlanner';
+import { dropPassedReadOnce } from '@/core/lesson/readOnce';
 import { lessonWeight } from '@/core/lesson/lessonWeight';
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
@@ -22,6 +23,7 @@ import {
   listItemsByLevelAndType,
   listItemSummariesByIds,
   listLessonCandidatePool,
+  listReadOnceGrammarIds,
   type CurriculumListItem,
 } from '@/data/curriculum/itemRepository';
 import { todayKey } from '@/data/user/cognitiveLoadRepository';
@@ -97,15 +99,23 @@ function unstartedIds(userDb: SQLiteDatabase, itemIds: string[]): string[] {
   return itemIds.filter((id) => isUnstarted(id, statuses, startedIds));
 }
 
-/** D17: grammar comes from the lowest level ≥ the starting level that has unstarted grammar. */
+/**
+ * D17: grammar comes from the lowest level ≥ the starting level that has unstarted grammar.
+ * A read-once card the learner has moved past is hidden first, so it cannot hold
+ * the track on its level.
+ */
 function resolveGrammarLevel(
   curriculumDb: SQLiteDatabase,
   userDb: SQLiteDatabase,
   levels: readonly JLPTLevel[],
+  readOnceIds: ReadonlySet<string>,
 ): { grammarLevel: JLPTLevel | null; grammar: CurriculumListItem[] } {
   for (const level of levels) {
-    const grammar = listItemsByLevelAndType(curriculumDb, level, 'grammar');
-    if (unstartedIds(userDb, grammar.map((item) => item.id)).length > 0) {
+    const all = listItemsByLevelAndType(curriculumDb, level, 'grammar');
+    const unstarted = new Set(unstartedIds(userDb, all.map((item) => item.id)));
+    const startedOrKnown = new Set(all.map((item) => item.id).filter((id) => !unstarted.has(id)));
+    const grammar = dropPassedReadOnce(all, readOnceIds, startedOrKnown);
+    if (grammar.some((item) => unstarted.has(item.id))) {
       return { grammarLevel: level, grammar };
     }
   }
@@ -157,6 +167,7 @@ function buildInputForLevel(
   optInIds: string[],
   learner: LessonLearnerContext,
   size: number,
+  readOnceIds: ReadonlySet<string>,
 ): LessonPlanInput {
   const levelPool = listLessonCandidatePool(curriculumDb, level).filter(
     (item) => item.itemType !== 'grammar',
@@ -216,6 +227,7 @@ function buildInputForLevel(
       sortOrder: item.sortOrder,
       optedIn,
       lowerLevelPart,
+      ...(readOnceIds.has(item.id) ? { readOnce: true } : {}),
       weight: lessonWeight({
         itemType: item.itemType,
         radicalComponentCount: components.length,
@@ -293,14 +305,24 @@ export function buildLessonPlan(
   };
 
   const levels = JLPT_LEVELS.slice(Math.max(0, JLPT_LEVELS.indexOf(startingLevel)));
-  const { grammarLevel, grammar } = resolveGrammarLevel(curriculumDb, userDb, levels);
+  const readOnceIds = listReadOnceGrammarIds(curriculumDb);
+  const { grammarLevel, grammar } = resolveGrammarLevel(curriculumDb, userDb, levels, readOnceIds);
   const optInIds = listLessonOptInIds(userDb);
 
   let level: JLPTLevel = levels[levels.length - 1];
   let input: LessonPlanInput | null = null;
   for (const candidateLevel of levels) {
     level = candidateLevel;
-    input = buildInputForLevel(curriculumDb, userDb, level, grammar, optInIds, learner, size);
+    input = buildInputForLevel(
+      curriculumDb,
+      userDb,
+      level,
+      grammar,
+      optInIds,
+      learner,
+      size,
+      readOnceIds,
+    );
     if (hasStartableItems(input)) break;
   }
   if (input === null) {

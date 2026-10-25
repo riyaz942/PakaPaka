@@ -21,15 +21,19 @@ export function getLessonItemsStartedOn(userDb: SQLiteDatabase, date: string): n
  *
  * The daily lesson log is incremented in the same transaction that writes
  * item_study_status, so the daily allowance counter cannot drift from reality.
+ *
+ * Ids in `readOnceIds` (read-once cards) are marked `known` instead and get no
+ * SRS state: they are never reviewed. They still count toward today's log.
  */
 export function startLessonItems(
   userDb: SQLiteDatabase,
   itemIds: string[],
+  readOnceIds: ReadonlySet<string> = new Set(),
 ): Result<void, AppError> {
   try {
     userDb.withTransactionSync(() => {
       for (const itemId of itemIds) {
-        setStudyStatus(userDb, itemId, 'in_progress');
+        setStudyStatus(userDb, itemId, readOnceIds.has(itemId) ? 'known' : 'in_progress');
       }
       userDb.runSync(
         `INSERT INTO daily_lesson_log (date, items_started) VALUES (?, ?)
@@ -51,5 +55,8 @@ export function startLessonItems(
     };
   }
 
-  return seedMissingSrsStatesForInProgress(userDb, itemIds);
+  return seedMissingSrsStatesForInProgress(
+    userDb,
+    itemIds.filter((itemId) => !readOnceIds.has(itemId)),
+  );
 }

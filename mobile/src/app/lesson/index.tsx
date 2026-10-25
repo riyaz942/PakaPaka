@@ -119,9 +119,12 @@ export default function LessonScreen() {
       return;
     }
 
+    // Read-once cards are marked known, not queued for review.
+    const readOnceIds = new Set(items.filter((item) => item.readOnce).map((item) => item.id));
     const result = startLessonItems(
       userDb,
       items.map((item) => item.id),
+      readOnceIds,
     );
     if (!result.ok) {
       setSaveError(result.error.userMessage ?? result.error.message);
@@ -149,7 +152,10 @@ export default function LessonScreen() {
       }
     }
 
-    const itemIds = items.map((item) => item.id).join(',');
+    const itemIds = items
+      .filter((item) => !item.readOnce)
+      .map((item) => item.id)
+      .join(',');
     router.replace(
       `/lesson/complete?count=${items.length}&itemIds=${encodeURIComponent(itemIds)}` as Href,
     );

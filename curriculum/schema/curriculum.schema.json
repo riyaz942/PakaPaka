@@ -160,6 +160,9 @@
         "furigana": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "word_type": { "type": "string", "minLength": 1 },
+        "conjugation_class": {
+          "enum": ["ichidan", "godan", "godan-iku", "godan-ru-irregular", "godan-honorific", "godan-u-special", "kuru", "suru", "adj-i", "adj-ii", "adj-na"]
+        },
         "reading_composition": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
         "meaning_mnemonic": { "type": "string", "minLength": 1 },
@@ -277,13 +280,13 @@
         "conjugation_rules": { "type": "object" },
         "accepted_forms": {
           "type": "array",
-          "items": { "type": "string", "minLength": 1 },
-          "minItems": 1
+          "items": { "type": "string", "minLength": 1 }
         },
         "family": {
           "type": "string",
           "enum": ["particles", "copula", "conjugations", "connectors", "patterns"]
         },
+        "read_once": { "type": "boolean" },
         "uses": {
           "type": "array",
           "items": { "$ref": "#/$defs/grammarUse" },
@@ -301,7 +304,9 @@
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
         }
-      }
+      },
+      "if": { "required": ["read_once"], "properties": { "read_once": { "const": true } } },
+      "else": { "properties": { "accepted_forms": { "minItems": 1 } } }
     },
     "grammarFile": {
       "type": "object",

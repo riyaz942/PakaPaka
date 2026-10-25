@@ -25,6 +25,11 @@ CREATE TABLE items (
   -- from JMdict by curriculum/_build/import/build_vocab_word_types.py; null on
   -- every other item type, and on the compound forms taught as grammar.
   word_type TEXT,
+  -- How the conjugator inflects the word, verbs and い / な adjectives only
+  -- ("godan", "ichidan", "godan-iku", "adj-ii", ...). Derived from JMdict's first
+  -- sense plus a reviewed override list by build_vocab_word_types.py; null when
+  -- the word gets no conjugation table.
+  conjugation_class TEXT,
   -- How the reading is built, vocabulary only ("Jukugo — 人（じん）＋口（こう）,
   -- each kanji read with its on'yomi."). Computed from the word's kanji and
   -- their KANJIDIC readings by mnemonic_context.reading_composition, which is
@@ -65,7 +70,10 @@ CREATE TABLE grammar_rules (
   family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns')),
   explanation_markdown TEXT,
   caution_notes TEXT,
-  uses TEXT
+  uses TEXT,
+  -- 1 for a card that is read once and never reviewed (the conjugation primer):
+  -- finishing its lesson marks it known instead of seeding SRS.
+  read_once INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE grammar_related_links (
