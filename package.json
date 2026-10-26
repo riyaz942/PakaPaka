@@ -8,7 +8,8 @@
     "check-contrast": "tsx scripts/check-contrast.ts",
     "studio": "tsx web/server/index.ts",
     "test:studio": "tsx --test web/server/**/*.test.ts",
-    "test": "jest --config jest.config.cjs"
+    "test": "jest --config jest.config.cjs",
+    "eas:preview": "npm --prefix mobile run eas:preview"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

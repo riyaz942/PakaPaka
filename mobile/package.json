@@ -11,7 +11,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "test": "jest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "eas:preview": "npx eas-cli build --profile preview --platform android --non-interactive --no-wait"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-jp": "^0.4.3",
