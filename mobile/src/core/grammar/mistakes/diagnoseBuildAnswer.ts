@@ -82,19 +82,28 @@ function savedAnswerUnits(
   return derived.length > 0 ? derived : null;
 }
 
+const isParticleUnit = (unit: AnswerUnit) =>
+  unit.role === 'particle' || PARTICLES.includes(normalizeBuildText(unit.surface));
+
+/** The answer's words without its particles, in order: what "word order" compares. */
+const contentOrder = (units: AnswerUnit[]) =>
+  units
+    .filter((unit) => !isParticleUnit(unit))
+    .map((unit) => normalizeBuildText(unit.surface))
+    .join('|');
+
 /**
- * Whether `text` is the answer's chunks (a unit and the particles after it), each once,
- * in some order. Chunks keep particles on their word, so swapped particles are not word order.
+ * Every way `text` is the answer's chunks (a unit and the particles after it), each once,
+ * in some order, as the content order of that reading. Chunks keep particles on their word,
+ * so swapped particles are not word order.
  */
-function isChunkConcatenation(text: string, units: AnswerUnit[]): boolean {
+function chunkOrders(text: string, units: AnswerUnit[]): string[] {
   const chunks: AnswerUnit[][] = [];
   for (const unit of units) {
-    const isParticle =
-      unit.role === 'particle' || PARTICLES.includes(normalizeBuildText(unit.surface));
-    if (isParticle && chunks.length > 0) chunks[chunks.length - 1].push(unit);
+    if (isParticleUnit(unit) && chunks.length > 0) chunks[chunks.length - 1].push(unit);
     else chunks.push([unit]);
   }
-  if (chunks.length === 0 || chunks.length > 30) return false; // bit mask below
+  if (chunks.length === 0 || chunks.length > 30) return []; // bit mask below
   const ends = (chunk: AnswerUnit[], pos: number) =>
     chunk.reduce(
       (positions, unit) => {
@@ -106,17 +115,27 @@ function isChunkConcatenation(text: string, units: AnswerUnit[]): boolean {
       [pos],
     );
   const all = 2 ** chunks.length - 1;
-  const tried = new Set<string>();
-  const search = (used: number, pos: number): boolean => {
-    if (used === all) return pos === text.length;
-    if (tried.has(`${used}:${pos}`)) return false;
-    tried.add(`${used}:${pos}`);
-    return chunks.some(
-      (chunk, i) =>
-        !(used & (1 << i)) && ends(chunk, pos).some((end) => search(used | (1 << i), end)),
-    );
+  const orders: string[] = [];
+  const dead = new Set<string>(); // states with no way to finish
+  const search = (used: number, pos: number, order: number[]): boolean => {
+    if (used === all) {
+      if (pos !== text.length) return false;
+      orders.push(contentOrder(order.flatMap((i) => chunks[i])));
+      return true;
+    }
+    if (dead.has(`${used}:${pos}`)) return false;
+    let finished = false;
+    for (const [i, chunk] of chunks.entries()) {
+      if (used & (1 << i)) continue;
+      for (const end of ends(chunk, pos)) {
+        if (search(used | (1 << i), end, [...order, i])) finished = true;
+      }
+    }
+    if (!finished) dead.add(`${used}:${pos}`);
+    return finished;
   };
-  return search(0, 0);
+  search(0, 0, []);
+  return orders;
 }
 
 /** The answer form's values on the dimensions where the learner's form differs. */
@@ -300,7 +319,12 @@ export function diagnoseBuildAnswer(
   const readings = answers.map((units) => readAnswer(input, normalized, units, key.words));
   if (readings.some((r) => r.cost === 0)) return null;
 
-  if (answers.some((units) => isChunkConcatenation(text, units))) {
+  // Word order (R13): the learner's text is some answer's chunks reordered, and no answer has
+  // the learner's order of words. Same words in an answer's order with other particles is a
+  // particle mistake (父の代わりに私は行きます), not word order.
+  const orders = answers.flatMap((units) => chunkOrders(text, units));
+  const answerOrders = new Set(answers.map(contentOrder));
+  if (orders.length > 0 && orders.every((order) => !answerOrders.has(order))) {
     const order: Mistake = {
       kind: 'word_order',
       rawStart: 0,

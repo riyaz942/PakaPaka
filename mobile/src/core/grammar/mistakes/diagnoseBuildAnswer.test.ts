@@ -55,6 +55,14 @@ const words: Record<string, DiagnosisWord> = {
   // Real words of sentence 3747.
   '544': word('544', '上手', '上手[じょうず]', 'adj-na'),
   '463': word('463', '話す', '話[はな]す', 'godan', { transitivity: 'transitive' }),
+  // Real words of sentences 3974, 4121, 5062.
+  '918': word('918', '高い', '高[たか]い', 'adj-i'),
+  '585': word('585', '買う', '買[か]う', 'godan', { transitivity: 'transitive' }),
+  '363': word('363', '父', '父[ちち]', null, {
+    homophones: [{ primaryForm: '乳', furigana: '乳[ちち]', conjugationClass: null }],
+  }),
+  '511': word('511', '行く', '行[い]く', 'godan-iku', { transitivity: 'intransitive' }),
+  '899': word('899', '好き', '好[す]き', 'adj-na'),
 };
 
 const card = (answers: AnswerUnit[][], userAnswers: string[] = []): GrammarSentenceCard => ({
@@ -209,6 +217,77 @@ describe('diagnoseBuildAnswer', () => {
     expect(diagnose('学校で日本語を今年は勉強します', card([study]))).toEqual({
       marks: [],
       lines: [expect.objectContaining({ kind: 'word_order', expected: [] })],
+    });
+  });
+
+  describe('an alternate in another order does not make a particle mistake word order (R13)', () => {
+    it('3974: 高くても、あの時計を買う / あの時計は高くても買う', () => {
+      const buy = [
+        unit('高くて', 'たかくて', { itemId: '918', inGrammar: true }),
+        grammar('も'),
+        unit('あの', 'あの'),
+        unit('時計', 'とけい'),
+        particle('を'),
+        unit('買う', 'かう', { itemId: '585' }),
+      ];
+      const buyAlt = [buy[2], buy[3], particle('は'), buy[0], buy[1], buy[5]];
+      // は after 時計 is what the alternate has there: no mark, and not word order.
+      expect(diagnose('たかくてもあのとけいはかう', card([buy, buyAlt]))).toBeNull();
+    });
+
+    it('4121: 父の代わりに、私が行きます (+ 私が / 私は first)', () => {
+      const go = (p: string, first: boolean) => {
+        const me = [unit('私', 'わたし'), particle(p)];
+        const rest = [
+          unit('父', 'ちち', { itemId: '363' }),
+          particle('の'),
+          unit('代わりに', 'かわりに', { role: 'other', inGrammar: true }),
+        ];
+        const verb = unit('行きます', 'いきます', { itemId: '511' });
+        return first ? [...me, ...rest, verb] : [...rest, ...me, verb];
+      };
+      const result = diagnose(
+        'ちちのかわりにわたしはいきます',
+        card([go('が', false), go('が', true), go('は', true)]),
+      );
+      expect(result).toEqual({
+        marks: [
+          expect.objectContaining({
+            kind: 'particle_wrong',
+            typed: 'は',
+            expected: ['が'],
+            before: 'わたし',
+          }),
+        ],
+        lines: [],
+      });
+    });
+
+    it('5062: コーヒーよりお茶が好きですか (+ three alternates)', () => {
+      const coffee = [unit('コーヒー', 'コーヒー'), grammar('より')];
+      const tea = (p: string) => [unit('お茶', 'おちゃ'), particle(p)];
+      const tail = [unit('好きです', 'すきです', { itemId: '899' }), particle('か')];
+      const you = [unit('あなた', 'あなた', { role: 'other' }), particle('は')];
+      const result = diagnose(
+        'こーひーよりおちゃはすきですか',
+        card([
+          [...coffee, ...tea('が'), ...tail],
+          [...tea('が'), ...coffee, ...tail],
+          [...tea('は'), ...coffee, ...tail],
+          [...you, ...coffee, ...tea('が'), ...tail],
+        ]),
+      );
+      expect(result).toEqual({
+        marks: [
+          expect.objectContaining({
+            kind: 'particle_wrong',
+            typed: 'は',
+            expected: ['が'],
+            before: 'おちゃ',
+          }),
+        ],
+        lines: [],
+      });
     });
   });
 
