@@ -75,8 +75,8 @@ export type Mistake = {
   rawEnd: number;
   typed: string; // raw input slice ('' for a gap)
   expected: string[]; // correct text(s) at this place, answer surface; [] for word_extra / word_order
-  before: string | null; // learner's raw text of the previous matched unit
-  after: string | null; // learner's raw text of the next matched unit
+  before: string | null; // learner's raw text right before the mark (any step with text)
+  after: string | null; // learner's raw text right after the mark (any step with text)
   dims?: FormDims; // the answer form's values on the dimensions the learner got wrong
   dictForm?: string;
   conjugationClass?: ConjugationClass; // of the answer word (verb_group, adjective_type)

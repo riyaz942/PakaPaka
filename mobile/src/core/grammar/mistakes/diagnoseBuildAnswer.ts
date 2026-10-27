@@ -172,8 +172,8 @@ function readAnswer(
     }
     return null;
   };
-  const matchedText = (step: AlignStep) =>
-    isMatched(step) && step.to > step.from ? rawText(step) : null;
+  // The learner's text right next to a mark, even when that text is a mistake too.
+  const typedText = (step: AlignStep) => (step.to > step.from ? rawText(step) : null);
 
   // Step 4: each non-matched step is one mistake.
   const found: (Found & { k: number })[] = [];
@@ -189,8 +189,8 @@ function readAnswer(
       rawEnd: rawEnd(step.from, step.to),
       typed: rawText(step),
       expected: unit ? [unit.surface] : [],
-      before: nearest(k, -1, matchedText),
-      after: nearest(k, 1, matchedText),
+      before: nearest(k, -1, typedText),
+      after: nearest(k, 1, typedText),
     };
     if (unit && step.kind === 'form') {
       const dims = answerDims(unit, word, step.variant?.dims ?? {});

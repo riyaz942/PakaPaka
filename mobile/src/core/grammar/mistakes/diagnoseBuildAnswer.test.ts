@@ -52,6 +52,9 @@ const words: Record<string, DiagnosisWord> = {
   '552': word('552', '帰る', '帰[かえ]る', 'godan'),
   '897': word('897', 'すぐ', 'すぐ', null),
   '389': word('389', '電話する', '電[でん]話[わ]する', 'suru'),
+  // Real words of sentence 3747.
+  '544': word('544', '上手', '上手[じょうず]', 'adj-na'),
+  '463': word('463', '話す', '話[はな]す', 'godan', { transitivity: 'transitive' }),
 };
 
 const card = (answers: AnswerUnit[][], userAnswers: string[] = []): GrammarSentenceCard => ({
@@ -213,6 +216,32 @@ describe('diagnoseBuildAnswer', () => {
     const result = diagnose('今年で学校は日本語を勉強します', card([study]));
     expect(result?.lines).toEqual([]);
     expect(result?.marks.map((m) => m.kind)).toEqual(['particle_wrong', 'particle_wrong']);
+  });
+
+  it('names the text right next to a particle mark, even a wrong word (C2)', () => {
+    // 兄は英語が上手なのに、あまり話しません (real units of sentence 3747)
+    const elder = [
+      unit('兄', 'あに'),
+      particle('は'),
+      unit('英語', 'えいご'),
+      particle('が'),
+      unit('上手な', 'じょうずな', { itemId: '544' }),
+      grammar('のに'),
+      unit('あまり', 'あまり'),
+      unit('話しません', 'はなしません', { itemId: '463' }),
+    ];
+    const reordered = [...elder.slice(2, 6), ...elder.slice(0, 2), ...elder.slice(6)];
+    const result = diagnose('あにはぱそこんにじょうずなのに、あまりはなしません', card([elder, reordered]));
+    expect(result?.marks).toEqual([
+      expect.objectContaining({ kind: 'wrong_word', typed: 'ぱそこん', before: 'は', after: 'に' }),
+      expect.objectContaining({
+        kind: 'particle_wrong',
+        typed: 'に',
+        expected: ['が'],
+        before: 'ぱそこん',
+        after: 'じょうずな',
+      }),
+    ]);
   });
 
   it('says grammar not used when only the grammar text differs', () => {
