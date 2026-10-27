@@ -102,13 +102,16 @@ export function getBuildDiagnosisKey(db: SQLiteDatabase, sentenceId: string): Bu
   );
   // Readings live in accepted_answers (hiragana); a homophone is another
   // vocabulary item with an equal reading but a different written form.
+  // CROSS JOIN fixes the join order: the seed has no sqlite_stat1, and with one or two words
+  // SQLite otherwise starts from `hr` and scans every reading row.
   const homophoneRows = db.getAllSync<HomophoneRow>(
     `SELECT DISTINCT r.item_id AS word_id, h.primary_form, h.furigana, h.conjugation_class
      FROM accepted_answers r
-     JOIN items w ON w.id = r.item_id
-     JOIN accepted_answers hr
+     CROSS JOIN items w ON w.id = r.item_id
+     CROSS JOIN accepted_answers hr
        ON hr.answer_type = 'reading' AND hr.answer_text = r.answer_text AND hr.item_id <> r.item_id
-     JOIN items h ON h.id = hr.item_id AND h.item_type = 'vocabulary' AND h.primary_form <> w.primary_form
+     CROSS JOIN items h
+       ON h.id = hr.item_id AND h.item_type = 'vocabulary' AND h.primary_form <> w.primary_form
      WHERE r.answer_type = 'reading' AND r.item_id IN (${placeholders})
      ORDER BY h.sort_order ASC, h.id ASC`,
     ...wordIds,
