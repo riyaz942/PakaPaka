@@ -352,25 +352,26 @@ describe('diagnoseBuildAnswer', () => {
       expect(diagnose('家へ帰ったらすぐに電話します', call)).toBeNull();
     });
 
-    it('keeps only the mark no answer accepts', () => {
-      expect(diagnose('家へ帰ったらすぐに電話しました', call)?.marks).toEqual([
-        expect.objectContaining({
-          kind: 'form',
-          typed: '電話しました',
-          dims: { tense: 'non-past' },
-        }),
+    it('drops a mark that a costlier answer accepts part of (R11)', () => {
+      // A38 accepts に; A37 (電話をします) accepts 電話 inside the form mark on 電話しました.
+      expect(diagnose('家へ帰ったらすぐに電話しました', call)).toBeNull();
+      // A35/A37 accept 電話を inside the wide mark on に電話をしました.
+      expect(diagnose('家へ帰ったらすぐに電話をしました', call)).toBeNull();
+    });
+
+    it('vetoes on a two-answer card too (R11)', () => {
+      const two = card([
+        [ie, particle('に'), kaettara, sugu, denwaShimasu],
+        [ie, particle('に'), kaettara, sugu, ...denwaWo],
       ]);
+      // Not "drop を": the alternate accepts 電話を.
+      expect(diagnose('家に帰ったらすぐに電話をしました', two)).toBeNull();
+      // Not "missing を": 電話します is accepted.
+      expect(diagnose('家に帰ったらすぐ電話しました', two)).toBeNull();
     });
 
     it('keeps the smaller mark when an equally good answer marks inside it', () => {
       expect(diagnose('家へ帰ったらすぐ電話をしました', call)?.marks).toEqual([
-        expect.objectContaining({ kind: 'wrong_word', typed: 'しました', expected: ['します'] }),
-      ]);
-    });
-
-    it('shrinks a wide mark to the part no answer accepts', () => {
-      // A38 accepts に, A37 accepts 電話を: only しました is wrong.
-      expect(diagnose('家へ帰ったらすぐに電話をしました', call)?.marks).toEqual([
         expect.objectContaining({ kind: 'wrong_word', typed: 'しました', expected: ['します'] }),
       ]);
     });

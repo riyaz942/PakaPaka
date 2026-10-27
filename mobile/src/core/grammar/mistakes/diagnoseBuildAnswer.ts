@@ -273,6 +273,10 @@ function accepts(reading: Reading, f: Found): boolean {
   return true;
 }
 
+/** Whether this reading matches some character inside `f`'s range. */
+const acceptsPart = (reading: Reading, f: Found) =>
+  reading.steps.some((step) => isMatched(step) && step.from < f.to && f.from < step.to);
+
 /**
  * Marks for a wrong Build answer, or null when the app is not sure what is wrong.
  * Every accepted answer counts (the sentence, its alternates, the learner's saved answers):
@@ -322,17 +326,22 @@ export function diagnoseBuildAnswer(
       : { marks: [], lines: [best.line.mistake] };
   }
 
-  // Drop a mark any answer accepts. Where another answer explains the same place no worse
-  // (its marks there cost no more), keep its smaller marks if they sit inside; else drop.
+  // Drop a mark any answer accepts, or that a costlier answer accepts part of (R11). An answer
+  // that explains the place no worse may shrink it to its own marks inside; else drop it.
   const settle = (f: Found): Found[] => {
     if (pool.some((r) => accepts(r, f))) return [];
-    for (const r of pool) {
-      const there = (r.line ? [r.line] : r.marks).filter((g) => overlaps(f, g));
-      if (there.every((g) => sameMark(f, g)) || there.some((g) => inside(f, g))) continue;
-      if (there.reduce((sum, g) => sum + g.cost, 0) > f.cost) continue;
-      return there.every((g) => inside(g, f)) ? there.flatMap(settle) : [];
-    }
-    return [f];
+    const views = pool
+      .map((r) => {
+        const there = (r.line ? [r.line] : r.marks).filter((g) => overlaps(f, g));
+        return { r, there, cost: there.reduce((sum, g) => sum + g.cost, 0) };
+      })
+      .filter(
+        ({ there }) => !there.every((g) => sameMark(f, g)) && !there.some((g) => inside(f, g)),
+      );
+    if (views.some((v) => v.cost > f.cost && acceptsPart(v.r, f))) return [];
+    const better = views.find((v) => v.cost <= f.cost);
+    if (!better) return [f];
+    return better.there.every((g) => inside(g, f)) ? better.there.flatMap(settle) : [];
   };
   const settled: Found[] = [];
   for (const f of best.marks.flatMap(settle)) {
