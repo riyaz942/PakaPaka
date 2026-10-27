@@ -79,6 +79,7 @@ export type Mistake = {
   after: string | null; // learner's raw text of the next matched unit
   dims?: FormDims; // the answer form's values on the dimensions the learner got wrong
   dictForm?: string;
+  conjugationClass?: ConjugationClass; // of the answer word (verb_group, adjective_type)
   transitivity?: 'transitive' | 'intransitive'; // of the verb the answer needs
 };
 /** marks = mistakes with a place; lines = mistakes with no single place (word order, grammar not used). */

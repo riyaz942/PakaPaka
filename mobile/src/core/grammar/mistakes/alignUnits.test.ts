@@ -97,6 +97,12 @@ describe('alignUnits', () => {
     });
   });
 
+  it('does not replace a slice that starts or ends with known text of the unit', () => {
+    const { steps, cost } = align('今年は学校で日本語をに勉強しました');
+    expect(cost).toBe(2);
+    expect(steps.slice(6).map((s) => s.kind)).toEqual(['extra', 'form']);
+  });
+
   it('breaks ties toward the earlier kind', () => {
     // 学校 is exact by surface and reading would not matter; allowed with the same text must not win.
     const { steps } = align('今年は学校で日本語を勉強します', { 2: ['学校'] });

@@ -22,7 +22,8 @@ type Candidate = {
 
 /**
  * Cheapest way to read `input` (already normalized) as the answer's units, in order.
- * Ties prefer exact, allowed, variant, missing, extra, replaced. Every input character is consumed.
+ * Equal costs prefer fewer missing units, then exact, allowed, variant, missing, extra, replaced.
+ * Every input character is consumed.
  */
 export function alignUnits(
   input: string,
@@ -62,6 +63,8 @@ export function alignUnits(
     new Array<number>(m + 1).fill(Infinity),
   );
   const move: (Move | undefined)[][] = Array.from({ length: n + 1 }, () => new Array(m + 1));
+  // misses[i][j] = missing units on that cheapest path (tie-break).
+  const misses: number[][] = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
   best[n][m] = 0;
 
   for (let i = n; i >= 0; i--) {
@@ -69,8 +72,10 @@ export function alignUnits(
       if (i === n && j === m) continue;
       const tryMove = (cost: number, next: Move) => {
         const total = cost + best[next.toUnit][next.toPos];
-        if (total < best[i][j]) {
+        const missed = misses[next.toUnit][next.toPos] + (next.kind === 'missing' ? 1 : 0);
+        if (total < best[i][j] || (total === best[i][j] && missed < misses[i][j])) {
           best[i][j] = total;
+          misses[i][j] = missed;
           move[i][j] = next;
         }
       };
@@ -92,6 +97,14 @@ export function alignUnits(
       }
       if (i < n) {
         for (let len = 1; len <= MAX_SLICE && j + len <= m; len++) {
+          // Unknown text only: a slice that starts or ends with the unit's known text is
+          // that text plus extra (に電話しました = extra に + form 電話しました).
+          const slice = input.slice(j, j + len);
+          const known = candidates[i].some(
+            (c) =>
+              c.text && c.text.length < len && (slice.startsWith(c.text) || slice.endsWith(c.text)),
+          );
+          if (known) continue;
           tryMove(COST.replaced, {
             kind: 'replaced',
             toUnit: i + 1,

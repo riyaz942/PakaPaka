@@ -3,7 +3,6 @@ import type { GrammarSentenceCard } from '@/core/srs/srs.types';
 
 import { alignUnits } from './alignUnits';
 import type {
-  Alignment,
   AlignStep,
   AnswerUnit,
   BuildDiagnosis,
@@ -14,11 +13,9 @@ import type {
   VariantKind,
 } from './mistake.types';
 import { normalizeWithMap } from './normalize';
-import { formDims, PARTICLES, unitForm } from './unitVariants';
+import { formDims, PARTICLES, unitForm, unitVariants } from './unitVariants';
 
 const MAX_MARKS = 3;
-
-type Allowed = Record<number, string[]>;
 
 const isMatched = (step: AlignStep) => step.kind === 'exact' || step.kind === 'allowed';
 
@@ -32,52 +29,57 @@ function enoughMatched(steps: AlignStep[], units: AnswerUnit[]): boolean {
   return matched * 2 >= content;
 }
 
+const sameDims = (a?: FormDims, b?: FormDims) =>
+  JSON.stringify(a ?? {}) === JSON.stringify(b ?? {});
+
 /**
- * Per answer, the saved answers' text at each unit where they differ from it ('' = may be absent).
- * Extra saved text joins the unit after it (or the last unit), so an extra 私は stays allowed.
+ * A saved answer as answer units: cut along the closest answer (within the limits), its own
+ * text substituted where it differs, missing units left out. A substituted form keeps the word
+ * and both spellings (勉強しました / べんきょうしました), so either script matches it.
  */
-function savedAllowances(
-  saved: string[],
+function savedAnswerUnits(
+  saved: string,
   answers: AnswerUnit[][],
   words: Record<string, DiagnosisWord>,
-): Allowed[] {
-  return answers.map((units) => {
-    const allowed: Allowed = {};
-    for (const text of saved) {
-      const { steps } = alignUnits(text, units, words);
-      const marks = steps.filter((step) => !isMatched(step)).length;
-      if (marks === 0 || marks > MAX_MARKS || !enoughMatched(steps, units)) continue;
-      const groups: {
-        unitIndex: number;
-        from: number;
-        to: number;
-        changed: boolean;
-      }[] = [];
-      let extraFrom: number | null = null;
-      for (const step of steps) {
-        if (step.unitIndex === null) {
-          extraFrom ??= step.from;
-          continue;
-        }
-        groups.push({
-          unitIndex: step.unitIndex,
-          from: extraFrom ?? step.from,
-          to: step.to,
-          changed: extraFrom !== null || step.kind !== 'exact',
-        });
-        extraFrom = null;
-      }
-      const last = groups[groups.length - 1];
-      if (extraFrom !== null && last) Object.assign(last, { to: text.length, changed: true });
-      for (const group of groups) {
-        if (!group.changed) continue;
-        const list = (allowed[group.unitIndex] ??= []);
-        const slice = text.slice(group.from, group.to);
-        if (!list.includes(slice)) list.push(slice);
-      }
+): AnswerUnit[] | null {
+  let best: { units: AnswerUnit[]; steps: AlignStep[]; cost: number } | null = null;
+  for (const units of answers) {
+    const { steps, cost } = alignUnits(saved, units, words);
+    if (!best || cost < best.cost) best = { units, steps, cost };
+  }
+  if (!best || best.cost === 0) return null;
+  const { units, steps } = best;
+  const marks = steps.filter((step) => !isMatched(step)).length;
+  if (marks > MAX_MARKS || !enoughMatched(steps, units)) return null;
+
+  const derived: AnswerUnit[] = [];
+  for (const step of steps) {
+    const slice = saved.slice(step.from, step.to);
+    const unit = step.unitIndex === null ? null : units[step.unitIndex];
+    if (step.kind === 'missing') continue;
+    if (unit && step.kind === 'exact') {
+      derived.push(unit);
+    } else if (unit?.itemId && step.kind === 'form') {
+      const spellings = unitVariants(unit, words[unit.itemId] ?? null)
+        .filter((v) => v.kind === 'form' && sameDims(v.dims, step.variant?.dims))
+        .map((v) => v.text);
+      derived.push({ ...unit, surface: spellings[0] ?? slice, reading: spellings[1] ?? slice });
+    } else {
+      const role = PARTICLES.includes(slice)
+        ? 'particle'
+        : unit && unit.role !== 'particle'
+          ? unit.role
+          : 'word';
+      derived.push({
+        surface: slice,
+        reading: slice,
+        role,
+        itemId: null,
+        inGrammar: unit?.inGrammar ?? false,
+      });
     }
-    return allowed;
-  });
+  }
+  return derived.length > 0 ? derived : null;
 }
 
 /**
@@ -140,53 +142,29 @@ function mistakeKind(step: AlignStep, unit: AnswerUnit | null, text: string): Mi
   }
 }
 
-const sameUnit = (a: AnswerUnit, b: AnswerUnit) =>
-  a.surface === b.surface && a.reading === b.reading && a.role === b.role;
+/** A mistake with its normalized input range (from === to for a gap). */
+type Found = { mistake: Mistake; from: number; to: number };
+/** One accepted answer's view of the input. `line` (grammar not used) replaces its marks. */
+type Reading = {
+  cost: number;
+  steps: AlignStep[];
+  marks: Found[];
+  line: Found | null;
+  ok: boolean;
+};
 
-/**
- * Marks for a wrong Build answer, or null when the app is not sure what is wrong.
- * Pure and sync; `grammarLabel` is for the copy (explainMistake), not used here.
- */
-export function diagnoseBuildAnswer(
+/** Steps 4–5 for one answer: map steps to mistakes, fold grammar-only mistakes into one line. */
+function readAnswer(
   input: string,
-  card: GrammarSentenceCard,
-  grammarLabel: string,
-): BuildDiagnosis | null {
-  const key = card.diagnosisKey;
-  const { text, rawIndex } = normalizeWithMap(input);
-  if (!key || !text || key.answers.length === 0) return null;
-
-  const allowances = savedAllowances(card.userAnswers, key.answers, key.words);
-  let best: Alignment | null = null;
-  let bestIndex = 0;
-  for (let i = 0; i < key.answers.length; i++) {
-    const alignment = alignUnits(text, key.answers[i], key.words, allowances[i]);
-    if (!best || alignment.cost < best.cost) {
-      best = alignment;
-      bestIndex = i;
-    }
-  }
-  if (!best || best.cost === 0) return null;
-
-  if (key.answers.some((units) => isChunkConcatenation(text, units))) {
-    const order: Mistake = {
-      kind: 'word_order',
-      rawStart: 0,
-      rawEnd: input.length,
-      typed: input,
-      expected: [],
-      before: null,
-      after: null,
-    };
-    return { marks: [], lines: [order] };
-  }
-
-  const units = key.answers[bestIndex];
-  const { steps } = best;
-  const rawStart = (step: AlignStep) => rawIndex[step.from];
-  const rawEnd = (step: AlignStep) =>
-    step.to > step.from ? rawIndex[step.to - 1] + 1 : rawIndex[step.from];
-  const rawText = (step: AlignStep) => input.slice(rawStart(step), rawEnd(step));
+  normalized: { text: string; rawIndex: number[] },
+  units: AnswerUnit[],
+  words: Record<string, DiagnosisWord>,
+): Reading {
+  const { text, rawIndex } = normalized;
+  const { steps, cost } = alignUnits(text, units, words);
+  const rawStart = (from: number) => rawIndex[from];
+  const rawEnd = (from: number, to: number) => (to > from ? rawIndex[to - 1] + 1 : rawIndex[from]);
+  const rawText = (step: AlignStep) => input.slice(rawStart(step.from), rawEnd(step.from, step.to));
   const nearest = <T>(k: number, dir: -1 | 1, pick: (step: AlignStep) => T | null): T | null => {
     for (let j = k + dir; j >= 0 && j < steps.length; j += dir) {
       const found = pick(steps[j]);
@@ -198,16 +176,17 @@ export function diagnoseBuildAnswer(
     isMatched(step) && step.to > step.from ? rawText(step) : null;
 
   // Step 4: each non-matched step is one mistake.
-  const found: { mistake: Mistake; k: number }[] = [];
+  const found: (Found & { k: number })[] = [];
+  let ok = true;
   for (let k = 0; k < steps.length; k++) {
     const step = steps[k];
     if (isMatched(step)) continue;
     const unit = step.unitIndex === null ? null : units[step.unitIndex];
-    const word = unit?.itemId ? (key.words[unit.itemId] ?? null) : null;
+    const word = unit?.itemId ? (words[unit.itemId] ?? null) : null;
     const mistake: Mistake = {
       kind: mistakeKind(step, unit, text),
-      rawStart: rawStart(step),
-      rawEnd: rawEnd(step),
+      rawStart: rawStart(step.from),
+      rawEnd: rawEnd(step.from, step.to),
       typed: rawText(step),
       expected: unit ? [unit.surface] : [],
       before: nearest(k, -1, matchedText),
@@ -215,17 +194,20 @@ export function diagnoseBuildAnswer(
     };
     if (unit && step.kind === 'form') {
       const dims = answerDims(unit, word, step.variant?.dims ?? {});
-      if (!dims) return null;
-      mistake.dims = dims;
+      if (dims) mistake.dims = dims;
+      else ok = false;
     }
     if (step.kind === 'te_ta' && step.variant?.dictForm) mistake.dictForm = step.variant.dictForm;
     if ((step.kind === 'verb_group' || step.kind === 'adjective_type') && word) {
       mistake.dictForm = word.primaryForm;
+      if (word.conjugationClass) mistake.conjugationClass = word.conjugationClass;
     }
     if (step.kind === 'transitivity' && word?.transitivity)
       mistake.transitivity = word.transitivity;
-    found.push({ mistake, k });
+    found.push({ mistake, from: step.from, to: step.to, k });
   }
+  const marks = found.map(({ mistake, from, to }) => ({ mistake, from, to }));
+  ok &&= enoughMatched(steps, units);
 
   // Step 5: only the grammar text ('other' units in the grammar span) differs → one line.
   // Extra text counts when it sits beside a grammar unit; at least one grammar unit must be wrong or missing.
@@ -239,43 +221,135 @@ export function diagnoseBuildAnswer(
     mistake.kind === 'word_extra' &&
     (onGrammar(nearest(k, -1, unitOf)) || onGrammar(nearest(k, 1, unitOf)));
   if (found.some(grammarUnitWrong) && found.every((f) => grammarUnitWrong(f) || besideGrammar(f))) {
-    const start = Math.min(...found.map((f) => f.mistake.rawStart));
-    const end = Math.max(...found.map((f) => f.mistake.rawEnd));
-    const notUsed: Mistake = {
+    const from = Math.min(...found.map((f) => f.from));
+    const to = Math.max(...found.map((f) => f.to));
+    const mistake: Mistake = {
       kind: 'grammar_not_used',
-      rawStart: start,
-      rawEnd: end,
-      typed: input.slice(start, end),
+      rawStart: rawStart(from),
+      rawEnd: rawEnd(from, to),
+      typed: input.slice(rawStart(from), rawEnd(from, to)),
       expected: found.filter(grammarUnitWrong).flatMap((f) => f.mistake.expected),
       before: null,
       after: null,
     };
-    return enoughMatched(steps, units) ? { marks: [], lines: [notUsed] } : null;
+    return { cost, steps, marks: [], line: { mistake, from, to }, ok };
+  }
+  return { cost, steps, marks, line: null, ok: ok && marks.length <= MAX_MARKS };
+}
+
+const isGap = (f: Found) => f.from === f.to;
+const sameRange = (a: Found, b: Found) => a.from === b.from && a.to === b.to;
+const sameMark = (a: Found, b: Found) => sameRange(a, b) && a.mistake.kind === b.mistake.kind;
+/** Places share input: a gap overlaps a range only strictly inside it; touching edges do not. */
+function overlaps(a: Found, b: Found): boolean {
+  if (isGap(a) && isGap(b)) return a.from === b.from;
+  if (isGap(a)) return b.from < a.from && a.from < b.to;
+  if (isGap(b)) return a.from < b.from && b.from < a.to;
+  return a.from < b.to && b.from < a.to;
+}
+/** `a` is strictly inside `b`. */
+const inside = (a: Found, b: Found) => b.from <= a.from && a.to <= b.to && !sameRange(a, b);
+
+/**
+ * Whether this reading accepts the learner's text at `f`'s place: every character of a range
+ * is matched, or no mistake touches a gap.
+ */
+function accepts(reading: Reading, f: Found): boolean {
+  if (isGap(f)) {
+    return !reading.steps.some(
+      (step) => !isMatched(step) && step.from <= f.from && f.from <= step.to,
+    );
+  }
+  for (let i = f.from; i < f.to; i++) {
+    if (!reading.steps.some((step) => isMatched(step) && step.from <= i && i < step.to)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Marks for a wrong Build answer, or null when the app is not sure what is wrong.
+ * Every accepted answer counts (the sentence, its alternates, the learner's saved answers):
+ * no mark where any of them accepts the learner's text.
+ * Pure and sync; `grammarLabel` is for the copy (explainMistake), not used here.
+ */
+export function diagnoseBuildAnswer(
+  input: string,
+  card: GrammarSentenceCard,
+  grammarLabel: string,
+): BuildDiagnosis | null {
+  const key = card.diagnosisKey;
+  const normalized = normalizeWithMap(input);
+  const { text } = normalized;
+  if (!key || !text || key.answers.length === 0) return null;
+
+  const saved = card.userAnswers
+    .map((answer) => savedAnswerUnits(answer, key.answers, key.words))
+    .filter((units): units is AnswerUnit[] => units !== null);
+  const answers = [...key.answers, ...saved];
+  const readings = answers.map((units) => readAnswer(input, normalized, units, key.words));
+  if (readings.some((r) => r.cost === 0)) return null;
+
+  if (answers.some((units) => isChunkConcatenation(text, units))) {
+    const order: Mistake = {
+      kind: 'word_order',
+      rawStart: 0,
+      rawEnd: input.length,
+      typed: input,
+      expected: [],
+      before: null,
+      after: null,
+    };
+    return { marks: [], lines: [order] };
   }
 
-  // Step 6: name the particle every other accepted answer has at the same place.
-  for (const { mistake, k } of found) {
-    const i = steps[k].unitIndex;
-    if (i === null || (mistake.kind !== 'particle_wrong' && mistake.kind !== 'particle_missing')) {
-      continue;
-    }
-    const others = key.answers
-      .filter(
-        (other, a) =>
-          a !== bestIndex &&
-          other.length === units.length &&
-          other[i].role === 'particle' &&
-          other.every((u, j) => j === i || sameUnit(u, units[j])),
-      )
-      .map((other) => other[i].surface);
-    const saved = (allowances[bestIndex][i] ?? []).filter((t) => PARTICLES.includes(t));
-    for (const particle of [...others, ...saved]) {
-      if (!mistake.expected.includes(particle)) mistake.expected.push(particle);
-    }
+  // Lowest cost wins; on a tie, a reading within the limits, then the earlier answer.
+  const best = readings.reduce((a, b) =>
+    b.cost < a.cost || (b.cost === a.cost && b.ok && !a.ok) ? b : a,
+  );
+  if (!best.ok) return null;
+  const others = readings.filter((r) => r !== best && r.ok);
+  const tied = others.filter((r) => r.cost === best.cost);
+
+  if (best.line) {
+    return others.some((r) => accepts(r, best.line as Found))
+      ? null
+      : { marks: [], lines: [best.line.mistake] };
   }
 
-  // Step 7: too different → no guess. Steps are in input order, so the marks are too.
-  const marks = found.map((f) => f.mistake);
-  if (marks.length > MAX_MARKS || !enoughMatched(steps, units)) return null;
+  // Drop a mark another answer accepts. Against an equally good answer that marks the same
+  // place differently, keep the smaller mark when one sits inside the other; else drop it.
+  const settle = (f: Found): Found | null => {
+    if (others.some((r) => accepts(r, f))) return null;
+    for (const r of tied) {
+      for (const g of r.line ? [r.line] : r.marks) {
+        if (!overlaps(f, g) || sameMark(f, g) || inside(f, g)) continue;
+        return inside(g, f) ? settle(g) : null;
+      }
+    }
+    return f;
+  };
+  const settled: Found[] = [];
+  for (const f of best.marks) {
+    const s = settle(f);
+    if (s && !settled.some((t) => sameMark(s, t))) settled.push(s);
+  }
+  if (settled.length === 0) return null;
+
+  // Name every particle an accepted answer within the limits has at the same place.
+  const marks = settled
+    .sort((a, b) => a.from - b.from || a.to - b.to)
+    .map(({ mistake, from, to }) => {
+      if (mistake.kind !== 'particle_wrong' && mistake.kind !== 'particle_missing') return mistake;
+      const expected = [...mistake.expected];
+      for (const r of [best, ...others]) {
+        for (const g of r.marks) {
+          if (!sameMark(g, { mistake, from, to })) continue;
+          for (const p of g.mistake.expected) if (!expected.includes(p)) expected.push(p);
+        }
+      }
+      return { ...mistake, expected };
+    });
   return { marks, lines: [] };
 }

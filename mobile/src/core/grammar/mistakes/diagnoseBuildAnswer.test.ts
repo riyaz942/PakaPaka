@@ -44,6 +44,12 @@ const words: Record<string, DiagnosisWord> = {
     },
   }),
   matsu: word('matsu', '待つ', '待[ま]つ', 'godan'),
+  kirei: word('kirei', 'きれい', 'きれい', 'adj-na'),
+  // Real words of sentence 3780.
+  '506': word('506', '家', '家[いえ]', null),
+  '552': word('552', '帰る', '帰[かえ]る', 'godan'),
+  '897': word('897', 'すぐ', 'すぐ', null),
+  '389': word('389', '電話する', '電[でん]話[わ]する', 'suru'),
 };
 
 const card = (answers: AnswerUnit[][], userAnswers: string[] = []): GrammarSentenceCard => ({
@@ -156,7 +162,7 @@ describe('diagnoseBuildAnswer', () => {
     expect(result?.marks.map((m) => m.kind)).toEqual(['particle_missing']);
   });
 
-  it('counts allowed units as matched for the half limit (R8)', () => {
+  it('reads a saved answer with other words as an accepted answer', () => {
     const result = diagnose(
       '去年大学に日本語を勉強する',
       card([study], ['去年は大学で日本語を勉強します']),
@@ -285,7 +291,19 @@ describe('diagnoseBuildAnswer', () => {
       }),
     ]);
     expect(diagnose('家に帰ました', card([home('に')]))?.marks).toEqual([
-      expect.objectContaining({ kind: 'verb_group', dictForm: '帰る' }),
+      expect.objectContaining({ kind: 'verb_group', dictForm: '帰る', conjugationClass: 'godan' }),
+    ]);
+    const room = [
+      unit('部屋', 'へや'),
+      particle('は'),
+      unit('きれいじゃない', 'きれいじゃない', { itemId: 'kirei' }),
+    ];
+    expect(diagnose('部屋はきれいくない', card([room]))?.marks).toEqual([
+      expect.objectContaining({
+        kind: 'adjective_type',
+        dictForm: 'きれい',
+        conjugationClass: 'adj-na',
+      }),
     ]);
   });
 
@@ -306,5 +324,78 @@ describe('diagnoseBuildAnswer', () => {
         rawStart: 10,
       }),
     ]);
+  });
+
+  describe('every accepted answer counts', () => {
+    // Real units of sentence 3780: 家に帰ったら、すぐ電話します。 and its valid alternates 35–39.
+    const ie = unit('家', 'いえ', { itemId: '506' });
+    const kaettara = unit('帰ったら', 'かえったら', { itemId: '552', inGrammar: true });
+    const sugu = unit('すぐ', 'すぐ', { itemId: '897' });
+    const denwaShimasu = unit('電話します', 'でんわします', { itemId: '389' });
+    const denwaWo = [
+      unit('電話', 'でんわ', { role: 'other' }),
+      particle('を'),
+      unit('します', 'します', { role: 'other' }),
+    ];
+    const call = card([
+      [ie, particle('に'), kaettara, sugu, denwaShimasu],
+      [ie, particle('に'), kaettara, sugu, ...denwaWo],
+      [ie, particle('へ'), kaettara, sugu, denwaShimasu],
+      [ie, particle('へ'), kaettara, sugu, ...denwaWo],
+      [ie, particle('に'), kaettara, sugu, particle('に'), denwaShimasu],
+      [ie, particle('に'), kaettara, sugu, particle('に'), ...denwaWo],
+    ]);
+
+    it('gives no mark where some answer accepts each place', () => {
+      expect(diagnose('家へ帰ったらすぐに電話します', call)).toBeNull();
+    });
+
+    it('keeps only the mark no answer accepts', () => {
+      expect(diagnose('家へ帰ったらすぐに電話しました', call)?.marks).toEqual([
+        expect.objectContaining({
+          kind: 'form',
+          typed: '電話しました',
+          dims: { tense: 'non-past' },
+        }),
+      ]);
+    });
+
+    it('keeps the smaller mark when an equally good answer marks inside it', () => {
+      expect(diagnose('家へ帰ったらすぐ電話をしました', call)?.marks).toEqual([
+        expect.objectContaining({ kind: 'wrong_word', typed: 'しました', expected: ['します'] }),
+      ]);
+    });
+
+    it('drops a mark that equally good answers explain differently', () => {
+      // で is extra for すぐ, or the wrong particle for すぐに: no guess.
+      expect(diagnose('家に帰ったらすぐで電話します', call)).toBeNull();
+    });
+
+    it('names particles from alternates of another length', () => {
+      const withMe = [unit('私', 'わたし'), particle('は'), ...home('へ')];
+      expect(diagnose('家で帰りました', card([home('に'), withMe]))?.marks).toEqual([
+        expect.objectContaining({ kind: 'particle_wrong', expected: ['に', 'へ'] }),
+      ]);
+    });
+
+    it('accepts a saved answer in the other script', () => {
+      const result = diagnose(
+        'ことしがっこうでにほんごをべんきょうしました',
+        card([study], ['今年は学校で日本語を勉強しました']),
+      );
+      expect(result?.marks).toEqual([
+        expect.objectContaining({ kind: 'particle_missing', expected: ['は'], rawStart: 3 }),
+      ]);
+    });
+
+    it('reads a saved answer that leaves out units as one answer', () => {
+      const short = ['学校で日本語を勉強します'];
+      expect(diagnose('今年が学校で日本語を勉強します', card([study], short))?.marks).toEqual([
+        expect.objectContaining({ kind: 'particle_wrong', typed: 'が', expected: ['は'] }),
+      ]);
+      expect(
+        diagnose('今年学校で日本語を勉強しました', card([study], short))?.marks.map((m) => m.kind),
+      ).toEqual(['particle_missing', 'form']);
+    });
   });
 });
