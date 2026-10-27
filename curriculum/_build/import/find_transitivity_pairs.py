@@ -7,7 +7,9 @@ The Build-answer explainer names the partner when a learner writes 開く for
 (開ける / 開く), one tagged "transitive verb" and the other "intransitive verb" in
 `vocab_word_types.json`. Shared kanji is a heuristic and misfires on unrelated
 meanings, so a person reads the list and writes the real pairs into
-`vocab_transitivity_pairs.json` (both directions, {slug: partner_slug}).
+`vocab_transitivity_pairs.json` (both directions, {slug: partner_slug}). Pairs a person
+rejected go into `vocab_transitivity_rejected.json` ([transitive, intransitive] slugs), so
+a later run lists only new candidates.
 
 Run: `cd curriculum/_build && .venv/bin/python import/find_transitivity_pairs.py`
 """
@@ -31,8 +33,8 @@ def _kanji_run(form):
     return match.group(0) if match else None
 
 
-def candidates(word_types, forms, known):
-    """[(transitive_slug, intransitive_slug)] sharing a kanji run, not yet in `known`."""
+def candidates(word_types, forms, known, rejected=frozenset()):
+    """[(transitive_slug, intransitive_slug)] sharing a kanji run, not in `known` or `rejected`."""
     by_run = {}
     for slug, labels in word_types.items():
         run = _kanji_run(forms.get(slug, ""))
@@ -44,7 +46,7 @@ def candidates(word_types, forms, known):
     for transitive, intransitive in by_run.values():
         for t in transitive:
             for i in intransitive:
-                if known.get(t) != i:
+                if known.get(t) != i and known.get(i) != t and (t, i) not in rejected:
                     pairs.append((t, i))
     return sorted(pairs)
 
@@ -60,7 +62,12 @@ def main():
     if os.path.exists(pairs_path):
         with open(pairs_path, encoding="utf-8") as f:
             known = json.load(f)
-    for t, i in candidates(word_types, forms, known):
+    rejected_path = os.path.join(BUILD_DIR, "vocab_transitivity_rejected.json")
+    rejected = set()
+    if os.path.exists(rejected_path):
+        with open(rejected_path, encoding="utf-8") as f:
+            rejected = {tuple(pair) for pair in json.load(f)}
+    for t, i in candidates(word_types, forms, known, rejected):
         print(f"{forms[t]} ({t}) ↔ {forms[i]} ({i})")
 
 

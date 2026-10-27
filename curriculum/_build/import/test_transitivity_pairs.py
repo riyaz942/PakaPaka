@@ -29,6 +29,12 @@ class CandidatesTest(unittest.TestCase):
         known = {"akeru": "aku", "aku": "akeru"}
         self.assertEqual(ftp.candidates(WORD_TYPES, FORMS, known), [])
 
+    def test_candidates_skip_known_in_reverse_only(self):
+        self.assertEqual(ftp.candidates(WORD_TYPES, FORMS, {"aku": "akeru"}), [])
+
+    def test_candidates_skip_rejected_pairs(self):
+        self.assertEqual(ftp.candidates(WORD_TYPES, FORMS, {}, {("akeru", "aku")}), [])
+
 
 class VocabLevelTest(unittest.TestCase):
     def test_vocab_item_carries_transitivity_partner(self):
