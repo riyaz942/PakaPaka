@@ -532,6 +532,56 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('links transitivity partners both ways', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+      vocabFile.items[0].transitivity_partner = 'aku';
+      vocabFile.items.push({
+        slug: 'aku',
+        primary_form: '開く',
+        meaning: 'to open',
+        accepted_answers: [
+          { answer_type: 'meaning', answer_text: 'to open', is_primary: true },
+          { answer_type: 'reading', answer_text: 'あく' },
+        ],
+        transitivity_partner: 'ichi-v',
+      });
+      fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+      compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
+
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        const rows = db
+          .prepare('SELECT id, slug, transitivity_partner_id FROM items WHERE item_type = ?')
+          .all('vocabulary') as { id: number; slug: string; transitivity_partner_id: number | null }[];
+        const bySlug = Object.fromEntries(rows.map((row) => [row.slug, row]));
+        expect(bySlug['ichi-v'].transitivity_partner_id).toBe(bySlug['aku'].id);
+        expect(bySlug['aku'].transitivity_partner_id).toBe(bySlug['ichi-v'].id);
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on an unresolved transitivity partner', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+      vocabFile.items[0].transitivity_partner = 'no-such-verb';
+      fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(
+        'Unresolved transitivity partner: ichi-v -> vocabulary:no-such-verb',
+      );
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('compiles grammar read_once as 1 when set and 0 otherwise', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
     try {

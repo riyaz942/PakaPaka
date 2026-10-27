@@ -30,6 +30,10 @@ CREATE TABLE items (
   -- sense plus a reviewed override list by build_vocab_word_types.py; null when
   -- the word gets no conjugation table.
   conjugation_class TEXT,
+  -- The verb that is this one's transitive / intransitive counterpart (開ける <->
+  -- 開く), vocabulary only. Hand-checked pairs from vocab_transitivity_pairs.json,
+  -- linked both ways; null for every other word.
+  transitivity_partner_id INTEGER REFERENCES items(id),
   -- How the reading is built, vocabulary only ("Jukugo — 人（じん）＋口（こう）,
   -- each kanji read with its on'yomi."). Computed from the word's kanji and
   -- their KANJIDIC readings by mnemonic_context.reading_composition, which is

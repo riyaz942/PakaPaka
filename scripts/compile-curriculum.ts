@@ -119,6 +119,7 @@ type VocabItem = {
   meaning: string;
   word_type?: string;
   conjugation_class?: string;
+  transitivity_partner?: string;
   reading_composition?: string;
   mnemonic_text?: string;
   meaning_mnemonic?: string;
@@ -683,6 +684,7 @@ export function compileCurriculum(
       sort_order: number;
     }[] = [];
     const pendingExampleSpans: (ResolvedWordSpan & { sentence_id: number })[] = [];
+    const pendingTransitivityPartners: { id: number; partner_id: number }[] = [];
     const insertVisuallySimilarLink = db.prepare(`
       INSERT INTO visually_similar_links (item_id, similar_item_id, sort_order)
       VALUES (@item_id, @similar_item_id, @sort_order)
@@ -925,6 +927,16 @@ export function compileCurriculum(
         sort_order: vocab.sort_order ?? 0,
       });
 
+      if (vocab.transitivity_partner) {
+        const partnerId = idByKey.get(itemKey('vocabulary', vocab.transitivity_partner));
+        if (!partnerId) {
+          throw new Error(
+            `Unresolved transitivity partner: ${vocab.slug} -> vocabulary:${vocab.transitivity_partner}`,
+          );
+        }
+        pendingTransitivityPartners.push({ id, partner_id: partnerId });
+      }
+
       for (const answer of vocab.accepted_answers ?? []) {
         insertAnswer.run({
           item_id: id,
@@ -1091,6 +1103,13 @@ export function compileCurriculum(
 
     for (const unit of pendingAnswerUnits) {
       insertAnswerUnit.run(unit);
+    }
+
+    const setTransitivityPartner = db.prepare(
+      'UPDATE items SET transitivity_partner_id = @partner_id WHERE id = @id',
+    );
+    for (const link of pendingTransitivityPartners) {
+      setTransitivityPartner.run(link);
     }
 
     const insertRelationship = db.prepare(`
