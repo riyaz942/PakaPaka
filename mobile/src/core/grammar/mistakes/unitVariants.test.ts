@@ -168,4 +168,41 @@ describe('unitVariants', () => {
       },
     );
   });
+
+  it('conjugates 食べたい as an い-adjective when it belongs to a verb word', () => {
+    const withPartner = {
+      ...taberu,
+      partner: { primaryForm: '食べく', furigana: null, conjugationClass: 'godan' as const },
+      homophones: [{ primaryForm: '足べる', furigana: null, conjugationClass: 'ichidan' as const }],
+    };
+    const variants = unitVariants(unit('食べたい', 'たべたい', { inGrammar: true }), withPartner);
+    has(variants, { text: '食べたかった', kind: 'form', dims: { tense: 'past' } });
+    has(variants, { text: 'たべたかった', kind: 'form', dims: { tense: 'past' } });
+    const kinds = new Set(variants.map((v) => v.kind));
+    for (const kind of ['transitivity', 'homophone_kanji', 'te_ta', 'verb_group'] as const) {
+      expect(kinds.has(kind)).toBe(false);
+    }
+  });
+
+  it('keeps homophones, and no い-adjective forms, for a classless word ending in い', () => {
+    const chigai = word({
+      primaryForm: '違い',
+      furigana: '違[ちが]い',
+      homophones: [{ primaryForm: '違', furigana: null, conjugationClass: null }],
+    });
+    const variants = unitVariants(unit('違い', 'ちがい'), chigai);
+    has(variants, { text: '違', kind: 'homophone_kanji' });
+    expect(variants.filter((v) => v.kind === 'form')).toEqual([]);
+  });
+
+  it('gives no homophone variants for a classed word whose unit matches no form', () => {
+    const kudasaru = word({
+      primaryForm: '待つ',
+      furigana: '待[ま]つ',
+      conjugationClass: 'godan',
+      homophones: [{ primaryForm: '松', furigana: null, conjugationClass: null }],
+    });
+    const variants = unitVariants(unit('待ってください', 'まってください'), kudasaru);
+    expect(variants.filter((v) => v.kind === 'homophone_kanji')).toEqual([]);
+  });
 });

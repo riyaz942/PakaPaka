@@ -20,6 +20,7 @@ import type {
 export const PARTICLES: readonly string[] =
   'は が を に で へ と も の から まで より や か ね よ'.split(' ');
 
+const ADJECTIVE_CLASSES: readonly ConjugationClass[] = ['adj-i', 'adj-ii', 'adj-na'];
 const WRONG_TE_TAILS = ['って', 'いて', 'いで', 'して', 'んで'];
 
 /** Furigana notation resolved to its kana reading. */
@@ -67,7 +68,11 @@ export function unitForm(
       if (spellings?.some((text) => mine.includes(text))) return { form, base };
     }
   }
-  if (!word?.conjugationClass && unit.surface.endsWith('い')) {
+  // 食べたい is a bare い-adjective on a verb word; a classless word (違い) or an adjective is not.
+  const fallbackFits = word
+    ? word.conjugationClass && !ADJECTIVE_CLASSES.includes(word.conjugationClass)
+    : true;
+  if (fallbackFits && unit.surface.endsWith('い')) {
     return {
       form: 'plain',
       base: { primaryForm: unit.surface, furigana: null, conjugationClass: 'adj-i' },
@@ -148,9 +153,11 @@ export function unitVariants(unit: AnswerUnit, word: DiagnosisWord | null): Unit
   if (found) {
     const { form, base } = found;
     const cls = base.conjugationClass as ConjugationClass;
-    // A bare unit has no reading in `base`; conjugate the unit's own reading too.
+    // The word's own base; the い-adjective fallback has no reading, so conjugate the unit's too.
+    const fromWord =
+      !!word && base.primaryForm === word.primaryForm && cls === word.conjugationClass;
     const bases =
-      word || base.primaryForm === unit.reading
+      fromWord || base.primaryForm === unit.reading
         ? [base]
         : [base, { ...base, primaryForm: unit.reading }];
 
@@ -161,7 +168,7 @@ export function unitVariants(unit: AnswerUnit, word: DiagnosisWord | null): Unit
           add(formSpellings(b, cls, other), 'form', { dims: differingDims(form, other) });
       }
     }
-    if (word?.conjugationClass) {
+    if (fromWord && word) {
       if (cls === 'godan' || cls === 'ichidan') {
         add(formSpellings(base, cls === 'godan' ? 'ichidan' : 'godan', form), 'verb_group');
       }
@@ -198,7 +205,7 @@ export function unitVariants(unit: AnswerUnit, word: DiagnosisWord | null): Unit
         }
       }
     }
-  } else if (word) {
+  } else if (word && !word.conjugationClass) {
     for (const homophone of word.homophones) {
       add(
         [homophone.primaryForm, readingOf(homophone.furigana ?? homophone.primaryForm)],
