@@ -113,7 +113,7 @@ describe('modelDownloadManager', () => {
     it('returns an error rather than a guessed size when a file has no size', async () => {
       const sources = voiceModelSources();
       __mockSetRemoteSize(sources[0], 1_000_000);
-      // Remaining sources intentionally unset → the mock sends no Content-Length.
+      // Remaining sources unset → a 302 with only the redirect body's Content-Length.
 
       const result = await getVoiceModelDownloadBytes();
 

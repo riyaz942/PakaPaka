@@ -131,17 +131,30 @@ const RNBlobUtil = {
     },
   },
 
-  async fetch(method: string, url: string) {
-    if (state.sizeError) {
-      throw state.sizeError;
-    }
-    const status = state.statusByUri.get(url) ?? 200;
-    const size = state.sizeByUri.get(url);
-    const headers: Record<string, string> =
-      method === 'HEAD' && status === 200 && size !== undefined
-        ? { 'Content-Length': String(size) }
-        : {};
-    return { info: () => ({ status, headers }) };
+  /**
+   * Answers a HEAD the way Hugging Face does without following redirects: a
+   * 302 to the CDN whose `content-length` is the redirect body, with the real
+   * size in `x-linked-size`. Following the redirect is refused, so a probe that
+   * reads the CDN's answer fails here.
+   */
+  config(options: { followRedirect?: boolean }) {
+    return {
+      async fetch(method: string, url: string) {
+        if (state.sizeError) {
+          throw state.sizeError;
+        }
+        if (options.followRedirect !== false) {
+          throw new Error('mock: the size probe must not follow redirects to the CDN');
+        }
+        const status = state.statusByUri.get(url) ?? 302;
+        const size = state.sizeByUri.get(url);
+        const headers: Record<string, string> = { 'Content-Length': '1104' };
+        if (method === 'HEAD' && status === 302 && size !== undefined) {
+          headers['X-Linked-Size'] = String(size);
+        }
+        return { info: () => ({ status, headers }) };
+      },
+    };
   },
 };
 

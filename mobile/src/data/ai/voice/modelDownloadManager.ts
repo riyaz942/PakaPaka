@@ -86,6 +86,11 @@ const UNAVAILABLE_MESSAGE =
  * prompt has to disclose a true size, and a device that cannot reach the model
  * host cannot download them anyway. Each remote source is probed individually
  * so a partial HEAD failure cannot under-report as a successful total.
+ *
+ * The probe does not follow redirects. Hugging Face answers a model URL with a
+ * redirect to its CDN and puts the file's size in `x-linked-size` on that
+ * redirect; a HEAD against the signed CDN URL is not reliable (it has answered
+ * with the wrong length), and the CDN never has to be reached to size a file.
  */
 export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
   let total = 0;
@@ -93,7 +98,9 @@ export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
     let status: number;
     let headers: Record<string, string>;
     try {
-      const info = (await RNBlobUtil.fetch('HEAD', source)).info();
+      const info = (
+        await RNBlobUtil.config({ followRedirect: false }).fetch('HEAD', source)
+      ).info();
       status = info.status;
       headers = info.headers;
     } catch (cause) {
@@ -102,7 +109,7 @@ export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
         error: toError('voice_model_size_unavailable', UNREACHABLE_MESSAGE, cause),
       };
     }
-    if (status < 200 || status >= 300) {
+    if (status < 200 || status >= 400) {
       return {
         ok: false,
         error: toError(
@@ -112,10 +119,10 @@ export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
         ),
       };
     }
-    // `x-linked-size` first: Hugging Face serves model files from a CDN by
-    // redirect, and only this header describes the file itself on every hop.
+    // On a redirect, `content-length` is the size of the redirect body, not the file.
     const bytes = Number(
-      headerValue(headers, 'x-linked-size') || headerValue(headers, 'content-length'),
+      headerValue(headers, 'x-linked-size') ||
+        (status < 300 ? headerValue(headers, 'content-length') : undefined),
     );
     if (!Number.isFinite(bytes) || bytes <= 0) {
       return {
