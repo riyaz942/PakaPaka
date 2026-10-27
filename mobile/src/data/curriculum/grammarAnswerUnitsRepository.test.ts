@@ -117,4 +117,19 @@ describe('getBuildDiagnosisKey', () => {
       partner: null,
     });
   });
+
+  it('leaves transitivity null for a verb tagged as both transitive and intransitive', () => {
+    const { db } = fakeDb({
+      tables: ['grammar_answer_units'],
+      units: [unit(null, '始まる', 'word', 6)],
+      words: [
+        {
+          id: 6, primary_form: '始まる', furigana: '始[はじ]まる', conjugation_class: 'godan',
+          word_type: 'godan verb, transitive verb, intransitive verb',
+        },
+      ],
+    });
+
+    expect(getBuildDiagnosisKey(db, '7')!.words['6'].transitivity).toBeNull();
+  });
 });

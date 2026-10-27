@@ -38,10 +38,13 @@ type HomophoneRow = {
 
 function transitivityOf(wordType: string | null): DiagnosisWord['transitivity'] {
   if (wordType == null) return null;
-  // "intransitive verb" contains "transitive verb", so test it first; \b keeps
-  // the second test off the tail of "intransitive".
-  if (/\bintransitive verb\b/.test(wordType)) return 'intransitive';
-  if (/\btransitive verb\b/.test(wordType)) return 'transitive';
+  // "intransitive verb" contains "transitive verb"; \b keeps the test off its tail.
+  const intransitive = /\bintransitive verb\b/.test(wordType);
+  const transitive = /\btransitive verb\b/.test(wordType);
+  // Tagged as both kinds: no single answer.
+  if (intransitive && transitive) return null;
+  if (intransitive) return 'intransitive';
+  if (transitive) return 'transitive';
   return null;
 }
 
