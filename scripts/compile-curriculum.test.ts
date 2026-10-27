@@ -910,6 +910,73 @@ describe('compile-curriculum', () => {
     }
   });
 
+  const ANSWER_UNITS = [
+    { surface: '一', reading: 'いち', role: 'word', vocabulary_slug: 'ichi-v', in_grammar: false },
+    { surface: 'です', reading: 'です', role: 'other', in_grammar: true },
+  ];
+
+  function withAnswerUnits(
+    sentenceUnits: unknown[],
+    alternateUnits: unknown[],
+  ): (file: { items: Record<string, unknown>[] }) => void {
+    return (file) => {
+      const desu = file.items[0] as {
+        example_sentences: { answer_units: unknown[]; build_alternates: { units?: unknown[] }[] }[];
+      };
+      desu.example_sentences[0].answer_units = sentenceUnits;
+      desu.example_sentences[0].build_alternates[0].units = alternateUnits;
+    };
+  }
+
+  it('compiles answer units for the sentence and its valid alternates', () => {
+    const alternateUnits = [
+      ANSWER_UNITS[0],
+      { surface: 'だ', reading: 'だ', role: 'other', in_grammar: true },
+    ];
+    const { dbPath, tempDir, run } = compileGrammarFixture(
+      withAnswerUnits(ANSWER_UNITS, alternateUnits),
+    );
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const ichiId = readItemIds(dbPath)['vocabulary:ichi-v'];
+      const validAnswerId = (
+        db.prepare(`SELECT id FROM grammar_sentence_answers WHERE kind = 'valid'`).get() as {
+          id: number;
+        }
+      ).id;
+      const rows = db
+        .prepare(
+          `SELECT answer_id, position, surface, role, item_id, in_grammar
+           FROM grammar_answer_units ORDER BY answer_id IS NOT NULL, answer_id, position`,
+        )
+        .all();
+      expect(rows).toEqual([
+        { answer_id: null, position: 0, surface: '一', role: 'word', item_id: ichiId, in_grammar: 0 },
+        { answer_id: null, position: 1, surface: 'です', role: 'other', item_id: null, in_grammar: 1 },
+        { answer_id: validAnswerId, position: 0, surface: '一', role: 'word', item_id: ichiId, in_grammar: 0 },
+        { answer_id: validAnswerId, position: 1, surface: 'だ', role: 'other', item_id: null, in_grammar: 1 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when answer units do not rebuild the sentence', () => {
+    const { tempDir, run } = compileGrammarFixture(withAnswerUnits([ANSWER_UNITS[0]], []));
+    expect(run).toThrow(/Answer units do not rebuild sentence: grammar:desu example\[0\]/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws when an answer unit names an unknown vocabulary word', () => {
+    const { tempDir, run } = compileGrammarFixture(
+      withAnswerUnits([{ ...ANSWER_UNITS[0], vocabulary_slug: 'nope' }, ANSWER_UNITS[1]], []),
+    );
+    expect(run).toThrow(/Unresolved answer unit vocabulary: grammar:desu example\[0\] -> vocabulary:nope/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
   it('leaves grammar pool columns null on non-grammar example sentences', () => {
     const { dbPath, tempDir, run } = compileGrammarFixture();
     run();

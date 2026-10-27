@@ -140,7 +140,17 @@ type ExampleSentence = {
   /** Grammar pool only: where the grammar sits in `japanese`. */
   grammar_span?: { start: number; end: number };
   register?: 'polite' | 'plain';
-  build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar' }[];
+  build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar'; units?: AnswerUnit[] }[];
+  /** Grammar pool only: the sentence cut into Build-explanation units. */
+  answer_units?: AnswerUnit[];
+};
+
+type AnswerUnit = {
+  surface: string;
+  reading: string;
+  role: 'word' | 'particle' | 'other';
+  vocabulary_slug?: string;
+  in_grammar: boolean;
 };
 
 type GrammarUse = {
@@ -652,6 +662,10 @@ export function compileCurriculum(
       INSERT INTO grammar_sentence_answers (sentence_id, answer_furigana, kind, sort_order)
       VALUES (@sentence_id, @answer_furigana, @kind, @sort_order)
     `);
+    const insertAnswerUnit = db.prepare(`
+      INSERT INTO grammar_answer_units (sentence_id, answer_id, position, surface, reading, role, item_id, in_grammar)
+      VALUES (@sentence_id, @answer_id, @position, @surface, @reading, @role, @item_id, @in_grammar)
+    `);
     const insertExampleVocab = db.prepare(`
       INSERT INTO example_sentence_vocab (sentence_id, item_id, sort_order)
       VALUES (@sentence_id, @item_id, @sort_order)
@@ -699,6 +713,43 @@ export function compileCurriculum(
       }
     };
 
+    const pendingAnswerUnits: Record<string, unknown>[] = [];
+    // Units must spell the answer they cut (minus punctuation and spaces), and
+    // their vocabulary links resolve like the sentence's own.
+    const queueAnswerUnits = (
+      sentenceId: number,
+      answerId: number | null,
+      units: AnswerUnit[],
+      plain: string,
+      ownerLabel: string,
+    ) => {
+      const rebuilt = units.map((unit) => unit.surface).join('');
+      if (rebuilt !== plain.replace(/[、。！？!?,.「」『』\s]/g, '')) {
+        throw new Error(`Answer units do not rebuild sentence: ${ownerLabel}`);
+      }
+      for (const [position, unit] of units.entries()) {
+        let itemId: number | null = null;
+        if (unit.vocabulary_slug) {
+          itemId = idByKey.get(itemKey('vocabulary', unit.vocabulary_slug)) ?? null;
+          if (!itemId) {
+            throw new Error(
+              `Unresolved answer unit vocabulary: ${ownerLabel} -> vocabulary:${unit.vocabulary_slug}`,
+            );
+          }
+        }
+        pendingAnswerUnits.push({
+          sentence_id: sentenceId,
+          answer_id: answerId,
+          position,
+          surface: unit.surface,
+          reading: unit.reading,
+          role: unit.role,
+          item_id: itemId,
+          in_grammar: unit.in_grammar ? 1 : 0,
+        });
+      }
+    };
+
     const insertExamples = (itemId: number, sentences: ExampleSentence[], ownerLabel: string) => {
       for (const [index, sentence] of sentences.entries()) {
         const span = sentence.grammar_span;
@@ -721,13 +772,31 @@ export function compileCurriculum(
           register: sentence.register ?? null,
         });
         const sentenceId = Number(result.lastInsertRowid);
+        if (sentence.answer_units) {
+          queueAnswerUnits(
+            sentenceId,
+            null,
+            sentence.answer_units,
+            sentence.japanese,
+            `${ownerLabel} example[${index}]`,
+          );
+        }
         for (const [altIndex, alternate] of (sentence.build_alternates ?? []).entries()) {
-          insertGrammarSentenceAnswer.run({
+          const answerResult = insertGrammarSentenceAnswer.run({
             sentence_id: sentenceId,
             answer_furigana: alternate.furigana,
             kind: alternate.kind,
             sort_order: altIndex,
           });
+          if (alternate.units) {
+            queueAnswerUnits(
+              sentenceId,
+              Number(answerResult.lastInsertRowid),
+              alternate.units,
+              stripFurigana(alternate.furigana),
+              `${ownerLabel} example[${index}]`,
+            );
+          }
         }
         for (const [slugIndex, vocabSlug] of (sentence.vocabulary_slugs ?? []).entries()) {
           const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
@@ -1018,6 +1087,10 @@ export function compileCurriculum(
 
     for (const span of pendingExampleSpans) {
       insertExampleSpan.run(span);
+    }
+
+    for (const unit of pendingAnswerUnits) {
+      insertAnswerUnit.run(unit);
     }
 
     const insertRelationship = db.prepare(`

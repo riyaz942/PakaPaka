@@ -42,6 +42,7 @@ sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
 from generate_content import check_grammar_pool as pool_check  # noqa: E402
+from generate_content.answer_units import answer_units  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
@@ -620,6 +621,11 @@ def _load_lesson(slug, known_readings, forms_by_slug, accepted_forms=()):
                                            accepted_forms)
 
 
+def _unit_json(unit):
+    """An answer unit without its null vocabulary_slug."""
+    return {k: v for k, v in unit.items() if k != "vocabulary_slug" or v is not None}
+
+
 def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors):
     """One grammar example sentence with the Read/Build card fields
     (docs/superpowers/specs/2026-10-13-grammar-read-build-srs-design.md §4.2)."""
@@ -655,6 +661,7 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     if span:
         sentence["grammar_span"] = span
     sentence["register"] = grammar_sentences_lib.register_of(jp)
+    sentence["answer_units"] = [_unit_json(u) for u in answer_units(jp, forms_by_slug, span)]
     alternates = []
     for plain, kind in example.get("alts") or []:
         furigana = furigana_lib.annotate_sentence(plain, known_readings)
@@ -662,7 +669,15 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
             errors.append(f"grammar {g['slug']} example {sort_order}: alternate "
                           f"{plain!r} cannot be annotated (write plain Japanese)")
             continue
-        alternates.append({"furigana": furigana, "kind": kind})
+        alternate = {"furigana": furigana, "kind": kind}
+        if kind == "valid":
+            try:
+                alt_span = grammar_sentences_lib.grammar_span(
+                    plain, g["accepted_forms"], example.get("form"))
+            except ValueError:
+                alt_span = None
+            alternate["units"] = [_unit_json(u) for u in answer_units(plain, forms_by_slug, alt_span)]
+        alternates.append(alternate)
     if alternates:
         sentence["build_alternates"] = alternates
     return sentence

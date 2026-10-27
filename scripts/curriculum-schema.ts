@@ -146,6 +146,21 @@ CREATE TABLE grammar_sentence_answers (
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
+-- Build-card answer units (grammar mistake explanations spec): each accepted
+-- answer cut into word / particle / other runs at build time, because the app
+-- has no tokenizer. answer_id NULL = the sentence itself.
+CREATE TABLE grammar_answer_units (
+  id INTEGER PRIMARY KEY NOT NULL,
+  sentence_id INTEGER NOT NULL REFERENCES example_sentences(id),
+  answer_id INTEGER REFERENCES grammar_sentence_answers(id),
+  position INTEGER NOT NULL,
+  surface TEXT NOT NULL,
+  reading TEXT NOT NULL,
+  role TEXT NOT NULL CHECK(role IN ('word', 'particle', 'other')),
+  item_id INTEGER REFERENCES items(id),
+  in_grammar INTEGER NOT NULL DEFAULT 0
+);
+
 CREATE TABLE item_relationships (
   id INTEGER PRIMARY KEY NOT NULL,
   parent_item_id INTEGER NOT NULL REFERENCES items(id),
@@ -227,6 +242,7 @@ CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(pa
 CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);
 CREATE INDEX idx_example_sentence_spans_sentence ON example_sentence_spans(sentence_id);
 CREATE INDEX idx_grammar_sentence_answers_sentence ON grammar_sentence_answers(sentence_id);
+CREATE INDEX idx_grammar_answer_units_sentence ON grammar_answer_units(sentence_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

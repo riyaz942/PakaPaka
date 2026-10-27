@@ -232,10 +232,30 @@
             "required": ["furigana", "kind"],
             "properties": {
               "furigana": { "type": "string", "minLength": 1 },
-              "kind": { "type": "string", "enum": ["valid", "other_grammar"] }
+              "kind": { "type": "string", "enum": ["valid", "other_grammar"] },
+              "units": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/answerUnit" }
+              }
             }
           }
+        },
+        "answer_units": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/answerUnit" }
         }
+      }
+    },
+    "answerUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "reading", "role", "in_grammar"],
+      "properties": {
+        "surface": { "type": "string", "minLength": 1 },
+        "reading": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "enum": ["word", "particle", "other"] },
+        "vocabulary_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "in_grammar": { "type": "boolean" }
       }
     },
     "grammarUse": {
