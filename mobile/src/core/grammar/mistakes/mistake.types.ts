@@ -1,4 +1,4 @@
-import type { ConjugationClass } from '@/core/content/conjugation';
+import type { ConjugationClass, ConjugationForm } from '@/core/content/conjugation';
 
 export type AnswerUnitRole = 'word' | 'particle' | 'other';
 
@@ -26,3 +26,23 @@ export type DiagnosisWord = DiagnosisWordForm & {
 
 /** answers[0] = the sentence; then `valid` alternates in sort_order. */
 export type BuildDiagnosisKey = { answers: AnswerUnit[][]; words: Record<string, DiagnosisWord> };
+
+export type UnitForm = ConjugationForm | 'te';
+export type FormDims = {
+  register?: 'polite' | 'plain';
+  tense?: 'past' | 'non-past';
+  polarity?: 'negative' | 'positive';
+};
+export type VariantKind =
+  | 'particle_wrong'
+  | 'form'
+  | 'verb_group'
+  | 'te_ta'
+  | 'adjective_type'
+  | 'transitivity'
+  | 'homophone_kanji'
+  | 'spelling_sokuon'
+  | 'spelling_long_vowel';
+
+/** A known wrong form of an answer unit. `dims` = the variant's own values where it differs from the unit's form. */
+export type UnitVariant = { text: string; kind: VariantKind; dims?: FormDims; dictForm?: string };
