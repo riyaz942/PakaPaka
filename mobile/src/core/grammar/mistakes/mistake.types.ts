@@ -46,3 +46,14 @@ export type VariantKind =
 
 /** A known wrong form of an answer unit. `dims` = the variant's own values where it differs from the unit's form. */
 export type UnitVariant = { text: string; kind: VariantKind; dims?: FormDims; dictForm?: string };
+
+export type StepKind = 'exact' | 'allowed' | VariantKind | 'missing' | 'extra' | 'replaced';
+/** One alignment step. `from`/`to` are offsets in the normalized input (from === to for a missing unit). unitIndex is null for 'extra'. */
+export type AlignStep = {
+  kind: StepKind;
+  unitIndex: number | null;
+  from: number;
+  to: number;
+  variant?: UnitVariant;
+};
+export type Alignment = { steps: AlignStep[]; cost: number };
