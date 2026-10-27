@@ -1,16 +1,18 @@
-import { type Ref } from 'react';
+import { useMemo, type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { diagnoseBuildAnswer } from '@/core/grammar/mistakes/diagnoseBuildAnswer';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
 import { heroFontClassForWeight } from '@/utils/heroGlyphFont';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
+import { BuildMistakeMarks } from './BuildMistakeMarks';
 import { GrammarBuildCard } from './GrammarBuildCard';
 import { GrammarReadCard } from './GrammarReadCard';
 
@@ -75,6 +77,21 @@ export function IncorrectReveal({
         ? item.grammarBuild
         : item.grammarRead
       : undefined;
+  // Marks only for a typed Build answer on a curriculum that ships the units;
+  // "Don't know" and an older curriculum.db keep the plain screen. A null
+  // diagnosis (answer too different) still shows the answer, with no marks.
+  const buildAnswer = rejectedAnswer?.trim() ?? '';
+  const buildCard = item.itemType === 'grammar' ? item.grammarBuild : undefined;
+  const showBuildMarks =
+    item.itemType === 'grammar' &&
+    item.promptType === 'production' &&
+    Boolean(buildAnswer) &&
+    Boolean(buildCard?.diagnosisKey);
+  const diagnosis = useMemo(
+    () =>
+      showBuildMarks && buildCard ? diagnoseBuildAnswer(buildAnswer, buildCard, item.primaryForm) : null,
+    [showBuildMarks, buildAnswer, buildCard, item.primaryForm],
+  );
   const canSaveGrammarAnswer =
     item.itemType === 'grammar' &&
     item.promptType === 'production' &&
@@ -123,6 +140,14 @@ export function IncorrectReveal({
 
       {grammarCard ? (
         <View className="w-full items-center gap-space-sm">
+          {showBuildMarks ? (
+            <BuildMistakeMarks
+              key={`${item.itemId}-${buildAnswer}`}
+              input={buildAnswer}
+              diagnosis={diagnosis}
+              grammarLabel={item.primaryForm}
+            />
+          ) : null}
           {item.promptType === 'production' ? (
             <GrammarBuildCard item={item} answered />
           ) : (
