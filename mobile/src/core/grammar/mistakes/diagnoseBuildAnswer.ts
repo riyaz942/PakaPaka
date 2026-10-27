@@ -85,11 +85,14 @@ function savedAnswerUnits(
 const isParticleUnit = (unit: AnswerUnit) =>
   unit.role === 'particle' || PARTICLES.includes(normalizeBuildText(unit.surface));
 
-/** The answer's words without its particles, in order: what "word order" compares. */
+/**
+ * The answer's words without its particles, in order: what "word order" compares. Readings,
+ * so 私 in one answer and わたし in another are the same word.
+ */
 const contentOrder = (units: AnswerUnit[]) =>
   units
     .filter((unit) => !isParticleUnit(unit))
-    .map((unit) => normalizeBuildText(unit.surface))
+    .map((unit) => normalizeBuildText(unit.reading))
     .join('|');
 
 /**

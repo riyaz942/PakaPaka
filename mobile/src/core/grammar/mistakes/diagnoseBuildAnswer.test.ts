@@ -291,6 +291,19 @@ describe('diagnoseBuildAnswer', () => {
     });
   });
 
+  it('compares word order by reading: an answer with ことし in kana has the same order', () => {
+    // 学校でことしも日本語を勉強します has the learner's order; only the particle differs.
+    const kanaAlt = [
+      study[2],
+      study[3],
+      unit('ことし', 'ことし'),
+      particle('も'),
+      ...study.slice(4),
+    ];
+    const result = diagnose('学校で今年は日本語を勉強します', card([study, kanaAlt]));
+    expect(result?.lines ?? []).toEqual([]);
+  });
+
   it('does not call swapped particles a word order mistake', () => {
     const result = diagnose('今年で学校は日本語を勉強します', card([study]));
     expect(result?.lines).toEqual([]);
