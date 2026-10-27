@@ -57,3 +57,29 @@ export type AlignStep = {
   variant?: UnitVariant;
 };
 export type Alignment = { steps: AlignStep[]; cost: number };
+
+export type MistakeKind =
+  | 'particle_missing'
+  | 'particle_wrong'
+  | 'particle_extra'
+  | Exclude<VariantKind, 'particle_wrong'>
+  | 'grammar_not_used'
+  | 'wrong_word'
+  | 'word_missing'
+  | 'word_extra'
+  | 'word_order';
+/** One mistake in a Build answer. Offsets are in the raw input; rawStart === rawEnd for a gap. */
+export type Mistake = {
+  kind: MistakeKind;
+  rawStart: number;
+  rawEnd: number;
+  typed: string; // raw input slice ('' for a gap)
+  expected: string[]; // correct text(s) at this place, answer surface; [] for word_extra / word_order
+  before: string | null; // learner's raw text of the previous matched unit
+  after: string | null; // learner's raw text of the next matched unit
+  dims?: FormDims; // the answer form's values on the dimensions the learner got wrong
+  dictForm?: string;
+  transitivity?: 'transitive' | 'intransitive'; // of the verb the answer needs
+};
+/** marks = mistakes with a place; lines = mistakes with no single place (word order, grammar not used). */
+export type BuildDiagnosis = { marks: Mistake[]; lines: Mistake[] };

@@ -81,7 +81,7 @@ export function unitForm(
   return null;
 }
 
-function formDims(form: ConjugationForm): Required<FormDims> {
+export function formDims(form: ConjugationForm): Required<FormDims> {
   return {
     register: form.startsWith('polite') ? 'polite' : 'plain',
     tense: form.includes('Past') ? 'past' : 'non-past',
