@@ -513,6 +513,7 @@ const SENTENCE: GrammarSentenceCard = {
   answers: ['寒[さむ]いから、コートを着[き]ます。'],
   otherGrammarAnswers: [],
   userAnswers: [],
+  diagnosisKey: null,
 };
 
 describe('ReviewCard — grammar pair', () => {

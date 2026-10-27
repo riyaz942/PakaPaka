@@ -7,10 +7,14 @@ const mockForms = jest.fn();
 const mockHistory = jest.fn();
 const mockAnswers = jest.fn();
 const mockStatuses = jest.fn();
+const mockDiagnosis = jest.fn();
 
 jest.mock('@/data/curriculum/grammarPoolRepository', () => ({
   getGrammarSentencePool: (...args: unknown[]) => mockPool(...args),
   getItemFormsByIds: (...args: unknown[]) => mockForms(...args),
+}));
+jest.mock('@/data/curriculum/grammarAnswerUnitsRepository', () => ({
+  getBuildDiagnosisKey: (...args: unknown[]) => mockDiagnosis(...args),
 }));
 jest.mock('@/data/user/grammarAnswerRepository', () => ({
   getGrammarSentenceHistory: (...args: unknown[]) => mockHistory(...args),
@@ -49,6 +53,8 @@ describe('buildGrammarCards', () => {
     mockHistory.mockReturnValue(['A', 'B']);
     mockAnswers.mockReturnValue(new Map([['C', ['saved']]]));
     mockStatuses.mockReturnValue(new Map([['20', 'in_progress']]));
+    mockDiagnosis.mockReset();
+    mockDiagnosis.mockReturnValue({ answers: [[{ surface: 'D', reading: 'D', role: 'word', itemId: null, inGrammar: false }]], words: {} });
   });
 
   it('picks two new sentences and fills each card', () => {
@@ -75,5 +81,14 @@ describe('buildGrammarCards', () => {
       { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
       { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
     ]);
+  });
+
+  it('loads the diagnosis key for the Build card only', () => {
+    const { grammarRead, grammarBuild } = buildGrammarCards(db, db, '50', () => 0);
+
+    expect(grammarBuild.diagnosisKey?.answers.length).toBeGreaterThan(0);
+    expect(grammarRead.diagnosisKey).toBeNull();
+    expect(mockDiagnosis).toHaveBeenCalledTimes(1);
+    expect(mockDiagnosis).toHaveBeenCalledWith(db, 'D');
   });
 });

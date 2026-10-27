@@ -1,4 +1,5 @@
 import type { RelatedItem, ReinforcementLink } from '@/core/content/content.types';
+import type { BuildDiagnosisKey } from '@/core/grammar/mistakes/mistake.types';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 
 export type SRSStageLabel = 'apprentice' | 'guru' | 'master' | 'enlightened' | 'burned';
@@ -79,6 +80,8 @@ export type GrammarSentenceCard = {
    * of this card (same object) accepts it at once.
    */
   userAnswers: string[];
+  /** Build cards only: the cut answers and word facts that explain a wrong answer. */
+  diagnosisKey: BuildDiagnosisKey | null;
 };
 
 export type ReviewItem = {
