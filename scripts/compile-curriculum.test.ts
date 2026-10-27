@@ -971,8 +971,13 @@ describe('compile-curriculum', () => {
   ): (file: { items: Record<string, unknown>[] }) => void {
     return (file) => {
       const desu = file.items[0] as {
-        example_sentences: { answer_units: unknown[]; build_alternates: { units?: unknown[] }[] }[];
+        example_sentences: {
+          furigana?: string;
+          answer_units: unknown[];
+          build_alternates: { units?: unknown[] }[];
+        }[];
       };
+      desu.example_sentences[0].furigana = '一[いち]です。';
       desu.example_sentences[0].answer_units = sentenceUnits;
       desu.example_sentences[0].build_alternates[0].units = alternateUnits;
     };
@@ -1016,6 +1021,57 @@ describe('compile-curriculum', () => {
   it('throws when answer units do not rebuild the sentence', () => {
     const { tempDir, run } = compileGrammarFixture(withAnswerUnits([ANSWER_UNITS[0]], []));
     expect(run).toThrow(/Answer units do not rebuild sentence: grammar:desu example\[0\]/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  // 私[わたし]は明日[あした]です: the tokenizer would read わたくし / みょうにち.
+  function withWatashiSentence(readings: [string, string]): (file: {
+    items: Record<string, unknown>[];
+  }) => void {
+    return (file) => {
+      const desu = file.items[0] as { example_sentences: Record<string, unknown>[] };
+      desu.example_sentences[0] = {
+        japanese: '私は明日です。',
+        furigana: '私[わたし]は明日[あした]です。',
+        english: 'Tomorrow is me.',
+        sort_order: 0,
+        grammar_span: { start: 4, end: 6 },
+        register: 'polite',
+        answer_units: [
+          { surface: '私', reading: readings[0], role: 'other', in_grammar: false },
+          { surface: 'は', reading: 'は', role: 'particle', in_grammar: false },
+          { surface: '明日', reading: readings[1], role: 'other', in_grammar: false },
+          { surface: 'です', reading: 'です', role: 'other', in_grammar: true },
+        ],
+      };
+    };
+  }
+
+  it('compiles answer unit readings that spell the furigana reading', () => {
+    const { dbPath, tempDir, run } = compileGrammarFixture(
+      withWatashiSentence(['わたし', 'あした']),
+    );
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const readings = db
+        .prepare('SELECT reading FROM grammar_answer_units ORDER BY position')
+        .all();
+      expect(readings).toEqual([
+        { reading: 'わたし' },
+        { reading: 'は' },
+        { reading: 'あした' },
+        { reading: 'です' },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when answer unit readings differ from the furigana', () => {
+    const { tempDir, run } = compileGrammarFixture(withWatashiSentence(['わたくし', 'あした']));
+    expect(run).toThrow(/Answer unit readings do not match the furigana: grammar:desu example\[0\]/);
     fs.rmSync(tempDir, { recursive: true, force: true });
   });
 

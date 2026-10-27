@@ -678,7 +678,11 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     if span:
         sentence["grammar_span"] = span
     sentence["register"] = grammar_sentences_lib.register_of(jp)
-    sentence["answer_units"] = [_unit_json(u) for u in answer_units(jp, forms_by_slug, span)]
+    try:
+        sentence["answer_units"] = [_unit_json(u) for u in answer_units(
+            jp, sentence_furigana or jp, forms_by_slug, span)]
+    except ValueError as error:
+        errors.append(f"grammar {g['slug']} example {sort_order}: {error}")
     alternates = []
     for plain, kind in example.get("alts") or []:
         furigana = furigana_lib.annotate_sentence(plain, known_readings)
@@ -693,7 +697,11 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
                     plain, g["accepted_forms"], example.get("form"))
             except ValueError:
                 alt_span = None
-            alternate["units"] = [_unit_json(u) for u in answer_units(plain, forms_by_slug, alt_span)]
+            try:
+                alternate["units"] = [_unit_json(u) for u in answer_units(
+                    plain, furigana, forms_by_slug, alt_span)]
+            except ValueError as error:
+                errors.append(f"grammar {g['slug']} example {sort_order}: alternate: {error}")
         alternates.append(alternate)
     if alternates:
         sentence["build_alternates"] = alternates

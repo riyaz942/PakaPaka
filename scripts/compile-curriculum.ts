@@ -222,6 +222,14 @@ function inflectionStem(primaryForm: string): string {
   return primaryForm.endsWith('する') ? primaryForm.slice(0, -2) : primaryForm.slice(0, -1);
 }
 
+/**
+ * Furigana notation as kana: each reading replaces the kanji run before it
+ * (々 included), as the app's parseFurigana groups it.
+ */
+function furiganaReading(annotated: string): string {
+  return annotated.replace(/[一-鿿々]*\[([^[\]]*)]/g, '$1');
+}
+
 type ResolvedWordSpan = {
   item_id: number;
   start_offset: number;
@@ -716,18 +724,24 @@ export function compileCurriculum(
     };
 
     const pendingAnswerUnits: Record<string, unknown>[] = [];
-    // Units must spell the answer they cut (minus punctuation and spaces), and
-    // their vocabulary links resolve like the sentence's own.
+    // Units must spell the answer they cut (minus punctuation and spaces), their
+    // readings must spell its furigana reading (what the Build grader accepts),
+    // and their vocabulary links resolve like the sentence's own.
     const queueAnswerUnits = (
       sentenceId: number,
       answerId: number | null,
       units: AnswerUnit[],
-      plain: string,
+      annotated: string,
       ownerLabel: string,
     ) => {
+      const unpunctuated = (text: string) => text.replace(/[、。！？!?,.「」『』\s]/g, '');
       const rebuilt = units.map((unit) => unit.surface).join('');
-      if (rebuilt !== plain.replace(/[、。！？!?,.「」『』\s]/g, '')) {
+      if (rebuilt !== unpunctuated(stripFurigana(annotated))) {
         throw new Error(`Answer units do not rebuild sentence: ${ownerLabel}`);
+      }
+      const reading = units.map((unit) => unit.reading).join('');
+      if (reading !== unpunctuated(furiganaReading(annotated))) {
+        throw new Error(`Answer unit readings do not match the furigana: ${ownerLabel}`);
       }
       for (const [position, unit] of units.entries()) {
         let itemId: number | null = null;
@@ -779,7 +793,7 @@ export function compileCurriculum(
             sentenceId,
             null,
             sentence.answer_units,
-            sentence.japanese,
+            sentence.furigana ?? sentence.japanese,
             `${ownerLabel} example[${index}]`,
           );
         }
@@ -795,7 +809,7 @@ export function compileCurriculum(
               sentenceId,
               Number(answerResult.lastInsertRowid),
               alternate.units,
-              stripFurigana(alternate.furigana),
+              alternate.furigana,
               `${ownerLabel} example[${index}]`,
             );
           }
