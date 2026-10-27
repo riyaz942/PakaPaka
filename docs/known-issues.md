@@ -7,31 +7,14 @@ and consciously chose not to fix, see
 
 ---
 
-## Executorch main vs Expo resource-fetcher nightly skew
-
-**Found:** 2026-07-21, during Story 5.2 code review (Chunk A).
-**Status:** accepted risk (not a defect to "fix" in-app) — revisit when upstream changes.
-**Severity:** medium — download/load path depends on two packages from different publish dates.
-
-### What is going on
-
-Story 5.2 pins:
-
-- `react-native-executorch@0.10.0-nightly-a0bf85b-20260721` — required for Supertonic Japanese TTS (`'ja'`)
-- `react-native-executorch-expo-resource-fetcher@0.10.0-nightly-0a8fe7e-20260527` — tip of that package's
-  `executorch-nightly` tag; lockfile marks the package deprecated (“use latest stable”)
-
-There is no July (or later) fetcher nightly. The same-hash May main package
-(`…0a8fe7e-20260527`) has Kokoro only — no Supertonic / no `'ja'` — so matching pins would break AC4.
-
-### Decision
-
-Keep the July main + May fetcher pair. Re-check pins when upstream publishes a matching fetcher
-nightly or a stable release that still includes Japanese TTS.
-
----
-
 ## Fixed
+
+- **Executorch main vs Expo resource-fetcher nightly skew** (found 2026-07-21) — fixed 2026-10-27:
+  moved to stable `react-native-executorch@0.10.7`, which has its own downloader, so the
+  resource-fetcher package is gone. The July nightly asked the model host for `voices/F1.bin`;
+  every later build asks for `voice_styles/F1.json` instead, so the `.bin` is very likely not
+  served. On a Pixel 10 the size probe failed and the download never started. 0.10.7 needs
+  `react-native-worklets` 0.10.x, which pulled `react-native-reanimated` up to 4.5.x.
 
 - **`feedback-error` used but never defined** (found 2026-07-21) — fixed: no `feedback-error` usages remain in
   `mobile/src` (checked 2026-10-20). Full write-up is in git history.

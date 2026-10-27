@@ -1,13 +1,13 @@
 import {
-  __mockFailFetch,
-  __mockFailListDownloaded,
+  __mockDownloadCallCount,
+  __mockFailDownload,
+  __mockFailExistsCheck,
   __mockFailSizeProbe,
-  __mockFetchCallCount,
-  __mockCancelCallCount,
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
+  __mockResetModelFiles,
   __mockSetRemoteSize,
-} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+  __mockSetRemoteStatus,
+} from '../../../../__mocks__/react-native-blob-util';
 
 import {
   areVoiceModelsDownloaded,
@@ -17,15 +17,21 @@ import {
 } from '@/data/ai/voice/modelDownloadManager';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
-// jest-expo's setup stubs this path with a stateless getInfoAsync that always says
-// "exists". Use the project mock, whose store the resource-fetcher mock writes to.
-jest.mock('expo-file-system/legacy', () =>
-  jest.requireActual('../../../../__mocks__/expo-file-system'),
-);
-
 describe('modelDownloadManager', () => {
   beforeEach(() => {
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
+  });
+
+  describe('voiceModelSources', () => {
+    it('lists only the one voice style, not every Supertonic voice', () => {
+      const voiceStyles = voiceModelSources().filter((source) => source.includes('voice_styles'));
+
+      expect(voiceStyles).toEqual(['https://models.test/supertonic/voice_styles/F1.json']);
+    });
+
+    it('includes the voice activity model Whisper loads with', () => {
+      expect(voiceModelSources()).toContain('https://models.test/fsmn-vad/fsmn_vad.pte');
+    });
   });
 
   describe('areVoiceModelsDownloaded', () => {
@@ -36,8 +42,7 @@ describe('modelDownloadManager', () => {
     });
 
     it('reports false when only some model files are present', async () => {
-      const sources = voiceModelSources();
-      __mockMarkDownloaded(...(sources.slice(0, 2) as string[]));
+      __mockMarkDownloaded(...voiceModelSources().slice(0, 2));
 
       const result = await areVoiceModelsDownloaded();
 
@@ -45,24 +50,15 @@ describe('modelDownloadManager', () => {
     });
 
     it('reports true only once every model file is present', async () => {
-      __mockMarkDownloaded(...(voiceModelSources() as string[]));
+      __mockMarkDownloaded(...voiceModelSources());
 
       const result = await areVoiceModelsDownloaded();
 
       expect(result).toEqual({ ok: true, value: true });
     });
 
-    it('reports false without listing when the model directory does not exist yet', async () => {
-      __mockFailListDownloaded(new Error('listing a missing directory must not happen'));
-
-      const result = await areVoiceModelsDownloaded();
-
-      expect(result).toEqual({ ok: true, value: false });
-    });
-
-    it('reports a check failure when the directory exists but cannot be listed', async () => {
-      __mockMarkDownloaded();
-      __mockFailListDownloaded(new Error('permission denied'));
+    it('reports a check failure when the disk cannot be read', async () => {
+      __mockFailExistsCheck(new Error('permission denied'));
 
       const result = await areVoiceModelsDownloaded();
 
@@ -75,7 +71,7 @@ describe('modelDownloadManager', () => {
 
   describe('getVoiceModelDownloadBytes', () => {
     it('sums the real remote sizes of every model file', async () => {
-      const sources = voiceModelSources() as string[];
+      const sources = voiceModelSources();
       for (const source of sources) {
         __mockSetRemoteSize(source, 1_000_000);
       }
@@ -85,7 +81,7 @@ describe('modelDownloadManager', () => {
       expect(result).toEqual({ ok: true, value: sources.length * 1_000_000 });
     });
 
-    it('returns an error rather than a guessed size when the probe fails', async () => {
+    it('blames the connection when the server cannot be reached', async () => {
       __mockFailSizeProbe(new Error('offline'));
 
       const result = await getVoiceModelDownloadBytes();
@@ -93,19 +89,38 @@ describe('modelDownloadManager', () => {
       expect(result.ok).toBe(false);
       if (!result.ok) {
         expect(result.error.code).toBe('voice_model_size_unavailable');
+        expect(result.error.userMessage).toMatch(/check your connection/i);
       }
     });
 
-    it('returns an error when a HEAD probe under-reports as zero', async () => {
-      const sources = voiceModelSources() as string[];
+    it('does not blame the connection when the server answers that a file is missing', async () => {
+      const sources = voiceModelSources();
+      for (const source of sources) {
+        __mockSetRemoteSize(source, 1_000_000);
+      }
+      __mockSetRemoteStatus(sources[sources.length - 1], 404);
+
+      const result = await getVoiceModelDownloadBytes();
+
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.error.code).toBe('voice_model_unavailable');
+        expect(result.error.message).toContain('HTTP 404');
+        expect(result.error.userMessage).not.toMatch(/check your connection/i);
+      }
+    });
+
+    it('returns an error rather than a guessed size when a file has no size', async () => {
+      const sources = voiceModelSources();
       __mockSetRemoteSize(sources[0], 1_000_000);
-      // Remaining sources intentionally unset → mock returns 0 for those.
+      // Remaining sources intentionally unset → the mock sends no Content-Length.
 
       const result = await getVoiceModelDownloadBytes();
 
       expect(result.ok).toBe(false);
       if (!result.ok) {
         expect(result.error.code).toBe('voice_model_size_unavailable');
+        expect(result.error.userMessage).not.toMatch(/check your connection/i);
       }
     });
   });
@@ -118,11 +133,14 @@ describe('modelDownloadManager', () => {
 
       expect(result.ok).toBe(true);
       expect(progress).toEqual([0.5, 1]);
-      await expect(areVoiceModelsDownloaded()).resolves.toEqual({ ok: true, value: true });
+      await expect(areVoiceModelsDownloaded()).resolves.toEqual({
+        ok: true,
+        value: true,
+      });
     });
 
     it('leaves nothing behind that a presence check would mistake for a complete download', async () => {
-      __mockFailFetch(new Error('connection lost'));
+      __mockFailDownload(new Error('connection lost'));
 
       const result = await downloadVoiceModels();
 
@@ -130,11 +148,14 @@ describe('modelDownloadManager', () => {
       if (!result.ok) {
         expect(result.error.code).toBe('voice_model_download_failed');
       }
-      await expect(areVoiceModelsDownloaded()).resolves.toEqual({ ok: true, value: false });
+      await expect(areVoiceModelsDownloaded()).resolves.toEqual({
+        ok: true,
+        value: false,
+      });
     });
 
     it('does not start a download merely by importing the module', () => {
-      expect(__mockFetchCallCount()).toBe(0);
+      expect(__mockDownloadCallCount()).toBe(0);
     });
   });
 
@@ -143,7 +164,19 @@ describe('modelDownloadManager', () => {
       const result = await cancelVoiceModelDownload();
 
       expect(result.ok).toBe(true);
-      expect(__mockCancelCallCount()).toBe(1);
+    });
+
+    it('aborts the download in flight', async () => {
+      const pending = downloadVoiceModels();
+      await cancelVoiceModelDownload();
+
+      const result = await pending;
+
+      expect(result.ok).toBe(false);
+      await expect(areVoiceModelsDownloaded()).resolves.toEqual({
+        ok: true,
+        value: false,
+      });
     });
   });
 });

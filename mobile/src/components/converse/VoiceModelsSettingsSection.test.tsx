@@ -2,11 +2,11 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react-nativ
 import React from 'react';
 
 import {
-  __mockFetchCallCount,
+  __mockDownloadCallCount,
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
+  __mockResetModelFiles,
   __mockSetRemoteSize,
-} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+} from '../../../__mocks__/react-native-blob-util';
 
 import { VoiceModelsSettingsSection } from '@/components/converse/VoiceModelsSettingsSection';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -21,7 +21,7 @@ jest.mock('expo-router', () => ({
 
 describe('VoiceModelsSettingsSection', () => {
   beforeEach(() => {
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     for (const source of voiceModelSources()) {
       if (typeof source === 'string') {
         __mockSetRemoteSize(source, 150_000_000);
@@ -42,14 +42,14 @@ describe('VoiceModelsSettingsSection', () => {
     render(<VoiceModelsSettingsSection />);
 
     await waitFor(() => expect(screen.getByText(/Not downloaded/)).toBeTruthy());
-    expect(__mockFetchCallCount()).toBe(0);
+    expect(__mockDownloadCallCount()).toBe(0);
 
     fireEvent.press(screen.getByTestId('settings-voice-download'));
     await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
     fireEvent.press(screen.getByTestId('voice-model-download'));
 
     await waitFor(() => expect(screen.getByText(/^Downloaded/)).toBeTruthy());
-    expect(__mockFetchCallCount()).toBe(1);
+    expect(__mockDownloadCallCount()).toBe(1);
     expect(screen.queryByTestId('voice-model-download')).toBeNull();
   });
 
@@ -62,6 +62,6 @@ describe('VoiceModelsSettingsSection', () => {
     fireEvent.press(screen.getByTestId('voice-model-cancel'));
 
     await waitFor(() => expect(screen.getByTestId('settings-voice-download')).toBeTruthy());
-    expect(__mockFetchCallCount()).toBe(0);
+    expect(__mockDownloadCallCount()).toBe(0);
   });
 });

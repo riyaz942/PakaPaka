@@ -10,8 +10,8 @@ import {
 } from '../../../../__mocks__/react-native-executorch';
 import {
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
-} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+  __mockResetModelFiles,
+} from '../../../../__mocks__/react-native-blob-util';
 
 import { transcribeTurn } from '@/data/ai/voice/transcription';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -35,7 +35,7 @@ describe('transcribeTurn', () => {
   beforeEach(() => {
     __mockResetFetch();
     __mockResetExecutorch();
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     __mockMarkDownloaded(...(voiceModelSources() as string[]));
     mockCloudOptIn = false;
     mockConfig = { ok: true, value: null };

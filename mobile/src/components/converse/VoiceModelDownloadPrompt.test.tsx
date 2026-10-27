@@ -2,12 +2,12 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react-nativ
 import React from 'react';
 
 import {
-  __mockFailFetch,
+  __mockFailDownload,
   __mockFailSizeProbe,
-  __mockFetchCallCount,
-  __mockResetResourceFetcher,
+  __mockDownloadCallCount,
+  __mockResetModelFiles,
   __mockSetRemoteSize,
-} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+} from '../../../__mocks__/react-native-blob-util';
 
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -22,16 +22,16 @@ function sizeEverySourceAt(bytes: number) {
 
 describe('VoiceModelDownloadPrompt', () => {
   beforeEach(() => {
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
   });
 
   it('discloses the real download size before offering to download (AC5)', async () => {
-    // 8 sources x 150 MB = 1.2 GB
-    sizeEverySourceAt(150_000_000);
+    // 9 sources x 200 MB = 1.8 GB
+    sizeEverySourceAt(200_000_000);
 
     render(<VoiceModelDownloadPrompt onCancel={jest.fn()} onDownloaded={jest.fn()} />);
 
-    await waitFor(() => expect(screen.getByText(/1\.2 GB/)).toBeTruthy());
+    await waitFor(() => expect(screen.getByText(/1\.8 GB/)).toBeTruthy());
   });
 
   it('never downloads without an explicit tap (NFR25)', async () => {
@@ -40,7 +40,7 @@ describe('VoiceModelDownloadPrompt', () => {
     render(<VoiceModelDownloadPrompt onCancel={jest.fn()} onDownloaded={jest.fn()} />);
 
     await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
-    expect(__mockFetchCallCount()).toBe(0);
+    expect(__mockDownloadCallCount()).toBe(0);
   });
 
   it('downloads on tap and reports completion', async () => {
@@ -53,7 +53,7 @@ describe('VoiceModelDownloadPrompt', () => {
     fireEvent.press(screen.getByTestId('voice-model-download'));
 
     await waitFor(() => expect(onDownloaded).toHaveBeenCalledTimes(1));
-    expect(__mockFetchCallCount()).toBe(1);
+    expect(__mockDownloadCallCount()).toBe(1);
   });
 
   it('shows progress while downloading', async () => {
@@ -69,7 +69,7 @@ describe('VoiceModelDownloadPrompt', () => {
 
   it('reports a failed download instead of leaving voice half-ready', async () => {
     sizeEverySourceAt(150_000_000);
-    __mockFailFetch(new Error('connection lost'));
+    __mockFailDownload(new Error('connection lost'));
     const onDownloaded = jest.fn();
 
     render(<VoiceModelDownloadPrompt onCancel={jest.fn()} onDownloaded={onDownloaded} />);

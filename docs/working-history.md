@@ -418,7 +418,7 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - Epic 8 (shadow mode positioning, AI reading backlog): `backlog` by design — post-MVP.
 
 ### Open defects
-- Executorch main vs Expo resource-fetcher nightly skew: accepted risk, revisit on upstream release.
+- Voice on executorch 0.10.7 + Reanimated 4.5 / Worklets 0.10 (2026-10-27): Jest green; native dev-client rebuild and on-device voice download not yet checked.
 - `codebase-issues.md` L1–L4, L6, L8–L10: naming/perf/fragility items, all low severity, none user-visible.
 
 ### Mnemonic highlights carry their character: the `form` attribute (2026-09-08)

@@ -7,8 +7,8 @@ import {
 } from '../../../../__mocks__/react-native-executorch';
 import {
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
-} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+  __mockResetModelFiles,
+} from '../../../../__mocks__/react-native-blob-util';
 
 import { releaseTtsModel, synthesizeJapanese } from '@/data/ai/voice/ttsClient';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -16,7 +16,7 @@ import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 describe('ttsClient', () => {
   beforeEach(() => {
     __mockResetExecutorch();
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     __mockMarkDownloaded(...(voiceModelSources() as string[]));
     releaseTtsModel();
   });
@@ -33,8 +33,16 @@ describe('ttsClient', () => {
     expect(__mockExecutorchState().synthesizeCalls).toEqual(['こんにちは']);
   });
 
+  it('speaks Japanese with the one downloaded voice', async () => {
+    __mockSetSynthesis(new Float32Array([0.1]));
+
+    await synthesizeJapanese('こんにちは');
+
+    expect(__mockExecutorchState().synthesizeOptions).toEqual([{ voiceStyle: 'F1', lang: 'ja' }]);
+  });
+
   it('refuses to load when the models are not on disk', async () => {
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
 
     const result = await synthesizeJapanese('こんにちは');
 

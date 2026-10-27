@@ -1,8 +1,7 @@
-import { documentDirectory, getInfoAsync } from 'expo-file-system/legacy';
-import { ResourceFetcherUtils } from 'react-native-executorch';
-import { ExpoResourceFetcher } from 'react-native-executorch-expo-resource-fetcher';
+import { Platform } from 'react-native';
+import RNBlobUtil from 'react-native-blob-util';
+import { download } from 'react-native-executorch';
 
-import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import type { AppError, Result } from '@/types/result.types';
 
@@ -12,47 +11,54 @@ import type { AppError, Result } from '@/types/result.types';
  * Nothing here runs unless the learner taps the mic and confirms — no cold-start
  * work, no background fetch, no "warm the cache" call.
  *
- * Presence is a filesystem fact, checked every time. The fetcher downloads into
- * the cache directory and only moves the file into its model directory once the
- * transfer completes, so a listing of that directory cannot show a half-written
- * file. That is why there is no "download succeeded" flag anywhere — a flag can
- * drift from the disk, and a stale one pointing at a missing model is exactly
- * the silent failure this feature must not have.
+ * Presence is a filesystem fact, checked every time. The fetcher streams into a
+ * `.partial` file and only writes the cache path once the transfer completes,
+ * so a file at that path is never half-written. That is why there is no
+ * "download succeeded" flag anywhere — a flag can drift from the disk, and a
+ * stale one pointing at a missing model is exactly the silent failure this
+ * feature must not have.
  */
 
-/** Where the fetcher stores models. Mirrors its `RNEDirectory`, which the package does not export. */
-const MODEL_DIRECTORY = `${documentDirectory}react-native-executorch/`;
+/**
+ * Where the fetcher stores a URL. Mirrors `cachePathFor` in
+ * `react-native-executorch/src/fetcher/fetcher.ts` (0.10.7), which the package
+ * does not export: djb2 of the query-less URL, then the basename.
+ */
+const MODEL_DIRECTORY = `${
+  Platform.OS === 'android'
+    ? RNBlobUtil.fs.dirs.SDCardDir || RNBlobUtil.fs.dirs.DocumentDir
+    : RNBlobUtil.fs.dirs.DocumentDir
+}/react-native-executorch`;
 
-function fileNameOf(source: unknown): string | null {
-  return typeof source === 'string' ? ResourceFetcherUtils.getFilenameFromUri(source) : null;
+function cachePathFor(url: string): string {
+  const urlWithoutQuery = url.split('?')[0] ?? url;
+  let hash = 5381;
+  for (let i = 0; i < urlWithoutQuery.length; i++) {
+    hash = (((hash << 5) + hash) ^ urlWithoutQuery.charCodeAt(i)) >>> 0;
+  }
+  const basename = urlWithoutQuery.split('/').pop() || 'model';
+  return `${MODEL_DIRECTORY}/${hash}_${basename}`;
 }
 
 function toError(code: string, userMessage: string, cause: unknown): AppError {
   return { code, message: String(cause), userMessage, cause };
 }
 
-function isInactiveDownload(cause: unknown): boolean {
-  const message = String(cause).toLowerCase();
-  return message.includes('none of given sources') || message.includes('notactive');
+function headerValue(headers: Record<string, string>, name: string): string | undefined {
+  const key = Object.keys(headers).find((candidate) => candidate.toLowerCase() === name);
+  return key === undefined ? undefined : headers[key];
 }
+
+let activeDownload: AbortController | null = null;
 
 export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
   try {
-    ensureExecutorchInitialised();
-    // Before the first download the directory does not exist, and listing it throws.
-    if (!(await getInfoAsync(MODEL_DIRECTORY)).exists) {
-      return { ok: true, value: false };
+    for (const source of voiceModelSources()) {
+      if (!(await RNBlobUtil.fs.exists(cachePathFor(source)))) {
+        return { ok: true, value: false };
+      }
     }
-    const present = new Set(
-      (await ExpoResourceFetcher.listDownloadedFiles()).map((path) =>
-        path.slice(path.lastIndexOf('/') + 1),
-      ),
-    );
-    const required = voiceModelSources().map(fileNameOf);
-    return {
-      ok: true,
-      value: required.every((name) => name !== null && present.has(name)),
-    };
+    return { ok: true, value: true };
   } catch (cause) {
     return {
       ok: false,
@@ -65,6 +71,14 @@ export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
   }
 }
 
+const UNREACHABLE_MESSAGE =
+  'Could not reach the voice model download. Check your connection and try again.';
+
+// The server answered, so the learner's connection is fine — telling them to
+// check it would send them after the wrong problem.
+const UNAVAILABLE_MESSAGE =
+  'The voice model download is not available from the server at the moment. Your connection is not the problem. Try again later.';
+
 /**
  * The real combined size of the model files, read from the server.
  *
@@ -74,58 +88,60 @@ export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
  * so a partial HEAD failure cannot under-report as a successful total.
  */
 export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
-  try {
-    ensureExecutorchInitialised();
-    let total = 0;
-    for (const source of voiceModelSources()) {
-      if (typeof source !== 'string') {
-        continue;
-      }
-      const bytes = await ExpoResourceFetcher.getFilesTotalSize(source);
-      if (!Number.isFinite(bytes) || bytes <= 0) {
-        return {
-          ok: false,
-          error: toError(
-            'voice_model_size_unavailable',
-            'Could not reach the voice model download. Check your connection and try again.',
-            `Size probe returned ${bytes} for ${source}`,
-          ),
-        };
-      }
-      total += bytes;
+  let total = 0;
+  for (const source of voiceModelSources()) {
+    let status: number;
+    let headers: Record<string, string>;
+    try {
+      const info = (await RNBlobUtil.fetch('HEAD', source)).info();
+      status = info.status;
+      headers = info.headers;
+    } catch (cause) {
+      return {
+        ok: false,
+        error: toError('voice_model_size_unavailable', UNREACHABLE_MESSAGE, cause),
+      };
     }
-    if (total <= 0) {
+    if (status < 200 || status >= 300) {
+      return {
+        ok: false,
+        error: toError(
+          'voice_model_unavailable',
+          UNAVAILABLE_MESSAGE,
+          `HTTP ${status} for ${source}`,
+        ),
+      };
+    }
+    // `x-linked-size` first: Hugging Face serves model files from a CDN by
+    // redirect, and only this header describes the file itself on every hop.
+    const bytes = Number(
+      headerValue(headers, 'x-linked-size') || headerValue(headers, 'content-length'),
+    );
+    if (!Number.isFinite(bytes) || bytes <= 0) {
       return {
         ok: false,
         error: toError(
           'voice_model_size_unavailable',
-          'Could not reach the voice model download. Check your connection and try again.',
-          'Combined model size was zero',
+          UNAVAILABLE_MESSAGE,
+          `Size probe returned ${bytes} for ${source}`,
         ),
       };
     }
-    return { ok: true, value: total };
-  } catch (cause) {
-    return {
-      ok: false,
-      error: toError(
-        'voice_model_size_unavailable',
-        'Could not reach the voice model download. Check your connection and try again.',
-        cause,
-      ),
-    };
+    total += bytes;
   }
+  return { ok: true, value: total };
 }
 
 export async function downloadVoiceModels(
   onProgress?: (progress: number) => void,
 ): Promise<Result<void>> {
+  const controller = new AbortController();
+  activeDownload = controller;
   try {
-    ensureExecutorchInitialised();
-    await ExpoResourceFetcher.fetch(
-      (progress) => onProgress?.(progress),
-      ...voiceModelSources(),
-    );
+    await download(voiceModelSources(), {
+      onProgress,
+      signal: controller.signal,
+    });
     return { ok: true, value: undefined };
   } catch (cause) {
     return {
@@ -136,26 +152,19 @@ export async function downloadVoiceModels(
         cause,
       ),
     };
+  } finally {
+    if (activeDownload === controller) {
+      activeDownload = null;
+    }
   }
 }
 
-/** Aborts an in-flight model download. No-op success when nothing is active. */
+/**
+ * Aborts an in-flight model download. No-op success when nothing is active.
+ * The bytes fetched so far are kept, so the next download resumes.
+ */
 export async function cancelVoiceModelDownload(): Promise<Result<void>> {
-  try {
-    ensureExecutorchInitialised();
-    await ExpoResourceFetcher.cancelFetching(...voiceModelSources());
-    return { ok: true, value: undefined };
-  } catch (cause) {
-    if (isInactiveDownload(cause)) {
-      return { ok: true, value: undefined };
-    }
-    return {
-      ok: false,
-      error: toError(
-        'voice_model_cancel_failed',
-        'Could not cancel the voice model download.',
-        cause,
-      ),
-    };
-  }
+  activeDownload?.abort();
+  activeDownload = null;
+  return { ok: true, value: undefined };
 }
