@@ -11,7 +11,8 @@ import type {
 import { unitVariants } from './unitVariants';
 
 const MAX_SLICE = 8;
-const COST = { variant: 1, missing: 1, extra: 1, replaced: 1.5 };
+const KANJI = /[\u3400-\u9fff々]/;
+export const COST = { variant: 1, missing: 1, extra: 1, replaced: 1.5 };
 
 type Candidate = {
   text: string;
@@ -52,6 +53,10 @@ export function alignUnits(
 
   const n = units.length;
   const m = input.length;
+  // A kana spelling of a kanji unit right after a kanji: likely the tail of another word.
+  const kanjiUnit = units.map((unit) => KANJI.test(unit.surface));
+  const readingAfterKanji = (i: number, text: string, at: number) =>
+    kanjiUnit[i] && !KANJI.test(text) && at > 0 && KANJI.test(input[at - 1]);
   // best[i][j] = cheapest cost of units i.. against input j..; move[i][j] says how to get it.
   type Move = {
     kind: StepKind;
@@ -130,5 +135,27 @@ export function alignUnits(
     i = step.toUnit;
     j = step.toPos;
   }
-  return { steps, cost: best[0][0] };
+
+  // One extra kanji, then a kana spelling of a kanji unit: one replaced word (読みます).
+  // A longer kanji run (毎日) is a word of its own and stays extra.
+  let cost = best[0][0];
+  for (let k = steps.length - 1; k > 0; k--) {
+    const [extra, step] = [steps[k - 1], steps[k]];
+    if (extra.kind !== 'extra' || step.unitIndex === null) continue;
+    if (step.kind === 'missing' || step.kind === 'replaced') continue;
+    if (!readingAfterKanji(step.unitIndex, input.slice(step.from, step.to), step.from)) continue;
+    const stem = step.from - 1;
+    if (stem > extra.from && KANJI.test(input[stem - 1])) continue;
+    const replaced: AlignStep = {
+      kind: 'replaced',
+      unitIndex: step.unitIndex,
+      from: stem,
+      to: step.to,
+    };
+    cost +=
+      COST.replaced - (step.variant ? COST.variant : 0) - (stem > extra.from ? 0 : COST.extra);
+    if (stem > extra.from) steps.splice(k - 1, 2, { ...extra, to: stem }, replaced);
+    else steps.splice(k - 1, 2, replaced);
+  }
+  return { steps, cost };
 }

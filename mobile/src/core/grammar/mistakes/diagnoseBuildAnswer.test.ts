@@ -45,6 +45,8 @@ const words: Record<string, DiagnosisWord> = {
   }),
   matsu: word('matsu', '待つ', '待[ま]つ', 'godan'),
   kirei: word('kirei', 'きれい', 'きれい', 'adj-na'),
+  miru: word('miru', '見る', '見[み]る', 'ichidan'),
+  kuru: word('kuru', '来る', '来[く]る', 'kuru'),
   // Real words of sentence 3780.
   '506': word('506', '家', '家[いえ]', null),
   '552': word('552', '帰る', '帰[かえ]る', 'godan'),
@@ -366,6 +368,13 @@ describe('diagnoseBuildAnswer', () => {
       ]);
     });
 
+    it('shrinks a wide mark to the part no answer accepts', () => {
+      // A38 accepts に, A37 accepts 電話を: only しました is wrong.
+      expect(diagnose('家へ帰ったらすぐに電話をしました', call)?.marks).toEqual([
+        expect.objectContaining({ kind: 'wrong_word', typed: 'しました', expected: ['します'] }),
+      ]);
+    });
+
     it('drops a mark that equally good answers explain differently', () => {
       // で is extra for すぐ, or the wrong particle for すぐに: no guess.
       expect(diagnose('家に帰ったらすぐで電話します', call)).toBeNull();
@@ -396,6 +405,75 @@ describe('diagnoseBuildAnswer', () => {
       expect(
         diagnose('今年学校で日本語を勉強しました', card([study], short))?.marks.map((m) => m.kind),
       ).toEqual(['particle_missing', 'form']);
+    });
+  });
+
+  describe('form dims across answers', () => {
+    const now = [
+      unit('家', 'いえ'),
+      particle('に'),
+      unit('帰ります', 'かえります', { itemId: 'kaeru' }),
+    ];
+
+    it('keeps only the dims every answer agrees on', () => {
+      expect(diagnose('家に帰りません', card([home('に'), now]))?.marks).toEqual([
+        expect.objectContaining({
+          kind: 'form',
+          dims: { polarity: 'positive' },
+          expected: ['帰りました', '帰ります'],
+        }),
+      ]);
+      const result = diagnose(
+        '今年は学校で日本語を勉強しませんでした',
+        card([study], ['今年は学校で日本語を勉強しました']),
+      );
+      expect(result?.marks).toEqual([
+        expect.objectContaining({ kind: 'form', dims: { polarity: 'positive' } }),
+      ]);
+    });
+
+    it('drops a form mark when no dim is agreed', () => {
+      const plain = [
+        unit('家', 'いえ'),
+        particle('に'),
+        unit('帰る', 'かえる', { itemId: 'kaeru' }),
+      ];
+      // 帰った: past against 帰る (needs non-past), plain against 帰りました (needs polite).
+      expect(diagnose('家に帰った', card([home('に'), plain]))).toBeNull();
+    });
+  });
+
+  describe('a kana tail after a kanji is another word', () => {
+    const movie = [
+      unit('映画', 'えいが'),
+      particle('を'),
+      unit('見ます', 'みます', { itemId: 'miru' }),
+    ];
+    const come = [
+      unit('友達', 'ともだち'),
+      particle('が'),
+      unit('来ます', 'きます', { itemId: 'kuru' }),
+    ];
+
+    it.each([
+      ['映画を読みました', movie, '読みました', '見ます'],
+      ['映画を読みます', movie, '読みます', '見ます'],
+      ['友達が行きました', come, '行きました', '来ます'],
+      ['友達が起きました', come, '起きました', '来ます'],
+    ])('%s is one wrong word', (input, units, typed, expected) => {
+      expect(diagnose(input, card([units]))?.marks).toEqual([
+        expect.objectContaining({ kind: 'wrong_word', typed, expected: [expected] }),
+      ]);
+    });
+
+    it('keeps a kana spelling after a matched kanji word', () => {
+      expect(diagnose('映画をみました', card([movie]))?.marks).toEqual([
+        expect.objectContaining({ kind: 'form', typed: 'みました' }),
+      ]);
+      // 毎日 is a word of its own: extra, not part of the next word.
+      expect(diagnose('映画を毎日みます', card([movie]))?.marks).toEqual([
+        expect.objectContaining({ kind: 'word_extra', typed: '毎日' }),
+      ]);
     });
   });
 });

@@ -103,6 +103,12 @@ describe('alignUnits', () => {
     expect(steps.slice(6).map((s) => s.kind)).toEqual(['extra', 'form']);
   });
 
+  it('reads one extra kanji and a kana spelling after it as one replaced word', () => {
+    const { steps, cost } = align('今年は学校で日本語を習べんきょうします');
+    expect(cost).toBe(1.5);
+    expect(steps[6]).toEqual({ kind: 'replaced', unitIndex: 6, from: 10, to: 19 });
+  });
+
   it('breaks ties toward the earlier kind', () => {
     // 学校 is exact by surface and reading would not matter; allowed with the same text must not win.
     const { steps } = align('今年は学校で日本語を勉強します', { 2: ['学校'] });

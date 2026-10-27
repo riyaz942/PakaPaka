@@ -1,7 +1,7 @@
 import { normalizeBuildText } from '@/core/grammar/buildEvaluator';
 import type { GrammarSentenceCard } from '@/core/srs/srs.types';
 
-import { alignUnits } from './alignUnits';
+import { alignUnits, COST } from './alignUnits';
 import type {
   AlignStep,
   AnswerUnit,
@@ -142,8 +142,8 @@ function mistakeKind(step: AlignStep, unit: AnswerUnit | null, text: string): Mi
   }
 }
 
-/** A mistake with its normalized input range (from === to for a gap). */
-type Found = { mistake: Mistake; from: number; to: number };
+/** A mistake with its normalized input range (from === to for a gap) and its alignment cost. */
+type Found = { mistake: Mistake; from: number; to: number; cost: number };
 /** One accepted answer's view of the input. `line` (grammar not used) replaces its marks. */
 type Reading = {
   cost: number;
@@ -204,9 +204,13 @@ function readAnswer(
     }
     if (step.kind === 'transitivity' && word?.transitivity)
       mistake.transitivity = word.transitivity;
-    found.push({ mistake, from: step.from, to: step.to, k });
+    const cost =
+      step.kind === 'missing' || step.kind === 'extra' || step.kind === 'replaced'
+        ? COST[step.kind]
+        : COST.variant;
+    found.push({ mistake, from: step.from, to: step.to, cost, k });
   }
-  const marks = found.map(({ mistake, from, to }) => ({ mistake, from, to }));
+  const marks = found.map(({ mistake, from, to, cost }) => ({ mistake, from, to, cost }));
   ok &&= enoughMatched(steps, units);
 
   // Step 5: only the grammar text ('other' units in the grammar span) differs → one line.
@@ -232,7 +236,8 @@ function readAnswer(
       before: null,
       after: null,
     };
-    return { cost, steps, marks: [], line: { mistake, from, to }, ok };
+    const lineCost = found.reduce((sum, f) => sum + f.cost, 0);
+    return { cost, steps, marks: [], line: { mistake, from, to, cost: lineCost }, ok };
   }
   return { cost, steps, marks, line: null, ok: ok && marks.length <= MAX_MARKS };
 }
@@ -309,47 +314,47 @@ export function diagnoseBuildAnswer(
     b.cost < a.cost || (b.cost === a.cost && b.ok && !a.ok) ? b : a,
   );
   if (!best.ok) return null;
-  const others = readings.filter((r) => r !== best && r.ok);
-  const tied = others.filter((r) => r.cost === best.cost);
+  const pool = readings.filter((r) => r.ok);
 
   if (best.line) {
-    return others.some((r) => accepts(r, best.line as Found))
+    return pool.some((r) => r !== best && accepts(r, best.line as Found))
       ? null
       : { marks: [], lines: [best.line.mistake] };
   }
 
-  // Drop a mark another answer accepts. Against an equally good answer that marks the same
-  // place differently, keep the smaller mark when one sits inside the other; else drop it.
-  const settle = (f: Found): Found | null => {
-    if (others.some((r) => accepts(r, f))) return null;
-    for (const r of tied) {
-      for (const g of r.line ? [r.line] : r.marks) {
-        if (!overlaps(f, g) || sameMark(f, g) || inside(f, g)) continue;
-        return inside(g, f) ? settle(g) : null;
-      }
+  // Drop a mark any answer accepts. Where another answer explains the same place no worse
+  // (its marks there cost no more), keep its smaller marks if they sit inside; else drop.
+  const settle = (f: Found): Found[] => {
+    if (pool.some((r) => accepts(r, f))) return [];
+    for (const r of pool) {
+      const there = (r.line ? [r.line] : r.marks).filter((g) => overlaps(f, g));
+      if (there.every((g) => sameMark(f, g)) || there.some((g) => inside(f, g))) continue;
+      if (there.reduce((sum, g) => sum + g.cost, 0) > f.cost) continue;
+      return there.every((g) => inside(g, f)) ? there.flatMap(settle) : [];
     }
-    return f;
+    return [f];
   };
   const settled: Found[] = [];
-  for (const f of best.marks) {
-    const s = settle(f);
-    if (s && !settled.some((t) => sameMark(s, t))) settled.push(s);
+  for (const f of best.marks.flatMap(settle)) {
+    if (!settled.some((t) => sameMark(f, t))) settled.push(f);
   }
-  if (settled.length === 0) return null;
 
-  // Name every particle an accepted answer within the limits has at the same place.
-  const marks = settled
-    .sort((a, b) => a.from - b.from || a.to - b.to)
-    .map(({ mistake, from, to }) => {
-      if (mistake.kind !== 'particle_wrong' && mistake.kind !== 'particle_missing') return mistake;
-      const expected = [...mistake.expected];
-      for (const r of [best, ...others]) {
-        for (const g of r.marks) {
-          if (!sameMark(g, { mistake, from, to })) continue;
-          for (const p of g.mistake.expected) if (!expected.includes(p)) expected.push(p);
-        }
-      }
-      return { ...mistake, expected };
-    });
-  return { marks, lines: [] };
+  // The same mark in several answers: every correct text, and only the form dims all agree on.
+  const marks: Mistake[] = [];
+  for (const f of settled.sort((a, b) => a.from - b.from || a.to - b.to)) {
+    const same = pool.flatMap((r) => r.marks).filter((g) => sameMark(f, g));
+    const expected = [...new Set(same.flatMap((g) => g.mistake.expected))];
+    const mistake = { ...f.mistake, expected };
+    if (f.mistake.dims) {
+      const dims = Object.fromEntries(
+        Object.entries(f.mistake.dims).filter(([key, value]) =>
+          same.every((g) => g.mistake.dims?.[key as keyof FormDims] === value),
+        ),
+      ) as FormDims;
+      if (Object.keys(dims).length === 0) continue;
+      mistake.dims = dims;
+    }
+    marks.push(mistake);
+  }
+  return marks.length > 0 ? { marks, lines: [] } : null;
 }
