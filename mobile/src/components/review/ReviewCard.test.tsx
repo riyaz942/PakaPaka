@@ -513,6 +513,7 @@ const SENTENCE: GrammarSentenceCard = {
   answers: ['寒[さむ]いから、コートを着[き]ます。'],
   otherGrammarAnswers: [],
   userAnswers: [],
+  diagnosisKey: null,
 };
 
 describe('ReviewCard — grammar pair', () => {
@@ -556,5 +557,96 @@ describe('ReviewCard — grammar pair', () => {
     expect(screen.getAllByText('から').length).toBeGreaterThan(0);
     expect(screen.queryByText(`から / ${SENTENCE.japanese}`)).toBeNull();
     expect(screen.getByTestId(`grammar-build-answer-${SENTENCE.sentenceKey}-linked`)).toBeTruthy();
+  });
+
+  describe('mistake marks on a wrong Build answer', () => {
+    const unit = (surface: string, reading: string, role: 'word' | 'particle', extra = {}) => ({
+      surface, reading, role, itemId: null, inGrammar: false, ...extra,
+    });
+    // 今年は学校で日本語を勉強します
+    const diagnosable: GrammarSentenceCard = {
+      ...SENTENCE,
+      diagnosisKey: {
+        answers: [[
+          unit('今年', 'ことし', 'word'),
+          unit('は', 'は', 'particle'),
+          unit('学校', 'がっこう', 'word'),
+          unit('で', 'で', 'particle'),
+          unit('日本語', 'にほんご', 'word'),
+          unit('を', 'を', 'particle'),
+          unit('勉強します', 'べんきょうします', 'word', { itemId: 'study', inGrammar: true }),
+        ]],
+        words: {
+          study: {
+            itemId: 'study', primaryForm: '勉強する', furigana: '勉強[べんきょう]する',
+            conjugationClass: 'suru', transitivity: null, partner: null, homophones: [],
+          },
+        },
+      },
+    };
+    const buildItem = (build: GrammarSentenceCard, promptType: 'meaning' | 'production' = 'production') =>
+      makeItem({
+        itemType: 'grammar', primaryForm: 'から', promptType, isTwoCardItem: true,
+        grammarRead: build, grammarBuild: build,
+      });
+
+    it('shows the marks above the correct sentence', () => {
+      render(
+        <ReviewCard
+          item={buildItem(diagnosable)}
+          state="incorrect"
+          displayAnswer={diagnosable.japanese}
+          rejectedAnswer="今年学校に日本語を勉強する"
+        />,
+      );
+      expect(screen.getByTestId('build-mistake-mark-0')).toBeTruthy();
+      const tree = JSON.stringify(screen.toJSON());
+      expect(tree.indexOf('build-mistake-mark-0')).toBeLessThan(tree.indexOf('grammar-build-answer'));
+    });
+
+    it('shows no marks without a diagnosis key', () => {
+      render(
+        <ReviewCard
+          item={buildItem(SENTENCE)}
+          state="incorrect"
+          displayAnswer={SENTENCE.japanese}
+          rejectedAnswer="今年学校に日本語を勉強する"
+        />,
+      );
+      expect(screen.queryByText(/YOUR ANSWER/)).toBeNull();
+    });
+
+    it('shows no marks for "Don\'t know"', () => {
+      render(
+        <ReviewCard item={buildItem(diagnosable)} state="incorrect" displayAnswer={diagnosable.japanese} rejectedAnswer="" />,
+      );
+      expect(screen.queryByText(/YOUR ANSWER/)).toBeNull();
+    });
+
+    it('shows the raw answer without marks when the answer is too different', () => {
+      render(
+        <ReviewCard
+          item={buildItem(diagnosable)}
+          state="incorrect"
+          displayAnswer={diagnosable.japanese}
+          rejectedAnswer="ぜんぜんちがう"
+        />,
+      );
+      expect(screen.getByText('YOUR ANSWER')).toBeTruthy();
+      expect(screen.getByText('ぜんぜんちがう')).toBeTruthy();
+      expect(screen.queryByTestId('build-mistake-mark-0')).toBeNull();
+    });
+
+    it('leaves the Read card unchanged', () => {
+      render(
+        <ReviewCard
+          item={buildItem(diagnosable, 'meaning')}
+          state="incorrect"
+          displayAnswer="because"
+          rejectedAnswer="今年学校に日本語を勉強する"
+        />,
+      );
+      expect(screen.queryByText(/YOUR ANSWER/)).toBeNull();
+    });
   });
 });

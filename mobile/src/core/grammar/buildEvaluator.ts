@@ -15,8 +15,12 @@ export type GrammarBuildAnswers = {
 // Quote brackets too: romaji input cannot type 「」, so a quoted word must match without them.
 const IGNORED_RE = /[\s、。！？!?,.　「」『』]/g;
 
+export function isIgnoredBuildChar(ch: string): boolean {
+  return ch.replace(IGNORED_RE, '') === '';
+}
+
 /** Katakana → hiragana by code point. ー is left alone (wanakana would turn it into a vowel). */
-function toHiragana(text: string): string {
+export function toHiragana(text: string): string {
   return text.replace(/[ァ-ヶ]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60));
 }
 

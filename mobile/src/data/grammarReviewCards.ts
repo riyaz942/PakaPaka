@@ -2,6 +2,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { pickGrammarSentences } from '@/core/grammar/sentencePicker';
 import type { GrammarSentenceCard, GrammarVocabEntry } from '@/core/srs/srs.types';
+import { getBuildDiagnosisKey } from '@/data/curriculum/grammarAnswerUnitsRepository';
 import {
   getGrammarSentencePool,
   getItemFormsByIds,
@@ -29,7 +30,7 @@ export function buildGrammarCards(
   const forms = getItemFormsByIds(curriculumDb, wordIds);
   const statuses = listStudyStatusesForItems(userDb, wordIds);
 
-  const toCard = (sentence: GrammarPoolSentence): GrammarSentenceCard => {
+  const toCard = (sentence: GrammarPoolSentence, withDiagnosis: boolean): GrammarSentenceCard => {
     const vocabulary: GrammarVocabEntry[] = [];
     const seen = new Set<string>();
     const inOrder = [...sentence.spans].sort((a, b) => a.startOffset - b.startOffset);
@@ -59,8 +60,9 @@ export function buildGrammarCards(
       answers: [sentence.furigana ?? sentence.japanese, ...sentence.validAnswers],
       otherGrammarAnswers: sentence.otherGrammarAnswers,
       userAnswers: [...(saved.get(sentence.japanese) ?? [])],
+      diagnosisKey: withDiagnosis ? getBuildDiagnosisKey(curriculumDb, sentence.id) : null,
     };
   };
 
-  return { grammarRead: toCard(read), grammarBuild: toCard(build) };
+  return { grammarRead: toCard(read, false), grammarBuild: toCard(build, true) };
 }

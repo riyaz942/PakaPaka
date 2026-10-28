@@ -535,7 +535,7 @@ describe('buildReviewQueue', () => {
       return {
         sentenceKey: key, japanese: key, furigana: null, english: 'e', spans: [],
         grammarSpan: { start: 0, end: 1 }, register: 'polite', vocabulary: [],
-        answers: [key], otherGrammarAnswers: [], userAnswers: [],
+        answers: [key], otherGrammarAnswers: [], userAnswers: [], diagnosisKey: null,
       };
     }
     const grammarInput = (id: string) =>

@@ -42,6 +42,7 @@ sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
 from generate_content import check_grammar_pool as pool_check  # noqa: E402
+from generate_content.answer_units import answer_units  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
@@ -108,6 +109,11 @@ VOCAB_WORD_TYPES_PATH = os.path.join(BUILD_DIR, "vocab_word_types.json")
 #: overrides). A missing entry means the item ships with no `conjugation_class`
 #: and the app shows no conjugation table for it.
 VOCAB_CONJUGATION_CLASSES_PATH = os.path.join(BUILD_DIR, "vocab_conjugation_classes.json")
+
+#: Hand-checked transitive / intransitive partner per verb slug, both directions
+#: ({"akeru": "aku", "aku": "akeru"}), proposed by `import/find_transitivity_pairs.py`.
+#: A verb with no entry ships with no `transitivity_partner`.
+VOCAB_TRANSITIVITY_PAIRS_PATH = os.path.join(BUILD_DIR, "vocab_transitivity_pairs.json")
 
 # Kanji/kana runs (incl. 々〆 and the long-vowel mark) for the lesson-markdown
 # furigana pass below.
@@ -340,12 +346,21 @@ def _load_vocab_conjugation_classes():
         return json.load(f)
 
 
+def _load_vocab_transitivity_pairs():
+    """{slug: partner_slug} from the checked-in pair list, or {} when absent."""
+    if not os.path.exists(VOCAB_TRANSITIVITY_PAIRS_PATH):
+        return {}
+    with open(VOCAB_TRANSITIVITY_PAIRS_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
     mnemonics = _load_sidecar(VOCAB_MNEMONICS_PATH)
     examples = _load_sidecar(VOCAB_EXAMPLES_PATH)
     word_types = _load_vocab_word_types()
     conjugation_classes = _load_vocab_conjugation_classes()
+    transitivity_pairs = _load_vocab_transitivity_pairs()
     vocab_forms = {**(extra_vocab_forms or {}),
                    **{v["slug"]: v["form"] for v in vocab_entries}}
     errors = []
@@ -367,6 +382,9 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
         conjugation_class = conjugation_classes.get(v["slug"])
         if conjugation_class:
             item["conjugation_class"] = conjugation_class
+        partner = transitivity_pairs.get(v["slug"])
+        if partner:
+            item["transitivity_partner"] = partner
         # Rev 6: how the reading is built, computed from the word's kanji and
         # their KANJIDIC readings rather than written. It replaces the derivation
         # note the reading mnemonic used to carry, which is why 745 of N5+N4's
@@ -620,6 +638,11 @@ def _load_lesson(slug, known_readings, forms_by_slug, accepted_forms=()):
                                            accepted_forms)
 
 
+def _unit_json(unit):
+    """An answer unit without its null vocabulary_slug."""
+    return {k: v for k, v in unit.items() if k != "vocabulary_slug" or v is not None}
+
+
 def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors):
     """One grammar example sentence with the Read/Build card fields
     (docs/superpowers/specs/2026-10-13-grammar-read-build-srs-design.md §4.2)."""
@@ -655,6 +678,11 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
     if span:
         sentence["grammar_span"] = span
     sentence["register"] = grammar_sentences_lib.register_of(jp)
+    try:
+        sentence["answer_units"] = [_unit_json(u) for u in answer_units(
+            jp, sentence_furigana or jp, forms_by_slug, span)]
+    except ValueError as error:
+        errors.append(f"grammar {g['slug']} example {sort_order}: {error}")
     alternates = []
     for plain, kind in example.get("alts") or []:
         furigana = furigana_lib.annotate_sentence(plain, known_readings)
@@ -662,7 +690,19 @@ def _grammar_example(example, sort_order, g, vocab_forms, known_readings, errors
             errors.append(f"grammar {g['slug']} example {sort_order}: alternate "
                           f"{plain!r} cannot be annotated (write plain Japanese)")
             continue
-        alternates.append({"furigana": furigana, "kind": kind})
+        alternate = {"furigana": furigana, "kind": kind}
+        if kind == "valid":
+            try:
+                alt_span = grammar_sentences_lib.grammar_span(
+                    plain, g["accepted_forms"], example.get("form"))
+            except ValueError:
+                alt_span = None
+            try:
+                alternate["units"] = [_unit_json(u) for u in answer_units(
+                    plain, furigana, forms_by_slug, alt_span)]
+            except ValueError as error:
+                errors.append(f"grammar {g['slug']} example {sort_order}: alternate: {error}")
+        alternates.append(alternate)
     if alternates:
         sentence["build_alternates"] = alternates
     return sentence

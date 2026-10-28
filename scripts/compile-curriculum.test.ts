@@ -532,6 +532,56 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('links transitivity partners both ways', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+      vocabFile.items[0].transitivity_partner = 'aku';
+      vocabFile.items.push({
+        slug: 'aku',
+        primary_form: '開く',
+        meaning: 'to open',
+        accepted_answers: [
+          { answer_type: 'meaning', answer_text: 'to open', is_primary: true },
+          { answer_type: 'reading', answer_text: 'あく' },
+        ],
+        transitivity_partner: 'ichi-v',
+      });
+      fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+      compileCurriculum(dbPath, curriculumDir, { updateRegistry: true });
+
+      const db = new Database(dbPath, { readonly: true });
+      try {
+        const rows = db
+          .prepare('SELECT id, slug, transitivity_partner_id FROM items WHERE item_type = ?')
+          .all('vocabulary') as { id: number; slug: string; transitivity_partner_id: number | null }[];
+        const bySlug = Object.fromEntries(rows.map((row) => [row.slug, row]));
+        expect(bySlug['ichi-v'].transitivity_partner_id).toBe(bySlug['aku'].id);
+        expect(bySlug['aku'].transitivity_partner_id).toBe(bySlug['ichi-v'].id);
+      } finally {
+        db.close();
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on an unresolved transitivity partner', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    try {
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+      vocabFile.items[0].transitivity_partner = 'no-such-verb';
+      fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(
+        'Unresolved transitivity partner: ichi-v -> vocabulary:no-such-verb',
+      );
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('compiles grammar read_once as 1 when set and 0 otherwise', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
     try {
@@ -908,6 +958,129 @@ describe('compile-curriculum', () => {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
+  });
+
+  const ANSWER_UNITS = [
+    { surface: '一', reading: 'いち', role: 'word', vocabulary_slug: 'ichi-v', in_grammar: false },
+    { surface: 'です', reading: 'です', role: 'other', in_grammar: true },
+  ];
+
+  function withAnswerUnits(
+    sentenceUnits: unknown[],
+    alternateUnits: unknown[],
+  ): (file: { items: Record<string, unknown>[] }) => void {
+    return (file) => {
+      const desu = file.items[0] as {
+        example_sentences: {
+          furigana?: string;
+          answer_units: unknown[];
+          build_alternates: { units?: unknown[] }[];
+        }[];
+      };
+      desu.example_sentences[0].furigana = '一[いち]です。';
+      desu.example_sentences[0].answer_units = sentenceUnits;
+      desu.example_sentences[0].build_alternates[0].units = alternateUnits;
+    };
+  }
+
+  it('compiles answer units for the sentence and its valid alternates', () => {
+    const alternateUnits = [
+      ANSWER_UNITS[0],
+      { surface: 'だ', reading: 'だ', role: 'other', in_grammar: true },
+    ];
+    const { dbPath, tempDir, run } = compileGrammarFixture(
+      withAnswerUnits(ANSWER_UNITS, alternateUnits),
+    );
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const ichiId = readItemIds(dbPath)['vocabulary:ichi-v'];
+      const validAnswerId = (
+        db.prepare(`SELECT id FROM grammar_sentence_answers WHERE kind = 'valid'`).get() as {
+          id: number;
+        }
+      ).id;
+      const rows = db
+        .prepare(
+          `SELECT answer_id, position, surface, role, item_id, in_grammar
+           FROM grammar_answer_units ORDER BY answer_id IS NOT NULL, answer_id, position`,
+        )
+        .all();
+      expect(rows).toEqual([
+        { answer_id: null, position: 0, surface: '一', role: 'word', item_id: ichiId, in_grammar: 0 },
+        { answer_id: null, position: 1, surface: 'です', role: 'other', item_id: null, in_grammar: 1 },
+        { answer_id: validAnswerId, position: 0, surface: '一', role: 'word', item_id: ichiId, in_grammar: 0 },
+        { answer_id: validAnswerId, position: 1, surface: 'だ', role: 'other', item_id: null, in_grammar: 1 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when answer units do not rebuild the sentence', () => {
+    const { tempDir, run } = compileGrammarFixture(withAnswerUnits([ANSWER_UNITS[0]], []));
+    expect(run).toThrow(/Answer units do not rebuild sentence: grammar:desu example\[0\]/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  // 私[わたし]は明日[あした]です: the tokenizer would read わたくし / みょうにち.
+  function withWatashiSentence(readings: [string, string]): (file: {
+    items: Record<string, unknown>[];
+  }) => void {
+    return (file) => {
+      const desu = file.items[0] as { example_sentences: Record<string, unknown>[] };
+      desu.example_sentences[0] = {
+        japanese: '私は明日です。',
+        furigana: '私[わたし]は明日[あした]です。',
+        english: 'Tomorrow is me.',
+        sort_order: 0,
+        grammar_span: { start: 4, end: 6 },
+        register: 'polite',
+        answer_units: [
+          { surface: '私', reading: readings[0], role: 'other', in_grammar: false },
+          { surface: 'は', reading: 'は', role: 'particle', in_grammar: false },
+          { surface: '明日', reading: readings[1], role: 'other', in_grammar: false },
+          { surface: 'です', reading: 'です', role: 'other', in_grammar: true },
+        ],
+      };
+    };
+  }
+
+  it('compiles answer unit readings that spell the furigana reading', () => {
+    const { dbPath, tempDir, run } = compileGrammarFixture(
+      withWatashiSentence(['わたし', 'あした']),
+    );
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const readings = db
+        .prepare('SELECT reading FROM grammar_answer_units ORDER BY position')
+        .all();
+      expect(readings).toEqual([
+        { reading: 'わたし' },
+        { reading: 'は' },
+        { reading: 'あした' },
+        { reading: 'です' },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when answer unit readings differ from the furigana', () => {
+    const { tempDir, run } = compileGrammarFixture(withWatashiSentence(['わたくし', 'あした']));
+    expect(run).toThrow(/Answer unit readings do not match the furigana: grammar:desu example\[0\]/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
+
+  it('throws when an answer unit names an unknown vocabulary word', () => {
+    const { tempDir, run } = compileGrammarFixture(
+      withAnswerUnits([{ ...ANSWER_UNITS[0], vocabulary_slug: 'nope' }, ANSWER_UNITS[1]], []),
+    );
+    expect(run).toThrow(/Unresolved answer unit vocabulary: grammar:desu example\[0\] -> vocabulary:nope/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
   });
 
   it('leaves grammar pool columns null on non-grammar example sentences', () => {

@@ -119,6 +119,7 @@ type VocabItem = {
   meaning: string;
   word_type?: string;
   conjugation_class?: string;
+  transitivity_partner?: string;
   reading_composition?: string;
   mnemonic_text?: string;
   meaning_mnemonic?: string;
@@ -140,7 +141,17 @@ type ExampleSentence = {
   /** Grammar pool only: where the grammar sits in `japanese`. */
   grammar_span?: { start: number; end: number };
   register?: 'polite' | 'plain';
-  build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar' }[];
+  build_alternates?: { furigana: string; kind: 'valid' | 'other_grammar'; units?: AnswerUnit[] }[];
+  /** Grammar pool only: the sentence cut into Build-explanation units. */
+  answer_units?: AnswerUnit[];
+};
+
+type AnswerUnit = {
+  surface: string;
+  reading: string;
+  role: 'word' | 'particle' | 'other';
+  vocabulary_slug?: string;
+  in_grammar: boolean;
 };
 
 type GrammarUse = {
@@ -209,6 +220,14 @@ type WordSpan = {
  */
 function inflectionStem(primaryForm: string): string {
   return primaryForm.endsWith('する') ? primaryForm.slice(0, -2) : primaryForm.slice(0, -1);
+}
+
+/**
+ * Furigana notation as kana: each reading replaces the kanji run before it
+ * (々 included), as the app's parseFurigana groups it.
+ */
+function furiganaReading(annotated: string): string {
+  return annotated.replace(/[一-鿿々]*\[([^[\]]*)]/g, '$1');
 }
 
 type ResolvedWordSpan = {
@@ -652,6 +671,10 @@ export function compileCurriculum(
       INSERT INTO grammar_sentence_answers (sentence_id, answer_furigana, kind, sort_order)
       VALUES (@sentence_id, @answer_furigana, @kind, @sort_order)
     `);
+    const insertAnswerUnit = db.prepare(`
+      INSERT INTO grammar_answer_units (sentence_id, answer_id, position, surface, reading, role, item_id, in_grammar)
+      VALUES (@sentence_id, @answer_id, @position, @surface, @reading, @role, @item_id, @in_grammar)
+    `);
     const insertExampleVocab = db.prepare(`
       INSERT INTO example_sentence_vocab (sentence_id, item_id, sort_order)
       VALUES (@sentence_id, @item_id, @sort_order)
@@ -669,6 +692,7 @@ export function compileCurriculum(
       sort_order: number;
     }[] = [];
     const pendingExampleSpans: (ResolvedWordSpan & { sentence_id: number })[] = [];
+    const pendingTransitivityPartners: { id: number; partner_id: number }[] = [];
     const insertVisuallySimilarLink = db.prepare(`
       INSERT INTO visually_similar_links (item_id, similar_item_id, sort_order)
       VALUES (@item_id, @similar_item_id, @sort_order)
@@ -699,6 +723,49 @@ export function compileCurriculum(
       }
     };
 
+    const pendingAnswerUnits: Record<string, unknown>[] = [];
+    // Units must spell the answer they cut (minus punctuation and spaces), their
+    // readings must spell its furigana reading (what the Build grader accepts),
+    // and their vocabulary links resolve like the sentence's own.
+    const queueAnswerUnits = (
+      sentenceId: number,
+      answerId: number | null,
+      units: AnswerUnit[],
+      annotated: string,
+      ownerLabel: string,
+    ) => {
+      const unpunctuated = (text: string) => text.replace(/[、。！？!?,.「」『』\s]/g, '');
+      const rebuilt = units.map((unit) => unit.surface).join('');
+      if (rebuilt !== unpunctuated(stripFurigana(annotated))) {
+        throw new Error(`Answer units do not rebuild sentence: ${ownerLabel}`);
+      }
+      const reading = units.map((unit) => unit.reading).join('');
+      if (reading !== unpunctuated(furiganaReading(annotated))) {
+        throw new Error(`Answer unit readings do not match the furigana: ${ownerLabel}`);
+      }
+      for (const [position, unit] of units.entries()) {
+        let itemId: number | null = null;
+        if (unit.vocabulary_slug) {
+          itemId = idByKey.get(itemKey('vocabulary', unit.vocabulary_slug)) ?? null;
+          if (!itemId) {
+            throw new Error(
+              `Unresolved answer unit vocabulary: ${ownerLabel} -> vocabulary:${unit.vocabulary_slug}`,
+            );
+          }
+        }
+        pendingAnswerUnits.push({
+          sentence_id: sentenceId,
+          answer_id: answerId,
+          position,
+          surface: unit.surface,
+          reading: unit.reading,
+          role: unit.role,
+          item_id: itemId,
+          in_grammar: unit.in_grammar ? 1 : 0,
+        });
+      }
+    };
+
     const insertExamples = (itemId: number, sentences: ExampleSentence[], ownerLabel: string) => {
       for (const [index, sentence] of sentences.entries()) {
         const span = sentence.grammar_span;
@@ -721,13 +788,31 @@ export function compileCurriculum(
           register: sentence.register ?? null,
         });
         const sentenceId = Number(result.lastInsertRowid);
+        if (sentence.answer_units) {
+          queueAnswerUnits(
+            sentenceId,
+            null,
+            sentence.answer_units,
+            sentence.furigana ?? sentence.japanese,
+            `${ownerLabel} example[${index}]`,
+          );
+        }
         for (const [altIndex, alternate] of (sentence.build_alternates ?? []).entries()) {
-          insertGrammarSentenceAnswer.run({
+          const answerResult = insertGrammarSentenceAnswer.run({
             sentence_id: sentenceId,
             answer_furigana: alternate.furigana,
             kind: alternate.kind,
             sort_order: altIndex,
           });
+          if (alternate.units) {
+            queueAnswerUnits(
+              sentenceId,
+              Number(answerResult.lastInsertRowid),
+              alternate.units,
+              alternate.furigana,
+              `${ownerLabel} example[${index}]`,
+            );
+          }
         }
         for (const [slugIndex, vocabSlug] of (sentence.vocabulary_slugs ?? []).entries()) {
           const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
@@ -855,6 +940,16 @@ export function compileCurriculum(
         visual_mnemonic_url: null,
         sort_order: vocab.sort_order ?? 0,
       });
+
+      if (vocab.transitivity_partner) {
+        const partnerId = idByKey.get(itemKey('vocabulary', vocab.transitivity_partner));
+        if (!partnerId) {
+          throw new Error(
+            `Unresolved transitivity partner: ${vocab.slug} -> vocabulary:${vocab.transitivity_partner}`,
+          );
+        }
+        pendingTransitivityPartners.push({ id, partner_id: partnerId });
+      }
 
       for (const answer of vocab.accepted_answers ?? []) {
         insertAnswer.run({
@@ -1018,6 +1113,17 @@ export function compileCurriculum(
 
     for (const span of pendingExampleSpans) {
       insertExampleSpan.run(span);
+    }
+
+    for (const unit of pendingAnswerUnits) {
+      insertAnswerUnit.run(unit);
+    }
+
+    const setTransitivityPartner = db.prepare(
+      'UPDATE items SET transitivity_partner_id = @partner_id WHERE id = @id',
+    );
+    for (const link of pendingTransitivityPartners) {
+      setTransitivityPartner.run(link);
     }
 
     const insertRelationship = db.prepare(`

@@ -65,10 +65,13 @@ class GrammarLevelTest(unittest.TestCase):
         first = build([entry()])["example_sentences"][0]
         self.assertEqual(first["grammar_span"], {"start": 2, "end": 4})
         self.assertEqual(first["register"], "polite")
-        self.assertEqual(first["build_alternates"], [
-            {"furigana": "寒[さむ]いですから、コートを着[き]ます。", "kind": "valid"},
-            {"furigana": "寒[さむ]いので、コートを着[き]ます。", "kind": "other_grammar"},
-        ])
+        valid, other = first["build_alternates"]
+        self.assertEqual(valid["furigana"], "寒[さむ]いですから、コートを着[き]ます。")
+        self.assertEqual(valid["kind"], "valid")
+        self.assertEqual("".join(u["surface"] for u in valid["units"]),
+                         "寒いですからコートを着ます")
+        self.assertEqual(other, {"furigana": "寒[さむ]いので、コートを着[き]ます。",
+                                 "kind": "other_grammar"})
 
     def test_cloze_variants_become_examples_once(self):
         sentences = build([entry()])["example_sentences"]
@@ -117,6 +120,23 @@ class GrammarLevelTest(unittest.TestCase):
         spans_ = item["example_sentences"][0]["word_spans"]
         self.assertIn({"vocabulary_slug": "iku-v", "start": 3, "end": 5,
                        "surface_form": "行き", "inflection": "stem"}, spans_)
+
+    def test_pool_sentence_carries_answer_units(self):
+        vocab = {**VOCAB, "kotoshi": "今年", "gakkou": "学校", "nihongo": "日本語",
+                 "benkyou": "勉強する"}
+        slugs = ["kotoshi", "gakkou", "nihongo", "benkyou"]
+        item = generate._build_grammar_level(
+            "N5",
+            [entry(slug="zz-test-de", primary_form="で", accepted_forms=["で"],
+                   examples=[generate_ex("今年は学校で日本語を勉強します。", "x", slugs,
+                                         alts=[("今年は学校で日本語を勉強しました。", "valid")])],
+                   cloze_variants=[])],
+            vocab, None, (), known_vocab_forms=vocab,
+        )["items"][0]
+        sentence = item["example_sentences"][0]
+        self.assertEqual(sentence["answer_units"][1], {
+            "surface": "は", "reading": "は", "role": "particle", "in_grammar": False})
+        self.assertEqual(sentence["build_alternates"][0]["units"][-1]["surface"], "勉強しました")
 
     def test_unannotatable_kanji_alternate_is_a_build_error(self):
         bad = entry(examples=[generate_ex("寒いから、コートを着ます。", "x",

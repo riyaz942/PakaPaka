@@ -47,6 +47,7 @@ Last verified against the codebase: **2026-09-02**
 | [Grammar content — mnemonics (spec, 2026-10-17)](./superpowers/specs/2026-10-17-grammar-mnemonics-design.md) | Partial — pipeline, gate, app, Studio and content done 2026-10-18: all 161 N5 + N4 grammar points carry a story mnemonic (sound-alike hook plus a Japanese example), all reviewed by the maintainer (`curriculum/grammar/mnemonics.json`, `review_status: reviewed`); the compile warns about no unreviewed grammar. §6a: the example links its taught words (`{{slug\|inflection\|text}}` markers, resolved at compile; tap opens the word, long-press toggles its furigana). Seed rebuilt (curriculum v36). Tests green; in-app check not run |
 | [Lesson mix — waves, weights, grammar brake (spec, 2026-10-24)](./superpowers/specs/2026-10-24-lesson-mix-design.md) | Partial — code done 2026-10-24 ([plan](./superpowers/plans/2026-10-24-lesson-mix.md)); in-app check pending. Final review fixed D9 (±1 per type) and the planner's per-call cost; `LESSON_TYPE_LEAD` tuned to 3 / 1.5 / 1 (spec §7). Simulator (`scripts/simulate-lessons.ts`, all six runs pass), relaxed days 1–5 R/K/V/G: 15/0/0/0, 15/0/0/0, 9/6/0/0, 3/3/9/0, 4/1/9/1 |
 | [Conjugation primer — read-once card + conjugation table (spec, 2026-10-24)](./superpowers/specs/2026-10-24-conjugation-primer-design.md) | Built 2026-10-25 ([plan](./superpowers/plans/2026-10-24-conjugation-primer.md)): read-once N5 card "How words change" before ます (reviewed), and an 8-form conjugation table on every verb and い / な adjective page |
+| [Grammar Build — mistake explanations (spec, 2026-10-27)](./superpowers/specs/2026-10-27-grammar-mistake-explanations-design.md) | Partial — code done 2026-10-27 ([plan](./superpowers/plans/2026-10-27-grammar-mistake-explanations.md)): a wrong Build answer on the Incorrect screen shows the learner's sentence with each mistake marked (wrong, missing or extra particle; wrong form; wrong word; word order) and a tap-to-read explanation; the grade never changes. Needs the curriculum.db units table; an older seed shows the screen as before. In-app check pending |
 
 ## Content plans — `docs/content/`
 
@@ -120,6 +121,9 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 
 ### Grammar Read + Build SRS
 - Simulator check (spec §6, manual list) not yet run by the maintainer.
+
+### Grammar Build — mistake explanations
+- In-app check pending: answer a Build card with a wrong particle and a plain form; the marks, the tap highlight, the pointer and "N of M" show above the correct sentence. "Don't know" and an old curriculum.db show the plain screen.
 
 ### Grammar content — linked words
 - In-app check pending (tap / long-press on a grammar page): tap on a lesson word opens its page, long-press toggles only that word's furigana, a "Uses" sentence word opens its page.

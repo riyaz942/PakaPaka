@@ -189,6 +189,7 @@ describe('grammar Build card', () => {
     answers: ['寒[さむ]いから、コートを着[き]ます。'],
     otherGrammarAnswers: ['寒[さむ]いので、コートを着[き]ます。'],
     userAnswers: [],
+    diagnosisKey: null,
   };
   const item = {
     itemId: '99', itemType: 'grammar' as const, primaryForm: 'から', displayMeaning: 'because',
