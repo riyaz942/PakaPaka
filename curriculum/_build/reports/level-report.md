@@ -11,6 +11,11 @@ Places where an item leans on an item taught at a later level. The build does no
 - `kanji:mister`: N5
 - `kanji:he`: N5
 - `kanji:who`: N5
+- `grammar:kamoshirenai`: N4
+- `grammar:sugiru`: N4
+- `grammar:nagara`: N4
+- `grammar:tame-ni`: N4
+- `grammar:moraru-ageru-kureru`: N4
 
 ## Words that wait for a later kanji
 
@@ -24,49 +29,10 @@ Taught on schedule, but asked for the meaning only until the later kanji reaches
 | N2 | 632 |
 | N1 | 0 |
 
-## Sentences that use a later word (41)
+## Sentences that use a later word (2)
 
-- N5: grammar dou-desu-ka: 生活 (N4) — 日本の生活はどうですか。
-- N5: grammar gurai: かかり (N4) — 三十分ぐらいかかります。
-- N5: grammar mada-teinai cloze: 決め (N4) — まだ決めていません。
-- N5: grammar mada-teinai: 決め (N4) — まだ決めていません。
-- N5: grammar mae-ni: 磨き (N1) — 寝る前に歯を磨きます。
-- N5: grammar node-because: 疲れ (N4) — 疲れたので、早く寝ます。
 - N5: grammar ta-koto-ga-aru use: 遅刻 (N4) — たまに遅刻することがあります。
-- N5: grammar ta-koto-ga-aru: 寿司 (N4) — 寿司を食べたことがあります。
-- N5: grammar ta-koto-ga-aru: 遅刻 (N4) — たまに遅刻することがあります。
-- N5: grammar tame-ni: 健康 (N4) — 健康のために歩きます。
-- N5: grammar te-mo-ii: 先 (N4) — 先に帰ってもいいです。
-- N5: grammar te-wa-ikenai: つい (N2) — うそをついてはいけません。
-- N4: grammar aida: 夏休み (N3) — 夏休みの間、旅行しました。
-- N4: grammar baai: 中止 (N3) — 雨の場合は、中止します。
-- N4: grammar causative-passive: 上司 (N2) — 上司に残業させられました。
-- N4: grammar ka-douka: 確認 (N3) — これでいいかどうか、確認してください。
-- N4: grammar kagirazu: 人気 (N3) — 日本に限らず、世界中で人気があります。
-- N4: grammar kawari-ni-formal: 必要 (N3) — 好きというより、必要です。
-- N4: grammar koto-ni-naru: 中止 (N3) — 会議は中止することになりました。
-- N4: grammar koto-ni-suru: 留学 (N3) — 来年、留学することにしました。
-- N4: grammar nara: 幹線 (N3) — 東京へ行くなら、新幹線が便利です。
-- N4: grammar nara: 遊び (N3) — 暇なら、遊びに来てください。
-- N4: grammar nikanshite: 件 (N2) — この件に関して、質問があります。
-- N4: grammar niyoruto: 予報 (N2), 晴れ (N1) — 天気予報によると、明日は晴れです。
-- N4: grammar niyoruto: 事故 (N3) — 新聞によると、事故があったそうです。
-- N4: grammar noda: 実 (N3) — 実は、忙しいんです。
-- N4: grammar nomi: 会員 (N3), 入場 (N3) — 会員のみ入場できます。
-- N4: grammar rashii: 人気 (N3) — あの店は人気らしいです。
-- N4: grammar souda-hearsay: 予報 (N2) — 天気予報によると、明日は雨だそうです。
-- N4: grammar tame: 試合 (N3), 中止 (N3) — 雨が降ったため、試合は中止になりました。
-- N4: grammar tara: 遊び (N3) — 宿題が終わったら、遊びに行きます。
-- N4: grammar tatoe-temo: 挑戦 (N3) — たとえ難しくても、挑戦します。
-- N4: grammar tearu: 壁 (N3), 飾っ (N1) — 壁に絵が飾ってあります。
-- N4: grammar to-conditional: 押す (N2) — このボタンを押すと、電気がつきます。
-- N4: grammar toshite: 指導 (N3) — 先生として、学生を指導します。
-- N4: grammar tsutsu-aru: 回復 (N3) — 経済は回復しつつあります。
-- N4: grammar uchi-ni: 経験 (N3) — 若いうちに、色々経験した方がいいです。
-- N4: grammar ue-de: 返事 (N2) — よく考えた上で、返事します。
-- N4: grammar wake: 育ち (N1) — 彼はアメリカ育ちだから、英語が上手なわけです。
 - N4: grammar yoruni use: 違い (N3) — 人によって、考え方が違います。
-- N4: grammar yoruni: 違い (N3) — 人によって、考え方が違います。
 
 ## Links to a later item (0)
 
@@ -80,6 +46,6 @@ None.
 
 None.
 
-## Reading seeds (0)
+## Reading seeds (1)
 
-None.
+- N5: n5 grammar coverage is 69/70; unassigned to any seed's required_grammar: conjugation-primer

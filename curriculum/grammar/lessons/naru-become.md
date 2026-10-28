@@ -8,7 +8,6 @@ caution_notes:
 related_grammar_slugs:
   - "zenzen-nai"
   - "mou-past"
-  - "moraru-ageru-kureru"
 ---
 
 Imagine you are studying Japanese. At first, reading a new sentence felt like a massive struggle. You had to look up every single word in a heavy dictionary, and the unfamiliar grammar rules felt incredibly confusing. It seemed like you would never grasp the language. But after practicing every day, something magical happens in your brain. You look at a long sentence, and suddenly, you understand it perfectly. It is not difficult anymore. In English, we describe this exciting transformation by saying something "became" easy, or you "became" good at it. You underwent a meaningful change of state.

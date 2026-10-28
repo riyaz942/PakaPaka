@@ -8,7 +8,7 @@ caution_notes:
   - "ほうがいい is stronger than a casual suggestion; it implies a real downside to ignoring it, so save it for when you mean it."
   - "Add です for politeness or よ for a friendly heads-up; the bare plain form is casual."
 related_grammar_slugs:
-  - "kamoshirenai"
+  - "darou"
   - "to-omou"
   - "mada-teinai"
 ---
@@ -85,17 +85,17 @@ That よ is doing a lot of work — it turns a flat statement into "hey, just so
 
 ## Contrast
 
-The closest thing you already know is かもしれない, *might / maybe*. They feel related but do opposite jobs. かもしれない reports a possibility; ほうがいい pushes a choice.
+The closest thing you already know is だろう, *probably*. They feel related but do opposite jobs. だろう reports a guess; ほうがいい pushes a choice.
 
 ```jp
-明日は雨かもしれません。
+明日は雨だろう。
 傘を持ったほうがいいですよ。
 ```
 
-*It might rain tomorrow.*
+*It will probably rain tomorrow.*
 *You'd better take an umbrella.*
 
-See how the first sentence just floats a possibility, and the second one leans in with a recommendation because of it. Swap them and it breaks: you can't advise with かもしれない, and ほうがいい can't merely speculate.
+See how the first sentence just floats a possibility, and the second one leans in with a recommendation because of it. Swap them and it breaks: you can't advise with だろう, and ほうがいい can't merely speculate.
 
 It also brushes up against と思う, *I think that*. と思う is your private opinion; ほうがいい is a recommendation aimed at the listener. "この本はいいと思う" says what *you* feel; "この本を読んだほうがいい" tells the other person what to *do*. Same warmth, different direction.
 

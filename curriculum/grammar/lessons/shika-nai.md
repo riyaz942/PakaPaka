@@ -6,7 +6,7 @@ caution_notes:
   - "しか overwrites the particles を and が, so you will never say をしか or がしか."
   - "The verb ending a しか sentence must always be negative, even though the English translation is usually positive."
 related_grammar_slugs:
-  - "sugiru"
+  - "dake"
   - "zenzen-nai"
 ---
 
@@ -59,20 +59,20 @@ When you are talking to friends, the pattern works exactly the same way, but the
 ```
 *I only have 1,000 yen today.*
 
-## Contrast: Limits vs Excess
+## Contrast: だけ vs しか〜ない
 
-You already know how to talk about doing something *too much* with `すぎる`. Let's look at how `しか〜ない` sits at the exact opposite end of the spectrum.
+You already know how to say *only* with `だけ`. Let's look at how `しか〜ない` says nearly the same thing with a different feeling.
 
 ```jp
-昨日は肉を食べすぎました。
+昨日は肉だけ食べました。
 ```
-*Yesterday, I ate too much meat.*
+*Yesterday, I ate only meat.*
 
 ```jp
 昨日は肉しか食べませんでした。
 ```
-*Yesterday, I only ate meat.* (And maybe I really needed vegetables.)
+*Yesterday, I ate nothing but meat.* (And maybe I really needed vegetables.)
 
-In both cases, you're focusing on an extreme imbalance. `すぎる` points out an excess, while `しか〜ない` points out a strict limit or a lack of something else.
+In both cases, you're drawing a limit. `だけ` states the limit as a plain fact, while `しか〜ない` adds the feeling that the limit is not enough.
 
 Hold onto this idea of pairing a specific word with a negative verb to create a new meaning. You'll soon meet patterns like 全然 (not at all), which play exactly the same game!

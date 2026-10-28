@@ -7,7 +7,6 @@ caution_notes:
   - "Keep the object's original を particle intact before the verb, even though the phrase ends with ができる."
 related_grammar_slugs:
   - "ta-koto-ga-aru"
-  - "kamoshirenai"
 ---
 
 You're making weekend plans with a new friend, and they ask if you want to check out a famous sushi restaurant. You hate fish. Or maybe you're at a job interview and need to confidently state your language skills. You need a way to clearly say what you can—and cannot—do.
@@ -68,4 +67,4 @@ The secret to keeping them straight is the verb form that comes immediately befo
 
 > Swapping the dictionary form for the past-tense た-form completely changes the meaning from "I am able to" to "I have done it before." Take an extra second to verify your verb tense before you speak!
 
-Now you can clearly explain exactly what you are capable of doing. Hang onto this dictionary form structure—you'll see a very similar shape when we learn how to say what *might* happen using かもしれない soon.
+Now you can clearly explain exactly what you are capable of doing. Hang onto this dictionary form structure—you'll see a very similar shape when we learn how to say what *might* happen using かもしれない at N4.

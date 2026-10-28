@@ -36,10 +36,10 @@ at 30 seeds):
     few verbs forward, later seeds none, because the cutoff has reached them.
   * `grammar_cutoff` — the same, over the level's grammar points.
   * `pull_forward_grammar` — the grammar side of `pull_forward`, and optional
-    because only N5 needs it. N5's four adjective points sit at 47–50 of 74
+    because only N5 needs it. N5's four adjective points sit at 47–50 of 70
     and `grammar_detect` fires them on *any* adjective, so a prefix window
     forbids 大きい, 好き and いい outright for two thirds of the level. Every
-    N5 seed below the cutoff pulls that block forward. N4 inherits all 74 N5
+    N5 seed below the cutoff pulls that block forward. N4 inherits all 70 N5
     points, so the problem cannot arise there.
 
 Authored, checked in, and read by the generator — never chosen while the model
@@ -125,7 +125,8 @@ _ADJECTIVE_POINTS = [
 #: to 63–78 — 63 words is Minna no Nihongo's *shortest* 読み物 — then climbs to
 #: 98–126 at position 30. Below the step the bands are unchanged.
 #:
-#: `required_grammar` partitions the 74 points across the 30 seeds, 2–4 each.
+#: `required_grammar` partitions the 70 points across the 30 seeds, 1–4 each
+#: (`conjugation-primer` has no owner yet).
 #: It is **not** the block each cutoff newly opens, the way N4's is: a point is
 #: assigned to the passage whose topic uses it, which only has to sit at or
 #: after the seed that opens it. ましょう and ませんか (7, 8) go to the
@@ -538,7 +539,7 @@ N5_SEEDS = [
         "vocab_cutoff": 440,
         # The topic says the older brother can sing: 歌う is 444, cutoff 440.
         "pull_forward": ["utau"],
-        "grammar_cutoff": 56,
+        "grammar_cutoff": 55,
         "pull_forward_grammar": [],
         "required_grammar": ["toki", "dictionary-koto-ga-dekiru"],
         "target_words": (83, 106),
@@ -558,7 +559,7 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 460,
         "pull_forward": ["kaesu"],
-        "grammar_cutoff": 58,
+        "grammar_cutoff": 57,
         "pull_forward_grammar": [],
         "required_grammar": ["comparative-yori", "superlative-ichiban"],
         "target_words": (85, 108),
@@ -577,9 +578,9 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 479,
         "pull_forward": ["densha"],
-        "grammar_cutoff": 61,
+        "grammar_cutoff": 59,
         "pull_forward_grammar": [],
-        "required_grammar": ["dou-desu-ka", "darou", "kamoshirenai"],
+        "required_grammar": ["dou-desu-ka", "darou"],
         "target_words": (86, 110),
         "question_count": 4,
         "topic": (
@@ -596,7 +597,7 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 505,
         "pull_forward": [],
-        "grammar_cutoff": 63,
+        "grammar_cutoff": 61,
         "pull_forward_grammar": [],
         "required_grammar": ["to-omou", "to-iu", "no-nominalizer"],
         "target_words": (88, 112),
@@ -615,9 +616,9 @@ N5_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 536,
         "pull_forward": [],
-        "grammar_cutoff": 65,
+        "grammar_cutoff": 63,
         "pull_forward_grammar": [],
-        "required_grammar": ["sugiru", "hou-ga-ii", "deshou"],
+        "required_grammar": ["hou-ga-ii", "deshou"],
         "target_words": (89, 114),
         "question_count": 4,
         "topic": (
@@ -634,7 +635,7 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 570,
         "pull_forward": [],
-        "grammar_cutoff": 67,
+        "grammar_cutoff": 65,
         "pull_forward_grammar": [],
         "required_grammar": ["mada-teinai", "mou-past"],
         "target_words": (91, 116),
@@ -656,7 +657,7 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 605,
         "pull_forward": [],
-        "grammar_cutoff": 69,
+        "grammar_cutoff": 67,
         "pull_forward_grammar": [],
         "required_grammar": ["dake", "shika-nai"],
         "target_words": (92, 118),
@@ -675,7 +676,7 @@ N5_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 640,
         "pull_forward": [],
-        "grammar_cutoff": 71,
+        "grammar_cutoff": 68,
         "pull_forward_grammar": [],
         "required_grammar": ["gurai", "goro"],
         "target_words": (94, 120),
@@ -695,7 +696,7 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 668,
         "pull_forward": [],
-        "grammar_cutoff": 73,
+        "grammar_cutoff": 69,
         "pull_forward_grammar": [],
         "required_grammar": ["zenzen-nai", "amari-nai"],
         "target_words": (95, 122),
@@ -715,9 +716,9 @@ N5_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 718,
         "pull_forward": [],
-        "grammar_cutoff": 74,
+        "grammar_cutoff": 70,
         "pull_forward_grammar": [],
-        "required_grammar": ["demo-suggestion", "nagara", "janai-desu-ka"],
+        "required_grammar": ["demo-suggestion", "janai-desu-ka"],
         "target_words": (97, 124),
         "question_count": 4,
         "topic": (
@@ -735,11 +736,9 @@ N5_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 718,
         "pull_forward": [],
-        "grammar_cutoff": 74,
+        "grammar_cutoff": 70,
         "pull_forward_grammar": [],
-        "required_grammar": [
-            "tame-ni", "naru-become", "moraru-ageru-kureru",
-        ],
+        "required_grammar": ["naru-become"],
         "target_words": (98, 126),
         "question_count": 4,
         "topic": (
@@ -768,10 +767,16 @@ N5_SEEDS = [
 #: festival of `matsuri-wa-yarimasu`, the machine of `setsumeisho-doori`).
 #:
 #: `required_grammar` is the block of points each seed's `grammar_cutoff`
-#: newly opens, so the 30 blocks partition the level: 86 of the 87 points,
-#: each assigned once. The 87th is `node-vs-kara`, a `MANUAL_SLUG` that no
+#: newly opens, so the 30 blocks partition the level: 91 of the 92 points,
+#: each assigned once. The 92nd is `node-vs-kara`, a `MANUAL_SLUG` that no
 #: rule can separate from `kara-because` — `grammar_coverage_errors` excludes
 #: it rather than demand what `ladder_errors` forbids.
+#:
+#: Five points moved from N5 (`levels.json`, docs/content/
+#: grammar-jlpt-level-audit.md) and are taught first, at 1–5, so every cutoff
+#: is 5 higher than its block. They break the block rule: each is required by
+#: an existing passage that already used it (souji-no-nikki, kotoshi-no-yotei,
+#: benkyou-suru-aida-ni, karita-nabe, tabesugita-hi).
 #:
 #: Ten N4 points were duplicates of N5 points and merged into them, so the
 #: blocks that held them are shorter, and `reizouko-no-ruuru`'s block (てはい
@@ -790,7 +795,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 18,
         "pull_forward": ["gomi", "gomibako"],
-        "grammar_cutoff": 2,
+        "grammar_cutoff": 7,
         "required_grammar": ["noni", "souda-hearsay"],
         "target_words": (90, 112),
         "question_count": 3,
@@ -810,7 +815,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 36,
         "pull_forward": ["risaikuru"],
-        "grammar_cutoff": 5,
+        "grammar_cutoff": 10,
         "required_grammar": ["souda-looks", "tara", "ba"],
         "target_words": (93, 116),
         "question_count": 3,
@@ -829,7 +834,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 48,
         "pull_forward": [],
-        "grammar_cutoff": 8,
+        "grammar_cutoff": 13,
         "required_grammar": ["nara", "potential", "passive"],
         "target_words": (97, 119),
         "question_count": 3,
@@ -850,8 +855,8 @@ N4_SEEDS = [
         # The topic is a diary entry, and the seed is named for it: 日記 is
         # 519, cutoff is 60.
         "pull_forward": ["nikki"],
-        "grammar_cutoff": 11,
-        "required_grammar": ["causative", "causative-passive", "youni"],
+        "grammar_cutoff": 16,
+        "required_grammar": ["moraru-ageru-kureru", "causative", "causative-passive", "youni"],
         "target_words": (100, 123),
         "question_count": 3,
         "topic": (
@@ -869,7 +874,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 72,
         "pull_forward": [],
-        "grammar_cutoff": 14,
+        "grammar_cutoff": 19,
         "required_grammar": ["youninaru", "younaru", "hazu"],
         "target_words": (103, 126),
         "question_count": 3,
@@ -888,7 +893,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 87,
         "pull_forward": [],
-        "grammar_cutoff": 17,
+        "grammar_cutoff": 22,
         "required_grammar": ["hazuganai", "rashii", "youda"],
         "target_words": (107, 130),
         "question_count": 3,
@@ -906,7 +911,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 100,
         "pull_forward": [],
-        "grammar_cutoff": 19,
+        "grammar_cutoff": 24,
         "required_grammar": ["mitai", "teiru-result"],
         "target_words": (110, 133),
         "question_count": 3,
@@ -925,7 +930,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 115,
         "pull_forward": [],
-        "grammar_cutoff": 22,
+        "grammar_cutoff": 27,
         "required_grammar": ["tearu", "teoku", "teshimau"],
         "target_words": (113, 137),
         "question_count": 3,
@@ -944,7 +949,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 130,
         "pull_forward": ["matsuri"],
-        "grammar_cutoff": 24,
+        "grammar_cutoff": 29,
         "required_grammar": ["teiku-tekuru", "temo"],
         "target_words": (116, 140),
         "question_count": 3,
@@ -963,7 +968,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 145,
         "pull_forward": [],
-        "grammar_cutoff": 24,
+        "grammar_cutoff": 29,
         "required_grammar": [],
         "target_words": (120, 144),
         "question_count": 3,
@@ -982,8 +987,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 160,
         "pull_forward": [],
-        "grammar_cutoff": 27,
-        "required_grammar": ["souni-naru", "tsumori", "youni-suru"],
+        "grammar_cutoff": 32,
+        "required_grammar": ["nagara", "souni-naru", "tsumori", "youni-suru"],
         "target_words": (123, 148),
         "question_count": 4,
         "topic": (
@@ -1001,7 +1006,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 179,
         "pull_forward": [],
-        "grammar_cutoff": 29,
+        "grammar_cutoff": 34,
         "required_grammar": ["koto-ni-suru", "koto-ni-naru"],
         "target_words": (126, 151),
         "question_count": 4,
@@ -1020,7 +1025,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 194,
         "pull_forward": [],
-        "grammar_cutoff": 32,
+        "grammar_cutoff": 37,
         "required_grammar": ["mono", "bakari", "tokoro"],
         "target_words": (130, 155),
         "question_count": 4,
@@ -1038,8 +1043,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 203,
         "pull_forward": [],
-        "grammar_cutoff": 35,
-        "required_grammar": ["aida", "uchi-ni", "tabi-ni"],
+        "grammar_cutoff": 40,
+        "required_grammar": ["tame-ni", "aida", "uchi-ni", "tabi-ni"],
         "target_words": (133, 158),
         "question_count": 4,
         "topic": (
@@ -1057,7 +1062,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 215,
         "pull_forward": ["kikai-machine"],
-        "grammar_cutoff": 39,
+        "grammar_cutoff": 44,
         "required_grammar": ["baai", "to-conditional", "kawarini"],
         "target_words": (136, 162),
         "question_count": 4,
@@ -1076,7 +1081,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 228,
         "pull_forward": ["gyouji", "shuukan-custom"],
-        "grammar_cutoff": 42,
+        "grammar_cutoff": 47,
         "required_grammar": [
             "kawari-ni-formal", "toshite", "nitsuite",
         ],
@@ -1097,7 +1102,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 242,
         "pull_forward": [],
-        "grammar_cutoff": 45,
+        "grammar_cutoff": 50,
         "required_grammar": ["niyoruto", "tame", "kagiri"],
         "target_words": (143, 169),
         "question_count": 4,
@@ -1116,7 +1121,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 258,
         "pull_forward": [],
-        "grammar_cutoff": 48,
+        "grammar_cutoff": 53,
         "required_grammar": ["tatoe-temo", "kke", "noda"],
         "target_words": (146, 172),
         "question_count": 4,
@@ -1135,8 +1140,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 275,
         "pull_forward": [],
-        "grammar_cutoff": 49,
-        "required_grammar": ["nikui-yasui"],
+        "grammar_cutoff": 54,
+        "required_grammar": ["kamoshirenai", "nikui-yasui"],
         "target_words": (150, 176),
         "question_count": 4,
         "topic": (
@@ -1153,8 +1158,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 290,
         "pull_forward": [],
-        "grammar_cutoff": 51,
-        "required_grammar": ["tsutsu-aru", "ageku"],
+        "grammar_cutoff": 56,
+        "required_grammar": ["sugiru", "tsutsu-aru", "ageku"],
         "target_words": (153, 179),
         "question_count": 4,
         "topic": (
@@ -1171,7 +1176,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 303,
         "pull_forward": [],
-        "grammar_cutoff": 54,
+        "grammar_cutoff": 59,
         "required_grammar": ["wake", "wakeganai", "kanaru"],
         "target_words": (156, 183),
         "question_count": 5,
@@ -1189,7 +1194,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 321,
         "pull_forward": [],
-        "grammar_cutoff": 57,
+        "grammar_cutoff": 62,
         "required_grammar": ["hodo", "kurai-degree", "dake-de-naku"],
         "target_words": (160, 187),
         "question_count": 5,
@@ -1207,7 +1212,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 342,
         "pull_forward": [],
-        "grammar_cutoff": 60,
+        "grammar_cutoff": 65,
         "required_grammar": ["kagirazu", "ippou-de", "nitotte"],
         "target_words": (163, 190),
         "question_count": 5,
@@ -1226,7 +1231,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 356,
         "pull_forward": [],
-        "grammar_cutoff": 64,
+        "grammar_cutoff": 69,
         "required_grammar": [
             "nikanshite", "souiu", "tte", "tteba",
         ],
@@ -1247,7 +1252,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 375,
         "pull_forward": [],
-        "grammar_cutoff": 68,
+        "grammar_cutoff": 73,
         "required_grammar": [
             "ka-douka", "ka-nanka", "toka", "kke2",
         ],
@@ -1268,7 +1273,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 393,
         "pull_forward": [],
-        "grammar_cutoff": 72,
+        "grammar_cutoff": 77,
         "required_grammar": [
             "tokoroga", "soredemo", "sokode", "sonoseika-de",
         ],
@@ -1289,7 +1294,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 412,
         "pull_forward": [],
-        "grammar_cutoff": 76,
+        "grammar_cutoff": 81,
         "required_grammar": [
             "suruto", "igai", "igo-formal", "hantai-ni",
         ],
@@ -1310,7 +1315,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 440,
         "pull_forward": [],
-        "grammar_cutoff": 80,
+        "grammar_cutoff": 85,
         "required_grammar": ["koso", "sae", "saeba", "nomi"],
         "target_words": (179, 208),
         "question_count": 5,
@@ -1328,7 +1333,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 470,
         "pull_forward": [],
-        "grammar_cutoff": 84,
+        "grammar_cutoff": 89,
         "required_grammar": [
             "hoka-nai", "yoruni", "tsuide-ni", "ue-de",
         ],
@@ -1349,7 +1354,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 529,
         "pull_forward": [],
-        "grammar_cutoff": 87,
+        "grammar_cutoff": 92,
         "required_grammar": [
             "saichuu-ni", "oyobi", "ni-taishite",
         ],

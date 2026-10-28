@@ -7,7 +7,7 @@ caution_notes:
   - "When expressing an opinion about a noun or na-adjective, you must include the casual 'is' word だ right before と思う."
   - "You can only use と思う to express your own thoughts or ask the listener for theirs, never to state what a third person is thinking."
 related_grammar_slugs:
-  - "kamoshirenai"
+  - "darou"
   - "to-iu"
 ---
 
@@ -67,18 +67,18 @@ When you are talking to friends, you drop the polite ます and just end the sen
 
 ## Contrast
 
-You already know かもしれない for guessing "might" or "maybe." The difference between the two is confidence and intent.
+You already know だろう for guessing "probably." The difference between the two is who owns the guess.
 
 ```jp
-明日は雪かもしれない。
+明日は雪だろう。
 ```
-*It might snow tomorrow.*
+*It will probably snow tomorrow.*
 
 ```jp
 明日は雪だと思います。
 ```
 *I think it will snow tomorrow.*
 
-かもしれない means you are tossing a coin; there is a chance it happens, but you aren't sure. と思う means you have formed an actual opinion or prediction that you stand behind.
+だろう states the guess on its own, like a forecast with no name on it. と思う marks it as your own opinion or prediction, one that you stand behind.
 
 Hold onto this quoting particle と. It works exactly the same way when we learn how to talk about things "called" or "named" a certain way using という later on.

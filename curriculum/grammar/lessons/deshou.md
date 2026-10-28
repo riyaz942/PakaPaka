@@ -8,7 +8,6 @@ caution_notes:
   - "でしょう states your own read on a situation; when you're passing along information from a source, によると is the right tool instead."
   - "Drop だ before attaching でしょう to a noun or na-adjective — the copula doesn't stack on top of the ending."
 related_grammar_slugs:
-  - "kamoshirenai"
   - "darou"
   - "janai-desu-ka"
 ---
@@ -101,4 +100,4 @@ You've already got によると for passing along someone else's information —
 
 でしょう is the opposite move. No source, no article, nobody told you anything — you looked at the sky, or you know the season, or you just have a hunch, and でしょう marks the sentence as coming from you. Swap によると for でしょう in that same sentence and the meaning shifts from "here's what I read" to "here's what I think," even though the topic never changed.
 
-Reach for でしょう whenever you believe something but can't fully back it up — it lets you commit to an answer without overstating how sure you are. Hold onto that not-quite-certain feeling: かもしれない sits right next to でしょう on the confidence scale, for guesses that are even shakier than this one.
+Reach for でしょう whenever you believe something but can't fully back it up — it lets you commit to an answer without overstating how sure you are. Hold onto that not-quite-certain feeling: at N4 you'll meet かもしれない, which sits right next to でしょう on the confidence scale, for guesses that are even shakier than this one.

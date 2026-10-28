@@ -8,7 +8,6 @@ caution_notes:
 related_grammar_slugs:
   - "te-kara"
   - "mae-ni"
-  - "nagara"
 ---
 
 You're wrapping up at the office, and a friend texts to ask if you want to hang out. You want to tell them you'll call them after work. You already know how to say "work" and "call", but you need the glue to stick them together.
@@ -77,4 +76,4 @@ And what about `前に` (before)? They work as exact opposites, but notice the v
 ```
 *After watching a movie, I will eat a meal.*
 
-Hold onto this sense of a mental timeline. Right now we're looking at things that happen clearly before or after each other. Soon, we'll look at how to describe things happening at the exact same time when we meet `ながら`.
+Hold onto this sense of a mental timeline. Right now we're looking at things that happen clearly before or after each other. Later, at N4, we'll look at how to describe things happening at the exact same time when we meet `ながら`.

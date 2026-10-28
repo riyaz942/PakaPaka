@@ -8,7 +8,6 @@ caution_notes:
 related_grammar_slugs:
   - "ato-de"
   - "mae-ni"
-  - "nagara"
 ---
 
 You are chatting with a new friend and want to share a few stories. Maybe you want to mention that you hated vegetables as a kid, or explain that you always drink iced coffee when it is hot outside. To link a specific situation to an action, you need a way to say "when" or "at the time of".

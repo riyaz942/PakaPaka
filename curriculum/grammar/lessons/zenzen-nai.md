@@ -7,7 +7,6 @@ caution_notes:
   - "Do not use 全然 entirely on its own to answer a question in formal speech; always finish the sentence with the negative verb or adjective."
 related_grammar_slugs:
   - "shika-nai"
-  - "sugiru"
   - "amari-nai"
 ---
 
@@ -127,16 +126,7 @@ The `全然` sentence is absolute destruction. Think of `全然〜ない` as era
 
 Also, look closely at the particles. `しか` is powerful enough that it actually destroys and replaces the normal object particle `を`. But `全然` is just a well-behaved adverb, so the `を` particle stays exactly where it normally belongs.
 
-You can also contrast this absolute zero with the extreme upper limit you learned previously: `すぎる` (too much). These two patterns sit on complete opposite ends of the spectrum.
-
-If you are looking at a shirt in a store and the price is outrageous, you would use `すぎる`.
-
-```jp
-このシャツは高すぎます。
-```
-*This shirt is too expensive.*
-
-But if the shirt is incredibly cheap, surprisingly so, you drop the degree of expense down to zero.
+`全然` also works on adjectives. If you are looking at a shirt in a store and it is incredibly cheap, surprisingly so, you drop the degree of expense down to zero.
 
 ```jp
 このシャツは全然高くないです。
