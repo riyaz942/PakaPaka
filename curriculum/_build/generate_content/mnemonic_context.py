@@ -82,8 +82,9 @@ else:
 ALL_LEVELS = ("n5", "n4", "n3", "n2", "n1")
 
 #: Grammar mnemonics (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md)
-#: cover the N5 and N4 points only.
-GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4")
+#: cover the N5 and N4 points, and the N4 points the JLPT level audit moved to
+#: N3 (docs/content/grammar-jlpt-level-audit.md).
+GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4", "n3")
 
 #: The reviewed origin table: every grammar point in scope maps to the real
 #: word its form comes from (おく = 置く "to put down") or to null, a recorded

@@ -35,10 +35,10 @@ class OriginTableTest(unittest.TestCase):
         errors = mc.origin_table_errors({"review_status": "done", "origins": {}}, [])
         self.assertEqual(errors, ["grammar_origins.json review_status must be 'draft' or 'reviewed'"])
 
-    def test_scope_is_the_161_n5_and_n4_points(self):
+    def test_scope_is_the_159_n5_n4_and_n3_points(self):
         slugs = mc.grammar_mnemonic_slugs()
-        self.assertEqual(len(slugs), 161)
-        self.assertEqual(len(set(slugs)), 161)
+        self.assertEqual(len(slugs), 159)
+        self.assertEqual(len(set(slugs)), 159)
 
     def test_scope_leaves_out_the_read_once_primer(self):
         self.assertNotIn("conjugation-primer", mc.grammar_mnemonic_slugs())
@@ -269,7 +269,7 @@ class GateReviewFixesTest(unittest.TestCase):
 
     @staticmethod
     def real(slug):
-        return mc.grammar_context("n4", slug, mc.load_grammar_origins())
+        return mc.grammar_context("n3", slug, mc.load_grammar_origins())
 
     def test_point_whose_form_is_kanji_can_pass(self):
         # 代 is in no allowed word, but it is the point's own form.
@@ -279,7 +279,7 @@ class GateReviewFixesTest(unittest.TestCase):
             "私が行く<reading>代わりに</reading>、弟が買う。"
         )
         ctx = self.real("kawarini")
-        self.assertEqual(validate_grammar("n4", "kawarini", {"mnemonic_text": text}, ctx), [])
+        self.assertEqual(validate_grammar("n3", "kawarini", {"mnemonic_text": text}, ctx), [])
 
     def test_form_without_kana_takes_the_form_as_its_reading(self):
         text = (
@@ -288,7 +288,7 @@ class GateReviewFixesTest(unittest.TestCase):
             "安い。"
         )
         ctx = self.real("kke2")
-        errors = validate_grammar("n4", "kke2", {"mnemonic_text": text}, ctx)
+        errors = validate_grammar("n3", "kke2", {"mnemonic_text": text}, ctx)
         self.assertFalse(any("kana of the form" in e for e in errors), errors)
 
     def test_japanese_in_the_story_is_rejected(self):

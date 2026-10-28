@@ -767,10 +767,19 @@ N5_SEEDS = [
 #: festival of `matsuri-wa-yarimasu`, the machine of `setsumeisho-doori`).
 #:
 #: `required_grammar` is the block of points each seed's `grammar_cutoff`
-#: newly opens, so the 30 blocks partition the level: 91 of the 92 points,
-#: each assigned once. The 92nd is `node-vs-kara`, a `MANUAL_SLUG` that no
+#: newly opens, so the 30 blocks partition the level: 55 of the 56 points,
+#: each assigned once. The 56th is `node-vs-kara`, a `MANUAL_SLUG` that no
 #: rule can separate from `kara-because` — `grammar_coverage_errors` excludes
 #: it rather than demand what `ladder_errors` forbids.
+#:
+#: 34 points moved on to N3 (`levels.json`, the same audit doc), and かなり
+#: and そういう・こういう became words (`kanari`, `souiu`, `kouiu`). Each
+#: cutoff is now the number of kept points under its old value, so the last
+#: four seeds all reach the whole level (56), and those blocks are shorter.
+#: Five seeds whose whole block left require no N4 point:
+#: waribiki-no-setsumei, nazo-no-bukatsu, kotoshi-koso, densha-ga-tomatta-hi
+#: and matsuri-no-oshirase. The last four were written again without the N3
+#: points, on new briefs.
 #:
 #: Five points moved from N5 (`levels.json`, docs/content/
 #: grammar-jlpt-level-audit.md) and are taught first, at 1–5, so every cutoff
@@ -987,8 +996,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 160,
         "pull_forward": [],
-        "grammar_cutoff": 32,
-        "required_grammar": ["nagara", "souni-naru", "tsumori", "youni-suru"],
+        "grammar_cutoff": 31,
+        "required_grammar": ["nagara", "tsumori", "youni-suru"],
         "target_words": (123, 148),
         "question_count": 4,
         "topic": (
@@ -1006,7 +1015,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 179,
         "pull_forward": [],
-        "grammar_cutoff": 34,
+        "grammar_cutoff": 33,
         "required_grammar": ["koto-ni-suru", "koto-ni-naru"],
         "target_words": (126, 151),
         "question_count": 4,
@@ -1025,8 +1034,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 194,
         "pull_forward": [],
-        "grammar_cutoff": 37,
-        "required_grammar": ["mono", "bakari", "tokoro"],
+        "grammar_cutoff": 35,
+        "required_grammar": ["bakari", "tokoro"],
         "target_words": (130, 155),
         "question_count": 4,
         "topic": (
@@ -1043,8 +1052,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 203,
         "pull_forward": [],
-        "grammar_cutoff": 40,
-        "required_grammar": ["tame-ni", "aida", "uchi-ni", "tabi-ni"],
+        "grammar_cutoff": 36,
+        "required_grammar": ["tame-ni", "aida"],
         "target_words": (133, 158),
         "question_count": 4,
         "topic": (
@@ -1062,8 +1071,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 215,
         "pull_forward": ["kikai-machine"],
-        "grammar_cutoff": 44,
-        "required_grammar": ["baai", "to-conditional", "kawarini"],
+        "grammar_cutoff": 39,
+        "required_grammar": ["baai", "to-conditional"],
         "target_words": (136, 162),
         "question_count": 4,
         "topic": (
@@ -1081,10 +1090,8 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 228,
         "pull_forward": ["gyouji", "shuukan-custom"],
-        "grammar_cutoff": 47,
-        "required_grammar": [
-            "kawari-ni-formal", "toshite", "nitsuite",
-        ],
+        "grammar_cutoff": 40,
+        "required_grammar": ["nitsuite"],
         "target_words": (140, 165),
         "question_count": 4,
         "topic": (
@@ -1102,8 +1109,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 242,
         "pull_forward": [],
-        "grammar_cutoff": 50,
-        "required_grammar": ["niyoruto", "tame", "kagiri"],
+        "grammar_cutoff": 42,
+        "required_grammar": ["niyoruto", "tame"],
         "target_words": (143, 169),
         "question_count": 4,
         "topic": (
@@ -1121,8 +1128,8 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 258,
         "pull_forward": [],
-        "grammar_cutoff": 53,
-        "required_grammar": ["tatoe-temo", "kke", "noda"],
+        "grammar_cutoff": 43,
+        "required_grammar": ["noda"],
         "target_words": (146, 172),
         "question_count": 4,
         "topic": (
@@ -1140,7 +1147,7 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 275,
         "pull_forward": [],
-        "grammar_cutoff": 54,
+        "grammar_cutoff": 44,
         "required_grammar": ["kamoshirenai", "nikui-yasui"],
         "target_words": (150, 176),
         "question_count": 4,
@@ -1158,8 +1165,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 290,
         "pull_forward": [],
-        "grammar_cutoff": 56,
-        "required_grammar": ["sugiru", "tsutsu-aru", "ageku"],
+        "grammar_cutoff": 44,
+        "required_grammar": ["sugiru"],
         "target_words": (153, 179),
         "question_count": 4,
         "topic": (
@@ -1175,9 +1182,9 @@ N4_SEEDS = [
         "position": 21,
         "tone": "humorous",
         "vocab_cutoff": 303,
-        "pull_forward": [],
-        "grammar_cutoff": 59,
-        "required_grammar": ["wake", "wakeganai", "kanaru"],
+        "pull_forward": ["kanari"],
+        "grammar_cutoff": 44,
+        "required_grammar": [],
         "target_words": (156, 183),
         "question_count": 5,
         "topic": (
@@ -1194,7 +1201,7 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 321,
         "pull_forward": [],
-        "grammar_cutoff": 62,
+        "grammar_cutoff": 47,
         "required_grammar": ["hodo", "kurai-degree", "dake-de-naku"],
         "target_words": (160, 187),
         "question_count": 5,
@@ -1212,16 +1219,17 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 342,
         "pull_forward": [],
-        "grammar_cutoff": 65,
-        "required_grammar": ["kagirazu", "ippou-de", "nitotte"],
+        "grammar_cutoff": 47,
+        "required_grammar": [],
         "target_words": (163, 190),
         "question_count": 5,
         "topic": (
-            "A school club that is not limited to the sport in its name. On one "
-            "hand there is a tennis court booked every Tuesday; on the other, "
-            "most of the members are inside playing cards. For the writer this "
-            "is the perfect arrangement, and the one serious member is winning "
-            "people over a fortnight at a time."
+            "A tennis club that does everything except tennis. The court is "
+            "booked every Tuesday afternoon, but the members sit in a classroom "
+            "playing cards. The writer, who is bad at sport, is very happy with "
+            "this. One serious member opens the door each week and asks everyone "
+            "to play tennis, and slowly, one person every two weeks, people "
+            "follow."
         ),
         "extra_allowed": [],
     },
@@ -1230,11 +1238,9 @@ N4_SEEDS = [
         "position": 24,
         "tone": "humorous",
         "vocab_cutoff": 356,
-        "pull_forward": [],
-        "grammar_cutoff": 69,
-        "required_grammar": [
-            "nikanshite", "souiu", "tte", "tteba",
-        ],
+        "pull_forward": ["souiu", "kouiu"],
+        "grammar_cutoff": 48,
+        "required_grammar": ["tte"],
         "target_words": (166, 194),
         "question_count": 5,
         "topic": (
@@ -1252,10 +1258,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 375,
         "pull_forward": [],
-        "grammar_cutoff": 73,
-        "required_grammar": [
-            "ka-douka", "ka-nanka", "toka", "kke2",
-        ],
+        "grammar_cutoff": 51,
+        "required_grammar": ["ka-douka", "ka-nanka", "toka"],
         "target_words": (169, 197),
         "question_count": 5,
         "topic": (
@@ -1273,10 +1277,8 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 393,
         "pull_forward": [],
-        "grammar_cutoff": 77,
-        "required_grammar": [
-            "tokoroga", "soredemo", "sokode", "sonoseika-de",
-        ],
+        "grammar_cutoff": 54,
+        "required_grammar": ["soredemo", "sokode", "sonoseika-de"],
         "target_words": (173, 201),
         "question_count": 5,
         "topic": (
@@ -1294,18 +1296,17 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 412,
         "pull_forward": [],
-        "grammar_cutoff": 81,
-        "required_grammar": [
-            "suruto", "igai", "igo-formal", "hantai-ni",
-        ],
+        "grammar_cutoff": 56,
+        "required_grammar": ["suruto", "igai"],
         "target_words": (176, 204),
         "question_count": 5,
         "topic": (
-            "What has changed since graduation: the same station, the same shop "
-            "on the corner, everybody busier now except one friend, who is "
-            "exactly as they were. Then a letter arrives from that friend, and "
-            "the writer notices the opposite is also true. Warm and plain, no "
-            "joke."
+            "Three years after graduation: the same station, the same café on "
+            "the corner, every friend busier now except one, who still sits in "
+            "the same seat reading. Then a letter comes from that friend: they "
+            "are going to work abroad, and they are glad the writer has not "
+            "changed at all. The writer had thought the friend was the one who "
+            "never changed. Warm and plain, no joke."
         ),
         "extra_allowed": ["ハル"],
     },
@@ -1315,15 +1316,16 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 440,
         "pull_forward": [],
-        "grammar_cutoff": 85,
-        "required_grammar": ["koso", "sae", "saeba", "nomi"],
+        "grammar_cutoff": 56,
+        "required_grammar": [],
         "target_words": (179, 208),
         "question_count": 5,
         "topic": (
-            "This year for certain. If only there were time, the writer would "
-            "study every day; even ten minutes would be enough; Sunday is the "
-            "only free day on the whole page. By March the plan is beautifully "
-            "written, pinned above the desk, and has been read exactly once."
+            "A New Year plan to study Japanese every day. In January the writer "
+            "writes a beautiful timetable and puts it on the wall above the "
+            "desk. Every week there is a new reason not to study. By March the "
+            "plan has been read only once, on the day it went up, but the boy "
+            "next door reads it through the window every morning."
         ),
         "extra_allowed": [],
     },
@@ -1333,18 +1335,17 @@ N4_SEEDS = [
         "tone": "humorous",
         "vocab_cutoff": 470,
         "pull_forward": [],
-        "grammar_cutoff": 89,
-        "required_grammar": [
-            "hoka-nai", "yoruni", "tsuide-ni", "ue-de",
-        ],
+        "grammar_cutoff": 56,
+        "required_grammar": [],
         "target_words": (183, 211),
         "question_count": 5,
         "topic": (
-            "The trains stop because of a typhoon, so there is nothing for it "
-            "but to walk. While the writer is out there anyway, they do the "
-            "three errands they have been putting off for a month, and — after "
-            "standing in the shop thinking it over very carefully — buy the "
-            "umbrella they should have bought that morning."
+            "The trains stop because of a typhoon, so the writer has to walk to "
+            "work. On the way they do three errands they have put off for a "
+            "month: the post office, the library, the pharmacy. Next to the "
+            "pharmacy is an umbrella shop. They stand in it for twenty minutes "
+            "choosing, buy one, and step out into a sky that has stopped "
+            "raining."
         ),
         "extra_allowed": [],
     },
@@ -1354,18 +1355,16 @@ N4_SEEDS = [
         "tone": "neutral",
         "vocab_cutoff": 529,
         "pull_forward": [],
-        "grammar_cutoff": 92,
-        "required_grammar": [
-            "saichuu-ni", "oyobi", "ni-taishite",
-        ],
+        "grammar_cutoff": 56,
+        "required_grammar": [],
         "target_words": (186, 215),
         "question_count": 5,
         "topic": (
-            "A notice from the city office about the summer festival: the date, "
-            "the fireworks, where rubbish goes, and what the office asks of "
-            "visitors as against what it asks of the stall holders. One careful "
-            "line explains what to do if the weather turns right in the middle "
-            "of the fireworks. Courteous, exact, written as a public notice."
+            "A notice from the city office about the summer festival: the date "
+            "and time, the fireworks, where the rubbish bins are, what the "
+            "office asks of visitors, and what it asks of the stall holders. One "
+            "careful line explains what happens if the weather turns bad during "
+            "the fireworks. Courteous, exact, written as a public notice."
         ),
         "extra_allowed": [],
     },
@@ -1516,7 +1515,11 @@ def grammar_coverage_errors(level):
     Every point except a `MANUAL_SLUG`. `ladder_errors` refuses to let a seed
     require one (no mechanical rule can confirm a passage uses it), so counting
     it here would make the two checks unsatisfiable together: N4's
-    `node-vs-kara` is から, the same から as `kara-because`."""
+    `node-vs-kara` is から, the same から as `kara-because`.
+
+    A level with no seeds (N3 grammar ships without passages) has no rule."""
+    if level not in SEEDS:
+        return []
     assigned = {}
     for s in seeds_for(level):
         for slug in s.get("required_grammar", []):

@@ -38384,8 +38384,8 @@
           "furigana": "祖[そ]母[ぼ]の家[いえ]に泊[と]まると、毎[まい]朝[あさ]和[わ]食[しょく]が出[で]ます。"
         },
         {
-          "japanese": "明日は洋食の代わりに和食にしましょう。",
-          "english": "Tomorrow, let's have Japanese food instead of Western.",
+          "japanese": "明日は洋食ではなくて、和食にしましょう。",
+          "english": "Tomorrow, let's have Japanese food, not Western.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "ashita",
@@ -38405,11 +38405,11 @@
             },
             {
               "vocabulary_slug": "washoku",
-              "start": 10,
-              "end": 12
+              "start": 11,
+              "end": 13
             }
           ],
-          "furigana": "明日[あした]は洋[よう]食[しょく]の代[か]わりに和[わ]食[しょく]にしましょう。"
+          "furigana": "明日[あした]は洋[よう]食[しょく]ではなくて、和[わ]食[しょく]にしましょう。"
         },
         {
           "japanese": "外国人の友人を和食の店に連れて行きました。",
@@ -41457,8 +41457,8 @@
           "furigana": "夏[なつ]はチョコレートがすぐ溶[と]けます。"
         },
         {
-          "japanese": "兄は晩ご飯の代わりにチョコレートを食べた。",
-          "english": "My older brother ate chocolate instead of dinner.",
+          "japanese": "兄は晩ご飯を食べないで、チョコレートを食べた。",
+          "english": "My older brother ate chocolate and skipped dinner.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "ani",
@@ -41478,19 +41478,26 @@
               "end": 5
             },
             {
+              "vocabulary_slug": "taberu",
+              "start": 6,
+              "end": 11,
+              "surface_form": "食べないで",
+              "inflection": "nai"
+            },
+            {
               "vocabulary_slug": "chokoreeto",
-              "start": 10,
-              "end": 16
+              "start": 12,
+              "end": 18
             },
             {
               "vocabulary_slug": "taberu",
-              "start": 17,
-              "end": 20,
+              "start": 19,
+              "end": 22,
               "surface_form": "食べた",
               "inflection": "ta"
             }
           ],
-          "furigana": "兄[あに]は晩[ばん]ご飯[はん]の代[か]わりにチョコレートを食[た]べた。"
+          "furigana": "兄[あに]は晩[ばん]ご飯[はん]を食[た]べないで、チョコレートを食[た]べた。"
         },
         {
           "japanese": "苦いチョコレートは苦手です。",
@@ -68899,8 +68906,8 @@
           "furigana": "家[か]族[ぞく]の幸[こう]福[ふく]を祈[いの]っています。"
         },
         {
-          "japanese": "お金がたくさんある人が、いつも幸福なわけではありません。",
-          "english": "People with lots of money aren't always happy.",
+          "japanese": "お金がたくさんある人も、いつも幸福ではありません。",
+          "english": "People with lots of money aren't always happy either.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "okane",
@@ -68943,13 +68950,13 @@
             },
             {
               "vocabulary_slug": "aru",
-              "start": 22,
-              "end": 27,
+              "start": 19,
+              "end": 24,
               "surface_form": "ありません",
               "inflection": "masu"
             }
           ],
-          "furigana": "お金[かね]がたくさんある人[ひと]が、いつも幸[こう]福[ふく]なわけではありません。"
+          "furigana": "お金[かね]がたくさんある人[ひと]も、いつも幸[こう]福[ふく]ではありません。"
         },
         {
           "japanese": "その夫婦は、海の近くの家で幸福に過ごしました。",
@@ -74774,8 +74781,8 @@
           "furigana": "引[ひ]き出[だ]しの中[なか]に、はんこが三[みっ]つも入[はい]っていました。"
         },
         {
-          "japanese": "署名の代わりに、はんこでもいいですか。",
-          "english": "Can I use my seal instead of a signature?",
+          "japanese": "署名ではなくて、はんこでもいいですか。",
+          "english": "Can I use my seal, not a signature?",
           "sort_order": 2,
           "vocabulary_slugs": [
             "shomei",
@@ -74799,7 +74806,7 @@
               "end": 15
             }
           ],
-          "furigana": "署[しょ]名[めい]の代[か]わりに、はんこでもいいですか。"
+          "furigana": "署[しょ]名[めい]ではなくて、はんこでもいいですか。"
         }
       ]
     },
@@ -76756,8 +76763,8 @@
           "furigana": "新[あたら]しい町[まち]での生[せい]活[かつ]にも、だんだん慣[な]れてきました。"
         },
         {
-          "japanese": "犬が来て以来、私たちの生活はとても賑やかになりました。",
-          "english": "Ever since the dog arrived, our life has gotten much livelier.",
+          "japanese": "犬が来てから、私たちの生活はとても賑やかになりました。",
+          "english": "Since the dog arrived, our life has gotten much livelier.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "inu",
@@ -76809,7 +76816,7 @@
               "inflection": "masu"
             }
           ],
-          "furigana": "犬[いぬ]が来[き]て以[い]来[らい]、私[わたし]たちの生[せい]活[かつ]はとても賑[にぎ]やかになりました。"
+          "furigana": "犬[いぬ]が来[き]てから、私[わたし]たちの生[せい]活[かつ]はとても賑[にぎ]やかになりました。"
         },
         {
           "japanese": "毎日の生活の中で、一番大切な時間は朝ご飯です。",
@@ -78578,6 +78585,316 @@
             }
           ],
           "furigana": "このノートは、リサイクルの紙[かみ]で作[つく]りました。"
+        }
+      ]
+    },
+    {
+      "slug": "souiu",
+      "primary_form": "そういう",
+      "meaning": "that kind of / such",
+      "word_type": "adjectival",
+      "reading_composition": "Kana only — the word is written exactly as it is read.",
+      "mnemonic_text": "そう (so) + いう (say): the kind you just said.",
+      "sort_order": 530,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that kind of / such",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "そういう"
+        }
+      ],
+      "furigana": "そういう",
+      "meaning_mnemonic": "At Koichi's konbini, the cashier eyes your fish-and-banana sandwich and asks, “<reading>So, you</reading> eat <vocabulary form=\"そういう\">that kind of</vocabulary> thing?” His <reading>そういう</reading> points at the odd thing on your side of the till, never at anything on his.",
+      "description": "It always sits right before a noun. It points at things near the listener, and very often back at something the other person just said.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私もそういう映画が好きです。",
+          "english": "I like that kind of movie too.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "souiu",
+            "eiga",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "souiu",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "私[わたし]もそういう映[えい]画[が]が好[す]きです。"
+        },
+        {
+          "japanese": "そういう話は先生に聞いてください。",
+          "english": "Please ask the teacher about that sort of thing.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "souiu",
+            "hanashi",
+            "sensei",
+            "kiku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "souiu",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hanashi",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 9,
+              "end": 12,
+              "surface_form": "聞いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "そういう話[はなし]は先[せん]生[せい]に聞[き]いてください。"
+        },
+        {
+          "japanese": "兄はいつもそういう服を着ています。",
+          "english": "My older brother always wears clothes like that.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ani",
+            "itsumo",
+            "souiu",
+            "fuku",
+            "kiru-wear"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "souiu",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 11,
+              "end": 13,
+              "surface_form": "着て",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "兄[あに]はいつもそういう服[ふく]を着[き]ています。"
+        }
+      ]
+    },
+    {
+      "slug": "kouiu",
+      "primary_form": "こういう",
+      "meaning": "this kind of",
+      "word_type": "adjectival",
+      "reading_composition": "Kana only — the word is written exactly as it is read.",
+      "mnemonic_text": "こう (like this) + いう (say): this kind.",
+      "sort_order": 531,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "this kind of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こういう"
+        }
+      ],
+      "furigana": "こういう",
+      "meaning_mnemonic": "At the riverbank, Sei hugs a wriggling fish to her chest and says, “<reading>Koi, you</reading> see, are <vocabulary form=\"こういう\">this kind of</vocabulary> fish.” Its tail slaps her cheek the whole time, because <reading>こういう</reading> is for things that close to you.",
+      "description": "It always sits right before a noun. It points at things near the speaker, and often ahead at something the speaker is about to show or explain.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "6",
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "こういう靴はどこで売っていますか。",
+          "english": "Where do they sell shoes like these?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouiu",
+            "kutsu",
+            "doko",
+            "uru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kouiu",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kutsu",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "uru",
+              "start": 9,
+              "end": 12,
+              "surface_form": "売って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "こういう靴[くつ]はどこで売[う]っていますか。"
+        },
+        {
+          "japanese": "雨の日は、こういう傘があると便利です。",
+          "english": "On rainy days, an umbrella like this comes in handy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ame-v",
+            "hi-sun-v",
+            "kouiu",
+            "kasa",
+            "aru",
+            "benri"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hi-sun-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kouiu",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "vocabulary_slug": "benri",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "furigana": "雨[あめ]の日[ひ]は、こういう傘[かさ]があると便[べん]利[り]です。"
+        },
+        {
+          "japanese": "母はこういう甘いお菓子をよく作ってくれました。",
+          "english": "My mom often made me sweets like this.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "kouiu",
+            "amai",
+            "okashi",
+            "yoku",
+            "tsukuru",
+            "kureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kouiu",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "amai",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "okashi",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "yoku",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 14,
+              "end": 17,
+              "surface_form": "作って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "kureru",
+              "start": 17,
+              "end": 22,
+              "surface_form": "くれました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "母[はは]はこういう甘[あま]いお菓[か]子[し]をよく作[つく]ってくれました。"
         }
       ]
     }

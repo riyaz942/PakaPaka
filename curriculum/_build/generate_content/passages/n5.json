@@ -5466,7 +5466,7 @@
       "tone": "humorous",
       "passage": {
         "title": "傘をなくした",
-        "body": "私は傘をなくしました。朝は雨でしたが、傘がありませんでした。駅に忘れただろうと思いましたが、探しませんでした。友達に電話して、「駅の傘はどうですか」と聞きました。友達は「駅員が持って行ったでしょう」と言いましたが、私はどこも見に行きませんでした。晩、うちに帰ってから、傘は部屋にありました。先週、置いたのでしょう。",
+        "body": "私は傘をなくしました。朝は雨でしたが、傘がありませんでした。駅に忘れただろうと思いましたが、探しませんでした。友達に「駅で探すのはどうですか」と聞きました。友達は「駅員が持って行ったでしょう」と言いましたが、私はどこも見に行きませんでした。晩、うちに帰ってから、部屋で傘を見つけました。先週、置いたのでしょう。",
         "questions": [
           {
             "prompt": "私は何をなくしましたか。",
@@ -5500,11 +5500,12 @@
             "prompt_furigana": "私[わたし]はいつ、うちに帰[かえ]りましたか。"
           }
         ],
-        "english_translation": "I lost my umbrella. It was raining in the morning, but I didn't have it. I thought I'd probably left it at the station, but I didn't search for it. I called a friend and asked, \"How about the umbrella at the station?\" My friend said, \"A station employee probably took it,\" but I didn't go check anywhere. In the evening, after I got home, the umbrella was in the room. I probably put it there last week.",
+        "english_translation": "I lost my umbrella. It was raining in the morning, but I didn't have my umbrella. I thought I had probably left it at the station, but I didn't look for it. I asked my friend, \"How about looking for it at the station?\" My friend said, \"A station employee probably took it,\" but I didn't go anywhere to look. In the evening, after I got home, I found the umbrella in my room. I probably put it there last week.",
         "summary_ja": "傘をなくしましたが、うちで見つけました。",
         "summary_en": "After losing his umbrella, he finds it at home without ever having searched for it.",
         "grammar_slugs": [
           "darou",
+          "de-location",
           "deshou",
           "desu",
           "dou-desu-ka",
@@ -5517,7 +5518,6 @@
           "ni-iku",
           "ni-indirect",
           "no-nominalizer",
-          "no-possessive",
           "ta-form",
           "te-form",
           "te-kara",
@@ -5531,7 +5531,6 @@
           "aru",
           "asa",
           "ban",
-          "denwa",
           "doko",
           "dou",
           "eki",
@@ -5542,6 +5541,7 @@
           "kaeru-v",
           "kasa",
           "kiku-v",
+          "mitsukeru",
           "motsu",
           "oku",
           "omou",
@@ -5617,96 +5617,96 @@
             "end": 57
           },
           {
-            "vocabulary_slug": "denwa",
-            "start": 58,
+            "vocabulary_slug": "eki",
+            "start": 59,
             "end": 60
           },
           {
-            "vocabulary_slug": "eki",
-            "start": 64,
-            "end": 65
-          },
-          {
-            "vocabulary_slug": "kasa",
-            "start": 66,
-            "end": 67
+            "vocabulary_slug": "sagasu",
+            "start": 61,
+            "end": 63
           },
           {
             "vocabulary_slug": "dou",
-            "start": 68,
-            "end": 70
+            "start": 65,
+            "end": 67
           },
           {
             "vocabulary_slug": "kiku-v",
-            "start": 75,
-            "end": 80,
+            "start": 72,
+            "end": 77,
             "surface_form": "聞きました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "tomodachi",
-            "start": 81,
-            "end": 83
+            "start": 78,
+            "end": 80
           },
           {
             "vocabulary_slug": "ekiin",
-            "start": 85,
-            "end": 87
+            "start": 82,
+            "end": 84
           },
           {
             "vocabulary_slug": "motsu",
-            "start": 88,
-            "end": 91,
+            "start": 85,
+            "end": 88,
             "surface_form": "持って",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "iku-v",
-            "start": 91,
-            "end": 94,
+            "start": 88,
+            "end": 91,
             "surface_form": "行った",
             "inflection": "ta"
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 100,
-            "end": 105,
+            "start": 97,
+            "end": 102,
             "surface_form": "言いました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "watashi",
-            "start": 107,
-            "end": 108
+            "start": 104,
+            "end": 105
           },
           {
             "vocabulary_slug": "doko",
-            "start": 109,
-            "end": 111
+            "start": 106,
+            "end": 108
           },
           {
             "vocabulary_slug": "iku-v",
-            "start": 114,
-            "end": 122,
+            "start": 111,
+            "end": 119,
             "surface_form": "行きませんでした",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "ban",
-            "start": 123,
-            "end": 124
+            "start": 120,
+            "end": 121
           },
           {
             "vocabulary_slug": "uchi",
-            "start": 125,
-            "end": 127
+            "start": 122,
+            "end": 124
           },
           {
             "vocabulary_slug": "kaeru-v",
-            "start": 128,
-            "end": 131,
+            "start": 125,
+            "end": 128,
             "surface_form": "帰って",
             "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "heya",
+            "start": 131,
+            "end": 133
           },
           {
             "vocabulary_slug": "kasa",
@@ -5714,32 +5714,27 @@
             "end": 135
           },
           {
-            "vocabulary_slug": "heya",
+            "vocabulary_slug": "mitsukeru",
             "start": 136,
-            "end": 138
-          },
-          {
-            "vocabulary_slug": "aru",
-            "start": 139,
-            "end": 144,
-            "surface_form": "ありました",
+            "end": 142,
+            "surface_form": "見つけました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "senshuu",
-            "start": 145,
-            "end": 147
+            "start": 143,
+            "end": 145
           },
           {
             "vocabulary_slug": "oku",
-            "start": 148,
-            "end": 151,
+            "start": 146,
+            "end": 149,
             "surface_form": "置いた",
             "inflection": "ta"
           }
         ],
-        "word_count": 94,
-        "body_furigana": "私[わたし]は傘[かさ]をなくしました。朝[あさ]は雨[あめ]でしたが、傘[かさ]がありませんでした。駅[えき]に忘[わす]れただろうと思[おも]いましたが、探[さが]しませんでした。友[とも]達[だち]に電[でん]話[わ]して、「駅[えき]の傘[かさ]はどうですか」と聞[き]きました。友[とも]達[だち]は「駅[えき]員[いん]が持[も]って行[い]ったでしょう」と言[い]いましたが、私[わたし]はどこも見[み]に行[い]きませんでした。晩[ばん]、うちに帰[かえ]ってから、傘[かさ]は部屋[へや]にありました。先[せん]週[しゅう]、置[お]いたのでしょう。",
+        "word_count": 92,
+        "body_furigana": "私[わたし]は傘[かさ]をなくしました。朝[あさ]は雨[あめ]でしたが、傘[かさ]がありませんでした。駅[えき]に忘[わす]れただろうと思[おも]いましたが、探[さが]しませんでした。友[とも]達[だち]に「駅[えき]で探[さが]すのはどうですか」と聞[き]きました。友[とも]達[だち]は「駅[えき]員[いん]が持[も]って行[い]ったでしょう」と言[い]いましたが、私[わたし]はどこも見[み]に行[い]きませんでした。晩[ばん]、うちに帰[かえ]ってから、部屋[へや]で傘[かさ]を見[み]つけました。先[せん]週[しゅう]、置[お]いたのでしょう。",
         "slug": "kasa-o-nakushita",
         "_meta": {
           "generator_model": "claude-opus-5-5",

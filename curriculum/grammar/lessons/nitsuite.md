@@ -6,9 +6,9 @@ caution_notes:
   - "について needs a plain noun in front of it — it can't attach directly to a verb."
   - "につき is the formal, written-notice version of について; use について when you're speaking."
   - "について only pairs with verbs that can take a subject matter, like 話す or 考える — not verbs of motion or existence like 行く or ある."
-  - "として and について share the same bare-noun shape but mark different things — role versus topic — so swapping one for the other changes what the sentence means."
+  - "日本語を話す and 日本語について話す mean different things — with を the noun is the thing you speak, with について it is the topic — so swapping one for the other changes what the sentence means."
 related_grammar_slugs:
-  - "toshite"
+  - "wo"
   - "node-vs-kara"
   - "niyoruto"
 ---
@@ -95,26 +95,26 @@ It's also worth being honest that について can feel a little formal or write
 
 Learners often reach for について when they actually mean "because," and the two have nothing to do with each other. から marks a reason — the thing that caused something — while について marks a topic — the thing being discussed. "I'm worried about the exam" sounds like it should use について, but if what you mean is "because of the exam" (the exam is the cause of the worry), that's から territory, not について. Ask yourself whether the noun is the subject matter of a conversation or the reason something happened; that question sorts the two every time.
 
-## Contrast: について vs として
+## Contrast: について vs を
 
-You've already met として for "as / in the role of" — same shape (noun, nothing in between), completely different job underneath. として tells you what capacity someone is acting in; について tells you what topic someone is talking about. Swap one for the other and the sentence's meaning changes, not just its tone.
-
-```jp
-彼女は先生として教室で話した。
-```
-
-*She spoke in the classroom as a teacher.*
+You've known を since your first lessons, and with a verb like 話す it sits in exactly the slot について wants — right after the noun, nothing in between. But を makes the noun the thing the verb acts on; について makes it the topic the verb is about. Swap one for the other and the sentence's meaning changes, not just its tone.
 
 ```jp
-彼女は先生について教室で話した。
+彼女は日本語を話した。
 ```
 
-*She spoke in the classroom about a teacher.*
+*She spoke Japanese.*
 
-Same words, same slot in the sentence, and the only difference — として versus について — decides whether she was doing the talking in a professional capacity, or was the one being talked about. This pair trips people up for a while because both patterns look so similar on the page; the only fix is slowing down and asking "is this noun the role, or the topic?"
+```jp
+彼女は日本語について話した。
+```
 
-Worth remembering too: と、から、代わりに、というより、and 場合 all attach to very different structures — plain-form clauses, not bare nouns — so について doesn't compete with them the way it competes with として. として is the one pattern close enough in shape to actually cause mix-ups, which is exactly why it's worth this much attention. If you can ask yourself "is this noun playing a role, or is it what's being discussed?" before you pick a particle, the two stop colliding.
+*She talked about Japanese.*
 
-Whenever you catch yourself reaching for "about" in Japanese, check first whether you're pointing at a topic mid-sentence (について) or naming a role someone's filling (として) — they'll keep bumping into each other until that split becomes automatic. Once that split feels settled, について itself will start showing up everywhere: in questions, in answers, in the small talk that opens almost any conversation, because "what's this about" is one of the most useful questions there is.
+Same words, same slot in the sentence, and the only difference — を versus について — decides whether Japanese was the language coming out of her mouth, or the subject she was discussing. This pair trips people up for a while because both patterns look so similar on the page; the only fix is slowing down and asking "is this noun the thing itself, or the topic?"
+
+Worth remembering too: と、から and 場合 all attach to very different structures — plain-form clauses, not bare nouns — so について doesn't compete with them the way it competes with を. を is the one particle close enough in shape to actually cause mix-ups, which is exactly why it's worth this much attention. If you can ask yourself "is this noun the thing itself, or is it what's being discussed?" before you pick a particle, the two stop colliding.
+
+Whenever you catch yourself reaching for "about" in Japanese, check first whether you're pointing at a topic mid-sentence (について) or naming the thing itself (を) — they'll keep bumping into each other until that split becomes automatic. Once that split feels settled, について itself will start showing up everywhere: in questions, in answers, in the small talk that opens almost any conversation, because "what's this about" is one of the most useful questions there is.
 
 Down the line you'll meet によると, which sounds related but marks something else entirely: not what you're discussing, but whose word you're taking it on.

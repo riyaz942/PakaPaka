@@ -8,7 +8,6 @@ caution_notes:
   - "ため is a formal, written-feeling connector; in casual conversation about your own personal reasons, から still sounds far more natural."
 related_grammar_slugs:
   - "node-vs-kara"
-  - "kagiri"
 ---
 
 You're standing on the platform, bag in one hand, coffee in the other, when the overhead speaker crackles on: 台風のため、電車が遅れています。 You don't need much Japanese to catch the shape of it — a typhoon, then のため, then a delay. That のため is doing all the connective work in the sentence: it states the typhoon as the reason for the delay, and it does it in the flat, matter-of-fact voice you'd expect from a station announcement, not from a friend texting you an excuse for being late. Nobody on that platform is personally responsible for the storm, and the sentence is built to make that clear — the typhoon is simply named as the fact behind what happened.
@@ -99,4 +98,4 @@ This is also where the noun-attachment rule from the last section earns its keep
 
 It's worth being honest that the line between the two isn't always crisp. Spoken Japanese borrows ため for effect sometimes, and formal writing occasionally leans on から when the writer wants to sound a little more direct. Treat から versus ため as a strong tendency you can lean on, not an unbreakable law — the two patterns share the same job, and real speech shuffles the boundary around more than any textbook rule likes to admit.
 
-So ため takes whatever's sitting in front of it — noun, な-adjective, い-adjective, or plain verb — bridges the gap with の or な wherever one's needed, and hands you a stated cause with your own voice left out of it, exactly where から would feel too casual. Hold onto that sense of something sitting outside anyone's control: it comes back before long, when 限り starts marking just how far a fact like that holds true.
+So ため takes whatever's sitting in front of it — noun, な-adjective, い-adjective, or plain verb — bridges the gap with の or な wherever one's needed, and hands you a stated cause with your own voice left out of it, exactly where から would feel too casual. Hold onto that sense of something sitting outside anyone's control: it comes back at N3, when 限り starts marking just how far a fact like that holds true.

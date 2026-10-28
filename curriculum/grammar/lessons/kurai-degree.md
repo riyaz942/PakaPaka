@@ -9,8 +9,6 @@ caution_notes:
   - "Swapping くらい for ほど rarely changes the meaning, but ほど reads more literary — in everyday chat, くらい is the safer default."
 related_grammar_slugs:
   - "hodo"
-  - "kanaru"
-  - "ippou-de"
 ---
 
 You're running fifteen minutes behind and your friend is already waiting outside the station. You don't know the exact number of minutes standing between you and them — nobody ever does when they're rushing — but "soon" isn't going to cut it either, and neither is guessing wrong and looking like you don't know your own city. Japanese has a word built exactly for that kind of honest, useful guess: くらい (its twin spelling ぐらい does the same job), tacked straight onto a number to turn it into an estimate instead of a promise.
@@ -91,4 +89,4 @@ Set that next to the くらい version a few paragraphs back — same event, sam
 
 かなり忙しかった tells you the level and stops right there. 頭が痛くなるくらい忙しかった tells you the level by proving it — here's what happened because of how busy I was, now you do the math yourself. Reach for かなり when a plain degree is all the sentence needs and you're not trying to paint a scene; reach for くらい, or its more formal cousin ほど, when you want to hand the listener evidence instead of just an adjective and let them feel the size of it themselves.
 
-くらい is going to keep showing up every time you size one thing up against another — and once you're stacking two of those comparisons side by side instead of just leaning on one, that's exactly the situation 一方で is built for.
+くらい is going to keep showing up every time you size one thing up against another — and once you're stacking two of those comparisons side by side instead of just leaning on one, that's exactly the situation 一方で, an N3 pattern, is built for.

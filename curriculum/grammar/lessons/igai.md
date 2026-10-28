@@ -8,7 +8,6 @@ caution_notes:
   - "以外 plus a negative predicate usually means 'only this one,' not a double exclusion, so read 彼以外は誰も知りません as 'only he knows.'"
 related_grammar_slugs:
   - "soredemo"
-  - "igo-formal"
 ---
 
 Picture texting a friend about Saturday's get-together: "Is everyone coming?" Almost everyone — one person can't make it. You want to say "everyone except Ken," and Japanese has a clean, single word for that job: 以外 (igai), meaning "except" or "other than." It attaches directly onto whichever noun you're pulling out of the group, so you never have to build a whole clause around it.
@@ -86,7 +85,7 @@ That sentence tells you fish is out. It doesn't tell you whether "everything" me
 
 ## Contrast
 
-Everything else you've learned so far — 反面, ところが, それでも, そこで, そのため, すると — links two full sentences together. 以外 works differently: it's a small word riding directly on a noun, not a bridge between clauses. You can't swap it in for one of those connectors and expect the sentence to hold together; they're built for different jobs.
+Everything else you've learned so far — それでも, そこで, そのため, すると — links two full sentences together. 以外 works differently: it's a small word riding directly on a noun, not a bridge between clauses. You can't swap it in for one of those connectors and expect the sentence to hold together; they're built for different jobs.
 
 Where they do overlap is in mood, and それでも is the closest one to check yourself against. それでも says "even given that, X still happened" — it concedes something and pushes past it:
 
@@ -101,4 +100,4 @@ Where they do overlap is in mood, and それでも is the closest one to check y
 
 以外 also isn't the same word as 他 (ほか), even though both get translated as "other." 他 is a plain noun — "another one" — that can stand on its own and take its own particles, like a subject or an object. 以外 never stands alone; it only exists attached to the noun it's excluding.
 
-This is worth holding onto beyond today: 以外 belongs to a small family of patterns that bolt straight onto a noun instead of linking two sentences. You'll meet another member of that family soon in 以来, which uses the same "Noun +" shape to mean "ever since."
+This is worth holding onto beyond today: 以外 belongs to a small family of patterns that bolt straight onto a noun instead of linking two sentences. You'll meet another member of that family at N3 in 以来, which uses the same "Noun +" shape to mean "ever since."

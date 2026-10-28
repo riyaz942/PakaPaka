@@ -7,7 +7,6 @@ caution_notes:
   - "Once か何か is in the sentence, drop the object marker を — a bare noun plus を plus か何か is never said together."
   - "か何か is for replaceable objects, foods, and activities, not for vague people or vague places."
 related_grammar_slugs:
-  - "souiu"
   - "ka-douka"
   - "toka"
 ---
@@ -68,7 +67,7 @@ You haven't picked the book yet — you might not even end up buying a book at a
 
 ## Contrast: か何か vs そういう・こういう
 
-You already have そういう and こういう for "that kind of" and "this kind of" — both point at a category the listener can already picture, because it came up in conversation, because they said it, or because it's obvious from context. か何か is not that. It doesn't lean on anything already shared between speaker and listener; it introduces the category itself, right there in the sentence.
+The words そういう and こういう mean "that kind of" and "this kind of" — both point at a category the listener can already picture, because it came up in conversation, because they said it, or because it's obvious from context. か何か is not that. It doesn't lean on anything already shared between speaker and listener; it introduces the category itself, right there in the sentence.
 
 ```jp
 そういう話は好きじゃない。

@@ -9,8 +9,6 @@ caution_notes:
   - "とか attaches to nouns for listing, not to someone else's exact words — reach for って when you're casually quoting what somebody said."
 related_grammar_slugs:
   - "ka-nanka"
-  - "souiu"
-  - "tokoroga"
 ---
 
 Your friend texts you: 週末何する？ (What are you doing this weekend?) You haven't actually decided anything yet — maybe a movie, maybe some shopping, maybe you'll just see how you feel Saturday morning. Naming one single plan would be a lie; you don't have one. Naming nothing feels evasive, like you're dodging the question. What you want is a loose, no-commitment answer: a couple of examples that sketch the shape of your weekend without pinning down exactly what happens. That's the job とか does, and once you have it, this kind of half-decided answer stops feeling awkward to give — you're not lying about your plans, you're just being honest that they aren't plans yet.
@@ -85,7 +83,7 @@ In speech, a noun plus とか can even be the whole answer by itself. Asked 何�
 
 ## Contrast
 
-You've also met そういう for pointing back at "that kind of" thing once a category already exists in the conversation. とか is how you build that category out loud in the first place, by naming a few of its members; そういう is how you refer back to the whole category once it's already on the table. One creates, the other recalls.
+The word そういう points back at "that kind of" thing once a category already exists in the conversation. とか is how you build that category out loud in the first place, by naming a few of its members; そういう is how you refer back to the whole category once it's already on the table. One creates, the other recalls.
 
 ```jp
 そういう料理が好きです。
@@ -103,4 +101,4 @@ Name the examples with とか first, then wrap them up with そういう, and yo
 
 The two patterns also differ in how heavy they feel. とか is light — you can toss out one or two examples mid-sentence without slowing down. そういう carries a little more weight; it asks the listener to hold an entire category in mind at once, which is exactly why it works best after とか has already done the work of sketching that category out with real examples.
 
-とか's whole job is staying loose — a couple of named examples standing in for a category you don't feel like spelling out completely. Hold onto that habit of trailing off after a short list; it's exactly the kind of half-settled sentence that ところが later loves to interrupt, flipping something you thought was decided into something unexpected. For now, the win is smaller and more immediate: you can finally answer 週末何する？ honestly, without pretending you've already decided.
+とか's whole job is staying loose — a couple of named examples standing in for a category you don't feel like spelling out completely. Hold onto that habit of trailing off after a short list; it's exactly the kind of half-settled sentence that ところが, at N3, loves to interrupt, flipping something you thought was decided into something unexpected. For now, the win is smaller and more immediate: you can finally answer 週末何する？ honestly, without pretending you've already decided.

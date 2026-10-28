@@ -9,7 +9,6 @@ caution_notes:
   - "ところ marks one specific point in a process, while 間 marks the whole span around it, so the two are not interchangeable even after similar verbs."
 related_grammar_slugs:
   - "tokoro"
-  - "uchi-ni"
 ---
 
 You're at your desk with headphones on, working through kanji flashcards while your family is out running errands. By the time they get back, you've gone through half the deck — for the entire stretch they were gone, you were studying. In Japanese, saying "for this whole period, this other thing was also true" is exactly the job of 間・間に (あいだ・あいだに), a phrase that turns a stretch of time into a container you can put another action inside.
@@ -96,4 +95,4 @@ That difference matters because the two aren't interchangeable just because they
 
 Take the meeting sentences from earlier and imagine swapping in ところ instead: `会議のところ` doesn't really work the way 会議の間 does, because ところ needs something with a clear "middle" to catch you in — a verb in progress, not a noun that just names a block of time. That's the giveaway when you're unsure which one to reach for: if you can point to a single instant and say "right there, that's the point," ところ is available; if you're describing a whole stretch, or something landing anywhere inside that stretch, 間 or 間に is what you want. 間 and 間に don't compete with ところ so much as sit on a different scale of time — ところ is a point, 間 is a stretch, and 間に is a point that happens to land somewhere inside a stretch.
 
-Keep that distinction in mind, because a close cousin of 間 is coming soon: うちに, which also frames a stretch of time but adds a sense of urgency — "while it's still true, before it stops being true." For now, 間・間に stays neutral: no ticking clock, just two things that happened to share the same stretch of time.
+Keep that distinction in mind, because a close cousin of 間 comes later, at N3: うちに, which also frames a stretch of time but adds a sense of urgency — "while it's still true, before it stops being true." For now, 間・間に stays neutral: no ticking clock, just two things that happened to share the same stretch of time.

@@ -622,6 +622,14 @@ DAILY_LIFE_MISC = [
     {"slug": "risaikuru", "form": "リサイクル", "reading": "リサイクル", "meaning": "recycling", "mnemonic": "Borrowed word: risaikuru."},
 ]
 
+#: そういう・こういう were an N4 grammar point until the JLPT level audit
+#: (docs/content/grammar-jlpt-level-audit.md, section 6): they are words. The
+#: block is last so that no reading seed's vocab_cutoff moves.
+DEMONSTRATIVES_N4 = [
+    {"slug": "souiu", "form": "そういう", "reading": "そういう", "meaning": "that kind of / such", "mnemonic": "そう (so) + いう (say): the kind you just said."},
+    {"slug": "kouiu", "form": "こういう", "reading": "こういう", "meaning": "this kind of", "mnemonic": "こう (like this) + いう (say): this kind."},
+]
+
 # Assemble in the intended sort order.
 N4_VOCAB_BLOCKS = [
     SOCIETY_ABSTRACT,
@@ -650,6 +658,7 @@ N4_VOCAB_BLOCKS = [
     MORE_NOUNS_N4,
     COUNTERS_LOCATIONS_N4,
     DAILY_LIFE_MISC,
+    DEMONSTRATIVES_N4,
 ]
 
 N4_VOCAB = [item for block in N4_VOCAB_BLOCKS for item in block]

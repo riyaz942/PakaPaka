@@ -3241,8 +3241,8 @@
         ]
       },
       {
-        "japanese": "兄は晩ご飯の代わりにチョコレートを食べた。",
-        "english": "My older brother ate chocolate instead of dinner.",
+        "japanese": "兄は晩ご飯を食べないで、チョコレートを食べた。",
+        "english": "My older brother ate chocolate and skipped dinner.",
         "vocabulary_slugs": [
           "ani",
           "bangohan",
@@ -37023,8 +37023,8 @@
         ]
       },
       {
-        "japanese": "明日は洋食の代わりに和食にしましょう。",
-        "english": "Tomorrow, let's have Japanese food instead of Western.",
+        "japanese": "明日は洋食ではなくて、和食にしましょう。",
+        "english": "Tomorrow, let's have Japanese food, not Western.",
         "vocabulary_slugs": [
           "ashita",
           "youshoku",
@@ -45801,8 +45801,8 @@
         ]
       },
       {
-        "japanese": "お金がたくさんある人が、いつも幸福なわけではありません。",
-        "english": "People with lots of money aren't always happy.",
+        "japanese": "お金がたくさんある人も、いつも幸福ではありません。",
+        "english": "People with lots of money aren't always happy either.",
         "vocabulary_slugs": [
           "okane",
           "takusan",
@@ -47430,8 +47430,8 @@
         ]
       },
       {
-        "japanese": "署名の代わりに、はんこでもいいですか。",
-        "english": "Can I use my seal instead of a signature?",
+        "japanese": "署名ではなくて、はんこでもいいですか。",
+        "english": "Can I use my seal, not a signature?",
         "vocabulary_slugs": [
           "shomei",
           "hanko",
@@ -47982,8 +47982,8 @@
         ]
       },
       {
-        "japanese": "犬が来て以来、私たちの生活はとても賑やかになりました。",
-        "english": "Ever since the dog arrived, our life has gotten much livelier.",
+        "japanese": "犬が来てから、私たちの生活はとても賑やかになりました。",
+        "english": "Since the dog arrived, our life has gotten much livelier.",
         "vocabulary_slugs": [
           "inu",
           "kuru-v",
@@ -48495,6 +48495,90 @@
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "souiu": {
+    "example_sentences": [
+      {
+        "japanese": "私もそういう映画が好きです。",
+        "english": "I like that kind of movie too.",
+        "vocabulary_slugs": [
+          "watashi",
+          "souiu",
+          "eiga",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "そういう話は先生に聞いてください。",
+        "english": "Please ask the teacher about that sort of thing.",
+        "vocabulary_slugs": [
+          "souiu",
+          "hanashi",
+          "sensei",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "兄はいつもそういう服を着ています。",
+        "english": "My older brother always wears clothes like that.",
+        "vocabulary_slugs": [
+          "ani",
+          "itsumo",
+          "souiu",
+          "fuku",
+          "kiru-wear"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kouiu": {
+    "example_sentences": [
+      {
+        "japanese": "こういう靴はどこで売っていますか。",
+        "english": "Where do they sell shoes like these?",
+        "vocabulary_slugs": [
+          "kouiu",
+          "kutsu",
+          "doko",
+          "uru"
+        ]
+      },
+      {
+        "japanese": "雨の日は、こういう傘があると便利です。",
+        "english": "On rainy days, an umbrella like this comes in handy.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "hi-sun-v",
+          "kouiu",
+          "kasa",
+          "aru",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "母はこういう甘いお菓子をよく作ってくれました。",
+        "english": "My mom often made me sweets like this.",
+        "vocabulary_slugs": [
+          "haha",
+          "kouiu",
+          "amai",
+          "okashi",
+          "yoku",
+          "tsukuru",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   }
 }

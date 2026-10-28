@@ -8,7 +8,6 @@ caution_notes:
   - "In casual speech でなく commonly contracts to じゃなく, matching the same shift seen in ではない → じゃない, without changing the meaning."
 related_grammar_slugs:
   - "hodo"
-  - "kagirazu"
 ---
 
 Your friend asks how the new restaurant near the station was, and one compliment doesn't cover it — the place was cheap, and it was good. English glues those together with "not only... but also." Japanese has its own glue for exactly this: だけでなく.
@@ -91,4 +90,4 @@ You already have ほど for pushing one fact to its extreme — 死ぬほど忙�
 
 Line them up and the split is clear: the ほど sentence has one fact cranked to its limit; the だけでなく sentence has two separate facts standing side by side.
 
-Once "not only X" feels automatic, keep に限らず in your peripheral vision — it does something similar but reaches wider, saying a whole category isn't limited to just one example. Until then, だけでなく is the one to reach for whenever a single compliment, or complaint, doesn't cover it.
+Once "not only X" feels automatic, keep に限らず in your peripheral vision for later, at N3 — it does something similar but reaches wider, saying a whole category isn't limited to just one example. Until then, だけでなく is the one to reach for whenever a single compliment, or complaint, doesn't cover it.

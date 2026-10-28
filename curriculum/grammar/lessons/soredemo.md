@@ -7,8 +7,6 @@ caution_notes:
   - "それでも can't point at a hypothetical; the sentence before it has to describe something that already happened or is already true, not a future guess."
   - "それでも rarely opens a conversation on its own — without an earlier sentence naming the obstacle, listeners won't know what it's answering."
 related_grammar_slugs:
-  - "tokoroga"
-  - "kke2"
   - "sokode"
 ---
 
@@ -94,20 +92,6 @@ Swap それでも for a bare でも and you lose that pointing-back feeling. で
 
 The first pair is just two facts sitting side by side — bad weather, pretty park, no real friction between them. The second pair says the bad weather should have kept everyone indoors, and it didn't; that resistance is the part only それでも carries.
 
-ところが is the other neighbor worth separating out, and it's an easy pair to mix up because both sit after a full stop and both introduce something a little unwelcome. The difference is in what kind of "unwelcome": ところが reports a genuine twist, a result nobody was steering toward. それでも reports a course that held steady on purpose, against pressure everyone could already see coming.
-
-```jp
-薬を飲んだ。ところが熱は上がった。
-薬を飲んだ。それでも熱は下がらなかった。
-```
-
-*I took the medicine. However, my fever went up unexpectedly.*
-*I took the medicine. Even so, my fever didn't go down.*
-
-The fever spiking is the twist ところが is built for — nobody expected the medicine to backfire. The fever holding steady is the opposite of a twist: everyone half-expected the obstacle to win, and それでも is just confirming that it did. If you can rewrite a それでも sentence as "and, unsurprisingly, the obstacle won anyway," you've got the right word.
-
-反面 is worth one more line, mostly so you don't confuse the shapes. 反面 welds directly onto a plain-form clause inside a single sentence, describing two sides of the same subject at once — it never needs a full stop before it the way それでも does. Once you're watching for that period, the two stop looking anything alike.
-
 That's the whole pattern: name the obstacle, then let それでも announce that it lost. It's a small word to carry that much weight — one clause of setup, one word of pivot, one clause of payoff — but that's exactly why it reads as calm instead of dramatic. It isn't fighting the obstacle; it's just reporting, flatly, that the obstacle didn't get its way.
 
-Hold onto the ところが comparison — once そこで shows up, you'll see it pick up right where それでも leaves off, moving the story from "and yet, nothing changed" to "so here's what I did about it."
+Hold onto the でも comparison — once そこで shows up, you'll see it pick up right where それでも leaves off, moving the story from "and yet, nothing changed" to "so here's what I did about it."

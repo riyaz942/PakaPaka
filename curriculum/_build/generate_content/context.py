@@ -46,7 +46,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 #: Lower levels come first; a level's allowed vocab includes every earlier level.
-LEVEL_ORDER = ["n5", "n4"]
+LEVEL_ORDER = ["n5", "n4", "n3"]
 
 #: Survival vocabulary treated as known from the first grammar point (see the
 #: option-(a) amendment in the module docstring). Every slug must exist in the

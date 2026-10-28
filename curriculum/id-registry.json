@@ -1,6 +1,6 @@
 {
   "items": {
-    "next_id": 12737,
+    "next_id": 12739,
     "ids": {
       "radical:aka": 1,
       "radical:ame": 2,
@@ -1923,7 +1923,6 @@
       "grammar:ka-nanka": 1920,
       "grammar:kagirazu": 1921,
       "grammar:kagiri": 1922,
-      "grammar:kanaru": 1924,
       "grammar:kawari-ni-formal": 1925,
       "grammar:kawarini": 1926,
       "grammar:kke": 1927,
@@ -1957,7 +1956,6 @@
       "grammar:soredemo": 1959,
       "grammar:souda-hearsay": 1960,
       "grammar:souda-looks": 1961,
-      "grammar:souiu": 1962,
       "grammar:souni-naru": 1963,
       "grammar:suruto": 1965,
       "grammar:tabi-ni": 1966,
@@ -12727,15 +12725,19 @@
       "vocabulary:v-zunou": 12733,
       "vocabulary:v-zushiki": 12734,
       "vocabulary:v-zutsuu": 12735,
-      "grammar:conjugation-primer": 12736
+      "grammar:conjugation-primer": 12736,
+      "vocabulary:kouiu": 12737,
+      "vocabulary:souiu": 12738
     },
     "retired": {
       "grammar:n4-deshou": 1910,
       "grammar:n4-kamoshirenai": 1923,
+      "grammar:kanaru": 1924,
       "grammar:n4-koto-ga-aru": 1930,
       "grammar:n4-nakerebanaranai": 1936,
       "grammar:n4-nakutemoii": 1937,
       "grammar:n4-node": 1946,
+      "grammar:souiu": 1962,
       "grammar:n4-sugiru": 1964,
       "grammar:n4-teiru-progressive": 1972,
       "grammar:n4-temoii": 1975,

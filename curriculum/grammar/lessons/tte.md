@@ -7,8 +7,7 @@ caution_notes:
   - "The same って sentence can be reporting someone's words or casually picking up a topic — only the conversation around it tells you which, so don't expect a grammatical flag to disambiguate."
   - "Nouns and な-adjectives often take an extra だ before って when reporting speech (便利だって), but that だ never appears when って is just picking up a topic."
 related_grammar_slugs:
-  - "nitotte"
-  - "tteba"
+  - "nitsuite"
 ---
 
 Your friend is scrolling through a work chat, phone tilted so you can see, and taps a message before saying:
@@ -74,15 +73,15 @@ The first line is what you'd write on a form or say to someone you've just met. 
 
 ## Contrast
 
-にとって, which you've already met, also lets you frame a sentence around a particular person, but it's doing close to the opposite of って's topic-picking job. にとって nails down whose perspective a sentence belongs to — "for me," "for him" — while って's topic-marking use doesn't specify anyone's viewpoint at all; it just grabs a topic and leaves the question open for whoever's listening.
+について, which you've already met, also points at a topic, but it does a narrower job than って's topic-picking. について names what a verb like 話す or 考える is about, and it needs that verb to finish the thought. って's topic-marking use needs no such verb; it just grabs something already on the table and lets you comment on it directly.
 
 ```jp
-これは私にとって難しい。
-あれって難しい？
+これについて話した。
+これって難しい？
 ```
 
-*This is difficult for me. / Is that thing over there hard?*
+*We talked about this. / Is this thing hard?*
 
-The first sentence tells you exactly whose difficulty this is — mine, specifically, maybe not yours. The second doesn't claim anyone's viewpoint at all; it's just two people looking at the same thing, one of them asking the other what they think.
+The first sentence can't stop at これについて — it needs 話した to say what happened to the topic. The second has no verb of talking at all; it's just two people looking at the same thing, one of them asking the other what they think.
 
-って comes back soon in ったら and ってば, once it stops quietly picking up topics and starts calling someone out by name — hold onto the shape of it, because you'll recognize it immediately.
+って comes back at N3 in ったら and ってば, once it stops quietly picking up topics and starts calling someone out by name — hold onto the shape of it, because you'll recognize it immediately.

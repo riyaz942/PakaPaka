@@ -10514,5 +10514,23 @@
       "prompt_version": "6",
       "review_status": "reviewed"
     }
+  },
+  "souiu": {
+    "meaning_mnemonic": "At Koichi's konbini, the cashier eyes your fish-and-banana sandwich and asks, “<reading>So, you</reading> eat <vocabulary form=\"そういう\">that kind of</vocabulary> thing?” His <reading>そういう</reading> points at the odd thing on your side of the till, never at anything on his.",
+    "description": "It always sits right before a noun. It points at things near the listener, and very often back at something the other person just said.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "6",
+      "review_status": "draft"
+    }
+  },
+  "kouiu": {
+    "meaning_mnemonic": "At the riverbank, Sei hugs a wriggling fish to her chest and says, “<reading>Koi, you</reading> see, are <vocabulary form=\"こういう\">this kind of</vocabulary> fish.” Its tail slaps her cheek the whole time, because <reading>こういう</reading> is for things that close to you.",
+    "description": "It always sits right before a noun. It points at things near the speaker, and often ahead at something the speaker is about to show or explain.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "6",
+      "review_status": "draft"
+    }
   }
 }

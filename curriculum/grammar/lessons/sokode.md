@@ -7,7 +7,6 @@ caution_notes:
   - "The sentence after そこで needs to be a real action the speaker chose to take, not just another fact or feeling — pairing it with a state instead of a decision reads oddly."
   - "そこで belongs to narration and explanation, so it can sound stiff as a quick spoken answer to a casual \"why did you do that?\""
 related_grammar_slugs:
-  - "tokoroga"
   - "soredemo"
   - "sonoseika-de"
 ---
@@ -68,21 +67,21 @@ This is also why そこで never attaches directly to a noun or an adjective the
 
 Read that second sentence out loud and it looks identical to the connector. The difference is entirely about what came before it: 公園 (park) was just introduced, so そこ has something concrete to point at, and で is simply saying where the waiting happened. If the previous sentence names no place at all, there's nothing for そこ to refer to, and the reading collapses back into the connector — there's no situation-and-response pair to explain otherwise. When you're unsure which reading you're looking at, ask whether a place was just named in the sentence before it; if yes, check the locative reading first, because that's the one a bare grammar gloss won't warn you about.
 
-## Contrast: そこで vs ところが vs それでも
+## Contrast: そこで vs それでも
 
-You already know ところが and それでも, and they share そこで's job of opening a sentence that responds to the one before it — but they pull in the opposite direction. そこで says the second sentence follows naturally from the first: situation, then response, the kind of link you'd expect. ところが says the second sentence breaks the first one's expectation instead.
+You already know それでも, and it shares そこで's job of opening a sentence that responds to the one before it — but it pulls in the opposite direction. そこで says the second sentence follows naturally from the first: situation, then response, the kind of link you'd expect. それでも says the second sentence happened in spite of the first.
 
 ```jp
-空は明るかった。
-ところが、雨が降った。
+薬を飲んだ。
+それでも、熱は下がらなかった。
 ```
-*The sky was bright.*
-*However, it rained.*
+*I took the medicine.*
+*Even so, my fever didn't go down.*
 
-Swap ところが for そこで in that pair and the sentence stops making sense — nobody responds to a bright sky by making it rain; there's no decision being reported, just an unwelcome surprise. それでも works in the same contrastive direction as ところが, but it points back at the whole situation rather than one surprising fact: "even given everything I just told you, this still happened." Neither ところが nor それでも ever announces a chosen action the way そこで does — they announce a twist, not a decision, and that's the fastest way to tell the three apart once you've got a candidate sentence in front of you.
+Swap それでも for そこで in that pair and the sentence stops making sense — a fever that won't go down isn't something anyone decides to do in response to medicine; there's no decision being reported, just an obstacle that held. それでも points back at the whole situation: "even given everything I just told you, this still happened." It never announces a chosen action the way そこで does, and that's the fastest way to tell the two apart once you've got a candidate sentence in front of you.
 
-So the quick test: if the second sentence is something the speaker decided to do because of the first, reach for そこで. If it's something that happened anyway, against what you'd expect, ところが or それでも is doing the work instead. Once you've asked "is this a decision or a twist?", the right connector usually picks itself.
+So the quick test: if the second sentence is something the speaker decided to do because of the first, reach for そこで. If it's something that happened anyway, against what you'd expect, それでも is doing the work instead. Once you've asked "is this a decision or a push-through?", the right connector usually picks itself.
 
-It helps to line the three up side by side in your head. そこで: situation, then chosen response — smooth, expected. ところが: situation, then a single fact that undercuts it — sharp, sudden. それでも: situation, then persistence in spite of it — the situation doesn't get resolved, it just gets pushed through. All three open a new sentence and all three look backward, but only one of them is ever reporting a decision.
+It helps to line the two up side by side in your head. そこで: situation, then chosen response — smooth, expected. それでも: situation, then persistence in spite of it — the situation doesn't get resolved, it just gets pushed through. Both open a new sentence and both look backward, but only one of them is ever reporting a decision.
 
 Hold onto that shape — you'll meet a close cousin soon, そのため, which points even more directly at the reason behind the second sentence rather than the moment of deciding to act on it.

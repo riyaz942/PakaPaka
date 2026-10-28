@@ -9,7 +9,6 @@ caution_notes:
   - "んですか implies something noticeable is going on, so using it as a cold opening question to someone with no context can come across as oddly probing."
 related_grammar_slugs:
   - "tame"
-  - "kke"
   - "deshou"
 ---
 
@@ -123,9 +122,7 @@ You've already met ため for stating a formal cause — dry, explicit, "due to 
 
 That's the sentence you'd write on a form or say to your boss — factual, a touch formal, cause stated up front and then dropped. Compare it to 病気だったんです from the hook: same illness, same missed day, but one reads like a report and the other reads like you're actually talking to a friend who wants to know what happened to you.
 
-っけ, which you've met for jogging a fuzzy memory, isn't really competing with んです at all — it's reaching for something you might have forgotten, not framing something as an explanation for someone else. The two rarely show up in the same sentence, because they're answering different questions. っけ asks "wait, what was that again?" んです answers "here's what's actually going on."
-
-It helps to keep both of those next to んです whenever a sentence feels like it needs *something* extra at the end — ため tells you the cause is the point, っけ tells you memory is the point, and んです tells you the whole fact is standing in as the answer to something already in the air. Mixing them up doesn't produce broken Japanese so much as Japanese that answers the wrong question.
+It helps to keep ため next to んです whenever a sentence feels like it needs *something* extra at the end — ため tells you the cause is the point, and んです tells you the whole fact is standing in as the answer to something already in the air. Mixing them up doesn't produce broken Japanese so much as Japanese that answers the wrong question.
 
 ## Closing
 

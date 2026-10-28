@@ -16,6 +16,40 @@ Places where an item leans on an item taught at a later level. The build does no
 - `grammar:nagara`: N4
 - `grammar:tame-ni`: N4
 - `grammar:moraru-ageru-kureru`: N4
+- `grammar:souni-naru`: N3
+- `grammar:mono`: N3
+- `grammar:uchi-ni`: N3
+- `grammar:tabi-ni`: N3
+- `grammar:kawarini`: N3
+- `grammar:kawari-ni-formal`: N3
+- `grammar:toshite`: N3
+- `grammar:kagiri`: N3
+- `grammar:tatoe-temo`: N3
+- `grammar:kke`: N3
+- `grammar:tsutsu-aru`: N3
+- `grammar:ageku`: N3
+- `grammar:wake`: N3
+- `grammar:wakeganai`: N3
+- `grammar:kagirazu`: N3
+- `grammar:ippou-de`: N3
+- `grammar:nitotte`: N3
+- `grammar:nikanshite`: N3
+- `grammar:tteba`: N3
+- `grammar:kke2`: N3
+- `grammar:tokoroga`: N3
+- `grammar:igo-formal`: N3
+- `grammar:hantai-ni`: N3
+- `grammar:koso`: N3
+- `grammar:sae`: N3
+- `grammar:saeba`: N3
+- `grammar:nomi`: N3
+- `grammar:hoka-nai`: N3
+- `grammar:yoruni`: N3
+- `grammar:tsuide-ni`: N3
+- `grammar:ue-de`: N3
+- `grammar:saichuu-ni`: N3
+- `grammar:oyobi`: N3
+- `grammar:ni-taishite`: N3
 
 ## Words that wait for a later kanji
 
@@ -29,10 +63,9 @@ Taught on schedule, but asked for the meaning only until the later kanji reaches
 | N2 | 632 |
 | N1 | 0 |
 
-## Sentences that use a later word (2)
+## Sentences that use a later word (1)
 
 - N5: grammar ta-koto-ga-aru use: 遅刻 (N4) — たまに遅刻することがあります。
-- N4: grammar yoruni use: 違い (N3) — 人によって、考え方が違います。
 
 ## Links to a later item (0)
 

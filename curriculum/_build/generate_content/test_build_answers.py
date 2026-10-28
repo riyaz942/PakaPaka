@@ -255,9 +255,9 @@ class GateTest(unittest.TestCase):
         self.assertIn(item["structure"], text)
 
     def test_errors_for_uchi_ni(self):
-        item = ba.generate.build_grammar_point("n4", "uchi-ni", self.entry("uchi-ni"))
+        item = ba.generate.build_grammar_point("n3", "uchi-ni", self.entry("uchi-ni"))
         built = next(s for s in item["example_sentences"] if s["japanese"] == TEA)
-        ctx = ba.gate_context("n4")
+        ctx = ba.gate_context("n3")
         errors = lambda c: ba.candidate_errors(c, built, item, ctx)  # noqa: E731
         self.assertEqual(errors(TEA_WA), [])
         self.assertTrue(errors("おちゃはあついうちにのんだほうがいいですよ。"))

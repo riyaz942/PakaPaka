@@ -9,7 +9,6 @@ caution_notes:
   - "ほど itself doesn't conjugate for politeness — only the predicate attached to it does."
 related_grammar_slugs:
   - "sugiru"
-  - "kanaru"
   - "kurai-degree"
 ---
 

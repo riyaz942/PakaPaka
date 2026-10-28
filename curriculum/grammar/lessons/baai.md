@@ -5,9 +5,9 @@ review_status: reviewed
 caution_notes:
   - "Between a noun and 場合 you always need の — `病気場合` is wrong; it must be `病気の場合`."
   - "場合 lays out a possible scenario without claiming it will happen, so don't dress the clause in front of it with a guessing form like だろう."
-  - "場合 and たびに aren't interchangeable — たびに means every single time without exception, while 場合 just names one particular scenario, with no claim about frequency."
+  - "場合 and たら aren't interchangeable — たら also covers things that will certainly happen (家に帰ったら), while 場合 only names a scenario that may or may not come up."
 related_grammar_slugs:
-  - "tabi-ni"
+  - "tara"
   - "to-conditional"
 ---
 
@@ -79,16 +79,16 @@ The の between a noun and 場合 isn't optional style — it's structural.
 
 One more trap worth naming early: even when the scenario you're describing is about something that might happen later, the clause in front of 場合 stays plain present or plain past — never a guessing form like `遅れるだろう場合`. 場合 wants a fact-shaped clause sitting in front of it; the hedging about whether it'll actually happen lives outside the grammar, in your tone and context, not baked into the sentence itself.
 
-## 場合 vs たびに
+## 場合 vs たら
 
-You've already met たびに for "every time X happens, Y happens" — a pattern that repeats on schedule with its trigger. On the page, たびに and 場合 look like cousins: both sit after a plain-form clause or noun+の. But they're answering different questions. たびに says *this happens every single time, without fail*. 場合 says *if this particular thing comes up, here's my plan* — with no claim at all about how often, or whether, it actually will.
+You've already met たら for "if / when X happens, then Y." On the page, たら and 場合 can cover the same ground: 雨が降ったら and 雨の場合 can both open a plan for a rainy day. But they're answering different questions. たら also works for things that will certainly happen — it just marks the point after which the next thing follows. 場合 says *if this particular thing comes up, here's my plan* — with no claim at all about whether it actually will.
 
 ```jp
-雨が降るたびに、傘を忘れます。
+家に帰ったら、電話します。
 ```
 
-*Every time it rains, I forget my umbrella.*
+*When I get home, I'll call you.*
 
-Set that next to the 雨の場合 line from earlier. 雨が降るたびに is basically a confession about a pattern in your life — it keeps happening, and the same thing follows every time. 雨の場合 makes no claim about how often it rains at all; it just says, should that be the case today, here's the plan. Swap one for the other and you've swapped a running joke about your own forgetfulness for a calm, one-off contingency plan.
+You are definitely going home; たら only says the call comes after. Swap in 場合 — `家に帰った場合、電話します` — and getting home turns into an uncertain outcome you're planning around, as if you might not make it. Reach for 場合 when you're laying out a contingency, the kind of line you see in instructions and notices; reach for たら for everyday "when / if" sentences.
 
 Hold onto that distinction — 場合 sets up a scenario without committing to it coming true, and that's exactly the territory と will move into soon, for situations where one thing leads to another automatically, no maybe about it.

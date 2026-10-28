@@ -10,7 +10,6 @@ caution_notes:
 related_grammar_slugs:
   - "node-vs-kara"
   - "nitsuite"
-  - "kagiri"
 ---
 
 You're deciding whether to bring an umbrella tomorrow, and you haven't looked at the sky yourself — you're going by what the newspaper said this morning. That's the whole job によると does: it hangs a claim off a source, so nobody mistakes the information for your own opinion or guess.
@@ -97,4 +96,4 @@ That's the same structure as every other example so far — noun, then によれ
 
 Put all of that together and by the time you're a few weeks past this lesson, the choice between によると, から, and について should feel less like a grammar rule and more like a reflex: ask yourself whether you're naming a source, giving your own reason, or flagging a topic, and the right particle chain more or less picks itself.
 
-によると is a small, specific job: crediting a source before you hand over a claim. It's not about being formal for its own sake — it's about being accurate regarding whose information you're actually repeating. Hold onto that instinct; it comes back once we reach 限り, another phrase built around "as far as," except that one marks the edge of what you personally know rather than where you heard it.
+によると is a small, specific job: crediting a source before you hand over a claim. It's not about being formal for its own sake — it's about being accurate regarding whose information you're actually repeating. Hold onto that instinct; it comes back at N3, once we reach 限り, another phrase built around "as far as," except that one marks the edge of what you personally know rather than where you heard it.

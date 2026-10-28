@@ -9,7 +9,6 @@ caution_notes:
   - "から never contracts, but casual ので often shortens to んで in relaxed speech."
 related_grammar_slugs:
   - "to-conditional"
-  - "kawari-ni-formal"
 ---
 
 You're texting a friend to bail on plans tonight. "忙しいから、行けない" — busy, so no. Blunt, quick, done. Now picture writing your teacher the reason you missed class. Same idea, "because," but that same から would land like you're arguing with them. You reach for something softer instead: ので.
@@ -86,4 +85,4 @@ In relaxed speech, ので often shrinks to んで. The meaning doesn't change at
 
 You've already met と for describing something that happens automatically once a condition is met. と can't carry a decision or an opinion the way から can — 病気だから、休む is you choosing to rest, while と would need the resting to just follow on its own, with no room for you deciding anything. から and ので are both about a reason someone is putting forward; と isn't really about a reason at all, it's about an automatic result.
 
-So the real question with から and ので was never "which one is more correct" — it's "am I stating a fact, or standing behind an opinion." Keep that instinct close, because it comes back almost unchanged when というより shows up later: instead of restating a reason, it lets you correct one you already gave.
+So the real question with から and ので was never "which one is more correct" — it's "am I stating a fact, or standing behind an opinion." Keep that instinct close, because it comes back almost unchanged when というより shows up at N3: instead of restating a reason, it lets you correct one you already gave.

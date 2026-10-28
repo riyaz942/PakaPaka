@@ -5,11 +5,10 @@ review_status: reviewed
 caution_notes:
   - "すると cannot introduce your own deliberate next move — use そこで when the second half is a choice you made rather than something you noticed happen."
   - "Never follow すると with a request, invitation, or volitional form (〜ましょう, 〜よう); it only narrates what happened or what reliably happens, never what you intend to do."
-  - "If the second sentence contradicts what the first one set up, that's ところが's job, not すると's."
+  - "If the second sentence happens in spite of what the first one set up, that's それでも's job, not すると's."
 related_grammar_slugs:
   - "sokode"
-  - "tokoroga"
-  - "hantai-ni"
+  - "soredemo"
 ---
 
 You open the window to let some air in, and the second your hand touches the frame you notice it — rain, coming down steady, and you had no idea it had even started. In Japanese, the connector that carries you from the first action straight into the surprise that followed it is すると.
@@ -68,7 +67,7 @@ The other trap is reaching for すると when the second sentence actually contr
 
 ## Contrast
 
-You've already met そこで, for when the second sentence is a deliberate response you chose to make, and ところが, for when the second sentence contradicts what the first one set up. Line all three up against the same opening sentence and the differences become obvious.
+You've already met そこで, for when the second sentence is a deliberate response you chose to make, and それでも, for when the second sentence happens in spite of what the first one set up. Line all three up against the same scene and the differences become obvious.
 
 ```jp
 友達を呼んだ。そこで友達と話した。
@@ -79,15 +78,15 @@ You've already met そこで, for when the second sentence is a deliberate respo
 Here the second half is something you decided to do next, on purpose — that's そこで's territory. Swap in すると and it reads as though the talking just happened to you, which isn't the sense you want when you're describing your own choice.
 
 ```jp
-友達を呼んだ。ところが友達は来なかった。
+何度も友達を呼んだ。それでも友達は来なかった。
 ```
 
-*I called my friend. However, my friend didn't come.*
+*I called my friend again and again. Even so, my friend didn't come.*
 
-Here the second half undercuts the first — you called, and yet nothing came of it. That gap between expectation and reality is what ところが is built for, and it's exactly the gap すると refuses to carry. すると's version of this scene simply has the friend showing up, no surprise, no letdown — the plainest possible next beat in the story.
+Here the second half pushes against the first — you kept calling, and yet nothing came of it. That gap between effort and result is what それでも is built for, and it's exactly the gap すると refuses to carry. すると's version of this scene simply has the friend showing up, no surprise, no letdown — the plainest possible next beat in the story.
 
-So the three sit in a row: すると narrates the next thing that happened, そこで narrates the next thing you chose to do, ところが narrates the next thing that shouldn't have happened but did.
+So the three sit in a row: すると narrates the next thing that happened, そこで narrates the next thing you chose to do, それでも narrates the thing that happened in spite of what came before.
 
-Worth holding onto for later: 反対に flips a situation the opposite way rather than simply continuing it forward, which is a slightly different move than any of these three — more on that when we get there.
+Worth holding onto for later: 反対に flips a situation the opposite way rather than simply continuing it forward, which is a slightly different move than any of these three — more on that at N3.
 
 For now, the shape to remember is small: one finished sentence, すると, one more sentence reporting what followed. Read a few lines of any story written in Japanese and you'll start noticing it everywhere — it's one of the plainest ways native writers move a scene forward one beat at a time.

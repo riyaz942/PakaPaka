@@ -6,7 +6,12 @@
   curriculum/grammar/<level>.json
   curriculum/readings/<level>.json
 
---level n3|n2|n1 emits that level's derived vocabulary alone:
+--level n3 emits its derived vocabulary and the grammar levels.json moves there
+(no reading passages):
+  curriculum/vocabulary/n3.json
+  curriculum/grammar/n3.json
+
+--level n2|n1 emits that level's derived vocabulary alone:
   curriculum/vocabulary/<level>.json
 
 --bands emits radicals and kanji for all five levels at once:
@@ -47,7 +52,7 @@ from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 from generate_content.mnemonic_context import reading_composition  # noqa: E402
-from levels import place  # noqa: E402
+from levels import KIND_LEVELS, place  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
@@ -1132,8 +1137,8 @@ def generate_level(level):
     vocab = _build_vocab_level(level.upper(), vocab_by_level[level], known_readings,
                                all_vocab_forms)
     write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
-    if level in SKELETON_VOCAB_LEVELS:
-        # Vocabulary only: N3+ grammar and reading passages are out of scope for
+    if level not in KIND_LEVELS["grammar"]:
+        # Vocabulary only: N2+ grammar and reading passages are out of scope for
         # this plan (docs/content/kanji-coverage-and-dependency-order-plan.md).
         print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
         return
@@ -1155,6 +1160,10 @@ def generate_level(level):
             f"{level.upper()} grammar pool fails for {len(failing)} point(s) — run "
             "generate_content.check_grammar_pool for the full report:\n" + "\n".join(lines)
         )
+    if level not in KIND_LEVELS["passage"]:
+        # N3 grammar has no reading passages (docs/content/grammar-jlpt-level-audit.md).
+        print(f"Generated {level.upper()} vocabulary and grammar JSON files.")
+        return
     passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
     write_json(
         os.path.join(CURRICULUM_DIR, "readings", f"{level}.json"),
@@ -1168,7 +1177,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--level", choices=["n5", "n4", "n3", "n2", "n1"],
                         help="vocabulary, grammar and readings for one level "
-                             "(N3+ is vocabulary only, and derived)")
+                             "(N3 has no readings; N2+ is vocabulary only, and derived)")
     parser.add_argument("--bands", action="store_true",
                         help="all five radical and kanji level files, from every source")
     args = parser.parse_args()

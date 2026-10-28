@@ -20,13 +20,14 @@ LEVELS_PATH = os.path.join(BUILD_DIR, "levels.json")
 
 LEVEL_ORDER = ["n5", "n4", "n3", "n2", "n1"]
 
-#: The levels each kind ships at. Grammar and passages exist at N5/N4 only, so
-#: an override that names N3 for one is an error, not a new level file.
+#: The levels each kind ships at. Grammar exists at N5–N3 and passages at N5/N4
+#: only, so an override that names a later level for one is an error, not a new
+#: level file.
 KIND_LEVELS = {
     "radical": LEVEL_ORDER,
     "kanji": LEVEL_ORDER,
     "vocabulary": LEVEL_ORDER,
-    "grammar": ["n5", "n4"],
+    "grammar": ["n5", "n4", "n3"],
     "passage": ["n5", "n4"],
 }
 
