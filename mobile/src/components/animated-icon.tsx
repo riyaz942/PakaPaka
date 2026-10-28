@@ -8,18 +8,22 @@ import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 const INITIAL_SCALE_FACTOR = Dimensions.get('screen').height / 90;
 const DURATION = 600;
+const LIGHT_SPLASH_BACKGROUND = '#FCF2E5';
 
 /**
  * Fades the native splash colour out once JS has mounted, so the handoff from
  * the launch screen into the app is one continuous surface rather than a flash.
  *
  * The fill must stay equal to `app.json`'s `expo-splash-screen` background for
- * the scheme in play — v2 `background`, read as raw hex because this is a
- * StyleSheet colour, the documented exception.
+ * the scheme in play. Light is the app icon's own cream, so the icon art has no
+ * visible edge; dark is v2 `background`. Raw hex because this is a StyleSheet
+ * colour, the documented exception.
  */
 export function AnimatedSplashOverlay() {
   const [visible, setVisible] = useState(true);
-  const colors = getSemanticColors(usePaintedColorScheme());
+  const scheme = usePaintedColorScheme();
+  const backgroundColor =
+    scheme === 'light' ? LIGHT_SPLASH_BACKGROUND : getSemanticColors(scheme).background;
 
   if (!visible) return null;
 
@@ -50,7 +54,7 @@ export function AnimatedSplashOverlay() {
           scheduleOnRN(setVisible, false);
         }
       })}
-      style={[styles.backgroundSolidColor, { backgroundColor: colors.background }]}
+      style={[styles.backgroundSolidColor, { backgroundColor }]}
     />
   );
 }
