@@ -3,7 +3,9 @@
 Every plan and story doc in this repo, with one status each. Details stay in the linked
 plan; **only leftovers are listed here**, one line per point.
 
-Last verified against the codebase: **2026-09-02**
+Last verified against the codebase: **2026-09-02**. Spot-checked **2026-11-01**: the counts in
+*At a glance*, the schema migration row, the About attribution leftover and the N3 level defect
+under *Open defects*. Other rows were not re-checked.
 
 - **Done** — plan acceptance met, or the doc is a closed investigation / reference.
 - **Partial** — meaningful work shipped, leftovers listed in [What's left](#whats-left).
@@ -13,10 +15,13 @@ Last verified against the codebase: **2026-09-02**
 
 | Area | Done | Partial | Not started |
 | --- | ---: | ---: | ---: |
-| Product plans (`docs/feedback/`) | 14 | 4 | 0 |
-| Content plans (`docs/content/`) | 2 | 6 | 0 |
-| Design & platform (`docs/design/`) | 4 | 0 | 5 |
+| Product plans (`docs/feedback/`) | 15 | 6 | 0 |
+| Content plans (`docs/content/`) | 4 | 8 | 0 |
+| Design & platform (`docs/design/`) | 6 | 2 | 1 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
+
+Product plans also hold 2 superseded plans (09, する-verb を) and the 07 index row; they are not counted.
+"Partial" includes rows marked *In progress* or *Built, check pending*.
 
 ---
 
@@ -76,7 +81,7 @@ Last verified against the codebase: **2026-09-02**
 | [Web SQLite ATTACH findings](./design/web-sqlite-attach-findings.md) | Done — spike closed, `ATTACH` verified working |
 | [AI reading & community contribution](./design/ai-reading-and-community-contribution-design-note.md) | Done — design note only, no app work by intent |
 | [Customizable Home screen](./design/customizable-home-screen-plan.md) | Done — all 7 steps shipped: settings route restructure, catalog + reconciler, `ActionCard` extraction, Home rewired to the stored layout, customizer screen with drag/eye/lock/reset, Settings entry row |
-| [Curriculum schema migration](./design/curriculum-schema-migration-plan.md) | **Not started** — Phase A (frozen item ids) done 2026-09-27 as phase 1 of the level-agnostic curriculum plan. Queued to run after content is finalized, before first public release. Phases A–C + F (frozen item ids, `schema_version` contract, seed re-import on app update, CI guardrails) and the Phase G runner are launch blockers; D (OTA gate) and E (orphan tolerance) follow. Three ladders: user schema (exists), curriculum replacement, content-change ops shipped inside `curriculum.db` |
+| [Curriculum schema migration](./design/curriculum-schema-migration-plan.md) | **Partial** — Phase A (frozen item ids) done 2026-09-27 as phase 1 of the level-agnostic curriculum plan. Defect 1 (the bundled seed never re-imports) fixed 2026-10-13: `openCurriculumDatabase` (`mobile/src/data/database.ts`) re-imports the bundled seed when its `version` (`curriculum-seed.json`) is newer than the installed one. Phase C itself is not done: it decides on `schema_version`, which waits on Phase B. No production OTA manifest URL is set, so the OTA path (Phase D) is off. Queued to run after content is finalized, before first public release. Phases A–C + F (frozen item ids, `schema_version` contract, seed re-import on app update, CI guardrails) and the Phase G runner are launch blockers; D (OTA gate) and E (orphan tolerance) follow. Three ladders: user schema (exists), curriculum replacement, content-change ops shipped inside `curriculum.db` |
 | [Level-agnostic curriculum](./design/level-agnostic-curriculum-plan.md) | **Done 2026-10-17** — planned 2026-09-27. Phase 0 (baseline, no code change) done 2026-09-27. Phase 1 (permanent ids: `curriculum/id-registry.json` for items, passages and passage questions, seeded from the v22 build; `--update-registry`; passages carry a permanent slug) done 2026-09-27. Phase 2 (no level in slugs via `curriculum/_build/slug-renames.json`; kind-tagged look-alike refs; 10 N4 grammar duplicates merged into N5, ids kept and merged ids retired; `validate-schema` rejects `^(n[1-5]|k)-`) done 2026-09-27; 25 merged or shifted cloze variants that failed `check_cloze` were removed (maintainer decision). Phase 3 (one content file per kind: `radicals/mnemonics.json`, `kanji/mnemonics.json`, `vocabulary/mnemonics.json`, `vocabulary/examples.json`; lessons at `grammar/lessons/<slug>.md`; radical art at `mobile/assets/radicals/<slug>.webp`, `visual_mnemonic_url` now `radicals/<slug>.webp`) done 2026-09-27. Phase 4 (one level-override file: `curriculum/_build/levels.json` sets the level of any radical, kanji, word, grammar point or passage and replaces `PINNED_DERIVED`; `reports/level_report.py` lists what a move breaks and never fails the build; `kanji_bands.py` rerun first, so radicals `nine` N4 → N5 and `the-latter` N5 → N3; seed v28; also fixed: compile writes `metadata.json` `content_counts`, Studio compiles with `--update-registry`, mock update DB slugs mapped) done 2026-10-11. Phase 5 (`scripts/rewrite-backup-slugs.ts` rewrites a backup's slugs through `slug-renames.json`, merges rows of merged grammar, checks against `curriculum.db`; the 2026-10-11 backup rewritten with 0 unmatched slugs) script done 2026-10-11; restore on the phone worked 2026-10-17 (reviews and lessons available). Makes a level change a one-line edit: permanent item ids (Phase A of the schema migration plan), no JLPT level in slugs, N5/N4 duplicate grammar merged, one content sidecar per kind, radical art in one folder, one level-override file. Ends with a one-time rewrite of the maintainer's backup file to the new slugs |
 | [README screenshots](./design/readme-screenshots-plan.md) | **Not started** — planned 2026-10-25. 10 screenshots for the root README, none taken yet |
 
@@ -151,7 +156,7 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - **N5 flagged-kanji mnemonic regen, done 2026-09-02.** The 32 N5-band kanji an operator review pass had marked `review_status: flagged_for_rewrite` (11 in `kanji/mnemonics/n5.json`, 21 in `kanji/mnemonics/k.json`) were regenerated via the subagent lane (`sonnet-5`, high effort, 8 groups of ≤4, `PROMPT_VERSION` kanji stays 4). The runbook's Step 1a auto-select finds 0 because flagged drafts still match v4 — the flagged set was selected explicitly instead, reusing the runbook's grouping logic. 32/32 gate-passing on the group's first pass; zero repairs. `generate.py --bands` + `validate-schema` + `compile-curriculum` clean. After regen the 32 sat at `review_status: draft`; the operator then verified all 32 and, on instruction (outside the automation gate), both sidecars were flipped to `review_status: reviewed` — the mnemonic sidecars (`kanji/mnemonics/{n5,k}.json`) for the regenerated prose, and the example-sentence sidecars (`kanji/examples/{n5,k}.json`) for the pre-existing example sentences, which the same review pass had also flagged. `generate.py` sets the shipped `review_status` to the min across both sidecars, so both had to move before Studio (which reads the compiled DB) would clear. Shipped `kanji/n5.json` now shows all 32 as `reviewed`. Slugs: n5-nichiyou, n5-mai-every, n5-kou-school, n5-uru-baku, n5-takai, n5-atarashii, n5-ooi-ta, n5-hayai, n5-kuni, n5-michi, n5-shi-city, k-body, k-thing, k-meal, k-ill, k-inst, k-building, k-empty, k-brush-stroke, k-roof, k-paper, k-true, k-move, k-music, k-dwell, k-trip, k-attend, k-topic, k-sound, k-medicine, k-revolve, k-sentence.
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read the old `mnemonic_text` field only.
 - Phase 5 human review tool (`npm run review-content`) never built — review-status flips are ad hoc.
-- Settings → About attribution UI missing (root `NOTICE` exists, no in-app surface).
+- ~~Settings → About attribution UI missing~~ — **done 2026-10-20**: `mobile/src/app/(tabs)/settings/about.tsx`.
 - Default CI compile does not pass `--fail-on-draft`.
 - Humor-tagged passages: planned, not built.
 - Cast-coherence ship gate for draft → reviewed mnemonics/examples: not built.
@@ -430,6 +435,7 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - Epic 8 (shadow mode positioning, AI reading backlog): `backlog` by design — post-MVP.
 
 ### Open defects
+- **N3 is offered as a starting level (found 2026-11-01).** `listLevelsWithContent` (`itemRepository.ts`) treats a level that has grammar as a full-content level. The JLPT level audit added 34 N3 grammar points (curriculum v49), so onboarding and placement now offer N3. After N4, the lesson planner (`lessonPlan.ts`) and the grammar track also continue into N3. N3 kanji and words have no mnemonics or examples. Blocks a release limited to N5 + N4.
 - Executorch main vs Expo resource-fetcher nightly skew: accepted risk, revisit on upstream release.
 - `codebase-issues.md` L1–L4, L6, L8–L10: naming/perf/fragility items, all low severity, none user-visible.
 
