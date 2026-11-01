@@ -1,24 +1,28 @@
 /**
- * Stands in for the pinned `react-native-executorch` nightly under Jest.
+ * Stands in for the pinned `react-native-executorch` under Jest.
  *
  * The real package is a native module: it cannot load in node, and its model
  * URLs point at multi-hundred-megabyte files. Only the surface `data/ai/voice/`
- * actually calls is reproduced here — `models`, the two module classes, and the
- * filename helper the download manager uses to check what is on disk.
+ * actually calls is reproduced here — `models`, `download`, and the two task
+ * factories.
  *
- * `getFilenameFromUri` mirrors the real implementation exactly, because the
- * download manager's presence check depends on that derivation matching what
- * the fetcher wrote.
+ * `download` keeps its files in the `react-native-blob-util` mock, which is
+ * where the download manager checks for them.
  */
 
-type SttModule = {
-  transcribe: (waveform: Float32Array, options?: { language?: string }) => Promise<{ text: string }>;
-  delete: () => void;
+import { __mockRunDownload } from './react-native-blob-util';
+
+type SttTask = {
+  transcribe: (waveform: Float32Array, options: { language: string }) => Promise<string>;
+  dispose: () => void;
 };
 
-type TtsModule = {
-  forward: (input: string) => Promise<Float32Array>;
-  delete: () => void;
+type TtsTask = {
+  synthesize: (
+    text: string,
+    options: { voiceStyle: string; lang?: string },
+  ) => AsyncGenerator<{ audio: Float32Array }>;
+  dispose: () => void;
 };
 
 const state = {
@@ -28,11 +32,11 @@ const state = {
   ttsLoadError: null as Error | null,
   transcribeError: null as Error | null,
   synthesizeError: null as Error | null,
-  initCount: 0,
   sttLoadCount: 0,
   ttsLoadCount: 0,
-  transcribeCalls: [] as { waveform: Float32Array; language?: string }[],
+  transcribeCalls: [] as { waveform: Float32Array; language: string }[],
   synthesizeCalls: [] as string[],
+  synthesizeOptions: [] as { voiceStyle: string; lang?: string }[],
 };
 
 export function __mockResetExecutorch(): void {
@@ -42,11 +46,11 @@ export function __mockResetExecutorch(): void {
   state.ttsLoadError = null;
   state.transcribeError = null;
   state.synthesizeError = null;
-  state.initCount = 0;
   state.sttLoadCount = 0;
   state.ttsLoadCount = 0;
   state.transcribeCalls = [];
   state.synthesizeCalls = [];
+  state.synthesizeOptions = [];
 }
 
 export function __mockSetTranscription(text: string): void {
@@ -77,87 +81,116 @@ export function __mockExecutorchState() {
   return state;
 }
 
-export function initExecutorch(_config: unknown): void {
-  state.initCount += 1;
-}
+const whisperSmall = {
+  modelPath: 'https://models.test/whisper/whisper_small.pte',
+  tokenizerPath: 'https://models.test/whisper/tokenizer.json',
+  supportedLanguages: ['ja'],
+  vadModel: {
+    modelPath: 'https://models.test/fsmn-vad/fsmn_vad.pte',
+    defaultOptions: {},
+  },
+};
+
+const supertonic = {
+  name: 'supertonic' as const,
+  modelPaths: {
+    durationPredictor: 'https://models.test/supertonic/duration.pte',
+    vectorEstimator: 'https://models.test/supertonic/vector.pte',
+    textEncoder: 'https://models.test/supertonic/encoder.pte',
+    vocoder: 'https://models.test/supertonic/vocoder.pte',
+  },
+  unicodeIndexerPath: 'https://models.test/supertonic/unicode_indexer.json',
+  voiceStyles: {
+    F1: 'https://models.test/supertonic/voice_styles/F1.json',
+    M1: 'https://models.test/supertonic/voice_styles/M1.json',
+  },
+};
 
 export const models = {
-  speech_to_text: {
-    whisper_small: () => ({
-      modelName: 'whisper-small' as const,
-      isMultilingual: true as const,
-      modelSource: 'https://models.test/whisper/whisper_small.pte',
-      tokenizerSource: 'https://models.test/whisper/tokenizer.json',
-    }),
+  speechToText: {
+    WHISPER: { SMALL: { XNNPACK_FP32: whisperSmall, DEFAULT: whisperSmall } },
   },
-  text_to_speech: {
-    supertonic: {
-      f1: () => ({
-        model: {
-          modelName: 'supertonic' as const,
-          unicodeIndexerSource: 'https://models.test/supertonic/indexer.pte',
-          durationPredictorSource: 'https://models.test/supertonic/duration.pte',
-          textEncoderSource: 'https://models.test/supertonic/encoder.pte',
-          vectorEstimatorSource: 'https://models.test/supertonic/vector.pte',
-          vocoderSource: 'https://models.test/supertonic/vocoder.pte',
-        },
-        voiceSource: 'https://models.test/supertonic/voice_f1.bin',
-      }),
+  textToSpeech: {
+    SUPERTONIC: { XNNPACK_FP32: supertonic, DEFAULT: supertonic },
+  },
+};
+
+function collectUrls(node: unknown, into: Set<string>): Set<string> {
+  if (typeof node === 'string') {
+    if (/^https?:\/\//.test(node)) {
+      into.add(node);
+    }
+  } else if (Array.isArray(node)) {
+    node.forEach((child) => collectUrls(child, into));
+  } else if (node !== null && typeof node === 'object') {
+    Object.values(node).forEach((child) => collectUrls(child, into));
+  }
+  return into;
+}
+
+function substitute<T>(node: T, resolved: Map<string, string>): T {
+  if (typeof node === 'string') {
+    return (resolved.get(node) ?? node) as T;
+  }
+  if (Array.isArray(node)) {
+    return node.map((child) => substitute(child, resolved)) as T;
+  }
+  if (node !== null && typeof node === 'object') {
+    return Object.fromEntries(
+      Object.entries(node).map(([key, child]) => [key, substitute(child, resolved)]),
+    ) as T;
+  }
+  return node;
+}
+
+export async function download<T>(
+  source: T,
+  options: {
+    onProgress?: (progress: number) => void;
+    signal?: AbortSignal;
+  } = {},
+): Promise<T> {
+  const resolved = await __mockRunDownload(
+    [...collectUrls(source, new Set())],
+    options.onProgress,
+    options.signal,
+  );
+  return substitute(source, resolved);
+}
+
+export async function createWhisperSpeechToText(_config: unknown): Promise<SttTask> {
+  state.sttLoadCount += 1;
+  if (state.sttLoadError) {
+    throw state.sttLoadError;
+  }
+  return {
+    async transcribe(waveform, options) {
+      state.transcribeCalls.push({ waveform, language: options.language });
+      if (state.transcribeError) {
+        throw state.transcribeError;
+      }
+      return state.transcription;
     },
-  },
-};
+    dispose() {},
+  };
+}
 
-export const SpeechToTextModule = {
-  async fromModelName(
-    _config: unknown,
-    _vad?: unknown,
-    onDownloadProgress?: (progress: number) => void,
-  ): Promise<SttModule> {
-    state.sttLoadCount += 1;
-    onDownloadProgress?.(1);
-    if (state.sttLoadError) {
-      throw state.sttLoadError;
-    }
-    return {
-      async transcribe(waveform, options) {
-        state.transcribeCalls.push({ waveform, language: options?.language });
-        if (state.transcribeError) {
-          throw state.transcribeError;
-        }
-        return { text: state.transcription };
-      },
-      delete() {},
-    };
-  },
-};
-
-export const TextToSpeechModule = {
-  async fromModelName(
-    _config: unknown,
-    onDownloadProgress?: (progress: number) => void,
-  ): Promise<TtsModule> {
-    state.ttsLoadCount += 1;
-    onDownloadProgress?.(1);
-    if (state.ttsLoadError) {
-      throw state.ttsLoadError;
-    }
-    return {
-      async forward(input) {
-        state.synthesizeCalls.push(input);
-        if (state.synthesizeError) {
-          throw state.synthesizeError;
-        }
-        return state.synthesis;
-      },
-      delete() {},
-    };
-  },
-};
-
-export const ResourceFetcherUtils = {
-  getFilenameFromUri(uri: string): string {
-    let cleanUri = uri.replace(/^https?:\/\//, '');
-    cleanUri = cleanUri.split('#')?.[0] ?? cleanUri;
-    return cleanUri.replace(/[^a-zA-Z0-9._-]/g, '_');
-  },
-};
+export async function createSupertonicTextToSpeech(_config: unknown): Promise<TtsTask> {
+  state.ttsLoadCount += 1;
+  if (state.ttsLoadError) {
+    throw state.ttsLoadError;
+  }
+  return {
+    async *synthesize(text, options) {
+      state.synthesizeCalls.push(text);
+      state.synthesizeOptions.push(options);
+      if (state.synthesizeError) {
+        throw state.synthesizeError;
+      }
+      if (state.synthesis.length > 0) {
+        yield { audio: state.synthesis };
+      }
+    },
+    dispose() {},
+  };
+}

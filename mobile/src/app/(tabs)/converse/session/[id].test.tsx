@@ -3,12 +3,12 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
-  __mockFailListDownloaded,
-  __mockFetchCallCount,
+  __mockFailExistsCheck,
+  __mockDownloadCallCount,
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
+  __mockResetModelFiles,
   __mockSetRemoteSize,
-} from '../../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+} from '../../../../../__mocks__/react-native-blob-util';
 import { __mockResetExecutorch, __mockSetSynthesis } from '../../../../../__mocks__/react-native-executorch';
 import { __mockResetAudioApi } from '../../../../../__mocks__/react-native-audio-api';
 
@@ -119,7 +119,7 @@ function sizeModels() {
 
 describe('ConversationSessionScreen voice promotion', () => {
   beforeEach(() => {
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     __mockResetExecutorch();
     __mockResetAudioApi();
     __mockSetSynthesis(new Float32Array([0.1]));
@@ -208,16 +208,16 @@ describe('ConversationSessionScreen voice promotion', () => {
     renderScreen();
 
     await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());
-    expect(__mockFetchCallCount()).toBe(0);
+    expect(__mockDownloadCallCount()).toBe(0);
 
     fireEvent.press(screen.getByTestId('composer-mic'));
     await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
 
-    expect(__mockFetchCallCount()).toBe(0);
+    expect(__mockDownloadCallCount()).toBe(0);
   });
 
   it('shows why voice is unavailable when the presence check fails', async () => {
-    __mockFailListDownloaded(new Error('EPERM: permission denied'));
+    __mockFailExistsCheck(new Error('EPERM: permission denied'));
     renderScreen();
 
     await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());

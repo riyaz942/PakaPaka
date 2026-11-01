@@ -1,8 +1,8 @@
-import { TextToSpeechModule } from 'react-native-executorch';
+import { createSupertonicTextToSpeech, download } from 'react-native-executorch';
+import type { SupertonicTextToSpeech } from 'react-native-executorch';
 
-import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
 import { areVoiceModelsDownloaded } from '@/data/ai/voice/modelDownloadManager';
-import { JAPANESE_TTS_MODEL } from '@/data/ai/voice/voiceModels';
+import { JAPANESE_TTS_MODEL, TTS_VOICE } from '@/data/ai/voice/voiceModels';
 import type { Result } from '@/types/result.types';
 
 /**
@@ -16,18 +16,18 @@ import type { Result } from '@/types/result.types';
  * and that whole class of failure is why Supertonic ships its own model. A
  * synthesis failure surfaces as an error here instead.
  *
- * Loading refuses to call `fromModelName` until the models are already on disk —
- * that API always runs `ResourceFetcher.fetch` for missing remotes, which would
- * otherwise bypass the explicit download + size-disclosure gate (AC5/NFR25).
+ * Loading refuses to call `download` until the models are already on disk —
+ * it fetches any missing remote, which would otherwise bypass the explicit
+ * download + size-disclosure gate (AC5/NFR25). With every file cached it only
+ * maps the URLs to local paths.
  */
 
-type LoadedModule = Awaited<ReturnType<typeof TextToSpeechModule.fromModelName>>;
+type LoadedModule = SupertonicTextToSpeech<typeof TTS_VOICE>;
 
 let modulePromise: Promise<LoadedModule> | null = null;
 let inFlightSyntheses = 0;
 
 async function loadModule(): Promise<Result<LoadedModule>> {
-  ensureExecutorchInitialised();
   const downloaded = await areVoiceModelsDownloaded();
   if (!downloaded.ok) {
     return downloaded;
@@ -43,7 +43,9 @@ async function loadModule(): Promise<Result<LoadedModule>> {
     };
   }
 
-  modulePromise ??= TextToSpeechModule.fromModelName(JAPANESE_TTS_MODEL);
+  modulePromise ??= download(JAPANESE_TTS_MODEL).then((local) =>
+    createSupertonicTextToSpeech(local),
+  );
   try {
     return { ok: true, value: await modulePromise };
   } catch (cause) {
@@ -67,7 +69,7 @@ export function releaseTtsModel(): void {
   }
   const pending = modulePromise;
   modulePromise = null;
-  void pending?.then((module) => module.delete()).catch(() => {});
+  void pending?.then((module) => module.dispose()).catch(() => {});
 }
 
 export async function synthesizeJapanese(text: string): Promise<Result<Float32Array>> {
@@ -90,7 +92,14 @@ export async function synthesizeJapanese(text: string): Promise<Result<Float32Ar
 
   inFlightSyntheses += 1;
   try {
-    const samples = await loaded.value.forward(trimmed);
+    const chunks: Float32Array[] = [];
+    for await (const chunk of loaded.value.synthesize(trimmed, {
+      voiceStyle: TTS_VOICE,
+      lang: 'ja',
+    })) {
+      chunks.push(chunk.audio);
+    }
+    const samples = concatenate(chunks);
     if (samples.length === 0) {
       return {
         ok: false,
@@ -115,4 +124,15 @@ export async function synthesizeJapanese(text: string): Promise<Result<Float32Ar
   } finally {
     inFlightSyntheses -= 1;
   }
+}
+
+/** Supertonic yields one waveform per text chunk; playback wants a single buffer. */
+function concatenate(chunks: Float32Array[]): Float32Array {
+  const samples = new Float32Array(chunks.reduce((total, chunk) => total + chunk.length, 0));
+  let offset = 0;
+  for (const chunk of chunks) {
+    samples.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return samples;
 }

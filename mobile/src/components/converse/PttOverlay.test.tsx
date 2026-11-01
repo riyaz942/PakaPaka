@@ -18,8 +18,8 @@ import {
 } from '../../../__mocks__/react-native-executorch';
 import {
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
-} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+  __mockResetModelFiles,
+} from '../../../__mocks__/react-native-blob-util';
 
 import { PttOverlay } from '@/components/converse/PttOverlay';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -81,7 +81,7 @@ describe('PttOverlay', () => {
   beforeEach(() => {
     __mockResetAudioApi();
     __mockResetExecutorch();
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     __mockMarkDownloaded(...(voiceModelSources() as string[]));
     __mockSetSynthesis(new Float32Array([0.1, 0.2]));
     __mockSetRecordedChunks([new Float32Array([0.3, 0.4])]);

@@ -1,6 +1,6 @@
-import { SpeechToTextModule } from 'react-native-executorch';
+import { createWhisperSpeechToText, download } from 'react-native-executorch';
+import type { WhisperSpeechToText } from 'react-native-executorch';
 
-import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
 import { areVoiceModelsDownloaded } from '@/data/ai/voice/modelDownloadManager';
 import { JAPANESE_STT_MODEL } from '@/data/ai/voice/voiceModels';
 import type { Result } from '@/types/result.types';
@@ -13,18 +13,18 @@ import type { Result } from '@/types/result.types';
  * model that will not load or a transcription that comes back empty is an error
  * the learner sees, not a quiet handover to the network.
  *
- * Loading refuses to call `fromModelName` until the models are already on disk —
- * that API always runs `ResourceFetcher.fetch` for missing remotes, which would
- * otherwise bypass the explicit download + size-disclosure gate (AC5/NFR25).
+ * Loading refuses to call `download` until the models are already on disk —
+ * it fetches any missing remote, which would otherwise bypass the explicit
+ * download + size-disclosure gate (AC5/NFR25). With every file cached it only
+ * maps the URLs to local paths.
  */
 
-type LoadedModule = Awaited<ReturnType<typeof SpeechToTextModule.fromModelName>>;
+type LoadedModule = WhisperSpeechToText;
 
 let modulePromise: Promise<LoadedModule> | null = null;
 let inFlightTranscribes = 0;
 
 async function loadModule(): Promise<Result<LoadedModule>> {
-  ensureExecutorchInitialised();
   const downloaded = await areVoiceModelsDownloaded();
   if (!downloaded.ok) {
     return downloaded;
@@ -40,7 +40,9 @@ async function loadModule(): Promise<Result<LoadedModule>> {
     };
   }
 
-  modulePromise ??= SpeechToTextModule.fromModelName(JAPANESE_STT_MODEL);
+  modulePromise ??= download(JAPANESE_STT_MODEL).then((local) =>
+    createWhisperSpeechToText(local),
+  );
   try {
     return { ok: true, value: await modulePromise };
   } catch (cause) {
@@ -64,7 +66,7 @@ export function releaseSttModel(): void {
   }
   const pending = modulePromise;
   modulePromise = null;
-  void pending?.then((module) => module.delete()).catch(() => {});
+  void pending?.then((module) => module.dispose()).catch(() => {});
 }
 
 export async function transcribeJapanese(waveform: Float32Array): Promise<Result<string>> {
@@ -75,8 +77,7 @@ export async function transcribeJapanese(waveform: Float32Array): Promise<Result
 
   inFlightTranscribes += 1;
   try {
-    const result = await loaded.value.transcribe(waveform, { language: 'ja' });
-    const text = result.text.trim();
+    const text = (await loaded.value.transcribe(waveform, { language: 'ja' })).trim();
     if (text.length === 0) {
       return {
         ok: false,

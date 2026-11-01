@@ -12,11 +12,11 @@ import {
   __mockSetSynthesis,
 } from '../../../__mocks__/react-native-executorch';
 import {
-  __mockFetchCallCount,
+  __mockDownloadCallCount,
   __mockMarkDownloaded,
-  __mockResetResourceFetcher,
+  __mockResetModelFiles,
   __mockSetRemoteSize,
-} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+} from '../../../__mocks__/react-native-blob-util';
 
 import { PronunciationButton } from '@/components/learn/PronunciationButton';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
@@ -25,7 +25,7 @@ describe('PronunciationButton', () => {
   beforeEach(() => {
     __mockResetAudioApi();
     __mockResetExecutorch();
-    __mockResetResourceFetcher();
+    __mockResetModelFiles();
     __mockMarkDownloaded(...(voiceModelSources() as string[]));
     __mockSetSynthesis(new Float32Array([0.1, 0.2]));
   });
@@ -85,7 +85,7 @@ describe('PronunciationButton', () => {
 
   describe('when the voice models are not downloaded', () => {
     beforeEach(() => {
-      __mockResetResourceFetcher();
+      __mockResetModelFiles();
       for (const source of voiceModelSources()) {
         if (typeof source === 'string') {
           __mockSetRemoteSize(source, 150_000_000);
@@ -100,7 +100,7 @@ describe('PronunciationButton', () => {
 
       await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
       expect(screen.queryByTestId('pronunciation-button-error')).toBeNull();
-      expect(__mockFetchCallCount()).toBe(0);
+      expect(__mockDownloadCallCount()).toBe(0);
     });
 
     it('plays the word once the learner downloads the models', async () => {
@@ -111,7 +111,7 @@ describe('PronunciationButton', () => {
       fireEvent.press(screen.getByTestId('voice-model-download'));
 
       await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
-      expect(__mockFetchCallCount()).toBe(1);
+      expect(__mockDownloadCallCount()).toBe(1);
       expect(screen.queryByTestId('voice-model-download')).toBeNull();
     });
 
