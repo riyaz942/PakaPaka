@@ -16,6 +16,10 @@ Judge every candidate:
 - `"valid"` — natural Japanese, uses {{FORM}} the same way, and means what the
   English says. A teacher would mark it fully correct
   (本を図書館で読みます for 図書館で本を読みます; 散歩をします for 散歩します).
+  In a polite sentence, a polite form before から or ので keeps the
+  politeness and is `"valid"`, even when the structure says plain form
+  (約束しましたから、行きます for 約束したから、行きます). Before other
+  connectors (とき, 前に, ために, たら) a polite form stays `"wrong"`.
 - `"contrast"` — natural Japanese, but it adds a meaning the English does not
   have: contrastive は ("at least X", "X, unlike the others")
   (宿題は先にやった for 宿題を先にやった).

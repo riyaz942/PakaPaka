@@ -14,8 +14,9 @@ correct for that English:
   (plain/polite), same meaning, tense and who does what.
 - Look for: particle choices (本は for 本が), optional particles (を on a
   する verb: 散歩をします for 散歩します), word order (本を図書館で読みます for
-  図書館で本を読みます), a dropped or added personal pronoun, and
-  combinations of these in one sentence.
+  図書館で本を読みます), a dropped or added personal pronoun, a polite form
+  before から or ので in a polite sentence (約束しましたから、行きます for
+  約束したから、行きます), and combinations of these in one sentence.
 - Most likely learner answers first; at most 10 per sentence; none is fine.
 - Do not vary only punctuation, spacing or kana/kanji spelling — the app
   already accepts those.

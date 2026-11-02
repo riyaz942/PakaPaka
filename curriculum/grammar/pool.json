@@ -4611,6 +4611,18 @@
           {
             "japanese": "病気なので、私は休みます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "病気ですので、休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は病気ですので、休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "病気ですので、私は休みます。",
+            "kind": "valid"
           }
         ]
       },
@@ -4624,6 +4636,14 @@
         "alternates": [
           {
             "japanese": "安いから、買います。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "安いですので、買います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "安いですから、買います。",
             "kind": "other_grammar"
           }
         ]
@@ -4640,6 +4660,14 @@
           {
             "japanese": "これが安いので、これにします。",
             "kind": "valid"
+          },
+          {
+            "japanese": "これは安いですので、これにします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "これが安いですので、これにします。",
+            "kind": "valid"
           }
         ]
       },
@@ -4655,6 +4683,14 @@
         "alternates": [
           {
             "japanese": "彼が医者なので、こちらがいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼は医者ですので、こちらがいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が医者ですので、こちらがいいです。",
             "kind": "valid"
           }
         ]
@@ -4681,6 +4717,22 @@
           {
             "japanese": "今、父が病気なので、私が行きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "父は今、病気ですので、私が行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、父は病気ですので、私が行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "父が今、病気ですので、私が行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、父が病気ですので、私が行きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -4701,6 +4753,18 @@
           {
             "japanese": "私は今日病気なので、うちにいます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日は病気ですので、うちにいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "病気ですので、今日はうちにいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は今日病気ですので、うちにいます。",
+            "kind": "valid"
           }
         ]
       },
@@ -4712,6 +4776,12 @@
           "kodomo-v",
           "osake",
           "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "妹は子供ですので、お酒を飲みません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -4733,6 +4803,22 @@
           },
           {
             "japanese": "寒いから、私は窓を閉めました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "寒いですので、窓を閉めました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "寒いですから、窓を閉めました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "寒いですので、私は窓を閉めました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "寒いですから、私は窓を閉めました。",
             "kind": "other_grammar"
           }
         ]
@@ -4766,6 +4852,30 @@
           {
             "japanese": "明日忙しいから、映画は見ません。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "明日は忙しいですので、映画は見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は忙しいですから、映画は見ません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "明日は忙しいですので、映画を見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は忙しいですから、映画を見ません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "明日忙しいですので、映画は見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日忙しいですから、映画は見ません。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4789,6 +4899,22 @@
           },
           {
             "japanese": "暑いので、海に一緒に行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "暑いですので、一緒に海へ行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "暑いですので、一緒に海に行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "暑いですので、海へ一緒に行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "暑いですので、海に一緒に行きませんか。",
             "kind": "valid"
           }
         ]
@@ -18863,7 +18989,12 @@
           "koko",
           "suki"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "静かですから、ここが好きです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "今日は寒いから、家にいます。",
@@ -18882,6 +19013,14 @@
           {
             "japanese": "今日は寒いから、私は家にいます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日は寒いですから、家にいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "寒いですから、今日は家にいます。",
+            "kind": "valid"
           }
         ]
       },
@@ -18896,6 +19035,14 @@
         "alternates": [
           {
             "japanese": "頭が痛いので、休みます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "頭が痛いですから、休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "頭が痛いですので、休みます。",
             "kind": "other_grammar"
           }
         ]
@@ -18939,6 +19086,22 @@
           {
             "japanese": "明日は試験があるから、勉強をします。",
             "kind": "valid"
+          },
+          {
+            "japanese": "明日は試験ですから、勉強します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は試験ですから、勉強をします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は試験がありますから、勉強します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は試験がありますから、勉強をします。",
+            "kind": "valid"
           }
         ]
       },
@@ -18954,6 +19117,14 @@
           {
             "japanese": "約束をしたから、行きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "約束しましたから、行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "約束をしましたから、行きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -18965,7 +19136,12 @@
           "osoi",
           "isogu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "もう遅いですから、急ぎましょう。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "暑いから、窓を開けましょうか。",
@@ -18975,7 +19151,12 @@
           "mado",
           "akeru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "暑いですから、窓を開けましょうか。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
