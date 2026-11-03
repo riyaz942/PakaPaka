@@ -40459,6 +40459,51 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "夜[よる]はコーヒーを飲[の]まないようにする。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "夜",
+                  "reading": "よる",
+                  "role": "word",
+                  "vocabulary_slug": "yoru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "コーヒー",
+                  "reading": "コーヒー",
+                  "role": "word",
+                  "vocabulary_slug": "koohii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "飲まない",
+                  "reading": "のまない",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ようにする",
+                  "reading": "ようにする",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
