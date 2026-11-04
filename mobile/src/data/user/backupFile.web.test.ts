@@ -4,6 +4,7 @@ describe('backupFile.web', () => {
   const originalFetch = global.fetch;
 
   afterEach(() => {
+    jest.useRealTimers();
     global.fetch = originalFetch;
     jest.restoreAllMocks();
   });
@@ -32,6 +33,7 @@ describe('backupFile.web', () => {
       configurable: true,
     });
 
+    jest.useFakeTimers();
     const uri = await saveBackupFile('kizamu-backup-1.json.gz', 'H4sI');
 
     expect(uri).toBeNull();
@@ -40,6 +42,9 @@ describe('backupFile.web', () => {
     expect(anchor.download).toBe('kizamu-backup-1.json.gz');
     expect(anchor.href).toBe('blob:backup');
     expect(anchor.click).toHaveBeenCalledTimes(1);
+    // Safari can start the download late (permission prompt): keep the URL valid for a while.
+    expect(revokeObjectURL).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(60_000);
     expect(revokeObjectURL).toHaveBeenCalledWith('blob:backup');
   });
 });

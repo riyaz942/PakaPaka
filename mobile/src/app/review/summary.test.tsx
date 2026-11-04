@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+import { router } from 'expo-router';
 
 import ReviewSummaryScreen from './summary';
 
@@ -16,7 +17,7 @@ const mockSessionSummary = {
 let mockShadowModeEnabled = false;
 
 jest.mock('expo-router', () => ({
-  router: { dismissAll: jest.fn() },
+  router: { dismissAll: jest.fn(), canDismiss: jest.fn(), replace: jest.fn() },
 }));
 
 jest.mock('@/data/hooks/useReducedMotion', () => ({
@@ -122,5 +123,29 @@ describe('ReviewSummaryScreen', () => {
     // restore for other tests
     mockSessionSummary.itemsReviewed = 15;
     mockSessionSummary.correctCount = 13;
+  });
+});
+
+describe('ReviewSummaryScreen — Done button', () => {
+  beforeEach(() => jest.clearAllMocks());
+
+  it('dismisses the review stack when there is one to dismiss', () => {
+    (router.canDismiss as jest.Mock).mockReturnValue(true);
+    render(<ReviewSummaryScreen />);
+
+    fireEvent.press(screen.getByLabelText('Done, return to home'));
+
+    expect(router.dismissAll).toHaveBeenCalled();
+    expect(router.replace).not.toHaveBeenCalled();
+  });
+
+  it('goes to the tab shell when the page was loaded directly (nothing to dismiss, e.g. a web reload)', () => {
+    (router.canDismiss as jest.Mock).mockReturnValue(false);
+    render(<ReviewSummaryScreen />);
+
+    fireEvent.press(screen.getByLabelText('Done, return to home'));
+
+    expect(router.dismissAll).not.toHaveBeenCalled();
+    expect(router.replace).toHaveBeenCalledWith('/(tabs)');
   });
 });

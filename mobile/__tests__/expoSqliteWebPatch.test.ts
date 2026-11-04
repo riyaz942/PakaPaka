@@ -65,7 +65,7 @@ describe('invokeWorkerSync (main side of the bridge)', () => {
     const worker = { postMessage: jest.fn() }; // never answers
     const start = 1_000_000;
     let calls = 0;
-    // Calls 1..3 fall inside the deadline (>1M spins elapse meanwhile); the next is past it.
+    // The first 3000 clock reads fall inside the deadline (more than 1M spins elapse meanwhile); the next is past it.
     jest.spyOn(Date, 'now').mockImplementation(() => {
       calls += 1;
       return calls <= 3000 ? start : start + 30_001;

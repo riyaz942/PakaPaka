@@ -1,3 +1,5 @@
+const REVOKE_DELAY_MS = 40_000;
+
 /** Triggers a browser download of the backup. There is no file URI on web. */
 export async function saveBackupFile(fileName: string, base64Contents: string): Promise<string | null> {
   const binary = globalThis.atob(base64Contents);
@@ -11,7 +13,8 @@ export async function saveBackupFile(fileName: string, base64Contents: string): 
   anchor.href = url;
   anchor.download = fileName;
   anchor.click();
-  URL.revokeObjectURL(url);
+  // Safari may ask permission before it starts the download; revoking at once can fail it.
+  setTimeout(() => URL.revokeObjectURL(url), REVOKE_DELAY_MS);
   return null;
 }
 
