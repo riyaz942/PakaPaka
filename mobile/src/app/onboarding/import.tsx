@@ -249,8 +249,9 @@ export default function ImportScreen() {
         Import my progress
       </Text>
       <Text className="mt-[9px] text-body-sm font-ui text-muted">
-        Bring SRS progress from another study tool. Credentials stay in secure storage only for the
-        import and are removed after a successful import.
+        {source
+          ? 'Bring SRS progress from another study tool. Credentials stay in secure storage only for the import and are removed after a successful import.'
+          : 'Bring your progress back from a backup file exported by this app.'}
       </Text>
 
       <View className="mt-space-lg">

@@ -273,6 +273,7 @@ describe('ImportScreen', () => {
       expect(screen.queryByText(NETWORK_NOTICE)).toBeNull();
       expect(screen.queryByText('Import from WaniKani')).toBeNull();
       expect(screen.getByTestId('onboarding-import-restore-backup')).toBeTruthy();
+      expect(screen.queryByText(/secure storage/)).toBeNull();
     });
   });
 });
