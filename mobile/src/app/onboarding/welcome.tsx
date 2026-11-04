@@ -10,6 +10,7 @@ import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types'
 import { listLevelsWithContent } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setOnboardingPath, setStartingJlptLevel } from '@/data/user/preferencesRepository';
+import { supportsThirdPartyImport } from '@/platform/capabilities';
 
 export default function WelcomeScreen() {
   const { curriculumDb, userDb } = useDatabase();
@@ -90,15 +91,17 @@ export default function WelcomeScreen() {
               router.push('/onboarding/import');
             }}
             testID="path-import">
-            <View className="mt-space-sm flex-row flex-wrap gap-space-xs">
-              {['WaniKani API', 'Bunpro', 'Anki (.apkg)'].map((label) => (
-                <View
-                  key={label}
-                  className="rounded-radius-full border border-brand-200 bg-surface px-space-sm py-[5px]">
-                  <Text className="text-overline font-ui-bold text-brand-text">{label}</Text>
-                </View>
-              ))}
-            </View>
+            {supportsThirdPartyImport() ? (
+              <View className="mt-space-sm flex-row flex-wrap gap-space-xs">
+                {['WaniKani API', 'Bunpro', 'Anki (.apkg)'].map((label) => (
+                  <View
+                    key={label}
+                    className="rounded-radius-full border border-brand-200 bg-surface px-space-sm py-[5px]">
+                    <Text className="text-overline font-ui-bold text-brand-text">{label}</Text>
+                  </View>
+                ))}
+              </View>
+            ) : null}
           </LevelPathCard>
         </FadeSlideIn>
 

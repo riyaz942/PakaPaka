@@ -26,6 +26,7 @@ import {
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { supportsThirdPartyImport } from '@/platform/capabilities';
 
 type ImportSource = 'wanikani' | 'bunpro' | 'anki';
 
@@ -230,6 +231,10 @@ export default function ImportScreen() {
     }
   }
 
+  // Web has no secure storage or file system for WaniKani / Bunpro / Anki: only the
+  // backup restore below is offered there.
+  const source = supportsThirdPartyImport() ? selectedSource : null;
+
   return (
     // Scrolls because the fourth option (restore) pushes the tallest source
     // pane past a 667pt viewport; `grow` keeps `mt-auto` pinning the actions to
@@ -259,17 +264,19 @@ export default function ImportScreen() {
         />
       </View>
 
-      <SegmentedPill
-        accessibilityLabel="Import source"
-        className="mt-space-lg"
-        disabled={isImporting}
-        expand
-        onChange={handleSourceChange}
-        options={SOURCE_OPTIONS}
-        value={selectedSource}
-      />
+      {source ? (
+        <SegmentedPill
+          accessibilityLabel="Import source"
+          className="mt-space-lg"
+          disabled={isImporting}
+          expand
+          onChange={handleSourceChange}
+          options={SOURCE_OPTIONS}
+          value={source}
+        />
+      ) : null}
 
-      {selectedSource === 'wanikani' ? (
+      {source === 'wanikani' ? (
         <View className="mt-space-lg">
           <SectionHeading label="WaniKani API key" />
           <Text className="mt-space-sm text-body-sm font-ui text-muted">
@@ -292,7 +299,7 @@ export default function ImportScreen() {
         </View>
       ) : null}
 
-      {selectedSource === 'bunpro' ? (
+      {source === 'bunpro' ? (
         <View className="mt-space-lg">
           <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
             <Text className="text-body font-ui-extrabold text-primary">Best-effort import</Text>
@@ -326,7 +333,7 @@ export default function ImportScreen() {
         </View>
       ) : null}
 
-      {selectedSource === 'anki' ? (
+      {source === 'anki' ? (
         <View className="mt-space-lg">
           <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
             <Text className="text-body font-ui-extrabold text-primary">Local deck import</Text>
@@ -382,14 +389,16 @@ export default function ImportScreen() {
         <View className="mt-6 items-center">
           <ActivityIndicator
             accessibilityLabel={
-              selectedSource === 'wanikani'
-                ? 'Importing WaniKani progress'
-                : selectedSource === 'bunpro'
-                  ? 'Importing Bunpro progress'
-                  : 'Processing Anki deck'
+              source === null
+                ? 'Restoring backup'
+                : source === 'wanikani'
+                  ? 'Importing WaniKani progress'
+                  : source === 'bunpro'
+                    ? 'Importing Bunpro progress'
+                    : 'Processing Anki deck'
             }
           />
-          {selectedSource === 'anki' ? (
+          {source === 'anki' ? (
             <Text className="mt-space-sm text-body-sm font-ui-medium text-secondary">
               Processing deck...
             </Text>
@@ -398,21 +407,21 @@ export default function ImportScreen() {
       ) : null}
 
       <View className="mt-auto gap-space-sm">
-        {selectedSource === 'wanikani' ? (
+        {source === 'wanikani' ? (
           <Button
             disabled={isImporting || wanikaniApiKey.trim().length === 0}
             label="Import from WaniKani"
             onPress={handleWaniKaniImportPress}
           />
         ) : null}
-        {selectedSource === 'bunpro' ? (
+        {source === 'bunpro' ? (
           <Button
             disabled={isImporting || bunproToken.trim().length === 0}
             label="Import from Bunpro"
             onPress={handleBunproImportPress}
           />
         ) : null}
-        {selectedSource === 'anki' ? (
+        {source === 'anki' ? (
           <Button
             disabled={isImporting || !ankiFileUri}
             label="Import from Anki"

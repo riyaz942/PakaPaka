@@ -1,4 +1,3 @@
-import { documentDirectory, EncodingType, writeAsStringAsync } from 'expo-file-system/legacy';
 import type { SQLiteDatabase } from 'expo-sqlite';
 import * as pako from 'pako';
 
@@ -11,6 +10,7 @@ import type {
 } from '@/core/backup/backup.types';
 import { buildItemIdToRefMap, resolveItemIdToRef } from '@/core/backup/slugResolver';
 import { CURRICULUM_ATTACH_ALIAS } from '@/data/database';
+import { saveBackupFile } from '@/data/user/backupFile';
 import { setLastBackedUpAt } from '@/data/user/preferencesRepository';
 import type { AppError, Result } from '@/types/result.types';
 
@@ -27,7 +27,8 @@ export type ExportBackupOptions = {
 };
 
 export type ExportBackupResult = {
-  fileUri: string;
+  /** `file://` URI on native; `null` on web, where the browser downloads the file. */
+  fileUri: string | null;
   itemCount: number;
   byteSize: number;
   omittedCount: number;
@@ -40,37 +41,6 @@ type MappedRows<TEntry> = {
 
 function backupFileName(exportedAt: string): string {
   return `kizamu-backup-${exportedAt.replace(/[:.]/g, '-')}.json.gz`;
-}
-
-const TEST_DOCUMENT_DIRECTORY = 'file:///mock-documents/';
-
-/**
- * `jest-expo`'s setup stubs `expo-file-system/legacy` with stateless
- * `jest.fn()`s that shadow this project's own `__mocks__/expo-file-system.ts`
- * for this exact import path — `documentDirectory` and a working
- * `writeAsStringAsync` are unavailable under test. Same workaround as
- * `curriculumConfig.ts`'s `getDocumentDirectory` and
- * `curriculumUpdate.ts`'s `readFileAsBase64`: branch to the shared
- * `test-support/file-system-test-state` store in test mode.
- */
-function resolveDocumentDirectory(): string {
-  const directory = process.env.NODE_ENV === 'test' ? TEST_DOCUMENT_DIRECTORY : documentDirectory;
-  if (!directory) {
-    throw new Error('documentDirectory is unavailable');
-  }
-  return directory;
-}
-
-async function writeBackupFile(fileUri: string, base64Contents: string): Promise<void> {
-  if (process.env.NODE_ENV === 'test') {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports -- test-only file store
-    const { setMockFileContents } = require('../../../test-support/file-system-test-state') as {
-      setMockFileContents: (uri: string, base64Contents: string) => void;
-    };
-    setMockFileContents(fileUri, base64Contents);
-    return;
-  }
-  await writeAsStringAsync(fileUri, base64Contents, { encoding: EncodingType.Base64 });
 }
 
 function bytesToBase64(bytes: Uint8Array): string {
@@ -642,8 +612,7 @@ export async function exportBackup(
     const gzipped = pako.gzip(json);
     const base64 = bytesToBase64(gzipped);
 
-    const fileUri = `${resolveDocumentDirectory()}${backupFileName(exportedAt)}`;
-    await writeBackupFile(fileUri, base64);
+    const fileUri = await saveBackupFile(backupFileName(exportedAt), base64);
 
     // The nudge timestamp follows the file write, not the share sheet — a
     // cancelled share is still a backup on this device (9.1 precedent).

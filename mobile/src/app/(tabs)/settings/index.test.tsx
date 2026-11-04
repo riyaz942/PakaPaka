@@ -801,6 +801,27 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
     expect(scheduleReviewReminder).not.toHaveBeenCalled();
   });
 
+  it('does not open the share sheet after a web export, which downloads instead', async () => {
+    Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+    try {
+      mockExportBackup.mockResolvedValue({
+        ok: true,
+        value: { fileUri: null, itemCount: 12, byteSize: 2048, omittedCount: 0 },
+      });
+
+      render(<SettingsScreen />);
+      fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('settings-backup-result')).toBeTruthy();
+      });
+      expect(mockShareAsync).not.toHaveBeenCalled();
+      expect(screen.queryByTestId('settings-backup-error')).toBeNull();
+    } finally {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    }
+  });
+
   it('does not touch notifications after a restore on web', async () => {
     Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
     try {

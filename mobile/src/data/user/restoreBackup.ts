@@ -1,4 +1,3 @@
-import { EncodingType, readAsStringAsync } from 'expo-file-system/legacy';
 import type { SQLiteDatabase } from 'expo-sqlite';
 import * as pako from 'pako';
 
@@ -13,6 +12,7 @@ import {
 } from '@/core/backup/backup.types';
 import { buildItemRefToIdMap, itemRefKey, resolveItemRefToId } from '@/core/backup/slugResolver';
 import { CURRICULUM_ATTACH_ALIAS } from '@/data/database';
+import { readBackupFile } from '@/data/user/backupFile';
 import { notifyFuriganaOverridesChanged } from '@/data/user/furiganaOverrideEvents';
 import {
   clearPreference,
@@ -106,26 +106,6 @@ function base64ToBytes(base64: string): Uint8Array {
     bytes[i] = binary.charCodeAt(i);
   }
   return bytes;
-}
-
-/**
- * `jest-expo` stubs `expo-file-system/legacy` with stateless `jest.fn()`s that
- * shadow this project's own mock for this import path — the same constraint
- * `exportBackup.ts` works around, and the same shared test file store.
- */
-async function readBackupFile(fileUri: string): Promise<string> {
-  if (process.env.NODE_ENV === 'test') {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports -- test-only file store
-    const { getMockFileContents } = require('../../../test-support/file-system-test-state') as {
-      getMockFileContents: (uri: string) => string | undefined;
-    };
-    const contents = getMockFileContents(fileUri);
-    if (contents === undefined) {
-      throw new Error(`No file at ${fileUri}`);
-    }
-    return contents;
-  }
-  return readAsStringAsync(fileUri, { encoding: EncodingType.Base64 });
 }
 
 function readCurriculumItemRefToIdMap(userDb: SQLiteDatabase): Map<string, number> {

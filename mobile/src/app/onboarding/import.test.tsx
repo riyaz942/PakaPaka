@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
+import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { __mockResetSecureStore } from '../../../__mocks__/expo-secure-store';
@@ -244,6 +245,34 @@ describe('ImportScreen', () => {
       });
       expect(mockPush).not.toHaveBeenCalled();
       expect(getBackupPreview()).toBeNull();
+    });
+  });
+
+  describe('on web', () => {
+    afterEach(() => {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    });
+
+    it('offers WaniKani, Bunpro and Anki on native', async () => {
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      expect(screen.getByText('WaniKani')).toBeTruthy();
+      expect(screen.getByText('Bunpro')).toBeTruthy();
+      expect(screen.getByText('Anki')).toBeTruthy();
+    });
+
+    it('offers only the backup restore, not the third-party sources', async () => {
+      Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      expect(screen.queryByText('WaniKani')).toBeNull();
+      expect(screen.queryByText('Bunpro')).toBeNull();
+      expect(screen.queryByText('Anki')).toBeNull();
+      expect(screen.queryByText(NETWORK_NOTICE)).toBeNull();
+      expect(screen.queryByText('Import from WaniKani')).toBeNull();
+      expect(screen.getByTestId('onboarding-import-restore-backup')).toBeTruthy();
     });
   });
 });

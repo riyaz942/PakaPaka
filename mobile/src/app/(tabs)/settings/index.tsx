@@ -320,20 +320,24 @@ export default function SettingsScreen() {
       });
       setLastBackedUpAtState(getLastBackedUpAt(userDb));
 
-      try {
-        const canShare = await Sharing.isAvailableAsync();
-        if (!canShare) {
-          setBackupError(
-            'Sharing is unavailable. The backup was saved on this device, but the share sheet could not be opened.',
-          );
-        } else {
-          await Sharing.shareAsync(result.value.fileUri, {
-            mimeType: 'application/gzip',
-            dialogTitle: 'Back up your progress',
-          });
+      // On web the browser already downloaded the file: there is no URI to share.
+      const { fileUri } = result.value;
+      if (fileUri !== null) {
+        try {
+          const canShare = await Sharing.isAvailableAsync();
+          if (!canShare) {
+            setBackupError(
+              'Sharing is unavailable. The backup was saved on this device, but the share sheet could not be opened.',
+            );
+          } else {
+            await Sharing.shareAsync(fileUri, {
+              mimeType: 'application/gzip',
+              dialogTitle: 'Back up your progress',
+            });
+          }
+        } catch {
+          setBackupError('Could not open the share sheet.');
         }
-      } catch {
-        setBackupError('Could not open the share sheet.');
       }
     } finally {
       setIsExportingBackup(false);
