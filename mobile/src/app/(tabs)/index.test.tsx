@@ -317,6 +317,8 @@ describe('HomeScreen', () => {
   it('hides the import nudge on web, where WaniKani, Bunpro and Anki import is not offered', () => {
     setPlatform('web');
     mockImportCount = 0;
+    // A recent backup, so the web backup nudge does not take the slot first.
+    mockLastBackedUpAt = new Date().toISOString();
     render(<HomeScreen />);
 
     expect(screen.queryByTestId('import-nudge-card')).toBeNull();
