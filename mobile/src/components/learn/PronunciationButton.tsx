@@ -5,6 +5,7 @@ import { Icon } from '@/components/common/Icon';
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { playWaveform } from '@/data/ai/voice/audioSession';
 import { synthesizeJapanese } from '@/data/ai/voice/ttsClient';
+import { supportsVoice } from '@/platform/capabilities';
 
 type Phase = 'idle' | 'busy' | 'error';
 
@@ -79,6 +80,10 @@ export function PronunciationButton({ text, testID = 'pronunciation-button' }: P
     }
     setPhase('idle');
   }, [text, phase]);
+
+  if (!supportsVoice()) {
+    return null;
+  }
 
   const isBusy = phase === 'busy';
   const isError = phase === 'error';

@@ -4,6 +4,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
+import { supportsCurriculumOta } from '@/platform/capabilities';
 import {
   CurriculumUpdateContext,
   type CurriculumUpdateContextValue,
@@ -89,7 +90,7 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
   }, []);
 
   useEffect(() => {
-    if (state.status !== 'ready' || updateStartedRef.current) {
+    if (state.status !== 'ready' || updateStartedRef.current || !supportsCurriculumOta()) {
       return;
     }
 

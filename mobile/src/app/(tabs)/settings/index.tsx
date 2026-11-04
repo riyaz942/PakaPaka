@@ -71,6 +71,12 @@ import {
   type ThemeMode,
 } from '@/data/user/preferencesRepository';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
+import {
+  supportsNotifications,
+  supportsTalk,
+  supportsThemeOverride,
+  supportsVoice,
+} from '@/platform/capabilities';
 
 const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = [
   { value: 'morning', label: 'Morning (8:00)' },
@@ -398,10 +404,12 @@ export default function SettingsScreen() {
     refetchAutoAdvance();
     refetchReducedMotion();
     refetchShadowMode();
-    if (getNotificationsEnabled(userDb)) {
-      await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
-    } else {
-      await cancelAllNotifications();
+    if (supportsNotifications()) {
+      if (getNotificationsEnabled(userDb)) {
+        await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
+      } else {
+        await cancelAllNotifications();
+      }
     }
   };
 
@@ -505,20 +513,22 @@ export default function SettingsScreen() {
           ) : null}
         </View>
 
-        <View className="mt-space-lg">
-          <SectionHeading label="Appearance" />
-          <SettingsCard>
-            <View className="flex-row items-center justify-between gap-space-md py-space-sm">
-              <Text className="text-body font-ui-semibold text-primary">Theme</Text>
-              <SegmentedPill
-                accessibilityLabel="Theme"
-                options={THEME_MODE_OPTIONS}
-                value={themeMode}
-                onChange={setThemeMode}
-              />
-            </View>
-          </SettingsCard>
-        </View>
+        {supportsThemeOverride() ? (
+          <View className="mt-space-lg">
+            <SectionHeading label="Appearance" />
+            <SettingsCard>
+              <View className="flex-row items-center justify-between gap-space-md py-space-sm">
+                <Text className="text-body font-ui-semibold text-primary">Theme</Text>
+                <SegmentedPill
+                  accessibilityLabel="Theme"
+                  options={THEME_MODE_OPTIONS}
+                  value={themeMode}
+                  onChange={setThemeMode}
+                />
+              </View>
+            </SettingsCard>
+          </View>
+        ) : null}
 
         <View className="mt-space-lg">
           <SectionHeading label="Accessibility" />
@@ -686,39 +696,41 @@ export default function SettingsScreen() {
           ) : null}
         </View>
 
-        <View className="mt-space-lg">
-          <SectionHeading label="Daily reminders" />
-          <SettingsCard>
-            <ToggleRow
-              label="Review reminder"
-              description="One reminder per day, at your chosen time."
-              value={notificationsEnabled}
-              onValueChange={handleNotificationsToggle}
-              testID="settings-notifications-toggle"
-            />
-          </SettingsCard>
+        {supportsNotifications() ? (
+          <View className="mt-space-lg">
+            <SectionHeading label="Daily reminders" />
+            <SettingsCard>
+              <ToggleRow
+                label="Review reminder"
+                description="One reminder per day, at your chosen time."
+                value={notificationsEnabled}
+                onValueChange={handleNotificationsToggle}
+                testID="settings-notifications-toggle"
+              />
+            </SettingsCard>
 
-          {notificationPermissionDenied ? (
-            <Text className="mt-space-sm text-caption font-ui-medium text-muted">
-              Please enable notifications in device Settings to use this feature.
-            </Text>
-          ) : null}
+            {notificationPermissionDenied ? (
+              <Text className="mt-space-sm text-caption font-ui-medium text-muted">
+                Please enable notifications in device Settings to use this feature.
+              </Text>
+            ) : null}
 
-          {notificationsEnabled ? (
-            <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
-              {NOTIFICATION_TIME_OPTIONS.map((option) => (
-                <ChoiceCard
-                  key={option.value}
-                  title={option.label}
-                  selected={notificationTime === option.value}
-                  onPress={() => handleNotificationTimeChange(option.value)}
-                  testID={`settings-notification-time-${option.value}`}
-                  className="min-w-[44px] flex-1"
-                />
-              ))}
-            </View>
-          ) : null}
-        </View>
+            {notificationsEnabled ? (
+              <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
+                {NOTIFICATION_TIME_OPTIONS.map((option) => (
+                  <ChoiceCard
+                    key={option.value}
+                    title={option.label}
+                    selected={notificationTime === option.value}
+                    onPress={() => handleNotificationTimeChange(option.value)}
+                    testID={`settings-notification-time-${option.value}`}
+                    className="min-w-[44px] flex-1"
+                  />
+                ))}
+              </View>
+            ) : null}
+          </View>
+        ) : null}
 
         {shadowModeCanEnable ? (
           <View className="mt-space-lg">
@@ -735,9 +747,9 @@ export default function SettingsScreen() {
           </View>
         ) : null}
 
-        <VoiceModelsSettingsSection />
+        {supportsVoice() ? <VoiceModelsSettingsSection /> : null}
 
-        <ByokSettingsSection />
+        {supportsTalk() ? <ByokSettingsSection /> : null}
 
         <View className="mt-space-lg">
           <SectionHeading label="Home screen" />

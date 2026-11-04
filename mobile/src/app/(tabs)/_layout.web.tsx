@@ -14,8 +14,7 @@ import { cn } from '@/utils/cn';
 
 export default function TabsLayout() {
   return (
-    <Tabs>
-      <TabSlot style={{ height: '100%' }} />
+    <Tabs style={styles.tabs}>
       <TabList asChild>
         <WebTabList>
           <TabTrigger name="home" href="/" asChild>
@@ -23,9 +22,6 @@ export default function TabsLayout() {
           </TabTrigger>
           <TabTrigger name="browse" href="/browse" asChild>
             <TabButton>Browse</TabButton>
-          </TabTrigger>
-          <TabTrigger name="converse" href="/converse" asChild>
-            <TabButton>Talk</TabButton>
           </TabTrigger>
           <TabTrigger name="stats" href="/stats" asChild>
             <TabButton>Stats</TabButton>
@@ -35,6 +31,7 @@ export default function TabsLayout() {
           </TabTrigger>
         </WebTabList>
       </TabList>
+      <TabSlot style={styles.slot} />
     </Tabs>
   );
 }
@@ -72,8 +69,13 @@ function WebTabList(props: TabListProps) {
 }
 
 const styles = StyleSheet.create({
+  tabs: {
+    flex: 1,
+  },
+  slot: {
+    flex: 1,
+  },
   tabListContainer: {
-    position: 'absolute',
     width: '100%',
     padding: Spacing.three,
     justifyContent: 'center',

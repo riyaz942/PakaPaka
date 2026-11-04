@@ -1,7 +1,13 @@
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import React from 'react';
 
+import { supportsTalk } from '@/platform/capabilities';
+
 export default function ConverseTabLayout() {
+  if (!supportsTalk()) {
+    return <Redirect href="/" />;
+  }
+
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import React from 'react';
+import { Platform } from 'react-native';
 
 import {
   __mockPlayedBuffers,
@@ -125,5 +126,15 @@ describe('PronunciationButton', () => {
       await waitFor(() => expect(screen.queryByTestId('voice-model-cancel')).toBeNull());
       expect(__mockPlayedBuffers()).toHaveLength(0);
     });
+  });
+
+  it('renders nothing on web, where there is no on-device voice', () => {
+    Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+    try {
+      render(<PronunciationButton text="日" />);
+      expect(screen.queryByTestId('pronunciation-button')).toBeNull();
+    } finally {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    }
   });
 });
