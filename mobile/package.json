@@ -9,6 +9,7 @@
     "android": "APP_VARIANT=development expo run:android",
     "ios": "APP_VARIANT=development expo run:ios",
     "web": "expo start --web",
+    "build:web": "expo export -p web",
     "lint": "expo lint",
     "test": "jest",
     "typecheck": "tsc --noEmit",
