@@ -97,6 +97,8 @@ describe('DatabaseProvider', () => {
         expect(screen.getByText('Unable to open local databases.')).toBeTruthy(),
       );
       expect(screen.getByText(SECOND_TAB_HINT)).toBeTruthy();
+      // Plain hint only: the raw SQLite error means nothing to the learner.
+      expect(screen.queryByText('NoModificationAllowedError')).toBeNull();
       expect(mockRequestPersistentStorage).not.toHaveBeenCalled();
     });
 
@@ -111,6 +113,7 @@ describe('DatabaseProvider', () => {
         expect(screen.getByText('Unable to open local databases.')).toBeTruthy(),
       );
       expect(screen.queryByText(SECOND_TAB_HINT)).toBeNull();
+      expect(screen.getByText('NoModificationAllowedError')).toBeTruthy();
     });
   });
 });

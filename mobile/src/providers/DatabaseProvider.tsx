@@ -180,14 +180,15 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
         <Text className="text-center text-base text-foreground">
           Unable to open local databases.
         </Text>
-        <Text className="mt-2 text-center text-sm text-muted-foreground">
-          {state.error.message}
-        </Text>
         {isWeb() ? (
           <Text className="mt-2 text-center text-sm text-muted-foreground">
             If NihongoCore is open in another tab, close that tab and reload this page.
           </Text>
-        ) : null}
+        ) : (
+          <Text className="mt-2 text-center text-sm text-muted-foreground">
+            {state.error.message}
+          </Text>
+        )}
       </View>
     );
   }
