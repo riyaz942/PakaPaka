@@ -11,6 +11,12 @@ jest.mock('@/data/database', () => ({
   initializeDatabases: () => mockInitializeDatabases(),
 }));
 
+const mockRequestPersistentStorage = jest.fn();
+
+jest.mock('@/platform/requestPersistentStorage', () => ({
+  requestPersistentStorage: () => mockRequestPersistentStorage(),
+}));
+
 jest.mock('@/data/curriculum/curriculumUpdate', () => ({
   checkAndApplyCurriculumUpdate: (handles: unknown) => mockCheckAndApplyCurriculumUpdate(handles),
 }));
@@ -30,6 +36,7 @@ describe('DatabaseProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockCheckAndApplyCurriculumUpdate.mockResolvedValue({ status: 'noop' });
+    mockRequestPersistentStorage.mockResolvedValue('granted');
     mockInitializeDatabases.mockResolvedValue({ ok: true, value: fakeHandles() });
   });
 
@@ -55,5 +62,55 @@ describe('DatabaseProvider', () => {
     );
     await waitFor(() => expect(screen.getByText('ready')).toBeTruthy());
     expect(mockCheckAndApplyCurriculumUpdate).not.toHaveBeenCalled();
+  });
+
+  it('asks the browser for persistent storage once, after the databases open', async () => {
+    setPlatform('web');
+    render(
+      <DatabaseProvider>
+        <Text>ready</Text>
+      </DatabaseProvider>,
+    );
+    await waitFor(() => expect(screen.getByText('ready')).toBeTruthy());
+    expect(mockRequestPersistentStorage).toHaveBeenCalledTimes(1);
+  });
+
+  describe('when the databases cannot be opened', () => {
+    const SECOND_TAB_HINT =
+      'If NihongoCore is open in another tab, close that tab and reload this page.';
+
+    beforeEach(() => {
+      mockInitializeDatabases.mockResolvedValue({
+        ok: false,
+        error: { code: 'DB_OPEN_FAILED', message: 'NoModificationAllowedError' },
+      });
+    });
+
+    it('explains the second-tab case on web', async () => {
+      setPlatform('web');
+      render(
+        <DatabaseProvider>
+          <Text>ready</Text>
+        </DatabaseProvider>,
+      );
+      await waitFor(() =>
+        expect(screen.getByText('Unable to open local databases.')).toBeTruthy(),
+      );
+      expect(screen.getByText(SECOND_TAB_HINT)).toBeTruthy();
+      expect(mockRequestPersistentStorage).not.toHaveBeenCalled();
+    });
+
+    it('does not mention tabs on iOS', async () => {
+      setPlatform('ios');
+      render(
+        <DatabaseProvider>
+          <Text>ready</Text>
+        </DatabaseProvider>,
+      );
+      await waitFor(() =>
+        expect(screen.getByText('Unable to open local databases.')).toBeTruthy(),
+      );
+      expect(screen.queryByText(SECOND_TAB_HINT)).toBeNull();
+    });
   });
 });

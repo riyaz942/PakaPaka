@@ -4,7 +4,8 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
-import { supportsCurriculumOta } from '@/platform/capabilities';
+import { isWeb, supportsCurriculumOta } from '@/platform/capabilities';
+import { requestPersistentStorage } from '@/platform/requestPersistentStorage';
 import {
   CurriculumUpdateContext,
   type CurriculumUpdateContextValue,
@@ -56,6 +57,8 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
       }
 
       handlesRef.current = result.value;
+
+      void requestPersistentStorage();
 
       if (__DEV__) {
         const metadata = result.value.curriculumDb.getFirstSync<{ version: string }>(
@@ -180,6 +183,11 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
         <Text className="mt-2 text-center text-sm text-muted-foreground">
           {state.error.message}
         </Text>
+        {isWeb() ? (
+          <Text className="mt-2 text-center text-sm text-muted-foreground">
+            If NihongoCore is open in another tab, close that tab and reload this page.
+          </Text>
+        ) : null}
       </View>
     );
   }
