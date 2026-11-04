@@ -58,7 +58,7 @@ function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps) {
 
 function WebTabList(props: TabListProps) {
   return (
-    <View {...props} style={styles.tabListContainer}>
+    <View {...props} className="bg-background" style={styles.tabListContainer}>
       <View
         className="flex-row flex-grow items-center gap-space-sm rounded-radius-lg border border-border bg-surface px-space-lg py-space-sm shadow-e2"
         style={{ maxWidth: MaxContentWidth }}>
