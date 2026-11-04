@@ -46,6 +46,7 @@ import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSess
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
 import { cn } from '@/utils/cn';
 import { safeBack } from '@/utils/safeBack';
+import { isWeb } from '@/platform/capabilities';
 
 const PLACEHOLDER: Record<PromptType, string> = {
   reading: 'Type reading in romaji...',
@@ -60,6 +61,16 @@ const GRAMMAR_PLACEHOLDER: Record<PromptType, string> = {
   production: 'Type the sentence in Japanese...',
   reading: 'Type the sentence in Japanese...',
 };
+
+/**
+ * Web has no soft keyboard, and `Keyboard.dismiss()` blurs the answer input there —
+ * which would swallow the second Return that advances the card.
+ */
+function dismissSoftKeyboard() {
+  if (!isWeb()) {
+    Keyboard.dismiss();
+  }
+}
 
 export default function ReviewScreen() {
   const {
@@ -310,7 +321,7 @@ export default function ReviewScreen() {
     }
 
     if (evaluation.result === 'correct') {
-      Keyboard.dismiss();
+      dismissSoftKeyboard();
       setCardState('correct');
       const grade = gradeForResult(evaluation.result) ?? 3;
       setStageTransition(peekStageTransition(grade));
@@ -377,7 +388,7 @@ export default function ReviewScreen() {
     }
     setAnswerCollision(collision);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
-    Keyboard.dismiss();
+    dismissSoftKeyboard();
     setCardState('incorrect');
   }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
 
@@ -442,7 +453,7 @@ export default function ReviewScreen() {
     const { value } = resolveCorrectReveal(currentItem);
     setDisplayAnswer(value);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
-    Keyboard.dismiss();
+    dismissSoftKeyboard();
     setCardState('incorrect');
   }
 

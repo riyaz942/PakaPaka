@@ -1,6 +1,6 @@
 import React from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
-import { AccessibilityInfo } from 'react-native';
+import { AccessibilityInfo, Keyboard, Platform } from 'react-native';
 
 import type { GrammarSentenceCard, ReviewItem } from '@/core/srs/srs.types';
 
@@ -565,6 +565,30 @@ describe('ReviewScreen — Return-to-advance pacing (Story 1.2, FR84)', () => {
     });
     expect(mockGradeCurrentItem).not.toHaveBeenCalled();
   });
+
+  it.each([
+    ['ios', true],
+    ['web', false],
+  ] as const)(
+    'on %s, a correct answer dismisses the soft keyboard: %s (web has none, and blurring would swallow the second Return)',
+    async (os, dismisses) => {
+      Object.defineProperty(Platform, 'OS', { value: os, configurable: true });
+      const dismiss = jest.spyOn(Keyboard, 'dismiss').mockImplementation(() => {});
+      try {
+        render(<ReviewScreen />);
+
+        fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+        await act(async () => {
+          fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+        });
+
+        expect(screen.getByLabelText('Correct, reading: たべる')).toBeTruthy();
+        expect(dismiss).toHaveBeenCalledTimes(dismisses ? 1 : 0);
+      } finally {
+        Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+      }
+    },
+  );
 
   it('advances on the second Return without re-evaluating the (empty) input', async () => {
     render(<ReviewScreen />);
