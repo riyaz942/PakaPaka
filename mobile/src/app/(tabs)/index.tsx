@@ -62,6 +62,7 @@ import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagemen
 import { AT_RISK_TOP_N, WELCOME_BACK_SLICE } from '@/config/constants';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { cn } from '@/utils/cn';
+import { supportsThirdPartyImport } from '@/platform/capabilities';
 
 export default function HomeScreen() {
   const { curriculumDb, userDb } = useDatabase();
@@ -229,7 +230,9 @@ export default function HomeScreen() {
       }
       try {
         setShowImportNudge(
-          countImportMetadataRows(userDb) === 0 && isOnboardingCompleted(userDb),
+          supportsThirdPartyImport() &&
+            countImportMetadataRows(userDb) === 0 &&
+            isOnboardingCompleted(userDb),
         );
       } catch {
         setShowImportNudge(false);

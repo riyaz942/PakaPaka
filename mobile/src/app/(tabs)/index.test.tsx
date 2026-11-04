@@ -314,6 +314,14 @@ describe('HomeScreen', () => {
     expect(mockRouterPush).toHaveBeenCalledWith('/settings');
   });
 
+  it('hides the import nudge on web, where WaniKani, Bunpro and Anki import is not offered', () => {
+    setPlatform('web');
+    mockImportCount = 0;
+    render(<HomeScreen />);
+
+    expect(screen.queryByTestId('import-nudge-card')).toBeNull();
+  });
+
   it('curriculum update card outranks the import nudge', () => {
     mockImportCount = 0;
     mockShowCurriculumBanner = true;
