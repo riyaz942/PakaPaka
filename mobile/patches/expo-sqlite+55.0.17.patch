@@ -1,0 +1,72 @@
+diff --git a/node_modules/expo-sqlite/web/WorkerChannel.ts b/node_modules/expo-sqlite/web/WorkerChannel.ts
+index 7fba380..7046602 100644
+--- a/node_modules/expo-sqlite/web/WorkerChannel.ts
++++ b/node_modules/expo-sqlite/web/WorkerChannel.ts
+@@ -36,12 +36,14 @@ export function sendWorkerResult({
+   if (syncTrait) {
+     const { lockBuffer, resultBuffer } = syncTrait;
+     const lock = new Int32Array(lockBuffer);
+-    const resultArray = new Uint8Array(resultBuffer);
+     const resultJson = error != null ? serialize({ error }) : serialize({ result });
+     const resultBytes = new TextEncoder().encode(resultJson);
+     const length = resultBytes.length;
+-    resultArray.set(new Uint32Array([length]), 0);
+-    resultArray.set(resultBytes, 4);
++    if (4 + length > resultBuffer.byteLength) {
++      (resultBuffer as any).grow(4 + length);
++    }
++    new Uint32Array(resultBuffer, 0, 1)[0] = length;
++    new Uint8Array(resultBuffer).set(resultBytes, 4);
+     Atomics.store(lock, 0, RESOLVED);
+   } else {
+     if (result) {
+@@ -103,8 +105,9 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
+   const id = messageId++;
+   const lockBuffer = new SharedArrayBuffer(4);
+   const lock = new Int32Array(lockBuffer);
+-  const resultBuffer = new SharedArrayBuffer(1024 * 1024);
+-  const resultArray = new Uint8Array(resultBuffer);
++  const resultBuffer = new (SharedArrayBuffer as any)(1024 * 1024, {
++    maxByteLength: 256 * 1024 * 1024,
++  }) as SharedArrayBuffer;
+ 
+   Atomics.store(lock, 0, PENDING);
+   worker.postMessage({
+@@ -117,29 +120,26 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
+   });
+ 
+   let i = 0;
++  const deadline = Date.now() + 30_000;
+   // @ts-expect-error: Remove this when TypeScript supports Atomics.pause
+   const useAtomicsPause = typeof Atomics.pause === 'function';
+   while (Atomics.load(lock, 0) === PENDING) {
+     ++i;
+ 
++    if (i % 1000 === 0 && Date.now() > deadline) {
++      throw new Error('Sync operation timeout');
++    }
+     if (useAtomicsPause) {
+-      if (i > 1_000_000) {
+-        throw new Error('Sync operation timeout');
+-      }
+       // @ts-expect-error: Remove this when TypeScript supports Atomics.pause
+       Atomics.pause();
+-    } else {
+-      // NOTE(kudo): Unfortunate for the busy loop,
+-      // because we don't have a way for main thread to yield its execution to other callbacks.
+-      if (i > 1000_000_000) {
+-        throw new Error('Sync operation timeout');
+-      }
+     }
++    // NOTE(kudo): Unfortunate for the busy loop,
++    // because we don't have a way for main thread to yield its execution to other callbacks.
+   }
+ 
+-  const length = new Uint32Array(resultArray.buffer, 0, 1)[0];
++  const length = new Uint32Array(resultBuffer, 0, 1)[0];
+   const resultCopy = new Uint8Array(length);
+-  resultCopy.set(new Uint8Array(resultArray.buffer, 4, length));
++  resultCopy.set(new Uint8Array(resultBuffer, 4, length));
+   const resultJson = new TextDecoder().decode(resultCopy);
+   const { result, error } = deserialize<{ result: ResultTypeMap[T]; error?: string }>(resultJson);
+   if (error) throw new Error(error);
