@@ -5,6 +5,7 @@ import * as wanakana from 'wanakana';
 import { Icon, type IconName } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { isWeb } from '@/platform/capabilities';
 import { cn } from '@/utils/cn';
 
 export type WanaKanaInputMode = 'kana' | 'english';
@@ -176,6 +177,9 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
             onSubmitEditing={onSubmit}
             returnKeyType="done"
             submitBehavior="submit"
+            // react-native-web ignores submitBehavior and blurs single-line inputs on
+            // Enter, which would swallow the second Return that advances the card.
+            {...(isWeb() ? { blurOnSubmit: false } : {})}
             editable={editable}
             accessibilityLabel={accessibilityLabel}
             {...englishProps}
