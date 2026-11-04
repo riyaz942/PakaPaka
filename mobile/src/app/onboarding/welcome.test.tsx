@@ -171,6 +171,8 @@ describe('WelcomeScreen', () => {
       expect(screen.queryByText('Bunpro')).toBeNull();
       expect(screen.queryByText('Anki (.apkg)')).toBeNull();
       expect(screen.getByTestId('path-import')).toBeTruthy();
+      expect(screen.queryByText(/WaniKani/)).toBeNull();
+      expect(screen.getByText(/backup/i)).toBeTruthy();
     });
   });
 });

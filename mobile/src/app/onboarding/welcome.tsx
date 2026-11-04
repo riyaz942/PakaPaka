@@ -85,7 +85,11 @@ export default function WelcomeScreen() {
         <FadeSlideIn index={2}>
           <LevelPathCard
             title="I have existing knowledge"
-            description="Import from WaniKani, Bunpro, or Anki — keep everything you've learned."
+            description={
+              supportsThirdPartyImport()
+                ? "Import from WaniKani, Bunpro, or Anki — keep everything you've learned."
+                : 'Restore a backup from this app — keep everything you\'ve learned.'
+            }
             onPress={() => {
               setOnboardingPath(userDb, 'import');
               router.push('/onboarding/import');
