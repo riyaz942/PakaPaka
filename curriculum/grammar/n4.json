@@ -27968,6 +27968,110 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "兄[あに]は今年[ことし]の夏[なつ]は帰[かえ]らないらしい。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "今年",
+                  "reading": "ことし",
+                  "role": "word",
+                  "vocabulary_slug": "kotoshi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "夏",
+                  "reading": "なつ",
+                  "role": "word",
+                  "vocabulary_slug": "natsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰らないらしい",
+                  "reading": "かえらないらしい",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "今年[ことし]の夏[なつ]は兄[あに]は帰[かえ]らないらしい。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今年",
+                  "reading": "ことし",
+                  "role": "word",
+                  "vocabulary_slug": "kotoshi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "夏",
+                  "reading": "なつ",
+                  "role": "word",
+                  "vocabulary_slug": "natsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰らないらしい",
+                  "reading": "かえらないらしい",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         }
