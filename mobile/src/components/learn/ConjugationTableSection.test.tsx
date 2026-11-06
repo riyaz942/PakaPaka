@@ -69,6 +69,19 @@ describe('ConjugationTableSection', () => {
     expect(screen.getByText('Same pattern as 帰る')).toBeTruthy();
   });
 
+  it('shows the て-form row for 来る', () => {
+    mockConjugationClass = 'kuru';
+    render(
+      <ConjugationTableSection
+        item={item({ primaryForm: '来る', furigana: '来[く]る', slug: 'kuru-v' })}
+      />,
+    );
+
+    expect(screen.getByText('て-form')).toBeTruthy();
+    expect(screen.getByTestId('conjugation-cell-te')).toHaveTextContent('来て');
+    expect(screen.getByTestId('conjugation-cell-teNegative')).toHaveTextContent('来なくて');
+  });
+
   it('shows no look-alike note for an ordinary verb', () => {
     mockConjugationClass = 'godan';
     render(

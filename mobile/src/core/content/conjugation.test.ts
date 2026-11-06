@@ -79,6 +79,23 @@ describe('conjugate', () => {
       '静かです', '静かではありません', '静かでした', '静かではありませんでした',
     ]));
 
+  it.each([
+    ['来る', '来[く]る', 'kuru', '来て', '来なくて', '来[き]て', '来[こ]なくて'],
+    ['飲む', '飲[の]む', 'godan', '飲んで', '飲まなくて', '飲[の]んで', '飲[の]まなくて'],
+    ['行く', '行[い]く', 'godan-iku', '行って', '行かなくて', '行[い]って', '行[い]かなくて'],
+    ['食べる', '食[た]べる', 'ichidan', '食べて', '食べなくて', '食[た]べて', '食[た]べなくて'],
+    ['する', null, 'suru', 'して', 'しなくて', 'して', 'しなくて'],
+    ['ある', null, 'godan-ru-irregular', 'あって', 'なくて', 'あって', 'なくて'],
+    ['高い', '高[たか]い', 'adj-i', '高くて', '高くなくて', '高[たか]くて', '高[たか]くなくて'],
+    ['いい', null, 'adj-ii', 'よくて', 'よくなくて', 'よくて', 'よくなくて'],
+    ['静か', '静[しず]か', 'adj-na', '静かで', '静かじゃなくて', '静[しず]かで', '静[しず]かじゃなくて'],
+  ])('て-forms of %s', (primaryForm, furigana, cls, te, teNegative, teFurigana, teNegativeFurigana) => {
+    const t = conjugate({ primaryForm, furigana }, cls as ConjugationClass)!;
+    expect([t.te.surface, t.teNegative.surface, t.te.furigana, t.teNegative.furigana]).toEqual([
+      te, teNegative, teFurigana, teNegativeFurigana,
+    ]);
+  });
+
   it('returns null when unsure', () => {
     expect(conjugate({ primaryForm: '有る', furigana: '有[あ]る' }, 'godan-ru-irregular')).toBeNull();
     expect(conjugate({ primaryForm: '食べ', furigana: null }, 'ichidan')).toBeNull(); // no る

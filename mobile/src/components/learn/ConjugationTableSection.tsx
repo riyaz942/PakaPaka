@@ -6,7 +6,7 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import {
   lookAlike,
   WORD_GROUP_LABEL,
-  type ConjugationForm,
+  type ConjugationTable,
 } from '@/core/content/conjugation';
 import { listSamePatternWords, type CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { useConjugationTable } from '@/data/hooks/useConjugationTable';
@@ -16,16 +16,17 @@ import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 
 const COLUMNS = ['Non-past', 'Past'] as const;
 
-/** Grid rows: label, then the [non-past, past] forms. */
-const ROWS: readonly { label: string; forms: readonly [ConjugationForm, ConjugationForm] }[] = [
+/** Grid rows: label, then the [non-past, past] forms; the て row is [positive, negative]. */
+const ROWS: readonly { label: string; forms: readonly [keyof ConjugationTable, keyof ConjugationTable] }[] = [
   { label: '+ casual', forms: ['plain', 'plainPast'] },
   { label: '− casual', forms: ['plainNegative', 'plainPastNegative'] },
   { label: '+ polite', forms: ['polite', 'politePast'] },
   { label: '− polite', forms: ['politeNegative', 'politePastNegative'] },
+  { label: 'て-form', forms: ['te', 'teNegative'] },
 ];
 
 /**
- * The word's 8 basic forms, generated from its conjugation class. Renders
+ * The word's 8 basic forms and its て-forms, generated from its conjugation class. Renders
  * nothing for a word with no class, or one the conjugator is unsure about.
  */
 export function ConjugationTableSection({ item }: { item: CurriculumItemDetail }) {

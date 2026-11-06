@@ -41,6 +41,10 @@ export function conjugatedFormNote(
   if (!surface || surface === baseForm) {
     return null;
   }
+  // The pipeline tags なくて / ないで as `nai`; name the table's negative て-form instead.
+  if (inflection === 'nai' && (surface.endsWith('なくて') || surface.endsWith('ないで'))) {
+    return `${surface} is the negative て-form of ${baseForm}`;
+  }
   return inflection
     ? `${surface} is the ${INFLECTION_LABEL[inflection]} of ${baseForm}`
     : `${surface} is a conjugated form of ${baseForm}`;
