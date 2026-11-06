@@ -1,6 +1,6 @@
 import { usePreventRemove } from '@react-navigation/core';
 import { router, useFocusEffect, type Href } from 'expo-router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
   ActivityIndicator,
@@ -32,6 +32,7 @@ import {
 } from '@/components/review';
 import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
 import type { AnswerCollision } from '@/core/answer/answer.types';
+import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
 import {
   evaluateReviewAnswer,
   gradeForResult,
@@ -118,6 +119,19 @@ export default function ReviewScreen() {
   // for and gate the render on it — the notice can never sit over the next
   // prompt — and dismiss once the session has moved on.
   const currentItemId = currentItem?.itemId ?? null;
+  // Grammar Build only: typed kana turns into the sentence's kanji (あした → 明日).
+  // Every other card keeps plain romaji → kana input.
+  const buildCard =
+    currentItem?.itemType === 'grammar' && currentItem.promptType === 'production'
+      ? currentItem.grammarBuild
+      : undefined;
+  const kanjiConversions = useMemo(
+    () =>
+      buildCard
+        ? buildKanjiConversions([...buildCard.answers, ...buildCard.otherGrammarAnswers])
+        : undefined,
+    [buildCard],
+  );
   const { visible: srCardVisible, dismiss: srCardDismiss } = spacedRepetitionCard;
   const [srShownItemId, setSrShownItemId] = useState<string | null>(null);
   useEffect(() => {
@@ -645,6 +659,7 @@ export default function ReviewScreen() {
               editable={inputEditable}
               autoFocus={inputEditable}
               state={inputState}
+              kanjiConversions={kanjiConversions}
             />
             <Button
               ref={continueButtonRef}
@@ -676,6 +691,7 @@ export default function ReviewScreen() {
               editable={inputEditable}
               autoFocus={inputEditable}
               state={inputState}
+              kanjiConversions={kanjiConversions}
             />
             <Pressable
               accessibilityRole="button"

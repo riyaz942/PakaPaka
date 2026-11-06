@@ -166,6 +166,7 @@ jest.mock('@/components/review/WanaKanaInput', () => {
         onSubmit,
         editable,
         state,
+        kanjiConversions,
         testID,
       }: {
         mode: 'kana' | 'english';
@@ -174,6 +175,7 @@ jest.mock('@/components/review/WanaKanaInput', () => {
         onSubmit: () => void;
         editable?: boolean;
         state?: string;
+        kanjiConversions?: readonly { kana: string; kanji: string }[];
         testID?: string;
       },
       ref: React.Ref<{ focus: () => void }>,
@@ -193,6 +195,8 @@ jest.mock('@/components/review/WanaKanaInput', () => {
           onChangeText={onChangeText}
           onSubmitEditing={onSubmit}
           editable={editable}
+          // Surfaced so the grammar-Build-only kanji wiring is assertable.
+          {...({ kanjiConversions } as any)}
         />
       );
     }),
@@ -231,6 +235,11 @@ describe('ReviewScreen accessibility', () => {
     });
 
     expect(AccessibilityInfo.announceForAccessibility).toHaveBeenCalledWith('たべる');
+  });
+
+  it('gives a reading card no kanji conversion', () => {
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('review-answer-input').props.kanjiConversions).toBeUndefined();
   });
 
   it('moves screen reader focus to the result region after a correct submit', async () => {
@@ -947,6 +956,20 @@ describe('grammar Build card', () => {
       fireEvent.press(screen.getByText('Continue'));
     });
     expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('gives the Build input the sentence kanji to convert to', () => {
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('review-answer-input').props.kanjiConversions).toEqual([
+      { kana: 'さむ', kanji: '寒' },
+      { kana: 'きま', kanji: '着ま' },
+    ]);
+  });
+
+  it('gives the Read card of the pair no kanji conversion', () => {
+    mockCurrentItem = { ...mockCurrentItem!, promptType: 'meaning' };
+    render(<ReviewScreen />);
+    expect(screen.getByLabelText('Answer input').props.kanjiConversions).toBeUndefined();
   });
 
   it('an other-grammar answer keeps the typed text and grades nothing', async () => {
