@@ -15407,6 +15407,14 @@
           {
             "japanese": "今年の夏、兄は帰らないらしい。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄は今年の夏は帰らないらしい。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今年の夏は兄は帰らないらしい。",
+            "kind": "valid"
           }
         ]
       }
