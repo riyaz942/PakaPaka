@@ -985,4 +985,44 @@ describe('grammar Build card', () => {
     expect(screen.getByTestId('review-answer-input').props.value).toBe('さむいので、こーとをきます');
     expect(mockGradeCurrentItem).not.toHaveBeenCalled();
   });
+
+  it('a close answer nudges, keeps the typed text, and a fixed retry grades Good', async () => {
+    mockRecordTypoForCurrentItem.mockClear();
+    const unit = (surface: string, reading: string, role: 'word' | 'particle' | 'other' = 'word') => ({
+      surface, reading, role, itemId: null, inGrammar: false,
+    });
+    const withKey: GrammarSentenceCard = {
+      ...SENTENCE,
+      diagnosisKey: {
+        answers: [[
+          unit('寒い', 'さむい'), { ...unit('から', 'から', 'other'), inGrammar: true },
+          unit('コート', 'こーと'), unit('を', 'を', 'particle'), unit('着ます', 'きます'),
+        ]],
+        words: {},
+      },
+    };
+    mockCurrentItem = { ...mockCurrentItem!, grammarBuild: withKey };
+    render(<ReviewScreen />);
+    const field = () => screen.getByTestId('review-answer-input');
+
+    fireEvent.changeText(field(), 'さむいから、こーとををきます');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(screen.getByText('~ Close! Check your particles.')).toBeTruthy();
+    expect(field().props.value).toBe('さむいから、こーとををきます');
+    expect(field().props.editable).toBe(true);
+    expect(screen.queryByText('Continue')).toBeNull();
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.changeText(field(), 'さむいから、こーとをきます');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
 });

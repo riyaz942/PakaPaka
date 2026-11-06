@@ -535,6 +535,18 @@ describe('ReviewCard — grammar pair', () => {
     expect(screen.getByText('That works, but it uses a different grammar point. Try again.')).toBeTruthy();
   });
 
+  it('shows the close nudge without the answer', () => {
+    render(
+      <ReviewCard
+        item={grammar('production')}
+        state="close"
+        closeNudge="~ Close! Check your particles."
+      />,
+    );
+    expect(screen.getByText('~ Close! Check your particles.')).toBeTruthy();
+    expect(screen.queryByText('Correct')).toBeNull();
+  });
+
   it('offers "My answer is correct too" on a wrong Build answer', () => {
     const onSave = jest.fn();
     render(

@@ -3,6 +3,8 @@ import { evaluateMeaning, normalizeMeaning } from '@/core/answer/meaningEvaluato
 import { evaluateReading, normalizeKana } from '@/core/answer/readingEvaluator';
 import { hasJapaneseScript } from '@/core/answer/scriptDetection';
 import { evaluateGrammarBuild } from '@/core/grammar/buildEvaluator';
+import { closeNudge } from '@/core/grammar/mistakes/closeNudge';
+import { diagnoseBuildAnswer } from '@/core/grammar/mistakes/diagnoseBuildAnswer';
 import type { ReviewItem } from '@/core/srs/srs.types';
 
 /**
@@ -44,9 +46,12 @@ export function evaluateReviewAnswer(
   // The Read card is a meaning prompt and takes the meaning path below.
   if (promptType === 'production' && item.grammarBuild) {
     const result = evaluateGrammarBuild(userAnswer, item.grammarBuild);
-    return result === 'incorrect'
-      ? { result, displayAnswer: item.grammarBuild.japanese }
-      : { result };
+    if (result !== 'incorrect') return { result };
+    // 1–2 small slips: nudge and re-prompt instead of grading.
+    const nudge = closeNudge(diagnoseBuildAnswer(userAnswer, item.grammarBuild, item.primaryForm));
+    return nudge
+      ? { result: 'close', nudge }
+      : { result, displayAnswer: item.grammarBuild.japanese };
   }
 
   if (promptType === 'meaning') {
@@ -118,7 +123,7 @@ export function evaluateReviewAnswer(
 
 /**
  * FSRS grade mapping: correct → Good (3); incorrect → Again (1); typo,
- * wrong_script, wrong_reading_type and other_grammar → no grade (non-terminal). Revealing
+ * wrong_script, wrong_reading_type, other_grammar and close → no grade (non-terminal). Revealing
  * hints never changes the grade — the hint ladder is scaffolding, not a
  * penalty (Plan 10).
  */

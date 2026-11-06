@@ -215,3 +215,47 @@ describe('grammar Build card', () => {
     });
   });
 });
+
+describe('grammar Build card: close nudge', () => {
+  const unit = (surface: string, reading: string, role: 'word' | 'particle' = 'word') => ({
+    surface, reading, role, itemId: null, inGrammar: false,
+  });
+  // 今年は学校で日本語を勉強します
+  const units = [
+    unit('今年', 'ことし'), unit('は', 'は', 'particle'), unit('学校', 'がっこう'),
+    unit('で', 'で', 'particle'), unit('日本語', 'にほんご'), unit('を', 'を', 'particle'),
+    { ...unit('勉強します', 'べんきょうします'), itemId: 'study', inGrammar: true },
+  ];
+  const build = {
+    sentenceKey: 'k', japanese: '今年は学校で日本語を勉強します。', furigana: '今年[ことし]は学校[がっこう]で日本語[にほんご]を勉強[べんきょう]します。',
+    english: 'e', spans: [], grammarSpan: { start: 0, end: 0 }, register: 'polite' as const, vocabulary: [],
+    answers: ['今年[ことし]は学校[がっこう]で日本語[にほんご]を勉強[べんきょう]します。'],
+    otherGrammarAnswers: [],
+    userAnswers: [],
+    diagnosisKey: {
+      answers: [units],
+      words: {
+        study: { itemId: 'study', primaryForm: '勉強する', furigana: '勉強[べんきょう]する', conjugationClass: 'suru' as const, transitivity: null, partner: null, homophones: [] },
+      },
+    },
+  };
+  const item = {
+    itemId: '98', itemType: 'grammar' as const, primaryForm: '〜', displayMeaning: 'study',
+    meanings: ['study'], promptType: 'production' as const, grammarBuild: build,
+    answerKey: { acceptedMeanings: ['study'], acceptedReadings: [] },
+    relatedItems: [], reinforcementLink: null,
+    srsState: { itemId: '98', stability: 1, difficulty: 5, dueDate: '', fsrsState: 'review' as const, reps: 1, lapses: 0, learningSteps: 0, isBurned: false, srsStageLabel: 'apprentice' as const, lastReviewedAt: null, updatedAt: '' },
+  };
+
+  it('nudges an answer with one small slip, without grading', () => {
+    expect(evaluateReviewAnswer(item, '今年は学校で日本語をを勉強します')).toEqual({
+      result: 'close',
+      nudge: '~ Close! Check your particles.',
+    });
+    expect(gradeForResult('close')).toBeNull();
+  });
+
+  it('grades an answer with a bigger mistake incorrect', () => {
+    expect(evaluateReviewAnswer(item, '今年は学校で勉強します').result).toBe('incorrect');
+  });
+});
