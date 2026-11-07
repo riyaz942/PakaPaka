@@ -6,6 +6,16 @@ import { cancelAllNotifications, scheduleReviewReminder } from '@/config/notific
 
 import SettingsScreen from './index';
 
+const mockSetHapticsEnabled = jest.fn();
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: mockSetHapticsEnabled,
+    refetch: jest.fn(),
+  }),
+}));
+
 const mockSetReducedMotion = jest.fn();
 const mockSetThemeMode = jest.fn();
 let mockStoredThemeMode: 'system' | 'light' | 'dark' = 'system';
@@ -299,6 +309,14 @@ describe('SettingsScreen accessibility', () => {
     render(<SettingsScreen />);
     fireEvent.press(screen.getByTestId('settings-reduced-motion-toggle'));
     expect(mockSetReducedMotion).toHaveBeenCalledWith(true);
+  });
+
+  it('shows Vibration on by default and persists turning it off', () => {
+    render(<SettingsScreen />);
+    const toggle = screen.getByRole('switch', { name: 'Vibration' });
+    expect(toggle.props.accessibilityState.checked).toBe(true);
+    fireEvent.press(screen.getByTestId('settings-haptics-toggle'));
+    expect(mockSetHapticsEnabled).toHaveBeenCalledWith(false);
   });
 });
 

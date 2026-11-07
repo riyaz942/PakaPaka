@@ -1,5 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
+import Animated, {
+  cancelAnimation,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
@@ -17,6 +25,8 @@ import { releaseSttModel } from '@/data/ai/voice/sttClient';
 import { transcribeTurn } from '@/data/ai/voice/transcription';
 import { releaseTtsModel, synthesizeJapanese } from '@/data/ai/voice/ttsClient';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useHaptics } from '@/data/hooks/useHaptics';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type PttOverlayProps = {
@@ -70,6 +80,22 @@ export function PttOverlay({
   const spokenRef = useRef<string | null>(null);
   /** Bumps on pressOut so an in-flight async pressIn cannot stick the mic on. */
   const pressGenRef = useRef(0);
+  const { play: playHaptic } = useHaptics();
+  const { reducedMotion } = useReducedMotion();
+  // The mic breathes while it listens, so it is clear the app is recording.
+  const micScale = useSharedValue(1);
+  useEffect(() => {
+    if (phase === 'recording' && !reducedMotion) {
+      micScale.value = withRepeat(
+        withSequence(withTiming(1.18, { duration: 450 }), withTiming(1, { duration: 450 })),
+        -1,
+      );
+    } else {
+      cancelAnimation(micScale);
+      micScale.value = withTiming(1, { duration: 150 });
+    }
+  }, [phase, reducedMotion, micScale]);
+  const micStyle = useAnimatedStyle(() => ({ transform: [{ scale: micScale.value }] }));
 
   // The sentence, not its markup — the same plain-text form ChatBubble already
   // derives for screen readers is exactly what should be shown and spoken here.
@@ -149,8 +175,9 @@ export function PttOverlay({
       setError(started.error.userMessage ?? started.error.message);
       return;
     }
+    playHaptic('medium');
     setPhase('recording');
-  }, [phase, speaking, isStreaming]);
+  }, [phase, speaking, isStreaming, playHaptic]);
 
   const handlePressOut = useCallback(async () => {
     // Invalidate any pressIn still awaiting permission / startRecording.
@@ -158,6 +185,7 @@ export function PttOverlay({
     if (phase !== 'recording') {
       return;
     }
+    playHaptic('light');
     setPhase('transcribing');
     const recorded = await stopRecording();
     if (!recorded.ok) {
@@ -181,7 +209,7 @@ export function PttOverlay({
     }
     setTranscript(transcribed.value);
     setPhase('idle');
-  }, [phase, userDb]);
+  }, [phase, playHaptic, userDb]);
 
   const handleSend = useCallback(async () => {
     const text = transcript.trim();
@@ -293,7 +321,9 @@ export function PttOverlay({
           className={`mt-space-lg min-h-[88px] items-center justify-center rounded-radius-lg ${
             isRecording ? 'bg-feedback-incorrect-fill' : 'bg-brand-600'
           } ${micDisabled ? 'opacity-40' : ''}`}>
-          <Icon name="mic" size={32} strokeWidth={1.9} className="text-on-primary" />
+          <Animated.View style={micStyle}>
+            <Icon name="mic" size={32} strokeWidth={1.9} className="text-on-primary" />
+          </Animated.View>
           <Text className="mt-space-xs text-body font-ui-semibold text-on-primary">
             {isRecording
               ? 'Listening — release when done'

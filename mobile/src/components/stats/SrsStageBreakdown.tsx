@@ -1,5 +1,6 @@
 import { Text, View } from 'react-native';
 
+import { ProgressFill } from '@/components/common/ProgressFill';
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 import { cn } from '@/utils/cn';
 
@@ -55,7 +56,7 @@ export function SrsStageBreakdown({ counts }: Props) {
 
   return (
     <View className="gap-space-sm">
-      {STAGE_ORDER.map((stage) => {
+      {STAGE_ORDER.map((stage, index) => {
         const count = counts[stage];
         const label = STAGE_LABEL[stage];
 
@@ -76,9 +77,11 @@ export function SrsStageBreakdown({ counts }: Props) {
               {label}
             </Text>
             <View className="h-[6px] w-[76px] overflow-hidden rounded-radius-full bg-surface-elevated">
-              <View
+              {/* Bars fill top to bottom, one after the other. */}
+              <ProgressFill
+                percent={Math.round((count / peak) * 100)}
+                delayMs={index * 70}
                 className={cn('h-full rounded-radius-full', STAGE_FILL_CLASS[stage])}
-                style={{ width: `${Math.round((count / peak) * 100)}%` }}
               />
             </View>
             <Text

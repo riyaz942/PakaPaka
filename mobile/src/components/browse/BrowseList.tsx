@@ -17,6 +17,8 @@ type BrowseListProps = {
   onClearFilters: () => void;
   canClearFilters: boolean;
   onRetry?: () => void;
+  /** Passages that opened since Browse was last seen. */
+  newlyUnlockedPassageIds?: ReadonlySet<string>;
 };
 
 /**
@@ -38,6 +40,7 @@ export function BrowseList({
   onClearFilters,
   canClearFilters,
   onRetry,
+  newlyUnlockedPassageIds,
 }: BrowseListProps) {
   const keyExtractor = useCallback(
     (row: BrowseRowModel) => `${row.kind}:${row.id}`,
@@ -49,6 +52,7 @@ export function BrowseList({
       row.kind === 'passage' ? (
         <PassageBrowseRow
           row={row}
+          justUnlocked={newlyUnlockedPassageIds?.has(row.id)}
           onPress={() => onSelectPassage(row.id)}
           testID={`browse-passage-${row.id}`}
         />
@@ -59,7 +63,7 @@ export function BrowseList({
           testID={`browse-item-${row.id}`}
         />
       ),
-    [onSelectItem, onSelectPassage],
+    [newlyUnlockedPassageIds, onSelectItem, onSelectPassage],
   );
 
   if (loading) {
@@ -96,6 +100,7 @@ export function BrowseList({
         data={rows}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
+        extraData={newlyUnlockedPassageIds}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.5}
         keyboardShouldPersistTaps="handled"

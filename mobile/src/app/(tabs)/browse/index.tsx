@@ -65,6 +65,7 @@ export default function BrowseScreen() {
     refresh,
     reload,
     passageUnlock,
+    newlyUnlockedPassageIds,
   } = useBrowseItems();
 
   const [openFacet, setOpenFacet] = useState<BrowseFacetKey | null>(null);
@@ -75,13 +76,14 @@ export default function BrowseScreen() {
   const [searchDraft, setSearchDraft] = useState('');
   // The SQLite read behind `loading` is synchronous, so `loading` itself
   // never has a chance to paint true — it flips true then false within the
-  // same effect tick. `isSearching` is set synchronously on submit (so it
-  // does paint) and deferred by a tick before committing the search, giving
-  // the loader below a real frame to show on screen.
-  const [isSearching, setIsSearching] = useState(false);
-  // The draft committed by the in-flight search, so the effect below clears
-  // isSearching exactly when the hook's `searchInput` catches up to it.
-  const pendingSearchRef = useRef<string | null>(null);
+  // same effect tick. `isBusy` is set synchronously on a search or filter
+  // change (so it does paint) and the change itself is deferred by a tick,
+  // giving the loader a real frame on screen. While busy, the search field,
+  // filter pills and Clear all are disabled.
+  const [isBusy, setIsBusy] = useState(false);
+  // Bumped in the same render as the deferred change. The list query runs in
+  // that render's effects, so the effect below clears `isBusy` once it is done.
+  const [commitTick, setCommitTick] = useState(0);
 
   // A filter that excludes passages simply makes this false — "renders a locked
   // passage" means one is in the current result set, not in the catalogue.
@@ -136,31 +138,33 @@ export default function BrowseScreen() {
     passageUnlock,
   );
 
+  /** Shows the loader, then applies `change` a tick later (see `isBusy`). */
+  const runBusy = useCallback((change: () => void) => {
+    setIsBusy(true);
+    setTimeout(() => {
+      change();
+      setCommitTick((tick) => tick + 1);
+    }, 0);
+  }, []);
+
+  // `loading` flips true→false within one synchronous SQLite read, so it never
+  // commits as true and can't drive the clear. `commitTick` changes in the
+  // same render as the deferred change, and the hook's (synchronous) list
+  // query runs in that render's effects before this one.
+  useEffect(() => {
+    if (commitTick > 0) setIsBusy(false);
+  }, [commitTick]);
+
   const runSearch = useCallback(() => {
     // Nothing to do — this term is already applied.
     if (searchDraft === searchInput) return;
-    pendingSearchRef.current = searchDraft;
-    setIsSearching(true);
-    // Deferred by a tick so the loader above actually gets painted before the
-    // synchronous SQLite read blocks the JS thread.
-    setTimeout(() => setSearchInput(searchDraft), 0);
-  }, [setSearchInput, searchDraft, searchInput]);
+    runBusy(() => setSearchInput(searchDraft));
+  }, [runBusy, setSearchInput, searchDraft, searchInput]);
 
   const handleClearSearch = useCallback(() => {
     setSearchDraft('');
-    setSearchInput('');
-  }, [setSearchInput]);
-
-  // `loading` flips true→false within one synchronous SQLite read, so it never
-  // commits as true and can't drive the clear. `searchInput` catching up to
-  // the committed draft is a value React reliably observes changing, so use
-  // that instead — by the time it lands, the (synchronous) query is done too.
-  useEffect(() => {
-    if (isSearching && searchInput === pendingSearchRef.current) {
-      pendingSearchRef.current = null;
-      setIsSearching(false);
-    }
-  }, [isSearching, searchInput]);
+    if (searchInput.length > 0) runBusy(() => setSearchInput(''));
+  }, [runBusy, setSearchInput, searchInput]);
 
   const handleToggle = useCallback(
     (value: string) => {
@@ -171,9 +175,9 @@ export default function BrowseScreen() {
   );
 
   const handleApply = useCallback(() => {
-    applyFilters(draft);
+    runBusy(() => applyFilters(draft));
     setOpenFacet(null);
-  }, [applyFilters, draft]);
+  }, [runBusy, applyFilters, draft]);
 
   const handleClearFacet = useCallback(() => {
     if (!openFacet) return;
@@ -181,11 +185,11 @@ export default function BrowseScreen() {
   }, [openFacet]);
 
   const handleClearAll = useCallback(() => {
-    clearFilters();
+    runBusy(clearFilters);
     setSearchDraft('');
     lastSeedKeyRef.current = null;
     router.setParams({ level: undefined, type: undefined });
-  }, [clearFilters]);
+  }, [runBusy, clearFilters]);
 
   const hasActiveFilters = !isBrowseFiltersEmpty(filters) || searchInput.length > 0;
 
@@ -207,6 +211,7 @@ export default function BrowseScreen() {
             onChangeText={setSearchDraft}
             onSubmit={runSearch}
             onClear={handleClearSearch}
+            disabled={isBusy}
             testID="browse-search"
           />
         </View>
@@ -224,7 +229,8 @@ export default function BrowseScreen() {
                 label={summarizeFacet(facet, filters[facet])}
                 active={active}
                 onPress={() => openDrawer(facet)}
-                onClear={active ? () => clearFacetFilter(facet) : undefined}
+                onClear={active ? () => runBusy(() => clearFacetFilter(facet)) : undefined}
+                disabled={isBusy}
                 testID={`browse-filter-pill-${facet}`}
               />
             );
@@ -233,6 +239,8 @@ export default function BrowseScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Clear all filters and search"
+              accessibilityState={{ disabled: isBusy }}
+              disabled={isBusy}
               onPress={handleClearAll}
               testID="browse-clear-all"
               className="min-h-[44px] justify-center px-space-sm">
@@ -241,7 +249,7 @@ export default function BrowseScreen() {
           ) : null}
         </ScrollView>
 
-        {!loading && !isSearching && !error ? (
+        {!loading && !isBusy && !error ? (
           <Text
             className="mb-space-sm mt-space-sm text-caption font-ui-semibold text-muted"
             testID="browse-result-count">
@@ -261,7 +269,7 @@ export default function BrowseScreen() {
         <View className="flex-1 pb-space-sm">
           <BrowseList
             rows={rows}
-            loading={loading || isSearching}
+            loading={loading || isBusy}
             loadingMore={loadingMore}
             error={error}
             onEndReached={loadMore}
@@ -270,6 +278,7 @@ export default function BrowseScreen() {
             onClearFilters={handleClearAll}
             canClearFilters={hasActiveFilters}
             onRetry={reload}
+            newlyUnlockedPassageIds={newlyUnlockedPassageIds}
           />
         </View>
       </SafeAreaView>

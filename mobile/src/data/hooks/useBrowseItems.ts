@@ -17,6 +17,10 @@ import {
   type BrowseRowModel,
 } from '@/data/curriculum/browseRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import {
+  getSeenUnlockedPassageIds,
+  setSeenUnlockedPassageIds,
+} from '@/data/user/preferencesRepository';
 
 export type UseBrowseItemsResult = {
   rows: BrowseRowModel[];
@@ -47,7 +51,11 @@ export type UseBrowseItemsResult = {
   reload: () => void;
   /** Derived passage unlock state, shared with the drawer's live count. */
   passageUnlock: ReadonlyMap<string, PassageUnlockStatus>;
+  /** Passages that opened since the learner last saw Browse — they get a one-time "Unlocked" pill. */
+  newlyUnlockedPassageIds: ReadonlySet<string>;
 };
+
+const NO_IDS: ReadonlySet<string> = new Set();
 
 function passageUnlockMapsEqual(
   left: ReadonlyMap<string, PassageUnlockStatus>,
@@ -118,6 +126,26 @@ export function useBrowseItems(): UseBrowseItemsResult {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- refreshToken is an explicit recompute trigger
   }, [curriculumDb, userDb, refreshToken]);
+
+  // Each passage gets its "Unlocked" moment once. The first run only records
+  // what is already open, so nothing celebrates on install or update.
+  const [newlyUnlockedPassageIds, setNewlyUnlockedPassageIds] = useState(NO_IDS);
+  useEffect(() => {
+    if (unlockError) return;
+    const unlockedIds = [...passageUnlock]
+      .filter(([, status]) => status.unlocked)
+      .map(([id]) => id);
+    const seen = getSeenUnlockedPassageIds(userDb);
+    if (seen === null) {
+      setSeenUnlockedPassageIds(userDb, unlockedIds);
+      return;
+    }
+    const seenSet = new Set(seen);
+    const fresh = unlockedIds.filter((id) => !seenSet.has(id));
+    if (fresh.length === 0) return;
+    setSeenUnlockedPassageIds(userDb, [...seen, ...fresh]);
+    setNewlyUnlockedPassageIds((current) => new Set([...current, ...fresh]));
+  }, [passageUnlock, unlockError, userDb]);
 
   const queryInput: BrowseQueryInput = useMemo(
     () => ({
@@ -229,6 +257,7 @@ export function useBrowseItems(): UseBrowseItemsResult {
     refresh,
     reload,
     passageUnlock,
+    newlyUnlockedPassageIds,
   };
 }
 

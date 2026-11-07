@@ -11,6 +11,16 @@ import {
 
 import BrowseScreen from './index';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/user/preferencesRepository', () => ({
+  ...jest.requireActual('@/data/user/preferencesRepository'),
+  getSeenUnlockedPassageIds: jest.fn(() => null),
+  setSeenUnlockedPassageIds: jest.fn(),
+}));
+
 const mockPush = jest.fn();
 const mockSetParams = jest.fn();
 const mockUseLocalSearchParams = jest.fn(() => ({}) as Record<string, string | string[]>);
@@ -90,13 +100,38 @@ function renderBrowse() {
   );
 }
 
+/**
+ * Runs the pending timers inside act(): the drawer's debounced count and the
+ * deferred list change after Apply / Clear. While a count runs, the drawer's
+ * chips and Apply are disabled, so tests run it before the next tap.
+ */
+async function runPendingTimers() {
+  await act(async () => {
+    jest.runOnlyPendingTimers();
+  });
+}
+
+/** Opens a facet drawer once the count started on mount has landed. */
+async function openFilterDrawer(facet: string) {
+  await runPendingTimers();
+  fireEvent.press(screen.getByTestId(`browse-filter-pill-${facet}`));
+}
+
+// Fake timers, run explicitly inside act(): timer-driven updates outside act()
+// print a warning per update, which made these tests slow enough to time out
+// in a loaded full-suite run.
 beforeEach(() => {
+  jest.useFakeTimers();
   jest.clearAllMocks();
   mockSeenGuidanceCards.clear();
   mockUseLocalSearchParams.mockReturnValue({});
   mockListPassageUnlockStates.mockReturnValue(new Map());
   mockListBrowsePage.mockReturnValue([KANJI_ROW, LOCKED_PASSAGE_ROW]);
   mockCountBrowse.mockReturnValue(2);
+});
+
+afterEach(() => {
+  jest.useRealTimers();
 });
 
 describe('BrowseScreen', () => {
@@ -184,7 +219,7 @@ describe('BrowseScreen', () => {
       renderBrowse();
       await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
 
-      fireEvent.press(screen.getByTestId('browse-filter-pill-levels'));
+      await openFilterDrawer('levels');
       fireEvent.press(screen.getByTestId('browse-filter-option-levels-N5'));
 
       mockCountBrowse.mockReturnValue(12);
@@ -200,11 +235,55 @@ describe('BrowseScreen', () => {
       });
     });
 
+    it('shows a loader on Apply and disables the drawer while the count runs', async () => {
+      renderBrowse();
+      await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+
+      await openFilterDrawer('levels');
+      fireEvent.press(screen.getByTestId('browse-filter-option-levels-N5'));
+
+      expect(screen.getByTestId('browse-filter-counting-levels')).toBeTruthy();
+      expect(screen.getByTestId('browse-filter-apply-levels')).toBeDisabled();
+      expect(screen.getByTestId('browse-filter-option-levels-N4')).toBeDisabled();
+      expect(screen.getByTestId('browse-filter-clear-levels')).toBeDisabled();
+
+      await runPendingTimers();
+      expect(screen.queryByTestId('browse-filter-counting-levels')).toBeNull();
+      expect(screen.getByTestId('browse-filter-apply-levels')).toBeEnabled();
+      expect(screen.getByTestId('browse-filter-option-levels-N4')).toBeEnabled();
+    });
+
+    it('shows the results loader and disables search and filters while an applied filter loads', async () => {
+      renderBrowse();
+      await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+
+      await openFilterDrawer('levels');
+      fireEvent.press(screen.getByTestId('browse-filter-option-levels-N5'));
+      mockCountBrowse.mockReturnValue(12);
+      await waitFor(() =>
+        expect(screen.getByTestId('browse-filter-apply-levels')).toHaveTextContent('Apply (12)'),
+      );
+      fireEvent.press(screen.getByTestId('browse-filter-apply-levels'));
+
+      expect(screen.getByLabelText('Loading results')).toBeTruthy();
+      expect(screen.getByTestId('browse-search')).toHaveProp('editable', false);
+      expect(screen.getByTestId('browse-filter-pill-types')).toBeDisabled();
+
+      await act(async () => {
+        jest.runOnlyPendingTimers();
+      });
+
+      expect(screen.queryByLabelText('Loading results')).toBeNull();
+      expect(screen.getByTestId('browse-search')).toHaveProp('editable', true);
+      expect(screen.getByTestId('browse-filter-pill-types')).toBeEnabled();
+      expect(mockListBrowsePage.mock.calls.at(-1)?.[1].filters.levels).toEqual(['N5']);
+    });
+
     it('disables Apply when the draft selection matches nothing', async () => {
       renderBrowse();
       await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
 
-      fireEvent.press(screen.getByTestId('browse-filter-pill-levels'));
+      await openFilterDrawer('levels');
       mockCountBrowse.mockReturnValue(0);
       fireEvent.press(screen.getByTestId('browse-filter-option-levels-N1'));
 
@@ -219,8 +298,10 @@ describe('BrowseScreen', () => {
     renderBrowse();
     await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
 
-    fireEvent.press(screen.getByTestId('browse-filter-pill-types'));
+    await openFilterDrawer('types');
     fireEvent.press(screen.getByTestId('browse-filter-option-types-vocabulary'));
+    // Each tap starts a recount, and the chips are disabled until it lands.
+    await runPendingTimers();
     fireEvent.press(screen.getByTestId('browse-filter-option-types-grammar'));
     mockCountBrowse.mockReturnValue(5);
 
@@ -235,6 +316,9 @@ describe('BrowseScreen', () => {
       ),
     );
 
+    await waitFor(() =>
+      expect(screen.getByTestId('browse-filter-pill-types-clear')).toBeEnabled(),
+    );
     fireEvent.press(screen.getByTestId('browse-filter-pill-types-clear'));
     await waitFor(() =>
       expect(screen.getByTestId('browse-filter-pill-types')).toHaveTextContent('Type'),
@@ -363,7 +447,7 @@ describe('BrowseScreen', () => {
     renderBrowse();
     await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
 
-    fireEvent.press(screen.getByTestId('browse-filter-pill-levels'));
+    await openFilterDrawer('levels');
     fireEvent.press(screen.getByTestId('browse-filter-option-levels-N5'));
     mockCountBrowse.mockReturnValue(12);
     await waitFor(() =>
@@ -371,7 +455,9 @@ describe('BrowseScreen', () => {
     );
     fireEvent.press(screen.getByTestId('browse-filter-apply-levels'));
 
-    await waitFor(() => expect(screen.getByTestId('browse-clear-all')).toBeTruthy());
+    // Enabled, not just present: Clear all stays disabled until the applied
+    // filter has finished loading.
+    await waitFor(() => expect(screen.getByTestId('browse-clear-all')).toBeEnabled());
     fireEvent.press(screen.getByTestId('browse-clear-all'));
 
     await waitFor(() =>

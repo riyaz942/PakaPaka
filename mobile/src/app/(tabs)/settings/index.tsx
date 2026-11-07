@@ -43,6 +43,7 @@ import {
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaOverrideList } from '@/data/hooks/useFuriganaOverrideList';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useHapticsPreference } from '@/data/hooks/useHaptics';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
@@ -154,6 +155,7 @@ export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion, refetch: refetchReducedMotion } = useReducedMotion();
+  const { hapticsEnabled, setHapticsEnabled, refetch: refetchHaptics } = useHapticsPreference();
   const { mode: themeMode, setMode: setThemeMode } = useThemeMode();
   const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
   const {
@@ -397,6 +399,7 @@ export default function SettingsScreen() {
     refetchVacation();
     refetchAutoAdvance();
     refetchReducedMotion();
+    refetchHaptics();
     refetchShadowMode();
     if (getNotificationsEnabled(userDb)) {
       await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
@@ -523,12 +526,21 @@ export default function SettingsScreen() {
         <View className="mt-space-lg">
           <SectionHeading label="Accessibility" />
           <SettingsCard>
+            <CardDivider>
+              <ToggleRow
+                label="Reduce motion"
+                description="Uses stepped, static updates instead of motion. Defaults to your device setting until you change it here."
+                value={reducedMotion}
+                onValueChange={setReducedMotion}
+                testID="settings-reduced-motion-toggle"
+              />
+            </CardDivider>
             <ToggleRow
-              label="Reduce motion"
-              description="Uses stepped, static updates instead of motion. Defaults to your device setting until you change it here."
-              value={reducedMotion}
-              onValueChange={setReducedMotion}
-              testID="settings-reduced-motion-toggle"
+              label="Vibration"
+              description="A short buzz when you answer a review, reach your goal, or hold to speak."
+              value={hapticsEnabled}
+              onValueChange={setHapticsEnabled}
+              testID="settings-haptics-toggle"
             />
           </SettingsCard>
         </View>

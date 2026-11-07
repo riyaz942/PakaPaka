@@ -1,5 +1,6 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
+import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { GlyphText } from '@/components/common/GlyphText';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
@@ -11,6 +12,7 @@ import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
@@ -139,6 +141,13 @@ function joinForms(forms: string[]): string {
 // Short enough that the feedback still lands inside NFR1's <100ms perception
 // budget — decoration on top of information already on screen, never a gate.
 const FEEDBACK_ANIMATION_MS = 200;
+// "Don't know" was the learner's own choice, not a miss — the answer arrives
+// calmly instead of with the quick wrong-answer reveal.
+const DONT_KNOW_REVEAL_MS = 450;
+
+/** The correct tick and a stage-up badge land with a small spring. */
+const CORRECT_POP = ZoomIn.springify().damping(11);
+const STAGE_UP_POP = ZoomIn.delay(180).springify().damping(11);
 
 export function ReviewCard({
   item,
@@ -157,6 +166,7 @@ export function ReviewCard({
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink } = item;
   const { mode: furiganaMode } = useFuriganaPreference();
+  const { reducedMotion } = useReducedMotion();
   const accent = CONTENT_TYPE_ACCENT[itemType];
   // Grammar pair (spec §3): the Read card asks about one sentence, the Build
   // card about another; both payloads ride on both cards of the pair.
@@ -212,7 +222,9 @@ export function ReviewCard({
 
   if (state === 'incorrect') {
     return (
-      <FadeSlideIn duration={FEEDBACK_ANIMATION_MS} className="w-full">
+      <FadeSlideIn
+        duration={rejectedAnswer ? FEEDBACK_ANIMATION_MS : DONT_KNOW_REVEAL_MS}
+        className="w-full">
         <IncorrectReveal
           item={item}
           displayAnswer={displayAnswer ?? displayMeaning}
@@ -297,12 +309,18 @@ export function ReviewCard({
             accessible
             accessibilityLabel={`Correct, ${correctReveal.label.toLowerCase()}: ${correctReveal.value}`}
             className="flex-row items-center gap-space-sm">
-            <Icon name="correct" size={24} strokeWidth={2.6} className="text-feedback-correct" />
+            <Animated.View entering={reducedMotion ? undefined : CORRECT_POP}>
+              <Icon name="correct" size={24} strokeWidth={2.6} className="text-feedback-correct" />
+            </Animated.View>
             <Text className="text-title-lg font-ui-extrabold text-feedback-correct-deep">
               Correct
             </Text>
           </View>
-          {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
+          {stageTransition ? (
+            <Animated.View entering={reducedMotion ? undefined : STAGE_UP_POP}>
+              <SRSStageTransitionBadge transition={stageTransition} />
+            </Animated.View>
+          ) : null}
           {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
               shown expanded, never gated behind an icon. */}
           <AnswerReveal item={item} detail={revealDetail ?? null} collision={answerCollision} />
