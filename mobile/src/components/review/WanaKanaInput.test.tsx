@@ -1,7 +1,31 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { useState } from 'react';
 import { Platform } from 'react-native';
 
+import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
+
 import { WanaKanaInput } from './WanaKanaInput';
+
+const CONVERSIONS = buildKanjiConversions(['明日[あした]は忙[いそが]しいです。']);
+
+function ControlledKanaInput({ withConversions }: { withConversions: boolean }) {
+  const [value, setValue] = useState('');
+  return (
+    <WanaKanaInput
+      mode="kana"
+      value={value}
+      onChangeText={setValue}
+      onSubmit={jest.fn()}
+      autoFocus={false}
+      kanjiConversions={withConversions ? CONVERSIONS : undefined}
+    />
+  );
+}
+
+function typeInto(text: string) {
+  const input = screen.getByLabelText('Answer input, type in romaji');
+  fireEvent.changeText(input, input.props.value + text);
+}
 
 describe('WanaKanaInput', () => {
   it('converts romaji to kana on each keystroke in kana mode', () => {
@@ -18,6 +42,33 @@ describe('WanaKanaInput', () => {
 
     fireEvent.changeText(screen.getByLabelText('Answer input, type in romaji'), 'ta');
     expect(onChangeText).toHaveBeenCalledWith('た');
+  });
+
+  it('turns a completed word into its kanji when given conversions', () => {
+    render(<ControlledKanaInput withConversions />);
+    for (const key of 'ashitaha') typeInto(key);
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('明日は');
+  });
+
+  it('turns kana from a Japanese keyboard into kanji', () => {
+    render(<ControlledKanaInput withConversions />);
+    typeInto('あした');
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('明日');
+  });
+
+  it('keeps the kana when the learner deletes a converted word and types it again', () => {
+    render(<ControlledKanaInput withConversions />);
+    typeInto('あした');
+    const input = screen.getByLabelText('Answer input, type in romaji');
+    fireEvent.changeText(input, '');
+    typeInto('あした');
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('あした');
+  });
+
+  it('never converts to kanji without conversions', () => {
+    render(<ControlledKanaInput withConversions={false} />);
+    for (const key of 'ashita') typeInto(key);
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('あした');
   });
 
   it('passes through text in english mode', () => {

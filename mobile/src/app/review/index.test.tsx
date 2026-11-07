@@ -166,6 +166,7 @@ jest.mock('@/components/review/WanaKanaInput', () => {
         onSubmit,
         editable,
         state,
+        kanjiConversions,
         testID,
       }: {
         mode: 'kana' | 'english';
@@ -174,6 +175,7 @@ jest.mock('@/components/review/WanaKanaInput', () => {
         onSubmit: () => void;
         editable?: boolean;
         state?: string;
+        kanjiConversions?: readonly { kana: string; kanji: string }[];
         testID?: string;
       },
       ref: React.Ref<{ focus: () => void }>,
@@ -193,6 +195,8 @@ jest.mock('@/components/review/WanaKanaInput', () => {
           onChangeText={onChangeText}
           onSubmitEditing={onSubmit}
           editable={editable}
+          // Surfaced so the grammar-Build-only kanji wiring is assertable.
+          {...({ kanjiConversions } as any)}
         />
       );
     }),
@@ -231,6 +235,11 @@ describe('ReviewScreen accessibility', () => {
     });
 
     expect(AccessibilityInfo.announceForAccessibility).toHaveBeenCalledWith('たべる');
+  });
+
+  it('gives a reading card no kanji conversion', () => {
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('review-answer-input').props.kanjiConversions).toBeUndefined();
   });
 
   it('moves screen reader focus to the result region after a correct submit', async () => {
@@ -973,6 +982,20 @@ describe('grammar Build card', () => {
     expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
   });
 
+  it('gives the Build input the sentence kanji to convert to', () => {
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('review-answer-input').props.kanjiConversions).toEqual([
+      { kana: 'さむ', kanji: '寒' },
+      { kana: 'きま', kanji: '着ま' },
+    ]);
+  });
+
+  it('gives the Read card of the pair no kanji conversion', () => {
+    mockCurrentItem = { ...mockCurrentItem!, promptType: 'meaning' };
+    render(<ReviewScreen />);
+    expect(screen.getByLabelText('Answer input').props.kanjiConversions).toBeUndefined();
+  });
+
   it('an other-grammar answer keeps the typed text and grades nothing', async () => {
     const withOther = { ...SENTENCE, otherGrammarAnswers: ['寒[さむ]いので、コートを着[き]ます。'] };
     mockCurrentItem = { ...mockCurrentItem!, grammarBuild: withOther };
@@ -985,5 +1008,45 @@ describe('grammar Build card', () => {
     expect(screen.getByText('That works, but it uses a different grammar point. Try again.')).toBeTruthy();
     expect(screen.getByTestId('review-answer-input').props.value).toBe('さむいので、こーとをきます');
     expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+  });
+
+  it('a close answer nudges, keeps the typed text, and a fixed retry grades Good', async () => {
+    mockRecordTypoForCurrentItem.mockClear();
+    const unit = (surface: string, reading: string, role: 'word' | 'particle' | 'other' = 'word') => ({
+      surface, reading, role, itemId: null, inGrammar: false,
+    });
+    const withKey: GrammarSentenceCard = {
+      ...SENTENCE,
+      diagnosisKey: {
+        answers: [[
+          unit('寒い', 'さむい'), { ...unit('から', 'から', 'other'), inGrammar: true },
+          unit('コート', 'こーと'), unit('を', 'を', 'particle'), unit('着ます', 'きます'),
+        ]],
+        words: {},
+      },
+    };
+    mockCurrentItem = { ...mockCurrentItem!, grammarBuild: withKey };
+    render(<ReviewScreen />);
+    const field = () => screen.getByTestId('review-answer-input');
+
+    fireEvent.changeText(field(), 'さむいから、こーとををきます');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(screen.getByText('~ Close! Check your particles.')).toBeTruthy();
+    expect(field().props.value).toBe('さむいから、こーとををきます');
+    expect(field().props.editable).toBe(true);
+    expect(screen.queryByText('Continue')).toBeNull();
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.changeText(field(), 'さむいから、こーとをきます');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
   });
 });

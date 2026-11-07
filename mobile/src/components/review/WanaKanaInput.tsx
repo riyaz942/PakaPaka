@@ -4,6 +4,11 @@ import * as wanakana from 'wanakana';
 
 import { Icon, type IconName } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
+import {
+  applyKanjiConversions,
+  undoneKanjiConversions,
+  type KanjiConversion,
+} from '@/core/grammar/kanjiAutoConvert';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { isWeb } from '@/platform/capabilities';
 import { cn } from '@/utils/cn';
@@ -32,6 +37,11 @@ type WanaKanaInputProps = {
   state?: WanaKanaInputState;
   /** Single explanation line under the answer — near-miss and wrong-script only. */
   hint?: string;
+  /**
+   * Kana mode only: kana that turns into kanji as soon as it is typed (grammar
+   * Build cards). Pass a stable array — a new one starts a fresh card.
+   */
+  kanjiConversions?: readonly KanjiConversion[];
   testID?: string;
 };
 
@@ -84,6 +94,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
       autoFocus = true,
       state = 'idle',
       hint,
+      kanjiConversions,
       testID,
     },
     ref,
@@ -98,6 +109,12 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
     // Focus chrome only applies while the field is still an open question — an
     // answered field keeps its verdict colour.
     const showFocus = state === 'idle' && focused;
+    // Conversions the learner undid by deleting their kanji; reset per card.
+    const [undone, setUndone] = useState<{
+      conversions: readonly KanjiConversion[] | undefined;
+      kana: ReadonlySet<string>;
+    }>({ conversions: kanjiConversions, kana: new Set() });
+    const undoneKana = undone.conversions === kanjiConversions ? undone.kana : new Set<string>();
 
     useImperativeHandle(ref, () => ({
       focus: () => inputRef.current?.focus(),
@@ -112,7 +129,16 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
 
     function handleChangeText(text: string) {
       if (mode === 'kana') {
-        onChangeText(wanakana.toKana(text, { IMEMode: true }));
+        const kana = wanakana.toKana(text, { IMEMode: true });
+        if (!kanjiConversions?.length) {
+          onChangeText(kana);
+          return;
+        }
+        const newlyUndone = undoneKanjiConversions(value, kana, kanjiConversions);
+        if (newlyUndone.length > 0) {
+          setUndone({ conversions: kanjiConversions, kana: new Set([...undoneKana, ...newlyUndone]) });
+        }
+        onChangeText(applyKanjiConversions(value, kana, kanjiConversions, undoneKana));
       } else {
         onChangeText(text);
       }

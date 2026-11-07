@@ -27968,6 +27968,110 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "兄[あに]は今年[ことし]の夏[なつ]は帰[かえ]らないらしい。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "今年",
+                  "reading": "ことし",
+                  "role": "word",
+                  "vocabulary_slug": "kotoshi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "夏",
+                  "reading": "なつ",
+                  "role": "word",
+                  "vocabulary_slug": "natsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰らないらしい",
+                  "reading": "かえらないらしい",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "今年[ことし]の夏[なつ]は兄[あに]は帰[かえ]らないらしい。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今年",
+                  "reading": "ことし",
+                  "role": "word",
+                  "vocabulary_slug": "kotoshi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "夏",
+                  "reading": "なつ",
+                  "role": "word",
+                  "vocabulary_slug": "natsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰らないらしい",
+                  "reading": "かえらないらしい",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         }
@@ -40455,6 +40559,51 @@
                 {
                   "surface": "ようにしている",
                   "reading": "ようにしている",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "夜[よる]はコーヒーを飲[の]まないようにする。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "夜",
+                  "reading": "よる",
+                  "role": "word",
+                  "vocabulary_slug": "yoru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "コーヒー",
+                  "reading": "コーヒー",
+                  "role": "word",
+                  "vocabulary_slug": "koohii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "飲まない",
+                  "reading": "のまない",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ようにする",
+                  "reading": "ようにする",
                   "role": "other",
                   "in_grammar": true
                 }

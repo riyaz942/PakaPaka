@@ -4,7 +4,7 @@ import { normalizeKana } from '@/core/answer/readingEvaluator';
 /** Passage answers never use typo tolerance or reading/script nudges — only correct/incorrect. */
 export type PassageAnswerResult = Exclude<
   AnswerResult,
-  'typo' | 'wrong_script' | 'wrong_reading_type' | 'other_grammar'
+  'typo' | 'wrong_script' | 'wrong_reading_type' | 'other_grammar' | 'close'
 >;
 
 /**

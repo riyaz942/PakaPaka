@@ -1,6 +1,6 @@
 import { usePreventRemove } from '@react-navigation/core';
 import { router, useFocusEffect, type Href } from 'expo-router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
   ActivityIndicator,
@@ -32,6 +32,7 @@ import {
 } from '@/components/review';
 import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
 import type { AnswerCollision } from '@/core/answer/answer.types';
+import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
 import {
   evaluateReviewAnswer,
   gradeForResult,
@@ -113,6 +114,8 @@ export default function ReviewScreen() {
   // Near-miss teaching flag for the incorrect reveal (Plan 10).
   // The submitted answer matched a different item's accepted answer (FR86).
   const [answerCollision, setAnswerCollision] = useState<AnswerCollision | null>(null);
+  // Grammar Build close state: the one-line nudge from the evaluator.
+  const [closeNudge, setCloseNudge] = useState<string | undefined>();
 
   // Contextual guidance (Epic 7). Both must be called unconditionally, above the
   // loading/error/empty/complete early returns below — and after `cardState`,
@@ -129,6 +132,19 @@ export default function ReviewScreen() {
   // for and gate the render on it — the notice can never sit over the next
   // prompt — and dismiss once the session has moved on.
   const currentItemId = currentItem?.itemId ?? null;
+  // Grammar Build only: typed kana turns into the sentence's kanji (あした → 明日).
+  // Every other card keeps plain romaji → kana input.
+  const buildCard =
+    currentItem?.itemType === 'grammar' && currentItem.promptType === 'production'
+      ? currentItem.grammarBuild
+      : undefined;
+  const kanjiConversions = useMemo(
+    () =>
+      buildCard
+        ? buildKanjiConversions([...buildCard.answers, ...buildCard.otherGrammarAnswers])
+        : undefined,
+    [buildCard],
+  );
   const { visible: srCardVisible, dismiss: srCardDismiss } = spacedRepetitionCard;
   const [srShownItemId, setSrShownItemId] = useState<string | null>(null);
   useEffect(() => {
@@ -162,7 +178,8 @@ export default function ReviewScreen() {
     cardState === 'typo' ||
     cardState === 'wrong_script' ||
     cardState === 'wrong_reading_type' ||
-    cardState === 'other_grammar';
+    cardState === 'other_grammar' ||
+    cardState === 'close';
 
   // The input stays editable (and focused — submitBehavior="submit") through the
   // correct state so the second Return can advance without re-tapping (FR84).
@@ -246,7 +263,8 @@ export default function ReviewScreen() {
       cardState !== 'typo' &&
       cardState !== 'wrong_script' &&
       cardState !== 'wrong_reading_type' &&
-      cardState !== 'other_grammar'
+      cardState !== 'other_grammar' &&
+      cardState !== 'close'
     ) {
       return;
     }
@@ -270,7 +288,8 @@ export default function ReviewScreen() {
             cardState === 'typo' ||
             cardState === 'wrong_script' ||
             cardState === 'wrong_reading_type' ||
-            cardState === 'other_grammar'
+            cardState === 'other_grammar' ||
+            cardState === 'close'
           ) {
             typoInputTimer = setTimeout(
               () => inputRef.current?.focus(),
@@ -371,6 +390,15 @@ export default function ReviewScreen() {
       // Same meaning with a same-family grammar point (D6): nudge, no grade.
       // The typed sentence stays so only the grammar needs changing.
       setCardState('other_grammar');
+      isSubmittingRef.current = false;
+      return;
+    }
+
+    if (evaluation.result === 'close') {
+      // 1–2 small slips on a Build card: nudge, no grade, no record. The typed
+      // sentence stays so only the slip needs fixing.
+      setCloseNudge(evaluation.nudge);
+      setCardState('close');
       isSubmittingRef.current = false;
       return;
     }
@@ -549,7 +577,7 @@ export default function ReviewScreen() {
   const inputState: WanaKanaInputState =
     cardState === 'correct'
       ? 'correct'
-      : cardState === 'typo'
+      : cardState === 'typo' || cardState === 'close'
         ? 'near-miss'
         : cardState === 'wrong_script' ||
             cardState === 'wrong_reading_type' ||
@@ -592,6 +620,7 @@ export default function ReviewScreen() {
               answerCollision={answerCollision}
               onSaveGrammarAnswer={handleSaveGrammarAnswer}
               grammarAnswerError={grammarAnswerError}
+              closeNudge={closeNudge}
             />
           </ItemLinkProvider>
 
@@ -656,6 +685,7 @@ export default function ReviewScreen() {
               editable={inputEditable}
               autoFocus={inputEditable}
               state={inputState}
+              kanjiConversions={kanjiConversions}
             />
             <Button
               ref={continueButtonRef}
@@ -687,6 +717,7 @@ export default function ReviewScreen() {
               editable={inputEditable}
               autoFocus={inputEditable}
               state={inputState}
+              kanjiConversions={kanjiConversions}
             />
             <Pressable
               accessibilityRole="button"

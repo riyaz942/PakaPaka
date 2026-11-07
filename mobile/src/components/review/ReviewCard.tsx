@@ -30,7 +30,8 @@ export type ReviewCardState =
   | 'typo'
   | 'wrong_script'
   | 'wrong_reading_type'
-  | 'other_grammar';
+  | 'other_grammar'
+  | 'close';
 
 type ReviewCardProps = {
   item: ReviewItem;
@@ -53,6 +54,8 @@ type ReviewCardProps = {
   onSaveGrammarAnswer?: () => void;
   /** The last save attempt failed */
   grammarAnswerError?: boolean;
+  /** Grammar Build, close state: the one-line nudge from the evaluator */
+  closeNudge?: string;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -150,6 +153,7 @@ export function ReviewCard({
   answerCollision,
   onSaveGrammarAnswer,
   grammarAnswerError,
+  closeNudge,
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink } = item;
   const { mode: furiganaMode } = useFuriganaPreference();
@@ -236,9 +240,11 @@ export function ReviewCard({
         ? WRONG_READING_TYPE_NUDGE
         : state === 'other_grammar'
           ? OTHER_GRAMMAR_NUDGE
-          : state === 'wrong_script'
-            ? WRONG_SCRIPT_NUDGE[promptType]
-            : null;
+          : state === 'close'
+            ? (closeNudge ?? null)
+            : state === 'wrong_script'
+              ? WRONG_SCRIPT_NUDGE[promptType]
+              : null;
 
   const correctReveal = state === 'correct' ? resolveCorrectReveal(item) : null;
   const promptNode = grammarCard ? (

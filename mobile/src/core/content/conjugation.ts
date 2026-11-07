@@ -43,8 +43,11 @@ export const CONJUGATION_FORMS = [
 
 export type ConjugationForm = (typeof CONJUGATION_FORMS)[number];
 
+/** The て-forms, kept apart from the 8 because they have no tense or register. */
+export type TeForm = 'te' | 'teNegative';
+
 export type ConjugatedCell = { surface: string; furigana: string };
-export type ConjugationTable = Record<ConjugationForm, ConjugatedCell>;
+export type ConjugationTable = Record<ConjugationForm | TeForm, ConjugatedCell>;
 export type ConjugatableWord = { primaryForm: string; furigana: string | null };
 
 type EightForms = [string, string, string, string, string, string, string, string];
@@ -156,7 +159,15 @@ function conjugateText(text: string, cls: ConjugationClass): EightForms | null {
   }
 }
 
-/** The 8 forms of a word, or null when the class does not fit the word's ending. */
+/** [て-form, negative て-form] from the 8 forms: 来た → 来て, 来ない → 来なくて. */
+function teForms([plain, plainNegative, plainPast]: EightForms, cls: ConjugationClass): [string, string] {
+  const negative = `${plainNegative.slice(0, -1)}くて`;
+  if (cls === 'adj-i' || cls === 'adj-ii') return [`${plainNegative.slice(0, -2)}て`, negative];
+  const base = cls === 'adj-na' ? plain : plainPast;
+  return [`${base.slice(0, -1)}${base.endsWith('だ') ? 'で' : 'て'}`, negative];
+}
+
+/** The 8 forms and the て-forms of a word, or null when the class does not fit the word's ending. */
 export function conjugate(word: ConjugatableWord, cls: ConjugationClass): ConjugationTable | null {
   const surfaces = conjugateText(word.primaryForm, cls);
   const furigana = conjugateText(word.furigana ?? word.primaryForm, cls);
@@ -165,6 +176,10 @@ export function conjugate(word: ConjugatableWord, cls: ConjugationClass): Conjug
   CONJUGATION_FORMS.forEach((form, i) => {
     table[form] = { surface: surfaces[i], furigana: furigana[i] };
   });
+  const teSurfaces = teForms(surfaces, cls);
+  const teFurigana = teForms(furigana, cls);
+  table.te = { surface: teSurfaces[0], furigana: teFurigana[0] };
+  table.teNegative = { surface: teSurfaces[1], furigana: teFurigana[1] };
   return table;
 }
 

@@ -63,6 +63,16 @@ describe('conjugator over the compiled vocabulary', () => {
             if (!polite.some((cell) => cell.surface === text)) {
               mismatches.push(`${item.slug}: ${text} → ${polite.map((cell) => cell.surface).join(' / ')}`);
             }
+          } else if (span.inflection === 'te') {
+            checked += 1;
+            if (text !== table.te.surface) {
+              mismatches.push(`${item.slug}: ${text} → ${table.te.surface}`);
+            }
+          } else if (span.inflection === 'nai' && text.endsWith('なくて')) {
+            checked += 1;
+            if (text !== table.teNegative.surface) {
+              mismatches.push(`${item.slug}: ${text} → ${table.teNegative.surface}`);
+            }
           } else if (span.inflection === 'nai') {
             checked += 1;
             const stem = table.plainNegative.surface.replace(/い$/, '');
