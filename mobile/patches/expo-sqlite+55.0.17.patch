@@ -1,8 +1,16 @@
 diff --git a/node_modules/expo-sqlite/web/WorkerChannel.ts b/node_modules/expo-sqlite/web/WorkerChannel.ts
-index 7fba380..7046602 100644
+index 7fba380..8b68812 100644
 --- a/node_modules/expo-sqlite/web/WorkerChannel.ts
 +++ b/node_modules/expo-sqlite/web/WorkerChannel.ts
-@@ -36,12 +36,14 @@ export function sendWorkerResult({
+@@ -15,6 +15,7 @@ const PENDING = 1;
+ const RESOLVED = 2;
+ 
+ let hasWarnedSync = false;
++let syncBuffers: { lockBuffer: SharedArrayBuffer; resultBuffer: SharedArrayBuffer } | null = null;
+ 
+ /**
+  * For worker to send result to the main thread.
+@@ -36,12 +37,14 @@ export function sendWorkerResult({
    if (syncTrait) {
      const { lockBuffer, resultBuffer } = syncTrait;
      const lock = new Int32Array(lockBuffer);
@@ -20,19 +28,28 @@ index 7fba380..7046602 100644
      Atomics.store(lock, 0, RESOLVED);
    } else {
      if (result) {
-@@ -103,8 +105,9 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
+@@ -101,10 +104,17 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
+   }
+ 
    const id = messageId++;
-   const lockBuffer = new SharedArrayBuffer(4);
+-  const lockBuffer = new SharedArrayBuffer(4);
++  // Reuse one pair: each growable buffer reserves 256 MB of address space until
++  // the worker GCs it, and ~4000 back-to-back calls exhaust Chrome's sandbox.
++  // Safe because a sync call blocks the main thread until the worker answers.
++  syncBuffers ??= {
++    lockBuffer: new SharedArrayBuffer(4),
++    resultBuffer: new (SharedArrayBuffer as any)(1024 * 1024, {
++      maxByteLength: 256 * 1024 * 1024,
++    }) as SharedArrayBuffer,
++  };
++  const { lockBuffer, resultBuffer } = syncBuffers;
    const lock = new Int32Array(lockBuffer);
 -  const resultBuffer = new SharedArrayBuffer(1024 * 1024);
 -  const resultArray = new Uint8Array(resultBuffer);
-+  const resultBuffer = new (SharedArrayBuffer as any)(1024 * 1024, {
-+    maxByteLength: 256 * 1024 * 1024,
-+  }) as SharedArrayBuffer;
  
    Atomics.store(lock, 0, PENDING);
    worker.postMessage({
-@@ -117,29 +120,26 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
+@@ -117,29 +127,28 @@ export function invokeWorkerSync<T extends SQLiteWorkerMessageType & keyof Resul
    });
  
    let i = 0;
@@ -43,6 +60,8 @@ index 7fba380..7046602 100644
      ++i;
  
 +    if (i % 1000 === 0 && Date.now() > deadline) {
++      // The worker may still answer into these buffers; never hand them to the next call.
++      syncBuffers = null;
 +      throw new Error('Sync operation timeout');
 +    }
      if (useAtomicsPause) {

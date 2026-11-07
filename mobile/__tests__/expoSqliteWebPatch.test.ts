@@ -61,6 +61,48 @@ describe('invokeWorkerSync (main side of the bridge)', () => {
     expect(invokeWorkerSync(worker, 'execSync', {})).toBe(big);
   });
 
+  // Each new growable buffer reserves 256 MB of address space until the worker
+  // GCs it; ~4000 back-to-back sync calls (a backup restore) exhaust Chrome's
+  // 1 TB sandbox with "Array buffer allocation failed".
+  it('reuses one lock/result buffer pair across sync calls', () => {
+    const seen: SyncMessage[] = [];
+    const worker = {
+      postMessage: (message: SyncMessage) => {
+        seen.push(message);
+        sendWorkerResult({ id: message.id, result: 'ok', error: null, syncTrait: message });
+      },
+    };
+
+    invokeWorkerSync(worker, 'execSync', {});
+    invokeWorkerSync(worker, 'execSync', {});
+
+    expect(seen[1].resultBuffer).toBe(seen[0].resultBuffer);
+    expect(seen[1].lockBuffer).toBe(seen[0].lockBuffer);
+  });
+
+  it('allocates fresh buffers after a timeout so a late reply cannot land in the next call', () => {
+    const seen: SyncMessage[] = [];
+    let answer = false;
+    const worker = {
+      postMessage: (message: SyncMessage) => {
+        seen.push(message);
+        if (answer) {
+          sendWorkerResult({ id: message.id, result: 'ok', error: null, syncTrait: message });
+        }
+      },
+    };
+    const start = 1_000_000;
+    let now = start;
+    jest.spyOn(Date, 'now').mockImplementation(() => (now += 31_000));
+
+    expect(() => invokeWorkerSync(worker, 'execSync', {})).toThrow('Sync operation timeout');
+    answer = true;
+    expect(invokeWorkerSync(worker, 'execSync', {})).toBe('ok');
+
+    expect(seen[1].resultBuffer).not.toBe(seen[0].resultBuffer);
+    expect(seen[1].lockBuffer).not.toBe(seen[0].lockBuffer);
+  });
+
   it('keeps waiting past a million spins and only times out after the 30 s deadline', () => {
     const worker = { postMessage: jest.fn() }; // never answers
     const start = 1_000_000;
