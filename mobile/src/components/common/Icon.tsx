@@ -2,6 +2,8 @@ import React from 'react';
 import { cssInterop } from 'nativewind';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
+import { isWeb } from '@/platform/capabilities';
+
 /**
  * The Design System v2 line-icon set: one drawn family on a 24px grid, 1.75px
  * stroke, round caps and joins. v2 uses no emoji in UI, so every glyph the app
@@ -224,9 +226,14 @@ export function Icon({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
-      // Icons always sit beside a label or inside a labelled control.
-      accessibilityElementsHidden
-      importantForAccessibility="no-hide-descendants">
+      // Icons always sit beside a label or inside a labelled control. On web the
+      // native-only props would reach the DOM <svg>, so hide it with aria-hidden.
+      {...(isWeb()
+        ? { 'aria-hidden': true }
+        : {
+            accessibilityElementsHidden: true,
+            importantForAccessibility: 'no-hide-descendants' as const,
+          })}>
       {ICON_PATHS[name]}
     </StyledSvg>
   );

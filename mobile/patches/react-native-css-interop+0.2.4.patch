@@ -1,0 +1,14 @@
+diff --git a/node_modules/react-native-css-interop/dist/runtime/web/color-scheme.js b/node_modules/react-native-css-interop/dist/runtime/web/color-scheme.js
+index c8fb1d2..7ec9a3c 100644
+--- a/node_modules/react-native-css-interop/dist/runtime/web/color-scheme.js
++++ b/node_modules/react-native-css-interop/dist/runtime/web/color-scheme.js
+@@ -33,6 +33,9 @@ else if ("window" in globalThis) {
+         const flags = darkModeFlag.split(" ");
+         darkMode = flags[0];
+         darkModeValue = flags[1];
++        // 'media' follows the system and set() throws for it; only 'class' has a scheme to set.
++        if (darkMode !== "class")
++            return;
+         exports.colorScheme.set(globalThis.window.document.documentElement.classList.contains(darkModeValue)
+             ? "dark"
+             : "system");
