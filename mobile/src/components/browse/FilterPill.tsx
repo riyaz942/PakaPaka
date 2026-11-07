@@ -16,6 +16,8 @@ type FilterPillProps = {
   onPress: () => void;
   /** When present, renders an inline clear affordance for this facet. */
   onClear?: () => void;
+  /** True while a search or filter change is loading: the pill does not respond. */
+  disabled?: boolean;
   testID?: string;
 };
 
@@ -24,7 +26,14 @@ type FilterPillProps = {
  * pill reads as the facet name ("Level"); an active one summarizes what it is
  * doing ("Vocab + Grammar") so the filter bar never needs a separate legend.
  */
-export function FilterPill({ label, active, onPress, onClear, testID }: FilterPillProps) {
+export function FilterPill({
+  label,
+  active,
+  onPress,
+  onClear,
+  disabled = false,
+  testID,
+}: FilterPillProps) {
   const { reducedMotion } = useReducedMotion();
   // A small bounce each time the pill turns on.
   const popStyle = useFeedbackMotion('pop', active ? 1 : 0);
@@ -41,7 +50,8 @@ export function FilterPill({ label, active, onPress, onClear, testID }: FilterPi
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={active ? `Filter: ${label}. Edit` : `Filter by ${label}`}
-        accessibilityState={{ selected: Boolean(active) }}
+        accessibilityState={{ selected: Boolean(active), disabled }}
+        disabled={disabled}
         onPress={onPress}
         testID={testID}
         className="min-h-[44px] justify-center px-space-md">
@@ -59,6 +69,8 @@ export function FilterPill({ label, active, onPress, onClear, testID }: FilterPi
           entering={reducedMotion ? undefined : ZoomIn.springify().damping(12)}
           accessibilityRole="button"
           accessibilityLabel={`Clear ${label} filter`}
+          accessibilityState={{ disabled }}
+          disabled={disabled}
           onPress={onClear}
           testID={testID ? `${testID}-clear` : undefined}
           className="min-h-[44px] min-w-[44px] items-center justify-center pr-space-sm">

@@ -12,6 +12,8 @@ type SearchFieldProps = {
   onSubmit: () => void;
   /** Clears the field and re-runs the search so stale results do not linger. */
   onClear: () => void;
+  /** True while a search or filter change is loading: the field and its buttons do not respond. */
+  disabled?: boolean;
   testID?: string;
 };
 
@@ -27,7 +29,14 @@ type SearchFieldProps = {
  * search key), not per keystroke — querying on every keystroke was slow
  * enough to be felt.
  */
-export function SearchField({ value, onChangeText, onSubmit, onClear, testID }: SearchFieldProps) {
+export function SearchField({
+  value,
+  onChangeText,
+  onSubmit,
+  onClear,
+  disabled = false,
+  testID,
+}: SearchFieldProps) {
   const colors = getSemanticColors(usePaintedColorScheme());
 
   return (
@@ -35,6 +44,8 @@ export function SearchField({ value, onChangeText, onSubmit, onClear, testID }: 
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Search"
+        accessibilityState={{ disabled }}
+        disabled={disabled}
         onPress={onSubmit}
         testID={testID ? `${testID}-submit` : undefined}
         className="min-h-[44px] min-w-[44px] items-center justify-center">
@@ -50,6 +61,7 @@ export function SearchField({ value, onChangeText, onSubmit, onClear, testID }: 
         autoCapitalize="none"
         autoCorrect={false}
         returnKeyType="search"
+        editable={!disabled}
         testID={testID}
         className="min-h-[44px] flex-1 text-body font-ui-medium text-primary"
       />
@@ -57,6 +69,8 @@ export function SearchField({ value, onChangeText, onSubmit, onClear, testID }: 
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Clear search"
+          accessibilityState={{ disabled }}
+          disabled={disabled}
           onPress={onClear}
           testID={testID ? `${testID}-clear` : undefined}
           className="min-h-[44px] min-w-[44px] items-center justify-center">
