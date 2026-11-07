@@ -30,17 +30,16 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
 };
 
 // Cross-origin isolation (needed for SharedArrayBuffer) on the dev server too.
-const previousEnhanceMiddleware = config.server?.enhanceMiddleware;
-config.server = {
-  ...config.server,
-  enhanceMiddleware: (middleware, server) => {
-    const enhanced = previousEnhanceMiddleware ? previousEnhanceMiddleware(middleware, server) : middleware;
-    return (req, res, next) => {
-      res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-      res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-      return enhanced(req, res, next);
-    };
-  },
+// `enhanceMiddleware` is not enough: Expo serves the HTML page from its own
+// middleware before Metro's runs, and the page is what needs the headers. So set
+// them on every response this dev-server process writes. `expo export` loads this
+// file too but serves nothing; the deployed build gets them from `public/_headers`.
+const http = require('http');
+const originalWriteHead = http.ServerResponse.prototype.writeHead;
+http.ServerResponse.prototype.writeHead = function writeHeadWithIsolation(...args) {
+  this.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  this.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+  return originalWriteHead.apply(this, args);
 };
 
 module.exports = withNativeWind(config, { input: './src/global.css' });

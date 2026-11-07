@@ -6,6 +6,7 @@ import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { MaxContentWidth } from '@/constants/theme';
 import { cn } from '@/utils/cn';
 
 import type { AtRiskListItem } from '@/data/hooks/useAtRiskItems';
@@ -109,29 +110,34 @@ export function AtRiskSection({
         visible={showFullList}
         animationType="slide"
         onRequestClose={() => setShowFullList(false)}>
-        <View className="flex-1 bg-background px-space-lg pt-space-xl shadow-e3">
-          <ScreenTitle>Ready for a refresher</ScreenTitle>
-          <ScrollView className="mt-space-md" testID="at-risk-full-list">
-            {allItems.map((item) => (
-              <AtRiskRow key={item.itemId} item={item} />
-            ))}
-          </ScrollView>
-          <View className="gap-space-sm pb-space-lg pt-space-md">
-            <Button
-              label="Do a small revision"
-              onPress={() => {
-                setShowFullList(false);
-                onStartRevision();
-              }}
-              accessibilityLabel="Start a small revision session with these items"
-            />
-            <Button
-              label="Close"
-              variant="ghost"
-              onPress={() => setShowFullList(false)}
-              accessibilityLabel="Close the refresher list"
-              testID="at-risk-close-full-list"
-            />
+        <View className="flex-1 bg-background shadow-e3">
+          {/* Centered column so a desktop window does not stretch the list. */}
+          <View
+            className="w-full flex-1 self-center px-space-lg pt-space-xl"
+            style={{ maxWidth: MaxContentWidth }}>
+            <ScreenTitle>Ready for a refresher</ScreenTitle>
+            <ScrollView className="mt-space-md" testID="at-risk-full-list">
+              {allItems.map((item) => (
+                <AtRiskRow key={item.itemId} item={item} />
+              ))}
+            </ScrollView>
+            <View className="gap-space-sm pb-space-lg pt-space-md">
+              <Button
+                label="Do a small revision"
+                onPress={() => {
+                  setShowFullList(false);
+                  onStartRevision();
+                }}
+                accessibilityLabel="Start a small revision session with these items"
+              />
+              <Button
+                label="Close"
+                variant="ghost"
+                onPress={() => setShowFullList(false)}
+                accessibilityLabel="Close the refresher list"
+                testID="at-risk-close-full-list"
+              />
+            </View>
           </View>
         </View>
       </Modal>

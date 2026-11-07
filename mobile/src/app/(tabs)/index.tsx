@@ -22,7 +22,8 @@ import {
   accessibilitySummary,
 } from '@/components/engagement';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
-import { MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { useWideLayout } from '@/hooks/useWideLayout';
 import {
   defaultHomeLayout,
   type HomeSectionEntry,
@@ -64,7 +65,18 @@ import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { cn } from '@/utils/cn';
 import { supportsThirdPartyImport } from '@/platform/capabilities';
 
+/**
+ * Desktop web splits Home into two columns: today's work on the left, progress
+ * on the right. The stored order still applies inside each column.
+ */
+const TODAY_COLUMN_SECTIONS: ReadonlySet<HomeSectionId> = new Set([
+  'goal-ring',
+  'review-cta',
+  'lesson-cta',
+]);
+
 export default function HomeScreen() {
+  const wide = useWideLayout();
   const { curriculumDb, userDb } = useDatabase();
   const [level, setLevel] = useState<ReturnType<typeof getStartingJlptLevel>>(null);
   const [greetingSentence, setGreetingSentence] = useState<string | null>(null);
@@ -386,15 +398,33 @@ export default function HomeScreen() {
     }
   }
 
+  const sections = layout.flatMap((entry, i) => {
+    if (!entry.visible) return [];
+    const content = renderHomeSection(entry.id);
+    if (content === null) return [];
+    return [
+      {
+        id: entry.id,
+        node: (
+          <FadeSlideIn key={entry.id} index={i}>
+            {content}
+          </FadeSlideIn>
+        ),
+      },
+    ];
+  });
+
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView
         edges={['top', 'left', 'right']}
-        className="flex-1 px-space-lg pt-space-md"
+        className={cn('flex-1', wide ? 'px-space-xl' : 'px-space-lg pt-space-md')}
         style={{
           alignSelf: 'center',
-          maxWidth: MaxContentWidth,
+          maxWidth: wide ? undefined : MaxContentWidth,
           width: '100%',
+          // Inline: on web SafeAreaView's own inset padding overrides a pt-* class.
+          paddingTop: wide ? Spacing.four : undefined,
         }}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -525,16 +555,22 @@ export default function HomeScreen() {
               reviews-ready count lives here only — never on a tab badge.
               Order and visibility below come from the stored layout — see
               renderHomeSection. */}
-          {layout.map((entry, i) => {
-            if (!entry.visible) return null;
-            const content = renderHomeSection(entry.id);
-            if (content === null) return null;
-            return (
-              <FadeSlideIn key={entry.id} index={i}>
-                {content}
-              </FadeSlideIn>
-            );
-          })}
+          {wide ? (
+            <View className="flex-row items-start gap-space-lg">
+              <View className="flex-1 gap-space-md">
+                {sections.filter((section) => TODAY_COLUMN_SECTIONS.has(section.id)).map(
+                  (section) => section.node,
+                )}
+              </View>
+              <View className="flex-1 gap-space-md">
+                {sections.filter((section) => !TODAY_COLUMN_SECTIONS.has(section.id)).map(
+                  (section) => section.node,
+                )}
+              </View>
+            </View>
+          ) : (
+            sections.map((section) => section.node)
+          )}
         </ScrollView>
       </SafeAreaView>
     </View>

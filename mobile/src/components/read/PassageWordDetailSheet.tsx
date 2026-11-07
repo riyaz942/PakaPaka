@@ -11,6 +11,7 @@ import { conjugatedFormNote, type WordInflection } from '@/core/content/inflecti
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
+import { useSheetFrame } from '@/hooks/useWideLayout';
 import { cn } from '@/utils/cn';
 
 type PassageWordDetailSheetProps = {
@@ -38,6 +39,7 @@ export function PassageWordDetailSheet({
   visible,
   onDismiss,
 }: PassageWordDetailSheetProps) {
+  const sheetFrame = useSheetFrame();
   const { modeForItem, knownKanji } = useFuriganaPreference();
   // The sheet heroes the dictionary form, so a conjugated tap needs the bridge
   // back to what the learner actually pressed (14.1).
@@ -61,9 +63,14 @@ export function PassageWordDetailSheet({
         accessibilityRole="button"
         accessibilityLabel="Dismiss word details"
         onPress={onDismiss}
-        className="flex-1 bg-black/40"
+        className={cn('flex-1 bg-black/40', sheetFrame.backdropClassName)}
       />
-      <View className="gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3">
+      <View
+        className={cn(
+          'gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3',
+          sheetFrame.className,
+        )}
+        style={sheetFrame.style}>
         {item ? (
           <>
             <View className="flex-row items-start justify-between gap-space-md">

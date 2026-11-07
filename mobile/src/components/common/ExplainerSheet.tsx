@@ -2,6 +2,8 @@ import React, { type ReactNode } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { EXPLAINER_CONTENT, type ExplainerTopic } from '@/components/learn/explainerContent';
+import { useSheetFrame } from '@/hooks/useWideLayout';
+import { cn } from '@/utils/cn';
 
 type ExplainerSheetBaseProps = {
   visible: boolean;
@@ -25,6 +27,7 @@ type ExplainerSheetProps =
  * `SessionExitSheet`) rather than a new bottom-sheet dependency.
  */
 export function ExplainerSheet(props: ExplainerSheetProps) {
+  const sheetFrame = useSheetFrame();
   const { visible, onDismiss } = props;
 
   // Topic mode owns its paragraph spacing (first paragraph flush, the rest
@@ -45,9 +48,14 @@ export function ExplainerSheet(props: ExplainerSheetProps) {
         accessibilityRole="button"
         accessibilityLabel={`Dismiss ${title} explainer`}
         onPress={onDismiss}
-        className="flex-1 bg-black/40"
+        className={cn('flex-1 bg-black/40', sheetFrame.backdropClassName)}
       />
-      <View className="max-h-[70%] gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3">
+      <View
+        className={cn(
+          'max-h-[70%] gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3',
+          sheetFrame.className,
+        )}
+        style={sheetFrame.style}>
         <View className="h-1 w-10 self-center rounded-radius-full bg-border" />
         <Text accessibilityRole="header" className="text-title font-ui-bold text-primary">
           {title}

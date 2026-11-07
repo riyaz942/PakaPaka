@@ -1,3 +1,4 @@
+import { cssInterop } from 'nativewind';
 import React from 'react';
 import { Pressable, type PressableProps } from 'react-native';
 import Animated, {
@@ -7,8 +8,15 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
+import { isWeb } from '@/platform/capabilities';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+// On web the animated wrapper drops `className`, so every card built on this
+// rendered unstyled. Registering it lets NativeWind turn the classes into style.
+if (isWeb()) {
+  cssInterop(AnimatedPressable, { className: 'style' });
+}
 
 type PressableScaleProps = PressableProps & {
   children?: React.ReactNode;

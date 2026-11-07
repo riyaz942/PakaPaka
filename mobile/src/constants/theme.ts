@@ -15,3 +15,12 @@ export const Spacing = {
 } as const;
 
 export const MaxContentWidth = 800;
+
+/** Web only: the whole app sits in a centered frame no wider than this. */
+export const MaxAppWidth = 1440;
+
+/** Web only: at or above this window width, screens switch to their desktop layout. */
+export const WideLayoutMinWidth = 1024;
+
+/** Web only: widest a bottom sheet gets on a desktop window. */
+export const MaxSheetWidth = 560;
