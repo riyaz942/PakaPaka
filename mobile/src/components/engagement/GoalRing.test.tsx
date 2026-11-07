@@ -1,6 +1,21 @@
 import { render, screen } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 import { GoalRing } from './GoalRing';
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
+// Reduced motion draws the rings and bars at their final value at once.
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
 
 describe('GoalRing', () => {
   it('has progressbar accessibility role prop', () => {
@@ -27,27 +42,27 @@ describe('GoalRing', () => {
   it('renders hero variant at 160px', () => {
     const { UNSAFE_getByProps } = render(<GoalRing variant="hero" percent={42} />);
     const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
-    expect(el.props.style).toEqual({ width: 160, height: 160 });
+    expect(StyleSheet.flatten(el.props.style)).toMatchObject({ width: 160, height: 160 });
   });
 
   it('sweeps the arc in proportion to the percent, on a full-circle track', () => {
-    const { UNSAFE_getAllByProps } = render(<GoalRing variant="hero" percent={50} />);
-    const arcs = UNSAFE_getAllByProps({ fill: 'none' });
-    const swept = arcs.find((arc) => typeof arc.props.strokeDasharray === 'string');
+    const { UNSAFE_getByProps } = render(<GoalRing variant="hero" percent={50} />);
+    const arc = UNSAFE_getByProps({ testID: 'ring-arc' });
 
     const radius = (160 - Math.round(160 * 0.115)) / 2;
     const circumference = 2 * Math.PI * radius;
-    expect(swept?.props.strokeDasharray).toBe(`${circumference / 2} ${circumference}`);
+    expect(arc.props.strokeDasharray).toBe(`${circumference} ${circumference}`);
+    expect(arc.props.animatedProps.strokeDashoffset).toBeCloseTo(circumference / 2);
   });
 
   it('clamps the drawn arc at a full circle while overshooting', () => {
-    const { UNSAFE_getAllByProps } = render(<GoalRing variant="hero" percent={180} />);
-    const arcs = UNSAFE_getAllByProps({ fill: 'none' });
-    const swept = arcs.find((arc) => typeof arc.props.strokeDasharray === 'string');
+    const { UNSAFE_getByProps } = render(<GoalRing variant="hero" percent={180} />);
+    const arc = UNSAFE_getByProps({ testID: 'ring-arc' });
 
     const radius = (160 - Math.round(160 * 0.115)) / 2;
     const circumference = 2 * Math.PI * radius;
-    expect(swept?.props.strokeDasharray).toBe(`${circumference} ${circumference}`);
+    expect(arc.props.strokeDasharray).toBe(`${circumference} ${circumference}`);
+    expect(arc.props.animatedProps.strokeDashoffset).toBeCloseTo(0);
   });
 
   it('shows raw overshoot percent with an uncapped a11y value', () => {

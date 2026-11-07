@@ -4,6 +4,10 @@ import type { SRSStageLabel } from '@/core/srs/srs.types';
 
 import { SrsStageBreakdown } from './SrsStageBreakdown';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 const STAGE_ORDER: SRSStageLabel[] = [
   'apprentice',
   'guru',

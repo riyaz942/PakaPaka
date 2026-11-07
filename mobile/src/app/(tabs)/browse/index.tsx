@@ -65,6 +65,7 @@ export default function BrowseScreen() {
     refresh,
     reload,
     passageUnlock,
+    newlyUnlockedPassageIds,
   } = useBrowseItems();
 
   const [openFacet, setOpenFacet] = useState<BrowseFacetKey | null>(null);
@@ -270,6 +271,7 @@ export default function BrowseScreen() {
             onClearFilters={handleClearAll}
             canClearFilters={hasActiveFilters}
             onRetry={reload}
+            newlyUnlockedPassageIds={newlyUnlockedPassageIds}
           />
         </View>
       </SafeAreaView>

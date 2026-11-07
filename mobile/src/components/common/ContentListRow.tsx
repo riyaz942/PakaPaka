@@ -25,6 +25,8 @@ type ContentListRowProps = {
   trailingClassName?: string;
   trailingTextClassName?: string;
   trailingTestID?: string;
+  /** Custom trailing content; takes the place of the trailing pill and type badge. */
+  trailing?: React.ReactNode;
   /** Names the type on its own pill, where the caption does not already say it. */
   showTypeBadge?: boolean;
   onPress: () => void;
@@ -61,6 +63,7 @@ export function ContentListRow({
   trailingClassName,
   trailingTextClassName,
   trailingTestID,
+  trailing,
   showTypeBadge = false,
   onPress,
   accessibilityLabel,
@@ -119,7 +122,9 @@ export function ContentListRow({
           ) : null}
         </View>
 
-        {trailingLabel ? (
+        {trailing ? (
+          trailing
+        ) : trailingLabel ? (
           <View
             testID={trailingTestID}
             className={cn(

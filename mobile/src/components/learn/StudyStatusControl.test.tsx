@@ -6,6 +6,19 @@ import { setStudyStatus } from '@/data/user/itemStudyStatusRepository';
 import { getSrsState } from '@/data/user/srsStateRepository';
 import type { StudyStatus } from '@/data/user/studyStatus.types';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
 jest.mock('@/data/hooks/useDatabase', () => {
   // Stable object: an unstable identity would re-fire db-keyed memos every render.
   const databases = { userDb: {}, curriculumDb: {} };

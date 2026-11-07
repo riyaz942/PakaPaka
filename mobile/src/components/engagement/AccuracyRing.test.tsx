@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react-native';
 
 import { AccuracyRing } from './AccuracyRing';
 
+// Reduced motion draws the rings and bars at their final value at once.
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 describe('AccuracyRing', () => {
   it('reports the percent as a progressbar out of 100', () => {
     render(<AccuracyRing percent={83.4} testID="ring" />);

@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native';
 
 import { PressableScale } from '@/components/common/PressableScale';
+import { ProgressFill } from '@/components/common/ProgressFill';
 
 import type { ReadingReadinessTarget } from '@/data/hooks/useReadingReadiness';
 
@@ -48,10 +49,10 @@ export function ReadingReadiness({ target, onPress }: ReadingReadinessProps) {
       {/* The card has no plain surface to sit a bar on, so the track is the
           passage hue itself held back to a tint. */}
       <View className="mt-space-sm h-[7px] overflow-hidden rounded-radius-full bg-content-passage/20">
-        <View
+        <ProgressFill
           testID="reading-readiness-progress"
+          percent={coveragePercent}
           className="h-full rounded-radius-full bg-content-passage"
-          style={{ width: `${coveragePercent}%` }}
         />
       </View>
     </PressableScale>

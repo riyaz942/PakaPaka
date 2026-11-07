@@ -3,6 +3,19 @@ import React from 'react';
 
 import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
 const OPTIONS: readonly SegmentedPillOption<'light' | 'dark' | 'system'>[] = [
   { value: 'light', label: 'Light', testID: 'pill-light' },
   { value: 'dark', label: 'Dark', testID: 'pill-dark' },

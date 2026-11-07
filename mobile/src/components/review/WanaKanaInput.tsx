@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { Text, TextInput, View, type TextInputProps } from 'react-native';
+import Animated from 'react-native-reanimated';
 import * as wanakana from 'wanakana';
 
 import { Icon, type IconName } from '@/components/common/Icon';
@@ -10,6 +11,7 @@ import {
   type KanjiConversion,
 } from '@/core/grammar/kanjiAutoConvert';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { useFeedbackMotion, type FeedbackMotion } from '@/hooks/useFeedbackMotion';
 import { cn } from '@/utils/cn';
 
 export type WanaKanaInputMode = 'kana' | 'english';
@@ -41,7 +43,21 @@ type WanaKanaInputProps = {
    * Build cards). Pass a stable array — a new one starts a fresh card.
    */
   kanjiConversions?: readonly KanjiConversion[];
+  /**
+   * Submit counter. Each change replays the motion for the current `state`, so
+   * a second near-miss shakes again. 0 = nothing submitted yet.
+   */
+  feedbackKey?: number;
   testID?: string;
+};
+
+/** Close answers shake, wrong answers drop, correct answers bounce. */
+const STATE_MOTION: Record<WanaKanaInputState, FeedbackMotion | null> = {
+  idle: null,
+  correct: 'pop',
+  incorrect: 'thud',
+  'near-miss': 'shake',
+  'wrong-script': 'shake',
 };
 
 /**
@@ -94,6 +110,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
       state = 'idle',
       hint,
       kanjiConversions,
+      feedbackKey = 0,
       testID,
     },
     ref,
@@ -105,6 +122,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
     const colors = getSemanticColors(usePaintedColorScheme());
     const [focused, setFocused] = useState(false);
     const styles = STATE_STYLES[state];
+    const motionStyle = useFeedbackMotion(STATE_MOTION[state], feedbackKey);
     // Focus chrome only applies while the field is still an open question — an
     // answered field keeps its verdict colour.
     const showFocus = state === 'idle' && focused;
@@ -156,76 +174,78 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
         : {};
 
     return (
-      <View
-        testID={testID ? `${testID}-field` : undefined}
-        className={cn(
-          'w-full rounded-radius-md border-[1.5px] px-space-md py-space-sm',
-          showFocus ? 'border-brand-500 bg-surface-elevated' : styles.container,
-        )}>
-        {/* The spec's 4px focus halo. React Native shadows have no spread, so
-            it is drawn as a ring just outside the field. */}
-        {showFocus ? (
-          <View
-            testID={testID ? `${testID}-focus-halo` : undefined}
-            pointerEvents="none"
-            className="absolute -inset-1 rounded-radius-md border-4 border-brand-soft-strong"
-          />
-        ) : null}
-
-        <View className="flex-row items-center gap-space-sm">
-          <TextInput
-            ref={inputRef}
-            testID={testID}
-            // Kana answers are Japanese text, so the field wears the JP face.
-            className={cn(
-              'min-h-[44px] flex-1 text-body',
-              mode === 'kana' ? 'font-jp-medium' : 'font-ui-semibold',
-              styles.text,
-            )}
-            placeholder={placeholder}
-            placeholderTextColor={colors.faint}
-            // Android pins the first line to the top of the 44px tap target, and
-            // the placeholder — unlike the typed value — never gets RN's line
-            // height span, so the JP face's tall ascenders clip against the top
-            // edge. Centring both lines the placeholder up with the answer.
-            textAlignVertical="center"
-            // includeFontPadding (Android default: true) reserves extra top/bottom
-            // space sized off the font's raw ascent/descent metrics — for Noto
-            // Sans JP that band is unusually tall, so on an empty field it pushes
-            // the hint past the 44px box before centring even applies. No-op on iOS.
-            style={{ includeFontPadding: false }}
-            selectionColor={colors.brand}
-            value={value}
-            onChangeText={handleChangeText}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            onSubmitEditing={onSubmit}
-            returnKeyType="done"
-            submitBehavior="submit"
-            editable={editable}
-            accessibilityLabel={accessibilityLabel}
-            {...englishProps}
-          />
-
-          {styles.mark ? (
-            <Icon
-              name={styles.mark}
-              size={20}
-              strokeWidth={2.4}
-              className={styles.text}
-              testID={testID ? `${testID}-mark` : undefined}
+      <Animated.View style={motionStyle}>
+        <View
+          testID={testID ? `${testID}-field` : undefined}
+          className={cn(
+            'w-full rounded-radius-md border-[1.5px] px-space-md py-space-sm',
+            showFocus ? 'border-brand-500 bg-surface-elevated' : styles.container,
+          )}>
+          {/* The spec's 4px focus halo. React Native shadows have no spread, so
+              it is drawn as a ring just outside the field. */}
+          {showFocus ? (
+            <View
+              testID={testID ? `${testID}-focus-halo` : undefined}
+              pointerEvents="none"
+              className="absolute -inset-1 rounded-radius-md border-4 border-brand-soft-strong"
             />
           ) : null}
-        </View>
 
-        {hint ? (
-          <Text
-            testID={testID ? `${testID}-hint` : undefined}
-            className={cn('mt-space-xs text-caption font-ui-semibold', styles.text)}>
-            {hint}
-          </Text>
-        ) : null}
-      </View>
+          <View className="flex-row items-center gap-space-sm">
+            <TextInput
+              ref={inputRef}
+              testID={testID}
+              // Kana answers are Japanese text, so the field wears the JP face.
+              className={cn(
+                'min-h-[44px] flex-1 text-body',
+                mode === 'kana' ? 'font-jp-medium' : 'font-ui-semibold',
+                styles.text,
+              )}
+              placeholder={placeholder}
+              placeholderTextColor={colors.faint}
+              // Android pins the first line to the top of the 44px tap target, and
+              // the placeholder — unlike the typed value — never gets RN's line
+              // height span, so the JP face's tall ascenders clip against the top
+              // edge. Centring both lines the placeholder up with the answer.
+              textAlignVertical="center"
+              // includeFontPadding (Android default: true) reserves extra top/bottom
+              // space sized off the font's raw ascent/descent metrics — for Noto
+              // Sans JP that band is unusually tall, so on an empty field it pushes
+              // the hint past the 44px box before centring even applies. No-op on iOS.
+              style={{ includeFontPadding: false }}
+              selectionColor={colors.brand}
+              value={value}
+              onChangeText={handleChangeText}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              onSubmitEditing={onSubmit}
+              returnKeyType="done"
+              submitBehavior="submit"
+              editable={editable}
+              accessibilityLabel={accessibilityLabel}
+              {...englishProps}
+            />
+
+            {styles.mark ? (
+              <Icon
+                name={styles.mark}
+                size={20}
+                strokeWidth={2.4}
+                className={styles.text}
+                testID={testID ? `${testID}-mark` : undefined}
+              />
+            ) : null}
+          </View>
+
+          {hint ? (
+            <Text
+              testID={testID ? `${testID}-hint` : undefined}
+              className={cn('mt-space-xs text-caption font-ui-semibold', styles.text)}>
+              {hint}
+            </Text>
+          ) : null}
+        </View>
+      </Animated.View>
     );
   },
 );

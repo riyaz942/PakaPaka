@@ -10,6 +10,16 @@ import {
   type BrowseRowModel,
 } from '@/data/curriculum/browseRepository';
 import { useBrowseItems } from '@/data/hooks/useBrowseItems';
+import {
+  getSeenUnlockedPassageIds,
+  setSeenUnlockedPassageIds,
+} from '@/data/user/preferencesRepository';
+
+jest.mock('@/data/user/preferencesRepository', () => ({
+  ...jest.requireActual('@/data/user/preferencesRepository'),
+  getSeenUnlockedPassageIds: jest.fn(() => null),
+  setSeenUnlockedPassageIds: jest.fn(),
+}));
 
 // DatabaseProvider hands out one stable context value for the app's lifetime,
 // so the mock must return a stable object too — a fresh literal per render
@@ -263,5 +273,66 @@ describe('useBrowseItems', () => {
     // totalCount is 2 and rows.length is 2 — loadMore should no-op.
     expect(mockListBrowsePage.mock.calls.length).toBe(callsBefore);
     expect(result.current.rows).toHaveLength(2);
+  });
+});
+
+describe('useBrowseItems newly unlocked passages', () => {
+  const mockGetSeen = getSeenUnlockedPassageIds as jest.MockedFunction<
+    typeof getSeenUnlockedPassageIds
+  >;
+  const mockSetSeen = setSeenUnlockedPassageIds as jest.MockedFunction<
+    typeof setSeenUnlockedPassageIds
+  >;
+
+  function status(unlocked: boolean) {
+    return {
+      unlocked,
+      linkedCount: 4,
+      guruOrAboveCount: unlocked ? 4 : 1,
+      coverage: unlocked ? 1 : 0.25,
+      itemsRemainingToUnlock: unlocked ? 0 : 3,
+    };
+  }
+
+  beforeEach(() => {
+    mockListPassageUnlockStates.mockReturnValue(
+      new Map([
+        ['p1', status(true)],
+        ['p2', status(true)],
+        ['p3', status(false)],
+      ]),
+    );
+  });
+
+  afterEach(() => {
+    mockGetSeen.mockReturnValue(null);
+  });
+
+  it('on first run records what is already open and celebrates nothing', async () => {
+    mockGetSeen.mockReturnValue(null);
+    const { result } = renderHook(() => useBrowseItems());
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(mockSetSeen).toHaveBeenCalledWith(expect.anything(), ['p1', 'p2']);
+    expect(result.current.newlyUnlockedPassageIds.size).toBe(0);
+  });
+
+  it('flags a passage that opened since it was last seen, and records it', async () => {
+    mockGetSeen.mockReturnValue(['p1']);
+    const { result } = renderHook(() => useBrowseItems());
+
+    await waitFor(() => expect(result.current.newlyUnlockedPassageIds.has('p2')).toBe(true));
+    expect(result.current.newlyUnlockedPassageIds.has('p1')).toBe(false);
+    expect(result.current.newlyUnlockedPassageIds.has('p3')).toBe(false);
+    expect(mockSetSeen).toHaveBeenCalledWith(expect.anything(), ['p1', 'p2']);
+  });
+
+  it('flags nothing when every open passage was already seen', async () => {
+    mockGetSeen.mockReturnValue(['p1', 'p2']);
+    const { result } = renderHook(() => useBrowseItems());
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.newlyUnlockedPassageIds.size).toBe(0);
+    expect(mockSetSeen).not.toHaveBeenCalled();
   });
 });

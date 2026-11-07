@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react-native';
 
 import { LevelProgressBar } from './LevelProgressBar';
 
+// Reduced motion draws the rings and bars at their final value at once.
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 const BASE_PROPS = {
   level: 'N5' as const,
   perType: {

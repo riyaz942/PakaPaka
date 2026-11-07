@@ -1,6 +1,15 @@
+import { useEffect } from 'react';
 import { Text, View } from 'react-native';
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withTiming,
+} from 'react-native-reanimated';
 
 import type { ReviewForecast as ReviewForecastData } from '@/core/engagement/reviewForecast';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
 
 type ReviewForecastProps = {
@@ -11,6 +20,30 @@ type ReviewForecastProps = {
 const CHART_HEIGHT = 44;
 /** A day with nothing due still draws a stub, so the week reads as seven columns. */
 const EMPTY_BAR_HEIGHT = 4;
+
+/** One column: grows up from the floor, each day a little after the one before. */
+function ForecastBar({
+  height,
+  index,
+  className,
+}: {
+  height: number;
+  index: number;
+  className: string;
+}) {
+  const { reducedMotion } = useReducedMotion();
+  const grown = useSharedValue(reducedMotion ? height : 0);
+
+  useEffect(() => {
+    grown.value = reducedMotion
+      ? height
+      : withDelay(index * 50, withTiming(height, { duration: 450, easing: Easing.out(Easing.cubic) }));
+  }, [grown, reducedMotion, height, index]);
+
+  const style = useAnimatedStyle(() => ({ height: grown.value }));
+
+  return <Animated.View className={className} style={style} />;
+}
 
 /**
  * One-week due forecast (FR58). Wall days get an invitation-style annotation
@@ -55,7 +88,7 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
 
       {forecast.totalCount > 0 ? (
         <View className="mt-space-sm flex-row items-end gap-space-xs">
-          {forecast.days.map((day) => {
+          {forecast.days.map((day, index) => {
             const isWall = day.dateKey === forecast.wallDateKey;
             const empty = day.count === 0;
             const barHeight = empty
@@ -68,7 +101,9 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
                 testID={`forecast-day-${day.dateKey}`}
                 className="flex-1 items-center">
                 <View className="w-full justify-end" style={{ height: CHART_HEIGHT }}>
-                  <View
+                  <ForecastBar
+                    height={barHeight}
+                    index={index}
                     className={cn(
                       'w-full rounded-radius-sm',
                       empty ? 'bg-surface-elevated' : day.isToday ? 'bg-brand-500' : 'bg-brand-200',
@@ -76,7 +111,6 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
                       // outline to tie the column to the note under the chart.
                       isWall && !day.isToday && 'border-[1.5px] border-brand-500',
                     )}
-                    style={{ height: barHeight }}
                   />
                 </View>
                 <Text

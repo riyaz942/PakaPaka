@@ -3,6 +3,19 @@ import React from 'react';
 
 import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
 const mockSetOverride = jest.fn();
 const mockClearOverride = jest.fn();
 let mockOverrides = new Map<string, 'shown' | 'hidden'>();

@@ -4,6 +4,8 @@ import Svg, { Circle } from 'react-native-svg';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
+import { AnimatedArc } from './AnimatedArc';
+
 type AccuracyRingProps = {
   /** First-try accuracy, 0–100. */
   percent: number;
@@ -51,14 +53,13 @@ export function AccuracyRing({ percent, size = 82, testID }: AccuracyRingProps) 
           stroke={colors.surfaceElevated}
           strokeWidth={strokeWidth}
         />
-        <Circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke={colors.brand}
+        <AnimatedArc
+          size={size}
+          radius={radius}
           strokeWidth={strokeWidth}
-          strokeDasharray={`${swept} ${circumference}`}
+          circumference={circumference}
+          swept={swept}
+          color={colors.brand}
         />
       </Svg>
 

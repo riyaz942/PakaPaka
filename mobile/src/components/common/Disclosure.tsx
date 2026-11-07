@@ -1,7 +1,14 @@
-import React, { useState, type ReactNode } from 'react';
+import React, { useEffect, useState, type ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import Animated, {
+  FadeIn,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type DisclosureProps = {
   label: string;
@@ -23,6 +30,16 @@ export function Disclosure({
   testID,
 }: DisclosureProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  // The chevron turns and the content fades in; both snap under reduced motion.
+  const { reducedMotion } = useReducedMotion();
+  const rotation = useSharedValue(expanded ? 90 : 0);
+  useEffect(() => {
+    const target = expanded ? 90 : 0;
+    rotation.value = reducedMotion ? target : withTiming(target, { duration: 180 });
+  }, [expanded, reducedMotion, rotation]);
+  const chevronStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${rotation.value}deg` }],
+  }));
 
   return (
     <View className="mt-4" testID={testID}>
@@ -33,14 +50,20 @@ export function Disclosure({
         onPress={() => setExpanded((value) => !value)}
         testID={`${testID}-toggle`}
         className="min-h-[44px] flex-row items-center gap-space-xs">
-        <View style={{ transform: [{ rotate: expanded ? '90deg' : '0deg' }] }}>
+        <Animated.View style={chevronStyle}>
           <Icon name="chevron" size={14} strokeWidth={2.4} className="text-muted" />
-        </View>
+        </Animated.View>
         <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
           {label}
         </Text>
       </Pressable>
-      {expanded ? <View testID={`${testID}-content`}>{children}</View> : null}
+      {expanded ? (
+        <Animated.View
+          testID={`${testID}-content`}
+          entering={reducedMotion ? undefined : FadeIn.duration(180)}>
+          {children}
+        </Animated.View>
+      ) : null}
     </View>
   );
 }

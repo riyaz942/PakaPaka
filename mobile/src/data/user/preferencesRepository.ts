@@ -29,6 +29,8 @@ export const PREFERENCE_KEYS = {
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
   reducedMotion: 'reduced_motion',
+  hapticsEnabled: 'haptics_enabled',
+  seenUnlockedPassageIds: 'seen_unlocked_passage_ids',
   themeMode: 'theme_mode',
   reviewAutoAdvance: 'review_auto_advance',
   furiganaDisplay: 'furigana_display',
@@ -202,6 +204,29 @@ export function getReducedMotionEnabled(userDb: SQLiteDatabase): boolean | null 
 
 export function setReducedMotionEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.reducedMotion, enabled ? 'true' : 'false');
+}
+
+/** Vibration on answers, goal reached and hold-to-speak. Default on when unset. */
+export function getHapticsEnabled(userDb: SQLiteDatabase): boolean {
+  const value = getPreference(userDb, PREFERENCE_KEYS.hapticsEnabled);
+  return value === null ? true : value === 'true';
+}
+
+export function setHapticsEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.hapticsEnabled, enabled ? 'true' : 'false');
+}
+
+/**
+ * Passages the learner has already seen open in Browse, so the "Unlocked"
+ * moment plays once per passage. Null when never stored (first run).
+ */
+export function getSeenUnlockedPassageIds(userDb: SQLiteDatabase): string[] | null {
+  const value = getPreference(userDb, PREFERENCE_KEYS.seenUnlockedPassageIds);
+  return value === null ? null : (JSON.parse(value) as string[]);
+}
+
+export function setSeenUnlockedPassageIds(userDb: SQLiteDatabase, ids: readonly string[]): void {
+  setPreference(userDb, PREFERENCE_KEYS.seenUnlockedPassageIds, JSON.stringify(ids));
 }
 
 /**

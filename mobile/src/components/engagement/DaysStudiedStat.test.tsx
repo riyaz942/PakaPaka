@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react-native';
 
 import { DaysStudiedStat } from './DaysStudiedStat';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 describe('DaysStudiedStat', () => {
   it('renders the count with calm framing and no flame or streak language', () => {
     render(<DaysStudiedStat daysStudied={12} />);

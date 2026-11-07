@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { Button } from '@/components/common/Button';
 import { FuriganaText } from '@/components/common/FuriganaText';
@@ -9,7 +10,9 @@ import { evaluatePassageAnswer } from '@/core/answer/evaluatePassageAnswer';
 import type { PassageQuestion as PassageQuestionType } from '@/data/curriculum/passageRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useHaptics } from '@/data/hooks/useHaptics';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { useFeedbackMotion } from '@/hooks/useFeedbackMotion';
 import {
   upsertPassagePracticeResult,
   type PassagePracticeResult,
@@ -41,15 +44,24 @@ export function PassageQuestion({
   const { userDb } = useDatabase();
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const colors = getSemanticColors(usePaintedColorScheme());
+  const { play: playHaptic } = useHaptics();
   const [userAnswer, setUserAnswer] = useState(savedResult?.userAnswer ?? '');
   const [focused, setFocused] = useState(false);
   const [result, setResult] = useState<'correct' | 'incorrect' | null>(
     savedResult ? (savedResult.isCorrect ? 'correct' : 'incorrect') : null,
   );
+  // Counts submits so a second wrong try plays the motion again. A saved
+  // result shown on open stays still (0 = nothing submitted here).
+  const [attempt, setAttempt] = useState(0);
+  const motionStyle = useFeedbackMotion(
+    result === 'correct' ? 'pop' : result === 'incorrect' ? 'thud' : null,
+    attempt,
+  );
 
   useEffect(() => {
     setUserAnswer(savedResult?.userAnswer ?? '');
     setResult(savedResult ? (savedResult.isCorrect ? 'correct' : 'incorrect') : null);
+    setAttempt(0);
   }, [savedResult, question.id]);
 
   const trimmedAnswer = userAnswer.trim();
@@ -66,6 +78,8 @@ export function PassageQuestion({
 
     const evaluation = evaluatePassageAnswer(userAnswer, question.acceptedAnswers);
     setResult(evaluation);
+    setAttempt((value) => value + 1);
+    playHaptic(evaluation === 'correct' ? 'light' : 'error');
 
     const practiceResult: PassagePracticeResult = {
       passageId,
@@ -117,23 +131,25 @@ export function PassageQuestion({
         style={{ fontSize: 17, lineHeight: 30 }}
       />
 
-      <TextInput
-        accessibilityLabel={`${question.prompt} Your answer.`}
-        autoCapitalize="none"
-        autoCorrect={false}
-        editable={!isCorrect}
-        onChangeText={setUserAnswer}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        placeholder="Your answer"
-        placeholderTextColor={colors.faint}
-        testID={`passage-question-input-${question.id}`}
-        value={userAnswer}
-        className={cn(
-          'mt-space-sm min-h-[48px] rounded-radius-md border-[1.5px] px-space-md py-space-sm text-body font-jp-medium text-primary',
-          fieldStateClass,
-        )}
-      />
+      <Animated.View style={motionStyle}>
+        <TextInput
+          accessibilityLabel={`${question.prompt} Your answer.`}
+          autoCapitalize="none"
+          autoCorrect={false}
+          editable={!isCorrect}
+          onChangeText={setUserAnswer}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder="Your answer"
+          placeholderTextColor={colors.faint}
+          testID={`passage-question-input-${question.id}`}
+          value={userAnswer}
+          className={cn(
+            'mt-space-sm min-h-[48px] rounded-radius-md border-[1.5px] px-space-md py-space-sm text-body font-jp-medium text-primary',
+            fieldStateClass,
+          )}
+        />
+      </Animated.View>
 
       {isCorrect ? null : (
         <Button

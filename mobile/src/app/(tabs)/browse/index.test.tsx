@@ -11,6 +11,16 @@ import {
 
 import BrowseScreen from './index';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/user/preferencesRepository', () => ({
+  ...jest.requireActual('@/data/user/preferencesRepository'),
+  getSeenUnlockedPassageIds: jest.fn(() => null),
+  setSeenUnlockedPassageIds: jest.fn(),
+}));
+
 const mockPush = jest.fn();
 const mockSetParams = jest.fn();
 const mockUseLocalSearchParams = jest.fn(() => ({}) as Record<string, string | string[]>);
