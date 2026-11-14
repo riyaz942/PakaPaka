@@ -1,6 +1,6 @@
 # Landing page at `/`, app Home at `/dashboard`
 
-Date: 2026-11-14. Status: page and routing built; not deployed.
+Date: 2026-11-14. Status: page and routing built; deployed 2026-11-15.
 
 ## Intent
 
@@ -97,7 +97,6 @@ onboarding.
 
 ## Not done
 
-- Deploy (`npm run deploy:web`).
 - An `og:image` for link previews.
 - Browser checks of the page in the light theme, at phone width, and with reduced motion.
 
