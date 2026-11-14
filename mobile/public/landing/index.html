@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PakaPaka — Learn Japanese with one connected story</title>
+<meta name="description" content="Radicals build kanji, kanji build words, and each step has a mnemonic made from the step before. Grammar, reading and reviews in one free, open-source app.">
+<meta property="og:title" content="PakaPaka — Every kanji is a story you already know">
+<meta property="og:description" content="Mnemonics for radicals, kanji and words, with grammar lessons and reviews in one free app. No account needed.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F7F5F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1B1917" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico">
+<!-- The fonts in ./fonts hold only the characters this page uses. If you add
+     new characters (Japanese text most of all), make the subsets again from
+     the TTF files in node_modules/@expo-google-fonts with the `subset-font`
+     npm package: subsetFont(ttf, <each character in this file>, { targetFormat: 'woff2' }) -->
+<script>
+  // Start states for the animations apply only when this class is set, so the
+  // page is complete with no script and with reduced motion.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+</script>
+<style>
+@font-face { font-family: "Jakarta"; font-weight: 500; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-500.woff2") format("woff2"); }
+@font-face { font-family: "Jakarta"; font-weight: 700; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-700.woff2") format("woff2"); }
+@font-face { font-family: "Jakarta"; font-weight: 800; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-800.woff2") format("woff2"); }
+@font-face { font-family: "ZenKaku"; font-weight: 700; font-display: swap; src: url("/landing/fonts/ZenKakuGothicNew-700.woff2") format("woff2"); }
+@font-face { font-family: "NotoJP"; font-weight: 500; font-display: swap; src: url("/landing/fonts/NotoSansJP-500.woff2") format("woff2"); }
+
+/* Same values as the app tokens in mobile/src/global.css. */
+:root {
+  --bg: rgb(247 245 242); --surface: rgb(255 255 255); --elevated: rgb(242 239 234);
+  --border: rgb(231 226 219); --ink: rgb(35 32 28); --text: rgb(70 66 59);
+  --muted: rgb(124 118 108); --faint: rgb(168 161 153);
+  --brand: rgb(14 129 99); --brand-text: rgb(12 101 78); --brand-soft: rgb(234 247 242);
+  --radical: rgb(47 132 208); --radical-soft: rgb(230 240 251); --radical-deep: rgb(30 92 151);
+  --kanji: rgb(225 77 134); --kanji-soft: rgb(252 230 238); --kanji-deep: rgb(168 45 94);
+  --vocab: rgb(139 90 212); --vocab-soft: rgb(239 232 251); --vocab-deep: rgb(94 58 158);
+  --grammar: rgb(186 129 37); --grammar-soft: rgb(251 240 220); --grammar-deep: rgb(143 95 22);
+  --reading: rgb(143 95 22);
+  --ok: rgb(29 159 106); --ok-soft: rgb(228 246 238); --ok-deep: rgb(23 125 84);
+  --bad: rgb(225 72 61); --bad-soft: rgb(252 231 228); --bad-deep: rgb(189 60 51);
+  --shadow: 0 1px 2px rgb(35 32 28 / .05), 0 12px 32px rgb(35 32 28 / .07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: rgb(27 25 23); --surface: rgb(36 33 30); --elevated: rgb(45 42 38);
+    --border: rgb(58 54 47); --ink: rgb(246 243 238); --text: rgb(216 211 202);
+    --muted: rgb(162 156 144); --faint: rgb(114 108 97);
+    --brand-text: rgb(102 203 171); --brand-soft: rgb(33 56 46);
+    --radical: rgb(90 160 222); --radical-soft: rgb(38 51 62); --radical-deep: rgb(169 205 239);
+    --kanji: rgb(236 110 158); --kanji-soft: rgb(70 41 49); --kanji-deep: rgb(245 169 196);
+    --vocab: rgb(165 133 224); --vocab-soft: rgb(55 43 63); --vocab-deep: rgb(205 182 240);
+    --grammar: rgb(223 169 78); --grammar-soft: rgb(67 53 33); --grammar-deep: rgb(234 196 137);
+    --reading: rgb(234 196 137);
+    --ok: rgb(52 180 141); --ok-soft: rgb(30 56 46); --ok-deep: rgb(102 203 171);
+    --bad: rgb(235 100 90); --bad-soft: rgb(74 38 35); --bad-deep: rgb(240 150 140);
+    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 12px 32px rgb(0 0 0 / .35);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font: 500 17px/1.6 "Jakarta", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.jp { font-family: "NotoJP", "Hiragino Sans", "Yu Gothic", sans-serif; }
+.hero-jp { font-family: "ZenKaku", "NotoJP", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 700; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+h1, h2, h3 { color: var(--ink); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+h1 { font-size: clamp(38px, 5.2vw, 60px); }
+h2 { font-size: clamp(28px, 3.6vw, 42px); }
+h3 { font-size: 19px; letter-spacing: -0.01em; }
+.eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 19px; max-width: 34em; }
+section { padding: 96px 0; }
+.sec-head { max-width: 720px; margin-bottom: 48px; }
+.sec-head h2 { margin: 10px 0 14px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 14px; font: 700 16px "Jakarta", system-ui, sans-serif; text-decoration: none; cursor: pointer; border: 1.5px solid transparent; transition: transform .12s; }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-ghost { border-color: var(--border); color: var(--ink); background: var(--surface); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 14.5px; border-radius: 12px; }
+
+/* nav */
+nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; color: var(--ink); text-decoration: none; }
+.logo img { width: 34px; height: 34px; object-fit: contain; }
+nav .links { display: flex; gap: 22px; margin-left: 12px; flex: 1; }
+nav .links a { color: var(--muted); font-size: 15px; font-weight: 700; text-decoration: none; }
+nav .links a:hover { color: var(--ink); }
+
+/* hero */
+.hero { padding: 72px 0 88px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.hero h1 em { font-style: normal; color: var(--brand-text); background: linear-gradient(transparent 68%, color-mix(in srgb, var(--brand-text) 24%, transparent) 68%) no-repeat 0 0 / 100% 100%; }
+.hero .lede { margin: 22px 0 30px; }
+.hero .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero .note { margin-top: 16px; font-size: 14.5px; color: var(--muted); }
+.pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.pill { font-size: 12.5px; font-weight: 700; letter-spacing: .04em; padding: 5px 11px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-text); }
+
+/* graph */
+.graph-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 20px 20px 16px; box-shadow: var(--shadow); }
+.graph-card svg { width: 100%; height: auto; display: block; overflow: visible; }
+.g-col { font: 700 11px "Jakarta", system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; fill: var(--muted); }
+.g-node { cursor: pointer; outline: none; transition: opacity .2s; }
+.g-node rect { transition: stroke-width .2s; stroke-width: 1.5; }
+.g-node.radical rect { fill: var(--radical-soft); stroke: var(--radical); }
+.g-node.kanji rect { fill: var(--kanji-soft); stroke: var(--kanji); }
+.g-node.vocab rect { fill: var(--vocab-soft); stroke: var(--vocab); }
+.g-node.radical text { fill: var(--radical-deep); }
+.g-node.kanji text { fill: var(--kanji-deep); }
+.g-node.vocab text { fill: var(--vocab-deep); }
+.g-node text { font-family: "ZenKaku", "NotoJP", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 700; pointer-events: none; }
+.g-node:focus-visible rect { stroke-width: 3.5; }
+.g-edge { fill: none; stroke: var(--border); stroke-width: 1.5; transition: stroke .2s, opacity .2s, stroke-width .2s; }
+.g-edge.on.rk { stroke: var(--radical); stroke-width: 2.5; }
+.g-edge.on.kv { stroke: var(--vocab); stroke-width: 2.5; }
+.g-pulse { pointer-events: none; }
+.g-pulse.rk { fill: var(--radical-deep); }
+.g-pulse.kv { fill: var(--vocab-deep); }
+.anim .g-node { opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: center; transition: opacity .3s, transform .45s cubic-bezier(.3, 1.6, .5, 1); }
+.anim .g-node.show { opacity: 1; transform: none; }
+.anim .g-edge { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); transition: stroke-dashoffset .55s ease, stroke .2s, opacity .2s, stroke-width .2s; }
+.anim .g-edge.show { stroke-dashoffset: 0; }
+.dim .g-node.show:not(.on), .dim .g-node:not(.on) { opacity: .28; }
+.dim .g-edge:not(.on) { opacity: .35; }
+.g-node.on rect { stroke-width: 2.5; }
+.graph-caption { margin-top: 10px; padding: 12px 14px; border-radius: 14px; background: var(--elevated); font-size: 15px; min-height: 98px; }
+.graph-caption b { color: var(--ink); }
+.graph-hint { font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 8px; }
+
+/* highlights (same roles as the app) */
+.r { color: var(--radical-deep); font-weight: 700; }
+.k { color: var(--kanji-deep); font-weight: 700; }
+.v { color: var(--vocab-deep); font-weight: 700; }
+.rd { color: var(--reading); font-weight: 700; }
+.g { color: var(--grammar-deep); font-weight: 700; }
+
+/* chain */
+.chain { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr; align-items: stretch; }
+.arrow { display: flex; align-items: center; justify-content: center; color: var(--faint); font-size: 26px; }
+.step { display: flex; flex-direction: column; gap: 14px; }
+.step-head { display: flex; align-items: baseline; gap: 10px; }
+.step-num { font-weight: 800; font-size: 13px; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; flex: none; }
+.step p.say { font-size: 15.5px; color: var(--muted); min-height: 3.2em; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+.card .label { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 14px 0 4px; }
+.card p { font-size: 15.5px; line-height: 1.55; }
+.tile { border-radius: 16px; text-align: center; padding: 18px 12px 14px; }
+.tile .glyph { font-size: 56px; line-height: 1.1; display: inline-block; }
+.tile .mean { font-weight: 700; font-size: 17px; }
+.tile.kanji { background: var(--kanji-soft); color: var(--kanji-deep); --ring: var(--kanji); }
+.tile.vocab { background: var(--vocab-soft); color: var(--vocab-deep); --ring: var(--vocab); }
+.anim .tile.wait .glyph { opacity: .14; filter: blur(3px); }
+.anim .tile.lit { animation: ring .9s ease-out; }
+.anim .tile.lit .glyph { animation: stamp .6s cubic-bezier(.3, 1.7, .5, 1); }
+@keyframes stamp { from { transform: scale(.5); opacity: .2; filter: blur(3px); } to { transform: none; opacity: 1; filter: none; } }
+@keyframes ring { from { box-shadow: 0 0 0 0 var(--ring); } to { box-shadow: 0 0 0 22px transparent; } }
+.token { position: absolute; z-index: 30; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 13px; display: grid; place-items: center; font-size: 25px; pointer-events: none; border: 1.5px solid; box-shadow: var(--shadow); }
+.token.radical { background: var(--radical-soft); color: var(--radical-deep); border-color: var(--radical); }
+.token.kanji { background: var(--kanji-soft); color: var(--kanji-deep); border-color: var(--kanji); }
+.rad-row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; padding: 10px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.rad-row img { width: 64px; height: 64px; border-radius: 10px; background: #f8f3ea; object-fit: cover; }
+.rad-row .name { font-weight: 700; color: var(--radical-deep); font-size: 16px; }
+.rad-row .name .hero-jp { font-size: 22px; margin-right: 6px; }
+.rad-row .txt { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.chip { font-size: 13px; font-weight: 700; padding: 5px 10px; border-radius: 10px; background: var(--radical-soft); color: var(--radical-deep); }
+.chip.k { background: var(--kanji-soft); color: var(--kanji-deep); }
+.chain-foot { margin-top: 36px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.key { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* grammar */
+.alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.alt .card { background: var(--bg); box-shadow: none; }
+.gram { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.gram-hero { background: var(--grammar-soft); color: var(--grammar-deep); border-radius: 16px; padding: 22px 16px; text-align: center; }
+.gram-hero .glyph { font-size: 38px; line-height: 1.2; }
+.pattern { display: inline-block; margin-top: 12px; font-size: 14px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); }
+.review { display: flex; flex-direction: column; gap: 16px; }
+.rv-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.tag { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: var(--grammar-soft); color: var(--grammar-deep); }
+.prompt { font-size: 19px; font-weight: 700; color: var(--ink); text-align: center; padding: 6px 0 12px; }
+.answer { border-radius: 12px; padding: 11px 14px; min-height: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 16px; border: 1.5px solid var(--ok); background: var(--ok-soft); color: var(--ok-deep); transition: background .25s, border-color .25s, color .25s; }
+.answer.bad { border-color: var(--bad); background: var(--bad-soft); color: var(--bad-deep); }
+.answer.pending { border-color: var(--border); background: var(--surface); color: var(--ink); }
+.answer.pending .res { opacity: 0; }
+.answer .res { transition: opacity .2s; }
+.answer.pending .typed::after { content: ""; display: inline-block; width: 2px; height: 1.1em; margin-left: 2px; vertical-align: -0.18em; background: var(--brand-text); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hint { margin-top: 10px; font-size: 14.5px; color: var(--bad-deep); }
+.anim .hint { opacity: 0; transform: translateY(-6px); transition: opacity .4s, transform .4s; }
+.anim .hint.in { opacity: 1; transform: none; }
+.mark { background: var(--bad); color: #fff; border-radius: 6px; padding: 0 5px; }
+.anim .mark { animation: stamp .45s cubic-bezier(.3, 1.7, .5, 1); display: inline-block; }
+.facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; }
+.fact b { display: block; font-size: 30px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 14px; color: var(--muted); }
+
+/* all in one */
+.merge { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; margin-bottom: 48px; }
+.apps { display: flex; flex-direction: column; gap: 10px; }
+.app { padding: 14px 16px; border-radius: 14px; border: 1.5px dashed var(--border); color: var(--muted); font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; }
+.app small { font-weight: 500; color: var(--muted); }
+.one { padding: 26px; border-radius: 22px; background: var(--brand); color: #fff; }
+.one h3 { color: #fff; font-size: 24px; margin-bottom: 8px; }
+.one p { font-size: 15.5px; }
+.one .path { margin-top: 14px; font-weight: 700; font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.one .path span { background: rgb(255 255 255 / .16); border-radius: 8px; padding: 4px 9px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feat h3 { margin-bottom: 6px; }
+.feat p { font-size: 15px; color: var(--muted); }
+.import { margin-top: 28px; padding: 18px 22px; border-radius: 18px; background: var(--brand-soft); color: var(--brand-text); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.import b { color: var(--ink); }
+
+/* choice */
+.choice .card { display: flex; flex-direction: column; gap: 10px; }
+.choice .card.main { border: 2px solid var(--brand); }
+.choice .card p { color: var(--muted); flex: 1; }
+.soon { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--grammar-deep); background: var(--grammar-soft); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+
+/* final */
+.final { text-align: center; padding: 88px 0 72px; }
+.final img { width: 132px; height: auto; margin-bottom: 14px; }
+.final p { margin: 12px auto 26px; max-width: 30em; }
+.final .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+footer { border-top: 1px solid var(--border); padding: 26px 0 40px; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer a { color: var(--muted); }
+
+/* motion: scroll reveal, headline underline, Alpi's hop ("paka paka") */
+.anim [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease var(--d, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms); }
+.anim [data-reveal].in { opacity: 1; transform: none; }
+.anim .hero h1 em { background-size: 0% 100%; transition: background-size .9s ease .7s; }
+.anim .hero h1.in em { background-size: 100% 100%; }
+@keyframes paka { 0%, 45%, 100% { transform: none; } 8% { transform: translateY(-16px) rotate(-4deg); } 16% { transform: none; } 26% { transform: translateY(-10px) rotate(4deg); } 36% { transform: none; } }
+.anim .final img { animation: paka 2.6s ease-in-out infinite; }
+.anim .logo:hover img { animation: paka 1.3s ease-in-out; }
+
+@media (max-width: 940px) {
+  .hero .wrap, .gram, .merge { grid-template-columns: 1fr; }
+  .chain { grid-template-columns: 1fr; gap: 10px; }
+  .arrow { transform: rotate(90deg); height: 40px; }
+  .grid3 { grid-template-columns: 1fr; }
+  nav .links { display: none; }
+  nav .btn { margin-left: auto; }
+  section { padding: 64px 0; }
+  .step p.say { min-height: 0; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/landing/img/alpi-yay.png" alt="">PakaPaka</a>
+    <div class="links">
+      <a href="#chain">Mnemonics</a>
+      <a href="#grammar">Grammar</a>
+      <a href="#all">All in one</a>
+      <a href="#sync">Sync</a>
+    </div>
+    <a class="btn btn-primary btn-sm" href="/dashboard">Start learning</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="pills" data-reveal><span class="pill">Free</span><span class="pill">Open source</span><span class="pill">No account needed</span></div>
+      <h1 data-reveal style="--d:80ms">Every kanji is a story <em>you already know.</em></h1>
+      <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. PakaPaka gives each step a mnemonic made from the step before it, so nothing is new twice. Grammar, reading and reviews are in the same app.</p>
+      <div class="buttons" data-reveal style="--d:240ms">
+        <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
+        <a class="btn btn-ghost" href="#chain">See how it works</a>
+      </div>
+      <p class="note" data-reveal style="--d:300ms">No account needed. Your progress stays on this device.</p>
+    </div>
+
+    <div class="graph-card" data-reveal style="--d:120ms">
+      <svg id="graph" viewBox="0 0 540 600" role="img" aria-label="Radicals build kanji and kanji build words. For example, the radicals human legs, cover and samurai build the kanji for sell, which builds the words to sell and sales."></svg>
+      <div class="graph-caption" id="caption" aria-live="polite"></div>
+      <div class="graph-hint">Point at a tile to follow its path.</div>
+    </div>
+  </div>
+</header>
+
+<section id="chain">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">Mnemonics</div>
+      <h2>One story, carried through three steps.</h2>
+      <p class="lede">You do not learn a mnemonic for each item from zero. The picture you learn for a radical comes back in the kanji, and the kanji story comes back in the word.</p>
+    </div>
+
+    <div class="chain" id="fusion">
+      <div class="step" data-reveal>
+        <div class="step-head"><span class="step-num" style="background:var(--radical)">1</span><h3>Learn the shapes</h3></div>
+        <p class="say">Each radical is one picture that looks like its shape.</p>
+        <div class="rad-row"><img src="/landing/img/hitoashi.webp" alt="A pair of legs in jeans, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">儿</span>human legs</div><div class="txt">Two strokes sweep down and out, like a pair of legs.</div></div></div>
+        <div class="rad-row"><img src="/landing/img/wakanmuri.webp" alt="A blanket over a sleeping cat, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">冖</span>cover</div><div class="txt">A blanket thrown over a sleeping cat. Nothing pokes out.</div></div></div>
+        <div class="rad-row"><img src="/landing/img/samurai.webp" alt="A samurai in armour, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">士</span>samurai</div><div class="txt">A man in armour. The long top line is his wide shoulders.</div></div></div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">→</div>
+
+      <div class="step" data-reveal style="--d:120ms">
+        <div class="step-head"><span class="step-num" style="background:var(--kanji)">2</span><h3>The shapes make the kanji</h3></div>
+        <p class="say">The kanji story uses only the radicals you know.</p>
+        <div class="card">
+          <div class="tile kanji wait" id="k-tile"><div class="glyph hero-jp">売</div><div class="mean">sell</div></div>
+          <div class="chips"><span class="chip">儿 human legs</span><span class="chip">冖 cover</span><span class="chip">士 samurai</span></div>
+          <div class="label">Meaning mnemonic</div>
+          <p>A <span class="r">samurai</span> too proud to be seen throws a <span class="r">cover</span> over his face and takes to the road on his own <span class="r">human legs</span>, where the only work left is to <span class="k">sell</span>.</p>
+          <div class="label">Reading mnemonic</div>
+          <p>The proud samurai hides his face under the cover and trudges the road crying <span class="rd jp">「ばい」</span>, <span class="rd">buy</span>, buy, since the only work left to him is to <span class="k">sell (売)</span>.</p>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">→</div>
+
+      <div class="step" data-reveal style="--d:240ms">
+        <div class="step-head"><span class="step-num" style="background:var(--vocab)">3</span><h3>The kanji makes the word</h3></div>
+        <p class="say">The same samurai comes back to give you the reading.</p>
+        <div class="card">
+          <div class="tile vocab wait" id="v-tile"><div class="glyph hero-jp">売る</div><div class="mean">to sell</div></div>
+          <div class="chips"><span class="chip k">売 sell</span></div>
+          <div class="label">Meaning mnemonic</div>
+          <p>The <span class="k">sell</span> kanji and the <span class="v">to sell</span> word are exactly the same, so they mean the same thing.</p>
+          <div class="label">Reading mnemonic</div>
+          <p>Face hidden under his cover, the proud samurai walks the road with a stuffed kangaroo, calling <span class="rd">ooh, Roo</span>, <span class="rd jp">「うる」</span>, at every gate, since all that is left is <span class="v">to sell (売る)</span> it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chain-foot" data-reveal>
+      <span class="key"><span class="dot" style="background:var(--radical)"></span>Radical you learned before</span>
+      <span class="key"><span class="dot" style="background:var(--kanji)"></span>Kanji meaning</span>
+      <span class="key"><span class="dot" style="background:var(--vocab)"></span>Word meaning</span>
+      <span class="key"><span class="dot" style="background:var(--grammar)"></span>The sound</span>
+    </div>
+  </div>
+</section>
+
+<section id="grammar" class="alt">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">Grammar</div>
+      <h2>Grammar gets the same treatment.</h2>
+      <p class="lede">Each grammar point has a full lesson and a story mnemonic. Then it goes into the same review queue as your kanji and words.</p>
+    </div>
+
+    <div class="gram">
+      <div class="card" data-reveal>
+        <div class="gram-hero"><div class="glyph hero-jp">たことがある</div><div style="font-weight:700">have done before (experience)</div></div>
+        <div style="text-align:center"><span class="pattern jp">Verb-た + ことがある</span></div>
+        <div class="label">Lesson</div>
+        <p>Your friend asks if you have ever eaten sushi. Not "do you eat sushi", but "have you ever". Japanese says it with a small noun, <span class="jp">こと</span>, after a verb in its past form: "the thing of having eaten exists."</p>
+        <div class="label">Mnemonic</div>
+        <p>Han the half-and-half chef unbuttons his coat to show half a <span class="rd">taco toga</span>, shell crumbs on the hem: proof he <span class="g">has done it before</span>. <span class="jp">日本に行っ<span class="rd">たことがある</span>。</span></p>
+      </div>
+
+      <div class="review" id="typing" data-reveal style="--d:120ms">
+        <div class="card">
+          <div class="rv-top"><span class="tag">Grammar · Read</span><span class="eyebrow">You type the meaning</span></div>
+          <div class="prompt jp">日本に行ったことがある。</div>
+          <div class="answer" id="a-read"><span class="typed">have done before</span><span class="res" aria-label="Correct">✓</span></div>
+        </div>
+        <div class="card">
+          <div class="rv-top"><span class="tag">Grammar · Build</span><span class="eyebrow">You type the sentence</span></div>
+          <div class="prompt">I don't walk alone at night. It's dark!</div>
+          <div class="answer bad jp" id="a-build"><span class="typed">夜は一人で<span class="mark">歩く</span>ない暗いもんです</span><span class="res" aria-label="Incorrect">✕</span></div>
+          <p class="hint" id="a-hint">You wrote <span class="jp">歩く</span>. The English is negative: <span class="jp">歩かない</span>.</p>
+        </div>
+        <p style="font-size:15px;color:var(--muted)">No multiple choice. When you make a mistake, the app marks the exact part and tells you why.</p>
+      </div>
+    </div>
+
+    <div class="facts" data-reveal>
+      <div class="fact"><b data-count="160">160</b><span>grammar points (N5 + N4)</span></div>
+      <div class="fact"><b>2</b><span>review cards for each point</span></div>
+      <div class="fact"><b data-count="60">60</b><span>reading passages that use them</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="all">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">All in one</div>
+      <h2>One app in place of three.</h2>
+      <p class="lede">Most learners use one app for kanji, one for grammar and a flashcard deck for the rest. Each one has its own cost, and none of them knows what you learned in the others.</p>
+    </div>
+
+    <div class="merge">
+      <div class="apps">
+        <div class="app" data-reveal>A kanji app <small>subscription</small></div>
+        <div class="app" data-reveal style="--d:100ms">A grammar app <small>subscription</small></div>
+        <div class="app" data-reveal style="--d:200ms">A flashcard deck <small>your time</small></div>
+      </div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="one" data-reveal style="--d:420ms">
+        <h3>PakaPaka</h3>
+        <p>One path and one review queue. Free, with no subscription.</p>
+        <div class="path"><span>Radicals</span><span>Kanji</span><span>Words</span><span>Grammar</span><span>Reading</span><span>Conversation</span></div>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card feat" data-reveal><h3>One review queue</h3><p>Kanji, words and grammar are mixed in one queue. It finds the items you get wrong and shows them first.</p></div>
+      <div class="card feat" data-reveal style="--d:80ms"><h3>You type each answer</h3><p>Romaji changes to kana while you type. A typo does not count as a miss.</p></div>
+      <div class="card feat" data-reveal style="--d:160ms"><h3>Reading that fits you</h3><p>A passage opens when you know about 90% of its words. Furigana hides for the words you know.</p></div>
+      <div class="card feat" data-reveal><h3>Talk practice</h3><p>An AI partner that uses only the words and grammar you learned. You bring your own key.</p></div>
+      <div class="card feat" data-reveal style="--d:80ms"><h3>No guilt</h3><p>No streak on Home. The daily ring can go past 100%. Vacation mode stops the pile-up.</p></div>
+      <div class="card feat" data-reveal style="--d:160ms"><h3>Open source</h3><p>Code under MIT and content under CC BY-SA. 2,000 kanji, 9,749 words and 817 radicals.</p></div>
+    </div>
+
+    <div class="import" data-reveal>
+      <div><b>Already on WaniKani or Anki?</b> Bring your progress with you and continue from where you are.</div>
+      <a class="btn btn-primary btn-sm" href="/dashboard">Start with an import</a>
+    </div>
+  </div>
+</section>
+
+<section id="sync" class="alt choice">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div class="eyebrow">Your progress</div>
+      <h2>Sync it, or keep it fully offline.</h2>
+      <p class="lede">An account is optional. The app is complete without one.</p>
+    </div>
+    <div class="grid3">
+      <div class="card main" data-reveal>
+        <h3>Start with no account</h3>
+        <p>All progress stays on this device. Lessons and reviews work with no internet.</p>
+        <a class="btn btn-primary" href="/dashboard">Start learning</a>
+      </div>
+      <div class="card" data-reveal style="--d:80ms">
+        <h3>Log in to sync <span class="soon">Soon</span></h3>
+        <p>Sign in with Google or Apple and your progress follows you between phone and browser. This is not ready yet.</p>
+      </div>
+      <div class="card" data-reveal style="--d:160ms">
+        <h3>Back up to a file</h3>
+        <p>Export your progress to a file at any time and restore it on a different device by hand. No server.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap" data-reveal>
+    <img src="/landing/img/alpi-yay.png" alt="Alpi the alpaca, the PakaPaka mascot" width="132" height="132">
+    <h2>Your first radical takes one minute.</h2>
+    <p class="lede">Start in this browser now. No account, no payment.</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
+      <a class="btn btn-ghost" href="https://github.com/riyaz942/PakaPaka">See the code on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>PakaPaka · N5 and N4 are complete. N3 to N1 are a first version.</span>
+    <span><a href="https://github.com/riyaz942/PakaPaka">GitHub</a> · Code MIT · Content CC BY-SA 4.0</span>
+  </div>
+</footer>
+
+<script>
+const ANIM = document.documentElement.classList.contains('anim');
+const wait = ms => new Promise(r => setTimeout(r, ms));
+/** Runs `fn` once, the first time `target` is on screen. */
+function onceVisible(target, fn, threshold) {
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) { io.disconnect(); fn(); }
+  }, { threshold });
+  io.observe(target);
+}
+
+// ---- scroll reveal + count-up ----
+if (ANIM) {
+  document.querySelectorAll('[data-reveal]').forEach(node => onceVisible(node, () => node.classList.add('in'), 0.15));
+  document.querySelectorAll('[data-count]').forEach(node => onceVisible(node, () => {
+    const end = Number(node.dataset.count), t0 = performance.now();
+    (function tick(now) {
+      const t = Math.min(1, (now - t0) / 900);
+      node.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(tick);
+    })(t0);
+  }, 0.6));
+}
+
+// ---- graph: radicals -> kanji -> words ----
+const NODES = [
+  ['二', 'two', 'radical'], ['儿', 'human legs', 'radical'], ['气', 'steam', 'radical'], ['乂', 'mow', 'radical'],
+  ['冖', 'cover', 'radical'], ['士', 'samurai', 'radical'], ['貝', 'shell', 'radical'], ['反', 'opposite', 'radical'],
+  ['元', 'beginning', 'kanji'], ['気', 'spirit', 'kanji'], ['売', 'sell', 'kanji'], ['販', 'marketing', 'kanji'],
+  ['元気', 'healthy / lively', 'vocab'], ['売る', 'to sell', 'vocab'], ['販売', 'sales', 'vocab'],
+].map(([c, m, t]) => ({ c, m, t }));
+const EDGES = [
+  ['二', '元'], ['儿', '元'], ['气', '気'], ['乂', '気'], ['儿', '売'], ['冖', '売'], ['士', '売'], ['貝', '販'], ['反', '販'],
+  ['元', '元気'], ['気', '元気'], ['売', '売る'], ['売', '販売'], ['販', '販売'],
+];
+const by = Object.fromEntries(NODES.map(n => [n.c, n]));
+const ofType = t => NODES.filter(n => n.t === t);
+ofType('radical').forEach((n, i) => Object.assign(n, { x: 8, y: 30 + i * 70, w: 64, h: 56, fs: 28 }));
+const mid = (a, b) => (by[a].y + by[a].h / 2 + by[b].y + by[b].h / 2) / 2;
+[['元', '二', '儿'], ['気', '气', '乂'], ['売', '冖', '士'], ['販', '貝', '反']].forEach(([k, a, b]) =>
+  Object.assign(by[k], { x: 216, w: 72, h: 62, y: mid(a, b) - 31, fs: 32 }));
+Object.assign(by['元気'], { x: 404, w: 124, h: 56, y: mid('元', '気') - 28, fs: 28 });
+Object.assign(by['売る'], { x: 404, w: 124, h: 56, y: by['売'].y + 3, fs: 28 });
+Object.assign(by['販売'], { x: 404, w: 124, h: 56, y: mid('売', '販') - 22, fs: 28 });
+
+const svg = document.getElementById('graph');
+const svgEl = (tag, attrs, text) => {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text) e.textContent = text;
+  return e;
+};
+[['Radicals', 40], ['Kanji', 252], ['Words', 466]].forEach(([t, x]) =>
+  svg.appendChild(svgEl('text', { class: 'g-col', x, y: 14, 'text-anchor': 'middle' }, t)));
+const edgeEls = EDGES.map(([a, b]) => {
+  const s = by[a], t = by[b];
+  const x1 = s.x + s.w, y1 = s.y + s.h / 2, x2 = t.x, y2 = t.y + t.h / 2, mx = (x1 + x2) / 2;
+  const kind = s.t === 'radical' ? 'rk' : 'kv';
+  const p = svgEl('path', { class: 'g-edge ' + kind, d: `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}` });
+  svg.appendChild(p);
+  const len = p.getTotalLength();
+  p.style.setProperty('--len', len);
+  return { a, b, p, kind, len };
+});
+NODES.forEach(n => {
+  const g = svgEl('g', { class: 'g-node ' + n.t, tabindex: 0, role: 'button', 'aria-label': `${n.c}, ${n.m}` });
+  g.appendChild(svgEl('rect', { x: n.x, y: n.y, width: n.w, height: n.h, rx: 14 }));
+  g.appendChild(svgEl('text', { x: n.x + n.w / 2, y: n.y + n.h / 2 + n.fs * 0.36, 'text-anchor': 'middle', 'font-size': n.fs }, n.c));
+  n.g = g;
+  svg.appendChild(g);
+  // A person took control: stop the tour and keep their choice.
+  ['mouseenter', 'focus', 'click'].forEach(ev => g.addEventListener(ev, () => { stopTour(); focusNode(n.c); }));
+});
+
+const up = c => EDGES.filter(e => e[1] === c).map(e => e[0]);
+const down = c => EDGES.filter(e => e[0] === c).map(e => e[1]);
+const walk = (c, f, acc = new Set()) => { f(c).forEach(x => { acc.add(x); walk(x, f, acc); }); return acc; };
+const label = c => `<span class="hero-jp">${c}</span> ${by[c].m}`;
+const list = a => a.map(label).join(', ');
+
+/** A dot that runs along one edge, so the path reads as a direction. */
+function pulse(edge, delay) {
+  const dot = svgEl('circle', { r: 4.5, class: 'g-pulse ' + edge.kind, opacity: 0 });
+  svg.appendChild(dot);
+  const t0 = performance.now() + delay, dur = 600;
+  (function step(now) {
+    const t = (now - t0) / dur;
+    if (t >= 1) { dot.remove(); return; }
+    if (t >= 0) {
+      const pt = edge.p.getPointAtLength(edge.len * t);
+      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); dot.setAttribute('opacity', 1);
+    }
+    requestAnimationFrame(step);
+  })(performance.now());
+}
+
+function focusNode(c) {
+  const on = new Set([c, ...walk(c, up), ...walk(c, down)]);
+  svg.classList.add('dim');
+  NODES.forEach(n => n.g.classList.toggle('on', on.has(n.c)));
+  edgeEls.forEach(e => {
+    const lit = on.has(e.a) && on.has(e.b);
+    e.p.classList.toggle('on', lit);
+    if (lit && ANIM) pulse(e, e.kind === 'rk' ? 0 : 520);
+  });
+  const n = by[c], cap = document.getElementById('caption');
+  if (n.t === 'radical') {
+    const ks = down(c), vs = [...walk(c, down)].filter(x => by[x].t === 'vocab');
+    cap.innerHTML = `<b class="r">${label(c)}</b> is one radical. You meet it again in ${ks.length} kanji: <span class="k">${list(ks)}</span>. That opens ${vs.length === 1 ? '1 word' : vs.length + ' words'}: <span class="v">${list(vs)}</span>.`;
+  } else if (n.t === 'kanji') {
+    cap.innerHTML = `<b class="k">${label(c)}</b> opens after you learn <span class="r">${list(up(c))}</span>. Then it opens <span class="v">${list(down(c))}</span>.`;
+  } else {
+    cap.innerHTML = `<b class="v">${label(c)}</b> opens after you learn <span class="k">${list(up(c))}</span>. No new shapes, only ones you know.`;
+  }
+}
+
+// Until a person touches the graph, it tours a few paths by itself.
+const TOUR = ['儿', '売', '元気', '士', '販売', '気'];
+let tourTimer = null, tourAt = 0;
+function stopTour() { clearInterval(tourTimer); tourTimer = null; }
+function startTour() {
+  focusNode(TOUR[0]);
+  tourTimer = setInterval(() => { tourAt = (tourAt + 1) % TOUR.length; focusNode(TOUR[tourAt]); }, 3200);
+}
+
+if (ANIM) {
+  // The graph builds itself column by column, then the tour starts.
+  onceVisible(svg, () => {
+    const show = (items, at, gap) => items.forEach((x, i) => setTimeout(() => (x.g || x.p).classList.add('show'), at + i * gap));
+    show(ofType('radical'), 250, 60);
+    show(edgeEls.filter(e => e.kind === 'rk'), 800, 0);
+    show(ofType('kanji'), 1200, 90);
+    show(edgeEls.filter(e => e.kind === 'kv'), 1650, 0);
+    show(ofType('vocab'), 2050, 90);
+    setTimeout(() => { if (!svg.classList.contains('dim')) startTour(); }, 2800);
+  }, 0.3);
+} else {
+  focusNode('儿');
+}
+
+// ---- mnemonic chain: the radicals fly into the kanji, the kanji into the word ----
+if (ANIM) {
+  const kTile = document.getElementById('k-tile'), vTile = document.getElementById('v-tile');
+  const kGlyph = kTile.querySelector('.glyph'), vGlyph = vTile.querySelector('.glyph');
+  const light = tile => { tile.classList.remove('wait'); tile.classList.add('lit'); };
+  const centre = node => { const r = node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+  function fly(from, to, kind) {
+    const a = centre(from), b = centre(to), dx = b.x - a.x, dy = b.y - a.y;
+    const token = document.createElement('div');
+    token.className = 'token hero-jp ' + kind;
+    token.textContent = from.textContent.trim();
+    token.style.left = a.x + scrollX + 'px';
+    token.style.top = a.y + scrollY + 'px';
+    document.body.appendChild(token);
+    const run = token.animate([
+      { transform: 'scale(.6)', opacity: 0 },
+      { transform: 'scale(1.2)', opacity: 1, offset: 0.18 },
+      { transform: `translate(${dx}px, ${dy}px) scale(.8)`, opacity: 1, offset: 0.88 },
+      { transform: `translate(${dx}px, ${dy}px) scale(.3)`, opacity: 0 },
+    ], { duration: 900, easing: 'cubic-bezier(.55, 0, .2, 1)' });
+    return run.finished.then(() => token.remove());
+  }
+  if (matchMedia('(min-width: 941px)').matches) {
+    // Side by side: one sequence for the full row.
+    onceVisible(document.getElementById('fusion'), async () => {
+      await wait(700);
+      const radicals = [...document.querySelectorAll('.rad-glyph')];
+      await Promise.all(radicals.map((r, i) => wait(i * 240).then(() => fly(r, kGlyph, 'radical'))));
+      light(kTile);
+      await wait(700);
+      await fly(kGlyph, vGlyph, 'kanji');
+      light(vTile);
+    }, 0.45);
+  } else {
+    // Stacked: the cards are a screen apart, so each tile lights when you reach it.
+    [kTile, vTile].forEach(tile => onceVisible(tile, () => light(tile), 0.8));
+  }
+}
+
+// ---- grammar cards: the answers type themselves ----
+if (ANIM) {
+  const read = document.getElementById('a-read'), build = document.getElementById('a-build');
+  const hint = document.getElementById('a-hint');
+  const readText = read.querySelector('.typed'), buildText = build.querySelector('.typed');
+  const readFinal = readText.textContent, buildFinalHtml = buildText.innerHTML, buildFinal = buildText.textContent;
+  async function type(node, text, speed) {
+    for (const ch of text) { node.textContent += ch; await wait(speed + Math.random() * speed * 0.6); }
+  }
+  [read, build].forEach(a => a.classList.add('pending'));
+  readText.textContent = buildText.textContent = '';
+  onceVisible(document.getElementById('typing'), async () => {
+    await wait(500);
+    await type(readText, readFinal, 55);
+    await wait(250);
+    read.classList.remove('pending');
+    await wait(600);
+    await type(buildText, buildFinal, 95);
+    await wait(350);
+    buildText.innerHTML = buildFinalHtml;   // the wrong part gets its mark
+    build.classList.remove('pending');
+    await wait(350);
+    hint.classList.add('in');
+  }, 0.5);
+}
+</script>
+</body>
+</html>
