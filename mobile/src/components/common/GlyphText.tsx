@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, type StyleProp, type TextProps, type TextStyle } from 'react-native';
+import {
+  Platform,
+  Text,
+  type StyleProp,
+  type TextProps,
+  type TextStyle,
+  type ViewStyle,
+} from 'react-native';
 import { cssInterop } from 'nativewind';
 import Svg, { Path } from 'react-native-svg';
 
@@ -11,18 +18,27 @@ type DrawnGlyphProps = {
   color?: string;
   accessibilityLabel?: string;
   testID?: string;
-  /** Left over once `cssInterop` lifts colour and size out; not used. */
+  /**
+   * On native, left over once `cssInterop` lifts colour and size out. On web,
+   * `cssInterop` does not lift them: the style carries the CSS classes, so the
+   * SVG takes them and sizes itself in `em`.
+   */
   style?: StyleProp<TextStyle>;
 };
 
-function DrawnGlyph({ d, fontSize = 16, color, accessibilityLabel, testID }: DrawnGlyphProps) {
+const IS_WEB = Platform.OS === 'web';
+
+function DrawnGlyph({ d, fontSize = 16, color, style, accessibilityLabel, testID }: DrawnGlyphProps) {
+  const size = IS_WEB ? '1em' : fontSize;
   return (
     <Svg
-      width={fontSize}
-      height={fontSize}
+      width={size}
+      height={size}
       viewBox="0 0 200 200"
       color={color}
-      accessible
+      style={IS_WEB ? (style as StyleProp<ViewStyle>) : undefined}
+      // react-native-web has no `accessible`; it would reach the DOM as an attribute.
+      accessible={IS_WEB ? undefined : true}
       accessibilityRole="text"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>

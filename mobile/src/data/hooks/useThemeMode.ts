@@ -7,6 +7,7 @@ import {
   setThemeMode as persistThemeMode,
   type ThemeMode,
 } from '@/data/user/preferencesRepository';
+import { supportsThemeOverride } from '@/platform/capabilities';
 
 type UseThemeModeResult = {
   /** Stored preference: 'system' follows the device. */
@@ -26,6 +27,9 @@ export function useThemeMode(): UseThemeModeResult {
   const [mode, setModeState] = useState<ThemeMode>(() => getThemeMode(userDb));
 
   useEffect(() => {
+    if (!supportsThemeOverride()) {
+      return;
+    }
     Appearance.setColorScheme(mode === 'system' ? 'unspecified' : mode);
   }, [mode]);
 

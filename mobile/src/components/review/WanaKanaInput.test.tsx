@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { useState } from 'react';
+import { Platform } from 'react-native';
 
 import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
 
@@ -290,5 +291,33 @@ describe('WanaKanaInput', () => {
       />,
     );
     expect(screen.getByLabelText('Answer input').props.editable).toBe(false);
+  });
+
+  describe('keeping focus after Return, so a second Return can advance the card', () => {
+    afterEach(() => {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    });
+
+    function renderInput() {
+      render(
+        <WanaKanaInput
+          mode="english"
+          value=""
+          onChangeText={jest.fn()}
+          onSubmit={jest.fn()}
+          autoFocus={false}
+        />,
+      );
+      return screen.getByLabelText('Answer input');
+    }
+
+    it('on web, stops react-native-web from blurring the field on submit', () => {
+      Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+      expect(renderInput().props.blurOnSubmit).toBe(false);
+    });
+
+    it('on native, leaves submit behaviour to submitBehavior alone', () => {
+      expect(renderInput().props.blurOnSubmit).toBeUndefined();
+    });
   });
 });

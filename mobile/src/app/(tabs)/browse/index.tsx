@@ -10,7 +10,7 @@ import { SearchField } from '@/components/browse/SearchField';
 import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
-import { MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   BROWSE_FACET_KEYS,
   EMPTY_BROWSE_FILTERS,
@@ -25,6 +25,8 @@ import {
 import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useBrowseDraftCount, useBrowseItems } from '@/data/hooks/useBrowseItems';
 import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
+import { useWideLayout } from '@/hooks/useWideLayout';
+import { cn } from '@/utils/cn';
 
 function firstParam(value: string | string[] | undefined): string | null {
   if (Array.isArray(value)) return value[0] ?? null;
@@ -42,12 +44,17 @@ function seededTypeFromParams(type: string | string[] | undefined): BrowseTypeVa
   return value && isBrowseTypeValue(value) ? value : null;
 }
 
+/** Desktop web: width of the search-and-filter panel beside the results. */
+const BROWSE_PANEL_WIDTH = 320;
+
 /**
  * Unified Browse (FR62–FR67): one discovery surface for radicals, kanji,
  * vocabulary, grammar and reading passages, replacing the per-level Learn
  * screens and the separate Read tab.
  */
 export default function BrowseScreen() {
+  // Desktop web: search and filters move to a panel beside the results.
+  const wide = useWideLayout();
   const params = useLocalSearchParams<{ level?: string | string[]; type?: string | string[] }>();
   const {
     rows,
@@ -193,94 +200,127 @@ export default function BrowseScreen() {
 
   const hasActiveFilters = !isBrowseFiltersEmpty(filters) || searchInput.length > 0;
 
-  return (
-    <View className="flex-1 bg-background">
-      <SafeAreaView
-        edges={['top', 'left', 'right']}
-        className="flex-1 px-space-lg pt-space-md"
-        style={{
-          alignSelf: 'center',
-          maxWidth: MaxContentWidth,
-          width: '100%',
-        }}>
-        <ScreenTitle>Browse</ScreenTitle>
+  const filterPills = BROWSE_FACET_KEYS.map((facet) => {
+    const active = filters[facet].length > 0;
+    return (
+      <FilterPill
+        key={facet}
+        label={summarizeFacet(facet, filters[facet])}
+        active={active}
+        onPress={() => openDrawer(facet)}
+        onClear={active ? () => runBusy(() => clearFacetFilter(facet)) : undefined}
+        disabled={isBusy}
+        testID={`browse-filter-pill-${facet}`}
+      />
+    );
+  });
 
-        <View className="mt-space-md">
-          <SearchField
-            value={searchDraft}
-            onChangeText={setSearchDraft}
-            onSubmit={runSearch}
-            onClear={handleClearSearch}
+  const clearAll = hasActiveFilters ? (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel="Clear all filters and search"
+      accessibilityState={{ disabled: isBusy }}
+      disabled={isBusy}
+      onPress={handleClearAll}
+      testID="browse-clear-all"
+      className="min-h-[44px] justify-center px-space-sm">
+      <Text className="text-body-sm font-ui-bold text-brand-text">Clear all</Text>
+    </Pressable>
+  ) : null;
+
+  const controls = (
+    <>
+      <View className="mt-space-md">
+        <SearchField
+          value={searchDraft}
+          onChangeText={setSearchDraft}
+          onSubmit={runSearch}
+          onClear={handleClearSearch}
             disabled={isBusy}
-            testID="browse-search"
-          />
-        </View>
+          testID="browse-search"
+        />
+      </View>
 
+      {wide ? (
+        <View className="mt-space-md flex-row flex-wrap items-center gap-space-sm">
+          {filterPills}
+          {clearAll}
+        </View>
+      ) : (
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           className="mt-space-md max-h-[56px] flex-grow-0"
           contentContainerClassName="items-center gap-space-sm pr-space-lg">
-          {BROWSE_FACET_KEYS.map((facet) => {
-            const active = filters[facet].length > 0;
-            return (
-              <FilterPill
-                key={facet}
-                label={summarizeFacet(facet, filters[facet])}
-                active={active}
-                onPress={() => openDrawer(facet)}
-                onClear={active ? () => runBusy(() => clearFacetFilter(facet)) : undefined}
-                disabled={isBusy}
-                testID={`browse-filter-pill-${facet}`}
-              />
-            );
-          })}
-          {hasActiveFilters ? (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Clear all filters and search"
-              accessibilityState={{ disabled: isBusy }}
-              disabled={isBusy}
-              onPress={handleClearAll}
-              testID="browse-clear-all"
-              className="min-h-[44px] justify-center px-space-sm">
-              <Text className="text-body-sm font-ui-bold text-brand-text">Clear all</Text>
-            </Pressable>
-          ) : null}
+          {filterPills}
+          {clearAll}
         </ScrollView>
+      )}
 
         {!loading && !isBusy && !error ? (
-          <Text
-            className="mb-space-sm mt-space-sm text-caption font-ui-semibold text-muted"
-            testID="browse-result-count">
-            {totalCount === 1 ? '1 result' : `${totalCount} results`}
-          </Text>
-        ) : null}
+        <Text
+          className="mb-space-sm mt-space-sm text-caption font-ui-semibold text-muted"
+          testID="browse-result-count">
+          {totalCount === 1 ? '1 result' : `${totalCount} results`}
+        </Text>
+      ) : null}
 
-        {/* Outside the list, never a row: the notice explains the lock chip,
-            it is not one of the results. */}
-        {passageLocksCard.visible ? (
-          <GuidanceCardNotice
-            card={GUIDANCE_CARD_BY_ID['passage-locks']}
-            onDismiss={passageLocksCard.dismiss}
-          />
-        ) : null}
+      {/* Outside the list, never a row: the notice explains the lock chip,
+          it is not one of the results. */}
+      {passageLocksCard.visible ? (
+        <GuidanceCardNotice
+          card={GUIDANCE_CARD_BY_ID['passage-locks']}
+          onDismiss={passageLocksCard.dismiss}
+        />
+      ) : null}
+    </>
+  );
 
-        <View className="flex-1 pb-space-sm">
-          <BrowseList
-            rows={rows}
+  const list = (
+    <View className="flex-1 pb-space-sm">
+      <BrowseList
+        rows={rows}
             loading={loading || isBusy}
-            loadingMore={loadingMore}
-            error={error}
-            onEndReached={loadMore}
-            onSelectItem={(id) => router.push(`/browse/item/${id}` as Href)}
-            onSelectPassage={(id) => router.push(`/browse/passage/${id}` as Href)}
-            onClearFilters={handleClearAll}
-            canClearFilters={hasActiveFilters}
-            onRetry={reload}
+        loadingMore={loadingMore}
+        error={error}
+        onEndReached={loadMore}
+        onSelectItem={(id) => router.push(`/browse/item/${id}` as Href)}
+        onSelectPassage={(id) => router.push(`/browse/passage/${id}` as Href)}
+        onClearFilters={handleClearAll}
+        canClearFilters={hasActiveFilters}
+        onRetry={reload}
             newlyUnlockedPassageIds={newlyUnlockedPassageIds}
-          />
-        </View>
+      />
+    </View>
+  );
+
+  return (
+    <View className="flex-1 bg-background">
+      <SafeAreaView
+        edges={['top', 'left', 'right']}
+        className={cn('flex-1', wide ? 'px-space-xl' : 'px-space-lg pt-space-md')}
+        style={{
+          alignSelf: 'center',
+          maxWidth: wide ? undefined : MaxContentWidth,
+          width: '100%',
+          // Inline: on web SafeAreaView's own inset padding overrides a pt-* class.
+          paddingTop: wide ? Spacing.four : undefined,
+        }}>
+        <ScreenTitle>Browse</ScreenTitle>
+
+        {wide ? (
+          <View className="flex-1 flex-row gap-space-xl">
+            <ScrollView className="flex-grow-0" style={{ width: BROWSE_PANEL_WIDTH }}>
+              {controls}
+            </ScrollView>
+            <View className="mt-space-md flex-1">{list}</View>
+          </View>
+        ) : (
+          <>
+            {controls}
+            {list}
+          </>
+        )}
       </SafeAreaView>
 
       {openFacet ? (

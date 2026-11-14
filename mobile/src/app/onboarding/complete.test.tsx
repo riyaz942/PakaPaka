@@ -86,7 +86,7 @@ describe('CompleteScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Start your first lesson' }));
 
     expect(isOnboardingCompleted(userDb)).toBe(true);
-    expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+    expect(mockReplace).toHaveBeenCalledWith('/dashboard');
     expect(mockPush).toHaveBeenCalledWith('/lesson');
   });
 
@@ -97,7 +97,7 @@ describe('CompleteScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Explore on my own' }));
 
     expect(isOnboardingCompleted(userDb)).toBe(true);
-    expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+    expect(mockReplace).toHaveBeenCalledWith('/dashboard');
   });
 
   describe('after a backup restore (Story 9.2, AC8)', () => {
@@ -118,7 +118,7 @@ describe('CompleteScreen', () => {
       fireEvent.press(screen.getByRole('button', { name: 'Continue learning' }));
 
       expect(isOnboardingCompleted(userDb)).toBe(true);
-      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
       expect(mockPush).not.toHaveBeenCalled();
     });
 

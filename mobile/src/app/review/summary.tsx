@@ -63,7 +63,14 @@ export default function ReviewSummaryScreen() {
         <View className="px-space-md pb-space-md pt-space-sm">
           <Button
             label="Done"
-            onPress={() => router.dismissAll()}
+            onPress={() => {
+              // A page loaded directly (a web reload) has no stack to dismiss.
+              if (router.canDismiss()) {
+                router.dismissAll();
+              } else {
+                router.replace('/dashboard');
+              }
+            }}
             variant="primary"
             accessibilityLabel="Done, return to home"
           />

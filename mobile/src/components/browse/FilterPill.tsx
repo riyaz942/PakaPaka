@@ -1,3 +1,4 @@
+import { cssInterop } from 'nativewind';
 import React from 'react';
 import { Pressable, Text } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
@@ -6,9 +7,15 @@ import { Icon } from '@/components/common/Icon';
 import { soft } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useFeedbackMotion } from '@/hooks/useFeedbackMotion';
+import { isWeb } from '@/platform/capabilities';
 import { cn } from '@/utils/cn';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+// On web the animated wrapper drops `className` (see PressableScale).
+if (isWeb()) {
+  cssInterop(AnimatedPressable, { className: 'style' });
+}
 
 type FilterPillProps = {
   label: string;

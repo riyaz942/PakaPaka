@@ -1,0 +1,129 @@
+diff --git a/node_modules/react-native-safe-area-context/lib/commonjs/SafeAreaView.web.js b/node_modules/react-native-safe-area-context/lib/commonjs/SafeAreaView.web.js
+index 903425e..40b0053 100644
+--- a/node_modules/react-native-safe-area-context/lib/commonjs/SafeAreaView.web.js
++++ b/node_modules/react-native-safe-area-context/lib/commonjs/SafeAreaView.web.js
+@@ -26,6 +26,19 @@ function getEdgeValue(inset, current, mode) {
+       return current + inset;
+   }
+ }
++// A zero inset changes nothing, so leave that edge out. Writing it back would
++// replace padding or margin set by a CSS class (NativeWind on web), which
++// StyleSheet.flatten cannot read.
++function keepNonZeroInsetEdges(edgeStyle, insets) {
++  const result = {};
++  for (const key of Object.keys(edgeStyle)) {
++    const edge = key.replace(/^(padding|margin)/, '').toLowerCase();
++    if (insets[edge] !== 0) {
++      result[key] = edgeStyle[key];
++    }
++  }
++  return result;
++}
+ const SafeAreaView = exports.SafeAreaView = /*#__PURE__*/React.forwardRef(({
+   style = {},
+   mode,
+@@ -62,7 +75,7 @@ const SafeAreaView = exports.SafeAreaView = /*#__PURE__*/React.forwardRef(({
+         marginBottom: getEdgeValue(insets.bottom, marginBottom, edgesRecord.bottom),
+         marginLeft: getEdgeValue(insets.left, marginLeft, edgesRecord.left)
+       };
+-      return [style, marginStyle];
++      return [style, keepNonZeroInsetEdges(marginStyle, insets)];
+     } else {
+       const {
+         padding = 0,
+@@ -79,7 +92,7 @@ const SafeAreaView = exports.SafeAreaView = /*#__PURE__*/React.forwardRef(({
+         paddingBottom: getEdgeValue(insets.bottom, paddingBottom, edgesRecord.bottom),
+         paddingLeft: getEdgeValue(insets.left, paddingLeft, edgesRecord.left)
+       };
+-      return [style, paddingStyle];
++      return [style, keepNonZeroInsetEdges(paddingStyle, insets)];
+     }
+   }, [edgesRecord.bottom, edgesRecord.left, edgesRecord.right, edgesRecord.top, insets.bottom, insets.left, insets.right, insets.top, mode, style]);
+   return /*#__PURE__*/React.createElement(_reactNative.View, _extends({
+diff --git a/node_modules/react-native-safe-area-context/lib/module/SafeAreaView.web.js b/node_modules/react-native-safe-area-context/lib/module/SafeAreaView.web.js
+index 99856ad..4ebbcb2 100644
+--- a/node_modules/react-native-safe-area-context/lib/module/SafeAreaView.web.js
++++ b/node_modules/react-native-safe-area-context/lib/module/SafeAreaView.web.js
+@@ -19,6 +19,19 @@ function getEdgeValue(inset, current, mode) {
+       return current + inset;
+   }
+ }
++// A zero inset changes nothing, so leave that edge out. Writing it back would
++// replace padding or margin set by a CSS class (NativeWind on web), which
++// StyleSheet.flatten cannot read.
++function keepNonZeroInsetEdges(edgeStyle, insets) {
++  const result = {};
++  for (const key of Object.keys(edgeStyle)) {
++    const edge = key.replace(/^(padding|margin)/, '').toLowerCase();
++    if (insets[edge] !== 0) {
++      result[key] = edgeStyle[key];
++    }
++  }
++  return result;
++}
+ export const SafeAreaView = /*#__PURE__*/React.forwardRef(({
+   style = {},
+   mode,
+@@ -55,7 +68,7 @@ export const SafeAreaView = /*#__PURE__*/React.forwardRef(({
+         marginBottom: getEdgeValue(insets.bottom, marginBottom, edgesRecord.bottom),
+         marginLeft: getEdgeValue(insets.left, marginLeft, edgesRecord.left)
+       };
+-      return [style, marginStyle];
++      return [style, keepNonZeroInsetEdges(marginStyle, insets)];
+     } else {
+       const {
+         padding = 0,
+@@ -72,7 +85,7 @@ export const SafeAreaView = /*#__PURE__*/React.forwardRef(({
+         paddingBottom: getEdgeValue(insets.bottom, paddingBottom, edgesRecord.bottom),
+         paddingLeft: getEdgeValue(insets.left, paddingLeft, edgesRecord.left)
+       };
+-      return [style, paddingStyle];
++      return [style, keepNonZeroInsetEdges(paddingStyle, insets)];
+     }
+   }, [edgesRecord.bottom, edgesRecord.left, edgesRecord.right, edgesRecord.top, insets.bottom, insets.left, insets.right, insets.top, mode, style]);
+   return /*#__PURE__*/React.createElement(View, _extends({
+diff --git a/node_modules/react-native-safe-area-context/src/SafeAreaView.web.tsx b/node_modules/react-native-safe-area-context/src/SafeAreaView.web.tsx
+index 59f4939..ee98942 100644
+--- a/node_modules/react-native-safe-area-context/src/SafeAreaView.web.tsx
++++ b/node_modules/react-native-safe-area-context/src/SafeAreaView.web.tsx
+@@ -32,6 +32,22 @@ function getEdgeValue(
+   }
+ }
+ 
++// A zero inset changes nothing, so leave that edge out. Writing it back would
++// replace padding or margin set by a CSS class (NativeWind on web), which
++// StyleSheet.flatten cannot read.
++function keepNonZeroInsetEdges(
++  edgeStyle: Record<string, number>,
++  insets: Record<string, number>,
++) {
++  const result: Record<string, number> = {};
++  for (const key of Object.keys(edgeStyle)) {
++    const edge = key.replace(/^(padding|margin)/, '').toLowerCase();
++    if (insets[edge] !== 0) {
++      result[key] = edgeStyle[key];
++    }
++  }
++  return result;
++}
+ export const SafeAreaView = React.forwardRef<
+   NativeSafeAreaViewInstance,
+   NativeSafeAreaViewProps
+@@ -77,7 +93,7 @@ export const SafeAreaView = React.forwardRef<
+         marginLeft: getEdgeValue(insets.left, marginLeft, edgesRecord.left),
+       };
+ 
+-      return [style, marginStyle];
++      return [style, keepNonZeroInsetEdges(marginStyle, insets)];
+     } else {
+       const {
+         padding = 0,
+@@ -104,7 +120,7 @@ export const SafeAreaView = React.forwardRef<
+         paddingLeft: getEdgeValue(insets.left, paddingLeft, edgesRecord.left),
+       };
+ 
+-      return [style, paddingStyle];
++      return [style, keepNonZeroInsetEdges(paddingStyle, insets)];
+     }
+   }, [
+     edgesRecord.bottom,

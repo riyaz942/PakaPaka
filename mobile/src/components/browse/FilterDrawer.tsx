@@ -7,6 +7,7 @@ import {
   facetValueLabel,
   type BrowseFacetKey,
 } from '@/core/browse/browseFilters';
+import { useSheetFrame } from '@/hooks/useWideLayout';
 import { cn } from '@/utils/cn';
 
 type FilterDrawerProps = {
@@ -40,6 +41,7 @@ export function FilterDrawer({
   count,
   isCounting,
 }: FilterDrawerProps) {
+  const sheetFrame = useSheetFrame();
   const options = BROWSE_FACET_OPTIONS[facet];
   // Disabled at a zero result count (FR64), and while a recount is in flight
   // so the learner cannot apply against a stale count.
@@ -56,9 +58,14 @@ export function FilterDrawer({
         accessibilityRole="button"
         accessibilityLabel="Dismiss filters"
         onPress={onDismiss}
-        className="flex-1 bg-black/40"
+        className={cn('flex-1 bg-black/40', sheetFrame.backdropClassName)}
       />
-      <View className="gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3">
+      <View
+        className={cn(
+          'gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3',
+          sheetFrame.className,
+        )}
+        style={sheetFrame.style}>
         <View className="h-1 w-10 self-center rounded-radius-full bg-border" />
         <View className="flex-row items-center justify-between">
           <Text className="text-title font-ui-bold text-primary">{BROWSE_FACET_LABELS[facet]}</Text>

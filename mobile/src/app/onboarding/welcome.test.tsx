@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
+import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { __mockResetSqlite, __mockSetItems } from '../../../__mocks__/expo-sqlite';
@@ -145,5 +146,33 @@ describe('WelcomeScreen', () => {
 
     expect(getStartingJlptLevel(db)).toBeNull();
     expect(mockPush).not.toHaveBeenCalled();
+  });
+
+  describe('third-party import pills', () => {
+    afterEach(() => {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    });
+
+    it('shows WaniKani, Bunpro and Anki pills on native', async () => {
+      const db = await createUserDb();
+      renderWelcomeScreen(db);
+
+      expect(screen.getByText('WaniKani API')).toBeTruthy();
+      expect(screen.getByText('Bunpro')).toBeTruthy();
+      expect(screen.getByText('Anki (.apkg)')).toBeTruthy();
+    });
+
+    it('hides the pills on web, where only a backup restore is possible', async () => {
+      Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+      const db = await createUserDb();
+      renderWelcomeScreen(db);
+
+      expect(screen.queryByText('WaniKani API')).toBeNull();
+      expect(screen.queryByText('Bunpro')).toBeNull();
+      expect(screen.queryByText('Anki (.apkg)')).toBeNull();
+      expect(screen.getByTestId('path-import')).toBeTruthy();
+      expect(screen.queryByText(/WaniKani/)).toBeNull();
+      expect(screen.getByText(/backup/i)).toBeTruthy();
+    });
   });
 });

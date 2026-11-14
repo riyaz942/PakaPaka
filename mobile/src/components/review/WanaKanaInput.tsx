@@ -12,6 +12,7 @@ import {
 } from '@/core/grammar/kanjiAutoConvert';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { useFeedbackMotion, type FeedbackMotion } from '@/hooks/useFeedbackMotion';
+import { isWeb } from '@/platform/capabilities';
 import { cn } from '@/utils/cn';
 
 export type WanaKanaInputMode = 'kana' | 'english';
@@ -221,6 +222,9 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
               onSubmitEditing={onSubmit}
               returnKeyType="done"
               submitBehavior="submit"
+              // react-native-web ignores submitBehavior and blurs single-line inputs on
+              // Enter, which would swallow the second Return that advances the card.
+              {...(isWeb() ? { blurOnSubmit: false } : {})}
               editable={editable}
               accessibilityLabel={accessibilityLabel}
               {...englishProps}

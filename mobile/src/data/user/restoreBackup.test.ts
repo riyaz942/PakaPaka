@@ -763,13 +763,13 @@ describe('export → restore round trip', () => {
     const exported = await exportBackup(sourceDb);
     expect(exported.ok).toBe(true);
     if (!exported.ok) return;
-    expect(getMockFileContents(exported.value.fileUri)).toBeDefined();
+    expect(getMockFileContents(exported.value.fileUri!)).toBeDefined();
 
     // A fresh device: same slugs, different curriculum row ids.
     __mockResetSqlite();
     const targetDb = await createUserDb(SHIFTED_CURRICULUM_ITEMS);
 
-    const preview = await previewOrThrow(targetDb, exported.value.fileUri);
+    const preview = await previewOrThrow(targetDb, exported.value.fileUri!);
     expect(preview.summary.unmatchedSlugCount).toBe(0);
     expect(restoreBackup(targetDb, preview, 'settings').ok).toBe(true);
 

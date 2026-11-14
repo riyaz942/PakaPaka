@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { Platform, StyleSheet } from 'react-native';
 
-import HomeScreen from './index';
+import HomeScreen from './dashboard';
 
 import { serializeHomeLayout } from '@/core/engagement/homeLayout';
 import { clearReviewPriority, getReviewPriority } from '@/data/reviewPriorityStore';
@@ -325,6 +325,16 @@ describe('HomeScreen', () => {
     expect(screen.getByTestId('import-nudge-card')).toBeTruthy();
     fireEvent.press(screen.getByTestId('import-nudge-open'));
     expect(mockRouterPush).toHaveBeenCalledWith('/settings');
+  });
+
+  it('hides the import nudge on web, where WaniKani, Bunpro and Anki import is not offered', () => {
+    setPlatform('web');
+    mockImportCount = 0;
+    // A recent backup, so the web backup nudge does not take the slot first.
+    mockLastBackedUpAt = new Date().toISOString();
+    render(<HomeScreen />);
+
+    expect(screen.queryByTestId('import-nudge-card')).toBeNull();
   });
 
   it('curriculum update card outranks the import nudge', () => {

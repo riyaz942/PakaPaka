@@ -10,12 +10,16 @@ import { SrsStageBreakdown } from '@/components/stats/SrsStageBreakdown';
 import { StatsEmptyState, WeaknessEmptySubState } from '@/components/stats/StatsEmptyState';
 import { StatTile } from '@/components/stats/StatTile';
 import { WeaknessStatCard } from '@/components/stats/WeaknessStatCard';
-import { MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useDaysStudied } from '@/data/hooks/useDaysStudied';
 import { useSRSBreakdown } from '@/data/hooks/useSRSBreakdown';
 import { useWeaknessStats } from '@/data/hooks/useWeaknessStats';
+import { useWideLayout } from '@/hooks/useWideLayout';
+import { cn } from '@/utils/cn';
 
 export default function StatsScreen() {
+  // Desktop web: SRS stages and weak patterns sit side by side.
+  const wide = useWideLayout();
   const {
     stats: weaknessStats,
     clusters,
@@ -53,11 +57,13 @@ export default function StatsScreen() {
     <View className="flex-1 bg-background">
       <SafeAreaView
         edges={['top', 'left', 'right']}
-        className="flex-1 px-space-lg pt-space-md"
+        className={cn('flex-1', wide ? 'px-space-xl' : 'px-space-lg pt-space-md')}
         style={{
           alignSelf: 'center',
-          maxWidth: MaxContentWidth,
+          maxWidth: wide ? undefined : MaxContentWidth,
           width: '100%',
+          // Inline: on web SafeAreaView's own inset padding overrides a pt-* class.
+          paddingTop: wide ? Spacing.four : undefined,
         }}>
         <ScreenTitle>Stats</ScreenTitle>
 
@@ -86,36 +92,38 @@ export default function StatsScreen() {
               />
             </View>
 
-            <View>
-              <SectionHeading label="SRS stages" />
-              <View className="mt-space-sm">
-                <SrsStageBreakdown counts={counts} />
-              </View>
-              {/* Rule 3 holds meaning-only words at master, so the stages above
-                  contain a population that cannot climb yet. Without this line
-                  it reads as stalled progress. */}
-              {readingLockedCount > 0 ? (
-                <Text
-                  testID="reading-locked-note"
-                  className="mt-space-sm text-caption font-ui-medium text-secondary">
-                  {readingLockedCount === 1
-                    ? '1 word is held at Master until you learn the kanji it is written with.'
-                    : `${readingLockedCount} words are held at Master until you learn the kanji they are written with.`}
-                </Text>
-              ) : null}
-            </View>
-
-            <View>
-              <SectionHeading label="Weak patterns" />
-              {clusters.length === 0 ? (
-                <WeaknessEmptySubState />
-              ) : (
-                <View className="mt-space-sm gap-space-sm">
-                  {clusters.map((cluster) => (
-                    <WeaknessStatCard key={cluster.id} cluster={cluster} />
-                  ))}
+            <View className={cn(wide ? 'flex-row items-start gap-space-lg' : 'gap-space-lg')}>
+              <View className={cn(wide && 'flex-1')}>
+                <SectionHeading label="SRS stages" />
+                <View className="mt-space-sm">
+                  <SrsStageBreakdown counts={counts} />
                 </View>
-              )}
+                {/* Rule 3 holds meaning-only words at master, so the stages above
+                    contain a population that cannot climb yet. Without this line
+                    it reads as stalled progress. */}
+                {readingLockedCount > 0 ? (
+                  <Text
+                    testID="reading-locked-note"
+                    className="mt-space-sm text-caption font-ui-medium text-secondary">
+                    {readingLockedCount === 1
+                      ? '1 word is held at Master until you learn the kanji it is written with.'
+                      : `${readingLockedCount} words are held at Master until you learn the kanji they are written with.`}
+                  </Text>
+                ) : null}
+              </View>
+
+              <View className={cn(wide && 'flex-1')}>
+                <SectionHeading label="Weak patterns" />
+                {clusters.length === 0 ? (
+                  <WeaknessEmptySubState />
+                ) : (
+                  <View className="mt-space-sm gap-space-sm">
+                    {clusters.map((cluster) => (
+                      <WeaknessStatCard key={cluster.id} cluster={cluster} />
+                    ))}
+                  </View>
+                )}
+              </View>
             </View>
           </ScrollView>
         )}

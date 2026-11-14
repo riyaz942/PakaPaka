@@ -32,6 +32,7 @@ import {
   type WanaKanaInputState,
 } from '@/components/review';
 import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
+import { MaxContentWidth } from '@/constants/theme';
 import type { AnswerCollision } from '@/core/answer/answer.types';
 import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
 import {
@@ -45,10 +46,12 @@ import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useHaptics } from '@/data/hooks/useHaptics';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
+import { useWideLayout } from '@/hooks/useWideLayout';
 import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
 import { cn } from '@/utils/cn';
 import { safeBack } from '@/utils/safeBack';
+import { isWeb } from '@/platform/capabilities';
 
 const PLACEHOLDER: Record<PromptType, string> = {
   reading: 'Type reading in romaji...',
@@ -64,7 +67,19 @@ const GRAMMAR_PLACEHOLDER: Record<PromptType, string> = {
   reading: 'Type the sentence in Japanese...',
 };
 
+/**
+ * Web has no soft keyboard, and `Keyboard.dismiss()` blurs the answer input there —
+ * which would swallow the second Return that advances the card.
+ */
+function dismissSoftKeyboard() {
+  if (!isWeb()) {
+    Keyboard.dismiss();
+  }
+}
+
 export default function ReviewScreen() {
+  // Desktop web: the session sits in a centered column instead of spanning the window.
+  const wide = useWideLayout();
   const {
     currentItem,
     prefetchBuffer,
@@ -345,7 +360,7 @@ export default function ReviewScreen() {
     );
 
     if (evaluation.result === 'correct') {
-      Keyboard.dismiss();
+      dismissSoftKeyboard();
       setCardState('correct');
       const grade = gradeForResult(evaluation.result) ?? 3;
       setStageTransition(peekStageTransition(grade));
@@ -421,7 +436,7 @@ export default function ReviewScreen() {
     }
     setAnswerCollision(collision);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
-    Keyboard.dismiss();
+    dismissSoftKeyboard();
     setCardState('incorrect');
   }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, playHaptic, recordTypoForCurrentItem]);
 
@@ -488,7 +503,7 @@ export default function ReviewScreen() {
     const { value } = resolveCorrectReveal(currentItem);
     setDisplayAnswer(value);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
-    Keyboard.dismiss();
+    dismissSoftKeyboard();
     setCardState('incorrect');
   }
 
@@ -594,26 +609,29 @@ export default function ReviewScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <SessionHeader
-        cardsCompleted={currentIndex}
-        totalCards={totalItems}
-        itemType={currentItem.itemType}
-        cognitiveLoadPercent={cognitiveLoadPercent}
-        onExitPress={() => setExitVisible(true)}
-      />
+      <View
+        className="w-full flex-1 self-center"
+        style={{ maxWidth: wide ? MaxContentWidth : undefined }}>
+        <SessionHeader
+          cardsCompleted={currentIndex}
+          totalCards={totalItems}
+          itemType={currentItem.itemType}
+          cognitiveLoadPercent={cognitiveLoadPercent}
+          onExitPress={() => setExitVisible(true)}
+        />
 
-      <DailyThresholdNotice
-        visible={thresholdNoticeVisible}
-        onDismiss={() => setThresholdNoticeVisible(false)}
-      />
+        <DailyThresholdNotice
+          visible={thresholdNoticeVisible}
+          onDismiss={() => setThresholdNoticeVisible(false)}
+        />
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
-        <ScrollView
-          testID="review-focal-scroll"
-          className="flex-1 px-space-md"
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-          keyboardShouldPersistTaps="handled">
-          <ItemLinkProvider base="/review/item">
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+          <ScrollView
+            testID="review-focal-scroll"
+            className="flex-1 px-space-md"
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+            keyboardShouldPersistTaps="handled">
+            <ItemLinkProvider base="/review/item">
             {/* Keyed on cursor: each new card slides in. */}
             <FadeSlideIn key={cursor} className="w-full">
               <ReviewCard
@@ -623,7 +641,7 @@ export default function ReviewScreen() {
                 stageTransition={stageTransition}
                 resultRef={resultRef}
                 revealDetail={getRevealDetail(currentItem.itemId)}
-                rejectedAnswer={rejectedAnswer}
+                  rejectedAnswer={rejectedAnswer}
                 synonymState={synonymState}
                 onAddSynonym={handleAddSynonym}
                 answerCollision={answerCollision}
@@ -632,126 +650,127 @@ export default function ReviewScreen() {
                 closeNudge={closeNudge}
               />
             </FadeSlideIn>
-          </ItemLinkProvider>
+            </ItemLinkProvider>
 
-          {firstMissCard.visible ? (
-            <GuidanceCardNotice
-              card={GUIDANCE_CARD_BY_ID['first-miss']}
-              onDismiss={firstMissCard.dismiss}
-            />
-          ) : null}
-
-          {srCardVisible && srShownItemId === currentItemId ? (
-            <GuidanceCardNotice
-              card={GUIDANCE_CARD_BY_ID['spaced-repetition']}
-              subject={currentItem.primaryForm}
-              onDismiss={srCardDismiss}
-            />
-          ) : null}
-        </ScrollView>
-
-        {cardState === 'incorrect' ? (
-          <View className="gap-space-sm px-space-md pb-space-md">
-            {/* The rejected answer, kept on screen in the danger chrome — the
-                reveal offers to accept it as a synonym, so it has to be
-                readable. "Don't know" submits nothing, so there is nothing to
-                show for it. */}
-            {rejectedAnswer ? (
-              <WanaKanaInput
-                mode={inputMode}
-                value={rejectedAnswer}
-                onChangeText={() => {}}
-                onSubmit={() => {}}
-                editable={false}
-                autoFocus={false}
-                state="incorrect"
-                feedbackKey={feedbackKey}
-                testID="review-rejected-answer"
+            {firstMissCard.visible ? (
+              <GuidanceCardNotice
+                card={GUIDANCE_CARD_BY_ID['first-miss']}
+                onDismiss={firstMissCard.dismiss}
               />
             ) : null}
-            <Button
-              ref={continueButtonRef}
-              label="Continue"
-              onPress={handleContinueIncorrect}
-              variant="primary"
-            />
-          </View>
-        ) : cardState === 'correct' ? (
-          // Visible Continue on correct (touch / soft-keyboard).
-          // Typed path also keeps the input mounted so second Return still
-          // advances (FR84). Continue doubles as early advance while Lightning
-          // Mode's timer is pending.
-          <View className="gap-space-sm px-space-md pb-space-md">
-            <WanaKanaInput
-              ref={inputRef}
-              mode={inputMode}
-              value={answerText}
-              onChangeText={setAnswerText}
-              onSubmit={handleSubmit}
-              placeholder={
-                currentItem.itemType === 'grammar'
-                  ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
-                  : PLACEHOLDER[currentItem.promptType]
-              }
-              editable={inputEditable}
-              autoFocus={inputEditable}
-              state={inputState}
+
+            {srCardVisible && srShownItemId === currentItemId ? (
+              <GuidanceCardNotice
+                card={GUIDANCE_CARD_BY_ID['spaced-repetition']}
+                subject={currentItem.primaryForm}
+                onDismiss={srCardDismiss}
+              />
+            ) : null}
+          </ScrollView>
+
+          {cardState === 'incorrect' ? (
+            <View className="gap-space-sm px-space-md pb-space-md">
+              {/* The rejected answer, kept on screen in the danger chrome — the
+                  reveal offers to accept it as a synonym, so it has to be
+                  readable. "Don't know" submits nothing, so there is nothing to
+                  show for it. */}
+              {rejectedAnswer ? (
+                <WanaKanaInput
+                  mode={inputMode}
+                  value={rejectedAnswer}
+                  onChangeText={() => {}}
+                  onSubmit={() => {}}
+                  editable={false}
+                  autoFocus={false}
+                  state="incorrect"
+                feedbackKey={feedbackKey}
+                  testID="review-rejected-answer"
+                />
+              ) : null}
+              <Button
+                ref={continueButtonRef}
+                label="Continue"
+                onPress={handleContinueIncorrect}
+                variant="primary"
+              />
+            </View>
+          ) : cardState === 'correct' ? (
+            // Visible Continue on correct (touch / soft-keyboard).
+            // Typed path also keeps the input mounted so second Return still
+            // advances (FR84). Continue doubles as early advance while Lightning
+            // Mode's timer is pending.
+            <View className="gap-space-sm px-space-md pb-space-md">
+              <WanaKanaInput
+                ref={inputRef}
+                mode={inputMode}
+                value={answerText}
+                onChangeText={setAnswerText}
+                onSubmit={handleSubmit}
+                placeholder={
+                  currentItem.itemType === 'grammar'
+                    ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
+                    : PLACEHOLDER[currentItem.promptType]
+                }
+                editable={inputEditable}
+                autoFocus={inputEditable}
+                state={inputState}
               feedbackKey={feedbackKey}
-              kanjiConversions={kanjiConversions}
-            />
-            <Button
-              ref={continueButtonRef}
-              label="Continue"
-              onPress={advanceFromCorrect}
-              variant="primary"
-            />
-          </View>
-        ) : (
-          // Dim (never hide) the input while feedback is showing — the input
-          // must stay mounted and autofocus-ready so the review loop stays
-          // keyboard-driven with zero added taps per item.
-          <View
-            className={cn(
-              'gap-space-sm px-space-md pb-space-md',
-              !canSubmitAnswer && 'opacity-50',
-            )}>
-            <WanaKanaInput
-              ref={inputRef}
-              mode={inputMode}
-              value={answerText}
-              onChangeText={setAnswerText}
-              onSubmit={handleSubmit}
-              placeholder={
-                currentItem.itemType === 'grammar'
-                  ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
-                  : PLACEHOLDER[currentItem.promptType]
-              }
-              editable={inputEditable}
-              autoFocus={inputEditable}
-              state={inputState}
+                kanjiConversions={kanjiConversions}
+              />
+              <Button
+                ref={continueButtonRef}
+                label="Continue"
+                onPress={advanceFromCorrect}
+                variant="primary"
+              />
+            </View>
+          ) : (
+            // Dim (never hide) the input while feedback is showing — the input
+            // must stay mounted and autofocus-ready so the review loop stays
+            // keyboard-driven with zero added taps per item.
+            <View
+              className={cn(
+                'gap-space-sm px-space-md pb-space-md',
+                !canSubmitAnswer && 'opacity-50',
+              )}>
+              <WanaKanaInput
+                ref={inputRef}
+                mode={inputMode}
+                value={answerText}
+                onChangeText={setAnswerText}
+                onSubmit={handleSubmit}
+                placeholder={
+                  currentItem.itemType === 'grammar'
+                    ? GRAMMAR_PLACEHOLDER[currentItem.promptType]
+                    : PLACEHOLDER[currentItem.promptType]
+                }
+                editable={inputEditable}
+                autoFocus={inputEditable}
+                state={inputState}
               feedbackKey={feedbackKey}
-              kanjiConversions={kanjiConversions}
-            />
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Don't know"
-              accessibilityState={{ disabled: !canSubmitAnswer }}
-              className="min-h-[44px] items-center justify-center"
-              disabled={!canSubmitAnswer}
-              onPress={handleDontKnow}>
-              <Text className="text-label font-ui-semibold text-muted">Don&apos;t know</Text>
-            </Pressable>
-            {/* Return still submits (FR84) — this is the touch path to the same
-                call, for anyone answering without a hardware keyboard. */}
-            <Button
-              label="Submit"
-              onPress={handleSubmit}
-              disabled={!canSubmitAnswer || !answerText.trim()}
-              testID="review-submit"
-            />
-          </View>
-        )}
-      </KeyboardAvoidingView>
+                kanjiConversions={kanjiConversions}
+              />
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Don't know"
+                accessibilityState={{ disabled: !canSubmitAnswer }}
+                className="min-h-[44px] items-center justify-center"
+                disabled={!canSubmitAnswer}
+                onPress={handleDontKnow}>
+                <Text className="text-label font-ui-semibold text-muted">Don&apos;t know</Text>
+              </Pressable>
+              {/* Return still submits (FR84) — this is the touch path to the same
+                  call, for anyone answering without a hardware keyboard. */}
+              <Button
+                label="Submit"
+                onPress={handleSubmit}
+                disabled={!canSubmitAnswer || !answerText.trim()}
+                testID="review-submit"
+              />
+            </View>
+          )}
+        </KeyboardAvoidingView>
+      </View>
 
       <SessionExitSheet
         visible={exitVisible}

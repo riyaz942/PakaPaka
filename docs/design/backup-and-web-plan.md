@@ -101,6 +101,12 @@ fail loudly, per the project's no-hidden-fallbacks rule.
 
 ## Part B — Web build + PWA
 
+> **Updated 2026-11-04.** The web build is now scoped by
+> [the web app design](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md) (Part 1) and
+> [its plan](../superpowers/plans/2026-11-04-web-app-part1-web-build.md). Where this section
+> disagrees (hosting on Cloudflare Workers static assets instead of Pages, no PWA / offline shell,
+> seeding, the sync-bridge fix), the spec wins. Notes below mark each change.
+
 ### B0 — The durability problem
 
 Browser storage is evictable. Safari clears IndexedDB/OPFS after ~7 days without a visit unless the
@@ -138,6 +144,11 @@ are the thing to watch — `@expo-google-fonts/*` are npm packages bundled local
 from Google, so this should be fine, but verify no runtime request escapes the origin. Confirm with
 `crossOriginIsolated === true` in the deployed page's console before building anything else.
 
+> **Superseded 2026-11-04:** a probe build showed `importDatabaseFromAssetAsync` **does work on web**
+> in `expo-sqlite` 55.0.17 (`web/worker.ts` handles `importAssetDatabase`). The curriculum seeded and
+> a lesson ran. There is **no `database.web.ts`**; `src/data/database.ts` is unchanged. The seed is
+> now 12 MB, not 1.9 MB. The text below is kept as history.
+
 **2. `importDatabaseFromAssetAsync` has no web implementation.** It appears only in
 `expo-sqlite/build/hooks.js` (an `expo-file-system` copy) and is entirely absent from
 `expo-sqlite/web/SQLiteModule.ts`. Our curriculum seeding at `src/data/database.ts:47` therefore
@@ -164,6 +175,12 @@ the bundle instead — see [B4](#b4--explicitly-out-of-scope).
 executing real SQLite + the vendored VFS against the real `curriculum.db`; cross-database JOINs
 returned correct rows. `database.ts:117` needs no change. Peak OPFS pool usage is 3 of 6 slots. Full
 evidence and caveats in [web-sqlite-attach-findings.md](./web-sqlite-attach-findings.md).
+
+> **Updated 2026-11-04:** the sync bridge has **three** bugs, not one: (a) the length truncation
+> below; (b) `invokeWorkerSync` gives up after 1,000,000 `Atomics.pause()` spins (milliseconds), so
+> ordinary writes fail with `Sync operation timeout`; (c) the result buffer is a fixed 1 MB, smaller
+> than a full backup-export read. **Decided:** all three are fixed in one `patch-package` patch
+> (`mobile/patches/expo-sqlite+55.0.17.patch`), re-checked on every `expo-sqlite` bump.
 
 **4. The actual blocker is a bug in `expo-sqlite`'s web sync bridge.** `web/WorkerChannel.ts:43`
 writes the result length as `resultArray.set(new Uint32Array([length]), 0)` — a `Uint32Array` into a
@@ -205,10 +222,12 @@ more.
 | B3.3 | Platform-split `src/data/database.ts` seeding (`.web.ts`) per B3.1's outcome. Keep the native path untouched. | Native tests unchanged and green; web app boots to Home with real curriculum data. |
 | B3.4 | Feature-gate the B2 modules behind an explicit capability check. Hide unsupported surfaces rather than degrading them silently. | Web build compiles; Talk/voice/notification surfaces are absent or show a plain "not available on web" state. |
 | B3.5 | Walk every screen on web. Expect breakage in gesture/reanimated interactions, the review input, and swipe navigation in lessons. | Full lesson → review → browse loop completes in Chrome and Safari. |
-| B3.6 | PWA: manifest, icons, offline service worker for the app shell + curriculum, `navigator.storage.persist()` on first run, and an install prompt. Surface persistence status honestly in Settings. | Lighthouse PWA pass. Installs on Chrome desktop and iOS Safari. Works offline after first load. Denied persistence is shown to the user, not hidden. |
+| B3.6 | **Superseded by the [web app design](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md): no service worker, offline shell, or install prompt in Part 1. `navigator.storage.persist()` is kept.** PWA: manifest, icons, offline service worker for the app shell + curriculum, `navigator.storage.persist()` on first run, and an install prompt. Surface persistence status honestly in Settings. | Lighthouse PWA pass. Installs on Chrome desktop and iOS Safari. Works offline after first load. Denied persistence is shown to the user, not hidden. |
 | B3.7 | Wire Part A's export/import into the web build and show the backup nudge more assertively there. | Export downloads a file; restore accepts a file exported from mobile (cross-platform round trip). |
 
 ### B5 — The sync-bridge decision
+
+> **Decided 2026-11-04: `patch-package`** (all three bugs; see B1 point 4). The async-API migration stays a later option.
 
 The truncation bug in [B1](#b1--verified-constraints-checked-in-node_modules-not-assumed) forces a
 choice. Settle it before B3.3.

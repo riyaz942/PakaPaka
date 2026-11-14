@@ -35,7 +35,7 @@ describe('(tabs)/_layout', () => {
   it('renders the five visible tabs in order: Home, Browse, Talk, Stats, Settings', () => {
     render(<TabsLayout />);
 
-    expect(screen.getByTestId('tab-index')).toHaveTextContent('Home');
+    expect(screen.getByTestId('tab-dashboard')).toHaveTextContent('Home');
     expect(screen.getByTestId('tab-browse')).toHaveTextContent('Browse');
     expect(screen.getByTestId('tab-converse')).toHaveTextContent('Talk');
     expect(screen.getByTestId('tab-stats')).toHaveTextContent('Stats');

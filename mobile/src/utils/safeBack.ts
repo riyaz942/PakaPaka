@@ -9,6 +9,6 @@ export function safeBack(): void {
   if (router.canGoBack()) {
     router.back();
   } else {
-    router.replace('/(tabs)');
+    router.replace('/dashboard');
   }
 }

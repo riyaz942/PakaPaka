@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
-import { Appearance } from 'react-native';
+import { Appearance, Platform } from 'react-native';
 
 import { GUIDANCE_CARDS } from '@/components/onboarding/cardRegistry';
 import { cancelAllNotifications, scheduleReviewReminder } from '@/config/notifications';
@@ -819,6 +819,59 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
     expect(scheduleReviewReminder).not.toHaveBeenCalled();
   });
 
+  it('does not open the share sheet after a web export, which downloads instead', async () => {
+    Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+    try {
+      mockExportBackup.mockResolvedValue({
+        ok: true,
+        value: { fileUri: null, itemCount: 12, byteSize: 2048, omittedCount: 0 },
+      });
+
+      render(<SettingsScreen />);
+      fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('settings-backup-result')).toBeTruthy();
+      });
+      expect(mockShareAsync).not.toHaveBeenCalled();
+      expect(screen.queryByTestId('settings-backup-error')).toBeNull();
+    } finally {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    }
+  });
+
+  it('does not touch notifications after a restore on web', async () => {
+    Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+    try {
+      mockGetDocumentAsync.mockResolvedValue({
+        canceled: false,
+        assets: [{ uri: 'blob:picked', name: 'pakapaka-backup.json.gz' }],
+      });
+      mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+      mockRestoreBackup.mockReturnValue({
+        ok: true,
+        value: { restoredRowCount: 12, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+      });
+
+      render(<SettingsScreen />);
+      fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+      await waitFor(() => {
+        expect(screen.getByTestId('restore-preview-confirm')).toBeTruthy();
+      });
+      fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('settings-backup-restore-result')).toHaveTextContent(
+          'Restored 12 rows.',
+        );
+      });
+      expect(cancelAllNotifications).not.toHaveBeenCalled();
+      expect(scheduleReviewReminder).not.toHaveBeenCalled();
+    } finally {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    }
+  });
+
   it('reports skipped slugs in the restore result', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
@@ -973,5 +1026,35 @@ describe('SettingsScreen — About section', () => {
     render(<SettingsScreen />);
     fireEvent.press(screen.getByTestId('settings-about'));
     expect(mockPush).toHaveBeenCalledWith('/settings/about');
+  });
+});
+
+describe('SettingsScreen — platform capabilities', () => {
+  function setPlatform(os: 'ios' | 'web') {
+    Object.defineProperty(Platform, 'OS', { value: os, configurable: true });
+  }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => setPlatform('ios'));
+
+  it('hides notifications, theme, voice and BYOK rows on web', () => {
+    setPlatform('web');
+    render(<SettingsScreen />);
+    expect(screen.queryByTestId('settings-notifications-toggle')).toBeNull();
+    expect(screen.queryByTestId('settings-theme-mode-light')).toBeNull();
+    expect(screen.queryByText('Voice')).toBeNull();
+    expect(screen.queryByText('Conversation (AI key)')).toBeNull();
+  });
+
+  it('shows notifications, theme, voice and BYOK rows on iOS', () => {
+    setPlatform('ios');
+    render(<SettingsScreen />);
+    expect(screen.getByTestId('settings-notifications-toggle')).toBeTruthy();
+    expect(screen.getByTestId('settings-theme-mode-light')).toBeTruthy();
+    expect(screen.getByText('Voice')).toBeTruthy();
+    expect(screen.getByText('Conversation (AI key)')).toBeTruthy();
   });
 });

@@ -1,4 +1,5 @@
 import '@/global.css';
+import '@/platform/registerWebAnimatedClassNames';
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -12,6 +13,7 @@ import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-cont
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
 import { appFonts } from '@/constants/fonts';
+import { MaxAppWidth } from '@/constants/theme';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
@@ -65,19 +67,24 @@ function RootLayoutContent() {
           <OnboardingRedirect />
           <CurriculumUpdateBannerHost />
           <AnimatedSplashOverlay />
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-            <Stack.Screen
-              name="review"
-              options={{ headerShown: false, presentation: 'fullScreenModal' }}
-            />
-            <Stack.Screen
-              name="lesson"
-              options={{ headerShown: false, presentation: 'fullScreenModal' }}
-            />
-            <Stack.Screen name="levels" options={{ headerShown: false }} />
-          </Stack>
+          {/* A desktop browser window can be any width; the app stays in a
+              centered frame. Phones are always narrower than the cap. */}
+          <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
+            <Stack>
+              <Stack.Screen name="index" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="review"
+                options={{ headerShown: false, presentation: 'fullScreenModal' }}
+              />
+              <Stack.Screen
+                name="lesson"
+                options={{ headerShown: false, presentation: 'fullScreenModal' }}
+              />
+              <Stack.Screen name="levels" options={{ headerShown: false }} />
+            </Stack>
+          </View>
         </DatabaseProvider>
       </ThemeProvider>
     </View>

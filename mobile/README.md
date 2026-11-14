@@ -54,3 +54,23 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Web build
+
+```bash
+npm run build:web        # expo export -p web -> dist/
+npx wrangler dev --port 8787   # serve dist/ locally with the COOP/COEP headers
+npm run deploy:web       # build, then wrangler deploy (needs the operator's domain in wrangler.jsonc)
+```
+
+The web app needs cross-origin isolation (`crossOriginIsolated === true`) because `expo-sqlite` on
+web uses `SharedArrayBuffer`. `public/_headers` (and `metro.config.js` for `expo start --web`) set
+`Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`.
+
+### expo-sqlite web patch
+
+`patches/expo-sqlite+55.0.17.patch` (applied by `patch-package` on `npm install`) fixes three bugs in
+`expo-sqlite`'s web sync bridge: length truncation
+([expo/expo#44148](https://github.com/expo/expo/pull/44148)), a spin-count timeout, and a fixed 1 MB
+result buffer. **Re-check it on every `expo-sqlite` bump**; `__tests__/expoSqliteWebPatch.test.ts`
+fails if the patch is not applied.

@@ -142,13 +142,13 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    expect(result.value.fileUri.endsWith('.json.gz')).toBe(true);
+    expect(result.value.fileUri!.endsWith('.json.gz')).toBe(true);
     expect(result.value.fileUri).toMatch(/pakapaka-backup-\d{4}-\d{2}-\d{2}T/);
     expect(result.value.byteSize).toBeGreaterThan(0);
     expect(result.value.itemCount).toBe(4);
     expect(result.value.omittedCount).toBe(0);
 
-    const json = await readWrittenJson(result.value.fileUri);
+    const json = await readWrittenJson(result.value.fileUri!);
     const parsed = parseBackupBundle(json);
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
@@ -179,7 +179,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
 
@@ -201,7 +201,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.value.data.itemStudyStatus[0].item.slug).toBe('sun');
@@ -224,7 +224,7 @@ describe('exportBackup', () => {
     if (!result.ok) return;
 
     expect(result.value.omittedCount).toBe(1);
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.value.data.itemStudyStatus).toHaveLength(1);
@@ -276,7 +276,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.value.includesConversations).toBe(false);
@@ -314,7 +314,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.value.includesConversations).toBe(true);
@@ -353,7 +353,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
     expect(parsed.value.data.aiSessions[0].topicItems).toEqual([
@@ -392,7 +392,7 @@ describe('exportBackup', () => {
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    const json = await readWrittenJson(result.value.fileUri);
+    const json = await readWrittenJson(result.value.fileUri!);
     expect(json).not.toMatch(/"itemId":"2"/);
     const parsed = parseBackupBundle(json);
     expect(parsed.ok).toBe(true);
@@ -449,11 +449,11 @@ describe('exportBackup', () => {
 
     expect(getItemSpy).not.toHaveBeenCalled();
 
-    const base64 = getMockFileStore().get(result.value.fileUri);
+    const base64 = getMockFileStore().get(result.value.fileUri!);
     expect(base64).toBeDefined();
     expect(base64).not.toContain('sk-super-secret-value');
 
-    const json = await readWrittenJson(result.value.fileUri);
+    const json = await readWrittenJson(result.value.fileUri!);
     expect(json).not.toContain('sk-super-secret-value');
 
     getItemSpy.mockRestore();
@@ -475,7 +475,7 @@ describe('exportBackup', () => {
     const result = await exportBackup(db);
     expect(result.ok).toBe(true);
     if (!result.ok) return;
-    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri));
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
 

@@ -29,7 +29,7 @@ export function useOnboardingRedirect(): void {
     if (completed) {
       const inOnboarding = segmentList[0] === 'onboarding';
       if (inOnboarding) {
-        router.replace('/(tabs)');
+        router.replace('/dashboard');
       }
       return;
     }

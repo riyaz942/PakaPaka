@@ -4,6 +4,8 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
+import { isWeb, supportsCurriculumOta } from '@/platform/capabilities';
+import { requestPersistentStorage } from '@/platform/requestPersistentStorage';
 import {
   CurriculumUpdateContext,
   type CurriculumUpdateContextValue,
@@ -56,6 +58,8 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
 
       handlesRef.current = result.value;
 
+      void requestPersistentStorage();
+
       if (__DEV__) {
         const metadata = result.value.curriculumDb.getFirstSync<{ version: string }>(
           'SELECT version FROM curriculum_metadata LIMIT 1',
@@ -88,8 +92,28 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     };
   }, []);
 
+  // Web: when the user leaves for another page (the landing page at `/`), the
+  // browser can keep this page alive in its back/forward cache. The SQLite
+  // worker stops as the page hides (see patches/expo-sqlite), so that a fresh
+  // load of the app can open the OPFS files. A page that comes back from that
+  // cache has no databases, so it reloads.
   useEffect(() => {
-    if (state.status !== 'ready' || updateStartedRef.current) {
+    if (!isWeb()) {
+      return;
+    }
+
+    const reloadIfRestored = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener('pageshow', reloadIfRestored);
+    return () => window.removeEventListener('pageshow', reloadIfRestored);
+  }, []);
+
+  useEffect(() => {
+    if (state.status !== 'ready' || updateStartedRef.current || !supportsCurriculumOta()) {
       return;
     }
 
@@ -173,12 +197,18 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
   if (state.status === 'error') {
     return (
       <View className="flex-1 items-center justify-center bg-background px-6">
-        <Text className="text-center text-base text-foreground">
+        <Text className="text-center text-base text-primary">
           Unable to open local databases.
         </Text>
-        <Text className="mt-2 text-center text-sm text-muted-foreground">
-          {state.error.message}
-        </Text>
+        {isWeb() ? (
+          <Text className="mt-2 text-center text-sm text-muted">
+            If PakaPaka is open in another tab, close that tab and reload this page.
+          </Text>
+        ) : (
+          <Text className="mt-2 text-center text-sm text-muted">
+            {state.error.message}
+          </Text>
+        )}
       </View>
     );
   }

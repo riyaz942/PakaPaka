@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
 
@@ -66,5 +67,18 @@ describe('Icon', () => {
   it('is hidden from screen readers — icons always sit beside a label', () => {
     const { getByTestId } = render(<Icon name="close" testID="icon" />);
     expect(getByTestId('icon', { includeHiddenElements: true }).props.accessibilityElementsHidden).toBe(true);
+  });
+
+  it('uses aria-hidden on web, where the native-only props would reach the DOM <svg>', () => {
+    Object.defineProperty(Platform, 'OS', { value: 'web', configurable: true });
+    try {
+      const { getByTestId } = render(<Icon name="close" testID="icon" />);
+      const props = getByTestId('icon', { includeHiddenElements: true }).props;
+      expect(props['aria-hidden']).toBe(true);
+      expect(props.accessibilityElementsHidden).toBeUndefined();
+      expect(props.importantForAccessibility).toBeUndefined();
+    } finally {
+      Object.defineProperty(Platform, 'OS', { value: 'ios', configurable: true });
+    }
   });
 });
