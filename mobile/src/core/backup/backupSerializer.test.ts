@@ -143,7 +143,7 @@ describe('buildBackupBundle / serializeBackupBundle / parseBackupBundle round tr
     expect(result.ok).toBe(true);
     if (!result.ok) return;
 
-    expect(result.value.format).toBe('kizamu-backup');
+    expect(result.value.format).toBe('pakapaka-backup');
     expect(result.value.formatVersion).toBe(1);
     expect(result.value.schemaVersion).toBe(19);
     expect(result.value.curriculumVersion).toBe('1.4.0');
@@ -215,12 +215,12 @@ describe('parseBackupBundle validation', () => {
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(result.error.code).toBe('BACKUP_FORMAT_MISMATCH');
-    expect(result.error.userMessage).toBe('That file is not a Kizamu backup.');
+    expect(result.error.userMessage).toBe('That file is not a PakaPaka backup.');
   });
 
   it('rejects an unsupported formatVersion', () => {
     const result = parseBackupBundle(
-      JSON.stringify({ format: 'kizamu-backup', formatVersion: 2 }),
+      JSON.stringify({ format: 'pakapaka-backup', formatVersion: 2 }),
     );
     expect(result.ok).toBe(false);
     if (result.ok) return;
@@ -231,7 +231,7 @@ describe('parseBackupBundle validation', () => {
   it('rejects a payload missing the data object', () => {
     const result = parseBackupBundle(
       JSON.stringify({
-        format: 'kizamu-backup',
+        format: 'pakapaka-backup',
         formatVersion: 1,
         schemaVersion: 19,
         exportedAt: '2026-08-13T00:00:00.000Z',

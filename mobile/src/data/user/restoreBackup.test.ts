@@ -18,7 +18,7 @@ import {
   setMockFileContents,
 } from '@/test-support/file-system-test-state';
 
-const BACKUP_URI = 'file:///mock-documents/kizamu-backup.json.gz';
+const BACKUP_URI = 'file:///mock-documents/pakapaka-backup.json.gz';
 
 const CURRICULUM_ITEMS = [
   { id: 1, item_type: 'kanji', slug: 'sun' },
@@ -229,7 +229,7 @@ describe('previewRestore', () => {
     expect(result.error.userMessage).toMatch(/\.json\.gz/);
   });
 
-  it('fails a file that is not a Kizamu backup', async () => {
+  it('fails a file that is not a PakaPaka backup', async () => {
     const userDb = await createUserDb();
     writeRawFixture(pako.gzip(JSON.stringify({ format: 'anki-export', formatVersion: 1 })));
 
@@ -238,7 +238,7 @@ describe('previewRestore', () => {
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(result.error.code).toBe('BACKUP_FORMAT_MISMATCH');
-    expect(result.error.userMessage).toBe('That file is not a Kizamu backup.');
+    expect(result.error.userMessage).toBe('That file is not a PakaPaka backup.');
     expect(result.error.userMessage).not.toMatch(/\.json\.gz/);
   });
 

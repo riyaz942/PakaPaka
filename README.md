@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="mobile/assets/images/icon.png" alt="NihongoCore app icon" width="120" />
+  <img src="mobile/assets/images/icon.png" alt="PakaPaka app icon" width="120" />
 </p>
 
-<h1 align="center">NihongoCore</h1>
+<h1 align="center">PakaPaka</h1>
 
 <p align="center">
   <strong>Kanji, vocabulary, grammar and reading in one app. Free, open source, and fully offline.</strong>
@@ -19,7 +19,7 @@
 
 Most learners pay for three apps: one for kanji, one for grammar, and a flashcard deck for everything else. None of them share what you know.
 
-NihongoCore puts it all in one place. Radicals, kanji, vocabulary, grammar and reading passages sit in one dependency graph and go through one review queue. The queue learns where you make mistakes and shows you those items first.
+PakaPaka puts it all in one place. Radicals, kanji, vocabulary, grammar and reading passages sit in one dependency graph and go through one review queue. The queue learns where you make mistakes and shows you those items first.
 
 **No accounts. No subscriptions. No ads. Your progress never leaves your phone.**
 
@@ -32,7 +32,7 @@ NihongoCore puts it all in one place. Radicals, kanji, vocabulary, grammar and r
 </p>
 -->
 
-## Why NihongoCore
+## Why PakaPaka
 
 - **One path, in the right order.** Radicals unlock kanji. Kanji unlock vocabulary. Vocabulary and grammar unlock reading. You never study a word before its parts.
 - **Reviews that find your weak points.** Scheduling uses [FSRS](https://github.com/open-spaced-repetition/ts-fsrs), blended with a weakness score from your real mistakes (`0.7 × FSRS + 0.3 × weakness`).
@@ -66,7 +66,7 @@ Practice conversation with an AI partner. Use your own API key (OpenAI-compatibl
 A daily goal ring shows today's lessons and reviews. You can reorder or hide the Home sections. Vacation mode stops new reviews from piling up while you are away. Stats shows days studied, SRS stages and the patterns you get wrong most.
 
 ### Your data
-Export your progress to a backup file and restore it on any device. You can also run NihongoCore in "shadow mode" next to the tools you use now, and compare before you change.
+Export your progress to a backup file and restore it on any device. You can also run PakaPaka in "shadow mode" next to the tools you use now, and compare before you change.
 
 ## What is in the curriculum
 
@@ -83,7 +83,7 @@ Export your progress to a backup file and restore it on any device. You can also
 
 ## Status
 
-NihongoCore is in active development and is not in the App Store or Google Play yet. To try it now, build it from source (see [Development](#development)). For the full list of what is done and what is left, see [docs/working-history.md](docs/working-history.md).
+PakaPaka is in active development and is not in the App Store or Google Play yet. To try it now, build it from source (see [Development](#development)). For the full list of what is done and what is left, see [docs/working-history.md](docs/working-history.md).
 
 ## Contributing
 
@@ -136,8 +136,8 @@ The app supports **iOS 17+** and **Android 13+ (API 33)**.
 ### Quick start
 
 ```bash
-git clone https://github.com/riyaz942/nihongo-core.git
-cd nihongo-core
+git clone https://github.com/riyaz942/pakapaka.git
+cd pakapaka
 git lfs install
 git lfs pull
 cd mobile

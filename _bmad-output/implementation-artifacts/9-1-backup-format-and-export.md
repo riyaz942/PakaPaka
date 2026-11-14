@@ -19,7 +19,7 @@ so that reinstalling, switching phones, or a browser clearing its storage does n
 2. **Covers all user progress state:** `item_study_status`, `srs_states`, `user_preferences`, `personal_mnemonics`, `user_synonyms`, `furigana_overrides`, `related_item_boosts`, `goal_ring_state`, `daily_lesson_log`, `cognitive_load_history`, `streaks`, `passage_practice_results`, `weakness_stats`, `import_metadata`. `schema_migrations` is recorded as a `schemaVersion` number, not exported as rows.
 3. **Credentials are never exported:** BYOK provider keys (`src/data/ai/byokCredentialStore.ts`, `src/data/user/credentialStore.ts`) are excluded unconditionally — not behind a toggle.
 4. **AI transcripts are opt-in, default off:** `ai_sessions` / `ai_messages` are excluded unless the learner explicitly ticks the option.
-5. **Format is gzipped JSON in one `.json.gz` file** with envelope fields `format: "kizamu-backup"`, `formatVersion: 1`, `schemaVersion`, `curriculumVersion`, `exportedAt`, `includesConversations`, and a `data` object of per-table rows.
+5. **Format is gzipped JSON in one `.json.gz` file** with envelope fields `format: "pakapaka-backup"`, `formatVersion: 1`, `schemaVersion`, `curriculumVersion`, `exportedAt`, `includesConversations`, and a `data` object of per-table rows.
 6. **Export is offline and local:** written on-device, handed to the OS share sheet. Nothing is uploaded.
 7. **Round-trip is lossless:** a full database exported and re-parsed yields identical rows on every covered table.
 

@@ -218,7 +218,7 @@ export type BackupEnvelopeInput = {
 };
 
 export type BackupEnvelope = BackupEnvelopeInput & {
-  format: 'kizamu-backup';
+  format: 'pakapaka-backup';
   formatVersion: 1;
 };
 

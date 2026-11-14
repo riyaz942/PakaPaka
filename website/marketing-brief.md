@@ -1,4 +1,4 @@
-# NihongoCore — Marketing Page Brief
+# PakaPaka — Marketing Page Brief
 
 Brief for designing the new marketing landing page. Written from the codebase on 2026-10-25.
 It replaces the content of the old page (`website/index.html`).
@@ -9,7 +9,7 @@ It replaces the content of the old page (`website/index.html`).
 
 **Everything you learn unlocks the next thing, and every step uses only what you already know.**
 
-NihongoCore is one connected path through Japanese:
+PakaPaka is one connected path through Japanese:
 
 ```
 Radicals → Kanji → Vocabulary → Grammar → Reading → Conversation
@@ -32,14 +32,14 @@ Free, open source, and fully offline. No account.
 
 | | |
 | --- | --- |
-| Name | **NihongoCore** |
+| Name | **PakaPaka** |
 | What | Japanese learning app: kanji, vocabulary, grammar, reading and conversation |
 | Platforms | iOS 17+ and Android 13+ |
 | Price | Free. No subscription, no ads, no paywall |
 | Account | None. All progress stays on the phone |
 | Internet | Not needed. Only the optional AI chat uses the network |
 | License | Code: MIT. Content: CC BY-SA 4.0 |
-| Source | https://github.com/riyaz942/nihongo-core |
+| Source | https://github.com/riyaz942/pakapaka |
 | Mascot | **Alpi the alpaca** (cheers at the end of sessions; assets in `mobile/assets/images/mascot/`) |
 | Brand mark | 刻 ("to carve") — old tagline: *"Carve Japanese into memory."* |
 
@@ -76,7 +76,7 @@ Most learners use three or more apps: one for kanji (WaniKani), one for grammar 
 flashcard deck for everything else (Anki), and maybe a reader and a chat app too. Each one has
 its own subscription. None of them know what you learned in the others.
 
-NihongoCore puts all of it into one graph and one review queue. You can also import your
+PakaPaka puts all of it into one graph and one review queue. You can also import your
 progress from WaniKani, Bunpro and Anki, so you do not start again from zero.
 
 ---
@@ -127,9 +127,9 @@ progress from WaniKani, Bunpro and Anki, so you do not start again from zero.
 ### Start where you are
 - **New to Japanese:** a short day-one deck of guide cards.
 - **I know some:** pick your level and take a one-minute placement check.
-- **Import:** WaniKani (API), Bunpro, Anki (`.apkg`), or a NihongoCore backup.
+- **Import:** WaniKani (API), Bunpro, Anki (`.apkg`), or a PakaPaka backup.
   SRS stages convert to FSRS.
-- **Shadow mode:** use NihongoCore next to your current tools and compare before you change.
+- **Shadow mode:** use PakaPaka next to your current tools and compare before you change.
 
 ### No guilt
 - The daily goal ring can go past 100%.
