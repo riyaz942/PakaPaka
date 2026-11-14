@@ -1,4 +1,5 @@
 import '@/global.css';
+import '@/platform/registerWebAnimatedClassNames';
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
