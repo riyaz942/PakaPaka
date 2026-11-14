@@ -615,7 +615,7 @@ export default function ReviewScreen() {
           keyboardShouldPersistTaps="handled">
           <ItemLinkProvider base="/review/item">
             {/* Keyed on cursor: each new card slides in. */}
-            <FadeSlideIn key={cursor} duration={220} className="w-full">
+            <FadeSlideIn key={cursor} className="w-full">
               <ReviewCard
                 item={currentItem}
                 state={cardState}

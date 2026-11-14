@@ -1,12 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { FILL_SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
-const COUNT_UP_MS = 700;
+/** Natural frequency of FILL_SPRING, in rad/s. */
+const OMEGA = Math.sqrt(FILL_SPRING.stiffness / FILL_SPRING.mass);
+
+/**
+ * Share of the way to the target after `seconds`, on a critically damped
+ * spring — the same curve the bars and rings fill on.
+ */
+function springProgress(seconds: number): number {
+  return 1 - (1 + OMEGA * seconds) * Math.exp(-OMEGA * seconds);
+}
 
 /**
  * A whole number that counts from its last value up (or down) to `target`
- * with an ease-out, for headline stats. Shows `target` at once under reduced
+ * on the fill spring, for headline stats. Shows `target` at once under reduced
  * motion.
  */
 export function useCountUp(target: number): number {
@@ -25,10 +35,10 @@ export function useCountUp(target: number): number {
 
     const start = Date.now();
     let frame = requestAnimationFrame(function step() {
-      const t = Math.min(1, (Date.now() - start) / COUNT_UP_MS);
-      const eased = 1 - (1 - t) ** 3;
-      setShown(Math.round(from + (target - from) * eased));
-      if (t < 1) frame = requestAnimationFrame(step);
+      const progress = springProgress((Date.now() - start) / 1000);
+      const next = Math.round(from + (target - from) * progress);
+      setShown(next);
+      if (next !== target) frame = requestAnimationFrame(step);
     });
     return () => cancelAnimationFrame(frame);
   }, [target, reducedMotion]);

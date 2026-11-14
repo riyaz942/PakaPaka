@@ -4,6 +4,7 @@ import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
 import { MascotCelebration, type MascotPose } from '@/components/common/MascotCelebration';
+import { soft } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type SessionCompleteHeaderProps = {
@@ -17,8 +18,8 @@ type SessionCompleteHeaderProps = {
 
 /**
  * The jade check disc both session summaries open with (spec screen 13). The
- * disc is the celebration — it lands with a spring unless the learner asked for
- * reduced motion, and it never carries a number of its own.
+ * disc is the celebration — it zooms in unless the learner asked for reduced
+ * motion, and it never carries a number of its own.
  */
 export function SessionCompleteHeader({ title, caption, testID, mascot }: SessionCompleteHeaderProps) {
   const { reducedMotion } = useReducedMotion();
@@ -38,7 +39,7 @@ export function SessionCompleteHeader({ title, caption, testID, mascot }: Sessio
       ) : reducedMotion ? (
         disc
       ) : (
-        <Animated.View entering={ZoomIn.springify().damping(12)}>{disc}</Animated.View>
+        <Animated.View entering={soft(ZoomIn)}>{disc}</Animated.View>
       )}
 
       <Text

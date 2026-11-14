@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import Animated, {
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
+import { FILL_SPRING, STAGGER_MS } from '@/constants/motion';
 import type { ReviewForecast as ReviewForecastData } from '@/core/engagement/reviewForecast';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
@@ -37,7 +37,7 @@ function ForecastBar({
   useEffect(() => {
     grown.value = reducedMotion
       ? height
-      : withDelay(index * 50, withTiming(height, { duration: 450, easing: Easing.out(Easing.cubic) }));
+      : withDelay(index * STAGGER_MS, withSpring(height, FILL_SPRING));
   }, [grown, reducedMotion, height, index]);
 
   const style = useAnimatedStyle(() => ({ height: grown.value }));

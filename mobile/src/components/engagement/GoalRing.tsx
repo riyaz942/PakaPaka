@@ -4,12 +4,11 @@ import Animated, {
   FadeIn,
   useAnimatedStyle,
   useSharedValue,
-  withSequence,
   withSpring,
-  withTiming,
 } from 'react-native-reanimated';
 import Svg, { Circle } from 'react-native-svg';
 
+import { soft, SPRING } from '@/constants/motion';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { useHaptics } from '@/data/hooks/useHaptics';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
@@ -73,10 +72,8 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
     if (beaten && !wasBeaten.current) {
       playHaptic('success');
       if (!reducedMotion) {
-        scale.value = withSequence(
-          withTiming(1.12, { duration: 160 }),
-          withSpring(1, { damping: 7, stiffness: 200 }),
-        );
+        // A kick from rest: swells about 6% and eases home.
+        scale.value = withSpring(1, { ...SPRING, velocity: 2.2 });
       }
     }
     wasBeaten.current = beaten;
@@ -94,7 +91,7 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
         <Animated.View
           testID="goal-ring-halo"
           pointerEvents="none"
-          entering={reducedMotion ? undefined : FadeIn.duration(400)}
+          entering={reducedMotion ? undefined : soft(FadeIn)}
           className="absolute -inset-1 rounded-radius-full border-4 border-brand-soft-strong"
         />
       ) : null}

@@ -1,25 +1,20 @@
 import { useEffect } from 'react';
-import {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withSequence,
-  withSpring,
-  withTiming,
-} from 'react-native-reanimated';
+import { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
+import { SHAKE_SPRING, SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 /**
  * The three answer-feedback motions. Each one has its own shape so the learner
  * can feel the verdict before reading it:
- * - `shake` — close, try again: a quick side-to-side wobble.
- * - `thud`  — wrong: the field drops a little and settles.
- * - `pop`   — correct: a small spring bounce.
+ * - `shake` — close, try again: the field sways side to side and settles.
+ * - `thud`  — wrong: the field sinks a little and comes back up.
+ * - `pop`   — correct: a small swell and release.
+ *
+ * Each is a spring kicked with a velocity from rest, so it moves out and comes
+ * home on the same curve as every other motion in the app.
  */
 export type FeedbackMotion = 'shake' | 'thud' | 'pop';
-
-const SHAKE_STEP_MS = 45;
 
 /**
  * Plays `motion` each time `trigger` changes. Pass a submit counter as the
@@ -37,28 +32,12 @@ export function useFeedbackMotion(motion: FeedbackMotion | null, trigger: number
     if (!motion || trigger === 0 || reducedMotion) return;
 
     if (motion === 'shake') {
-      translateX.value = withSequence(
-        withTiming(-9, { duration: SHAKE_STEP_MS }),
-        withTiming(9, { duration: SHAKE_STEP_MS }),
-        withTiming(-6, { duration: SHAKE_STEP_MS }),
-        withTiming(6, { duration: SHAKE_STEP_MS }),
-        withTiming(-3, { duration: SHAKE_STEP_MS }),
-        withTiming(0, { duration: SHAKE_STEP_MS }),
-      );
+      translateX.value = withSpring(0, { ...SHAKE_SPRING, velocity: -300 });
     } else if (motion === 'thud') {
-      translateY.value = withSequence(
-        withTiming(6, { duration: 90, easing: Easing.out(Easing.quad) }),
-        withSpring(0, { damping: 9, stiffness: 260 }),
-      );
-      scale.value = withSequence(
-        withTiming(0.97, { duration: 90 }),
-        withSpring(1, { damping: 12, stiffness: 260 }),
-      );
+      translateY.value = withSpring(0, { ...SPRING, velocity: 260 });
+      scale.value = withSpring(1, { ...SPRING, velocity: -0.5 });
     } else {
-      scale.value = withSequence(
-        withTiming(1.04, { duration: 110, easing: Easing.out(Easing.quad) }),
-        withSpring(1, { damping: 8, stiffness: 220 }),
-      );
+      scale.value = withSpring(1, { ...SPRING, velocity: 1.1 });
     }
   }, [motion, trigger, reducedMotion, translateX, translateY, scale]);
 

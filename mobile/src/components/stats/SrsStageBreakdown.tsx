@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native';
 
 import { ProgressFill } from '@/components/common/ProgressFill';
+import { STAGGER_MS } from '@/constants/motion';
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 import { cn } from '@/utils/cn';
 
@@ -80,7 +81,7 @@ export function SrsStageBreakdown({ counts }: Props) {
               {/* Bars fill top to bottom, one after the other. */}
               <ProgressFill
                 percent={Math.round((count / peak) * 100)}
-                delayMs={index * 70}
+                delayMs={index * STAGGER_MS}
                 className={cn('h-full rounded-radius-full', STAGE_FILL_CLASS[stage])}
               />
             </View>

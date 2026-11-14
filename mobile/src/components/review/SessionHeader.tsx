@@ -4,6 +4,7 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { Icon } from '@/components/common/Icon';
 import { GoalRing } from '@/components/engagement';
+import { soft } from '@/constants/motion';
 import type { ReviewItem } from '@/core/srs/srs.types';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
@@ -47,7 +48,7 @@ export function SessionHeader({
         {/* Keyed on the number: each new count rises into place. */}
         <Animated.View
           key={displayNumber}
-          entering={reducedMotion ? undefined : FadeInDown.duration(220)}>
+          entering={reducedMotion ? undefined : soft(FadeInDown)}>
           <Text className="text-body-lg font-ui-extrabold text-primary">
             {`${displayNumber} of ${totalCards}`}
           </Text>

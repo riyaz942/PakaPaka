@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import Animated, {
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
+import { FILL_SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type ProgressFillProps = {
@@ -30,7 +30,7 @@ export function ProgressFill({ percent, className, delayMs = 0, testID }: Progre
   useEffect(() => {
     width.value = reducedMotion
       ? percent
-      : withDelay(delayMs, withTiming(percent, { duration: 600, easing: Easing.out(Easing.cubic) }));
+      : withDelay(delayMs, withSpring(percent, FILL_SPRING));
   }, [width, reducedMotion, percent, delayMs]);
 
   const style = useAnimatedStyle(() => ({ width: `${width.value}%` }));

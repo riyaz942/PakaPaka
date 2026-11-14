@@ -26,6 +26,7 @@ import { PttOverlay } from '@/components/converse/PttOverlay';
 import { TypingDots } from '@/components/converse/TypingDots';
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { WordLookupSheet } from '@/components/converse/WordLookupSheet';
+import { soft } from '@/constants/motion';
 import { buildChatWordSpans } from '@/core/ai/chatWordSpans';
 import type { GrammarPromptTopic } from '@/core/ai/systemPrompt';
 import { isOnline } from '@/data/ai/connectivity';
@@ -125,7 +126,7 @@ export default function ConversationSessionScreen() {
 
   const [lookupText, setLookupText] = useState<string | null>(null);
   const { reducedMotion } = useReducedMotion();
-  const messageEntering = reducedMotion ? undefined : FadeInDown.duration(240);
+  const messageEntering = reducedMotion ? undefined : soft(FadeInDown);
   // Conversation mode is another view over this same session, so a local flag
   // is the whole of it — no second data path, no Context for one boolean.
   const [mode, setMode] = useState<'chat' | 'ptt'>('chat');

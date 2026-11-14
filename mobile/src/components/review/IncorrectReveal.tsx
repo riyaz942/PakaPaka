@@ -6,6 +6,7 @@ import { GlyphText } from '@/components/common/GlyphText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { soft } from '@/constants/motion';
 import { diagnoseBuildAnswer } from '@/core/grammar/mistakes/diagnoseBuildAnswer';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
@@ -191,7 +192,7 @@ export function IncorrectReveal({
         </View>
       ) : synonymState.status === 'added' ? (
         <View className="flex-row items-center justify-center gap-space-xs">
-          <Animated.View entering={reducedMotion ? undefined : ZoomIn.springify().damping(10)}>
+          <Animated.View entering={reducedMotion ? undefined : soft(ZoomIn)}>
             <Icon name="correct" size={16} strokeWidth={2.6} className="text-feedback-correct" />
           </Animated.View>
           <Text className="flex-shrink text-center text-body-sm font-ui text-feedback-correct-deep">

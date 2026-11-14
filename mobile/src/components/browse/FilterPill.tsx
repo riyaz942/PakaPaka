@@ -3,6 +3,7 @@ import { Pressable, Text } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
+import { soft } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useFeedbackMotion } from '@/hooks/useFeedbackMotion';
 import { cn } from '@/utils/cn';
@@ -66,7 +67,7 @@ export function FilterPill({
 
       {active && onClear ? (
         <AnimatedPressable
-          entering={reducedMotion ? undefined : ZoomIn.springify().damping(12)}
+          entering={reducedMotion ? undefined : soft(ZoomIn)}
           accessibilityRole="button"
           accessibilityLabel={`Clear ${label} filter`}
           accessibilityState={{ disabled }}

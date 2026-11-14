@@ -4,10 +4,11 @@ import Animated, {
   FadeIn,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
+import { soft, SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type DisclosureProps = {
@@ -35,7 +36,9 @@ export function Disclosure({
   const rotation = useSharedValue(expanded ? 90 : 0);
   useEffect(() => {
     const target = expanded ? 90 : 0;
-    rotation.value = reducedMotion ? target : withTiming(target, { duration: 180 });
+    rotation.value = reducedMotion
+      ? target
+      : withSpring(target, SPRING);
   }, [expanded, reducedMotion, rotation]);
   const chevronStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotation.value}deg` }],
@@ -60,7 +63,7 @@ export function Disclosure({
       {expanded ? (
         <Animated.View
           testID={`${testID}-content`}
-          entering={reducedMotion ? undefined : FadeIn.duration(180)}>
+          entering={reducedMotion ? undefined : soft(FadeIn)}>
           {children}
         </Animated.View>
       ) : null}

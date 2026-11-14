@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View, type LayoutRectangle } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
+import { SPRING } from '@/constants/motion';
 import { useHaptics } from '@/data/hooks/useHaptics';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
@@ -32,7 +33,6 @@ type SegmentedPillProps<T extends string> = {
 /** Expand each segment's hit box to the 44px floor without growing the drawn track. */
 const SEGMENT_HIT_SLOP = { top: 9, bottom: 9, left: 4, right: 4 };
 
-const SLIDE_MS = 200;
 
 /**
  * The spec's segmented pill: a surface-elevated track holding one jade-filled
@@ -65,10 +65,8 @@ export function SegmentedPill<T extends string>({
   useEffect(() => {
     if (!selectedLayout) return;
     const animate = markerReady && !reducedMotion;
-    markerX.value = animate ? withTiming(selectedLayout.x, { duration: SLIDE_MS }) : selectedLayout.x;
-    markerWidth.value = animate
-      ? withTiming(selectedLayout.width, { duration: SLIDE_MS })
-      : selectedLayout.width;
+    markerX.value = animate ? withSpring(selectedLayout.x, SPRING) : selectedLayout.x;
+    markerWidth.value = animate ? withSpring(selectedLayout.width, SPRING) : selectedLayout.width;
     if (!markerReady) setMarkerReady(true);
   }, [selectedLayout, markerReady, reducedMotion, markerX, markerWidth]);
 

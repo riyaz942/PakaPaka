@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type ActionConfig = {
@@ -32,7 +33,7 @@ function ActiveDot() {
   const { reducedMotion } = useReducedMotion();
   const width = useSharedValue(reducedMotion ? ACTIVE_DOT_PX : DOT_PX);
   useEffect(() => {
-    width.value = reducedMotion ? ACTIVE_DOT_PX : withTiming(ACTIVE_DOT_PX, { duration: 280 });
+    width.value = reducedMotion ? ACTIVE_DOT_PX : withSpring(ACTIVE_DOT_PX, SPRING);
   }, [reducedMotion, width]);
   const style = useAnimatedStyle(() => ({ width: width.value }));
 

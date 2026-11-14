@@ -5,11 +5,11 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withDelay,
-  withSequence,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
 import { Icon } from '@/components/common/Icon';
+import { SHAKE_SPRING, soft } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 /**
@@ -22,15 +22,8 @@ export function UnlockedPill({ testID }: { testID?: string }) {
 
   useEffect(() => {
     if (reducedMotion) return;
-    tilt.value = withDelay(
-      250,
-      withSequence(
-        withTiming(-14, { duration: 70 }),
-        withTiming(12, { duration: 90 }),
-        withTiming(-8, { duration: 80 }),
-        withTiming(0, { duration: 80 }),
-      ),
-    );
+    // Kicked once after the pill lands: the lock sways and settles.
+    tilt.value = withDelay(200, withSpring(0, { ...SHAKE_SPRING, velocity: -300 }));
   }, [reducedMotion, tilt]);
 
   const lockStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${tilt.value}deg` }] }));
@@ -38,7 +31,7 @@ export function UnlockedPill({ testID }: { testID?: string }) {
   return (
     <Animated.View
       testID={testID}
-      entering={reducedMotion ? undefined : ZoomIn.springify().damping(11)}
+      entering={reducedMotion ? undefined : soft(ZoomIn)}
       className="flex-row items-center gap-[4px] rounded-radius-full bg-brand-soft px-space-sm py-[3px]">
       <Animated.View style={lockStyle}>
         <Icon name="locked" size={12} strokeWidth={2.4} className="text-brand-text" />

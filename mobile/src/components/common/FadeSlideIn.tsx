@@ -2,14 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import Animated, { FadeInDown, FadeOutUp } from 'react-native-reanimated';
 
+import { soft, softSlow, STAGGER_MS } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type FadeSlideInProps = {
   children: React.ReactNode;
-  /** Stagger index — each step delays entry by 70ms. */
+  /** Stagger index — each step delays entry by STAGGER_MS. */
   index?: number;
-  /** Entrance duration in ms. */
-  duration?: number;
+  /** Enter on the calmer fill spring instead of the standard one. */
+  slow?: boolean;
   /** Also fade and slide away when removed (dismissable cards). */
   exit?: boolean;
   className?: string;
@@ -23,7 +24,7 @@ type FadeSlideInProps = {
 export function FadeSlideIn({
   children,
   index = 0,
-  duration = 320,
+  slow = false,
   exit = false,
   className,
 }: FadeSlideInProps) {
@@ -36,8 +37,8 @@ export function FadeSlideIn({
   return (
     <Animated.View
       className={className}
-      entering={FadeInDown.duration(duration).delay(index * 70)}
-      exiting={exit ? FadeOutUp.duration(200) : undefined}>
+      entering={(slow ? softSlow : soft)(FadeInDown.delay(index * STAGGER_MS))}
+      exiting={exit ? soft(FadeOutUp) : undefined}>
       {children}
     </Animated.View>
   );

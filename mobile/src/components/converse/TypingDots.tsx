@@ -6,12 +6,13 @@ import Animated, {
   withDelay,
   withRepeat,
   withSequence,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
+import { SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
-const DOT_DELAY_MS = 140;
+const DOT_DELAY_MS = 150;
 
 function Dot({ index }: { index: number }) {
   const { reducedMotion } = useReducedMotion();
@@ -22,7 +23,7 @@ function Dot({ index }: { index: number }) {
     lift.value = withDelay(
       index * DOT_DELAY_MS,
       withRepeat(
-        withSequence(withTiming(-4, { duration: 260 }), withTiming(0, { duration: 260 })),
+        withSequence(withSpring(-4, SPRING), withSpring(0, SPRING)),
         -1,
       ),
     );

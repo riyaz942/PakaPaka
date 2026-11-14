@@ -6,7 +6,9 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
+import { SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
+
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -38,13 +40,13 @@ export function PressableScale({
       style={animatedStyle}
       onPressIn={(event) => {
         if (!reducedMotion) {
-          scale.value = withSpring(0.97, { damping: 20, stiffness: 300 });
+          scale.value = withSpring(0.97, SPRING);
         }
         onPressIn?.(event);
       }}
       onPressOut={(event) => {
         if (!reducedMotion) {
-          scale.value = withSpring(1, { damping: 20, stiffness: 300 });
+          scale.value = withSpring(1, SPRING);
         }
         onPressOut?.(event);
       }}>

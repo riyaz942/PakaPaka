@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
 import Animated, {
-  Easing,
   useAnimatedProps,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 import { Circle } from 'react-native-svg';
 
+import { FILL_SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
-const SWEEP_MS = 700;
 
 type AnimatedArcProps = {
   size: number;
@@ -35,7 +33,7 @@ export function AnimatedArc({ size, radius, strokeWidth, circumference, swept, c
   useEffect(() => {
     progress.value = reducedMotion
       ? swept
-      : withTiming(swept, { duration: SWEEP_MS, easing: Easing.out(Easing.cubic) });
+      : withSpring(swept, FILL_SPRING);
   }, [progress, reducedMotion, swept]);
 
   const animatedProps = useAnimatedProps(() => ({

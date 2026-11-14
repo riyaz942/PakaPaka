@@ -24,6 +24,7 @@ import { LessonSessionHeader } from '@/components/common/LessonSessionHeader';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
+import { SPRING } from '@/constants/motion';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useHaptics } from '@/data/hooks/useHaptics';
@@ -42,7 +43,6 @@ const SWIPE_VELOCITY = 550;
 const HORIZONTAL_ACTIVATION_PX = 14;
 const VERTICAL_BAILOUT_PX = 14;
 const EXIT_MS = 170;
-const ENTER_MS = 220;
 /** Degrees of tilt at full-width drag — a hint of weight, not a spin. */
 const MAX_TILT_DEG = 7;
 /** On the first card a back-drag moves at this share of the finger — nothing is behind it. */
@@ -190,19 +190,16 @@ export default function LessonScreen() {
   /** Release below threshold, or nothing to go back to: card returns home. */
   const cancelSwipe = useCallback(() => {
     pendingEnterDirection.current = null;
-    translateX.value = withTiming(0, {
-      duration: ENTER_MS,
-      easing: Easing.out(Easing.cubic),
-    });
+    translateX.value = withSpring(0, SPRING);
   }, [translateX]);
 
-  /** Back from the first card: the card springs home with a small wobble. */
+  /** Back from the first card: nothing behind it, so the card eases home. */
   const bounceAtStart = useCallback(() => {
     pendingEnterDirection.current = null;
     playHaptic('light');
     translateX.value = reducedMotionRef.current
       ? 0
-      : withSpring(0, { damping: 7, stiffness: 260 });
+      : withSpring(0, SPRING);
   }, [playHaptic, translateX]);
 
   /** The one place the lesson actually moves. */
@@ -218,10 +215,7 @@ export default function LessonScreen() {
   const startEnterAnimation = useCallback(
     (direction: SwipeDirection) => {
       translateX.value = direction === 'next' ? exitDistance : -exitDistance;
-      translateX.value = withTiming(0, {
-        duration: ENTER_MS,
-        easing: Easing.out(Easing.cubic),
-      });
+      translateX.value = withSpring(0, SPRING);
     },
     [exitDistance, translateX],
   );

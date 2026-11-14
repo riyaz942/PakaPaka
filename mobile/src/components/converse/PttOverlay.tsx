@@ -6,12 +6,13 @@ import Animated, {
   useSharedValue,
   withRepeat,
   withSequence,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
 import { Icon } from '@/components/common/Icon';
+import { FILL_SPRING, SPRING } from '@/constants/motion';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { parseFurigana } from '@/core/furigana/parseFurigana';
 import {
@@ -87,12 +88,15 @@ export function PttOverlay({
   useEffect(() => {
     if (phase === 'recording' && !reducedMotion) {
       micScale.value = withRepeat(
-        withSequence(withTiming(1.18, { duration: 450 }), withTiming(1, { duration: 450 })),
+        withSequence(
+          withSpring(1.12, FILL_SPRING),
+          withSpring(1, FILL_SPRING),
+        ),
         -1,
       );
     } else {
       cancelAnimation(micScale);
-      micScale.value = withTiming(1, { duration: 150 });
+      micScale.value = withSpring(1, SPRING);
     }
   }, [phase, reducedMotion, micScale]);
   const micStyle = useAnimatedStyle(() => ({ transform: [{ scale: micScale.value }] }));
