@@ -12,6 +12,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { SPRING } from '@/constants/motion';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 export type MascotPose = 'goal-achieved' | 'yay';
@@ -84,7 +85,7 @@ function Bouncing({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Jump in, land with a squash, then keep a gentle hop going.
     translateY.value = withSequence(
-      withSpring(0, { damping: 9, stiffness: 180 }),
+      withSpring(0, SPRING),
       withDelay(
         300,
         withRepeat(
@@ -98,11 +99,11 @@ function Bouncing({ children }: { children: React.ReactNode }) {
     );
     scaleX.value = withSequence(
       withTiming(1.15, { duration: 260 }),
-      withSpring(1, { damping: 6 }),
+      withSpring(1, SPRING),
     );
     scaleY.value = withSequence(
       withTiming(0.85, { duration: 260 }),
-      withSpring(1, { damping: 6 }),
+      withSpring(1, SPRING),
     );
   }, [translateY, scaleX, scaleY]);
 

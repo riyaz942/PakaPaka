@@ -249,7 +249,7 @@ git commit -am "feat(web): capability checks; hide Talk, voice, notifications, t
 
 `backupFile.web.test.ts` (import `./backupFile.web` directly):
 - `readBackupFile('blob:x')` with `global.fetch` mocked to return bytes `[0x1f, 0x8b, 0x08]` resolves to `'H4sI'`.
-- `saveBackupFile('kizamu-backup-1.json.gz', 'H4sI')` calls `URL.createObjectURL` once, clicks an anchor whose `download` is `kizamu-backup-1.json.gz`, calls `URL.revokeObjectURL`, and resolves `null` (stub `document.createElement` / `URL`).
+- `saveBackupFile('pakapaka-backup-1.json.gz', 'H4sI')` calls `URL.createObjectURL` once, clicks an anchor whose `download` is `pakapaka-backup-1.json.gz`, calls `URL.revokeObjectURL`, and resolves `null` (stub `document.createElement` / `URL`).
 - Settings test (web): after a successful export, `Sharing.shareAsync` is not called and no error text is shown.
 - Onboarding import test (web): WaniKani/Bunpro/Anki options absent; backup option present. Welcome test (web): the three pills absent.
 - Existing `exportBackup.test.ts` / `restoreBackup.test.ts` pass unchanged (native path).
@@ -286,7 +286,7 @@ git commit -am "feat(web): backup download and restore from picked file on web"
 - [ ] **Step 1: Write the failing tests**
 
 - `requestPersistentStorage.web.test.ts`: three cases — no `navigator.storage` → `'unsupported'`; `persisted()` true → `'granted'` and `persist` not called; `persisted()` false, `persist()` false → `'denied'`.
-- `DatabaseProvider.test.tsx` (web, `initializeDatabases` mocked to fail): screen shows `Unable to open local databases.` **and** `If NihongoCore is open in another tab, close that tab and reload this page.` On iOS the second line is absent.
+- `DatabaseProvider.test.tsx` (web, `initializeDatabases` mocked to fail): screen shows `Unable to open local databases.` **and** `If PakaPaka is open in another tab, close that tab and reload this page.` On iOS the second line is absent.
 
 - [ ] **Step 2: Run, see fail** — `npx jest src/platform/requestPersistentStorage src/providers/DatabaseProvider` → FAIL.
 
@@ -310,13 +310,13 @@ git commit -am "feat(web): request persistent storage; explain the second-tab DB
 - Modify: `mobile/.gitignore` (`.wrangler/`, `.dev.vars`)
 
 **Interfaces:**
-- Produces: a Worker named `nihongocore-web` serving `dist/` as a single-page app. Part 2 adds the API to this same Worker (same origin).
+- Produces: a Worker named `pakapaka-web` serving `dist/` as a single-page app. Part 2 adds the API to this same Worker (same origin).
 
 - [ ] **Step 1: Write `wrangler.jsonc`**
 
 ```jsonc
 {
-  "name": "nihongocore-web",
+  "name": "pakapaka-web",
   "compatibility_date": "2026-11-01",
   "assets": { "directory": "./dist", "not_found_handling": "single-page-application" }
   // "routes": [{ "pattern": "<operator domain>", "custom_domain": true }]  ← added in Step 4

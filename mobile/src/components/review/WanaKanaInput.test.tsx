@@ -6,6 +6,11 @@ import { buildKanjiConversions } from '@/core/grammar/kanjiAutoConvert';
 
 import { WanaKanaInput } from './WanaKanaInput';
 
+// Motion on: the feedback animations run (as no-ops under the reanimated mock).
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: false }),
+}));
+
 const CONVERSIONS = buildKanjiConversions(['明日[あした]は忙[いそが]しいです。']);
 
 function ControlledKanaInput({ withConversions }: { withConversions: boolean }) {

@@ -5,7 +5,7 @@ import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { MaxContentWidth } from '@/constants/theme';
 
-const SOURCE_URL = 'https://github.com/riyaz942/nihongo-core';
+const SOURCE_URL = 'https://github.com/riyaz942/pakapaka';
 
 type Attribution = {
   id: string;
@@ -78,7 +78,7 @@ export default function AboutScreen() {
       <ScreenHeader title="About" backAccessibilityLabel="Back to Settings" backTestID="about-back" />
       <View className="flex-1" style={{ alignSelf: 'center', maxWidth: MaxContentWidth, width: '100%' }}>
         <ScrollView contentContainerClassName="px-space-lg pb-space-xl pt-space-md">
-          <Text className="text-title font-ui-extrabold text-primary">NihongoCore</Text>
+          <Text className="text-title font-ui-extrabold text-primary">PakaPaka</Text>
           {version ? (
             <Text className="mt-[2px] text-caption font-ui-medium text-muted" testID="about-version">
               Version {version}

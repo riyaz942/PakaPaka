@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react-native';
 
 import { goalStateLine, SessionSummaryCard, slippedLine } from './SessionSummaryCard';
 
+// Reduced motion draws the rings and bars at their final value at once.
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 const BASE_PROPS = {
   domainCounts: { radical: 0, kanji: 8, vocabulary: 5, grammar: 2 },
   itemsReviewed: 15,

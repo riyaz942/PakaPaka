@@ -2,6 +2,10 @@ import { render, screen, within } from '@testing-library/react-native';
 
 import StatsScreen from './stats';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 jest.mock('expo-router', () => ({
   // Stats refetches on every focus (BUG1 pattern) — run the callback as an effect.
   useFocusEffect: (cb: () => void) => {

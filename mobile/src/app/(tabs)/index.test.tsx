@@ -1,10 +1,23 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import HomeScreen from './index';
 
 import { serializeHomeLayout } from '@/core/engagement/homeLayout';
 import { clearReviewPriority, getReviewPriority } from '@/data/reviewPriorityStore';
+
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
 
 const mockRouterPush = jest.fn();
 
@@ -425,7 +438,7 @@ describe('HomeScreen', () => {
     render(<HomeScreen />);
 
     const ring = screen.getByLabelText('Goal 42 percent');
-    expect(ring.props.style).toEqual({ width: 160, height: 160 });
+    expect(StyleSheet.flatten(ring.props.style)).toMatchObject({ width: 160, height: 160 });
     expect(screen.getByText("Today's goal")).toBeTruthy();
     expect(screen.getByRole('button', { name: /start today's lesson/i })).toBeTruthy();
     expect(screen.getByRole('button', { name: /review 2 items due/i })).toBeTruthy();

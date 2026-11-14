@@ -1,5 +1,5 @@
 import { router, type Href } from 'expo-router';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   ScrollView,
@@ -13,6 +13,7 @@ import Animated, {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
+  withSpring,
   withTiming,
   type AnimationCallback,
 } from 'react-native-reanimated';
@@ -23,8 +24,10 @@ import { LessonSessionHeader } from '@/components/common/LessonSessionHeader';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
+import { SPRING } from '@/constants/motion';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useHaptics } from '@/data/hooks/useHaptics';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { addDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
@@ -40,9 +43,10 @@ const SWIPE_VELOCITY = 550;
 const HORIZONTAL_ACTIVATION_PX = 14;
 const VERTICAL_BAILOUT_PX = 14;
 const EXIT_MS = 170;
-const ENTER_MS = 220;
 /** Degrees of tilt at full-width drag — a hint of weight, not a spin. */
 const MAX_TILT_DEG = 7;
+/** On the first card a back-drag moves at this share of the finger — nothing is behind it. */
+const START_EDGE_RESISTANCE = 0.35;
 
 type SwipeDirection = 'next' | 'back';
 
@@ -76,6 +80,12 @@ export default function LessonScreen() {
   /** Far enough that the card is fully clear of the screen before the swap. */
   const exitDistance = windowWidth;
   const translateX = useSharedValue(0);
+  // Read inside the pan worklet: on the first card a back-drag meets resistance.
+  const atStart = useSharedValue(isAtStart);
+  useEffect(() => {
+    atStart.value = isAtStart;
+  }, [atStart, isAtStart]);
+  const { play: playHaptic } = useHaptics();
   /** Guards the exit leg so a double-tap can't stack two transitions. */
   const isSwiping = useRef(false);
   /**
@@ -180,11 +190,17 @@ export default function LessonScreen() {
   /** Release below threshold, or nothing to go back to: card returns home. */
   const cancelSwipe = useCallback(() => {
     pendingEnterDirection.current = null;
-    translateX.value = withTiming(0, {
-      duration: ENTER_MS,
-      easing: Easing.out(Easing.cubic),
-    });
+    translateX.value = withSpring(0, SPRING);
   }, [translateX]);
+
+  /** Back from the first card: nothing behind it, so the card eases home. */
+  const bounceAtStart = useCallback(() => {
+    pendingEnterDirection.current = null;
+    playHaptic('light');
+    translateX.value = reducedMotionRef.current
+      ? 0
+      : withSpring(0, SPRING);
+  }, [playHaptic, translateX]);
 
   /** The one place the lesson actually moves. */
   const applyDirection = useCallback((direction: SwipeDirection) => {
@@ -199,10 +215,7 @@ export default function LessonScreen() {
   const startEnterAnimation = useCallback(
     (direction: SwipeDirection) => {
       translateX.value = direction === 'next' ? exitDistance : -exitDistance;
-      translateX.value = withTiming(0, {
-        duration: ENTER_MS,
-        easing: Easing.out(Easing.cubic),
-      });
+      translateX.value = withSpring(0, SPRING);
     },
     [exitDistance, translateX],
   );
@@ -259,7 +272,7 @@ export default function LessonScreen() {
     (direction: SwipeDirection) => {
       if (isSwiping.current) return;
       if (direction === 'back' && !cardRef.current.canGoBack) {
-        cancelSwipe();
+        bounceAtStart();
         return;
       }
 
@@ -282,7 +295,7 @@ export default function LessonScreen() {
         onExit,
       );
     },
-    [applyDirection, cancelSwipe, exitDistance, onExitComplete, translateX],
+    [applyDirection, bounceAtStart, exitDistance, onExitComplete, translateX],
   );
 
   // Pan, so the card tracks the finger. `activeOffsetX`/`failOffsetY` hand
@@ -296,7 +309,10 @@ export default function LessonScreen() {
         .failOffsetY([-VERTICAL_BAILOUT_PX, VERTICAL_BAILOUT_PX])
         .withTestId('lesson-card-pan')
         .onUpdate((event) => {
-          translateX.value = event.translationX;
+          translateX.value =
+            atStart.value && event.translationX > 0
+              ? event.translationX * START_EDGE_RESISTANCE
+              : event.translationX;
         })
         .onEnd((event) => {
           const committed =
@@ -308,7 +324,7 @@ export default function LessonScreen() {
           }
           runOnJS(runSwipe)(event.translationX < 0 ? 'next' : 'back');
         }),
-    [cancelSwipe, runSwipe, translateX],
+    [atStart, cancelSwipe, runSwipe, translateX],
   );
 
   const cardStyle = useAnimatedStyle(() => ({

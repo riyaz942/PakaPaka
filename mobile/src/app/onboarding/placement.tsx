@@ -6,6 +6,7 @@ import { GlyphText } from '@/components/common/GlyphText';
 import { Button } from '@/components/common/Button';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
+import { ProgressFill } from '@/components/common/ProgressFill';
 import { JlptLevelPicker } from '@/components/common/JlptLevelPicker';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { StepperRow } from '@/components/common/StepperRow';
@@ -345,9 +346,9 @@ export default function PlacementScreen() {
           accessibilityRole="progressbar"
           accessibilityLabel={`Card ${answers.length + 1} of ${sample.length}`}
           className="h-1.5 overflow-hidden rounded-radius-full bg-surface-elevated">
-          <View
+          <ProgressFill
+            percent={(answers.length / sample.length) * 100}
             className="h-full rounded-radius-full bg-brand-500"
-            style={{ width: `${(answers.length / sample.length) * 100}%` }}
           />
         </View>
 

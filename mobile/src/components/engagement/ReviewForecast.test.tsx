@@ -4,6 +4,10 @@ import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 
 import { ReviewForecast } from './ReviewForecast';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 const NOW = new Date(2026, 6, 20, 12, 0, 0); // Mon 2026-07-20 local
 
 function isoOnLocalDay(dayOffset: number, hour = 9): string {

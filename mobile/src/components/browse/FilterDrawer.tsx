@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Modal, Pressable, Text, View } from 'react-native';
 
 import {
   BROWSE_FACET_LABELS,
@@ -21,6 +21,7 @@ type FilterDrawerProps = {
   onDismiss: () => void;
   /** Live count of rows the draft selection would produce (FR64). */
   count: number;
+  /** True while the count runs: Apply shows a loader and the drawer's buttons do not respond. */
   isCounting: boolean;
 };
 
@@ -42,10 +43,9 @@ export function FilterDrawer({
 }: FilterDrawerProps) {
   const sheetFrame = useSheetFrame();
   const options = BROWSE_FACET_OPTIONS[facet];
-  // Disable only at a zero result count (FR64). Keep showing the last settled N
-  // while a recount is in flight — do not blank the label or disable solely
-  // because isCounting flipped true.
-  const applyDisabled = count === 0;
+  // Disabled at a zero result count (FR64), and while a recount is in flight
+  // so the learner cannot apply against a stale count.
+  const applyDisabled = count === 0 || isCounting;
 
   return (
     <Modal
@@ -72,6 +72,8 @@ export function FilterDrawer({
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={`Clear ${BROWSE_FACET_LABELS[facet]} selection`}
+            accessibilityState={{ disabled: isCounting }}
+            disabled={isCounting}
             onPress={onClear}
             testID={`browse-filter-clear-${facet}`}
             className="min-h-[44px] justify-center">
@@ -89,8 +91,9 @@ export function FilterDrawer({
               <Pressable
                 key={value}
                 accessibilityRole="checkbox"
-                accessibilityState={{ checked: isSelected }}
+                accessibilityState={{ checked: isSelected, disabled: isCounting }}
                 accessibilityLabel={facetValueLabel(facet, value)}
+                disabled={isCounting}
                 onPress={() => onToggle(value)}
                 testID={`browse-filter-option-${facet}-${value}`}
                 className={cn(
@@ -114,7 +117,11 @@ export function FilterDrawer({
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={
-            count === 0 ? 'No matches for this selection' : `Apply filters, ${count} results`
+            isCounting
+              ? 'Counting results'
+              : count === 0
+                ? 'No matches for this selection'
+                : `Apply filters, ${count} results`
           }
           accessibilityState={{ disabled: applyDisabled, busy: isCounting }}
           disabled={applyDisabled}
@@ -124,13 +131,17 @@ export function FilterDrawer({
             'min-h-[48px] items-center justify-center rounded-radius-md',
             applyDisabled ? 'bg-surface-elevated' : 'bg-brand-600',
           )}>
-          <Text
-            className={cn(
-              'text-body font-ui-semibold',
-              applyDisabled ? 'text-faint' : 'text-on-primary',
-            )}>
-            {`Apply (${count})`}
-          </Text>
+          {isCounting ? (
+            <ActivityIndicator testID={`browse-filter-counting-${facet}`} />
+          ) : (
+            <Text
+              className={cn(
+                'text-body font-ui-semibold',
+                applyDisabled ? 'text-faint' : 'text-on-primary',
+              )}>
+              {`Apply (${count})`}
+            </Text>
+          )}
         </Pressable>
       </View>
     </Modal>

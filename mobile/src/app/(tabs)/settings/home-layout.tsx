@@ -11,7 +11,7 @@ import Animated, {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from 'react-native-reanimated';
 
 import { Button } from '@/components/common/Button';
@@ -38,6 +38,7 @@ import {
   PREVIEW_LEVEL_PER_TYPE,
   PREVIEW_READING_TARGET,
 } from '@/components/engagement/homeLayoutPreviewData';
+import { SPRING } from '@/constants/motion';
 import { MaxContentWidth } from '@/constants/theme';
 import {
   defaultHomeLayout,
@@ -146,7 +147,7 @@ function HomeLayoutRow({
         .onEnd((event) => {
           const rawDelta = Math.round(event.translationY / HOME_LAYOUT_ROW_HEIGHT);
           const clamped = Math.max(-index, Math.min(total - 1 - index, rawDelta));
-          translateY.value = reducedMotion ? 0 : withTiming(0, { duration: 150 });
+          translateY.value = reducedMotion ? 0 : withSpring(0, SPRING);
           if (clamped !== 0) {
             runOnJS(onDrop)(entry.id, clamped);
           }

@@ -1,9 +1,12 @@
 import { Pressable, Text, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { Icon } from '@/components/common/Icon';
 import { GoalRing } from '@/components/engagement';
+import { soft } from '@/constants/motion';
 import type { ReviewItem } from '@/core/srs/srs.types';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type ItemType = ReviewItem['itemType'];
 
@@ -32,6 +35,7 @@ export function SessionHeader({
   // can equal totalCards while retry cards are still being shown.
   const displayNumber = Math.min(cardsCompleted + 1, totalCards);
   const a11yLabel = `Card ${displayNumber} of ${totalCards}, goal ${cognitiveLoadPercent} percent, ${itemType} card`;
+  const { reducedMotion } = useReducedMotion();
 
   return (
     <View className="flex-row items-center px-space-md" style={{ height: 56 }}>
@@ -41,9 +45,14 @@ export function SessionHeader({
         className="flex-1 flex-row items-center gap-space-sm">
         <GoalRing variant="small" percent={cognitiveLoadPercent} />
 
-        <Text className="text-body-lg font-ui-extrabold text-primary">
-          {`${displayNumber} of ${totalCards}`}
-        </Text>
+        {/* Keyed on the number: each new count rises into place. */}
+        <Animated.View
+          key={displayNumber}
+          entering={reducedMotion ? undefined : soft(FadeInDown)}>
+          <Text className="text-body-lg font-ui-extrabold text-primary">
+            {`${displayNumber} of ${totalCards}`}
+          </Text>
+        </Animated.View>
 
         <ContentTypeBadge itemType={itemType} />
       </View>

@@ -490,9 +490,10 @@ export default function HomeScreen() {
 
           {/* Single conditional banner slot (UX-DR5, brainstorm O2):
               highest-priority eligible banner wins; permanent sections
-              below always render. */}
+              below always render. Each banner is keyed so a dismissed one
+              slides away and the next one slides in. */}
           {!isLoading && welcomeBackOffer && !welcomeBackDismissed ? (
-            <FadeSlideIn index={1}>
+            <FadeSlideIn key="welcome-back" index={1} exit>
               <WelcomeBackCard
                 sliceSize={welcomeBackOffer.sliceSize}
                 dueCount={welcomeBackOffer.dueCount}
@@ -501,7 +502,7 @@ export default function HomeScreen() {
               />
             </FadeSlideIn>
           ) : !isLoading && showCurriculumUpdatedBanner ? (
-            <FadeSlideIn index={1}>
+            <FadeSlideIn key="curriculum-updated" index={1} exit>
               {/* The v2 banner shape (soft jade fill, drawn icon, one line), kept
                   as its own card because this notice carries a dismiss. */}
               <View
@@ -526,7 +527,7 @@ export default function HomeScreen() {
                  — the OS already backs the sandbox up. Outranks the import
                  nudge: losing progress beats importing more of it. */
             !isLoading && showBackupNudge && !backupNudgeDismissed ? (
-            <FadeSlideIn index={1}>
+            <FadeSlideIn key="backup-nudge" index={1} exit>
               <BackupNudgeCard
                 lastBackedUpAt={lastBackedUpAt}
                 onBackUp={() => router.push('/settings')}
@@ -534,14 +535,14 @@ export default function HomeScreen() {
               />
             </FadeSlideIn>
           ) : !isLoading && showImportNudge && !importNudgeDismissed ? (
-            <FadeSlideIn index={1}>
+            <FadeSlideIn key="import-nudge" index={1} exit>
               <ImportNudgeCard
                 onImport={() => router.push('/settings')}
                 onDismiss={() => setImportNudgeDismissed(true)}
               />
             </FadeSlideIn>
           ) : !isLoading && shouldShowSwitchPrompt ? (
-            <FadeSlideIn index={1}>
+            <FadeSlideIn key="shadow-switch" index={1} exit>
               <ShadowModeSwitchPrompt
                 daysActive={shadowModeDaysActive}
                 onCommit={handleShadowModeCommit}

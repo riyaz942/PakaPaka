@@ -1,4 +1,4 @@
-# NihongoCore — Super Summary
+# PakaPaka — Super Summary
 
 Short summary for competitor research. Written from the code and the seed `curriculum.db`, not from
 other docs. Snapshot date: 2026-10-21. For the full screen-by-screen view, see
@@ -6,7 +6,7 @@ other docs. Snapshot date: 2026-10-21. For the full screen-by-screen view, see
 
 ## What it is
 
-NihongoCore is a free, open-source Japanese learning app for iOS and Android (Expo / React Native).
+PakaPaka is a free, open-source Japanese learning app for iOS and Android (Expo / React Native).
 It has no account and no subscription. All progress stays on the phone. Only the AI chat needs the
 internet.
 

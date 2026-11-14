@@ -247,6 +247,7 @@ CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);
 CREATE INDEX idx_example_sentence_spans_sentence ON example_sentence_spans(sentence_id);
 CREATE INDEX idx_grammar_sentence_answers_sentence ON grammar_sentence_answers(sentence_id);
 CREATE INDEX idx_grammar_answer_units_sentence ON grammar_answer_units(sentence_id);
+CREATE INDEX idx_kanji_readings_item ON kanji_readings(item_id);
 CREATE INDEX idx_accepted_answers_item ON accepted_answers(item_id, answer_type);
 CREATE INDEX idx_accepted_answers_text ON accepted_answers(answer_type, answer_text);
 CREATE INDEX idx_items_item_type ON items(item_type);

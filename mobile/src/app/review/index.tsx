@@ -16,6 +16,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { DailyThresholdNotice } from '@/components/engagement';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
@@ -42,6 +43,7 @@ import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
 import { useAnswerCollision } from '@/data/hooks/useAnswerCollision';
 import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
+import { useHaptics } from '@/data/hooks/useHaptics';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
 import { useWideLayout } from '@/hooks/useWideLayout';
@@ -100,6 +102,7 @@ export default function ReviewScreen() {
   const getRevealDetail = useReviewRevealDetails(currentItem, prefetchBuffer);
   const { autoAdvanceEnabled } = useReviewAutoAdvance();
   const detectAnswerCollision = useAnswerCollision();
+  const { play: playHaptic } = useHaptics();
 
   const [exitVisible, setExitVisible] = useState(false);
   const [thresholdNoticeVisible, setThresholdNoticeVisible] = useState(false);
@@ -120,6 +123,9 @@ export default function ReviewScreen() {
   const [answerCollision, setAnswerCollision] = useState<AnswerCollision | null>(null);
   // Grammar Build close state: the one-line nudge from the evaluator.
   const [closeNudge, setCloseNudge] = useState<string | undefined>();
+  // Bumped on every verdict so the input replays its feedback motion, even
+  // when the verdict repeats (two typos in a row).
+  const [feedbackKey, setFeedbackKey] = useState(0);
 
   // Contextual guidance (Epic 7). Both must be called unconditionally, above the
   // loading/error/empty/complete early returns below — and after `cardState`,
@@ -335,6 +341,7 @@ export default function ReviewScreen() {
     // state-derived `inputEditable` flag before it re-renders.
     if (isSubmittingRef.current) return;
     isSubmittingRef.current = true;
+    setFeedbackKey((key) => key + 1);
 
     setCardState('evaluating');
     const evaluation = evaluateReviewAnswer(currentItem, submittedAnswer);
@@ -342,6 +349,15 @@ export default function ReviewScreen() {
     if (currentItem.promptType !== 'meaning') {
       AccessibilityInfo.announceForAccessibility(submittedAnswer);
     }
+
+    // The buzz matches the input's motion: light tap, warning, or error.
+    playHaptic(
+      evaluation.result === 'correct'
+        ? 'light'
+        : evaluation.result === 'incorrect'
+          ? 'error'
+          : 'warning',
+    );
 
     if (evaluation.result === 'correct') {
       dismissSoftKeyboard();
@@ -422,7 +438,7 @@ export default function ReviewScreen() {
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     dismissSoftKeyboard();
     setCardState('incorrect');
-  }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
+  }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, playHaptic, recordTypoForCurrentItem]);
 
   // Second Return (or Continue) after a correct answer: apply the deferred
   // grade and advance. Never re-evaluates input — the answer already graded.
@@ -473,6 +489,8 @@ export default function ReviewScreen() {
     setStageTransition(peekStageTransition(grade));
     pendingGradeRef.current = grade;
     isSubmittingRef.current = false;
+    setFeedbackKey((key) => key + 1);
+    playHaptic('light');
     setCardState('correct');
   }
 
@@ -614,6 +632,8 @@ export default function ReviewScreen() {
             contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
             keyboardShouldPersistTaps="handled">
             <ItemLinkProvider base="/review/item">
+            {/* Keyed on cursor: each new card slides in. */}
+            <FadeSlideIn key={cursor} className="w-full">
               <ReviewCard
                 item={currentItem}
                 state={cardState}
@@ -629,6 +649,7 @@ export default function ReviewScreen() {
                 grammarAnswerError={grammarAnswerError}
                 closeNudge={closeNudge}
               />
+            </FadeSlideIn>
             </ItemLinkProvider>
 
             {firstMissCard.visible ? (
@@ -662,6 +683,7 @@ export default function ReviewScreen() {
                   editable={false}
                   autoFocus={false}
                   state="incorrect"
+                feedbackKey={feedbackKey}
                   testID="review-rejected-answer"
                 />
               ) : null}
@@ -692,6 +714,7 @@ export default function ReviewScreen() {
                 editable={inputEditable}
                 autoFocus={inputEditable}
                 state={inputState}
+              feedbackKey={feedbackKey}
                 kanjiConversions={kanjiConversions}
               />
               <Button
@@ -724,6 +747,7 @@ export default function ReviewScreen() {
                 editable={inputEditable}
                 autoFocus={inputEditable}
                 state={inputState}
+              feedbackKey={feedbackKey}
                 kanjiConversions={kanjiConversions}
               />
               <Pressable

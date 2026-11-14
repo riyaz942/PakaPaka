@@ -143,7 +143,7 @@ describe('exportBackup', () => {
     if (!result.ok) return;
 
     expect(result.value.fileUri!.endsWith('.json.gz')).toBe(true);
-    expect(result.value.fileUri).toMatch(/kizamu-backup-\d{4}-\d{2}-\d{2}T/);
+    expect(result.value.fileUri).toMatch(/pakapaka-backup-\d{4}-\d{2}-\d{2}T/);
     expect(result.value.byteSize).toBeGreaterThan(0);
     expect(result.value.itemCount).toBe(4);
     expect(result.value.omittedCount).toBe(0);
@@ -153,7 +153,7 @@ describe('exportBackup', () => {
     expect(parsed.ok).toBe(true);
     if (!parsed.ok) return;
 
-    expect(parsed.value.format).toBe('kizamu-backup');
+    expect(parsed.value.format).toBe('pakapaka-backup');
     expect(parsed.value.formatVersion).toBe(1);
     expect(parsed.value.schemaVersion).toBe(19);
     expect(parsed.value.curriculumVersion).toBe('1.4.0');

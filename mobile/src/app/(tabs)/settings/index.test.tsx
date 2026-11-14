@@ -6,6 +6,16 @@ import { cancelAllNotifications, scheduleReviewReminder } from '@/config/notific
 
 import SettingsScreen from './index';
 
+const mockSetHapticsEnabled = jest.fn();
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: mockSetHapticsEnabled,
+    refetch: jest.fn(),
+  }),
+}));
+
 const mockSetReducedMotion = jest.fn();
 const mockSetThemeMode = jest.fn();
 let mockStoredThemeMode: 'system' | 'light' | 'dark' = 'system';
@@ -300,6 +310,14 @@ describe('SettingsScreen accessibility', () => {
     fireEvent.press(screen.getByTestId('settings-reduced-motion-toggle'));
     expect(mockSetReducedMotion).toHaveBeenCalledWith(true);
   });
+
+  it('shows Vibration on by default and persists turning it off', () => {
+    render(<SettingsScreen />);
+    const toggle = screen.getByRole('switch', { name: 'Vibration' });
+    expect(toggle.props.accessibilityState.checked).toBe(true);
+    fireEvent.press(screen.getByTestId('settings-haptics-toggle'));
+    expect(mockSetHapticsEnabled).toHaveBeenCalledWith(false);
+  });
 });
 
 describe('SettingsScreen review auto-advance toggle (Story 1.2, FR84 / UX-DR10)', () => {
@@ -539,7 +557,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
     mockExportBackup.mockResolvedValue({
       ok: true,
       value: {
-        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        fileUri: 'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         itemCount: 42,
         byteSize: 2048,
         omittedCount: 0,
@@ -555,7 +573,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
 
     await waitFor(() => {
       expect(mockShareAsync).toHaveBeenCalledWith(
-        'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         expect.objectContaining({ mimeType: 'application/gzip' }),
       );
     });
@@ -569,7 +587,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
     mockExportBackup.mockResolvedValue({
       ok: true,
       value: {
-        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        fileUri: 'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         itemCount: 5,
         byteSize: 512,
         omittedCount: 0,
@@ -606,7 +624,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
     mockExportBackup.mockResolvedValue({
       ok: true,
       value: {
-        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        fileUri: 'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         itemCount: 10,
         byteSize: 1024,
         omittedCount: 2,
@@ -628,7 +646,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
     mockExportBackup.mockResolvedValue({
       ok: true,
       value: {
-        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        fileUri: 'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         itemCount: 3,
         byteSize: 256,
         omittedCount: 0,
@@ -652,7 +670,7 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
     mockExportBackup.mockResolvedValue({
       ok: true,
       value: {
-        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        fileUri: 'file:///mock-documents/pakapaka-backup-2026-08-13T00-00-00-000Z.json.gz',
         itemCount: 3,
         byteSize: 256,
         omittedCount: 0,
@@ -763,7 +781,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
   it('shows the preview inline and only restores after confirmation', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
-      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz', name: 'kizamu-backup.json.gz' }],
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz', name: 'pakapaka-backup.json.gz' }],
     });
     mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
     mockRestoreBackup.mockReturnValue({
@@ -827,7 +845,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
     try {
       mockGetDocumentAsync.mockResolvedValue({
         canceled: false,
-        assets: [{ uri: 'blob:picked', name: 'kizamu-backup.json.gz' }],
+        assets: [{ uri: 'blob:picked', name: 'pakapaka-backup.json.gz' }],
       });
       mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
       mockRestoreBackup.mockReturnValue({
@@ -857,7 +875,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
   it('reports skipped slugs in the restore result', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
-      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
     });
     mockPreviewRestore.mockResolvedValue({
       ok: true,
@@ -893,7 +911,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
       error: {
         code: 'BACKUP_INVALID_GZIP',
         message: 'incorrect header check',
-        userMessage: 'That file is not a Kizamu backup. Pick the .json.gz file you exported.',
+        userMessage: 'That file is not a PakaPaka backup. Pick the .json.gz file you exported.',
       },
     });
 
@@ -902,7 +920,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
 
     await waitFor(() => {
       expect(screen.getByTestId('restore-preview-error')).toHaveTextContent(
-        /That file is not a Kizamu backup/,
+        /That file is not a PakaPaka backup/,
       );
     });
     expect(screen.queryByTestId('restore-preview-confirm')).toBeNull();
@@ -912,7 +930,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
   it('says previous progress was not changed when the restore write fails', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
-      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
     });
     mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
     mockRestoreBackup.mockReturnValue({
@@ -942,7 +960,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
   it('re-reads the restored theme so the screen does not keep pre-restore state', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
-      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
     });
     mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
     mockRestoreBackup.mockImplementation(() => {
@@ -971,7 +989,7 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
   it('cancelling the preview leaves everything untouched', async () => {
     mockGetDocumentAsync.mockResolvedValue({
       canceled: false,
-      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
     });
     mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
 

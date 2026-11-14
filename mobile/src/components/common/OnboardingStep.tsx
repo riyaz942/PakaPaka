@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
-import { cn } from '@/utils/cn';
+import { SPRING } from '@/constants/motion';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 type ActionConfig = {
   label: string;
@@ -23,6 +25,21 @@ type OnboardingStepProps = {
   testID?: string;
 };
 
+const DOT_PX = 8;
+const ACTIVE_DOT_PX = 20;
+
+/** The current step's dot stretches into a short bar as the step opens. */
+function ActiveDot() {
+  const { reducedMotion } = useReducedMotion();
+  const width = useSharedValue(reducedMotion ? ACTIVE_DOT_PX : DOT_PX);
+  useEffect(() => {
+    width.value = reducedMotion ? ACTIVE_DOT_PX : withSpring(ACTIVE_DOT_PX, SPRING);
+  }, [reducedMotion, width]);
+  const style = useAnimatedStyle(() => ({ width: width.value }));
+
+  return <Animated.View className="h-2 rounded-radius-full bg-brand-500" style={style} />;
+}
+
 function ProgressDots({ stepIndex, stepCount }: { stepIndex: number; stepCount: number }) {
   return (
     <View
@@ -30,12 +47,10 @@ function ProgressDots({ stepIndex, stepCount }: { stepIndex: number; stepCount: 
       accessibilityLabel={`Step ${stepIndex} of ${stepCount}`}
       className="mb-space-lg flex-row items-center justify-center gap-[7px]">
       {Array.from({ length: stepCount }, (_, index) => {
-        const isActive = index + 1 === stepIndex;
-        return (
-          <View
-            key={index}
-            className={cn('h-2 w-2 rounded-radius-full', isActive ? 'bg-brand-500' : 'bg-border')}
-          />
+        return index + 1 === stepIndex ? (
+          <ActiveDot key={index} />
+        ) : (
+          <View key={index} className="h-2 w-2 rounded-radius-full bg-border" />
         );
       })}
     </View>

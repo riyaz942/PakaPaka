@@ -1,6 +1,10 @@
-import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Pressable, Text, View, type LayoutRectangle } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
+import { SPRING } from '@/constants/motion';
+import { useHaptics } from '@/data/hooks/useHaptics';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { cn } from '@/utils/cn';
 
 export type SegmentedPillOption<T extends string> = {
@@ -29,6 +33,7 @@ type SegmentedPillProps<T extends string> = {
 /** Expand each segment's hit box to the 44px floor without growing the drawn track. */
 const SEGMENT_HIT_SLOP = { top: 9, bottom: 9, left: 4, right: 4 };
 
+
 /**
  * The spec's segmented pill: a surface-elevated track holding one jade-filled
  * segment. Used where a short, mutually exclusive set reads better inline than
@@ -47,6 +52,29 @@ export function SegmentedPill<T extends string>({
   className,
   testID,
 }: SegmentedPillProps<T>) {
+  const { reducedMotion } = useReducedMotion();
+  const { play: playHaptic } = useHaptics();
+  // The jade marker is one shape that slides between segments. Until every
+  // segment has been measured, the selected segment paints its own fill.
+  const [layouts, setLayouts] = useState<Record<string, LayoutRectangle>>({});
+  const selectedLayout = layouts[value];
+  const markerX = useSharedValue(0);
+  const markerWidth = useSharedValue(0);
+  const [markerReady, setMarkerReady] = useState(false);
+
+  useEffect(() => {
+    if (!selectedLayout) return;
+    const animate = markerReady && !reducedMotion;
+    markerX.value = animate ? withSpring(selectedLayout.x, SPRING) : selectedLayout.x;
+    markerWidth.value = animate ? withSpring(selectedLayout.width, SPRING) : selectedLayout.width;
+    if (!markerReady) setMarkerReady(true);
+  }, [selectedLayout, markerReady, reducedMotion, markerX, markerWidth]);
+
+  const markerStyle = useAnimatedStyle(() => ({
+    left: markerX.value,
+    width: markerWidth.value,
+  }));
+
   return (
     <View
       accessibilityRole="radiogroup"
@@ -58,6 +86,13 @@ export function SegmentedPill<T extends string>({
         disabled && 'opacity-50',
         className,
       )}>
+      {markerReady ? (
+        <Animated.View
+          pointerEvents="none"
+          className="absolute bottom-[3px] top-[3px] rounded-radius-full bg-brand-600"
+          style={markerStyle}
+        />
+      ) : null}
       {options.map((option) => {
         const selected = option.value === value;
 
@@ -68,13 +103,20 @@ export function SegmentedPill<T extends string>({
             accessibilityState={{ selected, checked: selected, disabled }}
             accessibilityLabel={option.label}
             disabled={disabled}
-            onPress={() => onChange(option.value)}
+            onPress={() => {
+              if (!selected) playHaptic('selection');
+              onChange(option.value);
+            }}
+            onLayout={(event) => {
+              const layout = event.nativeEvent.layout;
+              setLayouts((current) => ({ ...current, [option.value]: layout }));
+            }}
             hitSlop={SEGMENT_HIT_SLOP}
             testID={option.testID}
             className={cn(
               'items-center justify-center rounded-radius-full px-[11px] py-[6px]',
               expand && 'min-w-0 flex-1',
-              selected && 'bg-brand-600',
+              selected && !markerReady && 'bg-brand-600',
             )}>
             <Text
               className={cn(

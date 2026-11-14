@@ -16,6 +16,10 @@ import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
 import ConversationSessionScreen from './[id]';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 const mockUserDb = {};
 // An empty curriculum: these tests are about voice promotion, so no reply word
 // links off the chat word index (15.1).

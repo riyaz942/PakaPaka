@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { UnlockedPill } from '@/components/browse/UnlockedPill';
 import { ContentListRow } from '@/components/common/ContentListRow';
 import { PASSAGE_CONTENT_LABEL } from '@/constants/contentType';
 import type { BrowsePassageRow } from '@/data/curriculum/browseRepository';
 
 type PassageBrowseRowProps = {
   row: BrowsePassageRow;
+  /** Opened since Browse was last seen: shows the one-time "Unlocked" pill. */
+  justUnlocked?: boolean;
   onPress: () => void;
   testID?: string;
 };
@@ -18,7 +21,7 @@ type PassageBrowseRowProps = {
  * passage is framed as a destination ("3 to go"), never a bare padlock: the row
  * stays tappable so the learner can see what they are working toward.
  */
-function PassageBrowseRowComponent({ row, onPress, testID }: PassageBrowseRowProps) {
+function PassageBrowseRowComponent({ row, justUnlocked, onPress, testID }: PassageBrowseRowProps) {
   const remainingLabel =
     row.itemsRemainingToUnlock > 0 ? `${row.itemsRemainingToUnlock} to go` : 'Almost there';
 
@@ -39,6 +42,11 @@ function PassageBrowseRowComponent({ row, onPress, testID }: PassageBrowseRowPro
       trailingClassName="bg-content-grammar-soft"
       trailingTextClassName="text-content-grammar-deep"
       trailingTestID={testID ? `${testID}-lock` : undefined}
+      trailing={
+        justUnlocked && !row.locked ? (
+          <UnlockedPill testID={testID ? `${testID}-unlocked` : undefined} />
+        ) : undefined
+      }
       onPress={onPress}
       accessibilityLabel={
         row.locked

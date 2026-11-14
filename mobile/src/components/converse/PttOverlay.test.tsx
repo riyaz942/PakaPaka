@@ -24,6 +24,19 @@ import {
 import { PttOverlay } from '@/components/converse/PttOverlay';
 import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
 jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => ({ userDb: {} }),
 }));

@@ -65,7 +65,7 @@ where the SQLite page format or VFS differs. Include:
 
 ```jsonc
 {
-  "format": "kizamu-backup",
+  "format": "pakapaka-backup",
   "formatVersion": 1,
   "schemaVersion": 18,        // max applied migration at export time
   "curriculumVersion": "…",   // from curriculum_metadata
@@ -87,7 +87,7 @@ fail loudly, per the project's no-hidden-fallbacks rule.
 | A2.2 | `exportBackup()` in `src/data/user/` — read all tables, resolve ids → slugs, gzip, write via `expo-file-system`, hand to the share sheet. | Export on a seeded DB produces a file that A2.1's parser accepts. |
 | A2.3 | `restoreBackup()` — parse, validate `format`/`formatVersion`, resolve slugs → ids, report unmatched items, replace all user tables in one transaction. | Restore of an A2.2 file reproduces exact SRS state. Corrupt/truncated file fails with a typed `AppError`, never a throw. Unknown slugs are counted and surfaced, not dropped silently. |
 | A2.4 | Settings UI: "Back up my progress" / "Restore from backup", conversation-include toggle, and a preview-then-confirm restore screen reusing the `importPreviewStore` pattern. Show item counts and a clear "this replaces your current progress" gate. | Manual: export → wipe app data → restore → progress intact. |
-| A2.4b | **Restore as an onboarding import source.** Add "Kizamu backup" as a fourth pill on `src/app/onboarding/import.tsx` alongside WaniKani / Bunpro / Anki, following the Anki file-pick branch. A fresh install is the main moment anyone restores, so Settings alone is the wrong home for it. | Restore reachable from first launch without visiting Settings. |
+| A2.4b | **Restore as an onboarding import source.** Add "PakaPaka backup" as a fourth pill on `src/app/onboarding/import.tsx` alongside WaniKani / Bunpro / Anki, following the Anki file-pick branch. A fresh install is the main moment anyone restores, so Settings alone is the wrong home for it. | Restore reachable from first launch without visiting Settings. |
 | A2.4c | **Branch the post-restore route.** `import-summary.tsx` hard-routes to `/onboarding/intensity`; restore must go to `complete` instead. A backup already carries `user_preferences` and `item_study_status`, so continuing through intensity/placement would re-ask answered questions and let placement overwrite restored progress. | Restore → complete, with intensity/goal/theme and study status all matching the backup. |
 | A2.5 | A "last backed up N days ago" nudge. Surfaced in Settings; on web also as a dismissible Home banner (the existing conditional banner slot). | Nudge appears after the threshold, clears on export. |
 
@@ -261,5 +261,5 @@ migration would also relax the hosting constraint.
    users at the mobile app for conversation practice.
 3. ~~**Backup file extension**~~ — **Decided 2026-08-07: `.json.gz`.** Transparent and inspectable,
    consistent with the open-source, no-accounts posture. No custom file-association work. A branded
-   `.kizamu` wrapper can be added later without changing the format if deep-link-to-restore becomes
+   `.pakapaka` wrapper can be added later without changing the format if deep-link-to-restore becomes
    worth it.

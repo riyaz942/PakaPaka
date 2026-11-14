@@ -143,7 +143,7 @@ describe('ImportScreen', () => {
     expect(mockPush).toHaveBeenCalledWith('/onboarding/intensity');
   });
 
-  describe('Kizamu backup restore (Story 9.2, AC7)', () => {
+  describe('PakaPaka backup restore (Story 9.2, AC7)', () => {
     it('offers restore alongside the third-party sources', async () => {
       const db = await createUserDb();
       renderImportScreen(db);
@@ -155,7 +155,7 @@ describe('ImportScreen', () => {
     it('previews the picked backup without requiring a JLPT level', async () => {
       mockGetDocumentAsync.mockResolvedValue({
         canceled: false,
-        assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+        assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
       });
       const previewValue = { bundle: {}, unmatchedSlugs: [], summary: { itemCount: 5 } };
       mockPreviewRestore.mockResolvedValue({ ok: true, value: previewValue });
@@ -169,7 +169,7 @@ describe('ImportScreen', () => {
       await waitFor(() => {
         expect(mockPush).toHaveBeenCalledWith('./import-summary');
       });
-      expect(mockPreviewRestore).toHaveBeenCalledWith(db, 'file:///picked/kizamu-backup.json.gz');
+      expect(mockPreviewRestore).toHaveBeenCalledWith(db, 'file:///picked/pakapaka-backup.json.gz');
       expect(getBackupPreview()).toBe(previewValue);
     });
 
@@ -183,7 +183,7 @@ describe('ImportScreen', () => {
       );
       mockGetDocumentAsync.mockResolvedValue({
         canceled: false,
-        assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+        assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz' }],
       });
 
       const db = await createUserDb();
@@ -231,7 +231,7 @@ describe('ImportScreen', () => {
         error: {
           code: 'BACKUP_INVALID_GZIP',
           message: 'incorrect header check',
-          userMessage: 'That file is not a Kizamu backup. Pick the .json.gz file you exported.',
+          userMessage: 'That file is not a PakaPaka backup. Pick the .json.gz file you exported.',
         },
       });
 
@@ -241,7 +241,7 @@ describe('ImportScreen', () => {
       fireEvent.press(screen.getByTestId('onboarding-import-restore-backup'));
 
       await waitFor(() => {
-        expect(screen.getByText(/not a Kizamu backup/)).toBeTruthy();
+        expect(screen.getByText(/not a PakaPaka backup/)).toBeTruthy();
       });
       expect(mockPush).not.toHaveBeenCalled();
       expect(getBackupPreview()).toBeNull();

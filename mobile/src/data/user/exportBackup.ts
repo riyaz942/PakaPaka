@@ -40,7 +40,7 @@ type MappedRows<TEntry> = {
 };
 
 function backupFileName(exportedAt: string): string {
-  return `kizamu-backup-${exportedAt.replace(/[:.]/g, '-')}.json.gz`;
+  return `pakapaka-backup-${exportedAt.replace(/[:.]/g, '-')}.json.gz`;
 }
 
 function bytesToBase64(bytes: Uint8Array): string {

@@ -182,7 +182,7 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
         </Text>
         {isWeb() ? (
           <Text className="mt-2 text-center text-sm text-muted">
-            If NihongoCore is open in another tab, close that tab and reload this page.
+            If PakaPaka is open in another tab, close that tab and reload this page.
           </Text>
         ) : (
           <Text className="mt-2 text-center text-sm text-muted">

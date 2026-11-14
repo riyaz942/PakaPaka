@@ -1,13 +1,13 @@
 const VARIANTS = {
   development: {
-    name: 'NihongoCore (Dev)',
-    identifier: 'com.nihongocore.app.dev',
-    scheme: 'nihongocore-dev',
+    name: 'PakaPaka (Dev)',
+    identifier: 'com.pakapaka.app.dev',
+    scheme: 'pakapaka-dev',
   },
   preview: {
-    name: 'NihongoCore (Preview)',
-    identifier: 'com.nihongocore.app.preview',
-    scheme: 'nihongocore-preview',
+    name: 'PakaPaka (Preview)',
+    identifier: 'com.pakapaka.app.preview',
+    scheme: 'pakapaka-preview',
   },
 };
 

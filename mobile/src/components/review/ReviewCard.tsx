@@ -1,5 +1,6 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
+import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { GlyphText } from '@/components/common/GlyphText';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
@@ -8,9 +9,11 @@ import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { soft } from '@/constants/motion';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 import { cn } from '@/utils/cn';
@@ -136,9 +139,12 @@ function joinForms(forms: string[]): string {
   return `${forms.slice(0, -1).join(', ')} and ${forms[forms.length - 1]}`;
 }
 
-// Short enough that the feedback still lands inside NFR1's <100ms perception
-// budget — decoration on top of information already on screen, never a gate.
-const FEEDBACK_ANIMATION_MS = 200;
+// Feedback text is on screen from the first frame; the spring only eases it
+// in — decoration on top of information already shown, never a gate (NFR1).
+
+/** The correct tick, then a stage-up badge, zoom in. */
+const CORRECT_POP = soft(ZoomIn);
+const STAGE_UP_POP = soft(ZoomIn.delay(100));
 
 export function ReviewCard({
   item,
@@ -157,6 +163,7 @@ export function ReviewCard({
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink } = item;
   const { mode: furiganaMode } = useFuriganaPreference();
+  const { reducedMotion } = useReducedMotion();
   const accent = CONTENT_TYPE_ACCENT[itemType];
   // Grammar pair (spec §3): the Read card asks about one sentence, the Build
   // card about another; both payloads ride on both cards of the pair.
@@ -212,7 +219,9 @@ export function ReviewCard({
 
   if (state === 'incorrect') {
     return (
-      <FadeSlideIn duration={FEEDBACK_ANIMATION_MS} className="w-full">
+      // "Don't know" was the learner's own choice, not a miss — its answer
+      // arrives on the calmer spring.
+      <FadeSlideIn slow={!rejectedAnswer} className="w-full">
         <IncorrectReveal
           item={item}
           displayAnswer={displayAnswer ?? displayMeaning}
@@ -289,20 +298,24 @@ export function ReviewCard({
       ) : null}
 
       {correctReveal ? (
-        <FadeSlideIn
-          duration={FEEDBACK_ANIMATION_MS}
-          className="gap-space-md w-full items-center">
+        <FadeSlideIn className="gap-space-md w-full items-center">
           <View
             ref={resultRef}
             accessible
             accessibilityLabel={`Correct, ${correctReveal.label.toLowerCase()}: ${correctReveal.value}`}
             className="flex-row items-center gap-space-sm">
-            <Icon name="correct" size={24} strokeWidth={2.6} className="text-feedback-correct" />
+            <Animated.View entering={reducedMotion ? undefined : CORRECT_POP}>
+              <Icon name="correct" size={24} strokeWidth={2.6} className="text-feedback-correct" />
+            </Animated.View>
             <Text className="text-title-lg font-ui-extrabold text-feedback-correct-deep">
               Correct
             </Text>
           </View>
-          {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
+          {stageTransition ? (
+            <Animated.View entering={reducedMotion ? undefined : STAGE_UP_POP}>
+              <SRSStageTransitionBadge transition={stageTransition} />
+            </Animated.View>
+          ) : null}
           {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
               shown expanded, never gated behind an icon. */}
           <AnswerReveal item={item} detail={revealDetail ?? null} collision={answerCollision} />
@@ -312,7 +325,7 @@ export function ReviewCard({
 
       {nudge ? (
         // One-line nudge only: the user hasn't been told the answer, so don't reveal detail.
-        <FadeSlideIn duration={FEEDBACK_ANIMATION_MS} className="items-center">
+        <FadeSlideIn className="items-center">
           <View
             ref={resultRef}
             accessible

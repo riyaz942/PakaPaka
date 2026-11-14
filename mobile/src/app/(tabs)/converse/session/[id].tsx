@@ -10,6 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 import {
   SafeAreaProvider,
   useSafeAreaFrame,
@@ -22,8 +23,10 @@ import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ChatBubble } from '@/components/converse/ChatBubble';
 import { Composer } from '@/components/converse/Composer';
 import { PttOverlay } from '@/components/converse/PttOverlay';
+import { TypingDots } from '@/components/converse/TypingDots';
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { WordLookupSheet } from '@/components/converse/WordLookupSheet';
+import { soft } from '@/constants/motion';
 import { buildChatWordSpans } from '@/core/ai/chatWordSpans';
 import type { GrammarPromptTopic } from '@/core/ai/systemPrompt';
 import { isOnline } from '@/data/ai/connectivity';
@@ -37,6 +40,7 @@ import {
 import { useAiConversation } from '@/data/hooks/useAiConversation';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { getAiSession } from '@/data/user/aiSessionRepository';
 import { cn } from '@/utils/cn';
 
@@ -121,6 +125,8 @@ export default function ConversationSessionScreen() {
   } = useAiConversation(sessionId, grammarTopics);
 
   const [lookupText, setLookupText] = useState<string | null>(null);
+  const { reducedMotion } = useReducedMotion();
+  const messageEntering = reducedMotion ? undefined : soft(FadeInDown);
   // Conversation mode is another view over this same session, so a local flag
   // is the whole of it — no second data path, no Context for one boolean.
   const [mode, setMode] = useState<'chat' | 'ptt'>('chat');
@@ -312,31 +318,47 @@ export default function ConversationSessionScreen() {
               </Text>
             ) : null}
 
-            {messages.map((message) => (
-              <ChatBubble
+            {messages.map((message, index) => (
+              // Only the message just sent slides up. A finished reply replaces
+              // the streaming bubble that already slid in, and old history
+              // should not animate when the chat opens.
+              <Animated.View
                 key={message.id}
-                role={message.role}
-                text={message.content}
-                furiganaMode={furiganaMode}
-                knownKanji={knownKanji}
-                modeForItem={modeForItem}
-                setOverride={setOverride}
-                wordSpans={wordSpansByMessage.get(message.id)}
-                onLookupWords={
-                  message.role === 'assistant' ? () => setLookupText(message.content) : undefined
-                }
-              />
+                entering={
+                  message.role === 'user' && index === messages.length - 1
+                    ? messageEntering
+                    : undefined
+                }>
+                <ChatBubble
+                  role={message.role}
+                  text={message.content}
+                  furiganaMode={furiganaMode}
+                  knownKanji={knownKanji}
+                  modeForItem={modeForItem}
+                  setOverride={setOverride}
+                  wordSpans={wordSpansByMessage.get(message.id)}
+                  onLookupWords={
+                    message.role === 'assistant' ? () => setLookupText(message.content) : undefined
+                  }
+                />
+              </Animated.View>
             ))}
 
             {pendingReply.length > 0 ? (
-              <ChatBubble
-                role="assistant"
-                text={pendingReply}
-                furiganaMode={furiganaMode}
-                knownKanji={knownKanji}
-                modeForItem={modeForItem}
-                setOverride={setOverride}
-              />
+              <Animated.View entering={messageEntering}>
+                <ChatBubble
+                  role="assistant"
+                  text={pendingReply}
+                  furiganaMode={furiganaMode}
+                  knownKanji={knownKanji}
+                  modeForItem={modeForItem}
+                  setOverride={setOverride}
+                />
+              </Animated.View>
+            ) : isStreaming ? (
+              <Animated.View entering={messageEntering}>
+                <TypingDots />
+              </Animated.View>
             ) : null}
 
             {!ended && !endPromptVisible ? (

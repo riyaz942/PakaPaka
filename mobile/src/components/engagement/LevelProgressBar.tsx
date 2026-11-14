@@ -1,5 +1,7 @@
 import { Text, View } from 'react-native';
 
+import { ProgressFill } from '@/components/common/ProgressFill';
+
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 
 type ProgressType = 'kanji' | 'vocabulary' | 'grammar';
@@ -43,10 +45,7 @@ export function LevelProgressBar({ level, perType, overallPercent }: LevelProgre
       </View>
 
       <View className="mt-space-sm h-2 overflow-hidden rounded-radius-full bg-surface-elevated">
-        <View
-          className="h-full rounded-radius-full bg-brand-500"
-          style={{ width: `${clamped}%` }}
-        />
+        <ProgressFill percent={clamped} className="h-full rounded-radius-full bg-brand-500" />
       </View>
 
       <View className="mt-space-sm flex-row flex-wrap gap-x-space-md gap-y-space-xs">

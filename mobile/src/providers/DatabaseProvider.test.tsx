@@ -77,7 +77,7 @@ describe('DatabaseProvider', () => {
 
   describe('when the databases cannot be opened', () => {
     const SECOND_TAB_HINT =
-      'If NihongoCore is open in another tab, close that tab and reload this page.';
+      'If PakaPaka is open in another tab, close that tab and reload this page.';
 
     beforeEach(() => {
       mockInitializeDatabases.mockResolvedValue({

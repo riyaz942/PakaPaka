@@ -34,12 +34,12 @@ describe('backupFile.web', () => {
     });
 
     jest.useFakeTimers();
-    const uri = await saveBackupFile('kizamu-backup-1.json.gz', 'H4sI');
+    const uri = await saveBackupFile('pakapaka-backup-1.json.gz', 'H4sI');
 
     expect(uri).toBeNull();
     expect(createElement).toHaveBeenCalledWith('a');
     expect(createObjectURL).toHaveBeenCalledTimes(1);
-    expect(anchor.download).toBe('kizamu-backup-1.json.gz');
+    expect(anchor.download).toBe('pakapaka-backup-1.json.gz');
     expect(anchor.href).toBe('blob:backup');
     expect(anchor.click).toHaveBeenCalledTimes(1);
     // Safari can start the download late (permission prompt): keep the URL valid for a while.

@@ -61,7 +61,7 @@ function weakness(
 
 function fixture(): BackupBundle {
   return {
-    format: 'kizamu-backup',
+    format: 'pakapaka-backup',
     formatVersion: 1,
     schemaVersion: 20,
     curriculumVersion: '19',
@@ -221,7 +221,7 @@ describe('rewriteBackupFile', () => {
   });
 
   function writeFixtures(itemRows: [string, string][]) {
-    const input = path.join(dir, 'kizamu-backup-x.json.gz');
+    const input = path.join(dir, 'pakapaka-backup-x.json.gz');
     fs.writeFileSync(input, zlib.gzipSync(JSON.stringify(fixture())));
     const renamesPath = path.join(dir, 'slug-renames.json');
     fs.writeFileSync(renamesPath, JSON.stringify(RENAMES));
@@ -245,7 +245,7 @@ describe('rewriteBackupFile', () => {
     const report = rewriteBackupFile({ inputPath: input, renamesPath, dbPath, dryRun: false });
 
     expect(report.unmatched).toEqual([]);
-    expect(report.outputPath).toBe(path.join(dir, 'kizamu-backup-x-migrated.json.gz'));
+    expect(report.outputPath).toBe(path.join(dir, 'pakapaka-backup-x-migrated.json.gz'));
     expect(fs.readFileSync(input)).toEqual(before);
     const written = JSON.parse(zlib.gunzipSync(fs.readFileSync(report.outputPath!)).toString('utf8'));
     expect(written.data.itemStudyStatus).toHaveLength(3);
@@ -270,6 +270,6 @@ describe('rewriteBackupFile', () => {
   });
 
   it('names the output after the input', () => {
-    expect(migratedPath('/a/kizamu-backup-1.json.gz')).toBe('/a/kizamu-backup-1-migrated.json.gz');
+    expect(migratedPath('/a/pakapaka-backup-1.json.gz')).toBe('/a/pakapaka-backup-1-migrated.json.gz');
   });
 });

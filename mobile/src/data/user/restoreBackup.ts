@@ -40,9 +40,9 @@ export type RestoreBackupResult = {
 const READ_FAILED_USER_MESSAGE =
   'Could not read that file. Pick the .json.gz backup file you exported.';
 const INVALID_GZIP_USER_MESSAGE =
-  'That file is not a Kizamu backup. Pick the .json.gz file you exported.';
+  'That file is not a PakaPaka backup. Pick the .json.gz file you exported.';
 const SCHEMA_TOO_NEW_USER_MESSAGE =
-  'This backup was made by a newer version of the app. Update Kizamu, then restore.';
+  'This backup was made by a newer version of the app. Update PakaPaka, then restore.';
 // Matches the honesty of importRepository's failure copy: a rolled-back
 // transaction leaves the device exactly as it was.
 const RESTORE_FAILED_USER_MESSAGE =

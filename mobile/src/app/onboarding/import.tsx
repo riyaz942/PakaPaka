@@ -365,14 +365,14 @@ export default function ImportScreen() {
             Already used this app?
           </Text>
           <Text className="mt-space-sm text-body-sm font-ui text-muted">
-            Restore a Kizamu backup file to bring this device back to where you left off. This is
+            Restore a PakaPaka backup file to bring this device back to where you left off. This is
             your own exported progress, not another study tool — you will see exactly what it
             restores before anything changes.
           </Text>
           <Button
             className="mt-space-md"
             disabled={isImporting}
-            label="Restore from a Kizamu backup"
+            label="Restore from a PakaPaka backup"
             onPress={handleSelectBackupFilePress}
             testID="onboarding-import-restore-backup"
             variant="secondary"

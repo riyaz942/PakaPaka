@@ -4,6 +4,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 function renderWithSafeArea(ui: React.ReactElement) {
   return render(
     <SafeAreaProvider

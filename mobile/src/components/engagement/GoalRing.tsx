@@ -1,9 +1,21 @@
-import { Text, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Text } from 'react-native';
+import Animated, {
+  FadeIn,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
 import Svg, { Circle } from 'react-native-svg';
 
+import { soft, SPRING } from '@/constants/motion';
 import { getSemanticColors } from '@/constants/semantic-colors';
+import { useHaptics } from '@/data/hooks/useHaptics';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { cn } from '@/utils/cn';
+
+import { AnimatedArc } from './AnimatedArc';
 
 type GoalRingProps = {
   variant: 'small' | 'large' | 'hero';
@@ -50,17 +62,36 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
   const circumference = 2 * Math.PI * radius;
   const swept = (Math.min(displayPercent, 100) / 100) * circumference;
 
+  // Crossing 100% while on screen (mid-session) is the moment worth marking:
+  // one pulse and a success buzz. A ring that opens already past 100% stays still.
+  const { reducedMotion } = useReducedMotion();
+  const { play: playHaptic } = useHaptics();
+  const scale = useSharedValue(1);
+  const wasBeaten = useRef(beaten);
+  useEffect(() => {
+    if (beaten && !wasBeaten.current) {
+      playHaptic('success');
+      if (!reducedMotion) {
+        // A kick from rest: swells about 6% and eases home.
+        scale.value = withSpring(1, { ...SPRING, velocity: 2.2 });
+      }
+    }
+    wasBeaten.current = beaten;
+  }, [beaten, reducedMotion, playHaptic, scale]);
+  const pulseStyle = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+
   return (
-    <View
+    <Animated.View
       accessibilityRole="progressbar"
       accessibilityLabel={label}
       accessibilityValue={{ min: 0, max: Math.max(100, displayPercent), now: displayPercent }}
-      style={{ width: size, height: size }}
+      style={[{ width: size, height: size }, pulseStyle]}
       className="items-center justify-center rounded-radius-full">
       {beaten ? (
-        <View
+        <Animated.View
           testID="goal-ring-halo"
           pointerEvents="none"
+          entering={reducedMotion ? undefined : soft(FadeIn)}
           className="absolute -inset-1 rounded-radius-full border-4 border-brand-soft-strong"
         />
       ) : null}
@@ -79,14 +110,13 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
           stroke={colors.surfaceElevated}
           strokeWidth={strokeWidth}
         />
-        <Circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke={colors.brand}
+        <AnimatedArc
+          size={size}
+          radius={radius}
           strokeWidth={strokeWidth}
-          strokeDasharray={`${swept} ${circumference}`}
+          circumference={circumference}
+          swept={swept}
+          color={colors.brand}
         />
       </Svg>
 
@@ -103,6 +133,6 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
           Beaten
         </Text>
       ) : null}
-    </View>
+    </Animated.View>
   );
 }

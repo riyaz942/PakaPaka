@@ -2,6 +2,20 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import { SessionHeader } from './SessionHeader';
 
+jest.mock('@/data/hooks/useHaptics', () => ({
+  useHaptics: () => ({ play: jest.fn() }),
+  useHapticsPreference: () => ({
+    hapticsEnabled: true,
+    setHapticsEnabled: jest.fn(),
+    refetch: jest.fn(),
+  }),
+}));
+
+// Reduced motion draws the rings and bars at their final value at once.
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
+}));
+
 describe('SessionHeader', () => {
   const defaultProps = {
     cardsCompleted: 11,

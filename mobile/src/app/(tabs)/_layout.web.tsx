@@ -93,7 +93,7 @@ function WebTabList(props: TabListProps) {
         className="border-r border-border bg-background"
         style={styles.sidebar}>
         <Text className="mb-space-lg px-space-md text-title font-ui-extrabold text-primary">
-          NihongoCore
+          PakaPaka
         </Text>
         <View className="gap-space-xs">{props.children}</View>
       </View>

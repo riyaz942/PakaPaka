@@ -6,7 +6,7 @@ import {
 } from '@/core/backup/backup.types';
 import type { AppError, Result } from '@/types/result.types';
 
-export const BACKUP_FORMAT = 'kizamu-backup';
+export const BACKUP_FORMAT = 'pakapaka-backup';
 export const BACKUP_FORMAT_VERSION = 1;
 
 export function buildBackupBundle(envelope: BackupEnvelopeInput, data: BackupData): BackupBundle {
@@ -70,7 +70,7 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
       error: {
         code: 'BACKUP_FORMAT_MISMATCH',
         message: `Unrecognized backup format: ${String(record.format)}`,
-        userMessage: 'That file is not a Kizamu backup.',
+        userMessage: 'That file is not a PakaPaka backup.',
       },
     };
   }
@@ -81,7 +81,7 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
         code: 'BACKUP_VERSION_UNSUPPORTED',
         message: `Unsupported backup formatVersion: ${String(record.formatVersion)}`,
         userMessage:
-          'This backup was made by a newer version of the app. Update Kizamu, then restore.',
+          'This backup was made by a newer version of the app. Update PakaPaka, then restore.',
       },
     };
   }

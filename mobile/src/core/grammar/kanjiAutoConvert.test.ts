@@ -41,12 +41,21 @@ describe('buildKanjiConversions', () => {
     ]);
   });
 
+  it('adds the whole word for kanji annotated one by one', () => {
+    expect(buildKanjiConversions(['会[かい]社[しゃ]に行[い]きます。'])).toEqual([
+      { kana: 'かいしゃ', kanji: '会社' },
+      { kana: 'かい', kanji: '会' },
+      { kana: 'しゃ', kanji: '社' },
+      { kana: 'いき', kanji: '行き' },
+    ]);
+  });
+
   it('merges the runs of every answer without duplicates', () => {
     const conversions = buildKanjiConversions([
       '明日[あした]は忙[いそが]しいです。',
       '私[わたし]は明日[あした]忙[いそが]しいです。',
     ]);
-    expect(conversions.map((c) => c.kana)).toEqual(['あした', 'いそが', 'わたし']);
+    expect(conversions.map((c) => c.kana)).toEqual(['あした', 'いそが', 'あしたいそが', 'わたし']);
   });
 });
 
@@ -66,13 +75,34 @@ describe('applyKanjiConversions', () => {
   });
 
   it('converts a word committed in one chunk', () => {
-    expect(applyKanjiConversions('', 'わたしはきのう', conversions)).toBe('私は昨日');
+    expect(applyKanjiConversions('', 'わたしはきのうえいがを', conversions)).toBe('私は昨日映画を');
   });
 
   it('converts a one-kana reading only with its following kana', () => {
     expect(typeRomaji('mi', conversions)).toBe('み');
     expect(typeRomaji('mimashita', conversions)).toBe('見ました');
     expect(typeRomaji('minnna', conversions)).toBe('みんな');
+  });
+
+  describe('with a word whose kanji are annotated one by one', () => {
+    const word = buildKanjiConversions(['会[かい]社[しゃ]に行[い]きます。', '会[かい]に行[い]きます。']);
+
+    it('waits for the whole word', () => {
+      expect(typeRomaji('kai', word)).toBe('かい');
+      expect(typeRomaji('kaish', word)).toBe('かいsh');
+      expect(typeRomaji('kaisha', word)).toBe('会社');
+      expect(typeKana('かいしゃ', word)).toBe('会社');
+      expect(typeRomaji('kaishaniikimasu', word)).toBe('会社に行きます');
+    });
+
+    it('converts the shorter word when the next kana breaks the longer one', () => {
+      expect(typeRomaji('kaini', word)).toBe('会に');
+      expect(typeRomaji('kainiikimasu', word)).toBe('会に行きます');
+    });
+
+    it('keeps waiting kana when the learner undid it', () => {
+      expect(applyKanjiConversions('かい', 'かいに', word, new Set(['かい', 'かいしゃ']))).toBe('かいに');
+    });
   });
 
   it('leaves kana that is not a word of this card', () => {

@@ -1,6 +1,6 @@
 /**
  * One-off (level-agnostic plan, phase 5): rewrites the item slugs in an app
- * backup (`kizamu-backup-*.json.gz`) through `curriculum/_build/slug-renames.json`,
+ * backup (`pakapaka-backup-*.json.gz`) through `curriculum/_build/slug-renames.json`,
  * so a restore on the new curriculum finds every item. When two old slugs map
  * to one new slug (a grammar merge), each table keeps one row for the item.
  *
