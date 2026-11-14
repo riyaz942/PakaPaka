@@ -5,7 +5,7 @@ import { supportsTalk } from '@/platform/capabilities';
 
 export default function ConverseTabLayout() {
   if (!supportsTalk()) {
-    return <Redirect href="/" />;
+    return <Redirect href="/dashboard" />;
   }
 
   return (

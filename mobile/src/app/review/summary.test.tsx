@@ -146,6 +146,6 @@ describe('ReviewSummaryScreen — Done button', () => {
     fireEvent.press(screen.getByLabelText('Done, return to home'));
 
     expect(router.dismissAll).not.toHaveBeenCalled();
-    expect(router.replace).toHaveBeenCalledWith('/(tabs)');
+    expect(router.replace).toHaveBeenCalledWith('/dashboard');
   });
 });

@@ -27,7 +27,7 @@ export default function TabsLayout() {
       <Tabs style={[styles.tabs, wide && styles.tabsWide]}>
         <TabList asChild>
           <WebTabList>
-            <TabTrigger name="home" href="/" asChild>
+            <TabTrigger name="home" href="/dashboard" asChild>
               <TabButton icon="home">Home</TabButton>
             </TabTrigger>
             <TabTrigger name="browse" href="/browse" asChild>

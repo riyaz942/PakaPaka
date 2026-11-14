@@ -57,7 +57,7 @@ export default function LessonCompleteScreen() {
           <Button
             label="Done for today"
             variant="ghost"
-            onPress={() => router.replace('/(tabs)')}
+            onPress={() => router.replace('/dashboard')}
             testID="lesson-complete-done"
           />
         </View>

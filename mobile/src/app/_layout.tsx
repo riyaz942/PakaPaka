@@ -71,6 +71,7 @@ function RootLayoutContent() {
               centered frame. Phones are always narrower than the cap. */}
           <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
             <Stack>
+              <Stack.Screen name="index" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="onboarding" options={{ headerShown: false }} />
               <Stack.Screen

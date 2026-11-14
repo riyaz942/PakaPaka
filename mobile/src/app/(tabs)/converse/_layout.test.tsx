@@ -32,7 +32,7 @@ describe('ConverseTabLayout', () => {
   it('redirects deep links to Home on web', () => {
     setPlatform('web');
     render(<ConverseTabLayout />);
-    expect(mockRedirect).toHaveBeenCalledWith('/');
+    expect(mockRedirect).toHaveBeenCalledWith('/dashboard');
   });
 
   it('renders the Talk stack on iOS', () => {

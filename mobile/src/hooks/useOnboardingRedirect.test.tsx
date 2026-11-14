@@ -262,7 +262,7 @@ describe('useOnboardingRedirect', () => {
     renderHook(() => useOnboardingRedirect(), { wrapper });
 
     await waitFor(() => {
-      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
     });
   });
 
@@ -276,7 +276,7 @@ describe('useOnboardingRedirect', () => {
     renderHook(() => useOnboardingRedirect(), { wrapper });
 
     await waitFor(() => {
-      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
     });
   });
 });

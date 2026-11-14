@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { Platform, StyleSheet } from 'react-native';
 
-import HomeScreen from './index';
+import HomeScreen from './dashboard';
 
 import { serializeHomeLayout } from '@/core/engagement/homeLayout';
 import { clearReviewPriority, getReviewPriority } from '@/data/reviewPriorityStore';

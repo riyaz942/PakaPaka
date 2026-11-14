@@ -68,7 +68,7 @@ export default function ReviewSummaryScreen() {
               if (router.canDismiss()) {
                 router.dismissAll();
               } else {
-                router.replace('/(tabs)');
+                router.replace('/dashboard');
               }
             }}
             variant="primary"

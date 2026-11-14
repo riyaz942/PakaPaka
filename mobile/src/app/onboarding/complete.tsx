@@ -53,7 +53,7 @@ export default function CompleteScreen() {
   const submittedRef = useRef(false);
 
   const finish = useCallback(
-    (destination: '/lesson' | '/(tabs)') => {
+    (destination: '/lesson' | '/dashboard') => {
       if (submittedRef.current) {
         return;
       }
@@ -61,7 +61,7 @@ export default function CompleteScreen() {
       setOnboardingCompleted(userDb);
       // Land on the tab shell first so closing a lesson never pops to an
       // empty stack (which exits the app on Android).
-      router.replace('/(tabs)');
+      router.replace('/dashboard');
       if (destination === '/lesson') {
         router.push('/lesson');
       }
@@ -81,13 +81,13 @@ export default function CompleteScreen() {
       stepCount={4}
       primaryAction={
         isRestored
-          ? { label: 'Continue learning', onPress: () => finish('/(tabs)') }
+          ? { label: 'Continue learning', onPress: () => finish('/dashboard') }
           : { label: 'Start your first lesson', onPress: () => finish('/lesson') }
       }
       secondaryAction={
         isRestored
           ? { label: 'Start a lesson', onPress: () => finish('/lesson') }
-          : { label: 'Explore on my own', onPress: () => finish('/(tabs)') }
+          : { label: 'Explore on my own', onPress: () => finish('/dashboard') }
       }
       testID="complete-screen">
       <View className="gap-space-sm">
