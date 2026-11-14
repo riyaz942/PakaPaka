@@ -17,6 +17,7 @@ import { PassageReader } from '@/components/read/PassageReader';
 import { MaxContentWidth } from '@/constants/theme';
 import { usePassageDetail } from '@/data/hooks/usePassageDetail';
 import type { PassagePracticeResult } from '@/data/user/passagePracticeRepository';
+import { isWeb } from '@/platform/capabilities';
 
 /** Room kept below the focused answer box so its Submit button also shows. */
 const ANSWER_ACTION_CLEARANCE = 96;
@@ -54,6 +55,9 @@ export function PassageDetailScreen() {
   // When the keyboard shrinks the scroll area, bring the focused answer box
   // (and its Submit button) back into view.
   const revealFocusedInput = useCallback(() => {
+    // The browser scrolls a focused field into view itself, and react-native-web
+    // has no currentlyFocusedInput().
+    if (isWeb()) return;
     const input = TextInput.State.currentlyFocusedInput();
     const scroll = scrollRef.current;
     const scrollHost = scroll?.getNativeScrollRef();
