@@ -46,7 +46,7 @@ jest.mock('@/data/user/restoreBackup', () => ({
 
 const backupPreview: BackupPreview = {
   bundle: {
-    format: 'kizamu-backup',
+    format: 'pakapaka-backup',
     formatVersion: 1,
     schemaVersion: 19,
     curriculumVersion: '1.4.0',

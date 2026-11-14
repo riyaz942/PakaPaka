@@ -39,7 +39,7 @@ type MappedRows<TEntry> = {
 };
 
 function backupFileName(exportedAt: string): string {
-  return `kizamu-backup-${exportedAt.replace(/[:.]/g, '-')}.json.gz`;
+  return `pakapaka-backup-${exportedAt.replace(/[:.]/g, '-')}.json.gz`;
 }
 
 const TEST_DOCUMENT_DIRECTORY = 'file:///mock-documents/';

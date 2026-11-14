@@ -1145,7 +1145,7 @@ so that I can move to a new device without silently losing or corrupting my revi
 4. **Corrupt input fails as a typed error:** a truncated, non-gzip, wrong-`format`, or future-`formatVersion` file produces a `Result<T, AppError>` — never an uncaught throw, per the project Result convention.
 5. **Cross-platform round trip:** a backup exported on mobile restores on web and vice versa, since the format is platform-neutral JSON rather than SQLite bytes.
 6. **Backup nudge:** a "last backed up N days ago" indicator in Settings, clearing on export. On web it also takes the existing Home conditional-banner slot, because browser storage is evictable.
-7. **Restore is an onboarding import source:** "Kizamu backup" joins WaniKani / Bunpro / Anki as a fourth option on `src/app/onboarding/import.tsx`, reusing the same file-pick → preview → summary flow the Anki path already uses. A fresh install is the primary moment a learner restores, so it must not be buried in Settings.
+7. **Restore is an onboarding import source:** "PakaPaka backup" joins WaniKani / Bunpro / Anki as a fourth option on `src/app/onboarding/import.tsx`, reusing the same file-pick → preview → summary flow the Anki path already uses. A fresh install is the primary moment a learner restores, so it must not be buried in Settings.
 8. **Restoring skips the rest of onboarding:** a backup already carries `user_preferences` (intensity, daily goal, theme, furigana mode) and `item_study_status`. After a successful restore the learner goes straight to `complete` — never through `intensity` or `placement`, which would re-ask answered questions and let placement overwrite restored study status. This differs from the other three import sources, which continue to `intensity`.
 
 ## Dev Notes — Epic 9
@@ -1165,6 +1165,6 @@ so that I can move to a new device without silently losing or corrupting my revi
 
 **No migration required.** This epic reads and writes existing tables; it adds no schema. The last migration is `018_ai_session_topic_ids.ts` and Epic 7 has already claimed `019_card_registry.ts` — do not take `019`.
 
-**Explicitly out of scope:** cloud sync, accounts, any server, merge/conflict resolution between two devices, automatic scheduled backups on mobile (the OS already backs up the app sandbox), and a branded `.kizamu` file association (deferred — the format supports adding it later without change).
+**Explicitly out of scope:** cloud sync, accounts, any server, merge/conflict resolution between two devices, automatic scheduled backups on mobile (the OS already backs up the app sandbox), and a branded `.pakapaka` file association (deferred — the format supports adding it later without change).
 
 **Relationship to the web build:** this epic ships *before* Part B of the plan. It is independently valuable on mobile and is not blocked by any of the web unknowns.

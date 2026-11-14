@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "NihongoCore",
-    "slug": "nihongocore",
+    "name": "PakaPaka",
+    "slug": "pakapaka",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "nihongocore",
+    "scheme": "pakapaka",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "bundleIdentifier": "com.nihongocore.app"
+      "bundleIdentifier": "com.pakapaka.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +20,7 @@
         "backgroundImage": "./assets/images/android-icon-background.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.nihongocore.app",
+      "package": "com.pakapaka.app",
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ]

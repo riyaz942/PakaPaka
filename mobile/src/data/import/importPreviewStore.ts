@@ -3,7 +3,7 @@ import type { ImportPreview } from '@/core/import/import.types';
 
 let storedPreview: ImportPreview | null = null;
 /**
- * Parallel slot for a Kizamu backup restore. Same module, same
+ * Parallel slot for a PakaPaka backup restore. Same module, same
  * preview-then-confirm mechanism as a third-party import — but its own type,
  * because a backup is not an `ImportSource` (see Story 9.2 Dev Notes).
  * Setting either preview clears the other, so `import-summary` never has to

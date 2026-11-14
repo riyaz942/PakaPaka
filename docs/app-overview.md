@@ -8,7 +8,7 @@ Last checked against the codebase: **2026-10-20**
 
 ## What the app is
 
-NihongoCore — an offline-first Expo (React Native) Japanese learning app for iOS and Android. Free, no accounts, no subscriptions — all progress lives on-device in SQLite.
+PakaPaka — an offline-first Expo (React Native) Japanese learning app for iOS and Android. Free, no accounts, no subscriptions — all progress lives on-device in SQLite.
 
 - **Content** is a dependency graph (radical → kanji → vocabulary) plus structured grammar and reading passages.
 - **Scheduling** is FSRS spaced repetition, biased toward weak points (`0.7 × fsrs + 0.3 × weakness`), served as one interleaved queue. Stage rules: [srs-system-vs-wanikani.md](./srs-system-vs-wanikani.md).
