@@ -32,9 +32,26 @@ function fakeHandles() {
   };
 }
 
+// The Jest environment has no page events. On web the provider listens for
+// them, so every web render needs these stand-ins.
+type PageListener = (event: { persisted: boolean }) => void;
+const browser = window as unknown as {
+  addEventListener: unknown;
+  removeEventListener: unknown;
+  location: unknown;
+};
+let listeners: Record<string, PageListener>;
+const reload = jest.fn();
+
 describe('DatabaseProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    listeners = {};
+    browser.addEventListener = jest.fn((type: string, listener: PageListener) => {
+      listeners[type] = listener;
+    });
+    browser.removeEventListener = jest.fn();
+    browser.location = { reload };
     mockCheckAndApplyCurriculumUpdate.mockResolvedValue({ status: 'noop' });
     mockRequestPersistentStorage.mockResolvedValue('granted');
     mockInitializeDatabases.mockResolvedValue({ ok: true, value: fakeHandles() });
@@ -73,6 +90,37 @@ describe('DatabaseProvider', () => {
     );
     await waitFor(() => expect(screen.getByText('ready')).toBeTruthy());
     expect(mockRequestPersistentStorage).toHaveBeenCalledTimes(1);
+  });
+
+  // The SQLite worker stops when the page hides (patches/expo-sqlite), so a
+  // page that the browser restores from its back/forward cache has no databases.
+  describe('when the browser shows the page again', () => {
+    async function renderReady(os: 'ios' | 'web') {
+      setPlatform(os);
+      render(
+        <DatabaseProvider>
+          <Text>ready</Text>
+        </DatabaseProvider>,
+      );
+      await waitFor(() => expect(screen.getByText('ready')).toBeTruthy());
+    }
+
+    it('reloads a page that comes back from the back/forward cache', async () => {
+      await renderReady('web');
+      listeners.pageshow({ persisted: true });
+      expect(reload).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not reload on a normal page show', async () => {
+      await renderReady('web');
+      listeners.pageshow({ persisted: false });
+      expect(reload).not.toHaveBeenCalled();
+    });
+
+    it('does not listen for page events on native', async () => {
+      await renderReady('ios');
+      expect(browser.addEventListener).not.toHaveBeenCalled();
+    });
   });
 
   describe('when the databases cannot be opened', () => {

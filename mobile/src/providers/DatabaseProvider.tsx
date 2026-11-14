@@ -92,6 +92,26 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     };
   }, []);
 
+  // Web: when the user leaves for another page (the landing page at `/`), the
+  // browser can keep this page alive in its back/forward cache. The SQLite
+  // worker stops as the page hides (see patches/expo-sqlite), so that a fresh
+  // load of the app can open the OPFS files. A page that comes back from that
+  // cache has no databases, so it reloads.
+  useEffect(() => {
+    if (!isWeb()) {
+      return;
+    }
+
+    const reloadIfRestored = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener('pageshow', reloadIfRestored);
+    return () => window.removeEventListener('pageshow', reloadIfRestored);
+  }, []);
+
   useEffect(() => {
     if (state.status !== 'ready' || updateStartedRef.current || !supportsCurriculumOta()) {
       return;

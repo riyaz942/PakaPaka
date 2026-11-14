@@ -1,3 +1,28 @@
+diff --git a/node_modules/expo-sqlite/web/SQLiteModule.ts b/node_modules/expo-sqlite/web/SQLiteModule.ts
+index 717c987..b9fa755 100644
+--- a/node_modules/expo-sqlite/web/SQLiteModule.ts
++++ b/node_modules/expo-sqlite/web/SQLiteModule.ts
+@@ -29,6 +29,20 @@ function getWorker(): Worker {
+       }
+       workerMessageHandler(event);
+     });
++    // PakaPaka patch: the pool VFS keeps its OPFS access handles for as long as
++    // the worker lives, and a page in the browser's back/forward cache keeps
++    // its worker. A fresh load of the app then cannot open the databases.
++    // Stop the worker as the page hides, the same as when a tab closes. A page
++    // restored from that cache has no worker state and must reload
++    // (DatabaseProvider does this).
++    window.addEventListener(
++      'pagehide',
++      () => {
++        worker?.terminate();
++        worker = null;
++      },
++      { once: true }
++    );
+   }
+   return worker;
+ }
 diff --git a/node_modules/expo-sqlite/web/WorkerChannel.ts b/node_modules/expo-sqlite/web/WorkerChannel.ts
 index 7fba380..8b68812 100644
 --- a/node_modules/expo-sqlite/web/WorkerChannel.ts
