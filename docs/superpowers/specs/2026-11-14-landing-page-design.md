@@ -1,6 +1,6 @@
 # Landing page at `/`, app Home at `/dashboard`
 
-Date: 2026-11-14. Status: page built and committed; routing (below) waits for approval.
+Date: 2026-11-14. Status: page and routing built; not deployed.
 
 ## Intent
 
@@ -57,7 +57,7 @@ The operator chose A on 2026-11-14.
   which is not set when the visitor asks for reduced motion.
 - The mnemonic text, the art and the numbers come from the curriculum.
 
-## Routing design (to build)
+## Routing design (built 2026-11-14)
 
 1. **Move Home.** `mobile/src/app/(tabs)/index.tsx` becomes `(tabs)/dashboard.tsx`. Update the
    two tab layouts and each `'/'` or `'/(tabs)'` target (onboarding redirect, lesson and
@@ -82,11 +82,24 @@ onboarding.
   Home; the tab bar, lesson end and review end go to Home.
 - On a phone build: the app opens on Home.
 
-## Left to the builder
+## Found while building
 
-- If the local test shows that the `index.html` asset wins over the `_redirects` rule for `/`,
-  use a small Worker with `run_worker_first: ["/"]` that returns the landing page for `/`.
+- **The `_redirects` rule is sufficient.** `wrangler dev` serves the page at `/` and the app
+  shell at all other paths. No Worker is necessary.
+- **Back/forward cache held the database.** When the user goes from the app to the landing
+  page, the browser can keep the app page alive in its back/forward cache. That page kept its
+  SQLite worker, and the worker's file pool (`AccessHandlePoolVFS`) keeps the OPFS files until
+  the worker stops. Start then showed "Unable to open local databases". Closing the databases
+  does not release the pool. Fix: the expo-sqlite patch stops the worker on `pagehide`, and
+  `DatabaseProvider` reloads a page that the browser restores from that cache.
+- **The web app has no third-party import and no Talk tab** (`platform/capabilities.ts`). The
+  page says so: import is "in the phone app only", and Talk has a "Phone app" label.
+
+## Not done
+
+- Deploy (`npm run deploy:web`).
 - An `og:image` for link previews.
+- Browser checks of the page in the light theme, at phone width, and with reduced motion.
 
 ## Later (Part 2)
 
