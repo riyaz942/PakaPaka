@@ -93,7 +93,7 @@ fail loudly, per the project's no-hidden-fallbacks rule.
 
 ### A3 — Explicitly out of scope
 
-- Cloud sync, accounts, or a server of any kind.
+- ~~Cloud sync, accounts, or a server of any kind.~~ **Replaced:** optional Google sign-in, a Cloudflare Worker and progress sync are now in scope. See the [web app design (2026-11-04)](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md).
 - Merge/conflict resolution between two devices.
 - Automatic scheduled backups on mobile (the OS backup systems already cover the app sandbox).
 
@@ -248,7 +248,7 @@ migration would also relax the hosting constraint.
   real user demand.
 - Web Push notifications.
 - On-device voice on web.
-- Curriculum OTA on web (a deploy replaces the bundle instead).
+- Curriculum OTA on web (a deploy replaces the bundle instead). **Replaced:** the [web app design (2026-11-04)](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md) adds curriculum updates from R2 (Part 4).
 
 ---
 
