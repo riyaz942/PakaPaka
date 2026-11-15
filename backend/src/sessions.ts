@@ -108,6 +108,14 @@ export async function listDevices(
   return results.map((r) => ({ deviceId: r.device_id, label: r.device_label, lastUsedAt: r.last_used_at }));
 }
 
+// Rows are kept 60 days past expiry (revoked rows past their revocation) so a stolen old token is still seen as reuse.
+export async function pruneRefreshTokens(db: D1Database, nowMs: number): Promise<void> {
+  await db
+    .prepare("DELETE FROM refresh_tokens WHERE (revoked_at IS NOT NULL AND revoked_at < ?) OR created_at < ?")
+    .bind(nowMs - REFRESH_TTL_MS, nowMs - 2 * REFRESH_TTL_MS)
+    .run();
+}
+
 export async function deleteUserRows(db: D1Database, userId: string): Promise<void> {
   await db.batch([
     db.prepare("DELETE FROM refresh_tokens WHERE user_id = ?").bind(userId),

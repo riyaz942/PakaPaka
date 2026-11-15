@@ -5,6 +5,7 @@ import {
   deleteUserRows,
   findOrCreateUser,
   listDevices,
+  pruneRefreshTokens,
   revokeAllDevices,
   revokeDevice,
   rotateRefreshToken,
@@ -193,5 +194,32 @@ describe("deleteUserRows", () => {
         .first<{ n: number }>();
       expect(mine?.n).toBe(0);
     }
+  });
+});
+
+describe("pruneRefreshTokens", () => {
+  async function row(label: string, createdAt: number, revokedAt: number | null) {
+    await env.DB.prepare(
+      "INSERT INTO refresh_tokens (token_hash, user_id, device_id, device_label, created_at, last_used_at, revoked_at) VALUES (?, 'u1', ?, ?, ?, ?, ?)",
+    )
+      .bind(`hash-${label}`, `dev-${label}`, label, createdAt, createdAt, revokedAt)
+      .run();
+  }
+  const labels = async () =>
+    (await env.DB.prepare("SELECT device_label AS l FROM refresh_tokens ORDER BY l").all<{ l: string }>()).results.map((r) => r.l);
+
+  it("deletes rows revoked over 60 days ago and rows created over 120 days ago, keeps the rest", async () => {
+    await row("revoked-61d", NOW - 100 * DAY, NOW - 61 * DAY);
+    await row("revoked-59d", NOW - 100 * DAY, NOW - 59 * DAY);
+    await row("old-121d", NOW - 121 * DAY, null);
+    await row("old-119d", NOW - 119 * DAY, null);
+    await row("active", NOW - 1 * DAY, null);
+    await pruneRefreshTokens(env.DB, NOW);
+    expect(await labels()).toEqual(["active", "old-119d", "revoked-59d"]);
+  });
+
+  it("does nothing on an empty table", async () => {
+    await pruneRefreshTokens(env.DB, NOW);
+    expect(await count("refresh_tokens")).toBe(0);
   });
 });

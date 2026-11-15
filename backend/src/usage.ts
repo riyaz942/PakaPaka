@@ -8,7 +8,8 @@ export const FREE_LIMITS = {
   workersRequestsPerDay: 100_000,
   d1ReadsPerDay: 5_000_000,
   d1WritesPerDay: 100_000,
-  d1StorageBytes: 5e9,
+  // Per-database limit on the free plan (the account total is 5 GB). developers.cloudflare.com/d1/platform/limits/, checked 2026-11-15.
+  d1StorageBytes: 500_000_000,
   r2ClassAPerMonth: 1_000_000,
   r2ClassBPerMonth: 10_000_000,
   r2StorageBytes: 10e9,
@@ -198,17 +199,20 @@ export async function runUsageWatch(
   makeMessage: (from: string, to: string, raw: string) => EmailMessage = (from, to, raw) =>
     new EmailMessage(from, to, raw),
 ): Promise<void> {
-  for (const name of ["USAGE_ALERT_EMAIL", "CF_ACCOUNT_ID"] as const) {
-    if (!env[name]) {
-      console.error(`usage watch misconfigured: ${name}`);
-      return;
-    }
+  if (!env.USAGE_ALERT_EMAIL) {
+    console.error("usage watch misconfigured: USAGE_ALERT_EMAIL");
+    return;
   }
   const day = new Date(deps.now() - 86_400_000).toISOString().slice(0, 10);
   const from = `alerts@${new URL(env.APP_ORIGIN).hostname}`;
   const to = env.USAGE_ALERT_EMAIL;
   const send = (raw: string) => env.ALERT_EMAIL.send(makeMessage(from, to, raw));
 
+  // A missing account id would make every query fail: say so by email instead of staying quiet.
+  if (!env.CF_ACCOUNT_ID) {
+    await send(buildFailureEmail(from, to, day, "misconfigured_CF_ACCOUNT_ID"));
+    return;
+  }
   const result = await fetchUsage(env, deps, day);
   if (!result.ok) {
     // The watch must not go quiet: a failed check is itself reported.

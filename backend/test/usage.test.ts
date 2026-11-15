@@ -55,6 +55,12 @@ function withWorkersRequests(requests: number) {
   return copy;
 }
 
+describe("FREE_LIMITS", () => {
+  it("D1 storage limit is the 500 MB per-database limit", () => {
+    expect(FREE_LIMITS.d1StorageBytes).toBe(500_000_000);
+  });
+});
+
 describe("evaluateUsage", () => {
   it("flags exactly the metrics at or above 70%", () => {
     const snap: UsageSnapshot = {
@@ -73,7 +79,13 @@ describe("evaluateUsage", () => {
   });
 
   it("returns [] under threshold", () => {
-    expect(evaluateUsage({ ...low, workersRequestsPerDay: 69_999, d1StorageBytes: 3e9 })).toEqual([]);
+    expect(evaluateUsage({ ...low, workersRequestsPerDay: 69_999, d1StorageBytes: 349_999_999 })).toEqual([]);
+  });
+
+  it("flags D1 storage at 70% of 500 MB", () => {
+    expect(evaluateUsage({ ...low, d1StorageBytes: 350_000_000 })).toEqual([
+      { metric: "d1StorageBytes", used: 350_000_000, limit: 500_000_000 },
+    ]);
   });
 });
 
@@ -185,18 +197,29 @@ describe("fetchUsage empty data", () => {
 });
 
 describe("runUsageWatch", () => {
-  it.each(["USAGE_ALERT_EMAIL", "CF_ACCOUNT_ID"] as const)("empty %s → no fetch, console.error naming it", async (name) => {
+  it("empty USAGE_ALERT_EMAIL → no fetch, no email, console.error naming it", async () => {
     const { env: e, sent, makeMessage } = makeEnv();
     const { deps, calls } = makeDeps(() => ok(fixture));
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     try {
-      await runUsageWatch({ ...e, [name]: "" }, deps, makeMessage);
+      await runUsageWatch({ ...e, USAGE_ALERT_EMAIL: "" }, deps, makeMessage);
       expect(calls).toHaveLength(0);
       expect(sent).toEqual([]);
-      expect(spy.mock.calls).toEqual([[`usage watch misconfigured: ${name}`]]);
+      expect(spy.mock.calls).toEqual([["usage watch misconfigured: USAGE_ALERT_EMAIL"]]);
     } finally {
       spy.mockRestore();
     }
+  });
+
+  it("empty CF_ACCOUNT_ID with an alert address → failure email, no fetch", async () => {
+    const { env: e, sent, makeMessage } = makeEnv();
+    const { deps, calls } = makeDeps(() => ok(fixture));
+    await runUsageWatch({ ...e, CF_ACCOUNT_ID: "" }, deps, makeMessage);
+    expect(calls).toHaveLength(0);
+    expect(sent).toHaveLength(1);
+    expect(sent[0].to).toBe("alerts@example.test");
+    expect(sent[0].raw).toContain("Subject: PakaPaka: Usage check failed (2026-11-14)");
+    expect(sent[0].raw).toContain("misconfigured_CF_ACCOUNT_ID");
   });
 
   it("empty d1 storage rows → failure email with bad_response", async () => {

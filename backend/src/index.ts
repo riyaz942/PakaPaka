@@ -6,6 +6,7 @@ import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignou
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
 import { browserRateLimitResponse, handleGoogleCallback, handleSigninPage, handleSigninScript, handleWebStart } from "./routes/webAuth";
+import { pruneRefreshTokens } from "./sessions";
 import { runUsageWatch } from "./usage";
 
 export default {
@@ -42,6 +43,22 @@ export default {
   },
 
   async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runUsageWatch(env, makeDeps(env)));
+    const deps = makeDeps(env);
+    // Independent jobs: one failing must not skip the other. Log the error name only.
+    const jobs = [
+      ["usage watch", () => runUsageWatch(env, deps)],
+      ["token prune", () => pruneRefreshTokens(env.DB, deps.now())],
+    ] as const;
+    ctx.waitUntil(
+      Promise.all(
+        jobs.map(async ([name, run]) => {
+          try {
+            await run();
+          } catch (err) {
+            console.error(`scheduled ${name} failed: ${(err as { name?: unknown } | null)?.name ?? "unknown"}`);
+          }
+        }),
+      ),
+    );
   },
 } satisfies ExportedHandler<Env>;
