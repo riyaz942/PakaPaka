@@ -6,6 +6,7 @@ import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignou
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
 import { handleGoogleCallback, handleSigninPage, handleSigninScript, handleWebStart } from "./routes/webAuth";
+import { runUsageWatch } from "./usage";
 
 export default {
   async fetch(req: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
@@ -39,5 +40,7 @@ export default {
     }
   },
 
-  async scheduled(_event: ScheduledController, _env: Env, _ctx: ExecutionContext): Promise<void> {},
+  async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(runUsageWatch(env, makeDeps(env)));
+  },
 } satisfies ExportedHandler<Env>;
