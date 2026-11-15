@@ -27,8 +27,13 @@ export async function verifyGoogleIdToken(
       currentDate: new Date(opts.nowMs),
     }));
   } catch (err) {
-    // JWKS fetch trouble (timeout, or a non-jose error such as a fetch TypeError) is not a bad credential.
-    const upstream = err instanceof errors.JWKSTimeout || !(err instanceof errors.JOSEError);
+    // JWKS endpoint trouble is not a bad credential: timeout, malformed set, non-200 (plain JOSEError
+    // with the generic code), or a non-jose error such as a fetch TypeError.
+    const upstream =
+      !(err instanceof errors.JOSEError) ||
+      err instanceof errors.JWKSTimeout ||
+      err instanceof errors.JWKSInvalid ||
+      err.code === "ERR_JOSE_GENERIC";
     return { ok: false, error: upstream ? "upstream_failed" : "invalid_token" };
   }
   if (typeof payload.sub !== "string" || payload.sub === "") return { ok: false, error: "invalid_token" };

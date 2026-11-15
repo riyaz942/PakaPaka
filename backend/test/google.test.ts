@@ -1,4 +1,5 @@
 import { env } from "cloudflare:test";
+import { createRemoteJWKSet, customFetch, errors } from "jose";
 import { describe, expect, it } from "vitest";
 import type { Deps } from "../src/deps";
 import { buildGoogleAuthUrl, exchangeGoogleCode, googleAudiences, verifyGoogleIdToken } from "../src/google";
@@ -70,6 +71,46 @@ describe("verifyGoogleIdToken", () => {
       nowMs,
     });
     expect(r).toEqual({ ok: false, error: "upstream_failed" });
+  });
+
+  it("maps a JWKS endpoint 500 to upstream_failed", async () => {
+    const g = await makeTestGoogle();
+    const jwks = createRemoteJWKSet(new URL("https://jwks.example.test/certs"), {
+      [customFetch]: async () => new Response("down", { status: 500 }),
+    });
+    const r = await verifyGoogleIdToken(await g.sign(base), {
+      jwks,
+      audiences: googleAudiences(env),
+      expectedNonce: "n1",
+      nowMs,
+    });
+    expect(r).toEqual({ ok: false, error: "upstream_failed" });
+  });
+
+  it("maps JWKSInvalid to upstream_failed", async () => {
+    const g = await makeTestGoogle();
+    const r = await verifyGoogleIdToken(await g.sign(base), {
+      jwks: (async () => {
+        throw new errors.JWKSInvalid("bad set");
+      }) as unknown as typeof g.jwks,
+      audiences: googleAudiences(env),
+      expectedNonce: "n1",
+      nowMs,
+    });
+    expect(r).toEqual({ ok: false, error: "upstream_failed" });
+  });
+
+  it("keeps JWKSNoMatchingKey as invalid_token", async () => {
+    const g = await makeTestGoogle();
+    const r = await verifyGoogleIdToken(await g.sign(base), {
+      jwks: (async () => {
+        throw new errors.JWKSNoMatchingKey();
+      }) as unknown as typeof g.jwks,
+      audiences: googleAudiences(env),
+      expectedNonce: "n1",
+      nowMs,
+    });
+    expect(r).toEqual({ ok: false, error: "invalid_token" });
   });
 
   it("rejects nonce mismatch with invalid_nonce", async () => {
