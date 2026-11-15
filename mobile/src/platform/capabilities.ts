@@ -23,3 +23,10 @@ export const supportsCurriculumOta = (): boolean => !isWeb();
 
 /** WaniKani / Bunpro / Anki import (needs secure storage or the file system). */
 export const supportsThirdPartyImport = (): boolean => !isWeb();
+
+/** Native Google sign-in (system browser + token exchange); web uses the cookie flow. */
+export const supportsNativeGoogleSignIn = (): boolean =>
+  Platform.OS === 'ios' || Platform.OS === 'android';
+
+/** Web authenticates with HttpOnly cookies instead of stored tokens. */
+export const usesCookieSession = (): boolean => isWeb();
