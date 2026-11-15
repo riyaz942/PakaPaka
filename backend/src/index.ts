@@ -1,7 +1,7 @@
 import { makeDeps } from "./deps";
 import type { Env } from "./env";
 import { errorResponse } from "./http";
-import { rateLimit } from "./limits";
+import { rateLimit, toServerErrorResponse } from "./limits";
 import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignoutAll } from "./routes/account";
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
@@ -34,9 +34,8 @@ export default {
       const device = req.method === "DELETE" ? /^\/api\/account\/devices\/([^/]+)$/.exec(pathname) : null;
       if (device) return await handleRemoveDevice(req, env, deps, device[1]);
       return errorResponse("not_found", 404);
-    } catch {
-      // Never include the error: it could carry request data.
-      return errorResponse("server_error", 500);
+    } catch (err) {
+      return toServerErrorResponse(err);
     }
   },
 
