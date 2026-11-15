@@ -12,7 +12,7 @@ const MAX_BODY_BYTES = 8 * 1024;
 const MAX_LABEL_CHARS = 60;
 
 export async function handleNonce(_req: Request, env: Env, deps: Deps): Promise<Response> {
-  const nonce = await signValue(env.HMAC_KEY, { n: randomToken(16) }, deps.now() + NONCE_TTL_MS);
+  const nonce = await signValue(env.HMAC_KEY, { p: "nonce", n: randomToken(16) }, deps.now() + NONCE_TTL_MS);
   return json({ nonce });
 }
 
@@ -38,8 +38,8 @@ export async function handleExchange(req: Request, env: Env, deps: Deps): Promis
   const { idToken, nonce } = body;
   const now = deps.now();
 
-  const signed = await verifySignedValue<{ n?: unknown }>(env.HMAC_KEY, nonce, now);
-  if (!signed || typeof signed.n !== "string") return errorResponse("invalid_nonce", 400);
+  const signed = await verifySignedValue<{ p?: unknown; n?: unknown }>(env.HMAC_KEY, nonce, now);
+  if (!signed || signed.p !== "nonce" || typeof signed.n !== "string") return errorResponse("invalid_nonce", 400);
 
   const verified = await verifyGoogleIdToken(idToken, {
     jwks: deps.googleJwks,
@@ -54,7 +54,7 @@ export async function handleExchange(req: Request, env: Env, deps: Deps): Promis
   }
 
   const userId = await findOrCreateUser(env.DB, "google", verified.value.sub, now);
-  const label = body.deviceLabel.trim().slice(0, MAX_LABEL_CHARS) || "Phone";
+  const label = Array.from(body.deviceLabel.trim()).slice(0, MAX_LABEL_CHARS).join("") || "Phone";
   const { deviceId, refreshToken } = await createDevice(env, userId, label, now);
   const accessToken = await issueAccessToken(env, userId, deviceId, now);
   return json({ accessToken, refreshToken, deviceId, provider: "google" });

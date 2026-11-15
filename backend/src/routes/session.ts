@@ -21,10 +21,12 @@ export async function handleRefresh(req: Request, env: Env, deps: Deps): Promise
     } catch {
       return errorResponse("bad_payload", 400);
     }
-    if (body === null || typeof body !== "object" || typeof body.refreshToken !== "string") {
-      return errorResponse("bad_payload", 400);
+    if (body === null || typeof body !== "object") return errorResponse("bad_payload", 400);
+    // An absent field means the cookie path; a present but non-string value is malformed.
+    if (body.refreshToken !== undefined) {
+      if (typeof body.refreshToken !== "string") return errorResponse("bad_payload", 400);
+      bodyToken = body.refreshToken;
     }
-    bodyToken = body.refreshToken;
   }
 
   const viaCookie = bodyToken === null;

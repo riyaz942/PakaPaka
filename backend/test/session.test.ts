@@ -58,6 +58,26 @@ describe("POST /api/auth/refresh", () => {
     expect(await res.json()).toEqual({ error: "bad_payload" });
   });
 
+  it("rejects a null body token with 400 bad_payload", async () => {
+    const res = await post("/api/auth/refresh", { body: { refreshToken: null } });
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ error: "bad_payload" });
+  });
+
+  it("treats a body without refreshToken as the cookie path", async () => {
+    const d = await signedInDevice();
+    const res = await post("/api/auth/refresh", {
+      headers: { origin: ORIGIN, cookie: `__Secure-pp_rt=${d.refreshToken}` },
+      body: {},
+    });
+    expect(res.status).toBe(204);
+    expect(res.headers.getSetCookie()).toHaveLength(3);
+    // Cookie path still enforces Origin.
+    const d2 = await signedInDevice("g-2");
+    const bad = await post("/api/auth/refresh", { headers: { cookie: `__Secure-pp_rt=${d2.refreshToken}` }, body: {} });
+    expect(bad.status).toBe(403);
+  });
+
   it("(cookie) sets three cookies with the exact attributes", async () => {
     const d = await signedInDevice();
     const res = await post("/api/auth/refresh", {

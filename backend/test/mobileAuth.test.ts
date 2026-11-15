@@ -2,7 +2,8 @@ import { SELF, env } from "cloudflare:test";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Deps } from "../src/deps";
 import { deviceLabelFromUserAgent } from "../src/deviceLabel";
-import { rateLimit } from "../src/limits";
+import { signValue } from "../src/crypto";
+import { rateLimit, readLimitedText } from "../src/limits";
 import { handleExchange, handleNonce } from "../src/routes/mobileAuth";
 import { makeTestGoogle } from "./helpers";
 
@@ -74,11 +75,33 @@ describe("handleExchange", () => {
   });
 
   it("rejects a nonce we did not sign", async () => {
+    const { google, newNonce, exchange } = await setup();
+    const valid = await newNonce();
+    const [body, mac] = valid.split(".");
+    const tamperedBody = btoa(JSON.stringify({ d: { p: "nonce", n: "changed" }, exp: NOW + 600_000 }))
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/, "");
+    const forged = [
+      await signValue("some-other-key", { p: "nonce", n: "abc" }, NOW + 600_000),
+      `${tamperedBody}.${mac}`,
+      `${body}.${"0".repeat(64)}`,
+    ];
+    for (const nonce of forged) {
+      const res = await exchange({ provider: "google", idToken: await google.sign({ nonce }), nonce, deviceLabel: "Phone" });
+      expect(res.status).toBe(400);
+      expect(await res.json()).toEqual({ error: "invalid_nonce" });
+    }
+  });
+
+  it("rejects a value we signed for another purpose", async () => {
     const { google, exchange } = await setup();
-    const nonce = "forged.nonce";
-    const res = await exchange({ provider: "google", idToken: await google.sign({ nonce }), nonce, deviceLabel: "Phone" });
-    expect(res.status).toBe(400);
-    expect(await res.json()).toEqual({ error: "invalid_nonce" });
+    for (const payload of [{ n: "abc" }, { p: "state", n: "abc" }]) {
+      const nonce = await signValue(env.HMAC_KEY, payload, NOW + 600_000);
+      const res = await exchange({ provider: "google", idToken: await google.sign({ nonce }), nonce, deviceLabel: "Phone" });
+      expect(res.status).toBe(400);
+      expect(await res.json()).toEqual({ error: "invalid_nonce" });
+    }
   });
 
   it("rejects an expired nonce", async () => {
@@ -138,11 +161,64 @@ describe("handleExchange", () => {
     expect(await res.json()).toEqual({ error: "invalid_token" });
   });
 
+  it("counts code points when capping the label", async () => {
+    const { google, newNonce, exchange } = await setup();
+    const nonce = await newNonce();
+    // 59 ASCII chars + an emoji (2 UTF-16 units) + 1 more: the emoji must survive whole.
+    const deviceLabel = `${"a".repeat(59)}😀b`;
+    expect((await exchange({ provider: "google", idToken: await google.sign({ nonce }), nonce, deviceLabel })).status).toBe(200);
+    const row = await env.DB.prepare("SELECT device_label AS l FROM refresh_tokens").first<{ l: string }>();
+    expect(row?.l).toBe(`${"a".repeat(59)}😀`);
+  });
+
+  it("rejects a streamed body over 8 KB with 413", async () => {
+    const { deps } = await setup();
+    const chunk = new TextEncoder().encode("x".repeat(1024));
+    const stream = new ReadableStream<Uint8Array>({
+      pull(c) {
+        c.enqueue(chunk);
+      },
+    });
+    const req = new Request("https://paka-paka.app/api/auth/exchange", { method: "POST", body: stream, duplex: "half" } as RequestInit);
+    const res = await handleExchange(req, env, deps);
+    expect(res.status).toBe(413);
+  });
+
   it("rejects a body over 8 KB with 413", async () => {
     const { exchange } = await setup();
     const res = await exchange({ provider: "google", idToken: "x".repeat(9000), nonce: "n", deviceLabel: "p" });
     expect(res.status).toBe(413);
     expect(await res.json()).toEqual({ error: "payload_too_large" });
+  });
+});
+
+describe("readLimitedText", () => {
+  it("cancels the stream once the cap is passed", async () => {
+    let pulls = 0;
+    let cancelled = false;
+    const stream = new ReadableStream<Uint8Array>({
+      pull(c) {
+        pulls++;
+        c.enqueue(new Uint8Array(1024));
+      },
+      cancel() {
+        cancelled = true;
+      },
+    });
+    const req = new Request("https://paka-paka.app/x", { method: "POST", body: stream, duplex: "half" } as RequestInit);
+    expect(await readLimitedText(req, 8192)).toBeNull();
+    expect(cancelled).toBe(true);
+    expect(pulls).toBeLessThan(20);
+  });
+
+  it("rejects early on a declared Content-Length over the cap", async () => {
+    const req = new Request("https://paka-paka.app/x", { method: "POST", body: "x", headers: { "content-length": "9000" } });
+    expect(await readLimitedText(req, 8192)).toBeNull();
+  });
+
+  it("reads small and empty bodies", async () => {
+    expect(await readLimitedText(new Request("https://paka-paka.app/x", { method: "POST", body: "héllo" }), 8192)).toBe("héllo");
+    expect(await readLimitedText(new Request("https://paka-paka.app/x", { method: "POST" }), 8192)).toBe("");
   });
 });
 
