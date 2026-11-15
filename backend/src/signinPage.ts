@@ -23,18 +23,27 @@ export const SIGNIN_HEADERS: Record<string, string> = {
     "style-src 'unsafe-inline'; connect-src 'self'; form-action 'self' https://accounts.google.com; " +
     "frame-ancestors 'none'; base-uri 'none'",
   "x-content-type-options": "nosniff",
-  "referrer-policy": "no-referrer",
+  // Not no-referrer: that makes browsers send `Origin: null` on the form POST, which the start route rejects.
+  "referrer-policy": "strict-origin-when-cross-origin",
   "cache-control": "no-store",
 };
 
-export const SIGNIN_SCRIPT = "window.onTurnstileOk = () => { document.getElementById('continue').disabled = false; };\n";
+const ERROR_TEXT = "Check failed. Try again.";
+
+export const SIGNIN_SCRIPT =
+  "const button = () => document.getElementById('continue');\n" +
+  "const errorLine = () => document.getElementById('error');\n" +
+  "window.onTurnstileOk = () => { button().disabled = false; errorLine().hidden = true; };\n" +
+  "window.onTurnstileExpired = () => { button().disabled = true; };\n" +
+  `window.onTurnstileError = () => { button().disabled = true; errorLine().textContent = '${ERROR_TEXT}'; errorLine().hidden = false; };\n`;
 
 function escapeAttr(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 export function signinPage(siteKey: string, error: string | null): string {
-  const errorLine = error === "turnstile" || error === "origin" ? `<p class="error" role="alert">Check failed. Try again.</p>` : "";
+  const shown = error === "turnstile" || error === "origin";
+  const errorLine = `<p class="error" id="error" role="alert"${shown ? "" : " hidden"}>${shown ? ERROR_TEXT : ""}</p>`;
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
     `<meta name="viewport" content="width=device-width,initial-scale=1">` +
@@ -43,7 +52,8 @@ export function signinPage(siteKey: string, error: string | null): string {
     `<p>Optional. Keeps your progress the same on all your devices.</p>` +
     errorLine +
     `<form method="post" action="/api/auth/web/start">` +
-    `<div class="cf-turnstile" data-sitekey="${escapeAttr(siteKey)}" data-callback="onTurnstileOk"></div>` +
+    `<div class="cf-turnstile" data-sitekey="${escapeAttr(siteKey)}" data-callback="onTurnstileOk" ` +
+    `data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>` +
     `<button id="continue" type="submit" disabled>Continue with Google</button>` +
     `</form><a href="/settings">Back to the app</a>` +
     `<script src="/auth/signin.js"></script>` +

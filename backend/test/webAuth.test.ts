@@ -26,13 +26,15 @@ describe("GET /auth/signin", () => {
         "style-src 'unsafe-inline'; connect-src 'self'; form-action 'self' https://accounts.google.com; frame-ancestors 'none'; base-uri 'none'",
     );
     expect(res.headers.get("x-content-type-options")).toBe("nosniff");
-    expect(res.headers.get("referrer-policy")).toBe("no-referrer");
+    expect(res.headers.get("referrer-policy")).toBe("strict-origin-when-cross-origin");
     expect(res.headers.get("cache-control")).toBe("no-store");
     expect(res.headers.get("cross-origin-embedder-policy")).toBeNull();
     expect(res.headers.get("cross-origin-opener-policy")).toBeNull();
     const html = await res.text();
     expect(html).toContain("<title>Sign in to sync</title>");
     expect(html).toContain('class="cf-turnstile" data-sitekey="turnstile-site-key" data-callback="onTurnstileOk"');
+    expect(html).toContain('data-expired-callback="onTurnstileExpired"');
+    expect(html).toContain('data-error-callback="onTurnstileError"');
     expect(html).toContain('<form method="post" action="/api/auth/web/start">');
     expect(html).toContain("Back to the app");
     expect(html).not.toContain("Check failed");
@@ -55,7 +57,9 @@ describe("GET /auth/signin", () => {
   it("serves the Turnstile callback script as JavaScript", async () => {
     const res = await SELF.fetch(`${ORIGIN}/auth/signin.js`, { headers: { "cf-connecting-ip": "10.1.0.4" } });
     expect(res.headers.get("content-type")).toContain("text/javascript");
-    expect(await res.text()).toContain("window.onTurnstileOk");
+    const js = await res.text();
+    for (const name of ["onTurnstileOk", "onTurnstileExpired", "onTurnstileError"]) expect(js).toContain(`window.${name} =`);
+    expect(js).toContain("Check failed. Try again.");
   });
 });
 
@@ -109,6 +113,13 @@ describe("handleWebStart", () => {
     const res = await start(f, { token: null });
     expect(res.headers.get("location")).toBe("/auth/signin?error=turnstile");
     expect(calls).toHaveLength(0);
+  });
+
+  it("start with Origin: null redirects to signin?error=origin", async () => {
+    const res = await start(siteverify(true).f, { origin: "null" });
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/auth/signin?error=origin");
+    expect(res.headers.getSetCookie()).toEqual([]);
   });
 
   it("start with a foreign or missing Origin redirects to signin?error=origin and sets no cookie", async () => {
