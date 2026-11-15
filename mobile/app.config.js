@@ -1,10 +1,22 @@
 // Google OAuth client IDs per variant (public values). A variant with empty IDs ships
 // without the Google sign-in plugin and fails sign-in visibly. The iOS URL scheme is
 // derived from iosClientId.
+const GOOGLE_WEB_CLIENT_ID =
+  '68070992356-b6bralepm3637rkf8sas9dfj10bu85jp.apps.googleusercontent.com';
+
 const GOOGLE_CLIENTS = {
-  prod: { webClientId: '', iosClientId: '' },
-  preview: { webClientId: '', iosClientId: '' },
-  dev: { webClientId: '', iosClientId: '' },
+  prod: {
+    webClientId: GOOGLE_WEB_CLIENT_ID,
+    iosClientId: '68070992356-2c4mub75suml0vnl5hu068agqsff1pf3.apps.googleusercontent.com',
+  },
+  preview: {
+    webClientId: GOOGLE_WEB_CLIENT_ID,
+    iosClientId: '68070992356-qjruuekdmqqne6t2168ur0r9limc5npe.apps.googleusercontent.com',
+  },
+  dev: {
+    webClientId: GOOGLE_WEB_CLIENT_ID,
+    iosClientId: '68070992356-i9d5heeej7a6v1e2th86g0l2omffmbu5.apps.googleusercontent.com',
+  },
 };
 
 const VARIANTS = {
