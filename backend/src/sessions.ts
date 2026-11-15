@@ -6,20 +6,19 @@ const REFRESH_TTL_MS = 60 * 24 * 3600 * 1000;
 
 export async function findOrCreateUser(db: D1Database, provider: "google", sub: string, nowMs: number): Promise<string> {
   const candidate = crypto.randomUUID();
-  await db
-    .prepare("INSERT INTO identities (provider, sub, user_id, created_at) VALUES (?, ?, ?, ?) ON CONFLICT(provider, sub) DO NOTHING")
-    .bind(provider, sub, candidate, nowMs)
-    .run();
+  // One transaction: the user row is created only if this request's identity insert won, so no orphans.
+  await db.batch([
+    db
+      .prepare("INSERT INTO identities (provider, sub, user_id, created_at) VALUES (?, ?, ?, ?) ON CONFLICT(provider, sub) DO NOTHING")
+      .bind(provider, sub, candidate, nowMs),
+    db.prepare("INSERT INTO users (user_id, created_at) SELECT ?, ? WHERE changes() = 1").bind(candidate, nowMs),
+  ]);
   const row = await db
     .prepare("SELECT user_id FROM identities WHERE provider = ? AND sub = ?")
     .bind(provider, sub)
     .first<{ user_id: string }>();
-  const userId = row?.user_id ?? candidate;
-  // Only the request whose identity insert won creates the user row, so no orphans.
-  if (userId === candidate) {
-    await db.prepare("INSERT INTO users (user_id, created_at) VALUES (?, ?)").bind(userId, nowMs).run();
-  }
-  return userId;
+  if (!row) throw new Error("identity missing after insert");
+  return row.user_id;
 }
 
 export async function createDevice(
@@ -98,7 +97,7 @@ export async function revokeAllDevices(db: D1Database, userId: string, nowMs: nu
 export async function listDevices(
   db: D1Database,
   userId: string,
-  nowMs: number = Date.now(),
+  nowMs: number,
 ): Promise<Array<{ deviceId: string; label: string; lastUsedAt: number }>> {
   const { results } = await db
     .prepare(

@@ -46,6 +46,10 @@ describe("findOrCreateUser", () => {
     ]);
     expect(ids[1]).toBe(ids[0]);
     expect(await count("users")).toBe(1);
+    const orphans = await env.DB.prepare(
+      "SELECT COUNT(*) AS n FROM identities WHERE user_id NOT IN (SELECT user_id FROM users)",
+    ).first<{ n: number }>();
+    expect(orphans?.n).toBe(0);
   });
 });
 
@@ -81,6 +85,24 @@ describe("refresh rotation", () => {
     ]);
     expect(results.filter((r) => r.ok)).toHaveLength(1);
     expect(results.filter((r) => !r.ok)).toHaveLength(1);
+    const winner = results.find((r) => r.ok);
+    if (!winner?.ok) throw new Error("no winner");
+    // The loser triggered device revocation, so the winner's token is dead too.
+    expect(await rotateRefreshToken(env, winner.value.refreshToken, NOW + 2000)).toEqual({
+      ok: false,
+      error: "unauthorized",
+    });
+  });
+
+  it("a rotated token can itself be rotated once", async () => {
+    const { refreshToken } = await createDevice(env, "u1", "Pixel", NOW);
+    const first = await rotateRefreshToken(env, refreshToken, NOW + 1000);
+    if (!first.ok) throw new Error("first rotation failed");
+    const second = await rotateRefreshToken(env, first.value.refreshToken, NOW + 2000);
+    expect(second.ok).toBe(true);
+    if (!second.ok) return;
+    expect(second.value.deviceId).toBe(first.value.deviceId);
+    expect(second.value.refreshToken).not.toBe(first.value.refreshToken);
   });
 
   it("token older than 60 days is unauthorized", async () => {
@@ -151,13 +173,25 @@ describe("devices", () => {
 });
 
 describe("deleteUserRows", () => {
-  it("removes rows in all four tables", async () => {
-    const userId = await findOrCreateUser(env.DB, "google", "sub-del", NOW);
+  async function seed(sub: string): Promise<string> {
+    const userId = await findOrCreateUser(env.DB, "google", sub, NOW);
     await createDevice(env, userId, "Pixel", NOW);
     await env.DB.prepare("INSERT INTO sync_state (user_id, revision, updated_at) VALUES (?, 1, ?)")
       .bind(userId, NOW)
       .run();
+    return userId;
+  }
+
+  it("removes rows in all four tables and leaves other users alone", async () => {
+    const userId = await seed("sub-del");
+    await seed("sub-keep");
     await deleteUserRows(env.DB, userId);
-    for (const t of ["users", "identities", "sync_state", "refresh_tokens"]) expect(await count(t)).toBe(0);
+    for (const t of ["users", "identities", "sync_state", "refresh_tokens"]) {
+      expect(await count(t)).toBe(1);
+      const mine = await env.DB.prepare(`SELECT COUNT(*) AS n FROM ${t} WHERE user_id = ?`)
+        .bind(userId)
+        .first<{ n: number }>();
+      expect(mine?.n).toBe(0);
+    }
   });
 });
