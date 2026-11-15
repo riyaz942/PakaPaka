@@ -163,7 +163,7 @@ describe('AccountProvider', () => {
     expect(latest.error).toBeNull();
   });
 
-  it('signOut ends signed out even when the call fails', async () => {
+  it('native: signOut ends signed out even when the call fails', async () => {
     const session = fakeSession({
       signOut: jest.fn().mockResolvedValue({ ok: false, error: accountError('server') }),
     });
@@ -176,6 +176,53 @@ describe('AccountProvider', () => {
 
     await waitFor(() => expect(latest.status).toBe('signed_out'));
     expect(latest.account).toBeNull();
+  });
+
+  it('web: a failed sign-out keeps the user signed in with the error', async () => {
+    setPlatform('web');
+    Object.defineProperty(globalThis, 'window', {
+      value: {
+        location: { href: 'http://localhost/settings' },
+        history: { state: null, replaceState: jest.fn() },
+      },
+      configurable: true,
+    });
+    const session = fakeSession({
+      signOut: jest.fn().mockResolvedValue({ ok: false, error: accountError('network') }),
+    });
+    renderWith(session);
+    await waitFor(() => expect(latest.status).toBe('signed_in'));
+
+    await act(async () => {
+      await latest.signOut();
+    });
+
+    expect(latest.status).toBe('signed_in');
+    expect(latest.account).toEqual(INFO);
+    expect(latest.error).toBe("Can't reach the server. Check your connection and try again.");
+  });
+
+  it('web: a sign-out that finds the session ended signs out with its message', async () => {
+    setPlatform('web');
+    Object.defineProperty(globalThis, 'window', {
+      value: {
+        location: { href: 'http://localhost/settings' },
+        history: { state: null, replaceState: jest.fn() },
+      },
+      configurable: true,
+    });
+    const session = fakeSession({
+      signOut: jest.fn().mockResolvedValue({ ok: false, error: accountError('session_ended') }),
+    });
+    renderWith(session);
+    await waitFor(() => expect(latest.status).toBe('signed_in'));
+
+    await act(async () => {
+      await latest.signOut();
+    });
+
+    expect(latest.status).toBe('signed_out');
+    expect(latest.error).toBe('You were signed out. Sign in again to sync.');
   });
 
   it('deleteAccount success signs out; failure keeps the account and shows the error', async () => {

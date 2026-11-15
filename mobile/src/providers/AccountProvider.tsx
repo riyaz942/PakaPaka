@@ -159,9 +159,16 @@ export function AccountProvider({
     },
 
     async signOut() {
-      // Local sign-out always ends in the signed-out state.
       const result = await session.signOut();
-      signedOut(result.ok ? null : (result.error.userMessage ?? null));
+      if (result.ok) {
+        signedOut();
+      } else if (usesCookieSession()) {
+        // Web cookies only clear on the server, so the user is still signed in.
+        fail(result.error);
+      } else {
+        // Native sign-out always ends signed out; the device tokens are gone.
+        signedOut(result.error.userMessage ?? null);
+      }
     },
 
     signOutEverywhere: () => endSession(() => session.signOutEverywhere()),

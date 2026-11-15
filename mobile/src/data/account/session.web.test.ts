@@ -140,12 +140,13 @@ describe('createAccountSession (web)', () => {
     ]);
   });
 
-  it('signOut succeeds even when the server call fails', async () => {
+  it('signOut reports a server failure', async () => {
     fetchMock.mockRejectedValue(new TypeError('offline'));
 
     const result = await createAccountSession().signOut();
 
-    expect(result.ok).toBe(true);
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error.code).toBe('network');
   });
 
   it('removeDevice, signOutEverywhere and deleteAccount use the right routes', async () => {

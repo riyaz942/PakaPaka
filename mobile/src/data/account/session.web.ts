@@ -73,11 +73,9 @@ export function createAccountSession(): AccountSession {
     removeDevice: (id) =>
       send(`/api/account/devices/${encodeURIComponent(id)}`, { method: 'DELETE' }),
 
-    async signOut() {
-      // Local sign-out must always work; the server call is best effort.
-      await send('/api/auth/signout', { method: 'POST' });
-      return ok();
-    },
+    // The HttpOnly cookies can only be cleared by the server, so a failed call
+    // must be reported: the user is still signed in.
+    signOut: () => send('/api/auth/signout', { method: 'POST' }),
 
     signOutEverywhere: () => send('/api/account/signout-all', { method: 'POST' }),
     deleteAccount: () => send('/api/account', { method: 'DELETE' }),
