@@ -44,13 +44,16 @@ describe('capabilities', () => {
     }
   });
 
-  it('uses native Google sign-in on ios/android and the cookie session on web', () => {
-    setPlatform('ios');
-    expect(supportsNativeGoogleSignIn()).toBe(true);
-    expect(usesCookieSession()).toBe(false);
-    setPlatform('android');
-    expect(supportsNativeGoogleSignIn()).toBe(true);
-    expect(usesCookieSession()).toBe(false);
+  it.each(['ios', 'android'] as const)(
+    'uses native Google sign-in, not the cookie session, on %s',
+    (os) => {
+      setPlatform(os);
+      expect(supportsNativeGoogleSignIn()).toBe(true);
+      expect(usesCookieSession()).toBe(false);
+    },
+  );
+
+  it('uses the cookie session, not native Google sign-in, on web', () => {
     setPlatform('web');
     expect(supportsNativeGoogleSignIn()).toBe(false);
     expect(usesCookieSession()).toBe(true);

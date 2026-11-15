@@ -2,7 +2,7 @@ import type { AccountErrorCode } from '@/core/account/account.types';
 import { accountErrorMessage } from '@/core/account/errorMessages';
 import type { AppError, Result } from '@/types/result.types';
 
-function accountError(code: AccountErrorCode, cause?: unknown): AppError {
+export function accountError(code: AccountErrorCode, cause?: unknown): AppError {
   return {
     code,
     message: `Account request failed: ${code}`,

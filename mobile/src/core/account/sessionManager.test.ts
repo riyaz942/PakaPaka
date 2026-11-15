@@ -86,20 +86,43 @@ describe('sessionManager', () => {
     });
   });
 
-  it('retries once after a 401 then gives up', async () => {
+  it('retries once after a 401, then reports server and keeps the session', async () => {
     const fetchFn = jest.fn(async (url: string) => {
       if (url.endsWith('/api/auth/refresh')) {
         return json(200, { accessToken: 'at-new', refreshToken: 'rt-new' });
       }
       return json(401, { error: 'unauthorized' });
     });
-    const { manager } = setup(session(), fetchFn);
+    const { manager, store, current } = setup(session(), fetchFn);
 
     const res = await manager.authorizedRequest('/api/data', {});
 
-    expect(res).toMatchObject({ ok: false, error: { code: 'session_ended' } });
+    expect(res).toMatchObject({ ok: false, error: { code: 'server' } });
     expect(calls(fetchFn, '/api/data')).toHaveLength(2);
     expect(calls(fetchFn, '/api/auth/refresh')).toHaveLength(1);
+    expect(store.clear).not.toHaveBeenCalled();
+    expect(current()?.accessToken).toBe('at-new');
+  });
+
+  it('retries with a token another call already rotated, without a second refresh', async () => {
+    const rotated = session({ accessToken: 'at-B', refreshToken: 'rt-B' });
+    let storeRef: TokenStore | null = null;
+    const fetchFn = jest.fn(async (url: string, init?: RequestInit) => {
+      const auth = new Headers(init?.headers).get('Authorization');
+      if (url.endsWith('/api/a') && auth === 'Bearer at-old') {
+        await storeRef?.save(rotated); // call B rotated the token while A was in flight
+        return json(401, { error: 'unauthorized' });
+      }
+      return auth === 'Bearer at-B' ? json(200, {}) : json(500, {});
+    });
+    const { manager, store } = setup(session(), fetchFn);
+    storeRef = store;
+
+    const res = await manager.authorizedRequest('/api/a', {});
+
+    expect(res.ok).toBe(true);
+    expect(calls(fetchFn, '/api/auth/refresh')).toHaveLength(0);
+    expect(calls(fetchFn, '/api/a')).toHaveLength(2);
   });
 
   it('refresh 401 ends the session once', async () => {
@@ -119,6 +142,35 @@ describe('sessionManager', () => {
     expect(second).toMatchObject({ ok: false, error: { code: 'session_ended' } });
     expect(fetchFn).toHaveBeenCalledTimes(1);
     expect(store.clear).toHaveBeenCalledTimes(1);
+  });
+
+  it('refresh 401 is final even when clear() fails', async () => {
+    const fetchFn = jest.fn(async () => json(401, { error: 'unauthorized' }));
+    const { manager, store } = setup(session({ accessExpiresAtMs: NOW - 1 }), fetchFn);
+    (store.clear as jest.Mock).mockResolvedValue({
+      ok: false,
+      error: { code: 'secure_store_error', message: 'boom' },
+    });
+
+    const first = await manager.authorizedRequest('/api/data', {});
+    expect(first).toMatchObject({ ok: false, error: { code: 'session_ended' } });
+    expect(fetchFn).toHaveBeenCalledTimes(1);
+
+    const second = await manager.authorizedRequest('/api/data', {});
+    expect(second).toMatchObject({ ok: false, error: { code: 'session_ended' } });
+    expect(fetchFn).toHaveBeenCalledTimes(1);
+  });
+
+  it('a new sign-in after the session ended works again', async () => {
+    const fetchFn = jest.fn(async () => json(401, { error: 'unauthorized' }));
+    const { manager, store } = setup(session({ accessExpiresAtMs: NOW - 1 }), fetchFn);
+    await manager.authorizedRequest('/api/data', {});
+
+    await store.save(session({ accessToken: 'at-2', refreshToken: 'rt-2' }));
+    fetchFn.mockImplementation(async () => json(200, {}));
+
+    const res = await manager.authorizedRequest('/api/data', {});
+    expect(res.ok).toBe(true);
   });
 
   it('refresh failure other than 401 keeps the session', async () => {

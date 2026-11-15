@@ -1,6 +1,6 @@
-import type { ApiClient, ApiRequestInit } from '@/core/account/apiClient';
-import { accountErrorMessage } from '@/core/account/errorMessages';
-import type { AppError, Result } from '@/types/result.types';
+import type { AccountErrorCode } from '@/core/account/account.types';
+import { accountError, type ApiClient, type ApiRequestInit } from '@/core/account/apiClient';
+import type { Result } from '@/types/result.types';
 
 export type StoredSession = {
   accessToken: string;
@@ -23,16 +23,8 @@ export type SessionManager = {
 const ACCESS_TTL_MS = 15 * 60_000;
 const REFRESH_SKEW_MS = 30_000;
 
-function failure(code: 'session_ended' | 'server', cause?: unknown): { ok: false; error: AppError } {
-  return {
-    ok: false,
-    error: {
-      code,
-      message: `Account request failed: ${code}`,
-      userMessage: accountErrorMessage(code) ?? undefined,
-      cause,
-    },
-  };
+function failure(code: AccountErrorCode, cause?: unknown): Result<never> {
+  return { ok: false, error: accountError(code, cause) };
 }
 
 export function createSessionManager(deps: {
@@ -42,12 +34,24 @@ export function createSessionManager(deps: {
 }): SessionManager {
   const { api, store, nowMs } = deps;
   let inFlight: Promise<Result<void>> | null = null;
+  // Refresh token whose refresh got a 401. A session still holding it is over,
+  // even if clearing the store failed. A different token means a new sign-in.
+  let endedRefreshToken: string | null = null;
 
-  async function doRefresh(): Promise<Result<void>> {
+  async function loadSession(): Promise<Result<StoredSession>> {
     const loaded = await store.load();
     if (!loaded.ok) return loaded;
     const current = loaded.value;
     if (current === null) return failure('session_ended');
+    if (current.refreshToken === endedRefreshToken) return failure('session_ended');
+    endedRefreshToken = null;
+    return { ok: true, value: current };
+  }
+
+  async function doRefresh(): Promise<Result<void>> {
+    const loaded = await loadSession();
+    if (!loaded.ok) return loaded;
+    const current = loaded.value;
 
     const res = await api.request('/api/auth/refresh', {
       method: 'POST',
@@ -56,8 +60,8 @@ export function createSessionManager(deps: {
     });
     if (!res.ok) {
       if (res.error.code === 'session_ended') {
-        const cleared = await store.clear();
-        if (!cleared.ok) return cleared;
+        endedRefreshToken = current.refreshToken;
+        await store.clear();
       }
       return res;
     }
@@ -83,13 +87,6 @@ export function createSessionManager(deps: {
       });
     }
     return inFlight;
-  }
-
-  async function loadSession(): Promise<Result<StoredSession>> {
-    const loaded = await store.load();
-    if (!loaded.ok) return loaded;
-    if (loaded.value === null) return failure('session_ended');
-    return { ok: true, value: loaded.value };
   }
 
   async function authorizedRequest(
@@ -120,7 +117,12 @@ export function createSessionManager(deps: {
       latest = await loadSession();
       if (!latest.ok) return latest;
     }
-    return api.request(path, { ...init, accessToken: latest.value.accessToken });
+    const retried = await api.request(path, { ...init, accessToken: latest.value.accessToken });
+    // A 401 with a token that was just refreshed is not a sign-out.
+    if (!retried.ok && retried.error.code === 'session_ended') {
+      return failure('server', retried.error);
+    }
+    return retried;
   }
 
   return { authorizedRequest, refreshNow };
