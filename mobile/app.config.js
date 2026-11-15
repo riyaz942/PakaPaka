@@ -1,10 +1,10 @@
 // Google OAuth client IDs per variant (public values). A variant with empty IDs ships
-// without the Google sign-in plugin and fails sign-in visibly. iosUrlScheme is the
-// reversed iOS client ID.
+// without the Google sign-in plugin and fails sign-in visibly. The iOS URL scheme is
+// derived from iosClientId.
 const GOOGLE_CLIENTS = {
-  prod: { webClientId: '', iosClientId: '', iosUrlScheme: '' },
-  preview: { webClientId: '', iosClientId: '', iosUrlScheme: '' },
-  dev: { webClientId: '', iosClientId: '', iosUrlScheme: '' },
+  prod: { webClientId: '', iosClientId: '' },
+  preview: { webClientId: '', iosClientId: '' },
+  dev: { webClientId: '', iosClientId: '' },
 };
 
 const VARIANTS = {
@@ -23,10 +23,11 @@ const VARIANTS = {
 };
 
 function withGoogle(config, key) {
-  const { webClientId, iosClientId, iosUrlScheme } = GOOGLE_CLIENTS[key];
-  if (!webClientId || !iosClientId || !iosUrlScheme) {
+  const { webClientId, iosClientId } = GOOGLE_CLIENTS[key];
+  if (!webClientId || !iosClientId) {
     return config;
   }
+  const iosUrlScheme = `com.googleusercontent.apps.${iosClientId.replace(/\.apps\.googleusercontent\.com$/, '')}`;
 
   return {
     ...config,

@@ -27,6 +27,17 @@ describe('secureTokenStore', () => {
     expect(await secureTokenStore.load()).toEqual({ ok: true, value: stored });
   });
 
+  it('saves with the this-device-only keychain option', async () => {
+    const setItem = jest.spyOn(SecureStore, 'setItemAsync');
+
+    await secureTokenStore.save(stored);
+
+    expect(setItem).toHaveBeenCalledWith('account_session_v1', JSON.stringify(stored), {
+      keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
+    });
+    setItem.mockRestore();
+  });
+
   it('clear removes the session', async () => {
     await secureTokenStore.save(stored);
 
@@ -50,5 +61,6 @@ describe('secureTokenStore', () => {
     const result = await secureTokenStore.load();
 
     expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error.code).toBe('secure_store_error');
   });
 });
