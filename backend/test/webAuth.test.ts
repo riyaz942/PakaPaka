@@ -1,5 +1,5 @@
 import { SELF, env } from "cloudflare:test";
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Deps } from "../src/deps";
 import { sha256Base64Url, signValue, verifySignedValue } from "../src/crypto";
 import { handleGoogleCallback, handleWebStart } from "../src/routes/webAuth";
@@ -60,6 +60,81 @@ describe("GET /auth/signin", () => {
     const js = await res.text();
     for (const name of ["onTurnstileOk", "onTurnstileExpired", "onTurnstileError"]) expect(js).toContain(`window.${name} =`);
     expect(js).toContain("Check failed. Try again.");
+  });
+});
+
+describe("auth rate limit on browser routes", () => {
+  const RATE_TEXT = "Too many attempts. Try again in a minute.";
+  const exhaust = async (ip: string) => {
+    for (let i = 0; i < 10; i++) {
+      expect((await SELF.fetch(`${ORIGIN}/auth/signin`, { headers: { "cf-connecting-ip": ip } })).status).toBe(200);
+    }
+  };
+
+  it("signin page shows the rate limit message for error=rate_limited", async () => {
+    const res = await SELF.fetch(`${ORIGIN}/auth/signin?error=rate_limited`, { headers: { "cf-connecting-ip": "10.2.0.1" } });
+    expect(res.status).toBe(200);
+    expect(await res.text()).toContain(RATE_TEXT);
+  });
+
+  it("GET /auth/signin.js is not counted", async () => {
+    const ip = "10.2.0.2";
+    for (let i = 0; i < 12; i++) {
+      expect((await SELF.fetch(`${ORIGIN}/auth/signin.js`, { headers: { "cf-connecting-ip": ip } })).status).toBe(200);
+    }
+    expect((await SELF.fetch(`${ORIGIN}/auth/signin`, { headers: { "cf-connecting-ip": ip } })).status).toBe(200);
+  });
+
+  it("GET /auth/signin over the limit → 429 HTML page with the sign-in headers", async () => {
+    const ip = "10.2.0.3";
+    await exhaust(ip);
+    const res = await SELF.fetch(`${ORIGIN}/auth/signin`, { headers: { "cf-connecting-ip": ip } });
+    expect(res.status).toBe(429);
+    expect(res.headers.get("content-type")).toContain("text/html");
+    expect(res.headers.get("content-security-policy")).toContain("default-src 'none'");
+    expect(res.headers.get("referrer-policy")).toBe("strict-origin-when-cross-origin");
+    expect(res.headers.get("cache-control")).toBe("no-store");
+    const html = await res.text();
+    expect(html).toContain(RATE_TEXT);
+    expect(html).not.toContain("rate_limited");
+  });
+
+  it("POST /api/auth/web/start over the limit → 303 to the signin page", async () => {
+    const ip = "10.2.0.4";
+    await exhaust(ip);
+    const res = await SELF.fetch(`${ORIGIN}/api/auth/web/start`, {
+      method: "POST",
+      headers: { "cf-connecting-ip": ip, origin: ORIGIN, "content-type": "application/x-www-form-urlencoded" },
+      body: "",
+      redirect: "manual",
+    });
+    expect(res.status).toBe(303);
+    expect(res.headers.get("location")).toBe("/auth/signin?error=rate_limited");
+    expect(res.headers.getSetCookie()).toEqual([]);
+  });
+
+  it("GET /api/auth/google/callback over the limit → 302 failed and clears the state cookie", async () => {
+    const ip = "10.2.0.5";
+    await exhaust(ip);
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      const res = await SELF.fetch(`${ORIGIN}/api/auth/google/callback?code=c&state=s`, {
+        headers: { "cf-connecting-ip": ip },
+        redirect: "manual",
+      });
+      expectRejected(res, "/settings?signin=failed");
+      expect(spy.mock.calls).toEqual([["web sign-in failed: rate_limited"]]);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it("JSON API routes keep the JSON 429", async () => {
+    const ip = "10.2.0.6";
+    await exhaust(ip);
+    const res = await SELF.fetch(`${ORIGIN}/api/auth/nonce`, { method: "POST", headers: { "cf-connecting-ip": ip } });
+    expect(res.status).toBe(429);
+    expect(await res.json()).toEqual({ error: "rate_limited" });
   });
 });
 
@@ -211,6 +286,86 @@ function expectRejected(res: Response, location: string) {
   expect(cookies).toHaveLength(1);
   expect(cookies[0]).toMatch(/^__Host-pp_oauth=; Max-Age=0; Path=\//);
 }
+
+describe("callback failure logging", () => {
+  let spy: ReturnType<typeof vi.spyOn>;
+  beforeEach(() => {
+    spy = vi.spyOn(console, "error").mockImplementation(() => {});
+  });
+  afterEach(() => spy.mockRestore());
+
+  const logged = () => spy.mock.calls.map((c: unknown[]) => c.join(" "));
+  // Every secret-like value the flow touches: none may reach a log line.
+  const SECRETS = ["c1", STATE, VERIFIER, NONCE, "test-google-secret", "test-hmac-key", "Mozilla", "d1 down", "jwks down", "network"];
+  const expectLog = (reason: string, name?: string) => {
+    expect(logged()).toHaveLength(1);
+    const line = logged()[0];
+    expect(line.startsWith(`web sign-in failed: ${reason}`)).toBe(true);
+    if (name) expect(line).toContain(name);
+    for (const secret of SECRETS) expect(line).not.toContain(secret);
+  };
+
+  it("logs state for a bad state cookie", async () => {
+    await callback({ cookie: null });
+    expectLog("state");
+  });
+
+  it("logs state for a state mismatch", async () => {
+    await callback({ query: "code=c1&state=other" });
+    expectLog("state");
+  });
+
+  it("logs state for a missing code", async () => {
+    await callback({ query: `state=${STATE}` });
+    expectLog("state");
+  });
+
+  it("logs upstream when Google returns an error parameter", async () => {
+    await callback({ query: `error=server_error&state=${STATE}` });
+    expectLog("upstream");
+  });
+
+  it("logs nothing when the user cancelled", async () => {
+    await callback({ query: `error=access_denied&state=${STATE}` });
+    expect(logged()).toEqual([]);
+  });
+
+  it("logs exchange for a refused code", async () => {
+    await callback({ tokenStatus: 400 });
+    expectLog("exchange");
+  });
+
+  it("logs upstream for a Google outage", async () => {
+    await callback({ tokenStatus: 503 });
+    expectLog("upstream");
+  });
+
+  it("logs verify for a nonce mismatch", async () => {
+    await callback({ idNonce: "wrong" });
+    expectLog("verify");
+  });
+
+  it("logs upstream for a JWKS failure", async () => {
+    await callback({ jwksFails: true });
+    expectLog("upstream");
+  });
+
+  it("logs db with the error name for a database failure", async () => {
+    const real = env.DB.batch.bind(env.DB);
+    env.DB.batch = (() => Promise.reject(new TypeError("d1 down"))) as typeof env.DB.batch;
+    try {
+      await callback();
+    } finally {
+      env.DB.batch = real;
+    }
+    expectLog("db", "TypeError");
+  });
+
+  it("logs nothing on success", async () => {
+    await callback();
+    expect(logged()).toEqual([]);
+  });
+});
 
 describe("handleGoogleCallback", () => {
   it("callback success sets three session cookies and redirects to /settings?signin=ok", async () => {

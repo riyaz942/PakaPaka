@@ -5,7 +5,7 @@ import { rateLimit, toServerErrorResponse } from "./limits";
 import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignoutAll } from "./routes/account";
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
-import { handleGoogleCallback, handleSigninPage, handleSigninScript, handleWebStart } from "./routes/webAuth";
+import { browserRateLimitResponse, handleGoogleCallback, handleSigninPage, handleSigninScript, handleWebStart } from "./routes/webAuth";
 import { runUsageWatch } from "./usage";
 
 export default {
@@ -15,12 +15,13 @@ export default {
       return env.ASSETS.fetch(req);
     }
     try {
-      if (pathname.startsWith("/api/auth/") || pathname.startsWith("/auth/")) {
+      const route = `${req.method} ${pathname}`;
+      // The script file is a static asset of the sign-in page: counting it would burn the budget on page loads.
+      if (route !== "GET /auth/signin.js" && (pathname.startsWith("/api/auth/") || pathname.startsWith("/auth/"))) {
         const limited = await rateLimit(env.AUTH_LIMITER, req.headers.get("cf-connecting-ip") ?? "unknown");
-        if (limited) return limited;
+        if (limited) return browserRateLimitResponse(route) ?? limited;
       }
       const deps = makeDeps(env);
-      const route = `${req.method} ${pathname}`;
       if (route === "POST /api/auth/nonce") return await handleNonce(req, env, deps);
       if (route === "POST /api/auth/exchange") return await handleExchange(req, env, deps);
       if (route === "GET /auth/signin") return handleSigninPage(req, env);

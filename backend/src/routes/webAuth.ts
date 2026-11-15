@@ -8,13 +8,22 @@ import { errorResponse, parseCookies, serializeCookie } from "../http";
 import { readLimitedText } from "../limits";
 import { createDevice, findOrCreateUser } from "../sessions";
 import { setSessionCookies } from "../sessionCookies";
-import { SIGNIN_HEADERS, SIGNIN_SCRIPT, signinPage } from "../signinPage";
+import { SIGNIN_HEADERS, SIGNIN_SCRIPT, rateLimitedPage, signinPage } from "../signinPage";
 
 const OAUTH_COOKIE = "__Host-pp_oauth";
 const OAUTH_TTL_S = 600;
 const MAX_BODY_BYTES = 8 * 1024;
 
 const oauthCookie = { path: "/", httpOnly: true };
+const clearOauthCookie = () => serializeCookie(OAUTH_COOKIE, "", { ...oauthCookie, maxAge: 0 });
+
+type FailureReason = "state" | "exchange" | "verify" | "upstream" | "db" | "rate_limited";
+
+// Only the reason and, for a thrown error, its name: never values, tokens, codes or cookies.
+function logSigninFailure(reason: FailureReason, err?: unknown): void {
+  const name = (err as { name?: unknown } | null)?.name;
+  console.error(`web sign-in failed: ${reason}${err === undefined ? "" : ` ${typeof name === "string" ? name : "unknown"}`}`);
+}
 
 function redirect(status: 302 | 303, location: string, setCookie?: string): Response {
   const headers = new Headers({ location });
@@ -25,6 +34,18 @@ function redirect(status: 302 | 303, location: string, setCookie?: string): Resp
 export function handleSigninPage(req: Request, env: Env): Response {
   const error = new URL(req.url).searchParams.get("error");
   return new Response(signinPage(env.TURNSTILE_SITE_KEY, error), { headers: SIGNIN_HEADERS });
+}
+
+// What a browser sees when the auth rate limit is hit on a navigation route: a page or a redirect, never raw JSON.
+// Returns null for the JSON API routes, which keep the JSON 429.
+export function browserRateLimitResponse(route: string): Response | null {
+  if (route === "GET /auth/signin") return new Response(rateLimitedPage(), { status: 429, headers: SIGNIN_HEADERS });
+  if (route === "POST /api/auth/web/start") return redirect(303, "/auth/signin?error=rate_limited");
+  if (route === "GET /api/auth/google/callback") {
+    logSigninFailure("rate_limited");
+    return redirect(302, "/settings?signin=failed", clearOauthCookie());
+  }
+  return null;
 }
 
 export function handleSigninScript(): Response {
@@ -72,16 +93,21 @@ export async function handleWebStart(req: Request, env: Env, deps: Deps): Promis
 type OauthPayload = { p?: unknown; state?: unknown; verifier?: unknown; nonce?: unknown };
 
 export async function handleGoogleCallback(req: Request, env: Env, deps: Deps): Promise<Response> {
-  const clear = serializeCookie(OAUTH_COOKIE, "", { ...oauthCookie, maxAge: 0 });
-  const failed = redirect(302, "/settings?signin=failed", clear);
-  try {
-    const params = new URL(req.url).searchParams;
-    const error = params.get("error");
-    if (error === "access_denied") return redirect(302, "/settings?signin=cancelled", clear);
-    const code = params.get("code");
-    const state = params.get("state");
-    if (error || !code || !state) return failed;
+  const clear = clearOauthCookie();
+  const fail = (reason: FailureReason, err?: unknown) => {
+    logSigninFailure(reason, err);
+    return redirect(302, "/settings?signin=failed", clear);
+  };
+  const params = new URL(req.url).searchParams;
+  const error = params.get("error");
+  if (error === "access_denied") return redirect(302, "/settings?signin=cancelled", clear);
+  if (error) return fail("upstream");
+  const code = params.get("code");
+  const state = params.get("state");
+  if (!code || !state) return fail("state");
 
+  let sub: string;
+  try {
     const raw = parseCookies(req.headers.get("cookie"))[OAUTH_COOKIE];
     const saved = raw ? await verifySignedValue<OauthPayload>(env.HMAC_KEY, raw, deps.now()) : null;
     if (
@@ -92,29 +118,33 @@ export async function handleGoogleCallback(req: Request, env: Env, deps: Deps): 
       typeof saved.nonce !== "string" ||
       saved.state !== state
     ) {
-      return failed;
+      return fail("state");
     }
 
     const idToken = await exchangeGoogleCode(env, deps, { code, codeVerifier: saved.verifier });
-    if (!idToken.ok) return failed;
+    if (!idToken.ok) return fail(idToken.error === "upstream_failed" ? "upstream" : "exchange");
     const verified = await verifyGoogleIdToken(idToken.value, {
       jwks: deps.googleJwks,
       audiences: googleAudiences(env),
       expectedNonce: saved.nonce,
       nowMs: deps.now(),
     });
-    if (!verified.ok) return failed;
+    if (!verified.ok) return fail(verified.error === "upstream_failed" ? "upstream" : "verify");
+    sub = verified.value.sub;
+  } catch (err) {
+    return fail("upstream", err);
+  }
 
+  try {
     const now = deps.now();
-    const userId = await findOrCreateUser(env.DB, "google", verified.value.sub, now);
+    const userId = await findOrCreateUser(env.DB, "google", sub, now);
     const label = deviceLabelFromUserAgent(req.headers.get("user-agent"));
     const { deviceId, refreshToken } = await createDevice(env, userId, label, now);
     const accessToken = await issueAccessToken(env, userId, deviceId, now);
     const res = redirect(302, "/settings?signin=ok", clear);
     setSessionCookies(res.headers, { accessToken, refreshToken });
     return res;
-  } catch {
-    // Never include the error: it could carry request data.
-    return failed;
+  } catch (err) {
+    return fail("db", err);
   }
 }

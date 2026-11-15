@@ -112,6 +112,17 @@ describe("POST /api/account/signout-all", () => {
     expect(await activeDeviceIds(other.userId)).toEqual([other.deviceId]);
   });
 
+  it("cookie path needs a matching Origin", async () => {
+    const a = await signedInDevice();
+    const res = await SELF.fetch(`${ORIGIN}/api/account/signout-all`, {
+      method: "POST",
+      headers: { cookie: `__Host-pp_at=${a.accessToken}`, origin: "https://evil.example" },
+    });
+    expect(res.status).toBe(403);
+    expect(await res.json()).toEqual({ error: "bad_origin" });
+    expect(await activeDeviceIds(a.userId)).toEqual([a.deviceId]);
+  });
+
   it("cookie path clears the cookies", async () => {
     const a = await signedInDevice();
     const res = await SELF.fetch(`${ORIGIN}/api/account/signout-all`, {
@@ -157,6 +168,58 @@ describe("DELETE /api/account", () => {
     });
     expect(res.status).toBe(204);
     expect(res.headers.getSetCookie()).toHaveLength(3);
+  });
+
+  it("cookie path needs a matching Origin", async () => {
+    const a = await signedInDevice();
+    await env.PROGRESS.put(`progress/${a.userId}/state`, "x");
+    const res = await SELF.fetch(`${ORIGIN}/api/account`, {
+      method: "DELETE",
+      headers: { cookie: `__Host-pp_at=${a.accessToken}`, origin: "https://evil.example" },
+    });
+    expect(res.status).toBe(403);
+    expect(await res.json()).toEqual({ error: "bad_origin" });
+    expect(await countRows(a.userId)).toBe(1);
+    expect((await env.PROGRESS.list({ prefix: `progress/${a.userId}/` })).objects).toHaveLength(1);
+  });
+
+  it("a repeat delete with the same token makes no R2 call", async () => {
+    const a = await signedInDevice();
+    await env.PROGRESS.put(`progress/${a.userId}/state`, "x");
+    let lists = 0;
+    const spyBucket = new Proxy(env.PROGRESS, {
+      get(target, prop) {
+        if (prop === "list") {
+          return (...args: Parameters<R2Bucket["list"]>) => {
+            lists++;
+            return target.list(...args);
+          };
+        }
+        const v = Reflect.get(target, prop, target);
+        return typeof v === "function" ? v.bind(target) : v;
+      },
+    });
+    const spyEnv = { ...env, PROGRESS: spyBucket } as Env;
+    const deps = { now: () => Date.now() } as Deps;
+    const req = () => new Request(`${ORIGIN}/api/account`, { method: "DELETE", headers: { authorization: `Bearer ${a.accessToken}` } });
+
+    expect((await handleDeleteAccount(req(), spyEnv, deps)).status).toBe(204);
+    expect(lists).toBe(1);
+    expect((await handleDeleteAccount(req(), spyEnv, deps)).status).toBe(204);
+    expect(lists).toBe(1);
+  });
+
+  it("a repeat delete over cookies still clears the cookies", async () => {
+    const a = await signedInDevice();
+    const del = () =>
+      SELF.fetch(`${ORIGIN}/api/account`, {
+        method: "DELETE",
+        headers: { cookie: `__Host-pp_at=${a.accessToken}`, origin: ORIGIN },
+      });
+    expect((await del()).status).toBe(204);
+    const again = await del();
+    expect(again.status).toBe(204);
+    expect(again.headers.getSetCookie()).toHaveLength(3);
   });
 
   it("D1 failure after R2 keeps the user for retry", async () => {

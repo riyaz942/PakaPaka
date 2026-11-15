@@ -29,6 +29,7 @@ export const SIGNIN_HEADERS: Record<string, string> = {
 };
 
 const ERROR_TEXT = "Check failed. Try again.";
+const RATE_LIMITED_TEXT = "Too many attempts. Try again in a minute.";
 
 export const SIGNIN_SCRIPT =
   "const button = () => document.getElementById('continue');\n" +
@@ -42,8 +43,8 @@ function escapeAttr(s: string): string {
 }
 
 export function signinPage(siteKey: string, error: string | null): string {
-  const shown = error === "turnstile" || error === "origin";
-  const errorLine = `<p class="error" id="error" role="alert"${shown ? "" : " hidden"}>${shown ? ERROR_TEXT : ""}</p>`;
+  const text = error === "turnstile" || error === "origin" ? ERROR_TEXT : error === "rate_limited" ? RATE_LIMITED_TEXT : null;
+  const errorLine = `<p class="error" id="error" role="alert"${text ? "" : " hidden"}>${text ?? ""}</p>`;
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
     `<meta name="viewport" content="width=device-width,initial-scale=1">` +
@@ -59,5 +60,16 @@ export function signinPage(siteKey: string, error: string | null): string {
     `<script src="/auth/signin.js"></script>` +
     `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>` +
     `</main></body></html>`
+  );
+}
+
+// Shown instead of the sign-in page when the auth rate limit is hit: no form, no scripts.
+export function rateLimitedPage(): string {
+  return (
+    `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
+    `<meta name="viewport" content="width=device-width,initial-scale=1">` +
+    `<title>Sign in to sync</title><style>${CSS}</style></head><body><main>` +
+    `<h1>Sign in to sync</h1><p class="error" role="alert">${RATE_LIMITED_TEXT}</p>` +
+    `<a href="/settings">Back to the app</a></main></body></html>`
   );
 }

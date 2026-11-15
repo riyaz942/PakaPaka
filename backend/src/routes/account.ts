@@ -48,6 +48,10 @@ export async function handleDeleteAccount(req: Request, env: Env, deps: Deps): P
   const badOrigin = requireSameOrigin(req, env, auth.viaCookie);
   if (badOrigin) return badOrigin;
 
+  // After a delete the access token stays valid for up to 15 minutes: a repeat call must not cost R2 list operations.
+  const exists = await env.DB.prepare("SELECT 1 FROM users WHERE user_id = ?").bind(auth.userId).first();
+  if (!exists) return noContent(auth.viaCookie);
+
   // R2 first: if D1 then fails, the user row survives and a retry finishes the job.
   const prefix = `progress/${auth.userId}/`;
   let cursor: string | undefined;
