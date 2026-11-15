@@ -1,6 +1,6 @@
 import path from "node:path";
 import { defineConfig } from "vitest/config";
-import { cloudflareTest, readD1Migrations } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest, readD1Migrations } from "@cloudflare/vitest-plugin";
 
 export default defineConfig(async () => {
   const migrations = await readD1Migrations(path.join(import.meta.dirname, "migrations"));
@@ -9,7 +9,7 @@ export default defineConfig(async () => {
       cloudflareTest({
         main: "./src/index.ts",
         miniflare: {
-          compatibilityDate: "2026-08-01",
+          compatibilityDate: "2026-11-01",
           d1Databases: ["DB"],
           r2Buckets: ["PROGRESS"],
           ratelimits: {
