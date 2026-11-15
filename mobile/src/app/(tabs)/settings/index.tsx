@@ -27,6 +27,7 @@ import {
   type GuidanceCardId,
 } from '@/components/onboarding/cardRegistry';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
+import { AccountSettingsSection } from '@/components/settings/AccountSettingsSection';
 import {
   cancelAllNotifications,
   requestNotificationPermission,
@@ -630,6 +631,7 @@ export default function SettingsScreen() {
           </View>
 
           <View className={cn(wide && 'flex-1')}>
+            <AccountSettingsSection />
             <View className="mt-space-lg">
               <SectionHeading label="Backup" />
               <Text className="mt-space-xs text-caption font-ui-medium text-muted">

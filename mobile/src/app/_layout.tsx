@@ -18,6 +18,7 @@ import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
 import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
+import { AccountProvider } from '@/providers/AccountProvider';
 import { DatabaseProvider } from '@/providers/DatabaseProvider';
 import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
@@ -63,28 +64,30 @@ function RootLayoutContent() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
-          <ThemeModeHost />
-          <OnboardingRedirect />
-          <CurriculumUpdateBannerHost />
-          <AnimatedSplashOverlay />
-          {/* A desktop browser window can be any width; the app stays in a
-              centered frame. Phones are always narrower than the cap. */}
-          <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
-            <Stack>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="review"
-                options={{ headerShown: false, presentation: 'fullScreenModal' }}
-              />
-              <Stack.Screen
-                name="lesson"
-                options={{ headerShown: false, presentation: 'fullScreenModal' }}
-              />
-              <Stack.Screen name="levels" options={{ headerShown: false }} />
-            </Stack>
-          </View>
+          <AccountProvider>
+            <ThemeModeHost />
+            <OnboardingRedirect />
+            <CurriculumUpdateBannerHost />
+            <AnimatedSplashOverlay />
+            {/* A desktop browser window can be any width; the app stays in a
+                centered frame. Phones are always narrower than the cap. */}
+            <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
+              <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+                <Stack.Screen
+                  name="review"
+                  options={{ headerShown: false, presentation: 'fullScreenModal' }}
+                />
+                <Stack.Screen
+                  name="lesson"
+                  options={{ headerShown: false, presentation: 'fullScreenModal' }}
+                />
+                <Stack.Screen name="levels" options={{ headerShown: false }} />
+              </Stack>
+            </View>
+          </AccountProvider>
         </DatabaseProvider>
       </ThemeProvider>
     </View>
