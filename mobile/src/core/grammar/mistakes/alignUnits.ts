@@ -1,3 +1,4 @@
+import { levenshtein } from '@/core/answer/levenshtein';
 import { normalizeBuildText } from '@/core/grammar/buildEvaluator';
 
 import type {
@@ -12,6 +13,9 @@ import { unitVariants } from './unitVariants';
 
 const MAX_SLICE = 8;
 const KANJI = /[\u3400-\u9fff々]/;
+const KANJI_ALL = /[\u3400-\u9fff々]/g;
+/** Shorter words need an exact match, like a kana reading answer (readingEvaluator). */
+const MIN_TYPO_LENGTH = 3;
 export const COST = { variant: 1, missing: 1, extra: 1, replaced: 1.5 };
 
 type Candidate = {
@@ -20,6 +24,12 @@ type Candidate = {
   cost: number;
   variant?: UnitVariant;
 };
+
+/** One kana added, dropped or changed (たべまう for たべます); any kanji stay the same. */
+function isTypo(slice: string, target: string): boolean {
+  const kanji = (text: string) => (text.match(KANJI_ALL) ?? []).join('');
+  return kanji(slice) === kanji(target) && levenshtein(slice, target) === 1;
+}
 
 /**
  * Cheapest way to read `input` (already normalized) as the answer's units, in order.
@@ -50,6 +60,16 @@ export function alignUnits(
     }
     return list;
   });
+
+  // A word's own spellings that a one-kana typo can be read against. Not particles or
+  // grammar text: one kana off there is a different particle or grammar, not a typo.
+  const typoTargets: string[][] = units.map((unit, i) =>
+    unit.role === 'word' && !unit.inGrammar
+      ? candidates[i]
+          .filter((c) => c.kind === 'exact' && c.text.length >= MIN_TYPO_LENGTH)
+          .map((c) => c.text)
+      : [],
+  );
 
   const n = units.length;
   const m = input.length;
@@ -115,6 +135,18 @@ export function alignUnits(
             toUnit: i + 1,
             toPos: j + len,
           });
+        }
+        for (const target of typoTargets[i]) {
+          for (let len = target.length - 1; len <= target.length + 1 && j + len <= m; len++) {
+            const slice = input.slice(j, j + len);
+            if (!isTypo(slice, target)) continue;
+            tryMove(COST.variant, {
+              kind: 'spelling_typo',
+              toUnit: i + 1,
+              toPos: j + len,
+              variant: { text: slice, kind: 'spelling_typo' },
+            });
+          }
         }
       }
     }

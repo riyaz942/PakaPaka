@@ -7,6 +7,7 @@ import { Icon, type IconName } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import {
   applyKanjiConversions,
+  typedRomaji,
   undoneKanjiConversions,
   type KanjiConversion,
 } from '@/core/grammar/kanjiAutoConvert';
@@ -40,8 +41,8 @@ type WanaKanaInputProps = {
   /** Single explanation line under the answer — near-miss and wrong-script only. */
   hint?: string;
   /**
-   * Kana mode only: kana that turns into kanji as soon as it is typed (grammar
-   * Build cards). Pass a stable array — a new one starts a fresh card.
+   * Kana mode only: kana that turns into kanji as soon as it is typed in romaji
+   * (grammar Build cards). Pass a stable array — a new one starts a fresh card.
    */
   kanjiConversions?: readonly KanjiConversion[];
   /**
@@ -156,7 +157,12 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
         if (newlyUndone.length > 0) {
           setUndone({ conversions: kanjiConversions, kana: new Set([...undoneKana, ...newlyUndone]) });
         }
-        onChangeText(applyKanjiConversions(value, kana, kanjiConversions, undoneKana));
+        // A Japanese keyboard picks its own kanji, so only romaji converts.
+        onChangeText(
+          typedRomaji(value, text)
+            ? applyKanjiConversions(value, kana, kanjiConversions, undoneKana)
+            : kana,
+        );
       } else {
         onChangeText(text);
       }

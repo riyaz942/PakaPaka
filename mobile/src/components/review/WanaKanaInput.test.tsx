@@ -55,18 +55,25 @@ describe('WanaKanaInput', () => {
     expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('明日は');
   });
 
-  it('turns kana from a Japanese keyboard into kanji', () => {
+  it('keeps kana from a Japanese keyboard as typed', () => {
     render(<ControlledKanaInput withConversions />);
-    typeInto('あした');
-    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('明日');
+    for (const ch of 'あしたは') typeInto(ch);
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('あしたは');
+  });
+
+  it('keeps kanji the Japanese keyboard wrote', () => {
+    render(<ControlledKanaInput withConversions />);
+    typeInto('明日は');
+    expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('明日は');
   });
 
   it('keeps the kana when the learner deletes a converted word and types it again', () => {
     render(<ControlledKanaInput withConversions />);
-    typeInto('あした');
+    for (const key of 'ashita') typeInto(key);
     const input = screen.getByLabelText('Answer input, type in romaji');
+    expect(input.props.value).toBe('明日');
     fireEvent.changeText(input, '');
-    typeInto('あした');
+    for (const key of 'ashita') typeInto(key);
     expect(screen.getByLabelText('Answer input, type in romaji').props.value).toBe('あした');
   });
 

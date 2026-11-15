@@ -374,6 +374,11 @@ describe('explainMistake', () => {
         }),
       ).toBe('Long vowel is missing: おとうさん.');
     });
+    it('spelling_typo', () => {
+      expect(explain({ kind: 'spelling_typo', typed: 'がっこお', expected: ['学校'] })).toBe(
+        'You wrote がっこお. Check the spelling: 学校.',
+      );
+    });
     it('homophone_kanji', () => {
       expect(explain({ kind: 'homophone_kanji', typed: '橋', expected: ['箸'] })).toBe(
         'Same sound, different kanji: 箸.',
