@@ -1,5 +1,5 @@
 import { env } from "cloudflare:test";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import type { Deps } from "../src/deps";
 import type { Env } from "../src/env";
 import { FREE_LIMITS, evaluateUsage, fetchUsage, runUsageWatch, type UsageSnapshot } from "../src/usage";
@@ -88,7 +88,7 @@ describe("fetchUsage", () => {
         d1ReadsPerDay: 20000,
         d1WritesPerDay: 800,
         d1StorageBytes: 1_200_000,
-        r2ClassAPerMonth: 352, // PutObject + ListObjects; DeleteObject is free
+        r2ClassAPerMonth: 361, // everything not Class B: PutObject + ListObjects + DeleteObject (over-counted on purpose)
         r2ClassBPerMonth: 5180, // GetObject + HeadObject
         r2StorageBytes: 4_001_000, // payload + metadata
       },
@@ -145,7 +145,71 @@ describe("fetchUsage", () => {
   });
 });
 
+describe("fetchUsage empty data", () => {
+  const withAccount = (patch: Record<string, unknown>) => {
+    const copy = structuredClone(fixture) as any;
+    Object.assign(copy.data.viewer.accounts[0], patch);
+    return copy;
+  };
+
+  it("empty d1 storage rows → bad_response", async () => {
+    const { deps } = makeDeps(() => ok(withAccount({ d1StorageAdaptiveGroups: [] })));
+    expect(await fetchUsage(env, deps, "2026-11-14")).toMatchObject({ ok: false, reason: "bad_response" });
+  });
+
+  it("d1 storage row without databaseSizeBytes → bad_response", async () => {
+    const { deps } = makeDeps(() => ok(withAccount({ d1StorageAdaptiveGroups: [{ max: {} }] })));
+    expect(await fetchUsage(env, deps, "2026-11-14")).toMatchObject({ ok: false, reason: "bad_response" });
+  });
+
+  it("empty r2 storage rows → 0 bytes, no failure", async () => {
+    const { deps } = makeDeps(() => ok(withAccount({ r2StorageAdaptiveGroups: [] })));
+    expect(await fetchUsage(env, deps, "2026-11-14")).toMatchObject({ ok: true, value: { r2StorageBytes: 0 } });
+  });
+
+  it("r2 storage row missing a field → bad_response", async () => {
+    const { deps } = makeDeps(() => ok(withAccount({ r2StorageAdaptiveGroups: [{ max: { payloadSize: 5 } }] })));
+    expect(await fetchUsage(env, deps, "2026-11-14")).toMatchObject({ ok: false, reason: "bad_response" });
+  });
+
+  it("an unknown R2 actionType counts toward class A", async () => {
+    const copy = withAccount({
+      r2OperationsAdaptiveGroups: [{ sum: { requests: 7 }, dimensions: { actionType: "SomeNewAction" } }],
+    });
+    const { deps } = makeDeps(() => ok(copy));
+    expect(await fetchUsage(env, deps, "2026-11-14")).toMatchObject({
+      ok: true,
+      value: { r2ClassAPerMonth: 7, r2ClassBPerMonth: 0 },
+    });
+  });
+});
+
 describe("runUsageWatch", () => {
+  it.each(["USAGE_ALERT_EMAIL", "CF_ACCOUNT_ID"] as const)("empty %s → no fetch, console.error naming it", async (name) => {
+    const { env: e, sent, makeMessage } = makeEnv();
+    const { deps, calls } = makeDeps(() => ok(fixture));
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      await runUsageWatch({ ...e, [name]: "" }, deps, makeMessage);
+      expect(calls).toHaveLength(0);
+      expect(sent).toEqual([]);
+      expect(spy.mock.calls).toEqual([[`usage watch misconfigured: ${name}`]]);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it("empty d1 storage rows → failure email with bad_response", async () => {
+    const { env: e, sent, makeMessage } = makeEnv();
+    const copy = structuredClone(fixture) as any;
+    copy.data.viewer.accounts[0].d1StorageAdaptiveGroups = [];
+    const { deps } = makeDeps(() => ok(copy));
+    await runUsageWatch(e, deps, makeMessage);
+    expect(sent).toHaveLength(1);
+    expect(sent[0].raw).toContain("Usage check failed");
+    expect(sent[0].raw).toContain("bad_response");
+  });
+
   it("sends one email when a metric is high", async () => {
     const { env: e, sent, makeMessage } = makeEnv();
     const { deps } = makeDeps(() => ok(withWorkersRequests(80_000)));

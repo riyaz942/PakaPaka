@@ -53,27 +53,10 @@ const QUERY = `query Usage($accountTag: string!, $day: Date!, $dayStart: Time!, 
   }
 }`;
 
-// Class A actions per https://developers.cloudflare.com/r2/platform/pricing/ (checked 2026-11-15).
-// "ListObjectsV2" is not on that page; it is the S3 name for ListObjects and is assumed to be billed
-// as Class A. Actions on neither list (DeleteObject etc.) are free and not counted.
-const R2_CLASS_A = new Set([
-  "ListBuckets",
-  "PutBucket",
-  "ListObjects",
-  "ListObjectsV2",
-  "PutObject",
-  "CopyObject",
-  "CompleteMultipartUpload",
-  "CreateMultipartUpload",
-  "LifecycleStorageTierTransition",
-  "ListMultipartUploads",
-  "UploadPart",
-  "UploadPartCopy",
-  "ListParts",
-  "PutBucketEncryption",
-  "PutBucketCors",
-  "PutBucketLifecycleConfiguration",
-]);
+// Class B actions per https://developers.cloudflare.com/r2/platform/pricing/ (checked 2026-11-15).
+// Every other action counts as Class A. That list is long and may grow (e.g. "ListObjectsV2" is not on the
+// page), so an unknown action fails closed toward alerting. Free actions such as DeleteObject are
+// therefore over-counted; the watch is only a warning, so that is the safe side.
 const R2_CLASS_B = new Set([
   "HeadBucket",
   "HeadObject",
@@ -89,23 +72,31 @@ type Row = Record<string, any>;
 
 const sumOf = (rows: Row[], key: string) => rows.reduce((n, r) => n + Number(r.sum[key]), 0);
 
+function strictNumber(v: unknown): number {
+  if (typeof v !== "number" || !Number.isFinite(v)) throw new Error("non-numeric");
+  return v;
+}
+
 function parseAccount(a: Row): UsageSnapshot {
   const r2Ops: Row[] = a.r2OperationsAdaptiveGroups;
-  const r2Requests = (actions: Set<string>) =>
+  const r2Requests = (classB: boolean) =>
     sumOf(
-      r2Ops.filter((r) => actions.has(r.dimensions.actionType)),
+      r2Ops.filter((r) => R2_CLASS_B.has(r.dimensions.actionType) === classB),
       "requests",
     );
-  const r2Storage: Row | undefined = a.r2StorageAdaptiveGroups[0];
+  // No D1 storage row means the filter matched nothing (the database always has a size): treat as a bad response.
   const d1Storage: Row | undefined = a.d1StorageAdaptiveGroups[0];
+  if (!d1Storage) throw new Error("no d1 storage row");
+  // No R2 storage row is legitimate (empty bucket): 0 bytes. A present row must have both fields.
+  const r2Storage: Row | undefined = a.r2StorageAdaptiveGroups[0];
   const snapshot: UsageSnapshot = {
     workersRequestsPerDay: sumOf(a.workersInvocationsAdaptive, "requests"),
     d1ReadsPerDay: sumOf(a.d1AnalyticsAdaptiveGroups, "rowsRead"),
     d1WritesPerDay: sumOf(a.d1AnalyticsAdaptiveGroups, "rowsWritten"),
-    d1StorageBytes: Number(d1Storage?.max.databaseSizeBytes ?? 0),
-    r2ClassAPerMonth: r2Requests(R2_CLASS_A),
-    r2ClassBPerMonth: r2Requests(R2_CLASS_B),
-    r2StorageBytes: r2Storage ? Number(r2Storage.max.payloadSize) + Number(r2Storage.max.metadataSize) : 0,
+    d1StorageBytes: strictNumber(d1Storage.max.databaseSizeBytes),
+    r2ClassAPerMonth: r2Requests(false),
+    r2ClassBPerMonth: r2Requests(true),
+    r2StorageBytes: r2Storage ? strictNumber(r2Storage.max.payloadSize) + strictNumber(r2Storage.max.metadataSize) : 0,
   };
   if (Object.values(snapshot).some((v) => !Number.isFinite(v))) throw new Error("non-numeric");
   return snapshot;
@@ -207,6 +198,12 @@ export async function runUsageWatch(
   makeMessage: (from: string, to: string, raw: string) => EmailMessage = (from, to, raw) =>
     new EmailMessage(from, to, raw),
 ): Promise<void> {
+  for (const name of ["USAGE_ALERT_EMAIL", "CF_ACCOUNT_ID"] as const) {
+    if (!env[name]) {
+      console.error(`usage watch misconfigured: ${name}`);
+      return;
+    }
+  }
   const day = new Date(deps.now() - 86_400_000).toISOString().slice(0, 10);
   const from = `alerts@${new URL(env.APP_ORIGIN).hostname}`;
   const to = env.USAGE_ALERT_EMAIL;
