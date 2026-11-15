@@ -74,7 +74,9 @@ export function toServerErrorResponse(err: unknown): Response {
   const name = typeof e?.name === "string" ? e.name : "unknown";
   const code = typeof e?.code === "string" || typeof e?.code === "number" ? ` code=${e.code}` : "";
   console.error(`server error: ${name}${code}`);
-  const message = typeof e?.message === "string" ? e.message : "";
-  if (QUOTA_ERROR_PATTERNS.some((p) => p.test(message))) return errorResponse("quota_exceeded", 503);
+  // The D1 detail can sit in the message or one level down in the cause.
+  const cause = (err as { cause?: { message?: unknown } | null } | null)?.cause;
+  const texts = [e?.message, cause?.message].filter((t): t is string => typeof t === "string");
+  if (texts.some((t) => QUOTA_ERROR_PATTERNS.some((p) => p.test(t)))) return errorResponse("quota_exceeded", 503);
   return errorResponse("server_error", 500);
 }

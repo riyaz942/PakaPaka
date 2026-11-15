@@ -85,6 +85,23 @@ describe("toServerErrorResponse", () => {
     expect(await res.json()).toEqual({ error: "quota_exceeded" });
   });
 
+  it("quota text in err.cause -> 503 quota_exceeded", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const err = new Error("D1_ERROR: query failed", {
+      cause: new Error("Your account has exceeded D1's free tier daily row write limit."),
+    });
+    const res = toServerErrorResponse(err);
+    expect(res.status).toBe(503);
+    expect(await res.json()).toEqual({ error: "quota_exceeded" });
+    expect(JSON.stringify(spy.mock.calls)).not.toContain("exceeded");
+  });
+
+  it("non-object cause is ignored", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    expect(toServerErrorResponse(new Error("x", { cause: "exceeded D1's free tier daily row write limit" })).status).toBe(500);
+    expect(toServerErrorResponse(new Error("x", { cause: null })).status).toBe(500);
+  });
+
   it("other error -> 500 server_error with no message leak", async () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     const secret = "INSERT INTO users VALUES ('sub-SECRET-123')";
