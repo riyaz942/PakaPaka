@@ -61,6 +61,8 @@
     "react-native-executorch": "0.10.0-nightly-a0bf85b-20260721",
     "react-native-executorch-expo-resource-fetcher": "0.10.0-nightly-0a8fe7e-20260527",
     "react-native-gesture-handler": "~2.30.0",
+    "react-native-nitro-google-signin": "^2.3.1",
+    "react-native-nitro-modules": "^0.37.2",
     "react-native-reanimated": "4.2.1",
     "react-native-safe-area-context": "~5.6.2",
     "react-native-screens": "~4.23.0",
@@ -118,7 +120,8 @@
       "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx",
       "^react-native-executorch$": "<rootDir>/__mocks__/react-native-executorch.ts",
       "^react-native-executorch-expo-resource-fetcher$": "<rootDir>/__mocks__/react-native-executorch-expo-resource-fetcher.ts",
-      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts"
+      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts",
+      "^react-native-nitro-google-signin$": "<rootDir>/__mocks__/react-native-nitro-google-signin.ts"
     }
   }
 }

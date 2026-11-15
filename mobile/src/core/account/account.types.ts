@@ -1,3 +1,5 @@
+import type { Result } from '@/types/result.types';
+
 export type AccountErrorCode =
   | 'paused'
   | 'rate_limited'
@@ -17,4 +19,14 @@ export type AccountDevice = {
 export type AccountInfo = {
   provider: 'google';
   devices: AccountDevice[];
+};
+
+export type AccountSession = {
+  isSignedIn(): Promise<boolean>;
+  signIn(): Promise<Result<void>>;
+  getAccount(): Promise<Result<AccountInfo>>;
+  removeDevice(id: string): Promise<Result<void>>;
+  signOut(): Promise<Result<void>>;
+  signOutEverywhere(): Promise<Result<void>>;
+  deleteAccount(): Promise<Result<void>>;
 };

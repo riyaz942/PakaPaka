@@ -20,7 +20,7 @@ export type SessionManager = {
   refreshNow(): Promise<Result<void>>;
 };
 
-const ACCESS_TTL_MS = 15 * 60_000;
+export const ACCESS_TTL_MS = 15 * 60_000;
 const REFRESH_SKEW_MS = 30_000;
 
 function failure(code: AccountErrorCode, cause?: unknown): Result<never> {
