@@ -1,15 +1,18 @@
 import Constants from 'expo-constants';
+import { Platform } from 'react-native';
 import { GoogleOneTapSignIn } from 'react-native-nitro-google-signin';
 
 import { accountError } from '@/core/account/apiClient';
 import type { Result } from '@/types/result.types';
 
-function clientIds(): { webClientId: string; iosClientId: string } | null {
+function clientIds(): { webClientId: string; iosClientId?: string } | null {
   const google = Constants.expoConfig?.extra?.google as
     | { webClientId?: unknown; iosClientId?: unknown }
     | undefined;
   const { webClientId, iosClientId } = google ?? {};
   if (typeof webClientId !== 'string' || webClientId === '') return null;
+  // Android tokens carry the web client ID as audience; only iOS needs its own client ID.
+  if (Platform.OS !== 'ios') return { webClientId };
   if (typeof iosClientId !== 'string' || iosClientId === '') return null;
   return { webClientId, iosClientId };
 }

@@ -1,4 +1,5 @@
 import Constants from 'expo-constants';
+import { Platform } from 'react-native';
 import { GoogleOneTapSignIn } from 'react-native-nitro-google-signin';
 
 import { signInWithGoogleNative } from '@/data/account/googleSignIn';
@@ -22,6 +23,7 @@ describe('signInWithGoogleNative', () => {
     createAccount.mockReset();
     libSignOut.mockReset().mockResolvedValue(undefined);
     setGoogleExtra({ webClientId: 'web-id', iosClientId: 'ios-id' });
+    Platform.OS = 'ios';
   });
 
   it('configures with the configured client IDs and the nonce, then returns the ID token', async () => {
@@ -90,10 +92,31 @@ describe('signInWithGoogleNative', () => {
     expect(createAccount).not.toHaveBeenCalled();
   });
 
+  it('on Android needs only the web client ID and does not pass the iOS one', async () => {
+    Platform.OS = 'android';
+    setGoogleExtra({ webClientId: 'web-id', iosClientId: '' });
+    createAccount.mockResolvedValue({ type: 'success', data: { idToken: 't' } });
+
+    const result = await signInWithGoogleNative('n');
+
+    expect(result.ok).toBe(true);
+    expect(configure).toHaveBeenCalledWith({ webClientId: 'web-id', nonce: 'n' });
+  });
+
+  it('on iOS an empty iOS client ID fails with the server code', async () => {
+    setGoogleExtra({ webClientId: 'web-id', iosClientId: '' });
+
+    const result = await signInWithGoogleNative('n');
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error.code).toBe('server');
+    expect(configure).not.toHaveBeenCalled();
+  });
+
   it.each([
     ['missing', undefined],
     ['empty', { webClientId: '', iosClientId: '' }],
-    ['partial', { webClientId: 'web-id' }],
+    ['without a web client ID', { iosClientId: 'ios-id' }],
   ])('fails with the server code when the client IDs are %s', async (_name, google) => {
     setGoogleExtra(google);
 
