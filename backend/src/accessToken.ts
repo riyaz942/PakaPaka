@@ -22,6 +22,7 @@ export async function verifyAccessToken(
   try {
     const { payload } = await jwtVerify(token, enc.encode(env.SESSION_SIGNING_KEY), {
       algorithms: ["HS256"],
+      requiredClaims: ["exp", "iat", "sub", "did"],
       currentDate: new Date(nowMs),
     });
     if (typeof payload.sub !== "string" || typeof payload.did !== "string") return null;

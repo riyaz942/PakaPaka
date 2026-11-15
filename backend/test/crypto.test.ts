@@ -1,4 +1,5 @@
 import { env } from "cloudflare:test";
+import { SignJWT } from "jose";
 import { describe, expect, it } from "vitest";
 import { issueAccessToken, verifyAccessToken } from "../src/accessToken";
 import { hmacHex, randomToken, sha256Base64Url, signValue, verifySignedValue } from "../src/crypto";
@@ -7,6 +8,17 @@ describe("signed values", () => {
   it("signed value round-trips before expiry", async () => {
     const v = await signValue("k", { a: 1, b: "x" }, 10_000);
     expect(await verifySignedValue<{ a: number; b: string }>("k", v, 10_000)).toEqual({ a: 1, b: "x" });
+  });
+
+  it("signed value is valid at exactly exp", async () => {
+    const v = await signValue("k", { a: 1 }, 10_000);
+    expect(await verifySignedValue("k", v, 10_000)).toEqual({ a: 1 });
+  });
+
+  it("signed value MAC differs from hmacHex of the bare body", async () => {
+    const v = await signValue("k", { a: 1 }, 10_000);
+    const [body, mac] = v.split(".");
+    expect(await hmacHex("k", body)).not.toBe(mac);
   });
 
   it("signed value is null after expiry", async () => {
@@ -49,6 +61,21 @@ describe("access token", () => {
     const token = await issueAccessToken(env, "u1", "d1", t0);
     expect(await verifyAccessToken(env, token, t0 + 899_000)).toEqual({ userId: "u1", deviceId: "d1" });
     expect(await verifyAccessToken(env, token, t0 + 901_000)).toBeNull();
+  });
+
+  it("access token is already expired at exactly 900 s (jose: exp is exclusive)", async () => {
+    const token = await issueAccessToken(env, "u1", "d1", t0);
+    expect(await verifyAccessToken(env, token, t0 + 899_999)).toEqual({ userId: "u1", deviceId: "d1" });
+    expect(await verifyAccessToken(env, token, t0 + 900_000)).toBeNull();
+  });
+
+  it("access token without exp fails", async () => {
+    const token = await new SignJWT({ did: "d1" })
+      .setProtectedHeader({ alg: "HS256" })
+      .setSubject("u1")
+      .setIssuedAt(Math.floor(t0 / 1000))
+      .sign(new TextEncoder().encode(env.SESSION_SIGNING_KEY));
+    expect(await verifyAccessToken(env, token, t0)).toBeNull();
   });
 
   it("access token signed with another key fails", async () => {

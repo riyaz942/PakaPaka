@@ -1,5 +1,7 @@
 const enc = new TextEncoder();
 const dec = new TextDecoder();
+// HMAC_KEY also hashes refresh tokens; the prefix keeps signed-value MACs distinct from those.
+const SIGNED_VALUE_DOMAIN = "signed-value:";
 
 export function toBase64Url(bytes: Uint8Array): string {
   let bin = "";
@@ -36,14 +38,14 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 export async function signValue(key: string, payload: object, expiresAtMs: number): Promise<string> {
   const body = toBase64Url(enc.encode(JSON.stringify({ d: payload, exp: expiresAtMs })));
-  return `${body}.${await hmacHex(key, body)}`;
+  return `${body}.${await hmacHex(key, SIGNED_VALUE_DOMAIN + body)}`;
 }
 
 export async function verifySignedValue<T>(key: string, value: string, nowMs: number): Promise<T | null> {
   const dot = value.indexOf(".");
   if (dot < 0) return null;
   const body = value.slice(0, dot);
-  if (!timingSafeEqual(value.slice(dot + 1), await hmacHex(key, body))) return null;
+  if (!timingSafeEqual(value.slice(dot + 1), await hmacHex(key, SIGNED_VALUE_DOMAIN + body))) return null;
   try {
     const parsed = JSON.parse(dec.decode(fromBase64Url(body))) as { d?: unknown; exp?: unknown };
     if (typeof parsed.exp !== "number" || nowMs > parsed.exp) return null;
