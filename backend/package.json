@@ -7,6 +7,8 @@
     "test": "vitest run",
     "dev": "wrangler dev",
     "typecheck": "tsc --noEmit",
+    "gen:tokens": "node scripts/gen-token-css.mjs",
+    "check:tokens": "node scripts/gen-token-css.mjs --check",
     "deploy": "wrangler deploy"
   },
   "dependencies": {

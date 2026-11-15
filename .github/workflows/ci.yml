@@ -79,6 +79,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check generated token CSS
+        run: npm run check:tokens
+
       - name: Typecheck
         run: npm run typecheck
 
