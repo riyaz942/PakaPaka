@@ -60,7 +60,7 @@ unbounded-size tables and the only ones holding free text. Default off keeps the
 predictable.
 
 **4. Plain JSON, gzipped, one file.** Not SQLite bytes. JSON survives schema drift, is inspectable
-by the user (which is the point of an open, no-accounts app), and can be restored across platforms
+by the user (which is the point of an open app; accounts are now optional, see the [web-app spec](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md)), and can be restored across platforms
 where the SQLite page format or VFS differs. Include:
 
 ```jsonc
@@ -260,6 +260,6 @@ migration would also relax the hosting constraint.
    out of page-readable storage. The tab is absent on web rather than present-but-broken. Point
    users at the mobile app for conversation practice.
 3. ~~**Backup file extension**~~ — **Decided 2026-08-07: `.json.gz`.** Transparent and inspectable,
-   consistent with the open-source, no-accounts posture. No custom file-association work. A branded
+   consistent with the open-source posture (accounts are now optional: see the [web-app spec](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md)). No custom file-association work. A branded
    `.pakapaka` wrapper can be added later without changing the format if deep-link-to-restore becomes
    worth it.

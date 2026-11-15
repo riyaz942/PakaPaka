@@ -60,7 +60,7 @@ Secrets (operator runs `npx wrangler secret put`): `SESSION_SIGNING_KEY` (HS256 
 | Route | Who | What |
 | --- | --- | --- |
 | `GET /auth/signin` | web | Sign-in page with Turnstile. |
-| `POST /api/auth/web/start` | web | Check Turnstile. Make `state`, PKCE verifier, nonce; keep them in a short-lived signed `HttpOnly` cookie (path `/api/auth`). 302 to Google. |
+| `POST /api/auth/web/start` | web | Check Turnstile. Make `state`, PKCE verifier, nonce; keep them in a short-lived signed `HttpOnly` cookie `__Host-pp_oauth` (`Path=/`: the `__Host-` prefix requires it). 302 to Google. |
 | `GET /api/auth/google/callback` | web | Check `state`; exchange the code (client secret + PKCE verifier); verify the ID token; find or create the user; create the web device; set cookies; 302 to `/settings`. |
 | `POST /api/auth/nonce` | mobile | Return a signed nonce (HMAC, 10-minute expiry). |
 | `POST /api/auth/exchange` | mobile | `{ provider: "google", idToken, nonce, deviceLabel }` → verify nonce signature + expiry, verify ID token → `{ accessToken, refreshToken, deviceId }`. |
@@ -69,7 +69,7 @@ Secrets (operator runs `npx wrangler secret put`): `SESSION_SIGNING_KEY` (HS256 
 | `GET /api/account` | both | Provider, devices (`deviceId`, label, last used, "this device"). |
 | `DELETE /api/account/devices/:id` | both | Revoke that device. |
 | `POST /api/account/signout-all` | both | Revoke every device. |
-| `DELETE /api/account` | both | Delete D1 rows (`identities`, `refresh_tokens`, `sync_state`, `users`) in one batch, then every R2 object under `progress/{user_id}/`. |
+| `DELETE /api/account` | both | Delete every R2 object under `progress/{user_id}/` first, then the D1 rows (`identities`, `refresh_tokens`, `sync_state`, `users`) in one batch. A D1 failure leaves the user row, so a retry completes the delete. |
 
 All JSON errors: `{ "error": "<code>" }`. Codes include `unauthorized`, `rate_limited`,
 `turnstile_failed`, `invalid_token`, `quota_exceeded`.
@@ -80,8 +80,7 @@ All JSON errors: `{ "error": "<code>" }`. Codes include `unauthorized`, `rate_li
 {`accounts.google.com`, `https://accounts.google.com`}; `aud` ∈ {web client ID, iOS client IDs};
 `exp`; `nonce` equals the nonce we issued. Android Credential Manager tokens carry the **web**
 client ID as `aud`; the Android client IDs (package + SHA-1, one per app variant) are only
-registered in Google Cloud and never appear in code. The user key is `(provider, sub)`. Email is
-never stored and never used to match.
+registered in Google Cloud and never appear in code. The user key is `(provider, sub)`. The server never stores, logs or uses your email. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`.
 
 ### Sessions
 
@@ -100,7 +99,7 @@ never stored and never used to match.
 
 ### Limits and quota
 
-- `AUTH_LIMITER`: per IP (`CF-Connecting-IP`) on `/api/auth/*` and `/auth/signin`, 10 per 60 s.
+- `AUTH_LIMITER`: per IP (`CF-Connecting-IP`) on `/api/auth/*` and `/auth/signin`, 10 per 60 s (`/auth/signin.js` is not counted). On a limit hit, browser routes show a page or redirect instead of JSON.
 - `UPLOAD_LIMITER` + upload guard (≤ 2 MB by `Content-Length` and by counted bytes, gzip magic
   bytes, small envelope check): built and tested in Part 2, mounted on `PUT /api/sync` in Part 3.
   Per user, 6 per 60 s (bounds to ≤ 360/hour; the binding has no hour period).
@@ -124,7 +123,9 @@ never stored and never used to match.
   Chrome and Safari after the change.
 - Landing page and `/auth/signin` get their own CSP. `/auth/signin` allows
   `https://challenges.cloudflare.com` for script and frame, and `form-action 'self'
-  https://accounts.google.com` (Chrome applies `form-action` to the redirect after the POST).
+  https://accounts.google.com` (Chrome applies `form-action` to the redirect after the POST). The
+  page sends `Referrer-Policy: strict-origin-when-cross-origin`; `no-referrer` makes the form POST
+  send `Origin: null`, which the start route rejects.
 
 ## App changes
 

@@ -86,7 +86,7 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - **Result type** — Fallible ops return `Result<T, AppError>` (`src/types/result.types.ts`). Do not throw across async boundaries.
 - **Dual DB** — `curriculum.db` read-only content; `user.db` mutable state. Never write to `curriculum.db`. Schema changes via numbered migrations in `src/data/migrations/`.
 - **Offline-first** — Everything works offline except AI Conversation, optional sign-in/sync (and optional cloud STT). Do not imply the rest of the app is degraded when offline.
-- **Server boundary** — The server never receives BYOK keys, AI conversations or email. Never log tokens, ID tokens, request bodies or auth headers.
+- **Server boundary** — The server never receives BYOK keys or AI conversations. The server never stores, logs or uses your email. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`. Never log tokens, ID tokens, request bodies or auth headers.
 - **BYOK boundary** — Provider keys in secure storage; sent only to user-configured HTTPS endpoints. Conversations stay local; do not inject off-curriculum words into SRS.
 - **Styling** — Semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). No deprecated `Colors` in `src/constants/theme.ts`; no raw hex in new code.
 - **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.

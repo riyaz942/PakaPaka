@@ -19,13 +19,13 @@ Tell us what you found, the steps to repeat it, and which part it affects.
 
 - Your AI provider keys (BYOK). They stay in secure storage on your device and go only to the endpoint you set.
 - Your AI conversations. They stay on your device.
-- Your email address.
+- Your email address. The server never stores, logs or uses it. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`.
 
 The server does not log tokens.
 
 ## Hosting
 
-The backend runs on the free Cloudflare plan. If a limit is reached, it fails closed: it refuses the request instead of letting it through.
+The backend runs on the free Cloudflare plan. When a free-plan limit is reached, the server refuses requests; your progress stays on your device.
 
 ## What to expect
 

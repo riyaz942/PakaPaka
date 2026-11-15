@@ -10,7 +10,7 @@ Cloudflare Worker for PakaPaka. It serves the web app and the sign-in API.
 - Gives each device a 15-minute access token and a 60-day rotating refresh token. If a refresh token is used twice, the Worker revokes that device.
 - Limits auth requests per IP. Sends a daily usage-watch email. Sets a strict CSP.
 
-The server never receives BYOK keys, AI conversations or email. It never logs tokens, ID tokens, request bodies or auth headers.
+The server never receives BYOK keys or AI conversations. The server never stores, logs or uses your email. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`. It never logs tokens, ID tokens, request bodies or auth headers.
 
 ## Routes
 
