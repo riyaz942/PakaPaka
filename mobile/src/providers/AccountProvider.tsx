@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import type { AccountInfo, AccountSession } from '@/core/account/account.types';
+import { DELETE_SESSION_ENDED_MESSAGE } from '@/core/account/errorMessages';
 import { createAccountSession } from '@/data/account/session';
 import { supportsNativeGoogleSignIn, usesCookieSession } from '@/platform/capabilities';
 import type { AppError, Result } from '@/types/result.types';
@@ -172,7 +173,12 @@ export function AccountProvider({
     },
 
     signOutEverywhere: () => endSession(() => session.signOutEverywhere()),
-    deleteAccount: () => endSession(() => session.deleteAccount()),
+    async deleteAccount() {
+      const result = await session.deleteAccount();
+      if (result.ok) signedOut();
+      else if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE);
+      else fail(result.error);
+    },
   };
 
   return <AccountContext.Provider value={value}>{children}</AccountContext.Provider>;

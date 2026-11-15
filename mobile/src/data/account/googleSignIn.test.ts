@@ -92,6 +92,27 @@ describe('signInWithGoogleNative', () => {
     expect(createAccount).not.toHaveBeenCalled();
   });
 
+  it('maps a missing native module to the server code instead of crashing', async () => {
+    jest.doMock('react-native-nitro-google-signin', () => {
+      throw new Error('Cannot find native module NitroGoogleSignin');
+    });
+    try {
+      // The isolated registry gives a fresh module graph, so the throwing mock applies only here.
+      let fresh!: typeof import('@/data/account/googleSignIn');
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports -- isolated module load
+        fresh = require('@/data/account/googleSignIn');
+      });
+
+      const result = await fresh.signInWithGoogleNative('n');
+
+      expect(result.ok).toBe(false);
+      if (!result.ok) expect(result.error.code).toBe('server');
+    } finally {
+      jest.dontMock('react-native-nitro-google-signin');
+    }
+  });
+
   it('on Android needs only the web client ID and does not pass the iOS one', async () => {
     Platform.OS = 'android';
     setGoogleExtra({ webClientId: 'web-id', iosClientId: '' });

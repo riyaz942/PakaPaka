@@ -245,6 +245,23 @@ describe('AccountProvider', () => {
     await waitFor(() => expect(latest.status).toBe('signed_out'));
   });
 
+  it('deleteAccount when the session already ended says the account was not deleted', async () => {
+    const deleteAccount = jest
+      .fn()
+      .mockResolvedValue({ ok: false, error: accountError('session_ended') });
+    renderWith(fakeSession({ deleteAccount }));
+    await waitFor(() => expect(latest.status).toBe('signed_in'));
+
+    await act(async () => {
+      await latest.deleteAccount();
+    });
+
+    expect(latest.status).toBe('signed_out');
+    expect(latest.error).toBe(
+      'You were signed out. Your account was not deleted. Sign in again to delete it.',
+    );
+  });
+
   it('removeDevice of another device reloads the account', async () => {
     const session = fakeSession();
     renderWith(session);

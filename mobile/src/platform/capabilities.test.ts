@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 
 import {
   isWeb,
+  needsIosGoogleClientId,
   supportsCurriculumOta,
   supportsNativeGoogleSignIn,
   supportsNotifications,
@@ -57,5 +58,14 @@ describe('capabilities', () => {
     setPlatform('web');
     expect(supportsNativeGoogleSignIn()).toBe(false);
     expect(usesCookieSession()).toBe(true);
+  });
+
+  it.each([
+    ['ios', true],
+    ['android', false],
+    ['web', false],
+  ] as const)('needs a separate Google client ID only on iOS (%s: %s)', (os, expected) => {
+    setPlatform(os);
+    expect(needsIosGoogleClientId()).toBe(expected);
   });
 });

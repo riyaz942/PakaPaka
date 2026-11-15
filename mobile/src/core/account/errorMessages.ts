@@ -10,6 +10,10 @@ const MESSAGES: Record<AccountErrorCode, string | null> = {
   server: 'Something went wrong. Try again.',
 };
 
+/** Shown instead of the generic signed-out copy when Delete account finds the session already ended. */
+export const DELETE_SESSION_ENDED_MESSAGE =
+  'You were signed out. Your account was not deleted. Sign in again to delete it.';
+
 export function accountErrorMessage(code: AccountErrorCode): string | null {
   return MESSAGES[code];
 }

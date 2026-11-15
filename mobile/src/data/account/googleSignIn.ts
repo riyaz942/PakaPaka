@@ -1,9 +1,15 @@
 import Constants from 'expo-constants';
-import { Platform } from 'react-native';
-import { GoogleOneTapSignIn } from 'react-native-nitro-google-signin';
 
 import { accountError } from '@/core/account/apiClient';
+import { needsIosGoogleClientId } from '@/platform/capabilities';
 import type { Result } from '@/types/result.types';
+
+// Loaded on use, not at import: the module creates its native object on load, so an older dev-client
+// build without the native code would crash the app at launch instead of failing the sign-in.
+function googleOneTap() {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- lazy load, see above
+  return (require('react-native-nitro-google-signin') as typeof import('react-native-nitro-google-signin')).GoogleOneTapSignIn;
+}
 
 function clientIds(): { webClientId: string; iosClientId?: string } | null {
   const google = Constants.expoConfig?.extra?.google as
@@ -11,8 +17,7 @@ function clientIds(): { webClientId: string; iosClientId?: string } | null {
     | undefined;
   const { webClientId, iosClientId } = google ?? {};
   if (typeof webClientId !== 'string' || webClientId === '') return null;
-  // Android tokens carry the web client ID as audience; only iOS needs its own client ID.
-  if (Platform.OS !== 'ios') return { webClientId };
+  if (!needsIosGoogleClientId()) return { webClientId };
   if (typeof iosClientId !== 'string' || iosClientId === '') return null;
   return { webClientId, iosClientId };
 }
@@ -26,8 +31,9 @@ export async function signInWithGoogleNative(
   // Library boundary: native calls reject (or throw synchronously) on misconfiguration.
   const response = await Promise.resolve()
     .then(() => {
-      GoogleOneTapSignIn.configure({ ...ids, nonce });
-      return GoogleOneTapSignIn.createAccount();
+      const googleSignIn = googleOneTap();
+      googleSignIn.configure({ ...ids, nonce });
+      return googleSignIn.createAccount();
     })
     .then(
       (value) => ({ ok: true as const, value }),
@@ -43,7 +49,7 @@ export async function signInWithGoogleNative(
   // Clear the library's cached ID token. A failure is ignored only because the token is
   // already in hand and the server verifies it once.
   await Promise.resolve()
-    .then(() => GoogleOneTapSignIn.signOut())
+    .then(() => googleOneTap().signOut())
     .catch(() => undefined);
 
   return { ok: true, value: { idToken } };
