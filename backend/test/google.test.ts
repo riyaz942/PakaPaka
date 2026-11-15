@@ -51,6 +51,27 @@ describe("verifyGoogleIdToken", () => {
     expect(r).toEqual({ ok: false, error: "invalid_token" });
   });
 
+  it("rejects a token without exp", async () => {
+    expect(await verify({ exp: undefined })).toEqual({ ok: false, error: "invalid_token" });
+  });
+
+  it("rejects a token with empty sub", async () => {
+    expect(await verify({ sub: "" })).toEqual({ ok: false, error: "invalid_token" });
+  });
+
+  it("maps a JWKS fetch failure to upstream_failed", async () => {
+    const g = await makeTestGoogle();
+    const r = await verifyGoogleIdToken(await g.sign(base), {
+      jwks: (async () => {
+        throw new TypeError("fetch failed");
+      }) as unknown as typeof g.jwks,
+      audiences: googleAudiences(env),
+      expectedNonce: "n1",
+      nowMs,
+    });
+    expect(r).toEqual({ ok: false, error: "upstream_failed" });
+  });
+
   it("rejects nonce mismatch with invalid_nonce", async () => {
     expect(await verify({}, "other")).toEqual({ ok: false, error: "invalid_nonce" });
   });
@@ -116,6 +137,33 @@ describe("exchangeGoogleCode", () => {
     expect(body.get("client_secret")).toBe("test-google-secret");
     expect(body.get("redirect_uri")).toBe("https://paka-paka.app/api/auth/google/callback");
     expect(body.get("grant_type")).toBe("authorization_code");
+  });
+
+  it("fetch rejection → upstream_failed", async () => {
+    const deps = depsWith(new Response());
+    deps.fetch = (async () => {
+      throw new TypeError("fetch failed");
+    }) as unknown as typeof fetch;
+    expect(await exchangeGoogleCode(env, deps, { code: "abc", codeVerifier: "ver" })).toEqual({
+      ok: false,
+      error: "upstream_failed",
+    });
+  });
+
+  it("503 → upstream_failed", async () => {
+    const deps = depsWith(new Response("down", { status: 503 }));
+    expect(await exchangeGoogleCode(env, deps, { code: "abc", codeVerifier: "ver" })).toEqual({
+      ok: false,
+      error: "upstream_failed",
+    });
+  });
+
+  it("200 without id_token → invalid_token", async () => {
+    const deps = depsWith(Response.json({ access_token: "x" }));
+    expect(await exchangeGoogleCode(env, deps, { code: "abc", codeVerifier: "ver" })).toEqual({
+      ok: false,
+      error: "invalid_token",
+    });
   });
 
   it("non-200 → invalid_token", async () => {

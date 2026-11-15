@@ -1,4 +1,4 @@
-import { jwtVerify, type JWTVerifyGetKey } from "jose";
+import { errors, jwtVerify, type JWTVerifyGetKey } from "jose";
 import type { Deps } from "./deps";
 import type { Env } from "./env";
 import type { Result } from "./result";
@@ -15,7 +15,7 @@ export function googleAudiences(env: Env): string[] {
 export async function verifyGoogleIdToken(
   idToken: string,
   opts: { jwks: JWTVerifyGetKey; audiences: string[]; expectedNonce: string; nowMs: number },
-): Promise<Result<{ sub: string }, "invalid_token" | "invalid_nonce">> {
+): Promise<Result<{ sub: string }, "invalid_token" | "invalid_nonce" | "upstream_failed">> {
   let payload;
   try {
     ({ payload } = await jwtVerify(idToken, opts.jwks, {
@@ -23,10 +23,13 @@ export async function verifyGoogleIdToken(
       issuer: ISSUERS,
       audience: opts.audiences,
       clockTolerance: 30,
+      requiredClaims: ["exp", "iat", "sub", "aud", "iss"],
       currentDate: new Date(opts.nowMs),
     }));
-  } catch {
-    return { ok: false, error: "invalid_token" };
+  } catch (err) {
+    // JWKS fetch trouble (timeout, or a non-jose error such as a fetch TypeError) is not a bad credential.
+    const upstream = err instanceof errors.JWKSTimeout || !(err instanceof errors.JOSEError);
+    return { ok: false, error: upstream ? "upstream_failed" : "invalid_token" };
   }
   if (typeof payload.sub !== "string" || payload.sub === "") return { ok: false, error: "invalid_token" };
   if (payload.nonce !== opts.expectedNonce) return { ok: false, error: "invalid_nonce" };
@@ -59,7 +62,7 @@ export async function exchangeGoogleCode(
   env: Env,
   deps: Deps,
   p: { code: string; codeVerifier: string },
-): Promise<Result<string, "invalid_token">> {
+): Promise<Result<string, "invalid_token" | "upstream_failed">> {
   try {
     const res = await deps.fetch("https://oauth2.googleapis.com/token", {
       method: "POST",
@@ -73,11 +76,12 @@ export async function exchangeGoogleCode(
         grant_type: "authorization_code",
       }).toString(),
     });
+    if (res.status >= 500) return { ok: false, error: "upstream_failed" };
     if (!res.ok) return { ok: false, error: "invalid_token" };
     const body = (await res.json()) as { id_token?: unknown };
     if (typeof body.id_token !== "string" || body.id_token === "") return { ok: false, error: "invalid_token" };
     return { ok: true, value: body.id_token };
   } catch {
-    return { ok: false, error: "invalid_token" };
+    return { ok: false, error: "upstream_failed" };
   }
 }
