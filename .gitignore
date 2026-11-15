@@ -30,3 +30,8 @@ _bmad-output/implementation-artifacts/.review-tmp/
 
 # Brainstorm mockups from the superpowers visual companion
 .superpowers/
+
+# Secrets and local Cloudflare state
+.env*
+.dev.vars
+backend/.wrangler/

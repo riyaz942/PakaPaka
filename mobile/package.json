@@ -11,7 +11,7 @@
     "web": "expo start --web",
     "postinstall": "patch-package",
     "build:web": "expo export -p web",
-    "deploy:web": "npm run build:web && wrangler deploy",
+    "deploy:web": "npm run build:web && npm --prefix ../backend run deploy",
     "lint": "expo lint",
     "test": "jest",
     "typecheck": "tsc --noEmit",
@@ -87,8 +87,7 @@
     "jest-expo": "~55.0.19",
     "patch-package": "^8.0.1",
     "tailwindcss": "^3.4.19",
-    "typescript": "~5.9.2",
-    "wrangler": "^4.162.0"
+    "typescript": "~5.9.2"
   },
   "private": true,
   "jest": {

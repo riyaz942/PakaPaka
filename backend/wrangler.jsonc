@@ -1,0 +1,35 @@
+{
+  "name": "pakapaka-web",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "../mobile/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/auth/*"]
+  },
+  "routes": [{ "pattern": "paka-paka.app", "custom_domain": true }],
+  "vars": {
+    "APP_ORIGIN": "https://paka-paka.app",
+    "GOOGLE_WEB_CLIENT_ID": "",
+    "GOOGLE_IOS_CLIENT_IDS": "",
+    "TURNSTILE_SITE_KEY": "",
+    "USAGE_ALERT_EMAIL": "",
+    "CF_ACCOUNT_ID": ""
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pakapaka",
+      "database_id": "REPLACE_AT_TASK_17",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [{ "binding": "PROGRESS", "bucket_name": "pakapaka-progress" }],
+  "ratelimits": [
+    { "name": "AUTH_LIMITER", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } },
+    { "name": "UPLOAD_LIMITER", "namespace_id": "1002", "simple": { "limit": 6, "period": 60 } }
+  ],
+  "triggers": { "crons": ["0 1 * * *"] },
+  "send_email": [{ "name": "ALERT_EMAIL" }]
+}
