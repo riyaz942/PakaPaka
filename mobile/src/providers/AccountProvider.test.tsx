@@ -35,6 +35,7 @@ function fakeSession(over: Partial<AccountSession> = {}): jest.Mocked<AccountSes
     signOut: jest.fn(ok),
     signOutEverywhere: jest.fn(ok),
     deleteAccount: jest.fn(ok),
+    request: jest.fn(),
     ...over,
   } as jest.Mocked<AccountSession>;
 }

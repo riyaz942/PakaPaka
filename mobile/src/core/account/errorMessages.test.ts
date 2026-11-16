@@ -9,6 +9,7 @@ describe('accountErrorMessage', () => {
     ['session_ended', 'You were signed out. Sign in again to sync.'],
     ['cancelled', null],
     ['not_found', 'Something went wrong. Try again.'],
+    ['revision_conflict', null],
     ['server', 'Something went wrong. Try again.'],
   ];
 

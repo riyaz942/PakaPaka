@@ -79,5 +79,6 @@ export function createAccountSession(): AccountSession {
 
     signOutEverywhere: () => send('/api/account/signout-all', { method: 'POST' }),
     deleteAccount: () => send('/api/account', { method: 'DELETE' }),
+    request: authorized,
   };
 }

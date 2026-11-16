@@ -73,6 +73,24 @@ describe('createAccountSession (web)', () => {
     expect(fetchMock.mock.calls[1][1].method).toBe('POST');
   });
 
+  it('session.web request refreshes once on 401', async () => {
+    fetchMock
+      .mockResolvedValueOnce(json(401, { error: 'unauthorized' }))
+      .mockResolvedValueOnce(json(204))
+      .mockResolvedValueOnce(json(200, { revision: 2 }));
+
+    const result = await createAccountSession().request('/api/sync?base_revision=1', {
+      method: 'PUT',
+    });
+
+    expect(result.ok).toBe(true);
+    expect(fetchMock.mock.calls.map(([url]) => String(url))).toEqual([
+      '/api/sync?base_revision=1',
+      '/api/auth/refresh',
+      '/api/sync?base_revision=1',
+    ]);
+  });
+
   it('refreshes once for concurrent calls', async () => {
     let releaseRefresh: (res: Response) => void = () => {};
     const accountCalls: string[] = [];

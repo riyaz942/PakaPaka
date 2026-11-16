@@ -122,5 +122,6 @@ export function createAccountSession(): AccountSession {
     signOut,
     signOutEverywhere: () => clearAfter('/api/account/signout-all', { method: 'POST' }),
     deleteAccount: () => clearAfter('/api/account', { method: 'DELETE' }),
+    request: (path, init) => manager().authorizedRequest(path, init),
   };
 }

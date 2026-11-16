@@ -475,10 +475,10 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
   - Each request has an `AbortController` that aborts after `timeoutMs` → error code `network`.
   - Never logs bodies or headers.
 
-- [ ] **Step 1: Failing tests** (fake `request`): `pull 204 → bytes null and the header revision`; `pull 200 → bytes and revision`; `pull without the header → server`; `push sends base_revision, the gzip content type and the same bytes`; `push 409 → revision_conflict`; `a request that never answers → network after the timeout` (fake timers); `toAccountError maps JSON revision_conflict`; `session.request uses the session manager (native)`; `session.web request refreshes once on 401`.
-- [ ] **Step 2:** Run `npx jest src/data/sync/syncApi.test.ts src/core/account src/data/account` → FAIL. Implement. Run → PASS.
+- [x] **Step 1: Failing tests** (fake `request`): `pull 204 → bytes null and the header revision`; `pull 200 → bytes and revision`; `pull without the header → server`; `push sends base_revision, the gzip content type and the same bytes`; `push 409 → revision_conflict`; `a request that never answers → network after the timeout` (fake timers); `toAccountError maps JSON revision_conflict`; `session.request uses the session manager (native)`; `session.web request refreshes once on 401`.
+- [x] **Step 2:** Run `npx jest src/data/sync/syncApi.test.ts src/core/account src/data/account` → FAIL. Implement. Run → PASS.
 - [ ] **Step 3: Check binary transport on native (needs a phone or emulator; ask the operator if none is available).** In a dev build, run once from a temporary screen or the debugger: `fetch('https://paka-paka.app/favicon.ico').then(r => r.arrayBuffer())` must resolve with bytes, and a `PUT` of a `Uint8Array` body to `https://paka-paka.app/api/nope` must reach the server (404 JSON). **If either fails, stop and ask the operator** (the likely change is `fetch` from `expo/fetch` in `session.ts`). Remove the temporary code.
-- [ ] **Step 4: Commit** `feat(sync): sync API client and authorized request on the account session`.
+- [x] **Step 4: Commit** `feat(sync): sync API client and authorized request on the account session`.
 
 ### Task 10: The runner
 
