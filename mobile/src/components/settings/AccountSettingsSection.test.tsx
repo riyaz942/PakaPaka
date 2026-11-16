@@ -20,8 +20,8 @@ function accountState(over: Partial<AccountContextValue> = {}): AccountContextVa
     signIn: jest.fn().mockResolvedValue(undefined),
     refresh: jest.fn().mockResolvedValue(undefined),
     removeDevice: jest.fn().mockResolvedValue(undefined),
-    signOut: jest.fn().mockResolvedValue(undefined),
-    signOutEverywhere: jest.fn().mockResolvedValue(undefined),
+    signOut: jest.fn().mockResolvedValue(true),
+    signOutEverywhere: jest.fn().mockResolvedValue(true),
     deleteAccount: jest.fn().mockResolvedValue(undefined),
     ...over,
   };
@@ -95,15 +95,104 @@ describe('AccountSettingsSection', () => {
     expect(screen.getByText('Sync arrives in a later update.')).toBeTruthy();
   });
 
-  it('Sign out and Sign out everywhere call the account actions', async () => {
+  it('Sign out asks first and does nothing until the user picks', async () => {
     mockAccount = signedIn();
     render(<AccountSettingsSection />);
 
     await press('Sign out');
-    await press('Sign out everywhere');
+
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+    expect(screen.getByText('Sign out?')).toBeTruthy();
+    expect(screen.getByText(/Your progress stays on this device/)).toBeTruthy();
+
+    await press('Cancel');
+
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+    expect(screen.queryByText('Sign out?')).toBeNull();
+  });
+
+  it('Sign out, keep my data signs out and does not erase', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Sign out, keep my data');
 
     expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
+    expect(onErase).not.toHaveBeenCalled();
+  });
+
+  it('Sign out everywhere asks first and keeps the data when asked', async () => {
+    mockAccount = signedIn();
+    render(<AccountSettingsSection />);
+
+    await press('Sign out everywhere');
+
+    expect(mockAccount.signOutEverywhere).not.toHaveBeenCalled();
+    expect(screen.getByText('Sign out everywhere?')).toBeTruthy();
+
+    await press('Sign out, keep my data');
+
     expect(mockAccount.signOutEverywhere).toHaveBeenCalledTimes(1);
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+  });
+
+  it('erase warns that nothing is on the server, and Go back signs nothing out', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Sign out and erase my data');
+
+    expect(screen.getByText('Erase data on this device?')).toBeTruthy();
+    expect(screen.getByText(/Nothing is saved on our server yet/)).toBeTruthy();
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+
+    await press('Go back');
+
+    expect(screen.getByText('Sign out?')).toBeTruthy();
+    expect(onErase).not.toHaveBeenCalled();
+  });
+
+  it('Erase and sign out erases after the sign-out worked', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Sign out and erase my data');
+    await press('Erase and sign out');
+
+    expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
+    expect(onErase).toHaveBeenCalledTimes(1);
+  });
+
+  it('a failed sign-out never erases', async () => {
+    mockAccount = signedIn({ signOut: jest.fn().mockResolvedValue(false) });
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Sign out and erase my data');
+    await press('Erase and sign out');
+
+    expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
+    expect(onErase).not.toHaveBeenCalled();
+  });
+
+  it('Sign out everywhere can erase too', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out everywhere');
+    await press('Sign out and erase my data');
+    await press('Erase and sign out');
+
+    expect(mockAccount.signOutEverywhere).toHaveBeenCalledTimes(1);
+    expect(onErase).toHaveBeenCalledTimes(1);
   });
 
   it('Delete account asks first, with the exact copy', async () => {

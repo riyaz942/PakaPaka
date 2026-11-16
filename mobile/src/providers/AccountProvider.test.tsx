@@ -170,9 +170,11 @@ describe('AccountProvider', () => {
     renderWith(session);
     await waitFor(() => expect(latest.status).toBe('signed_in'));
 
+    let signedOutResult: boolean | undefined;
     await act(async () => {
-      await latest.signOut();
+      signedOutResult = await latest.signOut();
     });
+    expect(signedOutResult).toBe(true);
 
     await waitFor(() => expect(latest.status).toBe('signed_out'));
     expect(latest.account).toBeNull();
@@ -193,9 +195,11 @@ describe('AccountProvider', () => {
     renderWith(session);
     await waitFor(() => expect(latest.status).toBe('signed_in'));
 
+    let signedOutResult: boolean | undefined;
     await act(async () => {
-      await latest.signOut();
+      signedOutResult = await latest.signOut();
     });
+    expect(signedOutResult).toBe(false);
 
     expect(latest.status).toBe('signed_in');
     expect(latest.account).toEqual(INFO);
@@ -217,9 +221,11 @@ describe('AccountProvider', () => {
     renderWith(session);
     await waitFor(() => expect(latest.status).toBe('signed_in'));
 
+    let signedOutResult: boolean | undefined;
     await act(async () => {
-      await latest.signOut();
+      signedOutResult = await latest.signOut();
     });
+    expect(signedOutResult).toBe(true);
 
     expect(latest.status).toBe('signed_out');
     expect(latest.error).toBe('You were signed out. Sign in again to sync.');

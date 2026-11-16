@@ -17,8 +17,9 @@ export type AccountContextValue = {
   signIn(): Promise<void>;
   refresh(): Promise<void>;
   removeDevice(id: string): Promise<void>;
-  signOut(): Promise<void>;
-  signOutEverywhere(): Promise<void>;
+  /** Resolves true when this device ended up signed out. */
+  signOut(): Promise<boolean>;
+  signOutEverywhere(): Promise<boolean>;
   deleteAccount(): Promise<void>;
 };
 
@@ -70,13 +71,17 @@ export function AccountProvider({
   const signedOut = (error: string | null = null) =>
     merge({ status: 'signed_out', account: null, error });
 
-  /** A session that ended is final; any other failure leaves the user where they are. */
-  function fail(error: AppError) {
+  /**
+   * A session that ended is final; any other failure leaves the user where they are.
+   * Returns true when the user ended up signed out.
+   */
+  function fail(error: AppError): boolean {
     if (error.code === 'session_ended') {
       signedOut(error.userMessage ?? null);
-    } else {
-      merge({ error: error.userMessage ?? null });
+      return true;
     }
+    merge({ error: error.userMessage ?? null });
+    return false;
   }
 
   async function loadAccount() {
@@ -119,10 +124,13 @@ export function AccountProvider({
   }, [session]);
 
   /** Runs a server call that ends the session on success. */
-  async function endSession(call: () => Promise<Result<void>>) {
+  async function endSession(call: () => Promise<Result<void>>): Promise<boolean> {
     const result = await call();
-    if (result.ok) signedOut();
-    else fail(result.error);
+    if (result.ok) {
+      signedOut();
+      return true;
+    }
+    return fail(result.error);
   }
 
   const value: AccountContextValue = {
@@ -163,13 +171,13 @@ export function AccountProvider({
       const result = await session.signOut();
       if (result.ok) {
         signedOut();
-      } else if (usesCookieSession()) {
-        // Web cookies only clear on the server, so the user is still signed in.
-        fail(result.error);
-      } else {
-        // Native sign-out always ends signed out; the device tokens are gone.
-        signedOut(result.error.userMessage ?? null);
+        return true;
       }
+      // Web cookies only clear on the server, so the user is still signed in.
+      if (usesCookieSession()) return fail(result.error);
+      // Native sign-out always ends signed out; the device tokens are gone.
+      signedOut(result.error.userMessage ?? null);
+      return true;
     },
 
     signOutEverywhere: () => endSession(() => session.signOutEverywhere()),

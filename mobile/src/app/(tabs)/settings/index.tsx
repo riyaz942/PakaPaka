@@ -52,7 +52,7 @@ import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { useVacationMode } from '@/data/hooks/useVacationMode';
 import { useWideLayout } from '@/hooks/useWideLayout';
 import { exportBackup } from '@/data/user/exportBackup';
-import { previewRestore, restoreBackup } from '@/data/user/restoreBackup';
+import { eraseLocalData, previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import {
   clearOnboardingCompleted,
   getLastBackedUpAt,
@@ -431,6 +431,18 @@ export default function SettingsScreen() {
     setRestoreError(null);
   };
 
+  // Runs only after a sign-out that the learner paired with "erase my data".
+  const handleEraseLocalData = () => {
+    const result = eraseLocalData(userDb);
+    if (!result.ok) {
+      setRestoreError(result.error.userMessage ?? result.error.message);
+      setRestoreState('error');
+      return;
+    }
+    clearBackupPreview();
+    router.replace('/onboarding/welcome');
+  };
+
   const handleResetOnboarding = () => {
     clearOnboardingCompleted(userDb);
     router.replace('/onboarding/welcome');
@@ -631,7 +643,7 @@ export default function SettingsScreen() {
           </View>
 
           <View className={cn(wide && 'flex-1')}>
-            <AccountSettingsSection />
+            <AccountSettingsSection onEraseLocalData={handleEraseLocalData} />
             <View className="mt-space-lg">
               <SectionHeading label="Backup" />
               <Text className="mt-space-xs text-caption font-ui-medium text-muted">

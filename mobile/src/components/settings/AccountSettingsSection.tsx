@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Button } from '@/components/common/Button';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import type { AccountDevice } from '@/core/account/account.types';
+import { SignOutSheet } from '@/components/settings/SignOutSheet';
 import { useAccount } from '@/providers/AccountProvider';
 
 export const DELETE_ACCOUNT_CONFIRM_COPY =
@@ -56,17 +57,36 @@ function DeviceRow({
   );
 }
 
+type AccountSettingsSectionProps = {
+  /** Called after a sign-out that the user chose to pair with erasing this device's data. */
+  onEraseLocalData?: () => void;
+};
+
 /** Optional sign-in. Signed out it is one button; nothing else in the app points here. */
-export function AccountSettingsSection() {
+export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSectionProps = {}) {
   const account = useAccount();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [signOutAsk, setSignOutAsk] = useState<'here' | 'everywhere' | null>(null);
 
   // One action at a time: a second tap must not start a second server call.
   async function run(action: () => Promise<void>) {
     setBusy(true);
     try {
       await action();
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function confirmSignOut(eraseData: boolean) {
+    const everywhere = signOutAsk === 'everywhere';
+    setSignOutAsk(null);
+    setBusy(true);
+    try {
+      const signedOut = await (everywhere ? account.signOutEverywhere() : account.signOut());
+      // Erase only after the server sign-out worked: a failed sign-out must not cost data.
+      if (eraseData && signedOut) onEraseLocalData?.();
     } finally {
       setBusy(false);
     }
@@ -149,7 +169,7 @@ export function AccountSettingsSection() {
       <Button
         label="Sign out"
         variant="secondary"
-        onPress={() => void run(account.signOut)}
+        onPress={() => setSignOutAsk('here')}
         disabled={busy}
         className="mt-space-md w-full"
         testID="settings-account-signout"
@@ -157,10 +177,17 @@ export function AccountSettingsSection() {
       <Button
         label="Sign out everywhere"
         variant="secondary"
-        onPress={() => void run(account.signOutEverywhere)}
+        onPress={() => setSignOutAsk('everywhere')}
         disabled={busy}
         className="mt-space-sm w-full"
         testID="settings-account-signout-everywhere"
+      />
+
+      <SignOutSheet
+        visible={signOutAsk !== null}
+        everywhere={signOutAsk === 'everywhere'}
+        onConfirm={(eraseData) => void confirmSignOut(eraseData)}
+        onCancel={() => setSignOutAsk(null)}
       />
 
       {confirmingDelete ? (
