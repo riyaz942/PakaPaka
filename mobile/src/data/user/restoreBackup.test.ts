@@ -50,6 +50,7 @@ function emptyData(): BackupData {
     passagePracticeResults: [],
     grammarAnswers: [],
     grammarSentenceHistory: [],
+    lessonOptIns: [],
     aiSessions: [],
     aiMessages: [],
   };
@@ -514,6 +515,44 @@ describe('restoreBackup', () => {
     expect(rows(userDb, 'grammar_sentence_history')).toEqual([
       { item_id: 3, sentence_keys: '["S1","S2"]', updated_at: '2026-10-13T00:00:00.000Z' },
     ]);
+  });
+
+  it('restore writes lesson_opt_ins and skips an unknown slug', async () => {
+    const userDb = await createUserDb();
+    writeBackupFixture(
+      makeBundle({
+        lessonOptIns: [
+          { item: { itemType: 'kanji', slug: 'sun' }, optedInAt: '2026-11-01T00:00:00.000Z' },
+          { item: { itemType: 'kanji', slug: 'gone-forever' }, optedInAt: '2026-11-02T00:00:00.000Z' },
+        ],
+      }),
+    );
+
+    const preview = await previewOrThrow(userDb);
+    const result = restoreBackup(userDb, preview, 'settings');
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.unmatchedSlugCount).toBe(1);
+    // `lesson_opt_ins.item_id` is TEXT (020), like furigana_overrides'.
+    expect(rows(userDb, 'lesson_opt_ins')).toEqual([
+      { item_id: '1', opted_in_at: '2026-11-01T00:00:00.000Z' },
+    ]);
+  });
+
+  it('restore empties lesson_opt_ins first', async () => {
+    const userDb = await createUserDb();
+    userDb.runSync(
+      'INSERT INTO lesson_opt_ins (item_id, opted_in_at) VALUES (?, ?) ON CONFLICT(item_id) DO NOTHING',
+      '2',
+      '2026-10-01T00:00:00.000Z',
+    );
+    writeBackupFixture(makeBundle({}));
+
+    const preview = await previewOrThrow(userDb);
+    expect(restoreBackup(userDb, preview, 'settings').ok).toBe(true);
+
+    expect(rows(userDb, 'lesson_opt_ins')).toEqual([]);
   });
 
   it('writes furigana override item ids as TEXT', async () => {

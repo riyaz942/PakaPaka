@@ -20,6 +20,7 @@ function emptyData(): BackupData {
     passagePracticeResults: [],
     grammarAnswers: [],
     grammarSentenceHistory: [],
+    lessonOptIns: [],
     aiSessions: [],
     aiMessages: [],
   };
@@ -148,6 +149,17 @@ describe('validateBackupData', () => {
       },
     ];
     expect(validateBackupData(data).ok).toBe(true);
+  });
+
+  it('rejects a lessonOptIns row with no item', () => {
+    const data = emptyData();
+    (data.lessonOptIns as unknown[])[0] = { optedInAt: '2026-11-01T00:00:00.000Z' };
+
+    const result = validateBackupData(data);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.error.code).toBe('BACKUP_INVALID_SHAPE');
+    expect(result.error.message).toMatch(/lessonOptIns/);
   });
 
   it('ignores unknown extra tables so a newer export still restores', () => {

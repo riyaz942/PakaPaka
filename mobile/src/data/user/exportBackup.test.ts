@@ -47,6 +47,7 @@ function fakeUserDb(options: {
     [/FROM ai_messages/i, tables.ai_messages ?? []],
     [/FROM user_grammar_answers/i, tables.user_grammar_answers ?? []],
     [/FROM grammar_sentence_history/i, tables.grammar_sentence_history ?? []],
+    [/FROM lesson_opt_ins/i, tables.lesson_opt_ins ?? []],
   ];
 
   return {
@@ -485,6 +486,26 @@ describe('exportBackup', () => {
     ]);
     expect(parsed.value.data.grammarSentenceHistory).toEqual([
       { item, sentenceKeys: ['S1', 'S2'], updatedAt: '2026-10-13T00:00:00.000Z' },
+    ]);
+  });
+
+  it('export writes lessonOptIns keyed by slug', async () => {
+    const db = fakeUserDb({
+      curriculumItems: [...CURRICULUM_ITEMS, { id: 7, item_type: 'kanji', slug: 'yesterday' }],
+      tables: {
+        lesson_opt_ins: [{ item_id: '7', opted_in_at: '2026-11-01T00:00:00.000Z' }],
+      },
+    });
+
+    const result = await exportBackup(db);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const parsed = parseBackupBundle(await readWrittenJson(result.value.fileUri!));
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+
+    expect(parsed.value.data.lessonOptIns).toEqual([
+      { item: { itemType: 'kanji', slug: 'yesterday' }, optedInAt: '2026-11-01T00:00:00.000Z' },
     ]);
   });
 });

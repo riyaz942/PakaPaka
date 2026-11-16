@@ -41,6 +41,7 @@ function invalidShape(message: string): Result<BackupBundle, AppError> {
 const OPTIONAL_DATA_KEYS: ReadonlySet<keyof BackupData> = new Set([
   'grammarAnswers',
   'grammarSentenceHistory',
+  'lessonOptIns',
 ]);
 
 export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppError> {

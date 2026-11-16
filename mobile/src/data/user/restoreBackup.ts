@@ -88,6 +88,7 @@ const RESTORE_TABLES: readonly string[] = [
   'passage_practice_results',
   'user_grammar_answers',
   'grammar_sentence_history',
+  'lesson_opt_ins',
 ];
 
 function failure(
@@ -141,6 +142,7 @@ function collectItemRefs(data: BackupData): ItemRef[] {
     ...data.furiganaOverrides.map((row) => row.item),
     ...data.grammarAnswers.map((row) => row.item),
     ...data.grammarSentenceHistory.map((row) => row.item),
+    ...data.lessonOptIns.map((row) => row.item),
   ];
   for (const session of data.aiSessions) {
     if (session.topicItem) refs.push(session.topicItem);
@@ -602,6 +604,14 @@ function writeRestore(
       JSON.stringify(row.sentenceKeys),
       row.updatedAt,
     ]),
+  );
+
+  writtenRows += insertRows(
+    userDb,
+    'lesson_opt_ins',
+    ['item_id', 'opted_in_at'],
+    // `item_id` is TEXT (020).
+    resolvedRows(data.lessonOptIns, refToId).map(({ row, itemId }) => [String(itemId), row.optedInAt]),
   );
 
   // Sessions before messages: ai_messages.session_id is an FK with CASCADE.

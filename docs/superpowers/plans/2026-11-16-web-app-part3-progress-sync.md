@@ -159,15 +159,15 @@ mobile/
 **Interfaces:**
 - Produces: `LessonOptInEntry = { item: ItemRef; optedInAt: string }`; `BackupData.lessonOptIns: LessonOptInEntry[]`; `'lessonOptIns'` in `BACKUP_DATA_KEYS` (after `grammarSentenceHistory`, before `aiSessions`).
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `parseBackupBundle accepts a file with no lessonOptIns key` → `data.lessonOptIns` equals `[]`.
   - `validateBackupData rejects a lessonOptIns row with no item` → `BACKUP_INVALID_SHAPE`.
   - `export writes lessonOptIns keyed by slug` → a `lesson_opt_ins` row `('7', '2026-11-01T00:00:00.000Z')` exports as `{ item: { itemType, slug }, optedInAt }` for curriculum item 7.
   - `restore writes lesson_opt_ins and skips an unknown slug`; `restore empties lesson_opt_ins first`.
-- [ ] **Step 2:** Run `npx jest src/core/backup src/data/user/exportBackup.test.ts src/data/user/restoreBackup.test.ts` in `mobile/` → the new cases FAIL.
-- [ ] **Step 3: Implement.** Add `'lessonOptIns'` to `OPTIONAL_DATA_KEYS` and `ITEM_KEYED_KEYS`. Export: `SELECT item_id, opted_in_at FROM lesson_opt_ins` through `mapItemRows` (add its `omitted` to `omittedCount`). Restore: add `'lesson_opt_ins'` to `RESTORE_TABLES`, add the refs to `collectItemRefs`, insert `[String(itemId), row.optedInAt]` (`item_id` is TEXT). If the expo-sqlite mock needs the new table name, add only that.
-- [ ] **Step 4:** Run the same command → PASS. `npm run typecheck` → clean (fix every `BackupData` literal in tests/fixtures that now needs `lessonOptIns: []`; that is the only allowed edit to those files).
-- [ ] **Step 5: Commit** `feat(backup): lesson opt-ins in the backup format`.
+- [x] **Step 2:** Run `npx jest src/core/backup src/data/user/exportBackup.test.ts src/data/user/restoreBackup.test.ts` in `mobile/` → the new cases FAIL.
+- [x] **Step 3: Implement.** Add `'lessonOptIns'` to `OPTIONAL_DATA_KEYS` and `ITEM_KEYED_KEYS`. Export: `SELECT item_id, opted_in_at FROM lesson_opt_ins` through `mapItemRows` (add its `omitted` to `omittedCount`). Restore: add `'lesson_opt_ins'` to `RESTORE_TABLES`, add the refs to `collectItemRefs`, insert `[String(itemId), row.optedInAt]` (`item_id` is TEXT). If the expo-sqlite mock needs the new table name, add only that.
+- [x] **Step 4:** Run the same command → PASS. `npm run typecheck` → clean (fix every `BackupData` literal in tests/fixtures that now needs `lessonOptIns: []`; that is the only allowed edit to those files).
+- [x] **Step 5: Commit** `feat(backup): lesson opt-ins in the backup format`.
 
 ### Task 2: Table descriptors, row compare, file shaping
 
