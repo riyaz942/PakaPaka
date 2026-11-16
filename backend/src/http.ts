@@ -9,6 +9,7 @@ export type ErrorCode =
   | "payload_too_large"
   | "bad_payload"
   | "quota_exceeded"
+  | "revision_conflict"
   | "server_error";
 
 export function json(body: unknown, status = 200, headers?: HeadersInit): Response {

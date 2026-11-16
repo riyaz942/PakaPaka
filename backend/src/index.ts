@@ -5,6 +5,7 @@ import { rateLimit, toServerErrorResponse } from "./limits";
 import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignoutAll } from "./routes/account";
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
+import { handleGetSync, handlePutSync } from "./routes/sync";
 import { browserRateLimitResponse, handleGoogleCallback, handleSigninPage, handleSigninScript, handleWebStart } from "./routes/webAuth";
 import { pruneRefreshTokens } from "./sessions";
 import { runUsageWatch } from "./usage";
@@ -34,6 +35,8 @@ export default {
       if (route === "GET /api/account") return await handleGetAccount(req, env, deps);
       if (route === "DELETE /api/account") return await handleDeleteAccount(req, env, deps);
       if (route === "POST /api/account/signout-all") return await handleSignoutAll(req, env, deps);
+      if (route === "GET /api/sync") return await handleGetSync(req, env, deps);
+      if (route === "PUT /api/sync") return await handlePutSync(req, env, deps);
       const device = req.method === "DELETE" ? /^\/api\/account\/devices\/([^/]+)$/.exec(pathname) : null;
       if (device) return await handleRemoveDevice(req, env, deps, device[1]);
       return errorResponse("not_found", 404);

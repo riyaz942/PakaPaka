@@ -384,7 +384,7 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
   10. `200 {"revision": newRev}`.
 - The unique key per upload is the reason two racing PUTs cannot overwrite each other's bytes. Never log the body.
 
-- [ ] **Step 1: Failing tests** (`SELF.fetch` with a bearer token from a helper that inserts a user + issues an access token; body built with `CompressionStream('gzip')` over a JSON string that starts with the valid envelope):
+- [x] **Step 1: Failing tests** (`SELF.fetch` with a bearer token from a helper that inserts a user + issues an access token; body built with `CompressionStream('gzip')` over a JSON string that starts with the valid envelope):
   - `syncEnvelope`: `valid prefix → true`; `includesConversations true → false`; `formatVersion 2 → false`; `other JSON → false`; `garbage after the first 4096 bytes still → true` (proves only the head is read); `gzip of 10 bytes → false`.
   - `GET with no file → 204 and X-Sync-Revision 0`.
   - `first PUT with base_revision 0 → 200 revision 1; GET have=0 → 200 with the same bytes and X-Sync-Revision 1`.
@@ -399,9 +399,9 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
   - `another user's file is never returned` (user B `GET` → 204 revision 0 while A has a file).
   - `Delete account removes the sync files and the sync_state row` (existing handler; new assertion with a pushed file).
   - `no body bytes and no token appear in console output` (spy on `console.*` across a PUT + GET).
-- [ ] **Step 2:** Run `npm test` in `backend/` → FAIL. Implement; wire `GET /api/sync` and `PUT /api/sync` in `index.ts`. Run → PASS. `npm run typecheck` → clean.
-- [ ] **Step 3:** `backend/README.md`: add the two routes, the R2 key layout, and "Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number."
-- [ ] **Step 4: Commit** `feat(backend): sync endpoints with compare-and-swap and 3-file history`.
+- [x] **Step 2:** Run `npm test` in `backend/` → FAIL. Implement; wire `GET /api/sync` and `PUT /api/sync` in `index.ts`. Run → PASS. `npm run typecheck` → clean.
+- [x] **Step 3:** `backend/README.md`: add the two routes, the R2 key layout, and "Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number."
+- [x] **Step 4: Commit** `feat(backend): sync endpoints with compare-and-swap and 3-file history`.
 
 > The remote D1 migration and the deploy are in Task 14 **(operator)**. Do not run them here.
 
