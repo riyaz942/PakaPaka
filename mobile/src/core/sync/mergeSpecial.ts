@@ -138,7 +138,7 @@ export function mergeBoosts(
       entry.remote?.boost ?? 0,
     );
     const sides = [entry.local, entry.remote].filter(isDefined);
-    if (merged <= 0) return [];
+    if (merged <= 0 || sides.length === 0) return [];
     return [
       {
         item: sides[0].item,
@@ -149,7 +149,10 @@ export function mergeBoosts(
   });
 }
 
-/** One-row three-way rule; both sides changed and differ → remote. */
+/**
+ * One-row three-way rule; both sides changed and differ → remote.
+ * A remote delete against a local change gives no row (Approved decisions 3; no code reads goalRingState).
+ */
 export function mergeSingleton(
   table: 'goalRingState',
   base: BackupData['goalRingState'] | null,

@@ -151,6 +151,15 @@ describe('mergePassageResults', () => {
       passage(T2, true, 'a'),
     ]);
   });
+
+  it('passage: equal answeredAt and equal isCorrect → larger userAnswer', () => {
+    expect(mergePassageResults(null, [passage(T2, true, 'b')], [passage(T2, true, 'c')])).toEqual([
+      passage(T2, true, 'c'),
+    ]);
+    expect(mergePassageResults(null, [passage(T2, false, 'c')], [passage(T2, false, 'b')])).toEqual(
+      [passage(T2, false, 'c')],
+    );
+  });
 });
 
 describe('per-day counters', () => {
@@ -234,6 +243,10 @@ describe('mergeBoosts', () => {
   it('boost: one side unchanged → the other side exactly (no float drift)', () => {
     expect(mergeBoosts([boost(0.1)], [boost(0.1)], [boost(0.2)])).toEqual([boost(0.2)]);
     expect(mergeBoosts([boost(0.1)], [boost(0.2)], [boost(0.1)])).toEqual([boost(0.2)]);
+  });
+
+  it('boost: deleted on both sides with a negative base → no row, no throw', () => {
+    expect(mergeBoosts([boost(-2)], [], [])).toEqual([]);
   });
 
   it('boost: no base → max', () => {
