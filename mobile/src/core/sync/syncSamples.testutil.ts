@@ -3,6 +3,32 @@ import type { BackupData } from '@/core/backup/backup.types';
 const ITEM = { itemType: 'vocabulary', slug: 'neko' } as const;
 const AT = '2026-11-01T00:00:00.000Z';
 
+/** No rows in any table. */
+export function emptySyncData(): BackupData {
+  return {
+    userPreferences: [],
+    itemStudyStatus: [],
+    srsStates: [],
+    importMetadata: [],
+    personalMnemonics: [],
+    relatedItemBoosts: [],
+    weaknessStats: [],
+    cognitiveLoadHistory: [],
+    streaks: [],
+    userSynonyms: [],
+    dailyLessonLog: [],
+    goalRingState: [],
+    furiganaOverrides: [],
+    cardSeen: [],
+    passagePracticeResults: [],
+    grammarAnswers: [],
+    grammarSentenceHistory: [],
+    lessonOptIns: [],
+    aiSessions: [],
+    aiMessages: [],
+  };
+}
+
 /** One valid row in every sync table; the two conversation tables stay empty. */
 export function fullSampleData(): BackupData {
   return {

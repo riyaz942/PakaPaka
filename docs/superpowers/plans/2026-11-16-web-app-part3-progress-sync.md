@@ -302,7 +302,7 @@ updatedAt = the later of the two sides
 
 Item grouping (spec): run `mergeRows` on every per-item table. An item is in conflict when any of its rows has decision `conflict`. One `ConflictEntry` per item (`localUpdatedAt` / `remoteUpdatedAt` = the latest `updatedAt` of that item's per-item rows on that side, `null` when that side has none). With a choice, **all** per-item rows of a conflicting item come from the chosen side, in every per-item table (rows the other side has and the chosen side lacks are dropped). Boost, per-day, append-only, passage, singleton and streak tables never follow the choice. Preference conflicts follow the same choice, per key.
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `unknown-item rows are carried and stay in the merged file` (base has `srsStates` for slug `x`, `known.hasItem` false, local lacks it → merged has it unchanged; remote changed it → merged has the remote row).
   - `unknown passage rows are carried`.
   - `an unknown-item row is never a conflict`.
@@ -321,8 +321,8 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
     - `two devices review different items: no conflict, both reviews kept` — base B; phone reviews item 1 (srs, weakness, cognitive load +1, streak, boost of item 3); web reviews item 2 (same kinds, boost of item 3 too). Merge on web after the phone pushed: `conflicts` is `[]`; merged has both new srs rows; today's `load` is base + 2; boost of item 3 is the sum.
     - `both devices review the same item: one entry; local choice and remote choice give that side's rows`.
     - `convergence`: device A merges and pushes M; device B (base B, local B's changes, remote M) merges → result equals M when B had no other change, with no conflict.
-- [ ] **Step 2:** Run `npx jest src/core/sync` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Commit** `feat(sync): whole-file merge with item conflicts, carried rows and diff`.
+- [x] **Step 2:** Run `npx jest src/core/sync` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Commit** `feat(sync): whole-file merge with item conflicts, carried rows and diff`.
 
 ### Task 6: Chunked gzip codec
 
