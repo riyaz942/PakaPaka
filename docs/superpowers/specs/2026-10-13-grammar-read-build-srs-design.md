@@ -35,7 +35,7 @@ The learner uses the app daily. Radicals, kanji and vocabulary reviews work. Gra
 | D9 | Repeats | The two cards in one review use different sentences; no sentence from the previous review is reused |
 | D10 | Vocab range (authoring) | The existing pipeline rule `generate_content/context.allowed_vocab_for`: all lower-level words + same-level words up to a proportional cutoff + the point's own linked words + `CORE_SEED_SLUGS` (~85 survival words). A simulated lesson position was rejected: earlier pipeline work found it leaves the first point 1 word and ~100 of 161 points before their own linked words |
 | D11 | Word links | Per-word linked renderer (tap → detail page, long-press → furigana toggle, per-word mastery furigana) on both cards |
-| D12 | Link timing | Read card: every vocab word tappable at all times; grammar span locked until answered. Build card: words the learner has **started** link only after answering; words **not started** link before answering, with no grade penalty |
+| D12 | Link timing | Read card: every vocab word tappable at all times; grammar span locked until answered. Build card: words the learner has **started** link only after answering; words **not started** link before answering, with no grade penalty. **Changed 2026-11-15:** every Build card word links at all times; `linkPolicy.ts` is removed |
 
 ---
 

@@ -54,8 +54,6 @@ export type GrammarVocabEntry = {
   primaryForm: string;
   /** Bracket furigana of the dictionary form; null for kana-only words. */
   furigana: string | null;
-  /** The learner has started this word (in_progress or known) — drives D12 link timing. */
-  started: boolean;
 };
 
 /** The sentence one grammar card asks about (spec §5.3). */

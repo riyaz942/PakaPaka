@@ -944,8 +944,8 @@ const SENTENCE: GrammarSentenceCard = {
   grammarSpan: { start: 2, end: 4 },
   register: 'polite',
   vocabulary: [
-    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
-    { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
+    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い' },
+    { itemId: '21', primaryForm: 'コート', furigana: null },
   ],
   answers: ['寒[さむ]いから、コートを着[き]ます。'],
   otherGrammarAnswers: [],

@@ -95,6 +95,15 @@ function changedRange(prev: string, next: string): { start: number; end: number 
 }
 
 /**
+ * True when this edit typed Latin letters: romaji from an English keyboard.
+ * A Japanese keyboard sends kana or its own kanji, and picks kanji itself.
+ */
+export function typedRomaji(prev: string, raw: string): boolean {
+  const { start, end } = changedRange(prev, raw);
+  return /[a-z]/i.test(raw.slice(start, end));
+}
+
+/**
  * The conversions the learner undid in this edit: a deletion that removed
  * kanji one of them wrote. They stay off for the rest of the card, so typing
  * the kana again keeps the kana.
@@ -118,8 +127,8 @@ export function undoneKanjiConversions(
  * Replaces conversion kana that this edit completed. Only text the edit
  * touched converts, so a deletion never converts and text already on screen is
  * left as the learner wrote it. Kana at the end of the input that may still
- * grow into a longer word waits, like a phone IME. Works the same for romaji
- * turned into kana and for kana typed on a Japanese keyboard.
+ * grow into a longer word waits, like a phone IME. WanaKanaInput calls it for
+ * romaji typing only (typedRomaji).
  */
 export function applyKanjiConversions(
   prev: string,

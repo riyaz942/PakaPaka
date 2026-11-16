@@ -4,7 +4,6 @@ import { Pressable, Text, View } from 'react-native';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { LinkedSentence } from '@/components/common/LinkedSentence';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
-import { isWordLinked } from '@/core/grammar/linkPolicy';
 import type { GrammarVocabEntry, ReviewItem } from '@/core/srs/srs.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -12,14 +11,14 @@ import { isVocabularyItemKnown } from '@/data/user/masteryRepository';
 
 type GrammarBuildCardProps = {
   item: ReviewItem;
-  /** True once the card has a terminal result: every word links and the sentence shows. */
+  /** True once the card has a terminal result: the sentence shows. */
   answered: boolean;
 };
 
 /**
  * Build card (spec §3.2): the English sentence, its words in dictionary form
  * and a polite/plain tag; the learner types the whole sentence in Japanese.
- * Link timing follows D12 (isWordLinked).
+ * Every word links to its detail page, before and after answering.
  */
 export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
   const sentence = item.grammarBuild;
@@ -32,11 +31,7 @@ export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
       </View>
       <View className="flex-row flex-wrap items-end justify-center gap-space-sm">
         {sentence.vocabulary.map((entry) => (
-          <VocabWord
-            key={entry.itemId}
-            entry={entry}
-            linked={isWordLinked({ card: 'build', answered, wordStarted: entry.started })}
-          />
+          <VocabWord key={entry.itemId} entry={entry} />
         ))}
       </View>
       {answered ? (
@@ -53,7 +48,7 @@ export function GrammarBuildCard({ item, answered }: GrammarBuildCardProps) {
   );
 }
 
-function VocabWord({ entry, linked }: { entry: GrammarVocabEntry; linked: boolean }) {
+function VocabWord({ entry }: { entry: GrammarVocabEntry }) {
   const { userDb } = useDatabase();
   const { knownKanji, modeForItem } = useFuriganaPreference();
   const hrefFor = useItemHref();
@@ -65,20 +60,9 @@ function VocabWord({ entry, linked }: { entry: GrammarVocabEntry; linked: boolea
       // Per-word mastery: a word not learned yet always shows its reading.
       isKnownWord={isVocabularyItemKnown(userDb, entry.itemId)}
       interactive={false}
-      className={
-        linked
-          ? 'text-body-lg font-jp-medium text-content-vocabulary-deep underline'
-          : 'text-body-lg font-jp-medium text-primary'
-      }
+      className="text-body-lg font-jp-medium text-content-vocabulary-deep underline"
     />
   );
-  if (!linked) {
-    return (
-      <View accessible accessibilityLabel={entry.primaryForm} testID={`grammar-build-vocab-${entry.itemId}`}>
-        {word}
-      </View>
-    );
-  }
   return (
     <Pressable
       accessibilityRole="button"
