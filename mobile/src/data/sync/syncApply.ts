@@ -4,8 +4,9 @@ import type { BackupData, ItemRef } from '@/core/backup/backup.types';
 import { itemRefKey } from '@/core/backup/slugResolver';
 import { diffSyncData, sameSyncData, type SyncDiff } from '@/core/sync/diffSyncData';
 import { SYNC_TABLE_KEYS, type CarriedKeys, type SyncTableKey } from '@/core/sync/sync.types';
+import { toSyncData } from '@/core/sync/syncFile';
 import { syncError } from '@/core/sync/syncMessages';
-import type { SyncRow } from '@/core/sync/syncTables';
+import { rowKey, type SyncRow } from '@/core/sync/syncTables';
 import { writeSyncBase } from '@/data/sync/syncBaseStore';
 import { readUserTables, type CurriculumLookup } from '@/data/sync/syncSnapshot';
 import { withSyncTransaction, type SyncSql } from '@/data/sync/syncTransaction';
@@ -280,6 +281,25 @@ async function writeDiff(tx: SyncSql, diff: SyncDiff, itemId: ItemIdOf): Promise
   return changedRows;
 }
 
+/** A no-op write: it starts the write transaction (SQLite takes the write lock) and changes nothing. */
+const TAKE_WRITE_LOCK = 'UPDATE sync_base SET id = id WHERE 0';
+
+/**
+ * `import_metadata` is written with a plain INSERT (no natural key), so an upsert whose key
+ * (source + importedAt) `user.db` already has would add a second row with that key, and the next
+ * pushed file would be rejected for a duplicate key. Those upserts are left out.
+ */
+function withoutLocalImportKeys(diff: SyncDiff, expectedLocal: BackupData): SyncDiff {
+  const localKeys = new Set(expectedLocal.importMetadata.map((row) => rowKey('importMetadata', row)));
+  return {
+    ...diff,
+    importMetadata: {
+      ...diff.importMetadata,
+      upserts: diff.importMetadata.upserts.filter((row) => !localKeys.has(rowKey('importMetadata', row))),
+    },
+  };
+}
+
 /**
  * Writes `merged` over `expectedLocal` and stores the new base, in one transaction. If `user.db`
  * no longer matches `expectedLocal` (the learner changed something since the snapshot), nothing
@@ -295,7 +315,10 @@ export async function applySyncMerge(
     base: { revision: number; data: BackupData; carried: CarriedKeys };
   },
 ): Promise<Result<{ changedRows: number }, AppError>> {
-  const { expectedLocal, merged, lookup, base } = args;
+  const { lookup, base } = args;
+  // Never-synced preferences are never written or deleted here, whatever the caller passes.
+  const expectedLocal = toSyncData(args.expectedLocal);
+  const merged = toSyncData(args.merged);
   const itemId: ItemIdOf = (item) => {
     const id = lookup.refToId.get(itemRefKey(item));
     // diffSyncData leaves out unknown items, so this cannot happen; the throw rolls back.
@@ -307,12 +330,17 @@ export async function applySyncMerge(
   let changedRows = 0;
   try {
     await withSyncTransaction(userDb, async (tx) => {
+      // The transaction BEGIN is deferred. Take the write lock before the read: otherwise a UI
+      // write that commits between the compare and our first write makes that write fail
+      // (WAL: "database is locked"). This statement changes no row.
+      await tx.runAsync(TAKE_WRITE_LOCK);
       const now = await readUserTables(tx, lookup);
       if (!sameSyncData(now, expectedLocal)) {
         localChanged = true;
         return;
       }
-      changedRows = await writeDiff(tx, diffSyncData(expectedLocal, merged, lookup.known), itemId);
+      const diff = withoutLocalImportKeys(diffSyncData(expectedLocal, merged, lookup.known), expectedLocal);
+      changedRows = await writeDiff(tx, diff, itemId);
       await writeSyncBase(tx, base, null);
     });
   } catch (cause) {

@@ -60,8 +60,8 @@ function run(db: Database, source: string, params: unknown[]) {
   return { changes, lastInsertRowId };
 }
 
-function transactionSync(db: Database, begin: string, task: () => void): void {
-  db.exec(begin);
+function transactionSync(db: Database, task: () => void): void {
+  db.exec('BEGIN');
   try {
     task();
     db.exec('COMMIT');
@@ -71,8 +71,8 @@ function transactionSync(db: Database, begin: string, task: () => void): void {
   }
 }
 
-async function transactionAsync(db: Database, begin: string, task: () => Promise<void>): Promise<void> {
-  db.exec(begin);
+async function transactionAsync(db: Database, task: () => Promise<void>): Promise<void> {
+  db.exec('BEGIN');
   try {
     await task();
     db.exec('COMMIT');
@@ -105,14 +105,36 @@ export async function openTestUserDb(): Promise<TestDb> {
     runSync: (source: string, ...params: unknown[]) => run(db, source, params),
     getAllSync: (source: string, ...params: unknown[]) => allRows(db, source, params),
     getFirstSync: (source: string, ...params: unknown[]) => allRows(db, source, params)[0] ?? null,
-    withTransactionSync: (task: () => void) => transactionSync(db, 'BEGIN', task),
+    withTransactionSync: (task: () => void) => transactionSync(db, task),
     runAsync: async (source: string, ...params: unknown[]) => run(db, source, params),
     getAllAsync: async (source: string, ...params: unknown[]) => allRows(db, source, params),
     getFirstAsync: async (source: string, ...params: unknown[]) =>
       allRows(db, source, params)[0] ?? null,
-    withTransactionAsync: (task: () => Promise<void>) => transactionAsync(db, 'BEGIN', task),
-    withExclusiveTransactionAsync: (task: (txn: unknown) => Promise<void>) =>
-      transactionAsync(db, 'BEGIN EXCLUSIVE', () => task(testDb)),
+    withTransactionAsync: (task: () => Promise<void>) => transactionAsync(db, task),
+    // Native runs the task on its own connection, which has no `curriculum` ATTACH, after a
+    // plain (deferred) BEGIN. Calls go through `testDb` so spies on it still see them.
+    withExclusiveTransactionAsync: (task: (txn: unknown) => Promise<void>) => {
+      const noAttach = (source: string) => {
+        if (/\bcurriculum\./i.test(source)) {
+          throw new Error(`no such table: a transaction connection has no curriculum ATTACH (${source})`);
+        }
+      };
+      const txn = {
+        runAsync: async (source: string, ...params: unknown[]) => {
+          noAttach(source);
+          return testDb.runAsync(source, ...params);
+        },
+        getAllAsync: async (source: string, ...params: unknown[]) => {
+          noAttach(source);
+          return testDb.getAllAsync(source, ...params);
+        },
+        getFirstAsync: async (source: string, ...params: unknown[]) => {
+          noAttach(source);
+          return testDb.getFirstAsync(source, ...params);
+        },
+      };
+      return transactionAsync(db, () => task(txn));
+    },
   };
 
   const migrated = runMigrations(testDb as unknown as TestDb, migrations);

@@ -24,4 +24,18 @@ describe('sqliteTestDb', () => {
 
     expect(await db.getAllAsync('SELECT * FROM user_preferences')).toEqual([]);
   });
+
+  it('an exclusive transaction connection has no curriculum ATTACH, like native', async () => {
+    const db = await openTestUserDb();
+
+    await expect(
+      db.withExclusiveTransactionAsync(async (txn) => {
+        await txn.runAsync('INSERT INTO card_seen (card_id, seen_at) VALUES (?, ?)', 'a', 'now');
+        await txn.getAllAsync('SELECT id FROM curriculum.items');
+      }),
+    ).rejects.toThrow(/curriculum/);
+
+    expect(await db.getAllAsync('SELECT * FROM card_seen')).toEqual([]);
+    expect(await db.getAllAsync('SELECT id FROM curriculum.items')).toEqual([]);
+  });
 });

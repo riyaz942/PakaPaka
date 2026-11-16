@@ -270,6 +270,70 @@ describe('applySyncMerge', () => {
     ]);
   });
 
+  it('applySyncMerge never writes a never-synced preference found in merged', async () => {
+    const { db, lookup } = await openStartDb();
+    await db.runAsync(
+      'INSERT INTO user_preferences (key, value, updated_at) VALUES (?, ?, ?)',
+      'theme_mode',
+      'dark',
+      'then',
+    );
+    const merged = {
+      ...START,
+      userPreferences: [...START.userPreferences, { key: 'theme_mode', value: 'light', updatedAt: 'later' }],
+    };
+
+    const result = await applySyncMerge(db, {
+      expectedLocal: START,
+      merged,
+      lookup,
+      base: { revision: 2, data: merged, carried: {} },
+    });
+
+    expect(result).toEqual({ ok: true, value: { changedRows: 0 } });
+    expect(
+      await db.getFirstAsync("SELECT value, updated_at FROM user_preferences WHERE key = 'theme_mode'"),
+    ).toEqual({ value: 'dark', updated_at: 'then' });
+  });
+
+  it('applySyncMerge never duplicates an importMetadata key', async () => {
+    const { db, lookup } = await openStartDb();
+    const [first, second] = START.importMetadata;
+    const merged = { ...START, importMetadata: [{ ...first, mappedCount: 99 }, second] };
+
+    const result = await applySyncMerge(db, {
+      expectedLocal: START,
+      merged,
+      lookup,
+      base: { revision: 2, data: merged, carried: {} },
+    });
+
+    expect(result.ok).toBe(true);
+    expect(
+      await db.getAllAsync('SELECT source, imported_at, mapped_count FROM import_metadata ORDER BY imported_at'),
+    ).toEqual([
+      { source: 'anki', imported_at: first.importedAt, mapped_count: first.mappedCount },
+      { source: 'anki', imported_at: second.importedAt, mapped_count: second.mappedCount },
+    ]);
+  });
+
+  it('apply takes the write lock before it reads', async () => {
+    const { db, lookup } = await openStartDb();
+    const runAsync = jest.spyOn(db, 'runAsync');
+    const getAllAsync = jest.spyOn(db, 'getAllAsync');
+
+    await applySyncMerge(db, {
+      expectedLocal: START,
+      merged: START,
+      lookup,
+      base: { revision: 2, data: START, carried: {} },
+    });
+
+    const lockCall = runAsync.mock.calls.findIndex(([sql]) => /^UPDATE sync_base SET id = id WHERE 0$/.test(String(sql)));
+    expect(lockCall).toBe(0);
+    expect(runAsync.mock.invocationCallOrder[0]).toBeLessThan(getAllAsync.mock.invocationCallOrder[0]);
+  });
+
   it('applySyncMerge inserts 2,000 srs rows', async () => {
     const db = await openTestUserDb();
     const items: [number, ItemRef][] = Array.from({ length: 2000 }, (_, index) => [
