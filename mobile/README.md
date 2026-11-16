@@ -59,8 +59,9 @@ Join our community of developers creating universal apps.
 
 ```bash
 npm run build:web        # expo export -p web -> dist/
-npx wrangler dev --port 8787   # serve dist/ locally with the COOP/COEP headers
-npm run deploy:web       # build, then wrangler deploy (needs the operator's domain in wrangler.jsonc)
+npm run deploy:web       # build, then deploy the Worker (config: backend/wrangler.jsonc; see backend/README.md)
+# Local run: build first, then start the Worker from backend/ (it serves dist/ with the COOP/COEP headers)
+(cd ../backend && npx wrangler dev)
 ```
 
 The web app needs cross-origin isolation (`crossOriginIsolated === true`) because `expo-sqlite` on

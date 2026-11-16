@@ -10,7 +10,7 @@ import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import { exportBackup } from '@/data/user/exportBackup';
 import { getPreference, setPreference } from '@/data/user/preferencesRepository';
-import { previewRestore, restoreBackup } from '@/data/user/restoreBackup';
+import { eraseLocalData, previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import { subscribeFuriganaOverrides } from '@/data/user/furiganaOverrideEvents';
 import {
   getMockFileContents,
@@ -735,6 +735,77 @@ describe('restoreBackup', () => {
     expect(listener).toHaveBeenCalled();
 
     unsubscribe();
+  });
+});
+
+describe('eraseLocalData', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+    resetMockFileSystem();
+  });
+
+  it('empties progress and learner preferences but keeps this device curriculum install state', async () => {
+    const userDb = await createUserDb();
+    userDb.runSync(
+      `INSERT INTO srs_states (item_id, stability, difficulty, due_date, fsrs_state, reps, lapses,
+         learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      1, 1, 1, '2026-08-01T00:00:00.000Z', 'review', 1, 0, 0, 0, 'apprentice', null,
+      '2026-08-01T00:00:00.000Z',
+    );
+    setPreference(userDb, 'theme_mode', 'dark');
+    setPreference(userDb, 'onboarding_completed', 'true');
+    setPreference(userDb, 'installed_curriculum_version', '2.0.0');
+    setPreference(userDb, 'installed_curriculum_content_hash', 'this-device-hash');
+    setPreference(userDb, 'curriculum_update_source', 'downloaded');
+
+    const result = eraseLocalData(userDb);
+
+    expect(result.ok).toBe(true);
+    expect(rows(userDb, 'srs_states')).toHaveLength(0);
+    expect(getPreference(userDb, 'theme_mode')).toBeNull();
+    expect(getPreference(userDb, 'onboarding_completed')).toBeNull();
+    expect(getPreference(userDb, 'installed_curriculum_version')).toBe('2.0.0');
+    expect(getPreference(userDb, 'installed_curriculum_content_hash')).toBe('this-device-hash');
+    expect(getPreference(userDb, 'curriculum_update_source')).toBe('downloaded');
+  });
+
+  it('notifies furigana override subscribers', async () => {
+    const userDb = await createUserDb();
+    const listener = jest.fn();
+    const unsubscribe = subscribeFuriganaOverrides(listener);
+
+    expect(eraseLocalData(userDb).ok).toBe(true);
+
+    expect(listener).toHaveBeenCalled();
+    unsubscribe();
+  });
+
+  it('leaves progress intact when a delete throws', async () => {
+    const userDb = await createUserDb();
+    userDb.runSync(
+      `INSERT INTO srs_states (item_id, stability, difficulty, due_date, fsrs_state, reps, lapses,
+         learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      1, 1, 1, '2026-08-01T00:00:00.000Z', 'review', 1, 0, 0, 0, 'apprentice', null,
+      '2026-08-01T00:00:00.000Z',
+    );
+    setPreference(userDb, 'theme_mode', 'light');
+    const realRunSync = userDb.runSync.bind(userDb);
+    jest.spyOn(userDb, 'runSync').mockImplementation(((sql: string, ...params: never[]) => {
+      if (/^DELETE FROM srs_states/i.test(sql.trim())) throw new Error('disk full');
+      return realRunSync(sql, ...params);
+    }) as typeof userDb.runSync);
+
+    const result = eraseLocalData(userDb);
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.error.code).toBe('LOCAL_ERASE_FAILED');
+
+    jest.restoreAllMocks();
+    expect(rows(userDb, 'srs_states')).toHaveLength(1);
+    expect(getPreference(userDb, 'theme_mode')).toBe('light');
   });
 });
 

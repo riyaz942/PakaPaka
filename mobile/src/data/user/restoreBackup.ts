@@ -683,6 +683,45 @@ function writeRestore(
   };
 }
 
+const ERASE_FAILED_USER_MESSAGE =
+  'Could not erase the data on this device. Nothing was changed.';
+
+/**
+ * Empties every table a restore replaces, in one transaction, and keeps this
+ * device's curriculum install state (same rule as restore). Secure storage
+ * (BYOK keys, tokens) and `curriculum.db` are untouched. It leaves onboarding
+ * unfinished, so the app starts over.
+ */
+export function eraseLocalData(userDb: SQLiteDatabase): Result<void, AppError> {
+  try {
+    userDb.withTransactionSync(() => {
+      const preserved = preservedPreferenceKeys().map((key) => ({
+        key,
+        value:
+          userDb.getFirstSync<{ value: string }>(
+            'SELECT value FROM user_preferences WHERE key = ?',
+            key,
+          )?.value ?? null,
+      }));
+      for (const table of RESTORE_TABLES) {
+        userDb.runSync(`DELETE FROM ${table}`);
+      }
+      for (const { key, value } of preserved) {
+        if (value !== null) setPreference(userDb, key, value);
+      }
+    });
+    notifyFuriganaOverridesChanged();
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    return failure(
+      'LOCAL_ERASE_FAILED',
+      cause instanceof Error ? cause.message : String(cause),
+      ERASE_FAILED_USER_MESSAGE,
+      cause,
+    );
+  }
+}
+
 /**
  * Replace-all restore: every user table is emptied and rewritten from the
  * bundle inside one transaction (AC2). Merging two FSRS histories has no

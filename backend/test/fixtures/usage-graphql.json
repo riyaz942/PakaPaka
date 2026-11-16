@@ -1,0 +1,24 @@
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "workersInvocationsAdaptive": [{ "sum": { "requests": 1234 } }],
+          "d1AnalyticsAdaptiveGroups": [{ "sum": { "rowsRead": 20000, "rowsWritten": 800 } }],
+          "d1StorageAdaptiveGroups": [{ "max": { "databaseSizeBytes": 1200000 } }],
+          "r2OperationsAdaptiveGroups": [
+            { "sum": { "requests": 340 }, "dimensions": { "actionType": "PutObject" } },
+            { "sum": { "requests": 12 }, "dimensions": { "actionType": "ListObjects" } },
+            { "sum": { "requests": 5100 }, "dimensions": { "actionType": "GetObject" } },
+            { "sum": { "requests": 80 }, "dimensions": { "actionType": "HeadObject" } },
+            { "sum": { "requests": 9 }, "dimensions": { "actionType": "DeleteObject" } }
+          ],
+          "r2StorageAdaptiveGroups": [
+            { "max": { "payloadSize": 4000000, "metadataSize": 1000 }, "dimensions": { "datetime": "2026-11-14T23:00:00Z" } }
+          ]
+        }
+      ]
+    }
+  },
+  "errors": null
+}

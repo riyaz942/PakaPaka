@@ -11,7 +11,7 @@
     "web": "expo start --web",
     "postinstall": "patch-package",
     "build:web": "expo export -p web",
-    "deploy:web": "npm run build:web && wrangler deploy",
+    "deploy:web": "npm run build:web && npm --prefix ../backend run deploy",
     "lint": "expo lint",
     "test": "jest",
     "typecheck": "tsc --noEmit",
@@ -61,6 +61,8 @@
     "react-native-executorch": "0.10.0-nightly-a0bf85b-20260721",
     "react-native-executorch-expo-resource-fetcher": "0.10.0-nightly-0a8fe7e-20260527",
     "react-native-gesture-handler": "~2.30.0",
+    "react-native-nitro-google-signin": "^2.3.1",
+    "react-native-nitro-modules": "^0.37.2",
     "react-native-reanimated": "4.2.1",
     "react-native-safe-area-context": "~5.6.2",
     "react-native-screens": "~4.23.0",
@@ -87,8 +89,7 @@
     "jest-expo": "~55.0.19",
     "patch-package": "^8.0.1",
     "tailwindcss": "^3.4.19",
-    "typescript": "~5.9.2",
-    "wrangler": "^4.162.0"
+    "typescript": "~5.9.2"
   },
   "private": true,
   "jest": {
@@ -119,7 +120,8 @@
       "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx",
       "^react-native-executorch$": "<rootDir>/__mocks__/react-native-executorch.ts",
       "^react-native-executorch-expo-resource-fetcher$": "<rootDir>/__mocks__/react-native-executorch-expo-resource-fetcher.ts",
-      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts"
+      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts",
+      "^react-native-nitro-google-signin$": "<rootDir>/__mocks__/react-native-nitro-google-signin.ts"
     }
   }
 }

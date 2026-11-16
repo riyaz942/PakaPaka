@@ -67,7 +67,7 @@ Use ASD-STE-100 when you speak to the operator.
 
 ## Project overview
 
-Offline-first Expo (React Native) Japanese learning app for Android & iOS. Free, open-source, no accounts, no subscriptions. Local-first: all progress on-device.
+Offline-first Expo (React Native) Japanese learning app for Android & iOS. Free, open-source, no subscriptions. Optional Google sign-in for sync (no account needed). Local-first: all progress on-device.
 
 Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architecture / sprint artifacts (reference + tracking, not a feature backlog — check `docs/feedback/` before assuming a gap is intentional).
 
@@ -78,14 +78,15 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - Engagement: **goal ring** = today's lesson allowance + today's reviews (done + still due), may overshoot 100%; no stored goal, no weekly ratchet. Intensity preset = new lesson items/day; reviews are never capped. No Home streak; days-studied lives in Stats
 - Discovery: single **Browse** surface (search + filters); passages unlock at ≥90% Guru+ coverage — no separate Read tab
 - Review: **two-card kanji** (meaning + on'yomi; kun'yomi via vocab); worst-of-both SRS grade; Return-to-advance
-- AI Conversation (Talk tab): BYOK (OpenAI-compatible + Anthropic); curriculum furigana-bracket replies; unknown words flagged only (no direct SRS injection). **Only network-required feature** (NFR24). Voice (on-device TTS/STT) is in scope
+- AI Conversation (Talk tab): BYOK (OpenAI-compatible + Anthropic); curriculum furigana-bracket replies; unknown words flagged only (no direct SRS injection). **Network-required** (NFR24); sign-in and sync (web + mobile) also use the network, and are optional. Voice (on-device TTS/STT) is in scope
 - Platform floor: **iOS 17 / Android 13 (API 33)** + New Architecture
 
 ## Hard conventions
 
 - **Result type** — Fallible ops return `Result<T, AppError>` (`src/types/result.types.ts`). Do not throw across async boundaries.
 - **Dual DB** — `curriculum.db` read-only content; `user.db` mutable state. Never write to `curriculum.db`. Schema changes via numbered migrations in `src/data/migrations/`.
-- **Offline-first** — Everything works offline except AI Conversation (and optional cloud STT). Do not imply the rest of the app is degraded when offline.
+- **Offline-first** — Everything works offline except AI Conversation, optional sign-in/sync (and optional cloud STT). Do not imply the rest of the app is degraded when offline.
+- **Server boundary** — The server never receives BYOK keys or AI conversations. The server never stores, logs or uses your email. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`. Never log tokens, ID tokens, request bodies or auth headers.
 - **BYOK boundary** — Provider keys in secure storage; sent only to user-configured HTTPS endpoints. Conversations stay local; do not inject off-curriculum words into SRS.
 - **Styling** — Semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). No deprecated `Colors` in `src/constants/theme.ts`; no raw hex in new code.
 - **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.
@@ -96,6 +97,9 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 # Repo root — curriculum pipeline
 npm ci && npm run validate-schema && npm run compile-curriculum
 # COMPILE_OUTPUT_PATH overrides output (CI uses dist/curriculum.db)
+
+# backend/ — Cloudflare Worker (web host, /api/*, /auth/*)
+cd backend && npm test && npm run typecheck
 ```
 
 ## Architecture crux

@@ -90,6 +90,7 @@ nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
 nav .links { display: flex; gap: 22px; margin-left: 12px; flex: 1; }
 nav .links a { color: var(--muted); font-size: 15px; font-weight: 700; text-decoration: none; }
 nav .links a:hover { color: var(--ink); }
+nav .cta { display: flex; align-items: center; gap: 10px; }
 
 /* hero */
 .hero { padding: 72px 0 88px; }
@@ -247,7 +248,8 @@ footer a { color: var(--muted); }
   .arrow { transform: rotate(90deg); height: 40px; }
   .grid3 { grid-template-columns: 1fr; }
   nav .links { display: none; }
-  nav .btn { margin-left: auto; }
+  nav .cta { margin-left: auto; }
+  nav .cta .btn { padding: 0 12px; }
   section { padding: 64px 0; }
   .step p.say { min-height: 0; }
 }
@@ -264,7 +266,10 @@ footer a { color: var(--muted); }
       <a href="#all">All in one</a>
       <a href="#sync">Sync</a>
     </div>
-    <a class="btn btn-primary btn-sm" href="/dashboard">Start learning</a>
+    <div class="cta">
+      <a class="btn btn-ghost btn-sm" href="/auth/signin">Log in</a>
+      <a class="btn btn-primary btn-sm" href="/dashboard">Start learning</a>
+    </div>
   </div>
 </nav>
 
@@ -440,8 +445,9 @@ footer a { color: var(--muted); }
         <a class="btn btn-primary" href="/dashboard">Start learning</a>
       </div>
       <div class="card" data-reveal style="--d:80ms">
-        <h3>Log in to sync <span class="soon">Soon</span></h3>
-        <p>Sign in with Google or Apple and your progress follows you between phone and browser. This is not ready yet.</p>
+        <h3>Log in with Google <span class="soon">Sync soon</span></h3>
+        <p>Your account works now. Progress sync between phone and browser is not ready yet: for now your progress stays on this device.</p>
+        <a class="btn btn-ghost" href="/auth/signin">Log in</a>
       </div>
       <div class="card" data-reveal style="--d:160ms">
         <h3>Back up to a file</h3>

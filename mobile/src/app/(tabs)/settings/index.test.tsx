@@ -43,6 +43,10 @@ const mockEndVacation = jest.fn(() => ({
   value: { shiftedCount: 12, days: 10 },
 }));
 
+jest.mock('@/providers/AccountProvider', () => ({
+  useAccount: () => ({ status: 'signed_out', account: null, error: null, signInResult: null }),
+}));
+
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
 }));
