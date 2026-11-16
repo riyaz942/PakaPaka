@@ -336,16 +336,16 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
 - Produces: `encodeSyncFile(envelope: { schemaVersion: number; curriculumVersion: string | null; exportedAt: string }, data: BackupData): Promise<Uint8Array>` — writes the JSON text in pieces into `new pako.Deflate({ gzip: true })`: the envelope prefix, then each table as `"name":[` + rows in chunks of 500 (`JSON.stringify` per chunk) + `]`, with `await yieldToUi()` after each chunk. The output text must equal `serializeBackupBundle(buildBackupBundle({ ...envelope, includesConversations: false }, toSyncData(data)))` byte for byte.
 - Produces: `decodeSyncFile(bytes: Uint8Array): Promise<Result<BackupBundle, AppError>>` — `new pako.Inflate({ to: 'string' })` fed in 64 KB slices with `await yieldToUi()` between slices; then `parseBackupBundle`; then `validateSyncData`; then `toSyncData`. gzip failure, JSON failure, format mismatch or shape failure → `sync_bad_file`; `BACKUP_VERSION_UNSUPPORTED` → `sync_update_required`.
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `encoded text equals the backup serializer output` (`pako.ungzip(encoded, { to: 'string' })` === the serializer string, sample with rows in every table and a table with 1,201 rows).
   - `the first 300 characters match the server envelope pattern` (the regex of Task 7, copied into the test).
   - `decode(encode(x)) returns x`.
   - `decode strips never-synced preferences and AI rows found in a remote file`.
   - `decode of non-gzip bytes → sync_bad_file`; `decode of a file with formatVersion 2 → sync_update_required`; `decode of a row with a wrong type → sync_bad_file`.
   - `encode yields between chunks` (jest fake timers: the promise does not resolve until timers run).
-- [ ] **Step 2:** Run `npx jest src/core/sync/syncCodec.test.ts` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Measure.** Add `syncCodec.perf.test.ts`: it builds a 1,500-item sample and a 12,700-item sample and prints the encode and decode times with `console.info`. No assertion on time. Write the four numbers in the commit message. (Phone numbers come in Task 14.)
-- [ ] **Step 4: Commit** `feat(sync): chunked gzip codec for the sync file`.
+- [x] **Step 2:** Run `npx jest src/core/sync/syncCodec.test.ts` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Measure.** Add `syncCodec.perf.test.ts`: it builds a 1,500-item sample and a 12,700-item sample and prints the encode and decode times with `console.info`. No assertion on time. Write the four numbers in the commit message. (Phone numbers come in Task 14.)
+- [x] **Step 4: Commit** `feat(sync): chunked gzip codec for the sync file`.
 
 ---
 
