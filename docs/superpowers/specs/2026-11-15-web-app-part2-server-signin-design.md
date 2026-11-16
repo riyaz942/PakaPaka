@@ -121,7 +121,10 @@ registered in Google Cloud and never appear in code. The user key is `(provider,
   object-src 'none'`. `style-src 'unsafe-inline'` is required: react-native-web inserts style tags
   at runtime. The built `index.html` has no inline script (checked). Verify every core screen in
   Chrome and Safari after the change.
-- Landing page and `/auth/signin` get their own CSP. `/auth/signin` allows
+- The landing page shares the SPA CSP: its two inline scripts are allowed by hash in the `/*`
+  rule (a separate landing CSP with `! Content-Security-Policy` did not take effect for `/` in
+  production; the page got two CSPs and both scripts were blocked, 2026-11-16).
+- `/auth/signin` gets its own CSP (set by the Worker). It allows
   `https://challenges.cloudflare.com` for script and frame, and `form-action 'self'
   https://accounts.google.com` (Chrome applies `form-action` to the redirect after the POST). The
   page sends `Referrer-Policy: strict-origin-when-cross-origin`; `no-referrer` makes the form POST

@@ -7,7 +7,7 @@ const headersFile = readFileSync(join(publicDir, '_headers'), 'utf8');
 const landingHtml = readFileSync(join(publicDir, 'landing', 'index.html'), 'utf8');
 
 const SPA_CSP =
-  "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'";
+  "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'";
 
 // Parse a Cloudflare `_headers` file: a path line, then indented header lines.
 function parseRules(text: string): Map<string, string[]> {
@@ -37,32 +37,25 @@ function inlineScriptHashes(html: string): string[] {
 describe('web security headers', () => {
   const rules = parseRules(headersFile);
 
-  it('/* rule has the SPA CSP', () => {
+  it('/* rule has COOP and COEP', () => {
     const lines = rules.get('/*') ?? [];
-    expect(lines).toContain(`Content-Security-Policy: ${SPA_CSP}`);
     expect(lines).toContain('Cross-Origin-Opener-Policy: same-origin');
     expect(lines).toContain('Cross-Origin-Embedder-Policy: require-corp');
   });
 
-  it('landing rules detach the SPA CSP and allow each inline script by hash', () => {
+  it('one CSP for every path: the landing inline scripts are allowed by hash', () => {
+    // Cloudflare's `! Content-Security-Policy` detach did not work for "/" in production
+    // (the page got two CSPs, and the stricter one blocked both scripts), so no path
+    // rule may add or detach a CSP. A second CSP can only narrow the first.
+    expect([...rules.keys()]).toEqual(['/*']);
+
     const hashes = inlineScriptHashes(landingHtml);
     expect(hashes).toHaveLength(2);
 
-    for (const path of ['/', '/landing/*']) {
-      const lines = rules.get(path) ?? [];
-      expect(lines).toContain('! Content-Security-Policy');
-
-      const csp = lines.find((l) => l.startsWith('Content-Security-Policy:'));
-      expect(csp).toBeDefined();
-      const scriptSrc = /script-src ([^;]*)/.exec(csp as string)?.[1] ?? '';
-      for (const hash of hashes) expect(scriptSrc).toContain(hash);
-      expect(scriptSrc).not.toContain('unsafe-inline');
-      expect(scriptSrc).not.toContain('unsafe-eval');
-      expect(csp).toContain("frame-ancestors 'none'");
-      expect(csp).toContain("object-src 'none'");
-
-      // COOP/COEP come from the /* rule; repeating them here would join the values.
-      expect(lines.some((l) => l.startsWith('Cross-Origin-'))).toBe(false);
-    }
+    const lines = rules.get('/*') ?? [];
+    expect(lines.filter((l) => l.startsWith('Content-Security-Policy:'))).toEqual([
+      `Content-Security-Policy: ${SPA_CSP.replace("'wasm-unsafe-eval'", `'wasm-unsafe-eval' ${hashes.join(' ')}`)}`,
+    ]);
+    expect(lines.some((l) => l.startsWith('!'))).toBe(false);
   });
 });
