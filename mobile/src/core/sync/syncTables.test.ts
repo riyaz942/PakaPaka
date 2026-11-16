@@ -7,28 +7,9 @@ import {
   rowKey,
   rowsEqual,
   SYNC_TABLES,
-  type FieldType,
 } from './syncTables';
+import { validateSyncData } from './syncFile';
 import { fullSampleData } from './syncSamples.testutil';
-
-function matchesType(value: unknown, type: FieldType): boolean {
-  switch (type) {
-    case 'string':
-      return typeof value === 'string';
-    case 'number':
-      return typeof value === 'number';
-    case 'boolean':
-      return typeof value === 'boolean';
-    case 'string|null':
-      return value === null || typeof value === 'string';
-    case 'number|null':
-      return value === null || typeof value === 'number';
-    case 'itemRef':
-      return typeof value === 'object' && value !== null && 'itemType' in value && 'slug' in value;
-    case 'string[]':
-      return Array.isArray(value) && value.every((entry) => typeof entry === 'string');
-  }
-}
 
 describe('SYNC_TABLES', () => {
   it('every sync table has a descriptor and every field of its entry type', () => {
@@ -41,23 +22,22 @@ describe('SYNC_TABLES', () => {
       const { fields, ignored } = SYNC_TABLES[table];
       // The descriptor names exactly the fields the entry type has.
       expect(Object.keys(fields).sort()).toEqual(Object.keys(row).sort());
-      for (const [name, type] of Object.entries(fields)) {
-        expect(matchesType(row[name], type)).toBe(true);
-      }
       for (const name of ignored) expect(fields).toHaveProperty(name);
     }
+    // The shipped validator checks every field type of every row against the descriptors.
+    expect(validateSyncData(sample).ok).toBe(true);
   });
 });
 
 describe('rowsEqual', () => {
   const srs = fullSampleData().srsStates[0];
 
-  it('rowsEqual ignores updatedAt', () => {
+  it('ignores updatedAt', () => {
     expect(rowsEqual('srsStates', srs, { ...srs, updatedAt: '2030-01-01T00:00:00.000Z' })).toBe(true);
     expect(rowsEqual('srsStates', srs, { ...srs, reps: srs.reps + 1 })).toBe(false);
   });
 
-  it('rowsEqual ignores createdAt for userSynonyms, optedInAt for lessonOptIns, seenAt for cardSeen', () => {
+  it('ignores createdAt for userSynonyms, optedInAt for lessonOptIns, seenAt for cardSeen', () => {
     const sample = fullSampleData();
     const later = '2030-01-01T00:00:00.000Z';
     const synonym = sample.userSynonyms[0];
@@ -71,7 +51,7 @@ describe('rowsEqual', () => {
     expect(rowsEqual('userSynonyms', synonym, { ...synonym, answerText: 'dog' })).toBe(false);
   });
 
-  it('rowsEqual compares sentenceKeys in order', () => {
+  it('compares sentenceKeys in order', () => {
     const row = fullSampleData().grammarSentenceHistory[0];
     expect(rowsEqual('grammarSentenceHistory', { ...row, sentenceKeys: ['a', 'b'] }, { ...row, sentenceKeys: ['a', 'b'] })).toBe(true);
     expect(rowsEqual('grammarSentenceHistory', { ...row, sentenceKeys: ['a', 'b'] }, { ...row, sentenceKeys: ['b', 'a'] })).toBe(false);
@@ -98,6 +78,16 @@ describe('rowKey', () => {
     const row = sample.userSynonyms[0];
     expect(rowKey('userSynonyms', row)).toBe('vocabulary:neko|meaning|cat');
     expect(rowKey('userSynonyms', { ...row, answerText: 'kitty' })).not.toBe(rowKey('userSynonyms', row));
+  });
+
+  it('never collides when a part contains |', () => {
+    const row = fullSampleData().grammarAnswers[0];
+    const left = rowKey('grammarAnswers', { ...row, sentenceKey: 'A', answerText: 'B|C' });
+    const right = rowKey('grammarAnswers', { ...row, sentenceKey: 'A|B', answerText: 'C' });
+    expect(left).not.toBe(right);
+    const slashed = rowKey('grammarAnswers', { ...row, sentenceKey: 'A\\', answerText: '|B' });
+    const plain = rowKey('grammarAnswers', { ...row, sentenceKey: 'A', answerText: '\\|B' });
+    expect(slashed).not.toBe(plain);
   });
 
   it('keys importMetadata by source and importedAt', () => {

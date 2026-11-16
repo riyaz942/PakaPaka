@@ -7,7 +7,7 @@ import { NEVER_SYNCED_PREFERENCE_KEYS } from './syncTables';
 const AT = '2026-11-01T00:00:00.000Z';
 
 describe('toSyncData', () => {
-  it.each([...NEVER_SYNCED_PREFERENCE_KEYS])('toSyncData removes each never-synced key: %s', (key) => {
+  it.each([...NEVER_SYNCED_PREFERENCE_KEYS])('removes each never-synced key: %s', (key) => {
     const data = fullSampleData();
     data.userPreferences = [
       { key, value: 'x', updatedAt: AT },
@@ -17,7 +17,7 @@ describe('toSyncData', () => {
     expect(result.userPreferences.map((row) => row.key)).toEqual(['starting_jlpt_level']);
   });
 
-  it('toSyncData keeps session_intensity, home_layout, vacation_started_at', () => {
+  it('keeps session_intensity, home_layout, vacation_started_at', () => {
     const data = fullSampleData();
     data.userPreferences = ['session_intensity', 'home_layout', 'vacation_started_at'].map((key) => ({
       key,
@@ -31,7 +31,7 @@ describe('toSyncData', () => {
     ]);
   });
 
-  it('toSyncData empties aiSessions and aiMessages', () => {
+  it('empties aiSessions and aiMessages', () => {
     const data = fullSampleData();
     data.aiSessions = [
       {
@@ -83,6 +83,15 @@ describe('validateSyncData', () => {
   it('rejects a missing field', () => {
     const data = fullSampleData();
     delete (data.cardSeen[0] as Partial<BackupData['cardSeen'][number]>).seenAt;
+    const result = validateSyncData(data);
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.error.code).toBe('sync_bad_file');
+  });
+
+  it('rejects two rows with the same key', () => {
+    const data = fullSampleData();
+    data.srsStates.push({ ...data.srsStates[0], reps: 9 });
     const result = validateSyncData(data);
     expect(result.ok).toBe(false);
     if (result.ok) return;

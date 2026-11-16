@@ -34,6 +34,11 @@ type SyncRow<K extends SyncTableKey> = BackupData[K][number];
 
 const SINGLETON_KEY = '1';
 
+/** Joins key parts with `|`; `\` and `|` inside a part are escaped so two different rows never share a key. */
+function joinKey(...parts: string[]): string {
+  return parts.map((part) => part.replace(/[\\|]/g, '\\$&')).join('|');
+}
+
 export const SYNC_TABLES: { [K in SyncTableKey]: TableDescriptor<SyncRow<K>> } = {
   userPreferences: {
     kind: 'preference',
@@ -68,7 +73,7 @@ export const SYNC_TABLES: { [K in SyncTableKey]: TableDescriptor<SyncRow<K>> } =
   },
   importMetadata: {
     kind: 'append_only',
-    key: (row) => `${row.source}|${row.importedAt}`,
+    key: (row) => joinKey(row.source, row.importedAt),
     ignored: [],
     fields: {
       source: 'string',
@@ -124,7 +129,7 @@ export const SYNC_TABLES: { [K in SyncTableKey]: TableDescriptor<SyncRow<K>> } =
   },
   userSynonyms: {
     kind: 'per_item',
-    key: (row) => `${itemRefKey(row.item)}|${row.answerType}|${row.answerText}`,
+    key: (row) => joinKey(itemRefKey(row.item), row.answerType, row.answerText),
     ignored: ['createdAt'],
     fields: { item: 'itemRef', answerType: 'string', answerText: 'string', createdAt: 'string' },
   },
@@ -161,7 +166,7 @@ export const SYNC_TABLES: { [K in SyncTableKey]: TableDescriptor<SyncRow<K>> } =
   },
   passagePracticeResults: {
     kind: 'passage',
-    key: (row) => `${row.passageId}|${row.questionId}`,
+    key: (row) => joinKey(row.passageId, row.questionId),
     ignored: [],
     fields: {
       passageId: 'string',
@@ -173,7 +178,7 @@ export const SYNC_TABLES: { [K in SyncTableKey]: TableDescriptor<SyncRow<K>> } =
   },
   grammarAnswers: {
     kind: 'per_item',
-    key: (row) => `${itemRefKey(row.item)}|${row.sentenceKey}|${row.answerText}`,
+    key: (row) => joinKey(itemRefKey(row.item), row.sentenceKey, row.answerText),
     ignored: ['createdAt'],
     fields: { item: 'itemRef', sentenceKey: 'string', answerText: 'string', createdAt: 'string' },
   },

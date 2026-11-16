@@ -2,7 +2,12 @@ import type { BackupData } from '@/core/backup/backup.types';
 import { validateBackupData } from '@/core/backup/backupValidator';
 import { SYNC_TABLE_KEYS } from '@/core/sync/sync.types';
 import { syncError } from '@/core/sync/syncMessages';
-import { NEVER_SYNCED_PREFERENCE_KEYS, SYNC_TABLES, type FieldType } from '@/core/sync/syncTables';
+import {
+  NEVER_SYNCED_PREFERENCE_KEYS,
+  rowKey,
+  SYNC_TABLES,
+  type FieldType,
+} from '@/core/sync/syncTables';
 import type { AppError, Result } from '@/types/result.types';
 
 /** A copy for the wire: device-local preferences and conversations are left out. */
@@ -59,6 +64,7 @@ export function validateSyncData(data: BackupData): Result<BackupData, AppError>
   for (const table of SYNC_TABLE_KEYS) {
     const { fields } = SYNC_TABLES[table];
     const rows = data[table] as unknown as Record<string, unknown>[];
+    const seen = new Set<string>();
     for (let index = 0; index < rows.length; index += 1) {
       for (const [name, type] of Object.entries(fields)) {
         if (!matchesType(rows[index][name], type)) {
@@ -68,6 +74,15 @@ export function validateSyncData(data: BackupData): Result<BackupData, AppError>
           };
         }
       }
+      // A repeated key would make the merge keep one of the two rows silently.
+      const key = rowKey(table, data[table][index]);
+      if (seen.has(key)) {
+        return {
+          ok: false,
+          error: syncError('sync_bad_file', `Duplicate row key in ${table} at index ${index}`),
+        };
+      }
+      seen.add(key);
     }
   }
 
