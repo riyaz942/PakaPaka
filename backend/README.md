@@ -45,6 +45,8 @@ HMAC_KEY=
 GOOGLE_WEB_CLIENT_SECRET=
 TURNSTILE_SECRET=
 CF_ANALYTICS_TOKEN=
+USAGE_ALERT_EMAIL=
+CF_ACCOUNT_ID=
 ```
 
 Values in `.dev.vars` override `vars` in `wrangler.jsonc`. For a local run, also set these there: `APP_ORIGIN=http://localhost:8787`, `GOOGLE_WEB_CLIENT_ID`, `TURNSTILE_SITE_KEY`.
@@ -88,5 +90,7 @@ Set each secret once with `npx wrangler secret put <NAME>`:
 - `GOOGLE_WEB_CLIENT_SECRET`
 - `TURNSTILE_SECRET`
 - `CF_ANALYTICS_TOKEN`
+- `USAGE_ALERT_EMAIL` (the operator's own address — kept out of git)
+- `CF_ACCOUNT_ID`
 
-Fill the empty `vars` in `wrangler.jsonc` (`GOOGLE_WEB_CLIENT_ID`, `GOOGLE_IOS_CLIENT_IDS`, `TURNSTILE_SITE_KEY`, `USAGE_ALERT_EMAIL`, `CF_ACCOUNT_ID`) and the D1 `database_id` after you create the Cloudflare resources.
+Do not add `USAGE_ALERT_EMAIL` or `CF_ACCOUNT_ID` to `vars` in `wrangler.jsonc`: a secret and a var with the same name conflict. The public values (`GOOGLE_WEB_CLIENT_ID`, `GOOGLE_IOS_CLIENT_IDS`, `TURNSTILE_SITE_KEY`) and the D1 `database_id` stay in `wrangler.jsonc`.

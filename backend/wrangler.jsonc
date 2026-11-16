@@ -11,17 +11,15 @@
   "routes": [{ "pattern": "paka-paka.app", "custom_domain": true }],
   "vars": {
     "APP_ORIGIN": "https://paka-paka.app",
-    "GOOGLE_WEB_CLIENT_ID": "",
-    "GOOGLE_IOS_CLIENT_IDS": "",
-    "TURNSTILE_SITE_KEY": "",
-    "USAGE_ALERT_EMAIL": "",
-    "CF_ACCOUNT_ID": ""
+    "GOOGLE_WEB_CLIENT_ID": "68070992356-b6bralepm3637rkf8sas9dfj10bu85jp.apps.googleusercontent.com",
+    "GOOGLE_IOS_CLIENT_IDS": "68070992356-2c4mub75suml0vnl5hu068agqsff1pf3.apps.googleusercontent.com,68070992356-qjruuekdmqqne6t2168ur0r9limc5npe.apps.googleusercontent.com,68070992356-i9d5heeej7a6v1e2th86g0l2omffmbu5.apps.googleusercontent.com",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAGCAhfDyxQYa5lFE"
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "pakapaka",
-      "database_id": "REPLACE_AT_TASK_16",
+      "database_id": "182b98c9-664a-4f69-bba9-b32af9bd40be",
       "migrations_dir": "migrations"
     }
   ],
