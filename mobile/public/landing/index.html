@@ -15,7 +15,10 @@
 <!-- The fonts in ./fonts hold only the characters this page uses. If you add
      new characters (Japanese text most of all), make the subsets again from
      the TTF files in node_modules/@expo-google-fonts with the `subset-font`
-     npm package: subsetFont(ttf, <each character in this file>, { targetFormat: 'woff2' }) -->
+     npm package: subsetFont(ttf, <each character in this file>, { targetFormat: 'woff2' })
+     Fraunces (headings: Basic Latin) and Shippori Mincho (the large kanji) are not in
+     node_modules: their TTF files are in the @expo-google-fonts/fraunces and
+     @expo-google-fonts/shippori-mincho npm packages. -->
 <script>
   // Start states for the animations apply only when this class is set, so the
   // page is complete with no script and with reduced motion.
@@ -26,6 +29,9 @@
 @font-face { font-family: "Jakarta"; font-weight: 700; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-700.woff2") format("woff2"); }
 @font-face { font-family: "Jakarta"; font-weight: 800; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-800.woff2") format("woff2"); }
 @font-face { font-family: "ZenKaku"; font-weight: 700; font-display: swap; src: url("/landing/fonts/ZenKakuGothicNew-700.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 500; font-display: swap; src: url("/landing/fonts/Fraunces-500.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 500; font-style: italic; font-display: swap; src: url("/landing/fonts/Fraunces-500-italic.woff2") format("woff2"); }
+@font-face { font-family: "Mincho"; font-weight: 700; font-display: swap; src: url("/landing/fonts/ShipporiMincho-700.woff2") format("woff2"); }
 @font-face { font-family: "NotoJP"; font-weight: 500; font-display: swap; src: url("/landing/fonts/NotoSansJP-500.woff2") format("woff2"); }
 
 /* Same values as the app tokens in mobile/src/global.css. */
@@ -41,7 +47,12 @@
   --reading: rgb(143 95 22);
   --ok: rgb(29 159 106); --ok-soft: rgb(228 246 238); --ok-deep: rgb(23 125 84);
   --bad: rgb(225 72 61); --bad-soft: rgb(252 231 228); --bad-deep: rgb(189 60 51);
-  --shadow: 0 1px 2px rgb(35 32 28 / .05), 0 12px 32px rgb(35 32 28 / .07);
+  --shadow: 0 1px 2px rgb(35 32 28 / .04), 0 10px 28px rgb(35 32 28 / .06);
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --mincho: "Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  /* Paper grain: dark specks on the light theme, light specks on the dark theme. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.3 0 0 0 -.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-o: .09; --ghost-o: .05;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -57,6 +68,8 @@
     --ok: rgb(52 180 141); --ok-soft: rgb(30 56 46); --ok-deep: rgb(102 203 171);
     --bad: rgb(235 100 90); --bad-soft: rgb(74 38 35); --bad-deep: rgb(240 150 140);
     --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 12px 32px rgb(0 0 0 / .35);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.3 0 0 0 -.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --grain-o: .07; --ghost-o: .05;
   }
 }
 
@@ -65,27 +78,51 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font: 500 17px/1.6 "Jakarta", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 .jp { font-family: "NotoJP", "Hiragino Sans", "Yu Gothic", sans-serif; }
 .hero-jp { font-family: "ZenKaku", "NotoJP", "Hiragino Sans", "Yu Gothic", sans-serif; font-weight: 700; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-h1, h2, h3 { color: var(--ink); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
-h1 { font-size: clamp(38px, 5.2vw, 60px); }
-h2 { font-size: clamp(28px, 3.6vw, 42px); }
-h3 { font-size: 19px; letter-spacing: -0.01em; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: var(--grain) 0 0 / 220px; opacity: var(--grain-o); }
+::selection { background: color-mix(in srgb, var(--brand) 26%, transparent); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+h1, h2, h3 { color: var(--ink); }
+h1, h2, .serif { font-family: var(--serif); font-weight: 500; letter-spacing: -0.018em; line-height: 1.06; text-wrap: balance; }
+h1 { font-size: clamp(38px, 4.9vw, 64px); }
+h2 { font-size: clamp(30px, 3.9vw, 50px); }
+h3 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+h3.serif { font-size: 23px; letter-spacing: -0.01em; line-height: 1.15; }
 .eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.lede { font-size: 19px; max-width: 34em; }
-section { padding: 96px 0; }
-.sec-head { max-width: 720px; margin-bottom: 48px; }
-.sec-head h2 { margin: 10px 0 14px; }
+.lede { font-size: 19px; max-width: 34em; text-wrap: pretty; }
+section, .hero { padding: 104px 0; position: relative; overflow: clip; }
+.sec-head { max-width: 720px; margin-bottom: 52px; }
+.sec-head h2 { margin: 22px 0 16px; }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 14px; font: 700 16px "Jakarta", system-ui, sans-serif; text-decoration: none; cursor: pointer; border: 1.5px solid transparent; transition: transform .12s; }
-.btn:active { transform: scale(.97); }
-.btn-primary { background: var(--brand); color: #fff; }
-.btn-ghost { border-color: var(--border); color: var(--ink); background: var(--surface); }
+/* Each section opens with one kanji in a writing-practice square. The same
+   kanji is very large and faint at the side of the section. */
+.chapter { display: flex; align-items: center; gap: 14px; }
+.square { width: 60px; height: 60px; flex: none; display: grid; place-items: center; border-radius: 3px; font: 700 36px/1 var(--mincho); color: var(--ink);
+  border: 1.5px solid color-mix(in srgb, var(--brand-text) 60%, transparent);
+  background:
+    repeating-linear-gradient(to right, color-mix(in srgb, var(--brand-text) 38%, transparent) 0 3px, transparent 3px 7px) center / 100% 1px no-repeat,
+    repeating-linear-gradient(to bottom, color-mix(in srgb, var(--brand-text) 38%, transparent) 0 3px, transparent 3px 7px) center / 1px 100% no-repeat; }
+.chapter b { display: block; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.3; }
+.chapter small { font-size: 14px; color: var(--muted); }
+.mincho { font-family: var(--mincho); font-weight: 700; font-style: normal; }
+.ghost { position: absolute; z-index: 0; top: 48px; font: 700 clamp(300px, 36vw, 640px)/1 var(--mincho); color: var(--ink); opacity: var(--ghost-o); pointer-events: none; user-select: none; translate: 0 var(--py, 0px); }
+.ghost.right { left: calc(50% + 400px); }
+.ghost.left { right: calc(50% + 400px); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 14px; font: 700 16px "Jakarta", system-ui, sans-serif; text-decoration: none; cursor: pointer; border: 1.5px solid transparent; transition: transform .12s, box-shadow .12s, border-color .15s; }
+.btn-primary { background: var(--brand); color: #fff; --edge: color-mix(in srgb, var(--brand) 62%, black); box-shadow: 0 3px 0 var(--edge); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--edge); }
+.btn-primary:active { transform: translateY(3px); box-shadow: 0 0 0 var(--edge); }
+.btn-ghost { border-color: color-mix(in srgb, var(--ink) 24%, transparent); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-ghost:active { transform: scale(.97); }
+.link { color: var(--ink); font-weight: 700; font-size: 16px; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; text-decoration-color: color-mix(in srgb, var(--ink) 30%, transparent); transition: text-decoration-color .15s; }
+.link:hover { text-decoration-color: var(--ink); }
 .btn-sm { min-height: 40px; padding: 0 16px; font-size: 14.5px; border-radius: 12px; }
 
 /* nav */
-nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
 nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; color: var(--ink); text-decoration: none; }
+.logo { display: flex; align-items: center; gap: 10px; font: 500 23px var(--serif); letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
 .logo img { width: 34px; height: 34px; object-fit: contain; }
 nav .links { display: flex; gap: 22px; margin-left: 12px; flex: 1; }
 nav .links a { color: var(--muted); font-size: 15px; font-weight: 700; text-decoration: none; }
@@ -93,17 +130,19 @@ nav .links a:hover { color: var(--ink); }
 nav .cta { display: flex; align-items: center; gap: 10px; }
 
 /* hero */
-.hero { padding: 72px 0 88px; }
-.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
-.hero h1 em { font-style: normal; color: var(--brand-text); background: linear-gradient(transparent 68%, color-mix(in srgb, var(--brand-text) 24%, transparent) 68%) no-repeat 0 0 / 100% 100%; }
-.hero .lede { margin: 22px 0 30px; }
-.hero .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero .note { margin-top: 16px; font-size: 14.5px; color: var(--muted); }
-.pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
-.pill { font-size: 12.5px; font-weight: 700; letter-spacing: .04em; padding: 5px 11px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-text); }
+.hero { padding: 80px 0 104px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
+.hero .ghost { top: 8px; }
+.kicker { font: italic 500 19px var(--serif); color: var(--muted); margin-bottom: 18px; }
+.hero h1 em { color: var(--brand-text); position: relative; display: inline-block; white-space: nowrap; }
+.stroke { position: absolute; left: -1%; bottom: -.13em; width: 102%; height: .2em; overflow: visible; }
+.stroke path { fill: none; stroke: color-mix(in srgb, var(--brand-text) 50%, transparent); stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 320; }
+.hero .lede { margin: 26px 0 32px; }
+.hero .buttons { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.hero .note { margin-top: 20px; font-size: 14.5px; color: var(--muted); }
 
 /* graph */
-.graph-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 20px 20px 16px; box-shadow: var(--shadow); }
+.graph-card { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 22px 22px 16px; box-shadow: var(--shadow); }
 .graph-card svg { width: 100%; height: auto; display: block; overflow: visible; }
 .g-col { font: 700 11px "Jakarta", system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; fill: var(--muted); }
 .g-node { cursor: pointer; outline: none; transition: opacity .2s; }
@@ -142,12 +181,13 @@ nav .cta { display: flex; align-items: center; gap: 10px; }
 
 /* chain */
 .chain { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr; align-items: stretch; }
-.arrow { display: flex; align-items: center; justify-content: center; color: var(--faint); font-size: 26px; }
+.arrow { display: flex; align-items: center; justify-content: center; color: var(--faint); }
+.arrow svg { width: 30px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .step { display: flex; flex-direction: column; gap: 14px; }
 .step-head { display: flex; align-items: baseline; gap: 10px; }
-.step-num { font-weight: 800; font-size: 13px; width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; flex: none; }
+.step-num { font: italic 500 32px/1 var(--serif); flex: none; }
 .step p.say { font-size: 15.5px; color: var(--muted); min-height: 3.2em; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); }
 .card .label { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 14px 0 4px; }
 .card p { font-size: 15.5px; line-height: 1.55; }
 .tile { border-radius: 16px; text-align: center; padding: 18px 12px 14px; }
@@ -176,7 +216,7 @@ nav .cta { display: flex; align-items: center; gap: 10px; }
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 
 /* grammar */
-.alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.alt { background: color-mix(in srgb, var(--surface) 62%, transparent); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .alt .card { background: var(--bg); box-shadow: none; }
 .gram { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
 .gram-hero { background: var(--grammar-soft); color: var(--grammar-deep); border-radius: 16px; padding: 22px 16px; text-align: center; }
@@ -198,36 +238,49 @@ nav .cta { display: flex; align-items: center; gap: 10px; }
 .anim .hint.in { opacity: 1; transform: none; }
 .mark { background: var(--bad); color: #fff; border-radius: 6px; padding: 0 5px; }
 .anim .mark { animation: stamp .45s cubic-bezier(.3, 1.7, .5, 1); display: inline-block; }
-.facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; }
-.fact b { display: block; font-size: 30px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.fact span { font-size: 14px; color: var(--muted); }
+.gram-foot { margin-top: 36px; max-width: 44em; font-size: 16px; color: var(--muted); }
 
 /* all in one */
-.merge { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; margin-bottom: 48px; }
+.merge { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; margin-bottom: 56px; }
 .apps { display: flex; flex-direction: column; gap: 10px; }
-.app { padding: 14px 16px; border-radius: 14px; border: 1.5px dashed var(--border); color: var(--muted); font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; }
+.app { padding: 14px 16px; border-radius: 14px; border: 1.5px dashed color-mix(in srgb, var(--ink) 22%, transparent); color: var(--muted); font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; }
 .app small { font-weight: 500; color: var(--muted); }
-.one { padding: 26px; border-radius: 22px; background: var(--brand); color: #fff; }
-.one h3 { color: #fff; font-size: 24px; margin-bottom: 8px; }
-.one p { font-size: 15.5px; }
-.one .path { margin-top: 14px; font-weight: 700; font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
-.one .path span { background: rgb(255 255 255 / .16); border-radius: 8px; padding: 4px 9px; }
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.feat h3 { margin-bottom: 6px; }
-.feat p { font-size: 15px; color: var(--muted); }
-.import { margin-top: 28px; padding: 18px 22px; border-radius: 18px; background: var(--brand-soft); color: var(--brand-text); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.one { padding: 30px 28px; border-radius: 22px; background: var(--brand); color: #fff; }
+.one h3 { color: #fff; font-size: 34px; margin-bottom: 8px; }
+.one p { font-size: 16.5px; }
+/* the path in numbers: one column for each kind of item */
+.facts { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.fact { padding: 26px 0 24px 24px; border-left: 1px solid var(--border); }
+.fact:first-child { padding-left: 0; border-left: 0; }
+.fact b { display: block; font: 500 clamp(32px, 3.6vw, 46px)/1 var(--serif); color: var(--ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.fact > span { font-size: 14px; line-height: 1.35; color: var(--muted); display: block; padding-right: 12px; }
+.fact .dot { margin-right: 7px; }
+.feats { display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px; }
+.feat { padding: 26px 0; border-bottom: 1px solid var(--border); }
+.feat h3 { margin-bottom: 8px; }
+.feat p { font-size: 16px; color: var(--muted); max-width: 30em; }
+.import { padding: 26px 0 0; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.import div { max-width: 44em; font-size: 16px; }
 .import b { color: var(--ink); }
 
 /* choice */
-.choice .card { display: flex; flex-direction: column; gap: 10px; }
-.choice .card.main { border: 2px solid var(--brand); }
-.choice .card p { color: var(--muted); flex: 1; }
+.ways { display: grid; grid-template-columns: repeat(3, 1fr); }
+.way { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 4px 32px; border-left: 1px solid var(--border); }
+.way:first-child { padding-left: 0; border-left: 0; }
+.way p { color: var(--muted); font-size: 16px; flex: 1; margin-bottom: 6px; }
+.way .soon { margin-left: 12px; }
 .soon { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--grammar-deep); background: var(--grammar-soft); padding: 3px 9px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
 
 /* final */
-.final { text-align: center; padding: 88px 0 72px; }
-.final img { width: 132px; height: auto; margin-bottom: 14px; }
-.final p { margin: 12px auto 26px; max-width: 30em; }
+.final { text-align: center; padding: 104px 0 88px; }
+.alpi { position: relative; display: inline-block; margin-bottom: 18px; }
+.final img { width: 140px; height: auto; display: block; }
+/* "paka" is the sound of each hop */
+.sfx { position: absolute; bottom: 8px; font-size: 24px; color: var(--muted); opacity: .6; white-space: nowrap; }
+.sfx.a { right: 100%; margin-right: 4px; rotate: -12deg; }
+.sfx.b { left: 100%; margin-left: 4px; rotate: 10deg; }
+.final h2 { font-size: clamp(32px, 4.4vw, 58px); }
+.final p { margin: 16px auto 30px; max-width: 30em; }
 .final .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 footer { border-top: 1px solid var(--border); padding: 26px 0 40px; font-size: 14px; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -236,23 +289,40 @@ footer a { color: var(--muted); }
 /* motion: scroll reveal, headline underline, Alpi's hop ("paka paka") */
 .anim [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease var(--d, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms); }
 .anim [data-reveal].in { opacity: 1; transform: none; }
-.anim .hero h1 em { background-size: 0% 100%; transition: background-size .9s ease .7s; }
-.anim .hero h1.in em { background-size: 100% 100%; }
+.anim .stroke path { stroke-dashoffset: 320; transition: stroke-dashoffset .9s cubic-bezier(.6, 0, .2, 1) .7s; }
+.anim .hero h1.in .stroke path { stroke-dashoffset: 0; }
+.anim [data-reveal].in .square { animation: stamp .6s cubic-bezier(.3, 1.7, .5, 1) .15s both; }
 @keyframes paka { 0%, 45%, 100% { transform: none; } 8% { transform: translateY(-16px) rotate(-4deg); } 16% { transform: none; } 26% { transform: translateY(-10px) rotate(4deg); } 36% { transform: none; } }
 .anim .final img { animation: paka 2.6s ease-in-out infinite; }
+@keyframes sfx-a { 0%, 12% { opacity: 0; transform: translateY(6px) scale(.7); } 16%, 30% { opacity: .75; transform: none; } 44%, 100% { opacity: 0; transform: translateY(-8px); } }
+@keyframes sfx-b { 0%, 32% { opacity: 0; transform: translateY(6px) scale(.7); } 36%, 50% { opacity: .75; transform: none; } 64%, 100% { opacity: 0; transform: translateY(-8px); } }
+.anim .sfx.a { animation: sfx-a 2.6s ease-out infinite; }
+.anim .sfx.b { animation: sfx-b 2.6s ease-out infinite; }
 .anim .logo:hover img { animation: paka 1.3s ease-in-out; }
 
 @media (max-width: 940px) {
   .hero .wrap, .gram, .merge { grid-template-columns: 1fr; }
   .chain { grid-template-columns: 1fr; gap: 10px; }
   .arrow { transform: rotate(90deg); height: 40px; }
-  .grid3 { grid-template-columns: 1fr; }
+  .feats { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact, .fact:first-child { padding: 20px 0 18px; border-left: 0; }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--border); }
+  .ways { grid-template-columns: 1fr; }
+  .way, .way:first-child { padding: 24px 0; border-left: 0; border-top: 1px solid var(--border); }
+  .way:first-child { border-top: 0; padding-top: 0; }
+  .ghost.left, .ghost.right { left: auto; right: -9vw; top: 12px; font-size: 64vw; }
+  .hero { padding: 48px 0 72px; }
   nav .links { display: none; }
+  nav .wrap { gap: 12px; }
   nav .cta { margin-left: auto; }
-  nav .cta .btn { padding: 0 12px; }
-  section { padding: 64px 0; }
+  nav .cta .btn { padding: 0 12px; white-space: nowrap; }
+  .logo { font-size: 21px; gap: 8px; }
+  .logo img { width: 30px; height: 30px; }
+  section { padding: 72px 0; }
   .step p.say { min-height: 0; }
 }
+@media (max-width: 380px) { h1 { font-size: 34px; } nav .cta .btn-ghost { display: none; } }
 </style>
 </head>
 <body>
@@ -274,14 +344,15 @@ footer a { color: var(--muted); }
 </nav>
 
 <header class="hero">
+  <span class="ghost left" aria-hidden="true">語</span>
   <div class="wrap">
     <div>
-      <div class="pills" data-reveal><span class="pill">Free</span><span class="pill">Open source</span><span class="pill">No account needed</span><span class="pill">Typed answers</span></div>
-      <h1 data-reveal style="--d:80ms">Every kanji is a story <em>you already know.</em></h1>
-      <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. PakaPaka gives each step a mnemonic made from the step before it, so nothing is new twice. Grammar, reading and reviews are in the same app. You type every answer. There is no multiple choice.</p>
+      <p class="kicker" data-reveal>A free, open-source Japanese course</p>
+      <h1 data-reveal style="--d:80ms">Every kanji is a story <em>you already know.<svg class="stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 2 96 11 150 6s100-3 147 1"/></svg></em></h1>
+      <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. Each step has a mnemonic made from the step before it, so nothing is new twice. Grammar and reading are in the same app.</p>
       <div class="buttons" data-reveal style="--d:240ms">
         <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
-        <a class="btn btn-ghost" href="#chain">See how it works</a>
+        <a class="link" href="#chain">See how it works</a>
       </div>
       <p class="note" data-reveal style="--d:300ms">No account needed. Your progress stays on this device.</p>
     </div>
@@ -295,26 +366,27 @@ footer a { color: var(--muted); }
 </header>
 
 <section id="chain">
+  <span class="ghost right" aria-hidden="true">話</span>
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <div class="eyebrow">Mnemonics</div>
+      <div class="chapter"><span class="square" aria-hidden="true">話</span><span><b>Mnemonics</b><small aria-hidden="true"><i class="mincho">話</i> · story</small></span></div>
       <h2>One story, carried through three steps.</h2>
       <p class="lede">You do not learn a mnemonic for each item from zero. The picture you learn for a radical comes back in the kanji, and the kanji story comes back in the word.</p>
     </div>
 
     <div class="chain" id="fusion">
       <div class="step" data-reveal>
-        <div class="step-head"><span class="step-num" style="background:var(--radical)">1</span><h3>Learn the shapes</h3></div>
+        <div class="step-head"><span class="step-num" style="color:var(--radical-deep)">1</span><h3>Learn the shapes</h3></div>
         <p class="say">Each radical is one picture that looks like its shape.</p>
         <div class="rad-row"><img src="/landing/img/hitoashi.webp" alt="A pair of legs in jeans, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">儿</span>human legs</div><div class="txt">Two strokes sweep down and out, like a pair of legs.</div></div></div>
         <div class="rad-row"><img src="/landing/img/wakanmuri.webp" alt="A blanket over a sleeping cat, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">冖</span>cover</div><div class="txt">A blanket thrown over a sleeping cat. Nothing pokes out.</div></div></div>
         <div class="rad-row"><img src="/landing/img/samurai.webp" alt="A samurai in armour, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">士</span>samurai</div><div class="txt">A man in armour. The long top line is his wide shoulders.</div></div></div>
       </div>
 
-      <div class="arrow" aria-hidden="true">→</div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
 
       <div class="step" data-reveal style="--d:120ms">
-        <div class="step-head"><span class="step-num" style="background:var(--kanji)">2</span><h3>The shapes make the kanji</h3></div>
+        <div class="step-head"><span class="step-num" style="color:var(--kanji-deep)">2</span><h3>The shapes make the kanji</h3></div>
         <p class="say">The kanji story uses only the radicals you know.</p>
         <div class="card">
           <div class="tile kanji wait" id="k-tile"><div class="glyph hero-jp">売</div><div class="mean">sell</div></div>
@@ -326,10 +398,10 @@ footer a { color: var(--muted); }
         </div>
       </div>
 
-      <div class="arrow" aria-hidden="true">→</div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
 
       <div class="step" data-reveal style="--d:240ms">
-        <div class="step-head"><span class="step-num" style="background:var(--vocab)">3</span><h3>The kanji makes the word</h3></div>
+        <div class="step-head"><span class="step-num" style="color:var(--vocab-deep)">3</span><h3>The kanji makes the word</h3></div>
         <p class="say">The same samurai comes back to give you the reading.</p>
         <div class="card">
           <div class="tile vocab wait" id="v-tile"><div class="glyph hero-jp">売る</div><div class="mean">to sell</div></div>
@@ -352,9 +424,10 @@ footer a { color: var(--muted); }
 </section>
 
 <section id="grammar" class="alt">
+  <span class="ghost left" aria-hidden="true">文</span>
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <div class="eyebrow">Grammar</div>
+      <div class="chapter"><span class="square" aria-hidden="true">文</span><span><b>Grammar</b><small aria-hidden="true"><i class="mincho">文</i> · sentence</small></span></div>
       <h2>Grammar gets the same treatment.</h2>
       <p class="lede">Each grammar point has a full lesson and a story mnemonic. Then it goes into the same review queue as your kanji and words.</p>
     </div>
@@ -381,24 +454,20 @@ footer a { color: var(--muted); }
           <div class="answer bad jp" id="a-build"><span class="typed">夜は一人で<span class="mark">歩く</span>ない暗いもんです</span><span class="res" aria-label="Incorrect">✕</span></div>
           <p class="hint" id="a-hint">You wrote <span class="jp">歩く</span>. The English is negative: <span class="jp">歩かない</span>.</p>
         </div>
-        <p style="font-size:15px;color:var(--muted)">No multiple choice. When you make a mistake, the app marks the exact part and tells you why.</p>
       </div>
     </div>
 
-    <div class="facts" data-reveal>
-      <div class="fact"><b data-count="160">160</b><span>grammar points (N5 + N4)</span></div>
-      <div class="fact"><b>2</b><span>review cards for each point</span></div>
-      <div class="fact"><b data-count="60">60</b><span>reading passages that use them</span></div>
-    </div>
+    <p class="gram-foot" data-reveal>There is no multiple choice. You type each answer: romaji changes to kana while you type, and a typo does not count as a miss. When you make a mistake, the app marks the exact part and tells you why.</p>
   </div>
 </section>
 
 <section id="all">
+  <span class="ghost right" aria-hidden="true">道</span>
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <div class="eyebrow">All in one</div>
+      <div class="chapter"><span class="square" aria-hidden="true">道</span><span><b>All in one</b><small aria-hidden="true"><i class="mincho">道</i> · road</small></span></div>
       <h2>One app in place of three.</h2>
-      <p class="lede">Most learners use one app for kanji, one for grammar and a flashcard deck for the rest. Each one has its own cost, and none of them knows what you learned in the others.</p>
+      <p class="lede">Most learners use one app for kanji, one for grammar and a flashcard deck for the rest. None of them knows what you learned in the others.</p>
     </div>
 
     <div class="merge">
@@ -407,21 +476,26 @@ footer a { color: var(--muted); }
         <div class="app" data-reveal style="--d:100ms">A grammar app <small>subscription</small></div>
         <div class="app" data-reveal style="--d:200ms">A flashcard deck <small>your time</small></div>
       </div>
-      <div class="arrow" aria-hidden="true">→</div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
       <div class="one" data-reveal style="--d:420ms">
-        <h3>PakaPaka</h3>
+        <h3 class="serif">PakaPaka</h3>
         <p>One path and one review queue. Free, with no subscription.</p>
-        <div class="path"><span>Radicals</span><span>Kanji</span><span>Words</span><span>Grammar</span><span>Reading</span></div>
       </div>
     </div>
 
-    <div class="grid3">
-      <div class="card feat" data-reveal><h3>One review queue</h3><p>Kanji, words and grammar are mixed in one queue. It finds the items you get wrong and shows them first.</p></div>
-      <div class="card feat" data-reveal style="--d:80ms"><h3>You type each answer</h3><p>Romaji changes to kana while you type. A typo does not count as a miss.</p></div>
-      <div class="card feat" data-reveal style="--d:160ms"><h3>Reading that fits you</h3><p>A passage opens when you know about 90% of its words. Furigana hides for the words you know.</p></div>
-      <div class="card feat" data-reveal><h3>Talk practice <span class="soon">Phone app</span></h3><p>An AI partner that uses only the words and grammar you learned. You bring your own key.</p></div>
-      <div class="card feat" data-reveal style="--d:80ms"><h3>No guilt</h3><p>No streak on Home. The daily ring can go past 100%. Vacation mode stops the pile-up.</p></div>
-      <div class="card feat" data-reveal style="--d:160ms"><h3>Open source</h3><p>Code under MIT and content under CC BY-SA. 2,000 kanji, 9,749 words and 817 radicals.</p></div>
+    <div class="facts" data-reveal>
+      <div class="fact"><b data-count="817">817</b><span><span class="dot" style="background:var(--radical)"></span>radicals</span></div>
+      <div class="fact"><b data-count="2000">2,000</b><span><span class="dot" style="background:var(--kanji)"></span>kanji</span></div>
+      <div class="fact"><b data-count="9749">9,749</b><span><span class="dot" style="background:var(--vocab)"></span>words</span></div>
+      <div class="fact"><b data-count="160">160</b><span><span class="dot" style="background:var(--grammar)"></span>grammar points (N5&nbsp;+&nbsp;N4)</span></div>
+      <div class="fact"><b data-count="60">60</b><span><span class="dot" style="background:var(--brand)"></span>reading passages</span></div>
+    </div>
+
+    <div class="feats">
+      <div class="feat" data-reveal><h3 class="serif">One review queue</h3><p>Kanji, words and grammar are mixed in one queue. It finds the items you get wrong and shows them first.</p></div>
+      <div class="feat" data-reveal style="--d:80ms"><h3 class="serif">Reading that fits you</h3><p>A passage opens when you know about 90% of its words. Furigana hides for the words you know.</p></div>
+      <div class="feat" data-reveal><h3 class="serif">Talk practice <span class="soon">Phone app</span></h3><p>An AI partner that uses only the words and grammar you learned. You bring your own key.</p></div>
+      <div class="feat" data-reveal style="--d:80ms"><h3 class="serif">No guilt</h3><p>No streak on Home. The daily ring can go past 100%. Vacation mode stops the pile-up.</p></div>
     </div>
 
     <div class="import" data-reveal>
@@ -431,26 +505,27 @@ footer a { color: var(--muted); }
   </div>
 </section>
 
-<section id="sync" class="alt choice">
+<section id="sync" class="alt">
+  <span class="ghost left" aria-hidden="true">歩</span>
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <div class="eyebrow">Your progress</div>
+      <div class="chapter"><span class="square" aria-hidden="true">歩</span><span><b>Your progress</b><small aria-hidden="true"><i class="mincho">歩</i> · walk</small></span></div>
       <h2>Sync it, or keep it fully offline.</h2>
       <p class="lede">An account is optional. The app is complete without one.</p>
     </div>
-    <div class="grid3">
-      <div class="card main" data-reveal>
-        <h3>Start with no account</h3>
+    <div class="ways">
+      <div class="way" data-reveal>
+        <h3 class="serif">Start with no account</h3>
         <p>All progress stays on this device. No server holds your data.</p>
         <a class="btn btn-primary" href="/dashboard">Start learning</a>
       </div>
-      <div class="card" data-reveal style="--d:80ms">
-        <h3>Log in with Google <span class="soon">Sync soon</span></h3>
+      <div class="way" data-reveal style="--d:80ms">
+        <h3 class="serif">Log in with Google</h3>
         <p>Your account works now. Progress sync between phone and browser is not ready yet: for now your progress stays on this device.</p>
-        <a class="btn btn-ghost" href="/auth/signin">Log in</a>
+        <div><a class="btn btn-ghost" href="/auth/signin">Log in</a><span class="soon">Sync soon</span></div>
       </div>
-      <div class="card" data-reveal style="--d:160ms">
-        <h3>Back up to a file</h3>
+      <div class="way" data-reveal style="--d:160ms">
+        <h3 class="serif">Back up to a file</h3>
         <p>Export your progress to a file at any time and restore it on a different device by hand. No server.</p>
       </div>
     </div>
@@ -459,7 +534,7 @@ footer a { color: var(--muted); }
 
 <section class="final">
   <div class="wrap" data-reveal>
-    <img src="/landing/img/alpi-yay.png" alt="Alpi the alpaca, the PakaPaka mascot" width="132" height="132">
+    <div class="alpi"><span class="sfx a hero-jp" aria-hidden="true">パカ</span><img src="/landing/img/alpi-yay.png" alt="Alpi the alpaca, the PakaPaka mascot" width="140" height="160"><span class="sfx b hero-jp" aria-hidden="true">パカ</span></div>
     <h2>Your first radical takes one minute.</h2>
     <p class="lede">Start in this browser now. No account, no payment.</p>
     <div class="buttons">
@@ -494,10 +569,26 @@ if (ANIM) {
     const end = Number(node.dataset.count), t0 = performance.now();
     (function tick(now) {
       const t = Math.min(1, (now - t0) / 900);
-      node.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+      node.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))).toLocaleString('en-US');
       if (t < 1) requestAnimationFrame(tick);
     })(t0);
   }, 0.6));
+}
+
+// ---- the large kanji move a little slower than the page ----
+if (ANIM) {
+  const ghosts = [...document.querySelectorAll('.ghost')];
+  let queued = false;
+  const drift = () => {
+    queued = false;
+    ghosts.forEach(g => {
+      const r = g.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      g.style.setProperty('--py', ((r.top + r.height / 2 - innerHeight / 2) * -0.08).toFixed(1) + 'px');
+    });
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(drift); } }, { passive: true });
+  drift();
 }
 
 // ---- graph: radicals -> kanji -> words ----

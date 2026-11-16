@@ -1,7 +1,7 @@
 /*
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Embedder-Policy: require-corp
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-wABnzWGZVAVk2BDdSVP6Z+CWIZjceBqrOuPSBVPRAZE=' 'sha256-v2oWTCMqZZr5rnkdKk6xYPY3TZ5i+JSe5u3HAq2UyS8='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-wABnzWGZVAVk2BDdSVP6Z+CWIZjceBqrOuPSBVPRAZE=' 'sha256-JoOwMdSpY6/k0PM9kEd2ksT/6+g0R9hmzHYe/jZgWM8='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; worker-src 'self' blob:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'
 
 # The landing page has two inline scripts, allowed by hash in the one CSP above. If you
 # change either script, update its hash here (webHeaders.test.ts computes them and fails).
