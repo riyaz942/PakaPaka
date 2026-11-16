@@ -30,7 +30,7 @@ export type TableDescriptor<Row> = {
   fields: Record<string, FieldType>;
 };
 
-type SyncRow<K extends SyncTableKey> = BackupData[K][number];
+export type SyncRow<K extends SyncTableKey> = BackupData[K][number];
 
 const SINGLETON_KEY = '1';
 

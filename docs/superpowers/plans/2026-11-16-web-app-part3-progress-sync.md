@@ -226,7 +226,7 @@ Decision table (per key, using `rowsEqual`):
 | different | different, local = remote | `same_change` |
 | different | different, local ≠ remote | `conflict` |
 
-- [ ] **Step 1: Failing tests, one per rule** (table `srsStates`, rows built by a small `srs(slug, reps)` helper in the test):
+- [x] **Step 1: Failing tests, one per rule** (table `srsStates`, rows built by a small `srs(slug, reps)` helper in the test):
   - `local same, remote different → take_remote`
   - `local different, remote same → keep_local`
   - `both different and equal → same_change`
@@ -239,8 +239,8 @@ Decision table (per key, using `rowsEqual`):
   - `no base: row on one side only → added (take_remote / keep_local)`
   - `no base: row on both sides, different → conflict`; `no base: equal → same_change`
   - `updatedAt alone never makes a row different`
-- [ ] **Step 2:** Run `npx jest src/core/sync/mergeRows.test.ts` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Commit** `feat(sync): three-way row merge`.
+- [x] **Step 2:** Run `npx jest src/core/sync/mergeRows.test.ts` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Commit** `feat(sync): three-way row merge`.
 
 ### Task 4: Special table rules
 
