@@ -1,6 +1,6 @@
 import type { BackupData, ItemRef } from '@/core/backup/backup.types';
 import { itemRefKey } from '@/core/backup/slugResolver';
-import type { SyncTableKey } from '@/core/sync/sync.types';
+import type { KnownContent, SyncTableKey } from '@/core/sync/sync.types';
 import { PREFERENCE_KEYS } from '@/data/user/preferencesRepository';
 
 export type TableKind =
@@ -231,11 +231,31 @@ export function rowsEqual<K extends SyncTableKey>(
   return true;
 }
 
-/** The `itemType:slug` key of a per-item or boost row; `null` for every other kind. */
-export function itemKeyOf<K extends SyncTableKey>(table: K, row: SyncRow<K>): string | null {
+/** The item of a per-item or boost row; `null` for every other kind. */
+export function itemOf<K extends SyncTableKey>(table: K, row: SyncRow<K>): ItemRef | null {
   const { kind } = SYNC_TABLES[table];
   if (kind !== 'per_item' && kind !== 'boost') return null;
-  return itemRefKey((row as unknown as { item: ItemRef }).item);
+  return (row as unknown as { item: ItemRef }).item;
+}
+
+/** The `itemType:slug` key of a per-item or boost row; `null` for every other kind. */
+export function itemKeyOf<K extends SyncTableKey>(table: K, row: SyncRow<K>): string | null {
+  const item = itemOf(table, row);
+  return item === null ? null : itemRefKey(item);
+}
+
+/** False for a per-item or boost row whose item, or a passage row whose question, this device does not have. */
+export function isKnownRow<K extends SyncTableKey>(
+  table: K,
+  row: SyncRow<K>,
+  known: KnownContent,
+): boolean {
+  if (table === 'passagePracticeResults') {
+    const { passageId, questionId } = row as SyncRow<'passagePracticeResults'>;
+    return known.hasPassageQuestion(passageId, questionId);
+  }
+  const item = itemOf(table, row);
+  return item === null || known.hasItem(item);
 }
 
 /** Device-local settings and curriculum bookkeeping: removed before a push, ignored in a pulled file. */

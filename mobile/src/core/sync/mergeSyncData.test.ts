@@ -1,5 +1,11 @@
 import type { BackupData, ItemRef } from '@/core/backup/backup.types';
-import { isEmptyProgress, mergeSyncData, withCarriedRows } from '@/core/sync/mergeSyncData';
+import { diffSyncData } from '@/core/sync/diffSyncData';
+import {
+  carriedKeysOf,
+  isEmptyProgress,
+  mergeSyncData,
+  withCarriedRows,
+} from '@/core/sync/mergeSyncData';
 import type { KnownContent } from '@/core/sync/sync.types';
 import { emptySyncData, fullSampleData } from '@/core/sync/syncSamples.testutil';
 
@@ -93,6 +99,8 @@ function data(rows: Partial<BackupData>): BackupData {
   return { ...emptySyncData(), ...rows };
 }
 
+const knowsAll: KnownContent = { hasItem: () => true, hasPassageQuestion: () => true };
+
 function knowsAllBut(unknownSlug: string): KnownContent {
   return { hasItem: (ref) => ref.slug !== unknownSlug, hasPassageQuestion: () => true };
 }
@@ -130,7 +138,7 @@ describe('withCarriedRows and mergeSyncData', () => {
       relatedItemBoosts: [boost('x', 0.5)],
     });
     // `b` is known and deleted on this device: it is not carried back.
-    const local = withCarriedRows(data({ srsStates: [srs('a', 2)] }), base, knowsAllBut('x'));
+    const local = withCarriedRows(data({ srsStates: [srs('a', 2)] }), base, knowsAllBut('x'), {});
     expect(local.srsStates).toEqual([srs('a', 2), srs('x', 4)]);
     expect(local.relatedItemBoosts).toEqual([boost('x', 0.5)]);
 
@@ -156,6 +164,7 @@ describe('withCarriedRows and mergeSyncData', () => {
       data({ passagePracticeResults: [passage('8', '1')] }),
       base,
       known,
+      {},
     );
     expect(local.passagePracticeResults).toEqual([passage('8', '1'), passage('9', '1')]);
 
@@ -166,7 +175,7 @@ describe('withCarriedRows and mergeSyncData', () => {
   it('an unknown-item row is never a conflict', () => {
     const base = data({ srsStates: [srs('x', 4)], personalMnemonics: [mnemonic('x', 'old')] });
     const remote = data({ srsStates: [srs('x', 5, T2)], personalMnemonics: [] });
-    const local = withCarriedRows(emptySyncData(), base, knowsAllBut('x'));
+    const local = withCarriedRows(emptySyncData(), base, knowsAllBut('x'), {});
 
     const result = mergeSyncData({ base, local, remote }, null);
     expect(result.conflicts).toEqual([]);
@@ -175,6 +184,62 @@ describe('withCarriedRows and mergeSyncData', () => {
 
     // Without the carried rows the missing local rows would read as deletions.
     expect(mergeSyncData({ base, local: emptySyncData(), remote }, null).conflicts).toHaveLength(1);
+  });
+
+  it('an item learned by a curriculum update keeps its synced rows', () => {
+    // `y` was unknown when the base was written, so this device holds none of its rows.
+    const base = data({
+      srsStates: [srs('a', 1), srs('y', 4)],
+      personalMnemonics: [mnemonic('y', 'old')],
+    });
+    const carried = { srsStates: ['vocabulary:y'], personalMnemonics: ['vocabulary:y'] };
+    const device = data({ srsStates: [srs('a', 1)] });
+    const local = withCarriedRows(device, base, knowsAll, carried);
+
+    const result = mergeSyncData({ base, local, remote: base }, null);
+    expect(result.conflicts).toEqual([]);
+    expect(result.merged?.srsStates).toEqual([srs('a', 1), srs('y', 4)]);
+    expect(result.merged?.personalMnemonics).toEqual([mnemonic('y', 'old')]);
+
+    const diff = diffSyncData(device, result.merged as BackupData, knowsAll);
+    expect(diff.srsStates).toEqual({ upserts: [srs('y', 4)], deletes: [] });
+    expect(diff.personalMnemonics).toEqual({ upserts: [mnemonic('y', 'old')], deletes: [] });
+  });
+
+  it('a row deleted on this device is still a delete', () => {
+    const base = data({ srsStates: [srs('a', 1), srs('b', 1)] });
+    const device = data({ srsStates: [srs('a', 1)] });
+    const local = withCarriedRows(device, base, knowsAll, { srsStates: ['vocabulary:x'] });
+    expect(local.srsStates).toEqual([srs('a', 1)]);
+
+    const { merged } = mergeSyncData({ base, local, remote: base }, null);
+    expect(merged?.srsStates).toEqual([srs('a', 1)]);
+  });
+
+  it('carriedKeysOf lists unknown rows and rows the device lacks', () => {
+    const baseData = data({
+      srsStates: [srs('a', 1), srs('x', 1), srs('y', 1)],
+      relatedItemBoosts: [boost('x', 0.5)],
+      passagePracticeResults: [passage('7', '1'), passage('9', '1')],
+      userPreferences: [pref('session_intensity', 'light')],
+      cardSeen: [{ cardId: 'welcome', seenAt: T1 }],
+    });
+    const deviceData = data({
+      srsStates: [srs('a', 2)],
+      passagePracticeResults: [passage('7', '1')],
+      userPreferences: [pref('session_intensity', 'light')],
+    });
+    const known: KnownContent = {
+      hasItem: (ref) => ref.slug !== 'x',
+      hasPassageQuestion: (passageId) => passageId !== '9',
+    };
+
+    expect(carriedKeysOf(baseData, deviceData, known)).toEqual({
+      srsStates: ['vocabulary:x', 'vocabulary:y'],
+      relatedItemBoosts: ['vocabulary:x'],
+      passagePracticeResults: ['9|1'],
+      cardSeen: ['welcome'],
+    });
   });
 
   it('one conflicting row puts the whole item in one entry', () => {

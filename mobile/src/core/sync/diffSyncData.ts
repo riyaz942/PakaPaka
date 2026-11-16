@@ -1,7 +1,6 @@
 import type { BackupData } from '@/core/backup/backup.types';
-import { isKnownRow } from '@/core/sync/mergeSyncData';
 import { SYNC_TABLE_KEYS, type KnownContent, type SyncTableKey } from '@/core/sync/sync.types';
-import { rowKey, rowsEqual, type SyncRow } from '@/core/sync/syncTables';
+import { isKnownRow, rowKey, rowsEqual, type SyncRow } from '@/core/sync/syncTables';
 
 export type SyncDiff = {
   [K in SyncTableKey]: { upserts: BackupData[K]; deletes: BackupData[K] };

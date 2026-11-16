@@ -13,12 +13,20 @@ import {
 } from '@/core/sync/mergeSpecial';
 import {
   SYNC_TABLE_KEYS,
+  type CarriedKeys,
   type ConflictChoice,
   type ConflictEntry,
   type KnownContent,
   type SyncTableKey,
 } from '@/core/sync/sync.types';
-import { rowKey, SYNC_TABLES, type SyncRow } from '@/core/sync/syncTables';
+import {
+  isKnownRow,
+  itemKeyOf,
+  itemOf,
+  rowKey,
+  SYNC_TABLES,
+  type SyncRow,
+} from '@/core/sync/syncTables';
 
 const PER_ITEM_TABLES = SYNC_TABLE_KEYS.filter((table) => SYNC_TABLES[table].kind === 'per_item');
 
@@ -46,42 +54,51 @@ function sortByKey<K extends SyncTableKey>(table: K, rows: SyncRow<K>[]): Backup
     .map(({ row }) => row) as BackupData[K];
 }
 
-function itemOf(row: object): ItemRef {
-  return (row as { item: ItemRef }).item;
-}
-
-/** False for a per-item or boost row whose item, or a passage row whose question, this device does not have. */
-export function isKnownRow<K extends SyncTableKey>(
-  table: K,
-  row: SyncRow<K>,
+/**
+ * The keys of `baseData` rows that `user.db` does not hold: rows for content this device does not
+ * know, and rows absent from `deviceData` (what `user.db` holds once the base is written).
+ */
+export function carriedKeysOf(
+  baseData: BackupData,
+  deviceData: BackupData,
   known: KnownContent,
-): boolean {
-  if (table === 'passagePracticeResults') {
-    const { passageId, questionId } = row as SyncRow<'passagePracticeResults'>;
-    return known.hasPassageQuestion(passageId, questionId);
+): CarriedKeys {
+  const carried: CarriedKeys = {};
+  for (const table of SYNC_TABLE_KEYS) {
+    const deviceKeys = new Set(deviceData[table].map((row) => rowKey(table, row)));
+    const keys = (baseData[table] as SyncRow<SyncTableKey>[])
+      .filter((row) => !isKnownRow(table, row, known) || !deviceKeys.has(rowKey(table, row)))
+      .map((row) => rowKey(table, row))
+      .sort();
+    if (keys.length > 0) carried[table] = keys;
   }
-  const { kind } = SYNC_TABLES[table];
-  if (kind === 'per_item' || kind === 'boost') return known.hasItem(itemOf(row));
-  return true;
+  return carried;
 }
 
-/** `local` plus the base rows for content this device does not know (they live only in the base copy). */
+/**
+ * `local` plus the base rows `user.db` does not hold: rows for content this device does not know,
+ * and rows listed in `carried` (for example an item a curriculum update has made known since).
+ * Any other base row that `local` lacks was deleted on this device and stays deleted.
+ */
 export function withCarriedRows(
   local: BackupData,
   base: BackupData | null,
   known: KnownContent,
+  carried: CarriedKeys,
 ): BackupData {
   if (base === null) return local;
   const result = { ...local };
   for (const table of SYNC_TABLE_KEYS) {
     const localKeys = new Set(local[table].map((row) => rowKey(table, row)));
-    const carried = (base[table] as SyncRow<SyncTableKey>[]).filter(
-      (row) => !isKnownRow(table, row, known) && !localKeys.has(rowKey(table, row)),
-    );
-    if (carried.length === 0) continue;
+    const carriedKeys = new Set(carried[table] ?? []);
+    const rows = (base[table] as SyncRow<SyncTableKey>[]).filter((row) => {
+      const key = rowKey(table, row);
+      return !localKeys.has(key) && (!isKnownRow(table, row, known) || carriedKeys.has(key));
+    });
+    if (rows.length === 0) continue;
     (result as Record<SyncTableKey, unknown>)[table] = sortByKey(table, [
       ...(local[table] as SyncRow<SyncTableKey>[]),
-      ...carried,
+      ...rows,
     ]);
   }
   return result;
@@ -103,7 +120,7 @@ function latestTimeByItem(data: BackupData): Map<string, string> {
   const times = new Map<string, string>();
   for (const table of PER_ITEM_TABLES) {
     for (const row of data[table]) {
-      const key = itemRefKey(itemOf(row));
+      const key = itemKeyOf(table, row) as string;
       const time = rowTime(row);
       const current = times.get(key);
       if (current === undefined || time > current) times.set(key, time);
@@ -129,10 +146,10 @@ export function mergeSyncData(
     entries: mergeRows(table, base?.[table] ?? null, local[table], remote[table]),
   }));
   const conflictItems = new Map<string, ItemRef>();
-  for (const { entries } of perItem) {
+  for (const { table, entries } of perItem) {
     for (const entry of entries) {
       if (entry.decision !== 'conflict') continue;
-      const ref = itemOf((entry.local ?? entry.remote) as object);
+      const ref = itemOf(table, (entry.local ?? entry.remote) as SyncRow<SyncTableKey>) as ItemRef;
       conflictItems.set(itemRefKey(ref), ref);
     }
   }
@@ -166,8 +183,10 @@ export function mergeSyncData(
   for (const { table, entries } of perItem) {
     (merged as Record<SyncTableKey, unknown>)[table] = entries
       .map((entry) => {
-        const row = (entry.base ?? entry.local ?? entry.remote) as object;
-        if (choice !== null && conflictItems.has(itemRefKey(itemOf(row)))) return entry[choice];
+        const row = (entry.base ?? entry.local ?? entry.remote) as SyncRow<SyncTableKey>;
+        if (choice !== null && conflictItems.has(itemKeyOf(table, row) as string)) {
+          return entry[choice];
+        }
         return entry.decision === 'take_remote' ? entry.remote : entry.local;
       })
       .filter(isDefined);

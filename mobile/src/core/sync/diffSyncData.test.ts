@@ -89,6 +89,22 @@ describe('diffSyncData', () => {
       deletes: [],
     });
   });
+
+  it('never deletes a row this device does not know', () => {
+    const from = {
+      ...emptySyncData(),
+      personalMnemonics: [mnemonic('known', 'a'), mnemonic('unknown', 'b')],
+    };
+    const known: KnownContent = {
+      hasItem: (ref) => ref.slug !== 'unknown',
+      hasPassageQuestion: () => true,
+    };
+
+    expect(diffSyncData(from, emptySyncData(), known).personalMnemonics).toEqual({
+      upserts: [],
+      deletes: [mnemonic('known', 'a')],
+    });
+  });
 });
 
 describe('sameSyncData', () => {

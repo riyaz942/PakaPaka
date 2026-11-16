@@ -30,6 +30,9 @@ export type KnownContent = {
   hasPassageQuestion(passageId: string, questionId: string): boolean;
 };
 
+/** Per table, the sorted `rowKey`s of base rows that `user.db` does not hold. */
+export type CarriedKeys = Partial<Record<SyncTableKey, string[]>>;
+
 export type ConflictChoice = 'local' | 'remote';
 
 /** `null` means that side has no row. */
