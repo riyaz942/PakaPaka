@@ -255,6 +255,13 @@ describe('grammar Build card: close nudge', () => {
     expect(gradeForResult('close')).toBeNull();
   });
 
+  it('nudges a Japanese typo in a word, without grading', () => {
+    expect(evaluateReviewAnswer(item, 'ことしはがっこおでにほんごをべんきょうします')).toEqual({
+      result: 'close',
+      nudge: '~ Close! Check your spelling.',
+    });
+  });
+
   it('grades an answer with a bigger mistake incorrect', () => {
     expect(evaluateReviewAnswer(item, '今年は学校で勉強します').result).toBe('incorrect');
   });

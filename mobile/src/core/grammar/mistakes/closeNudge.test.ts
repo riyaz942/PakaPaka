@@ -28,6 +28,10 @@ describe('closeNudge', () => {
     expect(closeNudge(marks('spelling_sokuon'))).toBe('~ Close! Check your spelling.');
   });
 
+  it('names spelling for a typo', () => {
+    expect(closeNudge(marks('spelling_typo'))).toBe('~ Close! Check your spelling.');
+  });
+
   it('names each area once for two mistakes', () => {
     expect(closeNudge(marks('particle_wrong', 'particle_missing'))).toBe(
       '~ Close! Check your particles.',

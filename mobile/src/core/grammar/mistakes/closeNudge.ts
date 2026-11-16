@@ -15,6 +15,7 @@ const AREA: Partial<Record<MistakeKind, Area>> = {
   homophone_kanji: 'spelling',
   spelling_sokuon: 'spelling',
   spelling_long_vowel: 'spelling',
+  spelling_typo: 'spelling',
 };
 
 const AREA_ORDER: Area[] = ['particles', 'conjugation', 'spelling'];

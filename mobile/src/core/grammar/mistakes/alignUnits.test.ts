@@ -109,6 +109,28 @@ describe('alignUnits', () => {
     expect(steps[6]).toEqual({ kind: 'replaced', unitIndex: 6, from: 10, to: 19 });
   });
 
+  it('reads a word one kana off as a typo at cost 1', () => {
+    for (const input of ['今年はがっこおで日本語を勉強します', '今年はがっくうで日本語を勉強します']) {
+      const { steps, cost } = align(input);
+      expect(cost).toBe(1);
+      expect(steps[2]).toEqual(expect.objectContaining({ kind: 'spelling_typo', unitIndex: 2 }));
+    }
+  });
+
+  it('reads a kana typo next to the same kanji as a typo', () => {
+    const typo = [unit('食べます', 'たべます')];
+    const { steps } = alignUnits(normalizeBuildText('食べまう'), typo, {});
+    expect(steps).toEqual([expect.objectContaining({ kind: 'spelling_typo', from: 0, to: 4 })]);
+  });
+
+  it('does not call a missing っ, a different kanji, a particle or a grammar word a typo', () => {
+    expect(align('今年はがこうで日本語を勉強します').steps[2].kind).toBe('spelling_sokuon');
+    const kinds = (input: string) => align(input).steps.map((s) => s.kind);
+    expect(kinds('今年は学校で日本誤を勉強します')).not.toContain('spelling_typo');
+    expect(kinds('今年は学校に日本語を勉強します')).toContain('particle_wrong');
+    expect(kinds('今年は学校で日本語をべんきょうしまう')).not.toContain('spelling_typo');
+  });
+
   it('breaks ties toward the earlier kind', () => {
     // 学校 is exact by surface and reading would not matter; allowed with the same text must not win.
     const { steps } = align('今年は学校で日本語を勉強します', { 2: ['学校'] });

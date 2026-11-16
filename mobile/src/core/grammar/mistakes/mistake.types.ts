@@ -42,7 +42,8 @@ export type VariantKind =
   | 'transitivity'
   | 'homophone_kanji'
   | 'spelling_sokuon'
-  | 'spelling_long_vowel';
+  | 'spelling_long_vowel'
+  | 'spelling_typo';
 
 /** A known wrong form of an answer unit. `dims` = the variant's own values where it differs from the unit's form. */
 export type UnitVariant = { text: string; kind: VariantKind; dims?: FormDims; dictForm?: string };

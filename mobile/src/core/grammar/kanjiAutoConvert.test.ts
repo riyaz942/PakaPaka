@@ -4,6 +4,7 @@ import { evaluateGrammarBuild } from './buildEvaluator';
 import {
   applyKanjiConversions,
   buildKanjiConversions,
+  typedRomaji,
   undoneKanjiConversions,
   type KanjiConversion,
 } from './kanjiAutoConvert';
@@ -144,5 +145,23 @@ describe('undoneKanjiConversions', () => {
   it('ignores deleted kana and typing', () => {
     expect(undoneKanjiConversions('明日は', '明日', conversions)).toEqual([]);
     expect(undoneKanjiConversions('明日', '明日は', conversions)).toEqual([]);
+  });
+});
+
+describe('typedRomaji', () => {
+  it('is true when the edit typed a Latin letter', () => {
+    expect(typedRomaji('', 'a')).toBe(true);
+    expect(typedRomaji('かいs', 'かいsh')).toBe(true);
+    expect(typedRomaji('あし', 'あしa')).toBe(true);
+  });
+
+  it('is false for kana or kanji from a Japanese keyboard', () => {
+    expect(typedRomaji('', 'あした')).toBe(false);
+    expect(typedRomaji('あした', '明日')).toBe(false);
+    expect(typedRomaji('x明日', 'x明日は')).toBe(false);
+  });
+
+  it('is false for a deletion', () => {
+    expect(typedRomaji('あしたk', 'あした')).toBe(false);
   });
 });

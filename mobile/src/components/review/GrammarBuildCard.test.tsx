@@ -31,8 +31,8 @@ const SENTENCE: GrammarSentenceCard = {
   grammarSpan: { start: 2, end: 4 },
   register: 'polite',
   vocabulary: [
-    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
-    { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
+    { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い' },
+    { itemId: '21', primaryForm: 'コート', furigana: null },
   ],
   answers: ['寒[さむ]いから、コートを着[き]ます。'],
   otherGrammarAnswers: [],
@@ -66,10 +66,10 @@ describe('GrammarBuildCard', () => {
     expect(screen.queryByTestId('grammar-build-answer-' + SENTENCE.sentenceKey + '-linked')).toBeNull();
   });
 
-  it('before answering, only a word not started yet is a link (D12)', () => {
+  it('before answering, every word is a link', () => {
     render(<GrammarBuildCard item={grammarItem('production')} answered={false} />);
     fireEvent.press(screen.getByTestId('grammar-build-vocab-20'));
-    expect(mockPush).not.toHaveBeenCalled();
+    expect(mockPush).toHaveBeenCalledWith('/browse/item/20');
     fireEvent.press(screen.getByTestId('grammar-build-vocab-21'));
     expect(mockPush).toHaveBeenCalledWith('/browse/item/21');
   });

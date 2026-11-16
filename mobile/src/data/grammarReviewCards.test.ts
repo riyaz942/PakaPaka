@@ -6,7 +6,6 @@ const mockPool = jest.fn();
 const mockForms = jest.fn();
 const mockHistory = jest.fn();
 const mockAnswers = jest.fn();
-const mockStatuses = jest.fn();
 const mockDiagnosis = jest.fn();
 
 jest.mock('@/data/curriculum/grammarPoolRepository', () => ({
@@ -19,9 +18,6 @@ jest.mock('@/data/curriculum/grammarAnswerUnitsRepository', () => ({
 jest.mock('@/data/user/grammarAnswerRepository', () => ({
   getGrammarSentenceHistory: (...args: unknown[]) => mockHistory(...args),
   listGrammarAnswers: (...args: unknown[]) => mockAnswers(...args),
-}));
-jest.mock('@/data/user/itemStudyStatusRepository', () => ({
-  listStudyStatusesForItems: (...args: unknown[]) => mockStatuses(...args),
 }));
 
 function poolSentence(japanese: string) {
@@ -52,7 +48,6 @@ describe('buildGrammarCards', () => {
     );
     mockHistory.mockReturnValue(['A', 'B']);
     mockAnswers.mockReturnValue(new Map([['C', ['saved']]]));
-    mockStatuses.mockReturnValue(new Map([['20', 'in_progress']]));
     mockDiagnosis.mockReset();
     mockDiagnosis.mockReturnValue({ answers: [[{ surface: 'D', reading: 'D', role: 'word', itemId: null, inGrammar: false }]], words: {} });
   });
@@ -74,12 +69,12 @@ describe('buildGrammarCards', () => {
     expect(grammarBuild.userAnswers).toEqual([]);
   });
 
-  it('lists each word once, in sentence order, with its started flag', () => {
+  it('lists each word once, in sentence order', () => {
     const { grammarRead } = buildGrammarCards(db, db, '50', () => 0);
 
     expect(grammarRead.vocabulary).toEqual([
-      { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い', started: true },
-      { itemId: '21', primaryForm: 'コート', furigana: null, started: false },
+      { itemId: '20', primaryForm: '寒い', furigana: '寒[さむ]い' },
+      { itemId: '21', primaryForm: 'コート', furigana: null },
     ]);
   });
 

@@ -9,7 +9,6 @@ import {
   type GrammarPoolSentence,
 } from '@/data/curriculum/grammarPoolRepository';
 import { getGrammarSentenceHistory, listGrammarAnswers } from '@/data/user/grammarAnswerRepository';
-import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 
 /**
  * The Read and Build sentences for one due grammar item (spec §5.3): two
@@ -28,7 +27,6 @@ export function buildGrammarCards(
 
   const wordIds = [...new Set([read, build].flatMap((s) => s.spans.map((span) => span.vocabularyItemId)))];
   const forms = getItemFormsByIds(curriculumDb, wordIds);
-  const statuses = listStudyStatusesForItems(userDb, wordIds);
 
   const toCard = (sentence: GrammarPoolSentence, withDiagnosis: boolean): GrammarSentenceCard => {
     const vocabulary: GrammarVocabEntry[] = [];
@@ -40,12 +38,10 @@ export function buildGrammarCards(
       const form = forms.get(span.vocabularyItemId);
       // Spans reference items(id) in curriculum.db; a miss is a broken compile.
       if (!form) throw new Error(`Grammar sentence word ${span.vocabularyItemId} has no item row`);
-      const status = statuses.get(span.vocabularyItemId);
       vocabulary.push({
         itemId: span.vocabularyItemId,
         primaryForm: form.primaryForm,
         furigana: form.furigana,
-        started: status === 'in_progress' || status === 'known',
       });
     }
     return {

@@ -111,6 +111,8 @@ export function explainMistake(mistake: Mistake, grammarLabel: string): string {
       return `Long vowel is missing: ${expected}.`;
     case 'homophone_kanji':
       return `Same sound, different kanji: ${expected}.`;
+    case 'spelling_typo':
+      return `${wrote} Check the spelling: ${expected}.`;
   }
   return `${wrote} This sentence needs ${expected}.`;
 }
