@@ -192,7 +192,7 @@ mobile/
   - `validateSyncData(data: BackupData): Result<BackupData, AppError>` — runs `validateBackupData`, then checks every row of every sync table against `fields`; any failure → code `sync_bad_file`.
 - Produces (`syncMessages.ts`): `syncErrorMessage(code: SyncErrorCode): string` (exact copy from Global Constraints; `sync_local_changed` → the "did not finish" copy); `syncError(code, cause?): AppError`.
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `every sync table has a descriptor and every field of its entry type` (compare `Object.keys(SYNC_TABLES)` with `SYNC_TABLE_KEYS`; one sample row per table passes its own `fields`).
   - `rowsEqual ignores updatedAt`: two `srsStates` rows that differ only in `updatedAt` → true; that differ in `reps` → false.
   - `rowsEqual ignores createdAt for userSynonyms, optedInAt for lessonOptIns, seenAt for cardSeen`.
@@ -202,8 +202,8 @@ mobile/
   - `toSyncData empties aiSessions and aiMessages`.
   - `validateSyncData rejects a wrong field type` (`srsStates[0].reps = '3'` → `sync_bad_file`); `rejects a missing field`; `accepts a valid full sample`.
   - `syncErrorMessage` table test with the exact copy.
-- [ ] **Step 2:** Run `npx jest src/core/sync` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Commit** `feat(sync): table descriptors, row compare, sync file shaping`.
+- [x] **Step 2:** Run `npx jest src/core/sync` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Commit** `feat(sync): table descriptors, row compare, sync file shaping`.
 
 ### Task 3: Three-way row merge (the four spec rules, deletes, no base)
 
