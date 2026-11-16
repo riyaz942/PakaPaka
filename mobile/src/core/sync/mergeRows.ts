@@ -1,9 +1,8 @@
-import type { BackupData } from "@/core/backup/backup.types";
-import type { SyncTableKey } from "@/core/sync/sync.types";
-import { rowKey, rowsEqual, type SyncRow } from "@/core/sync/syncTables";
+import type { BackupData } from '@/core/backup/backup.types';
+import type { SyncTableKey } from '@/core/sync/sync.types';
+import { rowKey, rowsEqual, type SyncRow } from '@/core/sync/syncTables';
 
-export type RowDecision =
-  "unchanged" | "take_remote" | "keep_local" | "same_change" | "conflict";
+export type RowDecision = 'unchanged' | 'take_remote' | 'keep_local' | 'same_change' | 'conflict';
 
 export type RowMerge<K extends SyncTableKey> = {
   key: string;
@@ -23,6 +22,8 @@ function indexByKey<K extends SyncTableKey>(
 /**
  * Three-way compare of one table by row content (never `updatedAt`).
  * A missing row is a value. `base === null` means every base row is missing.
+ * Callers pass rows with unique keys per side (`validateSyncData` rejects duplicates in a remote
+ * file; local rows come from primary keys).
  */
 export function mergeRows<K extends SyncTableKey>(
   table: K,
@@ -33,9 +34,7 @@ export function mergeRows<K extends SyncTableKey>(
   const baseRows = indexByKey(table, base ?? []);
   const localRows = indexByKey(table, local);
   const remoteRows = indexByKey(table, remote);
-  const keys = [
-    ...new Set([...baseRows.keys(), ...localRows.keys(), ...remoteRows.keys()]),
-  ].sort();
+  const keys = [...new Set([...baseRows.keys(), ...localRows.keys(), ...remoteRows.keys()])].sort();
 
   return keys.map((key) => {
     const baseRow = baseRows.get(key);
@@ -45,11 +44,11 @@ export function mergeRows<K extends SyncTableKey>(
     const remoteChanged = !rowsEqual(table, remoteRow, baseRow);
 
     let decision: RowDecision;
-    if (!localChanged && !remoteChanged) decision = "unchanged";
-    else if (!localChanged) decision = "take_remote";
-    else if (!remoteChanged) decision = "keep_local";
-    else if (rowsEqual(table, localRow, remoteRow)) decision = "same_change";
-    else decision = "conflict";
+    if (!localChanged && !remoteChanged) decision = 'unchanged';
+    else if (!localChanged) decision = 'take_remote';
+    else if (!remoteChanged) decision = 'keep_local';
+    else if (rowsEqual(table, localRow, remoteRow)) decision = 'same_change';
+    else decision = 'conflict';
 
     return { key, decision, base: baseRow, local: localRow, remote: remoteRow };
   });
