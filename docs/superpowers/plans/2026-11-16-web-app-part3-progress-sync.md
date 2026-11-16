@@ -273,7 +273,7 @@ lastCelebratedDate = the later non-null of the two sides
 updatedAt = the later of the two sides
 ```
 
-- [ ] **Step 1: Failing tests, one per rule:**
+- [x] **Step 1: Failing tests, one per rule:**
   - `append-only: union of both sides, never a conflict` (cardSeen and importMetadata); `cardSeen on both sides keeps the earlier seenAt`.
   - `passage: one side changed → that side`; `passage: both changed differently → later answeredAt`; `passage: equal answeredAt → isCorrect true wins`.
   - `per-day: base 5, local 7, remote 6 → 8` (`itemsStarted` and `load`); `per-day: row only on remote → remote value`; `per-day: no base, local 7, remote 6 → 7`; `threshold takes the larger`; `per-day updatedAt is the later`.
@@ -282,8 +282,8 @@ updatedAt = the later of the two sides
   - `singleton goalRingState: only remote changed → remote; only local changed → local; both changed → remote`.
   - `streak: phone Mon, web Tue without sync → current 7` (history Sun-run of 5 + Mon + Tue; local `{current 6, last Mon}`, remote `{current 1, last Tue}`); `streak: longest never goes down` (local longest 30, history short → 30); `streak: gap in history ends the run`; `streak: no rows and no history → []`; `streak: lastCelebratedDate is the later date`.
   - `preferences: one side changed → that value`; `preferences: both changed differently → conflict entry`; `preferences: both set the same value → no conflict`; `seen_unlocked_passage_ids: both changed → sorted union, no conflict`; `seen_unlocked_passage_ids: bad JSON on one side → conflict`.
-- [ ] **Step 2:** Run `npx jest src/core/sync/mergeSpecial.test.ts` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Commit** `feat(sync): counter, boost, passage, streak and preference merge rules`.
+- [x] **Step 2:** Run `npx jest src/core/sync/mergeSpecial.test.ts` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Commit** `feat(sync): counter, boost, passage, streak and preference merge rules`.
 
 ### Task 5: Whole-file merge, item grouping, carried rows, diff
 
