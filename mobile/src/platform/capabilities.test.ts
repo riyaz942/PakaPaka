@@ -4,6 +4,7 @@ import {
   isWeb,
   needsIosGoogleClientId,
   supportsCurriculumOta,
+  supportsExclusiveTransaction,
   supportsNativeGoogleSignIn,
   supportsNotifications,
   supportsTalk,
@@ -67,5 +68,14 @@ describe('capabilities', () => {
   ] as const)('needs a separate Google client ID only on iOS (%s: %s)', (os, expected) => {
     setPlatform(os);
     expect(needsIosGoogleClientId()).toBe(expected);
+  });
+
+  it.each([
+    ['ios', true],
+    ['android', true],
+    ['web', false],
+  ] as const)('supportsExclusiveTransaction on %s: %s', (os, expected) => {
+    setPlatform(os);
+    expect(supportsExclusiveTransaction()).toBe(expected);
   });
 });

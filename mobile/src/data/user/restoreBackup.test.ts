@@ -809,6 +809,21 @@ describe('eraseLocalData', () => {
     expect(getPreference(userDb, 'curriculum_update_source')).toBe('downloaded');
   });
 
+  it('eraseLocalData empties sync_base', async () => {
+    const userDb = await createUserDb();
+    userDb.runSync(
+      'INSERT INTO sync_base (id, revision, data_json) VALUES (?, ?, ?)',
+      1,
+      3,
+      JSON.stringify(emptyData()),
+    );
+    expect(rows(userDb, 'sync_base')).toHaveLength(1);
+
+    expect(eraseLocalData(userDb).ok).toBe(true);
+
+    expect(rows(userDb, 'sync_base')).toHaveLength(0);
+  });
+
   it('notifies furigana override subscribers', async () => {
     const userDb = await createUserDb();
     const listener = jest.fn();

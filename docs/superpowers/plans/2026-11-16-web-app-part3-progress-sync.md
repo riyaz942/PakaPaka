@@ -442,8 +442,8 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
   A thrown SQL error rolls back and returns `sync_local_failed`. After a commit with `changedRows > 0`, call `notifyFuriganaOverridesChanged()`.
 - Produces (tests only): `openTestUserDb(): Promise<TestDb>` in `test-support/sqliteTestDb.ts` — an in-memory `sql.js` database with `ATTACH DATABASE ':memory:' AS curriculum`, the real migrations 001–022 applied through an `execSync` shim, minimal `curriculum.items` / `reading_passages` / `passage_questions` / `curriculum_metadata` tables, and `getAllAsync` / `getFirstAsync` / `runAsync` / `withExclusiveTransactionAsync` / `withTransactionAsync` over the real engine (`BEGIN` / `COMMIT` / `ROLLBACK`). Sync data tests use it instead of the regex mock.
 
-- [ ] **Step 1:** `npm install --save-dev sql.js @types/sql.js` in `mobile/`. Write `sqliteTestDb.ts` and one test `sqliteTestDb applies all migrations and rolls back a failed transaction`. Run it. **If `sql.js` cannot load under `jest-expo`, stop and ask the operator.**
-- [ ] **Step 2: Failing tests.**
+- [x] **Step 1:** `npm install --save-dev sql.js @types/sql.js` in `mobile/`. Write `sqliteTestDb.ts` and one test `sqliteTestDb applies all migrations and rolls back a failed transaction`. Run it. **If `sql.js` cannot load under `jest-expo`, stop and ask the operator.**
+- [x] **Step 2: Failing tests.**
   - `022 creates sync_base with one allowed row` (second insert with `id = 2` fails).
   - `readUserTables returns every table keyed by slug and leaves out never-synced preferences` (seed one row in each of the 18 tables).
   - `readUserTables leaves out a row whose item is not in the curriculum`.
@@ -458,8 +458,8 @@ Item grouping (spec): run `mergeRows` on every per-item table. An item is in con
   - `eraseLocalData empties sync_base` (existing mock-based test file, new case; add the table name to the mock if it needs it).
   - `capabilities`: `supportsExclusiveTransaction` is false on web, true on ios and android.
   - `withSyncTransaction uses withTransactionAsync on web and the exclusive form on native` (spies on the test db; `Platform.OS` switched as in `capabilities.test.ts`).
-- [ ] **Step 3:** Run `npx jest src/data/sync src/data/migrations src/platform` → FAIL. Implement. Run → PASS. Run the full suite `npm test -- --ci`, `npm run typecheck`, `npm run lint` → green.
-- [ ] **Step 4: Commit** `feat(sync): sync_base table and async snapshot, apply and base store`.
+- [x] **Step 3:** Run `npx jest src/data/sync src/data/migrations src/platform` → FAIL. Implement. Run → PASS. Run the full suite `npm test -- --ci`, `npm run typecheck`, `npm run lint` → green.
+- [x] **Step 4: Commit** `feat(sync): sync_base table and async snapshot, apply and base store`.
 
 ### Task 9: Sync API client
 

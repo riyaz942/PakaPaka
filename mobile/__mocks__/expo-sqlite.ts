@@ -1284,6 +1284,10 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM sync_base/i.test(trimmed)) {
+    return [...(state.tables.get('sync_base') ?? [])];
+  }
+
   if (/FROM lesson_opt_ins/i.test(trimmed)) {
     let rows = [...(state.tables.get('lesson_opt_ins') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {

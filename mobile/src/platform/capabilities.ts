@@ -33,3 +33,6 @@ export const needsIosGoogleClientId = (): boolean => Platform.OS === 'ios';
 
 /** Web authenticates with HttpOnly cookies instead of stored tokens. */
 export const usesCookieSession = (): boolean => isWeb();
+
+/** `withExclusiveTransactionAsync`; expo-sqlite on web throws, so sync uses `withTransactionAsync` there. */
+export const supportsExclusiveTransaction = (): boolean => !isWeb();

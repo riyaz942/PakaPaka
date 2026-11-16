@@ -716,6 +716,8 @@ export function eraseLocalData(userDb: SQLiteDatabase): Result<void, AppError> {
       for (const table of RESTORE_TABLES) {
         userDb.runSync(`DELETE FROM ${table}`);
       }
+      // The sync base describes the data just erased.
+      userDb.runSync('DELETE FROM sync_base');
       for (const { key, value } of preserved) {
         if (value !== null) setPreference(userDb, key, value);
       }
