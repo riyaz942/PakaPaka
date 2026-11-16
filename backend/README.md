@@ -33,7 +33,7 @@ The server never receives BYOK keys or AI conversations. The server never stores
 
 The progress files are in R2 at `progress/<userId>/<revision, 10 digits>-<uuid>.json.gz`. D1 `sync_state` holds the current revision and `object_key`, the key of the current file.
 
-Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number.
+Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number. Name the new key with the new revision (`progress/<userId>/<new revision, 10 digits>-<uuid>.json.gz`): the prune reads the 10-digit prefix.
 
 A cron trigger (`0 1 * * *`) runs the usage watch.
 

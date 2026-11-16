@@ -53,14 +53,20 @@ export async function handleDeleteAccount(req: Request, env: Env, deps: Deps): P
   if (!exists) return noContent(auth.viaCookie);
 
   // R2 first: if D1 then fails, the user row survives and a retry finishes the job.
-  const prefix = `progress/${auth.userId}/`;
+  await deleteProgressFiles(env, auth.userId);
+  await deleteUserRows(env.DB, auth.userId);
+  // A sync PUT that passed its user-row check can put a file after the first sweep and win its
+  // compare-and-swap before deleteUserRows. Later PUTs fail (no user row), so a second sweep is the last.
+  await deleteProgressFiles(env, auth.userId);
+  return noContent(auth.viaCookie);
+}
+
+async function deleteProgressFiles(env: Env, userId: string): Promise<void> {
+  const prefix = `progress/${userId}/`;
   let cursor: string | undefined;
   do {
     const page = await env.PROGRESS.list({ prefix, cursor });
     if (page.objects.length > 0) await env.PROGRESS.delete(page.objects.map((o) => o.key));
     cursor = page.truncated ? page.cursor : undefined;
   } while (cursor !== undefined);
-
-  await deleteUserRows(env.DB, auth.userId);
-  return noContent(auth.viaCookie);
 }

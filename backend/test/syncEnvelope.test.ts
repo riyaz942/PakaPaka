@@ -42,6 +42,11 @@ describe("checkSyncEnvelope", () => {
     expect(await checkSyncEnvelope(damaged)).toBe(true);
   });
 
+  it("gzip header only → false", async () => {
+    expect(await checkSyncEnvelope(new Uint8Array([0x1f, 0x8b]))).toBe(false);
+    expect(await checkSyncEnvelope(new Uint8Array([0x1f, 0x8b, 8, 0, 0, 0, 0, 0, 0, 3]))).toBe(false);
+  });
+
   it("gzip of 10 bytes → false", async () => {
     expect(await checkSyncEnvelope(await gzip("0123456789"))).toBe(false);
   });

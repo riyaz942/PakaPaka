@@ -87,6 +87,7 @@ export async function handlePutSync(req: Request, env: Env, deps: Deps): Promise
       : env.DB.prepare(
           "UPDATE sync_state SET revision = ?, updated_at = ?, last_device_id = ?, object_key = ? WHERE user_id = ? AND revision = ? AND EXISTS (SELECT 1 FROM users WHERE user_id = ?)",
         ).bind(newRev, now, auth.deviceId, key, auth.userId, base, auth.userId);
+  // No R2 delete if run() throws: the D1 write may have committed, and the key would then be the current file.
   const { meta } = await swap.run();
   if (meta.changes !== 1) {
     await env.PROGRESS.delete(key);

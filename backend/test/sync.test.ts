@@ -217,6 +217,69 @@ describe("PUT /api/sync", () => {
     expect(await res.json()).toEqual({ error: "bad_payload" });
   });
 
+  describe("compare-and-swap fails after the revision read", () => {
+    // Runs `before` just ahead of the CAS statement (INSERT/UPDATE sync_state), after the step-6 read.
+    function envWithBeforeSwap(before: () => Promise<unknown>): Env {
+      const db = new Proxy(env.DB, {
+        get(target, prop) {
+          if (prop === "prepare") {
+            return (sql: string) => {
+              const stmt = target.prepare(sql);
+              if (!/^(INSERT INTO|UPDATE) sync_state/.test(sql)) return stmt;
+              return {
+                bind: (...args: unknown[]) => {
+                  const bound = stmt.bind(...args);
+                  return { run: async () => (await before(), bound.run()) };
+                },
+              };
+            };
+          }
+          const v = Reflect.get(target, prop, target);
+          return typeof v === "function" ? v.bind(target) : v;
+        },
+      });
+      return { ...env, DB: db } as Env;
+    }
+
+    const putReq = async (accessToken: string, base: number) =>
+      new Request(`${ORIGIN}/api/sync?base_revision=${base}`, {
+        method: "PUT",
+        headers: { authorization: `Bearer ${accessToken}` },
+        body: await syncFile("late"),
+      });
+    const deps = { now: () => Date.now() } as Deps;
+
+    it("revision changed before the CAS → 409 and no extra R2 key for that revision", async () => {
+      const a = await signedIn();
+      expect((await put(a.accessToken, "?base_revision=0", await syncFile())).status).toBe(200);
+      const otherKey = `progress/${a.userId}/0000000002-other.json.gz`;
+      const racer = async () => {
+        await env.PROGRESS.put(otherKey, "other");
+        await env.DB.prepare("UPDATE sync_state SET revision = 2, object_key = ? WHERE user_id = ?")
+          .bind(otherKey, a.userId)
+          .run();
+      };
+
+      const res = await handlePutSync(await putReq(a.accessToken, 1), envWithBeforeSwap(racer), deps);
+      expect(res.status).toBe(409);
+      expect(await res.json()).toEqual({ error: "revision_conflict", revision: 2 });
+      const rev2 = (await keysOf(a.userId)).filter((k) => k.startsWith(`progress/${a.userId}/0000000002-`));
+      expect(rev2).toEqual([otherKey]);
+      expect((await syncRow(a.userId))?.object_key).toBe(otherKey);
+    });
+
+    it("users row deleted before the CAS → 401, no R2 object, no sync_state row", async () => {
+      const a = await signedIn();
+      const deleteUser = () => env.DB.prepare("DELETE FROM users WHERE user_id = ?").bind(a.userId).run();
+
+      const res = await handlePutSync(await putReq(a.accessToken, 0), envWithBeforeSwap(deleteUser), deps);
+      expect(res.status).toBe(401);
+      expect(await res.json()).toEqual({ error: "unauthorized" });
+      expect(await keysOf(a.userId)).toEqual([]);
+      expect(await syncRow(a.userId)).toBeNull();
+    });
+  });
+
   it("7th PUT in a minute → 429", async () => {
     const a = await signedIn();
     let calls = 0;
