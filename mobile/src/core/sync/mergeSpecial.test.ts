@@ -192,10 +192,22 @@ describe('per-day counters', () => {
     expect(mergeCognitiveLoad([load(6)], [load(6)], [load(8)])).toEqual([load(8)]);
   });
 
-  it('per-day: a result of 0 or less leaves no row; rows are sorted by date', () => {
-    expect(mergeDailyLessonLog([lessonLog(5)], [lessonLog(5)], [])).toEqual([]);
-    expect(mergeDailyLessonLog([lessonLog(9)], [lessonLog(2)], [lessonLog(3)])).toEqual([]);
-    expect(mergeDailyLessonLog(null, [lessonLog(0)], [])).toEqual([]);
+  it('per-day: a result of 0 keeps the row', () => {
+    expect(mergeDailyLessonLog([lessonLog(5)], [lessonLog(5)], [])).toEqual([lessonLog(0)]);
+    expect(mergeDailyLessonLog(null, [lessonLog(0)], [])).toEqual([lessonLog(0)]);
+    expect(mergeCognitiveLoad([load(5)], [], [load(5, 12, T2)])).toEqual([load(0, 12, T2)]);
+  });
+
+  it('per-day: a result below 0 is clamped to 0', () => {
+    expect(mergeDailyLessonLog([lessonLog(9)], [lessonLog(2)], [lessonLog(3)])).toEqual([
+      lessonLog(0),
+    ]);
+    expect(mergeCognitiveLoad([load(9)], [load(2)], [load(3)])).toEqual([load(0)]);
+  });
+
+  it('per-day: a row deleted on both sides leaves no row; rows are sorted by date', () => {
+    expect(mergeDailyLessonLog([lessonLog(5)], [], [])).toEqual([]);
+    expect(mergeCognitiveLoad([load(5)], [], [])).toEqual([]);
     expect(
       mergeDailyLessonLog(null, [lessonLog(2, '2026-11-17')], [lessonLog(1, '2026-11-15')]),
     ).toEqual([lessonLog(1, '2026-11-15'), lessonLog(2, '2026-11-17')]);

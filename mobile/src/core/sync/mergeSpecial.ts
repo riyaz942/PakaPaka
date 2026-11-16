@@ -77,24 +77,28 @@ export function mergePassageResults(
     .filter(isDefined);
 }
 
-/** Approved decisions 4. A result of 0 or less leaves no row (missing row = 0). */
+/**
+ * Approved decisions 4. A row is in the result when local or remote has it (deleted on both
+ * sides → no row); the counter is clamped at ≥ 0, and a 0 result keeps the row.
+ */
 export function mergeDailyLessonLog(
   base: BackupData['dailyLessonLog'] | null,
   local: BackupData['dailyLessonLog'],
   remote: BackupData['dailyLessonLog'],
 ): BackupData['dailyLessonLog'] {
   return mergeRows('dailyLessonLog', base, local, remote).flatMap((entry) => {
+    if (entry.local === undefined && entry.remote === undefined) return [];
     const itemsStarted = mergeCounter(
       base !== null,
       entry.base?.itemsStarted ?? 0,
       entry.local?.itemsStarted ?? 0,
       entry.remote?.itemsStarted ?? 0,
     );
-    return itemsStarted > 0 ? [{ date: entry.key, itemsStarted }] : [];
+    return [{ date: entry.key, itemsStarted: Math.max(itemsStarted, 0) }];
   });
 }
 
-/** Approved decisions 4: `load` is a counter, `threshold` the larger, `updatedAt` the later. A load of 0 or less leaves no row. */
+/** Approved decisions 4: `load` is a counter (rows kept as in `mergeDailyLessonLog`), `threshold` the larger, `updatedAt` the later. */
 export function mergeCognitiveLoad(
   base: BackupData['cognitiveLoadHistory'] | null,
   local: BackupData['cognitiveLoadHistory'],
@@ -108,11 +112,11 @@ export function mergeCognitiveLoad(
       entry.remote?.load ?? 0,
     );
     const sides = [entry.local, entry.remote].filter(isDefined);
-    if (load <= 0) return [];
+    if (sides.length === 0) return [];
     return [
       {
         date: entry.key,
-        load,
+        load: Math.max(load, 0),
         threshold: Math.max(...sides.map((row) => row.threshold)),
         updatedAt: sides.map((row) => row.updatedAt).reduce(later),
       },
