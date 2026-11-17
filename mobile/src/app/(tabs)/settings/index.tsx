@@ -407,12 +407,14 @@ export default function SettingsScreen() {
     }
   };
 
-  // A sync that changed rows bumps appliedVersion; the first value is not a change.
+  // A sync that changed rows raises appliedVersion; a sign-out reset to 0 is not a change.
   const seenAppliedVersion = useRef(sync.appliedVersion);
   useEffect(() => {
-    if (sync.appliedVersion === seenAppliedVersion.current) return;
+    const raised = sync.appliedVersion > seenAppliedVersion.current;
     seenAppliedVersion.current = sync.appliedVersion;
-    void refreshAfterDataChange();
+    if (!raised) return;
+    // A failed notification reschedule is not fatal here; the next refresh tries again.
+    refreshAfterDataChange().catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps -- the refresh reads current hook values; only a new appliedVersion triggers it
   }, [sync.appliedVersion]);
 

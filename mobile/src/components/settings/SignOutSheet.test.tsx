@@ -15,4 +15,12 @@ describe('SignOutSheet', () => {
       ),
     ).toBeTruthy();
   });
+
+  it('sign-out step says the synced copy stays on the server', () => {
+    render(<SignOutSheet visible everywhere={false} onConfirm={jest.fn()} onCancel={jest.fn()} />);
+
+    expect(
+      screen.getByText(/The copy that is already synced stays on our server until you delete your account\./),
+    ).toBeTruthy();
+  });
 });

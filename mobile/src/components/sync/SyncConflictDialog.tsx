@@ -1,7 +1,7 @@
+import { useMemo } from 'react';
 import { Modal, ScrollView, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
-import type { ConflictEntry } from '@/core/sync/sync.types';
 import { getItemBySlug } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useSheetFrame } from '@/hooks/useWideLayout';
@@ -21,11 +21,15 @@ export function SyncConflictDialog() {
   const { curriculumDb } = useDatabase();
   const { conflicts, chooseConflict } = useSync();
 
-  function titleOf(entry: ConflictEntry): string {
-    if (entry.kind === 'preference') return `Setting: ${entry.key.replace(/_/g, ' ')}`;
-    const found = getItemBySlug(curriculumDb, entry.item.itemType, entry.item.slug);
-    return found ? `${found.primaryForm} · ${found.meaning}` : entry.item.slug;
-  }
+  const titles = useMemo(
+    () =>
+      (conflicts ?? []).map((entry) => {
+        if (entry.kind === 'preference') return `Setting: ${entry.key.replace(/_/g, ' ')}`;
+        const found = getItemBySlug(curriculumDb, entry.item.itemType, entry.item.slug);
+        return found ? `${found.primaryForm} · ${found.meaning}` : entry.item.slug;
+      }),
+    [conflicts, curriculumDb],
+  );
 
   return (
     <Modal
@@ -56,7 +60,7 @@ export function SyncConflictDialog() {
                 key={index}
                 className="border-b border-border px-space-md py-space-sm"
                 testID={`sync-conflict-row-${index}`}>
-                <Text className="text-body font-ui-semibold text-primary">{titleOf(entry)}</Text>
+                <Text className="text-body font-ui-semibold text-primary">{titles[index]}</Text>
                 <Text className="mt-[3px] text-caption font-ui-medium text-muted">
                   {`This device: ${formatChanged(entry.localUpdatedAt)} · Other device: ${formatChanged(entry.remoteUpdatedAt)}`}
                 </Text>

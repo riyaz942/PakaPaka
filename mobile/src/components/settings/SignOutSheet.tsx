@@ -69,7 +69,7 @@ export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignO
               </Text>
               <Text className="text-body text-secondary">
                 Your progress stays on this device after you sign out, so you will still see it.
-                Sync is not available yet, so no copy of it is on our server.
+                The copy that is already synced stays on our server until you delete your account.
               </Text>
               <View className="gap-space-sm pt-space-sm">
                 <Button label="Sign out, keep my data" onPress={() => onConfirm(false)} />
