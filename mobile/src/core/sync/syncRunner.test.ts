@@ -862,6 +862,26 @@ describe('createSyncRunner', () => {
       expect(h.device.db.srsStates).toEqual(pushed.srsStates);
     });
 
+    it('a local delete survives the carried-row write', async () => {
+      // Mnemonic 1 was synced (not carried); the learner deleted it on this device.
+      const base = file({ ...carriedBase(), personalMnemonics: [mnemonic('1', 'one'), mnemonic('9', 'nine')] });
+      const h = harness({
+        db: file({ srsStates: [srs('1', 1)] }),
+        base: { revision: 2, data: base, carried },
+        server: serverWith(2, base),
+      });
+
+      const result = await h.runner.run('open');
+
+      expect(result).toEqual({ status: 'pushed', error: null, changedLocal: true });
+      expect(serverFile(h.server).personalMnemonics).toEqual([mnemonic('9', 'nine')]);
+      expect(h.device.db.personalMnemonics).toEqual([mnemonic('9', 'nine')]);
+
+      await h.runner.run('open');
+      expect(h.device.db.personalMnemonics).toEqual([mnemonic('9', 'nine')]);
+      expect(serverFile(h.server).personalMnemonics).toEqual([mnemonic('9', 'nine')]);
+    });
+
     it('defer when the apply would change a device row', async () => {
       // The other device pushed the same content again: the merge equals local, but the apply
       // would still write item 9's carried rows to user.db.

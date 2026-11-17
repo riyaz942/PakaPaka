@@ -70,6 +70,18 @@ function changesDevice(from: BackupData, to: BackupData, known: KnownContent): b
   );
 }
 
+/** The keys of `keys` that are in at least one of `allowed`. */
+function onlyKeys(keys: CarriedKeys, ...allowed: CarriedKeys[]): CarriedKeys {
+  const result: CarriedKeys = {};
+  for (const table of SYNC_TABLE_KEYS) {
+    const kept = (keys[table] ?? []).filter((key) =>
+      allowed.some((list) => (list[table] ?? []).includes(key)),
+    );
+    if (kept.length > 0) result[table] = kept;
+  }
+  return result;
+}
+
 function isEmptyKeys(keys: CarriedKeys): boolean {
   return Object.keys(keys).length === 0;
 }
@@ -111,8 +123,13 @@ export function createSyncRunner(ports: SyncPorts): {
           base: {
             revision: base.revision,
             data: base.data,
-            // Guarded keys stay carried: the device row there is its own, not the base row.
-            carried: carriedKeysOf(base.data, withoutKeys(local, guarded), known),
+            // Guarded keys stay carried: the device row there is its own, not the base row. A known
+            // key stays carried only if it was before: any other row local lacks was deleted here.
+            carried: onlyKeys(
+              carriedKeysOf(base.data, withoutKeys(local, guarded), known),
+              base.carried,
+              carriedKeysOf(base.data, base.data, known),
+            ),
           },
         });
         if (!written.ok) {
