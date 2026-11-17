@@ -33,6 +33,10 @@ The server never receives BYOK keys or AI conversations. The server never stores
 
 The progress files are in R2 at `progress/<userId>/<revision, 10 digits>-<uuid>.json.gz`. D1 `sync_state` holds the current revision and `object_key`, the key of the current file.
 
+`PUT /api/sync` checks only the size (2,000,000 bytes), the gzip header and the envelope (the first 4,096 compressed bytes). A body with no valid envelope in its head gets `400`, not a hang. The client checks the full shape of every file it uploads or downloads.
+
+`DELETE /api/account` lists and deletes `progress/<userId>/` twice: before and after it deletes the user rows. A `PUT` that races the delete leaves no file.
+
 Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number. Name the new key with the new revision (`progress/<userId>/<new revision, 10 digits>-<uuid>.json.gz`): the prune reads the 10-digit prefix.
 
 A cron trigger (`0 1 * * *`) runs the usage watch.

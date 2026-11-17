@@ -642,10 +642,10 @@ Rules around the cycle:
 
 **Files:** Modify `CLAUDE.md`, `docs/design/backup-and-web-plan.md`, `docs/working-history.md`, `backend/README.md`
 
-- [ ] **Step 1:** `CLAUDE.md`: in "Project overview", say that sync is built (one progress file per user, three-way merge on the device, one conflict dialog). In "Hard conventions" add one line: "**Sync** — merge decisions use row content, never `updatedAt`; sync code uses the async SQLite API (`src/data/sync/`), merge rules are pure functions in `src/core/sync/`; a new `user.db` table must be added to `BackupData` and `SYNC_TABLES` or named as device-only." In "Architecture crux" add one sentence on `sync_base`.
-- [ ] **Step 2:** `backup-and-web-plan.md`: §A1/§A2 — note that `lessonOptIns` is in the format and that the sync file is this format without conversations and without the never-synced preference keys (list them). Note the raw passage id limit (Findings 5).
-- [ ] **Step 3:** `working-history.md`, row "Web app, optional accounts, progress sync": Part 3 status (built on `part3-sync`; what is deployed is written in Task 14), the Findings of this plan, and the open items (web background push is best effort; the decode limit; raw passage ids).
-- [ ] **Step 4: Commit** `docs: Part 3 progress sync, rules and status`.
+- [x] **Step 1:** `CLAUDE.md`: in "Project overview", say that sync is built (one progress file per user, three-way merge on the device, one conflict dialog). In "Hard conventions" add one line: "**Sync** — merge decisions use row content, never `updatedAt`; sync code uses the async SQLite API (`src/data/sync/`), merge rules are pure functions in `src/core/sync/`; a new `user.db` table must be added to `BackupData` and `SYNC_TABLES` or named as device-only." In "Architecture crux" add one sentence on `sync_base`.
+- [x] **Step 2:** `backup-and-web-plan.md`: §A1/§A2 — note that `lessonOptIns` is in the format and that the sync file is this format without conversations and without the never-synced preference keys (list them). Note the raw passage id limit (Findings 5).
+- [x] **Step 3:** `working-history.md`, row "Web app, optional accounts, progress sync": Part 3 status (built on `part3-sync`; what is deployed is written in Task 14), the Findings of this plan, and the open items (web background push is best effort; the decode limit; raw passage ids).
+- [x] **Step 4: Commit** `docs: Part 3 progress sync, rules and status`.
 
 ### Task 14: Deploy and the two-device check (operator-gated)
 

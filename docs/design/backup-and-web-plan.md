@@ -79,6 +79,18 @@ where the SQLite page format or VFS differs. Include:
 no correct answer, and a half-merged review schedule is worse than either input. One path that can
 fail loudly, per the project's no-hidden-fallbacks rule.
 
+**6. Format additions since the first version (no `formatVersion` change).**
+`data.lessonOptIns` is part of the format. It is an optional key: a file without it reads as an empty list.
+
+**7. Progress sync uses this format (Part 3).**
+The sync file is this format with `includesConversations: false`, `aiSessions: []` and `aiMessages: []`. The client also removes the never-synced preference keys before each push, and ignores them in a file it pulls:
+
+`installed_curriculum_version`, `installed_curriculum_content_hash`, `curriculum_update_source`, `last_backed_up_at`, `ai_openai_base_url`, `ai_active_provider`, `ai_openai_model`, `ai_anthropic_model`, `cloud_stt_opt_in`, `word_translate_opt_in`, `notifications_enabled`, `notification_reminder_time`, `reduced_motion`, `theme_mode`, `haptics_enabled`.
+
+All other preference keys sync. A backup file still holds all of them. Sync merges two devices (three-way merge on the device); restore from a backup file stays replace-all.
+
+**Known limit: raw passage ids.** `passagePracticeResults` uses the raw curriculum row ids of the passage and the question (an existing limit of the format). Two devices on different curriculum versions can map one id to different passages. Not fixed in Part 3.
+
 ### A2 — Steps
 
 | # | Step | Verify |
@@ -94,7 +106,7 @@ fail loudly, per the project's no-hidden-fallbacks rule.
 ### A3 — Explicitly out of scope
 
 - ~~Cloud sync, accounts, or a server of any kind.~~ **Replaced:** optional Google sign-in, a Cloudflare Worker and progress sync are now in scope. See the [web app design (2026-11-04)](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md).
-- Merge/conflict resolution between two devices.
+- ~~Merge/conflict resolution between two devices.~~ **Replaced:** Part 3 adds a three-way merge for sync (restore from a file stays replace-all). See [A1 point 7](#a1--format-decisions-settle-these-first).
 - Automatic scheduled backups on mobile (the OS backup systems already cover the app sandbox).
 
 ---
