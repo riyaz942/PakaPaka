@@ -51,6 +51,8 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { useVacationMode } from '@/data/hooks/useVacationMode';
 import { useWideLayout } from '@/hooks/useWideLayout';
+import { useAccount } from '@/providers/AccountProvider';
+import { useSync } from '@/providers/SyncProvider';
 import { exportBackup } from '@/data/user/exportBackup';
 import { eraseLocalData, previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import {
@@ -165,6 +167,8 @@ export default function SettingsScreen() {
   // Desktop web: the sections flow into two columns.
   const wide = useWideLayout();
   const { userDb } = useDatabase();
+  const account = useAccount();
+  const sync = useSync();
   const { reducedMotion, setReducedMotion, refetch: refetchReducedMotion } = useReducedMotion();
   const { hapticsEnabled, setHapticsEnabled, refetch: refetchHaptics } = useHapticsPreference();
   const { mode: themeMode, setMode: setThemeMode } = useThemeMode();
@@ -383,6 +387,35 @@ export default function SettingsScreen() {
     setRestoreState('summary');
   };
 
+  // A restore or a sync merge replaced rows in user.db — pull every displayed
+  // value back out of it, including the ones that live in their own hooks.
+  const refreshAfterDataChange = async () => {
+    setSettingsVersion((version) => version + 1);
+    setThemeMode(getThemeMode(userDb));
+    setFuriganaMode(getFuriganaDisplay(userDb));
+    refetchVacation();
+    refetchAutoAdvance();
+    refetchReducedMotion();
+    refetchHaptics();
+    refetchShadowMode();
+    if (supportsNotifications()) {
+      if (getNotificationsEnabled(userDb)) {
+        await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
+      } else {
+        await cancelAllNotifications();
+      }
+    }
+  };
+
+  // A sync that changed rows bumps appliedVersion; the first value is not a change.
+  const seenAppliedVersion = useRef(sync.appliedVersion);
+  useEffect(() => {
+    if (sync.appliedVersion === seenAppliedVersion.current) return;
+    seenAppliedVersion.current = sync.appliedVersion;
+    void refreshAfterDataChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the refresh reads current hook values; only a new appliedVersion triggers it
+  }, [sync.appliedVersion]);
+
   const handleConfirmRestore = async () => {
     const preview = getBackupPreview();
     if (!preview) {
@@ -399,6 +432,11 @@ export default function SettingsScreen() {
       return;
     }
 
+    // Signed in: the server copy must follow the restore, or the next sync merges the old one back.
+    if (account.status === 'signed_in') {
+      await sync.replaceRemoteAfterRestore(preview.bundle.data);
+    }
+
     clearBackupPreview();
     setRestoreState('idle');
     setRestoreResultMessage(
@@ -406,23 +444,7 @@ export default function SettingsScreen() {
         ? `Restored ${result.value.restoredRowCount} rows · ${result.value.unmatchedSlugCount} skipped (no longer in the curriculum).`
         : `Restored ${result.value.restoredRowCount} rows.`,
     );
-    // The replace wrote another device's preferences — pull every displayed
-    // value back out of user.db, including the ones that live in their own hooks.
-    setSettingsVersion((version) => version + 1);
-    setThemeMode(getThemeMode(userDb));
-    setFuriganaMode(getFuriganaDisplay(userDb));
-    refetchVacation();
-    refetchAutoAdvance();
-    refetchReducedMotion();
-    refetchHaptics();
-    refetchShadowMode();
-    if (supportsNotifications()) {
-      if (getNotificationsEnabled(userDb)) {
-        await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
-      } else {
-        await cancelAllNotifications();
-      }
-    }
+    await refreshAfterDataChange();
   };
 
   const handleCancelRestore = () => {
@@ -720,6 +742,7 @@ export default function SettingsScreen() {
                     onCancel={handleCancelRestore}
                     onConfirm={handleConfirmRestore}
                     preview={getBackupPreview() ?? undefined}
+                    signedIn={account.status === 'signed_in'}
                     state={restoreState}
                   />
                 </View>

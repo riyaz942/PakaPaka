@@ -624,15 +624,15 @@ Rules around the cycle:
 - `RestorePreviewCard`: new prop `signedIn: boolean`; when true the warning text is `This replaces the progress on all your signed-in devices.` (else the existing `RESTORE_CONFIRM_WARNING`).
 - `settings/index.tsx`: pass `signedIn={account.status === 'signed_in'}`; in `handleConfirmRestore`, after a successful `restoreBackup` and when signed in, call `await sync.replaceRemoteAfterRestore(preview.bundle.data)`. When `sync.appliedVersion` changes, run the same refresh block that follows a restore (`setSettingsVersion`, theme, furigana, vacation, auto-advance, reduced motion, haptics, shadow mode, notifications).
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `SyncConflictDialog`: `hidden when conflicts is null`; `lists an item entry with its characters and meaning`; `lists a preference entry as "Setting: session intensity"`; `shows "removed" for a side with no row`; `Keep this device calls chooseConflict('local')`; `Use other device calls chooseConflict('remote')`; `the exact title and body`.
   - `AccountSettingsSection`: `Sync now calls syncNow` (replaces the old disabled case); `Sync now is disabled while syncing and the caption is "Syncing…"`; `caption shows "Not synced yet." with no sync time`; `caption shows the last sync time`; `sync error shows under the button`; `signed out renders no sync row`.
   - `SignOutSheet`: `erase step shows the exact copy`.
   - `RestorePreviewCard`: `signed in shows the all-devices warning`; `signed out shows the device warning`.
   - `settings/index`: `restore while signed in calls replaceRemoteAfterRestore with the bundle data`; `restore while signed out does not`.
-- [ ] **Step 2:** Run → FAIL. Implement. Run `npm test -- --ci`, `npm run typecheck`, `npm run lint` (a11y rules) → green.
+- [x] **Step 2:** Run → FAIL. Implement. Run `npm test -- --ci`, `npm run typecheck`, `npm run lint` (a11y rules) → green.
 - [ ] **Step 3: Verify on web, local.** `cd mobile && npm run build:web`, then `cd ../backend && npx wrangler dev` (local D1 and R2; the operator's `.dev.vars` from Part 2). `BROWSER=none` if `expo start` is used. In Chrome, signed in: Settings shows `Last synced …` after open; a review then a return to Settings shows a newer time; `wrangler dev` log shows one `PUT /api/sync` per session and no body or token. Signed out: the Network panel shows no `/api/sync` request.
-- [ ] **Step 4: Commit** `feat(sync): Sync now, conflict dialog, restore over all devices`.
+- [x] **Step 4: Commit** `feat(sync): Sync now, conflict dialog, restore over all devices`.
 
 ---
 

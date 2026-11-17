@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import type { AccountDevice } from '@/core/account/account.types';
 import { SignOutSheet } from '@/components/settings/SignOutSheet';
 import { useAccount } from '@/providers/AccountProvider';
+import { useSync } from '@/providers/SyncProvider';
 
 export const DELETE_ACCOUNT_CONFIRM_COPY =
   'This deletes your account and its data on the server. Your progress on this device stays.';
@@ -65,6 +66,7 @@ type AccountSettingsSectionProps = {
 /** Optional sign-in. Signed out it is one button; nothing else in the app points here. */
 export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSectionProps = {}) {
   const account = useAccount();
+  const sync = useSync();
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [busy, setBusy] = useState(false);
   const [signOutAsk, setSignOutAsk] = useState<'here' | 'everywhere' | null>(null);
@@ -140,14 +142,25 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
       <Button
         label="Sync now"
         variant="secondary"
-        onPress={() => {}}
-        disabled
+        onPress={() => void sync.syncNow()}
+        disabled={sync.phase !== 'idle'}
         className="mt-space-sm w-full"
         testID="settings-account-sync"
       />
       <Text className="mt-space-xs text-caption font-ui-medium text-muted">
-        Sync arrives in a later update.
+        {sync.phase !== 'idle'
+          ? 'Syncing…'
+          : sync.lastSyncedAt
+            ? `Last synced ${new Date(sync.lastSyncedAt).toLocaleString()}`
+            : 'Not synced yet.'}
       </Text>
+      {sync.error ? (
+        <Text
+          className="mt-space-sm text-caption font-ui-medium text-feedback-incorrect-deep"
+          testID="settings-account-sync-error">
+          {sync.error}
+        </Text>
+      ) : null}
 
       {account.account && account.account.devices.length > 0 ? (
         <View

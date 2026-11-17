@@ -3,6 +3,7 @@ import React from 'react';
 
 import { accountErrorMessage } from '@/core/account/errorMessages';
 import type { AccountContextValue } from '@/providers/AccountProvider';
+import type { SyncContextValue } from '@/providers/SyncProvider';
 
 import { AccountSettingsSection, DELETE_ACCOUNT_CONFIRM_COPY } from './AccountSettingsSection';
 
@@ -10,6 +11,32 @@ let mockAccount: AccountContextValue;
 jest.mock('@/providers/AccountProvider', () => ({
   useAccount: () => mockAccount,
 }));
+
+let mockSync: SyncContextValue;
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => mockSync,
+}));
+
+function syncState(over: Partial<SyncContextValue> = {}): SyncContextValue {
+  return {
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+    syncNow: jest.fn().mockResolvedValue(undefined),
+    chooseConflict: jest.fn(),
+    runBeforeReview: jest.fn().mockResolvedValue(undefined),
+    beginStudy: jest.fn(),
+    endStudy: jest.fn(),
+    replaceRemoteAfterRestore: jest.fn().mockResolvedValue(undefined),
+    ...over,
+  };
+}
+
+beforeEach(() => {
+  mockSync = syncState();
+});
 
 function accountState(over: Partial<AccountContextValue> = {}): AccountContextValue {
   return {
@@ -85,14 +112,58 @@ describe('AccountSettingsSection', () => {
     expect(mockAccount.removeDevice).toHaveBeenCalledWith('d2');
   });
 
-  it('Sync now is disabled with the caption', async () => {
+  it('Sync now calls syncNow', async () => {
     mockAccount = signedIn();
+    render(<AccountSettingsSection />);
+
+    await press('Sync now');
+
+    expect(mockSync.syncNow).toHaveBeenCalledTimes(1);
+  });
+
+  it('Sync now is disabled while syncing and the caption is "Syncing…"', () => {
+    mockAccount = signedIn();
+    mockSync = syncState({ phase: 'syncing' });
     render(<AccountSettingsSection />);
 
     expect(screen.getByLabelText('Sync now').props.accessibilityState).toMatchObject({
       disabled: true,
     });
-    expect(screen.getByText('Sync arrives in a later update.')).toBeTruthy();
+    expect(screen.getByText('Syncing…')).toBeTruthy();
+  });
+
+  it('caption shows "Not synced yet." with no sync time', () => {
+    mockAccount = signedIn();
+    render(<AccountSettingsSection />);
+
+    expect(screen.getByText('Not synced yet.')).toBeTruthy();
+  });
+
+  it('caption shows the last sync time', () => {
+    const iso = '2026-11-10T09:30:00.000Z';
+    mockAccount = signedIn();
+    mockSync = syncState({ lastSyncedAt: iso });
+    render(<AccountSettingsSection />);
+
+    expect(screen.getByText(`Last synced ${new Date(iso).toLocaleString()}`)).toBeTruthy();
+  });
+
+  it('sync error shows under the button', () => {
+    mockAccount = signedIn();
+    mockSync = syncState({ error: 'Sync did not finish. It runs again the next time.' });
+    render(<AccountSettingsSection />);
+
+    expect(screen.getByTestId('settings-account-sync-error')).toHaveTextContent(
+      'Sync did not finish. It runs again the next time.',
+    );
+  });
+
+  it('signed out renders no sync row', () => {
+    mockAccount = accountState();
+    render(<AccountSettingsSection />);
+
+    expect(screen.queryByTestId('settings-account-sync')).toBeNull();
+    expect(screen.queryByTestId('settings-account-sync-error')).toBeNull();
   });
 
   it('Sign out asks first and does nothing until the user picks', async () => {
@@ -147,7 +218,7 @@ describe('AccountSettingsSection', () => {
     await press('Sign out and erase my data');
 
     expect(screen.getByText('Erase data on this device?')).toBeTruthy();
-    expect(screen.getByText(/Nothing is saved on our server yet/)).toBeTruthy();
+    expect(screen.getByText(/Progress that is not synced yet is lost/)).toBeTruthy();
     expect(mockAccount.signOut).not.toHaveBeenCalled();
 
     await press('Go back');

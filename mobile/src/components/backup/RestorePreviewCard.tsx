@@ -12,6 +12,8 @@ type RestorePreviewCardProps = {
   state: RestorePreviewCardState;
   preview?: BackupPreview;
   errorMessage?: string;
+  /** Signed in: the restore also replaces the progress on the other devices. */
+  signedIn?: boolean;
   onConfirm: () => void;
   onCancel: () => void;
 };
@@ -22,6 +24,8 @@ type RestorePreviewCardProps = {
  * replaces everything, so the headline fact is the warning, not the mapping.
  */
 export const RESTORE_CONFIRM_WARNING = 'This replaces your current progress on this device.';
+const RESTORE_CONFIRM_WARNING_SIGNED_IN =
+  'This replaces the progress on all your signed-in devices.';
 
 function formatExportedAt(iso: string): string {
   const date = new Date(iso);
@@ -31,10 +35,12 @@ function formatExportedAt(iso: string): string {
 
 function SummaryContent({
   preview,
+  signedIn,
   onConfirm,
   onCancel,
 }: {
   preview: BackupPreview;
+  signedIn: boolean;
   onConfirm: () => void;
   onCancel: () => void;
 }) {
@@ -106,7 +112,7 @@ function SummaryContent({
             accessibilityRole="alert"
             className="flex-1 text-body-sm font-ui-semibold text-feedback-warning-deep"
             testID="restore-preview-warning">
-            {RESTORE_CONFIRM_WARNING}
+            {signedIn ? RESTORE_CONFIRM_WARNING_SIGNED_IN : RESTORE_CONFIRM_WARNING}
           </Text>
         </View>
 
@@ -132,6 +138,7 @@ export function RestorePreviewCard({
   state,
   preview,
   errorMessage,
+  signedIn = false,
   onConfirm,
   onCancel,
 }: RestorePreviewCardProps) {
@@ -168,7 +175,12 @@ export function RestorePreviewCard({
       ) : null}
 
       {state === 'summary' && preview ? (
-        <SummaryContent preview={preview} onCancel={onCancel} onConfirm={onConfirm} />
+        <SummaryContent
+          preview={preview}
+          signedIn={signedIn}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+        />
       ) : null}
     </View>
   );

@@ -16,8 +16,9 @@ type SignOutSheetProps = {
 
 /**
  * Signing out keeps the progress on the device, so the learner still sees it.
- * This says so, and offers to erase it. Sync does not exist yet, so an erase
- * cannot be restored from the server: the second step says that plainly.
+ * This says so, and offers to erase it. An erase does not touch the copy on the
+ * server, but progress that is not synced yet is lost: the second step says that
+ * plainly and points to Sync now.
  */
 export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignOutSheetProps) {
   const sheetFrame = useSheetFrame();
@@ -49,9 +50,8 @@ export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignO
                 Erase data on this device?
               </Text>
               <Text className="text-body text-secondary">
-                This erases all your progress and settings on this device. Nothing is saved on our
-                server yet, so you cannot get it back unless you exported a backup file. To keep a
-                copy, cancel and export a backup in Settings first.
+                This erases all your progress and settings on this device. Progress that is not synced
+                yet is lost. To keep it, cancel and tap Sync now first.
               </Text>
               <View className="gap-space-sm pt-space-sm">
                 <Button
