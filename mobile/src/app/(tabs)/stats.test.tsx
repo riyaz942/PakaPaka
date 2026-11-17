@@ -14,6 +14,17 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+// Signed out: sync stays idle, so the screen never reloads for a merge.
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => ({
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+  }),
+}));
+
 const mockRefetchDaysStudied = jest.fn();
 let mockDaysStudied = 0;
 

@@ -20,6 +20,17 @@ jest.mock('expo-router', () => ({
   useFocusEffect: (callback: () => void) => require('react').useEffect(callback, [callback]),
 }));
 
+// Signed out: sync stays idle, so the screen never reloads for a merge.
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => ({
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+  }),
+}));
+
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
 }));

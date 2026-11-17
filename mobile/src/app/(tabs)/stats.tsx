@@ -15,6 +15,7 @@ import { useDaysStudied } from '@/data/hooks/useDaysStudied';
 import { useSRSBreakdown } from '@/data/hooks/useSRSBreakdown';
 import { useWeaknessStats } from '@/data/hooks/useWeaknessStats';
 import { useWideLayout } from '@/hooks/useWideLayout';
+import { useSync } from '@/providers/SyncProvider';
 import { cn } from '@/utils/cn';
 
 export default function StatsScreen() {
@@ -37,6 +38,7 @@ export default function StatsScreen() {
   } = useSRSBreakdown();
 
   const { daysStudied, isLoading: daysLoading, refetch: refetchDaysStudied } = useDaysStudied();
+  const { appliedVersion } = useSync();
 
   // BUG1 pattern (mirrors Home): refetch on *every* focus including the first,
   // so returning from a session immediately reflects the new study day.
@@ -45,7 +47,8 @@ export default function StatsScreen() {
       refetchWeakness();
       refetchSrsBreakdown();
       refetchDaysStudied();
-    }, [refetchWeakness, refetchSrsBreakdown, refetchDaysStudied]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- appliedVersion is an explicit reload trigger
+    }, [refetchWeakness, refetchSrsBreakdown, refetchDaysStudied, appliedVersion]),
   );
 
   const isLoading = weaknessLoading || srsLoading || daysLoading;

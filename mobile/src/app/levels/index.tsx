@@ -9,6 +9,7 @@ import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types'
 import { useAllLevelsProgress } from '@/data/hooks/useAllLevelsProgress';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setStartingJlptLevel } from '@/data/user/preferencesRepository';
+import { useSync } from '@/providers/SyncProvider';
 
 function firstParam(value: string | string[] | undefined): string | null {
   if (Array.isArray(value)) return value[0] ?? null;
@@ -25,6 +26,7 @@ export default function LevelsScreen() {
   const params = useLocalSearchParams<{ level?: string | string[] }>();
   const seededLevel = seededLevelFromParams(params.level);
   const { levels, activeLevel, isLoading, refetch } = useAllLevelsProgress();
+  const { appliedVersion } = useSync();
   const scrollRef = useRef<ScrollView>(null);
   const rowOffsetsRef = useRef<Partial<Record<JLPTLevel, number>>>({});
   const scrolledRef = useRef(false);
@@ -32,7 +34,8 @@ export default function LevelsScreen() {
   useFocusEffect(
     useCallback(() => {
       refetch();
-    }, [refetch]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- appliedVersion is an explicit reload trigger
+    }, [refetch, appliedVersion]),
   );
 
   const handleSetActive = useCallback(

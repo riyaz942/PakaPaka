@@ -31,6 +31,17 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+// Signed out: sync stays idle, so the screen never reloads for a merge.
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => ({
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+  }),
+}));
+
 // Stable identity: Home's focus effect depends on the db handles, so a fresh
 // object per render would re-run the effect forever once object-valued state
 // (e.g. the welcome-back offer) re-renders the screen.

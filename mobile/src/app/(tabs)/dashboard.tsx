@@ -62,6 +62,7 @@ import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
 import { AT_RISK_TOP_N, WELCOME_BACK_SLICE } from '@/config/constants';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
+import { useSync } from '@/providers/SyncProvider';
 import { cn } from '@/utils/cn';
 import { supportsThirdPartyImport } from '@/platform/capabilities';
 
@@ -78,6 +79,7 @@ const TODAY_COLUMN_SECTIONS: ReadonlySet<HomeSectionId> = new Set([
 export default function HomeScreen() {
   const wide = useWideLayout();
   const { curriculumDb, userDb } = useDatabase();
+  const { appliedVersion } = useSync();
   const [level, setLevel] = useState<ReturnType<typeof getStartingJlptLevel>>(null);
   const [greetingSentence, setGreetingSentence] = useState<string | null>(null);
   const [dueCount, setDueCount] = useState(0);
@@ -254,6 +256,7 @@ export default function HomeScreen() {
       } catch {
         setLastBackedUpAt(null);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- appliedVersion is an explicit reload trigger
     }, [
       refetchLoad,
       refetchProgress,
@@ -264,6 +267,7 @@ export default function HomeScreen() {
       curriculumDb,
       userDb,
       readLessonAllowance,
+      appliedVersion,
     ]),
   );
 

@@ -21,6 +21,7 @@ import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
 import { AccountProvider } from '@/providers/AccountProvider';
 import { DatabaseProvider } from '@/providers/DatabaseProvider';
 import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
+import { SyncProvider } from '@/providers/SyncProvider';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 
 function CurriculumUpdateBannerHost() {
@@ -65,28 +66,30 @@ function RootLayoutContent() {
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
           <AccountProvider>
-            <ThemeModeHost />
-            <OnboardingRedirect />
-            <CurriculumUpdateBannerHost />
-            <AnimatedSplashOverlay />
-            {/* A desktop browser window can be any width; the app stays in a
-                centered frame. Phones are always narrower than the cap. */}
-            <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
-              <Stack>
-                <Stack.Screen name="index" options={{ headerShown: false }} />
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-                <Stack.Screen
-                  name="review"
-                  options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                />
-                <Stack.Screen
-                  name="lesson"
-                  options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                />
-                <Stack.Screen name="levels" options={{ headerShown: false }} />
-              </Stack>
-            </View>
+            <SyncProvider>
+              <ThemeModeHost />
+              <OnboardingRedirect />
+              <CurriculumUpdateBannerHost />
+              <AnimatedSplashOverlay />
+              {/* A desktop browser window can be any width; the app stays in a
+                  centered frame. Phones are always narrower than the cap. */}
+              <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
+                <Stack>
+                  <Stack.Screen name="index" options={{ headerShown: false }} />
+                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                  <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+                  <Stack.Screen
+                    name="review"
+                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
+                  />
+                  <Stack.Screen
+                    name="lesson"
+                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
+                  />
+                  <Stack.Screen name="levels" options={{ headerShown: false }} />
+                </Stack>
+              </View>
+            </SyncProvider>
           </AccountProvider>
         </DatabaseProvider>
       </ThemeProvider>

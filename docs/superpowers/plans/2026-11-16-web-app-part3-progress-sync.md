@@ -598,12 +598,12 @@ Rules around the cycle:
 - `review/_layout.tsx`: `<SyncGate mode="review"><ReviewSessionProvider>…`; `lesson/_layout.tsx`: `<SyncGate mode="lesson">` around its stack.
 - Screens: add `appliedVersion` from `useSync()` to the dependency list of the `useFocusEffect` callback that reloads user data, so a focused screen reloads after an applied merge. No other change in those files.
 
-- [ ] **Step 1: Failing tests.**
+- [x] **Step 1: Failing tests.**
   - `SyncProvider`: `signed out: no fetch, no snapshot read, no AppState listener`; `signed in on mount → one run with trigger open`; `status change to signed_out clears the base`; `AppState background → run with trigger background`; `conflict: conflicts is set until chooseConflict, then the run continues`; `appliedVersion rises after a run that changed local rows`; `replaceRemoteAfterRestore marks pending replace then runs`; `endStudy starts a session_end run after the current tick`.
   - `SyncGate`: `signed out renders children at once and calls nothing`; `review mode waits for runBeforeReview then renders children`; `Start now appears after 3 s and renders children` (fake timers); `lesson mode renders at once and calls beginStudy`; `unmount calls endStudy`.
   - Existing screen tests that render `dashboard`, `stats`, `browse`, `levels`, `review`, `lesson` now need a sync context: add `jest.mock('@/providers/SyncProvider', …)` returning an idle `useSync` in those test files. Add the mock only; change no assertion.
-- [ ] **Step 2:** Run the new tests → FAIL. Implement. Run `npm test -- --ci`, `npm run typecheck`, `npm run lint` → green.
-- [ ] **Step 3: Commit** `feat(sync): provider, triggers on open, review, session end and background`.
+- [x] **Step 2:** Run the new tests → FAIL. Implement. Run `npm test -- --ci`, `npm run typecheck`, `npm run lint` → green.
+- [x] **Step 3: Commit** `feat(sync): provider, triggers on open, review, session end and background`.
 
 ### Task 12: Settings, conflict dialog, restore while signed in
 
