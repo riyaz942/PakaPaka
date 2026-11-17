@@ -1,12 +1,20 @@
 import type { BackupData } from '@/core/backup/backup.types';
-import { sameSyncData } from '@/core/sync/diffSyncData';
+import { diffSyncData, sameSyncData } from '@/core/sync/diffSyncData';
 import {
   carriedKeysOf,
+  guardedKeysOf,
   isEmptyProgress,
   mergeSyncData,
   withCarriedRows,
+  withoutKeys,
 } from '@/core/sync/mergeSyncData';
-import type { CarriedKeys, ConflictChoice, ConflictEntry } from '@/core/sync/sync.types';
+import {
+  SYNC_TABLE_KEYS,
+  type CarriedKeys,
+  type ConflictChoice,
+  type ConflictEntry,
+  type KnownContent,
+} from '@/core/sync/sync.types';
 import type { decodeSyncFile, encodeSyncFile } from '@/core/sync/syncCodec';
 import { syncError } from '@/core/sync/syncMessages';
 import type { SyncApi } from '@/data/sync/syncApi';
@@ -48,16 +56,32 @@ export type SyncPorts = {
 
 const MAX_CYCLES = 3;
 
-/** How a cycle ended: a result for the caller, or `retry` to read and pull again. */
-type CycleEnd = { done: SyncRunResult['status'] } | { error: AppError } | 'retry';
+/**
+ * How a cycle ended: a result for the caller, `retry` to read and pull again (counts as a cycle),
+ * or `restart` to read again after the carried rows were written (does not count).
+ */
+type CycleEnd = { done: SyncRunResult['status'] } | { error: AppError } | 'retry' | 'restart';
+
+/** True when writing `to` over `from` would change a row in user.db. */
+function changesDevice(from: BackupData, to: BackupData, known: KnownContent): boolean {
+  const diff = diffSyncData(from, to, known);
+  return SYNC_TABLE_KEYS.some(
+    (table) => diff[table].upserts.length > 0 || diff[table].deletes.length > 0,
+  );
+}
+
+function isEmptyKeys(keys: CarriedKeys): boolean {
+  return Object.keys(keys).length === 0;
+}
 
 export function createSyncRunner(ports: SyncPorts): {
   run(trigger: SyncTrigger): Promise<SyncRunResult>;
 } {
-  /** One run: at most `MAX_CYCLES` cycles. `applied` / `changedLocal` cover the whole run. */
+  /** One run: at most `MAX_CYCLES` cycles. The flags cover the whole run. */
   async function runOnce(trigger: SyncTrigger): Promise<SyncRunResult> {
     let applied = false;
     let changedLocal = false;
+    let wroteCarried = false;
 
     async function cycle(): Promise<CycleEnd> {
       const baseRead = await ports.readBase();
@@ -68,6 +92,36 @@ export function createSyncRunner(ports: SyncPorts): {
       const snap = snapRead.value;
       const { known } = snap.lookup;
       let local = withCarriedRows(snap.data, base?.data ?? null, known, base?.carried ?? {});
+      // Carried keys this device wrote its own row for: those rows have no common base.
+      const guarded = base !== null ? guardedKeysOf(base.carried, snap.data) : {};
+
+      // Known carried rows (an item a curriculum update made known) go to user.db first, so the
+      // learner sees the synced progress. A local write only; then read again.
+      if (
+        !wroteCarried &&
+        base !== null &&
+        !base.pendingReplace &&
+        !ports.isStudyActive() &&
+        changesDevice(snap.data, local, known)
+      ) {
+        const written = await ports.applyMerge({
+          expectedLocal: snap.data,
+          merged: local,
+          lookup: snap.lookup,
+          base: {
+            revision: base.revision,
+            data: base.data,
+            // Guarded keys stay carried: the device row there is its own, not the base row.
+            carried: carriedKeysOf(base.data, withoutKeys(local, guarded), known),
+          },
+        });
+        if (!written.ok) {
+          return written.error.code === 'sync_local_changed' ? 'retry' : { error: written.error };
+        }
+        wroteCarried = true;
+        if (written.value.changedRows > 0) changedLocal = true;
+        return 'restart';
+      }
 
       if (
         (trigger === 'session_end' || trigger === 'background') &&
@@ -108,6 +162,61 @@ export function createSyncRunner(ports: SyncPorts): {
         return { done: applied ? 'merged' : 'pushed' };
       }
 
+      /** Steps 6b–6f: merge `remoteData` (at `revision`) into this device, then push if needed. */
+      async function mergeRemote(remoteData: BackupData, revision: number): Promise<CycleEnd> {
+        if (base !== null && revision < base.revision) {
+          // A stale base (for example the account was made again): drop it and its carried rows.
+          const cleared = await ports.clearBase();
+          if (!cleared.ok) return { error: cleared.error };
+          base = null;
+          local = snap.data;
+        }
+        const mergeBase =
+          base !== null
+            ? withoutKeys(base.data, guarded)
+            : isEmptyProgress(snap.data)
+              ? local
+              : null;
+        const input = { base: mergeBase, local, remote: remoteData };
+
+        let out = mergeSyncData(input, null);
+        if (out.conflicts.length > 0) {
+          ports.onPhase('conflict');
+          const choice = await ports.askConflict(out.conflicts);
+          ports.onPhase('syncing');
+          out = mergeSyncData(input, choice);
+        }
+        // With a choice there is always a merged file.
+        const merged = out.merged as BackupData;
+
+        if (ports.isStudyActive() && changesDevice(snap.data, merged, known)) {
+          return { done: 'deferred' };
+        }
+
+        // After the apply, user.db holds every known row of `merged`. A remote row `merged` lacks
+        // was deleted by the merge and must not be carried back; only rows for unknown content are.
+        const remoteBase = {
+          revision,
+          data: remoteData,
+          carried: carriedKeysOf(remoteData, remoteData, known),
+        };
+        const apply = await ports.applyMerge({
+          expectedLocal: snap.data,
+          merged,
+          lookup: snap.lookup,
+          base: remoteBase,
+        });
+        if (!apply.ok) {
+          return apply.error.code === 'sync_local_changed' ? 'retry' : { error: apply.error };
+        }
+        applied = true;
+        if (apply.value.changedRows > 0) changedLocal = true;
+
+        if (!sameSyncData(merged, remoteData)) return push(merged, revision, merged);
+        const written = await ports.writeBase(remoteBase, ports.nowIso());
+        return written.ok ? { done: 'pulled' } : { error: written.error };
+      }
+
       const pulled = await ports.api.pull(base?.revision ?? 0);
       if (!pulled.ok) return { error: pulled.error };
       const { revision, bytes } = pulled.value;
@@ -136,7 +245,11 @@ export function createSyncRunner(ports: SyncPorts): {
       if (bytes === null) {
         // The server answers 204 only when `have === revision`, and revision is not 0: a base exists.
         const same = base as SyncBase;
-        if (!sameSyncData(local, same.data)) return push(local, same.revision, snap.data);
+        if (!sameSyncData(local, same.data)) {
+          // A device row for a carried item must go through the merge (and the dialog).
+          if (!isEmptyKeys(guarded)) return mergeRemote(same.data, same.revision);
+          return push(local, same.revision, snap.data);
+        }
         const written = await ports.writeBase(
           {
             revision: same.revision,
@@ -151,53 +264,18 @@ export function createSyncRunner(ports: SyncPorts): {
       // Step 6: merge the remote file.
       const remote = await decodeRemote(bytes);
       if (!remote.ok) return { error: remote.error };
-
-      if (base !== null && revision < base.revision) {
-        // A stale base (for example the account was made again): drop it and its carried rows.
-        const cleared = await ports.clearBase();
-        if (!cleared.ok) return { error: cleared.error };
-        base = null;
-        local = snap.data;
-      }
-      const mergeBase = base !== null ? base.data : isEmptyProgress(snap.data) ? local : null;
-      const input = { base: mergeBase, local, remote: remote.value };
-
-      let out = mergeSyncData(input, null);
-      if (out.conflicts.length > 0) {
-        ports.onPhase('conflict');
-        const choice = await ports.askConflict(out.conflicts);
-        ports.onPhase('syncing');
-        out = mergeSyncData(input, choice);
-      }
-      // With a choice there is always a merged file.
-      const merged = out.merged as BackupData;
-
-      if (ports.isStudyActive() && !sameSyncData(merged, local)) return { done: 'deferred' };
-
-      // After the apply, user.db holds every known row of `merged`. A remote row `merged` lacks was
-      // deleted by the merge and must not be carried back; only rows for unknown content are carried.
-      const remoteBase = {
-        revision,
-        data: remote.value,
-        carried: carriedKeysOf(remote.value, remote.value, known),
-      };
-      const apply = await ports.applyMerge({
-        expectedLocal: snap.data,
-        merged,
-        lookup: snap.lookup,
-        base: remoteBase,
-      });
-      if (!apply.ok) return apply.error.code === 'sync_local_changed' ? 'retry' : { error: apply.error };
-      applied = true;
-      if (apply.value.changedRows > 0) changedLocal = true;
-
-      if (!sameSyncData(merged, remote.value)) return push(merged, revision, merged);
-      const written = await ports.writeBase(remoteBase, ports.nowIso());
-      return written.ok ? { done: 'pulled' } : { error: written.error };
+      return mergeRemote(remote.value, revision);
     }
 
     let end: CycleEnd = 'retry';
-    for (let n = 0; n < MAX_CYCLES && end === 'retry'; n += 1) {
+    let cycles = 0;
+    for (;;) {
+      if (end === 'retry') {
+        if (cycles === MAX_CYCLES) break;
+        cycles += 1;
+      } else if (end !== 'restart') {
+        break;
+      }
       end = await cycle();
     }
     const error = end === 'retry' ? syncError('sync_busy') : 'error' in end ? end.error : null;
@@ -220,6 +298,7 @@ export function createSyncRunner(ports: SyncPorts): {
 
   let current: Promise<SyncRunResult> | null = null;
   let extra: Promise<SyncRunResult> | null = null;
+  let extraTrigger: SyncTrigger = 'session_end';
 
   function begin(trigger: SyncTrigger): Promise<SyncRunResult> {
     const promise = start(trigger).finally(() => {
@@ -231,13 +310,18 @@ export function createSyncRunner(ports: SyncPorts): {
 
   return {
     run(trigger) {
-      if (extra !== null) return extra;
+      if (extra !== null) {
+        // A manual sync always pulls: it upgrades a queued session_end run.
+        if (trigger === 'manual') extraTrigger = 'manual';
+        return extra;
+      }
       if (current === null) return begin(trigger);
       if (trigger !== 'session_end' && trigger !== 'manual') return current;
       // One more full run after the current one, so changes made during it are synced.
+      extraTrigger = trigger;
       const next = (): Promise<SyncRunResult> => {
         extra = null;
-        return begin(trigger);
+        return begin(extraTrigger);
       };
       extra = current.then(next, next);
       return extra;

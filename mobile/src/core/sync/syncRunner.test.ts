@@ -787,4 +787,130 @@ describe('createSyncRunner', () => {
     expect(h.ports.writeError).not.toHaveBeenCalled();
     expect(h.phases).toEqual(['syncing', 'idle']);
   });
+
+  describe('carried items a curriculum update made known', () => {
+    // Item 9 was unknown when the base was written, so its rows were carried; it is known now.
+    const carriedBase = (): BackupData =>
+      file({ srsStates: [srs('1', 1), srs('9', 4)], personalMnemonics: [mnemonic('9', 'nine')] });
+    const carried: CarriedKeys = {
+      srsStates: [rowKey('srsStates', srs('9', 4))],
+      personalMnemonics: [rowKey('personalMnemonics', mnemonic('9', 'nine'))],
+    };
+
+    function carriedItem(db: BackupData, extra: Partial<Parameters<typeof harness>[0]> = {}) {
+      return harness({
+        db,
+        base: { revision: 2, data: carriedBase(), carried },
+        server: serverWith(2, carriedBase()),
+        ...extra,
+      });
+    }
+
+    it('known carried rows are written to the device when the remote is unchanged', async () => {
+      const h = carriedItem(file({ srsStates: [srs('1', 1)] }));
+
+      const result = await h.runner.run('session_end');
+
+      expect(result).toEqual({ status: 'up_to_date', error: null, changedLocal: true });
+      expect(h.ports.applyMerge).toHaveBeenCalledTimes(1);
+      expect(h.device.db).toEqual(carriedBase());
+      expect(h.device.base).toEqual({ revision: 2, data: carriedBase(), pendingReplace: false, carried: {} });
+      expect(h.ports.api.pull).not.toHaveBeenCalled();
+      expect(h.ports.api.push).not.toHaveBeenCalled();
+    });
+
+    it('known carried rows are not written while study is active', async () => {
+      const h = carriedItem(file({ srsStates: [srs('1', 1)] }), { studyActive: true });
+
+      const result = await h.runner.run('session_end');
+
+      expect(result).toEqual({ status: 'up_to_date', error: null, changedLocal: false });
+      expect(h.ports.applyMerge).not.toHaveBeenCalled();
+      expect(h.device.db).toEqual(file({ srsStates: [srs('1', 1)] }));
+      expect(h.device.base?.carried).toEqual(carried);
+    });
+
+    it('a row this device wrote for a carried item opens the dialog when the remote is unchanged', async () => {
+      // The learner studied item 9 here before its synced rows were written.
+      const h = carriedItem(file({ srsStates: [srs('1', 1), srs('9', 1, LOCAL_AT)] }), { choice: 'remote' });
+
+      const result = await h.runner.run('open');
+
+      expect(h.ports.askConflict).toHaveBeenCalledWith([
+        { kind: 'item', item: item('9'), localUpdatedAt: LOCAL_AT, remoteUpdatedAt: T0 },
+      ]);
+      expect(result).toEqual({ status: 'pulled', error: null, changedLocal: true });
+      expect(h.device.db).toEqual(carriedBase());
+      expect(h.ports.api.push).not.toHaveBeenCalled();
+      expect(h.device.base?.carried).toEqual({});
+    });
+
+    it('a row this device wrote for a carried item opens the dialog when the remote changed', async () => {
+      const h = carriedItem(file({ srsStates: [srs('1', 1), srs('9', 1, LOCAL_AT)] }), { choice: 'local' });
+      otherDevicePushes(h.server, file({ ...carriedBase(), srsStates: [srs('1', 2, REMOTE_AT), srs('9', 4)] }));
+
+      const result = await h.runner.run('open');
+
+      expect(h.ports.askConflict).toHaveBeenCalledWith([
+        { kind: 'item', item: item('9'), localUpdatedAt: LOCAL_AT, remoteUpdatedAt: T0 },
+      ]);
+      expect(result.status).toBe('merged');
+      const pushed = serverFile(h.server);
+      expect(pushed.srsStates).toEqual([srs('1', 2, REMOTE_AT), srs('9', 1, LOCAL_AT)]);
+      // The carried mnemonic was written to the device first, so it is on the local side too.
+      expect(pushed.personalMnemonics).toEqual([mnemonic('9', 'nine')]);
+      expect(h.device.db.srsStates).toEqual(pushed.srsStates);
+    });
+
+    it('defer when the apply would change a device row', async () => {
+      // The other device pushed the same content again: the merge equals local, but the apply
+      // would still write item 9's carried rows to user.db.
+      const h = carriedItem(file({ srsStates: [srs('1', 1)] }), { studyActive: true });
+      otherDevicePushes(h.server, file({ ...carriedBase(), srsStates: [srs('1', 1, REMOTE_AT), srs('9', 4)] }));
+
+      const result = await h.runner.run('before_review');
+
+      expect(result).toEqual({ status: 'deferred', error: null, changedLocal: false });
+      noLocalWrites(h.ports);
+      expect(h.device.db).toEqual(file({ srsStates: [srs('1', 1)] }));
+    });
+  });
+
+  it('manual during a queued session_end run upgrades it', async () => {
+    const h = synced();
+    let release = (): void => undefined;
+    const gate = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    const pull = h.ports.api.pull.getMockImplementation() as SyncPorts['api']['pull'];
+    h.ports.api.pull.mockImplementationOnce(async (have: number) => {
+      await gate;
+      return pull(have);
+    });
+
+    const first = h.runner.run('open');
+    const queued = h.runner.run('session_end');
+    const manual = h.runner.run('manual');
+    release();
+
+    expect(manual).toBe(queued);
+    await first;
+    await queued;
+    // A session_end run with no local change makes no request; the manual run pulls.
+    expect(h.ports.api.pull).toHaveBeenCalledTimes(2);
+  });
+
+  it('a rejecting port leaves the phase idle', async () => {
+    const h = synced();
+    const failure = new Error('disk gone');
+    h.ports.readBase.mockRejectedValueOnce(failure);
+
+    // A port that rejects (ports return Results; this is outside the contract) rejects the run.
+    await expect(h.runner.run('open')).rejects.toBe(failure);
+    expect(h.phases).toEqual(['syncing', 'idle']);
+
+    // The runner is free for the next run.
+    const next = await h.runner.run('open');
+    expect(next.status).toBe('up_to_date');
+  });
 });

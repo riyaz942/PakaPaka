@@ -104,6 +104,37 @@ export function withCarriedRows(
   return result;
 }
 
+/**
+ * The carried keys `deviceData` holds: this device wrote its own row for an item it never held
+ * (for example it studied an item a curriculum update made known). That row has no common base.
+ */
+export function guardedKeysOf(carried: CarriedKeys, deviceData: BackupData): CarriedKeys {
+  const guarded: CarriedKeys = {};
+  for (const table of SYNC_TABLE_KEYS) {
+    const carriedKeys = new Set(carried[table] ?? []);
+    if (carriedKeys.size === 0) continue;
+    const keys = deviceData[table]
+      .map((row) => rowKey(table, row))
+      .filter((key) => carriedKeys.has(key))
+      .sort();
+    if (keys.length > 0) guarded[table] = keys;
+  }
+  return guarded;
+}
+
+/** `data` without the rows whose key is in `keys`; a merge base without them compares two-way. */
+export function withoutKeys(data: BackupData, keys: CarriedKeys): BackupData {
+  const result = { ...data };
+  for (const table of SYNC_TABLE_KEYS) {
+    const drop = new Set(keys[table] ?? []);
+    if (drop.size === 0) continue;
+    (result as Record<SyncTableKey, unknown>)[table] = (data[table] as SyncRow<SyncTableKey>[]).filter(
+      (row) => !drop.has(rowKey(table, row)),
+    );
+  }
+  return result;
+}
+
 /** True when the device has no study progress (settings and seen cards do not count). */
 export function isEmptyProgress(data: BackupData): boolean {
   return PROGRESS_TABLES.every((table) => data[table].length === 0);

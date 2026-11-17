@@ -2,9 +2,11 @@ import type { BackupData, ItemRef } from '@/core/backup/backup.types';
 import { diffSyncData } from '@/core/sync/diffSyncData';
 import {
   carriedKeysOf,
+  guardedKeysOf,
   isEmptyProgress,
   mergeSyncData,
   withCarriedRows,
+  withoutKeys,
 } from '@/core/sync/mergeSyncData';
 import type { KnownContent } from '@/core/sync/sync.types';
 import { emptySyncData, fullSampleData } from '@/core/sync/syncSamples.testutil';
@@ -240,6 +242,41 @@ describe('withCarriedRows and mergeSyncData', () => {
       passagePracticeResults: ['9|1'],
       cardSeen: ['welcome'],
     });
+  });
+
+  it('guardedKeysOf lists the carried keys the device holds', () => {
+    const carried = { srsStates: ['vocabulary:x', 'vocabulary:y'], personalMnemonics: ['vocabulary:y'] };
+    const deviceData = data({ srsStates: [srs('a', 1), srs('y', 1)] });
+
+    expect(guardedKeysOf(carried, deviceData)).toEqual({ srsStates: ['vocabulary:y'] });
+    expect(guardedKeysOf({}, deviceData)).toEqual({});
+  });
+
+  it('withoutKeys drops only the listed rows', () => {
+    const base = data({ srsStates: [srs('a', 1), srs('y', 4)], personalMnemonics: [mnemonic('y', 'old')] });
+
+    const result = withoutKeys(base, { srsStates: ['vocabulary:y'] });
+    expect(result.srsStates).toEqual([srs('a', 1)]);
+    expect(result.personalMnemonics).toEqual([mnemonic('y', 'old')]);
+  });
+
+  it('a row the device wrote for a carried item is a conflict against the guarded base', () => {
+    // `y` was carried; this device then studied it and wrote its own row.
+    const base = data({ srsStates: [srs('a', 1), srs('y', 4)] });
+    const carried = { srsStates: ['vocabulary:y'] };
+    const device = data({ srsStates: [srs('a', 1), srs('y', 1, T2)] });
+    const local = withCarriedRows(device, base, knowsAll, carried);
+    const mergeBase = withoutKeys(base, guardedKeysOf(carried, device));
+
+    const result = mergeSyncData({ base: mergeBase, local, remote: base }, null);
+    expect(result.conflicts).toEqual([
+      { kind: 'item', item: item('y'), localUpdatedAt: T2, remoteUpdatedAt: T1 },
+    ]);
+    // Without the guard the device row would silently win.
+    expect(mergeSyncData({ base, local, remote: base }, null).merged?.srsStates).toEqual([
+      srs('a', 1),
+      srs('y', 1, T2),
+    ]);
   });
 
   it('one conflicting row puts the whole item in one entry', () => {
