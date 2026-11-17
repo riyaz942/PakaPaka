@@ -6,7 +6,7 @@ import { Button } from '@/components/common/Button';
 import { useAccount } from '@/providers/AccountProvider';
 import { useSync } from '@/providers/SyncProvider';
 
-/** After this long the learner may start without waiting for the sync. */
+/** After this long the learner may start without waiting for the sync or the account status. */
 const START_NOW_AFTER_MS = 3000;
 
 /**
@@ -39,7 +39,17 @@ export function SyncGate({
   }
 
   useEffect(() => {
-    if (decided.current || status === 'loading') return;
+    if (decided.current) return;
+    if (status === 'loading') {
+      // The status can stay loading on a stalled network: start without a sync (no request).
+      if (mode === 'review' && timer.current === null) {
+        timer.current = setTimeout(() => {
+          decided.current = true;
+          start();
+        }, START_NOW_AFTER_MS);
+      }
+      return;
+    }
     if (mode === 'lesson') {
       if (status === 'signed_in') {
         decided.current = true;
@@ -48,6 +58,7 @@ export function SyncGate({
       return;
     }
     decided.current = true;
+    if (timer.current !== null) clearTimeout(timer.current);
     if (status === 'signed_out') {
       setOpen(true);
       return;

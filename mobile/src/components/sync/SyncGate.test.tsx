@@ -151,7 +151,7 @@ describe('SyncGate', () => {
       mockStatus = 'loading';
       const { rerenderTree, unmount } = renderGate('review');
 
-      act(() => jest.advanceTimersByTime(5000));
+      act(() => jest.advanceTimersByTime(2999));
       expect(screen.queryByText('Syncing your progress…')).toBeNull();
       expect(screen.queryByText('Start now')).toBeNull();
       expect(screen.queryByText('Session')).toBeNull();
@@ -184,5 +184,31 @@ describe('SyncGate', () => {
 
     unmount();
     expect(mockEndStudy).toHaveBeenCalledTimes(1);
+  });
+
+  it('review opened while loading starts after 3 s with no sync text', () => {
+    jest.useFakeTimers();
+    try {
+      mockStatus = 'loading';
+      const { rerenderTree, unmount } = renderGate('review');
+
+      act(() => jest.advanceTimersByTime(2999));
+      expect(screen.queryByText('Session')).toBeNull();
+      act(() => jest.advanceTimersByTime(1));
+
+      expect(screen.getByText('Session')).toBeTruthy();
+      expect(screen.queryByText('Syncing your progress…')).toBeNull();
+      expect(screen.queryByText('Start now')).toBeNull();
+      expect(mockBeginStudy).toHaveBeenCalledTimes(1);
+
+      mockStatus = 'signed_in';
+      rerenderTree();
+      expect(mockRunBeforeReview).not.toHaveBeenCalled();
+      expect(mockBeginStudy).toHaveBeenCalledTimes(1);
+      unmount();
+      expect(mockEndStudy).toHaveBeenCalledTimes(1);
+    } finally {
+      jest.useRealTimers();
+    }
   });
 });

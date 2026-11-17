@@ -92,8 +92,9 @@ export function SyncProvider({
   const studyTimers = useRef(new Set<ReturnType<typeof setTimeout>>());
   /** Answers the waiting conflict dialog; `null` ends that run with nothing written. */
   const conflictAnswer = useRef<((choice: ConflictChoice | null) => void) | null>(null);
-  /** The last run: a sign-out clear and a restore mark wait until it ended. */
+  /** Every run started so far: a sign-out clear and a restore mark wait until they ended. */
   const lastRun = useRef<Promise<void>>(Promise.resolve());
+  const unmounted = useRef(false);
   /** Every run waits for this before it starts: the base clear, or a restore mark. */
   const gate = useRef<Promise<void>>(Promise.resolve());
   /** The last base clear failed; the next run tries once more first. */
@@ -159,14 +160,14 @@ export function SyncProvider({
       clearFailed.current = false;
     }
     const result = await runner.run(trigger);
-    // Signed out meanwhile: the state was reset, and this run shows nothing.
-    if (!signedIn.current) return;
+    // Signed out or unmounted meanwhile: the state was reset, and this run shows nothing.
+    if (!signedIn.current || unmounted.current) return;
     if (result.error?.code === 'session_ended') {
       // The account provider shows the sign-out; it is not a sync error.
       void refreshAccount.current();
     }
     const status = await readSyncStatus(userDb);
-    if (!signedIn.current) return;
+    if (!signedIn.current || unmounted.current) return;
     setState((prev) => ({
       ...prev,
       lastSyncedAt: status.ok ? status.value.lastSyncedAt : prev.lastSyncedAt,
@@ -180,7 +181,8 @@ export function SyncProvider({
 
   function run(trigger: SyncTrigger): Promise<void> {
     const promise = runTrigger(trigger);
-    lastRun.current = promise;
+    // A queued run can end after this one; the wait covers both.
+    lastRun.current = Promise.all([lastRun.current, promise]).then(() => undefined);
     return promise;
   }
 
@@ -221,7 +223,9 @@ export function SyncProvider({
 
   useEffect(() => {
     const timers = studyTimers.current;
+    unmounted.current = false;
     return () => {
+      unmounted.current = true;
       conflictAnswer.current?.(null);
       for (const timer of timers) clearTimeout(timer);
       timers.clear();

@@ -402,11 +402,14 @@ describe('SyncProvider', () => {
       latest.beginStudy();
       latest.endStudy();
     });
+    const statusReads = jest.mocked(readSyncStatus).mock.calls.length;
     unmount();
     await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
 
     expect(appStateRemoves[0]).toHaveBeenCalledTimes(1);
     expect(chosen).toBeNull();
+    // The run the unmount ended reads nothing.
+    expect(readSyncStatus).toHaveBeenCalledTimes(statusReads);
     expect(mockRun).not.toHaveBeenCalledWith('session_end');
   });
 });
