@@ -542,7 +542,7 @@ Rules around the cycle:
 - The file that goes to `encode` is the merged file (with carried rows). The base after a push is exactly that file.
 - Never call `applyMerge` in steps 4 and 5: a push changes no local row.
 
-- [ ] **Step 1: Failing tests** (in-memory fakes for every port; a fake server object with `revision` + `file` that implements `pull`/`push` with real compare-and-swap; `encode`/`decode` replaced by identity wrappers):
+- [x] **Step 1: Failing tests** (in-memory fakes for every port; a fake server object with `revision` + `file` that implements `pull`/`push` with real compare-and-swap; `encode`/`decode` replaced by identity wrappers):
   - `signed out: no port is called`.
   - `first sign-in, account empty → pushes local with base_revision 0 and writes the base`.
   - `first sign-in, device empty → applies the remote file, no push, no dialog`.
@@ -565,8 +565,8 @@ Rules around the cycle:
   - `pending replace → pushes local over the remote without a merge and clears the flag`; `pending replace with a newer remote schema → sync_update_required`.
   - `second run while the first is in flight returns the same promise`; `a session_end trigger during a run starts one more run`.
   - `quota error from the API is returned as paused and written as the last error`.
-- [ ] **Step 2:** Run `npx jest src/core/sync/syncRunner.test.ts` → FAIL. Implement. Run → PASS.
-- [ ] **Step 3: Commit** `feat(sync): sync runner with compare-and-swap retry and conflict hold`.
+- [x] **Step 2:** Run `npx jest src/core/sync/syncRunner.test.ts` → FAIL. Implement. Run → PASS.
+- [x] **Step 3: Commit** `feat(sync): sync runner with compare-and-swap retry and conflict hold`.
 
 ---
 
