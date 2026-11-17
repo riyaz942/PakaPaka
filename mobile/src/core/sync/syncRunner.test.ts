@@ -461,6 +461,53 @@ describe('createSyncRunner', () => {
     expect(h.phases).toEqual(['syncing', 'idle']);
   });
 
+  /** This device deleted mnemonic 2; the other device changed srs 2. */
+  function localDeleteRemoteChange() {
+    const h = synced();
+    h.device.db = file({ ...syncedFile(), personalMnemonics: [mnemonic('1', 'one')] });
+    otherDevicePushes(h.server, file({ ...syncedFile(), srsStates: [srs('1', 1), srs('2', 2, REMOTE_AT)] }));
+    return h;
+  }
+
+  it('a local delete survives a 409 after an apply', async () => {
+    const h = localDeleteRemoteChange();
+    h.server.beforePush = () => {
+      h.server.beforePush = null;
+      otherDevicePushes(
+        h.server,
+        file({
+          ...syncedFile(),
+          srsStates: [srs('1', 1), srs('2', 2, REMOTE_AT)],
+          cardSeen: [{ cardId: 'welcome', seenAt: REMOTE_AT }],
+        }),
+      );
+    };
+
+    const result = await h.runner.run('open');
+
+    expect(result.status).toBe('merged');
+    expect(h.ports.api.push).toHaveBeenCalledTimes(2);
+    expect(h.device.db.personalMnemonics).toEqual([mnemonic('1', 'one')]);
+    expect(serverFile(h.server).personalMnemonics).toEqual([mnemonic('1', 'one')]);
+    expect(h.device.base?.carried).toEqual({});
+  });
+
+  it('a local delete survives a network error on the push after an apply', async () => {
+    const h = localDeleteRemoteChange();
+    h.server.failPush = apiError('network');
+
+    const first = await h.runner.run('open');
+    expect(first.error?.code).toBe('network');
+    expect(h.device.base?.carried).toEqual({});
+
+    const second = await h.runner.run('open');
+
+    expect(second.status).toBe('pushed');
+    expect(h.device.db.personalMnemonics).toEqual([mnemonic('1', 'one')]);
+    expect(serverFile(h.server).personalMnemonics).toEqual([mnemonic('1', 'one')]);
+    expect(serverFile(h.server).srsStates).toEqual([srs('1', 1), srs('2', 2, REMOTE_AT)]);
+  });
+
   it('local change during a run restarts the cycle', async () => {
     const h = synced();
     const remote = file({ ...syncedFile(), srsStates: [srs('1', 1), srs('2', 2, REMOTE_AT)] });

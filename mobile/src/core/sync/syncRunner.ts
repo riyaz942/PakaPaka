@@ -174,10 +174,12 @@ export function createSyncRunner(ports: SyncPorts): {
 
       if (ports.isStudyActive() && !sameSyncData(merged, local)) return { done: 'deferred' };
 
+      // After the apply, user.db holds every known row of `merged`. A remote row `merged` lacks was
+      // deleted by the merge and must not be carried back; only rows for unknown content are carried.
       const remoteBase = {
         revision,
         data: remote.value,
-        carried: carriedKeysOf(remote.value, merged, known),
+        carried: carriedKeysOf(remote.value, remote.value, known),
       };
       const apply = await ports.applyMerge({
         expectedLocal: snap.data,
