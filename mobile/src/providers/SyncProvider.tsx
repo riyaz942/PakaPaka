@@ -89,9 +89,15 @@ export function SyncProvider({
   const refreshAccount = useRef(account.refresh);
   refreshAccount.current = account.refresh;
   const studyCount = useRef(0);
-  const conflictAnswer = useRef<((choice: ConflictChoice) => void) | null>(null);
+  const studyTimers = useRef(new Set<ReturnType<typeof setTimeout>>());
+  /** Answers the waiting conflict dialog; `null` ends that run with nothing written. */
+  const conflictAnswer = useRef<((choice: ConflictChoice | null) => void) | null>(null);
   /** The last run: a sign-out clear and a restore mark wait until it ended. */
   const lastRun = useRef<Promise<void>>(Promise.resolve());
+  /** Every run waits for this before it starts: the base clear, or a restore mark. */
+  const gate = useRef<Promise<void>>(Promise.resolve());
+  /** The last base clear failed; the next run tries once more first. */
+  const clearFailed = useRef(false);
 
   const merge = (patch: Partial<State>) => setState((prev) => ({ ...prev, ...patch }));
 
@@ -118,8 +124,11 @@ export function SyncProvider({
         encode: encodeSyncFile,
         decode: decodeSyncFile,
         askConflict: (entries) =>
-          new Promise<ConflictChoice>((resolve) => {
-            conflictAnswer.current = resolve;
+          new Promise<ConflictChoice | null>((resolve) => {
+            conflictAnswer.current = (choice) => {
+              conflictAnswer.current = null;
+              resolve(choice);
+            };
             setState((prev) => ({ ...prev, conflicts: entries }));
           }),
         isStudyActive: () => studyCount.current > 0,
@@ -129,14 +138,35 @@ export function SyncProvider({
     [userDb, session],
   );
 
+  /** Runs `task` after the gate and the last run; a run that starts meanwhile waits for it. */
+  function hold<T>(task: () => Promise<T>): Promise<T> {
+    const held = Promise.all([gate.current, lastRun.current]).then(task);
+    gate.current = held.then(
+      () => undefined,
+      () => undefined,
+    );
+    return held;
+  }
+
   async function runTrigger(trigger: SyncTrigger): Promise<void> {
+    await gate.current;
+    if (signedIn.current && clearFailed.current) {
+      const cleared = await clearSyncBase(userDb);
+      if (!cleared.ok) {
+        merge({ error: cleared.error.userMessage ?? null });
+        return;
+      }
+      clearFailed.current = false;
+    }
     const result = await runner.run(trigger);
-    if (result.status === 'skipped') return;
+    // Signed out meanwhile: the state was reset, and this run shows nothing.
+    if (!signedIn.current) return;
     if (result.error?.code === 'session_ended') {
       // The account provider shows the sign-out; it is not a sync error.
       void refreshAccount.current();
     }
     const status = await readSyncStatus(userDb);
+    if (!signedIn.current) return;
     setState((prev) => ({
       ...prev,
       lastSyncedAt: status.ok ? status.value.lastSyncedAt : prev.lastSyncedAt,
@@ -158,8 +188,9 @@ export function SyncProvider({
   useEffect(() => {
     if (status === 'signed_in') {
       void (async () => {
+        await gate.current;
         const stored = await readSyncStatus(userDb);
-        if (stored.ok) {
+        if (stored.ok && signedIn.current) {
           merge({
             lastSyncedAt: stored.value.lastSyncedAt,
             error:
@@ -174,15 +205,28 @@ export function SyncProvider({
       return () => subscription.remove();
     }
     if (status === 'signed_out') {
-      // A run that is still going could write the base after the clear.
-      void lastRun.current.then(() => clearSyncBase(userDb));
+      // A waiting dialog ends its run, so the clear (after the last run) can go ahead.
+      conflictAnswer.current?.(null);
       studyCount.current = 0;
       setState(INITIAL_STATE);
+      void hold(async () => {
+        const cleared = await clearSyncBase(userDb);
+        clearFailed.current = !cleared.ok;
+      });
     }
     return undefined;
-    // run is recreated each render; the triggers follow the account status only.
+    // run and hold are recreated each render; the triggers follow the account status only.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, userDb]);
+
+  useEffect(() => {
+    const timers = studyTimers.current;
+    return () => {
+      conflictAnswer.current?.(null);
+      for (const timer of timers) clearTimeout(timer);
+      timers.clear();
+    };
+  }, []);
 
   const value: SyncContextValue = {
     ...state,
@@ -190,10 +234,8 @@ export function SyncProvider({
     syncNow: () => run('manual'),
 
     chooseConflict(choice) {
-      const answer = conflictAnswer.current;
-      conflictAnswer.current = null;
       merge({ conflicts: null });
-      answer?.(choice);
+      conflictAnswer.current?.(choice);
     },
 
     runBeforeReview: () => run('before_review'),
@@ -205,24 +247,27 @@ export function SyncProvider({
     endStudy() {
       studyCount.current = Math.max(0, studyCount.current - 1);
       // After the current tick, so the session's last writes are done first.
-      setTimeout(() => void run('session_end'), 0);
+      const timer = setTimeout(() => {
+        studyTimers.current.delete(timer);
+        void run('session_end');
+      }, 0);
+      studyTimers.current.add(timer);
     },
 
     async replaceRemoteAfterRestore(data) {
       if (!signedIn.current) return;
-      // A run that is still going writes its base when it ends; that write clears the mark.
-      await lastRun.current;
-      const snapshot = await readSyncSnapshot(userDb);
-      if (!snapshot.ok) {
-        merge({ error: snapshot.error.userMessage ?? null });
-        return;
-      }
-      const file = toSyncData(data);
-      const marked = await markPendingReplace(
-        userDb,
-        file,
-        carriedKeysOf(file, snapshot.value.data, snapshot.value.lookup.known),
-      );
+      // A run that is still going writes its base when it ends, and that write clears the mark;
+      // so the mark waits for the last run, and no run starts until it is written.
+      const marked = await hold(async () => {
+        const snapshot = await readSyncSnapshot(userDb);
+        if (!snapshot.ok) return snapshot;
+        const file = toSyncData(data);
+        return markPendingReplace(
+          userDb,
+          file,
+          carriedKeysOf(file, snapshot.value.data, snapshot.value.lookup.known),
+        );
+      });
       if (!marked.ok) {
         merge({ error: marked.error.userMessage ?? null });
         return;

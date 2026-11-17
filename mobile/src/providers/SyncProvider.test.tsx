@@ -8,6 +8,7 @@ import type { BackupData } from '@/core/backup/backup.types';
 import { carriedKeysOf } from '@/core/sync/mergeSyncData';
 import type { ConflictChoice, ConflictEntry } from '@/core/sync/sync.types';
 import { toSyncData } from '@/core/sync/syncFile';
+import { syncError, syncErrorMessage } from '@/core/sync/syncMessages';
 import type { SyncPorts, SyncRunResult, SyncTrigger } from '@/core/sync/syncRunner';
 import { fullSampleData } from '@/core/sync/syncSamples.testutil';
 import { clearSyncBase, markPendingReplace, readSyncStatus } from '@/data/sync/syncBaseStore';
@@ -58,6 +59,23 @@ jest.mock('@/core/sync/syncRunner', () => ({
 }));
 
 const UP_TO_DATE: SyncRunResult = { status: 'up_to_date', error: null, changedLocal: false };
+const ENTRIES: ConflictEntry[] = [
+  {
+    kind: 'item',
+    item: { itemType: 'kanji', slug: 'water' },
+    localUpdatedAt: '2026-11-16T08:00:00.000Z',
+    remoteUpdatedAt: '2026-11-16T09:00:00.000Z',
+  },
+];
+
+/** A promise the test settles by hand. */
+function deferred<T>() {
+  let resolve!: (value: T) => void;
+  const promise = new Promise<T>((done) => {
+    resolve = done;
+  });
+  return { promise, resolve };
+}
 const SYNCED_AT = '2026-11-17T10:00:00.000Z';
 
 function fakeSession(): jest.Mocked<AccountSession> {
@@ -90,6 +108,7 @@ function renderProvider(session: AccountSession = fakeSession()) {
 }
 
 let appStateHandlers: ((state: AppStateStatus) => void)[];
+let appStateRemoves: jest.Mock[];
 let addListenerSpy: jest.SpyInstance;
 let fetchSpy: jest.Mock;
 
@@ -104,9 +123,12 @@ beforeEach(() => {
   jest.mocked(clearSyncBase).mockResolvedValue({ ok: true, value: undefined });
   jest.mocked(markPendingReplace).mockResolvedValue({ ok: true, value: undefined });
   appStateHandlers = [];
+  appStateRemoves = [];
   addListenerSpy = jest.spyOn(AppState, 'addEventListener').mockImplementation((_type, handler) => {
     appStateHandlers.push(handler as (state: AppStateStatus) => void);
-    return { remove: jest.fn() } as unknown as ReturnType<typeof AppState.addEventListener>;
+    const remove = jest.fn();
+    appStateRemoves.push(remove);
+    return { remove } as unknown as ReturnType<typeof AppState.addEventListener>;
   });
   fetchSpy = jest.fn();
   global.fetch = fetchSpy as unknown as typeof fetch;
@@ -180,14 +202,7 @@ describe('SyncProvider', () => {
   });
 
   it('conflict: conflicts is set until chooseConflict, then the run continues', async () => {
-    const entries: ConflictEntry[] = [
-      {
-        kind: 'item',
-        item: { itemType: 'kanji', slug: 'water' },
-        localUpdatedAt: '2026-11-16T08:00:00.000Z',
-        remoteUpdatedAt: '2026-11-16T09:00:00.000Z',
-      },
-    ];
+    const entries = ENTRIES;
     let chosen: ConflictChoice | null = null;
     mockRun.mockImplementation(async () => {
       chosen = await mockPorts.askConflict(entries);
@@ -292,5 +307,106 @@ describe('SyncProvider', () => {
       ),
     );
     expect(mockRefresh).not.toHaveBeenCalled();
+  });
+
+  it('sign-out while the conflict dialog waits ends the run and clears the base', async () => {
+    let chosen: ConflictChoice | null | undefined;
+    mockRun.mockImplementation(async () => {
+      chosen = await mockPorts.askConflict(ENTRIES);
+      return chosen === null
+        ? { status: 'skipped', error: null, changedLocal: false }
+        : { status: 'merged', error: null, changedLocal: true };
+    });
+    mockStatus = 'signed_in';
+    const { rerenderTree } = renderProvider();
+    await waitFor(() => expect(latest.conflicts).toEqual(ENTRIES));
+    const statusReads = jest.mocked(readSyncStatus).mock.calls.length;
+
+    mockStatus = 'signed_out';
+    rerenderTree();
+
+    await waitFor(() => expect(clearSyncBase).toHaveBeenCalledWith(mockUserDb));
+    expect(chosen).toBeNull();
+    expect(latest.conflicts).toBeNull();
+    expect(latest.appliedVersion).toBe(0);
+    // The run that ended after the sign-out reads and shows nothing.
+    expect(readSyncStatus).toHaveBeenCalledTimes(statusReads);
+  });
+
+  it('a new sign-in waits for the old base clear', async () => {
+    mockStatus = 'signed_in';
+    const { rerenderTree } = renderProvider();
+    await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(1));
+
+    const clear = deferred<{ ok: true; value: undefined }>();
+    jest.mocked(clearSyncBase).mockReturnValueOnce(clear.promise);
+    mockStatus = 'signed_out';
+    rerenderTree();
+    await waitFor(() => expect(clearSyncBase).toHaveBeenCalledTimes(1));
+    mockStatus = 'signed_in';
+    rerenderTree();
+    await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+    expect(mockRun).toHaveBeenCalledTimes(1);
+
+    await act(async () => clear.resolve({ ok: true, value: undefined }));
+
+    await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(2));
+    expect(mockRun).toHaveBeenLastCalledWith('open');
+  });
+
+  it('a failed base clear is tried once more at the next run, then shows its error', async () => {
+    mockStatus = 'signed_in';
+    const { rerenderTree } = renderProvider();
+    await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(1));
+    const failed = { ok: false as const, error: syncError('sync_local_failed') };
+    jest.mocked(clearSyncBase).mockResolvedValueOnce(failed).mockResolvedValueOnce(failed);
+
+    mockStatus = 'signed_out';
+    rerenderTree();
+    await waitFor(() => expect(clearSyncBase).toHaveBeenCalledTimes(1));
+    mockStatus = 'signed_in';
+    rerenderTree();
+
+    await waitFor(() => expect(latest.error).toBe(syncErrorMessage('sync_local_failed')));
+    expect(clearSyncBase).toHaveBeenCalledTimes(2);
+    expect(mockRun).toHaveBeenCalledTimes(1);
+
+    await act(() => latest.syncNow());
+    expect(clearSyncBase).toHaveBeenCalledTimes(3);
+    expect(mockRun).toHaveBeenCalledTimes(2);
+    expect(mockRun).toHaveBeenLastCalledWith('manual');
+  });
+
+  it('the AppState listener is removed on sign-out', async () => {
+    mockStatus = 'signed_in';
+    const { rerenderTree } = renderProvider();
+    await waitFor(() => expect(appStateRemoves).toHaveLength(1));
+
+    mockStatus = 'signed_out';
+    rerenderTree();
+
+    expect(appStateRemoves[0]).toHaveBeenCalledTimes(1);
+  });
+
+  it('unmount removes the AppState listener, ends a waiting conflict and cancels a pending session_end run', async () => {
+    let chosen: ConflictChoice | null | undefined;
+    mockRun.mockImplementationOnce(async () => {
+      chosen = await mockPorts.askConflict(ENTRIES);
+      return { status: 'skipped', error: null, changedLocal: false };
+    });
+    mockStatus = 'signed_in';
+    const { unmount } = renderProvider();
+    await waitFor(() => expect(latest.conflicts).toEqual(ENTRIES));
+
+    act(() => {
+      latest.beginStudy();
+      latest.endStudy();
+    });
+    unmount();
+    await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+
+    expect(appStateRemoves[0]).toHaveBeenCalledTimes(1);
+    expect(chosen).toBeNull();
+    expect(mockRun).not.toHaveBeenCalledWith('session_end');
   });
 });

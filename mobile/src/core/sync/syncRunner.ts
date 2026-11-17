@@ -48,7 +48,8 @@ export type SyncPorts = {
   api: SyncApi;
   encode: typeof encodeSyncFile;
   decode: typeof decodeSyncFile;
-  askConflict(entries: ConflictEntry[]): Promise<ConflictChoice>;
+  /** `null`: no answer (signed out, or the app closed); the run ends and writes nothing. */
+  askConflict(entries: ConflictEntry[]): Promise<ConflictChoice | null>;
   isStudyActive(): boolean;
   onPhase(phase: 'idle' | 'syncing' | 'conflict'): void;
   nowIso(): string;
@@ -201,6 +202,7 @@ export function createSyncRunner(ports: SyncPorts): {
           ports.onPhase('conflict');
           const choice = await ports.askConflict(out.conflicts);
           ports.onPhase('syncing');
+          if (choice === null) return { done: 'skipped' };
           out = mergeSyncData(input, choice);
         }
         // With a choice there is always a merged file.

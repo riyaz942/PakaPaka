@@ -26,11 +26,13 @@ jest.mock('react-native-safe-area-context', () => {
 });
 
 function renderGate(mode: 'review' | 'lesson') {
-  return render(
+  const tree = () => (
     <SyncGate mode={mode}>
       <Text>Session</Text>
-    </SyncGate>,
+    </SyncGate>
   );
+  const view = render(tree());
+  return { ...view, rerenderTree: () => view.rerender(tree()) };
 }
 
 /** A promise the test settles by hand. */
@@ -120,6 +122,67 @@ describe('SyncGate', () => {
 
     unmount();
 
+    expect(mockEndStudy).toHaveBeenCalledTimes(1);
+  });
+
+  it('review opened while the account is loading waits, then pulls once signed in', async () => {
+    mockStatus = 'loading';
+    const run = deferred();
+    mockRunBeforeReview.mockReturnValue(run.promise);
+    const { rerenderTree } = renderGate('review');
+
+    expect(screen.queryByText('Session')).toBeNull();
+    expect(mockRunBeforeReview).not.toHaveBeenCalled();
+
+    mockStatus = 'signed_in';
+    rerenderTree();
+    expect(screen.getByText('Syncing your progress…')).toBeTruthy();
+    expect(mockRunBeforeReview).toHaveBeenCalledTimes(1);
+
+    await act(async () => run.resolve());
+
+    expect(screen.getByText('Session')).toBeTruthy();
+    expect(mockBeginStudy).toHaveBeenCalledTimes(1);
+  });
+
+  it('review opened while loading shows no sync text and renders children when signed out', () => {
+    jest.useFakeTimers();
+    try {
+      mockStatus = 'loading';
+      const { rerenderTree, unmount } = renderGate('review');
+
+      act(() => jest.advanceTimersByTime(5000));
+      expect(screen.queryByText('Syncing your progress…')).toBeNull();
+      expect(screen.queryByText('Start now')).toBeNull();
+      expect(screen.queryByText('Session')).toBeNull();
+
+      mockStatus = 'signed_out';
+      rerenderTree();
+
+      expect(screen.getByText('Session')).toBeTruthy();
+      unmount();
+      expect(mockRunBeforeReview).not.toHaveBeenCalled();
+      expect(mockBeginStudy).not.toHaveBeenCalled();
+      expect(mockEndStudy).not.toHaveBeenCalled();
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('lesson mode begins study when the account becomes signed in', () => {
+    mockStatus = 'loading';
+    const { rerenderTree, unmount } = renderGate('lesson');
+
+    expect(screen.getByText('Session')).toBeTruthy();
+    expect(mockBeginStudy).not.toHaveBeenCalled();
+
+    mockStatus = 'signed_in';
+    rerenderTree();
+    expect(mockBeginStudy).toHaveBeenCalledTimes(1);
+    rerenderTree();
+    expect(mockBeginStudy).toHaveBeenCalledTimes(1);
+
+    unmount();
     expect(mockEndStudy).toHaveBeenCalledTimes(1);
   });
 });

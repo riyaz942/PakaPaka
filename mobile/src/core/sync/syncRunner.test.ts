@@ -124,7 +124,7 @@ function harness(options: {
   server: Server;
   unknownSlugs?: string[];
   studyActive?: boolean;
-  choice?: 'local' | 'remote';
+  choice?: ConflictChoice | null;
   signedIn?: boolean;
 }) {
   const unknown = new Set(options.unknownSlugs ?? []);
@@ -217,7 +217,9 @@ function harness(options: {
     },
     encode: jest.fn(encode),
     decode: jest.fn(decode),
-    askConflict: jest.fn<Promise<ConflictChoice>, [ConflictEntry[]]>(async () => options.choice ?? 'local'),
+    askConflict: jest.fn<Promise<ConflictChoice | null>, [ConflictEntry[]]>(async () =>
+      options.choice === undefined ? 'local' : options.choice,
+    ),
     isStudyActive: jest.fn(() => options.studyActive ?? false),
     onPhase: jest.fn((phase: 'idle' | 'syncing' | 'conflict') => {
       phases.push(phase);
@@ -377,7 +379,7 @@ describe('createSyncRunner', () => {
     expect(h.device.base?.data).toEqual(serverFile(h.server));
   });
 
-  function sameItemChanged(choice: 'local' | 'remote') {
+  function sameItemChanged(choice: ConflictChoice | null) {
     const h = synced({ choice });
     // Item 1 changed on both sides; item 2 changed only here, so a push follows either way.
     h.device.db = file({
@@ -421,6 +423,19 @@ describe('createSyncRunner', () => {
     const pushed = serverFile(h.server);
     expect(pushed.srsStates).toEqual([srs('1', 3, REMOTE_AT), srs('2', 2, LOCAL_AT)]);
     expect(pushed.personalMnemonics).toEqual([mnemonic('1', 'web', REMOTE_AT), mnemonic('2', 'two')]);
+  });
+
+  it('a conflict answered with null ends the run with no apply and no push', async () => {
+    const h = sameItemChanged(null);
+
+    const result = await h.runner.run('open');
+
+    expect(result).toEqual({ status: 'skipped', error: null, changedLocal: false });
+    expect(h.ports.askConflict).toHaveBeenCalledTimes(1);
+    noLocalWrites(h.ports);
+    expect(h.ports.api.push).not.toHaveBeenCalled();
+    expect(h.ports.writeError).not.toHaveBeenCalled();
+    expect(h.phases).toEqual(['syncing', 'conflict', 'syncing', 'idle']);
   });
   it('409 on push → pulls again and merges again, then pushes', async () => {
     const h = synced();
