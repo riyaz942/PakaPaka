@@ -28,6 +28,7 @@ import {
 } from '@/components/onboarding/cardRegistry';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import { AccountSettingsSection } from '@/components/settings/AccountSettingsSection';
+import { leaveAfterErase } from '@/components/settings/leaveAfterErase';
 import {
   cancelAllNotifications,
   requestNotificationPermission,
@@ -464,7 +465,7 @@ export default function SettingsScreen() {
       return;
     }
     clearBackupPreview();
-    router.replace('/onboarding/welcome');
+    leaveAfterErase();
   };
 
   const handleResetOnboarding = () => {
