@@ -13,7 +13,12 @@ import {
   isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
 
-export function useOnboardingRedirect(): void {
+/**
+ * `appliedVersion` comes from the sync: a pull can write the account's progress
+ * (onboarding completed included) while the learner stays on one screen, so the
+ * check runs again each time it goes up.
+ */
+export function useOnboardingRedirect(appliedVersion = 0): void {
   const { userDb } = useDatabase();
   const segments = useSegments();
   const navigationState = useRootNavigationState();
@@ -68,5 +73,5 @@ export function useOnboardingRedirect(): void {
     // Beginner path skips placement — there is nothing below N5 to calibrate.
     const manualPath = getOnboardingPath(userDb) === 'manual';
     router.replace(manualPath ? '/onboarding/placement' : '/onboarding/complete');
-  }, [userDb, segments, navigationState?.key]);
+  }, [userDb, segments, navigationState?.key, appliedVersion]);
 }

@@ -279,4 +279,25 @@ describe('useOnboardingRedirect', () => {
       expect(mockReplace).toHaveBeenCalledWith('/dashboard');
     });
   });
+
+  it('checks again after a sync writes onboarding completed, on the same screen', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    mockSegments = ['onboarding', 'welcome'];
+
+    const wrapper = await createWrapper(db);
+    const { rerender } = renderHook(
+      ({ appliedVersion }: { appliedVersion: number }) => useOnboardingRedirect(appliedVersion),
+      { wrapper, initialProps: { appliedVersion: 0 } },
+    );
+    expect(mockReplace).not.toHaveBeenCalled();
+
+    // The sync applies the account's progress; the screen does not change.
+    setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    rerender({ appliedVersion: 1 });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
+    });
+  });
 });
