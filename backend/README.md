@@ -28,7 +28,7 @@ The server never receives BYOK keys or AI conversations. The server never stores
 | `DELETE /api/account/devices/:id` | Remove one device |
 | `POST /api/account/signout-all` | Sign out every device |
 | `DELETE /api/account` | Delete the account |
-| `GET /api/sync?have=<revision>` | Download the progress file. `204` when the server has no newer file. `X-Sync-Revision` gives the server revision |
+| `GET /api/sync?have=<revision>` | Download the progress file. `204` only when `have` equals the server revision; any other `have` gets `200` with the file. `X-Sync-Revision` gives the server revision |
 | `PUT /api/sync?base_revision=<revision>` | Upload the progress file (gzip). `409 revision_conflict` when `base_revision` is not the server revision |
 
 The progress files are in R2 at `progress/<userId>/<revision, 10 digits>-<uuid>.json.gz`. D1 `sync_state` holds the current revision and `object_key`, the key of the current file.

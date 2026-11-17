@@ -16,6 +16,7 @@ import {
   type KnownContent,
 } from '@/core/sync/sync.types';
 import type { decodeSyncFile, encodeSyncFile } from '@/core/sync/syncCodec';
+import { toSyncData, validateSyncData } from '@/core/sync/syncFile';
 import { syncError } from '@/core/sync/syncMessages';
 import type { SyncApi } from '@/data/sync/syncApi';
 import type { SyncBase } from '@/data/sync/syncBaseStore';
@@ -156,14 +157,22 @@ export function createSyncRunner(ports: SyncPorts): {
         baseRevision: number,
         deviceData: BackupData,
       ): Promise<CycleEnd> {
-        const bytes = await ports.encode(
-          {
-            schemaVersion: snap.schemaVersion,
-            curriculumVersion: snap.lookup.curriculumVersion,
-            exportedAt: ports.nowIso(),
-          },
-          fileData,
-        );
+        // One bad local row would make every other device fail to read the file.
+        const checked = validateSyncData(toSyncData(fileData));
+        if (!checked.ok) return { error: checked.error };
+        let bytes: Uint8Array;
+        try {
+          bytes = await ports.encode(
+            {
+              schemaVersion: snap.schemaVersion,
+              curriculumVersion: snap.lookup.curriculumVersion,
+              exportedAt: ports.nowIso(),
+            },
+            fileData,
+          );
+        } catch (cause) {
+          return { error: syncError('sync_local_failed', cause) };
+        }
         const pushed = await ports.api.push(baseRevision, bytes);
         if (!pushed.ok) {
           return pushed.error.code === 'revision_conflict' ? 'retry' : { error: pushed.error };

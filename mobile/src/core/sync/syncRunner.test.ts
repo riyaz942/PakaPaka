@@ -581,6 +581,39 @@ describe('createSyncRunner', () => {
     expect(h.ports.writeError).toHaveBeenCalledWith('sync_bad_file');
   });
 
+  it('an invalid local row is not pushed', async () => {
+    const bad = { ...srs('1', 1), reps: 'many' } as unknown as Row<'srsStates'>;
+    const h = harness({
+      db: file({ srsStates: [bad, srs('2', 1)] }),
+      base: null,
+      server: serverWith(0, null),
+    });
+
+    const result = await h.runner.run('open');
+
+    expect(result.status).toBe('error');
+    expect(result.error?.code).toBe('sync_bad_file');
+    expect(h.ports.api.push).not.toHaveBeenCalled();
+    expect(h.server.revision).toBe(0);
+    expect(h.server.bytes).toBeNull();
+    expect(h.ports.writeBase).not.toHaveBeenCalled();
+    expect(h.ports.writeError).toHaveBeenCalledWith('sync_bad_file');
+  });
+
+  it('an encode failure stops the run with an error and pushes nothing', async () => {
+    const h = harness({ db: syncedFile(), base: null, server: serverWith(0, null) });
+    h.ports.encode.mockRejectedValueOnce(new Error('boom'));
+
+    const result = await h.runner.run('open');
+
+    expect(result.status).toBe('error');
+    expect(result.error?.code).toBe('sync_local_failed');
+    expect(h.ports.api.push).not.toHaveBeenCalled();
+    expect(h.server.revision).toBe(0);
+    expect(h.ports.writeBase).not.toHaveBeenCalled();
+    expect(h.ports.writeError).toHaveBeenCalledWith('sync_local_failed');
+  });
+
   it('remote schemaVersion newer → sync_update_required, no apply, no push', async () => {
     const h = synced();
     const newer = serverWith(3, file({ ...syncedFile(), srsStates: [srs('1', 9, REMOTE_AT)] }), SCHEMA + 1);

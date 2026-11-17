@@ -79,7 +79,7 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - Discovery: single **Browse** surface (search + filters); passages unlock at ≥90% Guru+ coverage — no separate Read tab
 - Review: **two-card kanji** (meaning + on'yomi; kun'yomi via vocab); worst-of-both SRS grade; Return-to-advance
 - AI Conversation (Talk tab): BYOK (OpenAI-compatible + Anthropic); curriculum furigana-bracket replies; unknown words flagged only (no direct SRS injection). **Network-required** (NFR24); sign-in and sync (web + mobile) also use the network, and are optional. Voice (on-device TTS/STT) is in scope
-- Sync (optional, signed-in only): built. One progress file per user (the backup format, no conversations); three-way merge on the device; one conflict dialog when both devices changed the same row
+- Sync (optional, signed-in only): built (not deployed yet; see docs/working-history.md). One progress file per user (the backup format, no conversations); three-way merge on the device; one conflict dialog when both devices changed the same row
 - Platform floor: **iOS 17 / Android 13 (API 33)** + New Architecture
 
 ## Hard conventions
