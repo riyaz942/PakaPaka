@@ -133,6 +133,16 @@ describe('landing scroll story math', () => {
     expect(S.countValue(2000, 0.5)).toBe(1750);
   });
 
+  it('lays out the scenes once before it waits for late fonts', () => {
+    // document.fonts.ready read before the first layout can be a promise that is already
+    // resolved (no font load started yet): then no layout runs after the real fonts arrive.
+    const start = html.slice(html.indexOf('// ---- start the scroll story'));
+    const first = start.indexOf('layoutScenes();');
+    const fonts = start.indexOf('document.fonts.ready.then(layoutScenes)');
+    expect(first).toBeGreaterThan(-1);
+    expect(fonts).toBeGreaterThan(first);
+  });
+
   it('every scene state is non-decreasing in p', () => {
     const scenes: ((p: number) => Record<string, unknown>)[] = [
       p => S.chainState(p),

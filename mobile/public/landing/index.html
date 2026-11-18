@@ -299,6 +299,7 @@ footer a { color: var(--muted); }
    parent's content box, so padding would give it no room. */
 .anim .story.pinned::after { content: ""; display: block; height: var(--story-len); }
 .anim .story.pinned > .story-pin { position: sticky; top: var(--pin-top); }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .anim .stroke path { stroke-dashoffset: 320; transition: stroke-dashoffset .9s cubic-bezier(.6, 0, .2, 1) .7s; }
 .anim .hero h1.in .stroke path { stroke-dashoffset: 0; }
 .anim [data-reveal].in .square { animation: stamp .6s cubic-bezier(.3, 1.7, .5, 1) .15s both; }
@@ -647,6 +648,14 @@ if (ANIM) {
 const scenes = [];
 const lerp = (a, b, t) => a + (b - a) * t;
 const centre = node => { const r = node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+/** A screen reader gets the final text of `node`, not the text the scroll is typing or counting. */
+function finalForScreenReaders(node) {
+  const copy = document.createElement('span');
+  copy.className = 'sr-only';
+  copy.textContent = node.textContent;
+  node.after(copy);
+  node.setAttribute('aria-hidden', 'true');
+}
 /** `layout` (optional) measures what the draw needs; it runs in layoutScenes, not in each frame. */
 function addScene(wrapId, lenVh, draw, layout) {
   const wrap = document.getElementById(wrapId);
@@ -810,6 +819,7 @@ if (ANIM) {
   const makeToken = (text, kind) => {
     const token = document.createElement('div');
     token.className = 'token hero-jp ' + kind;
+    token.setAttribute('aria-hidden', 'true');
     token.textContent = text;
     document.body.appendChild(token);
     return token;
@@ -889,6 +899,7 @@ if (ANIM) {
   const readText = read.querySelector('.typed'), buildText = build.querySelector('.typed');
   const readFinal = Array.from(readText.textContent), buildFinal = Array.from(buildText.textContent);
   const buildFinalHtml = buildText.innerHTML;
+  [readText, buildText].forEach(finalForScreenReaders);
   // Write the text only when it changes, so the mark stamp plays once for each change.
   let readShown = null, buildShown = null;
   addScene('story-grammar', 1, (p, scene) => {
@@ -923,6 +934,7 @@ if (ANIM) {
   const apps = [...document.querySelectorAll('.merge .app')];
   const arrow = document.querySelector('.merge > .arrow'), one = document.querySelector('.merge > .one');
   const counts = [...document.querySelectorAll('[data-count]')].map(node => ({ node, end: Number(node.dataset.count), shown: null }));
+  counts.forEach(c => finalForScreenReaders(c.node));
   let moves = [], wasLit = null;
   addScene('story-merge', 1, p => {
     const s = mergeState(p);
@@ -951,8 +963,8 @@ if (ANIM) {
 if (ANIM) {
   addEventListener('scroll', queueFrame, { passive: true });
   addEventListener('resize', layoutScenes);
-  document.fonts.ready.then(layoutScenes);   // late fonts change the scene heights
   layoutScenes();
+  document.fonts.ready.then(layoutScenes);   // late fonts change the scene heights
 }
 </script>
 </body>
