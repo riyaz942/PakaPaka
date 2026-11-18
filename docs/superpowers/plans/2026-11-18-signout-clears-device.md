@@ -177,11 +177,11 @@
 - `useOnboardingRedirect`: a `start` first segment is treated like `onboarding` — no redirect while onboarding is not completed; `router.replace('/dashboard')` when completed (and not held).
 - Fresh installs are unchanged: `/` → `/dashboard` → redirect to `/onboarding/welcome`. Only `leaveAfterErase()` on the phone opens `/start`.
 
-- [ ] **Step 1: Write the failing tests.** `start.test.tsx`: `shows the title, the line and both buttons`, `Start learning opens the onboarding welcome`, `Log in calls signIn and is disabled unless signed out`, `a sign-in error shows under Log in`, `signed in opens the onboarding welcome`. `useOnboardingRedirect.test.tsx`: `stays on start while onboarding is not completed`, `opens the dashboard from start when onboarding is completed`. `leaveAfterErase.test.ts`: the native expectation changes to `/start`.
-- [ ] **Step 2: Run** `cd mobile && npx jest --runTestsByPath src/app/start.test.tsx src/hooks/useOnboardingRedirect.test.tsx src/components/settings/leaveAfterErase.test.ts` → new tests FAIL.
-- [ ] **Step 3: Implement.**
-- [ ] **Step 4: Run** the same command → all PASS.
-- [ ] **Step 5: Commit** `feat(app): phone landing screen after sign-out`.
+- [x] **Step 1: Write the failing tests.** `start.test.tsx`: `shows the title, the line and both buttons`, `Start learning opens the onboarding welcome`, `Log in calls signIn and is disabled unless signed out`, `a sign-in error shows under Log in`, `signed in opens the onboarding welcome`. `useOnboardingRedirect.test.tsx`: `stays on start while onboarding is not completed`, `opens the dashboard from start when onboarding is completed`. `leaveAfterErase.test.ts`: the native expectation changes to `/start`.
+- [x] **Step 2: Run** `cd mobile && npx jest --runTestsByPath src/app/start.test.tsx src/hooks/useOnboardingRedirect.test.tsx src/components/settings/leaveAfterErase.test.ts` → new tests FAIL.
+- [x] **Step 3: Implement.**
+- [x] **Step 4: Run** the same command → all PASS.
+- [x] **Step 5: Commit** `feat(app): phone landing screen after sign-out`.
 
 ### Task 6: A session that ends elsewhere erases this device when nothing is unsynced (decision 3, added 2026-11-18)
 

@@ -40,7 +40,7 @@ describe('leaveAfterErase', () => {
   it('native: goes to the onboarding welcome screen', () => {
     setPlatform('ios');
     leaveAfterErase();
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/welcome');
+    expect(mockReplace).toHaveBeenCalledWith('/start');
     expect(assign).not.toHaveBeenCalled();
   });
 });

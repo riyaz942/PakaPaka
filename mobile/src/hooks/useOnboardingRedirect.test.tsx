@@ -334,4 +334,31 @@ describe('useOnboardingRedirect', () => {
     });
     expect(mockReplace).toHaveBeenCalledTimes(1);
   });
+
+  it('stays on start while onboarding is not completed', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    mockSegments = ['start'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('opens the dashboard from start when onboarding is completed', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    mockSegments = ['start'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
+    });
+  });
 });

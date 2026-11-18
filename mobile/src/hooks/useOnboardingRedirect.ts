@@ -41,9 +41,10 @@ export function useOnboardingRedirect(appliedVersion = 0, hold = false): void {
 
     const completed = isOnboardingCompleted(userDb);
     const segmentList = segments as string[];
+    // The phone's start screen (after a sign-out) is the door to onboarding, so it counts as inside.
+    const inOnboarding = segmentList[0] === 'onboarding' || segmentList[0] === 'start';
 
     if (completed) {
-      const inOnboarding = segmentList[0] === 'onboarding';
       if (inOnboarding || holdEnded) {
         router.replace('/dashboard');
       }
@@ -53,7 +54,6 @@ export function useOnboardingRedirect(appliedVersion = 0, hold = false): void {
     // While onboarding is incomplete, the user may stand on ANY onboarding
     // step — earlier steps stay reachable so back navigation works. Only
     // redirect when the user is outside onboarding entirely.
-    const inOnboarding = segmentList[0] === 'onboarding';
     if (inOnboarding) {
       return;
     }
