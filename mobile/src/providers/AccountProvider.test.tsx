@@ -269,6 +269,25 @@ describe('AccountProvider', () => {
     );
   });
 
+  it('deleteAccount resolves true only when the server delete worked', async () => {
+    const deleteAccount = jest
+      .fn()
+      .mockResolvedValueOnce({ ok: false, error: accountError('paused') })
+      .mockResolvedValueOnce({ ok: false, error: accountError('session_ended') })
+      .mockResolvedValueOnce({ ok: true, value: undefined });
+    renderWith(fakeSession({ deleteAccount }));
+    await waitFor(() => expect(latest.status).toBe('signed_in'));
+
+    const results: boolean[] = [];
+    for (let i = 0; i < 3; i += 1) {
+      await act(async () => {
+        results.push(await latest.deleteAccount());
+      });
+    }
+
+    expect(results).toEqual([false, false, true]);
+  });
+
   it('removeDevice of another device reloads the account', async () => {
     const session = fakeSession();
     renderWith(session);

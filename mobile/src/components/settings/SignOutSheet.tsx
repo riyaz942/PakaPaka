@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Modal, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
@@ -7,26 +6,35 @@ import { cn } from '@/utils/cn';
 
 type SignOutSheetProps = {
   visible: boolean;
-  /** "Sign out everywhere" changes the title only. */
+  /** "Sign out everywhere" changes the title and adds a line about the other devices. */
   everywhere: boolean;
-  /** `eraseData` is true when the user also wants this device's progress erased. */
-  onConfirm: (eraseData: boolean) => void;
+  step: 'confirm' | 'sync_failed';
+  /** Disables the buttons while the sync or sign-out runs. */
+  busy: boolean;
+  /** Shown on the sync_failed step. */
+  syncError: string | null;
+  /** "Sync and sign out" and "Try again". */
+  onConfirm: () => void;
+  onEraseAnyway: () => void;
   onCancel: () => void;
 };
 
 /**
- * Signing out keeps the progress on the device, so the learner still sees it.
- * This says so, and offers to erase it. An erase does not touch the copy on the
- * server, but progress that is not synced yet is lost: the second step says that
- * plainly and points to Sync now.
+ * Signing out syncs first, then erases this device. The first step says so. If the
+ * sync does not finish, the second step says what an erase would cost and leaves the
+ * choice to the learner: try again, erase anyway, or cancel.
  */
-export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignOutSheetProps) {
+export function SignOutSheet({
+  visible,
+  everywhere,
+  step,
+  busy,
+  syncError,
+  onConfirm,
+  onEraseAnyway,
+  onCancel,
+}: SignOutSheetProps) {
   const sheetFrame = useSheetFrame();
-  const [confirmingErase, setConfirmingErase] = useState(false);
-
-  useEffect(() => {
-    if (!visible) setConfirmingErase(false);
-  }, [visible]);
 
   return (
     <Modal
@@ -44,22 +52,23 @@ export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignO
           style={sheetFrame.style}
           testID="signout-sheet">
           <View className="h-1 w-10 self-center rounded-radius-full bg-border" />
-          {confirmingErase ? (
+          {step === 'sync_failed' ? (
             <>
               <Text className="text-title-lg font-ui-extrabold text-primary">
-                Erase data on this device?
+                Sync did not finish
               </Text>
               <Text className="text-body text-secondary">
-                This erases all your progress and settings on this device. Progress that is not synced
-                yet is lost. To keep it, cancel and tap Sync now first.
+                {`${syncError ?? 'The sync did not finish.'} If you erase now, progress that is not synced yet is lost.`}
               </Text>
               <View className="gap-space-sm pt-space-sm">
+                <Button label="Try again" onPress={onConfirm} disabled={busy} />
                 <Button
-                  label="Erase and sign out"
-                  onPress={() => onConfirm(true)}
+                  label="Erase anyway"
+                  onPress={onEraseAnyway}
                   variant="destructive"
+                  disabled={busy}
                 />
-                <Button label="Go back" onPress={() => setConfirmingErase(false)} variant="ghost" />
+                <Button label="Cancel" onPress={onCancel} variant="ghost" disabled={busy} />
               </View>
             </>
           ) : (
@@ -68,17 +77,23 @@ export function SignOutSheet({ visible, everywhere, onConfirm, onCancel }: SignO
                 {everywhere ? 'Sign out everywhere?' : 'Sign out?'}
               </Text>
               <Text className="text-body text-secondary">
-                Your progress stays on this device after you sign out, so you will still see it.
-                The copy that is already synced stays on our server until you delete your account.
+                Your progress syncs first. Then it is erased from this device. Sign in again to get
+                it back.
               </Text>
+              {everywhere ? (
+                <Text className="text-body text-secondary">
+                  Your other devices are signed out too. Each one erases its progress. If a device
+                  has progress that is not synced, it asks first.
+                </Text>
+              ) : null}
               <View className="gap-space-sm pt-space-sm">
-                <Button label="Sign out, keep my data" onPress={() => onConfirm(false)} />
                 <Button
-                  label="Sign out and erase my data"
-                  onPress={() => setConfirmingErase(true)}
+                  label={busy ? 'Syncing…' : 'Sync and sign out'}
+                  onPress={onConfirm}
                   variant="destructive"
+                  disabled={busy}
                 />
-                <Button label="Cancel" onPress={onCancel} variant="ghost" />
+                <Button label="Cancel" onPress={onCancel} variant="ghost" disabled={busy} />
               </View>
             </>
           )}

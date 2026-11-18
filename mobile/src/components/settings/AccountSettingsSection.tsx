@@ -9,7 +9,7 @@ import { useAccount } from '@/providers/AccountProvider';
 import { useSync } from '@/providers/SyncProvider';
 
 export const DELETE_ACCOUNT_CONFIRM_COPY =
-  'This deletes your account and its data on the server. Your progress on this device stays.';
+  'This deletes your account and your progress on our server. All your devices are signed out, and this device is erased. This cannot be undone.';
 
 function formatLastUsed(ms: number): string {
   const date = new Date(ms);
@@ -59,7 +59,7 @@ function DeviceRow({
 }
 
 type AccountSettingsSectionProps = {
-  /** Called after a sign-out that the user chose to pair with erasing this device's data. */
+  /** Called after a sign-out or an account delete, to erase this device's data and leave. */
   onEraseLocalData?: () => void;
 };
 
@@ -70,6 +70,7 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [busy, setBusy] = useState(false);
   const [signOutAsk, setSignOutAsk] = useState<'here' | 'everywhere' | null>(null);
+  const [signOutStep, setSignOutStep] = useState<'confirm' | 'sync_failed'>('confirm');
 
   // One action at a time: a second tap must not start a second server call.
   async function run(action: () => Promise<void>) {
@@ -81,14 +82,48 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
     }
   }
 
-  async function confirmSignOut(eraseData: boolean) {
-    const everywhere = signOutAsk === 'everywhere';
+  function closeSignOut() {
     setSignOutAsk(null);
+    setSignOutStep('confirm');
+  }
+
+  // Erase only after the sign-out worked: a failed sign-out must not cost data.
+  async function signOutThenErase() {
+    const signedOut = await (signOutAsk === 'everywhere'
+      ? account.signOutEverywhere()
+      : account.signOut());
+    closeSignOut();
+    if (signedOut) onEraseLocalData?.();
+  }
+
+  // "Sync and sign out" and "Try again": the erase waits for a sync that finished.
+  async function syncThenSignOut() {
     setBusy(true);
     try {
-      const signedOut = await (everywhere ? account.signOutEverywhere() : account.signOut());
-      // Erase only after the server sign-out worked: a failed sign-out must not cost data.
-      if (eraseData && signedOut) onEraseLocalData?.();
+      if (!(await sync.syncBeforeSignOut())) {
+        setSignOutStep('sync_failed');
+        return;
+      }
+      await signOutThenErase();
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // The learner pressed "Erase anyway": no sync.
+  async function eraseAnyway() {
+    setBusy(true);
+    try {
+      await signOutThenErase();
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function deleteThenErase() {
+    setBusy(true);
+    try {
+      if (await account.deleteAccount()) onEraseLocalData?.();
     } finally {
       setBusy(false);
     }
@@ -171,7 +206,11 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
               key={device.deviceId}
               device={device}
               disabled={busy}
-              onRemove={() => void run(() => account.removeDevice(device.deviceId))}
+              onRemove={() =>
+                device.current
+                  ? setSignOutAsk('here')
+                  : void run(() => account.removeDevice(device.deviceId))
+              }
             />
           ))}
         </View>
@@ -199,8 +238,12 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
       <SignOutSheet
         visible={signOutAsk !== null}
         everywhere={signOutAsk === 'everywhere'}
-        onConfirm={(eraseData) => void confirmSignOut(eraseData)}
-        onCancel={() => setSignOutAsk(null)}
+        step={signOutStep}
+        busy={busy}
+        syncError={sync.error}
+        onConfirm={() => void syncThenSignOut()}
+        onEraseAnyway={() => void eraseAnyway()}
+        onCancel={closeSignOut}
       />
 
       {confirmingDelete ? (
@@ -215,7 +258,7 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
             variant="destructive"
             onPress={() => {
               setConfirmingDelete(false);
-              void run(account.deleteAccount);
+              void deleteThenErase();
             }}
             disabled={busy}
             testID="settings-account-delete-confirm-button"

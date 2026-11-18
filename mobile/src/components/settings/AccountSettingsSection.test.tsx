@@ -52,7 +52,7 @@ function accountState(over: Partial<AccountContextValue> = {}): AccountContextVa
     removeDevice: jest.fn().mockResolvedValue(undefined),
     signOut: jest.fn().mockResolvedValue(true),
     signOutEverywhere: jest.fn().mockResolvedValue(true),
-    deleteAccount: jest.fn().mockResolvedValue(undefined),
+    deleteAccount: jest.fn().mockResolvedValue(true),
     ...over,
   };
 }
@@ -177,7 +177,7 @@ describe('AccountSettingsSection', () => {
 
     expect(mockAccount.signOut).not.toHaveBeenCalled();
     expect(screen.getByText('Sign out?')).toBeTruthy();
-    expect(screen.getByText(/Your progress stays on this device/)).toBeTruthy();
+    expect(screen.getByText(/Your progress syncs first/)).toBeTruthy();
 
     await press('Cancel');
 
@@ -185,60 +185,80 @@ describe('AccountSettingsSection', () => {
     expect(screen.queryByText('Sign out?')).toBeNull();
   });
 
-  it('Sign out, keep my data signs out and does not erase', async () => {
-    mockAccount = signedIn();
-    const onErase = jest.fn();
+  it('Sign out syncs first, then signs out, then erases', async () => {
+    const calls: string[] = [];
+    mockAccount = signedIn({
+      signOut: jest.fn().mockImplementation(async () => {
+        calls.push('signOut');
+        return true;
+      }),
+    });
+    mockSync = syncState({
+      syncBeforeSignOut: jest.fn().mockImplementation(async () => {
+        calls.push('syncBeforeSignOut');
+        return true;
+      }),
+    });
+    const onErase = jest.fn().mockImplementation(() => calls.push('onErase'));
     render(<AccountSettingsSection onEraseLocalData={onErase} />);
 
     await press('Sign out');
-    await press('Sign out, keep my data');
+    await press('Sync and sign out');
 
-    expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
-    expect(onErase).not.toHaveBeenCalled();
-  });
-
-  it('Sign out everywhere asks first and keeps the data when asked', async () => {
-    mockAccount = signedIn();
-    render(<AccountSettingsSection />);
-
-    await press('Sign out everywhere');
-
+    expect(calls).toEqual(['syncBeforeSignOut', 'signOut', 'onErase']);
     expect(mockAccount.signOutEverywhere).not.toHaveBeenCalled();
-    expect(screen.getByText('Sign out everywhere?')).toBeTruthy();
-
-    await press('Sign out, keep my data');
-
-    expect(mockAccount.signOutEverywhere).toHaveBeenCalledTimes(1);
-    expect(mockAccount.signOut).not.toHaveBeenCalled();
   });
 
-  it('erase warns that nothing is on the server, and Go back signs nothing out', async () => {
+  it('a failed sync shows the sync-failed step and never signs out or erases', async () => {
     mockAccount = signedIn();
+    mockSync = syncState({
+      error: 'No connection.',
+      syncBeforeSignOut: jest.fn().mockResolvedValue(false),
+    });
     const onErase = jest.fn();
     render(<AccountSettingsSection onEraseLocalData={onErase} />);
 
     await press('Sign out');
-    await press('Sign out and erase my data');
+    await press('Sync and sign out');
 
-    expect(screen.getByText('Erase data on this device?')).toBeTruthy();
-    expect(screen.getByText(/Progress that is not synced yet is lost/)).toBeTruthy();
+    expect(screen.getByText('Sync did not finish')).toBeTruthy();
+    expect(
+      screen.getByText('No connection. If you erase now, progress that is not synced yet is lost.'),
+    ).toBeTruthy();
     expect(mockAccount.signOut).not.toHaveBeenCalled();
-
-    await press('Go back');
-
-    expect(screen.getByText('Sign out?')).toBeTruthy();
     expect(onErase).not.toHaveBeenCalled();
   });
 
-  it('Erase and sign out erases after the sign-out worked', async () => {
+  it('Try again syncs again and signs out on success', async () => {
     mockAccount = signedIn();
+    mockSync = syncState({
+      syncBeforeSignOut: jest.fn().mockResolvedValueOnce(false).mockResolvedValueOnce(true),
+    });
     const onErase = jest.fn();
     render(<AccountSettingsSection onEraseLocalData={onErase} />);
 
     await press('Sign out');
-    await press('Sign out and erase my data');
-    await press('Erase and sign out');
+    await press('Sync and sign out');
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
 
+    await press('Try again');
+
+    expect(mockSync.syncBeforeSignOut).toHaveBeenCalledTimes(2);
+    expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
+    expect(onErase).toHaveBeenCalledTimes(1);
+  });
+
+  it('Erase anyway signs out and erases without a sync', async () => {
+    mockAccount = signedIn();
+    mockSync = syncState({ syncBeforeSignOut: jest.fn().mockResolvedValue(false) });
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Sync and sign out');
+    await press('Erase anyway');
+
+    expect(mockSync.syncBeforeSignOut).toHaveBeenCalledTimes(1);
     expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
     expect(onErase).toHaveBeenCalledTimes(1);
   });
@@ -249,24 +269,77 @@ describe('AccountSettingsSection', () => {
     render(<AccountSettingsSection onEraseLocalData={onErase} />);
 
     await press('Sign out');
-    await press('Sign out and erase my data');
-    await press('Erase and sign out');
+    await press('Sync and sign out');
 
+    expect(mockSync.syncBeforeSignOut).toHaveBeenCalledTimes(1);
     expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
     expect(onErase).not.toHaveBeenCalled();
   });
 
-  it('Sign out everywhere can erase too', async () => {
-    mockAccount = signedIn();
-    const onErase = jest.fn();
+  it('Sign out everywhere syncs first, then erases', async () => {
+    const calls: string[] = [];
+    mockAccount = signedIn({
+      signOutEverywhere: jest.fn().mockImplementation(async () => {
+        calls.push('signOutEverywhere');
+        return true;
+      }),
+    });
+    mockSync = syncState({
+      syncBeforeSignOut: jest.fn().mockImplementation(async () => {
+        calls.push('syncBeforeSignOut');
+        return true;
+      }),
+    });
+    const onErase = jest.fn().mockImplementation(() => calls.push('onErase'));
     render(<AccountSettingsSection onEraseLocalData={onErase} />);
 
     await press('Sign out everywhere');
-    await press('Sign out and erase my data');
-    await press('Erase and sign out');
+    expect(screen.getByText('Sign out everywhere?')).toBeTruthy();
+    await press('Sync and sign out');
 
-    expect(mockAccount.signOutEverywhere).toHaveBeenCalledTimes(1);
-    expect(onErase).toHaveBeenCalledTimes(1);
+    expect(calls).toEqual(['syncBeforeSignOut', 'signOutEverywhere', 'onErase']);
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+  });
+
+  it('Cancel signs nothing out and erases nothing', async () => {
+    mockAccount = signedIn();
+    mockSync = syncState({ syncBeforeSignOut: jest.fn().mockResolvedValue(false) });
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Sign out');
+    await press('Cancel');
+
+    expect(screen.queryByText('Sign out?')).toBeNull();
+
+    await press('Sign out');
+    await press('Sync and sign out');
+    expect(screen.getByText('Sync did not finish')).toBeTruthy();
+    await press('Cancel');
+    await press('Sign out');
+
+    // Cancel resets the sheet to the confirm step.
+    expect(screen.getByText('Sign out?')).toBeTruthy();
+    expect(mockSync.syncBeforeSignOut).toHaveBeenCalledTimes(1);
+    expect(mockAccount.signOut).not.toHaveBeenCalled();
+    expect(onErase).not.toHaveBeenCalled();
+  });
+
+  it('a sign-out the server ends never erases', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    const view = render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    mockAccount = accountState({
+      status: 'signed_out',
+      error: 'You were signed out. Sign in again to sync.',
+    });
+    view.rerender(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    expect(screen.getByTestId('settings-account-error')).toHaveTextContent(
+      'You were signed out. Sign in again to sync.',
+    );
+    expect(onErase).not.toHaveBeenCalled();
   });
 
   it('Delete account asks first, with the exact copy', async () => {
@@ -278,14 +351,55 @@ describe('AccountSettingsSection', () => {
     expect(mockAccount.deleteAccount).not.toHaveBeenCalled();
     expect(
       screen.getByText(
-        'This deletes your account and its data on the server. Your progress on this device stays.',
+        'This deletes your account and your progress on our server. All your devices are signed out, and this device is erased. This cannot be undone.',
       ),
     ).toBeTruthy();
-    expect(DELETE_ACCOUNT_CONFIRM_COPY).toContain('Your progress on this device stays.');
+    expect(DELETE_ACCOUNT_CONFIRM_COPY).toContain('this device is erased');
 
     await press('Delete account');
 
     expect(mockAccount.deleteAccount).toHaveBeenCalledTimes(1);
+  });
+
+  it('Delete account erases this device after the server delete worked', async () => {
+    mockAccount = signedIn();
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Delete account');
+    await press('Delete account');
+
+    expect(mockAccount.deleteAccount).toHaveBeenCalledTimes(1);
+    expect(mockSync.syncBeforeSignOut).not.toHaveBeenCalled();
+    expect(onErase).toHaveBeenCalledTimes(1);
+  });
+
+  it('a failed Delete account never erases', async () => {
+    mockAccount = signedIn({ deleteAccount: jest.fn().mockResolvedValue(false) });
+    const onErase = jest.fn();
+    render(<AccountSettingsSection onEraseLocalData={onErase} />);
+
+    await press('Delete account');
+    await press('Delete account');
+
+    expect(mockAccount.deleteAccount).toHaveBeenCalledTimes(1);
+    expect(onErase).not.toHaveBeenCalled();
+  });
+
+  it('Remove on this device opens the sign-out sheet and calls no removeDevice', async () => {
+    mockAccount = signedIn();
+    render(<AccountSettingsSection />);
+
+    await press('Remove Pixel 9');
+
+    expect(mockAccount.removeDevice).not.toHaveBeenCalled();
+    expect(screen.getByText('Sign out?')).toBeTruthy();
+    expect(screen.queryByText('Sign out everywhere?')).toBeNull();
+
+    await press('Sync and sign out');
+
+    expect(mockAccount.signOut).toHaveBeenCalledTimes(1);
+    expect(mockAccount.removeDevice).not.toHaveBeenCalled();
   });
 
   it('Cancel closes the confirm without deleting', async () => {

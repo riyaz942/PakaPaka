@@ -107,8 +107,8 @@
 
 **Remove on "This device" (decision 8):** the Remove button on the row with `device.current` opens the sign-out sheet with `everywhere = false` (same flow as "Sign out"); it does not call `removeDevice`. Rows of other devices are unchanged.
 
-- [ ] **Step 1: Replace the old sheet tests** in `SignOutSheet.test.tsx` (`erase step shows the exact copy`, `sign-out step says the synced copy stays on the server`) with: `confirm step shows the exact copy`, `confirm step for everywhere adds the other-devices paragraph`, `sync failed step shows the error and the exact copy`, `buttons are disabled and the label is Syncing… while busy`.
-- [ ] **Step 2: Replace the six old flow tests** in `AccountSettingsSection.test.tsx` (`Sign out, keep my data signs out and does not erase`, `Sign out everywhere asks first and keeps the data when asked`, `erase warns that nothing is on the server, and Go back signs nothing out`, `Erase and sign out erases after the sign-out worked`, `a failed sign-out never erases`, `Sign out everywhere can erase too`) with:
+- [x] **Step 1: Replace the old sheet tests** in `SignOutSheet.test.tsx` (`erase step shows the exact copy`, `sign-out step says the synced copy stays on the server`) with: `confirm step shows the exact copy`, `confirm step for everywhere adds the other-devices paragraph`, `sync failed step shows the error and the exact copy`, `buttons are disabled and the label is Syncing… while busy`.
+- [x] **Step 2: Replace the six old flow tests** in `AccountSettingsSection.test.tsx` (`Sign out, keep my data signs out and does not erase`, `Sign out everywhere asks first and keeps the data when asked`, `erase warns that nothing is on the server, and Go back signs nothing out`, `Erase and sign out erases after the sign-out worked`, `a failed sign-out never erases`, `Sign out everywhere can erase too`) with:
   - `Sign out syncs first, then signs out, then erases` (call order asserted: `syncBeforeSignOut` → `signOut` → `onErase`)
   - `a failed sync shows the sync-failed step and never signs out or erases`
   - `Try again syncs again and signs out on success`
@@ -119,10 +119,10 @@
   - `a sign-out the server ends never erases` (status goes `signed_in` → `signed_out` with `error: 'You were signed out. Sign in again to sync.'` and no sheet action → `onErase` not called, the error text shows)
   The file's `useSync` mock gains `syncBeforeSignOut: jest.fn()`.
   Also: replace `Delete account asks first, with the exact copy` (its assertion on the old copy) with `Delete account asks first, with the exact copy` asserting the new copy, and add `Delete account erases this device after the server delete worked`, `a failed Delete account never erases`, `Remove on this device opens the sign-out sheet and calls no removeDevice`. In `src/providers/AccountProvider.test.tsx` add `deleteAccount resolves true only when the server delete worked`.
-- [ ] **Step 3: Run** `cd mobile && npx jest src/components/settings/SignOutSheet.test.tsx src/components/settings/AccountSettingsSection.test.tsx src/providers/AccountProvider.test.tsx` → new tests FAIL.
-- [ ] **Step 4: Implement** the props and flow above. Remove the old two-step "erase?" state and its copy.
-- [ ] **Step 5: Run** the same command, plus `npx jest --runTestsByPath "src/app/(tabs)/settings/index.test.tsx"` → all PASS.
-- [ ] **Step 6: Commit** `feat(account): sign-out syncs, erases this device and leaves`.
+- [x] **Step 3: Run** `cd mobile && npx jest src/components/settings/SignOutSheet.test.tsx src/components/settings/AccountSettingsSection.test.tsx src/providers/AccountProvider.test.tsx` → new tests FAIL.
+- [x] **Step 4: Implement** the props and flow above. Remove the old two-step "erase?" state and its copy.
+- [x] **Step 5: Run** the same command, plus `npx jest --runTestsByPath "src/app/(tabs)/settings/index.test.tsx"` → all PASS.
+- [x] **Step 6: Commit** `feat(account): sign-out syncs, erases this device and leaves`.
 
 ### Task 3: Wait for the first sync after a sign-in
 

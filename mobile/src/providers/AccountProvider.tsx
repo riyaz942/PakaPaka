@@ -20,7 +20,8 @@ export type AccountContextValue = {
   /** Resolves true when this device ended up signed out. */
   signOut(): Promise<boolean>;
   signOutEverywhere(): Promise<boolean>;
-  deleteAccount(): Promise<void>;
+  /** Resolves true only when the server delete worked. */
+  deleteAccount(): Promise<boolean>;
 };
 
 type State = Pick<AccountContextValue, 'status' | 'account' | 'error' | 'signInResult'>;
@@ -183,9 +184,13 @@ export function AccountProvider({
     signOutEverywhere: () => endSession(() => session.signOutEverywhere()),
     async deleteAccount() {
       const result = await session.deleteAccount();
-      if (result.ok) signedOut();
-      else if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE);
+      if (result.ok) {
+        signedOut();
+        return true;
+      }
+      if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE);
       else fail(result.error);
+      return false;
     },
   };
 
