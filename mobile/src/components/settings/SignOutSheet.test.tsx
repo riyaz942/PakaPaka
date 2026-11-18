@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { Modal } from 'react-native';
 import React from 'react';
 
 import { SignOutSheet } from './SignOutSheet';
@@ -98,5 +99,17 @@ describe('SignOutSheet', () => {
       disabled: true,
     });
     expect(screen.queryByLabelText('Sync and sign out')).toBeNull();
+  });
+
+  it('a close request while busy does nothing', () => {
+    const onCancel = jest.fn();
+    const view = render(<SignOutSheet {...baseProps} busy onCancel={onCancel} />);
+
+    view.UNSAFE_getByType(Modal).props.onRequestClose();
+    expect(onCancel).not.toHaveBeenCalled();
+
+    view.rerender(<SignOutSheet {...baseProps} busy={false} onCancel={onCancel} />);
+    view.UNSAFE_getByType(Modal).props.onRequestClose();
+    expect(onCancel).toHaveBeenCalledTimes(1);
   });
 });

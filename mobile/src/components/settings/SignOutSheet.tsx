@@ -42,7 +42,10 @@ export function SignOutSheet({
       animationType="slide"
       transparent
       statusBarTranslucent
-      onRequestClose={onCancel}>
+      onRequestClose={() => {
+        // A close while the sync runs would leave it running behind a closed sheet.
+        if (!busy) onCancel();
+      }}>
       <View className="flex-1 justify-end bg-black/50">
         <View
           className={cn(
