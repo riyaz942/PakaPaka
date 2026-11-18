@@ -121,6 +121,12 @@ describe("fetchUsage", () => {
       expect(body.query).toContain(dataset);
     }
     expect(body.query).toContain("accounts(filter: { accountTag: $accountTag })");
+    // Cloudflare rejects the whole query ("cannot order by date: it is neither aggregated, nor a
+    // dimension") when a dataset sorts by a field it does not select under `dimensions`.
+    for (const [, field, block] of body.query.matchAll(/orderBy: \[(\w+)_(?:ASC|DESC)\]\) \{([^}]*\}[^}]*\})/g)) {
+      expect(block).toMatch(new RegExp(`dimensions \\{[^}]*\\b${field}\\b`));
+    }
+    expect(body.query.match(/orderBy:/g)).toHaveLength(2);
     expect(body.variables).toEqual({
       accountTag: "test-account",
       day: "2026-11-14",
