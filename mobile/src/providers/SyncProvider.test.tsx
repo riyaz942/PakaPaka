@@ -308,6 +308,39 @@ describe('SyncProvider', () => {
     expect(session.request).not.toHaveBeenCalled();
   });
 
+  it('a run from an earlier sign-in does not set firstRun for the new one', async () => {
+    const first = deferred<SyncRunResult>();
+    const second = deferred<SyncRunResult>();
+    mockRun.mockReturnValueOnce(first.promise).mockReturnValueOnce(second.promise);
+    mockStatus = 'signed_in';
+    const { rerenderTree } = renderProvider();
+    await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(1));
+
+    mockStatus = 'signed_out';
+    rerenderTree();
+    mockStatus = 'signed_in';
+    rerenderTree();
+    expect(latest.firstRun).toBe('running');
+
+    await act(async () => first.resolve(UP_TO_DATE));
+    await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(2));
+    await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+    expect(latest.firstRun).toBe('running');
+
+    await act(async () => second.resolve(UP_TO_DATE));
+    await waitFor(() => expect(latest.firstRun).toBe('ok'));
+  });
+
+  it('retryFirstRun does nothing when signed out', async () => {
+    renderProvider();
+    await act(async () => {});
+
+    await act(() => latest.retryFirstRun());
+
+    expect(latest.firstRun).toBe('none');
+    expect(mockRun).not.toHaveBeenCalled();
+  });
+
   it('syncBeforeSignOut resolves true after a pushed run and false after an error', async () => {
     mockStatus = 'signed_in';
     renderProvider();

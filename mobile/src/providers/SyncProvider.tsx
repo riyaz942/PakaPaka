@@ -111,6 +111,8 @@ export function SyncProvider({
   /** Every run started so far: a sign-out clear and a restore mark wait until they ended. */
   const lastRun = useRef<Promise<void>>(Promise.resolve());
   const unmounted = useRef(false);
+  /** Goes up at each sign-out: a run from an earlier sign-in shows nothing for the new one. */
+  const generation = useRef(0);
   /** Every run waits for this before it starts: the base clear, or a restore mark. */
   const gate = useRef<Promise<void>>(Promise.resolve());
   /** The last base clear failed; the next run tries once more first. */
@@ -166,6 +168,7 @@ export function SyncProvider({
   }
 
   async function runTrigger(trigger: SyncTrigger): Promise<SyncRunResult | null> {
+    const started = generation.current;
     await gate.current;
     if (signedIn.current && clearFailed.current) {
       const cleared = await clearSyncBase(userDb);
@@ -177,13 +180,13 @@ export function SyncProvider({
     }
     const result = await runner.run(trigger);
     // Signed out or unmounted meanwhile: the state was reset, and this run shows nothing.
-    if (!signedIn.current || unmounted.current) return null;
+    if (!signedIn.current || unmounted.current || generation.current !== started) return null;
     if (result.error?.code === 'session_ended') {
       // The account provider shows the sign-out; it is not a sync error.
       void refreshAccount.current();
     }
     const status = await readSyncStatus(userDb);
-    if (!signedIn.current || unmounted.current) return null;
+    if (!signedIn.current || unmounted.current || generation.current !== started) return null;
     setState((prev) => ({
       ...prev,
       lastSyncedAt: status.ok ? status.value.lastSyncedAt : prev.lastSyncedAt,
@@ -203,9 +206,9 @@ export function SyncProvider({
     return promise;
   }
 
-  /** Shows how the first-run sync ended, unless the account or the provider is gone by then. */
-  function endFirstRun(result: SyncRunResult | null) {
-    if (!signedIn.current || unmounted.current) return;
+  /** Shows how the first-run sync ended, unless the sign-in or the provider is gone by then. */
+  function endFirstRun(result: SyncRunResult | null, started: number) {
+    if (!signedIn.current || unmounted.current || generation.current !== started) return;
     merge({ firstRun: isGoodRun(result) ? 'ok' : 'failed' });
   }
 
@@ -224,7 +227,8 @@ export function SyncProvider({
         }
       })();
       merge({ firstRun: 'running' });
-      void run('open').then(endFirstRun);
+      const started = generation.current;
+      void run('open').then((result) => endFirstRun(result, started));
       const subscription = AppState.addEventListener('change', (next) => {
         if (next === 'background') void run('background');
       });
@@ -233,6 +237,7 @@ export function SyncProvider({
     if (status === 'signed_out') {
       // A waiting dialog ends its run, so the clear (after the last run) can go ahead.
       conflictAnswer.current?.(null);
+      generation.current += 1;
       studyCount.current = 0;
       setState(INITIAL_STATE);
       void hold(async () => {
@@ -264,8 +269,10 @@ export function SyncProvider({
     },
 
     async retryFirstRun() {
+      if (!signedIn.current || unmounted.current) return;
+      const started = generation.current;
       merge({ firstRun: 'running' });
-      endFirstRun(await run('manual'));
+      endFirstRun(await run('manual'), started);
     },
 
     async syncBeforeSignOut() {
