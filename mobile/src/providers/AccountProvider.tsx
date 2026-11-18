@@ -14,6 +14,8 @@ export type AccountContextValue = {
   account: AccountInfo | null;
   error: string | null;
   signInResult: SignInResult | null;
+  /** True when the last sign-out came from a session that ended without the user. */
+  sessionEnded: boolean;
   signIn(): Promise<void>;
   refresh(): Promise<void>;
   removeDevice(id: string): Promise<void>;
@@ -24,7 +26,10 @@ export type AccountContextValue = {
   deleteAccount(): Promise<boolean>;
 };
 
-type State = Pick<AccountContextValue, 'status' | 'account' | 'error' | 'signInResult'>;
+type State = Pick<
+  AccountContextValue,
+  'status' | 'account' | 'error' | 'signInResult' | 'sessionEnded'
+>;
 
 const SIGN_IN_FAILED_MESSAGE = 'Sign-in did not finish. Try again.';
 
@@ -66,11 +71,12 @@ export function AccountProvider({
     account: null,
     error: null,
     signInResult: null,
+    sessionEnded: false,
   });
 
   const merge = (patch: Partial<State>) => setState((prev) => ({ ...prev, ...patch }));
-  const signedOut = (error: string | null = null) =>
-    merge({ status: 'signed_out', account: null, error });
+  const signedOut = (error: string | null = null, sessionEnded = false) =>
+    merge({ status: 'signed_out', account: null, error, sessionEnded });
 
   /**
    * A session that ended is final; any other failure leaves the user where they are.
@@ -78,7 +84,7 @@ export function AccountProvider({
    */
   function fail(error: AppError): boolean {
     if (error.code === 'session_ended') {
-      signedOut(error.userMessage ?? null);
+      signedOut(error.userMessage ?? null, true);
       return true;
     }
     merge({ error: error.userMessage ?? null });
@@ -88,10 +94,10 @@ export function AccountProvider({
   async function loadAccount() {
     const result = await session.getAccount();
     if (result.ok) {
-      merge({ status: 'signed_in', account: result.value, error: null });
+      merge({ status: 'signed_in', account: result.value, error: null, sessionEnded: false });
     } else {
       // A cookie or token exists, so the user is signed in even if the details failed to load.
-      merge({ status: 'signed_in' });
+      merge({ status: 'signed_in', sessionEnded: false });
       fail(result.error);
     }
   }
@@ -188,7 +194,7 @@ export function AccountProvider({
         signedOut();
         return true;
       }
-      if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE);
+      if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE, true);
       else fail(result.error);
       return false;
     },

@@ -12,6 +12,7 @@ import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-cont
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
+import { SessionEndedHost } from '@/components/sync/SessionEndedHost';
 import { SyncConflictDialog } from '@/components/sync/SyncConflictDialog';
 import { appFonts } from '@/constants/fonts';
 import { MaxAppWidth } from '@/constants/theme';
@@ -92,6 +93,7 @@ function RootLayoutContent() {
                 </Stack>
               </View>
               <OnboardingRedirect />
+              <SessionEndedHost />
             </SyncProvider>
           </AccountProvider>
         </DatabaseProvider>

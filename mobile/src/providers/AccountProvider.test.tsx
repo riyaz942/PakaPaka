@@ -312,6 +312,43 @@ describe('AccountProvider', () => {
     await waitFor(() => expect(latest.status).toBe('signed_out'));
   });
 
+  it('sessionEnded is true after a session_ended error and false after signOut', async () => {
+    const ended = { ok: false, error: accountError('session_ended') };
+    const session = fakeSession({
+      getAccount: jest
+        .fn()
+        .mockResolvedValueOnce(ended)
+        .mockResolvedValueOnce({ ok: true, value: INFO })
+        .mockResolvedValueOnce({ ok: true, value: INFO }),
+      deleteAccount: jest.fn().mockResolvedValue(ended),
+    });
+    renderWith(session);
+    await waitFor(() => expect(latest.status).toBe('signed_out'));
+    expect(latest.sessionEnded).toBe(true);
+
+    await act(async () => {
+      await latest.signIn();
+    });
+    expect(latest.status).toBe('signed_in');
+    expect(latest.sessionEnded).toBe(false);
+
+    await act(async () => {
+      await latest.signOut();
+    });
+    expect(latest.status).toBe('signed_out');
+    expect(latest.sessionEnded).toBe(false);
+
+    await act(async () => {
+      await latest.signIn();
+    });
+    expect(latest.sessionEnded).toBe(false);
+    await act(async () => {
+      await latest.deleteAccount();
+    });
+    expect(latest.status).toBe('signed_out');
+    expect(latest.sessionEnded).toBe(true);
+  });
+
   it('useAccount outside the provider throws a developer error', () => {
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => render(<Probe />)).toThrow('useAccount must be used within AccountProvider');

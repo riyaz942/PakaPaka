@@ -4,6 +4,7 @@ import { AppState } from 'react-native';
 import type { AccountErrorCode, AccountSession } from '@/core/account/account.types';
 import { accountErrorMessage } from '@/core/account/errorMessages';
 import type { BackupData } from '@/core/backup/backup.types';
+import { hasUnsyncedChanges } from '@/core/sync/hasUnsyncedChanges';
 import { carriedKeysOf } from '@/core/sync/mergeSyncData';
 import type { ConflictChoice, ConflictEntry, SyncErrorCode } from '@/core/sync/sync.types';
 import { decodeSyncFile, encodeSyncFile } from '@/core/sync/syncCodec';
@@ -30,6 +31,12 @@ export type SyncPhase = 'idle' | 'syncing' | 'conflict';
 /** The sync that runs when the app opens signed in: `'none'` while the account is not signed in. */
 export type FirstRun = 'none' | 'running' | 'ok' | 'failed';
 
+/**
+ * After a session that ended without the user: `'erase'` when nothing is unsynced, `'ask'` when
+ * something is (or the check could not read it). `'none'` otherwise.
+ */
+export type SessionEnd = 'none' | 'erase' | 'ask';
+
 export type SyncContextValue = {
   phase: SyncPhase;
   lastSyncedAt: string | null;
@@ -38,6 +45,7 @@ export type SyncContextValue = {
   /** Goes up by 1 after a run that changed rows in user.db; screens reload on it. */
   appliedVersion: number;
   firstRun: FirstRun;
+  sessionEnd: SessionEnd;
   syncNow(): Promise<void>;
   /** Runs the first-run sync again after it failed. */
   retryFirstRun(): Promise<void>;
@@ -52,7 +60,7 @@ export type SyncContextValue = {
 
 type State = Pick<
   SyncContextValue,
-  'phase' | 'lastSyncedAt' | 'error' | 'conflicts' | 'appliedVersion' | 'firstRun'
+  'phase' | 'lastSyncedAt' | 'error' | 'conflicts' | 'appliedVersion' | 'firstRun' | 'sessionEnd'
 >;
 
 const INITIAL_STATE: State = {
@@ -62,6 +70,7 @@ const INITIAL_STATE: State = {
   conflicts: null,
   appliedVersion: 0,
   firstRun: 'none',
+  sessionEnd: 'none',
 };
 
 const SyncContext = createContext<SyncContextValue | null>(null);
@@ -226,7 +235,7 @@ export function SyncProvider({
           });
         }
       })();
-      merge({ firstRun: 'running' });
+      merge({ firstRun: 'running', sessionEnd: 'none' });
       const started = generation.current;
       void run('open').then((result) => endFirstRun(result, started));
       const subscription = AppState.addEventListener('change', (next) => {
@@ -240,7 +249,22 @@ export function SyncProvider({
       generation.current += 1;
       studyCount.current = 0;
       setState(INITIAL_STATE);
+      const ended = account.sessionEnded;
+      const signedOutAt = generation.current;
       void hold(async () => {
+        // The check reads the base, so it runs before the clear. A read error asks.
+        if (ended) {
+          const base = await readSyncBase(userDb);
+          const snapshot = base.ok ? await readSyncSnapshot(userDb) : null;
+          const unsynced =
+            !base.ok ||
+            snapshot === null ||
+            !snapshot.ok ||
+            hasUnsyncedChanges(snapshot.value.data, base.value, snapshot.value.lookup.known);
+          if (!signedIn.current && !unmounted.current && generation.current === signedOutAt) {
+            merge({ sessionEnd: unsynced ? 'ask' : 'erase' });
+          }
+        }
         const cleared = await clearSyncBase(userDb);
         clearFailed.current = !cleared.ok;
       });

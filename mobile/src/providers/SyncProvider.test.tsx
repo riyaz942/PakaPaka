@@ -11,7 +11,12 @@ import { toSyncData } from '@/core/sync/syncFile';
 import { syncError, syncErrorMessage } from '@/core/sync/syncMessages';
 import type { SyncPorts, SyncRunResult, SyncTrigger } from '@/core/sync/syncRunner';
 import { fullSampleData } from '@/core/sync/syncSamples.testutil';
-import { clearSyncBase, markPendingReplace, readSyncStatus } from '@/data/sync/syncBaseStore';
+import {
+  clearSyncBase,
+  markPendingReplace,
+  readSyncBase,
+  readSyncStatus,
+} from '@/data/sync/syncBaseStore';
 import { readSyncSnapshot, type SyncSnapshot } from '@/data/sync/syncSnapshot';
 import { SyncProvider, useSync, type SyncContextValue } from '@/providers/SyncProvider';
 
@@ -23,8 +28,9 @@ jest.mock('expo-device', () => ({ __esModule: true, modelName: 'Pixel 9' }));
 
 const mockRefresh = jest.fn(async () => undefined);
 let mockStatus: 'signed_out' | 'loading' | 'signed_in' = 'signed_out';
+let mockSessionEnded = false;
 jest.mock('@/providers/AccountProvider', () => ({
-  useAccount: () => ({ status: mockStatus, refresh: mockRefresh }),
+  useAccount: () => ({ status: mockStatus, sessionEnded: mockSessionEnded, refresh: mockRefresh }),
 }));
 
 const mockUserDb = { name: 'user.db' };
@@ -115,6 +121,7 @@ let fetchSpy: jest.Mock;
 beforeEach(() => {
   jest.clearAllMocks();
   mockStatus = 'signed_out';
+  mockSessionEnded = false;
   mockRun.mockResolvedValue(UP_TO_DATE);
   jest.mocked(readSyncStatus).mockResolvedValue({
     ok: true,
@@ -543,5 +550,85 @@ describe('SyncProvider', () => {
     // The run the unmount ended reads nothing.
     expect(readSyncStatus).toHaveBeenCalledTimes(statusReads);
     expect(mockRun).not.toHaveBeenCalledWith('session_end');
+  });
+
+  describe('a session that ends elsewhere', () => {
+    function snapshotOf(data: BackupData): SyncSnapshot {
+      return {
+        data,
+        schemaVersion: 22,
+        lookup: {
+          idToRef: new Map(),
+          refToId: new Map(),
+          known: { hasItem: () => true, hasPassageQuestion: () => true },
+          curriculumVersion: '1.0.0',
+        },
+      };
+    }
+
+    async function endSession(session: AccountSession, sessionEnded: boolean) {
+      mockStatus = 'signed_in';
+      const view = renderProvider(session);
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+      mockStatus = 'signed_out';
+      mockSessionEnded = sessionEnded;
+      view.rerenderTree();
+      await waitFor(() => expect(clearSyncBase).toHaveBeenCalledWith(mockUserDb));
+      return view;
+    }
+
+    it('a session that ends with nothing unsynced sets sessionEnd to erase', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest.mocked(readSyncBase).mockResolvedValue({
+        ok: true,
+        value: { revision: 4, data: fullSampleData(), pendingReplace: false, carried: {} },
+      });
+      const session = fakeSession();
+
+      await endSession(session, true);
+
+      await waitFor(() => expect(latest.sessionEnd).toBe('erase'));
+      // The check reads the base before the sign-out clears it.
+      expect(jest.mocked(readSyncBase).mock.invocationCallOrder[0]).toBeLessThan(
+        jest.mocked(clearSyncBase).mock.invocationCallOrder[0],
+      );
+      expect(readSyncSnapshot).toHaveBeenCalledWith(mockUserDb);
+      expect(session.request).not.toHaveBeenCalled();
+      expect(fetchSpy).not.toHaveBeenCalled();
+    });
+
+    it('a session that ends with unsynced changes sets sessionEnd to ask', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest.mocked(readSyncBase).mockResolvedValue({ ok: true, value: null });
+      const { rerenderTree } = await endSession(fakeSession(), true);
+
+      await waitFor(() => expect(latest.sessionEnd).toBe('ask'));
+
+      // A sign-in ends the question.
+      mockStatus = 'signed_in';
+      mockSessionEnded = false;
+      rerenderTree();
+      await waitFor(() => expect(latest.sessionEnd).toBe('none'));
+    });
+
+    it('a user sign-out leaves sessionEnd none', async () => {
+      await endSession(fakeSession(), false);
+      await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+
+      expect(latest.sessionEnd).toBe('none');
+      expect(readSyncSnapshot).not.toHaveBeenCalled();
+      expect(readSyncBase).not.toHaveBeenCalled();
+    });
+
+    it('a read error sets sessionEnd to ask', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest
+        .mocked(readSyncBase)
+        .mockResolvedValue({ ok: false, error: syncError('sync_local_failed') });
+
+      await endSession(fakeSession(), true);
+
+      await waitFor(() => expect(latest.sessionEnd).toBe('ask'));
+    });
   });
 });
