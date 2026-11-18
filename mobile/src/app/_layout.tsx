@@ -69,7 +69,6 @@ function RootLayoutContent() {
           <AccountProvider>
             <SyncProvider>
               <ThemeModeHost />
-              <OnboardingRedirect />
               <CurriculumUpdateBannerHost />
               <AnimatedSplashOverlay />
               <SyncConflictDialog />
@@ -91,6 +90,7 @@ function RootLayoutContent() {
                   <Stack.Screen name="levels" options={{ headerShown: false }} />
                 </Stack>
               </View>
+              <OnboardingRedirect />
             </SyncProvider>
           </AccountProvider>
         </DatabaseProvider>

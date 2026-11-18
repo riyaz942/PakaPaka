@@ -1,5 +1,5 @@
 import { router, useRootNavigationState, useSegments } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
@@ -17,14 +17,25 @@ import {
  * `appliedVersion` comes from the sync: a pull can write the account's progress
  * (onboarding completed included) while the learner stays on one screen, so the
  * check runs again each time it goes up.
+ *
+ * While `hold` is true (the wait for the first sync after a sign-in) nothing redirects. When the
+ * hold ends and onboarding is completed, the dashboard opens wherever the learner stands: the web
+ * sign-in returns to settings, not to an onboarding screen.
  */
-export function useOnboardingRedirect(appliedVersion = 0): void {
+export function useOnboardingRedirect(appliedVersion = 0, hold = false): void {
   const { userDb } = useDatabase();
   const segments = useSegments();
   const navigationState = useRootNavigationState();
+  const previousHold = useRef(hold);
 
   useEffect(() => {
     if (!navigationState?.key) {
+      return;
+    }
+
+    const holdEnded = previousHold.current && !hold;
+    previousHold.current = hold;
+    if (hold) {
       return;
     }
 
@@ -33,7 +44,7 @@ export function useOnboardingRedirect(appliedVersion = 0): void {
 
     if (completed) {
       const inOnboarding = segmentList[0] === 'onboarding';
-      if (inOnboarding) {
+      if (inOnboarding || holdEnded) {
         router.replace('/dashboard');
       }
       return;
@@ -73,5 +84,5 @@ export function useOnboardingRedirect(appliedVersion = 0): void {
     // Beginner path skips placement — there is nothing below N5 to calibrate.
     const manualPath = getOnboardingPath(userDb) === 'manual';
     router.replace(manualPath ? '/onboarding/placement' : '/onboarding/complete');
-  }, [userDb, segments, navigationState?.key, appliedVersion]);
+  }, [userDb, segments, navigationState?.key, appliedVersion, hold]);
 }

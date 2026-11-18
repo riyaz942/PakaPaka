@@ -139,14 +139,14 @@
   - `SignInSyncWait({ wait, onRetry, onStartWithoutSync })`: renders nothing for `'none'`; otherwise an absolute full-screen `View` with `bg-background`, `testID="signin-sync-wait"`. `'loading'`: `ActivityIndicator` only (accessibility label `Loading`), no text. `'syncing'`: spinner + `Getting your progress…`. `'failed'`: the sync error text (or `Sync did not finish.`), buttons `Try again` → `onRetry`, `Start without sync` → `onStartWithoutSync`. In `'loading'`/`'syncing'`, after `START_WITHOUT_SYNC_AFTER_MS = 10_000` a `Start without sync` button also shows.
   - `OnboardingRedirect` = `const w = useSignInSyncWait(); useOnboardingRedirect(appliedVersion, w.wait !== 'none'); return <SignInSyncWait … />`.
 
-- [ ] **Step 1: Write the failing tests.**
+- [x] **Step 1: Write the failing tests.**
   - `useSignInSyncWait.test.tsx`: `signed out: no wait`, `onboarding completed: no wait even while the first run is running`, `signed in with onboarding not completed: syncing until the first run ends`, `account loading: loading`, `first run failed: failed`, `Start without sync ends the wait`.
   - `SignInSyncWait.test.tsx`: `loading shows a spinner and no text`, `syncing shows Getting your progress…`, `failed shows the error and both buttons call their handlers`, `after 10 s of waiting, Start without sync shows` (fake timers).
   - `useOnboardingRedirect.test.tsx` (add only; the old tests run with `hold` omitted and must still pass unchanged): `holds every redirect while hold is true`, `opens the dashboard when the hold ends and onboarding is completed`.
-- [ ] **Step 2: Run** `cd mobile && npx jest src/hooks/useSignInSyncWait.test.tsx src/components/sync/SignInSyncWait.test.tsx src/hooks/useOnboardingRedirect.test.tsx` → new tests FAIL (modules missing / no hold).
-- [ ] **Step 3: Implement** the interfaces above.
-- [ ] **Step 4: Run** the same command → all PASS.
-- [ ] **Step 5: Commit** `feat(sync): wait for the first sync after a sign-in`.
+- [x] **Step 2: Run** `cd mobile && npx jest src/hooks/useSignInSyncWait.test.tsx src/components/sync/SignInSyncWait.test.tsx src/hooks/useOnboardingRedirect.test.tsx` → new tests FAIL (modules missing / no hold).
+- [x] **Step 3: Implement** the interfaces above.
+- [x] **Step 4: Run** the same command → all PASS.
+- [x] **Step 5: Commit** `feat(sync): wait for the first sync after a sign-in`.
 
 ### Task 4: "Sign in" on the onboarding welcome screen
 

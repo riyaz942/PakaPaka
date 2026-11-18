@@ -300,4 +300,38 @@ describe('useOnboardingRedirect', () => {
       expect(mockReplace).toHaveBeenCalledWith('/dashboard');
     });
   });
+
+  it('holds every redirect while hold is true', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(0, true), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('opens the dashboard when the hold ends and onboarding is completed', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    mockSegments = ['(tabs)', 'settings'];
+
+    const wrapper = await createWrapper(db);
+    const { rerender } = renderHook(
+      ({ hold }: { hold: boolean }) => useOnboardingRedirect(0, hold),
+      { wrapper, initialProps: { hold: true } },
+    );
+    expect(mockReplace).not.toHaveBeenCalled();
+
+    // The first sync applied the account's progress while the hold was on.
+    setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    rerender({ hold: false });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/dashboard');
+    });
+    expect(mockReplace).toHaveBeenCalledTimes(1);
+  });
 });
