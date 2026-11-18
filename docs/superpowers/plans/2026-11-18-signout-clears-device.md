@@ -211,7 +211,7 @@
 - [x] **Step 1:** Edit the docs above.
 - [x] **Step 2:** Full checks: `cd mobile && npm test -- --ci` (all pass; count = before + new), CI-way typecheck, `npm run lint` (0 errors); repo root `npm run check-contrast`.
 - [x] **Step 3: Commit** `docs: sign-out clears the device`.
-- [ ] **Step 4 (operator approves):** `cd mobile && npm run deploy:web`.
+- [x] **Step 4 (operator approves):** `cd mobile && npm run deploy:web`.
 - [ ] **Step 5 (operator, live web):** (a) signed in → Sign out → "Sync and sign out" → landing page opens; Settings data is gone on reopen. (b) DevTools offline → Sign out → "Sync did not finish" with "Erase anyway"; Cancel keeps everything. (c) Landing → Log in → wait screen "Getting your progress…" → dashboard with the data. (d) Never-signed-in browser profile: onboarding exactly as before, Network panel has no `/api/*` call. (e) Two browser profiles signed in to one account, both synced: profile A → Sign out everywhere → profile B, on reload, erases and opens the landing page. (f) Same, but profile B made a review it did not sync (offline, then back online before the reload): B shows "You were signed out" with "Sign in to sync it" / "Erase anyway"; nothing erased until a press. (g) Delete account → landing page; the other profile erases on reload (if all synced).
 - [ ] **Step 6:** Phone checks join Part 3 Task 14 Step 4 (dev-client rebuild): Sign out → start screen with no data; start "Log in" → wait → dashboard; welcome "Sign in" → wait → dashboard; session ended elsewhere → erase or ask; iOS: the conflict dialog presents over the open sign-out sheet (two Modals); B mid-review when A signs out everywhere → ask screen, then "Sign in to sync it" does not change the review's cards until the review ends.
 
