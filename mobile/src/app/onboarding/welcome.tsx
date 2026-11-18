@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 
+import { Button } from '@/components/common/Button';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
@@ -11,9 +12,11 @@ import { listLevelsWithContent } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setOnboardingPath, setStartingJlptLevel } from '@/data/user/preferencesRepository';
 import { supportsThirdPartyImport } from '@/platform/capabilities';
+import { useAccount } from '@/providers/AccountProvider';
 
 export default function WelcomeScreen() {
   const { curriculumDb, userDb } = useDatabase();
+  const account = useAccount();
   const [showLevelPicker, setShowLevelPicker] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<JLPTLevel | null>(null);
 
@@ -109,7 +112,26 @@ export default function WelcomeScreen() {
           </LevelPathCard>
         </FadeSlideIn>
 
-        <FadeSlideIn index={3}>
+        {account.status === 'signed_out' ? (
+          <FadeSlideIn index={3}>
+            <Button
+              label="Sign in to restore your progress"
+              variant="ghost"
+              onPress={() => void account.signIn()}
+              className="w-full"
+              testID="welcome-sign-in"
+            />
+            {account.error ? (
+              <Text
+                className="mt-space-xs text-caption font-ui-medium text-feedback-incorrect-deep"
+                testID="welcome-sign-in-error">
+                {account.error}
+              </Text>
+            ) : null}
+          </FadeSlideIn>
+        ) : null}
+
+        <FadeSlideIn index={4}>
           <Text className="text-body-sm font-ui text-muted" testID="kana-note">
             This app doesn&apos;t teach hiragana or katakana. Learn them first with another app,
             such as Kana on iOS or a free Android equivalent.

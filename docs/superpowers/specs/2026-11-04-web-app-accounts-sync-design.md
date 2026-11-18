@@ -166,8 +166,8 @@ Any user can sign in from the first release, so Part 2 must include:
 - Settings shows: signed-in provider, "Sync now", last sync time / last error, device list with
   remove, "Sign out everywhere", **Delete account**.
 - **Delete account** removes the user's D1 rows and R2 objects and revokes the Apple token
-  (Apple 5.1.1(v), Google Play). Local progress on the device stays.
-- **Sign out** keeps local progress, stops sync, and deletes the tokens and the sync base copy.
+  (Apple 5.1.1(v), Google Play). It also signs out every device and erases this device (no sync first); other devices follow the session-ended rule. Changed 2026-11-18 by the operator.
+- **Sign out** (signed in, started on this device) syncs first, then erases this device's data and leaves the app (web: landing page; apps: the start screen). If the sync fails, nothing is erased unless the user chooses "Erase anyway". A device whose session ends without the user (another device's "Sign out everywhere", a removed device, Delete account, an expired session) erases its data and leaves when it has nothing unsynced; otherwise it asks ("Sign in to sync it" / "Erase anyway"). Changed 2026-11-18 by the operator.
 
 ### Security
 

@@ -19,6 +19,7 @@ import { migration018AiSessionTopicIds } from '@/data/migrations/018_ai_session_
 import { migration019CardSeen } from '@/data/migrations/019_card_seen';
 import { migration020LessonOptIns } from '@/data/migrations/020_lesson_opt_ins';
 import { migration021GrammarAnswers } from '@/data/migrations/021_grammar_answers';
+import { migration022SyncBase } from '@/data/migrations/022_sync_base';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -43,4 +44,5 @@ export const migrations: Migration[] = [
   migration019CardSeen,
   migration020LessonOptIns,
   migration021GrammarAnswers,
+  migration022SyncBase,
 ];

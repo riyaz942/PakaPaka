@@ -26,6 +26,7 @@ import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types'
 import { useBrowseDraftCount, useBrowseItems } from '@/data/hooks/useBrowseItems';
 import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useWideLayout } from '@/hooks/useWideLayout';
+import { useSync } from '@/providers/SyncProvider';
 import { cn } from '@/utils/cn';
 
 function firstParam(value: string | string[] | undefined): string | null {
@@ -74,6 +75,7 @@ export default function BrowseScreen() {
     passageUnlock,
     newlyUnlockedPassageIds,
   } = useBrowseItems();
+  const { appliedVersion } = useSync();
 
   const [openFacet, setOpenFacet] = useState<BrowseFacetKey | null>(null);
   const [draft, setDraft] = useState<BrowseFilters>(filters);
@@ -105,7 +107,8 @@ export default function BrowseScreen() {
   useFocusEffect(
     useCallback(() => {
       refresh();
-    }, [refresh]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- appliedVersion is an explicit reload trigger
+    }, [refresh, appliedVersion]),
   );
 
   // `/learn/[level]` redirects arrive with level/type in the query string.

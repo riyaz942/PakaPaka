@@ -119,6 +119,7 @@ function seededData(): BackupData {
         updatedAt: '2026-08-01T00:00:00.000Z',
       },
     ],
+    lessonOptIns: [],
     aiSessions: [],
     aiMessages: [],
   };
@@ -276,5 +277,26 @@ describe('parseBackupBundle — files from before 021', () => {
     if (!parsed.ok) return;
     expect(parsed.value.data.grammarAnswers).toEqual([]);
     expect(parsed.value.data.grammarSentenceHistory).toEqual([]);
+  });
+});
+
+describe('parseBackupBundle', () => {
+  it('accepts a file with no lessonOptIns key', () => {
+    const data = Object.fromEntries(BACKUP_DATA_KEYS.map((key) => [key, []])) as unknown as BackupData;
+    const json = JSON.parse(
+      serializeBackupBundle(
+        buildBackupBundle(
+          { schemaVersion: 21, curriculumVersion: '31', exportedAt: '2026-11-01T00:00:00.000Z', includesConversations: false },
+          data,
+        ),
+      ),
+    );
+    delete json.data.lessonOptIns;
+
+    const parsed = parseBackupBundle(JSON.stringify(json));
+
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+    expect(parsed.value.data.lessonOptIns).toEqual([]);
   });
 });

@@ -31,6 +31,7 @@ export async function toAccountError(res: Response | null): Promise<AppError> {
   if (serverCode === null && (res.status === 429 || res.status === 503)) {
     return accountError('paused');
   }
+  if (serverCode === 'revision_conflict') return accountError('revision_conflict');
   if (res.status === 401) return accountError('session_ended');
   if (res.status === 404) return accountError('not_found');
   return accountError('server');

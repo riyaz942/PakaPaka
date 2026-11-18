@@ -28,6 +28,7 @@ import {
 } from '@/components/onboarding/cardRegistry';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import { AccountSettingsSection } from '@/components/settings/AccountSettingsSection';
+import { leaveAfterErase } from '@/components/settings/leaveAfterErase';
 import {
   cancelAllNotifications,
   requestNotificationPermission,
@@ -51,6 +52,8 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { useVacationMode } from '@/data/hooks/useVacationMode';
 import { useWideLayout } from '@/hooks/useWideLayout';
+import { useAccount } from '@/providers/AccountProvider';
+import { useSync } from '@/providers/SyncProvider';
 import { exportBackup } from '@/data/user/exportBackup';
 import { eraseLocalData, previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import {
@@ -165,6 +168,8 @@ export default function SettingsScreen() {
   // Desktop web: the sections flow into two columns.
   const wide = useWideLayout();
   const { userDb } = useDatabase();
+  const account = useAccount();
+  const sync = useSync();
   const { reducedMotion, setReducedMotion, refetch: refetchReducedMotion } = useReducedMotion();
   const { hapticsEnabled, setHapticsEnabled, refetch: refetchHaptics } = useHapticsPreference();
   const { mode: themeMode, setMode: setThemeMode } = useThemeMode();
@@ -383,31 +388,9 @@ export default function SettingsScreen() {
     setRestoreState('summary');
   };
 
-  const handleConfirmRestore = async () => {
-    const preview = getBackupPreview();
-    if (!preview) {
-      setRestoreError('That backup preview is no longer available. Pick the file again.');
-      setRestoreState('error');
-      return;
-    }
-
-    setRestoreState('loading');
-    const result = restoreBackup(userDb, preview, 'settings');
-    if (!result.ok) {
-      setRestoreError(result.error.userMessage ?? result.error.message);
-      setRestoreState('error');
-      return;
-    }
-
-    clearBackupPreview();
-    setRestoreState('idle');
-    setRestoreResultMessage(
-      result.value.unmatchedSlugCount > 0
-        ? `Restored ${result.value.restoredRowCount} rows · ${result.value.unmatchedSlugCount} skipped (no longer in the curriculum).`
-        : `Restored ${result.value.restoredRowCount} rows.`,
-    );
-    // The replace wrote another device's preferences — pull every displayed
-    // value back out of user.db, including the ones that live in their own hooks.
+  // A restore or a sync merge replaced rows in user.db — pull every displayed
+  // value back out of it, including the ones that live in their own hooks.
+  const refreshAfterDataChange = async () => {
     setSettingsVersion((version) => version + 1);
     setThemeMode(getThemeMode(userDb));
     setFuriganaMode(getFuriganaDisplay(userDb));
@@ -425,6 +408,48 @@ export default function SettingsScreen() {
     }
   };
 
+  // A sync that changed rows raises appliedVersion; a sign-out reset to 0 is not a change.
+  const seenAppliedVersion = useRef(sync.appliedVersion);
+  useEffect(() => {
+    const raised = sync.appliedVersion > seenAppliedVersion.current;
+    seenAppliedVersion.current = sync.appliedVersion;
+    if (!raised) return;
+    // A failed notification reschedule is not fatal here; the next refresh tries again.
+    refreshAfterDataChange().catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the refresh reads current hook values; only a new appliedVersion triggers it
+  }, [sync.appliedVersion]);
+
+  const handleConfirmRestore = async () => {
+    const preview = getBackupPreview();
+    if (!preview) {
+      setRestoreError('That backup preview is no longer available. Pick the file again.');
+      setRestoreState('error');
+      return;
+    }
+
+    setRestoreState('loading');
+    const result = restoreBackup(userDb, preview, 'settings');
+    if (!result.ok) {
+      setRestoreError(result.error.userMessage ?? result.error.message);
+      setRestoreState('error');
+      return;
+    }
+
+    // Signed in: the server copy must follow the restore, or the next sync merges the old one back.
+    if (account.status === 'signed_in') {
+      await sync.replaceRemoteAfterRestore(preview.bundle.data);
+    }
+
+    clearBackupPreview();
+    setRestoreState('idle');
+    setRestoreResultMessage(
+      result.value.unmatchedSlugCount > 0
+        ? `Restored ${result.value.restoredRowCount} rows · ${result.value.unmatchedSlugCount} skipped (no longer in the curriculum).`
+        : `Restored ${result.value.restoredRowCount} rows.`,
+    );
+    await refreshAfterDataChange();
+  };
+
   const handleCancelRestore = () => {
     clearBackupPreview();
     setRestoreState('idle');
@@ -440,7 +465,7 @@ export default function SettingsScreen() {
       return;
     }
     clearBackupPreview();
-    router.replace('/onboarding/welcome');
+    leaveAfterErase();
   };
 
   const handleResetOnboarding = () => {
@@ -720,6 +745,7 @@ export default function SettingsScreen() {
                     onCancel={handleCancelRestore}
                     onConfirm={handleConfirmRestore}
                     preview={getBackupPreview() ?? undefined}
+                    signedIn={account.status === 'signed_in'}
                     state={restoreState}
                   />
                 </View>

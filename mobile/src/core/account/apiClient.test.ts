@@ -34,6 +34,11 @@ describe('toAccountError', () => {
     expect(err.code).toBe('rate_limited');
   });
 
+  it('toAccountError maps JSON revision_conflict', async () => {
+    const err = await toAccountError(json(409, { error: 'revision_conflict', revision: 4 }));
+    expect(err.code).toBe('revision_conflict');
+  });
+
   it('401 → session_ended', async () => {
     const err = await toAccountError(json(401, { error: 'unauthorized' }));
     expect(err.code).toBe('session_ended');

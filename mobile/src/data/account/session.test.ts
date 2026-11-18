@@ -212,6 +212,18 @@ describe('createAccountSession', () => {
     expect(new Headers(init.headers).get('Authorization')).toBe('Bearer at');
   });
 
+  it('session.request uses the session manager (native)', async () => {
+    await seed(session({ refreshToken: 'rt-request' }));
+    fetchMock.mockResolvedValue(json(200, { revision: 3 }));
+
+    const result = await createAccountSession().request('/api/sync?have=1', { method: 'GET' });
+
+    expect(result.ok).toBe(true);
+    const [, init] = calls('/api/sync?have=1')[0];
+    expect(new Headers(init.headers).get('Authorization')).toBe('Bearer at');
+    expect(init.method).toBe('GET');
+  });
+
   it('removeDevice deletes another device on the server and keeps the session', async () => {
     await seed(session({ refreshToken: 'rt-remove' }));
     fetchMock.mockResolvedValue(json(204));

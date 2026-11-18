@@ -35,6 +35,17 @@ jest.mock('expo-router', () => ({
   useFocusEffect: (callback: () => void) => require('react').useEffect(callback, [callback]),
 }));
 
+// Signed out: sync stays idle, so the screen never reloads for a merge.
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => ({
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+  }),
+}));
+
 jest.mock('@/data/hooks/useDatabase', () => {
   const handles = { curriculumDb: {}, userDb: {}, isReady: true, error: null };
   return { useDatabase: () => handles };

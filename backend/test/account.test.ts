@@ -204,9 +204,9 @@ describe("DELETE /api/account", () => {
     const req = () => new Request(`${ORIGIN}/api/account`, { method: "DELETE", headers: { authorization: `Bearer ${a.accessToken}` } });
 
     expect((await handleDeleteAccount(req(), spyEnv, deps)).status).toBe(204);
-    expect(lists).toBe(1);
+    expect(lists).toBe(2);
     expect((await handleDeleteAccount(req(), spyEnv, deps)).status).toBe(204);
-    expect(lists).toBe(1);
+    expect(lists).toBe(2);
   });
 
   it("a repeat delete over cookies still clears the cookies", async () => {
@@ -220,6 +220,31 @@ describe("DELETE /api/account", () => {
     const again = await del();
     expect(again.status).toBe(204);
     expect(again.headers.getSetCookie()).toHaveLength(3);
+  });
+
+  it("a sync file put after the first sweep is removed too", async () => {
+    const a = await signedInDevice();
+    await env.PROGRESS.put(`progress/${a.userId}/0000000001-old.json.gz`, "x");
+    // A racing PUT puts its key after the first sweep and before deleteUserRows (which runs in db.batch).
+    const racingDb = new Proxy(env.DB, {
+      get(target, prop) {
+        if (prop === "batch") {
+          return async (...args: Parameters<D1Database["batch"]>) => {
+            await env.PROGRESS.put(`progress/${a.userId}/0000000002-late.json.gz`, "y");
+            return target.batch(...args);
+          };
+        }
+        const v = Reflect.get(target, prop, target);
+        return typeof v === "function" ? v.bind(target) : v;
+      },
+    });
+    const racingEnv = { ...env, DB: racingDb } as Env;
+    const deps = { now: () => Date.now() } as Deps;
+    const req = new Request(`${ORIGIN}/api/account`, { method: "DELETE", headers: { authorization: `Bearer ${a.accessToken}` } });
+
+    expect((await handleDeleteAccount(req, racingEnv, deps)).status).toBe(204);
+    expect((await env.PROGRESS.list({ prefix: `progress/${a.userId}/` })).objects).toHaveLength(0);
+    expect(await countRows(a.userId)).toBe(0);
   });
 
   it("D1 failure after R2 keeps the user for retry", async () => {

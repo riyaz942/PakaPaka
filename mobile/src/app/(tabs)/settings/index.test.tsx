@@ -43,8 +43,26 @@ const mockEndVacation = jest.fn(() => ({
   value: { shiftedCount: 12, days: 10 },
 }));
 
+let mockAccountStatus: 'signed_out' | 'signed_in' = 'signed_out';
 jest.mock('@/providers/AccountProvider', () => ({
-  useAccount: () => ({ status: 'signed_out', account: null, error: null, signInResult: null }),
+  useAccount: () => ({ status: mockAccountStatus, account: null, error: null, signInResult: null }),
+}));
+
+const mockReplaceRemoteAfterRestore = jest.fn();
+jest.mock('@/providers/SyncProvider', () => ({
+  useSync: () => ({
+    phase: 'idle',
+    lastSyncedAt: null,
+    error: null,
+    conflicts: null,
+    appliedVersion: 0,
+    syncNow: jest.fn(),
+    chooseConflict: jest.fn(),
+    runBeforeReview: jest.fn(),
+    beginStudy: jest.fn(),
+    endStudy: jest.fn(),
+    replaceRemoteAfterRestore: (data: unknown) => mockReplaceRemoteAfterRestore(data),
+  }),
 }));
 
 jest.mock('react-native-safe-area-context', () => ({
@@ -821,6 +839,64 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
     expect(mockRefetchShadowMode).toHaveBeenCalled();
     expect(cancelAllNotifications).toHaveBeenCalled();
     expect(scheduleReviewReminder).not.toHaveBeenCalled();
+  });
+
+  it('restore while signed in calls replaceRemoteAfterRestore with the bundle data', async () => {
+    mockAccountStatus = 'signed_in';
+    try {
+      const data = { userPreferences: [] };
+      mockGetDocumentAsync.mockResolvedValue({
+        canceled: false,
+        assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz', name: 'pakapaka-backup.json.gz' }],
+      });
+      mockPreviewRestore.mockResolvedValue({
+        ok: true,
+        value: { ...PREVIEW, bundle: { ...PREVIEW.bundle, data } },
+      });
+      mockRestoreBackup.mockReturnValue({
+        ok: true,
+        value: { restoredRowCount: 12, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+      });
+
+      render(<SettingsScreen />);
+      fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+      await waitFor(() => {
+        expect(screen.getByTestId('restore-preview-warning')).toHaveTextContent(
+          'This replaces the progress on all your signed-in devices.',
+        );
+      });
+      fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+      await waitFor(() => {
+        expect(mockReplaceRemoteAfterRestore).toHaveBeenCalledWith(data);
+      });
+    } finally {
+      mockAccountStatus = 'signed_out';
+    }
+  });
+
+  it('restore while signed out does not', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/pakapaka-backup.json.gz', name: 'pakapaka-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+    mockRestoreBackup.mockReturnValue({
+      ok: true,
+      value: { restoredRowCount: 12, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-confirm')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-restore-result')).toBeTruthy();
+    });
+    expect(mockReplaceRemoteAfterRestore).not.toHaveBeenCalled();
   });
 
   it('does not open the share sheet after a web export, which downloads instead', async () => {

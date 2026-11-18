@@ -104,6 +104,12 @@ export type GrammarSentenceHistoryEntry = {
   updatedAt: string;
 };
 
+/** An item the learner asked to learn ahead of their level (020). */
+export type LessonOptInEntry = {
+  item: ItemRef;
+  optedInAt: string;
+};
+
 export type DailyLessonLogEntry = {
   date: string;
   itemsStarted: number;
@@ -184,6 +190,7 @@ export type BackupData = {
   passagePracticeResults: PassagePracticeResultEntry[];
   grammarAnswers: GrammarAnswerEntry[];
   grammarSentenceHistory: GrammarSentenceHistoryEntry[];
+  lessonOptIns: LessonOptInEntry[];
   aiSessions: AiSessionEntry[];
   aiMessages: AiMessageEntry[];
 };
@@ -206,6 +213,7 @@ export const BACKUP_DATA_KEYS: readonly (keyof BackupData)[] = [
   'passagePracticeResults',
   'grammarAnswers',
   'grammarSentenceHistory',
+  'lessonOptIns',
   'aiSessions',
   'aiMessages',
 ];

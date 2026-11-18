@@ -7,6 +7,7 @@ export type AccountErrorCode =
   | 'session_ended'
   | 'cancelled'
   | 'not_found'
+  | 'revision_conflict'
   | 'server';
 
 export type AccountDevice = {
@@ -29,4 +30,6 @@ export type AccountSession = {
   signOut(): Promise<Result<void>>;
   signOutEverywhere(): Promise<Result<void>>;
   deleteAccount(): Promise<Result<void>>;
+  /** An authorized call with the same refresh rules as the calls above. */
+  request(path: string, init: RequestInit): Promise<Result<Response>>;
 };
