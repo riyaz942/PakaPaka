@@ -204,7 +204,7 @@ nav .cta { display: flex; align-items: center; gap: 10px; }
 .anim .tile.lit .glyph { animation: stamp .6s cubic-bezier(.3, 1.7, .5, 1); }
 @keyframes stamp { from { transform: scale(.5); opacity: .2; filter: blur(3px); } to { transform: none; opacity: 1; filter: none; } }
 @keyframes ring { from { box-shadow: 0 0 0 0 var(--ring); } to { box-shadow: 0 0 0 22px transparent; } }
-.token { position: absolute; z-index: 30; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 13px; display: grid; place-items: center; font-size: 25px; pointer-events: none; border: 1.5px solid; box-shadow: var(--shadow); }
+.token { position: fixed; left: 0; top: 0; opacity: 0; z-index: 30; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 13px; display: grid; place-items: center; font-size: 25px; pointer-events: none; border: 1.5px solid; box-shadow: var(--shadow); }
 .token.radical { background: var(--radical-soft); color: var(--radical-deep); border-color: var(--radical); }
 .token.kanji { background: var(--kanji-soft); color: var(--kanji-deep); border-color: var(--kanji); }
 .rad-row { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; padding: 10px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
@@ -293,6 +293,11 @@ footer a { color: var(--muted); }
 /* motion: scroll reveal, headline underline, Alpi's hop ("paka paka") */
 .anim [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .6s ease var(--d, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms); }
 .anim [data-reveal].in { opacity: 1; transform: none; }
+/* scroll story: a scene that fits in the window stays in place (pinned) while the scroll plays it */
+/* The scroll room is a block inside the wrapper: a sticky element moves only inside its
+   parent's content box, so padding would give it no room. */
+.anim .story.pinned::after { content: ""; display: block; height: var(--story-len); }
+.anim .story.pinned > .story-pin { position: sticky; top: var(--pin-top); }
 .anim .stroke path { stroke-dashoffset: 320; transition: stroke-dashoffset .9s cubic-bezier(.6, 0, .2, 1) .7s; }
 .anim .hero h1.in .stroke path { stroke-dashoffset: 0; }
 .anim [data-reveal].in .square { animation: stamp .6s cubic-bezier(.3, 1.7, .5, 1) .15s both; }
@@ -379,8 +384,9 @@ footer a { color: var(--muted); }
       <p class="lede">You do not learn a mnemonic for each item from zero. The picture you learn for a radical comes back in the kanji, and the kanji story comes back in the word.</p>
     </div>
 
+    <div class="story" id="story-chain"><div class="story-pin">
     <div class="chain" id="fusion">
-      <div class="step" data-reveal>
+      <div class="step">
         <div class="step-head"><span class="step-num" style="color:var(--radical-deep)">1</span><h3>Learn the shapes</h3></div>
         <p class="say">Each radical is one picture that looks like its shape.</p>
         <div class="rad-row"><img src="/landing/img/hitoashi.webp" alt="A pair of legs in jeans, drawn in the shape of the radical" width="64" height="64"><div><div class="name"><span class="hero-jp rad-glyph">儿</span>human legs</div><div class="txt">Two strokes sweep down and out, like a pair of legs.</div></div></div>
@@ -390,7 +396,7 @@ footer a { color: var(--muted); }
 
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
 
-      <div class="step" data-reveal style="--d:120ms">
+      <div class="step">
         <div class="step-head"><span class="step-num" style="color:var(--kanji-deep)">2</span><h3>The shapes make the kanji</h3></div>
         <p class="say">The kanji story uses only the radicals you know.</p>
         <div class="card">
@@ -405,7 +411,7 @@ footer a { color: var(--muted); }
 
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
 
-      <div class="step" data-reveal style="--d:240ms">
+      <div class="step">
         <div class="step-head"><span class="step-num" style="color:var(--vocab-deep)">3</span><h3>The kanji makes the word</h3></div>
         <p class="say">The same samurai comes back to give you the reading.</p>
         <div class="card">
@@ -418,6 +424,7 @@ footer a { color: var(--muted); }
         </div>
       </div>
     </div>
+    </div></div>
 
     <div class="chain-foot" data-reveal>
       <span class="key"><span class="dot" style="background:var(--radical)"></span>Radical you learned before</span>
@@ -638,20 +645,45 @@ if (ANIM) {
   }, 0.6));
 }
 
-// ---- the large kanji move a little slower than the page ----
-if (ANIM) {
-  const ghosts = [...document.querySelectorAll('.ghost')];
-  let queued = false;
-  const drift = () => {
-    queued = false;
-    ghosts.forEach(g => {
-      const r = g.parentElement.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > innerHeight) return;
-      g.style.setProperty('--py', ((r.top + r.height / 2 - innerHeight / 2) * -0.08).toFixed(1) + 'px');
-    });
-  };
-  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(drift); } }, { passive: true });
-  drift();
+// ---- scroll story runner: each scene gets a progress p (0 to 1) from the scroll ----
+// The runner only reads the scroll position. It starts at the end of this script,
+// after every scene is added, and only when ANIM is true.
+const scenes = [];
+const lerp = (a, b, t) => a + (b - a) * t;
+const centre = node => { const r = node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
+function addScene(wrapId, lenVh, draw) {
+  const wrap = document.getElementById(wrapId);
+  scenes.push({ wrap, pin: wrap.querySelector('.story-pin'), lenVh, draw, pinned: false, pinTop: 0 });
+}
+/** Pin each scene that fits in the window; give it its scroll length and pin top. */
+function layoutScenes() {
+  const navH = document.querySelector('nav').offsetHeight;
+  scenes.forEach(s => {
+    const h = s.pin.offsetHeight;
+    s.pinned = fits(h, navH, innerHeight);
+    s.pinTop = pinOffset(h, navH, innerHeight);
+    s.wrap.classList.toggle('pinned', s.pinned);
+    s.wrap.style.setProperty('--story-len', s.lenVh * innerHeight + 'px');
+    s.wrap.style.setProperty('--pin-top', s.pinTop + 'px');
+  });
+  queueFrame();
+}
+let frameQueued = false;
+function queueFrame() { if (!frameQueued) { frameQueued = true; requestAnimationFrame(frame); } }
+function frame() {
+  frameQueued = false;
+  // The large kanji move a little slower than the page.
+  document.querySelectorAll('.ghost').forEach(g => {
+    const r = g.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    g.style.setProperty('--py', ((r.top + r.height / 2 - innerHeight / 2) * -0.08).toFixed(1) + 'px');
+  });
+  scenes.forEach(s => {
+    let p;
+    if (s.pinned) p = pinProgress(s.wrap.getBoundingClientRect().top, s.pinTop, s.lenVh * innerHeight);
+    else { const r = s.pin.getBoundingClientRect(); p = flowProgress(r.top, r.height, innerHeight); }
+    s.draw(p, s);
+  });
 }
 
 // ---- graph: radicals -> kanji -> words ----
@@ -770,43 +802,85 @@ if (ANIM) {
   focusNode('儿');
 }
 
-// ---- mnemonic chain: the radicals fly into the kanji, the kanji into the word ----
+// ---- mnemonic chain: the radicals move into the kanji, the kanji into the word ----
 if (ANIM) {
+  const fusion = document.getElementById('fusion');
+  const steps = [...fusion.querySelectorAll('.step')], arrows = [...fusion.querySelectorAll('.arrow')];
+  const radRows = [...fusion.querySelectorAll('.rad-row')], radGlyphs = [...fusion.querySelectorAll('.rad-glyph')];
   const kTile = document.getElementById('k-tile'), vTile = document.getElementById('v-tile');
   const kGlyph = kTile.querySelector('.glyph'), vGlyph = vTile.querySelector('.glyph');
-  const light = tile => { tile.classList.remove('wait'); tile.classList.add('lit'); };
-  const centre = node => { const r = node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
-  function fly(from, to, kind) {
-    const a = centre(from), b = centre(to), dx = b.x - a.x, dy = b.y - a.y;
+  const makeToken = (text, kind) => {
     const token = document.createElement('div');
     token.className = 'token hero-jp ' + kind;
-    token.textContent = from.textContent.trim();
-    token.style.left = a.x + scrollX + 'px';
-    token.style.top = a.y + scrollY + 'px';
+    token.textContent = text;
     document.body.appendChild(token);
-    const run = token.animate([
-      { transform: 'scale(.6)', opacity: 0 },
-      { transform: 'scale(1.2)', opacity: 1, offset: 0.18 },
-      { transform: `translate(${dx}px, ${dy}px) scale(.8)`, opacity: 1, offset: 0.88 },
-      { transform: `translate(${dx}px, ${dy}px) scale(.3)`, opacity: 0 },
-    ], { duration: 900, easing: 'cubic-bezier(.55, 0, .2, 1)' });
-    return run.finished.then(() => token.remove());
+    return token;
+  };
+  const radTokens = radGlyphs.map(g => makeToken(g.textContent.trim(), 'radical'));
+  const kanjiToken = makeToken(kGlyph.textContent.trim(), 'kanji');
+  const place = (token, x, y, t) => {
+    const look = tokenLook(t);
+    token.style.opacity = look.visible ? look.opacity : 0;
+    token.style.transform = `translate(${x}px, ${y}px) scale(${look.scale})`;
+  };
+  // Change the classes only when the state changes, so the stamp and ring play once for each change.
+  const lit = new Map();
+  const setLit = (tile, on) => {
+    if (lit.get(tile) === on) return;
+    lit.set(tile, on);
+    tile.classList.toggle('wait', !on);
+    tile.classList.toggle('lit', on);
+  };
+  const row = matchMedia('(min-width: 941px)');
+  let wasRow = null;
+
+  // Side by side: p moves each tile on the line from its source to its target.
+  function drawRow(p) {
+    const s = chainState(p);
+    radRows.forEach((r, i) => { r.style.opacity = s.rows[i]; r.style.transform = `translateY(${(1 - s.rows[i]) * 20}px)`; });
+    steps[0].style.opacity = '';
+    steps[1].style.opacity = arrows[0].style.opacity = s.col2;
+    steps[2].style.opacity = arrows[1].style.opacity = s.col3;
+    const k = centre(kGlyph), v = centre(vGlyph);
+    radTokens.forEach((token, i) => {
+      const a = centre(radGlyphs[i]), t = s.radTokens[i];
+      place(token, lerp(a.x, k.x, t), lerp(a.y, k.y, t), t);
+    });
+    place(kanjiToken, lerp(k.x, v.x, s.kanjiToken), lerp(k.y, v.y, s.kanjiToken), s.kanjiToken);
+    setLit(kTile, s.kLit);
+    setLit(vTile, s.vLit);
   }
-  if (matchMedia('(min-width: 941px)').matches) {
-    // Side by side: one sequence for the full row.
-    onceVisible(document.getElementById('fusion'), async () => {
-      await wait(700);
-      const radicals = [...document.querySelectorAll('.rad-glyph')];
-      await Promise.all(radicals.map((r, i) => wait(i * 240).then(() => fly(r, kGlyph, 'radical'))));
-      light(kTile);
-      await wait(700);
-      await fly(kGlyph, vGlyph, 'kanji');
-      light(vTile);
-    }, 0.45);
-  } else {
-    // Stacked: the cards are a screen apart, so each tile lights when you reach it.
-    [kTile, vTile].forEach(tile => onceVisible(tile, () => light(tile), 0.8));
+
+  // Stacked: the columns are a screen apart, so a tile stays at the middle of the
+  // window from the time its source passes the middle until its target reaches it.
+  function drawStacked() {
+    const vh = innerHeight, mid = vh / 2;
+    radRows.forEach(r => { r.style.opacity = r.style.transform = ''; });
+    steps.forEach((step, i) => {
+      const o = span(vh - step.getBoundingClientRect().top, 0, vh * .25);
+      step.style.opacity = o;
+      if (i) arrows[i - 1].style.opacity = o;
+    });
+    const k = centre(kGlyph), v = centre(vGlyph);
+    let allIn = true;
+    radTokens.forEach((token, i) => {
+      const a = centre(radGlyphs[i]), r = relay(a.y, k.y, mid);
+      if (r.state !== 'arrived') allIn = false;
+      if (r.state === 'carry') place(token, lerp(a.x, k.x, r.t) + (i - 1) * 52 * (1 - r.t), mid, r.t);
+      else token.style.opacity = 0;
+    });
+    setLit(kTile, allIn);
+    const r = relay(k.y, v.y, mid);
+    if (r.state === 'carry') place(kanjiToken, lerp(k.x, v.x, r.t), mid, r.t);
+    else kanjiToken.style.opacity = 0;
+    setLit(vTile, r.state === 'arrived');
   }
+
+  addScene('story-chain', 1.5, p => {
+    // A layout change between row and stacked: no tile stays where the old layout put it.
+    if (row.matches !== wasRow) { wasRow = row.matches; [...radTokens, kanjiToken].forEach(t => { t.style.opacity = 0; }); }
+    if (row.matches) drawRow(p); else drawStacked();
+  });
 }
 
 // ---- grammar cards: the answers type themselves ----
@@ -833,6 +907,14 @@ if (ANIM) {
     await wait(350);
     hint.classList.add('in');
   }, 0.5);
+}
+
+// ---- start the scroll story (after every scene is added) ----
+if (ANIM) {
+  addEventListener('scroll', queueFrame, { passive: true });
+  addEventListener('resize', layoutScenes);
+  document.fonts.ready.then(layoutScenes);   // late fonts change the scene heights
+  layoutScenes();
 }
 </script>
 </body>
