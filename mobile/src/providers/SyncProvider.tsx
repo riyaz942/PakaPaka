@@ -247,6 +247,8 @@ export function SyncProvider({
       // A waiting dialog ends its run, so the clear (after the last run) can go ahead.
       conflictAnswer.current?.(null);
       generation.current += 1;
+      // A review or lesson that is open can still write answers, so the check asks first.
+      const studying = studyCount.current > 0;
       studyCount.current = 0;
       setState(INITIAL_STATE);
       const ended = account.sessionEnded;
@@ -257,6 +259,7 @@ export function SyncProvider({
           const base = await readSyncBase(userDb);
           const snapshot = base.ok ? await readSyncSnapshot(userDb) : null;
           const unsynced =
+            studying ||
             !base.ok ||
             snapshot === null ||
             !snapshot.ok ||

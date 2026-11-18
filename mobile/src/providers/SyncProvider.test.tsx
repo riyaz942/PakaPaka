@@ -620,6 +620,52 @@ describe('SyncProvider', () => {
       expect(readSyncBase).not.toHaveBeenCalled();
     });
 
+    it('a session that ends during a study session sets sessionEnd to ask', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest.mocked(readSyncBase).mockResolvedValue({
+        ok: true,
+        value: { revision: 4, data: fullSampleData(), pendingReplace: false, carried: {} },
+      });
+      mockStatus = 'signed_in';
+      const { rerenderTree } = renderProvider();
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+      act(() => latest.beginStudy());
+
+      mockStatus = 'signed_out';
+      mockSessionEnded = true;
+      rerenderTree();
+      await waitFor(() => expect(clearSyncBase).toHaveBeenCalledWith(mockUserDb));
+
+      expect(latest.sessionEnd).toBe('ask');
+    });
+
+    it('a sign-in while the check runs does not set sessionEnd', async () => {
+      const baseRead = deferred<Awaited<ReturnType<typeof readSyncBase>>>();
+      jest.mocked(readSyncBase).mockReturnValueOnce(baseRead.promise);
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      mockStatus = 'signed_in';
+      const { rerenderTree } = renderProvider();
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+
+      mockStatus = 'signed_out';
+      mockSessionEnded = true;
+      rerenderTree();
+      await waitFor(() => expect(readSyncBase).toHaveBeenCalledTimes(1));
+      mockStatus = 'signed_in';
+      mockSessionEnded = false;
+      rerenderTree();
+      await act(async () =>
+        baseRead.resolve({
+          ok: true,
+          value: { revision: 4, data: fullSampleData(), pendingReplace: false, carried: {} },
+        }),
+      );
+
+      await waitFor(() => expect(clearSyncBase).toHaveBeenCalledWith(mockUserDb));
+      await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+      expect(latest.sessionEnd).toBe('none');
+    });
+
     it('a read error sets sessionEnd to ask', async () => {
       jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
       jest
