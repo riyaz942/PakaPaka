@@ -13,8 +13,10 @@ jest.mock('@/providers/AccountProvider', () => ({
 jest.mock('@/providers/SyncProvider', () => ({
   useSync: () => ({ firstRun: mockFirstRun, appliedVersion: mockAppliedVersion }),
 }));
+// The same handle on every render, as the real database provider gives.
+const mockDbs = { userDb: {}, curriculumDb: {} };
 jest.mock('@/data/hooks/useDatabase', () => ({
-  useDatabase: () => ({ userDb: {}, curriculumDb: {} }),
+  useDatabase: () => mockDbs,
 }));
 jest.mock('@/data/user/preferencesRepository', () => ({
   isOnboardingCompleted: () => mockCompleted,
@@ -94,6 +96,30 @@ describe('useSignInSyncWait', () => {
     rerender({});
     mockStatus = 'signed_in';
     mockFirstRun = 'running';
+    rerender({});
+    expect(result.current.wait).toBe('syncing');
+  });
+
+  it('a completion in this session is seen without a sync', () => {
+    const { result, rerender } = renderHook(() => useSignInSyncWait());
+    expect(result.current.wait).toBe('none');
+
+    // The learner finishes onboarding signed out, then signs in from Settings.
+    mockCompleted = true;
+    mockStatus = 'signed_in';
+    mockFirstRun = 'running';
+    rerender({});
+    expect(result.current.wait).toBe('none');
+  });
+
+  it('an erase in this session is seen without a sync', () => {
+    mockCompleted = true;
+    mockStatus = 'signed_in';
+    mockFirstRun = 'running';
+    const { result, rerender } = renderHook(() => useSignInSyncWait());
+    expect(result.current.wait).toBe('none');
+
+    mockCompleted = false;
     rerender({});
     expect(result.current.wait).toBe('syncing');
   });

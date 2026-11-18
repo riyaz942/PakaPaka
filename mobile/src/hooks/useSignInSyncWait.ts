@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { isOnboardingCompleted } from '@/data/user/preferencesRepository';
@@ -18,12 +18,12 @@ export function useSignInSyncWait(): {
 } {
   const { userDb } = useDatabase();
   const { status } = useAccount();
-  const { firstRun, appliedVersion } = useSync();
+  const { firstRun } = useSync();
   const [skipped, setSkipped] = useState(false);
 
-  // A pull can write the onboarding flag, so the read repeats when `appliedVersion` changes.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const completed = useMemo(() => isOnboardingCompleted(userDb), [userDb, appliedVersion]);
+  // One row read on every render: a pull, a local finish of onboarding and an erase all change
+  // the flag without a change of `userDb`, so a cached value goes stale.
+  const completed = isOnboardingCompleted(userDb);
 
   // A later sign-in waits again.
   useEffect(() => {
