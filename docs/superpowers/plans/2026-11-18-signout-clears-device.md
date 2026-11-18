@@ -158,11 +158,11 @@
 - Consumes: `useAccount()` → `status`, `signIn()`, `error`.
 - Produces: a `Button` with `variant="ghost"`, label `Sign in to restore your progress`, `testID="welcome-sign-in"`, below the three path cards and above the kana note; shown only when `status === 'signed_out'`. Press → `signIn()`. `error` (if any) shows under it with `text-caption font-ui-medium text-feedback-incorrect-deep`, `testID="welcome-sign-in-error"`. On all platforms (web sign-in leaves to `/auth/signin`; native uses the Google sheet; Task 3's wait takes over after it).
 
-- [ ] **Step 1: Write the failing tests** in `welcome.test.tsx`: `signed out shows Sign in to restore your progress and it calls signIn`, `signed in or loading hides the sign-in button`, `a sign-in error shows under the button`.
-- [ ] **Step 2: Run** `cd mobile && npx jest --runTestsByPath src/app/onboarding/welcome.test.tsx` → new tests FAIL.
-- [ ] **Step 3: Implement.**
-- [ ] **Step 4: Run** the same command → all PASS.
-- [ ] **Step 5: Commit** `feat(onboarding): sign in from the welcome screen`.
+- [x] **Step 1: Write the failing tests** in `welcome.test.tsx`: `signed out shows Sign in to restore your progress and it calls signIn`, `signed in or loading hides the sign-in button`, `a sign-in error shows under the button`.
+- [x] **Step 2: Run** `cd mobile && npx jest --runTestsByPath src/app/onboarding/welcome.test.tsx` → new tests FAIL.
+- [x] **Step 3: Implement.**
+- [x] **Step 4: Run** the same command → all PASS.
+- [x] **Step 5: Commit** `feat(onboarding): sign in from the welcome screen`.
 
 ### Task 5: Phone landing screen `/start` (decision 4, added 2026-11-18)
 
