@@ -90,7 +90,7 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - **Server boundary** — The server never receives BYOK keys or AI conversations. The server never stores, logs or uses your email. On mobile, the Google sign-in token can contain it; the server reads only the account ID (`sub`). Web sign-in asks only for `openid`. Never log tokens, ID tokens, request bodies or auth headers.
 - **BYOK boundary** — Provider keys in secure storage; sent only to user-configured HTTPS endpoints. Conversations stay local; do not inject off-curriculum words into SRS.
 - **Styling** — Semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). No deprecated `Colors` in `src/constants/theme.ts`; no raw hex in new code.
-- **Sync** — merge decisions use row content, never `updatedAt`; sync code uses the async SQLite API (`src/data/sync/`), merge rules are pure functions in `src/core/sync/`; a new `user.db` table must be added to `BackupData` and `SYNC_TABLES` or named as device-only.
+- **Sync** — merge decisions use row content, never `updatedAt`; sync code uses the async SQLite API (`src/data/sync/`), merge rules are pure functions in `src/core/sync/`; a new `user.db` table must be added to `BackupData` and `SYNC_TABLES` or named as device-only; sign-out syncs, then erases the device; a session that ends elsewhere erases only when nothing is unsynced, else asks.
 - **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.
 
 ## Commands
