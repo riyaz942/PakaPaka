@@ -249,7 +249,8 @@ nav .cta { display: flex; align-items: center; gap: 10px; }
 .apps { display: flex; flex-direction: column; gap: 10px; }
 .app { padding: 14px 16px; border-radius: 14px; border: 1.5px dashed color-mix(in srgb, var(--ink) 22%, transparent); color: var(--muted); font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; }
 .app small { font-weight: 500; color: var(--muted); }
-.one { padding: 30px 28px; border-radius: 22px; background: var(--brand); color: #fff; }
+.one { padding: 30px 28px; border-radius: 22px; background: var(--brand); color: #fff; --ring: var(--brand); }
+.anim .one.lit { animation: ring .9s ease-out; }
 .one h3 { color: #fff; font-size: 34px; margin-bottom: 8px; }
 .one p { font-size: 16.5px; }
 /* the path in numbers: one column for each kind of item */
@@ -484,26 +485,28 @@ footer a { color: var(--muted); }
       <p class="lede">Most learners use one app for kanji, one for grammar and a flashcard deck for the rest. None of them knows what you learned in the others.</p>
     </div>
 
+    <div class="story" id="story-merge"><div class="story-pin">
     <div class="merge">
       <div class="apps">
-        <div class="app" data-reveal>A kanji app <small>subscription</small></div>
-        <div class="app" data-reveal style="--d:100ms">A grammar app <small>subscription</small></div>
-        <div class="app" data-reveal style="--d:200ms">A flashcard deck <small>your time</small></div>
+        <div class="app">A kanji app <small>subscription</small></div>
+        <div class="app">A grammar app <small>subscription</small></div>
+        <div class="app">A flashcard deck <small>your time</small></div>
       </div>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 30 14"><path d="M1 7h27M22 1.5 28 7l-6 5.5"/></svg></div>
-      <div class="one" data-reveal style="--d:420ms">
+      <div class="one">
         <h3 class="serif">PakaPaka</h3>
         <p>One path and one review queue. Free, with no subscription.</p>
       </div>
     </div>
 
-    <div class="facts" data-reveal>
+    <div class="facts">
       <div class="fact"><b data-count="817">817</b><span><span class="dot" style="background:var(--radical)"></span>radicals</span></div>
       <div class="fact"><b data-count="2000">2,000</b><span><span class="dot" style="background:var(--kanji)"></span>kanji</span></div>
       <div class="fact"><b data-count="9749">9,749</b><span><span class="dot" style="background:var(--vocab)"></span>words</span></div>
       <div class="fact"><b data-count="160">160</b><span><span class="dot" style="background:var(--grammar)"></span>grammar points (N5&nbsp;+&nbsp;N4)</span></div>
       <div class="fact"><b data-count="60">60</b><span><span class="dot" style="background:var(--brand)"></span>reading passages</span></div>
     </div>
+    </div></div>
 
     <div class="feats">
       <div class="feat" data-reveal><h3 class="serif">One review queue</h3><p>Kanji, words and grammar are mixed in one queue. It finds the items you get wrong and shows them first.</p></div>
@@ -633,17 +636,9 @@ function mergeState(p) {
 function countValue(end, c) { return Math.round(end * (1 - (1 - c) ** 3)); }
 // </story-math>
 
-// ---- scroll reveal + count-up ----
+// ---- scroll reveal ----
 if (ANIM) {
   document.querySelectorAll('[data-reveal]').forEach(node => onceVisible(node, () => node.classList.add('in'), 0.15));
-  document.querySelectorAll('[data-count]').forEach(node => onceVisible(node, () => {
-    const end = Number(node.dataset.count), t0 = performance.now();
-    (function tick(now) {
-      const t = Math.min(1, (now - t0) / 900);
-      node.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))).toLocaleString('en-US');
-      if (t < 1) requestAnimationFrame(tick);
-    })(t0);
-  }, 0.6));
 }
 
 // ---- scroll story runner: each scene gets a progress p (0 to 1) from the scroll ----
@@ -652,9 +647,10 @@ if (ANIM) {
 const scenes = [];
 const lerp = (a, b, t) => a + (b - a) * t;
 const centre = node => { const r = node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
-function addScene(wrapId, lenVh, draw) {
+/** `layout` (optional) measures what the draw needs; it runs in layoutScenes, not in each frame. */
+function addScene(wrapId, lenVh, draw, layout) {
   const wrap = document.getElementById(wrapId);
-  scenes.push({ wrap, pin: wrap.querySelector('.story-pin'), lenVh, draw, pinned: false, pinTop: 0 });
+  scenes.push({ wrap, pin: wrap.querySelector('.story-pin'), lenVh, draw, layout, pinned: false, pinTop: 0 });
 }
 /** Pin each scene that fits in the window; give it its scroll length and pin top. */
 function layoutScenes() {
@@ -666,6 +662,7 @@ function layoutScenes() {
     s.wrap.classList.toggle('pinned', s.pinned);
     s.wrap.style.setProperty('--story-len', s.lenVh * innerHeight + 'px');
     s.wrap.style.setProperty('--pin-top', s.pinTop + 'px');
+    if (s.layout) s.layout();
   });
   queueFrame();
 }
@@ -918,6 +915,35 @@ if (ANIM) {
     }
     build.classList.toggle('pending', !s.buildDone);
     hint.classList.toggle('in', s.hint);
+  });
+}
+
+// ---- all in one: the three apps move into the arrow, PakaPaka grows, the numbers count ----
+if (ANIM) {
+  const apps = [...document.querySelectorAll('.merge .app')];
+  const arrow = document.querySelector('.merge > .arrow'), one = document.querySelector('.merge > .one');
+  const counts = [...document.querySelectorAll('[data-count]')].map(node => ({ node, end: Number(node.dataset.count), shown: null }));
+  let moves = [], wasLit = null;
+  addScene('story-merge', 1, p => {
+    const s = mergeState(p);
+    apps.forEach((app, i) => {
+      app.style.opacity = s.apps[i] * (1 - s.gather);
+      app.style.transform = `translate(${moves[i].x * s.gather}px, ${moves[i].y * s.gather}px) scale(${1 - .4 * s.gather})`;
+    });
+    arrow.style.opacity = s.arrow;
+    one.style.opacity = s.one;
+    one.style.transform = `scale(${.85 + .15 * s.one})`;
+    // Toggle only on change, so the ring plays once for each change.
+    if (s.oneLit !== wasLit) { wasLit = s.oneLit; one.classList.toggle('lit', s.oneLit); }
+    counts.forEach(c => {
+      const text = countValue(c.end, s.count).toLocaleString('en-US');
+      if (text !== c.shown) { c.shown = text; c.node.textContent = text; }
+    });
+  }, () => {
+    // The move of each app: from its centre to the arrow centre, with no transform.
+    apps.forEach(app => { app.style.transform = ''; });
+    const to = centre(arrow);
+    moves = apps.map(app => { const c = centre(app); return { x: to.x - c.x, y: to.y - c.y }; });
   });
 }
 
