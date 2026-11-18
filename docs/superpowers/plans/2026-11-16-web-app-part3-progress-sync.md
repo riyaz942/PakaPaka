@@ -632,6 +632,7 @@ Rules around the cycle:
   - `settings/index`: `restore while signed in calls replaceRemoteAfterRestore with the bundle data`; `restore while signed out does not`.
 - [x] **Step 2:** Run → FAIL. Implement. Run `npm test -- --ci`, `npm run typecheck`, `npm run lint` (a11y rules) → green.
 - [ ] **Step 3: Verify on web, local.** `cd mobile && npm run build:web`, then `cd ../backend && npx wrangler dev` (local D1 and R2; the operator's `.dev.vars` from Part 2). `BROWSER=none` if `expo start` is used. In Chrome, signed in: Settings shows `Last synced …` after open; a review then a return to Settings shows a newer time; `wrangler dev` log shows one `PUT /api/sync` per session and no body or token. Signed out: the Network panel shows no `/api/sync` request.
+  - Skipped by the operator (2026-11-17): no local `.dev.vars`. The same checks run on the live site in Task 14 Step 3, with a backup made first.
 - [x] **Step 4: Commit** `feat(sync): Sync now, conflict dialog, restore over all devices`.
 
 ---
@@ -651,8 +652,8 @@ Rules around the cycle:
 
 Ask before each **(operator)** step and show the exact command. No new secret is needed for Part 3; if one becomes necessary, the operator runs `wrangler secret put` — never ask for a secret value in chat.
 
-- [ ] **Step 1 (operator, D1 change):** `cd backend && npx wrangler d1 migrations apply pakapaka --remote` (applies `0002_sync_object_key`). Verify: `npx wrangler d1 execute pakapaka --remote --command "PRAGMA table_info(sync_state)"` lists `object_key`.
-- [ ] **Step 2 (operator, deploy):** `cd mobile && npm run deploy:web`.
+- [x] **Step 1 (operator, D1 change):** `cd backend && npx wrangler d1 migrations apply pakapaka --remote` (applies `0002_sync_object_key`). Verify: `npx wrangler d1 execute pakapaka --remote --command "PRAGMA table_info(sync_state)"` lists `object_key`.
+- [x] **Step 2 (operator, deploy):** `cd mobile && npm run deploy:web`.
 - [ ] **Step 3: Smoke test on https://paka-paka.app:** `curl -i https://paka-paka.app/api/sync?have=0` → `401`; signed-out Settings shows only "Sign in to sync" and the Network panel has no `/api/sync` call; sign in on web → `Last synced …` appears; `npx wrangler r2 object get`/dashboard shows one object under `progress/<user id>/`.
 - [ ] **Step 4 (operator, phone build):** dev-client rebuild for Android and iPhone (also open from Part 2) and Google sign-in on each.
 - [ ] **Step 5: Final "done when" (phone + web, same account):**
