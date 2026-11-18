@@ -9,7 +9,7 @@ import type { ConflictChoice, ConflictEntry, SyncErrorCode } from '@/core/sync/s
 import { decodeSyncFile, encodeSyncFile } from '@/core/sync/syncCodec';
 import { toSyncData } from '@/core/sync/syncFile';
 import { syncError, syncErrorMessage } from '@/core/sync/syncMessages';
-import { createSyncRunner, type SyncTrigger } from '@/core/sync/syncRunner';
+import { createSyncRunner, type SyncRunResult, type SyncTrigger } from '@/core/sync/syncRunner';
 import { createAccountSession } from '@/data/account/session';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { createSyncApi } from '@/data/sync/syncApi';
@@ -27,6 +27,9 @@ import { useAccount } from '@/providers/AccountProvider';
 
 export type SyncPhase = 'idle' | 'syncing' | 'conflict';
 
+/** The sync that runs when the app opens signed in: `'none'` while the account is not signed in. */
+export type FirstRun = 'none' | 'running' | 'ok' | 'failed';
+
 export type SyncContextValue = {
   phase: SyncPhase;
   lastSyncedAt: string | null;
@@ -34,7 +37,12 @@ export type SyncContextValue = {
   conflicts: ConflictEntry[] | null;
   /** Goes up by 1 after a run that changed rows in user.db; screens reload on it. */
   appliedVersion: number;
+  firstRun: FirstRun;
   syncNow(): Promise<void>;
+  /** Runs the first-run sync again after it failed. */
+  retryFirstRun(): Promise<void>;
+  /** Runs one sync; `true` only when it ended with this device and the server in line. */
+  syncBeforeSignOut(): Promise<boolean>;
   chooseConflict(choice: ConflictChoice): void;
   runBeforeReview(): Promise<void>;
   beginStudy(): void;
@@ -44,7 +52,7 @@ export type SyncContextValue = {
 
 type State = Pick<
   SyncContextValue,
-  'phase' | 'lastSyncedAt' | 'error' | 'conflicts' | 'appliedVersion'
+  'phase' | 'lastSyncedAt' | 'error' | 'conflicts' | 'appliedVersion' | 'firstRun'
 >;
 
 const INITIAL_STATE: State = {
@@ -53,6 +61,7 @@ const INITIAL_STATE: State = {
   error: null,
   conflicts: null,
   appliedVersion: 0,
+  firstRun: 'none',
 };
 
 const SyncContext = createContext<SyncContextValue | null>(null);
@@ -63,6 +72,13 @@ export function useSync(): SyncContextValue {
     throw new Error('useSync must be used within SyncProvider');
   }
   return value;
+}
+
+/** True when the run ended with this device and the server in line. */
+function isGoodRun(result: SyncRunResult | null): boolean {
+  return (
+    result !== null && ['up_to_date', 'pushed', 'pulled', 'merged'].includes(result.status)
+  );
 }
 
 /** The text for a stored error code: a sync code or an account code. */
@@ -149,25 +165,25 @@ export function SyncProvider({
     return held;
   }
 
-  async function runTrigger(trigger: SyncTrigger): Promise<void> {
+  async function runTrigger(trigger: SyncTrigger): Promise<SyncRunResult | null> {
     await gate.current;
     if (signedIn.current && clearFailed.current) {
       const cleared = await clearSyncBase(userDb);
       if (!cleared.ok) {
         merge({ error: cleared.error.userMessage ?? null });
-        return;
+        return null;
       }
       clearFailed.current = false;
     }
     const result = await runner.run(trigger);
     // Signed out or unmounted meanwhile: the state was reset, and this run shows nothing.
-    if (!signedIn.current || unmounted.current) return;
+    if (!signedIn.current || unmounted.current) return null;
     if (result.error?.code === 'session_ended') {
       // The account provider shows the sign-out; it is not a sync error.
       void refreshAccount.current();
     }
     const status = await readSyncStatus(userDb);
-    if (!signedIn.current || unmounted.current) return;
+    if (!signedIn.current || unmounted.current) return null;
     setState((prev) => ({
       ...prev,
       lastSyncedAt: status.ok ? status.value.lastSyncedAt : prev.lastSyncedAt,
@@ -177,13 +193,20 @@ export function SyncProvider({
           : (result.error.userMessage ?? null),
       appliedVersion: result.changedLocal ? prev.appliedVersion + 1 : prev.appliedVersion,
     }));
+    return result;
   }
 
-  function run(trigger: SyncTrigger): Promise<void> {
+  function run(trigger: SyncTrigger): Promise<SyncRunResult | null> {
     const promise = runTrigger(trigger);
     // A queued run can end after this one; the wait covers both.
     lastRun.current = Promise.all([lastRun.current, promise]).then(() => undefined);
     return promise;
+  }
+
+  /** Shows how the first-run sync ended, unless the account or the provider is gone by then. */
+  function endFirstRun(result: SyncRunResult | null) {
+    if (!signedIn.current || unmounted.current) return;
+    merge({ firstRun: isGoodRun(result) ? 'ok' : 'failed' });
   }
 
   const status = account.status;
@@ -200,7 +223,8 @@ export function SyncProvider({
           });
         }
       })();
-      void run('open');
+      merge({ firstRun: 'running' });
+      void run('open').then(endFirstRun);
       const subscription = AppState.addEventListener('change', (next) => {
         if (next === 'background') void run('background');
       });
@@ -235,14 +259,27 @@ export function SyncProvider({
   const value: SyncContextValue = {
     ...state,
 
-    syncNow: () => run('manual'),
+    async syncNow() {
+      await run('manual');
+    },
+
+    async retryFirstRun() {
+      merge({ firstRun: 'running' });
+      endFirstRun(await run('manual'));
+    },
+
+    async syncBeforeSignOut() {
+      return isGoodRun(await run('manual'));
+    },
 
     chooseConflict(choice) {
       merge({ conflicts: null });
       conflictAnswer.current?.(choice);
     },
 
-    runBeforeReview: () => run('before_review'),
+    async runBeforeReview() {
+      await run('before_review');
+    },
 
     beginStudy() {
       studyCount.current += 1;

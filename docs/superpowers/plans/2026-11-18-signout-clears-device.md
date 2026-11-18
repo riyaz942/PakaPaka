@@ -59,16 +59,16 @@
   - `syncBeforeSignOut(): Promise<boolean>` — runs `'manual'`; `true` only for `up_to_date | pushed | pulled | merged`.
 - Internal: `runTrigger` returns `Promise<SyncRunResult | null>` (`null` when it returned early: signed out, unmounted, or the base clear failed); `run()` returns the same promise. `syncNow` keeps its `Promise<void>` signature.
 
-- [ ] **Step 1: Write the failing tests** (in the existing `describe` of `SyncProvider.test.tsx`, with its existing fakes):
+- [x] **Step 1: Write the failing tests** (in the existing `describe` of `SyncProvider.test.tsx`, with its existing fakes):
   - `firstRun is running during the open run and ok after it` — signed in, fake API returns 204: `firstRun` is `'running'` before the run resolves and `'ok'` after.
   - `firstRun is failed when the open run fails, and retryFirstRun runs again` — first `GET` rejects with a network error: `'failed'`; second call succeeds; after `retryFirstRun()` it is `'ok'`, and the API got two `GET /api/sync` calls.
   - `firstRun is none when signed out` — signed out: `'none'`, zero API calls.
   - `syncBeforeSignOut resolves true after a pushed run and false after an error`.
   - `syncBeforeSignOut waits for the conflict choice and resolves true after it` — local and remote changed the same row: `conflicts` becomes non-null and the promise stays pending; after `chooseConflict('local')` it resolves `true` (the dialog has no close button, so a conflict always ends with a choice).
-- [ ] **Step 2: Run** `cd mobile && npx jest src/providers/SyncProvider.test.tsx` → the five new tests FAIL (`firstRun` is undefined / `syncBeforeSignOut is not a function`).
-- [ ] **Step 3: Implement** the interfaces above. Keep one helper `isGoodRun(result: SyncRunResult | null): boolean` (`result !== null && ['up_to_date','pushed','pulled','merged'].includes(result.status)`).
-- [ ] **Step 4: Run** the same command → all tests PASS (old and new).
-- [ ] **Step 5: Commit** `feat(sync): first-run outcome and a sync for sign-out`.
+- [x] **Step 2: Run** `cd mobile && npx jest src/providers/SyncProvider.test.tsx` → the five new tests FAIL (`firstRun` is undefined / `syncBeforeSignOut is not a function`).
+- [x] **Step 3: Implement** the interfaces above. Keep one helper `isGoodRun(result: SyncRunResult | null): boolean` (`result !== null && ['up_to_date','pushed','pulled','merged'].includes(result.status)`).
+- [x] **Step 4: Run** the same command → all tests PASS (old and new).
+- [x] **Step 5: Commit** `feat(sync): first-run outcome and a sync for sign-out`.
 
 ### Task 2: Sign-out syncs, erases and leaves
 

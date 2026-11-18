@@ -264,6 +264,105 @@ describe('SyncProvider', () => {
     );
   });
 
+  it('firstRun is running during the open run and ok after it', async () => {
+    const open = deferred<SyncRunResult>();
+    mockRun.mockReturnValueOnce(open.promise);
+    mockStatus = 'signed_in';
+    renderProvider();
+
+    await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+    expect(latest.firstRun).toBe('running');
+
+    await act(async () => open.resolve(UP_TO_DATE));
+
+    await waitFor(() => expect(latest.firstRun).toBe('ok'));
+  });
+
+  it('firstRun is failed when the open run fails, and retryFirstRun runs again', async () => {
+    mockRun.mockResolvedValueOnce({
+      status: 'error',
+      error: accountError('network'),
+      changedLocal: false,
+    });
+    mockStatus = 'signed_in';
+    renderProvider();
+
+    await waitFor(() => expect(latest.firstRun).toBe('failed'));
+    expect(mockRun).toHaveBeenCalledTimes(1);
+
+    await act(() => latest.retryFirstRun());
+
+    expect(latest.firstRun).toBe('ok');
+    expect(mockRun).toHaveBeenCalledTimes(2);
+    expect(mockRun).toHaveBeenLastCalledWith('manual');
+  });
+
+  it('firstRun is none when signed out', async () => {
+    const session = fakeSession();
+    renderProvider(session);
+    await act(async () => {});
+
+    expect(latest.firstRun).toBe('none');
+    expect(mockRun).not.toHaveBeenCalled();
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(session.request).not.toHaveBeenCalled();
+  });
+
+  it('syncBeforeSignOut resolves true after a pushed run and false after an error', async () => {
+    mockStatus = 'signed_in';
+    renderProvider();
+    await waitFor(() => expect(latest.firstRun).toBe('ok'));
+
+    mockRun.mockResolvedValueOnce({ status: 'pushed', error: null, changedLocal: false });
+    let pushed: boolean | undefined;
+    await act(async () => {
+      pushed = await latest.syncBeforeSignOut();
+    });
+    expect(pushed).toBe(true);
+    expect(mockRun).toHaveBeenLastCalledWith('manual');
+
+    mockRun.mockResolvedValueOnce({
+      status: 'error',
+      error: accountError('network'),
+      changedLocal: false,
+    });
+    let failed: boolean | undefined;
+    await act(async () => {
+      failed = await latest.syncBeforeSignOut();
+    });
+    expect(failed).toBe(false);
+  });
+
+  it('syncBeforeSignOut waits for the conflict choice and resolves true after it', async () => {
+    mockStatus = 'signed_in';
+    renderProvider();
+    await waitFor(() => expect(latest.firstRun).toBe('ok'));
+    mockRun.mockImplementationOnce(async () => {
+      await mockPorts.askConflict(ENTRIES);
+      return { status: 'merged', error: null, changedLocal: false };
+    });
+
+    let result: boolean | undefined;
+    let promise!: Promise<boolean>;
+    act(() => {
+      promise = latest.syncBeforeSignOut().then((value) => {
+        result = value;
+        return value;
+      });
+    });
+
+    await waitFor(() => expect(latest.conflicts).toEqual(ENTRIES));
+    await act(() => new Promise((resolve) => setTimeout(resolve, 10)));
+    expect(result).toBeUndefined();
+
+    act(() => latest.chooseConflict('local'));
+    await act(async () => {
+      await promise;
+    });
+
+    expect(result).toBe(true);
+  });
+
   it('endStudy starts a session_end run after the current tick', async () => {
     mockStatus = 'signed_in';
     renderProvider();
