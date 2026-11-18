@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
@@ -71,6 +71,12 @@ export function AccountSettingsSection({ onEraseLocalData }: AccountSettingsSect
   const [busy, setBusy] = useState(false);
   const [signOutAsk, setSignOutAsk] = useState<'here' | 'everywhere' | null>(null);
   const [signOutStep, setSignOutStep] = useState<'confirm' | 'sync_failed'>('confirm');
+
+  // A sign-out the server ends closes the sheet, so a later sign-in does not open it again.
+  useEffect(() => {
+    setSignOutAsk(null);
+    setSignOutStep('confirm');
+  }, [account.status]);
 
   // One action at a time: a second tap must not start a second server call.
   async function run(action: () => Promise<void>) {

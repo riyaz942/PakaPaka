@@ -248,8 +248,8 @@ export function SyncProvider({
       conflictAnswer.current?.(null);
       generation.current += 1;
       // A review or lesson that is open can still write answers, so the check asks first.
+      // The count stays: that study is still open after a sign-in, and endStudy ends it.
       const studying = studyCount.current > 0;
-      studyCount.current = 0;
       setState(INITIAL_STATE);
       const ended = account.sessionEnded;
       const signedOutAt = generation.current;
@@ -258,8 +258,10 @@ export function SyncProvider({
         if (ended) {
           const base = await readSyncBase(userDb);
           const snapshot = base.ok ? await readSyncSnapshot(userDb) : null;
+          // A study that began while the check waited counts too.
           const unsynced =
             studying ||
+            studyCount.current > 0 ||
             !base.ok ||
             snapshot === null ||
             !snapshot.ok ||

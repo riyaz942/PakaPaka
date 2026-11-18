@@ -676,5 +676,65 @@ describe('SyncProvider', () => {
 
       await waitFor(() => expect(latest.sessionEnd).toBe('ask'));
     });
+
+    it('a sign-in after a session ended during study keeps study active', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest.mocked(readSyncBase).mockResolvedValue({
+        ok: true,
+        value: { revision: 4, data: fullSampleData(), pendingReplace: false, carried: {} },
+      });
+      const studyActive: boolean[] = [];
+      mockRun.mockImplementation(async () => {
+        studyActive.push(mockPorts.isStudyActive());
+        return UP_TO_DATE;
+      });
+      mockStatus = 'signed_in';
+      const { rerenderTree } = renderProvider();
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+      act(() => latest.beginStudy());
+
+      mockStatus = 'signed_out';
+      mockSessionEnded = true;
+      rerenderTree();
+      await waitFor(() => expect(latest.sessionEnd).toBe('ask'));
+
+      // "Sign in to sync it" while the review is still open under the screen.
+      mockStatus = 'signed_in';
+      mockSessionEnded = false;
+      rerenderTree();
+      await waitFor(() => expect(mockRun).toHaveBeenCalledTimes(2));
+
+      // The first open run ran before the review began; the second runs while it is open.
+      expect(studyActive).toEqual([false, true]);
+      expect(mockPorts.isStudyActive()).toBe(true);
+    });
+
+    it('a study session begun while the check waits sets sessionEnd to ask', async () => {
+      jest.mocked(readSyncSnapshot).mockResolvedValue({ ok: true, value: snapshotOf(fullSampleData()) });
+      jest.mocked(readSyncBase).mockResolvedValue({
+        ok: true,
+        value: { revision: 4, data: fullSampleData(), pendingReplace: false, carried: {} },
+      });
+      // The run before a review is still going when the session ends.
+      const beforeReview = deferred<SyncRunResult>();
+      mockStatus = 'signed_in';
+      const { rerenderTree } = renderProvider();
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('open'));
+      mockRun.mockReturnValueOnce(beforeReview.promise);
+      act(() => {
+        void latest.runBeforeReview();
+      });
+      await waitFor(() => expect(mockRun).toHaveBeenCalledWith('before_review'));
+
+      mockStatus = 'signed_out';
+      mockSessionEnded = true;
+      rerenderTree();
+      // The review opens before the check runs.
+      act(() => latest.beginStudy());
+      await act(async () => beforeReview.resolve(UP_TO_DATE));
+
+      await waitFor(() => expect(clearSyncBase).toHaveBeenCalledWith(mockUserDb));
+      expect(latest.sessionEnd).toBe('ask');
+    });
   });
 });

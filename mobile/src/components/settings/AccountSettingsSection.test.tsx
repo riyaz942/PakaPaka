@@ -344,6 +344,29 @@ describe('AccountSettingsSection', () => {
     expect(onErase).not.toHaveBeenCalled();
   });
 
+  it('a server sign-out closes the sign-out sheet', async () => {
+    mockAccount = signedIn();
+    mockSync = syncState({ syncBeforeSignOut: jest.fn().mockResolvedValue(false) });
+    const view = render(<AccountSettingsSection />);
+
+    await press('Sign out');
+    await press('Sync and sign out');
+    expect(screen.getByText('Sync did not finish')).toBeTruthy();
+
+    // The server ends the session, and later the learner signs in again.
+    mockAccount = accountState({ status: 'signed_out' });
+    view.rerender(<AccountSettingsSection />);
+    mockAccount = signedIn();
+    view.rerender(<AccountSettingsSection />);
+
+    expect(screen.queryByText('Sync did not finish')).toBeNull();
+    expect(screen.queryByText('Sign out?')).toBeNull();
+
+    // The next sign-out starts at the confirm step.
+    await press('Sign out');
+    expect(screen.getByText('Sign out?')).toBeTruthy();
+  });
+
   it('Delete account asks first, with the exact copy', async () => {
     mockAccount = signedIn();
     render(<AccountSettingsSection />);
