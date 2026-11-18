@@ -269,6 +269,27 @@ describe('AccountProvider', () => {
     );
   });
 
+  it('a Delete account that finds the session ended keeps sessionEnded false', async () => {
+    const deleteAccount = jest
+      .fn()
+      .mockResolvedValue({ ok: false, error: accountError('session_ended') });
+    renderWith(fakeSession({ deleteAccount }));
+    await waitFor(() => expect(latest.status).toBe('signed_in'));
+
+    let deleted: boolean | undefined;
+    await act(async () => {
+      deleted = await latest.deleteAccount();
+    });
+
+    // The delete did not happen: the data stays, so no automatic erase, and the message shows.
+    expect(deleted).toBe(false);
+    expect(latest.status).toBe('signed_out');
+    expect(latest.sessionEnded).toBe(false);
+    expect(latest.error).toBe(
+      'You were signed out. Your account was not deleted. Sign in again to delete it.',
+    );
+  });
+
   it('deleteAccount resolves true only when the server delete worked', async () => {
     const deleteAccount = jest
       .fn()
@@ -346,7 +367,8 @@ describe('AccountProvider', () => {
       await latest.deleteAccount();
     });
     expect(latest.status).toBe('signed_out');
-    expect(latest.sessionEnded).toBe(true);
+    // Final fix wave: the delete did not happen, so the data stays.
+    expect(latest.sessionEnded).toBe(false);
   });
 
   it('useAccount outside the provider throws a developer error', () => {

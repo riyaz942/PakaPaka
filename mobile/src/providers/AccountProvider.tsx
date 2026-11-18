@@ -194,7 +194,8 @@ export function AccountProvider({
         signedOut();
         return true;
       }
-      if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE, true);
+      // The delete did not happen: the data stays (no automatic erase) and the message shows.
+      if (result.error.code === 'session_ended') signedOut(DELETE_SESSION_ENDED_MESSAGE);
       else fail(result.error);
       return false;
     },
