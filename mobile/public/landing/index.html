@@ -23,6 +23,9 @@
   // Start states for the animations apply only when this class is set, so the
   // page is complete with no script and with reduced motion.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+  // The sign-in cookie the server sets for script: a signed-in visitor sees
+  // "Go to dashboard" in place of the log-in buttons.
+  if (document.cookie.split('; ').includes('pp_signed_in=1')) document.documentElement.classList.add('signed-in');
 </script>
 <style>
 @font-face { font-family: "Jakarta"; font-weight: 500; font-display: swap; src: url("/landing/fonts/PlusJakartaSans-500.woff2") format("woff2"); }
@@ -128,6 +131,7 @@ nav .links { display: flex; gap: 22px; margin-left: 12px; flex: 1; }
 nav .links a { color: var(--muted); font-size: 15px; font-weight: 700; text-decoration: none; }
 nav .links a:hover { color: var(--ink); }
 nav .cta { display: flex; align-items: center; gap: 10px; }
+.signed-in .if-out, html:not(.signed-in) .if-in { display: none; }
 
 /* hero */
 .hero { padding: 80px 0 104px; }
@@ -337,8 +341,9 @@ footer a { color: var(--muted); }
       <a href="#sync">Sync</a>
     </div>
     <div class="cta">
-      <a class="btn btn-ghost btn-sm" href="/auth/signin">Log in</a>
-      <a class="btn btn-primary btn-sm" href="/dashboard">Start learning</a>
+      <a class="btn btn-ghost btn-sm if-out" href="/auth/signin">Log in</a>
+      <a class="btn btn-primary btn-sm if-out" href="/dashboard">Start learning</a>
+      <a class="btn btn-primary btn-sm if-in" href="/dashboard">Go to dashboard</a>
     </div>
   </div>
 </nav>
@@ -349,7 +354,7 @@ footer a { color: var(--muted); }
     <div>
       <p class="kicker" data-reveal>A free, open-source Japanese course</p>
       <h1 data-reveal style="--d:80ms">Every kanji is a story <em>you already know.<svg class="stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 2 96 11 150 6s100-3 147 1"/></svg></em></h1>
-      <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. Each step has a mnemonic made from the step before it, so nothing is new twice. Grammar and reading are in the same app.</p>
+      <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. Each step has a mnemonic made from the step before it, so nothing is new twice. Grammar and reading are in the same app. <b>You type every answer, as on WaniKani and Bunpro.</b> No flashcards that you grade yourself, and no multiple choice.</p>
       <div class="buttons" data-reveal style="--d:240ms">
         <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
         <a class="link" href="#chain">See how it works</a>
@@ -522,7 +527,7 @@ footer a { color: var(--muted); }
       <div class="way" data-reveal style="--d:80ms">
         <h3 class="serif">Log in with Google</h3>
         <p>Your account works now. Progress sync between phone and browser is not ready yet: for now your progress stays on this device.</p>
-        <div><a class="btn btn-ghost" href="/auth/signin">Log in</a><span class="soon">Sync soon</span></div>
+        <div><a class="btn btn-ghost if-out" href="/auth/signin">Log in</a><a class="btn btn-ghost if-in" href="/dashboard">Go to dashboard</a><span class="soon">Sync soon</span></div>
       </div>
       <div class="way" data-reveal style="--d:160ms">
         <h3 class="serif">Back up to a file</h3>

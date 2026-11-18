@@ -51,10 +51,10 @@ jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => mockDatabaseContext,
 }));
 
-let mockGreetingSentence: string | null = null;
+let mockAccountStatus: 'signed_out' | 'loading' | 'signed_in' = 'signed_out';
 
-jest.mock('@/data/curriculum/greetingRepository', () => ({
-  getGreetingSentence: () => mockGreetingSentence,
+jest.mock('@/providers/AccountProvider', () => ({
+  useAccount: () => ({ status: mockAccountStatus }),
 }));
 
 const mockRefetchLoad = jest.fn();
@@ -210,9 +210,15 @@ jest.mock('@/providers/CurriculumUpdateContext', () => ({
 }));
 
 const mockCountServableDueItems = jest.fn();
+// Cards default to the item count (no two-card items) unless a test sets them.
+const mockCountServableDueCards = jest.fn();
 
 jest.mock('@/data/reviewEligibility', () => ({
   countServableDueItems: (...args: unknown[]) => mockCountServableDueItems(...args),
+  countServableDueCards: (...args: unknown[]) =>
+    mockCountServableDueCards.getMockImplementation()
+      ? mockCountServableDueCards(...args)
+      : mockCountServableDueItems(...args),
 }));
 
 let mockOnVacation = false;
@@ -260,7 +266,8 @@ describe('HomeScreen', () => {
     mockCountServableDueItems.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockGreetingSentence = null;
+    mockAccountStatus = 'signed_out';
+    mockCountServableDueCards.mockReset();
     mockForecast = null;
     mockReadingTarget = null;
     mockAtRisk = { totalCount: 0, topItems: [], allItems: [], rankedItemIds: [] };
@@ -433,15 +440,17 @@ describe('HomeScreen', () => {
     expect(mockRefetchForecast).toHaveBeenCalled();
   });
 
-  it('shows the calm fallback greeting on day 1 (no started vocab sentence)', () => {
+  it('shows the English greeting line, never a Japanese example sentence', () => {
     render(<HomeScreen />);
     expect(screen.getByText('Welcome back — here’s today at a glance.')).toBeTruthy();
   });
 
-  it('shows a comprehensible sentence from started vocabulary when available', () => {
-    mockGreetingSentence = '猫がいます。';
+  it('counts cards, like the review session header: a two-card item counts twice', () => {
+    mockCountServableDueItems.mockReturnValue(37);
+    mockCountServableDueCards.mockImplementation(() => 60);
     render(<HomeScreen />);
-    expect(screen.getByText('猫がいます。')).toBeTruthy();
+    expect(screen.getByText('60 reviews ready')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Start 60 reviews' })).toBeTruthy();
   });
 
   it('renders goal ring, Review and Learn buttons, and progress bar — no streak UI', () => {
@@ -452,7 +461,7 @@ describe('HomeScreen', () => {
     expect(StyleSheet.flatten(ring.props.style)).toMatchObject({ width: 160, height: 160 });
     expect(screen.getByText("Today's goal")).toBeTruthy();
     expect(screen.getByRole('button', { name: /start today's lesson/i })).toBeTruthy();
-    expect(screen.getByRole('button', { name: /review 2 items due/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /start 2 reviews/i })).toBeTruthy();
     expect(screen.queryByTestId('home-streak-counter')).toBeNull();
     expect(screen.queryByText(/day streak/)).toBeNull();
     expect(screen.getByTestId('home-level-progress-button')).toBeTruthy();
@@ -478,7 +487,7 @@ describe('HomeScreen', () => {
     expect(reviewIndex).toBeGreaterThanOrEqual(0);
     expect(learnIndex).toBeGreaterThanOrEqual(0);
     expect(reviewIndex).toBeLessThan(learnIndex);
-    expect(screen.getByText('2 items ready')).toBeTruthy();
+    expect(screen.getByText('2 reviews ready')).toBeTruthy();
   });
 
   it('refetches goal data on focus (BUG1: no skipped first focus)', () => {
@@ -543,7 +552,7 @@ describe('HomeScreen', () => {
       render(<HomeScreen />);
 
       expect(mockCountServableDueItems).not.toHaveBeenCalled();
-      expect(screen.queryByText(/45 items ready/)).toBeNull();
+      expect(screen.queryByText(/45 reviews ready/)).toBeNull();
     });
 
     it('hides the forecast and at-risk section', () => {
@@ -591,7 +600,8 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
     mockCountServableDueItems.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockGreetingSentence = null;
+    mockAccountStatus = 'signed_out';
+    mockCountServableDueCards.mockReset();
     mockForecast = null;
     mockReadingTarget = null;
     mockAtRisk = { totalCount: 0, topItems: [], allItems: [], rankedItemIds: [] };
@@ -705,6 +715,15 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
       expect(screen.getByTestId('backup-nudge-card')).toBeTruthy();
     });
 
+    it('never appears on web while signed in (sync keeps the progress)', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = null;
+      mockAccountStatus = 'signed_in';
+      render(<HomeScreen />);
+
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+    });
+
     it('stays hidden while the backup is recent', () => {
       setPlatform('web');
       mockLastBackedUpAt = FRESH;
@@ -755,7 +774,8 @@ describe('HomeScreen — customizable layout (Step 4)', () => {
     mockCountServableDueItems.mockReturnValue(2);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
-    mockGreetingSentence = null;
+    mockAccountStatus = 'signed_out';
+    mockCountServableDueCards.mockReset();
     mockForecast = null;
     mockReadingTarget = null;
     mockAtRisk = { totalCount: 0, topItems: [], allItems: [], rankedItemIds: [] };
