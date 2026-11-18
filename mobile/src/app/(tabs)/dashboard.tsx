@@ -41,7 +41,6 @@ import { useAtRiskItems } from '@/data/hooks/useAtRiskItems';
 import { useReadingReadiness } from '@/data/hooks/useReadingReadiness';
 import { useReviewForecast } from '@/data/hooks/useReviewForecast';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
-import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
 import { buildLessonPlan } from '@/data/lessonPlan';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
@@ -55,12 +54,13 @@ import {
 import { isBackupStale } from '@/core/backup/backupFreshness';
 import { getLastActiveDate, todayKey } from '@/data/user/cognitiveLoadRepository';
 import { setReviewPriority } from '@/data/reviewPriorityStore';
-import { countServableDueItems } from '@/data/reviewEligibility';
+import { countServableDueCards, countServableDueItems } from '@/data/reviewEligibility';
 import { countImportMetadataRows } from '@/data/user/importRepository';
 import { isVacationActive } from '@/data/user/vacationRepository';
 import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
 import { AT_RISK_TOP_N, WELCOME_BACK_SLICE } from '@/config/constants';
+import { useAccount } from '@/providers/AccountProvider';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { useSync } from '@/providers/SyncProvider';
 import { cn } from '@/utils/cn';
@@ -80,8 +80,9 @@ export default function HomeScreen() {
   const wide = useWideLayout();
   const { curriculumDb, userDb } = useDatabase();
   const { appliedVersion } = useSync();
+  const account = useAccount();
   const [level, setLevel] = useState<ReturnType<typeof getStartingJlptLevel>>(null);
-  const [greetingSentence, setGreetingSentence] = useState<string | null>(null);
+  // Cards, not items: the unit the review session header counts.
   const [dueCount, setDueCount] = useState(0);
   const [dueCountLoading, setDueCountLoading] = useState(true);
   const [lessonAllowance, setLessonAllowance] = useState<DailyAllowance | null>(null);
@@ -160,7 +161,12 @@ export default function HomeScreen() {
     router.push('/review');
   }, []);
 
-  const showBackupNudge = Platform.OS === 'web' && isBackupStale(lastBackedUpAt);
+  // A signed-in learner's progress syncs to the server, so the file backup
+  // nudge is only for signed-out browsers.
+  const showBackupNudge =
+    Platform.OS === 'web' &&
+    account.status === 'signed_out' &&
+    isBackupStale(lastBackedUpAt);
 
   const { showCurriculumUpdatedBanner, dismissCurriculumUpdatedBanner } =
     useCurriculumUpdateBanner();
@@ -187,11 +193,6 @@ export default function HomeScreen() {
       refetchReadiness();
       refetchAtRisk();
       try {
-        setGreetingSentence(getGreetingSentence(curriculumDb, userDb));
-      } catch {
-        setGreetingSentence(null);
-      }
-      try {
         setLayout(getHomeLayout(userDb));
       } catch {
         setLayout(defaultHomeLayout());
@@ -214,7 +215,7 @@ export default function HomeScreen() {
       try {
         setLevel(getStartingJlptLevel(userDb));
         due = paused ? 0 : countServableDueItems(curriculumDb, userDb);
-        setDueCount(due);
+        setDueCount(paused ? 0 : countServableDueCards(curriculumDb, userDb));
       } catch {
         setDueCount(0);
       } finally {
@@ -309,7 +310,7 @@ export default function HomeScreen() {
                 : dueCountLoading
                   ? 'Checking what’s due…'
                   : dueCount > 0
-                    ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
+                    ? `${dueCount} ${dueCount === 1 ? 'review' : 'reviews'} ready`
                     : 'No reviews due — nice work'
             }
             glyph="復"
@@ -322,7 +323,7 @@ export default function HomeScreen() {
                 : dueCountLoading
                   ? 'Checking reviews due'
                   : dueCount > 0
-                    ? `Review ${dueCount} items due`
+                    ? `Start ${dueCount} ${dueCount === 1 ? 'review' : 'reviews'}`
                     : 'All caught up, no reviews due'
             }
             testID="home-review-button"
@@ -437,15 +438,10 @@ export default function HomeScreen() {
             {/* The greeting is the one place a JP glyph opens a tab screen, so it
                 is set in the rounded display face rather than the UI family. */}
             <Text className="text-title-lg font-jp-hero-bold text-primary">おかえり！</Text>
-            {/* Comprehensible sentence from started vocab; calm invitation on day 1.
-                The day-1 fallback is English, so it keeps the UI face. */}
             <Text
-              className={cn(
-                'mt-space-xs text-body-sm text-muted',
-                greetingSentence ? 'font-jp-medium' : 'font-ui-medium',
-              )}
+              className="mt-space-xs text-body-sm font-ui-medium text-muted"
               testID="home-greeting-subtitle">
-              {greetingSentence ?? 'Welcome back — here’s today at a glance.'}
+              Welcome back — here’s today at a glance.
             </Text>
           </FadeSlideIn>
 

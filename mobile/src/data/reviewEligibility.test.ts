@@ -1,15 +1,26 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { countServableDueItems, filterServableItemIds } from './reviewEligibility';
+import {
+  countServableDueCards,
+  countServableDueItems,
+  filterServableItemIds,
+} from './reviewEligibility';
 
 const mockListItemSummariesByIds = jest.fn();
 const mockGetRequiredParentsForItems = jest.fn();
 const mockListStudyStatusesForItems = jest.fn();
 const mockGetDueItemIds = jest.fn();
+const mockGetKanjiReadings = jest.fn();
+const mockGetUnlearnedKanjiForItems = jest.fn();
 
 jest.mock('@/data/curriculum/itemRepository', () => ({
   listItemSummariesByIds: (...args: unknown[]) => mockListItemSummariesByIds(...args),
   getRequiredParentsForItems: (...args: unknown[]) => mockGetRequiredParentsForItems(...args),
+  getKanjiReadings: (...args: unknown[]) => mockGetKanjiReadings(...args),
+}));
+
+jest.mock('@/data/user/masteryRepository', () => ({
+  getUnlearnedKanjiForItems: (...args: unknown[]) => mockGetUnlearnedKanjiForItems(...args),
 }));
 
 jest.mock('@/data/user/itemStudyStatusRepository', () => ({
@@ -100,5 +111,55 @@ describe('countServableDueItems', () => {
     mockGetDueItemIds.mockReturnValue([]);
 
     expect(countServableDueItems(curriculumDb, userDb)).toBe(0);
+  });
+});
+
+describe('countServableDueCards', () => {
+  type Row = { id: string; itemType: string; primaryForm: string };
+  const row = (id: string, itemType: string, primaryForm: string): Row => ({
+    id,
+    itemType,
+    primaryForm,
+  });
+
+  it('counts the cards the session header counts: two-card items count twice', () => {
+    const rows = [
+      row('1', 'kanji', '水'), // on'yomi → meaning + reading
+      row('2', 'kanji', '乙'), // no on'yomi → meaning only
+      row('3', 'vocabulary', '水曜日'), // every kanji learned → meaning + reading
+      row('4', 'vocabulary', '曜日'), // a kanji not learned yet → meaning only
+      row('5', 'vocabulary', 'これ'), // kana only → meaning only
+      row('6', 'grammar', 'たことがある'), // Read + Build
+      row('7', 'radical', '氵'),
+    ];
+    mockGetDueItemIds.mockReturnValue(rows.map((r) => r.id));
+    mockListItemSummariesByIds.mockImplementation((_db: unknown, ids: string[]) =>
+      rows.filter((r) => ids.includes(r.id)),
+    );
+    mockGetKanjiReadings.mockImplementation((_db: unknown, id: string) =>
+      id === '1'
+        ? [{ readingType: 'onyomi', reading: 'すい' }]
+        : [{ readingType: 'kunyomi', reading: 'おつ' }],
+    );
+    mockGetUnlearnedKanjiForItems.mockReturnValue(new Map([['4', ['曜']]]));
+
+    expect(countServableDueCards(curriculumDb, userDb)).toBe(2 + 1 + 2 + 1 + 1 + 2 + 1);
+  });
+
+  it('skips items the session would not serve', () => {
+    mockGetDueItemIds.mockReturnValue(['1', '2']);
+    mockListItemSummariesByIds.mockImplementation((_db: unknown, ids: string[]) =>
+      [row('1', 'grammar', 'て'), row('2', 'grammar', 'に')].filter((r) => ids.includes(r.id)),
+    );
+    mockGetUnlearnedKanjiForItems.mockReturnValue(new Map());
+    statuses({ '2': 'known' });
+
+    expect(countServableDueCards(curriculumDb, userDb)).toBe(2);
+  });
+
+  it('is zero when nothing is due', () => {
+    mockGetDueItemIds.mockReturnValue([]);
+
+    expect(countServableDueCards(curriculumDb, userDb)).toBe(0);
   });
 });
