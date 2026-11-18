@@ -444,8 +444,9 @@ footer a { color: var(--muted); }
       <p class="lede">Each grammar point has a full lesson and a story mnemonic. Then it goes into the same review queue as your kanji and words.</p>
     </div>
 
+    <div class="story" id="story-grammar"><div class="story-pin">
     <div class="gram">
-      <div class="card" data-reveal>
+      <div class="card">
         <div class="gram-hero"><div class="glyph hero-jp">たことがある</div><div style="font-weight:700">have done before (experience)</div></div>
         <div style="text-align:center"><span class="pattern jp">Verb-た + ことがある</span></div>
         <div class="label">Lesson</div>
@@ -454,7 +455,7 @@ footer a { color: var(--muted); }
         <p>Han the half-and-half chef unbuttons his coat to show half a <span class="rd">taco toga</span>, shell crumbs on the hem: proof he <span class="g">has done it before</span>. <span class="jp">日本に行っ<span class="rd">たことがある</span>。</span></p>
       </div>
 
-      <div class="review" id="typing" data-reveal style="--d:120ms">
+      <div class="review" id="typing">
         <div class="card">
           <div class="rv-top"><span class="tag">Grammar · Read</span><span class="eyebrow">You type the meaning</span></div>
           <div class="prompt jp">日本に行ったことがある。</div>
@@ -468,6 +469,7 @@ footer a { color: var(--muted); }
         </div>
       </div>
     </div>
+    </div></div>
 
     <p class="gram-foot" data-reveal>There is no multiple choice. You type each answer: romaji changes to kana while you type, and a typo does not count as a miss. When you make a mistake, the app marks the exact part and tells you why.</p>
   </div>
@@ -565,7 +567,6 @@ footer a { color: var(--muted); }
 
 <script>
 const ANIM = document.documentElement.classList.contains('anim');
-const wait = ms => new Promise(r => setTimeout(r, ms));
 /** Runs `fn` once, the first time `target` is on screen. */
 function onceVisible(target, fn, threshold) {
   const io = new IntersectionObserver(entries => {
@@ -883,30 +884,41 @@ if (ANIM) {
   });
 }
 
-// ---- grammar cards: the answers type themselves ----
+// ---- grammar cards: the answers type with the scroll ----
 if (ANIM) {
+  const lesson = document.querySelector('.gram > .card'), typing = document.getElementById('typing');
   const read = document.getElementById('a-read'), build = document.getElementById('a-build');
   const hint = document.getElementById('a-hint');
   const readText = read.querySelector('.typed'), buildText = build.querySelector('.typed');
-  const readFinal = readText.textContent, buildFinalHtml = buildText.innerHTML, buildFinal = buildText.textContent;
-  async function type(node, text, speed) {
-    for (const ch of text) { node.textContent += ch; await wait(speed + Math.random() * speed * 0.6); }
-  }
-  [read, build].forEach(a => a.classList.add('pending'));
-  readText.textContent = buildText.textContent = '';
-  onceVisible(document.getElementById('typing'), async () => {
-    await wait(500);
-    await type(readText, readFinal, 55);
-    await wait(250);
-    read.classList.remove('pending');
-    await wait(600);
-    await type(buildText, buildFinal, 95);
-    await wait(350);
-    buildText.innerHTML = buildFinalHtml;   // the wrong part gets its mark
-    build.classList.remove('pending');
-    await wait(350);
-    hint.classList.add('in');
-  }, 0.5);
+  const readFinal = Array.from(readText.textContent), buildFinal = Array.from(buildText.textContent);
+  const buildFinalHtml = buildText.innerHTML;
+  // Write the text only when it changes, so the mark stamp plays once for each change.
+  let readShown = null, buildShown = null;
+  addScene('story-grammar', 1, (p, scene) => {
+    let cards;
+    if (scene.pinned) cards = null;
+    else {
+      // In flow the cards are one below the other on phones: the typing follows the
+      // review cards, and the lesson card fades in when it comes on screen. p uses only
+      // the top of the review cards: their height grows when the typed answer wraps.
+      p = span(.8 * innerHeight - typing.getBoundingClientRect().top, 0, .8 * innerHeight);
+      cards = span(innerHeight - lesson.getBoundingClientRect().top, 0, innerHeight * .25);
+    }
+    const s = grammarState(p, readFinal.length, buildFinal.length);
+    lesson.style.opacity = cards === null ? s.cards : cards;
+    typing.style.opacity = s.cards;
+    const readNow = readFinal.slice(0, s.readChars).join('');
+    if (readNow !== readShown) { readShown = readNow; readText.textContent = readNow; }
+    read.classList.toggle('pending', !s.readDone);
+    const buildNow = s.buildDone ? buildFinalHtml : buildFinal.slice(0, s.buildChars).join('');
+    if (buildNow !== buildShown) {
+      buildShown = buildNow;
+      if (s.buildDone) buildText.innerHTML = buildNow;   // the wrong part gets its mark
+      else buildText.textContent = buildNow;
+    }
+    build.classList.toggle('pending', !s.buildDone);
+    hint.classList.toggle('in', s.hint);
+  });
 }
 
 // ---- start the scroll story (after every scene is added) ----
