@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 
 import {
+  curriculumDownloadNeedsWifi,
   isWeb,
   needsIosGoogleClientId,
   supportsCurriculumOta,
@@ -77,5 +78,14 @@ describe('capabilities', () => {
   ] as const)('supportsExclusiveTransaction on %s: %s', (os, expected) => {
     setPlatform(os);
     expect(supportsExclusiveTransaction()).toBe(expected);
+  });
+
+  it.each([
+    ['ios', true],
+    ['android', true],
+    ['web', false],
+  ] as const)('curriculumDownloadNeedsWifi on %s: %s', (os, expected) => {
+    setPlatform(os);
+    expect(curriculumDownloadNeedsWifi()).toBe(expected);
   });
 });

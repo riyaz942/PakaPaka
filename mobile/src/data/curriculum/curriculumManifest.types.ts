@@ -1,10 +1,6 @@
-export type CurriculumManifest = {
-  version: string;
-  url: string;
-  sha256: string;
-  size_bytes?: number;
-  published_at?: string;
-};
+import type { SQLiteDatabase } from 'expo-sqlite';
+
+import type { AppError } from '@/types/result.types';
 
 export type CurriculumUpdateSource = 'bundled' | 'downloaded';
 
@@ -17,3 +13,10 @@ export type CurriculumRelease = {
   publishedAt: string;
   keyId: string;
 };
+
+export type CheckAndApplyCurriculumUpdateResult =
+  | { status: 'skipped' }
+  | { status: 'up_to_date' }
+  | { status: 'deferred' }
+  | { status: 'success'; version: string; curriculumDb: SQLiteDatabase }
+  | { status: 'error'; error: AppError; curriculumDb?: SQLiteDatabase };
