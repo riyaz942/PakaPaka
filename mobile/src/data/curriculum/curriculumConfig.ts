@@ -55,3 +55,6 @@ export function getCurriculumDbUri(): string {
 export function getCurriculumDownloadUri(): string {
   return `${getSqliteDirectoryUri()}${CURRICULUM_DOWNLOAD_NAME}`;
 }
+
+/** Keep equal to CURRICULUM_SCHEMA_VERSION in scripts/curriculum-schema.ts. */
+export const REQUIRED_CURRICULUM_SCHEMA_VERSION = 1;
