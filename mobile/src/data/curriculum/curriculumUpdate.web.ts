@@ -264,17 +264,29 @@ export async function runWebCurriculumUpdate(
   } catch (cause) {
     await closeQuietly(dest);
     await closeQuietly(mem);
-    return errorResult('CURRICULUM_SWAP_FAILED', cause, await recoverCurriculum(userDb));
+    const recovered = (await recoverCurriculum(userDb)) ?? (await recoverCurriculum(userDb));
+    return errorResult('CURRICULUM_SWAP_FAILED', cause, recovered);
   }
 
   // 8. Open the new file, attach it, record the install.
   await closeQuietly(mem);
   const reopened = await reopenCurriculumDatabase();
   if (!reopened.ok) {
-    return { status: 'error', error: reopened.error };
+    // The file is the new release but no handle is open; try once more so the app keeps a curriculum.
+    return {
+      status: 'error',
+      error: reopened.error,
+      curriculumDb: await recoverCurriculum(userDb),
+    };
   }
   try {
     attachCurriculumForQuery(userDb, reopened.value);
+  } catch (cause) {
+    // user.db may be detached: open and attach again. No metadata write, no banner.
+    await closeQuietly(reopened.value);
+    return errorResult('CURRICULUM_SWAP_FAILED', cause, await recoverCurriculum(userDb));
+  }
+  try {
     setCurriculumInstallMetadata(userDb, {
       version: String(release.version),
       source: 'downloaded',

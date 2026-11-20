@@ -432,6 +432,89 @@ describe('runWebCurriculumUpdate', () => {
     }
     expect(mockSetMetadata).not.toHaveBeenCalled();
   });
+
+  it('tries the reopen once more after a failed copy', async () => {
+    const h = harness();
+    h.backup.mockRejectedValue(new Error('copy failed'));
+    mockReopen.mockResolvedValueOnce({ ok: false, error: { code: 'DB_CURRICULUM_REOPEN_ERROR', message: 'x' } });
+
+    const result = await run(h);
+
+    expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+    expect(mockReopen).toHaveBeenCalledTimes(2);
+    expect(mockAttach).toHaveBeenCalledWith(asDb(h.userDb), h.reopened);
+    expect(mockSetMetadata).not.toHaveBeenCalled();
+  });
+
+  it('a rejecting DETACH closes the memory db and recovers the curriculum', async () => {
+    const h = harness();
+    h.userDb.execAsync.mockRejectedValue(new Error('detach failed'));
+
+    const result = await run(h);
+
+    expect(result.status).toBe('error');
+    expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+    expect(h.mem.closeAsync).toHaveBeenCalledTimes(1);
+    expect(h.backup).not.toHaveBeenCalled();
+    expect(mockAttach).toHaveBeenCalledWith(asDb(h.userDb), h.reopened);
+    expect(mockSetMetadata).not.toHaveBeenCalled();
+  });
+
+  it('a failed reopen after the copy tries once more and returns the recovered handle', async () => {
+    const h = harness();
+    mockReopen.mockResolvedValueOnce({ ok: false, error: { code: 'DB_CURRICULUM_REOPEN_ERROR', message: 'x' } });
+
+    const result = await run(h);
+
+    expect(result.status).toBe('error');
+    expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+    expect(mockReopen).toHaveBeenCalledTimes(2);
+    expect(mockAttach).toHaveBeenCalledWith(asDb(h.userDb), h.reopened);
+    expect(mockSetMetadata).not.toHaveBeenCalled();
+  });
+
+  it('a failed reopen after the copy that fails twice returns no handle', async () => {
+    const h = harness();
+    mockReopen.mockResolvedValue({ ok: false, error: { code: 'DB_CURRICULUM_REOPEN_ERROR', message: 'x' } });
+
+    const result = await run(h);
+
+    expect(result.status === 'error' && result.curriculumDb).toBeUndefined();
+    expect(mockReopen).toHaveBeenCalledTimes(2);
+    expect(mockSetMetadata).not.toHaveBeenCalled();
+  });
+
+  it('an attach that throws once is retried through recovery and still reports an error', async () => {
+    const h = harness();
+    const first = fakeDb('first', '2');
+    mockReopen.mockResolvedValueOnce({ ok: true, value: first });
+    mockAttach.mockImplementationOnce(() => {
+      throw new Error('attach failed');
+    });
+
+    const result = await run(h);
+
+    expect(result.status).toBe('error');
+    expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+    expect(first.closeAsync).toHaveBeenCalledTimes(1);
+    expect(mockAttach).toHaveBeenCalledTimes(2);
+    expect(mockAttach).toHaveBeenLastCalledWith(asDb(h.userDb), h.reopened);
+    expect(mockSetMetadata).not.toHaveBeenCalled();
+  });
+
+  it('a failed metadata write after a good attach returns the new attached handle without recovery', async () => {
+    const h = harness();
+    mockSetMetadata.mockImplementation(() => {
+      throw new Error('metadata failed');
+    });
+
+    const result = await run(h);
+
+    expect(result.status).toBe('error');
+    expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+    expect(mockAttach).toHaveBeenCalledTimes(1);
+    expect(mockReopen).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('defaultWebPorts', () => {
