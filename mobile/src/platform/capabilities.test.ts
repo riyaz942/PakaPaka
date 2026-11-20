@@ -4,7 +4,6 @@ import {
   curriculumDownloadNeedsWifi,
   isWeb,
   needsIosGoogleClientId,
-  supportsCurriculumOta,
   supportsExclusiveTransaction,
   supportsNativeGoogleSignIn,
   supportsNotifications,
@@ -24,7 +23,6 @@ const supports = [
   supportsVoice,
   supportsNotifications,
   supportsThemeOverride,
-  supportsCurriculumOta,
   supportsThirdPartyImport,
 ];
 

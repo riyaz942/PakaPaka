@@ -4,7 +4,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
-import { isWeb, supportsCurriculumOta } from '@/platform/capabilities';
+import { isWeb } from '@/platform/capabilities';
 import { requestPersistentStorage } from '@/platform/requestPersistentStorage';
 import {
   CurriculumUpdateContext,
@@ -113,7 +113,7 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
   }, []);
 
   useEffect(() => {
-    if (state.status !== 'ready' || updateStartedRef.current || !supportsCurriculumOta()) {
+    if (state.status !== 'ready' || updateStartedRef.current) {
       return;
     }
 
