@@ -379,6 +379,77 @@ describe('curriculumUpdate', () => {
       expect(closeSpy).toHaveBeenCalled();
     });
 
+    it('does not close the curriculum when the gate is held again during the transaction probe', async () => {
+      const init = await initializeDatabases();
+      expect(init.ok).toBe(true);
+      if (!init.ok) {
+        return;
+      }
+
+      seedDownloadSource();
+      const closeSpy = jest.spyOn(init.value.curriculumDb, 'closeAsync');
+      const firstRelease = holdCurriculumSwap();
+      let secondRelease: (() => void) | undefined;
+      let probes = 0;
+      jest.spyOn(init.value.userDb, 'isInTransactionAsync').mockImplementation(async () => {
+        probes += 1;
+        if (probes === 1) {
+          // A lesson mounts in the same commit that the review unmounts.
+          secondRelease = holdCurriculumSwap();
+        }
+        return false;
+      });
+
+      let finished = false;
+      const swapPromise = downloadAndSwapCurriculum(release(2), init.value).then((result) => {
+        finished = true;
+        return result;
+      });
+
+      for (let i = 0; i < 20; i += 1) {
+        await Promise.resolve();
+      }
+      firstRelease();
+      for (let i = 0; i < 20; i += 1) {
+        await Promise.resolve();
+      }
+      expect(secondRelease).toBeDefined();
+      expect(finished).toBe(false);
+      expect(closeSpy).not.toHaveBeenCalled();
+
+      secondRelease?.();
+      const swapResult = await swapPromise;
+      expect(swapResult.ok).toBe(true);
+      expect(closeSpy).toHaveBeenCalled();
+    });
+
+    it('a rejected transaction probe returns an error and leaves the curriculum open', async () => {
+      const init = await initializeDatabases();
+      expect(init.ok).toBe(true);
+      if (!init.ok) {
+        return;
+      }
+
+      seedDownloadSource();
+      const closeSpy = jest.spyOn(init.value.curriculumDb, 'closeAsync');
+      jest
+        .spyOn(init.value.userDb, 'isInTransactionAsync')
+        .mockRejectedValue(new Error('probe failed'));
+
+      const swapResult = await downloadAndSwapCurriculum(release(2), init.value);
+
+      expect(swapResult.ok).toBe(false);
+      if (!swapResult.ok) {
+        expect(swapResult.error.code).toBe('CURRICULUM_SWAP_FAILED');
+      }
+      expect(closeSpy).not.toHaveBeenCalled();
+      const metadata = init.value.curriculumDb.getFirstSync<{ version: string }>(
+        'SELECT version FROM curriculum_metadata LIMIT 1',
+      );
+      expect(metadata?.version).toBe('1');
+      expect(getMockFileContents(getCurriculumDownloadUri())).toBeUndefined();
+    });
+
     it('user.db in a transaction defers the swap', async () => {
       const init = await initializeDatabases();
       expect(init.ok).toBe(true);

@@ -24,7 +24,10 @@ import type {
   CheckAndApplyCurriculumUpdateResult,
   CurriculumRelease,
 } from '@/data/curriculum/curriculumManifest.types';
-import { waitForCurriculumSwapAllowed } from '@/data/curriculum/curriculumSwapGate';
+import {
+  isCurriculumSwapHeld,
+  waitForCurriculumSwapAllowed,
+} from '@/data/curriculum/curriculumSwapGate';
 import { isCurriculumVersionNewer } from '@/data/curriculum/curriculumVersion';
 import { attachCurriculumForQuery, reopenCurriculumDatabase } from '@/data/database';
 import {
@@ -355,18 +358,41 @@ export async function downloadAndSwapCurriculum(
     return validateResult;
   }
 
-  await waitForCurriculumSwapAllowed();
+  // The gate can be held again while the transaction probe awaits, so check it
+  // last, with nothing awaited between the check and closeAsync.
+  for (;;) {
+    await waitForCurriculumSwapAllowed();
 
-  // A user.db write in flight must finish first; try again on the next launch.
-  if (await handles.userDb.isInTransactionAsync()) {
-    await deleteTempDownloadIfExists();
-    return {
-      ok: false,
-      error: {
-        code: 'CURRICULUM_DOWNLOAD_DEFERRED',
-        message: 'Curriculum swap deferred (user database is busy)',
-      },
-    };
+    let userDbBusy: boolean;
+    try {
+      userDbBusy = await handles.userDb.isInTransactionAsync();
+    } catch (cause) {
+      await deleteTempDownloadIfExists();
+      return {
+        ok: false,
+        error: {
+          code: 'CURRICULUM_SWAP_FAILED',
+          message: String(cause),
+          cause,
+        },
+      };
+    }
+
+    // A user.db write in flight must finish first; try again on the next launch.
+    if (userDbBusy) {
+      await deleteTempDownloadIfExists();
+      return {
+        ok: false,
+        error: {
+          code: 'CURRICULUM_DOWNLOAD_DEFERRED',
+          message: 'Curriculum swap deferred (user database is busy)',
+        },
+      };
+    }
+
+    if (!isCurriculumSwapHeld()) {
+      break;
+    }
   }
 
   let curriculumClosedForSwap = false;
