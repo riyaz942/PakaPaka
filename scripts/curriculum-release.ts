@@ -115,3 +115,39 @@ export function readSigningKeys(repoRoot: string): Record<string, string> {
   const file = join(repoRoot, 'mobile', 'src', 'config', 'curriculum-signing-keys.json');
   return JSON.parse(readFileSync(file, 'utf8')) as Record<string, string>;
 }
+
+const SQLITE_HEADER = Buffer.from('SQLite format 3\0', 'latin1');
+
+/** True when the first 16 bytes are the SQLite header (a Git LFS pointer is not). */
+export function isSqliteFile(head: Buffer): boolean {
+  return head.length >= 16 && head.subarray(0, 16).equals(SQLITE_HEADER);
+}
+
+export function checkNewerThanLive(newVersion: number, live: ManifestPayload | null): void {
+  if (live && live.version >= newVersion) {
+    throw new Error(`live version ${live.version} is not older than ${newVersion}`);
+  }
+}
+
+export function checkKeyMatches(privateKey: KeyObject, keyId: string, keys: Record<string, string>): void {
+  if (!Object.prototype.hasOwnProperty.call(keys, keyId)) {
+    throw new Error(`keyId ${keyId} is not in curriculum-signing-keys.json`);
+  }
+  if (publicKeyBase64(privateKey) !== keys[keyId]) {
+    throw new Error(`the key file does not match ${keyId}`);
+  }
+}
+
+export function buildPayload(
+  seed: { version: number; sha256: string; sizeBytes: number },
+  schema: number,
+  now: Date,
+): ManifestPayload {
+  return {
+    schema,
+    version: seed.version,
+    sha256: seed.sha256,
+    size_bytes: seed.sizeBytes,
+    published_at: now.toISOString(),
+  };
+}

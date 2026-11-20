@@ -2,7 +2,11 @@ import { createPrivateKey, generateKeyPairSync, sign } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
+  buildPayload,
+  checkKeyMatches,
+  checkNewerThanLive,
   encodePayload,
+  isSqliteFile,
   publicKeyBase64,
   publicKeyFromBase64,
   signManifest,
@@ -146,5 +150,38 @@ describe('curriculum-release', () => {
 
   it('CURRICULUM_SCHEMA_VERSION is 1', () => {
     expect(CURRICULUM_SCHEMA_VERSION).toBe(1);
+  });
+
+  it('isSqliteFile accepts a SQLite header and rejects an LFS pointer', () => {
+    expect(isSqliteFile(Buffer.concat([Buffer.from('SQLite format 3\0', 'latin1'), Buffer.alloc(8)]))).toBe(true);
+    expect(isSqliteFile(Buffer.from('version https://git-lfs.github.com/spec/v1\n', 'utf8'))).toBe(false);
+    expect(isSqliteFile(Buffer.alloc(0))).toBe(false);
+  });
+
+  it('checkNewerThanLive: no live ok; older live ok; same or newer live throws', () => {
+    expect(() => checkNewerThanLive(54, null)).not.toThrow();
+    expect(() => checkNewerThanLive(54, { ...PAYLOAD, version: 53 })).not.toThrow();
+    expect(() => checkNewerThanLive(54, { ...PAYLOAD, version: 54 })).toThrow('live version 54 is not older than 54');
+    expect(() => checkNewerThanLive(54, { ...PAYLOAD, version: 55 })).toThrow('live version 55 is not older than 54');
+  });
+
+  it('checkKeyMatches: right key ok; other key under k1 throws; unknown id throws', () => {
+    const a = newKey();
+    const b = newKey();
+    const keys = { k1: publicKeyBase64(a.publicKey) };
+    expect(() => checkKeyMatches(a.privateKey, 'k1', keys)).not.toThrow();
+    expect(() => checkKeyMatches(b.privateKey, 'k1', keys)).toThrow('the key file does not match k1');
+    expect(() => checkKeyMatches(a.privateKey, 'k9', keys)).toThrow('keyId k9 is not in curriculum-signing-keys.json');
+  });
+
+  it('buildPayload uses the schema and an ISO time', () => {
+    const now = new Date('2026-11-20T10:11:12.345Z');
+    expect(buildPayload({ version: 54, sha256: 'ab'.repeat(32), sizeBytes: 1024 }, 1, now)).toEqual({
+      schema: 1,
+      version: 54,
+      sha256: 'ab'.repeat(32),
+      size_bytes: 1024,
+      published_at: '2026-11-20T10:11:12.345Z',
+    });
   });
 });
