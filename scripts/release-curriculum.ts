@@ -5,7 +5,7 @@
  * Nothing is ever deleted from R2.
  */
 import Database from 'better-sqlite3';
-import { createHash, createPrivateKey } from 'node:crypto';
+import { createHash, createPrivateKey, type KeyObject } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { closeSync, mkdtempSync, openSync, readFileSync, readSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -100,7 +100,12 @@ async function main(): Promise<void> {
   checkNewerThanLive(versionNumber, live);
 
   // 5. Sign and self-check.
-  const privateKey = createPrivateKey(readFileSync(keyFile));
+  let privateKey: KeyObject;
+  try {
+    privateKey = createPrivateKey(readFileSync(keyFile));
+  } catch {
+    throw new Error('Cannot read the key file.');
+  }
   checkKeyMatches(privateKey, keyId, keys);
   const payload = buildPayload({ version: versionNumber, sha256, sizeBytes }, CURRICULUM_SCHEMA_VERSION, new Date());
   const manifest = signManifest(payload, keyId, privateKey);
@@ -132,13 +137,20 @@ async function main(): Promise<void> {
   put(fileKey, seedPath, 'application/vnd.sqlite3');
   put(manifestKey, manifestPath, 'application/json');
 
-  // 9. Live check.
-  const after = await fetchLiveManifest(keys);
-  if (!after || after.version !== versionNumber) throw new Error('The live manifest does not show the new version.');
-  const fileRes = await fetch(`${BASE_URL}/api/curriculum/${fileKey}`, { cache: 'no-store' });
-  if (fileRes.status !== 200) throw new Error(`The live file request returned status ${fileRes.status}.`);
-  if (sha256Hex(Buffer.from(await fileRes.arrayBuffer())) !== sha256) {
-    throw new Error('The live file SHA-256 does not match.');
+  // 9. Live check. The upload is done, so every failure here says so.
+  try {
+    const after = await fetchLiveManifest(keys);
+    if (!after) throw new Error('the live manifest answers 404');
+    if (after.version !== versionNumber) throw new Error(`the live version is ${after.version}, not ${versionNumber}`);
+    if (after.sha256 !== sha256) throw new Error('the live manifest sha256 does not match');
+    if (after.size_bytes !== sizeBytes) throw new Error('the live manifest size does not match');
+    const fileRes = await fetch(`${BASE_URL}/api/curriculum/${fileKey}`, { cache: 'no-store' });
+    if (fileRes.status !== 200) throw new Error(`the live file request returned status ${fileRes.status}`);
+    if (sha256Hex(Buffer.from(await fileRes.arrayBuffer())) !== sha256) {
+      throw new Error('the live file SHA-256 does not match');
+    }
+  } catch (e) {
+    throw new Error(`Uploaded, but the live check failed: ${(e as Error).message}`);
   }
   console.log(`Release ${versionNumber} is live.`);
 }
