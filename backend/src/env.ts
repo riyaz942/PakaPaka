@@ -1,6 +1,7 @@
 export interface Env {
   DB: D1Database;
   PROGRESS: R2Bucket;
+  CURRICULUM: R2Bucket;
   AUTH_LIMITER: RateLimit;
   UPLOAD_LIMITER: RateLimit;
   ALERT_EMAIL: SendEmail;

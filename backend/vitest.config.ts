@@ -11,7 +11,7 @@ export default defineConfig(async () => {
         miniflare: {
           compatibilityDate: "2026-11-01",
           d1Databases: ["DB"],
-          r2Buckets: ["PROGRESS"],
+          r2Buckets: ["PROGRESS", "CURRICULUM"],
           ratelimits: {
             AUTH_LIMITER: { namespace_id: "1001", simple: { limit: 10, period: 60 } },
             UPLOAD_LIMITER: { namespace_id: "1002", simple: { limit: 6, period: 60 } },

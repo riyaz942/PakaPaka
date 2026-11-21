@@ -6,6 +6,8 @@
     "validate-schema": "tsx scripts/validate-schema.ts",
     "compile-curriculum": "tsx scripts/compile-curriculum.ts",
     "check-contrast": "tsx scripts/check-contrast.ts",
+    "curriculum-keygen": "tsx scripts/curriculum-keygen.ts",
+    "release-curriculum": "tsx scripts/release-curriculum.ts",
     "studio": "tsx web/server/index.ts",
     "test:studio": "tsx --test web/server/**/*.test.ts",
     "test": "jest --config jest.config.cjs",

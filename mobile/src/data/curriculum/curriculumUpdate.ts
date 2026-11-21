@@ -1,6 +1,5 @@
 import { CryptoDigestAlgorithm, digest } from 'expo-crypto';
 import {
-  copyAsync,
   deleteAsync,
   downloadAsync,
   getInfoAsync,
@@ -8,82 +7,39 @@ import {
   moveAsync,
   readAsStringAsync,
 } from 'expo-file-system/legacy';
-import { Asset } from 'expo-asset';
 import * as Network from 'expo-network';
 import { openDatabaseAsync, type SQLiteDatabase } from 'expo-sqlite';
 
+import { SIGNING_KEYS, verifySignedManifest } from '@/core/curriculum/manifestSignature';
 import {
-  BUNDLED_FIXTURE_SCHEME,
-  BUNDLED_MOCK_MANIFEST_SCHEME,
   CURRICULUM_DOWNLOAD_NAME,
   getCurriculumDbUri,
   getCurriculumDownloadUri,
+  getCurriculumFileUrl,
   getCurriculumManifestUrl,
   getSqliteDirectoryUri,
+  REQUIRED_CURRICULUM_SCHEMA_VERSION,
 } from '@/data/curriculum/curriculumConfig';
-import type { CurriculumManifest } from '@/data/curriculum/curriculumManifest.types';
+import type {
+  CheckAndApplyCurriculumUpdateResult,
+  CurriculumRelease,
+} from '@/data/curriculum/curriculumManifest.types';
+import {
+  isCurriculumSwapHeld,
+  waitForCurriculumSwapAllowed,
+} from '@/data/curriculum/curriculumSwapGate';
 import { isCurriculumVersionNewer } from '@/data/curriculum/curriculumVersion';
 import { attachCurriculumForQuery, reopenCurriculumDatabase } from '@/data/database';
 import {
   PREFERENCE_KEYS,
   setCurriculumInstallMetadata,
 } from '@/data/user/preferencesRepository';
+import { curriculumDownloadNeedsWifi } from '@/platform/capabilities';
 import type { AppError, Result } from '@/types/result.types';
 
-const MOCK_MANIFEST = require('@/assets/curriculum-manifest/mock-manifest.json') as CurriculumManifest;
-const MOCK_UPDATE_DB = require('@/assets/curriculum-manifest/curriculum-mock-update.db');
-
-export function parseCurriculumManifest(payload: unknown): Result<CurriculumManifest, AppError> {
-  if (!payload || typeof payload !== 'object') {
-    return {
-      ok: false,
-      error: {
-        code: 'CURRICULUM_MANIFEST_INVALID',
-        message: 'Manifest payload is not an object',
-      },
-    };
-  }
-
-  const record = payload as Record<string, unknown>;
-  const version = record.version;
-  const url = record.url;
-  const sha256 = record.sha256;
-
-  if (typeof version !== 'string' || typeof url !== 'string' || typeof sha256 !== 'string') {
-    return {
-      ok: false,
-      error: {
-        code: 'CURRICULUM_MANIFEST_INVALID',
-        message: 'Manifest is missing version, url, or sha256',
-      },
-    };
-  }
-
-  if (!/^[a-f0-9]{64}$/i.test(sha256)) {
-    return {
-      ok: false,
-      error: {
-        code: 'CURRICULUM_MANIFEST_INVALID',
-        message: 'Manifest sha256 must be 64 hex characters',
-      },
-    };
-  }
-
-  return {
-    ok: true,
-    value: {
-      version,
-      url,
-      sha256: sha256.toLowerCase(),
-      size_bytes: typeof record.size_bytes === 'number' ? record.size_bytes : undefined,
-      published_at: typeof record.published_at === 'string' ? record.published_at : undefined,
-    },
-  };
-}
-
-async function fetchRemoteManifest(url: string): Promise<Result<CurriculumManifest, AppError>> {
+async function fetchManifestJson(): Promise<Result<unknown, AppError>> {
   try {
-    const response = await fetch(url);
+    const response = await fetch(getCurriculumManifestUrl());
     if (!response.ok) {
       return {
         ok: false,
@@ -94,8 +50,7 @@ async function fetchRemoteManifest(url: string): Promise<Result<CurriculumManife
       };
     }
 
-    const json: unknown = await response.json();
-    return parseCurriculumManifest(json);
+    return { ok: true, value: (await response.json()) as unknown };
   } catch (cause) {
     return {
       ok: false,
@@ -108,14 +63,13 @@ async function fetchRemoteManifest(url: string): Promise<Result<CurriculumManife
   }
 }
 
-export async function loadCurriculumManifest(): Promise<Result<CurriculumManifest, AppError>> {
-  const url = getCurriculumManifestUrl();
-
-  if (url === BUNDLED_MOCK_MANIFEST_SCHEME) {
-    return { ok: true, value: MOCK_MANIFEST };
+export async function loadCurriculumManifest(): Promise<Result<CurriculumRelease, AppError>> {
+  const jsonResult = await fetchManifestJson();
+  if (!jsonResult.ok) {
+    return jsonResult;
   }
 
-  return fetchRemoteManifest(url);
+  return verifySignedManifest(jsonResult.value, SIGNING_KEYS, REQUIRED_CURRICULUM_SCHEMA_VERSION);
 }
 
 export async function canDownloadCurriculumUpdate(): Promise<boolean> {
@@ -124,11 +78,11 @@ export async function canDownloadCurriculumUpdate(): Promise<boolean> {
     return false;
   }
 
-  if (__DEV__) {
-    return true;
+  if (curriculumDownloadNeedsWifi()) {
+    return state.type === Network.NetworkStateType.WIFI;
   }
 
-  return state.type === Network.NetworkStateType.WIFI;
+  return true;
 }
 
 async function readFileAsBase64(fileUri: string): Promise<string> {
@@ -266,7 +220,7 @@ async function atomicReplaceCurriculumFile(
   }
 }
 
-async function downloadManifestDatabase(manifest: CurriculumManifest): Promise<Result<string, AppError>> {
+async function downloadReleaseDatabase(release: CurriculumRelease): Promise<Result<string, AppError>> {
   const dirResult = await ensureSqliteDirectory();
   if (!dirResult.ok) {
     return dirResult;
@@ -276,55 +230,7 @@ async function downloadManifestDatabase(manifest: CurriculumManifest): Promise<R
   const tempUri = getCurriculumDownloadUri();
 
   try {
-    if (manifest.url.startsWith(BUNDLED_FIXTURE_SCHEME)) {
-      const fixtureKey = manifest.url.slice(BUNDLED_FIXTURE_SCHEME.length);
-      if (fixtureKey === 'curriculum-mock-update') {
-        if (process.env.NODE_ENV === 'test') {
-          const { getMockCurriculumFixtureBase64, setMockFileContents } =
-            // eslint-disable-next-line @typescript-eslint/no-require-imports -- test-only fixture seed
-            require('../../../test-support/file-system-test-state') as {
-              getMockCurriculumFixtureBase64: () => string | undefined;
-              setMockFileContents: (uri: string, base64Contents: string) => void;
-            };
-          const fixtureBase64 = getMockCurriculumFixtureBase64();
-          if (!fixtureBase64) {
-            return {
-              ok: false,
-              error: {
-                code: 'CURRICULUM_DOWNLOAD_FAILED',
-                message: 'Mock curriculum fixture was not seeded for tests',
-              },
-            };
-          }
-          setMockFileContents(tempUri, fixtureBase64);
-          return { ok: true, value: tempUri };
-        }
-
-        const asset = Asset.fromModule(MOCK_UPDATE_DB);
-        await asset.downloadAsync();
-        if (!asset.localUri) {
-          return {
-            ok: false,
-            error: {
-              code: 'CURRICULUM_DOWNLOAD_FAILED',
-              message: 'Bundled fixture asset has no local URI',
-            },
-          };
-        }
-        await copyAsync({ from: asset.localUri, to: tempUri });
-        return { ok: true, value: tempUri };
-      }
-
-      return {
-        ok: false,
-        error: {
-          code: 'CURRICULUM_DOWNLOAD_FAILED',
-          message: `Unknown bundled fixture: ${fixtureKey}`,
-        },
-      };
-    }
-
-    const downloadResult = await downloadAsync(manifest.url, tempUri);
+    const downloadResult = await downloadAsync(getCurriculumFileUrl(release.sha256), tempUri);
     return { ok: true, value: downloadResult.uri };
   } catch (cause) {
     await deleteTempDownloadIfExists();
@@ -341,14 +247,14 @@ async function downloadManifestDatabase(manifest: CurriculumManifest): Promise<R
 
 export async function validateDownloadedCurriculumFile(
   fileUri: string,
-  expectedSha256: string,
+  release: CurriculumRelease,
 ): Promise<Result<{ version: string }, AppError>> {
   const checksumResult = await computeFileSha256Hex(fileUri);
   if (!checksumResult.ok) {
     return checksumResult;
   }
 
-  if (checksumResult.value !== expectedSha256.toLowerCase()) {
+  if (checksumResult.value !== release.sha256) {
     return {
       ok: false,
       error: {
@@ -374,6 +280,16 @@ export async function validateDownloadedCurriculumFile(
       };
     }
 
+    if (metadata.version !== String(release.version)) {
+      return {
+        ok: false,
+        error: {
+          code: 'CURRICULUM_SQLITE_INVALID',
+          message: 'Downloaded curriculum version does not match the signed version',
+        },
+      };
+    }
+
     return { ok: true, value: { version: metadata.version } };
   } catch (cause) {
     return {
@@ -393,29 +309,60 @@ export async function validateDownloadedCurriculumFile(
 
 export async function checkForCurriculumUpdate(
   localVersion: string,
-): Promise<Result<CurriculumManifest | null, AppError>> {
+): Promise<Result<CurriculumRelease | null, AppError>> {
   const manifestResult = await loadCurriculumManifest();
   if (!manifestResult.ok) {
     if (__DEV__) {
-      console.log('[curriculumUpdate] manifest unreachable:', manifestResult.error.message);
+      console.log('[curriculumUpdate] manifest not used:', manifestResult.error.code);
     }
     return { ok: true, value: null };
   }
 
-  const manifest = manifestResult.value;
-  if (!isCurriculumVersionNewer(manifest.version, localVersion)) {
+  const release = manifestResult.value;
+  if (!isCurriculumVersionNewer(release.version, localVersion)) {
     return { ok: true, value: null };
   }
 
-  return { ok: true, value: manifest };
+  return { ok: true, value: release };
+}
+
+const METADATA_WRITE_TRIES = 5;
+const METADATA_RETRY_DELAY_MS = 200;
+
+function isDatabaseBusyError(cause: unknown): boolean {
+  return /database is locked|database is busy|SQLITE_BUSY|SQLITE_LOCKED/i.test(String(cause));
+}
+
+/**
+ * A sync writes through its own connection and expo-sqlite sets no busy timeout, so the
+ * install metadata write can meet "database is locked". Try again a few times; any other
+ * error, or the last failure, is thrown.
+ */
+async function writeInstallMetadataWithRetry(
+  userDb: SQLiteDatabase,
+  metadata: Parameters<typeof setCurriculumInstallMetadata>[1],
+  delay: (ms: number) => Promise<void>,
+): Promise<void> {
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      setCurriculumInstallMetadata(userDb, metadata);
+      return;
+    } catch (cause) {
+      if (attempt >= METADATA_WRITE_TRIES || !isDatabaseBusyError(cause)) {
+        throw cause;
+      }
+      await delay(METADATA_RETRY_DELAY_MS);
+    }
+  }
 }
 
 export async function downloadAndSwapCurriculum(
-  manifest: CurriculumManifest,
+  release: CurriculumRelease,
   handles: {
     curriculumDb: SQLiteDatabase;
     userDb: SQLiteDatabase;
   },
+  options: { delay?: (ms: number) => Promise<void> } = {},
 ): Promise<Result<{ version: string; curriculumDb: SQLiteDatabase }, AppError>> {
   const canDownload = await canDownloadCurriculumUpdate();
   if (!canDownload) {
@@ -428,22 +375,60 @@ export async function downloadAndSwapCurriculum(
     };
   }
 
-  const downloadResult = await downloadManifestDatabase(manifest);
+  const downloadResult = await downloadReleaseDatabase(release);
   if (!downloadResult.ok) {
     return downloadResult;
   }
 
   const validateResult = await validateDownloadedCurriculumFile(
     downloadResult.value,
-    manifest.sha256,
+    release,
   );
   if (!validateResult.ok) {
     await deleteTempDownloadIfExists();
     return validateResult;
   }
 
+  // The gate can be held again while the transaction probe awaits, so check it
+  // last, with nothing awaited between the check and closeAsync.
+  for (;;) {
+    await waitForCurriculumSwapAllowed();
+
+    let userDbBusy: boolean;
+    try {
+      userDbBusy = await handles.userDb.isInTransactionAsync();
+    } catch (cause) {
+      await deleteTempDownloadIfExists();
+      return {
+        ok: false,
+        error: {
+          code: 'CURRICULUM_SWAP_FAILED',
+          message: String(cause),
+          cause,
+        },
+      };
+    }
+
+    // A user.db write in flight must finish first; try again on the next launch.
+    if (userDbBusy) {
+      await deleteTempDownloadIfExists();
+      return {
+        ok: false,
+        error: {
+          code: 'CURRICULUM_DOWNLOAD_DEFERRED',
+          message: 'Curriculum swap deferred (user database is busy)',
+        },
+      };
+    }
+
+    if (!isCurriculumSwapHeld()) {
+      break;
+    }
+  }
+
   let curriculumClosedForSwap = false;
   let swapHandedOffDb = false;
+  let reopenedDb: SQLiteDatabase | null = null;
 
   try {
     await handles.curriculumDb.closeAsync();
@@ -462,13 +447,18 @@ export async function downloadAndSwapCurriculum(
     if (!reopenResult.ok) {
       return reopenResult;
     }
+    reopenedDb = reopenResult.value;
     attachCurriculumForQuery(handles.userDb, reopenResult.value);
 
-    setCurriculumInstallMetadata(handles.userDb, {
-      version: validateResult.value.version,
-      source: 'downloaded',
-      contentHash: manifest.sha256,
-    });
+    await writeInstallMetadataWithRetry(
+      handles.userDb,
+      {
+        version: validateResult.value.version,
+        source: 'downloaded',
+        contentHash: release.sha256,
+      },
+      options.delay ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms))),
+    );
 
     swapHandedOffDb = true;
 
@@ -499,18 +489,18 @@ export async function downloadAndSwapCurriculum(
       },
     };
   } finally {
-    if (curriculumClosedForSwap && !swapHandedOffDb) {
+    if (reopenedDb && !swapHandedOffDb) {
+      // The caller gets no handle with an error and opens its own; close this one.
+      try {
+        await reopenedDb.closeAsync();
+      } catch {
+        // Nothing more to undo.
+      }
+    } else if (curriculumClosedForSwap && !swapHandedOffDb) {
       await reopenCurriculumDatabase();
     }
   }
 }
-
-export type CheckAndApplyCurriculumUpdateResult =
-  | { status: 'skipped' }
-  | { status: 'up_to_date' }
-  | { status: 'deferred' }
-  | { status: 'success'; version: string; curriculumDb: SQLiteDatabase }
-  | { status: 'error'; error: AppError; curriculumDb?: SQLiteDatabase };
 
 export async function checkAndApplyCurriculumUpdate(handles: {
   curriculumDb: SQLiteDatabase;

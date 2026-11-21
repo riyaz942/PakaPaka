@@ -70,7 +70,7 @@ describe('DatabaseProvider', () => {
     await waitFor(() => expect(mockCheckAndApplyCurriculumUpdate).toHaveBeenCalledTimes(1));
   });
 
-  it('skips the curriculum update on web', async () => {
+  it('checks for a curriculum update on web too', async () => {
     setPlatform('web');
     render(
       <DatabaseProvider>
@@ -78,7 +78,7 @@ describe('DatabaseProvider', () => {
       </DatabaseProvider>,
     );
     await waitFor(() => expect(screen.getByText('ready')).toBeTruthy());
-    expect(mockCheckAndApplyCurriculumUpdate).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockCheckAndApplyCurriculumUpdate).toHaveBeenCalledTimes(1));
   });
 
   it('asks the browser for persistent storage once, after the databases open', async () => {

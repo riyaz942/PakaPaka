@@ -224,6 +224,8 @@ then runs as usual and pulls anything newer still.
 
 **Goal:** an OTA download can never install a file the running code cannot read.
 
+> **Status (2026-11-21):** steps 1, 2 and 4 are done in part by web app Part 4 (R2 curriculum updates; branch `part4-curriculum-r2`, not merged to `main`). The signed manifest carries `schema`; the app reads only `s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json`, installs only a payload with the same `schema`, and downloads no file for another schema. The release script takes the schema from `scripts/curriculum-schema.ts`. **Not done:** step 3 (re-check `schema_version` inside the downloaded file) and the Settings notice "New content is available. Update the app to get it." Both need Phase B, which adds the `schema_version` column. An old app reads only its own `s<N>` manifest, so it cannot see a newer schema. When Phase B lands, the release script reads the schema from the file and the app re-checks it in the probe. See Finding 6 of `docs/superpowers/plans/2026-11-19-web-app-part4-curriculum-r2.md`.
+
 ### Work
 
 1. Add `schema_version` to the manifest shape (`curriculumManifest.types.ts`) and to

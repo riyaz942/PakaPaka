@@ -1617,6 +1617,10 @@ class MockSQLiteDatabase {
     }
   }
 
+  async isInTransactionAsync(): Promise<boolean> {
+    return getDatabaseState(this.databaseName).inTransaction;
+  }
+
   async closeAsync(): Promise<void> {
     return;
   }

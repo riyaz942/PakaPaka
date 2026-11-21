@@ -3,8 +3,11 @@ import React from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { SyncGate } from '@/components/sync/SyncGate';
+import { useHoldCurriculumSwap } from '@/hooks/useHoldCurriculumSwap';
 
 export default function LessonLayout() {
+  useHoldCurriculumSwap();
+
   return (
     // Card-swipe gestures only resolve under a gesture root, and the app has
     // none above this stack — so the lesson stack hosts its own.
