@@ -3,10 +3,27 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { Button } from '@/components/common/Button';
+import { BrowseOnlyIntroModal } from '@/components/tabs/BrowseOnlyIntroModal';
+import {
+  MovedScreen,
+  MovingScreen,
+  NotRespondingScreen,
+} from '@/components/tabs/TabStatusScreens';
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
-import { initializeDatabases } from '@/data/database';
+import { initializeDatabases, type DatabaseHandles } from '@/data/database';
+import {
+  openSnapshotDatabases,
+  serializeDatabases,
+  type DbSnapshot,
+} from '@/data/snapshotDatabases';
 import { isWeb } from '@/platform/capabilities';
 import { requestPersistentStorage } from '@/platform/requestPersistentStorage';
+import { TAB_ANSWER_TIMEOUT_MS, tryAcquireDbLock, type DbLease } from '@/platform/web/dbLock';
+import {
+  requestSnapshot,
+  serveOwnerTab,
+  useHere as moveAppToThisTab,
+} from '@/platform/web/tabChannel';
 import {
   CurriculumUpdateContext,
   type CurriculumUpdateContextValue,
@@ -15,16 +32,36 @@ import {
   DatabaseContext,
   type DatabaseContextValue,
 } from '@/providers/DatabaseContext';
-import type { AppError } from '@/types/result.types';
+import { TabModeContext, type TabModeValue } from '@/providers/TabModeContext';
+import type { AppError, Result } from '@/types/result.types';
 
 type DatabaseProviderProps = {
   children: React.ReactNode;
 };
 
+// Web tab modes: `choose` = a second tab shows the browse-only intro modal;
+// `moving` = this tab waits for the owner to let go ("Use here"); `moved` =
+// this tab gave the databases to another tab.
 type ProviderState =
   | { status: 'loading' }
   | { status: 'error'; error: AppError }
-  | { status: 'ready'; curriculumDb: SQLiteDatabase; userDb: SQLiteDatabase };
+  | { status: 'choose'; browsePending: boolean }
+  | { status: 'moving' }
+  | { status: 'moved' }
+  | {
+      status: 'ready';
+      curriculumDb: SQLiteDatabase;
+      userDb: SQLiteDatabase;
+      browseOnly: boolean;
+    };
+
+async function closeHandles(handles: DatabaseHandles | null): Promise<void> {
+  if (!handles) {
+    return;
+  }
+  await handles.curriculumDb.closeAsync().catch(() => undefined);
+  await handles.userDb.closeAsync().catch(() => undefined);
+}
 
 export function DatabaseProvider({ children }: DatabaseProviderProps) {
   const [state, setState] = useState<ProviderState>({ status: 'loading' });
@@ -33,6 +70,12 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     null,
   );
   const updateStartedRef = useRef(false);
+  // Web only: the owner tab's Web Lock, the "stop serving other tabs"
+  // function, and (in a second tab) the pending snapshot answer.
+  const leaseRef = useRef<DbLease | null>(null);
+  const stopServingRef = useRef<(() => void) | null>(null);
+  const snapshotRef = useRef<Promise<Result<DbSnapshot, AppError>> | null>(null);
+  const releasePendingRef = useRef(false);
 
   const dismissCurriculumUpdatedBanner = useCallback(() => {
     setShowCurriculumUpdatedBanner(false);
@@ -42,6 +85,22 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     let cancelled = false;
 
     async function init() {
+      if (isWeb()) {
+        const lease = await tryAcquireDbLock();
+        if (cancelled) {
+          lease?.release();
+          return;
+        }
+        if (!lease) {
+          // Another tab owns the databases. Ask it for a copy at once; the
+          // intro modal shows while the copy travels.
+          snapshotRef.current = requestSnapshot(TAB_ANSWER_TIMEOUT_MS);
+          setState({ status: 'choose', browsePending: false });
+          return;
+        }
+        leaseRef.current = lease;
+      }
+
       const result = await initializeDatabases();
 
       if (cancelled) {
@@ -61,6 +120,26 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
 
       void requestPersistentStorage();
 
+      if (isWeb()) {
+        stopServingRef.current = serveOwnerTab({
+          getSnapshot: () => {
+            const handles = handlesRef.current;
+            if (!handles) {
+              return Promise.resolve({
+                ok: false,
+                error: { code: 'DB_CLOSED', message: 'The databases are closed.' },
+              });
+            }
+            return serializeDatabases(handles);
+          },
+          onRelease: () => {
+            // Close in an effect after the app UI has unmounted (see below).
+            releasePendingRef.current = true;
+            setState({ status: 'moved' });
+          },
+        });
+      }
+
       if (__DEV__) {
         const metadata = result.value.curriculumDb.getFirstSync<{ version: string }>(
           'SELECT version FROM curriculum_metadata LIMIT 1',
@@ -77,6 +156,7 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
         status: 'ready',
         curriculumDb: result.value.curriculumDb,
         userDb: result.value.userDb,
+        browseOnly: false,
       });
     }
 
@@ -84,13 +164,77 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
 
     return () => {
       cancelled = true;
+      stopServingRef.current?.();
+      stopServingRef.current = null;
       const handles = handlesRef.current;
       if (handles) {
         handlesRef.current = null;
         void handles.curriculumDb.closeAsync();
         void handles.userDb.closeAsync();
       }
+      leaseRef.current?.release();
+      leaseRef.current = null;
     };
+  }, []);
+
+  // Web owner tab, after another tab pressed "Use here". Runs after the app UI
+  // has unmounted, so no screen queries a closed database. Stopping the SQLite
+  // worker frees the OPFS files (patches/expo-sqlite); then the lock goes.
+  useEffect(() => {
+    if (state.status !== 'moved' || !releasePendingRef.current) {
+      return;
+    }
+    releasePendingRef.current = false;
+    stopServingRef.current?.();
+    stopServingRef.current = null;
+    const handles = handlesRef.current;
+    handlesRef.current = null;
+
+    void (async () => {
+      await closeHandles(handles);
+      window.dispatchEvent(new Event('expo-sqlite:stop-worker'));
+      leaseRef.current?.release();
+      leaseRef.current = null;
+    })();
+  }, [state.status]);
+
+  /** Web second tab: Browse → open the owner's copy in memory. */
+  const browse = useCallback(async () => {
+    setState({ status: 'choose', browsePending: true });
+    const snapshot = await snapshotRef.current;
+    if (!snapshot) {
+      return;
+    }
+    if (!snapshot.ok) {
+      setState({ status: 'error', error: snapshot.error });
+      return;
+    }
+    const opened = await openSnapshotDatabases(snapshot.value);
+    if (!opened.ok) {
+      setState({ status: 'error', error: opened.error });
+      return;
+    }
+    handlesRef.current = opened.value;
+    setState({
+      status: 'ready',
+      curriculumDb: opened.value.curriculumDb,
+      userDb: opened.value.userDb,
+      browseOnly: true,
+    });
+  }, []);
+
+  /** Web: "Use here" — take the databases from the owner tab, then reload as owner. */
+  const startUseHere = useCallback(async () => {
+    setState({ status: 'moving' });
+    const result = await moveAppToThisTab(TAB_ANSWER_TIMEOUT_MS);
+    if (!result.ok) {
+      setState({ status: 'error', error: result.error });
+      return;
+    }
+    const handles = handlesRef.current;
+    handlesRef.current = null;
+    await closeHandles(handles);
+    window.location.reload();
   }, []);
 
   // Web: when the user leaves for another page (the landing page at `/`), the
@@ -113,8 +257,11 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     return () => window.removeEventListener('pageshow', reloadIfRestored);
   }, []);
 
+  const browseOnly = state.status === 'ready' && state.browseOnly;
+
   useEffect(() => {
-    if (state.status !== 'ready' || updateStartedRef.current) {
+    // A browse-only tab never updates the curriculum: it runs on a copy.
+    if (state.status !== 'ready' || browseOnly || updateStartedRef.current) {
       return;
     }
 
@@ -147,9 +294,8 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
             return current;
           }
           return {
-            status: 'ready',
+            ...current,
             curriculumDb: updateResult.curriculumDb,
-            userDb: current.userDb,
           };
         });
 
@@ -173,9 +319,8 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
             return current;
           }
           return {
-            status: 'ready',
+            ...current,
             curriculumDb: recoveredCurriculumDb,
-            userDb: current.userDb,
           };
         });
 
@@ -193,7 +338,29 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     return () => {
       cancelled = true;
     };
-  }, [state.status]);
+  }, [state.status, browseOnly]);
+
+  if (state.status === 'choose') {
+    return (
+      <BrowseOnlyIntroModal
+        browsePending={state.browsePending}
+        onBrowse={() => void browse()}
+        onUseHere={() => void startUseHere()}
+      />
+    );
+  }
+
+  if (state.status === 'moving') {
+    return <MovingScreen />;
+  }
+
+  if (state.status === 'moved') {
+    return <MovedScreen onUseHere={() => void startUseHere()} />;
+  }
+
+  if (state.status === 'error' && state.error.code === 'TAB_NOT_RESPONDING') {
+    return <NotRespondingScreen onReload={() => window.location.reload()} />;
+  }
 
   if (state.status === 'error' && state.error.code === 'DB_LOCKED_BY_OTHER_TAB') {
     return (
@@ -244,6 +411,11 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     error: null,
   };
 
+  const tabModeValue: TabModeValue = {
+    browseOnly: state.browseOnly,
+    useHere: () => void startUseHere(),
+  };
+
   const curriculumUpdateContextValue: CurriculumUpdateContextValue = {
     showCurriculumUpdatedBanner,
     dismissCurriculumUpdatedBanner,
@@ -251,9 +423,11 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
 
   return (
     <DatabaseContext.Provider value={contextValue}>
-      <CurriculumUpdateContext.Provider value={curriculumUpdateContextValue}>
-        {children}
-      </CurriculumUpdateContext.Provider>
+      <TabModeContext.Provider value={tabModeValue}>
+        <CurriculumUpdateContext.Provider value={curriculumUpdateContextValue}>
+          {children}
+        </CurriculumUpdateContext.Provider>
+      </TabModeContext.Provider>
     </DatabaseContext.Provider>
   );
 }
