@@ -3,7 +3,7 @@ import '@/platform/registerWebAnimatedClassNames';
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, usePathname } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
@@ -14,8 +14,12 @@ import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
 import { SessionEndedHost } from '@/components/sync/SessionEndedHost';
 import { SyncConflictDialog } from '@/components/sync/SyncConflictDialog';
+import { BrowseOnlyBanner } from '@/components/tabs/BrowseOnlyBanner';
+import { BrowseOnlyBlockedScreen } from '@/components/tabs/BrowseOnlyBlockedScreen';
 import { appFonts } from '@/constants/fonts';
 import { MaxAppWidth } from '@/constants/theme';
+import { isBlockedInBrowseOnly } from '@/core/tabs/browseOnlyRoutes';
+import { browseOnlySession } from '@/data/account/browseOnlySession';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
@@ -25,6 +29,7 @@ import { DatabaseProvider } from '@/providers/DatabaseProvider';
 import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
 import { SyncProvider } from '@/providers/SyncProvider';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
+import { useTabMode } from '@/providers/TabModeContext';
 
 function CurriculumUpdateBannerHost() {
   const insets = useSafeAreaInsets();
@@ -59,6 +64,55 @@ function ThemeModeHost() {
   return null;
 }
 
+/**
+ * Everything inside the databases. In a web browse-only tab (a second tab on a
+ * copy of the owner tab's databases) the account is inert (no sync, sign-out
+ * or erase), a banner says so, onboarding does not redirect, and screens that
+ * study or write show the "Browse only" screen instead.
+ */
+function AppShell() {
+  const { browseOnly } = useTabMode();
+  const pathname = usePathname();
+  const blocked = browseOnly && isBlockedInBrowseOnly(pathname);
+
+  return (
+    <AccountProvider session={browseOnly ? browseOnlySession : undefined}>
+      <SyncProvider>
+        <ThemeModeHost />
+        <CurriculumUpdateBannerHost />
+        <AnimatedSplashOverlay />
+        <SyncConflictDialog />
+        <BrowseOnlyBanner />
+        {/* A desktop browser window can be any width; the app stays in a
+            centered frame. Phones are always narrower than the cap. */}
+        <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
+          {blocked ? (
+            <BrowseOnlyBlockedScreen />
+          ) : (
+            <Stack>
+              <Stack.Screen name="index" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="start" options={{ headerShown: false }} />
+              <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="review"
+                options={{ headerShown: false, presentation: 'fullScreenModal' }}
+              />
+              <Stack.Screen
+                name="lesson"
+                options={{ headerShown: false, presentation: 'fullScreenModal' }}
+              />
+              <Stack.Screen name="levels" options={{ headerShown: false }} />
+            </Stack>
+          )}
+        </View>
+        {browseOnly ? null : <OnboardingRedirect />}
+        <SessionEndedHost />
+      </SyncProvider>
+    </AccountProvider>
+  );
+}
+
 function RootLayoutContent() {
   const isDark = usePaintedColorScheme() === 'dark';
 
@@ -67,35 +121,7 @@ function RootLayoutContent() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
-          <AccountProvider>
-            <SyncProvider>
-              <ThemeModeHost />
-              <CurriculumUpdateBannerHost />
-              <AnimatedSplashOverlay />
-              <SyncConflictDialog />
-              {/* A desktop browser window can be any width; the app stays in a
-                  centered frame. Phones are always narrower than the cap. */}
-              <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
-                <Stack>
-                  <Stack.Screen name="index" options={{ headerShown: false }} />
-                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                  <Stack.Screen name="start" options={{ headerShown: false }} />
-                  <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-                  <Stack.Screen
-                    name="review"
-                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                  />
-                  <Stack.Screen
-                    name="lesson"
-                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                  />
-                  <Stack.Screen name="levels" options={{ headerShown: false }} />
-                </Stack>
-              </View>
-              <OnboardingRedirect />
-              <SessionEndedHost />
-            </SyncProvider>
-          </AccountProvider>
+          <AppShell />
         </DatabaseProvider>
       </ThemeProvider>
     </View>
