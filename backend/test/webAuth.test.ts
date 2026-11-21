@@ -31,12 +31,15 @@ describe("GET /auth/signin", () => {
     expect(res.headers.get("cross-origin-embedder-policy")).toBeNull();
     expect(res.headers.get("cross-origin-opener-policy")).toBeNull();
     const html = await res.text();
-    expect(html).toContain("<title>Sign in to sync</title>");
+    expect(html).toContain("<title>Start learning</title>");
     expect(html).toContain('class="cf-turnstile" data-sitekey="turnstile-site-key" data-callback="onTurnstileOk"');
     expect(html).toContain('data-expired-callback="onTurnstileExpired"');
     expect(html).toContain('data-error-callback="onTurnstileError"');
     expect(html).toContain('<form method="post" action="/api/auth/web/start">');
-    expect(html).toContain("Back to the app");
+    expect(html).toContain("Back to the home page");
+    // The no-account start is a plain link: no bot check in front of it.
+    expect(html).toContain('<a class="btn btn-primary" href="/dashboard">Start now</a>');
+    expect(html).toContain(".btn-primary:hover");
     expect(html).not.toContain("Check failed");
   });
 

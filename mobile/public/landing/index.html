@@ -341,9 +341,8 @@ footer a { color: var(--muted); }
       <a href="#sync">Sync</a>
     </div>
     <div class="cta">
-      <a class="btn btn-ghost btn-sm if-out" href="/auth/signin">Log in</a>
-      <a class="btn btn-primary btn-sm if-out" href="/dashboard">Start learning</a>
-      <a class="btn btn-primary btn-sm if-in" href="/dashboard">Go to dashboard</a>
+      <a class="btn btn-primary btn-sm if-out" href="/auth/signin">Start Learning</a>
+      <a class="btn btn-primary btn-sm if-in" href="/dashboard">Dashboard</a>
     </div>
   </div>
 </nav>
@@ -356,7 +355,7 @@ footer a { color: var(--muted); }
       <h1 data-reveal style="--d:80ms">Every kanji is a story <em>you already know.<svg class="stroke" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 2 96 11 150 6s100-3 147 1"/></svg></em></h1>
       <p class="lede" data-reveal style="--d:160ms">Radicals build kanji. Kanji build words. Each step has a mnemonic made from the step before it, so nothing is new twice. Grammar and reading are in the same app. <b>You type every answer, as on WaniKani and Bunpro.</b> No flashcards that you grade yourself, and no multiple choice.</p>
       <div class="buttons" data-reveal style="--d:240ms">
-        <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
+        <a class="btn btn-primary if-out" href="/auth/signin">Start Learning</a><a class="btn btn-primary if-in" href="/dashboard">Dashboard</a>
         <a class="link" href="#chain">See how it works</a>
       </div>
       <p class="note" data-reveal style="--d:300ms">No account needed. Your progress stays on this device.</p>
@@ -505,7 +504,7 @@ footer a { color: var(--muted); }
 
     <div class="import" data-reveal>
       <div><b>Not a beginner?</b> Pick your level and take a one-minute check. PakaPaka skips what you know. Import from WaniKani and Anki is in the phone app only.</div>
-      <a class="btn btn-primary btn-sm" href="/dashboard">Start at your level</a>
+      <a class="btn btn-primary btn-sm if-out" href="/auth/signin">Start Learning</a><a class="btn btn-primary btn-sm if-in" href="/dashboard">Dashboard</a>
     </div>
   </div>
 </section>
@@ -522,12 +521,12 @@ footer a { color: var(--muted); }
       <div class="way" data-reveal>
         <h3 class="serif">Start with no account</h3>
         <p>All progress stays on this device. No server holds your data.</p>
-        <a class="btn btn-primary" href="/dashboard">Start learning</a>
+        <a class="btn btn-primary if-out" href="/auth/signin">Start Learning</a><a class="btn btn-primary if-in" href="/dashboard">Dashboard</a>
       </div>
       <div class="way" data-reveal style="--d:80ms">
         <h3 class="serif">Log in with Google</h3>
         <p>Your account works now. Progress sync between phone and browser is not ready yet: for now your progress stays on this device.</p>
-        <div><a class="btn btn-ghost if-out" href="/auth/signin">Log in</a><a class="btn btn-ghost if-in" href="/dashboard">Go to dashboard</a><span class="soon">Sync soon</span></div>
+        <div><span class="soon">Sync soon</span></div>
       </div>
       <div class="way" data-reveal style="--d:160ms">
         <h3 class="serif">Back up to a file</h3>
@@ -543,7 +542,7 @@ footer a { color: var(--muted); }
     <h2>Your first radical takes one minute.</h2>
     <p class="lede">Start in this browser now. No account, no payment.</p>
     <div class="buttons">
-      <a class="btn btn-primary" href="/dashboard">Start learning — free</a>
+      <a class="btn btn-primary if-out" href="/auth/signin">Start Learning</a><a class="btn btn-primary if-in" href="/dashboard">Dashboard</a>
       <a class="btn btn-ghost" href="https://github.com/riyaz942/PakaPaka">See the code on GitHub</a>
     </div>
   </div>
