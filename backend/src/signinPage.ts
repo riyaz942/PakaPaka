@@ -81,6 +81,7 @@ export function signinPage(siteKey: string, error: string | null): string {
     `data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>` +
     `<button id="continue" class="btn btn-ghost" type="submit" disabled>Continue with Google</button>` +
     `</form></section>` +
+    `<a class="back" href="/privacy-policy">Privacy policy</a>` +
     `<a class="back" href="/">Back to the home page</a>` +
     `<script src="/auth/signin.js"></script>` +
     `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>` +

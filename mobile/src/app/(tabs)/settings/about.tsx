@@ -3,9 +3,11 @@ import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { API_BASE_URL } from '@/config/api';
 import { MaxContentWidth } from '@/constants/theme';
 
 const SOURCE_URL = 'https://github.com/riyaz942/pakapaka';
+const PRIVACY_URL = `${API_BASE_URL}/privacy-policy`;
 
 type Attribution = {
   id: string;
@@ -89,6 +91,7 @@ export default function AboutScreen() {
             licensed under CC BY-SA 4.0.
           </Text>
           <LinkText label="Source code on GitHub" url={SOURCE_URL} />
+          <LinkText label="Privacy policy" url={PRIVACY_URL} />
 
           <View className="mt-space-lg">
             <SectionHeading label="Data sources" />

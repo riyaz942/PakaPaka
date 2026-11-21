@@ -27,4 +27,11 @@ describe('AboutScreen', () => {
     fireEvent.press(screen.getByLabelText('Open EDRDG licence'));
     expect(openURL).toHaveBeenCalledWith('https://www.edrdg.org/edrdg/licence.html');
   });
+
+  it('opens the privacy policy page', () => {
+    const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+    render(<AboutScreen />);
+    fireEvent.press(screen.getByLabelText('Open Privacy policy'));
+    expect(openURL).toHaveBeenCalledWith(expect.stringMatching(/\/privacy-policy$/));
+  });
 });
