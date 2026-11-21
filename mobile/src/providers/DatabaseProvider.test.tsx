@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Platform, Text } from 'react-native';
 
@@ -148,6 +148,32 @@ describe('DatabaseProvider', () => {
       // Plain hint only: the raw SQLite error means nothing to the learner.
       expect(screen.queryByText('NoModificationAllowedError')).toBeNull();
       expect(mockRequestPersistentStorage).not.toHaveBeenCalled();
+    });
+
+    it('names the other tab and offers a reload when another tab holds the files', async () => {
+      setPlatform('web');
+      mockInitializeDatabases.mockResolvedValue({
+        ok: false,
+        error: { code: 'DB_LOCKED_BY_OTHER_TAB', message: 'NoModificationAllowedError' },
+      });
+      render(
+        <DatabaseProvider>
+          <Text>ready</Text>
+        </DatabaseProvider>,
+      );
+      await waitFor(() =>
+        expect(screen.getByText('PakaPaka is open in another tab')).toBeTruthy(),
+      );
+      expect(
+        screen.getByText(
+          'PakaPaka can run in only one tab at a time. Go back to the other tab, or close it and reload this page.',
+        ),
+      ).toBeTruthy();
+      expect(screen.queryByText('Unable to open local databases.')).toBeNull();
+      expect(screen.queryByText('NoModificationAllowedError')).toBeNull();
+
+      fireEvent.press(screen.getByRole('button', { name: 'Reload' }));
+      expect(reload).toHaveBeenCalledTimes(1);
     });
 
     it('does not mention tabs on iOS', async () => {

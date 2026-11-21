@@ -1,3 +1,5 @@
+import * as sqlite from 'expo-sqlite';
+
 import {
   __mockClearImportedAssets,
   __mockGetImportedAssetDatabase,
@@ -132,5 +134,42 @@ describe('initializeDatabases', () => {
     );
 
     expect(preference?.value).toBe('dark');
+  });
+
+  // Web: another tab holds the OPFS access handles. The worker passes the
+  // browser's error on as text, e.g. "NoModificationAllowedError: ... Access
+  // Handles cannot be created if there is another open Access Handle ...".
+  it('reports DB_LOCKED_BY_OTHER_TAB when another tab holds the files', async () => {
+    const spy = jest
+      .spyOn(sqlite, 'openDatabaseAsync')
+      .mockRejectedValueOnce(
+        new Error(
+          "NoModificationAllowedError: Failed to execute 'createSyncAccessHandle' on 'FileSystemFileHandle': Access Handles cannot be created if there is another open Access Handle or Writable stream associated with the same file.",
+        ),
+      );
+
+    const result = await initializeDatabases();
+    spy.mockRestore();
+
+    expect(result.ok).toBe(false);
+    if (result.ok) {
+      return;
+    }
+    expect(result.error.code).toBe('DB_LOCKED_BY_OTHER_TAB');
+  });
+
+  it('keeps DB_INIT_ERROR for other open failures', async () => {
+    const spy = jest
+      .spyOn(sqlite, 'openDatabaseAsync')
+      .mockRejectedValueOnce(new Error('disk I/O error'));
+
+    const result = await initializeDatabases();
+    spy.mockRestore();
+
+    expect(result.ok).toBe(false);
+    if (result.ok) {
+      return;
+    }
+    expect(result.error.code).toBe('DB_INIT_ERROR');
   });
 });

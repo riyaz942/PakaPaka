@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { Button } from '@/components/common/Button';
 import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
 import { isWeb } from '@/platform/capabilities';
@@ -193,6 +194,21 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
       cancelled = true;
     };
   }, [state.status]);
+
+  if (state.status === 'error' && state.error.code === 'DB_LOCKED_BY_OTHER_TAB') {
+    return (
+      <View className="flex-1 items-center justify-center bg-background px-6">
+        <Text className="text-center text-title font-ui-bold text-primary">
+          PakaPaka is open in another tab
+        </Text>
+        <Text className="mt-2 max-w-md text-center text-body text-muted">
+          PakaPaka can run in only one tab at a time. Go back to the other tab, or close it and
+          reload this page.
+        </Text>
+        <Button label="Reload" onPress={() => window.location.reload()} className="mt-6" />
+      </View>
+    );
+  }
 
   if (state.status === 'error') {
     return (

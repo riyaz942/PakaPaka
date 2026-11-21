@@ -188,10 +188,19 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
     return {
       ok: false,
       error: {
-        code: 'DB_INIT_ERROR',
+        code: isLockedByOtherTab(cause) ? 'DB_LOCKED_BY_OTHER_TAB' : 'DB_INIT_ERROR',
         message: String(cause),
         cause,
       },
     };
   }
+}
+
+/**
+ * Web: the OPFS pool VFS keeps an access handle on every file while its tab is
+ * open, so a second tab cannot open them. The worker passes the browser's
+ * NoModificationAllowedError on as message text only.
+ */
+function isLockedByOtherTab(cause: unknown): boolean {
+  return /NoModificationAllowedError|Access Handles? cannot be created/i.test(String(cause));
 }
