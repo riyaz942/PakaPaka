@@ -90,8 +90,30 @@ The app trusts `k1` and `k2` from the first build.
 | Case | What to do |
 | --- | --- |
 | `k1` is lost | Sign with `k2`: use `--key-id k2` and the `k2` key file from the password manager. No app update is needed. |
-| `k1` is leaked | Sign with `k2`. Remove `k1` from `curriculum-signing-keys.json`. Ship new app and web builds. Until a phone has the new build, it still trusts `k1`. |
-| `k1` and `k2` are both lost | Make new keys with `npm run curriculum-keygen -- --out <path>`. Put the new public keys in `curriculum-signing-keys.json`. Ship an app update. Old apps keep their curriculum and get no more updates. |
+| `k1` is leaked | Do these steps in this order (see "Order for a leaked `k1`" below). 1. Sign and publish a release with `k2`. 2. Only then remove `k1` from `curriculum-signing-keys.json`. 3. Ship new app and web builds. Until a phone has the new build, it still trusts `k1`. |
+| `k1` and `k2` are both lost | Make new keys with `npm run curriculum-keygen -- --out <path>`. Put the new public keys in `curriculum-signing-keys.json`. Ship an app update. Old apps keep their curriculum and get no more updates. See "Both keys lost" below: the release script has no tested path for this case. |
+
+### Order for a leaked `k1`
+
+The order matters. The release script checks the live manifest against `curriculum-signing-keys.json` before it publishes (step 4 of the script). The live manifest is signed with `k1`.
+
+1. Sign and publish a release with `k2`. Use `--key-id k2`. The key file is the `k2` PEM from the password manager.
+
+   ```bash
+   CURRICULUM_SIGNING_KEY_FILE=<path to the k2 PEM> npm run release-curriculum -- --key-id k2
+   ```
+
+2. Only after the release is live: remove `k1` from `curriculum-signing-keys.json`. Ship app and web builds that do not have `k1`.
+
+If you remove `k1` first, the script stops with `The live manifest does not verify`, because the public keys can no longer verify the live `k1` manifest.
+
+### Both keys lost
+
+The release script stops at the live `k1`-signed manifest with `The live manifest does not verify`. The new public keys cannot verify it. This case has no tested path in the script today. This page does not give a procedure for it.
+
+- Ship the app update with the new keys first. Old apps keep their curriculum.
+- Do not delete the live manifest by hand without a written plan.
+- Open an issue to decide how the script publishes the first release under a new key.
 
 Put a key file back on the Mac only for the time that you sign. Delete it after.
 
@@ -120,5 +142,7 @@ The script never deletes. Remove a file only when no live manifest names it.
    ```bash
    npx wrangler r2 object delete pakapaka-curriculum/files/<sha256>.db --remote
    ```
+
+Wait more than 5 minutes after a release before you remove the previous file. The manifest is cached for up to 5 minutes, so a client can still ask for the old file.
 
 A phone or tab that is part-way through a download of the old file fails that download. It keeps its curriculum and tries again at the next start.
