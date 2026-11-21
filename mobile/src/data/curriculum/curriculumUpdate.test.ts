@@ -47,6 +47,7 @@ import {
   setCurriculumInstallMetadata,
 } from '@/data/user/preferencesRepository';
 import * as fileSystem from 'expo-file-system/legacy';
+import * as sqlite from 'expo-sqlite';
 import { openDatabaseAsync } from 'expo-sqlite';
 
 // jest-expo registers its own expo-file-system/legacy mock, which wins over the
@@ -471,6 +472,98 @@ describe('curriculumUpdate', () => {
       );
       expect(metadata?.version).toBe('1');
       expect(getMockFileContents(getCurriculumDownloadUri())).toBeUndefined();
+    });
+
+    describe('install metadata write while a sync holds user.db', () => {
+      /** Makes the first `failures` writes of user_preferences fail like a locked database. */
+      function lockUserPreferences(userDb: sqlite.SQLiteDatabase, failures: number) {
+        const realRunSync = userDb.runSync.bind(userDb);
+        let remaining = failures;
+        const spy = jest.spyOn(userDb, 'runSync').mockImplementation(((
+          sql: string,
+          ...params: unknown[]
+        ) => {
+          if (remaining > 0 && /INSERT INTO user_preferences/.test(sql)) {
+            remaining -= 1;
+            throw new Error('database is locked');
+          }
+          return (realRunSync as (...args: unknown[]) => unknown)(sql, ...params);
+        }) as typeof userDb.runSync);
+        return spy;
+      }
+
+      it('retries a locked write and succeeds with the same result', async () => {
+        const init = await initializeDatabases();
+        if (!init.ok) {
+          throw new Error('init failed');
+        }
+        seedDownloadSource();
+        lockUserPreferences(init.value.userDb, 1);
+        const delay = jest.fn(async () => undefined);
+
+        const swapResult = await downloadAndSwapCurriculum(release(2), init.value, { delay });
+
+        expect(swapResult.ok).toBe(true);
+        expect(delay).toHaveBeenCalledTimes(1);
+        expect(delay).toHaveBeenCalledWith(200);
+        expect(getPreference(init.value.userDb, PREFERENCE_KEYS.installedCurriculumVersion)).toBe('2');
+        expect(getPreference(init.value.userDb, PREFERENCE_KEYS.curriculumUpdateSource)).toBe(
+          'downloaded',
+        );
+        expect(
+          getPreference(init.value.userDb, PREFERENCE_KEYS.installedCurriculumContentHash),
+        ).toBe(fixtureSha256Hex());
+      });
+
+      it('gives up after 5 tries, reports an error and leaves no open handle', async () => {
+        const init = await initializeDatabases();
+        if (!init.ok) {
+          throw new Error('init failed');
+        }
+        seedDownloadSource();
+        lockUserPreferences(init.value.userDb, Number.POSITIVE_INFINITY);
+        const delay = jest.fn(async () => undefined);
+
+        const opened: sqlite.SQLiteDatabase[] = [];
+        const closed = new Set<sqlite.SQLiteDatabase>();
+        const realOpen = sqlite.openDatabaseAsync;
+        jest.spyOn(sqlite, 'openDatabaseAsync').mockImplementation(async (...args) => {
+          const db = await realOpen(...args);
+          opened.push(db);
+          const realClose = db.closeAsync.bind(db);
+          db.closeAsync = async () => {
+            closed.add(db);
+            await realClose();
+          };
+          return db;
+        });
+
+        const swapResult = await downloadAndSwapCurriculum(release(2), init.value, { delay });
+
+        expect(swapResult.ok).toBe(false);
+        if (!swapResult.ok) {
+          expect(swapResult.error.code).toBe('CURRICULUM_SWAP_FAILED');
+        }
+        expect(delay).toHaveBeenCalledTimes(4);
+        expect(opened.filter((db) => !closed.has(db))).toHaveLength(0);
+      });
+
+      it('does not retry an error that is not a locked database', async () => {
+        const init = await initializeDatabases();
+        if (!init.ok) {
+          throw new Error('init failed');
+        }
+        seedDownloadSource();
+        jest.spyOn(init.value.userDb, 'runSync').mockImplementation(() => {
+          throw new Error('disk I/O error');
+        });
+        const delay = jest.fn(async () => undefined);
+
+        const swapResult = await downloadAndSwapCurriculum(release(2), init.value, { delay });
+
+        expect(swapResult.ok).toBe(false);
+        expect(delay).not.toHaveBeenCalled();
+      });
     });
   });
 

@@ -172,6 +172,9 @@ function harness(
       mockCalls.push('waitForSwapAllowed');
     }),
     isSwapHeld: jest.fn(() => false),
+    delay: jest.fn(async () => {
+      mockCalls.push('delay');
+    }),
   };
   return { ports, curriculumDb, userDb, mem, dest, reopened, fetchJson, fetchBytes, backup };
 }
@@ -373,7 +376,8 @@ describe('runWebCurriculumUpdate', () => {
 
     release?.();
     expect((await pending).status).toBe('success');
-    expect(h.userDb.isInTransactionAsync).toHaveBeenCalledTimes(2);
+    // Two probes before the swap, one more before the new curriculum is attached.
+    expect(h.userDb.isInTransactionAsync).toHaveBeenCalledTimes(3);
     expect(h.curriculumDb.closeAsync).toHaveBeenCalledTimes(1);
   });
 
@@ -514,6 +518,67 @@ describe('runWebCurriculumUpdate', () => {
     expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
     expect(mockAttach).toHaveBeenCalledTimes(1);
     expect(mockReopen).toHaveBeenCalledTimes(1);
+  });
+
+  describe('user.db busy after the swap check', () => {
+    /** The first probe (before the swap) sees a free user.db; later probes follow `busyAfter`. */
+    function busyAfterSwapCheck(h: Harness, busyProbes: number) {
+      let probes = 0;
+      h.userDb.isInTransactionAsync.mockImplementation(async () => {
+        probes += 1;
+        return probes > 1 && probes <= 1 + busyProbes;
+      });
+    }
+
+    it('attaches the new curriculum only after user.db is free', async () => {
+      const h = harness();
+      busyAfterSwapCheck(h, 2);
+
+      const result = await run(h);
+
+      expect(result).toEqual({ status: 'success', version: '2', curriculumDb: h.reopened });
+      expect(mockCalls.slice(mockCalls.indexOf('reopen'))).toEqual([
+        'reopen',
+        'delay',
+        'delay',
+        'attach',
+        'metadata',
+      ]);
+      expect(h.ports.delay).toHaveBeenCalledWith(200);
+    });
+
+    it('gives up after the bounded wait and returns the handle with an error', async () => {
+      const h = harness();
+      busyAfterSwapCheck(h, Number.POSITIVE_INFINITY);
+
+      const result = await run(h);
+
+      expect(result.status).toBe('error');
+      if (result.status === 'error') {
+        expect(result.error.code).toBe('CURRICULUM_SWAP_FAILED');
+        expect(result.curriculumDb).toBe(h.reopened);
+      }
+      expect(h.ports.delay).toHaveBeenCalledTimes(50);
+      expect(mockAttach).not.toHaveBeenCalled();
+      expect(mockSetMetadata).not.toHaveBeenCalled();
+    });
+
+    it('recovery waits for user.db and retries an attach that throws once', async () => {
+      const h = harness();
+      h.backup.mockRejectedValue(new Error('copy failed'));
+      busyAfterSwapCheck(h, 1);
+      mockAttach.mockImplementationOnce(() => {
+        throw new Error('cannot ATTACH database within transaction');
+      });
+
+      const result = await run(h);
+
+      expect(result.status).toBe('error');
+      expect(result.status === 'error' && result.curriculumDb).toBe(h.reopened);
+      expect(mockAttach).toHaveBeenCalledTimes(2);
+      expect(mockCalls.filter((call) => call === 'delay')).toHaveLength(1);
+      expect(mockSetMetadata).not.toHaveBeenCalled();
+    });
   });
 });
 

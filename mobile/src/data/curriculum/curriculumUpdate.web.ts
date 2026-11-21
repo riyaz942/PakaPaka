@@ -39,7 +39,12 @@ export type WebCurriculumPorts = {
   backup(source: SQLiteDatabase, dest: SQLiteDatabase): Promise<void>;
   waitForSwapAllowed(): Promise<void>;
   isSwapHeld(): boolean;
+  delay(ms: number): Promise<void>;
 };
+
+/** How long an attach waits for a sync transaction on user.db to end. */
+const USER_DB_POLL_MS = 200;
+const USER_DB_MAX_WAIT_MS = 10_000;
 
 type Handles = { curriculumDb: SQLiteDatabase; userDb: SQLiteDatabase };
 
@@ -92,6 +97,7 @@ export const defaultWebPorts: WebCurriculumPorts = {
   backup: (sourceDatabase, destDatabase) => backupDatabaseAsync({ sourceDatabase, destDatabase }),
   waitForSwapAllowed: waitForCurriculumSwapAllowed,
   isSwapHeld: isCurriculumSwapHeld,
+  delay: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
 };
 
 function errorResult(
@@ -117,16 +123,57 @@ async function closeQuietly(db: SQLiteDatabase | null): Promise<void> {
   }
 }
 
-/** Opens the on-disk curriculum again and attaches it to user.db. */
-async function recoverCurriculum(userDb: SQLiteDatabase): Promise<SQLiteDatabase | undefined> {
+/** Waits until user.db is outside a transaction; false when the bounded wait ends first. */
+async function waitForUserDbFree(
+  ports: WebCurriculumPorts,
+  userDb: SQLiteDatabase,
+): Promise<boolean> {
+  for (let waited = 0; ; waited += USER_DB_POLL_MS) {
+    if (!(await userDb.isInTransactionAsync())) {
+      return true;
+    }
+    if (waited >= USER_DB_MAX_WAIT_MS) {
+      return false;
+    }
+    await ports.delay(USER_DB_POLL_MS);
+  }
+}
+
+type AttachOutcome = { status: 'attached' } | { status: 'busy' } | { status: 'failed'; cause: unknown };
+
+/** SQLite refuses ATTACH inside a transaction, so wait for a sync on user.db first. */
+async function attachWhenUserDbFree(
+  ports: WebCurriculumPorts,
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+): Promise<AttachOutcome> {
+  try {
+    if (!(await waitForUserDbFree(ports, userDb))) {
+      return { status: 'busy' };
+    }
+    attachCurriculumForQuery(userDb, curriculumDb);
+    return { status: 'attached' };
+  } catch (cause) {
+    return { status: 'failed', cause };
+  }
+}
+
+/**
+ * Opens the on-disk curriculum again and attaches it to user.db. An attach that throws is
+ * tried once more after another wait. The handle is returned either way; the caller
+ * reports the error.
+ */
+async function recoverCurriculum(
+  ports: WebCurriculumPorts,
+  userDb: SQLiteDatabase,
+): Promise<SQLiteDatabase | undefined> {
   const reopened = await reopenCurriculumDatabase();
   if (!reopened.ok) {
     return undefined;
   }
-  try {
-    attachCurriculumForQuery(userDb, reopened.value);
-  } catch {
-    // The handle is still the best the app can use; the caller reports the error.
+  const first = await attachWhenUserDbFree(ports, userDb, reopened.value);
+  if (first.status === 'failed') {
+    await attachWhenUserDbFree(ports, userDb, reopened.value);
   }
   return reopened.value;
 }
@@ -264,7 +311,7 @@ export async function runWebCurriculumUpdate(
   } catch (cause) {
     await closeQuietly(dest);
     await closeQuietly(mem);
-    const recovered = (await recoverCurriculum(userDb)) ?? (await recoverCurriculum(userDb));
+    const recovered = (await recoverCurriculum(ports, userDb)) ?? (await recoverCurriculum(ports, userDb));
     return errorResult('CURRICULUM_SWAP_FAILED', cause, recovered);
   }
 
@@ -276,15 +323,27 @@ export async function runWebCurriculumUpdate(
     return {
       status: 'error',
       error: reopened.error,
-      curriculumDb: await recoverCurriculum(userDb),
+      curriculumDb: await recoverCurriculum(ports, userDb),
     };
   }
-  try {
-    attachCurriculumForQuery(userDb, reopened.value);
-  } catch (cause) {
+  const attached = await attachWhenUserDbFree(ports, userDb, reopened.value);
+  if (attached.status === 'busy') {
+    // A sync kept user.db in a transaction for the whole wait. The handle is valid but
+    // not attached; the error is the only signal. No metadata write, no banner.
+    return errorResult(
+      'CURRICULUM_SWAP_FAILED',
+      'user.db stayed in a transaction while the curriculum was attached',
+      reopened.value,
+    );
+  }
+  if (attached.status === 'failed') {
     // user.db may be detached: open and attach again. No metadata write, no banner.
     await closeQuietly(reopened.value);
-    return errorResult('CURRICULUM_SWAP_FAILED', cause, await recoverCurriculum(userDb));
+    return errorResult(
+      'CURRICULUM_SWAP_FAILED',
+      attached.cause,
+      await recoverCurriculum(ports, userDb),
+    );
   }
   try {
     setCurriculumInstallMetadata(userDb, {

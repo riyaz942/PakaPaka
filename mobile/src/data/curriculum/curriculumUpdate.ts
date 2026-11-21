@@ -326,12 +326,43 @@ export async function checkForCurriculumUpdate(
   return { ok: true, value: release };
 }
 
+const METADATA_WRITE_TRIES = 5;
+const METADATA_RETRY_DELAY_MS = 200;
+
+function isDatabaseBusyError(cause: unknown): boolean {
+  return /database is locked|database is busy|SQLITE_BUSY|SQLITE_LOCKED/i.test(String(cause));
+}
+
+/**
+ * A sync writes through its own connection and expo-sqlite sets no busy timeout, so the
+ * install metadata write can meet "database is locked". Try again a few times; any other
+ * error, or the last failure, is thrown.
+ */
+async function writeInstallMetadataWithRetry(
+  userDb: SQLiteDatabase,
+  metadata: Parameters<typeof setCurriculumInstallMetadata>[1],
+  delay: (ms: number) => Promise<void>,
+): Promise<void> {
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      setCurriculumInstallMetadata(userDb, metadata);
+      return;
+    } catch (cause) {
+      if (attempt >= METADATA_WRITE_TRIES || !isDatabaseBusyError(cause)) {
+        throw cause;
+      }
+      await delay(METADATA_RETRY_DELAY_MS);
+    }
+  }
+}
+
 export async function downloadAndSwapCurriculum(
   release: CurriculumRelease,
   handles: {
     curriculumDb: SQLiteDatabase;
     userDb: SQLiteDatabase;
   },
+  options: { delay?: (ms: number) => Promise<void> } = {},
 ): Promise<Result<{ version: string; curriculumDb: SQLiteDatabase }, AppError>> {
   const canDownload = await canDownloadCurriculumUpdate();
   if (!canDownload) {
@@ -397,6 +428,7 @@ export async function downloadAndSwapCurriculum(
 
   let curriculumClosedForSwap = false;
   let swapHandedOffDb = false;
+  let reopenedDb: SQLiteDatabase | null = null;
 
   try {
     await handles.curriculumDb.closeAsync();
@@ -415,13 +447,18 @@ export async function downloadAndSwapCurriculum(
     if (!reopenResult.ok) {
       return reopenResult;
     }
+    reopenedDb = reopenResult.value;
     attachCurriculumForQuery(handles.userDb, reopenResult.value);
 
-    setCurriculumInstallMetadata(handles.userDb, {
-      version: validateResult.value.version,
-      source: 'downloaded',
-      contentHash: release.sha256,
-    });
+    await writeInstallMetadataWithRetry(
+      handles.userDb,
+      {
+        version: validateResult.value.version,
+        source: 'downloaded',
+        contentHash: release.sha256,
+      },
+      options.delay ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms))),
+    );
 
     swapHandedOffDb = true;
 
@@ -452,7 +489,14 @@ export async function downloadAndSwapCurriculum(
       },
     };
   } finally {
-    if (curriculumClosedForSwap && !swapHandedOffDb) {
+    if (reopenedDb && !swapHandedOffDb) {
+      // The caller gets no handle with an error and opens its own; close this one.
+      try {
+        await reopenedDb.closeAsync();
+      } catch {
+        // Nothing more to undo.
+      }
+    } else if (curriculumClosedForSwap && !swapHandedOffDb) {
       await reopenCurriculumDatabase();
     }
   }
