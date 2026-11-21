@@ -62,7 +62,9 @@ export default function StartScreen() {
           style={{ top: insets.top + 8, right: -34, width: 230, height: 230 }}>
           <View className="absolute left-0 right-0 top-1/2 h-px bg-primary/5" />
           <View className="absolute bottom-0 left-1/2 top-0 w-px bg-primary/5" />
-          <Text className="text-center font-jp-hero-bold text-[190px] leading-[226px] text-primary/5">
+          <Text
+            allowFontScaling={false}
+            className="text-center font-jp-hero-bold text-[190px] leading-[226px] text-primary/5">
             話
           </Text>
         </View>

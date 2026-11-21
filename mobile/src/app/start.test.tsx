@@ -81,6 +81,12 @@ describe('StartScreen', () => {
     expect(actions.getByTestId('start-login')).toBeTruthy();
   });
 
+  it('the faint 話 does not grow with the system text size', () => {
+    renderStart();
+
+    expect(screen.getByText('話', { includeHiddenElements: true }).props.allowFontScaling).toBe(false);
+  });
+
   it('the scroll content leaves room for the fixed bar', () => {
     renderStart();
 

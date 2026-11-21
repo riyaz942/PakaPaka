@@ -1,7 +1,6 @@
-import {
-  Fraunces_500Medium,
-  Fraunces_500Medium_Italic,
-} from '@expo-google-fonts/fraunces';
+// Subpath imports: the package root requires all 18 faces, and Metro would bundle every one.
+import { Fraunces_500Medium } from '@expo-google-fonts/fraunces/500Medium';
+import { Fraunces_500Medium_Italic } from '@expo-google-fonts/fraunces/500Medium_Italic';
 import {
   NotoSansJP_400Regular,
   NotoSansJP_500Medium,
