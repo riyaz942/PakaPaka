@@ -100,6 +100,8 @@ module.exports = {
         'jp-black': ['NotoSansJP_900Black'],
         'jp-hero': ['ZenKakuGothicNew_500Medium'],
         'jp-hero-bold': ['ZenKakuGothicNew_700Bold'],
+        display: ['Fraunces_500Medium'],
+        'display-italic': ['Fraunces_500Medium_Italic'],
       },
       // v2 — typography scale. No fontWeight here: weight comes from the
       // font-* family. On Android a bold fontWeight on a bundled font drops to

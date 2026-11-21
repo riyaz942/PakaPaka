@@ -18,6 +18,7 @@
     "eas:preview": "npx eas-cli build --profile preview --platform android --non-interactive --no-wait"
   },
   "dependencies": {
+    "@expo-google-fonts/fraunces": "^0.4.1",
     "@expo-google-fonts/noto-sans-jp": "^0.4.3",
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
     "@expo-google-fonts/zen-kaku-gothic-new": "^0.4.1",
