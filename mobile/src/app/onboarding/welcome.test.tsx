@@ -193,37 +193,12 @@ describe('WelcomeScreen', () => {
     });
   });
 
-  it('signed out shows Sign in to restore your progress and it calls signIn', async () => {
+  it('has no sign-in button', async () => {
     mockAccount.status = 'signed_out';
     const db = await createUserDb();
     renderWelcomeScreen(db);
 
-    expect(screen.getByText('Sign in to restore your progress')).toBeTruthy();
-    fireEvent.press(screen.getByTestId('welcome-sign-in'));
-
-    expect(mockSignIn).toHaveBeenCalledTimes(1);
-  });
-
-  it('signed in or loading hides the sign-in button', async () => {
-    const db = await createUserDb();
-    mockAccount.status = 'signed_in';
-    const view = renderWelcomeScreen(db);
     expect(screen.queryByTestId('welcome-sign-in')).toBeNull();
-    view.unmount();
-
-    mockAccount.status = 'loading';
-    renderWelcomeScreen(db);
-    expect(screen.queryByTestId('welcome-sign-in')).toBeNull();
-  });
-
-  it('a sign-in error shows under the button', async () => {
-    mockAccount.status = 'signed_out';
-    mockAccount.error = 'Sign-in failed. Try again.';
-    const db = await createUserDb();
-    renderWelcomeScreen(db);
-
-    expect(screen.getByTestId('welcome-sign-in-error')).toHaveTextContent(
-      'Sign-in failed. Try again.',
-    );
+    expect(screen.queryByText('Sign in to restore your progress')).toBeNull();
   });
 });
