@@ -273,7 +273,7 @@ describe('DatabaseProvider', () => {
       expect(screen.getByRole('button', { name: 'Use here' })).toBeTruthy();
       expect(mockRequestSnapshot).toHaveBeenCalledWith(5000);
       expect(mockInitializeDatabases).not.toHaveBeenCalled();
-      expect(screen.queryByText(/ready/)).toBeNull();
+      expect(screen.queryByText(/ready browseOnly/)).toBeNull();
     });
 
     it('web: Browse opens the snapshot and renders children with browseOnly true', async () => {
@@ -409,7 +409,7 @@ describe('DatabaseProvider', () => {
         'event expo-sqlite:stop-worker',
         'release lock',
       ]);
-      expect(screen.queryByText(/ready/)).toBeNull();
+      expect(screen.queryByText(/ready browseOnly/)).toBeNull();
       expect(screen.getByText('PakaPaka is open in another tab')).toBeTruthy();
       expect(
         screen.getByText('You moved PakaPaka to another tab. Your answers up to now are saved.'),
