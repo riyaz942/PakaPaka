@@ -33,8 +33,12 @@ reloads, **Use here** on the moved screen) kept every answer.
 
 ### Next step
 
-Before merge: repeat the two-tab check on a fresh profile, and check the OPFS `user.db`
-(file hash / `starting_jlpt_level`) in the owner tab before the hand-off, not only after.
+Before merge: repeat the two-tab check on a fresh profile. Before the hand-off, record the
+OPFS `user.db` hash, the header path of every pool slot and the slot count. The owner now logs
+to the console when `user.db` has an open transaction at hand-off (closing rolls it back) and
+when a close fails, so watch the owner tab's console. Tab A in the failing run was never
+signed in, so the web sync transaction (`withTransactionAsync`) does not explain it. A code
+review found no cause in the branch or the patched worker.
 
 ---
 
