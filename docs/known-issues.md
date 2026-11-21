@@ -7,6 +7,37 @@ and consciously chose not to fix, see
 
 ---
 
+## Web hand-off lost the owner tab's session once
+
+**Found:** 2026-11-21, during the two-tab browser check of the browse-only second tab
+(branch `web-second-tab-browse`, plan `docs/superpowers/plans/2026-11-21-web-second-tab-browse.md`).
+**Status:** open — not reproduced.
+**Severity:** high if real — progress loss is the plan's main anti-goal.
+
+### What happened
+
+Tab A (owner, local dev server) did onboarding, a lesson and two review answers. Tab B
+(browse-only) showed that progress. Tab B pressed **Use here** in the banner. Tab B then
+opened `user.db` without any of tab A's session: no onboarding preferences, no lesson, no
+answers. The OPFS `user.db` file was exactly the size it had before tab A's session
+(Task 1 copy + the 4 KB pool header), and four pool slots were empty. This fits a
+transaction in tab A that was never committed and was rolled back when tab B opened the
+file, or tab A writing to some other file. Tab A was a page reloaded from an older dev build.
+
+### What did not reproduce it
+
+Same dev server, after the run: each write reached the OPFS file at once, also after the
+owner served snapshots (before a lesson, and in the middle of a review), and after a Fast
+Refresh. Three more hand-offs (modal **Use here**, banner **Use here** after two deep-link
+reloads, **Use here** on the moved screen) kept every answer.
+
+### Next step
+
+Before merge: repeat the two-tab check on a fresh profile, and check the OPFS `user.db`
+(file hash / `starting_jlpt_level`) in the owner tab before the hand-off, not only after.
+
+---
+
 ## Executorch main vs Expo resource-fetcher nightly skew
 
 **Found:** 2026-07-21, during Story 5.2 code review (Chunk A).
