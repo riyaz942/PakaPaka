@@ -10,6 +10,7 @@
     "ios": "APP_VARIANT=development expo run:ios",
     "web": "expo start --web",
     "postinstall": "patch-package",
+    "landing": "python3 -m http.server 8090 --directory public/landing",
     "build:web": "expo export -p web",
     "deploy:web": "npm run build:web && npm --prefix ../backend run deploy",
     "lint": "expo lint",
