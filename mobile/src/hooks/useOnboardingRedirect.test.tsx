@@ -28,10 +28,17 @@ jest.mock('expo-router', () => ({
   useRootNavigationState: () => (mockNavigationKey ? { key: mockNavigationKey } : undefined),
 }));
 
+let mockIsWeb = false;
+jest.mock('@/platform/capabilities', () => ({
+  ...jest.requireActual('@/platform/capabilities'),
+  isWeb: () => mockIsWeb,
+}));
+
 describe('useOnboardingRedirect', () => {
   beforeEach(async () => {
     __mockResetSqlite();
     mockReplace.mockClear();
+    mockIsWeb = false;
     mockSegments = ['(tabs)'];
     mockNavigationKey = 'root-key';
   });
@@ -51,7 +58,20 @@ describe('useOnboardingRedirect', () => {
     };
   }
 
-  it('redirects to welcome when starting level is absent', async () => {
+  it('redirects to start on native when starting level is absent', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/start');
+    });
+  });
+
+  it('redirects to welcome on web when starting level is absent', async () => {
+    mockIsWeb = true;
     const db = await openDatabaseAsync('user.db');
     runMigrations(db, [migration001Initial]);
 

@@ -234,7 +234,7 @@ more.
 | B3.3 | Platform-split `src/data/database.ts` seeding (`.web.ts`) per B3.1's outcome. Keep the native path untouched. | Native tests unchanged and green; web app boots to Home with real curriculum data. |
 | B3.4 | Feature-gate the B2 modules behind an explicit capability check. Hide unsupported surfaces rather than degrading them silently. | Web build compiles; Talk/voice/notification surfaces are absent or show a plain "not available on web" state. |
 | B3.5 | Walk every screen on web. Expect breakage in gesture/reanimated interactions, the review input, and swipe navigation in lessons. | Full lesson → review → browse loop completes in Chrome and Safari. |
-| B3.6 | **Superseded by the [web app design](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md): no service worker, offline shell, or install prompt in Part 1. `navigator.storage.persist()` is kept.** PWA: manifest, icons, offline service worker for the app shell + curriculum, `navigator.storage.persist()` on first run, and an install prompt. Surface persistence status honestly in Settings. | Lighthouse PWA pass. Installs on Chrome desktop and iOS Safari. Works offline after first load. Denied persistence is shown to the user, not hidden. |
+| B3.6 | **Superseded by the [web app design](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md): no service worker, offline shell, or install prompt in Part 1. `navigator.storage.persist()` is kept. The web app now gets curriculum updates from R2 (Part 4, built on branch `part4-curriculum-r2`; see [curriculum-releases.md](../curriculum-releases.md)).** PWA: manifest, icons, offline service worker for the app shell + curriculum, `navigator.storage.persist()` on first run, and an install prompt. Surface persistence status honestly in Settings. | Lighthouse PWA pass. Installs on Chrome desktop and iOS Safari. Works offline after first load. Denied persistence is shown to the user, not hidden. |
 | B3.7 | Wire Part A's export/import into the web build and show the backup nudge more assertively there. | Export downloads a file; restore accepts a file exported from mobile (cross-platform round trip). |
 
 ### B5 — The sync-bridge decision
@@ -260,7 +260,7 @@ migration would also relax the hosting constraint.
   real user demand.
 - Web Push notifications.
 - On-device voice on web.
-- Curriculum OTA on web (a deploy replaces the bundle instead). **Replaced:** the [web app design (2026-11-04)](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md) adds curriculum updates from R2 (Part 4).
+- Curriculum OTA on web (a deploy replaces the bundle instead). **Replaced:** the [web app design (2026-11-04)](../superpowers/specs/2026-11-04-web-app-accounts-sync-design.md) adds curriculum updates from R2 (Part 4: built, signed releases; web copies the verified file into OPFS; runbook [curriculum-releases.md](../curriculum-releases.md)).
 
 ---
 

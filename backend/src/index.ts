@@ -3,6 +3,7 @@ import type { Env } from "./env";
 import { errorResponse } from "./http";
 import { rateLimit, toServerErrorResponse } from "./limits";
 import { handleDeleteAccount, handleGetAccount, handleRemoveDevice, handleSignoutAll } from "./routes/account";
+import { handleCurriculum } from "./routes/curriculum";
 import { handleExchange, handleNonce } from "./routes/mobileAuth";
 import { handleRefresh, handleSignout } from "./routes/session";
 import { handleGetSync, handlePutSync } from "./routes/sync";
@@ -18,6 +19,7 @@ export default {
     }
     try {
       const route = `${req.method} ${pathname}`;
+      if (pathname.startsWith("/api/curriculum/")) return await handleCurriculum(req, env);
       // The script file is a static asset of the sign-in page: counting it would burn the budget on page loads.
       if (route !== "GET /auth/signin.js" && (pathname.startsWith("/api/auth/") || pathname.startsWith("/auth/"))) {
         const limited = await rateLimit(env.AUTH_LIMITER, req.headers.get("cf-connecting-ip") ?? "unknown");

@@ -1,36 +1,25 @@
-import Constants from 'expo-constants';
 import { documentDirectory } from 'expo-file-system/legacy';
 
-/** Bundled mock manifest used in __DEV__ when no remote URL is configured. */
-export const BUNDLED_MOCK_MANIFEST_SCHEME = 'bundled://mock-manifest';
-
-/** Prefix for manifest download URLs that resolve to app-bundled fixture assets. */
-export const BUNDLED_FIXTURE_SCHEME = 'bundled://';
+import { API_BASE_URL } from '@/config/api';
+import { isWeb } from '@/platform/capabilities';
 
 export const CURRICULUM_DB_NAME = 'curriculum.db';
 export const CURRICULUM_DOWNLOAD_NAME = 'curriculum.db.download';
 
+/** Keep equal to CURRICULUM_SCHEMA_VERSION in scripts/curriculum-schema.ts. */
+export const REQUIRED_CURRICULUM_SCHEMA_VERSION = 1;
+
+/** Web is served by the same Worker that hosts /api/*, so its URLs are relative. */
+export function getCurriculumBaseUrl(): string {
+  return isWeb() ? '' : API_BASE_URL;
+}
+
 export function getCurriculumManifestUrl(): string {
-  const extra = Constants.expoConfig?.extra;
-  const fromExtra =
-    extra && typeof extra === 'object' && 'curriculumManifestUrl' in extra
-      ? extra.curriculumManifestUrl
-      : undefined;
+  return `${getCurriculumBaseUrl()}/api/curriculum/s${REQUIRED_CURRICULUM_SCHEMA_VERSION}/manifest.json`;
+}
 
-  if (typeof fromExtra === 'string' && fromExtra.length > 0) {
-    return fromExtra;
-  }
-
-  const envUrl = process.env.EXPO_PUBLIC_CURRICULUM_MANIFEST_URL;
-  if (typeof envUrl === 'string' && envUrl.length > 0) {
-    return envUrl;
-  }
-
-  if (__DEV__) {
-    return BUNDLED_MOCK_MANIFEST_SCHEME;
-  }
-
-  return 'https://example.invalid/curriculum-manifest.json';
+export function getCurriculumFileUrl(sha256: string): string {
+  return `${getCurriculumBaseUrl()}/api/curriculum/files/${sha256}.db`;
 }
 
 const TEST_DOCUMENT_DIRECTORY = 'file:///mock-documents/';

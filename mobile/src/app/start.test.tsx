@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, within } from '@testing-library/react-native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -10,6 +10,10 @@ jest.mock('expo-router', () => ({
   router: {
     replace: (...args: unknown[]) => mockReplace(...args),
   },
+}));
+
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
 }));
 
 const mockSignIn = jest.fn();
@@ -46,14 +50,53 @@ describe('StartScreen', () => {
     mockAccount.error = null;
   });
 
-  it('shows the title, the line and both buttons', () => {
+  it('shows the hero, the chain, the facts and both buttons', () => {
     renderStart();
 
     expect(screen.getByTestId('start-screen')).toBeTruthy();
     expect(screen.getByText('PakaPaka')).toBeTruthy();
-    expect(screen.getByText('Learn Japanese with one connected story.')).toBeTruthy();
-    expect(screen.getByText('Start learning')).toBeTruthy();
-    expect(screen.getByText('Log in')).toBeTruthy();
+    expect(screen.getByText('A FREE, OPEN-SOURCE JAPANESE COURSE')).toBeTruthy();
+    expect(screen.getByText(/Every kanji is a story/)).toBeTruthy();
+    expect(screen.getByText('you already know.')).toBeTruthy();
+    expect(screen.getByText('One story, three steps')).toBeTruthy();
+    expect(screen.getByText('士')).toBeTruthy();
+    expect(screen.getByText('冖')).toBeTruthy();
+    expect(screen.getByText('儿')).toBeTruthy();
+    expect(screen.getByText('売')).toBeTruthy();
+    expect(screen.getByText('売る')).toBeTruthy();
+    expect(screen.getByText('Yours, with no strings')).toBeTruthy();
+    expect(screen.getByText('Start without logging in')).toBeTruthy();
+    expect(screen.getByText('Log in with Google')).toBeTruthy();
+  });
+
+  it('the buttons sit outside the scroll view', () => {
+    renderStart();
+
+    const scroll = within(screen.getByTestId('start-scroll'));
+    expect(scroll.queryByTestId('start-begin')).toBeNull();
+    expect(scroll.queryByTestId('start-login')).toBeNull();
+
+    const actions = within(screen.getByTestId('start-actions'));
+    expect(actions.getByTestId('start-begin')).toBeTruthy();
+    expect(actions.getByTestId('start-login')).toBeTruthy();
+  });
+
+  it('the faint 話 does not grow with the system text size', () => {
+    renderStart();
+
+    expect(screen.getByText('話', { includeHiddenElements: true }).props.allowFontScaling).toBe(false);
+  });
+
+  it('the scroll content leaves room for the fixed bar', () => {
+    renderStart();
+
+    fireEvent(screen.getByTestId('start-actions'), 'layout', {
+      nativeEvent: { layout: { height: 160 } },
+    });
+
+    expect(
+      screen.getByTestId('start-scroll').props.contentContainerStyle.paddingBottom,
+    ).toBeGreaterThanOrEqual(160);
   });
 
   it('Start learning opens the onboarding welcome', () => {

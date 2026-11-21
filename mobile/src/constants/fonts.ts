@@ -1,3 +1,6 @@
+// Subpath imports: the package root requires all 18 faces, and Metro would bundle every one.
+import { Fraunces_500Medium } from '@expo-google-fonts/fraunces/500Medium';
+import { Fraunces_500Medium_Italic } from '@expo-google-fonts/fraunces/500Medium_Italic';
 import {
   NotoSansJP_400Regular,
   NotoSansJP_500Medium,
@@ -27,6 +30,7 @@ import {
  * - Plus Jakarta Sans (`font-ui*`) — all interface text
  * - Zen Kaku Gothic New (`font-jp-hero*`) — heroed Japanese characters
  * - Noto Sans JP (`font-jp*`) — readings, furigana, passages, chat
+ * - Fraunces (`font-display*`) — the start page headline
  */
 export const appFonts = {
   PlusJakartaSans_400Regular,
@@ -40,4 +44,6 @@ export const appFonts = {
   NotoSansJP_900Black,
   ZenKakuGothicNew_500Medium,
   ZenKakuGothicNew_700Bold,
+  Fraunces_500Medium,
+  Fraunces_500Medium_Italic,
 };

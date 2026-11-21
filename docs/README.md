@@ -13,6 +13,7 @@ single status index for every plan in this repo, docs and BMAD alike. Nothing el
 | [app-overview.md](./app-overview.md) | What the app is, the learner flow, what each screen does |
 | [app-summary.md](./app-summary.md) | Super summary: features, what is different, competitor search terms |
 | [srs-system-vs-wanikani.md](./srs-system-vs-wanikani.md) | How SRS stages work and what each stage gates |
+| [curriculum-releases.md](./curriculum-releases.md) | Operator runbook: signing keys, release commands, key rotation |
 | [../README.md](../README.md) | Setup, build, and run instructions |
 
 ## Plans by area

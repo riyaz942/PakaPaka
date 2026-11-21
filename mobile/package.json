@@ -10,6 +10,7 @@
     "ios": "APP_VARIANT=development expo run:ios",
     "web": "expo start --web",
     "postinstall": "patch-package",
+    "landing": "python3 -m http.server 8090 --directory public/landing",
     "build:web": "expo export -p web",
     "deploy:web": "npm run build:web && npm --prefix ../backend run deploy",
     "lint": "expo lint",
@@ -18,9 +19,11 @@
     "eas:preview": "npx eas-cli build --profile preview --platform android --non-interactive --no-wait"
   },
   "dependencies": {
+    "@expo-google-fonts/fraunces": "^0.4.1",
     "@expo-google-fonts/noto-sans-jp": "^0.4.3",
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
     "@expo-google-fonts/zen-kaku-gothic-new": "^0.4.1",
+    "@noble/curves": "^2.4.0",
     "@react-navigation/elements": "^2.9.10",
     "@react-navigation/native": "^7.1.33",
     "clsx": "^2.1.1",
@@ -99,6 +102,10 @@
     "testMatch": [
       "**/__tests__/**/*.test.ts?(x)",
       "**/src/**/*.test.ts?(x)"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|@noble))",
+      "/node_modules/react-native-reanimated/plugin/"
     ],
     "setupFilesAfterEnv": [
       "react-native-gesture-handler/jestSetup"

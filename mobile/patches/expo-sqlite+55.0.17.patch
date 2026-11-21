@@ -1,5 +1,5 @@
 diff --git a/node_modules/expo-sqlite/web/SQLiteModule.ts b/node_modules/expo-sqlite/web/SQLiteModule.ts
-index 717c987..b9fa755 100644
+index 717c987..0420379 100644
 --- a/node_modules/expo-sqlite/web/SQLiteModule.ts
 +++ b/node_modules/expo-sqlite/web/SQLiteModule.ts
 @@ -29,6 +29,20 @@ function getWorker(): Worker {
@@ -12,17 +12,34 @@ index 717c987..b9fa755 100644
 +    // Stop the worker as the page hides, the same as when a tab closes. A page
 +    // restored from that cache has no worker state and must reload
 +    // (DatabaseProvider does this).
-+    window.addEventListener(
-+      'pagehide',
-+      () => {
-+        worker?.terminate();
-+        worker = null;
-+      },
-+      { once: true }
-+    );
++    // PakaPaka patch: the app stops the worker the same way when another tab
++    // takes over ("Use here"), so that tab can open the OPFS files.
++    const stopWorker = () => {
++      worker?.terminate();
++      worker = null;
++    };
++    window.addEventListener('pagehide', stopWorker, { once: true });
++    window.addEventListener('expo-sqlite:stop-worker', stopWorker, { once: true });
    }
    return worker;
  }
+@@ -109,6 +123,16 @@ class NativeDatabase {
+     });
+   }
+ 
++  // PakaPaka patch: load serialized bytes into an attached schema (for
++  // example an in-memory copy of the curriculum ATTACHed to the user copy).
++  async deserializeIntoAsync(schemaName: string, serializedData: Uint8Array): Promise<void> {
++    await invokeWorkerAsync(getWorker(), 'deserializeInto', {
++      nativeDatabaseId: this.id,
++      schemaName,
++      serializedData,
++    });
++  }
++
+   async prepareAsync(nativeStatement: NativeStatement, source: string): Promise<void> {
+     await invokeWorkerAsync(getWorker(), 'prepare', {
+       nativeDatabaseId: this.id,
 diff --git a/node_modules/expo-sqlite/web/WorkerChannel.ts b/node_modules/expo-sqlite/web/WorkerChannel.ts
 index 7fba380..8b68812 100644
 --- a/node_modules/expo-sqlite/web/WorkerChannel.ts
@@ -114,3 +131,171 @@ index 7fba380..8b68812 100644
    const resultJson = new TextDecoder().decode(resultCopy);
    const { result, error } = deserialize<{ result: ResultTypeMap[T]; error?: string }>(resultJson);
    if (error) throw new Error(error);
+diff --git a/node_modules/expo-sqlite/web/web.types.ts b/node_modules/expo-sqlite/web/web.types.ts
+index b85e01b..ed82aa3 100644
+--- a/node_modules/expo-sqlite/web/web.types.ts
++++ b/node_modules/expo-sqlite/web/web.types.ts
+@@ -30,6 +30,7 @@ export interface MessageTypeMap {
+   backupDatabase: BackupDatabaseMessage;
+   close: CloseMessage;
+   deleteDatabase: DeleteDatabaseMessage;
++  deserializeInto: DeserializeIntoMessage;
+   exec: ExecMessage;
+   finalize: FinalizeMessage;
+   getAll: GetAllMessage;
+@@ -165,6 +166,16 @@ type RunMessage = BaseWorkerMessage & {
+   };
+ };
+ 
++// PakaPaka patch: load serialized bytes into an attached schema of an open database.
++type DeserializeIntoMessage = BaseWorkerMessage & {
++  type: 'deserializeInto';
++  data: {
++    nativeDatabaseId: number;
++    schemaName: string;
++    serializedData: Uint8Array;
++  };
++};
++
+ type SerializeMessage = BaseWorkerMessage & {
+   type: 'serialize';
+   data: {
+@@ -274,6 +285,7 @@ export interface ResultTypeMap {
+   getColumnNames: SQLiteColumnNames;
+   finalize: void;
+   deleteDatabase: void;
++  deserializeInto: void;
+   backupDatabase: void;
+   serialize: Uint8Array;
+   sessionCreate: void;
+diff --git a/node_modules/expo-sqlite/web/worker.ts b/node_modules/expo-sqlite/web/worker.ts
+index deaf721..070eb98 100644
+--- a/node_modules/expo-sqlite/web/worker.ts
++++ b/node_modules/expo-sqlite/web/worker.ts
+@@ -54,6 +54,7 @@ const MIN_INT32 = -0x80000000;
+ let _sqlite3: SQLiteAPI | null = null;
+ let _vfs: AccessHandlePoolVFS | null = null;
+ let _vfsMemory: MemoryVFS | null = null;
++let _module: any = null;
+ 
+ const databaseIdMap = new Map<number, DatabaseEntity>();
+ const statementIdMap = new Map<number, StatementEntity>();
+@@ -112,6 +113,11 @@ async function handleMessageImpl<T extends SQLiteWorkerMessageType>({
+       break;
+     }
+ 
++    case 'deserializeInto': {
++      await deserializeInto(data.nativeDatabaseId, data.schemaName, data.serializedData);
++      break;
++    }
++
+     case 'exec': {
+       await exec(data.nativeDatabaseId, data.source);
+       break;
+@@ -263,8 +269,8 @@ async function closeDatabase(nativeDatabaseId: number) {
+ }
+ 
+ async function deleteDatabase(databasePath: string): Promise<void> {
+-  const { vfs } = await maybeInitAsync();
+   if (databasePath !== ':memory:') {
++    const vfs = await maybeInitPoolAsync();
+     vfs.jDelete(databasePath, 0 /* unused arg for AccessHandlePoolVFS */);
+   }
+ }
+@@ -282,6 +288,17 @@ async function deserializeDatabase(
+   return pointer;
+ }
+ 
++async function deserializeInto(
++  nativeDatabaseId: number,
++  schemaName: string,
++  serializedData: Uint8Array
++): Promise<void> {
++  const { sqlite3 } = await maybeInitAsync();
++  const dbEntity = databaseIdMap.get(nativeDatabaseId);
++  if (!dbEntity) throw new Error(`Database not found - nativeDatabaseId[${nativeDatabaseId}]`);
++  await sqlite3.deserialize(dbEntity.pointer, schemaName, serializedData);
++}
++
+ async function exec(nativeDatabaseId: number, source: string) {
+   const { sqlite3 } = await maybeInitAsync();
+   const dbEntity = databaseIdMap.get(nativeDatabaseId);
+@@ -343,7 +360,8 @@ async function importAssetDatabase(
+   assetDatabasePath: string,
+   forceOverwrite: boolean
+ ): Promise<void> {
+-  const { sqlite3, vfs } = await maybeInitAsync();
++  const { sqlite3 } = await maybeInitAsync();
++  const vfs = await maybeInitPoolAsync();
+   if (!forceOverwrite) {
+     const buffer = new DataView(new ArrayBuffer(4));
+     await vfs.jAccess(databasePath, 0 /* unused arg for AccessHandlePoolVFS */, buffer);
+@@ -403,6 +421,9 @@ async function openDatabase(
+ 
+     const flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE;
+     const vfsName = databasePath === ':memory:' ? VFS_NAME_MEMORY : VFS_NAME_PERSISTENT;
++    if (vfsName === VFS_NAME_PERSISTENT) {
++      await maybeInitPoolAsync();
++    }
+     pointer = await sqlite3.open_v2(databasePath, flags, vfsName);
+   }
+ 
+@@ -772,28 +793,23 @@ async function maybeFinalizeAllStatements(nativeDatabaseId: number) {
+   if (error) throw error;
+ }
+ 
++// PakaPaka patch: the OPFS pool VFS takes an exclusive lock on every file in
++// its folder. Create it only when a persistent file is used, so a second tab
++// that holds only in-memory copies does not fail to start.
+ async function maybeInitAsync(): Promise<{
+   sqlite3: SQLiteAPI;
+-  vfs: AccessHandlePoolVFS;
+   vfsMemory: MemoryVFS;
+ }> {
+   if (!_sqlite3) {
+     const module = await WaSQLiteFactory({
+       locateFile: () => wasmModule,
+     });
++    _module = module;
+     _sqlite3 = SQLite.Factory(module) as SQLiteAPI;
+     if (!_sqlite3) {
+       throw new Error('Failed to initialize wa-sqlite');
+     }
+ 
+-    if (_vfs == null) {
+-      _vfs = await AccessHandlePoolVFS.create(VFS_NAME_PERSISTENT, module);
+-      if (_vfs == null) {
+-        throw new Error('Failed to initialize AccessHandlePoolVFS');
+-      }
+-    }
+-    _sqlite3.vfs_register(_vfs, true);
+-
+     if (_vfsMemory == null) {
+       _vfsMemory = await MemoryVFS.create(VFS_NAME_MEMORY, module);
+       if (_vfsMemory == null) {
+@@ -802,10 +818,23 @@ async function maybeInitAsync(): Promise<{
+     }
+     _sqlite3.vfs_register(_vfsMemory, false);
+   }
+-  if (_vfs == null || _vfsMemory == null) {
++  if (_vfsMemory == null) {
+     throw new Error('Invalid VFS state');
+   }
+-  return { sqlite3: _sqlite3, vfs: _vfs, vfsMemory: _vfsMemory };
++  return { sqlite3: _sqlite3, vfsMemory: _vfsMemory };
++}
++
++async function maybeInitPoolAsync(): Promise<AccessHandlePoolVFS> {
++  const { sqlite3 } = await maybeInitAsync();
++  if (_vfs == null) {
++    const vfs = await AccessHandlePoolVFS.create(VFS_NAME_PERSISTENT, _module);
++    if (vfs == null) {
++      throw new Error('Failed to initialize AccessHandlePoolVFS');
++    }
++    sqlite3.vfs_register(vfs, true);
++    _vfs = vfs;
++  }
++  return _vfs;
+ }
+ 
+ //#endregion Internal helpers
