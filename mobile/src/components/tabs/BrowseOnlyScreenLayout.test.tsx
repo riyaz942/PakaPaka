@@ -26,7 +26,6 @@ function renderApp(browseOnly: boolean, initialUrl = '/') {
       index: () => <Text>home screen</Text>,
       browse: () => <Text>browse screen</Text>,
       review: () => <Text>review screen</Text>,
-      'settings/about': () => <Text>about screen</Text>,
       '(tabs)/_layout': () => (
         <Tabs>
           <TabList>
@@ -43,6 +42,8 @@ function renderApp(browseOnly: boolean, initialUrl = '/') {
       '(tabs)/dashboard': () => <Text>dashboard screen</Text>,
       '(tabs)/settings/_layout': SettingsTabLayout,
       '(tabs)/settings/index': () => <Text>settings screen</Text>,
+      '(tabs)/settings/home-layout': () => <Text>home layout screen</Text>,
+      '(tabs)/settings/about': () => <Text>about screen</Text>,
     },
     { initialUrl },
   );
