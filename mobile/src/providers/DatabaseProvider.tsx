@@ -55,12 +55,18 @@ type ProviderState =
       browseOnly: boolean;
     };
 
+// Close failures are logged, not hidden: the caller stops the worker next,
+// and a failed close there is the only trace a lost write would leave.
 async function closeHandles(handles: DatabaseHandles | null): Promise<void> {
   if (!handles) {
     return;
   }
-  await handles.curriculumDb.closeAsync().catch(() => undefined);
-  await handles.userDb.closeAsync().catch(() => undefined);
+  await handles.curriculumDb
+    .closeAsync()
+    .catch((cause: unknown) => console.error('[DatabaseProvider] curriculum.db close failed', cause));
+  await handles.userDb
+    .closeAsync()
+    .catch((cause: unknown) => console.error('[DatabaseProvider] user.db close failed', cause));
 }
 
 export function DatabaseProvider({ children }: DatabaseProviderProps) {
@@ -112,6 +118,10 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
       }
 
       if (!result.ok) {
+        // Do not hold the lock without databases: other tabs could then
+        // never take over ("Use here" would time out).
+        leaseRef.current?.release();
+        leaseRef.current = null;
         setState({ status: 'error', error: result.error });
         return;
       }
@@ -191,6 +201,13 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     handlesRef.current = null;
 
     void (async () => {
+      // SQLite rolls back an open transaction on close. Say so: it would mean
+      // writes that the other tab will not see.
+      if (handles?.userDb.isInTransactionSync()) {
+        console.error(
+          '[DatabaseProvider] user.db has an open transaction at hand-off; closing rolls it back',
+        );
+      }
       await closeHandles(handles);
       window.dispatchEvent(new Event('expo-sqlite:stop-worker'));
       leaseRef.current?.release();

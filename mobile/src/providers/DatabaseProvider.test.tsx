@@ -51,8 +51,12 @@ function setPlatform(os: 'ios' | 'web') {
 
 function fakeHandles() {
   return {
-    curriculumDb: { closeAsync: jest.fn(), getFirstSync: jest.fn() },
-    userDb: { closeAsync: jest.fn(), getFirstSync: jest.fn() },
+    curriculumDb: { closeAsync: jest.fn(async () => {}), getFirstSync: jest.fn() },
+    userDb: {
+      closeAsync: jest.fn(async () => {}),
+      getFirstSync: jest.fn(),
+      isInTransactionSync: jest.fn(() => false),
+    },
   };
 }
 
@@ -363,8 +367,12 @@ describe('DatabaseProvider', () => {
     it('web: Use here in a browse-only tab closes the copies before reload', async () => {
       const handles = fakeHandles();
       const order: string[] = [];
-      handles.curriculumDb.closeAsync.mockImplementation(async () => order.push('close'));
-      handles.userDb.closeAsync.mockImplementation(async () => order.push('close'));
+      handles.curriculumDb.closeAsync.mockImplementation(async () => {
+        order.push('close');
+      });
+      handles.userDb.closeAsync.mockImplementation(async () => {
+        order.push('close');
+      });
       reload.mockImplementation(() => order.push('reload'));
       mockTryAcquireDbLock.mockResolvedValue(null);
       mockRequestSnapshot.mockResolvedValue({ ok: true, value: SNAPSHOT });
@@ -386,8 +394,12 @@ describe('DatabaseProvider', () => {
       const handles = fakeHandles();
       const order: string[] = [];
       const lease = { release: jest.fn(() => order.push('release lock')) };
-      handles.curriculumDb.closeAsync.mockImplementation(async () => order.push('close curriculum'));
-      handles.userDb.closeAsync.mockImplementation(async () => order.push('close user'));
+      handles.curriculumDb.closeAsync.mockImplementation(async () => {
+        order.push('close curriculum');
+      });
+      handles.userDb.closeAsync.mockImplementation(async () => {
+        order.push('close user');
+      });
       browser.dispatchEvent = jest.fn((event: Event) => order.push(`event ${event.type}`));
       mockTryAcquireDbLock.mockResolvedValue(lease);
       mockInitializeDatabases.mockResolvedValue({ ok: true, value: handles });
@@ -416,6 +428,46 @@ describe('DatabaseProvider', () => {
       ).toBeTruthy();
       expect(screen.getByRole('button', { name: 'Use here' })).toBeTruthy();
       expect(reload).not.toHaveBeenCalled();
+    });
+
+    it('owner release reports an open transaction and a failed close', async () => {
+      const handles = fakeHandles();
+      handles.userDb.isInTransactionSync.mockReturnValue(true);
+      handles.userDb.closeAsync.mockRejectedValue(new Error('close failed'));
+      const lease = { release: jest.fn() };
+      mockTryAcquireDbLock.mockResolvedValue(lease);
+      mockInitializeDatabases.mockResolvedValue({ ok: true, value: handles });
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+      renderWeb();
+      await waitFor(() => expect(screen.getByText('ready browseOnly:false')).toBeTruthy());
+      const { onRelease } = mockServeOwnerTab.mock.calls[0][0];
+      await act(async () => {
+        onRelease();
+      });
+      await waitFor(() => expect(lease.release).toHaveBeenCalledTimes(1));
+
+      const logged = errorSpy.mock.calls.map((call) => String(call[0]));
+      expect(logged.some((line) => line.includes('open transaction'))).toBe(true);
+      expect(logged.some((line) => line.includes('close failed'))).toBe(true);
+      errorSpy.mockRestore();
+    });
+
+    it('web: a tab whose databases fail to open drops the lock', async () => {
+      const lease = { release: jest.fn() };
+      mockTryAcquireDbLock.mockResolvedValue(lease);
+      mockInitializeDatabases.mockResolvedValue({
+        ok: false,
+        error: { code: 'DB_LOCKED_BY_OTHER_TAB', message: 'NoModificationAllowedError' },
+      });
+
+      renderWeb();
+
+      await waitFor(() =>
+        expect(screen.getByText('PakaPaka is open in another tab')).toBeTruthy(),
+      );
+      expect(lease.release).toHaveBeenCalledTimes(1);
+      expect(mockServeOwnerTab).not.toHaveBeenCalled();
     });
 
     it('native: never touches the lock or channel', async () => {
