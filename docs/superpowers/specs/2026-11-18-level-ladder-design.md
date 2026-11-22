@@ -26,8 +26,9 @@ opens, for the sense of achievement.
 1. Every radical, kanji, word, grammar point and reading passage has one **level** (1–60).
 2. A kanji is never at a level before one of its radicals. A word is never at a level before one
    of its kanji.
-3. **Level-up gate:** level N is complete when 90% of its kanji are at Guru or higher. The learner
-   can skip forward, and can go back only to a level that is not complete (§7.4).
+3. **Level-up gate:** level N is complete when 90% of its kanji are at Guru or higher. For levels
+   2–20 the learner must also pass the level test (2 reading passages, §7.4). The learner can
+   skip forward, and can go back only to a level that is not complete.
 4. **JLPT is display only.** No app logic reads a JLPT value. The app shows a table such as
    "Levels 1–12 ≈ N5", calculated by the build.
 5. Progress in `user.db` is kept for every user. Nothing a learner has learned is lost.
@@ -179,7 +180,30 @@ Level 1 kanji in the test: 一二三四七九十人日月本見分時上下手�
 - **Gate:** level N is **completed** when at least 90% of the kanji in level N are Guru or
   higher, or marked known (bulk mark-known, import). Guru is the existing stage label
   (stability ≥ 7 days, `fsrsScheduler.ts`). Radicals, words and grammar do not count toward the
-  gate, as in WaniKani.
+  kanji gate, as in WaniKani. **For levels 2–20 the learner must also pass the level test**
+  (below); the kanji gate alone is not enough.
+- **Level test** (operator decision 2026-11-22). Levels 2–20 only.
+  - The test is: pass **2 passages** of that level. The learner chooses which, from the level's
+    passages (3–4 per level, §7.6).
+  - A passage is **passed** when every question is answered correctly, in one or more tries.
+  - A passage **can be taken as a test** when (a) the kanji gate of its level passes AND (b)
+    every word in the passage has had its lesson (started or known, any stage). The existing
+    ≥ 90% Guru+ coverage unlock (§7.8 Reading) does not apply to the test. Furigana follows the
+    existing per-word rule.
+  - **A wrong answer is never revealed.** The app says only that it is not correct; the passage
+    stays open; retries are unlimited, with no penalty and no SRS effect. Answer matching is
+    tolerant: kana or kanji form, with or without です, punctuation ignored. A wrong answer is
+    not stored; a correct answer is never overwritten by a wrong one in test mode.
+  - **No test (kanji gate only):** level 1; levels 21–60; and any level that is completed by
+    bulk mark-known (`markLevelsKnown`), placement, import, or the one-time conversion of
+    existing users (§7.9). Skip forward completes nothing, so it has nothing to test. A skipped
+    level that the learner goes back to uses the normal path, so it has a test.
+  - **Where the result lives.** `passage_practice_results` is already in `SYNC_TABLES`
+    (`passagePracticeResults`, kind `passage`, one row per passage and question with
+    `is_correct`), so no new store is needed. A passage is passed when every one of its questions
+    has a correct row. The result syncs with the existing table. `completed_levels` stays the
+    sorted union: once the level completes, the level is in the set and stays there, so a later
+    change in the practice rows never undoes it.
 - **A completed level stays completed.** If its kanji drop below Guru later, it is still
   completed.
 - **Each level has one state** (operator decision 2026-11-18):
@@ -187,7 +211,7 @@ Level 1 kanji in the test: 一二三四七九十人日月本見分時上下手�
   | State | Meaning | Can the learner pick it? |
   | --- | --- | --- |
   | Active | The one level lessons come from now | — |
-  | Completed | Gate passed at some time | **No** |
+  | Completed | Gate (and, for levels 2–20, the test) passed at some time | **No** |
   | Skipped | Below the active level (or below a level the learner jumped to), not completed | **Yes**, to go back and complete it |
   | Not started | Above the active level | **Yes**, to skip forward |
 
@@ -219,6 +243,11 @@ Level 1 kanji in the test: 一二三四七九十人日月本見分時上下手�
   22 of 30 kanji at Guru. 5 more to level up." The goal ring's lesson part counts only lessons that
   are available today, so a blocked day can still reach 100% from reviews. (Builder: the allowance
   is `min(intensity allowance, startable items)`.)
+- **When the test is open.** When the kanji gate of the active level passes and the test is not
+  passed, Home shows a **"Level test" card next to the Learn button**. The lessons of the level
+  continue. Copy example: "Level 4 test — pass 2 of these 3 passages. 1 passed." The next level's
+  lessons stay closed until the test is passed. If nothing of the level is startable, the lesson
+  button is replaced by the test card, with the same copy.
 - **Level-up moment.** When a level is completed, the next Home visit shows one full-screen card:
   "Level 5 complete", the counts of the next level's of new radicals, kanji, words and grammar, and — when the level crosses a
   JLPT row of §7.5 — "You have passed the N5 range". One card per level; it is not shown again
@@ -263,9 +292,16 @@ current counts (`content_breaks`).
 | Kanji | Mnemonics that break (they name only radicals, and radicals now always come first) | 0 | — |
 | Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 4 of 403 | Before release |
 | Radicals | Mnemonics that break (they name nothing else) | 0 | — |
-| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22). Today 37 of 60 sit above level 20 | Before release |
+| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22). Today 37 of 60 sit above level 20. Passages are now **gate content** (the level test, §7.4): every level 2–20 needs at least 3 passages | Before release |
 
 Radicals without art still render as text; that does not change.
+
+**Passages are gate content (2026-11-22).** A level cannot be completed without 2 passed passages,
+so each level 2–20 needs at least 3 (the learner picks 2, and a passage with a word the learner
+has not learned yet is closed). The build report lists every level 2–20 with fewer than 3
+passages (must be zero). Because a wrong answer is never shown, the accepted answers of every
+passage question are widened (kana and kanji form, with or without です) and the operator reviews
+them before release.
 
 Existing mnemonic and example generation (`generate_content/`) is reused with the level as the
 cutoff in place of the JLPT level. Existing memory rules apply (grammar pool span pitfalls,
@@ -288,13 +324,19 @@ About 40 non-test files under `mobile/src` refer to JLPT today. They move to the
   with its JLPT label. Bulk mark-known works on level
   ranges. Import (WaniKani, Anki, Bunpro) is unchanged; after an import the app suggests a start
   level from what was imported.
-- **Home.** Level card and gate progress (§7.4); level-up card.
+- **Home.** Level card and gate progress (§7.4); level test card; level-up card.
 - **Browse.** Level range filter (§7.5).
 - **Levels screen** (`mobile/src/app/levels/`, `mobile/src/app/(tabs)/learn/[level].tsx`). One
   row per level with its state (§7.4) and progress. Completed levels cannot be picked; skipped and
   not-started levels can. This replaces "Pick any level to make it your active level".
 - **Reading.** Passage unlock (≥ 90% Guru+ coverage) does not change. "At your level" means the
   passage level ≤ current level.
+- **Level test screen** (operator decision 2026-11-22). Built from the passage practice screen
+  (`components/read/PassageQuestion.tsx` and the screen that hosts it), in a test mode: a wrong
+  answer shows only "not correct"; the correct answer is not shown; retries are unlimited; no SRS
+  effect; only correct answers are stored. It lists the level's passages, shows which can be
+  taken (§7.4) and which are passed, and tells the learner why a passage is closed ("Learn these
+  words first"). It opens from the Home level test card.
 - **Talk.** The turn budget and curriculum words use the current level, not the JLPT level.
 - **Item detail.** Header shows "Level 7"; the JLPT value disappears.
 
@@ -306,8 +348,8 @@ runs migrations before `curriculum.db` is attached, and the work needs item leve
 
 - `starting_jlpt_level` → `starting_level`, using the first level of that JLPT row in §7.5
   (N5 → 1).
-- `completed_levels` is calculated once from the user's SRS states: every level whose gate
-  passes. `active_level` is the lowest level at or above the old start level that is not
+- `completed_levels` is calculated once from the user's SRS states: every level whose kanji gate
+  passes (no level test for these levels, §7.4). `active_level` is the lowest level at or above the old start level that is not
   completed. Levels below the old start level that are not completed are skipped.
 - SRS rows, study statuses and opt-ins are kept as they are. A word that the user already studies
   but whose kanji is now at a later level keeps its rows. The existing rule "ask the reading only
@@ -349,10 +391,18 @@ Decided, not left: the sync format version is bumped (§7.9).
   picking (skip forward, go back only to a level that is not completed, active level after a
   completion skips completed levels); planner pool by level; sync merge (`completed_levels`
   union, active level moved forward if completed); migration of a web user with N5 progress.
+- Level test: kanji gate passes but the test is not passed → level not complete; 2 passages
+  passed → complete; 1 passed → not complete; a passage with a word the learner has not learned
+  cannot be taken; a wrong answer is not stored and not revealed; `markLevelsKnown` completes
+  levels 2–20 with no test; level 1 completes on the kanji gate alone. The build report shows
+  at least 3 passages for every level 2–20.
+- Lesson order with real ladder data: a kanji never appears in a lesson while one of its radicals
+  is below Guru, and a word never appears while one of its kanji is below Guru.
 - Before release: the ladder report shows zero grammar example sentences above their point's level
   and every grammar point with at least 2 examples; the later-phase vocabulary counts are listed.
 - `scripts/simulate-lessons.ts` runs a perfect learner to level 10 and reports the days per level.
-  Target: about 7 days per level, close to WaniKani's minimum pace. If FSRS makes it much slower,
-  stop and report before tuning.
+  The simulated learner passes each level test on the day it opens. Target: about 8–9 days per
+  level (about 7 for the kanji gate, plus the test). If the mean is above 14 days, stop and report
+  before tuning.
 - Existing CI: `validate-schema`, `compile-curriculum`, `check-contrast`, mobile lint, typecheck,
   Jest.

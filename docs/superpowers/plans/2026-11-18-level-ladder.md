@@ -19,6 +19,7 @@
 - Levels are integers 1–60. Every level has at least 1 kanji.
 - Kanji per level: 18, 24, 28, then 30 for levels 4–20; the rest split evenly over levels 21–60.
 - Gate: a level is complete when ≥ 90% of its kanji are Guru or higher, or marked known (`LEVEL_GATE_RATIO = 0.9`). Only kanji count.
+- **Level test (operator decision 2026-11-22, spec §7.4).** Levels 2–20 are complete only when the kanji gate passes AND the learner has passed 2 of the level's passages (`LEVEL_TEST_PASSAGES = 2`). A passage is passed when every question has a correct row in `passage_practice_results` (already in `SYNC_TABLES`; no new store). A passage can be taken only when the level's kanji gate passes and every word in it is started or known. A wrong answer is never revealed, never stored, retries unlimited, no SRS effect. No test for level 1, levels 21–60, and levels completed by `markLevelsKnown`, placement, import or the one-time conversion. Home shows a "Level test" card next to Learn.
 - A completed level stays completed. A completed level cannot be picked. Any other level can be picked.
 - After a level completes, the active level becomes the lowest level above it that is not completed.
 - No JLPT value in app logic (queries, filters, gates, stored preferences). JLPT appears only through `level_jlpt_equivalence` as display text. Only N5 and N4 rows; later levels show "Beyond N4".
@@ -34,6 +35,7 @@
 3. **Kanji fall below Guru after a level completes** → the level stays completed and is still not pickable (test in Task 11).
 4. **The learner completes level 60** → no next level; active stays 60 and Home says every level is complete instead of showing a gate card (test in Task 11 and Task 15).
 5. **A level whose kanji are all marked known by import or bulk mark-known** → it completes at once, the level-up card shows once, and the active level moves on (test in Task 13).
+6. **Kanji gate passes but the level test is not passed** (levels 2–20) → the level is not complete; Home shows the "Level test" card next to Learn; the next level's lessons stay closed; passing the 2nd passage completes the level and the level-up card shows once (tests in Tasks 11, 13, 15).
 
 ---
 
@@ -245,12 +247,14 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 
 **Interfaces:**
 - Consumes: Task 6 `reading_context.seed_context(level, slug)` with an integer level.
-- Produces: 60 passages, about 3 per level over levels 2–20 (`passages_above_target == 0`); each passes `validate_readings.py` at its level.
+- Produces: 60 passages, about 3 per level over levels 2–20 (`passages_above_target == 0`), **at least 3 passages for every level 2–20** (gate content, spec §7.6); each passes `validate_readings.py` at its level. A new `content_breaks` key `levels_2_20_with_fewer_than_3_passages == 0` (added to `ladder_report.py` and its test in this task). Accepted answers of every passage question are widened (kana and kanji form, with or without です) and the operator reviews them (Step 5).
 
-- [ ] **Step 1: Rewrite the seeds**: 60 seeds, levels 2–20, each with `required_grammar` from grammar at or below its level and every core grammar point of levels 1–20 in at least one seed (the existing seed coverage check, now by level).
+- [ ] **Step 1: Rewrite the seeds**: 60 seeds, levels 2–20 (at least 3 seeds per level), each with `required_grammar` from grammar at or below its level and every core grammar point of levels 1–20 in at least one seed (the existing seed coverage check, now by level).
 - [ ] **Step 2: Draft** with `reading-passage.md`; word-band pre-check before ingest (memory: ~0.57 tokenizer words per Japanese character, aim mid-band); probe causative forms with `grammar_detect` (memory).
 - [ ] **Step 3: Run** `validate_readings.py` on each draft → pass; ingest; run `generate.py` and `ladder_report.py` → `passages_above_target == 0`. Run `npm run validate-schema && npm run compile-curriculum` — the passage set changed, so add `-- --update-registry` and check that old passage ids move to `retired` and question ids too (the registry rule: an id never goes to a different key).
-- [ ] **Step 4: Checkpoint** (tests green, then commit the task).
+- [ ] **Step 4: Widen the accepted answers** of every question in the 60 passages (kana and kanji form, with or without です; the app also ignores punctuation, Task 15). The test never reveals a wrong answer, so a missing valid form blocks the learner. Write the list of accepted answers per question to `reports/passage-answers.md` for the operator.
+- [ ] **Step 5: Operator review** of `passage-answers.md` before release.
+- [ ] **Step 6: Checkpoint** (tests green, then commit the task).
 
 ## Phase 3 — App
 
@@ -289,12 +293,17 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - `type LevelState = 'active' | 'completed' | 'skipped' | 'not_started'`; `levelState(level, activeLevel, completed): LevelState` — skipped = below the active level and not completed (plan simplification of spec §7.4: a level above the active one shows "not started" even if the learner was on it before; both are pickable, so only the label differs).
   - `allLevelsComplete(completed: ReadonlySet<number>, maxLevel: number): boolean`
   - `jlptLabelForLevel(rows: readonly JlptEquivalenceRow[], level: number): string` — `"N5 range"`, `"N4 range"`, or `"Beyond N4"`.
+  - `LEVEL_TEST_PASSAGES = 2`; `levelNeedsTest(level: number): boolean` — true for levels 2–20 only (`LEVEL_TEST_FIRST = 2`, `LEVEL_TEST_LAST = 20`).
+  - `isLevelTestPassed(passedPassageCount: number): boolean` — `>= LEVEL_TEST_PASSAGES`.
+  - `canTakePassageAsTest(kanjiGatePassed: boolean, passageWordIds: readonly string[], isLearned: (id: string) => boolean): boolean` — gate passed AND every word learned (started or known, any stage); a passage with no words is takeable only when the gate passed.
 - [ ] **Step 1: Write failing tests**:
   - `isLevelComplete`: 27 of 30 passed → true; 26 of 30 → false; 0 kanji → false.
   - `nextActiveLevel(5, {6, 7}, 60) === 8`; `nextActiveLevel(60, {}, 60) === 60`.
   - `canPickLevel(4, {4}, 60) === false`; `canPickLevel(3, {4}, 60) === true`; `canPickLevel(61, {}, 60) === false`.
   - Review Focus 3: `levelState(4, 6, new Set([4])) === 'completed'` regardless of current stages (completion is read from the set, not recomputed).
   - Review Focus 4: `allLevelsComplete(set of 1..60, 60) === true`.
+  - Level test: `levelNeedsTest(1) === false`, `levelNeedsTest(2) === true`, `levelNeedsTest(20) === true`, `levelNeedsTest(21) === false`; `isLevelTestPassed(1) === false`, `isLevelTestPassed(2) === true`.
+  - `canTakePassageAsTest(true, ['a','b'], id => id === 'a') === false` (a word not learned); `canTakePassageAsTest(false, ['a'], () => true) === false` (gate not passed); both true → `true`.
   - `jlptLabelForLevel([{jlpt:'N5',firstLevel:1,lastLevel:12},{jlpt:'N4',firstLevel:13,lastLevel:21}], 22) === 'Beyond N4'`.
 - [ ] **Step 2: Run** `npx jest src/core/level` → FAIL.
 - [ ] **Step 3: Implement.**
@@ -339,14 +348,21 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 **Interfaces:**
 - Consumes: Tasks 10–12.
 - Produces:
-  - `refreshLevelProgress(curriculumDb, userDb): Result<{ newlyCompleted: number[]; activeLevel: number }, AppError>` — checks every level that is not completed and has at least one started or known kanji; adds the ones that pass; if the active level completed, sets `active_level` with `nextActiveLevel`.
+  - `refreshLevelProgress(curriculumDb, userDb, options?: { testRequired?: boolean }): Result<{ newlyCompleted: number[]; activeLevel: number }, AppError>` — checks every level that is not completed and has at least one started or known kanji; adds the ones that pass; if the active level completed, sets `active_level` with `nextActiveLevel`. `testRequired` defaults to `true`: for a level with `levelNeedsTest`, the level also needs `isLevelTestPassed(getPassedPassageCount(level))`. The no-test paths (`markLevelsKnown`, placement apply, import, `convertJlptPreference`) call it with `{ testRequired: false }`.
+  - `getPassedPassageCount(curriculumDb, userDb, level: number): number` — passages of the level whose every question has a correct row in `passage_practice_results` (reads `passage_questions`; uses `passagePracticeRepository`).
+  - `getLevelTestProgress(curriculumDb, userDb, level: number): { passed: number; needed: 2; kanjiGatePassed: boolean; passages: { passageId: string; passed: boolean; canTake: boolean }[] }` — Home uses it for "Level 4 test — pass 2 of these 3 passages. 1 passed."
+  - `recordTestAnswer(userDb, passageId, questionId, userAnswer, isCorrect)` — writes only a correct answer (never a wrong one, never over a correct row); the test screen calls it.
   - `pickActiveLevel(curriculumDb, userDb, level: number): Result<void, AppError>` — error `level_not_pickable` when `canPickLevel` is false.
-  - `markLevelsKnown(curriculumDb, userDb, fromLevel: number, toLevel: number): Result<void, AppError>` — replaces the JLPT `levelsBelow` bulk mark-known; marks every item in the range known, then runs `refreshLevelProgress`.
+  - `markLevelsKnown(curriculumDb, userDb, fromLevel: number, toLevel: number): Result<void, AppError>` — replaces the JLPT `levelsBelow` bulk mark-known; marks every item in the range known, then runs `refreshLevelProgress(…, { testRequired: false })` (no level test for these levels).
   - `getLevelGateProgress(curriculumDb, userDb, level: number): { passed: number; total: number; needed: number }` — `needed = max(0, ceil(total * LEVEL_GATE_RATIO) - passed)`; Home uses it for "22 of 30 kanji at Guru. 5 more to level up."
 - [ ] **Step 1: Write failing tests**:
-  - 27 of 30 active-level kanji at Guru → `newlyCompleted = [active]`, active moves on.
-  - A skipped level (below active) whose kanji pass → it is added to `completed_levels`; active does not change.
-  - Review Focus 5: `markLevelsKnown(1, 3)` on a new user → levels 1–3 completed, active = 4, `newlyCompleted = [1, 2, 3]`.
+  - Level 1: 27 of 30 kanji at Guru → `newlyCompleted = [1]`, active moves on (no test).
+  - Level 4 (needs a test): 27 of 30 kanji at Guru, test not passed → `newlyCompleted = []`, active stays 4. One passage passed (every question correct) → still not complete. Two passed → `newlyCompleted = [4]`, active moves on.
+  - A passage with a word not started or known → `getLevelTestProgress(...).passages[i].canTake === false`.
+  - `recordTestAnswer` with a wrong answer writes nothing; a correct answer is not overwritten by a later wrong one.
+  - A level 21 level (needs no test) completes on the kanji gate alone.
+  - A skipped level (below active) whose kanji pass and whose test is passed → it is added to `completed_levels`; active does not change. Without the test passed → not added.
+  - Review Focus 5: `markLevelsKnown(1, 3)` on a new user → levels 1–3 completed with no test (levels 2 and 3 included), active = 4, `newlyCompleted = [1, 2, 3]`.
   - `pickActiveLevel` on a completed level → `{ ok: false, error.code: 'level_not_pickable' }`; on level 15 → active 15.
   - `getLevelGateProgress` with 22 of 30 → `{ passed: 22, total: 30, needed: 5 }`.
 - [ ] **Step 2: Run** `npx jest src/data/level src/data/user/placementRepository.test.ts` → FAIL.
@@ -363,7 +379,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 **Interfaces:**
 - Consumes: `getActiveLevel`, `listLessonCandidatePool(db, activeLevel)`, `getLevelGateProgress`.
 - Produces:
-  - `LessonPlan.level: number` (the active level); `grammarLevel` is removed; new `gateBlocked: boolean` — true when the pool has no startable item and the active level is not complete.
+  - `LessonPlan.level: number` (the active level); `grammarLevel` is removed; new `gateBlocked: boolean` and `gateReason: 'kanji' | 'test' | null` — blocked when the pool has no startable item and the active level is not complete.
   - The JLPT loop and D11 ("advance when nothing startable") are removed; grammar comes from the same `≤ activeLevel` pool, paced by the existing grammar pace rules (D17 track resolution removed).
   - `computeDailyAllowance` gains `startableCount: number`; `total` and `remaining` are capped at it, so the goal ring's lesson part counts only lessons available today (spec §7.4).
   - Lower-level parts (D3) and opt-ins keep working unchanged; `useLessonOptIn` compares item `level` with the active level.
@@ -372,6 +388,8 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - All level ≤ 2 items started, level 2 not complete → `gateBlocked === true`, `items.length === 0`.
   - An opted-in level-9 word and its kanji and radicals are in the plan while active is 2.
   - Allowance: `dailyLessonItems 15, startableCount 4` → `total 4`.
+  - `gateBlocked` is accompanied by `gateReason: 'kanji' | 'test'`: `'test'` when the level's kanji gate passes and the level test is not passed (next level's lessons stay closed; level's own lessons continue while startable).
+  - **Real ladder data** (uses the compiled `curriculum.db`, not a fixture): simulate a learner who starts every lesson offered, with a stage rule that only lets an item reach Guru when asked; a kanji never appears in a lesson plan while one of its radicals is below Guru, and a word never appears while one of its kanji is below Guru. Check levels 1–5.
 - [ ] **Step 2: Run** `npx jest src/data/lessonPlan.test.ts src/core/lesson` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** → PASS.
@@ -381,16 +399,18 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 
 **Files:**
 - Modify: `mobile/src/app/(tabs)/dashboard.tsx`, `components/engagement/LevelOverviewCard.tsx`, `LevelProgressBar.tsx`, `homeLayoutPreviewData.ts`, `data/hooks/useLevelProgress.ts`, `useAllLevelsProgress.ts`, `levelProgressShared.ts`, `useItemCountsByLevel.ts`, `app/levels/index.tsx`, `app/(tabs)/learn/[level].tsx`, `data/hooks/useLearnItems.ts`
-- Create: `mobile/src/components/engagement/LevelUpCard.tsx`, `mobile/src/components/common/LevelPicker.tsx` (replaces both `JlptLevelPicker.tsx` files, which are deleted)
+- Create: `mobile/src/components/engagement/LevelTestCard.tsx`, `mobile/src/app/level-test/[level].tsx`, `mobile/src/core/level/testAnswer.ts` (+ test), `mobile/src/components/engagement/LevelUpCard.tsx`, `mobile/src/components/common/LevelPicker.tsx` (replaces both `JlptLevelPicker.tsx` files, which are deleted)
 - Test: co-located `*.test.tsx` for each changed screen/component
 
 **Interfaces:**
 - Consumes: Tasks 10–14.
 - Produces (copy is fixed by the spec):
+  - **Level test card** (Home, next to the Learn button): when the active level needs a test, its kanji gate passes and the test is not passed: `Level {n} test — pass 2 of these {k} passages. {p} passed.` Lessons stay available next to it. It opens the level test screen.
+  - **Level test screen** (`mobile/src/app/level-test/[level].tsx`, built from the passage practice screen and `components/read/PassageQuestion.tsx`, a `testMode` prop): lists the level's passages, closed ones say `Learn these words first`; an open passage asks its questions; a wrong answer shows `Not correct. Try again.` and nothing else (no correct answer, no hint); retries unlimited; matching ignores punctuation, accepts kana or kanji form, with or without です (a pure function `core/level/testAnswer.ts` `isAcceptedAnswer(answer, accepted[])`, with tests); a correct answer calls `recordTestAnswer`; when the passage is passed it shows `Passed` and the progress `{p} of 2`; at 2 it calls `refreshLevelProgress` and goes back to Home.
   - Home level card: `Level {n} · {jlptLabelForLevel}`; when `gateBlocked`: `Level {n} — {passed} of {total} kanji at Guru. {needed} more to level up.`; when `allLevelsComplete`: `Every level is complete.`
   - `LevelUpCard`: full screen on the next Home visit after a completion; `Level {n} complete`, counts of the next level's new radicals, kanji, words and grammar; when the completed level is a row's `lastLevel`: `You have passed the N5 range` (or N4). Shown once per completed level: `last_level_card_shown` stores the highest level whose card was shown.
   - Levels screen: title `Levels`; one row per level with state (`levelState`) and progress; completed rows are not pressable (`accessibilityState={{ disabled: true }}`); pressing another row calls `pickActiveLevel`. The text "Pick any level to make it your active level" is replaced by `Pick a level that is not complete. Completed levels stay completed.`
-- [ ] **Step 1: Write failing tests**: Home shows the gate copy with 22/30/5; the level-up card shows once and not again after dismiss; a completed Levels row is disabled and a skipped row calls `pickActiveLevel`; Review Focus 4: all 60 complete → `Every level is complete.` and no gate card.
+- [ ] **Step 1: Write failing tests**: Home shows the gate copy with 22/30/5; the level-up card shows once and not again after dismiss; a completed Levels row is disabled and a skipped row calls `pickActiveLevel`; Review Focus 4: all 60 complete → `Every level is complete.` and no gate card. Review Focus 6: gate passes, test not passed → the test card shows next to Learn with `1 passed` copy; a wrong answer on the test screen shows `Not correct. Try again.` and never the answer; `isAcceptedAnswer` accepts `がっこう`, `学校`, `学校です` and `学校。`.
 - [ ] **Step 2: Run** `npx jest src/app/\(tabs\)/dashboard src/app/levels src/components/engagement` → FAIL.
 - [ ] **Step 3: Implement** with semantic NativeWind tokens only; a11y labels on every pressable (lint blocks merge).
 - [ ] **Step 4: Run** the tests and `npm run lint` → PASS.
@@ -425,10 +445,10 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 
 **Interfaces:**
 - Consumes: `buildLessonPlan`, `refreshLevelProgress`, the real FSRS scheduler in `mobile/src/core/srs/fsrsScheduler.ts`.
-- Produces: `--ladder` mode: a perfect learner (every answer correct, every due review done the day it is due) at the `relaxed` preset from level 1; prints days per level for levels 1–10 and the mean.
+- Produces: `--ladder` mode: a perfect learner (every answer correct, every due review done the day it is due, **and every level test passed on the day it opens**) at the `relaxed` preset from level 1; prints days per level for levels 1–10 and the mean.
 
 - [ ] **Step 1: Implement** `--ladder` (grade reviews through the scheduler instead of the `GURU_AFTER_DAYS` shortcut).
-- [ ] **Step 2: Run** `npx tsx --tsconfig mobile/tsconfig.json scripts/simulate-lessons.ts --ladder`. Target: mean about 7 days per level. If the mean is above 14 days, **stop and report to the operator** with the table (spec §9); do not tune the scheduler or the gate.
+- [ ] **Step 2: Run** `npx tsx --tsconfig mobile/tsconfig.json scripts/simulate-lessons.ts --ladder`. Target: mean about 8–9 days per level (the kanji gate about 7, plus the level test). If the mean is above 14 days, **stop and report to the operator** with the table (spec §9); do not tune the scheduler or the gate.
 - [ ] **Step 3: Checkpoint** (tests green, then commit the task). Record the table in `docs/working-history.md` (Task 18).
 
 ### Task 18: Docs and status
