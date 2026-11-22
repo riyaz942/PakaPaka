@@ -32,6 +32,7 @@ import {
 import {
   getCurriculumDownloadUri,
   getCurriculumFileUrl,
+  REQUIRED_CURRICULUM_SCHEMA_VERSION,
 } from '@/data/curriculum/curriculumConfig';
 import {
   holdCurriculumSwap,
@@ -72,7 +73,7 @@ const { __testPrivateKey: TEST_PRIVATE_KEY } = jest.requireMock(
   '@/core/curriculum/manifestSignature',
 ) as { __testPrivateKey: KeyObject };
 
-const MANIFEST_URL = 'https://paka-paka.app/api/curriculum/s1/manifest.json';
+const MANIFEST_URL = `https://paka-paka.app/api/curriculum/s${REQUIRED_CURRICULUM_SCHEMA_VERSION}/manifest.json`;
 
 const FIXTURE_DB_PATH = path.join(
   __dirname,
@@ -90,7 +91,7 @@ function fixtureSha256Hex(): string {
 function signedManifest({
   version,
   sha256,
-  schema = 1,
+  schema = REQUIRED_CURRICULUM_SCHEMA_VERSION,
 }: {
   version: number;
   sha256: string;
@@ -126,7 +127,7 @@ function serveManifest(manifest: unknown) {
 
 function release(version: number, sha256: string = fixtureSha256Hex()): CurriculumRelease {
   return {
-    schema: 1,
+    schema: REQUIRED_CURRICULUM_SCHEMA_VERSION,
     version,
     sha256,
     sizeBytes: 1234,
@@ -189,7 +190,7 @@ describe('curriculumUpdate', () => {
         ...manifest,
         payload: Buffer.from(
           JSON.stringify({
-            schema: 1,
+            schema: REQUIRED_CURRICULUM_SCHEMA_VERSION,
             version: 9,
             sha256: fixtureSha256Hex(),
             size_bytes: 1234,
@@ -206,13 +207,19 @@ describe('curriculumUpdate', () => {
     });
 
     it('a manifest for another schema returns null', async () => {
-      serveManifest(signedManifest({ version: 2, sha256: fixtureSha256Hex(), schema: 2 }));
+      serveManifest(
+        signedManifest({
+          version: 2,
+          sha256: fixtureSha256Hex(),
+          schema: REQUIRED_CURRICULUM_SCHEMA_VERSION + 1,
+        }),
+      );
 
       const result = await checkForCurriculumUpdate('1');
       expect(result).toEqual({ ok: true, value: null });
     });
 
-    it('requests the s1 manifest under API_BASE_URL', async () => {
+    it('requests the manifest of the required schema under API_BASE_URL', async () => {
       const fetchMock = serveManifest(signedManifest({ version: 2, sha256: fixtureSha256Hex() }));
 
       await checkForCurriculumUpdate('1');
