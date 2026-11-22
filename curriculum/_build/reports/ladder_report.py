@@ -283,7 +283,9 @@ def render(ladder, sidecars, names):
         out.append(f"| {kind} | {what} (`{key}`) | {len(lists[key])} | {when} |")
     out.append("")
     out += ["## Work lists\n",
-            "The full lists are in `ladder-worklist.json`.\n",
+            "The full lists are in `ladder-worklist.json`. "
+            "`vocab_examples_above_level` counts words; the Content breaks table "
+            "counts sentences.\n",
             "| Area | Count |", "| --- | ---: |"]
     out += [f"| `{area}` | {len(slugs)} |" for area, slugs in worklist(ladder, sidecars).items()]
     out.append("")

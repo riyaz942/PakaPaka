@@ -36,9 +36,9 @@ A passage is the **level test** (spec §7.6 of
 `docs/superpowers/specs/2026-11-18-level-ladder-design.md`): the learner completes a
 level 2–20 by passing 2 of its passages. So:
 
-- Levels 2–20 need at least 3 passages each. Level 1 has none. Not checked by
-  script yet (Task 9 adds `levels_2_20_with_fewer_than_3_passages` to
-  `reports/ladder_report.py`).
+- Levels 2–20 need at least 3 passages each. Level 1 has none. The work list
+  (`reading_passages`) shows which levels have fewer than 3. It is a report, not a
+  gate on ingest.
 - Every word of a passage is at or below the passage's level. Checked by script:
   check 4 of `validate_readings` covers the body and `summary_ja`; the question
   prompts are level-checked by the question check (`_question_errors`), not by check 4.

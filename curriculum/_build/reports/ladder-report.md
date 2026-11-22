@@ -149,7 +149,7 @@ None.
 
 ## Work lists
 
-The full lists are in `ladder-worklist.json`.
+The full lists are in `ladder-worklist.json`. `vocab_examples_above_level` counts words; the Content breaks table counts sentences.
 
 | Area | Count |
 | --- | ---: |

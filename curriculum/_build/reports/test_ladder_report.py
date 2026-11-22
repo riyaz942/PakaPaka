@@ -1,5 +1,6 @@
 # curriculum/_build/reports/test_ladder_report.py
 # -*- coding: utf-8 -*-
+import json
 import os
 import sys
 import unittest
@@ -148,6 +149,11 @@ class WorklistTest(unittest.TestCase):
         text = ladder_report.render(ladder, data, NAMES)
         for area, slugs in ladder_report.worklist(ladder, data).items():
             self.assertIn(f"| `{area}` | {len(slugs)} |", text)
+
+    def test_checked_in_worklist_has_the_keys_the_code_writes(self):
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ladder-worklist.json")
+        with open(path, encoding="utf-8") as f:
+            self.assertEqual(set(json.load(f)), set(ladder_report.WORKLIST))
 
     def test_worklist_keeps_every_slug_not_ten(self):
         ladder = dict(LADDER, kanji={f"k{i}": entry(1) for i in range(25)})
