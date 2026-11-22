@@ -235,6 +235,28 @@ The operator writes ladder content (Tasks 7, 8, 9, 19) with the runbooks in `doc
 - [ ] **Step 4: Verify every command.** For each command line in the runbooks, run it with `--help` (or its dry-run form) from `curriculum/_build` and check each flag exists. `grep -rnE "--level n|level = n|JLPT level" docs/workflows` → no hit that is not history. Run the full Python suite → PASS (prompt files are read by tests).
 - [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
+### Task 6d: Work lists — the lanes target exactly what needs content
+
+Today the radical (132) and kanji (184) mnemonic lanes pick the right items by themselves (`default_slugs`: no mnemonic yet). The other areas are not targeted: `generate_pool select` lists only points with no pool entry (1 today, not the 132 failing points); there is no check for a grammar mnemonic whose Japanese example uses a later word; `ladder-report.md` shows only the first 10 slugs per area. Fix this without storing marks in the data: every list is computed from the ladder and the content, so it cannot go stale.
+
+**Files:**
+- Modify: `curriculum/_build/reports/ladder_report.py` (+ `test_ladder_report.py`), `curriculum/_build/generate_content/generate_pool.py` (+ its test), `curriculum/_build/generate_content/generate_mnemonics.py` or `mnemonic_context.py` (grammar example check, + test), `docs/workflows/README.md` and the runbooks that name a selector
+- Create (generated, checked in): `curriculum/_build/reports/ladder-worklist.json`
+
+**Interfaces:**
+- Consumes: `content_breaks` (Task 3), `levels.slugs_at_or_below`, `allowed_vocab_for` (Task 6), the tokenizer the pool gate uses.
+- Produces:
+  - `ladder_report.py` also writes `ladder-worklist.json`: for each area, the full slug list (not 10) — `radical_mnemonics`, `kanji_mnemonics`, `grammar_pool_points` (points failing the pool gate), `grammar_links_above_level`, `grammar_mnemonics_above_level` (new check: tokenize the Japanese example of each grammar mnemonic, compare with `slugs_at_or_below` the point's level), `reading_passages` (levels 2–20 with fewer than 3 passages, with the count missing), and for the later phase `vocab_examples_above_level`, `vocab_mnemonics_pending`. Each area's count equals the matching count in `ladder-report.md`; a test asserts that.
+  - `grammar_mnemonics_above_level` is a new count in `ladder-report.md` (it was "not measured").
+  - `generate_pool select --failing [--levels 1-20]` lists the points in `grammar_pool_points`, using the same function (one source, no copy of the rule).
+  - A grammar-mnemonic selector (flag on the existing mnemonic lane, or `--slugs` fed from the work list; choose the smaller change) so the runbook can say exactly which command runs on which slugs.
+
+- [ ] **Step 1: Tests first**: worklist counts equal report counts; `select --failing` equals the work list; the grammar example check flags a mnemonic whose example has a later word and passes one that has none.
+- [ ] **Step 2: Run** → FAIL. **Step 3: Implement.** **Step 4: Run** the full Python suite → PASS.
+- [ ] **Step 5: Run** `ladder_report.py`; the new `grammar_mnemonics_above_level` count goes into `ladder-report.md`; commit `ladder-worklist.json`.
+- [ ] **Step 6: Runbooks.** In `docs/workflows/README.md` "Ladder work list" and in each runbook that names a selector, say which list or selector feeds which command. Do not copy counts into the docs.
+- [ ] **Step 7: Checkpoint** (tests green, then commit the task).
+
 ### Task 7: Grammar content (before release)
 
 **Files:**
