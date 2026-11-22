@@ -5,14 +5,9 @@
     "metadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["version", "jlpt_levels", "description"],
+      "required": ["version", "description"],
       "properties": {
         "version": { "type": "integer", "minimum": 1 },
-        "jlpt_levels": {
-          "type": "array",
-          "items": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
-          "minItems": 1
-        },
         "description": { "type": "string", "minLength": 1 },
         "maintainer_notes": { "type": "string" },
         "content_counts": {
@@ -43,10 +38,11 @@
     "radicalItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "primary_form", "meaning"],
+      "required": ["slug", "level", "primary_form", "meaning"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 60 },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
@@ -76,9 +72,8 @@
     "radicalsFile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["jlpt_level", "items"],
+      "required": ["items"],
       "properties": {
-        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/radicalItem" },
@@ -109,10 +104,11 @@
     "kanjiItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "primary_form", "meaning"],
+      "required": ["slug", "level", "primary_form", "meaning"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 60 },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
@@ -139,9 +135,8 @@
     "kanjiFile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["jlpt_level", "items"],
+      "required": ["items"],
       "properties": {
-        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/kanjiItem" },
@@ -152,10 +147,11 @@
     "vocabItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "primary_form", "meaning"],
+      "required": ["slug", "level", "primary_form", "meaning"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 60 },
         "primary_form": { "type": "string", "minLength": 1 },
         "furigana": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
@@ -183,9 +179,8 @@
     "vocabularyFile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["jlpt_level", "items"],
+      "required": ["items"],
       "properties": {
-        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/vocabItem" },
@@ -278,10 +273,11 @@
     "grammarItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "primary_form", "meaning", "structure", "conjugation_rules", "accepted_forms"],
+      "required": ["slug", "level", "primary_form", "meaning", "structure", "conjugation_rules", "accepted_forms"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 60 },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string", "minLength": 1 },
@@ -332,9 +328,8 @@
     "grammarFile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["jlpt_level", "items"],
+      "required": ["items"],
       "properties": {
-        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/grammarItem" },
@@ -379,10 +374,11 @@
     "readingPassage": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "title", "body"],
+      "required": ["slug", "level", "title", "body"],
       "properties": {
         "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "level": { "type": "integer", "minimum": 1, "maximum": 60 },
         "title": { "type": "string", "minLength": 1 },
         "body": { "type": "string", "minLength": 1 },
         "body_furigana": { "type": "string", "minLength": 1 },
@@ -414,9 +410,8 @@
     "readingsFile": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["jlpt_level", "passages"],
+      "required": ["passages"],
       "properties": {
-        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "passages": {
           "type": "array",
           "items": { "$ref": "#/$defs/readingPassage" },

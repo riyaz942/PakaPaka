@@ -1,6 +1,7 @@
 /**
  * Release the bundled curriculum seed: sign the manifest offline, upload to R2.
  * Usage: CURRICULUM_SIGNING_KEY_FILE=<pem> npm run release-curriculum -- --key-id <id> [--dry-run]
+ *   Old store apps (content fix): add --schema <n> --seed <db compiled for schema n>.
  * Any failure prints one line and exits 1. The key file contents are never printed.
  * Nothing is ever deleted from R2.
  */
@@ -16,6 +17,7 @@ import {
   checkNewerThanLive,
   isSqliteFile,
   readSigningKeys,
+  resolveReleaseTarget,
   signManifest,
   verifyManifest,
   type ManifestPayload,
@@ -33,8 +35,8 @@ function sha256Hex(bytes: Buffer): string {
   return createHash('sha256').update(bytes).digest('hex');
 }
 
-async function fetchLiveManifest(keys: Record<string, string>): Promise<ManifestPayload | null> {
-  const url = `${BASE_URL}/api/curriculum/s${CURRICULUM_SCHEMA_VERSION}/manifest.json`;
+async function fetchLiveManifest(keys: Record<string, string>, schema: number): Promise<ManifestPayload | null> {
+  const url = `${BASE_URL}/api/curriculum/s${schema}/manifest.json`;
   const res = await fetch(url, { cache: 'no-store' });
   if (res.status === 404) return null;
   if (res.status !== 200) throw new Error(`The live manifest request returned status ${res.status}.`);
@@ -60,15 +62,18 @@ async function main(): Promise<void> {
   const keyId = ki >= 0 ? args[ki + 1] : undefined;
   const keyFile = process.env.CURRICULUM_SIGNING_KEY_FILE;
   if (!keyId || !keyFile) {
-    throw new Error('Usage: CURRICULUM_SIGNING_KEY_FILE=<pem> npm run release-curriculum -- --key-id <id> [--dry-run]');
+    throw new Error('Usage: CURRICULUM_SIGNING_KEY_FILE=<pem> npm run release-curriculum -- --key-id <id> [--dry-run] [--schema <n> --seed <file>]');
+  }
+  const { schema, seedFile } = resolveReleaseTarget(args, CURRICULUM_SCHEMA_VERSION);
+
+  // 1. The seed is committed (an older-schema file is not the seed).
+  if (seedFile === undefined) {
+    const dirty = execFileSync('git', ['status', '--porcelain', '--', SEED_DIR], { cwd: repoRoot, encoding: 'utf8' });
+    if (dirty.trim() !== '') throw new Error(`The seed has uncommitted changes. Commit ${SEED_DIR} first.`);
   }
 
-  // 1. The seed is committed.
-  const dirty = execFileSync('git', ['status', '--porcelain', '--', SEED_DIR], { cwd: repoRoot, encoding: 'utf8' });
-  if (dirty.trim() !== '') throw new Error(`The seed has uncommitted changes. Commit ${SEED_DIR} first.`);
-
-  // 2. The seed is a real SQLite file.
-  const seedPath = join(repoRoot, SEED_DB);
+  // 2. The file is a real SQLite file.
+  const seedPath = seedFile === undefined ? join(repoRoot, SEED_DB) : resolve(seedFile);
   const fd = openSync(seedPath, 'r');
   const head = Buffer.alloc(16);
   try {
@@ -96,7 +101,7 @@ async function main(): Promise<void> {
 
   // 4. The live manifest.
   const keys = readSigningKeys(repoRoot);
-  const live = await fetchLiveManifest(keys);
+  const live = await fetchLiveManifest(keys, schema);
   checkNewerThanLive(versionNumber, live);
 
   // 5. Sign and self-check.
@@ -107,7 +112,7 @@ async function main(): Promise<void> {
     throw new Error('Cannot read the key file.');
   }
   checkKeyMatches(privateKey, keyId, keys);
-  const payload = buildPayload({ version: versionNumber, sha256, sizeBytes }, CURRICULUM_SCHEMA_VERSION, new Date());
+  const payload = buildPayload({ version: versionNumber, sha256, sizeBytes }, schema, new Date());
   const manifest = signManifest(payload, keyId, privateKey);
   verifyManifest(manifest, keys);
 
@@ -115,7 +120,7 @@ async function main(): Promise<void> {
   const manifestPath = join(mkdtempSync(join(tmpdir(), 'pakapaka-release-')), 'manifest.json');
   writeFileSync(manifestPath, JSON.stringify(manifest));
   const fileKey = `files/${sha256}.db`;
-  const manifestKey = `s${CURRICULUM_SCHEMA_VERSION}/manifest.json`;
+  const manifestKey = `s${schema}/manifest.json`;
   console.log(`version ${versionNumber}`);
   console.log(`sha256 ${sha256}`);
   console.log(`size ${sizeBytes} bytes`);
@@ -139,7 +144,7 @@ async function main(): Promise<void> {
 
   // 9. Live check. The upload is done, so every failure here says so.
   try {
-    const after = await fetchLiveManifest(keys);
+    const after = await fetchLiveManifest(keys, schema);
     if (!after) throw new Error('the live manifest answers 404');
     if (after.version !== versionNumber) throw new Error(`the live version is ${after.version}, not ${versionNumber}`);
     if (after.sha256 !== sha256) throw new Error('the live manifest sha256 does not match');

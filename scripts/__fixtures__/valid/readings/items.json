@@ -1,0 +1,35 @@
+{
+  "passages": [
+    {
+      "slug": "test-passage",
+      "title": "Test",
+      "body": "一です。",
+      "english_translation": "It is one.",
+      "summary_ja": "一の話。",
+      "summary_en": "A short test passage.",
+      "grammar_slugs": [
+        "desu"
+      ],
+      "vocabulary_slugs": [
+        "ichi-v"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "ichi-v",
+          "start": 0,
+          "end": 1
+        }
+      ],
+      "word_count": 2,
+      "questions": [
+        {
+          "prompt": "What?",
+          "accepted_answers": [
+            "test"
+          ]
+        }
+      ],
+      "level": 1
+    }
+  ]
+}

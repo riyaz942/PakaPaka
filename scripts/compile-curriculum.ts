@@ -27,21 +27,8 @@ const ITEM_TYPE_ORDER: Record<ItemType, number> = {
   grammar: 3,
 };
 
-const JLPT_LEVEL_ORDER: Record<string, number> = {
-  N5: 0,
-  N4: 1,
-  N3: 2,
-  N2: 3,
-  N1: 4,
-};
-
-function levelRank(level: string): number {
-  return JLPT_LEVEL_ORDER[level] ?? 99;
-}
-
 type MetadataJson = {
   version: number;
-  jlpt_levels: string[];
   description: string;
   maintainer_notes?: string;
   content_counts?: ContentCounts;
@@ -73,6 +60,7 @@ type SidecarMeta = {
 type RadicalItem = {
   _meta?: SidecarMeta;
   slug: string;
+  level: number;
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
@@ -98,6 +86,7 @@ type AcceptedAnswer = {
 type KanjiItem = {
   _meta?: SidecarMeta;
   slug: string;
+  level: number;
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
@@ -114,6 +103,7 @@ type KanjiItem = {
 type VocabItem = {
   _meta?: SidecarMeta;
   slug: string;
+  level: number;
   primary_form: string;
   furigana?: string;
   meaning: string;
@@ -166,6 +156,7 @@ type GrammarUse = {
 type GrammarItem = {
   _meta?: SidecarMeta;
   slug: string;
+  level: number;
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
@@ -361,6 +352,7 @@ export function resolveLessonMarkers(
 type ReadingPassage = {
   _meta?: SidecarMeta;
   slug: string;
+  level: number;
   title: string;
   body: string;
   body_furigana?: string;
@@ -398,28 +390,33 @@ function discoverJsonFilesInDir(dir: string): string[] {
     .map((name) => path.join(dir, name));
 }
 
-function loadMergedItems<T>(
-  curriculumDir: string,
-  subdir: string,
-): (T & { jlpt_level: string })[] {
+function loadMergedItems<T>(curriculumDir: string, subdir: string): T[] {
   const dir = path.join(curriculumDir, subdir);
-  const items: (T & { jlpt_level: string })[] = [];
+  const items: T[] = [];
   for (const filePath of discoverJsonFilesInDir(dir)) {
-    const file = readJson<{ jlpt_level: string; items: T[] }>(filePath);
-    for (const item of file.items) {
-      items.push({ ...item, jlpt_level: file.jlpt_level });
-    }
+    items.push(...readJson<{ items: T[] }>(filePath).items);
   }
   return items;
 }
 
-function loadMergedPassages(curriculumDir: string): { jlpt_level: string; passages: ReadingPassage[] }[] {
+function loadMergedPassages(curriculumDir: string): { passages: ReadingPassage[] }[] {
   const dir = path.join(curriculumDir, 'readings');
-  const files: { jlpt_level: string; passages: ReadingPassage[] }[] = [];
+  const files: { passages: ReadingPassage[] }[] = [];
   for (const filePath of discoverJsonFilesInDir(dir)) {
-    files.push(readJson<{ jlpt_level: string; passages: ReadingPassage[] }>(filePath));
+    files.push(readJson<{ passages: ReadingPassage[] }>(filePath));
   }
   return files;
+}
+
+type JlptEquivalence = { jlpt: string; first_level: number; last_level: number };
+
+/** The ladder file is read for this table only; no item takes a level from it. */
+function loadJlptEquivalence(curriculumDir: string): JlptEquivalence[] {
+  const ladderPath = path.join(curriculumDir, '_build', 'ladder.json');
+  if (!fs.existsSync(ladderPath)) {
+    throw new Error(`curriculum/_build/ladder.json not found (needed for level_jlpt_equivalence).`);
+  }
+  return readJson<{ jlpt_equivalence: JlptEquivalence[] }>(ladderPath).jlpt_equivalence;
 }
 
 function discoverContentHashFiles(curriculumDir: string): string[] {
@@ -458,7 +455,7 @@ function itemKey(itemType: ItemType, slug: string): string {
   return `${itemType}:${slug}`;
 }
 
-type ItemWithLevel = { itemType: ItemType; slug: string; jlpt_level: string };
+type ItemWithLevel = { itemType: ItemType; slug: string; level: number };
 
 /**
  * Item ids come from the `items` section of the id registry, so an id never
@@ -466,36 +463,24 @@ type ItemWithLevel = { itemType: ItemType; slug: string; jlpt_level: string };
  * (level, type, slug) order only sets the order in which new keys get ids.
  */
 export function assignItemIds(
-  radicals: (RadicalItem & { jlpt_level: string })[],
-  kanji: (KanjiItem & { jlpt_level: string })[],
-  vocabulary: (VocabItem & { jlpt_level: string })[],
-  grammar: (GrammarItem & { jlpt_level: string })[],
+  radicals: RadicalItem[],
+  kanji: KanjiItem[],
+  vocabulary: VocabItem[],
+  grammar: GrammarItem[],
   registry: IdRegistrySection,
   updateRegistry = false,
 ): { idByKey: Map<string, number>; section: IdRegistrySection } {
   const sorted: ItemWithLevel[] = [
-    ...radicals.map((item) => ({
-      itemType: 'radical' as const,
-      slug: item.slug,
-      jlpt_level: item.jlpt_level,
-    })),
-    ...kanji.map((item) => ({
-      itemType: 'kanji' as const,
-      slug: item.slug,
-      jlpt_level: item.jlpt_level,
-    })),
+    ...radicals.map((item) => ({ itemType: 'radical' as const, slug: item.slug, level: item.level })),
+    ...kanji.map((item) => ({ itemType: 'kanji' as const, slug: item.slug, level: item.level })),
     ...vocabulary.map((item) => ({
       itemType: 'vocabulary' as const,
       slug: item.slug,
-      jlpt_level: item.jlpt_level,
+      level: item.level,
     })),
-    ...grammar.map((item) => ({
-      itemType: 'grammar' as const,
-      slug: item.slug,
-      jlpt_level: item.jlpt_level,
-    })),
+    ...grammar.map((item) => ({ itemType: 'grammar' as const, slug: item.slug, level: item.level })),
   ].sort((a, b) => {
-    const levelDiff = levelRank(a.jlpt_level) - levelRank(b.jlpt_level);
+    const levelDiff = a.level - b.level;
     if (levelDiff !== 0) {
       return levelDiff;
     }
@@ -581,6 +566,7 @@ export function compileCurriculum(
   const vocabulary = loadMergedItems<VocabItem>(curriculumDir, 'vocabulary');
   const grammar = loadMergedItems<GrammarItem>(curriculumDir, 'grammar');
   const readingsFiles = loadMergedPassages(curriculumDir);
+  const jlptEquivalence = loadJlptEquivalence(curriculumDir);
   const dependenciesFile = readJson<{ edges: DependencyEdge[] }>(
     path.join(curriculumDir, 'dependencies', 'graph.json'),
   );
@@ -651,8 +637,8 @@ export function compileCurriculum(
     db.exec(CURRICULUM_DDL);
 
     const insertItem = db.prepare(`
-      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, word_type, conjugation_class, reading_composition, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
-      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @word_type, @conjugation_class, @reading_composition, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
+      INSERT INTO items (id, item_type, level, slug, primary_form, furigana, meaning, word_type, conjugation_class, reading_composition, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
+      VALUES (@id, @item_type, @level, @slug, @primary_form, @furigana, @meaning, @word_type, @conjugation_class, @reading_composition, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
     `);
 
     const insertReading = db.prepare(`
@@ -845,7 +831,7 @@ export function compileCurriculum(
       insertItem.run({
         id,
         item_type: 'radical',
-        jlpt_level: radical.jlpt_level,
+        level: radical.level,
         slug: radical.slug,
         primary_form: radical.primary_form,
         furigana: null,
@@ -880,7 +866,7 @@ export function compileCurriculum(
       insertItem.run({
         id,
         item_type: 'kanji',
-        jlpt_level: kanjiItem.jlpt_level,
+        level: kanjiItem.level,
         slug: kanjiItem.slug,
         primary_form: kanjiItem.primary_form,
         furigana: null,
@@ -925,7 +911,7 @@ export function compileCurriculum(
       insertItem.run({
         id,
         item_type: 'vocabulary',
-        jlpt_level: vocab.jlpt_level,
+        level: vocab.level,
         slug: vocab.slug,
         primary_form: vocab.primary_form,
         furigana: vocab.furigana ?? null,
@@ -989,7 +975,7 @@ export function compileCurriculum(
       insertItem.run({
         id,
         item_type: 'grammar',
-        jlpt_level: grammarItem.jlpt_level,
+        level: grammarItem.level,
         slug: grammarItem.slug,
         primary_form: grammarItem.primary_form,
         furigana: null,
@@ -1147,8 +1133,8 @@ export function compileCurriculum(
     }
 
     const insertPassage = db.prepare(`
-      INSERT INTO reading_passages (id, jlpt_level, title, body, body_furigana, english_translation, summary_ja, summary_en, word_count, sort_order)
-      VALUES (@id, @jlpt_level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
+      INSERT INTO reading_passages (id, level, title, body, body_furigana, english_translation, summary_ja, summary_en, word_count, sort_order)
+      VALUES (@id, @level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
     `);
     const insertPassageWordSpan = db.prepare(`
       INSERT INTO passage_word_spans (passage_id, vocabulary_item_id, start_offset, end_offset, inflection, sort_order)
@@ -1172,7 +1158,7 @@ export function compileCurriculum(
         const passageId = passageIds.idByKey.get(passageKey(passage.slug))!;
         insertPassage.run({
           id: passageId,
-          jlpt_level: readingsFile.jlpt_level,
+          level: passage.level,
           title: passage.title,
           body: passage.body,
           body_furigana: passage.body_furigana ?? null,
@@ -1234,6 +1220,14 @@ export function compileCurriculum(
           });
         }
       }
+    }
+
+    const insertJlptEquivalence = db.prepare(`
+      INSERT INTO level_jlpt_equivalence (jlpt, first_level, last_level)
+      VALUES (@jlpt, @first_level, @last_level)
+    `);
+    for (const row of jlptEquivalence) {
+      insertJlptEquivalence.run(row);
     }
 
     const contentHash = computeContentHash(discoverContentHashFiles(curriculumDir), curriculumDir);

@@ -151,3 +151,33 @@ export function buildPayload(
     published_at: now.toISOString(),
   };
 }
+
+/**
+ * Which schema a release is signed for, and which file it ships. No flags: the
+ * committed seed under the current schema. An older schema (content fixes for
+ * old store apps) needs `--seed <file>`, a db compiled for that schema: the
+ * committed seed has the current shape.
+ */
+export function resolveReleaseTarget(
+  args: string[],
+  currentSchema: number,
+): { schema: number; seedFile: string | undefined } {
+  const value = (flag: string): string | undefined => {
+    const i = args.indexOf(flag);
+    return i >= 0 ? args[i + 1] : undefined;
+  };
+  const schemaArg = value('--schema');
+  const seedFile = value('--seed');
+  const schema = schemaArg === undefined ? currentSchema : Number(schemaArg);
+  if (!Number.isInteger(schema) || schema < 1 || schema > currentSchema) {
+    throw new Error(`--schema must be a whole number from 1 to ${currentSchema}.`);
+  }
+  if (schema === currentSchema && seedFile !== undefined) {
+    throw new Error('--seed is for an older --schema only. The current schema ships the committed seed.');
+  }
+  if (schema < currentSchema && seedFile === undefined) {
+    throw new Error(`--schema ${schema} needs --seed <file>: a db compiled for schema ${schema}.`);
+  }
+  return { schema, seedFile };
+}
+

@@ -7,7 +7,7 @@ export const CURRICULUM_DB_NAME = 'curriculum.db';
 export const CURRICULUM_DOWNLOAD_NAME = 'curriculum.db.download';
 
 /** Keep equal to CURRICULUM_SCHEMA_VERSION in scripts/curriculum-schema.ts. */
-export const REQUIRED_CURRICULUM_SCHEMA_VERSION = 1;
+export const REQUIRED_CURRICULUM_SCHEMA_VERSION = 2;
 
 /** Web is served by the same Worker that hosts /api/*, so its URLs are relative. */
 export function getCurriculumBaseUrl(): string {

@@ -9,6 +9,7 @@ import {
   isSqliteFile,
   publicKeyBase64,
   publicKeyFromBase64,
+  resolveReleaseTarget,
   signManifest,
   verifyManifest,
   type ManifestPayload,
@@ -148,8 +149,8 @@ describe('curriculum-release', () => {
     expect(verifyManifest(fixture, { test: expectedPublic })).toEqual(PAYLOAD);
   });
 
-  it('CURRICULUM_SCHEMA_VERSION is 1', () => {
-    expect(CURRICULUM_SCHEMA_VERSION).toBe(1);
+  it('CURRICULUM_SCHEMA_VERSION is 2', () => {
+    expect(CURRICULUM_SCHEMA_VERSION).toBe(2);
   });
 
   it('isSqliteFile accepts a SQLite header and rejects an LFS pointer', () => {
@@ -183,5 +184,24 @@ describe('curriculum-release', () => {
       size_bytes: 1024,
       published_at: '2026-11-20T10:11:12.345Z',
     });
+  });
+
+  it('resolveReleaseTarget: no flags releases the committed seed under the current schema', () => {
+    expect(resolveReleaseTarget([], 2)).toEqual({ schema: 2, seedFile: undefined });
+    expect(resolveReleaseTarget(['--schema', '2'], 2)).toEqual({ schema: 2, seedFile: undefined });
+  });
+
+  it('resolveReleaseTarget: an older schema needs the file of that schema', () => {
+    expect(resolveReleaseTarget(['--schema', '1', '--seed', '/tmp/s1.db'], 2)).toEqual({
+      schema: 1,
+      seedFile: '/tmp/s1.db',
+    });
+    expect(() => resolveReleaseTarget(['--schema', '1'], 2)).toThrow('--seed');
+  });
+
+  it('resolveReleaseTarget: rejects a bad schema, and --seed under the current schema', () => {
+    expect(() => resolveReleaseTarget(['--schema', 'x'], 2)).toThrow('--schema');
+    expect(() => resolveReleaseTarget(['--schema', '3'], 2)).toThrow('--schema');
+    expect(() => resolveReleaseTarget(['--seed', '/tmp/a.db'], 2)).toThrow('--seed');
   });
 });

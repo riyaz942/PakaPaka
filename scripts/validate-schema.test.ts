@@ -26,18 +26,22 @@ function writeTempCurriculumDir(vocabularyItem: Record<string, unknown>): string
     path.join(tempDir, 'metadata.json'),
     JSON.stringify({
       version: 1,
-      jlpt_levels: ['N5'],
       description: 'Fixture metadata for furigana validation tests',
     }),
   );
   fs.mkdirSync(path.join(tempDir, 'vocabulary'));
   fs.writeFileSync(
-    path.join(tempDir, 'vocabulary', 'n5.json'),
+    path.join(tempDir, 'vocabulary', 'items.json'),
     JSON.stringify({
-      jlpt_level: 'N5',
       // Every vocabulary item needs a reading answer key; supply a default so
       // tests about other fields do not have to restate it.
-      items: [{ accepted_answers: [{ answer_type: 'reading', answer_text: 'かな' }], ...vocabularyItem }],
+      items: [
+        {
+          level: 1,
+          accepted_answers: [{ answer_type: 'reading', answer_text: 'かな' }],
+          ...vocabularyItem,
+        },
+      ],
     }),
   );
   return tempDir;
@@ -54,6 +58,7 @@ describe('grammarItem accepted_forms', () => {
   }
   const point = {
     slug: 'primer',
+    level: 1,
     primary_form: '活用',
     meaning: 'How words change',
     structure: 'x',
@@ -210,14 +215,13 @@ function writeTempGrammarDir(grammarItem: Record<string, unknown>): string {
     path.join(tempDir, 'metadata.json'),
     JSON.stringify({
       version: 1,
-      jlpt_levels: ['N5'],
       description: 'Fixture metadata for cloze validation tests',
     }),
   );
   fs.mkdirSync(path.join(tempDir, 'grammar'));
   fs.writeFileSync(
-    path.join(tempDir, 'grammar', 'n5.json'),
-    JSON.stringify({ jlpt_level: 'N5', items: [grammarItem] }),
+    path.join(tempDir, 'grammar', 'items.json'),
+    JSON.stringify({ items: [{ level: 1, ...grammarItem }] }),
   );
   return tempDir;
 }
@@ -349,14 +353,13 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
         version: 1,
-        jlpt_levels: ['N5'],
-        description: 'Fixture metadata for readings validation tests',
+          description: 'Fixture metadata for readings validation tests',
       }),
     );
     fs.mkdirSync(path.join(tempDir, 'readings'));
     fs.writeFileSync(
-      path.join(tempDir, 'readings', 'n5.json'),
-      JSON.stringify({ jlpt_level: 'N5', passages: [{ slug: 'test', ...passage }] }),
+      path.join(tempDir, 'readings', 'items.json'),
+      JSON.stringify({ passages: [{ slug: 'test', level: 1, ...passage }] }),
     );
     return tempDir;
   }
@@ -452,14 +455,13 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
         version: 1,
-        jlpt_levels: ['N5'],
-        description: 'Fixture metadata for kanji validation tests',
+          description: 'Fixture metadata for kanji validation tests',
       }),
     );
     fs.mkdirSync(path.join(tempDir, 'kanji'));
     fs.writeFileSync(
-      path.join(tempDir, 'kanji', 'n5.json'),
-      JSON.stringify({ jlpt_level: 'N5', items: [kanjiItem] }),
+      path.join(tempDir, 'kanji', 'items.json'),
+      JSON.stringify({ items: [{ level: 1, ...kanjiItem }] }),
     );
     return tempDir;
   }
@@ -548,14 +550,13 @@ describe('validateCurriculum Rev 1 fields', () => {
       path.join(tempDir, 'metadata.json'),
       JSON.stringify({
         version: 1,
-        jlpt_levels: ['N5'],
-        description: 'Fixture metadata for radical validation tests',
+          description: 'Fixture metadata for radical validation tests',
       }),
     );
     fs.mkdirSync(path.join(tempDir, 'radicals'));
     fs.writeFileSync(
-      path.join(tempDir, 'radicals', 'n5.json'),
-      JSON.stringify({ jlpt_level: 'N5', items: [radicalItem] }),
+      path.join(tempDir, 'radicals', 'items.json'),
+      JSON.stringify({ items: [{ level: 1, ...radicalItem }] }),
     );
     return tempDir;
   }
@@ -700,7 +701,7 @@ describe('curriculum schema validation', () => {
     const validate = compileRadicalsValidator();
     const fixture = JSON.parse(
       fs.readFileSync(
-        path.join(__dirname, '__fixtures__', 'valid', 'radicals', 'n5.json'),
+        path.join(__dirname, '__fixtures__', 'valid', 'radicals', 'items.json'),
         'utf8',
       ),
     );
@@ -714,5 +715,81 @@ describe('curriculum schema validation', () => {
     );
     expect(validate(fixture)).toBe(false);
     expect(validate.errors?.length).toBeGreaterThan(0);
+  });
+});
+
+describe('validateCurriculum levels', () => {
+  const radical = { slug: 'ichi', primary_form: '一', meaning: 'one' };
+
+  function writeTempLevelDir(radicalsFile: Record<string, unknown>, metadata: Record<string, unknown> = {}): string {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-level-'));
+    fs.writeFileSync(
+      path.join(tempDir, 'metadata.json'),
+      JSON.stringify({ version: 1, description: 'Fixture metadata for level tests', ...metadata }),
+    );
+    fs.mkdirSync(path.join(tempDir, 'radicals'));
+    fs.writeFileSync(path.join(tempDir, 'radicals', 'items.json'), JSON.stringify(radicalsFile));
+    return tempDir;
+  }
+
+  function validateRadicalsFile(file: Record<string, unknown>, metadata?: Record<string, unknown>) {
+    const tempDir = writeTempLevelDir(file, metadata);
+    try {
+      return validateCurriculum(tempDir);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  }
+
+  it.each([1, 30, 60])('accepts level %i', (level) => {
+    expect(validateRadicalsFile({ items: [{ ...radical, level }] }).ok).toBe(true);
+  });
+
+  it('rejects an item without a level', () => {
+    const result = validateRadicalsFile({ items: [radical] });
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.errors.some((e) => e.includes("must have required property 'level'"))).toBe(true);
+    }
+  });
+
+  it.each([0, 61, 1.5])('rejects level %p', (level) => {
+    expect(validateRadicalsFile({ items: [{ ...radical, level }] }).ok).toBe(false);
+  });
+
+  it('rejects a file with a jlpt_level key', () => {
+    const result = validateRadicalsFile({ jlpt_level: 'N5', items: [{ ...radical, level: 1 }] });
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.errors.some((e) => e.includes('additional properties'))).toBe(true);
+    }
+  });
+
+  it('rejects an item with a jlpt_level key', () => {
+    expect(validateRadicalsFile({ items: [{ ...radical, level: 1, jlpt_level: 'N5' }] }).ok).toBe(false);
+  });
+
+  it('rejects metadata with jlpt_levels', () => {
+    expect(
+      validateRadicalsFile({ items: [{ ...radical, level: 1 }] }, { jlpt_levels: ['N5'] }).ok,
+    ).toBe(false);
+  });
+
+  it('rejects a passage without a level', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-level-'));
+    fs.writeFileSync(
+      path.join(tempDir, 'metadata.json'),
+      JSON.stringify({ version: 1, description: 'Fixture metadata for level tests' }),
+    );
+    fs.mkdirSync(path.join(tempDir, 'readings'));
+    fs.writeFileSync(
+      path.join(tempDir, 'readings', 'items.json'),
+      JSON.stringify({ passages: [{ slug: 'test', title: 'Test', body: '一です。' }] }),
+    );
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 });
