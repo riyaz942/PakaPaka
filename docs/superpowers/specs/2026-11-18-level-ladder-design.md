@@ -1,6 +1,6 @@
 # Level ladder — design
 
-Design date: **2026-11-18**. Status: **draft, waiting for operator approval.**
+Design date: **2026-11-18**. Status: **approved by the operator, 2026-11-22.**
 
 Replaces the JLPT-level structure of the curriculum with this app's own numbered levels, in the
 style of WaniKani. Supersedes the band model of
@@ -59,11 +59,21 @@ opens, for the sense of achievement.
   `src/core/sync/`, new data in `BackupData` and `SYNC_TABLES`).
 - Slugs and item ids do not change (`id-registry.json`). `user.db` is keyed by id, mnemonic
   sidecars by slug.
-- The web app is live (paka-paka.app) with real `user.db` data. Mobile and over-the-air
-  curriculum updates (Part 4) are not live, so an installed app cannot receive a new
-  `curriculum.db` without the matching app code.
-- Work happens on branch `part3-sync` (operator instruction). Do not create a new branch. Other
-  agents work on this branch at the same time: **do not commit**; the operator commits.
+- The web app is live (paka-paka.app) with real `user.db` data. Mobile ships too. Over-the-air
+  curriculum updates went live on 2026-11-20/21 (Part 4). Each app reads only the manifest for
+  its own schema: `/api/curriculum/s${REQUIRED_CURRICULUM_SCHEMA_VERSION}/manifest.json`
+  (`mobile/src/data/curriculum/curriculumConfig.ts`). The ladder changes the curriculum DDL
+  (`items.level`), so the build raises `CURRICULUM_SCHEMA_VERSION` and
+  `REQUIRED_CURRICULUM_SCHEMA_VERSION` from 1 to 2 together. The ladder `curriculum.db` goes to
+  `s2/`. An old app keeps reading `s1` and never gets the new curriculum.
+- **The `s1` release path stays working after the switch.** The operator can still publish content
+  fixes to `s1` for old store apps (the runbook is `docs/curriculum-releases.md`). The build must
+  not delete or break it.
+- Work happens on branch `docs/level-ladder-plan` (operator decision, 2026-11-22). Do not create a
+  new branch. Commit at each task checkpoint, when the tests are green.
+- The current JLPT app is released for feedback while this work continues. Merge `main` into this
+  branch often (about weekly). Generated files (`items.json`, `curriculum.db`) are rebuilt after a
+  merge, never merged by hand.
 - Shipped passages live in `_build/n5_readings.py` / `n4_readings.py`; ingest rebuilds them from
   drafts (memory: passage edit ship path).
 - WaniKani data (`curriculum/_build/data/ref_subjects.json`) is a private reference. No WaniKani
@@ -79,8 +89,10 @@ opens, for the sense of achievement.
 | Gain | One data model, no dual code | Safe when curriculum updates reach installed apps |
 | Cost | One large change | Two fields and two code paths for a period |
 
-Over-the-air curriculum updates are not live, so the two-step safety buys nothing. Operator
-chose one switch (2026-11-18).
+The two-step safety buys nothing, because old apps never receive the ladder curriculum. Each app
+reads the manifest for its own schema (`s1` or `s2`, §5), so an old app keeps its JLPT
+`curriculum.db` and a new app gets the ladder one. There is no period where an app holds a
+database that its code cannot read. Operator chose one switch (2026-11-18).
 
 ### 6.2 Where the order comes from — chosen: **our own order**
 
@@ -252,7 +264,7 @@ the real build and replaces this table.
 | Kanji | Mnemonics that break (they name only radicals, and radicals now always come first) | 0 | — |
 | Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 3 of 396 | Before release |
 | Radicals | Mnemonics that break (they name nothing else) | 0 | — |
-| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 | Before release |
+| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22) | Before release |
 
 Radicals without art still render as text; that does not change.
 
@@ -287,7 +299,7 @@ About 40 non-test files under `mobile/src` refer to JLPT today. They move to the
 - **Talk.** The turn budget and curriculum words use the current level, not the JLPT level.
 - **Item detail.** Header shows "Level 7"; the JLPT value disappears.
 
-### 7.9 Existing users (web)
+### 7.9 Existing users (web and mobile)
 
 A numbered migration cannot do this work: `initializeDatabases` (`mobile/src/data/database.ts`)
 runs migrations before `curriculum.db` is attached, and the work needs item levels. So it is a
@@ -302,17 +314,28 @@ runs migrations before `curriculum.db` is attached, and the work needs item leve
   but whose kanji is now at a later level keeps its rows. The existing rule "ask the reading only
   when every kanji is Guru" stays in the app, so these words keep working with no special case.
 - The sync file format gets the new preferences. A device on the old app version cannot sync with
-  the new file shape; the builder decides how the format version handles it (§8).
+  the new file shape. The ladder switch **bumps `BACKUP_FORMAT_VERSION` from 1 to 2**
+  (`mobile/src/core/backup/backupSerializer.ts`). The current app already refuses a file with a
+  different format version (`BACKUP_VERSION_UNSUPPORTED`), and sync turns that into
+  `sync_update_required` ("Update the app to sync", `syncCodec.ts`). So an old app cannot read or
+  overwrite the new file. The new app reads versions 1 and 2 (old backups and an old remote file
+  still restore, then the conversion above runs) and writes version 2.
+- **Accepted: practice results restart.** `passage_practice_results` is keyed by `passage_id`. All
+  60 passages are rewritten with new ids (Task 9), so old results no longer count. The operator
+  accepts this.
+- **Harmless: sentence rotation restarts.** `grammar_sentence_history.sentence_keys` goes stale
+  after the grammar regeneration (§7.6). A stale key matches no sentence, so the rotation starts
+  again.
 
 ## 8. Left to the builder
+
+Decided, not left: the sync format version is bumped (§7.9).
 
 - Exact kanji counts per level after 20, and the exact frequency-slot curve for words, inside the
   limits of §7.1 and §7.2.
 - File names and layout of the generated per-type source files.
 - Visual design of the gate progress card and the level-up card, inside the existing NativeWind
   tokens.
-- How the sync format version handles an old-app device (bump the version and refuse, or accept the
-  file without the new keys).
 - The order of tasks inside the plan, as long as the build report (§7.7) comes before any app
   change.
 

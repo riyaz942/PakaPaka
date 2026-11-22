@@ -12,7 +12,10 @@
 
 ## Global Constraints
 
-- **Do not commit.** Other agents work on branch `part3-sync`. Every task ends with a checkpoint (tests green, files left uncommitted). The operator commits. Do not create a branch.
+- **Branch and commits.** Work on `docs/level-ladder-plan` (operator decision, 2026-11-22). Do not create a branch. Commit at each task checkpoint, when the tests are green (one commit per task, `git add` only the files of the task).
+- **Merge `main` often** (about weekly): the JLPT app is released for feedback while this work continues. After a merge, rebuild the generated files (`items.json`, `curriculum.db`, `ladder.json` outputs); never merge them by hand.
+- **Over-the-air.** The ladder `curriculum.db` is `schema` 2: raise `CURRICULUM_SCHEMA_VERSION` (`scripts/curriculum-schema.ts`) and `REQUIRED_CURRICULUM_SCHEMA_VERSION` (`mobile/src/data/curriculum/curriculumConfig.ts`) together in Task 5. Keep the `s1` release path working (`scripts/release-curriculum.ts`, `docs/curriculum-releases.md`) for content fixes to old store apps.
+- **Level 1 has no reading passage.** 60 passages, about 3 per level, levels 2–20.
 - Levels are integers 1–60. Every level has at least 1 kanji.
 - Kanji per level: 18, 24, 28, then 30 for levels 4–20; the rest split evenly over levels 21–60.
 - Gate: a level is complete when ≥ 90% of its kanji are Guru or higher, or marked known (`LEVEL_GATE_RATIO = 0.9`). Only kanji count.
@@ -63,7 +66,7 @@
 - [ ] **Step 2: Run** `curriculum/_build/.venv/bin/python -m unittest curriculum/_build/test_levels.py` → FAIL.
 - [ ] **Step 3: Implement** the interfaces above. Remove the JLPT entries from `levels.json`; the grammar order they encoded is kept by the grammar teaching order in Task 2 (spec §7.2 rule 7).
 - [ ] **Step 4: Run** the same command → PASS.
-- [ ] **Step 5: Checkpoint** (no commit). `generate.py` still imports `place`; it is fixed in Task 4, so do not run the full build yet.
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task). `generate.py` still imports `place`; it is fixed in Task 4, so do not run the full build yet.
 
 ### Task 2: `ladder.py` — assign every item a level
 
@@ -109,7 +112,7 @@ Rules (spec §7.2):
 - [ ] **Step 2: Run** `curriculum/_build/.venv/bin/python -m unittest curriculum/_build/test_ladder.py` → FAIL.
 - [ ] **Step 3: Implement** `build_ladder` and `main()`. `main()` reads kanji and radical edges from `skeleton.json` + `decomposition.json` + the hand-authored kanji datasets (as `generate_bands()` does), words from `_vocab_sources()` order, grammar from `jlpt_reference.json` (`core` = N5 list then N4 list, `n3` = N3 list, each in its stored order), passages from `n5_readings.py` / `n4_readings.py`.
 - [ ] **Step 4: Run** the tests → PASS. Run `curriculum/_build/.venv/bin/python curriculum/_build/ladder.py` → writes `ladder.json`, exit 0, prints per-level kanji counts matching `KANJI_PER_LEVEL`.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 3: Ladder report (replaces the band and level reports) — operator checkpoint
 
@@ -158,7 +161,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** → FAIL.
 - [ ] **Step 3: Implement.** Update the existing generator tests for the new signatures.
 - [ ] **Step 4: Run** the full Python suite → PASS. Run `generate.py --report-pool` and `generate_deps.py` → exit 0.
-- [ ] **Step 5: Checkpoint** (no commit). CI regenerate step: `python curriculum/_build/ladder.py && python curriculum/_build/generate.py && python curriculum/_build/generate_deps.py` (until Task 7, CI uses `--report-pool`).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task). CI regenerate step: `python curriculum/_build/ladder.py && python curriculum/_build/generate.py && python curriculum/_build/generate_deps.py` (until Task 7, CI uses `--report-pool`).
 
 ### Task 5: Schema, validation and compile
 
@@ -174,12 +177,13 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - `CREATE TABLE level_jlpt_equivalence (jlpt TEXT PRIMARY KEY, first_level INTEGER NOT NULL, last_level INTEGER NOT NULL)` — rows from `ladder.json` `jlpt_equivalence`. Compile reads `_build/ladder.json` for this table only.
   - `curriculum_metadata` has no `jlpt_levels`.
 - `assignItemIds` sorts new keys by `level` (number), then type, then slug.
+- `CURRICULUM_SCHEMA_VERSION` and `REQUIRED_CURRICULUM_SCHEMA_VERSION` go from 1 to 2 together (the root test `scripts/curriculum-schema-sync.test.ts` checks they match). The `s1` release path keeps working; `release-curriculum.ts` still accepts schema 1 for old-app fixes. Update `docs/curriculum-releases.md` and `mobile/assets/curriculum-manifest/README.md` for the second schema, and swap the bundled seed manifest to schema 2.
 
 - [ ] **Step 1: Write failing tests**: validate rejects an item without `level`, a `level` of 0 or 61, and a file with a `jlpt_level` key; compile writes `items.level` as an integer and two `level_jlpt_equivalence` rows; ids of existing keys do not change after a level move (fixture registry).
 - [ ] **Step 2: Run** `npm test -- scripts/validate-schema.test.ts scripts/compile-curriculum.test.ts` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** the tests → PASS. Run `npm run validate-schema && npm run compile-curriculum` → exit 0, no `--update-registry` needed (no key added or removed). `sqlite3 mobile/assets/curriculum-seed/curriculum.db "SELECT MIN(level), MAX(level), COUNT(*) FROM items"` → `1|60|12726`.
-- [ ] **Step 5: Checkpoint** (no commit). The app is broken against this database until Task 10; do not run the app in between.
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task). The app is broken against this database until Task 10; do not run the app in between.
 
 ## Phase 2 — Content tools and content
 
@@ -200,7 +204,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** the full Python suite → the updated tests FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** the full Python suite → PASS. `grep -rn "\"n5\"\|'n5'\|LEVEL_ORDER\|ALL_LEVELS" curriculum/_build --include='*.py' | grep -v test_ | grep -v jlpt_reference` → only dataset file names (`n5_vocab.py` imports) remain.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 7: Grammar content (before release)
 
@@ -216,7 +220,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 3: Check the 159 grammar mnemonics** by script (tokenize the Japanese example, compare with `slugs_at_or_below`), regenerate only those that fail, with `grammar-mnemonic.md`.
 - [ ] **Step 4: Remove `--report-pool`** from `generate.py` and CI. Run `generate.py` → exit 0 (pool gate strict again).
 - [ ] **Step 5: Run** `ladder_report.py` → the three counts are 0. Run the full Python suite → PASS.
-- [ ] **Step 6: Checkpoint** (no commit).
+- [ ] **Step 6: Checkpoint** (tests green, then commit the task).
 
 ### Task 8: New kanji and radical mnemonics (before release)
 
@@ -231,7 +235,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `validate_mnemonics.py` on the new drafts → no errors; ingest.
 - [ ] **Step 3: Run** `generate.py` and `ladder_report.py` → both counts are 0.
 - [ ] **Step 4: Operator review** of the new mnemonics (review_status stays `draft` until the operator marks them).
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 9: Reading passages (before release)
 
@@ -246,7 +250,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 1: Rewrite the seeds**: 60 seeds, levels 2–20, each with `required_grammar` from grammar at or below its level and every core grammar point of levels 1–20 in at least one seed (the existing seed coverage check, now by level).
 - [ ] **Step 2: Draft** with `reading-passage.md`; word-band pre-check before ingest (memory: ~0.57 tokenizer words per Japanese character, aim mid-band); probe causative forms with `grammar_detect` (memory).
 - [ ] **Step 3: Run** `validate_readings.py` on each draft → pass; ingest; run `generate.py` and `ladder_report.py` → `passages_above_target == 0`. Run `npm run validate-schema && npm run compile-curriculum` — the passage set changed, so add `-- --update-registry` and check that old passage ids move to `retired` and question ids too (the registry rule: an id never goes to a different key).
-- [ ] **Step 4: Checkpoint** (no commit).
+- [ ] **Step 4: Checkpoint** (tests green, then commit the task).
 
 ## Phase 3 — App
 
@@ -268,7 +272,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `cd mobile && npx jest src/data/curriculum` → FAIL.
 - [ ] **Step 3: Implement.** `npx tsc --noEmit` now lists every caller that still uses JLPT types; Tasks 11–16 fix them.
 - [ ] **Step 4: Run** the tests → PASS.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 11: Pure level rules
 
@@ -295,7 +299,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `npx jest src/core/level` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** → PASS.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 12: Level preferences, one-time conversion and sync
 
@@ -311,6 +315,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - `getActiveLevel(userDb): number | null`, `setActiveLevel(userDb, level: number): void`, `getCompletedLevels(userDb): number[]` (sorted, a bad value reads as `[]`), `addCompletedLevels(userDb, levels: number[]): void`.
   - `convertJlptPreference(curriculumDb, userDb): Result<void, AppError>` — idempotent. When `active_level` is missing: `completed_levels` = every level whose gate passes now; start = the N5/N4 row's `firstLevel` for a stored `starting_jlpt_level` of N5/N4, the last N4 level + 1 for N3–N1, 1 when none; `active_level` = start if not completed, else `nextActiveLevel(start, …)`. Deletes `starting_jlpt_level`. When `active_level` exists but is completed: moves it with `nextActiveLevel`.
   - Called (a) in `initializeDatabases` after `attachCurriculumForQuery`, (b) after a backup restore, (c) after a sync apply.
+  - `BACKUP_FORMAT_VERSION` 1 → 2 (`core/backup/backupSerializer.ts`). Decode accepts 1 and 2 and writes 2; a version above 2 stays `BACKUP_VERSION_UNSUPPORTED` (→ `sync_update_required`). Spec §7.9.
   - `mergePreferences`: `completed_levels` changed on both sides → sorted numeric union (same pattern as `seen_unlocked_passage_ids`, a parser for a JSON integer list); a value that is not an integer list is a normal conflict.
 - [ ] **Step 1: Write failing tests**:
   - Conversion: a web user with `starting_jlpt_level = 'N5'` and Guru+ on 27 of the 30 level-1 kanji → `completed_levels = [1]`, `active_level = 2`, `starting_jlpt_level` gone. Run twice → same result.
@@ -318,10 +323,11 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - Review Focus 1: restore a backup file with `starting_jlpt_level` and no `active_level` → after restore, `active_level` is set and not 1 for an N4 user.
   - Review Focus 2: merge local `completed_levels [1,2]` and remote `[1,3]` from base `[1]` → `[1,2,3]`; then conversion on `active_level = 3` → moves to 4.
   - `getCompletedLevels` with stored `"nonsense"` → `[]`.
+  - Backup format: a version 1 file decodes and restores; a file made by the new app has `formatVersion` 2; a version 3 file → `BACKUP_VERSION_UNSUPPORTED`.
 - [ ] **Step 2: Run** `npx jest src/data/level src/core/sync src/data/user` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** → PASS, including the existing sync suites.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 13: Gate refresh and level picking
 
@@ -346,7 +352,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `npx jest src/data/level src/data/user/placementRepository.test.ts` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** → PASS.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 14: Lesson planner on the active level
 
@@ -369,7 +375,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `npx jest src/data/lessonPlan.test.ts src/core/lesson` → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** → PASS.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 15: Home, level-up card and Levels screen
 
@@ -388,7 +394,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** `npx jest src/app/\(tabs\)/dashboard src/app/levels src/components/engagement` → FAIL.
 - [ ] **Step 3: Implement** with semantic NativeWind tokens only; a11y labels on every pressable (lint blocks merge).
 - [ ] **Step 4: Run** the tests and `npm run lint` → PASS.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 16: Remaining JLPT readers — onboarding, placement, Browse, detail, Talk, reading
 
@@ -410,7 +416,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 2: Run** the touched suites → FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4: Run** `cd mobile && npx jest && npm run lint && npx tsc --noEmit` → PASS (only the 5 known converse errors). `grep -rniE "jlpt" mobile/src --include='*.ts' --include='*.tsx' | grep -v -E '\.test\.'` → only `levelRepository.ts` (equivalence query), `core/level/jlptLabel.ts`, `convertJlptPreference.ts` / the `startingJlptLevel` constant, and display copy.
-- [ ] **Step 5: Checkpoint** (no commit).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
 ### Task 17: Pace check with the real scheduler
 
@@ -423,7 +429,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 
 - [ ] **Step 1: Implement** `--ladder` (grade reviews through the scheduler instead of the `GURU_AFTER_DAYS` shortcut).
 - [ ] **Step 2: Run** `npx tsx --tsconfig mobile/tsconfig.json scripts/simulate-lessons.ts --ladder`. Target: mean about 7 days per level. If the mean is above 14 days, **stop and report to the operator** with the table (spec §9); do not tune the scheduler or the gate.
-- [ ] **Step 3: Checkpoint** (no commit). Record the table in `docs/working-history.md` (Task 18).
+- [ ] **Step 3: Checkpoint** (tests green, then commit the task). Record the table in `docs/working-history.md` (Task 18).
 
 ### Task 18: Docs and status
 
@@ -431,7 +437,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - Modify: `docs/working-history.md` (new row for this design and plan, status per phase), `curriculum/README.md` (finish what Task 4 started: Levels, Moving an item with integer `levels.json`, Authoring queue from `ladder-report.md`), `docs/content/kanji-coverage-and-dependency-order-plan.md` and `docs/content/untaught-kanji-in-vocabulary-mnemonics-plan.md` (one line at the top: "Superseded 2026-11-18 by docs/superpowers/specs/2026-11-18-level-ladder-design.md"), `docs/srs-system-vs-wanikani.md` (§ "Item-level, not account-level" now has a level gate)
 
 - [ ] **Step 1: Write** the updates. State measured numbers from `ladder-report.md` and Task 17, not the spec estimates.
-- [ ] **Step 2: Checkpoint** (no commit). Tell the operator the before-release work is complete and list what is uncommitted.
+- [ ] **Step 2: Checkpoint** (tests green, then commit the task). Tell the operator the before-release work is complete and list the commits.
 
 ## Phase 4 — Later (after release)
 
@@ -447,4 +453,4 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 1: Regenerate example sentences** that use a later word, in level order (levels 1–20 first), with `vocab-examples.md`; dry-run `validate_examples.py`; write じる / ご覧になる forms literally (memory).
 - [ ] **Step 2: Regenerate the vocabulary mnemonics** listed in `regen_vocab_mnemonics.json` with `vocab-mnemonic.md`; the story may now name every kanji of the word. Operator approved this regeneration (spec §3).
 - [ ] **Step 3: Run** `validate_mnemonics.py`, `generate.py`, `ladder_report.py` → both counts are 0; full Python suite → PASS.
-- [ ] **Step 4: Checkpoint** (no commit). Update `docs/working-history.md`.
+- [ ] **Step 4: Checkpoint** (tests green, then commit the task). Update `docs/working-history.md`.
