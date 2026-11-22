@@ -56,7 +56,7 @@ class GrammarContextTest(unittest.TestCase):
     }
 
     def test_context_carries_the_point_and_its_origin(self):
-        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
+        ctx = mc.grammar_context("teoku", self.TABLE)
         self.assertEqual(ctx["form"], "ておく")
         self.assertIn("ておく", ctx["accepted_forms"])
         self.assertEqual(ctx["origin"]["word"], "置く")
@@ -66,11 +66,11 @@ class GrammarContextTest(unittest.TestCase):
         self.assertIn("買", ctx["allowed_kanji"])
 
     def test_null_origin_is_kept_as_none(self):
-        self.assertIsNone(mc.grammar_context("n5", "wa-topic", self.TABLE)["origin"])
+        self.assertIsNone(mc.grammar_context("wa-topic", self.TABLE)["origin"])
 
     def test_slug_without_a_table_entry_raises(self):
         with self.assertRaises(KeyError):
-            mc.grammar_context("n5", "ga", self.TABLE)
+            mc.grammar_context("ga", self.TABLE)
 
     def test_missing_lesson_raises(self):
         with self.assertRaises(FileNotFoundError):
@@ -121,7 +121,7 @@ def gctx(slug="teoku", form="ておく", accepted=("ておく", "とく"), origi
     if origin == "default":
         origin = {"word": "置く", "gloss": "to put down", "keywords": ["put", "set"]}
     return {
-        "type": "grammar", "level": "n4", "slug": slug, "form": form,
+        "type": "grammar", "level": 16, "slug": slug, "form": form,
         "accepted_forms": list(accepted), "meaning": "m", "structure": "s", "family": "patterns",
         "lesson_opening": "", "origin": origin, "allowed_vocab": ALLOWED,
         "allowed_index": level_check.build_allowed_index(ALLOWED),
@@ -145,7 +145,7 @@ def teshimau_ctx():
 
 
 def check(text, ctx=None):
-    return validate_grammar("n4", (ctx or gctx())["slug"], {"mnemonic_text": text}, ctx or gctx())
+    return validate_grammar((ctx or gctx())["slug"], {"mnemonic_text": text}, ctx or gctx())
 
 
 class GrammarGateTest(unittest.TestCase):
@@ -163,7 +163,7 @@ class GrammarGateTest(unittest.TestCase):
         self.assertEqual(check(""), ["mnemonic_text is missing or empty"])
 
     def test_unknown_keys_are_rejected(self):
-        errors = validate_grammar("n4", "teoku", {"mnemonic_text": TEOKU_GOOD, "description": "x"}, gctx())
+        errors = validate_grammar("teoku", {"mnemonic_text": TEOKU_GOOD, "description": "x"}, gctx())
         self.assertEqual(errors, ["unexpected key(s) description; submit only mnemonic_text"])
 
     def test_length_band(self):
@@ -200,7 +200,7 @@ class GrammarGateTest(unittest.TestCase):
 
     def test_example_words_above_level_fail(self):
         text = TEOKU_GOOD.replace("買っ", "冷蔵庫に入れ")
-        self.assertTrue(any("uses words above N4" in e for e in check(text)))
+        self.assertTrue(any("uses words above level 16" in e for e in check(text)))
 
     def test_example_kanji_must_come_from_allowed_words(self):
         # 飲 is allowed (飲む); 酒 appears in no allowed word, so it has no furigana source.
@@ -232,7 +232,7 @@ class GeneratorWiringTest(unittest.TestCase):
     TABLE = GrammarContextTest.TABLE
 
     def test_prompt_has_every_token_filled(self):
-        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
+        ctx = mc.grammar_context("teoku", self.TABLE)
         prompt = gm.build_user_prompt("grammar", ctx)
         self.assertNotIn("{{", prompt)
         self.assertIn("ておく", prompt)
@@ -240,8 +240,8 @@ class GeneratorWiringTest(unittest.TestCase):
         self.assertIn(gm.WEB_TOOL_LINE["grammar"], prompt)
 
     def test_web_prompt_swaps_the_tool_line(self):
-        ctx = mc.grammar_context("n4", "teoku", self.TABLE)
-        text = gm._web_prompt_text("n4", "grammar", ctx)
+        ctx = mc.grammar_context("teoku", self.TABLE)
+        text = gm._web_prompt_text("grammar", ctx)
         self.assertNotIn(gm.WEB_TOOL_LINE["grammar"], text)
         self.assertIn('"mnemonic_text": "..."', text)
 
@@ -269,7 +269,7 @@ class GateReviewFixesTest(unittest.TestCase):
 
     @staticmethod
     def real(slug):
-        return mc.grammar_context("n3", slug, mc.load_grammar_origins())
+        return mc.grammar_context(slug, mc.load_grammar_origins())
 
     def test_point_whose_form_is_kanji_can_pass(self):
         # 代 is in no allowed word, but it is the point's own form.
@@ -279,7 +279,7 @@ class GateReviewFixesTest(unittest.TestCase):
             "私が行く<reading>代わりに</reading>、弟が買う。"
         )
         ctx = self.real("kawarini")
-        self.assertEqual(validate_grammar("n3", "kawarini", {"mnemonic_text": text}, ctx), [])
+        self.assertEqual(validate_grammar("kawarini", {"mnemonic_text": text}, ctx), [])
 
     def test_form_without_kana_takes_the_form_as_its_reading(self):
         text = (
@@ -288,7 +288,7 @@ class GateReviewFixesTest(unittest.TestCase):
             "安い。"
         )
         ctx = self.real("kke2")
-        errors = validate_grammar("n3", "kke2", {"mnemonic_text": text}, ctx)
+        errors = validate_grammar("kke2", {"mnemonic_text": text}, ctx)
         self.assertFalse(any("kana of the form" in e for e in errors), errors)
 
     def test_japanese_in_the_story_is_rejected(self):
@@ -341,10 +341,10 @@ class GateMinorFixesTest(unittest.TestCase):
     def test_point_without_a_family_raises(self):
         from unittest import mock
         items = [{k: v for k, v in it.items() if k != "family"}
-                 for it in mc.load_items("grammar", "n4")]
+                 for it in mc.load_items("grammar")]
         with mock.patch.object(mc, "load_items", return_value=items):
             with self.assertRaises(KeyError):
-                mc.grammar_context("n4", "teoku", GrammarContextTest.TABLE)
+                mc.grammar_context("teoku", GrammarContextTest.TABLE)
 
 
 if __name__ == "__main__":

@@ -43,24 +43,19 @@ from generate_content import mnemonic_context as mc
 from generate_content.validate_mnemonics import (
     _hira, _meaning_words, _references, _strip_tags, _tagged_spans)
 
-# The sidecar holds every level — resolve each slug to the level file it
-# currently lives in.
-slug_level = {}
-for lvl in mc.ALL_LEVELS:
-    for it in mc.load_items("kanji", lvl):
-        slug_level[it["slug"]] = lvl
+# The sidecar holds every level; kanji/items.json holds every kanji.
+known = {it["slug"] for it in mc.load_items("kanji")}
 
 report = {}
 with open("curriculum/kanji/mnemonics.json", encoding="utf-8") as f:
     sidecar = json.load(f)
 for slug, entry in sidecar.items():
-    level = slug_level.get(slug)
-    if level is None:
+    if slug not in known:
         report[slug] = {
             "components": [], "landing": "unresolved", "landing_meaning": None,
             "reading": "unresolved", "primary_reading": None}
         continue
-    ctx = mc.kanji_context(level, slug)
+    ctx = mc.kanji_context(slug)
     text = entry["meaning_mnemonic"]
     plain = _strip_tags(text, "radical")
     spans = _tagged_spans(text, "radical")

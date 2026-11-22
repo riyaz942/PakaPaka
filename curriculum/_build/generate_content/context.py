@@ -98,6 +98,13 @@ CORE_SEED_SLUGS = {
 }
 
 
+def level_dir(level):
+    """The folder a ladder level's drafts and web staging files live in:
+    `level-04`. The old JLPT folders (`n5/` ...) are not read any more; what
+    they held is in the committed sidecars."""
+    return f"level-{level:02d}"
+
+
 def load_items(kind, level):
     return jlpt_groups.load_items(kind, level)
 

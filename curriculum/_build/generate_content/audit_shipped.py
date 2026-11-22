@@ -338,8 +338,8 @@ def rerun_mnemonic_gates(level):
     """
     results = []
     for kind, dirname in (("radical", "radicals"), ("kanji", "kanji"), ("vocab", "vocabulary")):
-        for item in mnemonic_context.load_items(dirname, level):
-            errors = validate_mnemonics.validate_draft(level, kind, item["slug"], item)
+        for item in jlpt_groups.load_items(dirname, level):
+            errors = validate_mnemonics.validate_draft(kind, item["slug"], item)
             for e in errors:
                 results.append(("ERROR", f"{kind} {item['slug']}: {e}"))
     return results
@@ -651,8 +651,8 @@ def mnemonic_tag_reverse_errors(level):
         ("kanji", "kanji", "radical", mnemonic_context.kanji_context, "form"),
         ("vocab", "vocabulary", "kanji", mnemonic_context.vocab_context, "char"),
     ):
-        for item in mnemonic_context.load_items(dirname, level):
-            ctx = ctx_fn(level, item["slug"])
+        for item in jlpt_groups.load_items(dirname, level):
+            ctx = ctx_fn(item["slug"])
             text = item.get("meaning_mnemonic") or ""
             comps = ctx["components"]
             comp_words = [validate_mnemonics._meaning_words(c["meaning_synonyms"]) for c in comps]

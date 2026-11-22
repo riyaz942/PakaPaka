@@ -2,7 +2,7 @@
 """Reading-link fix lane
 (docs/superpowers/specs/2026-10-17-reading-mnemonic-meaning-link-design.md).
 
-Stored N5 + N4 reading mnemonics whose scene does not continue the meaning
+Stored reading mnemonics (every level) whose scene does not continue the meaning
 mnemonic's scene get a new `reading_mnemonic`. Whether a scene connects is a
 judgment, so triage and rewrite are the agent's work
 (prompts/reading-link-triage.md, prompts/reading-link-rewrite.md). This module
@@ -34,7 +34,6 @@ from generate_content import cast as cast_lib  # noqa: E402
 from generate_content import mnemonic_context as mc  # noqa: E402
 from generate_content.validate_mnemonics import validate_draft  # noqa: E402
 
-LEVELS = ("n5", "n4")
 KINDS = ("kanji", "vocab")
 ITEM_DIR = {"kanji": "kanji", "vocab": "vocabulary"}
 SIDECAR = {kind: os.path.join(mc.CURRICULUM_DIR, ITEM_DIR[kind], "mnemonics.json")
@@ -59,13 +58,12 @@ def dump_json(path, data):
         f.write("\n")
 
 
-def levels_by_slug(kind, levels=LEVELS):
-    return {it["slug"]: lvl for lvl in levels
-            for it in mc.load_items(ITEM_DIR[kind], lvl)}
+def levels_by_slug(kind):
+    return {it["slug"]: it["level"] for it in mc.load_items(ITEM_DIR[kind])}
 
 
-def select_candidates(sidecars, levels=LEVELS):
-    """Every N5 + N4 item whose reading mnemonic triage must judge: reviewed
+def select_candidates(sidecars):
+    """Every item whose reading mnemonic triage must judge: reviewed
     kanji, and vocabulary whose reading is a story — a word with no reading
     mnemonic, or one pointing back at the earlier word that taught the sound,
     has no scene to connect."""
@@ -73,7 +71,7 @@ def select_candidates(sidecars, levels=LEVELS):
     teachers = mc._reading_teachers()
     out = []
     for kind in KINDS:
-        for slug, level in levels_by_slug(kind, levels).items():
+        for slug, level in levels_by_slug(kind).items():
             entry = sidecars[kind].get(slug) or {}
             reading_mnemonic = entry.get("reading_mnemonic")
             if not reading_mnemonic:
@@ -83,10 +81,10 @@ def select_candidates(sidecars, levels=LEVELS):
             if kind == "vocab" and teachers.get(slug):
                 continue
             if kind == "kanji":
-                ctx = mc.kanji_context(level, slug, cast=cast)
+                ctx = mc.kanji_context(slug, cast=cast)
                 form, reading = ctx["char"], ctx["primary_reading"]
             else:
-                ctx = mc.vocab_context(level, slug, cast=cast)
+                ctx = mc.vocab_context(slug, cast=cast)
                 form, reading = ctx["form"], ctx["reading"]
             out.append({
                 "kind": kind,
@@ -139,7 +137,7 @@ def list_errors(candidates, listing):
 EDITED_SINCE_SELECT = "reading_mnemonic changed since select (a Studio edit?); not overwritten"
 
 
-def apply_rewrites(sidecars, listing, rewrites, model, candidates, levels=LEVELS):
+def apply_rewrites(sidecars, listing, rewrites, model, candidates):
     """Gate each rewrite and return (updated sidecars, failures). Only the
     `reading_mnemonic` errors count: a stored meaning mnemonic predates the
     fresh-draft rules, and this lane does not touch it. A rewrite for an item
@@ -149,7 +147,6 @@ def apply_rewrites(sidecars, listing, rewrites, model, candidates, levels=LEVELS
     is refused."""
     marked = {(row["kind"], row["slug"]) for row in listing.get("marked", [])}
     selected = {(c["kind"], c["slug"]): c["reading_mnemonic"] for c in candidates}
-    level_of = {kind: levels_by_slug(kind, levels) for kind in KINDS}
     updated = {kind: dict(entries) for kind, entries in sidecars.items()}
     failures = {}
     for row in rewrites:
@@ -166,8 +163,7 @@ def apply_rewrites(sidecars, listing, rewrites, model, candidates, levels=LEVELS
             continue
         draft = {k: v for k, v in entry.items() if k != "_meta"}
         draft["reading_mnemonic"] = text
-        errors = [e for e in validate_draft(level_of[kind][slug], kind, slug, draft,
-                                            enforce_readability=True)
+        errors = [e for e in validate_draft(kind, slug, draft, enforce_readability=True)
                   if e.startswith("reading_mnemonic")]
         if errors:
             failures[name] = errors

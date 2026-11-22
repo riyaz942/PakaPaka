@@ -73,7 +73,7 @@ remember" judgement are human review (Phase 5). `validate-schema` after assembly
 is the pipeline's final backstop.
 
 Standalone usage (re-check collected drafts):
-    .venv/bin/python -m generate_content.validate_mnemonics --level n5 --type kanji
+    .venv/bin/python -m generate_content.validate_mnemonics --level 6 --type kanji
 """
 
 import argparse
@@ -86,6 +86,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from generate_content import context  # noqa: E402
 from generate_content import level_check  # noqa: E402
 from generate_content import mnemonic_context  # noqa: E402
 
@@ -717,8 +718,8 @@ def _reading_errors(field, text, reading):
     return []
 
 
-def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
-    ctx = ctx or mnemonic_context.kanji_context(level, slug)
+def validate_kanji(slug, draft, ctx=None, enforce_readability=False):
+    ctx = ctx or mnemonic_context.kanji_context(slug)
     errors = []
 
     for field in ("meaning_mnemonic", "reading_mnemonic"):
@@ -803,8 +804,8 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
     return errors
 
 
-def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
-    ctx = ctx or mnemonic_context.radical_context(level, slug)
+def validate_radical(slug, draft, ctx=None, enforce_readability=False):
+    ctx = ctx or mnemonic_context.radical_context(slug)
     errors = []
 
     text = draft.get("mnemonic_text")
@@ -888,8 +889,8 @@ def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
     return errors
 
 
-def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
-    ctx = ctx or mnemonic_context.vocab_context(level, slug)
+def validate_vocab(slug, draft, ctx=None, enforce_readability=False):
+    ctx = ctx or mnemonic_context.vocab_context(slug)
     errors = []
 
     meaning_text = draft.get("meaning_mnemonic")
@@ -1123,11 +1124,11 @@ def _bare_forms(ctx):
     return [f.replace("〜", "") for f in (ctx["form"], *ctx["accepted_forms"]) if f.replace("〜", "")]
 
 
-def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
+def validate_grammar(slug, draft, ctx=None, enforce_readability=False):
     """Every rule always runs: no stored grammar prose predates this contract,
     so there is no fresh-versus-stored lane (`enforce_readability` is accepted
     for the dispatcher's signature and ignored)."""
-    ctx = ctx or mnemonic_context.grammar_context(level, slug)
+    ctx = ctx or mnemonic_context.grammar_context(slug)
     field = "mnemonic_text"
     extra = sorted(set(draft) - {field})
     if extra:
@@ -1193,7 +1194,7 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
         violations = level_check.find_violations(example, ctx["allowed_index"], extra_allowed)
         if violations:
             errors.append(
-                f"{field}'s example uses words above {level.upper()}: "
+                f"{field}'s example uses words above level {ctx['level']}: "
                 f"{', '.join(violations)} — use only words the learner already has"
             )
         # The point's own form (代わりに) and origin word are taught by its
@@ -1240,29 +1241,29 @@ def validate_grammar(level, slug, draft, ctx=None, enforce_readability=False):
     return errors
 
 
-def validate_draft(level, kind, slug, draft, ctx=None, enforce_readability=False):
+def validate_draft(kind, slug, draft, ctx=None, enforce_readability=False):
     """`enforce_readability` turns on the Rev 4 sentence-shape gate. Pass it
     only for freshly generated drafts; stored drafts are re-validated without
     it so kept content is never requeued for a readability rewrite."""
     if kind == "kanji":
-        return validate_kanji(level, slug, draft, ctx, enforce_readability)
+        return validate_kanji(slug, draft, ctx, enforce_readability)
     if kind == "radical":
-        return validate_radical(level, slug, draft, ctx, enforce_readability)
+        return validate_radical(slug, draft, ctx, enforce_readability)
     if kind == "vocab":
-        return validate_vocab(level, slug, draft, ctx, enforce_readability)
+        return validate_vocab(slug, draft, ctx, enforce_readability)
     if kind == "grammar":
-        return validate_grammar(level, slug, draft, ctx, enforce_readability)
+        return validate_grammar(slug, draft, ctx, enforce_readability)
     raise ValueError(f"unknown mnemonic type {kind!r}")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, required=True, help="ladder level, 1-60")
     parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab", "grammar"],
                         required=True)
     args = parser.parse_args()
 
-    level_dir = os.path.join(DRAFTS_DIR, args.level, args.kind)
+    level_dir = os.path.join(DRAFTS_DIR, context.level_dir(args.level), args.kind)
     if not os.path.isdir(level_dir):
         raise SystemExit(f"no drafts at {level_dir}")
     failed = 0
@@ -1273,7 +1274,7 @@ def main():
             record = json.load(f)
         if not isinstance(record, dict) or not record.get("tool_input"):
             continue
-        errors = validate_draft(args.level, args.kind, record["slug"], record["tool_input"])
+        errors = validate_draft(args.kind, record["slug"], record["tool_input"])
         print(f"{'PASS' if not errors else 'FAIL'} {record['slug']}")
         for e in errors:
             print(f"  - {e}")

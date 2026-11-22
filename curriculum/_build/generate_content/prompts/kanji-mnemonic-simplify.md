@@ -121,7 +121,8 @@ Then sync the local drafts, which drive any future rebuild
 (`write_sidecar` reconstructs sidecars from them and would silently drop
 sidecar-only edits): for each marked slug, if a draft exists at
 `curriculum/_build/generate_content/drafts/mnemonics/*/kanji/<slug>.json`
-(the level directory varies — banding moves kanji between levels), apply the
+(the level directory varies — the old JLPT folders `n5/` … and the ladder
+folders `level-NN/`), apply the
 same field changes to its `tool_input`. The drafts directory is gitignored, so
 on a machine without it this step is a no-op — but then never run
 `assemble`/`run` for kanji here.
@@ -134,7 +135,7 @@ on a machine without it this step is a no-op — but then never run
   (`validate_mnemonics.py`, Rev 4) re-checks sentence length plus the component
   and reading tags on freshly validated drafts; your summaries must pass it.
 - Regenerate the shipped JSON: from `curriculum/_build` run
-  `python generate.py --bands`, then from the repo root
+  `python generate.py`, then from the repo root
   `npm run validate-schema && npm run compile-curriculum`.
 - Report: how many fields rewritten, and any slug you could not
   fix without changing the scene — list those; the maintainer decides.
