@@ -292,7 +292,7 @@ current counts (`content_breaks`).
 | Vocabulary | Words in levels 1–20 with no content | 0 (all 1,127 have examples and mnemonics) | — |
 | Kanji | Kanji in levels 1–20 with no mnemonic (new writing) | 184 of 580 | Before release |
 | Kanji | Mnemonics that break (they name only radicals, and radicals now always come first) | 0 | — |
-| Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 4 of 403 | Before release |
+| Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 132 of 403 (4 have no entry, 128 have an empty `{}` placeholder; the first count missed the placeholders) | Before release |
 | Radicals | Mnemonics that break (they name nothing else) | 0 | — |
 | Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22). Today 37 of 60 sit above level 20. Passages are now **gate content** (the level test, §7.4): every level 2–20 needs at least 3 passages | Before release |
 

@@ -59,9 +59,18 @@ class ContentBreaksTest(unittest.TestCase):
         self.assertEqual(breaks["grammar_points_under_2_readable"], 1)
 
     def test_kanji_without_mnemonic_only_counts_levels_1_to_20(self):
-        breaks = ladder_report.content_breaks(LADDER, sidecars(kanji_mnemonics={"k1": {}}))
+        breaks = ladder_report.content_breaks(LADDER, sidecars(kanji_mnemonics={"k1": {"m": "x"}}))
         self.assertEqual(breaks["kanji_1_20_without_mnemonic"], 1)
         self.assertEqual(breaks["radicals_1_20_without_mnemonic"], 1)
+
+    def test_empty_sidecar_entry_counts_as_no_mnemonic(self):
+        """The radical sidecar holds `{}` placeholders for radicals with no mnemonic yet."""
+        breaks = ladder_report.content_breaks(LADDER, sidecars(
+            kanji_mnemonics={"k1": {}},
+            radical_mnemonics={"r1": {}},
+        ))
+        self.assertEqual(breaks["kanji_1_20_without_mnemonic"], 2)  # k1 empty, k20 absent (k21 is out of range)
+        self.assertEqual(breaks["radicals_1_20_without_mnemonic"], 1)  # r1 empty (r21 is out of range)
 
     def test_other_breaks(self):
         breaks = ladder_report.content_breaks(LADDER, sidecars(

@@ -102,7 +102,7 @@ def break_lists(ladder, sidecars):
                                  ("radicals_1_20_without_mnemonic", "radical",
                                   "radical_mnemonics")):
         for slug, entry in ladder[kind].items():
-            if entry["level"] <= TARGET_LEVEL and slug not in sidecars[mnemonics]:
+            if entry["level"] <= TARGET_LEVEL and not sidecars[mnemonics].get(slug):
                 found[key].append((entry["level"], slug))
     for slug, entry in ladder["passage"].items():
         if entry["level"] > TARGET_LEVEL:
@@ -175,7 +175,7 @@ def render(ladder, sidecars, names):
     for kind in ("radical", "kanji", "vocabulary", "grammar", "passage"):
         for slug, entry in ladder[kind].items():
             sizes[(entry["level"], kind)] += 1
-            if kind in mnemonics and slug not in sidecars[mnemonics[kind]]:
+            if kind in mnemonics and not sidecars[mnemonics[kind]].get(slug):
                 sizes[(entry["level"], "none")] += 1
     out += ["## Level sizes\n",
             "| Level | Radicals | Kanji | Words | Grammar | Passages | No mnemonic |",

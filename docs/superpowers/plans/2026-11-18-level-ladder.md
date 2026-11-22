@@ -235,7 +235,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - Consumes: Task 6 `mnemonic_context`; Task 3 `content_breaks`.
 - Produces: `kanji_1_20_without_mnemonic == 0`, `radicals_1_20_without_mnemonic == 0`.
 
-- [ ] **Step 1: Generate** the radical mnemonics (3) and then the kanji mnemonics (~186) for levels 1–20, in level order, with `radical-mnemonic.md` / `kanji-mnemonic.md`. Follow the memory rules (radical style, identical-radical one-liner via `identical_radical()`). New drafts only; do not touch reviewed mnemonics.
+- [ ] **Step 1: Generate** the radical mnemonics (132: 4 with no entry and 128 empty placeholders) and then the kanji mnemonics (184) for levels 1–20, in level order, with `radical-mnemonic.md` / `kanji-mnemonic.md`. Follow the memory rules (radical style, identical-radical one-liner via `identical_radical()`). New drafts only; do not touch reviewed mnemonics.
 - [ ] **Step 2: Run** `validate_mnemonics.py` on the new drafts → no errors; ingest.
 - [ ] **Step 3: Run** `generate.py` and `ladder_report.py` → both counts are 0.
 - [ ] **Step 4: Operator review** of the new mnemonics (review_status stays `draft` until the operator marks them).
