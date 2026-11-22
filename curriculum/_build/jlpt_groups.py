@@ -32,12 +32,18 @@ def levels(kind):
 
 def load_items(kind, level):
     """What the removed `curriculum/<kind>/<level>.json` held: the items (for
-    `readings`, the passages) of `<kind>/items.json` it listed, in items.json
-    order. A level that had no file (grammar n2) gives [], as a missing file
-    did; a level that is not n5..n1 raises."""
+    `readings`, the passages) of `<kind>/items.json` it listed, in its order,
+    with its `sort_order` 1..N. A level that had no file (grammar n2) gives [],
+    as a missing file did; a level that is not n5..n1 raises, and so does a
+    snapshot slug items.json does not hold."""
     if level not in JLPT_LEVELS:
         raise ValueError(f"unknown level {level!r}")
-    slugs = set(_groups(kind).get(level, []))
+    slugs = _groups(kind).get(level, [])
     key = "passages" if kind == "readings" else "items"
     with open(os.path.join(CURRICULUM_DIR, kind, "items.json"), encoding="utf-8") as f:
-        return [item for item in json.load(f)[key] if item["slug"] in slugs]
+        by_slug = {item["slug"]: item for item in json.load(f)[key]}
+    missing = [slug for slug in slugs if slug not in by_slug]
+    if missing:
+        raise ValueError(f"jlpt_groups.json {kind} {level} names slugs {kind}/items.json "
+                         f"does not hold: {', '.join(missing)}")
+    return [{**by_slug[slug], "sort_order": n} for n, slug in enumerate(slugs, start=1)]

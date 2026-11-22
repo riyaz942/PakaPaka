@@ -41,11 +41,14 @@ lesson planner.
 
 import math
 import os
-
-import jlpt_groups
+import sys
 
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
+if BUILD_DIR not in sys.path:
+    sys.path.insert(0, BUILD_DIR)
+
+import jlpt_groups  # noqa: E402
 
 #: Lower levels come first; a level's allowed vocab includes every earlier level.
 LEVEL_ORDER = ["n5", "n4", "n3"]
