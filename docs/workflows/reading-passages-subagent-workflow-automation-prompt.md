@@ -35,8 +35,9 @@ level 2–20 by passing 2 of its passages. So:
 - Levels 2–20 need at least 3 passages each. Level 1 has none. Not checked by
   script yet (Task 9 adds `levels_2_20_with_fewer_than_3_passages` to
   `reports/ladder_report.py`).
-- Every word of a passage, in the body, the summary and the question prompts, is at
-  or below the passage's level. Checked by script (`validate_readings`, check 4).
+- Every word of a passage is at or below the passage's level. Checked by script:
+  check 4 of `validate_readings` covers the body and `summary_ja`; the question
+  prompts are level-checked by the question check (`_question_errors`), not by check 4.
 - Every grammar point found in the body is at or below the passage's level.
   Checked by script (`validate_readings`, check 6).
 - The app never shows a wrong answer. Each question's accepted answers must cover

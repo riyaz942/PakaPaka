@@ -88,7 +88,7 @@ PY
 radical that moves to another level keeps its art. Select on that field and on whether the
 file it names exists.
 
-If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
+If it selects nothing, that level's mnemonics aren't reviewed yet, or every reviewed radical already has art — stop and say so. If it
 selects fewer than `<batch-size>`, the level is running out; use what it found.
 
 Auto-selection is what makes stopping and resuming free: the next run picks up exactly

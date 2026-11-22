@@ -109,8 +109,9 @@ print(','.join(todo))
 PY
 
 "Done" is read from the checked-in sidecar (keyed by slug, not by which session
-wrote it): an item is done once it has an entry in its kind's sidecar
-(`curriculum/<kind>/mnemonics.json`), which is where an ingest puts it. A
+wrote it): an item is done once its entry in the kind's sidecar
+(`curriculum/<kind>/mnemonics.json`) has a non-empty mnemonic. An empty `{}`
+placeholder counts as not done. A
 previous single-session run's ingested slugs are therefore already excluded
 here — this is what makes running this prompt repeatedly in fresh sessions
 seamless. An item with a mnemonic is never selected again, so reviewed prose is

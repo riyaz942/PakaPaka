@@ -41,8 +41,8 @@ levels 1–20. Folders are `level-NN/` (level 6 is `level-06`). The tools take `
 
 Before release (levels 1–20):
 
-- Kanji mnemonics: the mnemonic runbooks (`--type kanji`), after the radicals.
 - Radical mnemonics: the mnemonic runbooks (`--type radical`), first.
+- Kanji mnemonics: the mnemonic runbooks (`--type kanji`), after the radicals.
 - Grammar sentences: the grammar sentence pool runbook, then the accepted answers runbook.
 - Grammar links (`vocabulary_slugs` at or below the point's level): no runbook. The links
   are edited in the grammar source data.

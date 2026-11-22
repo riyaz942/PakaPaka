@@ -80,3 +80,11 @@ Full suite from `curriculum/_build`:
 7. **Radical art lane:** Step 0 prints 0 radicals for level 6 today (24 of 28 reviewed, all 24 have art); that
    is data, not a runbook fault. The art workflow depends on Task 8 mnemonics being reviewed first.
 8. `.DS_Store` is modified and was left out of the commit.
+
+## Review fixes (second commit)
+
+1. `prompts/reading-passage.md`: "grammar list below" -> "grammar list above" (the list is the "Grammar you may use" section).
+2. Reading subagent and single-session runbooks: check 4 covers the body and `summary_ja`; question prompts are level-checked by `_question_errors`.
+3. Mnemonic subagent, single-session and web-chat prompts: "done" now means a non-empty mnemonic in the sidecar entry; an empty `{}` placeholder counts as not done (matches `default_slugs`).
+4. `radical-art-web-chat-workflow.md`: "selects nothing" now also covers "every reviewed radical already has art".
+5. `README.md` Ladder work list: radical bullet now before the kanji bullet.
