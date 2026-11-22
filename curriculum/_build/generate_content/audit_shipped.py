@@ -28,7 +28,6 @@ Run (from curriculum/_build):
 """
 
 import argparse
-import glob
 import json
 import os
 import re
@@ -43,6 +42,7 @@ sys.path.insert(0, IMPORT_DIR)
 import furigana as furigana_lib  # noqa: E402
 import sources  # noqa: E402
 import audit_facts  # noqa: E402
+import jlpt_groups  # noqa: E402
 from generate_content import (  # noqa: E402
     context,
     mnemonic_context,
@@ -256,15 +256,12 @@ def reading_from_furigana(annotated):
 SKELETON_LEVELS = ("n3", "n2", "n1")
 
 
-def load_items(kind_dir, level, key="items"):
-    """`curriculum/<kind_dir>/<level>.json` entries, or `[]` when the file does
-    not exist. Skeleton levels ship radicals, kanji and vocabulary as bare item
-    lists and no grammar or passages at all, so the cross-level checks below
-    cannot assume all four kinds per level the way the per-level checks can."""
-    path = os.path.join(CURRICULUM_DIR, kind_dir, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    return audit_facts.load_json(kind_dir, f"{level}.json")[key]
+def load_items(kind_dir, level):
+    """The `<kind_dir>` entries of one JLPT level (jlpt_groups.py), or `[]` when
+    that level had none. Skeleton levels ship radicals, kanji and vocabulary as
+    bare item lists and no grammar or passages at all, so the cross-level checks
+    below cannot assume all four kinds per level the way the per-level checks can."""
+    return jlpt_groups.load_items(kind_dir, level)
 
 
 def discover_levels():
@@ -274,9 +271,9 @@ def discover_levels():
     already taught, so it ships no radicals file at all (N1). Missing it here
     would drop its kanji from the content_counts cross-check below."""
     found = {
-        os.path.splitext(os.path.basename(p))[0]
+        level
         for kind in ("radicals", "kanji", "vocabulary", "grammar")
-        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "n[1-5].json"))
+        for level in jlpt_groups.levels(kind)
     }
     ordered = [lvl for lvl in context.LEVEL_ORDER if lvl in found]
     ordered += sorted(found - set(ordered))
@@ -317,13 +314,13 @@ def review_status_rollup(level):
     human-review tracker (plan check 9)."""
     rows = []
     for kind_dir in ("radicals", "kanji", "vocabulary", "grammar"):
-        items = audit_facts.load_json(kind_dir, f"{level}.json")["items"]
+        items = load_items(kind_dir, level)
         counts = {}
         for it in items:
             status = (it.get("_meta") or {}).get("review_status", "(none)")
             counts[status] = counts.get(status, 0) + 1
         rows.append((kind_dir, len(items), counts))
-    passages = audit_facts.load_json("readings", f"{level}.json")["passages"]
+    passages = load_items("readings", level)
     rows.append(("readings", len(passages), {"(no _meta field on passages)": len(passages)}))
     return rows
 
@@ -437,7 +434,7 @@ def rerun_passage_gate(level):
         )]
     results = []
     seed_by_position = {s["position"]: s for s in reading_seeds.seeds_for(level)}
-    passages = audit_facts.load_json("readings", f"{level}.json")["passages"]
+    passages = load_items("readings", level)
     for passage in passages:
         seed = seed_by_position.get(passage["sort_order"])
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
@@ -528,13 +525,13 @@ def vocab_reading_furigana_errors(slug, item):
 def accepted_answer_invariant_errors(level):
     results = []
     for kind_dir, kind in (("radicals", "radical"), ("kanji", "kanji"), ("vocabulary", "vocab")):
-        for item in audit_facts.load_json(kind_dir, f"{level}.json")["items"]:
+        for item in load_items(kind_dir, level):
             for e in meaning_answer_errors(kind, item["slug"], item):
                 results.append(("ERROR", e))
-    for item in audit_facts.load_json("kanji", f"{level}.json")["items"]:
+    for item in load_items("kanji", level):
         for e in kanji_reading_answer_errors(item["slug"], item):
             results.append(("ERROR", e))
-    for item in audit_facts.load_json("vocabulary", f"{level}.json")["items"]:
+    for item in load_items("vocabulary", level):
         for e in vocab_reading_furigana_errors(item["slug"], item):
             results.append(("ERROR", e))
     return results
@@ -685,7 +682,7 @@ def _grammar_by_slug_upto(level):
 def passage_grammar_usage_errors(level):
     grammar_by_slug = _grammar_by_slug_upto(level)
     results = []
-    for passage in audit_facts.load_json("readings", f"{level}.json")["passages"]:
+    for passage in load_items("readings", level):
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         body = passage["body"]
         for gslug in passage.get("grammar_slugs") or []:
@@ -827,7 +824,7 @@ def hygiene_errors(all_levels_present):
         )
     counts["total_items"] = sum(counts[k] for k in ("radicals", "kanji", "vocabulary", "grammar"))
     counts["reading_passages"] = sum(
-        len(load_items("readings", lvl, key="passages")) for lvl in all_levels_present
+        len(load_items("readings", lvl)) for lvl in all_levels_present
     )
     counts["dependency_edges"] = len(audit_facts.load_json("dependencies", "graph.json")["edges"])
 
@@ -904,14 +901,14 @@ def span_diff_errors(text, vocabulary_slugs, shipped_spans, primary_form_by_slug
 
 def span_rederivation_errors(level, primary_form_by_slug):
     results = []
-    for item in audit_facts.load_json("vocabulary", f"{level}.json")["items"]:
+    for item in load_items("vocabulary", level):
         for i, sentence in enumerate(item.get("example_sentences") or []):
             label = f"vocab {item['slug']} example[{i}]"
             results.extend(span_diff_errors(
                 sentence["japanese"], sentence.get("vocabulary_slugs") or [],
                 sentence.get("word_spans"), primary_form_by_slug, label,
             ))
-    for passage in audit_facts.load_json("readings", f"{level}.json")["passages"]:
+    for passage in load_items("readings", level):
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         results.extend(span_diff_errors(
             passage["body"], passage.get("vocabulary_slugs") or [],

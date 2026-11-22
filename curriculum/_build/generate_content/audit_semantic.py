@@ -49,7 +49,7 @@ IMPORT_DIR = os.path.join(BUILD_DIR, "import")
 sys.path.insert(0, BUILD_DIR)
 sys.path.insert(0, IMPORT_DIR)
 
-import audit_facts  # noqa: E402
+import jlpt_groups  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB_DIR = os.path.join(HERE, "web", "semantic")
@@ -90,7 +90,7 @@ def sentence_pairs(level, include_all):
     order, each with a report-readable id the model echoes back."""
     pairs = []
     for kind, kind_dir in (("kanji", "kanji"), ("vocab", "vocabulary"), ("grammar", "grammar")):
-        for item in audit_facts.load_json(kind_dir, f"{level}.json")["items"]:
+        for item in jlpt_groups.load_items(kind_dir, level):
             if not is_in_scope(item, include_all):
                 continue
             for i, sentence in enumerate(item.get("example_sentences") or []):
@@ -104,7 +104,7 @@ def sentence_pairs(level, include_all):
 
 def passages_in_scope(level, include_all):
     return [
-        p for p in audit_facts.load_json("readings", f"{level}.json")["passages"]
+        p for p in jlpt_groups.load_items("readings", level)
         if is_in_scope(p, include_all)
     ]
 

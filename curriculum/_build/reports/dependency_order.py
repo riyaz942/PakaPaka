@@ -57,6 +57,9 @@ from collections import defaultdict
 REPORTS_DIR = os.path.dirname(os.path.abspath(__file__))
 BUILD_DIR = os.path.dirname(REPORTS_DIR)
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
+sys.path.insert(0, BUILD_DIR)
+
+import jlpt_groups  # noqa: E402
 
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 KINDS = [
@@ -85,10 +88,7 @@ def load_items():
     items = {}
     for level in LEVELS:
         for kind, item_type in KINDS:
-            path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-            if not os.path.exists(path):
-                continue
-            for item in load(path)["items"]:
+            for item in jlpt_groups.load_items(kind, level):
                 items[(item_type, item["slug"])] = dict(item, _level=level)
     return items
 

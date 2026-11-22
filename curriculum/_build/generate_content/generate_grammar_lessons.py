@@ -404,8 +404,8 @@ def cmd_ingest(args):
     print(f"{args.slug}: PASS — assembled curriculum/grammar/lessons/{args.slug}.md")
     prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
     _remove_staging_files(reply_path, prompt_path)
-    print("When a batch of lessons is in, run generate.py --level "
-          f"{args.level}, then validate-schema + compile-curriculum from the repo root.")
+    print("When a batch of lessons is in, run generate.py, then validate-schema + "
+          "compile-curriculum from the repo root.")
 
 
 def cmd_requests(args):
@@ -553,7 +553,7 @@ def _assemble(level, records):
         assemble.write_cloze_candidates(level, record["slug"], record["tool_input"])
         written += 1
         print(f"assembled {path}")
-    print(f"{written} lesson file(s) written; run generate.py --level {level}, "
+    print(f"{written} lesson file(s) written; run generate.py, "
           "then validate-schema + compile-curriculum from the repo root.")
 
 

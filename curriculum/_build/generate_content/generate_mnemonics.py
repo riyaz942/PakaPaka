@@ -622,11 +622,6 @@ def cmd_assemble(args):
 
 # --- assembly into sidecars generate.py inlines ----------------------------
 
-#: Radicals and kanji are banded (reports/kanji_bands.py): generate.py writes
-#: every level of them in one `--bands` run.
-BANDED_KINDS = ("kanji", "radical")
-
-
 def sidecar_path(kind):
     """The one sidecar for this kind: every level, keyed by slug."""
     return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics.json")
@@ -681,9 +676,7 @@ def write_sidecar(level, kind, only_slugs=None):
         f.write("\n")
     print(f"wrote {len(drafted)} {level} {kind} mnemonic(s) to {path} "
           f"({len(entries)} entries in total)")
-    print("run generate.py "
-          + ("--bands" if kind in BANDED_KINDS else f"--level {level}")
-          + ", then validate-schema + compile-curriculum from the repo root.")
+    print("run generate.py, then validate-schema + compile-curriculum from the repo root.")
     return path
 
 

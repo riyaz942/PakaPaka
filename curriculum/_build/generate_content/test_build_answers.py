@@ -250,12 +250,12 @@ class GateTest(unittest.TestCase):
     def test_judge_prompt_carries_the_lesson_rules(self):
         entry = self.entry("aida")
         text = ba._judge_prompt("n4", "aida", entry, [(0, "x")])
-        item = ba.generate.build_grammar_point("n4", "aida", entry)
+        item = ba.generate.build_grammar_point("aida", entry)
         self.assertIn(item["caution_notes"][0], text)
         self.assertIn(item["structure"], text)
 
     def test_errors_for_uchi_ni(self):
-        item = ba.generate.build_grammar_point("n3", "uchi-ni", self.entry("uchi-ni"))
+        item = ba.generate.build_grammar_point("uchi-ni", self.entry("uchi-ni"))
         built = next(s for s in item["example_sentences"] if s["japanese"] == TEA)
         ctx = ba.gate_context("n3")
         errors = lambda c: ba.candidate_errors(c, built, item, ctx)  # noqa: E731

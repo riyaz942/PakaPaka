@@ -411,7 +411,7 @@ def write_sidecar(level, kind, only_slugs=None):
         f.write("\n")
     print(f"wrote {len(drafted)} {level} {kind} example set(s) to {path} "
           f"({len(entries)} entries in total)")
-    print(f"run generate.py --level {level}, then validate-schema + "
+    print("run generate.py, then validate-schema + "
           "compile-curriculum from the repo root.")
     return path
 

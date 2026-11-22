@@ -45,6 +45,7 @@ if BUILD_DIR not in sys.path:
     sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+import jlpt_groups  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 from generate_content import cast as cast_lib  # noqa: E402
 from generate_content import context as grammar_pool_context  # noqa: E402
@@ -108,10 +109,7 @@ def load_items(kind, level):
     lower down. An unknown *level* is still a caller bug and raises."""
     if level not in ALL_LEVELS:
         raise ValueError(f"unknown level {level!r}")
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    return _load_json(path)["items"]
+    return jlpt_groups.load_items(kind, level)
 
 
 def _by_slug(items):
@@ -896,7 +894,7 @@ def format_components(components):
                 f"component radical {c['slug']} has no `mnemonic_text` yet. "
                 "Generate the radical layer first (`generate_mnemonics run "
                 "--type radical` for the level that teaches it, then "
-                "`generate.py --level <level>`)."
+                "`generate.py`)."
             )
         syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
         lines.append(f"- {c['form']} — “{syn}”\n  Its established image, which your "
@@ -1042,7 +1040,7 @@ def format_vocab_components(ctx):
                 f"component kanji {c['slug']} has no `meaning_mnemonic` yet. "
                 "Regenerate the kanji layer first (`generate_mnemonics run "
                 "--type kanji` for the level that teaches it, then "
-                "`generate.py --level <level>`)."
+                "`generate.py`)."
             )
         readings = "、".join(c["onyomi"] + c["kunyomi"]) or "(none)"
         lines.append(

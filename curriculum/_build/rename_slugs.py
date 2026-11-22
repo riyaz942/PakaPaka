@@ -60,7 +60,7 @@ KEEP_N5_LESSON = {"te-wa-ikenai", "te-mo-ii"}
 # reports here mix kanji and grammar slugs, so a bare `n4-ba` in them has no
 # kind this script could read off the file.
 GENERATED = re.compile(
-    r"^curriculum/(kanji|grammar|radicals|vocabulary|readings)/n[1-5]\.json$"
+    r"^curriculum/(kanji|grammar|radicals|vocabulary|readings)/items\.json$"
     r"|^curriculum/dependencies/graph\.json$"
     r"|^curriculum/_build/reports/(content-audit-n[45]\.(md|json)"
     r"|dependency-order\.(md|json)|allowed-vocab-spotcheck\.md)$"

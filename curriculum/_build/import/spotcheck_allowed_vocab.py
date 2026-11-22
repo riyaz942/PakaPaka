@@ -24,9 +24,13 @@ Writes curriculum/_build/reports/allowed-vocab-spotcheck.md.
 
 import json
 import os
+import sys
 
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
+sys.path.insert(0, BUILD_DIR)
+
+import jlpt_groups  # noqa: E402
 REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 
 LEVELS = ["n5", "n4"]
@@ -38,11 +42,7 @@ SAMPLE_POSITIONS = [0, 4, "mid", -1]
 
 
 def load_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)["items"]
+    return jlpt_groups.load_items(kind, level)
 
 
 def ref(item_type, slug):

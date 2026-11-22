@@ -180,14 +180,23 @@ class GrammarLevelTest(unittest.TestCase):
     def test_cloze_variants_do_not_ship(self):
         self.assertNotIn("cloze_variants", build([entry()]))
 
-    def test_generate_level_refuses_a_failing_pool(self):
+    FAILING = {"kara-because": ["rule 4: 2 passing sentences, need 8"]}
+
+    def test_generate_refuses_a_failing_pool(self):
         from unittest import mock
-        with mock.patch.object(generate.pool_check, "check_level",
-                               return_value={"kara-because": ["rule 4: 2 passing sentences, need 8"]}), \
-             mock.patch.object(generate, "write_json"):
+        with mock.patch.object(generate.pool_check, "check_level", return_value=self.FAILING):
             with self.assertRaises(SystemExit) as raised:
-                generate.generate_level("n5")
+                generate.check_pool()
         self.assertIn("kara-because", str(raised.exception))
+
+    def test_report_pool_prints_a_failing_pool_and_goes_on(self):
+        import io
+        from unittest import mock
+        out = io.StringIO()
+        with mock.patch.object(generate.pool_check, "check_level", return_value=self.FAILING), \
+             mock.patch("sys.stdout", out):
+            generate.check_pool(report_pool=True)
+        self.assertIn("kara-because", out.getvalue())
 
 
 from unittest import mock  # noqa: E402

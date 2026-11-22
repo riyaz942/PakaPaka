@@ -3,26 +3,17 @@
 
 Edge types produced:
   - radical  -> kanji       (builds_on)  : radical is a visual component of the kanji
-  - kanji    -> vocabulary  (requires)   : kanji in the word, taught at or before
-                                           the word's level — gates the word
-  - kanji    -> vocabulary  (builds_on)  : kanji in the word, taught at a later
-                                           level — does not gate the word
+  - kanji    -> vocabulary  (requires)   : kanji in the word — gates the word
   - grammar  -> vocabulary  (reinforces) : vocab explicitly linked from a grammar point
 
 Radical->kanji edges are derived from a curated decomposition map (component
 radical slug -> list of kanji suffixes). Kanji->vocab edges are derived
 automatically by scanning vocab primary_form for the kanji character.
 
-Kanji->vocabulary edges are **band-gated** (plan v2 Phase C). Only a kanji whose
-band is the word's level or earlier emits `requires`; the lesson planner scopes
-candidates to one level, so a later-band parent would be a gate the learner can
-never open. Out-of-band kanji still get an edge — `builds_on`, the graph's
-non-gating "is a component of" relationship — because the app reads it for two
-things: the component chips on the word, and rule 1's reading gate, which
-withholds a word's reading prompt until every kanji in it reaches guru.
-
-Skeleton levels (N3/N2/N1, kanji only) take their decomposition from the
-generated map in skeleton.json.
+Every kanji->vocabulary edge is `requires`: the ladder never puts a kanji at a
+later level than a word written with it (ladder.py rule 3; spec
+docs/superpowers/specs/2026-11-18-level-ladder-design.md §7.3). A kanji above its
+word is a build error, because it would be a gate the learner can never open.
 """
 
 import json
@@ -31,27 +22,14 @@ import os
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
-#: Levels authored in full, and the skeleton levels behind them
-#: (docs/content/kanji-coverage-and-dependency-order-plan.md Phase 2).
-AUTHORED_LEVELS = ["n5", "n4"]
-SKELETON_LEVELS = ["n3", "n2", "n1"]
-ALL_LEVELS = AUTHORED_LEVELS + SKELETON_LEVELS
-
-#: Teaching order of the levels, for the band comparison on kanji->vocab edges.
-LEVEL_ORDER = {level: index for index, level in enumerate(ALL_LEVELS)}
-
-
 def load(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def load_level_items(kind, level):
-    """Items of one kind at one level, each tagged with the level it came from."""
-    p = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(p):
-        return []
-    return [dict(item, _level=level) for item in load(p)["items"]]
+def load_items(kind):
+    """Every item of one kind, from the generated `<kind>/items.json`."""
+    return load(os.path.join(CURRICULUM_DIR, kind, "items.json"))["items"]
 
 
 # Curated radical (slug) -> kanji (suffix) decomposition for N5.
@@ -263,17 +241,7 @@ def load_decomposition():
     return load(path)["decomposition"]
 
 
-def build_edges(levels):
-    radicals = []
-    kanji = []
-    vocab = []
-    grammar = []
-    for lvl in levels:
-        radicals += load_level_items("radicals", lvl)
-        kanji += load_level_items("kanji", lvl)
-        vocab += load_level_items("vocabulary", lvl)
-        grammar += load_level_items("grammar", lvl)
-
+def build_edges(radicals, kanji, vocab, grammar):
     kanji_by_suffix = {}
     for k in kanji:
         kanji_by_suffix[k["slug"]] = k
@@ -324,25 +292,19 @@ def build_edges(levels):
                 )
             add(rad_slug, "radical", kanji_item["slug"], "kanji", "builds_on")
 
-    # kanji -> vocabulary: kanji char appears in vocab primary_form.
-    #
-    # `requires` only from a kanji whose band is the word's level or earlier —
-    # the gate the learner can satisfy inside the level they are studying. A
-    # later-band kanji (写 at N3 in the N5 word 写真) keeps a `builds_on` edge:
-    # the word is taught on schedule and asked for its meaning, and the edge is
-    # what tells the app the reading prompt is not live yet.
+    # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
     for k in kanji:
         char = k["primary_form"]
         if not char:
             continue
-        kanji_band = LEVEL_ORDER[k["_level"]]
         for v in vocab:
             if char in v["primary_form"]:
-                in_band = kanji_band <= LEVEL_ORDER[v["_level"]]
-                add(
-                    k["slug"], "kanji", v["slug"], "vocabulary",
-                    "requires" if in_band else "builds_on",
-                )
+                if k["level"] > v["level"]:
+                    raise ValueError(
+                        f"kanji {k['slug']} (level {k['level']}) is above its word "
+                        f"{v['slug']} (level {v['level']}); re-run ladder.py"
+                    )
+                add(k["slug"], "kanji", v["slug"], "vocabulary", "requires")
 
     # grammar -> vocabulary (reinforces): explicit vocabulary_slugs links.
     vocab_slugs = {v["slug"] for v in vocab}
@@ -355,16 +317,13 @@ def build_edges(levels):
 
 
 def main():
-    levels = []
-    for lvl in ALL_LEVELS:
-        if os.path.exists(os.path.join(CURRICULUM_DIR, "kanji", f"{lvl}.json")):
-            levels.append(lvl)
-    edges = build_edges(levels)
+    edges = build_edges(load_items("radicals"), load_items("kanji"),
+                        load_items("vocabulary"), load_items("grammar"))
     out = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump({"edges": edges}, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(f"Wrote {len(edges)} dependency edges for levels {levels}.")
+    print(f"Wrote {len(edges)} dependency edges.")
 
 
 if __name__ == "__main__":

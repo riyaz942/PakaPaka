@@ -170,7 +170,7 @@ def cmd_ingest(args):
         pool_entry = {"accepted_meanings": reply["accepted_meanings"],
                       "sentences": reply["sentences"]}
         try:
-            item = generate.build_grammar_point(args.level, args.slug, pool_entry)
+            item = generate.build_grammar_point(args.slug, pool_entry)
             errors = pool_check.check_point(args.level, item)
         except (ValueError, KeyError) as error:
             errors = [str(error)]

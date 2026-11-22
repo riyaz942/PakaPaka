@@ -55,13 +55,13 @@ declared.
 """
 
 import argparse
-import json
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import furigana as furigana_lib  # noqa: E402
+import jlpt_groups  # noqa: E402
 
 from generate_content import context  # noqa: E402
 
@@ -810,14 +810,7 @@ def _ordered_parts(sentence, parts):
 
 
 def _load_passages(level):
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "..",
-        "readings",
-        f"{level}.json",
-    )
-    with open(os.path.normpath(path), encoding="utf-8") as handle:
-        return json.load(handle)["passages"]
+    return jlpt_groups.load_items("readings", level)
 
 
 def calibrate(levels=("n5", "n4"), verbose=False):

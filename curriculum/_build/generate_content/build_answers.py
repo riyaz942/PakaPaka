@@ -211,7 +211,7 @@ def select_slugs(level, limit, sidecar):
 def point_gate_errors(level, slug, entry):
     """Every pool-gate error for the point built from `entry`; [] means it may be written."""
     try:
-        return pool_check.check_point(level, generate.build_grammar_point(level, slug, entry))
+        return pool_check.check_point(level, generate.build_grammar_point(slug, entry))
     except (ValueError, KeyError) as error:
         return [str(error)]
 
@@ -246,14 +246,16 @@ def fix_gate_errors(level, slug, entry):
 
 def gate_context(level):
     """What candidate_errors needs, built once per point (same sources as check_point)."""
+    vocab_forms = {
+        v["slug"]: v["primary_form"]
+        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
+        for v in context.load_vocab(lower)
+    }
     return {
-        "vocab_forms": {
-            v["slug"]: v["primary_form"]
-            for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
-            for v in context.load_vocab(lower)
-        },
+        "vocab_forms": vocab_forms,
         "pronouns": pool_check.pronoun_slugs_through(level),
-        "known_readings": generate._grammar_inputs(level)["known_readings"],
+        "known_readings": generate._vocab_reading_map(
+            [v for v in generate._grammar_inputs()["words"] if v["slug"] in vocab_forms]),
     }
 
 
@@ -272,7 +274,7 @@ def candidate_errors(candidate, built, item, ctx):
 
 def _built(level, slug, entry):
     """(built item, {japanese: built sentence})."""
-    item = generate.build_grammar_point(level, slug, entry)
+    item = generate.build_grammar_point(slug, entry)
     return item, {s["japanese"]: s for s in item["example_sentences"]}
 
 

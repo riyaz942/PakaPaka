@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Curriculum context for Phase 2a grammar lesson generation.
 
-Loads the *generated* curriculum JSON (curriculum/{vocabulary,grammar}/<level>.json
-— the canonical output of generate.py, which carries sort_order) and derives the
+Loads the *generated* curriculum JSON (curriculum/{vocabulary,grammar}/items.json
+— the canonical output of generate.py, which carries sort_order — grouped by the
+old JLPT level through jlpt_groups.py until Task 6) and derives the
 per-grammar-point inputs the generator prompt needs: allowed vocabulary, taught
 siblings, and upcoming related points.
 
@@ -38,9 +39,10 @@ regenerations. It intentionally does NOT consult the dependency graph or the
 lesson planner.
 """
 
-import json
 import math
 import os
+
+import jlpt_groups
 
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
@@ -94,9 +96,7 @@ CORE_SEED_SLUGS = {
 
 
 def load_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)["items"]
+    return jlpt_groups.load_items(kind, level)
 
 
 def load_vocab(level):

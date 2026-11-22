@@ -47,6 +47,7 @@ sys.path.insert(0, IMPORT_DIR)
 sys.path.insert(0, BUILD_DIR)
 
 import audit_facts  # noqa: E402
+import jlpt_groups  # noqa: E402
 import sources  # noqa: E402
 
 #: Levels the curriculum authors vocabulary for. Only these have words, so only
@@ -156,11 +157,7 @@ _MAX_EXTRA_MEANINGS = 2
 
 
 def load_level_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)["items"]
+    return jlpt_groups.load_items(kind, level)
 
 
 def is_kanji_char(ch):
