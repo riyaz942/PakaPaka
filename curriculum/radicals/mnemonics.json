@@ -2727,7 +2727,15 @@
   "young": {},
   "allot": {},
   "instant": {},
-  "to-spit": {},
+  "to-spit": {
+    "mnemonic_text": "This radical looks like a wide-open square with a flat line above it. Over the line, two drops and a dot fly up into the air. The square has opened wide <radical form=\"咅\">to spit out</radical> a seed.",
+    "image_prompt": "At the bottom, a wide square opening gapes open. Just above it, a long flat line marks the spot where the spit leaves. Two small drops spray up and out over the line, and a single seed flies highest at the top, caught in the air. The opening has just pushed hard <radical>to spit out</radical> the seed.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "add": {},
   "friend": {},
   "ward": {},
@@ -2742,7 +2750,15 @@
   "departure": {},
   "fruit": {},
   "pavilion": {},
-  "crooked-mouth": {},
+  "crooked-mouth": {
+    "mnemonic_text": "This radical looks like a tall face. Near the top, a small square has slid off to one side, and a wide jaw sits below it. It is a face with a <radical form=\"咼\">crooked mouth</radical>.",
+    "image_prompt": "A tall, simple face drawn with a few lines, a wide square jaw at the bottom. Near the top, the small square mouth has slid off toward one cheek, and a bent line beside it twists the lips sideways. The face is stuck with a <radical>crooked mouth</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "name-of": {},
   "the-violet": {},
   "dance": {},
@@ -2770,10 +2786,26 @@
   "lineage": {},
   "to-cut": {},
   "elephant": {},
-  "how-many": {},
+  "how-many": {
+    "mnemonic_text": "This radical puts together <part form=\"幺\">tiny thread</part> and <part form=\"戍\">protection</part>. A guard is on <part form=\"戍\">protection</part> duty over two spools of <part form=\"幺\">tiny thread</part>. Every hour the boss shouts, \"<radical form=\"幾\">How many</radical> are left?\" and he counts them all again.",
+    "image_prompt": "On the right, a soldier in a helmet stands guard, holding a tall spear with a hooked blade. At the top left, two small spools of tiny thread sit side by side on a shelf. The guard squints at them, counting the thin strands on his fingers, trying to work out <radical>how many</radical> there are.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tin-can": {},
   "a-vase": {},
-  "so-it": {},
+  "so-it": {
+    "mnemonic_text": "This radical puts together <part form=\"月\">moon</part>, <part form=\"犬\">dog</part> and <part form=\"灬\">fire</part>. By a <part form=\"灬\">fire</part>, a man says dogs howl at the <part form=\"月\">moon</part>. His <part form=\"犬\">dog</part> looks up and howls. <radical form=\"然\">So it is</radical>.",
+    "image_prompt": "Night in a quiet field. A full moon shines at the top left. At the top right, a dog sits with its head tipped back, howling at the moon. Along the bottom, a small campfire burns, and an old man beside it nods calmly as if to say <radical>so it is</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "that": {},
   "cupped-hands": {},
   "put-together-2": {},
@@ -2781,8 +2813,24 @@
   "cleverness": {},
   "square-jewel": {},
   "to-help": {},
-  "pierce": {},
-  "righteousness": {},
+  "pierce": {
+    "mnemonic_text": "This radical is made of <part form=\"毋\">do not</part> and <part form=\"貝\">shell</part>. You want your <part form=\"貝\">shell</part> coins to stay together, so they <part form=\"毋\">do not</part> roll away. You push a cord through to <radical form=\"貫\">pierce</radical> each one.",
+    "image_prompt": "At the top, a long needle trailing a cord pushes straight through a short stack of flat shell coins, each one threaded tight so they do not roll away. At the bottom, one large shell sits waiting, the sharp needle tip just about to <radical>pierce</radical> it too.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "righteousness": {
+    "mnemonic_text": "This radical puts <part form=\"羊\">sheep</part> on top of <part form=\"我\">ego</part>. A calm <part form=\"羊\">sheep</part> sits on your head and keeps your <part form=\"我\">ego</part> down. With it there, you always do the fair thing, and that is <radical form=\"義\">righteousness</radical>.",
+    "image_prompt": "At the top, a calm, fluffy sheep sits on a proud man's head, its hooves pressing his big ego down. Below, the man had been reaching for the biggest slice of cake, but now he hands it to a small child instead, an act of quiet <radical>righteousness</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "south": {},
   "elder-brother": {},
   "pledge": {},
@@ -2806,7 +2854,15 @@
       "review_status": "draft"
     }
   },
-  "shoot": {},
+  "shoot": {
+    "mnemonic_text": "This radical combines <part form=\"身\">body</part> and <part form=\"寸\">inch</part>. An archer holds his whole <part form=\"身\">body</part> still. He pulls the string back one more careful <part form=\"寸\">inch</part>, then lets go to <radical form=\"射\">shoot</radical>.",
+    "image_prompt": "On the left, an archer stands side-on, his whole body tense and still, bow raised and eyes narrowed at a target. On the right, his hand draws the bowstring back past his cheek, one finger marking an exact extra inch of pull, the arrow about to <radical>shoot</radical> forward.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "military-officer": {},
   "capital": {},
   "color": {},
@@ -2833,7 +2889,15 @@
   "round-2": {},
   "tripod": {},
   "wholesale": {},
-  "beg": {},
+  "beg": {
+    "mnemonic_text": "This radical looks like a person bent low, with a small cap on top and one arm hooked out at the bottom. They hold out an open hand to <radical form=\"乞\">beg</radical>.",
+    "image_prompt": "A thin figure bent low at a street corner. A small flat cap tilts on top, the back bends sharply forward, and one long arm hooks out at the bottom, the open hand cupped upward toward people walking past. The figure is there to <radical>beg</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "male": {},
   "revelation": {},
   "correct": {},
@@ -2841,14 +2905,30 @@
   "tremendously": {},
   "ancient-musical": {},
   "question-mark": {},
-  "take": {},
+  "take": {
+    "mnemonic_text": "This radical combines <part form=\"耳\">ear</part> and <part form=\"又\">right hand</part>. A teacher's <part form=\"又\">right hand</part> reaches over and pinches a naughty boy's <part form=\"耳\">ear</part>. Then the teacher pulls, ready to <radical form=\"取\">take</radical> him to the office.",
+    "image_prompt": "On the left, a large cartoon ear sticks out from the side of a small boy's head, his face scrunched up in a wince. On the right, a stern teacher's right hand reaches over and pinches the ear between finger and thumb, pulling hard, ready to <radical>take</radical> him away.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "address": {},
   "half": {},
   "oversee": {},
   "genius": {},
   "quiet": {},
   "shining": {},
-  "art": {},
+  "art": {
+    "mnemonic_text": "This radical looks like a garden scene. On the left, a small plant grows on stacked mounds of soil. On the right, a gardener kneels with a seed in one bent arm. Gardening this neat is an <radical form=\"埶\">art</radical>.",
+    "image_prompt": "On the left, a small plant grows on top of two neat mounds of soil stacked one above the other, each mound crossed by a short stem. On the right, a gardener kneels with one arm bent and hooked inward, a single seed held in the hand like a dot. The careful garden is a work of <radical>art</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "do": {},
   "skeleton": {},
   "delicious": {},
@@ -2875,7 +2955,15 @@
   "right-2": {},
   "to-measure": {},
   "a-small": {},
-  "warrior": {},
+  "warrior": {
+    "mnemonic_text": "This radical looks like a battle axe: a long pole that curves down to the right, a wide blade on the left and a small tassel on top. A tall <radical form=\"戉\">warrior</radical> holds it ready.",
+    "image_prompt": "A tall battle axe stands upright. Its long wooden pole curves down to the right and ends in a sharp hook, a wide curved blade sticks out on the left, and a small red tassel hangs at the top right. A helmeted <radical>warrior</radical> grips it with both hands.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "seduce": {},
   "to-depend": {},
   "adhere": {},
@@ -2964,7 +3052,15 @@
   "sign-of": {},
   "cover": {},
   "mister": {},
-  "relax": {},
+  "relax": {
+    "mnemonic_text": "This radical is a combination of <part form=\"宀\">roof</part> and <part form=\"女\">woman</part>. A <part form=\"女\">woman</part> gets home, safe under her own <part form=\"宀\">roof</part>. She kicks off her shoes, falls onto the sofa and starts to <radical form=\"安\">relax</radical>.",
+    "image_prompt": "At the top, a wide house roof with a small chimney covers the whole scene. Under it, a woman lies stretched out on a soft sofa, eyes closed, her shoes kicked off and lying upside down on the floor, a cup of tea balanced on her stomach as she begins to <radical>relax</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "harm": {},
   "house": {},
   "melancholy": {},
@@ -3010,7 +3106,15 @@
   "high-2": {},
   "empty": {},
   "far-and": {},
-  "millet": {},
+  "millet": {
+    "mnemonic_text": "This radical looks like one tall grain plant. The long line down is the stem, the line across is two leaves, the bottom strokes are roots, and the dot at the top is a heavy head of <radical form=\"朮\">millet</radical>.",
+    "image_prompt": "A single tall grain plant standing in a field. A straight stem runs down the middle, two flat leaves stick out to each side, and two roots spread out into the soil at the bottom. Near the top, one round, heavy seed head bends to the right on its own, ripe <radical>millet</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "any": {},
   "prosperous": {},
   "wild-boar": {},
@@ -3053,7 +3157,15 @@
   "observance": {},
   "above": {},
   "cloth": {},
-  "dollar": {},
+  "dollar": {
+    "mnemonic_text": "This radical looks like a winding S with two straight lines cut down through it. That is the sign for a <radical form=\"弗\">dollar</radical>.",
+    "image_prompt": "A big gold sign above a bank door. On it, one thick stroke winds back and forth like the letter S, and two straight lines drop through it from top to bottom. A man in a suit stares at it, holding a single <radical>dollar</radical> note.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "below": {},
   "come": {},
   "resemblance": {},
@@ -3131,14 +3243,30 @@
   "walk": {},
   "meeting": {},
   "scenery": {},
-  "bundle": {},
+  "bundle": {
+    "mnemonic_text": "This radical combines <part form=\"木\">tree</part> and <part form=\"口\">mouth</part>. Branches cut from a <part form=\"木\">tree</part> stand in a pile. A big <part form=\"口\">mouth</part> bites around their middle and squeezes them into one tight <radical form=\"束\">bundle</radical>.",
+    "image_prompt": "A tall pile of branches cut from a tree stands upright, the sticks pointing up at the top and spreading out at the bottom like roots. Around the middle of the pile, a large square cartoon mouth bites down hard, its lips squeezing the sticks tight into one <radical>bundle</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "fold": {},
   "gigantic": {},
   "profit": {},
   "enjoy": {},
   "noon": {},
   "a-shoe": {},
-  "together": {},
+  "together": {
+    "mnemonic_text": "This radical puts together <part form=\"龷\">twin sprouts</part> and <part form=\"八\">split</part>. Two <part form=\"龷\">twin sprouts</part> grow on a log. An axe has <part form=\"八\">split</part> the log below them, but the sprouts hold on to each other and stay <radical form=\"共\">together</radical>.",
+    "image_prompt": "A log on a chopping block has just been split by an axe, and its two halves lean apart at the bottom with a gap between them. On top, two small green twin sprouts grow side by side, their leaves wrapped tightly around each other across the gap, so they stay <radical>together</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "blood": {},
   "previously": {},
   "harden": {
@@ -3236,7 +3364,15 @@
   "to-carve": {},
   "truly": {},
   "decorate": {},
-  "eternity": {},
+  "eternity": {
+    "mnemonic_text": "This radical is made of <part form=\"丶\">drop</part> and <part form=\"水\">water</part>. A single <part form=\"丶\">drop</part> falls into a stream of <part form=\"水\">water</part>. More drops follow, and the stream never stops. It runs for <radical form=\"永\">eternity</radical>.",
+    "image_prompt": "At the top, a single round drop hangs in the air, falling. Just below it, a stream of water pours straight down, with small splashes flying out to each side. Faint lines behind the stream show it running on without end, flowing for <radical>eternity</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ashes": {},
   "ride": {},
   "barbarian": {},
@@ -3310,6 +3446,24 @@
   "younger-of": {
     "mnemonic_text": "This radical looks like a small kid standing against a door frame, arms out, with a pencil line drawn just above his head. His mark is the lowest one, so he is the <radical form=\"尗\">younger of brothers</radical>.",
     "image_prompt": "A small boy stands straight against a white wooden door frame, arms angled down and out at his sides, feet planted apart. A short pencil line is drawn just above his head, far below a second, much higher pencil line. He is the <radical>younger of brothers</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "protect": {
+    "mnemonic_text": "This radical is made of <part form=\"亻\">person</part> and <part form=\"呆\">be amazed</part>. A child can only stand and <part form=\"呆\">be amazed</part> as a branch falls. A <part form=\"亻\">person</part> on the left jumps in to <radical form=\"保\">protect</radical> them.",
+    "image_prompt": "On the right, a small child stands frozen with an open mouth, amazed, staring up at a tree branch that is falling toward them. On the left, a grown person leaps in with both arms raised and catches the branch above the child's head to <radical>protect</radical> them.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "demand": {
+    "mnemonic_text": "This radical combines <part form=\"雨\">rain</part> and <part form=\"而\">and yet</part>. A boy is soaked by cold <part form=\"雨\">rain</part>, <part form=\"而\">and yet</part> he still wants ice cream. He stamps his feet and shouts his <radical form=\"需\">demand</radical>.",
+    "image_prompt": "A dark rain cloud fills the top of the picture, pouring heavy rain. Below it, a small boy stands soaked, water dripping from his hair in long strands. Even so, he stamps his feet and points at an ice cream cart, shouting his one <radical>demand</radical>.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
