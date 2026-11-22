@@ -20,8 +20,9 @@ Writes `_build/ladder.json` (read through `levels.load_ladder()`). Rules
 5. A passage files at the highest level of its words and grammar.
 6. `levels.json` overrides win for every kind. A kanji before one of its
    radicals, or a word before one of its kanji, is a breach; main() exits 1.
-7. Inside a level, simpler first (sort_order): radicals and kanji by stroke
-   count, ties in pick order; words by the position, in the level's kanji
+7. Inside a level, simpler first (sort_order): radicals by stroke count, ties
+   to the radical more corpus kanji use, then pick order, then slug; kanji by
+   stroke count, ties in pick order; words by the position, in the level's kanji
    order, of their last kanji at that level (0 when none is), then frequency
    order; grammar in teaching order; passages in dataset order. The stroke
    counts are build input only (see load_strokes).
@@ -151,6 +152,7 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference, radicals
     kanji_level, picks = order_kanji(kanji, words, overrides.get("kanji", {}))
     radicals_of = {k["slug"]: k["radicals"] for k in kanji}
     kanji_strokes = {k["slug"]: k["strokes"] for k in kanji}
+    uses = Counter(r for k in kanji for r in k["radicals"])
 
     # (level, sort key) per slug; sort_order is the rank of the key in its level.
     keyed = {kind: {} for kind in KINDS}
@@ -158,10 +160,11 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference, radicals
         keyed["kanji"][slug] = (kanji_level[slug], (kanji_strokes[slug], i))
         for j, r in enumerate(radicals_of[slug]):
             if r not in keyed["radical"]:
-                keyed["radical"][r] = (kanji_level[slug], (radical_strokes[r], i, j))
+                keyed["radical"][r] = (kanji_level[slug],
+                                       (radical_strokes[r], -uses[r], i, j, r))
     unused = [r for r in radical_strokes if r not in keyed["radical"]]
     for j, r in enumerate(unused):
-        keyed["radical"][r] = (MAX_LEVEL, (radical_strokes[r], len(picks), j))
+        keyed["radical"][r] = (MAX_LEVEL, (radical_strokes[r], 0, len(picks), j, r))
 
     authored = [w for w in words if w["authored"]]
     derived = [w for w in words if not w["authored"]]

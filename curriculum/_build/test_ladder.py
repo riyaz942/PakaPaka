@@ -114,6 +114,11 @@ class LadderTest(unittest.TestCase):
         # k5 and k2 both have 4 strokes: pick order stays.
         self.assertEqual(in_level(result, "kanji", 2), ["k5", "k2"])
 
+    def test_radical_stroke_tie_goes_to_radical_more_kanji_use(self):
+        # Equal strokes; k2 now uses r2, so r2 builds 3 kanji and r1 only 1.
+        kanji = [{**k, "radicals": ["r2"]} if k["slug"] == "k2" else k for k in KANJI]
+        self.assertEqual(in_level(build(kanji=kanji), "radical", 1), ["r2", "r1"])
+
     def test_word_order_follows_last_kanji_position_in_level(self):
         # Level 2 kanji in order: k5, k2. w2 (k1 is level 1) and w6 (kana)
         # count as position 0; then frequency order.
