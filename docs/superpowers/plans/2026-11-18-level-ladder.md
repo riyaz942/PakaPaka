@@ -202,6 +202,7 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
   - `context.allowed_vocab_for(slug: str) -> list[dict]` for a grammar point: every word at or below the point's level, plus the point's own linked words that are at or below its level. The proportional same-level cutoff and `CORE_SEED_SLUGS` per JLPT level go away.
   - The CLIs take a slug or `--level <int>` (a range `--levels 1-20` where a lane batches) instead of `n5` / `n4`.
   - `mnemonic_context.vocab_context(slug)`: the kanji a word's story may name are its kanji at or below the word's level (with rule 2 that is all of them). `taught_levels` goes away.
+- [ ] **Step 0: Delete the Task 4 bridge.** `curriculum/_build/jlpt_groups.json` and `jlpt_groups.py` (a temporary map of the old JLPT groups to slugs, so the content tools, audits and import scripts kept working after the `n*.json` files went) must be gone at the end of this task: move every caller (`grep -rn jlpt_groups curriculum`) to ladder levels. Also move `build_answers.gate_context` (its known readings must use the same ladder words as `build_grammar_point`) and `web/server/curriculum/grammarMnemonicStatus.test.ts` (reads `grammar/n5.json`) if Task 4 did not.
 - [ ] **Step 1: Update the tests** to integer-level fixtures; add `test_allowed_vocab_is_words_at_or_below_point_level` in `test_check_grammar_pool.py`.
 - [ ] **Step 2: Run** the full Python suite → the updated tests FAIL.
 - [ ] **Step 3: Implement.**
