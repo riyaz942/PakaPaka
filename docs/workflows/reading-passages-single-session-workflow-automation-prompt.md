@@ -23,13 +23,39 @@ the decisions baked into it.
 
 The unit of work here is a **seed** (a planned passage: topic, tone, length band,
 question count), not a vocabulary slug. Seeds for <level> are defined in
-`curriculum/_build/generate_content/reading_seeds.py` (N5 and N4 each have their
-30). This run **auto-selects the next seeds that have not yet passed the gate**
+`curriculum/_build/generate_content/reading_seeds.py`. A level with no seeds stops
+at Step 1 ("no reading seeds at level N"); writing the seeds (at least 3 for each
+level 2–20) is Task 9 of the ladder plan, not part of this session.
+This run **auto-selects the next seeds that have not yet passed the gate**
 (Step 1) — you do NOT paste a seed list.
 
-Level (one JLPT level per run; `n5` and `n4` have seeds, `n3`+ do not yet):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`. Levels 2–20 each need passages
+(the level test, below); level 1 has none:
 
-<level = n4>
+<level = 2>
+
+What a passage is now: the level test
+
+The 60 shipped passages are rewritten with new ids (Task 9 of
+`docs/superpowers/plans/2026-11-18-level-ladder.md`); this lane writes the new set.
+A passage is the **level test** (spec §7.6 of
+`docs/superpowers/specs/2026-11-18-level-ladder-design.md`): the learner completes a
+level 2–20 by passing 2 of its passages. So:
+
+- Levels 2–20 need at least 3 passages each. Level 1 has none. Not checked by
+  script yet (Task 9 adds `levels_2_20_with_fewer_than_3_passages` to
+  `reports/ladder_report.py`).
+- Every word of a passage, in the body, the summary and the question prompts, is at
+  or below the passage's level. Checked by script (`validate_readings`, check 4).
+- Every grammar point found in the body is at or below the passage's level.
+  Checked by script (`validate_readings`, check 6).
+- The app never shows a wrong answer. Each question's accepted answers must cover
+  the kana form and the kanji form of the answer, each with and without です where
+  the answer can end that way. Not checked by script: the gate only needs one
+  accepted answer that appears in the body. The app ignores punctuation.
+- The operator reviews the accepted answers before release. Task 9 writes them to
+  `reports/passage-answers.md`.
 
 Number of seeds this session targets (this session drafts, ingests and repairs
 exactly this many seeds, then stops — no more, no less unless the auto-select
@@ -67,11 +93,12 @@ Review subagent model (Step 5 only):
 
 Ordering — read before starting
 
-Seeds are ordered by position and the allowed vocabulary and grammar grow with
-position, so generate them in the order Step 1 prints. Never reorder, never
-hand-pick a later seed because it looks easier. Finish <level> fully before
-moving to the next level. Only run a level that has seeds in `reading_seeds.py`
-(N5's 30 and N4's 30 are authored; N3+ have none).
+Seeds are ordered by position within the level. The window is the same for every
+seed of a level: every word and grammar point at or below it. Generate the seeds
+in the order Step 1 prints. Never reorder, never hand-pick a later seed because
+it looks easier. Finish <level> fully before moving to the next level. Only run a
+level that has seeds in `reading_seeds.py` (Step 1 stops with "no reading seeds
+at level N" otherwise). Levels 2–20 need at least 3 passages each.
 
 ---
 
@@ -91,8 +118,9 @@ BATCH_LIMIT, then run:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import reading_seeds
-LEVEL, BATCH_LIMIT = '<level>', <seed-count>
-drafts_dir = f'generate_content/drafts/readings/{LEVEL}'
+from generate_content.context import level_dir
+LEVEL, BATCH_LIMIT = <level>, <seed-count>
+drafts_dir = f'generate_content/drafts/readings/{level_dir(LEVEL)}'
 done = set()
 if os.path.isdir(drafts_dir):
     for name in os.listdir(drafts_dir):
@@ -110,8 +138,9 @@ print(','.join(todo))
 PY
 
 If it prints any `SEED PROBLEM:` lines, stop and report them — the seed list
-itself is broken (duplicate slug, position gap, tone mix out of the 75–85% band,
-a ladder cutoff that falls, a grammar point assigned to no seed or to two) and
+itself is broken (duplicate slug, tone mix out of the 75–85% band, a
+`required_grammar` point above the seed's level or one no script can detect, a
+grammar point of levels 1–20 assigned to no seed or to two) and
 nothing generated against it is trustworthy.
 
 Because "done" is read from the checked-in draft records (keyed by seed slug, not
@@ -132,7 +161,7 @@ Step 2: Generate the Prompt Files
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
+curriculum/_build/generate_content/web/readings/<level-dir>/<seed>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites
 deterministically. Note that the auto-select in Step 1 picks up seeds whose
@@ -159,7 +188,7 @@ obeyed per seed.
 Write each passage exactly as its own prompt body asks, then write ONE reply file
 per seed, each to its own path:
 
-curriculum/_build/generate_content/web/readings/<level>/<seed>.reply.md
+curriculum/_build/generate_content/web/readings/<level-dir>/<seed>.reply.md
 
 Do not write a combined file. Requirements:
 
@@ -181,7 +210,10 @@ Do not write a combined file. Requirements:
   words (punctuation excluded), not characters, so aim mid-band.
 - Every content word in `body` **and in `summary_ja`** must come from the prompt's
   allowed vocabulary, plus any names the prompt explicitly grants. The level check
-  rejects out-of-level words in both.
+  rejects words above the passage's level in both.
+- Widen the accepted answers of every question: list the kana form and the kanji
+  form of the answer, each with and without です where the answer can end that
+  way. Not checked by script; the operator reviews them.
 - Produce exactly the number of questions the prompt asks for. Each question needs
   at least one accepted answer that appears **literally in the body**, and the
   question prompt itself is level-checked too.
@@ -217,11 +249,11 @@ The passage is enriched — word spans, vocabulary slugs, word count, and the
 `body_furigana` / `prompt_furigana` annotations, all derived by the tokenizer —
 and merged into the build artifact:
 
-curriculum/_build/generate_content/passages/<level>.json
+curriculum/_build/generate_content/passages/<level-dir>.json
 
 Ingestion then deletes that seed's `.prompt.md` and `.reply.md`; their content now
 lives in the draft record and the dataset, so an empty
-`web/readings/<level>/` after a clean session is expected, not a lost reply.
+`web/readings/<level-dir>/` after a clean session is expected, not a lost reply.
 
 Every enriched passage should carry a non-empty `body_furigana` (the only
 exception is a body with no kanji at all, which will not happen at these
@@ -243,7 +275,7 @@ count** — this is the one deliberate difference from the subagent workflow's
   to resolve every reported error.
 
   - Make the smallest changes necessary; preserve what already works. An
-    out-of-level word is usually a local substitution, not a rewrite.
+    word above the level is usually a local substitution, not a rewrite.
   - Fix all reported errors, not only the first.
   - Watch for knock-on effects: replacing a sentence can push the word count out
     of band, and deleting text can strand a question whose accepted answer no
@@ -266,10 +298,10 @@ time. If that also fails, stop retrying this seed, record it as skipped, preserv
 its latest validation errors for the final report, and move to the next seed — a
 failure never touches another seed's already-passed files.
 
-A seed can legitimately be unwritable at its position — the topic may need a word
-the cutoff has not reached yet. If a seed keeps failing on the same missing word,
+A seed can legitimately be unwritable at its level — the topic may need a word
+above the seed's level. If a seed keeps failing on the same missing word,
 say so in the report and name the word: the fix is a seed edit (move the seed
-later, or reframe the topic), not another attempt.
+to a higher level, or reframe the topic), not another attempt.
 
 ---
 
@@ -370,8 +402,8 @@ at all**, and you must not add one:
 - Do NOT run `generate.py`, `npm run validate-schema`, or `npm run
   compile-curriculum` as part of this session. Nothing this workflow writes is an
   input to them.
-- Do NOT write to or edit `curriculum/readings/<level>.json`, and do NOT edit
-  `curriculum/_build/<level>_readings.py`. The shipped passages at both levels are
+- Do NOT write to or edit the shipped passage data (`curriculum/readings/items.json`),
+  and do NOT edit the `*_readings.py` files in `curriculum/_build/`. The old shipped passages are
   being retired and the generated set replaces them — that decision is already
   made, and it is *not* what holds the wire-in back. What holds it back is the
   Phase 5 human read, which has not happened for anything this workflow produces.
@@ -379,7 +411,7 @@ at all**, and you must not add one:
   `docs/content/phase-4-reading-passage-tooling.md` § "The step that is
   deliberately not automated".
 
-The session ends at `curriculum/_build/generate_content/passages/<level>.json`.
+The session ends at `curriculum/_build/generate_content/passages/<level-dir>.json`.
 That file is a build artifact for a human to read.
 
 ---
@@ -433,10 +465,10 @@ Important Constraints
 - Do not bypass or weaken validation. Do not modify validator or ingestion code,
   the seed list, the allowed-vocab derivation, or curriculum source data to make
   invalid content pass.
-- Do not widen a seed's `vocab_cutoff`, `pull_forward`, `grammar_cutoff` or
-  `pull_forward_grammar` to unblock it. That ladder is authored ahead of
-  generation on purpose; a window the writer may move makes the level gate
-  vacuous.
+- Do not change a seed's level, or its `extra_allowed`, to unblock it. The
+  seed's level is the passage's level and sets its window (every word and
+  grammar point at or below it); a window the writer may move makes the level
+  gate vacuous.
 - Do not manually mark generated passages as reviewed.
 - Do not write shipped curriculum files, and run no build command.
 - No browser, no clipboard, no downloads.
@@ -456,5 +488,5 @@ Notes on differences from the subagent workflow
   (Step 1, reading "done" from the checked-in draft records), the same
   `webprompts`/`ingest` commands and gate, the same tokenizer-derived fields, the
   same 3-attempt cap plus one last-resort inline fix, the same draft records under
-  `drafts/readings/<level>/`, the same assembled dataset, the same position
+  `drafts/readings/<level-dir>/`, the same assembled dataset, the same position
   ordering, and the same `review_status: draft` discipline.

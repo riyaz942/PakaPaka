@@ -1,9 +1,9 @@
 # Generating grammar lessons via web chat (no API cost)
 
 This is the **no-API alternative** to the Message Batches driver for producing
-the rest of the N5 + N4 grammar lessons (`docs/content/content-pipeline-plan.md`, step 4).
-The pilot's 10 N5 lessons were generated through the API for ~$2; the remaining
-~161 points would cost proportionally more. Instead, you paste each point's prompt
+grammar lessons for a ladder level (`docs/content/content-pipeline-plan.md`, step 4).
+The unit of work is a **ladder level** (a number from 1 to 60; content before release
+is levels 1-20). Writing lessons through the API costs money per point. Instead, you paste each point's prompt
 into a Claude or Gemini web chat (covered by a flat subscription) and feed the
 reply back through the **same context builder and the same mechanical gate** the
 API path uses. Only the "call the model" step moves to the browser — nothing about
@@ -27,11 +27,17 @@ The one command you use is the grammar generator with two new subcommands,
 (see "List remaining slugs" below), then pass them to `webprompts`:
 
 ```bash
-.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs <slug,slug,...>
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest     --level n5 --slug <slug> --model <claude-web|gemini-web>
+.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level <N> [--slugs <slug,slug,...>]
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest     --slug <slug> --model <claude-web|gemini-web>
 ```
 
-Files live under `curriculum/_build/generate_content/web/grammar/<level>/` and are
+`webprompts` takes `--level N`, `--levels 1-20` or `--slugs a,b` (use one of the three).
+A level run picks only the points of that level that have **no lesson file yet**. Use
+`--slugs` to rewrite a point that has a lesson already. `ingest` needs only `--slug`: the
+level comes from the point.
+
+Files live under `curriculum/_build/generate_content/web/grammar/level-NN/` (NN = the
+point's level, two digits) and are
 **gitignored** (like `drafts/`) — they are throwaway working files. The committed
 artifact is the assembled lesson at `curriculum/grammar/lessons/<slug>.md`.
 
@@ -44,8 +50,9 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
 - **Allowed vocabulary, taught siblings, style anchors** are computed from the
   curriculum and baked into each prompt — you never pick these yourself.
 - **The mechanical gate** (`validate_drafts.py`) runs on ingest exactly as it does
-  in the API path: it rejects out-of-level words, missing pattern usage, furigana
-  failures, unsupported markdown, and slug typos. A reply that passes the gate is
+  in the API path: it rejects words above the point's level, missing pattern usage, furigana
+  failures, unsupported markdown, and slug typos. A sentence may use only words at or
+  below the point's level. A reply that passes the gate is
   as constraint-clean as an API-generated one.
 - **Furigana is never written by the model** — the build pipeline (`generate.py`)
   adds it mechanically. You (and the chat) only ever write plain Japanese.
@@ -67,14 +74,14 @@ grammar catalog `context.load_grammar` reads). `webprompts` writes a prompt
 points that have **no** assembled lesson yet:
 
 ```bash
-# list the remaining (unwritten) N5 grammar slugs
+# list the remaining (unwritten) grammar slugs of levels 1-20
 .venv/bin/python - <<'PY'
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
-level = 'n5'
+levels = range(1, 21)   # one level: range(6, 7)
 done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
-todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
-print(f'{len(todo)} {level} points left:')
+todo = [g['slug'] for g in context.load_grammar() if g['level'] in levels and g['slug'] not in done]
+print(f'{len(todo)} levels {levels.start}-{levels.stop - 1} points left:')
 print(','.join(todo))
 PY
 ```
@@ -91,10 +98,10 @@ list for a batch.
 `mo-also` is a worked example. Substitute a slug from the list above.
 
 ```bash
-.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs mo-also
+.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --slugs mo-also
 ```
 
-Writes `generate_content/web/grammar/n5/mo-also.prompt.md`. Open it. Everything below the
+Writes `generate_content/web/grammar/level-NN/mo-also.prompt.md` (NN = the level of `mo-also`). Open it. Everything below the
 `<!-- ... -->` header is one self-contained block: the teaching-voice sheet, the
 grammar point, the exact allowed vocabulary, taught/upcoming siblings, the style
 anchors, the formatting rules, and a JSON output contract.
@@ -117,7 +124,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into:
 
 ```
-generate_content/web/grammar/n5/mo-also.reply.md
+generate_content/web/grammar/level-NN/mo-also.reply.md
 ```
 
 The filename must match the slug. (The prompt file's header comment restates this
@@ -126,25 +133,25 @@ path so you don't have to remember it.)
 ### 4. Ingest
 
 ```bash
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --level n5 --slug mo-also --model claude-web
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --slug mo-also --model claude-web
 ```
 
 **On pass:** it assembles `curriculum/grammar/lessons/mo-also.md`
 (`review_status: draft`), stashes cloze candidates in
-`drafts/n5/mo-also-cloze-candidates.json`, and deletes the staged
+`drafts/level-NN/mo-also-cloze-candidates.json`, and deletes the staged
 `mo-also.prompt.md` / `mo-also.reply.md`. Done — move to the next point.
 
 **On failure:** it prints the gate errors, does *not* assemble, and **rewrites the
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/grammar/n5/mo-also.prompt.md`.
+1. Open the rewritten `web/grammar/level-NN/mo-also.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
 3. Save the new reply over `mo-also.reply.md`.
 4. Run `ingest` again.
 
-Most failures are a stray out-of-level word or a fence/`example_sentences`
+Most failures are a stray word above the point's level or a fence/`example_sentences`
 mismatch; the appended feedback names the exact offenders, and the model usually
 fixes them on the second try. If a point fights the gate for 3+ rolls, skip it and
 come back — don't burn a session on one stubborn point.
@@ -158,8 +165,8 @@ once, then work them one chat at a time.
 
 Run the listing snippet above. Paste that comma list into `webprompts --slugs ...`.
 Work in curriculum order (the list is already sorted by `sort_order`) so contrast
-sections reference points you've already seen. Do N5 fully before N4 (`--level n4`)
-— N4 lessons are allowed to reference all N5 vocabulary, so N5 should be settled
+sections reference points you've already seen. Work in level order (level 1, then 2, …):
+a lesson may use every word at or below its level, so the lower levels should be settled
 first.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
@@ -174,7 +181,8 @@ validate. From the **repo root**:
 
 ```bash
 # 1. inline the new lesson markdown into the grammar JSON + add furigana
-#    (run generate.py for the level you worked on — see curriculum/_build)
+#    (from curriculum/_build: .venv/bin/python generate.py — it builds every level;
+#     add --report-pool to print grammar pool failures and continue)
 # 2. validate + compile
 npm run validate-schema
 npm run compile-curriculum
@@ -185,9 +193,9 @@ Then review the assembled lessons in the app's lesson renderer (Phase 5) and set
 warns on `draft` content, and CI can fail on it, so unreviewed prose can't silently
 ship.
 
-> Check `curriculum/_build/generate_content/` for the current `generate.py`
-> invocation and any per-level flags before the first compile of a session —
-> the pipeline commands there are the source of truth if they drift from this doc.
+> Check `curriculum/_build/generate.py --help` for the current invocation before the
+> first compile of a session — the pipeline commands there are the source of truth
+> if they drift from this doc.
 
 ---
 
@@ -196,10 +204,10 @@ ship.
 | Step | Command / action |
 |---|---|
 | List remaining slugs | the Python snippet under "List remaining slugs" |
-| Make prompts | `... webprompts --level n5 --slugs a,b,c` |
+| Make prompts | `... webprompts --level 6` or `... webprompts --slugs a,b,c` |
 | Paste | one point per fresh Claude/Gemini chat |
-| Save reply | `web/grammar/<level>/<slug>.reply.md` |
-| Ingest + gate | `... ingest --level n5 --slug a --model claude-web` |
+| Save reply | `web/grammar/level-NN/<slug>.reply.md` |
+| Ingest + gate | `... ingest --slug a --model claude-web` |
 | On gate failure | reopen the rewritten `<slug>.prompt.md`, re-roll, re-save, re-ingest |
 | After a batch | `generate.py` → `npm run validate-schema` → `npm run compile-curriculum` → human review |
 

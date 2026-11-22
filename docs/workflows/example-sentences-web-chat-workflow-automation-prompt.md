@@ -4,9 +4,10 @@ Use the existing logged-in Gemini session in my Chrome browser to generate Phase
 example sentences for vocabulary. This run **auto-selects the next batch of
 not-yet-done slugs** (Step 1) — you do NOT paste a slug list.
 
-Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 6>
 
 Content type (always `vocab`):
 
@@ -59,17 +60,21 @@ Work from:
 curriculum/_build
 
 1a. Select this run's slugs automatically. Do NOT hand-pick or paste a slug list.
-Pick the next BATCH_LIMIT slugs of <type> (in curriculum sort order) that are
-neither generated (absent from the committed sidecar) nor drafted (no record under
-`drafts/examples`). Substitute this run's <type> for KIND, then run:
+Pick the next BATCH_LIMIT slugs of <type> (in ladder order) that are
+neither generated (no example sentences in the committed sidecar) nor drafted (no record under
+`drafts/examples`). A level run picks only words with no sentences, so reviewed sentences are
+never regenerated here; to regenerate a reviewed word, name it with `--slugs` by hand (outside
+this auto-select). Substitute this run's <type> for KIND, then run:
 
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', 10
+from generate_content.context import level_dir
+LEVEL, KIND, BATCH_LIMIT = <level>, 'vocab', 10
 sidecar = '../vocabulary/examples.json'
-generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
-drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
+entries = json.load(open(sidecar)) if os.path.exists(sidecar) else {}
+generated = {s for s, e in entries.items() if e.get('example_sentences')}
+drafts_dir = f'generate_content/drafts/examples/{level_dir(LEVEL)}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
 drafted.discard('requests-preview')
 done = generated | drafted
@@ -86,12 +91,12 @@ outside this list is touched.
 1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
 single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level <level> --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --slugs <selected,slugs,...>
 
 Generating all prompts at once is fine, but each slug must still use its own fresh
 Gemini chat. Each prompt file is written to:
 
-curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.prompt.md
 
 ---
 
@@ -147,7 +152,7 @@ Instead:
    everything up to and including the header's closing `-->` line, which is robust
    to header length:
 
-   sed '1,/-->/d' curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md | pbcopy
+   sed '1,/-->/d' curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.prompt.md | pbcopy
 
    (Verify the copied text starts with `# Teaching voice`.)
 
@@ -234,7 +239,7 @@ Instead:
    - Read the downloaded JSON.
    - Rewrite it as the required fenced ```json ... ``` reply file at:
 
-   curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
+   curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.reply.md
 
 4. Delete the original downloaded file from Downloads after it has been moved into
    place.
@@ -252,7 +257,7 @@ Step 8: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model gemini-web
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --slug <slug> --model gemini-web
 
 If ingestion succeeds:
 
@@ -265,7 +270,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.prompt.md
 
 with validation errors appended.
 
@@ -293,8 +298,8 @@ Repair Procedure
    - Run the subagent in the foreground because ingestion must wait for the repair to finish.
 
 2. The repair works from these files, whichever method is used:
-   - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
-   - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
+   - curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.prompt.md
+   - curriculum/_build/generate_content/web/examples/<level-dir>/<type>/<slug>.reply.md
 
 3. Apply the following instructions — they govern an inline fix exactly as they
    govern a repair subagent:
@@ -320,7 +325,7 @@ Repair Procedure
    - Ensure the repaired content parses as valid JSON.
    - Every sentence must actually use the target: the word's dictionary form (a natural conjugation counts — 食べました exemplifies 食べる).
    - Every slug in a sentence's `vocabulary_slugs` must be in the prompt's allowed-vocabulary list; do not reference any word outside it.
-   - Every content word in each Japanese sentence must be in-level per the prompt's allowed vocabulary (no out-of-level words the level-check will reject).
+   - Every content word in each Japanese sentence must be in the prompt's allowed vocabulary (no word above that window; the level-check rejects it).
    - Keep every Japanese sentence fully annotatable by the tokenizer (avoid constructions that fail the furigana round-trip).
    - Keep all fields plain prose — no markdown, headings, lists, bold/italic, furigana brackets, or romaji. The pipeline adds furigana itself.
    - Keep each Japanese sentence and English translation within the length bounds implied by the gate errors.
@@ -332,7 +337,7 @@ Repair Procedure
 
 5. Run ingestion again:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model gemini-web
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --slug <slug> --model gemini-web
 
 6. If ingestion fails again:
    - Read the newly appended validation errors from the rewritten prompt file.
@@ -378,17 +383,14 @@ doubles as the pilot.
 Final Build
 
 After every slug has been successfully ingested or skipped, run the project's normal
-generation pipeline from the repository root.
+generation pipeline.
 
-Check the current invocation under:
+Check `generate.py --help` under `curriculum/_build` for the current invocation.
+`generate.py` builds every level and takes no level flag. From `curriculum/_build`, run:
 
-curriculum/_build/generate_content/
+.venv/bin/python generate.py
 
-Then run:
-
-generate.py --level <level>
-
-Followed by:
+Then, from the repository root, run:
 
 npm run validate-schema
 
@@ -397,9 +399,7 @@ And:
 npm run compile-curriculum
 
 `generate.py` inlines the example sidecars into the shipped vocab JSON and adds
-furigana with the tokenizer. Use the current project-specific `generate.py`
-invocation and flags found under `curriculum/_build/`. Do not guess if the documented
-invocation has changed.
+furigana with the tokenizer. Do not guess if `--help` shows a different invocation.
 
 ---
 

@@ -11,7 +11,7 @@ next batch.
 
 Spec: `docs/superpowers/specs/2026-10-21-grammar-build-accepted-answers-design.md`
 
-Level (one per run): <level = n5>
+Levels (ladder levels 1–60; one level such as `6`, or a range such as `1-20`): <levels = 1-20>
 Points this session: <point-count = 6>
 Check and judge model: <check-model = opus>
 
@@ -21,47 +21,54 @@ in Steps 2 and 4.
 ---
 
 Work from `curriculum/_build`. Every command below is
-`.venv/bin/python -m generate_content.build_answers …`.
+`.venv/bin/python -m generate_content.build_answers …`. Only `select` takes
+`--level` / `--levels`; every other command takes `--slugs` or `--slug`. The
+staging folder is `<level-dir>`: `level-` and two digits, the point's own
+level (level 6 is `level-06`).
+
+A sentence may use only words at or below the point's level.
 
 Step 1: Select
 
-select --level <level> --limit <point-count>
+select --levels <levels> --limit <point-count>
 
-Use exactly the printed slugs. If it prints 0, the level is done — stop and
-report.
+`select` lists the points that have a pool entry but no answers check at the
+current `CHECK_VERSION`, in ladder order. A point whose pool entry was
+rewritten by the pool lane comes back here. Use exactly the printed slugs. If
+it prints 0, the levels are done — stop and report.
 
 Step 2: Check the sentences
 
-checkprompts --level <level> --slugs <slugs,comma,no,spaces>
+checkprompts --slugs <slugs,comma,no,spaces>
 
 For each point, spawn **one fresh subagent** (model `<check-model>`, never
 this session, never shared across points) that reads
-`generate_content/web/answers/<level>/<slug>.check.prompt.md` — everything
+`generate_content/web/answers/<level-dir>/<slug>.check.prompt.md` — everything
 below its HTML comment header is the task — and writes
 `<slug>.check.reply.md` with exactly one fenced ```json block. Wait for the
 subagent to **finish**, not for the file to appear. Then:
 
-checkingest --level <level> --slug <slug> --model claude-code
+checkingest --slug <slug> --model claude-code
 
 - PASS: fixes (if any) are written to `pool.json` and printed. Keep the
   printed lines for the report.
 - Exit 1: the prompt is rewritten with the errors; spawn a fresh subagent on
   it. Budget: 4 attempts, then run
-  `skip --level <level> --slug <slug> --reason "<last errors>"` and drop the
+  `skip --slug <slug> --reason "<last errors>"` and drop the
   point from this run.
 - Exit 2 (`unfixable`): the point is already recorded as skipped in
   `pool.json` with the printed reason; drop it from this run.
 
 Step 3: Propose answers (this session)
 
-proposeprompts --level <level> --slugs <remaining slugs>
+proposeprompts --slugs <remaining slugs>
 
 Read each `<slug>.propose.prompt.md` (below the header) and write
 `<slug>.propose.reply.md` yourself: exactly one fenced ```json block.
 
 Step 4: Judge and ingest, one point at a time
 
-judgeprompts --level <level> --slug <slug>
+judgeprompts --slug <slug>
 
 - Exit 1: your proposal has errors; fix only `<slug>.propose.reply.md` from
   the rewritten prompt and run `judgeprompts` again.
@@ -70,13 +77,13 @@ judgeprompts --level <level> --slug <slug>
   session) that reads `<slug>.judge.prompt.md` and writes
   `<slug>.judge.reply.md`; wait for it to finish. Then:
 
-ingest --level <level> --slug <slug> --model claude-code
+ingest --slug <slug> --model claude-code
 
 On PASS the valid answers and their `other_grammar` pairs are added, the
 point gets `_meta.answers_check`, and its files are deleted; keep the printed
 `+` lines for the report. On failure the judge prompt is rewritten with the
 errors: spawn a fresh subagent on it. Budget: 4 attempts per point, then
-run `skip --level <level> --slug <slug> --reason "<last errors>"`.
+run `skip --slug <slug> --reason "<last errors>"`.
 
 A skipped point carries `_meta.answers_check.skipped`, so `select` moves past
 it; the reason is in `pool.json` for the maintainer.
@@ -90,11 +97,11 @@ Rules:
 
 Step 5: Regenerate
 
-.venv/bin/python generate.py --level <level>
+.venv/bin/python generate.py
 
 Final report:
 
-- level and selected slugs;
+- levels and selected slugs;
 - every sentence fix: old → new, with the reason;
 - per point the valid / contrast / wrong counts;
 - skipped points with their errors or unfixable reasons;

@@ -125,7 +125,8 @@ rule below is that one rule, with the mistake already made once:
   can intend the action. 箱が待っています is not a sentence a Japanese writer
   puts on the page — a box does not wait. A thing that has sat somewhere since
   a time is said with ある: 箱は先月から角にあります. (置いてあります is what an
-  adult would write, but 〜てある is N4 grammar and will not be on your list.)
+  adult would write, but 〜てある is not on your list unless the grammar list
+  below names it.)
 - **Do not count without the counter the object takes.** Pens take 本, books
   take 冊, animals take 匹. 〜つ is not a general-purpose counter: it counts
   small objects that have no counter of their own, and clothes (着) and shoes

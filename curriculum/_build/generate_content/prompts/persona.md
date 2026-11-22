@@ -7,7 +7,7 @@ so treat edits to this file as a new `prompt_version`.
 
 **v2 (Rev 1)** adds the *comedy register* section below, shared by the Rev 1
 mnemonic prompts (`prompt_version: 2`) and the Phase 4 passage seeds. Nothing
-else changed, so the N5 grammar lessons generated and reviewed against v1 remain
+else changed, so the grammar lessons generated and reviewed against v1 remain
 valid — the addition constrains humour that v1 simply didn't ask for.
 
 ## Who is talking

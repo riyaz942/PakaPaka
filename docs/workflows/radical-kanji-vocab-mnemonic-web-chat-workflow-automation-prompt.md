@@ -105,7 +105,7 @@ if you try to skip ahead. Order for a level: **radicals → `generate.py` → ka
 1b raises that error, stop and report it — the previous layer is not done.
 
 **Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
-other layer's prose, so it can run at any time. Two conditions instead:
+other layer's prose, so it can run at any time. One condition instead:
 `curriculum/_build/grammar_origins.json` must cover every grammar slug and
 carry `"review_status": "reviewed"` (every command with `--type grammar` stops
 with an error otherwise — report it, do not edit the file yourself). The gate rules are in
@@ -183,11 +183,11 @@ This mirrors the API path, whose `run --level` takes the same items.
 `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}`),
 because the four prompts move independently. Radicals sitting at 1 is deliberate:
 Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
-~150–300 characters, description demoted to optional — so the reviewed N5 radicals
+~150–300 characters, description demoted to optional — so the first reviewed radicals
 already match the current prompt and are correctly *not* re-selected.
 
 The number records **conformance, not provenance**: it answers "does this draft
-satisfy contract N", not "which prompt wrote it". The N5 kanji were generated
+satisfy contract N", not "which prompt wrote it". The first kanji were generated
 under 1 and 2 and then brought up to 4 in place — retagged mechanically, with the
 description backlog cleared — so they are stamped 4. Stamping is only ever correct
 after the item passes the gate under the new contract; a draft that merely
@@ -708,17 +708,14 @@ drop <group-size>.
 Final Build
 
 After every selected slug has been successfully ingested or skipped, run the
-project's normal generation pipeline from the repository root.
+project's normal generation pipeline.
 
-Check the current invocation under:
+Check `generate.py --help` under `curriculum/_build` for the current invocation.
+`generate.py` builds every level and takes no level flag. From `curriculum/_build`, run:
 
-curriculum/_build/generate_content/
+.venv/bin/python generate.py
 
-Then run:
-
-generate.py
-
-Followed by:
+Then, from the repository root, run:
 
 npm run validate-schema
 
@@ -729,9 +726,7 @@ npm run compile-curriculum
 `generate.py` inlines the mnemonic sidecars into the shipped radical/kanji/vocab
 JSON (radicals get a `mnemonic_text`; kanji and vocab get the two mnemonics; all
 three get a `description` only on the items that needed one), each carrying
-`_meta.review_status: draft`. Use the current
-project-specific `generate.py` invocation and flags found under
-`curriculum/_build/`. Do not guess if the documented invocation has changed.
+`_meta.review_status: draft`. Do not guess if `--help` shows a different invocation.
 
 This step is not optional between layers — the next layer's prompts read the
 inlined prose, not the sidecar.

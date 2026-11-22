@@ -35,9 +35,10 @@ Use this runbook for the passages generation did not cover:
 
 The mechanics below are the same either way; only the selection differs.
 
-Level (one JLPT level per run):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 2>
 
 Subagent model (which model every review subagent in this run uses):
 
@@ -65,7 +66,7 @@ The prompt file carries the passage **and the seed's whole allowed vocabulary
 and grammar window**. This is the part that makes the lane work, and it is not
 optional.
 
-An outside review of seed 12 got the diagnosis right — 箱が待っています is wrong —
+An outside review of seed 12 (in the JLPT-era seed list) got the diagnosis right — 箱が待っています is wrong —
 and proposed 置いてあります, which is `tearu`, N4 grammar, off the list at every
 N5 seed. It also proposed the counter 二着, which is in neither level. Both
 corrections were unusable. A reviewer that cannot see the window can only
@@ -95,7 +96,7 @@ If it reports nothing to review, the level is fully reviewed — stop and say so
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/naturalness/<level>/<seed>.prompt.md
+curriculum/_build/generate_content/web/naturalness/<level-dir>/<seed>.prompt.md
 
 Take the first <batch-size> of them as this run's set.
 
@@ -110,14 +111,14 @@ findings.
 
 Give the subagent these instructions:
 
-  Read `generate_content/web/naturalness/<level>/<seed>.prompt.md` in full.
+  Read `generate_content/web/naturalness/<level-dir>/<seed>.prompt.md` in full.
   Everything BELOW the HTML comment header (the block opening `<!--` and ending
   in `-->`) is your complete, self-contained task. The header is orchestration
   for the caller — ignore it.
 
   Do exactly what the prompt body asks, then write your answer to:
 
-  generate_content/web/naturalness/<level>/<seed>.reply.md
+  generate_content/web/naturalness/<level-dir>/<seed>.reply.md
 
   - The reply file must contain EXACTLY one fenced ```json code block and
     nothing else — no preamble, no commentary.
@@ -197,12 +198,12 @@ that does:
 
 - Do NOT run `generate.py`, `npm run validate-schema`, or
   `npm run compile-curriculum`. Nothing here is an input to them.
-- Do NOT write `curriculum/readings/<level>.json` or edit
-  `curriculum/_build/<level>_readings.py`.
+- Do NOT write the shipped passage data (`curriculum/readings/items.json`) or edit
+  the `*_readings.py` files in `curriculum/_build/`.
 - Do NOT set `review_status` to reviewed. A clean naturalness verdict is one
   model's opinion, not the Phase 5 human read.
 
-The run ends at `curriculum/_build/generate_content/passages/<level>.json`, a
+The run ends at `curriculum/_build/generate_content/passages/<level-dir>.json`, a
 build artifact for a human to read.
 
 ---

@@ -32,6 +32,36 @@ review's own runbook is for the other job: backfilling a level, or re-reviewing
 after `REVIEW_VERSION` changes.
 | Semantic content audit (Tier 2) | — | [automation](./semantic-audit-subagent-workflow-automation-prompt.md) | — |
 
+## Ladder work list
+
+The unit of work is a **ladder level**: a number from 1 to 60. Content before release is
+levels 1–20. Folders are `level-NN/` (level 6 is `level-06`). The tools take `--level N`,
+`--levels 1-20` or `--slugs a,b`. A level run picks only items that have no content yet;
+`--slugs` names reviewed items to regenerate.
+
+Before release (levels 1–20):
+
+- Kanji mnemonics: the mnemonic runbooks (`--type kanji`), after the radicals.
+- Radical mnemonics: the mnemonic runbooks (`--type radical`), first.
+- Grammar sentences: the grammar sentence pool runbook, then the accepted answers runbook.
+- Grammar links (`vocabulary_slugs` at or below the point's level): no runbook. The links
+  are edited in the grammar source data.
+- Grammar mnemonics: the mnemonic runbooks (`--type grammar`), only for the points named
+  with `--slugs` whose Japanese example uses a word above the point's level.
+- Reading passages: the passage runbooks. Levels 2–20 need at least 3 passages each.
+
+Later phase:
+
+- Vocabulary examples: the example sentence runbooks.
+- Vocabulary mnemonics: the mnemonic runbooks (`--type vocab`).
+
+The live counts are in `curriculum/_build/reports/ladder-report.md`. Do not copy them into
+the docs. To refresh the report, run this from `curriculum/_build`:
+
+```bash
+.venv/bin/python reports/ladder_report.py
+```
+
 Which of these have actually been *run* is tracked in
 [../working-history.md](../working-history.md) — the runbook existing does not mean the content exists.
 

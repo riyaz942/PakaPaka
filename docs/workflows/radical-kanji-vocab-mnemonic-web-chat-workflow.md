@@ -2,9 +2,10 @@
 
 This is the **no-API alternative** to the Message Batches driver for producing the
 radical descriptions, kanji mnemonics and vocabulary mnemonics
-(`docs/content/content-pipeline-plan.md`, 2b + 2d). The N5 set was first generated
-through the API for a few dollars; regenerating a level under Rev 1's
-`prompt_version: 2`, or extending to N4, can instead be done by pasting each item's
+(`docs/content/content-pipeline-plan.md`, 2b + 2d). The first set was generated
+through the API for a few dollars; regenerating items under Rev 1's
+`prompt_version: 2`, or writing the new items of a ladder level (a number from 1 to 60),
+can instead be done by pasting each item's
 prompt into a Claude or Gemini web chat (covered by a flat subscription) and feeding
 the reply back through the **same context builder and the same mechanical gate** the
 API path uses. Only the "call the model" step moves to the browser — nothing about
