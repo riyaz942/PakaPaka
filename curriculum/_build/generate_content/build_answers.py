@@ -249,11 +249,11 @@ def gate_context(slug):
     the point's level — the same words as check_point, and the same known
     readings as generate.build_grammar_point."""
     level = context.grammar_item(slug)["level"]
+    known = generate._known(generate._grammar_inputs()["words"], level)
     return {
-        "vocab_forms": {v["slug"]: v["primary_form"] for v in context.vocab_through(level)},
+        "vocab_forms": {v["slug"]: v["form"] for v in known},
         "pronouns": pool_check.pronoun_slugs_through(level),
-        "known_readings": generate._vocab_reading_map(
-            generate._known(generate._grammar_inputs()["words"], level)),
+        "known_readings": generate._vocab_reading_map(known),
     }
 
 

@@ -590,6 +590,11 @@ def cmd_run(args):
     # Resumable: re-validate stored output against the *current* gate first.
     # A draft from an older prompt version is regenerated wholesale, not
     # patched (docs Rev 1: "regenerate wholesale under prompt_version: 2").
+    # Only what this run handled goes into the sidecar: the slugs it generates,
+    # and a stored passing draft only while its slug has no mnemonic there yet,
+    # so a stale draft file never overwrites an entry reviewed since.
+    sidecar = load_sidecar(args.kind)
+    merge = set()
     pending = {}
     for slug in args.slugs:
         record = records[slug]
@@ -604,11 +609,14 @@ def cmd_run(args):
                     record["status"] = "draft"
                     _save_draft(record)
                 print(f"{slug}: stored draft passes the current gate — skipping generation")
+                if not sidecar.get(slug, {}).get(MNEMONIC_FIELD[args.kind]):
+                    merge.add(slug)
                 continue
             pending[slug] = errors
         else:
             pending[slug] = None
 
+    merge |= set(pending)
     for attempt in range(1, MAX_ATTEMPTS + 1):
         if not pending:
             break
@@ -624,7 +632,8 @@ def cmd_run(args):
         _save_draft(records[slug])
         print(f"{slug}: still failing after {MAX_ATTEMPTS} attempts — flagged_for_rewrite")
 
-    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}))
+    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}),
+                  only_slugs=merge)
 
 
 def cmd_collect(args):
@@ -645,7 +654,10 @@ def cmd_collect(args):
     pending = _process_outcomes(
         args.kind, contexts, {}, _batch_outcomes(client, args.batch_id, tool_name)
     )
-    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}))
+    # Only the slugs this batch answered: a stale draft file of another slug
+    # must not overwrite its (maybe reviewed) sidecar entry.
+    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}),
+                  only_slugs=set(contexts))
     if pending:
         print("still failing the gate — rerun `run` to requeue with feedback: "
               + ", ".join(sorted(pending)))
@@ -668,10 +680,11 @@ def write_sidecar(kind, levels, only_slugs=None):
     """Merge these levels' gate-passing drafts on disk into the kind's sidecar.
     The sidecar is keyed by slug; generate.py inlines it into the shipped JSON.
 
-    With `only_slugs=None` (the batch/API lane's usage — cmd_run, cmd_collect,
-    cmd_assemble), every draft of this level+kind is (re)written. With
-    `only_slugs` given (the ingest lane's usage — cmd_ingest), only those slugs'
-    entries are. Only the `level-NN` draft folders are read. Either way every other entry in the on-disk sidecar is carried
+    With `only_slugs=None` (cmd_assemble, the explicit "rebuild from the
+    drafts" command), every draft of these levels+kind is (re)written. With
+    `only_slugs` given (cmd_run, cmd_collect, cmd_ingest: the slugs they
+    handled), only those slugs' entries are. Only the `level-NN` draft folders
+    are read. Either way every other entry in the on-disk sidecar is carried
     through untouched: the file is shared by every level, and a human reviewer
     may promote an entry's `review_status` to `reviewed` or add a `description`
     directly in the sidecar, without that change ever being written back to the
@@ -891,6 +904,11 @@ def main():
         args.slugs = [s for s in args.slugs.split(",") if s]
     elif args.levels:
         args.slugs = default_slugs(args.kind, args.levels)
+        if not args.slugs and args.command in ("run", "webprompts"):
+            where = (f"level {args.levels[0]}" if len(args.levels) == 1
+                     else f"levels {args.levels[0]}-{args.levels[-1]}")
+            print(f"nothing to do: no items without content at {where}")
+            return
     elif args.command in ("requests", "run", "webprompts"):
         raise SystemExit(f"{args.command} requires --level, --levels or --slugs")
 

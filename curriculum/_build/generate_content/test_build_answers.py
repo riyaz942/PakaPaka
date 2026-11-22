@@ -272,6 +272,24 @@ class GateTest(unittest.TestCase):
         self.assertTrue(errors("お茶は熱いうちに飲んだ方がいいよ。"))
 
 
+class GateContextTest(unittest.TestCase):
+    def test_words_and_readings_are_the_ladder_words_of_build_grammar_point(self):
+        words = ba.generate._grammar_inputs()["words"]
+        for slug in ("baai", "uchi-ni", "aida"):
+            known = ba.generate._known(words, ba.context.grammar_item(slug)["level"])
+            ctx = ba.gate_context(slug)
+            self.assertEqual(ctx["vocab_forms"], {v["slug"]: v["form"] for v in known}, slug)
+            self.assertEqual(ctx["known_readings"], ba.generate._vocab_reading_map(known), slug)
+
+    def test_known_readings_come_from_the_same_known_call(self):
+        sentinel = [{"slug": "w", "form": "語", "reading": "ご"}]
+        with mock.patch.object(ba.generate, "_known", return_value=sentinel) as known:
+            ctx = ba.gate_context("baai")
+        known.assert_called_once()
+        self.assertEqual(ctx["vocab_forms"], {"w": "語"})
+        self.assertEqual(ctx["known_readings"], {"語": "ご"})
+
+
 class IngestTest(unittest.TestCase):
     def test_ingest_without_reply_files_exits(self):
         with tempfile.TemporaryDirectory() as tmp:
