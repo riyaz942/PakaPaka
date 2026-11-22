@@ -1,10 +1,13 @@
+import Database from 'better-sqlite3';
 import { createPrivateKey, generateKeyPairSync, sign } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
   buildPayload,
   checkKeyMatches,
   checkNewerThanLive,
+  checkSeedShape,
   encodePayload,
   isSqliteFile,
   publicKeyBase64,
@@ -203,5 +206,53 @@ describe('curriculum-release', () => {
     expect(() => resolveReleaseTarget(['--schema', 'x'], 2)).toThrow('--schema');
     expect(() => resolveReleaseTarget(['--schema', '3'], 2)).toThrow('--schema');
     expect(() => resolveReleaseTarget(['--seed', '/tmp/a.db'], 2)).toThrow('--seed');
+  });
+
+  it('resolveReleaseTarget: a flag with no value is an error', () => {
+    expect(() => resolveReleaseTarget(['--schema'], 2)).toThrow('--schema needs a value');
+    expect(() => resolveReleaseTarget(['--schema', '--dry-run'], 2)).toThrow('--schema needs a value');
+    expect(() => resolveReleaseTarget(['--schema', '1', '--seed'], 2)).toThrow('--seed needs a value');
+  });
+
+  describe('checkSeedShape', () => {
+    const shape1 = ['id', 'item_type', 'jlpt_level', 'slug'];
+    const shape2 = ['id', 'item_type', 'level', 'slug'];
+    const tables2 = ['items', 'level_jlpt_equivalence'];
+
+    it('accepts each schema with a db of its own shape', () => {
+      expect(() => checkSeedShape(1, ['items'], shape1)).not.toThrow();
+      expect(() => checkSeedShape(2, tables2, shape2)).not.toThrow();
+    });
+
+    it('refuses a schema 2 db under schema 1, and a schema 1 db under schema 2', () => {
+      expect(() => checkSeedShape(1, tables2, shape2)).toThrow('not a schema 1 db');
+      expect(() => checkSeedShape(2, ['items'], shape1)).toThrow('not a schema 2 db');
+    });
+
+    it('refuses a schema 2 db without level_jlpt_equivalence', () => {
+      expect(() => checkSeedShape(2, ['items'], shape2)).toThrow('level_jlpt_equivalence');
+    });
+
+    it('refuses a db with both columns', () => {
+      expect(() => checkSeedShape(1, ['items'], [...shape1, 'level'])).toThrow('not a schema 1 db');
+      expect(() => checkSeedShape(2, tables2, [...shape2, 'jlpt_level'])).toThrow('not a schema 2 db');
+    });
+
+    it('reads the shape from a real sqlite file', () => {
+      const dir = mkdtempSync(join(tmpdir(), 'release-shape-'));
+      try {
+        const db = new Database(join(dir, 's2.db'));
+        db.exec('CREATE TABLE items (id INTEGER, level INTEGER); CREATE TABLE level_jlpt_equivalence (jlpt TEXT)');
+        const tables = (db.prepare("SELECT name FROM sqlite_master WHERE type = 'table'").all() as { name: string }[]).map(
+          (r) => r.name,
+        );
+        const columns = (db.prepare('PRAGMA table_info(items)').all() as { name: string }[]).map((c) => c.name);
+        db.close();
+        expect(() => checkSeedShape(2, tables, columns)).not.toThrow();
+        expect(() => checkSeedShape(1, tables, columns)).toThrow('not a schema 1 db');
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    });
   });
 });

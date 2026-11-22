@@ -164,7 +164,10 @@ export function resolveReleaseTarget(
 ): { schema: number; seedFile: string | undefined } {
   const value = (flag: string): string | undefined => {
     const i = args.indexOf(flag);
-    return i >= 0 ? args[i + 1] : undefined;
+    if (i < 0) return undefined;
+    const next = args[i + 1];
+    if (next === undefined || next.startsWith('--')) throw new Error(`${flag} needs a value.`);
+    return next;
   };
   const schemaArg = value('--schema');
   const seedFile = value('--seed');
@@ -181,3 +184,25 @@ export function resolveReleaseTarget(
   return { schema, seedFile };
 }
 
+/**
+ * The db must have the shape of the schema it is signed for: an old store app
+ * cannot read a schema 2 file, and a new app cannot read a schema 1 file.
+ * `itemColumns` are the column names of `items`; `tables` are all table names.
+ */
+export function checkSeedShape(schema: number, tables: string[], itemColumns: string[]): void {
+  const hasLevel = itemColumns.includes('level');
+  const hasJlpt = itemColumns.includes('jlpt_level');
+  const fail = (why: string): never => {
+    throw new Error(`The db is not a schema ${schema} db: ${why}.`);
+  };
+  if (schema === 1) {
+    if (!hasJlpt) fail('items has no jlpt_level');
+    if (hasLevel) fail('items has level (a schema 2 shape)');
+  } else if (schema === 2) {
+    if (!hasLevel) fail('items has no level');
+    if (hasJlpt) fail('items has jlpt_level (a schema 1 shape)');
+    if (!tables.includes('level_jlpt_equivalence')) fail('there is no level_jlpt_equivalence table');
+  } else {
+    throw new Error(`No shape check for schema ${schema}.`);
+  }
+}

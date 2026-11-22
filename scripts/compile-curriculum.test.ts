@@ -57,6 +57,18 @@ describe('item id registry', () => {
     expect(idByKey.get('radical:b')).toBe(3);
   });
 
+  it('gives new keys ids in numeric level order, not string order', () => {
+    const { section: result } = assignItemIds(
+      [radical('c', 10), radical('a', 2), radical('b', 2)],
+      [],
+      [],
+      [],
+      section({}),
+      true,
+    );
+    expect(result.ids).toEqual({ 'radical:a': 100, 'radical:b': 101, 'radical:c': 102 });
+  });
+
   it('fails on a key with no id unless updateRegistry is set', () => {
     const registry = section({ 'radical:b': 3 });
     expect(() =>

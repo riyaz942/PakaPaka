@@ -15,6 +15,7 @@ import {
   buildPayload,
   checkKeyMatches,
   checkNewerThanLive,
+  checkSeedShape,
   isSqliteFile,
   readSigningKeys,
   resolveReleaseTarget,
@@ -83,10 +84,15 @@ async function main(): Promise<void> {
   }
   if (!isSqliteFile(head)) throw new Error('Run git lfs pull first.');
 
-  // 3. Version, SHA-256 and size.
+  // 3. Shape, version, SHA-256 and size (before any network or signing step).
   const db = new Database(seedPath, { readonly: true });
   let version: unknown;
   try {
+    const tables = (db.prepare("SELECT name FROM sqlite_master WHERE type = 'table'").all() as { name: string }[]).map(
+      (row) => row.name,
+    );
+    const itemColumns = (db.prepare('PRAGMA table_info(items)').all() as { name: string }[]).map((c) => c.name);
+    checkSeedShape(schema, tables, itemColumns);
     version = (db.prepare('SELECT version FROM curriculum_metadata').get() as { version: unknown } | undefined)?.version;
   } finally {
     db.close();
