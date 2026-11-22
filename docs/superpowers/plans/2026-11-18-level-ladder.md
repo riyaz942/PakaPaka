@@ -210,6 +210,31 @@ The report prints: the per-level table (radicals, kanji, words, grammar, passage
 - [ ] **Step 4: Run** the full Python suite → PASS. `grep -rn "\"n5\"\|'n5'\|LEVEL_ORDER\|ALL_LEVELS" curriculum/_build --include='*.py' | grep -v test_ | grep -v jlpt_reference` → only dataset file names (`n5_vocab.py` imports) remain.
 - [ ] **Step 5: Checkpoint** (tests green, then commit the task).
 
+### Task 6c: Content workflow runbooks use ladder levels
+
+The operator writes ladder content (Tasks 7, 8, 9, 19) with the runbooks in `docs/workflows/`. Task 6 moved the tools to ladder levels but left the runbooks on `--level n5` / `n4`, so their commands now fail. This task fixes the runbooks and the prompt lines that name a JLPT level. Docs and prompts only: no tool code, no app code.
+
+**Files:**
+- Modify: `docs/workflows/*.md` (all 20 files, including `README.md`), `curriculum/_build/generate_content/prompts/grammar-lesson.md`, `curriculum/_build/generate_content/prompts/persona.md`, and any other `prompts/*.md` line that names a JLPT level as a unit of work (not as a plain grammar fact)
+- Not in scope: `docs/content/*`, `docs/design/*`, `README.md`, `curriculum/README.md`, `docs/app-*.md`, the studio UI (Guide tab), old output under `generate_content/web/`
+
+**Interfaces:**
+- Consumes: the Task 6 CLIs (`--level N`, `--levels 1-20`, `--slugs`), the `level-NN/` draft and staging folders, `reports/ladder-report.md`, spec §7.4 and §7.6, Task 9 in this plan.
+- Produces: runbooks whose every command runs as written.
+
+- [ ] **Step 1: Inventory.** `grep -rnE "JLPT|\bN[1-5]\b|\bn[1-5]\b|--level n|level = n" docs/workflows curriculum/_build/generate_content/prompts` → list every hit. Decide each: change, or keep because it is history or a plain grammar fact.
+- [ ] **Step 2: Rewrite the runbooks.**
+  - The unit of work is a ladder level: a number 1–60 (content before release is levels 1–20). Replace `--level n5`, `<level = n4>` and "one JLPT level per run" with the real flags and `<level = 1>` / `<levels = 1-20>`.
+  - Paths use `level-NN/` (`drafts/.../level-NN/<kind>/`, `web/.../level-NN/<kind>/`).
+  - Remove statements that only fit the old two-level state ("N5 and N4 each have seeds", "N3+ have none", "N5's 30 and N4's 30 are authored"). Say what is true now: the 60 shipped passages are rewritten with new ids (Task 9).
+  - Explain the auto-select rule where a runbook relies on it: a level run picks only items with no content; `--slugs` names reviewed items to regenerate.
+  - Reading passages runbooks: a passage is the level test (spec §7.6). Levels 2–20, at least 3 per level, level 1 none; every word at or below the passage's level; accepted answers widened (kana and kanji form, with or without です); the operator reviews the answers. Where a gate does not check one of these by script yet, say "not checked by script" — do not claim it is checked.
+  - Grammar runbooks: a sentence may use only words at or below the point's level, a point needs at least 2 such sentences, linked `vocabulary_slugs` are at or below the point's level.
+  - `docs/workflows/README.md`: add a short "Ladder work list" section: the content areas before release (kanji mnemonics, radical mnemonics, grammar sentences / links / mnemonics, reading passages), the later areas (vocab examples, vocab mnemonics), and where the live counts are (`reports/ladder-report.md`, regenerate with `ladder_report.py`). Do not copy counts into the docs.
+- [ ] **Step 3: Fix the prompts.** `grammar-lesson.md` ("JLPT {{LEVEL}}" while `generate_grammar_lessons.py` fills "level N") and `persona.md` (N5 sentence). Do not change `PROMPT_VERSION` or stamp drafts (memory: no mass regeneration of reviewed mnemonics).
+- [ ] **Step 4: Verify every command.** For each command line in the runbooks, run it with `--help` (or its dry-run form) from `curriculum/_build` and check each flag exists. `grep -rnE "--level n|level = n|JLPT level" docs/workflows` → no hit that is not history. Run the full Python suite → PASS (prompt files are read by tests).
+- [ ] **Step 5: Checkpoint** (tests green, then commit the task).
+
 ### Task 7: Grammar content (before release)
 
 **Files:**
