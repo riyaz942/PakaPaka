@@ -35,6 +35,10 @@ Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
 
 <level = 2>
 
+The levels that still need passages are in `reading_passages` in
+`curriculum/_build/reports/ladder-worklist.json` (the level and how many are missing).
+Pick <level> from it.
+
 What a passage is now: the level test
 
 The 60 shipped passages are rewritten with new ids (Task 9 of

@@ -20,21 +20,20 @@ Work from `curriculum/_build`.
 
 Step 1: Select
 
-.venv/bin/python -m generate_content.generate_pool select --levels <levels> --limit <point-count>
+.venv/bin/python -m generate_content.generate_pool select --failing --levels <levels> --limit <point-count>
 
-`select` lists only points with **no pool entry** yet, in ladder order. Use
-exactly the printed slugs. If it prints 0, no point lacks a pool entry. Then
-list the points whose stored sentences fail the pool gate. The checker takes
-one level at a time (`--level N`, an integer); start at the lowest level in
-<levels> and move up:
+`select --failing` lists the points that fail the pool gate, in ladder order.
+This includes a point with no pool entry yet. It runs the same check as
+`check_grammar_pool`, so it takes a few minutes for a wide range. Use exactly
+the printed slugs. If it prints 0, no point in <levels> fails — the work is
+done: stop and report.
+
+To see why a point fails, run the checker for its level (`--level N`, an
+integer). It prints one `### <slug>` heading per failing point, with the rules
+that fail (rule 3: a word above the point's level; rule 4: fewer than 8 passing
+sentences):
 
 .venv/bin/python -m generate_content.check_grammar_pool --level <N>
-
-It prints one `### <slug>` heading per failing point, with the rules that
-fail (rule 3: a word above the point's level; rule 4: fewer than 8 passing
-sentences). It exits 1 while any point fails. Take the first <point-count>
-failing slugs in level order. If no level in <levels> has a failing point,
-the work is done — stop and report.
 
 A sentence may use only words at or below the point's level. The pool gate
 needs at least 8 passing sentences per point; the release floor (spec §7.6) is

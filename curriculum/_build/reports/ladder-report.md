@@ -137,12 +137,30 @@ None.
 | --- | --- | ---: | --- |
 | Grammar | Example sentences that use a word above the point's level (`grammar/pool.json`) (`grammar_sentences_above_level`) | 717 | Before release |
 | Grammar | Points with fewer than 2 example sentences that use only words at or below the point's level (`grammar_points_under_2_readable`) | 41 | Before release |
+| Grammar | Points that fail the sentence pool gate (`check_grammar_pool`) (`grammar_points_failing_pool`) | 132 | Before release |
 | Grammar | Points whose linked words (`vocabulary_slugs`) include a word above the point's level (`grammar_points_linked_above_level`) | 93 | Before release |
+| Grammar | Mnemonics whose Japanese example uses a word above the point's level (`grammar/mnemonics.json`) (`grammar_mnemonics_above_level`) | 62 | Before release |
 | Vocabulary | Example sentences that use a word above the word's level (`vocabulary/examples.json`) (`vocab_sentences_above_level`) | 1430 | Later phase |
 | Vocabulary | Mnemonics written while a kanji of the word was untaught (`_build/regen_vocab_mnemonics.json` pending) (`vocab_mnemonics_without_kanji`) | 630 | Later phase |
 | Kanji | Kanji in levels 1-20 with no mnemonic (`kanji_1_20_without_mnemonic`) | 184 | Before release |
 | Radicals | Radicals in levels 1-20 with no mnemonic (`radicals_1_20_without_mnemonic`) | 132 | Before release |
+| Passages | Levels 2-20 with fewer than 3 passages (`reading_levels_short`) | 16 | Before release |
 | Passages | Passages above level 20 (`passages_above_target`) | 37 | Before release |
+
+## Work lists
+
+The full lists are in `ladder-worklist.json`.
+
+| Area | Count |
+| --- | ---: |
+| `radical_mnemonics` | 132 |
+| `kanji_mnemonics` | 184 |
+| `grammar_pool_points` | 132 |
+| `grammar_links_above_level` | 93 |
+| `grammar_mnemonics_above_level` | 62 |
+| `reading_passages` | 16 |
+| `vocab_examples_above_level` | 777 |
+| `vocab_mnemonics_pending` | 630 |
 
 ### `grammar_sentences_above_level` (717)
 
@@ -172,6 +190,20 @@ None.
 - level 2: no-nominalizer: 0 of 9 readable
 - … and 31 more
 
+### `grammar_points_failing_pool` (132)
+
+- level 1: desu
+- level 1: dewa-arimasen
+- level 1: masen
+- level 1: mashita
+- level 1: masu
+- level 1: wa-topic
+- level 2: ga
+- level 2: masen-ka
+- level 2: mashou
+- level 2: no-nominalizer
+- … and 122 more
+
 ### `grammar_points_linked_above_level` (93)
 
 - level 1: conjugation-primer: taberu (7), nomu-v (7), shiru (7), takai-adj (14), shizuka (15)
@@ -185,6 +217,20 @@ None.
 - level 2: masen-ka: issho-ni (17), ocha (4), eiga (9)
 - level 2: mashou: issho-ni (17), iku-v (7), ocha (4)
 - … and 83 more
+
+### `grammar_mnemonics_above_level` (62)
+
+- level 1: desu: 本 (本)
+- level 1: dewa-arimasen: パン (パン)
+- level 1: masen: 肉 (肉), 食べ (食べる)
+- level 1: mashita: 昨日 (昨日), ご飯 (ご飯), 食べ (食べる)
+- level 1: masu: 飲み (飲む)
+- level 1: wa-topic: 今日 (今日), 寒い (寒い)
+- level 2: ga: 猫 (猫)
+- level 2: masen-ka: 一緒 (一緒), 帰り (帰る)
+- level 2: mashou: 一緒 (一緒)
+- level 2: no-nominalizer: 帰る (帰る)
+- … and 52 more
 
 ### `vocab_sentences_above_level` (1430)
 
@@ -241,6 +287,20 @@ None.
 - level 7: dugout-canoe
 - level 7: each
 - … and 122 more
+
+### `reading_levels_short` (16)
+
+- level 2: 3 of 3 missing
+- level 3: 3 of 3 missing
+- level 4: 3 of 3 missing
+- level 5: 3 of 3 missing
+- level 6: 3 of 3 missing
+- level 7: 3 of 3 missing
+- level 8: 3 of 3 missing
+- level 9: 3 of 3 missing
+- level 10: 3 of 3 missing
+- level 11: 3 of 3 missing
+- … and 6 more
 
 ### `passages_above_target` (37)
 

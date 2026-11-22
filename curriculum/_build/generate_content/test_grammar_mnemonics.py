@@ -88,7 +88,8 @@ class GrammarContextTest(unittest.TestCase):
 
 
 from generate_content import level_check  # noqa: E402
-from generate_content.validate_mnemonics import validate_grammar  # noqa: E402
+from generate_content.validate_mnemonics import (  # noqa: E402
+    grammar_example_violations, validate_grammar)
 
 ALLOWED = [
     {"primary_form": w, "accepted_answers": []}
@@ -345,6 +346,36 @@ class GateMinorFixesTest(unittest.TestCase):
         with mock.patch.object(mc, "load_items", return_value=items):
             with self.assertRaises(KeyError):
                 mc.grammar_context("teoku", GrammarContextTest.TABLE)
+
+
+class StoredExampleCheckTest(unittest.TestCase):
+    """`grammar_example_violations` runs the gate's example check on stored text."""
+
+    def violations(self, text):
+        return grammar_example_violations("teoku", text, gctx())
+
+    def test_example_with_only_allowed_words_passes(self):
+        self.assertEqual(self.violations(TEOKU_GOOD), [])
+
+    def test_example_with_a_later_word_is_flagged(self):
+        text = TEOKU_GOOD.replace("買っ<reading>ておく</reading>。",
+                                  "辞書を買っ<reading>ておく</reading>。")
+        self.assertEqual(len(self.violations(text)), 1)
+        self.assertIn("辞書", self.violations(text)[0])
+
+    def test_a_word_in_the_story_is_not_checked(self):
+        text = "Koichi reads a 辞書 and says \"<reading>OK</reading>\", <grammar>for later</grammar>. 買っ<reading>ておく</reading>。"
+        self.assertEqual(self.violations(text), [])
+
+    def test_no_text_or_no_example_is_not_a_violation(self):
+        self.assertEqual(self.violations(None), [])
+        self.assertEqual(self.violations("A story with no example."), [])
+
+    def test_gate_and_stored_check_agree(self):
+        text = TEOKU_GOOD.replace("買っ<reading>ておく</reading>。",
+                                  "辞書を買っ<reading>ておく</reading>。")
+        errors = validate_grammar("teoku", {"mnemonic_text": text}, gctx())
+        self.assertTrue(any("above level" in e and "辞書" in e for e in errors))
 
 
 if __name__ == "__main__":

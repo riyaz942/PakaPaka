@@ -201,6 +201,13 @@ generation units: every later step iterates over exactly these slugs, and no slu
 outside this list is touched. Record the group composition — the final report
 names it.
 
+A run that fixes existing mnemonics takes its slugs from the work list, not from
+this select: `grammar_mnemonics_above_level` (`--type grammar`) or
+`vocab_mnemonics_pending` (`--type vocab`) in
+`curriculum/_build/reports/ladder-worklist.json`. See "Ladder work list" in
+`docs/workflows/README.md`. Use that list as the slug set; the select above skips
+items that already have a mnemonic.
+
 Grouping is a hint for the writer, not a constraint on the content: items in a
 group share a Gemini chat, nothing else. Each still gets its own prompt file built
 from its own context, and no item may reference another group-mate's components.

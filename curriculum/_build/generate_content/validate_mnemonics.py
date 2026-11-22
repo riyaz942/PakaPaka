@@ -1124,6 +1124,30 @@ def _bare_forms(ctx):
     return [f.replace("〜", "") for f in (ctx["form"], *ctx["accepted_forms"]) if f.replace("〜", "")]
 
 
+def _example_extra_allowed(ctx):
+    """Words the example may use besides the allowed vocabulary: the point's own
+    forms and its origin word."""
+    extra_allowed = set(_bare_forms(ctx))
+    if ctx["origin"]:
+        extra_allowed.add(ctx["origin"]["word"])
+    return extra_allowed
+
+
+def grammar_example_violations(slug, text, ctx=None):
+    """Words above the point's level in the Japanese example of a stored grammar
+    mnemonic (the check `validate_grammar` runs on a new one). Empty when the
+    text has no example or no such word."""
+    if not isinstance(text, str):
+        return []
+    ctx = ctx or mnemonic_context.grammar_context(slug)
+    plain = _strip_tags(text, ALLOWED_TAG[("grammar", "mnemonic_text")]).strip()
+    match = _GRAMMAR_EXAMPLE_RE.search(plain)
+    if not match:
+        return []
+    return level_check.find_violations(
+        match.group(1), ctx["allowed_index"], _example_extra_allowed(ctx))
+
+
 def validate_grammar(slug, draft, ctx=None, enforce_readability=False):
     """Every rule always runs: no stored grammar prose predates this contract,
     so there is no fresh-versus-stored lane (`enforce_readability` is accepted
@@ -1188,9 +1212,7 @@ def validate_grammar(slug, draft, ctx=None, enforce_readability=False):
                 f"{field}'s example must show the form attached to a word "
                 "(e.g. 本を読む), not the form alone"
             )
-        extra_allowed = set(_bare_forms(ctx))
-        if ctx["origin"]:
-            extra_allowed.add(ctx["origin"]["word"])
+        extra_allowed = _example_extra_allowed(ctx)
         violations = level_check.find_violations(example, ctx["allowed_index"], extra_allowed)
         if violations:
             errors.append(

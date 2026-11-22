@@ -120,6 +120,13 @@ anything either. To regenerate a reviewed item, name it with `--slugs` by hand
 (outside this auto-select). If it prints 0 slugs, every item of this level+type
 already has a mnemonic — stop and report that.
 
+A run that fixes existing mnemonics takes its slugs from the work list, not from
+this select: `grammar_mnemonics_above_level` (`--type grammar`) or
+`vocab_mnemonics_pending` (`--type vocab`) in
+`curriculum/_build/reports/ladder-worklist.json`. See "Ladder work list" in
+`docs/workflows/README.md`. Use that list as the slug set; the select above skips
+items that already have a mnemonic.
+
 Step 2: Generate the Prompt Files
 
 .venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --slugs <selected,slugs,...>

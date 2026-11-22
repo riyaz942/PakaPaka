@@ -238,6 +238,13 @@ def check_level(level=None):
     }
 
 
+def failing_slugs(levels=None):
+    """Slugs of the points at `levels` (every level when None) that fail a rule,
+    in ladder order. The work list of the pool lane."""
+    levels = levels or sorted({g["level"] for g in context.load_grammar()})
+    return [slug for level in levels for slug, errors in check_level(level).items() if errors]
+
+
 def _report(results_by_level):
     lines = ["# Grammar pool report", ""]
     for level, results in results_by_level.items():

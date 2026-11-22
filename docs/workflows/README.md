@@ -39,27 +39,46 @@ levels 1–20. Folders are `level-NN/` (level 6 is `level-06`). The tools take `
 `--levels 1-20` or `--slugs a,b`. A level run picks only items that have no content yet;
 `--slugs` names reviewed items to regenerate.
 
+Each area below has one list or selector that feeds its command. The lists are in
+`curriculum/_build/reports/ladder-worklist.json`. The report script computes them from the
+ladder and the content, so they hold no marks. Refresh the file before you read it.
+
 Before release (levels 1–20):
 
-- Radical mnemonics: the mnemonic runbooks (`--type radical`), first.
-- Kanji mnemonics: the mnemonic runbooks (`--type kanji`), after the radicals.
-- Grammar sentences: the grammar sentence pool runbook, then the accepted answers runbook.
-- Grammar links (`vocabulary_slugs` at or below the point's level): no runbook. The links
-  are edited in the grammar source data.
-- Grammar mnemonics: the mnemonic runbooks (`--type grammar`), only for the points named
-  with `--slugs` whose Japanese example uses a word above the point's level.
-- Reading passages: the passage runbooks. Levels 2–20 need at least 3 passages each.
+- Radical mnemonics (`radical_mnemonics`): the mnemonic runbooks (`--type radical`), first. A
+  level run (`--level N`) picks the same items.
+- Kanji mnemonics (`kanji_mnemonics`): the mnemonic runbooks (`--type kanji`), after the
+  radicals. A level run picks the same items.
+- Grammar sentences (`grammar_pool_points`): the grammar sentence pool runbook, then the
+  accepted answers runbook. `generate_pool select --failing [--levels 1-20]` prints the same
+  points, from the same pool check.
+- Grammar links (`grammar_links_above_level`): no runbook. The links are edited in the grammar
+  source data.
+- Grammar mnemonics (`grammar_mnemonics_above_level`): the mnemonic runbooks
+  (`--type grammar --slugs <list>`). The list holds the points whose Japanese example uses a word
+  above the point's level. Use only these slugs.
+- Reading passages (`reading_passages`): the passage runbooks. Each entry is a level from 2 to
+  20 with fewer than 3 passages, and how many are missing.
 
 Later phase:
 
-- Vocabulary examples: the example sentence runbooks.
-- Vocabulary mnemonics: the mnemonic runbooks (`--type vocab`).
+- Vocabulary examples (`vocab_examples_above_level`): the example sentence runbooks, with
+  `--slugs <list>`.
+- Vocabulary mnemonics (`vocab_mnemonics_pending`): the mnemonic runbooks
+  (`--type vocab --slugs <list>`). The list holds the words whose mnemonic was written before one of their kanji was taught.
 
 The live counts are in `curriculum/_build/reports/ladder-report.md`. Do not copy them into
-the docs. To refresh the report, run this from `curriculum/_build`:
+the docs. To refresh the report and the lists, run this from `curriculum/_build`. It takes a
+few minutes, because it runs the pool check and the tokenizer on every grammar point:
 
 ```bash
 .venv/bin/python reports/ladder_report.py
+```
+
+To print a list as a `--slugs` value:
+
+```bash
+.venv/bin/python -c "import json; print(','.join(json.load(open('reports/ladder-worklist.json'))['grammar_mnemonics_above_level']))"
 ```
 
 Which of these have actually been *run* is tracked in

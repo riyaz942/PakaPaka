@@ -4,6 +4,7 @@
 docs/workflows/grammar-pool-single-session-workflow-automation-prompt.md).
 
     .venv/bin/python -m generate_content.generate_pool select --levels 1-10 --limit 4
+    .venv/bin/python -m generate_content.generate_pool select --failing [--levels 1-20] --limit 4
     .venv/bin/python -m generate_content.generate_pool webprompts --slugs a,b
     .venv/bin/python -m generate_content.generate_pool ingest --slug a --model <model>
 
@@ -149,7 +150,12 @@ def _paths(slug):
 
 
 def cmd_select(args):
-    slugs = select_slugs(args.levels, args.limit, generate.load_pool_sidecar())
+    if args.failing:
+        slugs = pool_check.failing_slugs(args.levels)[:args.limit]
+    elif args.levels:
+        slugs = select_slugs(args.levels, args.limit, generate.load_pool_sidecar())
+    else:
+        raise SystemExit("select needs --level, --levels or --failing")
     print(f"{len(slugs)} point(s) selected:")
     print(",".join(slugs))
 
@@ -195,9 +201,11 @@ def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("select")
-    pick = p.add_mutually_exclusive_group(required=True)
+    pick = p.add_mutually_exclusive_group()
     pick.add_argument("--level", dest="levels", type=context.parse_level)
     pick.add_argument("--levels", dest="levels", type=context.parse_levels)
+    p.add_argument("--failing", action="store_true",
+                   help="the points that fail check_grammar_pool (default: every level)")
     p.add_argument("--limit", type=int, default=4)
     p.set_defaults(func=cmd_select)
     p = sub.add_parser("webprompts")

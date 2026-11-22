@@ -292,5 +292,21 @@ class PointRulesTest(unittest.TestCase):
         self.assertTrue(any("rule 7" in e for e in errors))
 
 
+class FailingSlugsTest(unittest.TestCase):
+    RESULTS = {1: {"a": [], "b": ["rule 4: 0 passing sentences"]}, 2: {"c": ["rule 3: x"]}}
+
+    def failing(self, levels=None):
+        with mock.patch.object(pool, "check_level", lambda level: self.RESULTS[level]), \
+                mock.patch.object(pool.context, "load_grammar",
+                                  lambda: [{"level": n} for n in self.RESULTS]):
+            return pool.failing_slugs(levels)
+
+    def test_lists_failing_points_in_level_order(self):
+        self.assertEqual(self.failing(), ["b", "c"])
+
+    def test_levels_narrow_the_list(self):
+        self.assertEqual(self.failing([2]), ["c"])
+
+
 if __name__ == "__main__":
     unittest.main()

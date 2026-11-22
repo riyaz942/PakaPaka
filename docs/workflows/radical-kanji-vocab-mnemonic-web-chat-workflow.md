@@ -122,6 +122,11 @@ Take one slug from that list for the one-item loop below, or keep the whole comm
 list for a batch. `--level 6` instead of `--slugs` writes a prompt for **every**
 item of that level with no sidecar entry yet — the same list.
 
+To fix existing mnemonics, take the slugs from the work list instead:
+`grammar_mnemonics_above_level` (`--type grammar`) or `vocab_mnemonics_pending`
+(`--type vocab`) in `curriculum/_build/reports/ladder-worklist.json`. See "Ladder
+work list" in `docs/workflows/README.md`.
+
 > The snippet lists items that have **no** sidecar entry yet. After a
 > `PROMPT_VERSION` bump the existing entries are stale, not done: name them with
 > `--slugs` and let `ingest` overwrite. The API path's `run --level` takes the
