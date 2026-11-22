@@ -15,6 +15,13 @@
   <img alt="Built with Expo" src="https://img.shields.io/badge/built%20with-Expo-000020" />
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/hero-dark.png" />
+    <img src="docs/screenshots/hero-light.png" alt="PakaPaka Home screen on desktop and on a phone: today's goal ring, reviews ready, N5 progress and the week ahead" width="900" />
+  </picture>
+</p>
+
 ---
 
 Most learners pay for three apps: one for kanji, one for grammar, and a flashcard deck for everything else. None of them share what you know.
@@ -23,14 +30,22 @@ PakaPaka puts it all in one place. Radicals, kanji, vocabulary, grammar and read
 
 **No accounts. No subscriptions. No ads. Your progress never leaves your phone.**
 
-<!-- Screenshots: add images here, for example
-<p align="center">
-  <img src="docs/screenshots/home.png" width="230" />
-  <img src="docs/screenshots/review.png" width="230" />
-  <img src="docs/screenshots/browse.png" width="230" />
-  <img src="docs/screenshots/talk.png" width="230" />
-</p>
--->
+## Screenshots
+
+<table align="center">
+  <tr>
+    <td align="center" width="25%"><img src="docs/screenshots/home.png" width="200" alt="Home screen with the daily goal ring, reviews ready and today's lesson" /><br /><sub><b>Home</b><br />Today's goal, reviews and lesson</sub></td>
+    <td align="center" width="25%"><img src="docs/screenshots/lesson.png" width="200" alt="Lesson card for the kanji 会 (meet), built from person and cloud, with its mnemonic" /><br /><sub><b>Lessons</b><br />Parts, mnemonic and reading</sub></td>
+    <td align="center" width="25%"><img src="docs/screenshots/review.png" width="200" alt="Review card asking for the on'yomi of 会, with the answer かい typed" /><br /><sub><b>Reviews</b><br />Type the answer, romaji becomes kana</sub></td>
+    <td align="center" width="25%"><img src="docs/screenshots/grammar.png" width="200" alt="Grammar review: かもしれない in a sentence, answered correctly as might" /><br /><sub><b>Grammar</b><br />Read and Build cards</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/browse.png" width="200" alt="Browse list with radicals, kanji, vocabulary, grammar and a reading passage" /><br /><sub><b>Browse</b><br />Every item and passage in one list</sub></td>
+    <td align="center"><img src="docs/screenshots/kanji.png" width="200" alt="Kanji detail page for 食 (eat / food) with readings and mnemonics" /><br /><sub><b>Item details</b><br />Readings, parts and mnemonics</sub></td>
+    <td align="center"><img src="docs/screenshots/reading.png" width="200" alt="Open reading passage with linked words and comprehension questions" /><br /><sub><b>Reading</b><br />Passages open as you learn their words</sub></td>
+    <td align="center"><img src="docs/screenshots/stats.png" width="200" alt="Stats screen with days studied, SRS stages and a weak pattern for は vs が" /><br /><sub><b>Stats</b><br />SRS stages and weak patterns</sub></td>
+  </tr>
+</table>
 
 ## Why PakaPaka
 
@@ -55,6 +70,10 @@ New items come one card at a time, in short paced sections. You choose how many 
 
 ### Browse
 One search screen for radicals, kanji, vocabulary, grammar and reading passages, with filters for type, level and status. Each detail page shows mnemonics, readings, example sentences, related items and look-alikes. You can add your own mnemonics and synonyms.
+
+<p align="center">
+  <img src="docs/screenshots/desktop-browse.png" alt="Browse on a wide screen: a search for eat lists reading passages, the eat radical and kanji, and related words" width="760" />
+</p>
 
 ### Reading passages
 Graded passages unlock when you know at least 90% of their words (Guru or higher). Furigana hides automatically for words you know. You can override it for each word.
