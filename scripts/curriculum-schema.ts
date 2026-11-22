@@ -257,6 +257,17 @@ CREATE INDEX idx_item_relationships_child ON item_relationships(child_item_id);
 CREATE INDEX idx_external_id_mappings_source_external_id ON external_id_mappings(source, external_id);
 `;
 
+/**
+ * Curriculum schema version, signed into each release manifest. The app reads only
+ * `/api/curriculum/s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json` and accepts only
+ * a payload whose `schema` equals that number.
+ *
+ * Phase B rule (docs/design/curriculum-schema-migration-plan.md): raise this and
+ * `REQUIRED_CURRICULUM_SCHEMA_VERSION` (mobile) together, in one commit, whenever
+ * CURRICULUM_DDL changes in a way that a query can observe.
+ */
+export const CURRICULUM_SCHEMA_VERSION = 1;
+
 export type ItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
 export type RelationshipType = 'requires' | 'builds_on' | 'reinforces';

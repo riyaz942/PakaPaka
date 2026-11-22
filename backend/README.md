@@ -29,6 +29,8 @@ The server never receives BYOK keys or AI conversations. The server never stores
 | `POST /api/account/signout-all` | Sign out every device |
 | `DELETE /api/account` | Delete the account |
 | `GET /api/sync?have=<revision>` | Download the progress file. `204` only when `have` equals the server revision; any other `have` gets `200` with the file. `X-Sync-Revision` gives the server revision |
+| `GET /api/curriculum/s<n>/manifest.json` | Signed curriculum manifest for schema `n` (public) |
+| `GET /api/curriculum/files/<sha256 hex>.db` | Curriculum database, named by its SHA-256 (public) |
 | `PUT /api/sync?base_revision=<revision>` | Upload the progress file (gzip). `409 revision_conflict` when `base_revision` is not the server revision |
 
 The progress files are in R2 at `progress/<userId>/<revision, 10 digits>-<uuid>.json.gz`. D1 `sync_state` holds the current revision and `object_key`, the key of the current file.
@@ -38,6 +40,10 @@ The progress files are in R2 at `progress/<userId>/<revision, 10 digits>-<uuid>.
 `DELETE /api/account` lists and deletes `progress/<userId>/` twice: before and after it deletes the user rows. A `PUT` that races the delete leaves no file.
 
 Recovery: the previous 3 files stay in R2. To restore one, copy it to a new key and set `sync_state.object_key` and a **higher** `revision` by hand; never reuse a revision number. Name the new key with the new revision (`progress/<userId>/<new revision, 10 digits>-<uuid>.json.gz`): the prune reads the 10-digit prefix.
+
+Curriculum releases are in the R2 bucket `pakapaka-curriculum` (binding `CURRICULUM`): `s<n>/manifest.json` and `files/<64 hex>.db`. The manifest route sends `Cache-Control: public, max-age=300`. The file route sends `public, max-age=31536000, immutable`: a file name is its hash, so its bytes never change. Both send `ETag`, `Content-Length` and `X-Content-Type-Options: nosniff`. A missing object, another method or another path gets `404 not_found` with `Cache-Control: no-store`. These routes read no cookie and no header, and log nothing.
+
+The Worker never signs. Releases: `docs/curriculum-releases.md`.
 
 A cron trigger (`0 1 * * *`) runs the usage watch.
 

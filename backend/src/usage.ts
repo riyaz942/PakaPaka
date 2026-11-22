@@ -28,8 +28,9 @@ const GRAPHQL_URL = "https://api.cloudflare.com/client/v4/graphql";
 //                               rowsWritten are listed as D1 metrics but the docs show no `sum` example
 //   r2OperationsAdaptiveGroups  sum { requests }, dimensions { actionType }, filter datetime_geq/datetime_leq
 //   r2StorageAdaptiveGroups     max { payloadSize metadataSize }, dimensions { datetime }, orderBy datetime_DESC
-// NOT verified (no docs page shows it): d1StorageAdaptiveGroups `max { databaseSizeBytes }` with
-// date_geq/date_leq and orderBy date_DESC. The docs name the metric `databaseSizeBytes` only.
+// The whole query was run against the live API on 2026-11-18 and returned data with no errors.
+// An `orderBy` field must also be selected under `dimensions`, or Cloudflare rejects the whole
+// query ("cannot order by date: it is neither aggregated, nor a dimension").
 // Day metrics use datetime filters for Workers and R2 because those docs show no `date` filter.
 const QUERY = `query Usage($accountTag: string!, $day: Date!, $dayStart: Time!, $dayEnd: Time!, $monthStart: Time!) {
   viewer {
@@ -42,6 +43,7 @@ const QUERY = `query Usage($accountTag: string!, $day: Date!, $dayStart: Time!, 
       }
       d1StorageAdaptiveGroups(limit: 1, filter: { date_geq: $day, date_leq: $day }, orderBy: [date_DESC]) {
         max { databaseSizeBytes }
+        dimensions { date }
       }
       r2OperationsAdaptiveGroups(limit: 10000, filter: { datetime_geq: $monthStart, datetime_leq: $dayEnd }) {
         sum { requests }
@@ -49,6 +51,7 @@ const QUERY = `query Usage($accountTag: string!, $day: Date!, $dayStart: Time!, 
       }
       r2StorageAdaptiveGroups(limit: 1, filter: { datetime_geq: $dayStart, datetime_leq: $dayEnd }, orderBy: [datetime_DESC]) {
         max { payloadSize metadataSize }
+        dimensions { datetime }
       }
     }
   }

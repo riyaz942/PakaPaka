@@ -1617,9 +1617,29 @@ class MockSQLiteDatabase {
     }
   }
 
+  async isInTransactionAsync(): Promise<boolean> {
+    return getDatabaseState(this.databaseName).inTransaction;
+  }
+
   async closeAsync(): Promise<void> {
     return;
   }
+
+  async serializeAsync(_databaseName = 'main'): Promise<Uint8Array> {
+    return new TextEncoder().encode(this.databaseName);
+  }
+
+  /** Web-only patch method (patches/expo-sqlite): load bytes into an attached schema. */
+  readonly nativeDatabase = {
+    deserializeIntoAsync: async (_schemaName: string, _data: Uint8Array): Promise<void> => {},
+  };
+}
+
+let nextDeserializedId = 0;
+
+export async function deserializeDatabaseAsync(_serializedData: Uint8Array) {
+  nextDeserializedId += 1;
+  return new MockSQLiteDatabase(`:memory:${nextDeserializedId}`);
 }
 
 export async function openDatabaseAsync(databaseName: string) {

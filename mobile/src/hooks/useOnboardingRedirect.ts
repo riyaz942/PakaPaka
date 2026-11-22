@@ -12,6 +12,7 @@ import {
   getStartingJlptLevel,
   isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
+import { isWeb } from '@/platform/capabilities';
 
 /**
  * `appliedVersion` comes from the sync: a pull can write the account's progress
@@ -63,7 +64,8 @@ export function useOnboardingRedirect(appliedVersion = 0, hold = false): void {
     const importPath = isImportOnboardingPath(userDb);
 
     if (!level) {
-      router.replace('/onboarding/welcome');
+      // The phone's first screen is the start page; the web has its own landing page.
+      router.replace(isWeb() ? '/onboarding/welcome' : '/start');
       return;
     }
 

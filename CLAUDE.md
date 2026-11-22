@@ -79,8 +79,9 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - Discovery: single **Browse** surface (search + filters); passages unlock at ≥90% Guru+ coverage — no separate Read tab
 - Review: **two-card kanji** (meaning + on'yomi; kun'yomi via vocab); worst-of-both SRS grade; Return-to-advance
 - AI Conversation (Talk tab): BYOK (OpenAI-compatible + Anthropic); curriculum furigana-bracket replies; unknown words flagged only (no direct SRS injection). **Network-required** (NFR24); sign-in and sync (web + mobile) also use the network, and are optional. Voice (on-device TTS/STT) is in scope
-- Sync (optional, signed-in only): built (not deployed yet; see docs/working-history.md). One progress file per user (the backup format, no conversations); three-way merge on the device; one conflict dialog when both devices changed the same row
+- Sync (optional, signed-in only): built; the sync routes and client went live 2026-11-20/21 with the Part 4 deploy; live and phone checks not done (see docs/working-history.md). One progress file per user (the backup format, no conversations); three-way merge on the device; one conflict dialog when both devices changed the same row
 - Platform floor: **iOS 17 / Android 13 (API 33)** + New Architecture
+- Curriculum updates: come from R2 as signed releases (Ed25519, signed offline by the operator; native and web)
 
 ## Hard conventions
 
@@ -91,6 +92,7 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - **BYOK boundary** — Provider keys in secure storage; sent only to user-configured HTTPS endpoints. Conversations stay local; do not inject off-curriculum words into SRS.
 - **Styling** — Semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). No deprecated `Colors` in `src/constants/theme.ts`; no raw hex in new code.
 - **Sync** — merge decisions use row content, never `updatedAt`; sync code uses the async SQLite API (`src/data/sync/`), merge rules are pure functions in `src/core/sync/`; a new `user.db` table must be added to `BackupData` and `SYNC_TABLES` or named as device-only; sign-out syncs, then erases the device; a session that ends elsewhere erases only when nothing is unsynced, else asks.
+- **Curriculum releases** — signed offline with the operator's key (never in git, the Worker, CI or a chat); the app installs only a manifest whose signature verifies with `curriculum-signing-keys.json` and whose `schema` equals `REQUIRED_CURRICULUM_SCHEMA_VERSION`; raise it with `CURRICULUM_SCHEMA_VERSION` when the curriculum DDL changes. Runbook: `docs/curriculum-releases.md`.
 - **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.
 
 ## Commands
@@ -106,7 +108,7 @@ cd backend && npm test && npm run typecheck
 
 ## Architecture crux
 
-**Dual SQLite** (`src/data/database.ts`): `curriculum.db` (bundled seed + OTA swap) and `user.db`, distributed via `DatabaseProvider`. Curriculum is `ATTACH`ed to the user handle for review/Browse joins. OTA: manifest semver → download → SHA-256 → atomic replace (`curriculumUpdate.ts`).
+**Dual SQLite** (`src/data/database.ts`): `curriculum.db` (bundled seed + OTA swap) and `user.db`, distributed via `DatabaseProvider`. Curriculum is `ATTACH`ed to the user handle for review/Browse joins. OTA: signed manifest → download → SHA-256 → swap (native: file swap; web: SQLite backup copy into OPFS) (`curriculumUpdate.ts`).
 
 **Sync base:** `sync_base` (one row in `user.db`) holds the last synced file, its revision and the keys of base rows that `user.db` does not hold yet (carried keys); the three-way merge compares local and remote against it.
 

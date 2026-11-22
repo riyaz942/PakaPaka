@@ -14,8 +14,11 @@ import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
 import { SessionEndedHost } from '@/components/sync/SessionEndedHost';
 import { SyncConflictDialog } from '@/components/sync/SyncConflictDialog';
+import { BrowseOnlyBanner } from '@/components/tabs/BrowseOnlyBanner';
+import { browseOnlyRootScreenLayout } from '@/components/tabs/BrowseOnlyScreenLayout';
 import { appFonts } from '@/constants/fonts';
 import { MaxAppWidth } from '@/constants/theme';
+import { browseOnlySession } from '@/data/account/browseOnlySession';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
@@ -25,6 +28,7 @@ import { DatabaseProvider } from '@/providers/DatabaseProvider';
 import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
 import { SyncProvider } from '@/providers/SyncProvider';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
+import { useTabMode } from '@/providers/TabModeContext';
 
 function CurriculumUpdateBannerHost() {
   const insets = useSafeAreaInsets();
@@ -59,6 +63,49 @@ function ThemeModeHost() {
   return null;
 }
 
+/**
+ * Everything inside the databases. In a web browse-only tab (a second tab on a
+ * copy of the owner tab's databases) the account is inert (no sync, sign-out
+ * or erase), a banner says so, onboarding does not redirect, and screens that
+ * study or write show the "Browse only" screen instead (BrowseOnlyScreenLayout).
+ */
+function AppShell() {
+  const { browseOnly } = useTabMode();
+
+  return (
+    <AccountProvider session={browseOnly ? browseOnlySession : undefined}>
+      <SyncProvider>
+        <ThemeModeHost />
+        <CurriculumUpdateBannerHost />
+        <AnimatedSplashOverlay />
+        <SyncConflictDialog />
+        <BrowseOnlyBanner />
+        {/* A desktop browser window can be any width; the app stays in a
+            centered frame. Phones are always narrower than the cap. */}
+        <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
+          <Stack screenLayout={browseOnlyRootScreenLayout}>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="start" options={{ headerShown: false }} />
+            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="review"
+              options={{ headerShown: false, presentation: 'fullScreenModal' }}
+            />
+            <Stack.Screen
+              name="lesson"
+              options={{ headerShown: false, presentation: 'fullScreenModal' }}
+            />
+            <Stack.Screen name="levels" options={{ headerShown: false }} />
+          </Stack>
+        </View>
+        {browseOnly ? null : <OnboardingRedirect />}
+        <SessionEndedHost />
+      </SyncProvider>
+    </AccountProvider>
+  );
+}
+
 function RootLayoutContent() {
   const isDark = usePaintedColorScheme() === 'dark';
 
@@ -67,35 +114,7 @@ function RootLayoutContent() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
-          <AccountProvider>
-            <SyncProvider>
-              <ThemeModeHost />
-              <CurriculumUpdateBannerHost />
-              <AnimatedSplashOverlay />
-              <SyncConflictDialog />
-              {/* A desktop browser window can be any width; the app stays in a
-                  centered frame. Phones are always narrower than the cap. */}
-              <View className="w-full flex-1 self-center" style={{ maxWidth: MaxAppWidth }}>
-                <Stack>
-                  <Stack.Screen name="index" options={{ headerShown: false }} />
-                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                  <Stack.Screen name="start" options={{ headerShown: false }} />
-                  <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-                  <Stack.Screen
-                    name="review"
-                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                  />
-                  <Stack.Screen
-                    name="lesson"
-                    options={{ headerShown: false, presentation: 'fullScreenModal' }}
-                  />
-                  <Stack.Screen name="levels" options={{ headerShown: false }} />
-                </Stack>
-              </View>
-              <OnboardingRedirect />
-              <SessionEndedHost />
-            </SyncProvider>
-          </AccountProvider>
+          <AppShell />
         </DatabaseProvider>
       </ThemeProvider>
     </View>

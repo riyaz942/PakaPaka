@@ -1,25 +1,17 @@
-# Curriculum update manifest (dev / tests)
+# Curriculum update fixture (tests only)
 
-Bundled artifacts for Story 1.6 local version check and atomic on-device `curriculum.db` swap.
+This folder holds one file: the test fixture `curriculum-mock-update.db`. It is not bundled in the app. Curriculum updates come from signed releases in R2 (see [`docs/curriculum-releases.md`](../../../docs/curriculum-releases.md)).
 
 | File | Purpose |
 | --- | --- |
-| `mock-manifest.json` | Dev default manifest (`1.0.1-n5-seed-mock`) with SHA-256 of `curriculum-mock-update.db` |
 | `curriculum-mock-update.db` | Fixture DB copied from seed with bumped `curriculum_metadata.version` |
 
-The fixture is a copy of the early 114-item N5 seed. Its item slugs went through `curriculum/_build/slug-renames.json` (17 kanji renamed); slugs from before that map are unchanged. Tests read only its bytes, so after any change to the file update `sha256` in `mock-manifest.json` and `content_hash` in `mobile/__mocks__/expo-sqlite.ts`.
+The fixture is a copy of the early 114-item N5 seed. Its item slugs went through `curriculum/_build/slug-renames.json` (17 kanji renamed); slugs from before that map are unchanged. Tests read only its bytes, so after any change to the file update `content_hash` in `mobile/__mocks__/expo-sqlite.ts`.
 
-## Manifest URL configuration
+## Manifest URL
 
-Set one of:
+There is one manifest URL and no setting for it: `<API base>/api/curriculum/s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json`. On web the base is empty (same origin). On native it is `API_BASE_URL` (`mobile/src/config/api.ts`). Its only override is the build-time `EXPO_PUBLIC_API_BASE_URL`. There is no dev mock manifest and no placeholder URL.
 
-- `EXPO_PUBLIC_CURRICULUM_MANIFEST_URL` — remote manifest JSON URL
-- `expo.extra.curriculumManifestUrl` in app config
+## Wi-Fi policy
 
-When unset in `__DEV__`, the app loads `mock-manifest.json` via the `bundled://mock-manifest` scheme.
-
-Production builds without a URL fall back to `https://example.invalid/curriculum-manifest.json` (check is non-fatal).
-
-## Wi‑Fi policy
-
-Downloads run on Wi‑Fi in production. In `__DEV__`, any connected network is allowed for faster local testing.
+Native downloads run on Wi-Fi only, in every build (`curriculumDownloadNeedsWifi()`). Web has no Wi-Fi rule.

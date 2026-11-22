@@ -260,17 +260,29 @@ export const PAIR_MIN_GAP = 2;
  * Which items emit both a meaning and a reading card: kanji that have an
  * on'yomi to ask for, and vocabulary whose every kanji has reached guru.
  * Every grammar item is a Read + Build pair at every stage (D1, D7).
+ * Home counts due cards with this rule too, so its number matches the session.
  */
-function isTwoCardInput(item: QueueInputItem): boolean {
-  if (item.curriculumItem.itemType === 'grammar') return true;
-  if (item.curriculumItem.itemType === 'kanji') return item.kanjiHasOnyomi === true;
-  if (item.curriculumItem.itemType === 'vocabulary') {
-    return isVocabularyReadingUnlocked(
-      item.curriculumItem.primaryForm,
-      item.unlearnedKanji ?? [],
-    );
+export function emitsTwoCards(item: {
+  itemType: ContentItemType;
+  primaryForm: string;
+  kanjiHasOnyomi?: boolean;
+  unlearnedKanji?: readonly string[];
+}): boolean {
+  if (item.itemType === 'grammar') return true;
+  if (item.itemType === 'kanji') return item.kanjiHasOnyomi === true;
+  if (item.itemType === 'vocabulary') {
+    return isVocabularyReadingUnlocked(item.primaryForm, item.unlearnedKanji ?? []);
   }
   return false;
+}
+
+function isTwoCardInput(item: QueueInputItem): boolean {
+  return emitsTwoCards({
+    itemType: item.curriculumItem.itemType,
+    primaryForm: item.curriculumItem.primaryForm,
+    kanjiHasOnyomi: item.kanjiHasOnyomi,
+    unlearnedKanji: item.unlearnedKanji,
+  });
 }
 
 function mapToReviewItem(

@@ -18,8 +18,8 @@ export const supportsNotifications = (): boolean => !isWeb();
 /** `Appearance.setColorScheme`; on web the theme follows the system. */
 export const supportsThemeOverride = (): boolean => !isWeb();
 
-/** Background curriculum OTA swap. */
-export const supportsCurriculumOta = (): boolean => !isWeb();
+/** expo-network on web has no connection type. */
+export const curriculumDownloadNeedsWifi = (): boolean => !isWeb();
 
 /** WaniKani / Bunpro / Anki import (needs secure storage or the file system). */
 export const supportsThirdPartyImport = (): boolean => !isWeb();
