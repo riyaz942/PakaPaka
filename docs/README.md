@@ -14,7 +14,8 @@ single status index for every plan in this repo, docs and BMAD alike. Nothing el
 | [app-summary.md](./app-summary.md) | Super summary: features, what is different, competitor search terms |
 | [srs-system-vs-wanikani.md](./srs-system-vs-wanikani.md) | How SRS stages work and what each stage gates |
 | [curriculum-releases.md](./curriculum-releases.md) | Operator runbook: signing keys, release commands, key rotation |
-| [../README.md](../README.md) | Setup, build, and run instructions |
+| [development.md](./development.md) | Setup, build, and run instructions, CI |
+| [../CONTRIBUTING.md](../CONTRIBUTING.md) | How to contribute, rules for the codebase |
 
 ## Plans by area
 
