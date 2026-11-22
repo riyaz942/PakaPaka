@@ -127,6 +127,7 @@ nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(
 nav .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
 .logo { display: flex; align-items: center; gap: 10px; font: 500 23px var(--serif); letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
 .logo img { width: 34px; height: 34px; object-fit: contain; }
+.beta { font: 700 11px "Jakarta", system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--brand-text); background: var(--brand-soft); border: 1px solid color-mix(in srgb, var(--brand-text) 25%, transparent); border-radius: 999px; padding: 3px 9px; }
 nav .links { display: flex; gap: 22px; margin-left: 12px; flex: 1; }
 nav .links a { color: var(--muted); font-size: 15px; font-weight: 700; text-decoration: none; }
 nav .links a:hover { color: var(--ink); }
@@ -333,7 +334,7 @@ footer a { color: var(--muted); }
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="/"><img src="/landing/img/alpi-yay.png" alt="">PakaPaka</a>
+    <a class="logo" href="/"><img src="/landing/img/alpi-yay.png" alt="">PakaPaka <span class="beta" title="PakaPaka is in development">Beta</span></a>
     <div class="links">
       <a href="#chain">Mnemonics</a>
       <a href="#grammar">Grammar</a>
@@ -358,7 +359,7 @@ footer a { color: var(--muted); }
         <a class="btn btn-primary if-out" href="/auth/signin">Start Learning</a><a class="btn btn-primary if-in" href="/dashboard">Dashboard</a>
         <a class="link" href="#chain">See how it works</a>
       </div>
-      <p class="note" data-reveal style="--d:300ms">No account needed. Your progress stays on this device.</p>
+      <p class="note" data-reveal style="--d:300ms">In beta: PakaPaka is still in development, so things may change. No account needed. Your progress stays on this device.</p>
     </div>
 
     <div class="graph-card" data-reveal style="--d:120ms">
