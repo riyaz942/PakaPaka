@@ -160,6 +160,8 @@ Level 1 kanji in the test: 一二三四七九十人日月本見分時上下手�
    before kanji, kanji before word). This is how the operator moves items, as WaniKani does.
    The current JLPT entries in `levels.json` (`kanji:private → n5`, the grammar moves to n4/n3)
    are removed; the grammar order they encoded is kept by the grammar teaching order (rule 5).
+8. **Inside a level: simpler first** — radicals and kanji by stroke count, words by the position
+   of their last kanji in the level, then frequency (operator decision 2026-11-22).
 
 ### 7.3 Data
 

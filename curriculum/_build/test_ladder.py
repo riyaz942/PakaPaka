@@ -10,13 +10,15 @@ sys.path.insert(0, BUILD_DIR)
 
 import ladder  # noqa: E402
 
+# Equal strokes here, so sort_order shows the pick order; STROKES_* vary them.
 KANJI = [
-    {"slug": "k1", "form": "一", "radicals": ["r1"]},
-    {"slug": "k2", "form": "二", "radicals": ["r1"]},
-    {"slug": "k3", "form": "三", "radicals": ["r2"]},
-    {"slug": "k4", "form": "四", "radicals": ["r3"]},
-    {"slug": "k5", "form": "五", "radicals": ["r2", "r3"]},
+    {"slug": "k1", "form": "一", "radicals": ["r1"], "strokes": 1},
+    {"slug": "k2", "form": "二", "radicals": ["r1"], "strokes": 1},
+    {"slug": "k3", "form": "三", "radicals": ["r2"], "strokes": 1},
+    {"slug": "k4", "form": "四", "radicals": ["r3"], "strokes": 1},
+    {"slug": "k5", "form": "五", "radicals": ["r2", "r3"], "strokes": 1},
 ]
+STROKES_KANJI = {"k1": 3, "k2": 4, "k3": 2, "k4": 1, "k5": 4}
 
 # Authored words spread over levels 1-20: slots 1, 3, 6, 8, 11, 13, 16, 18.
 # Greedy picks k1 k3 (level 1), k5 k2 (level 2), k4 (level 3).
@@ -47,13 +49,24 @@ REFERENCE = {
 
 
 # r4 builds no kanji.
-RADICALS = ["r1", "r2", "r3", "r4"]
+RADICALS = [{"slug": f"r{i}", "strokes": 1} for i in range(1, 5)]
+STROKES_RADICALS = {"r1": 3, "r2": 1, "r3": 2, "r4": 1}
 
 
-def build(words=WORDS, passages=PASSAGES, overrides=None, reference=REFERENCE):
+def with_strokes(items, strokes):
+    return [{**item, "strokes": strokes[item["slug"]]} for item in items]
+
+
+def build(words=WORDS, passages=PASSAGES, overrides=None, reference=REFERENCE,
+          kanji=KANJI, radicals=RADICALS):
     with mock.patch.object(ladder, "KANJI_PER_LEVEL", [2, 2, 1]):
-        return ladder.build_ladder(KANJI, words, GRAMMAR, passages, overrides or {}, reference,
-                                   RADICALS)
+        return ladder.build_ladder(kanji, words, GRAMMAR, passages, overrides or {}, reference,
+                                   radicals)
+
+
+def build_with_strokes(**kwargs):
+    return build(kanji=with_strokes(KANJI, STROKES_KANJI),
+                 radicals=with_strokes(RADICALS, STROKES_RADICALS), **kwargs)
 
 
 def in_level(result, kind, level):
@@ -93,6 +106,25 @@ class LadderTest(unittest.TestCase):
                      for jlpt in ("N5", "N4")}
         result = build(words=words, passages=[], reference=reference)
         self.assertEqual(in_level(result, "kanji", 1), ["k5", "k1"])
+
+    def test_radicals_and_kanji_sort_by_strokes_ties_keep_order(self):
+        result = build_with_strokes()
+        self.assertEqual(in_level(result, "radical", 1), ["r2", "r1"])
+        self.assertEqual(in_level(result, "kanji", 1), ["k3", "k1"])
+        # k5 and k2 both have 4 strokes: pick order stays.
+        self.assertEqual(in_level(result, "kanji", 2), ["k5", "k2"])
+
+    def test_word_order_follows_last_kanji_position_in_level(self):
+        # Level 2 kanji in order: k5, k2. w2 (k1 is level 1) and w6 (kana)
+        # count as position 0; then frequency order.
+        result = build_with_strokes(overrides={"vocabulary": {"w2": 2, "w6": 2, "w7": 2}})
+        self.assertEqual(in_level(result, "vocabulary", 2), ["w2", "w6", "w1", "w7"])
+
+    def test_levels_unchanged_by_stroke_sort(self):
+        def levels(result):
+            return {kind: {s: e["level"] for s, e in result[kind].items()}
+                    for kind in ladder.KINDS}
+        self.assertEqual(levels(build_with_strokes()), levels(build()))
 
     def test_word_waits_for_last_kanji(self):
         # Slot 1; kanji at levels 1 (k1) and 2 (k5).

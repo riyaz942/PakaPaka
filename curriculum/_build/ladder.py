@@ -20,6 +20,11 @@ Writes `_build/ladder.json` (read through `levels.load_ladder()`). Rules
 5. A passage files at the highest level of its words and grammar.
 6. `levels.json` overrides win for every kind. A kanji before one of its
    radicals, or a word before one of its kanji, is a breach; main() exits 1.
+7. Inside a level, simpler first (sort_order): radicals and kanji by stroke
+   count, ties in pick order; words by the position, in the level's kanji
+   order, of their last kanji at that level (0 when none is), then frequency
+   order; grammar in teaching order; passages in dataset order. The stroke
+   counts are build input only (see load_strokes).
 
 `jlpt_equivalence` is display only (§7.5): the first level at which 90% of a
 JLPT list's kanji, words and grammar (each separately) sit at or below it.
@@ -30,12 +35,15 @@ Run (from anywhere):
 
 import json
 import os
+import re
 import sys
-from collections import defaultdict
+import zipfile
+from collections import Counter, defaultdict
 
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 sys.path.insert(0, BUILD_DIR)
+sys.path.insert(0, os.path.join(BUILD_DIR, "import"))
 
 from levels import KINDS, LADDER_PATH, MAX_LEVEL, load_overrides  # noqa: E402
 
@@ -47,6 +55,17 @@ KANJI_PER_LEVEL = [18, 24, 28] + [30] * 17 + [36] * 20 + [35] * 20
 AUTHORED_WORD_LEVELS = (1, 20)
 DERIVED_WORD_LEVELS = (21, MAX_LEVEL)
 GRAMMAR_LEVELS = {"core": (1, 20), "n3": (21, 25)}
+
+KANJIVG_ZIP = os.path.join(BUILD_DIR, "data", "kanjivg-main.zip")
+
+#: Stroke counts of the radical forms that neither KANJIDIC2 nor KanjiVG has a
+#: glyph for: the most common path count of the form's component group in
+#: KanjiVG's kanji (兑 has no group; its count is 兌's in KANJIDIC2).
+RADICAL_STROKES = {
+    "丷": 2, "龶": 4, "兑": 7, "𠂇": 2, "业": 5, "㑒": 8, "戋": 6, "龷": 4,
+    "电": 5, "夹": 6, "兹": 9, "𢆉": 5, "䏍": 6, "㳟": 11, "𬀷": 11, "乡": 3,
+    "显": 9, "䩗": 13, "駦": 16, "亚": 6, "𩵋": 10, "堇": 11, "夗": 5,
+}
 
 
 def spread(n, first, last):
@@ -117,29 +136,32 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference, radicals
     unused_radicals, breaches.
 
     `reference` is `jlpt_reference.json`: {"N5"|"N4": {kind: [slug]}}.
-    `radicals` is every radical slug in dataset order."""
+    `radicals` is every radical, [{"slug", "strokes"}], in dataset order; each
+    kanji carries "strokes" too."""
     for kind, items in (("kanji", kanji), ("vocabulary", words),
                         ("grammar", grammar), ("passage", passages)):
         unknown = sorted(set(overrides.get(kind, {})) - {i["slug"] for i in items})
         if unknown:
             raise ValueError(f"levels.json names unknown {kind}: {', '.join(unknown)}")
-    unknown = sorted(set(overrides.get("radical", {})) - set(radicals))
+    radical_strokes = {r["slug"]: r["strokes"] for r in radicals}
+    unknown = sorted(set(overrides.get("radical", {})) - set(radical_strokes))
     if unknown:
         raise ValueError(f"levels.json names unknown radical: {', '.join(unknown)}")
 
     kanji_level, picks = order_kanji(kanji, words, overrides.get("kanji", {}))
     radicals_of = {k["slug"]: k["radicals"] for k in kanji}
+    kanji_strokes = {k["slug"]: k["strokes"] for k in kanji}
 
     # (level, sort key) per slug; sort_order is the rank of the key in its level.
     keyed = {kind: {} for kind in KINDS}
     for i, slug in enumerate(picks):
-        keyed["kanji"][slug] = (kanji_level[slug], i)
+        keyed["kanji"][slug] = (kanji_level[slug], (kanji_strokes[slug], i))
         for j, r in enumerate(radicals_of[slug]):
             if r not in keyed["radical"]:
-                keyed["radical"][r] = (kanji_level[slug], (i, j))
-    unused = [r for r in radicals if r not in keyed["radical"]]
+                keyed["radical"][r] = (kanji_level[slug], (radical_strokes[r], i, j))
+    unused = [r for r in radical_strokes if r not in keyed["radical"]]
     for j, r in enumerate(unused):
-        keyed["radical"][r] = (MAX_LEVEL, (len(picks), j))
+        keyed["radical"][r] = (MAX_LEVEL, (radical_strokes[r], len(picks), j))
 
     authored = [w for w in words if w["authored"]]
     derived = [w for w in words if not w["authored"]]
@@ -183,15 +205,26 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference, radicals
                                 f"kanji {k} (level {level('kanji', k)})")
 
     result = {}
-    for kind in KINDS:
+
+    def rank(kind):
         entries = keyed[kind]
-        ranked = sorted(entries, key=lambda s: entries[s])
         result[kind] = {}
         count = defaultdict(int)
-        for slug in ranked:
+        for slug in sorted(entries, key=lambda s: entries[s]):
             count[entries[slug][0]] += 1
             result[kind][slug] = {"level": entries[slug][0],
                                   "sort_order": count[entries[slug][0]]}
+
+    rank("radical")
+    rank("kanji")
+    # A word follows the last of its kanji that is taught at its own level.
+    for w in words:
+        lv, i = keyed["vocabulary"][w["slug"]]
+        pos = max([0] + [result["kanji"][k]["sort_order"] for k in w["kanji"]
+                         if result["kanji"][k]["level"] == lv])
+        keyed["vocabulary"][w["slug"]] = (lv, (pos, i))
+    for kind in ("vocabulary", "grammar", "passage"):
+        rank(kind)
 
     def level_at_90_percent(kind, slugs):
         levels = sorted(result[kind][s]["level"] for s in slugs)
@@ -215,10 +248,32 @@ def load(path):
         return json.load(f)
 
 
+def load_strokes(forms):
+    """{form: (strokes, source)}: KANJIDIC2, else the path count of the form's
+    own KanjiVG glyph, else RADICAL_STROKES. Build input only."""
+    from sources import load_kanjidic2
+
+    kanjidic = load_kanjidic2()
+    strokes = {}
+    with zipfile.ZipFile(KANJIVG_ZIP) as kanjivg:
+        names = set(kanjivg.namelist())
+        for form in forms:
+            name = f"kanji/{ord(form):05x}.svg"
+            if kanjidic.get(form, {}).get("stroke_count"):
+                strokes[form] = (int(kanjidic[form]["stroke_count"]), "kanjidic2")
+            elif name in names:
+                svg = kanjivg.read(name).decode("utf-8")
+                strokes[form] = (len(re.findall(r"<path\b", svg)), "kanjivg")
+            else:
+                strokes[form] = (RADICAL_STROKES[form], "table")
+    return strokes
+
+
 def load_kanji():
     """Every kanji (the N5/N4 datasets, then the derived skeleton) with its
-    radical slugs from the KanjiVG decomposition, keyed by form; and every
-    radical slug (N5, N4, then the decomposition's)."""
+    radical slugs from the KanjiVG decomposition, keyed by form; every radical
+    (N5, N4, then the decomposition's); and how many stroke counts came from
+    each source, per kind."""
     from n4_kanji import N4_KANJI
     from n4_radicals import N4_RADICALS
     from n5_kanji import N5_KANJI
@@ -229,15 +284,21 @@ def load_kanji():
     for r in list(N5_RADICALS) + list(N4_RADICALS):
         by_form.setdefault(r["form"], r["slug"])
     skeleton = load(os.path.join(BUILD_DIR, "skeleton.json"))
+    kanji_entries = list(N5_KANJI) + list(N4_KANJI) + skeleton["kanji"]
+    radical_entries = list(N5_RADICALS) + list(N4_RADICALS) + decomposition["radicals"]
+    strokes = load_strokes([k["char"] for k in kanji_entries]
+                           + [r["form"] for r in radical_entries])
     kanji = [
-        {"slug": k["slug"], "form": k["char"],
+        {"slug": k["slug"], "form": k["char"], "strokes": strokes[k["char"]][0],
          "radicals": list(dict.fromkeys(
              by_form[f] for f in decomposition["decomposition"][k["char"]]))}
-        for k in list(N5_KANJI) + list(N4_KANJI) + skeleton["kanji"]
+        for k in kanji_entries
     ]
-    radicals = [r["slug"] for r in
-                list(N5_RADICALS) + list(N4_RADICALS) + decomposition["radicals"]]
-    return kanji, radicals
+    radicals = [{"slug": r["slug"], "strokes": strokes[r["form"]][0]}
+                for r in radical_entries]
+    sources = Counter([("kanji", strokes[k["char"]][1]) for k in kanji_entries]
+                      + [("radical", strokes[r["form"]][1]) for r in radical_entries])
+    return kanji, radicals, sources
 
 
 def load_words(kanji):
@@ -275,7 +336,7 @@ def main():
         {"slug": p["slug"], "vocabulary": p["vocabulary_slugs"], "grammar": p["grammar_slugs"]}
         for p in list(N5_READINGS) + list(N4_READINGS)
     ]
-    kanji, radicals = load_kanji()
+    kanji, radicals, stroke_sources = load_kanji()
     result = build_ladder(
         kanji, load_words(kanji), grammar, passages,
         {kind: load_overrides(kind) for kind in KINDS},
@@ -291,6 +352,8 @@ def main():
         counts[entry["level"]] += 1
     for level in range(1, MAX_LEVEL + 1):
         print(f"  level {level}: {counts[level]} kanji")
+    for (kind, source), n in sorted(stroke_sources.items()):
+        print(f"  {kind} strokes from {source}: {n}")
     for row in result["jlpt_equivalence"]:
         print(f"  {row['jlpt']}: levels {row['first_level']}-{row['last_level']}")
     print(f"  unused radicals (level {MAX_LEVEL}): {', '.join(result['unused_radicals'])}")

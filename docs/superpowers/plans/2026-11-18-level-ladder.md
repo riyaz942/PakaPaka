@@ -98,7 +98,7 @@ Rules (spec §7.2):
 5. Grammar: `core` points (N5+N4, 126) over levels 1–20 and `n3` points (34) over 21–25: `level = first + floor(i * span / n)`.
 6. Passage level = max level of its words and grammar.
 7. Overrides win for every kind. A result where a kanji's level < one of its radicals', or a word's level < one of its kanji's, is added to `breaches` (message names both slugs).
-8. `sort_order` inside a level: radicals, kanji in pick order; words in frequency order; grammar in teaching order.
+8. `sort_order` inside a level, simpler first (operator decision 2026-11-22): radicals and kanji by stroke count (KANJIDIC2, else the KanjiVG glyph, else a table in `ladder.py`), ties in pick order; words by the position, in the level's new kanji order, of their last kanji at that level (0 when none is: kana-only words, or kanji from earlier levels), then frequency order; grammar in teaching order; passages in dataset order. Levels do not change.
 9. `jlpt_equivalence`: for N5 then N4, `last_level` = the first level at which ≥ 90% of that JLPT list's kanji, words and grammar (each separately) sit at or below it; `first_level` = 1 for N5, N5's `last_level + 1` for N4.
 
 - [ ] **Step 1: Write failing tests** with a tiny fixture (5 kanji, 3 radicals, 8 words, 4 grammar points) and a patched `KANJI_PER_LEVEL = [2, 2, 1, ...]`:
