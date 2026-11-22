@@ -10,6 +10,11 @@
 </p>
 
 <p align="center">
+  <a href="https://paka-paka.app/"><strong>Try the beta in your browser at paka-paka.app →</strong></a>
+</p>
+
+<p align="center">
+  <img alt="Status: beta, in development" src="https://img.shields.io/badge/status-beta-orange" />
   <img alt="Platforms: iOS 17+ and Android 13+" src="https://img.shields.io/badge/platforms-iOS%2017%2B%20%7C%20Android%2013%2B-blue" />
   <img alt="License: MIT (code)" src="https://img.shields.io/badge/code-MIT-green" />
   <img alt="Content license: CC BY-SA 4.0" src="https://img.shields.io/badge/content-CC%20BY--SA%204.0-lightgrey" />
@@ -29,7 +34,7 @@ PakaPaka teaches Japanese in the WaniKani style, and adds grammar and reading. E
 
 Radicals, kanji, vocabulary, grammar and reading passages sit in one dependency graph and go through one review queue. The queue learns where you make mistakes and shows you those items first.
 
-**No account needed. No subscriptions. No ads.** Your progress stays on your device unless you turn on sync.
+**No account needed. No subscriptions. No ads.** Your progress stays on your device. If you want it on more than one device, you can sign in with Google and sync it.
 
 <table align="center">
   <tr>
@@ -54,7 +59,9 @@ Radicals, kanji, vocabulary, grammar and reading passages sit in one dependency 
 - **Reviews that find your weak points.** Scheduling uses [FSRS](https://github.com/open-spaced-repetition/ts-fsrs), blended with a weakness score from your real mistakes.
 - **Grammar you use.** **Read** cards: type what the grammar means in a Japanese sentence. **Build** cards: type the full Japanese sentence from English.
 - **Reading passages.** Graded stories open when you know 90% of their words. Furigana hides for words you know.
-- **Talk.** Practice conversation with an AI partner at your level. Bring your own API key (OpenAI-compatible or Anthropic). Needs a network.
+- **Talk.** Practice conversation with an AI partner at your level, in the phone app. Bring your own API key (OpenAI-compatible or Anthropic). Needs a network.
+- **Works offline.** In the phone app, lessons, reviews, Browse and Stats work with no network. Only Talk and sync need one. The web app needs a connection to open the page.
+- **Optional sign-in and sync.** Sign in with Google to back up your progress and use it on the web and on your phone. If you never sign in, nothing leaves your device.
 - **Bring your history.** Import progress from WaniKani, Bunpro or Anki, or restore a PakaPaka backup.
 
 For a full tour of the app, see [docs/app-overview.md](docs/app-overview.md).
@@ -70,7 +77,11 @@ For a full tour of the app, see [docs/app-overview.md](docs/app-overview.md).
 
 ## Try it
 
-PakaPaka is in active development and is not in the App Store or Google Play yet. To try it now, build it from source:
+PakaPaka is in **beta**. It is still in development, so expect changes and some rough edges. Please report bugs in [Issues](https://github.com/riyaz942/pakapaka/issues).
+
+**On the web:** open [paka-paka.app](https://paka-paka.app/). No install is needed. Your progress is stored in your browser.
+
+**On your phone:** PakaPaka is not in the App Store or Google Play yet. To try it now, build it from source:
 
 ```bash
 git clone https://github.com/riyaz942/pakapaka.git
