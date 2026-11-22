@@ -46,9 +46,14 @@ REFERENCE = {
 }
 
 
+# r4 builds no kanji.
+RADICALS = ["r1", "r2", "r3", "r4"]
+
+
 def build(words=WORDS, passages=PASSAGES, overrides=None, reference=REFERENCE):
     with mock.patch.object(ladder, "KANJI_PER_LEVEL", [2, 2, 1]):
-        return ladder.build_ladder(KANJI, words, GRAMMAR, passages, overrides or {}, reference)
+        return ladder.build_ladder(KANJI, words, GRAMMAR, passages, overrides or {}, reference,
+                                   RADICALS)
 
 
 def in_level(result, kind, level):
@@ -69,6 +74,25 @@ class LadderTest(unittest.TestCase):
         result = build()
         self.assertEqual(in_level(result, "radical", 1), ["r1", "r2"])
         self.assertEqual(result["radical"]["r3"]["level"], 2)
+
+    def test_unused_radical_goes_to_last_level(self):
+        result = build()
+        self.assertEqual(result["unused_radicals"], ["r4"])
+        self.assertEqual(result["radical"]["r4"], {"level": 60, "sort_order": 1})
+
+    def test_override_moves_unused_radical(self):
+        result = build(overrides={"radical": {"r4": 1}})
+        self.assertEqual(in_level(result, "radical", 1), ["r1", "r2", "r4"])
+
+    def test_authored_words_drive_kanji_before_derived_words(self):
+        # k1 completes three derived words; k5 completes one authored word.
+        words = [{"slug": "a1", "kanji": ["k5"], "authored": True}] + [
+            {"slug": f"d{i}", "kanji": ["k1"], "authored": False} for i in range(3)
+        ]
+        reference = {jlpt: {"kanji": ["k1"], "vocabulary": ["a1"], "grammar": ["g1"]}
+                     for jlpt in ("N5", "N4")}
+        result = build(words=words, passages=[], reference=reference)
+        self.assertEqual(in_level(result, "kanji", 1), ["k5", "k1"])
 
     def test_word_waits_for_last_kanji(self):
         # Slot 1; kanji at levels 1 (k1) and 2 (k5).

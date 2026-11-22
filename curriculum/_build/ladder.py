@@ -4,12 +4,15 @@
 Writes `_build/ladder.json` (read through `levels.load_ladder()`). Rules
 (docs/superpowers/specs/2026-11-18-level-ladder-design.md §7.2):
 
-1. Kanji go greedily: the next kanji completes the most still-waiting words (a
-   word waits until all its kanji are placed); ties: the number of waiting words
-   it appears in, then the frequency rank of the first word it appears in, then
-   slug. The order is cut by KANJI_PER_LEVEL. A kanji override takes its slot at
-   its level ahead of the greedy pick.
-2. A radical files at the lowest level of a kanji that uses it.
+1. Kanji go greedily: the next kanji completes the most still-waiting common
+   words (a word waits until all its kanji are placed); ties: the number of
+   waiting words it appears in, then the frequency rank of the first word it
+   appears in, then slug. "Common" is two phases: the authored N5+N4 words drive
+   the pick while an unplaced kanji appears in one, then the derived words drive
+   the rest. Kanji in no word go last. The order is cut by KANJI_PER_LEVEL. A
+   kanji override takes its slot at its level ahead of the greedy pick.
+2. A radical files at the lowest level of a kanji that uses it. A radical no
+   kanji uses files at the last level, after the others (`unused_radicals`).
 3. A word's level is the later of its last kanji and its frequency slot:
    authored words spread over levels 1-20 in list order, derived words over
    21-60 by rank. Kana-only words use the slot.
@@ -53,12 +56,14 @@ def spread(n, first, last):
 
 
 def order_kanji(kanji, words, overrides):
-    """{slug: level} and the pick order, greedy per rule 1."""
+    """{slug: level} and the pick order, greedy per rule 1. Counts are kept per
+    phase, keyed (authored, slug)."""
     sizes = KANJI_PER_LEVEL
     if sum(sizes) != len(kanji):
         raise ValueError(f"KANJI_PER_LEVEL sums to {sum(sizes)}; the corpus has "
                          f"{len(kanji)} kanji")
     remaining = {}  # word slug -> its kanji not placed yet
+    authored = {w["slug"]: w["authored"] for w in words}
     words_of = defaultdict(list)
     first_rank = {}
     for rank, w in enumerate(words):
@@ -71,11 +76,14 @@ def order_kanji(kanji, words, overrides):
             first_rank.setdefault(k, rank)
     # A word that waits on k cannot complete before k is placed, so the
     # waiting count of an unplaced kanji never changes; only completes does.
-    waiting = {k["slug"]: len(words_of[k["slug"]]) for k in kanji}
+    waiting = defaultdict(int)
+    for k, ws in words_of.items():
+        for w in ws:
+            waiting[(authored[w], k)] += 1
     completes = defaultdict(int)
-    for ks in remaining.values():
+    for w, ks in remaining.items():
         if len(ks) == 1:
-            completes[next(iter(ks))] += 1
+            completes[(authored[w], next(iter(ks)))] += 1
 
     unplaced = {k["slug"] for k in kanji}
     level_of, picks = {}, []
@@ -88,7 +96,7 @@ def order_kanji(kanji, words, overrides):
             ks = remaining[w]
             ks.discard(slug)
             if len(ks) == 1:
-                completes[next(iter(ks))] += 1
+                completes[(authored[w], next(iter(ks)))] += 1
 
     for level, size in enumerate(sizes, start=1):
         pinned = sorted(s for s, lv in overrides.items() if lv == level)
@@ -98,22 +106,24 @@ def order_kanji(kanji, words, overrides):
             pool = unplaced - set(overrides)
             if not pool:
                 break
-            place(min(pool, key=lambda s: (-completes[s], -waiting[s],
+            phase = any(waiting[(True, s)] for s in pool)
+            place(min(pool, key=lambda s: (-completes[(phase, s)], -waiting[(phase, s)],
                                            first_rank.get(s, len(words)), s)), level)
     return level_of, picks
 
 
-def build_ladder(kanji, words, grammar, passages, overrides, reference):
-    """The ladder: {kind: {slug: {level, sort_order}}}, jlpt_equivalence, breaches.
+def build_ladder(kanji, words, grammar, passages, overrides, reference, radicals):
+    """The ladder: {kind: {slug: {level, sort_order}}}, jlpt_equivalence,
+    unused_radicals, breaches.
 
-    `reference` is `jlpt_reference.json`: {"N5"|"N4": {kind: [slug]}}."""
+    `reference` is `jlpt_reference.json`: {"N5"|"N4": {kind: [slug]}}.
+    `radicals` is every radical slug in dataset order."""
     for kind, items in (("kanji", kanji), ("vocabulary", words),
                         ("grammar", grammar), ("passage", passages)):
         unknown = sorted(set(overrides.get(kind, {})) - {i["slug"] for i in items})
         if unknown:
             raise ValueError(f"levels.json names unknown {kind}: {', '.join(unknown)}")
-    radical_slugs = {r for k in kanji for r in k["radicals"]}
-    unknown = sorted(set(overrides.get("radical", {})) - radical_slugs)
+    unknown = sorted(set(overrides.get("radical", {})) - set(radicals))
     if unknown:
         raise ValueError(f"levels.json names unknown radical: {', '.join(unknown)}")
 
@@ -127,6 +137,9 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference):
         for j, r in enumerate(radicals_of[slug]):
             if r not in keyed["radical"]:
                 keyed["radical"][r] = (kanji_level[slug], (i, j))
+    unused = [r for r in radicals if r not in keyed["radical"]]
+    for j, r in enumerate(unused):
+        keyed["radical"][r] = (MAX_LEVEL, (len(picks), j))
 
     authored = [w for w in words if w["authored"]]
     derived = [w for w in words if not w["authored"]]
@@ -192,6 +205,7 @@ def build_ladder(kanji, words, grammar, passages, overrides, reference):
         equivalence.append({"jlpt": jlpt, "first_level": first, "last_level": last})
         first = last + 1
     result["jlpt_equivalence"] = equivalence
+    result["unused_radicals"] = unused
     result["breaches"] = breaches
     return result
 
@@ -203,7 +217,8 @@ def load(path):
 
 def load_kanji():
     """Every kanji (the N5/N4 datasets, then the derived skeleton) with its
-    radical slugs from the KanjiVG decomposition, keyed by form."""
+    radical slugs from the KanjiVG decomposition, keyed by form; and every
+    radical slug (N5, N4, then the decomposition's)."""
     from n4_kanji import N4_KANJI
     from n4_radicals import N4_RADICALS
     from n5_kanji import N5_KANJI
@@ -214,12 +229,15 @@ def load_kanji():
     for r in list(N5_RADICALS) + list(N4_RADICALS):
         by_form.setdefault(r["form"], r["slug"])
     skeleton = load(os.path.join(BUILD_DIR, "skeleton.json"))
-    return [
+    kanji = [
         {"slug": k["slug"], "form": k["char"],
          "radicals": list(dict.fromkeys(
              by_form[f] for f in decomposition["decomposition"][k["char"]]))}
         for k in list(N5_KANJI) + list(N4_KANJI) + skeleton["kanji"]
     ]
+    radicals = [r["slug"] for r in
+                list(N5_RADICALS) + list(N4_RADICALS) + decomposition["radicals"]]
+    return kanji, radicals
 
 
 def load_words(kanji):
@@ -257,11 +275,12 @@ def main():
         {"slug": p["slug"], "vocabulary": p["vocabulary_slugs"], "grammar": p["grammar_slugs"]}
         for p in list(N5_READINGS) + list(N4_READINGS)
     ]
-    kanji = load_kanji()
+    kanji, radicals = load_kanji()
     result = build_ladder(
         kanji, load_words(kanji), grammar, passages,
         {kind: load_overrides(kind) for kind in KINDS},
         {jlpt: reference[jlpt] for jlpt in ("N5", "N4")},
+        radicals,
     )
     with open(LADDER_PATH, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
@@ -274,6 +293,7 @@ def main():
         print(f"  level {level}: {counts[level]} kanji")
     for row in result["jlpt_equivalence"]:
         print(f"  {row['jlpt']}: levels {row['first_level']}-{row['last_level']}")
+    print(f"  unused radicals (level {MAX_LEVEL}): {', '.join(result['unused_radicals'])}")
     for breach in result["breaches"]:
         print(f"  breach: {breach}")
     print(f"Wrote {os.path.relpath(LADDER_PATH, CURRICULUM_DIR)}")
