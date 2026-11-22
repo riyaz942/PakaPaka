@@ -69,10 +69,13 @@ class ReplyShapeTest(unittest.TestCase):
 
 class SelectTest(unittest.TestCase):
     def test_skips_sidecar_points_in_sort_order(self):
-        slugs = gp.select_slugs("n5", 3, sidecar={"wa-topic": {}})
-        self.assertEqual(len(slugs), 3)
-        self.assertNotIn("wa-topic", slugs)
-        self.assertEqual(slugs[0], "desu")
+        slugs = gp.select_slugs([1], 3, sidecar={"wa-topic": {}})
+        self.assertEqual(slugs, ["desu", "dewa-arimasen", "conjugation-primer"])
+
+    def test_takes_a_range_of_levels(self):
+        slugs = gp.select_slugs([1, 2], 20, sidecar={})
+        self.assertEqual(slugs[-1], "no-nominalizer")
+        self.assertEqual(len(slugs), 13)
 
 
 class SidecarTest(unittest.TestCase):

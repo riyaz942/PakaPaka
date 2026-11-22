@@ -15,6 +15,7 @@ import {
   readGrammarLessonStatus,
   readGrammarMnemonicStatus,
 } from './sidecar.js';
+import { loadCurriculum } from './loader.js';
 import { saveItem, updateGrammarMnemonicReviewStatus, updateReviewStatus } from './writer.js';
 
 const REPO = path.resolve(import.meta.dirname, '../../..');
@@ -35,9 +36,17 @@ function scratchRepo(): string {
 }
 
 function rowStatus(root: string, slug: string): unknown {
-  const file = JSON.parse(fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'n5.json'), 'utf8'));
+  const file = JSON.parse(fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'items.json'), 'utf8'));
   return file.items.find((i: { slug: string }) => i.slug === slug)._meta?.review_status;
 }
+
+test('the loader reads items.json and gives each item its ladder level', () => {
+  const index = loadCurriculum(scratchRepo());
+  const wa = index.bySlug.get('grammar:wa-topic');
+  assert.equal(wa?.level, 1);
+  const levels = new Set(index.items.map((item) => item.level));
+  assert.ok([...levels].every((level) => Number.isInteger(level) && level >= 1 && level <= 60));
+});
 
 test('merge keeps the least reviewed status, and none counts as absent', () => {
   assert.equal(mergeGrammarReviewStatus('reviewed', 'draft'), 'draft');
@@ -70,20 +79,20 @@ test('mnemonic status refuses a point with no mnemonic entry', () => {
 
 test('lesson status flip keeps the row at the mnemonic\'s draft', () => {
   const root = scratchRepo();
-  assert.deepEqual(updateReviewStatus(root, 'grammar', 'N5', 'wa-topic', 'reviewed'), { ok: true });
+  assert.deepEqual(updateReviewStatus(root, 'grammar', 'wa-topic', 'reviewed'), { ok: true });
   assert.equal(rowStatus(root, 'wa-topic'), 'draft');
 });
 
 test('mnemonic review lifts the row once the lesson is reviewed too', () => {
   const root = scratchRepo();
-  assert.deepEqual(updateGrammarMnemonicReviewStatus(root, 'N5', 'wa-topic', 'reviewed'), { ok: true });
+  assert.deepEqual(updateGrammarMnemonicReviewStatus(root, 'wa-topic', 'reviewed'), { ok: true });
   assert.equal(rowStatus(root, 'wa-topic'), 'reviewed');
   assert.equal(readGrammarLessonStatus(root, 'wa-topic'), 'reviewed');
 });
 
 test('item response gives the lesson status apart from the merged row status', async () => {
   const root = scratchRepo();
-  assert.deepEqual(updateReviewStatus(root, 'grammar', 'N5', 'wa-topic', 'reviewed'), { ok: true });
+  assert.deepEqual(updateReviewStatus(root, 'grammar', 'wa-topic', 'reviewed'), { ok: true });
 
   const app = express();
   app.use('/api', express.json(), createCurriculumRouter(root, path.join(REPO, 'web')));
@@ -104,19 +113,19 @@ test('a grammar point with no lesson file is an error, not status none', () => {
   const root = scratchRepo();
   fs.rmSync(path.join(root, 'curriculum', 'grammar', 'lessons', 'wa-topic.md'));
   assert.throws(() => readGrammarLessonStatus(root, 'wa-topic'), /no lesson/);
-  const result = updateGrammarMnemonicReviewStatus(root, 'N5', 'wa-topic', 'reviewed');
+  const result = updateGrammarMnemonicReviewStatus(root, 'wa-topic', 'reviewed');
   assert.equal(result.ok, false);
 });
 
 test('a grammar mnemonic edit writes plain text to the sidecar, without word markers', () => {
   const root = scratchRepo();
-  const file = JSON.parse(fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'n5.json'), 'utf8'));
+  const file = JSON.parse(fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'items.json'), 'utf8'));
   const row = file.items.find((i: { slug: string }) => i.slug === 'wa-topic');
   const edited = {
     ...row,
     mnemonic_text: 'Sei asks "<reading>Wha</reading>t?" {{12||私}}<reading>は</reading>{{13||学生}}です。',
   };
-  assert.deepEqual(saveItem(root, 'grammar', 'N5', 'wa-topic', edited), { ok: true });
+  assert.deepEqual(saveItem(root, 'grammar', 'wa-topic', edited), { ok: true });
   const sidecar = JSON.parse(
     fs.readFileSync(path.join(root, 'curriculum', 'grammar', 'mnemonics.json'), 'utf8'),
   );

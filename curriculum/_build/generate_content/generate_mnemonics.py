@@ -68,10 +68,9 @@ sys.path.insert(0, BUILD_DIR)
 
 from generate_content import cast as cast_lib  # noqa: E402
 from generate_content import context as grammar_pool_context  # noqa: E402
-from generate_content.context import level_dir  # noqa: E402
+from generate_content.context import level_dir, parse_level, parse_levels  # noqa: E402
 from generate_content import mnemonic_context as mc  # noqa: E402
 from generate_content.validate_mnemonics import validate_draft  # noqa: E402
-from levels import MAX_LEVEL  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROMPTS_DIR = os.path.join(HERE, "prompts")
@@ -534,25 +533,6 @@ def _process_outcomes(kind, contexts, records, outcomes):
 
 
 # --- commands --------------------------------------------------------------
-
-def parse_levels(text):
-    """`4` -> [4]; `1-20` -> [1, ..., 20]. Ladder levels run 1-60."""
-    first, sep, last = text.partition("-")
-    try:
-        levels = list(range(int(first), int(last if sep else first) + 1))
-    except ValueError:
-        levels = []
-    if not levels or levels[0] < 1 or levels[-1] > MAX_LEVEL:
-        raise SystemExit(f"bad level {text!r}; give a level 1-{MAX_LEVEL} or a range like 1-20")
-    return levels
-
-
-def parse_level(text):
-    """`--level 6` -> [6]; a range belongs to `--levels`."""
-    if not text.isdigit():
-        raise SystemExit(f"bad level {text!r}; --level takes one level 1-{MAX_LEVEL}")
-    return parse_levels(text)
-
 
 def load_sidecar(kind):
     path = sidecar_path(kind)

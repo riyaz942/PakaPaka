@@ -7,31 +7,13 @@ level-check index built from them, and the seed's own brief.
 
 ## Allowed-set derivation
 
-The window is **authored per seed** (`reading_seeds.py`), not derived from the
-seed's position:
-
-  * **all** lower-level vocabulary and grammar, plus
-  * the level's first `vocab_cutoff` vocabulary items and first
-    `grammar_cutoff` grammar points (each by sort_order), plus
-  * the seed's own `pull_forward` words, plus `context.CORE_SEED_SLUGS`, plus
-  * the seed's own `pull_forward_grammar` points.
-
-`position/N` used to derive the cutoffs and no longer does. At 30 seeds that
-rule gives passage 1 the first 24 N5 words — all pronouns and demonstratives —
-and supplies no verb at all before word 377 of 718, because the level is
-ordered thematically rather than by frequency. The flat always-allowed
-`READING_CORE_SLUGS` that patched this at 10 seeds would have become the entire
-vocabulary of the first half of the level at 30, which hollows out the gate it
-sits behind. It is replaced by `pull_forward`: the same idea, graded per seed
-and authored where the rest of the plan for that passage lives. See
-docs/content/reading-passage-expansion-plan.md, § The positional window breaks
-at 30 seeds.
-
-The grammar list has the same defect and `pull_forward_grammar` is the same
-answer: N5's four adjective points sit at 47–50 of 74, and `grammar_detect`
-fires them on *any* adjective, so a prefix window forbids 大きい, 好き and いい
-outright until two thirds of the level is open. Authoring the N5 ladder is what
-found it; N4 needs none, because a lower level's grammar is allowed in full.
+A seed sits at a ladder level (`reading_seeds.seed_level`). Its window is
+every word and every grammar point at or below that level — the ladder rule
+that a passage teaches with learned words only (a passage's level is the
+highest level of any word or grammar point in it). The JLPT-era authored
+window (`vocab_cutoff`, `pull_forward`, `grammar_cutoff`,
+`pull_forward_grammar`, `context.CORE_SEED_SLUGS`) is gone with the JLPT
+groups it indexed.
 
 Still planner-free and deterministic: the same seed list yields the same
 allowed sets on every machine, which is what makes a regeneration reproducible
@@ -55,64 +37,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from generate_content import context, level_check, reading_seeds  # noqa: E402
 
 
-def _lower_levels(level):
-    return context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
-
-
-def _allowed_vocab(level, seed):
-    vocab = context.load_vocab(level)
-    allowed, seen = [], set()
-
-    def add(item):
-        if item["slug"] not in seen:
-            seen.add(item["slug"])
-            allowed.append(item)
-
-    for lower in _lower_levels(level):
-        for v in context.load_vocab(lower):
-            add(v)
-    for v in vocab[: seed["vocab_cutoff"]]:
-        add(v)
-    by_slug = {v["slug"]: v for v in vocab}
-    for fs in context.CORE_SEED_SLUGS.get(level, []) + list(seed["pull_forward"]):
-        if fs not in by_slug:
-            raise KeyError(f"core vocab slug {fs!r} not in {level} vocabulary")
-        add(by_slug[fs])
-    return allowed
-
-
-def _allowed_grammar(level, seed):
-    allowed, seen = [], set()
-
-    def add(item):
-        if item["slug"] not in seen:
-            seen.add(item["slug"])
-            allowed.append(item)
-
-    for lower in _lower_levels(level):
-        for g in context.load_grammar(lower):
-            add(g)
-    grammar = context.load_grammar(level)
-    for g in grammar[: seed["grammar_cutoff"]]:
-        add(g)
-    by_slug = {g["slug"]: g for g in grammar}
-    for fs in seed.get("pull_forward_grammar", []):
-        if fs not in by_slug:
-            raise KeyError(f"pull_forward_grammar slug {fs!r} not in {level} grammar")
-        add(by_slug[fs])
-    return allowed
-
-
 def seed_context(level, slug):
     seed = reading_seeds.seed(level, slug)
 
-    allowed_vocab = _allowed_vocab(level, seed)
-    allowed_grammar = _allowed_grammar(level, seed)
+    allowed_vocab = context.vocab_through(level)
+    allowed_grammar = context.grammar_through(level)
     #: Names the seed grants, plus the machinery of the grammar it may use —
     #: 限り, 以来, 反面, わけ are content words in no level's vocabulary, so
     #: without this the level check rejects a passage for using a point it was
     #: taught. Derived from `allowed_grammar`, so a pattern word is accepted
-    #: exactly where its own point is: past the cutoff, it is out of level again.
+    #: exactly where its own point is: above the level, it is out of level again.
     extra_allowed = set(seed.get("extra_allowed", [])) | level_check.pattern_words(
         allowed_grammar
     )
@@ -120,8 +54,8 @@ def seed_context(level, slug):
     unknown = [s for s in seed["required_grammar"] if s not in by_slug]
     if unknown:
         raise KeyError(
-            f"{slug}: required_grammar {unknown} is outside the seed's own "
-            f"grammar_cutoff — run reading_seeds.ladder_errors({level!r})"
+            f"{slug}: required_grammar {unknown} is above level {level} — "
+            f"run reading_seeds.ladder_errors({level!r})"
         )
 
     return {

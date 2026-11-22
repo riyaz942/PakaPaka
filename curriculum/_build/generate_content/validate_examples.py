@@ -18,7 +18,7 @@ Run on every batch output before any human sees it
 catches everything that can be checked per-draft.
 
 Standalone usage (re-check collected drafts):
-    .venv/bin/python -m generate_content.validate_examples --level n5 --type vocab
+    .venv/bin/python -m generate_content.validate_examples --level 6 --type vocab
 """
 
 import argparse
@@ -31,7 +31,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
-from generate_content import example_context, level_check  # noqa: E402
+from generate_content import context, example_context, level_check  # noqa: E402
 from generate_content.validate_drafts import _known_readings  # noqa: E402
 
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", "examples")
@@ -113,9 +113,9 @@ def _contains_target(text, ctx):
     return False
 
 
-def validate_draft(level, kind, slug, draft, ctx=None):
+def validate_draft(kind, slug, draft, ctx=None):
     """List of error strings; empty means the draft passes the gate."""
-    ctx = ctx or example_context.item_context(level, kind, slug)
+    ctx = ctx or example_context.item_context(kind, slug)
 
     sentences = draft.get("example_sentences")
     if not isinstance(sentences, list) or not sentences:
@@ -126,7 +126,7 @@ def validate_draft(level, kind, slug, draft, ctx=None):
     if not lo <= len(sentences) <= hi:
         errors.append(f"expected {lo}-{hi} example sentences, got {len(sentences)}")
 
-    known_readings = _known_readings(level)
+    known_readings = _known_readings(ctx["level"])
     target_label = ctx["form"]
 
     for i, sentence in enumerate(sentences):
@@ -170,11 +170,11 @@ def validate_draft(level, kind, slug, draft, ctx=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, required=True, help="ladder level, 1-60")
     parser.add_argument("--type", dest="kind", choices=["vocab"], required=True)
     args = parser.parse_args()
 
-    level_dir = os.path.join(DRAFTS_DIR, args.level, args.kind)
+    level_dir = os.path.join(DRAFTS_DIR, context.level_dir(args.level), args.kind)
     if not os.path.isdir(level_dir):
         raise SystemExit(f"no drafts at {level_dir}")
     failed = 0
@@ -185,7 +185,7 @@ def main():
             record = json.load(f)
         if not isinstance(record, dict) or not record.get("tool_input"):
             continue
-        errors = validate_draft(args.level, args.kind, record["slug"], record["tool_input"])
+        errors = validate_draft(args.kind, record["slug"], record["tool_input"])
         print(f"{'PASS' if not errors else 'FAIL'} {record['slug']}")
         for e in errors:
             print(f"  - {e}")

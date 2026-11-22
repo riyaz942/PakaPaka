@@ -15,7 +15,7 @@ Findings are **advisory**. A flag is a prompt for a human to read the item, not
 proof of an error, so nothing here is graded ERROR/WARNING and the exit code is
 0 whether or not anything was flagged. This module never edits curriculum JSON,
 drafts, or sidecars — its only write is the "Semantic (advisory)" section it
-appends to curriculum/_build/reports/content-audit-<level>.md.
+appends to curriculum/_build/reports/content-audit-level-NN.md.
 
 Scope defaults to items whose `_meta.review_status` is `draft` (or absent —
 n4 items and every passage carry no `_meta` at all, and unreviewed is exactly
@@ -24,7 +24,7 @@ what this pass is for); `--all` audits everything, reviewed items included.
 No-API web-chat / subagent lane (mirrors generate_examples.py's webprompts/
 ingest split): a `webprompts` pass writes one prompt file per batch — a chunk
 of example-sentence pairs, or one reading passage — to
-generate_content/web/semantic/<level>/. A fresh subagent (or a pasted web-chat
+generate_content/web/semantic/level-NN/. A fresh subagent (or a pasted web-chat
 reply) answers each prompt in place with a `.reply.md`. An `ingest` pass reads
 every reply, validates it against the reply contract (every finding id known
 to that batch, `evaluated` matching the batch size exactly, a fenced JSON
@@ -33,9 +33,9 @@ clean replies. See docs/workflows/semantic-audit-subagent-workflow-automation-
 prompt.md for the run procedure.
 
 Run (from curriculum/_build):
-    .venv/bin/python -m generate_content.audit_semantic webprompts --level n5
-    .venv/bin/python -m generate_content.audit_semantic webprompts --level n5 --all --batch-size 40
-    .venv/bin/python -m generate_content.audit_semantic ingest --level n5 --model claude-sonnet-5
+    .venv/bin/python -m generate_content.audit_semantic webprompts --level 6
+    .venv/bin/python -m generate_content.audit_semantic webprompts --level 6 --all --batch-size 40
+    .venv/bin/python -m generate_content.audit_semantic ingest --level 6 --model claude-sonnet-5
 """
 
 import argparse
@@ -49,7 +49,7 @@ IMPORT_DIR = os.path.join(BUILD_DIR, "import")
 sys.path.insert(0, BUILD_DIR)
 sys.path.insert(0, IMPORT_DIR)
 
-import jlpt_groups  # noqa: E402
+from generate_content import context  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB_DIR = os.path.join(HERE, "web", "semantic")
@@ -58,6 +58,10 @@ REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 SECTION_TITLE = "## Semantic (advisory)"
 
 DEFAULT_BATCH_SIZE = 40
+
+
+def _at_level(kind_dir, level):
+    return [it for it in context.load_items(kind_dir) if it["level"] == level]
 
 SYSTEM_PROMPT = (
     "You check Japanese-language teaching material for meaning errors. The "
@@ -90,7 +94,7 @@ def sentence_pairs(level, include_all):
     order, each with a report-readable id the model echoes back."""
     pairs = []
     for kind, kind_dir in (("kanji", "kanji"), ("vocab", "vocabulary"), ("grammar", "grammar")):
-        for item in jlpt_groups.load_items(kind_dir, level):
+        for item in _at_level(kind_dir, level):
             if not is_in_scope(item, include_all):
                 continue
             for i, sentence in enumerate(item.get("example_sentences") or []):
@@ -104,7 +108,7 @@ def sentence_pairs(level, include_all):
 
 def passages_in_scope(level, include_all):
     return [
-        p for p in jlpt_groups.load_items("readings", level)
+        p for p in _at_level("readings", level)
         if is_in_scope(p, include_all)
     ]
 
@@ -245,7 +249,7 @@ def write_section(level, lines):
     `audit_shipped.py` rewrites the whole file from scratch, so this section is
     always last; truncating at its heading is enough to make reruns idempotent.
     """
-    path = os.path.join(REPORTS_DIR, f"content-audit-{level}.md")
+    path = os.path.join(REPORTS_DIR, f"content-audit-{context.level_dir(level)}.md")
     if not os.path.exists(path):
         raise SystemExit(
             f"{path} does not exist — run `python -m generate_content.audit_shipped "
@@ -340,7 +344,7 @@ def _web_prompt_text(level, fname, prompt_body, count):
     header = (
         "<!-- Paste EVERYTHING below this line into a fresh Claude or Gemini chat "
         "(or hand it to a fresh subagent).\n"
-        f"     Save the reply to generate_content/web/semantic/{level}/{fname}.reply.md, "
+        f"     Save the reply to generate_content/web/semantic/{context.level_dir(level)}/{fname}.reply.md, "
         "then run:\n"
         "       .venv/bin/python -m generate_content.audit_semantic ingest "
         f"--level {level} --model <model-name>\n"
@@ -377,11 +381,11 @@ def cmd_webprompts(args):
     id_sets = request_id_sets(args.level, args.include_all, args.batch_size)
     scope = "every item" if args.include_all else "review_status: draft (or unset) only"
     if not requests:
-        raise SystemExit(f"nothing in scope for {args.level} ({scope}) — nothing to write")
+        raise SystemExit(f"nothing in scope for level {args.level} ({scope}) — nothing to write")
 
-    out_dir = os.path.join(WEB_DIR, args.level)
+    out_dir = os.path.join(WEB_DIR, context.level_dir(args.level))
     os.makedirs(out_dir, exist_ok=True)
-    print(f"{args.level}: {n_pairs} sentence pair(s) + {n_passages} passage(s) "
+    print(f"level {args.level}: {n_pairs} sentence pair(s) + {n_passages} passage(s) "
           f"-> {len(requests)} batch(es) [{scope}]")
 
     written, skipped, total_chars = 0, 0, 0
@@ -416,9 +420,9 @@ def cmd_ingest(args):
     id_sets = request_id_sets(args.level, args.include_all, args.batch_size)
     scope = "every item" if args.include_all else "review_status: draft (or unset) only"
     if not requests:
-        raise SystemExit(f"nothing in scope for {args.level} ({scope}) — nothing to ingest")
+        raise SystemExit(f"nothing in scope for level {args.level} ({scope}) — nothing to ingest")
 
-    out_dir = os.path.join(WEB_DIR, args.level)
+    out_dir = os.path.join(WEB_DIR, context.level_dir(args.level))
     findings, failures = [], []
     for i, (label, _prompt) in enumerate(requests, 1):
         fname = f"{i:03d}-{_slugify(label)}"
@@ -458,7 +462,7 @@ def cmd_ingest(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["webprompts", "ingest"])
-    parser.add_argument("--level", default="n5", help="single level to audit (default: n5)")
+    parser.add_argument("--level", type=int, required=True, help="one ladder level to audit")
     parser.add_argument("--all", action="store_true", dest="include_all",
                         help="audit every item, not just review_status: draft")
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE,

@@ -1,10 +1,10 @@
 {
-  "level": "n5",
+  "level": 22,
   "seed": "neko-to-shukudai",
   "expect": [
     "out-of-level words"
   ],
-  "note": "body uses 冷蔵庫 (the 636th N5 word) at position 7, far past the cutoff",
+  "note": "body uses 冷蔵庫, a word above the seed's level 22",
   "passage": {
     "title": "宿題とタマ",
     "body": "昨日の晩、私は宿題をしました。宿題はとても難しいですから、十二時まで書きました。今日の朝、冷蔵庫の上で宿題を見ました。猫のタマが宿題の上に寝ました。タマの名前を呼びました。でも、タマは私を見ませんでした。それから、朝ご飯を食べました。今日、先生に宿題を出しません。",

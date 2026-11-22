@@ -23,7 +23,7 @@ Run on every batch output before any human sees it
 that can be checked per-draft.
 
 Standalone usage (re-check collected drafts):
-    .venv/bin/python -m generate_content.validate_drafts --level n5
+    .venv/bin/python -m generate_content.validate_drafts --level 6
 """
 
 import argparse
@@ -150,11 +150,11 @@ def nudge_errors(nudge, answer, item):
     return errors
 
 
-def item_context(level, slug):
+def item_context(slug):
     """Everything the gate (and the generator prompt) needs for one item."""
-    item = context.grammar_item(level, slug)
-    taught, upcoming = context.siblings_for(level, slug)
-    allowed = context.allowed_vocab_for(level, slug)
+    item = context.grammar_item(slug)
+    taught, upcoming = context.siblings_for(slug)
+    allowed = context.allowed_vocab_for(slug)
     extra_allowed = set(item["accepted_forms"]) | {item["primary_form"]}
     for sibling in taught + upcoming:
         extra_allowed.add(sibling["primary_form"])
@@ -164,6 +164,7 @@ def item_context(level, slug):
         sibling_forms.add(sibling["primary_form"])
         sibling_forms.update(sibling.get("accepted_forms", []))
     return {
+        "level": item["level"],
         "item": item,
         "taught": taught,
         "upcoming": upcoming,
@@ -176,9 +177,9 @@ def item_context(level, slug):
     }
 
 
-def validate_draft(level, slug, draft, ctx=None):
+def validate_draft(slug, draft, ctx=None):
     """List of error strings; empty means the draft passes the gate."""
-    ctx = ctx or item_context(level, slug)
+    ctx = ctx or item_context(slug)
     errors = []
 
     for field in ("lesson_markdown", "example_sentences", "caution_notes",
@@ -240,7 +241,7 @@ def validate_draft(level, slug, draft, ctx=None):
         )
 
     # 2. + 4. level-check and furigana on every Japanese surface
-    known_readings = _known_readings(level)
+    known_readings = _known_readings(ctx["level"])
     checked = [(f"example line {text!r}", text) for text in example_lines]
     checked += [(f"prose run {run!r}", run) for run in prose_jp_runs(prose_lines)]
     for label, text in checked:
@@ -285,25 +286,25 @@ def validate_draft(level, slug, draft, ctx=None):
 
 
 def _known_readings(level):
+    """{form: reading} of every word at or below ladder `level`."""
     mapping = {}
-    for lvl in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]:
-        for v in context.load_vocab(lvl):
-            reading = next(
-                (a["answer_text"] for a in v.get("accepted_answers", [])
-                 if a.get("answer_type") == "reading"),
-                None,
-            )
-            if reading and v["primary_form"] not in mapping:
-                mapping[v["primary_form"]] = reading
+    for v in context.vocab_through(level):
+        reading = next(
+            (a["answer_text"] for a in v.get("accepted_answers", [])
+             if a.get("answer_type") == "reading"),
+            None,
+        )
+        if reading and v["primary_form"] not in mapping:
+            mapping[v["primary_form"]] = reading
     return mapping
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, required=True, help="ladder level, 1-60")
     args = parser.parse_args()
 
-    level_dir = os.path.join(DRAFTS_DIR, args.level)
+    level_dir = os.path.join(DRAFTS_DIR, context.level_dir(args.level))
     if not os.path.isdir(level_dir):
         raise SystemExit(f"no drafts at {level_dir}")
     failed = 0
@@ -314,7 +315,7 @@ def main():
             record = json.load(f)
         if not isinstance(record, dict) or not record.get("tool_input"):
             continue
-        errors = validate_draft(args.level, record["slug"], record["tool_input"])
+        errors = validate_draft(record["slug"], record["tool_input"])
         status = "PASS" if not errors else "FAIL"
         print(f"{status} {record['slug']}")
         for e in errors:

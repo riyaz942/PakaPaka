@@ -1146,8 +1146,7 @@ def generate(report_pool=False):
 def check_pool(report_pool=False):
     """Grammar Read + Build cards need every point's pool to pass (spec §4.4).
     A failure exits 1, or with `report_pool` is printed and the build goes on."""
-    failing = {slug: errs for level in pool_check.context.LEVEL_ORDER
-               for slug, errs in pool_check.check_level(level).items() if errs}
+    failing = {slug: errs for slug, errs in pool_check.check_level().items() if errs}
     if not failing:
         return
     lines = [f"{slug}: {errs[0]}" for slug, errs in failing.items()]

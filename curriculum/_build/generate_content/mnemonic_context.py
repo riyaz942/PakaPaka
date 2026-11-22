@@ -1302,11 +1302,7 @@ def grammar_context(slug, table=None):
             f"grammar_origins.json has no entry for {slug!r}; write an origin or null first"
         )
     item = items[slug]
-    # Until Task 6b moves allowed_vocab_for to ladder levels it takes the
-    # point's old JLPT group.
-    jlpt = next(lvl for lvl in grammar_pool_context.LEVEL_ORDER
-                if any(g["slug"] == slug for g in grammar_pool_context.load_grammar(lvl)))
-    allowed_vocab = grammar_pool_context.allowed_vocab_for(jlpt, slug)
+    allowed_vocab = grammar_pool_context.allowed_vocab_for(slug)
     return {
         "type": "grammar",
         "level": item["level"],

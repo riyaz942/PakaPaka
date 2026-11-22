@@ -28,13 +28,22 @@ sys.path.insert(0, IMPORT_DIR)
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
-import jlpt_groups  # noqa: E402
 import sources  # noqa: E402
 
 
 def load_json(*parts):
     with open(os.path.join(CURRICULUM_DIR, *parts), encoding="utf-8") as f:
         return json.load(f)
+
+
+_ITEMS = {}
+
+
+def items_at(kind, level):
+    """The items of `curriculum/<kind>/items.json` at one ladder level."""
+    if kind not in _ITEMS:
+        _ITEMS[kind] = load_json(kind, "items.json")["items"]
+    return [it for it in _ITEMS[kind] if it["level"] == level]
 
 
 STOPWORDS = {
@@ -168,7 +177,7 @@ KRAD_VARIANTS = {
 def audit_kanji(levels, kanjidic):
     findings = []
     for level in levels:
-        for item in jlpt_groups.load_items("kanji", level):
+        for item in items_at("kanji", level):
             slug, char = item["slug"], item["primary_form"]
             kd = kanjidic.get(char)
             if kd is None:
@@ -220,7 +229,7 @@ def audit_vocab(levels, jmdict):
     tagger = furigana_lib._get_tagger()
     derived = 0
     for level in levels:
-        for item in jlpt_groups.load_items("vocabulary", level):
+        for item in items_at("vocabulary", level):
             slug, form = item["slug"], item["primary_form"]
             reading = next(
                 (a["answer_text"] for a in item["accepted_answers"]
@@ -272,11 +281,11 @@ def audit_decomposition(levels, kradfile):
     findings = []
     radical_char = {}
     for level in levels:
-        for r in jlpt_groups.load_items("radicals", level):
+        for r in items_at("radicals", level):
             radical_char[r["slug"]] = r["primary_form"]
     kanji_char = {}
     for level in levels:
-        for k in jlpt_groups.load_items("kanji", level):
+        for k in items_at("kanji", level):
             kanji_char[k["slug"]] = k["primary_form"]
 
     taught_chars = {}
@@ -337,7 +346,8 @@ def audit_decomposition(levels, kradfile):
 
 
 def main():
-    levels = ["n5", "n4"]
+    # Ladder levels 1-20: the levels with authored content.
+    levels = list(range(1, 21))
     print("Loading KANJIDIC2…")
     kanjidic = sources.load_kanjidic2()
     print("Loading JMdict…")

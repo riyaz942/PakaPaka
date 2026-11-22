@@ -14,6 +14,14 @@ planned mix and checked mechanically (`tone_mix_errors`). `humorous` seeds get
 the comedy-register section of `prompts/persona.md`; `neutral` seeds get the
 same persona minus the instruction to be funny.
 
+## Ladder levels (level-ladder plan, Task 6)
+
+A seed now sits at the ladder level of the passage it wrote, and may use every
+word and grammar point at or below that level. The sections below describe
+the JLPT-era window (`position`, `vocab_cutoff`, `pull_forward`,
+`grammar_cutoff`); those fields stay in the data but are not read (see
+`SEEDS`).
+
 ## `position` and the allowed sets
 
 `position` is the seed's rank within the level (1..N) — the "passage 3 of 30"
@@ -71,6 +79,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from generate_content import context, grammar_detect  # noqa: E402
+from levels import load_ladder  # noqa: E402
 
 #: Tone tags. `humorous` seeds pull the persona's comedy register.
 TONES = ("humorous", "neutral")
@@ -79,10 +88,6 @@ TONES = ("humorous", "neutral")
 #: the expansion plan: 80%, not 100%, because some subjects fight comedy and 30
 #: gags in a row at one level flattens out.
 TONE_MIX_BOUNDS = (0.75, 0.85)
-
-#: Ladder fields every seed carries — see the module docstring.
-#: `pull_forward_grammar` is deliberately not here: only N5 needs it.
-LADDER_FIELDS = ("vocab_cutoff", "pull_forward", "grammar_cutoff", "required_grammar")
 
 #: N5 grammar points 47–50 — い/な-adjective conjugation and their adverbial
 #: forms. `grammar_detect` fires these on *any* adjective, so every N5 seed
@@ -1370,46 +1375,59 @@ N4_SEEDS = [
     },
 ]
 
-SEEDS = {"n5": N5_SEEDS, "n4": N4_SEEDS}
+#: Every authored seed. A seed's ladder level is the level of the passage it
+#: wrote (`_build/ladder.json`, kind `passage`), and its position is its rank
+#: among the seeds of that level. The JLPT-era window fields (`position`,
+#: `vocab_cutoff`, `pull_forward`, `grammar_cutoff`, `pull_forward_grammar`)
+#: are kept as written but no longer read: a seed's window is every word and
+#: grammar point at or below its level (reading_context.py). The level-ladder
+#: plan's Task 9 rewrites the seeds per level.
+SEEDS = (sorted(N5_SEEDS, key=lambda s: s["position"])
+         + sorted(N4_SEEDS, key=lambda s: s["position"]))
+
+#: The passages teach the grammar of levels 1–20 (spec §7.6); the coverage
+#: check holds every point there to exactly one seed.
+COVERAGE_LEVELS = 20
+
+
+def seed_level(slug):
+    return load_ladder()["passage"][slug]["level"]
 
 
 def seeds_for(level):
-    if level not in SEEDS:
-        raise KeyError(
-            f"no Phase 4 seeds for level {level!r} — authored levels: "
-            f"{', '.join(sorted(SEEDS))}"
-        )
-    return SEEDS[level]
+    """The seeds at ladder `level`, each with `position` = its rank there."""
+    passages = load_ladder()["passage"]
+    at = [s for s in SEEDS if passages[s["slug"]]["level"] == level]
+    if not at:
+        levels = sorted({passages[s["slug"]]["level"] for s in SEEDS})
+        raise KeyError(f"no reading seeds at level {level!r} — seeded levels: "
+                       f"{', '.join(map(str, levels))}")
+    return [{**s, "position": n} for n, s in enumerate(at, start=1)]
 
 
 def seed(level, slug):
     for s in seeds_for(level):
         if s["slug"] == slug:
             return s
-    raise KeyError(f"unknown reading seed {slug!r} in level {level}")
+    raise KeyError(f"unknown reading seed {slug!r} at level {level}")
 
 
 def all_slugs(level):
     """Seed slugs in position order."""
-    return [s["slug"] for s in sorted(seeds_for(level), key=lambda s: s["position"])]
+    return [s["slug"] for s in seeds_for(level)]
 
 
 def seed_errors(level):
-    """Structural problems with a level's seed list (positions, tones, bands,
-    the authored ladder, and level-wide grammar coverage).
+    """Structural problems with a level's seed list (tones, bands, the
+    required grammar, and the all-seed grammar coverage and humour mix).
 
     Run by the gate and by `generate_readings context`, because a malformed
     seed list silently produces malformed prompts."""
     errors = []
     seeds = seeds_for(level)
-    slugs = [s["slug"] for s in seeds]
+    slugs = [s["slug"] for s in SEEDS]
     if len(set(slugs)) != len(slugs):
-        errors.append(f"duplicate seed slugs in {level}")
-    positions = sorted(s["position"] for s in seeds)
-    if positions != list(range(1, len(seeds) + 1)):
-        errors.append(
-            f"{level} seed positions must be 1..{len(seeds)} with no gaps, got {positions}"
-        )
+        errors.append("duplicate seed slugs")
     for s in seeds:
         if s["tone"] not in TONES:
             errors.append(f"{s['slug']}: unknown tone {s['tone']!r}")
@@ -1419,84 +1437,25 @@ def seed_errors(level):
         if s["question_count"] < 2:
             errors.append(f"{s['slug']}: question_count must be at least 2")
     errors += ladder_errors(level)
-    errors += grammar_coverage_errors(level)
-    errors += tone_mix_errors(level)
+    errors += grammar_coverage_errors()
+    errors += tone_mix_errors()
     return errors
 
 
 def ladder_errors(level):
-    """The authored window of each seed: cutoffs in range and rising with
-    position, `pull_forward` and `pull_forward_grammar` naming later items
-    only, `required_grammar` naming points the seed's own window has reached —
-    by cutoff or by pull-forward."""
+    """`required_grammar` of each seed at `level` names points at or below
+    the level, none of them a MANUAL_SLUG."""
     errors = []
-    vocab = [v["slug"] for v in context.load_vocab(level)]
-    grammar = [g["slug"] for g in context.load_grammar(level)]
-    vocab_at = {slug: i for i, slug in enumerate(vocab)}
-    grammar_at = {slug: i for i, slug in enumerate(grammar)}
-    already_allowed = set(context.CORE_SEED_SLUGS.get(level, []))
-
-    seeds = sorted(seeds_for(level), key=lambda s: s["position"])
-    previous = None
-    for s in seeds:
-        missing = [f for f in LADDER_FIELDS if f not in s]
-        if missing:
-            errors.append(f"{s['slug']}: missing ladder field(s) {', '.join(missing)}")
+    reachable = {g["slug"] for g in context.grammar_through(level)}
+    for s in seeds_for(level):
+        if "required_grammar" not in s:
+            errors.append(f"{s['slug']}: missing required_grammar")
             continue
-        for field, total in (("vocab_cutoff", len(vocab)),
-                             ("grammar_cutoff", len(grammar))):
-            if not isinstance(s[field], int) or not 1 <= s[field] <= total:
-                errors.append(
-                    f"{s['slug']}: {field} is {s[field]!r}; expected 1..{total}"
-                )
-        if previous is not None:
-            for field in ("vocab_cutoff", "grammar_cutoff"):
-                if s.get(field, 0) < previous.get(field, 0):
-                    errors.append(
-                        f"{s['slug']}: {field} {s[field]} is below "
-                        f"{previous['slug']}'s {previous[field]} — the ladder only "
-                        f"goes up, or an earlier passage may use what a later one "
-                        f"may not"
-                    )
-        previous = s
-
-        for slug in s["pull_forward"]:
-            if slug not in vocab_at:
-                errors.append(f"{s['slug']}: pull_forward {slug!r} is not a {level} word")
-            elif vocab_at[slug] < s["vocab_cutoff"]:
-                errors.append(
-                    f"{s['slug']}: pull_forward {slug!r} is word "
-                    f"{vocab_at[slug] + 1}, already inside vocab_cutoff "
-                    f"{s['vocab_cutoff']}"
-                )
-            elif slug in already_allowed:
-                errors.append(
-                    f"{s['slug']}: pull_forward {slug!r} is already a CORE_SEED_SLUG"
-                )
-        pulled_grammar = list(s.get("pull_forward_grammar", []))
-        for slug in pulled_grammar:
-            if slug not in grammar_at:
-                errors.append(
-                    f"{s['slug']}: pull_forward_grammar {slug!r} is not a {level} "
-                    f"grammar point"
-                )
-            elif grammar_at[slug] < s["grammar_cutoff"]:
-                errors.append(
-                    f"{s['slug']}: pull_forward_grammar {slug!r} is point "
-                    f"{grammar_at[slug] + 1}, already inside grammar_cutoff "
-                    f"{s['grammar_cutoff']}"
-                )
         for slug in s["required_grammar"]:
-            if slug not in grammar_at:
+            if slug not in reachable:
                 errors.append(
-                    f"{s['slug']}: required_grammar {slug!r} is not a {level} "
-                    f"grammar point"
-                )
-            elif grammar_at[slug] >= s["grammar_cutoff"] and slug not in pulled_grammar:
-                errors.append(
-                    f"{s['slug']}: required_grammar {slug!r} is point "
-                    f"{grammar_at[slug] + 1}, past grammar_cutoff "
-                    f"{s['grammar_cutoff']} — the passage may not use what it must use"
+                    f"{s['slug']}: required_grammar {slug!r} is not a grammar point at "
+                    f"or below level {level} — the passage may not use what it must use"
                 )
             elif slug in grammar_detect.MANUAL_SLUGS:
                 errors.append(
@@ -1507,26 +1466,22 @@ def ladder_errors(level):
     return errors
 
 
-def grammar_coverage_errors(level):
-    """The invariant: every grammar point of the level is assigned to exactly
-    one seed. Remove an assignment and the build breaks — which is the whole
-    point of `required_grammar`.
+def grammar_coverage_errors():
+    """The invariant: every grammar point of levels 1..COVERAGE_LEVELS is
+    assigned to exactly one seed. Remove an assignment and the build breaks —
+    which is the whole point of `required_grammar`.
 
     Every point except a `MANUAL_SLUG`. `ladder_errors` refuses to let a seed
     require one (no mechanical rule can confirm a passage uses it), so counting
-    it here would make the two checks unsatisfiable together: N4's
-    `node-vs-kara` is から, the same から as `kara-because`.
-
-    A level with no seeds (N3 grammar ships without passages) has no rule."""
-    if level not in SEEDS:
-        return []
+    it here would make the two checks unsatisfiable together: `node-vs-kara`
+    is から, the same から as `kara-because`."""
     assigned = {}
-    for s in seeds_for(level):
+    for s in SEEDS:
         for slug in s.get("required_grammar", []):
             assigned.setdefault(slug, []).append(s["slug"])
 
     level_slugs = [
-        g["slug"] for g in context.load_grammar(level)
+        g["slug"] for g in context.grammar_through(COVERAGE_LEVELS)
         if g["slug"] not in grammar_detect.MANUAL_SLUGS
     ]
     unassigned = [slug for slug in level_slugs if slug not in assigned]
@@ -1535,7 +1490,7 @@ def grammar_coverage_errors(level):
         shown = ", ".join(unassigned[:12])
         rest = len(unassigned) - 12
         errors.append(
-            f"{level} grammar coverage is "
+            f"levels 1-{COVERAGE_LEVELS} grammar coverage is "
             f"{len(level_slugs) - len(unassigned)}/{len(level_slugs)}; unassigned to "
             f"any seed's required_grammar: {shown}"
             + (f", … (+{rest} more)" if rest > 0 else "")
@@ -1543,21 +1498,22 @@ def grammar_coverage_errors(level):
     for slug, owners in sorted(assigned.items()):
         if len(owners) > 1:
             errors.append(
-                f"{level} grammar {slug} is required by {len(owners)} seeds "
+                f"grammar {slug} is required by {len(owners)} seeds "
                 f"({', '.join(owners)}); each point belongs to exactly one passage"
             )
     return errors
 
 
-def tone_mix_errors(level):
-    """Rev 1's planned humour mix, checked over the whole level."""
-    seeds = seeds_for(level)
+def tone_mix_errors():
+    """Rev 1's planned humour mix, checked over every seed (a ladder level
+    holds about three, too few for a share)."""
+    seeds = SEEDS
     humorous = sum(1 for s in seeds if s["tone"] == "humorous")
     share = humorous / len(seeds)
     lo, hi = TONE_MIX_BOUNDS
     if lo <= share <= hi:
         return []
     return [
-        f"{level} humour mix is {humorous}/{len(seeds)} ({share:.0%}); "
+        f"humour mix is {humorous}/{len(seeds)} ({share:.0%}); "
         f"Phase 4 Rev 1 wants {lo:.0%}–{hi:.0%} humorous seeds"
     ]

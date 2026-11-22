@@ -16,7 +16,7 @@ import {
   readGrammarLessonStatus,
   readGrammarMnemonicStatus,
 } from './sidecar.js';
-import type { ContentType, JlptLevel, ReviewStatus } from './types.js';
+import type { ContentType, ReviewStatus } from './types.js';
 
 const DIR_BY_TYPE: Record<ContentType, { dir: string; arrayKey: 'items' | 'passages' }> = {
   radical: { dir: 'radicals', arrayKey: 'items' },
@@ -28,13 +28,14 @@ const DIR_BY_TYPE: Record<ContentType, { dir: string; arrayKey: 'items' | 'passa
 
 export type SaveResult = { ok: true } | { ok: false; errors: string[] };
 
-function filePathFor(curriculumDir: string, type: ContentType, level: JlptLevel): string {
+/** Every level of a type lives in one file: `<dir>/items.json`. */
+function filePathFor(curriculumDir: string, type: ContentType): string {
   const { dir } = DIR_BY_TYPE[type];
-  return path.join(curriculumDir, dir, `${level.toLowerCase()}.json`);
+  return path.join(curriculumDir, dir, 'items.json');
 }
 
 /** Mirrors loader.ts's passageSlug: reading passages may have no `slug` field. */
-function rowSlug(type: ContentType, row: Record<string, unknown>, level: JlptLevel, index: number): string {
+function rowSlug(type: ContentType, row: Record<string, unknown>, index: number): string {
   if (typeof row.slug === 'string' && row.slug.length > 0) {
     return row.slug;
   }
@@ -42,7 +43,7 @@ function rowSlug(type: ContentType, row: Record<string, unknown>, level: JlptLev
     return '';
   }
   const sortOrder = typeof row.sort_order === 'number' ? row.sort_order : index;
-  return `passage-${level.toLowerCase()}-${sortOrder}`;
+  return `passage-${String(row.level)}-${sortOrder}`;
 }
 
 function validateFile(
@@ -86,9 +87,8 @@ type OpenedFile = {
 function openLevelFile(
   curriculumDir: string,
   type: ContentType,
-  level: JlptLevel,
 ): OpenedFile | { errors: string[] } {
-  const filePath = filePathFor(curriculumDir, type, level);
+  const filePath = filePathFor(curriculumDir, type);
   const relative = path.relative(curriculumDir, filePath).replace(/\\/g, '/');
   const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
   const arrayKey = DIR_BY_TYPE[type].arrayKey;
@@ -106,7 +106,7 @@ function writeLevelFile(filePath: string, file: Record<string, unknown>): void {
 }
 
 /**
- * Replaces the item matching (type, level, slug) in its shipped file, in
+ * Replaces the item matching (type, slug) in its shipped file, in
  * place, then validates the whole file and atomically writes it back.
  * `updatedRaw` must be the full item object (client-side edited copy of the
  * `raw` field returned by GET /api/item/:type/:slug).
@@ -119,18 +119,17 @@ function writeLevelFile(filePath: string, file: Record<string, unknown>): void {
 export function saveItem(
   repoRoot: string,
   type: ContentType,
-  level: JlptLevel,
   slug: string,
   updatedRaw: Record<string, unknown>,
 ): SaveResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
-  const opened = openLevelFile(curriculumDir, type, level);
+  const opened = openLevelFile(curriculumDir, type);
   if ('errors' in opened) {
     return { ok: false, errors: opened.errors };
   }
   const { filePath, relative, file, rows } = opened;
 
-  const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
+  const index = rows.findIndex((row, i) => rowSlug(type, row, i) === slug);
   if (index === -1) {
     return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
   }
@@ -176,18 +175,17 @@ function applyReviewStatus(
 export function updateReviewStatus(
   repoRoot: string,
   type: ContentType,
-  level: JlptLevel,
   slug: string,
   reviewStatus: ReviewStatus,
 ): SaveResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
-  const opened = openLevelFile(curriculumDir, type, level);
+  const opened = openLevelFile(curriculumDir, type);
   if ('errors' in opened) {
     return { ok: false, errors: opened.errors };
   }
   const { filePath, relative, file, rows } = opened;
 
-  const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
+  const index = rows.findIndex((row, i) => rowSlug(type, row, i) === slug);
   if (index === -1) {
     return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
   }
@@ -223,7 +221,6 @@ export function updateReviewStatus(
  */
 export function updateGrammarMnemonicReviewStatus(
   repoRoot: string,
-  level: JlptLevel,
   slug: string,
   reviewStatus: ReviewStatus,
 ): SaveResult {
@@ -232,12 +229,12 @@ export function updateGrammarMnemonicReviewStatus(
     return { ok: false, errors: blocked };
   }
   const curriculumDir = path.join(repoRoot, 'curriculum');
-  const opened = openLevelFile(curriculumDir, 'grammar', level);
+  const opened = openLevelFile(curriculumDir, 'grammar');
   if ('errors' in opened) {
     return { ok: false, errors: opened.errors };
   }
   const { filePath, relative, file, rows } = opened;
-  const index = rows.findIndex((row, i) => rowSlug('grammar', row, level, i) === slug);
+  const index = rows.findIndex((row, i) => rowSlug('grammar', row, i) === slug);
   if (index === -1) {
     return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
   }
@@ -259,14 +256,14 @@ export function updateGrammarMnemonicReviewStatus(
   return { ok: true };
 }
 
-export type BulkUpdateItem = { type: ContentType; level: JlptLevel; slug: string };
+export type BulkUpdateItem = { type: ContentType; slug: string };
 export type BulkUpdateResult =
   | { ok: true; updated: number }
   | { ok: false; errors: string[] };
 
 /**
  * Bulk status flip for the Content list's multi-select bar. Groups the
- * selection by source file (one file per type+level), validates every
+ * selection by source file (one `items.json` per type), validates every
  * resulting file up front — and checks every item has a sidecar to persist the
  * status to — and only writes once all of them pass, so a bad item in one file
  * can't leave other files partially updated.
@@ -286,22 +283,21 @@ export function updateReviewStatusBulk(
     return { ok: false, errors };
   }
 
-  const groups = new Map<string, { type: ContentType; level: JlptLevel; slugs: string[] }>();
+  const groups = new Map<ContentType, string[]>();
   for (const item of items) {
-    const key = `${item.type}:${item.level}`;
-    const group = groups.get(key);
-    if (group) {
-      group.slugs.push(item.slug);
+    const slugs = groups.get(item.type);
+    if (slugs) {
+      slugs.push(item.slug);
     } else {
-      groups.set(key, { type: item.type, level: item.level, slugs: [item.slug] });
+      groups.set(item.type, [item.slug]);
     }
   }
 
   const pending: Array<{ filePath: string; relative: string; file: Record<string, unknown> }> = [];
   let updated = 0;
 
-  for (const { type, level, slugs } of groups.values()) {
-    const filePath = filePathFor(curriculumDir, type, level);
+  for (const [type, slugs] of groups) {
+    const filePath = filePathFor(curriculumDir, type);
     const relative = path.relative(curriculumDir, filePath).replace(/\\/g, '/');
     const arrayKey = DIR_BY_TYPE[type].arrayKey;
     const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
@@ -312,7 +308,7 @@ export function updateReviewStatusBulk(
     }
 
     for (const slug of slugs) {
-      const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
+      const index = rows.findIndex((row, i) => rowSlug(type, row, i) === slug);
       if (index === -1) {
         errors.push(`${relative}: no item with slug "${slug}"`);
         continue;

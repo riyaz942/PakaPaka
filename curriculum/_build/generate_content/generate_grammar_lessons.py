@@ -14,12 +14,14 @@ prompt, capped at MAX_ATTEMPTS, then recorded with
 `review_status: flagged_for_rewrite` for manual handling.
 
 Usage (from curriculum/_build, venv with `anthropic` installed):
-    .venv/bin/python -m generate_content.generate_grammar_lessons requests   # dry run: write request payloads
-    .venv/bin/python -m generate_content.generate_grammar_lessons run        # full pipeline (needs API credentials)
-    .venv/bin/python -m generate_content.generate_grammar_lessons assemble   # re-assemble passing drafts
+    .venv/bin/python -m generate_content.generate_grammar_lessons requests --level 6   # dry run: write request payloads
+    .venv/bin/python -m generate_content.generate_grammar_lessons run --slugs a,b     # full pipeline (needs API credentials)
+    .venv/bin/python -m generate_content.generate_grammar_lessons assemble --slugs a,b # re-assemble passing drafts
 
-Scope guard: this is the 10-point N5 pilot. Batching the rest of N5+N4 is
-step 4 of the execution table and gated on the pilot's go/no-go read.
+`--level 6` / `--levels 1-20` pick the points of those ladder levels that have
+no lesson file yet; `--slugs` names points of any level (and regenerates them).
+Drafts live in drafts/level-NN/, web staging files in web/grammar/level-NN/
+(NN = the point's level); the old JLPT folders are not read.
 """
 
 import argparse
@@ -32,6 +34,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 from generate_content import assemble, context, tatoeba  # noqa: E402
+from generate_content.context import level_dir  # noqa: E402
 from generate_content.validate_drafts import item_context, validate_draft  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -50,16 +53,6 @@ MAX_ATTEMPTS = 3
 MAX_TOKENS = 16000
 POLL_SECONDS = 30
 POLL_TIMEOUT_SECONDS = 90 * 60
-
-#: The step-3 pilot: 10 N5 points chosen for coverage of families and for
-#: built-in contrast pairs (は/が, てもいい/てはいけない, から/ので).
-PILOT_SLUGS = [
-    "wa-topic", "ga",
-    "masen-ka",
-    "te-form", "te-mo-ii", "te-wa-ikenai",
-    "kara-because", "node-because",
-    "ta-koto-ga-aru", "hou-ga-ii",
-]
 
 SUBMIT_TOOL = {
     "name": "submit_grammar_lesson",
@@ -116,7 +109,7 @@ def _read_prompt(name):
         return f.read()
 
 
-def build_user_prompt(level, slug, ctx, validator_errors=None):
+def build_user_prompt(slug, ctx, validator_errors=None):
     item = ctx["item"]
     anchors = tatoeba.style_anchors(
         item["accepted_forms"], ctx["allowed_index"], ctx["extra_allowed"]
@@ -134,7 +127,7 @@ def build_user_prompt(level, slug, ctx, validator_errors=None):
         )
     template = _read_prompt("grammar-lesson.md")
     substitutions = {
-        "{{LEVEL}}": level.upper(),
+        "{{LEVEL}}": f"level {ctx['level']}",
         "{{PRIMARY_FORM}}": item["primary_form"],
         "{{MEANING}}": item["meaning"],
         "{{STRUCTURE}}": item["structure"],
@@ -151,9 +144,9 @@ def build_user_prompt(level, slug, ctx, validator_errors=None):
     return template
 
 
-def build_request(level, slug, attempt, ctx, validator_errors=None):
+def build_request(slug, attempt, ctx, validator_errors=None):
     return {
-        "custom_id": f"{level}--{slug}--attempt{attempt}",
+        "custom_id": f"{level_dir(ctx['level'])}--{slug}--attempt{attempt}",
         "params": {
             "model": MODEL,
             "max_tokens": MAX_TOKENS,
@@ -161,14 +154,14 @@ def build_request(level, slug, attempt, ctx, validator_errors=None):
             "tools": [SUBMIT_TOOL],
             "tool_choice": {"type": "tool", "name": "submit_grammar_lesson"},
             "messages": [
-                {"role": "user", "content": build_user_prompt(level, slug, ctx, validator_errors)},
+                {"role": "user", "content": build_user_prompt(slug, ctx, validator_errors)},
             ],
         },
     }
 
 
 def _draft_path(level, slug):
-    return os.path.join(DRAFTS_DIR, level, f"{slug}.json")
+    return os.path.join(DRAFTS_DIR, level_dir(level), f"{slug}.json")
 
 
 def _load_draft(level, slug):
@@ -275,19 +268,19 @@ For reference, the JSON has this shape (keep the key names exactly; fill in real
 """
 
 
-def _web_prompt_text(level, slug, ctx, validator_errors=None):
+def _web_prompt_text(slug, ctx, validator_errors=None):
     """One fully self-contained block to paste into a fresh web chat: the
     persona (system prompt has no equivalent in a chat), the per-point lesson
     prompt with the tool-call instruction swapped for a JSON-block contract,
     plus a JSON skeleton and plain-Japanese reminder."""
     persona = _read_prompt("persona.md")
-    body = build_user_prompt(level, slug, ctx, validator_errors)
+    body = build_user_prompt(slug, ctx, validator_errors)
     body = body.replace(WEB_TOOL_LINE, WEB_OUTPUT_INSTRUCTION)
     header = (
         f"<!-- Paste EVERYTHING below this line into a fresh Claude or Gemini chat.\n"
-        f"     Save the model's reply to web/grammar/{level}/{slug}.reply.md, then run:\n"
+        f"     Save the model's reply to web/grammar/{level_dir(ctx['level'])}/{slug}.reply.md, then run:\n"
         f"       .venv/bin/python -m generate_content.generate_grammar_lessons \\\n"
-        f"         ingest --level {level} --slug {slug} --model <claude-web|gemini-web>\n"
+        f"         ingest --slug {slug} --model <claude-web|gemini-web>\n"
         f"     See docs/workflows/grammar-web-chat-workflow.md. -->\n\n"
     )
     return (
@@ -307,23 +300,22 @@ def _web_prompt_text(level, slug, ctx, validator_errors=None):
 def _remove_staging_files(*paths):
     """Delete the paste-ready prompt/reply files once a slug has been ingested
     successfully — their content now lives in the draft + assembled lesson, so
-    leaving them behind just litters web/grammar/<level>/."""
+    leaving them behind just litters web/grammar/level-NN/."""
     for path in paths:
         if path and os.path.exists(path):
             os.remove(path)
 
 
 def cmd_webprompts(args):
-    """Write one paste-ready prompt file per slug under web/grammar/<level>/."""
-    out_dir = os.path.join(WEB_DIR, args.level)
-    os.makedirs(out_dir, exist_ok=True)
+    """Write one paste-ready prompt file per slug under web/grammar/level-NN/."""
     for slug in args.slugs:
-        ctx = item_context(args.level, slug)
-        path = os.path.join(out_dir, f"{slug}.prompt.md")
+        ctx = item_context(slug)
+        path = os.path.join(WEB_DIR, level_dir(ctx["level"]), f"{slug}.prompt.md")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
-            f.write(_web_prompt_text(args.level, slug, ctx))
+            f.write(_web_prompt_text(slug, ctx))
         print(f"wrote {path}")
-    print(f"\n{len(args.slugs)} prompt file(s) in {out_dir}. Paste each into a web "
+    print(f"\n{len(args.slugs)} prompt file(s) in {WEB_DIR}. Paste each into a web "
           "chat, save the reply next to it as <slug>.reply.md, then `ingest`.")
 
 
@@ -367,7 +359,9 @@ def cmd_ingest(args):
     the gate errors appended so you can re-roll in the chat."""
     if not args.slug:
         raise SystemExit("ingest requires --slug <grammar-slug>")
-    reply_path = args.from_path or os.path.join(WEB_DIR, args.level, f"{args.slug}.reply.md")
+    ctx = item_context(args.slug)
+    level = ctx["level"]
+    reply_path = args.from_path or os.path.join(WEB_DIR, level_dir(level), f"{args.slug}.reply.md")
     if not os.path.exists(reply_path):
         raise SystemExit(
             f"no reply at {reply_path} — paste the model's answer there first "
@@ -376,9 +370,8 @@ def cmd_ingest(args):
     with open(reply_path, encoding="utf-8") as f:
         tool_input = _first_json_object(f.read())
 
-    ctx = item_context(args.level, args.slug)
-    errors = validate_draft(args.level, args.slug, tool_input, ctx)
-    record = _load_draft(args.level, args.slug)
+    errors = validate_draft(args.slug, tool_input, ctx)
+    record = _load_draft(level, args.slug)
     record["tool_input"] = tool_input
     record["generator_model"] = args.model
     record["prompt_version"] = PROMPT_VERSION
@@ -387,10 +380,10 @@ def cmd_ingest(args):
     _save_draft(record)
 
     if errors:
-        prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
+        prompt_path = os.path.join(WEB_DIR, level_dir(level), f"{args.slug}.prompt.md")
         os.makedirs(os.path.dirname(prompt_path), exist_ok=True)
         with open(prompt_path, "w", encoding="utf-8") as f:
-            f.write(_web_prompt_text(args.level, args.slug, ctx, errors))
+            f.write(_web_prompt_text(args.slug, ctx, errors))
         print(f"{args.slug}: {len(errors)} gate failure(s) — NOT assembled:")
         for e in errors:
             print(f"  - {e}")
@@ -400,9 +393,9 @@ def cmd_ingest(args):
         raise SystemExit(1)
 
     assemble.write_lesson_file(args.slug, tool_input, args.model, PROMPT_VERSION)
-    assemble.write_cloze_candidates(args.level, args.slug, tool_input)
+    assemble.write_cloze_candidates(level, args.slug, tool_input)
     print(f"{args.slug}: PASS — assembled curriculum/grammar/lessons/{args.slug}.md")
-    prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
+    prompt_path = os.path.join(WEB_DIR, level_dir(level), f"{args.slug}.prompt.md")
     _remove_staging_files(reply_path, prompt_path)
     print("When a batch of lessons is in, run generate.py, then validate-schema + "
           "compile-curriculum from the repo root.")
@@ -410,9 +403,9 @@ def cmd_ingest(args):
 
 def cmd_requests(args):
     """Dry run: write the exact batch payloads for inspection, no API calls."""
-    contexts = {slug: item_context(args.level, slug) for slug in args.slugs}
-    requests = [build_request(args.level, slug, 1, contexts[slug]) for slug in args.slugs]
-    out = os.path.join(DRAFTS_DIR, args.level, "requests-preview.json")
+    contexts = {slug: item_context(slug) for slug in args.slugs}
+    requests = [build_request(slug, 1, contexts[slug]) for slug in args.slugs]
+    out = os.path.join(DRAFTS_DIR, "lesson-requests-preview.json")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         json.dump(requests, f, ensure_ascii=False, indent=2)
@@ -428,8 +421,8 @@ def cmd_run(args):
         print("note: Tatoeba exports not found under _build/data — generating "
               "without style anchors (fetch with import/fetch_sources.sh --tatoeba)")
 
-    contexts = {slug: item_context(args.level, slug) for slug in args.slugs}
-    records = {slug: _load_draft(args.level, slug) for slug in args.slugs}
+    contexts = {slug: item_context(slug) for slug in args.slugs}
+    records = {slug: _load_draft(contexts[slug]["level"], slug) for slug in args.slugs}
     # Resumable: re-validate any stored output against the *current* gate
     # first — a draft collected under an older (stricter/buggier) gate may
     # pass now, and a failing one seeds its first new prompt with current,
@@ -438,7 +431,7 @@ def cmd_run(args):
     for slug in args.slugs:
         record = records[slug]
         if record["tool_input"] is not None:
-            errors = validate_draft(args.level, slug, record["tool_input"], contexts[slug])
+            errors = validate_draft(slug, record["tool_input"], contexts[slug])
             if not errors:
                 if record["status"] != "draft":
                     record["status"] = "draft"
@@ -453,31 +446,31 @@ def cmd_run(args):
         if not pending:
             break
         requests = [
-            build_request(args.level, slug, attempt, contexts[slug], errors)
+            build_request(slug, attempt, contexts[slug], errors)
             for slug, errors in pending.items()
         ]
         outcomes = _submit_and_collect(client, requests)
-        pending = _process_outcomes(args.level, contexts, records, outcomes)
+        pending = _process_outcomes(contexts, records, outcomes)
 
     for slug in pending:
         records[slug]["status"] = "flagged_for_rewrite"
         _save_draft(records[slug])
         print(f"{slug}: still failing after {MAX_ATTEMPTS} attempts — flagged_for_rewrite")
 
-    _assemble(args.level, records.values())
+    _assemble(records.values())
 
 
-def _process_outcomes(level, contexts, records, outcomes):
+def _process_outcomes(contexts, records, outcomes):
     """Validate + persist batch outcomes; returns {slug: errors} still failing.
 
-    custom_ids look like `<level>--<slug>--attempt<N>`.
+    custom_ids look like `level-NN--<slug>--attempt<N>`.
     """
     next_pending = {}
     for custom_id, outcome in outcomes.items():
         _, slug, attempt_part = custom_id.split("--")
         attempt = int(attempt_part.removeprefix("attempt"))
-        record = records.setdefault(slug, _load_draft(level, slug))
-        ctx = contexts.setdefault(slug, item_context(level, slug))
+        ctx = contexts.setdefault(slug, item_context(slug))
+        record = records.setdefault(slug, _load_draft(ctx["level"], slug))
         if "error" in outcome:
             record["attempts"].append({"attempt": attempt, "errors": [outcome["error"]]})
             next_pending[slug] = [outcome["error"]]
@@ -485,7 +478,7 @@ def _process_outcomes(level, contexts, records, outcomes):
             _save_draft(record)
             continue
         tool_input = outcome["tool_input"]
-        errors = validate_draft(level, slug, tool_input, ctx)
+        errors = validate_draft(slug, tool_input, ctx)
         record["attempts"].append({"attempt": attempt, "errors": errors})
         record["tool_input"] = tool_input
         record["generator_model"] = MODEL
@@ -521,8 +514,8 @@ def cmd_collect(args):
             f"(processing={counts.processing}); try again later"
         )
     contexts, records = {}, {}
-    pending = _process_outcomes(args.level, contexts, records, _batch_outcomes(client, args.batch_id))
-    _assemble(args.level, records.values())
+    pending = _process_outcomes(contexts, records, _batch_outcomes(client, args.batch_id))
+    _assemble(records.values())
     if pending:
         print("still failing the gate — rerun `run` to requeue with feedback: "
               + ", ".join(sorted(pending)))
@@ -530,17 +523,16 @@ def cmd_collect(args):
 
 def cmd_assemble(args):
     records = []
-    level_dir = os.path.join(DRAFTS_DIR, args.level)
     for slug in args.slugs:
-        record = _load_draft(args.level, slug)
+        record = _load_draft(context.grammar_item(slug)["level"], slug)
         if record["tool_input"] is not None:
             records.append(record)
     if not records:
-        raise SystemExit(f"no collected drafts under {level_dir}")
-    _assemble(args.level, records)
+        raise SystemExit(f"no collected drafts for {', '.join(args.slugs)} under {DRAFTS_DIR}")
+    _assemble(records)
 
 
-def _assemble(level, records):
+def _assemble(records):
     written = 0
     for record in records:
         if record["status"] != "draft" or not record["tool_input"]:
@@ -550,7 +542,7 @@ def _assemble(level, records):
             record.get("generator_model", MODEL),
             record.get("prompt_version", PROMPT_VERSION),
         )
-        assemble.write_cloze_candidates(level, record["slug"], record["tool_input"])
+        assemble.write_cloze_candidates(record["level"], record["slug"], record["tool_input"])
         written += 1
         print(f"assembled {path}")
     print(f"{written} lesson file(s) written; run generate.py, "
@@ -562,21 +554,25 @@ def main():
     parser.add_argument("command",
                         choices=["requests", "run", "assemble", "collect",
                                  "webprompts", "ingest"])
-    parser.add_argument("--level", default="n5")
-    parser.add_argument("--slugs", default=",".join(PILOT_SLUGS),
-                        help="comma-separated grammar slugs (default: the 10-point pilot)")
+    context.add_level_args(parser)
     parser.add_argument("--slug", default=None,
                         help="ingest only: the single grammar slug to ingest")
     parser.add_argument("--from", dest="from_path", default=None,
                         help="ingest only: path to the pasted reply "
-                             "(default: web/grammar/<level>/<slug>.reply.md)")
+                             "(default: web/grammar/level-NN/<slug>.reply.md)")
     parser.add_argument("--model", default="web-chat",
                         help="ingest only: provenance recorded in the lesson "
                              "frontmatter, e.g. claude-web or gemini-web")
     parser.add_argument("--batch-id", default=None,
                         help="collect only: the msgbatch_... id to fetch results from")
     args = parser.parse_args()
-    args.slugs = [s for s in args.slugs.split(",") if s]
+    if args.slugs:
+        args.slugs = [s for s in args.slugs.split(",") if s]
+    elif args.levels:
+        args.slugs = [g["slug"] for g in context.load_grammar() if g["level"] in args.levels
+                      and not os.path.exists(assemble.lesson_path(g["slug"]))]
+    elif args.command not in ("ingest", "collect"):
+        raise SystemExit(f"{args.command} requires --level, --levels or --slugs")
 
     {"requests": cmd_requests, "run": cmd_run, "assemble": cmd_assemble,
      "collect": cmd_collect, "webprompts": cmd_webprompts,

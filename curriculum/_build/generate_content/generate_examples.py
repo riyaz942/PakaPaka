@@ -29,12 +29,18 @@ Failed drafts are auto-requeued with the gate errors appended to the prompt,
 capped at MAX_ATTEMPTS, then recorded `review_status: flagged_for_rewrite`.
 
 Usage (from curriculum/_build, venv with `anthropic` installed):
-    .venv/bin/python -m generate_content.generate_examples requests --type vocab
-    .venv/bin/python -m generate_content.generate_examples run --type vocab     # needs API credentials
-    .venv/bin/python -m generate_content.generate_examples assemble --type vocab
+    .venv/bin/python -m generate_content.generate_examples requests --type vocab --level 6
+    .venv/bin/python -m generate_content.generate_examples run --type vocab --levels 1-20  # needs API credentials
+    .venv/bin/python -m generate_content.generate_examples assemble --type vocab --levels 1-20
     .venv/bin/python -m generate_content.generate_examples collect --type vocab --batch-id msgbatch_...
 
 The no-API web-chat lane (webprompts/ingest) mirrors 2a/2b for the cost swap.
+
+`--level 6` / `--levels 1-20` pick the words of those ladder levels with no
+entry in the examples sidecar yet; `--slugs a,b` names words of any level and
+regenerates them. Drafts live in drafts/examples/level-NN/vocab/, web staging
+files in web/examples/level-NN/vocab/ (NN = the word's level); the old JLPT
+folders are not read.
 """
 
 import argparse
@@ -47,6 +53,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 from generate_content import context as grammar_context  # noqa: E402
+from generate_content.context import level_dir  # noqa: E402
 from generate_content import example_context as ec  # noqa: E402
 from generate_content import tatoeba  # noqa: E402
 from generate_content.validate_examples import validate_draft  # noqa: E402
@@ -121,7 +128,7 @@ def _feedback_block(validator_errors):
 def build_user_prompt(kind, ctx, validator_errors=None):
     template = _read_prompt(PROMPT_FILES[kind])
     subs = {
-        "{{LEVEL}}": ctx["level"].upper(),
+        "{{LEVEL}}": f"level {ctx['level']}",
         "{{ALLOWED_VOCAB}}": grammar_context.format_vocab_list(ctx["allowed"]),
         "{{LATER_VOCAB}}": grammar_context.format_vocab_list(ctx["later"]) if ctx["later"] else "(none)",
         "{{RECENT_GRAMMAR}}": ec.format_grammar_list(ctx["recent_grammar"]),
@@ -144,9 +151,9 @@ def build_user_prompt(kind, ctx, validator_errors=None):
     return template
 
 
-def build_request(level, kind, slug, attempt, ctx, validator_errors=None):
+def build_request(kind, slug, attempt, ctx, validator_errors=None):
     return {
-        "custom_id": f"{level}--{kind}--{slug}--attempt{attempt}",
+        "custom_id": f"{level_dir(ctx['level'])}--{kind}--{slug}--attempt{attempt}",
         "params": {
             "model": MODEL,
             "max_tokens": MAX_TOKENS,
@@ -163,7 +170,7 @@ def build_request(level, kind, slug, attempt, ctx, validator_errors=None):
 # --- draft persistence -----------------------------------------------------
 
 def _draft_path(level, kind, slug):
-    return os.path.join(DRAFTS_DIR, level, kind, f"{slug}.json")
+    return os.path.join(DRAFTS_DIR, level_dir(level), kind, f"{slug}.json")
 
 
 def _load_draft(level, kind, slug):
@@ -239,13 +246,13 @@ def _split_custom_id(custom_id):
     return level, kind, slug, int(attempt_part.removeprefix("attempt"))
 
 
-def _process_outcomes(level, kind, contexts, records, outcomes):
+def _process_outcomes(kind, contexts, records, outcomes):
     """Validate + persist batch outcomes; returns {slug: errors} still failing."""
     next_pending = {}
     for custom_id, outcome in outcomes.items():
         _, _, slug, attempt = _split_custom_id(custom_id)
-        record = records.setdefault(slug, _load_draft(level, kind, slug))
-        ctx = contexts.setdefault(slug, ec.item_context(level, kind, slug))
+        ctx = contexts.setdefault(slug, ec.item_context(kind, slug))
+        record = records.setdefault(slug, _load_draft(ctx["level"], kind, slug))
         if "error" in outcome:
             record["attempts"].append({"attempt": attempt, "errors": [outcome["error"]]})
             next_pending[slug] = [outcome["error"]]
@@ -253,7 +260,7 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
             _save_draft(record)
             continue
         tool_input = outcome["tool_input"]
-        errors = validate_draft(level, kind, slug, tool_input, ctx)
+        errors = validate_draft(kind, slug, tool_input, ctx)
         record["attempts"].append({"attempt": attempt, "errors": errors})
         record["tool_input"] = tool_input
         record["generator_model"] = MODEL
@@ -274,9 +281,9 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
 # --- commands --------------------------------------------------------------
 
 def cmd_requests(args):
-    contexts = {slug: ec.item_context(args.level, args.kind, slug) for slug in args.slugs}
-    requests = [build_request(args.level, args.kind, slug, 1, contexts[slug]) for slug in args.slugs]
-    out = os.path.join(DRAFTS_DIR, args.level, args.kind, "requests-preview.json")
+    contexts = {slug: ec.item_context(args.kind, slug) for slug in args.slugs}
+    requests = [build_request(args.kind, slug, 1, contexts[slug]) for slug in args.slugs]
+    out = os.path.join(DRAFTS_DIR, f"{args.kind}-requests-preview.json")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         json.dump(requests, f, ensure_ascii=False, indent=2)
@@ -288,15 +295,15 @@ def cmd_run(args):
     import anthropic
 
     client = anthropic.Anthropic()
-    contexts = {slug: ec.item_context(args.level, args.kind, slug) for slug in args.slugs}
-    records = {slug: _load_draft(args.level, args.kind, slug) for slug in args.slugs}
+    contexts = {slug: ec.item_context(args.kind, slug) for slug in args.slugs}
+    records = {slug: _load_draft(contexts[slug]["level"], args.kind, slug) for slug in args.slugs}
 
     # Resumable: re-validate stored output against the *current* gate first.
     pending = {}
     for slug in args.slugs:
         record = records[slug]
         if record["tool_input"] is not None:
-            errors = validate_draft(args.level, args.kind, slug, record["tool_input"], contexts[slug])
+            errors = validate_draft(args.kind, slug, record["tool_input"], contexts[slug])
             if not errors:
                 if record["status"] != "draft":
                     record["status"] = "draft"
@@ -311,18 +318,18 @@ def cmd_run(args):
         if not pending:
             break
         requests = [
-            build_request(args.level, args.kind, slug, attempt, contexts[slug], errors)
+            build_request(args.kind, slug, attempt, contexts[slug], errors)
             for slug, errors in pending.items()
         ]
         outcomes = _submit_and_collect(client, requests)
-        pending = _process_outcomes(args.level, args.kind, contexts, records, outcomes)
+        pending = _process_outcomes(args.kind, contexts, records, outcomes)
 
     for slug in pending:
         records[slug]["status"] = "flagged_for_rewrite"
         _save_draft(records[slug])
         print(f"{slug}: still failing after {MAX_ATTEMPTS} attempts — flagged_for_rewrite")
 
-    write_sidecar(args.level, args.kind)
+    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}))
 
 
 def cmd_collect(args):
@@ -338,17 +345,20 @@ def cmd_collect(args):
             f"batch {args.batch_id} is still {batch.processing_status} "
             f"(processing={counts.processing}); try again later"
         )
+    contexts = {}
     pending = _process_outcomes(
-        args.level, args.kind, {}, {}, _batch_outcomes(client, args.batch_id)
+        args.kind, contexts, {}, _batch_outcomes(client, args.batch_id)
     )
-    write_sidecar(args.level, args.kind)
+    write_sidecar(args.kind, sorted({ctx["level"] for ctx in contexts.values()}))
     if pending:
         print("still failing the gate — rerun `run` to requeue with feedback: "
               + ", ".join(sorted(pending)))
 
 
 def cmd_assemble(args):
-    write_sidecar(args.level, args.kind)
+    if not args.levels:
+        raise SystemExit("assemble requires --level or --levels")
+    write_sidecar(args.kind, args.levels)
 
 
 # --- assembly into sidecars generate.py inlines ----------------------------
@@ -363,27 +373,29 @@ def sidecar_path(kind):
     )
 
 
-def write_sidecar(level, kind, only_slugs=None):
-    """Merge this level's gate-passing drafts on disk into the kind's sidecar.
+def write_sidecar(kind, levels, only_slugs=None):
+    """Merge these levels' gate-passing drafts on disk into the kind's sidecar.
     The sidecar is keyed by slug; generate.py inlines it into the vocab JSON
     (adding tokenizer furigana).
 
     With `only_slugs=None` (the batch/API lane's usage — cmd_run, cmd_collect,
-    cmd_assemble), every draft of this level+kind is (re)written. With
+    cmd_assemble), every draft of these levels+kind is (re)written. With
     `only_slugs` given (the ingest lane's usage — cmd_ingest), only those slugs'
     entries are. Either way every other entry in the on-disk sidecar is carried
     through untouched: the file is shared by every level, and a human reviewer
     may promote an entry's `review_status` to `reviewed` without that change
     ever being written back to the (gitignored) per-slug draft file."""
-    level_dir = os.path.join(DRAFTS_DIR, level, kind)
     drafted = {}
 
     only_slugs = set(only_slugs) if only_slugs is not None else None
-    if os.path.isdir(level_dir):
-        for name in sorted(os.listdir(level_dir)):
-            if not name.endswith(".json") or name == "requests-preview.json":
+    for level in levels:
+        folder = os.path.join(DRAFTS_DIR, level_dir(level), kind)
+        if not os.path.isdir(folder):
+            continue
+        for name in sorted(os.listdir(folder)):
+            if not name.endswith(".json"):
                 continue
-            with open(os.path.join(level_dir, name), encoding="utf-8") as f:
+            with open(os.path.join(folder, name), encoding="utf-8") as f:
                 record = json.load(f)
             if not isinstance(record, dict) or record.get("status") != "draft":
                 continue
@@ -409,7 +421,7 @@ def write_sidecar(level, kind, only_slugs=None):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(f"wrote {len(drafted)} {level} {kind} example set(s) to {path} "
+    print(f"wrote {len(drafted)} {kind} example set(s) of level(s) {levels} to {path} "
           f"({len(entries)} entries in total)")
     print("run generate.py, then validate-schema + "
           "compile-curriculum from the repo root.")
@@ -458,15 +470,15 @@ def _first_json_object(text):
     raise SystemExit("no parseable JSON object found in the reply")
 
 
-def _web_prompt_text(level, kind, ctx, validator_errors=None):
+def _web_prompt_text(kind, ctx, validator_errors=None):
     persona = _read_prompt("persona.md")
     body = build_user_prompt(kind, ctx, validator_errors)
     body = body.replace(WEB_TOOL_LINE, WEB_OUTPUT_INSTRUCTION)
     header = (
         f"<!-- Paste EVERYTHING below this line into a fresh Claude or Gemini chat.\n"
-        f"     Save the reply to web/examples/{level}/{kind}/{ctx['slug']}.reply.md, then run:\n"
+        f"     Save the reply to web/examples/{level_dir(ctx['level'])}/{kind}/{ctx['slug']}.reply.md, then run:\n"
         f"       .venv/bin/python -m generate_content.generate_examples ingest \\\n"
-        f"         --type {kind} --level {level} --slug {ctx['slug']} --model <claude-web|gemini-web>\n"
+        f"         --type {kind} --slug {ctx['slug']} --model <claude-web|gemini-web>\n"
         f"-->\n\n"
     )
     return (
@@ -482,36 +494,35 @@ def _web_prompt_text(level, kind, ctx, validator_errors=None):
 def _remove_staging_files(*paths):
     """Delete the paste-ready prompt/reply files once a slug has been ingested
     successfully — their content now lives in the draft + sidecar, so leaving
-    them behind just litters web/examples/<level>/<kind>/."""
+    them behind just litters web/examples/level-NN/<kind>/."""
     for path in paths:
         if path and os.path.exists(path):
             os.remove(path)
 
 
 def cmd_webprompts(args):
-    out_dir = os.path.join(WEB_DIR, args.level, args.kind)
-    os.makedirs(out_dir, exist_ok=True)
     for slug in args.slugs:
-        ctx = ec.item_context(args.level, args.kind, slug)
-        path = os.path.join(out_dir, f"{slug}.prompt.md")
+        ctx = ec.item_context(args.kind, slug)
+        path = os.path.join(WEB_DIR, level_dir(ctx["level"]), args.kind, f"{slug}.prompt.md")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
-            f.write(_web_prompt_text(args.level, args.kind, ctx))
+            f.write(_web_prompt_text(args.kind, ctx))
         print(f"wrote {path}")
 
 
 def cmd_ingest(args):
     if not args.slug:
         raise SystemExit("ingest requires --slug")
-    reply_path = args.from_path or os.path.join(
-        WEB_DIR, args.level, args.kind, f"{args.slug}.reply.md")
+    ctx = ec.item_context(args.kind, args.slug)
+    folder = os.path.join(WEB_DIR, level_dir(ctx["level"]), args.kind)
+    reply_path = args.from_path or os.path.join(folder, f"{args.slug}.reply.md")
     if not os.path.exists(reply_path):
         raise SystemExit(f"no reply at {reply_path} — paste the model's answer there first")
     with open(reply_path, encoding="utf-8") as f:
         tool_input = _first_json_object(f.read())
 
-    ctx = ec.item_context(args.level, args.kind, args.slug)
-    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx)
-    record = _load_draft(args.level, args.kind, args.slug)
+    errors = validate_draft(args.kind, args.slug, tool_input, ctx)
+    record = _load_draft(ctx["level"], args.kind, args.slug)
     record["tool_input"] = tool_input
     record["generator_model"] = args.model
     record["prompt_version"] = PROMPT_VERSION
@@ -520,17 +531,17 @@ def cmd_ingest(args):
     _save_draft(record)
 
     if errors:
-        prompt_path = os.path.join(WEB_DIR, args.level, args.kind, f"{args.slug}.prompt.md")
+        prompt_path = os.path.join(folder, f"{args.slug}.prompt.md")
         os.makedirs(os.path.dirname(prompt_path), exist_ok=True)
         with open(prompt_path, "w", encoding="utf-8") as f:
-            f.write(_web_prompt_text(args.level, args.kind, ctx, errors))
+            f.write(_web_prompt_text(args.kind, ctx, errors))
         print(f"{args.slug}: {len(errors)} gate failure(s) — NOT assembled:")
         for e in errors:
             print(f"  - {e}")
         raise SystemExit(1)
 
-    write_sidecar(args.level, args.kind, only_slugs=[args.slug])
-    prompt_path = os.path.join(WEB_DIR, args.level, args.kind, f"{args.slug}.prompt.md")
+    write_sidecar(args.kind, [ctx["level"]], only_slugs=[args.slug])
+    prompt_path = os.path.join(folder, f"{args.slug}.prompt.md")
     _remove_staging_files(reply_path, prompt_path)
     print(f"{args.slug}: PASS — merged into the {args.kind} examples sidecar")
 
@@ -541,9 +552,7 @@ def main():
                         choices=["requests", "run", "assemble", "collect",
                                  "webprompts", "ingest"])
     parser.add_argument("--type", dest="kind", choices=["vocab"], required=True)
-    parser.add_argument("--level", default="n5")
-    parser.add_argument("--slugs", default=None,
-                        help="comma-separated slugs (default: every item of the type)")
+    grammar_context.add_level_args(parser)
     parser.add_argument("--slug", default=None, help="ingest only: single slug")
     parser.add_argument("--from", dest="from_path", default=None,
                         help="ingest only: path to the pasted reply")
@@ -554,8 +563,15 @@ def main():
     args = parser.parse_args()
     if args.slugs:
         args.slugs = [s for s in args.slugs.split(",") if s]
-    else:
-        args.slugs = ec.all_slugs(args.level, args.kind)
+    elif args.levels:
+        sidecar = {}
+        if os.path.exists(sidecar_path(args.kind)):
+            with open(sidecar_path(args.kind), encoding="utf-8") as f:
+                sidecar = json.load(f)
+        args.slugs = [s for level in args.levels for s in ec.all_slugs(level, args.kind)
+                      if not sidecar.get(s, {}).get("example_sentences")]
+    elif args.command in ("requests", "run", "webprompts"):
+        raise SystemExit(f"{args.command} requires --level, --levels or --slugs")
 
     {"requests": cmd_requests, "run": cmd_run, "assemble": cmd_assemble,
      "collect": cmd_collect, "webprompts": cmd_webprompts,
