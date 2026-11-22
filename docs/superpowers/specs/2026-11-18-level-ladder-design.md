@@ -247,24 +247,23 @@ and vocabulary mnemonics may use later words at release (furigana shows the read
 lists them, and they are regenerated in a later phase of the same plan. The operator accepts
 regeneration of everything the restructure breaks.
 
-Counts below are **estimates from the 2026-11-18 test ordering** (§7.1 sizes; grammar spread in
-teaching order, N5+N4 over levels 1–20, N3 over 21–25). The plan's first task recounts them from
-the real build and replaces this table.
+Measured from the build, 2026-11-22. `curriculum/_build/reports/ladder-report.md` prints the
+current counts (`content_breaks`).
 
 | Type | What breaks | Count | When |
 | --- | --- | ---: | --- |
-| Grammar | Example sentences that use a word above the point's level (`grammar/pool.json`; the lesson shows the same sentences) | 785 of 1,510, in 156 of 160 points | Before release |
-| Grammar | Points with fewer than 2 example sentences that use only learned words | 33 | Before release (minimum fix) |
-| Grammar | Points whose linked words (`vocabulary_slugs`) include a word above the point's level | 98 | Before release (relink or regenerate) |
+| Grammar | Example sentences that use a word above the point's level (`grammar/pool.json`; the lesson shows the same sentences) | 717 of 1,510, in 132 of 159 points | Before release |
+| Grammar | Points with fewer than 2 example sentences that use only learned words | 41 of 159 | Before release (minimum fix) |
+| Grammar | Points whose linked words (`vocabulary_slugs`) include a word above the point's level | 93 of 160 | Before release (relink or regenerate) |
 | Grammar | Mnemonics with a Japanese example inside | 159 to check | Before release (check by hand) |
-| Vocabulary | Example sentences that use a word above the word's level (`vocabulary/examples.json`) | 1,684 of 3,751, in 920 of 1,249 words | Later phase |
+| Vocabulary | Example sentences that use a word above the word's level (`vocabulary/examples.json`) | 1,430 of 3,751, in 777 of 1,249 words | Later phase |
 | Vocabulary | Mnemonics written without naming a kanji that was untaught then and is now taught first (old `builds_on` words, e.g. 昨日) | 630 of 1,249 | Later phase |
 | Vocabulary | Words in levels 1–20 with no content | 0 (all 1,127 have examples and mnemonics) | — |
-| Kanji | Kanji in levels 1–20 with no mnemonic (new writing) | 186 of 580 | Before release |
+| Kanji | Kanji in levels 1–20 with no mnemonic (new writing) | 184 of 580 | Before release |
 | Kanji | Mnemonics that break (they name only radicals, and radicals now always come first) | 0 | — |
-| Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 3 of 396 | Before release |
+| Radicals | Radicals in levels 1–20 with no mnemonic (new writing) | 4 of 403 | Before release |
 | Radicals | Mnemonics that break (they name nothing else) | 0 | — |
-| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22) | Before release |
+| Passages | All passages | 60 rewritten, about 3 per level over levels 2–20 (level 1 has no passage; decision 2026-11-22). Today 37 of 60 sit above level 20 | Before release |
 
 Radicals without art still render as text; that does not change.
 

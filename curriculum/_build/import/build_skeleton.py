@@ -283,7 +283,7 @@ def load_previous_slugs():
 def build_kanji_entries(corpus, authored, uses, kanjidic):
     """One entry per corpus kanji that no hand-authored dataset defines.
 
-    Level-free and order-free: `reports/kanji_bands.py` assigns both. The list
+    Level-free and order-free: `ladder.py` assigns both. The list
     is emitted in frequency order only so a diff of skeleton.json stays legible.
     """
     previous = load_previous_slugs()
