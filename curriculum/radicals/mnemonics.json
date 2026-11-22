@@ -2715,7 +2715,15 @@
     }
   },
   "be-amazed": {},
-  "degrees": {},
+  "degrees": {
+    "mnemonic_text": "This radical combines <part form=\"广\">shelter</part>, <part form=\"廿\">twenty</part> and <part form=\"又\">right hand</part>. Under a <part form=\"广\">shelter</part>, your <part form=\"又\">right hand</part> taps a thermometer stuck at <part form=\"廿\">twenty</part> <radical form=\"度\">degrees</radical>.",
+    "image_prompt": "A small roof slopes down from the side of a rock to make a shelter. Under it, in the middle, hangs a big glass thermometer with the number twenty marked on it and the red line stopped exactly there. At the bottom, a right hand reaches up and taps the glass. It reads twenty <radical>degrees</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "young": {},
   "allot": {},
   "instant": {},
@@ -2746,7 +2754,15 @@
   "return": {},
   "sovereign": {},
   "bring-up": {},
-  "leather": {},
+  "leather": {
+    "mnemonic_text": "This radical looks like a cow hide stretched flat on a frame: the horns at the top, a long pole across the middle, the tail hanging down. Left in the sun, it dries into <radical form=\"革\">leather</radical>.",
+    "image_prompt": "A brown cow hide stretched flat on a wooden drying frame in bright sun: two short horns and the head at the top, the square body in the middle, one long wooden pole running across the hide from side to side, and the tail hanging straight down the centre. The hide is drying into <radical>leather</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "same": {},
   "portent": {},
   "rib": {},
@@ -2781,7 +2797,15 @@
   "give": {},
   "precious": {},
   "abundant": {},
-  "ladle": {},
+  "ladle": {
+    "mnemonic_text": "This radical looks like a deep curved spoon hanging on a hook, with one drop of soup still sitting in its bowl. It is a <radical form=\"勺\">ladle</radical>.",
+    "image_prompt": "A deep metal soup spoon hangs from a hook on a kitchen wall. Its long handle bends over the top and curves down the right side, and its round bowl opens at the bottom left. One drop of soup sits in the middle of the bowl. It is a <radical>ladle</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shoot": {},
   "military-officer": {},
   "capital": {},
@@ -2837,7 +2861,15 @@
   "descendants": {},
   "next": {},
   "negative": {},
-  "old": {},
+  "old": {
+    "mnemonic_text": "This radical combines <part form=\"十\">ten</part> and <part form=\"口\">mouth</part>. A story that passes through <part form=\"十\">ten</part> people, <part form=\"口\">mouth</part> to ear, one after another, has become very <radical form=\"古\">old</radical>.",
+    "image_prompt": "At the top, a large plus-sign cross carved with the number ten. Below it, one wide-open square mouth whispers to the next person in a long line of ten people. Each face is older and greyer than the last, and the tenth has a long white beard covered in dust. The story is <radical>old</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "think-2": {},
   "phrase": {},
   "right-2": {},
@@ -2873,7 +2905,15 @@
   "fast": {},
   "heavens": {},
   "blame": {},
-  "meadow": {},
+  "meadow": {
+    "mnemonic_text": "This radical is made of <part form=\"厂\">cliff</part>, <part form=\"白\">white</part> and <part form=\"小\">small</part>. Below a tall <part form=\"厂\">cliff</part>, thousands of <part form=\"小\">small</part> <part form=\"白\">white</part> flowers cover a wide <radical form=\"原\">meadow</radical>.",
+    "image_prompt": "On the top left, a tall rock cliff drops straight down. Below it, a wide open field of soft green grass stretches far away, covered in thousands of tiny white flowers, each small enough to hide under a leaf. A cow lies in the middle of the <radical>meadow</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "to-quell": {},
   "9th-calendar": {},
   "interval": {},
@@ -2934,7 +2974,15 @@
   "round": {},
   "the-stride": {},
   "char": {},
-  "to-descend": {},
+  "to-descend": {
+    "mnemonic_text": "This radical looks like a foot at the top, stepping down onto a short set of stairs below it. Step after step, the foot goes down. That is <radical form=\"夅\">to descend</radical>.",
+    "image_prompt": "At the top, a bare foot with the heel lifted, stepping forward and down. Below it, a short zig-zag set of three wooden stairs drops toward the bottom, with one thin post running straight down through them. The foot goes stair by stair <radical>to descend</radical> to the ground.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "water": {},
   "deer": {},
   "think": {},
@@ -2970,7 +3018,15 @@
   "turmoil": {},
   "dispatch": {},
   "good": {},
-  "mutual": {},
+  "mutual": {
+    "mnemonic_text": "This radical combines <part form=\"木\">tree</part> and <part form=\"目\">eye</part>. You stare at a <part form=\"木\">tree</part>, and a big <part form=\"目\">eye</part> beside it stares right back. The staring is <radical form=\"相\">mutual</radical>.",
+    "image_prompt": "On the left, a leafy tree with a thick brown trunk. On the right, one huge round eye floats at the same height, wide open. A person stands in front of them, staring at the tree, and the eye stares straight back at the person with the same surprised look. The staring is <radical>mutual</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "office": {},
   "cottage": {},
   "high-spirits": {},
@@ -3019,7 +3075,15 @@
   "so-and": {},
   "unfold": {},
   "wide-2": {},
-  "each": {},
+  "each": {
+    "mnemonic_text": "This radical combines <part form=\"夂\">trailing foot</part> and <part form=\"口\">mouth</part>. Your <part form=\"夂\">trailing foot</part> drags you down a line of hungry kids. One grape goes into every open <part form=\"口\">mouth</part>, one for <radical form=\"各\">each</radical>.",
+    "image_prompt": "At the top, a tired foot steps forward with its heel up and its sole dragging behind on the floor. Below it, an open square mouth catches a falling grape. Behind, a long line of small children all wait with square mouths wide open, one grape for <radical>each</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ray": {},
   "body": {},
   "file": {},
@@ -3034,8 +3098,24 @@
   "to-fill": {},
   "level": {},
   "other": {},
-  "tusk": {},
-  "dugout-canoe": {},
+  "tusk": {
+    "mnemonic_text": "This radical looks like one long tooth that curves out of a jaw and ends in a sharp hook at the bottom. A tooth that big is an elephant's <radical form=\"牙\">tusk</radical>.",
+    "image_prompt": "A side view of an elephant's jaw. One long, thick ivory tooth bends out from a short flat bar at the top, runs down in a wide curve, and ends in a sharp hook at the bottom tip. The elephant looks proudly at it. It is a <radical>tusk</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dugout-canoe": {
+    "mnemonic_text": "This radical looks like a pointed roof over a long hollow log, with two paddles standing up on the right. A log you scoop out and paddle is a <radical form=\"兪\">dugout canoe</radical>.",
+    "image_prompt": "At the top, a pointed tent-like roof with one flat line under it. Below on the left, a long tree trunk seen from the front, its inside scooped out into a boat. On the right, two wooden paddles stand straight up side by side. It is a <radical>dugout canoe</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hemp": {},
   "complete": {},
   "reasonable": {},
@@ -3061,7 +3141,15 @@
   "together": {},
   "blood": {},
   "previously": {},
-  "harden": {},
+  "harden": {
+    "mnemonic_text": "This radical is made of <part form=\"囗\">enclosure</part> and <part form=\"古\">old</part>. Pour <part form=\"古\">old</part> cement into an <part form=\"囗\">enclosure</part> of four boards. By morning, it has started to <radical form=\"固\">harden</radical>.",
+    "image_prompt": "A square frame of four wooden boards sits on the ground with no gap in it. Inside, a thick grey pool of old, cracked cement from a dusty bag fills the square. A worker pokes it with a stick, and the stick bends because the cement has started to <radical>harden</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "lowly": {},
   "director": {},
   "leaping-horse": {},
@@ -3082,7 +3170,15 @@
   "softening": {},
   "accompany": {},
   "lose": {},
-  "omen": {},
+  "omen": {
+    "mnemonic_text": "This radical looks like a neat stack of stones with a thin bolt of lightning striking down right beside it. Lightning that only just misses your stones is an <radical form=\"卦\">omen</radical>.",
+    "image_prompt": "On the left, a careful tower of flat grey stones stacked in two tiers, a wide slab across each tier. On the right, one thin bolt of lightning strikes straight down from a dark cloud, a short spark flicking off to the side, missing the tower by an inch. It is an <radical>omen</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "dragon": {},
   "kneel": {},
   "mysterious": {},
@@ -3113,7 +3209,15 @@
   "public": {},
   "strange": {},
   "hair-hanging": {},
-  "kyoto": {},
+  "kyoto": {
+    "mnemonic_text": "This radical looks like three drops of river water on the left and a traveler walking up to a gate on the right. The old river city he reaches is <radical form=\"洛\">Kyoto</radical>.",
+    "image_prompt": "On the left, three drops of water fall in a column into a calm river. On the right, a traveler with a walking stick steps forward, heel up, toward a square wooden city gate below him. Behind the gate rise old temple roofs and a pagoda. The city is <radical>Kyoto</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "soldier": {},
   "to-feed": {},
   "determine": {},
@@ -3202,5 +3306,14 @@
   "risk": {},
   "grade": {},
   "fiber": {},
-  "fish-body": {}
+  "fish-body": {},
+  "younger-of": {
+    "mnemonic_text": "This radical looks like a small kid standing against a door frame, arms out, with a pencil line drawn just above his head. His mark is the lowest one, so he is the <radical form=\"尗\">younger of brothers</radical>.",
+    "image_prompt": "A small boy stands straight against a white wooden door frame, arms angled down and out at his sides, feet planted apart. A short pencil line is drawn just above his head, far below a second, much higher pencil line. He is the <radical>younger of brothers</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  }
 }
