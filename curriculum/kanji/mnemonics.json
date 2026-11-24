@@ -4699,5 +4699,23 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "sugar": {
+    "meaning_mnemonic": "The dragon at the old <radical form=\"唐\">T'ang</radical> festival keeps its mouth shut on plain <radical form=\"米\">rice</radical>, so the cooks boil the rice down until it turns into sticky <kanji form=\"糖\">sugar</kanji>.",
+    "reading_mnemonic": "The festival pot tips over, and the dragon's back-leg dancer, <reading>Toe</reading>, walks off with <kanji form=\"糖\">sugar</kanji> glued to every toe, wailing 「<reading>とう</reading>」 at each sticky step.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "bridge": {
+    "meaning_mnemonic": "Cut down a <radical form=\"木\">tree</radical> as <radical form=\"喬\">high</radical> as a tower, let it fall across the river, and you have a <kanji form=\"橋\">bridge</kanji>.",
+    "reading_mnemonic": "A toll-keeper named <reading>Key-oh</reading> has put a padlock on the fallen trunk, and nobody crosses his <kanji form=\"橋\">bridge</kanji> until he jangles his one key and shouts 「<reading>きょう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
