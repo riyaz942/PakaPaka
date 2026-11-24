@@ -2756,7 +2756,15 @@
   },
   "ward": {},
   "baby": {},
-  "chirping-of": {},
+  "chirping-of": {
+    "mnemonic_text": "This radical looks like three little square beaks perched on a branching trunk. All three are wide open and calling at once, the <radical form=\"喿\">chirping of birds</radical>.",
+    "image_prompt": "Three small birds perched on top of a bare trunk with spreading branches: one bird at the top center, two side by side just below it. Each beak is drawn as a wide-open square, and little sound lines burst from all three at once, the <radical>chirping of birds</radical> at dawn.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shield": {},
   "prize": {},
   "robust": {},
