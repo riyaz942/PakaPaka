@@ -4564,5 +4564,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "desk": {
+    "meaning_mnemonic": "Nail a plank of <radical form=\"木\">tree</radical> across a wobbly little <radical form=\"几\">table</radical> so the teacup stops sliding off, and you have built a <kanji form=\"机\">desk</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the spirit still lives inside that wooden plank, so every time you lean on the <kanji form=\"机\">desk</kanji> to write, she giggles 「<reading>き</reading>」 under your elbows.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "egg": {
+    "meaning_mnemonic": "A <radical form=\"卯\">rabbit</radical> bends both long ears down around one round <radical form=\"丶\">drop</radical> to keep it warm, because that drop is her <kanji form=\"卵\">egg</kanji>.",
+    "reading_mnemonic": "When a fox sniffs at the nest, long-eared <reading>Ran</reading> squeaks 「<reading>らん</reading>」 and <reading>run</reading>s for it, the <kanji form=\"卵\">egg</kanji> still wobbling between her bent ears.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "milk": {
+    "meaning_mnemonic": "The <radical form=\"孚\">sincere</radical> hand feeds the small child first and the swan only <radical form=\"乙\">second</radical>, so the swan gets the last drops of <kanji form=\"乳\">milk</kanji> in the bottle.",
+    "reading_mnemonic": "Still hungry, the swan <reading>Nyu</reading> taps the empty bottle with her bent neck and honks 「<reading>にゅう</reading>」 until someone opens a <reading>new</reading> carton of <kanji form=\"乳\">milk</kanji> just for her.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sake": {
+    "meaning_mnemonic": "Pour plain <radical form=\"氵\">water</radical> into a <radical form=\"酉\">sake jar</radical> and leave it overnight, and the jar is so used to its job that by morning the water has become <kanji form=\"酒\">sake</kanji>.",
+    "reading_mnemonic": "All night <reading>Shu</reading> the innkeeper guards the lidded pot, hissing 「<reading>しゅ</reading>」 like <reading>shush</reading> at anyone who walks past, so it can turn into <kanji form=\"酒\">sake</kanji> in peace.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "candy": {
+    "meaning_mnemonic": "Leave a ripe <radical form=\"果\">fruit</radical> lying in the hot <radical form=\"艹\">grass</radical> all summer and the sun cooks it down into a sticky lump of <kanji form=\"菓\">candy</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the crow is too greedy to wait all summer, so he lets out one fiery <reading>caw</reading>, 「<reading>か</reading>」, and cooks the lump into <kanji form=\"菓\">candy</kanji> on the spot.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
