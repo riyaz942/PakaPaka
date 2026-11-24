@@ -5401,5 +5401,95 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "loneliness": {
+    "meaning_mnemonic": "When your <radical form=\"叔\">uncle</radical> is the only one left living under the big old <radical form=\"宀\">roof</radical>, every empty room he walks past fills the house with <kanji form=\"寂\">loneliness</kanji>.",
+    "reading_mnemonic": "The only visitor to that big empty house is a raccoon named <reading>Jack</reading>, who scratches 「<reading>じゃく</reading>」 at the back door each night because he cannot stand the <kanji form=\"寂\">loneliness</kanji> either.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "deep": {
+    "meaning_mnemonic": "Tie <radical form=\"㓁\">a net</radical> to the top of a tall <radical form=\"木\">tree</radical> trunk and push it down into the <radical form=\"氵\">water</radical>, and if it still never touches the bottom, the lake is truly <kanji form=\"深\">deep</kanji>.",
+    "reading_mnemonic": "The diver <reading>Shin</reading> wades in after the stuck pole, and the lake is so <kanji form=\"深\">deep</kanji> that his first step goes past his <reading>shin</reading>s and the second leaves only bubbles saying 「<reading>しん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "itchy": {
+    "meaning_mnemonic": "A <radical form=\"羊\">sheep</radical> that catches a skin <radical form=\"疒\">sickness</radical> under all that thick wool is <kanji form=\"痒\">itchy</kanji> in a place no hoof can ever reach.",
+    "reading_mnemonic": "The woolly patient rolls onto its back, and a farm boy called <reading>Yo</reading> scratches its <kanji form=\"痒\">itchy</kanji> belly with a garden rake until it bleats a happy 「<reading>よう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "gain": {
+    "meaning_mnemonic": "If the box you want <radical form=\"㝵\">to get</radical> sits on a high shelf, each <radical form=\"彳\">step</radical> you climb up the ladder is a small <kanji form=\"得\">gain</kanji> until it is finally yours.",
+    "reading_mnemonic": "Just as your fingers touch the box, a crow called <reading>Toku</reading> <reading>took</reading> it first, cawing 「<reading>とく</reading>」, so your whole climb ends as his <kanji form=\"得\">gain</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "trade": {
+    "meaning_mnemonic": "A <radical form=\"卯\">rabbit</radical> who sells carrots for <radical form=\"貝\">money</radical> shells, then spends the shells on more carrots, is running a busy little <kanji form=\"貿\">trade</kanji>.",
+    "reading_mnemonic": "The shopkeeper <reading>Bo</reading> will not finish any <kanji form=\"貿\">trade</kanji> until both sides <reading>bow</reading> low over the pile of carrots and say 「<reading>ぼう</reading>」 together.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tax": {
+    "meaning_mnemonic": "When you must <radical form=\"兑\">exchange</radical> one of every ten sacks of <radical form=\"禾\">grain</radical> for nothing but a paper receipt, you are paying <kanji form=\"税\">tax</kanji>.",
+    "reading_mnemonic": "The collector <reading>Zay</reading> drags your sacks onto his cart, hums 「<reading>ぜい</reading>」 and hands back a tiny receipt with your name spelled wrong, which is all <kanji form=\"税\">tax</kanji> ever gives back.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "admirable": {
+    "meaning_mnemonic": "A <radical form=\"亻\">person</radical> who pulls a stiff animal skin all day with bare hands until it turns into soft <radical form=\"韋\">tanned leather</radical> does hard, honest work that is truly <kanji form=\"偉\">admirable</kanji>.",
+    "reading_mnemonic": "The town gives the worker, old <reading>Ee</reading>, a gold medal for such <kanji form=\"偉\">admirable</kanji> work, and she only squeaks 「<reading>い</reading>」 because her arms are too sore to lift it.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "agriculture": {
+    "meaning_mnemonic": "Make a <radical form=\"辰\">dragon</radical> <radical form=\"曲\">bend</radical> its long body low and drag a plow through the fields, and <kanji form=\"農\">agriculture</kanji> gets done in one afternoon.",
+    "reading_mnemonic": "Farmer <reading>Noh</reading> begs it for one more field, but the beast flops down in the mud and booms 「<reading>のう</reading>」, the loudest <reading>no</reading> in the history of <kanji form=\"農\">agriculture</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "envious": {
+    "meaning_mnemonic": "A <radical form=\"羊\">sheep</radical> stuck in a dry pen with a <radical form=\"欠\">lack</radical> of <radical form=\"氵\">water</radical> stares at the duck splashing in the pond next door and feels deeply <kanji form=\"羨\">envious</kanji>.",
+    "reading_mnemonic": "The duck, named <reading>Sen</reading>, sells sips of pond for one <reading>cent</reading> each, quacking 「<reading>せん</reading>」, and the thirsty neighbour with empty pockets only gets more <kanji form=\"羨\">envious</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fishing": {
+    "meaning_mnemonic": "Pulling a <radical form=\"魚\">fish</radical> up out of the <radical form=\"氵\">water</radical> and into your boat is all <kanji form=\"漁\">fishing</kanji> ever is, however long the waiting takes.",
+    "reading_mnemonic": "The old fisherman <reading>Gyo</reading> yanks so hard that his catch flies over the boat and slaps his face, and the whole riverbank hears 「<reading>ぎょ</reading>」, the official sound of <kanji form=\"漁\">fishing</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
