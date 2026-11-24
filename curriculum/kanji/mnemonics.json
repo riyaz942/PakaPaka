@@ -63,12 +63,12 @@
     }
   },
   "ancestor": {
-    "meaning_mnemonic": "An <radical>altar</radical> stands on the left. Beside it, an <radical>eye</radical> lies flat above a line of <radical>ground</radical> — a portrait propped over the offerings. Somebody long dead looks back at you off that shelf: your <kanji>ancestor</kanji>.",
-    "reading_mnemonic": "So is the small catch of sound the incense makes when it takes light at the altar — 「<reading>そ</reading>」 — and for a second the eye in the portrait seems to move. One syllable, once a year, for the ancestor. そ.",
+    "meaning_mnemonic": "The <radical form=\"礻\">cult</radical> shelf is already full of old photos, and <radical form=\"且\">moreover</radical> every funeral pushes one more on, because each face up there is an <kanji form=\"祖\">ancestor</kanji> waiting for incense.",
+    "reading_mnemonic": "Old Mr. <reading>So</reading> lights the incense and sighs 「<reading>そ</reading>」, short for so many, because one more <kanji form=\"祖\">ancestor</kanji> got squeezed onto the shelf overnight.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "angle": {
@@ -849,10 +849,10 @@
     }
   },
   "diligence": {
-    "meaning_mnemonic": "Growing one <radical>violet</radical> on nothing but the <radical>power</radical> of habit is what <kanji>diligence</kanji> looks like.",
-    "reading_mnemonic": "Everyone on the trail just calls the porter <reading>Kin</reading> — not his real name, just the sound he wheezes at the summit every morning: a worn-out <reading>きん</reading>. Then he drops the crate and turns straight back down for the next load.",
+    "meaning_mnemonic": "Carrying <radical form=\"菫\">the violet</radical> out into the sun takes only a little <radical form=\"力\">power</radical>, but doing it every morning for years is <kanji form=\"勤\">diligence</kanji>.",
+    "reading_mnemonic": "Old <reading>Kin</reading> is so <reading>keen</reading> on that pot that he grunts 「<reading>きん</reading>」 on every stair, and the whole street now uses his name for <kanji form=\"勤\">diligence</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -1330,12 +1330,12 @@
     }
   },
   "friend": {
-    "meaning_mnemonic": "One stroke <radical>slides</radical> down from the top left across a bar of <radical>ground</radical>, met by a <radical>right hand</radical> rising underneath. Two hands close on each other, nobody paid, nobody in charge: that is a <kanji>friend</kanji>.",
-    "reading_mnemonic": "Yuu is always there before you, hand already out. He draws the greeting into a long two-beat call across the car park — 「<reading>ゆう</reading>」 — before you have shut the car door. ゆう means somebody is glad to see you.",
+    "meaning_mnemonic": "When your giant foam <radical form=\"𠂇\">left hand</radical> gets a high five from the same <radical form=\"又\">right hand</radical> at every game, that person is your <kanji form=\"友\">friend</kanji>.",
+    "reading_mnemonic": "Little <reading>Yuu</reading> in the next seat slaps your foam hand and shouts 「<reading>ゆう</reading>」, which sounds like <reading>you</reading>, because you are the one <kanji form=\"友\">friend</kanji> who always comes.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "front": {
@@ -1878,10 +1878,10 @@
     }
   },
   "leader": {
-    "meaning_mnemonic": "A <radical>claw</radical> kept on the <radical>left-side</radical> and every <radical>measure</radical> taken well in advance is what marks out a <kanji>leader</kanji>.",
-    "reading_mnemonic": "On that same field, Sho the tiny stage magician claps his white gloves, and a dove bursts skyward as the crowd yells <reading>Show</reading>! That's <reading>しょう</reading>, his one trick, performed the same way every time.",
+    "meaning_mnemonic": "The <kanji form=\"将\">leader</kanji> climbs onto the split <radical form=\"爿\">left-side kata</radical> log so everyone can see him, points with one <radical form=\"爪\">claw</radical>, and moves the whole army forward one <radical form=\"寸\">inch</radical> at a time.",
+    "reading_mnemonic": "<reading>Sho</reading> the tiny magician climbs onto that same log, waves his white gloves, yells 「<reading>しょう</reading>」, and a hundred doves march after him as if he were their <kanji form=\"将\">leader</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -2371,12 +2371,12 @@
     }
   },
   "nothingness": {
-    "meaning_mnemonic": "One <radical>slash</radical> of <radical>fire</radical> across open <radical>ground</radical> leaves behind pure <kanji>nothingness</kanji>.",
-    "reading_mnemonic": "A stray cow named Muu wanders into that same burned-out gym through Sei's echoing hallway, nobody around to shoo her out. Her only sound bounces off the bare walls, a flat <reading>む</reading>, like a drawn-out <reading>moo</reading> nobody is there to hear.",
+    "meaning_mnemonic": "The <radical form=\"無\">nothingness</radical> radical and the <kanji form=\"無\">nothingness</kanji> kanji are the same, and it also means none, because when nothing is left there is none of anything.",
+    "reading_mnemonic": "A cow named <reading>Moo</reading> pokes her head through the burned window frame, finds only hot coals and <kanji form=\"無\">nothingness</kanji>, and lets out one long sad 「<reading>む</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "now": {
@@ -2876,12 +2876,12 @@
     }
   },
   "reason": {
-    "meaning_mnemonic": "Every <radical>village</radical> settles its arguments with one <radical>king's jewel</radical> on a stump, turning it until its cracks line up into the only <kanji>logic</kanji> nobody dares dispute.",
-    "reading_mnemonic": "Village judge <reading>Lee</reading> never explains a ruling, just grunts 「<reading>り</reading>」 and taps the jewel, as if the <kanji>logic</kanji> were far too obvious to say aloud.",
+    "meaning_mnemonic": "Even a <radical form=\"王\">king</radical> cannot just take a <radical form=\"里\">village</radical>'s rice, because first he has to give the farmers a good <kanji form=\"理\">reason</kanji>.",
+    "reading_mnemonic": "Little <reading>Lee</reading> sits on the village's last bag of rice and squeaks 「<reading>り</reading>」 at the king until he gives her a real <kanji form=\"理\">reason</kanji> to get up.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "red": {
@@ -3172,13 +3172,12 @@
     }
   },
   "see": {
-    "meaning_mnemonic": "Take an <radical>eye</radical> (目) and stand it up on a pair of <radical>human legs</radical> (儿), and suddenly it can <radical>see</radical> and walk around anywhere it wants. Where does an eye on legs go? Out into the world, to look at everything. So this is what it means to <kanji>see</kanji>.",
-    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog chases the walking eye on legs around the yard, barking 「<reading>けん</reading>」, because he wants it to <kanji form=\"見\">see</kanji> his newest sword.",
-    "description": "Means \"see\" and is the base of the common verb 見る (to see/look); it shows up constantly in everyday words about looking and watching.",
+    "meaning_mnemonic": "An <radical form=\"目\">eye</radical> that grows a pair of <radical form=\"儿\">human legs</radical> can walk right up to anything it wants to <kanji form=\"見\">see</kanji>.",
+    "reading_mnemonic": "The walking eyeball trots up to <reading>Ken</reading>'s sword wall, and the dog growls 「<reading>けん</reading>」 because nobody gets to <kanji form=\"見\">see</kanji> his swords for free.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "seethe": {
@@ -3639,12 +3638,12 @@
     }
   },
   "swim": {
-    "meaning_mnemonic": "Picture 泳 as one motion at the riverbank: an arm slices forward through the <radical>water</radical>. It flings a trail of <radical>drop</radical>lets out sideways behind it in one clean streak. That arm-cut trailing a spray of droplets is <kanji>swim</kanji> — caught mid-stroke, again and again.",
-    "reading_mnemonic": "At the same riverbank, the lifeguard Ei blows her whistle every single stroke you take, shouting <reading>えい</reading>! — <reading>Ay</reading>! — like she's counting each one out loud. By the tenth lap her voice is the only thing keeping your arms moving.",
+    "meaning_mnemonic": "If you fall into <radical form=\"氵\">water</radical> that flows on for <radical form=\"永\">eternity</radical>, you have no choice but to <kanji form=\"泳\">swim</kanji> forever.",
+    "reading_mnemonic": "An otter named <reading>Ay</reading> has been carried down that endless river since Monday, and she gasps 「<reading>えい</reading>」 every time she has to <kanji form=\"泳\">swim</kanji> one more stroke.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "sword": {
@@ -4202,12 +4201,12 @@
     }
   },
   "wife": {
-    "meaning_mnemonic": "A <radical>woman</radical> sweeps her yard with a <radical>broom</radical> tied to a <radical>stick</radical>. She works until the bare <radical>ground</radical> is spotless. The neighbors call her the tidy <kanji>wife</kanji> of the house.",
-    "reading_mnemonic": "Sai is the one who actually decides. Ask her husband anything and he glances sideways at her first; she gives one flat 「<reading>さい</reading>」 and that is the answer on behalf of both of them. さい settles it.",
+    "meaning_mnemonic": "A <radical form=\"女\">woman</radical> holding a <radical form=\"丨\">stick</radical> to keep the pig's <radical form=\"⺕\">snout</radical> off her clean <radical form=\"一\">ground</radical> is a <kanji form=\"妻\">wife</kanji> who lost the fight about the pig living indoors.",
+    "reading_mnemonic": "<reading>Sai</reading> pokes the pig back out the door for the tenth time and lets out a long <reading>sigh</reading>, 「<reading>さい</reading>」, the sound of a <kanji form=\"妻\">wife</kanji> whose husband still calls the pig family.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "wind": {
@@ -4304,12 +4303,12 @@
     }
   },
   "yesterday": {
-    "meaning_mnemonic": "The <radical>sun</radical> on the left, a <radical>stick</radical> upright on the right with one <radical>slide</radical> of a stroke off it. That stick is a sundial, its shadow scratched beside. The sun moved on; the mark left behind is <kanji>yesterday</kanji>.",
-    "reading_mnemonic": "Saku is the old gardener who checks his shadow-stick every dawn and then grumbles about how much better the light was 「<reading>さく</reading>」 — his one-word shorthand for the day before. Nothing is ever as good as さく was.",
+    "meaning_mnemonic": "A <radical form=\"日\">day</radical> that comes to an <radical form=\"乍\">abrupt</radical> stop the moment you fall asleep is already <kanji form=\"昨\">yesterday</kanji> when you wake up.",
+    "reading_mnemonic": "Lazy <reading>Sack</reading> naps in a potato sack under the window, mutters 「<reading>さく</reading>」, and wakes to find the whole day gone and already <kanji form=\"昨\">yesterday</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "younger-brother": {
