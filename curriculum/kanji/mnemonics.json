@@ -4987,5 +4987,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "row": {
+    "meaning_mnemonic": "Stand <radical form=\"八\">eight</radical> stiff brush <radical form=\"业\">bristles</radical> upright on the flat <radical form=\"一\">ground</radical> and they make one tidy <kanji form=\"並\">row</kanji>, like the teeth of a comb.",
+    "reading_mnemonic": "Coach <reading>Hey</reading> stomps past the upturned brush and barks 「<reading>へい</reading>！」 at any hair that leans out of its <kanji form=\"並\">row</kanji>, so they all snap straight again.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sheet-of": {
+    "meaning_mnemonic": "Give a <radical form=\"木\">tree</radical> enough sharp <radical form=\"攵\">tap</radical>s and it peels apart into thin flat pieces, each one a <kanji form=\"枚\">sheet of</kanji> wood.",
+    "reading_mnemonic": "Little <reading>Mai</reading> snatches each piece as it peels off the trunk and shouts 「<reading>まい</reading>！」, which means every <kanji form=\"枚\">sheet of</kanji> wood in the pile is now hers.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "counter-for-2": {
+    "meaning_mnemonic": "A cup carved from a <radical form=\"木\">tree</radical> never gives a <radical form=\"不\">negative</radical> answer when you ask for more, so the <kanji form=\"杯\">counter for cupfuls</kanji> just keeps climbing.",
+    "reading_mnemonic": "Waiter <reading>Hi</reading> answers 「<reading>はい</reading>」 every time you wave the wooden cup and pours again, so the <kanji form=\"杯\">counter for cupfuls</kanji> on your bill hits forty before lunch.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "laugh": {
+    "meaning_mnemonic": "Those <radical form=\"竹\">bamboo</radical> stalks bent over in the wind are not facing an <radical form=\"夭\">early death</radical>, they are doubled over in one big <kanji form=\"笑\">laugh</kanji>.",
+    "reading_mnemonic": "Tiny <reading>Sho</reading> tickles the bent green stalks with his white gloves, and his whole <reading>show</reading> is them shaking with a <kanji form=\"笑\">laugh</kanji> while he squeaks 「<reading>しょう</reading>」 and bows.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "baggage": {
+    "meaning_mnemonic": "A huge bundle of <radical form=\"艹\">grass</radical> tied on your back, with nobody sure <radical form=\"何\">what</radical> is inside, is the oldest kind of <kanji form=\"荷\">baggage</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the crow lands on the bundle to peek inside, and his nosy <reading>caw</reading> of 「<reading>か</reading>」 comes out as a puff of flame that sets your whole <kanji form=\"荷\">baggage</kanji> smoking.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
