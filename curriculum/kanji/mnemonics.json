@@ -4429,5 +4429,32 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "wherefore": {
+    "meaning_mnemonic": "The <kanji form=\"由\">wherefore</kanji> of a dark morning is usually a <radical form=\"丨\">stick</radical> someone jammed down through the top of the <radical form=\"日\">sun</radical> window to hold the blind shut.",
+    "reading_mnemonic": "<reading>Yu</reading> the window cleaner finds the jammed blind, points straight at <reading>you</reading> and says 「<reading>ゆ</reading>」, because you are the whole <kanji form=\"由\">wherefore</kanji> of the dark room.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dream": {
+    "meaning_mnemonic": "Pull the <radical form=\"冖\">cover</radical> up one <radical form=\"夕\">evening</radical> under a <radical form=\"罒\">net</radical> woven from <radical form=\"艹\">grass</radical>, and it catches every bad thought so only a good <kanji form=\"夢\">dream</kanji> slips through.",
+    "reading_mnemonic": "A cow called <reading>Moo</reading> chews through the catcher above your bed in the night, so now every <kanji form=\"夢\">dream</kanji> you have ends with a huge 「<reading>む</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sort": {
+    "meaning_mnemonic": "A <radical form=\"大\">big</radical> bowl of <radical form=\"米\">rice</radical> looks all the same until you press your <radical form=\"頁\">head</radical> right down to it and see that every grain is a different <kanji form=\"類\">sort</kanji>.",
+    "reading_mnemonic": "<reading>Louie</reading> the fussy chef peers into that bowl, runs out of names for each new <kanji form=\"類\">sort</kanji> of grain, and labels them all 「<reading>るい</reading>」 after himself.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
