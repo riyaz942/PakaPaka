@@ -4942,5 +4942,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "equal": {
+    "meaning_mnemonic": "Squeeze two kids into one bad <radical form=\"匸\">hiding enclosure</radical> and only their <radical form=\"儿\">human legs</radical> stick out, so with no faces to tell apart, the two of them look exactly <kanji form=\"匹\">equal</kanji>.",
+    "reading_mnemonic": "Old Hitsu, the fussiest seeker in town, <reading>hits</reading> each pair of sneakers poking out of the cupboard with one 「<reading>ひつ</reading>」 swat, so every hider gets an exactly <kanji form=\"匹\">equal</kanji> punishment.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "other": {
+    "meaning_mnemonic": "Nobody wants to grab a snake tail that just goes on <radical form=\"也\">to be</radical> there in the wall, so every <radical form=\"亻\">person</radical> points at someone else and says the <kanji form=\"他\">other</kanji> one should pull it.",
+    "reading_mnemonic": "Tamo, the playground champion of <reading>tag</reading>, taps the nearest shoulder with a quick 「<reading>た</reading>」, so reaching into that crack in the wall is now the <kanji form=\"他\">other</kanji> kid's job.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tome": {
+    "meaning_mnemonic": "A book so fat that it needs a <radical form=\"冂\">wide box</radical> for a cover and <radical form=\"廾\">two hands</radical> just to lift it is not a book anymore, it is a <kanji form=\"冊\">tome</kanji>.",
+    "reading_mnemonic": "The fat <kanji form=\"冊\">tome</kanji> will not stay shut until Satsu the sumo librarian <reading>sat</reading> on it, and every page lets out a flat 「<reading>さつ</reading>」 of dusty air.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "call": {
+    "meaning_mnemonic": "When your <radical form=\"口\">mouth</radical> shouts a name that ends in a big <radical form=\"乎\">question mark</radical> because you have no idea where they went, you are trying to <kanji form=\"呼\">call</kanji> them.",
+    "reading_mnemonic": "<reading>Coco</reading> the parrot can only <kanji form=\"呼\">call</kanji> you one way, a loud 「<reading>こ</reading>？」 that curls up at the end, and she keeps it up until you walk into the room.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "overnight-stay": {
+    "meaning_mnemonic": "Tying your boat up on calm <radical form=\"氵\">water</radical> and waiting there until the sky turns <radical form=\"白\">white</radical> with morning is an <kanji form=\"泊\">overnight stay</kanji>.",
+    "reading_mnemonic": "<reading>Hack</reading>, the old sailor in the next boat, coughs 「<reading>はく</reading>, <reading>はく</reading>」 at the dark water all night long and ruins your whole <kanji form=\"泊\">overnight stay</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
