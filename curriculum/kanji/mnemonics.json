@@ -4915,5 +4915,32 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "quiet": {
+    "meaning_mnemonic": "Once the kid and the pig who <radical form=\"争\">contend</radical> over the sausage fall asleep under the soft <radical form=\"青\">blue-green</radical> glow of the moon, the whole yard goes <kanji form=\"静\">quiet</kanji>.",
+    "reading_mnemonic": "Star student <reading>Sei</reading> creeps past the sleeping kid and pig and breathes a smug 「<reading>せい</reading>」, sure she has won the prize for keeping the yard <kanji form=\"静\">quiet</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "flourish": {
+    "meaning_mnemonic": "Hang the <radical form=\"辰\">sign of the dragon</radical> over a market stall and crowds rush to throw their <radical form=\"貝\">money</radical> at it, so the whole street starts to <kanji form=\"賑\">flourish</kanji>.",
+    "reading_mnemonic": "So many shoppers pack the dragon-sign stall that they keep kicking the trader <reading>Shin</reading> in the shin, and each 「<reading>しん</reading>！」 he yelps means business will <kanji form=\"賑\">flourish</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "jump": {
+    "meaning_mnemonic": "When a snail blocks the <radical form=\"甬\">walled path</radical> and there is no room to step around it, your <radical form=\"足\">foot</radical> has to <kanji form=\"踊\">jump</kanji> right over it.",
+    "reading_mnemonic": "A boy named <reading>Yo</reading> bounces over the snail on the walled path like a yo-yo, yelling 「<reading>よう</reading>！」 each time he <kanji form=\"踊\">jump</kanji>s back and forth.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
