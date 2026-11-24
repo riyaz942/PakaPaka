@@ -4555,5 +4555,14 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "spare-time": {
+    "meaning_mnemonic": "Holding a <radical form=\"叚\">false</radical> face up to your boss lets you slip outside into the <radical form=\"日\">sun</radical>, and every hour you steal that way is <kanji form=\"暇\">spare time</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow has so much <kanji form=\"暇\">spare time</kanji> on his sunny power line that he spots your mask, burns a hole in it, and caws 「<reading>か</reading>」 until your boss looks up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
