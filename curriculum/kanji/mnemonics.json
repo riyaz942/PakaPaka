@@ -4339,5 +4339,41 @@
       "prompt_version": "4",
       "review_status": "flagged_for_rewrite"
     }
+  },
+  "sweet": {
+    "meaning_mnemonic": "The <radical form=\"甘\">sweet</radical> radical and the <kanji form=\"甘\">sweet</kanji> kanji are the same, and it also means to coax or pamper, because spoiling someone is just feeding them something nice.",
+    "reading_mnemonic": "Candy seller <reading>Kan</reading> drops one more piece on your tongue and will not let you shut your mouth until you groan 「<reading>かん</reading>」 and admit it is far too <kanji form=\"甘\">sweet</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pain": {
+    "meaning_mnemonic": "When your <radical form=\"疒\">sickness</radical> makes you stagger down a narrow <radical form=\"甬\">walled path</radical>, every wall you bump into adds more <kanji form=\"痛\">pain</kanji>.",
+    "reading_mnemonic": "A nurse follows you down the narrow lane to count the fresh bruises, but she only ever gets to <reading>two</reading>, 「<reading>つう</reading>」, before the <kanji form=\"痛\">pain</kanji> makes you yelp.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shoes": {
+    "meaning_mnemonic": "Stiff <radical form=\"革\">leather</radical> has to <radical form=\"化\">change</radical> its shape around your feet before it can become a pair of <kanji form=\"靴\">shoes</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow puffs little flames into your stiff new <kanji form=\"靴\">shoes</kanji> until they soften, and he caws 「<reading>か</reading>」 each time a toe finally fits.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "box": {
+    "meaning_mnemonic": "Weave <radical form=\"竹\">bamboo</radical> into four walls that face each other in a <radical form=\"相\">mutual</radical> stare, and the space they guard between them is a <kanji form=\"箱\">box</kanji>.",
+    "reading_mnemonic": "Granny <reading>Sew</reading> stitches the four woven walls together at the corners, nodding 「<reading>そう</reading>」 at each one, until they close into a <kanji form=\"箱\">box</kanji> with her own cat sewn inside.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
