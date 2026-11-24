@@ -83,6 +83,14 @@ class ContextTest(unittest.TestCase):
         ctx = mc.radical_context("younger-of")
         self.assertEqual((ctx["form"], ctx["level"]), ("尗", 6))
 
+    def test_radical_context_names_no_part_taught_later(self):
+        """寺 sits at level 1; its parts 土 and 寸 sit at levels 3 and 9."""
+        self.assertEqual(mc.radical_context("buddhist-temple")["components"], [])
+        levels = {r["slug"]: r["level"] for r in mc.load_items("radicals")}
+        for slug, level in levels.items():
+            for part in mc.radical_context(slug)["components"]:
+                self.assertLessEqual(levels[part["slug"]], level, slug)
+
     def test_unknown_slug_raises(self):
         with self.assertRaises(KeyError):
             mc.kanji_context("zz-no-such-kanji")

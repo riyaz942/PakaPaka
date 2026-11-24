@@ -318,10 +318,11 @@ def kanji_context(slug, cast=None):
 DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
 
 
-def radical_parts(form):
+def radical_parts(form, level=None):
     """The taught radicals a radical is itself built from: 動 -> 重 "heavy" +
     力 "power". [] for a radical that is one indivisible shape (口, 一) or one
-    whose split is not in the KanjiVG decomposition.
+    whose split is not in the KanjiVG decomposition, or (with `level`) one with
+    a part taught after that level.
 
     Some radicals are whole kanji promoted into the radical layer, and the
     learner already knows their pieces. A mnemonic that names those pieces —
@@ -339,6 +340,9 @@ def radical_parts(form):
         if not r:
             # An untaught piece cannot be named to the learner, so the split
             # is not usable: fall back to one picture of the whole shape.
+            return []
+        if level is not None and r["level"] > level:
+            # Same rule for a part the learner meets later.
             return []
         out.append({
             "slug": r["slug"],
@@ -363,7 +367,7 @@ def radical_context(slug):
         "meaning_synonyms": _meaning_answers(item) or [item["meaning"]],
         "existing_mnemonic": item.get("mnemonic_text", ""),
         "look_alikes": look_alikes("radical", slug),
-        "components": radical_parts(item["primary_form"]),
+        "components": radical_parts(item["primary_form"], item["level"]),
     }
 
 
