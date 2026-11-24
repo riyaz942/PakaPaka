@@ -5293,5 +5293,23 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "chopsticks": {
+    "meaning_mnemonic": "Hand <radical form=\"者\">someone</radical> two thin sticks cut from <radical form=\"竹\">bamboo</radical> and they can pick up hot noodles without touching them, because now they hold <kanji form=\"箸\">chopsticks</kanji>.",
+    "reading_mnemonic": "The noodle cook <reading>Chopper</reading> is too busy to say the whole word <kanji form=\"箸\">chopsticks</kanji>, so he pushes a pair into that hungry hand with a quick 「<reading>ちょ</reading>！」 and runs back to his boiling pot.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "authority": {
+    "meaning_mnemonic": "The <radical form=\"隹\">old bird</radical> sitting under a <radical form=\"𠂉\">chevron</radical> of sticks at the top of the only <radical form=\"木\">tree</radical> on flat <radical form=\"一\">ground</radical> looks down on everyone, which gives it all the <kanji form=\"権\">authority</kanji>.",
+    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog barks 「<reading>けん</reading>！」 up at that high perch all day and waves his longest sword, but nothing he owns reaches the top, so the bird keeps every bit of its <kanji form=\"権\">authority</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
