@@ -32,6 +32,27 @@ review's own runbook is for the other job: backfilling a level, or re-reviewing
 after `REVIEW_VERSION` changes.
 | Semantic content audit (Tier 2) | — | [automation](./semantic-audit-subagent-workflow-automation-prompt.md) | — |
 
+## Unattended runner
+
+`scripts/run-content-lane.sh` runs a single-session lane level by level, with no
+coordinator session. For each level it starts a new `claude -p` session with the
+lane's prompt, waits, and starts the next session until the level is done:
+
+```bash
+scripts/run-content-lane.sh --workflow radical-kanji-vocab-mnemonic --levels 1-20 \
+  --prompt "type = radical, slug-count = 5" --model opus --effort high
+```
+
+- `--workflow` is the file name before `-single-session-workflow-automation-prompt.md`.
+- Each session commits its own work only when it found no issues, and ends with
+  `LEVEL_STATUS: done` or `LEVEL_STATUS: more` (the last step of each prompt).
+- The script stops when a session leaves uncommitted changes, fails, gives no
+  status line, or says `more` with no new commit. Fix the cause, commit, then run
+  the script again. A level run picks only items with no content, so it continues
+  from where it stopped.
+- The working tree must be clean before the start (`.DS_Store` does not count).
+- Logs and the cost of each session go to `.content-runs/` (git ignores it).
+
 ## Ladder work list
 
 The unit of work is a **ladder level**: a number from 1 to 60. Content before release is

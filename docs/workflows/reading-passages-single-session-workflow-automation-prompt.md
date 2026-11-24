@@ -495,3 +495,32 @@ Notes on differences from the subagent workflow
   same 3-attempt cap plus one last-resort inline fix, the same draft records under
   `drafts/readings/<level-dir>/`, the same assembled dataset, the same position
   ordering, and the same `review_status: draft` discipline.
+
+---
+
+Last step of every run: commit, then end with the level status
+
+Do this after the workflow above is complete and before you write the final
+report. Use `git status --porcelain` to see the changed files.
+
+1. Decide if this run has issues. It has issues if one of these is true:
+   - an item (slug, point or seed) was skipped or failed, or still has
+     validation errors;
+   - a command stopped with an error that you did not resolve (Step 1
+     problems included);
+   - a file changed outside `curriculum/` (ignore `.DS_Store`).
+2. No issues: stage only the changed files under `curriculum/`, by name
+   (never `git add -A` or `git add .`), and commit on the current branch.
+   Message: `feat(content): <what this run made> for level <level>`, for
+   example `feat(content): draft radical mnemonics for level 15`. Do not push.
+   If no file changed, do not commit.
+3. Issues: do not stage and do not commit. Leave every change in the working
+   tree for the maintainer, and name each issue in the final report.
+4. Re-run Step 1 for the same level(s). The last line of the final report is
+   exactly one of these two lines:
+
+   LEVEL_STATUS: done
+   LEVEL_STATUS: more
+
+   `done` means Step 1 now selects nothing. `more` means items are still left.
+   `scripts/run-content-lane.sh` reads this line to choose the next run.
