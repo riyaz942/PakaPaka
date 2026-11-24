@@ -4375,5 +4375,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "cry": {
+    "meaning_mnemonic": "When you <radical form=\"立\">stand</radical> perfectly still and a puddle of <radical form=\"氵\">water</radical> slowly grows around your shoes, nobody thinks it is rain, because you are having a big <kanji form=\"泣\">cry</kanji>.",
+    "reading_mnemonic": "The puddle gets so famous that people form a long <reading>queue</reading> to stand in it and <kanji form=\"泣\">cry</kanji>, and each one squeaks a wet 「<reading>きゅう</reading>」 when it is their turn.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wicked": {
+    "meaning_mnemonic": "An elephant that swings its <radical form=\"牙\">tusk</radical> through every roof in the <radical form=\"阝\">village</radical> just for fun is plain <kanji form=\"邪\">wicked</kanji>.",
+    "reading_mnemonic": "Between the smashed roofs, the same elephant steals the baker's cookie <reading>jar</reading> and trumpets 「<reading>じゃ</reading>」 on the way out, because being <kanji form=\"邪\">wicked</kanji> is hungry work.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "individual": {
+    "meaning_mnemonic": "Let cement <radical form=\"固\">harden</radical> around one <radical form=\"亻\">person</radical> at a time, and every statue in the garden comes out a different <kanji form=\"個\">individual</kanji>.",
+    "reading_mnemonic": "The sculptor <reading>Coco</reading> knocks on each grey statue, and every one goes 「<reading>こ</reading>」 in a slightly different note, since no two <kanji form=\"個\">individual</kanji>s sound the same.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "angling": {
+    "meaning_mnemonic": "Fish swim straight at a shiny <radical form=\"金\">gold</radical> <radical form=\"勺\">ladle</radical> hung on a string, which makes it the laziest trick in all of <kanji form=\"釣\">angling</kanji>.",
+    "reading_mnemonic": "At the riverbank, a fat cat named <reading>Chow</reading> sits by the line and yells 「<reading>ちょう</reading>」 at every fish that bites the shiny bait, because to him <kanji form=\"釣\">angling</kanji> is just ordering lunch.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "petition": {
+    "meaning_mnemonic": "When every flower in the <radical form=\"原\">meadow</radical> bows its <radical form=\"頁\">head</radical> at once to beg the clouds for rain, that is one giant <kanji form=\"願\">petition</kanji>.",
+    "reading_mnemonic": "A grumpy <reading>gander</reading> waddles through the bowing flowers honking 「<reading>がん</reading>」 at each one for a signature, since no cloud reads a <kanji form=\"願\">petition</kanji> with fewer than a thousand names.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
