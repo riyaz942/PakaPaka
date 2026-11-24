@@ -157,12 +157,12 @@
     }
   },
   "barley": {
-    "meaning_mnemonic": "A stalk of <radical>barley</radical> bows low in a strong wind. It keeps bending until its head touches the dirt. That endlessly bowing stalk is one tall shaft of <kanji>barley</kanji>.",
-    "reading_mnemonic": "The farmer who tends that field introduces himself as <reading>Baku</reading>, bowing just like his crop. Everyone at the riverbank echoes <reading>ばく</reading> back at him, mimicking his stiff, grain-heavy bow every time he passes.",
+    "meaning_mnemonic": "Dragging a <radical form=\"夂\">trailing foot</radical> over every young <radical form=\"龶\">sprout</radical> in the field sounds cruel, but stepped-on <kanji form=\"麦\">barley</kanji> grows back stronger.",
+    "reading_mnemonic": "Old farmer <reading>Baku</reading> stomps down the rows, the <kanji form=\"麦\">barley</kanji> springs <reading>back</reading> up behind him, and he shouts 「<reading>ばく</reading>」 and stomps again, a little angrier each time.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "beforehand": {
@@ -544,13 +544,13 @@
     }
   },
   "cold": {
-    "meaning_mnemonic": "It is so <kanji>cold</kanji> under the <radical>roof</radical> that the <radical>well</radical> freezes to <radical>ice</radical>, and the swelling ice <radical>splits</radical> the <radical>ground</radical> beneath the house.",
-    "reading_mnemonic": "Under the roof, a tin <reading>can</reading> dropped down the well bounces off solid ice with a hollow 「<reading>かん</reading>」, and the ground beneath the house splits wider, it is so <kanji form=\"寒\">cold</kanji>.",
+    "meaning_mnemonic": "When the <radical form=\"井\">well</radical> under your own <radical form=\"宀\">roof</radical> freezes into <radical form=\"冫\">ice</radical> hard enough to <radical form=\"八\">split</radical> the <radical form=\"一\">ground</radical>, the house is truly <kanji form=\"寒\">cold</kanji>.",
+    "reading_mnemonic": "Old <reading>Kan</reading> lowers his bucket for tea water and it bounces off the frozen surface with a hollow 「<reading>かん</reading>」, so he gives up on tea in a house this <kanji form=\"寒\">cold</kanji>.",
     "description": "This is the cold you feel all over, from cold weather or an unheated room. A single cold thing you touch, like a drink or a metal rail, is a different kanji.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "color": {
@@ -1292,13 +1292,13 @@
     }
   },
   "foot": {
-    "meaning_mnemonic": "A <radical>mouth</radical> sits on top of a pair of legs. The legs have skidded to a halt — they are <radical>stopping</radical> hard. They end in one part: a <radical>foot</radical>. That's your <kanji>foot</kanji>, your leg, plenty to stand on.",
-    "reading_mnemonic": "The walking mouth named <reading>Sock</reading> skids to such a hard stop that the sock flies off its <kanji form=\"足\">foot</kanji>, and it yelps 「<reading>そく</reading>」 at its bare toes.",
+    "meaning_mnemonic": "The <radical form=\"口\">mouth</radical> can shout <radical form=\"止\">stop</radical> all it likes, but only your <kanji form=\"足\">foot</kanji> can slam down on the ground and actually do it.",
+    "reading_mnemonic": "<reading>Sock</reading> the sprinter obeys the shout by slamming her <kanji form=\"足\">foot</kanji> down so hard that her sock flies off, and she yelps 「<reading>そく</reading>」 at her bare toes.",
     "description": "Means foot, leg, or to suffice/be enough; shows up in words for body parts and in verbs about having sufficient amounts.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "forest": {
@@ -1384,12 +1384,12 @@
     }
   },
   "genius": {
-    "meaning_mnemonic": "A coin slips onto a <radical>slide</radical> and speeds toward the <radical>ground</radical>. A tiny <radical>barb</radical> flicks up and snags it just in time. That perfectly timed catch is pure <kanji>genius</kanji>.",
-    "reading_mnemonic": "The hiker introduces himself as <reading>Sai</reading>, showing off his trick over and over. Everyone on the trail starts groaning <reading>さい</reading> before he even throws the coin, tired of his one genius party trick.",
+    "meaning_mnemonic": "A <radical form=\"扌\">hand</radical> that grabs the quiz buzzer before anyone else has even heard the question belongs to a <kanji form=\"才\">genius</kanji>.",
+    "reading_mnemonic": "The quiz kid <reading>Cy</reading> slaps the buzzer first yet again, and the whole room lets out a long 「<reading>さい</reading>」 of a <reading>sigh</reading> at the little <kanji form=\"才\">genius</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "gentleman": {
@@ -1458,13 +1458,13 @@
     }
   },
   "goods": {
-    "meaning_mnemonic": "A <radical>mouth</radical> shouts a price for a crate of <radical>goods</radical> in the crowded market. Another mouth shouts back an even higher price. By closing time both have sold every last one of their <kanji>goods</kanji>.",
-    "reading_mnemonic": "An inspector named <reading>Hin</reading> arrives to stamp the stacked crates before they ship. Top crate: a short, sharp <reading>ひん</reading>. Left crate: <reading>ひん</reading>. Right crate: <reading>ひん</reading>. Three stamps, three crates, one approved delivery.",
+    "meaning_mnemonic": "A market stall keeps piling up <kanji form=\"品\">goods</kanji> because three open <radical form=\"口\">mouth</radical>s, one stacked on two, are always yawning at the counter for more.",
+    "reading_mnemonic": "<reading>Hin</reading> the stall keeper squeaks 「<reading>ひん</reading>」 each time a customer points, hands over the <kanji form=\"品\">goods</kanji>, and watches the pile shrink faster than he can restock it.",
     "description": "品 covers more than merchandise. It can also mean refined bearing or quiet dignity — the sense behind calling someone classy rather than crude. That reading has nothing to do with boxes, so expect 品 to describe character as often as cargo.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "grade": {
@@ -2390,12 +2390,12 @@
     }
   },
   "number": {
-    "meaning_mnemonic": "A <radical>woman</radical> drops a bag of <radical>rice</radical> and grains spill everywhere. Her <radical>trailing foot</radical> drags them into neat <radical>chevron</radical> stripes. She <radical>taps</radical> each stripe with her toe to find the final <kanji>number</kanji>.",
-    "reading_mnemonic": "Back in that gym, the scorekeeper — a woman named <reading>Sue</reading> — squints at the tally and groans <reading>すう</reading>, dragging the sound out like she dreads the total. The same scattered rice still crunches under her shoes.",
+    "meaning_mnemonic": "Give every <radical form=\"娄\">surname</radical> on the guest list one <radical form=\"攵\">tap</radical> of the stick, and the count of taps is the <kanji form=\"数\">number</kanji> of guests.",
+    "reading_mnemonic": "<reading>Sue</reading> races her stick down the guest list so fast that she loses the <kanji form=\"数\">number</kanji> at forty and moans 「<reading>すう</reading>」 as she starts again from the top.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "ocean": {
@@ -3266,12 +3266,12 @@
     }
   },
   "shape": {
-    "meaning_mnemonic": "<radical>Two hands</radical> stack <radical>one</radical> block, then <radical>two</radical> more on top. The wobbly pile tips down a <radical>slide</radical>. It crashes into <radical>three</radical> pieces and becomes a strange new <kanji>shape</kanji>.",
-    "reading_mnemonic": "Back at the sports field, coach <reading>Kay</reading> stares at the scratched-up chalk sketch and barks <reading>けい</reading> across the field, ordering everyone into position before the shape fades in the rain.",
+    "meaning_mnemonic": "Sit a heavy cow on a soft <radical form=\"开\">bench</radical> <radical form=\"彡\">three</radical> times and the dent it leaves takes the exact <kanji form=\"形\">shape</kanji> of its rear.",
+    "reading_mnemonic": "<reading>Kay</reading> the furniture seller runs a hand over the dent, gasps 「<reading>けい</reading>」, and doubles the price because no other seat comes with a cow <kanji form=\"形\">shape</kanji> built in.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "sheep": {
@@ -3379,12 +3379,12 @@
     }
   },
   "snow": {
-    "meaning_mnemonic": "The falling <radical>rain</radical> freezes solid before it lands outside the temple. A monk grabs a <radical>broom</radical> and sweeps the icy drops into soft white drifts. He won't ring the bell until every trace of <kanji>snow</kanji> is gone.",
-    "reading_mnemonic": "The groundskeeper everyone calls <reading>Set</reading> mutters <reading>せつ</reading> under his breath every time he has to shovel the steps again. By dawn the drifts are back, deeper than before, and so is his sigh.",
+    "meaning_mnemonic": "When the <radical form=\"雨\">rain</radical> piles up soft enough for a dog to push its <radical form=\"⺕\">snout</radical> into it and pull it out white, the rain has turned to <kanji form=\"雪\">snow</kanji>.",
+    "reading_mnemonic": "The dog owner <reading>Setsuko</reading> wipes the white cap off its nose and sighs 「<reading>せつ</reading>」 as it dives face first back into the <kanji form=\"雪\">snow</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "someone": {
@@ -4285,12 +4285,12 @@
     }
   },
   "yellow": {
-    "meaning_mnemonic": "Koichi forgets an oil lantern burning behind the konbini shelf. All night its glass glows a soft <radical>yellow</radical>, brighter than the fluorescent lights above. By morning the whole shelf is stained <kanji>yellow</kanji>.",
-    "reading_mnemonic": "Koichi restocks the shelf by lantern light, counting under his breath: <reading>こう</reading>. It comes out low and steady, exactly like a pigeon's <reading>coo</reading>, over and over until every row is full again.",
+    "meaning_mnemonic": "<radical form=\"龷\">Twin sprouts</radical> shut in a cupboard for <radical form=\"八\">eight</radical> days turn <kanji form=\"黄\">yellow</kanji>, and no sunlight is the whole <radical form=\"由\">reason</radical>.",
+    "reading_mnemonic": "<reading>Koichi</reading> finds the forgotten sprouts behind his onigiri shelf and groans 「<reading>こう</reading>」, because <kanji form=\"黄\">yellow</kanji> greens are one more thing he cannot sell.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "yen": {
