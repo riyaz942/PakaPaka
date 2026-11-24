@@ -4420,5 +4420,14 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "length": {
+    "meaning_mnemonic": "The <kanji form=\"丈\">length</kanji> of a lawn is simply how far the giant shears can <radical form=\"乂\">mow</radical> along the flat <radical form=\"一\">ground</radical> before the grass runs out.",
+    "reading_mnemonic": "<reading>Joe</reading> the gardener will not buy a tape measure, so he mows the lawn shouting 「<reading>じょう</reading>！」 at every stride and tells you its <kanji form=\"丈\">length</kanji> in Joes.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
