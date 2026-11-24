@@ -4465,5 +4465,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "valve": {
+    "meaning_mnemonic": "Jam a soft silk <radical form=\"厶\">cocoon</radical> into a leaking pipe and twist it with <radical form=\"廾\">two hands</radical> to let the water through or hold it back, and you have built a <kanji form=\"弁\">valve</kanji>.",
+    "reading_mnemonic": "<reading>Ben</reading> the plumber bends over the dripping pipe all day, grunting 「<reading>べん</reading>」 each time he twists his soft little <kanji form=\"弁\">valve</kanji> shut, and it squeaks back open the moment he stands up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pay": {
+    "meaning_mnemonic": "When your <radical form=\"扌\">hand</radical> has to pull the coins out of the silk <radical form=\"厶\">cocoon</radical> where you keep them hidden, it is time to <kanji form=\"払\">pay</kanji>.",
+    "reading_mnemonic": "The miser <reading>Foots</reading> will only <kanji form=\"払\">pay</kanji> with his feet, so he kicks each coin out of its hiding place and across the counter, muttering 「<reading>ふつ</reading>」 with every kick.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dangerous": {
+    "meaning_mnemonic": "If you <radical form=\"𠂊\">crouch</radical> in the very spot where the <radical form=\"厄\">unlucky</radical> man got hit by a falling rock, you are doing something <kanji form=\"危\">dangerous</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit squeaks 「<reading>き</reading>！」 from her old pine above the falling rocks to warn you the spot is <kanji form=\"危\">dangerous</kanji>, then giggles when you duck one second too late.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "next": {
+    "meaning_mnemonic": "A man slumped in a waiting-room chair with a huge <radical form=\"欠\">yawn</radical> keeps missing his turn, until two chips of <radical form=\"冫\">ice</radical> down his shirt make him jump up just as the clerk calls <kanji form=\"次\">next</kanji>.",
+    "reading_mnemonic": "The clerk <reading>Gee</reading> never bothers to say <kanji form=\"次\">next</kanji> in full, so she just barks 「<reading>じ</reading>！」 across the waiting room, and the dripping man in the front chair jumps every single time.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fruit": {
+    "meaning_mnemonic": "Whatever hangs at the top of a <radical form=\"木\">tree</radical>, round and split into four green squares like a tiny <radical form=\"田\">rice field</radical>, is its <kanji form=\"果\">fruit</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow lands on the top branch, roasts the ripest <kanji form=\"果\">fruit</kanji> with one puff of flame, and caws 「<reading>か</reading>！」 because now it is far too hot to eat.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
