@@ -2870,7 +2870,15 @@
       "review_status": "draft"
     }
   },
-  "that": {},
+  "that": {
+    "mnemonic_text": "This radical looks like a tall shelf on two short legs, with two shelves inside and two posts on top. You point across the room at it: not this shelf, <radical form=\"其\">that</radical> one.",
+    "image_prompt": "A tall wooden shelf stands far away across an empty room, on two short splayed legs, with two flat shelves inside its frame and two posts sticking up from the top. In the foreground a hand points at it from a distance, clearly meaning <radical>that</radical> one over there.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "cupped-hands": {},
   "put-together-2": {},
   "turn": {},
@@ -2991,7 +2999,15 @@
   },
   "spine": {},
   "adzuki-beans": {},
-  "awe": {},
+  "awe": {
+    "mnemonic_text": "This radical is made of <part form=\"苟\">any</part> and <part form=\"攵\">tap</part>. When the old master gives one <part form=\"攵\">tap</part> of his cane, <part form=\"苟\">any</part> noisy student in the hall goes silent in <radical form=\"敬\">awe</radical>.",
+    "image_prompt": "A tiny old master with a long white beard stands on the right and taps his wooden cane once on the floor. On the left, a hall full of students who were shouting a second ago now freeze with wide eyes and open mouths, staring at him in <radical>awe</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "reside": {},
   "agriculture": {},
   "instead": {},
@@ -3227,7 +3243,15 @@
   },
   "sword": {},
   "to-fly": {},
-  "contain": {},
+  "contain": {
+    "mnemonic_text": "This radical puts a <part form=\"宀\">roof</part> over a <part form=\"谷\">valley</part>. A <part form=\"宀\">roof</part> that big can <radical form=\"容\">contain</radical> the whole river, every tree and a sheep that looks very confused.",
+    "image_prompt": "A giant house roof sits on top of a deep green valley, covering it from one hillside to the other. Underneath, a river, trees and a small village are all held inside. A single sheep looks up at the ceiling, puzzled. The roof is big enough to <radical>contain</radical> it all.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "marking-line": {},
   "commonplace": {},
   "fast": {},
@@ -3579,7 +3603,15 @@
     }
   },
   "death": {},
-  "relaxed": {},
+  "relaxed": {
+    "mnemonic_text": "This radical looks like a person on the left leaning back on a thin post, while the strokes on the right wave a fan at them. No work, just a lazy lean: that is <radical form=\"攸\">relaxed</radical>.",
+    "image_prompt": "A person on the left side leans back against a thin wooden post in the middle, eyes half closed, arms folded behind their head. On the right, a crossed paper fan waves cool air at their face. The whole pose looks sleepy and <radical>relaxed</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "surname-2": {},
   "rare-beast": {},
   "to-get": {
@@ -3739,7 +3771,15 @@
   "reject": {},
   "melon-2": {},
   "spring": {},
-  "borough": {},
+  "borough": {
+    "mnemonic_text": "This radical combines a <part form=\"广\">shelter</part> and <part form=\"付\">adhere</part>. Under one huge rock <part form=\"广\">shelter</part>, small houses <part form=\"付\">adhere</part> to each other until they make a whole <radical form=\"府\">borough</radical>.",
+    "image_prompt": "A huge overhanging rock cliff forms a roof across the top and down the left side. Underneath it, dozens of tiny houses are stuck tightly to one another, wall to wall, with little streets and a town sign, forming one crowded <radical>borough</radical> under the rock.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "too-much": {},
   "astray": {},
   "pig-s": {},
