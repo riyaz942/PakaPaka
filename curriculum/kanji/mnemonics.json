@@ -5032,5 +5032,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "grope": {
+    "meaning_mnemonic": "To <kanji form=\"探\">grope</kanji> for the fish that slipped out of <radical form=\"㓁\">a net</radical>, you push one <radical form=\"扌\">hand (left)</radical> blindly into the dark hollow of a <radical form=\"木\">tree</radical> and feel around.",
+    "reading_mnemonic": "Fisherman <reading>Tan</reading> is now stuck up to his elbow in that same hollow trunk, and every time he has to <kanji form=\"探\">grope</kanji> past a sleeping squirrel's tail, he squeaks 「<reading>たん</reading>！」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "impart": {
+    "meaning_mnemonic": "To <kanji form=\"授\">impart</kanji> what you know, your <radical form=\"扌\">hand (left)</radical> lowers the wrapped parcel to a student who reaches up to <radical form=\"受\">accept</radical> it.",
+    "reading_mnemonic": "The wrapped parcel holds one box of <reading>juice</reading>, because old Coach Ju thinks a single sip is how you <kanji form=\"授\">impart</kanji> forty years of judo, and he slurps 「<reading>じゅ</reading>」 to show the student how.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "token": {
+    "meaning_mnemonic": "A slip of <radical form=\"竹\">bamboo</radical> with a stamp made to <radical form=\"付\">adhere</radical> to it is the oldest <kanji form=\"符\">token</kanji> you can show at a gate to prove who sent you.",
+    "reading_mnemonic": "Gate guard <reading>Foo</reading> blows 「<reading>ふ</reading>」 at every slip as hard as he can, since a stamp that flies off was never a real <kanji form=\"符\">token</kanji>, and today three of them hit him in the face.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ascend": {
+    "meaning_mnemonic": "You can only <kanji form=\"登\">ascend</kanji> a giant heap of <radical form=\"豆\">beans</radical> on <radical form=\"癶\">outspread legs</radical>, feet planted wide so the heap cannot roll you back to the bottom.",
+    "reading_mnemonic": "Halfway up the heap, a hard little pellet wedges between Toby's <reading>toe</reading>s, and he hops on one foot crying 「<reading>とう</reading>！」 while still trying to <kanji form=\"登\">ascend</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "scatter": {
+    "meaning_mnemonic": "Give the <radical form=\"龷\">twin sprouts</radical> one sharp <radical form=\"攵\">tap</radical> under the <radical form=\"月\">moon</radical> and their seeds <kanji form=\"散\">scatter</kanji> across the whole dark garden.",
+    "reading_mnemonic": "At dawn, gardener <reading>Sandy</reading> crawls out with a teaspoon, muttering 「<reading>さん</reading>、<reading>さん</reading>」 as she picks up every seed you made <kanji form=\"散\">scatter</kanji>, one at a time.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
