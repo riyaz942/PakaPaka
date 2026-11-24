@@ -5060,6 +5060,14 @@
       "slug": "genius",
       "primary_form": "才",
       "meaning": "genius",
+      "mnemonic_text": "This radical looks like a kid with one arm out and one finger flicking up. The kid knows the answer before the teacher finishes the question. That kid is a <radical form=\"才\">genius</radical>.",
+      "image_prompt": "A small schoolchild stands at a desk with one arm stretched straight out to the side and one finger flicking sharply upward. The teacher at the blackboard has written only half a question, and the child already beams with the answer. The child is a <radical>genius</radical>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/genius.webp",
       "level": 15,
       "sort_order": 323
     },
@@ -5082,6 +5090,14 @@
       "slug": "right-2",
       "primary_form": "右",
       "meaning": "right",
+      "mnemonic_text": "This radical combines <part form=\"𠂇\">left hand</part> and <part form=\"口\">mouth</part>. The <part form=\"𠂇\">left hand</part> holds the bowl, so the other hand feeds the <part form=\"口\">mouth</part>. That is the <radical form=\"右\">right</radical> hand.",
+      "image_prompt": "At the top, a left hand holds a steaming rice bowl above a wide-open mouth at the bottom. From the right side of the picture, a second hand pushes a spoon into the mouth. The hand doing the feeding is the <radical>right</radical> hand.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/right-2.webp",
       "level": 15,
       "sort_order": 325
     },
@@ -5089,6 +5105,14 @@
       "slug": "sandwich",
       "primary_form": "夹",
       "meaning": "sandwich",
+      "mnemonic_text": "This radical looks like a big person with arms out and a thin slice of bread tucked against each side. The person is the filling, so this is a <radical form=\"夹\">sandwich</radical>.",
+      "image_prompt": "A big smiling person stands in the middle with arms spread wide. A thin slice of bread is pressed against each side of their body, one on the left and one on the right, so the person is the filling. The result is a <radical>sandwich</radical>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/sandwich.webp",
       "level": 15,
       "sort_order": 326
     },
@@ -5096,6 +5120,14 @@
       "slug": "contend",
       "primary_form": "争",
       "meaning": "contend",
+      "mnemonic_text": "This radical is made of <part form=\"𠂊\">crouch</part>, <part form=\"⺕\">snout</part> and <part form=\"亅\">barb</part>. A kid in a <part form=\"𠂊\">crouch</part> and a pig with a long <part form=\"⺕\">snout</part> both lunge for one sausage on a <part form=\"亅\">barb</part>. They <radical form=\"争\">contend</radical> for it.",
+      "image_prompt": "At the top left, a kid in a deep crouch; at the top right, a pig pushing out a long snout. Below them one sausage dangles from a sharp barb, and both lunge for it with open mouths. They <radical>contend</radical> for the sausage.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/contend.webp",
       "level": 15,
       "sort_order": 327
     },
@@ -5118,6 +5150,14 @@
       "slug": "sign-of",
       "primary_form": "辰",
       "meaning": "sign of the dragon",
+      "mnemonic_text": "This radical looks like a dragon hanging from a flat ledge, its long body down the middle and its tail flicking out at the bottom. It is the <radical form=\"辰\">sign of the dragon</radical>.",
+      "image_prompt": "A green dragon clings with its claws to a flat stone ledge across the top. Its long body drops straight down the middle, and its tail flicks sideways at the bottom. A zodiac wheel glows behind it, marking the <radical>sign of the dragon</radical>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/sign-of.webp",
       "level": 15,
       "sort_order": 329
     },
@@ -5155,6 +5195,14 @@
       "slug": "concurrently",
       "primary_form": "兼",
       "meaning": "concurrently",
+      "mnemonic_text": "This radical looks like two tall plants standing side by side, tied together by one bar. Both plants grow at the same time, <radical form=\"兼\">concurrently</radical>.",
+      "image_prompt": "Two tall green plants stand side by side in one pot, their stems tied together with a single bar across the middle. Both are sprouting leaves at exactly the same moment, growing <radical>concurrently</radical>.",
+      "_meta": {
+        "generator_model": "claude-sonnet-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/concurrently.webp",
       "level": 15,
       "sort_order": 332
     },
