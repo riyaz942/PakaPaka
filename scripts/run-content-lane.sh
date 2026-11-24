@@ -7,27 +7,31 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage: scripts/run-content-lane.sh --workflow <name> --levels <N|A-B>
-         [--prompt "<values>"] [--model <model>] [--effort <level>]
+         [--type <type>] [--prompt "<values>"] [--model <model>] [--effort <level>]
 
   --workflow  radical-kanji-vocab-mnemonic | grammar-pool | build-answers |
               reading-passages | example-sentences
               (docs/workflows/<name>-single-session-workflow-automation-prompt.md)
   --levels    one level (6) or a range (1-20)
-  --prompt    other values for the workflow, e.g. "type = radical, slug-count = 5"
+  --type      radical | kanji | vocab | grammar (required for the mnemonic lane)
+  --prompt    other values for the workflow, e.g. "slug-count = 5"
   --model     claude --model (default: the CLI default)
   --effort    claude --effort: low | medium | high | xhigh | max
 
+Before each level, the script counts the items left at that level
+(generate_content/lane_remaining.py) and skips the level when there are none.
 Each session commits its own work and ends with "LEVEL_STATUS: done" or
 "LEVEL_STATUS: more". The script stops when a session fails, leaves
 uncommitted changes, gives no status line, or says "more" with no new commit.
 EOF
 }
 
-workflow="" levels="" extra="" model="" effort=""
+workflow="" levels="" kind="" extra="" model="" effort=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --workflow) workflow="${2:-}"; shift 2 ;;
     --levels)   levels="${2:-}";   shift 2 ;;
+    --type)     kind="${2:-}";     shift 2 ;;
     --prompt)   extra="${2:-}";    shift 2 ;;
     --model)    model="${2:-}";    shift 2 ;;
     --effort)   effort="${2:-}";   shift 2 ;;
@@ -70,7 +74,19 @@ claude_args=(-p --output-format json --permission-mode auto --permission-prompts
 echo "Workflow: $workflow | levels $first-$last | branch $(git branch --show-current)"
 echo "Logs: $run_dir"
 
+# Items still to do at a level, from the same selection as the lane's Step 1.
+remaining() {
+  (cd curriculum/_build && .venv/bin/python -m generate_content.lane_remaining \
+     --workflow "$workflow" --level "$1" ${kind:+--type "$kind"})
+}
+
 for ((level = first; level <= last; level++)); do
+  left="$(remaining "$level")" || stop "could not count the items left at level $level (see the error above)"
+  if [ "$left" = 0 ]; then
+    echo; echo "== Level $level: nothing left, skipped"
+    continue
+  fi
+  echo; echo "== Level $level: $left item(s) left"
   session=0
   while :; do
     session=$((session + 1))
@@ -82,14 +98,14 @@ for ((level = first; level <= last; level++)); do
       cat "$prompt_file"
       printf '\n---\n\nValues for this run. They replace the example values in angle brackets above.\n\n'
       printf -- '- level = %s (a workflow that takes <levels> uses levels = %s)\n' "$level" "$level"
+      [ -z "$kind" ] || printf -- '- type = %s\n' "$kind"
       [ -z "$extra" ] || printf -- '- %s\n' "$extra"
       printf '\nThis run is unattended. Nobody can answer a question, so do not ask one.\n'
       printf 'Do the whole workflow, then its last step: commit, then LEVEL_STATUS.\n'
     } > "$prompt_path"
 
     head_before="$(git rev-parse HEAD)"
-    echo
-    echo "== Level $level, session $session: running..."
+    echo "-- level $level, session $session: running..."
     claude_ok=1
     claude "${claude_args[@]}" < "$prompt_path" > "$log" || claude_ok=0
 
