@@ -70,6 +70,13 @@ Before release (levels 1–20):
   level run (`--level N`) picks the same items.
 - Kanji mnemonics (`kanji_mnemonics`): the mnemonic runbooks (`--type kanji`), after the
   radicals. A level run picks the same items.
+- Radical mnemonics built from a later part (`radical_mnemonics_part_later`): the mnemonic
+  runbooks (`--type radical --slugs <list>`). The list holds the radicals whose mnemonic names a
+  part radical taught at a later level. Some can also be in `radical_mnemonics`. A person reads
+  each one, because names are matched as text.
+- Kanji mnemonics with a wrong radical (`kanji_mnemonics_radical_mismatch`): the mnemonic
+  runbooks (`--type kanji --slugs <list>`). The list holds the kanji whose mnemonic names a
+  radical that no radical is called, or that is taught later than the kanji.
 - Grammar sentences (`grammar_pool_points`): the grammar sentence pool runbook, then the
   accepted answers runbook. `generate_pool select --failing [--levels 1-20]` prints the same
   points, from the same pool check.
@@ -86,7 +93,7 @@ Later phase:
 - Vocabulary examples (`vocab_examples_above_level`): the example sentence runbooks, with
   `--slugs <list>`.
 - Vocabulary mnemonics (`vocab_mnemonics_pending`): the mnemonic runbooks
-  (`--type vocab --slugs <list>`). The list holds the words whose mnemonic was written before one of their kanji was taught.
+  (`--type vocab --slugs <list>`). The list holds the words whose mnemonic does not name every kanji of the word.
 
 The live counts are in `curriculum/_build/reports/ladder-report.md`. Do not copy them into
 the docs. To refresh the report and the lists, run this from `curriculum/_build`. It takes a

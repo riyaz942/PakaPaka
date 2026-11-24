@@ -9,10 +9,11 @@ the rule-2 breaches (must be zero), the radicals no kanji uses, and the
 `content_breaks` as their "done" check.
 
 A sentence is "above level" when one of its `vocabulary_slugs` sits at a level
-after its owner's. `vocab_mnemonics_without_kanji` counts the words in
-`_build/regen_vocab_mnemonics.json` "pending" that have a mnemonic: words whose
-mnemonic was written while one of their kanji was untaught (`builds_on` in the
-graph of 2026-11-22). A point with no pool sentences (the conjugation primer)
+after its owner's. `vocab_mnemonics_without_kanji` counts the words whose mnemonic does not name
+every kanji of the word; `kanji_mnemonics_radical_mismatch` the kanji whose
+mnemonic names a radical nobody teaches by that name, or teaches later; and
+`radical_mnemonics_part_later` the radicals built from a part taught later
+(`mnemonic_gaps.py`; names are matched as text). A point with no pool sentences (the conjugation primer)
 is not counted as under 2 readable.
 
 `grammar_points_failing_pool` is every point `check_grammar_pool` fails.
@@ -69,8 +70,13 @@ BREAKS = {
         "Vocabulary", "Example sentences that use a word above the word's level "
         "(`vocabulary/examples.json`)", "Later phase"),
     "vocab_mnemonics_without_kanji": (
-        "Vocabulary", "Mnemonics written while a kanji of the word was untaught "
-        "(`_build/regen_vocab_mnemonics.json` pending)", "Later phase"),
+        "Vocabulary", "Mnemonics that do not name every kanji of the word", "Later phase"),
+    "kanji_mnemonics_radical_mismatch": (
+        "Kanji", "Mnemonics that name a radical no radical is called, or one taught at a "
+        "later level than the kanji", "Before release"),
+    "radical_mnemonics_part_later": (
+        "Radicals", "Mnemonics built from a part radical taught at a later level",
+        "Before release"),
     "kanji_1_20_without_mnemonic": (
         "Kanji", "Kanji in levels 1-20 with no mnemonic", "Before release"),
     "radicals_1_20_without_mnemonic": (
@@ -133,9 +139,11 @@ def break_lists(ladder, sidecars):
             (level("grammar", slug), slug, f"{slug}: {', '.join(words)}"))
     for n, missing in short_levels(ladder):
         found["reading_levels_short"].append((n, str(n), f"{missing} of {PASSAGES_PER_LEVEL} missing"))
-    for slug in sidecars["regen_vocab_mnemonics"]["pending"]:
-        if slug in sidecars["vocab_mnemonics"]:
-            found["vocab_mnemonics_without_kanji"].append((level("vocabulary", slug), slug, slug))
+    for key, kind, sidecar in (("vocab_mnemonics_without_kanji", "vocabulary", "vocab_kanji_unnamed"),
+                               ("kanji_mnemonics_radical_mismatch", "kanji", "kanji_radical_mismatch"),
+                               ("radical_mnemonics_part_later", "radical", "radical_part_later")):
+        for slug in sidecars[sidecar]:
+            found[key].append((level(kind, slug), slug, slug))
     for key, kind, mnemonics in (("kanji_1_20_without_mnemonic", "kanji", "kanji_mnemonics"),
                                  ("radicals_1_20_without_mnemonic", "radical",
                                   "radical_mnemonics")):
@@ -157,6 +165,8 @@ def content_breaks(ladder, sidecars):
 WORKLIST = {
     "radical_mnemonics": "radicals_1_20_without_mnemonic",
     "kanji_mnemonics": "kanji_1_20_without_mnemonic",
+    "radical_mnemonics_part_later": "radical_mnemonics_part_later",
+    "kanji_mnemonics_radical_mismatch": "kanji_mnemonics_radical_mismatch",
     "grammar_pool_points": "grammar_points_failing_pool",
     "grammar_links_above_level": "grammar_points_linked_above_level",
     "grammar_mnemonics_above_level": "grammar_mnemonics_above_level",
@@ -197,6 +207,7 @@ def grammar_mnemonics_above(mnemonics_path):
 
 
 def load_sidecars():
+    import mnemonic_gaps
     from n4_grammar import N4_GRAMMAR
     from n5_grammar import N5_GRAMMAR
     from generate_content import check_grammar_pool as pool_check
@@ -204,15 +215,26 @@ def load_sidecars():
     def path(*parts):
         return os.path.join(CURRICULUM_DIR, *parts)
 
+    ladder = load_ladder()
+    radical_items = load(path("radicals", "items.json"))["items"]
+    vocab_items = load(path("vocabulary", "items.json"))["items"]
+    vocab_mnemonics = load(path("vocabulary", "mnemonics.json"))
+    kanji_mnemonics = load(path("kanji", "mnemonics.json"))
+    radical_mnemonics = load(path("radicals", "mnemonics.json"))
     return {
         "grammar_pool": load(path("grammar", "pool.json")),
         "grammar_links": {g["slug"]: g["vocabulary_slugs"] for g in N5_GRAMMAR + N4_GRAMMAR},
         "vocab_examples": load(path("vocabulary", "examples.json")),
-        "vocab_mnemonics": load(path("vocabulary", "mnemonics.json")),
-        "kanji_mnemonics": load(path("kanji", "mnemonics.json")),
-        "radical_mnemonics": load(path("radicals", "mnemonics.json")),
+        "vocab_mnemonics": vocab_mnemonics,
+        "kanji_mnemonics": kanji_mnemonics,
+        "radical_mnemonics": radical_mnemonics,
         "grammar_mnemonics": load(path("grammar", "mnemonics.json")),
-        "regen_vocab_mnemonics": load(path("_build", "regen_vocab_mnemonics.json")),
+        "radical_part_later": mnemonic_gaps.radicals_with_later_part(
+            ladder, radical_items, radical_mnemonics),
+        "kanji_radical_mismatch": mnemonic_gaps.kanji_with_unknown_radical(
+            ladder, radical_items, kanji_mnemonics),
+        "vocab_kanji_unnamed": mnemonic_gaps.vocab_missing_kanji(
+            ladder, load(path("kanji", "items.json"))["items"], vocab_items, vocab_mnemonics),
         "grammar_pool_failing": pool_check.failing_slugs(),
         "grammar_mnemonics_above": grammar_mnemonics_above(path("grammar", "mnemonics.json")),
     }

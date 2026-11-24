@@ -32,7 +32,9 @@ def sidecars(**overrides):
         "kanji_mnemonics": {},
         "radical_mnemonics": {},
         "grammar_mnemonics": {},
-        "regen_vocab_mnemonics": {"pending": [], "done": []},
+        "radical_part_later": [],
+        "kanji_radical_mismatch": [],
+        "vocab_kanji_unnamed": [],
         "grammar_pool_failing": [],
         "grammar_mnemonics_above": {},
     }
@@ -79,10 +81,14 @@ class ContentBreaksTest(unittest.TestCase):
         breaks = ladder_report.content_breaks(LADDER, sidecars(
             grammar_links={"g1": ["w1", "w2"], "g2": ["w2"]},
             vocab_mnemonics={"w1": {}, "w2": {}},
-            regen_vocab_mnemonics={"pending": ["w1", "w3"], "done": ["w2"]},
+            vocab_kanji_unnamed=["w1"],
+            kanji_radical_mismatch=["k1"],
+            radical_part_later=["r1"],
         ))
         self.assertEqual(breaks["grammar_points_linked_above_level"], 1)
         self.assertEqual(breaks["vocab_mnemonics_without_kanji"], 1)
+        self.assertEqual(breaks["kanji_mnemonics_radical_mismatch"], 1)
+        self.assertEqual(breaks["radical_mnemonics_part_later"], 1)
         self.assertEqual(breaks["passages_above_target"], 1)
         self.assertEqual(set(breaks), set(ladder_report.BREAKS))
 
@@ -108,6 +114,8 @@ class WorklistTest(unittest.TestCase):
     SAME_COUNT = {
         "radical_mnemonics": "radicals_1_20_without_mnemonic",
         "kanji_mnemonics": "kanji_1_20_without_mnemonic",
+        "radical_mnemonics_part_later": "radical_mnemonics_part_later",
+        "kanji_mnemonics_radical_mismatch": "kanji_mnemonics_radical_mismatch",
         "grammar_pool_points": "grammar_points_failing_pool",
         "grammar_links_above_level": "grammar_points_linked_above_level",
         "grammar_mnemonics_above_level": "grammar_mnemonics_above_level",
@@ -122,7 +130,9 @@ class WorklistTest(unittest.TestCase):
             grammar_mnemonics_above={"g1": ["w2 (w2)"]},
             vocab_examples={"w1": {"example_sentences": [sentence("w2"), sentence("w3")]}},
             vocab_mnemonics={"w1": {}},
-            regen_vocab_mnemonics={"pending": ["w1"], "done": []},
+            vocab_kanji_unnamed=["w1"],
+            kanji_radical_mismatch=["k20"],
+            radical_part_later=["r1"],
         )
 
     def test_counts_equal_the_report_counts(self):
@@ -141,6 +151,8 @@ class WorklistTest(unittest.TestCase):
         self.assertEqual(work["grammar_mnemonics_above_level"], ["g1"])
         self.assertEqual(work["vocab_examples_above_level"], ["w1"])  # two sentences, one word
         self.assertEqual(work["vocab_mnemonics_pending"], ["w1"])
+        self.assertEqual(work["kanji_mnemonics_radical_mismatch"], ["k20"])
+        self.assertEqual(work["radical_mnemonics_part_later"], ["r1"])
         self.assertEqual(work["reading_passages"][0], {"level": 2, "missing": 3})
 
     def test_report_prints_each_worklist_count(self):

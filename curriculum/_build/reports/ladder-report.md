@@ -56,23 +56,23 @@ Kanji (18):
 | 1 | 21 | 18 | 40 | 7 | 0 | 1 |
 | 2 | 27 | 24 | 40 | 6 | 0 | 0 |
 | 3 | 36 | 28 | 19 | 6 | 0 | 0 |
-| 4 | 32 | 30 | 43 | 7 | 0 | 2 |
-| 5 | 27 | 30 | 29 | 6 | 0 | 1 |
-| 6 | 28 | 30 | 55 | 6 | 0 | 8 |
-| 7 | 25 | 30 | 46 | 7 | 0 | 15 |
-| 8 | 18 | 30 | 43 | 6 | 0 | 8 |
-| 9 | 19 | 30 | 58 | 6 | 0 | 6 |
-| 10 | 17 | 30 | 56 | 6 | 0 | 7 |
-| 11 | 17 | 30 | 71 | 7 | 0 | 19 |
-| 12 | 13 | 30 | 62 | 6 | 0 | 6 |
-| 13 | 23 | 30 | 61 | 6 | 2 | 31 |
-| 14 | 19 | 30 | 76 | 7 | 1 | 22 |
-| 15 | 11 | 30 | 80 | 6 | 9 | 19 |
-| 16 | 18 | 30 | 61 | 6 | 2 | 31 |
-| 17 | 11 | 30 | 71 | 7 | 6 | 30 |
-| 18 | 15 | 30 | 73 | 6 | 0 | 37 |
-| 19 | 16 | 30 | 79 | 6 | 0 | 45 |
-| 20 | 10 | 30 | 64 | 6 | 3 | 29 |
+| 4 | 32 | 30 | 43 | 7 | 0 | 0 |
+| 5 | 27 | 30 | 29 | 6 | 0 | 0 |
+| 6 | 28 | 30 | 55 | 6 | 0 | 0 |
+| 7 | 25 | 30 | 46 | 7 | 0 | 0 |
+| 8 | 18 | 30 | 43 | 6 | 0 | 0 |
+| 9 | 19 | 30 | 58 | 6 | 0 | 0 |
+| 10 | 17 | 30 | 56 | 6 | 0 | 0 |
+| 11 | 17 | 30 | 71 | 7 | 0 | 0 |
+| 12 | 13 | 30 | 62 | 6 | 0 | 0 |
+| 13 | 23 | 30 | 61 | 6 | 2 | 0 |
+| 14 | 19 | 30 | 76 | 7 | 1 | 0 |
+| 15 | 11 | 30 | 80 | 6 | 9 | 0 |
+| 16 | 18 | 30 | 61 | 6 | 2 | 0 |
+| 17 | 11 | 30 | 71 | 7 | 6 | 0 |
+| 18 | 15 | 30 | 73 | 6 | 0 | 0 |
+| 19 | 16 | 30 | 79 | 6 | 0 | 9 |
+| 20 | 10 | 30 | 64 | 6 | 3 | 22 |
 | 21 | 14 | 36 | 130 | 7 | 1 | 140 |
 | 22 | 10 | 36 | 129 | 7 | 7 | 124 |
 | 23 | 10 | 36 | 132 | 7 | 16 | 137 |
@@ -141,9 +141,11 @@ None.
 | Grammar | Points whose linked words (`vocabulary_slugs`) include a word above the point's level (`grammar_points_linked_above_level`) | 93 | Before release |
 | Grammar | Mnemonics whose Japanese example uses a word above the point's level (`grammar/mnemonics.json`) (`grammar_mnemonics_above_level`) | 62 | Before release |
 | Vocabulary | Example sentences that use a word above the word's level (`vocabulary/examples.json`) (`vocab_sentences_above_level`) | 1430 | Later phase |
-| Vocabulary | Mnemonics written while a kanji of the word was untaught (`_build/regen_vocab_mnemonics.json` pending) (`vocab_mnemonics_without_kanji`) | 630 | Later phase |
-| Kanji | Kanji in levels 1-20 with no mnemonic (`kanji_1_20_without_mnemonic`) | 184 | Before release |
-| Radicals | Radicals in levels 1-20 with no mnemonic (`radicals_1_20_without_mnemonic`) | 132 | Before release |
+| Vocabulary | Mnemonics that do not name every kanji of the word (`vocab_mnemonics_without_kanji`) | 378 | Later phase |
+| Kanji | Mnemonics that name a radical no radical is called, or one taught at a later level than the kanji (`kanji_mnemonics_radical_mismatch`) | 19 | Before release |
+| Radicals | Mnemonics built from a part radical taught at a later level (`radical_mnemonics_part_later`) | 37 | Before release |
+| Kanji | Kanji in levels 1-20 with no mnemonic (`kanji_1_20_without_mnemonic`) | 31 | Before release |
+| Radicals | Radicals in levels 1-20 with no mnemonic (`radicals_1_20_without_mnemonic`) | 0 | Before release |
 | Passages | Levels 2-20 with fewer than 3 passages (`reading_levels_short`) | 16 | Before release |
 | Passages | Passages above level 20 (`passages_above_target`) | 37 | Before release |
 
@@ -153,14 +155,16 @@ The full lists are in `ladder-worklist.json`. `vocab_examples_above_level` count
 
 | Area | Count |
 | --- | ---: |
-| `radical_mnemonics` | 132 |
-| `kanji_mnemonics` | 184 |
+| `radical_mnemonics` | 0 |
+| `kanji_mnemonics` | 31 |
+| `radical_mnemonics_part_later` | 37 |
+| `kanji_mnemonics_radical_mismatch` | 19 |
 | `grammar_pool_points` | 132 |
 | `grammar_links_above_level` | 93 |
 | `grammar_mnemonics_above_level` | 62 |
 | `reading_passages` | 16 |
 | `vocab_examples_above_level` | 777 |
-| `vocab_mnemonics_pending` | 630 |
+| `vocab_mnemonics_pending` | 378 |
 
 ### `grammar_sentences_above_level` (717)
 
@@ -246,47 +250,65 @@ The full lists are in `ladder-worklist.json`. `vocab_examples_above_level` count
 - level 1: ano: あの公園で遊びます。 — kouen (23), asobu (15)
 - … and 1420 more
 
-### `vocab_mnemonics_without_kanji` (630)
+### `vocab_mnemonics_without_kanji` (378)
 
 - level 3: asatte
 - level 3: ashita
 - level 4: ani
 - level 4: ban
-- level 4: bangohan
 - level 4: kaisha
 - level 4: kaishain
 - level 4: maiban
 - level 4: oniisan
-- level 4: shokuji
-- … and 620 more
+- level 5: daidokoro
+- level 5: iro
+- … and 368 more
 
-### `kanji_1_20_without_mnemonic` (184)
+### `kanji_mnemonics_radical_mismatch` (19)
 
-- level 6: box
-- level 6: pain
-- level 6: shoes
-- level 6: sweet
-- level 7: angling
-- level 7: cry
-- level 7: individual
-- level 7: petition
-- level 7: wicked
-- level 8: length
-- … and 174 more
+- level 1: see
+- level 4: nothingness
+- level 4: reason
+- level 4: swim
+- level 6: ancestor
+- level 6: yesterday
+- level 9: leader
+- level 10: friend
+- level 12: diligence
+- level 12: wife
+- … and 9 more
 
-### `radicals_1_20_without_mnemonic` (132)
+### `radical_mnemonics_part_later` (37)
 
+- level 1: buddhist-temple
+- level 1: can
+- level 2: circumference
+- level 2: thousand
+- level 3: reason
+- level 3: sell
 - level 4: eternity
-- level 4: take
-- level 5: art
-- level 6: leather
-- level 6: mutual
-- level 6: omen
-- level 6: younger-of
-- level 7: degrees
-- level 7: dugout-canoe
-- level 7: each
-- … and 122 more
+- level 4: filial-piety
+- level 4: opposite
+- level 4: perfect
+- … and 27 more
+
+### `kanji_1_20_without_mnemonic` (31)
+
+- level 19: exchange
+- level 19: melt
+- level 19: perusal
+- level 19: rejoice
+- level 19: rot
+- level 19: sigh
+- level 19: trust
+- level 19: winding
+- level 19: wonder
+- level 20: acid
+- … and 21 more
+
+### `radicals_1_20_without_mnemonic` (0)
+
+None.
 
 ### `reading_levels_short` (16)
 
