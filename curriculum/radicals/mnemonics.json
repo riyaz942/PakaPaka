@@ -54,12 +54,12 @@
     }
   },
   "ana": {
-    "mnemonic_text": "This radical is made of <part form=\"宀\">roof</part> and <part form=\"八\">split</part>. The rock under a stone <part form=\"宀\">roof</part> is <part form=\"八\">split</part> open. Behind the gap is a dark <radical form=\"穴\">cave</radical>.",
-    "image_prompt": "A rocky hillside. At the top, a flat stone ledge sticks out like a small roof. Under it, the rock splits open into two sides slanting apart, making a wide dark opening. Inside is the black mouth of a <radical>cave</radical>.",
+    "mnemonic_text": "This radical looks like a cave entrance: a flat rock lid on top and two sloping walls leaning apart below it. The dark gap between them is a <radical form=\"穴\">cave</radical>.",
+    "image_prompt": "A hillside <radical>cave</radical> seen from the front: a flat slab of rock across the top, two rough walls sloping outward on each side, and a pitch-black opening between them. A bat peeks out from the darkness.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "and-yet": {
@@ -262,12 +262,12 @@
     }
   },
   "buddhist-temple": {
-    "mnemonic_text": "This radical combines <part form=\"土\">earth</part> and <part form=\"寸\">measure</part>. A monk kneels on bare <part form=\"土\">earth</part> and uses a ruler to <part form=\"寸\">measure</part> it. He is marking out the ground for a new <radical form=\"寺\">Buddhist temple</radical>.",
-    "image_prompt": "A calm monk in orange robes kneels on a flat patch of bare brown earth in the top half of the scene. In the lower half he holds a small wooden ruler against the ground and carefully measures it, with little stakes and string marking a square outline. The outline is the plan for a new <radical>Buddhist temple</radical>.",
+    "mnemonic_text": "This radical looks like a pagoda: two wide roofs stacked up, with one tall post running down through the middle. That tower marks a <radical form=\"寺\">Buddhist temple</radical>.",
+    "image_prompt": "A slim wooden pagoda in a quiet garden: a long top roof, a shorter roof beneath it, and a single tall post running through the middle with a small curl at its foot. A monk sweeps the path in front of it. The picture means <radical>Buddhist temple</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "bun-writing": {
@@ -289,12 +289,12 @@
     }
   },
   "can": {
-    "mnemonic_text": "This radical combines a <part form=\"丁\">street</part> and a <part form=\"口\">mouth</part>. A big <part form=\"口\">mouth</part> stands at the side of the <part form=\"丁\">street</part>. It cheers every runner that passes: \"You <radical form=\"可\">can</radical> do it!\"",
-    "image_prompt": "A long street runs across the top of the picture and turns down the right side. Tucked into the corner on the left is a giant smiling mouth, shouting to runners passing along the street: you <radical>can</radical> do it.",
+    "mnemonic_text": "This radical looks like a pull-up bar with a bent post on the right and a square open mouth hanging below it. After one pull-up, the mouth gasps, \"I <radical form=\"可\">can</radical>!\"",
+    "image_prompt": "A gym pull-up bar: a long horizontal bar across the top with a post curling down on the right. Below the bar a big square open mouth dangles in mid-air, panting out the words \"I <radical>can</radical>!\" in a speech bubble.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "center": {
@@ -307,12 +307,12 @@
     }
   },
   "change": {
-    "mnemonic_text": "This radical combines a <part form=\"亻\">person</part> and a <part form=\"匕\">spoon</part>. A <part form=\"亻\">person</part> stirs a glass of water with a magic <part form=\"匕\">spoon</part>, and the water turns into orange juice. Watch it <radical form=\"化\">change</radical>!",
-    "image_prompt": "On the left, a person stands upright holding a glass of clear water. On the right, a big spoon dips into the glass and stirs. Where the spoon touches, the water turns bright orange juice, caught halfway through the <radical>change</radical>.",
+    "mnemonic_text": "This radical looks like two people side by side. The left one stands tall. The right one has been flipped upside down. What a sudden <radical form=\"化\">change</radical>!",
+    "image_prompt": "Two figures side by side on a stage. The one on the left stands upright with arms at its sides. The one on the right is the same person, but turned completely upside down, hair hanging, shocked face. The picture means <radical>change</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "chichi": {
@@ -335,12 +335,12 @@
     }
   },
   "circumference": {
-    "mnemonic_text": "This radical combines <part form=\"冂\">wide box</part> and <part form=\"吉\">good luck</part>. A <part form=\"吉\">good luck</part> charm sits inside a <part form=\"冂\">wide box</part>. A tortoise walks all the way around the edge of the box. That path around the edge is the <radical form=\"周\">circumference</radical>.",
-    "image_prompt": "Top-down view of a big, wide, open-bottomed box. In the middle of the box sits a small red good luck charm. A slow tortoise walks along the outer edge of the box, dripping white chalk from a bucket on its shell, so a dotted chalk line runs all the way around the edge. The chalk line marks the <radical>circumference</radical>.",
+    "mnemonic_text": "This radical looks like a fence built around a small garden, open only at the bottom. Walk the whole way along that fence and you have walked its <radical form=\"周\">circumference</radical>.",
+    "image_prompt": "A wooden fence running down the left side, across the top and down the right side, with a small vegetable patch inside and a gap along the bottom. A jogger in a red cap trots along the fence line, tracing the full <radical>circumference</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "cloud": {
@@ -497,12 +497,12 @@
     }
   },
   "filial-piety": {
-    "mnemonic_text": "This radical combines <part form=\"耂\">old</part> and <part form=\"子\">child</part>. An <part form=\"耂\">old</part> man sits on top, and a <part form=\"子\">child</part> below holds him up. Caring for your parents is <radical form=\"孝\">filial piety</radical>.",
-    "image_prompt": "An old man with a long white beard sits calmly at the top, legs crossed. Below him, a small child squats and holds him up with both arms, face tight with effort. The child carries the old man, showing <radical>filial piety</radical>.",
+    "mnemonic_text": "This radical looks like a young person carrying a bent grandparent on their back. The top strokes are the grandparent with a cane. Carrying a parent shows <radical form=\"孝\">filial piety</radical>.",
+    "image_prompt": "A young grown-up crouching low with a bent grandparent riding piggyback. The grandparent holds a walking cane that sweeps out over the top, and the young one at the bottom grins and steadies the grandparent's legs. The picture means <radical>filial piety</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "fit": {
@@ -1786,12 +1786,12 @@
     }
   },
   "once-upon": {
-    "mnemonic_text": "This radical puts <part form=\"龷\">twin sprouts</part> on top of the <part form=\"日\">sun</part>. An old storybook shows <part form=\"龷\">twin sprouts</part> growing above the <part form=\"日\">sun</part>. Its first words are <radical form=\"昔\">once upon a time</radical>.",
-    "image_prompt": "An open old storybook with yellowed pages. On the page, two small green sprouts grow side by side at the top, and a round sun glows just below them. The first line of the page begins <radical>once upon a time</radical>.",
+    "mnemonic_text": "This radical looks like an old storybook lying open: a crooked bar of faded cover on top and a boxed page below. The first words on that page are \"<radical form=\"昔\">once upon a time</radical>.\"",
+    "image_prompt": "An ancient storybook lying open on a wooden table. A crooked, faded cover bar runs across the top, and a single boxed page below it holds a golden title. A candle flickers beside it, lighting the dusty pages. The picture means <radical>once upon a time</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "oneself": {
@@ -1840,12 +1840,12 @@
     }
   },
   "opposite": {
-    "mnemonic_text": "This radical combines <part form=\"厂\">cliff</part> and <part form=\"又\">right hand</part>. A <part form=\"厂\">cliff</part> leans over, about to fall. A <part form=\"又\">right hand</part> pushes it back the <radical form=\"反\">opposite</radical> way.",
-    "image_prompt": "A tall rocky cliff at the top left leans over, about to fall. Under it, at the bottom right, a big right hand presses up against the rock face, pushing it back the <radical>opposite</radical> way. Small stones fall around the hand.",
+    "mnemonic_text": "This radical looks like a spatula flipping a pancake. The top line is the pan and the swooping strokes below are the spatula. The pancake lands with the <radical form=\"反\">opposite</radical> side up.",
+    "image_prompt": "A cook in a striped apron flipping a pancake. A flat line across the top is the frying pan; a swooping spatula curves below it. The pancake is mid-air, upside down, showing its pale side where the golden side was. The picture means <radical>opposite</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ou-king": {
@@ -1877,12 +1877,12 @@
     }
   },
   "perfect": {
-    "mnemonic_text": "This radical combines <part form=\"宀\">roof</part> and <part form=\"元\">beginning</part>. A builder holds the plan he drew at the <part form=\"元\">beginning</part>. The house and its <part form=\"宀\">roof</part> match it exactly. It is <radical form=\"完\">perfect</radical>.",
-    "image_prompt": "A newly finished cottage seen from the front, with a straight roof and a centered chimney. Below the roof, the builder leans back on his heels, holding up the paper plan he drew at the beginning. The house matches the plan line for line: <radical>perfect</radical>.",
+    "mnemonic_text": "This radical looks like a neat little house with a flat roof on top and a proud builder standing tall with his feet apart below it. Every plank is in place. It is <radical form=\"完\">perfect</radical>.",
+    "image_prompt": "A tidy new cottage with a flat roof on top. Below the roof the builder stands in the doorway with feet planted apart and arms spread wide, beaming. Every shingle and plank is lined up without a single gap. The picture means <radical>perfect</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "pheasant": {
@@ -1931,12 +1931,12 @@
     }
   },
   "reason": {
-    "mnemonic_text": "This radical combines <part form=\"日\">sun</part> and <part form=\"丨\">stick</part>. A sprout, thin as a <part form=\"丨\">stick</part>, grows out of a box. Inside the box shines a small <part form=\"日\">sun</part>. The <part form=\"日\">sun</part> is the <radical form=\"由\">reason</radical> it grows.",
-    "image_prompt": "A closed wooden crate on a shelf. One thin sprout, straight as a stick, rises out of the top of the crate. The crate is cracked open at the front, and inside a small bright sun glows, lighting up the sprout. The sun is the <radical>reason</radical> the plant grows.",
+    "mnemonic_text": "This radical looks like a box with a long spring bursting out of the top, like a jack-in-the-box. Nobody knows what made it pop, so everyone asks for the <radical form=\"由\">reason</radical>.",
+    "image_prompt": "A square toy box with its lid open and a long coiled spring shooting straight up out of the top. A wide-eyed toddler and a puzzled grandfather stare at it, both with big question marks over their heads. The picture means <radical>reason</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "rekka": {
@@ -2022,12 +2022,12 @@
     }
   },
   "sell": {
-    "mnemonic_text": "This radical combines <part form=\"士\">samurai</part>, <part form=\"冖\">cover</part> and <part form=\"儿\">human legs</part>. A <part form=\"士\">samurai</part> stands on the cloth <part form=\"冖\">cover</part> of a market stall. Under it, <part form=\"儿\">human legs</part> carry the whole stall after every shopper. He really wants to <radical form=\"売\">sell</radical>.",
-    "image_prompt": "A busy market street. At the top, a proud samurai stands on the flat cloth cover of a small market stall piled with goods. Under the cover, two human legs stick out and run, carrying the whole stall down the sidewalk after a startled shopper. The samurai waves a price tag. He is desperate to <radical>sell</radical>.",
+    "mnemonic_text": "This radical looks like a market stall: a small sign on top, a flat awning under it, and two table legs below. Everything on that stall is there to <radical form=\"売\">sell</radical>.",
+    "image_prompt": "A wooden market stall seen from the front: a small hanging sign on top, a flat cloth awning beneath it, and two sturdy table legs standing apart below. Heaps of oranges are piled on the counter with price tags. The picture means <radical>sell</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "separate": {
@@ -2231,12 +2231,12 @@
     }
   },
   "substitute": {
-    "mnemonic_text": "This radical combines <part form=\"亻\">person (left)</part> and <part form=\"弋\">stake</part>. A <part form=\"亻\">person (left)</part> steps aside, and a <part form=\"弋\">stake</part> now stands in his spot to do his job. The stake is the <radical form=\"代\">substitute</radical>.",
-    "image_prompt": "On the left, a man in a uniform stands and looks sadly at the spot he just left, his footprints leading away from it. On the right, a tall wooden stake with a red ribbon stands in his place, doing his job. The stake is the <radical>substitute</radical>.",
+    "mnemonic_text": "This radical looks like a worker walking off on the left, while a scarecrow with one bent arm takes his place on the right. The scarecrow is the farm's new <radical form=\"代\">substitute</radical>.",
+    "image_prompt": "A farm field at dawn. On the left, a tired worker walks away with a hoe over his shoulder. On the right, a scarecrow on a pole stands in his exact spot, one arm bent at the elbow, gripping the hoe. The picture means <radical>substitute</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "sun": {
@@ -2396,12 +2396,12 @@
     }
   },
   "thousand": {
-    "mnemonic_text": "This radical is made of a <part form=\"丿\">slash</part> and <part form=\"十\">ten</part>. A quick <part form=\"丿\">slash</part> on top of a <part form=\"十\">ten</part> makes it much bigger. Ten becomes a <radical form=\"千\">thousand</radical>.",
-    "image_prompt": "A big number ten stands on a price tag. A pen draws one short slash across its top, and the price suddenly jumps. A shocked shopper looks at the new price: one <radical>thousand</radical>.",
+    "mnemonic_text": "This radical looks like a very tall flagpole: a slanted flag on top and a crossbar below it. It is so tall that climbing it takes a <radical form=\"千\">thousand</radical> steps.",
+    "image_prompt": "A towering flagpole on a hilltop, a slanted pennant flapping at its tip and one short crossbar lower down. A tiny climber on the pole is surrounded by a spiral of numbered steps counting up toward a <radical>thousand</radical>.",
     "_meta": {
-      "generator_model": "claude-web",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "three": {
@@ -2886,10 +2886,10 @@
   "tin-can": {},
   "a-vase": {},
   "so-it": {
-    "mnemonic_text": "This radical puts together <part form=\"月\">moon</part>, <part form=\"犬\">dog</part> and <part form=\"灬\">fire</part>. By a <part form=\"灬\">fire</part>, a man says dogs howl at the <part form=\"月\">moon</part>. His <part form=\"犬\">dog</part> looks up and howls. <radical form=\"然\">So it is</radical>.",
-    "image_prompt": "Night in a quiet field. A full moon shines at the top left. At the top right, a dog sits with its head tipped back, howling at the moon. Along the bottom, a small campfire burns, and an old man beside it nods calmly as if to say <radical>so it is</radical>.",
+    "mnemonic_text": "This radical looks like a cooking pot sitting over four small flames. Someone asks if dinner is ready. The cook nods and says, \"Yes, <radical form=\"然\">so it is</radical>.\"",
+    "image_prompt": "A cast-iron cooking pot resting on top of a row of four small orange flames. A cook with a ladle stands beside it, nodding with a satisfied smile, a steaming spoonful held up to taste. The picture means <radical>so it is</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -3122,10 +3122,10 @@
     }
   },
   "take": {
-    "mnemonic_text": "This radical combines <part form=\"耳\">ear</part> and <part form=\"又\">right hand</part>. A teacher's <part form=\"又\">right hand</part> reaches over and pinches a naughty boy's <part form=\"耳\">ear</part>. Then the teacher pulls, ready to <radical form=\"取\">take</radical> him to the office.",
-    "image_prompt": "On the left, a large cartoon ear sticks out from the side of a small boy's head, his face scrunched up in a wince. On the right, a stern teacher's right hand reaches over and pinches the ear between finger and thumb, pulling hard, ready to <radical>take</radical> him away.",
+    "mnemonic_text": "This radical looks like a big ear with a bent claw hooked onto its right side. A sneaky thief grabs the shiny earring, ready to <radical form=\"取\">take</radical> it.",
+    "image_prompt": "A very large ear on the left wearing a glittering gold earring. A thief's bent, claw-like hand curls in from the right side and hooks the earring, pulling it away. The thief wears a striped mask. The picture means <radical>take</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -3290,10 +3290,10 @@
   "heavens": {},
   "blame": {},
   "meadow": {
-    "mnemonic_text": "This radical is made of <part form=\"厂\">cliff</part>, <part form=\"白\">white</part> and <part form=\"小\">small</part>. Below a tall <part form=\"厂\">cliff</part>, thousands of <part form=\"小\">small</part> <part form=\"白\">white</part> flowers cover a wide <radical form=\"原\">meadow</radical>.",
-    "image_prompt": "On the top left, a tall rock cliff drops straight down. Below it, a wide open field of soft green grass stretches far away, covered in thousands of tiny white flowers, each small enough to hide under a leaf. A cow lies in the middle of the <radical>meadow</radical>.",
+    "mnemonic_text": "This radical looks like a tall cliff wall bending over a small pond. Beyond the pond the grass rolls out into a wide <radical form=\"原\">meadow</radical>.",
+    "image_prompt": "A steep stone cliff on the top and left edges of the picture, its face curving overhead. At its foot a small round pond; beyond it a wide green field dotted with flowers stretches off to the horizon. The picture means <radical>meadow</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -4093,10 +4093,10 @@
   "truly": {},
   "decorate": {},
   "eternity": {
-    "mnemonic_text": "This radical is made of <part form=\"丶\">drop</part> and <part form=\"水\">water</part>. A single <part form=\"丶\">drop</part> falls into a stream of <part form=\"水\">water</part>. More drops follow, and the stream never stops. It runs for <radical form=\"永\">eternity</radical>.",
-    "image_prompt": "At the top, a single round drop hangs in the air, falling. Just below it, a stream of water pours straight down, with small splashes flying out to each side. Faint lines behind the stream show it running on without end, flowing for <radical>eternity</radical>.",
+    "mnemonic_text": "This radical looks like a river: one drop at the top, then a long winding current sweeping out to both banks. It flows on and on, for <radical form=\"永\">eternity</radical>.",
+    "image_prompt": "A calm river seen from above: a single drop at the top of the picture, then a long winding current that sweeps down and out to both banks and carries on beyond the edge of the frame, with no end in sight. The picture means <radical>eternity</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -4237,19 +4237,19 @@
     }
   },
   "protect": {
-    "mnemonic_text": "This radical is made of <part form=\"亻\">person</part> and <part form=\"呆\">be amazed</part>. A child can only stand and <part form=\"呆\">be amazed</part> as a branch falls. A <part form=\"亻\">person</part> on the left jumps in to <radical form=\"保\">protect</radical> them.",
-    "image_prompt": "On the right, a small child stands frozen with an open mouth, amazed, staring up at a tree branch that is falling toward them. On the left, a grown person leaps in with both arms raised and catches the branch above the child's head to <radical>protect</radical> them.",
+    "mnemonic_text": "This radical looks like a tall person on the left standing guard over a small figure with a big square head and arms spread wide on the right. The tall one will <radical form=\"保\">protect</radical> it.",
+    "image_prompt": "A tall, calm guard on the left standing sideways, one arm stretched in front of a small figure with an oversized square head and arms spread wide on the right. A rolling boulder bounces off the guard's back. The picture means <radical>protect</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
   },
   "demand": {
-    "mnemonic_text": "This radical combines <part form=\"雨\">rain</part> and <part form=\"而\">and yet</part>. A boy is soaked by cold <part form=\"雨\">rain</part>, <part form=\"而\">and yet</part> he still wants ice cream. He stamps his feet and shouts his <radical form=\"需\">demand</radical>.",
-    "image_prompt": "A dark rain cloud fills the top of the picture, pouring heavy rain. Below it, a small boy stands soaked, water dripping from his hair in long strands. Even so, he stamps his feet and points at an ice cream cart, shouting his one <radical>demand</radical>.",
+    "mnemonic_text": "This radical looks like heavy rain pouring down on a crowd of shoppers with their arms stretched up. They all shout for umbrellas at once. That rush of shouting is the <radical form=\"需\">demand</radical>.",
+    "image_prompt": "A rainy street. Heavy rain streams down from a cloud across the top of the picture. Below it, a crowd of soaked shoppers stretch their arms up to a tiny umbrella stand, all shouting at the same time. The picture means <radical>demand</radical>.",
     "_meta": {
-      "generator_model": "claude-opus-5-5",
+      "generator_model": "claude-sonnet-5-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
