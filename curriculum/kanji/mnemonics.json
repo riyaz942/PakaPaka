@@ -5113,5 +5113,50 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "dish": {
+    "meaning_mnemonic": "The <radical form=\"皿\">dish</radical> radical and the <kanji form=\"皿\">dish</kanji> kanji are the same, and since the food piled on that flat plate is one helping, the word covers both.",
+    "reading_mnemonic": "A waiter named <reading>Bay</reading> piles so much food on one wide, flat <kanji form=\"皿\">dish</kanji> that it tips, and he wails 「<reading>べい</reading>！」 as the peas roll off the edge.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "undertake": {
+    "meaning_mnemonic": "A <radical form=\"人\">person</radical> who climbs up and stands on top of the <radical form=\"止\">stop</radical> barricade instead of waiting is ready to <kanji form=\"企\">undertake</kanji> the whole job.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit giggles 「<reading>き</reading>」 from the old oak behind the barricade, since chopping down her own tree is the silly job she dared the climber to <kanji form=\"企\">undertake</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "quandary": {
+    "meaning_mnemonic": "A <radical form=\"木\">tree</radical> boxed in by a four-walled <radical form=\"囗\">enclosure</radical> keeps growing with nowhere to go, which puts it in a real <kanji form=\"困\">quandary</kanji>.",
+    "reading_mnemonic": "<reading>Connie</reading> the gardener planted that tree and then built the walls around it, so now she sits in the corner groaning 「<reading>こん</reading>」 over a <kanji form=\"困\">quandary</kanji> she made herself.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "borough": {
+    "meaning_mnemonic": "A <radical form=\"广\">shelter</radical> whose walls are covered in rules taped up to <radical form=\"付\">adhere</radical> for years is the office that runs the whole <kanji form=\"府\">borough</kanji>.",
+    "reading_mnemonic": "The old clerk lets out a tired <reading>phew</reading>, 「<reading>ふ</reading>」, each time he tapes one more rule to the office wall, because the <kanji form=\"府\">borough</kanji> makes ten new ones a day.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "watch-over": {
+    "meaning_mnemonic": "Holding a <radical form=\"手\">hand</radical> flat over your <radical form=\"目\">eye</radical> to block the sun lets you stare far out and <kanji form=\"看\">watch over</kanji> everything below.",
+    "reading_mnemonic": "The lifeguard shades her face at the riverbank to <kanji form=\"看\">watch over</kanji> the swimmers, and anyone who splashes gets an empty <reading>can</reading> bounced off their head with a hollow 「<reading>かん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
