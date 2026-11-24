@@ -6140,6 +6140,14 @@
       "slug": "other",
       "primary_form": "它",
       "meaning": "other",
+      "mnemonic_text": "This radical looks like a small shelter with a snake curled up under it. The snake got there first, so you must find some <radical form=\"它\">other</radical> place to stay dry.",
+      "image_prompt": "A tiny wooden rain shelter with a flat, slightly sloped top and a short post at each side. Under it, a fat green snake lies curled in a tight spiral, looking smug and dry. Outside in the rain, a soaked person with a dripping umbrella-less head turns away to look for some <radical>other</radical> shelter.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/other.webp",
       "level": 20,
       "sort_order": 395
     },
@@ -6147,6 +6155,14 @@
       "slug": "nun",
       "primary_form": "尼",
       "meaning": "nun",
+      "mnemonic_text": "This radical is made of a <part form=\"尸\">body</part> and a <part form=\"匕\">spoon</part>. A <part form=\"尸\">body</part> in a long black robe owns just one thing in the world, a single <part form=\"匕\">spoon</part>. She is a <radical form=\"尼\">nun</radical>.",
+      "image_prompt": "A quiet stone room with nothing in it. On the left and top, a woman in a long black-and-white robe sits upright, her body wrapped in heavy cloth. In her lap, low on the right, she holds one small wooden spoon, carefully, like it is her only treasure. She is a <radical>nun</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/nun.webp",
       "level": 20,
       "sort_order": 396
     },
@@ -6154,6 +6170,14 @@
       "slug": "melon",
       "primary_form": "瓜",
       "meaning": "melon",
+      "mnemonic_text": "This radical looks like a fat fruit hanging from a vine. The side strokes are two leaves, and the hook in the middle is the heavy fruit pulling the vine down. It is a <radical form=\"瓜\">melon</radical>.",
+      "image_prompt": "A single green vine coming down from the top of the frame. Two broad leaves spread out to the left and right of it. In the middle, the vine bends into a hook under the weight of one huge, round, striped <radical>melon</radical> that hangs low and nearly touches the ground.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/melon.webp",
       "level": 20,
       "sort_order": 397
     },
@@ -6161,6 +6185,14 @@
       "slug": "robust",
       "primary_form": "壮",
       "meaning": "robust",
+      "mnemonic_text": "This radical combines the <part form=\"爿\">left-side kata</part> and a <part form=\"士\">samurai</part>. The <part form=\"爿\">left-side kata</part> is half of a split log, and a <part form=\"士\">samurai</part> carries it under one arm like a pillow. He is very <radical form=\"壮\">robust</radical>.",
+      "image_prompt": "On the left, a huge half-log split down its length stands on end, three broken branch stubs sticking out to the left. On the right, a broad-shouldered samurai in armour has one arm hooked around it, lifting it easily, with a calm, bored face. He looks <radical>robust</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/robust.webp",
       "level": 20,
       "sort_order": 398
     },
@@ -6168,6 +6200,14 @@
       "slug": "walk-slowly",
       "primary_form": "夋",
       "meaning": "walk slowly",
+      "mnemonic_text": "This radical looks like a tiny man with a huge pointy head and a long robe dragging at his feet. The robe catches on every step, so he can only <radical form=\"夋\">walk slowly</radical>.",
+      "image_prompt": "A small man seen from the side on a dirt path. On top, a very large triangle-shaped head; in the middle, two thin bent legs; at the bottom, a long heavy robe that drags behind him and snags on a stone. Footprints behind him are packed close together, because he can only <radical>walk slowly</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/walk-slowly.webp",
       "level": 20,
       "sort_order": 399
     },
