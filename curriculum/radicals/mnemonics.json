@@ -2893,7 +2893,15 @@
   "task": {},
   "to-dawdle": {},
   "to-restrain": {},
-  "twin-sprouts": {},
+  "twin-sprouts": {
+    "mnemonic_text": "This radical looks like two short stems poking up through a thin crust of soil, side by side, above one flat line of ground. Two stems from one seed are <radical form=\"龷\">twin sprouts</radical>.",
+    "image_prompt": "Two identical thin green stems rise straight up side by side, each poking through a short horizontal crack of crusted soil near their tips, and both stand on one long flat line of dark ground below. Clean, simple, a matching pair of <radical>twin sprouts</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "curving-river": {},
   "joined-forces": {},
   "long-time": {},
@@ -2920,7 +2928,15 @@
     }
   },
   "military-officer": {},
-  "capital": {},
+  "capital": {
+    "mnemonic_text": "This radical stacks a <part form=\"亠\">lid</part>, a <part form=\"口\">mouth</part> and <part form=\"小\">small</part>. A palace roof is the <part form=\"亠\">lid</part>, its gate is a huge open <part form=\"口\">mouth</part>, and <part form=\"小\">small</part> people stream in below. A gate that big is in the <radical form=\"京\">capital</radical>.",
+    "image_prompt": "A grand palace seen from the front: a pointed roof like a pot lid on top, under it a huge square gate wide open like a mouth, and below the gate crowds of tiny people walking in, dwarfed by the building. The great city gate of the <radical>capital</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "color": {},
   "restore": {},
   "ghost": {},
@@ -3285,7 +3301,15 @@
   "end": {},
   "godown": {},
   "sandwich": {},
-  "lead-on": {},
+  "lead-on": {
+    "mnemonic_text": "This radical looks like a hand reaching down from the top and a hand reaching up from the bottom, with a flat stick held between them. The top hand pulls, and the stick will <radical form=\"爰\">lead on to</radical> the top.",
+    "image_prompt": "A cliff edge: a hand with spread fingers reaches down from the top, a second hand reaches up from below, and both grip one flat wooden stick held level between them. The upper hand pulls the stick up, so it will <radical>lead on to</radical> the top of the cliff.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "red": {},
   "to-state-2": {},
   "return-2": {},
@@ -3324,7 +3348,15 @@
   "roof": {},
   "suspend": {},
   "a-net": {},
-  "seedling": {},
+  "seedling": {
+    "mnemonic_text": "This radical puts <part form=\"艹\">grass</part> on top of a <part form=\"田\">rice field</part>. Tiny blades of green <part form=\"艹\">grass</part> poke up in rows from the flooded <part form=\"田\">rice field</part>. Each one is a rice <radical form=\"苗\">seedling</radical>.",
+    "image_prompt": "A square flooded rice field divided into four plots by raised paths, seen from slightly above, with tiny bright green shoots like blades of grass poking out of the water in neat rows along the top edge. Each little shoot is a young rice <radical>seedling</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "surname": {},
   "wall": {},
   "have-the": {},
@@ -3353,7 +3385,15 @@
   "file": {},
   "servant": {},
   "conspicuous": {},
-  "un": {},
+  "un": {
+    "mnemonic_text": "This radical looks like two hands held up side by side, the fingers spread wide and pointing away from each other. You wave both hands like that to say: no, <radical form=\"非\">not</radical> that one!",
+    "image_prompt": "Two open hands raised side by side with a narrow gap between them, palms out, each with three stiff fingers spread flat sideways, the left hand fingers pointing left and the right hand fingers pointing right, a firm gesture of refusal that says <radical>not</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "badge": {},
   "even": {},
   "both": {},
@@ -3496,7 +3536,15 @@
   "outburst": {},
   "ballot": {},
   "trust": {},
-  "build": {},
+  "build": {
+    "mnemonic_text": "This radical combines a <part form=\"聿\">brush</part> and a <part form=\"廴\">long stride</part>. An architect takes a <part form=\"廴\">long stride</part> across an empty lot, dragging a giant <part form=\"聿\">brush</part> that paints the lines of the walls. Workers will <radical form=\"建\">build</radical> right on those lines.",
+    "image_prompt": "An architect taking long strides across a flat empty lot, low in the bottom left, dragging a giant upright paint brush that stands tall on the right and paints thick white lines of a house floor plan on the dirt. Workers with bricks wait to <radical>build</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "carrier": {},
   "doubt": {},
   "droop": {
@@ -3569,7 +3617,15 @@
     }
   },
   "left": {},
-  "to-carve": {},
+  "to-carve": {
+    "mnemonic_text": "This radical looks like a chisel pushed into a log. The flat, three-edged head sits on top, and below it a long cut runs down while chips fly off left and right. You are ready <radical form=\"彔\">to carve wood</radical>.",
+    "image_prompt": "A wooden chisel with a flat, square-cut metal head pressed down into the top of a pale log, a long straight groove running down the log beneath it, and small curled wood chips spraying out to the left and the right of the groove as someone starts <radical>to carve wood</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "truly": {},
   "decorate": {},
   "eternity": {
@@ -3583,7 +3639,15 @@
   },
   "ashes": {},
   "ride": {},
-  "barbarian": {},
+  "barbarian": {
+    "mnemonic_text": "On the left of this radical is a square face under a helmet with a big cross on top. On the right is a tall fur cloak with two straps across it. A rider dressed like that, from far past the border, is a <radical form=\"胡\">barbarian</radical>.",
+    "image_prompt": "A fierce rider from far beyond the border wall: on the left, a square face under a helmet topped with a tall cross-shaped crest; on the right, a long tall fur cloak with two leather straps across the chest. A wandering <radical>barbarian</radical> warrior.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "surface": {},
   "prohibition": {},
   "to-give": {
@@ -3663,7 +3727,15 @@
   "ascend": {},
   "meeting-2": {},
   "breath": {},
-  "risk": {},
+  "risk": {
+    "mnemonic_text": "This radical puts the <part form=\"日\">sun</part> right on top of an <part form=\"目\">eye</part>. Staring straight up into the <part form=\"日\">sun</part> with a wide-open <part form=\"目\">eye</part> is a big <radical form=\"冒\">risk</radical>.",
+    "image_prompt": "A bright blazing sun hangs directly above one huge wide-open eye that stares straight up at it, the eyelids stretched open, the pupil shrinking, a warning glare of light pouring into it. Looking at the sun like that is a <radical>risk</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "grade": {},
   "fiber": {},
   "fish-body": {},
@@ -3688,6 +3760,15 @@
   "demand": {
     "mnemonic_text": "This radical combines <part form=\"雨\">rain</part> and <part form=\"而\">and yet</part>. A boy is soaked by cold <part form=\"雨\">rain</part>, <part form=\"而\">and yet</part> he still wants ice cream. He stamps his feet and shouts his <radical form=\"需\">demand</radical>.",
     "image_prompt": "A dark rain cloud fills the top of the picture, pouring heavy rain. Below it, a small boy stands soaked, water dripping from his hair in long strands. Even so, he stamps his feet and points at an ice cream cart, shouting his one <radical>demand</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "rejoice": {
+    "mnemonic_text": "This radical stacks <part form=\"吉\">good luck</part>, <part form=\"丷\">horns</part>, the <part form=\"一\">ground</part> and a <part form=\"口\">mouth</part>. News of <part form=\"吉\">good luck</part> comes, and people blow party <part form=\"丷\">horns</part>, stamp the <part form=\"一\">ground</part> and cheer with an open <part form=\"口\">mouth</part>. They <radical form=\"喜\">rejoice</radical>.",
+    "image_prompt": "A village square: a lucky winning ticket held high at the top, below it two party horns blowing out to the sides, then a line of feet stamping on flat ground, and at the bottom a big open mouth cheering. Everyone dances and they <radical>rejoice</radical>.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
