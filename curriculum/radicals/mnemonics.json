@@ -2776,7 +2776,15 @@
       "review_status": "draft"
     }
   },
-  "ability": {},
+  "ability": {
+    "mnemonic_text": "This radical puts together a <part form=\"䏍\">baby</part> and a <part form=\"匕\">spoon</part>, drawn twice. A <part form=\"䏍\">baby</part> on the left feeds itself with a <part form=\"匕\">spoon</part> in each hand, proud of its new <radical form=\"能\">ability</radical>.",
+    "image_prompt": "A chubby baby sits in a high chair on the left side of the picture. On the right, two spoons are stacked one above the other, and the baby grips both, shovelling porridge into its own mouth with a proud grin while bits of food fly everywhere, showing off its new <radical>ability</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "courts": {
     "mnemonic_text": "This radical combines <part form=\"壬\">9th calendar sign</part> and <part form=\"廴\">long stride</part>. A judge's date board shows the <part form=\"壬\">9th calendar sign</part>. The judge takes a <part form=\"廴\">long stride</part> up the steps. Today is a hearing day at the <radical form=\"廷\">courts</radical>.",
     "image_prompt": "A tall wooden board stands at the upper right, showing a single old calendar symbol for the ninth day. Below and to the left, a judge in a black robe takes one huge long stride up wide stone steps, the robe stretching behind. At the top of the steps are the pillars of the <radical>courts</radical>.",
@@ -2940,7 +2948,15 @@
   },
   "task": {},
   "to-dawdle": {},
-  "to-restrain": {},
+  "to-restrain": {
+    "mnemonic_text": "This radical looks like a small cage with two bars, bolted onto a short post in the ground. An angry goose flaps inside, but the cage holds it still — that is to <radical form=\"垔\">restrain</radical>.",
+    "image_prompt": "A small square cage with a flat lid and two vertical bars on its front, bolted on top of a short wooden post that stands on a flat strip of ground. Inside, an angry goose flaps and pushes against the bars but cannot get out, held firmly in place, showing how to <radical>restrain</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "twin-sprouts": {
     "mnemonic_text": "This radical looks like two short stems poking up through a thin crust of soil, side by side, above one flat line of ground. Two stems from one seed are <radical form=\"龷\">twin sprouts</radical>.",
     "image_prompt": "Two identical thin green stems rise straight up side by side, each poking through a short horizontal crack of crusted soil near their tips, and both stand on one long flat line of dark ground below. Clean, simple, a matching pair of <radical>twin sprouts</radical>.",

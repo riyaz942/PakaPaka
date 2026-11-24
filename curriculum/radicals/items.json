@@ -6230,6 +6230,14 @@
       "slug": "to-restrain",
       "primary_form": "垔",
       "meaning": "to restrain",
+      "mnemonic_text": "This radical looks like a small cage with two bars, bolted onto a short post in the ground. An angry goose flaps inside, but the cage holds it still — that is to <radical form=\"垔\">restrain</radical>.",
+      "image_prompt": "A small square cage with a flat lid and two vertical bars on its front, bolted on top of a short wooden post that stands on a flat strip of ground. Inside, an angry goose flaps and pushes against the bars but cannot get out, held firmly in place, showing how to <radical>restrain</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/to-restrain.webp",
       "level": 20,
       "sort_order": 401
     },
@@ -6252,6 +6260,14 @@
       "slug": "ability",
       "primary_form": "能",
       "meaning": "ability",
+      "mnemonic_text": "This radical puts together a <part form=\"䏍\">baby</part> and a <part form=\"匕\">spoon</part>, drawn twice. A <part form=\"䏍\">baby</part> on the left feeds itself with a <part form=\"匕\">spoon</part> in each hand, proud of its new <radical form=\"能\">ability</radical>.",
+      "image_prompt": "A chubby baby sits in a high chair on the left side of the picture. On the right, two spoons are stacked one above the other, and the baby grips both, shovelling porridge into its own mouth with a proud grin while bits of food fly everywhere, showing off its new <radical>ability</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/ability.webp",
       "level": 20,
       "sort_order": 403
     },
