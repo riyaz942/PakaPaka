@@ -2932,7 +2932,15 @@
   },
   "give": {},
   "precious": {},
-  "abundant": {},
+  "abundant": {
+    "mnemonic_text": "This radical looks like one tall plant stalk with three branches across it. Every branch sags with so much fruit that the harvest is <radical form=\"丰\">abundant</radical>.",
+    "image_prompt": "One tall vertical stalk rises straight up from the soil. Three horizontal branches cross it, one above the other, each bending down under heavy clusters of ripe fruit. Fruit has already fallen and piled around the base, an <radical>abundant</radical> harvest.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ladle": {
     "mnemonic_text": "This radical looks like a deep curved spoon hanging on a hook, with one drop of soup still sitting in its bowl. It is a <radical form=\"勺\">ladle</radical>.",
     "image_prompt": "A deep metal soup spoon hangs from a hook on a kitchen wall. Its long handle bends over the top and curves down the right side, and its round bowl opens at the bottom left. One drop of soup sits in the middle of the bowl. It is a <radical>ladle</radical>.",
@@ -3160,7 +3168,15 @@
     }
   },
   "span": {},
-  "villain": {},
+  "villain": {
+    "mnemonic_text": "This radical combines <part form=\"乂\">mow</part> and <part form=\"凵\">open box</part>. Someone swings a scythe to <part form=\"乂\">mow</part> a big X through your <part form=\"凵\">open box</part> of birthday cupcakes. Only a <radical form=\"凶\">villain</radical> does that.",
+    "image_prompt": "An open cardboard box sits on a table, its top open, full of frosted birthday cupcakes. Two crossing slashes of a scythe blade cut a big X through the cupcakes inside the box. A grinning <radical>villain</radical> in a black cape holds the scythe, frosting on the blade.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "chieftain": {},
   "good-luck": {
     "mnemonic_text": "This radical is made of <part form=\"士\">samurai</part> and <part form=\"口\">mouth</part>. A <part form=\"士\">samurai</part> stands on a stage before a fight. Below him, a big <part form=\"口\">mouth</part> in the crowd shouts, \"<radical form=\"吉\">Good luck</radical>!\"",
@@ -3259,7 +3275,15 @@
       "review_status": "draft"
     }
   },
-  "to-move": {},
+  "to-move": {
+    "mnemonic_text": "This radical looks like a traveller under a wide flat hat, legs striding out below, one foot already kicking off. They never stay anywhere long. They are always ready <radical form=\"冘\">to move on</radical>.",
+    "image_prompt": "A traveller seen from the side, wearing a very wide flat hat that covers the top of the picture like a lid. Below the hat, two legs stride apart, the back foot hooked up as it pushes off the ground. A small village sign falls behind them as they get ready <radical>to move on</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "curve": {},
   "sincere": {
     "mnemonic_text": "The top of this radical is a hand with its fingers reaching down. Below it stands a small child. The hand rests on the child gently and keeps it safe, a care that is <radical form=\"孚\">sincere</radical>.",
@@ -3293,7 +3317,15 @@
       "review_status": "draft"
     }
   },
-  "lofty": {},
+  "lofty": {
+    "mnemonic_text": "This radical looks like two people side by side. The one on the right kneels and looks up. The one on the left stands tall with their nose in the air, so high and proud they are <radical form=\"卬\">lofty</radical>.",
+    "image_prompt": "Two figures side by side. On the left, a thin person stands very straight on a small step, chin raised, nose pointing at the clouds. On the right, a second person kneels low on one knee, neck bent back, staring up at the <radical>lofty</radical> one in awe.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "to-state": {},
   "false": {},
   "request": {},
@@ -3661,7 +3693,15 @@
     }
   },
   "hemp": {},
-  "complete": {},
+  "complete": {
+    "mnemonic_text": "This radical looks like a fishhook hanging from a short line, with a fat fish already caught on the hook. Fish on the hook means the fishing trip is <radical form=\"了\">complete</radical>.",
+    "image_prompt": "A short horizontal fishing line at the top bends down into a single long vertical line that ends in a curved fishhook. A fat, surprised fish dangles from the hook. Beside it, a fisherman packs up his rod and bucket, the trip <radical>complete</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "reasonable": {},
   "east": {
     "mnemonic_text": "This radical combines a <part form=\"木\">tree</part> and the <part form=\"日\">sun</part>. Early in the morning, the <part form=\"日\">sun</part> rises right behind the <part form=\"木\">tree</part>, shining through its trunk. That way is <radical form=\"東\">east</radical>.",
