@@ -5077,5 +5077,41 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "leaf": {
+    "meaning_mnemonic": "Each flat green <kanji form=\"葉\">leaf</kanji> is a tiny <radical form=\"枼\">table</radical> the plant holds up above the <radical form=\"艹\">grass</radical>, so the bugs have somewhere to eat their dinner.",
+    "reading_mnemonic": "A caterpillar called <reading>Yo</reading> shouts 「<reading>よう</reading>！」 to his friends from his seat at the tiny table, then eats the whole <kanji form=\"葉\">leaf</kanji>, so they arrive to find no table at all.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "iron": {
+    "meaning_mnemonic": "<kanji form=\"鉄\">Iron</kanji> is the cheap <radical form=\"金\">metal</radical> nobody keeps in a safe, since no one cries when they <radical form=\"失\">lose</radical> a rusty old nail.",
+    "reading_mnemonic": "Scrap man <reading>Tetsu</reading> drags a giant magnet down the street for every nail people lose, and each time one flies up and hits him in the forehead he yells 「<reading>てつ</reading>！」, happy to get more free <kanji form=\"鉄\">iron</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "neighboring": {
+    "meaning_mnemonic": "You only find out there is a <kanji form=\"隣\">neighboring</kanji> house when its green <radical form=\"粦\">phosphorus</radical> glow shines over the <radical form=\"⻖\">hill</radical> between you every night.",
+    "reading_mnemonic": "That <kanji form=\"隣\">neighboring</kanji> house has a glowing green doorbell, and every night a bored goat walks over to <reading>ring</reading> it with its nose, 「<reading>りん</reading>！」, just to watch it light up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "laundry": {
+    "meaning_mnemonic": "A scared <radical form=\"翟\">pheasant</radical> flapping hard in a tub of <radical form=\"氵\">water</radical> splashes like a washing machine, so you toss in your socks and call it <kanji form=\"濯\">laundry</kanji>.",
+    "reading_mnemonic": "Grandpa <reading>Tuck</reading> pulls each wet sock out of the pheasant's tub and says 「<reading>たく</reading>」 as he pins it up, grumbling that the feathers are now part of the <kanji form=\"濯\">laundry</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
