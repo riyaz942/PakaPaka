@@ -3155,131 +3155,172 @@
     "accepted_meanings": [
       "isn't it?",
       "right?",
-      "confirmation",
-      "agreement"
+      "confirmation tag",
+      "agreement tag",
+      "don't you think?"
     ],
     "sentences": [
       {
-        "japanese": "いい天気ですね。",
-        "english": "Nice weather, isn't it?",
-        "vocabulary_slugs": [
-          "ii",
-          "tenki"
-        ],
-        "alternates": [
-          {
-            "japanese": "天気がいいですね。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "暑いですね。",
-        "english": "It's hot, isn't it?",
-        "vocabulary_slugs": [
-          "atsui-hot"
-        ]
-      },
-      {
-        "japanese": "おいしいですね。",
-        "english": "It's delicious, isn't it?",
-        "vocabulary_slugs": [
-          "oishii"
-        ],
-        "alternates": [
-          {
-            "japanese": "おいしいですよ。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "このコーヒーはおいしいですね。",
-        "english": "This coffee is delicious, isn't it?",
+        "japanese": "このかばんは大きいですね。",
+        "english": "This bag is big, isn't it?",
         "vocabulary_slugs": [
           "kono",
-          "koohii",
-          "oishii"
-        ]
-      },
-      {
-        "japanese": "図書館はあそこですね。",
-        "english": "The library is over there, right?",
-        "vocabulary_slugs": [
-          "toshokan",
-          "asoko"
+          "kaban",
+          "ookii"
         ],
         "alternates": [
           {
-            "japanese": "図書館はあそこですか。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "今日の天気は寒いですね。",
-        "english": "Today's weather is cold, isn't it?",
-        "vocabulary_slugs": [
-          "kyou",
-          "tenki",
-          "samui"
-        ]
-      },
-      {
-        "japanese": "お母さんは毎日忙しいですね。",
-        "english": "Your mother is busy every day, isn't she?",
-        "vocabulary_slugs": [
-          "okaasan",
-          "mainichi",
-          "isogashii"
-        ],
-        "alternates": [
-          {
-            "japanese": "毎日お母さんは忙しいですね。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "あの人は医者ですね。",
-        "english": "That person is a doctor, right?",
-        "vocabulary_slugs": [
-          "ano",
-          "hito",
-          "isha"
-        ]
-      },
-      {
-        "japanese": "先週、一緒に映画を見ましたね。",
-        "english": "We watched a movie together last week, didn't we?",
-        "vocabulary_slugs": [
-          "senshuu",
-          "issho-ni",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "先週、映画を一緒に見ましたね。",
+            "japanese": "このかばんは大きいですねえ。",
             "kind": "valid"
           },
           {
-            "japanese": "私たちは先週、一緒に映画を見ましたね。",
+            "japanese": "このかばんは大きいですか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "お茶がありませんね。",
+        "english": "There's no tea, is there?",
+        "vocabulary_slugs": [
+          "ocha",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "お茶がありませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今日も会社へ行きますね。",
+        "english": "You're going to the office today too, aren't you?",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日も会社に行きますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日も会社へ行きますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日は日曜日ですね。",
+        "english": "Tomorrow is Sunday, right?",
+        "vocabulary_slugs": [
+          "ashita",
+          "nichiyoubi"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日は日曜日ですか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先週、デパートへ行きましたね。",
+        "english": "We went to the department store last week, didn't we?",
+        "vocabulary_slugs": [
+          "senshuu",
+          "depaato",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週、デパートに行きましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先週デパートへ行きましたね。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "彼は来ませんね。",
-        "english": "He isn't coming, is he?",
+        "japanese": "お兄さんは来ませんね。",
+        "english": "Your brother isn't coming, is he?",
         "vocabulary_slugs": [
-          "kare",
+          "oniisan",
           "kuru-v"
         ],
         "alternates": [
           {
-            "japanese": "来ませんね。",
+            "japanese": "お兄さんは来ませんか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "お父さんは毎朝新聞を読みますね。",
+        "english": "Your dad reads the paper every morning, doesn't he?",
+        "vocabulary_slugs": [
+          "otousan",
+          "maiasa",
+          "shinbun",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "お父さんは毎朝、新聞を読みますね。",
             "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あの人は会社員ですね。",
+        "english": "That person is an office worker, right?",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "kaishain"
+        ],
+        "alternates": [
+          {
+            "japanese": "あの人は会社員ですか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "晩ご飯はレストランで食べましたね。",
+        "english": "We had dinner at a restaurant, didn't we?",
+        "vocabulary_slugs": [
+          "bangohan",
+          "resutoran",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "晩ご飯をレストランで食べましたね。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎晩テレビを見ますね。",
+        "english": "You watch TV every night, don't you?",
+        "vocabulary_slugs": [
+          "maiban",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎晩、テレビを見ますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎晩テレビを見ますか。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -3287,87 +3328,38 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "ねえ、お母さんはどこですか。",
-          "new": "お母さんは毎日忙しいですね。",
-          "reason": "hand fix: checker marked it unfixable"
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "yo-emphasis": {
     "accepted_meanings": [
       "you know",
-      "I tell you",
+      "I'm telling you",
       "emphasis",
-      "assertion"
+      "assertion tag",
+      "I tell you"
     ],
     "sentences": [
       {
-        "japanese": "これはおいしいよ。",
-        "english": "This is delicious, you know.",
+        "japanese": "明日、デパートへ行きますよ。",
+        "english": "I'm going to the department store tomorrow, you know.",
         "vocabulary_slugs": [
-          "kore",
-          "oishii"
-        ],
-        "alternates": [
-          {
-            "japanese": "これはおいしいね。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "これ、おいしいよ。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これ、おいしいね。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "危ないよ。",
-        "english": "That's dangerous!",
-        "vocabulary_slugs": [
-          "abunai"
-        ]
-      },
-      {
-        "japanese": "これ、安いですよ。",
-        "english": "This one is cheap, you know.",
-        "vocabulary_slugs": [
-          "kore",
-          "yasui-adj"
-        ],
-        "alternates": [
-          {
-            "japanese": "これは安いですよ。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "私は明日行きますよ。",
-        "english": "I am going tomorrow, I'm telling you.",
-        "vocabulary_slugs": [
-          "watashi",
           "ashita",
+          "depaato",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "明日行きますよ。",
+            "japanese": "明日、デパートに行きますよ。",
             "kind": "valid"
           },
           {
-            "japanese": "明日、私は行きますよ。",
+            "japanese": "明日デパートへ行きますよ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "明日、デパートへ行きますね。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3377,84 +3369,131 @@
         "vocabulary_slugs": [
           "kyou",
           "nichiyoubi"
-        ]
-      },
-      {
-        "japanese": "先生、危ないですよ。",
-        "english": "Teacher, it's dangerous!",
-        "vocabulary_slugs": [
-          "sensei",
-          "abunai"
-        ]
-      },
-      {
-        "japanese": "あの映画、楽しいですよ。",
-        "english": "That movie is fun, I'm telling you.",
-        "vocabulary_slugs": [
-          "ano",
-          "eiga",
-          "tanoshii"
         ],
         "alternates": [
           {
-            "japanese": "あの映画は楽しいですよ。",
-            "kind": "valid"
+            "japanese": "今日は日曜日ですね。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "お父さん、眼鏡はここですよ。",
-        "english": "Dad, your glasses are right here.",
+        "japanese": "お父さん、かばんはここですよ。",
+        "english": "Dad, your bag is right here.",
         "vocabulary_slugs": [
           "otousan",
-          "megane",
-          "koko"
-        ]
-      },
-      {
-        "japanese": "かばんは椅子に置きましたよ。",
-        "english": "I put your bag on the chair, you know.",
-        "vocabulary_slugs": [
           "kaban",
-          "isu",
-          "oku"
+          "koko"
         ],
         "alternates": [
           {
-            "japanese": "かばんを椅子に置きましたよ。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "椅子にかばんを置きましたよ。",
-            "kind": "valid"
+            "japanese": "お父さん、かばんはここですね。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "このバスは駅へ行きませんよ。",
-        "english": "This bus doesn't go to the station, you know.",
+        "japanese": "このバスは大学へ行きませんよ。",
+        "english": "This bus doesn't go to the university, you know.",
         "vocabulary_slugs": [
           "kono",
           "basu",
-          "eki",
+          "daigaku",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "このバスは駅に行きませんよ。",
+            "japanese": "このバスは大学に行きませんよ。",
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "先生は帰りましたよ。",
+        "english": "The teacher has gone home, you know.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生は帰りましたか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "トイレはあそこですよ。",
+        "english": "The toilet is over there.",
+        "vocabulary_slugs": [
+          "toire",
+          "asoko"
+        ],
+        "alternates": [
+          {
+            "japanese": "トイレはあそこですね。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーがありますよ。",
+        "english": "There's coffee, you know.",
+        "vocabulary_slugs": [
+          "koohii",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "コーヒーがありますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "赤ちゃんが新聞を食べましたよ。",
+        "english": "The baby ate the newspaper!",
+        "vocabulary_slugs": [
+          "akachan",
+          "shinbun",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "赤ちゃんが新聞を食べましたね。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "おじいさんはビールを飲みませんよ。",
+        "english": "Grandpa doesn't drink beer, you know.",
+        "vocabulary_slugs": [
+          "ojiisan",
+          "biiru",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "おじいさんはビールを飲みませんね。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "タクシーが来ましたよ。",
+        "english": "The taxi is here!",
+        "vocabulary_slugs": [
+          "takushii",
+          "kuru-v"
+        ],
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-form": {
@@ -3465,104 +3504,6 @@
       "connective"
     ],
     "sentences": [
-      {
-        "japanese": "本を読んで、寝ます。",
-        "english": "I read a book and then sleep.",
-        "vocabulary_slugs": [
-          "hon",
-          "yomu",
-          "neru"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は本を読んで、寝ます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "起きて、朝ご飯を食べます。",
-        "english": "I get up and eat breakfast.",
-        "vocabulary_slugs": [
-          "okiru",
-          "asagohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は起きて、朝ご飯を食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "毎朝起きて、朝ご飯を食べます。",
-        "english": "Every morning I get up and eat breakfast.",
-        "vocabulary_slugs": [
-          "maiasa",
-          "okiru",
-          "asagohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は毎朝起きて、朝ご飯を食べます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "毎朝、私は起きて、朝ご飯を食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、本を読んで、寝ました。",
-        "english": "Yesterday I read a book, then slept.",
-        "vocabulary_slugs": [
-          "kinou",
-          "hon",
-          "yomu",
-          "neru"
-        ],
-        "alternates": [
-          {
-            "japanese": "昨日は本を読んで、寝ました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "朝ご飯を食べて、学校へ行きます。",
-        "english": "I eat breakfast and go to school.",
-        "vocabulary_slugs": [
-          "asagohan",
-          "taberu",
-          "gakkou-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "朝ご飯を食べて、学校に行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "家に帰って、テレビを見ました。",
-        "english": "I went home and watched TV.",
-        "vocabulary_slugs": [
-          "ie",
-          "kaeru-v",
-          "terebi",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "家へ帰って、テレビを見ました。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "コンビニへ行って、パンを買いました。",
         "english": "I went to the convenience store and bought bread.",
@@ -3576,49 +3517,143 @@
           {
             "japanese": "コンビニに行って、パンを買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "コンビニへ行ってパンを買いました。",
+            "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "公園へ行って、遊びませんか。",
-        "english": "Shall we go to the park and play?",
+        "japanese": "朝ご飯を食べて、会社へ行きます。",
+        "english": "I eat breakfast and then go to the office.",
         "vocabulary_slugs": [
-          "kouen",
+          "asagohan",
+          "taberu",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝ご飯を食べて、会社に行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "うちへ帰って、テレビを見ました。",
+        "english": "I went home and watched TV.",
+        "vocabulary_slugs": [
+          "uchi",
+          "kaeru-v",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "うちに帰って、テレビを見ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "毎朝、新聞を読んで、コーヒーを飲みます。",
+        "english": "Every morning I read the newspaper and drink coffee.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "shinbun",
+          "yomu",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎朝新聞を読んで、コーヒーを飲みます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "デパートへ行って、かばんを買いませんか。",
+        "english": "Shall we go to the department store and buy a bag?",
+        "vocabulary_slugs": [
+          "depaato",
           "iku-v",
-          "asobu"
+          "kaban",
+          "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "公園に行って、遊びませんか。",
+            "japanese": "デパートに行って、かばんを買いませんか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "鍵を開けて、部屋に入りました。",
-        "english": "I unlocked the door and went into the room.",
+        "japanese": "お茶を飲んで、話しましょう。",
+        "english": "Let's have some tea and talk.",
         "vocabulary_slugs": [
-          "kagi",
-          "akeru",
-          "heya",
-          "hairu-v"
+          "ocha",
+          "nomu-v",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生に電話して、帰りました。",
+        "english": "I called the teacher and went home.",
+        "vocabulary_slugs": [
+          "sensei",
+          "denwa",
+          "suru",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "明日、うちへ来て、晩ご飯を食べませんか。",
+        "english": "Won't you come to my place tomorrow and have dinner?",
+        "vocabulary_slugs": [
+          "ashita",
+          "uchi",
+          "kuru-v",
+          "bangohan",
+          "taberu"
         ],
         "alternates": [
           {
-            "japanese": "鍵を開けて、部屋へ入りました。",
+            "japanese": "明日、うちに来て、晩ご飯を食べませんか。",
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "本を読んで、先生と話しました。",
+        "english": "I read the book and talked with the teacher.",
+        "vocabulary_slugs": [
+          "hon",
+          "yomu",
+          "sensei",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "タクシーが来て、おじいさんが帰りました。",
+        "english": "A taxi came, and Grandpa went home.",
+        "vocabulary_slugs": [
+          "takushii",
+          "kuru-v",
+          "ojiisan",
+          "kaeru-v"
+        ],
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "node-because": {
@@ -3825,6 +3860,12 @@
         "english": "Are you going?",
         "vocabulary_slugs": [
           "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "行きますね。",
+            "kind": "other_grammar"
+          }
         ]
       },
       {
@@ -3833,14 +3874,16 @@
         "vocabulary_slugs": [
           "kore",
           "nan"
-        ]
+        ],
+        "alternates": []
       },
       {
         "japanese": "いくらですか。",
         "english": "How much is it?",
         "vocabulary_slugs": [
           "ikura"
-        ]
+        ],
+        "alternates": []
       },
       {
         "japanese": "何を食べますか。",
@@ -3848,7 +3891,8 @@
         "vocabulary_slugs": [
           "nani",
           "taberu"
-        ]
+        ],
+        "alternates": []
       },
       {
         "japanese": "明日、本を読みますか。",
@@ -3872,7 +3916,8 @@
           "doko",
           "kaeru-v"
         ],
-        "form": "ます|か"
+        "form": "ます|か",
+        "alternates": []
       },
       {
         "japanese": "誰に話しますか。",
@@ -3880,40 +3925,42 @@
         "vocabulary_slugs": [
           "dare",
           "hanasu-v"
-        ]
+        ],
+        "alternates": []
       },
       {
-        "japanese": "昨日、映画を見ましたか。",
-        "english": "Did you see a movie yesterday?",
+        "japanese": "晩ご飯を食べましたか。",
+        "english": "Did you eat dinner?",
         "vocabulary_slugs": [
-          "kinou",
-          "eiga",
-          "miru-v"
+          "bangohan",
+          "taberu"
         ],
         "alternates": [
           {
-            "japanese": "映画を昨日見ましたか。",
-            "kind": "valid"
+            "japanese": "晩ご飯を食べましたね。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "彼は来ませんか。",
-        "english": "Isn't he coming?",
+        "japanese": "お母さんは来ませんか。",
+        "english": "Isn't your mother coming?",
         "vocabulary_slugs": [
-          "kare",
+          "okaasan",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "お母さんは来ませんね。",
+            "kind": "other_grammar"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-kudasai": {
