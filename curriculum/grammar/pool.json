@@ -2661,162 +2661,10 @@
       "until",
       "as far as",
       "up to",
-      "till"
+      "till",
+      "to"
     ],
     "sentences": [
-      {
-        "japanese": "駅まで歩きます。",
-        "english": "I walk as far as the station.",
-        "vocabulary_slugs": [
-          "eki",
-          "aruku"
-        ],
-        "alternates": [
-          {
-            "japanese": "駅から歩きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は駅まで歩きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は駅から歩きます。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "昼まで待ちます。",
-        "english": "I will wait until noon.",
-        "vocabulary_slugs": [
-          "hiru",
-          "matsu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は昼まで待ちます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "朝から晩まで遊びます。",
-        "english": "I will play from morning until evening.",
-        "vocabulary_slugs": [
-          "asa",
-          "ban",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は朝から晩まで遊びます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "家から学校まで歩きます。",
-        "english": "I will walk from the house to school.",
-        "vocabulary_slugs": [
-          "ie",
-          "gakkou-v",
-          "aruku"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は家から学校まで歩きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "海まで行きます。",
-        "english": "I will go as far as the sea.",
-        "vocabulary_slugs": [
-          "umi",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "海へ行きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "海に行きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は海まで行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は海へ行きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は海に行きます。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "何時まで学校にいますか。",
-        "english": "Until what time are you at school?",
-        "vocabulary_slugs": [
-          "nannji",
-          "gakkou-v",
-          "iru-exist"
-        ],
-        "alternates": [
-          {
-            "japanese": "何時から学校にいますか。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "学校に何時までいますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学校に何時からいますか。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日は夜まで本を読みました。",
-        "english": "Yesterday I read a book until night.",
-        "vocabulary_slugs": [
-          "kinou",
-          "yoru",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "昨日、夜まで本を読みました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日、夜まで本を読みました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "日曜日まで忙しいです。",
-        "english": "I'm busy until Sunday.",
-        "vocabulary_slugs": [
-          "nichiyoubi",
-          "isogashii"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は日曜日まで忙しいです。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "明日まで帰りません。",
         "english": "I won't go home until tomorrow.",
@@ -2826,7 +2674,160 @@
         ],
         "alternates": [
           {
-            "japanese": "私は明日まで帰りません。",
+            "japanese": "明日から帰りません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "デパートまでバスで行きます。",
+        "english": "I'll go as far as the department store by bus.",
+        "vocabulary_slugs": [
+          "depaato",
+          "basu",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスでデパートまで行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "デパートへバスで行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "朝から晩まで本を読みました。",
+        "english": "I read books from morning until night.",
+        "vocabulary_slugs": [
+          "asa",
+          "ban",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "本を朝から晩まで読みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "何時まで会社にいますか。",
+        "english": "Until what time are you at the office?",
+        "vocabulary_slugs": [
+          "nannji",
+          "kaisha",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "会社に何時までいますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "何時から会社にいますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "金曜日まで大学へ行きません。",
+        "english": "I'm not going to the university until Friday.",
+        "vocabulary_slugs": [
+          "kinyoubi",
+          "daigaku",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "金曜日まで大学に行きません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "大学へ金曜日まで行きません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先週まで毎晩ビールを飲みました。",
+        "english": "Until last week, I drank beer every night.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "maiban",
+          "biiru",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週から毎晩ビールを飲みました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "いつまでここにいますか。",
+        "english": "Until when will you be here?",
+        "vocabulary_slugs": [
+          "itsu",
+          "koko",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここにいつまでいますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "いつからここにいますか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "来月まで新聞を読みません。",
+        "english": "I won't read the newspaper until next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "shinbun",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "新聞は来月まで読みません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "来月から新聞を読みません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "今まで何をしましたか。",
+        "english": "What have you done up until now?",
+        "vocabulary_slugs": [
+          "ima",
+          "nani",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生は晩まで学生と話しました。",
+        "english": "The teacher talked with the students until evening.",
+        "vocabulary_slugs": [
+          "sensei",
+          "ban",
+          "gakusei",
+          "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生は学生と晩まで話しました。",
             "kind": "valid"
           }
         ]
@@ -2835,11 +2836,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "kara-because": {
@@ -2847,368 +2844,303 @@
       "because",
       "since",
       "so",
-      "because of"
+      "as",
+      "reason"
     ],
     "sentences": [
       {
-        "japanese": "寒いですから、窓を閉めます。",
-        "english": "It's cold, so I'll close the window.",
+        "japanese": "明日は日曜日ですから、会社へ行きません。",
+        "english": "Tomorrow is Sunday, so I won't go to the office.",
         "vocabulary_slugs": [
-          "samui",
-          "mado",
-          "shimeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "窓を閉めます。寒いですから。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "寒いですから、私は窓を閉めます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "忙しいですから、行きません。",
-        "english": "I won't go because I'm busy.",
-        "vocabulary_slugs": [
-          "isogashii",
+          "ashita",
+          "nichiyoubi",
+          "kaisha",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "私は忙しいですから、行きません。",
+            "japanese": "明日は日曜日ですから、会社に行きません。",
             "kind": "valid"
           },
           {
-            "japanese": "忙しいですから、私は行きません。",
-            "kind": "valid"
+            "japanese": "明日は日曜日なので、会社へ行きません。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "高いですから、買いません。",
-        "english": "I won't buy it because it's expensive.",
+        "japanese": "母が来ますから、パンを買いました。",
+        "english": "My mother is coming, so I bought bread.",
         "vocabulary_slugs": [
-          "takai-adj",
-          "kau-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "高いですから、私は買いません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "暑いですから、水を飲みました。",
-        "english": "It was hot, so I drank water.",
-        "vocabulary_slugs": [
-          "atsui-hot",
-          "mizu",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "暑いですから、私は水を飲みました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "私は学生ですから。",
-        "english": "Because I'm a student.",
-        "vocabulary_slugs": [
-          "watashi",
-          "gakusei"
-        ],
-        "alternates": [
-          {
-            "japanese": "学生ですから。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今日は忙しいですから、昼ご飯は肉です。",
-        "english": "Because I'm busy today, lunch is meat.",
-        "vocabulary_slugs": [
-          "kyou",
-          "isogashii",
-          "hirugohan",
-          "niku"
-        ],
-        "alternates": [
-          {
-            "japanese": "今日忙しいですから、昼ご飯は肉です。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "安いですから、このパンを買いませんか。",
-        "english": "It's cheap, so why don't we buy this bread?",
-        "vocabulary_slugs": [
-          "yasui-adj",
-          "kono",
+          "haha",
+          "kuru-v",
           "pan",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "母が来るから、パンを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母が来るので、パンを買いました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーを飲みましたから、今日はお茶を飲みません。",
+        "english": "I had coffee, so I won't drink tea today.",
+        "vocabulary_slugs": [
+          "koohii",
+          "nomu-v",
+          "kyou",
+          "ocha"
         ],
         "alternates": []
       },
       {
-        "japanese": "今日は寒いから。",
-        "english": "Because it's cold today.",
+        "japanese": "バスが来ませんから、タクシーで帰りませんか。",
+        "english": "The bus isn't coming, so why don't we go home by taxi?",
         "vocabulary_slugs": [
-          "kyou",
-          "samui"
+          "basu",
+          "kuru-v",
+          "takushii",
+          "kaeru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "時間がありませんから、朝ご飯は食べません。",
+        "english": "I don't have time, so I won't eat breakfast.",
+        "vocabulary_slugs": [
+          "jikan",
+          "aru",
+          "asagohan",
+          "taberu"
         ],
         "alternates": [
           {
-            "japanese": "今日は寒いので。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "今日寒いから。",
+            "japanese": "時間がありませんから、朝ご飯を食べません。",
             "kind": "valid"
-          },
-          {
-            "japanese": "今日寒いので。",
-            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "おいしいですから、毎日この喫茶店へ行きます。",
-        "english": "It's delicious, so I go to this coffee shop every day.",
+        "japanese": "兄は会社員ですから、毎日会社へ行きます。",
+        "english": "My older brother is an office worker, so he goes to the office every day.",
         "vocabulary_slugs": [
-          "oishii",
+          "ani",
+          "kaishain",
           "mainichi",
-          "kono",
-          "kissaten",
+          "kaisha",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "おいしいですから、毎日この喫茶店に行きます。",
+            "japanese": "兄は会社員ですから、毎日会社に行きます。",
             "kind": "valid"
           },
           {
-            "japanese": "おいしいですから、この喫茶店へ毎日行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "おいしいですから、この喫茶店に毎日行きます。",
-            "kind": "valid"
-          }
-        ]
-      }
-    ],
-    "_meta": {
-      "generator_model": "claude-opus-5-5",
-      "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "忙しいから、行きません。",
-          "new": "忙しいですから、行きません。",
-          "reason": "Polite sentence: the reason clause must also be polite (ですから)."
-        },
-        {
-          "old": "高いから、買いません。",
-          "new": "高いですから、買いません。",
-          "reason": "Polite sentence: the reason clause must also be polite (ですから)."
-        },
-        {
-          "old": "暑いから、水を飲みました。",
-          "new": "暑いですから、水を飲みました。",
-          "reason": "Polite sentence needs ですから; non-past 暑い is acceptable relative tense and avoids later-lesson 暑かった."
-        },
-        {
-          "old": "おいしいから、毎日この喫茶店へ行きます。",
-          "new": "おいしいですから、毎日この喫茶店へ行きます。",
-          "reason": "Polite sentence: the reason clause must also be polite (ですから)."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
-    }
-  },
-  "ni-indirect": {
-    "accepted_meanings": [
-      "to",
-      "recipient marker",
-      "indirect object marker",
-      "target person"
-    ],
-    "sentences": [
-      {
-        "japanese": "友達に電話します。",
-        "english": "I'll call a friend.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "denwa-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達に電話をします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は友達に電話します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は友達に電話をします。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "先生に聞きます。",
-        "english": "I'll ask the teacher.",
-        "vocabulary_slugs": [
-          "sensei",
-          "kiku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は先生に聞きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今日、彼女に会う",
-        "english": "I will meet my girlfriend today.",
-        "vocabulary_slugs": [
-          "kyou",
-          "kanojo",
-          "au"
-        ],
-        "alternates": [
-          {
-            "japanese": "今日、彼女と会う",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "彼女に今日会う",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼女と今日会う",
+            "japanese": "兄は会社員なので、毎日会社へ行きます。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "男の人に話す",
-        "english": "I will speak to the man.",
+        "japanese": "赤ちゃんがいますから、テレビを見ません。",
+        "english": "There's a baby here, so I don't watch TV.",
         "vocabulary_slugs": [
-          "otokonohito",
-          "hanasu-v"
+          "akachan",
+          "iru-exist",
+          "terebi",
+          "miru-v"
         ],
         "alternates": [
           {
-            "japanese": "男の人と話す",
+            "japanese": "赤ちゃんがいるから、テレビを見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんがいるので、テレビを見ません。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "子供に本を読む",
-        "english": "I will read a book to the child.",
+        "japanese": "明後日は大学がありますから、本を読みましょう。",
+        "english": "We have university the day after tomorrow, so let's read the book.",
         "vocabulary_slugs": [
-          "kodomo-v",
+          "asatte",
+          "daigaku",
+          "aru",
           "hon",
           "yomu"
         ],
         "alternates": [
           {
-            "japanese": "本を子供に読む",
+            "japanese": "明後日は大学があるから、本を読みましょう。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "父に聞く",
-        "english": "I will ask my father.",
+        "japanese": "先生が話しましたから、みんな分かりました。",
+        "english": "The teacher explained it, so everyone understood.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v",
+          "minna",
+          "wakaru"
+        ],
+        "alternates": []
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-indirect": {
+    "accepted_meanings": [
+      "to (recipient)",
+      "to",
+      "for",
+      "indirect object marker",
+      "recipient marker"
+    ],
+    "sentences": [
+      {
+        "japanese": "母に電話しました。",
+        "english": "I called my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "denwa",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "母に電話をしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母と電話しました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "誰に書きますか。",
+        "english": "Who are you writing to?",
+        "vocabulary_slugs": [
+          "dare",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "父にペンを買いました。",
+        "english": "I bought a pen for my father.",
         "vocabulary_slugs": [
           "chichi",
-          "kiku-v"
+          "pen",
+          "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "私は父に聞く",
+            "japanese": "ペンを父に買いました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "昨日、母に電話しました。",
-        "english": "I phoned my mother yesterday.",
+        "japanese": "明日、あなたに電話します。",
+        "english": "I'll call you tomorrow.",
         "vocabulary_slugs": [
-          "kinou",
-          "haha",
-          "denwa-suru"
+          "ashita",
+          "anata",
+          "denwa",
+          "suru"
         ],
         "alternates": [
           {
-            "japanese": "昨日、母に電話をしました。",
+            "japanese": "あなたに明日電話します。",
             "kind": "valid"
           },
           {
-            "japanese": "母に昨日電話しました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "母に昨日電話をしました。",
+            "japanese": "明日、あなたに電話をします。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "誰に会いますか。",
-        "english": "Who are you meeting?",
+        "japanese": "お母さんに何を話しましたか。",
+        "english": "What did you tell your mother?",
         "vocabulary_slugs": [
-          "dare",
-          "au"
-        ]
-      },
-      {
-        "japanese": "駅員に時間を聞きました。",
-        "english": "I asked the station staff the time.",
-        "vocabulary_slugs": [
-          "ekiin",
-          "jikan",
-          "kiku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "時間を駅員に聞きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は駅員に時間を聞きました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "彼は誰にも話しません。",
-        "english": "He doesn't tell anyone.",
-        "vocabulary_slugs": [
-          "kare",
-          "dare",
+          "okaasan",
+          "nani",
           "hanasu-v"
         ],
         "alternates": [
           {
-            "japanese": "誰にも話しません。",
+            "japanese": "お母さんと何を話しましたか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "毎晩、赤ちゃんに本を読みます。",
+        "english": "Every night I read a book to the baby.",
+        "vocabulary_slugs": [
+          "maiban",
+          "akachan",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎晩、本を赤ちゃんに読みます。",
             "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "みんなにコーヒーを買いましょう。",
+        "english": "Let's buy coffee for everyone.",
+        "vocabulary_slugs": [
+          "minna",
+          "koohii",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "コーヒーをみんなに買いましょう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "お父さんにはビールを買いません。",
+        "english": "I'm not buying beer for Dad.",
+        "vocabulary_slugs": [
+          "otousan",
+          "biiru",
+          "kau-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "先生に話しませんか。",
+        "english": "Why don't we tell the teacher?",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生と話しませんか。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -3216,11 +3148,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "ne-tag": {
@@ -3702,325 +3630,157 @@
     ],
     "sentences": [
       {
-        "japanese": "病気なので、休みます。",
-        "english": "I'll rest because I'm sick.",
+        "japanese": "今日は日曜日なので、うちで食事をします。",
+        "english": "Today is Sunday, so I'll have a meal at home.",
         "vocabulary_slugs": [
-          "byouki",
-          "yasumu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は病気なので、休みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "病気なので、私は休みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "病気ですので、休みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は病気ですので、休みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "病気ですので、私は休みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "安いので、買います。",
-        "english": "I'll buy it because it's cheap.",
-        "vocabulary_slugs": [
-          "yasui-adj",
-          "kau-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "安いから、買います。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "安いですので、買います。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "安いですから、買います。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "これは安いので、これにします。",
-        "english": "This one's cheap, so I'll go with this one.",
-        "vocabulary_slugs": [
-          "kore",
-          "yasui-adj",
+          "kyou",
+          "nichiyoubi",
+          "uchi",
+          "shokuji",
           "suru"
         ],
         "alternates": [
           {
-            "japanese": "これが安いので、これにします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これは安いですので、これにします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これが安いですので、これにします。",
-            "kind": "valid"
+            "japanese": "今日は日曜日ですから、うちで食事をします。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "彼は医者なので、こちらがいいです。",
-        "english": "He's a doctor, so this way is better.",
+        "japanese": "父が来るので、ビールを買いました。",
+        "english": "My father is coming, so I bought beer.",
         "vocabulary_slugs": [
-          "kare",
-          "isha",
-          "kochira",
-          "ii"
+          "chichi",
+          "kuru-v",
+          "biiru",
+          "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "彼が医者なので、こちらがいいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼は医者ですので、こちらがいいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼が医者ですので、こちらがいいです。",
-            "kind": "valid"
+            "japanese": "父が来るから、ビールを買いました。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "父は今、病気なので、私が行きます。",
-        "english": "My father is sick right now, so I'll go.",
+        "japanese": "時間があるので、デパートへ行きませんか。",
+        "english": "We have time, so why don't we go to the department store?",
         "vocabulary_slugs": [
-          "chichi",
-          "ima",
-          "byouki",
-          "watashi",
+          "jikan",
+          "aru",
+          "depaato",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "今、父は病気なので、私が行きます。",
+            "japanese": "時間があるので、デパートに行きませんか。",
             "kind": "valid"
           },
           {
-            "japanese": "父が今、病気なので、私が行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今、父が病気なので、私が行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "父は今、病気ですので、私が行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今、父は病気ですので、私が行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "父が今、病気ですので、私が行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今、父が病気ですので、私が行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今日は病気なので、うちにいます。",
-        "english": "I'm sick today, so I'm staying home.",
-        "vocabulary_slugs": [
-          "kyou",
-          "byouki",
-          "uchi",
-          "iru-exist"
-        ],
-        "alternates": [
-          {
-            "japanese": "病気なので、今日はうちにいます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日病気なので、うちにいます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日は病気ですので、うちにいます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "病気ですので、今日はうちにいます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日病気ですので、うちにいます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "妹は子供なので、お酒を飲みません。",
-        "english": "My little sister is a child, so she doesn't drink alcohol.",
-        "vocabulary_slugs": [
-          "imouto",
-          "kodomo-v",
-          "osake",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "妹は子供ですので、お酒を飲みません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "寒いので、窓を閉めました。",
-        "english": "It was cold, so I closed the window.",
-        "vocabulary_slugs": [
-          "samui",
-          "mado",
-          "shimeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "寒いから、窓を閉めました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "寒いので、私は窓を閉めました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "寒いから、私は窓を閉めました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "寒いですので、窓を閉めました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "寒いですから、窓を閉めました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "寒いですので、私は窓を閉めました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "寒いですから、私は窓を閉めました。",
+            "japanese": "時間があるから、デパートへ行きませんか。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "明日は忙しいので、映画は見ません。",
-        "english": "I'm busy tomorrow, so I won't watch a movie.",
+        "japanese": "おじいさんが新聞を読むので、テレビを見ません。",
+        "english": "Grandpa reads the newspaper, so I don't watch TV.",
         "vocabulary_slugs": [
-          "ashita",
-          "isogashii",
-          "eiga",
+          "ojiisan",
+          "shinbun",
+          "yomu",
+          "terebi",
           "miru-v"
         ],
         "alternates": [
           {
-            "japanese": "明日は忙しいから、映画は見ません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "明日は忙しいので、映画を見ません。",
+            "japanese": "おじいさんが新聞を読むので、テレビは見ません。",
             "kind": "valid"
-          },
+          }
+        ]
+      },
+      {
+        "japanese": "兄は先生なので、毎晩本を読みます。",
+        "english": "My older brother is a teacher, so he reads books every night.",
+        "vocabulary_slugs": [
+          "ani",
+          "sensei",
+          "maiban",
+          "hon",
+          "yomu"
+        ],
+        "alternates": [
           {
-            "japanese": "明日は忙しいから、映画を見ません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "明日忙しいので、映画は見ません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日忙しいから、映画は見ません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "明日は忙しいですので、映画は見ません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は忙しいですから、映画は見ません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "明日は忙しいですので、映画を見ません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は忙しいですから、映画を見ません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "明日忙しいですので、映画は見ません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日忙しいですから、映画は見ません。",
+            "japanese": "兄は先生ですから、毎晩本を読みます。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "暑いので、一緒に海へ行きませんか。",
-        "english": "It's hot, so why don't we go to the sea together?",
+        "japanese": "赤ちゃんがいるので、タクシーで帰りました。",
+        "english": "We had the baby with us, so we went home by taxi.",
         "vocabulary_slugs": [
-          "atsui-hot",
-          "issho-ni",
-          "umi",
+          "akachan",
+          "iru-exist",
+          "takushii",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "赤ちゃんがいるから、タクシーで帰りました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "明日は水曜日なので、スーパーへ行きましょう。",
+        "english": "Tomorrow is Wednesday, so let's go to the supermarket.",
+        "vocabulary_slugs": [
+          "ashita",
+          "suiyoubi",
+          "suupaa",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "暑いので、一緒に海に行きませんか。",
+            "japanese": "明日は水曜日なので、スーパーに行きましょう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "ここはトイレなので、パンを食べません。",
+        "english": "This is the toilet, so I won't eat bread here.",
+        "vocabulary_slugs": [
+          "koko",
+          "toire",
+          "pan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここはトイレなので、パンは食べません。",
             "kind": "valid"
           },
           {
-            "japanese": "暑いので、海へ一緒に行きませんか。",
-            "kind": "valid"
-          },
+            "japanese": "ここはトイレですから、パンを食べません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先生が話すので、みんな来ました。",
+        "english": "The teacher was going to speak, so everyone came.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v",
+          "minna",
+          "kuru-v"
+        ],
+        "alternates": [
           {
-            "japanese": "暑いので、海に一緒に行きませんか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "暑いですので、一緒に海へ行きませんか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "暑いですので、一緒に海に行きませんか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "暑いですので、海へ一緒に行きませんか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "暑いですので、海に一緒に行きませんか。",
-            "kind": "valid"
+            "japanese": "先生が話すから、みんな来ました。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -4028,18 +3788,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "今日は病気なんで、うちにいます。",
-          "new": "今日は病気なので、うちにいます。",
-          "reason": "なんで is a casual contraction, not the taught ので form."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "ka-question": {
