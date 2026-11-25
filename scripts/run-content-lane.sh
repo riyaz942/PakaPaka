@@ -71,6 +71,10 @@ claude_args=(-p --output-format json --permission-mode auto --permission-prompts
 [ -z "$model" ]  || claude_args+=(--model "$model")
 [ -z "$effort" ] || claude_args+=(--effort "$effort")
 
+# A prompt names its level value `levels` (a range) or `level`. The run value
+# must use the same name, or the session keeps the example value in the prompt.
+if grep -q '^<levels = ' "$prompt_file"; then level_key=levels; else level_key=level; fi
+
 echo "Workflow: $workflow | levels $first-$last | branch $(git branch --show-current)"
 echo "Logs: $run_dir"
 
@@ -97,7 +101,7 @@ for ((level = first; level <= last; level++)); do
     {
       cat "$prompt_file"
       printf '\n---\n\nValues for this run. They replace the example values in angle brackets above.\n\n'
-      printf -- '- level = %s (a workflow that takes <levels> uses levels = %s)\n' "$level" "$level"
+      printf -- '- %s = %s\n' "$level_key" "$level"
       [ -z "$kind" ] || printf -- '- type = %s\n' "$kind"
       [ -z "$extra" ] || printf -- '- %s\n' "$extra"
       printf '\nThis run is unattended. Nobody can answer a question, so do not ask one.\n'
