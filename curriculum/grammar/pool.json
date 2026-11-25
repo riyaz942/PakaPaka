@@ -5942,90 +5942,7 @@
             "kind": "valid"
           },
           {
-            "japanese": "私は食べた後で、コーヒーを飲みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "授業の後で、遊びます。",
-        "english": "After class, I play.",
-        "vocabulary_slugs": [
-          "jugyou",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "授業の前に、遊びます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は授業の後で、遊びます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は授業の前に、遊びます。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "仕事の後で、映画を見ます。",
-        "english": "After work, I watch a movie.",
-        "vocabulary_slugs": [
-          "shigoto",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は仕事の後で、映画を見ます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "映画を仕事の後で見ます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "仕事の後で、電話します。",
-        "english": "I'll call after work.",
-        "vocabulary_slugs": [
-          "shigoto",
-          "denwa",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "仕事の後で、電話をします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は仕事の後で、電話します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は仕事の後で、電話をします。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "授業の後で、映画を見ます。",
-        "english": "After class, I'll watch a movie.",
-        "vocabulary_slugs": [
-          "jugyou",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は授業の後で、映画を見ます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "映画を授業の後で見ます。",
+            "japanese": "食べた後でコーヒーを飲みます。",
             "kind": "valid"
           }
         ]
@@ -6041,72 +5958,157 @@
         ],
         "alternates": [
           {
+            "japanese": "ご飯を食べたあとで、お茶を飲みます。",
+            "kind": "valid"
+          },
+          {
             "japanese": "私はご飯を食べた後で、お茶を飲みます。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "本を読んだ後で、寝ました。",
-        "english": "After I read a book, I went to sleep.",
+        "japanese": "食事の後で、テレビを見ました。",
+        "english": "After the meal, I watched TV.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "食事のあとで、テレビを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "テレビを食事の後で見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食事の前に、テレビを見ました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "本を読んだ後で、ベッドに入りました。",
+        "english": "After reading a book, I got into bed.",
         "vocabulary_slugs": [
           "hon",
           "yomu",
-          "neru"
+          "beddo",
+          "hairu-v"
         ],
         "alternates": [
           {
-            "japanese": "私は本を読んだ後で、寝ました。",
+            "japanese": "本を読んだあとで、ベッドに入りました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "映画を見たあとで、ご飯を食べます。",
-        "english": "After watching a movie, I'll eat.",
+        "japanese": "晩ご飯の後で、何をしますか。",
+        "english": "What are you doing after dinner?",
         "vocabulary_slugs": [
-          "eiga",
-          "miru-v",
-          "gohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は映画を見たあとで、ご飯を食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "授業の後で、何をしますか。",
-        "english": "What are you doing after class?",
-        "vocabulary_slugs": [
-          "jugyou",
+          "bangohan",
           "nani",
           "suru"
         ],
         "alternates": [
           {
-            "japanese": "あなたは授業の後で、何をしますか。",
+            "japanese": "晩ご飯のあとで、何をしますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは晩ご飯の後で、何をしますか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "晩ご飯の後で、お菓子は食べません。",
-        "english": "I don't eat sweets after dinner.",
+        "japanese": "昼ご飯の後で、コーヒーは飲みません。",
+        "english": "I don't drink coffee after lunch.",
         "vocabulary_slugs": [
-          "bangohan",
-          "okashi",
-          "taberu"
+          "hirugohan",
+          "koohii",
+          "nomu-v"
         ],
         "alternates": [
           {
-            "japanese": "晩ご飯の後で、お菓子を食べません。",
+            "japanese": "昼ご飯の後で、コーヒーを飲みません。",
             "kind": "valid"
           },
           {
-            "japanese": "私は晩ご飯の後で、お菓子は食べません。",
+            "japanese": "昼ご飯のあとで、コーヒーは飲みません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "電話をかけた後で、うちを出ました。",
+        "english": "After making a phone call, I left home.",
+        "vocabulary_slugs": [
+          "denwa",
+          "kakeru-call",
+          "uchi",
+          "deru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "電話をかけたあとで、うちを出ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "テレビを見た後で、手紙を書きます。",
+        "english": "After watching TV, I'll write a letter.",
+        "vocabulary_slugs": [
+          "terebi",
+          "miru-v",
+          "tegami",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビを見たあとで、手紙を書きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "学生が帰った後で、先生はお茶を飲みました。",
+        "english": "After the students went home, the teacher drank tea.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "kaeru-v",
+          "sensei",
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "学生が帰ったあとで、先生はお茶を飲みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "バスを降りた後で、タクシーに乗りました。",
+        "english": "After getting off the bus, I got in a taxi.",
+        "vocabulary_slugs": [
+          "basu",
+          "oriru",
+          "takushii",
+          "noru"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスを降りたあとで、タクシーに乗りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "バスから降りた後で、タクシーに乗りました。",
             "kind": "valid"
           }
         ]
@@ -6115,11 +6117,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "tai": {
@@ -6525,118 +6523,6 @@
     ],
     "sentences": [
       {
-        "japanese": "子供のとき、よく遊びました。",
-        "english": "When I was a child, I played a lot.",
-        "vocabulary_slugs": [
-          "kodomo-v",
-          "yoku",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "子供の時、よく遊びました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は子供のとき、よく遊びました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "子供のとき、私はよく遊びました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "暇なとき、本を読みます。",
-        "english": "When I'm free, I read books.",
-        "vocabulary_slugs": [
-          "hima",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は暇なとき、本を読みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "暇なとき、私は本を読みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "バスを降りるとき、傘を忘れました。",
-        "english": "When I got off the bus, I forgot my umbrella.",
-        "vocabulary_slugs": [
-          "basu",
-          "oriru",
-          "kasa",
-          "wasureru"
-        ],
-        "alternates": [
-          {
-            "japanese": "バスから降りるとき、傘を忘れました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私はバスを降りるとき、傘を忘れました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "子供の時、野菜が嫌いでした。",
-        "english": "As a child, I hated vegetables.",
-        "vocabulary_slugs": [
-          "kodomo-v",
-          "yasai",
-          "kirai"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は子供の時、野菜が嫌いでした。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "子供の時、私は野菜が嫌いでした。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "暇な時、何をしますか。",
-        "english": "What do you do when you're free?",
-        "vocabulary_slugs": [
-          "hima",
-          "nani",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "あなたは暇な時、何をしますか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "暑い時、冷たい水を飲みます。",
-        "english": "On hot days, I drink cold water.",
-        "vocabulary_slugs": [
-          "atsui-hot",
-          "tsumetai",
-          "mizu",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は暑い時、冷たい水を飲みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "家へ帰る時、パンを買いました。",
         "english": "On the way home, I bought bread.",
         "vocabulary_slugs": [
@@ -6651,23 +6537,11 @@
             "kind": "valid"
           },
           {
+            "japanese": "家へ帰るとき、パンを買いました。",
+            "kind": "valid"
+          },
+          {
             "japanese": "家へ帰る前に、パンを買いました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は家へ帰る時、パンを買いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家へ帰る前に、パンを買いました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は家に帰る時、パンを買いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家に帰る前に、パンを買いました。",
             "kind": "other_grammar"
           }
         ]
@@ -6687,31 +6561,160 @@
             "kind": "valid"
           },
           {
-            "japanese": "私は家へ帰った時、テレビを見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家に帰った時、テレビを見ました。",
+            "japanese": "家へ帰ったとき、テレビを見ました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "道を渡るとき、携帯は見ません。",
-        "english": "When I cross the road, I don't look at my phone.",
+        "japanese": "赤ちゃんが泣くとき、お母さんは歌います。",
+        "english": "When the baby cries, the mother sings.",
         "vocabulary_slugs": [
-          "michi-v",
-          "watar",
-          "keitai",
+          "akachan",
+          "naku",
+          "okaasan",
+          "utau"
+        ],
+        "alternates": [
+          {
+            "japanese": "赤ちゃんが泣く時、お母さんは歌います。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "旅行するとき、何が要りますか。",
+        "english": "What do you need when you travel?",
+        "vocabulary_slugs": [
+          "ryokou-suru",
+          "nani",
+          "iru-need"
+        ],
+        "alternates": [
+          {
+            "japanese": "旅行する時、何が要りますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "タクシーを降りるとき、かばんを無くしました。",
+        "english": "When I got out of the taxi, I lost my bag.",
+        "vocabulary_slugs": [
+          "takushii",
+          "oriru",
+          "kaban",
+          "nakusu"
+        ],
+        "alternates": [
+          {
+            "japanese": "タクシーを降りる時、かばんを無くしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "タクシーから降りるとき、かばんを無くしました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "仕事のとき、電話は使いません。",
+        "english": "I don't use my phone at work.",
+        "vocabulary_slugs": [
+          "shigoto",
+          "denwa",
+          "tsukau"
+        ],
+        "alternates": [
+          {
+            "japanese": "仕事の時、電話は使いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "仕事のとき、電話を使いません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "日本にいたとき、毎日お茶を飲みました。",
+        "english": "When I was in Japan, I drank tea every day.",
+        "vocabulary_slugs": [
+          "nihon",
+          "iru-exist",
+          "mainichi",
+          "ocha",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本にいた時、毎日お茶を飲みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日本にいたとき、お茶を毎日飲みました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "食事のとき、テレビは見ません。",
+        "english": "I don't watch TV during meals.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "terebi",
           "miru-v"
         ],
         "alternates": [
           {
-            "japanese": "道を渡るとき、携帯を見ません。",
+            "japanese": "食事の時、テレビは見ません。",
             "kind": "valid"
           },
           {
-            "japanese": "私は道を渡るとき、携帯は見ません。",
+            "japanese": "食事のとき、テレビを見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食事の前に、テレビは見ません。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "体が痛いとき、病院へ行きます。",
+        "english": "When my body hurts, I go to the hospital.",
+        "vocabulary_slugs": [
+          "karada",
+          "itai",
+          "byouin",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "体が痛い時、病院へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "体が痛いとき、病院に行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "体が痛いから、病院へ行きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "分からないとき、先生に聞きます。",
+        "english": "When I don't understand, I ask the teacher.",
+        "vocabulary_slugs": [
+          "wakaru",
+          "sensei",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "分からない時、先生に聞きます。",
             "kind": "valid"
           }
         ]
@@ -6720,11 +6723,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "dictionary-koto-ga-dekiru": {
@@ -6737,34 +6736,6 @@
     ],
     "sentences": [
       {
-        "japanese": "日本語を話すことができます。",
-        "english": "I can speak Japanese.",
-        "vocabulary_slugs": [
-          "nihongo",
-          "hanasu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は日本語を話すことができます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "漢字を読むことができます。",
-        "english": "I can read kanji.",
-        "vocabulary_slugs": [
-          "kanji-word",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は漢字を読むことができます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "泳ぐことができません。",
         "english": "I cannot swim.",
         "vocabulary_slugs": [
@@ -6775,15 +6746,6 @@
             "japanese": "私は泳ぐことができません。",
             "kind": "valid"
           }
-        ]
-      },
-      {
-        "japanese": "彼女は日本語を話すことができます。",
-        "english": "She can speak Japanese.",
-        "vocabulary_slugs": [
-          "kanojo",
-          "nihongo",
-          "hanasu-v"
         ]
       },
       {
@@ -6818,52 +6780,91 @@
         ]
       },
       {
-        "japanese": "僕は漢字を書くことができる。",
-        "english": "I can write kanji.",
+        "japanese": "弟はひらがなを書くことができます。",
+        "english": "My younger brother can write hiragana.",
         "vocabulary_slugs": [
-          "boku",
-          "kanji-word",
+          "otouto",
+          "hiragana",
           "kaku"
+        ]
+      },
+      {
+        "japanese": "彼女はカタカナを読むことができません。",
+        "english": "She can't read katakana.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "katakana",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "このコンビニで切手を買うことができますか。",
+        "english": "Can I buy stamps at this convenience store?",
+        "vocabulary_slugs": [
+          "kono",
+          "konbini",
+          "kitte",
+          "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "漢字を書くことができる。",
+            "japanese": "切手をこのコンビニで買うことができますか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "ここで寝ることができる。",
-        "english": "You are able to sleep here.",
+        "japanese": "兄はドアを直すことができます。",
+        "english": "My older brother can fix the door.",
         "vocabulary_slugs": [
-          "koko",
-          "neru"
-        ]
-      },
-      {
-        "japanese": "うちの猫はドアを開けることができます。",
-        "english": "Our cat can open the door.",
-        "vocabulary_slugs": [
-          "uchi",
-          "neko",
+          "ani",
           "doa",
-          "akeru"
+          "naosu"
         ]
       },
       {
-        "japanese": "昨日は寝ることができませんでした。",
-        "english": "I couldn't sleep last night.",
+        "japanese": "昨日、テストの答えを書くことができませんでした。",
+        "english": "Yesterday I couldn't write the answers on the test.",
         "vocabulary_slugs": [
           "kinou",
-          "neru"
+          "tesuto",
+          "kotae",
+          "kaku"
         ],
         "alternates": [
           {
-            "japanese": "昨日、寝ることができませんでした。",
+            "japanese": "昨日はテストの答えを書くことができませんでした。",
             "kind": "valid"
-          },
+          }
+        ]
+      },
+      {
+        "japanese": "この箱は重いので、運ぶことができません。",
+        "english": "This box is heavy, so I can't carry it.",
+        "vocabulary_slugs": [
+          "kono",
+          "hako",
+          "omoi",
+          "hakobu"
+        ],
+        "alternates": [
           {
-            "japanese": "私は昨日、寝ることができませんでした。",
+            "japanese": "この箱は重いから、運ぶことができません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "午後は先生に会うことができます。",
+        "english": "You can meet the teacher in the afternoon.",
+        "vocabulary_slugs": [
+          "gogo",
+          "sensei",
+          "au"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生には午後会うことができます。",
             "kind": "valid"
           }
         ]
@@ -6872,11 +6873,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "adj-i-conjugation": {
@@ -6888,32 +6885,6 @@
       "wasn't"
     ],
     "sentences": [
-      {
-        "japanese": "昨日は暑かったです。",
-        "english": "Yesterday was hot.",
-        "vocabulary_slugs": [
-          "kinou",
-          "atsui-hot"
-        ]
-      },
-      {
-        "japanese": "この本は高くないです。",
-        "english": "This book is not expensive.",
-        "vocabulary_slugs": [
-          "kono",
-          "hon",
-          "takai-adj"
-        ],
-        "form": "高くない"
-      },
-      {
-        "japanese": "映画は面白かった。",
-        "english": "The movie was interesting.",
-        "vocabulary_slugs": [
-          "eiga",
-          "omoshiroi"
-        ]
-      },
       {
         "japanese": "このカメラは重くないです。",
         "english": "This camera is not heavy.",
@@ -6934,34 +6905,6 @@
         ]
       },
       {
-        "japanese": "その本は難しくなかったです。",
-        "english": "That book was not difficult.",
-        "vocabulary_slugs": [
-          "sono",
-          "hon",
-          "muzukashii"
-        ],
-        "form": "難しくなかった"
-      },
-      {
-        "japanese": "今日の天気はよくないです。",
-        "english": "Today's weather is not good.",
-        "vocabulary_slugs": [
-          "kyou",
-          "tenki",
-          "ii"
-        ],
-        "form": "よくない"
-      },
-      {
-        "japanese": "昨日は寒かったです。",
-        "english": "Yesterday was cold.",
-        "vocabulary_slugs": [
-          "kinou",
-          "samui"
-        ]
-      },
-      {
         "japanese": "昨日の晩ご飯はまずかったです。",
         "english": "Last night's dinner tasted bad.",
         "vocabulary_slugs": [
@@ -6971,22 +6914,81 @@
         ]
       },
       {
-        "japanese": "週末は楽しかったですか。",
-        "english": "Was your weekend fun?",
+        "japanese": "テストは悪くなかったです。",
+        "english": "The test wasn't bad.",
         "vocabulary_slugs": [
-          "shuumatsu",
+          "tesuto",
+          "warui"
+        ],
+        "form": "悪くなかった"
+      },
+      {
+        "japanese": "日曜日は楽しかったですか。",
+        "english": "Was your Sunday fun?",
+        "vocabulary_slugs": [
+          "nichiyoubi",
           "tanoshii"
+        ]
+      },
+      {
+        "japanese": "このコーヒーは熱くないですね。",
+        "english": "This coffee isn't hot, is it.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "atsui-obj"
+        ],
+        "form": "熱くない"
+      },
+      {
+        "japanese": "あの店のパンは安かったです。",
+        "english": "The bread at that shop was cheap.",
+        "vocabulary_slugs": [
+          "ano",
+          "mise",
+          "pan",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの手は小さかったです。",
+        "english": "The baby's hands were small.",
+        "vocabulary_slugs": [
+          "akachan",
+          "te-v",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "駅は近くなかったです。",
+        "english": "The station wasn't close.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikai"
+        ],
+        "form": "近くなかった"
+      },
+      {
+        "japanese": "歯が痛かったので、病院へ行きました。",
+        "english": "My tooth hurt, so I went to the hospital.",
+        "vocabulary_slugs": [
+          "ha-tooth",
+          "itai",
+          "byouin",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "歯が痛かったので、病院に行きました。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "adj-na-conjugation": {
