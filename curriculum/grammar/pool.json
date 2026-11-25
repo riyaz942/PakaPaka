@@ -8,134 +8,92 @@
     ],
     "sentences": [
       {
-        "japanese": "私は学生です。",
-        "english": "I am a student.",
-        "vocabulary_slugs": [
-          "watashi",
-          "gakusei"
-        ],
-        "alternates": [
-          {
-            "japanese": "私が学生です。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "これは本です。",
-        "english": "This is a book.",
+        "japanese": "これは何ですか。",
+        "english": "What is this?",
         "vocabulary_slugs": [
           "kore",
-          "hon"
+          "nan"
         ],
         "alternates": []
       },
       {
-        "japanese": "今日は暑いです。",
-        "english": "Today is hot.",
+        "japanese": "ここはどこですか。",
+        "english": "Where am I?",
         "vocabulary_slugs": [
-          "kyou",
-          "atsui-hot"
+          "koko",
+          "doko"
         ],
         "alternates": []
       },
       {
-        "japanese": "彼は先生です。",
-        "english": "He is a teacher.",
-        "vocabulary_slugs": [
-          "kare",
-          "sensei"
-        ],
-        "alternates": [
-          {
-            "japanese": "彼が先生です。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "コーヒーは安いです。",
-        "english": "Coffee is cheap.",
-        "vocabulary_slugs": [
-          "koohii",
-          "yasui-adj"
-        ],
-        "alternates": []
-      },
-      {
-        "japanese": "あれは学校ですか。",
-        "english": "Is that over there a school?",
-        "vocabulary_slugs": [
-          "are",
-          "gakkou-v"
-        ],
-        "alternates": []
-      },
-      {
-        "japanese": "昨日は映画を見ました。",
-        "english": "Yesterday I watched a movie.",
-        "vocabulary_slugs": [
-          "kinou",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "昨日も映画を見ました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は昨日映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私も昨日映画を見ました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "昨日、私は映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、私も映画を見ました。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "明日は忙しいです。",
-        "english": "I'm busy tomorrow.",
-        "vocabulary_slugs": [
-          "ashita",
-          "isogashii"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は明日忙しいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日、私は忙しいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "それはお茶ですか。",
-        "english": "Is that tea?",
+        "japanese": "それはいくらですか。",
+        "english": "How much is that?",
         "vocabulary_slugs": [
           "sore",
-          "ocha"
+          "ikura"
         ],
         "alternates": []
       },
       {
-        "japanese": "肉はとてもおいしいです。",
-        "english": "The meat is really good.",
+        "japanese": "こちらはどなたですか。",
+        "english": "Who is this person?",
         "vocabulary_slugs": [
-          "niku",
-          "totemo",
-          "oishii"
+          "kochira",
+          "donata"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれは何でしたか。",
+        "english": "What was that over there?",
+        "vocabulary_slugs": [
+          "are",
+          "nan"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたはいくつですか。",
+        "english": "How old are you?",
+        "vocabulary_slugs": [
+          "anata",
+          "ikutsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あそこはどこですか。",
+        "english": "What is that place over there?",
+        "vocabulary_slugs": [
+          "asoko",
+          "doko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはなぜですか。",
+        "english": "Why is that?",
+        "vocabulary_slugs": [
+          "sore",
+          "naze"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれはいつでしたか。",
+        "english": "When was that?",
+        "vocabulary_slugs": [
+          "are",
+          "itsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはいつですか。",
+        "english": "When is that?",
+        "vocabulary_slugs": [
+          "sore",
+          "itsu"
         ],
         "alternates": []
       }
@@ -143,349 +101,268 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "desu": {
     "accepted_meanings": [
       "is",
       "to be",
-      "am",
-      "are",
+      "am / is / are",
+      "it is",
       "copula"
     ],
     "sentences": [
       {
-        "japanese": "これは水です。",
-        "english": "This is water.",
+        "japanese": "いくらですか。",
+        "english": "How much is it?",
         "vocabulary_slugs": [
-          "kore",
-          "mizu"
+          "ikura"
         ],
         "alternates": []
       },
       {
-        "japanese": "彼は先生です。",
-        "english": "He is a teacher.",
+        "japanese": "どなたですか。",
+        "english": "Who is it?",
         "vocabulary_slugs": [
-          "kare",
-          "sensei"
+          "donata"
         ],
         "alternates": []
       },
       {
-        "japanese": "昨日の晩ご飯は魚でした。",
-        "english": "Last night's dinner was fish.",
+        "japanese": "ここです。",
+        "english": "It's here.",
         "vocabulary_slugs": [
-          "kinou",
-          "bangohan",
-          "sakana"
+          "koko"
         ],
         "alternates": []
       },
       {
-        "japanese": "ここは学校です。",
-        "english": "This place is a school.",
+        "japanese": "あそこでした。",
+        "english": "It was over there.",
         "vocabulary_slugs": [
-          "koko",
-          "gakkou-v"
+          "asoko"
         ],
         "alternates": []
       },
       {
-        "japanese": "公園はどこですか。",
-        "english": "Where is the park?",
+        "japanese": "それです。",
+        "english": "That's the one.",
         "vocabulary_slugs": [
-          "kouen",
-          "doko"
+          "sore"
         ],
         "alternates": []
       },
       {
-        "japanese": "この写真は高いです。",
-        "english": "This photo is expensive.",
+        "japanese": "あれではありません。",
+        "english": "It isn't that one over there.",
         "vocabulary_slugs": [
-          "kono",
-          "shashin",
-          "takai-adj"
+          "are"
         ],
         "alternates": []
       },
       {
-        "japanese": "あれは彼の家です。",
-        "english": "That over there is his house.",
+        "japanese": "いつですか。",
+        "english": "When is it?",
         "vocabulary_slugs": [
-          "are",
-          "kare",
-          "ie"
+          "itsu"
         ],
         "alternates": []
       },
       {
-        "japanese": "あそこは公園でした。",
-        "english": "That place over there used to be a park.",
+        "japanese": "どうしてですか。",
+        "english": "Why is that?",
         "vocabulary_slugs": [
-          "asoko",
-          "kouen"
+          "doushite"
         ],
         "alternates": []
       },
       {
-        "japanese": "それはコーヒーですか。",
-        "english": "Is that coffee?",
+        "japanese": "こちらです。",
+        "english": "It's this way.",
         "vocabulary_slugs": [
-          "sore",
-          "koohii"
+          "kochira"
         ],
         "alternates": []
       },
       {
-        "japanese": "私たちは友達です。",
-        "english": "We are friends.",
+        "japanese": "どれでしたか。",
+        "english": "Which one was it?",
         "vocabulary_slugs": [
-          "watashitachi",
-          "tomodachi"
+          "dore"
         ],
-        "alternates": [
-          {
-            "japanese": "友達です。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "dewa-arimasen": {
     "accepted_meanings": [
       "is not",
       "isn't",
+      "am not / are not",
       "not",
-      "am not",
-      "are not"
+      "negative copula"
     ],
     "sentences": [
       {
-        "japanese": "これは本ではありません。",
-        "english": "This is not a book.",
+        "japanese": "これではありません。",
+        "english": "It's not this one.",
         "vocabulary_slugs": [
-          "kore",
-          "hon"
+          "kore"
         ],
         "alternates": [
           {
-            "japanese": "これは本じゃありません。",
+            "japanese": "これじゃありません。",
             "kind": "valid"
           },
           {
-            "japanese": "これは本じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これは本ではないです。",
+            "japanese": "これじゃないです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "彼は学生ではありません。",
-        "english": "He is not a student.",
+        "japanese": "それじゃないです。",
+        "english": "It's not that one.",
         "vocabulary_slugs": [
-          "kare",
-          "gakusei"
+          "sore"
         ],
         "alternates": [
           {
-            "japanese": "彼は学生じゃありません。",
+            "japanese": "それではありません。",
             "kind": "valid"
           },
           {
-            "japanese": "彼は学生じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼は学生ではないです。",
+            "japanese": "それじゃありません。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "これは水じゃないです。",
-        "english": "This is not water.",
+        "japanese": "ここではありません。",
+        "english": "It's not here.",
         "vocabulary_slugs": [
-          "kore",
-          "mizu"
+          "koko"
         ],
         "alternates": [
           {
-            "japanese": "これは水ではありません。",
+            "japanese": "ここじゃありません。",
             "kind": "valid"
           },
           {
-            "japanese": "これは水じゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これは水ではないです。",
+            "japanese": "ここじゃないです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "私は学生ではありません。",
-        "english": "I am not a student.",
+        "japanese": "あそこじゃありません。",
+        "english": "It's not over there.",
         "vocabulary_slugs": [
-          "watashi",
-          "gakusei"
+          "asoko"
         ],
         "alternates": [
           {
-            "japanese": "学生ではありません。",
+            "japanese": "あそこではありません。",
             "kind": "valid"
           },
           {
-            "japanese": "私は学生じゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は学生じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学生じゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学生じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は学生ではないです。",
+            "japanese": "あそこじゃないです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "彼は先生じゃありません。",
-        "english": "He is not a teacher.",
+        "japanese": "そちらではありません。",
+        "english": "It's not that way.",
         "vocabulary_slugs": [
-          "kare",
-          "sensei"
+          "sochira"
         ],
         "alternates": [
           {
-            "japanese": "彼は先生ではありません。",
+            "japanese": "そちらじゃありません。",
             "kind": "valid"
           },
           {
-            "japanese": "彼は先生じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼は先生ではないです。",
+            "japanese": "そちらじゃないです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "あれは学校じゃないです。",
-        "english": "That over there is not a school.",
+        "japanese": "あちらじゃないです。",
+        "english": "It's not that way over there.",
         "vocabulary_slugs": [
-          "are",
-          "gakkou-v"
+          "achira"
         ],
         "alternates": [
           {
-            "japanese": "あれは学校ではありません。",
+            "japanese": "あちらではありません。",
             "kind": "valid"
           },
           {
-            "japanese": "あれは学校じゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あれは学校ではないです。",
+            "japanese": "あちらじゃありません。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "これは肉ではない。",
-        "english": "This is not meat.",
+        "japanese": "そこじゃありませんでした。",
+        "english": "It wasn't there.",
         "vocabulary_slugs": [
-          "kore",
-          "niku"
-        ],
-        "alternates": []
-      },
-      {
-        "japanese": "あそこは公園ではありません。",
-        "english": "That place over there is not a park.",
-        "vocabulary_slugs": [
-          "asoko",
-          "kouen"
+          "soko"
         ],
         "alternates": [
           {
-            "japanese": "あそこは公園じゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あそこは公園じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あそこは公園ではないです。",
+            "japanese": "そこではありませんでした。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "昨日の昼ご飯はパンではありませんでした。",
-        "english": "Yesterday's lunch was not bread.",
+        "japanese": "あれではありませんでした。",
+        "english": "It wasn't that one over there.",
         "vocabulary_slugs": [
-          "kinou",
-          "hirugohan",
-          "pan"
+          "are"
         ],
         "alternates": [
           {
-            "japanese": "昨日の昼ご飯はパンじゃありませんでした。",
+            "japanese": "あれじゃありませんでした。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "ここは私の家じゃないです。",
-        "english": "This is not my house.",
+        "japanese": "あなたではありません。",
+        "english": "It's not you.",
         "vocabulary_slugs": [
-          "koko",
-          "watashi",
-          "ie"
+          "anata"
         ],
         "alternates": [
           {
-            "japanese": "ここは私の家ではありません。",
+            "japanese": "あなたじゃありません。",
             "kind": "valid"
           },
           {
-            "japanese": "ここは私の家じゃありません。",
+            "japanese": "あなたじゃないです。",
             "kind": "valid"
-          },
+          }
+        ]
+      },
+      {
+        "japanese": "こちらではありませんでした。",
+        "english": "It wasn't this way.",
+        "vocabulary_slugs": [
+          "kochira"
+        ],
+        "alternates": [
           {
-            "japanese": "ここは私の家ではないです。",
+            "japanese": "こちらじゃありませんでした。",
             "kind": "valid"
           }
         ]
@@ -494,11 +371,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "masu": {

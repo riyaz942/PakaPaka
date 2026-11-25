@@ -33183,21 +33183,14 @@
     {
       "from_slug": "day",
       "from_type": "kanji",
-      "to_slug": "hatsuka",
+      "to_slug": "kyou",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "day",
       "from_type": "kanji",
-      "to_slug": "nanoka",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "day",
-      "from_type": "kanji",
-      "to_slug": "kokonoka",
+      "to_slug": "mainichi",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -33205,13 +33198,6 @@
       "from_slug": "day",
       "from_type": "kanji",
       "to_slug": "mikka",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "day",
-      "from_type": "kanji",
-      "to_slug": "kyou",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -33232,7 +33218,21 @@
     {
       "from_slug": "day",
       "from_type": "kanji",
-      "to_slug": "mainichi",
+      "to_slug": "nanoka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "day",
+      "from_type": "kanji",
+      "to_slug": "kokonoka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "day",
+      "from_type": "kanji",
+      "to_slug": "hatsuka",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -36186,6 +36186,13 @@
     {
       "from_slug": "come",
       "from_type": "kanji",
+      "to_slug": "kuru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "come",
+      "from_type": "kanji",
       "to_slug": "rainen",
       "to_type": "vocabulary",
       "relationship_type": "requires"
@@ -36194,13 +36201,6 @@
       "from_slug": "come",
       "from_type": "kanji",
       "to_slug": "raishuu",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "come",
-      "from_type": "kanji",
-      "to_slug": "kuru-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -40568,6 +40568,13 @@
     {
       "from_slug": "every",
       "from_type": "kanji",
+      "to_slug": "maishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "every",
+      "from_type": "kanji",
       "to_slug": "maitsuki",
       "to_type": "vocabulary",
       "relationship_type": "requires"
@@ -40576,13 +40583,6 @@
       "from_slug": "every",
       "from_type": "kanji",
       "to_slug": "mainen",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "every",
-      "from_type": "kanji",
-      "to_slug": "maishuu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -41135,6 +41135,13 @@
     {
       "from_slug": "eat",
       "from_type": "kanji",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "eat",
+      "from_type": "kanji",
       "to_slug": "tabemono",
       "to_type": "vocabulary",
       "relationship_type": "requires"
@@ -41143,13 +41150,6 @@
       "from_slug": "eat",
       "from_type": "kanji",
       "to_slug": "shokuji",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "eat",
-      "from_type": "kanji",
-      "to_slug": "taberu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -42696,13 +42696,6 @@
     {
       "from_slug": "week",
       "from_type": "kanji",
-      "to_slug": "maishuu",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "week",
-      "from_type": "kanji",
       "to_slug": "konshuu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
@@ -42711,6 +42704,13 @@
       "from_slug": "week",
       "from_type": "kanji",
       "to_slug": "raishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "week",
+      "from_type": "kanji",
+      "to_slug": "maishuu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -43102,14 +43102,14 @@
     {
       "from_slug": "talk",
       "from_type": "kanji",
-      "to_slug": "denwa",
+      "to_slug": "hanasu-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "talk",
       "from_type": "kanji",
-      "to_slug": "hanasu-v",
+      "to_slug": "denwa",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -159979,6 +159979,27 @@
       "relationship_type": "reinforces"
     },
     {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "watashi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
       "from_slug": "conjugation-primer",
       "from_type": "grammar",
       "to_slug": "taberu",
@@ -160157,27 +160178,6 @@
       "from_slug": "ga",
       "from_type": "grammar",
       "to_slug": "okane",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-possessive",
-      "from_type": "grammar",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-possessive",
-      "from_type": "grammar",
-      "to_slug": "hon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-possessive",
-      "from_type": "grammar",
-      "to_slug": "nihongo",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
