@@ -17280,15 +17280,7 @@
             "kind": "valid"
           },
           {
-            "japanese": "今日は寒いから、私は家にいます。",
-            "kind": "valid"
-          },
-          {
             "japanese": "今日は寒いですから、家にいます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "寒いですから、今日は家にいます。",
             "kind": "valid"
           }
         ]
@@ -17309,10 +17301,6 @@
           {
             "japanese": "頭が痛いですから、休みます。",
             "kind": "valid"
-          },
-          {
-            "japanese": "頭が痛いですので、休みます。",
-            "kind": "other_grammar"
           }
         ]
       },
@@ -17333,67 +17321,51 @@
           "furu-rain",
           "dekakeru"
         ],
-        "alternates": []
-      },
-      {
-        "japanese": "明日は試験だから、勉強します。",
-        "english": "I have an exam tomorrow, so I'll study.",
-        "vocabulary_slugs": [
-          "ashita",
-          "shiken",
-          "benkyou-suru"
-        ],
         "alternates": [
           {
-            "japanese": "明日は試験だから、勉強をします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験があるから、勉強します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験があるから、勉強をします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験ですから、勉強します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験ですから、勉強をします。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験がありますから、勉強します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日は試験がありますから、勉強をします。",
-            "kind": "valid"
+            "japanese": "雨が降ったので、出かけなかった。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "約束したから、行きます。",
-        "english": "I promised, so I'll go.",
+        "japanese": "この本は面白いから、また読みたいです。",
+        "english": "This book is interesting, so I want to read it again.",
         "vocabulary_slugs": [
-          "yakusoku",
-          "suru",
-          "iku-v"
+          "kono",
+          "hon",
+          "omoshiroi",
+          "mata",
+          "yomu"
         ],
         "alternates": [
           {
-            "japanese": "約束をしたから、行きます。",
+            "japanese": "この本は面白いですから、また読みたいです。",
             "kind": "valid"
           },
           {
-            "japanese": "約束しましたから、行きます。",
+            "japanese": "この本は面白いので、また読みたいです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "熱があるから、学校を休みます。",
+        "english": "I have a fever, so I'll stay home from school.",
+        "vocabulary_slugs": [
+          "netsu",
+          "aru",
+          "gakkou-v",
+          "yasumu"
+        ],
+        "alternates": [
+          {
+            "japanese": "熱がありますから、学校を休みます。",
             "kind": "valid"
           },
           {
-            "japanese": "約束をしましたから、行きます。",
-            "kind": "valid"
+            "japanese": "熱があるので、学校を休みます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -17431,11 +17403,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "kawarini": {
@@ -17917,32 +17885,12 @@
         "alternates": []
       },
       {
-        "japanese": "その問題については明日考えます。",
-        "english": "As for that problem, I'll think about it tomorrow.",
-        "vocabulary_slugs": [
-          "sono",
-          "mondai",
-          "ashita",
-          "kangaeru"
-        ],
-        "alternates": []
-      },
-      {
         "japanese": "日本の文化について話しました。",
         "english": "We talked about Japanese culture.",
         "vocabulary_slugs": [
           "nihon",
           "bunka",
           "hanasu-v"
-        ],
-        "alternates": []
-      },
-      {
-        "japanese": "環境について考えましょう。",
-        "english": "Let's think about the environment.",
-        "vocabulary_slugs": [
-          "kankyou",
-          "kangaeru"
         ],
         "alternates": []
       },
@@ -17954,45 +17902,6 @@
           "hanasu-v"
         ],
         "alternates": []
-      },
-      {
-        "japanese": "先生に日本の歴史について質問した。",
-        "english": "I asked the teacher a question about Japanese history.",
-        "vocabulary_slugs": [
-          "sensei",
-          "nihon",
-          "rekishi",
-          "shitsumon-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "日本の歴史について先生に質問した。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生に日本の歴史について質問をした。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "日本の歴史について先生に質問をした。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "宿題の問題について、説明します。",
-        "english": "Regarding the homework problem, I'll explain it.",
-        "vocabulary_slugs": [
-          "shukudai",
-          "mondai",
-          "setsumei-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "宿題の問題について、説明をします。",
-            "kind": "valid"
-          }
-        ]
       },
       {
         "japanese": "何について書きますか。",
@@ -18013,23 +17922,82 @@
           "hanasu-v"
         ],
         "alternates": []
+      },
+      {
+        "japanese": "先生に日本の料理について聞きました。",
+        "english": "I asked the teacher about Japanese food.",
+        "vocabulary_slugs": [
+          "sensei",
+          "nihon",
+          "ryouri",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日本の料理について先生に聞きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あなたはこの町についてよく知っていますか。",
+        "english": "Do you know a lot about this town?",
+        "vocabulary_slugs": [
+          "anata",
+          "kono",
+          "machi-v",
+          "yoku",
+          "shiru",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "この町についてよく知っていますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "将来について考えています。",
+        "english": "I'm thinking about the future.",
+        "vocabulary_slugs": [
+          "shourai",
+          "kangaeru",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "その本について、どう思いますか。",
+        "english": "What do you think about that book?",
+        "vocabulary_slugs": [
+          "sono",
+          "hon",
+          "dou",
+          "omou"
+        ],
+        "alternates": [
+          {
+            "japanese": "その本についてどう思いますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "音楽について話すのが好きです。",
+        "english": "I like talking about music.",
+        "vocabulary_slugs": [
+          "ongaku",
+          "hanasu-v",
+          "suki"
+        ],
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "宿題の問題につき、説明します。",
-          "new": "宿題の問題について、説明します。",
-          "reason": "Uses formal につき instead of the target について in a spoken sentence."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "niyoruto": {
@@ -18056,10 +18024,6 @@
           {
             "japanese": "新聞によると、明日は雨だそうです。",
             "kind": "valid"
-          },
-          {
-            "japanese": "新聞によれば、明日は雨だそうです。",
-            "kind": "valid"
           }
         ]
       },
@@ -18073,15 +18037,11 @@
         ],
         "alternates": [
           {
-            "japanese": "ラジオによると、今日は雪だそうです。",
-            "kind": "valid"
-          },
-          {
             "japanese": "ラジオによれば、今日は雪です。",
             "kind": "valid"
           },
           {
-            "japanese": "ラジオによれば、今日は雪だそうです。",
+            "japanese": "ラジオによると、今日は雪だそうです。",
             "kind": "valid"
           }
         ]
@@ -18097,38 +18057,27 @@
         ],
         "alternates": [
           {
-            "japanese": "友達の話によると、テストは来週だそうです。",
-            "kind": "valid"
-          },
-          {
             "japanese": "友達の話によれば、テストは来週です。",
             "kind": "valid"
           },
           {
-            "japanese": "友達の話によれば、テストは来週だそうです。",
+            "japanese": "友達の話によると、テストは来週だそうです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "先生によると、宿題は明日までです。",
-        "english": "According to the teacher, the homework is due tomorrow.",
+        "japanese": "先生によると、明日は授業がありません。",
+        "english": "According to the teacher, there's no class tomorrow.",
         "vocabulary_slugs": [
           "sensei",
-          "shukudai",
-          "ashita"
+          "ashita",
+          "jugyou",
+          "aru"
         ],
         "alternates": [
           {
-            "japanese": "先生によると、宿題は明日までだそうです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生によれば、宿題は明日までです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生によれば、宿題は明日までだそうです。",
+            "japanese": "先生によれば、明日は授業がありません。",
             "kind": "valid"
           }
         ]
@@ -18144,15 +18093,11 @@
         ],
         "alternates": [
           {
-            "japanese": "医者によると、病気はすぐ治るそうです。",
-            "kind": "valid"
-          },
-          {
             "japanese": "医者によれば、病気はすぐ治ります。",
             "kind": "valid"
           },
           {
-            "japanese": "医者によれば、病気はすぐ治るそうです。",
+            "japanese": "医者によると、病気はすぐ治るそうです。",
             "kind": "valid"
           }
         ]
@@ -18173,33 +18118,25 @@
           {
             "japanese": "友達によれば、彼は元気だそうです。",
             "kind": "valid"
-          },
-          {
-            "japanese": "友達によると、彼は元気だそうです。",
-            "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "テレビによると、昨日地震がありました。",
-        "english": "According to the TV, there was an earthquake yesterday.",
+        "japanese": "テレビによると、電車が遅れています。",
+        "english": "According to the TV, the trains are running late.",
         "vocabulary_slugs": [
           "terebi",
-          "kinou",
-          "jishin",
-          "aru"
+          "densha",
+          "okureru",
+          "iru-exist"
         ],
         "alternates": [
           {
-            "japanese": "テレビによると、昨日地震があったそうです。",
+            "japanese": "テレビによれば、電車が遅れています。",
             "kind": "valid"
           },
           {
-            "japanese": "テレビによれば、昨日地震がありました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "テレビによれば、昨日地震があったそうです。",
+            "japanese": "テレビによると、電車が遅れているそうです。",
             "kind": "valid"
           }
         ]
@@ -18236,19 +18173,7 @@
             "kind": "valid"
           },
           {
-            "japanese": "姉によると、あのレストランは高くないそうです。",
-            "kind": "valid"
-          },
-          {
             "japanese": "姉によれば、あのレストランは高くないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "姉によれば、あのレストランは高くありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "姉によれば、あのレストランは高くないそうです。",
             "kind": "valid"
           }
         ]
@@ -18257,11 +18182,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "tame": {
@@ -18337,19 +18258,23 @@
         ]
       },
       {
-        "japanese": "この公園は静かなため、よく散歩します。",
-        "english": "Because this park is quiet, I often take walks here.",
+        "japanese": "この部屋は暗いため、よく見えません。",
+        "english": "Because this room is dark, I can't see well.",
         "vocabulary_slugs": [
           "kono",
-          "kouen",
-          "shizuka",
+          "heya",
+          "kurai",
           "yoku",
-          "sanpo-suru"
+          "mieru"
         ],
         "alternates": [
           {
-            "japanese": "この公園は静かなために、よく散歩します。",
+            "japanese": "この部屋は暗いために、よく見えません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この部屋は暗いので、よく見えません。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -18417,10 +18342,6 @@
           {
             "japanese": "道が狭いため、バスが通りません。",
             "kind": "valid"
-          },
-          {
-            "japanese": "道が狭いために、バスが通りません。",
-            "kind": "valid"
           }
         ]
       }
@@ -18428,11 +18349,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "kagiri": {
