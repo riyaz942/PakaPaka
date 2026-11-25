@@ -462,6 +462,14 @@
           {
             "japanese": "今日何を食べますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今日、何を食べますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日、あなたは何を食べますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -485,6 +493,10 @@
         "alternates": [
           {
             "japanese": "今週何をしますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今週、何をしますか。",
             "kind": "valid"
           }
         ]
@@ -524,7 +536,16 @@
           "jikan",
           "aru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "時間はありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは時間がありますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "これを書きます。",
@@ -556,6 +577,14 @@
           {
             "japanese": "来月、あそこに行きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あそこへ来月行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこに来月行きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -566,13 +595,22 @@
           "dare",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは誰と話しますか。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "masen": {
@@ -591,7 +629,12 @@
           "kyou",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日、行きません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "分かりません。",
@@ -623,7 +666,16 @@
           "dare",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "ここに誰もいません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "誰もここにいません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "来週は来ません。",
@@ -632,7 +684,12 @@
           "raishuu",
           "kuru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "来週、来ません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "それは食べません。",
@@ -656,7 +713,12 @@
           "nani",
           "suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今年、何もしません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あれは見ません。",
@@ -679,7 +741,12 @@
           "ima",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今、話しません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "今日は書きませんでした。",
@@ -688,13 +755,22 @@
           "kyou",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日、書きませんでした。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "mashita": {
@@ -730,6 +806,10 @@
           {
             "japanese": "今日何を食べましたか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今日、何を食べましたか。",
+            "kind": "valid"
           }
         ]
       },
@@ -758,6 +838,14 @@
           {
             "japanese": "今週、あそこに行きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あそこへ今週行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこに今週行きました。",
+            "kind": "valid"
           }
         ]
       },
@@ -768,7 +856,12 @@
           "sore",
           "miru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたはそれを見ましたか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "これを書きました。",
@@ -791,7 +884,12 @@
           "dare",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは誰と話しましたか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "今月は何をしましたか。",
@@ -805,6 +903,10 @@
           {
             "japanese": "今月何をしましたか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今月、何をしましたか。",
+            "kind": "valid"
           }
         ]
       },
@@ -815,7 +917,12 @@
           "kyou",
           "kuru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日、来ませんでした。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "どこにいましたか。",
@@ -824,13 +931,22 @@
           "doko",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたはどこにいましたか。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "wo": {
@@ -922,6 +1038,10 @@
           {
             "japanese": "今週あれを見ませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あれを今週見ませんか。",
+            "kind": "valid"
           }
         ]
       },
@@ -972,7 +1092,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "mashou": {
@@ -1017,6 +1141,14 @@
           },
           {
             "japanese": "来週、あそこに行きましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこへ来週行きましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこに来週行きましょう。",
             "kind": "valid"
           }
         ]
@@ -1074,6 +1206,14 @@
           {
             "japanese": "来年、ここに来ましょう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "ここへ来年来ましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ここに来年来ましょう。",
+            "kind": "valid"
           }
         ]
       },
@@ -1107,6 +1247,10 @@
           {
             "japanese": "今週それをしましょう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "それを今週しましょう。",
+            "kind": "valid"
           }
         ]
       },
@@ -1123,7 +1267,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "masen-ka": {
@@ -1170,6 +1318,14 @@
           {
             "japanese": "来月、あそこに行きませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あそこへ来月行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこに来月行きませんか。",
+            "kind": "valid"
           }
         ]
       },
@@ -1202,6 +1358,14 @@
           },
           {
             "japanese": "来週、ここに来ませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ここへ来週来ませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ここに来週来ませんか。",
             "kind": "valid"
           }
         ]
@@ -1242,6 +1406,10 @@
           {
             "japanese": "今年あれをしませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あれを今年しませんか。",
+            "kind": "valid"
           }
         ]
       },
@@ -1256,6 +1424,18 @@
         "alternates": [
           {
             "japanese": "来年あちらへ行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "来年、あちらに行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あちらへ来年行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あちらに来年行きませんか。",
             "kind": "valid"
           }
         ]
@@ -1281,6 +1461,10 @@
           {
             "japanese": "来週これを見ませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "これを来週見ませんか。",
+            "kind": "valid"
           }
         ]
       }
@@ -1288,7 +1472,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ga": {
