@@ -5478,102 +5478,98 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "明日学校に行きます。",
-          "english": "I'm going to school tomorrow.",
+          "japanese": "来月あそこに行きます。",
+          "english": "I'm going over there next month.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "ashita",
-            "gakkou-v",
+            "raigetsu",
+            "asoko",
             "iku-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "raigetsu",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "gakkou-v",
+              "vocabulary_slug": "asoko",
               "start": 2,
-              "end": 4
+              "end": 5
             },
             {
               "vocabulary_slug": "iku-v",
-              "start": 5,
-              "end": 9,
+              "start": 6,
+              "end": 10,
               "surface_form": "行きます",
               "inflection": "masu"
             }
           ],
-          "furigana": "明日[あす]学[がっ]校[こう]に行[い]きます。"
+          "furigana": "来[らい]月[げつ]あそこに行[い]きます。"
         },
         {
-          "japanese": "友達と一緒に駅に行く。",
-          "english": "I'm going to the station with a friend.",
+          "japanese": "あなたはいつ行きますか。",
+          "english": "When are you going?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "tomodachi",
-            "issho-ni",
-            "eki",
+            "anata",
+            "itsu",
             "iku-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "tomodachi",
+              "vocabulary_slug": "anata",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
-              "vocabulary_slug": "issho-ni",
-              "start": 3,
+              "vocabulary_slug": "itsu",
+              "start": 4,
               "end": 6
-            },
-            {
-              "vocabulary_slug": "eki",
-              "start": 6,
-              "end": 7
             },
             {
               "vocabulary_slug": "iku-v",
-              "start": 8,
-              "end": 10
+              "start": 6,
+              "end": 10,
+              "surface_form": "行きます",
+              "inflection": "masu"
             }
           ],
-          "furigana": "友[とも]達[だち]と一[いっ]緒[しょ]に駅[えき]に行[い]く。"
+          "furigana": "あなたはいつ行[い]きますか。"
         },
         {
-          "japanese": "今日デパートに行きました。",
-          "english": "I went to the department store today.",
+          "japanese": "四日はどこにも行きません。",
+          "english": "I'm not going anywhere on the 4th.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kyou",
-            "depaato",
+            "yokka",
+            "doko",
             "iku-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kyou",
+              "vocabulary_slug": "yokka",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "depaato",
-              "start": 2,
-              "end": 6
+              "vocabulary_slug": "doko",
+              "start": 3,
+              "end": 5
             },
             {
               "vocabulary_slug": "iku-v",
               "start": 7,
               "end": 12,
-              "surface_form": "行きました",
+              "surface_form": "行きません",
               "inflection": "masu"
             }
           ],
-          "furigana": "今日[きょう]デパートに行[い]きました。"
+          "furigana": "四[よっ]日[か]はどこにも行[い]きません。"
         }
       ],
       "level": 2
@@ -5604,94 +5600,98 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "弟が午後来る。",
-          "english": "My younger brother is coming in the afternoon.",
+          "japanese": "来月、ここに来ます。",
+          "english": "I'm coming here next month.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "otouto",
-            "gogo",
-            "kuru-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "otouto",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "gogo",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "furigana": "弟[おとうと]が午[ご]後[ご]来[く]る。"
-        },
-        {
-          "japanese": "猫がここへ来ます。",
-          "english": "The cat is coming over here.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "neko",
+            "raigetsu",
             "koko",
             "kuru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "neko",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "koko",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 5,
-              "end": 8,
-              "surface_form": "来ます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "猫[ねこ]がここへ来[き]ます。"
-        },
-        {
-          "japanese": "いつ駅に来る？",
-          "english": "When are you coming to the station?",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "itsu",
-            "eki",
-            "kuru-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "itsu",
+              "vocabulary_slug": "raigetsu",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "eki",
-              "start": 2,
-              "end": 3
+              "vocabulary_slug": "koko",
+              "start": 3,
+              "end": 5
             },
             {
               "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 6
+              "start": 6,
+              "end": 9,
+              "surface_form": "来ます",
+              "inflection": "masu"
             }
           ],
-          "furigana": "いつ駅[えき]に来[く]る？"
+          "furigana": "来[らい]月[げつ]、ここに来[き]ます。"
+        },
+        {
+          "japanese": "あなたは何時に来ますか。",
+          "english": "What time are you coming?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "anata",
+            "nannji",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "anata",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nannji",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 7,
+              "end": 10,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "あなたは何[なん]時[じ]に来[き]ますか。"
+        },
+        {
+          "japanese": "十日はここに来ません。",
+          "english": "I'm not coming here on the 10th.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tooka",
+            "koko",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tooka",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 6,
+              "end": 10,
+              "surface_form": "来ません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "十[とお]日[か]はここに来[き]ません。"
         }
       ],
       "level": 2
@@ -5722,110 +5722,86 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は毎日テレビを見ます。",
-          "english": "I watch TV every day.",
+          "japanese": "何を見ますか。",
+          "english": "What are you going to watch?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "mainichi",
-            "terebi",
+            "nani",
             "miru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "nani",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "mainichi",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "terebi",
-              "start": 4,
-              "end": 7
-            },
-            {
               "vocabulary_slug": "miru-v",
-              "start": 8,
-              "end": 11,
+              "start": 2,
+              "end": 5,
               "surface_form": "見ます",
               "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は毎[まい]日[にち]テレビを見[み]ます。"
+          "furigana": "何[なに]を見[み]ますか。"
         },
         {
-          "japanese": "昨日友達と映画を見ました。",
-          "english": "I watched a movie with a friend yesterday.",
+          "japanese": "それは見ません。",
+          "english": "I'm not watching that one.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "kinou",
-            "tomodachi",
-            "eiga",
+            "sore",
             "miru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kinou",
+              "vocabulary_slug": "sore",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "tomodachi",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "eiga",
-              "start": 5,
-              "end": 7
-            },
-            {
               "vocabulary_slug": "miru-v",
-              "start": 8,
-              "end": 12,
-              "surface_form": "見ました",
+              "start": 3,
+              "end": 7,
+              "surface_form": "見ません",
               "inflection": "masu"
             }
           ],
-          "furigana": "昨日[きのう]友[とも]達[だち]と映[えい]画[が]を見[み]ました。"
+          "furigana": "それは見[み]ません。"
         },
         {
-          "japanese": "窓から山を見ます。",
-          "english": "I look at the mountains from the window.",
+          "japanese": "来月、あそこで見ます。",
+          "english": "I'll see it over there next month.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "mado",
-            "yama-v",
+            "raigetsu",
+            "asoko",
             "miru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "mado",
+              "vocabulary_slug": "raigetsu",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "yama-v",
+              "vocabulary_slug": "asoko",
               "start": 3,
-              "end": 4
+              "end": 6
             },
             {
               "vocabulary_slug": "miru-v",
-              "start": 5,
-              "end": 8,
+              "start": 7,
+              "end": 10,
               "surface_form": "見ます",
               "inflection": "masu"
             }
           ],
-          "furigana": "窓[まど]から山[やま]を見[み]ます。"
+          "furigana": "来[らい]月[げつ]、あそこで見[み]ます。"
         }
       ],
       "level": 2
@@ -5856,12 +5832,12 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "これが分かります。",
-          "english": "I understand this.",
+          "japanese": "これは分かります。",
+          "english": "This one I understand.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "kore",
@@ -5881,65 +5857,55 @@
               "inflection": "masu"
             }
           ],
-          "furigana": "これが分[わ]かります。"
+          "furigana": "これは分[わ]かります。"
         },
         {
-          "japanese": "難しい本が分かりません。",
-          "english": "I don't understand the difficult book.",
+          "japanese": "あそこは分かりますか。",
+          "english": "Do you know where that place over there is?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "muzukashii",
-            "hon",
+            "asoko",
             "wakaru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "muzukashii",
+              "vocabulary_slug": "asoko",
               "start": 0,
               "end": 3
             },
             {
-              "vocabulary_slug": "hon",
-              "start": 3,
-              "end": 4
-            },
-            {
               "vocabulary_slug": "wakaru",
-              "start": 5,
-              "end": 11,
-              "surface_form": "分かりません",
+              "start": 4,
+              "end": 9,
+              "surface_form": "分かります",
               "inflection": "masu"
             }
           ],
-          "furigana": "難[むずか]しい本[ほん]が分[わ]かりません。"
+          "furigana": "あそこは分[わ]かりますか。"
         },
         {
-          "japanese": "彼の言うことが分かる。",
-          "english": "I understand what he's saying.",
+          "japanese": "どれが分かりませんか。",
+          "english": "Which one don't you understand?",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kare",
-            "iu-v",
+            "dore",
             "wakaru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "dore",
               "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "iu-v",
-              "start": 2,
-              "end": 4
+              "end": 2
             },
             {
               "vocabulary_slug": "wakaru",
-              "start": 7,
-              "end": 10
+              "start": 3,
+              "end": 9,
+              "surface_form": "分かりません",
+              "inflection": "masu"
             }
           ],
-          "furigana": "彼[かれ]の言[い]うことが分[わ]かる。"
+          "furigana": "どれが分[わ]かりませんか。"
         }
       ],
       "level": 2
@@ -5969,56 +5935,58 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は料理をする。",
-          "english": "I cook.",
+          "japanese": "来月、何をしますか。",
+          "english": "What are you doing next month?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "ryouri",
+            "raigetsu",
+            "nani",
             "suru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "raigetsu",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "ryouri",
-              "start": 2,
+              "vocabulary_slug": "nani",
+              "start": 3,
               "end": 4
             },
             {
               "vocabulary_slug": "suru",
               "start": 5,
-              "end": 7
+              "end": 8,
+              "surface_form": "します",
+              "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は料[りょう]理[り]をする。"
+          "furigana": "来[らい]月[げつ]、何[なに]をしますか。"
         },
         {
-          "japanese": "午後、電話をします。",
-          "english": "I'll make a phone call in the afternoon.",
+          "japanese": "あなたはどうしますか。",
+          "english": "What about you? What will you do?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "gogo",
-            "denwa",
+            "anata",
+            "dou",
             "suru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "gogo",
+              "vocabulary_slug": "anata",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
-              "vocabulary_slug": "denwa",
-              "start": 3,
-              "end": 5
+              "vocabulary_slug": "dou",
+              "start": 4,
+              "end": 6
             },
             {
               "vocabulary_slug": "suru",
@@ -6028,37 +5996,31 @@
               "inflection": "masu"
             }
           ],
-          "furigana": "午[ご]後[ご]、電[でん]話[わ]をします。"
+          "furigana": "あなたはどうしますか。"
         },
         {
-          "japanese": "一緒に食事をした。",
-          "english": "We had a meal together.",
+          "japanese": "それはしません。",
+          "english": "I won't do that.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "issho-ni",
-            "shokuji",
+            "sore",
             "suru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "issho-ni",
+              "vocabulary_slug": "sore",
               "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "shokuji",
-              "start": 3,
-              "end": 5
+              "end": 2
             },
             {
               "vocabulary_slug": "suru",
-              "start": 6,
-              "end": 8,
-              "surface_form": "した",
-              "inflection": "ta"
+              "start": 3,
+              "end": 7,
+              "surface_form": "しません",
+              "inflection": "masu"
             }
           ],
-          "furigana": "一[いっ]緒[しょ]に食[しょく]事[じ]をした。"
+          "furigana": "それはしません。"
         }
       ],
       "level": 2
@@ -6088,88 +6050,98 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "部屋に椅子がある。",
-          "english": "There's a chair in the room.",
+          "japanese": "それはどこにありますか。",
+          "english": "Where is that?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "heya",
-            "isu",
+            "sore",
+            "doko",
             "aru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "heya",
+              "vocabulary_slug": "sore",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "isu",
+              "vocabulary_slug": "doko",
               "start": 3,
               "end": 5
             },
             {
               "vocabulary_slug": "aru",
               "start": 6,
-              "end": 8
-            }
-          ],
-          "furigana": "部屋[へや]に椅[い]子[す]がある。"
-        },
-        {
-          "japanese": "今日は時間がある。",
-          "english": "I have time today.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kyou",
-            "jikan",
-            "aru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyou",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "jikan",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "furigana": "今日[きょう]は時[じ]間[かん]がある。"
-        },
-        {
-          "japanese": "お金がありますか。",
-          "english": "Do you have any money?",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "okane",
-            "aru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "okane",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 3,
-              "end": 7,
+              "end": 10,
               "surface_form": "あります",
               "inflection": "masu"
             }
           ],
-          "furigana": "お金[かね]がありますか。"
+          "furigana": "それはどこにありますか。"
+        },
+        {
+          "japanese": "ここにはありません。",
+          "english": "It's not here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "koko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 4,
+              "end": 9,
+              "surface_form": "ありません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "ここにはありません。"
+        },
+        {
+          "japanese": "来月の十日に何がありますか。",
+          "english": "What's happening on the 10th next month?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "tooka",
+            "nani",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "raigetsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tooka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "来[らい]月[げつ]の十[とお]日[か]に何[なに]がありますか。"
         }
       ],
       "level": 2
@@ -6199,84 +6171,26 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "あそこに猫がいる。",
-          "english": "There's a cat over there.",
+          "japanese": "あなたはどこにいますか。",
+          "english": "Where are you?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "asoko",
-            "neko",
+            "anata",
+            "doko",
             "iru-exist"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "asoko",
+              "vocabulary_slug": "anata",
               "start": 0,
               "end": 3
             },
             {
-              "vocabulary_slug": "neko",
-              "start": 4,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "furigana": "あそこに猫[ねこ]がいる。"
-        },
-        {
-          "japanese": "弟がいます。",
-          "english": "I have a younger brother.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "otouto",
-            "iru-exist"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "otouto",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 2,
-              "end": 5,
-              "surface_form": "います",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "弟[おとうと]がいます。"
-        },
-        {
-          "japanese": "彼女は今うちにいます。",
-          "english": "She's at home now.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kanojo",
-            "ima",
-            "uchi",
-            "iru-exist"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanojo",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ima",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "uchi",
+              "vocabulary_slug": "doko",
               "start": 4,
               "end": 6
             },
@@ -6288,7 +6202,61 @@
               "inflection": "masu"
             }
           ],
-          "furigana": "彼[かの]女[じょ]は今[いま]うちにいます。"
+          "furigana": "あなたはどこにいますか。"
+        },
+        {
+          "japanese": "田中さんはここにいません。",
+          "english": "Tanaka isn't here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "koko",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 12,
+              "surface_form": "いません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "田中[たなか]さんはここにいません。"
+        },
+        {
+          "japanese": "あそこに何がいましたか。",
+          "english": "What was that over there?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "asoko",
+            "nani",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "asoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 6,
+              "end": 10,
+              "surface_form": "いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "あそこに何[なに]がいましたか。"
         }
       ],
       "level": 2
@@ -8218,103 +8186,92 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は毎日ご飯を食べます。",
-          "english": "I eat a meal every day.",
+          "japanese": "今日は何を食べますか。",
+          "english": "What are you eating today?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "mainichi",
-            "gohan",
+            "kyou",
+            "nani",
             "taberu"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "kyou",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "mainichi",
-              "start": 2,
+              "vocabulary_slug": "nani",
+              "start": 3,
               "end": 4
             },
             {
-              "vocabulary_slug": "gohan",
-              "start": 4,
-              "end": 6
-            },
-            {
               "vocabulary_slug": "taberu",
-              "start": 7,
-              "end": 11,
+              "start": 5,
+              "end": 9,
               "surface_form": "食べます",
               "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は毎[まい]日[にち]ご飯[はん]を食[た]べます。"
+          "furigana": "今日[きょう]は何[なに]を食[た]べますか。"
         },
         {
-          "japanese": "彼はレストランで魚を食べました。",
-          "english": "He ate fish at a restaurant.",
+          "japanese": "これを食べませんか。",
+          "english": "Would you like to eat this?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "kare",
-            "resutoran",
-            "sakana",
+            "kore",
             "taberu"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "kore",
               "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "resutoran",
-              "start": 2,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "sakana",
-              "start": 8,
-              "end": 9
+              "end": 2
             },
             {
               "vocabulary_slug": "taberu",
-              "start": 10,
-              "end": 15,
+              "start": 3,
+              "end": 8,
+              "surface_form": "食べません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "これを食[た]べませんか。"
+        },
+        {
+          "japanese": "パンを三つ食べました。",
+          "english": "I ate three pieces of bread.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "pan",
+            "mittsu",
+            "taberu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "pan",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mittsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 5,
+              "end": 10,
               "surface_form": "食べました",
               "inflection": "masu"
             }
           ],
-          "furigana": "彼[かれ]はレストランで魚[さかな]を食[た]べました。"
-        },
-        {
-          "japanese": "一緒に晩ご飯を食べましょう。",
-          "english": "Let's eat dinner together.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "issho-ni",
-            "bangohan",
-            "taberu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "issho-ni",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "bangohan",
-              "start": 3,
-              "end": 6
-            }
-          ],
-          "furigana": "一[いっ]緒[しょ]に晩[ばん]ご飯[はん]を食[た]べましょう。"
+          "furigana": "パンを三[みっ]つ食[た]べました。"
         }
       ],
       "level": 2
@@ -8345,110 +8302,79 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は手紙を書きます。",
-          "english": "I write a letter.",
+          "japanese": "何を書きますか。",
+          "english": "What are you going to write?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "tegami",
+            "nani",
             "kaku"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "nani",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "tegami",
-              "start": 2,
-              "end": 4
-            },
-            {
               "vocabulary_slug": "kaku",
-              "start": 5,
-              "end": 9,
+              "start": 2,
+              "end": 6,
               "surface_form": "書きます",
               "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は手[て]紙[がみ]を書[か]きます。"
+          "furigana": "何[なに]を書[か]きますか。"
         },
         {
-          "japanese": "僕は毎朝ノートに書きます。",
-          "english": "I write in my notebook every morning.",
+          "japanese": "今日、これを書きました。",
+          "english": "I wrote this today.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "boku",
-            "maiasa",
-            "nooto",
+            "kyou",
+            "kore",
             "kaku"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "boku",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "maiasa",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "nooto",
-              "start": 4,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "kaku",
-              "start": 8,
-              "end": 12,
-              "surface_form": "書きます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "僕[ぼく]は毎[まい]朝[あさ]ノートに書[か]きます。"
-        },
-        {
-          "japanese": "先生は黒いペンで書きます。",
-          "english": "The teacher writes with a black pen.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "sensei",
-            "kuroi",
-            "pen",
-            "kaku"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "sensei",
+              "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "kuroi",
+              "vocabulary_slug": "kore",
               "start": 3,
               "end": 5
             },
             {
-              "vocabulary_slug": "pen",
-              "start": 5,
-              "end": 7
-            },
-            {
               "vocabulary_slug": "kaku",
-              "start": 8,
-              "end": 12,
-              "surface_form": "書きます",
+              "start": 6,
+              "end": 11,
+              "surface_form": "書きました",
               "inflection": "masu"
             }
           ],
-          "furigana": "先[せん]生[せい]は黒[くろ]いペンで書[か]きます。"
+          "furigana": "今日[きょう]、これを書[か]きました。"
+        },
+        {
+          "japanese": "ここに書きましょう。",
+          "english": "Let's write it here.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koko",
+            "kaku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "koko",
+              "start": 0,
+              "end": 2
+            }
+          ],
+          "furigana": "ここに書[か]きましょう。"
         }
       ],
       "level": 2
@@ -8803,98 +8729,97 @@
       "_meta": {
         "generator_model": "claude-sonnet-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は先生と話します。",
-          "english": "I speak with the teacher.",
+          "japanese": "今、話す時間がありますか。",
+          "english": "Do you have time to talk right now?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "sensei",
-            "hanasu-v"
+            "ima",
+            "hanasu-v",
+            "jikan",
+            "aru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "ima",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "sensei",
+              "vocabulary_slug": "hanasu-v",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "hanasu-v",
-              "start": 5,
-              "end": 9,
-              "surface_form": "話します",
+              "vocabulary_slug": "jikan",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "あります",
               "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は先[せん]生[せい]と話[はな]します。"
+          "furigana": "今[いま]、話[はな]す時[じ]間[かん]がありますか。"
         },
         {
-          "japanese": "僕は友達と話した。",
-          "english": "I talked with a friend.",
+          "japanese": "今日、何を話しましたか。",
+          "english": "What did you talk about today?",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "boku",
-            "tomodachi",
+            "kyou",
+            "nani",
             "hanasu-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "boku",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "tomodachi",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "hanasu-v",
-              "start": 5,
-              "end": 8,
-              "surface_form": "話した",
-              "inflection": "ta"
-            }
-          ],
-          "furigana": "僕[ぼく]は友[とも]達[だち]と話[はな]した。"
-        },
-        {
-          "japanese": "彼女は学校で話しません。",
-          "english": "She does not speak at school.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kanojo",
-            "gakkou-v",
-            "hanasu-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanojo",
+              "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "gakkou-v",
+              "vocabulary_slug": "nani",
               "start": 3,
-              "end": 5
+              "end": 4
             },
             {
               "vocabulary_slug": "hanasu-v",
-              "start": 6,
-              "end": 11,
-              "surface_form": "話しません",
+              "start": 5,
+              "end": 10,
+              "surface_form": "話しました",
               "inflection": "masu"
             }
           ],
-          "furigana": "彼[かの]女[じょ]は学[がっ]校[こう]で話[はな]しません。"
+          "furigana": "今日[きょう]、何[なに]を話[はな]しましたか。"
+        },
+        {
+          "japanese": "来週、あそこで話しましょう。",
+          "english": "Let's talk over there next week.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "raishuu",
+            "asoko",
+            "hanasu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "raishuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "asoko",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "furigana": "来[らい]週[しゅう]、あそこで話[はな]しましょう。"
         }
       ],
       "level": 2
@@ -11978,94 +11903,80 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は今日早く帰る。",
-          "english": "I'm going home early today.",
+          "japanese": "おじいさんは来週帰ります。",
+          "english": "Grandpa is coming back home next week.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "kyou",
-            "hayai-early",
+            "ojiisan",
+            "raishuu",
             "kaeru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "ojiisan",
               "start": 0,
-              "end": 1
+              "end": 5
             },
             {
-              "vocabulary_slug": "kyou",
-              "start": 2,
-              "end": 4
+              "vocabulary_slug": "raishuu",
+              "start": 6,
+              "end": 8
             },
             {
               "vocabulary_slug": "kaeru-v",
-              "start": 6,
-              "end": 8
+              "start": 8,
+              "end": 12,
+              "surface_form": "帰ります",
+              "inflection": "masu"
             }
           ],
-          "furigana": "私[わたくし]は今日[きょう]早[はや]く帰[かえ]る。"
+          "furigana": "おじいさんは来[らい]週[しゅう]帰[かえ]ります。"
         },
         {
-          "japanese": "彼は六時に家に帰る。",
-          "english": "He goes home at six.",
+          "japanese": "みんなで帰りましょう。",
+          "english": "Let's all head home together.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "kare",
-            "roku-v",
-            "ie",
+            "minna",
             "kaeru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "minna",
               "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "ie",
-              "start": 5,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "kaeru-v",
-              "start": 7,
-              "end": 9
+              "end": 3
             }
           ],
-          "furigana": "彼[かれ]は六[ろく]時[じ]に家[いえ]に帰[かえ]る。"
+          "furigana": "みんなで帰[かえ]りましょう。"
         },
         {
-          "japanese": "毎日会社から帰る。",
-          "english": "I come home from the office every day.",
+          "japanese": "あさって、うちへ帰ります。",
+          "english": "I'm going home the day after tomorrow.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "mainichi",
-            "kaisha",
+            "asatte",
+            "uchi",
             "kaeru-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "mainichi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "kaisha",
-              "start": 2,
-              "end": 4
+              "vocabulary_slug": "uchi",
+              "start": 5,
+              "end": 7
             },
             {
               "vocabulary_slug": "kaeru-v",
-              "start": 6,
-              "end": 8
+              "start": 8,
+              "end": 12,
+              "surface_form": "帰ります",
+              "inflection": "masu"
             }
           ],
-          "furigana": "毎[まい]日[にち]会[かい]社[しゃ]から帰[かえ]る。"
+          "furigana": "あさって、うちへ帰[かえ]ります。"
         }
       ],
       "level": 3
@@ -12096,23 +12007,24 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私はパンを買います。",
-          "english": "I buy bread.",
+          "japanese": "今日パンを三つ買いました。",
+          "english": "I bought three pieces of bread today.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
+            "kyou",
             "pan",
+            "mittsu",
             "kau-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "kyou",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
               "vocabulary_slug": "pan",
@@ -12120,84 +12032,78 @@
               "end": 4
             },
             {
-              "vocabulary_slug": "kau-v",
+              "vocabulary_slug": "mittsu",
               "start": 5,
-              "end": 9,
-              "surface_form": "買います",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "私[わたくし]はパンを買[か]います。"
-        },
-        {
-          "japanese": "彼女は新しいかばんを買う。",
-          "english": "She buys a new bag.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kanojo",
-            "atarashii-adj",
-            "kaban",
-            "kau-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanojo",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "atarashii-adj",
-              "start": 3,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "kaban",
-              "start": 6,
-              "end": 9
-            },
-            {
-              "vocabulary_slug": "kau-v",
-              "start": 10,
-              "end": 12
-            }
-          ],
-          "furigana": "彼[かの]女[じょ]は新[あたら]しいかばんを買[か]う。"
-        },
-        {
-          "japanese": "明日、スーパーで牛乳を買います。",
-          "english": "Tomorrow I will buy milk at the supermarket.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "ashita",
-            "suupaa",
-            "gyuunyuu",
-            "kau-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "suupaa",
-              "start": 3,
               "end": 7
             },
             {
-              "vocabulary_slug": "gyuunyuu",
-              "start": 8,
-              "end": 10
-            },
-            {
               "vocabulary_slug": "kau-v",
-              "start": 11,
-              "end": 15,
-              "surface_form": "買います",
+              "start": 7,
+              "end": 12,
+              "surface_form": "買いました",
               "inflection": "masu"
             }
           ],
-          "furigana": "明日[あした]、スーパーで牛[ぎゅう]乳[にゅう]を買[か]います。"
+          "furigana": "今日[きょう]パンを三[みっ]つ買[か]いました。"
+        },
+        {
+          "japanese": "あそこで食べ物を買いましょう。",
+          "english": "Let's buy some food over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "asoko",
+            "tabemono",
+            "kau-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "asoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tabemono",
+              "start": 4,
+              "end": 7
+            }
+          ],
+          "furigana": "あそこで食[た]べ物[もの]を買[か]いましょう。"
+        },
+        {
+          "japanese": "おばあさんはそれをどこで買いましたか。",
+          "english": "Where did your grandmother buy that?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "obaasan",
+            "sore",
+            "doko",
+            "kau-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "obaasan",
+              "start": 0,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "sore",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 12,
+              "end": 17,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "おばあさんはそれをどこで買[か]いましたか。"
         }
       ],
       "level": 3
@@ -12338,98 +12244,111 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "冷たい水を飲みます。",
-          "english": "I drink cold water.",
+          "japanese": "あなたは何を飲みますか。",
+          "english": "What would you like to drink?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "tsumetai",
-            "mizu",
+            "anata",
+            "nani",
             "nomu-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "tsumetai",
+              "vocabulary_slug": "anata",
               "start": 0,
               "end": 3
             },
             {
-              "vocabulary_slug": "mizu",
-              "start": 3,
-              "end": 4
+              "vocabulary_slug": "nani",
+              "start": 4,
+              "end": 5
             },
             {
               "vocabulary_slug": "nomu-v",
-              "start": 5,
-              "end": 9,
+              "start": 6,
+              "end": 10,
               "surface_form": "飲みます",
               "inflection": "masu"
             }
           ],
-          "furigana": "冷[つめ]たい水[みず]を飲[の]みます。"
+          "furigana": "あなたは何[なに]を飲[の]みますか。"
         },
         {
-          "japanese": "毎朝コーヒーを飲みます。",
-          "english": "I drink coffee every morning.",
+          "japanese": "おじいさんは毎日三時にお茶を飲みます。",
+          "english": "Grandpa drinks tea at three o'clock every day.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "maiasa",
-            "koohii",
+            "ojiisan",
+            "mainichi",
+            "san-v",
+            "ocha",
             "nomu-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "maiasa",
+              "vocabulary_slug": "ojiisan",
               "start": 0,
-              "end": 2
+              "end": 5
             },
             {
-              "vocabulary_slug": "koohii",
-              "start": 2,
-              "end": 6
+              "vocabulary_slug": "mainichi",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 11,
+              "end": 13
             },
             {
               "vocabulary_slug": "nomu-v",
-              "start": 7,
-              "end": 11,
+              "start": 14,
+              "end": 18,
               "surface_form": "飲みます",
               "inflection": "masu"
             }
           ],
-          "furigana": "毎[まい]朝[あさ]コーヒーを飲[の]みます。"
+          "furigana": "おじいさんは毎[まい]日[にち]三[さん]時[じ]にお茶[ちゃ]を飲[の]みます。"
         },
         {
-          "japanese": "彼はお酒を飲みました。",
-          "english": "He drank alcohol.",
+          "japanese": "赤ちゃんがみんなの飲み物を飲みました。",
+          "english": "The baby drank everyone's drinks.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kare",
-            "osake",
+            "akachan",
+            "minna",
+            "nomimono",
             "nomu-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "akachan",
               "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "osake",
-              "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "nomu-v",
+              "vocabulary_slug": "minna",
               "start": 5,
-              "end": 10,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "nomimono",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 13,
+              "end": 18,
               "surface_form": "飲みました",
               "inflection": "masu"
             }
           ],
-          "furigana": "彼[かれ]はお酒[さけ]を飲[の]みました。"
+          "furigana": "赤[あか]ちゃんがみんなの飲[の]み物[もの]を飲[の]みました。"
         }
       ],
       "level": 3
@@ -12460,105 +12379,27 @@
       "_meta": {
         "generator_model": "claude-opus-5-5",
         "prompt_version": "6",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
-          "japanese": "私は毎朝新聞を読みます。",
-          "english": "I read the newspaper every morning.",
+          "japanese": "今日はどの本を読みましょうか。",
+          "english": "Which book shall we read today?",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "maiasa",
-            "shinbun",
-            "yomu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "maiasa",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "shinbun",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "yomu",
-              "start": 7,
-              "end": 11,
-              "surface_form": "読みます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "私[わたくし]は毎[まい]朝[あさ]新[しん]聞[ぶん]を読[よ]みます。"
-        },
-        {
-          "japanese": "彼女は図書館で本を読みます。",
-          "english": "She reads books at the library.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kanojo",
-            "toshokan",
+            "kyou",
+            "dono",
             "hon",
             "yomu"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kanojo",
+              "vocabulary_slug": "kyou",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "toshokan",
-              "start": 3,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "hon",
-              "start": 7,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "yomu",
-              "start": 9,
-              "end": 13,
-              "surface_form": "読みます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "彼[かの]女[じょ]は図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
-        },
-        {
-          "japanese": "僕は今この本を読みます。",
-          "english": "I'm going to read this book now.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "boku",
-            "ima",
-            "kono",
-            "hon",
-            "yomu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "boku",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "ima",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "kono",
+              "vocabulary_slug": "dono",
               "start": 3,
               "end": 5
             },
@@ -12566,16 +12407,81 @@
               "vocabulary_slug": "hon",
               "start": 5,
               "end": 6
+            }
+          ],
+          "furigana": "今日[きょう]はどの本[ほん]を読[よ]みましょうか。"
+        },
+        {
+          "japanese": "おじいさんは毎日あそこで何を読みますか。",
+          "english": "What does Grandpa read over there every day?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ojiisan",
+            "mainichi",
+            "asoko",
+            "nani",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ojiisan",
+              "start": 0,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "asoko",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 12,
+              "end": 13
             },
             {
               "vocabulary_slug": "yomu",
-              "start": 7,
-              "end": 11,
+              "start": 14,
+              "end": 18,
               "surface_form": "読みます",
               "inflection": "masu"
             }
           ],
-          "furigana": "僕[ぼく]は今[いま]この本[ほん]を読[よ]みます。"
+          "furigana": "おじいさんは毎[まい]日[にち]あそこで何[なに]を読[よ]みますか。"
+        },
+        {
+          "japanese": "みんなでそれを読みませんか。",
+          "english": "Why don't we all read that together?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "minna",
+            "sore",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "minna",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sore",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 7,
+              "end": 12,
+              "surface_form": "読みません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "みんなでそれを読[よ]みませんか。"
         }
       ],
       "level": 3
