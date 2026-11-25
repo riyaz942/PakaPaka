@@ -377,228 +377,159 @@
   "masu": {
     "accepted_meanings": [
       "polite verb ending",
-      "polite form",
-      "polite",
-      "polite present"
+      "polite present",
+      "do / will do",
+      "polite non-past"
     ],
     "sentences": [
       {
-        "japanese": "家で日本語を勉強します。",
-        "english": "I study Japanese at home.",
+        "japanese": "来週、行きます。",
+        "english": "I'll go next week.",
         "vocabulary_slugs": [
-          "ie",
-          "nihongo",
-          "benkyou",
+          "raishuu",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "来週行きます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は何を食べますか。",
+        "english": "What are you eating today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "nani",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日何を食べますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "誰が来ますか。",
+        "english": "Who is coming?",
+        "vocabulary_slugs": [
+          "dare",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今週は何をしますか。",
+        "english": "What are you doing this week?",
+        "vocabulary_slugs": [
+          "konshuu",
+          "nani",
           "suru"
         ],
         "alternates": [
           {
-            "japanese": "日本語を家で勉強します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家で日本語を勉強します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "家で日本語の勉強をします。",
+            "japanese": "今週何をしますか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "水を飲みます。",
-        "english": "I drink water.",
+        "japanese": "分かりますか。",
+        "english": "Do you understand?",
         "vocabulary_slugs": [
-          "mizu",
-          "nomu-v"
+          "wakaru"
         ],
         "alternates": [
           {
-            "japanese": "私は水を飲みます。",
+            "japanese": "分かりましたか。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "あそこに誰がいますか。",
+        "english": "Who is over there?",
+        "vocabulary_slugs": [
+          "asoko",
+          "dare",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "誰があそこにいますか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "学校へ行きます。",
-        "english": "I go to school.",
+        "japanese": "時間がありますか。",
+        "english": "Do you have time?",
         "vocabulary_slugs": [
-          "gakkou-v",
+          "jikan",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "これを書きます。",
+        "english": "I'll write this one.",
+        "vocabulary_slugs": [
+          "kore",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "これを書きました。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "来月、あそこへ行きます。",
+        "english": "Next month I'm going over there.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "asoko",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "学校に行きます。",
+            "japanese": "来月あそこへ行きます。",
             "kind": "valid"
           },
           {
-            "japanese": "私は学校へ行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は学校に行きます。",
+            "japanese": "来月、あそこに行きます。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "本を読みます。",
-        "english": "I read a book.",
+        "japanese": "誰と話しますか。",
+        "english": "Who are you going to talk with?",
         "vocabulary_slugs": [
-          "hon",
-          "yomu"
+          "dare",
+          "hanasu-v"
         ],
-        "alternates": [
-          {
-            "japanese": "私は本を読みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "朝ご飯を食べます。",
-        "english": "I eat breakfast.",
-        "vocabulary_slugs": [
-          "asagohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は朝ご飯を食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "私はパンを食べます。",
-        "english": "I eat bread.",
-        "vocabulary_slugs": [
-          "watashi",
-          "pan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "パンを食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "コーヒーを飲みます。",
-        "english": "I drink coffee.",
-        "vocabulary_slugs": [
-          "koohii",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私はコーヒーを飲みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "先生は学校に行きます。",
-        "english": "The teacher goes to school.",
-        "vocabulary_slugs": [
-          "sensei",
-          "gakkou-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "先生は学校へ行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、映画を見ました。",
-        "english": "Yesterday, I watched a movie.",
-        "vocabulary_slugs": [
-          "kinou",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "映画を昨日見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、私は映画を見ました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "友達は来ません。",
-        "english": "My friend is not coming.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "kuru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達が来ません。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "masen": {
     "accepted_meanings": [
       "polite negative",
-      "not",
       "don't",
-      "do not",
-      "won't"
+      "doesn't",
+      "won't",
+      "not"
     ],
     "sentences": [
-      {
-        "japanese": "お酒を飲みません。",
-        "english": "I don't drink alcohol.",
-        "vocabulary_slugs": [
-          "osake",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私はお酒を飲みません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "肉を食べません。",
-        "english": "I don't eat meat.",
-        "vocabulary_slugs": [
-          "niku",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は肉を食べません。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "今日は行きません。",
         "english": "I won't go today.",
@@ -606,127 +537,102 @@
           "kyou",
           "iku-v"
         ],
-        "alternates": [
-          {
-            "japanese": "今日、行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日は行きません。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
-        "japanese": "窓を開けません。",
-        "english": "I won't open the window.",
+        "japanese": "分かりません。",
+        "english": "I don't understand.",
         "vocabulary_slugs": [
-          "mado",
-          "akeru"
+          "wakaru"
         ],
         "alternates": [
           {
-            "japanese": "私は窓を開けません。",
-            "kind": "valid"
+            "japanese": "分かります。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "彼は来ません。",
-        "english": "He is not coming.",
+        "japanese": "時間がありません。",
+        "english": "I don't have time.",
         "vocabulary_slugs": [
-          "kare",
+          "jikan",
+          "aru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここには誰もいません。",
+        "english": "There's nobody here.",
+        "vocabulary_slugs": [
+          "koko",
+          "dare",
+          "iru-exist"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "来週は来ません。",
+        "english": "They aren't coming next week.",
+        "vocabulary_slugs": [
+          "raishuu",
           "kuru-v"
         ],
         "alternates": []
       },
       {
-        "japanese": "今日、学校に行きません。",
-        "english": "I will not go to school today.",
+        "japanese": "それは食べません。",
+        "english": "I don't eat that.",
+        "vocabulary_slugs": [
+          "sore",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "それを食べません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今年は何もしません。",
+        "english": "I'm not doing anything this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "nani",
+          "suru"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あれは見ません。",
+        "english": "I'm not watching that one.",
+        "vocabulary_slugs": [
+          "are",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あれを見ません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今は話しません。",
+        "english": "I won't talk right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日は書きませんでした。",
+        "english": "I didn't write today.",
         "vocabulary_slugs": [
           "kyou",
-          "gakkou-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "今日は学校に行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、学校へ行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日、学校に行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、私は学校に行きません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "時々、朝ご飯を食べません。",
-        "english": "Sometimes I don't eat breakfast.",
-        "vocabulary_slugs": [
-          "tokidoki",
-          "asagohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は時々朝ご飯を食べません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "朝ご飯を時々食べません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、本を読みませんでした。",
-        "english": "I did not read the book yesterday.",
-        "vocabulary_slugs": [
-          "kinou",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "本を昨日読みませんでした。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "私はコーヒーを飲みません。",
-        "english": "I do not drink coffee.",
-        "vocabulary_slugs": [
-          "watashi",
-          "koohii",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "コーヒーを飲みません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "猫は魚を食べません。",
-        "english": "The cat won't eat the fish.",
-        "vocabulary_slugs": [
-          "neko",
-          "sakana",
-          "taberu"
+          "kaku"
         ],
         "alternates": []
       }
@@ -734,11 +640,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "mashita": {
@@ -746,195 +648,135 @@
       "polite past",
       "did",
       "past tense",
-      "past"
+      "-ed"
     ],
     "sentences": [
       {
-        "japanese": "昨日映画を見ました。",
-        "english": "I watched a movie yesterday.",
+        "japanese": "分かりました。",
+        "english": "Got it.",
         "vocabulary_slugs": [
-          "kinou",
-          "eiga",
-          "miru-v"
+          "wakaru"
         ],
         "alternates": [
           {
-            "japanese": "映画を昨日見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、私は映画を見ました。",
-            "kind": "valid"
+            "japanese": "分かります。",
+            "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "ご飯を食べました。",
-        "english": "I ate a meal.",
+        "japanese": "今日は何を食べましたか。",
+        "english": "What did you eat today?",
         "vocabulary_slugs": [
-          "gohan",
+          "kyou",
+          "nani",
           "taberu"
         ],
         "alternates": [
           {
-            "japanese": "私はご飯を食べました。",
+            "japanese": "今日何を食べましたか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "友達に会いました。",
-        "english": "I met a friend.",
+        "japanese": "誰が来ましたか。",
+        "english": "Who came?",
         "vocabulary_slugs": [
-          "tomodachi",
-          "au"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達と会いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は友達に会いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は友達と会いました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "晩ご飯を食べましたか。",
-        "english": "Did you eat dinner?",
-        "vocabulary_slugs": [
-          "bangohan",
-          "taberu"
+          "dare",
+          "kuru-v"
         ],
         "alternates": []
       },
       {
-        "japanese": "昨日、本を読みました。",
-        "english": "Yesterday, I read a book.",
+        "japanese": "今週、あそこへ行きました。",
+        "english": "I went over there this week.",
         "vocabulary_slugs": [
-          "kinou",
-          "hon",
-          "yomu"
+          "konshuu",
+          "asoko",
+          "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "本を昨日読みました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今日、コーヒーを飲みませんでした。",
-        "english": "I did not drink coffee today.",
-        "vocabulary_slugs": [
-          "kyou",
-          "koohii",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は今日コーヒーを飲みませんでした。",
+            "japanese": "今週あそこへ行きました。",
             "kind": "valid"
           },
           {
-            "japanese": "コーヒーを今日飲みませんでした。",
+            "japanese": "今週、あそこに行きました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "先生は今日、学校に来ました。",
-        "english": "The teacher came to school today.",
+        "japanese": "それを見ましたか。",
+        "english": "Did you see that?",
         "vocabulary_slugs": [
-          "sensei",
+          "sore",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "これを書きました。",
+        "english": "I wrote this.",
+        "vocabulary_slugs": [
+          "kore",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "これを書きます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "誰と話しましたか。",
+        "english": "Who did you talk to?",
+        "vocabulary_slugs": [
+          "dare",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今月は何をしましたか。",
+        "english": "What did you do this month?",
+        "vocabulary_slugs": [
+          "kongetsu",
+          "nani",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今月何をしましたか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は来ませんでした。",
+        "english": "They didn't come today.",
+        "vocabulary_slugs": [
           "kyou",
-          "gakkou-v",
           "kuru-v"
         ],
-        "alternates": [
-          {
-            "japanese": "今日、先生は学校に来ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生は今日、学校へ来ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生が今日、学校に来ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、先生が学校に来ました。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
-        "japanese": "今、起きました。",
-        "english": "I woke up just now.",
+        "japanese": "どこにいましたか。",
+        "english": "Where were you?",
         "vocabulary_slugs": [
-          "ima",
-          "okiru"
+          "doko",
+          "iru-exist"
         ],
-        "alternates": [
-          {
-            "japanese": "私は今起きました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "一緒に遊びました。",
-        "english": "We played together.",
-        "vocabulary_slugs": [
-          "issho-ni",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私たちは一緒に遊びました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、肉を食べました。",
-        "english": "Yesterday, I ate meat.",
-        "vocabulary_slugs": [
-          "kinou",
-          "niku",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "肉を昨日食べました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日肉を食べました。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "wo": {
@@ -2209,141 +2051,100 @@
   },
   "no-possessive": {
     "accepted_meanings": [
-      "possessive",
-      "of",
-      "'s",
       "possessive particle",
-      "linking particle"
+      "'s",
+      "of",
+      "linking particle",
+      "belonging to"
     ],
     "sentences": [
       {
-        "japanese": "私の本です。",
-        "english": "It's my book.",
+        "japanese": "あなたのはこれですか。",
+        "english": "Is this one yours?",
         "vocabulary_slugs": [
-          "watashi",
-          "hon"
+          "anata",
+          "kore"
         ],
         "alternates": []
       },
       {
-        "japanese": "日本語の先生です。",
-        "english": "A teacher of Japanese.",
+        "japanese": "あなたのはそれですか。",
+        "english": "Is yours that one?",
         "vocabulary_slugs": [
-          "nihongo",
-          "sensei"
+          "anata",
+          "sore"
         ],
         "alternates": []
       },
       {
-        "japanese": "それは私の本です。",
-        "english": "That is my book.",
+        "japanese": "あなたのはどれですか。",
+        "english": "Which one is yours?",
         "vocabulary_slugs": [
-          "sore",
-          "watashi",
-          "hon"
+          "anata",
+          "dore"
         ],
         "alternates": []
       },
       {
-        "japanese": "学校の写真を見ます。",
-        "english": "I will look at photos of the school.",
+        "japanese": "あなたのはどこですか。",
+        "english": "Where is yours?",
         "vocabulary_slugs": [
-          "gakkou-v",
-          "shashin",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は学校の写真を見ます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "私の友達の猫は魚を食べます。",
-        "english": "My friend's cat eats fish.",
-        "vocabulary_slugs": [
-          "watashi",
-          "tomodachi",
-          "neko",
-          "sakana",
-          "taberu"
-        ],
-        "form": "私|の",
-        "alternates": []
-      },
-      {
-        "japanese": "これは誰の本ですか。",
-        "english": "Whose book is this?",
-        "vocabulary_slugs": [
-          "kore",
-          "dare",
-          "hon"
+          "anata",
+          "doko"
         ],
         "alternates": []
       },
       {
-        "japanese": "それは先生の写真ではありません。",
-        "english": "That isn't the teacher's photo.",
+        "japanese": "あなたのはあれですか。",
+        "english": "Is yours the one over there?",
         "vocabulary_slugs": [
-          "sore",
-          "sensei",
-          "shashin",
-          "aru"
-        ],
-        "alternates": [
-          {
-            "japanese": "それは先生の写真じゃありません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、友達の家に行きました。",
-        "english": "Yesterday I went to my friend's house.",
-        "vocabulary_slugs": [
-          "kinou",
-          "tomodachi",
-          "ie",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達の家に昨日行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、友達の家へ行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日、友達の家に行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、私は友達の家に行きました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "猫の水がありません。",
-        "english": "The cat's water is gone.",
-        "vocabulary_slugs": [
-          "neko",
-          "mizu",
-          "aru"
+          "anata",
+          "are"
         ],
         "alternates": []
       },
       {
-        "japanese": "月曜日の朝はとても忙しいです。",
-        "english": "Monday mornings are very busy.",
+        "japanese": "あなたのはここです。",
+        "english": "Yours is here.",
         "vocabulary_slugs": [
-          "getsuyoubi",
-          "asa",
-          "totemo",
-          "isogashii"
+          "anata",
+          "koko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたのはそこです。",
+        "english": "Yours is right there.",
+        "vocabulary_slugs": [
+          "anata",
+          "soko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたのはどちらですか。",
+        "english": "Which of the two is yours?",
+        "vocabulary_slugs": [
+          "anata",
+          "dochira"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたのはあそこです。",
+        "english": "Yours is over there.",
+        "vocabulary_slugs": [
+          "anata",
+          "asoko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あなたのはこちらです。",
+        "english": "Yours is this one.",
+        "vocabulary_slugs": [
+          "anata",
+          "kochira"
         ],
         "alternates": []
       }
@@ -2351,11 +2152,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "no-nominalizer": {
