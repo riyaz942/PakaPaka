@@ -18987,19 +18987,19 @@
         ]
       },
       {
-        "japanese": "財布を忘れたんです。",
-        "english": "The thing is, I forgot my wallet.",
+        "japanese": "傘を忘れたんです。",
+        "english": "The thing is, I forgot my umbrella.",
         "vocabulary_slugs": [
-          "saifu",
+          "kasa",
           "wasureru"
         ],
         "alternates": [
           {
-            "japanese": "財布を忘れたのです。",
+            "japanese": "傘を忘れたのです。",
             "kind": "valid"
           },
           {
-            "japanese": "私は財布を忘れたんです。",
+            "japanese": "私は傘を忘れたんです。",
             "kind": "valid"
           }
         ]
@@ -19093,16 +19093,44 @@
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "電車が遅れたんです。",
+        "english": "The train was late, you see.",
+        "vocabulary_slugs": [
+          "densha",
+          "okureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "電車が遅れたのです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "猫が好きなんです。",
+        "english": "The thing is, I like cats.",
+        "vocabulary_slugs": [
+          "neko",
+          "suki"
+        ],
+        "alternates": [
+          {
+            "japanese": "猫が好きなのです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は猫が好きなんです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "nikui-yasui": {
@@ -19124,11 +19152,11 @@
         ]
       },
       {
-        "japanese": "この漢字は読みにくいです。",
-        "english": "This kanji is hard to read.",
+        "japanese": "この新聞は読みにくいです。",
+        "english": "This newspaper is hard to read.",
         "vocabulary_slugs": [
           "kono",
-          "kanji-word",
+          "shinbun",
           "yomu"
         ]
       },
@@ -19232,11 +19260,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "tsutsu-aru": {

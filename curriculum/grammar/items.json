@@ -127472,39 +127472,39 @@
           ]
         },
         {
-          "japanese": "財布を忘れたんです。",
-          "english": "The thing is, I forgot my wallet.",
+          "japanese": "傘を忘れたんです。",
+          "english": "The thing is, I forgot my umbrella.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "saifu",
+            "kasa",
             "wasureru"
           ],
-          "furigana": "財[さい]布[ふ]を忘[わす]れたんです。",
+          "furigana": "傘[かさ]を忘[わす]れたんです。",
           "word_spans": [
             {
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kasa",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
               "vocabulary_slug": "wasureru",
-              "start": 3,
-              "end": 6,
+              "start": 2,
+              "end": 5,
               "surface_form": "忘れた",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 6,
-            "end": 9
+            "start": 5,
+            "end": 8
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "財布",
-              "reading": "さいふ",
+              "surface": "傘",
+              "reading": "かさ",
               "role": "word",
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kasa",
               "in_grammar": false
             },
             {
@@ -127529,14 +127529,14 @@
           ],
           "build_alternates": [
             {
-              "furigana": "財[さい]布[ふ]を忘[わす]れたのです。",
+              "furigana": "傘[かさ]を忘[わす]れたのです。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "財布",
-                  "reading": "さいふ",
+                  "surface": "傘",
+                  "reading": "かさ",
                   "role": "word",
-                  "vocabulary_slug": "saifu",
+                  "vocabulary_slug": "kasa",
                   "in_grammar": false
                 },
                 {
@@ -127561,7 +127561,7 @@
               ]
             },
             {
-              "furigana": "私[わたし]は財[さい]布[ふ]を忘[わす]れたんです。",
+              "furigana": "私[わたし]は傘[かさ]を忘[わす]れたんです。",
               "kind": "valid",
               "units": [
                 {
@@ -127577,10 +127577,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "財布",
-                  "reading": "さいふ",
+                  "surface": "傘",
+                  "reading": "かさ",
                   "role": "word",
-                  "vocabulary_slug": "saifu",
+                  "vocabulary_slug": "kasa",
                   "in_grammar": false
                 },
                 {
@@ -128244,6 +128244,230 @@
               ]
             }
           ]
+        },
+        {
+          "japanese": "電車が遅れたんです。",
+          "english": "The train was late, you see.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "densha",
+            "okureru"
+          ],
+          "furigana": "電[でん]車[しゃ]が遅[おく]れたんです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 3,
+              "end": 6,
+              "surface_form": "遅れた",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "電車",
+              "reading": "でんしゃ",
+              "role": "word",
+              "vocabulary_slug": "densha",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "遅れた",
+              "reading": "おくれた",
+              "role": "word",
+              "vocabulary_slug": "okureru",
+              "in_grammar": false
+            },
+            {
+              "surface": "んです",
+              "reading": "んです",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "電[でん]車[しゃ]が遅[おく]れたのです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "電車",
+                  "reading": "でんしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "densha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "遅れた",
+                  "reading": "おくれた",
+                  "role": "word",
+                  "vocabulary_slug": "okureru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "猫が好きなんです。",
+          "english": "The thing is, I like cats.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "neko",
+            "suki"
+          ],
+          "furigana": "猫[ねこ]が好[す]きなんです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 8
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "猫",
+              "reading": "ねこ",
+              "role": "word",
+              "vocabulary_slug": "neko",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "好きな",
+              "reading": "すきな",
+              "role": "word",
+              "vocabulary_slug": "suki",
+              "in_grammar": false
+            },
+            {
+              "surface": "んです",
+              "reading": "んです",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "猫[ねこ]が好[す]きなのです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "猫",
+                  "reading": "ねこ",
+                  "role": "word",
+                  "vocabulary_slug": "neko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "好きな",
+                  "reading": "すきな",
+                  "role": "word",
+                  "vocabulary_slug": "suki",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたし]は猫[ねこ]が好[す]きなんです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "猫",
+                  "reading": "ねこ",
+                  "role": "word",
+                  "vocabulary_slug": "neko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "好きな",
+                  "reading": "すきな",
+                  "role": "word",
+                  "vocabulary_slug": "suki",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "んです",
+                  "reading": "んです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -128372,15 +128596,15 @@
           ]
         },
         {
-          "japanese": "この漢字は読みにくいです。",
-          "english": "This kanji is hard to read.",
+          "japanese": "この新聞は読みにくいです。",
+          "english": "This newspaper is hard to read.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "kono",
-            "kanji-word",
+            "shinbun",
             "yomu"
           ],
-          "furigana": "この漢[かん]字[じ]は読[よ]みにくいです。",
+          "furigana": "この新[しん]聞[ぶん]は読[よ]みにくいです。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -128388,7 +128612,7 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "kanji-word",
+              "vocabulary_slug": "shinbun",
               "start": 2,
               "end": 4
             },
@@ -128414,10 +128638,10 @@
               "in_grammar": false
             },
             {
-              "surface": "漢字",
-              "reading": "かんじ",
+              "surface": "新聞",
+              "reading": "しんぶん",
               "role": "word",
-              "vocabulary_slug": "kanji-word",
+              "vocabulary_slug": "shinbun",
               "in_grammar": false
             },
             {
