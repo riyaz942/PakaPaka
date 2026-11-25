@@ -136642,43 +136642,43 @@
           ]
         },
         {
-          "japanese": "寿司とかラーメンとかが好きです。",
-          "english": "I like things like sushi and ramen.",
+          "japanese": "ラーメンとかカレーとかが好きです。",
+          "english": "I like things like ramen and curry.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "sushi",
             "raamen",
+            "karee",
             "suki"
           ],
-          "furigana": "寿[す]司[し]とかラーメンとかが好[す]きです。",
+          "furigana": "ラーメンとかカレーとかが好[す]きです。",
           "word_spans": [
             {
-              "vocabulary_slug": "sushi",
+              "vocabulary_slug": "raamen",
               "start": 0,
-              "end": 2
+              "end": 4
             },
             {
-              "vocabulary_slug": "raamen",
-              "start": 4,
-              "end": 8
+              "vocabulary_slug": "karee",
+              "start": 6,
+              "end": 9
             },
             {
               "vocabulary_slug": "suki",
-              "start": 11,
-              "end": 13
+              "start": 12,
+              "end": 14
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 4
+            "start": 4,
+            "end": 6
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "寿司",
-              "reading": "すし",
+              "surface": "ラーメン",
+              "reading": "ラーメン",
               "role": "word",
-              "vocabulary_slug": "sushi",
+              "vocabulary_slug": "raamen",
               "in_grammar": false
             },
             {
@@ -136688,10 +136688,10 @@
               "in_grammar": true
             },
             {
-              "surface": "ラーメン",
-              "reading": "ラーメン",
+              "surface": "カレー",
+              "reading": "カレー",
               "role": "word",
-              "vocabulary_slug": "raamen",
+              "vocabulary_slug": "karee",
               "in_grammar": false
             },
             {
@@ -136722,7 +136722,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]は寿[す]司[し]とかラーメンとかが好[す]きです。",
+              "furigana": "私[わたし]はラーメンとかカレーとかが好[す]きです。",
               "kind": "valid",
               "units": [
                 {
@@ -136738,10 +136738,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "寿司",
-                  "reading": "すし",
+                  "surface": "ラーメン",
+                  "reading": "ラーメン",
                   "role": "word",
-                  "vocabulary_slug": "sushi",
+                  "vocabulary_slug": "raamen",
                   "in_grammar": false
                 },
                 {
@@ -136751,10 +136751,10 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "ラーメン",
-                  "reading": "ラーメン",
+                  "surface": "カレー",
+                  "reading": "カレー",
                   "role": "word",
-                  "vocabulary_slug": "raamen",
+                  "vocabulary_slug": "karee",
                   "in_grammar": false
                 },
                 {
@@ -137140,16 +137140,16 @@
           ]
         },
         {
-          "japanese": "昨日は雑誌とか漫画とかを読みました。",
-          "english": "Yesterday I read things like magazines and comics.",
+          "japanese": "昨日は小説とか新聞とかを読みました。",
+          "english": "Yesterday I read things like novels and newspapers.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "kinou",
-            "zasshi",
-            "manga",
+            "shousetsu",
+            "shinbun",
             "yomu"
           ],
-          "furigana": "昨日[きのう]は雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
+          "furigana": "昨日[きのう]は小[しょう]説[せつ]とか新[しん]聞[ぶん]とかを読[よ]みました。",
           "word_spans": [
             {
               "vocabulary_slug": "kinou",
@@ -137157,12 +137157,12 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "zasshi",
+              "vocabulary_slug": "shousetsu",
               "start": 3,
               "end": 5
             },
             {
-              "vocabulary_slug": "manga",
+              "vocabulary_slug": "shinbun",
               "start": 7,
               "end": 9
             },
@@ -137194,10 +137194,10 @@
               "in_grammar": false
             },
             {
-              "surface": "雑誌",
-              "reading": "ざっし",
+              "surface": "小説",
+              "reading": "しょうせつ",
               "role": "word",
-              "vocabulary_slug": "zasshi",
+              "vocabulary_slug": "shousetsu",
               "in_grammar": false
             },
             {
@@ -137207,10 +137207,10 @@
               "in_grammar": true
             },
             {
-              "surface": "漫画",
-              "reading": "まんが",
+              "surface": "新聞",
+              "reading": "しんぶん",
               "role": "word",
-              "vocabulary_slug": "manga",
+              "vocabulary_slug": "shinbun",
               "in_grammar": false
             },
             {
@@ -137241,7 +137241,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "昨日[きのう]は雑[ざっ]誌[し]とか漫[まん]画[が]とか読[よ]みました。",
+              "furigana": "昨日[きのう]は小[しょう]説[せつ]とか新[しん]聞[ぶん]とか読[よ]みました。",
               "kind": "valid",
               "units": [
                 {
@@ -137258,10 +137258,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "雑誌",
-                  "reading": "ざっし",
+                  "surface": "小説",
+                  "reading": "しょうせつ",
                   "role": "word",
-                  "vocabulary_slug": "zasshi",
+                  "vocabulary_slug": "shousetsu",
                   "in_grammar": false
                 },
                 {
@@ -137271,10 +137271,10 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "漫画",
-                  "reading": "まんが",
+                  "surface": "新聞",
+                  "reading": "しんぶん",
                   "role": "word",
-                  "vocabulary_slug": "manga",
+                  "vocabulary_slug": "shinbun",
                   "in_grammar": false
                 },
                 {
@@ -137299,7 +137299,7 @@
               ]
             },
             {
-              "furigana": "昨日[きのう]、雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
+              "furigana": "昨日[きのう]、小[しょう]説[せつ]とか新[しん]聞[ぶん]とかを読[よ]みました。",
               "kind": "valid",
               "units": [
                 {
@@ -137310,10 +137310,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "雑誌",
-                  "reading": "ざっし",
+                  "surface": "小説",
+                  "reading": "しょうせつ",
                   "role": "word",
-                  "vocabulary_slug": "zasshi",
+                  "vocabulary_slug": "shousetsu",
                   "in_grammar": false
                 },
                 {
@@ -137323,144 +137323,10 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "漫画",
-                  "reading": "まんが",
+                  "surface": "新聞",
+                  "reading": "しんぶん",
                   "role": "word",
-                  "vocabulary_slug": "manga",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "と",
-                  "reading": "と",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "読みました",
-                  "reading": "よみました",
-                  "role": "word",
-                  "vocabulary_slug": "yomu",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "私[わたし]は昨日[きのう]雑[ざっ]誌[し]とか漫[まん]画[が]とかを読[よ]みました。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "私",
-                  "reading": "わたし",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "昨日",
-                  "reading": "きのう",
-                  "role": "word",
-                  "vocabulary_slug": "kinou",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "雑誌",
-                  "reading": "ざっし",
-                  "role": "word",
-                  "vocabulary_slug": "zasshi",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "とか",
-                  "reading": "とか",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "漫画",
-                  "reading": "まんが",
-                  "role": "word",
-                  "vocabulary_slug": "manga",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "と",
-                  "reading": "と",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "読みました",
-                  "reading": "よみました",
-                  "role": "word",
-                  "vocabulary_slug": "yomu",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "昨日[きのう]は漫[まん]画[が]とか雑[ざっ]誌[し]とかを読[よ]みました。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "昨日",
-                  "reading": "きのう",
-                  "role": "word",
-                  "vocabulary_slug": "kinou",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "漫画",
-                  "reading": "まんが",
-                  "role": "word",
-                  "vocabulary_slug": "manga",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "とか",
-                  "reading": "とか",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "雑誌",
-                  "reading": "ざっし",
-                  "role": "word",
-                  "vocabulary_slug": "zasshi",
+                  "vocabulary_slug": "shinbun",
                   "in_grammar": false
                 },
                 {
@@ -138113,6 +137979,231 @@
                   "surface": "か",
                   "reading": "か",
                   "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "スーパーで卵とか牛乳とかを買いました。",
+          "english": "I bought things like eggs and milk at the supermarket.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "suupaa",
+            "tamago",
+            "gyuunyuu",
+            "kau-v"
+          ],
+          "furigana": "スーパーで卵[たまご]とか牛[ぎゅう]乳[にゅう]とかを買[か]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "suupaa",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tamago",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "gyuunyuu",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 13,
+              "end": 18,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "スーパー",
+              "reading": "スーパー",
+              "role": "word",
+              "vocabulary_slug": "suupaa",
+              "in_grammar": false
+            },
+            {
+              "surface": "で",
+              "reading": "で",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "卵",
+              "reading": "たまご",
+              "role": "word",
+              "vocabulary_slug": "tamago",
+              "in_grammar": false
+            },
+            {
+              "surface": "とか",
+              "reading": "とか",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "牛乳",
+              "reading": "ぎゅうにゅう",
+              "role": "word",
+              "vocabulary_slug": "gyuunyuu",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "買いました",
+              "reading": "かいました",
+              "role": "word",
+              "vocabulary_slug": "kau-v",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "スーパーで卵[たまご]とか牛[ぎゅう]乳[にゅう]とか買[か]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "スーパー",
+                  "reading": "スーパー",
+                  "role": "word",
+                  "vocabulary_slug": "suupaa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "卵",
+                  "reading": "たまご",
+                  "role": "word",
+                  "vocabulary_slug": "tamago",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "とか",
+                  "reading": "とか",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "牛乳",
+                  "reading": "ぎゅうにゅう",
+                  "role": "word",
+                  "vocabulary_slug": "gyuunyuu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "卵[たまご]とか牛[ぎゅう]乳[にゅう]とかをスーパーで買[か]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "卵",
+                  "reading": "たまご",
+                  "role": "word",
+                  "vocabulary_slug": "tamago",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "とか",
+                  "reading": "とか",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "牛乳",
+                  "reading": "ぎゅうにゅう",
+                  "role": "word",
+                  "vocabulary_slug": "gyuunyuu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "スーパー",
+                  "reading": "スーパー",
+                  "role": "word",
+                  "vocabulary_slug": "suupaa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
                   "in_grammar": false
                 }
               ]
@@ -138814,18 +138905,18 @@
           ]
         },
         {
-          "japanese": "先生は丁寧に説明した。それでも私は意味が分からなかった。",
-          "english": "The teacher explained it carefully. Even so, I didn't understand the meaning.",
+          "japanese": "先生はゆっくり説明した。それでも私は意味が分からなかった。",
+          "english": "The teacher explained it slowly. Even so, I didn't understand the meaning.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "sensei",
-            "teinei",
+            "yukkuri",
             "setsumei-suru",
             "watashi",
             "imi",
             "wakaru"
           ],
-          "furigana": "先[せん]生[せい]は丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
+          "furigana": "先[せん]生[せい]はゆっくり説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
           "word_spans": [
             {
               "vocabulary_slug": "sensei",
@@ -138833,38 +138924,38 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "teinei",
+              "vocabulary_slug": "yukkuri",
               "start": 3,
-              "end": 5
+              "end": 7
             },
             {
               "vocabulary_slug": "setsumei-suru",
-              "start": 6,
-              "end": 10,
+              "start": 7,
+              "end": 11,
               "surface_form": "説明した",
               "inflection": "ta"
             },
             {
               "vocabulary_slug": "watashi",
-              "start": 15,
-              "end": 16
+              "start": 16,
+              "end": 17
             },
             {
               "vocabulary_slug": "imi",
-              "start": 17,
-              "end": 19
+              "start": 18,
+              "end": 20
             },
             {
               "vocabulary_slug": "wakaru",
-              "start": 20,
-              "end": 27,
+              "start": 21,
+              "end": 28,
               "surface_form": "分からなかった",
               "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 15
+            "start": 12,
+            "end": 16
           },
           "register": "plain",
           "answer_units": [
@@ -138882,10 +138973,10 @@
               "in_grammar": false
             },
             {
-              "surface": "丁寧に",
-              "reading": "ていねいに",
+              "surface": "ゆっくり",
+              "reading": "ゆっくり",
               "role": "word",
-              "vocabulary_slug": "teinei",
+              "vocabulary_slug": "yukkuri",
               "in_grammar": false
             },
             {
@@ -138937,7 +139028,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "先[せん]生[せい]が丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
+              "furigana": "先[せん]生[せい]がゆっくり説[せつ]明[めい]した。それでも私[わたし]は意[い]味[み]が分[わ]からなかった。",
               "kind": "valid",
               "units": [
                 {
@@ -138954,10 +139045,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "丁寧に",
-                  "reading": "ていねいに",
+                  "surface": "ゆっくり",
+                  "reading": "ゆっくり",
                   "role": "word",
-                  "vocabulary_slug": "teinei",
+                  "vocabulary_slug": "yukkuri",
                   "in_grammar": false
                 },
                 {
@@ -139009,7 +139100,7 @@
               ]
             },
             {
-              "furigana": "先[せん]生[せい]は丁[てい]寧[ねい]に説[せつ]明[めい]した。それでも意[い]味[み]が分[わ]からなかった。",
+              "furigana": "先[せん]生[せい]はゆっくり説[せつ]明[めい]した。それでも意[い]味[み]が分[わ]からなかった。",
               "kind": "valid",
               "units": [
                 {
@@ -139026,10 +139117,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "丁寧に",
-                  "reading": "ていねいに",
+                  "surface": "ゆっくり",
+                  "reading": "ゆっくり",
                   "role": "word",
-                  "vocabulary_slug": "teinei",
+                  "vocabulary_slug": "yukkuri",
                   "in_grammar": false
                 },
                 {
@@ -139070,17 +139161,17 @@
           ]
         },
         {
-          "japanese": "天気は悪かった。それでも私たちは公園を歩いた。",
-          "english": "The weather was bad. Even so, we walked through the park.",
+          "japanese": "天気は悪かった。それでも私たちは山に登った。",
+          "english": "The weather was bad. Even so, we climbed the mountain.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "tenki",
             "warui",
             "watashitachi",
-            "kouen",
-            "aruku"
+            "yama-v",
+            "noboru"
           ],
-          "furigana": "天[てん]気[き]は悪[わる]かった。それでも私[わたし]たちは公[こう]園[えん]を歩[ある]いた。",
+          "furigana": "天[てん]気[き]は悪[わる]かった。それでも私[わたし]たちは山[やま]に登[のぼ]った。",
           "word_spans": [
             {
               "vocabulary_slug": "tenki",
@@ -139100,15 +139191,15 @@
               "end": 15
             },
             {
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "yama-v",
               "start": 16,
-              "end": 18
+              "end": 17
             },
             {
-              "vocabulary_slug": "aruku",
-              "start": 19,
-              "end": 22,
-              "surface_form": "歩いた",
+              "vocabulary_slug": "noboru",
+              "start": 18,
+              "end": 21,
+              "surface_form": "登った",
               "inflection": "ta"
             }
           ],
@@ -139158,29 +139249,29 @@
               "in_grammar": false
             },
             {
-              "surface": "公園",
-              "reading": "こうえん",
+              "surface": "山",
+              "reading": "やま",
               "role": "word",
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "yama-v",
               "in_grammar": false
             },
             {
-              "surface": "を",
-              "reading": "を",
+              "surface": "に",
+              "reading": "に",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "歩いた",
-              "reading": "あるいた",
+              "surface": "登った",
+              "reading": "のぼった",
               "role": "word",
-              "vocabulary_slug": "aruku",
+              "vocabulary_slug": "noboru",
               "in_grammar": false
             }
           ],
           "build_alternates": [
             {
-              "furigana": "天[てん]気[き]が悪[わる]かった。それでも私[わたし]たちは公[こう]園[えん]を歩[ある]いた。",
+              "furigana": "天[てん]気[き]が悪[わる]かった。それでも私[わたし]たちは山[やま]に登[のぼ]った。",
               "kind": "valid",
               "units": [
                 {
@@ -139223,23 +139314,23 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "公園",
-                  "reading": "こうえん",
+                  "surface": "山",
+                  "reading": "やま",
                   "role": "word",
-                  "vocabulary_slug": "kouen",
+                  "vocabulary_slug": "yama-v",
                   "in_grammar": false
                 },
                 {
-                  "surface": "を",
-                  "reading": "を",
+                  "surface": "に",
+                  "reading": "に",
                   "role": "particle",
                   "in_grammar": false
                 },
                 {
-                  "surface": "歩いた",
-                  "reading": "あるいた",
+                  "surface": "登った",
+                  "reading": "のぼった",
                   "role": "word",
-                  "vocabulary_slug": "aruku",
+                  "vocabulary_slug": "noboru",
                   "in_grammar": false
                 }
               ]
@@ -139794,6 +139885,131 @@
               ]
             }
           ]
+        },
+        {
+          "japanese": "テストは難しくなかった。それでも合格しなかった。",
+          "english": "The test wasn't hard. Even so, I didn't pass.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "tesuto",
+            "muzukashii",
+            "goukaku-suru"
+          ],
+          "furigana": "テストは難[むずか]しくなかった。それでも合[ごう]格[かく]しなかった。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "tesuto",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 4,
+              "end": 11,
+              "surface_form": "難しくなかった",
+              "inflection": "nai"
+            },
+            {
+              "vocabulary_slug": "goukaku-suru",
+              "start": 16,
+              "end": 23,
+              "surface_form": "合格しなかった",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 12,
+            "end": 16
+          },
+          "register": "plain",
+          "answer_units": [
+            {
+              "surface": "テスト",
+              "reading": "テスト",
+              "role": "word",
+              "vocabulary_slug": "tesuto",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "難しくなかった",
+              "reading": "むずかしくなかった",
+              "role": "word",
+              "vocabulary_slug": "muzukashii",
+              "in_grammar": false
+            },
+            {
+              "surface": "それでも",
+              "reading": "それでも",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "合格しなかった",
+              "reading": "ごうかくしなかった",
+              "role": "word",
+              "vocabulary_slug": "goukaku-suru",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "テストは難[むずか]しくなかった。それでも私[わたし]は合[ごう]格[かく]しなかった。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "テスト",
+                  "reading": "テスト",
+                  "role": "word",
+                  "vocabulary_slug": "tesuto",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "難しくなかった",
+                  "reading": "むずかしくなかった",
+                  "role": "word",
+                  "vocabulary_slug": "muzukashii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "それでも",
+                  "reading": "それでも",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "合格しなかった",
+                  "reading": "ごうかくしなかった",
+                  "role": "word",
+                  "vocabulary_slug": "goukaku-suru",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
         }
       ],
       "vocabulary_slugs": [
@@ -140059,20 +140275,20 @@
           ]
         },
         {
-          "japanese": "宿題の意味が分からなかった。そこで、先生に聞いた。",
-          "english": "I didn't understand what the homework meant. So I asked the teacher.",
+          "japanese": "言葉の意味が分からなかった。そこで、先生に聞いた。",
+          "english": "I didn't understand what the word meant. So I asked the teacher.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "shukudai",
+            "kotoba",
             "imi",
             "wakaru",
             "sensei",
             "kiku-v"
           ],
-          "furigana": "宿[しゅく]題[だい]の意[い]味[み]が分[わ]からなかった。そこで、先[せん]生[せい]に聞[き]いた。",
+          "furigana": "言[こと]葉[ば]の意[い]味[み]が分[わ]からなかった。そこで、先[せん]生[せい]に聞[き]いた。",
           "word_spans": [
             {
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "kotoba",
               "start": 0,
               "end": 2
             },
@@ -140108,10 +140324,10 @@
           "register": "plain",
           "answer_units": [
             {
-              "surface": "宿題",
-              "reading": "しゅくだい",
+              "surface": "言葉",
+              "reading": "ことば",
               "role": "word",
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "kotoba",
               "in_grammar": false
             },
             {
@@ -140165,6 +140381,73 @@
               "role": "word",
               "vocabulary_slug": "kiku-v",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "言[こと]葉[ば]の意[い]味[み]が分[わ]からなかった。そこで先[せん]生[せい]に聞[き]いた。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "言葉",
+                  "reading": "ことば",
+                  "role": "word",
+                  "vocabulary_slug": "kotoba",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "意味",
+                  "reading": "いみ",
+                  "role": "word",
+                  "vocabulary_slug": "imi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "分からなかった",
+                  "reading": "わからなかった",
+                  "role": "word",
+                  "vocabulary_slug": "wakaru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "そこで",
+                  "reading": "そこで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "聞いた",
+                  "reading": "きいた",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -140896,16 +141179,16 @@
           ]
         },
         {
-          "japanese": "電車が遅れた。そのため、会議に遅刻した。",
-          "english": "The train was delayed. Because of that, I was late to the meeting.",
+          "japanese": "電車が止まった。そのため、会社まで歩いた。",
+          "english": "The trains stopped. Because of that, I walked to the office.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "densha",
-            "okureru",
-            "kaigi",
-            "chikoku-suru"
+            "tomaru",
+            "kaisha",
+            "aruku"
           ],
-          "furigana": "電[でん]車[しゃ]が遅[おく]れた。そのため、会[かい]議[ぎ]に遅[ち]刻[こく]した。",
+          "furigana": "電[でん]車[しゃ]が止[と]まった。そのため、会[かい]社[しゃ]まで歩[ある]いた。",
           "word_spans": [
             {
               "vocabulary_slug": "densha",
@@ -140913,28 +141196,28 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "okureru",
+              "vocabulary_slug": "tomaru",
               "start": 3,
-              "end": 6,
-              "surface_form": "遅れた",
+              "end": 7,
+              "surface_form": "止まった",
               "inflection": "ta"
             },
             {
-              "vocabulary_slug": "kaigi",
-              "start": 12,
-              "end": 14
+              "vocabulary_slug": "kaisha",
+              "start": 13,
+              "end": 15
             },
             {
-              "vocabulary_slug": "chikoku-suru",
-              "start": 15,
-              "end": 19,
-              "surface_form": "遅刻した",
+              "vocabulary_slug": "aruku",
+              "start": 17,
+              "end": 20,
+              "surface_form": "歩いた",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 11
+            "start": 8,
+            "end": 12
           },
           "register": "plain",
           "answer_units": [
@@ -140952,10 +141235,10 @@
               "in_grammar": false
             },
             {
-              "surface": "遅れた",
-              "reading": "おくれた",
+              "surface": "止まった",
+              "reading": "とまった",
               "role": "word",
-              "vocabulary_slug": "okureru",
+              "vocabulary_slug": "tomaru",
               "in_grammar": false
             },
             {
@@ -140965,29 +141248,29 @@
               "in_grammar": true
             },
             {
-              "surface": "会議",
-              "reading": "かいぎ",
+              "surface": "会社",
+              "reading": "かいしゃ",
               "role": "word",
-              "vocabulary_slug": "kaigi",
+              "vocabulary_slug": "kaisha",
               "in_grammar": false
             },
             {
-              "surface": "に",
-              "reading": "に",
+              "surface": "まで",
+              "reading": "まで",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "遅刻した",
-              "reading": "ちこくした",
+              "surface": "歩いた",
+              "reading": "あるいた",
               "role": "word",
-              "vocabulary_slug": "chikoku-suru",
+              "vocabulary_slug": "aruku",
               "in_grammar": false
             }
           ],
           "build_alternates": [
             {
-              "furigana": "電[でん]車[しゃ]が遅[おく]れた。そのため、私[わたし]は会[かい]議[ぎ]に遅[ち]刻[こく]した。",
+              "furigana": "電[でん]車[しゃ]が止[と]まった。そのため、私[わたし]は会[かい]社[しゃ]まで歩[ある]いた。",
               "kind": "valid",
               "units": [
                 {
@@ -141004,10 +141287,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "遅れた",
-                  "reading": "おくれた",
+                  "surface": "止まった",
+                  "reading": "とまった",
                   "role": "word",
-                  "vocabulary_slug": "okureru",
+                  "vocabulary_slug": "tomaru",
                   "in_grammar": false
                 },
                 {
@@ -141029,23 +141312,23 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "会議",
-                  "reading": "かいぎ",
+                  "surface": "会社",
+                  "reading": "かいしゃ",
                   "role": "word",
-                  "vocabulary_slug": "kaigi",
+                  "vocabulary_slug": "kaisha",
                   "in_grammar": false
                 },
                 {
-                  "surface": "に",
-                  "reading": "に",
+                  "surface": "まで",
+                  "reading": "まで",
                   "role": "particle",
                   "in_grammar": false
                 },
                 {
-                  "surface": "遅刻した",
-                  "reading": "ちこくした",
+                  "surface": "歩いた",
+                  "reading": "あるいた",
                   "role": "word",
-                  "vocabulary_slug": "chikoku-suru",
+                  "vocabulary_slug": "aruku",
                   "in_grammar": false
                 }
               ]
@@ -141210,39 +141493,44 @@
           ]
         },
         {
-          "japanese": "財布を忘れました。そのため、何も買いませんでした。",
-          "english": "I forgot my wallet. Because of that, I didn't buy anything.",
+          "japanese": "鍵を無くしました。そのため、新しい鍵を買いました。",
+          "english": "I lost my key. Because of that, I bought a new one.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "saifu",
-            "wasureru",
-            "nani-mo",
+            "kagi",
+            "nakusu",
+            "atarashii-adj",
             "kau-v"
           ],
-          "furigana": "財[さい]布[ふ]を忘[わす]れました。そのため、何[なに]も買[か]いませんでした。",
+          "furigana": "鍵[かぎ]を無[な]くしました。そのため、新[あたら]しい鍵[かぎ]を買[か]いました。",
           "word_spans": [
             {
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kagi",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "wasureru",
-              "start": 3,
+              "vocabulary_slug": "nakusu",
+              "start": 2,
               "end": 8,
-              "surface_form": "忘れました",
+              "surface_form": "無くしました",
               "inflection": "masu"
             },
             {
-              "vocabulary_slug": "nani-mo",
+              "vocabulary_slug": "atarashii-adj",
               "start": 14,
-              "end": 16
+              "end": 17
+            },
+            {
+              "vocabulary_slug": "kagi",
+              "start": 17,
+              "end": 18
             },
             {
               "vocabulary_slug": "kau-v",
-              "start": 16,
+              "start": 19,
               "end": 24,
-              "surface_form": "買いませんでした",
+              "surface_form": "買いました",
               "inflection": "masu"
             }
           ],
@@ -141253,10 +141541,10 @@
           "register": "polite",
           "answer_units": [
             {
-              "surface": "財布",
-              "reading": "さいふ",
+              "surface": "鍵",
+              "reading": "かぎ",
               "role": "word",
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kagi",
               "in_grammar": false
             },
             {
@@ -141266,10 +141554,10 @@
               "in_grammar": false
             },
             {
-              "surface": "忘れました",
-              "reading": "わすれました",
+              "surface": "無くしました",
+              "reading": "なくしました",
               "role": "word",
-              "vocabulary_slug": "wasureru",
+              "vocabulary_slug": "nakusu",
               "in_grammar": false
             },
             {
@@ -141279,15 +141567,28 @@
               "in_grammar": true
             },
             {
-              "surface": "何も",
-              "reading": "なにも",
+              "surface": "新しい",
+              "reading": "あたらしい",
               "role": "word",
-              "vocabulary_slug": "nani-mo",
+              "vocabulary_slug": "atarashii-adj",
               "in_grammar": false
             },
             {
-              "surface": "買いませんでした",
-              "reading": "かいませんでした",
+              "surface": "鍵",
+              "reading": "かぎ",
+              "role": "word",
+              "vocabulary_slug": "kagi",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "買いました",
+              "reading": "かいました",
               "role": "word",
               "vocabulary_slug": "kau-v",
               "in_grammar": false
@@ -141295,7 +141596,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]は財[さい]布[ふ]を忘[わす]れました。そのため、何[なに]も買[か]いませんでした。",
+              "furigana": "私[わたし]は鍵[かぎ]を無[な]くしました。そのため、新[あたら]しい鍵[かぎ]を買[か]いました。",
               "kind": "valid",
               "units": [
                 {
@@ -141311,10 +141612,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "財布",
-                  "reading": "さいふ",
+                  "surface": "鍵",
+                  "reading": "かぎ",
                   "role": "word",
-                  "vocabulary_slug": "saifu",
+                  "vocabulary_slug": "kagi",
                   "in_grammar": false
                 },
                 {
@@ -141324,10 +141625,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "忘れました",
-                  "reading": "わすれました",
+                  "surface": "無くしました",
+                  "reading": "なくしました",
                   "role": "word",
-                  "vocabulary_slug": "wasureru",
+                  "vocabulary_slug": "nakusu",
                   "in_grammar": false
                 },
                 {
@@ -141337,30 +141638,17 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "何も",
-                  "reading": "なにも",
+                  "surface": "新しい",
+                  "reading": "あたらしい",
                   "role": "word",
-                  "vocabulary_slug": "nani-mo",
+                  "vocabulary_slug": "atarashii-adj",
                   "in_grammar": false
                 },
                 {
-                  "surface": "買いませんでした",
-                  "reading": "かいませんでした",
+                  "surface": "鍵",
+                  "reading": "かぎ",
                   "role": "word",
-                  "vocabulary_slug": "kau-v",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "財[さい]布[ふ]を忘[わす]れました。そのため、私[わたし]は何[なに]も買[か]いませんでした。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "財布",
-                  "reading": "さいふ",
-                  "role": "word",
-                  "vocabulary_slug": "saifu",
+                  "vocabulary_slug": "kagi",
                   "in_grammar": false
                 },
                 {
@@ -141370,40 +141658,8 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "忘れました",
-                  "reading": "わすれました",
-                  "role": "word",
-                  "vocabulary_slug": "wasureru",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "そのため",
-                  "reading": "そのため",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "私",
-                  "reading": "わたし",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "何も",
-                  "reading": "なにも",
-                  "role": "word",
-                  "vocabulary_slug": "nani-mo",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "買いませんでした",
-                  "reading": "かいませんでした",
+                  "surface": "買いました",
+                  "reading": "かいました",
                   "role": "word",
                   "vocabulary_slug": "kau-v",
                   "in_grammar": false
@@ -142021,17 +142277,17 @@
           ]
         },
         {
-          "japanese": "兄は毎日練習した。そのため、試験に合格した。",
-          "english": "My older brother practiced every day. As a result, he passed the exam.",
+          "japanese": "兄は毎日練習した。そのため、テストに合格した。",
+          "english": "My older brother practiced every day. As a result, he passed the test.",
           "sort_order": 8,
           "vocabulary_slugs": [
             "ani",
             "mainichi",
             "renshuu-suru",
-            "shiken",
+            "tesuto",
             "goukaku-suru"
           ],
-          "furigana": "兄[あに]は毎[まい]日[にち]練[れん]習[しゅう]した。そのため、試[し]験[けん]に合[ごう]格[かく]した。",
+          "furigana": "兄[あに]は毎[まい]日[にち]練[れん]習[しゅう]した。そのため、テストに合[ごう]格[かく]した。",
           "word_spans": [
             {
               "vocabulary_slug": "ani",
@@ -142051,14 +142307,14 @@
               "inflection": "ta"
             },
             {
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "start": 14,
-              "end": 16
+              "end": 17
             },
             {
               "vocabulary_slug": "goukaku-suru",
-              "start": 17,
-              "end": 21,
+              "start": 18,
+              "end": 22,
               "surface_form": "合格した",
               "inflection": "ta"
             }
@@ -142103,10 +142359,10 @@
               "in_grammar": true
             },
             {
-              "surface": "試験",
-              "reading": "しけん",
+              "surface": "テスト",
+              "reading": "テスト",
               "role": "word",
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "in_grammar": false
             },
             {
@@ -142120,6 +142376,95 @@
               "reading": "ごうかくした",
               "role": "word",
               "vocabulary_slug": "goukaku-suru",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "今日は寒いです。そのため、コートを着ました。",
+          "english": "It's cold today. Because of that, I put on a coat.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kyou",
+            "samui",
+            "kooto",
+            "kiru-wear"
+          ],
+          "furigana": "今日[きょう]は寒[さむ]いです。そのため、コートを着[き]ました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "samui",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kooto",
+              "start": 13,
+              "end": 16
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 17,
+              "end": 21,
+              "surface_form": "着ました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 12
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "今日",
+              "reading": "きょう",
+              "role": "word",
+              "vocabulary_slug": "kyou",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "寒いです",
+              "reading": "さむいです",
+              "role": "word",
+              "vocabulary_slug": "samui",
+              "in_grammar": false
+            },
+            {
+              "surface": "そのため",
+              "reading": "そのため",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "コート",
+              "reading": "コート",
+              "role": "word",
+              "vocabulary_slug": "kooto",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "着ました",
+              "reading": "きました",
+              "role": "word",
+              "vocabulary_slug": "kiru-wear",
               "in_grammar": false
             }
           ]
@@ -143037,16 +143382,16 @@
           ]
         },
         {
-          "japanese": "先生に質問した。すると、先生はゆっくり説明した。",
-          "english": "I asked the teacher a question. Then the teacher explained it slowly.",
+          "japanese": "先生に聞いた。すると、先生はゆっくり説明した。",
+          "english": "I asked the teacher. Then the teacher explained it slowly.",
           "sort_order": 7,
           "vocabulary_slugs": [
             "sensei",
-            "shitsumon-suru",
+            "kiku-v",
             "yukkuri",
             "setsumei-suru"
           ],
-          "furigana": "先[せん]生[せい]に質[しつ]問[もん]した。すると、先[せん]生[せい]はゆっくり説[せつ]明[めい]した。",
+          "furigana": "先[せん]生[せい]に聞[き]いた。すると、先[せん]生[せい]はゆっくり説[せつ]明[めい]した。",
           "word_spans": [
             {
               "vocabulary_slug": "sensei",
@@ -143054,33 +143399,33 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "shitsumon-suru",
+              "vocabulary_slug": "kiku-v",
               "start": 3,
-              "end": 7,
-              "surface_form": "質問した",
+              "end": 6,
+              "surface_form": "聞いた",
               "inflection": "ta"
             },
             {
               "vocabulary_slug": "sensei",
-              "start": 12,
-              "end": 14
+              "start": 11,
+              "end": 13
             },
             {
               "vocabulary_slug": "yukkuri",
-              "start": 15,
-              "end": 19
+              "start": 14,
+              "end": 18
             },
             {
               "vocabulary_slug": "setsumei-suru",
-              "start": 19,
-              "end": 23,
+              "start": 18,
+              "end": 22,
               "surface_form": "説明した",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 11
+            "start": 7,
+            "end": 10
           },
           "register": "plain",
           "answer_units": [
@@ -143098,10 +143443,10 @@
               "in_grammar": false
             },
             {
-              "surface": "質問した",
-              "reading": "しつもんした",
+              "surface": "聞いた",
+              "reading": "きいた",
               "role": "word",
-              "vocabulary_slug": "shitsumon-suru",
+              "vocabulary_slug": "kiku-v",
               "in_grammar": false
             },
             {
@@ -143140,7 +143485,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "先[せん]生[せい]に質[しつ]問[もん]をした。すると、先[せん]生[せい]はゆっくり説[せつ]明[めい]した。",
+              "furigana": "先[せん]生[せい]に聞[き]いた。すると、先[せん]生[せい]がゆっくり説[せつ]明[めい]した。",
               "kind": "valid",
               "units": [
                 {
@@ -143157,150 +143502,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "質問",
-                  "reading": "しつもん",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "した",
-                  "reading": "した",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "すると",
-                  "reading": "すると",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "先生",
-                  "reading": "せんせい",
+                  "surface": "聞いた",
+                  "reading": "きいた",
                   "role": "word",
-                  "vocabulary_slug": "sensei",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "ゆっくり",
-                  "reading": "ゆっくり",
-                  "role": "word",
-                  "vocabulary_slug": "yukkuri",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "説明した",
-                  "reading": "せつめいした",
-                  "role": "word",
-                  "vocabulary_slug": "setsumei-suru",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "先[せん]生[せい]に質[しつ]問[もん]した。すると、先[せん]生[せい]がゆっくり説[せつ]明[めい]した。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "先生",
-                  "reading": "せんせい",
-                  "role": "word",
-                  "vocabulary_slug": "sensei",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "質問した",
-                  "reading": "しつもんした",
-                  "role": "word",
-                  "vocabulary_slug": "shitsumon-suru",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "すると",
-                  "reading": "すると",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "先生",
-                  "reading": "せんせい",
-                  "role": "word",
-                  "vocabulary_slug": "sensei",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "ゆっくり",
-                  "reading": "ゆっくり",
-                  "role": "word",
-                  "vocabulary_slug": "yukkuri",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "説明した",
-                  "reading": "せつめいした",
-                  "role": "word",
-                  "vocabulary_slug": "setsumei-suru",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "先[せん]生[せい]に質[しつ]問[もん]をした。すると、先[せん]生[せい]がゆっくり説[せつ]明[めい]した。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "先生",
-                  "reading": "せんせい",
-                  "role": "word",
-                  "vocabulary_slug": "sensei",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "質問",
-                  "reading": "しつもん",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "した",
-                  "reading": "した",
-                  "role": "other",
+                  "vocabulary_slug": "kiku-v",
                   "in_grammar": false
                 },
                 {

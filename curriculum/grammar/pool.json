@@ -21852,16 +21852,16 @@
         ]
       },
       {
-        "japanese": "寿司とかラーメンとかが好きです。",
-        "english": "I like things like sushi and ramen.",
+        "japanese": "ラーメンとかカレーとかが好きです。",
+        "english": "I like things like ramen and curry.",
         "vocabulary_slugs": [
-          "sushi",
           "raamen",
+          "karee",
           "suki"
         ],
         "alternates": [
           {
-            "japanese": "私は寿司とかラーメンとかが好きです。",
+            "japanese": "私はラーメンとかカレーとかが好きです。",
             "kind": "valid"
           }
         ]
@@ -21892,29 +21892,21 @@
         ]
       },
       {
-        "japanese": "昨日は雑誌とか漫画とかを読みました。",
-        "english": "Yesterday I read things like magazines and comics.",
+        "japanese": "昨日は小説とか新聞とかを読みました。",
+        "english": "Yesterday I read things like novels and newspapers.",
         "vocabulary_slugs": [
           "kinou",
-          "zasshi",
-          "manga",
+          "shousetsu",
+          "shinbun",
           "yomu"
         ],
         "alternates": [
           {
-            "japanese": "昨日は雑誌とか漫画とか読みました。",
+            "japanese": "昨日は小説とか新聞とか読みました。",
             "kind": "valid"
           },
           {
-            "japanese": "昨日、雑誌とか漫画とかを読みました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日雑誌とか漫画とかを読みました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日は漫画とか雑誌とかを読みました。",
+            "japanese": "昨日、小説とか新聞とかを読みました。",
             "kind": "valid"
           }
         ]
@@ -21974,16 +21966,32 @@
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "スーパーで卵とか牛乳とかを買いました。",
+        "english": "I bought things like eggs and milk at the supermarket.",
+        "vocabulary_slugs": [
+          "suupaa",
+          "tamago",
+          "gyuunyuu",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "スーパーで卵とか牛乳とか買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "卵とか牛乳とかをスーパーで買いました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "kke2": {
@@ -22360,11 +22368,11 @@
         ]
       },
       {
-        "japanese": "先生は丁寧に説明した。それでも私は意味が分からなかった。",
-        "english": "The teacher explained it carefully. Even so, I didn't understand the meaning.",
+        "japanese": "先生はゆっくり説明した。それでも私は意味が分からなかった。",
+        "english": "The teacher explained it slowly. Even so, I didn't understand the meaning.",
         "vocabulary_slugs": [
           "sensei",
-          "teinei",
+          "yukkuri",
           "setsumei-suru",
           "watashi",
           "imi",
@@ -22372,28 +22380,28 @@
         ],
         "alternates": [
           {
-            "japanese": "先生が丁寧に説明した。それでも私は意味が分からなかった。",
+            "japanese": "先生がゆっくり説明した。それでも私は意味が分からなかった。",
             "kind": "valid"
           },
           {
-            "japanese": "先生は丁寧に説明した。それでも意味が分からなかった。",
+            "japanese": "先生はゆっくり説明した。それでも意味が分からなかった。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "天気は悪かった。それでも私たちは公園を歩いた。",
-        "english": "The weather was bad. Even so, we walked through the park.",
+        "japanese": "天気は悪かった。それでも私たちは山に登った。",
+        "english": "The weather was bad. Even so, we climbed the mountain.",
         "vocabulary_slugs": [
           "tenki",
           "warui",
           "watashitachi",
-          "kouen",
-          "aruku"
+          "yama-v",
+          "noboru"
         ],
         "alternates": [
           {
-            "japanese": "天気が悪かった。それでも私たちは公園を歩いた。",
+            "japanese": "天気が悪かった。それでも私たちは山に登った。",
             "kind": "valid"
           }
         ]
@@ -22450,16 +22458,27 @@
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "テストは難しくなかった。それでも合格しなかった。",
+        "english": "The test wasn't hard. Even so, I didn't pass.",
+        "vocabulary_slugs": [
+          "tesuto",
+          "muzukashii",
+          "goukaku-suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "テストは難しくなかった。それでも私は合格しなかった。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "sokode": {
@@ -22493,14 +22512,20 @@
         ]
       },
       {
-        "japanese": "宿題の意味が分からなかった。そこで、先生に聞いた。",
-        "english": "I didn't understand what the homework meant. So I asked the teacher.",
+        "japanese": "言葉の意味が分からなかった。そこで、先生に聞いた。",
+        "english": "I didn't understand what the word meant. So I asked the teacher.",
         "vocabulary_slugs": [
-          "shukudai",
+          "kotoba",
           "imi",
           "wakaru",
           "sensei",
           "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "言葉の意味が分からなかった。そこで先生に聞いた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -22563,25 +22588,13 @@
           "kuru-v",
           "eki",
           "aruku"
-        ],
-        "alternates": []
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "バスが来ません。そこで、どうしましょうか。",
-          "new": "バスが来ませんでした。そこで、駅まで歩きました。",
-          "reason": "hand fix: checker marked it unfixable"
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "sonoseika-de": {
@@ -22604,17 +22617,17 @@
         ]
       },
       {
-        "japanese": "電車が遅れた。そのため、会議に遅刻した。",
-        "english": "The train was delayed. Because of that, I was late to the meeting.",
+        "japanese": "電車が止まった。そのため、会社まで歩いた。",
+        "english": "The trains stopped. Because of that, I walked to the office.",
         "vocabulary_slugs": [
           "densha",
-          "okureru",
-          "kaigi",
-          "chikoku-suru"
+          "tomaru",
+          "kaisha",
+          "aruku"
         ],
         "alternates": [
           {
-            "japanese": "電車が遅れた。そのため、私は会議に遅刻した。",
+            "japanese": "電車が止まった。そのため、私は会社まで歩いた。",
             "kind": "valid"
           }
         ]
@@ -22636,21 +22649,17 @@
         ]
       },
       {
-        "japanese": "財布を忘れました。そのため、何も買いませんでした。",
-        "english": "I forgot my wallet. Because of that, I didn't buy anything.",
+        "japanese": "鍵を無くしました。そのため、新しい鍵を買いました。",
+        "english": "I lost my key. Because of that, I bought a new one.",
         "vocabulary_slugs": [
-          "saifu",
-          "wasureru",
-          "nani-mo",
+          "kagi",
+          "nakusu",
+          "atarashii-adj",
           "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "私は財布を忘れました。そのため、何も買いませんでした。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "財布を忘れました。そのため、私は何も買いませんでした。",
+            "japanese": "私は鍵を無くしました。そのため、新しい鍵を買いました。",
             "kind": "valid"
           }
         ]
@@ -22717,32 +22726,31 @@
         ]
       },
       {
-        "japanese": "兄は毎日練習した。そのため、試験に合格した。",
-        "english": "My older brother practiced every day. As a result, he passed the exam.",
+        "japanese": "兄は毎日練習した。そのため、テストに合格した。",
+        "english": "My older brother practiced every day. As a result, he passed the test.",
         "vocabulary_slugs": [
           "ani",
           "mainichi",
           "renshuu-suru",
-          "shiken",
+          "tesuto",
           "goukaku-suru"
+        ]
+      },
+      {
+        "japanese": "今日は寒いです。そのため、コートを着ました。",
+        "english": "It's cold today. Because of that, I put on a coat.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui",
+          "kooto",
+          "kiru-wear"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "雪が降っている。そのため、バスは遅れますか。",
-          "new": "雪が降っています。そのため、バスは遅れますか。",
-          "reason": "Mixed register: first sentence is plain but the item is polite; make it 降っています."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "suruto": {
@@ -22840,25 +22848,17 @@
         ]
       },
       {
-        "japanese": "先生に質問した。すると、先生はゆっくり説明した。",
-        "english": "I asked the teacher a question. Then the teacher explained it slowly.",
+        "japanese": "先生に聞いた。すると、先生はゆっくり説明した。",
+        "english": "I asked the teacher. Then the teacher explained it slowly.",
         "vocabulary_slugs": [
           "sensei",
-          "shitsumon-suru",
+          "kiku-v",
           "yukkuri",
           "setsumei-suru"
         ],
         "alternates": [
           {
-            "japanese": "先生に質問をした。すると、先生はゆっくり説明した。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生に質問した。すると、先生がゆっくり説明した。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生に質問をした。すると、先生がゆっくり説明した。",
+            "japanese": "先生に聞いた。すると、先生がゆっくり説明した。",
             "kind": "valid"
           }
         ]
@@ -22884,18 +22884,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "先生に質問した。すると、先生は何も言わなかった。",
-          "new": "先生に質問した。すると、先生はゆっくり説明した。",
-          "reason": "hand fix: checker marked it unfixable"
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "igai": {
