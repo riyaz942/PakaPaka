@@ -341,6 +341,46 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたはおいくつですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "お",
+                  "reading": "お",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いくつです",
+                  "reading": "いくつです",
+                  "role": "word",
+                  "vocabulary_slug": "ikutsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -827,6 +867,58 @@
               "role": "other",
               "in_grammar": true
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あれじゃないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あれじゃ",
+                  "reading": "あれじゃ",
+                  "role": "word",
+                  "vocabulary_slug": "are",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ないです",
+                  "reading": "ないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あれではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あれ",
+                  "reading": "あれ",
+                  "role": "word",
+                  "vocabulary_slug": "are",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ないです",
+                  "reading": "ないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
           ]
         },
         {
@@ -1108,6 +1200,25 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "これではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "これ",
+                  "reading": "これ",
+                  "role": "word",
+                  "vocabulary_slug": "kore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -1180,6 +1291,25 @@
                 {
                   "surface": "ありません",
                   "reading": "ありません",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "それではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "それ",
+                  "reading": "それ",
+                  "role": "word",
+                  "vocabulary_slug": "sore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
                   "role": "other",
                   "in_grammar": true
                 }
@@ -1260,6 +1390,25 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "ここではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -1332,6 +1481,25 @@
                 {
                   "surface": "ないです",
                   "reading": "ないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あそこではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あそこ",
+                  "reading": "あそこ",
+                  "role": "word",
+                  "vocabulary_slug": "asoko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
                   "role": "other",
                   "in_grammar": true
                 }
@@ -1412,6 +1580,25 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "そちらではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "そちら",
+                  "reading": "そちら",
+                  "role": "word",
+                  "vocabulary_slug": "sochira",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -1484,6 +1671,25 @@
                 {
                   "surface": "ありません",
                   "reading": "ありません",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あちらではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あちら",
+                  "reading": "あちら",
+                  "role": "word",
+                  "vocabulary_slug": "achira",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
                   "role": "other",
                   "in_grammar": true
                 }
@@ -1678,6 +1884,25 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "あなたではないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ではないです",
+                  "reading": "ではないです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -1861,6 +2086,46 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "これはあなたのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "これ",
+                  "reading": "これ",
+                  "role": "word",
+                  "vocabulary_slug": "kore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -1922,6 +2187,46 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "それはあなたのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "それ",
+                  "reading": "それ",
+                  "role": "word",
+                  "vocabulary_slug": "sore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -1982,6 +2287,46 @@
               "reading": "か",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "どれがあなたのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どれ",
+                  "reading": "どれ",
+                  "role": "word",
+                  "vocabulary_slug": "dore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -2104,6 +2449,46 @@
               "reading": "か",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あれはあなたのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あれ",
+                  "reading": "あれ",
+                  "role": "word",
+                  "vocabulary_slug": "are",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -2276,6 +2661,46 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "どちらがあなたのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どちら",
+                  "reading": "どちら",
+                  "role": "word",
+                  "vocabulary_slug": "dochira",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -2385,6 +2810,40 @@
               "role": "word",
               "vocabulary_slug": "kochira",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "こちらがあなたのです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "こちら",
+                  "reading": "こちら",
+                  "role": "word",
+                  "vocabulary_slug": "kochira",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         }

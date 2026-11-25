@@ -59,7 +59,12 @@
           "anata",
           "ikutsu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたはおいくつですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あそこはどこですか。",
@@ -101,7 +106,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "desu": {
@@ -159,7 +168,16 @@
         "vocabulary_slugs": [
           "are"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あれじゃないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あれではないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "いつですか。",
@@ -197,7 +215,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "dewa-arimasen": {
@@ -223,6 +245,10 @@
           {
             "japanese": "これじゃないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "これではないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -239,6 +265,10 @@
           },
           {
             "japanese": "それじゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "それではないです。",
             "kind": "valid"
           }
         ]
@@ -257,6 +287,10 @@
           {
             "japanese": "ここじゃないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "ここではないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -273,6 +307,10 @@
           },
           {
             "japanese": "あそこじゃないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこではないです。",
             "kind": "valid"
           }
         ]
@@ -291,6 +329,10 @@
           {
             "japanese": "そちらじゃないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "そちらではないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -307,6 +349,10 @@
           },
           {
             "japanese": "あちらじゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あちらではないです。",
             "kind": "valid"
           }
         ]
@@ -351,6 +397,10 @@
           {
             "japanese": "あなたじゃないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたではないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -371,7 +421,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "masu": {
@@ -1799,7 +1853,12 @@
           "anata",
           "kore"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "これはあなたのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あなたのはそれですか。",
@@ -1808,7 +1867,12 @@
           "anata",
           "sore"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "それはあなたのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あなたのはどれですか。",
@@ -1817,7 +1881,12 @@
           "anata",
           "dore"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "どれがあなたのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あなたのはどこですか。",
@@ -1835,7 +1904,12 @@
           "anata",
           "are"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あれはあなたのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あなたのはここです。",
@@ -1862,7 +1936,12 @@
           "anata",
           "dochira"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "どちらがあなたのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "あなたのはあそこです。",
@@ -1880,13 +1959,22 @@
           "anata",
           "kochira"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "こちらがあなたのです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "no-nominalizer": {
