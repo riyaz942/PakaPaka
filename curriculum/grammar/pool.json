@@ -3972,53 +3972,6 @@
     ],
     "sentences": [
       {
-        "japanese": "ちょっと待ってください。",
-        "english": "Please wait a moment.",
-        "vocabulary_slugs": [
-          "chotto",
-          "matsu"
-        ]
-      },
-      {
-        "japanese": "ここに座ってください。",
-        "english": "Please sit here.",
-        "vocabulary_slugs": [
-          "koko",
-          "suwaru"
-        ]
-      },
-      {
-        "japanese": "名前を書いてください。",
-        "english": "Please write your name.",
-        "vocabulary_slugs": [
-          "namae",
-          "kaku"
-        ]
-      },
-      {
-        "japanese": "口を開けてください。",
-        "english": "Open your mouth, please.",
-        "vocabulary_slugs": [
-          "kuchi-v",
-          "akeru"
-        ]
-      },
-      {
-        "japanese": "ここに名前を書いてください。",
-        "english": "Please write your name here.",
-        "vocabulary_slugs": [
-          "koko",
-          "namae",
-          "kaku"
-        ],
-        "alternates": [
-          {
-            "japanese": "名前をここに書いてください。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "水を飲んでください。",
         "english": "Please drink some water.",
         "vocabulary_slugs": [
@@ -4027,7 +3980,24 @@
         ]
       },
       {
-        "japanese": "明日、うちに来てください。",
+        "japanese": "ここに書いてください。",
+        "english": "Please write here.",
+        "vocabulary_slugs": [
+          "koko",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "この本を読んでください。",
+        "english": "Please read this book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "明日、うちへ来てください。",
         "english": "Please come to my place tomorrow.",
         "vocabulary_slugs": [
           "ashita",
@@ -4036,59 +4006,95 @@
         ],
         "alternates": [
           {
-            "japanese": "明日うちに来てください。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "明日、うちへ来てください。",
+            "japanese": "明日うちへ来てください。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "ここでちょっと待ってください。",
-        "english": "Please wait here a moment.",
-        "vocabulary_slugs": [
-          "koko",
-          "chotto",
-          "matsu"
-        ],
-        "alternates": [
-          {
-            "japanese": "ちょっとここで待ってください。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "鍵がありませんから、ドアを開けてください。",
-        "english": "I don't have a key, so please open the door.",
-        "vocabulary_slugs": [
-          "kagi",
-          "aru",
-          "doa",
-          "akeru"
-        ]
-      },
-      {
-        "japanese": "パンを買いましたから、一緒に食べてください。",
-        "english": "I bought bread, so please eat it with me.",
+        "japanese": "パンを買いましたから、食べてください。",
+        "english": "I bought bread, so please eat it.",
         "vocabulary_slugs": [
           "pan",
           "kau-v",
-          "issho-ni",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "パンを買いましたから食べてください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "コーヒーはありませんから、お茶を飲んでください。",
+        "english": "There's no coffee, so please have some tea.",
+        "vocabulary_slugs": [
+          "koohii",
+          "aru",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "今日はタクシーで帰ってください。",
+        "english": "Please go home by taxi today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "takushii",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、タクシーで帰ってください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "コンビニで切手を買ってください。",
+        "english": "Please buy stamps at the convenience store.",
+        "vocabulary_slugs": [
+          "konbini",
+          "kitte",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "切手をコンビニで買ってください。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "お母さんに電話してください。",
+        "english": "Please call your mother.",
+        "vocabulary_slugs": [
+          "okaasan",
+          "denwa",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "毎朝、朝ご飯を食べてください。",
+        "english": "Please eat breakfast every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "asagohan",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎朝朝ご飯を食べてください。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-iru": {
@@ -4101,48 +4107,12 @@
     ],
     "sentences": [
       {
-        "japanese": "雨が降っています。",
-        "english": "It is raining.",
-        "vocabulary_slugs": [
-          "ame-v",
-          "furu-rain"
-        ]
-      },
-      {
         "japanese": "彼はパンを食べています。",
         "english": "He is eating bread.",
         "vocabulary_slugs": [
           "kare",
           "pan",
           "taberu"
-        ]
-      },
-      {
-        "japanese": "友達を待っています。",
-        "english": "I am waiting for a friend.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "matsu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は友達を待っています。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "彼を知っています。",
-        "english": "I know him.",
-        "vocabulary_slugs": [
-          "kare",
-          "shiru"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は彼を知っています。",
-            "kind": "valid"
-          }
         ]
       },
       {
@@ -4160,56 +4130,6 @@
           },
           {
             "japanese": "母が料理をしている。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "母が料理している。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今、勉強しています。",
-        "english": "I am studying now.",
-        "vocabulary_slugs": [
-          "ima",
-          "benkyou",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "今勉強しています。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今、勉強をしています。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今、勉強しています。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今、勉強をしています。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今、映画を見ています。",
-        "english": "I'm watching a movie right now.",
-        "vocabulary_slugs": [
-          "ima",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "映画を今見ています。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今、映画を見ています。",
             "kind": "valid"
           }
         ]
@@ -4241,33 +4161,89 @@
         ]
       },
       {
-        "japanese": "猫がベッドで寝ています。",
-        "english": "The cat is sleeping on the bed.",
+        "japanese": "兄は今、電話しています。",
+        "english": "My older brother is on the phone right now.",
         "vocabulary_slugs": [
-          "neko",
-          "beddo",
-          "neru"
+          "ani",
+          "ima",
+          "denwa",
+          "suru"
         ],
         "alternates": [
           {
-            "japanese": "ベッドで猫が寝ています。",
+            "japanese": "兄は今電話しています。",
             "kind": "valid"
           },
           {
-            "japanese": "猫はベッドで寝ています。",
+            "japanese": "今、兄は電話しています。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "お父さんは今、会社へ行っています。",
+        "english": "Dad has gone to the office right now.",
+        "vocabulary_slugs": [
+          "otousan",
+          "ima",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "お父さんは今、会社に行っています。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "それは分かっています。",
+        "english": "I know that already.",
+        "vocabulary_slugs": [
+          "sore",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "晩ご飯を食べました。今、お母さんと話しています。",
+        "english": "I ate dinner. Now I'm talking with Mom.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "taberu",
+          "ima",
+          "okaasan",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "みんなは来ていますか。",
+        "english": "Is everyone here?",
+        "vocabulary_slugs": [
+          "minna",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "みんな来ていますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あの女の人は何を書いていますか。",
+        "english": "What is that woman writing?",
+        "vocabulary_slugs": [
+          "ano",
+          "onnanohito",
+          "nani",
+          "kaku"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-mo-ii": {
@@ -4280,24 +4256,16 @@
     ],
     "sentences": [
       {
-        "japanese": "ここに座ってもいいですか。",
-        "english": "May I sit here?",
-        "vocabulary_slugs": [
-          "koko",
-          "suwaru"
-        ],
-        "alternates": [
-          {
-            "japanese": "ここに座ってもかまいませんか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "帰ってもいいですか。",
         "english": "May I go home?",
         "vocabulary_slugs": [
           "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "帰ってもかまいませんか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -4324,77 +4292,86 @@
         ]
       },
       {
-        "japanese": "ここで待ってもかまいません。",
-        "english": "You can wait here; I don't mind.",
+        "japanese": "このペンで書いてもいいですか。",
+        "english": "May I write with this pen?",
+        "vocabulary_slugs": [
+          "kono",
+          "pen",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "このペンで書いてもかまいませんか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "日曜日に来てもいいですか。",
+        "english": "Is it okay if I come on Sunday?",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "パンを買いました。食べてもいいですよ。",
+        "english": "I bought bread. You can eat it.",
+        "vocabulary_slugs": [
+          "pan",
+          "kau-v",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "ここで電話してもいいですか。",
+        "english": "May I make a phone call here?",
         "vocabulary_slugs": [
           "koko",
-          "matsu"
+          "denwa",
+          "suru"
         ],
         "alternates": [
           {
-            "japanese": "ここで待ってもいいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "ここで待ってもいいですよ。",
+            "japanese": "ここで電話してもかまいませんか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "窓を開けてもいいですか。",
-        "english": "Is it okay if I open the window?",
+        "japanese": "トイレへ行ってもいいですか。",
+        "english": "May I go to the toilet?",
         "vocabulary_slugs": [
-          "mado",
-          "akeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "窓を開けてもかまいませんか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "一緒に行ってもいいですか。",
-        "english": "Can I come along with you?",
-        "vocabulary_slugs": [
-          "issho-ni",
+          "toire",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "私も一緒に行ってもいいですか。",
+            "japanese": "トイレに行ってもいいですか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "電話を使ってもいいですか。",
-        "english": "May I use the phone?",
+        "japanese": "今日はタクシーで帰ってもかまいません。",
+        "english": "You may go home by taxi today.",
         "vocabulary_slugs": [
-          "denwa",
-          "tsukau"
-        ]
-      },
-      {
-        "japanese": "この傘を使ってもいいですよ。",
-        "english": "You can use this umbrella.",
-        "vocabulary_slugs": [
-          "kono",
-          "kasa",
-          "tsukau"
+          "kyou",
+          "takushii",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日はタクシーで帰ってもいいです。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-wa-ikenai": {
@@ -4407,82 +4384,6 @@
     ],
     "sentences": [
       {
-        "japanese": "授業中に話してはいけません。",
-        "english": "You must not talk during class.",
-        "vocabulary_slugs": [
-          "jugyou",
-          "hanasu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "授業中、話してはいけません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "ここで電話を使ってはいけません。",
-        "english": "You must not use the phone here.",
-        "vocabulary_slugs": [
-          "koko",
-          "denwa",
-          "tsukau"
-        ],
-        "alternates": [
-          {
-            "japanese": "電話をここで使ってはいけません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "その部屋に入ってはいけません。",
-        "english": "You must not go into that room.",
-        "vocabulary_slugs": [
-          "sono",
-          "heya",
-          "hairu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "その部屋へ入ってはいけません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "子供はお酒を買ってはいけません。",
-        "english": "Children are not allowed to buy alcohol.",
-        "vocabulary_slugs": [
-          "kodomo-v",
-          "osake",
-          "kau-v"
-        ]
-      },
-      {
-        "japanese": "夜にテレビを見てはいけない。",
-        "english": "You're not allowed to watch TV at night.",
-        "vocabulary_slugs": [
-          "yoru",
-          "terebi",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "夜にテレビを見ちゃいけない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "夜、テレビを見てはいけない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "テレビを夜に見てはいけない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "それを食べちゃいけない。",
         "english": "You can't eat that.",
         "vocabulary_slugs": [
@@ -4492,51 +4393,6 @@
         "alternates": [
           {
             "japanese": "それを食べてはいけない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "図書館の本にペンで書いてはいけない。",
-        "english": "You must not write in library books with a pen.",
-        "vocabulary_slugs": [
-          "toshokan",
-          "hon",
-          "pen",
-          "kaku"
-        ],
-        "alternates": [
-          {
-            "japanese": "ペンで図書館の本に書いてはいけない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "ここに座ってはだめだ。",
-        "english": "You mustn't sit here.",
-        "vocabulary_slugs": [
-          "koko",
-          "suwaru"
-        ],
-        "alternates": [
-          {
-            "japanese": "ここに座ってはいけない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "ここに鍵を置いてはいけません。",
-        "english": "You must not leave the key here.",
-        "vocabulary_slugs": [
-          "koko",
-          "kagi",
-          "oku"
-        ],
-        "alternates": [
-          {
-            "japanese": "鍵をここに置いてはいけません。",
             "kind": "valid"
           }
         ]
@@ -4555,24 +4411,89 @@
             "kind": "valid"
           },
           {
-            "japanese": "ベッドでパンを食べちゃだめだ。",
-            "kind": "valid"
-          },
-          {
             "japanese": "ベッドでパンを食べちゃいけない。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "ここで電話してはいけません。",
+        "english": "You must not make phone calls here.",
+        "vocabulary_slugs": [
+          "koko",
+          "denwa",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "この本に書いてはいけません。",
+        "english": "You must not write in this book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "先生のパソコンを見てはいけません。",
+        "english": "You must not look at the teacher's computer.",
+        "vocabulary_slugs": [
+          "sensei",
+          "pasokon",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "どうして話してはいけないんですか。",
+        "english": "Why am I not allowed to talk?",
+        "vocabulary_slugs": [
+          "doushite",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "今日は会社へ行ってはいけません。",
+        "english": "You must not go to the office today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は会社に行ってはいけません。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あそこへ行っちゃだめ。",
+        "english": "Don't go over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あそこに行っちゃだめ。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "そのかばんを買っちゃだめ。",
+        "english": "Don't buy that bag.",
+        "vocabulary_slugs": [
+          "sono",
+          "kaban",
+          "kau-v"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "nai-form": {
