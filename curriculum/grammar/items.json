@@ -52682,510 +52682,9 @@
           ]
         },
         {
-          "japanese": "夏が一番好きです。",
-          "english": "I like summer the most.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "natsu",
-            "suki"
-          ],
-          "furigana": "夏[なつ]が一[いち]番[ばん]好[す]きです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "natsu",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "suki",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "grammar_span": {
-            "start": 2,
-            "end": 4
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "夏",
-              "reading": "なつ",
-              "role": "word",
-              "vocabulary_slug": "natsu",
-              "in_grammar": false
-            },
-            {
-              "surface": "が",
-              "reading": "が",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "一番",
-              "reading": "いちばん",
-              "role": "other",
-              "in_grammar": true
-            },
-            {
-              "surface": "好きです",
-              "reading": "すきです",
-              "role": "word",
-              "vocabulary_slug": "suki",
-              "in_grammar": false
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "夏[なつ]がいちばん好[す]きです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "夏",
-                  "reading": "なつ",
-                  "role": "word",
-                  "vocabulary_slug": "natsu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "いちばん",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "好きです",
-                  "reading": "すきです",
-                  "role": "word",
-                  "vocabulary_slug": "suki",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "私[わたし]は夏[なつ]が一[いち]番[ばん]好[す]きです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "私",
-                  "reading": "わたし",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "夏",
-                  "reading": "なつ",
-                  "role": "word",
-                  "vocabulary_slug": "natsu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "好きです",
-                  "reading": "すきです",
-                  "role": "word",
-                  "vocabulary_slug": "suki",
-                  "in_grammar": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "家族で誰が一番忙しいですか。",
-          "english": "Who is the busiest in your family?",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kazoku",
-            "dare",
-            "isogashii"
-          ],
-          "furigana": "家[か]族[ぞく]で誰[だれ]が一[いち]番[ばん]忙[いそが]しいですか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kazoku",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "dare",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 7,
-              "end": 10
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "家族",
-              "reading": "かぞく",
-              "role": "word",
-              "vocabulary_slug": "kazoku",
-              "in_grammar": false
-            },
-            {
-              "surface": "で",
-              "reading": "で",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "誰",
-              "reading": "だれ",
-              "role": "word",
-              "vocabulary_slug": "dare",
-              "in_grammar": false
-            },
-            {
-              "surface": "が",
-              "reading": "が",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "一番",
-              "reading": "いちばん",
-              "role": "other",
-              "in_grammar": true
-            },
-            {
-              "surface": "忙しいです",
-              "reading": "いそがしいです",
-              "role": "word",
-              "vocabulary_slug": "isogashii",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "particle",
-              "in_grammar": false
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "誰[だれ]が家[か]族[ぞく]で一[いち]番[ばん]忙[いそが]しいですか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "誰",
-                  "reading": "だれ",
-                  "role": "word",
-                  "vocabulary_slug": "dare",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "家族",
-                  "reading": "かぞく",
-                  "role": "word",
-                  "vocabulary_slug": "kazoku",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "で",
-                  "reading": "で",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "忙しいです",
-                  "reading": "いそがしいです",
-                  "role": "word",
-                  "vocabulary_slug": "isogashii",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "particle",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "家[か]族[ぞく]の中[なか]で誰[だれ]が一[いち]番[ばん]忙[いそが]しいですか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "家族",
-                  "reading": "かぞく",
-                  "role": "word",
-                  "vocabulary_slug": "kazoku",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "の",
-                  "reading": "の",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "中",
-                  "reading": "なか",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "で",
-                  "reading": "で",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "誰",
-                  "reading": "だれ",
-                  "role": "word",
-                  "vocabulary_slug": "dare",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "忙しいです",
-                  "reading": "いそがしいです",
-                  "role": "word",
-                  "vocabulary_slug": "isogashii",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "particle",
-                  "in_grammar": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "今、カメラが一番欲しいです。",
-          "english": "A camera is what I want above all right now.",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "ima",
-            "kamera",
-            "hoshii"
-          ],
-          "furigana": "今[いま]、カメラが一[いち]番[ばん]欲[ほ]しいです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ima",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kamera",
-              "start": 2,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "hoshii",
-              "start": 8,
-              "end": 11
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 8
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "今",
-              "reading": "いま",
-              "role": "word",
-              "vocabulary_slug": "ima",
-              "in_grammar": false
-            },
-            {
-              "surface": "カメラ",
-              "reading": "カメラ",
-              "role": "word",
-              "vocabulary_slug": "kamera",
-              "in_grammar": false
-            },
-            {
-              "surface": "が",
-              "reading": "が",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "一番",
-              "reading": "いちばん",
-              "role": "other",
-              "in_grammar": true
-            },
-            {
-              "surface": "欲しいです",
-              "reading": "ほしいです",
-              "role": "word",
-              "vocabulary_slug": "hoshii",
-              "in_grammar": false
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "私[わたし]は今[いま]、カメラが一[いち]番[ばん]欲[ほ]しいです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "私",
-                  "reading": "わたし",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "今",
-                  "reading": "いま",
-                  "role": "word",
-                  "vocabulary_slug": "ima",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "カメラ",
-                  "reading": "カメラ",
-                  "role": "word",
-                  "vocabulary_slug": "kamera",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "欲しいです",
-                  "reading": "ほしいです",
-                  "role": "word",
-                  "vocabulary_slug": "hoshii",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "今[いま]、私[わたし]はカメラが一[いち]番[ばん]欲[ほ]しいです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "今",
-                  "reading": "いま",
-                  "role": "word",
-                  "vocabulary_slug": "ima",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "私",
-                  "reading": "わたし",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "カメラ",
-                  "reading": "カメラ",
-                  "role": "word",
-                  "vocabulary_slug": "kamera",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "欲しいです",
-                  "reading": "ほしいです",
-                  "role": "word",
-                  "vocabulary_slug": "hoshii",
-                  "in_grammar": false
-                }
-              ]
-            }
-          ]
-        },
-        {
           "japanese": "ここのご飯が一番おいしい！",
           "english": "The food here beats everywhere else!",
-          "sort_order": 4,
+          "sort_order": 1,
           "vocabulary_slugs": [
             "koko",
             "gohan",
@@ -53304,240 +52803,9 @@
           ]
         },
         {
-          "japanese": "私は肉が一番好きです。",
-          "english": "Meat is my favourite.",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "watashi",
-            "niku",
-            "suki"
-          ],
-          "furigana": "私[わたし]は肉[にく]が一[いち]番[ばん]好[す]きです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "niku",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "suki",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 6
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "私",
-              "reading": "わたし",
-              "role": "word",
-              "vocabulary_slug": "watashi",
-              "in_grammar": false
-            },
-            {
-              "surface": "は",
-              "reading": "は",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "肉",
-              "reading": "にく",
-              "role": "word",
-              "vocabulary_slug": "niku",
-              "in_grammar": false
-            },
-            {
-              "surface": "が",
-              "reading": "が",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "一番",
-              "reading": "いちばん",
-              "role": "other",
-              "in_grammar": true
-            },
-            {
-              "surface": "好きです",
-              "reading": "すきです",
-              "role": "word",
-              "vocabulary_slug": "suki",
-              "in_grammar": false
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "肉[にく]が一[いち]番[ばん]好[す]きです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "肉",
-                  "reading": "にく",
-                  "role": "word",
-                  "vocabulary_slug": "niku",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "好きです",
-                  "reading": "すきです",
-                  "role": "word",
-                  "vocabulary_slug": "suki",
-                  "in_grammar": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "去年の冬が一番寒かったです。",
-          "english": "Last year's winter was the coldest.",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "kyonen",
-            "fuyu",
-            "samui"
-          ],
-          "furigana": "去[きょ]年[ねん]の冬[ふゆ]が一[いち]番[ばん]寒[さむ]かったです。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyonen",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "fuyu",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "samui",
-              "start": 7,
-              "end": 11,
-              "surface_form": "寒かった",
-              "inflection": "ta"
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "去年",
-              "reading": "きょねん",
-              "role": "word",
-              "vocabulary_slug": "kyonen",
-              "in_grammar": false
-            },
-            {
-              "surface": "の",
-              "reading": "の",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "冬",
-              "reading": "ふゆ",
-              "role": "word",
-              "vocabulary_slug": "fuyu",
-              "in_grammar": false
-            },
-            {
-              "surface": "が",
-              "reading": "が",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "一番",
-              "reading": "いちばん",
-              "role": "other",
-              "in_grammar": true
-            },
-            {
-              "surface": "寒かったです",
-              "reading": "さむかったです",
-              "role": "word",
-              "vocabulary_slug": "samui",
-              "in_grammar": false
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "去[きょ]年[ねん]の冬[ふゆ]は一[いち]番[ばん]寒[さむ]かったです。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "去年",
-                  "reading": "きょねん",
-                  "role": "word",
-                  "vocabulary_slug": "kyonen",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "の",
-                  "reading": "の",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "冬",
-                  "reading": "ふゆ",
-                  "role": "word",
-                  "vocabulary_slug": "fuyu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "一番",
-                  "reading": "いちばん",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "寒かったです",
-                  "reading": "さむかったです",
-                  "role": "word",
-                  "vocabulary_slug": "samui",
-                  "in_grammar": false
-                }
-              ]
-            }
-          ]
-        },
-        {
           "japanese": "どの駅が一番近いですか。",
           "english": "Which station is the closest?",
-          "sort_order": 7,
+          "sort_order": 2,
           "vocabulary_slugs": [
             "dono",
             "eki",
@@ -53606,40 +52874,645 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "どの駅[えき]がいちばん近[ちか]いですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どの",
+                  "reading": "どの",
+                  "role": "word",
+                  "vocabulary_slug": "dono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "駅",
+                  "reading": "えき",
+                  "role": "word",
+                  "vocabulary_slug": "eki",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いちばん",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "近いです",
+                  "reading": "ちかいです",
+                  "role": "word",
+                  "vocabulary_slug": "chikai",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
-          "japanese": "犬が一番かわいいです。",
-          "english": "Dogs are the cutest.",
-          "sort_order": 8,
+          "japanese": "兄弟の中で誰が一番速いですか。",
+          "english": "Out of your siblings, who is the fastest?",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "inu",
-            "kawaii"
+            "kyoudai",
+            "naka",
+            "dare",
+            "hayai-fast"
           ],
-          "furigana": "犬[いぬ]が一[いち]番[ばん]かわいいです。",
+          "furigana": "兄[きょう]弟[だい]の中[なか]で誰[だれ]が一[いち]番[ばん]速[はや]いですか。",
           "word_spans": [
             {
-              "vocabulary_slug": "inu",
+              "vocabulary_slug": "kyoudai",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "kawaii",
-              "start": 4,
-              "end": 8
+              "vocabulary_slug": "naka",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "dare",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hayai-fast",
+              "start": 9,
+              "end": 11
             }
           ],
           "grammar_span": {
-            "start": 2,
-            "end": 4
+            "start": 7,
+            "end": 9
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "犬",
-              "reading": "いぬ",
+              "surface": "兄弟",
+              "reading": "きょうだい",
               "role": "word",
-              "vocabulary_slug": "inu",
+              "vocabulary_slug": "kyoudai",
+              "in_grammar": false
+            },
+            {
+              "surface": "の",
+              "reading": "の",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "中",
+              "reading": "なか",
+              "role": "word",
+              "vocabulary_slug": "naka",
+              "in_grammar": false
+            },
+            {
+              "surface": "で",
+              "reading": "で",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "誰",
+              "reading": "だれ",
+              "role": "word",
+              "vocabulary_slug": "dare",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "速いです",
+              "reading": "はやいです",
+              "role": "word",
+              "vocabulary_slug": "hayai-fast",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "誰[だれ]が兄[きょう]弟[だい]の中[なか]で一[いち]番[ばん]速[はや]いですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "誰",
+                  "reading": "だれ",
+                  "role": "word",
+                  "vocabulary_slug": "dare",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "兄弟",
+                  "reading": "きょうだい",
+                  "role": "word",
+                  "vocabulary_slug": "kyoudai",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "中",
+                  "reading": "なか",
+                  "role": "word",
+                  "vocabulary_slug": "naka",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "一番",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "速いです",
+                  "reading": "はやいです",
+                  "role": "word",
+                  "vocabulary_slug": "hayai-fast",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "この部屋が一番明るいです。",
+          "english": "This room is the brightest.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "akarui"
+          ],
+          "furigana": "この部屋[へや]が一[いち]番[ばん]明[あか]るいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "akarui",
+              "start": 7,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "この",
+              "reading": "この",
+              "role": "word",
+              "vocabulary_slug": "kono",
+              "in_grammar": false
+            },
+            {
+              "surface": "部屋",
+              "reading": "へや",
+              "role": "word",
+              "vocabulary_slug": "heya",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "明るいです",
+              "reading": "あかるいです",
+              "role": "word",
+              "vocabulary_slug": "akarui",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "この部屋[へや]は一[いち]番[ばん]明[あか]るいです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "この",
+                  "reading": "この",
+                  "role": "word",
+                  "vocabulary_slug": "kono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "部屋",
+                  "reading": "へや",
+                  "role": "word",
+                  "vocabulary_slug": "heya",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "一番",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "明るいです",
+                  "reading": "あかるいです",
+                  "role": "word",
+                  "vocabulary_slug": "akarui",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "昨日の映画が一番面白かったです。",
+          "english": "Yesterday's movie was the most interesting one.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "kinou",
+            "eiga",
+            "omoshiroi"
+          ],
+          "furigana": "昨日[きのう]の映[えい]画[が]が一[いち]番[ばん]面白[おもしろ]かったです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "omoshiroi",
+              "start": 8,
+              "end": 13,
+              "surface_form": "面白かった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 8
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "昨日",
+              "reading": "きのう",
+              "role": "word",
+              "vocabulary_slug": "kinou",
+              "in_grammar": false
+            },
+            {
+              "surface": "の",
+              "reading": "の",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "映画",
+              "reading": "えいが",
+              "role": "word",
+              "vocabulary_slug": "eiga",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "面白かったです",
+              "reading": "おもしろかったです",
+              "role": "word",
+              "vocabulary_slug": "omoshiroi",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]の映[えい]画[が]は一[いち]番[ばん]面白[おもしろ]かったです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "昨日",
+                  "reading": "きのう",
+                  "role": "word",
+                  "vocabulary_slug": "kinou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "映画",
+                  "reading": "えいが",
+                  "role": "word",
+                  "vocabulary_slug": "eiga",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "一番",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "面白かったです",
+                  "reading": "おもしろかったです",
+                  "role": "word",
+                  "vocabulary_slug": "omoshiroi",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "私の車は一番速くないです。",
+          "english": "My car is not the fastest.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "watashi",
+            "kuruma",
+            "hayai-fast"
+          ],
+          "furigana": "私[わたし]の車[くるま]は一[いち]番[ばん]速[はや]くないです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hayai-fast",
+              "start": 6,
+              "end": 10,
+              "surface_form": "速くない",
+              "inflection": "nai"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 6
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "私",
+              "reading": "わたし",
+              "role": "word",
+              "vocabulary_slug": "watashi",
+              "in_grammar": false
+            },
+            {
+              "surface": "の",
+              "reading": "の",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "車",
+              "reading": "くるま",
+              "role": "word",
+              "vocabulary_slug": "kuruma",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "速くないです",
+              "reading": "はやくないです",
+              "role": "word",
+              "vocabulary_slug": "hayai-fast",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]の車[くるま]はいちばん速[はや]くないです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "word",
+                  "vocabulary_slug": "watashi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "車",
+                  "reading": "くるま",
+                  "role": "word",
+                  "vocabulary_slug": "kuruma",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いちばん",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "速くないです",
+                  "reading": "はやくないです",
+                  "role": "word",
+                  "vocabulary_slug": "hayai-fast",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "動物の中で何が一番かわいいですか。",
+          "english": "Which animal is the cutest?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "doubutsu",
+            "naka",
+            "nani",
+            "kawaii"
+          ],
+          "furigana": "動[どう]物[ぶつ]の中[なか]で何[なに]が一[いち]番[ばん]かわいいですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "doubutsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kawaii",
+              "start": 9,
+              "end": 13
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "動物",
+              "reading": "どうぶつ",
+              "role": "word",
+              "vocabulary_slug": "doubutsu",
+              "in_grammar": false
+            },
+            {
+              "surface": "の",
+              "reading": "の",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "中",
+              "reading": "なか",
+              "role": "word",
+              "vocabulary_slug": "naka",
+              "in_grammar": false
+            },
+            {
+              "surface": "で",
+              "reading": "で",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "何",
+              "reading": "なに",
+              "role": "word",
+              "vocabulary_slug": "nani",
               "in_grammar": false
             },
             {
@@ -53660,6 +53533,288 @@
               "role": "word",
               "vocabulary_slug": "kawaii",
               "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "今週は水曜日が一番楽しかったです。",
+          "english": "This week, Wednesday was the most fun.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "konshuu",
+            "suiyoubi",
+            "tanoshii"
+          ],
+          "furigana": "今[こん]週[しゅう]は水[すい]曜[よう]日[び]が一[いち]番[ばん]楽[たの]しかったです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "konshuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "suiyoubi",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tanoshii",
+              "start": 9,
+              "end": 14,
+              "surface_form": "楽しかった",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "今週",
+              "reading": "こんしゅう",
+              "role": "word",
+              "vocabulary_slug": "konshuu",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "水曜日",
+              "reading": "すいようび",
+              "role": "word",
+              "vocabulary_slug": "suiyoubi",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "楽しかったです",
+              "reading": "たのしかったです",
+              "role": "word",
+              "vocabulary_slug": "tanoshii",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "今[こん]週[しゅう]は水[すい]曜[よう]日[び]がいちばん楽[たの]しかったです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今週",
+                  "reading": "こんしゅう",
+                  "role": "word",
+                  "vocabulary_slug": "konshuu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "水曜日",
+                  "reading": "すいようび",
+                  "role": "word",
+                  "vocabulary_slug": "suiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いちばん",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "楽しかったです",
+                  "reading": "たのしかったです",
+                  "role": "word",
+                  "vocabulary_slug": "tanoshii",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "この中でどれが一番甘いですか。",
+          "english": "Which of these is the sweetest?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kono",
+            "naka",
+            "dore",
+            "amai"
+          ],
+          "furigana": "この中[なか]でどれが一[いち]番[ばん]甘[あま]いですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "dore",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "amai",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 9
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "この",
+              "reading": "この",
+              "role": "word",
+              "vocabulary_slug": "kono",
+              "in_grammar": false
+            },
+            {
+              "surface": "中",
+              "reading": "なか",
+              "role": "word",
+              "vocabulary_slug": "naka",
+              "in_grammar": false
+            },
+            {
+              "surface": "で",
+              "reading": "で",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "どれ",
+              "reading": "どれ",
+              "role": "word",
+              "vocabulary_slug": "dore",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "一番",
+              "reading": "いちばん",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "甘いです",
+              "reading": "あまいです",
+              "role": "word",
+              "vocabulary_slug": "amai",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "この中[なか]でどれがいちばん甘[あま]いですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "この",
+                  "reading": "この",
+                  "role": "word",
+                  "vocabulary_slug": "kono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "中",
+                  "reading": "なか",
+                  "role": "word",
+                  "vocabulary_slug": "naka",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どれ",
+                  "reading": "どれ",
+                  "role": "word",
+                  "vocabulary_slug": "dore",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いちばん",
+                  "reading": "いちばん",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "甘いです",
+                  "reading": "あまいです",
+                  "role": "word",
+                  "vocabulary_slug": "amai",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         }
@@ -54042,50 +54197,57 @@
           ]
         },
         {
-          "japanese": "土曜日の夜はどうですか。",
-          "english": "How about Saturday night?",
+          "japanese": "この赤いシャツはどうですか。",
+          "english": "How about this red shirt?",
           "sort_order": 5,
           "vocabulary_slugs": [
-            "doyoubi",
-            "yoru"
+            "kono",
+            "akai",
+            "shatsu"
           ],
-          "furigana": "土[ど]曜[よう]日[び]の夜[よる]はどうですか。",
+          "furigana": "この赤[あか]いシャツはどうですか。",
           "word_spans": [
             {
-              "vocabulary_slug": "doyoubi",
+              "vocabulary_slug": "kono",
               "start": 0,
-              "end": 3
+              "end": 2
             },
             {
-              "vocabulary_slug": "yoru",
+              "vocabulary_slug": "akai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shatsu",
               "start": 4,
-              "end": 5
+              "end": 7
             }
           ],
           "grammar_span": {
-            "start": 6,
-            "end": 11
+            "start": 8,
+            "end": 13
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "土曜日",
-              "reading": "どようび",
+              "surface": "この",
+              "reading": "この",
               "role": "word",
-              "vocabulary_slug": "doyoubi",
+              "vocabulary_slug": "kono",
               "in_grammar": false
             },
             {
-              "surface": "の",
-              "reading": "の",
-              "role": "particle",
+              "surface": "赤い",
+              "reading": "あかい",
+              "role": "word",
+              "vocabulary_slug": "akai",
               "in_grammar": false
             },
             {
-              "surface": "夜",
-              "reading": "よる",
+              "surface": "シャツ",
+              "reading": "シャツ",
               "role": "word",
-              "vocabulary_slug": "yoru",
+              "vocabulary_slug": "shatsu",
               "in_grammar": false
             },
             {
@@ -54099,6 +54261,47 @@
               "reading": "どうですか",
               "role": "other",
               "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "この赤[あか]いシャツはいかがですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "この",
+                  "reading": "この",
+                  "role": "word",
+                  "vocabulary_slug": "kono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "赤い",
+                  "reading": "あかい",
+                  "role": "word",
+                  "vocabulary_slug": "akai",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "シャツ",
+                  "reading": "シャツ",
+                  "role": "word",
+                  "vocabulary_slug": "shatsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いかがですか",
+                  "reading": "いかがですか",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -54172,14 +54375,14 @@
           ]
         },
         {
-          "japanese": "昨日の試験はどうでしたか。",
-          "english": "How was yesterday's exam?",
+          "japanese": "昨日のテストはどうでしたか。",
+          "english": "How was yesterday's test?",
           "sort_order": 7,
           "vocabulary_slugs": [
             "kinou",
-            "shiken"
+            "tesuto"
           ],
-          "furigana": "昨日[きのう]の試[し]験[けん]はどうでしたか。",
+          "furigana": "昨日[きのう]のテストはどうでしたか。",
           "word_spans": [
             {
               "vocabulary_slug": "kinou",
@@ -54187,14 +54390,14 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "start": 3,
-              "end": 5
+              "end": 6
             }
           ],
           "grammar_span": {
-            "start": 6,
-            "end": 12
+            "start": 7,
+            "end": 13
           },
           "register": "polite",
           "answer_units": [
@@ -54212,10 +54415,10 @@
               "in_grammar": false
             },
             {
-              "surface": "試験",
-              "reading": "しけん",
+              "surface": "テスト",
+              "reading": "テスト",
               "role": "word",
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "in_grammar": false
             },
             {
@@ -54229,6 +54432,46 @@
               "reading": "どうでしたか",
               "role": "other",
               "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "昨日[きのう]のテストはいかがでしたか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "昨日",
+                  "reading": "きのう",
+                  "role": "word",
+                  "vocabulary_slug": "kinou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "の",
+                  "reading": "の",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "テスト",
+                  "reading": "テスト",
+                  "role": "word",
+                  "vocabulary_slug": "tesuto",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いかがでしたか",
+                  "reading": "いかがでしたか",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -54368,58 +54611,9 @@
       ],
       "example_sentences": [
         {
-          "japanese": "明日は雨でしょう。",
-          "english": "It will probably rain tomorrow.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "ashita",
-            "ame-v"
-          ],
-          "furigana": "明日[あした]は雨[あめ]でしょう。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ame-v",
-              "start": 3,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 8
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "明日",
-              "reading": "あした",
-              "role": "word",
-              "vocabulary_slug": "ashita",
-              "in_grammar": false
-            },
-            {
-              "surface": "は",
-              "reading": "は",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "雨でしょう",
-              "reading": "あめでしょう",
-              "role": "word",
-              "vocabulary_slug": "ame-v",
-              "in_grammar": true
-            }
-          ]
-        },
-        {
           "japanese": "彼は来るでしょう。",
           "english": "He will probably come.",
-          "sort_order": 1,
+          "sort_order": 0,
           "vocabulary_slugs": [
             "kare",
             "kuru-v"
@@ -54463,42 +54657,40 @@
               "vocabulary_slug": "kuru-v",
               "in_grammar": true
             }
-          ]
-        },
-        {
-          "japanese": "難しいでしょう。",
-          "english": "It's probably difficult.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "muzukashii"
           ],
-          "furigana": "難[むずか]しいでしょう。",
-          "word_spans": [
+          "build_alternates": [
             {
-              "vocabulary_slug": "muzukashii",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 3,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "難しいでしょう",
-              "reading": "むずかしいでしょう",
-              "role": "word",
-              "vocabulary_slug": "muzukashii",
-              "in_grammar": true
+              "furigana": "彼[かれ]が来[く]るでしょう。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "彼",
+                  "reading": "かれ",
+                  "role": "word",
+                  "vocabulary_slug": "kare",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来るでしょう",
+                  "reading": "くるでしょう",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
         {
           "japanese": "彼は帰るだろう。",
-          "english": "He will probably return home.",
-          "sort_order": 3,
+          "english": "He will probably go home.",
+          "sort_order": 1,
           "vocabulary_slugs": [
             "kare",
             "kaeru-v"
@@ -54545,16 +54737,16 @@
           ]
         },
         {
-          "japanese": "あの店の服は高いだろう。",
-          "english": "The clothes at that shop are probably expensive.",
-          "sort_order": 4,
+          "japanese": "あの店の服は安いだろう。",
+          "english": "The clothes at that shop are probably cheap.",
+          "sort_order": 2,
           "vocabulary_slugs": [
             "ano",
             "mise",
             "fuku",
-            "takai-adj"
+            "yasui-adj"
           ],
-          "furigana": "あの店[みせ]の服[ふく]は高[たか]いだろう。",
+          "furigana": "あの店[みせ]の服[ふく]は安[やす]いだろう。",
           "word_spans": [
             {
               "vocabulary_slug": "ano",
@@ -54572,7 +54764,7 @@
               "end": 5
             },
             {
-              "vocabulary_slug": "takai-adj",
+              "vocabulary_slug": "yasui-adj",
               "start": 6,
               "end": 8
             }
@@ -54617,52 +54809,52 @@
               "in_grammar": false
             },
             {
-              "surface": "高いだろう",
-              "reading": "たかいだろう",
+              "surface": "安いだろう",
+              "reading": "やすいだろう",
               "role": "word",
-              "vocabulary_slug": "takai-adj",
+              "vocabulary_slug": "yasui-adj",
               "in_grammar": true
             }
           ]
         },
         {
-          "japanese": "猫はベッドにいるだろう。",
-          "english": "The cat is probably on the bed.",
-          "sort_order": 5,
+          "japanese": "赤ちゃんはベッドにいるだろう。",
+          "english": "The baby is probably in the bed.",
+          "sort_order": 3,
           "vocabulary_slugs": [
-            "neko",
+            "akachan",
             "beddo",
             "iru-exist"
           ],
-          "furigana": "猫[ねこ]はベッドにいるだろう。",
+          "furigana": "赤[あか]ちゃんはベッドにいるだろう。",
           "word_spans": [
             {
-              "vocabulary_slug": "neko",
+              "vocabulary_slug": "akachan",
               "start": 0,
-              "end": 1
+              "end": 4
             },
             {
               "vocabulary_slug": "beddo",
-              "start": 2,
-              "end": 5
+              "start": 5,
+              "end": 8
             },
             {
               "vocabulary_slug": "iru-exist",
-              "start": 6,
-              "end": 8
+              "start": 9,
+              "end": 11
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 11
+            "start": 11,
+            "end": 14
           },
           "register": "plain",
           "answer_units": [
             {
-              "surface": "猫",
-              "reading": "ねこ",
+              "surface": "赤ちゃん",
+              "reading": "あかちゃん",
               "role": "word",
-              "vocabulary_slug": "neko",
+              "vocabulary_slug": "akachan",
               "in_grammar": false
             },
             {
@@ -54694,15 +54886,15 @@
           ]
         },
         {
-          "japanese": "母はお酒を飲まないだろう。",
-          "english": "My mother probably won't drink alcohol.",
-          "sort_order": 6,
+          "japanese": "母はビールを飲まないだろう。",
+          "english": "My mother probably won't drink beer.",
+          "sort_order": 4,
           "vocabulary_slugs": [
             "haha",
-            "osake",
+            "biiru",
             "nomu-v"
           ],
-          "furigana": "母[はは]はお酒[さけ]を飲[の]まないだろう。",
+          "furigana": "母[はは]はビールを飲[の]まないだろう。",
           "word_spans": [
             {
               "vocabulary_slug": "haha",
@@ -54710,21 +54902,21 @@
               "end": 1
             },
             {
-              "vocabulary_slug": "osake",
+              "vocabulary_slug": "biiru",
               "start": 2,
-              "end": 4
+              "end": 5
             },
             {
               "vocabulary_slug": "nomu-v",
-              "start": 5,
-              "end": 9,
+              "start": 6,
+              "end": 10,
               "surface_form": "飲まない",
               "inflection": "nai"
             }
           ],
           "grammar_span": {
-            "start": 9,
-            "end": 12
+            "start": 10,
+            "end": 13
           },
           "register": "plain",
           "answer_units": [
@@ -54742,10 +54934,10 @@
               "in_grammar": false
             },
             {
-              "surface": "お酒",
-              "reading": "おさけ",
+              "surface": "ビール",
+              "reading": "ビール",
               "role": "word",
-              "vocabulary_slug": "osake",
+              "vocabulary_slug": "biiru",
               "in_grammar": false
             },
             {
@@ -54764,15 +54956,15 @@
           ]
         },
         {
-          "japanese": "昨日の試験は難しかっただろう。",
-          "english": "Yesterday's exam was probably hard.",
-          "sort_order": 7,
+          "japanese": "昨日のテストは長かっただろう。",
+          "english": "Yesterday's test was probably long.",
+          "sort_order": 5,
           "vocabulary_slugs": [
             "kinou",
-            "shiken",
-            "muzukashii"
+            "tesuto",
+            "nagai-adj"
           ],
-          "furigana": "昨日[きのう]の試[し]験[けん]は難[むずか]しかっただろう。",
+          "furigana": "昨日[きのう]のテストは長[なが]かっただろう。",
           "word_spans": [
             {
               "vocabulary_slug": "kinou",
@@ -54780,15 +54972,15 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "start": 3,
-              "end": 5
+              "end": 6
             },
             {
-              "vocabulary_slug": "muzukashii",
-              "start": 6,
+              "vocabulary_slug": "nagai-adj",
+              "start": 7,
               "end": 11,
-              "surface_form": "難しかった",
+              "surface_form": "長かった",
               "inflection": "ta"
             }
           ],
@@ -54812,10 +55004,10 @@
               "in_grammar": false
             },
             {
-              "surface": "試験",
-              "reading": "しけん",
+              "surface": "テスト",
+              "reading": "テスト",
               "role": "word",
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "tesuto",
               "in_grammar": false
             },
             {
@@ -54825,25 +55017,95 @@
               "in_grammar": false
             },
             {
-              "surface": "難しかっただろう",
-              "reading": "むずかしかっただろう",
+              "surface": "長かっただろう",
+              "reading": "ながかっただろう",
               "role": "word",
-              "vocabulary_slug": "muzukashii",
+              "vocabulary_slug": "nagai-adj",
               "in_grammar": true
             }
           ]
         },
         {
-          "japanese": "子供は公園で遊んでいるだろう。",
-          "english": "The kids are probably playing in the park.",
-          "sort_order": 8,
+          "japanese": "父は電車に乗っただろう。",
+          "english": "Dad probably got on the train.",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "chichi",
+            "densha",
+            "noru"
+          ],
+          "furigana": "父[ちち]は電[でん]車[しゃ]に乗[の]っただろう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "noru",
+              "start": 5,
+              "end": 8,
+              "surface_form": "乗った",
+              "inflection": "ta"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 11
+          },
+          "register": "plain",
+          "answer_units": [
+            {
+              "surface": "父",
+              "reading": "ちち",
+              "role": "word",
+              "vocabulary_slug": "chichi",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "電車",
+              "reading": "でんしゃ",
+              "role": "word",
+              "vocabulary_slug": "densha",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "乗っただろう",
+              "reading": "のっただろう",
+              "role": "word",
+              "vocabulary_slug": "noru",
+              "in_grammar": true
+            }
+          ]
+        },
+        {
+          "japanese": "子供は外で走っているだろう。",
+          "english": "The kids are probably running around outside.",
+          "sort_order": 7,
           "vocabulary_slugs": [
             "kodomo-v",
-            "kouen",
-            "asobu",
+            "soto",
+            "hashiru",
             "iru-exist"
           ],
-          "furigana": "子[こ]供[ども]は公[こう]園[えん]で遊[あそ]んでいるだろう。",
+          "furigana": "子[こ]供[ども]は外[そと]で走[はし]っているだろう。",
           "word_spans": [
             {
               "vocabulary_slug": "kodomo-v",
@@ -54851,26 +55113,26 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "soto",
               "start": 3,
-              "end": 5
+              "end": 4
             },
             {
-              "vocabulary_slug": "asobu",
-              "start": 6,
-              "end": 9,
-              "surface_form": "遊んで",
+              "vocabulary_slug": "hashiru",
+              "start": 5,
+              "end": 8,
+              "surface_form": "走って",
               "inflection": "te"
             },
             {
               "vocabulary_slug": "iru-exist",
-              "start": 9,
-              "end": 11
+              "start": 8,
+              "end": 10
             }
           ],
           "grammar_span": {
-            "start": 11,
-            "end": 14
+            "start": 10,
+            "end": 13
           },
           "register": "plain",
           "answer_units": [
@@ -54888,10 +55150,10 @@
               "in_grammar": false
             },
             {
-              "surface": "公園",
-              "reading": "こうえん",
+              "surface": "外",
+              "reading": "そと",
               "role": "word",
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "soto",
               "in_grammar": false
             },
             {
@@ -54901,10 +55163,10 @@
               "in_grammar": false
             },
             {
-              "surface": "遊んで",
-              "reading": "あそんで",
+              "surface": "走って",
+              "reading": "はしって",
               "role": "word",
-              "vocabulary_slug": "asobu",
+              "vocabulary_slug": "hashiru",
               "in_grammar": false
             },
             {
@@ -54917,14 +55179,14 @@
           ],
           "build_alternates": [
             {
-              "furigana": "公[こう]園[えん]で子[こ]供[ども]は遊[あそ]んでいるだろう。",
+              "furigana": "外[そと]で子[こ]供[ども]は走[はし]っているだろう。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "公園",
-                  "reading": "こうえん",
+                  "surface": "外",
+                  "reading": "そと",
                   "role": "word",
-                  "vocabulary_slug": "kouen",
+                  "vocabulary_slug": "soto",
                   "in_grammar": false
                 },
                 {
@@ -54947,10 +55209,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "遊んで",
-                  "reading": "あそんで",
+                  "surface": "走って",
+                  "reading": "はしって",
                   "role": "word",
-                  "vocabulary_slug": "asobu",
+                  "vocabulary_slug": "hashiru",
                   "in_grammar": false
                 },
                 {
@@ -54961,6 +55223,142 @@
                   "in_grammar": true
                 }
               ]
+            }
+          ]
+        },
+        {
+          "japanese": "明日は風が強いでしょう。",
+          "english": "The wind will probably be strong tomorrow.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ashita",
+            "kaze-wind",
+            "tsuyoi"
+          ],
+          "furigana": "明日[あした]は風[かぜ]が強[つよ]いでしょう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaze-wind",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tsuyoi",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "grammar_span": {
+            "start": 7,
+            "end": 11
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "明日",
+              "reading": "あした",
+              "role": "word",
+              "vocabulary_slug": "ashita",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "風",
+              "reading": "かぜ",
+              "role": "word",
+              "vocabulary_slug": "kaze-wind",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "強いでしょう",
+              "reading": "つよいでしょう",
+              "role": "word",
+              "vocabulary_slug": "tsuyoi",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]は風[かぜ]が強[つよ]いです。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "この箱は重いだろう。",
+          "english": "This box is probably heavy.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "kono",
+            "hako",
+            "omoi"
+          ],
+          "furigana": "この箱[はこ]は重[おも]いだろう。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hako",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 9
+          },
+          "register": "plain",
+          "answer_units": [
+            {
+              "surface": "この",
+              "reading": "この",
+              "role": "word",
+              "vocabulary_slug": "kono",
+              "in_grammar": false
+            },
+            {
+              "surface": "箱",
+              "reading": "はこ",
+              "role": "word",
+              "vocabulary_slug": "hako",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "重いだろう",
+              "reading": "おもいだろう",
+              "role": "word",
+              "vocabulary_slug": "omoi",
+              "in_grammar": true
             }
           ]
         }
@@ -55402,45 +55800,50 @@
           ]
         },
         {
-          "japanese": "彼は今日来ないと思います。",
-          "english": "In my view he will not come today.",
+          "japanese": "あの医者は親切だと思います。",
+          "english": "I think that doctor is kind.",
           "sort_order": 3,
           "vocabulary_slugs": [
-            "kare",
-            "kyou",
-            "kuru-v"
+            "ano",
+            "isha",
+            "shinsetsu"
           ],
-          "furigana": "彼[かれ]は今日[きょう]来[こ]ないと思[おも]います。",
+          "furigana": "あの医[い]者[しゃ]は親[しん]切[せつ]だと思[おも]います。",
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "ano",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "kyou",
+              "vocabulary_slug": "isha",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "kuru-v",
-              "start": 4,
-              "end": 7,
-              "surface_form": "来ない",
-              "inflection": "nai"
+              "vocabulary_slug": "shinsetsu",
+              "start": 5,
+              "end": 7
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 12
+            "start": 8,
+            "end": 13
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "彼",
-              "reading": "かれ",
+              "surface": "あの",
+              "reading": "あの",
               "role": "word",
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "ano",
+              "in_grammar": false
+            },
+            {
+              "surface": "医者",
+              "reading": "いしゃ",
+              "role": "word",
+              "vocabulary_slug": "isha",
               "in_grammar": false
             },
             {
@@ -55450,17 +55853,10 @@
               "in_grammar": false
             },
             {
-              "surface": "今日",
-              "reading": "きょう",
+              "surface": "親切だ",
+              "reading": "しんせつだ",
               "role": "word",
-              "vocabulary_slug": "kyou",
-              "in_grammar": false
-            },
-            {
-              "surface": "来ない",
-              "reading": "こない",
-              "role": "word",
-              "vocabulary_slug": "kuru-v",
+              "vocabulary_slug": "shinsetsu",
               "in_grammar": false
             },
             {
@@ -55472,46 +55868,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "今日[きょう]彼[かれ]は来[こ]ないと思[おも]います。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "今日",
-                  "reading": "きょう",
-                  "role": "word",
-                  "vocabulary_slug": "kyou",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "彼",
-                  "reading": "かれ",
-                  "role": "word",
-                  "vocabulary_slug": "kare",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "来ない",
-                  "reading": "こない",
-                  "role": "word",
-                  "vocabulary_slug": "kuru-v",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "と思います",
-                  "reading": "とおもいます",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            },
-            {
-              "furigana": "私[わたし]は彼[かれ]は今日[きょう]来[こ]ないと思[おも]います。",
+              "furigana": "私[わたし]はあの医[い]者[しゃ]は親[しん]切[せつ]だと思[おも]います。",
               "kind": "valid",
               "units": [
                 {
@@ -55527,10 +55884,17 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "彼",
-                  "reading": "かれ",
+                  "surface": "あの",
+                  "reading": "あの",
                   "role": "word",
-                  "vocabulary_slug": "kare",
+                  "vocabulary_slug": "ano",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "医者",
+                  "reading": "いしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "isha",
                   "in_grammar": false
                 },
                 {
@@ -55540,17 +55904,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "今日",
-                  "reading": "きょう",
+                  "surface": "親切だ",
+                  "reading": "しんせつだ",
                   "role": "word",
-                  "vocabulary_slug": "kyou",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "来ない",
-                  "reading": "こない",
-                  "role": "word",
-                  "vocabulary_slug": "kuru-v",
+                  "vocabulary_slug": "shinsetsu",
                   "in_grammar": false
                 },
                 {
@@ -55564,15 +55921,15 @@
           ]
         },
         {
-          "japanese": "この店は静かだと思います。",
-          "english": "In my view this shop is quiet.",
+          "japanese": "この部屋はきれいだと思います。",
+          "english": "I think this room is clean.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "kono",
-            "mise",
-            "shizuka"
+            "heya",
+            "kirei"
           ],
-          "furigana": "この店[みせ]は静[しず]かだと思[おも]います。",
+          "furigana": "この部屋[へや]はきれいだと思[おも]います。",
           "word_spans": [
             {
               "vocabulary_slug": "kono",
@@ -55580,19 +55937,19 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "mise",
+              "vocabulary_slug": "heya",
               "start": 2,
-              "end": 3
+              "end": 4
             },
             {
-              "vocabulary_slug": "shizuka",
-              "start": 4,
-              "end": 6
+              "vocabulary_slug": "kirei",
+              "start": 5,
+              "end": 8
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 12
+            "start": 9,
+            "end": 14
           },
           "register": "polite",
           "answer_units": [
@@ -55604,10 +55961,10 @@
               "in_grammar": false
             },
             {
-              "surface": "店",
-              "reading": "みせ",
+              "surface": "部屋",
+              "reading": "へや",
               "role": "word",
-              "vocabulary_slug": "mise",
+              "vocabulary_slug": "heya",
               "in_grammar": false
             },
             {
@@ -55617,10 +55974,10 @@
               "in_grammar": false
             },
             {
-              "surface": "静かだ",
-              "reading": "しずかだ",
+              "surface": "きれいだ",
+              "reading": "きれいだ",
               "role": "word",
-              "vocabulary_slug": "shizuka",
+              "vocabulary_slug": "kirei",
               "in_grammar": false
             },
             {
@@ -55632,7 +55989,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]はこの店[みせ]は静[しず]かだと思[おも]います。",
+              "furigana": "私[わたし]はこの部屋[へや]はきれいだと思[おも]います。",
               "kind": "valid",
               "units": [
                 {
@@ -55655,10 +56012,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "店",
-                  "reading": "みせ",
+                  "surface": "部屋",
+                  "reading": "へや",
                   "role": "word",
-                  "vocabulary_slug": "mise",
+                  "vocabulary_slug": "heya",
                   "in_grammar": false
                 },
                 {
@@ -55668,10 +56025,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "静かだ",
-                  "reading": "しずかだ",
+                  "surface": "きれいだ",
+                  "reading": "きれいだ",
                   "role": "word",
-                  "vocabulary_slug": "shizuka",
+                  "vocabulary_slug": "kirei",
                   "in_grammar": false
                 },
                 {
@@ -55685,14 +56042,15 @@
           ]
         },
         {
-          "japanese": "明日は雨だと思います。",
-          "english": "In my view it will rain tomorrow.",
+          "japanese": "明日はバスが遅いと思います。",
+          "english": "I think the bus will be late tomorrow.",
           "sort_order": 5,
           "vocabulary_slugs": [
             "ashita",
-            "ame-v"
+            "basu",
+            "osoi"
           ],
-          "furigana": "明日[あした]は雨[あめ]だと思[おも]います。",
+          "furigana": "明日[あした]はバスが遅[おそ]いと思[おも]います。",
           "word_spans": [
             {
               "vocabulary_slug": "ashita",
@@ -55700,14 +56058,19 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "ame-v",
+              "vocabulary_slug": "basu",
               "start": 3,
-              "end": 4
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "osoi",
+              "start": 6,
+              "end": 8
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 10
+            "start": 8,
+            "end": 13
           },
           "register": "polite",
           "answer_units": [
@@ -55725,10 +56088,23 @@
               "in_grammar": false
             },
             {
-              "surface": "雨だ",
-              "reading": "あめだ",
+              "surface": "バス",
+              "reading": "バス",
               "role": "word",
-              "vocabulary_slug": "ame-v",
+              "vocabulary_slug": "basu",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "遅い",
+              "reading": "おそい",
+              "role": "word",
+              "vocabulary_slug": "osoi",
               "in_grammar": false
             },
             {
@@ -55736,6 +56112,47 @@
               "reading": "とおもいます",
               "role": "other",
               "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "バスは明日[あした]遅[おそ]いと思[おも]います。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "バス",
+                  "reading": "バス",
+                  "role": "word",
+                  "vocabulary_slug": "basu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "遅い",
+                  "reading": "おそい",
+                  "role": "word",
+                  "vocabulary_slug": "osoi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と思います",
+                  "reading": "とおもいます",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -55934,39 +56351,51 @@
           ]
         },
         {
-          "japanese": "試験は難しかったと思います。",
-          "english": "I think the exam was difficult.",
+          "japanese": "兄はその本を読んだと思います。",
+          "english": "I think my older brother read that book.",
           "sort_order": 8,
           "vocabulary_slugs": [
-            "shiken",
-            "muzukashii"
+            "ani",
+            "sono",
+            "hon",
+            "yomu"
           ],
-          "furigana": "試[し]験[けん]は難[むずか]しかったと思[おも]います。",
+          "furigana": "兄[あに]はその本[ほん]を読[よ]んだと思[おも]います。",
           "word_spans": [
             {
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "ani",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "muzukashii",
-              "start": 3,
-              "end": 8,
-              "surface_form": "難しかった",
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 6,
+              "end": 9,
+              "surface_form": "読んだ",
               "inflection": "ta"
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 13
+            "start": 9,
+            "end": 14
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "試験",
-              "reading": "しけん",
+              "surface": "兄",
+              "reading": "あに",
               "role": "word",
-              "vocabulary_slug": "shiken",
+              "vocabulary_slug": "ani",
               "in_grammar": false
             },
             {
@@ -55976,10 +56405,30 @@
               "in_grammar": false
             },
             {
-              "surface": "難しかった",
-              "reading": "むずかしかった",
+              "surface": "その",
+              "reading": "その",
               "role": "word",
-              "vocabulary_slug": "muzukashii",
+              "vocabulary_slug": "sono",
+              "in_grammar": false
+            },
+            {
+              "surface": "本",
+              "reading": "ほん",
+              "role": "word",
+              "vocabulary_slug": "hon",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "読んだ",
+              "reading": "よんだ",
+              "role": "word",
+              "vocabulary_slug": "yomu",
               "in_grammar": false
             },
             {
@@ -55991,7 +56440,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]は試[し]験[けん]は難[むずか]しかったと思[おも]います。",
+              "furigana": "私[わたし]は兄[あに]はその本[ほん]を読[よ]んだと思[おも]います。",
               "kind": "valid",
               "units": [
                 {
@@ -56007,10 +56456,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "試験",
-                  "reading": "しけん",
+                  "surface": "兄",
+                  "reading": "あに",
                   "role": "word",
-                  "vocabulary_slug": "shiken",
+                  "vocabulary_slug": "ani",
                   "in_grammar": false
                 },
                 {
@@ -56020,15 +56469,176 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "難しかった",
-                  "reading": "むずかしかった",
+                  "surface": "その",
+                  "reading": "その",
                   "role": "word",
-                  "vocabulary_slug": "muzukashii",
+                  "vocabulary_slug": "sono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読んだ",
+                  "reading": "よんだ",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
                   "in_grammar": false
                 },
                 {
                   "surface": "と思います",
                   "reading": "とおもいます",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "先生は今、病院にいると思う。",
+          "english": "I think the teacher is at the hospital now.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "sensei",
+            "ima",
+            "byouin",
+            "iru-exist"
+          ],
+          "furigana": "先[せん]生[せい]は今[いま]、病[びょう]院[いん]にいると思[おも]う。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ima",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "byouin",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 13
+          },
+          "register": "plain",
+          "answer_units": [
+            {
+              "surface": "先生",
+              "reading": "せんせい",
+              "role": "word",
+              "vocabulary_slug": "sensei",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "今",
+              "reading": "いま",
+              "role": "word",
+              "vocabulary_slug": "ima",
+              "in_grammar": false
+            },
+            {
+              "surface": "病院",
+              "reading": "びょういん",
+              "role": "word",
+              "vocabulary_slug": "byouin",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "いる",
+              "reading": "いる",
+              "role": "word",
+              "vocabulary_slug": "iru-exist",
+              "in_grammar": false
+            },
+            {
+              "surface": "と思う",
+              "reading": "とおもう",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "今[いま]、先[せん]生[せい]は病[びょう]院[いん]にいると思[おも]う。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今",
+                  "reading": "いま",
+                  "role": "word",
+                  "vocabulary_slug": "ima",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "病院",
+                  "reading": "びょういん",
+                  "role": "word",
+                  "vocabulary_slug": "byouin",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いる",
+                  "reading": "いる",
+                  "role": "word",
+                  "vocabulary_slug": "iru-exist",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と思う",
+                  "reading": "とおもう",
                   "role": "other",
                   "in_grammar": true
                 }

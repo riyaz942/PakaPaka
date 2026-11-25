@@ -7558,62 +7558,6 @@
         ]
       },
       {
-        "japanese": "夏が一番好きです。",
-        "english": "I like summer the most.",
-        "vocabulary_slugs": [
-          "natsu",
-          "suki"
-        ],
-        "alternates": [
-          {
-            "japanese": "夏がいちばん好きです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は夏が一番好きです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "家族で誰が一番忙しいですか。",
-        "english": "Who is the busiest in your family?",
-        "vocabulary_slugs": [
-          "kazoku",
-          "dare",
-          "isogashii"
-        ],
-        "alternates": [
-          {
-            "japanese": "誰が家族で一番忙しいですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "家族の中で誰が一番忙しいですか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "今、カメラが一番欲しいです。",
-        "english": "A camera is what I want above all right now.",
-        "vocabulary_slugs": [
-          "ima",
-          "kamera",
-          "hoshii"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は今、カメラが一番欲しいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今、私はカメラが一番欲しいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "ここのご飯が一番おいしい！",
         "english": "The food here beats everywhere else!",
         "vocabulary_slugs": [
@@ -7629,68 +7573,127 @@
         ]
       },
       {
-        "japanese": "私は肉が一番好きです。",
-        "english": "Meat is my favourite.",
-        "vocabulary_slugs": [
-          "watashi",
-          "niku",
-          "suki"
-        ],
-        "alternates": [
-          {
-            "japanese": "肉が一番好きです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "去年の冬が一番寒かったです。",
-        "english": "Last year's winter was the coldest.",
-        "vocabulary_slugs": [
-          "kyonen",
-          "fuyu",
-          "samui"
-        ],
-        "alternates": [
-          {
-            "japanese": "去年の冬は一番寒かったです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "どの駅が一番近いですか。",
         "english": "Which station is the closest?",
         "vocabulary_slugs": [
           "dono",
           "eki",
           "chikai"
+        ],
+        "alternates": [
+          {
+            "japanese": "どの駅がいちばん近いですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
-        "japanese": "犬が一番かわいいです。",
-        "english": "Dogs are the cutest.",
+        "japanese": "兄弟の中で誰が一番速いですか。",
+        "english": "Out of your siblings, who is the fastest?",
         "vocabulary_slugs": [
-          "inu",
+          "kyoudai",
+          "naka",
+          "dare",
+          "hayai-fast"
+        ],
+        "alternates": [
+          {
+            "japanese": "誰が兄弟の中で一番速いですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この部屋が一番明るいです。",
+        "english": "This room is the brightest.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "akarui"
+        ],
+        "alternates": [
+          {
+            "japanese": "この部屋は一番明るいです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昨日の映画が一番面白かったです。",
+        "english": "Yesterday's movie was the most interesting one.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "omoshiroi"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日の映画は一番面白かったです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "私の車は一番速くないです。",
+        "english": "My car is not the fastest.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kuruma",
+          "hayai-fast"
+        ],
+        "alternates": [
+          {
+            "japanese": "私の車はいちばん速くないです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "動物の中で何が一番かわいいですか。",
+        "english": "Which animal is the cutest?",
+        "vocabulary_slugs": [
+          "doubutsu",
+          "naka",
+          "nani",
           "kawaii"
+        ]
+      },
+      {
+        "japanese": "今週は水曜日が一番楽しかったです。",
+        "english": "This week, Wednesday was the most fun.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "suiyoubi",
+          "tanoshii"
+        ],
+        "alternates": [
+          {
+            "japanese": "今週は水曜日がいちばん楽しかったです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "この中でどれが一番甘いですか。",
+        "english": "Which of these is the sweetest?",
+        "vocabulary_slugs": [
+          "kono",
+          "naka",
+          "dore",
+          "amai"
+        ],
+        "alternates": [
+          {
+            "japanese": "この中でどれがいちばん甘いですか。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "ここのご飯がいちばんおいしい！",
-          "new": "ここのご飯が一番おいしい！",
-          "reason": "The card teaches 一番; write it in kanji so the typed answer matches the point."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "dou-desu-ka": {
@@ -7753,11 +7756,18 @@
         ]
       },
       {
-        "japanese": "土曜日の夜はどうですか。",
-        "english": "How about Saturday night?",
+        "japanese": "この赤いシャツはどうですか。",
+        "english": "How about this red shirt?",
         "vocabulary_slugs": [
-          "doyoubi",
-          "yoru"
+          "kono",
+          "akai",
+          "shatsu"
+        ],
+        "alternates": [
+          {
+            "japanese": "この赤いシャツはいかがですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7774,11 +7784,17 @@
         ]
       },
       {
-        "japanese": "昨日の試験はどうでしたか。",
-        "english": "How was yesterday's exam?",
+        "japanese": "昨日のテストはどうでしたか。",
+        "english": "How was yesterday's test?",
         "vocabulary_slugs": [
           "kinou",
-          "shiken"
+          "tesuto"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日のテストはいかがでしたか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7798,11 +7814,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "darou": {
@@ -7814,98 +7826,118 @@
     ],
     "sentences": [
       {
-        "japanese": "明日は雨でしょう。",
-        "english": "It will probably rain tomorrow.",
-        "vocabulary_slugs": [
-          "ashita",
-          "ame-v"
-        ]
-      },
-      {
         "japanese": "彼は来るでしょう。",
         "english": "He will probably come.",
         "vocabulary_slugs": [
           "kare",
           "kuru-v"
-        ]
-      },
-      {
-        "japanese": "難しいでしょう。",
-        "english": "It's probably difficult.",
-        "vocabulary_slugs": [
-          "muzukashii"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼が来るでしょう。",
+            "kind": "valid"
+          }
         ]
       },
       {
         "japanese": "彼は帰るだろう。",
-        "english": "He will probably return home.",
+        "english": "He will probably go home.",
         "vocabulary_slugs": [
           "kare",
           "kaeru-v"
         ]
       },
       {
-        "japanese": "あの店の服は高いだろう。",
-        "english": "The clothes at that shop are probably expensive.",
+        "japanese": "あの店の服は安いだろう。",
+        "english": "The clothes at that shop are probably cheap.",
         "vocabulary_slugs": [
           "ano",
           "mise",
           "fuku",
-          "takai-adj"
+          "yasui-adj"
         ]
       },
       {
-        "japanese": "猫はベッドにいるだろう。",
-        "english": "The cat is probably on the bed.",
+        "japanese": "赤ちゃんはベッドにいるだろう。",
+        "english": "The baby is probably in the bed.",
         "vocabulary_slugs": [
-          "neko",
+          "akachan",
           "beddo",
           "iru-exist"
         ]
       },
       {
-        "japanese": "母はお酒を飲まないだろう。",
-        "english": "My mother probably won't drink alcohol.",
+        "japanese": "母はビールを飲まないだろう。",
+        "english": "My mother probably won't drink beer.",
         "vocabulary_slugs": [
           "haha",
-          "osake",
+          "biiru",
           "nomu-v"
         ]
       },
       {
-        "japanese": "昨日の試験は難しかっただろう。",
-        "english": "Yesterday's exam was probably hard.",
+        "japanese": "昨日のテストは長かっただろう。",
+        "english": "Yesterday's test was probably long.",
         "vocabulary_slugs": [
           "kinou",
-          "shiken",
-          "muzukashii"
+          "tesuto",
+          "nagai-adj"
         ]
       },
       {
-        "japanese": "子供は公園で遊んでいるだろう。",
-        "english": "The kids are probably playing in the park.",
+        "japanese": "父は電車に乗っただろう。",
+        "english": "Dad probably got on the train.",
+        "vocabulary_slugs": [
+          "chichi",
+          "densha",
+          "noru"
+        ]
+      },
+      {
+        "japanese": "子供は外で走っているだろう。",
+        "english": "The kids are probably running around outside.",
         "vocabulary_slugs": [
           "kodomo-v",
-          "kouen",
-          "asobu",
+          "soto",
+          "hashiru",
           "iru-exist"
         ],
         "alternates": [
           {
-            "japanese": "公園で子供は遊んでいるだろう。",
+            "japanese": "外で子供は走っているだろう。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "明日は風が強いでしょう。",
+        "english": "The wind will probably be strong tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaze-wind",
+          "tsuyoi"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日は風が強いです。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "この箱は重いだろう。",
+        "english": "This box is probably heavy.",
+        "vocabulary_slugs": [
+          "kono",
+          "hako",
+          "omoi"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "kamoshirenai": {
@@ -8253,45 +8285,48 @@
         ]
       },
       {
-        "japanese": "彼は今日来ないと思います。",
-        "english": "In my view he will not come today.",
+        "japanese": "あの医者は親切だと思います。",
+        "english": "I think that doctor is kind.",
         "vocabulary_slugs": [
-          "kare",
-          "kyou",
-          "kuru-v"
+          "ano",
+          "isha",
+          "shinsetsu"
         ],
         "alternates": [
           {
-            "japanese": "今日彼は来ないと思います。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は彼は今日来ないと思います。",
+            "japanese": "私はあの医者は親切だと思います。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "この店は静かだと思います。",
-        "english": "In my view this shop is quiet.",
+        "japanese": "この部屋はきれいだと思います。",
+        "english": "I think this room is clean.",
         "vocabulary_slugs": [
           "kono",
-          "mise",
-          "shizuka"
+          "heya",
+          "kirei"
         ],
         "alternates": [
           {
-            "japanese": "私はこの店は静かだと思います。",
+            "japanese": "私はこの部屋はきれいだと思います。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "明日は雨だと思います。",
-        "english": "In my view it will rain tomorrow.",
+        "japanese": "明日はバスが遅いと思います。",
+        "english": "I think the bus will be late tomorrow.",
         "vocabulary_slugs": [
           "ashita",
-          "ame-v"
+          "basu",
+          "osoi"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスは明日遅いと思います。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -8318,15 +8353,33 @@
         ]
       },
       {
-        "japanese": "試験は難しかったと思います。",
-        "english": "I think the exam was difficult.",
+        "japanese": "兄はその本を読んだと思います。",
+        "english": "I think my older brother read that book.",
         "vocabulary_slugs": [
-          "shiken",
-          "muzukashii"
+          "ani",
+          "sono",
+          "hon",
+          "yomu"
         ],
         "alternates": [
           {
-            "japanese": "私は試験は難しかったと思います。",
+            "japanese": "私は兄はその本を読んだと思います。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生は今、病院にいると思う。",
+        "english": "I think the teacher is at the hospital now.",
+        "vocabulary_slugs": [
+          "sensei",
+          "ima",
+          "byouin",
+          "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "今、先生は病院にいると思う。",
             "kind": "valid"
           }
         ]
@@ -8335,11 +8388,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "sugiru": {
