@@ -1373,225 +1373,151 @@
       "at",
       "on",
       "in",
-      "direction marker",
-      "target marker"
+      "direction / time / target marker"
     ],
     "sentences": [
       {
-        "japanese": "学校に行きます。",
-        "english": "I go to school.",
+        "japanese": "日曜日にパンを買いました。",
+        "english": "I bought bread on Sunday.",
         "vocabulary_slugs": [
-          "gakkou-v",
-          "iku-v"
+          "nichiyoubi",
+          "pan",
+          "kau-v"
         ],
         "alternates": [
           {
-            "japanese": "学校へ行きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は学校に行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は学校へ行きます。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "友達に会います。",
-        "english": "I meet a friend.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "au"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は友達に会います。",
+            "japanese": "パンを日曜日に買いました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "彼は家に帰ります。",
-        "english": "He returns home.",
-        "vocabulary_slugs": [
-          "kare",
-          "ie",
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "彼は家へ帰ります。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "先生に聞きます。",
-        "english": "I ask the teacher.",
-        "vocabulary_slugs": [
-          "sensei",
-          "kiku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は先生に聞きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "何時に起きますか。",
-        "english": "What time do you wake up?",
+        "japanese": "何時に帰りますか。",
+        "english": "What time are you going home?",
         "vocabulary_slugs": [
           "nannji",
-          "okiru"
+          "kaeru-v"
         ],
         "alternates": []
       },
       {
-        "japanese": "日曜日に公園に行きます。",
-        "english": "I will go to the park on Sunday.",
+        "japanese": "あそこに赤ちゃんがいます。",
+        "english": "There's a baby over there.",
         "vocabulary_slugs": [
-          "nichiyoubi",
-          "kouen",
-          "iku-v"
-        ],
-        "form": "公園|に",
-        "alternates": [
-          {
-            "japanese": "日曜日に公園へ行きます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "公園に日曜日に行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は日曜日に公園に行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "日曜日に私は公園に行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "土曜日に映画を見ました。",
-        "english": "I watched a movie on Saturday.",
-        "vocabulary_slugs": [
-          "doyoubi",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は土曜日に映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "土曜日に私は映画を見ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "映画を土曜日に見ました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "部屋に猫がいます。",
-        "english": "There is a cat in the room.",
-        "vocabulary_slugs": [
-          "heya",
-          "neko",
+          "asoko",
+          "akachan",
           "iru-exist"
         ],
         "alternates": [
           {
-            "japanese": "猫が部屋にいます。",
+            "japanese": "赤ちゃんがあそこにいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこで赤ちゃんがいます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "ここに飲み物はありません。",
+        "english": "There are no drinks here.",
+        "vocabulary_slugs": [
+          "koko",
+          "nomimono",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "飲み物はここにありません。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "今日は学校に行きません。",
-        "english": "I'm not going to school today.",
+        "japanese": "おばあさんに話しました。",
+        "english": "I told Grandma.",
+        "vocabulary_slugs": [
+          "obaasan",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "金曜日に来ますか。",
+        "english": "Are you coming on Friday?",
+        "vocabulary_slugs": [
+          "kinyoubi",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どこに食べ物がありますか。",
+        "english": "Where is there some food?",
+        "vocabulary_slugs": [
+          "doko",
+          "tabemono",
+          "aru"
+        ],
+        "alternates": [
+          {
+            "japanese": "食べ物はどこにありますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日はどこに行きましたか。",
+        "english": "Where did you go today?",
         "vocabulary_slugs": [
           "kyou",
-          "gakkou-v",
+          "doko",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "今日は学校へ行きません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "今日、学校に行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、学校へ行きません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は今日学校に行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日学校へ行きません。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "学校に今日は行きません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学校へ今日は行きません。",
+            "japanese": "今日はどこへ行きましたか。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "部屋に本を置きました。",
-        "english": "I put the book in my room.",
+        "japanese": "そこに大人はいません。",
+        "english": "There are no grown-ups there.",
         "vocabulary_slugs": [
-          "heya",
-          "hon",
-          "oku"
+          "soko",
+          "otona",
+          "iru-exist"
         ],
         "alternates": [
           {
-            "japanese": "本を部屋に置きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は部屋に本を置きました。",
+            "japanese": "大人はそこにいません。",
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "みんなに話しましょう。",
+        "english": "Let's tell everyone.",
+        "vocabulary_slugs": [
+          "minna",
+          "hanasu-v"
+        ],
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "he-direction": {
     "accepted_meanings": [
       "toward",
-      "towards",
       "to",
-      "direction",
+      "in the direction of",
       "direction marker"
     ],
     "sentences": [
@@ -1610,368 +1536,126 @@
         ]
       },
       {
-        "japanese": "家へ帰ります。",
-        "english": "I return home.",
+        "japanese": "あそこへ行きましょう。",
+        "english": "Let's head over there.",
         "vocabulary_slugs": [
-          "ie",
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "家に帰ります。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は家へ帰ります。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家に帰ります。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "学校へ来ました。",
-        "english": "I came to school.",
-        "vocabulary_slugs": [
-          "gakkou-v",
-          "kuru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "学校に来ました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は学校へ来ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は学校に来ました。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "週末、家族と海へ行きました。",
-        "english": "On the weekend, I went to the sea with my family.",
-        "vocabulary_slugs": [
-          "shuumatsu",
-          "kazoku",
-          "umi",
+          "asoko",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "週末、家族と海に行きました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "週末に家族と海へ行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "週末に家族と海に行きました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は週末、家族と海へ行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は週末、家族と海に行きました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "週末、海へ家族と行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "週末、海に家族と行きました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "家族と週末、海へ行きました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "家族と週末、海に行きました。",
+            "japanese": "あそこに行きましょう。",
             "kind": "other_grammar"
           }
         ]
       },
       {
-        "japanese": "私は公園へ行きます。",
-        "english": "I am heading to the park.",
+        "japanese": "こちらへ来ませんか。",
+        "english": "Won't you come this way?",
         "vocabulary_slugs": [
-          "watashi",
-          "kouen",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "公園へ行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "先生が学校へ来ます。",
-        "english": "The teacher comes to the school.",
-        "vocabulary_slugs": [
-          "sensei",
-          "gakkou-v",
+          "kochira",
           "kuru-v"
         ],
-        "alternates": [
-          {
-            "japanese": "先生は学校へ来ます。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
-        "japanese": "彼は家へ帰ります。",
-        "english": "He is returning home.",
-        "vocabulary_slugs": [
-          "kare",
-          "ie",
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "彼が家へ帰ります。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "明日、海へ行きます。",
-        "english": "Tomorrow, we will head to the sea.",
+        "japanese": "明日はそこへ行きません。",
+        "english": "I'm not going there tomorrow.",
         "vocabulary_slugs": [
           "ashita",
-          "umi",
+          "soko",
           "iku-v"
         ],
+        "alternates": []
+      },
+      {
+        "japanese": "来週ここへ来ます。",
+        "english": "I'll come here next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "koko",
+          "kuru-v"
+        ],
         "alternates": [
           {
-            "japanese": "海へ明日行きます。",
+            "japanese": "ここへ来週来ます。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "お父さんは今日家へ帰りません。",
-        "english": "Dad isn't coming home today.",
+        "japanese": "おじいさんはあちらへ行きました。",
+        "english": "Grandpa went off that way.",
         "vocabulary_slugs": [
-          "otousan",
+          "ojiisan",
+          "achira",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "赤ちゃんがこちらへ来ました。",
+        "english": "The baby came this way.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kochira",
+          "kuru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "みんなはどちらへ行きましたか。",
+        "english": "Which way did everyone go?",
+        "vocabulary_slugs": [
+          "minna",
+          "dochira",
+          "iku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎日ここへ来ます。",
+        "english": "I come here every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "koko",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここへ毎日来ます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日は誰がここへ来ましたか。",
+        "english": "Who came here today?",
+        "vocabulary_slugs": [
           "kyou",
-          "ie",
-          "kaeru-v"
+          "dare",
+          "koko",
+          "kuru-v"
         ],
-        "alternates": [
-          {
-            "japanese": "今日、お父さんは家へ帰りません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "猫が部屋へ入りました。",
-        "english": "The cat went into the room.",
-        "vocabulary_slugs": [
-          "neko",
-          "heya",
-          "hairu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "猫が部屋に入りました。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "猫は部屋へ入りました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "猫は部屋に入りました。",
-            "kind": "other_grammar"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "de-location": {
     "accepted_meanings": [
       "at",
       "in",
-      "by",
       "with",
-      "place of action",
-      "by means of"
+      "by",
+      "place of action marker",
+      "means marker"
     ],
     "sentences": [
-      {
-        "japanese": "公園で友達を待ちます。",
-        "english": "I'll wait for my friend at the park.",
-        "vocabulary_slugs": [
-          "kouen",
-          "tomodachi",
-          "matsu"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達を公園で待ちます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は公園で友達を待ちます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "バスで行きます。",
-        "english": "I go by bus.",
-        "vocabulary_slugs": [
-          "basu",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私はバスで行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "箸で食べます。",
-        "english": "I eat with chopsticks.",
-        "vocabulary_slugs": [
-          "hashi-chopsticks",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は箸で食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "家で本を読みます。",
-        "english": "I read a book at home.",
-        "vocabulary_slugs": [
-          "ie",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "本を家で読みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家で本を読みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "昨日、学校で先生に会いました。",
-        "english": "Yesterday I met the teacher at school.",
-        "vocabulary_slugs": [
-          "kinou",
-          "gakkou-v",
-          "sensei",
-          "au"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は昨日、学校で先生に会いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "昨日、先生に学校で会いました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "家で映画を見る。",
-        "english": "I watch movies at home.",
-        "vocabulary_slugs": [
-          "ie",
-          "eiga",
-          "miru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "映画を家で見る。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は家で映画を見る。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "バスで学校に行く。",
-        "english": "I go to school by bus.",
-        "vocabulary_slugs": [
-          "basu",
-          "gakkou-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "学校にバスで行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "バスで学校へ行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学校へバスで行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私はバスで学校に行く。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "箸で魚を食べる。",
-        "english": "I eat fish with chopsticks.",
-        "vocabulary_slugs": [
-          "hashi-chopsticks",
-          "sakana",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "魚を箸で食べる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は箸で魚を食べる。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "これ、どこで買う？",
         "english": "Where do you buy this?",
@@ -1980,37 +1664,114 @@
           "doko",
           "kau-v"
         ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここでパンを食べましょう。",
+        "english": "Let's eat our bread here.",
+        "vocabulary_slugs": [
+          "koko",
+          "pan",
+          "taberu"
+        ],
         "alternates": [
           {
-            "japanese": "これはどこで買う？",
-            "kind": "valid"
-          },
-          {
-            "japanese": "これをどこで買う？",
-            "kind": "valid"
-          },
-          {
-            "japanese": "どこでこれを買う？",
+            "japanese": "パンをここで食べましょう。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "週末、図書館で本を読む。",
-        "english": "On the weekend, I read books at the library.",
+        "japanese": "赤ちゃんは手で食べます。",
+        "english": "The baby eats with its hands.",
         "vocabulary_slugs": [
-          "shuumatsu",
-          "toshokan",
-          "hon",
-          "yomu"
+          "akachan",
+          "te-v",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あそこで何を飲みましたか。",
+        "english": "What did you drink over there?",
+        "vocabulary_slugs": [
+          "asoko",
+          "nani",
+          "nomu-v"
         ],
         "alternates": [
           {
-            "japanese": "週末に図書館で本を読む。",
+            "japanese": "何をあそこで飲みましたか。",
             "kind": "valid"
-          },
+          }
+        ]
+      },
+      {
+        "japanese": "あそこで話しませんか。",
+        "english": "Shall we talk over there?",
+        "vocabulary_slugs": [
+          "asoko",
+          "hanasu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "ここで飲み物を買いました。",
+        "english": "I bought a drink here.",
+        "vocabulary_slugs": [
+          "koko",
+          "nomimono",
+          "kau-v"
+        ],
+        "alternates": [
           {
-            "japanese": "私は週末、図書館で本を読む。",
+            "japanese": "飲み物をここで買いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "おじいさんはあそこで読みます。",
+        "english": "Grandpa reads over there.",
+        "vocabulary_slugs": [
+          "ojiisan",
+          "asoko",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今日はどこで食べますか。",
+        "english": "Where are we eating today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "doko",
+          "taberu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "大人はここで飲みません。",
+        "english": "Grown-ups don't drink here.",
+        "vocabulary_slugs": [
+          "otona",
+          "koko",
+          "nomu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "毎日ここで何を書きますか。",
+        "english": "What do you write here every day?",
+        "vocabulary_slugs": [
+          "mainichi",
+          "koko",
+          "nani",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここで毎日何を書きますか。",
             "kind": "valid"
           }
         ]
@@ -2019,11 +1780,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "no-possessive": {
@@ -2135,68 +1892,12 @@
   "no-nominalizer": {
     "accepted_meanings": [
       "explanatory",
-      "nominalizer",
       "the thing is",
       "it's that",
-      "-ing",
-      "explanation"
+      "nominalizer",
+      "the act of"
     ],
     "sentences": [
-      {
-        "japanese": "食べるのが好きです。",
-        "english": "I like eating.",
-        "vocabulary_slugs": [
-          "taberu",
-          "suki"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は食べるのが好きです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "帰るんですか。",
-        "english": "Are you going home?",
-        "vocabulary_slugs": [
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "帰るのですか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "明日行くんです。",
-        "english": "The thing is, I'm going tomorrow.",
-        "vocabulary_slugs": [
-          "ashita",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "明日行くのです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "何を買うんですか。",
-        "english": "What is it that you are buying?",
-        "vocabulary_slugs": [
-          "nani",
-          "kau-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "何を買うのですか。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "今食べるの？",
         "english": "Are you eating now?",
@@ -2207,77 +1908,120 @@
         "alternates": []
       },
       {
-        "japanese": "朝起きるのが好きではありません。",
-        "english": "I don't like getting up in the morning.",
-        "vocabulary_slugs": [
-          "asa",
-          "okiru",
-          "suki",
-          "aru"
-        ],
-        "alternates": [
-          {
-            "japanese": "朝起きるのが好きじゃありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は朝起きるのが好きではありません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "なぜ海に行くんですか。",
-        "english": "Why is it that you're going to the sea?",
-        "vocabulary_slugs": [
-          "naze",
-          "umi",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "なぜ海に行くのですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "なぜ海へ行くんですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "なぜ海へ行くのですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "海になぜ行くんですか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "本を読むのは楽しいです。",
-        "english": "Reading books is fun.",
-        "vocabulary_slugs": [
-          "hon",
-          "yomu",
-          "tanoshii"
-        ],
-        "alternates": [
-          {
-            "japanese": "本を読むのが楽しいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "どこに行くの？",
         "english": "Where are you going?",
         "vocabulary_slugs": [
           "doko",
           "iku-v"
         ],
+        "alternates": []
+      },
+      {
+        "japanese": "何を食べるんですか。",
+        "english": "What is it that you're eating?",
+        "vocabulary_slugs": [
+          "nani",
+          "taberu"
+        ],
         "alternates": [
           {
-            "japanese": "どこへ行くの？",
+            "japanese": "何を食べるのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "いつ来るんですか。",
+        "english": "So when are you coming?",
+        "vocabulary_slugs": [
+          "itsu",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "いつ来るのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今日はあなたが話すんです。",
+        "english": "Today, you're the one who speaks.",
+        "vocabulary_slugs": [
+          "kyou",
+          "anata",
+          "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日はあなたが話すのです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "なぜそれを書くんですか。",
+        "english": "Why is it that you're writing that?",
+        "vocabulary_slugs": [
+          "naze",
+          "sore",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "なぜそれを書くのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "誰が来るんですか。",
+        "english": "Who is it that's coming?",
+        "vocabulary_slugs": [
+          "dare",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "誰が来るのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "これが分かるんですか。",
+        "english": "You actually understand this?",
+        "vocabulary_slugs": [
+          "kore",
+          "wakaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "これが分かるのですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "あなたが書くのを見ました。",
+        "english": "I watched you write.",
+        "vocabulary_slugs": [
+          "anata",
+          "kaku",
+          "miru-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "今週するんです。",
+        "english": "The thing is, I'm doing it this week.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今週するのです。",
             "kind": "valid"
           }
         ]
@@ -2286,11 +2030,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "to-and": {
