@@ -4501,7 +4501,8 @@
       "not",
       "don't",
       "plain negative",
-      "negative"
+      "didn't",
+      "won't"
     ],
     "sentences": [
       {
@@ -4513,38 +4514,7 @@
         ],
         "alternates": [
           {
-            "japanese": "今日行かない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日行かない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "肉を食べない。",
-        "english": "I don't eat meat.",
-        "vocabulary_slugs": [
-          "niku",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は肉を食べない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "お金がない。",
-        "english": "I have no money.",
-        "vocabulary_slugs": [
-          "okane"
-        ],
-        "alternates": [
-          {
-            "japanese": "私はお金がない。",
+            "japanese": "今日、行かない。",
             "kind": "valid"
           }
         ]
@@ -4555,29 +4525,6 @@
         "vocabulary_slugs": [
           "kare",
           "kuru-v"
-        ]
-      },
-      {
-        "japanese": "今日は学校に行かない。",
-        "english": "I won't go to school today.",
-        "vocabulary_slugs": [
-          "kyou",
-          "gakkou-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "今日は学校へ行かない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、学校に行かない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は今日学校に行かない。",
-            "kind": "valid"
-          }
         ]
       },
       {
@@ -4596,57 +4543,80 @@
         ]
       },
       {
-        "japanese": "昨日は遊ばなかった。",
-        "english": "I didn't play yesterday.",
-        "vocabulary_slugs": [
-          "kinou",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "昨日遊ばなかった。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は昨日遊ばなかった。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "猫は魚を食べなかった。",
-        "english": "The cat didn't eat the fish.",
-        "vocabulary_slugs": [
-          "neko",
-          "sakana",
-          "taberu"
-        ]
-      },
-      {
-        "japanese": "冬は窓を開けない。",
-        "english": "I don't open the window in winter.",
-        "vocabulary_slugs": [
-          "fuyu",
-          "mado",
-          "akeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "冬に窓を開けない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "朝ご飯を食べなかったの？",
         "english": "Didn't you eat breakfast?",
         "vocabulary_slugs": [
           "asagohan",
           "taberu"
+        ]
+      },
+      {
+        "japanese": "父はビールを飲まない。",
+        "english": "My father doesn't drink beer.",
+        "vocabulary_slugs": [
+          "chichi",
+          "biiru",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "昨日はテレビを見なかった。",
+        "english": "I didn't watch TV yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "terebi",
+          "miru-v"
         ],
         "alternates": [
           {
-            "japanese": "朝ご飯食べなかったの？",
+            "japanese": "昨日、テレビを見なかった。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "弟は新聞を読まない。",
+        "english": "My younger brother doesn't read the newspaper.",
+        "vocabulary_slugs": [
+          "otouto",
+          "shinbun",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "あなたは来ないの？",
+        "english": "Aren't you coming?",
+        "vocabulary_slugs": [
+          "anata",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "来ないの？",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄は手紙を書かない。",
+        "english": "My older brother doesn't write letters.",
+        "vocabulary_slugs": [
+          "ani",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "彼女は電話をしなかった。",
+        "english": "She didn't call.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "denwa",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼女は電話しなかった。",
             "kind": "valid"
           }
         ]
@@ -4655,11 +4625,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-kara": {
@@ -4670,139 +4636,6 @@
       "after that"
     ],
     "sentences": [
-      {
-        "japanese": "手を洗ってから、ご飯を食べます。",
-        "english": "I eat once I have washed my hands.",
-        "vocabulary_slugs": [
-          "te-v",
-          "arau",
-          "gohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は手を洗ってから、ご飯を食べます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "うちに帰ってから、寝ます。",
-        "english": "I'll go to bed after I get home.",
-        "vocabulary_slugs": [
-          "uchi",
-          "kaeru-v",
-          "neru"
-        ],
-        "alternates": [
-          {
-            "japanese": "うちへ帰ってから、寝ます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私はうちに帰ってから、寝ます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "映画を見てから、帰ります。",
-        "english": "I'll go home after I watch the movie.",
-        "vocabulary_slugs": [
-          "eiga",
-          "miru-v",
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は映画を見てから、帰ります。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "窓を閉めてから、出ました。",
-        "english": "I left after I closed the window.",
-        "vocabulary_slugs": [
-          "mado",
-          "shimeru",
-          "deru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は窓を閉めてから、出ました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "宿題をしてから、遊びます。",
-        "english": "I'll play after I do my homework.",
-        "vocabulary_slugs": [
-          "shukudai",
-          "suru",
-          "asobu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は宿題をしてから、遊びます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "毎朝起きてから、コーヒーを飲みます。",
-        "english": "Every morning, I drink coffee after I get up.",
-        "vocabulary_slugs": [
-          "maiasa",
-          "okiru",
-          "koohii",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "起きてから、毎朝コーヒーを飲みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は毎朝起きてから、コーヒーを飲みます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "駅で友達に会ってから、映画館へ行きます。",
-        "english": "I'll meet my friend at the station, then go to the cinema.",
-        "vocabulary_slugs": [
-          "eki",
-          "tomodachi",
-          "au",
-          "eigakan",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "駅で友達に会ってから、映画館に行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "駅で友達と会ってから、映画館へ行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達に駅で会ってから、映画館へ行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "駅で友達と会ってから、映画館に行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達と駅で会ってから、映画館へ行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "電話してから、行きます。",
         "english": "I'll call first, then go.",
@@ -4833,16 +4666,134 @@
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "手紙を書いてから、駅へ行きました。",
+        "english": "After I wrote the letter, I went to the station.",
+        "vocabulary_slugs": [
+          "tegami",
+          "kaku",
+          "eki",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "手紙を書いてから、駅に行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "うちへ帰ってから、テレビを見ます。",
+        "english": "I watch TV after I get home.",
+        "vocabulary_slugs": [
+          "uchi",
+          "kaeru-v",
+          "terebi",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私はうちへ帰ってから、テレビを見ます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "朝ご飯を食べてから、コーヒーを飲みます。",
+        "english": "I drink coffee after I eat breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "taberu",
+          "koohii",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は朝ご飯を食べてから、コーヒーを飲みます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生と話してから、病院へ行きました。",
+        "english": "After talking with the teacher, I went to the hospital.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v",
+          "byouin",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生と話してから、病院に行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "スーパーでパンを買ってから、帰りましょう。",
+        "english": "Let's buy bread at the supermarket and then go home.",
+        "vocabulary_slugs": [
+          "suupaa",
+          "pan",
+          "kau-v",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "パンをスーパーで買ってから、帰りましょう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "食事をしてから、ビールを飲みません。",
+        "english": "I don't drink beer after a meal.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "suru",
+          "biiru",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "会社へ来てから、何を食べましたか。",
+        "english": "What did you eat after you came to the office?",
+        "vocabulary_slugs": [
+          "kaisha",
+          "kuru-v",
+          "nani",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "会社に来てから、何を食べましたか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "店で靴を見てから、買いました。",
+        "english": "I looked at the shoes in the shop, then bought them.",
+        "vocabulary_slugs": [
+          "mise",
+          "kutsu",
+          "miru-v",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "靴を店で見てから、買いました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "naide-kudasai": {
@@ -4850,45 +4801,9 @@
       "please don't",
       "don't",
       "please do not",
-      "do not"
+      "asking someone not to"
     ],
     "sentences": [
-      {
-        "japanese": "心配しないでください。",
-        "english": "Please don't worry.",
-        "vocabulary_slugs": [
-          "shinpai-suru"
-        ]
-      },
-      {
-        "japanese": "忘れないでください。",
-        "english": "Please don't forget.",
-        "vocabulary_slugs": [
-          "wasureru"
-        ]
-      },
-      {
-        "japanese": "窓を開けないでください。",
-        "english": "Please don't open the window.",
-        "vocabulary_slugs": [
-          "mado",
-          "akeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "窓を開けてください。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "傘を忘れないでください。",
-        "english": "Please don't forget your umbrella.",
-        "vocabulary_slugs": [
-          "kasa",
-          "wasureru"
-        ]
-      },
       {
         "japanese": "その水を飲まないでください。",
         "english": "Please don't drink that water.",
@@ -4899,83 +4814,103 @@
         ]
       },
       {
-        "japanese": "今日は学校に行かないでください。",
-        "english": "Please don't go to school today.",
+        "japanese": "ここで電話しないでください。",
+        "english": "Please don't make phone calls here.",
         "vocabulary_slugs": [
-          "kyou",
-          "gakkou-v",
-          "iku-v"
+          "koko",
+          "denwa",
+          "suru"
         ],
         "alternates": [
           {
-            "japanese": "今日は学校へ行かないでください。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、学校に行かないでください。",
+            "japanese": "ここで電話をしないでください。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "私の部屋に入らないでください。",
-        "english": "Please don't enter my room.",
-        "vocabulary_slugs": [
-          "watashi",
-          "heya",
-          "hairu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私の部屋へ入らないでください。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "赤ちゃんが寝ましたから、大きい声で話さないでください。",
-        "english": "The baby has gone to sleep, so please don't talk loudly.",
-        "vocabulary_slugs": [
-          "akachan",
-          "neru",
-          "ookii",
-          "koe",
-          "hanasu-v"
-        ]
-      },
-      {
-        "japanese": "この椅子に座らないでください。",
-        "english": "Please don't sit on this chair.",
+        "japanese": "この手紙を読まないでください。",
+        "english": "Please don't read this letter.",
         "vocabulary_slugs": [
           "kono",
-          "isu",
-          "suwaru"
+          "tegami",
+          "yomu"
         ]
       },
       {
-        "japanese": "財布を机に置かないでください。",
-        "english": "Please don't leave your wallet on the desk.",
+        "japanese": "今日は会社に来ないでください。",
+        "english": "Please don't come to the office today.",
         "vocabulary_slugs": [
-          "saifu",
-          "tsukue",
-          "oku"
+          "kyou",
+          "kaisha",
+          "kuru-v"
         ],
         "alternates": [
           {
-            "japanese": "机に財布を置かないでください。",
+            "japanese": "今日は会社へ来ないでください。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "トイレでパンを食べないでください。",
+        "english": "Please don't eat bread in the toilet.",
+        "vocabulary_slugs": [
+          "toire",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "ペンで書かないでください。",
+        "english": "Please don't write in pen.",
+        "vocabulary_slugs": [
+          "pen",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "病院でビールを飲まないでください。",
+        "english": "Please don't drink beer in the hospital.",
+        "vocabulary_slugs": [
+          "byouin",
+          "biiru",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "お茶を買いましたから、コーヒーを買わないでください。",
+        "english": "I bought tea, so please don't buy coffee.",
+        "vocabulary_slugs": [
+          "ocha",
+          "kau-v",
+          "koohii"
+        ]
+      },
+      {
+        "japanese": "昨日も来ましたから、明日は来ないでください。",
+        "english": "You came yesterday too, so please don't come tomorrow.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kuru-v",
+          "ashita"
+        ]
+      },
+      {
+        "japanese": "晩ご飯の時間にテレビを見ないでください。",
+        "english": "Please don't watch TV at dinnertime.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "jikan",
+          "terebi",
+          "miru-v"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "ta-form": {
@@ -5342,31 +5277,10 @@
       "must",
       "have to",
       "need to",
-      "have got to"
+      "have got to",
+      "obligation"
     ],
     "sentences": [
-      {
-        "japanese": "薬を飲まなければなりません。",
-        "english": "I must take my medicine.",
-        "vocabulary_slugs": [
-          "kusuri",
-          "nomu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "薬を飲まなくてもいいです。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は薬を飲まなければなりません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は薬を飲まなくてもいいです。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
       {
         "japanese": "今日、会社に行かなくてはいけない。",
         "english": "I have to go to the office today.",
@@ -5374,66 +5288,6 @@
           "kyou",
           "kaisha",
           "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "今日、会社へ行かなくてはいけない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、会社に行かなければならない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "今日、会社に行かなければいけない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "勉強しなければなりません。",
-        "english": "I have to study.",
-        "vocabulary_slugs": [
-          "benkyou",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "勉強をしなければなりません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "宿題をしなければなりません。",
-        "english": "I have to do my homework.",
-        "vocabulary_slugs": [
-          "shukudai",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "宿題しなければなりません。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "母が待っていますから、帰らなければなりません。",
-        "english": "My mother is waiting, so I have to go home.",
-        "vocabulary_slugs": [
-          "haha",
-          "matsu",
-          "kaeru-v",
-          "iru-exist"
-        ]
-      },
-      {
-        "japanese": "今、寝なきゃ。",
-        "english": "I've got to sleep now.",
-        "vocabulary_slugs": [
-          "ima",
-          "neru"
         ]
       },
       {
@@ -5452,20 +5306,6 @@
           "sensei",
           "tegami",
           "kaku"
-        ],
-        "alternates": [
-          {
-            "japanese": "先生に手紙を書かなければいけない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "先生に手紙を書かなくてはいけない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "手紙を先生に書かなければならない。",
-            "kind": "valid"
-          }
         ]
       },
       {
@@ -5477,34 +5317,65 @@
         ]
       },
       {
-        "japanese": "毎朝、犬と公園に行かなければなりません。",
-        "english": "Every morning I have to go to the park with the dog.",
+        "japanese": "水を飲まなければなりません。",
+        "english": "I have to drink water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "この本を読まなければなりません。",
+        "english": "I have to read this book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "今日は料理をしなければなりません。",
+        "english": "I have to do the cooking today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ryouri",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "母が病院にいますから、帰らなければなりません。",
+        "english": "My mother is in the hospital, so I have to go home.",
+        "vocabulary_slugs": [
+          "haha",
+          "byouin",
+          "iru-exist",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "今、電話しなきゃ。",
+        "english": "I've got to make a call now.",
+        "vocabulary_slugs": [
+          "ima",
+          "denwa",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "毎朝、駅までバスで行かなければなりません。",
+        "english": "Every morning I have to take the bus to the station.",
         "vocabulary_slugs": [
           "maiasa",
-          "inu",
-          "kouen",
+          "eki",
+          "basu",
           "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "毎朝、犬と公園へ行かなければなりません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "毎朝、公園に犬と行かなければなりません。",
-            "kind": "valid"
-          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "nakutemo-ii": {
