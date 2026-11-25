@@ -118759,53 +118759,53 @@
           ]
         },
         {
-          "japanese": "財布を無くした場合、警官に言います。",
-          "english": "If I lose my wallet, I'll tell a police officer.",
+          "japanese": "かばんを無くした場合、駅員に聞きます。",
+          "english": "If I lose my bag, I'll ask the station staff.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "saifu",
+            "kaban",
             "nakusu",
-            "keikan",
-            "iu-v"
+            "ekiin",
+            "kiku-v"
           ],
-          "furigana": "財[さい]布[ふ]を無[な]くした場[ば]合[あい]、警[けい]官[かん]に言[い]います。",
+          "furigana": "かばんを無[な]くした場[ば]合[あい]、駅[えき]員[いん]に聞[き]きます。",
           "word_spans": [
             {
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kaban",
               "start": 0,
-              "end": 2
+              "end": 3
             },
             {
               "vocabulary_slug": "nakusu",
-              "start": 3,
-              "end": 7,
+              "start": 4,
+              "end": 8,
               "surface_form": "無くした",
               "inflection": "ta"
             },
             {
-              "vocabulary_slug": "keikan",
-              "start": 10,
-              "end": 12
+              "vocabulary_slug": "ekiin",
+              "start": 11,
+              "end": 13
             },
             {
-              "vocabulary_slug": "iu-v",
-              "start": 13,
-              "end": 17,
-              "surface_form": "言います",
+              "vocabulary_slug": "kiku-v",
+              "start": 14,
+              "end": 18,
+              "surface_form": "聞きます",
               "inflection": "masu"
             }
           ],
           "grammar_span": {
-            "start": 7,
-            "end": 9
+            "start": 8,
+            "end": 10
           },
           "register": "polite",
           "answer_units": [
             {
-              "surface": "財布",
-              "reading": "さいふ",
+              "surface": "かばん",
+              "reading": "かばん",
               "role": "word",
-              "vocabulary_slug": "saifu",
+              "vocabulary_slug": "kaban",
               "in_grammar": false
             },
             {
@@ -118828,10 +118828,10 @@
               "in_grammar": true
             },
             {
-              "surface": "警官",
-              "reading": "けいかん",
+              "surface": "駅員",
+              "reading": "えきいん",
               "role": "word",
-              "vocabulary_slug": "keikan",
+              "vocabulary_slug": "ekiin",
               "in_grammar": false
             },
             {
@@ -118841,23 +118841,23 @@
               "in_grammar": false
             },
             {
-              "surface": "言います",
-              "reading": "いいます",
+              "surface": "聞きます",
+              "reading": "ききます",
               "role": "word",
-              "vocabulary_slug": "iu-v",
+              "vocabulary_slug": "kiku-v",
               "in_grammar": false
             }
           ],
           "build_alternates": [
             {
-              "furigana": "財[さい]布[ふ]を無[な]くした場[ば]合[あい]は、警[けい]官[かん]に言[い]います。",
+              "furigana": "かばんを無[な]くした場[ば]合[あい]は、駅[えき]員[いん]に聞[き]きます。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "財布",
-                  "reading": "さいふ",
+                  "surface": "かばん",
+                  "reading": "かばん",
                   "role": "word",
-                  "vocabulary_slug": "saifu",
+                  "vocabulary_slug": "kaban",
                   "in_grammar": false
                 },
                 {
@@ -118880,10 +118880,10 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "警官",
-                  "reading": "けいかん",
+                  "surface": "駅員",
+                  "reading": "えきいん",
                   "role": "word",
-                  "vocabulary_slug": "keikan",
+                  "vocabulary_slug": "ekiin",
                   "in_grammar": false
                 },
                 {
@@ -118893,74 +118893,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "言います",
-                  "reading": "いいます",
+                  "surface": "聞きます",
+                  "reading": "ききます",
                   "role": "word",
-                  "vocabulary_slug": "iu-v",
-                  "in_grammar": false
-                }
-              ]
-            },
-            {
-              "furigana": "財[さい]布[ふ]を無[な]くした場[ば]合[あい]には、警[けい]官[かん]に言[い]います。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "財布",
-                  "reading": "さいふ",
-                  "role": "word",
-                  "vocabulary_slug": "saifu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "無くした",
-                  "reading": "なくした",
-                  "role": "word",
-                  "vocabulary_slug": "nakusu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "場合",
-                  "reading": "ばあい",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "警官",
-                  "reading": "けいかん",
-                  "role": "word",
-                  "vocabulary_slug": "keikan",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "言います",
-                  "reading": "いいます",
-                  "role": "word",
-                  "vocabulary_slug": "iu-v",
+                  "vocabulary_slug": "kiku-v",
                   "in_grammar": false
                 }
               ]
@@ -120792,62 +120728,70 @@
           ]
         },
         {
-          "japanese": "電話が鳴ると、猫が驚く。",
-          "english": "The phone rings, and the cat gets startled.",
+          "japanese": "砂糖を入れると、コーヒーが甘くなる。",
+          "english": "Put in sugar, and the coffee gets sweet.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "denwa",
-            "naru-ring",
-            "neko",
-            "odoroku"
+            "satou",
+            "ireru-v",
+            "koohii",
+            "amai",
+            "naru-become"
           ],
-          "furigana": "電[でん]話[わ]が鳴[な]ると、猫[ねこ]が驚[おどろ]く。",
+          "furigana": "砂[さ]糖[とう]を入[い]れると、コーヒーが甘[あま]くなる。",
           "word_spans": [
             {
-              "vocabulary_slug": "denwa",
+              "vocabulary_slug": "satou",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "naru-ring",
+              "vocabulary_slug": "ireru-v",
               "start": 3,
-              "end": 5
+              "end": 6
             },
             {
-              "vocabulary_slug": "neko",
-              "start": 7,
-              "end": 8
+              "vocabulary_slug": "koohii",
+              "start": 8,
+              "end": 12
             },
             {
-              "vocabulary_slug": "odoroku",
-              "start": 9,
-              "end": 11
+              "vocabulary_slug": "amai",
+              "start": 13,
+              "end": 15,
+              "surface_form": "甘く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 15,
+              "end": 17
             }
           ],
           "grammar_span": {
-            "start": 5,
-            "end": 6
+            "start": 6,
+            "end": 7
           },
           "register": "plain",
           "answer_units": [
             {
-              "surface": "電話",
-              "reading": "でんわ",
+              "surface": "砂糖",
+              "reading": "さとう",
               "role": "word",
-              "vocabulary_slug": "denwa",
+              "vocabulary_slug": "satou",
               "in_grammar": false
             },
             {
-              "surface": "が",
-              "reading": "が",
+              "surface": "を",
+              "reading": "を",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "鳴る",
-              "reading": "なる",
+              "surface": "入れる",
+              "reading": "いれる",
               "role": "word",
-              "vocabulary_slug": "naru-ring",
+              "vocabulary_slug": "ireru-v",
               "in_grammar": false
             },
             {
@@ -120857,10 +120801,10 @@
               "in_grammar": true
             },
             {
-              "surface": "猫",
-              "reading": "ねこ",
+              "surface": "コーヒー",
+              "reading": "コーヒー",
               "role": "word",
-              "vocabulary_slug": "neko",
+              "vocabulary_slug": "koohii",
               "in_grammar": false
             },
             {
@@ -120870,11 +120814,79 @@
               "in_grammar": false
             },
             {
-              "surface": "驚く",
-              "reading": "おどろく",
+              "surface": "甘く",
+              "reading": "あまく",
               "role": "word",
-              "vocabulary_slug": "odoroku",
+              "vocabulary_slug": "amai",
               "in_grammar": false
+            },
+            {
+              "surface": "なる",
+              "reading": "なる",
+              "role": "word",
+              "vocabulary_slug": "naru-become",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "砂[さ]糖[とう]を入[い]れると、コーヒーは甘[あま]くなる。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "砂糖",
+                  "reading": "さとう",
+                  "role": "word",
+                  "vocabulary_slug": "satou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "入れる",
+                  "reading": "いれる",
+                  "role": "word",
+                  "vocabulary_slug": "ireru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "コーヒー",
+                  "reading": "コーヒー",
+                  "role": "word",
+                  "vocabulary_slug": "koohii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "甘く",
+                  "reading": "あまく",
+                  "role": "word",
+                  "vocabulary_slug": "amai",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "なる",
+                  "reading": "なる",
+                  "role": "word",
+                  "vocabulary_slug": "naru-become",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -121658,17 +121670,17 @@
           ]
         },
         {
-          "japanese": "春になると、公園の花がきれいです。",
-          "english": "When spring comes, the flowers in the park are pretty.",
+          "japanese": "春になると、庭の花がきれいです。",
+          "english": "When spring comes, the flowers in the garden are pretty.",
           "sort_order": 8,
           "vocabulary_slugs": [
             "haru",
             "naru-become",
-            "kouen",
+            "niwa",
             "hana-v",
             "kirei"
           ],
-          "furigana": "春[はる]になると、公[こう]園[えん]の花[はな]がきれいです。",
+          "furigana": "春[はる]になると、庭[にわ]の花[はな]がきれいです。",
           "word_spans": [
             {
               "vocabulary_slug": "haru",
@@ -121681,19 +121693,19 @@
               "end": 4
             },
             {
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "niwa",
               "start": 6,
-              "end": 8
+              "end": 7
             },
             {
               "vocabulary_slug": "hana-v",
-              "start": 9,
-              "end": 10
+              "start": 8,
+              "end": 9
             },
             {
               "vocabulary_slug": "kirei",
-              "start": 11,
-              "end": 14
+              "start": 10,
+              "end": 13
             }
           ],
           "grammar_span": {
@@ -121729,10 +121741,10 @@
               "in_grammar": true
             },
             {
-              "surface": "公園",
-              "reading": "こうえん",
+              "surface": "庭",
+              "reading": "にわ",
               "role": "word",
-              "vocabulary_slug": "kouen",
+              "vocabulary_slug": "niwa",
               "in_grammar": false
             },
             {
@@ -121759,6 +121771,102 @@
               "reading": "きれいです",
               "role": "word",
               "vocabulary_slug": "kirei",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "朝早く起きると、気持ちがいいです。",
+          "english": "When I get up early in the morning, it feels good.",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "asa",
+            "hayai-early",
+            "okiru",
+            "kimochi",
+            "ii"
+          ],
+          "furigana": "朝[あさ]早[はや]く起[お]きると、気[き]持[も]ちがいいです。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "asa",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hayai-early",
+              "start": 1,
+              "end": 3,
+              "surface_form": "早く",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kimochi",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 12,
+              "end": 14
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "朝",
+              "reading": "あさ",
+              "role": "word",
+              "vocabulary_slug": "asa",
+              "in_grammar": false
+            },
+            {
+              "surface": "早く",
+              "reading": "はやく",
+              "role": "word",
+              "vocabulary_slug": "hayai-early",
+              "in_grammar": false
+            },
+            {
+              "surface": "起きる",
+              "reading": "おきる",
+              "role": "word",
+              "vocabulary_slug": "okiru",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "気持ち",
+              "reading": "きもち",
+              "role": "word",
+              "vocabulary_slug": "kimochi",
+              "in_grammar": false
+            },
+            {
+              "surface": "が",
+              "reading": "が",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "いいです",
+              "reading": "いいです",
+              "role": "word",
+              "vocabulary_slug": "ii",
               "in_grammar": false
             }
           ]

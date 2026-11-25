@@ -16875,21 +16875,17 @@
         ]
       },
       {
-        "japanese": "財布を無くした場合、警官に言います。",
-        "english": "If I lose my wallet, I'll tell a police officer.",
+        "japanese": "かばんを無くした場合、駅員に聞きます。",
+        "english": "If I lose my bag, I'll ask the station staff.",
         "vocabulary_slugs": [
-          "saifu",
+          "kaban",
           "nakusu",
-          "keikan",
-          "iu-v"
+          "ekiin",
+          "kiku-v"
         ],
         "alternates": [
           {
-            "japanese": "財布を無くした場合は、警官に言います。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "財布を無くした場合には、警官に言います。",
+            "japanese": "かばんを無くした場合は、駅員に聞きます。",
             "kind": "valid"
           }
         ]
@@ -17068,11 +17064,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "to-conditional": {
@@ -17101,15 +17093,21 @@
         ]
       },
       {
-        "japanese": "電話が鳴ると、猫が驚く。",
-        "english": "The phone rings, and the cat gets startled.",
+        "japanese": "砂糖を入れると、コーヒーが甘くなる。",
+        "english": "Put in sugar, and the coffee gets sweet.",
         "vocabulary_slugs": [
-          "denwa",
-          "naru-ring",
-          "neko",
-          "odoroku"
+          "satou",
+          "ireru-v",
+          "koohii",
+          "amai",
+          "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "砂糖を入れると、コーヒーは甘くなる。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "冬になると、雪が降る。",
@@ -17200,14 +17198,26 @@
         "alternates": []
       },
       {
-        "japanese": "春になると、公園の花がきれいです。",
-        "english": "When spring comes, the flowers in the park are pretty.",
+        "japanese": "春になると、庭の花がきれいです。",
+        "english": "When spring comes, the flowers in the garden are pretty.",
         "vocabulary_slugs": [
           "haru",
           "naru-become",
-          "kouen",
+          "niwa",
           "hana-v",
           "kirei"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "朝早く起きると、気持ちがいいです。",
+        "english": "When I get up early in the morning, it feels good.",
+        "vocabulary_slugs": [
+          "asa",
+          "hayai-early",
+          "okiru",
+          "kimochi",
+          "ii"
         ],
         "alternates": []
       }
@@ -17215,11 +17225,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "node-vs-kara": {
