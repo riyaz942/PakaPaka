@@ -113439,15 +113439,15 @@
           ]
         },
         {
-          "japanese": "来年から宿題が増えることになる。",
-          "english": "Starting next year, it turns out homework increases.",
+          "japanese": "来年から授業が増えることになる。",
+          "english": "Starting next year, the number of classes is going to go up.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "rainen",
-            "shukudai",
+            "jugyou",
             "fueru-v"
           ],
-          "furigana": "来[らい]年[ねん]から宿[しゅく]題[だい]が増[ふ]えることになる。",
+          "furigana": "来[らい]年[ねん]から授[じゅ]業[ぎょう]が増[ふ]えることになる。",
           "word_spans": [
             {
               "vocabulary_slug": "rainen",
@@ -113455,7 +113455,7 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "jugyou",
               "start": 4,
               "end": 6
             },
@@ -113485,10 +113485,10 @@
               "in_grammar": false
             },
             {
-              "surface": "宿題",
-              "reading": "しゅくだい",
+              "surface": "授業",
+              "reading": "じゅぎょう",
               "role": "word",
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "jugyou",
               "in_grammar": false
             },
             {
@@ -113513,14 +113513,14 @@
           ],
           "build_alternates": [
             {
-              "furigana": "宿[しゅく]題[だい]が来[らい]年[ねん]から増[ふ]えることになる。",
+              "furigana": "授[じゅ]業[ぎょう]が来[らい]年[ねん]から増[ふ]えることになる。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "宿題",
-                  "reading": "しゅくだい",
+                  "surface": "授業",
+                  "reading": "じゅぎょう",
                   "role": "word",
-                  "vocabulary_slug": "shukudai",
+                  "vocabulary_slug": "jugyou",
                   "in_grammar": false
                 },
                 {
@@ -114290,16 +114290,16 @@
           ]
         },
         {
-          "japanese": "私は宿題ばかりしている。",
-          "english": "I'm doing nothing but homework.",
+          "japanese": "私はゲームばかりしている。",
+          "english": "I do nothing but play games.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "watashi",
-            "shukudai",
+            "geemu",
             "suru",
             "iru-exist"
           ],
-          "furigana": "私[わたし]は宿[しゅく]題[だい]ばかりしている。",
+          "furigana": "私[わたし]はゲームばかりしている。",
           "word_spans": [
             {
               "vocabulary_slug": "watashi",
@@ -114307,26 +114307,26 @@
               "end": 1
             },
             {
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "geemu",
               "start": 2,
-              "end": 4
+              "end": 5
             },
             {
               "vocabulary_slug": "suru",
-              "start": 7,
-              "end": 9,
+              "start": 8,
+              "end": 10,
               "surface_form": "して",
               "inflection": "te"
             },
             {
               "vocabulary_slug": "iru-exist",
-              "start": 9,
-              "end": 11
+              "start": 10,
+              "end": 12
             }
           ],
           "grammar_span": {
-            "start": 4,
-            "end": 7
+            "start": 5,
+            "end": 8
           },
           "register": "plain",
           "answer_units": [
@@ -114344,10 +114344,10 @@
               "in_grammar": false
             },
             {
-              "surface": "宿題",
-              "reading": "しゅくだい",
+              "surface": "ゲーム",
+              "reading": "ゲーム",
               "role": "word",
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "geemu",
               "in_grammar": false
             },
             {
@@ -114373,14 +114373,14 @@
           ],
           "build_alternates": [
             {
-              "furigana": "宿[しゅく]題[だい]ばかりしている。",
+              "furigana": "ゲームばかりしている。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "宿題",
-                  "reading": "しゅくだい",
+                  "surface": "ゲーム",
+                  "reading": "ゲーム",
                   "role": "word",
-                  "vocabulary_slug": "shukudai",
+                  "vocabulary_slug": "geemu",
                   "in_grammar": false
                 },
                 {
@@ -114404,6 +114404,10 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたし]はゲームだけしている。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -115949,15 +115953,15 @@
           ]
         },
         {
-          "japanese": "今、宿題をしたところです。",
-          "english": "I just finished my homework.",
+          "japanese": "今、家に帰ったところです。",
+          "english": "I've just got home.",
           "sort_order": 4,
           "vocabulary_slugs": [
             "ima",
-            "shukudai",
-            "suru"
+            "ie",
+            "kaeru-v"
           ],
-          "furigana": "今[いま]、宿[しゅく]題[だい]をしたところです。",
+          "furigana": "今[いま]、家[いえ]に帰[かえ]ったところです。",
           "word_spans": [
             {
               "vocabulary_slug": "ima",
@@ -115965,15 +115969,15 @@
               "end": 1
             },
             {
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "ie",
               "start": 2,
-              "end": 4
+              "end": 3
             },
             {
-              "vocabulary_slug": "suru",
-              "start": 5,
+              "vocabulary_slug": "kaeru-v",
+              "start": 4,
               "end": 7,
-              "surface_form": "した",
+              "surface_form": "帰った",
               "inflection": "ta"
             }
           ],
@@ -115991,23 +115995,23 @@
               "in_grammar": false
             },
             {
-              "surface": "宿題",
-              "reading": "しゅくだい",
+              "surface": "家",
+              "reading": "いえ",
               "role": "word",
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "ie",
               "in_grammar": false
             },
             {
-              "surface": "を",
-              "reading": "を",
+              "surface": "に",
+              "reading": "に",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "した",
-              "reading": "した",
+              "surface": "帰った",
+              "reading": "かえった",
               "role": "word",
-              "vocabulary_slug": "suru",
+              "vocabulary_slug": "kaeru-v",
               "in_grammar": true
             },
             {
@@ -116019,7 +116023,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]は今[いま]、宿[しゅく]題[だい]をしたところです。",
+              "furigana": "私[わたし]は今[いま]、家[いえ]に帰[かえ]ったところです。",
               "kind": "valid",
               "units": [
                 {
@@ -116042,23 +116046,62 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "宿題",
-                  "reading": "しゅくだい",
+                  "surface": "家",
+                  "reading": "いえ",
                   "role": "word",
-                  "vocabulary_slug": "shukudai",
+                  "vocabulary_slug": "ie",
                   "in_grammar": false
                 },
                 {
-                  "surface": "を",
-                  "reading": "を",
+                  "surface": "に",
+                  "reading": "に",
                   "role": "particle",
                   "in_grammar": false
                 },
                 {
-                  "surface": "した",
-                  "reading": "した",
+                  "surface": "帰った",
+                  "reading": "かえった",
                   "role": "word",
-                  "vocabulary_slug": "suru",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ところです",
+                  "reading": "ところです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "今[いま]、家[いえ]へ帰[かえ]ったところです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今",
+                  "reading": "いま",
+                  "role": "word",
+                  "vocabulary_slug": "ima",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "家",
+                  "reading": "いえ",
+                  "role": "word",
+                  "vocabulary_slug": "ie",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰った",
+                  "reading": "かえった",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
                   "in_grammar": true
                 },
                 {
@@ -118269,17 +118312,17 @@
           ]
         },
         {
-          "japanese": "友達を待っている間、雑誌を読んだ。",
-          "english": "While I was waiting for my friend, I read a magazine.",
+          "japanese": "友達を待っている間、新聞を読んだ。",
+          "english": "While I was waiting for my friend, I read the newspaper.",
           "sort_order": 9,
           "vocabulary_slugs": [
             "tomodachi",
             "matsu",
             "iru-exist",
-            "zasshi",
+            "shinbun",
             "yomu"
           ],
-          "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、雑[ざっ]誌[し]を読[よ]んだ。",
+          "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、新[しん]聞[ぶん]を読[よ]んだ。",
           "word_spans": [
             {
               "vocabulary_slug": "tomodachi",
@@ -118299,7 +118342,7 @@
               "end": 8
             },
             {
-              "vocabulary_slug": "zasshi",
+              "vocabulary_slug": "shinbun",
               "start": 10,
               "end": 12
             },
@@ -118351,10 +118394,10 @@
               "in_grammar": true
             },
             {
-              "surface": "雑誌",
-              "reading": "ざっし",
+              "surface": "新聞",
+              "reading": "しんぶん",
               "role": "word",
-              "vocabulary_slug": "zasshi",
+              "vocabulary_slug": "shinbun",
               "in_grammar": false
             },
             {
@@ -118373,7 +118416,7 @@
           ],
           "build_alternates": [
             {
-              "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、私[わたし]は雑[ざっ]誌[し]を読[よ]んだ。",
+              "furigana": "友[とも]達[だち]を待[ま]っている間[あいだ]、私[わたし]は新[しん]聞[ぶん]を読[よ]んだ。",
               "kind": "valid",
               "units": [
                 {
@@ -118422,10 +118465,10 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "雑誌",
-                  "reading": "ざっし",
+                  "surface": "新聞",
+                  "reading": "しんぶん",
                   "role": "word",
-                  "vocabulary_slug": "zasshi",
+                  "vocabulary_slug": "shinbun",
                   "in_grammar": false
                 },
                 {

@@ -15693,16 +15693,16 @@
         "alternates": []
       },
       {
-        "japanese": "来年から宿題が増えることになる。",
-        "english": "Starting next year, it turns out homework increases.",
+        "japanese": "来年から授業が増えることになる。",
+        "english": "Starting next year, the number of classes is going to go up.",
         "vocabulary_slugs": [
           "rainen",
-          "shukudai",
+          "jugyou",
           "fueru-v"
         ],
         "alternates": [
           {
-            "japanese": "宿題が来年から増えることになる。",
+            "japanese": "授業が来年から増えることになる。",
             "kind": "valid"
           }
         ]
@@ -15786,11 +15786,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "mono": {
@@ -15969,18 +15965,22 @@
         ]
       },
       {
-        "japanese": "私は宿題ばかりしている。",
-        "english": "I'm doing nothing but homework.",
+        "japanese": "私はゲームばかりしている。",
+        "english": "I do nothing but play games.",
         "vocabulary_slugs": [
           "watashi",
-          "shukudai",
+          "geemu",
           "suru",
           "iru-exist"
         ],
         "alternates": [
           {
-            "japanese": "宿題ばかりしている。",
+            "japanese": "ゲームばかりしている。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はゲームだけしている。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -16095,11 +16095,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "tokoro": {
@@ -16189,16 +16185,20 @@
         ]
       },
       {
-        "japanese": "今、宿題をしたところです。",
-        "english": "I just finished my homework.",
+        "japanese": "今、家に帰ったところです。",
+        "english": "I've just got home.",
         "vocabulary_slugs": [
           "ima",
-          "shukudai",
-          "suru"
+          "ie",
+          "kaeru-v"
         ],
         "alternates": [
           {
-            "japanese": "私は今、宿題をしたところです。",
+            "japanese": "私は今、家に帰ったところです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、家へ帰ったところです。",
             "kind": "valid"
           }
         ]
@@ -16279,11 +16279,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "aida": {
@@ -16443,18 +16439,18 @@
         ]
       },
       {
-        "japanese": "友達を待っている間、雑誌を読んだ。",
-        "english": "While I was waiting for my friend, I read a magazine.",
+        "japanese": "友達を待っている間、新聞を読んだ。",
+        "english": "While I was waiting for my friend, I read the newspaper.",
         "vocabulary_slugs": [
           "tomodachi",
           "matsu",
           "iru-exist",
-          "zasshi",
+          "shinbun",
           "yomu"
         ],
         "alternates": [
           {
-            "japanese": "友達を待っている間、私は雑誌を読んだ。",
+            "japanese": "友達を待っている間、私は新聞を読んだ。",
             "kind": "valid"
           }
         ]
@@ -16463,23 +16459,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "会議の間、電話を消した。",
-          "new": "会議の間に、電話を消した。",
-          "reason": "Turning off the phone is one event inside the meeting, so it takes 間に."
-        },
-        {
-          "old": "赤ちゃんが寝ている間に、本を読みます。",
-          "new": "赤ちゃんが寝ている間、本を読みます。",
-          "reason": "Reading fills the stretch, so the lesson rule takes plain 間 (matches the magazine sentence)."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "uchi-ni": {
