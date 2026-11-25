@@ -5562,33 +5562,6 @@
     ],
     "sentences": [
       {
-        "japanese": "新しい車がほしいです。",
-        "english": "I want a new car.",
-        "vocabulary_slugs": [
-          "atarashii-adj",
-          "kuruma"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は新しい車がほしいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "お金がほしい。",
-        "english": "I want money.",
-        "vocabulary_slugs": [
-          "okane"
-        ],
-        "alternates": [
-          {
-            "japanese": "私はお金がほしい。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "時間がほしいです。",
         "english": "I want more time.",
         "vocabulary_slugs": [
@@ -5610,42 +5583,6 @@
         "alternates": [
           {
             "japanese": "私は水がほしいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "古い服はほしくないです。",
-        "english": "I don't want old clothes.",
-        "vocabulary_slugs": [
-          "furui-adj",
-          "fuku"
-        ],
-        "alternates": [
-          {
-            "japanese": "古い服がほしくないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は古い服はほしくないです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "去年、カメラがほしかったです。",
-        "english": "Last year, I wanted a camera.",
-        "vocabulary_slugs": [
-          "kyonen",
-          "kamera"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は去年、カメラがほしかったです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "去年、私はカメラがほしかったです。",
             "kind": "valid"
           }
         ]
@@ -5678,31 +5615,95 @@
         ]
       },
       {
-        "japanese": "私は大きい犬がほしいです。",
-        "english": "I want a big dog.",
+        "japanese": "新しいかばんがほしいです。",
+        "english": "I want a new bag.",
         "vocabulary_slugs": [
-          "watashi",
-          "ookii",
-          "inu"
+          "atarashii-adj",
+          "kaban"
         ],
         "alternates": [
           {
-            "japanese": "大きい犬がほしいです。",
+            "japanese": "私は新しいかばんがほしいです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "冬は暖かいコートがほしいです。",
-        "english": "In winter, I want a warm coat.",
+        "japanese": "先月、赤い靴がほしかったです。",
+        "english": "Last month, I wanted red shoes.",
         "vocabulary_slugs": [
-          "fuyu",
-          "atatakai",
-          "kooto"
+          "sengetsu",
+          "akai",
+          "kutsu"
         ],
         "alternates": [
           {
-            "japanese": "冬、暖かいコートがほしいです。",
+            "japanese": "私は先月、赤い靴がほしかったです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先月、私は赤い靴がほしかったです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "今は飲み物はほしくないです。",
+        "english": "I don't want a drink right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "nomimono"
+        ],
+        "alternates": [
+          {
+            "japanese": "今、飲み物はほしくないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今は飲み物がほしくないです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "どんなカメラがほしいですか。",
+        "english": "What kind of camera do you want?",
+        "vocabulary_slugs": [
+          "donna",
+          "kamera"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたはどんなカメラがほしいですか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "熱いお茶がほしいです。",
+        "english": "I want some hot tea.",
+        "vocabulary_slugs": [
+          "atsui-obj",
+          "ocha"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は熱いお茶がほしいです。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "台所に大きいテーブルがほしいです。",
+        "english": "I want a big table in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "ookii",
+          "teeburu"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は台所に大きいテーブルがほしいです。",
             "kind": "valid"
           }
         ]
@@ -5711,11 +5712,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "mae-ni": {
@@ -5727,52 +5724,6 @@
     ],
     "sentences": [
       {
-        "japanese": "授業の前に本を読みます。",
-        "english": "I read a book before class.",
-        "vocabulary_slugs": [
-          "jugyou",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "授業の後で本を読みます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "私は授業の前に本を読みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は授業の後で本を読みます。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "本を授業の前に読みます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "本を授業の後で読みます。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "食べる前に手を洗う。",
-        "english": "I wash my hands before eating.",
-        "vocabulary_slugs": [
-          "taberu",
-          "te-v",
-          "arau"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は食べる前に手を洗う。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "晩ご飯の前にテレビを見る。",
         "english": "I watch TV before dinner.",
         "vocabulary_slugs": [
@@ -5782,106 +5733,16 @@
         ],
         "alternates": [
           {
-            "japanese": "晩ご飯の後でテレビを見る。",
-            "kind": "other_grammar"
-          },
-          {
             "japanese": "私は晩ご飯の前にテレビを見る。",
             "kind": "valid"
-          },
-          {
-            "japanese": "私は晩ご飯の後でテレビを見る。",
-            "kind": "other_grammar"
           },
           {
             "japanese": "テレビを晩ご飯の前に見る。",
             "kind": "valid"
           },
           {
-            "japanese": "テレビを晩ご飯の後で見る。",
+            "japanese": "晩ご飯の後でテレビを見る。",
             "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "寝る前に本を読んだ。",
-        "english": "I read a book before going to sleep.",
-        "vocabulary_slugs": [
-          "neru",
-          "hon",
-          "yomu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は寝る前に本を読んだ。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "本を寝る前に読んだ。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "友達が来る前に、部屋を出る。",
-        "english": "I leave the room before my friend comes.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "kuru-v",
-          "heya",
-          "deru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達が来る前に、部屋から出る。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は友達が来る前に、部屋を出る。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達が来る前に、私は部屋を出る。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "学校へ行く前に、何を食べますか。",
-        "english": "What do you eat before you go to school?",
-        "vocabulary_slugs": [
-          "gakkou-v",
-          "iku-v",
-          "nani",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "学校に行く前に、何を食べますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたは学校へ行く前に、何を食べますか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "映画の前に、お手洗いへ行きます。",
-        "english": "I go to the restroom before the movie.",
-        "vocabulary_slugs": [
-          "eiga",
-          "otearai",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "映画の前に、お手洗いに行きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は映画の前に、お手洗いへ行きます。",
-            "kind": "valid"
           }
         ]
       },
@@ -5905,24 +5766,158 @@
         ]
       },
       {
-        "japanese": "先生が来る前に、椅子に座りましょう。",
+        "japanese": "うちを出る前に、新聞を読みます。",
+        "english": "I read the newspaper before I leave home.",
+        "vocabulary_slugs": [
+          "uchi",
+          "deru-v",
+          "shinbun",
+          "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "うちを出る前に新聞を読みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はうちを出る前に、新聞を読みます。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "食事の前に水を飲みます。",
+        "english": "I drink water before meals.",
+        "vocabulary_slugs": [
+          "shokuji",
+          "mizu",
+          "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "食事の前に、水を飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食事の後で水を飲みます。",
+            "kind": "other_grammar"
+          }
+        ]
+      },
+      {
+        "japanese": "先生が来る前に、座りましょう。",
         "english": "Let's sit down before the teacher comes.",
         "vocabulary_slugs": [
           "sensei",
           "kuru-v",
-          "isu",
           "suwaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生が来る前に座りましょう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "バスに乗る前に、コンビニへ行きました。",
+        "english": "Before getting on the bus, I went to the convenience store.",
+        "vocabulary_slugs": [
+          "basu",
+          "noru",
+          "konbini",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスに乗る前に、コンビニに行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "バスに乗る前にコンビニへ行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "会社へ行く前に、何をしますか。",
+        "english": "What do you do before you go to work?",
+        "vocabulary_slugs": [
+          "kaisha",
+          "iku-v",
+          "nani",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "会社に行く前に、何をしますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは会社へ行く前に、何をしますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "電話をかける前に、時間を見ました。",
+        "english": "Before making the call, I checked the time.",
+        "vocabulary_slugs": [
+          "denwa",
+          "kakeru-call",
+          "jikan",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "電話をかける前に時間を見ました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "泳ぐ前に、何も食べませんでした。",
+        "english": "I didn't eat anything before swimming.",
+        "vocabulary_slugs": [
+          "oyogu",
+          "nani",
+          "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "泳ぐ前に何も食べませんでした。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "昼ご飯の前に、手紙を書きました。",
+        "english": "I wrote a letter before lunch.",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "tegami",
+          "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "昼ご飯の前に手紙を書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "手紙を昼ご飯の前に書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昼ご飯の後で、手紙を書きました。",
+            "kind": "other_grammar"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "ato-de": {
@@ -6234,19 +6229,21 @@
         ]
       },
       {
-        "japanese": "週末は寝たいです。",
-        "english": "On the weekend, I want to sleep.",
+        "japanese": "日曜日はうちでテレビを見たいです。",
+        "english": "On Sunday, I want to watch TV at home.",
         "vocabulary_slugs": [
-          "shuumatsu",
-          "neru"
+          "nichiyoubi",
+          "uchi",
+          "terebi",
+          "miru-v"
         ],
         "alternates": [
           {
-            "japanese": "週末に寝たいです。",
+            "japanese": "日曜日はうちでテレビが見たいです。",
             "kind": "valid"
           },
           {
-            "japanese": "私は週末は寝たいです。",
+            "japanese": "日曜日、うちでテレビを見たいです。",
             "kind": "valid"
           }
         ]
@@ -6309,20 +6306,20 @@
         ]
       },
       {
-        "japanese": "犬と公園で遊びたいです。",
-        "english": "I want to play in the park with my dog.",
+        "japanese": "先生に何を聞きたかったですか。",
+        "english": "What did you want to ask the teacher?",
         "vocabulary_slugs": [
-          "inu",
-          "kouen",
-          "asobu"
+          "sensei",
+          "nani",
+          "kiku-v"
         ],
         "alternates": [
           {
-            "japanese": "公園で犬と遊びたいです。",
+            "japanese": "何を先生に聞きたかったですか。",
             "kind": "valid"
           },
           {
-            "japanese": "私は犬と公園で遊びたいです。",
+            "japanese": "あなたは先生に何を聞きたかったですか。",
             "kind": "valid"
           }
         ]
@@ -6331,11 +6328,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "ni-iku": {
@@ -6348,21 +6341,6 @@
     ],
     "sentences": [
       {
-        "japanese": "映画を見に行きます。",
-        "english": "I'm going to see a movie.",
-        "vocabulary_slugs": [
-          "eiga",
-          "miru-v",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は映画を見に行きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "本を買いに行きました。",
         "english": "I went to buy a book.",
         "vocabulary_slugs": [
@@ -6373,98 +6351,6 @@
         "alternates": [
           {
             "japanese": "私は本を買いに行きました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "友達に会いに来ました。",
-        "english": "I came to see a friend.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "au",
-          "kuru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は友達に会いに来ました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達と会いに来ました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "友達がうちへ遊びに来る。",
-        "english": "A friend is coming over to my place to hang out.",
-        "vocabulary_slugs": [
-          "tomodachi",
-          "uchi",
-          "asobu",
-          "kuru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "友達がうちに遊びに来る。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "うちへ友達が遊びに来る。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "うちに友達が遊びに来る。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "妹は毎晩、晩ご飯を食べに帰る。",
-        "english": "Every night, my younger sister comes home to eat dinner.",
-        "vocabulary_slugs": [
-          "imouto",
-          "maiban",
-          "bangohan",
-          "taberu",
-          "kaeru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "毎晩、妹は晩ご飯を食べに帰る。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "毎日、学校へ勉強しに行く。",
-        "english": "Every day, I go to school to study.",
-        "vocabulary_slugs": [
-          "mainichi",
-          "gakkou-v",
-          "benkyou-suru",
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "毎日、学校に勉強しに行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "毎日、勉強しに学校に行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は毎日、学校へ勉強しに行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学校へ毎日勉強しに行く。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "学校に毎日勉強しに行く。",
             "kind": "valid"
           }
         ]
@@ -6491,48 +6377,133 @@
         ]
       },
       {
-        "japanese": "週末、どこへ遊びに行きますか。",
-        "english": "Where are you going to hang out this weekend?",
+        "japanese": "毎朝、コンビニへパンを買いに行きます。",
+        "english": "Every morning, I go to the convenience store to buy bread.",
         "vocabulary_slugs": [
-          "shuumatsu",
-          "doko",
-          "asobu",
+          "maiasa",
+          "konbini",
+          "pan",
+          "kau-v",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "週末、どこに遊びに行きますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "週末はどこへ遊びに行きますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "週末はどこに遊びに行きますか。",
+            "japanese": "毎朝、コンビニにパンを買いに行きます。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "海へ泳ぎに行きました。",
-        "english": "I went to the sea to swim.",
+        "japanese": "うちへ昼ご飯を食べに帰ります。",
+        "english": "I go home to eat lunch.",
         "vocabulary_slugs": [
-          "umi",
+          "uchi",
+          "hirugohan",
+          "taberu",
+          "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "うちに昼ご飯を食べに帰ります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄が本を借りに来ました。",
+        "english": "My older brother came to borrow a book.",
+        "vocabulary_slugs": [
+          "ani",
+          "hon",
+          "kariru",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "日曜日、どこへ泳ぎに行きますか。",
+        "english": "Where are you going swimming on Sunday?",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "doko",
           "oyogu",
           "iku-v"
         ],
         "alternates": [
           {
-            "japanese": "海に泳ぎに行きました。",
+            "japanese": "日曜日、どこに泳ぎに行きますか。",
             "kind": "valid"
           },
           {
-            "japanese": "私は海へ泳ぎに行きました。",
+            "japanese": "日曜日はどこへ泳ぎに行きますか。",
             "kind": "valid"
           },
           {
-            "japanese": "私は海に泳ぎに行きました。",
+            "japanese": "日曜日はどこに泳ぎに行きますか。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先週、大学へ先生に会いに行きました。",
+        "english": "Last week, I went to the university to see my teacher.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "daigaku",
+          "sensei",
+          "au",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先週、大学に先生に会いに行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は先週、大学へ先生に会いに行きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "父は毎晩、ビールを飲みに行く。",
+        "english": "My father goes out for a beer every night.",
+        "vocabulary_slugs": [
+          "chichi",
+          "maiban",
+          "biiru",
+          "nomu-v",
+          "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎晩、父はビールを飲みに行く。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "叔母が赤ちゃんを見に来ました。",
+        "english": "My aunt came to see the baby.",
+        "vocabulary_slugs": [
+          "oba",
+          "akachan",
+          "miru-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "彼女がうちへお茶を飲みに来る。",
+        "english": "My girlfriend is coming over for tea.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "uchi",
+          "ocha",
+          "nomu-v",
+          "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼女がうちにお茶を飲みに来る。",
             "kind": "valid"
           }
         ]
@@ -6541,11 +6512,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "toki": {
