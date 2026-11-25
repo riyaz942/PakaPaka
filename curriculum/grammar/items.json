@@ -109791,23 +109791,29 @@
           ]
         },
         {
-          "japanese": "彼と結婚するつもりです。",
-          "english": "I intend to marry him.",
+          "japanese": "夏は海で泳ぐつもりです。",
+          "english": "I'm planning to swim in the sea this summer.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kare",
-            "kekkon-suru"
+            "natsu",
+            "umi",
+            "oyogu"
           ],
-          "furigana": "彼[かれ]と結[けっ]婚[こん]するつもりです。",
+          "furigana": "夏[なつ]は海[うみ]で泳[およ]ぐつもりです。",
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "natsu",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "kekkon-suru",
+              "vocabulary_slug": "umi",
               "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "oyogu",
+              "start": 4,
               "end": 6
             }
           ],
@@ -109818,23 +109824,36 @@
           "register": "polite",
           "answer_units": [
             {
-              "surface": "彼",
-              "reading": "かれ",
+              "surface": "夏",
+              "reading": "なつ",
               "role": "word",
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "natsu",
               "in_grammar": false
             },
             {
-              "surface": "と",
-              "reading": "と",
+              "surface": "は",
+              "reading": "は",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "結婚する",
-              "reading": "けっこんする",
+              "surface": "海",
+              "reading": "うみ",
               "role": "word",
-              "vocabulary_slug": "kekkon-suru",
+              "vocabulary_slug": "umi",
+              "in_grammar": false
+            },
+            {
+              "surface": "で",
+              "reading": "で",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "泳ぐ",
+              "reading": "およぐ",
+              "role": "word",
+              "vocabulary_slug": "oyogu",
               "in_grammar": false
             },
             {
@@ -109846,7 +109865,52 @@
           ],
           "build_alternates": [
             {
-              "furigana": "私[わたし]は彼[かれ]と結[けっ]婚[こん]するつもりです。",
+              "furigana": "夏[なつ]に海[うみ]で泳[およ]ぐつもりです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "夏",
+                  "reading": "なつ",
+                  "role": "word",
+                  "vocabulary_slug": "natsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "海",
+                  "reading": "うみ",
+                  "role": "word",
+                  "vocabulary_slug": "umi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "泳ぐ",
+                  "reading": "およぐ",
+                  "role": "word",
+                  "vocabulary_slug": "oyogu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "つもりです",
+                  "reading": "つもりです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたし]は夏[なつ]、海[うみ]で泳[およ]ぐつもりです。",
               "kind": "valid",
               "units": [
                 {
@@ -109862,23 +109926,30 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "彼",
-                  "reading": "かれ",
+                  "surface": "夏",
+                  "reading": "なつ",
                   "role": "word",
-                  "vocabulary_slug": "kare",
+                  "vocabulary_slug": "natsu",
                   "in_grammar": false
                 },
                 {
-                  "surface": "と",
-                  "reading": "と",
+                  "surface": "海",
+                  "reading": "うみ",
+                  "role": "word",
+                  "vocabulary_slug": "umi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
                   "role": "particle",
                   "in_grammar": false
                 },
                 {
-                  "surface": "結婚する",
-                  "reading": "けっこんする",
+                  "surface": "泳ぐ",
+                  "reading": "およぐ",
                   "role": "word",
-                  "vocabulary_slug": "kekkon-suru",
+                  "vocabulary_slug": "oyogu",
                   "in_grammar": false
                 },
                 {
@@ -110512,50 +110583,56 @@
           ]
         },
         {
-          "japanese": "明日、宿題をするつもりだ。",
-          "english": "I'm planning to do my homework tomorrow.",
+          "japanese": "母に手紙を書くつもりだ。",
+          "english": "I'm planning to write a letter to my mother.",
           "sort_order": 8,
           "vocabulary_slugs": [
-            "ashita",
-            "shukudai",
-            "suru"
+            "haha",
+            "tegami",
+            "kaku"
           ],
-          "furigana": "明日[あした]、宿[しゅく]題[だい]をするつもりだ。",
+          "furigana": "母[はは]に手[て]紙[がみ]を書[か]くつもりだ。",
           "word_spans": [
             {
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "haha",
               "start": 0,
-              "end": 2
+              "end": 1
             },
             {
-              "vocabulary_slug": "shukudai",
-              "start": 3,
-              "end": 5
+              "vocabulary_slug": "tegami",
+              "start": 2,
+              "end": 4
             },
             {
-              "vocabulary_slug": "suru",
-              "start": 6,
-              "end": 8
+              "vocabulary_slug": "kaku",
+              "start": 5,
+              "end": 7
             }
           ],
           "grammar_span": {
-            "start": 8,
-            "end": 12
+            "start": 7,
+            "end": 11
           },
           "register": "plain",
           "answer_units": [
             {
-              "surface": "明日",
-              "reading": "あした",
+              "surface": "母",
+              "reading": "はは",
               "role": "word",
-              "vocabulary_slug": "ashita",
+              "vocabulary_slug": "haha",
               "in_grammar": false
             },
             {
-              "surface": "宿題",
-              "reading": "しゅくだい",
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "手紙",
+              "reading": "てがみ",
               "role": "word",
-              "vocabulary_slug": "shukudai",
+              "vocabulary_slug": "tegami",
               "in_grammar": false
             },
             {
@@ -110565,10 +110642,10 @@
               "in_grammar": false
             },
             {
-              "surface": "する",
-              "reading": "する",
+              "surface": "書く",
+              "reading": "かく",
               "role": "word",
-              "vocabulary_slug": "suru",
+              "vocabulary_slug": "kaku",
               "in_grammar": false
             },
             {
@@ -110580,27 +110657,14 @@
           ],
           "build_alternates": [
             {
-              "furigana": "明日[あした]は宿[しゅく]題[だい]をするつもりだ。",
+              "furigana": "手[て]紙[がみ]を母[はは]に書[か]くつもりだ。",
               "kind": "valid",
               "units": [
                 {
-                  "surface": "明日",
-                  "reading": "あした",
+                  "surface": "手紙",
+                  "reading": "てがみ",
                   "role": "word",
-                  "vocabulary_slug": "ashita",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "宿題",
-                  "reading": "しゅくだい",
-                  "role": "word",
-                  "vocabulary_slug": "shukudai",
+                  "vocabulary_slug": "tegami",
                   "in_grammar": false
                 },
                 {
@@ -110610,10 +110674,23 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "する",
-                  "reading": "する",
+                  "surface": "母",
+                  "reading": "はは",
                   "role": "word",
-                  "vocabulary_slug": "suru",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "書く",
+                  "reading": "かく",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
                   "in_grammar": false
                 },
                 {
