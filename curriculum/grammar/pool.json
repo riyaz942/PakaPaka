@@ -6995,149 +6995,122 @@
     "accepted_meanings": [
       "na-adjective",
       "na-adjective usage",
-      "na-adjective conjugation",
+      "describes a noun",
       "is",
       "was"
     ],
     "sentences": [
-      {
-        "japanese": "静かな部屋です。",
-        "english": "It's a quiet room.",
-        "vocabulary_slugs": [
-          "shizuka",
-          "heya"
-        ]
-      },
       {
         "japanese": "彼は親切です。",
         "english": "He is kind.",
         "vocabulary_slugs": [
           "kare",
           "shinsetsu"
-        ]
-      },
-      {
-        "japanese": "ここは便利な町です。",
-        "english": "This is a convenient town.",
-        "vocabulary_slugs": [
-          "koko",
-          "benri",
-          "machi-v"
-        ]
-      },
-      {
-        "japanese": "部屋はきれいでした。",
-        "english": "The room was clean.",
-        "vocabulary_slugs": [
-          "heya",
-          "kirei"
-        ]
-      },
-      {
-        "japanese": "ここは静かな町です。",
-        "english": "This is a quiet town.",
-        "vocabulary_slugs": [
-          "koko",
-          "shizuka",
-          "machi-v"
-        ]
-      },
-      {
-        "japanese": "私は暇ではありません。",
-        "english": "I am not free.",
-        "vocabulary_slugs": [
-          "watashi",
-          "hima"
         ],
+        "form": "親切です"
+      },
+      {
+        "japanese": "姉はきれいな靴を買いました。",
+        "english": "My older sister bought pretty shoes.",
+        "vocabulary_slugs": [
+          "ane",
+          "kirei",
+          "kutsu",
+          "kau-v"
+        ],
+        "form": "きれいな",
         "alternates": [
           {
-            "japanese": "暇ではありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は暇じゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は暇ではないです。",
+            "japanese": "姉がきれいな靴を買いました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "有名な人に会いました。",
-        "english": "I met a famous person.",
+        "japanese": "父は料理が下手です。",
+        "english": "My father is bad at cooking.",
         "vocabulary_slugs": [
-          "yuumei",
-          "hito",
-          "au"
+          "chichi",
+          "ryouri",
+          "heta"
         ],
-        "alternates": [
-          {
-            "japanese": "私は有名な人に会いました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "有名な人と会いました。",
-            "kind": "valid"
-          }
-        ]
+        "form": "下手です"
       },
       {
-        "japanese": "犬が好きではありません。",
-        "english": "I do not like dogs.",
+        "japanese": "弟はひらがなが上手ではありません。",
+        "english": "My younger brother is not good at hiragana.",
         "vocabulary_slugs": [
-          "inu",
-          "suki"
+          "otouto",
+          "hiragana",
+          "jouzu"
         ],
-        "alternates": [
-          {
-            "japanese": "犬が好きじゃないです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は犬が好きではありません。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "犬が好きではないです。",
-            "kind": "valid"
-          }
-        ]
+        "form": "上手ではありません"
       },
       {
-        "japanese": "あの先生は有名ですか。",
-        "english": "Is that teacher famous?",
-        "vocabulary_slugs": [
-          "ano",
-          "sensei",
-          "yuumei"
-        ]
-      },
-      {
-        "japanese": "昨日の公園は賑やかでした。",
-        "english": "The park was lively yesterday.",
+        "japanese": "昨日の仕事は大変でした。",
+        "english": "Yesterday's work was tough.",
         "vocabulary_slugs": [
           "kinou",
-          "kouen",
-          "nigiyaka"
+          "shigoto",
+          "taihen"
         ],
-        "alternates": [
-          {
-            "japanese": "昨日、公園は賑やかでした。",
-            "kind": "valid"
-          }
-        ]
+        "form": "大変でした"
+      },
+      {
+        "japanese": "体は大丈夫ですか。",
+        "english": "Are you feeling all right?",
+        "vocabulary_slugs": [
+          "karada",
+          "daijoubu"
+        ],
+        "form": "大丈夫です"
+      },
+      {
+        "japanese": "この店には色々な飲み物があります。",
+        "english": "This shop has all kinds of drinks.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "iroiro",
+          "nomimono",
+          "aru"
+        ],
+        "form": "色々な"
+      },
+      {
+        "japanese": "駅員は親切な人でした。",
+        "english": "The station attendant was a kind person.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "shinsetsu",
+          "hito"
+        ],
+        "form": "親切な"
+      },
+      {
+        "japanese": "このトイレはきれいではありません。",
+        "english": "This toilet is not clean.",
+        "vocabulary_slugs": [
+          "kono",
+          "toire",
+          "kirei"
+        ],
+        "form": "きれいではありません"
+      },
+      {
+        "japanese": "先生は親切でしたか。",
+        "english": "Was the teacher kind?",
+        "vocabulary_slugs": [
+          "sensei",
+          "shinsetsu"
+        ],
+        "form": "親切でした"
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "adj-i-adverb": {
@@ -7148,21 +7121,6 @@
       "in a way"
     ],
     "sentences": [
-      {
-        "japanese": "早く起きます。",
-        "english": "I get up early.",
-        "vocabulary_slugs": [
-          "hayai-early",
-          "okiru"
-        ],
-        "form": "早く",
-        "alternates": [
-          {
-            "japanese": "私は早く起きます。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "安く買いました。",
         "english": "I bought it cheaply.",
@@ -7177,49 +7135,6 @@
             "kind": "valid"
           }
         ]
-      },
-      {
-        "japanese": "毎朝早く家を出ます。",
-        "english": "I leave home early every morning.",
-        "vocabulary_slugs": [
-          "maiasa",
-          "hayai-early",
-          "ie",
-          "deru-v"
-        ],
-        "form": "早く",
-        "alternates": [
-          {
-            "japanese": "私は毎朝早く家を出ます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "部屋を明るくしました。",
-        "english": "I made the room brighter.",
-        "vocabulary_slugs": [
-          "heya",
-          "akarui",
-          "suru"
-        ],
-        "form": "明るく",
-        "alternates": [
-          {
-            "japanese": "私は部屋を明るくしました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "彼は速く走ります。",
-        "english": "He runs fast.",
-        "vocabulary_slugs": [
-          "kare",
-          "hayai-fast",
-          "hashiru"
-        ],
-        "form": "速く"
       },
       {
         "japanese": "ノートに大きく書きました。",
@@ -7238,81 +7153,97 @@
         ]
       },
       {
-        "japanese": "子供は公園で楽しく遊びました。",
-        "english": "The child played happily in the park.",
+        "japanese": "台所を明るくしました。",
+        "english": "I made the kitchen brighter.",
         "vocabulary_slugs": [
-          "kodomo-v",
-          "kouen",
+          "daidokoro",
+          "akarui",
+          "suru"
+        ],
+        "form": "明るく"
+      },
+      {
+        "japanese": "毎晩遅く帰ります。",
+        "english": "I get home late every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "osoi",
+          "kaeru-v"
+        ],
+        "form": "遅く",
+        "alternates": [
+          {
+            "japanese": "私は毎晩遅く帰ります。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "女の子は楽しく歌いました。",
+        "english": "The girl sang happily.",
+        "vocabulary_slugs": [
+          "onnanoko",
           "tanoshii",
-          "asobu"
+          "utau"
         ],
-        "form": "楽しく",
-        "alternates": [
-          {
-            "japanese": "子供は楽しく公園で遊びました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "子供が公園で楽しく遊びました。",
-            "kind": "valid"
-          }
-        ]
+        "form": "楽しく"
       },
       {
-        "japanese": "彼女は速く歩きません。",
-        "english": "She doesn't walk fast.",
+        "japanese": "兄は長く話しません。",
+        "english": "My older brother does not talk for long.",
         "vocabulary_slugs": [
-          "kanojo",
-          "hayai-fast",
-          "aruku"
+          "ani",
+          "nagai-adj",
+          "hanasu-v"
         ],
-        "form": "速く"
+        "form": "長く"
       },
       {
-        "japanese": "明日は早く来ますか。",
-        "english": "Are you coming early tomorrow?",
+        "japanese": "パンを小さく切りましょうか。",
+        "english": "Shall I cut the bread into small pieces?",
         "vocabulary_slugs": [
-          "ashita",
-          "hayai-early",
-          "kuru-v"
-        ],
-        "form": "早く",
-        "alternates": [
-          {
-            "japanese": "明日、早く来ますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたは明日、早く来ますか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "髪を短く切りました。",
-        "english": "I cut my hair short.",
-        "vocabulary_slugs": [
-          "kami-hair",
-          "mijikai",
+          "pan",
+          "chiisai",
           "kiru-cut"
         ],
-        "form": "短く",
-        "alternates": [
-          {
-            "japanese": "私は髪を短く切りました。",
-            "kind": "valid"
-          }
-        ]
+        "form": "小さく"
+      },
+      {
+        "japanese": "コーヒーを甘くしましたか。",
+        "english": "Did you make the coffee sweet?",
+        "vocabulary_slugs": [
+          "koohii",
+          "amai",
+          "suru"
+        ],
+        "form": "甘く"
+      },
+      {
+        "japanese": "晩ご飯をおいしく食べました。",
+        "english": "I enjoyed my dinner.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "oishii",
+          "taberu"
+        ],
+        "form": "おいしく"
+      },
+      {
+        "japanese": "父はパソコンを安く売りました。",
+        "english": "My father sold the computer cheaply.",
+        "vocabulary_slugs": [
+          "chichi",
+          "pasokon",
+          "yasui-adj",
+          "uru"
+        ],
+        "form": "安く"
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "adj-na-adverb": {
@@ -7339,51 +7270,6 @@
         ]
       },
       {
-        "japanese": "元気に遊びます。",
-        "english": "They play energetically.",
-        "vocabulary_slugs": [
-          "genki",
-          "asobu"
-        ],
-        "form": "元気に"
-      },
-      {
-        "japanese": "図書館で静かに本を読みました。",
-        "english": "I read a book quietly in the library.",
-        "vocabulary_slugs": [
-          "toshokan",
-          "shizuka",
-          "hon",
-          "yomu"
-        ],
-        "form": "静かに",
-        "alternates": [
-          {
-            "japanese": "図書館で本を静かに読みました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "静かに図書館で本を読みました。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は図書館で静かに本を読みました。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "うちの犬は静かに待ちません。",
-        "english": "Our dog does not wait quietly.",
-        "vocabulary_slugs": [
-          "uchi",
-          "inu",
-          "shizuka",
-          "matsu"
-        ],
-        "form": "静かに"
-      },
-      {
         "japanese": "彼女は上手に歌います。",
         "english": "She sings skillfully.",
         "vocabulary_slugs": [
@@ -7394,80 +7280,104 @@
         "form": "上手に"
       },
       {
-        "japanese": "手紙を丁寧に書きます。",
-        "english": "I write the letter carefully.",
+        "japanese": "手をきれいに洗いましょう。",
+        "english": "Let's wash our hands well.",
         "vocabulary_slugs": [
-          "tegami",
-          "teinei",
-          "kaku"
-        ],
-        "form": "丁寧に",
-        "alternates": [
-          {
-            "japanese": "丁寧に手紙を書きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は手紙を丁寧に書きます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "部屋をきれいに掃除します。",
-        "english": "I clean the room until it is spotless.",
-        "vocabulary_slugs": [
-          "heya",
+          "te-v",
           "kirei",
-          "souji-suru"
+          "arau"
         ],
-        "form": "きれいに",
+        "form": "きれいに"
+      },
+      {
+        "japanese": "お兄さんは上手に泳ぎますか。",
+        "english": "Does your older brother swim well?",
+        "vocabulary_slugs": [
+          "oniisan",
+          "jouzu",
+          "oyogu"
+        ],
+        "form": "上手に"
+      },
+      {
+        "japanese": "駅員は親切に話しました。",
+        "english": "The station attendant spoke kindly.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "shinsetsu",
+          "hanasu-v"
+        ],
+        "form": "親切に"
+      },
+      {
+        "japanese": "赤ちゃんはきれいに食べません。",
+        "english": "The baby does not eat neatly.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kirei",
+          "taberu"
+        ],
+        "form": "きれいに"
+      },
+      {
+        "japanese": "母はパンを上手に作りました。",
+        "english": "My mother made bread skillfully.",
+        "vocabulary_slugs": [
+          "haha",
+          "pan",
+          "jouzu",
+          "tsukuru"
+        ],
+        "form": "上手に",
         "alternates": [
           {
-            "japanese": "きれいに部屋を掃除します。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は部屋をきれいに掃除します。",
+            "japanese": "母は上手にパンを作りました。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "子供は元気に遊びます。",
-        "english": "The child plays energetically.",
+        "japanese": "台所をきれいにしました。",
+        "english": "I cleaned up the kitchen.",
         "vocabulary_slugs": [
-          "kodomo-v",
-          "genki",
-          "asobu"
-        ],
-        "form": "元気に",
-        "alternates": [
-          {
-            "japanese": "子供が元気に遊びます。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "部屋をきれいにしましたか。",
-        "english": "Did you tidy up the room?",
-        "vocabulary_slugs": [
-          "heya",
+          "daidokoro",
           "kirei",
           "suru"
         ],
         "form": "きれいに"
+      },
+      {
+        "japanese": "おばあさんは上手に料理しますか。",
+        "english": "Does your grandmother cook well?",
+        "vocabulary_slugs": [
+          "obaasan",
+          "jouzu",
+          "ryouri-suru"
+        ],
+        "form": "上手に"
+      },
+      {
+        "japanese": "姉は手紙をきれいに書きました。",
+        "english": "My older sister wrote the letter neatly.",
+        "vocabulary_slugs": [
+          "ane",
+          "tegami",
+          "kirei",
+          "kaku"
+        ],
+        "form": "きれいに",
+        "alternates": [
+          {
+            "japanese": "姉はきれいに手紙を書きました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "comparative-yori": {
@@ -7478,22 +7388,6 @@
       "rather than"
     ],
     "sentences": [
-      {
-        "japanese": "去年の夏は今年より暑かったです。",
-        "english": "Last summer was hotter than this year.",
-        "vocabulary_slugs": [
-          "kyonen",
-          "natsu",
-          "kotoshi",
-          "atsui-hot"
-        ],
-        "alternates": [
-          {
-            "japanese": "去年の夏が今年より暑かったです。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "今日は昨日より暑いです。",
         "english": "Today is hotter than yesterday.",
@@ -7509,25 +7403,6 @@
           },
           {
             "japanese": "今日が昨日より暑いです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "犬は猫より大きいです。",
-        "english": "Dogs are bigger than cats.",
-        "vocabulary_slugs": [
-          "inu",
-          "neko",
-          "ookii"
-        ],
-        "alternates": [
-          {
-            "japanese": "猫より犬は大きいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "犬が猫より大きいです。",
             "kind": "valid"
           }
         ]
@@ -7552,135 +7427,106 @@
         ]
       },
       {
-        "japanese": "漢字はひらがなより難しいです。",
-        "english": "Compared to hiragana, kanji is difficult.",
-        "vocabulary_slugs": [
-          "hiragana",
-          "kanji-word",
-          "muzukashii"
-        ],
-        "alternates": [
-          {
-            "japanese": "漢字がひらがなより難しいです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "ひらがなより漢字が難しいです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "肉は魚より好きです。",
-        "english": "I like meat more than fish.",
-        "vocabulary_slugs": [
-          "niku",
-          "sakana",
-          "suki"
-        ],
-        "alternates": [
-          {
-            "japanese": "魚より肉が好きです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は魚より肉が好きです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "肉が魚より好きです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は肉が魚より好きです。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
         "japanese": "この店はあの店より安いです。",
-        "english": "Compared to that shop over there, this shop is cheaper.",
+        "english": "This shop is cheaper than that one over there.",
         "vocabulary_slugs": [
-          "ano",
-          "mise",
           "kono",
+          "mise",
+          "ano",
           "yasui-adj"
         ],
         "alternates": [
           {
-            "japanese": "この店があの店より安いです。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あの店よりこの店が安いです。",
+            "japanese": "あの店よりこの店は安いです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "コーヒーよりお茶が好きですか。",
-        "english": "Do you like tea more than coffee?",
+        "japanese": "自転車は車より遅いです。",
+        "english": "Bicycles are slower than cars.",
         "vocabulary_slugs": [
-          "koohii",
-          "ocha",
-          "suki"
+          "jitensha",
+          "kuruma",
+          "osoi"
         ],
         "alternates": [
           {
-            "japanese": "お茶がコーヒーより好きですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "お茶はコーヒーより好きですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたはコーヒーよりお茶が好きですか。",
+            "japanese": "車より自転車は遅いです。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "母は私より早く起きます。",
-        "english": "My mother gets up earlier than me.",
+        "japanese": "母は私より早く家を出ます。",
+        "english": "My mother leaves home earlier than I do.",
         "vocabulary_slugs": [
           "haha",
           "watashi",
           "hayai-early",
-          "okiru"
+          "ie",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "映画は本より面白いですか。",
+        "english": "Are movies more interesting than books?",
+        "vocabulary_slugs": [
+          "eiga",
+          "hon",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "昨日のパンは今日のパンよりおいしかったです。",
+        "english": "Yesterday's bread was tastier than today's bread.",
+        "vocabulary_slugs": [
+          "kinou",
+          "pan",
+          "kyou",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "うちの子供は私より速く走ります。",
+        "english": "My child runs faster than I do.",
+        "vocabulary_slugs": [
+          "uchi",
+          "kodomo-v",
+          "watashi",
+          "hayai-fast",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "図書館は駅より近いです。",
+        "english": "The library is closer than the station.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "eki",
+          "chikai"
         ],
         "alternates": [
           {
-            "japanese": "私より母が早く起きます。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "母が私より早く起きます。",
+            "japanese": "駅より図書館は近いです。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "バスは電車より不便ですか。",
+        "english": "Is the bus less convenient than the train?",
+        "vocabulary_slugs": [
+          "basu",
+          "densha",
+          "fuben"
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "sentence_fixes": [
-        {
-          "old": "ひらがなより漢字は難しいです。",
-          "new": "漢字はひらがなより難しいです。",
-          "reason": "B より A は is awkward; the taught order A は B より is natural."
-        },
-        {
-          "old": "あの店よりこの店は安いです。",
-          "new": "この店はあの店より安いです。",
-          "reason": "B より A は is awkward; the taught order A は B より is natural."
-        }
-      ],
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "superlative-ichiban": {
