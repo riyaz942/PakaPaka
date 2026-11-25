@@ -14377,25 +14377,11 @@
     "accepted_meanings": [
       "do in advance",
       "do ahead of time",
+      "prepare by doing",
       "leave as is",
-      "get it done for later",
-      "prepare by doing"
+      "do for later"
     ],
     "sentences": [
-      {
-        "japanese": "部屋を掃除しておく。",
-        "english": "I'll clean the room ahead of time.",
-        "vocabulary_slugs": [
-          "heya",
-          "souji-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "部屋を掃除しとく。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "ビールを買っておく。",
         "english": "I'll buy beer in advance.",
@@ -14421,6 +14407,10 @@
           {
             "japanese": "窓を開けとく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "窓を開けてある。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -14434,99 +14424,6 @@
         "alternates": [
           {
             "japanese": "お金を持っとく。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "試験の前に漢字を覚えておく。",
-        "english": "I'll memorize the kanji before the exam.",
-        "vocabulary_slugs": [
-          "shiken",
-          "mae",
-          "kanji-word",
-          "oboeru"
-        ],
-        "alternates": [
-          {
-            "japanese": "漢字を試験の前に覚えておく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "試験の前に漢字を覚えとく。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "客が来るので、お茶を準備しておく。",
-        "english": "A guest is coming, so I'll get the tea ready.",
-        "vocabulary_slugs": [
-          "kyaku",
-          "kuru-v",
-          "ocha",
-          "junbi-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "客が来るので、お茶を準備しとく。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "ホテルを予約しておく？",
-        "english": "Shall I book the hotel in advance?",
-        "vocabulary_slugs": [
-          "hoteru",
-          "yoyaku-suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "ホテルを予約しとく？",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "財布をかばんに入れておくから、忘れない。",
-        "english": "I'll put my wallet in my bag now, so I won't forget it.",
-        "vocabulary_slugs": [
-          "saifu",
-          "wasureru",
-          "kaban",
-          "ireru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "財布をかばんに入れとくから、忘れない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "かばんに財布を入れておくから、忘れない。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "皿は台所に置いとく。",
-        "english": "I'll leave the plates in the kitchen.",
-        "vocabulary_slugs": [
-          "sara",
-          "daidokoro",
-          "oku"
-        ],
-        "alternates": [
-          {
-            "japanese": "皿は台所に置いておく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "皿を台所に置いておく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "皿を台所に置いとく。",
             "kind": "valid"
           }
         ]
@@ -14546,41 +14443,123 @@
             "kind": "valid"
           }
         ]
+      },
+      {
+        "japanese": "友達が来るので、部屋をきれいにしておく。",
+        "english": "A friend is coming, so I'll tidy the room ahead of time.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kuru-v",
+          "heya",
+          "kirei",
+          "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "友達が来るので、部屋をきれいにしとく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "会議の前に、書類を並べておく。",
+        "english": "I'll lay out the documents before the meeting.",
+        "vocabulary_slugs": [
+          "kaigi",
+          "mae",
+          "shorui",
+          "naraberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "書類を会議の前に並べておく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "父がいないので、晩ご飯を作っておく。",
+        "english": "Dad isn't home, so I'll make dinner ahead of time.",
+        "vocabulary_slugs": [
+          "chichi",
+          "iru-exist",
+          "bangohan",
+          "tsukuru"
+        ],
+        "alternates": [
+          {
+            "japanese": "父がいないので、晩ご飯を作っとく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "母が言ったので、野菜を洗っておく。",
+        "english": "Mom asked, so I'll wash the vegetables ahead of time.",
+        "vocabulary_slugs": [
+          "haha",
+          "iu-v",
+          "yasai",
+          "arau"
+        ],
+        "alternates": [
+          {
+            "japanese": "母が言ったので、野菜を洗っとく。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "切符を駅で買っておく？",
+        "english": "Shall we buy the tickets at the station in advance?",
+        "vocabulary_slugs": [
+          "kippu",
+          "eki",
+          "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "駅で切符を買っておく？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "切符を駅で買っとく？",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "旅行の前に、地図を見ておく？",
+        "english": "Do you want to look at the map before the trip?",
+        "vocabulary_slugs": [
+          "ryokou",
+          "mae",
+          "chizu",
+          "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "地図を旅行の前に見ておく？",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "teshimau": {
     "accepted_meanings": [
       "end up doing",
-      "finish doing",
       "do completely",
+      "finish doing",
       "accidentally do",
       "do (with regret)"
     ],
     "sentences": [
-      {
-        "japanese": "宿題を忘れてしまう。",
-        "english": "I'll end up forgetting the homework.",
-        "vocabulary_slugs": [
-          "shukudai",
-          "wasureru"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は宿題を忘れてしまう。",
-            "kind": "valid"
-          }
-        ]
-      },
       {
         "japanese": "お菓子を全部食べてしまう。",
         "english": "I'll eat up all the snacks.",
@@ -14591,53 +14570,14 @@
         ],
         "alternates": [
           {
-            "japanese": "全部お菓子を食べてしまう。",
+            "japanese": "お菓子を全部食べちゃう。",
             "kind": "valid"
           },
           {
-            "japanese": "私はお菓子を全部食べてしまう。",
+            "japanese": "全部お菓子を食べてしまう。",
             "kind": "valid"
           }
         ]
-      },
-      {
-        "japanese": "財布を無くしてしまう。",
-        "english": "I'll end up losing my wallet.",
-        "vocabulary_slugs": [
-          "saifu",
-          "nakusu"
-        ],
-        "alternates": [
-          {
-            "japanese": "私は財布を無くしてしまう。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "宿題を全部してしまう。",
-        "english": "I'll get all the homework done.",
-        "vocabulary_slugs": [
-          "shukudai",
-          "zenbu",
-          "suru"
-        ],
-        "alternates": [
-          {
-            "japanese": "全部宿題をしてしまう。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "急がなければ、電車に遅れてしまう。",
-        "english": "If I don't hurry, I'll end up missing the train.",
-        "vocabulary_slugs": [
-          "isogu",
-          "densha",
-          "okureru"
-        ],
-        "alternates": []
       },
       {
         "japanese": "あの話、彼女に言ってしまう？",
@@ -14650,11 +14590,7 @@
         ],
         "alternates": [
           {
-            "japanese": "あの話を彼女に言ってしまう？",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼女にあの話を言ってしまう？",
+            "japanese": "あの話、彼女に言っちゃう？",
             "kind": "valid"
           }
         ]
@@ -14671,15 +14607,7 @@
         ],
         "alternates": [
           {
-            "japanese": "犬が私が作った料理を食べてしまう。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私の作った料理を、犬が食べてしまう。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "犬が私の作った料理を食べてしまう。",
+            "japanese": "私が作った料理を、犬が食べちゃう。",
             "kind": "valid"
           }
         ]
@@ -14693,7 +14621,7 @@
         ],
         "alternates": [
           {
-            "japanese": "私は電車で寝てしまう。",
+            "japanese": "電車で寝ちゃう。",
             "kind": "valid"
           }
         ]
@@ -14709,14 +14637,6 @@
           {
             "japanese": "鍵を無くしてしまう。",
             "kind": "valid"
-          },
-          {
-            "japanese": "私は鍵を無くしちゃう。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は鍵を無くしてしまう。",
-            "kind": "valid"
           }
         ]
       },
@@ -14731,7 +14651,69 @@
         ],
         "alternates": [
           {
-            "japanese": "私はその話を聞いて、泣いてしまう。",
+            "japanese": "その話を聞いて、泣いちゃう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "傘をタクシーに忘れてしまう。",
+        "english": "I end up leaving my umbrella in the taxi.",
+        "vocabulary_slugs": [
+          "kasa",
+          "takushii",
+          "wasureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "タクシーに傘を忘れてしまう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "傘をタクシーに忘れちゃう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "雨で服が濡れてしまう。",
+        "english": "My clothes are going to get soaked in the rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "fuku",
+          "nureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨で服が濡れちゃう。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "面白い本なので、すぐ読んじゃう。",
+        "english": "It's a fun book, so I'll get through it in no time.",
+        "vocabulary_slugs": [
+          "omoshiroi",
+          "hon",
+          "sugu",
+          "yomu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "誰もいないので、大きい声で歌ってしまう。",
+        "english": "Nobody's around, so I end up singing at the top of my voice.",
+        "vocabulary_slugs": [
+          "dare",
+          "iru-exist",
+          "ookii",
+          "koe",
+          "utau"
+        ],
+        "alternates": [
+          {
+            "japanese": "誰もいないので、大きい声で歌っちゃう。",
             "kind": "valid"
           }
         ]
@@ -14740,11 +14722,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "teiku-tekuru": {
@@ -14752,9 +14730,9 @@
       "go on doing",
       "come to do",
       "start to",
-      "keep changing",
       "gradually become",
-      "go and do / come and do"
+      "do and come",
+      "do and go"
     ],
     "sentences": [
       {
@@ -14768,22 +14746,6 @@
         "alternates": [
           {
             "japanese": "友達がこちらに歩いてくる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達はこちらへ歩いてくる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "友達はこちらに歩いてくる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "こちらへ友達が歩いてくる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "こちらに友達が歩いてくる。",
             "kind": "valid"
           }
         ]
@@ -14804,23 +14766,14 @@
         ]
       },
       {
-        "japanese": "犬が公園から走ってくる。",
-        "english": "The dog comes running out of the park.",
+        "japanese": "犬が庭から走ってくる。",
+        "english": "The dog comes running in from the yard.",
         "vocabulary_slugs": [
           "inu",
-          "kouen",
+          "niwa",
           "hashiru"
         ],
-        "alternates": [
-          {
-            "japanese": "公園から犬が走ってくる。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "犬は公園から走ってくる。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "天気がだんだん暖かくなってくる。",
@@ -14835,10 +14788,6 @@
           {
             "japanese": "だんだん天気が暖かくなってくる。",
             "kind": "valid"
-          },
-          {
-            "japanese": "天気はだんだん暖かくなってくる。",
-            "kind": "valid"
           }
         ]
       },
@@ -14851,12 +14800,7 @@
           "ookii",
           "naru-become"
         ],
-        "alternates": [
-          {
-            "japanese": "これから子供は大きくなっていく。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "彼は毎晩遅く帰ってくる。",
@@ -14867,12 +14811,7 @@
           "osoi",
           "kaeru-v"
         ],
-        "alternates": [
-          {
-            "japanese": "毎晩彼は遅く帰ってくる。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "母が作った弁当を持っていく。",
@@ -14883,24 +14822,7 @@
           "bentou",
           "motsu"
         ],
-        "alternates": [
-          {
-            "japanese": "母の作った弁当を持っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "母が作ったお弁当を持っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "母の作ったお弁当を持っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は母が作った弁当を持っていく。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "コンビニで何か買ってくる？",
@@ -14910,12 +14832,7 @@
           "nani",
           "kau-v"
         ],
-        "alternates": [
-          {
-            "japanese": "何かコンビニで買ってくる？",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "雨が降ってくるので、窓を開けない。",
@@ -14941,22 +14858,6 @@
           {
             "japanese": "鳥が山の方に帰っていく。",
             "kind": "valid"
-          },
-          {
-            "japanese": "鳥は山の方へ帰っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "鳥は山の方に帰っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "山の方へ鳥が帰っていく。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "山の方に鳥が帰っていく。",
-            "kind": "valid"
           }
         ]
       }
@@ -14964,20 +14865,15 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "temo": {
     "accepted_meanings": [
       "even if",
       "even though",
-      "no matter",
       "even when",
-      "although"
+      "no matter how"
     ],
     "sentences": [
       {
@@ -14988,7 +14884,12 @@
           "kyou",
           "yasumu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日は元気でも、休む。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "高くても、あの時計を買う。",
@@ -15014,28 +14915,18 @@
           "furu-rain",
           "iku-v"
         ],
-        "alternates": [
-          {
-            "japanese": "雨が降っても、私は行きます。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
-        "japanese": "毎日練習しても、上手にならない。",
-        "english": "Even if I practice every day, I don't get any better.",
+        "japanese": "毎日勉強しても、上手にならない。",
+        "english": "Even if I study every day, I don't get any better.",
         "vocabulary_slugs": [
           "mainichi",
-          "renshuu-suru",
+          "benkyou-suru",
           "jouzu",
           "naru-become"
         ],
-        "alternates": [
-          {
-            "japanese": "毎日練習をしても、上手にならない。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "薬を飲んでも、治らなかった。",
@@ -15054,12 +14945,7 @@
           "samui",
           "oyogu"
         ],
-        "alternates": [
-          {
-            "japanese": "あなたは寒くても泳ぎますか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "安くても、まずい物は買わない。",
@@ -15070,16 +14956,7 @@
           "mono",
           "kau-v"
         ],
-        "alternates": [
-          {
-            "japanese": "まずい物は安くても買わない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "安くても、まずい物を買わない。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "先生に叱られても、彼は笑っている。",
@@ -15093,7 +14970,7 @@
         ],
         "alternates": [
           {
-            "japanese": "彼は先生に叱られても笑っている。",
+            "japanese": "彼は先生に叱られても、笑っている。",
             "kind": "valid"
           }
         ]
@@ -15108,15 +14985,7 @@
         ],
         "alternates": [
           {
-            "japanese": "電話をしても、彼女は出ない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼女に電話しても、出ない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "彼女に電話をしても、出ない。",
+            "japanese": "彼女は電話しても出ない。",
             "kind": "valid"
           }
         ]
@@ -15129,26 +14998,13 @@
           "terebi",
           "miru-v"
         ],
-        "alternates": [
-          {
-            "japanese": "暇でも、テレビを見ない。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "私は暇でも、テレビは見ない。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "souni-naru": {
