@@ -24,19 +24,19 @@
     }
   },
   "wo": {
-    "mnemonic_text": "Kaa the crow breathes one puff of flame at a single rice ball on Koichi's shelf. Koichi yells \"<reading>Whoa!</reading>\": that rice ball is <grammar>the thing the action hits</grammar>. ご飯<reading>を</reading>食べる。",
+    "mnemonic_text": "Kaa the crow breathes one puff of flame at a single rice ball on Koichi's shelf. Koichi yells \"<reading>Whoa!</reading>\": that rice ball is <grammar>the thing the action hits</grammar>. これ<reading>を</reading>食べる。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ga": {
-    "mnemonic_text": "At Grandma Kane's shrine the enormous bell rings by itself. Chuu the mouse peeks inside, squeaks \"<reading>Gah!</reading> A cat!\" and points at <grammar>who is actually doing it</grammar>. 猫<reading>が</reading>いる。",
+    "mnemonic_text": "At Grandma Kane's shrine the enormous bell rings by itself. Chuu the mouse peeks inside, squeaks \"<reading>Gah!</reading> A cat!\" and points at <grammar>who is actually doing it</grammar>. 誰<reading>が</reading>いますか。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "desu": {
@@ -152,11 +152,11 @@
     }
   },
   "no-nominalizer": {
-    "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. 今帰る<reading>んです</reading>。",
+    "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. 今行く<reading>んです</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ni-direction": {
@@ -232,11 +232,11 @@
     }
   },
   "masen-ka": {
-    "mnemonic_text": "Rain hammers the school gate, and the Mon-Bun twins lean out of a shoebox-sized car toward Sei. They pat the one tiny seat left and call \"<reading>Ma's in car</reading>, hop in?\", a gentle <grammar>won't you come with us?</grammar> 一緒に帰り<reading>ませんか</reading>。",
+    "mnemonic_text": "Rain hammers the school gate, and the Mon-Bun twins lean out of a shoebox-sized car toward Sei. They pat the one tiny seat left and call \"<reading>Ma's in car</reading>, hop in?\", a gentle <grammar>won't you come with us?</grammar> 来<reading>ませんか</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "moraru-ageru-kureru": {

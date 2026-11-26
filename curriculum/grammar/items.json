@@ -8640,9 +8640,9 @@
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Rain hammers the school gate, and the Mon-Bun twins lean out of a shoebox-sized car toward Sei. They pat the one tiny seat left and call \"<reading>Ma's in car</reading>, hop in?\", a gentle <grammar>won't you come with us?</grammar> 一緒に帰り<reading>ませんか</reading>。",
+      "mnemonic_text": "Rain hammers the school gate, and the Mon-Bun twins lean out of a shoebox-sized car toward Sei. They pat the one tiny seat left and call \"<reading>Ma's in car</reading>, hop in?\", a gentle <grammar>won't you come with us?</grammar> {{kuru-v|stem|来}}<reading>ませんか</reading>。",
       "level": 2
     },
     {
@@ -9594,9 +9594,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Kaa the crow breathes one puff of flame at a single rice ball on Koichi's shelf. Koichi yells \"<reading>Whoa!</reading>\": that rice ball is <grammar>the thing the action hits</grammar>. ご飯<reading>を</reading>{{taberu||食べる}}。",
+      "mnemonic_text": "Kaa the crow breathes one puff of flame at a single rice ball on Koichi's shelf. Koichi yells \"<reading>Whoa!</reading>\": that rice ball is <grammar>the thing the action hits</grammar>. {{kore||これ}}<reading>を</reading>{{taberu||食べる}}。",
       "level": 2
     },
     {
@@ -10572,9 +10572,9 @@
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "At Grandma Kane's shrine the enormous bell rings by itself. Chuu the mouse peeks inside, squeaks \"<reading>Gah!</reading> A cat!\" and points at <grammar>who is actually doing it</grammar>. 猫<reading>が</reading>{{iru-exist||いる}}。",
+      "mnemonic_text": "At Grandma Kane's shrine the enormous bell rings by itself. Chuu the mouse peeks inside, squeaks \"<reading>Gah!</reading> A cat!\" and points at <grammar>who is actually doing it</grammar>. {{dare||誰}}<reading>が</reading>{{iru-exist|masu|います}}か。",
       "level": 2
     },
     {
@@ -11810,9 +11810,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. {{ima||今}}帰る<reading>んです</reading>。",
+      "mnemonic_text": "Jin crawls down the school hallway on his knees while Sei stares. He sighs \"I <reading>know</reading>, the thing is, the ceiling is low\", and that is <grammar>the explanation</grammar>. {{ima||今}}{{iku-v||行く}}<reading>んです</reading>。",
       "level": 2
     },
     {
