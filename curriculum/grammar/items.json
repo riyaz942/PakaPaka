@@ -35856,6 +35856,43 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]は帰[かえ]ってもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰って",
+                  "reading": "かえって",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -35991,6 +36028,132 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]はここでご飯[はん]を食[た]べてもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ご飯",
+                  "reading": "ごはん",
+                  "role": "word",
+                  "vocabulary_slug": "gohan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はご飯[はん]をここで食[た]べてもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ご飯",
+                  "reading": "ごはん",
+                  "role": "word",
+                  "vocabulary_slug": "gohan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -36054,6 +36217,40 @@
               "reading": "よ",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "テレビを見[み]てもいいです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "テレビ",
+                  "reading": "テレビ",
+                  "role": "word",
+                  "vocabulary_slug": "terebi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "見て",
+                  "reading": "みて",
+                  "role": "word",
+                  "vocabulary_slug": "miru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -36177,6 +36374,63 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]はこのペンで書[か]いてもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "この",
+                  "reading": "この",
+                  "role": "word",
+                  "vocabulary_slug": "kono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ペン",
+                  "reading": "ペン",
+                  "role": "word",
+                  "vocabulary_slug": "pen",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "書いて",
+                  "reading": "かいて",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -36240,6 +36494,90 @@
               "reading": "か",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "日[にち]曜[よう]日[び]来[き]てもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "日曜日",
+                  "reading": "にちようび",
+                  "role": "word",
+                  "vocabulary_slug": "nichiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来て",
+                  "reading": "きて",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は日[にち]曜[よう]日[び]に来[き]てもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "日曜日",
+                  "reading": "にちようび",
+                  "role": "word",
+                  "vocabulary_slug": "nichiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来て",
+                  "reading": "きて",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -36318,6 +36656,104 @@
               "reading": "よ",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "パンを買[か]いました。食[た]べてもいいです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はパンを買[か]いました。食[た]べてもいいですよ。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "よ",
+                  "reading": "よ",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -36441,6 +36877,177 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "ここで電[でん]話[わ]をしてもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "して",
+                  "reading": "して",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はここで電[でん]話[わ]してもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "して",
+                  "reading": "して",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はここで電[でん]話[わ]をしてもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "して",
+                  "reading": "して",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -36544,11 +37151,111 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]はトイレへ行[い]ってもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "トイレ",
+                  "reading": "トイレ",
+                  "role": "word",
+                  "vocabulary_slug": "toire",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はトイレに行[い]ってもいいですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "トイレ",
+                  "reading": "トイレ",
+                  "role": "word",
+                  "vocabulary_slug": "toire",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
         {
-          "japanese": "今日はタクシーで帰ってもかまいません。",
+          "japanese": "今日はタクシーで帰ってもいいです。",
           "english": "You may go home by taxi today.",
           "sort_order": 8,
           "vocabulary_slugs": [
@@ -36556,7 +37263,7 @@
             "takushii",
             "kaeru-v"
           ],
-          "furigana": "今日[きょう]はタクシーで帰[かえ]ってもかまいません。",
+          "furigana": "今日[きょう]はタクシーで帰[かえ]ってもいいです。",
           "word_spans": [
             {
               "vocabulary_slug": "kyou",
@@ -36578,7 +37285,7 @@
           ],
           "grammar_span": {
             "start": 10,
-            "end": 18
+            "end": 16
           },
           "register": "polite",
           "answer_units": [
@@ -36616,15 +37323,54 @@
               "in_grammar": true
             },
             {
-              "surface": "もかまいません",
-              "reading": "もかまいません",
+              "surface": "もいいです",
+              "reading": "もいいです",
               "role": "other",
               "in_grammar": true
             }
           ],
           "build_alternates": [
             {
-              "furigana": "今日[きょう]はタクシーで帰[かえ]ってもいいです。",
+              "furigana": "今日[きょう]タクシーで帰[かえ]ってもいいです。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "タクシー",
+                  "reading": "タクシー",
+                  "role": "word",
+                  "vocabulary_slug": "takushii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰って",
+                  "reading": "かえって",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "もいいです",
+                  "reading": "もいいです",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "今日[きょう]はタクシーで帰[かえ]ってもいいですよ。",
               "kind": "valid",
               "units": [
                 {
@@ -36665,6 +37411,12 @@
                   "reading": "もいいです",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "よ",
+                  "reading": "よ",
+                  "role": "particle",
+                  "in_grammar": false
                 }
               ]
             }

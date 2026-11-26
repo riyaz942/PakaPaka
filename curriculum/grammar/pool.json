@@ -5431,6 +5431,10 @@
           {
             "japanese": "帰ってもかまいませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は帰ってもいいですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -5446,6 +5450,14 @@
           {
             "japanese": "ご飯をここで食べてもいいですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はここでご飯を食べてもいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はご飯をここで食べてもいいですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -5455,6 +5467,12 @@
         "vocabulary_slugs": [
           "terebi",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビを見てもいいです。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5469,6 +5487,10 @@
           {
             "japanese": "このペンで書いてもかまいませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はこのペンで書いてもいいですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -5478,6 +5500,16 @@
         "vocabulary_slugs": [
           "nichiyoubi",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "日曜日来てもいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は日曜日に来てもいいですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5487,6 +5519,16 @@
           "pan",
           "kau-v",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "パンを買いました。食べてもいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はパンを買いました。食べてもいいですよ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5500,6 +5542,18 @@
         "alternates": [
           {
             "japanese": "ここで電話してもかまいませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ここで電話をしてもいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はここで電話してもいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はここで電話をしてもいいですか。",
             "kind": "valid"
           }
         ]
@@ -5515,11 +5569,19 @@
           {
             "japanese": "トイレに行ってもいいですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はトイレへ行ってもいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はトイレに行ってもいいですか。",
+            "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "今日はタクシーで帰ってもかまいません。",
+        "japanese": "今日はタクシーで帰ってもいいです。",
         "english": "You may go home by taxi today.",
         "vocabulary_slugs": [
           "kyou",
@@ -5528,7 +5590,11 @@
         ],
         "alternates": [
           {
-            "japanese": "今日はタクシーで帰ってもいいです。",
+            "japanese": "今日タクシーで帰ってもいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日はタクシーで帰ってもいいですよ。",
             "kind": "valid"
           }
         ]
@@ -5537,7 +5603,18 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "今日はタクシーで帰ってもかまいません。",
+          "new": "今日はタクシーで帰ってもいいです。",
+          "reason": "Uses てもかまいません, not the taught てもいい; swap in てもいいです, same polite register."
+        }
+      ],
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-wa-ikenai": {
