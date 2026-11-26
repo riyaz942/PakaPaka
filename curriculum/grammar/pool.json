@@ -9590,6 +9590,10 @@
           {
             "japanese": "タクシーがバスより速いです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "バスよりタクシーが速いです。",
+            "kind": "valid"
           }
         ]
       },
@@ -9606,6 +9610,10 @@
           {
             "japanese": "あの店よりこの店は安いです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この店があの店より安いです。",
+            "kind": "valid"
           }
         ]
       },
@@ -9621,6 +9629,10 @@
           {
             "japanese": "車より自転車は遅いです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "自転車が車より遅いです。",
+            "kind": "valid"
           }
         ]
       },
@@ -9633,6 +9645,16 @@
           "hayai-early",
           "ie",
           "deru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "母は家を私より早く出ます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母が私より早く家を出ます。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -9642,6 +9664,12 @@
           "eiga",
           "hon",
           "omoshiroi"
+        ],
+        "alternates": [
+          {
+            "japanese": "映画が本より面白いですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -9652,6 +9680,12 @@
           "pan",
           "kyou",
           "oishii"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日のパンが今日のパンよりおいしかったです。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -9663,6 +9697,12 @@
           "watashi",
           "hayai-fast",
           "hashiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "うちの子供が私より速く走ります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -9677,6 +9717,10 @@
           {
             "japanese": "駅より図書館は近いです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "図書館が駅より近いです。",
+            "kind": "valid"
           }
         ]
       },
@@ -9687,13 +9731,23 @@
           "basu",
           "densha",
           "fuben"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスが電車より不便ですか。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "superlative-ichiban": {
@@ -9767,6 +9821,10 @@
           {
             "japanese": "誰が兄弟の中で一番速いですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄弟の中で一番速いのは誰ですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -9812,6 +9870,10 @@
           {
             "japanese": "私の車はいちばん速くないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私の車は一番速くありません。",
+            "kind": "valid"
           }
         ]
       },
@@ -9823,6 +9885,16 @@
           "naka",
           "nani",
           "kawaii"
+        ],
+        "alternates": [
+          {
+            "japanese": "何が動物の中で一番かわいいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "動物の中で一番かわいいのは何ですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -9853,6 +9925,10 @@
           {
             "japanese": "この中でどれがいちばん甘いですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "どれがこの中で一番甘いですか。",
+            "kind": "valid"
           }
         ]
       }
@@ -9860,7 +9936,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "dou-desu-ka": {
@@ -9938,17 +10018,12 @@
         ]
       },
       {
-        "japanese": "コーヒーはいかがですか。",
+        "japanese": "コーヒーはどうですか。",
         "english": "Would you like some coffee?",
         "vocabulary_slugs": [
           "koohii"
         ],
-        "alternates": [
-          {
-            "japanese": "コーヒーはどうですか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "昨日のテストはどうでしたか。",
@@ -9965,23 +10040,34 @@
         ]
       },
       {
-        "japanese": "旅行はいかがでしたか。",
+        "japanese": "旅行はどうでしたか。",
         "english": "How was your trip?",
         "vocabulary_slugs": [
           "ryokou"
         ],
-        "alternates": [
-          {
-            "japanese": "旅行はどうでしたか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "コーヒーはいかがですか。",
+          "new": "コーヒーはどうですか。",
+          "reason": "the sentence must use どうですか; いかがですか is a different phrase"
+        },
+        {
+          "old": "旅行はいかがでしたか。",
+          "new": "旅行はどうでしたか。",
+          "reason": "the sentence must use どうですか (past: どうでしたか)"
+        }
+      ],
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "darou": {
@@ -10031,6 +10117,12 @@
           "akachan",
           "beddo",
           "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "ベッドに赤ちゃんがいるだろう。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -10104,7 +10196,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kamoshirenai": {
@@ -10493,6 +10589,10 @@
           {
             "japanese": "バスは明日遅いと思います。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は明日はバスが遅いと思います。",
+            "kind": "valid"
           }
         ]
       },
@@ -10532,6 +10632,14 @@
           {
             "japanese": "私は兄はその本を読んだと思います。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄がその本を読んだと思います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は兄がその本を読んだと思います。",
+            "kind": "valid"
           }
         ]
       },
@@ -10548,6 +10656,10 @@
           {
             "japanese": "今、先生は病院にいると思う。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は先生は今、病院にいると思う。",
+            "kind": "valid"
           }
         ]
       }
@@ -10555,7 +10667,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "sugiru": {
