@@ -37587,7 +37587,7 @@
           ]
         },
         {
-          "japanese": "ベッドでパンを食べちゃだめ。",
+          "japanese": "ベッドでパンを食べちゃいけない。",
           "english": "No eating bread in bed.",
           "sort_order": 1,
           "vocabulary_slugs": [
@@ -37595,7 +37595,7 @@
             "pan",
             "taberu"
           ],
-          "furigana": "ベッドでパンを食[た]べちゃだめ。",
+          "furigana": "ベッドでパンを食[た]べちゃいけない。",
           "word_spans": [
             {
               "vocabulary_slug": "beddo",
@@ -37617,7 +37617,7 @@
           ],
           "grammar_span": {
             "start": 9,
-            "end": 13
+            "end": 15
           },
           "register": "plain",
           "answer_units": [
@@ -37655,30 +37655,17 @@
               "in_grammar": true
             },
             {
-              "surface": "だめ",
-              "reading": "だめ",
+              "surface": "いけない",
+              "reading": "いけない",
               "role": "other",
               "in_grammar": true
             }
           ],
           "build_alternates": [
             {
-              "furigana": "パンをベッドで食[た]べちゃだめ。",
+              "furigana": "ベッドでパンを食[た]べてはいけない。",
               "kind": "valid",
               "units": [
-                {
-                  "surface": "パン",
-                  "reading": "パン",
-                  "role": "word",
-                  "vocabulary_slug": "pan",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
                 {
                   "surface": "ベッド",
                   "reading": "ベッド",
@@ -37693,37 +37680,37 @@
                   "in_grammar": false
                 },
                 {
-                  "surface": "食べちゃ",
-                  "reading": "たべちゃ",
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
                   "role": "word",
                   "vocabulary_slug": "taberu",
                   "in_grammar": true
                 },
                 {
-                  "surface": "だめ",
-                  "reading": "だめ",
+                  "surface": "はいけない",
+                  "reading": "はいけない",
                   "role": "other",
                   "in_grammar": true
                 }
               ]
             },
             {
-              "furigana": "ベッドでパンを食[た]べちゃいけない。",
+              "furigana": "パンをベッドで食[た]べちゃいけない。",
               "kind": "valid",
               "units": [
-                {
-                  "surface": "ベッド",
-                  "reading": "ベッド",
-                  "role": "word",
-                  "vocabulary_slug": "beddo",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "で",
-                  "reading": "で",
-                  "role": "particle",
-                  "in_grammar": false
-                },
                 {
                   "surface": "パン",
                   "reading": "パン",
@@ -37734,6 +37721,19 @@
                 {
                   "surface": "を",
                   "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ベッド",
+                  "reading": "ベッド",
+                  "role": "word",
+                  "vocabulary_slug": "beddo",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
                   "role": "particle",
                   "in_grammar": false
                 },
@@ -37747,6 +37747,51 @@
                 {
                   "surface": "いけない",
                   "reading": "いけない",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "パンをベッドで食[た]べてはいけない。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ベッド",
+                  "reading": "ベッド",
+                  "role": "word",
+                  "vocabulary_slug": "beddo",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べて",
+                  "reading": "たべて",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
                   "role": "other",
                   "in_grammar": true
                 }
@@ -38117,6 +38162,144 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "どうして話[はな]してはいけないのですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どうして",
+                  "reading": "どうして",
+                  "role": "word",
+                  "vocabulary_slug": "doushite",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話して",
+                  "reading": "はなして",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "のです",
+                  "reading": "のです",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "どうして私[わたくし]は話[はな]してはいけないんですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どうして",
+                  "reading": "どうして",
+                  "role": "word",
+                  "vocabulary_slug": "doushite",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話して",
+                  "reading": "はなして",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "んです",
+                  "reading": "んです",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]はどうして話[はな]してはいけないんですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どうして",
+                  "reading": "どうして",
+                  "role": "word",
+                  "vocabulary_slug": "doushite",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話して",
+                  "reading": "はなして",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "んです",
+                  "reading": "んです",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -38240,18 +38423,96 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "今日[きょう]会[かい]社[しゃ]へ行[い]ってはいけません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "会社",
+                  "reading": "かいしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "kaisha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけません",
+                  "reading": "はいけません",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "今日[きょう]会[かい]社[しゃ]に行[い]ってはいけません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "会社",
+                  "reading": "かいしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "kaisha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけません",
+                  "reading": "はいけません",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
         {
-          "japanese": "あそこへ行っちゃだめ。",
+          "japanese": "あそこへ行っちゃいけない。",
           "english": "Don't go over there.",
           "sort_order": 7,
           "vocabulary_slugs": [
             "asoko",
             "iku-v"
           ],
-          "furigana": "あそこへ行[い]っちゃだめ。",
+          "furigana": "あそこへ行[い]っちゃいけない。",
           "word_spans": [
             {
               "vocabulary_slug": "asoko",
@@ -38268,7 +38529,7 @@
           ],
           "grammar_span": {
             "start": 6,
-            "end": 10
+            "end": 12
           },
           "register": "plain",
           "answer_units": [
@@ -38293,15 +38554,15 @@
               "in_grammar": true
             },
             {
-              "surface": "だめ",
-              "reading": "だめ",
+              "surface": "いけない",
+              "reading": "いけない",
               "role": "other",
               "in_grammar": true
             }
           ],
           "build_alternates": [
             {
-              "furigana": "あそこに行[い]っちゃだめ。",
+              "furigana": "あそこに行[い]っちゃいけない。",
               "kind": "valid",
               "units": [
                 {
@@ -38325,8 +38586,72 @@
                   "in_grammar": true
                 },
                 {
-                  "surface": "だめ",
-                  "reading": "だめ",
+                  "surface": "いけない",
+                  "reading": "いけない",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あそこへ行[い]ってはいけない。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あそこ",
+                  "reading": "あそこ",
+                  "role": "word",
+                  "vocabulary_slug": "asoko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あそこに行[い]ってはいけない。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あそこ",
+                  "reading": "あそこ",
+                  "role": "word",
+                  "vocabulary_slug": "asoko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行って",
+                  "reading": "いって",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
                   "role": "other",
                   "in_grammar": true
                 }
@@ -38335,7 +38660,7 @@
           ]
         },
         {
-          "japanese": "そのかばんを買っちゃだめ。",
+          "japanese": "そのかばんを買っちゃいけない。",
           "english": "Don't buy that bag.",
           "sort_order": 8,
           "vocabulary_slugs": [
@@ -38343,7 +38668,7 @@
             "kaban",
             "kau-v"
           ],
-          "furigana": "そのかばんを買[か]っちゃだめ。",
+          "furigana": "そのかばんを買[か]っちゃいけない。",
           "word_spans": [
             {
               "vocabulary_slug": "sono",
@@ -38365,7 +38690,7 @@
           ],
           "grammar_span": {
             "start": 8,
-            "end": 12
+            "end": 14
           },
           "register": "plain",
           "answer_units": [
@@ -38397,10 +38722,51 @@
               "in_grammar": true
             },
             {
-              "surface": "だめ",
-              "reading": "だめ",
+              "surface": "いけない",
+              "reading": "いけない",
               "role": "other",
               "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "そのかばんを買[か]ってはいけない。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "その",
+                  "reading": "その",
+                  "role": "word",
+                  "vocabulary_slug": "sono",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "かばん",
+                  "reading": "かばん",
+                  "role": "word",
+                  "vocabulary_slug": "kaban",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買って",
+                  "reading": "かって",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "はいけない",
+                  "reading": "はいけない",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         }

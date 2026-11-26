@@ -5647,6 +5647,20 @@
           "beddo",
           "pan",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "ベッドでパンを食べてはいけない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンをベッドで食べちゃいけない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンをベッドで食べてはいけない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5693,6 +5707,18 @@
           {
             "japanese": "どうして話しちゃいけないんですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "どうして話してはいけないのですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "どうして私は話してはいけないんですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はどうして話してはいけないんですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -5708,6 +5734,14 @@
           {
             "japanese": "今日は会社に行ってはいけません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日会社へ行ってはいけません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日会社に行ってはいけません。",
+            "kind": "valid"
           }
         ]
       },
@@ -5717,6 +5751,20 @@
         "vocabulary_slugs": [
           "asoko",
           "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あそこに行っちゃいけない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこへ行ってはいけない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あそこに行ってはいけない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5726,13 +5774,23 @@
           "sono",
           "kaban",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "そのかばんを買ってはいけない。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "nai-form": {
