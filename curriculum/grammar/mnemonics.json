@@ -344,11 +344,11 @@
     }
   },
   "darou": {
-    "mnemonic_text": "Koichi watches black clouds over the konbini, nods at the umbrella shelf and mutters \"<reading>That row</reading>'s gone by noon\": no proof, but <grammar>probably</grammar>. 明日は雨<reading>だろう</reading>。",
+    "mnemonic_text": "Koichi watches black clouds over the konbini, nods at the umbrella shelf and mutters \"<reading>That row</reading>'s gone by noon\": no proof, but <grammar>probably</grammar>. 明日は風<reading>だろう</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kamoshirenai": {
@@ -360,19 +360,19 @@
     }
   },
   "to-omou": {
-    "mnemonic_text": "The cow in Sei's back row never puts up a hoof. She just chews, frowns at the exam and says \"<reading>Oh, moo</reading>\", her way of saying <grammar>I think that</grammar> it is hard. 試験は難しい<reading>と思う</reading>。",
+    "mnemonic_text": "The cow in Sei's back row never puts up a hoof. She just chews, frowns at the exam and says \"<reading>Oh, moo</reading>\", her way of saying <grammar>I think that</grammar> it is hard. テストは大変だ<reading>と思う</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "to-iu": {
-    "mnemonic_text": "Tiny Sho pulls a dove from one white glove, bows and says \"<reading>To you</reading>, I give Snow!\", and the dove is <grammar>called</grammar> Snow from then on. 雪<reading>という</reading>鳥です。",
+    "mnemonic_text": "Tiny Sho pulls a dove from one white glove, bows and says \"<reading>To you</reading>, I give Snow!\", and the dove is <grammar>called</grammar> Snow from then on. 白<reading>という</reading>動物です。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "adj-na-adverb": {
@@ -392,19 +392,19 @@
     }
   },
   "superlative-ichiban": {
-    "mnemonic_text": "The Mon-Bun rabbit twins argue over who has the most fleas, until Mon points and yells \"<reading>Itchy Bun</reading>!\": Bun scratches hardest, <grammar>number one, the most</grammar>. 彼が<reading>一番</reading>汚い。",
+    "mnemonic_text": "The Mon-Bun rabbit twins argue over who has the most fleas, until Mon points and yells \"<reading>Itchy Bun</reading>!\": Bun scratches hardest, <grammar>number one, the most</grammar>. 彼が<reading>一番</reading>悪い。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "dou-desu-ka": {
-    "mnemonic_text": "Toto the door-to-door turtle turns up at your house with a desk made of bread dough and asks \"<reading>Dough desk, a</reading>ny good?\", meaning <grammar>how about it, how is it?</grammar> この机は<reading>どうですか</reading>。",
+    "mnemonic_text": "Toto the door-to-door turtle turns up at your house with a desk made of bread dough and asks \"<reading>Dough desk, a</reading>ny good?\", meaning <grammar>how about it, how is it?</grammar> このテーブルは<reading>どうですか</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "goro": {
