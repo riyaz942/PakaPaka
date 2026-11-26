@@ -31026,9 +31026,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Jin the giant starts to sit on a park bench where a hedgehog is napping. Chuu the mouse leaps onto his knee and shouts \"<reading>Yo!</reading>\", <grammar>handing him news he did not know</grammar>. 危ないです<reading>よ</reading>。",
+      "mnemonic_text": "Jin the giant starts to sit on a park bench where a hedgehog is napping. Chuu the mouse leaps onto his knee and shouts \"<reading>Yo!</reading>\", <grammar>handing him news he did not know</grammar>. {{koko||ここ}}に{{nani||何}}か{{iru-exist||いる}}<reading>よ</reading>。",
       "level": 5
     },
     {
@@ -32900,9 +32900,9 @@
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Sho the tiny magician tapes the dove to the vanishing hat, squeaking \"<reading>Te</reading>pe!\" as he slaps on each strip, so every trick runs <grammar>and then</grammar> into the next. 家に{{kaeru-v|stem|帰っ}}<reading>て</reading>、寝ます。",
+      "mnemonic_text": "Sho the tiny magician tapes the dove to the vanishing hat, squeaking \"<reading>Te</reading>pe!\" as he slaps on each strip, so every trick runs <grammar>and then</grammar> into the next. {{uchi||うち}}に{{kaeru-v|stem|帰っ}}<reading>て</reading>、{{gohan||ご飯}}を{{taberu|masu|食べます}}。",
       "level": 5
     },
     {
@@ -35715,9 +35715,9 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "At the riverbank, Sei points into the shallows and shouts \"<reading>The eel!</reading>\" It stays in one spot, still wriggling against the current, the swim <grammar>going on right now</grammar>. 猫が寝<reading>ている</reading>。",
+      "mnemonic_text": "At the riverbank, Sei points into the shallows and shouts \"<reading>The eel!</reading>\" It stays in one spot, still wriggling against the current, the swim <grammar>going on right now</grammar>. {{chichi||父}}は{{pan||パン}}を{{taberu|stem|食べ}}<reading>ている</reading>。",
       "level": 5
     },
     {
@@ -38765,9 +38765,9 @@
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Dai the giant baby sits down across the riverbank bridge and frowns at everyone's muddy shoes. He wails \"<reading>Icky, nay!</reading>\": bridge blocked, you <grammar>must not</grammar> cross. {{koko||ここ}}に入っ<reading>てはいけない</reading>。",
+      "mnemonic_text": "Dai the giant baby sits down across the riverbank bridge and frowns at everyone's muddy shoes. He wails \"<reading>Icky, nay!</reading>\": bridge blocked, you <grammar>must not</grammar> cross. {{koko||ここ}}に{{kuru-v|stem|来}}<reading>てはいけない</reading>。",
       "level": 5
     },
     {

@@ -64,11 +64,11 @@
     }
   },
   "te-iru": {
-    "mnemonic_text": "At the riverbank, Sei points into the shallows and shouts \"<reading>The eel!</reading>\" It stays in one spot, still wriggling against the current, the swim <grammar>going on right now</grammar>. 猫が寝<reading>ている</reading>。",
+    "mnemonic_text": "At the riverbank, Sei points into the shallows and shouts \"<reading>The eel!</reading>\" It stays in one spot, still wriggling against the current, the swim <grammar>going on right now</grammar>. 父はパンを食べ<reading>ている</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tai": {
@@ -96,19 +96,19 @@
     }
   },
   "yo-emphasis": {
-    "mnemonic_text": "Jin the giant starts to sit on a park bench where a hedgehog is napping. Chuu the mouse leaps onto his knee and shouts \"<reading>Yo!</reading>\", <grammar>handing him news he did not know</grammar>. 危ないです<reading>よ</reading>。",
+    "mnemonic_text": "Jin the giant starts to sit on a park bench where a hedgehog is napping. Chuu the mouse leaps onto his knee and shouts \"<reading>Yo!</reading>\", <grammar>handing him news he did not know</grammar>. ここに何かいる<reading>よ</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "te-form": {
-    "mnemonic_text": "Sho the tiny magician tapes the dove to the vanishing hat, squeaking \"<reading>Te</reading>pe!\" as he slaps on each strip, so every trick runs <grammar>and then</grammar> into the next. 家に帰っ<reading>て</reading>、寝ます。",
+    "mnemonic_text": "Sho the tiny magician tapes the dove to the vanishing hat, squeaking \"<reading>Te</reading>pe!\" as he slaps on each strip, so every trick runs <grammar>and then</grammar> into the next. うちに帰っ<reading>て</reading>、ご飯を食べます。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "de-location": {
@@ -456,11 +456,11 @@
     }
   },
   "te-wa-ikenai": {
-    "mnemonic_text": "Dai the giant baby sits down across the riverbank bridge and frowns at everyone's muddy shoes. He wails \"<reading>Icky, nay!</reading>\": bridge blocked, you <grammar>must not</grammar> cross. ここに入っ<reading>てはいけない</reading>。",
+    "mnemonic_text": "Dai the giant baby sits down across the riverbank bridge and frowns at everyone's muddy shoes. He wails \"<reading>Icky, nay!</reading>\": bridge blocked, you <grammar>must not</grammar> cross. ここに来<reading>てはいけない</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "te-kara": {
