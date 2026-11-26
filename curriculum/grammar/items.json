@@ -605,10 +605,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "watashi",
-        "gakusei",
-        "kore",
-        "hon"
+        "kore"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -1061,9 +1058,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "kore",
-        "mizu",
-        "sensei"
+        "kore"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -1965,9 +1960,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "kore",
-        "hon",
-        "gakusei"
+        "kore"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -2849,9 +2842,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "watashi",
-        "hon",
-        "nihongo"
+        "anata"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -2909,11 +2900,7 @@
       "accepted_forms": [],
       "example_sentences": [],
       "vocabulary_slugs": [
-        "taberu",
-        "nomu-v",
-        "shiru",
-        "takai-adj",
-        "shizuka"
+        "taberu"
       ],
       "family": "conjugations",
       "read_once": true,
@@ -4127,9 +4114,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "nihongo",
-        "benkyou",
-        "nomu-v"
+        "iku-v",
+        "taberu"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -4989,8 +4975,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "osake",
-        "nomu-v",
         "taberu"
       ],
       "family": "conjugations",
@@ -6123,8 +6107,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "kinou",
-        "eiga",
         "miru-v"
       ],
       "family": "conjugations",
@@ -7180,9 +7162,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "issho-ni",
-        "iku-v",
-        "ocha"
+        "iku-v"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -8616,9 +8596,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "issho-ni",
-        "ocha",
-        "eiga"
+        "iku-v",
+        "miru-v"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -9577,9 +9556,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "mizu",
-        "hon",
-        "gohan"
+        "nani",
+        "sore"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -10555,9 +10533,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "neko",
-        "dare",
-        "okane"
+        "dare"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -11792,9 +11768,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "taberu",
-        "suki",
-        "yomu"
+        "taberu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -12891,9 +12865,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "gakkou-v",
-        "iku-v",
-        "tomodachi"
+        "iku-v"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -14122,7 +14094,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "ie",
         "kaeru-v",
         "iku-v"
       ],
@@ -15372,9 +15343,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "toshokan",
-        "basu",
-        "hashi-chopsticks"
+        "koko",
+        "asoko"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -16833,9 +16803,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "pan",
-        "tamago",
-        "tomodachi"
+        "pan"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -18718,9 +18686,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "yasai",
-        "kudamono",
-        "zasshi"
+        "nomimono",
+        "tabemono"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -19466,8 +19433,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "watashi",
-        "gakusei",
         "kore"
       ],
       "family": "particles",
@@ -20935,9 +20900,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "eki",
-        "aruku",
-        "nihon"
+        "doko",
+        "asa"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -22409,9 +22373,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "eki",
-        "aruku",
-        "gakkou-v"
+        "ashita",
+        "ban"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -23753,9 +23716,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "samui",
-        "isogashii",
-        "takai-adj"
+        "jikan",
+        "kaisha"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -25760,11 +25722,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "jikan",
-        "byouki",
-        "yasui-adj",
-        "furu-rain",
-        "yasumu"
+        "jikan"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -27077,8 +27035,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "tomodachi",
-        "denwa-suru",
         "sensei"
       ],
       "family": "particles",
@@ -29840,9 +29796,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "tenki",
-        "atsui-hot",
-        "oishii"
+        "ashita",
+        "nichiyoubi"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -31030,9 +30985,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "kore",
-        "oishii",
-        "abunai"
+        "kore"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -32905,7 +32858,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "okiru",
         "gohan",
         "taberu"
       ],
@@ -34138,9 +34090,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "chotto",
-        "matsu",
-        "namae"
+        "kaku",
+        "yomu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -35720,10 +35671,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "ima",
-        "benkyou",
-        "furu-rain",
-        "eiga"
+        "ima"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -37425,8 +37373,6 @@
       ],
       "vocabulary_slugs": [
         "koko",
-        "suwaru",
-        "shashin",
         "kaeru-v"
       ],
       "family": "patterns",
@@ -38773,9 +38719,6 @@
       ],
       "vocabulary_slugs": [
         "koko",
-        "shashin",
-        "osake",
-        "jugyou",
         "hanasu-v"
       ],
       "family": "patterns",
@@ -40260,9 +40203,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "gohan",
-        "shukudai",
-        "arau"
+        "gohan"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -41112,8 +41053,7 @@
       ],
       "vocabulary_slugs": [
         "kyou",
-        "iku-v",
-        "niku"
+        "iku-v"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -42051,9 +41991,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "koko",
-        "shinpai-suru",
-        "wasureru"
+        "koko"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -42836,10 +42774,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "benkyou",
-        "kusuri",
         "kaeru-v",
-        "shukudai",
         "iku-v"
       ],
       "family": "patterns",
@@ -43742,10 +43677,7 @@
       ],
       "vocabulary_slugs": [
         "kuru-v",
-        "okane",
-        "isogu",
-        "ashita",
-        "shinpai-suru"
+        "ashita"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -44650,9 +44582,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "kinou",
-        "eiga",
-        "mou"
+        "kinou"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -45521,10 +45451,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "nihon",
-        "iku-v",
-        "eiga",
-        "tama-ni"
+        "iku-v"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -47094,9 +47021,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "shuumatsu",
-        "yomu",
-        "eiga"
+        "yomu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -48810,7 +48735,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "nihon",
         "iku-v",
         "mizu"
       ],
@@ -49968,9 +49892,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "atarashii-adj",
-        "kuruma",
-        "okane"
+        "atarashii-adj"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -51709,7 +51631,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "eiga",
         "kau-v",
         "au"
       ],
@@ -53428,9 +53349,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "neru",
-        "arau",
-        "jugyou"
+        "asagohan",
+        "bangohan"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -55196,9 +55116,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "taberu",
-        "jugyou",
-        "shigoto"
+        "taberu"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -56989,9 +56907,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "kodomo-v",
-        "hima",
-        "shashin"
+        "ie",
+        "kaeru-v"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -58183,9 +58100,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "nihongo",
-        "hanasu-v",
-        "kanji-word"
+        "hanasu-v"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -58982,9 +58897,8 @@
         }
       ],
       "vocabulary_slugs": [
-        "atsui-hot",
-        "takai-adj",
-        "omoshiroi"
+        "oishii",
+        "omoi"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -59783,9 +59697,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "shizuka",
-        "shinsetsu",
-        "benri"
+        "shinsetsu"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -60635,7 +60547,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "hayai-early",
         "ookii",
         "yasui-adj"
       ],
@@ -61495,9 +61406,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "shizuka",
-        "kirei",
-        "genki"
+        "kirei"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -62680,8 +62589,7 @@
       ],
       "vocabulary_slugs": [
         "basu",
-        "kyou",
-        "inu"
+        "kyou"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -64024,9 +63932,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "yasui-adj",
-        "natsu",
-        "suki"
+        "yasui-adj"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -65568,9 +65474,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "ashita",
-        "ame-v",
-        "muzukashii"
+        "ashita"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -68016,7 +67920,6 @@
       ],
       "vocabulary_slugs": [
         "hito",
-        "hana-v",
         "eiga"
       ],
       "family": "patterns",
@@ -68636,7 +68539,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "neru",
         "kusuri",
         "iku-v"
       ],
@@ -69280,7 +69182,6 @@
       ],
       "vocabulary_slugs": [
         "ashita",
-        "atsui-hot",
         "daijoubu",
         "kare",
         "shiru"
@@ -71108,9 +71009,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "mada",
-        "taberu",
-        "shukudai"
+        "taberu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -72549,9 +72448,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "mou",
-        "taberu",
-        "shukudai"
+        "taberu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -74453,7 +74350,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "en-money",
         "mizu",
         "nomu-v"
       ],
@@ -75897,7 +75793,6 @@
       ],
       "vocabulary_slugs": [
         "fun-counter",
-        "en-money",
         "kuru-v"
       ],
       "family": "particles",
@@ -77545,7 +77440,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "okiru",
         "hiru",
         "taberu"
       ],
@@ -79967,8 +79861,7 @@
       ],
       "vocabulary_slugs": [
         "amari",
-        "taberu",
-        "takai-adj"
+        "taberu"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -80680,8 +80573,7 @@
       ],
       "vocabulary_slugs": [
         "ocha",
-        "eiga",
-        "sanpo-suru"
+        "eiga"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -82510,9 +82402,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "samui",
-        "nihongo",
-        "genki"
+        "nihongo"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -83575,10 +83465,7 @@
       ],
       "vocabulary_slugs": [
         "ashita",
-        "yuki",
-        "isogashii",
-        "kare",
-        "takai-adj"
+        "kare"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -84318,8 +84205,7 @@
         "taberu",
         "fuku",
         "nomu-v",
-        "koohii",
-        "hataraku"
+        "koohii"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -90632,7 +90518,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "tomodachi",
         "haha",
         "sensei"
       ],
@@ -92443,7 +92328,6 @@
       ],
       "vocabulary_slugs": [
         "benkyou-suru",
-        "shiken",
         "okane"
       ],
       "family": "connectors",
@@ -93827,9 +93711,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "tenki",
-        "mise",
-        "shiken"
+        "mise"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -94933,8 +94815,7 @@
       ],
       "vocabulary_slugs": [
         "ryouri",
-        "furu-rain",
-        "genki"
+        "furu-rain"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -96224,8 +96105,7 @@
       ],
       "vocabulary_slugs": [
         "jikan",
-        "eki",
-        "shukudai"
+        "eki"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -97354,8 +97234,7 @@
       ],
       "vocabulary_slugs": [
         "okane",
-        "ryokou",
-        "renshuu-suru"
+        "ryokou"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -98416,8 +98295,7 @@
       ],
       "vocabulary_slugs": [
         "hima",
-        "taihen",
-        "issho-ni"
+        "taihen"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -99599,9 +99477,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "nihongo",
-        "kanji-word",
-        "hanaseru"
+        "nihongo"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -100931,8 +100807,7 @@
       ],
       "vocabulary_slugs": [
         "sensei",
-        "oya",
-        "homerareru"
+        "oya"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -104100,9 +103975,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "eki",
-        "matasareru",
-        "zangyou"
+        "eki"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -105166,7 +105039,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "wasureru",
         "kikoeru",
         "okureru"
       ],
@@ -106414,7 +106286,6 @@
       ],
       "vocabulary_slugs": [
         "nihongo",
-        "kanji-word",
         "mainichi"
       ],
       "family": "patterns",
@@ -107570,7 +107441,6 @@
       ],
       "vocabulary_slugs": [
         "isogashii",
-        "saikin",
         "osake"
       ],
       "family": "patterns",
@@ -110649,8 +110519,7 @@
       ],
       "vocabulary_slugs": [
         "ashita",
-        "mise",
-        "shiken"
+        "mise"
       ],
       "family": "copula",
       "accepted_answers": [
@@ -113483,7 +113352,6 @@
       ],
       "vocabulary_slugs": [
         "mado",
-        "kekkon-suru",
         "mise"
       ],
       "family": "conjugations",
@@ -114541,9 +114409,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "e-picture",
-        "mado",
-        "junbi-suru"
+        "mado"
       ],
       "family": "conjugations",
       "accepted_answers": [
@@ -117331,8 +117197,6 @@
         }
       ],
       "vocabulary_slugs": [
-        "shukudai",
-        "saifu",
         "taberu"
       ],
       "family": "conjugations",
@@ -130726,7 +130590,6 @@
       ],
       "vocabulary_slugs": [
         "okureru",
-        "renraku-suru",
         "wakaru"
       ],
       "family": "patterns",
@@ -133322,8 +133185,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "abunai",
-        "yakusoku"
+        "abunai"
       ],
       "family": "connectors",
       "accepted_answers": [
@@ -134338,8 +134200,7 @@
       ],
       "vocabulary_slugs": [
         "nihon",
-        "bunka",
-        "mondai"
+        "bunka"
       ],
       "family": "particles",
       "accepted_answers": [
@@ -138676,7 +138537,6 @@
       ],
       "vocabulary_slugs": [
         "isogashii",
-        "saifu",
         "wasureru"
       ],
       "family": "copula",
@@ -139651,7 +139511,6 @@
       ],
       "vocabulary_slugs": [
         "kutsu",
-        "kanji-word",
         "hon"
       ],
       "family": "patterns",
@@ -140531,7 +140390,6 @@
       ],
       "vocabulary_slugs": [
         "kare",
-        "ganbaru",
         "renshuu-suru"
       ],
       "family": "particles",
@@ -167097,8 +166955,7 @@
       ],
       "vocabulary_slugs": [
         "shiru",
-        "kare",
-        "ganbaru"
+        "kare"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -171789,8 +171646,7 @@
         }
       ],
       "vocabulary_slugs": [
-        "keizai",
-        "kankyou"
+        "keizai"
       ],
       "family": "patterns",
       "accepted_answers": [
@@ -176471,7 +176327,6 @@
       ],
       "vocabulary_slugs": [
         "kare",
-        "kantan-n4",
         "mondai"
       ],
       "family": "copula",

@@ -266,7 +266,7 @@ Today the radical (132) and kanji (184) mnemonic lanes pick the right items by t
 - Consumes: Task 6 tools; Task 3 `content_breaks`.
 - Produces: `grammar_sentences_above_level == 0`, `grammar_points_under_2_readable == 0`, `grammar_points_linked_above_level == 0` in `ladder-report.md`.
 
-- [ ] **Step 1: Relink** each point's `vocabulary_slugs` to words at or below its level (drop a later word; add a same-meaning word at or below the level if the point had only one link).
+- [x] **Step 1: Relink** each point's `vocabulary_slugs` to words at or below its level (drop a later word; add a same-meaning word at or below the level if the point had only one link).
 - [ ] **Step 2: Regenerate pool sentences** that are above level, in batches of 10 levels, with the `grammar-pool.md` prompt and `allowed_vocab_for` (Task 6). Dry-run `check_point` on every draft before ingest (memory: grammar pool span pitfalls). Keep sentences that already pass.
 - [ ] **Step 3: Check the 159 grammar mnemonics** by script (tokenize the Japanese example, compare with `slugs_at_or_below`), regenerate only those that fail, with `grammar-mnemonic.md`.
 - [ ] **Step 4: Remove `--report-pool`** from `generate.py` and CI. Run `generate.py` → exit 0 (pool gate strict again).

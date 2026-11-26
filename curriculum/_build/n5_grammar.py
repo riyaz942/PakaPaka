@@ -37,7 +37,7 @@ N5_GRAMMAR = [
             ex("この水は冷たいです。", "This water is cold.", ["kono", "mizu", "tsumetai"]),
             ex("犬は好きです。", "I like dogs.", ["inu", "suki"]),
         ],
-        "vocabulary_slugs": ["watashi", "gakusei", "kore", "hon"],
+        "vocabulary_slugs": ["kore"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "私＿＿＿学生です。", "english": "I am a student.", "answer": "は", "nudge": "Is 私 doing anything here, or is it what the sentence talks about?"},
@@ -62,7 +62,7 @@ N5_GRAMMAR = [
             ex("学校は近いです。", "The school is nearby.", ["gakkou-v", "chikai"]),
             ex("私は元気です。", "I am fine.", ["watashi", "genki"]),
         ],
-        "vocabulary_slugs": ["kore", "mizu", "sensei"],
+        "vocabulary_slugs": ["kore"],
         "family": "copula",
         "cloze_variants": [
             {"jp_cloze": "これは水＿＿＿。", "english": "This is water.", "answer": "です", "nudge": "The sentence stops dead after 水 — how do you close it politely?"},
@@ -86,7 +86,7 @@ N5_GRAMMAR = [
             ex("あの人は先生じゃないです。", "That person is not a teacher.", ["ano", "hito", "sensei"]),
             ex("私の車ではありません。", "It is not my car.", ["watashi", "kuruma"]),
         ],
-        "vocabulary_slugs": ["kore", "hon", "gakusei"],
+        "vocabulary_slugs": ["kore"],
         "family": "copula",
         "cloze_variants": [
             {"jp_cloze": "これは水＿＿＿。", "english": "This is not water.", "answer": "じゃないです", "nudge": "Whatever is in the glass, it isn't 水 — say so in everyday polite speech."},
@@ -104,7 +104,7 @@ N5_GRAMMAR = [
         "conjugation_rules": {},
         "accepted_forms": [],
         "examples": [],
-        "vocabulary_slugs": ["taberu", "nomu-v", "shiru", "takai-adj", "shizuka"],
+        "vocabulary_slugs": ["taberu"],
         "family": "conjugations",
         # Read once, never reviewed: no pool, no Read/Build cards.
         "read_once": True,
@@ -124,7 +124,7 @@ N5_GRAMMAR = [
             ex("音楽を聞きます。", "I listen to music.", ["ongaku", "kiku-v"]),
             ex("朝ご飯を食べます。", "I eat breakfast.", ["asagohan", "taberu"]),
         ],
-        "vocabulary_slugs": ["nihongo", "benkyou", "nomu-v"],
+        "vocabulary_slugs": ["iku-v", "taberu"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "私はパンを食べ＿＿＿。", "english": "I eat bread.", "answer": "ます", "nudge": "A plain habit, stated courteously in the present."},
@@ -148,7 +148,7 @@ N5_GRAMMAR = [
             ex("テレビを見ません。", "I don't watch TV.", ["terebi", "miru-v"]),
             ex("彼は来ません。", "He is not coming.", ["kare", "kuru-v"]),
         ],
-        "vocabulary_slugs": ["osake", "nomu-v", "taberu"],
+        "vocabulary_slugs": ["taberu"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "今日、学校に行き＿＿＿。", "english": "I will not go to school today.", "answer": "ません", "nudge": "School is off today — refuse it courteously."},
@@ -172,7 +172,7 @@ N5_GRAMMAR = [
             ex("手紙を書きました。", "I wrote a letter.", ["tegami", "kaku"]),
             ex("駅まで歩きました。", "I walked to the station.", ["eki", "aruku"]),
         ],
-        "vocabulary_slugs": ["kinou", "eiga", "miru-v"],
+        "vocabulary_slugs": ["miru-v"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "昨日、本を読み＿＿＿。", "english": "Yesterday, I read a book.", "answer": "ました", "nudge": "昨日 is over and done; close it courteously."},
@@ -197,7 +197,7 @@ N5_GRAMMAR = [
             ex("写真を撮りましょうか。", "Shall I take a photo?", ["shashin"]),
             ex("映画を見ましょう。", "Let's watch a movie.", ["eiga", "miru-v"]),
         ],
-        "vocabulary_slugs": ["issho-ni", "iku-v", "ocha"],
+        "vocabulary_slugs": ["iku-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "一緒にご飯を食べ＿＿＿。", "english": "Let's eat a meal together.", "answer": "ましょう", "nudge": "You're proposing the meal for both of you."},
@@ -220,7 +220,7 @@ N5_GRAMMAR = [
             ex("映画を見ませんか。", "Would you like to see a movie?", ["eiga", "miru-v"]),
             ex("公園へ行きませんか。", "Shall we go to the park?", ["kouen", "iku-v"]),
         ],
-        "vocabulary_slugs": ["issho-ni", "ocha", "eiga"],
+        "vocabulary_slugs": ["iku-v", "miru-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "一緒に映画を見＿＿＿。", "english": "Won't you watch a movie with me?", "answer": "ませんか", "nudge": "You're inviting them along, phrased as a gentle denial."},
@@ -244,7 +244,7 @@ N5_GRAMMAR = [
             ex("音楽を聞きます。", "I listen to music.", ["ongaku", "kiku-v"]),
             ex("手紙を書きます。", "I write a letter.", ["tegami", "kaku"]),
         ],
-        "vocabulary_slugs": ["mizu", "hon", "gohan"],
+        "vocabulary_slugs": ["nani", "sore"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "水＿＿＿飲みます。", "english": "I drink water.", "answer": "を", "nudge": "水 isn't drinking anything — it's what gets drunk."},
@@ -268,7 +268,7 @@ N5_GRAMMAR = [
             ex("私は犬が好きです。", "I like dogs.", ["watashi", "inu", "suki"]),
             ex("時間がありません。", "There is no time.", ["jikan", "aru"]),
         ],
-        "vocabulary_slugs": ["neko", "dare", "okane"],
+        "vocabulary_slugs": ["dare"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "猫＿＿＿います。", "english": "There is a cat.", "answer": "が", "nudge": "Nothing has been introduced yet — 猫 is brand-new here."},
@@ -292,7 +292,7 @@ N5_GRAMMAR = [
             ex("学校の近くです。", "It's near the school.", ["gakkou-v", "chikaku"]),
             ex("これは母の傘です。", "This is my mother's umbrella.", ["kore", "haha", "kasa"]),
         ],
-        "vocabulary_slugs": ["watashi", "hon", "nihongo"],
+        "vocabulary_slugs": ["anata"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "それは私＿＿＿本です。", "english": "That is my book.", "answer": "の", "nudge": "The book belongs to 私."},
@@ -315,7 +315,7 @@ N5_GRAMMAR = [
             ex("どうして行かないんですか。", "Why aren't you going?", ["iku-v"]),
             ex("頭が痛いんです。", "It's that my head hurts.", ["atama"]),
         ],
-        "vocabulary_slugs": ["taberu", "suki", "yomu"],
+        "vocabulary_slugs": ["taberu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "帰る＿＿＿か。", "english": "Are you going home?", "answer": "んです", "nudge": "You're asking for the story behind the leaving, politely."},
@@ -339,7 +339,7 @@ N5_GRAMMAR = [
             ex("彼は家に帰ります。", "He returns home.", ["kare", "ie", "kaeru-v"]),
             ex("先生に聞きます。", "I ask the teacher.", ["sensei", "kiku-v"]),
         ],
-        "vocabulary_slugs": ["gakkou-v", "iku-v", "tomodachi"],
+        "vocabulary_slugs": ["iku-v"],
         "family": "particles",
         "uses": [
             {
@@ -382,7 +382,7 @@ N5_GRAMMAR = [
             ex("学校へ来ました。", "I came to school.", ["gakkou-v", "kuru-v"]),
             ex("海へ行きたいです。", "I want to go to the sea.", ["umi", "iku-v"]),
         ],
-        "vocabulary_slugs": ["ie", "kaeru-v", "iku-v"],
+        "vocabulary_slugs": ["kaeru-v", "iku-v"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "私は公園＿＿＿行きます。", "english": "I am heading to the park.", "answer": "へ", "nudge": "公園 is the destination you're aimed at."},
@@ -405,7 +405,7 @@ N5_GRAMMAR = [
             ex("家で本を読みます。", "I read a book at home.", ["ie", "hon", "yomu"]),
             ex("駅で待ちます。", "I'll wait at the station.", ["eki", "matsu"]),
         ],
-        "vocabulary_slugs": ["toshokan", "basu", "hashi-chopsticks"],
+        "vocabulary_slugs": ["koko", "asoko"],
         "family": "particles",
         "uses": [
             {
@@ -442,7 +442,7 @@ N5_GRAMMAR = [
             ex("犬と猫がいます。", "There are a dog and a cat.", ["inu", "neko", "iru-exist"]),
             ex("先生と話します。", "I talk with the teacher.", ["sensei", "hanasu-v"]),
         ],
-        "vocabulary_slugs": ["pan", "tamago", "tomodachi"],
+        "vocabulary_slugs": ["pan"],
         "family": "particles",
         "uses": [
             {
@@ -478,7 +478,7 @@ N5_GRAMMAR = [
             ex("本や雑誌を読みます。", "I read books, magazines, etc.", ["hon", "zasshi", "yomu"]),
             ex("犬や猫が好きです。", "I like dogs, cats, and such.", ["inu", "neko", "suki"]),
         ],
-        "vocabulary_slugs": ["yasai", "kudamono", "zasshi"],
+        "vocabulary_slugs": ["nomimono", "tabemono"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "本＿＿＿雑誌を読みます。", "english": "I read books, magazines, things like that.", "answer": "や", "nudge": "Books plus magazines are examples, not the full list."},
@@ -501,7 +501,7 @@ N5_GRAMMAR = [
             ex("彼も来ます。", "He is coming as well.", ["kare", "kuru-v"]),
             ex("水も飲みます。", "I drink water too.", ["mizu", "nomu-v"]),
         ],
-        "vocabulary_slugs": ["watashi", "gakusei", "kore"],
+        "vocabulary_slugs": ["kore"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "私＿＿＿学生です。", "english": "I am a student too.", "answer": "も", "nudge": "Someone just said they're a student, and 私 joins them."},
@@ -524,7 +524,7 @@ N5_GRAMMAR = [
             ex("日本から来ました。", "I came from Japan.", ["nihon", "kuru-v"]),
             ex("朝から雨です。", "It's been raining since morning.", ["asa", "ame-v"]),
         ],
-        "vocabulary_slugs": ["eki", "aruku", "nihon"],
+        "vocabulary_slugs": ["doko", "asa"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "どこ＿＿＿来ましたか。", "english": "Where did you come from?", "answer": "から", "nudge": "You're asking about the origin of the journey."},
@@ -547,7 +547,7 @@ N5_GRAMMAR = [
             ex("ここから学校まで近いです。", "It's near from here to school.", ["gakkou-v", "chikai"]),
             ex("夜まで勉強しました。", "I studied until night.", ["yoru", "benkyou"]),
         ],
-        "vocabulary_slugs": ["eki", "aruku", "gakkou-v"],
+        "vocabulary_slugs": ["ashita", "ban"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "昼＿＿＿待ちます。", "english": "I will wait until noon.", "answer": "まで", "nudge": "Noon is the cut-off for the waiting."},
@@ -570,7 +570,7 @@ N5_GRAMMAR = [
             ex("高いから、買いません。", "I won't buy it because it's expensive.", ["takai-adj", "kau-v"]),
             ex("雨だから、家にいます。", "Because it's raining, I'll stay home.", ["ame-v", "ie"]),
         ],
-        "vocabulary_slugs": ["samui", "isogashii", "takai-adj"],
+        "vocabulary_slugs": ["jikan", "kaisha"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "私は学生＿＿＿。", "english": "Because I'm a student.", "answer": "ですから", "nudge": "This clause is the justification, stated politely on its own."},
@@ -598,7 +598,7 @@ N5_GRAMMAR = [
             ex("休みなので、家にいます。", "Since it's a day off, I'm staying home.", ["yasumu", "ie"]),
             ex("安いので、これを買います。", "Since it's cheap, I'll buy this.", ["yasui-adj", "kau-v"]),
         ],
-        "vocabulary_slugs": ["jikan", "byouki", "yasui-adj", "furu-rain", "yasumu"],
+        "vocabulary_slugs": ["jikan"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "これは安い＿＿＿、これにします。", "english": "This one's cheap, so I'll go with this one.", "answer": "ので", "nudge": "The low price is the grounds for the choice, stated gently."},
@@ -622,7 +622,7 @@ N5_GRAMMAR = [
             ex("母に手紙を書きます。", "I write a letter to my mother.", ["haha", "tegami", "kaku"]),
             ex("彼にあげます。", "I'll give it to him.", ["kare", "ageru"]),
         ],
-        "vocabulary_slugs": ["tomodachi", "denwa-suru", "sensei"],
+        "vocabulary_slugs": ["sensei"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "友達＿＿＿電話する", "english": "I will call a friend.", "answer": "に", "nudge": "友達 is the one on the other end of the call."},
@@ -669,7 +669,7 @@ N5_GRAMMAR = [
             ex("おいしいですね。", "It's delicious, isn't it?", ["oishii"]),
             ex("そうですね。", "That's right, isn't it.", []),
         ],
-        "vocabulary_slugs": ["tenki", "atsui-hot", "oishii"],
+        "vocabulary_slugs": ["ashita", "nichiyoubi"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "このコーヒーはおいしいです＿＿＿。", "english": "This coffee is delicious, isn't it?", "answer": "ね", "nudge": "You expect them to taste it the same way."},
@@ -691,7 +691,7 @@ N5_GRAMMAR = [
             ex("もう遅いよ。", "It's already late, you know.", ["mou", "osoi"]),
             ex("危ないよ。", "That's dangerous!", ["abunai"]),
         ],
-        "vocabulary_slugs": ["kore", "oishii", "abunai"],
+        "vocabulary_slugs": ["kore"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "これ、安いです＿＿＿。", "english": "This one is cheap, you know.", "answer": "よ", "nudge": "You're telling them something they didn't know."},
@@ -714,7 +714,7 @@ N5_GRAMMAR = [
             ex("本を読んで、寝ます。", "I read a book and sleep.", ["hon", "yomu", "neru"]),
             ex("駅へ行って、電車に乗ります。", "I go to the station and board the train.", ["eki", "iku-v", "noru"]),
         ],
-        "vocabulary_slugs": ["okiru", "gohan", "taberu"],
+        "vocabulary_slugs": ["gohan", "taberu"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "起き＿＿＿、朝ご飯を食べます。", "english": "I wake up and eat breakfast.", "answer": "て", "nudge": "The waking hands off to the eating."},
@@ -738,7 +738,7 @@ N5_GRAMMAR = [
             ex("名前を書いてください。", "Please write your name.", ["namae", "kaku"]),
             ex("もう一度言ってください。", "Please say it once more.", ["iu-v"]),
         ],
-        "vocabulary_slugs": ["chotto", "matsu", "namae"],
+        "vocabulary_slugs": ["kaku", "yomu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "口を開け＿＿＿。", "english": "Open your mouth.", "answer": "てください", "nudge": "A polite instruction to open up."},
@@ -764,7 +764,7 @@ N5_GRAMMAR = [
             ex("彼は宿題をしています。", "He's doing homework.", ["kare", "shukudai"]),
             ex("音楽を聞いています。", "I'm listening to music.", ["ongaku"]),
         ],
-        "vocabulary_slugs": ["ima", "benkyou", "furu-rain", "eiga"],
+        "vocabulary_slugs": ["ima"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "朝ご飯を食べ＿＿＿。", "english": "I am eating breakfast.", "answer": "ています", "nudge": "The meal is happening as you speak, politely reported."},
@@ -789,7 +789,7 @@ N5_GRAMMAR = [
             ex("写真を撮ってもいいですか。", "May I take a photo?", ["shashin"]),
             ex("先に帰ってもいいです。", "It's fine if you go home first.", ["kaeru-v"]),
         ],
-        "vocabulary_slugs": ["koko", "suwaru", "shashin", "kaeru-v"],
+        "vocabulary_slugs": ["koko", "kaeru-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "ここでご飯を食べ＿＿＿ですか。", "english": "Is it fine if I eat here?", "answer": "てもいい", "nudge": "You're asking whether eating here is allowed."},
@@ -818,7 +818,7 @@ N5_GRAMMAR = [
             ex("授業中に話してはいけません。", "You must not talk during class.", ["jugyou", "hanasu-v"]),
             ex("うそをついてはいけません。", "You must not lie.", []),
         ],
-        "vocabulary_slugs": ["koko", "shashin", "osake", "jugyou", "hanasu-v"],
+        "vocabulary_slugs": ["koko", "hanasu-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "ここで電話を使っ＿＿＿。", "english": "You are forbidden to use the phone here.", "answer": "てはいけません", "nudge": "Phones are banned here, stated formally."},
@@ -844,7 +844,7 @@ N5_GRAMMAR = [
             ex("宿題をしてから、遊びます。", "I play after doing homework.", ["shukudai", "asobu"]),
             ex("手を洗ってから、食べます。", "I eat after washing my hands.", ["te-v", "arau", "taberu"]),
         ],
-        "vocabulary_slugs": ["gohan", "shukudai", "arau"],
+        "vocabulary_slugs": ["gohan"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "手を洗っ＿＿＿、ご飯を食べます。", "english": "I will eat once I have washed my hands.", "answer": "てから", "nudge": "The washing must finish first; only then the meal."},
@@ -866,7 +866,7 @@ N5_GRAMMAR = [
             ex("お金がない。", "I have no money.", ["okane"]),
             ex("彼は来なかった。", "He didn't come.", ["kare", "kuru-v"]),
         ],
-        "vocabulary_slugs": ["kyou", "iku-v", "niku"],
+        "vocabulary_slugs": ["kyou", "iku-v"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "肉を食べ＿＿＿。", "english": "I don't eat meat.", "answer": "ない", "nudge": "肉 is off the table, said casually."},
@@ -888,7 +888,7 @@ N5_GRAMMAR = [
             ex("心配しないでください。", "Please don't worry.", ["shinpai-suru"]),
             ex("忘れないでください。", "Please don't forget.", ["wasureru"]),
         ],
-        "vocabulary_slugs": ["koko", "shinpai-suru", "wasureru"],
+        "vocabulary_slugs": ["koko"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "窓を開け＿＿＿。", "english": "Please don't open the window.", "answer": "ないでください", "nudge": "Ask them to leave the window shut, politely."},
@@ -912,7 +912,7 @@ N5_GRAMMAR = [
             ex("宿題をしなければなりません。", "I must do my homework.", ["shukudai"]),
             ex("九時までに行かなければなりません。", "I have to go by nine o'clock.", ["iku-v"]),
         ],
-        "vocabulary_slugs": ["benkyou", "kusuri", "kaeru-v", "shukudai", "iku-v"],
+        "vocabulary_slugs": ["kaeru-v", "iku-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "私は帰ら＿＿＿。", "english": "I have to go home.", "answer": "なければなりません", "nudge": "Going home isn't optional, and you're being formal about it."},
@@ -940,7 +940,7 @@ N5_GRAMMAR = [
             ex("明日は来なくてもいいです。", "You don't have to come tomorrow.", ["ashita", "kuru-v"]),
             ex("心配しなくてもいいです。", "You don't have to worry.", ["shinpai-suru"]),
         ],
-        "vocabulary_slugs": ["kuru-v", "okane", "isogu", "ashita", "shinpai-suru"],
+        "vocabulary_slugs": ["kuru-v", "ashita"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "野菜を食べ＿＿＿です。", "english": "You don't have to eat the vegetables.", "answer": "なくてもいい", "nudge": "The vegetables are optional; nobody is forcing them."},
@@ -966,7 +966,7 @@ N5_GRAMMAR = [
             ex("もう食べた。", "I already ate.", ["mou", "taberu"]),
             ex("駅まで走った。", "I ran to the station.", ["eki", "hashiru"]),
         ],
-        "vocabulary_slugs": ["kinou", "eiga", "mou"],
+        "vocabulary_slugs": ["kinou"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "昨日友達と昼ご飯を食べ＿＿＿。", "english": "Yesterday, I ate lunch with a friend.", "answer": "た", "nudge": "昨日 is done, and there's no politeness on the end."},
@@ -990,7 +990,7 @@ N5_GRAMMAR = [
             ex("その映画を見たことがない。", "I have never seen that movie.", ["sono", "eiga", "miru-v"]),
             ex("たまに遅刻することがあります。", "I am sometimes late.", ["tama-ni"]),
         ],
-        "vocabulary_slugs": ["nihon", "iku-v", "eiga", "tama-ni"],
+        "vocabulary_slugs": ["iku-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "私は日本に行っ＿＿＿。", "english": "I have been to Japan.", "answer": "たことがあります", "nudge": "Japan is on your résumé, politely stated."},
@@ -1027,7 +1027,7 @@ N5_GRAMMAR = [
             ex("週末は本を読んだり、映画を見たりします。", "On weekends I read, watch movies, and so on.", ["shuumatsu", "hon", "yomu", "eiga", "miru-v"]),
             ex("食べたり飲んだりしました。", "We ate and drank and so on.", ["taberu", "nomu-v"]),
         ],
-        "vocabulary_slugs": ["shuumatsu", "yomu", "eiga"],
+        "vocabulary_slugs": ["yomu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "週末、本を読ん＿＿＿、テレビを見たりしました。", "english": "Over the weekend, I read books and watched TV among other things.", "answer": "だり", "nudge": "読む voices its ending here, and this is a sample of the weekend, not the full account."},
@@ -1050,7 +1050,7 @@ N5_GRAMMAR = [
             ex("今日は何も食べたくない。", "I don't want to eat anything today.", ["kyou", "taberu"]),
             ex("少し休みたいです。", "I want to rest a little.", ["sukoshi", "yasumu"]),
         ],
-        "vocabulary_slugs": ["nihon", "iku-v", "mizu"],
+        "vocabulary_slugs": ["iku-v", "mizu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "私は日本へ行き＿＿＿です。", "english": "I would like to go to Japan.", "answer": "たい", "nudge": "Japan is your wish, and it's alive right now."},
@@ -1072,7 +1072,7 @@ N5_GRAMMAR = [
             ex("お金がほしい。", "I want money.", ["okane"]),
             ex("時間がほしいです。", "I want (more) time.", ["jikan"]),
         ],
-        "vocabulary_slugs": ["atarashii-adj", "kuruma", "okane"],
+        "vocabulary_slugs": ["atarashii-adj"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "水が＿＿＿です。", "english": "I want water.", "answer": "ほしい", "nudge": "Your throat is dry and 水 is what would fix it."},
@@ -1101,7 +1101,7 @@ N5_GRAMMAR = [
             ex("本を買いに行きました。", "I went to buy a book.", ["hon", "kau-v", "iku-v"]),
             ex("友達に会いに来ました。", "I came to meet a friend.", ["tomodachi", "au", "kuru-v"]),
         ],
-        "vocabulary_slugs": ["eiga", "kau-v", "au"],
+        "vocabulary_slugs": ["kau-v", "au"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "映画館へ映画を見＿＿＿。", "english": "I'm going to the cinema to watch a movie.", "answer": "に行く", "nudge": "The trip out exists so the film can be watched."},
@@ -1123,7 +1123,7 @@ N5_GRAMMAR = [
             ex("食事の前に手を洗います。", "I wash my hands before a meal.", ["te-v", "arau"]),
             ex("授業の前に本を読みます。", "I read a book before class.", ["jugyou", "hon", "yomu"]),
         ],
-        "vocabulary_slugs": ["neru", "arau", "jugyou"],
+        "vocabulary_slugs": ["asagohan", "bangohan"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "食べる＿＿＿手を洗う。", "english": "I wash my hands before eating.", "answer": "前に", "nudge": "Hands get washed first, eating second."},
@@ -1145,7 +1145,7 @@ N5_GRAMMAR = [
             ex("授業の後で、遊びます。", "After class, I play.", ["jugyou", "asobu"]),
             ex("仕事の後で、映画を見ます。", "After work, I watch a movie.", ["shigoto", "eiga", "miru-v"]),
         ],
-        "vocabulary_slugs": ["taberu", "jugyou", "shigoto"],
+        "vocabulary_slugs": ["taberu"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "仕事の＿＿＿、電話します。", "english": "After work, I will call.", "answer": "後で", "nudge": "The call comes once 仕事 is finished."},
@@ -1167,7 +1167,7 @@ N5_GRAMMAR = [
             ex("暇なとき、本を読みます。", "When I'm free, I read a book.", ["hima", "hon", "yomu"]),
             ex("日本へ行ったとき、写真を撮りました。", "When I went to Japan, I took photos.", ["nihon", "iku-v", "shashin"]),
         ],
-        "vocabulary_slugs": ["kodomo-v", "hima", "shashin"],
+        "vocabulary_slugs": ["ie", "kaeru-v"],
         "family": "connectors",
         "cloze_variants": [
             {"jp_cloze": "子供の＿＿＿、野菜が嫌いでした。", "english": "As a child, I hated vegetables.", "answer": "時", "nudge": "Childhood is the window the dislike sat in."},
@@ -1191,7 +1191,7 @@ N5_GRAMMAR = [
             ex("漢字を読むことができます。", "I can read kanji.", ["kanji-word", "yomu"]),
             ex("泳ぐことができません。", "I cannot swim.", ["oyogu"]),
         ],
-        "vocabulary_slugs": ["nihongo", "hanasu-v", "kanji-word"],
+        "vocabulary_slugs": ["hanasu-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "彼女は日本語を話す＿＿＿。", "english": "She can speak Japanese.", "answer": "ことができます", "nudge": "She has the ability, not merely the habit."},
@@ -1213,7 +1213,7 @@ N5_GRAMMAR = [
             ex("この本は高くないです。", "This book is not expensive.", ["kono", "hon", "takai-adj"]),
             ex("映画は面白かった。", "The movie was interesting.", ["eiga", "omoshiroi"]),
         ],
-        "vocabulary_slugs": ["atsui-hot", "takai-adj", "omoshiroi"],
+        "vocabulary_slugs": ["oishii", "omoi"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "このカメラは高＿＿＿です。", "english": "This camera is not expensive.", "answer": "くない", "nudge": "The price is being denied, so the stem needs a negative tail."},
@@ -1235,7 +1235,7 @@ N5_GRAMMAR = [
             ex("彼は親切です。", "He is kind.", ["kare", "shinsetsu"]),
             ex("ここは便利な町です。", "This is a convenient town.", ["koko", "benri", "machi-v"]),
         ],
-        "vocabulary_slugs": ["shizuka", "shinsetsu", "benri"],
+        "vocabulary_slugs": ["shinsetsu"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "部屋はきれい＿＿＿。", "english": "The room was clean.", "answer": "でした", "nudge": "The tidiness is in the past — close the statement politely."},
@@ -1257,7 +1257,7 @@ N5_GRAMMAR = [
             ex("大きく書いてください。", "Please write it big.", ["ookii", "kaku"]),
             ex("安く買いました。", "I bought it cheaply.", ["yasui-adj", "kau-v"]),
         ],
-        "vocabulary_slugs": ["hayai-early", "ookii", "yasui-adj"],
+        "vocabulary_slugs": ["ookii", "yasui-adj"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "明日は早＿＿＿起きます。", "english": "I will wake up early tomorrow.", "answer": "く", "nudge": "早い has to modify 起きます here, not 明日 itself."},
@@ -1279,7 +1279,7 @@ N5_GRAMMAR = [
             ex("きれいに書きます。", "I write neatly.", ["kirei", "kaku"]),
             ex("元気に遊びます。", "They play energetically.", ["genki", "asobu"]),
         ],
-        "vocabulary_slugs": ["shizuka", "kirei", "genki"],
+        "vocabulary_slugs": ["kirei"],
         "family": "conjugations",
         "cloze_variants": [
             {"jp_cloze": "私は静か＿＿＿勉強します。", "english": "I study quietly.", "answer": "に", "nudge": "静か describes the studying, not 私."},
@@ -1301,7 +1301,7 @@ N5_GRAMMAR = [
             ex("今日は昨日より暑いです。", "Today is hotter than yesterday.", ["kyou", "kinou", "atsui-hot"]),
             ex("犬は猫より大きいです。", "Dogs are bigger than cats.", ["inu", "neko", "ookii"]),
         ],
-        "vocabulary_slugs": ["basu", "kyou", "inu"],
+        "vocabulary_slugs": ["basu", "kyou"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "タクシーはバス＿＿＿速いです。", "english": "Taxis are faster than buses.", "answer": "より", "nudge": "バス is the yardstick the taxi is measured against."},
@@ -1323,7 +1323,7 @@ N5_GRAMMAR = [
             ex("夏が一番好きです。", "I like summer the most.", ["natsu", "suki"]),
             ex("富士山が一番高いです。", "Mt. Fuji is the tallest.", ["takai-adj"]),
         ],
-        "vocabulary_slugs": ["yasui-adj", "natsu", "suki"],
+        "vocabulary_slugs": ["yasui-adj"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "富士山は日本で＿＿＿高い山です。", "english": "Mt. Fuji is the highest mountain in Japan.", "answer": "一番", "nudge": "Nothing in Japan tops it."},
@@ -1367,7 +1367,7 @@ N5_GRAMMAR = [
             ex("彼は来るでしょう。", "He will probably come.", ["kare", "kuru-v"]),
             ex("難しいでしょう。", "It's probably difficult.", ["muzukashii"]),
         ],
-        "vocabulary_slugs": ["ashita", "ame-v", "muzukashii"],
+        "vocabulary_slugs": ["ashita"],
         "family": "copula",
         "cloze_variants": [
             {"jp_cloze": "彼は帰る＿＿＿。", "english": "He will probably return home.", "answer": "だろう", "nudge": "You're guessing about 彼's return, not stating it — and casually."},
@@ -1392,7 +1392,7 @@ N5_GRAMMAR = [
             ex("彼は来ないかもしれません。", "He might not come.", ["kare", "kuru-v"]),
             ex("これは高いかもしれません。", "This might be expensive.", ["takai-adj"]),
         ],
-        "vocabulary_slugs": ["ashita", "yuki", "isogashii", "kare", "takai-adj"],
+        "vocabulary_slugs": ["ashita", "kare"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "明日は雨＿＿＿。", "english": "It might rain tomorrow.", "answer": "かもしれません", "nudge": "Rain is one possibility, hedged politely."},
@@ -1440,7 +1440,7 @@ N5_GRAMMAR = [
             ex("これは何という花ですか。", "What is this flower called?", ["kore", "nani", "hana-v"]),
             ex("「猫」という映画を見ました。", "I watched a movie called 'Cat'.", ["neko", "eiga", "miru-v"]),
         ],
-        "vocabulary_slugs": ["hito", "hana-v", "eiga"],
+        "vocabulary_slugs": ["hito", "eiga"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "春＿＿＿喫茶店に行きました。", "english": "I went to a coffee shop by the name of Spring.", "answer": "という", "nudge": "春 is the label on the door, not the season."},
@@ -1464,7 +1464,7 @@ N5_GRAMMAR = [
             ex("このコーヒーは熱すぎます。", "This coffee is too hot.", ["koohii", "atsui-obj"]),
             ex("働きすぎるのは体に悪いです。", "Working too much is bad for your health.", ["hataraku", "karada"]),
         ],
-        "vocabulary_slugs": ["taberu", "fuku", "nomu-v", "koohii", "hataraku"],
+        "vocabulary_slugs": ["taberu", "fuku", "nomu-v", "koohii"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "彼は働き＿＿＿。", "english": "He overworks.", "answer": "すぎる", "nudge": "彼 overdoes the work, plainly stated."},
@@ -1491,7 +1491,7 @@ N5_GRAMMAR = [
             ex("薬を飲んだほうがいい。", "You should take medicine.", ["kusuri", "nomu-v"]),
             ex("行かないほうがいいです。", "You had better not go.", ["iku-v"]),
         ],
-        "vocabulary_slugs": ["neru", "kusuri", "iku-v"],
+        "vocabulary_slugs": ["kusuri", "iku-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "病院に行った＿＿＿ですよ。", "english": "You should go to the hospital.", "answer": "ほうがいい", "nudge": "You're advising a hospital trip, not describing one."},
@@ -1517,7 +1517,7 @@ N5_GRAMMAR = [
             ex("彼はもう知っているでしょう。", "He probably already knows.", ["kare", "shiru"]),
             ex("これでいいでしょう。", "This should be fine, right?", []),
         ],
-        "vocabulary_slugs": ["ashita", "atsui-hot", "daijoubu", "kare", "shiru"],
+        "vocabulary_slugs": ["ashita", "daijoubu", "kare", "shiru"],
         "family": "copula",
         "uses": [
             {
@@ -1563,7 +1563,7 @@ N5_GRAMMAR = [
             ex("宿題はまだ終わっていません。", "The homework isn't finished yet.", ["shukudai", "owaru"]),
             ex("まだ決めていません。", "I haven't decided yet.", ["mada"]),
         ],
-        "vocabulary_slugs": ["mada", "taberu", "shukudai"],
+        "vocabulary_slugs": ["taberu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "まだ食べ＿＿＿。", "english": "I haven't eaten yet.", "answer": "ていません", "nudge": "The plate is still full."},
@@ -1585,7 +1585,7 @@ N5_GRAMMAR = [
             ex("もう宿題をしました。", "I already did my homework.", ["mou", "shukudai"]),
             ex("電車はもう出ました。", "The train already left.", ["densha", "deru-v"]),
         ],
-        "vocabulary_slugs": ["mou", "taberu", "shukudai"],
+        "vocabulary_slugs": ["taberu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "＿＿＿切符を買いました。", "english": "I already bought the ticket.", "answer": "もう", "nudge": "The ticket is in hand — that purchase is behind you."},
@@ -1628,7 +1628,7 @@ N5_GRAMMAR = [
             ex("水しか飲みません。", "I drink nothing but water.", ["mizu", "nomu-v"]),
             ex("一人しか来ませんでした。", "Only one person came.", ["kuru-v"]),
         ],
-        "vocabulary_slugs": ["en-money", "mizu", "nomu-v"],
+        "vocabulary_slugs": ["mizu", "nomu-v"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "財布の中に百円＿＿＿ありません。", "english": "I have just 100 yen in my wallet.", "answer": "しか", "nudge": "A hundred yen is all the wallet holds, and the verb goes negative to say it."},
@@ -1650,7 +1650,7 @@ N5_GRAMMAR = [
             ex("千円ぐらいです。", "It's about a thousand yen.", ["sen-v", "en-money"]),
             ex("十人ぐらい来ました。", "About ten people came.", ["kuru-v"]),
         ],
-        "vocabulary_slugs": ["fun-counter", "en-money", "kuru-v"],
+        "vocabulary_slugs": ["fun-counter", "kuru-v"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "一時間＿＿＿待ちます。", "english": "I will wait for about one hour.", "answer": "ぐらい", "nudge": "One hour is a rough estimate of the wait."},
@@ -1672,7 +1672,7 @@ N5_GRAMMAR = [
             ex("三時ごろ来てください。", "Please come around three.", ["kuru-v"]),
             ex("昼ごろ食べます。", "I eat around noon.", ["hiru", "taberu"]),
         ],
-        "vocabulary_slugs": ["okiru", "hiru", "taberu"],
+        "vocabulary_slugs": ["hiru", "taberu"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "三時＿＿＿駅で会いますか。", "english": "Shall we meet at the station around three o'clock?", "answer": "ごろ", "nudge": "Three is approximate, not to the minute."},
@@ -1716,7 +1716,7 @@ N5_GRAMMAR = [
             ex("あまり高くないです。", "It's not very expensive.", ["amari", "takai-adj"]),
             ex("あまり分かりません。", "I don't understand very well.", ["amari", "wakaru"]),
         ],
-        "vocabulary_slugs": ["amari", "taberu", "takai-adj"],
+        "vocabulary_slugs": ["amari", "taberu"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "その映画は＿＿＿面白くないです。", "english": "That movie isn't very interesting.", "answer": "あまり", "nudge": "The film isn't flatly boring — the denial is being softened."},
@@ -1738,7 +1738,7 @@ N5_GRAMMAR = [
             ex("映画でも見ましょう。", "Let's watch a movie or something.", ["eiga", "miru-v"]),
             ex("散歩でもしませんか。", "How about a walk or something?", ["sanpo-suru"]),
         ],
-        "vocabulary_slugs": ["ocha", "eiga", "sanpo-suru"],
+        "vocabulary_slugs": ["ocha", "eiga"],
         "family": "particles",
         "cloze_variants": [
             {"jp_cloze": "お茶＿＿＿どうですか。", "english": "How about some tea or something?", "answer": "でも", "nudge": "お茶 is one idea among many, not a fixed order."},
@@ -1840,7 +1840,7 @@ N5_GRAMMAR = [
             ex("日本語が上手になりました。", "I've become good at Japanese.", ["nihongo", "jouzu"]),
             ex("元気になりました。", "I got better (healthy).", ["genki"]),
         ],
-        "vocabulary_slugs": ["samui", "nihongo", "genki"],
+        "vocabulary_slugs": ["nihongo"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "夏は暑＿＿＿。", "english": "Summer turns hot.", "answer": "くなる", "nudge": "暑い shifts into a change of state, plainly."},
@@ -1866,7 +1866,7 @@ N5_GRAMMAR = [
             ex("母がプレゼントをくれました。", "My mother gave me a present.", ["haha", "kureru"]),
             ex("先生に辞書をもらいました。", "I received a dictionary from my teacher.", ["sensei", "jisho", "morau"]),
         ],
-        "vocabulary_slugs": ["tomodachi", "haha", "sensei"],
+        "vocabulary_slugs": ["haha", "sensei"],
         "family": "patterns",
         "cloze_variants": [
             {"jp_cloze": "私は友達に本を＿＿＿。", "english": "I give a book to a friend.", "answer": "あげる", "nudge": "The book travels away from 私, out to someone else."},
