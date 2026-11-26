@@ -5922,7 +5922,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-kara": {
@@ -5993,6 +5997,10 @@
           {
             "japanese": "私はうちへ帰ってから、テレビを見ます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "うちに帰ってから、テレビを見ます。",
+            "kind": "valid"
           }
         ]
       },
@@ -6045,13 +6053,19 @@
         ]
       },
       {
-        "japanese": "食事をしてから、ビールを飲みません。",
+        "japanese": "食事をしてからは、ビールを飲みません。",
         "english": "I don't drink beer after a meal.",
         "vocabulary_slugs": [
           "shokuji",
           "suru",
           "biiru",
           "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "食事してからは、ビールを飲みません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6090,7 +6104,18 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "食事をしてから、ビールを飲みません。",
+          "new": "食事をしてからは、ビールを飲みません。",
+          "reason": "A habitual negative after てから needs は to mark the after-meal period as the topic; bare てから + 飲みません sounds unnatural."
+        }
+      ],
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "naide-kudasai": {
@@ -6146,6 +6171,10 @@
           {
             "japanese": "今日は会社へ来ないでください。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日会社に来ないでください。",
+            "kind": "valid"
           }
         ]
       },
@@ -6156,6 +6185,12 @@
           "toire",
           "pan",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "パンをトイレで食べないでください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6173,6 +6208,12 @@
           "byouin",
           "biiru",
           "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "ビールを病院で飲まないでください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6182,6 +6223,12 @@
           "ocha",
           "kau-v",
           "koohii"
+        ],
+        "alternates": [
+          {
+            "japanese": "お茶を買ったから、コーヒーを買わないでください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6191,6 +6238,12 @@
           "kinou",
           "kuru-v",
           "ashita"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日も来たから、明日は来ないでください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6201,13 +6254,23 @@
           "jikan",
           "terebi",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "テレビを晩ご飯の時間に見ないでください。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ta-form": {
@@ -6226,6 +6289,16 @@
           "atarashii-adj",
           "kamera",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "父は新しいカメラを買った。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "新しいカメラを父が買った。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6244,6 +6317,14 @@
           {
             "japanese": "昨日、テレビを見ました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は昨日、テレビを見た。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は昨日、テレビを見ました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -6255,6 +6336,12 @@
           "ban",
           "nani",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日の晩は何を食べた？",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6280,6 +6367,12 @@
           "eki",
           "sensei",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "朝、先生を駅で見た。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6299,6 +6392,16 @@
           "akachan",
           "shinbun",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "赤ちゃんは新聞を食べた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "新聞を赤ちゃんが食べた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6308,6 +6411,16 @@
           "hirugohan",
           "konbini",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "昼ご飯をコンビニで買った。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "コンビニで昼ご飯を買った。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6341,7 +6454,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ta-koto-ga-aru": {
@@ -6466,12 +6583,18 @@
     ],
     "sentences": [
       {
-        "japanese": "今日、会社に行かなくてはいけない。",
+        "japanese": "今日、会社に行かなければならない。",
         "english": "I have to go to the office today.",
         "vocabulary_slugs": [
           "kyou",
           "kaisha",
           "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日、会社へ行かなければならない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6481,6 +6604,12 @@
           "ashita",
           "hon",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日、本を買わなければならない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6490,6 +6619,12 @@
           "sensei",
           "tegami",
           "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "手紙を先生に書かなければならない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6524,6 +6659,12 @@
           "kyou",
           "ryouri",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は料理しなければなりません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6534,6 +6675,12 @@
           "byouin",
           "iru-exist",
           "kaeru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "母が病院にいるから、帰らなければなりません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6543,6 +6690,16 @@
           "ima",
           "denwa",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "今、電話をしなきゃ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、電話しなければならない。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6553,13 +6710,30 @@
           "eki",
           "basu",
           "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎朝、バスで駅まで行かなければなりません。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "sentence_fixes": [
+        {
+          "old": "今日、会社に行かなくてはいけない。",
+          "new": "今日、会社に行かなければならない。",
+          "reason": "Uses なくてはいけない, not the taught なければならない pattern."
+        }
+      ],
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "nakutemo-ii": {
@@ -6581,6 +6755,14 @@
         "alternates": [
           {
             "japanese": "明日は来なければなりません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "明日来なくてもいいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日来なければなりません。",
             "kind": "other_grammar"
           }
         ]
@@ -6672,6 +6854,12 @@
           "chikai",
           "basu",
           "iku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "近いから、バスで行かなくてもいいですよ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6695,7 +6883,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tari-tari": {
