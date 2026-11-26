@@ -16660,6 +16660,10 @@
           {
             "japanese": "ビールを買っとく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はビールを買っておく。",
+            "kind": "valid"
           }
         ]
       },
@@ -16678,6 +16682,14 @@
           {
             "japanese": "窓を開けてある。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は窓を開けておく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は窓を開けてある。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -16691,6 +16703,10 @@
         "alternates": [
           {
             "japanese": "お金を持っとく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はお金を持っておく。",
             "kind": "valid"
           }
         ]
@@ -16707,6 +16723,14 @@
         "alternates": [
           {
             "japanese": "明日は雨なので、傘を出しとく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日雨なので、傘を出しておく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は雨なので、私は傘を出しておく。",
             "kind": "valid"
           }
         ]
@@ -16725,6 +16749,10 @@
           {
             "japanese": "友達が来るので、部屋をきれいにしとく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "友達が来るので、私は部屋をきれいにしておく。",
+            "kind": "valid"
           }
         ]
       },
@@ -16740,6 +16768,10 @@
         "alternates": [
           {
             "japanese": "書類を会議の前に並べておく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は会議の前に、書類を並べておく。",
             "kind": "valid"
           }
         ]
@@ -16757,6 +16789,10 @@
           {
             "japanese": "父がいないので、晩ご飯を作っとく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "父がいないので、私は晩ご飯を作っておく。",
+            "kind": "valid"
           }
         ]
       },
@@ -16772,6 +16808,10 @@
         "alternates": [
           {
             "japanese": "母が言ったので、野菜を洗っとく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母が言ったので、私は野菜を洗っておく。",
             "kind": "valid"
           }
         ]
@@ -16815,7 +16855,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "teshimau": {
@@ -16843,6 +16887,10 @@
           {
             "japanese": "全部お菓子を食べてしまう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はお菓子を全部食べてしまう。",
+            "kind": "valid"
           }
         ]
       },
@@ -16858,6 +16906,18 @@
         "alternates": [
           {
             "japanese": "あの話、彼女に言っちゃう？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あの話を彼女に言ってしまう？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あの話は彼女に言ってしまう？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼女にあの話を言ってしまう？",
             "kind": "valid"
           }
         ]
@@ -16876,6 +16936,10 @@
           {
             "japanese": "私が作った料理を、犬が食べちゃう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "犬が私が作った料理を食べてしまう。",
+            "kind": "valid"
           }
         ]
       },
@@ -16890,6 +16954,14 @@
           {
             "japanese": "電車で寝ちゃう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は電車で寝てしまう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "電車の中で寝てしまう。",
+            "kind": "valid"
           }
         ]
       },
@@ -16903,6 +16975,10 @@
         "alternates": [
           {
             "japanese": "鍵を無くしてしまう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は鍵を無くしちゃう。",
             "kind": "valid"
           }
         ]
@@ -16919,6 +16995,10 @@
         "alternates": [
           {
             "japanese": "その話を聞いて、泣いちゃう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はその話を聞いて、泣いてしまう。",
             "kind": "valid"
           }
         ]
@@ -16939,6 +17019,10 @@
           {
             "japanese": "傘をタクシーに忘れちゃう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は傘をタクシーに忘れてしまう。",
+            "kind": "valid"
           }
         ]
       },
@@ -16954,6 +17038,14 @@
           {
             "japanese": "雨で服が濡れちゃう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "服が雨で濡れてしまう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雨で私の服が濡れてしまう。",
+            "kind": "valid"
           }
         ]
       },
@@ -16966,7 +17058,16 @@
           "sugu",
           "yomu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "面白い本なので、すぐに読んじゃう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "面白い本なので、私はすぐ読んじゃう。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "誰もいないので、大きい声で歌ってしまう。",
@@ -16982,6 +17083,10 @@
           {
             "japanese": "誰もいないので、大きい声で歌っちゃう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "誰もいないので、私は大きい声で歌ってしまう。",
+            "kind": "valid"
           }
         ]
       }
@@ -16989,7 +17094,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "teiku-tekuru": {
@@ -17014,6 +17123,14 @@
           {
             "japanese": "友達がこちらに歩いてくる。",
             "kind": "valid"
+          },
+          {
+            "japanese": "友達はこちらへ歩いてくる。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "友達はこちらに歩いてくる。",
+            "kind": "valid"
           }
         ]
       },
@@ -17029,6 +17146,10 @@
           {
             "japanese": "駅まで歩いていく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は駅へ歩いていく。",
+            "kind": "valid"
           }
         ]
       },
@@ -17040,7 +17161,16 @@
           "niwa",
           "hashiru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "犬は庭から走ってくる。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "庭から犬が走ってくる。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "天気がだんだん暖かくなってくる。",
@@ -17055,6 +17185,14 @@
           {
             "japanese": "だんだん天気が暖かくなってくる。",
             "kind": "valid"
+          },
+          {
+            "japanese": "天気はだんだん暖かくなってくる。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "天気がだんだんと暖かくなってくる。",
+            "kind": "valid"
           }
         ]
       },
@@ -17067,7 +17205,12 @@
           "ookii",
           "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "これから子供は大きくなっていく。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "彼は毎晩遅く帰ってくる。",
@@ -17078,7 +17221,12 @@
           "osoi",
           "kaeru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "毎晩彼は遅く帰ってくる。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "母が作った弁当を持っていく。",
@@ -17089,7 +17237,16 @@
           "bentou",
           "motsu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は母が作った弁当を持っていく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母の作った弁当を持っていく。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "コンビニで何か買ってくる？",
@@ -17099,7 +17256,20 @@
           "nani",
           "kau-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "コンビニで何かを買ってくる？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "何かコンビニで買ってくる？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "何かをコンビニで買ってくる？",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "雨が降ってくるので、窓を開けない。",
@@ -17110,7 +17280,12 @@
           "mado",
           "akeru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "雨が降ってくるので、私は窓を開けない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "鳥が山の方へ帰っていく。",
@@ -17125,6 +17300,14 @@
           {
             "japanese": "鳥が山の方に帰っていく。",
             "kind": "valid"
+          },
+          {
+            "japanese": "鳥は山の方へ帰っていく。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "鳥は山の方に帰っていく。",
+            "kind": "valid"
           }
         ]
       }
@@ -17132,7 +17315,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "temo": {
@@ -17155,6 +17342,14 @@
           {
             "japanese": "今日は元気でも、休む。",
             "kind": "valid"
+          },
+          {
+            "japanese": "元気でも、今日休む。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は元気でも、今日は休む。",
+            "kind": "valid"
           }
         ]
       },
@@ -17171,6 +17366,10 @@
           {
             "japanese": "あの時計は高くても買う。",
             "kind": "valid"
+          },
+          {
+            "japanese": "高くても、私はあの時計を買う。",
+            "kind": "valid"
           }
         ]
       },
@@ -17182,7 +17381,12 @@
           "furu-rain",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "雨が降っても、私は行きます。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "毎日勉強しても、上手にならない。",
@@ -17193,7 +17397,16 @@
           "jouzu",
           "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "毎日勉強をしても、上手にならない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎日勉強しても、私は上手にならない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "薬を飲んでも、治らなかった。",
@@ -17203,7 +17416,12 @@
           "nomu-v",
           "naoru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "薬を飲んでも、私は治らなかった。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "寒くても、泳ぎますか。",
@@ -17212,7 +17430,12 @@
           "samui",
           "oyogu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "寒くても、あなたは泳ぎますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "安くても、まずい物は買わない。",
@@ -17223,7 +17446,16 @@
           "mono",
           "kau-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "安くても、まずい物を買わない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "安くても、私はまずい物は買わない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "先生に叱られても、彼は笑っている。",
@@ -17254,6 +17486,14 @@
           {
             "japanese": "彼女は電話しても出ない。",
             "kind": "valid"
+          },
+          {
+            "japanese": "電話をしても、彼女は出ない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私が電話しても、彼女は出ない。",
+            "kind": "valid"
           }
         ]
       },
@@ -17265,13 +17505,26 @@
           "terebi",
           "miru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "暇でも、テレビを見ない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "暇でも、私はテレビは見ない。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "souni-naru": {
@@ -17456,6 +17709,10 @@
           {
             "japanese": "私は来年、日本に行くつもりです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "日本へ来年行くつもりです。",
+            "kind": "valid"
           }
         ]
       },
@@ -17478,6 +17735,10 @@
           {
             "japanese": "今日勉強をするつもりです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は今日は勉強するつもりです。",
+            "kind": "valid"
           }
         ]
       },
@@ -17496,6 +17757,14 @@
           },
           {
             "japanese": "私は夏、海で泳ぐつもりです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "夏、海で泳ぐつもりです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は夏は海で泳ぐつもりです。",
             "kind": "valid"
           }
         ]
@@ -17516,6 +17785,14 @@
           {
             "japanese": "週末に映画を見るつもりです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "映画を週末見るつもりです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は週末、映画を見るつもりです。",
+            "kind": "valid"
           }
         ]
       },
@@ -17535,6 +17812,14 @@
           {
             "japanese": "明日は図書館で勉強するつもりだ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "図書館で明日勉強するつもりだ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日、図書館で勉強するつもりだ。",
+            "kind": "valid"
           }
         ]
       },
@@ -17551,6 +17836,18 @@
           {
             "japanese": "もう甘い物を食べないつもりです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "甘い物はもう食べないつもりです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はもう甘い物は食べないつもりです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "甘い物をもう食べないつもりです。",
+            "kind": "valid"
           }
         ]
       },
@@ -17562,7 +17859,16 @@
           "mou",
           "kaeru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "もう彼は帰るつもりだ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼はもう帰るつもり。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私は来月引っ越すつもりです。",
@@ -17591,6 +17897,14 @@
           {
             "japanese": "手紙を母に書くつもりだ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は母に手紙を書くつもりだ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母へ手紙を書くつもりだ。",
+            "kind": "valid"
           }
         ]
       },
@@ -17610,6 +17924,10 @@
           {
             "japanese": "週末に何をするつもりですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは週末は何をするつもりですか。",
+            "kind": "valid"
           }
         ]
       }
@@ -17617,7 +17935,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "youni-suru": {
