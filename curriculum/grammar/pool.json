@@ -3994,6 +3994,38 @@
           {
             "japanese": "今日も会社へ行きますか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "会社へ今日も行きますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "会社へ今日も行きますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "会社に今日も行きますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "会社に今日も行きますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは今日も会社へ行きますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今日も会社へ行きますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは今日も会社に行きますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは今日も会社に行きますか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4027,6 +4059,22 @@
           {
             "japanese": "先週デパートへ行きましたね。",
             "kind": "valid"
+          },
+          {
+            "japanese": "デパートへ先週行きましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "デパートに先週行きましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たちは先週、デパートへ行きましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たちは先週、デパートに行きましたね。",
+            "kind": "valid"
           }
         ]
       },
@@ -4056,6 +4104,14 @@
         "alternates": [
           {
             "japanese": "お父さんは毎朝、新聞を読みますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "お父さんは新聞を毎朝読みますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎朝お父さんは新聞を読みますね。",
             "kind": "valid"
           }
         ]
@@ -4087,6 +4143,18 @@
           {
             "japanese": "晩ご飯をレストランで食べましたね。",
             "kind": "valid"
+          },
+          {
+            "japanese": "レストランで晩ご飯を食べましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たちは晩ご飯をレストランで食べましたね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たちはレストランで晩ご飯を食べましたね。",
+            "kind": "valid"
           }
         ]
       },
@@ -4106,6 +4174,22 @@
           {
             "japanese": "毎晩テレビを見ますか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "テレビを毎晩見ますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "テレビを毎晩見ますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは毎晩テレビを見ますね。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは毎晩テレビを見ますか。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -4113,7 +4197,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "yo-emphasis": {
