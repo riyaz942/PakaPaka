@@ -93,7 +93,8 @@ Step 1: Select This Session's Slugs
 
 Select automatically — do NOT hand-pick or paste a slug list. Pick the next
 <slug-count> slugs of <type> (in ladder order) that have **no mnemonic in the
-sidecar yet**. Substitute this run's <type> for KIND, <level> for LEVEL and
+sidecar yet** (for grammar, also a mnemonic whose Japanese example uses a word
+above the point's level). Substitute this run's <type> for KIND, <level> for LEVEL and
 <slug-count> for BATCH_LIMIT, then run:
 
 .venv/bin/python - <<'PY'
@@ -101,7 +102,7 @@ import sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, default_slugs
 LEVEL, KIND, BATCH_LIMIT = <level>, '<type>', <slug-count>   # KIND: 'radical', 'kanji', 'vocab' or 'grammar'
-left = default_slugs(KIND, [LEVEL])   # the level's items with no mnemonic yet
+left = default_slugs(KIND, [LEVEL])   # the level's items with no mnemonic yet (grammar: or a later word)
 todo = left[:BATCH_LIMIT]
 done = len(mc.all_slugs(KIND_DIR[KIND], LEVEL)) - len(left)
 print(f'{len(todo)} slug(s) selected (target={BATCH_LIMIT}, done={done}):')
@@ -120,9 +121,14 @@ anything either. To regenerate a reviewed item, name it with `--slugs` by hand
 (outside this auto-select). If it prints 0 slugs, every item of this level+type
 already has a mnemonic — stop and report that.
 
-A run that fixes existing mnemonics takes its slugs from the work list, not from
-this select: `grammar_mnemonics_above_level` (`--type grammar`),
-`radical_mnemonics_part_later` (`--type radical`),
+Grammar is the one exception: the select also picks a grammar mnemonic whose
+Japanese example uses a word above the point's level (the
+`grammar_mnemonics_above_level` list in the ladder work list, from the same
+check). The gate rejects such an example in a new mnemonic, so a fixed item is
+not picked again.
+
+A run that fixes other existing mnemonics takes its slugs from the work list, not
+from this select: `radical_mnemonics_part_later` (`--type radical`),
 `kanji_mnemonics_radical_mismatch` (`--type kanji`) or
 `vocab_mnemonics_pending` (`--type vocab`) in
 `curriculum/_build/reports/ladder-worklist.json`. See "Ladder work list" in

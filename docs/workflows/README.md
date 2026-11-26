@@ -87,9 +87,9 @@ Before release (levels 1–20):
   points, from the same pool check.
 - Grammar links (`grammar_links_above_level`): no runbook. The links are edited in the grammar
   source data.
-- Grammar mnemonics (`grammar_mnemonics_above_level`): the mnemonic runbooks
-  (`--type grammar --slugs <list>`). The list holds the points whose Japanese example uses a word
-  above the point's level. Use only these slugs.
+- Grammar mnemonics (`grammar_mnemonics_above_level`): the mnemonic runbooks (`--type grammar`).
+  The list holds the points whose Japanese example uses a word above the point's level. A level
+  run (`--level N`) picks these points and the points with no mnemonic, from the same check.
 - Reading passages (`reading_passages`): the passage runbooks. Each entry is a level from 2 to
   20 with fewer than 3 passages, and how many are missing.
 

@@ -70,7 +70,8 @@ from generate_content import cast as cast_lib  # noqa: E402
 from generate_content import context as grammar_pool_context  # noqa: E402
 from generate_content.context import level_dir, parse_level, parse_levels  # noqa: E402
 from generate_content import mnemonic_context as mc  # noqa: E402
-from generate_content.validate_mnemonics import validate_draft  # noqa: E402
+from generate_content.validate_mnemonics import (  # noqa: E402
+    grammar_example_violations, validate_draft)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROMPTS_DIR = os.path.join(HERE, "prompts")
@@ -549,10 +550,18 @@ MNEMONIC_FIELD = {"radical": "mnemonic_text", "kanji": "meaning_mnemonic",
 
 
 def default_slugs(kind, levels):
-    """The items of these levels that have no mnemonic in the sidecar yet."""
+    """The items of these levels that have no mnemonic in the sidecar yet. For
+    grammar, also the items whose Japanese example uses a word above the point's
+    level (`grammar_mnemonics_above_level` in the ladder work list). The gate
+    rejects such an example in a new mnemonic, so a fixed item is not picked again."""
     sidecar = load_sidecar(kind)
+
+    def todo(slug):
+        text = sidecar.get(slug, {}).get(MNEMONIC_FIELD[kind])
+        return not text or (kind == "grammar" and bool(grammar_example_violations(slug, text)))
+
     return [slug for level in levels for slug in mc.all_slugs(KIND_DIR[kind], level)
-            if not sidecar.get(slug, {}).get(MNEMONIC_FIELD[kind])]
+            if todo(slug)]
 
 
 def require_reviewed_origins(table=None):

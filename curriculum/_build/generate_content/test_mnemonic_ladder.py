@@ -120,6 +120,20 @@ class LaneTest(unittest.TestCase):
         self.assertEqual(self.selection("radical", sidecar, {6: ["empty", "done", "new"]}),
                          ["empty", "new"])
 
+    def test_a_grammar_mnemonic_whose_example_uses_a_later_word_is_selected(self):
+        sidecar = {"later": {"mnemonic_text": "x"}, "ok": {"mnemonic_text": "y"}}
+        later = {"later": ["病院"]}
+        with mock.patch.object(gm, "grammar_example_violations",
+                               side_effect=lambda slug, _text: later.get(slug, [])):
+            self.assertEqual(self.selection("grammar", sidecar, {6: ["later", "ok", "new"]}),
+                             ["later", "new"])
+
+    def test_other_kinds_do_not_run_the_grammar_example_check(self):
+        sidecar = {"done": {"meaning_mnemonic": "x"}}
+        with mock.patch.object(gm, "grammar_example_violations") as check:
+            self.assertEqual(self.selection("kanji", sidecar, {6: ["done"]}), [])
+        check.assert_not_called()
+
     def test_draft_and_staging_paths_use_the_level_folder(self):
         self.assertEqual(
             os.path.relpath(gm._draft_path(6, "kanji", "pain"), gm.DRAFTS_DIR),
