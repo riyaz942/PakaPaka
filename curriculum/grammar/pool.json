@@ -18267,6 +18267,10 @@
           {
             "japanese": "来月、外国へ引っ越すことになりました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "外国に来月、引っ越すことになりました。",
+            "kind": "valid"
           }
         ]
       },
@@ -18279,7 +18283,12 @@
           "kaisha",
           "hataraku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "新しい会社で来月、働くことになりました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "来年から授業が増えることになる。",
@@ -18308,6 +18317,14 @@
           {
             "japanese": "明日は会社へ行かないことになりました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "明日、会社に行かないことになりました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日、会社へ行かないことになりました。",
+            "kind": "valid"
           }
         ]
       },
@@ -18320,7 +18337,12 @@
           "kaigi",
           "aru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "月曜日に毎週会議があることになっている。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私たち、結婚することになりました。",
@@ -18333,6 +18355,14 @@
           {
             "japanese": "私たちは結婚することになりました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私たちは結婚をすることになりました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私たち、結婚をすることになりました。",
+            "kind": "valid"
           }
         ]
       },
@@ -18344,7 +18374,12 @@
           "nihongo",
           "benkyou-suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "日本語を大学で勉強することになりました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私が晩ご飯を作ることになりました。",
@@ -18354,7 +18389,20 @@
           "bangohan",
           "tsukuru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "晩ご飯を私が作ることになりました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は晩ご飯を作ることになりました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "晩ご飯を作ることになりました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "誰が会議で説明することになりましたか。",
@@ -18368,6 +18416,10 @@
           {
             "japanese": "会議で誰が説明することになりましたか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "誰が会議で説明をすることになりましたか。",
+            "kind": "valid"
           }
         ]
       }
@@ -18375,7 +18427,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "mono": {
@@ -18550,6 +18606,14 @@
           {
             "japanese": "弟はお菓子だけ食べている。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "弟はお菓子ばかりを食べている。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "弟はお菓子だけを食べている。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -18570,6 +18634,14 @@
           {
             "japanese": "私はゲームだけしている。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私はゲームばかりをしている。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はゲームだけをしている。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -18580,7 +18652,12 @@
           "ima",
           "okiru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は今、起きたばかりです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "友達は仕事を始めたばかりだ。",
@@ -18628,6 +18705,10 @@
           {
             "japanese": "テレビばかり見ている。",
             "kind": "valid"
+          },
+          {
+            "japanese": "彼はテレビばかりを見ている。",
+            "kind": "valid"
           }
         ]
       },
@@ -18642,7 +18723,12 @@
           "uru",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "この店は甘い物ばかりを売っている。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "どうして肉ばかり食べるんですか。",
@@ -18652,7 +18738,16 @@
           "niku",
           "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "どうして肉ばかりを食べるんですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "どうして肉ばかり食べるのですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "昨日は雨ばかりでした。",
@@ -18661,7 +18756,12 @@
           "kinou",
           "ame-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "昨日、雨ばかりでした。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "この町に来たばかりなので、道が分かりません。",
@@ -18677,6 +18777,10 @@
           {
             "japanese": "この町へ来たばかりなので、道が分かりません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この町に来たばかりですので、道が分かりません。",
+            "kind": "valid"
           }
         ]
       }
@@ -18684,7 +18788,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tokoro": {
@@ -18770,6 +18878,10 @@
           {
             "japanese": "私は今、朝ご飯を食べたところです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "朝ご飯を今食べたところです。",
+            "kind": "valid"
           }
         ]
       },
@@ -18847,7 +18959,12 @@
           "nani",
           "suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "何を今しているところですか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "私は電車に乗るところでした。",
@@ -18868,7 +18985,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "aida": {
@@ -18897,7 +19018,12 @@
           "ame-v",
           "furu-rain"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "雨が会議の間に降った。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "授業の間、教室はとても静かだった。",
@@ -19048,7 +19174,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "uchi-ni": {
@@ -19653,7 +19783,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "to-conditional": {
@@ -19808,13 +19942,22 @@
           "kimochi",
           "ii"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "朝早く起きると、気持ちいいです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "node-vs-kara": {
