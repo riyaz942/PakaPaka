@@ -124,6 +124,18 @@ class OtherGrammarPairsTest(unittest.TestCase):
             ba.other_grammar_pairs(home, "時", before, "私は家へ帰る時、パンを買いました。"),
             ["私は家へ帰る前に、パンを買いました。"])
 
+    def test_no_pair_when_the_valid_alternate_adds_a_particle_after_the_chunk(self):
+        cases = [  # sentence, chunk, other_grammar, valid alternate (bad pair it gave)
+            ("体が痛いとき、病院へ行きます。", "とき", "体が痛いから、病院へ行きます。",
+             "体が痛いときに、病院へ行きます。"),  # からに
+            ("お茶か何か飲みませんか。", "か何か", "お茶でも飲みませんか。",
+             "お茶か何かを飲みませんか。"),  # でもを
+            ("会社の入口は社員のみ使えます。", "のみ", "会社の入口は社員だけ使えます。",
+             "会社の入口は社員のみが使えます。"),  # だけが: correct, but dropped too
+        ]
+        for sentence, chunk, other, valid in cases:
+            self.assertEqual(ba.other_grammar_pairs(sentence, chunk, [other], valid), [], valid)
+
 
 CANDIDATES = [(0, TEA_WA), (0, "お茶が熱いうちに飲んだ方はいいですよ。")]
 REPLY = {"verdicts": [
@@ -176,15 +188,15 @@ class MergeTest(unittest.TestCase):
                                 "vocabulary_slugs": [],
                                 "alternates": [{"japanese": "会社の入口は社員だけ使えます。",
                                                 "kind": "other_grammar"}]}]}
-        candidates = [(0, "会社の入口は社員のみが使えます。"), (0, "会社の入口は社員のみも使えます。")]
+        candidates = [(0, "会社の入口は社員のみ、使えます。"), (0, "会社の入口は、社員のみ使えます。")]
         reply = {"verdicts": [{"candidate": c, "verdict": "valid"} for _, c in candidates]}
         merged = ba.merged_entry(entry, candidates, reply, "m", {0: "のみ"})
         self.assertEqual([a["japanese"] for a in merged["sentences"][0]["alternates"]], [
             "会社の入口は社員だけ使えます。",
-            "会社の入口は社員のみが使えます。",
-            "会社の入口は社員だけが使えます。",
-            "会社の入口は社員のみも使えます。",
-            "会社の入口は社員だけも使えます。",
+            "会社の入口は社員のみ、使えます。",
+            "会社の入口は社員だけ、使えます。",
+            "会社の入口は、社員のみ使えます。",
+            "会社の入口は、社員だけ使えます。",
         ])
 
 
@@ -230,10 +242,10 @@ class GateTest(unittest.TestCase):
         self.assertEqual(self.about(ba.point_gate_errors("baai", entry), sentence["japanese"]), [])
 
     def fixed_aida(self, fixed):
-        """The aida entry with its meeting/phone sentence (whichever form the
-        pool holds now) fixed to `fixed`."""
+        """The aida entry with its meeting/phone sentence
+        (会議の間に、電話が鳴った。) fixed to `fixed`."""
         entry = self.entry("aida")
-        current = next(s["japanese"] for s in entry["sentences"] if "電話を消した" in s["japanese"])
+        current = next(s["japanese"] for s in entry["sentences"] if "電話が鳴った" in s["japanese"])
         self.assertNotEqual(current, fixed)
         reply = {"sentences": [
             {"japanese": s["japanese"], "verdict": "ok", "reason": "x"}
@@ -243,24 +255,22 @@ class GateTest(unittest.TestCase):
         return ba.apply_fixes(entry, reply)[0]
 
     def test_fix_on_aida_passes_the_gate(self):
-        current = next(s["japanese"] for s in self.entry("aida")["sentences"]
-                       if "電話を消した" in s["japanese"])
-        fixed = MEETING if current == MEETING_FIXED else MEETING_FIXED
+        fixed = "会議の間、電話が鳴った。"
         self.assertEqual(self.about(ba.fix_gate_errors("aida", self.fixed_aida(fixed)), fixed), [])
 
     def test_fix_that_drops_a_word_is_rejected(self):
         # The pool gate alone passes this: it never checks the main sentence
         # still holds its listed words.
         with mock.patch.object(ba, "point_gate_errors", return_value=[]):
-            errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、消した。"))
+            errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、鳴った。"))
         self.assertTrue(any("denwa" in e for e in errors))
 
     def test_fix_that_changes_register_is_rejected(self):
-        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話を消しました。"))
+        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話が鳴りました。"))
         self.assertTrue(any("register" in e for e in errors))
 
     def test_fix_that_changes_tense_is_rejected(self):
-        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話を消す。"))
+        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話が鳴る。"))
         self.assertTrue(any("shape" in e for e in errors))
 
     def test_judge_prompt_carries_the_lesson_rules(self):

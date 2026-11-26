@@ -151,20 +151,24 @@ def verdict_errors(reply, candidates):
 
 def other_grammar_pairs(sentence, chunk, other_alternates, valid_alternate):
     """The same-family swaps the sentence already has, applied to a new valid
-    alternate, so お茶は熱い間に… grades like お茶が熱い間に…. No pair that
-    doubles the form's last character (時に with 前に gives 前にに)."""
+    alternate, so お茶は熱い間に… grades like お茶が熱い間に…. No pairs when
+    the alternate adds a particle right after the chunk: the other form may
+    not take it (ときに gives からに, か何かを gives でもを)."""
     if not chunk or valid_alternate.count(chunk) != 1 or chunk not in sentence:
         return []
     k = sentence.index(chunk)
     before, after = sentence[:k], sentence[k + len(chunk):]
     j = valid_alternate.index(chunk) + len(chunk)
+    added = valid_alternate[j:j + 1]
+    if added != after[:1] and added in "をがにはでへとも":
+        return []
     pairs = []
     for other in other_alternates:
         if not (other.startswith(before) and other.endswith(after)):
             continue
         form = other[len(before):len(other) - len(after)]
         pair = valid_alternate.replace(chunk, form)
-        if form and valid_alternate[j:j + 1] != form[-1] and pair not in pairs:
+        if form and pair not in pairs:
             pairs.append(pair)
     return pairs
 
