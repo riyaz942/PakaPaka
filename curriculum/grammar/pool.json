@@ -18337,12 +18337,7 @@
           "kaigi",
           "aru"
         ],
-        "alternates": [
-          {
-            "japanese": "月曜日に毎週会議があることになっている。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "私たち、結婚することになりました。",
@@ -18959,12 +18954,7 @@
           "nani",
           "suru"
         ],
-        "alternates": [
-          {
-            "japanese": "何を今しているところですか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
         "japanese": "私は電車に乗るところでした。",
@@ -19001,12 +18991,12 @@
     ],
     "sentences": [
       {
-        "japanese": "会議の間に、電話を消した。",
-        "english": "During the meeting, I turned off my phone.",
+        "japanese": "会議の間に、電話が鳴った。",
+        "english": "During the meeting, the phone rang.",
         "vocabulary_slugs": [
           "kaigi",
           "denwa",
-          "kesu"
+          "naru-ring"
         ],
         "alternates": []
       },
@@ -19174,11 +19164,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "uchi-ni": {
@@ -25042,11 +25028,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "toka": {
@@ -26987,14 +26969,6 @@
           {
             "japanese": "子供さえも分かります。",
             "kind": "valid"
-          },
-          {
-            "japanese": "子供もも分かります。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "子供でもも分かります。",
-            "kind": "other_grammar"
           }
         ]
       },

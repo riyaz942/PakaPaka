@@ -137272,60 +137272,6 @@
               "role": "other",
               "in_grammar": true
             }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "月[げつ]曜[よう]日[び]に毎[まい]週[しゅう]会[かい]議[ぎ]があることになっている。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "月曜日",
-                  "reading": "げつようび",
-                  "role": "word",
-                  "vocabulary_slug": "getsuyoubi",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "毎週",
-                  "reading": "まいしゅう",
-                  "role": "word",
-                  "vocabulary_slug": "maishuu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "会議",
-                  "reading": "かいぎ",
-                  "role": "word",
-                  "vocabulary_slug": "kaigi",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "が",
-                  "reading": "が",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "ある",
-                  "reading": "ある",
-                  "role": "word",
-                  "vocabulary_slug": "aru",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "ことになっている",
-                  "reading": "ことになっている",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            }
           ]
         },
         {
@@ -140928,53 +140874,6 @@
               "role": "particle",
               "in_grammar": false
             }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "何[なに]を今[いま]しているところですか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "何",
-                  "reading": "なに",
-                  "role": "word",
-                  "vocabulary_slug": "nani",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "今",
-                  "reading": "いま",
-                  "role": "word",
-                  "vocabulary_slug": "ima",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "して",
-                  "reading": "して",
-                  "role": "word",
-                  "vocabulary_slug": "suru",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "いるところです",
-                  "reading": "いるところです",
-                  "role": "other",
-                  "in_grammar": true
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "particle",
-                  "in_grammar": false
-                }
-              ]
-            }
           ]
         },
         {
@@ -141215,15 +141114,15 @@
       ],
       "example_sentences": [
         {
-          "japanese": "会議の間に、電話を消した。",
-          "english": "During the meeting, I turned off my phone.",
+          "japanese": "会議の間に、電話が鳴った。",
+          "english": "During the meeting, the phone rang.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "kaigi",
             "denwa",
-            "kesu"
+            "naru-ring"
           ],
-          "furigana": "会[かい]議[ぎ]の間[あいだ]に、電[でん]話[わ]を消[け]した。",
+          "furigana": "会[かい]議[ぎ]の間[あいだ]に、電[でん]話[わ]が鳴[な]った。",
           "word_spans": [
             {
               "vocabulary_slug": "kaigi",
@@ -141236,10 +141135,10 @@
               "end": 8
             },
             {
-              "vocabulary_slug": "kesu",
+              "vocabulary_slug": "naru-ring",
               "start": 9,
               "end": 12,
-              "surface_form": "消した",
+              "surface_form": "鳴った",
               "inflection": "ta"
             }
           ],
@@ -141276,16 +141175,16 @@
               "in_grammar": false
             },
             {
-              "surface": "を",
-              "reading": "を",
+              "surface": "が",
+              "reading": "が",
               "role": "particle",
               "in_grammar": false
             },
             {
-              "surface": "消した",
-              "reading": "けした",
+              "surface": "鳴った",
+              "reading": "なった",
               "role": "word",
-              "vocabulary_slug": "kesu",
+              "vocabulary_slug": "naru-ring",
               "in_grammar": false
             }
           ]
@@ -166039,10 +165938,10 @@
           "is_primary": false
         }
       ],
-      "explanation_markdown": "You're texting a friend on a slow Saturday afternoon: {{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？ — want to watch a movie or something? You don't actually have a title in mind, and you're not going to research one before you hit send. Maybe nothing good is showing, maybe you just want an excuse to hang out and a movie is the easiest thing to name first. か何[なに]か lets you throw out one example — {{eiga||映[えい]画[が]}}, a movie — while openly admitting you don't care whether it ends up being that exact thing. Say it plainly, without か何[なに]か, and you've made a specific plan you now have to follow through on. Add か何[なに]か, and you've made an offer that's easy for both of you to bend.\n\n## How it works\n\nか何[なに]か attaches straight onto a noun: **Noun + か何[なに]か**. Nothing conjugates and nothing changes shape — you're not adding a verb ending or picking a form, you're just dropping two small words right after whatever thing you're using as your example.\n\n```jp\n{{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？\n```\n\n*Want to watch a movie or something?*\n\nThe か here isn't the yes/no question particle you already know from patterns like か{{dou||どう}}か — that か turns a whole clause into \"whether.\" This か is a different, older job: the same か that means \"or\" when you're choosing between two things (A か B). Pair it with {{nani||何[なに]}}か, \"something,\" and か何[なに]か reads as \"or something\" tacked straight onto whatever noun came before it. Put the two together right after a noun and you get \"[that noun] or something like it\" — a real suggestion, wrapped in a shrug. It sounds casual because it basically is casual; you'll hear it constantly among friends and rarely in a formal announcement.\n\nWhatever particle the sentence actually needs — を, が, に, and so on — goes *after* か何[なに]か as a whole unit, not stuck onto the bare noun first. か何[なに]か behaves like the noun grew two extra syllables; the rest of the sentence treats it as one piece.\n\n```jp\n{{koohii||コーヒー}}か何[なに]か{{nomu-v|masu|飲[の]みます}}か。\n```\n\n*Would you like coffee or something?*\n\nHere か何[なに]か sits between {{koohii||コーヒー}} and {{nomu-v|masu|飲[の]みます}}, doing the job a plain object marker を would otherwise do. Once か何[なに]か is in the sentence, you drop を entirely — a bare noun plus を plus か何[なに]か is not something anyone says, even though you might expect the object marker to still be needed somewhere. か何[なに]か already tells the listener what role {{koohii||コーヒー}} is playing.\n\nYou can also put か何[なに]か in front of {{aru||ある}}, when you're asking whether something — anything in a loose category — happens to be around, rather than hunting for one named item.\n\n```jp\n{{tsukue||机[つくえ]}}の{{ue||上[うえ]}}に{{kami-paper||紙[かみ]}}か何[なに]か{{aru|masu|あります}}か。\n```\n\n*Is there paper or something on the desk?*\n\nWhoever answers isn't expected to produce paper specifically. A notebook, an envelope, the back of a receipt — anything writable would satisfy the question. That's the whole point of naming {{kami-paper||紙[かみ]}} here: it's a stand-in for \"a thing like this,\" not a strict requirement, and a good answer might hand over something that isn't paper at all.\n\n## Rules and exceptions\n\nか何[なに]か only works when the noun in front of it could plausibly be swapped for something similar without breaking the sentence. That's the real test, and it's worth running before you use か何[なに]か on anything. In {{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？, swap {{eiga||映[えい]画[が]}} for {{ongaku||音[おん]楽[がく]}} (music) or {{hon||本[ほん]}} (a book) and the invitation still basically works — some easy, low-effort thing to do together. That's what makes {{eiga||映[えい]画[が]}} a legitimate \"example, not the point\" noun. If swapping the noun would change what you're actually asking for, か何[なに]か is the wrong tool.\n\n> Don't reach for か何[なに]か when you genuinely mean one specific, known thing. `友達か何か` reads like you're unsure whether the person is actually your friend — almost never what you mean. Say {{tomodachi||友[とも]達[だち]}} alone and drop か何[なに]か entirely; vagueness about a fact, rather than about an example, is not what this pattern is for.\n\nか何[なに]か is built for objects, food, and activities — everyday, replaceable items — not for people's identities or specific locations. That's part of why native speakers wince at trying to bolt it onto {{dare||誰[だれ]}} (who) or {{doko||どこ}} (where): naming a vague place or a vague person is a different kind of vagueness than naming a vague *thing*, and か何[なに]か isn't the tool for it. You'll eventually meet other words built for those jobs; for now, keep か何[なに]か parked on ordinary nouns.\n\nIt also helps to notice what か何[なに]か is not doing: it isn't hedging because the speaker is unsure of the facts, and it isn't being polite for politeness's sake. It's a deliberate choice to leave a detail open because the detail genuinely doesn't matter yet. That's a small distinction, but it explains why か何[なに]か shows up so often in casual invitations and offers, and so rarely in anything that reads like a report or a form — nobody fills out an application with \"book or something\" as an answer.\n\nか何[なに]か can also soften a whole request, so it doesn't come across as a demand, even when what you're describing is generous.\n\n```jp\n{{otouto||弟[おとうと]}}に{{hon||本[ほん]}}か何[なに]か{{kau-v|te|買[か]って}}{{ageru|stem|あげよう}}。\n```\n\n*I'll buy my younger brother a book or something.*\n\nYou haven't picked the book yet — you might not even end up buying a book at all, just something in that general spirit, maybe a game or a magazine. That vagueness is doing real work here: it signals you're being generous and easygoing about the choice, not that you're indecisive or don't care about the gift. Naming one concrete noun instead — {{hon||本[ほん]}}を{{kau-v|te|買[か]って}}{{ageru|stem|あげよう}}, no か何[なに]か — sounds like the decision is already final.\n\n## Contrast: か何[なに]か vs そういう・こういう\n\nThe words そういう and こういう mean \"that kind of\" and \"this kind of\" — both point at a category the listener can already picture, because it came up in conversation, because they said it, or because it's obvious from context. か何[なに]か is not that. It doesn't lean on anything already shared between speaker and listener; it introduces the category itself, right there in the sentence.\n\n```jp\nそういう{{hanashi||話[はなし]}}は{{suki||好[す]き}}じゃない。\n```\n\n*I don't like that kind of talk.*\n\nそういう{{hanashi||話[はなし]}} only works if you and the listener both already know which kind of {{hanashi||話[はなし]}} is meant — something specific was just said or implied a moment ago. か何[なに]か does the opposite job: it introduces a brand-new example that hasn't come up before, and tells the listener up front not to take it too literally.\n\n```jp\n{{isogashii||忙[いそが]しい}}から、{{amai||甘[あま]い}}ものか何[なに]か{{taberu|stem|食[た]べ}}たい。\n```\n\n*I'm busy, so I want to eat something sweet or whatever.*\n\nTry swapping in そういうもの here and the sentence falls apart — there's no \"that kind of thing\" already on the table for そういう to point back to; nobody has mentioned sweets yet. か何[なに]か doesn't need a category the conversation already agreed on; it invents one on the spot, right where it's used, which is exactly why it works so well for first mentions and offhand suggestions.\n\nPut the two side by side and the split is simple: そういう・こういう point backward, at something already named; か何[なに]か points forward, at something you're naming for the very first time and don't intend to pin down. Mixing them up doesn't usually produce nonsense — it just produces a sentence that assumes shared context nobody actually has, which is a strange thing to do to a listener who's hearing an idea for the first time.\n\n## Closing thought\n\nか何[なに]か buys you room to suggest something without committing to it — the noun you name is a placeholder, not a decision, and everyone in the conversation understands that instantly.\n\n```jp\n公[こう]園[えん]で{{ongaku||音[おん]楽[がく]}}か何[なに]か{{kiku-v|stem|聞[き]き}}たい。\n```\n\n*I want to listen to music or something in the park.*\n\nOnce you're ready to string several loose examples together instead of offering just one, you'll meet とか — \"things like this, things like that\" — which does for a whole list what か何[なに]か does for a single, disposable guess.\n",
+      "explanation_markdown": "You're texting a friend on a slow Saturday afternoon: {{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？ — want to watch a movie or something? You don't actually have a title in mind, and you're not going to research one before you hit send. Maybe nothing good is showing, maybe you just want an excuse to hang out and a movie is the easiest thing to name first. か何[なに]か lets you throw out one example — {{eiga||映[えい]画[が]}}, a movie — while openly admitting you don't care whether it ends up being that exact thing. Say it plainly, without か何[なに]か, and you've made a specific plan you now have to follow through on. Add か何[なに]か, and you've made an offer that's easy for both of you to bend.\n\n## How it works\n\nか何[なに]か attaches straight onto a noun: **Noun + か何[なに]か**. Nothing conjugates and nothing changes shape — you're not adding a verb ending or picking a form, you're just dropping two small words right after whatever thing you're using as your example.\n\n```jp\n{{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？\n```\n\n*Want to watch a movie or something?*\n\nThe か here isn't the yes/no question particle you already know from patterns like か{{dou||どう}}か — that か turns a whole clause into \"whether.\" This か is a different, older job: the same か that means \"or\" when you're choosing between two things (A か B). Pair it with {{nani||何[なに]}}か, \"something,\" and か何[なに]か reads as \"or something\" tacked straight onto whatever noun came before it. Put the two together right after a noun and you get \"[that noun] or something like it\" — a real suggestion, wrapped in a shrug. It sounds casual because it basically is casual; you'll hear it constantly among friends and rarely in a formal announcement.\n\nWhatever particle the sentence actually needs — を, が, に, and so on — goes *after* か何[なに]か as a whole unit, not stuck onto the bare noun first. か何[なに]か behaves like the noun grew two extra syllables; the rest of the sentence treats it as one piece.\n\n```jp\n{{koohii||コーヒー}}か何[なに]か{{nomu-v|masu|飲[の]みます}}か。\n```\n\n*Would you like coffee or something?*\n\nHere か何[なに]か sits between {{koohii||コーヒー}} and {{nomu-v|masu|飲[の]みます}}, and the を after it is dropped, as it often is in casual speech. {{koohii||コーヒー}}か何[なに]かを{{nomu-v|masu|飲[の]みます}}か is also correct. What nobody says is を stuck onto the bare noun first — {{koohii||コーヒー}}をか何[なに]か is not Japanese.\n\nYou can also put か何[なに]か in front of {{aru||ある}}, when you're asking whether something — anything in a loose category — happens to be around, rather than hunting for one named item.\n\n```jp\n{{tsukue||机[つくえ]}}の{{ue||上[うえ]}}に{{kami-paper||紙[かみ]}}か何[なに]か{{aru|masu|あります}}か。\n```\n\n*Is there paper or something on the desk?*\n\nWhoever answers isn't expected to produce paper specifically. A notebook, an envelope, the back of a receipt — anything writable would satisfy the question. That's the whole point of naming {{kami-paper||紙[かみ]}} here: it's a stand-in for \"a thing like this,\" not a strict requirement, and a good answer might hand over something that isn't paper at all.\n\n## Rules and exceptions\n\nか何[なに]か only works when the noun in front of it could plausibly be swapped for something similar without breaking the sentence. That's the real test, and it's worth running before you use か何[なに]か on anything. In {{eiga||映[えい]画[が]}}か何[なに]か{{miru-v|nai|見[み]ない}}？, swap {{eiga||映[えい]画[が]}} for {{ongaku||音[おん]楽[がく]}} (music) or {{hon||本[ほん]}} (a book) and the invitation still basically works — some easy, low-effort thing to do together. That's what makes {{eiga||映[えい]画[が]}} a legitimate \"example, not the point\" noun. If swapping the noun would change what you're actually asking for, か何[なに]か is the wrong tool.\n\n> Don't reach for か何[なに]か when you genuinely mean one specific, known thing. `友達か何か` reads like you're unsure whether the person is actually your friend — almost never what you mean. Say {{tomodachi||友[とも]達[だち]}} alone and drop か何[なに]か entirely; vagueness about a fact, rather than about an example, is not what this pattern is for.\n\nか何[なに]か is built for objects, food, and activities — everyday, replaceable items — not for people's identities or specific locations. That's part of why native speakers wince at trying to bolt it onto {{dare||誰[だれ]}} (who) or {{doko||どこ}} (where): naming a vague place or a vague person is a different kind of vagueness than naming a vague *thing*, and か何[なに]か isn't the tool for it. You'll eventually meet other words built for those jobs; for now, keep か何[なに]か parked on ordinary nouns.\n\nIt also helps to notice what か何[なに]か is not doing: it isn't hedging because the speaker is unsure of the facts, and it isn't being polite for politeness's sake. It's a deliberate choice to leave a detail open because the detail genuinely doesn't matter yet. That's a small distinction, but it explains why か何[なに]か shows up so often in casual invitations and offers, and so rarely in anything that reads like a report or a form — nobody fills out an application with \"book or something\" as an answer.\n\nか何[なに]か can also soften a whole request, so it doesn't come across as a demand, even when what you're describing is generous.\n\n```jp\n{{otouto||弟[おとうと]}}に{{hon||本[ほん]}}か何[なに]か{{kau-v|te|買[か]って}}{{ageru|stem|あげよう}}。\n```\n\n*I'll buy my younger brother a book or something.*\n\nYou haven't picked the book yet — you might not even end up buying a book at all, just something in that general spirit, maybe a game or a magazine. That vagueness is doing real work here: it signals you're being generous and easygoing about the choice, not that you're indecisive or don't care about the gift. Naming one concrete noun instead — {{hon||本[ほん]}}を{{kau-v|te|買[か]って}}{{ageru|stem|あげよう}}, no か何[なに]か — sounds like the decision is already final.\n\n## Contrast: か何[なに]か vs そういう・こういう\n\nThe words そういう and こういう mean \"that kind of\" and \"this kind of\" — both point at a category the listener can already picture, because it came up in conversation, because they said it, or because it's obvious from context. か何[なに]か is not that. It doesn't lean on anything already shared between speaker and listener; it introduces the category itself, right there in the sentence.\n\n```jp\nそういう{{hanashi||話[はなし]}}は{{suki||好[す]き}}じゃない。\n```\n\n*I don't like that kind of talk.*\n\nそういう{{hanashi||話[はなし]}} only works if you and the listener both already know which kind of {{hanashi||話[はなし]}} is meant — something specific was just said or implied a moment ago. か何[なに]か does the opposite job: it introduces a brand-new example that hasn't come up before, and tells the listener up front not to take it too literally.\n\n```jp\n{{isogashii||忙[いそが]しい}}から、{{amai||甘[あま]い}}ものか何[なに]か{{taberu|stem|食[た]べ}}たい。\n```\n\n*I'm busy, so I want to eat something sweet or whatever.*\n\nTry swapping in そういうもの here and the sentence falls apart — there's no \"that kind of thing\" already on the table for そういう to point back to; nobody has mentioned sweets yet. か何[なに]か doesn't need a category the conversation already agreed on; it invents one on the spot, right where it's used, which is exactly why it works so well for first mentions and offhand suggestions.\n\nPut the two side by side and the split is simple: そういう・こういう point backward, at something already named; か何[なに]か points forward, at something you're naming for the very first time and don't intend to pin down. Mixing them up doesn't usually produce nonsense — it just produces a sentence that assumes shared context nobody actually has, which is a strange thing to do to a listener who's hearing an idea for the first time.\n\n## Closing thought\n\nか何[なに]か buys you room to suggest something without committing to it — the noun you name is a placeholder, not a decision, and everyone in the conversation understands that instantly.\n\n```jp\n公[こう]園[えん]で{{ongaku||音[おん]楽[がく]}}か何[なに]か{{kiku-v|stem|聞[き]き}}たい。\n```\n\n*I want to listen to music or something in the park.*\n\nOnce you're ready to string several loose examples together instead of offering just one, you'll meet とか — \"things like this, things like that\" — which does for a whole list what か何[なに]か does for a single, disposable guess.\n",
       "caution_notes": [
         "Don't use か何か when you mean one specific, known thing — 友達か何か sounds like you doubt the person even is your friend.",
-        "Once か何か is in the sentence, drop the object marker を — a bare noun plus を plus か何か is never said together.",
+        "Put を after か何か, never between the noun and か何か — コーヒーをか何か is never said. After か何か, を is often dropped in casual speech: コーヒーか何か飲む and コーヒーか何かを飲む are both correct.",
         "か何か is for replaceable objects, foods, and activities, not for vague people or vague places."
       ],
       "related_grammar_slugs": [
@@ -211158,14 +211057,6 @@
                   "in_grammar": false
                 }
               ]
-            },
-            {
-              "furigana": "子[こ]供[ども]もも分[わ]かります。",
-              "kind": "other_grammar"
-            },
-            {
-              "furigana": "子[こ]供[ども]でもも分[わ]かります。",
-              "kind": "other_grammar"
             }
           ]
         },
