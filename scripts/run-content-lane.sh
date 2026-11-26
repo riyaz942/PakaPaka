@@ -14,12 +14,18 @@ Usage: scripts/run-content-lane.sh --workflow <name> --levels <N|A-B>
               (docs/workflows/<name>-single-session-workflow-automation-prompt.md)
   --levels    one level (6) or a range (1-20)
   --type      radical | kanji | vocab | grammar (required for the mnemonic lane)
-  --prompt    other values for the workflow, e.g. "slug-count = 5"
+  --prompt    other values for the workflow, comma-separated,
+              e.g. "slug-count = 5" or "type = radical, slug-count = 5"
   --model     claude --model (default: the CLI default)
   --effort    claude --effort: low | medium | high | xhigh | max
 
-Before each level, the script counts the items left at that level
+Before each session, the script counts the items left at the level
 (generate_content/lane_remaining.py) and skips the level when there are none.
+The batch size (slug-count, point-count or seed-count; from --prompt, else the
+prompt's example value) is a target. The script splits the items left into
+equal sessions near that size. A remainder of up to 3 items (and at most half
+the batch size) goes into the other sessions, not into a session of its own.
+With point-count = 6: 7 or 9 items left -> 1 session; 10 -> 5 + 5; 13 -> 7 + 6.
 Each session commits its own work and ends with "LEVEL_STATUS: done" or
 "LEVEL_STATUS: more". The script stops when a session fails, leaves
 uncommitted changes, gives no status line, or says "more" with no new commit.
@@ -54,6 +60,37 @@ prompt_file="docs/workflows/${workflow}-single-session-workflow-automation-promp
 [ -f "$prompt_file" ] || { echo "No workflow prompt: $prompt_file" >&2; exit 2; }
 command -v jq >/dev/null || { echo "jq is required" >&2; exit 2; }
 
+# The batch-size value of the prompt, for example `<point-count = 6>`.
+count_default="$(grep -m1 -oE '<[a-z]+-count = [0-9]+>' "$prompt_file" || true)"
+[[ "$count_default" =~ ^\<([a-z]+-count)\ =\ ([0-9]+)\>$ ]] \
+  || { echo "No <...-count = N> value in $prompt_file" >&2; exit 2; }
+count_key="${BASH_REMATCH[1]}" size="${BASH_REMATCH[2]}"
+
+# Split --prompt into its values. The script sets the batch-size value for each
+# session, so take it out of the others.
+other_values=""
+while IFS= read -r pair; do
+  [[ "$pair" =~ ^[[:space:]]*(.*[^[:space:]])[[:space:]]*$ ]] || continue
+  pair="${BASH_REMATCH[1]}"
+  if [[ "$pair" =~ ^${count_key}[[:space:]]*=[[:space:]]*(.*)$ ]]; then
+    size="${BASH_REMATCH[1]}"
+  else
+    other_values+="- $pair"$'\n'
+  fi
+done < <(printf '%s\n' "$extra" | tr ',' '\n')
+[[ "$size" =~ ^[1-9][0-9]*$ ]] || { echo "$count_key must be a positive number, got: $size" >&2; exit 2; }
+
+# Sessions for $1 items at $size items per session. A remainder of up to 3
+# items, and at most half of $size, goes into the other sessions.
+sessions_for() {
+  local sessions=$(( ($1 + size - 1) / size )) rest=$(( $1 % size )) slack=$(( size / 2 ))
+  [ "$slack" -le 3 ] || slack=3
+  if [ "$sessions" -gt 1 ] && [ "$rest" -gt 0 ] && [ "$rest" -le "$slack" ]; then
+    sessions=$((sessions - 1))
+  fi
+  echo "$sessions"
+}
+
 # Finder rewrites .DS_Store at any time, so it does not count as a change.
 dirty() { git status --porcelain | grep -v '\.DS_Store$' || true; }
 stop() { echo; echo "STOPPED: $*" >&2; echo "Total cost so far: \$$total_cost" >&2; exit 1; }
@@ -73,9 +110,9 @@ claude_args=(-p --output-format json --permission-mode auto --permission-prompts
 
 # A prompt names its level value `levels` (a range) or `level`. The run value
 # must use the same name, or the session keeps the example value in the prompt.
-if grep -q '^<levels = ' "$prompt_file"; then level_key=levels; else level_key=level; fi
+if grep -q '<levels = ' "$prompt_file"; then level_key=levels; else level_key=level; fi
 
-echo "Workflow: $workflow | levels $first-$last | branch $(git branch --show-current)"
+echo "Workflow: $workflow | levels $first-$last | $count_key $size | branch $(git branch --show-current)"
 echo "Logs: $run_dir"
 
 # Items still to do at a level, from the same selection as the lane's Step 1.
@@ -90,10 +127,12 @@ for ((level = first; level <= last; level++)); do
     echo; echo "== Level $level: nothing left, skipped"
     continue
   fi
-  echo; echo "== Level $level: $left item(s) left"
+  echo; echo "== Level $level: $left item(s) left, $(sessions_for "$left") session(s) planned"
   session=0
   while :; do
     session=$((session + 1))
+    sessions="$(sessions_for "$left")"
+    batch=$(( (left + sessions - 1) / sessions ))
     name="level-$(printf %02d "$level")-session-$session"
     prompt_path="$run_dir/$name.prompt.md"
     log="$run_dir/$name.json"
@@ -103,13 +142,14 @@ for ((level = first; level <= last; level++)); do
       printf '\n---\n\nValues for this run. They replace the example values in angle brackets above.\n\n'
       printf -- '- %s = %s\n' "$level_key" "$level"
       [ -z "$kind" ] || printf -- '- type = %s\n' "$kind"
-      [ -z "$extra" ] || printf -- '- %s\n' "$extra"
+      printf -- '- %s = %s\n' "$count_key" "$batch"
+      printf '%s' "$other_values"
       printf '\nThis run is unattended. Nobody can answer a question, so do not ask one.\n'
       printf 'Do the whole workflow, then its last step: commit, then LEVEL_STATUS.\n'
     } > "$prompt_path"
 
     head_before="$(git rev-parse HEAD)"
-    echo "-- level $level, session $session: running..."
+    echo "-- level $level, session $session: $batch of $left item(s), running..."
     claude_ok=1
     claude "${claude_args[@]}" < "$prompt_path" > "$log" || claude_ok=0
 
@@ -126,7 +166,10 @@ for ((level = first; level <= last; level++)); do
     case "$status" in
       done) echo "   level $level is done"; break ;;
       more) [ "$head_before" != "$(git rev-parse HEAD)" ] \
-              || stop "level $level session $session said more but made no commit. Read $log" ;;
+              || stop "level $level session $session said more but made no commit. Read $log"
+            left="$(remaining "$level")" || stop "could not count the items left at level $level (see the error above)"
+            [ "$left" != 0 ] \
+              || stop "level $level session $session said more, but lane_remaining.py counts 0 items left. They must use the same selection" ;;
       *)    stop "level $level session $session gave no LEVEL_STATUS line. Read $log" ;;
     esac
   done

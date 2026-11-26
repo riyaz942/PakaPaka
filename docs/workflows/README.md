@@ -44,6 +44,11 @@ scripts/run-content-lane.sh --workflow radical-kanji-vocab-mnemonic --levels 1-2
 ```
 
 - `--workflow` is the file name before `-single-session-workflow-automation-prompt.md`.
+- The batch size (`slug-count`, `point-count` or `seed-count`, from `--prompt` or the
+  prompt's example value) is a target. Before each session the script counts the items
+  left at the level and splits them into equal sessions near that size. A remainder of
+  up to 3 items, and at most half the batch size, goes into the other sessions. With
+  `point-count = 6`: 7 or 9 items left → 1 session; 10 → 5 + 5; 13 → 7 + 6.
 - Each session commits its own work only when it found no issues, and ends with
   `LEVEL_STATUS: done` or `LEVEL_STATUS: more` (the last step of each prompt).
 - The script stops when a session leaves uncommitted changes, fails, gives no
