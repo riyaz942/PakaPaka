@@ -22978,7 +22978,12 @@
           "jouzu",
           "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "練習をすればするほど、上手になります。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "これはそれほど難しくない",
@@ -23024,7 +23029,16 @@
           "wakaru",
           "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は考えれば考えるほど分からなくなる",
+            "kind": "valid"
+          },
+          {
+            "japanese": "考えれば考えるほど私は分からなくなる",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "話せば話すほど楽しくなる",
@@ -23034,7 +23048,12 @@
           "tanoshii",
           "naru-become"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私たちは話せば話すほど楽しくなる",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "泣くほど痛かったですか。",
@@ -23047,6 +23066,14 @@
           {
             "japanese": "泣くくらい痛かったですか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは泣くほど痛かったですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは泣くくらい痛かったですか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -23058,7 +23085,12 @@
           "kinou",
           "samui"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日は昨日ほど寒くありません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "山ほど食べ物を買いました。",
@@ -23072,6 +23104,18 @@
           {
             "japanese": "食べ物を山ほど買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "山ほどの食べ物を買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は山ほど食べ物を買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は食べ物を山ほど買いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -23084,13 +23128,22 @@
           "hito",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼ほど親切な人はいないです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kurai-degree": {
@@ -23300,6 +23353,18 @@
           {
             "japanese": "英語だけじゃなく、日本語も勉強しました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "英語だけでなく、日本語も勉強をしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は英語だけでなく、日本語も勉強しました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は英語だけでなく、日本語も勉強をしました。",
+            "kind": "valid"
           }
         ]
       },
@@ -23369,7 +23434,12 @@
           "shinsetsu",
           "yuumei"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼は親切なだけでなく、有名でもある。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "高いだけじゃなく、まずい。",
@@ -23421,13 +23491,26 @@
           "yasai",
           "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "弟は肉だけじゃなく、野菜も食べない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私の弟は肉だけでなく、野菜も食べない。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kagirazu": {
@@ -24499,6 +24582,38 @@
           {
             "japanese": "彼が来るか分かりません。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "彼が来るかどうかは分かりません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が来るかは分かりません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "彼が来るかどうか、私は分かりません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が来るか、私は分かりません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は彼が来るかどうか分かりません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は彼が来るか分かりません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "彼が来るかどうか分からないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が来るか分からないです。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -24511,7 +24626,24 @@
           "oboeru",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "ドアを閉めたかどうかは覚えていない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ドアを閉めたかどうかを覚えていない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はドアを閉めたかどうか覚えていない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ドアを閉めたかどうか、私は覚えていない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "明日雨が降るかどうか分からない。",
@@ -24522,7 +24654,24 @@
           "furu-rain",
           "wakaru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "明日雨が降るかどうかは分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雨が明日降るかどうか分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日雨が降るかどうか分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日雨が降るかどうかが分からない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "彼が学生かどうか分からない。",
@@ -24532,7 +24681,24 @@
           "gakusei",
           "wakaru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "彼が学生かどうかは分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は彼が学生かどうか分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が学生かどうかが分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼が学生かどうか私は分からない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "テストに合格したかどうか、まだ分からない。",
@@ -24543,7 +24709,28 @@
           "mada",
           "wakaru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "テストに合格したかどうかは、まだ分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "まだ、テストに合格したかどうか分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はまだテストに合格したかどうか分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "テストに合格したかどうか、私はまだ分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "テストに合格したかどうかが、まだ分からない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "でも、友達が本当に来るかどうか分からない。",
@@ -24555,7 +24742,20 @@
           "kuru-v",
           "wakaru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "でも、友達が本当に来るかどうかは分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "でも、友達が本当に来るかどうか、私は分からない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "でも、私は友達が本当に来るかどうか分からない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "この服が好きかどうか、母に聞きました。",
@@ -24571,6 +24771,18 @@
           {
             "japanese": "母にこの服が好きかどうか聞きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この服が好きかどうかを母に聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は母にこの服が好きかどうか聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母にこの服が好きかどうかを聞きました。",
+            "kind": "valid"
           }
         ]
       },
@@ -24583,7 +24795,20 @@
           "shusseki-suru",
           "kimeru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "明日の会議に出席するかどうかは決めましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日の会議に出席するかどうかを決めましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは明日の会議に出席するかどうか決めましたか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "電車が来るかどうか、駅の人に聞いた。",
@@ -24599,6 +24824,18 @@
           {
             "japanese": "駅の人に電車が来るかどうか聞いた。",
             "kind": "valid"
+          },
+          {
+            "japanese": "電車が来るかどうかを駅の人に聞いた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は電車が来るかどうか、駅の人に聞いた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "駅の人に電車が来るかどうかを聞いた。",
+            "kind": "valid"
           }
         ]
       },
@@ -24610,13 +24847,30 @@
           "nomu-v",
           "wasureru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "薬を飲んだかどうかは忘れました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "薬を飲んだかどうかを忘れました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は薬を飲んだかどうか忘れました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ka-nanka": {
@@ -24667,7 +24921,16 @@
           "kami-paper",
           "aru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "机の上に紙か何かがありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "紙か何かが机の上にありますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "弟に本か何か買ってあげました。",
@@ -24678,7 +24941,16 @@
           "kau-v",
           "ageru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "本か何か弟に買ってあげました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は弟に本か何か買ってあげました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "甘い物か何か食べたい。",
@@ -24688,7 +24960,16 @@
           "mono",
           "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "甘い物か何かが食べたい。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は甘い物か何か食べたい。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "夜は音楽か何か聞きたい。",
@@ -24698,7 +24979,20 @@
           "ongaku",
           "kiku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "夜は音楽か何かが聞きたい。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "夜、音楽か何か聞きたい。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は夜は音楽か何か聞きたい。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "週末はスポーツか何かしませんか。",
@@ -24708,7 +25002,12 @@
           "supootsu",
           "suru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "週末にスポーツか何かしませんか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "ペンか何か持っていませんか。",
@@ -24728,13 +25027,26 @@
           "hana-v",
           "okuru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "花か何か友達に送りましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "友達へ花か何か送りましょう。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "toka": {
