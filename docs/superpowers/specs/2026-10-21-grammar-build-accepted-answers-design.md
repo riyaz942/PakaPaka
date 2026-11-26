@@ -91,7 +91,8 @@ Per level, per batch of grammar points, in one session:
 
 1. **Select** — the script prints the next points not yet checked at the
    current workflow version.
-2. **Check sentences** — a fresh subagent reads each sentence with its
+2. **Check sentences** — the session (not a subagent: the pool lane wrote
+   the sentences, so this is not self-approval) reads each sentence with its
    English, register, listed words and the point's lesson (meaning,
    structure, `caution_notes`). It returns `ok`, or `fix` with the smallest
    corrected sentence and a one-line reason. The script applies fixes and
@@ -102,7 +103,7 @@ Per level, per batch of grammar points, in one session:
    its English, register, listed words and the grammar span) and writes
    candidate answers per sentence.
 4. **Judge** — a fresh subagent, never the proposing session, judges each
-   candidate `valid` / `contrast` / `wrong` with a one-line reason. The
+   candidate (one subagent may judge up to 3 points, each by its own prompt) `valid` / `contrast` / `wrong` with a one-line reason. The
    verdict set and judging rules carry over from
    `prompts/particle-alternates.md`, widened from "one particle" to "any
    difference".

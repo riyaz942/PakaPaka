@@ -3,17 +3,17 @@ Task: Grammar Build Accepted Answers — Single Session
 For a batch of grammar points, fix the pool sentences that break their own
 lesson, then add every other answer a teacher would mark fully correct on a
 grammar Build card (お茶は熱いうちに… for お茶が熱いうちに…, 電話をします for
-電話します) to `curriculum/grammar/pool.json`. This session proposes the
-answers; **fresh subagents** check the sentences and judge the answers,
-because a model reviewing its own output clears its own choices. No browser,
-no API credentials. Run this same prompt again in a fresh session for the
+電話します) to `curriculum/grammar/pool.json`. This session checks the
+sentences (the pool lane wrote them, not this session) and proposes the
+answers; **fresh subagents** judge the answers, because a model reviewing its
+own output clears its own choices. No browser, no API credentials. Run this same prompt again in a fresh session for the
 next batch.
 
 Spec: `docs/superpowers/specs/2026-10-21-grammar-build-accepted-answers-design.md`
 
 Levels (ladder levels 1–60; one level such as `6`, or a range such as `1-20`): <levels = 1-20>
 Points this session: <point-count = 6>
-Check and judge model: <check-model = opus>
+Judge model: <judge-model = opus>
 
 Use a strong reasoning model at high effort. Pass `claude-code` as `--model`
 in Steps 2 and 4.
@@ -37,25 +37,23 @@ current `CHECK_VERSION`, in ladder order. A point whose pool entry was
 rewritten by the pool lane comes back here. Use exactly the printed slugs. If
 it prints 0, the levels are done — stop and report.
 
-Step 2: Check the sentences
+Step 2: Check the sentences (this session)
 
 checkprompts --slugs <slugs,comma,no,spaces>
 
-For each point, spawn **one fresh subagent** (model `<check-model>`, never
-this session, never shared across points) that reads
+For each point, read
 `generate_content/web/answers/<level-dir>/<slug>.check.prompt.md` — everything
-below its HTML comment header is the task — and writes
-`<slug>.check.reply.md` with exactly one fenced ```json block. Wait for the
-subagent to **finish**, not for the file to appear. Then:
+below its HTML comment header is the task — and write
+`<slug>.check.reply.md` yourself: exactly one fenced ```json block. Then:
 
 checkingest --slug <slug> --model claude-code
 
 - PASS: fixes (if any) are written to `pool.json` and printed. Keep the
   printed lines for the report.
-- Exit 1: the prompt is rewritten with the errors; spawn a fresh subagent on
-  it. Budget: 4 attempts, then run
-  `skip --slug <slug> --reason "<last errors>"` and drop the
-  point from this run.
+- Exit 1: the prompt is rewritten with the errors; fix only
+  `<slug>.check.reply.md` from it and run `checkingest` again. Budget: 4
+  attempts, then run `skip --slug <slug> --reason "<last errors>"` and drop
+  the point from this run.
 - Exit 2 (`unfixable`): the point is already recorded as skipped in
   `pool.json` with the printed reason; drop it from this run.
 
@@ -66,31 +64,39 @@ proposeprompts --slugs <remaining slugs>
 Read each `<slug>.propose.prompt.md` (below the header) and write
 `<slug>.propose.reply.md` yourself: exactly one fenced ```json block.
 
-Step 4: Judge and ingest, one point at a time
+Step 4: Judge and ingest, up to 3 points per subagent
+
+For each point, run:
 
 judgeprompts --slug <slug>
 
 - Exit 1: your proposal has errors; fix only `<slug>.propose.reply.md` from
   the rewritten prompt and run `judgeprompts` again.
 - "0 candidates": go straight to `ingest`.
-- Otherwise spawn **one fresh subagent** (model `<check-model>`, never this
-  session) that reads `<slug>.judge.prompt.md` and writes
-  `<slug>.judge.reply.md`; wait for it to finish. Then:
+
+Put the points that have candidates into groups of **at most 3**. Put related
+points in the same group when you can (`kara-because` with `node-because`).
+For each group, spawn **one fresh subagent** (model `<judge-model>`, never
+this session, never shared across groups). Give it the list of
+`<slug>.judge.prompt.md` paths. Tell it to judge each point only by that
+point's own prompt and to write one `<slug>.judge.reply.md` per point. Wait
+for it to finish. Then, for each point in the group:
 
 ingest --slug <slug> --model claude-code
 
 On PASS the valid answers and their `other_grammar` pairs are added, the
 point gets `_meta.answers_check`, and its files are deleted; keep the printed
 `+` lines for the report. On failure the judge prompt is rewritten with the
-errors: spawn a fresh subagent on it. Budget: 4 attempts per point, then
-run `skip --slug <slug> --reason "<last errors>"`.
+errors: spawn a fresh subagent for that one point only. Budget: 4 attempts
+per point (the group pass is the first), then run
+`skip --slug <slug> --reason "<last errors>"`.
 
 A skipped point carries `_meta.answers_check.skipped`, so `select` moves past
 it; the reason is in `pool.json` for the maintainer.
 
 Rules:
 
-- Never judge your own proposals, and never hand-edit a check or judge reply.
+- Never judge your own proposals, and never hand-edit a judge reply.
 - Never edit the script, the prompts, the validator, or curriculum source
   data to make a point pass.
 - Never set `review_status` and never bump `CHECK_VERSION`.

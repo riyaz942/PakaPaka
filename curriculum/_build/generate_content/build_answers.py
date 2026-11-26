@@ -4,7 +4,7 @@
 docs/workflows/build-answers-single-session-workflow-automation-prompt.md;
 spec: docs/superpowers/specs/2026-10-21-grammar-build-accepted-answers-design.md).
 
-Per grammar point, in order: a fresh model checks every pool sentence against
+Per grammar point, in order: the session checks every pool sentence against
 its lesson and fixes a wrong one; the session proposes the other answers a
 teacher would mark correct; a second fresh model judges them; only "valid"
 answers are merged into pool.json as alternates. The app grades by exact
