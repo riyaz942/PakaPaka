@@ -464,11 +464,11 @@
     }
   },
   "te-kara": {
-    "mnemonic_text": "Aunt Mimi rinses her mask, checks both fins, then yells \"<reading>Coral!</reading>\" and flops backward from the boat. The dive comes only <grammar>after doing</grammar> the rest. 宿題をし<reading>てから</reading>、海に行く。",
+    "mnemonic_text": "Aunt Mimi rinses her mask, checks both fins, then yells \"<reading>Coral!</reading>\" and flops backward from the boat. The dive comes only <grammar>after doing</grammar> the rest. ご飯を食べ<reading>てから</reading>、お茶を飲みます。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "sugiru": {
@@ -536,11 +536,11 @@
     }
   },
   "nai-form": {
-    "mnemonic_text": "A spoonful of peas floats toward Dai, the truck-sized baby. He grunts \"<reading>Nah, I</reading>...\" and the spoon bends flat against his lip: a plain, casual <grammar>not</grammar>. 野菜を食べ<reading>ない</reading>。",
+    "mnemonic_text": "A spoonful of peas floats toward Dai, the truck-sized baby. He grunts \"<reading>Nah, I</reading>...\" and the spoon bends flat against his lip: a plain, casual <grammar>not</grammar>. コーヒーは飲ま<reading>ない</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "naide-kudasai": {
@@ -552,11 +552,11 @@
     }
   },
   "nakereba-naranai": {
-    "mnemonic_text": "The last bus has gone, so Jin the giant groans \"<reading>Nah... carry Barry?</reading>\" at his sleeping friend, then lifts him up the mountain trail anyway, because he <grammar>has to</grammar>. 明日学校に行か<reading>なければならない</reading>。",
+    "mnemonic_text": "The last bus has gone, so Jin the giant groans \"<reading>Nah... carry Barry?</reading>\" at his sleeping friend, then lifts him up the mountain trail anyway, because he <grammar>has to</grammar>. 明日、病院に行か<reading>なければならない</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "shika-nai": {
@@ -592,11 +592,11 @@
     }
   },
   "nakutemo-ii": {
-    "mnemonic_text": "At three in the morning, in Koichi's shop, the new clerk is polishing each rice ball on the shelf by the door. Koichi yawns \"<reading>Nah, could tomorrow</reading>\": he <grammar>doesn't have to</grammar>. 急が<reading>なくてもいい</reading>。",
+    "mnemonic_text": "At three in the morning, in Koichi's shop, the new clerk is polishing each rice ball on the shelf by the door. Koichi yawns \"<reading>Nah, could tomorrow</reading>\": he <grammar>doesn't have to</grammar>. 今日は手紙を書か<reading>なくてもいい</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "noni": {
