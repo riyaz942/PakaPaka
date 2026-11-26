@@ -24915,6 +24915,14 @@
           {
             "japanese": "お茶でも飲みませんか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "お茶か何かを飲みませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "お茶でもを飲みませんか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -24925,7 +24933,12 @@
           "eiga",
           "miru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "映画か何かを見ない？",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "コーヒーか何か飲みますか。",
@@ -24934,7 +24947,12 @@
           "koohii",
           "nomu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "コーヒーか何かを飲みますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "机の上に紙か何かありますか。",
@@ -24952,6 +24970,14 @@
           },
           {
             "japanese": "紙か何かが机の上にありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "机の上には紙か何かありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "机の上には紙か何かがありますか。",
             "kind": "valid"
           }
         ]
@@ -24973,6 +24999,14 @@
           {
             "japanese": "私は弟に本か何か買ってあげました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "弟に本か何かを買ってあげました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "本か何かを弟に買ってあげました。",
+            "kind": "valid"
           }
         ]
       },
@@ -24991,6 +25025,10 @@
           },
           {
             "japanese": "私は甘い物か何か食べたい。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "甘い物か何かを食べたい。",
             "kind": "valid"
           }
         ]
@@ -25015,6 +25053,10 @@
           {
             "japanese": "私は夜は音楽か何か聞きたい。",
             "kind": "valid"
+          },
+          {
+            "japanese": "夜は音楽か何かを聞きたい。",
+            "kind": "valid"
           }
         ]
       },
@@ -25030,6 +25072,14 @@
           {
             "japanese": "週末にスポーツか何かしませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "週末はスポーツか何かをしませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "週末にスポーツか何かをしませんか。",
+            "kind": "valid"
           }
         ]
       },
@@ -25041,7 +25091,12 @@
           "motsu",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "ペンか何かを持っていませんか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "友達に花か何か送りましょう。",
@@ -25059,6 +25114,14 @@
           {
             "japanese": "友達へ花か何か送りましょう。",
             "kind": "valid"
+          },
+          {
+            "japanese": "友達に花か何かを送りましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "花か何かを友達に送りましょう。",
+            "kind": "valid"
           }
         ]
       }
@@ -25066,7 +25129,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "toka": {
