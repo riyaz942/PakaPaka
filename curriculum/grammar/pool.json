@@ -18998,7 +18998,12 @@
           "denwa",
           "naru-ring"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "電話が会議の間に鳴った。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "会議の間に、雨が降った。",
@@ -19024,7 +19029,12 @@
           "totemo",
           "shizuka"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "教室は授業の間、とても静かだった。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "赤ちゃんが寝ている間、本を読みます。",
@@ -19043,6 +19053,10 @@
           },
           {
             "japanese": "赤ちゃんが寝ている間、私は本を読みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は赤ちゃんが寝ている間、本を読みます。",
             "kind": "valid"
           }
         ]
@@ -19092,6 +19106,14 @@
           {
             "japanese": "出かけている間に、誰かが来ましたか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "誰か私が出かけている間に来ましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "誰かが私が出かけている間に来ましたか。",
+            "kind": "valid"
           }
         ]
       },
@@ -19140,6 +19162,14 @@
           {
             "japanese": "カメラを旅行の間に無くしました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "旅行の間に、私はカメラを無くしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は旅行の間に、カメラを無くしました。",
+            "kind": "valid"
           }
         ]
       },
@@ -19157,6 +19187,10 @@
           {
             "japanese": "友達を待っている間、私は新聞を読んだ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は友達を待っている間、新聞を読んだ。",
+            "kind": "valid"
           }
         ]
       }
@@ -19164,7 +19198,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "uchi-ni": {
