@@ -116,6 +116,14 @@ class OtherGrammarPairsTest(unittest.TestCase):
             ba.other_grammar_pairs(TEA, "うちに", ["お茶が熱い間に飲んだ方がいいですよ。"],
                                    "お茶は熱い前に飲んだ方がいいですよ。"), [])
 
+    def test_no_pair_when_the_valid_alternate_extends_the_chunk(self):
+        home = "家へ帰る時、パンを買いました。"
+        before = ["家へ帰る前に、パンを買いました。"]
+        self.assertEqual(ba.other_grammar_pairs(home, "時", before, "家へ帰る時に、パンを買いました。"), [])
+        self.assertEqual(
+            ba.other_grammar_pairs(home, "時", before, "私は家へ帰る時、パンを買いました。"),
+            ["私は家へ帰る前に、パンを買いました。"])
+
 
 CANDIDATES = [(0, TEA_WA), (0, "お茶が熱いうちに飲んだ方はいいですよ。")]
 REPLY = {"verdicts": [
