@@ -19979,6 +19979,14 @@
           {
             "japanese": "忙しいので、行けない。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は忙しいから、行けない。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は忙しいので、行けない。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -19993,6 +20001,14 @@
         "alternates": [
           {
             "japanese": "静かですから、ここが好きです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "静かだから、私はここが好きです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "静かですから、私はここが好きです。",
             "kind": "valid"
           }
         ]
@@ -20014,6 +20030,10 @@
           {
             "japanese": "今日は寒いですから、家にいます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日は寒いから、私は家にいます。",
+            "kind": "valid"
           }
         ]
       },
@@ -20033,6 +20053,22 @@
           {
             "japanese": "頭が痛いですから、休みます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "頭が痛いから、私は休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "頭が痛いので、私は休みます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は頭が痛いから、休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は頭が痛いので、休みます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -20057,6 +20093,14 @@
           {
             "japanese": "雨が降ったので、出かけなかった。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "雨が降ったから、私は出かけなかった。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雨が降ったので、私は出かけなかった。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -20078,6 +20122,22 @@
           {
             "japanese": "この本は面白いので、また読みたいです。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "この本が面白いから、また読みたいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この本が面白いので、また読みたいです。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "この本は面白いから、私はまた読みたいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この本は面白いので、私はまた読みたいです。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -20097,6 +20157,22 @@
           },
           {
             "japanese": "熱があるので、学校を休みます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "熱があるから、私は学校を休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "熱があるので、私は学校を休みます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は熱があるから、学校を休みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は熱があるので、学校を休みます。",
             "kind": "other_grammar"
           }
         ]
@@ -20128,6 +20204,10 @@
           {
             "japanese": "暑いですから、窓を開けましょうか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "暑いから、私が窓を開けましょうか。",
+            "kind": "valid"
           }
         ]
       }
@@ -20135,7 +20215,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kawarini": {
@@ -20614,7 +20698,12 @@
           "nani",
           "shiru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "その映画について彼は何も知らない。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "日本の文化について話しました。",
@@ -20624,7 +20713,12 @@
           "bunka",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私たちは日本の文化について話しました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "旅行について話しましょう。",
@@ -20642,7 +20736,12 @@
           "nani",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは何について書きますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "彼女は自分の夢について話さなかった。",
@@ -20653,7 +20752,12 @@
           "yume",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "自分の夢について彼女は話さなかった。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "先生に日本の料理について聞きました。",
@@ -20667,6 +20771,10 @@
         "alternates": [
           {
             "japanese": "日本の料理について先生に聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は先生に日本の料理について聞きました。",
             "kind": "valid"
           }
         ]
@@ -20686,6 +20794,10 @@
           {
             "japanese": "この町についてよく知っていますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この町についてあなたはよく知っていますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -20697,7 +20809,12 @@
           "kangaeru",
           "iru-exist"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は将来について考えています。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "その本について、どう思いますか。",
@@ -20712,6 +20829,14 @@
           {
             "japanese": "その本についてどう思いますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたはその本について、どう思いますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "その本について、あなたはどう思いますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -20723,13 +20848,26 @@
           "hanasu-v",
           "suki"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は音楽について話すのが好きです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "音楽について話すことが好きです。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "niyoruto": {
@@ -20756,6 +20894,14 @@
           {
             "japanese": "新聞によると、明日は雨だそうです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "新聞によると、明日雨です。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は、新聞によると、雨です。",
+            "kind": "valid"
           }
         ]
       },
@@ -20774,6 +20920,14 @@
           },
           {
             "japanese": "ラジオによると、今日は雪だそうです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "ラジオによると、今日雪です。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日は、ラジオによると、雪です。",
             "kind": "valid"
           }
         ]
@@ -20795,6 +20949,10 @@
           {
             "japanese": "友達の話によると、テストは来週だそうです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "友達の話によると、来週テストです。",
+            "kind": "valid"
           }
         ]
       },
@@ -20810,6 +20968,10 @@
         "alternates": [
           {
             "japanese": "先生によれば、明日は授業がありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生によると、明日授業がありません。",
             "kind": "valid"
           }
         ]
@@ -20830,6 +20992,10 @@
           },
           {
             "japanese": "医者によると、病気はすぐ治るそうです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "医者によると、病気はすぐに治ります。",
             "kind": "valid"
           }
         ]
@@ -20887,6 +21053,10 @@
           {
             "japanese": "母によれば、その店はもうありません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "母によると、もうその店はありません。",
+            "kind": "valid"
           }
         ]
       },
@@ -20914,7 +21084,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tame": {
@@ -20937,6 +21111,10 @@
         "alternates": [
           {
             "japanese": "雪のために、電車が止まりました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "電車が雪のため止まりました。",
             "kind": "valid"
           }
         ]
@@ -20986,6 +21164,14 @@
           {
             "japanese": "風邪のために、学校を休みました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "風邪のため、私は学校を休みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は風邪のため、学校を休みました。",
+            "kind": "valid"
           }
         ]
       },
@@ -21007,6 +21193,14 @@
           {
             "japanese": "この部屋は暗いので、よく見えません。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "この部屋が暗いため、よく見えません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この部屋が暗いので、よく見えません。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -21022,6 +21216,10 @@
         "alternates": [
           {
             "japanese": "今週は忙しいために、旅行に行けません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今週は忙しいため、旅行へ行けません。",
             "kind": "valid"
           }
         ]
@@ -21054,6 +21252,10 @@
           {
             "japanese": "電車が遅れたために、会議に遅れました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "電車が遅れたため、私は会議に遅れました。",
+            "kind": "valid"
           }
         ]
       },
@@ -21081,7 +21283,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kagiri": {
@@ -21778,6 +21984,10 @@
           {
             "japanese": "私は今日忙しいんだ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "今日忙しいんだ。",
+            "kind": "valid"
           }
         ]
       },
@@ -21855,6 +22065,10 @@
           {
             "japanese": "私は猫が好きなんです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は猫が好きなのです。",
+            "kind": "valid"
           }
         ]
       }
@@ -21862,7 +22076,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "nikui-yasui": {
@@ -21967,6 +22185,14 @@
           {
             "japanese": "この地図は分かりにくいので、私は使いません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この地図は分かりにくいですので、使いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "分かりにくいので、この地図は使いません。",
+            "kind": "valid"
           }
         ]
       },
@@ -21992,7 +22218,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tsutsu-aru": {
