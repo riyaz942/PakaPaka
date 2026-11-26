@@ -1686,6 +1686,10 @@
           {
             "japanese": "飲み物はここにありません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "ここに飲み物がありません。",
+            "kind": "valid"
           }
         ]
       },
@@ -1719,6 +1723,10 @@
           {
             "japanese": "食べ物はどこにありますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "食べ物がどこにありますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -1734,6 +1742,14 @@
           {
             "japanese": "今日はどこへ行きましたか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "今日どこに行きましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日どこへ行きましたか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -1748,6 +1764,10 @@
         "alternates": [
           {
             "japanese": "大人はそこにいません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "そこに大人がいません。",
             "kind": "valid"
           }
         ]
@@ -1765,7 +1785,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "he-direction": {
@@ -1821,7 +1845,12 @@
           "soko",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "明日そこへ行きません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "来週ここへ来ます。",
@@ -1846,7 +1875,12 @@
           "achira",
           "iku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "おじいさんがあちらへ行きました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "赤ちゃんがこちらへ来ました。",
@@ -1856,7 +1890,16 @@
           "kochira",
           "kuru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "こちらへ赤ちゃんが来ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんはこちらへ来ました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "みんなはどちらへ行きましたか。",
@@ -1892,13 +1935,34 @@
           "koko",
           "kuru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日誰がここへ来ましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日はここへ誰が来ましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "誰が今日ここへ来ましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日ここへ誰が来ましたか。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "de-location": {
@@ -1919,7 +1983,24 @@
           "doko",
           "kau-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "これはどこで買う？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "これをどこで買う？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "どこでこれを買う？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "どこでこれ買う？",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "ここでパンを食べましょう。",
@@ -2003,7 +2084,12 @@
           "doko",
           "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "今日どこで食べますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "大人はここで飲みません。",
@@ -2028,6 +2114,14 @@
           {
             "japanese": "ここで毎日何を書きますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "毎日何をここで書きますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "何を毎日ここで書きますか。",
+            "kind": "valid"
           }
         ]
       }
@@ -2035,7 +2129,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "no-possessive": {
@@ -2372,6 +2470,14 @@
           {
             "japanese": "パンや飲み物を買います。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "飲み物とパンを買います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "飲み物やパンを買います。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2386,6 +2492,14 @@
         "alternates": [
           {
             "japanese": "おじいさんやおばあさんが来ます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "おばあさんとおじいさんが来ます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "おばあさんやおじいさんが来ます。",
             "kind": "other_grammar"
           }
         ]
@@ -2431,6 +2545,14 @@
           {
             "japanese": "日曜日にみんなと食べ物を買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "みんなと日曜日に食べ物を買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日に食べ物をみんなと買いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -2445,6 +2567,14 @@
         "alternates": [
           {
             "japanese": "月曜日や金曜日に行きます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "金曜日と月曜日に行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "金曜日や月曜日に行きます。",
             "kind": "other_grammar"
           }
         ]
@@ -2464,6 +2594,14 @@
           },
           {
             "japanese": "これやそれは買いません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "それとこれは買いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "それやこれは買いません。",
             "kind": "other_grammar"
           }
         ]
@@ -2499,6 +2637,10 @@
           {
             "japanese": "来週みんなと来ませんか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "みんなと来週来ませんか。",
+            "kind": "valid"
           }
         ]
       },
@@ -2514,6 +2656,14 @@
           {
             "japanese": "食べ物や飲み物はどこですか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "飲み物と食べ物はどこですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "飲み物や食べ物はどこですか。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -2521,7 +2671,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ya-among": {
@@ -2545,6 +2699,22 @@
           {
             "japanese": "パンと飲み物を買います。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "飲み物やパンを買います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "飲み物とパンを買います。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "パンや飲み物などを買います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンと飲み物などを買います。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2559,6 +2729,22 @@
         "alternates": [
           {
             "japanese": "食べ物と飲み物がありますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "飲み物や食べ物がありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "飲み物と食べ物がありますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "食べ物や飲み物などがありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食べ物と飲み物などがありますか。",
             "kind": "other_grammar"
           }
         ]
@@ -2575,6 +2761,22 @@
           {
             "japanese": "おじいさんとおばあさんが来ました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "おばあさんやおじいさんが来ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "おばあさんとおじいさんが来ました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "おじいさんやおばあさんなどが来ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "おじいさんとおばあさんなどが来ました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2590,6 +2792,22 @@
           {
             "japanese": "大人と赤ちゃんがいます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "赤ちゃんや大人がいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんと大人がいます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "大人や赤ちゃんなどがいます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "大人と赤ちゃんなどがいます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2604,6 +2822,22 @@
         "alternates": [
           {
             "japanese": "金曜日と日曜日に来ませんか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "日曜日や金曜日に来ませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日と金曜日に来ませんか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "金曜日や日曜日などに来ませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "金曜日と日曜日などに来ませんか。",
             "kind": "other_grammar"
           }
         ]
@@ -2621,6 +2855,22 @@
           {
             "japanese": "赤ちゃんの手と口を見ました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "赤ちゃんの口や手を見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんの口と手を見ました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "赤ちゃんの手や口などを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんの手と口などを見ました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2636,6 +2886,30 @@
         "alternates": [
           {
             "japanese": "日曜日と月曜日は食べ物を買いません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "日曜日や月曜日には食べ物を買いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日と月曜日には食べ物を買いません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "月曜日や日曜日は食べ物を買いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "月曜日と日曜日は食べ物を買いません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "日曜日や月曜日などは食べ物を買いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日と月曜日などは食べ物を買いません。",
             "kind": "other_grammar"
           }
         ]
@@ -2653,6 +2927,14 @@
           {
             "japanese": "どんな食べ物と飲み物を買いましたか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "どんな飲み物や食べ物を買いましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "どんな飲み物と食べ物を買いましたか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2669,6 +2951,18 @@
           {
             "japanese": "毎日おばあさんや赤ちゃんと話します。",
             "kind": "valid"
+          },
+          {
+            "japanese": "おばあさんや赤ちゃんと毎日話します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎日、赤ちゃんやおばあさんと話します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎日、おばあさんや赤ちゃんなどと話します。",
+            "kind": "valid"
           }
         ]
       }
@@ -2676,7 +2970,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "mo-also": {
@@ -2712,6 +3010,14 @@
         "alternates": [
           {
             "japanese": "今日はパンを食べます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "パンを今日も食べます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンを今日は食べます。",
             "kind": "other_grammar"
           }
         ]
@@ -2798,6 +3104,14 @@
           {
             "japanese": "ここには食べ物があります。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "食べ物がここにもあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食べ物がここにはあります。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -2819,7 +3133,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kara-from": {
