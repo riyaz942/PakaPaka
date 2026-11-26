@@ -6477,6 +6477,12 @@
           "kono",
           "ryouri",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "この料理を彼は食べたことがあります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6486,6 +6492,16 @@
           "sensei",
           "tegami",
           "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は先生に手紙を書いたことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "手紙を先生に書いたことがあります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6494,6 +6510,12 @@
         "vocabulary_slugs": [
           "takushii",
           "noru"
+        ],
+        "alternates": [
+          {
+            "japanese": "私はタクシーに乗ったことがありません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6504,6 +6526,16 @@
           "mise",
           "pan",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたはあの店でパンを買ったことがありますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "パンをあの店で買ったことがありますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6537,6 +6569,12 @@
           "kono",
           "doubutsu",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたはこの動物を見たことがありますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6555,6 +6593,16 @@
           "kanojo",
           "ryouri",
           "tsukuru"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は彼女に料理を作ったことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "料理を彼女に作ったことがあります。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6564,13 +6612,27 @@
           "daigaku",
           "sensei",
           "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は大学で先生と話したことがあります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生と大学で話したことがあります。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "nakereba-naranai": {
@@ -6910,6 +6972,10 @@
           {
             "japanese": "飲んだり食べたりしました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私たちは食べたり飲んだりしました。",
+            "kind": "valid"
           }
         ]
       },
@@ -6925,6 +6991,12 @@
           "nomu-v",
           "suru",
           "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎朝、父は新聞を読んだり、コーヒーを飲んだりしています。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6941,6 +7013,14 @@
         "alternates": [
           {
             "japanese": "日曜日はテレビを見たり、本を読んだりします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は日曜日は本を読んだり、テレビを見たりします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日には本を読んだり、テレビを見たりします。",
             "kind": "valid"
           }
         ]
@@ -6960,6 +7040,18 @@
           {
             "japanese": "明日、デパートに行ったり、靴を買ったりします。",
             "kind": "valid"
+          },
+          {
+            "japanese": "明日はデパートへ行ったり、靴を買ったりします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日、デパートへ行ったり、靴を買ったりします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日はデパートに行ったり、靴を買ったりします。",
+            "kind": "valid"
           }
         ]
       },
@@ -6972,6 +7064,16 @@
           "ryouri",
           "tsukuru",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "昨日、うちで料理を作ったりしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は昨日はうちで料理を作ったりしました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6982,6 +7084,16 @@
           "denwa",
           "kakeru-call",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "レストランで電話をかけたりしません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はレストランでは電話をかけたりしません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -6994,6 +7106,12 @@
           "rajio",
           "kiku-v",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "あなたは毎晩、手紙を書いたり、ラジオを聞いたりしますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7019,6 +7137,12 @@
           "noru",
           "oriru",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "タクシーに乗ったり降りたりしました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7033,13 +7157,23 @@
           "kaku",
           "suru",
           "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "大学で叔母は本を読んだり、手紙を書いたりしています。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "hoshii": {
@@ -7151,6 +7285,10 @@
           {
             "japanese": "今は飲み物がほしくないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は今は飲み物はほしくないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -7201,7 +7339,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "mae-ni": {
@@ -7290,6 +7432,22 @@
           {
             "japanese": "食事の後で水を飲みます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は食事の前に水を飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は食事の後で水を飲みます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "水を食事の前に飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "水を食事の後で飲みます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -7325,6 +7483,14 @@
           {
             "japanese": "バスに乗る前にコンビニへ行きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はバスに乗る前に、コンビニへ行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はバスに乗る前に、コンビニに行きました。",
+            "kind": "valid"
           }
         ]
       },
@@ -7345,6 +7511,10 @@
           {
             "japanese": "あなたは会社へ行く前に、何をしますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは会社に行く前に、何をしますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -7361,6 +7531,10 @@
           {
             "japanese": "電話をかける前に時間を見ました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は電話をかける前に、時間を見ました。",
+            "kind": "valid"
           }
         ]
       },
@@ -7375,6 +7549,10 @@
         "alternates": [
           {
             "japanese": "泳ぐ前に何も食べませんでした。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は泳ぐ前に、何も食べませんでした。",
             "kind": "valid"
           }
         ]
@@ -7399,6 +7577,14 @@
           {
             "japanese": "昼ご飯の後で、手紙を書きました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は昼ご飯の前に、手紙を書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は昼ご飯の後で、手紙を書きました。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -7406,7 +7592,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ato-de": {
@@ -7432,6 +7622,10 @@
           },
           {
             "japanese": "食べた後でコーヒーを飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は食べた後で、コーヒーを飲みます。",
             "kind": "valid"
           }
         ]
@@ -7476,6 +7670,14 @@
           {
             "japanese": "食事の前に、テレビを見ました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は食事の後で、テレビを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は食事の前に、テレビを見ました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -7491,6 +7693,10 @@
         "alternates": [
           {
             "japanese": "本を読んだあとで、ベッドに入りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は本を読んだ後で、ベッドに入りました。",
             "kind": "valid"
           }
         ]
@@ -7530,6 +7736,10 @@
           {
             "japanese": "昼ご飯のあとで、コーヒーは飲みません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は昼ご飯の後で、コーヒーは飲みません。",
+            "kind": "valid"
           }
         ]
       },
@@ -7545,6 +7755,10 @@
         "alternates": [
           {
             "japanese": "電話をかけたあとで、うちを出ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は電話をかけた後で、うちを出ました。",
             "kind": "valid"
           }
         ]
@@ -7562,6 +7776,10 @@
           {
             "japanese": "テレビを見たあとで、手紙を書きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はテレビを見た後で、手紙を書きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -7578,6 +7796,14 @@
         "alternates": [
           {
             "japanese": "学生が帰ったあとで、先生はお茶を飲みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "学生が帰った後で、先生がお茶を飲みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生は学生が帰った後で、お茶を飲みました。",
             "kind": "valid"
           }
         ]
@@ -7599,6 +7825,10 @@
           {
             "japanese": "バスから降りた後で、タクシーに乗りました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はバスを降りた後で、タクシーに乗りました。",
+            "kind": "valid"
           }
         ]
       }
@@ -7606,7 +7836,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "tai": {
@@ -7692,6 +7926,10 @@
           {
             "japanese": "今日は会社に行きたくないです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は今日は会社へ行きたくないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -7732,6 +7970,14 @@
           {
             "japanese": "日曜日、うちでテレビを見たいです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は日曜日はうちでテレビを見たいです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日曜日はテレビをうちで見たいです。",
+            "kind": "valid"
           }
         ]
       },
@@ -7755,6 +8001,14 @@
           {
             "japanese": "晩ご飯に何を食べたいですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは晩ご飯は何が食べたいですか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは晩ご飯は何を食べたいですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -7774,6 +8028,10 @@
           {
             "japanese": "手紙を母に書きたいです。",
             "kind": "valid"
+          },
+          {
+            "japanese": "母へ手紙を書きたいです。",
+            "kind": "valid"
           }
         ]
       },
@@ -7788,6 +8046,10 @@
         "alternates": [
           {
             "japanese": "今、誰にも会いたくないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は今は誰にも会いたくないです。",
             "kind": "valid"
           }
         ]
@@ -7808,6 +8070,10 @@
           {
             "japanese": "あなたは先生に何を聞きたかったですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "先生に何が聞きたかったですか。",
+            "kind": "valid"
           }
         ]
       }
@@ -7815,7 +8081,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ni-iku": {
@@ -7860,6 +8130,14 @@
           {
             "japanese": "おいしいご飯を食べにレストランに行く。",
             "kind": "valid"
+          },
+          {
+            "japanese": "おいしいご飯をレストランへ食べに行く。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はレストランへおいしいご飯を食べに行く。",
+            "kind": "valid"
           }
         ]
       },
@@ -7877,6 +8155,14 @@
           {
             "japanese": "毎朝、コンビニにパンを買いに行きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は毎朝、コンビニへパンを買いに行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "コンビニへ毎朝パンを買いに行きます。",
+            "kind": "valid"
           }
         ]
       },
@@ -7893,6 +8179,14 @@
           {
             "japanese": "うちに昼ご飯を食べに帰ります。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はうちへ昼ご飯を食べに帰ります。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "昼ご飯を食べにうちに帰ります。",
+            "kind": "valid"
           }
         ]
       },
@@ -7904,6 +8198,12 @@
           "hon",
           "kariru",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "兄は本を借りに来ました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7926,6 +8226,10 @@
           },
           {
             "japanese": "日曜日はどこに泳ぎに行きますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは日曜日、どこへ泳ぎに行きますか。",
             "kind": "valid"
           }
         ]
@@ -7976,6 +8280,12 @@
           "akachan",
           "miru-v",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "叔母は赤ちゃんを見に来ました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -7992,6 +8302,14 @@
           {
             "japanese": "彼女がうちにお茶を飲みに来る。",
             "kind": "valid"
+          },
+          {
+            "japanese": "彼女はうちへお茶を飲みに来る。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "彼女はうちにお茶を飲みに来る。",
+            "kind": "valid"
           }
         ]
       }
@@ -7999,7 +8317,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "toki": {
