@@ -25082,6 +25082,10 @@
           {
             "japanese": "私は週末はテレビとか見ます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "週末、テレビとか見ます。",
+            "kind": "valid"
           }
         ]
       },
@@ -25198,6 +25202,10 @@
           {
             "japanese": "弟は魚とか肉とか食べません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "魚とか肉とかを弟は食べません。",
+            "kind": "valid"
           }
         ]
       },
@@ -25238,6 +25246,10 @@
           {
             "japanese": "犬とか猫とか、動物は好きですか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは犬とか猫とか、動物が好きですか。",
+            "kind": "valid"
           }
         ]
       },
@@ -25258,6 +25270,10 @@
           {
             "japanese": "卵とか牛乳とかをスーパーで買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はスーパーで卵とか牛乳とかを買いました。",
+            "kind": "valid"
           }
         ]
       }
@@ -25265,7 +25281,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kke2": {
@@ -25588,6 +25608,12 @@
           "keeki",
           "takai-adj",
           "kau-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "このケーキは高いです。それでもあなたは買いますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25660,6 +25686,10 @@
           {
             "japanese": "先生はゆっくり説明した。それでも意味が分からなかった。",
             "kind": "valid"
+          },
+          {
+            "japanese": "先生はゆっくり説明をした。それでも私は意味が分からなかった。",
+            "kind": "valid"
           }
         ]
       },
@@ -25730,6 +25760,10 @@
           {
             "japanese": "彼女は忙しい。それでも毎晩私に電話をくれる。",
             "kind": "valid"
+          },
+          {
+            "japanese": "彼女は忙しい。それでも毎晩電話してくれる。",
+            "kind": "valid"
           }
         ]
       },
@@ -25752,7 +25786,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "sokode": {
@@ -25772,6 +25810,16 @@
           "wakaru",
           "chizu",
           "miru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "道が分かりませんでした。そこで、私は地図を見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は道が分かりませんでした。そこで、地図を見ました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25783,6 +25831,16 @@
           "chikaku",
           "kissaten",
           "hairu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨が降った。そこで、近くの喫茶店へ入った。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "雨が降った。そこで、私は近くの喫茶店に入った。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25799,6 +25857,14 @@
           {
             "japanese": "言葉の意味が分からなかった。そこで先生に聞いた。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は言葉の意味が分からなかった。そこで、先生に聞いた。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "言葉の意味が分からなかった。そこで、私は先生に聞いた。",
+            "kind": "valid"
           }
         ]
       },
@@ -25810,6 +25876,16 @@
           "itai",
           "kusuri",
           "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は頭が痛かった。そこで、薬を飲んだ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "頭が痛かった。そこで、私は薬を飲んだ。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25820,6 +25896,12 @@
           "okureru",
           "takushii",
           "noru"
+        ],
+        "alternates": [
+          {
+            "japanese": "電車が遅れた。そこで、私はタクシーに乗った。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25831,6 +25913,12 @@
           "kasa",
           "motsu",
           "dekakeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "天気が悪かった。そこで、私は傘を持って出かけた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25841,6 +25929,12 @@
           "kurai",
           "denki",
           "tsukeru"
+        ],
+        "alternates": [
+          {
+            "japanese": "部屋が暗い。そこで、私は電気をつける。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25852,6 +25946,12 @@
           "tomodachi",
           "tetsudau",
           "morau"
+        ],
+        "alternates": [
+          {
+            "japanese": "荷物が重かった。そこで、私は友達に手伝ってもらった。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25862,13 +25962,23 @@
           "kuru-v",
           "eki",
           "aruku"
+        ],
+        "alternates": [
+          {
+            "japanese": "バスが来ませんでした。そこで、私は駅まで歩きました。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "sonoseika-de": {
@@ -25919,6 +26029,10 @@
           {
             "japanese": "熱があった。そのため、私は学校を休んだ。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は熱があった。そのため、学校を休んだ。",
+            "kind": "valid"
           }
         ]
       },
@@ -25935,6 +26049,10 @@
           {
             "japanese": "私は鍵を無くしました。そのため、新しい鍵を買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "鍵を無くしました。そのため、私は新しい鍵を買いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -25946,6 +26064,12 @@
           "furu-rain",
           "fuku",
           "nureru"
+        ],
+        "alternates": [
+          {
+            "japanese": "雨が降った。そのため、私の服が濡れた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -25960,6 +26084,10 @@
         "alternates": [
           {
             "japanese": "頭が痛かった。そのため、私は薬を飲んだ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は頭が痛かった。そのため、薬を飲んだ。",
             "kind": "valid"
           }
         ]
@@ -26018,13 +26146,23 @@
           "samui",
           "kooto",
           "kiru-wear"
+        ],
+        "alternates": [
+          {
+            "japanese": "今日は寒いです。そのため、私はコートを着ました。",
+            "kind": "valid"
+          }
         ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "suruto": {
@@ -26045,6 +26183,12 @@
           "ame-v",
           "furu-rain",
           "iru-exist"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は窓を開けた。すると雨が降っていた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26055,6 +26199,12 @@
           "namae",
           "yobu",
           "okiru"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は猫の名前を呼んだ。すると猫が起きた。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26071,6 +26221,14 @@
           {
             "japanese": "電気を毎朝つける。すると猫が起きる。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は毎朝、電気をつける。すると猫が起きる。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎朝、私は電気をつける。すると猫が起きる。",
+            "kind": "valid"
           }
         ]
       },
@@ -26081,6 +26239,12 @@
           "tomodachi",
           "yobu",
           "kuru-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は友達を呼んだ。すると友達が来た。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26091,6 +26255,12 @@
           "akeru",
           "inu",
           "hairu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "私はドアを開けました。すると、犬が入りました。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26108,6 +26278,10 @@
           {
             "japanese": "家へ帰った。すると母が料理を作っていた。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は家に帰った。すると母が料理を作っていた。",
+            "kind": "valid"
           }
         ]
       },
@@ -26119,6 +26293,12 @@
           "nomu-v",
           "netsu",
           "sagaru"
+        ],
+        "alternates": [
+          {
+            "japanese": "私は薬を飲んだ。すると、熱が下がった。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -26133,6 +26313,14 @@
         "alternates": [
           {
             "japanese": "先生に聞いた。すると、先生がゆっくり説明した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は先生に聞いた。すると、先生はゆっくり説明した。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生に聞いた。すると、先生はゆっくり説明をした。",
             "kind": "valid"
           }
         ]
@@ -26158,7 +26346,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "igai": {
