@@ -553,10 +553,15 @@ def default_slugs(kind, levels):
     """The items of these levels that have no mnemonic in the sidecar yet. For
     grammar, also the items whose Japanese example uses a word above the point's
     level (`grammar_mnemonics_above_level` in the ladder work list). The gate
-    rejects such an example in a new mnemonic, so a fixed item is not picked again."""
+    rejects such an example in a new mnemonic, so a fixed item is not picked again.
+    A read-once grammar card has no mnemonic, so it is never picked."""
     sidecar = load_sidecar(kind)
+    read_once = ({it["slug"] for it in mc.load_items("grammar") if it.get("read_once")}
+                 if kind == "grammar" else set())
 
     def todo(slug):
+        if slug in read_once:
+            return False
         text = sidecar.get(slug, {}).get(MNEMONIC_FIELD[kind])
         return not text or (kind == "grammar" and bool(grammar_example_violations(slug, text)))
 

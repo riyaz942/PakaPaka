@@ -128,6 +128,12 @@ class LaneTest(unittest.TestCase):
             self.assertEqual(self.selection("grammar", sidecar, {6: ["later", "ok", "new"]}),
                              ["later", "new"])
 
+    def test_grammar_selection_leaves_out_the_read_once_primer(self):
+        with mock.patch.object(gm, "load_sidecar", return_value={}):
+            slugs = gm.default_slugs("grammar", [2])
+        self.assertTrue(slugs)
+        self.assertNotIn("conjugation-primer", slugs)
+
     def test_other_kinds_do_not_run_the_grammar_example_check(self):
         sidecar = {"done": {"meaning_mnemonic": "x"}}
         with mock.patch.object(gm, "grammar_example_violations") as check:
