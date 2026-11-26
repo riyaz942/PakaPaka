@@ -608,11 +608,11 @@
     }
   },
   "souda-hearsay": {
-    "mnemonic_text": "At dinner, a small boy passes on every rumour with \"<reading>So, Da</reading>d says the river is dangerous\", which tells you it is only <grammar>something he heard</grammar>. その川は危ない<reading>そうです</reading>。",
+    "mnemonic_text": "At dinner, a small boy passes on every rumour with \"<reading>So, Da</reading>d says the river is dangerous\", which tells you it is only <grammar>something he heard</grammar>. あそこは危ない<reading>そうです</reading>。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "souda-looks": {
@@ -624,11 +624,11 @@
     }
   },
   "tara": {
-    "mnemonic_text": "Sho the tiny magician keeps his \"<reading>Ta-ra!</reading>\" locked behind his teeth: <grammar>if</grammar> the dove comes out of the hat, he sings it, and not a second before. 鳥が出<reading>たら</reading>、歌います。",
+    "mnemonic_text": "Sho the tiny magician keeps his \"<reading>Ta-ra!</reading>\" locked behind his teeth: <grammar>if</grammar> the dove comes out of the hat, he sings it, and not a second before. それが出<reading>たら</reading>、歌います。",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nitsuite": {
