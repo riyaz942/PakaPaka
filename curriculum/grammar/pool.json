@@ -4233,6 +4233,46 @@
           {
             "japanese": "明日、デパートへ行きますね。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "デパートへ明日行きますよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "デパートへ明日行きますね。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "デパートに明日行きますよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "デパートに明日行きますね。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は明日、デパートへ行きますよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日、デパートへ行きますね。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は明日、デパートに行きますよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日、デパートに行きますね。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "明日、私はデパートへ行きますよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日、私はデパートへ行きますね。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4291,6 +4331,14 @@
         "alternates": [
           {
             "japanese": "先生は帰りましたか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "先生が帰りましたよ。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生が帰りましたか。",
             "kind": "other_grammar"
           }
         ]
@@ -4366,7 +4414,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-form": {
@@ -4394,6 +4446,14 @@
           {
             "japanese": "コンビニへ行ってパンを買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はコンビニへ行って、パンを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はコンビニに行って、パンを買いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -4409,6 +4469,14 @@
         "alternates": [
           {
             "japanese": "朝ご飯を食べて、会社に行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は朝ご飯を食べて、会社へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は朝ご飯を食べて、会社に行きます。",
             "kind": "valid"
           }
         ]
@@ -4426,6 +4494,14 @@
           {
             "japanese": "うちに帰って、テレビを見ました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私はうちへ帰って、テレビを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はうちに帰って、テレビを見ました。",
+            "kind": "valid"
           }
         ]
       },
@@ -4442,6 +4518,14 @@
         "alternates": [
           {
             "japanese": "毎朝新聞を読んで、コーヒーを飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は毎朝、新聞を読んで、コーヒーを飲みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "毎朝、私は新聞を読んで、コーヒーを飲みます。",
             "kind": "valid"
           }
         ]
@@ -4481,7 +4565,12 @@
           "suru",
           "kaeru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "先生に電話をして、帰りました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "明日、うちへ来て、晩ご飯を食べませんか。",
@@ -4509,7 +4598,12 @@
           "sensei",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は本を読んで、先生と話しました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "タクシーが来て、おじいさんが帰りました。",
@@ -4526,7 +4620,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "node-because": {
@@ -5000,6 +5098,10 @@
           {
             "japanese": "明日うちへ来てください。",
             "kind": "valid"
+          },
+          {
+            "japanese": "明日、うちに来てください。",
+            "kind": "valid"
           }
         ]
       },
@@ -5015,6 +5117,10 @@
           {
             "japanese": "パンを買いましたから食べてください。",
             "kind": "valid"
+          },
+          {
+            "japanese": "パンを買ったから、食べてください。",
+            "kind": "valid"
           }
         ]
       },
@@ -5026,6 +5132,12 @@
           "aru",
           "ocha",
           "nomu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "コーヒーがありませんから、お茶を飲んでください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5065,6 +5177,12 @@
           "okaasan",
           "denwa",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "お母さんに電話をしてください。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5079,6 +5197,10 @@
           {
             "japanese": "毎朝朝ご飯を食べてください。",
             "kind": "valid"
+          },
+          {
+            "japanese": "朝ご飯を毎朝食べてください。",
+            "kind": "valid"
           }
         ]
       }
@@ -5086,7 +5208,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-iru": {
@@ -5105,6 +5231,12 @@
           "kare",
           "pan",
           "taberu"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼がパンを食べています。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5122,6 +5254,10 @@
           },
           {
             "japanese": "母が料理をしている。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母が料理している。",
             "kind": "valid"
           }
         ]
@@ -5141,6 +5277,14 @@
           {
             "japanese": "テレビを見ているの？",
             "kind": "valid"
+          },
+          {
+            "japanese": "テレビを見てる？",
+            "kind": "valid"
+          },
+          {
+            "japanese": "テレビを見ている？",
+            "kind": "valid"
           }
         ]
       },
@@ -5150,6 +5294,12 @@
         "vocabulary_slugs": [
           "nani",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "何していますか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5169,6 +5319,14 @@
           {
             "japanese": "今、兄は電話しています。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄は今、電話をしています。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、兄は電話をしています。",
+            "kind": "valid"
           }
         ]
       },
@@ -5184,6 +5342,14 @@
         "alternates": [
           {
             "japanese": "お父さんは今、会社に行っています。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、お父さんは会社へ行っています。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今、お父さんは会社に行っています。",
             "kind": "valid"
           }
         ]
@@ -5218,6 +5384,10 @@
           {
             "japanese": "みんな来ていますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "みんなが来ていますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -5235,7 +5405,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-mo-ii": {
@@ -5415,6 +5589,12 @@
           "koko",
           "denwa",
           "suru"
+        ],
+        "alternates": [
+          {
+            "japanese": "ここで電話をしてはいけません。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5441,6 +5621,12 @@
         "vocabulary_slugs": [
           "doushite",
           "hanasu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "どうして話しちゃいけないんですか。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -5485,7 +5671,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "nai-form": {
