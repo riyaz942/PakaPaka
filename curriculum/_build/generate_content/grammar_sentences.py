@@ -88,6 +88,16 @@ def register_of(japanese):
     return "plain"
 
 
+def _follows_kamau(tokens, index):
+    """True when the auxiliary at `index` ends a 構う chain (かまいません,
+    かまわない): てもかまいません means "may", so it is not a negative."""
+    for token in reversed(tokens[:index]):
+        if token["pos1"] == "助動詞":
+            continue
+        return token["pos1"] == "動詞" and token["lemma"] == "構う"
+    return False
+
+
 def sentence_shape(japanese):
     """(question, negative, past) — the variety rule's sentence types."""
     tokens = _tokens(japanese)
@@ -96,9 +106,9 @@ def sentence_shape(japanese):
         bool(words) and words[-1]["pos1"] == "助詞" and words[-1]["surface"] == "か"
     )
     negative = any(
-        (t["pos1"] == "助動詞" and t["lemma"] in _NEGATIVE_AUX)
+        (t["pos1"] == "助動詞" and t["lemma"] in _NEGATIVE_AUX and not _follows_kamau(tokens, i))
         or (t["pos1"] == "形容詞" and t["lemma"] == "無い")
-        for t in tokens
+        for i, t in enumerate(tokens)
     )
     past = any(t["pos1"] == "助動詞" and t["lemma"] == "た" for t in tokens)
     return (question, negative, past)

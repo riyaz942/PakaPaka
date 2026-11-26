@@ -84,6 +84,12 @@ class ShapeTest(unittest.TestCase):
         self.assertEqual(gs.sentence_shape("お金がない。"), (False, True, False))
         self.assertEqual(gs.sentence_shape("昨日は休みでした。"), (False, False, True))
 
+    def test_kamaimasen_is_not_negative(self):
+        # てもかまいません / てもかまわない mean "may" — affirmative in sense.
+        self.assertEqual(gs.sentence_shape("ここで待ってもかまいません。"), (False, False, False))
+        self.assertEqual(gs.sentence_shape("ここで待ってもかまわない。"), (False, False, False))
+        self.assertEqual(gs.sentence_shape("ここで待ってもかまいませんか。"), (True, False, False))
+
 
 class ClozeTest(unittest.TestCase):
     def test_fill(self):
