@@ -3155,7 +3155,12 @@
           "doko",
           "kuru-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたはどこから来ましたか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "何時からコーヒーを飲みますか。",
@@ -3173,6 +3178,14 @@
           {
             "japanese": "コーヒーを何時から飲みますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは何時からコーヒーを飲みますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは何時までコーヒーを飲みますか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3192,6 +3205,14 @@
           {
             "japanese": "本を朝から読みます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は朝から本を読みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は朝まで本を読みます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3206,6 +3227,10 @@
         "alternates": [
           {
             "japanese": "タクシーで会社から帰りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は会社からタクシーで帰りました。",
             "kind": "valid"
           }
         ]
@@ -3236,6 +3261,22 @@
           {
             "japanese": "来週まで大学へ行きます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は来週から大学へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は来週まで大学へ行きます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は来週から大学に行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は来週まで大学に行きます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3250,6 +3291,10 @@
         "alternates": [
           {
             "japanese": "ビールは今日から飲みません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は今日からビールを飲みません。",
             "kind": "valid"
           }
         ]
@@ -3283,6 +3328,14 @@
           {
             "japanese": "兄はコンビニから電話をしました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "兄がコンビニから電話しました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "兄がコンビニから電話をしました。",
+            "kind": "valid"
           }
         ]
       }
@@ -3290,7 +3343,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "made-until": {
@@ -3312,6 +3369,14 @@
         "alternates": [
           {
             "japanese": "明日から帰りません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は明日まで帰りません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は明日から帰りません。",
             "kind": "other_grammar"
           }
         ]
@@ -3348,6 +3413,10 @@
           {
             "japanese": "本を朝から晩まで読みました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は朝から晩まで本を読みました。",
+            "kind": "valid"
           }
         ]
       },
@@ -3367,6 +3436,14 @@
           {
             "japanese": "何時から会社にいますか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは何時まで会社にいますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは何時から会社にいますか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3385,6 +3462,10 @@
           },
           {
             "japanese": "大学へ金曜日まで行きません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "金曜日まで大学には行きません。",
             "kind": "valid"
           }
         ]
@@ -3420,6 +3501,14 @@
           },
           {
             "japanese": "いつからここにいますか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたはいつまでここにいますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたはいつからここにいますか。",
             "kind": "other_grammar"
           }
         ]
@@ -3473,7 +3562,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "kara-because": {
@@ -3630,13 +3723,22 @@
           "minna",
           "wakaru"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "先生が話しましたから、みんなが分かりました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ni-indirect": {
@@ -3664,6 +3766,22 @@
           {
             "japanese": "母と電話しました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は母に電話しました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は母と電話しました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は母に電話をしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は母と電話をしました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3674,7 +3792,12 @@
           "dare",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは誰に書きますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "父にペンを買いました。",
@@ -3687,6 +3810,10 @@
         "alternates": [
           {
             "japanese": "ペンを父に買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は父にペンを買いました。",
             "kind": "valid"
           }
         ]
@@ -3723,6 +3850,14 @@
           {
             "japanese": "お母さんと何を話しましたか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたはお母さんに何を話しましたか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたはお母さんと何を話しましたか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -3738,6 +3873,10 @@
         "alternates": [
           {
             "japanese": "毎晩、本を赤ちゃんに読みます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんに毎晩本を読みます。",
             "kind": "valid"
           }
         ]
@@ -3765,7 +3904,12 @@
           "biiru",
           "kau-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "お父さんにビールを買いません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "先生に話しませんか。",
@@ -3785,7 +3929,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ne-tag": {
@@ -4315,6 +4463,22 @@
           {
             "japanese": "今日は日曜日ですから、うちで食事をします。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "今日は日曜日なので、うちで食事します。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日は日曜日ですから、うちで食事します。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "今日は日曜日ですので、うちで食事をします。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "今日は日曜日ですので、うちで食事します。",
+            "kind": "valid"
           }
         ]
       },
@@ -4330,6 +4494,14 @@
         "alternates": [
           {
             "japanese": "父が来るから、ビールを買いました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "父が来ますので、ビールを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "父が来ますから、ビールを買いました。",
             "kind": "other_grammar"
           }
         ]
@@ -4351,6 +4523,22 @@
           {
             "japanese": "時間があるから、デパートへ行きませんか。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "時間がありますので、デパートへ行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "時間がありますから、デパートへ行きませんか。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "時間がありますので、デパートに行きませんか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "時間がありますから、デパートに行きませんか。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4367,6 +4555,10 @@
         "alternates": [
           {
             "japanese": "おじいさんが新聞を読むので、テレビは見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "おじいさんが新聞を読みますので、テレビを見ません。",
             "kind": "valid"
           }
         ]
@@ -4385,6 +4577,10 @@
           {
             "japanese": "兄は先生ですから、毎晩本を読みます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "兄は先生ですので、毎晩本を読みます。",
+            "kind": "valid"
           }
         ]
       },
@@ -4401,6 +4597,22 @@
           {
             "japanese": "赤ちゃんがいるから、タクシーで帰りました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "赤ちゃんがいたので、タクシーで帰りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんがいたから、タクシーで帰りました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "赤ちゃんがいましたので、タクシーで帰りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんがいましたから、タクシーで帰りました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4416,6 +4628,14 @@
         "alternates": [
           {
             "japanese": "明日は水曜日なので、スーパーに行きましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は水曜日ですので、スーパーへ行きましょう。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "明日は水曜日ですので、スーパーに行きましょう。",
             "kind": "valid"
           }
         ]
@@ -4437,6 +4657,10 @@
           {
             "japanese": "ここはトイレですから、パンを食べません。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "ここはトイレですので、パンを食べません。",
+            "kind": "valid"
           }
         ]
       },
@@ -4453,6 +4677,14 @@
           {
             "japanese": "先生が話すから、みんな来ました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "先生が話すので、みんなが来ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "先生が話すから、みんなが来ました。",
+            "kind": "other_grammar"
           }
         ]
       }
@@ -4460,7 +4692,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "ka-question": {
@@ -4502,6 +4738,14 @@
           {
             "japanese": "行きますね。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "あなたは行きますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたは行きますね。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -4529,7 +4773,12 @@
           "nani",
           "taberu"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは何を食べますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "明日、本を読みますか。",
@@ -4543,6 +4792,10 @@
           {
             "japanese": "本を明日読みますか。",
             "kind": "valid"
+          },
+          {
+            "japanese": "あなたは明日、本を読みますか。",
+            "kind": "valid"
           }
         ]
       },
@@ -4554,7 +4807,12 @@
           "kaeru-v"
         ],
         "form": "ます|か",
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたはどこから帰りますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "誰に話しますか。",
@@ -4563,7 +4821,12 @@
           "dare",
           "hanasu-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "あなたは誰に話しますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "晩ご飯を食べましたか。",
@@ -4597,7 +4860,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "te-kudasai": {

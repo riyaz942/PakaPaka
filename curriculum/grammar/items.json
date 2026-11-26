@@ -19578,6 +19578,52 @@
               "role": "particle",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたはどこから来[き]ましたか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "来ました",
+                  "reading": "きました",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -19704,6 +19750,67 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "あなたは何[なん]時[じ]からコーヒーを飲[の]みますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "何時",
+                  "reading": "なんじ",
+                  "role": "word",
+                  "vocabulary_slug": "nannji",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "コーヒー",
+                  "reading": "コーヒー",
+                  "role": "word",
+                  "vocabulary_slug": "koohii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "飲みます",
+                  "reading": "のみます",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは何[なん]時[じ]までコーヒーを飲[の]みますか。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -19819,6 +19926,61 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]は朝[あさ]から本[ほん]を読[よ]みます。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "朝",
+                  "reading": "あさ",
+                  "role": "word",
+                  "vocabulary_slug": "asa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は朝[あさ]まで本[ほん]を読[よ]みます。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -19921,6 +20083,57 @@
                   "reading": "から",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "帰りました",
+                  "reading": "かえりました",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は会[かい]社[しゃ]からタクシーで帰[かえ]りました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "会社",
+                  "reading": "かいしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "kaisha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "タクシー",
+                  "reading": "タクシー",
+                  "role": "word",
+                  "vocabulary_slug": "takushii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
                 },
                 {
                   "surface": "帰りました",
@@ -20115,6 +20328,116 @@
             {
               "furigana": "来[らい]週[しゅう]まで大[だい]学[がく]へ行[い]きます。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたくし]は来[らい]週[しゅう]から大[だい]学[がく]へ行[い]きます。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来週",
+                  "reading": "らいしゅう",
+                  "role": "word",
+                  "vocabulary_slug": "raishuu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "大学",
+                  "reading": "だいがく",
+                  "role": "word",
+                  "vocabulary_slug": "daigaku",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は来[らい]週[しゅう]まで大[だい]学[がく]へ行[い]きます。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたくし]は来[らい]週[しゅう]から大[だい]学[がく]に行[い]きます。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来週",
+                  "reading": "らいしゅう",
+                  "role": "word",
+                  "vocabulary_slug": "raishuu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "大学",
+                  "reading": "だいがく",
+                  "role": "word",
+                  "vocabulary_slug": "daigaku",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は来[らい]週[しゅう]まで大[だい]学[がく]に行[い]きます。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -20217,6 +20540,57 @@
                   "reading": "から",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "飲みません",
+                  "reading": "のみません",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は今日[きょう]からビールを飲[の]みません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ビール",
+                  "reading": "ビール",
+                  "role": "word",
+                  "vocabulary_slug": "biiru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
                 },
                 {
                   "surface": "飲みません",
@@ -20458,6 +20832,104 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "兄[あに]がコンビニから電[でん]話[わ]しました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "コンビニ",
+                  "reading": "コンビニ",
+                  "role": "word",
+                  "vocabulary_slug": "konbini",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "しました",
+                  "reading": "しました",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "兄[あに]がコンビニから電[でん]話[わ]をしました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "コンビニ",
+                  "reading": "コンビニ",
+                  "role": "word",
+                  "vocabulary_slug": "konbini",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "しました",
+                  "reading": "しました",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         }
@@ -20573,6 +21045,48 @@
           "build_alternates": [
             {
               "furigana": "明日[あした]から帰[かえ]りません。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたくし]は明日[あした]まで帰[かえ]りません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "まで",
+                  "reading": "まで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "帰りません",
+                  "reading": "かえりません",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は明日[あした]から帰[かえ]りません。",
               "kind": "other_grammar"
             }
           ]
@@ -20832,6 +21346,70 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたくし]は朝[あさ]から晩[ばん]まで本[ほん]を読[よ]みました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "朝",
+                  "reading": "あさ",
+                  "role": "word",
+                  "vocabulary_slug": "asa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "晩",
+                  "reading": "ばん",
+                  "role": "word",
+                  "vocabulary_slug": "ban",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "まで",
+                  "reading": "まで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みました",
+                  "reading": "よみました",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -20958,6 +21536,67 @@
             },
             {
               "furigana": "何[なん]時[じ]から会[かい]社[しゃ]にいますか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたは何[なん]時[じ]まで会[かい]社[しゃ]にいますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "何時",
+                  "reading": "なんじ",
+                  "role": "word",
+                  "vocabulary_slug": "nannji",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "まで",
+                  "reading": "まで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "会社",
+                  "reading": "かいしゃ",
+                  "role": "word",
+                  "vocabulary_slug": "kaisha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "います",
+                  "reading": "います",
+                  "role": "word",
+                  "vocabulary_slug": "iru-exist",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは何[なん]時[じ]から会[かい]社[しゃ]にいますか。",
               "kind": "other_grammar"
             }
           ]
@@ -21100,6 +21739,51 @@
                   "reading": "まで",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "行きません",
+                  "reading": "いきません",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "金[きん]曜[よう]日[び]まで大[だい]学[がく]には行[い]きません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "金曜日",
+                  "reading": "きんようび",
+                  "role": "word",
+                  "vocabulary_slug": "kinyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "まで",
+                  "reading": "まで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "大学",
+                  "reading": "だいがく",
+                  "role": "word",
+                  "vocabulary_slug": "daigaku",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
                 },
                 {
                   "surface": "行きません",
@@ -21324,6 +22008,67 @@
             },
             {
               "furigana": "いつからここにいますか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたはいつまでここにいますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いつ",
+                  "reading": "いつ",
+                  "role": "word",
+                  "vocabulary_slug": "itsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "まで",
+                  "reading": "まで",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "います",
+                  "reading": "います",
+                  "role": "word",
+                  "vocabulary_slug": "iru-exist",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "あなたはいつからここにいますか。",
               "kind": "other_grammar"
             }
           ]
@@ -22950,6 +23695,60 @@
               "vocabulary_slug": "wakaru",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]が話[はな]しましたから、みんなが分[わ]かりました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話しました",
+                  "reading": "はなしました",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "みんな",
+                  "reading": "みんな",
+                  "role": "word",
+                  "vocabulary_slug": "minna",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "分かりました",
+                  "reading": "わかりました",
+                  "role": "word",
+                  "vocabulary_slug": "wakaru",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         }
       ],
@@ -23130,6 +23929,193 @@
             {
               "furigana": "今日[きょう]は日[にち]曜[よう]日[び]ですから、うちで食[しょく]事[じ]をします。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "今日[きょう]は日[にち]曜[よう]日[び]なので、うちで食[しょく]事[じ]します。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "日曜日な",
+                  "reading": "にちようびな",
+                  "role": "word",
+                  "vocabulary_slug": "nichiyoubi",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "うち",
+                  "reading": "うち",
+                  "role": "word",
+                  "vocabulary_slug": "uchi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食事",
+                  "reading": "しょくじ",
+                  "role": "word",
+                  "vocabulary_slug": "shokuji",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "します",
+                  "reading": "します",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "今日[きょう]は日[にち]曜[よう]日[び]ですから、うちで食[しょく]事[じ]します。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "今日[きょう]は日[にち]曜[よう]日[び]ですので、うちで食[しょく]事[じ]をします。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "日曜日です",
+                  "reading": "にちようびです",
+                  "role": "word",
+                  "vocabulary_slug": "nichiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "うち",
+                  "reading": "うち",
+                  "role": "word",
+                  "vocabulary_slug": "uchi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食事",
+                  "reading": "しょくじ",
+                  "role": "word",
+                  "vocabulary_slug": "shokuji",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "します",
+                  "reading": "します",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "今日[きょう]は日[にち]曜[よう]日[び]ですので、うちで食[しょく]事[じ]します。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "今日",
+                  "reading": "きょう",
+                  "role": "word",
+                  "vocabulary_slug": "kyou",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "日曜日です",
+                  "reading": "にちようびです",
+                  "role": "word",
+                  "vocabulary_slug": "nichiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "うち",
+                  "reading": "うち",
+                  "role": "word",
+                  "vocabulary_slug": "uchi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食事",
+                  "reading": "しょくじ",
+                  "role": "word",
+                  "vocabulary_slug": "shokuji",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "します",
+                  "reading": "します",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -23224,6 +24210,62 @@
           "build_alternates": [
             {
               "furigana": "父[ちち]が来[く]るから、ビールを買[か]いました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "父[ちち]が来[き]ますので、ビールを買[か]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "父",
+                  "reading": "ちち",
+                  "role": "word",
+                  "vocabulary_slug": "chichi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来ます",
+                  "reading": "きます",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ビール",
+                  "reading": "ビール",
+                  "role": "word",
+                  "vocabulary_slug": "biiru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "父[ちち]が来[き]ますから、ビールを買[か]いました。",
               "kind": "other_grammar"
             }
           ]
@@ -23383,6 +24425,130 @@
             },
             {
               "furigana": "時[じ]間[かん]があるから、デパートへ行[い]きませんか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "時[じ]間[かん]がありますので、デパートへ行[い]きませんか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "時間",
+                  "reading": "じかん",
+                  "role": "word",
+                  "vocabulary_slug": "jikan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あります",
+                  "reading": "あります",
+                  "role": "word",
+                  "vocabulary_slug": "aru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "デパート",
+                  "reading": "デパート",
+                  "role": "word",
+                  "vocabulary_slug": "depaato",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きません",
+                  "reading": "いきません",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "時[じ]間[かん]がありますから、デパートへ行[い]きませんか。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "時[じ]間[かん]がありますので、デパートに行[い]きませんか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "時間",
+                  "reading": "じかん",
+                  "role": "word",
+                  "vocabulary_slug": "jikan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "あります",
+                  "reading": "あります",
+                  "role": "word",
+                  "vocabulary_slug": "aru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "デパート",
+                  "reading": "デパート",
+                  "role": "word",
+                  "vocabulary_slug": "depaato",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きません",
+                  "reading": "いきません",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "時[じ]間[かん]がありますから、デパートに行[い]きませんか。",
               "kind": "other_grammar"
             }
           ]
@@ -23559,6 +24725,71 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "おじいさんが新[しん]聞[ぶん]を読[よ]みますので、テレビを見[み]ません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "おじいさん",
+                  "reading": "おじいさん",
+                  "role": "word",
+                  "vocabulary_slug": "ojiisan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "新聞",
+                  "reading": "しんぶん",
+                  "role": "word",
+                  "vocabulary_slug": "shinbun",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "テレビ",
+                  "reading": "テレビ",
+                  "role": "word",
+                  "vocabulary_slug": "terebi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "見ません",
+                  "reading": "みません",
+                  "role": "word",
+                  "vocabulary_slug": "miru-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -23667,6 +24898,65 @@
             {
               "furigana": "兄[あに]は先[せん]生[せい]ですから、毎[まい]晩[ばん]本[ほん]を読[よ]みます。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "兄[あに]は先[せん]生[せい]ですので、毎[まい]晩[ばん]本[ほん]を読[よ]みます。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "先生です",
+                  "reading": "せんせいです",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "毎晩",
+                  "reading": "まいばん",
+                  "role": "word",
+                  "vocabulary_slug": "maiban",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -23761,6 +25051,118 @@
           "build_alternates": [
             {
               "furigana": "赤[あか]ちゃんがいるから、タクシーで帰[かえ]りました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "赤[あか]ちゃんがいたので、タクシーで帰[かえ]りました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "赤ちゃん",
+                  "reading": "あかちゃん",
+                  "role": "word",
+                  "vocabulary_slug": "akachan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いた",
+                  "reading": "いた",
+                  "role": "word",
+                  "vocabulary_slug": "iru-exist",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "タクシー",
+                  "reading": "タクシー",
+                  "role": "word",
+                  "vocabulary_slug": "takushii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰りました",
+                  "reading": "かえりました",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "赤[あか]ちゃんがいたから、タクシーで帰[かえ]りました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "赤[あか]ちゃんがいましたので、タクシーで帰[かえ]りました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "赤ちゃん",
+                  "reading": "あかちゃん",
+                  "role": "word",
+                  "vocabulary_slug": "akachan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いました",
+                  "reading": "いました",
+                  "role": "word",
+                  "vocabulary_slug": "iru-exist",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "タクシー",
+                  "reading": "タクシー",
+                  "role": "word",
+                  "vocabulary_slug": "takushii",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "で",
+                  "reading": "で",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰りました",
+                  "reading": "かえりました",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "赤[あか]ちゃんがいましたから、タクシーで帰[かえ]りました。",
               "kind": "other_grammar"
             }
           ]
@@ -23877,6 +25279,110 @@
                   "role": "word",
                   "vocabulary_slug": "suiyoubi",
                   "in_grammar": true
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "スーパー",
+                  "reading": "スーパー",
+                  "role": "word",
+                  "vocabulary_slug": "suupaa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きましょう",
+                  "reading": "いきましょう",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "明日[あした]は水[すい]曜[よう]日[び]ですので、スーパーへ行[い]きましょう。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "水曜日です",
+                  "reading": "すいようびです",
+                  "role": "word",
+                  "vocabulary_slug": "suiyoubi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "スーパー",
+                  "reading": "スーパー",
+                  "role": "word",
+                  "vocabulary_slug": "suupaa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きましょう",
+                  "reading": "いきましょう",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "明日[あした]は水[すい]曜[よう]日[び]ですので、スーパーに行[い]きましょう。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "水曜日です",
+                  "reading": "すいようびです",
+                  "role": "word",
+                  "vocabulary_slug": "suiyoubi",
+                  "in_grammar": false
                 },
                 {
                   "surface": "ので",
@@ -24052,6 +25558,58 @@
             {
               "furigana": "ここはトイレですから、パンを食[た]べません。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "ここはトイレですので、パンを食[た]べません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "ここ",
+                  "reading": "ここ",
+                  "role": "word",
+                  "vocabulary_slug": "koko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "トイレです",
+                  "reading": "トイレです",
+                  "role": "word",
+                  "vocabulary_slug": "toire",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べません",
+                  "reading": "たべません",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -24140,6 +25698,62 @@
           "build_alternates": [
             {
               "furigana": "先[せん]生[せい]が話[はな]すから、みんな来[き]ました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "先[せん]生[せい]が話[はな]すので、みんなが来[き]ました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話す",
+                  "reading": "はなす",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "ので",
+                  "reading": "ので",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "みんな",
+                  "reading": "みんな",
+                  "role": "word",
+                  "vocabulary_slug": "minna",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来ました",
+                  "reading": "きました",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "先[せん]生[せい]が話[はな]すから、みんなが来[き]ました。",
               "kind": "other_grammar"
             }
           ]
@@ -24313,6 +25927,110 @@
             {
               "furigana": "母[はは]と電[でん]話[わ]しました。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたくし]は母[はは]に電[でん]話[わ]しました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "しました",
+                  "reading": "しました",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は母[はは]と電[でん]話[わ]しました。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "私[わたくし]は母[はは]に電[でん]話[わ]をしました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "電話",
+                  "reading": "でんわ",
+                  "role": "word",
+                  "vocabulary_slug": "denwa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "しました",
+                  "reading": "しました",
+                  "role": "word",
+                  "vocabulary_slug": "suru",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は母[はは]と電[でん]話[わ]をしました。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -24370,6 +26088,52 @@
               "reading": "か",
               "role": "particle",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたは誰[だれ]に書[か]きますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "誰",
+                  "reading": "だれ",
+                  "role": "word",
+                  "vocabulary_slug": "dare",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "書きます",
+                  "reading": "かきます",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -24472,6 +26236,57 @@
                   "reading": "に",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "買いました",
+                  "reading": "かいました",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたくし]は父[ちち]にペンを買[か]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたくし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "父",
+                  "reading": "ちち",
+                  "role": "word",
+                  "vocabulary_slug": "chichi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ペン",
+                  "reading": "ペン",
+                  "role": "word",
+                  "vocabulary_slug": "pen",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
                 },
                 {
                   "surface": "買いました",
@@ -24728,6 +26543,67 @@
             {
               "furigana": "お母[かあ]さんと何[なに]を話[はな]しましたか。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたはお母[かあ]さんに何[なに]を話[はな]しましたか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "お母さん",
+                  "reading": "おかあさん",
+                  "role": "word",
+                  "vocabulary_slug": "okaasan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "何",
+                  "reading": "なに",
+                  "role": "word",
+                  "vocabulary_slug": "nani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話しました",
+                  "reading": "はなしました",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "あなたはお母[かあ]さんと何[なに]を話[はな]しましたか。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -24850,6 +26726,52 @@
                   "reading": "に",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "赤[あか]ちゃんに毎[まい]晩[ばん]本[ほん]を読[よ]みます。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "赤ちゃん",
+                  "reading": "あかちゃん",
+                  "role": "word",
+                  "vocabulary_slug": "akachan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "毎晩",
+                  "reading": "まいばん",
+                  "role": "word",
+                  "vocabulary_slug": "maiban",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
                 },
                 {
                   "surface": "読みます",
@@ -25046,6 +26968,47 @@
               "role": "word",
               "vocabulary_slug": "kau-v",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "お父[とう]さんにビールを買[か]いません。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "お父さん",
+                  "reading": "おとうさん",
+                  "role": "word",
+                  "vocabulary_slug": "otousan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "ビール",
+                  "reading": "ビール",
+                  "role": "word",
+                  "vocabulary_slug": "biiru",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買いません",
+                  "reading": "かいません",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -25297,6 +27260,41 @@
             {
               "furigana": "行[い]きますね。",
               "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたは行[い]きますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは行[い]きますね。",
+              "kind": "other_grammar"
             }
           ]
         },
@@ -25446,6 +27444,52 @@
               "role": "other",
               "in_grammar": true
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたは何[なに]を食[た]べますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "何",
+                  "reading": "なに",
+                  "role": "word",
+                  "vocabulary_slug": "nani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べます",
+                  "reading": "たべます",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
           ]
         },
         {
@@ -25556,6 +27600,57 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "あなたは明日[あした]、本[ほん]を読[よ]みますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
@@ -25614,6 +27709,52 @@
               "role": "other",
               "in_grammar": true
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたはどこから帰[かえ]りますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
           ]
         },
         {
@@ -25670,6 +27811,52 @@
               "reading": "か",
               "role": "other",
               "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたは誰[だれ]に話[はな]しますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "誰",
+                  "reading": "だれ",
+                  "role": "word",
+                  "vocabulary_slug": "dare",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話します",
+                  "reading": "はなします",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         },
