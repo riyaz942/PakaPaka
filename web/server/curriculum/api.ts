@@ -11,6 +11,7 @@ import {
   type AuditFinding,
   type FindingSeverity,
 } from './audit.js';
+import { changeBase, changedItemKeys, type ChangeBase } from './changes.js';
 import { expectedFields } from './completeness.js';
 import { loadGeneratedPassages } from './generatedPassages.js';
 import {
@@ -768,6 +769,57 @@ export function createCurriculumRouter(
     res.json({
       total: filtered.length,
       findings: filtered.map(({ finding, links }) => ({ ...finding, links })),
+    });
+  });
+
+  /**
+   * Everything taught at one ladder level, with full content, so a level can be
+   * read top to bottom. `changed` marks items whose content differs from the
+   * last commit made before `days` ago (default 3; see changes.ts).
+   */
+  router.get('/level/:level', (req: Request, res: Response) => {
+    const level = parseLevel(req.params.level);
+    if (!level) {
+      res.status(400).json({ error: `Unknown level: ${req.params.level}` });
+      return;
+    }
+    const daysRaw = req.query.days ?? '3';
+    if (typeof daysRaw !== 'string' || !/^\d+$/.test(daysRaw)) {
+      res.status(400).json({ error: `days must be a whole number: ${String(daysRaw)}` });
+      return;
+    }
+    const days = Number(daysRaw);
+
+    const index = getCurriculum(repoRoot);
+    let base: ChangeBase | null;
+    let changed: Set<string>;
+    try {
+      base = changeBase(repoRoot, days);
+      changed = base ? changedItemKeys(repoRoot, base.rev) : new Set();
+    } catch (err) {
+      res.status(500).json({ error: `git compare failed: ${err instanceof Error ? err.message : String(err)}` });
+      return;
+    }
+
+    const items = index.items
+      .filter((item) => item.level === level)
+      .sort(
+        (a, b) =>
+          CONTENT_TYPES.indexOf(a.type) - CONTENT_TYPES.indexOf(b.type) ||
+          a.sortOrder - b.sortOrder ||
+          a.slug.localeCompare(b.slug),
+      );
+
+    res.json({
+      level,
+      levels: levelsOf(index),
+      base,
+      items: items.map((item) => ({
+        ...item,
+        changed: changed.has(itemKey(item.type, item.slug)),
+        mnemonicReviewStatus:
+          item.type === 'grammar' ? readGrammarMnemonicStatus(repoRoot, item.slug) : null,
+      })),
     });
   });
 

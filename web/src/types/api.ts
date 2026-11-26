@@ -5,10 +5,8 @@ export type ContentType =
   | 'grammar'
   | 'reading';
 
-/** Curriculum teaching order. N3–N1 ship as skeleton (kanji-coverage plan Phase 2). */
-export const JLPT_LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1'] as const;
-
-export type JlptLevel = (typeof JLPT_LEVELS)[number];
+/** A ladder level, 1-60 (`level` on every item of `<kind>/items.json`). */
+export type Level = number;
 
 export type ReviewStatus =
   | 'draft'
@@ -33,7 +31,7 @@ export type SidecarMeta = {
 export type FindingSeverity = 'ERROR' | 'WARNING' | 'INFO';
 
 export type AuditFinding = {
-  level: JlptLevel;
+  level: Level;
   check: string;
   severity: FindingSeverity;
   message: string;
@@ -57,7 +55,7 @@ export type AuditFindingsResponse = {
 
 export type ContentListItem = {
   type: ContentType;
-  level: JlptLevel;
+  level: Level;
   slug: string;
   primaryForm: string;
   meaning: string;
@@ -93,8 +91,9 @@ export type OverviewResponse = {
     description: string;
     content_counts: Record<string, number>;
   };
-  targets: Record<JlptLevel, LevelTargets>;
-  byTypeLevel: Record<ContentType, Record<JlptLevel, OverviewBucket>>;
+  /** Per JLPT level; no ladder level maps to one, so the Dashboard does not use it. */
+  targets: Record<string, LevelTargets>;
+  byTypeLevel: Record<ContentType, Record<Level, OverviewBucket>>;
   totals: {
     radicals: number;
     kanji: number;
@@ -115,7 +114,7 @@ export type GapBucket = {
 };
 
 export type GapsResponse = {
-  byTypeLevel: Record<ContentType, Record<JlptLevel, GapBucket>>;
+  byTypeLevel: Record<ContentType, Record<Level, GapBucket>>;
 };
 
 export type ItemsResponse = {
@@ -242,7 +241,7 @@ export type GraphNode = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel | null;
+  level: Level | null;
   reviewStatus: ReviewStatus | null;
   completeness: number | null;
   missing: boolean;
@@ -263,7 +262,7 @@ export type GraphNeighborhoodResponse = {
 };
 
 export type GraphLevelResponse = {
-  level: JlptLevel;
+  level: Level;
   nodes: GraphNode[];
   edges: GraphEdgeOut[];
 };
@@ -279,7 +278,7 @@ export type GraphOrphan = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel;
+  level: Level;
 };
 
 export type GraphDanglingEdge = {
@@ -312,7 +311,7 @@ export type BuildOrderRow = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel;
+  level: Level;
   outDegree: number;
   blockedBy: BuildOrderBlocker[];
 };
@@ -340,7 +339,7 @@ export type GeneratedSeedRow = {
 };
 
 export type GeneratedLevel = {
-  level: JlptLevel;
+  level: Level;
   total: number;
   generated: number;
   rows: GeneratedSeedRow[];
@@ -349,4 +348,20 @@ export type GeneratedLevel = {
 export type GeneratedResponse = {
   ok: true;
   levels: GeneratedLevel[];
+};
+
+/** One item on the Levels page: the full row plus whether it changed recently. */
+export type LevelItem = Omit<ContentListItem, 'auditSeverity' | 'auditFindingCount'> & {
+  raw: Record<string, unknown>;
+  changed: boolean;
+  mnemonicReviewStatus: ReviewStatus | null;
+};
+
+export type LevelResponse = {
+  level: Level;
+  /** Every ladder level that holds an item. */
+  levels: Level[];
+  /** The commit `changed` compares against; null when the history is younger than `days`. */
+  base: { days: number; rev: string; date: string; subject: string } | null;
+  items: LevelItem[];
 };

@@ -3,7 +3,7 @@ import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
 import { ReadingDetail } from './detail/ReadingDetail';
 import type { ReadingRaw } from '../types/curriculumRaw';
-import type { GeneratedResponse, GeneratedSeedRow, JlptLevel } from '../types/api';
+import type { GeneratedResponse, GeneratedSeedRow, Level } from '../types/api';
 
 function ToneTag({ tone }: { tone: string }) {
   return (
@@ -78,14 +78,14 @@ function SeedRow({
 }
 
 export default function Generated() {
-  const [level, setLevel] = useState<JlptLevel | null>(null);
+  const [level, setLevel] = useState<Level | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [showReadings, setShowReadings] = useState(true);
   const [pendingHidden, setPendingHidden] = useState(false);
 
   const state = useApi<GeneratedResponse>('/api/generated');
 
-  // Two levels of 30 seeds — small enough that filtering on every render is
+  // A few seeds per level — small enough that filtering on every render is
   // cheaper than memoising it.
   const levels = state.status === 'ok' ? state.data.levels : [];
   const active = levels.find((l) => l.level === level) ?? levels[0] ?? null;
@@ -125,7 +125,7 @@ export default function Generated() {
                   setExpanded(null);
                 }}
               >
-                {l.level} <span className="panel-muted">{l.generated}/{l.total}</span>
+                Level {l.level} <span className="panel-muted">{l.generated}/{l.total}</span>
               </button>
             ))}
           </div>
@@ -155,7 +155,7 @@ export default function Generated() {
 
           {rows.length === 0 ? (
             <p className="panel-muted">
-              No passages generated for {active.level} yet — run the reading-passage workflow, or
+              No passages generated for level {active.level} yet — run the reading-passage workflow, or
               untick “Hide pending seeds” to see the {active.total} seeds waiting.
             </p>
           ) : (

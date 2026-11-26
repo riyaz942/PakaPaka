@@ -2312,3 +2312,91 @@ a.audit-run-button {
   cursor: pointer;
   text-align: left;
 }
+
+/* --- Levels page --- */
+
+.level-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.level-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.level-item--changed {
+  border-left: 3px solid var(--warning);
+}
+
+.level-item__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.75rem;
+}
+
+.level-item__toggle {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.level-item__arrow {
+  color: var(--text-muted);
+}
+
+.level-item__form {
+  font-family: var(--font-jp);
+  font-size: 1.25rem;
+}
+
+.level-item__meaning {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.level-item__slug,
+.level-item__model {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.level-item__badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.level-item__open {
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+.level-item__body {
+  padding: 0 0.75rem 0.75rem;
+}
+
+.changed-badge {
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--warning);
+  border-radius: 4px;
+  color: var(--warning);
+  font-size: 0.7rem;
+  font-weight: 600;
+}

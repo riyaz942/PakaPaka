@@ -7,6 +7,7 @@ import Generated from './pages/Generated';
 import Graph from './pages/Graph';
 import Guide from './pages/Guide';
 import ItemDetail from './pages/ItemDetail';
+import Levels from './pages/Levels';
 import Pipeline from './pages/Pipeline';
 import Slugs from './pages/Slugs';
 import type { PipelineRunResult } from './types/api';
@@ -14,6 +15,7 @@ import type { PipelineRunResult } from './types/api';
 const NAV_LINKS = [
   { id: 'dashboard', label: 'Dashboard', to: '/', end: true },
   { id: 'content', label: 'Content', to: '/content', end: false },
+  { id: 'levels', label: 'Levels', to: '/levels', end: false },
   { id: 'slugs', label: 'Slugs', to: '/slugs', end: false },
   { id: 'generated', label: 'Generated', to: '/generated', end: false },
   { id: 'graph', label: 'Graph', to: '/graph', end: false },
@@ -99,6 +101,8 @@ export default function App() {
           <Route path="/content" element={<Navigate to="/content/radical" replace />} />
           <Route path="/content/:type" element={<ContentList />} />
           <Route path="/content/:type/:slug" element={<ItemDetail />} />
+          <Route path="/levels" element={<Navigate to="/levels/1" replace />} />
+          <Route path="/levels/:level" element={<Levels />} />
           <Route path="/slugs" element={<Slugs />} />
           <Route path="/generated" element={<Generated />} />
           <Route path="/graph" element={<Graph />} />

@@ -18,10 +18,18 @@ pulling changes that touch its `package.json`.
 
 ## What it does
 
-- **Dashboard** — content counts vs `targets.json`, review-status breakdown,
-  completeness, recently-drafted items.
-- **Content** — filterable tables per content type, showing every match at once (status,
-  skeleton, missing field, audit findings, free text).
+- **Dashboard** — review status per ladder level (1–60), completeness, item
+  counts per level (each level links to the Levels page), recently-drafted items.
+- **Content** — filterable tables per content type, showing every match at once (level,
+  status, skeleton, missing field, audit findings, free text).
+- **Levels** — everything taught at one ladder level on one page, grouped by
+  type in teaching order; click a row to read its full content. Items whose
+  content changed recently are marked **changed**: the server compares each
+  item's row in `<kind>/items.json` and its slug-keyed sidecars (mnemonics,
+  examples, grammar pool) with the last commit made before the chosen window
+  (1–30 days, default 3), uncommitted edits included
+  (`server/curriculum/changes.ts`). Grammar lesson files are not compared.
+  Read-only, except the grammar mnemonic status control.
 - **Item detail** — every field rendered (readings, mnemonics, examples,
   dependencies), plus an edit form that writes straight to the source JSON —
   see the write-back rules under Safety notes.
@@ -102,10 +110,11 @@ pulling changes that touch its `package.json`.
 
 ## Targets and audit
 
-- `web/targets.json` holds the per-level, per-type content targets shown on
-  the Dashboard ("remaining to generate"). It's not derived from anything —
-  edit it by hand as goals change.
-- Audit findings come from `curriculum/_build/reports/content-audit-{n5,n4}.json`,
+- `web/targets.json` holds per-JLPT-level content targets. No ladder level maps
+  to a JLPT level, so the Dashboard no longer shows them; `/api/overview` still
+  loads the file.
+- Audit findings come from `curriculum/_build/reports/content-audit-level-NN.json`
+  (levels 1–20),
   written by the "Run audit" button (or by running `audit_shipped.py --json`
   directly). The Content and Item-detail views only reflect whatever the most
   recent report on disk says — re-run the audit after editing content to

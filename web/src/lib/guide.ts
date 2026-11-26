@@ -1,4 +1,4 @@
-import type { ContentType, JlptLevel } from '../types/api';
+import type { ContentType, Level } from '../types/api';
 
 /**
  * The generation playbook, as data. Everything the Guide page renders — the
@@ -11,7 +11,7 @@ import type { ContentType, JlptLevel } from '../types/api';
  * verbatim — that string is the `check` value the API reports.
  */
 
-/** Replaced with the selected level at render time (`n5` / `n4`). */
+/** Replaced with the selected ladder level at render time (`14`). */
 export const LEVEL_TOKEN = '<level>';
 
 export type GuideStep = {
@@ -782,7 +782,7 @@ export function fixIdForCheck(check: string): string | undefined {
   return FIX_BY_CHECK.get(check);
 }
 
-export function guideHref(anchor: string, level?: JlptLevel): string {
+export function guideHref(anchor: string, level?: Level): string {
   return level ? `/guide?level=${level}#${anchor}` : `/guide#${anchor}`;
 }
 
@@ -790,11 +790,11 @@ export function guideHref(anchor: string, level?: JlptLevel): string {
 export function contentGapHref(
   type: ContentType,
   field: string,
-  level: JlptLevel,
+  level: Level,
 ): string {
   return `/content/${type}?level=${level}&missing=${encodeURIComponent(field)}&sort=completeness_asc`;
 }
 
-export function withLevel(command: string, level: JlptLevel): string {
-  return command.split(LEVEL_TOKEN).join(level.toLowerCase());
+export function withLevel(command: string, level: Level): string {
+  return command.split(LEVEL_TOKEN).join(String(level));
 }
