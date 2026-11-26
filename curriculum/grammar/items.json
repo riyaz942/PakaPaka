@@ -74409,9 +74409,9 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "A crash rings out from Han's kitchen, and the waiter, without turning round, shrugs \"<reading>Dish, oh</reading>\": <grammar>probably</grammar> another plate, now in two exact halves. {{sensei||先生}}は忙しい<reading>でしょう</reading>。",
+      "mnemonic_text": "A crash rings out from Han's kitchen, and the waiter, without turning round, shrugs \"<reading>Dish, oh</reading>\": <grammar>probably</grammar> another plate, now in two exact halves. {{sensei||先生}}は{{ashita||明日}}{{kuru-v||来る}}<reading>でしょう</reading>。",
       "level": 10
     },
     {
@@ -76178,9 +76178,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "At dawn Grandma Kane rings for her tea, and Chuu bows low beside the cold kettle: \"<reading>Ma'am, the tea? Nay.</reading>\" It is <grammar>not done yet</grammar>. {{haha||母}}は<reading>まだ</reading>起き<reading>ていない</reading>。",
+      "mnemonic_text": "At dawn Grandma Kane rings for her tea, and Chuu bows low beside the cold kettle: \"<reading>Ma'am, the tea? Nay.</reading>\" It is <grammar>not done yet</grammar>. {{haha||母}}は<reading>まだ</reading>{{taberu|stem|食べ}}<reading>ていない</reading>。",
       "level": 10
     },
     {
@@ -78475,9 +78475,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Sho the tiny magician taps his hat for a hundred doves, and one damp <reading>duck</reading> waddles out: <grammar>just</grammar> the duck, nothing else. 帽子の{{naka||中}}に鳥<reading>だけ</reading>{{iru-exist|masu|いました}}。",
+      "mnemonic_text": "Sho the tiny magician taps his hat for a hundred doves, and one damp <reading>duck</reading> waddles out: <grammar>just</grammar> the duck, nothing else. {{pan||パン}}<reading>だけ</reading>{{taberu|masu|食べます}}。",
       "level": 10
     },
     {
@@ -79522,9 +79522,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "The birdwatching club aims twelve cameras at the power line, where Kaa the crow sits alone, puffing little flames. The guide whispers \"<reading>Shh, Kaa</reading>\", and the cameras click at <grammar>nothing but</grammar> him. 鳥は{{kare||彼}}<reading>しか</reading>{{iru-exist|masu|いません}}。",
+      "mnemonic_text": "The birdwatching club aims twelve cameras at the power line, where Kaa the crow sits alone, puffing little flames. The guide whispers \"<reading>Shh, Kaa</reading>\", and the cameras click at <grammar>nothing but</grammar> him. {{heya||部屋}}には{{kare||彼}}<reading>しか</reading>{{iru-exist|masu|いません}}。",
       "level": 10
     },
     {
