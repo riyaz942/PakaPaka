@@ -8354,6 +8354,30 @@
           {
             "japanese": "家へ帰る前に、パンを買いました。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "家へ帰る時に、パンを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "家へ帰る前にに、パンを買いました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "家に帰る時に、パンを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "家に帰る前にに、パンを買いました。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は家へ帰る時、パンを買いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は家へ帰る前に、パンを買いました。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -8374,6 +8398,18 @@
           {
             "japanese": "家へ帰ったとき、テレビを見ました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "家へ帰った時に、テレビを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "家に帰った時に、テレビを見ました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は家へ帰った時、テレビを見ました。",
+            "kind": "valid"
           }
         ]
       },
@@ -8390,6 +8426,14 @@
           {
             "japanese": "赤ちゃんが泣く時、お母さんは歌います。",
             "kind": "valid"
+          },
+          {
+            "japanese": "赤ちゃんが泣くときに、お母さんは歌います。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "お母さんは赤ちゃんが泣くとき、歌います。",
+            "kind": "valid"
           }
         ]
       },
@@ -8404,6 +8448,14 @@
         "alternates": [
           {
             "japanese": "旅行する時、何が要りますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "旅行するときに、何が要りますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "旅行をするとき、何が要りますか。",
             "kind": "valid"
           }
         ]
@@ -8425,6 +8477,18 @@
           {
             "japanese": "タクシーから降りるとき、かばんを無くしました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "タクシーを降りるときに、かばんを無くしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "タクシーから降りるときに、かばんを無くしました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私はタクシーを降りるとき、かばんを無くしました。",
+            "kind": "valid"
           }
         ]
       },
@@ -8443,6 +8507,14 @@
           },
           {
             "japanese": "仕事のとき、電話を使いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "仕事のときに、電話は使いません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "仕事のとき、私は電話は使いません。",
             "kind": "valid"
           }
         ]
@@ -8464,6 +8536,14 @@
           },
           {
             "japanese": "日本にいたとき、お茶を毎日飲みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "日本にいたときに、毎日お茶を飲みました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は日本にいたとき、毎日お茶を飲みました。",
             "kind": "valid"
           }
         ]
@@ -8487,6 +8567,22 @@
           },
           {
             "japanese": "食事の前に、テレビは見ません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "食事のときに、テレビは見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "食事の前にに、テレビは見ません。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "私は食事のとき、テレビは見ません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は食事の前に、テレビは見ません。",
             "kind": "other_grammar"
           }
         ]
@@ -8512,6 +8608,22 @@
           {
             "japanese": "体が痛いから、病院へ行きます。",
             "kind": "other_grammar"
+          },
+          {
+            "japanese": "体が痛いときに、病院へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "体が痛いからに、病院へ行きます。",
+            "kind": "other_grammar"
+          },
+          {
+            "japanese": "体が痛いとき、私は病院へ行きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "体が痛いから、私は病院へ行きます。",
+            "kind": "other_grammar"
           }
         ]
       },
@@ -8527,6 +8639,14 @@
           {
             "japanese": "分からない時、先生に聞きます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "分からないときに、先生に聞きます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は分からないとき、先生に聞きます。",
+            "kind": "valid"
           }
         ]
       }
@@ -8534,7 +8654,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "dictionary-koto-ga-dekiru": {
@@ -8555,6 +8679,10 @@
         "alternates": [
           {
             "japanese": "私は泳ぐことができません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "泳ぐことができないです。",
             "kind": "valid"
           }
         ]
@@ -8597,6 +8725,12 @@
           "otouto",
           "hiragana",
           "kaku"
+        ],
+        "alternates": [
+          {
+            "japanese": "私の弟はひらがなを書くことができます。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -8606,6 +8740,12 @@
           "kanojo",
           "katakana",
           "yomu"
+        ],
+        "alternates": [
+          {
+            "japanese": "彼女はカタカナを読むことができないです。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -8631,6 +8771,12 @@
           "ani",
           "doa",
           "naosu"
+        ],
+        "alternates": [
+          {
+            "japanese": "私の兄はドアを直すことができます。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -8645,6 +8791,10 @@
         "alternates": [
           {
             "japanese": "昨日はテストの答えを書くことができませんでした。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は昨日、テストの答えを書くことができませんでした。",
             "kind": "valid"
           }
         ]
@@ -8662,6 +8812,18 @@
           {
             "japanese": "この箱は重いから、運ぶことができません。",
             "kind": "valid"
+          },
+          {
+            "japanese": "この箱は重いので、私は運ぶことができません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この箱は重いですので、運ぶことができません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "この箱は重いので、運ぶことができないです。",
+            "kind": "valid"
           }
         ]
       },
@@ -8677,6 +8839,22 @@
           {
             "japanese": "先生には午後会うことができます。",
             "kind": "valid"
+          },
+          {
+            "japanese": "午後、先生に会うことができます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "午後に先生に会うことができます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "午後は先生と会うことができます。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "午後に先生と会うことができます。",
+            "kind": "valid"
           }
         ]
       }
@@ -8684,7 +8862,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "adj-i-conjugation": {
@@ -8768,6 +8950,12 @@
           "akachan",
           "te-v",
           "chiisai"
+        ],
+        "alternates": [
+          {
+            "japanese": "赤ちゃんは手が小さかったです。",
+            "kind": "valid"
+          }
         ]
       },
       {
@@ -8792,6 +8980,14 @@
           {
             "japanese": "歯が痛かったので、病院に行きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "歯が痛かったですので、病院へ行きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は歯が痛かったので、病院へ行きました。",
+            "kind": "valid"
           }
         ]
       }
@@ -8799,7 +8995,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "adj-na-conjugation": {
@@ -8834,6 +9034,10 @@
           {
             "japanese": "姉がきれいな靴を買いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私の姉はきれいな靴を買いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -8845,7 +9049,13 @@
           "ryouri",
           "heta"
         ],
-        "form": "下手です"
+        "form": "下手です",
+        "alternates": [
+          {
+            "japanese": "私の父は料理が下手です。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "弟はひらがなが上手ではありません。",
@@ -8855,7 +9065,25 @@
           "hiragana",
           "jouzu"
         ],
-        "form": "上手ではありません"
+        "form": "上手ではありません",
+        "alternates": [
+          {
+            "japanese": "弟はひらがなが上手じゃありません。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "弟はひらがなが上手ではないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "弟はひらがなが上手じゃないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私の弟はひらがなが上手ではありません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "昨日の仕事は大変でした。",
@@ -8865,7 +9093,13 @@
           "shigoto",
           "taihen"
         ],
-        "form": "大変でした"
+        "form": "大変でした",
+        "alternates": [
+          {
+            "japanese": "昨日は仕事が大変でした。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "体は大丈夫ですか。",
@@ -8886,7 +9120,13 @@
           "nomimono",
           "aru"
         ],
-        "form": "色々な"
+        "form": "色々な",
+        "alternates": [
+          {
+            "japanese": "この店に色々な飲み物があります。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "駅員は親切な人でした。",
@@ -8906,7 +9146,17 @@
           "toire",
           "kirei"
         ],
-        "form": "きれいではありません"
+        "form": "きれいではありません",
+        "alternates": [
+          {
+            "japanese": "このトイレはきれいではないです。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "このトイレはきれいじゃないです。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "先生は親切でしたか。",
@@ -8921,7 +9171,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "adj-i-adverb": {
@@ -8960,6 +9214,10 @@
           {
             "japanese": "私はノートに大きく書きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "大きくノートに書きました。",
+            "kind": "valid"
           }
         ]
       },
@@ -8971,7 +9229,13 @@
           "akarui",
           "suru"
         ],
-        "form": "明るく"
+        "form": "明るく",
+        "alternates": [
+          {
+            "japanese": "私は台所を明るくしました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "毎晩遅く帰ります。",
@@ -8997,7 +9261,13 @@
           "tanoshii",
           "utau"
         ],
-        "form": "楽しく"
+        "form": "楽しく",
+        "alternates": [
+          {
+            "japanese": "女の子が楽しく歌いました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "兄は長く話しません。",
@@ -9007,7 +9277,13 @@
           "nagai-adj",
           "hanasu-v"
         ],
-        "form": "長く"
+        "form": "長く",
+        "alternates": [
+          {
+            "japanese": "私の兄は長く話しません。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "パンを小さく切りましょうか。",
@@ -9027,7 +9303,13 @@
           "amai",
           "suru"
         ],
-        "form": "甘く"
+        "form": "甘く",
+        "alternates": [
+          {
+            "japanese": "あなたはコーヒーを甘くしましたか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "晩ご飯をおいしく食べました。",
@@ -9037,7 +9319,13 @@
           "oishii",
           "taberu"
         ],
-        "form": "おいしく"
+        "form": "おいしく",
+        "alternates": [
+          {
+            "japanese": "私は晩ご飯をおいしく食べました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "父はパソコンを安く売りました。",
@@ -9048,13 +9336,27 @@
           "yasui-adj",
           "uru"
         ],
-        "form": "安く"
+        "form": "安く",
+        "alternates": [
+          {
+            "japanese": "父がパソコンを安く売りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私の父はパソコンを安く売りました。",
+            "kind": "valid"
+          }
+        ]
       }
     ],
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "adj-na-adverb": {
@@ -9098,7 +9400,13 @@
           "kirei",
           "arau"
         ],
-        "form": "きれいに"
+        "form": "きれいに",
+        "alternates": [
+          {
+            "japanese": "きれいに手を洗いましょう。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "お兄さんは上手に泳ぎますか。",
@@ -9108,7 +9416,13 @@
           "jouzu",
           "oyogu"
         ],
-        "form": "上手に"
+        "form": "上手に",
+        "alternates": [
+          {
+            "japanese": "あなたのお兄さんは上手に泳ぎますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "駅員は親切に話しました。",
@@ -9118,7 +9432,13 @@
           "shinsetsu",
           "hanasu-v"
         ],
-        "form": "親切に"
+        "form": "親切に",
+        "alternates": [
+          {
+            "japanese": "駅員が親切に話しました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "赤ちゃんはきれいに食べません。",
@@ -9144,6 +9464,14 @@
           {
             "japanese": "母は上手にパンを作りました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "母がパンを上手に作りました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私の母はパンを上手に作りました。",
+            "kind": "valid"
           }
         ]
       },
@@ -9155,7 +9483,13 @@
           "kirei",
           "suru"
         ],
-        "form": "きれいに"
+        "form": "きれいに",
+        "alternates": [
+          {
+            "japanese": "私は台所をきれいにしました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "おばあさんは上手に料理しますか。",
@@ -9165,7 +9499,17 @@
           "jouzu",
           "ryouri-suru"
         ],
-        "form": "上手に"
+        "form": "上手に",
+        "alternates": [
+          {
+            "japanese": "おばあさんは上手に料理をしますか。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "あなたのおばあさんは上手に料理しますか。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "姉は手紙をきれいに書きました。",
@@ -9181,6 +9525,14 @@
           {
             "japanese": "姉はきれいに手紙を書きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "姉が手紙をきれいに書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私の姉は手紙をきれいに書きました。",
+            "kind": "valid"
           }
         ]
       }
@@ -9188,7 +9540,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   },
   "comparative-yori": {
