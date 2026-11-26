@@ -4153,9 +4153,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Chuu, the loyal mouse, bows until his topknot taps the floor and adds \"<reading>Mas</reading>ter\" to the end of every verb, giving each one a <grammar>polite ending</grammar>. お茶を飲み<reading>ます</reading>。",
+      "mnemonic_text": "Chuu, the loyal mouse, bows until his topknot taps the floor and adds \"<reading>Mas</reading>ter\" to the end of every verb, giving each one a <grammar>polite ending</grammar>. {{hanasu-v|stem|話し}}<reading>ます</reading>。",
       "level": 2
     },
     {
@@ -5017,9 +5017,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Koichi bows at the beeping till and points at the empty egg tray, sighing \"<reading>Ma's hen</reading>…\", and the customer understands: the hen <grammar>politely does not</grammar> lay on Sundays. 私は肉を{{taberu|stem|食べ}}<reading>ません</reading>。",
+      "mnemonic_text": "Koichi bows at the beeping till and points at the empty egg tray, sighing \"<reading>Ma's hen</reading>…\", and the customer understands: the hen <grammar>politely does not</grammar> lay on Sundays. {{taberu|stem|食べ}}<reading>ません</reading>。",
       "level": 2
     },
     {
@@ -6145,9 +6145,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Jin the friendly giant sits on the rice-ball shelf in Koichi's shop by mistake. He stands up sticky and says \"Sorry, I <reading>mashed it</reading>,\" a <grammar>polite report of what already happened</grammar>. 昨日ご飯を{{taberu|stem|食べ}}<reading>ました</reading>。",
+      "mnemonic_text": "Jin the friendly giant sits on the rice-ball shelf in Koichi's shop by mistake. He stands up sticky and says \"Sorry, I <reading>mashed it</reading>,\" a <grammar>polite report of what already happened</grammar>. {{kyou||今日}}{{taberu|stem|食べ}}<reading>ました</reading>。",
       "level": 2
     },
     {
@@ -7198,9 +7198,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "At the foot of the mountain trail, Grandma Kane ties her sled to six shrine cats and yells \"<reading>Mush, oh!</reading>\", which means <grammar>let's go</grammar>, all of us, up to the vending machine. 一緒に{{iku-v|stem|行き}}<reading>ましょう</reading>。",
+      "mnemonic_text": "At the foot of the mountain trail, Grandma Kane ties her sled to six shrine cats and yells \"<reading>Mush, oh!</reading>\", which means <grammar>let's go</grammar>, all of us, up to the vending machine. {{iku-v|stem|行き}}<reading>ましょう</reading>。",
       "level": 2
     },
     {
