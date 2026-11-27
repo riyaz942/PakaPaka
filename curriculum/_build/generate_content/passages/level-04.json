@@ -186,6 +186,169 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "konbini-kara-denwa",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "コンビニから電話",
+        "body": "兄はコンビニから母に電話をしました。「コーヒーですね。」「はい。」「お茶ですね。」「はい。」「パンですね。」「はい。」兄は三つとも買いました。母も朝、スーパーで三つとも買いました。",
+        "questions": [
+          {
+            "prompt": "兄はどこから母に電話をしましたか。",
+            "accepted_answers": [
+              "コンビニから",
+              "コンビニ",
+              "コンビニからです",
+              "コンビニです",
+              "こんびにから",
+              "こんびに",
+              "こんびにからです",
+              "こんびにです"
+            ],
+            "prompt_furigana": "兄[あに]はどこから母[はは]に電[でん]話[わ]をしましたか。"
+          },
+          {
+            "prompt": "母は朝、どこで買いましたか。",
+            "accepted_answers": [
+              "スーパーで",
+              "スーパー",
+              "スーパーです",
+              "すーぱーで",
+              "すーぱー",
+              "すーぱーです"
+            ],
+            "prompt_furigana": "母[はは]は朝[あさ]、どこで買[か]いましたか。"
+          }
+        ],
+        "english_translation": "My older brother phoned our mother from the convenience store. \"It's coffee, right?\" \"Yes.\" \"It's tea, right?\" \"Yes.\" \"It's bread, right?\" \"Yes.\" He bought all three. Mother had also bought all three at the supermarket that morning.",
+        "summary_ja": "兄も母もコーヒーとお茶とパンを買いました。",
+        "summary_en": "Brother phones Mother to check coffee, tea and bread, buys all three, and Mother had bought all three that morning too.",
+        "grammar_slugs": [
+          "de-location",
+          "desu",
+          "kara-from",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ne-tag",
+          "ni-indirect",
+          "to-and",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "ani",
+          "asa",
+          "denwa",
+          "haha",
+          "kau-v",
+          "konbini",
+          "koohii",
+          "mittsu",
+          "ocha",
+          "pan",
+          "suru",
+          "suupaa"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "ani",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "konbini",
+            "start": 2,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "denwa",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 13,
+            "end": 17,
+            "surface_form": "しました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 19,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "ocha",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 47,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 59,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 61,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 65,
+            "end": 70,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 71,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 73,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "suupaa",
+            "start": 75,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 80,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 84,
+            "end": 89,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 45,
+        "body_furigana": "兄[あに]はコンビニから母[はは]に電[でん]話[わ]をしました。「コーヒーですね。」「はい。」「お茶[ちゃ]ですね。」「はい。」「パンですね。」「はい。」兄[あに]は三[みっ]つとも買[か]いました。母[はは]も朝[あさ]、スーパーで三[みっ]つとも買[か]いました。",
+        "slug": "konbini-kara-denwa",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
