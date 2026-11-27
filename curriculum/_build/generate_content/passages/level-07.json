@@ -1,0 +1,728 @@
+{
+  "level": 7,
+  "passages": [
+    {
+      "seed": "takushii-ni-notta-koto-ga-nai",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "祖母とタクシー",
+        "body": "祖母はタクシーに乗ったことがありません。「乗りたいです。」と言いました。父がタクシーの会社に電話をかけました。祖母は乗って、座って、「駅まで行ってください。」と言いました。駅で降りて、毎朝のバスに乗りました。その晩、「タクシーに乗ったことがありますよ。」と言いました。",
+        "questions": [
+          {
+            "prompt": "誰がタクシーの会社に電話をかけましたか。",
+            "accepted_answers": [
+              "父",
+              "ちち",
+              "父です",
+              "ちちです"
+            ],
+            "prompt_furigana": "誰[だれ]がタクシーの会[かい]社[しゃ]に電[でん]話[わ]をかけましたか。"
+          },
+          {
+            "prompt": "タクシーはどこまで行きましたか。",
+            "accepted_answers": [
+              "駅",
+              "えき",
+              "駅まで",
+              "えきまで",
+              "駅です",
+              "えきです",
+              "駅までです",
+              "えきまでです"
+            ],
+            "prompt_furigana": "タクシーはどこまで行[い]きましたか。"
+          },
+          {
+            "prompt": "祖母は駅で何に乗りましたか。",
+            "accepted_answers": [
+              "バス",
+              "バスです",
+              "毎朝のバス",
+              "まいあさのバス",
+              "毎朝のバスです",
+              "まいあさのバスです"
+            ],
+            "prompt_furigana": "祖[そ]母[ぼ]は駅[えき]で何[なに]に乗[の]りましたか。"
+          }
+        ],
+        "english_translation": "My grandmother has never ridden in a taxi. She said, \"I want to ride in one.\" My father phoned the taxi company. Grandmother got in, sat down and said, \"To the station, please.\" At the station she got out and got on her usual morning bus. That evening she said, \"I have ridden in a taxi, you know.\"",
+        "summary_ja": "祖母はタクシーで駅まで行って、バスに乗りました。",
+        "summary_en": "Grandmother finally rides in a taxi, all the way to the station, where she catches her usual bus.",
+        "grammar_slugs": [
+          "de-location",
+          "desu",
+          "ga",
+          "made-until",
+          "mashita",
+          "masu",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "ta-koto-ga-aru",
+          "tai",
+          "te-form",
+          "te-kudasai",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "ban",
+          "basu",
+          "chichi",
+          "denwa",
+          "eki",
+          "iku-v",
+          "iu-v",
+          "kaisha",
+          "kakeru-call",
+          "maiasa",
+          "noru",
+          "oriru",
+          "sobo",
+          "sono",
+          "suwaru",
+          "takushii"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "sobo",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "takushii",
+            "start": 3,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "noru",
+            "start": 8,
+            "end": 11,
+            "surface_form": "乗った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 14,
+            "end": 19,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 30,
+            "end": 35,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 36,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "takushii",
+            "start": 38,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "kaisha",
+            "start": 43,
+            "end": 45
+          },
+          {
+            "vocabulary_slug": "denwa",
+            "start": 46,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "kakeru-call",
+            "start": 49,
+            "end": 54,
+            "surface_form": "かけました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sobo",
+            "start": 55,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "noru",
+            "start": 58,
+            "end": 61,
+            "surface_form": "乗って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 62,
+            "end": 65,
+            "surface_form": "座って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 67,
+            "end": 68
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 70,
+            "end": 73,
+            "surface_form": "行って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 80,
+            "end": 85,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 86,
+            "end": 87
+          },
+          {
+            "vocabulary_slug": "oriru",
+            "start": 88,
+            "end": 91,
+            "surface_form": "降りて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "maiasa",
+            "start": 92,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "basu",
+            "start": 95,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "noru",
+            "start": 98,
+            "end": 103,
+            "surface_form": "乗りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 104,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 106,
+            "end": 107
+          },
+          {
+            "vocabulary_slug": "takushii",
+            "start": 109,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "noru",
+            "start": 114,
+            "end": 117,
+            "surface_form": "乗った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 120,
+            "end": 124,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 128,
+            "end": 133,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 70,
+        "body_furigana": "祖[そ]母[ぼ]はタクシーに乗[の]ったことがありません。「乗[の]りたいです。」と言[い]いました。父[ちち]がタクシーの会[かい]社[しゃ]に電[でん]話[わ]をかけました。祖[そ]母[ぼ]は乗[の]って、座[すわ]って、「駅[えき]まで行[い]ってください。」と言[い]いました。駅[えき]で降[お]りて、毎[まい]朝[あさ]のバスに乗[の]りました。その晩[ばん]、「タクシーに乗[の]ったことがありますよ。」と言[い]いました。",
+        "slug": "takushii-ni-notta-koto-ga-nai",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "nichiyoubi-no-yotei",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "日曜日のノート",
+        "body": "金曜日、ノートに「パンを買いに行きます。祖父と祖母に会いに行きます。本を読んだり、手紙を書いたりします。」と書きました。日曜日が来ました。ベッドに座って、本を読みました。昼も、ベッドに座りました。そして、月曜日が来ました。朝ご飯はコーヒーでした。",
+        "questions": [
+          {
+            "prompt": "何を買いに行きますか。",
+            "accepted_answers": [
+              "パン",
+              "パンです",
+              "パンを"
+            ],
+            "prompt_furigana": "何[なに]を買[か]いに行[い]きますか。"
+          },
+          {
+            "prompt": "誰に会いに行きますか。",
+            "accepted_answers": [
+              "祖父と祖母",
+              "そふとそぼ",
+              "祖父と祖母です",
+              "そふとそぼです",
+              "祖父と祖母に",
+              "そふとそぼに"
+            ],
+            "prompt_furigana": "誰[だれ]に会[あ]いに行[い]きますか。"
+          },
+          {
+            "prompt": "月曜日の朝ご飯は何でしたか。",
+            "accepted_answers": [
+              "コーヒー",
+              "コーヒーです",
+              "コーヒーでした"
+            ],
+            "prompt_furigana": "月[げつ]曜[よう]日[び]の朝[あさ]ご飯[はん]は何[なに]でしたか。"
+          }
+        ],
+        "english_translation": "On Friday, I wrote in my notebook: \"I will go to buy bread. I will go to see my grandfather and grandmother. I will do things like read books and write letters.\" Sunday came. I sat on the bed and read a book. At noon, too, I sat on the bed. And then Monday came. Breakfast was coffee.",
+        "summary_ja": "日曜日は、ベッドに座って、本を読みました。",
+        "summary_en": "The writer plans a busy Sunday, spends it sitting on the bed, and has only coffee for breakfast on Monday.",
+        "grammar_slugs": [
+          "desu",
+          "ga",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "ni-iku",
+          "ni-indirect",
+          "tari-tari",
+          "te-form",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "asagohan",
+          "beddo",
+          "getsuyoubi",
+          "hiru",
+          "hon",
+          "iku-v",
+          "kaku",
+          "kinyoubi",
+          "koohii",
+          "kuru-v",
+          "nichiyoubi",
+          "nooto",
+          "pan",
+          "sobo",
+          "sofu",
+          "suru",
+          "suwaru",
+          "tegami",
+          "yomu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "nooto",
+            "start": 4,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 9,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 15,
+            "end": 19,
+            "surface_form": "行きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "sobo",
+            "start": 23,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 29,
+            "end": 33,
+            "surface_form": "行きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 34,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "tegami",
+            "start": 41,
+            "end": 43
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 48,
+            "end": 51,
+            "surface_form": "します",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaku",
+            "start": 54,
+            "end": 59,
+            "surface_form": "書きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 60,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 64,
+            "end": 68,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "beddo",
+            "start": 69,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 73,
+            "end": 76,
+            "surface_form": "座って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 77,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 79,
+            "end": 84,
+            "surface_form": "読みました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hiru",
+            "start": 85,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "beddo",
+            "start": 88,
+            "end": 91
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 92,
+            "end": 97,
+            "surface_form": "座りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 102,
+            "end": 105
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 106,
+            "end": 110,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "asagohan",
+            "start": 111,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 115,
+            "end": 119
+          }
+        ],
+        "word_count": 66,
+        "body_furigana": "金[きん]曜[よう]日[び]、ノートに「パンを買[か]いに行[い]きます。祖[そ]父[ふ]と祖[そ]母[ぼ]に会[あ]いに行[い]きます。本[ほん]を読[よ]んだり、手[て]紙[がみ]を書[か]いたりします。」と書[か]きました。日[にち]曜[よう]日[び]が来[き]ました。ベッドに座[すわ]って、本[ほん]を読[よ]みました。昼[ひる]も、ベッドに座[すわ]りました。そして、月[げつ]曜[よう]日[び]が来[き]ました。朝[あさ]ご飯[はん]はコーヒーでした。",
+        "slug": "nichiyoubi-no-yotei",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "basu-ni-noru-mae-ni",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "かばんとコート",
+        "body": "バスに乗る前に、私はかばんを見ました。ペンも本もカメラもありました。駅で降りた後で、かばんを見ました。ペンも本もカメラもありました。でも、コートはバスにありました。そして、バスは駅を出ました。明日から、コートもかばんに入れます。",
+        "questions": [
+          {
+            "prompt": "バスに乗る前に、何を見ましたか。",
+            "accepted_answers": [
+              "かばん",
+              "かばんです",
+              "かばんを"
+            ],
+            "prompt_furigana": "バスに乗[の]る前[まえ]に、何[なに]を見[み]ましたか。"
+          },
+          {
+            "prompt": "どこで降りましたか。",
+            "accepted_answers": [
+              "駅",
+              "えき",
+              "駅で",
+              "えきで",
+              "駅です",
+              "えきです"
+            ],
+            "prompt_furigana": "どこで降[お]りましたか。"
+          },
+          {
+            "prompt": "コートはどこにありましたか。",
+            "accepted_answers": [
+              "バス",
+              "バスです",
+              "バスに",
+              "バスにありました"
+            ]
+          }
+        ],
+        "english_translation": "Before getting on the bus, I looked in my bag. The pen, the book and the camera were all there. After getting off at the station, I looked in my bag. The pen, the book and the camera were all there. But my coat was on the bus. And then the bus left the station. From tomorrow, I will put my coat in the bag too.",
+        "summary_ja": "私のコートはバスにありました。",
+        "summary_en": "The writer checks the bag before and after the bus ride, but the coat leaves on the bus.",
+        "grammar_slugs": [
+          "ato-de",
+          "de-location",
+          "kara-from",
+          "mae-ni",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "ta-form",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "ashita",
+          "basu",
+          "deru-v",
+          "eki",
+          "hon",
+          "ireru-v",
+          "kaban",
+          "kamera",
+          "kooto",
+          "miru-v",
+          "noru",
+          "oriru",
+          "pen",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "basu",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "noru",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "kaban",
+            "start": 10,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 14,
+            "end": 18,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pen",
+            "start": 19,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 22,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "kamera",
+            "start": 24,
+            "end": 27
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 28,
+            "end": 33,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 34,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "oriru",
+            "start": 36,
+            "end": 39,
+            "surface_form": "降りた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "kaban",
+            "start": 42,
+            "end": 45
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 46,
+            "end": 50,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pen",
+            "start": 51,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 54,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "kamera",
+            "start": 56,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 60,
+            "end": 65,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kooto",
+            "start": 69,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "basu",
+            "start": 73,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 76,
+            "end": 81,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "basu",
+            "start": 86,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 89,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "deru-v",
+            "start": 91,
+            "end": 95,
+            "surface_form": "出ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ashita",
+            "start": 96,
+            "end": 98
+          },
+          {
+            "vocabulary_slug": "kooto",
+            "start": 101,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "kaban",
+            "start": 105,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "ireru-v",
+            "start": 109,
+            "end": 113,
+            "surface_form": "入れます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 66,
+        "body_furigana": "バスに乗[の]る前[まえ]に、私[わたし]はかばんを見[み]ました。ペンも本[ほん]もカメラもありました。駅[えき]で降[お]りた後[あと]で、かばんを見[み]ました。ペンも本[ほん]もカメラもありました。でも、コートはバスにありました。そして、バスは駅[えき]を出[で]ました。明日[あした]から、コートもかばんに入[い]れます。",
+        "slug": "basu-ni-noru-mae-ni",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}
