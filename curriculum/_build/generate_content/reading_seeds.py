@@ -1,67 +1,62 @@
 # -*- coding: utf-8 -*-
 """Phase 4 reading-passage seeds (docs/content/content-pipeline-plan.md Phase 4).
 
-A seed is the *plan* for one passage: where it sits in the level, how long it
-should be, how many comprehension questions it carries, what it is about, and
-— per Rev 1 — its **tone tag**. Nothing here is generated; these are the
-maintainer-authored inputs the generator reads.
+A seed is the *plan* for one passage: its ladder level, how long it should be,
+how many comprehension questions it carries, what it is about, and its **tone
+tag**. Nothing here is generated; these are the maintainer-authored inputs the
+generator reads.
+
+## Ladder levels (level-ladder plan, Task 9)
+
+A passage is the level test (spec §7.6 of
+docs/superpowers/specs/2026-11-18-level-ladder-design.md): the learner completes
+a level 2–20 by passing 2 of its passages. So every level 2–20 has at least 3
+seeds, and level 1 has none. A seed's `level` is the passage's level: its window
+is every word and grammar point at or below that level (reading_context.py).
+`position` is not written here: `seeds_for` numbers the seeds of a level in the
+order they are listed.
+
+`target_words` (a band on the tokenizer word count, see
+`validate_readings.word_count`) and `question_count` grow with the level: 20–30
+words and 2 questions at level 2, 155–182 words and 5 questions at level 20.
 
 ## Why tone is a seed field
 
-Rev 1 wants 50–60% of each level's passages humorous. Humour left to per-call
-chance gives whatever mix the model feels like, so it is assigned here as a
-planned mix and checked mechanically (`tone_mix_errors`). `humorous` seeds get
-the comedy-register section of `prompts/persona.md`; `neutral` seeds get the
-same persona minus the instruction to be funny.
-
-## Ladder levels (level-ladder plan, Task 6)
-
-A seed now sits at the ladder level of the passage it wrote, and may use every
-word and grammar point at or below that level. The sections below describe
-the JLPT-era window (`position`, `vocab_cutoff`, `pull_forward`,
-`grammar_cutoff`); those fields stay in the data but are not read (see
-`SEEDS`).
-
-## `position` and the allowed sets
-
-`position` is the seed's rank within the level (1..N) — the "passage 3 of 30"
-the prompt states, and the order the level ships in. It no longer *derives*
-anything: the window is authored per seed (below), so renumbering changes the
-narrative order and nothing about what the generator may use.
-
-## The authored ladder — `vocab_cutoff`, `pull_forward`, `grammar_cutoff`
-
-Each seed declares its own window
-(docs/content/reading-passage-expansion-plan.md, § The positional window breaks
-at 30 seeds):
-
-  * `vocab_cutoff` — how many of the level's vocabulary items, by sort_order,
-    this passage may use. Replaces the `position/N` proportional slice, which
-    at 30 seeds hands passage 1 twenty-four pronouns and no verb (the first N5
-    verb is word 377 of 718).
-  * `pull_forward` — later slugs this seed may use anyway. A **graded release**
-    replacing the flat always-allowed `READING_CORE_SLUGS`: early seeds pull a
-    few verbs forward, later seeds none, because the cutoff has reached them.
-  * `grammar_cutoff` — the same, over the level's grammar points.
-  * `pull_forward_grammar` — the grammar side of `pull_forward`, and optional
-    because only N5 needs it. N5's four adjective points sit at 47–50 of 70
-    and `grammar_detect` fires them on *any* adjective, so a prefix window
-    forbids 大きい, 好き and いい outright for two thirds of the level. Every
-    N5 seed below the cutoff pulls that block forward. N4 inherits all 70 N5
-    points, so the problem cannot arise there.
-
-Authored, checked in, and read by the generator — never chosen while the model
-writes, because a model-chosen window makes the level gate vacuous and
-regeneration has to reproduce.
+Rev 1 wants most passages humorous. Humour left to per-call chance gives
+whatever mix the model feels like, so it is assigned here as a planned mix and
+checked mechanically (`tone_mix_errors`). `humorous` seeds get the
+comedy-register section of `prompts/persona.md`; `neutral` seeds get the same
+persona minus the instruction to be funny.
 
 ## `required_grammar`
 
-The grammar points this passage **must** use, so that 100% grammar coverage per
-level is a build invariant rather than a hope: `grammar_coverage_errors` fails
-the build when a level slug is assigned to no seed or to two, and
-`validate_readings.py` fails a passage whose body does not actually contain
-what its seed was assigned (detected by `grammar_detect.py`, not declared by
-the model).
+The grammar points this passage **must** use, so that 100% grammar coverage of
+levels 1–20 is a build invariant rather than a hope: `grammar_coverage_errors`
+fails when a point is assigned to no seed or to two, and `validate_readings.py`
+fails a passage whose body does not actually contain what its seed was assigned
+(detected by `grammar_detect.py`, not declared by the model). A point goes to a
+seed at its own level where the detector allows it, else to the first level
+where it does.
+
+## What the detector allows at a level (checked with grammar_detect, 2026-11-27)
+
+Some topics carry a short note on form, because the detector reads a few forms
+in a way a writer does not expect:
+
+  * Every い-adjective, いい included, is `adj-i-conjugation` (level 8). Levels
+    2–7 describe with nouns and verbs only. So `te-mo-ii` (level 5) is written
+    てもかまいません, and `nakutemo-ii` (level 6) and `hoshii` (level 7) go to
+    level 8 seeds.
+  * Levels 2–3 have no question か (`ka-question`, level 4); level 2 has no に,
+    で, も or と either.
+  * `toki` is found after a verb (書く時), not after a noun (テストの時).
+  * `hoshii` is found in kana (ほしい), not as 欲しい.
+  * `potential` is found in the ichidan られる form (食べられる), not in godan
+    forms (話せる), which are level-15 words anyway.
+  * `causative` is found in the plain non-past (洗わせる); `causative-passive`
+    in the long form (洗わせられる), not the short される.
+  * `teiru-result` is found in plain ている, not in ています.
+  * 教えたい is read as a potential form of 教える.
 
 ## `extra_allowed`
 
@@ -79,242 +74,956 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from generate_content import context, grammar_detect  # noqa: E402
-from levels import load_ladder  # noqa: E402
 
 #: Tone tags. `humorous` seeds pull the persona's comedy register.
 TONES = ("humorous", "neutral")
 
-#: Humorous seeds as a fraction of a level's seeds. Raised from (0.50, 0.60) by
-#: the expansion plan: 80%, not 100%, because some subjects fight comedy and 30
-#: gags in a row at one level flattens out.
+#: Humorous seeds as a fraction of all seeds. 80%, not 100%, because some
+#: subjects fight comedy and gag after gag flattens out.
 TONE_MIX_BOUNDS = (0.75, 0.85)
 
-#: N5 grammar points 47–50 — い/な-adjective conjugation and their adverbial
-#: forms. `grammar_detect` fires these on *any* adjective, so every N5 seed
-#: whose `grammar_cutoff` has not reached them pulls the block forward;
-#: otherwise two thirds of the level may not write 大きい, 好き or いい.
-#: Point 33 (`nai-form`) is **not** in here on purpose: 大きくない is a plain
-#: negative and waits its turn like 読まない.
-_ADJECTIVE_POINTS = [
-    "adj-i-conjugation", "adj-na-conjugation", "adj-i-adverb", "adj-na-adverb",
-]
-
-#: N5 — 30 passages, 30 → 126 words, 24 humorous (80%), replacing the 10
-#: generated ones (docs/content/reading-passage-expansion-plan.md, step 3).
-#: `target_words` is a band on the tokenizer word count (see
-#: `validate_readings.word_count`), not on characters.
-#:
-#: N5 has no level beneath it, so the window really is all the learner has:
-#: `vocab_cutoff` follows the level's thematic bands — pronouns and numerals
-#: (1–71), time (72–118), family (119–144), people (145–162), the body
-#: (163–176), food (177–203), buildings and streets (204–233), objects and
-#: stationery (234–262), clothes (263–270), weather and nature (271–284),
-#: animals, seasons and colours (285–301), い-adjectives (302–356),
-#: な-adjectives (357–376), verbs (377–479), school and abstract nouns
-#: (480–536), illness, transport and counters (537–570), more verbs (571–605),
-#: the home and money (606–640), tableware and school subjects (641–668), and
-#: adverbs, conjunctions and greetings (669–718). Each seed's topic sits inside
-#: the band its cutoff opens; `pull_forward` names only the props that band
-#: cannot supply, because `context.CORE_SEED_SLUGS` already hands every seed 24
-#: survival verbs, 10 adjectives and the connectives (the first N5 verb is word
-#: 377 of 718).
-#:
-#: **The ladder steps at position 6** (docs/content/
-#: reading-passage-minna-no-nihongo-alignment.md). Positions 1–5 are the
-#: pre-linker set: their window stops short of から (point 21) and ので (22), so
-#: they cannot join two clauses at all, and they are short on purpose — Minna
-#: no Nihongo's own L4 and L7 readings join none either. From position 6 the
-#: cutoff runs one seed ahead of the topic's own band (position 6 carries what
-#: position 7 used to, and so on to position 29), which is the extra nouns a
-#: passage needs to chain one sentence onto the last; and `target_words` jumps
-#: to 63–78 — 63 words is Minna no Nihongo's *shortest* 読み物 — then climbs to
-#: 98–126 at position 30. Below the step the bands are unchanged.
-#:
-#: `required_grammar` partitions the 70 points across the 30 seeds, 1–4 each
-#: (`conjugation-primer` has no owner yet).
-#: It is **not** the block each cutoff newly opens, the way N4's is: a point is
-#: assigned to the passage whose topic uses it, which only has to sit at or
-#: after the seed that opens it. ましょう and ませんか (7, 8) go to the
-#: invitation passage rather than to passage 2, where the ladder reaches them.
-#:
-#: Every seed below `grammar_cutoff` 47 carries `_ADJECTIVE_POINTS` — see that
-#: constant. Nothing else is pulled forward.
-#:
-#: Positions 7 and 9 keep the slugs `neko-to-shukudai` and `eki-made-no-michi`
-#: from the retired set, because the gate's 11 fixtures are written against
-#: those two seeds. Their `grammar_cutoff`, `question_count` and
-#: `required_grammar` are therefore held to what those fixture bodies contain:
-#: 23 ≤ cutoff < 29 for the first (its bad fixture is ている at point 29), ≥ 28
-#: for the second. `target_words` is not: the step at 6 moved both bands and
-#: the three length-sensitive fixture bodies were rewritten to match.
-N5_SEEDS = [
+#: The 60 passages of levels 2–20: 3 per level, 4 at levels 8, 14 and 17 (the
+#: levels with 7 grammar points to place), 47 humorous (78%).
+SEEDS = [
+    # --- level 2: 80 words — pronouns, numbers, dates, times, ten verbs ---
     {
-        "slug": "hajimete-no-jikoshoukai",
-        "position": 1,
+        "slug": "kyou-wa-tooka-dewa-arimasen",
+        "level": 2,
         "tone": "neutral",
-        "vocab_cutoff": 71,
-        "pull_forward": ["hajimemashite"],
-        "grammar_cutoff": 10,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["wa-topic", "desu", "dewa-arimasen"],
-        "target_words": (30, 40),
+        "required_grammar": ["wa-topic", "desu", "dewa-arimasen", "masu"],
+        "target_words": (20, 30),
         "question_count": 2,
         "topic": (
-            "A new student introduces themself on the first day: who they are, "
-            "that they are a student and not a teacher, who is with them, and "
-            "what today is like. This is the first passage anyone reads in the "
-            "level — short sentences, one idea each, and nothing happens."
+            "A short, calm note on what today is: today is not the tenth, it is "
+            "the fourth; it is seven o'clock now; the writer eats, writes, and "
+            "goes. Next week Ken comes. One idea per sentence. There is no に, "
+            "で, も or question か at this level, so a time and an action stand "
+            "in their own sentences (七時です。食べます。)."
         ),
-        "extra_allowed": ["リサ"],
+        "extra_allowed": ["ケン"],
     },
     {
-        "slug": "mainichi-onaji",
-        "position": 2,
+        "slug": "tabemasen-ka",
+        "level": 2,
         "tone": "humorous",
-        "vocab_cutoff": 100,
-        "pull_forward": ["benkyou-suru"],
-        "grammar_cutoff": 13,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["masu", "ga"],
-        "target_words": (32, 43),
+        "required_grammar": ["masen-ka", "mashou", "masen", "ga"],
+        "target_words": (20, 30),
         "question_count": 2,
         "topic": (
-            "A day reported hour by hour: what happens in the morning, at noon, "
-            "in the evening, at night. Then the writer says yesterday was the "
-            "same, and every week is the same. Told as flat fact — the joke is "
-            "that nothing ever differs, and the writer does not notice."
+            "Ken asks Mina: shall we eat? Mina has no time now; she writes. Ken "
+            "asks again at eight, and at nine: no time. At ten Ken sees Mina "
+            "eating. Deadpan, short lines of dialogue, no comment on the joke."
         ),
-        "extra_allowed": [],
+        "extra_allowed": ["ケン", "ミナ"],
     },
     {
-        "slug": "nanimo-nai-nichiyoubi",
-        "position": 3,
+        "slug": "ken-san-no-tooka",
+        "level": 2,
         "tone": "humorous",
-        "vocab_cutoff": 118,
-        # The topic needs a writing surface, and the cutoff reaches none:
-        # ノート is sort_order 265 and 紙 is 238. Without this the passage has
-        # to say 私の本の月曜日 ("my book's Monday"), which is not Japanese.
-        "pull_forward": ["nooto"],
-        "grammar_cutoff": 16,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["no-possessive", "ni-direction"],
-        "target_words": (34, 45),
+        "required_grammar": ["mashita", "wo", "no-possessive", "no-nominalizer"],
+        "target_words": (20, 30),
         "question_count": 2,
         "topic": (
-            "One week on the writer's calendar, day by day: what is written on "
-            "Monday, on Wednesday, on Saturday. On Sunday nothing at all is "
-            "written, which the writer decides — at some length — is the best "
-            "day of the week."
+            "Ken came today, the fourth, but Ken's day is the tenth. Mina watches "
+            "Ken write the date (書くのを見ました): he writes 十日. Mina "
+            "understands: Ken's tenth is today. Plain facts; the reader gets "
+            "the joke."
         ),
-        "extra_allowed": [],
+        "extra_allowed": ["ケン", "ミナ"],
     },
+    # --- level 3: + family, bread and drinks, days, 買う 飲む 読む 帰る ---
     {
-        "slug": "dare-no-heya",
-        "position": 4,
+        "slug": "ojiisan-no-pan",
+        "level": 3,
         "tone": "humorous",
-        "vocab_cutoff": 144,
-        "pull_forward": ["ookii", "chiisai"],
-        "grammar_cutoff": 18,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["he-direction", "de-location"],
-        "target_words": (36, 48),
+        "target_words": (28, 38),
         "question_count": 2,
         "topic": (
-            "Who sleeps where in a small house: the parents' room, the older "
-            "brother's room, the younger sister's room, and the writer's, which "
-            "is the smallest. The cat sleeps in the big room, and nobody in the "
-            "family can explain how that was decided."
+            "Every morning Grandpa goes over there (あそこへ) and buys bread "
+            "there. Grandma eats the bread, the baby eats the bread, everyone "
+            "eats it. On Sunday Grandpa goes there, buys bread, and eats it "
+            "there himself. There are no place names at this level: say ここ, "
+            "そこ, あそこ. No question か yet."
         ),
         "extra_allowed": [],
     },
     {
-        "slug": "sasoi-ga-fueru",
-        "position": 5,
+        "slug": "nichiyoubi-no-nomimono",
+        "level": 3,
         "tone": "humorous",
-        "vocab_cutoff": 162,
-        "pull_forward": [],
-        "grammar_cutoff": 20,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["mashou", "masen-ka"],
-        "target_words": (38, 50),
+        "required_grammar": ["ya-among", "to-and"],
+        "target_words": (28, 38),
         "question_count": 2,
         "topic": (
-            "An invitation that grows. The writer asks one friend to the park "
-            "on Saturday. That friend asks another. By Saturday there are nine "
-            "people, two of whom the writer has never met, and a baby. The "
-            "writer asks everyone what they would like to do, and gets nine "
-            "answers."
-        ),
-        "extra_allowed": ["ユキ"],
-    },
-    {
-        "slug": "zenbu-sukoshi-itai",
-        "position": 6,
-        "tone": "humorous",
-        "vocab_cutoff": 190,
-        "pull_forward": ["itai"],
-        "grammar_cutoff": 24,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["to-and", "ya-among", "mo-also"],
-        "target_words": (63, 78),
-        "question_count": 2,
-        "topic": (
-            "At the doctor's, everything hurts a little and nothing hurts a "
-            "lot. The writer lists it: the head and the stomach, an ear, one "
-            "tooth as well. The doctor asks where it hurts. The writer starts "
-            "the list again from the beginning."
+            "On Sunday everyone comes: Grandpa and Grandma, the grown-ups and "
+            "the baby. Each person buys drinks and things. Nobody buys food. On "
+            "Monday everyone is still drinking the drinks. No question か at "
+            "this level."
         ),
         "extra_allowed": [],
     },
     {
-        # Slug and shape held for the gate's fixtures — see the block comment.
-        "slug": "neko-to-shukudai",
-        "position": 7,
+        "slug": "akachan-mo",
+        "level": 3,
         "tone": "humorous",
-        "vocab_cutoff": 203,
-        "pull_forward": ["shukudai", "namae", "ue", "yobu", "dasu"],
-        "grammar_cutoff": 26,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["masen", "mashita", "wo"],
-        "target_words": (64, 80),
+        "required_grammar": ["mo-also", "ni-direction"],
+        "target_words": (28, 38),
         "question_count": 2,
         "topic": (
-            "The writer explains, completely deadpan, why the homework is late: "
-            "the cat sat on it, then slept on it, and moving a sleeping cat is "
-            "not possible. Report it as a series of plain facts — no punchline, "
-            "no winking at the reader."
+            "Grandpa and Grandma come here on Friday and go home on Monday. "
+            "Whatever Grandpa does, the baby does too: Grandpa reads, the baby "
+            "reads too; Grandma drinks, the baby drinks too. On Monday Grandpa "
+            "goes home, and the baby wants to go home too. No question か yet."
         ),
-        "extra_allowed": ["タマ"],
+        "extra_allowed": [],
+    },
+    # --- level 4: + home, work, shops, transport, morning and evening ---
+    {
+        "slug": "chichi-no-mainichi",
+        "level": 4,
+        "tone": "neutral",
+        "required_grammar": ["kara-from", "made-until", "ka-question"],
+        "target_words": (35, 46),
+        "question_count": 2,
+        "topic": (
+            "A child describes Father's weekday: he is an office worker; he is "
+            "at the company from morning until night; he reads the newspaper on "
+            "the bus; he eats dinner at home. The child asks Mother what time "
+            "Father comes home, and Mother answers. Plain and warm, no joke."
+        ),
+        "extra_allowed": [],
     },
     {
-        "slug": "shio-to-satou",
-        "position": 8,
+        "slug": "konbini-kara-denwa",
+        "level": 4,
         "tone": "humorous",
-        "vocab_cutoff": 233,
-        "pull_forward": ["onaji", "amai", "karai"],
-        "grammar_cutoff": 29,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
+        "required_grammar": ["ni-indirect", "ne-tag"],
+        "target_words": (35, 46),
+        "question_count": 2,
+        "topic": (
+            "Older brother phones Mother from the convenience store three times: "
+            "coffee, right? Tea, right? Bread, right? Mother says yes each time. "
+            "He comes home with coffee, tea and bread. Mother bought all three at "
+            "the supermarket this morning."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "sensei-no-asagohan",
+        "level": 4,
+        "tone": "humorous",
         "required_grammar": ["kara-because", "node-because"],
-        "target_words": (66, 82),
+        "target_words": (35, 46),
+        "question_count": 2,
+        "topic": (
+            "A student explains, reason by reason, why the teacher eats "
+            "breakfast at the university: he reads books until late at night, so "
+            "there is no time in the morning; so he does not eat at home; so... "
+            "Each reason is a little less convincing than the last. Give the "
+            "reasons with both から and ので."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 5: + rooms and things, colours, the kitchen, te-forms ---
+    {
+        "slug": "daidokoro-no-ruuru",
+        "level": 5,
+        "tone": "humorous",
+        "required_grammar": ["te-wa-ikenai", "te-mo-ii"],
+        "target_words": (42, 54),
         "question_count": 3,
         "topic": (
-            "The writer makes tea and a boxed lunch for a friend. Because the "
-            "salt jar and the sugar jar are the same jar, the tea is salty and "
-            "the lunch is sweet. The friend eats all of it and says it is "
-            "delicious, because the friend is kind. Every sentence states its "
-            "reason."
+            "Mother writes rules on the kitchen door: you may drink here; you "
+            "must not eat here; you must not watch TV here. Father reads them "
+            "carefully, then takes his dinner to the bed. Give permission with "
+            "てもかまいません: いい counts as an adjective, and adjectives come at "
+            "level 8. Describe with nouns and verbs only."
         ),
         "extra_allowed": [],
     },
     {
-        # Slug and shape held for the gate's fixtures — see the block comment.
+        "slug": "kamera-no-mise",
+        "level": 5,
+        "tone": "humorous",
+        "required_grammar": ["te-kudasai", "yo-emphasis"],
+        "target_words": (42, 54),
+        "question_count": 3,
+        "topic": (
+            "A customer goes into a camera shop for one stamp. The clerk says: "
+            "please look at this camera, please look at this computer, this one "
+            "is red, you know. The customer looks at everything, then asks for "
+            "a stamp. The clerk: we have no stamps, you know. Adjectives come at "
+            "level 8: say colours as nouns (赤のカメラ)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ban-no-uchi",
+        "level": 5,
+        "tone": "humorous",
+        "required_grammar": ["te-form", "te-iru"],
+        "target_words": (42, 54),
+        "question_count": 3,
+        "topic": (
+            "Evening at home, person by person: Grandpa is reading the "
+            "newspaper, Mother is cooking in the kitchen, older brother is "
+            "writing. The baby is watching all of them. Father comes home, eats, "
+            "and watches TV; now everyone is watching Father's TV, and the baby "
+            "is watching Father. Chain actions with the て-form (食べて、見て). "
+            "No adjectives yet (level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 6: + family, the station, the hospital, letters ---
+    {
+        "slug": "eki-no-hako",
+        "level": 6,
+        "tone": "humorous",
+        "required_grammar": ["naide-kudasai", "nai-form"],
+        "target_words": (50, 63),
+        "question_count": 3,
+        "topic": (
+            "A box sits at the station with a paper on it: please do not look at "
+            "this box. A station worker reads it and does not look. A doctor "
+            "reads it and does not look. A child looks. On the box is another "
+            "paper: please do not look. Use the plain negative (見ない) in the "
+            "narration. No adjectives yet (level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "sobo-no-tegami",
+        "level": 6,
+        "tone": "neutral",
+        "required_grammar": ["nakereba-naranai"],
+        "target_words": (50, 63),
+        "question_count": 3,
+        "topic": (
+            "A letter from Grandmother: she has to go to the hospital on "
+            "Thursday; Grandfather has to buy his own lunch that day; the writer "
+            "has to write back. Gentle and plain, no joke. No adjectives yet "
+            "(level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "hirugohan-o-tabete-kara",
+        "level": 6,
+        "tone": "humorous",
+        "required_grammar": ["te-kara", "ta-form"],
+        "target_words": (50, 63),
+        "question_count": 3,
+        "topic": (
+            "A diary in plain form: yesterday the writer ate lunch, then read a "
+            "book; after reading, ate lunch; after eating, wrote a letter to "
+            "Grandmother: I ate lunch twice today. Plain past (食べた) in the "
+            "narration. No adjectives yet (level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 7: + 33 verbs (wait, meet, ride, make, use, lend...) ---
+    {
+        "slug": "takushii-ni-notta-koto-ga-nai",
+        "level": 7,
+        "tone": "humorous",
+        "required_grammar": ["ta-koto-ga-aru", "tai"],
+        "target_words": (57, 71),
+        "question_count": 3,
+        "topic": (
+            "Grandmother has never ridden in a taxi and wants to, once. The "
+            "family calls one. She gets in, sits down, and asks the driver to "
+            "follow the bus she always takes. Put 〜たい on verbs like 乗る and "
+            "行く (教えたい is read as a potential form). No adjectives yet "
+            "(level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "nichiyoubi-no-yotei",
+        "level": 7,
+        "tone": "humorous",
+        "required_grammar": ["tari-tari", "ni-iku"],
+        "target_words": (57, 71),
+        "question_count": 3,
+        "topic": (
+            "The writer plans Sunday: going to buy bread, going to see the "
+            "grandparents, reading, writing letters. Sunday comes. The writer "
+            "sits, reads a little, sits again, and then it is Monday. No "
+            "adjectives yet (level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "basu-ni-noru-mae-ni",
+        "level": 7,
+        "tone": "humorous",
+        "required_grammar": ["mae-ni", "ato-de"],
+        "target_words": (57, 71),
+        "question_count": 3,
+        "topic": (
+            "Before getting on the bus, the writer checks the bag: pen, book, "
+            "phone. After getting off, the writer checks again: everything is "
+            "there, except the coat, which is leaving on the bus. No adjectives "
+            "yet (level 8)."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 8: + adjectives, giving and receiving, tests, money ---
+    {
+        "slug": "hiragana-no-tesuto",
+        "level": 8,
+        "tone": "humorous",
+        "required_grammar": ["dictionary-koto-ga-dekiru", "toki"],
+        "target_words": (65, 80),
+        "question_count": 3,
+        "topic": (
+            "A learner can write hiragana and can read katakana, but cannot "
+            "write katakana. At the test, when the learner reads the questions, "
+            "every answer has to be written in katakana. Put 時/とき after a verb "
+            "(読む時); after a noun (テストの時) it is not detected."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "yasui-kaban",
+        "level": 8,
+        "tone": "humorous",
+        "required_grammar": ["adj-i-conjugation", "adj-i-adverb"],
+        "target_words": (65, 80),
+        "question_count": 3,
+        "topic": (
+            "The writer bought a bag cheaply at a shop: it was not new, it was "
+            "not big, but it was cheap. At home, Mother looks at it: it is her "
+            "bag, which she sold to that shop last month. Use い-adjectives in "
+            "several forms (安かった, 新しくない) and as an adverb (安く買った)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "kirei-na-tegami",
+        "level": 8,
+        "tone": "neutral",
+        "required_grammar": ["adj-na-conjugation", "adj-na-adverb"],
+        "target_words": (65, 80),
+        "question_count": 3,
+        "topic": (
+            "A letter from Grandmother, written neatly: she was always good at "
+            "cooking, she is not good at katakana, her garden is pretty. The "
+            "writer writes back, slowly and neatly. Warm and plain, no joke. Use "
+            "な-adjectives in their forms (きれいでした, 上手ではありません) "
+            "and as adverbs (きれいに)."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "kamera-ga-hoshii",
+        "level": 8,
+        "tone": "humorous",
+        "required_grammar": ["hoshii", "nakutemo-ii"],
+        "target_words": (65, 80),
+        "question_count": 3,
+        "topic": (
+            "A boy wants a camera. Father says he does not have to buy a new "
+            "one: Father will give him his. Father's camera is very big and "
+            "very heavy. Now the boy wants a bag for the camera. Write ほしい in "
+            "kana (the detector reads 欲しい as a plain adjective)."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 9: + trains, cars, films, the sky, places, comparison ---
+    {
+        "slug": "densha-to-jitensha",
+        "level": 9,
+        "tone": "humorous",
+        "required_grammar": ["comparative-yori", "superlative-ichiban"],
+        "target_words": (72, 88),
+        "question_count": 3,
+        "topic": (
+            "Three people race to the library: one by train, one by car, one by "
+            "bicycle. The train is faster than the bicycle, the car is faster "
+            "than the train, and the bicycle comes first, because the library is "
+            "next to the cyclist's house."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "eiga-wa-dou-desu-ka",
+        "level": 9,
+        "tone": "humorous",
+        "required_grammar": ["dou-desu-ka", "to-omou"],
+        "target_words": (72, 88),
+        "question_count": 3,
+        "topic": (
+            "Two people choose a film at the cinema: how about this one? I think "
+            "it is boring. How about this one? I think it is too long. They talk "
+            "until the last film has started, then go home and say it was an "
+            "interesting evening."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ano-hoshi",
+        "level": 9,
+        "tone": "neutral",
+        "required_grammar": ["to-iu", "darou"],
+        "target_words": (72, 88),
+        "question_count": 3,
+        "topic": (
+            "A child and Grandfather look at the evening sky. The child asks "
+            "what that big star is called. Grandfather does not know; it is "
+            "probably a very big star, he says. They give it their own name. "
+            "Quiet, no joke. Use という and だろう."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 10: + travel, hotels, planes, names and numbers ---
+    {
+        "slug": "hikouki-wa-mou",
+        "level": 10,
+        "tone": "humorous",
+        "required_grammar": ["mou-past", "mada-teinai"],
+        "target_words": (80, 97),
+        "question_count": 4,
+        "topic": (
+            "The writer is late for a plane and phones from the taxi: has the "
+            "plane already flown? Not yet. Has it gone up? Not yet. The plane "
+            "has not left because the pilot is late too, and is in the same "
+            "taxi."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "hoteru-no-heya",
+        "level": 10,
+        "tone": "humorous",
+        "required_grammar": ["dake", "shika-nai"],
+        "target_words": (80, 97),
+        "question_count": 4,
+        "topic": (
+            "A cheap hotel room: only one chair, only one window, and the TV has "
+            "only music. The writer phones to complain, but the phone only calls "
+            "the next room, where another guest is complaining about the same "
+            "things."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "sofu-no-unten",
+        "level": 10,
+        "tone": "neutral",
+        "required_grammar": ["hou-ga-ii", "deshou"],
+        "target_words": (80, 97),
+        "question_count": 4,
+        "topic": (
+            "Grandfather wants to learn to drive. The family give advice: he had "
+            "better learn on Tuesdays, when there are few cars; he had better "
+            "not drive at night. He will probably be fine, they say. Quiet and "
+            "warm, no joke."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 11: + school, the station building, adverbs of frequency ---
+    {
+        "slug": "erebeetaa-to-kaidan",
+        "level": 11,
+        "tone": "humorous",
+        "required_grammar": ["gurai", "goro"],
+        "target_words": (87, 105),
+        "question_count": 4,
+        "topic": (
+            "The writer's classroom is on the seventh floor. The elevator takes "
+            "about ten minutes to come; the stairs take about five minutes. The "
+            "writer runs up the stairs and arrives at around nine every day, "
+            "tired. The teacher arrives at around nine too, by elevator, "
+            "smiling."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "zenzen-wakarimasen",
+        "level": 11,
+        "tone": "humorous",
+        "required_grammar": ["zenzen-nai", "amari-nai", "janai-desu-ka"],
+        "target_words": (87, 105),
+        "question_count": 4,
+        "topic": (
+            "In Japanese class a student says he does not understand at all. "
+            "The teacher says: but you understand, don't you? You answered in "
+            "Japanese. The student says, in Japanese, that he does not "
+            "understand much."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "umi-de-obentou",
+        "level": 11,
+        "tone": "neutral",
+        "required_grammar": ["demo-suggestion", "naru-become"],
+        "target_words": (87, 105),
+        "question_count": 4,
+        "topic": (
+            "A day at the sea with lunch boxes. In the afternoon the water "
+            "becomes cold, the wind becomes stronger, and the beach gradually "
+            "becomes quiet. Someone suggests going home and drinking tea or "
+            "something (お茶でも). Calm and plain, no joke."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 12: + greetings, connectives, family, weekends ---
+    {
+        "slug": "tabesugita-shuumatsu",
+        "level": 12,
+        "tone": "humorous",
+        "required_grammar": ["sugiru", "kamoshirenai"],
+        "target_words": (95, 114),
+        "question_count": 4,
+        "topic": (
+            "Monday morning after a big weekend: the writer ate too much on "
+            "Saturday and drank too much on Sunday. Now the clothes do not fit. "
+            "Maybe the writer is ill; maybe the clothes got smaller in the wash; "
+            "maybe it is Monday's fault."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ongaku-o-kikinagara",
+        "level": 12,
+        "tone": "humorous",
+        "required_grammar": ["nagara", "noni"],
+        "target_words": (95, 114),
+        "question_count": 4,
+        "topic": (
+            "The son studies while listening to music, while eating, while "
+            "watching TV. Even though he studied every night, the test result is "
+            "bad. The next week he studies with no music and no TV, and the "
+            "result is exactly the same."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "haha-no-tame-ni",
+        "level": 12,
+        "tone": "neutral",
+        "required_grammar": ["moraru-ageru-kureru", "tame-ni"],
+        "target_words": (95, 114),
+        "question_count": 4,
+        "topic": (
+            "A family day for Mother: the daughter buys flowers for her, the son "
+            "writes her a letter, Father gives her a book. Mother receives "
+            "everything, then makes dinner for everyone. Warm and plain, no "
+            "joke. Use あげる, くれる and もらう, and ために."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 13: + friends, the town, cafés, the post office ---
+    {
+        "slug": "kissaten-no-okashi",
+        "level": 13,
+        "tone": "humorous",
+        "required_grammar": ["souda-looks", "potential"],
+        "target_words": (102, 122),
+        "question_count": 4,
+        "topic": (
+            "At a café every sweet looks delicious. The writer's friend cannot "
+            "eat sugar, so the writer says: I can eat all of them. The writer "
+            "cannot. Write the potential with an ichidan verb + られる "
+            "(食べられる); godan forms (話せる) are level-15 words and are not "
+            "detected."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ginkou-wa-sanji-made",
+        "level": 13,
+        "tone": "humorous",
+        "required_grammar": ["souda-hearsay", "nara"],
+        "target_words": (102, 122),
+        "question_count": 4,
+        "topic": (
+            "A friend tells the writer what he has heard: the bank closes at "
+            "three, the post office closes at five, the bread shop by the "
+            "bridge closes when the bread is gone. If it is the bank, you have "
+            "to go now. The writer runs to the bank. It is Sunday."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "yuubinkyoku-made-no-michi",
+        "level": 13,
+        "tone": "humorous",
+        "required_grammar": ["tara", "ba"],
+        "target_words": (102, 122),
+        "question_count": 4,
+        "topic": (
+            "A stranger asks the way to the post office. The writer explains: if "
+            "you cross the bridge, there is a bank; if you walk past the bank, "
+            "there is a corner; if you go to the corner... The directions get "
+            "longer and longer. The post office is just behind the stranger."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 14: + weather, seasons, animals, 70 change verbs ---
+    {
+        "slug": "inu-ga-shikarareta",
+        "level": 14,
+        "tone": "humorous",
+        "required_grammar": ["passive", "hazu"],
+        "target_words": (110, 131),
+        "question_count": 4,
+        "topic": (
+            "Someone ate the fish on the table. Mother scolds the dog. The "
+            "writer knows it should have been the cat: the cat is on the "
+            "shelf, washing its face, very pleased. The dog is scolded a second "
+            "time for looking sad."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ani-to-otouto",
+        "level": 14,
+        "tone": "humorous",
+        "required_grammar": ["causative", "causative-passive"],
+        "target_words": (110, 131),
+        "question_count": 4,
+        "topic": (
+            "Older brother makes his younger brother do everything: carry the "
+            "bags, wash the dishes, buy the bread. The younger brother is made "
+            "to do it all. Then Mother comes home and makes the older brother "
+            "do everything. Put the causative in the plain non-past at least "
+            "once (洗わせる), and the causative-passive in the long form "
+            "(洗わせられる), not the short される."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "musuko-ga-yomu-you-ni",
+        "level": 14,
+        "tone": "neutral",
+        "required_grammar": ["youni", "youninaru"],
+        "target_words": (110, 131),
+        "question_count": 4,
+        "topic": (
+            "Last winter the son did not read at all. The writer put books next "
+            "to his bed so that he would read. Now, in spring, he reads every "
+            "night, and asks for more books. Quiet and warm, no joke."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "neko-ga-tabenaku-natta",
+        "level": 14,
+        "tone": "humorous",
+        "required_grammar": ["younaru"],
+        "target_words": (110, 131),
+        "question_count": 4,
+        "topic": (
+            "The cat has stopped eating its food at home. The family worry and "
+            "take it to the doctor. The doctor says the cat is fine; in fact it "
+            "is a little heavy. The cat has been eating at the house on the "
+            "corner every day."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 15: + potential verbs, polite verbs, likes, daily routine ---
+    {
+        "slug": "kagi-ga-kakete-aru",
+        "level": 15,
+        "tone": "humorous",
+        "required_grammar": ["tearu", "teiru-result"],
+        "target_words": (117, 139),
+        "question_count": 5,
+        "topic": (
+            "The writer comes home: the door is locked, but a window is open and "
+            "the light is on. A thief? The writer goes in quietly, holding an "
+            "umbrella. Nobody is there. The writer left the window open and the "
+            "light on this morning. Write the resultant ている in plain form at "
+            "least once (窓が開いている): ています is not detected as it."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "kado-no-ie-no-yuumeijin",
+        "level": 15,
+        "tone": "humorous",
+        "required_grammar": ["rashii", "mitai"],
+        "target_words": (117, 139),
+        "question_count": 5,
+        "topic": (
+            "The man in the house on the corner seems to be famous: people take "
+            "photos in front of his house, and young people wait at his door. "
+            "It turns out he only looks like a famous singer, and he has started "
+            "to enjoy it."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "sofu-no-kagi",
+        "level": 15,
+        "tone": "humorous",
+        "required_grammar": ["hazuganai", "youda"],
+        "target_words": (117, 139),
+        "question_count": 5,
+        "topic": (
+            "Grandfather cannot find his keys. There is no way he lost them, he "
+            "says: he never forgets anything. It seems he did. The family look "
+            "everywhere. The keys are hanging around his neck."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 16: + food, directions, counters, outings ---
+    {
+        "slug": "keeki-o-katte-oita",
+        "level": 16,
+        "tone": "humorous",
+        "required_grammar": ["teoku", "teshimau"],
+        "target_words": (125, 148),
+        "question_count": 5,
+        "topic": (
+            "For a friend's party the writer buys a cake the day before and "
+            "hides it. At night the writer eats all of it. On the day the writer "
+            "buys another cake, and the friend arrives carrying the same cake."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "yama-ni-noboru-tsumori",
+        "level": 16,
+        "tone": "neutral",
+        "required_grammar": ["tsumori", "temo"],
+        "target_words": (125, 148),
+        "question_count": 5,
+        "topic": (
+            "Two friends plan to climb a mountain on Saturday. Even if it rains, "
+            "they will go. On Saturday a typhoon comes, so they plan to go next "
+            "week, even if it snows. Quiet and plain, no joke."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "mainichi-sanpo",
+        "level": 16,
+        "tone": "humorous",
+        "required_grammar": ["youni-suru", "teiku-tekuru"],
+        "target_words": (125, 148),
+        "question_count": 5,
+        "topic": (
+            "The writer tries to take a walk every day. The neighbour's dog "
+            "follows. Soon three dogs come along. Now the writer walks the "
+            "neighbours' dogs every day, and the neighbours stay at home."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 17: + sport, hobbies, hospital, shopping, the internet ---
+    {
+        "slug": "chichi-no-piano",
+        "level": 17,
+        "tone": "humorous",
+        "required_grammar": ["koto-ni-suru", "bakari"],
+        "target_words": (132, 156),
+        "question_count": 5,
+        "topic": (
+            "Father decides to learn the piano. He practises only one song, "
+            "every night. After a month the whole family can sing it, and the "
+            "neighbour sings it in the garden. Father has decided to learn a "
+            "second song. Nobody is glad."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "sobo-no-niwa",
+        "level": 17,
+        "tone": "neutral",
+        "required_grammar": ["koto-ni-naru", "aida"],
+        "target_words": (132, 156),
+        "question_count": 5,
+        "topic": (
+            "Grandmother has to go into hospital for two weeks. While she is in "
+            "hospital, the writer looks after her garden: water in the morning, "
+            "a phone call in the evening. When she comes home, the flowers are "
+            "out. Warm and plain, no joke."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ensoku-no-oshirase",
+        "level": 17,
+        "tone": "humorous",
+        "required_grammar": ["to-conditional", "baai"],
+        "target_words": (132, 156),
+        "question_count": 5,
+        "topic": (
+            "A teacher reads the notice for a school trip: when the bell rings, "
+            "everyone gets on the bus; in case of rain, the trip goes to the "
+            "museum; in case someone is late, the bus waits five minutes. Then "
+            "come the students' questions, each one stranger than the last."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "ima-deru-tokoro",
+        "level": 17,
+        "tone": "humorous",
+        "required_grammar": ["tokoro"],
+        "target_words": (132, 156),
+        "question_count": 5,
+        "topic": (
+            "The writer phones a friend who is late: I am just about to leave. "
+            "Thirty minutes later: I am putting on my shoes right now. Later: I "
+            "have just arrived! The friend is at the station, the wrong one."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 18: + work, the company, news and apps, feelings ---
+    {
+        "slug": "nyuusu-ni-yoruto",
+        "level": 18,
+        "tone": "humorous",
+        "required_grammar": ["niyoruto", "tame"],
+        "target_words": (140, 165),
+        "question_count": 5,
+        "topic": (
+            "According to the news, the trains stopped this morning because of "
+            "a cow on the line. The writer arrives late and explains to the "
+            "section head. The section head is not angry: according to the same "
+            "news, he was on that train too, and he has a photo of the cow."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "atarashii-apuri",
+        "level": 18,
+        "tone": "neutral",
+        "required_grammar": ["nitsuite", "nikui-yasui"],
+        "target_words": (140, 165),
+        "question_count": 5,
+        "topic": (
+            "The company president explains the new app to the staff: what it "
+            "is for, how to use it, which parts are easy to use and which screen "
+            "is hard to read, and what to do with questions about it. A plain, "
+            "polite company announcement."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "zangyou-datta-n-desu",
+        "level": 18,
+        "tone": "humorous",
+        "required_grammar": ["noda"],
+        "target_words": (140, 165),
+        "question_count": 5,
+        "topic": (
+            "A husband comes home at midnight: I had overtime, you see. His wife "
+            "says: really? He explains more and more, each with a んです. She "
+            "shows him the news on her phone: his company was closed today."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 19: + adverbs, set phrases, humble and honorific verbs ---
+    {
+        "slug": "mise-ga-aite-iru-ka-douka",
+        "level": 19,
+        "tone": "humorous",
+        "required_grammar": ["ka-douka", "ka-nanka"],
+        "target_words": (147, 173),
+        "question_count": 5,
+        "topic": (
+            "On a holiday the writer does not know whether the ramen shop is "
+            "open. The writer walks there anyway, thinking about what to order. "
+            "It is closed, so the writer buys bread or something. On the way "
+            "home the writer passes the shop owner, who is eating ramen at "
+            "another shop."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "naku-hodo-karai",
+        "level": 19,
+        "tone": "humorous",
+        "required_grammar": ["hodo", "kurai-degree"],
+        "target_words": (147, 173),
+        "question_count": 5,
+        "topic": (
+            "A curry so spicy that you cry. The writer drinks so much water that "
+            "there is no room for dessert. The friend who recommended the shop "
+            "eats every bite without a word, crying, and says it is a little "
+            "less spicy than last time."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "atarashii-sensei-tte",
+        "level": 19,
+        "tone": "humorous",
+        "required_grammar": ["tte", "dake-de-naku"],
+        "target_words": (147, 173),
+        "question_count": 5,
+        "topic": (
+            "Students pass around rumours about the new teacher: they say the "
+            "new teacher speaks not only English but French; plays not only "
+            "tennis but golf; was a famous singer. The teacher arrives. All of "
+            "it is true, except that the teacher was not famous."
+        ),
+        "extra_allowed": [],
+    },
+    # --- level 20: + society, nature, events, rubbish and recycling ---
+    {
+        "slug": "gomi-no-hi",
+        "level": 20,
+        "tone": "humorous",
+        "required_grammar": ["toka", "igai"],
+        "target_words": (155, 182),
+        "question_count": 5,
+        "topic": (
+            "Rubbish-day rules in a new flat: bottles and cans and such on "
+            "Tuesday; nothing except paper on Thursday; and so on, for a whole "
+            "page. The writer studies the rules for a week, and becomes the "
+            "person the neighbours ask."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "taifuu-no-ato",
+        "level": 20,
+        "tone": "neutral",
+        "required_grammar": ["sonoseika-de", "soredemo"],
+        "target_words": (155, 182),
+        "question_count": 5,
+        "topic": (
+            "A typhoon came in the night. Because of that, the trains stopped "
+            "and the school closed. Even so, the bakery by the station opened "
+            "at seven, as always, and people came in wet to buy bread. Calm and "
+            "plain, no joke. Use そのため and それでも."
+        ),
+        "extra_allowed": [],
+    },
+    {
+        "slug": "hanabi-ga-mienai",
+        "level": 20,
+        "tone": "humorous",
+        "required_grammar": ["sokode", "suruto"],
+        "target_words": (155, 182),
+        "question_count": 5,
+        "topic": (
+            "At the summer fireworks the crowd is too tall to see over. So "
+            "(そこで) the writer climbs a small hill. Then (すると) a man in a "
+            "uniform comes up: this hill is where the fireworks go up from. Use "
+            "そこで and すると."
+        ),
+        "extra_allowed": [],
+    },
+]
+
+#: Two seeds from the retired set, kept only for the gate's fixtures
+#: (`validate_readings.py --fixtures`, `fixtures/readings/`), which are written
+#: against them. `seed` finds them; `seeds_for`, the coverage check and the
+#: tone mix do not, so no lane ever selects them.
+FIXTURE_SEEDS = [
+    {
         "slug": "eki-made-no-michi",
+        "level": 16,
         "position": 9,
         "tone": "neutral",
-        "vocab_cutoff": 248,
-        "pull_forward": ["mae", "tonari", "hidari-v", "aruku", "magaru"],
-        "grammar_cutoff": 32,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
         "required_grammar": ["kara-from", "te-kudasai"],
         "target_words": (67, 84),
         "question_count": 3,
@@ -327,1063 +1036,22 @@ N5_SEEDS = [
         "extra_allowed": [],
     },
     {
-        "slug": "kaban-no-naka",
-        "position": 10,
-        "tone": "humorous",
-        "vocab_cutoff": 262,
-        "pull_forward": ["dasu"],
-        "grammar_cutoff": 34,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["made-until", "ni-indirect"],
-        "target_words": (69, 86),
-        "question_count": 3,
-        "topic": (
-            "The writer empties their bag onto the desk and goes through it: "
-            "four pens that do not write, a dictionary nobody is using, an "
-            "umbrella, and a pair of glasses that belong to someone else. They "
-            "have been in there since last year. The writer telephones the "
-            "someone else, who does not want them back."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kagi-wa-doko",
-        "position": 11,
-        "tone": "humorous",
-        "vocab_cutoff": 270,
-        # The topic searches a drawer and ends outside: 外 is 521 and
-        # 引き出し is 635, both past cutoff 270.
-        "pull_forward": ["ue", "soto", "hikidashi"],
-        "grammar_cutoff": 36,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["ka-question", "ne-tag", "yo-emphasis"],
-        "target_words": (70, 88),
-        "question_count": 3,
-        "topic": (
-            "Two people looking for the key, entirely in short spoken lines: it "
-            "is on the table, isn't it — no, you took it, you know — then where "
-            "is it. They check the desk, the bed, the drawer of the chair. The "
-            "key is in the door, outside, where it has been all evening."
-        ),
-        "extra_allowed": ["ケン"],
-    },
-    {
-        "slug": "hako-no-naka-no-fuyu",
-        "position": 12,
-        "tone": "humorous",
-        "vocab_cutoff": 284,
-        # "the winter in the box" is the topic; 冬 is 292, cutoff is 284.
-        "pull_forward": ["motsu", "fuyu"],
-        "grammar_cutoff": 38,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["te-form", "te-iru"],
-        "target_words": (72, 90),
-        "question_count": 3,
-        "topic": (
-            # No count on the clothes: coats take 着 and shoes take 足, and
-            # neither counter exists in n5 or n4, so a numbered inventory here
-            # can only come out as コートが二つ. The joke is the lone shoe, not
-            # the arithmetic.
-            "A box has stood in the hall since the writer moved in. Today they "
-            "open it, look inside, and find winter coats, a hat, and — with no "
-            "explanation anybody can offer — a shoe. The writer closes the box, "
-            "carries it back to the hall, and puts it where it was."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "yama-no-yakusoku",
-        "position": 13,
-        "tone": "humorous",
-        "vocab_cutoff": 301,
-        "pull_forward": ["toru", "arau"],
-        "grammar_cutoff": 41,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["te-mo-ii", "te-wa-ikenai", "te-kara"],
-        "target_words": (73, 92),
-        "question_count": 3,
-        "topic": (
-            # Not "you may take photographs": 写真を撮る needs 撮る, which is in
-            # neither level, and the 取る this seed pulls forward is for 花を取る.
-            "The teacher reads out the rules before the school trip up the "
-            "mountain: you may drink your water at the top, you must not pick "
-            "the flowers, wash your hands after you come back down. It rains "
-            "from the first minute to the last, and the only rule anybody "
-            "follows is the one about washing hands."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "konai-inu",
-        "position": 14,
-        "tone": "humorous",
-        "vocab_cutoff": 320,
-        "pull_forward": ["hashiru", "tomaru"],
-        "grammar_cutoff": 43,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["nai-form", "naide-kudasai"],
-        "target_words": (75, 94),
-        "question_count": 3,
-        "topic": (
-            "A dog that does not come, does not sit and does not stop. The "
-            "writer says please do not run, out loud, to a dog, in a park, in "
-            "autumn. The dog is brown, the leaves are brown, and for a while "
-            "the writer cannot find the dog at all."
-        ),
-        "extra_allowed": ["ハナ"],
-    },
-    {
-        "slug": "motte-ikanakereba",
-        "position": 15,
-        "tone": "humorous",
-        "vocab_cutoff": 340,
-        # The topic is one trip to the sea: 旅行する is 474, cutoff 340.
-        "pull_forward": ["motsu", "ryokou-suru"],
-        "grammar_cutoff": 45,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["nakereba-naranai", "nakutemo-ii"],
-        "target_words": (76, 96),
-        "question_count": 3,
-        "topic": (
-            "Two lists for one trip to the sea: what the writer must take, and "
-            "what they do not have to take. The second list is much longer than "
-            "the first, is read out twice, and ends with the writer taking "
-            "everything on both of them."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "ichido-dake-shita-koto",
-        "position": 16,
-        "tone": "humorous",
-        "vocab_cutoff": 356,
-        # The topic names a famous shop: 有名 is 365, cutoff is 356.
-        "pull_forward": ["oyogu", "yuumei"],
-        "grammar_cutoff": 46,
-        "pull_forward_grammar": _ADJECTIVE_POINTS,
-        "required_grammar": ["ta-form", "ta-koto-ga-aru", "tari-tari"],
-        "target_words": (78, 98),
-        "question_count": 3,
-        "topic": (
-            "Three things the writer has done exactly once: swum in the sea in "
-            "winter, eaten something bad-tasting at a famous shop, got up at "
-            "four in the morning. Each was interesting and none will happen "
-            "again. What the writer does now is read a little and sleep a "
-            "little, which is also what they did yesterday."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kotoshi-hoshii-mono",
-        "position": 17,
-        "tone": "humorous",
-        "vocab_cutoff": 376,
-        "pull_forward": [],
-        "grammar_cutoff": 50,
-        "required_grammar": ["tai", "hoshii"],
-        "target_words": (79, 100),
-        "question_count": 3,
-        "topic": (
-            "What the writer wants this year, in order: a new bag, a wide quiet "
-            "room, and for one particular person to stop asking what they want. "
-            "The writer compares the list with last year's and notices it gets "
-            "one line shorter every year."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "watashi-no-machi",
-        "position": 18,
-        "tone": "neutral",
-        "vocab_cutoff": 400,
-        "pull_forward": ["souji-suru"],
-        "grammar_cutoff": 52,
-        "pull_forward_grammar": [],
-        "required_grammar": [
-            "adj-i-conjugation", "adj-na-conjugation",
-            "adj-i-adverb", "adj-na-adverb",
-        ],
-        "target_words": (80, 102),
-        "question_count": 3,
-        "topic": (
-            "The writer describes their town honestly: the station is "
-            "convenient, the park is quiet and pretty, the one famous shop is "
-            "not famous anywhere outside the town. On Sunday they get up early, "
-            "clean the room neatly, and walk there slowly. Warm and plain, no "
-            "joke — this passage is where the level's adjectives are put to "
-            "work, so use them in every form they have."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "junban-ga-okashii",
-        "position": 19,
-        "tone": "humorous",
-        "vocab_cutoff": 420,
-        # The topic turns on what happens before every exam: 試験 is 483,
-        # cutoff 420.
-        "pull_forward": ["jugyou", "shukudai", "shiken"],
-        "grammar_cutoff": 54,
-        "pull_forward_grammar": [],
-        "required_grammar": ["ni-iku", "mae-ni", "ato-de"],
-        "target_words": (82, 104),
-        "question_count": 3,
-        "topic": (
-            "The order the writer does things in, compared with the order they "
-            "ought to be done in: coffee before getting up properly, homework "
-            "after the class it was for, and, before every exam, going out to "
-            "buy bread. The writer explains that this order works, and offers "
-            "no evidence."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "dekiru-hito",
-        "position": 20,
-        "tone": "humorous",
-        "vocab_cutoff": 440,
-        # The topic says the older brother can sing: 歌う is 444, cutoff 440.
-        "pull_forward": ["utau"],
-        "grammar_cutoff": 55,
-        "pull_forward_grammar": [],
-        "required_grammar": ["toki", "dictionary-koto-ga-dekiru"],
-        "target_words": (83, 106),
-        "question_count": 3,
-        "topic": (
-            "What each person in the family can do, and when they can do it. "
-            "The mother can make anything when there is nothing in the house. "
-            "The older brother can sing when nobody asks him to. The writer can "
-            "sleep at any hour at all, and holds that this is the hardest of "
-            "the three."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kariru-hito-kasu-hito",
-        "position": 21,
-        "tone": "humorous",
-        "vocab_cutoff": 460,
-        "pull_forward": ["kaesu"],
-        "grammar_cutoff": 57,
-        "pull_forward_grammar": [],
-        "required_grammar": ["comparative-yori", "superlative-ichiban"],
-        "target_words": (85, 108),
-        "question_count": 4,
-        "topic": (
-            "Three friends and one umbrella, borrowed and lent and borrowed "
-            "again. The writer ranks them: who forgets more than whom, and "
-            "which of the three is the worst. The writer comes third in their "
-            "own ranking, and is holding the umbrella while they explain it."
-        ),
-        "extra_allowed": ["リク"],
-    },
-    {
-        "slug": "kasa-o-nakushita",
-        "position": 22,
-        "tone": "humorous",
-        "vocab_cutoff": 479,
-        "pull_forward": ["densha"],
-        "grammar_cutoff": 59,
-        "pull_forward_grammar": [],
-        "required_grammar": ["dou-desu-ka", "darou"],
-        "target_words": (86, 110),
-        "question_count": 4,
-        "topic": (
-            "A lost umbrella and a search made entirely of guesses. How about "
-            "the station, then? Somebody probably took it. It might still be on "
-            "the train. The writer never looks anywhere, finds it at home, and "
-            "guesses once more about how it got there."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "nagai-kotoba",
-        "position": 23,
-        "tone": "humorous",
-        "vocab_cutoff": 505,
-        "pull_forward": [],
-        "grammar_cutoff": 61,
-        "pull_forward_grammar": [],
-        "required_grammar": ["to-omou", "to-iu", "no-nominalizer"],
-        "target_words": (88, 112),
-        "question_count": 4,
-        "topic": (
-            "A very long word the writer met this week and cannot say. Three "
-            "friends each think it means something different, and each explains "
-            "why. Remembering it is hard; saying it is harder; looking it up in "
-            "the dictionary on the desk is the one thing nobody does."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "shiken-no-mae-no-yoru",
-        "position": 24,
-        "tone": "neutral",
-        "vocab_cutoff": 536,
-        "pull_forward": [],
-        "grammar_cutoff": 63,
-        "pull_forward_grammar": [],
-        "required_grammar": ["hou-ga-ii", "deshou"],
-        "target_words": (89, 114),
-        "question_count": 4,
-        "topic": (
-            "The night before an exam: how long the writer studied, why that "
-            "was too long, what a friend said about sleeping instead, and what "
-            "the writer expects tomorrow to be like. Told straight, in the "
-            "order it happened, with no joke at the end."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "hikkoshi-ikkagetsu",
-        "position": 25,
-        "tone": "humorous",
-        "vocab_cutoff": 570,
-        "pull_forward": [],
-        "grammar_cutoff": 65,
-        "pull_forward_grammar": [],
-        "required_grammar": ["mada-teinai", "mou-past"],
-        "target_words": (91, 116),
-        "question_count": 4,
-        "topic": (
-            # Not "on the wall": 壁 is in neither level, so the picture has to
-            # come to rest somewhere 置く can reach.
-            "One month after moving in. The picture is already out of its box "
-            "and standing on the desk, and the music is already loud; half the "
-            "boxes have not been opened and the bed has not been built. The "
-            "writer explains which half of the work is the important half, "
-            "standing in the middle of the other half."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kusuri-ga-futatsu-dake",
-        "position": 26,
-        "tone": "humorous",
-        "vocab_cutoff": 605,
-        "pull_forward": [],
-        "grammar_cutoff": 67,
-        "pull_forward_grammar": [],
-        "required_grammar": ["dake", "shika-nai"],
-        "target_words": (92, 118),
-        "question_count": 4,
-        "topic": (
-            "Three days of a cold, counted out: only two tablets left in the "
-            "box, only one train an hour, and the single tissue the writer is "
-            "rationing. Everything in the passage is a number, and every number "
-            "is smaller than the writer would like."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kuji-goro-no-byouin",
-        "position": 27,
-        "tone": "neutral",
-        "vocab_cutoff": 640,
-        "pull_forward": [],
-        "grammar_cutoff": 68,
-        "pull_forward_grammar": [],
-        "required_grammar": ["gurai", "goro"],
-        "target_words": (94, 120),
-        "question_count": 4,
-        "topic": (
-            "A morning at the hospital, told in approximate numbers: the writer "
-            "arrives around nine, waits about thirty minutes, is seen, has the "
-            "medicine explained to them twice a day for about a week, and is "
-            "home by around noon. Careful and plain, the way you would tell a "
-            "parent about it afterwards."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "shashin-to-chigau-ryokan",
-        "position": 28,
-        "tone": "humorous",
-        "vocab_cutoff": 668,
-        "pull_forward": [],
-        "grammar_cutoff": 69,
-        "pull_forward_grammar": [],
-        "required_grammar": ["zenzen-nai", "amari-nai"],
-        "target_words": (95, 122),
-        "question_count": 4,
-        "topic": (
-            "An inn room that is not at all what the photograph showed, at a "
-            "price that is not very low. The window does not open at all and "
-            "the tea is not very hot. The writer is not worried in the "
-            "slightest and says so four times; the rest of the family is "
-            "worried enough for everybody."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "fooku-ga-yonjuu",
-        "position": 29,
-        "tone": "humorous",
-        "vocab_cutoff": 718,
-        "pull_forward": [],
-        "grammar_cutoff": 70,
-        "pull_forward_grammar": [],
-        "required_grammar": ["demo-suggestion", "janai-desu-ka"],
-        "target_words": (97, 124),
-        "question_count": 4,
-        "topic": (
-            "Two students open the classroom cupboard and count what is in it: "
-            "forty forks, no knives, a map of somewhere nobody recognises, and "
-            "chalk. They count it while talking about something else entirely, "
-            "stop halfway for tea or something, and agree that forty is an odd "
-            "number of forks for a classroom, isn't it."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "saigo-no-hi",
-        "position": 30,
-        "tone": "neutral",
-        "vocab_cutoff": 718,
-        "pull_forward": [],
-        "grammar_cutoff": 70,
-        "pull_forward_grammar": [],
-        "required_grammar": ["naru-become"],
-        "target_words": (98, 126),
-        "question_count": 4,
-        "topic": (
-            "The last day of the school year: who gave what to whom, what the "
-            "writer received and what they gave back, and what one quiet "
-            "classmate did for everybody else all year without being asked. By "
-            "the end that classmate has become the person everyone says goodbye "
-            "to last. Warm and plain; the last passage of the level."
-        ),
-        "extra_allowed": ["ハル"],
-    },
-]
-
-#: N4 — 30 passages, 100 → 200 words, 24 humorous (80%), replacing the 9
-#: hand-authored ones (docs/content/reading-passage-expansion-plan.md, step 4).
-#:
-#: The ladder is read against a level that already hands the writer all 718 N5
-#: words, so `vocab_cutoff` is about *theme*, not about having anything to say:
-#: N4 vocabulary runs society nouns (1–48), adjectives (49–87), verbs
-#: (88–228), animals (229–242), nature (243–258), food (259–284), clothes and
-#: shopping (285–303), health (304–321), hobbies (322–342), technology
-#: (343–356), school and work (357–393), adverbs (394–428), set phrases
-#: (429–455) and abstract nouns (456–529). Each seed's topic sits inside the
-#: band its cutoff opens, which is why `pull_forward` is nearly empty here —
-#: it names only the one prop a topic needs from later in the level (the
-#: festival of `matsuri-wa-yarimasu`, the machine of `setsumeisho-doori`).
-#:
-#: `required_grammar` is the block of points each seed's `grammar_cutoff`
-#: newly opens, so the 30 blocks partition the level: 55 of the 56 points,
-#: each assigned once. The 56th is `node-vs-kara`, a `MANUAL_SLUG` that no
-#: rule can separate from `kara-because` — `grammar_coverage_errors` excludes
-#: it rather than demand what `ladder_errors` forbids.
-#:
-#: 34 points moved on to N3 (`levels.json`, the same audit doc), and かなり
-#: and そういう・こういう became words (`kanari`, `souiu`, `kouiu`). Each
-#: cutoff is now the number of kept points under its old value, so the last
-#: four seeds all reach the whole level (56), and those blocks are shorter.
-#: Five seeds whose whole block left require no N4 point:
-#: waribiki-no-setsumei, nazo-no-bukatsu, kotoshi-koso, densha-ga-tomatta-hi
-#: and matsuri-no-oshirase. The last four were written again without the N3
-#: points, on new briefs.
-#:
-#: Five points moved from N5 (`levels.json`, docs/content/
-#: grammar-jlpt-level-audit.md) and are taught first, at 1–5, so every cutoff
-#: is 5 higher than its block. They break the block rule: each is required by
-#: an existing passage that already used it (souji-no-nikki, kotoshi-no-yotei,
-#: benkyou-suru-aida-ni, karita-nabe, tabesugita-hi).
-#:
-#: Ten N4 points were duplicates of N5 points and merged into them, so the
-#: blocks that held them are shorter, and `reizouko-no-ruuru`'s block (てはい
-#: けない, なくてもいい, なければならない) is now empty: the passage keeps its
-#: slot and its brief, and requires no N4 point.
-#:
-#: Four seeds are briefed to write in plain form, and not only for register:
-#: ている, てはいけない, なければならない and させる have polite surfaces
-#: (ています, てはいけません, なければなりません, させます) that belong to
-#: another point or to no pattern at all, so `grammar_detect` can only see
-#: them plain.
-N4_SEEDS = [
-    {
-        "slug": "sekai-to-gomibako",
-        "position": 1,
-        "tone": "humorous",
-        "vocab_cutoff": 18,
-        "pull_forward": ["gomi", "gomibako"],
-        "grammar_cutoff": 7,
-        "required_grammar": ["noni", "souda-hearsay"],
-        "target_words": (90, 112),
-        "question_count": 3,
-        "topic": (
-            "A student's opinion essay opens on the whole world — society, "
-            "culture, tradition, what the government is said to be doing — and "
-            "narrows, sentence by sentence, to the only social problem the "
-            "writer has personally met: nobody in the classroom empties the "
-            "trash can. Grandly serious about a very small thing, and never "
-            "admitting the subject has changed."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "posutaa-no-yakusoku",
-        "position": 2,
-        "tone": "humorous",
-        "vocab_cutoff": 36,
-        "pull_forward": ["risaikuru"],
-        "grammar_cutoff": 10,
-        "required_grammar": ["souda-looks", "tara", "ba"],
-        "target_words": (93, 116),
-        "question_count": 3,
-        "topic": (
-            "The class paints a poster about the environment, and every line on "
-            "it is a promise about what happens if everyone does the right "
-            "thing: sort the rubbish and the town gets clean, do this and the "
-            "problem disappears. Outside the window it looks like rain the "
-            "whole time they are painting, and the poster is taped up outdoors."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kurasu-juu-ga-senmonka",
-        "position": 3,
-        "tone": "humorous",
-        "vocab_cutoff": 48,
-        "pull_forward": [],
-        "grammar_cutoff": 13,
-        "required_grammar": ["nara", "potential", "passive"],
-        "target_words": (97, 119),
-        "question_count": 3,
-        "topic": (
-            "Everyone in the class is an expert on something. Ask about one "
-            "thing and Ken says leave it to him; ask about another and Mika is "
-            "praised for work she has never actually done. The quiet student in "
-            "the corner is asked last, says one short sentence, and is the only "
-            "one who turns out to be right."
-        ),
-        "extra_allowed": ["ケン", "ミカ"],
-    },
-    {
-        "slug": "souji-no-nikki",
-        "position": 4,
-        "tone": "humorous",
-        "vocab_cutoff": 60,
-        # The topic is a diary entry, and the seed is named for it: 日記 is
-        # 519, cutoff is 60.
-        "pull_forward": ["nikki"],
-        "grammar_cutoff": 16,
-        "required_grammar": ["moraru-ageru-kureru", "causative", "causative-passive", "youni"],
-        "target_words": (100, 123),
-        "question_count": 3,
-        "topic": (
-            "A diary entry about the household chore economy: the writer is "
-            "made to tidy the whole room, passes half of it to a younger "
-            "brother, and both of them are made to apologise to their mother "
-            "for the result. Write the whole entry in plain form — no です or "
-            "ます anywhere, the way a diary is actually written."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "suki-ni-natta-mono",
-        "position": 5,
-        "tone": "humorous",
-        "vocab_cutoff": 72,
-        "pull_forward": [],
-        "grammar_cutoff": 19,
-        "required_grammar": ["youninaru", "younaru", "hazu"],
-        "target_words": (103, 126),
-        "question_count": 3,
-        "topic": (
-            "One food the writer could not eat as a child and now eats every "
-            "week, and one habit that quietly stopped some time last year. The "
-            "writer is certain there is a simple explanation for both, "
-            "announces that it should be easy to explain, and then cannot "
-            "explain either of them."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "uwasa-wa-ookiku-naru",
-        "position": 6,
-        "tone": "humorous",
-        "vocab_cutoff": 87,
-        "pull_forward": [],
-        "grammar_cutoff": 22,
-        "required_grammar": ["hazuganai", "rashii", "youda"],
-        "target_words": (107, 130),
-        "question_count": 3,
-        "topic": (
-            "A rumour crosses the classroom and grows at every desk: the strict "
-            "teacher is apparently kind at home, there is apparently no test "
-            "tomorrow. The writer insists loudly that there is no way any of it "
-            "is true, and is the first person to believe the next one."
-        ),
-        "extra_allowed": ["ユキ"],
-    },
-    {
-        "slug": "ima-nani-shiteru",
+        "slug": "neko-to-shukudai",
+        "level": 22,
         "position": 7,
         "tone": "humorous",
-        "vocab_cutoff": 100,
-        "pull_forward": [],
-        "grammar_cutoff": 24,
-        "required_grammar": ["mitai", "teiru-result"],
-        "target_words": (110, 133),
-        "question_count": 3,
+        "required_grammar": ["masen", "mashita", "wo"],
+        "target_words": (64, 80),
+        "question_count": 2,
         "topic": (
-            "A casual, moment-by-moment report of what is going on in one room "
-            "right now: the window is open, rain is coming in, the cat is "
-            "sitting on the phone and does not seem to be moving. Write it in "
-            "plain form, the way you would tell a friend what is happening as "
-            "it happens — no です or ます."
+            "The writer explains, completely deadpan, why the homework is late: "
+            "the cat sat on it, then slept on it, and moving a sleeping cat is "
+            "not possible. Report it as a series of plain facts — no punchline, "
+            "no winking at the reader."
         ),
-        "extra_allowed": ["アヤ"],
-    },
-    {
-        "slug": "junbi-wa-kanpeki",
-        "position": 8,
-        "tone": "humorous",
-        "vocab_cutoff": 115,
-        "pull_forward": [],
-        "grammar_cutoff": 27,
-        "required_grammar": ["tearu", "teoku", "teshimau"],
-        "target_words": (113, 137),
-        "question_count": 3,
-        "topic": (
-            "Everything for tomorrow's early start is ready the night before: "
-            "the bag is packed and standing by the door, the clothes are laid "
-            "out, the lunch is made and in the fridge. Report the preparations "
-            "like a checklist, then end with what the writer does to that lunch "
-            "at eleven at night, in one flat sentence."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "matsuri-wa-yarimasu",
-        "position": 9,
-        "tone": "humorous",
-        "vocab_cutoff": 130,
-        "pull_forward": ["matsuri"],
-        "grammar_cutoff": 29,
-        "required_grammar": ["teiku-tekuru", "temo"],
-        "target_words": (116, 140),
-        "question_count": 3,
-        "topic": (
-            "Rain or no rain, the festival goes ahead. Through the afternoon "
-            "the crowd thins out and the rain gets heavier, while the man at "
-            "the food stall keeps telling the few who remain that they are "
-            "welcome to stay as long as they like. By evening there are three "
-            "customers and he has never been happier."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "reizouko-no-ruuru",
-        "position": 10,
-        "tone": "humorous",
-        "vocab_cutoff": 145,
-        "pull_forward": [],
-        "grammar_cutoff": 29,
-        "required_grammar": [],
-        "target_words": (120, 144),
-        "question_count": 3,
-        "topic": (
-            "A list of house rules taped to the fridge door, and what the "
-            "family actually does. Quote each rule exactly as it is written on "
-            "the paper — short, plain form, the way a sign is written — and "
-            "follow it with the small reasonable exception everyone agreed to "
-            "the week it went up."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kotoshi-no-yotei",
-        "position": 11,
-        "tone": "humorous",
-        "vocab_cutoff": 160,
-        "pull_forward": [],
-        "grammar_cutoff": 31,
-        "required_grammar": ["nagara", "tsumori", "youni-suru"],
-        "target_words": (123, 148),
-        "question_count": 4,
-        "topic": (
-            "This year's plan: get up early, walk more, stop leaving things to "
-            "the last minute. What actually happens is three near-misses in one "
-            "week — nearly missing the train, nearly falling asleep standing "
-            "up, nearly forgetting the one thing that mattered — and the plan "
-            "is restated at the end, unchanged."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "baito-shonichi",
-        "position": 12,
-        "tone": "neutral",
-        "vocab_cutoff": 179,
-        "pull_forward": [],
-        "grammar_cutoff": 33,
-        "required_grammar": ["koto-ni-suru", "koto-ni-naru"],
-        "target_words": (126, 151),
-        "question_count": 4,
-        "topic": (
-            "A first day of part-time work and the polite language that comes "
-            "with it: what the writer decided to do, what was decided for them "
-            "by the manager, and the small mistakes that sometimes happen when "
-            "honorific verbs are still new. Straight narration in the order it "
-            "happened, no joke."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "ojiisan-no-onaji-hanashi",
-        "position": 13,
-        "tone": "humorous",
-        "vocab_cutoff": 194,
-        "pull_forward": [],
-        "grammar_cutoff": 35,
-        "required_grammar": ["bakari", "tokoro"],
-        "target_words": (130, 155),
-        "question_count": 4,
-        "topic": (
-            "Grandfather's stories at dinner: how far he used to walk to "
-            "school, how he has only just sat down, how he was just about to "
-            "reach the good part when the food arrives. The same story comes "
-            "round three times in one evening and is longer each time."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "benkyou-suru-aida-ni",
-        "position": 14,
-        "tone": "humorous",
-        "vocab_cutoff": 203,
-        "pull_forward": [],
-        "grammar_cutoff": 36,
-        "required_grammar": ["tame-ni", "aida"],
-        "target_words": (133, 158),
-        "question_count": 4,
-        "topic": (
-            "Every time the writer sits down to study, something needs doing. "
-            "While the water boils, one job; while the room is still quiet, "
-            "another; and every single time the book opens, the phone rings. By "
-            "the end of the evening nothing has been studied and the kitchen "
-            "has never been cleaner."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "setsumeisho-doori",
-        "position": 15,
-        "tone": "humorous",
-        "vocab_cutoff": 215,
-        "pull_forward": ["kikai-machine"],
-        "grammar_cutoff": 39,
-        "required_grammar": ["baai", "to-conditional"],
-        "target_words": (136, 162),
-        "question_count": 4,
-        "topic": (
-            "A second-hand machine arrives with an instruction sheet, and the "
-            "writer tests it line by line: press this and it turns; in the case "
-            "that it does not turn, do the thing on the next line; use the blue "
-            "button in place of the red one. The red one is the only button the "
-            "machine has."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "shirabeta-koto",
-        "position": 16,
-        "tone": "neutral",
-        "vocab_cutoff": 228,
-        "pull_forward": ["gyouji", "shuukan-custom"],
-        "grammar_cutoff": 40,
-        "required_grammar": ["nitsuite"],
-        "target_words": (140, 165),
-        "question_count": 4,
-        "topic": (
-            "A short class report about a custom the writer looked into: what "
-            "it is, what it is more accurately called rather than the name "
-            "everyone uses for it, and what it means to the people who still "
-            "keep it. Careful and plain, written the way a student writes up "
-            "something they researched."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "saru-ga-nigeta",
-        "position": 17,
-        "tone": "humorous",
-        "vocab_cutoff": 242,
-        "pull_forward": [],
-        "grammar_cutoff": 42,
-        "required_grammar": ["niyoruto", "tame"],
-        "target_words": (143, 169),
-        "question_count": 4,
-        "topic": (
-            "According to the newspaper, a monkey got out because of a door "
-            "somebody left open. As far as the writer can see from the "
-            "classroom window, the monkey is sitting on the roof of the "
-            "building opposite, in no hurry whatsoever, watching the adults "
-            "below run in circles."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "jishin-no-kunren",
-        "position": 18,
-        "tone": "neutral",
-        "vocab_cutoff": 258,
-        "pull_forward": [],
-        "grammar_cutoff": 43,
-        "required_grammar": ["noda"],
-        "target_words": (146, 172),
-        "question_count": 4,
-        "topic": (
-            "An earthquake drill at school: where everyone goes, what they "
-            "carry, and what to do even if it happens at night when nobody is "
-            "there to tell them. The writer keeps forgetting which floor the "
-            "meeting point is on, asks twice, and explains at the end why the "
-            "drill is done at all."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "karita-nabe",
-        "position": 19,
-        "tone": "humorous",
-        "vocab_cutoff": 275,
-        "pull_forward": [],
-        "grammar_cutoff": 44,
-        "required_grammar": ["kamoshirenai", "nikui-yasui"],
-        "target_words": (150, 176),
-        "question_count": 4,
-        "topic": (
-            "A pot borrowed from a neighbour: heavy, hard to lift, easy to burn "
-            "things in, and probably older than the kitchen it came from. The "
-            "writer makes miso soup in it anyway and defends the result to "
-            "everyone at the table, one weak argument at a time."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "tabesugita-hi",
-        "position": 20,
-        "tone": "humorous",
-        "vocab_cutoff": 290,
-        "pull_forward": [],
-        "grammar_cutoff": 44,
-        "required_grammar": ["sugiru"],
-        "target_words": (153, 179),
-        "question_count": 4,
-        "topic": (
-            "A birthday dinner that goes exactly the way everyone predicted: "
-            "too much cake, a belt getting tighter by the hour, and — after a "
-            "long, polite argument about who is paying — the bill split evenly, "
-            "which is what happens every year."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "waribiki-no-setsumei",
-        "position": 21,
-        "tone": "humorous",
-        "vocab_cutoff": 303,
-        "pull_forward": ["kanari"],
-        "grammar_cutoff": 44,
-        "required_grammar": [],
-        "target_words": (156, 183),
-        "question_count": 5,
-        "topic": (
-            "A sale where the discounted price is quite a bit higher than last "
-            "week's ordinary price. The shop clerk explains the reason twice, "
-            "very politely, with a small chart. There is no way the explanation "
-            "is correct, the writer follows none of it, and buys the thing."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "kenkou-shindan",
-        "position": 22,
-        "tone": "neutral",
-        "vocab_cutoff": 321,
-        "pull_forward": [],
-        "grammar_cutoff": 47,
-        "required_grammar": ["hodo", "kurai-degree", "dake-de-naku"],
-        "target_words": (160, 187),
-        "question_count": 5,
-        "topic": (
-            "A health checkup from start to finish: weight and height first, "
-            "the injection everybody in the queue is quietly dreading, and the "
-            "doctor's advice at the end — not only less salt but more walking. "
-            "Told straight, in the order it happens."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "nazo-no-bukatsu",
-        "position": 23,
-        "tone": "humorous",
-        "vocab_cutoff": 342,
-        "pull_forward": [],
-        "grammar_cutoff": 47,
-        "required_grammar": [],
-        "target_words": (163, 190),
-        "question_count": 5,
-        "topic": (
-            "A tennis club that does everything except tennis. The court is "
-            "booked every Tuesday afternoon, but the members sit in a classroom "
-            "playing cards. The writer, who is bad at sport, is very happy with "
-            "this. One serious member opens the door each week and asks everyone "
-            "to play tennis, and slowly, one person every two weeks, people "
-            "follow."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "apuri-no-kenka",
-        "position": 24,
-        "tone": "humorous",
-        "vocab_cutoff": 356,
-        "pull_forward": ["souiu", "kouiu"],
-        "grammar_cutoff": 48,
-        "required_grammar": ["tte"],
-        "target_words": (166, 194),
-        "question_count": 5,
-        "topic": (
-            "Two friends arguing about a phone app: that kind of app is "
-            "useless, no, listen, that is not what I said. Neither of them "
-            "changes their mind and both of them install it before the walk "
-            "home is over. Write it in casual plain form, the way friends "
-            "actually talk to each other."
-        ),
-        "extra_allowed": ["リク"],
-    },
-    {
-        "slug": "goukaku-ka-douka",
-        "position": 25,
-        "tone": "humorous",
-        "vocab_cutoff": 375,
-        "pull_forward": [],
-        "grammar_cutoff": 51,
-        "required_grammar": ["ka-douka", "ka-nanka", "toka"],
-        "target_words": (169, 197),
-        "question_count": 5,
-        "topic": (
-            "The hour before the exam results go up: the writer opens the site, "
-            "closes it, asks a friend whether they have looked, eats a piece of "
-            "cake or something instead, and lists all the things they will do "
-            "if it went badly. The result, when it finally comes, is good on "
-            "one side and very awkward on the other."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "sanjuppun-no-kaigi",
-        "position": 26,
-        "tone": "humorous",
-        "vocab_cutoff": 393,
-        "pull_forward": [],
-        "grammar_cutoff": 54,
-        "required_grammar": ["soredemo", "sokode", "sonoseika-de"],
-        "target_words": (173, 201),
-        "question_count": 5,
-        "topic": (
-            "A meeting booked for thirty minutes. However, the screen will not "
-            "switch on; even so, nobody leaves; so the section head starts "
-            "explaining everything by drawing instead; and because of that the "
-            "meeting reaches its second hour with exactly one thing decided, "
-            "which is when to meet again."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "sotsugyou-shite-kara",
-        "position": 27,
-        "tone": "neutral",
-        "vocab_cutoff": 412,
-        "pull_forward": [],
-        "grammar_cutoff": 56,
-        "required_grammar": ["suruto", "igai"],
-        "target_words": (176, 204),
-        "question_count": 5,
-        "topic": (
-            "Three years after graduation: the same station, the same café on "
-            "the corner, every friend busier now except one, who still sits in "
-            "the same seat reading. Then a letter comes from that friend: they "
-            "are going to work abroad, and they are glad the writer has not "
-            "changed at all. The writer had thought the friend was the one who "
-            "never changed. Warm and plain, no joke."
-        ),
-        "extra_allowed": ["ハル"],
-    },
-    {
-        "slug": "kotoshi-koso",
-        "position": 28,
-        "tone": "humorous",
-        "vocab_cutoff": 440,
-        "pull_forward": [],
-        "grammar_cutoff": 56,
-        "required_grammar": [],
-        "target_words": (179, 208),
-        "question_count": 5,
-        "topic": (
-            "A New Year plan to study Japanese every day. In January the writer "
-            "writes a beautiful timetable and puts it on the wall above the "
-            "desk. Every week there is a new reason not to study. By March the "
-            "plan has been read only once, on the day it went up, but the boy "
-            "next door reads it through the window every morning."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "densha-ga-tomatta-hi",
-        "position": 29,
-        "tone": "humorous",
-        "vocab_cutoff": 470,
-        "pull_forward": [],
-        "grammar_cutoff": 56,
-        "required_grammar": [],
-        "target_words": (183, 211),
-        "question_count": 5,
-        "topic": (
-            "The trains stop because of a typhoon, so the writer has to walk to "
-            "work. On the way they do three errands they have put off for a "
-            "month: the post office, the library, the pharmacy. Next to the "
-            "pharmacy is an umbrella shop. They stand in it for twenty minutes "
-            "choosing, buy one, and step out into a sky that has stopped "
-            "raining."
-        ),
-        "extra_allowed": [],
-    },
-    {
-        "slug": "matsuri-no-oshirase",
-        "position": 30,
-        "tone": "neutral",
-        "vocab_cutoff": 529,
-        "pull_forward": [],
-        "grammar_cutoff": 56,
-        "required_grammar": [],
-        "target_words": (186, 215),
-        "question_count": 5,
-        "topic": (
-            "A notice from the city office about the summer festival: the date "
-            "and time, the fireworks, where the rubbish bins are, what the "
-            "office asks of visitors, and what it asks of the stall holders. One "
-            "careful line explains what happens if the weather turns bad during "
-            "the fireworks. Courteous, exact, written as a public notice."
-        ),
-        "extra_allowed": [],
+        "extra_allowed": ["タマ"],
     },
 ]
-
-#: Every authored seed. A seed's ladder level is the level of the passage it
-#: wrote (`_build/ladder.json`, kind `passage`), and its position is its rank
-#: among the seeds of that level. The JLPT-era window fields (`position`,
-#: `vocab_cutoff`, `pull_forward`, `grammar_cutoff`, `pull_forward_grammar`)
-#: are kept as written but no longer read: a seed's window is every word and
-#: grammar point at or below its level (reading_context.py). The level-ladder
-#: plan's Task 9 rewrites the seeds per level.
-SEEDS = (sorted(N5_SEEDS, key=lambda s: s["position"])
-         + sorted(N4_SEEDS, key=lambda s: s["position"]))
 
 #: The passages teach the grammar of levels 1–20 (spec §7.6); the coverage
 #: check holds every point there to exactly one seed.
@@ -1391,21 +1059,26 @@ COVERAGE_LEVELS = 20
 
 
 def seed_level(slug):
-    return load_ladder()["passage"][slug]["level"]
+    for s in SEEDS:
+        if s["slug"] == slug:
+            return s["level"]
+    raise KeyError(f"unknown reading seed {slug!r}")
 
 
 def seeds_for(level):
     """The seeds at ladder `level`, each with `position` = its rank there."""
-    passages = load_ladder()["passage"]
-    at = [s for s in SEEDS if passages[s["slug"]]["level"] == level]
+    at = [s for s in SEEDS if s["level"] == level]
     if not at:
-        levels = sorted({passages[s["slug"]]["level"] for s in SEEDS})
+        levels = sorted({s["level"] for s in SEEDS})
         raise KeyError(f"no reading seeds at level {level!r} — seeded levels: "
                        f"{', '.join(map(str, levels))}")
     return [{**s, "position": n} for n, s in enumerate(at, start=1)]
 
 
 def seed(level, slug):
+    for s in FIXTURE_SEEDS:
+        if s["slug"] == slug and s["level"] == level:
+            return s
     for s in seeds_for(level):
         if s["slug"] == slug:
             return s
@@ -1425,7 +1098,7 @@ def seed_errors(level):
     seed list silently produces malformed prompts."""
     errors = []
     seeds = seeds_for(level)
-    slugs = [s["slug"] for s in SEEDS]
+    slugs = [s["slug"] for s in SEEDS + FIXTURE_SEEDS]
     if len(set(slugs)) != len(slugs):
         errors.append("duplicate seed slugs")
     for s in seeds:
@@ -1474,7 +1147,10 @@ def grammar_coverage_errors():
     Every point except a `MANUAL_SLUG`. `ladder_errors` refuses to let a seed
     require one (no mechanical rule can confirm a passage uses it), so counting
     it here would make the two checks unsatisfiable together: `node-vs-kara`
-    is から, the same から as `kara-because`."""
+    is から, the same から as `kara-because`.
+
+    Nor a `read_once` point: `conjugation-primer` is an overview card with no
+    form of its own, so no passage can use it."""
     assigned = {}
     for s in SEEDS:
         for slug in s.get("required_grammar", []):
@@ -1482,7 +1158,7 @@ def grammar_coverage_errors():
 
     level_slugs = [
         g["slug"] for g in context.grammar_through(COVERAGE_LEVELS)
-        if g["slug"] not in grammar_detect.MANUAL_SLUGS
+        if g["slug"] not in grammar_detect.MANUAL_SLUGS and not g.get("read_once")
     ]
     unassigned = [slug for slug in level_slugs if slug not in assigned]
     errors = []
