@@ -28675,6 +28675,10 @@
           {
             "japanese": "「明日行きます」と母は言いました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "母が「明日行きます」と言いました。",
+            "kind": "valid"
           }
         ]
       },
@@ -28691,6 +28695,22 @@
           {
             "japanese": "先生に「どこに行きますか」と聞きました。",
             "kind": "valid"
+          },
+          {
+            "japanese": "私は先生に「どこへ行きますか」と聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "私は先生に「どこに行きますか」と聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "「どこへ行きますか」と先生に聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "「どこに行きますか」と先生に聞きました。",
+            "kind": "valid"
           }
         ]
       },
@@ -28704,7 +28724,20 @@
           "kaeru-v",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "兄が手紙に「明日帰ります」と書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "兄は「明日帰ります」と手紙に書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "手紙に兄は「明日帰ります」と書きました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "父は明日来ると言いました。",
@@ -28730,7 +28763,16 @@
           "doko",
           "kiku-v"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "私は先生に「どこですか」と聞きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "「どこですか」と先生に聞きました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "兄は手紙に「帰ります」と書きました。",
@@ -28741,7 +28783,16 @@
           "kaeru-v",
           "kaku"
         ],
-        "alternates": []
+        "alternates": [
+          {
+            "japanese": "兄が手紙に「帰ります」と書きました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "兄は「帰ります」と手紙に書きました。",
+            "kind": "valid"
+          }
+        ]
       },
       {
         "japanese": "母は「パンを買います」と言いました。",
@@ -28755,6 +28806,10 @@
         "alternates": [
           {
             "japanese": "「パンを買います」と母は言いました。",
+            "kind": "valid"
+          },
+          {
+            "japanese": "母が「パンを買います」と言いました。",
             "kind": "valid"
           }
         ]
@@ -28793,6 +28848,10 @@
           {
             "japanese": "毎朝祖母は「お茶を飲みましょう」と言います。",
             "kind": "valid"
+          },
+          {
+            "japanese": "祖母は「お茶を飲みましょう」と毎朝言います。",
+            "kind": "valid"
           }
         ]
       }
@@ -28800,7 +28859,11 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "draft",
+      "answers_check": {
+        "version": "1",
+        "model": "claude-code"
+      }
     }
   }
 }

@@ -60173,6 +60173,52 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "母[はは]が「明日[あした]行[い]きます」と言[い]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "言いました",
+                  "reading": "いいました",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60330,6 +60376,262 @@
                   "in_grammar": false
                 }
               ]
+            },
+            {
+              "furigana": "私[わたし]は先[せん]生[せい]に「どこへ行[い]きますか」と聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "私[わたし]は先[せん]生[せい]に「どこに行[い]きますか」と聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "「どこへ行[い]きますか」と先[せん]生[せい]に聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "へ",
+                  "reading": "へ",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "「どこに行[い]きますか」と先[せん]生[せい]に聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60434,6 +60736,185 @@
               "role": "word",
               "vocabulary_slug": "kaku",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]が手[て]紙[がみ]に「明日[あした]帰[かえ]ります」と書[か]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "手紙",
+                  "reading": "てがみ",
+                  "role": "word",
+                  "vocabulary_slug": "tegami",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "書きました",
+                  "reading": "かきました",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "兄[あに]は「明日[あした]帰[かえ]ります」と手[て]紙[がみ]に書[か]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "手紙",
+                  "reading": "てがみ",
+                  "role": "word",
+                  "vocabulary_slug": "tegami",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "書きました",
+                  "reading": "かきました",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "手[て]紙[がみ]に兄[あに]は「明日[あした]帰[かえ]ります」と書[か]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "手紙",
+                  "reading": "てがみ",
+                  "role": "word",
+                  "vocabulary_slug": "tegami",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "書きました",
+                  "reading": "かきました",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60642,6 +61123,110 @@
               "vocabulary_slug": "kiku-v",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "私[わたし]は先[せん]生[せい]に「どこですか」と聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "私",
+                  "reading": "わたし",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこです",
+                  "reading": "どこです",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "「どこですか」と先[せん]生[せい]に聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "どこです",
+                  "reading": "どこです",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -60732,6 +61317,112 @@
               "role": "word",
               "vocabulary_slug": "kaku",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "兄[あに]が手[て]紙[がみ]に「帰[かえ]ります」と書[か]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "手紙",
+                  "reading": "てがみ",
+                  "role": "word",
+                  "vocabulary_slug": "tegami",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "書きました",
+                  "reading": "かきました",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "兄[あに]は「帰[かえ]ります」と手[て]紙[がみ]に書[か]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "兄",
+                  "reading": "あに",
+                  "role": "word",
+                  "vocabulary_slug": "ani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "手紙",
+                  "reading": "てがみ",
+                  "role": "word",
+                  "vocabulary_slug": "tegami",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "書きました",
+                  "reading": "かきました",
+                  "role": "word",
+                  "vocabulary_slug": "kaku",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60868,6 +61559,58 @@
                   "reading": "は",
                   "role": "particle",
                   "in_grammar": false
+                },
+                {
+                  "surface": "言いました",
+                  "reading": "いいました",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "母[はは]が「パンを買[か]います」と言[い]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "が",
+                  "reading": "が",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買います",
+                  "reading": "かいます",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
                 },
                 {
                   "surface": "言いました",
@@ -61179,6 +61922,65 @@
                   "reading": "と",
                   "role": "other",
                   "in_grammar": true
+                },
+                {
+                  "surface": "言います",
+                  "reading": "いいます",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
+            },
+            {
+              "furigana": "祖[そ]母[ぼ]は「お茶[ちゃ]を飲[の]みましょう」と毎[まい]朝[あさ]言[い]います。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "祖母",
+                  "reading": "そぼ",
+                  "role": "word",
+                  "vocabulary_slug": "sobo",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "お茶",
+                  "reading": "おちゃ",
+                  "role": "word",
+                  "vocabulary_slug": "ocha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "飲みましょう",
+                  "reading": "のみましょう",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "毎朝",
+                  "reading": "まいあさ",
+                  "role": "word",
+                  "vocabulary_slug": "maiasa",
+                  "in_grammar": false
                 },
                 {
                   "surface": "言います",
