@@ -349,6 +349,175 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "sensei-no-asagohan",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "先生の朝ご飯",
+        "body": "先生は毎晩、朝まで本を読むので、朝は時間がありません。パンもありませんから、大学で朝ご飯を食べます。大学では、パンとコーヒーを買います。",
+        "questions": [
+          {
+            "prompt": "先生は毎晩、何を読みますか。",
+            "accepted_answers": [
+              "本",
+              "本です",
+              "ほん",
+              "ほんです",
+              "本を読みます",
+              "ほんをよみます"
+            ],
+            "prompt_furigana": "先[せん]生[せい]は毎[まい]晩[ばん]、何[なに]を読[よ]みますか。"
+          },
+          {
+            "prompt": "先生はどこで朝ご飯を食べますか。",
+            "accepted_answers": [
+              "大学で",
+              "大学",
+              "大学です",
+              "だいがくで",
+              "だいがく",
+              "だいがくです"
+            ],
+            "prompt_furigana": "先[せん]生[せい]はどこで朝[あさ]ご飯[はん]を食[た]べますか。"
+          }
+        ],
+        "english_translation": "Every night the teacher reads books until morning, so in the morning there is no time. There is no bread either, so he eats breakfast at the university. At the university, he buys bread and coffee.",
+        "summary_ja": "先生は時間がありませんから、大学で朝ご飯を食べます。",
+        "summary_en": "The teacher has no time in the morning, so he eats breakfast at the university.",
+        "grammar_slugs": [
+          "de-location",
+          "ga",
+          "kara-because",
+          "made-until",
+          "masen",
+          "masu",
+          "mo-also",
+          "node-because",
+          "to-and",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "asa",
+          "asagohan",
+          "daigaku",
+          "hon",
+          "jikan",
+          "kau-v",
+          "koohii",
+          "maiban",
+          "pan",
+          "sensei",
+          "taberu",
+          "yomu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "sensei",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 9,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 11,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 16,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "jikan",
+            "start": 18,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 21,
+            "end": 26,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 30,
+            "end": 35,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "daigaku",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "asagohan",
+            "start": 41,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 45,
+            "end": 49,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "daigaku",
+            "start": 50,
+            "end": 52
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 55,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 58,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 63,
+            "end": 67,
+            "surface_form": "買います",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 38,
+        "body_furigana": "先[せん]生[せい]は毎[まい]晩[ばん]、朝[あさ]まで本[ほん]を読[よ]むので、朝[あさ]は時[じ]間[かん]がありません。パンもありませんから、大[だい]学[がく]で朝[あさ]ご飯[はん]を食[た]べます。大[だい]学[がく]では、パンとコーヒーを買[か]います。",
+        "slug": "sensei-no-asagohan",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
