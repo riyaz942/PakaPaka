@@ -123,6 +123,102 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "tabemasen-ka",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "食べませんか",
+        "body": "ケンが来ました。「ミナ、食べませんか。」「時間がありません。」九時。「食べましょう。」十時。ミナはケンのを食べました。",
+        "questions": [
+          {
+            "prompt": "ミナは何時に食べましたか。",
+            "accepted_answers": [
+              "十時",
+              "じゅうじ",
+              "十時です",
+              "じゅうじです",
+              "十時に",
+              "じゅうじに"
+            ],
+            "prompt_furigana": "ミナは何[なん]時[じ]に食[た]べましたか。"
+          },
+          {
+            "prompt": "ミナは誰のを食べましたか。",
+            "accepted_answers": [
+              "ケンの",
+              "ケンのです",
+              "ケンのを食べました",
+              "ケンのをたべました"
+            ],
+            "prompt_furigana": "ミナは誰[だれ]のを食[た]べましたか。"
+          }
+        ],
+        "english_translation": "Ken came. \"Mina, won't you eat?\" \"I don't have time.\" Nine o'clock. \"Let's eat.\" Ten o'clock. Mina ate Ken's.",
+        "summary_ja": "ミナは時間がありません。でも、十時にケンのを食べました。",
+        "summary_en": "Mina has no time to eat with Ken, but at ten she eats Ken's food.",
+        "grammar_slugs": [
+          "ga",
+          "masen",
+          "masen-ka",
+          "mashita",
+          "mashou",
+          "masu",
+          "no-nominalizer",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "jikan",
+          "kuru-v",
+          "taberu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 3,
+            "end": 7,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 12,
+            "end": 17,
+            "surface_form": "食べません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "jikan",
+            "start": 21,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 24,
+            "end": 29,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 53,
+            "end": 58,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 29,
+        "body_furigana": "ケンが来[き]ました。「ミナ、食[た]べませんか。」「時[じ]間[かん]がありません。」九[く]時[じ]。「食[た]べましょう。」十[じゅう]時[じ]。ミナはケンのを食[た]べました。",
+        "slug": "tabemasen-ka",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
