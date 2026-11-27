@@ -2891,11 +2891,913 @@
       "level": 1
     },
     {
+      "slug": "ka-question",
+      "primary_form": "か",
+      "meaning": "question marker",
+      "structure": "Sentence + か",
+      "sort_order": 5,
+      "conjugation_rules": {
+        "particle": "question"
+      },
+      "accepted_forms": [
+        "か"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "学生ですか。",
+          "english": "Are you a student?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gakusei"
+          ],
+          "furigana": "学[がく]生[せい]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 0,
+              "end": 2
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 5
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "学生です",
+              "reading": "がくせいです",
+              "role": "word",
+              "vocabulary_slug": "gakusei",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "学[がく]生[せい]ですね。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたは学[がく]生[せい]ですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "学生です",
+                  "reading": "がくせいです",
+                  "role": "word",
+                  "vocabulary_slug": "gakusei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは学[がく]生[せい]ですね。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "行きますか。",
+          "english": "Are you going?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "iku-v"
+          ],
+          "furigana": "行[い]きますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 0,
+              "end": 4,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 5
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "行きます",
+              "reading": "いきます",
+              "role": "word",
+              "vocabulary_slug": "iku-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "行[い]きますね。",
+              "kind": "other_grammar"
+            },
+            {
+              "furigana": "あなたは行[い]きますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは行[い]きますね。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "これは何ですか。",
+          "english": "What is this?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "nan"
+          ],
+          "furigana": "これは何[なに]ですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nan",
+              "start": 3,
+              "end": 4
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "これ",
+              "reading": "これ",
+              "role": "word",
+              "vocabulary_slug": "kore",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "何です",
+              "reading": "なにです",
+              "role": "word",
+              "vocabulary_slug": "nan",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ]
+        },
+        {
+          "japanese": "いくらですか。",
+          "english": "How much is it?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ikura"
+          ],
+          "furigana": "いくらですか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ikura",
+              "start": 0,
+              "end": 3
+            }
+          ],
+          "grammar_span": {
+            "start": 5,
+            "end": 6
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "いくらです",
+              "reading": "いくらです",
+              "role": "word",
+              "vocabulary_slug": "ikura",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ]
+        },
+        {
+          "japanese": "何を食べますか。",
+          "english": "What will you eat?",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "nani",
+            "taberu"
+          ],
+          "furigana": "何[なに]を食[た]べますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "nani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 2,
+              "end": 6,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "何",
+              "reading": "なに",
+              "role": "word",
+              "vocabulary_slug": "nani",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "食べます",
+              "reading": "たべます",
+              "role": "word",
+              "vocabulary_slug": "taberu",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたは何[なに]を食[た]べますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "何",
+                  "reading": "なに",
+                  "role": "word",
+                  "vocabulary_slug": "nani",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "食べます",
+                  "reading": "たべます",
+                  "role": "word",
+                  "vocabulary_slug": "taberu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "明日、本を読みますか。",
+          "english": "Will you read a book tomorrow?",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ashita",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "明日[あす]、本[ほん]を読[よ]みますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 5,
+              "end": 9,
+              "surface_form": "読みます",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 10
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "明日",
+              "reading": "あす",
+              "role": "word",
+              "vocabulary_slug": "ashita",
+              "in_grammar": false
+            },
+            {
+              "surface": "本",
+              "reading": "ほん",
+              "role": "word",
+              "vocabulary_slug": "hon",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "読みます",
+              "reading": "よみます",
+              "role": "word",
+              "vocabulary_slug": "yomu",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "本[ほん]を明日[あす]読[よ]みますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あす",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "あなたは明日[あす]、本[ほん]を読[よ]みますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "明日",
+                  "reading": "あす",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "本",
+                  "reading": "ほん",
+                  "role": "word",
+                  "vocabulary_slug": "hon",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "読みます",
+                  "reading": "よみます",
+                  "role": "word",
+                  "vocabulary_slug": "yomu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "どこから帰りますか。",
+          "english": "Where will you return from?",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "doko",
+            "kaeru-v"
+          ],
+          "furigana": "どこから帰[かえ]りますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "doko",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 4,
+              "end": 8,
+              "surface_form": "帰ります",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 8,
+            "end": 9
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "どこ",
+              "reading": "どこ",
+              "role": "word",
+              "vocabulary_slug": "doko",
+              "in_grammar": false
+            },
+            {
+              "surface": "から",
+              "reading": "から",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "帰ります",
+              "reading": "かえります",
+              "role": "word",
+              "vocabulary_slug": "kaeru-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたはどこから帰[かえ]りますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "から",
+                  "reading": "から",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "帰ります",
+                  "reading": "かえります",
+                  "role": "word",
+                  "vocabulary_slug": "kaeru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "誰に話しますか。",
+          "english": "Who will you speak to?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "dare",
+            "hanasu-v"
+          ],
+          "furigana": "誰[だれ]に話[はな]しますか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "dare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "hanasu-v",
+              "start": 2,
+              "end": 6,
+              "surface_form": "話します",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "誰",
+              "reading": "だれ",
+              "role": "word",
+              "vocabulary_slug": "dare",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "話します",
+              "reading": "はなします",
+              "role": "word",
+              "vocabulary_slug": "hanasu-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "あなたは誰[だれ]に話[はな]しますか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "誰",
+                  "reading": "だれ",
+                  "role": "word",
+                  "vocabulary_slug": "dare",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "話します",
+                  "reading": "はなします",
+                  "role": "word",
+                  "vocabulary_slug": "hanasu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "晩ご飯を食べましたか。",
+          "english": "Did you eat dinner?",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "bangohan",
+            "taberu"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]を食[た]べましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 9,
+              "surface_form": "食べました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 10
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "晩ご飯",
+              "reading": "ばんごはん",
+              "role": "word",
+              "vocabulary_slug": "bangohan",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "食べました",
+              "reading": "たべました",
+              "role": "word",
+              "vocabulary_slug": "taberu",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "晩[ばん]ご飯[はん]を食[た]べましたね。",
+              "kind": "other_grammar"
+            }
+          ]
+        },
+        {
+          "japanese": "お母さんは来ませんか。",
+          "english": "Isn't your mother coming?",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "okaasan",
+            "kuru-v"
+          ],
+          "furigana": "お母[かあ]さんは来[き]ませんか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "okaasan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 5,
+              "end": 9,
+              "surface_form": "来ません",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 9,
+            "end": 10
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "お母さん",
+              "reading": "おかあさん",
+              "role": "word",
+              "vocabulary_slug": "okaasan",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "来ません",
+              "reading": "きません",
+              "role": "word",
+              "vocabulary_slug": "kuru-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "other",
+              "in_grammar": true
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "お母[かあ]さんは来[き]ませんね。",
+              "kind": "other_grammar"
+            }
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "gakusei",
+        "iku-v",
+        "nani"
+      ],
+      "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "question marker",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "question",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "?",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "question particle",
+          "is_primary": false
+        }
+      ],
+      "explanation_markdown": "You are sitting at a restaurant with a coworker. They are staring intently at the menu, entirely unable to decide, and you want to ask what they are going to eat. \n\nIn English, turning a simple statement of fact into a question requires you to scramble the entire sentence. \"You eat\" gets dismantled, flipped around, and rebuilt into \"What will you eat?\" \n\nOne of the biggest reliefs of Japanese grammar is that you never have to do that. You do not rearrange the sentence structure at all. Instead, you simply pull a single syllable from your grammatical toolkit and snap it onto the very end of the sentence. \n\nThat little syllable is か.\n\n```jp\n{{nani||何[なに]}}を食[た]べますか。\n```\n*What will you eat?*\n\n## How it works\n\nThink of か as a spoken question mark. Historically, the Japanese writing system did not use any punctuation at all. There were no commas, no periods, and certainly no question marks. Because everything was written in a continuous, unbroken stream of characters, the language needed a dedicated word to signal that a sentence was an inquiry rather than a fact.\n\nTo use it, take a complete, polite statement—ending in either the polite verb suffix ます or the copula です (the word that works like *is/am/are*)—and simply add か to the very end. The particle takes care of all the grammatical heavy lifting.\n\n```jp\n明日[あす]、本[ほん]を読[よ]みますか。\n```\n*Will you read a book tomorrow?*\n\n```jp\n{{ano||あの}}人[ひと]は学[がく]生[せい]ですか。\n```\n*Is that person a student?*\n\nOne of the best things about this particle is how cleanly it stacks with the rest of the language. When you want to ask a specific question, the question word simply slots into the exact space where the answer would normally live. \n\nLet's say you want to talk about returning from a location. First, look at a standard statement using the starting-point particle から.\n\n```jp\n図[と]書[しょ]館[かん]から帰[かえ]ります。\n```\n*I will return from the library.*\n\nIf you don't know where the person is returning from, you do not move any words to the front of the sentence. You simply swap the location (図[と]書[しょ]館[かん]) for the question word ({{doko||どこ}}), leave the particle から exactly where it is, and lock the sentence with か.\n\n```jp\n{{doko||どこ}}から帰[かえ]りますか。\n```\n*Where will you return from?*\n\nThis modular logic works with any particle you already know, like the recipient marker に.\n\n```jp\n誰[だれ]に話[はな]しますか。\n```\n*Who will you speak to?*\n\n## Rules and exceptions\n\nBecause this particle explicitly labels the sentence as a question, you generally do not need a written question mark in standard Japanese. A polite sentence ending in か typically finishes with a standard full stop (。).\n\n> You will absolutely see question marks used on the internet, in manga, and in text messages to add visual emotion, but in clean, standard writing, the particle does all the work.\n\nAnother detail to watch is your intonation—the rising or falling pitch of your voice at the end of a sentence. In English, we rely heavily on a rising pitch to make a question sound like a question. In Japanese, because か is doing the mechanical work, your intonation does not need to spike aggressively. A slight, gentle rise is natural, but pitching your voice sky-high can sound overly dramatic.\n\n## Casual speech\n\nThis is where the textbook rules break down in real life, and it trips up almost everyone in their first week of speaking.\n\nThe rule to \"just add か\" only applies when you are speaking politely, using です or ます. When you drop those polite endings to speak casually with friends, the rules change entirely. In casual speech, you **do not** add か to the end of a plain verb.\n\nIf you say `お茶を飲むか` (Will you drink tea?) instead of polite `お茶を飲みますか`, you will sound incredibly rough. It gives off the abrasive vibe of a tough guy in an action movie or someone aggressively grumbling to themselves.\n\nInstead, modern casual Japanese drops the particle completely. You simply state the plain phrase and raise your intonation sharply at the end. Because the particle is gone, this is the one time standard Japanese actually relies on a written question mark to show that tone.\n\n```jp\nお茶[ちゃ]を飲[の]む？\n```\n*Will you drink tea?*\n\n## Contrast: The power of one syllable\n\nThe power of a single syllable is immense in Japanese. Because the language relies so heavily on context, subjects like \"I\" and \"you\" are almost always dropped. \n\nWhen you state a fact without a question marker, the listener automatically assumes you are talking about yourself or an established truth. The moment you attach the particle, the focus pivots immediately to the listener. It is a minimal pair where swapping nothing for something changes the entire reality of the conversation.\n\n```jp\n今日[きょう]、肉[にく]を食[た]べます。\n```\n*I will eat meat today.*\n\n```jp\n今日[きょう]、肉[にく]を食[た]べますか。\n```\n*Will you eat meat today?*\n\nWithout か, you are declaring your own dinner plans. The moment you add it, you are now asking about theirs.\n\nHold onto this idea of sentence-ending particles changing the whole mood of a statement—it becomes incredibly important when we meet ね to ask for agreement later on.\n",
+      "caution_notes": [
+        "In formal writing, a sentence ending in か typically finishes with a standard full stop (。) rather than a question mark.",
+        "Never attach か directly to a casual verb; instead, drop the particle entirely and just use a rising intonation."
+      ],
+      "related_grammar_slugs": [
+        "ne-tag"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "reviewed"
+      },
+      "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with his beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. 今何時です<reading>か</reading>。",
+      "level": 1
+    },
+    {
       "slug": "conjugation-primer",
       "primary_form": "活用",
       "meaning": "How words change",
       "structure": "Word group → ending",
-      "sort_order": 5,
+      "sort_order": 6,
       "conjugation_rules": {},
       "accepted_forms": [],
       "example_sentences": [],
@@ -2928,7 +3830,7 @@
       "primary_form": "ます",
       "meaning": "polite verb ending",
       "structure": "Verb stem + ます",
-      "sort_order": 6,
+      "sort_order": 7,
       "conjugation_rules": {
         "polite": true,
         "past": "ました",
@@ -4163,7 +5065,7 @@
       "primary_form": "ません",
       "meaning": "polite negative verb ending",
       "structure": "Verb stem + ません",
-      "sort_order": 7,
+      "sort_order": 8,
       "conjugation_rules": {
         "polite": true,
         "negative": true
@@ -5027,7 +5929,7 @@
       "primary_form": "ました",
       "meaning": "polite past tense",
       "structure": "Verb stem + ました",
-      "sort_order": 8,
+      "sort_order": 9,
       "conjugation_rules": {
         "polite": true,
         "past": true
@@ -6155,7 +7057,7 @@
       "primary_form": "ましょう",
       "meaning": "let's / shall we",
       "structure": "Verb stem + ましょう",
-      "sort_order": 9,
+      "sort_order": 10,
       "conjugation_rules": {
         "polite": true,
         "volitional": true
@@ -7208,7 +8110,7 @@
       "primary_form": "ませんか",
       "meaning": "won't you? (invitation)",
       "structure": "Verb stem + ませんか",
-      "sort_order": 10,
+      "sort_order": 11,
       "conjugation_rules": {
         "polite": true,
         "invitation": true
@@ -8650,7 +9552,7 @@
       "primary_form": "を",
       "meaning": "direct object marker",
       "structure": "Noun + を + Verb",
-      "sort_order": 11,
+      "sort_order": 12,
       "conjugation_rules": {
         "particle": "object"
       },
@@ -9604,7 +10506,7 @@
       "primary_form": "が",
       "meaning": "subject marker",
       "structure": "Noun + が + Predicate",
-      "sort_order": 12,
+      "sort_order": 13,
       "conjugation_rules": {
         "particle": "subject"
       },
@@ -10582,7 +11484,7 @@
       "primary_form": "の",
       "meaning": "nominalizer / explanatory",
       "structure": "Verb (plain) + の / んです",
-      "sort_order": 13,
+      "sort_order": 14,
       "conjugation_rules": {
         "nominalizer": true
       },
@@ -11820,7 +12722,7 @@
       "primary_form": "に",
       "meaning": "to / at (direction, time, target)",
       "structure": "Noun + に",
-      "sort_order": 14,
+      "sort_order": 15,
       "conjugation_rules": {
         "particle": "target"
       },
@@ -12956,7 +13858,7 @@
       "primary_form": "へ",
       "meaning": "toward (direction)",
       "structure": "Noun + へ",
-      "sort_order": 15,
+      "sort_order": 16,
       "conjugation_rules": {
         "particle": "direction"
       },
@@ -14143,7 +15045,7 @@
       "primary_form": "で",
       "meaning": "at / by / with (place of action, means)",
       "structure": "Noun + で + Verb",
-      "sort_order": 16,
+      "sort_order": 17,
       "conjugation_rules": {
         "particle": "location_means"
       },
@@ -15431,7 +16333,7 @@
       "primary_form": "と",
       "meaning": "and / with (exhaustive)",
       "structure": "Noun + と + Noun",
-      "sort_order": 17,
+      "sort_order": 18,
       "conjugation_rules": {
         "particle": "and_with"
       },
@@ -16885,7 +17787,7 @@
       "primary_form": "や",
       "meaning": "and (among others)",
       "structure": "Noun + や + Noun (など)",
-      "sort_order": 18,
+      "sort_order": 19,
       "conjugation_rules": {
         "particle": "nonexhaustive_and"
       },
@@ -18739,7 +19641,7 @@
       "primary_form": "も",
       "meaning": "also / too",
       "structure": "Noun + も",
-      "sort_order": 19,
+      "sort_order": 20,
       "conjugation_rules": {
         "particle": "also"
       },
@@ -19480,7 +20382,7 @@
       "primary_form": "から",
       "meaning": "from (starting point)",
       "structure": "Noun + から",
-      "sort_order": 20,
+      "sort_order": 21,
       "conjugation_rules": {
         "particle": "start"
       },
@@ -20948,7 +21850,7 @@
       "primary_form": "まで",
       "meaning": "until / as far as",
       "structure": "Noun + まで",
-      "sort_order": 21,
+      "sort_order": 22,
       "conjugation_rules": {
         "particle": "end"
       },
@@ -22426,7 +23328,7 @@
       "primary_form": "から",
       "meaning": "because (reason)",
       "structure": "Clause (plain/polite) + から",
-      "sort_order": 22,
+      "sort_order": 23,
       "conjugation_rules": {
         "reason": true
       },
@@ -23769,7 +24671,7 @@
       "primary_form": "ので",
       "meaning": "because (soft/objective)",
       "structure": "Clause (plain) + ので",
-      "sort_order": 23,
+      "sort_order": 24,
       "conjugation_rules": {
         "reason": true,
         "soft": true
@@ -25771,7 +26673,7 @@
       "primary_form": "に (相手)",
       "meaning": "to (recipient / indirect object)",
       "structure": "Person + に + Verb",
-      "sort_order": 24,
+      "sort_order": 25,
       "conjugation_rules": {
         "particle": "recipient"
       },
@@ -27083,908 +27985,6 @@
         "review_status": "draft"
       },
       "mnemonic_text": "Chuu the mouse can only reach as high as Jin the giant's <reading>knee</reading>, so he bows and hands the tiny letter to that knee, delivered <grammar>to</grammar> Jin. {{sensei||先生}}<reading>に</reading>{{hanasu-v||話す}}。",
-      "level": 4
-    },
-    {
-      "slug": "ka-question",
-      "primary_form": "か",
-      "meaning": "question marker",
-      "structure": "Sentence + か",
-      "sort_order": 25,
-      "conjugation_rules": {
-        "particle": "question"
-      },
-      "accepted_forms": [
-        "か"
-      ],
-      "example_sentences": [
-        {
-          "japanese": "学生ですか。",
-          "english": "Are you a student?",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "gakusei"
-          ],
-          "furigana": "学[がく]生[せい]ですか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "gakusei",
-              "start": 0,
-              "end": 2
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 5
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "学生です",
-              "reading": "がくせいです",
-              "role": "word",
-              "vocabulary_slug": "gakusei",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "学[がく]生[せい]ですね。",
-              "kind": "other_grammar"
-            },
-            {
-              "furigana": "あなたは学[がく]生[せい]ですか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "学生です",
-                  "reading": "がくせいです",
-                  "role": "word",
-                  "vocabulary_slug": "gakusei",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            },
-            {
-              "furigana": "あなたは学[がく]生[せい]ですね。",
-              "kind": "other_grammar"
-            }
-          ]
-        },
-        {
-          "japanese": "行きますか。",
-          "english": "Are you going?",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "iku-v"
-          ],
-          "furigana": "行[い]きますか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 0,
-              "end": 4,
-              "surface_form": "行きます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 4,
-            "end": 5
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "行きます",
-              "reading": "いきます",
-              "role": "word",
-              "vocabulary_slug": "iku-v",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "行[い]きますね。",
-              "kind": "other_grammar"
-            },
-            {
-              "furigana": "あなたは行[い]きますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "行きます",
-                  "reading": "いきます",
-                  "role": "word",
-                  "vocabulary_slug": "iku-v",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            },
-            {
-              "furigana": "あなたは行[い]きますね。",
-              "kind": "other_grammar"
-            }
-          ]
-        },
-        {
-          "japanese": "これは何ですか。",
-          "english": "What is this?",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kore",
-            "nan"
-          ],
-          "furigana": "これは何[なに]ですか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "kore",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "nan",
-              "start": 3,
-              "end": 4
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "これ",
-              "reading": "これ",
-              "role": "word",
-              "vocabulary_slug": "kore",
-              "in_grammar": false
-            },
-            {
-              "surface": "は",
-              "reading": "は",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "何です",
-              "reading": "なにです",
-              "role": "word",
-              "vocabulary_slug": "nan",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ]
-        },
-        {
-          "japanese": "いくらですか。",
-          "english": "How much is it?",
-          "sort_order": 3,
-          "vocabulary_slugs": [
-            "ikura"
-          ],
-          "furigana": "いくらですか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ikura",
-              "start": 0,
-              "end": 3
-            }
-          ],
-          "grammar_span": {
-            "start": 5,
-            "end": 6
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "いくらです",
-              "reading": "いくらです",
-              "role": "word",
-              "vocabulary_slug": "ikura",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ]
-        },
-        {
-          "japanese": "何を食べますか。",
-          "english": "What will you eat?",
-          "sort_order": 4,
-          "vocabulary_slugs": [
-            "nani",
-            "taberu"
-          ],
-          "furigana": "何[なに]を食[た]べますか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "nani",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "taberu",
-              "start": 2,
-              "end": 6,
-              "surface_form": "食べます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "何",
-              "reading": "なに",
-              "role": "word",
-              "vocabulary_slug": "nani",
-              "in_grammar": false
-            },
-            {
-              "surface": "を",
-              "reading": "を",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "食べます",
-              "reading": "たべます",
-              "role": "word",
-              "vocabulary_slug": "taberu",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "あなたは何[なに]を食[た]べますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "何",
-                  "reading": "なに",
-                  "role": "word",
-                  "vocabulary_slug": "nani",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "食べます",
-                  "reading": "たべます",
-                  "role": "word",
-                  "vocabulary_slug": "taberu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "明日、本を読みますか。",
-          "english": "Will you read a book tomorrow?",
-          "sort_order": 5,
-          "vocabulary_slugs": [
-            "ashita",
-            "hon",
-            "yomu"
-          ],
-          "furigana": "明日[あした]、本[ほん]を読[よ]みますか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "ashita",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "hon",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "yomu",
-              "start": 5,
-              "end": 9,
-              "surface_form": "読みます",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 10
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "明日",
-              "reading": "あした",
-              "role": "word",
-              "vocabulary_slug": "ashita",
-              "in_grammar": false
-            },
-            {
-              "surface": "本",
-              "reading": "ほん",
-              "role": "word",
-              "vocabulary_slug": "hon",
-              "in_grammar": false
-            },
-            {
-              "surface": "を",
-              "reading": "を",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "読みます",
-              "reading": "よみます",
-              "role": "word",
-              "vocabulary_slug": "yomu",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "本[ほん]を明日[あした]読[よ]みますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "本",
-                  "reading": "ほん",
-                  "role": "word",
-                  "vocabulary_slug": "hon",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "明日",
-                  "reading": "あした",
-                  "role": "word",
-                  "vocabulary_slug": "ashita",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "読みます",
-                  "reading": "よみます",
-                  "role": "word",
-                  "vocabulary_slug": "yomu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            },
-            {
-              "furigana": "あなたは明日[あした]、本[ほん]を読[よ]みますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "明日",
-                  "reading": "あした",
-                  "role": "word",
-                  "vocabulary_slug": "ashita",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "本",
-                  "reading": "ほん",
-                  "role": "word",
-                  "vocabulary_slug": "hon",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "を",
-                  "reading": "を",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "読みます",
-                  "reading": "よみます",
-                  "role": "word",
-                  "vocabulary_slug": "yomu",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "どこから帰りますか。",
-          "english": "Where will you return from?",
-          "sort_order": 6,
-          "vocabulary_slugs": [
-            "doko",
-            "kaeru-v"
-          ],
-          "furigana": "どこから帰[かえ]りますか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "doko",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "kaeru-v",
-              "start": 4,
-              "end": 8,
-              "surface_form": "帰ります",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 8,
-            "end": 9
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "どこ",
-              "reading": "どこ",
-              "role": "word",
-              "vocabulary_slug": "doko",
-              "in_grammar": false
-            },
-            {
-              "surface": "から",
-              "reading": "から",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "帰ります",
-              "reading": "かえります",
-              "role": "word",
-              "vocabulary_slug": "kaeru-v",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "あなたはどこから帰[かえ]りますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "どこ",
-                  "reading": "どこ",
-                  "role": "word",
-                  "vocabulary_slug": "doko",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "から",
-                  "reading": "から",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "帰ります",
-                  "reading": "かえります",
-                  "role": "word",
-                  "vocabulary_slug": "kaeru-v",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "誰に話しますか。",
-          "english": "Who will you speak to?",
-          "sort_order": 7,
-          "vocabulary_slugs": [
-            "dare",
-            "hanasu-v"
-          ],
-          "furigana": "誰[だれ]に話[はな]しますか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "dare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "hanasu-v",
-              "start": 2,
-              "end": 6,
-              "surface_form": "話します",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 6,
-            "end": 7
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "誰",
-              "reading": "だれ",
-              "role": "word",
-              "vocabulary_slug": "dare",
-              "in_grammar": false
-            },
-            {
-              "surface": "に",
-              "reading": "に",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "話します",
-              "reading": "はなします",
-              "role": "word",
-              "vocabulary_slug": "hanasu-v",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "あなたは誰[だれ]に話[はな]しますか。",
-              "kind": "valid",
-              "units": [
-                {
-                  "surface": "あなた",
-                  "reading": "あなた",
-                  "role": "other",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "は",
-                  "reading": "は",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "誰",
-                  "reading": "だれ",
-                  "role": "word",
-                  "vocabulary_slug": "dare",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "に",
-                  "reading": "に",
-                  "role": "particle",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "話します",
-                  "reading": "はなします",
-                  "role": "word",
-                  "vocabulary_slug": "hanasu-v",
-                  "in_grammar": false
-                },
-                {
-                  "surface": "か",
-                  "reading": "か",
-                  "role": "other",
-                  "in_grammar": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "japanese": "晩ご飯を食べましたか。",
-          "english": "Did you eat dinner?",
-          "sort_order": 8,
-          "vocabulary_slugs": [
-            "bangohan",
-            "taberu"
-          ],
-          "furigana": "晩[ばん]ご飯[はん]を食[た]べましたか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "bangohan",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "taberu",
-              "start": 4,
-              "end": 9,
-              "surface_form": "食べました",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 10
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "晩ご飯",
-              "reading": "ばんごはん",
-              "role": "word",
-              "vocabulary_slug": "bangohan",
-              "in_grammar": false
-            },
-            {
-              "surface": "を",
-              "reading": "を",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "食べました",
-              "reading": "たべました",
-              "role": "word",
-              "vocabulary_slug": "taberu",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "晩[ばん]ご飯[はん]を食[た]べましたね。",
-              "kind": "other_grammar"
-            }
-          ]
-        },
-        {
-          "japanese": "お母さんは来ませんか。",
-          "english": "Isn't your mother coming?",
-          "sort_order": 9,
-          "vocabulary_slugs": [
-            "okaasan",
-            "kuru-v"
-          ],
-          "furigana": "お母[かあ]さんは来[き]ませんか。",
-          "word_spans": [
-            {
-              "vocabulary_slug": "okaasan",
-              "start": 0,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kuru-v",
-              "start": 5,
-              "end": 9,
-              "surface_form": "来ません",
-              "inflection": "masu"
-            }
-          ],
-          "grammar_span": {
-            "start": 9,
-            "end": 10
-          },
-          "register": "polite",
-          "answer_units": [
-            {
-              "surface": "お母さん",
-              "reading": "おかあさん",
-              "role": "word",
-              "vocabulary_slug": "okaasan",
-              "in_grammar": false
-            },
-            {
-              "surface": "は",
-              "reading": "は",
-              "role": "particle",
-              "in_grammar": false
-            },
-            {
-              "surface": "来ません",
-              "reading": "きません",
-              "role": "word",
-              "vocabulary_slug": "kuru-v",
-              "in_grammar": false
-            },
-            {
-              "surface": "か",
-              "reading": "か",
-              "role": "other",
-              "in_grammar": true
-            }
-          ],
-          "build_alternates": [
-            {
-              "furigana": "お母[かあ]さんは来[き]ませんね。",
-              "kind": "other_grammar"
-            }
-          ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "gakusei",
-        "iku-v",
-        "nani"
-      ],
-      "family": "particles",
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "question marker",
-          "is_primary": true
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "question",
-          "is_primary": false
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "?",
-          "is_primary": false
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "question particle",
-          "is_primary": false
-        }
-      ],
-      "explanation_markdown": "You are sitting at a restaurant with a coworker. They are staring intently at the menu, entirely unable to decide, and you want to ask what they are going to eat. \n\nIn English, turning a simple statement of fact into a question requires you to scramble the entire sentence. \"You eat\" gets dismantled, flipped around, and rebuilt into \"What will you eat?\" \n\nOne of the biggest reliefs of Japanese grammar is that you never have to do that. You do not rearrange the sentence structure at all. Instead, you simply pull a single syllable from your grammatical toolkit and snap it onto the very end of the sentence. \n\nThat little syllable is か.\n\n```jp\n{{nani||何[なに]}}を{{taberu|masu|食[た]べます}}か。\n```\n*What will you eat?*\n\n## How it works\n\nThink of か as a spoken question mark. Historically, the Japanese writing system did not use any punctuation at all. There were no commas, no periods, and certainly no question marks. Because everything was written in a continuous, unbroken stream of characters, the language needed a dedicated word to signal that a sentence was an inquiry rather than a fact.\n\nTo use it, take a complete, polite statement—ending in either the polite verb suffix ます or the copula です (the word that works like *is/am/are*)—and simply add か to the very end. The particle takes care of all the grammatical heavy lifting.\n\n```jp\n{{ashita||明日[あした]}}、{{hon||本[ほん]}}を{{yomu|masu|読[よ]みます}}か。\n```\n*Will you read a book tomorrow?*\n\n```jp\n{{ano||あの}}{{hito||人[ひと]}}は{{gakusei||学[がく]生[せい]}}ですか。\n```\n*Is that person a student?*\n\nOne of the best things about this particle is how cleanly it stacks with the rest of the language. When you want to ask a specific question, the question word simply slots into the exact space where the answer would normally live. \n\nLet's say you want to talk about returning from a location. First, look at a standard statement using the starting-point particle から.\n\n```jp\n図[と]書[しょ]館[かん]から{{kaeru-v|masu|帰[かえ]ります}}。\n```\n*I will return from the library.*\n\nIf you don't know where the person is returning from, you do not move any words to the front of the sentence. You simply swap the location (図[と]書[しょ]館[かん]) for the question word ({{doko||どこ}}), leave the particle から exactly where it is, and lock the sentence with か.\n\n```jp\n{{doko||どこ}}から{{kaeru-v|masu|帰[かえ]ります}}か。\n```\n*Where will you return from?*\n\nThis modular logic works with any particle you already know, like the recipient marker に.\n\n```jp\n{{dare||誰[だれ]}}に{{hanasu-v|masu|話[はな]します}}か。\n```\n*Who will you speak to?*\n\n## Rules and exceptions\n\nBecause this particle explicitly labels the sentence as a question, you generally do not need a written question mark in standard Japanese. A polite sentence ending in か typically finishes with a standard full stop (。).\n\n> You will absolutely see question marks used on the internet, in manga, and in text messages to add visual emotion, but in clean, standard writing, the particle does all the work.\n\nAnother detail to watch is your intonation—the rising or falling pitch of your voice at the end of a sentence. In English, we rely heavily on a rising pitch to make a question sound like a question. In Japanese, because か is doing the mechanical work, your intonation does not need to spike aggressively. A slight, gentle rise is natural, but pitching your voice sky-high can sound overly dramatic.\n\n## Casual speech\n\nThis is where the textbook rules break down in real life, and it trips up almost everyone in their first week of speaking.\n\nThe rule to \"just add か\" only applies when you are speaking politely, using です or ます. When you drop those polite endings to speak casually with friends, the rules change entirely. In casual speech, you **do not** add か to the end of a plain verb.\n\nIf you say `お茶を飲むか` (Will you drink tea?) instead of polite `お茶を飲みますか`, you will sound incredibly rough. It gives off the abrasive vibe of a tough guy in an action movie or someone aggressively grumbling to themselves.\n\nInstead, modern casual Japanese drops the particle completely. You simply state the plain phrase and raise your intonation sharply at the end. Because the particle is gone, this is the one time standard Japanese actually relies on a written question mark to show that tone.\n\n```jp\n{{ocha||お茶[ちゃ]}}を{{nomu-v||飲[の]む}}？\n```\n*Will you drink tea?*\n\n## Contrast: The power of one syllable\n\nThe power of a single syllable is immense in Japanese. Because the language relies so heavily on context, subjects like \"I\" and \"you\" are almost always dropped. \n\nWhen you state a fact without a question marker, the listener automatically assumes you are talking about yourself or an established truth. The moment you attach the particle, the focus pivots immediately to the listener. It is a minimal pair where swapping nothing for something changes the entire reality of the conversation.\n\n```jp\n{{kyou||今日[きょう]}}、肉[にく]を{{taberu|masu|食[た]べます}}。\n```\n*I will eat meat today.*\n\n```jp\n{{kyou||今日[きょう]}}、肉[にく]を{{taberu|masu|食[た]べます}}か。\n```\n*Will you eat meat today?*\n\nWithout か, you are declaring your own dinner plans. The moment you add it, you are now asking about theirs.\n\nHold onto this idea of sentence-ending particles changing the whole mood of a statement—it becomes incredibly important when we meet ね to ask for agreement later on.\n",
-      "caution_notes": [
-        "In formal writing, a sentence ending in か typically finishes with a standard full stop (。) rather than a question mark.",
-        "Never attach か directly to a casual verb; instead, drop the particle entirely and just use a rising intonation."
-      ],
-      "related_grammar_slugs": [
-        "ne-tag"
-      ],
-      "_meta": {
-        "generator_model": "gemini-web",
-        "prompt_version": "2",
-        "review_status": "reviewed"
-      },
-      "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with his beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. {{ima||今}}{{nannji||何時}}です<reading>か</reading>。",
       "level": 4
     },
     {

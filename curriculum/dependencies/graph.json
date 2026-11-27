@@ -159911,34 +159911,6 @@
     {
       "from_slug": "wa-topic",
       "from_type": "grammar",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wa-topic",
-      "from_type": "grammar",
-      "to_slug": "gakusei",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wa-topic",
-      "from_type": "grammar",
-      "to_slug": "kore",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wa-topic",
-      "from_type": "grammar",
-      "to_slug": "hon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "desu",
-      "from_type": "grammar",
       "to_slug": "kore",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -159946,14 +159918,7 @@
     {
       "from_slug": "desu",
       "from_type": "grammar",
-      "to_slug": "mizu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "desu",
-      "from_type": "grammar",
-      "to_slug": "sensei",
+      "to_slug": "kore",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -159965,485 +159930,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "dewa-arimasen",
-      "from_type": "grammar",
-      "to_slug": "hon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "dewa-arimasen",
-      "from_type": "grammar",
-      "to_slug": "gakusei",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "no-possessive",
       "from_type": "grammar",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-possessive",
-      "from_type": "grammar",
-      "to_slug": "hon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-possessive",
-      "from_type": "grammar",
-      "to_slug": "nihongo",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "conjugation-primer",
-      "from_type": "grammar",
-      "to_slug": "taberu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "conjugation-primer",
-      "from_type": "grammar",
-      "to_slug": "nomu-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "conjugation-primer",
-      "from_type": "grammar",
-      "to_slug": "shiru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "conjugation-primer",
-      "from_type": "grammar",
-      "to_slug": "takai-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "conjugation-primer",
-      "from_type": "grammar",
-      "to_slug": "shizuka",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masu",
-      "from_type": "grammar",
-      "to_slug": "nihongo",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masu",
-      "from_type": "grammar",
-      "to_slug": "benkyou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masu",
-      "from_type": "grammar",
-      "to_slug": "nomu-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen",
-      "from_type": "grammar",
-      "to_slug": "osake",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen",
-      "from_type": "grammar",
-      "to_slug": "nomu-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen",
-      "from_type": "grammar",
-      "to_slug": "taberu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashita",
-      "from_type": "grammar",
-      "to_slug": "kinou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashita",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashita",
-      "from_type": "grammar",
-      "to_slug": "miru-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashou",
-      "from_type": "grammar",
-      "to_slug": "issho-ni",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashou",
-      "from_type": "grammar",
-      "to_slug": "iku-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mashou",
-      "from_type": "grammar",
-      "to_slug": "ocha",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen-ka",
-      "from_type": "grammar",
-      "to_slug": "issho-ni",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen-ka",
-      "from_type": "grammar",
-      "to_slug": "ocha",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "masen-ka",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wo",
-      "from_type": "grammar",
-      "to_slug": "mizu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wo",
-      "from_type": "grammar",
-      "to_slug": "hon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wo",
-      "from_type": "grammar",
-      "to_slug": "gohan",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ga",
-      "from_type": "grammar",
-      "to_slug": "neko",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ga",
-      "from_type": "grammar",
-      "to_slug": "dare",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ga",
-      "from_type": "grammar",
-      "to_slug": "okane",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-nominalizer",
-      "from_type": "grammar",
-      "to_slug": "taberu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-nominalizer",
-      "from_type": "grammar",
-      "to_slug": "suki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "no-nominalizer",
-      "from_type": "grammar",
-      "to_slug": "yomu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-direction",
-      "from_type": "grammar",
-      "to_slug": "gakkou-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-direction",
-      "from_type": "grammar",
-      "to_slug": "iku-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-direction",
-      "from_type": "grammar",
-      "to_slug": "tomodachi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "he-direction",
-      "from_type": "grammar",
-      "to_slug": "ie",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "he-direction",
-      "from_type": "grammar",
-      "to_slug": "kaeru-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "he-direction",
-      "from_type": "grammar",
-      "to_slug": "iku-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "de-location",
-      "from_type": "grammar",
-      "to_slug": "toshokan",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "de-location",
-      "from_type": "grammar",
-      "to_slug": "basu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "de-location",
-      "from_type": "grammar",
-      "to_slug": "hashi-chopsticks",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "to-and",
-      "from_type": "grammar",
-      "to_slug": "pan",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "to-and",
-      "from_type": "grammar",
-      "to_slug": "tamago",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "to-and",
-      "from_type": "grammar",
-      "to_slug": "tomodachi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ya-among",
-      "from_type": "grammar",
-      "to_slug": "yasai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ya-among",
-      "from_type": "grammar",
-      "to_slug": "kudamono",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ya-among",
-      "from_type": "grammar",
-      "to_slug": "zasshi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mo-also",
-      "from_type": "grammar",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mo-also",
-      "from_type": "grammar",
-      "to_slug": "gakusei",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mo-also",
-      "from_type": "grammar",
-      "to_slug": "kore",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-from",
-      "from_type": "grammar",
-      "to_slug": "eki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-from",
-      "from_type": "grammar",
-      "to_slug": "aruku",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-from",
-      "from_type": "grammar",
-      "to_slug": "nihon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "made-until",
-      "from_type": "grammar",
-      "to_slug": "eki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "made-until",
-      "from_type": "grammar",
-      "to_slug": "aruku",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "made-until",
-      "from_type": "grammar",
-      "to_slug": "gakkou-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-because",
-      "from_type": "grammar",
-      "to_slug": "samui",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-because",
-      "from_type": "grammar",
-      "to_slug": "isogashii",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kara-because",
-      "from_type": "grammar",
-      "to_slug": "takai-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "node-because",
-      "from_type": "grammar",
-      "to_slug": "jikan",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "node-because",
-      "from_type": "grammar",
-      "to_slug": "byouki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "node-because",
-      "from_type": "grammar",
-      "to_slug": "yasui-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "node-because",
-      "from_type": "grammar",
-      "to_slug": "furu-rain",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "node-because",
-      "from_type": "grammar",
-      "to_slug": "yasumu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-indirect",
-      "from_type": "grammar",
-      "to_slug": "tomodachi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-indirect",
-      "from_type": "grammar",
-      "to_slug": "denwa-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-indirect",
-      "from_type": "grammar",
-      "to_slug": "sensei",
+      "to_slug": "anata",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160469,23 +159958,219 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "ne-tag",
+      "from_slug": "conjugation-primer",
       "from_type": "grammar",
-      "to_slug": "tenki",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masu",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masu",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashita",
+      "from_type": "grammar",
+      "to_slug": "miru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashou",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen-ka",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen-ka",
+      "from_type": "grammar",
+      "to_slug": "miru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wo",
+      "from_type": "grammar",
+      "to_slug": "nani",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wo",
+      "from_type": "grammar",
+      "to_slug": "sore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ga",
+      "from_type": "grammar",
+      "to_slug": "dare",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-nominalizer",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-direction",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "he-direction",
+      "from_type": "grammar",
+      "to_slug": "kaeru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "he-direction",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "de-location",
+      "from_type": "grammar",
+      "to_slug": "koko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "de-location",
+      "from_type": "grammar",
+      "to_slug": "asoko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-and",
+      "from_type": "grammar",
+      "to_slug": "pan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ya-among",
+      "from_type": "grammar",
+      "to_slug": "nomimono",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ya-among",
+      "from_type": "grammar",
+      "to_slug": "tabemono",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mo-also",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-from",
+      "from_type": "grammar",
+      "to_slug": "doko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-from",
+      "from_type": "grammar",
+      "to_slug": "asa",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "made-until",
+      "from_type": "grammar",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "made-until",
+      "from_type": "grammar",
+      "to_slug": "ban",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-because",
+      "from_type": "grammar",
+      "to_slug": "jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-because",
+      "from_type": "grammar",
+      "to_slug": "kaisha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "node-because",
+      "from_type": "grammar",
+      "to_slug": "jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-indirect",
+      "from_type": "grammar",
+      "to_slug": "sensei",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "ne-tag",
       "from_type": "grammar",
-      "to_slug": "atsui-hot",
+      "to_slug": "ashita",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "ne-tag",
       "from_type": "grammar",
-      "to_slug": "oishii",
+      "to_slug": "nichiyoubi",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160493,27 +160178,6 @@
       "from_slug": "yo-emphasis",
       "from_type": "grammar",
       "to_slug": "kore",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "yo-emphasis",
-      "from_type": "grammar",
-      "to_slug": "oishii",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "yo-emphasis",
-      "from_type": "grammar",
-      "to_slug": "abunai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-form",
-      "from_type": "grammar",
-      "to_slug": "okiru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160534,21 +160198,14 @@
     {
       "from_slug": "te-kudasai",
       "from_type": "grammar",
-      "to_slug": "chotto",
+      "to_slug": "kaku",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "te-kudasai",
       "from_type": "grammar",
-      "to_slug": "matsu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-kudasai",
-      "from_type": "grammar",
-      "to_slug": "namae",
+      "to_slug": "yomu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160560,44 +160217,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "te-iru",
-      "from_type": "grammar",
-      "to_slug": "benkyou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-iru",
-      "from_type": "grammar",
-      "to_slug": "furu-rain",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-iru",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "te-mo-ii",
       "from_type": "grammar",
       "to_slug": "koko",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-mo-ii",
-      "from_type": "grammar",
-      "to_slug": "suwaru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-mo-ii",
-      "from_type": "grammar",
-      "to_slug": "shashin",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160612,27 +160234,6 @@
       "from_slug": "te-wa-ikenai",
       "from_type": "grammar",
       "to_slug": "koko",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-wa-ikenai",
-      "from_type": "grammar",
-      "to_slug": "shashin",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-wa-ikenai",
-      "from_type": "grammar",
-      "to_slug": "osake",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-wa-ikenai",
-      "from_type": "grammar",
-      "to_slug": "jugyou",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160651,20 +160252,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "te-kara",
-      "from_type": "grammar",
-      "to_slug": "shukudai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "te-kara",
-      "from_type": "grammar",
-      "to_slug": "arau",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "nai-form",
       "from_type": "grammar",
       "to_slug": "kyou",
@@ -160679,13 +160266,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "nai-form",
-      "from_type": "grammar",
-      "to_slug": "niku",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "naide-kudasai",
       "from_type": "grammar",
       "to_slug": "koko",
@@ -160693,44 +160273,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "naide-kudasai",
-      "from_type": "grammar",
-      "to_slug": "shinpai-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "naide-kudasai",
-      "from_type": "grammar",
-      "to_slug": "wasureru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakereba-naranai",
-      "from_type": "grammar",
-      "to_slug": "benkyou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakereba-naranai",
-      "from_type": "grammar",
-      "to_slug": "kusuri",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "nakereba-naranai",
       "from_type": "grammar",
       "to_slug": "kaeru-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakereba-naranai",
-      "from_type": "grammar",
-      "to_slug": "shukudai",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160751,28 +160296,7 @@
     {
       "from_slug": "nakutemo-ii",
       "from_type": "grammar",
-      "to_slug": "okane",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakutemo-ii",
-      "from_type": "grammar",
-      "to_slug": "isogu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakutemo-ii",
-      "from_type": "grammar",
       "to_slug": "ashita",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nakutemo-ii",
-      "from_type": "grammar",
-      "to_slug": "shinpai-suru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160784,27 +160308,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "ta-form",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ta-form",
-      "from_type": "grammar",
-      "to_slug": "mou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ta-koto-ga-aru",
-      "from_type": "grammar",
-      "to_slug": "nihon",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "ta-koto-ga-aru",
       "from_type": "grammar",
       "to_slug": "iku-v",
@@ -160812,44 +160315,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "ta-koto-ga-aru",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ta-koto-ga-aru",
-      "from_type": "grammar",
-      "to_slug": "tama-ni",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tari-tari",
-      "from_type": "grammar",
-      "to_slug": "shuumatsu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "tari-tari",
       "from_type": "grammar",
       "to_slug": "yomu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tari-tari",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tai",
-      "from_type": "grammar",
-      "to_slug": "nihon",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160875,27 +160343,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "hoshii",
-      "from_type": "grammar",
-      "to_slug": "kuruma",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "hoshii",
-      "from_type": "grammar",
-      "to_slug": "okane",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ni-iku",
-      "from_type": "grammar",
-      "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "ni-iku",
       "from_type": "grammar",
       "to_slug": "kau-v",
@@ -160912,21 +160359,14 @@
     {
       "from_slug": "mae-ni",
       "from_type": "grammar",
-      "to_slug": "neru",
+      "to_slug": "asagohan",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "mae-ni",
       "from_type": "grammar",
-      "to_slug": "arau",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mae-ni",
-      "from_type": "grammar",
-      "to_slug": "jugyou",
+      "to_slug": "bangohan",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160938,44 +160378,16 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "ato-de",
+      "from_slug": "toki",
       "from_type": "grammar",
-      "to_slug": "jugyou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "ato-de",
-      "from_type": "grammar",
-      "to_slug": "shigoto",
+      "to_slug": "ie",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "toki",
       "from_type": "grammar",
-      "to_slug": "kodomo-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "toki",
-      "from_type": "grammar",
-      "to_slug": "hima",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "toki",
-      "from_type": "grammar",
-      "to_slug": "shashin",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "dictionary-koto-ga-dekiru",
-      "from_type": "grammar",
-      "to_slug": "nihongo",
+      "to_slug": "kaeru-v",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -160987,37 +160399,16 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "dictionary-koto-ga-dekiru",
+      "from_slug": "adj-i-conjugation",
       "from_type": "grammar",
-      "to_slug": "kanji-word",
+      "to_slug": "oishii",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
     {
       "from_slug": "adj-i-conjugation",
       "from_type": "grammar",
-      "to_slug": "atsui-hot",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-i-conjugation",
-      "from_type": "grammar",
-      "to_slug": "takai-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-i-conjugation",
-      "from_type": "grammar",
-      "to_slug": "omoshiroi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-na-conjugation",
-      "from_type": "grammar",
-      "to_slug": "shizuka",
+      "to_slug": "omoi",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161025,20 +160416,6 @@
       "from_slug": "adj-na-conjugation",
       "from_type": "grammar",
       "to_slug": "shinsetsu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-na-conjugation",
-      "from_type": "grammar",
-      "to_slug": "benri",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-i-adverb",
-      "from_type": "grammar",
-      "to_slug": "hayai-early",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161059,21 +160436,7 @@
     {
       "from_slug": "adj-na-adverb",
       "from_type": "grammar",
-      "to_slug": "shizuka",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-na-adverb",
-      "from_type": "grammar",
       "to_slug": "kirei",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "adj-na-adverb",
-      "from_type": "grammar",
-      "to_slug": "genki",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161092,30 +160455,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "comparative-yori",
-      "from_type": "grammar",
-      "to_slug": "inu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "superlative-ichiban",
       "from_type": "grammar",
       "to_slug": "yasui-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "superlative-ichiban",
-      "from_type": "grammar",
-      "to_slug": "natsu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "superlative-ichiban",
-      "from_type": "grammar",
-      "to_slug": "suki",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161144,20 +160486,6 @@
       "from_slug": "darou",
       "from_type": "grammar",
       "to_slug": "ashita",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "darou",
-      "from_type": "grammar",
-      "to_slug": "ame-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "darou",
-      "from_type": "grammar",
-      "to_slug": "muzukashii",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161192,21 +160520,7 @@
     {
       "from_slug": "to-iu",
       "from_type": "grammar",
-      "to_slug": "hana-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "to-iu",
-      "from_type": "grammar",
       "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "hou-ga-ii",
-      "from_type": "grammar",
-      "to_slug": "neru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161234,13 +160548,6 @@
     {
       "from_slug": "deshou",
       "from_type": "grammar",
-      "to_slug": "atsui-hot",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "deshou",
-      "from_type": "grammar",
       "to_slug": "daijoubu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161262,34 +160569,6 @@
     {
       "from_slug": "mada-teinai",
       "from_type": "grammar",
-      "to_slug": "mada",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mada-teinai",
-      "from_type": "grammar",
-      "to_slug": "taberu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mada-teinai",
-      "from_type": "grammar",
-      "to_slug": "shukudai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mou-past",
-      "from_type": "grammar",
-      "to_slug": "mou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "mou-past",
-      "from_type": "grammar",
       "to_slug": "taberu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161297,7 +160576,7 @@
     {
       "from_slug": "mou-past",
       "from_type": "grammar",
-      "to_slug": "shukudai",
+      "to_slug": "taberu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161325,13 +160604,6 @@
     {
       "from_slug": "shika-nai",
       "from_type": "grammar",
-      "to_slug": "en-money",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "shika-nai",
-      "from_type": "grammar",
       "to_slug": "mizu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161353,21 +160625,7 @@
     {
       "from_slug": "gurai",
       "from_type": "grammar",
-      "to_slug": "en-money",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "gurai",
-      "from_type": "grammar",
       "to_slug": "kuru-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "goro",
-      "from_type": "grammar",
-      "to_slug": "okiru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161421,13 +160679,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "amari-nai",
-      "from_type": "grammar",
-      "to_slug": "takai-adj",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "demo-suggestion",
       "from_type": "grammar",
       "to_slug": "ocha",
@@ -161438,13 +160689,6 @@
       "from_slug": "demo-suggestion",
       "from_type": "grammar",
       "to_slug": "eiga",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "demo-suggestion",
-      "from_type": "grammar",
-      "to_slug": "sanpo-suru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161472,21 +160716,7 @@
     {
       "from_slug": "naru-become",
       "from_type": "grammar",
-      "to_slug": "samui",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "naru-become",
-      "from_type": "grammar",
       "to_slug": "nihongo",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "naru-become",
-      "from_type": "grammar",
-      "to_slug": "genki",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161500,28 +160730,7 @@
     {
       "from_slug": "kamoshirenai",
       "from_type": "grammar",
-      "to_slug": "yuki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kamoshirenai",
-      "from_type": "grammar",
-      "to_slug": "isogashii",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kamoshirenai",
-      "from_type": "grammar",
       "to_slug": "kare",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "kamoshirenai",
-      "from_type": "grammar",
-      "to_slug": "takai-adj",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161550,13 +160759,6 @@
       "from_slug": "sugiru",
       "from_type": "grammar",
       "to_slug": "koohii",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "sugiru",
-      "from_type": "grammar",
-      "to_slug": "hataraku",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161605,13 +160807,6 @@
     {
       "from_slug": "moraru-ageru-kureru",
       "from_type": "grammar",
-      "to_slug": "tomodachi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "moraru-ageru-kureru",
-      "from_type": "grammar",
       "to_slug": "haha",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161633,13 +160828,6 @@
     {
       "from_slug": "noni",
       "from_type": "grammar",
-      "to_slug": "shiken",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "noni",
-      "from_type": "grammar",
       "to_slug": "okane",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161647,21 +160835,7 @@
     {
       "from_slug": "souda-hearsay",
       "from_type": "grammar",
-      "to_slug": "tenki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "souda-hearsay",
-      "from_type": "grammar",
       "to_slug": "mise",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "souda-hearsay",
-      "from_type": "grammar",
-      "to_slug": "shiken",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161680,13 +160854,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "souda-looks",
-      "from_type": "grammar",
-      "to_slug": "genki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "tara",
       "from_type": "grammar",
       "to_slug": "jikan",
@@ -161697,13 +160864,6 @@
       "from_slug": "tara",
       "from_type": "grammar",
       "to_slug": "eki",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tara",
-      "from_type": "grammar",
-      "to_slug": "shukudai",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161722,13 +160882,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "ba",
-      "from_type": "grammar",
-      "to_slug": "renshuu-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "nara",
       "from_type": "grammar",
       "to_slug": "hima",
@@ -161743,30 +160896,9 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "nara",
-      "from_type": "grammar",
-      "to_slug": "issho-ni",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "potential",
       "from_type": "grammar",
       "to_slug": "nihongo",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "potential",
-      "from_type": "grammar",
-      "to_slug": "kanji-word",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "potential",
-      "from_type": "grammar",
-      "to_slug": "hanaseru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161781,13 +160913,6 @@
       "from_slug": "passive",
       "from_type": "grammar",
       "to_slug": "oya",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "passive",
-      "from_type": "grammar",
-      "to_slug": "homerareru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161820,27 +160945,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "causative-passive",
-      "from_type": "grammar",
-      "to_slug": "matasareru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "causative-passive",
-      "from_type": "grammar",
-      "to_slug": "zangyou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "youni",
-      "from_type": "grammar",
-      "to_slug": "wasureru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "youni",
       "from_type": "grammar",
       "to_slug": "kikoeru",
@@ -161864,13 +160968,6 @@
     {
       "from_slug": "youninaru",
       "from_type": "grammar",
-      "to_slug": "kanji-word",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "youninaru",
-      "from_type": "grammar",
       "to_slug": "mainichi",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -161879,13 +160976,6 @@
       "from_slug": "younaru",
       "from_type": "grammar",
       "to_slug": "isogashii",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "younaru",
-      "from_type": "grammar",
-      "to_slug": "saikin",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -161949,13 +161039,6 @@
       "from_slug": "rashii",
       "from_type": "grammar",
       "to_slug": "mise",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "rashii",
-      "from_type": "grammar",
-      "to_slug": "shiken",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162011,13 +161094,6 @@
     {
       "from_slug": "teiru-result",
       "from_type": "grammar",
-      "to_slug": "kekkon-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "teiru-result",
-      "from_type": "grammar",
       "to_slug": "mise",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -162025,21 +161101,7 @@
     {
       "from_slug": "tearu",
       "from_type": "grammar",
-      "to_slug": "e-picture",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tearu",
-      "from_type": "grammar",
       "to_slug": "mado",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tearu",
-      "from_type": "grammar",
-      "to_slug": "junbi-suru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162061,20 +161123,6 @@
       "from_slug": "teoku",
       "from_type": "grammar",
       "to_slug": "kippu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "teshimau",
-      "from_type": "grammar",
-      "to_slug": "shukudai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "teshimau",
-      "from_type": "grammar",
-      "to_slug": "saifu",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162270,13 +161318,6 @@
     {
       "from_slug": "baai",
       "from_type": "grammar",
-      "to_slug": "renraku-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "baai",
-      "from_type": "grammar",
       "to_slug": "wakaru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -162310,13 +161351,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "node-vs-kara",
-      "from_type": "grammar",
-      "to_slug": "yakusoku",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "nitsuite",
       "from_type": "grammar",
       "to_slug": "nihon",
@@ -162327,13 +161361,6 @@
       "from_slug": "nitsuite",
       "from_type": "grammar",
       "to_slug": "bunka",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nitsuite",
-      "from_type": "grammar",
-      "to_slug": "mondai",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162389,13 +161416,6 @@
     {
       "from_slug": "noda",
       "from_type": "grammar",
-      "to_slug": "saifu",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "noda",
-      "from_type": "grammar",
       "to_slug": "wasureru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -162410,13 +161430,6 @@
     {
       "from_slug": "nikui-yasui",
       "from_type": "grammar",
-      "to_slug": "kanji-word",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "nikui-yasui",
-      "from_type": "grammar",
       "to_slug": "hon",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
@@ -162425,13 +161438,6 @@
       "from_slug": "hodo",
       "from_type": "grammar",
       "to_slug": "kare",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "hodo",
-      "from_type": "grammar",
-      "to_slug": "ganbaru",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162716,13 +161722,6 @@
       "relationship_type": "reinforces"
     },
     {
-      "from_slug": "kagiri",
-      "from_type": "grammar",
-      "to_slug": "ganbaru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
       "from_slug": "tatoe-temo",
       "from_type": "grammar",
       "to_slug": "furu-rain",
@@ -162747,13 +161746,6 @@
       "from_slug": "tsutsu-aru",
       "from_type": "grammar",
       "to_slug": "keizai",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "tsutsu-aru",
-      "from_type": "grammar",
-      "to_slug": "kankyou",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },
@@ -162789,13 +161781,6 @@
       "from_slug": "wakeganai",
       "from_type": "grammar",
       "to_slug": "kare",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "wakeganai",
-      "from_type": "grammar",
-      "to_slug": "kantan-n4",
       "to_type": "vocabulary",
       "relationship_type": "reinforces"
     },

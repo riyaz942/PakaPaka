@@ -79,7 +79,7 @@ class SelectTest(unittest.TestCase):
     def test_takes_a_range_of_levels(self):
         slugs = gp.select_slugs([1, 2], 20, sidecar={})
         self.assertEqual(slugs[-1], "no-nominalizer")
-        self.assertEqual(len(slugs), 13)
+        self.assertEqual(len(slugs), 14)
 
 
 class SelectFailingTest(unittest.TestCase):

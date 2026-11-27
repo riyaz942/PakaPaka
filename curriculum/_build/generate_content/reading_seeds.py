@@ -47,8 +47,8 @@ in a way a writer does not expect:
     2–7 describe with nouns and verbs only. So `te-mo-ii` (level 5) is written
     てもかまいません, and `nakutemo-ii` (level 6) and `hoshii` (level 7) go to
     level 8 seeds.
-  * Levels 2–3 have no question か (`ka-question`, level 4); level 2 has no に,
-    で, も or と either.
+  * Question か (`ka-question`) is level 1, so every passage may ask. Level 2
+    has no に, で, も or と.
   * `toki` is found after a verb (書く時), not after a noun (テストの時).
   * `hoshii` is found in kana (ほしい), not as 欲しい.
   * `potential` is found in the ichidan られる form (食べられる), not in godan
@@ -97,7 +97,7 @@ SEEDS = [
             "A short, calm note on what today is: today is not the tenth, it is "
             "the fourth; it is seven o'clock now; the writer eats, writes, and "
             "goes. Next week Ken comes. One idea per sentence. There is no に, "
-            "で, も or question か at this level, so a time and an action stand "
+            "で or も at this level, so a time and an action stand "
             "in their own sentences (七時です。食べます。)."
         ),
         "extra_allowed": ["ケン"],
@@ -120,14 +120,14 @@ SEEDS = [
         "slug": "ken-san-no-tooka",
         "level": 2,
         "tone": "humorous",
-        "required_grammar": ["mashita", "wo", "no-possessive", "no-nominalizer"],
+        "required_grammar": ["mashita", "wo", "no-possessive", "no-nominalizer", "ka-question"],
         "target_words": (20, 30),
         "question_count": 2,
         "topic": (
-            "Ken came today, the fourth, but Ken's day is the tenth. Mina watches "
-            "Ken write the date (書くのを見ました): he writes 十日. Mina "
-            "understands: Ken's tenth is today. Plain facts; the reader gets "
-            "the joke."
+            "Today is the fourth. Ken came and asked Mina: is today the tenth? "
+            "Mina said: it is the fourth. Then Mina watched Ken write the date "
+            "(書くのを見ました): he wrote 十日. Ken's today is the tenth. Plain "
+            "facts, no comment; the reader gets the joke."
         ),
         "extra_allowed": ["ケン", "ミナ"],
     },
@@ -144,7 +144,7 @@ SEEDS = [
             "there. Grandma eats the bread, the baby eats the bread, everyone "
             "eats it. On Sunday Grandpa goes there, buys bread, and eats it "
             "there himself. There are no place names at this level: say ここ, "
-            "そこ, あそこ. No question か yet."
+            "そこ, あそこ."
         ),
         "extra_allowed": [],
     },
@@ -158,8 +158,7 @@ SEEDS = [
         "topic": (
             "On Sunday everyone comes: Grandpa and Grandma, the grown-ups and "
             "the baby. Each person buys drinks and things. Nobody buys food. On "
-            "Monday everyone is still drinking the drinks. No question か at "
-            "this level."
+            "Monday everyone is still drinking the drinks."
         ),
         "extra_allowed": [],
     },
@@ -174,7 +173,7 @@ SEEDS = [
             "Grandpa and Grandma come here on Friday and go home on Monday. "
             "Whatever Grandpa does, the baby does too: Grandpa reads, the baby "
             "reads too; Grandma drinks, the baby drinks too. On Monday Grandpa "
-            "goes home, and the baby wants to go home too. No question か yet."
+            "goes home, and the baby wants to go home too."
         ),
         "extra_allowed": [],
     },
@@ -183,7 +182,7 @@ SEEDS = [
         "slug": "chichi-no-mainichi",
         "level": 4,
         "tone": "neutral",
-        "required_grammar": ["kara-from", "made-until", "ka-question"],
+        "required_grammar": ["kara-from", "made-until"],
         "target_words": (35, 46),
         "question_count": 2,
         "topic": (
