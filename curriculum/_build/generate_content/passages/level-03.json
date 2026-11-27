@@ -7,7 +7,7 @@
       "tone": "humorous",
       "passage": {
         "title": "おじいさんのパン",
-        "body": "おじいさんは毎日あそこへ行きます。パンを三つ買います。おばあさんも赤ちゃんも食べます。日曜日は、あそこで三つ食べます。そして、帰ります。",
+        "body": "おじいさんは毎日あそこへ行きます。パンを三つ買います。おばあさんも赤ちゃんも食べます。日曜日は、おじいさんがあそこで三つ食べます。",
         "questions": [
           {
             "prompt": "おじいさんは毎日どこへ行きますか。",
@@ -33,11 +33,12 @@
             "prompt_furigana": "日[にち]曜[よう]日[び]、おじいさんはパンをいくつ食[た]べますか。"
           }
         ],
-        "english_translation": "Every day, Grandpa goes over there. He buys three pieces of bread. Grandma and the baby both eat it. On Sunday, he eats all three over there. Then he goes home.",
+        "english_translation": "Every day, Grandpa goes over there. He buys three pieces of bread. Grandma and the baby both eat it. On Sunday, Grandpa eats all three over there.",
         "summary_ja": "おじいさんは毎日あそこでパンを買います。",
         "summary_en": "Grandpa buys bread over there every day, and on Sunday he eats all of it there himself.",
         "grammar_slugs": [
           "de-location",
+          "ga",
           "he-direction",
           "masu",
           "mo-also",
@@ -48,7 +49,6 @@
           "akachan",
           "asoko",
           "iku-v",
-          "kaeru-v",
           "kau-v",
           "mainichi",
           "mittsu",
@@ -121,32 +121,30 @@
             "end": 46
           },
           {
-            "vocabulary_slug": "asoko",
+            "vocabulary_slug": "ojiisan",
             "start": 48,
-            "end": 51
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 54,
+            "end": 57
           },
           {
             "vocabulary_slug": "mittsu",
-            "start": 52,
-            "end": 54
+            "start": 58,
+            "end": 60
           },
           {
             "vocabulary_slug": "taberu",
-            "start": 54,
-            "end": 58,
+            "start": 60,
+            "end": 64,
             "surface_form": "食べます",
-            "inflection": "masu"
-          },
-          {
-            "vocabulary_slug": "kaeru-v",
-            "start": 63,
-            "end": 67,
-            "surface_form": "帰ります",
             "inflection": "masu"
           }
         ],
-        "word_count": 35,
-        "body_furigana": "おじいさんは毎[まい]日[にち]あそこへ行[い]きます。パンを三[みっ]つ買[か]います。おばあさんも赤[あか]ちゃんも食[た]べます。日[にち]曜[よう]日[び]は、あそこで三[みっ]つ食[た]べます。そして、帰[かえ]ります。",
+        "word_count": 36,
+        "body_furigana": "おじいさんは毎[まい]日[にち]あそこへ行[い]きます。パンを三[みっ]つ買[か]います。おばあさんも赤[あか]ちゃんも食[た]べます。日[にち]曜[よう]日[び]は、おじいさんがあそこで三[みっ]つ食[た]べます。",
         "slug": "ojiisan-no-pan",
         "_meta": {
           "generator_model": "claude-opus-5-5",
@@ -176,13 +174,13 @@
             "prompt_furigana": "日[にち]曜[よう]日[び]、みんなは何[なに]を買[か]いますか。"
           },
           {
-            "prompt": "食べ物はいくつありますか。",
+            "prompt": "食べ物はありますか。",
             "accepted_answers": [
-              "ゼロ",
-              "ゼロです",
-              "ありません"
+              "ありません",
+              "いいえ、ありません",
+              "いいえ"
             ],
-            "prompt_furigana": "食[た]べ物[もの]はいくつありますか。"
+            "prompt_furigana": "食[た]べ物[もの]はありますか。"
           }
         ],
         "english_translation": "Every Sunday, Grandpa and Grandma come. The grown-ups and the baby come too. Everyone buys drinks. There is no food. On Monday, too, they drink the drinks.",

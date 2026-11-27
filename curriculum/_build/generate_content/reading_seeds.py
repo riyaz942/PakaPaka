@@ -170,10 +170,13 @@ SEEDS = [
         "target_words": (28, 38),
         "question_count": 2,
         "topic": (
-            "Grandpa and Grandma come here on Friday and go home on Monday. "
-            "Whatever Grandpa does, the baby does too: Grandpa reads, the baby "
-            "reads too; Grandma drinks, the baby drinks too. On Monday Grandpa "
-            "goes home, and the baby wants to go home too."
+            "Grandpa and Grandma come here (ここに来ます) on Friday. Whatever "
+            "Grandpa does, the baby does too, but only what a baby can do: "
+            "Grandpa drinks, the baby drinks too; Grandpa looks over there, the "
+            "baby looks too. On Monday Grandpa and Grandma go home, and the "
+            "baby looks over there (あそこを見ます). Plain facts, no comment. "
+            "Use に for direction (ここに来ます); a day + に (金曜日に) is "
+            "time, not direction, and does not count."
         ),
         "extra_allowed": [],
     },
