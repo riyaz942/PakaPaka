@@ -1,5 +1,5 @@
 {
-  "version": 65,
+  "version": 66,
   "description": "Level-ladder curriculum — radicals, kanji, vocabulary, grammar, readings, and a precomputed dependency graph for bundled app import. Every item and reading passage sits on one of 60 ladder levels (integer `level`, 1-60) and has a `sort_order` inside its level; there are no per-JLPT files. The ladder is built by curriculum/_build/generate.py from curriculum/_build/ladder.json, which also records which ladder levels each JLPT level covers (N5 = levels 1-16, N4 = 17-22); compile-curriculum writes that to the `level_jlpt_equivalence` table as a label for the user, and nothing is gated on it. Authored depth (mnemonics, examples, reading passages) covers the N5 and N4 levels; the higher levels carry a derived skeleton: kanji, radicals and frequency-ranked words with readings, meanings and furigana. Ids and slugs never change when an item moves level (curriculum/id-registry.json).",
   "maintainer_notes": "version is a whole number that npm run compile-curriculum raises by 1 on every run — do not edit it by hand. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {
