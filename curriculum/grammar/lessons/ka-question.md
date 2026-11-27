@@ -111,15 +111,15 @@ With a shopkeeper, dropping か and ですか makes you sound abrupt, even if yo
 
 The only difference is the final か. Add it and the sentence flips from reporting to asking.
 
-の is the other sibling you know, and it does a different job entirely. の links two nouns inside the sentence, so the first noun describes or owns the second. か cannot link anything. It only closes. You can see all three in one sentence.
+の is the other sibling you know, and it does a different job entirely. の ties an owner to a thing, and when the thing is clear it can stand alone: あなたの means *yours*. か cannot link anything. It only closes. You can see all three in one sentence.
 
 ```jp
-これはあなたの一つですか。
+これはあなたのですか。
 ```
 
-*Is this one yours?*
+*Is this yours?*
 
-Here は sets the topic これ, の ties あなた to 一つ, and か closes the whole sentence. Each small word has its own place and its own job.
+Here は sets the topic これ, の turns あなた into *yours*, and か closes the whole sentence. Each small word has its own place and its own job.
 
 One warning about あなた. Textbooks love it, but in real life people usually use the other person's name, and a bare あなた can sound pointed. It is fine for practice, and you will learn the more natural habits as you go.
 

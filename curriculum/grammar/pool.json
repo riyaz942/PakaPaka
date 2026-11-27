@@ -4946,17 +4946,11 @@
         "alternates": []
       },
       {
-        "japanese": "何ですか、それは。",
-        "english": "What is that, anyway?",
+        "japanese": "あれは何ですか。",
+        "english": "What is that over there?",
         "vocabulary_slugs": [
-          "nan",
-          "sore"
-        ],
-        "alternates": [
-          {
-            "japanese": "それは何ですか。",
-            "kind": "valid"
-          }
+          "are",
+          "nan"
         ]
       },
       {
@@ -4987,6 +4981,14 @@
             "japanese": "おいくつですか。",
             "kind": "valid"
           }
+        ]
+      },
+      {
+        "japanese": "それはいくらでしたか。",
+        "english": "How much was that?",
+        "vocabulary_slugs": [
+          "sore",
+          "ikura"
         ]
       }
     ],

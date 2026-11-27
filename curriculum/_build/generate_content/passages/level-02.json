@@ -10,14 +10,14 @@
         "body": "今日は十日ではありません。四日です。今、七時です。食べます。書きます。行きます。来週はケンが来ます。",
         "questions": [
           {
-            "prompt": "今日は何日ですか。",
+            "prompt": "今は何時ですか。",
             "accepted_answers": [
-              "四日",
-              "よっか",
-              "四日です",
-              "よっかです"
+              "七時",
+              "しちじ",
+              "七時です",
+              "しちじです"
             ],
-            "prompt_furigana": "今日[きょう]は何[なん]日[にち]ですか。"
+            "prompt_furigana": "今[いま]は何[なん]時[じ]ですか。"
           },
           {
             "prompt": "来週は誰が来ますか。",
@@ -41,7 +41,6 @@
           "wa-topic"
         ],
         "vocabulary_slugs": [
-          "aru",
           "iku-v",
           "ima",
           "kaku",
@@ -62,13 +61,6 @@
             "vocabulary_slug": "tooka",
             "start": 3,
             "end": 5
-          },
-          {
-            "vocabulary_slug": "aru",
-            "start": 7,
-            "end": 12,
-            "surface_form": "ありません",
-            "inflection": "masu"
           },
           {
             "vocabulary_slug": "yokka",
