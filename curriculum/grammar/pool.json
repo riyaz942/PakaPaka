@@ -4888,53 +4888,11 @@
   "ka-question": {
     "accepted_meanings": [
       "question marker",
+      "question particle",
       "question",
-      "?",
-      "question particle"
+      "?"
     ],
     "sentences": [
-      {
-        "japanese": "学生ですか。",
-        "english": "Are you a student?",
-        "vocabulary_slugs": [
-          "gakusei"
-        ],
-        "alternates": [
-          {
-            "japanese": "学生ですね。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "あなたは学生ですか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたは学生ですね。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "行きますか。",
-        "english": "Are you going?",
-        "vocabulary_slugs": [
-          "iku-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "行きますね。",
-            "kind": "other_grammar"
-          },
-          {
-            "japanese": "あなたは行きますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたは行きますね。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
       {
         "japanese": "これは何ですか。",
         "english": "What is this?",
@@ -4953,92 +4911,73 @@
         "alternates": []
       },
       {
-        "japanese": "何を食べますか。",
-        "english": "What will you eat?",
+        "japanese": "ここはどこですか。",
+        "english": "Where am I?",
         "vocabulary_slugs": [
-          "nani",
-          "taberu"
+          "koko",
+          "doko"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "あちらはどなたですか。",
+        "english": "Who is that person over there?",
+        "vocabulary_slugs": [
+          "achira",
+          "donata"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "それはいつですか。",
+        "english": "When is that?",
+        "vocabulary_slugs": [
+          "sore",
+          "itsu"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "どれですか。",
+        "english": "Which one is it?",
+        "vocabulary_slugs": [
+          "dore"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "何ですか、それは。",
+        "english": "What is that, anyway?",
+        "vocabulary_slugs": [
+          "nan",
+          "sore"
         ],
         "alternates": [
           {
-            "japanese": "あなたは何を食べますか。",
+            "japanese": "それは何ですか。",
             "kind": "valid"
           }
         ]
       },
       {
-        "japanese": "明日、本を読みますか。",
-        "english": "Will you read a book tomorrow?",
+        "japanese": "どうしてですか。",
+        "english": "Why is that?",
         "vocabulary_slugs": [
-          "ashita",
-          "hon",
-          "yomu"
+          "doushite"
         ],
-        "alternates": [
-          {
-            "japanese": "本を明日読みますか。",
-            "kind": "valid"
-          },
-          {
-            "japanese": "あなたは明日、本を読みますか。",
-            "kind": "valid"
-          }
-        ]
+        "alternates": []
       },
       {
-        "japanese": "どこから帰りますか。",
-        "english": "Where will you return from?",
+        "japanese": "あなたはいくつですか。",
+        "english": "How old are you?",
         "vocabulary_slugs": [
-          "doko",
-          "kaeru-v"
+          "anata",
+          "ikutsu"
         ],
-        "form": "ます|か",
         "alternates": [
           {
-            "japanese": "あなたはどこから帰りますか。",
+            "japanese": "いくつですか。",
             "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "誰に話しますか。",
-        "english": "Who will you speak to?",
-        "vocabulary_slugs": [
-          "dare",
-          "hanasu-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "あなたは誰に話しますか。",
-            "kind": "valid"
-          }
-        ]
-      },
-      {
-        "japanese": "晩ご飯を食べましたか。",
-        "english": "Did you eat dinner?",
-        "vocabulary_slugs": [
-          "bangohan",
-          "taberu"
-        ],
-        "alternates": [
-          {
-            "japanese": "晩ご飯を食べましたね。",
-            "kind": "other_grammar"
-          }
-        ]
-      },
-      {
-        "japanese": "お母さんは来ませんか。",
-        "english": "Isn't your mother coming?",
-        "vocabulary_slugs": [
-          "okaasan",
-          "kuru-v"
-        ],
-        "alternates": [
-          {
-            "japanese": "お母さんは来ませんね。",
-            "kind": "other_grammar"
           }
         ]
       }
@@ -5046,11 +4985,7 @@
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "1",
-      "review_status": "draft",
-      "answers_check": {
-        "version": "1",
-        "model": "claude-code"
-      }
+      "review_status": "draft"
     }
   },
   "te-kudasai": {
