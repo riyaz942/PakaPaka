@@ -1,0 +1,159 @@
+{
+  "level": 3,
+  "passages": [
+    {
+      "seed": "ojiisan-no-pan",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "おじいさんのパン",
+        "body": "おじいさんは毎日あそこへ行きます。パンを三つ買います。おばあさんも赤ちゃんも食べます。日曜日は、あそこで三つ食べます。そして、帰ります。",
+        "questions": [
+          {
+            "prompt": "おじいさんは毎日どこへ行きますか。",
+            "accepted_answers": [
+              "あそこ",
+              "あそこへ",
+              "あそこです",
+              "あそこへ行きます",
+              "あそこへいきます"
+            ],
+            "prompt_furigana": "おじいさんは毎[まい]日[にち]どこへ行[い]きますか。"
+          },
+          {
+            "prompt": "日曜日、おじいさんはパンをいくつ食べますか。",
+            "accepted_answers": [
+              "三つ",
+              "みっつ",
+              "三つです",
+              "みっつです",
+              "三つ食べます",
+              "みっつたべます"
+            ],
+            "prompt_furigana": "日[にち]曜[よう]日[び]、おじいさんはパンをいくつ食[た]べますか。"
+          }
+        ],
+        "english_translation": "Every day, Grandpa goes over there. He buys three pieces of bread. Grandma and the baby both eat it. On Sunday, he eats all three over there. Then he goes home.",
+        "summary_ja": "おじいさんは毎日あそこでパンを買います。",
+        "summary_en": "Grandpa buys bread over there every day, and on Sunday he eats all of it there himself.",
+        "grammar_slugs": [
+          "de-location",
+          "he-direction",
+          "masu",
+          "mo-also",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "akachan",
+          "asoko",
+          "iku-v",
+          "kaeru-v",
+          "kau-v",
+          "mainichi",
+          "mittsu",
+          "nichiyoubi",
+          "obaasan",
+          "ojiisan",
+          "pan",
+          "taberu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 0,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "mainichi",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 8,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 12,
+            "end": 16,
+            "surface_form": "行きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 22,
+            "end": 26,
+            "surface_form": "買います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 27,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 33,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 38,
+            "end": 42,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 43,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 48,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 52,
+            "end": 54
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 54,
+            "end": 58,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 63,
+            "end": 67,
+            "surface_form": "帰ります",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 35,
+        "body_furigana": "おじいさんは毎[まい]日[にち]あそこへ行[い]きます。パンを三[みっ]つ買[か]います。おばあさんも赤[あか]ちゃんも食[た]べます。日[にち]曜[よう]日[び]は、あそこで三[みっ]つ食[た]べます。そして、帰[かえ]ります。",
+        "slug": "ojiisan-no-pan",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}
