@@ -219,6 +219,119 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "ken-san-no-tooka",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "ケンの十日",
+        "body": "今日は四日です。ケンが来ました。ミナはケンが十日を書くのを見ました。それは来月の十日です。",
+        "questions": [
+          {
+            "prompt": "今日は何日ですか。",
+            "accepted_answers": [
+              "四日",
+              "よっか",
+              "四日です",
+              "よっかです"
+            ],
+            "prompt_furigana": "今日[きょう]は何[なん]日[にち]ですか。"
+          },
+          {
+            "prompt": "ケンは何を書きましたか。",
+            "accepted_answers": [
+              "十日",
+              "とおか",
+              "十日です",
+              "とおかです"
+            ],
+            "prompt_furigana": "ケンは何[なに]を書[か]きましたか。"
+          }
+        ],
+        "english_translation": "Today is the fourth. Ken came. Mina watched Ken write \"the tenth.\" That is the tenth of next month.",
+        "summary_ja": "今日は四日です。ケンは来月の十日を書きました。",
+        "summary_en": "Today is the fourth, and Ken wrote the tenth of next month.",
+        "grammar_slugs": [
+          "desu",
+          "ga",
+          "mashita",
+          "masu",
+          "no-nominalizer",
+          "no-possessive",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "kaku",
+          "kuru-v",
+          "kyou",
+          "miru-v",
+          "raigetsu",
+          "sore",
+          "tooka",
+          "yokka"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "yokka",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 11,
+            "end": 15,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tooka",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "kaku",
+            "start": 25,
+            "end": 27
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 29,
+            "end": 33,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sore",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "raigetsu",
+            "start": 37,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "tooka",
+            "start": 40,
+            "end": 42
+          }
+        ],
+        "word_count": 30,
+        "body_furigana": "今日[きょう]は四[よっ]日[か]です。ケンが来[き]ました。ミナはケンが十[とお]日[か]を書[か]くのを見[み]ました。それは来[らい]月[げつ]の十[とお]日[か]です。",
+        "slug": "ken-san-no-tooka",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
