@@ -3499,9 +3499,9 @@
       "_meta": {
         "generator_model": "gemini-web",
         "prompt_version": "2",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with his beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. 今何時です<reading>か</reading>。",
+      "mnemonic_text": "Kaa the crow lands on the bus-stop clock, taps its face with his beak and croaks a rising \"<reading>Caw?</reading>\"; the whole queue checks their watches, because that caw is <grammar>a question</grammar>. {{itsu||いつ}}です<reading>か</reading>。",
       "level": 1
     },
     {
