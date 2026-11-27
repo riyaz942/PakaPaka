@@ -28652,5 +28652,155 @@
         "model": "claude-code"
       }
     }
+  },
+  "to-quotation": {
+    "accepted_meanings": [
+      "quotation marker",
+      "quote",
+      "that",
+      "said that",
+      "quoting"
+    ],
+    "sentences": [
+      {
+        "japanese": "母は「明日行きます」と言いました。",
+        "english": "Mother said, \"I will go tomorrow.\"",
+        "vocabulary_slugs": [
+          "haha",
+          "ashita",
+          "iku-v",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "「明日行きます」と母は言いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生に「どこへ行きますか」と聞きました。",
+        "english": "I asked the teacher, \"Where are you going?\"",
+        "vocabulary_slugs": [
+          "sensei",
+          "doko",
+          "iku-v",
+          "kiku-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "先生に「どこに行きますか」と聞きました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "兄は手紙に「明日帰ります」と書きました。",
+        "english": "My brother wrote in his letter, \"I will come home tomorrow.\"",
+        "vocabulary_slugs": [
+          "ani",
+          "tegami",
+          "ashita",
+          "kaeru-v",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "父は明日来ると言いました。",
+        "english": "Father said that he will come tomorrow.",
+        "vocabulary_slugs": [
+          "chichi",
+          "ashita",
+          "kuru-v",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "明日来ると父は言いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生に「どこですか」と聞きました。",
+        "english": "I asked the teacher, \"Where is it?\"",
+        "vocabulary_slugs": [
+          "sensei",
+          "doko",
+          "kiku-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "兄は手紙に「帰ります」と書きました。",
+        "english": "My brother wrote in his letter, \"I will come home.\"",
+        "vocabulary_slugs": [
+          "ani",
+          "tegami",
+          "kaeru-v",
+          "kaku"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "母は「パンを買います」と言いました。",
+        "english": "Mother said, \"I will buy bread.\"",
+        "vocabulary_slugs": [
+          "haha",
+          "pan",
+          "kau-v",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "「パンを買います」と母は言いました。",
+            "kind": "valid"
+          }
+        ]
+      },
+      {
+        "japanese": "先生は何と言いましたか。",
+        "english": "What did the teacher say?",
+        "vocabulary_slugs": [
+          "sensei",
+          "nan",
+          "iu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "姉は「痛い」と言いませんでした。",
+        "english": "My older sister didn't say that it hurt.",
+        "vocabulary_slugs": [
+          "ane",
+          "itai",
+          "iu-v"
+        ],
+        "alternates": []
+      },
+      {
+        "japanese": "祖母は毎朝「お茶を飲みましょう」と言います。",
+        "english": "Every morning my grandmother says, \"Let's drink tea.\"",
+        "vocabulary_slugs": [
+          "sobo",
+          "maiasa",
+          "ocha",
+          "nomu-v",
+          "iu-v"
+        ],
+        "alternates": [
+          {
+            "japanese": "毎朝祖母は「お茶を飲みましょう」と言います。",
+            "kind": "valid"
+          }
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

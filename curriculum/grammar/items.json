@@ -60126,6 +60126,54 @@
               "vocabulary_slug": "iu-v",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "「明日[あした]行[い]きます」と母[はは]は言[い]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "言いました",
+                  "reading": "いいました",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         },
         {
@@ -60222,6 +60270,66 @@
               "role": "word",
               "vocabulary_slug": "kiku-v",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "先[せん]生[せい]に「どこに行[い]きますか」と聞[き]きました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "先生",
+                  "reading": "せんせい",
+                  "role": "word",
+                  "vocabulary_slug": "sensei",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "どこ",
+                  "reading": "どこ",
+                  "role": "word",
+                  "vocabulary_slug": "doko",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "に",
+                  "reading": "に",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "行きます",
+                  "reading": "いきます",
+                  "role": "word",
+                  "vocabulary_slug": "iku-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "聞きました",
+                  "reading": "ききました",
+                  "role": "word",
+                  "vocabulary_slug": "kiku-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60409,6 +60517,54 @@
               "role": "word",
               "vocabulary_slug": "iu-v",
               "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "明日[あした]来[く]ると父[ちち]は言[い]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "明日",
+                  "reading": "あした",
+                  "role": "word",
+                  "vocabulary_slug": "ashita",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "来る",
+                  "reading": "くる",
+                  "role": "word",
+                  "vocabulary_slug": "kuru-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "父",
+                  "reading": "ちち",
+                  "role": "word",
+                  "vocabulary_slug": "chichi",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "言いました",
+                  "reading": "いいました",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
             }
           ]
         },
@@ -60668,6 +60824,371 @@
               "vocabulary_slug": "iu-v",
               "in_grammar": false
             }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "「パンを買[か]います」と母[はは]は言[い]いました。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "パン",
+                  "reading": "パン",
+                  "role": "word",
+                  "vocabulary_slug": "pan",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "買います",
+                  "reading": "かいます",
+                  "role": "word",
+                  "vocabulary_slug": "kau-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "母",
+                  "reading": "はは",
+                  "role": "word",
+                  "vocabulary_slug": "haha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "言いました",
+                  "reading": "いいました",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "japanese": "先生は何と言いましたか。",
+          "english": "What did the teacher say?",
+          "sort_order": 7,
+          "vocabulary_slugs": [
+            "sensei",
+            "nan",
+            "iu-v"
+          ],
+          "furigana": "先[せん]生[せい]は何[なに]と言[い]いましたか。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nan",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 5,
+              "end": 10,
+              "surface_form": "言いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 4,
+            "end": 5
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "先生",
+              "reading": "せんせい",
+              "role": "word",
+              "vocabulary_slug": "sensei",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "何",
+              "reading": "なに",
+              "role": "word",
+              "vocabulary_slug": "nan",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言いました",
+              "reading": "いいました",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "姉は「痛い」と言いませんでした。",
+          "english": "My older sister didn't say that it hurt.",
+          "sort_order": 8,
+          "vocabulary_slugs": [
+            "ane",
+            "itai",
+            "iu-v"
+          ],
+          "furigana": "姉[あね]は「痛[いた]い」と言[い]いませんでした。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 7,
+              "end": 15,
+              "surface_form": "言いませんでした",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "姉",
+              "reading": "あね",
+              "role": "word",
+              "vocabulary_slug": "ane",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "痛い",
+              "reading": "いたい",
+              "role": "word",
+              "vocabulary_slug": "itai",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言いませんでした",
+              "reading": "いいませんでした",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "祖母は毎朝「お茶を飲みましょう」と言います。",
+          "english": "Every morning my grandmother says, \"Let's drink tea.\"",
+          "sort_order": 9,
+          "vocabulary_slugs": [
+            "sobo",
+            "maiasa",
+            "ocha",
+            "nomu-v",
+            "iu-v"
+          ],
+          "furigana": "祖[そ]母[ぼ]は毎[まい]朝[あさ]「お茶[ちゃ]を飲[の]みましょう」と言[い]います。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sobo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 9,
+              "end": 11,
+              "surface_form": "飲み",
+              "inflection": "stem"
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 17,
+              "end": 21,
+              "surface_form": "言います",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 16,
+            "end": 17
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "祖母",
+              "reading": "そぼ",
+              "role": "word",
+              "vocabulary_slug": "sobo",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "毎朝",
+              "reading": "まいあさ",
+              "role": "word",
+              "vocabulary_slug": "maiasa",
+              "in_grammar": false
+            },
+            {
+              "surface": "お茶",
+              "reading": "おちゃ",
+              "role": "word",
+              "vocabulary_slug": "ocha",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "飲みましょう",
+              "reading": "のみましょう",
+              "role": "word",
+              "vocabulary_slug": "nomu-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言います",
+              "reading": "いいます",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            }
+          ],
+          "build_alternates": [
+            {
+              "furigana": "毎[まい]朝[あさ]祖[そ]母[ぼ]は「お茶[ちゃ]を飲[の]みましょう」と言[い]います。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "毎朝",
+                  "reading": "まいあさ",
+                  "role": "word",
+                  "vocabulary_slug": "maiasa",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "祖母",
+                  "reading": "そぼ",
+                  "role": "word",
+                  "vocabulary_slug": "sobo",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "お茶",
+                  "reading": "おちゃ",
+                  "role": "word",
+                  "vocabulary_slug": "ocha",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "を",
+                  "reading": "を",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "飲みましょう",
+                  "reading": "のみましょう",
+                  "role": "word",
+                  "vocabulary_slug": "nomu-v",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "と",
+                  "reading": "と",
+                  "role": "other",
+                  "in_grammar": true
+                },
+                {
+                  "surface": "言います",
+                  "reading": "いいます",
+                  "role": "word",
+                  "vocabulary_slug": "iu-v",
+                  "in_grammar": false
+                }
+              ]
+            }
           ]
         }
       ],
@@ -60675,6 +61196,33 @@
         "iu-v"
       ],
       "family": "particles",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "quotation marker",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "quote",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "said that",
+          "is_primary": false
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "quoting",
+          "is_primary": false
+        }
+      ],
       "level": 7
     },
     {
