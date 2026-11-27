@@ -315,6 +315,143 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "akachan-mo",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "赤ちゃんも",
+        "body": "金曜日に、おじいさんとおばあさんが来ます。おじいさんが読みます。赤ちゃんも見ます。月曜日に、おじいさんが帰ります。おばあさんも帰ります。",
+        "questions": [
+          {
+            "prompt": "おじいさんとおばあさんはいつ来ますか。",
+            "accepted_answers": [
+              "金曜日に",
+              "金曜日",
+              "金曜日です",
+              "きんようびに",
+              "きんようび",
+              "きんようびです"
+            ],
+            "prompt_furigana": "おじいさんとおばあさんはいつ来[き]ますか。"
+          },
+          {
+            "prompt": "月曜日に、おじいさんは何をしますか。",
+            "accepted_answers": [
+              "帰ります",
+              "かえります"
+            ],
+            "prompt_furigana": "月[げつ]曜[よう]日[び]に、おじいさんは何[なに]をしますか。"
+          }
+        ],
+        "english_translation": "On Friday, Grandpa and Grandma come. Grandpa reads. The baby looks at it too. On Monday, Grandpa goes home. Grandma goes home too.",
+        "summary_ja": "月曜日に、おじいさんとおばあさんが帰ります。",
+        "summary_en": "On Monday, Grandpa and Grandma go home.",
+        "grammar_slugs": [
+          "ga",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "to-and"
+        ],
+        "vocabulary_slugs": [
+          "akachan",
+          "getsuyoubi",
+          "kaeru-v",
+          "kinyoubi",
+          "kuru-v",
+          "miru-v",
+          "obaasan",
+          "ojiisan",
+          "yomu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 5,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 11,
+            "end": 16
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 17,
+            "end": 20,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 21,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 27,
+            "end": 31,
+            "surface_form": "読みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 32,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 37,
+            "end": 40,
+            "surface_form": "見ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 41,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 46,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 52,
+            "end": 56,
+            "surface_form": "帰ります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 57,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 63,
+            "end": 67,
+            "surface_form": "帰ります",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 38,
+        "body_furigana": "金[きん]曜[よう]日[び]に、おじいさんとおばあさんが来[き]ます。おじいさんが読[よ]みます。赤[あか]ちゃんも見[み]ます。月[げつ]曜[よう]日[び]に、おじいさんが帰[かえ]ります。おばあさんも帰[かえ]ります。",
+        "slug": "akachan-mo",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
