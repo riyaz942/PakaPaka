@@ -3,8 +3,8 @@ generator_model: sonnet-5
 prompt_version: 2
 review_status: draft
 caution_notes:
-  - "Keep the quoted words in plain form even in a polite sentence; politeness goes only on the final verb such as 言いました."
-  - "In a retelling, a noun or な-adjective keeps its だ right before と, as in きれいだと言った."
+  - "In a retelling without brackets, keep the quoted words in plain form even in a polite sentence; politeness goes only on the final verb such as 言いました."
+  - "In a retelling, a noun keeps its だ right before と, as in 先生だと言った."
   - "The person you speak to takes に, while the words themselves take と."
   - "聞く with に means ask the person, while 聞く with から means hear it from the person."
 related_grammar_slugs:
@@ -49,26 +49,27 @@ The three verbs cover the three things you can do with words: say them, ask them
 First, the part in front of と. In an indirect quote it is a full sentence in **plain form**. That is the casual, dictionary-style form of a verb or adjective, the one with no ます or です attached. Think of it as the words with the politeness switched off. The reason is simple: a quote is a small sentence living inside your bigger sentence, and the small one is kept in its bare, unpolished state while the big one carries the politeness. Each word type looks like this before と:
 
 - **Verbs** keep their plain form: 行く, 食べる, 行った (went), 行かない (won't go).
-- **い-adjectives** (adjectives that end in い) keep theirs too: おいしい (delicious), おいしかった (was delicious).
-- **な-adjectives** (adjectives that need な before a noun) and **nouns** take だ, the casual cousin of です: きれいだ, 学生だ.
+- **Nouns** take だ, the casual cousin of です: 学生だ, 先生だ.
 
-Let's watch the な-adjective case in action. Say a friend visited a new shop and came back impressed:
+Adjectives follow the same idea. You will add them here when you learn their plain forms.
 
-```jp
-彼女は、この店はきれいだと言った。
-```
-
-*She said this shop is clean.*
-
-きれい alone is not a full sentence, so in a retelling it needs its だ before it can stand in front of と. Keep the だ and the quote stays a complete thought. The same goes for nouns: if the friend had said the place is a school, the quote would end in a noun plus だ before と.
-
-Now the tense. English likes to shift "is" into "was" when you report something. Japanese does not. The quote keeps the tense of the original statement, while 言った is past simply because the speaking already happened. If the dish was good when he ate it, the quote itself is past:
+Let's watch the noun case in action. Your brother points at someone across the street:
 
 ```jp
-彼は、この料理はおいしかったと言った。
+兄は、あの人は先生だと言った。
 ```
 
-*He said this dish was delicious.*
+*My brother said that person is a teacher.*
+
+先生 alone is not a full sentence, so in a retelling it needs its だ before it can stand in front of と. Keep the だ and the quote stays a complete thought.
+
+Now the tense. English likes to shift "is" into "was" when you report something. Japanese does not. The quote keeps the tense of the original statement, while 言った is past simply because the speaking already happened. If what she reports already happened, the quote itself is past:
+
+```jp
+母は、昨日駅へ行ったと言った。
+```
+
+*Mom said she went to the station yesterday.*
 
 This one trips everyone up the first week, and it's normal: your English brain wants to change the tense of the quote. Leave it alone. If it helps, picture yourself holding up the original sentence like a photograph and setting it inside yours without touching it.
 
@@ -106,7 +107,7 @@ Swap the whole quote for 何 and と still sits right behind it:
 
 Here 何 stands in for his entire answer. Notice that 言いました is polite, because you are talking to someone else. That leads to the first sharp edge.
 
-> The quoted words stay in plain form even inside a polite sentence. Politeness goes on the final verb only: 母は明日帰ると言いました is polite, but the quote is still 帰る, not 帰ります. Put 帰ります inside the quote only when Mom really did say it politely.
+> In a retelling, the quoted words stay in plain form even inside a polite sentence. Politeness goes on the final verb only: 母は明日帰ると言いました is polite, but the quote is still 帰る, not 帰ります. Put 帰ります inside the quote only when Mom really did say it politely.
 
 Next, the little word itself:
 
@@ -156,4 +157,4 @@ One more neighbour is よ, the tag for emphasis. In the very first example, よ 
 
 ## Closing thought
 
-Put what was said, asked or written in front of と, finish with 言う, 聞く or 書く, keep the quote in plain form, and let に name the person. Hold onto this for later: when you meet より, the word for comparing, you will be able to report opinions like "she said this one is better than that one".
+Put what was said, asked or written in front of と, finish with 言う, 聞く or 書く, keep a retold quote in plain form, and let に name the person. Hold onto this for later: when you meet より, the word for comparing, you will be able to report opinions like "she said this one is better than that one".
