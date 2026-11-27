@@ -228,6 +228,16 @@ def _classify_suffix(tokens, j):
     return None
 
 
+def _is_copula_aru(tokens, i):
+    """True for the ある of ではありません / じゃありません: the copula's
+    negative (grammar), not the verb "to exist"."""
+    prev = tokens[i - 1] if i > 0 else None
+    if prev and prev["surface"] == "じゃ":
+        return True
+    return (i > 1 and prev["surface"] == "は"
+            and tokens[i - 2]["surface"] == "で")
+
+
 def build_inflected_spans(text, forms_by_slug, tokens=None):
     """Taught-inflection occurrences of `forms_by_slug` ({slug: primary_form}).
 
@@ -245,6 +255,8 @@ def build_inflected_spans(text, forms_by_slug, tokens=None):
             continue
         base = token["orth_base"] or token["lemma"]
         if not base:
+            continue
+        if base == "ある" and _is_copula_aru(tokens, i):
             continue
 
         start = token["start"]
@@ -298,6 +310,8 @@ def build_stem_spans(text, forms_by_slug, tokens=None):
             continue
         base = token["orth_base"] or token["lemma"]
         if not base:
+            continue
+        if base == "ある" and _is_copula_aru(tokens, i):
             continue
         start, slug = token["start"], None
         # する-verbs carry the entry on the noun in front (勉強し of
