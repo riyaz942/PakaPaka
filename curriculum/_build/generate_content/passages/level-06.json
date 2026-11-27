@@ -7,7 +7,7 @@
       "tone": "humorous",
       "passage": {
         "title": "駅の箱",
-        "body": "駅に箱がある。箱の紙には「見ないでください」とある。朝、駅員は紙を読んで、見ない。昼、医者も紙を読んで、見ない。赤ちゃんは紙を読まないので、箱を見る。箱にも紙がある。その紙にも「見ないでください」とある。",
+        "body": "駅に箱がある。そこに紙もある。「この箱を見ないでください。」朝、駅員は紙を読んで、見ない。昼、医者も紙を読んで、見ない。赤ちゃんは紙を読まないので、箱を見る。箱にも紙がある。「見ないでください。」",
         "questions": [
           {
             "prompt": "箱はどこにありますか。",
@@ -34,15 +34,17 @@
             "prompt_furigana": "箱[はこ]を見[み]るのは誰[だれ]ですか。"
           },
           {
-            "prompt": "箱の紙には何とありますか。",
+            "prompt": "駅員は箱を見ますか。",
             "accepted_answers": [
-              "見ないでください",
-              "みないでください"
+              "見ない",
+              "みない",
+              "見ません",
+              "みません"
             ],
-            "prompt_furigana": "箱[はこ]の紙[かみ]には何[なに]とありますか。"
+            "prompt_furigana": "駅[えき]員[いん]は箱[はこ]を見[み]ますか。"
           }
         ],
-        "english_translation": "There is a box at the station. The paper on the box says, \"Please do not look.\" In the morning, a station worker reads the paper and does not look. At noon, a doctor also reads the paper and does not look. A baby does not read the paper, so the baby looks at the box. There is a paper on the box too. That paper also says, \"Please do not look.\"",
+        "english_translation": "There is a box at the station. There is also a paper there: \"Please do not look at this box.\" In the morning, a station worker reads the paper and does not look. At noon, a doctor also reads the paper and does not look. A baby does not read the paper, so the baby looks at the box. There is a paper on the box too: \"Please do not look.\"",
         "summary_ja": "紙を読まない赤ちゃんが、駅の箱を見る。",
         "summary_en": "A baby who does not read the paper looks at the box at the station.",
         "grammar_slugs": [
@@ -51,10 +53,8 @@
           "nai-form",
           "naide-kudasai",
           "ni-direction",
-          "no-possessive",
           "node-because",
           "te-form",
-          "to-and",
           "wa-topic",
           "wo"
         ],
@@ -68,8 +68,9 @@
           "hiru",
           "isha",
           "kami-paper",
+          "kono",
           "miru-v",
-          "sono",
+          "soko",
           "yomu"
         ],
         "word_spans": [
@@ -89,152 +90,147 @@
             "end": 6
           },
           {
-            "vocabulary_slug": "hako",
+            "vocabulary_slug": "soko",
             "start": 7,
-            "end": 8
+            "end": 9
           },
           {
             "vocabulary_slug": "kami-paper",
-            "start": 9,
-            "end": 10
+            "start": 10,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 12,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "kono",
+            "start": 16,
+            "end": 18
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 18,
+            "end": 19
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 13,
-            "end": 17,
+            "start": 20,
+            "end": 24,
             "surface_form": "見ないで",
             "inflection": "nai"
           },
           {
-            "vocabulary_slug": "aru",
-            "start": 23,
-            "end": 25
-          },
-          {
             "vocabulary_slug": "asa",
-            "start": 26,
-            "end": 27
+            "start": 30,
+            "end": 31
           },
           {
             "vocabulary_slug": "ekiin",
-            "start": 28,
-            "end": 30
+            "start": 32,
+            "end": 34
           },
           {
             "vocabulary_slug": "kami-paper",
-            "start": 31,
-            "end": 32
+            "start": 35,
+            "end": 36
           },
           {
             "vocabulary_slug": "yomu",
-            "start": 33,
-            "end": 36,
+            "start": 37,
+            "end": 40,
             "surface_form": "読んで",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 37,
-            "end": 40,
+            "start": 41,
+            "end": 44,
             "surface_form": "見ない",
             "inflection": "nai"
           },
           {
             "vocabulary_slug": "hiru",
-            "start": 41,
-            "end": 42
+            "start": 45,
+            "end": 46
           },
           {
             "vocabulary_slug": "isha",
-            "start": 43,
-            "end": 45
+            "start": 47,
+            "end": 49
           },
           {
             "vocabulary_slug": "kami-paper",
-            "start": 46,
-            "end": 47
+            "start": 50,
+            "end": 51
           },
           {
             "vocabulary_slug": "yomu",
-            "start": 48,
-            "end": 51,
+            "start": 52,
+            "end": 55,
             "surface_form": "読んで",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 52,
-            "end": 55,
+            "start": 56,
+            "end": 59,
             "surface_form": "見ない",
             "inflection": "nai"
           },
           {
             "vocabulary_slug": "akachan",
-            "start": 56,
-            "end": 60
+            "start": 60,
+            "end": 64
           },
           {
             "vocabulary_slug": "kami-paper",
-            "start": 61,
-            "end": 62
+            "start": 65,
+            "end": 66
           },
           {
             "vocabulary_slug": "yomu",
-            "start": 63,
-            "end": 67,
+            "start": 67,
+            "end": 71,
             "surface_form": "読まない",
             "inflection": "nai"
           },
           {
             "vocabulary_slug": "hako",
-            "start": 70,
-            "end": 71
+            "start": 74,
+            "end": 75
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 72,
-            "end": 74
+            "start": 76,
+            "end": 78
           },
           {
             "vocabulary_slug": "hako",
-            "start": 75,
-            "end": 76
+            "start": 79,
+            "end": 80
           },
           {
             "vocabulary_slug": "kami-paper",
-            "start": 78,
-            "end": 79
+            "start": 82,
+            "end": 83
           },
           {
             "vocabulary_slug": "aru",
-            "start": 80,
-            "end": 82
-          },
-          {
-            "vocabulary_slug": "sono",
-            "start": 83,
-            "end": 85
-          },
-          {
-            "vocabulary_slug": "kami-paper",
-            "start": 85,
+            "start": 84,
             "end": 86
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 89,
-            "end": 93,
+            "start": 88,
+            "end": 92,
             "surface_form": "見ないで",
             "inflection": "nai"
-          },
-          {
-            "vocabulary_slug": "aru",
-            "start": 99,
-            "end": 101
           }
         ],
-        "word_count": 61,
-        "body_furigana": "駅[えき]に箱[はこ]がある。箱[はこ]の紙[かみ]には「見[み]ないでください」とある。朝[あさ]、駅[えき]員[いん]は紙[かみ]を読[よ]んで、見[み]ない。昼[ひる]、医[い]者[しゃ]も紙[かみ]を読[よ]んで、見[み]ない。赤[あか]ちゃんは紙[かみ]を読[よ]まないので、箱[はこ]を見[み]る。箱[はこ]にも紙[かみ]がある。その紙[かみ]にも「見[み]ないでください」とある。",
+        "word_count": 56,
+        "body_furigana": "駅[えき]に箱[はこ]がある。そこに紙[かみ]もある。「この箱[はこ]を見[み]ないでください。」朝[あさ]、駅[えき]員[いん]は紙[かみ]を読[よ]んで、見[み]ない。昼[ひる]、医[い]者[しゃ]も紙[かみ]を読[よ]んで、見[み]ない。赤[あか]ちゃんは紙[かみ]を読[よ]まないので、箱[はこ]を見[み]る。箱[はこ]にも紙[かみ]がある。「見[み]ないでください。」",
         "slug": "eki-no-hako",
         "_meta": {
           "generator_model": "claude-opus-5-5",
@@ -445,7 +441,7 @@
       "tone": "humorous",
       "passage": {
         "title": "昼ご飯を食べてから",
-        "body": "十二時に台所で昼ご飯を食べた。食べてから、ベッドで本を読んだ。読んでから、二時半にも昼ご飯を食べた。食べてから、祖母に手紙を書いた。「十二時と二時半に昼ご飯を食べました」と書いた。書いてから、台所へ行った。",
+        "body": "十二時に台所で昼ご飯を食べた。食べてから、ベッドで本を読んだ。読んでから、二時半にも昼ご飯を食べた。食べてから、祖母に手紙を書いた。「十二時と二時半に昼ご飯を食べました。」書いてから、台所へ行った。",
         "questions": [
           {
             "prompt": "ベッドで何を読みましたか。",
@@ -486,7 +482,7 @@
             "prompt_furigana": "誰[だれ]に手[て]紙[がみ]を書[か]きましたか。"
           }
         ],
-        "english_translation": "At twelve o'clock I ate lunch in the kitchen. After eating, I read a book in bed. After reading, I ate lunch again at half past two. After eating, I wrote a letter to my grandmother. I wrote, \"I ate lunch at twelve and at half past two.\" After writing, I went to the kitchen.",
+        "english_translation": "At twelve o'clock I ate lunch in the kitchen. After eating, I read a book in bed. After reading, I ate lunch again at half past two. After eating, I wrote a letter to my grandmother. \"I ate lunch at twelve and at half past two.\" After writing, I went to the kitchen.",
         "summary_ja": "今日は昼ご飯を十二時と二時半に食べた。",
         "summary_en": "Today the writer ate lunch at twelve and again at half past two.",
         "grammar_slugs": [
@@ -626,31 +622,24 @@
             "vocabulary_slug": "kaku",
             "start": 86,
             "end": 89,
-            "surface_form": "書いた",
-            "inflection": "ta"
-          },
-          {
-            "vocabulary_slug": "kaku",
-            "start": 90,
-            "end": 93,
             "surface_form": "書いて",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "daidokoro",
-            "start": 96,
-            "end": 98
+            "start": 92,
+            "end": 94
           },
           {
             "vocabulary_slug": "iku-v",
-            "start": 99,
-            "end": 102,
+            "start": 95,
+            "end": 98,
             "surface_form": "行った",
             "inflection": "ta"
           }
         ],
-        "word_count": 63,
-        "body_furigana": "十[じゅう]二[に]時[じ]に台[だい]所[どころ]で昼[ひる]ご飯[はん]を食[た]べた。食[た]べてから、ベッドで本[ほん]を読[よ]んだ。読[よ]んでから、二[に]時[じ]半[はん]にも昼[ひる]ご飯[はん]を食[た]べた。食[た]べてから、祖[そ]母[ぼ]に手[て]紙[がみ]を書[か]いた。「十[じゅう]二[に]時[じ]と二[に]時[じ]半[はん]に昼[ひる]ご飯[はん]を食[た]べました」と書[か]いた。書[か]いてから、台[だい]所[どころ]へ行[い]った。",
+        "word_count": 60,
+        "body_furigana": "十[じゅう]二[に]時[じ]に台[だい]所[どころ]で昼[ひる]ご飯[はん]を食[た]べた。食[た]べてから、ベッドで本[ほん]を読[よ]んだ。読[よ]んでから、二[に]時[じ]半[はん]にも昼[ひる]ご飯[はん]を食[た]べた。食[た]べてから、祖[そ]母[ぼ]に手[て]紙[がみ]を書[か]いた。「十[じゅう]二[に]時[じ]と二[に]時[じ]半[はん]に昼[ひる]ご飯[はん]を食[た]べました。」書[か]いてから、台[だい]所[どころ]へ行[い]った。",
         "slug": "hirugohan-o-tabete-kara",
         "_meta": {
           "generator_model": "claude-opus-5-5",

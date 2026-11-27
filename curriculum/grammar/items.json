@@ -60031,11 +60031,658 @@
       "level": 7
     },
     {
+      "slug": "to-quotation",
+      "primary_form": "と (引用)",
+      "meaning": "quotation: what someone says, asks or writes",
+      "structure": "「Quote」 / Plain form + と + 言う・聞く・書く",
+      "sort_order": 46,
+      "conjugation_rules": {
+        "particle": "quotation"
+      },
+      "accepted_forms": [
+        "と"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "母は「明日行きます」と言いました。",
+          "english": "Mother said, \"I will go tomorrow.\"",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "ashita",
+            "iku-v",
+            "iu-v"
+          ],
+          "furigana": "母[はは]は「明日[あした]行[い]きます」と言[い]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ashita",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 5,
+              "end": 9,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "言いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 11
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "母",
+              "reading": "はは",
+              "role": "word",
+              "vocabulary_slug": "haha",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "明日",
+              "reading": "あした",
+              "role": "word",
+              "vocabulary_slug": "ashita",
+              "in_grammar": false
+            },
+            {
+              "surface": "行きます",
+              "reading": "いきます",
+              "role": "word",
+              "vocabulary_slug": "iku-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言いました",
+              "reading": "いいました",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "先生に「どこへ行きますか」と聞きました。",
+          "english": "I asked the teacher, \"Where are you going?\"",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "doko",
+            "iku-v",
+            "kiku-v"
+          ],
+          "furigana": "先[せん]生[せい]に「どこへ行[い]きますか」と聞[き]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 14,
+              "end": 19,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 14
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "先生",
+              "reading": "せんせい",
+              "role": "word",
+              "vocabulary_slug": "sensei",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "どこ",
+              "reading": "どこ",
+              "role": "word",
+              "vocabulary_slug": "doko",
+              "in_grammar": false
+            },
+            {
+              "surface": "へ",
+              "reading": "へ",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "行きます",
+              "reading": "いきます",
+              "role": "word",
+              "vocabulary_slug": "iku-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "聞きました",
+              "reading": "ききました",
+              "role": "word",
+              "vocabulary_slug": "kiku-v",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "兄は手紙に「明日帰ります」と書きました。",
+          "english": "My brother wrote in his letter, \"I will come home tomorrow.\"",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ani",
+            "tegami",
+            "ashita",
+            "kaeru-v",
+            "kaku"
+          ],
+          "furigana": "兄[あに]は手[て]紙[がみ]に「明日[あした]帰[かえ]ります」と書[か]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tegami",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ashita",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 8,
+              "end": 12,
+              "surface_form": "帰ります",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 14,
+              "end": 19,
+              "surface_form": "書きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 13,
+            "end": 14
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "兄",
+              "reading": "あに",
+              "role": "word",
+              "vocabulary_slug": "ani",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "手紙",
+              "reading": "てがみ",
+              "role": "word",
+              "vocabulary_slug": "tegami",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "明日",
+              "reading": "あした",
+              "role": "word",
+              "vocabulary_slug": "ashita",
+              "in_grammar": false
+            },
+            {
+              "surface": "帰ります",
+              "reading": "かえります",
+              "role": "word",
+              "vocabulary_slug": "kaeru-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "書きました",
+              "reading": "かきました",
+              "role": "word",
+              "vocabulary_slug": "kaku",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "父は明日来ると言いました。",
+          "english": "Father said that he will come tomorrow.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "chichi",
+            "ashita",
+            "kuru-v",
+            "iu-v"
+          ],
+          "furigana": "父[ちち]は明日[あした]来[く]ると言[い]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ashita",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 7,
+              "end": 12,
+              "surface_form": "言いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 6,
+            "end": 7
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "父",
+              "reading": "ちち",
+              "role": "word",
+              "vocabulary_slug": "chichi",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "明日",
+              "reading": "あした",
+              "role": "word",
+              "vocabulary_slug": "ashita",
+              "in_grammar": false
+            },
+            {
+              "surface": "来る",
+              "reading": "くる",
+              "role": "word",
+              "vocabulary_slug": "kuru-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言いました",
+              "reading": "いいました",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "先生に「どこですか」と聞きました。",
+          "english": "I asked the teacher, \"Where is it?\"",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "sensei",
+            "doko",
+            "kiku-v"
+          ],
+          "furigana": "先[せん]生[せい]に「どこですか」と聞[き]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 11,
+              "end": 16,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 10,
+            "end": 11
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "先生",
+              "reading": "せんせい",
+              "role": "word",
+              "vocabulary_slug": "sensei",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "どこです",
+              "reading": "どこです",
+              "role": "word",
+              "vocabulary_slug": "doko",
+              "in_grammar": false
+            },
+            {
+              "surface": "か",
+              "reading": "か",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "聞きました",
+              "reading": "ききました",
+              "role": "word",
+              "vocabulary_slug": "kiku-v",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "兄は手紙に「帰ります」と書きました。",
+          "english": "My brother wrote in his letter, \"I will come home.\"",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "ani",
+            "tegami",
+            "kaeru-v",
+            "kaku"
+          ],
+          "furigana": "兄[あに]は手[て]紙[がみ]に「帰[かえ]ります」と書[か]きました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tegami",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kaeru-v",
+              "start": 6,
+              "end": 10,
+              "surface_form": "帰ります",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 12,
+              "end": 17,
+              "surface_form": "書きました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 12
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "兄",
+              "reading": "あに",
+              "role": "word",
+              "vocabulary_slug": "ani",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "手紙",
+              "reading": "てがみ",
+              "role": "word",
+              "vocabulary_slug": "tegami",
+              "in_grammar": false
+            },
+            {
+              "surface": "に",
+              "reading": "に",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "帰ります",
+              "reading": "かえります",
+              "role": "word",
+              "vocabulary_slug": "kaeru-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "書きました",
+              "reading": "かきました",
+              "role": "word",
+              "vocabulary_slug": "kaku",
+              "in_grammar": false
+            }
+          ]
+        },
+        {
+          "japanese": "母は「パンを買います」と言いました。",
+          "english": "Mother said, \"I will buy bread.\"",
+          "sort_order": 6,
+          "vocabulary_slugs": [
+            "haha",
+            "pan",
+            "kau-v",
+            "iu-v"
+          ],
+          "furigana": "母[はは]は「パンを買[か]います」と言[い]いました。",
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "pan",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 6,
+              "end": 10,
+              "surface_form": "買います",
+              "inflection": "masu"
+            },
+            {
+              "vocabulary_slug": "iu-v",
+              "start": 12,
+              "end": 17,
+              "surface_form": "言いました",
+              "inflection": "masu"
+            }
+          ],
+          "grammar_span": {
+            "start": 11,
+            "end": 12
+          },
+          "register": "polite",
+          "answer_units": [
+            {
+              "surface": "母",
+              "reading": "はは",
+              "role": "word",
+              "vocabulary_slug": "haha",
+              "in_grammar": false
+            },
+            {
+              "surface": "は",
+              "reading": "は",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "パン",
+              "reading": "パン",
+              "role": "word",
+              "vocabulary_slug": "pan",
+              "in_grammar": false
+            },
+            {
+              "surface": "を",
+              "reading": "を",
+              "role": "particle",
+              "in_grammar": false
+            },
+            {
+              "surface": "買います",
+              "reading": "かいます",
+              "role": "word",
+              "vocabulary_slug": "kau-v",
+              "in_grammar": false
+            },
+            {
+              "surface": "と",
+              "reading": "と",
+              "role": "other",
+              "in_grammar": true
+            },
+            {
+              "surface": "言いました",
+              "reading": "いいました",
+              "role": "word",
+              "vocabulary_slug": "iu-v",
+              "in_grammar": false
+            }
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "iu-v"
+      ],
+      "family": "particles",
+      "level": 7
+    },
+    {
       "slug": "toki",
       "primary_form": "とき",
       "meaning": "when / at the time of",
       "structure": "Clause (plain) + とき",
-      "sort_order": 46,
+      "sort_order": 47,
       "conjugation_rules": {
         "time": true
       },
@@ -63171,7 +63818,7 @@
       "primary_form": "ことができる",
       "meaning": "can / be able to",
       "structure": "Verb (dict) + ことができる",
-      "sort_order": 47,
+      "sort_order": 48,
       "conjugation_rules": {
         "ability": true
       },
@@ -64952,7 +65599,7 @@
       "primary_form": "い形容詞",
       "meaning": "i-adjective conjugation",
       "structure": "い-adj → past くかった / neg くない",
-      "sort_order": 48,
+      "sort_order": 49,
       "conjugation_rules": {
         "past": "かった",
         "negative": "くない",
@@ -65908,7 +66555,7 @@
       "primary_form": "な形容詞",
       "meaning": "na-adjective usage",
       "structure": "な-adj + な + Noun / + です",
-      "sort_order": 49,
+      "sort_order": 50,
       "conjugation_rules": {
         "attributive": "な",
         "past": "でした",
@@ -67200,7 +67847,7 @@
       "primary_form": "く (副詞化)",
       "meaning": "make an i-adjective into an adverb",
       "structure": "い-adj (drop い) + く",
-      "sort_order": 50,
+      "sort_order": 51,
       "conjugation_rules": {
         "adverbial": "く"
       },
@@ -68414,7 +69061,7 @@
       "primary_form": "に (副詞化)",
       "meaning": "make a na-adjective into an adverb",
       "structure": "な-adj + に",
-      "sort_order": 51,
+      "sort_order": 52,
       "conjugation_rules": {
         "adverbial": "に"
       },
@@ -69753,7 +70400,7 @@
       "primary_form": "より",
       "meaning": "more than (comparison)",
       "structure": "A は B より + adj",
-      "sort_order": 52,
+      "sort_order": 53,
       "conjugation_rules": {
         "comparison": true
       },
@@ -71448,7 +72095,7 @@
       "primary_form": "一番",
       "meaning": "the most / number one",
       "structure": "(の中で) 一番 + adj",
-      "sort_order": 53,
+      "sort_order": 54,
       "conjugation_rules": {
         "superlative": true
       },
@@ -73112,7 +73759,7 @@
       "primary_form": "どうですか",
       "meaning": "how is it? / how about?",
       "structure": "Noun + はどうですか",
-      "sort_order": 54,
+      "sort_order": 55,
       "conjugation_rules": {
         "question": true
       },
@@ -73784,7 +74431,7 @@
       "primary_form": "だろう",
       "meaning": "probably (plain)",
       "structure": "Plain form + だろう",
-      "sort_order": 55,
+      "sort_order": 56,
       "conjugation_rules": {
         "probability": true
       },
@@ -74635,7 +75282,7 @@
       "primary_form": "と思う",
       "meaning": "I think that",
       "structure": "Plain form + と思う",
-      "sort_order": 56,
+      "sort_order": 57,
       "conjugation_rules": {
         "opinion": true
       },
@@ -76162,7 +76809,7 @@
       "primary_form": "という",
       "meaning": "called / named (quotation)",
       "structure": "X という + Noun",
-      "sort_order": 57,
+      "sort_order": 58,
       "conjugation_rules": {
         "quotation": true
       },
@@ -77318,7 +77965,7 @@
       "primary_form": "ほうがいい",
       "meaning": "had better / should",
       "structure": "Verb-た / Verb-ない + ほうがいい",
-      "sort_order": 58,
+      "sort_order": 59,
       "conjugation_rules": {
         "advice": true
       },
@@ -77941,7 +78588,7 @@
       "primary_form": "でしょう",
       "meaning": "probably / right? (polite)",
       "structure": "Plain form + でしょう",
-      "sort_order": 59,
+      "sort_order": 60,
       "conjugation_rules": {
         "probability": true,
         "polite": true
@@ -78636,7 +79283,7 @@
       "primary_form": "まだ〜ていない",
       "meaning": "have not yet done",
       "structure": "まだ + Verb-て + いない",
-      "sort_order": 60,
+      "sort_order": 61,
       "conjugation_rules": {
         "not_yet": true
       },
@@ -80405,7 +81052,7 @@
       "primary_form": "もう〜ました",
       "meaning": "already did",
       "structure": "もう + Verb-ました",
-      "sort_order": 61,
+      "sort_order": 62,
       "conjugation_rules": {
         "already": true
       },
@@ -81840,7 +82487,7 @@
       "primary_form": "だけ",
       "meaning": "only / just",
       "structure": "Noun / Verb + だけ",
-      "sort_order": 62,
+      "sort_order": 63,
       "conjugation_rules": {
         "limit": true
       },
@@ -82702,7 +83349,7 @@
       "primary_form": "しか〜ない",
       "meaning": "only / nothing but",
       "structure": "Noun + しか + Verb-ない",
-      "sort_order": 63,
+      "sort_order": 64,
       "conjugation_rules": {
         "limit": true,
         "negative": true
@@ -83749,7 +84396,7 @@
       "primary_form": "ぐらい / くらい",
       "meaning": "about / approximately",
       "structure": "Quantity + ぐらい",
-      "sort_order": 64,
+      "sort_order": 65,
       "conjugation_rules": {
         "approximation": true
       },
@@ -85195,7 +85842,7 @@
       "primary_form": "ごろ",
       "meaning": "around (a point in time)",
       "structure": "Time + ごろ",
-      "sort_order": 65,
+      "sort_order": 66,
       "conjugation_rules": {
         "approximate_time": true
       },
@@ -86839,7 +87486,7 @@
       "primary_form": "全然〜ない",
       "meaning": "not at all",
       "structure": "全然 + negative",
-      "sort_order": 66,
+      "sort_order": 67,
       "conjugation_rules": {
         "negative_emphasis": true
       },
@@ -88029,7 +88676,7 @@
       "primary_form": "あまり〜ない",
       "meaning": "not very / not much",
       "structure": "あまり + negative",
-      "sort_order": 67,
+      "sort_order": 68,
       "conjugation_rules": {
         "negative_degree": true
       },
@@ -89259,7 +89906,7 @@
       "primary_form": "でも (suggestion)",
       "meaning": "or something (soft suggestion)",
       "structure": "Noun + でも",
-      "sort_order": 68,
+      "sort_order": 69,
       "conjugation_rules": {
         "suggestion": true
       },
@@ -89970,7 +90617,7 @@
       "primary_form": "じゃないですか",
       "meaning": "isn't it? (seeking agreement)",
       "structure": "Plain form + じゃないですか",
-      "sort_order": 69,
+      "sort_order": 70,
       "conjugation_rules": {
         "confirmation": true
       },
@@ -90992,7 +91639,7 @@
       "primary_form": "くなる / になる",
       "meaning": "become",
       "structure": "adj-く / na-adj/Noun に + なる",
-      "sort_order": 70,
+      "sort_order": 71,
       "conjugation_rules": {
         "change_of_state": true
       },
@@ -91805,7 +92452,7 @@
       "primary_form": "かもしれない",
       "meaning": "might / maybe",
       "structure": "Plain form + かもしれない",
-      "sort_order": 71,
+      "sort_order": 72,
       "conjugation_rules": {
         "possibility": true
       },
@@ -92872,7 +93519,7 @@
       "primary_form": "すぎる",
       "meaning": "too much / excessively",
       "structure": "Verb stem / adj stem + すぎる",
-      "sort_order": 72,
+      "sort_order": 73,
       "conjugation_rules": {
         "excess": true
       },
@@ -93610,7 +94257,7 @@
       "primary_form": "ながら",
       "meaning": "while doing (simultaneous)",
       "structure": "Verb stem + ながら",
-      "sort_order": 73,
+      "sort_order": 74,
       "conjugation_rules": {
         "simultaneous": true
       },
@@ -95025,7 +95672,7 @@
       "primary_form": "ため(に)",
       "meaning": "for the sake of / in order to",
       "structure": "Verb (dict) / Noun の + ため(に)",
-      "sort_order": 74,
+      "sort_order": 75,
       "conjugation_rules": {
         "purpose": true
       },
@@ -97403,7 +98050,7 @@
       "primary_form": "あげる・くれる・もらう",
       "meaning": "giving and receiving verbs",
       "structure": "Person に + あげる / が + くれる / から + もらう",
-      "sort_order": 75,
+      "sort_order": 76,
       "conjugation_rules": {
         "giving_receiving": true
       },
@@ -99924,7 +100571,7 @@
       "primary_form": "のに",
       "meaning": "although / even though",
       "structure": "Plain form + のに",
-      "sort_order": 76,
+      "sort_order": 77,
       "conjugation_rules": {
         "contrast": true
       },
@@ -101733,7 +102380,7 @@
       "primary_form": "そうだ (hearsay)",
       "meaning": "I heard that / apparently",
       "structure": "Plain form + そうだ",
-      "sort_order": 77,
+      "sort_order": 78,
       "conjugation_rules": {
         "hearsay": true
       },
@@ -103117,7 +103764,7 @@
       "primary_form": "そうだ (looks like)",
       "meaning": "looks like / seems (appearance)",
       "structure": "い-adj stem / な-adj / Verb stem + そうだ",
-      "sort_order": 78,
+      "sort_order": 79,
       "conjugation_rules": {
         "appearance": true
       },
@@ -104222,7 +104869,7 @@
       "primary_form": "たら",
       "meaning": "if / when (conditional)",
       "structure": "Ta-form + ら",
-      "sort_order": 79,
+      "sort_order": 80,
       "conjugation_rules": {
         "conditional": true
       },
@@ -105507,7 +106154,7 @@
       "primary_form": "ば",
       "meaning": "if (conditional, general truth)",
       "structure": "Verb/adj ba-form + ば",
-      "sort_order": 80,
+      "sort_order": 81,
       "conjugation_rules": {
         "conditional": true,
         "form": "ba"
@@ -106634,7 +107281,7 @@
       "primary_form": "なら",
       "meaning": "if (topic-based conditional)",
       "structure": "Noun / Plain form + なら",
-      "sort_order": 81,
+      "sort_order": 82,
       "conjugation_rules": {
         "conditional": true,
         "topic_based": true
@@ -107702,7 +108349,7 @@
       "primary_form": "れる・られる",
       "meaning": "potential form (can do)",
       "structure": "Verb stem + れる / られる",
-      "sort_order": 82,
+      "sort_order": 83,
       "conjugation_rules": {
         "potential": true
       },
@@ -108878,7 +109525,7 @@
       "primary_form": "れる・られる (passive)",
       "meaning": "passive voice",
       "structure": "Verb stem + れる / られる",
-      "sort_order": 83,
+      "sort_order": 84,
       "conjugation_rules": {
         "passive": true
       },
@@ -110212,7 +110859,7 @@
       "primary_form": "せる・させる",
       "meaning": "causative (make/let someone do)",
       "structure": "Verb stem + せる / させる",
-      "sort_order": 84,
+      "sort_order": 85,
       "conjugation_rules": {
         "causative": true
       },
@@ -111876,7 +112523,7 @@
       "primary_form": "せられる・させられる",
       "meaning": "causative-passive (made to do, against one's will)",
       "structure": "Verb stem + せられる / させられる",
-      "sort_order": 85,
+      "sort_order": 86,
       "conjugation_rules": {
         "causative_passive": true
       },
@@ -113382,7 +114029,7 @@
       "primary_form": "ように",
       "meaning": "in order to / so that",
       "structure": "Dictionary form / ない form + ように",
-      "sort_order": 86,
+      "sort_order": 87,
       "conjugation_rules": {
         "purpose": true
       },
@@ -114442,7 +115089,7 @@
       "primary_form": "ようになる",
       "meaning": "come to be able to / reach the point of",
       "structure": "Dictionary form / potential form + ようになる",
-      "sort_order": 87,
+      "sort_order": 88,
       "conjugation_rules": {
         "change": true
       },
@@ -115692,7 +116339,7 @@
       "primary_form": "なくなる",
       "meaning": "come to no longer / stop doing",
       "structure": "Verb ない-stem + なくなる",
-      "sort_order": 88,
+      "sort_order": 89,
       "conjugation_rules": {
         "change": true,
         "negative": true
@@ -116847,7 +117494,7 @@
       "primary_form": "はず",
       "meaning": "should be / expected to be",
       "structure": "Plain form + はず",
-      "sort_order": 89,
+      "sort_order": 90,
       "conjugation_rules": {
         "expectation": true
       },
@@ -117992,7 +118639,7 @@
       "primary_form": "はずがない",
       "meaning": "there's no way / can't be",
       "structure": "Plain form + はずがない",
-      "sort_order": 90,
+      "sort_order": 91,
       "conjugation_rules": {
         "strong_negative_expectation": true
       },
@@ -118761,7 +119408,7 @@
       "primary_form": "らしい",
       "meaning": "seems like / I heard (based on evidence)",
       "structure": "Plain form + らしい",
-      "sort_order": 91,
+      "sort_order": 92,
       "conjugation_rules": {
         "conjecture": true
       },
@@ -119924,7 +120571,7 @@
       "primary_form": "ようだ",
       "meaning": "seems / appears (based on inference)",
       "structure": "Plain form / Noun + の + ようだ",
-      "sort_order": 92,
+      "sort_order": 93,
       "conjugation_rules": {
         "appearance": true
       },
@@ -120720,7 +121367,7 @@
       "primary_form": "みたいだ",
       "meaning": "seems like (casual)",
       "structure": "Plain form + みたいだ",
-      "sort_order": 93,
+      "sort_order": 94,
       "conjugation_rules": {
         "appearance": true,
         "casual": true
@@ -121582,7 +122229,7 @@
       "primary_form": "ている (resultant state)",
       "meaning": "resulting state (has become / is)",
       "structure": "Te-form + いる",
-      "sort_order": 94,
+      "sort_order": 95,
       "conjugation_rules": {
         "resultant_state": true
       },
@@ -122757,7 +123404,7 @@
       "primary_form": "てある",
       "meaning": "has been done (resultant state, tr. verb)",
       "structure": "Te-form (transitive) + ある",
-      "sort_order": 95,
+      "sort_order": 96,
       "conjugation_rules": {
         "resultant": true
       },
@@ -123814,7 +124461,7 @@
       "primary_form": "ておく",
       "meaning": "to do in advance / leave as is",
       "structure": "Te-form + おく",
-      "sort_order": 96,
+      "sort_order": 97,
       "conjugation_rules": {
         "preparation": true
       },
@@ -125817,7 +126464,7 @@
       "primary_form": "てしまう",
       "meaning": "to finish completely / end up doing (regret)",
       "structure": "Te-form + しまう",
-      "sort_order": 97,
+      "sort_order": 98,
       "conjugation_rules": {
         "completion": true
       },
@@ -127979,7 +128626,7 @@
       "primary_form": "ていく・てくる",
       "meaning": "to go on doing / to come to do (direction of change)",
       "structure": "Te-form + いく / くる",
-      "sort_order": 98,
+      "sort_order": 99,
       "conjugation_rules": {
         "directional_change": true
       },
@@ -130027,7 +130674,7 @@
       "primary_form": "ても",
       "meaning": "even if / even though",
       "structure": "Te-form + も",
-      "sort_order": 99,
+      "sort_order": 100,
       "conjugation_rules": {
         "concession": true
       },
@@ -131730,7 +132377,7 @@
       "primary_form": "つもり",
       "meaning": "intend to / plan to",
       "structure": "Dictionary form + つもり",
-      "sort_order": 100,
+      "sort_order": 101,
       "conjugation_rules": {
         "intention": true
       },
@@ -134017,7 +134664,7 @@
       "primary_form": "ようにする",
       "meaning": "to try to make it so / make a habit of",
       "structure": "Dictionary form / ない form + ようにする",
-      "sort_order": 101,
+      "sort_order": 102,
       "conjugation_rules": {
         "effort": true
       },
@@ -135217,7 +135864,7 @@
       "primary_form": "ことにする",
       "meaning": "to decide to (one's own choice)",
       "structure": "Dictionary form / ない form + ことにする",
-      "sort_order": 102,
+      "sort_order": 103,
       "conjugation_rules": {
         "decision": true
       },
@@ -136316,7 +136963,7 @@
       "primary_form": "ことになる",
       "meaning": "it has been decided that / turns out that",
       "structure": "Dictionary form / ない form + ことになる",
-      "sort_order": 103,
+      "sort_order": 104,
       "conjugation_rules": {
         "external_decision": true
       },
@@ -137747,7 +138394,7 @@
       "primary_form": "ばかり",
       "meaning": "only / just did",
       "structure": "Noun + ばかり / Ta-form + ばかり",
-      "sort_order": 104,
+      "sort_order": 105,
       "conjugation_rules": {
         "exclusive_or_recent": true
       },
@@ -139376,7 +140023,7 @@
       "primary_form": "ところ",
       "meaning": "just about to / in the middle of / just finished",
       "structure": "Dictionary/て-form/Ta-form + ところ",
-      "sort_order": 105,
+      "sort_order": 106,
       "conjugation_rules": {
         "moment": true
       },
@@ -140842,7 +141489,7 @@
       "primary_form": "間・間に",
       "meaning": "while / during the interval",
       "structure": "Verb-ている / Noun の + 間(に)",
-      "sort_order": 106,
+      "sort_order": 107,
       "conjugation_rules": {
         "duration": true
       },
@@ -143138,7 +143785,7 @@
       "primary_form": "場合",
       "meaning": "in the case of / if the situation is",
       "structure": "Plain form / Noun の + 場合",
-      "sort_order": 107,
+      "sort_order": 108,
       "conjugation_rules": {
         "scenario": true
       },
@@ -145168,7 +145815,7 @@
       "primary_form": "と",
       "meaning": "if / when (natural/automatic result)",
       "structure": "Plain form (present) + と",
-      "sort_order": 108,
+      "sort_order": 109,
       "conjugation_rules": {
         "conditional": true,
         "automatic": true
@@ -146624,7 +147271,7 @@
       "primary_form": "から (formal reason, reused)",
       "meaning": "because (subjective reason)",
       "structure": "Plain form + から",
-      "sort_order": 109,
+      "sort_order": 110,
       "conjugation_rules": {
         "reason": true,
         "subjective": true
@@ -148504,7 +149151,7 @@
       "primary_form": "について",
       "meaning": "about / regarding",
       "structure": "Noun + について",
-      "sort_order": 110,
+      "sort_order": 111,
       "conjugation_rules": {
         "topic": true
       },
@@ -150132,7 +150779,7 @@
       "primary_form": "によると",
       "meaning": "according to",
       "structure": "Noun + によると",
-      "sort_order": 111,
+      "sort_order": 112,
       "conjugation_rules": {
         "source": true
       },
@@ -152041,7 +152688,7 @@
       "primary_form": "ため (cause)",
       "meaning": "due to / because of (formal cause)",
       "structure": "Plain form / Noun の + ため",
-      "sort_order": 112,
+      "sort_order": 113,
       "conjugation_rules": {
         "cause_formal": true
       },
@@ -153786,7 +154433,7 @@
       "primary_form": "のだ・んだ",
       "meaning": "explanatory emphasis (the thing is...)",
       "structure": "Plain form + のだ / んです",
-      "sort_order": 113,
+      "sort_order": 114,
       "conjugation_rules": {
         "explanation": true
       },
@@ -155211,7 +155858,7 @@
       "primary_form": "にくい・やすい",
       "meaning": "hard to / easy to (do)",
       "structure": "Verb stem + にくい / やすい",
-      "sort_order": 114,
+      "sort_order": 115,
       "conjugation_rules": {
         "ease_difficulty": true
       },
@@ -156282,7 +156929,7 @@
       "primary_form": "ほど",
       "meaning": "to the extent of / the more...the more",
       "structure": "Noun / Plain form + ほど",
-      "sort_order": 115,
+      "sort_order": 116,
       "conjugation_rules": {
         "degree_comparison": true
       },
@@ -157784,7 +158431,7 @@
       "primary_form": "くらい (degree)",
       "meaning": "to the extent that / about as much as",
       "structure": "Plain form + くらい",
-      "sort_order": 116,
+      "sort_order": 117,
       "conjugation_rules": {
         "extent": true
       },
@@ -159298,7 +159945,7 @@
       "primary_form": "だけでなく",
       "meaning": "not only... but also",
       "structure": "Noun / Plain form + だけでなく",
-      "sort_order": 117,
+      "sort_order": 118,
       "conjugation_rules": {
         "addition": true
       },
@@ -160745,7 +161392,7 @@
       "primary_form": "って",
       "meaning": "casual quotation / topic marker",
       "structure": "Plain form + って",
-      "sort_order": 118,
+      "sort_order": 119,
       "conjugation_rules": {
         "casual_quote": true
       },
@@ -161750,7 +162397,7 @@
       "primary_form": "かどうか",
       "meaning": "whether or not",
       "structure": "Plain form + かどうか",
-      "sort_order": 119,
+      "sort_order": 120,
       "conjugation_rules": {
         "uncertainty": true
       },
@@ -164856,7 +165503,7 @@
       "primary_form": "か何か",
       "meaning": "or something",
       "structure": "Noun + か何か",
-      "sort_order": 120,
+      "sort_order": 121,
       "conjugation_rules": {
         "vague_example": true
       },
@@ -166865,7 +167512,7 @@
       "primary_form": "とか",
       "meaning": "things like / and so on (casual listing)",
       "structure": "Noun + とか + Noun + とか",
-      "sort_order": 121,
+      "sort_order": 122,
       "conjugation_rules": {
         "casual_listing": true
       },
@@ -169456,7 +170103,7 @@
       "primary_form": "それでも",
       "meaning": "even so / nevertheless",
       "structure": "Sentence. + それでも + Sentence.",
-      "sort_order": 122,
+      "sort_order": 123,
       "conjugation_rules": {
         "concession_connector": true
       },
@@ -171466,7 +172113,7 @@
       "primary_form": "そこで",
       "meaning": "so / therefore (leading to action)",
       "structure": "Sentence. + そこで + Sentence.",
-      "sort_order": 123,
+      "sort_order": 124,
       "conjugation_rules": {
         "resulting_action": true
       },
@@ -173382,7 +174029,7 @@
       "primary_form": "そのため",
       "meaning": "for that reason / because of that",
       "structure": "Sentence. + そのため + Sentence.",
-      "sort_order": 124,
+      "sort_order": 125,
       "conjugation_rules": {
         "consequence_connector": true
       },
@@ -175160,7 +175807,7 @@
       "primary_form": "すると",
       "meaning": "then / and then (sequential)",
       "structure": "Sentence. + すると + Sentence.",
-      "sort_order": 125,
+      "sort_order": 126,
       "conjugation_rules": {
         "sequence": true
       },
@@ -177140,7 +177787,7 @@
       "primary_form": "以外",
       "meaning": "except / other than",
       "structure": "Noun + 以外",
-      "sort_order": 126,
+      "sort_order": 127,
       "conjugation_rules": {
         "exception": true
       },
@@ -178773,7 +179420,7 @@
       "primary_form": "そうになる",
       "meaning": "almost / on the verge of",
       "structure": "Verb stem + そうになる",
-      "sort_order": 127,
+      "sort_order": 128,
       "conjugation_rules": {
         "near_miss": true
       },
@@ -179875,7 +180522,7 @@
       "primary_form": "もの",
       "meaning": "used to (nostalgic habit) / because (emotional)",
       "structure": "Plain form + もの / だもの",
-      "sort_order": 128,
+      "sort_order": 129,
       "conjugation_rules": {
         "nostalgia": true
       },
@@ -181096,7 +181743,7 @@
       "primary_form": "うちに",
       "meaning": "while (before it's too late) / during",
       "structure": "Plain form + うちに",
-      "sort_order": 129,
+      "sort_order": 130,
       "conjugation_rules": {
         "opportunity_window": true
       },
@@ -182573,7 +183220,7 @@
       "primary_form": "たびに",
       "meaning": "every time / whenever",
       "structure": "Dictionary form / Noun の + たびに",
-      "sort_order": 130,
+      "sort_order": 131,
       "conjugation_rules": {
         "repetition": true
       },
@@ -184413,7 +185060,7 @@
       "primary_form": "代わりに",
       "meaning": "instead of / in exchange for",
       "structure": "Noun の / Dictionary form + 代わりに",
-      "sort_order": 131,
+      "sort_order": 132,
       "conjugation_rules": {
         "substitution": true
       },
@@ -186109,7 +186756,7 @@
       "primary_form": "というより",
       "meaning": "rather than say / more accurately",
       "structure": "Plain form + というより",
-      "sort_order": 132,
+      "sort_order": 133,
       "conjugation_rules": {
         "correction": true
       },
@@ -187035,7 +187682,7 @@
       "primary_form": "として",
       "meaning": "as (in the role/capacity of)",
       "structure": "Noun + として",
-      "sort_order": 133,
+      "sort_order": 134,
       "conjugation_rules": {
         "role": true
       },
@@ -188060,7 +188707,7 @@
       "primary_form": "限り",
       "meaning": "as far as / as long as",
       "structure": "Plain form + 限り",
-      "sort_order": 134,
+      "sort_order": 135,
       "conjugation_rules": {
         "limit": true
       },
@@ -190293,7 +190940,7 @@
       "primary_form": "たとえ〜ても",
       "meaning": "even if (hypothetical emphasis)",
       "structure": "たとえ + Te-form + も",
-      "sort_order": 135,
+      "sort_order": 136,
       "conjugation_rules": {
         "strong_concession": true
       },
@@ -192249,7 +192896,7 @@
       "primary_form": "っけ",
       "meaning": "wasn't it? / trying to recall",
       "structure": "Plain form + っけ",
-      "sort_order": 136,
+      "sort_order": 137,
       "conjugation_rules": {
         "recollection": true,
         "casual": true
@@ -193445,7 +194092,7 @@
       "primary_form": "つつある",
       "meaning": "in the process of (formal, ongoing change)",
       "structure": "Verb stem + つつある",
-      "sort_order": 137,
+      "sort_order": 138,
       "conjugation_rules": {
         "ongoing_change": true,
         "formal": true
@@ -194990,7 +195637,7 @@
       "primary_form": "あげく",
       "meaning": "in the end (after much effort, often bad result)",
       "structure": "Ta-form + あげく",
-      "sort_order": 138,
+      "sort_order": 139,
       "conjugation_rules": {
         "final_outcome": true
       },
@@ -197057,7 +197704,7 @@
       "primary_form": "わけ",
       "meaning": "reason / makes sense that",
       "structure": "Plain form + わけ",
-      "sort_order": 139,
+      "sort_order": 140,
       "conjugation_rules": {
         "logical_reason": true
       },
@@ -198384,7 +199031,7 @@
       "primary_form": "わけがない",
       "meaning": "there's no way that",
       "structure": "Plain form + わけがない",
-      "sort_order": 140,
+      "sort_order": 141,
       "conjugation_rules": {
         "strong_denial": true
       },
@@ -199671,7 +200318,7 @@
       "primary_form": "に限らず",
       "meaning": "not limited to",
       "structure": "Noun + に限らず",
-      "sort_order": 141,
+      "sort_order": 142,
       "conjugation_rules": {
         "scope_extension": true
       },
@@ -201213,7 +201860,7 @@
       "primary_form": "一方で",
       "meaning": "on the other hand",
       "structure": "Plain form + 一方で",
-      "sort_order": 142,
+      "sort_order": 143,
       "conjugation_rules": {
         "contrast": true
       },
@@ -202438,7 +203085,7 @@
       "primary_form": "にとって",
       "meaning": "for / from the perspective of",
       "structure": "Noun + にとって",
-      "sort_order": 143,
+      "sort_order": 144,
       "conjugation_rules": {
         "perspective": true
       },
@@ -203693,7 +204340,7 @@
       "primary_form": "に関して",
       "meaning": "regarding / concerning (formal)",
       "structure": "Noun + に関して",
-      "sort_order": 144,
+      "sort_order": 145,
       "conjugation_rules": {
         "topic_formal": true
       },
@@ -205089,7 +205736,7 @@
       "primary_form": "ったら・ってば",
       "meaning": "emphatic address / exasperation",
       "structure": "Noun/Plain form + ったら・ってば",
-      "sort_order": 145,
+      "sort_order": 146,
       "conjugation_rules": {
         "emphasis": true,
         "casual": true
@@ -206258,7 +206905,7 @@
       "primary_form": "反面",
       "meaning": "while at the same time / conversely",
       "structure": "Plain form + 反面",
-      "sort_order": 146,
+      "sort_order": 147,
       "conjugation_rules": {
         "contrast": true
       },
@@ -207401,7 +208048,7 @@
       "primary_form": "ところが",
       "meaning": "however / unexpectedly",
       "structure": "Sentence. + ところが + Sentence.",
-      "sort_order": 147,
+      "sort_order": 148,
       "conjugation_rules": {
         "unexpected_contrast": true
       },
@@ -208873,7 +209520,7 @@
       "primary_form": "以来",
       "meaning": "ever since",
       "structure": "Noun / Te-form + 以来",
-      "sort_order": 148,
+      "sort_order": 149,
       "conjugation_rules": {
         "since": true
       },
@@ -209921,7 +210568,7 @@
       "primary_form": "反対に",
       "meaning": "on the contrary / conversely",
       "structure": "反対に + Sentence.",
-      "sort_order": 149,
+      "sort_order": 150,
       "conjugation_rules": {
         "opposite": true
       },
@@ -210962,7 +211609,7 @@
       "primary_form": "こそ",
       "meaning": "precisely / for sure (emphasis)",
       "structure": "Noun + こそ",
-      "sort_order": 150,
+      "sort_order": 151,
       "conjugation_rules": {
         "emphasis": true
       },
@@ -211842,7 +212489,7 @@
       "primary_form": "さえ",
       "meaning": "even (extreme example)",
       "structure": "Noun + さえ",
-      "sort_order": 151,
+      "sort_order": 152,
       "conjugation_rules": {
         "extreme_example": true
       },
@@ -213407,7 +214054,7 @@
       "primary_form": "さえ〜ば",
       "meaning": "if only / as long as",
       "structure": "Noun + さえ + Verb-ば",
-      "sort_order": 152,
+      "sort_order": 153,
       "conjugation_rules": {
         "minimal_condition": true
       },
@@ -214424,7 +215071,7 @@
       "primary_form": "のみ",
       "meaning": "only (formal)",
       "structure": "Noun + のみ",
-      "sort_order": 153,
+      "sort_order": 154,
       "conjugation_rules": {
         "exclusive_formal": true
       },
@@ -215700,7 +216347,7 @@
       "primary_form": "ほかない",
       "meaning": "have no choice but to",
       "structure": "Dictionary form + ほかない",
-      "sort_order": 154,
+      "sort_order": 155,
       "conjugation_rules": {
         "no_alternative": true
       },
@@ -216594,7 +217241,7 @@
       "primary_form": "によって",
       "meaning": "by / due to / depending on",
       "structure": "Noun + によって",
-      "sort_order": 155,
+      "sort_order": 156,
       "conjugation_rules": {
         "agent_or_dependency": true
       },
@@ -217880,7 +218527,7 @@
       "primary_form": "ついでに",
       "meaning": "while I'm at it / incidentally",
       "structure": "Dictionary form / Noun の + ついでに",
-      "sort_order": 156,
+      "sort_order": 157,
       "conjugation_rules": {
         "incidental": true
       },
@@ -219440,7 +220087,7 @@
       "primary_form": "上で",
       "meaning": "after / on the basis of (formal)",
       "structure": "Ta-form + 上で",
-      "sort_order": 157,
+      "sort_order": 158,
       "conjugation_rules": {
         "formal_sequence": true
       },
@@ -220625,7 +221272,7 @@
       "primary_form": "最中に",
       "meaning": "right in the middle of",
       "structure": "Verb-ている / Noun の + 最中に",
-      "sort_order": 158,
+      "sort_order": 159,
       "conjugation_rules": {
         "interruption": true
       },
@@ -221907,7 +222554,7 @@
       "primary_form": "および",
       "meaning": "and / as well as (formal)",
       "structure": "Noun + および + Noun",
-      "sort_order": 159,
+      "sort_order": 160,
       "conjugation_rules": {
         "formal_conjunction": true
       },
@@ -223569,7 +224216,7 @@
       "primary_form": "に対して",
       "meaning": "towards / in contrast to",
       "structure": "Noun + に対して",
-      "sort_order": 160,
+      "sort_order": 161,
       "conjugation_rules": {
         "directed_toward": true
       },

@@ -236,8 +236,10 @@ SEEDS = [
         "target_words": (42, 54),
         "question_count": 3,
         "topic": (
-            "Mother writes rules on the kitchen door: you may drink here; you "
-            "must not eat here; you must not watch TV here. Father reads them "
+            "Mother writes rules on the kitchen door (quotation と comes at "
+            "level 7, so give the rules as a bare 「」 line): you may drink "
+            "here; you must not eat here; you must not watch TV here. Father "
+            "reads them "
             "carefully, then takes his dinner to the bed. Give permission with "
             "てもかまいません: いい counts as an adjective, and adjectives come at "
             "level 8. Describe with nouns and verbs only."
@@ -290,7 +292,9 @@ SEEDS = [
             "this box. A station worker reads it and does not look. A doctor "
             "reads it and does not look. A child looks. On the box is another "
             "paper: please do not look. Use the plain negative (見ない) in the "
-            "narration. No adjectives yet (level 8)."
+            "narration. Quotation と comes at level 7: say where the paper is, "
+            "then give its words as a bare 「」 line. No adjectives yet "
+            "(level 8)."
         ),
         "extra_allowed": [],
     },
@@ -320,7 +324,9 @@ SEEDS = [
             "A diary in plain form: yesterday the writer ate lunch, then read a "
             "book; after reading, ate lunch; after eating, wrote a letter to "
             "Grandmother: I ate lunch twice today. Plain past (食べた) in the "
-            "narration. No adjectives yet (level 8)."
+            "narration. Quotation と comes at level 7: give the letter's words "
+            "as a bare 「」 line after 手紙を書いた. No adjectives yet "
+            "(level 8)."
         ),
         "extra_allowed": [],
     },
@@ -329,13 +335,14 @@ SEEDS = [
         "slug": "takushii-ni-notta-koto-ga-nai",
         "level": 7,
         "tone": "humorous",
-        "required_grammar": ["ta-koto-ga-aru", "tai"],
+        "required_grammar": ["ta-koto-ga-aru", "tai", "to-quotation"],
         "target_words": (57, 71),
         "question_count": 3,
         "topic": (
             "Grandmother has never ridden in a taxi and wants to, once. The "
             "family calls one. She gets in, sits down, and asks the driver to "
-            "follow the bus she always takes. Put 〜たい on verbs like 乗る and "
+            "follow the bus she always takes: quote her words and close them "
+            "with と言いました. Put 〜たい on verbs like 乗る and "
             "行く (教えたい is read as a potential form). No adjectives yet "
             "(level 8)."
         ),

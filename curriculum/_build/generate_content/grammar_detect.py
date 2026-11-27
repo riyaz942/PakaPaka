@@ -82,6 +82,7 @@ FORM_OVERRIDES = {
     "he-direction": "*",
     "de-location": "*",
     "to-and": "*",
+    "to-quotation": "*",
     "mo-also": "*",
     "ka-question": "*",
     "ni-direction": "*",
@@ -502,6 +503,28 @@ def _rule_n4_temo(tokens, i):
     )
 
 
+def _rule_to_quotation(tokens, i):
+    """と that closes a quote. The tokenizer tags it 格助詞, the same as the
+    と of "and / with", so the word before it decides: a closing 」, or the
+    end of a clause (verb, adjective, copula, sentence-final particle) —
+    「はい」と言いました, 行くと言いました, 行くかと聞きました. A noun before
+    言う is a name being quoted: ケンと言います."""
+    t = tokens[i]
+    if not (t["norm"] == "と" and t["pos1"] == "助詞" and t["pos2"] == "格助詞"):
+        return False
+    prev = _prev(tokens, i)
+    if prev is None:
+        return False
+    if prev["surface"] and prev["surface"][-1] in "」』":
+        return True
+    if prev["pos1"] in ("動詞", "形容詞", "助動詞"):
+        return True
+    if prev["pos1"] == "助詞" and prev["pos2"] == "終助詞":
+        return True
+    nxt = _next(tokens, i)
+    return nxt is not None and nxt["lemma"] == "言う"
+
+
 def _kara_particle(tokens, i):
     t = tokens[i]
     return t["norm"] == "から" and t["pos1"] == "助詞"
@@ -537,6 +560,7 @@ POS_RULES = {
     "ni-iku": _rule_ni_iku,
     "demo-suggestion": _rule_demo_suggestion,
     "temo": _rule_n4_temo,
+    "to-quotation": _rule_to_quotation,
 }
 
 #: Rules describing the *word's own* form, not a pattern built on it. They run
@@ -567,6 +591,12 @@ POS_RULES["de-location"] = lambda tokens, i: (
 )
 POS_RULES["mo-also"] = lambda tokens, i: (
     _mo_also(tokens, i) and not (i > 0 and _conjunctive_demo(tokens, i - 1))
+)
+
+#: A quoting と is not "and / with".
+_to_and = POS_RULES["to-and"]
+POS_RULES["to-and"] = lambda tokens, i: (
+    _to_and(tokens, i) and not _rule_to_quotation(tokens, i)
 )
 
 #: The same subtraction for a ても concessive: its て is not the connective
@@ -868,6 +898,12 @@ SELFTEST = [
     (20, "ご飯を食べる前に手を洗います。", ["mae-ni"], []),
     (20, "学校に行くとき、傘を持ちます。", ["toki"], []),
     (20, "時間がありません。", [], ["toki"]),
+    (20, "母は「明日行きます」と言いました。", ["to-quotation"], ["to-and"]),
+    (20, "箱の紙には「見ないでください」とある。", ["to-quotation"], ["to-and"]),
+    (20, "父は明日来ると言いました。", ["to-quotation"], ["to-and"]),
+    (20, "行くかと聞きました。", ["to-quotation"], ["to-and"]),
+    (20, "パンと卵を買います。", ["to-and"], ["to-quotation"]),
+    (20, "友達と話しました。", ["to-and"], ["to-quotation"]),
     (20, "学校から帰りました。", ["kara-from"], ["kara-because"]),
     (20, "寒いから帰りました。", ["kara-because"], ["kara-from"]),
     (20, "私の本です。", ["no-possessive"], ["no-nominalizer"]),

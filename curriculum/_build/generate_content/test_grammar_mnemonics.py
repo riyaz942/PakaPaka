@@ -35,10 +35,10 @@ class OriginTableTest(unittest.TestCase):
         errors = mc.origin_table_errors({"review_status": "done", "origins": {}}, [])
         self.assertEqual(errors, ["grammar_origins.json review_status must be 'draft' or 'reviewed'"])
 
-    def test_scope_is_the_159_n5_n4_and_n3_points(self):
+    def test_scope_is_the_160_n5_n4_and_n3_points(self):
         slugs = mc.grammar_mnemonic_slugs()
-        self.assertEqual(len(slugs), 159)
-        self.assertEqual(len(set(slugs)), 159)
+        self.assertEqual(len(slugs), 160)
+        self.assertEqual(len(set(slugs)), 160)
 
     def test_scope_leaves_out_the_read_once_primer(self):
         self.assertNotIn("conjugation-primer", mc.grammar_mnemonic_slugs())

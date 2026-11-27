@@ -160378,6 +160378,13 @@
       "relationship_type": "reinforces"
     },
     {
+      "from_slug": "to-quotation",
+      "from_type": "grammar",
+      "to_slug": "iu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
       "from_slug": "toki",
       "from_type": "grammar",
       "to_slug": "ie",
