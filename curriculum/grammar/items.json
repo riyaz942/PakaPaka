@@ -3393,6 +3393,69 @@
                   "in_grammar": true
                 }
               ]
+            },
+            {
+              "furigana": "あなたはおいくつですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "あなた",
+                  "reading": "あなた",
+                  "role": "word",
+                  "vocabulary_slug": "anata",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "は",
+                  "reading": "は",
+                  "role": "particle",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "お",
+                  "reading": "お",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いくつです",
+                  "reading": "いくつです",
+                  "role": "word",
+                  "vocabulary_slug": "ikutsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
+            },
+            {
+              "furigana": "おいくつですか。",
+              "kind": "valid",
+              "units": [
+                {
+                  "surface": "お",
+                  "reading": "お",
+                  "role": "other",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "いくつです",
+                  "reading": "いくつです",
+                  "role": "word",
+                  "vocabulary_slug": "ikutsu",
+                  "in_grammar": false
+                },
+                {
+                  "surface": "か",
+                  "reading": "か",
+                  "role": "other",
+                  "in_grammar": true
+                }
+              ]
             }
           ]
         }
