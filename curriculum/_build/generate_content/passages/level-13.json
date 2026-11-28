@@ -1,0 +1,1079 @@
+{
+  "level": 13,
+  "passages": [
+    {
+      "seed": "kissaten-no-okashi",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "喫茶店のお菓子",
+        "body": "私は友達と喫茶店に入りました。テーブルの上のお菓子は、どれもおいしそうです。友達は砂糖を食べられないので、コーヒーだけ飲みます。「私は全部食べられますよ」と言って、お菓子を七つ買いました。最初の三つは、すぐ食べました。でも、三つ食べてから、もう食べられませんでした。友達はコーヒーを飲みながら、「全部食べられるでしょう」と言いました。テーブルの上には、四つのお菓子が残っています。どれもまだおいしそうです。",
+        "questions": [
+          {
+            "prompt": "誰と喫茶店に入りましたか。",
+            "accepted_answers": [
+              "友達",
+              "友達です",
+              "ともだち",
+              "ともだちです",
+              "友達と",
+              "ともだちと"
+            ],
+            "prompt_furigana": "誰[だれ]と喫[きっ]茶[さ]店[てん]に入[はい]りましたか。"
+          },
+          {
+            "prompt": "友達は何を食べられませんか。",
+            "accepted_answers": [
+              "砂糖",
+              "砂糖です",
+              "さとう",
+              "さとうです",
+              "砂糖を",
+              "さとうを"
+            ],
+            "prompt_furigana": "友[とも]達[だち]は何[なに]を食[た]べられませんか。"
+          },
+          {
+            "prompt": "お菓子をいくつ買いましたか。",
+            "accepted_answers": [
+              "七つ",
+              "七つです",
+              "ななつ",
+              "ななつです"
+            ],
+            "prompt_furigana": "お菓[か]子[し]をいくつ買[か]いましたか。"
+          },
+          {
+            "prompt": "お菓子はいくつ残っていますか。",
+            "accepted_answers": [
+              "四つ",
+              "四つです",
+              "よっつ",
+              "よっつです",
+              "四つのお菓子",
+              "四つのお菓子です"
+            ],
+            "prompt_furigana": "お菓[か]子[し]はいくつ残[のこ]っていますか。"
+          }
+        ],
+        "english_translation": "I went into a coffee shop with a friend. The sweets on the table all look delicious. My friend cannot eat sugar, so only drinks coffee. Saying \"I can eat all of them,\" I bought seven sweets. I ate the first three right away. But after eating three, I could not eat any more. Drinking coffee, my friend said, \"You can eat them all, right?\" Four sweets remain on the table. They still all look delicious.",
+        "summary_ja": "喫茶店で、お菓子を三つ食べてから、もう食べられなくなりました。",
+        "summary_en": "At a coffee shop, the writer ate three sweets and then could not eat any more.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "dake",
+          "darou",
+          "deshou",
+          "ga",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "mou-past",
+          "nagara",
+          "nai-form",
+          "ni-direction",
+          "no-possessive",
+          "node-because",
+          "potential",
+          "souda-hearsay",
+          "souda-looks",
+          "te-form",
+          "te-iru",
+          "te-kara",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "demo",
+          "dore",
+          "hairu-v",
+          "iru-exist",
+          "iu-v",
+          "kau-v",
+          "kissaten",
+          "koohii",
+          "mada",
+          "mittsu",
+          "mou",
+          "nanatsu",
+          "nokoru",
+          "nomu-v",
+          "okashi",
+          "saisho",
+          "satou",
+          "sugu",
+          "taberu",
+          "teeburu",
+          "tomodachi",
+          "ue",
+          "watashi",
+          "yottsu",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "kissaten",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 9,
+            "end": 14,
+            "surface_form": "入りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 15,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 20,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "okashi",
+            "start": 22,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "dore",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "satou",
+            "start": 41,
+            "end": 43
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 53,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 59,
+            "end": 63,
+            "surface_form": "飲みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 65,
+            "end": 66
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 67,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 78,
+            "end": 81,
+            "surface_form": "言って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "okashi",
+            "start": 82,
+            "end": 85
+          },
+          {
+            "vocabulary_slug": "nanatsu",
+            "start": 86,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 88,
+            "end": 93,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "saisho",
+            "start": 94,
+            "end": 96
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 97,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 101,
+            "end": 103
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 103,
+            "end": 108,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 109,
+            "end": 111
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 112,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 114,
+            "end": 117,
+            "surface_form": "食べて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "mou",
+            "start": 120,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 133,
+            "end": 135
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 136,
+            "end": 140
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 148,
+            "end": 150
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 161,
+            "end": 166,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 167,
+            "end": 171
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 172,
+            "end": 173
+          },
+          {
+            "vocabulary_slug": "yottsu",
+            "start": 176,
+            "end": 178
+          },
+          {
+            "vocabulary_slug": "okashi",
+            "start": 179,
+            "end": 182
+          },
+          {
+            "vocabulary_slug": "nokoru",
+            "start": 183,
+            "end": 186,
+            "surface_form": "残って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 186,
+            "end": 189,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "dore",
+            "start": 190,
+            "end": 192
+          },
+          {
+            "vocabulary_slug": "mada",
+            "start": 193,
+            "end": 195
+          }
+        ],
+        "word_count": 111,
+        "body_furigana": "私[わたし]は友[とも]達[だち]と喫[きっ]茶[さ]店[てん]に入[はい]りました。テーブルの上[うえ]のお菓[か]子[し]は、どれもおいしそうです。友[とも]達[だち]は砂[さ]糖[とう]を食[た]べられないので、コーヒーだけ飲[の]みます。「私[わたし]は全[ぜん]部[ぶ]食[た]べられますよ」と言[い]って、お菓[か]子[し]を七[なな]つ買[か]いました。最[さい]初[しょ]の三[みっ]つは、すぐ食[た]べました。でも、三[みっ]つ食[た]べてから、もう食[た]べられませんでした。友[とも]達[だち]はコーヒーを飲[の]みながら、「全[ぜん]部[ぶ]食[た]べられるでしょう」と言[い]いました。テーブルの上[うえ]には、四[よっ]つのお菓[か]子[し]が残[のこ]っています。どれもまだおいしそうです。",
+        "slug": "kissaten-no-okashi",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "ginkou-wa-sanji-made",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "日曜日の銀行",
+        "body": "友達は電話で、「銀行は三時までだそうです。郵便局は五時までで、橋の近くのパンの店は、パンが無くなるまでだそうです」と言いました。今は二時半です。銀行なら、今すぐ行かなければなりません。私はかばんを持って、うちを出ました。駅の前も、橋の上も走りました。銀行の入口に立って、ドアを見ました。ドアは動きません。中に人もいません。今日は日曜日です。橋の近くのパンの店には、人がたくさんいました。",
+        "questions": [
+          {
+            "prompt": "銀行は何時までですか。",
+            "accepted_answers": [
+              "三時まで",
+              "三時までです",
+              "三時",
+              "三時です",
+              "さんじまで",
+              "さんじまでです",
+              "さんじ",
+              "さんじです"
+            ],
+            "prompt_furigana": "銀[ぎん]行[こう]は何[なん]時[じ]までですか。"
+          },
+          {
+            "prompt": "今は何時ですか。",
+            "accepted_answers": [
+              "二時半",
+              "二時半です",
+              "にじはん",
+              "にじはんです"
+            ],
+            "prompt_furigana": "今[いま]は何[なん]時[じ]ですか。"
+          },
+          {
+            "prompt": "銀行の入口で、何を見ましたか。",
+            "accepted_answers": [
+              "ドア",
+              "ドアです",
+              "ドアを"
+            ],
+            "prompt_furigana": "銀[ぎん]行[こう]の入[いり]口[ぐち]で、何[なに]を見[み]ましたか。"
+          },
+          {
+            "prompt": "今日は月曜日ですか、日曜日ですか。",
+            "accepted_answers": [
+              "日曜日",
+              "日曜日です",
+              "にちようび",
+              "にちようびです"
+            ],
+            "prompt_furigana": "今日[きょう]は月[げつ]曜[よう]日[び]ですか、日[にち]曜[よう]日[び]ですか。"
+          }
+        ],
+        "english_translation": "On the phone, my friend said, \"I hear the bank is open until three. The post office is open until five, and the bread shop near the bridge is open until the bread runs out.\" It is half past two now. If it is the bank, I have to go right away. I took my bag and left the house. I ran in front of the station and over the bridge. I stood at the entrance of the bank and looked at the door. The door does not move. There is nobody inside either. Today is Sunday. At the bread shop near the bridge, there were a lot of people.",
+        "summary_ja": "銀行まで走りましたが、今日は日曜日でした。",
+        "summary_en": "The writer ran to the bank, but it was Sunday.",
+        "grammar_slugs": [
+          "de-location",
+          "desu",
+          "ga",
+          "made-until",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "nakereba-naranai",
+          "nara",
+          "naru-become",
+          "ni-direction",
+          "no-possessive",
+          "souda-hearsay",
+          "souda-looks",
+          "te-form",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "chikaku",
+          "denwa",
+          "deru-v",
+          "doa",
+          "eki",
+          "ginkou",
+          "han-time",
+          "hashi-bridge",
+          "hashiru",
+          "hito",
+          "ima",
+          "iriguchi",
+          "iru-exist",
+          "iu-v",
+          "kaban",
+          "kyou",
+          "mae",
+          "miru-v",
+          "mise",
+          "motsu",
+          "naka",
+          "nakunaru",
+          "naru-become",
+          "nichiyoubi",
+          "pan",
+          "sugu",
+          "takusan",
+          "tatsu-v",
+          "tomodachi",
+          "uchi",
+          "ue",
+          "ugoku",
+          "watashi",
+          "yuubinkyoku"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "denwa",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 8,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "yuubinkyoku",
+            "start": 21,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "hashi-bridge",
+            "start": 31,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 33,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 36,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 39,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 42,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "nakunaru",
+            "start": 45,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 58,
+            "end": 63,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 64,
+            "end": 65
+          },
+          {
+            "vocabulary_slug": "han-time",
+            "start": 68,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 72,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 77,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 86,
+            "end": 91,
+            "surface_form": "なりません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 92,
+            "end": 93
+          },
+          {
+            "vocabulary_slug": "kaban",
+            "start": 94,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 98,
+            "end": 101,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 102,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "deru-v",
+            "start": 105,
+            "end": 109,
+            "surface_form": "出ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 110,
+            "end": 111
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 112,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "hashi-bridge",
+            "start": 115,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 117,
+            "end": 118
+          },
+          {
+            "vocabulary_slug": "hashiru",
+            "start": 119,
+            "end": 124,
+            "surface_form": "走りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 125,
+            "end": 127
+          },
+          {
+            "vocabulary_slug": "iriguchi",
+            "start": 128,
+            "end": 130
+          },
+          {
+            "vocabulary_slug": "tatsu-v",
+            "start": 131,
+            "end": 134,
+            "surface_form": "立って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 135,
+            "end": 137
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 138,
+            "end": 142,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 143,
+            "end": 145
+          },
+          {
+            "vocabulary_slug": "ugoku",
+            "start": 146,
+            "end": 151,
+            "surface_form": "動きません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 152,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 154,
+            "end": 155
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 156,
+            "end": 160,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 161,
+            "end": 163
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 164,
+            "end": 167
+          },
+          {
+            "vocabulary_slug": "hashi-bridge",
+            "start": 170,
+            "end": 171
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 172,
+            "end": 174
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 175,
+            "end": 177
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 178,
+            "end": 179
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 182,
+            "end": 183
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 184,
+            "end": 188
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 188,
+            "end": 192,
+            "surface_form": "いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 119,
+        "body_furigana": "友[とも]達[だち]は電[でん]話[わ]で、「銀[ぎん]行[こう]は三[さん]時[じ]までだそうです。郵[ゆう]便[びん]局[きょく]は五[ご]時[じ]までで、橋[はし]の近[ちか]くのパンの店[みせ]は、パンが無[な]くなるまでだそうです」と言[い]いました。今[いま]は二[に]時[じ]半[はん]です。銀[ぎん]行[こう]なら、今[いま]すぐ行[い]かなければなりません。私[わたし]はかばんを持[も]って、うちを出[で]ました。駅[えき]の前[まえ]も、橋[はし]の上[うえ]も走[はし]りました。銀[ぎん]行[こう]の入[いり]口[ぐち]に立[た]って、ドアを見[み]ました。ドアは動[うご]きません。中[なか]に人[ひと]もいません。今日[きょう]は日[にち]曜[よう]日[び]です。橋[はし]の近[ちか]くのパンの店[みせ]には、人[ひと]がたくさんいました。",
+        "slug": "ginkou-wa-sanji-made",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "yuubinkyoku-made-no-michi",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "郵便局までの道",
+        "body": "駅の前で、男の人が「郵便局はどこですか」と聞きました。私は「橋を渡れば、銀行があります。銀行の前を歩いたら、角があります。角まで行ったら、コンビニがあります。コンビニの後ろの道を行けば、また橋があります」と言いました。男の人は、それをノートに書きました。話はだんだん長くなって、男の人は「長いですね」と言いました。男の人は「すみません」と言って、自分の後ろを見ました。郵便局は、男の人の後ろにありました。",
+        "questions": [
+          {
+            "prompt": "男の人は、何を聞きましたか。",
+            "accepted_answers": [
+              "郵便局はどこですか",
+              "郵便局",
+              "郵便局です",
+              "ゆうびんきょく",
+              "ゆうびんきょくです",
+              "郵便局はどこ",
+              "郵便局のこと"
+            ],
+            "prompt_furigana": "男[おとこ]の人[ひと]は、何[なに]を聞[き]きましたか。"
+          },
+          {
+            "prompt": "橋を渡れば、何がありますか。",
+            "accepted_answers": [
+              "銀行",
+              "銀行です",
+              "ぎんこう",
+              "ぎんこうです",
+              "銀行が"
+            ],
+            "prompt_furigana": "橋[はし]を渡[わた]れば、何[なに]がありますか。"
+          },
+          {
+            "prompt": "角まで行ったら、何がありますか。",
+            "accepted_answers": [
+              "コンビニ",
+              "コンビニです",
+              "コンビニが"
+            ],
+            "prompt_furigana": "角[かど]まで行[い]ったら、何[なに]がありますか。"
+          },
+          {
+            "prompt": "郵便局はどこにありましたか。",
+            "accepted_answers": [
+              "男の人の後ろ",
+              "男の人の後ろです",
+              "男の人の後ろに",
+              "おとこのひとのうしろ",
+              "おとこのひとのうしろです",
+              "後ろ",
+              "後ろです",
+              "うしろ",
+              "うしろです"
+            ],
+            "prompt_furigana": "郵[ゆう]便[びん]局[きょく]はどこにありましたか。"
+          }
+        ],
+        "english_translation": "In front of the station, a man asked, \"Where is the post office?\" I said, \"If you cross the bridge, there is a bank. If you walk in front of the bank, there is a corner. If you go to the corner, there is a convenience store. If you go along the road behind the convenience store, there is a bridge again.\" The man wrote it in his notebook. The story gradually got longer, and the man said, \"It's long, isn't it?\" The man said, \"Excuse me,\" and looked behind himself. The post office was behind the man.",
+        "summary_ja": "男の人に道を長く教えましたが、郵便局は男の人の後ろにありました。",
+        "summary_en": "The writer gave a man very long directions, but the post office was right behind him.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "ba",
+          "de-location",
+          "desu",
+          "ga",
+          "ka-question",
+          "made-until",
+          "masen",
+          "mashita",
+          "masu",
+          "naru-become",
+          "ne-tag",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "tara",
+          "te-form",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "dandan",
+          "doko",
+          "eki",
+          "ginkou",
+          "hanashi",
+          "hashi-bridge",
+          "iu-v",
+          "jibun",
+          "kado",
+          "kaku",
+          "kiku-v",
+          "konbini",
+          "mae",
+          "mata",
+          "michi-v",
+          "miru-v",
+          "nagai-adj",
+          "naru-become",
+          "nooto",
+          "otokonohito",
+          "sore",
+          "sumimasen",
+          "ushiro",
+          "watashi",
+          "yuubinkyoku"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "eki",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "yuubinkyoku",
+            "start": 10,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "doko",
+            "start": 14,
+            "end": 16
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 21,
+            "end": 26,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 27,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "hashi-bridge",
+            "start": 30,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 36,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 39,
+            "end": 43,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 44,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 47,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "kado",
+            "start": 54,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 56,
+            "end": 60,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kado",
+            "start": 61,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "konbini",
+            "start": 69,
+            "end": 73
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 74,
+            "end": 78,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "konbini",
+            "start": 79,
+            "end": 83
+          },
+          {
+            "vocabulary_slug": "ushiro",
+            "start": 84,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 87,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "mata",
+            "start": 93,
+            "end": 95
+          },
+          {
+            "vocabulary_slug": "hashi-bridge",
+            "start": 95,
+            "end": 96
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 97,
+            "end": 101,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 103,
+            "end": 108,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 109,
+            "end": 112
+          },
+          {
+            "vocabulary_slug": "sore",
+            "start": 114,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "nooto",
+            "start": 117,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "kaku",
+            "start": 121,
+            "end": 126,
+            "surface_form": "書きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hanashi",
+            "start": 127,
+            "end": 128
+          },
+          {
+            "vocabulary_slug": "dandan",
+            "start": 129,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 135,
+            "end": 138,
+            "surface_form": "なって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 139,
+            "end": 142
+          },
+          {
+            "vocabulary_slug": "nagai-adj",
+            "start": 144,
+            "end": 146
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 151,
+            "end": 156,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 157,
+            "end": 160
+          },
+          {
+            "vocabulary_slug": "sumimasen",
+            "start": 162,
+            "end": 167
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 169,
+            "end": 172,
+            "surface_form": "言って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "jibun",
+            "start": 173,
+            "end": 175
+          },
+          {
+            "vocabulary_slug": "ushiro",
+            "start": 176,
+            "end": 178
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 179,
+            "end": 183,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "yuubinkyoku",
+            "start": 184,
+            "end": 187
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 189,
+            "end": 192
+          },
+          {
+            "vocabulary_slug": "ushiro",
+            "start": 193,
+            "end": 195
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 196,
+            "end": 201,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 120,
+        "body_furigana": "駅[えき]の前[まえ]で、男[おとこ]の人[ひと]が「郵[ゆう]便[びん]局[きょく]はどこですか」と聞[き]きました。私[わたし]は「橋[はし]を渡[わた]れば、銀[ぎん]行[こう]があります。銀[ぎん]行[こう]の前[まえ]を歩[ある]いたら、角[かど]があります。角[かど]まで行[い]ったら、コンビニがあります。コンビニの後[うし]ろの道[みち]を行[い]けば、また橋[はし]があります」と言[い]いました。男[おとこ]の人[ひと]は、それをノートに書[か]きました。話[はなし]はだんだん長[なが]くなって、男[おとこ]の人[ひと]は「長[なが]いですね」と言[い]いました。男[おとこ]の人[ひと]は「すみません」と言[い]って、自[じ]分[ぶん]の後[うし]ろを見[み]ました。郵[ゆう]便[びん]局[きょく]は、男[おとこ]の人[ひと]の後[うし]ろにありました。",
+        "slug": "yuubinkyoku-made-no-michi",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}
