@@ -1,0 +1,1027 @@
+{
+  "level": 12,
+  "passages": [
+    {
+      "seed": "tabesugita-shuumatsu",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "月曜日の朝",
+        "body": "土曜日に、私は食べすぎました。ご飯を三回食べて、パンも八つ食べました。日曜日はビールを飲みすぎました。月曜日の朝、シャツが小さくなりました。洗ったからかもしれません。でも、シャツは先週から洗っていません。私は病気かもしれません。それで、病院に行きました。医者は私の体を見て、「シャツは小さくなっていません。大きくなったのは、あなたです」と言いました。",
+        "questions": [
+          {
+            "prompt": "土曜日に、ご飯を何回食べましたか。",
+            "accepted_answers": [
+              "三回",
+              "三回です",
+              "3回",
+              "3回です",
+              "さんかい",
+              "さんかいです",
+              "三回食べました"
+            ],
+            "prompt_furigana": "土[ど]曜[よう]日[び]に、ご飯[はん]を何[なん]回[かい]食[た]べましたか。"
+          },
+          {
+            "prompt": "日曜日は何を飲みすぎましたか。",
+            "accepted_answers": [
+              "ビール",
+              "ビールです",
+              "ビールを"
+            ],
+            "prompt_furigana": "日[にち]曜[よう]日[び]は何[なに]を飲[の]みすぎましたか。"
+          },
+          {
+            "prompt": "月曜日の朝、何が小さくなりましたか。",
+            "accepted_answers": [
+              "シャツ",
+              "シャツです",
+              "シャツが"
+            ],
+            "prompt_furigana": "月[げつ]曜[よう]日[び]の朝[あさ]、何[なに]が小[ちい]さくなりましたか。"
+          },
+          {
+            "prompt": "どこに行きましたか。",
+            "accepted_answers": [
+              "病院",
+              "病院です",
+              "病院に",
+              "びょういん",
+              "びょういんです",
+              "びょういんに",
+              "病院に行きました"
+            ],
+            "prompt_furigana": "どこに行[い]きましたか。"
+          }
+        ],
+        "english_translation": "On Saturday I ate too much. I ate rice three times, and I also ate eight pieces of bread. On Sunday I drank too much beer. On Monday morning, my shirt got small. Maybe it's because I washed it. But I haven't washed the shirt since last week. Maybe I am ill. So I went to the hospital. The doctor looked at my body and said, \"The shirt has not gotten small. The one who got big is you.\"",
+        "summary_ja": "食べすぎた人が、月曜日にシャツが小さくなったので病院に行きます。",
+        "summary_en": "A person who ate too much finds the shirt has gotten small on Monday and goes to the hospital.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "de-location",
+          "desu",
+          "ga",
+          "kamoshirenai",
+          "kara-because",
+          "kara-from",
+          "mada-teinai",
+          "mashita",
+          "masu",
+          "mo-also",
+          "naru-become",
+          "ni-direction",
+          "no-nominalizer",
+          "no-possessive",
+          "sugiru",
+          "ta-form",
+          "te-form",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "anata",
+          "arau",
+          "asa",
+          "biiru",
+          "byouin",
+          "byouki",
+          "demo",
+          "doyoubi",
+          "getsuyoubi",
+          "gohan",
+          "iku-v",
+          "iru-exist",
+          "isha",
+          "iu-v",
+          "karada",
+          "miru-v",
+          "naru-become",
+          "nichiyoubi",
+          "pan",
+          "senshuu",
+          "shatsu",
+          "sorede",
+          "taberu",
+          "watashi",
+          "yattsu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "doyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "gohan",
+            "start": 15,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 20,
+            "end": 23,
+            "surface_form": "食べて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 24,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "yattsu",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 29,
+            "end": 34,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 35,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "biiru",
+            "start": 39,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 51,
+            "end": 54
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 55,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "shatsu",
+            "start": 57,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 64,
+            "end": 69,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "arau",
+            "start": 70,
+            "end": 73,
+            "surface_form": "洗った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 83,
+            "end": 85
+          },
+          {
+            "vocabulary_slug": "shatsu",
+            "start": 86,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "senshuu",
+            "start": 90,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "arau",
+            "start": 94,
+            "end": 97,
+            "surface_form": "洗って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 97,
+            "end": 101,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 102,
+            "end": 103
+          },
+          {
+            "vocabulary_slug": "byouki",
+            "start": 104,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "sorede",
+            "start": 114,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "byouin",
+            "start": 118,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 121,
+            "end": 126,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "isha",
+            "start": 127,
+            "end": 129
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 130,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "karada",
+            "start": 132,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 134,
+            "end": 136,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "shatsu",
+            "start": 138,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 145,
+            "end": 148,
+            "surface_form": "なって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 148,
+            "end": 152,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 156,
+            "end": 159,
+            "surface_form": "なった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "anata",
+            "start": 162,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 169,
+            "end": 174,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 102,
+        "body_furigana": "土[ど]曜[よう]日[び]に、私[わたし]は食[た]べすぎました。ご飯[はん]を三[さん]回[かい]食[た]べて、パンも八[やっ]つ食[た]べました。日[にち]曜[よう]日[び]はビールを飲[の]みすぎました。月[げつ]曜[よう]日[び]の朝[あさ]、シャツが小[ちい]さくなりました。洗[あら]ったからかもしれません。でも、シャツは先[せん]週[しゅう]から洗[あら]っていません。私[わたし]は病[びょう]気[き]かもしれません。それで、病[びょう]院[いん]に行[い]きました。医[い]者[しゃ]は私[わたし]の体[からだ]を見[み]て、「シャツは小[ちい]さくなっていません。大[おお]きくなったのは、あなたです」と言[い]いました。",
+        "slug": "tabesugita-shuumatsu",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "ongaku-o-kikinagara",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "弟のテスト",
+        "body": "先週、私の弟は毎晩勉強しました。音楽を聞きながら、テレビを見ながら、パンを食べながら勉強しました。毎晩勉強したのに、テストの結果は悪かったです。母は「どうしてですか」と聞きました。弟は「音楽とテレビが悪いんです」と言いました。今週、弟は音楽を聞きませんでした。テレビも見ませんでした。パンだけ食べながら、ゆっくり勉強しました。でも、結果はまた悪かったです。母は何も言いませんでした。",
+        "questions": [
+          {
+            "prompt": "弟は何を聞きながら勉強しましたか。",
+            "accepted_answers": [
+              "音楽",
+              "音楽です",
+              "音楽を",
+              "おんがく",
+              "おんがくです",
+              "おんがくを"
+            ],
+            "prompt_furigana": "弟[おとうと]は何[なに]を聞[き]きながら勉[べん]強[きょう]しましたか。"
+          },
+          {
+            "prompt": "テストの結果はどうでしたか。",
+            "accepted_answers": [
+              "悪かったです",
+              "悪かった",
+              "悪い",
+              "悪いです",
+              "わるかったです",
+              "わるかった",
+              "わるい",
+              "わるいです"
+            ],
+            "prompt_furigana": "テストの結[けっ]果[か]はどうでしたか。"
+          },
+          {
+            "prompt": "今週、弟は何を見ませんでしたか。",
+            "accepted_answers": [
+              "テレビ",
+              "テレビです",
+              "テレビも",
+              "テレビも見ませんでした"
+            ],
+            "prompt_furigana": "今[こん]週[しゅう]、弟[おとうと]は何[なに]を見[み]ませんでしたか。"
+          },
+          {
+            "prompt": "今週、弟は何を食べながら勉強しましたか。",
+            "accepted_answers": [
+              "パン",
+              "パンです",
+              "パンだけ",
+              "ぱん"
+            ],
+            "prompt_furigana": "今[こん]週[しゅう]、弟[おとうと]は何[なに]を食[た]べながら勉[べん]強[きょう]しましたか。"
+          }
+        ],
+        "english_translation": "Last week, my younger brother studied every night. He studied while listening to music, while watching TV, and while eating bread. Even though he studied every night, the test result was bad. Mother asked, \"Why?\" My brother said, \"The music and the TV are bad.\" This week, my brother did not listen to music. He did not watch TV either. He studied slowly, eating only bread. But the result was bad again. Mother said nothing.",
+        "summary_ja": "弟は毎晩勉強しましたが、テストの結果は悪かったです。",
+        "summary_en": "My brother studied every night, but his test result was bad.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "dake",
+          "desu",
+          "ga",
+          "ka-question",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "nagara",
+          "no-nominalizer",
+          "no-possessive",
+          "noni",
+          "ta-form",
+          "te-form",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "benkyou",
+          "demo",
+          "doushite",
+          "haha",
+          "iu-v",
+          "kekka",
+          "kiku-v",
+          "konshuu",
+          "maiban",
+          "mata",
+          "miru-v",
+          "nani",
+          "ongaku",
+          "otouto",
+          "pan",
+          "senshuu",
+          "terebi",
+          "tesuto",
+          "warui",
+          "watashi",
+          "yukkuri"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "senshuu",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 7,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 9,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "ongaku",
+            "start": 16,
+            "end": 18
+          },
+          {
+            "vocabulary_slug": "terebi",
+            "start": 25,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 42,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 49,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 51,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "tesuto",
+            "start": 58,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "kekka",
+            "start": 62,
+            "end": 64
+          },
+          {
+            "vocabulary_slug": "warui",
+            "start": 65,
+            "end": 69,
+            "surface_form": "悪かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 72,
+            "end": 73
+          },
+          {
+            "vocabulary_slug": "doushite",
+            "start": 75,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 84,
+            "end": 89,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 90,
+            "end": 91
+          },
+          {
+            "vocabulary_slug": "ongaku",
+            "start": 93,
+            "end": 95
+          },
+          {
+            "vocabulary_slug": "terebi",
+            "start": 96,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "warui",
+            "start": 100,
+            "end": 102
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 107,
+            "end": 112,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "konshuu",
+            "start": 113,
+            "end": 115
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 116,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "ongaku",
+            "start": 118,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 121,
+            "end": 129,
+            "surface_form": "聞きませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "terebi",
+            "start": 130,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 134,
+            "end": 141,
+            "surface_form": "見ませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 142,
+            "end": 144
+          },
+          {
+            "vocabulary_slug": "yukkuri",
+            "start": 152,
+            "end": 156
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 156,
+            "end": 158
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 163,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "kekka",
+            "start": 166,
+            "end": 168
+          },
+          {
+            "vocabulary_slug": "mata",
+            "start": 169,
+            "end": 171
+          },
+          {
+            "vocabulary_slug": "warui",
+            "start": 171,
+            "end": 175,
+            "surface_form": "悪かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 178,
+            "end": 179
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 180,
+            "end": 181
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 182,
+            "end": 190,
+            "surface_form": "言いませんでした",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 106,
+        "body_furigana": "先[せん]週[しゅう]、私[わたし]の弟[おとうと]は毎[まい]晩[ばん]勉[べん]強[きょう]しました。音[おん]楽[がく]を聞[き]きながら、テレビを見[み]ながら、パンを食[た]べながら勉[べん]強[きょう]しました。毎[まい]晩[ばん]勉[べん]強[きょう]したのに、テストの結[けっ]果[か]は悪[わる]かったです。母[はは]は「どうしてですか」と聞[き]きました。弟[おとうと]は「音[おん]楽[がく]とテレビが悪[わる]いんです」と言[い]いました。今[こん]週[しゅう]、弟[おとうと]は音[おん]楽[がく]を聞[き]きませんでした。テレビも見[み]ませんでした。パンだけ食[た]べながら、ゆっくり勉[べん]強[きょう]しました。でも、結[けっ]果[か]はまた悪[わる]かったです。母[はは]は何[なに]も言[い]いませんでした。",
+        "slug": "ongaku-o-kikinagara",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "haha-no-tame-ni",
+      "position": 3,
+      "tone": "neutral",
+      "passage": {
+        "title": "母のために",
+        "body": "日曜日、私は母のために店で花を買いました。弟は手紙を書いて、父は本を買いました。夕方、私は母に花をあげました。弟は手紙をあげて、父は本をあげました。母は花と手紙と本をもらいました。花は台所のテーブルの上にありました。母は「ありがとう」と言いました。それから母は台所に行って、みんなに晩ご飯を作ってくれました。母の料理は、いつもとてもおいしいです。",
+        "questions": [
+          {
+            "prompt": "私は母のために何を買いましたか。",
+            "accepted_answers": [
+              "花",
+              "花です",
+              "花を",
+              "はな",
+              "はなです",
+              "はなを"
+            ],
+            "prompt_furigana": "私[わたし]は母[はは]のために何[なに]を買[か]いましたか。"
+          },
+          {
+            "prompt": "弟は何を書きましたか。",
+            "accepted_answers": [
+              "手紙",
+              "手紙です",
+              "手紙を",
+              "てがみ",
+              "てがみです",
+              "てがみを"
+            ],
+            "prompt_furigana": "弟[おとうと]は何[なに]を書[か]きましたか。"
+          },
+          {
+            "prompt": "父は母に何をあげましたか。",
+            "accepted_answers": [
+              "本",
+              "本です",
+              "本を",
+              "ほん",
+              "ほんです",
+              "ほんを"
+            ],
+            "prompt_furigana": "父[ちち]は母[はは]に何[なに]をあげましたか。"
+          },
+          {
+            "prompt": "母は何を作りましたか。",
+            "accepted_answers": [
+              "晩ご飯",
+              "晩ご飯です",
+              "晩ご飯を",
+              "ばんごはん",
+              "ばんごはんです",
+              "ばんごはんを"
+            ],
+            "prompt_furigana": "母[はは]は何[なに]を作[つく]りましたか。"
+          }
+        ],
+        "english_translation": "On Sunday, I bought flowers for Mother at a shop. My younger brother wrote a letter, and Father bought a book. In the evening, I gave Mother the flowers. My brother gave her the letter, and Father gave her the book. Mother received the flowers, the letter and the book. The flowers were on the kitchen table. Mother said, \"Thank you.\" Then Mother went to the kitchen and made dinner for everyone. Mother's cooking is always very delicious.",
+        "summary_ja": "母は花と手紙と本をもらって、晩ご飯を作ってくれました。",
+        "summary_en": "Mother received flowers, a letter and a book, and then made dinner for everyone.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "de-location",
+          "desu",
+          "kara-from",
+          "mashita",
+          "masu",
+          "mo-also",
+          "moraru-ageru-kureru",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "tame-ni",
+          "te-form",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "ageru",
+          "arigatou",
+          "aru",
+          "bangohan",
+          "chichi",
+          "daidokoro",
+          "haha",
+          "hana-v",
+          "hon",
+          "iku-v",
+          "itsumo",
+          "iu-v",
+          "kaku",
+          "kau-v",
+          "kureru",
+          "minna",
+          "mise",
+          "morau",
+          "nichiyoubi",
+          "oishii",
+          "otouto",
+          "ryouri",
+          "sorekara",
+          "teeburu",
+          "tegami",
+          "totemo",
+          "tsukuru",
+          "ue",
+          "watashi",
+          "yuugata"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 11,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 13,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 15,
+            "end": 20,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 21,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "tegami",
+            "start": 23,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "kaku",
+            "start": 26,
+            "end": 29,
+            "surface_form": "書いて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 30,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 32,
+            "end": 33
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 34,
+            "end": 39,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "yuugata",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 43,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 45,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 47,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "ageru",
+            "start": 49,
+            "end": 54,
+            "surface_form": "あげました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 55,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "tegami",
+            "start": 57,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "ageru",
+            "start": 60,
+            "end": 63,
+            "surface_form": "あげて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 64,
+            "end": 65
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 66,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "ageru",
+            "start": 68,
+            "end": 73,
+            "surface_form": "あげました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 74,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 76,
+            "end": 77
+          },
+          {
+            "vocabulary_slug": "tegami",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 81,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "morau",
+            "start": 83,
+            "end": 89,
+            "surface_form": "もらいました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 90,
+            "end": 91
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 92,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 95,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 100,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 102,
+            "end": 107,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 108,
+            "end": 109
+          },
+          {
+            "vocabulary_slug": "arigatou",
+            "start": 111,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 118,
+            "end": 123,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sorekara",
+            "start": 124,
+            "end": 128
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 128,
+            "end": 129
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 130,
+            "end": 132
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 133,
+            "end": 136,
+            "surface_form": "行って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 137,
+            "end": 140
+          },
+          {
+            "vocabulary_slug": "bangohan",
+            "start": 141,
+            "end": 144
+          },
+          {
+            "vocabulary_slug": "tsukuru",
+            "start": 145,
+            "end": 148,
+            "surface_form": "作って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "kureru",
+            "start": 148,
+            "end": 153,
+            "surface_form": "くれました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 154,
+            "end": 155
+          },
+          {
+            "vocabulary_slug": "ryouri",
+            "start": 156,
+            "end": 158
+          },
+          {
+            "vocabulary_slug": "itsumo",
+            "start": 160,
+            "end": 163
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 163,
+            "end": 166
+          },
+          {
+            "vocabulary_slug": "oishii",
+            "start": 166,
+            "end": 170
+          }
+        ],
+        "word_count": 106,
+        "body_furigana": "日[にち]曜[よう]日[び]、私[わたし]は母[はは]のために店[みせ]で花[はな]を買[か]いました。弟[おとうと]は手[て]紙[がみ]を書[か]いて、父[ちち]は本[ほん]を買[か]いました。夕[ゆう]方[がた]、私[わたし]は母[はは]に花[はな]をあげました。弟[おとうと]は手[て]紙[がみ]をあげて、父[ちち]は本[ほん]をあげました。母[はは]は花[はな]と手[て]紙[がみ]と本[ほん]をもらいました。花[はな]は台[だい]所[どころ]のテーブルの上[うえ]にありました。母[はは]は「ありがとう」と言[い]いました。それから母[はは]は台[だい]所[どころ]に行[い]って、みんなに晩[ばん]ご飯[はん]を作[つく]ってくれました。母[はは]の料[りょう]理[り]は、いつもとてもおいしいです。",
+        "slug": "haha-no-tame-ni",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}
