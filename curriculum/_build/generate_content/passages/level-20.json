@@ -1,0 +1,1737 @@
+{
+  "level": 20,
+  "passages": [
+    {
+      "seed": "gomi-no-hi",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "ごみの人",
+        "body": "私は先月、新しい家に引っ越しました。この町のごみの日は、とても大変です。月曜日は食べ物のごみの日です。火曜日は古い服とか靴とかを出します。木曜日は、紙以外のごみを出してはいけません。ごみの日の紙は長くて、ドアの前に貼ってあります。最初の一週間は、毎朝その紙を読んでから、ごみ箱を見ました。時々、ごみを持って、一時間ぐらいその紙の前に立っていました。今は、全部覚えています。そして、近くの人が毎朝来て、「今日は何のごみですか」と聞きます。おばあさんは、ごみ箱を持って、ドアの前で待っています。町の人の名前はまだ知りません。でも、みんなは私を「ごみの人」と呼びます。",
+        "questions": [
+          {
+            "prompt": "私はいつ新しい家に引っ越しましたか。",
+            "accepted_answers": [
+              "先月",
+              "せんげつ",
+              "先月です",
+              "せんげつです"
+            ],
+            "prompt_furigana": "私[わたし]はいつ新[あたら]しい家[いえ]に引[ひ]っ越[こ]しましたか。"
+          },
+          {
+            "prompt": "月曜日は何のごみの日ですか。",
+            "accepted_answers": [
+              "食べ物のごみ",
+              "食べ物",
+              "食べ物のごみです",
+              "食べ物です",
+              "たべもののごみ",
+              "たべもの",
+              "たべもののごみです",
+              "たべものです"
+            ],
+            "prompt_furigana": "月[げつ]曜[よう]日[び]は何[なに]のごみの日[ひ]ですか。"
+          },
+          {
+            "prompt": "木曜日は何以外のごみを出してはいけませんか。",
+            "accepted_answers": [
+              "紙",
+              "紙です",
+              "紙以外",
+              "かみ",
+              "かみです",
+              "かみ以外"
+            ],
+            "prompt_furigana": "木[もく]曜[よう]日[び]は何[なに]以[い]外[がい]のごみを出[だ]してはいけませんか。"
+          },
+          {
+            "prompt": "ごみの日の紙はどこに貼ってありますか。",
+            "accepted_answers": [
+              "ドアの前",
+              "ドアの前に",
+              "ドアの前です",
+              "ドアの前にあります",
+              "どあのまえ",
+              "どあのまえに",
+              "どあのまえです"
+            ],
+            "prompt_furigana": "ごみの日[ひ]の紙[かみ]はどこに貼[は]ってありますか。"
+          },
+          {
+            "prompt": "みんなは私を何と呼びますか。",
+            "accepted_answers": [
+              "ごみの人",
+              "ごみの人です",
+              "ごみのひと",
+              "ごみのひとです",
+              "ゴミの人",
+              "ゴミのひと"
+            ],
+            "prompt_furigana": "みんなは私[わたし]を何[なに]と呼[よ]びますか。"
+          }
+        ],
+        "english_translation": "I moved into a new house last month. The rubbish days in this town are really tough. Monday is the day for food rubbish. On Tuesday you put out old clothes and shoes and the like. On Thursday you must not put out any rubbish other than paper. The paper with the rubbish days on it is long, and it is stuck up in front of the door. For the first week, every morning I read that paper and then looked at the rubbish bin. Sometimes I held the rubbish and stood in front of that paper for about an hour. Now I remember all of it. And so people nearby come every morning and ask, \"What rubbish is it today?\" The old lady stands in front of the door holding her rubbish bin, waiting. I still do not know the names of the people in town. But everyone calls me \"the rubbish person.\"",
+        "summary_ja": "新しい町で、私はごみの日を全部覚えて、みんなに聞かれます。",
+        "summary_en": "In a new town, the writer learns all the rubbish days and everyone starts asking them.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "gurai",
+          "igai",
+          "ka-question",
+          "kurai-degree",
+          "masen",
+          "mashita",
+          "masu",
+          "ni-direction",
+          "no-possessive",
+          "potential",
+          "te-form",
+          "te-iru",
+          "te-kara",
+          "te-wa-ikenai",
+          "tearu",
+          "teiru-result",
+          "to-quotation",
+          "toka",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "atarashii-adj",
+          "chikaku",
+          "dasu",
+          "demo",
+          "doa",
+          "fuku",
+          "furui-adj",
+          "getsuyoubi",
+          "gomi",
+          "gomibako",
+          "haru-attach",
+          "hi-sun-v",
+          "hikkoshi",
+          "hito",
+          "ie",
+          "ima",
+          "iru-exist",
+          "kami-paper",
+          "kayoubi",
+          "kiku-v",
+          "kono",
+          "kuru-v",
+          "kutsu",
+          "kyou",
+          "machi-v",
+          "mada",
+          "mae",
+          "maiasa",
+          "matsu",
+          "minna",
+          "miru-v",
+          "mokuyoubi",
+          "motsu",
+          "nagai-adj",
+          "namae",
+          "nani",
+          "obaasan",
+          "oboeru",
+          "saisho",
+          "sengetsu",
+          "shiru",
+          "sono",
+          "soshite",
+          "tabemono",
+          "taihen",
+          "tatsu-v",
+          "tokidoki",
+          "totemo",
+          "watashi",
+          "yobu",
+          "yomu",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "sengetsu",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "atarashii-adj",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "hikkoshi",
+            "start": 10,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "kono",
+            "start": 18,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "machi-v",
+            "start": 20,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 25,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 28,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "taihen",
+            "start": 31,
+            "end": 33
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 36,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "tabemono",
+            "start": 40,
+            "end": 43
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 44,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 47,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "kayoubi",
+            "start": 51,
+            "end": 54
+          },
+          {
+            "vocabulary_slug": "furui-adj",
+            "start": 55,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "fuku",
+            "start": 57,
+            "end": 58
+          },
+          {
+            "vocabulary_slug": "kutsu",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "dasu",
+            "start": 64,
+            "end": 68,
+            "surface_form": "出します",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mokuyoubi",
+            "start": 69,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 74,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "dasu",
+            "start": 81,
+            "end": 84,
+            "surface_form": "出して",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 91,
+            "end": 93
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 94,
+            "end": 95
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 96,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "nagai-adj",
+            "start": 98,
+            "end": 101,
+            "surface_form": "長くて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 102,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 105,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "haru-attach",
+            "start": 107,
+            "end": 110,
+            "surface_form": "貼って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 110,
+            "end": 114,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "saisho",
+            "start": 115,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "maiasa",
+            "start": 123,
+            "end": 125
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 125,
+            "end": 127
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 127,
+            "end": 128
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 129,
+            "end": 132,
+            "surface_form": "読んで",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "gomibako",
+            "start": 135,
+            "end": 138
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 139,
+            "end": 143,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tokidoki",
+            "start": 144,
+            "end": 146
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 147,
+            "end": 149
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 150,
+            "end": 153,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 160,
+            "end": 162
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 162,
+            "end": 163
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 164,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "tatsu-v",
+            "start": 166,
+            "end": 169,
+            "surface_form": "立って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 169,
+            "end": 173,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 174,
+            "end": 175
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 177,
+            "end": 179
+          },
+          {
+            "vocabulary_slug": "oboeru",
+            "start": 179,
+            "end": 182,
+            "surface_form": "覚えて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 182,
+            "end": 185,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "soshite",
+            "start": 186,
+            "end": 189
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 190,
+            "end": 192
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 193,
+            "end": 194
+          },
+          {
+            "vocabulary_slug": "maiasa",
+            "start": 195,
+            "end": 197
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 197,
+            "end": 199,
+            "surface_form": "来て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 201,
+            "end": 203
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 204,
+            "end": 205
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 206,
+            "end": 208
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 213,
+            "end": 217,
+            "surface_form": "聞きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 218,
+            "end": 223
+          },
+          {
+            "vocabulary_slug": "gomibako",
+            "start": 225,
+            "end": 228
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 229,
+            "end": 232,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 233,
+            "end": 235
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 236,
+            "end": 237
+          },
+          {
+            "vocabulary_slug": "matsu",
+            "start": 238,
+            "end": 241,
+            "surface_form": "待って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 241,
+            "end": 244,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "machi-v",
+            "start": 245,
+            "end": 246
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 247,
+            "end": 248
+          },
+          {
+            "vocabulary_slug": "namae",
+            "start": 249,
+            "end": 251
+          },
+          {
+            "vocabulary_slug": "mada",
+            "start": 252,
+            "end": 254
+          },
+          {
+            "vocabulary_slug": "shiru",
+            "start": 254,
+            "end": 259,
+            "surface_form": "知りません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 260,
+            "end": 262
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 263,
+            "end": 266
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 267,
+            "end": 268
+          },
+          {
+            "vocabulary_slug": "gomi",
+            "start": 270,
+            "end": 272
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 273,
+            "end": 274
+          },
+          {
+            "vocabulary_slug": "yobu",
+            "start": 276,
+            "end": 280,
+            "surface_form": "呼びます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 169,
+        "body_furigana": "私[わたし]は先[せん]月[げつ]、新[あたら]しい家[いえ]に引[ひ]っ越[こ]しました。この町[まち]のごみの日[ひ]は、とても大[たい]変[へん]です。月[げつ]曜[よう]日[び]は食[た]べ物[もの]のごみの日[ひ]です。火[か]曜[よう]日[び]は古[ふる]い服[ふく]とか靴[くつ]とかを出[だ]します。木[もく]曜[よう]日[び]は、紙[かみ]以[い]外[がい]のごみを出[だ]してはいけません。ごみの日[ひ]の紙[かみ]は長[なが]くて、ドアの前[まえ]に貼[は]ってあります。最[さい]初[しょ]の一[いっ]週[しゅう]間[かん]は、毎[まい]朝[あさ]その紙[かみ]を読[よ]んでから、ごみ箱[ばこ]を見[み]ました。時[とき]々[どき]、ごみを持[も]って、一[いち]時[じ]間[かん]ぐらいその紙[かみ]の前[まえ]に立[た]っていました。今[いま]は、全[ぜん]部[ぶ]覚[おぼ]えています。そして、近[ちか]くの人[ひと]が毎[まい]朝[あさ]来[き]て、「今日[きょう]は何[なに]のごみですか」と聞[き]きます。おばあさんは、ごみ箱[ばこ]を持[も]って、ドアの前[まえ]で待[ま]っています。町[まち]の人[ひと]の名[な]前[まえ]はまだ知[し]りません。でも、みんなは私[わたし]を「ごみの人[ひと]」と呼[よ]びます。",
+        "slug": "gomi-no-hi",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "taifuu-no-ato",
+      "position": 2,
+      "tone": "neutral",
+      "passage": {
+        "title": "台風の朝のパン",
+        "body": "昨日の夜、私の町に強い台風が来ました。そのため、今日は電車が止まって、学校の授業もありません。それでも、駅の近くのパンの店は、いつもと同じ七時にドアを開けました。外は雨と風で、道には水がたくさんありました。濡れたお客さんが、店に入って、パンを買います。おじいさんは、大きいパンを二つ買いました。小さい女の子は、濡れた帽子を持って、お母さんの後ろに立っています。店の中は暖かくて、パンは熱かったです。私も朝ご飯のパンを買って、店の人に「ありがとう」と言いました。店の人は、「大変でしたね」と言って、お茶をくれました。",
+        "questions": [
+          {
+            "prompt": "台風はいつ来ましたか。",
+            "accepted_answers": [
+              "昨日の夜",
+              "昨日の夜です",
+              "きのうのよる",
+              "きのうのよるです",
+              "昨日の晩",
+              "きのうのばん"
+            ],
+            "prompt_furigana": "台[たい]風[ふう]はいつ来[き]ましたか。"
+          },
+          {
+            "prompt": "今日、何が止まりましたか。",
+            "accepted_answers": [
+              "電車",
+              "電車です",
+              "でんしゃ",
+              "でんしゃです"
+            ],
+            "prompt_furigana": "今日[きょう]、何[なに]が止[と]まりましたか。"
+          },
+          {
+            "prompt": "パンの店は何時にドアを開けましたか。",
+            "accepted_answers": [
+              "七時",
+              "七時です",
+              "しちじ",
+              "しちじです",
+              "ななじ",
+              "ななじです",
+              "7時",
+              "7時です"
+            ],
+            "prompt_furigana": "パンの店[みせ]は何[なん]時[じ]にドアを開[あ]けましたか。"
+          },
+          {
+            "prompt": "おじいさんは大きいパンをいくつ買いましたか。",
+            "accepted_answers": [
+              "二つ",
+              "二つです",
+              "ふたつ",
+              "ふたつです",
+              "2つ",
+              "2つです"
+            ],
+            "prompt_furigana": "おじいさんは大[おお]きいパンをいくつ買[か]いましたか。"
+          },
+          {
+            "prompt": "店の人は何をくれましたか。",
+            "accepted_answers": [
+              "お茶",
+              "お茶です",
+              "おちゃ",
+              "おちゃです"
+            ],
+            "prompt_furigana": "店[みせ]の人[ひと]は何[なに]をくれましたか。"
+          }
+        ],
+        "english_translation": "Last night a strong typhoon came to my town. Because of that, the trains have stopped today, and there are no classes at school either. Even so, the bread shop near the station opened its door at seven, the same time as always. Outside it was rain and wind, and there was a lot of water on the road. Wet customers come into the shop and buy bread. An old man bought two big loaves. A little girl holds her wet hat and stands behind her mother. Inside the shop it was warm, and the bread was hot. I also bought bread for breakfast and said \"Thank you\" to the shop clerk. The clerk said, \"That was a hard night, wasn't it?\" and gave me some tea.",
+        "summary_ja": "台風の朝、駅の近くのパンの店は七時にドアを開けました。",
+        "summary_en": "On the morning after a typhoon, the bakery near the station opened at seven as usual.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "desu",
+          "ga",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "moraru-ageru-kureru",
+          "ne-tag",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "sonoseika-de",
+          "soredemo",
+          "ta-form",
+          "te-form",
+          "te-iru",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "akeru",
+          "ame-v",
+          "arigatou",
+          "aru",
+          "asagohan",
+          "atatakai",
+          "atsui-obj",
+          "boushi",
+          "chiisai",
+          "chikaku",
+          "densha",
+          "doa",
+          "eki",
+          "futatsu",
+          "gakkou-v",
+          "hairu-v",
+          "hito",
+          "iru-exist",
+          "itsumo",
+          "iu-v",
+          "jugyou",
+          "kau-v",
+          "kaze-wind",
+          "kinou",
+          "kureru",
+          "kuru-v",
+          "kyou",
+          "machi-v",
+          "michi-v",
+          "mise",
+          "mizu",
+          "motsu",
+          "naka",
+          "nureru",
+          "ocha",
+          "ojiisan",
+          "okaasan",
+          "okyakusan",
+          "onaji",
+          "onnanoko",
+          "ookii",
+          "pan",
+          "sono",
+          "sorede",
+          "soto",
+          "taifuu",
+          "taihen",
+          "takusan",
+          "tatsu-v",
+          "tomaru",
+          "tsuyoi",
+          "ushiro",
+          "watashi",
+          "yoru"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "yoru",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "machi-v",
+            "start": 7,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "tsuyoi",
+            "start": 9,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "taifuu",
+            "start": 11,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 14,
+            "end": 18,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 19,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 24,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "tomaru",
+            "start": 30,
+            "end": 34,
+            "surface_form": "止まって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "gakkou-v",
+            "start": 35,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "jugyou",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 41,
+            "end": 46,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sorede",
+            "start": 47,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 52,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 57,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "itsumo",
+            "start": 63,
+            "end": 66
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 67,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 72,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "akeru",
+            "start": 75,
+            "end": 80,
+            "surface_form": "開けました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "soto",
+            "start": 81,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "ame-v",
+            "start": 83,
+            "end": 84
+          },
+          {
+            "vocabulary_slug": "kaze-wind",
+            "start": 85,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 88,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 91,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 93,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 97,
+            "end": 102,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nureru",
+            "start": 103,
+            "end": 106,
+            "surface_form": "濡れた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "okyakusan",
+            "start": 106,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 112,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 114,
+            "end": 117,
+            "surface_form": "入って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 118,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 121,
+            "end": 125,
+            "surface_form": "買います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 126,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 133,
+            "end": 136
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 136,
+            "end": 138
+          },
+          {
+            "vocabulary_slug": "futatsu",
+            "start": 139,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 141,
+            "end": 146,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 147,
+            "end": 150
+          },
+          {
+            "vocabulary_slug": "onnanoko",
+            "start": 150,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "nureru",
+            "start": 155,
+            "end": 158,
+            "surface_form": "濡れた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "boushi",
+            "start": 158,
+            "end": 160
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 161,
+            "end": 164,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "okaasan",
+            "start": 165,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "ushiro",
+            "start": 170,
+            "end": 172
+          },
+          {
+            "vocabulary_slug": "tatsu-v",
+            "start": 173,
+            "end": 176,
+            "surface_form": "立って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 176,
+            "end": 179,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 180,
+            "end": 181
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 182,
+            "end": 183
+          },
+          {
+            "vocabulary_slug": "atatakai",
+            "start": 184,
+            "end": 188,
+            "surface_form": "暖かくて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 189,
+            "end": 191
+          },
+          {
+            "vocabulary_slug": "atsui-obj",
+            "start": 192,
+            "end": 196,
+            "surface_form": "熱かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 199,
+            "end": 200
+          },
+          {
+            "vocabulary_slug": "asagohan",
+            "start": 201,
+            "end": 204
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 205,
+            "end": 207
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 208,
+            "end": 211,
+            "surface_form": "買って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 212,
+            "end": 213
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 214,
+            "end": 215
+          },
+          {
+            "vocabulary_slug": "arigatou",
+            "start": 217,
+            "end": 222
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 224,
+            "end": 229,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 230,
+            "end": 231
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 232,
+            "end": 233
+          },
+          {
+            "vocabulary_slug": "taihen",
+            "start": 236,
+            "end": 238
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 244,
+            "end": 247,
+            "surface_form": "言って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "ocha",
+            "start": 248,
+            "end": 250
+          },
+          {
+            "vocabulary_slug": "kureru",
+            "start": 251,
+            "end": 256,
+            "surface_form": "くれました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 156,
+        "body_furigana": "昨日[きのう]の夜[よる]、私[わたし]の町[まち]に強[つよ]い台[たい]風[ふう]が来[き]ました。そのため、今日[きょう]は電[でん]車[しゃ]が止[と]まって、学[がっ]校[こう]の授[じゅ]業[ぎょう]もありません。それでも、駅[えき]の近[ちか]くのパンの店[みせ]は、いつもと同[おな]じ七[しち]時[じ]にドアを開[あ]けました。外[そと]は雨[あめ]と風[かぜ]で、道[みち]には水[みず]がたくさんありました。濡[ぬ]れたお客[きゃく]さんが、店[みせ]に入[はい]って、パンを買[か]います。おじいさんは、大[おお]きいパンを二[ふた]つ買[か]いました。小[ちい]さい女[おんな]の子[こ]は、濡[ぬ]れた帽[ぼう]子[し]を持[も]って、お母[かあ]さんの後[うし]ろに立[た]っています。店[みせ]の中[なか]は暖[あたた]かくて、パンは熱[あつ]かったです。私[わたし]も朝[あさ]ご飯[はん]のパンを買[か]って、店[みせ]の人[ひと]に「ありがとう」と言[い]いました。店[みせ]の人[ひと]は、「大[たい]変[へん]でしたね」と言[い]って、お茶[ちゃ]をくれました。",
+        "slug": "taifuu-no-ato",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "hanabi-ga-mienai",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "花火の席",
+        "body": "夏の夜、私は一人で花火を見に行きました。でも、前に大きい男の人がたくさんいて、花火は全然見えません。そこで、近くの小さい山に登りました。山の上は暗くて、人は誰もいません。箱の上に座って、空を見ました。すると、黒い帽子の男の人が来て、「ここは花火を上げる所です」と言いました。そして、「その箱は花火です。座らないでください」と言いました。箱からすぐ降りました。男の人は、時計を見て、「もうすぐ始まります。ここで見てもいいですよ」と言いました。花火は、山の上の一番いい席で見ました。とても近くて、空が全部赤くなりました。そして、三日、耳が痛かったです。",
+        "questions": [
+          {
+            "prompt": "前にどんな人がたくさんいましたか。",
+            "accepted_answers": [
+              "大きい男の人",
+              "大きい男の人です",
+              "おおきいおとこのひと",
+              "おおきいおとこのひとです",
+              "大きい男の人がたくさんいます"
+            ],
+            "prompt_furigana": "前[まえ]にどんな人[ひと]がたくさんいましたか。"
+          },
+          {
+            "prompt": "近くの何に登りましたか。",
+            "accepted_answers": [
+              "小さい山",
+              "小さい山です",
+              "ちいさいやま",
+              "ちいさいやまです",
+              "山",
+              "山です",
+              "やま",
+              "やまです"
+            ],
+            "prompt_furigana": "近[ちか]くの何[なに]に登[のぼ]りましたか。"
+          },
+          {
+            "prompt": "山の上で何の上に座りましたか。",
+            "accepted_answers": [
+              "箱の上",
+              "箱の上です",
+              "箱",
+              "箱です",
+              "はこのうえ",
+              "はこのうえです",
+              "はこ",
+              "はこです"
+            ],
+            "prompt_furigana": "山[やま]の上[うえ]で何[なに]の上[うえ]に座[すわ]りましたか。"
+          },
+          {
+            "prompt": "男の人はどんな帽子でしたか。",
+            "accepted_answers": [
+              "黒い帽子",
+              "黒い帽子です",
+              "黒い",
+              "くろいぼうし",
+              "くろいぼうしです",
+              "くろい"
+            ],
+            "prompt_furigana": "男[おとこ]の人[ひと]はどんな帽[ぼう]子[し]でしたか。"
+          },
+          {
+            "prompt": "耳は何日痛かったですか。",
+            "accepted_answers": [
+              "三日",
+              "三日です",
+              "みっか",
+              "みっかです",
+              "3日",
+              "3日です"
+            ],
+            "prompt_furigana": "耳[みみ]は何[なん]日[にち]痛[いた]かったですか。"
+          }
+        ],
+        "english_translation": "On a summer night, I went alone to see the fireworks. But there were lots of big men in front, and I could not see the fireworks at all. So I climbed a small hill nearby. The top of the hill was dark, and there was no one there. I sat on a box and looked at the sky. Then a man in a black hat came and said, \"This is the place where the fireworks go up.\" And he said, \"That box is the fireworks. Please do not sit on it.\" I got off the box right away. The man looked at his watch and said, \"It will start soon. You may watch from here.\" I watched the fireworks from the best seat on the hill. They were very close, and the whole sky turned red. And my ears hurt for three days.",
+        "summary_ja": "山の上で、箱に座ると、男の人が来て、箱は花火だと言いました。",
+        "summary_en": "On a hill, the writer sits on a box, and a man says the box is the fireworks.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "mou-past",
+          "naide-kudasai",
+          "naru-become",
+          "ni-direction",
+          "ni-iku",
+          "no-possessive",
+          "potential",
+          "sokode",
+          "superlative-ichiban",
+          "suruto",
+          "ta-form",
+          "te-form",
+          "te-mo-ii",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis",
+          "zenzen-nai"
+        ],
+        "vocabulary_slugs": [
+          "ageru-raise",
+          "boushi",
+          "chiisai",
+          "chikaku",
+          "dare-mo",
+          "demo",
+          "furu-rain",
+          "hajimaru",
+          "hako",
+          "hanabi",
+          "hito",
+          "hitori-de",
+          "ichiban",
+          "ii",
+          "iku-v",
+          "iru-exist",
+          "itai",
+          "iu-v",
+          "koko",
+          "kurai",
+          "kuroi",
+          "kuru-v",
+          "mae",
+          "mieru",
+          "mikka",
+          "mimi-v",
+          "miru-v",
+          "mou",
+          "naru-become",
+          "natsu",
+          "noboru",
+          "ookii",
+          "otokonohito",
+          "seki-seat",
+          "soko",
+          "sono",
+          "sora",
+          "soshite",
+          "sugu",
+          "suru",
+          "suwaru",
+          "takusan",
+          "tokei",
+          "tokoro",
+          "totemo",
+          "ue",
+          "watashi",
+          "yama-v",
+          "yoru",
+          "zenbu",
+          "zenzen"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "natsu",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "yoru",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "hitori-de",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "hanabi",
+            "start": 9,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 14,
+            "end": 19,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 23,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 25,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 28,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 32,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 36,
+            "end": 38,
+            "surface_form": "いて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "hanabi",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "zenzen",
+            "start": 42,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "mieru",
+            "start": 44,
+            "end": 49,
+            "surface_form": "見えません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "soko",
+            "start": 50,
+            "end": 52
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 57,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "yama-v",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "noboru",
+            "start": 62,
+            "end": 67,
+            "surface_form": "登りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "yama-v",
+            "start": 68,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 70,
+            "end": 71
+          },
+          {
+            "vocabulary_slug": "kurai",
+            "start": 72,
+            "end": 75,
+            "surface_form": "暗くて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 76,
+            "end": 77
+          },
+          {
+            "vocabulary_slug": "dare-mo",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 80,
+            "end": 84,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 85,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 87,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 89,
+            "end": 92,
+            "surface_form": "座って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "sora",
+            "start": 93,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 95,
+            "end": 99,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 100,
+            "end": 102
+          },
+          {
+            "vocabulary_slug": "kuroi",
+            "start": 104,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "boushi",
+            "start": 106,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 109,
+            "end": 112
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 113,
+            "end": 115,
+            "surface_form": "来て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 117,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "hanabi",
+            "start": 120,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "ageru-raise",
+            "start": 123,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "tokoro",
+            "start": 126,
+            "end": 127
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 131,
+            "end": 136,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "soshite",
+            "start": 137,
+            "end": 140
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 142,
+            "end": 144
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 144,
+            "end": 145
+          },
+          {
+            "vocabulary_slug": "hanabi",
+            "start": 146,
+            "end": 148
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 151,
+            "end": 156,
+            "surface_form": "座らないで",
+            "inflection": "nai"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 162,
+            "end": 167,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 168,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 171,
+            "end": 173
+          },
+          {
+            "vocabulary_slug": "furu-rain",
+            "start": 173,
+            "end": 178,
+            "surface_form": "降りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 179,
+            "end": 182
+          },
+          {
+            "vocabulary_slug": "tokei",
+            "start": 184,
+            "end": 186
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 187,
+            "end": 189,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "mou",
+            "start": 191,
+            "end": 193
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 193,
+            "end": 195
+          },
+          {
+            "vocabulary_slug": "hajimaru",
+            "start": 195,
+            "end": 200,
+            "surface_form": "始まります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 201,
+            "end": 203
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 204,
+            "end": 206,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 207,
+            "end": 209
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 214,
+            "end": 219,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "hanabi",
+            "start": 220,
+            "end": 222
+          },
+          {
+            "vocabulary_slug": "yama-v",
+            "start": 224,
+            "end": 225
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 226,
+            "end": 227
+          },
+          {
+            "vocabulary_slug": "ichiban",
+            "start": 228,
+            "end": 230
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 230,
+            "end": 232
+          },
+          {
+            "vocabulary_slug": "seki-seat",
+            "start": 232,
+            "end": 233
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 234,
+            "end": 238,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 239,
+            "end": 242
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 242,
+            "end": 244
+          },
+          {
+            "vocabulary_slug": "sora",
+            "start": 246,
+            "end": 247
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 248,
+            "end": 250
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 252,
+            "end": 257,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "soshite",
+            "start": 258,
+            "end": 261
+          },
+          {
+            "vocabulary_slug": "mikka",
+            "start": 262,
+            "end": 264
+          },
+          {
+            "vocabulary_slug": "mimi-v",
+            "start": 265,
+            "end": 266
+          },
+          {
+            "vocabulary_slug": "itai",
+            "start": 267,
+            "end": 271,
+            "surface_form": "痛かった",
+            "inflection": "ta"
+          }
+        ],
+        "word_count": 163,
+        "body_furigana": "夏[なつ]の夜[よる]、私[わたし]は一人[ひとり]で花[はな]火[び]を見[み]に行[い]きました。でも、前[まえ]に大[おお]きい男[おとこ]の人[ひと]がたくさんいて、花[はな]火[び]は全[ぜん]然[ぜん]見[み]えません。そこで、近[ちか]くの小[ちい]さい山[やま]に登[のぼ]りました。山[やま]の上[うえ]は暗[くら]くて、人[ひと]は誰[だれ]もいません。箱[はこ]の上[うえ]に座[すわ]って、空[そら]を見[み]ました。すると、黒[くろ]い帽[ぼう]子[し]の男[おとこ]の人[ひと]が来[き]て、「ここは花[はな]火[び]を上[あ]げる所[ところ]です」と言[い]いました。そして、「その箱[はこ]は花[はな]火[び]です。座[すわ]らないでください」と言[い]いました。箱[はこ]からすぐ降[ふ]りました。男[おとこ]の人[ひと]は、時計[とけい]を見[み]て、「もうすぐ始[はじ]まります。ここで見[み]てもいいですよ」と言[い]いました。花[はな]火[び]は、山[やま]の上[うえ]の一[いち]番[ばん]いい席[せき]で見[み]ました。とても近[ちか]くて、空[そら]が全[ぜん]部[ぶ]赤[あか]くなりました。そして、三[みっ]日[か]、耳[みみ]が痛[いた]かったです。",
+        "slug": "hanabi-ga-mienai",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}
