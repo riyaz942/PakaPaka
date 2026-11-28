@@ -5,7 +5,7 @@ browser, no clipboard, no API credentials. This session writes every passage
 itself and spawns no subagent to do it.
 
 There is exactly one exception, and it is at the end: the naturalness review
-(Step 5) spawns one fresh subagent per passage. It has to. That review's whole
+(Step 5) spawns one fresh subagent for all of the session's passages. It has to. That review's whole
 value is that it comes from a model which did not write the passage, and in this
 lane the writer is this session — so this session is the one model that cannot
 perform it. Drafting stays here; reviewing cannot. This is the
@@ -338,19 +338,31 @@ Pass `--slugs`. Without it the command selects **every** unreviewed draft at the
 level, which turns a two-seed session into a whole-level review and destroys the
 context isolation this lane exists for.
 
-Step 5b — one fresh subagent per passage.
+Step 5b — one fresh subagent for all of this session's passages.
 
-Launch ONE new general-purpose subagent (<review-model>, high reasoning) for each
-passage. Never one subagent across two passages: a reviewer that has seen three
-passages starts pattern-matching its own earlier findings.
+Launch ONE new general-purpose subagent (<review-model>, high reasoning) that
+reviews every passage ingested this session. This trial (2026-11-28) replaces
+one subagent per passage to save the start-up cost of the extra subagents. The
+known risk is that a reviewer that has seen one passage pattern-matches its
+earlier findings on the next, so the brief must tell it to judge each passage on
+its own.
 
-For the instructions to give each reviewer, use the brief in § *Step 2: Review
+For the instructions to give the reviewer, use the brief in § *Step 2: Review
 with a Subagent* of:
 
 docs/workflows/reading-passage-naturalness-subagent-workflow-automation-prompt.md
 
-Read it and pass it as written rather than paraphrasing from memory, and add this
-line, which the word band makes necessary:
+Read it and pass it as written rather than paraphrasing from memory, with
+`<seed>` filled in once for each seed of this session (list every prompt file
+and its reply file). Add this line, which a review of more than one passage
+makes necessary:
+
+  Review the passages one at a time, in the order listed, and write each reply
+  file before you read the next prompt file. Judge each passage on its own: a
+  finding in one passage is no evidence about another, and a passage with no
+  findings is a normal result even after one that had some.
+
+Also add this line, which the word band makes necessary:
 
   A correction replaces a sentence; it can never add one, and the corrected
   passage must stay inside the seed's word band. If your replacement is longer
@@ -371,7 +383,8 @@ corrected passage failed the gate — the body is left exactly as it was, nothin
 partial is merged, the gate errors are appended to the prompt file, the rejected
 reply is deleted, and the command exits non-zero).
 
-On a rejection, launch a FRESH subagent against the same prompt file, which now
+Ingest every reply only after the subagent finishes. On a rejection, launch a
+FRESH subagent for that passage only, against the same prompt file, which now
 carries the gate errors, and ingest again. **At most two review attempts per
 passage.** If the second is also rejected, leave the passage as it is and report
 the gate errors — twice-failed means the window has no way to say the thing, and
@@ -458,8 +471,9 @@ whether the passage is coherent or whether a humorous one is funny.
 Important Constraints
 
 - This session drafts every passage itself. The only subagents in this lane are
-  the Step 5 naturalness reviewers — one fresh one per passage, never shared, and
-  never asked to do anything but review.
+  the Step 5 naturalness reviewers — one fresh one for all of the session's
+  passages, plus one fresh one for each rejected passage, never asked to do
+  anything but review.
 - Do not review your own passages in this session, and do not hand-edit a review
   reply. Both put the writer's judgement back into the step that exists to keep
   it out.
