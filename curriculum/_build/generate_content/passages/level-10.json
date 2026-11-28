@@ -7,7 +7,7 @@
       "tone": "humorous",
       "passage": {
         "title": "飛行機はまだ",
-        "body": "私は今日、飛行機の時間に遅れました。兄はもう飛行機に乗りました。タクシーの中から兄に電話をかけました。「飛行機はもう飛びましたか。」兄は窓の外を見ました。「まだ飛んでいません。」「どうしてですか。」「飛行機を運転する人も遅れました。」兄は後ろを見ました。男の人が電話で「もう少し待ってください」と言っています。",
+        "body": "私は今日、飛行機の時間に遅れました。兄はもう飛行機に乗りました。タクシーの中から兄に電話をかけました。「飛行機はもう飛びましたか。」兄は窓の外を見ました。「まだ飛んでいません。」「どうしてですか。」「飛行機を運転する人も遅れました。」私はタクシーの後ろの席を見ました。男の人が電話で「もう少し待ってください」と言っています。",
         "questions": [
           {
             "prompt": "私は誰に電話をかけましたか。",
@@ -63,7 +63,7 @@
             "prompt_furigana": "どうして飛[ひ]行[こう]機[き]は飛[と]んでいませんか。"
           }
         ],
-        "english_translation": "Today I was late for my plane's time. My older brother has already boarded the plane. I phoned my brother from inside a taxi. \"Has the plane already flown?\" My brother looked out the window. \"It hasn't flown yet.\" \"Why not?\" \"The person who drives the plane is late too.\" My brother looked behind him. A man was saying on the phone, \"Please wait a little longer.\"",
+        "english_translation": "Today I was late for my plane's time. My older brother has already boarded the plane. I phoned my brother from inside a taxi. \"Has the plane already flown?\" My brother looked out the window. \"It hasn't flown yet.\" \"Why not?\" \"The person who drives the plane is late too.\" I looked at the back seat of the taxi. A man there was saying on the phone, \"Please wait a little longer.\"",
         "summary_ja": "兄は飛行機にいます。飛行機はまだ飛んでいません。",
         "summary_en": "My brother is on the plane, and the plane has not flown yet because the person who drives it is late too.",
         "grammar_slugs": [
@@ -105,6 +105,7 @@
           "noru",
           "okureru",
           "otokonohito",
+          "seki-seat",
           "soto",
           "sukoshi",
           "takushii",
@@ -261,61 +262,71 @@
             "inflection": "masu"
           },
           {
-            "vocabulary_slug": "ani",
+            "vocabulary_slug": "watashi",
             "start": 117,
             "end": 118
           },
           {
-            "vocabulary_slug": "ushiro",
+            "vocabulary_slug": "takushii",
             "start": 119,
-            "end": 121
+            "end": 123
+          },
+          {
+            "vocabulary_slug": "ushiro",
+            "start": 124,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "seki-seat",
+            "start": 127,
+            "end": 128
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 122,
-            "end": 126,
+            "start": 129,
+            "end": 133,
             "surface_form": "見ました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "otokonohito",
-            "start": 127,
-            "end": 130
+            "start": 134,
+            "end": 137
           },
           {
             "vocabulary_slug": "denwa",
-            "start": 131,
-            "end": 133
+            "start": 138,
+            "end": 140
           },
           {
             "vocabulary_slug": "sukoshi",
-            "start": 137,
-            "end": 139
+            "start": 144,
+            "end": 146
           },
           {
             "vocabulary_slug": "matsu",
-            "start": 139,
-            "end": 142,
+            "start": 146,
+            "end": 149,
             "surface_form": "待って",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 148,
-            "end": 151,
+            "start": 155,
+            "end": 158,
             "surface_form": "言って",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "iru-exist",
-            "start": 151,
-            "end": 154,
+            "start": 158,
+            "end": 161,
             "surface_form": "います",
             "inflection": "masu"
           }
         ],
-        "word_count": 92,
-        "body_furigana": "私[わたし]は今日[きょう]、飛[ひ]行[こう]機[き]の時[じ]間[かん]に遅[おく]れました。兄[あに]はもう飛[ひ]行[こう]機[き]に乗[の]りました。タクシーの中[なか]から兄[あに]に電[でん]話[わ]をかけました。「飛[ひ]行[こう]機[き]はもう飛[と]びましたか。」兄[あに]は窓[まど]の外[そと]を見[み]ました。「まだ飛[と]んでいません。」「どうしてですか。」「飛[ひ]行[こう]機[き]を運[うん]転[てん]する人[ひと]も遅[おく]れました。」兄[あに]は後[うし]ろを見[み]ました。男[おとこ]の人[ひと]が電[でん]話[わ]で「もう少[すこ]し待[ま]ってください」と言[い]っています。",
+        "word_count": 96,
+        "body_furigana": "私[わたし]は今日[きょう]、飛[ひ]行[こう]機[き]の時[じ]間[かん]に遅[おく]れました。兄[あに]はもう飛[ひ]行[こう]機[き]に乗[の]りました。タクシーの中[なか]から兄[あに]に電[でん]話[わ]をかけました。「飛[ひ]行[こう]機[き]はもう飛[と]びましたか。」兄[あに]は窓[まど]の外[そと]を見[み]ました。「まだ飛[と]んでいません。」「どうしてですか。」「飛[ひ]行[こう]機[き]を運[うん]転[てん]する人[ひと]も遅[おく]れました。」私[わたし]はタクシーの後[うし]ろの席[せき]を見[み]ました。男[おとこ]の人[ひと]が電[でん]話[わ]で「もう少[すこ]し待[ま]ってください」と言[い]っています。",
         "slug": "hikouki-wa-mou",
         "_meta": {
           "generator_model": "claude-sonnet-5-5",
@@ -330,7 +341,7 @@
       "tone": "humorous",
       "passage": {
         "title": "安いホテルの部屋",
-        "body": "私は安いホテルの部屋にいます。ベッドは一つしかありません。窓も一つだけです。テレビでは音楽しか聞くことができません。ホテルの人に電話をかけました。でも、電話に出た人は別の部屋の男の人です。「ベッドが一つしかありません」と私は言いました。「こちらもです」と男の人は言いました。「窓も一つだけです。」「こちらもです。」",
+        "body": "私は安いホテルの部屋にいます。ベッドは一つしかありません。窓も一つだけです。テレビでは音楽しか聞くことができません。ホテルの人に電話をかけました。でも、電話に出た人は別の部屋の男の人でした。「ベッドが一つしかありません」と私は言いました。「こちらもです」と男の人は言いました。「窓も一つだけです。」「こちらもです。」",
         "questions": [
           {
             "prompt": "ベッドはいくつありますか。",
@@ -558,68 +569,68 @@
           },
           {
             "vocabulary_slug": "beddo",
-            "start": 95,
-            "end": 98
+            "start": 96,
+            "end": 99
           },
           {
             "vocabulary_slug": "hitotsu",
-            "start": 99,
-            "end": 101
+            "start": 100,
+            "end": 102
           },
           {
             "vocabulary_slug": "aru",
-            "start": 103,
-            "end": 108,
+            "start": 104,
+            "end": 109,
             "surface_form": "ありません",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "watashi",
-            "start": 110,
-            "end": 111
+            "start": 111,
+            "end": 112
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 112,
-            "end": 117,
+            "start": 113,
+            "end": 118,
             "surface_form": "言いました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "kochira",
-            "start": 119,
-            "end": 122
+            "start": 120,
+            "end": 123
           },
           {
             "vocabulary_slug": "otokonohito",
-            "start": 127,
-            "end": 130
+            "start": 128,
+            "end": 131
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 131,
-            "end": 136,
+            "start": 132,
+            "end": 137,
             "surface_form": "言いました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "mado",
-            "start": 138,
-            "end": 139
+            "start": 139,
+            "end": 140
           },
           {
             "vocabulary_slug": "hitotsu",
-            "start": 140,
-            "end": 142
+            "start": 141,
+            "end": 143
           },
           {
             "vocabulary_slug": "kochira",
-            "start": 149,
-            "end": 152
+            "start": 150,
+            "end": 153
           }
         ],
-        "word_count": 93,
-        "body_furigana": "私[わたし]は安[やす]いホテルの部屋[へや]にいます。ベッドは一[ひと]つしかありません。窓[まど]も一[ひと]つだけです。テレビでは音[おん]楽[がく]しか聞[き]くことができません。ホテルの人[ひと]に電[でん]話[わ]をかけました。でも、電[でん]話[わ]に出[で]た人[ひと]は別[べつ]の部屋[へや]の男[おとこ]の人[ひと]です。「ベッドが一[ひと]つしかありません」と私[わたし]は言[い]いました。「こちらもです」と男[おとこ]の人[ひと]は言[い]いました。「窓[まど]も一[ひと]つだけです。」「こちらもです。」",
+        "word_count": 94,
+        "body_furigana": "私[わたし]は安[やす]いホテルの部屋[へや]にいます。ベッドは一[ひと]つしかありません。窓[まど]も一[ひと]つだけです。テレビでは音[おん]楽[がく]しか聞[き]くことができません。ホテルの人[ひと]に電[でん]話[わ]をかけました。でも、電[でん]話[わ]に出[で]た人[ひと]は別[べつ]の部屋[へや]の男[おとこ]の人[ひと]でした。「ベッドが一[ひと]つしかありません」と私[わたし]は言[い]いました。「こちらもです」と男[おとこ]の人[ひと]は言[い]いました。「窓[まど]も一[ひと]つだけです。」「こちらもです。」",
         "slug": "hoteru-no-heya",
         "_meta": {
           "generator_model": "claude-sonnet-5-5",
