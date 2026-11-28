@@ -339,7 +339,7 @@
       "tone": "humorous",
       "passage": {
         "title": "全然分かりません",
-        "body": "日本語の教室で、先生は学生に「今日の勉強はどうですか」と聞きました。学生は「全然分かりません」と言いました。先生は黒板の前で、ゆっくり学生を見ました。そして「日本語で話したじゃないですか」と言いました。「分かっているじゃないですか」と言いました。学生は水を飲んで、また日本語で「あまり分かりません」と言いました。先生の手からチョークが落ちました。",
+        "body": "日本語の教室で、先生は学生に「今日の勉強はどうですか」と聞きました。学生は「全然分かりません」と言いました。先生は黒板の前で、ゆっくり学生を見ました。そして「日本語で話したじゃないですか。分かっているじゃないですか」と言いました。学生は水を飲んで、また日本語で「あまり分かりません」と言いました。先生の手からチョークが落ちました。",
         "questions": [
           {
             "prompt": "先生は学生に何と聞きましたか。",
@@ -383,9 +383,9 @@
             "prompt_furigana": "先[せん]生[せい]の手[て]から何[なに]が落[お]ちましたか。"
           }
         ],
-        "english_translation": "In the Japanese classroom, the teacher asked the student, \"How is today's study?\" The student said, \"I don't understand at all.\" In front of the blackboard, the teacher slowly looked at the student. And the teacher said, \"You spoke in Japanese, didn't you?\" The teacher said, \"You do understand, don't you?\" The student drank some water and answered, again in Japanese, \"I don't understand much.\" The chalk fell from the teacher's hand.",
+        "english_translation": "In the Japanese classroom, the teacher asked the student, \"How is today's study?\" The student said, \"I don't understand at all.\" In front of the blackboard, the teacher slowly looked at the student. And the teacher said, \"You spoke in Japanese, didn't you? You do understand, don't you?\" The student drank some water and said, again in Japanese, \"I don't understand much.\" The chalk fell from the teacher's hand.",
         "summary_ja": "学生は日本語で、全然分かりませんと言いました。",
-        "summary_en": "A student says in Japanese that he does not understand at all, and the teacher drops the chalk.",
+        "summary_en": "A student says in Japanese that they do not understand at all, and the teacher drops the chalk.",
         "grammar_slugs": [
           "adj-i-conjugation",
           "amari-nai",
@@ -545,102 +545,95 @@
             "inflection": "ta"
           },
           {
-            "vocabulary_slug": "iu-v",
-            "start": 95,
-            "end": 100,
-            "surface_form": "言いました",
-            "inflection": "masu"
-          },
-          {
             "vocabulary_slug": "wakaru",
-            "start": 102,
-            "end": 106,
+            "start": 94,
+            "end": 98,
             "surface_form": "分かって",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "iru-exist",
-            "start": 106,
-            "end": 108
+            "start": 98,
+            "end": 100
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 117,
-            "end": 122,
+            "start": 109,
+            "end": 114,
             "surface_form": "言いました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "gakusei",
-            "start": 123,
-            "end": 125
+            "start": 115,
+            "end": 117
           },
           {
             "vocabulary_slug": "mizu",
-            "start": 126,
-            "end": 127
+            "start": 118,
+            "end": 119
           },
           {
             "vocabulary_slug": "nomu-v",
-            "start": 128,
-            "end": 131,
+            "start": 120,
+            "end": 123,
             "surface_form": "飲んで",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "mata",
-            "start": 132,
-            "end": 134
+            "start": 124,
+            "end": 126
           },
           {
             "vocabulary_slug": "nihongo",
-            "start": 134,
-            "end": 137
+            "start": 126,
+            "end": 129
           },
           {
             "vocabulary_slug": "amari",
-            "start": 139,
-            "end": 142
+            "start": 131,
+            "end": 134
           },
           {
             "vocabulary_slug": "wakaru",
-            "start": 142,
-            "end": 148,
+            "start": 134,
+            "end": 140,
             "surface_form": "分かりません",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "iu-v",
-            "start": 150,
-            "end": 155,
+            "start": 142,
+            "end": 147,
             "surface_form": "言いました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "sensei",
-            "start": 156,
-            "end": 158
+            "start": 148,
+            "end": 150
           },
           {
             "vocabulary_slug": "te-v",
-            "start": 159,
-            "end": 160
+            "start": 151,
+            "end": 152
           },
           {
             "vocabulary_slug": "chooku",
-            "start": 162,
-            "end": 166
+            "start": 154,
+            "end": 158
           },
           {
             "vocabulary_slug": "ochiru",
-            "start": 167,
-            "end": 172,
+            "start": 159,
+            "end": 164,
             "surface_form": "落ちました",
             "inflection": "masu"
           }
         ],
-        "word_count": 94,
-        "body_furigana": "日本[にほん]語[ご]の教[きょう]室[しつ]で、先[せん]生[せい]は学[がく]生[せい]に「今日[きょう]の勉[べん]強[きょう]はどうですか」と聞[き]きました。学[がく]生[せい]は「全[ぜん]然[ぜん]分[わ]かりません」と言[い]いました。先[せん]生[せい]は黒[こく]板[ばん]の前[まえ]で、ゆっくり学[がく]生[せい]を見[み]ました。そして「日本[にほん]語[ご]で話[はな]したじゃないですか」と言[い]いました。「分[わ]かっているじゃないですか」と言[い]いました。学[がく]生[せい]は水[みず]を飲[の]んで、また日本[にほん]語[ご]で「あまり分[わ]かりません」と言[い]いました。先[せん]生[せい]の手[て]からチョークが落[お]ちました。",
+        "word_count": 90,
+        "body_furigana": "日本[にほん]語[ご]の教[きょう]室[しつ]で、先[せん]生[せい]は学[がく]生[せい]に「今日[きょう]の勉[べん]強[きょう]はどうですか」と聞[き]きました。学[がく]生[せい]は「全[ぜん]然[ぜん]分[わ]かりません」と言[い]いました。先[せん]生[せい]は黒[こく]板[ばん]の前[まえ]で、ゆっくり学[がく]生[せい]を見[み]ました。そして「日本[にほん]語[ご]で話[はな]したじゃないですか。分[わ]かっているじゃないですか」と言[い]いました。学[がく]生[せい]は水[みず]を飲[の]んで、また日本[にほん]語[ご]で「あまり分[わ]かりません」と言[い]いました。先[せん]生[せい]の手[て]からチョークが落[お]ちました。",
         "slug": "zenzen-wakarimasen",
         "_meta": {
           "generator_model": "claude-sonnet-5-5",
@@ -655,7 +648,7 @@
       "tone": "neutral",
       "passage": {
         "title": "海のお弁当",
-        "body": "日曜日、私は母と海へ行きました。母が作った弁当を、海の近くで食べました。弁当の中には、ご飯と野菜と果物がありました。母の弁当はとてもおいしかったです。食べてから、ゆっくり海を見ました。午後、水が冷たくなりました。風も少し強くなりました。海にいた人は、みんな帰りました。母は「家へ帰りましょう。お茶でも飲みませんか」と言いました。",
+        "body": "日曜日、私は母と海へ行きました。母が作ったお弁当を、海の近くで食べました。お弁当の中には、ご飯と野菜と果物がありました。母のお弁当はとてもおいしかったです。食べてから、ゆっくり海を見ました。午後、水が冷たくなりました。風も少し強くなりました。海にいた人は、みんな帰りました。母は「家へ帰って、お茶でも飲みましょう」と言いました。",
         "questions": [
           {
             "prompt": "私と母はどこへ行きましたか。",
@@ -670,7 +663,7 @@
             "prompt_furigana": "私[わたし]と母[はは]はどこへ行[い]きましたか。"
           },
           {
-            "prompt": "弁当は誰が作りましたか。",
+            "prompt": "お弁当は誰が作りましたか。",
             "accepted_answers": [
               "母",
               "母が",
@@ -680,7 +673,7 @@
               "ははです",
               "ははが"
             ],
-            "prompt_furigana": "弁[べん]当[とう]は誰[だれ]が作[つく]りましたか。"
+            "prompt_furigana": "お弁[べん]当[とう]は誰[だれ]が作[つく]りましたか。"
           },
           {
             "prompt": "午後、水はどうなりましたか。",
@@ -705,9 +698,9 @@
             "prompt_furigana": "母[はは]はどこへ帰[かえ]りましょうと言[い]いましたか。"
           }
         ],
-        "english_translation": "On Sunday I went to the sea with my mother. We ate the lunch box my mother had made near the sea. Inside the lunch box there were rice, vegetables and fruit. My mother's lunch box was very delicious. After eating, we looked at the sea for a while. In the afternoon the water became cold. The wind became a little stronger too. The people who had been at the sea all went home. My mother said, \"Let's go home. Won't you have some tea or something?\"",
-        "summary_ja": "母と私は海で弁当を食べて、午後に家へ帰ります。",
-        "summary_en": "The writer and their mother eat lunch boxes at the sea, and in the afternoon they go home for tea.",
+        "english_translation": "On Sunday I went to the sea with my mother. We ate the lunch box my mother had made near the sea. Inside the lunch box there were rice, vegetables and fruit. My mother's lunch box was very delicious. After eating, we looked at the sea for a while. In the afternoon the water became cold. The wind became a little stronger too. The people who had been at the sea all went home. My mother said, \"Let's go home and have some tea or something.\"",
+        "summary_ja": "母と私は海でお弁当を食べました。午後、母は家へ帰りましょうと言いました。",
+        "summary_en": "The writer and their mother ate lunch boxes at the sea. In the afternoon, the mother said they should go home.",
         "grammar_slugs": [
           "adj-i-adverb",
           "adj-i-conjugation",
@@ -716,7 +709,6 @@
           "desu",
           "ga",
           "he-direction",
-          "masen-ka",
           "mashita",
           "mashou",
           "masu",
@@ -725,6 +717,7 @@
           "ni-direction",
           "no-possessive",
           "ta-form",
+          "te-form",
           "te-kara",
           "to-and",
           "to-quotation",
@@ -752,7 +745,6 @@
           "naka",
           "naru-become",
           "nichiyoubi",
-          "nomu-v",
           "ocha",
           "oishii",
           "sukoshi",
@@ -806,188 +798,188 @@
           },
           {
             "vocabulary_slug": "bentou",
-            "start": 21,
-            "end": 23
+            "start": 22,
+            "end": 24
           },
           {
             "vocabulary_slug": "umi",
-            "start": 25,
-            "end": 26
+            "start": 26,
+            "end": 27
           },
           {
             "vocabulary_slug": "chikaku",
-            "start": 27,
-            "end": 29
+            "start": 28,
+            "end": 30
           },
           {
             "vocabulary_slug": "taberu",
-            "start": 30,
-            "end": 35,
+            "start": 31,
+            "end": 36,
             "surface_form": "食べました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "bentou",
-            "start": 36,
-            "end": 38
-          },
-          {
-            "vocabulary_slug": "naka",
-            "start": 39,
+            "start": 38,
             "end": 40
           },
           {
+            "vocabulary_slug": "naka",
+            "start": 41,
+            "end": 42
+          },
+          {
             "vocabulary_slug": "gohan",
-            "start": 43,
-            "end": 45
+            "start": 45,
+            "end": 47
           },
           {
             "vocabulary_slug": "yasai",
-            "start": 46,
-            "end": 48
+            "start": 48,
+            "end": 50
           },
           {
             "vocabulary_slug": "kudamono",
-            "start": 49,
-            "end": 51
+            "start": 51,
+            "end": 53
           },
           {
             "vocabulary_slug": "aru",
-            "start": 52,
-            "end": 57,
+            "start": 54,
+            "end": 59,
             "surface_form": "ありました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "haha",
-            "start": 58,
-            "end": 59
+            "start": 60,
+            "end": 61
           },
           {
             "vocabulary_slug": "bentou",
-            "start": 60,
-            "end": 62
+            "start": 63,
+            "end": 65
           },
           {
             "vocabulary_slug": "totemo",
-            "start": 63,
-            "end": 66
+            "start": 66,
+            "end": 69
           },
           {
             "vocabulary_slug": "oishii",
-            "start": 66,
-            "end": 72,
+            "start": 69,
+            "end": 75,
             "surface_form": "おいしかった",
             "inflection": "ta"
           },
           {
             "vocabulary_slug": "taberu",
-            "start": 75,
-            "end": 78,
+            "start": 78,
+            "end": 81,
             "surface_form": "食べて",
             "inflection": "te"
           },
           {
             "vocabulary_slug": "yukkuri",
-            "start": 81,
-            "end": 85
+            "start": 84,
+            "end": 88
           },
           {
             "vocabulary_slug": "umi",
-            "start": 85,
-            "end": 86
+            "start": 88,
+            "end": 89
           },
           {
             "vocabulary_slug": "miru-v",
-            "start": 87,
-            "end": 91,
+            "start": 90,
+            "end": 94,
             "surface_form": "見ました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "gogo",
-            "start": 92,
-            "end": 94
+            "start": 95,
+            "end": 97
           },
           {
             "vocabulary_slug": "mizu",
-            "start": 95,
-            "end": 96
+            "start": 98,
+            "end": 99
           },
           {
             "vocabulary_slug": "naru-become",
-            "start": 100,
-            "end": 105,
+            "start": 103,
+            "end": 108,
             "surface_form": "なりました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "kaze-wind",
-            "start": 106,
-            "end": 107
-          },
-          {
-            "vocabulary_slug": "sukoshi",
-            "start": 108,
+            "start": 109,
             "end": 110
           },
           {
+            "vocabulary_slug": "sukoshi",
+            "start": 111,
+            "end": 113
+          },
+          {
             "vocabulary_slug": "naru-become",
-            "start": 112,
-            "end": 117,
+            "start": 115,
+            "end": 120,
             "surface_form": "なりました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "umi",
-            "start": 118,
-            "end": 119
+            "start": 121,
+            "end": 122
           },
           {
             "vocabulary_slug": "iru-exist",
-            "start": 120,
-            "end": 122,
+            "start": 123,
+            "end": 125,
             "surface_form": "いた",
             "inflection": "ta"
           },
           {
             "vocabulary_slug": "hito",
-            "start": 122,
-            "end": 123
+            "start": 125,
+            "end": 126
           },
           {
             "vocabulary_slug": "minna",
-            "start": 125,
-            "end": 128
+            "start": 128,
+            "end": 131
           },
           {
             "vocabulary_slug": "kaeru-v",
-            "start": 128,
-            "end": 133,
+            "start": 131,
+            "end": 136,
             "surface_form": "帰りました",
             "inflection": "masu"
           },
           {
             "vocabulary_slug": "haha",
-            "start": 134,
-            "end": 135
+            "start": 137,
+            "end": 138
           },
           {
             "vocabulary_slug": "ie",
-            "start": 137,
-            "end": 138
+            "start": 140,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 142,
+            "end": 145,
+            "surface_form": "帰って",
+            "inflection": "te"
           },
           {
             "vocabulary_slug": "ocha",
             "start": 146,
             "end": 148
-          },
-          {
-            "vocabulary_slug": "nomu-v",
-            "start": 150,
-            "end": 155,
-            "surface_form": "飲みません",
-            "inflection": "masu"
           },
           {
             "vocabulary_slug": "iu-v",
@@ -997,8 +989,8 @@
             "inflection": "masu"
           }
         ],
-        "word_count": 97,
-        "body_furigana": "日[にち]曜[よう]日[び]、私[わたし]は母[はは]と海[うみ]へ行[い]きました。母[はは]が作[つく]った弁[べん]当[とう]を、海[うみ]の近[ちか]くで食[た]べました。弁[べん]当[とう]の中[なか]には、ご飯[はん]と野[や]菜[さい]と果物[くだもの]がありました。母[はは]の弁[べん]当[とう]はとてもおいしかったです。食[た]べてから、ゆっくり海[うみ]を見[み]ました。午[ご]後[ご]、水[みず]が冷[つめ]たくなりました。風[かぜ]も少[すこ]し強[つよ]くなりました。海[うみ]にいた人[ひと]は、みんな帰[かえ]りました。母[はは]は「家[いえ]へ帰[かえ]りましょう。お茶[ちゃ]でも飲[の]みませんか」と言[い]いました。",
+        "word_count": 98,
+        "body_furigana": "日[にち]曜[よう]日[び]、私[わたし]は母[はは]と海[うみ]へ行[い]きました。母[はは]が作[つく]ったお弁[べん]当[とう]を、海[うみ]の近[ちか]くで食[た]べました。お弁[べん]当[とう]の中[なか]には、ご飯[はん]と野[や]菜[さい]と果物[くだもの]がありました。母[はは]のお弁[べん]当[とう]はとてもおいしかったです。食[た]べてから、ゆっくり海[うみ]を見[み]ました。午[ご]後[ご]、水[みず]が冷[つめ]たくなりました。風[かぜ]も少[すこ]し強[つよ]くなりました。海[うみ]にいた人[ひと]は、みんな帰[かえ]りました。母[はは]は「家[いえ]へ帰[かえ]って、お茶[ちゃ]でも飲[の]みましょう」と言[い]いました。",
         "slug": "umi-de-obentou",
         "_meta": {
           "generator_model": "claude-sonnet-5-5",
