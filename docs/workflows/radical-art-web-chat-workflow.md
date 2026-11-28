@@ -41,7 +41,7 @@ STYLE block.
 | --- | --- |
 | `<batch-size>` | How many radicals one run covers. Each gets its own chat, so this is purely how much you want to paste in one sitting |
 | Sessions | **One fresh chat per radical**, single message. No chat is reused, and chat history carries nothing |
-| Levels | Counted by *band*, not by source dataset — run Step 0 for the live number. As of 2026-08-22: N5 122 radicals, 122 reviewed, 25 still need art · N4 40 radicals, 23 reviewed, 5 in this batch · N3 44/8/0 · N2 17/1/0 · N1 15/0/0 |
+| Levels | Ladder levels, 1–60 (`level` on each radical). Run Step 0 for the live number of radicals that still need art |
 | Model | Any web chat tool with image generation — Gemini, ChatGPT, whatever is working well that day. Not pinned to one; switch freely between runs |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
@@ -53,8 +53,8 @@ no such ceiling. Pick whatever you want to sit and paste.
 
 **Text first, art second.** A radical's `mnemonic_text` must be `review_status: reviewed`
 before its art is generated — the prose ships to the learner alongside the picture, so
-the picture is drawn *from* the prose, never the other way round. N4 art is blocked on
-N4 mnemonic review.
+the picture is drawn *from* the prose, never the other way round. Art for a level is
+blocked until that level's radical mnemonics are reviewed.
 
 Prerequisites: `cwebp` on PATH (`brew install webp libtiff`).
 
@@ -68,13 +68,14 @@ order that have no art yet and whose mnemonic is reviewed. From the repo root:
 ```bash
 python3 - <<'PY'
 import json, os
-LEVEL, BATCH_SIZE = 'n5', 5
-items = json.load(open(f'curriculum/radicals/{LEVEL}.json'))['items']
+LEVEL, BATCH_SIZE = 6, 5   # LEVEL: one ladder level, 1-60
+items = json.load(open('curriculum/radicals/items.json'))['items']
 todo = [i for i in items
-        if i.get('_meta', {}).get('review_status') == 'reviewed'
+        if i['level'] == LEVEL
+        and i.get('_meta', {}).get('review_status') == 'reviewed'
         and i.get('visual_mnemonic_url')
         and not os.path.exists(os.path.join('mobile/assets', i['visual_mnemonic_url']))]
-print(f'{len(todo)} {LEVEL} radicals still need art\n')
+print(f'{len(todo)} level {LEVEL} radicals still need art\n')
 for i in todo[:BATCH_SIZE]:
     print(f"--- {i['slug']}  {i['primary_form']}  ({i['meaning']})")
     print(f"    install to: mobile/assets/{i['visual_mnemonic_url']}")
@@ -87,7 +88,7 @@ PY
 radical that moves to another level keeps its art. Select on that field and on whether the
 file it names exists.
 
-If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
+If it selects nothing, that level's mnemonics aren't reviewed yet, or every reviewed radical already has art — stop and say so. If it
 selects fewer than `<batch-size>`, the level is running out; use what it found.
 
 Auto-selection is what makes stopping and resuming free: the next run picks up exactly
@@ -163,8 +164,8 @@ can be pasted into a fresh chat as a single message with nothing sent before it.
 
 Extract the STYLE block from this file's appendix rather than retyping it; retyping is how
 rules go missing. Then write
-`curriculum/_build/generate_content/web/radical-art/<level>-batch.md` with one section per
-radical:
+`curriculum/_build/generate_content/web/radical-art/<level-dir>-batch.md` with one section per
+radical (`<level-dir>` is `level-` and two digits, so level 6 is `level-06`):
 
     ## sanzui
 
@@ -233,7 +234,7 @@ ask.** Do not guess, do not fall back to ordering alone, and do not quietly reas
 rest to make a set fit. Naming the two candidates and asking costs one message; a silently
 mis-assigned image is invisible until a learner sees it.
 
-Stage each one under its curriculum slug — from `curriculum/radicals/{level}.json`, not
+Stage each one under its curriculum slug — from `curriculum/radicals/items.json`, not
 from memory of the radical's name (`sanzui`, not `sansui`):
 
 ```bash
@@ -257,12 +258,9 @@ python3 - <<'PY'
 import json, os, subprocess
 STAGE = 'curriculum/_build/generate_content/web/radical-art'
 urls = {}
-for lvl in ('n5', 'n4', 'n3', 'n2', 'n1'):
-    p = f'curriculum/radicals/{lvl}.json'
-    if os.path.exists(p):
-        for i in json.load(open(p))['items']:
-            if i.get('visual_mnemonic_url'):
-                urls[i['slug']] = i['visual_mnemonic_url']
+for i in json.load(open('curriculum/radicals/items.json'))['items']:
+    if i.get('visual_mnemonic_url'):
+        urls[i['slug']] = i['visual_mnemonic_url']
 for f in sorted(os.listdir(STAGE)):
     if not f.endswith('.png'):
         continue
@@ -284,7 +282,7 @@ cd mobile && npm run generate-radical-assets && npm run typecheck && cd -
 far inside the 80 KB budget in `docs/content/radical-mnemonic-images.md`.
 
 `generate-radical-assets` is the gate. It fails on anything not named
-`{n1-n5}/{slug}.webp` and on anything over 80 KB. If it fails on size, the image isn't
+`{slug}.webp` (lowercase letters, digits and hyphens) and on anything over 80 KB. If it fails on size, the image isn't
 flat — re-roll it rather than dropping quality, because grain is a style failure, not a
 compression problem.
 

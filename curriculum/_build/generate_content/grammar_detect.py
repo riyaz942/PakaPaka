@@ -55,13 +55,13 @@ declared.
 """
 
 import argparse
-import json
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import furigana as furigana_lib  # noqa: E402
+from levels import MAX_LEVEL  # noqa: E402
 
 from generate_content import context  # noqa: E402
 
@@ -82,6 +82,7 @@ FORM_OVERRIDES = {
     "he-direction": "*",
     "de-location": "*",
     "to-and": "*",
+    "to-quotation": "*",
     "mo-also": "*",
     "ka-question": "*",
     "ni-direction": "*",
@@ -502,6 +503,28 @@ def _rule_n4_temo(tokens, i):
     )
 
 
+def _rule_to_quotation(tokens, i):
+    """と that closes a quote. The tokenizer tags it 格助詞, the same as the
+    と of "and / with", so the word before it decides: a closing 」, or the
+    end of a clause (verb, adjective, copula, sentence-final particle) —
+    「はい」と言いました, 行くと言いました, 行くかと聞きました. A noun before
+    言う is a name being quoted: ケンと言います."""
+    t = tokens[i]
+    if not (t["norm"] == "と" and t["pos1"] == "助詞" and t["pos2"] == "格助詞"):
+        return False
+    prev = _prev(tokens, i)
+    if prev is None:
+        return False
+    if prev["surface"] and prev["surface"][-1] in "」』":
+        return True
+    if prev["pos1"] in ("動詞", "形容詞", "助動詞"):
+        return True
+    if prev["pos1"] == "助詞" and prev["pos2"] == "終助詞":
+        return True
+    nxt = _next(tokens, i)
+    return nxt is not None and nxt["lemma"] == "言う"
+
+
 def _kara_particle(tokens, i):
     t = tokens[i]
     return t["norm"] == "から" and t["pos1"] == "助詞"
@@ -537,6 +560,7 @@ POS_RULES = {
     "ni-iku": _rule_ni_iku,
     "demo-suggestion": _rule_demo_suggestion,
     "temo": _rule_n4_temo,
+    "to-quotation": _rule_to_quotation,
 }
 
 #: Rules describing the *word's own* form, not a pattern built on it. They run
@@ -569,6 +593,12 @@ POS_RULES["mo-also"] = lambda tokens, i: (
     _mo_also(tokens, i) and not (i > 0 and _conjunctive_demo(tokens, i - 1))
 )
 
+#: A quoting と is not "and / with".
+_to_and = POS_RULES["to-and"]
+POS_RULES["to-and"] = lambda tokens, i: (
+    _to_and(tokens, i) and not _rule_to_quotation(tokens, i)
+)
+
 #: The same subtraction for a ても concessive: its て is not the connective
 #: te-form and its も is not "also", so neither generic rule may claim a half.
 _te_form = POS_RULES["te-form"]
@@ -586,16 +616,9 @@ POS_RULES["mo-also"] = lambda tokens, i: (
 # --------------------------------------------------------------------------
 
 
-def _levels_up_to(level):
-    return context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
-
-
 def level_slugs(level):
-    """Every grammar slug a passage at `level` may legitimately use."""
-    slugs = []
-    for lv in _levels_up_to(level):
-        slugs.extend(g["slug"] for g in context.load_grammar(lv))
-    return slugs
+    """Every grammar slug a passage at ladder `level` may legitimately use."""
+    return [g["slug"] for g in context.grammar_through(level)]
 
 
 def _forms_for(level):
@@ -605,21 +628,20 @@ def _forms_for(level):
     Multi-part:  [(slug, [part, ...])] for `A〜B` forms, checked per sentence.
     """
     single, multi = {}, []
-    for lv in _levels_up_to(level):
-        for item in context.load_grammar(lv):
-            slug = item["slug"]
-            if slug in MANUAL_SLUGS:
+    for item in context.grammar_through(level):
+        slug = item["slug"]
+        if slug in MANUAL_SLUGS:
+            continue
+        dropped = FORM_OVERRIDES.get(slug, set())
+        for form in item.get("accepted_forms", []):
+            if dropped == "*" or form in dropped:
                 continue
-            dropped = FORM_OVERRIDES.get(slug, set())
-            for form in item.get("accepted_forms", []):
-                if dropped == "*" or form in dropped:
-                    continue
-                if "〜" in form:
-                    parts = [p for p in form.split("〜") if p]
-                    if len(parts) > 1:
-                        multi.append((slug, parts))
-                    continue
-                single.setdefault(form, []).append(slug)
+            if "〜" in form:
+                parts = [p for p in form.split("〜") if p]
+                if len(parts) > 1:
+                    multi.append((slug, parts))
+                continue
+            single.setdefault(form, []).append(slug)
     return single, multi
 
 
@@ -773,10 +795,9 @@ def detect(text, level):
 
 
 def _manual_forms(slug):
-    for lv in context.LEVEL_ORDER:
-        for item in context.load_grammar(lv):
-            if item["slug"] == slug:
-                return item.get("accepted_forms", [])
+    for item in context.load_grammar():
+        if item["slug"] == slug:
+            return item.get("accepted_forms", [])
     return []
 
 
@@ -809,18 +830,7 @@ def _ordered_parts(sentence, parts):
 # --------------------------------------------------------------------------
 
 
-def _load_passages(level):
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "..",
-        "readings",
-        f"{level}.json",
-    )
-    with open(os.path.normpath(path), encoding="utf-8") as handle:
-        return json.load(handle)["passages"]
-
-
-def calibrate(levels=("n5", "n4"), verbose=False):
+def calibrate(verbose=False):
     """Recall against the human-reviewed `grammar_slugs` of shipped passages.
 
     Those declarations are the only labelled set there is. The plan's pass
@@ -829,8 +839,10 @@ def calibrate(levels=("n5", "n4"), verbose=False):
     """
     total_declared = total_hit = 0
     ok = True
-    for level in levels:
-        passages = _load_passages(level)
+    passages_by_level = {}
+    for passage in context.load_items("readings"):
+        passages_by_level.setdefault(passage["level"], []).append(passage)
+    for level, passages in sorted(passages_by_level.items()):
         declared_n = hit_n = 0
         extras, misses = {}, {}
         for passage in passages:
@@ -855,7 +867,7 @@ def calibrate(levels=("n5", "n4"), verbose=False):
         total_hit += hit_n
         mark = "PASS" if recall >= 0.95 else "FAIL"
         ok = ok and recall >= 0.95
-        print(f"\n{level}: recall {hit_n}/{declared_n} = {recall:.1%}  [{mark}]")
+        print(f"\nlevel {level}: recall {hit_n}/{declared_n} = {recall:.1%}  [{mark}]")
         if misses:
             print("  missed (recall loss):")
             for slug, titles in sorted(misses.items()):
@@ -870,50 +882,57 @@ def calibrate(levels=("n5", "n4"), verbose=False):
     return ok
 
 
-#: (level, text, must detect, must not detect). Calibration measures the
+#: (ladder level, text, must detect, must not detect). Level 20 is every N5
+#: and N4 point. Calibration measures the
 #: corpus; these pin the individual discriminations that were hard to get
 #: right, so an edit that regresses one is caught without a corpus run. Same
 #: role as `validate_readings.py --fixtures`, which is the nearest thing this
 #: repo has to a Python test runner.
 SELFTEST = [
-    ("n5", "学校の近くに住んでいます。", ["te-iru"], ["masu"]),
-    ("n5", "日本人ではありません。", ["dewa-arimasen"], ["desu"]),
-    ("n5", "はじめて日本に来ました。", ["ni-direction"], ["wa-topic"]),
-    ("n5", "冷たいお茶を飲みました。", ["adj-i-conjugation"], ["tai"]),
-    ("n5", "先生に本を読んでもらいました。", ["moraru-ageru-kureru"], []),
-    ("n5", "駅の前にあります。", ["ni-direction"], ["mae-ni"]),
-    ("n5", "ご飯を食べる前に手を洗います。", ["mae-ni"], []),
-    ("n5", "学校に行くとき、傘を持ちます。", ["toki"], []),
-    ("n5", "時間がありません。", [], ["toki"]),
-    ("n5", "学校から帰りました。", ["kara-from"], ["kara-because"]),
-    ("n5", "寒いから帰りました。", ["kara-because"], ["kara-from"]),
-    ("n5", "私の本です。", ["no-possessive"], ["no-nominalizer"]),
-    ("n5", "食べるのが好きです。", ["no-nominalizer"], ["no-possessive"]),
-    ("n5", "静かな部屋です。", ["adj-na-conjugation"], []),
-    ("n5", "空は青かったです。", ["adj-i-conjugation"], ["adj-i-adverb"]),
-    ("n5", "朝早く起きて、駅まで歩きました。", ["adj-i-adverb"], ["adj-i-conjugation"]),
-    ("n5", "教室は賑やかになりました。", ["naru-become", "adj-na-adverb"], []),
-    ("n5", "部屋が広くなったので、うれしいです。", ["naru-become", "adj-i-adverb"], []),
-    ("n5", "明日、映画を見ますか。", ["ka-question"], []),
-    ("n5", "何か食べましょう。", ["mashou"], ["ka-question"]),
-    ("n5", "コーヒーでもどうですか。", ["demo-suggestion", "dou-desu-ka"], []),
-    ("n5", "宿題をしました。でも、出しません。", [],
+    (20, "学校の近くに住んでいます。", ["te-iru"], ["masu"]),
+    (20, "日本人ではありません。", ["dewa-arimasen"], ["desu"]),
+    (20, "はじめて日本に来ました。", ["ni-direction"], ["wa-topic"]),
+    (20, "冷たいお茶を飲みました。", ["adj-i-conjugation"], ["tai"]),
+    (20, "先生に本を読んでもらいました。", ["moraru-ageru-kureru"], []),
+    (20, "駅の前にあります。", ["ni-direction"], ["mae-ni"]),
+    (20, "ご飯を食べる前に手を洗います。", ["mae-ni"], []),
+    (20, "学校に行くとき、傘を持ちます。", ["toki"], []),
+    (20, "時間がありません。", [], ["toki"]),
+    (20, "母は「明日行きます」と言いました。", ["to-quotation"], ["to-and"]),
+    (20, "箱の紙には「見ないでください」とある。", ["to-quotation"], ["to-and"]),
+    (20, "父は明日来ると言いました。", ["to-quotation"], ["to-and"]),
+    (20, "行くかと聞きました。", ["to-quotation"], ["to-and"]),
+    (20, "パンと卵を買います。", ["to-and"], ["to-quotation"]),
+    (20, "友達と話しました。", ["to-and"], ["to-quotation"]),
+    (20, "学校から帰りました。", ["kara-from"], ["kara-because"]),
+    (20, "寒いから帰りました。", ["kara-because"], ["kara-from"]),
+    (20, "私の本です。", ["no-possessive"], ["no-nominalizer"]),
+    (20, "食べるのが好きです。", ["no-nominalizer"], ["no-possessive"]),
+    (20, "静かな部屋です。", ["adj-na-conjugation"], []),
+    (20, "空は青かったです。", ["adj-i-conjugation"], ["adj-i-adverb"]),
+    (20, "朝早く起きて、駅まで歩きました。", ["adj-i-adverb"], ["adj-i-conjugation"]),
+    (20, "教室は賑やかになりました。", ["naru-become", "adj-na-adverb"], []),
+    (20, "部屋が広くなったので、うれしいです。", ["naru-become", "adj-i-adverb"], []),
+    (20, "明日、映画を見ますか。", ["ka-question"], []),
+    (20, "何か食べましょう。", ["mashou"], ["ka-question"]),
+    (20, "コーヒーでもどうですか。", ["demo-suggestion", "dou-desu-ka"], []),
+    (20, "宿題をしました。でも、出しません。", [],
      ["de-location", "mo-also", "demo-suggestion"]),
-    ("n5", "公園でも遊びます。", ["de-location", "mo-also"], []),
-    ("n4", "ケーキを全部食べてしまった。", ["teshimau"], []),
-    ("n4", "「いつから働けますか」と聞かれました。", ["passive", "potential"], []),
-    ("n4", "毎朝走るようにしています。", ["youni-suru"], []),
-    ("n4", "日本語が話せるようになりました。", ["youninaru"], []),
-    ("n4", "時間があったら、電話します。", ["tara"], []),
-    ("n4", "女の人に「郵便局はどちらですか。」と聞きました。", ["ni-indirect"], []),
-    ("n4", "駅から近いです。", ["kara-from"], ["node-vs-kara"]),
-    ("n5", "お金は千円しかありません。", ["shika-nai"], []),
-    ("n5", "宿題はまだ終わっていません。", ["mada-teinai"], []),
-    ("n4", "雨が降っても、公園に行きます。", ["temo"], ["te-form", "mo-also"]),
-    ("n4", "高くても、買います。", ["temo"], ["te-form", "mo-also"]),
-    ("n4", "日曜日でも働きます。", ["de-location", "mo-also"], ["temo"]),
-    ("n4", "友達に手伝ってもらいました。", ["moraru-ageru-kureru"], ["temo"]),
-    ("n4", "写真を撮ってもいいですか。", ["te-mo-ii"], ["temo"]),
+    (20, "公園でも遊びます。", ["de-location", "mo-also"], []),
+    (20, "ケーキを全部食べてしまった。", ["teshimau"], []),
+    (20, "「いつから働けますか」と聞かれました。", ["passive", "potential"], []),
+    (20, "毎朝走るようにしています。", ["youni-suru"], []),
+    (20, "日本語が話せるようになりました。", ["youninaru"], []),
+    (20, "時間があったら、電話します。", ["tara"], []),
+    (20, "女の人に「郵便局はどちらですか。」と聞きました。", ["ni-indirect"], []),
+    (20, "駅から近いです。", ["kara-from"], ["node-vs-kara"]),
+    (20, "お金は千円しかありません。", ["shika-nai"], []),
+    (20, "宿題はまだ終わっていません。", ["mada-teinai"], []),
+    (20, "雨が降っても、公園に行きます。", ["temo"], ["te-form", "mo-also"]),
+    (20, "高くても、買います。", ["temo"], ["te-form", "mo-also"]),
+    (20, "日曜日でも働きます。", ["de-location", "mo-also"], ["temo"]),
+    (20, "友達に手伝ってもらいました。", ["moraru-ageru-kureru"], ["temo"]),
+    (20, "写真を撮ってもいいですか。", ["te-mo-ii"], ["temo"]),
 ]
 
 
@@ -941,7 +960,8 @@ def main(argv=None):
     parser.add_argument("--calibrate", action="store_true")
     parser.add_argument("--selftest", action="store_true")
     parser.add_argument("--verbose", action="store_true")
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, default=MAX_LEVEL,
+                        help="detect the grammar at or below this ladder level")
     parser.add_argument("--text", help="detect over one string and print matches")
     args = parser.parse_args(argv)
 

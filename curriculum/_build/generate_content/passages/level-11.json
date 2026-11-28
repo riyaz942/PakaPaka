@@ -1,0 +1,1003 @@
+{
+  "level": 11,
+  "passages": [
+    {
+      "seed": "erebeetaa-to-kaidan",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "七階の教室",
+        "body": "私の教室は七階にあります。エレベーターは遅いです。いつも十五分ぐらい待ちます。階段は五分ぐらいです。だから毎日、階段を走って上がります。九時ごろ教室に入って、すぐ席に座ります。体が重いです。水をたくさん飲みます。先生も九時ごろ来ます。先生はエレベーターで来て、手にコーヒーを持っています。そして、私に「階段は体にいいですよ」と言います。",
+        "questions": [
+          {
+            "prompt": "私の教室は何階にありますか。",
+            "accepted_answers": [
+              "七階",
+              "七階です",
+              "ななかい",
+              "ななかいです",
+              "7階",
+              "7階です"
+            ],
+            "prompt_furigana": "私[わたし]の教[きょう]室[しつ]は何[なん]階[かい]にありますか。"
+          },
+          {
+            "prompt": "エレベーターをどのぐらい待ちますか。",
+            "accepted_answers": [
+              "十五分ぐらい",
+              "十五分ぐらいです",
+              "十五分",
+              "十五分です",
+              "じゅうごふんぐらい",
+              "じゅうごふんぐらいです",
+              "じゅうごふん",
+              "じゅうごふんです",
+              "15分ぐらい",
+              "15分"
+            ],
+            "prompt_furigana": "エレベーターをどのぐらい待[ま]ちますか。"
+          },
+          {
+            "prompt": "私は何時に教室に入りますか。",
+            "accepted_answers": [
+              "九時ごろ",
+              "九時ごろです",
+              "九時",
+              "九時です",
+              "くじごろ",
+              "くじごろです",
+              "くじ",
+              "くじです",
+              "9時ごろ",
+              "9時"
+            ],
+            "prompt_furigana": "私[わたし]は何[なん]時[じ]に教[きょう]室[しつ]に入[はい]りますか。"
+          },
+          {
+            "prompt": "先生は何で来ますか。",
+            "accepted_answers": [
+              "エレベーターで",
+              "エレベーター",
+              "エレベーターです",
+              "エレベーターで来ます"
+            ],
+            "prompt_furigana": "先[せん]生[せい]は何[なに]で来[き]ますか。"
+          }
+        ],
+        "english_translation": "My classroom is on the seventh floor. The elevator is slow. I always wait about fifteen minutes. The stairs take about five minutes. So every day I run up the stairs. Around nine o'clock I enter the classroom and sit down in my seat right away. My body feels heavy. I drink a lot of water. The teacher also comes around nine o'clock. The teacher comes by elevator, holding a coffee in one hand. And then the teacher says to me, \"Stairs are good for your body.\"",
+        "summary_ja": "先生はエレベーターで来て、私に階段は体にいいと言います。",
+        "summary_en": "The teacher arrives by elevator and tells the writer that stairs are good for the body.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "goro",
+          "gurai",
+          "kara-because",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "te-form",
+          "te-iru",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "agaru",
+          "aru",
+          "erebeetaa",
+          "hairu-v",
+          "hashiru",
+          "ii",
+          "iru-exist",
+          "itsumo",
+          "iu-v",
+          "kaidan",
+          "karada",
+          "koohii",
+          "kuru-v",
+          "kyoushitsu",
+          "mainichi",
+          "matsu",
+          "mizu",
+          "motsu",
+          "nomu-v",
+          "omoi",
+          "osoi",
+          "seki-seat",
+          "sensei",
+          "sugu",
+          "suwaru",
+          "takusan",
+          "te-v",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 8,
+            "end": 12,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "erebeetaa",
+            "start": 13,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "osoi",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "itsumo",
+            "start": 25,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "matsu",
+            "start": 34,
+            "end": 38,
+            "surface_form": "待ちます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaidan",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "mainichi",
+            "start": 53,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "kaidan",
+            "start": 56,
+            "end": 58
+          },
+          {
+            "vocabulary_slug": "hashiru",
+            "start": 59,
+            "end": 62,
+            "surface_form": "走って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "agaru",
+            "start": 62,
+            "end": 67,
+            "surface_form": "上がります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 72,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 75,
+            "end": 78,
+            "surface_form": "入って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 79,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "seki-seat",
+            "start": 81,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 83,
+            "end": 87,
+            "surface_form": "座ります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "karada",
+            "start": 88,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "omoi",
+            "start": 90,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 95,
+            "end": 96
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 97,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 101,
+            "end": 105,
+            "surface_form": "飲みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 106,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 113,
+            "end": 116,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 117,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "erebeetaa",
+            "start": 120,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 127,
+            "end": 129,
+            "surface_form": "来て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "te-v",
+            "start": 130,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 132,
+            "end": 136
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 137,
+            "end": 140,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 140,
+            "end": 143,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 148,
+            "end": 149
+          },
+          {
+            "vocabulary_slug": "kaidan",
+            "start": 151,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "karada",
+            "start": 154,
+            "end": 155
+          },
+          {
+            "vocabulary_slug": "ii",
+            "start": 156,
+            "end": 158
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 163,
+            "end": 167,
+            "surface_form": "言います",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 91,
+        "body_furigana": "私[わたし]の教[きょう]室[しつ]は七[なな]階[かい]にあります。エレベーターは遅[おそ]いです。いつも十[じゅう]五[ご]分[ふん]ぐらい待[ま]ちます。階[かい]段[だん]は五[ご]分[ふん]ぐらいです。だから毎[まい]日[にち]、階[かい]段[だん]を走[はし]って上[あ]がります。九[く]時[じ]ごろ教[きょう]室[しつ]に入[はい]って、すぐ席[せき]に座[すわ]ります。体[からだ]が重[おも]いです。水[みず]をたくさん飲[の]みます。先[せん]生[せい]も九[く]時[じ]ごろ来[き]ます。先[せん]生[せい]はエレベーターで来[き]て、手[て]にコーヒーを持[も]っています。そして、私[わたし]に「階[かい]段[だん]は体[からだ]にいいですよ」と言[い]います。",
+        "slug": "erebeetaa-to-kaidan",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "zenzen-wakarimasen",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "全然分かりません",
+        "body": "日本語の教室で、先生は学生に「今日の勉強はどうですか」と聞きました。学生は「全然分かりません」と言いました。先生は黒板の前で、ゆっくり学生を見ました。そして「日本語で話したじゃないですか。分かっているじゃないですか」と言いました。学生は水を飲んで、また日本語で「あまり分かりません」と言いました。先生の手からチョークが落ちました。",
+        "questions": [
+          {
+            "prompt": "先生は学生に何と聞きましたか。",
+            "accepted_answers": [
+              "今日の勉強はどうですか",
+              "今日の勉強はどうですか。",
+              "きょうのべんきょうはどうですか"
+            ],
+            "prompt_furigana": "先[せん]生[せい]は学[がく]生[せい]に何[なに]と聞[き]きましたか。"
+          },
+          {
+            "prompt": "学生はまず何と言いましたか。",
+            "accepted_answers": [
+              "全然分かりません",
+              "全然分かりませんと言いました",
+              "ぜんぜんわかりません",
+              "ぜんぜん分かりません"
+            ],
+            "prompt_furigana": "学[がく]生[せい]はまず何[なに]と言[い]いましたか。"
+          },
+          {
+            "prompt": "先生はどこで学生を見ましたか。",
+            "accepted_answers": [
+              "黒板の前",
+              "黒板の前で",
+              "黒板の前です",
+              "こくばんのまえ",
+              "こくばんのまえで",
+              "こくばんのまえです"
+            ],
+            "prompt_furigana": "先[せん]生[せい]はどこで学[がく]生[せい]を見[み]ましたか。"
+          },
+          {
+            "prompt": "先生の手から何が落ちましたか。",
+            "accepted_answers": [
+              "チョーク",
+              "チョークです",
+              "チョークが",
+              "チョークが落ちました"
+            ],
+            "prompt_furigana": "先[せん]生[せい]の手[て]から何[なに]が落[お]ちましたか。"
+          }
+        ],
+        "english_translation": "In the Japanese classroom, the teacher asked the student, \"How is today's study?\" The student said, \"I don't understand at all.\" In front of the blackboard, the teacher slowly looked at the student. And the teacher said, \"You spoke in Japanese, didn't you? You do understand, don't you?\" The student drank some water and said, again in Japanese, \"I don't understand much.\" The chalk fell from the teacher's hand.",
+        "summary_ja": "学生は日本語で、全然分かりませんと言いました。",
+        "summary_en": "A student says in Japanese that they do not understand at all, and the teacher drops the chalk.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "amari-nai",
+          "de-location",
+          "dou-desu-ka",
+          "ga",
+          "janai-desu-ka",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "ni-indirect",
+          "no-possessive",
+          "ta-form",
+          "te-form",
+          "te-iru",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "zenzen-nai"
+        ],
+        "vocabulary_slugs": [
+          "amari",
+          "benkyou",
+          "chooku",
+          "dou",
+          "gakusei",
+          "hanasu-v",
+          "iru-exist",
+          "iu-v",
+          "kiku-v",
+          "kokuban",
+          "kyou",
+          "kyoushitsu",
+          "mae",
+          "mata",
+          "miru-v",
+          "mizu",
+          "nihongo",
+          "nomu-v",
+          "ochiru",
+          "sensei",
+          "te-v",
+          "wakaru",
+          "yukkuri",
+          "zenzen"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "nihongo",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 4,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 8,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 11,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 15,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 18,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "dou",
+            "start": 21,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 28,
+            "end": 33,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "zenzen",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 40,
+            "end": 46,
+            "surface_form": "分かりません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 48,
+            "end": 53,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "kokuban",
+            "start": 57,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "yukkuri",
+            "start": 63,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 67,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 70,
+            "end": 74,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nihongo",
+            "start": 79,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "hanasu-v",
+            "start": 83,
+            "end": 86,
+            "surface_form": "話した",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 94,
+            "end": 98,
+            "surface_form": "分かって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 98,
+            "end": 100
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 109,
+            "end": 114,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 115,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 118,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 120,
+            "end": 123,
+            "surface_form": "飲んで",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "mata",
+            "start": 124,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "nihongo",
+            "start": 126,
+            "end": 129
+          },
+          {
+            "vocabulary_slug": "amari",
+            "start": 131,
+            "end": 134
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 134,
+            "end": 140,
+            "surface_form": "分かりません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 142,
+            "end": 147,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 148,
+            "end": 150
+          },
+          {
+            "vocabulary_slug": "te-v",
+            "start": 151,
+            "end": 152
+          },
+          {
+            "vocabulary_slug": "chooku",
+            "start": 154,
+            "end": 158
+          },
+          {
+            "vocabulary_slug": "ochiru",
+            "start": 159,
+            "end": 164,
+            "surface_form": "落ちました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 90,
+        "body_furigana": "日本[にほん]語[ご]の教[きょう]室[しつ]で、先[せん]生[せい]は学[がく]生[せい]に「今日[きょう]の勉[べん]強[きょう]はどうですか」と聞[き]きました。学[がく]生[せい]は「全[ぜん]然[ぜん]分[わ]かりません」と言[い]いました。先[せん]生[せい]は黒[こく]板[ばん]の前[まえ]で、ゆっくり学[がく]生[せい]を見[み]ました。そして「日本[にほん]語[ご]で話[はな]したじゃないですか。分[わ]かっているじゃないですか」と言[い]いました。学[がく]生[せい]は水[みず]を飲[の]んで、また日本[にほん]語[ご]で「あまり分[わ]かりません」と言[い]いました。先[せん]生[せい]の手[て]からチョークが落[お]ちました。",
+        "slug": "zenzen-wakarimasen",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "umi-de-obentou",
+      "position": 3,
+      "tone": "neutral",
+      "passage": {
+        "title": "海のお弁当",
+        "body": "日曜日、私は母と海へ行きました。母が作ったお弁当を、海の近くで食べました。お弁当の中には、ご飯と野菜と果物がありました。母のお弁当はとてもおいしかったです。食べてから、ゆっくり海を見ました。午後、水が冷たくなりました。風も少し強くなりました。海にいた人は、みんな帰りました。母は「家へ帰って、お茶でも飲みましょう」と言いました。",
+        "questions": [
+          {
+            "prompt": "私と母はどこへ行きましたか。",
+            "accepted_answers": [
+              "海へ",
+              "海",
+              "海です",
+              "うみへ",
+              "うみ",
+              "うみです"
+            ],
+            "prompt_furigana": "私[わたし]と母[はは]はどこへ行[い]きましたか。"
+          },
+          {
+            "prompt": "お弁当は誰が作りましたか。",
+            "accepted_answers": [
+              "母",
+              "母が",
+              "母です",
+              "母が作りました",
+              "はは",
+              "ははです",
+              "ははが"
+            ],
+            "prompt_furigana": "お弁[べん]当[とう]は誰[だれ]が作[つく]りましたか。"
+          },
+          {
+            "prompt": "午後、水はどうなりましたか。",
+            "accepted_answers": [
+              "冷たくなりました",
+              "冷たくなった",
+              "つめたくなりました",
+              "冷たくなる"
+            ],
+            "prompt_furigana": "午[ご]後[ご]、水[みず]はどうなりましたか。"
+          },
+          {
+            "prompt": "母はどこへ帰りましょうと言いましたか。",
+            "accepted_answers": [
+              "家へ",
+              "家",
+              "家です",
+              "いえへ",
+              "いえ",
+              "いえです"
+            ],
+            "prompt_furigana": "母[はは]はどこへ帰[かえ]りましょうと言[い]いましたか。"
+          }
+        ],
+        "english_translation": "On Sunday I went to the sea with my mother. We ate the lunch box my mother had made near the sea. Inside the lunch box there were rice, vegetables and fruit. My mother's lunch box was very delicious. After eating, we looked at the sea for a while. In the afternoon the water became cold. The wind became a little stronger too. The people who had been at the sea all went home. My mother said, \"Let's go home and have some tea or something.\"",
+        "summary_ja": "母と私は海でお弁当を食べました。午後、母は家へ帰りましょうと言いました。",
+        "summary_en": "The writer and their mother ate lunch boxes at the sea. In the afternoon, the mother said they should go home.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "de-location",
+          "demo-suggestion",
+          "desu",
+          "ga",
+          "he-direction",
+          "mashita",
+          "mashou",
+          "masu",
+          "mo-also",
+          "naru-become",
+          "ni-direction",
+          "no-possessive",
+          "ta-form",
+          "te-form",
+          "te-kara",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "bentou",
+          "chikaku",
+          "gogo",
+          "gohan",
+          "haha",
+          "hito",
+          "ie",
+          "iku-v",
+          "iru-exist",
+          "iu-v",
+          "kaeru-v",
+          "kaze-wind",
+          "kudamono",
+          "minna",
+          "miru-v",
+          "mizu",
+          "naka",
+          "naru-become",
+          "nichiyoubi",
+          "ocha",
+          "oishii",
+          "sukoshi",
+          "taberu",
+          "totemo",
+          "tsukuru",
+          "umi",
+          "watashi",
+          "yasai",
+          "yukkuri"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 10,
+            "end": 15,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 16,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "tsukuru",
+            "start": 18,
+            "end": 21,
+            "surface_form": "作った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "bentou",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 26,
+            "end": 27
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 28,
+            "end": 30
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 31,
+            "end": 36,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "bentou",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 41,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "gohan",
+            "start": 45,
+            "end": 47
+          },
+          {
+            "vocabulary_slug": "yasai",
+            "start": 48,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "kudamono",
+            "start": 51,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 54,
+            "end": 59,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "bentou",
+            "start": 63,
+            "end": 65
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 66,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "oishii",
+            "start": 69,
+            "end": 75,
+            "surface_form": "おいしかった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 78,
+            "end": 81,
+            "surface_form": "食べて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "yukkuri",
+            "start": 84,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 88,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 90,
+            "end": 94,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gogo",
+            "start": 95,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 98,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 103,
+            "end": 108,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaze-wind",
+            "start": 109,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 111,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 115,
+            "end": 120,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 121,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 123,
+            "end": 125,
+            "surface_form": "いた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 125,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 128,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 131,
+            "end": 136,
+            "surface_form": "帰りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 137,
+            "end": 138
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 140,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 142,
+            "end": 145,
+            "surface_form": "帰って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "ocha",
+            "start": 146,
+            "end": 148
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 158,
+            "end": 163,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 98,
+        "body_furigana": "日[にち]曜[よう]日[び]、私[わたし]は母[はは]と海[うみ]へ行[い]きました。母[はは]が作[つく]ったお弁[べん]当[とう]を、海[うみ]の近[ちか]くで食[た]べました。お弁[べん]当[とう]の中[なか]には、ご飯[はん]と野[や]菜[さい]と果物[くだもの]がありました。母[はは]のお弁[べん]当[とう]はとてもおいしかったです。食[た]べてから、ゆっくり海[うみ]を見[み]ました。午[ご]後[ご]、水[みず]が冷[つめ]たくなりました。風[かぜ]も少[すこ]し強[つよ]くなりました。海[うみ]にいた人[ひと]は、みんな帰[かえ]りました。母[はは]は「家[いえ]へ帰[かえ]って、お茶[ちゃ]でも飲[の]みましょう」と言[い]いました。",
+        "slug": "umi-de-obentou",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

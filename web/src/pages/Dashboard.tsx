@@ -21,13 +21,11 @@ import { guideHref, stageIdForTypeGap } from '../lib/guide';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
-  JLPT_LEVELS,
   STATUS_LABELS,
   type ContentListItem,
   type ContentType,
   type GapsResponse,
   type ItemsResponse,
-  type JlptLevel,
   type OverviewResponse,
   type ReviewStatus,
 } from '../types/api';
@@ -38,8 +36,6 @@ const STATUS_COLORS: Record<ReviewStatus, string> = {
   flagged_for_rewrite: '#f7768e',
   none: '#565f89',
 };
-
-const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 
 type DraftGroup = {
   key: string;
@@ -161,22 +157,28 @@ export default function Dashboard() {
   const gapsResult = useApi<GapsResponse>('/api/gaps');
   const drafts = useDraftGroups();
 
+  // The ladder levels that hold any item; every byTypeLevel map has the same keys.
+  const levels = useMemo(
+    () =>
+      overview.status === 'ok'
+        ? Object.keys(overview.data.byTypeLevel.radical).map(Number).sort((a, b) => a - b)
+        : [],
+    [overview],
+  );
+
   // Per-field missing counts, so a completeness link points at the stage that
   // actually owns the hole rather than the first stage touching the type.
   const missingByType = useMemo(() => {
-    const out = {} as Record<ContentType, { all: Record<string, number>; byLevel: Record<JlptLevel, Record<string, number>> }>;
+    const out = {} as Record<ContentType, Record<string, number>>;
     if (gapsResult.status !== 'ok') return out;
     for (const type of CONTENT_TYPES) {
       const all: Record<string, number> = {};
-      const byLevel = {} as Record<JlptLevel, Record<string, number>>;
-      for (const level of LEVELS) {
-        const bucket = gapsResult.data.byTypeLevel[type][level];
-        byLevel[level] = bucket.missing;
+      for (const bucket of Object.values(gapsResult.data.byTypeLevel[type])) {
         for (const [field, count] of Object.entries(bucket.missing)) {
           all[field] = (all[field] ?? 0) + count;
         }
       }
-      out[type] = { all, byLevel };
+      out[type] = all;
     }
     return out;
   }, [gapsResult]);
@@ -191,20 +193,21 @@ export default function Dashboard() {
       none: number;
     }> = [];
 
-    for (const type of CONTENT_TYPES) {
-      for (const level of LEVELS) {
-        const bucket = overview.data.byTypeLevel[type][level];
-        rows.push({
-          label: `${CONTENT_TYPE_LABELS[type]} ${level}`,
-          draft: bucket.status.draft,
-          reviewed: bucket.status.reviewed,
-          flagged_for_rewrite: bucket.status.flagged_for_rewrite,
-          none: bucket.status.none,
-        });
+    // One bar per level, all content types added together: 60 levels x 5
+    // types would be 300 bars.
+    for (const level of levels) {
+      const row = { label: String(level), draft: 0, reviewed: 0, flagged_for_rewrite: 0, none: 0 };
+      for (const type of CONTENT_TYPES) {
+        const status = overview.data.byTypeLevel[type][level].status;
+        row.draft += status.draft;
+        row.reviewed += status.reviewed;
+        row.flagged_for_rewrite += status.flagged_for_rewrite;
+        row.none += status.none;
       }
+      rows.push(row);
     }
     return rows;
-  }, [overview]);
+  }, [overview, levels]);
 
   const donutData = useMemo(() => {
     if (overview.status !== 'ok') return [];
@@ -215,7 +218,7 @@ export default function Dashboard() {
       none: 0,
     };
     for (const type of CONTENT_TYPES) {
-      for (const level of LEVELS) {
+      for (const level of levels) {
         const status = overview.data.byTypeLevel[type][level].status;
         totals.draft += status.draft;
         totals.reviewed += status.reviewed;
@@ -230,7 +233,7 @@ export default function Dashboard() {
         value: totals[status],
       }))
       .filter((row) => row.value > 0);
-  }, [overview]);
+  }, [overview, levels]);
 
   const completenessData = useMemo(() => {
     if (overview.status !== 'ok') return [];
@@ -238,7 +241,7 @@ export default function Dashboard() {
       let total = 0;
       let weighted = 0;
       let skeletons = 0;
-      for (const level of LEVELS) {
+      for (const level of levels) {
         const bucket = overview.data.byTypeLevel[type][level];
         total += bucket.total;
         weighted += bucket.meanCompleteness * bucket.total;
@@ -252,7 +255,7 @@ export default function Dashboard() {
         total,
       };
     });
-  }, [overview]);
+  }, [overview, levels]);
 
   if (overview.status === 'loading') {
     return <p className="panel-muted">Loading overview…</p>;
@@ -285,20 +288,18 @@ export default function Dashboard() {
 
       <div className="dashboard-grid">
         <section className="panel panel--wide">
-          <h3 className="panel-title">Review status by type × level</h3>
+          <h3 className="panel-title">Review status by level</h3>
           <div className="chart-box chart-box--tall">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={statusBarData}
-                margin={{ top: 8, right: 8, left: 0, bottom: 48 }}
+                margin={{ top: 8, right: 8, left: 0, bottom: 8 }}
               >
                 <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" />
                 <XAxis
                   dataKey="label"
-                  angle={-35}
-                  textAnchor="end"
                   interval={0}
-                  tick={{ fill: 'var(--text-muted)', fontSize: 11 }}
+                  tick={{ fill: 'var(--text-muted)', fontSize: 10 }}
                 />
                 <YAxis tick={{ fill: 'var(--text-muted)', fontSize: 11 }} />
                 <Tooltip content={<ChartTooltip />} />
@@ -369,7 +370,7 @@ export default function Dashboard() {
           </p>
           <div className="completeness-list">
             {completenessData.map((row) => {
-              const stageId = stageIdForTypeGap(row.type, missingByType[row.type]?.all);
+              const stageId = stageIdForTypeGap(row.type, missingByType[row.type]);
               return (
               <div key={row.type} className="completeness-row">
                 <div className="completeness-row__head">
@@ -413,60 +414,51 @@ export default function Dashboard() {
         </section>
 
         <section className="panel panel--wide">
-          <h3 className="panel-title">Remaining to generate</h3>
+          <h3 className="panel-title">Items per level</h3>
           <p className="panel-muted">
-            Targets from <code>web/targets.json</code> (edit by hand). Remaining
-            = target − actual. Click a remaining count for the workflow that
-            generates it.
+            Click a level to read everything taught at it.
           </p>
           <div className="table-wrap">
             <table className="data-table">
               <thead>
                 <tr>
-                  <th>Type</th>
                   <th>Level</th>
-                  <th className="num">Actual</th>
-                  <th className="num">Target</th>
-                  <th className="num">Remaining</th>
+                  {CONTENT_TYPES.map((type) => (
+                    <th key={type} className="num">
+                      {CONTENT_TYPE_LABELS[type]}
+                    </th>
+                  ))}
+                  <th className="num">Draft</th>
+                  <th className="num">Reviewed</th>
                 </tr>
               </thead>
               <tbody>
-                {CONTENT_TYPES.flatMap((type: ContentType) =>
-                  LEVELS.map((level) => {
-                    const bucket = data.byTypeLevel[type][level];
-                    const remainingClass =
-                      bucket.remaining > 0
-                        ? 'num remaining--open'
-                        : bucket.remaining < 0
-                          ? 'num remaining--over'
-                          : 'num remaining--done';
-                    const stageId = stageIdForTypeGap(
-                      type,
-                      missingByType[type]?.byLevel[level],
-                    );
-                    return (
-                      <tr key={`${type}-${level}`}>
-                        <td>{CONTENT_TYPE_LABELS[type]}</td>
-                        <td>{level}</td>
-                        <td className="num">{bucket.total}</td>
-                        <td className="num">{bucket.target}</td>
-                        <td className={remainingClass}>
-                          {bucket.remaining > 0 && stageId ? (
-                            <Link
-                              to={guideHref(`stage-${stageId}`, level)}
-                              className="remaining-link"
-                              title={`How to generate the remaining ${level} ${CONTENT_TYPE_LABELS[type]}`}
-                            >
-                              {bucket.remaining}
-                            </Link>
-                          ) : (
-                            bucket.remaining
+                {levels.map((level) => {
+                  let draft = 0;
+                  let reviewed = 0;
+                  for (const type of CONTENT_TYPES) {
+                    draft += data.byTypeLevel[type][level].status.draft;
+                    reviewed += data.byTypeLevel[type][level].status.reviewed;
+                  }
+                  return (
+                    <tr key={level}>
+                      <td>
+                        <Link to={`/levels/${level}`} className="row-link">
+                          Level {level}
+                        </Link>
+                      </td>
+                      {CONTENT_TYPES.map((type) => (
+                        <td key={type} className="num">
+                          {data.byTypeLevel[type][level].total || (
+                            <span className="panel-muted">—</span>
                           )}
                         </td>
-                      </tr>
-                    );
-                  }),
-                )}
+                      ))}
+                      <td className="num">{draft}</td>
+                      <td className="num">{reviewed}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

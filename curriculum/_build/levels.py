@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
-"""The level-override file, `curriculum/_build/levels.json`.
+"""The level-override file, `curriculum/_build/levels.json`, and the ladder.
 
-Every item has a default level: the dataset that defines it (`n5_vocab.py`,
-`n4_grammar.py`, …), the frequency rank `vocab_skeleton.json` gives a derived
-word, or the band `reports/kanji_bands.py` assigns a kanji or radical. One line
-in levels.json — `"<kind>:<slug>": "<level>"` — moves the item, and the override
+Every item sits on an integer level 1..60. `_build/ladder.json` holds the
+computed ladder: `{kind: {slug: {"level": n, "sort_order": n}}}`. One line in
+levels.json — `"<kind>:<slug>": <level>` — moves an item, and the override
 always wins. Nothing else has to change: the slug, the id in `id-registry.json`
 and the content sidecars are keyed by slug and name no level.
-
-A move can break the ladder (an N5 sentence now uses an N4 word). The build
-does not stop for that; `reports/level_report.py` lists it.
 """
 
 import json
@@ -17,19 +13,10 @@ import os
 
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 LEVELS_PATH = os.path.join(BUILD_DIR, "levels.json")
+LADDER_PATH = os.path.join(BUILD_DIR, "ladder.json")
 
-LEVEL_ORDER = ["n5", "n4", "n3", "n2", "n1"]
-
-#: The levels each kind ships at. Grammar exists at N5–N3 and passages at N5/N4
-#: only, so an override that names a later level for one is an error, not a new
-#: level file.
-KIND_LEVELS = {
-    "radical": LEVEL_ORDER,
-    "kanji": LEVEL_ORDER,
-    "vocabulary": LEVEL_ORDER,
-    "grammar": ["n5", "n4", "n3"],
-    "passage": ["n5", "n4"],
-}
+MAX_LEVEL = 60
+KINDS = ("radical", "kanji", "vocabulary", "grammar", "passage")
 
 
 def load_overrides(kind):
@@ -41,37 +28,34 @@ def load_overrides(kind):
         if key.startswith("_"):
             continue
         key_kind, sep, slug = key.partition(":")
-        if not sep or not slug or key_kind not in KIND_LEVELS:
+        if not sep or not slug or key_kind not in KINDS:
             raise ValueError(
                 f"levels.json: bad key {key!r}; expected '<kind>:<slug>' with kind "
-                f"one of {', '.join(KIND_LEVELS)}"
+                f"one of {', '.join(KINDS)}"
             )
-        if level not in KIND_LEVELS[key_kind]:
+        if isinstance(level, bool) or not isinstance(level, int) or not 1 <= level <= MAX_LEVEL:
             raise ValueError(
-                f"levels.json: {key} -> {level!r}; a {key_kind} can only be "
-                f"{', '.join(KIND_LEVELS[key_kind])}"
+                f"levels.json: {key} -> {level!r}; a level is an int from 1 to {MAX_LEVEL}"
             )
         if key_kind == kind:
             overrides[slug] = level
     return overrides
 
 
-def place(kind, sources):
-    """{level: [entry]} for one kind, from `[(default level, entries)]`.
+def load_ladder():
+    """The ladder `_build/ladder.json` holds: {kind: {slug: {level, sort_order}}}."""
+    with open(LADDER_PATH, encoding="utf-8") as f:
+        return json.load(f)
 
-    `sources` comes in level order. An entry keeps its default level unless
-    levels.json names it. Inside a level, entries keep the global order (default
-    level, then position in the source), so an item moved one level later is
-    taught first there and an item moved earlier is taught last. A slug the
-    sources do not define is an error, not a silent no-op."""
-    overrides = load_overrides(kind)
-    placed = {level: [] for level in KIND_LEVELS[kind]}
-    known = set()
-    for default, entries in sorted(sources, key=lambda s: LEVEL_ORDER.index(s[0])):
-        for entry in entries:
-            known.add(entry["slug"])
-            placed[overrides.get(entry["slug"], default)].append(entry)
-    unknown = sorted(set(overrides) - known)
-    if unknown:
-        raise ValueError(f"levels.json names unknown {kind} slug(s): {', '.join(unknown)}")
-    return placed
+
+def level_of(kind, slug):
+    return load_ladder()[kind][slug]["level"]
+
+
+def slugs_at_or_below(kind, level):
+    """Slugs of one kind at `level` or earlier, in ladder sort order."""
+    entries = load_ladder()[kind]
+    return sorted(
+        (slug for slug, e in entries.items() if e["level"] <= level),
+        key=lambda slug: entries[slug]["sort_order"],
+    )

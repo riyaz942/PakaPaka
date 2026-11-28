@@ -1,0 +1,523 @@
+{
+  "level": 4,
+  "passages": [
+    {
+      "seed": "chichi-no-mainichi",
+      "position": 1,
+      "tone": "neutral",
+      "passage": {
+        "title": "父の毎日",
+        "body": "父は会社員です。毎日、朝から晩まで会社にいます。朝は時間がありませんから、バスで新聞を読みます。晩は八時に帰ります。晩ご飯は、うちで母と食べます。",
+        "questions": [
+          {
+            "prompt": "お父さんはどこで新聞を読みますか。",
+            "accepted_answers": [
+              "バスで",
+              "バス",
+              "バスです",
+              "ばすで",
+              "ばす",
+              "ばすです"
+            ],
+            "prompt_furigana": "お父[とう]さんはどこで新[しん]聞[ぶん]を読[よ]みますか。"
+          },
+          {
+            "prompt": "お父さんは何時に帰りますか。",
+            "accepted_answers": [
+              "八時に",
+              "八時",
+              "八時です",
+              "はちじに",
+              "はちじ",
+              "はちじです"
+            ],
+            "prompt_furigana": "お父[とう]さんは何[なん]時[じ]に帰[かえ]りますか。"
+          }
+        ],
+        "english_translation": "My father is an office worker. Every day, he is at the company from morning until night. He has no time in the morning, so he reads the newspaper on the bus. In the evening, he comes home at eight. He eats dinner at home with my mother.",
+        "summary_ja": "父は朝から晩まで会社にいます。",
+        "summary_en": "Father is at the company from morning until night.",
+        "grammar_slugs": [
+          "de-location",
+          "desu",
+          "ga",
+          "kara-because",
+          "kara-from",
+          "made-until",
+          "masen",
+          "masu",
+          "ni-direction",
+          "to-and",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "asa",
+          "ban",
+          "bangohan",
+          "basu",
+          "chichi",
+          "haha",
+          "iru-exist",
+          "jikan",
+          "kaeru-v",
+          "kaisha",
+          "kaishain",
+          "mainichi",
+          "shinbun",
+          "taberu",
+          "uchi",
+          "yomu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "chichi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "kaishain",
+            "start": 2,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "mainichi",
+            "start": 8,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 11,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 14,
+            "end": 15
+          },
+          {
+            "vocabulary_slug": "kaisha",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 20,
+            "end": 23,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 24,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "jikan",
+            "start": 26,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 29,
+            "end": 34,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "basu",
+            "start": 37,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "shinbun",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 43,
+            "end": 47,
+            "surface_form": "読みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 48,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 53,
+            "end": 57,
+            "surface_form": "帰ります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "bangohan",
+            "start": 58,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 63,
+            "end": 65
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 66,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 68,
+            "end": 72,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 43,
+        "body_furigana": "父[ちち]は会[かい]社[しゃ]員[いん]です。毎[まい]日[にち]、朝[あさ]から晩[ばん]まで会[かい]社[しゃ]にいます。朝[あさ]は時[じ]間[かん]がありませんから、バスで新[しん]聞[ぶん]を読[よ]みます。晩[ばん]は八[はち]時[じ]に帰[かえ]ります。晩[ばん]ご飯[はん]は、うちで母[はは]と食[た]べます。",
+        "slug": "chichi-no-mainichi",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "konbini-kara-denwa",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "コンビニから電話",
+        "body": "兄はコンビニから母に電話をしました。「コーヒーですね。」「はい。」「お茶ですね。」「はい。」「パンですね。」「はい。」兄は三つとも買いました。母も朝、スーパーで三つとも買いました。",
+        "questions": [
+          {
+            "prompt": "兄はどこから母に電話をしましたか。",
+            "accepted_answers": [
+              "コンビニから",
+              "コンビニ",
+              "コンビニからです",
+              "コンビニです",
+              "こんびにから",
+              "こんびに",
+              "こんびにからです",
+              "こんびにです"
+            ],
+            "prompt_furigana": "兄[あに]はどこから母[はは]に電[でん]話[わ]をしましたか。"
+          },
+          {
+            "prompt": "母は朝、どこで買いましたか。",
+            "accepted_answers": [
+              "スーパーで",
+              "スーパー",
+              "スーパーです",
+              "すーぱーで",
+              "すーぱー",
+              "すーぱーです"
+            ],
+            "prompt_furigana": "母[はは]は朝[あさ]、どこで買[か]いましたか。"
+          }
+        ],
+        "english_translation": "My older brother phoned our mother from the convenience store. \"It's coffee, right?\" \"Yes.\" \"It's tea, right?\" \"Yes.\" \"It's bread, right?\" \"Yes.\" He bought all three. Mother had also bought all three at the supermarket that morning.",
+        "summary_ja": "兄も母もコーヒーとお茶とパンを買いました。",
+        "summary_en": "Brother phones Mother to check coffee, tea and bread, buys all three, and Mother had bought all three that morning too.",
+        "grammar_slugs": [
+          "de-location",
+          "desu",
+          "kara-from",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ne-tag",
+          "ni-indirect",
+          "to-and",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "ani",
+          "asa",
+          "denwa",
+          "haha",
+          "kau-v",
+          "konbini",
+          "koohii",
+          "mittsu",
+          "ocha",
+          "pan",
+          "suru",
+          "suupaa"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "ani",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "konbini",
+            "start": 2,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "denwa",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 13,
+            "end": 17,
+            "surface_form": "しました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 19,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "ocha",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 47,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 59,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 61,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 65,
+            "end": 70,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 71,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 73,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "suupaa",
+            "start": 75,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 80,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 84,
+            "end": 89,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 45,
+        "body_furigana": "兄[あに]はコンビニから母[はは]に電[でん]話[わ]をしました。「コーヒーですね。」「はい。」「お茶[ちゃ]ですね。」「はい。」「パンですね。」「はい。」兄[あに]は三[みっ]つとも買[か]いました。母[はは]も朝[あさ]、スーパーで三[みっ]つとも買[か]いました。",
+        "slug": "konbini-kara-denwa",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "sensei-no-asagohan",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "先生の朝ご飯",
+        "body": "先生は毎晩、朝まで本を読むので、朝は時間がありません。パンもありませんから、大学で朝ご飯を食べます。大学では、パンとコーヒーを買います。",
+        "questions": [
+          {
+            "prompt": "先生は毎晩、何を読みますか。",
+            "accepted_answers": [
+              "本",
+              "本です",
+              "ほん",
+              "ほんです",
+              "本を読みます",
+              "ほんをよみます"
+            ],
+            "prompt_furigana": "先[せん]生[せい]は毎[まい]晩[ばん]、何[なに]を読[よ]みますか。"
+          },
+          {
+            "prompt": "先生はどこで朝ご飯を食べますか。",
+            "accepted_answers": [
+              "大学で",
+              "大学",
+              "大学です",
+              "だいがくで",
+              "だいがく",
+              "だいがくです"
+            ],
+            "prompt_furigana": "先[せん]生[せい]はどこで朝[あさ]ご飯[はん]を食[た]べますか。"
+          }
+        ],
+        "english_translation": "Every night the teacher reads books until morning, so in the morning there is no time. There is no bread either, so he eats breakfast at the university. At the university, he buys bread and coffee.",
+        "summary_ja": "先生は時間がありませんから、大学で朝ご飯を食べます。",
+        "summary_en": "The teacher has no time in the morning, so he eats breakfast at the university.",
+        "grammar_slugs": [
+          "de-location",
+          "ga",
+          "kara-because",
+          "made-until",
+          "masen",
+          "masu",
+          "mo-also",
+          "node-because",
+          "to-and",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "asa",
+          "asagohan",
+          "daigaku",
+          "hon",
+          "jikan",
+          "kau-v",
+          "koohii",
+          "maiban",
+          "pan",
+          "sensei",
+          "taberu",
+          "yomu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "sensei",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "hon",
+            "start": 9,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "yomu",
+            "start": 11,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 16,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "jikan",
+            "start": 18,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 21,
+            "end": 26,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 30,
+            "end": 35,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "daigaku",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "asagohan",
+            "start": 41,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 45,
+            "end": 49,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "daigaku",
+            "start": 50,
+            "end": 52
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 55,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 58,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 63,
+            "end": 67,
+            "surface_form": "買います",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 38,
+        "body_furigana": "先[せん]生[せい]は毎[まい]晩[ばん]、朝[あさ]まで本[ほん]を読[よ]むので、朝[あさ]は時[じ]間[かん]がありません。パンもありませんから、大[だい]学[がく]で朝[あさ]ご飯[はん]を食[た]べます。大[だい]学[がく]では、パンとコーヒーを買[か]います。",
+        "slug": "sensei-no-asagohan",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

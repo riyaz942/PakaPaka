@@ -8,6 +8,7 @@ from unittest import mock
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from generate_content import check_grammar_pool as pool  # noqa: E402
+from levels import MAX_LEVEL  # noqa: E402
 
 VOCAB = {"samui": "寒い", "kooto": "コート", "kiru-wear": "着る", "atsui": "暑い",
          "mizu": "水", "nomu": "飲む", "kyou": "今日", "iku": "行く"}
@@ -141,7 +142,7 @@ class GrammarOrderTest(unittest.TestCase):
 
     def rule8(self, allowed):
         errors = pool.sentence_errors(GOOD, item([GOOD], slug="kara-because"), ALLOWED, OTHER,
-                                      VOCAB, level="n5", allowed_grammar=frozenset(allowed))
+                                      VOCAB, allowed_grammar=frozenset(allowed))
         return [e for e in errors if "rule 8" in e]
 
     def test_core_and_earlier_grammar_pass(self):
@@ -160,21 +161,18 @@ class GrammarOrderTest(unittest.TestCase):
                       {"vocabulary_slug": "kiru-wear", "start": 11, "end": 14, "inflection": "masu"}],
                      {"start": 4, "end": 6})
         errors = pool.sentence_errors(s, item([s], slug="kara-because"), ALLOWED, OTHER, VOCAB,
-                                      level="n5",
                                       allowed_grammar=pool.CORE_GRAMMAR | {"kara-because"})
         later = [e for e in errors if "rule 8" in e]
         self.assertEqual(len(later), 1)
         self.assertIn("寒かっ", later[0])
 
     def test_allowed_grammar_follows_lesson_order(self):
-        def point(level, slug):
-            return next(g for g in pool.context.load_grammar(level) if g["slug"] == slug)
-        first = pool.allowed_grammar_for("n5", point("n5", "wa-topic"))
+        first = pool.allowed_grammar_for(pool.context.grammar_item("wa-topic"))
         self.assertIn("wa-topic", first)
         self.assertIn("wo", first)            # core
         self.assertNotIn("te-form", first)    # a later lesson
-        n4_first = pool.context.load_grammar("n4")[0]
-        self.assertIn("te-form", pool.allowed_grammar_for("n4", n4_first))
+        teoku = pool.context.grammar_item("teoku")   # level 16
+        self.assertIn("te-form", pool.allowed_grammar_for(teoku))
 
 
 class ReadOnceTest(unittest.TestCase):
@@ -182,13 +180,13 @@ class ReadOnceTest(unittest.TestCase):
 
     def point(self, **extra):
         return dict({"slug": "primer", "primary_form": "活用", "meaning": "How words change",
-                     "structure": "x", "sort_order": 1, "accepted_forms": [],
+                     "structure": "x", "level": 1, "sort_order": 1, "accepted_forms": [],
                      "accepted_answers": [], "example_sentences": [],
                      "vocabulary_slugs": []}, **extra)
 
     def check(self, point):
         with mock.patch.object(pool.context, "load_grammar", return_value=[point]):
-            return pool.check_level("n5")
+            return pool.check_level(1)
 
     def test_read_once_point_without_a_pool_is_skipped(self):
         self.assertEqual(self.check(self.point(read_once=True)), {})
@@ -226,7 +224,7 @@ class SwapBackPositionTest(unittest.TestCase):
 
 class PronounExemptionTest(unittest.TestCase):
     def test_only_droppable_personal_pronouns_are_exempt(self):
-        exempt = pool.pronoun_slugs_through("n5")
+        exempt = pool.pronoun_slugs_through(MAX_LEVEL)
         self.assertTrue({"watashi", "anata", "kare", "kanojo", "boku"} <= exempt)
         # Question words and demonstratives are content: dropping 何 changes
         # the sentence.
@@ -242,16 +240,29 @@ class PronounExemptionTest(unittest.TestCase):
             alts=[{"furigana": "飲[の]みますか。", "kind": "valid"}],
         )
         errors = pool.sentence_errors(s, item([s]), ALLOWED | {"何"}, OTHER, vocab,
-                                      pronoun_slugs=pool.pronoun_slugs_through("n5"))
+                                      pronoun_slugs=pool.pronoun_slugs_through(MAX_LEVEL))
         self.assertTrue(any("rule 6" in e and "nani" in e for e in errors))
 
 
 class FamilyScopeTest(unittest.TestCase):
-    def test_n4_family_forms_include_n5_points(self):
-        n5 = {g["slug"] for g in pool.context.load_grammar("n5")}
-        n4 = {g["slug"] for g in pool.context.load_grammar("n4")}
-        through = {g["slug"] for g in pool.grammar_through("n4")}
-        self.assertEqual(through, n5 | n4)
+    def test_family_forms_are_the_points_at_or_below_the_level(self):
+        grammar = pool.context.load_grammar()
+        through = {g["slug"] for g in pool.context.grammar_through(16)}
+        self.assertEqual(through, {g["slug"] for g in grammar if g["level"] <= 16})
+        self.assertIn("wa-topic", through)
+
+
+class AllowedVocabTest(unittest.TestCase):
+    def test_allowed_vocab_is_words_at_or_below_point_level(self):
+        point = pool.context.grammar_item("teoku")   # level 16
+        allowed = {v["slug"] for v in pool.context.allowed_vocab_for("teoku")}
+        vocab = pool.context.load_vocab()
+        self.assertEqual(allowed, {v["slug"] for v in vocab if v["level"] <= point["level"]})
+        own = [s for s in point.get("vocabulary_slugs", [])
+               if next(v for v in vocab if v["slug"] == s)["level"] <= point["level"]]
+        self.assertTrue(set(own) <= allowed)
+        later = [v["slug"] for v in vocab if v["level"] > point["level"]]
+        self.assertFalse(set(later) & allowed)
 
 
 class PointRulesTest(unittest.TestCase):
@@ -279,6 +290,22 @@ class PointRulesTest(unittest.TestCase):
     def test_rule7_meanings(self):
         errors = pool.point_errors(item([GOOD], meanings=("because",)), ALLOWED, OTHER, VOCAB)
         self.assertTrue(any("rule 7" in e for e in errors))
+
+
+class FailingSlugsTest(unittest.TestCase):
+    RESULTS = {1: {"a": [], "b": ["rule 4: 0 passing sentences"]}, 2: {"c": ["rule 3: x"]}}
+
+    def failing(self, levels=None):
+        with mock.patch.object(pool, "check_level", lambda level: self.RESULTS[level]), \
+                mock.patch.object(pool.context, "load_grammar",
+                                  lambda: [{"level": n} for n in self.RESULTS]):
+            return pool.failing_slugs(levels)
+
+    def test_lists_failing_points_in_level_order(self):
+        self.assertEqual(self.failing(), ["b", "c"])
+
+    def test_levels_narrow_the_list(self):
+        self.assertEqual(self.failing([2]), ["c"])
 
 
 if __name__ == "__main__":

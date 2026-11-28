@@ -5,6 +5,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 import {
   getCurriculumFileUrl,
   getCurriculumManifestUrl,
+  REQUIRED_CURRICULUM_SCHEMA_VERSION,
 } from '@/data/curriculum/curriculumConfig';
 import {
   defaultWebPorts,
@@ -53,7 +54,11 @@ const { __testPrivateKey: TEST_PRIVATE_KEY } = jest.requireMock(
 const SHA = 'a'.repeat(64);
 const BYTES = new Uint8Array([1, 2, 3]);
 
-function signedManifest(version: number, sha256: string = SHA, schema = 1) {
+function signedManifest(
+  version: number,
+  sha256: string = SHA,
+  schema = REQUIRED_CURRICULUM_SCHEMA_VERSION,
+) {
   const payload = Buffer.from(
     JSON.stringify({
       schema,
@@ -241,7 +246,13 @@ describe('runWebCurriculumUpdate', () => {
   it('a rejected manifest makes no file request', async () => {
     const tampered = signedManifest(2);
     tampered.payload = Buffer.from(
-      JSON.stringify({ schema: 1, version: 9, sha256: SHA, size_bytes: 3, published_at: 'x' }),
+      JSON.stringify({
+        schema: REQUIRED_CURRICULUM_SCHEMA_VERSION,
+        version: 9,
+        sha256: SHA,
+        size_bytes: 3,
+        published_at: 'x',
+      }),
     ).toString('base64');
     const h = harness({ manifest: tampered });
 

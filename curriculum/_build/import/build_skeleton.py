@@ -49,10 +49,6 @@ sys.path.insert(0, BUILD_DIR)
 import audit_facts  # noqa: E402
 import sources  # noqa: E402
 
-#: Levels the curriculum authors vocabulary for. Only these have words, so only
-#: these can require a kanji.
-AUTHORED_LEVELS = ("n5", "n4")
-
 #: Total kanji on the ladder (plan v2, "The ladder"): 150 + 150 + 400 + 300 +
 #: 1,000. 2,136 kanji carry a jōyō grade, so 136 of the rarest are left out.
 CORPUS_SIZE = 2000
@@ -155,14 +151,6 @@ _MAX_EXTRA_MEANING_LEN = 20
 _MAX_EXTRA_MEANINGS = 2
 
 
-def load_level_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)["items"]
-
-
 def is_kanji_char(ch):
     return "一" <= ch <= "鿿"
 
@@ -192,12 +180,14 @@ def vocabulary_uses():
     """{char: [vocab slug, ...]} — kanji the shipped N5/N4 words are written
     with. Every one of these must be in the corpus, however rare: 蜘 ranks
     nowhere in KANJIDIC's frequency list and 蜘蛛 is still a shipped word."""
+    from n4_vocab import N4_VOCAB
+    from n5_vocab import N5_VOCAB
+
     uses = {}
-    for level in AUTHORED_LEVELS:
-        for item in load_level_items("vocabulary", level):
-            for ch in dict.fromkeys(item["primary_form"]):
-                if is_kanji_char(ch):
-                    uses.setdefault(ch, []).append(item["slug"])
+    for item in list(N5_VOCAB) + list(N4_VOCAB):
+        for ch in dict.fromkeys(item["form"]):
+            if is_kanji_char(ch):
+                uses.setdefault(ch, []).append(item["slug"])
     return uses
 
 
@@ -283,7 +273,7 @@ def load_previous_slugs():
 def build_kanji_entries(corpus, authored, uses, kanjidic):
     """One entry per corpus kanji that no hand-authored dataset defines.
 
-    Level-free and order-free: `reports/kanji_bands.py` assigns both. The list
+    Level-free and order-free: `ladder.py` assigns both. The list
     is emitted in frequency order only so a diff of skeleton.json stays legible.
     """
     previous = load_previous_slugs()

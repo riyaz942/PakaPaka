@@ -33,7 +33,7 @@ N4_GRAMMAR = [
             ex("忙しいのに、手伝ってくれました。", "Even though busy, they helped me.", ["isogashii", "tetsudatte-kureru"]),
             ex("若いのに、とても物知りです。", "Even though young, he's very knowledgeable.", ["wakai"]),
         ],
-        "vocabulary_slugs": ["benkyou-suru", "shiken", "okane"],
+        "vocabulary_slugs": ["benkyou-suru", "okane"],
         "cloze_variants": [
             {"jp_cloze": "昼ご飯を作った＿＿＿、友達はもう食べました。", "english": "Even though I made lunch, my friend had already eaten.", "answer": "のに", "nudge": "The lunch got made and then nobody needed it — the join has to carry that wasted morning."},
             {"jp_cloze": "毎日勉強した＿＿＿、全然分かりません。", "english": "Even though I studied every day, I don't understand at all.", "answer": "のに", "nudge": "Daily study sits on one side and 全然分かりません on the other; the blank is where they collide."},
@@ -58,7 +58,7 @@ N4_GRAMMAR = [
             ex("来週試験があるそうです。", "I heard there's an exam next week.", ["raishuu", "shiken"]),
             ex("彼女は結婚するそうです。", "I heard she's getting married.", ["kanojo", "kekkon-suru"]),
         ],
-        "vocabulary_slugs": ["tenki", "mise", "shiken"],
+        "vocabulary_slugs": ["mise"],
         "cloze_variants": [
             {"jp_cloze": "兄は来年日本に行く＿＿＿。", "english": "I hear my older brother is going to Japan next year.", "answer": "そうです", "nudge": "Who is the one with the travel plan here, and who is only passing it along?"},
             {"jp_cloze": "彼女のお父さんは医者だ＿＿＿。", "english": "I hear her father is a doctor.", "answer": "そうです", "nudge": "彼女 is the one who told you about her family; you have never met the man."},
@@ -83,7 +83,7 @@ N4_GRAMMAR = [
             ex("大変そうですね、手伝いましょうか。", "That looks tough, shall I help?", ["taihen"]),
             ex("彼は元気そうです。", "He looks well.", ["kare", "genki"]),
         ],
-        "vocabulary_slugs": ["ryouri", "furu-rain", "genki"],
+        "vocabulary_slugs": ["ryouri", "furu-rain"],
         "cloze_variants": [
             {"jp_cloze": "このパンはおいし＿＿＿ね。", "english": "That bread looks delicious, doesn't it.", "answer": "そうです", "nudge": "You are on the wrong side of the shop window, and your tongue has no evidence yet."},
             {"jp_cloze": "兄は今日とても元気＿＿＿。", "english": "My older brother looks really well today.", "answer": "そうです", "nudge": "Your brother has said nothing about how he feels — you are going entirely on his face at breakfast."},
@@ -108,7 +108,7 @@ N4_GRAMMAR = [
             ex("宿題が終わったら、遊びに行きます。", "Once homework is done, I'll go play.", ["shukudai", "owaru", "asobu"]),
             ex("先生に聞いたら、分かりました。", "When I asked the teacher, I understood.", ["sensei", "kiku-v", "wakaru"]),
         ],
-        "vocabulary_slugs": ["jikan", "eki", "shukudai"],
+        "vocabulary_slugs": ["jikan", "eki"],
         "family": "conjugations",
         # Drafted variants blanked the whole conjugated verb (降ったら); the app
         # grades against accepted_forms, so the blank has to stop at たら.
@@ -135,7 +135,7 @@ N4_GRAMMAR = [
             ex("薬を飲めば、治ります。", "If you take medicine, you'll recover.", ["kusuri", "naoru"]),
             ex("急げば、間に合います。", "If you hurry, you'll make it in time.", ["isogu"]),
         ],
-        "vocabulary_slugs": ["okane", "ryokou", "renshuu-suru"],
+        "vocabulary_slugs": ["okane", "ryokou"],
         # Drafted variants blanked the inflected stem (せば/れば/すれば); the app grades
         # against accepted_forms, so the blank stops at ば.
         "cloze_variants": [
@@ -161,7 +161,7 @@ N4_GRAMMAR = [
             ex("本当なら、大変です。", "If it's true, that's serious.", ["hontou-ni", "taihen"]),
             ex("行くなら、一緒に行きましょう。", "If you're going, let's go together.", ["issho-ni"]),
         ],
-        "vocabulary_slugs": ["hima", "taihen", "issho-ni"],
+        "vocabulary_slugs": ["hima", "taihen"],
         "cloze_variants": [
             {"jp_cloze": "日本語＿＿＿、この本がいいですよ。", "english": "If it's Japanese, this book is good.", "answer": "なら", "nudge": "日本語 sits right up against the blank with nothing else attached — what would you need to add if this were just a flat statement about Japanese instead?"},
             {"jp_cloze": "行く＿＿＿、切符を買いましょう。", "english": "If you're going, let's buy the ticket.", "answer": "なら", "nudge": "行く is in its plain dictionary shape right before the blank — does it need any conjugating first, or does the blank just attach as is?"},
@@ -185,7 +185,7 @@ N4_GRAMMAR = [
             ex("早く起きられません。", "I can't wake up early.", ["hayai-early", "okiru"]),
             ex("この川で泳げます。", "You can swim in this river.", ["kawa-v", "oyogeru"]),
         ],
-        "vocabulary_slugs": ["nihongo", "kanji-word", "hanaseru"],
+        "vocabulary_slugs": ["nihongo"],
         # Drafted variants blanked the whole potential verb, and 話せる/泳げる cannot be
         # spelled with this item's accepted_forms at all — reworked onto verbs that can.
         "cloze_variants": [
@@ -211,7 +211,7 @@ N4_GRAMMAR = [
             ex("親に叱られました。", "I was scolded by my parent.", ["oya", "shikarareru"]),
             ex("この本は多くの人に読まれています。", "This book is read by many people.", ["hon"]),
         ],
-        "vocabulary_slugs": ["sensei", "oya", "homerareru"],
+        "vocabulary_slugs": ["sensei", "oya"],
         # Drafted variants blanked 〜られ out of a polite past; the plain non-past lets the
         # blank be exactly れる / られる.
         "cloze_variants": [
@@ -258,7 +258,7 @@ N4_GRAMMAR = [
             ex("子供の頃、野菜を食べさせられました。", "As a child, I was made to eat vegetables.", ["kodomo-v", "yasai"]),
             ex("上司に残業させられました。", "I was made to work overtime by my boss.", ["zangyou"]),
         ],
-        "vocabulary_slugs": ["eki", "matasareru", "zangyou"],
+        "vocabulary_slugs": ["eki"],
         "cloze_variants": [
             {"jp_cloze": "私は友達にお酒を飲ま＿＿＿。", "english": "My friend makes me drink.", "answer": "される", "nudge": "友達 carries に and 私 is the topic — which of the two of them wanted the glass refilled?"},
             {"jp_cloze": "弟は毎晩野菜を食べ＿＿＿。", "english": "Every night my little brother is made to eat his vegetables.", "answer": "させられる", "nudge": "弟 is the chewer here, but 食べる is a る-verb, so no shortcut ending is available."},
@@ -281,7 +281,7 @@ N4_GRAMMAR = [
             ex("遅れないように、早く出ます。", "I'll leave early so I'm not late.", ["okureru"]),
             ex("風邪をひかないように、気をつけてください。", "Please be careful not to catch a cold.", ["kaze-cold"]),
         ],
-        "vocabulary_slugs": ["wasureru", "kikoeru", "okureru"],
+        "vocabulary_slugs": ["kikoeru", "okureru"],
         "cloze_variants": [
             {"jp_cloze": "子供にも読める＿＿＿、大きく書きました。", "english": "I wrote it big so that even a child could read it.", "answer": "ように", "nudge": "The size of the letters was decided by someone else's eyes — what joins those two halves?"},
             {"jp_cloze": "電車に遅れない＿＿＿、早く家を出ました。", "english": "I left home early so that I wouldn't be late for the train.", "answer": "ように", "nudge": "Nobody is late in this sentence — the early departure exists to keep things this way."},
@@ -304,7 +304,7 @@ N4_GRAMMAR = [
             ex("毎日運動するようになりました。", "I've started exercising every day.", ["mainichi", "undou-suru"]),
             ex("一人で行けるようになりました。", "I've become able to go alone.", ["hitori-de", "ikeru"]),
         ],
-        "vocabulary_slugs": ["nihongo", "kanji-word", "mainichi"],
+        "vocabulary_slugs": ["nihongo", "mainichi"],
         "cloze_variants": [
             {"jp_cloze": "私は泳げる＿＿＿。", "english": "I've become able to swim.", "answer": "ようになりました", "nudge": "泳げる is already sitting there doing its job — the blank has to add the part that says this wasn't true last year."},
             {"jp_cloze": "漢字が少し読める＿＿＿。", "english": "I've become able to read a little kanji.", "answer": "ようになりました", "nudge": "読める describes where the skill is now; the blank has to add where it was before."},
@@ -325,7 +325,7 @@ N4_GRAMMAR = [
             ex("最近、お酒を飲まなくなりました。", "Recently, I stopped drinking alcohol.", ["saikin", "osake"]),
             ex("痛くて、歩けなくなりました。", "It hurt so I couldn't walk anymore.", ["itamu"]),
         ],
-        "vocabulary_slugs": ["isogashii", "saikin", "osake"],
+        "vocabulary_slugs": ["isogashii", "osake"],
         "cloze_variants": [
             {"jp_cloze": "兄はコーヒーを飲ま＿＿＿。", "english": "My older brother stopped drinking coffee.", "answer": "なくなりました", "nudge": "The coffee still exists and 兄 still exists — what changed is the relationship between them, and not in the direction of more coffee."},
             {"jp_cloze": "猫が魚を食べ＿＿＿。", "english": "The cat stopped eating fish.", "answer": "なくなりました", "nudge": "There was a period when the fish was getting eaten, and this sentence is set after that period ended."},
@@ -392,7 +392,7 @@ N4_GRAMMAR = [
             ex("彼はもう結婚したらしいです。", "It seems he already got married.", ["kare", "kekkon-suru"]),
             ex("試験は難しいらしいです。", "The exam seems difficult.", ["shiken", "muzukashii"]),
         ],
-        "vocabulary_slugs": ["ashita", "mise", "shiken"],
+        "vocabulary_slugs": ["ashita", "mise"],
         "cloze_variants": [
             {"jp_cloze": "彼は今日休む＿＿＿。", "english": "I heard he's taking today off.", "answer": "らしい", "nudge": "Notice there's no です or ます anywhere in this sentence — what plain-style word usually shows up right after a bare dictionary-form verb such as 休む?"},
             {"jp_cloze": "友達は先週旅行に行った＿＿＿。", "english": "It seems my friend went on a trip last week.", "answer": "らしい", "nudge": "行った already shows past tense on its own — so what's the extra word doing at the very end that 行った alone wouldn't say?"},
@@ -462,7 +462,7 @@ N4_GRAMMAR = [
             ex("この店は閉まっています。", "This shop is closed.", ["mise", "shimeru"]),
             ex("道が混んでいます。", "The road is crowded.", ["michi-v"]),
         ],
-        "vocabulary_slugs": ["mado", "kekkon-suru", "mise"],
+        "vocabulary_slugs": ["mado", "mise"],
         "cloze_variants": [
             {"jp_cloze": "窓が壊れ＿＿＿。", "english": "The window is broken.", "answer": "ている", "nudge": "The window already cracked at some point — does this ending point at that moment, or at how the window looks right now?"},
             {"jp_cloze": "本が机の下に落ち＿＿＿。", "english": "The book has fallen and is under the desk.", "answer": "ている", "nudge": "The falling only took a second, but the book is still sitting there — which part of that is this sentence actually about?"},
@@ -485,7 +485,7 @@ N4_GRAMMAR = [
             ex("窓が開けてあります。", "The window has been left open.", ["mado", "akeru"]),
             ex("もう準備してあります。", "Preparations have already been made.", ["junbi-suru"]),
         ],
-        "vocabulary_slugs": ["e-picture", "mado", "junbi-suru"],
+        "vocabulary_slugs": ["mado"],
         # Drafted variants pulled the verb's last kana into the blank (けてある); the blank
         # takes てある only.
         "cloze_variants": [
@@ -547,7 +547,7 @@ N4_GRAMMAR = [
             ex("財布を無くしてしまいました。", "I ended up losing my wallet.", ["saifu", "nakusu"]),
             ex("もう食べてしまいました。", "I've already finished eating.", ["taberu"]),
         ],
-        "vocabulary_slugs": ["shukudai", "saifu", "taberu"],
+        "vocabulary_slugs": ["taberu"],
         # Drafted variants used the polite past, whose てしまい is neither an accepted form
         # nor in level — plain non-past instead.
         "cloze_variants": [
@@ -934,7 +934,7 @@ N4_GRAMMAR = [
             ex("遅れる場合は、連絡してください。", "If you're going to be late, please contact us.", ["okureru", "renraku-suru"]),
             ex("分からない場合は、聞いてください。", "If you don't understand, please ask.", ["wakaru", "kiku-v"]),
         ],
-        "vocabulary_slugs": ["okureru", "renraku-suru", "wakaru"],
+        "vocabulary_slugs": ["okureru", "wakaru"],
         "cloze_variants": [
             {"jp_cloze": "電車が遅れる＿＿＿、連絡してください。", "english": "If the train is late, please contact me.", "answer": "場合は", "nudge": "The train hasn't necessarily been late yet — what turns that clause into the scenario you're reacting to?"},
             {"jp_cloze": "雨の＿＿＿、傘を持って行きます。", "english": "In case of rain, I'll bring an umbrella.", "answer": "場合", "nudge": "Rain isn't guaranteed here — what word turns 雨 into the thing you're planning around?"},
@@ -993,7 +993,7 @@ N4_GRAMMAR = [
             ex("危ないから、気をつけてください。", "Because it's dangerous, please be careful.", ["abunai"]),
             ex("約束したから、行かなければなりません。", "Because I promised, I have to go.", ["yakusoku"]),
         ],
-        "vocabulary_slugs": ["abunai", "yakusoku"],
+        "vocabulary_slugs": ["abunai"],
         # This point's accepted_forms is から alone, so the drafted ので / んで answers were
         # ungradeable; those three sentences now take から.
         "cloze_variants": [
@@ -1081,7 +1081,7 @@ N4_GRAMMAR = [
             ex("日本の文化について話しました。", "We talked about Japanese culture.", ["nihon", "bunka"]),
             ex("この問題について考えてください。", "Please think about this problem.", ["mondai"]),
         ],
-        "vocabulary_slugs": ["nihon", "bunka", "mondai"],
+        "vocabulary_slugs": ["nihon", "bunka"],
         "cloze_variants": [
             {"jp_cloze": "旅行＿＿＿話しましょう。", "english": "Let's talk about the trip.", "answer": "について", "nudge": "What is 旅行 doing here — is it the thing being discussed, or the thing doing something?"},
             {"jp_cloze": "彼はその映画＿＿＿何も知らない。", "english": "He doesn't know anything about that movie.", "answer": "について", "nudge": "彼 is the one who doesn't know — what job is left for 映画 to do in this sentence?"},
@@ -1146,7 +1146,7 @@ N4_GRAMMAR = [
             ex("私が知っている限り、彼は正直です。", "As far as I know, he's honest.", ["shiru", "kare"]),
             ex("できる限り、頑張ります。", "I'll try as hard as I can.", ["ganbaru"]),
         ],
-        "vocabulary_slugs": ["shiru", "kare", "ganbaru"],
+        "vocabulary_slugs": ["shiru", "kare"],
         "cloze_variants": [
             {"jp_cloze": "私の知る＿＿＿、彼女は今日、家にいる。", "english": "As far as I know, she's home today.", "answer": "限り", "nudge": "Normal sentences mark a subject with が — so what job is の doing in front of 知る here?"},
             {"jp_cloze": "見る＿＿＿、今日の天気はいい。", "english": "As far as I can see, today's weather is good.", "answer": "限り", "nudge": "見る has no stated object or listener here — whose act of seeing is this whole sentence leaning on?"},
@@ -1216,7 +1216,7 @@ N4_GRAMMAR = [
             ex("実は、忙しいんです。", "Actually, the thing is, I'm busy.", ["isogashii"]),
             ex("財布を忘れたんです。", "The thing is, I forgot my wallet.", ["saifu", "wasureru"]),
         ],
-        "vocabulary_slugs": ["isogashii", "saifu", "wasureru"],
+        "vocabulary_slugs": ["isogashii", "wasureru"],
         "cloze_variants": [
             {"jp_cloze": "病気だった＿＿＿。", "english": "I was sick.", "answer": "んです", "nudge": "だった already carries its own past tense — does anything else in the sentence still need to change before this blank?"},
             {"jp_cloze": "友達が来る＿＿＿。", "english": "A friend is coming over.", "answer": "んです", "nudge": "来る hasn't changed shape at all here — what does that tell you about how verbs behave right before this blank?"},
@@ -1237,7 +1237,7 @@ N4_GRAMMAR = [
             ex("この漢字は読みにくいです。", "This kanji is hard to read.", ["kanji-word", "yomu"]),
             ex("この本は分かりやすいです。", "This book is easy to understand.", ["hon", "wakaru"]),
         ],
-        "vocabulary_slugs": ["kutsu", "kanji-word", "hon"],
+        "vocabulary_slugs": ["kutsu", "hon"],
         "cloze_variants": [
             {"jp_cloze": "このペンは書き＿＿＿です。", "english": "This pen is hard to write with.", "answer": "にくい", "nudge": "This describes what the pen itself is like, not one single moment of writing with it."},
             {"jp_cloze": "この本は読み＿＿＿です。", "english": "This book is easy to read.", "answer": "やすい", "nudge": "本 is the topic here — the blank tells you something about the book's general nature, not one reading session."},
@@ -1258,7 +1258,7 @@ N4_GRAMMAR = [
             ex("経済は回復しつつあります。", "The economy is in the process of recovering.", ["keizai"]),
             ex("環境は変わりつつあります。", "The environment is gradually changing.", ["kankyou"]),
         ],
-        "vocabulary_slugs": ["keizai", "kankyou"],
+        "vocabulary_slugs": ["keizai"],
         "cloze_variants": [
             {"jp_cloze": "会社の仕事が増え＿＿＿。", "english": "Work at the company is on the increase.", "answer": "つつある", "nudge": "The report is watching this happen right now, not describing something already settled."},
             {"jp_cloze": "経済が悪くなり＿＿＿。", "english": "The economy is gradually getting worse.", "answer": "つつある", "nudge": "Whatever fills this blank has to sit directly after なり — what kind of ending attaches right onto a verb stem like that?"},
@@ -1321,7 +1321,7 @@ N4_GRAMMAR = [
             ex("彼がそんなことを言うわけがありません。", "There's no way he'd say something like that.", ["kare"]),
             ex("こんなに簡単な問題が分からないわけがない。", "There's no way you wouldn't understand such an easy problem.", ["kantan-n4", "mondai", "wakaru"]),
         ],
-        "vocabulary_slugs": ["kare", "kantan-n4", "mondai"],
+        "vocabulary_slugs": ["kare", "mondai"],
         "cloze_variants": [
             {"jp_cloze": "弟が五分で部屋を掃除した＿＿＿。", "english": "There's no way my brother cleaned his room in five minutes.", "answer": "わけがない", "nudge": "Five minutes for a whole room — does the speaker sound convinced or doubtful?"},
             {"jp_cloze": "猫が英語を話す＿＿＿。", "english": "There's no way a cat can speak English.", "answer": "わけがない", "nudge": "Cats and human language rarely mix — what is the speaker really saying about this cat?"},
@@ -1342,7 +1342,7 @@ N4_GRAMMAR = [
             ex("彼ほど頑張っている人はいません。", "There's no one who works as hard as him.", ["kare", "ganbaru"]),
             ex("練習すればするほど、上手になります。", "The more you practice, the better you get.", ["renshuu-suru", "jouzu"]),
         ],
-        "vocabulary_slugs": ["kare", "ganbaru", "renshuu-suru"],
+        "vocabulary_slugs": ["kare", "renshuu-suru"],
         "cloze_variants": [
             {"jp_cloze": "これはそれ＿＿＿難しくない", "english": "This one isn't as difficult as that one.", "answer": "ほど", "nudge": "What word turns それ into a comparison point instead of just naming it?"},
             {"jp_cloze": "頭が痛くなる＿＿＿勉強した", "english": "I studied until my head started to hurt.", "answer": "ほど", "nudge": "The clause before the blank shows how far things got — what links it to the studying?"},

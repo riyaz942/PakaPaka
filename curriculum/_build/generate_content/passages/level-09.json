@@ -1,0 +1,841 @@
+{
+  "level": 9,
+  "passages": [
+    {
+      "seed": "densha-to-jitensha",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "図書館まで",
+        "body": "日曜日、兄は電車で、姉は車で、弟は自転車で図書館へ行きました。車は電車より速いです。電車は自転車より速いです。でも、一番早かったのは弟でした。弟のうちは図書館の前にあります。兄は駅で二十分待ったので、一番遅かったです。兄は「電車は自転車より速いですよ。」と言いました。",
+        "questions": [
+          {
+            "prompt": "電車より速いのは何ですか。",
+            "accepted_answers": [
+              "車",
+              "くるま",
+              "車です",
+              "くるまです"
+            ],
+            "prompt_furigana": "電[でん]車[しゃ]より速[はや]いのは何[なに]ですか。"
+          },
+          {
+            "prompt": "一番早かったのはだれですか。",
+            "accepted_answers": [
+              "弟",
+              "おとうと",
+              "弟です",
+              "おとうとです",
+              "弟でした",
+              "おとうとでした"
+            ],
+            "prompt_furigana": "一[いち]番[ばん]早[はや]かったのはだれですか。"
+          },
+          {
+            "prompt": "弟のうちはどこにありますか。",
+            "accepted_answers": [
+              "図書館の前",
+              "としょかんのまえ",
+              "図書館の前に",
+              "としょかんのまえに",
+              "図書館の前です",
+              "としょかんのまえです",
+              "図書館の前にあります",
+              "としょかんのまえにあります"
+            ],
+            "prompt_furigana": "弟[おとうと]のうちはどこにありますか。"
+          }
+        ],
+        "english_translation": "On Sunday, my older brother went to the library by train, my older sister by car, and my younger brother by bicycle. A car is faster than a train. A train is faster than a bicycle. But the first one there was my younger brother. His house is in front of the library. My older brother waited twenty minutes at the station, so he was the last. My older brother said, \"A train is faster than a bicycle, you know.\"",
+        "summary_ja": "弟は自転車で一番早く図書館に来ました。",
+        "summary_en": "The younger brother got to the library first, by bicycle.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "comparative-yori",
+          "de-location",
+          "desu",
+          "he-direction",
+          "mashita",
+          "masu",
+          "ni-direction",
+          "no-nominalizer",
+          "no-possessive",
+          "node-because",
+          "superlative-ichiban",
+          "ta-form",
+          "to-quotation",
+          "wa-topic",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "ane",
+          "ani",
+          "aru",
+          "densha",
+          "eki",
+          "hayai-early",
+          "hayai-fast",
+          "iku-v",
+          "iu-v",
+          "jitensha",
+          "kuruma",
+          "mae",
+          "matsu",
+          "nichiyoubi",
+          "osoi",
+          "otouto",
+          "toshokan",
+          "uchi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "ane",
+            "start": 10,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "kuruma",
+            "start": 12,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 15,
+            "end": 16
+          },
+          {
+            "vocabulary_slug": "jitensha",
+            "start": 17,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "toshokan",
+            "start": 21,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 25,
+            "end": 30,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kuruma",
+            "start": 31,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 33,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "hayai-fast",
+            "start": 37,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 42,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "jitensha",
+            "start": 45,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "hayai-fast",
+            "start": 50,
+            "end": 52
+          },
+          {
+            "vocabulary_slug": "hayai-early",
+            "start": 60,
+            "end": 64,
+            "surface_form": "早かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 66,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "otouto",
+            "start": 71,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 73,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "toshokan",
+            "start": 76,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 80,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 82,
+            "end": 86,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 87,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 89,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "matsu",
+            "start": 94,
+            "end": 97,
+            "surface_form": "待った",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "osoi",
+            "start": 102,
+            "end": 106,
+            "surface_form": "遅かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "ani",
+            "start": 109,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 112,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "jitensha",
+            "start": 115,
+            "end": 118
+          },
+          {
+            "vocabulary_slug": "hayai-fast",
+            "start": 120,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 128,
+            "end": 133,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 83,
+        "body_furigana": "日[にち]曜[よう]日[び]、兄[あに]は電[でん]車[しゃ]で、姉[あね]は車[くるま]で、弟[おとうと]は自[じ]転[てん]車[しゃ]で図[と]書[しょ]館[かん]へ行[い]きました。車[くるま]は電[でん]車[しゃ]より速[はや]いです。電[でん]車[しゃ]は自[じ]転[てん]車[しゃ]より速[はや]いです。でも、一[いち]番[ばん]早[はや]かったのは弟[おとうと]でした。弟[おとうと]のうちは図[と]書[しょ]館[かん]の前[まえ]にあります。兄[あに]は駅[えき]で二[に]十[じゅう]分[ふん]待[ま]ったので、一[いち]番[ばん]遅[おそ]かったです。兄[あに]は「電[でん]車[しゃ]は自[じ]転[てん]車[しゃ]より速[はや]いですよ。」と言[い]いました。",
+        "slug": "densha-to-jitensha",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "eiga-wa-dou-desu-ka",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "どの映画",
+        "body": "金曜日の晩、父と母は映画館へ行きました。母は「動物の映画はどうですか。」と聞きました。父は「つまらないと思います。」と言いました。外国の映画は三時間です。父は長いと思いました。映画は全部始まっていました。バスの中で、母は「面白い晩でしたね。」と言いました。父は「来週は早く来ましょう。」と言いました。",
+        "questions": [
+          {
+            "prompt": "父と母は金曜日の晩にどこへ行きましたか。",
+            "accepted_answers": [
+              "映画館",
+              "えいがかん",
+              "映画館へ",
+              "えいがかんへ",
+              "映画館に",
+              "えいがかんに",
+              "映画館です",
+              "えいがかんです"
+            ],
+            "prompt_furigana": "父[ちち]と母[はは]は金[きん]曜[よう]日[び]の晩[ばん]にどこへ行[い]きましたか。"
+          },
+          {
+            "prompt": "外国の映画は何時間ですか。",
+            "accepted_answers": [
+              "三時間",
+              "さんじかん",
+              "三時間です",
+              "さんじかんです"
+            ],
+            "prompt_furigana": "外[がい]国[こく]の映[えい]画[が]は何[なん]時[じ]間[かん]ですか。"
+          },
+          {
+            "prompt": "父は動物の映画をどう思いましたか。",
+            "accepted_answers": [
+              "つまらない",
+              "つまらないです",
+              "つまらないと思います",
+              "つまらないと思いました"
+            ],
+            "prompt_furigana": "父[ちち]は動[どう]物[ぶつ]の映[えい]画[が]をどう思[おも]いましたか。"
+          }
+        ],
+        "english_translation": "On Friday evening, Father and Mother went to the cinema. Mother asked, \"How about the animal film?\" Father said, \"I think it is boring.\" The foreign film is three hours. Father thought it was long. All of the films had already started. On the bus, Mother said, \"It was an interesting evening.\" Father said, \"Next week, let's come early.\"",
+        "summary_ja": "父と母は映画館で映画を見ませんでした。",
+        "summary_en": "Father and Mother went to the cinema and did not see a film.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "de-location",
+          "desu",
+          "dou-desu-ka",
+          "he-direction",
+          "mashita",
+          "mashou",
+          "masu",
+          "nai-form",
+          "ne-tag",
+          "no-possessive",
+          "te-form",
+          "te-iru",
+          "to-and",
+          "to-omou",
+          "to-quotation",
+          "wa-topic"
+        ],
+        "vocabulary_slugs": [
+          "ban",
+          "basu",
+          "chichi",
+          "dou",
+          "doubutsu",
+          "eiga",
+          "eigakan",
+          "gaikoku",
+          "haha",
+          "hajimaru",
+          "iku-v",
+          "iru-exist",
+          "iu-v",
+          "kiku-v",
+          "kinyoubi",
+          "nagai-adj",
+          "naka",
+          "omoshiroi",
+          "omou",
+          "raishuu",
+          "tsumaranai",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "eigakan",
+            "start": 10,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 14,
+            "end": 19,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 20,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "doubutsu",
+            "start": 23,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "eiga",
+            "start": 26,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "dou",
+            "start": 29,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 37,
+            "end": 42,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 43,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "tsumaranai",
+            "start": 46,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "omou",
+            "start": 52,
+            "end": 56,
+            "surface_form": "思います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 59,
+            "end": 64,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gaikoku",
+            "start": 65,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "eiga",
+            "start": 68,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 77,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "nagai-adj",
+            "start": 79,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "omou",
+            "start": 82,
+            "end": 87,
+            "surface_form": "思いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "eiga",
+            "start": 88,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 91,
+            "end": 93
+          },
+          {
+            "vocabulary_slug": "hajimaru",
+            "start": 93,
+            "end": 97,
+            "surface_form": "始まって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 97,
+            "end": 101,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "basu",
+            "start": 102,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 105,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 108,
+            "end": 109
+          },
+          {
+            "vocabulary_slug": "omoshiroi",
+            "start": 111,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 114,
+            "end": 115
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 122,
+            "end": 127,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 128,
+            "end": 129
+          },
+          {
+            "vocabulary_slug": "raishuu",
+            "start": 131,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 144,
+            "end": 149,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 86,
+        "body_furigana": "金[きん]曜[よう]日[び]の晩[ばん]、父[ちち]と母[はは]は映[えい]画[が]館[かん]へ行[い]きました。母[はは]は「動[どう]物[ぶつ]の映[えい]画[が]はどうですか。」と聞[き]きました。父[ちち]は「つまらないと思[おも]います。」と言[い]いました。外[がい]国[こく]の映[えい]画[が]は三[さん]時[じ]間[かん]です。父[ちち]は長[なが]いと思[おも]いました。映[えい]画[が]は全[ぜん]部[ぶ]始[はじ]まっていました。バスの中[なか]で、母[はは]は「面[おも]白[しろ]い晩[ばん]でしたね。」と言[い]いました。父[ちち]は「来[らい]週[しゅう]は早[はや]く来[き]ましょう。」と言[い]いました。",
+        "slug": "eiga-wa-dou-desu-ka",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "ano-hoshi",
+      "position": 3,
+      "tone": "neutral",
+      "passage": {
+        "title": "あの星",
+        "body": "日曜日の晩、女の子とおじいさんは外にいました。女の子は一番明るい星を見て、「あれは何という星ですか。」と聞きました。おじいさんは「分かりません。でも、大きい星だろうと思います。」と言いました。女の子は「今日から、あれはおじいさんの星です。」と言いました。今は毎晩、窓からおじいさんの星を見ています。",
+        "questions": [
+          {
+            "prompt": "日曜日の晩、女の子とおじいさんはどこにいましたか。",
+            "accepted_answers": [
+              "外",
+              "そと",
+              "外に",
+              "そとに",
+              "外です",
+              "そとです",
+              "外でした",
+              "そとでした"
+            ],
+            "prompt_furigana": "日[にち]曜[よう]日[び]の晩[ばん]、女[おんな]の子[こ]とおじいさんはどこにいましたか。"
+          },
+          {
+            "prompt": "女の子はあの星を何と言いましたか。",
+            "accepted_answers": [
+              "おじいさんの星",
+              "おじいさんのほし",
+              "おじいさんの星です",
+              "おじいさんのほしです"
+            ],
+            "prompt_furigana": "女[おんな]の子[こ]はあの星[ほし]を何[なに]と言[い]いましたか。"
+          },
+          {
+            "prompt": "女の子は毎晩どこから星を見ていますか。",
+            "accepted_answers": [
+              "窓から",
+              "まどから",
+              "窓",
+              "まど",
+              "窓からです",
+              "まどからです"
+            ],
+            "prompt_furigana": "女[おんな]の子[こ]は毎[まい]晩[ばん]どこから星[ほし]を見[み]ていますか。"
+          }
+        ],
+        "english_translation": "On Sunday evening, a girl and her grandfather were outside. The girl looked at the brightest star and asked, \"What is that star called?\" Grandfather said, \"I don't know. But I think it is probably a big star.\" The girl said, \"From today, that is Grandfather's star.\" Now, every night, she looks at Grandfather's star from the window.",
+        "summary_ja": "女の子は明るい星をおじいさんの星と言いました。",
+        "summary_en": "A girl calls a bright star Grandfather's star.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "darou",
+          "desu",
+          "ka-question",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "ni-direction",
+          "no-possessive",
+          "superlative-ichiban",
+          "te-form",
+          "te-iru",
+          "to-and",
+          "to-iu",
+          "to-omou",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "akarui",
+          "are",
+          "ban",
+          "hoshi",
+          "ima",
+          "iru-exist",
+          "iu-v",
+          "kiku-v",
+          "kyou",
+          "mado",
+          "maiban",
+          "miru-v",
+          "nani",
+          "nichiyoubi",
+          "ojiisan",
+          "omou",
+          "onnanoko",
+          "ookii",
+          "soto",
+          "wakaru"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "onnanoko",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 10,
+            "end": 15
+          },
+          {
+            "vocabulary_slug": "soto",
+            "start": 16,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 18,
+            "end": 22,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "onnanoko",
+            "start": 23,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "akarui",
+            "start": 29,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "hoshi",
+            "start": 32,
+            "end": 33
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 34,
+            "end": 36,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "are",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 41,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "hoshi",
+            "start": 45,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 52,
+            "end": 57,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 58,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 65,
+            "end": 71,
+            "surface_form": "分かりません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 75,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "hoshi",
+            "start": 78,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "omou",
+            "start": 83,
+            "end": 87,
+            "surface_form": "思います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 90,
+            "end": 95,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "onnanoko",
+            "start": 96,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 101,
+            "end": 103
+          },
+          {
+            "vocabulary_slug": "are",
+            "start": 106,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 109,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "hoshi",
+            "start": 115,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 121,
+            "end": 126,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 127,
+            "end": 128
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 129,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 132,
+            "end": 133
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 135,
+            "end": 140
+          },
+          {
+            "vocabulary_slug": "hoshi",
+            "start": 141,
+            "end": 142
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 143,
+            "end": 145,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 145,
+            "end": 148,
+            "surface_form": "います",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 85,
+        "body_furigana": "日[にち]曜[よう]日[び]の晩[ばん]、女[おんな]の子[こ]とおじいさんは外[そと]にいました。女[おんな]の子[こ]は一[いち]番[ばん]明[あか]るい星[ほし]を見[み]て、「あれは何[なに]という星[ほし]ですか。」と聞[き]きました。おじいさんは「分[わ]かりません。でも、大[おお]きい星[ほし]だろうと思[おも]います。」と言[い]いました。女[おんな]の子[こ]は「今日[きょう]から、あれはおじいさんの星[ほし]です。」と言[い]いました。今[いま]は毎[まい]晩[ばん]、窓[まど]からおじいさんの星[ほし]を見[み]ています。",
+        "slug": "ano-hoshi",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

@@ -12,22 +12,21 @@ the allowed vocabulary, the allowed grammar, and Tatoeba style anchors.
 
 ## Allowed-vocabulary derivation
 
-Mirrors the option-(a) positional cutoff adopted for 2a grammar lessons
-(context.py) — deterministic, planner-free:
+Deterministic and planner-free, over the ladder order (level, then
+sort_order):
 
-  * vocab item at position i of the level's V items: **all lower-level vocab**
-    + the level's first i items (the item's own prefix, "what the learner has
-    seen by the time this word is taught") + CORE_SEED_SLUGS.
-  * the next LOOKAHEAD_VOCAB items (i+1..i+LOOKAHEAD_VOCAB) are offered as a
-    second, "coming up next" list. Familiarity is a preference, not a rule:
-    the prompt asks for known words first, and the gate accepts both lists.
-    Words further ahead in the level are rejected, so the first N4 word never
-    leans on vocabulary from the end of N4.
+  * the word at ladder position i: every word up to and including it (all
+    lower levels, and its own level up to itself — "what the learner has seen
+    by the time this word is taught").
+  * the next LOOKAHEAD_VOCAB words are offered as a second, "coming up next"
+    list. Familiarity is a preference, not a rule: the prompt asks for known
+    words first, and the gate accepts both lists. Words further ahead are
+    rejected.
 
 ## Allowed-grammar derivation
 
-Same positional cutoff, applied to the level's grammar points: an item at
-position i of N gets **all lower-level grammar** + the level's first
+A proportional cutoff inside the word's level: the word at position i of the
+level's N words gets **all lower-level grammar** + the level's first
 ceil(i/N * G) points; the points up to ceil((i + LOOKAHEAD_VOCAB)/N * G) are
 offered as "coming up next", so grammar moves with the same window as the
 vocabulary. The prompt carries these lists; the mechanical gate does not check
@@ -63,25 +62,11 @@ def _reading_of(item):
     )
 
 
-def _with_seeds(level, allowed, seen):
-    by_slug = {v["slug"]: v for v in context.load_vocab(level)}
-    for fs in context.CORE_SEED_SLUGS.get(level, []):
-        if fs not in by_slug:
-            raise KeyError(f"seed vocab slug {fs!r} not in {level} vocabulary")
-        if fs not in seen:
-            seen.add(fs)
-            allowed.append(by_slug[fs])
-
-
-def _lower_levels(level):
-    return context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
-
-
 #: How many of the most recently taught grammar points the prompt offers first.
 RECENT_GRAMMAR_COUNT = 8
 
 #: How far past the item the "coming up next" window reaches, in vocab items
-#: (~10% of N4). Grammar uses the same window, scaled to the level's points.
+#: Grammar uses the same window, scaled to the level's points.
 LOOKAHEAD_VOCAB = 50
 
 
@@ -90,10 +75,9 @@ def _grammar_split(level, position, total):
     every lower level in full + a proportional prefix of this level's points,
     with the last RECENT_GRAMMAR_COUNT split off as the just-taught ones;
     `later` is the points taught within the next LOOKAHEAD_VOCAB items."""
-    grammar = []
-    for lower in _lower_levels(level):
-        grammar.extend(context.load_grammar(lower))
-    same_level = context.load_grammar(level)
+    all_grammar = context.load_grammar()
+    grammar = [g for g in all_grammar if g["level"] < level]
+    same_level = [g for g in all_grammar if g["level"] == level]
     cutoff = math.ceil(position / total * len(same_level))
     ahead = math.ceil(min(position + LOOKAHEAD_VOCAB, total) / total * len(same_level))
     grammar.extend(same_level[:cutoff])
@@ -101,34 +85,25 @@ def _grammar_split(level, position, total):
             same_level[cutoff:ahead])
 
 
-def vocab_context(level, slug):
-    vocab = context.load_vocab(level)
+def vocab_context(slug):
+    vocab = context.load_vocab()
     positions = {v["slug"]: i + 1 for i, v in enumerate(vocab)}
     if slug not in positions:
-        raise KeyError(f"unknown vocabulary slug {slug!r} in level {level}")
+        raise KeyError(f"unknown vocabulary slug {slug!r}")
     item = vocab[positions[slug] - 1]
+    level = item["level"]
 
-    allowed, seen = [], set()
-    for lower in _lower_levels(level):
-        for v in context.load_vocab(lower):
-            if v["slug"] not in seen:
-                seen.add(v["slug"])
-                allowed.append(v)
-    for v in vocab[: positions[slug]]:
-        if v["slug"] not in seen:
-            seen.add(v["slug"])
-            allowed.append(v)
-    _with_seeds(level, allowed, seen)
-    later = [v for v in vocab[positions[slug]: positions[slug] + LOOKAHEAD_VOCAB]
-             if v["slug"] not in seen]
-    seen |= {v["slug"] for v in later}
+    allowed = vocab[: positions[slug]]
+    later = vocab[positions[slug]: positions[slug] + LOOKAHEAD_VOCAB]
+    seen = {v["slug"] for v in allowed + later}
+    same_level = [v["slug"] for v in vocab if v["level"] == level]
 
     form = item["primary_form"]
     reading = _reading_of(item)
     allowed_index = level_check.build_allowed_index(allowed + later)
     anchors = tatoeba.style_anchors([form], allowed_index, extra_allowed={form})
     earlier_grammar, recent_grammar, later_grammar = _grammar_split(
-        level, positions[slug], len(vocab))
+        level, same_level.index(slug) + 1, len(same_level))
 
     return {
         "type": "vocab",
@@ -151,14 +126,13 @@ def vocab_context(level, slug):
     }
 
 
-def item_context(level, kind, slug):
-    return vocab_context(level, slug)
+def item_context(kind, slug):
+    return vocab_context(slug)
 
 
 def all_slugs(level, kind):
-    """Slugs for a level in curriculum (sort) order."""
-    items = sorted(context.load_items("vocabulary", level), key=lambda it: it["sort_order"])
-    return [it["slug"] for it in items]
+    """Slugs of one ladder level in curriculum (sort) order."""
+    return [it["slug"] for it in context.load_vocab() if it["level"] == level]
 
 
 def format_grammar_list(items):

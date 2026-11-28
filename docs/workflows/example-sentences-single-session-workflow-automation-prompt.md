@@ -15,9 +15,10 @@ pipeline background.
 This run **auto-selects the next <slug-count> not-yet-done slugs** — you do
 NOT paste a slug list.
 
-Level (one JLPT level per run; change to `n5`, `n3`, … when ready):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n4>
+<level = 6>
 
 Content type (always `vocab`):
 
@@ -52,18 +53,22 @@ curriculum/_build
 Step 1: Select This Session's Slugs
 
 Select automatically — do NOT hand-pick or paste a slug list. Pick the next
-<slug-count> slugs (in curriculum sort order) that are neither generated
-(absent from the committed sidecar) nor drafted (no record under
-`drafts/examples`). Substitute this run's <level> for LEVEL and <slug-count>
+<slug-count> slugs (in ladder order) that are neither generated
+(no example sentences in the committed sidecar) nor drafted (no record under
+`drafts/examples`). A level run picks only words with no sentences, so reviewed
+sentences are never regenerated here; to regenerate a reviewed word, name it
+with `--slugs` by hand (outside this auto-select). Substitute this run's <level> for LEVEL and <slug-count>
 for BATCH_LIMIT, then run:
 
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = '<level>', 'vocab', <slug-count>
+from generate_content.context import level_dir
+LEVEL, KIND, BATCH_LIMIT = <level>, 'vocab', <slug-count>
 path = '../vocabulary/examples.json'
-generated = set(json.load(open(path))) if os.path.exists(path) else set()
-drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
+entries = json.load(open(path)) if os.path.exists(path) else {}
+generated = {s for s, e in entries.items() if e.get('example_sentences')}
+drafts_dir = f'generate_content/drafts/examples/{level_dir(LEVEL)}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
 drafted.discard('requests-preview')
 done = generated | drafted
@@ -85,11 +90,11 @@ Step 2: Generate the Prompt Files
 
 `--slugs` is a single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_examples webprompts --type vocab --level <level> --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_examples webprompts --type vocab --slugs <selected,slugs,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/examples/<level>/vocab/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level-dir>/vocab/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op.
 
@@ -111,7 +116,7 @@ obeyed per item.
 Write the sentences for every item exactly as its own prompt body asks, then
 write ONE reply file per item, each to its own path:
 
-curriculum/_build/generate_content/web/examples/<level>/vocab/<slug>.reply.md
+curriculum/_build/generate_content/web/examples/<level-dir>/vocab/<slug>.reply.md
 
 Do not write a combined file. Requirements:
 
@@ -126,7 +131,7 @@ Do not write a combined file. Requirements:
   natural conjugation counts — 食べました exemplifies 食べる).
 - **Treat each item's vocabulary lists as its own.** Each prompt splits the
   vocabulary into "Already known" (words before this item) and "Coming up
-  next" (the next 50 words of the level). Both lists move through the level,
+  next" (the next 50 words in ladder order). Both lists move through the ladder,
   so a word allowed for a later item in this run may be out of range for an
   earlier one. Build most sentences from the "Already known" list in THAT
   item's prompt only; use a "coming up next" word (or pattern) only when a
@@ -134,7 +139,7 @@ Do not write a combined file. Requirements:
 - Every slug in a sentence's `vocabulary_slugs` must come from that prompt's
   two vocabulary lists; never invent slugs. Every content word in each
   Japanese sentence must be in one of those lists (the level-check rejects
-  any other word, including words further ahead in the same level).
+  any other word, including words further ahead).
 - Write all Japanese as plain text — no furigana, no romaji, no markdown, no
   brackets. The build pipeline adds furigana with a tokenizer.
 - Keep sentences short and everyday (roughly ≤ 40 Japanese characters each)
@@ -154,7 +159,7 @@ Step 4: Ingest and Repair — one slug at a time, inline only
 
 For each slug, run:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type vocab --level <level> --slug <slug> --model <this session's model name>
+.venv/bin/python -m generate_content.generate_examples ingest --type vocab --slug <slug> --model <this session's model name>
 
 If ingestion succeeds, the item is merged into the sidecar
 `curriculum/vocabulary/examples.json` and its prompt and reply files
@@ -177,7 +182,7 @@ subagent workflow's "7+ errors → subagent" rule:
     ingestion code, the allowed-vocab derivation, curriculum source data, or
     the assembled sidecar.
   - Keep every sentence using the target, every `vocabulary_slugs` entry in
-    that prompt's allowed list, and every content word in level.
+    that prompt's allowed list, and every content word in that prompt's allowed lists.
   - Keep every Japanese sentence fully annotatable by the tokenizer (avoid
     constructions that fail the furigana round-trip).
   - Keep the reply format (a single fenced ```json block), the output
@@ -195,15 +200,15 @@ files.
 Step 5: Run `generate.py`, Then Stop — Do Not Run the Rest of the Final Build
 
 As soon as Step 4 finishes (all slugs attempted, whether passed or skipped),
-run `generate.py` for this run's `<level>` in this same session:
+run `generate.py` in this same session:
 
-cd curriculum/_build && .venv/bin/python generate.py --level <level>
+cd curriculum/_build && .venv/bin/python generate.py
 
 `generate.py` lives at `curriculum/_build/generate.py` and needs that
 directory's venv interpreter — never shorten it to a bare
-`generate.py --level <level>`, which fails with `command not found`. It
-inlines the examples sidecar into the shipped `curriculum/vocabulary/<level>.json`
-and adds furigana with the tokenizer.
+`generate.py`, which fails with `command not found`. It builds every level
+(it takes no level flag). It inlines the examples sidecar into the shipped
+`curriculum/vocabulary/items.json` and adds furigana with the tokenizer.
 
 Do NOT run `npm run validate-schema` or `npm run compile-curriculum` in this
 session — run those once from the repository root after every session
@@ -229,7 +234,7 @@ Final Report (for this session)
 - Repair attempts used per affected slug (all inline in this shape)
 - Roughly how many slugs remain not-yet-done for the level (re-run Step 1 to
   get the count)
-- Confirmation that `generate.py --level <level>` was run, and that
+- Confirmation that `generate.py` was run, and that
   `npm run validate-schema` / `npm run compile-curriculum` were NOT run in
   this session
 
@@ -247,7 +252,7 @@ Important Constraints
   code, the allowed-vocab derivation, the prompt templates, or curriculum
   source data to make invalid content pass.
 - Style anchors are reference only — never copy or adapt them.
-- Do run `generate.py --level <level>` at the end of this session (Step 5).
+- Do run `generate.py` at the end of this session (Step 5).
   Do not run `npm run validate-schema` or `npm run compile-curriculum` here.
 - No browser, no clipboard, no downloads.
 
@@ -265,3 +270,32 @@ Notes on differences from the subagent workflow
 - Everything else is identical: the same auto-select, the same
   `webprompts`/`ingest` commands and gate, the same per-slug retry budget,
   the same sidecar, and the same draft/`review_status` discipline.
+
+---
+
+Last step of every run: commit, then end with the level status
+
+Do this after the workflow above is complete and before you write the final
+report. Use `git status --porcelain` to see the changed files.
+
+1. Decide if this run has issues. It has issues if one of these is true:
+   - an item (slug, point or seed) was skipped or failed, or still has
+     validation errors;
+   - a command stopped with an error that you did not resolve (Step 1
+     problems included);
+   - a file changed outside `curriculum/` (ignore `.DS_Store`).
+2. No issues: stage only the changed files under `curriculum/`, by name
+   (never `git add -A` or `git add .`), and commit on the current branch.
+   Message: `feat(content): <what this run made> for level <level>`, for
+   example `feat(content): draft radical mnemonics for level 15`. Do not push.
+   If no file changed, do not commit.
+3. Issues: do not stage and do not commit. Leave every change in the working
+   tree for the maintainer, and name each issue in the final report.
+4. Re-run Step 1 for the same level(s). The last line of the final report is
+   exactly one of these two lines:
+
+   LEVEL_STATUS: done
+   LEVEL_STATUS: more
+
+   `done` means Step 1 now selects nothing. `more` means items are still left.
+   `scripts/run-content-lane.sh` reads this line to choose the next run.

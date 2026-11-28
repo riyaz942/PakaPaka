@@ -15,9 +15,10 @@ the shared pipeline background.
 This run is for ONE content type at a time and **auto-selects the next batch of
 not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
-Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 6>
 
 Content type (one of `radical`, `kanji`, `vocab` or `grammar`):
 
@@ -105,20 +106,20 @@ kanji` raises
   ValueError: component radical hi-sun has no `mnemonic_text` yet. Generate the
   radical layer first (...)
 
-if you try to skip ahead. Order for a level: **radicals → `generate.py --level <level>` → kanji → `generate.py --level <level>` → vocab**. Finish <level> fully before moving to the next level. If Step
+if you try to skip ahead. Order for a level: **radicals → `generate.py` → kanji → `generate.py` → vocab**. Finish <level> fully before moving to the next level. If Step
 1b raises that error, stop and report it — the previous layer is not done.
 
 **Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
-other layer's prose, so it can run at any time. Two conditions instead:
-`curriculum/_build/grammar_origins.json` must cover every N5/N4 grammar slug and
+other layer's prose, so it can run at any time. One condition instead:
+`curriculum/_build/grammar_origins.json` must cover every grammar slug and
 carry `"review_status": "reviewed"` (every command with `--type grammar` stops
-with an error otherwise — report it, do not edit the file yourself), and only
-`--level n5` and `--level n4` have grammar in scope. The gate rules are in
+with an error otherwise — report it, do not edit the file yourself). The gate
+rules are in
 `validate_mnemonics.validate_grammar`: one or two story sentences plus a
 Japanese example ending in 。, `<reading>` on the English sound-alike and on the
 form's kana, `<grammar>` on the meaning, example words and kanji at or below
 the level, and the origin's keyword in the story (or no origin claim at all).
-After ingesting grammar, run `generate.py --level <level>` (grammar is not banded).
+After ingesting grammar, run `generate.py`.
 
 ---
 
@@ -139,8 +140,7 @@ curriculum/_build
 
 1a. Select this run's slugs automatically and split them into groups. Do NOT
 hand-pick or paste a slug list. Pick the next <batch-size> slugs of <type> (in
-curriculum sort order) that do not already have a gate-passing draft **at the
-current `PROMPT_VERSION`**, then chunk them into groups of at most <group-size>,
+ladder order) that have **no mnemonic in the sidecar yet**, then chunk them into groups of at most <group-size>,
 preferring to put items that **share a taught component** in the same group.
 Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
 <group-size> for GROUP_SIZE, then run:
@@ -148,31 +148,19 @@ Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION, sidecar_path
-LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = '<level>', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji', 'vocab' or 'grammar'
-# Read "done" from the checked-in sidecar, not from drafts/. A draft is filed
-# under the level an item had when it was WRITTEN; a banded kind (radical,
-# kanji) can be re-filed to a different level by a reband, so drafts_dir keyed
-# by the current LEVEL silently misses every drafted item that moved. The
-# sidecar has no such drift: it is one file for every level, keyed by slug.
-slugs = mc.all_slugs(LEVEL, KIND_DIR[KIND])
-path = sidecar_path(KIND)
-sidecar = json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
-done = {
-    slug for slug in slugs
-    if sidecar.get(slug, {}).get('_meta', {}).get('prompt_version') == str(PROMPT_VERSION[KIND])
-}
-todo = [s for s in slugs if s not in done][:BATCH_LIMIT]
+from generate_content.generate_mnemonics import KIND_DIR, default_slugs
+LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = <level>, '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji', 'vocab' or 'grammar'
+# The level's items with no entry in the sidecar yet, in curriculum order.
+left = default_slugs(KIND, [LEVEL])
+todo = left[:BATCH_LIMIT]
+done = len(mc.all_slugs(KIND_DIR[KIND], LEVEL)) - len(left)
 # Shared-component data for grouping; radicals have no components, so they fall
 # back to sequential chunks (curriculum order already clusters related radicals).
 comps = {}
 if KIND == 'kanji':
-    comps = mc.decomposition_edges()  # all levels; callers filter per slug
+    comps = mc.decomposition_edges()
 elif KIND == 'vocab':
-    # Both edge kinds: two words sharing 昨 group together whether or not
-    # the level teaches it.
-    comps = {slug: e['requires'] + e['builds_on']
-             for slug, e in mc.vocab_component_edges(LEVEL).items()}
+    comps = mc.vocab_component_edges()
 remaining, groups = list(todo), []
 while remaining:
     head = remaining.pop(0)
@@ -186,7 +174,7 @@ while remaining:
     while remaining and len(group) < GROUP_SIZE:   # top up in curriculum order
         group.append(remaining.pop(0))
     groups.append(group)
-print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}, done={len(done)}) '
+print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}, done={done}) '
       f'in {len(groups)} group(s) of <= {GROUP_SIZE}:')
 for i, g in enumerate(groups, 1):
     print(f'  group {i}: {",".join(g)}')
@@ -194,50 +182,41 @@ print()
 print('ALL:', ','.join(todo))
 PY
 
-Note what "done" means here: a draft recorded under an **older** prompt version is
-stale, not done, so a version bump correctly re-selects every out-of-date item for
-regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
+Note what "done" means here: an item is done once its entry in the kind's
+sidecar (`curriculum/<kind>/mnemonics.json`) has a non-empty mnemonic. An empty
+`{}` placeholder counts as not done. An
+item with a mnemonic is never selected again, so reviewed prose is never
+regenerated by a run; a prompt-version bump does not re-select anything either.
+This mirrors the API path, whose `run --level` takes the same items.
 `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}`),
 because the four prompts move independently. Radicals sitting at 1 is deliberate:
 Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
-~150–300 characters, description demoted to optional — so the reviewed N5 radicals
+~150–300 characters, description demoted to optional — so the first reviewed radicals
 already match the current prompt and are correctly *not* re-selected.
 
 The number records **conformance, not provenance**: it answers "does this draft
-satisfy contract N", not "which prompt wrote it". The N5 kanji were generated
+satisfy contract N", not "which prompt wrote it". The first kanji were generated
 under 1 and 2 and then brought up to 4 in place — retagged mechanically, with the
 description backlog cleared — so they are stamped 4. Stamping is only ever correct
 after the item passes the gate under the new contract; a draft that merely
 predates a bump is stale and must be regenerated, not renumbered.
 
-Vocabulary moved 4 → 5 → 6, and there the staleness is the point rather than an
-accident to be avoided: both are real rewrites, not retags. Rev 5 cut the meaning
-mnemonic to one or two sentences, named the word's part of speech where that
-teaches a rule, and added a `<vocabulary>` self-tag that a Rev 4 draft cannot
-have, because the tag did not exist when it was written.
+If it prints 0 slugs, every item of this level+type already has a mnemonic —
+stop and report that. Otherwise treat the
+printed `ALL:` list as this run's slug set and the printed groups as this run's
+generation units: every later step iterates over exactly these slugs, and no slug
+outside this list is touched. Record the group composition — the final report
+names it.
 
-Rev 6 landed before a single word had been generated under 5, which is what made
-the second bump free. It takes the reading's derivation back *out* of the prose:
-naming jukugo, on'yomi, kun'yomi and rendaku was the right information in the
-wrong place, because `reading_regularity` computes every bit of it exactly, so it
-now ships as the **`reading_composition`** field instead. Two consequences the
-contract turns on:
+For grammar, the select also picks a mnemonic whose Japanese example uses a word
+above the point's level (`grammar_mnemonics_above_level` in the ladder work
+list, from the same check).
 
-- a `regular` or `kana_only` word writes **no `reading_mnemonic` at all** — 745
-  of N5+N4's 1,247 words — and the gate rejects a fresh draft that writes one;
-- a word whose reading an earlier word already taught (答え after 答える, 書ける
-  after 書く — 90 words at N5+N4) writes **one sentence pointing back at that
-  word**, never a second story for a sound the learner already has.
-
-Every already-written N5 word is therefore correctly re-selected. Nothing is
-deleted by this — the stale prose keeps shipping until a run rewrites it — so
-N4's unwritten words can be worked through first and N5 picked up later.
-
-If it prints 0 slugs, this level+type is already fully generated at the current
-prompt version — stop and report that. Otherwise treat the printed `ALL:` list as
-this run's slug set and the printed groups as this run's generation units: every
-later step iterates over exactly these slugs, and no slug outside this list is
-touched. Record the group composition — the final report names it.
+A run that fixes existing vocabulary mnemonics takes its slugs from the work
+list, not from this select: `vocab_mnemonics_pending` (`--type vocab`) in
+`curriculum/_build/reports/ladder-worklist.json`. See "Ladder work list" in
+`docs/workflows/README.md`. Use that list as the slug set; the select above skips
+items that already have a mnemonic.
 
 Grouping is a hint for the writer, not a constraint on the content: items in a
 group share a subagent, nothing else. Each still gets its own prompt file built
@@ -248,11 +227,11 @@ once, since each slug gets its own prompt file exactly as before. `--slugs` is a
 single comma-separated string with NO spaces after the commas (use the `ALL:`
 list):
 
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --level <level> --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --slugs <selected,slugs,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically,
 and any appended gate errors from an earlier failure are dropped, which is correct
@@ -270,7 +249,7 @@ For the current group, launch ONE general-purpose subagent (using
 finish. List every prompt file path in the group explicitly — one line per slug,
 resolved, not a template:
 
-curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
@@ -316,7 +295,7 @@ Give the subagent these instructions:
   Write the mnemonics for every item exactly as its own prompt body asks, then
   write ONE reply file per item, each to its own path:
 
-  curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.reply.md
+  curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.reply.md
 
   Do not write a combined file, and do not put two items in one file — each slug's
   reply file must contain only that slug's JSON.
@@ -494,11 +473,11 @@ Give the subagent these instructions:
   - **For vocab, obey the reading block exactly — it decides whether there is a
     reading mnemonic at all.** Three outcomes, all computed, none of them a
     judgement call:
-      - *Regular or kana-only* (745 of N5+N4's 1,247 words): **omit
+      - *Regular or kana-only* (most words): **omit
         `reading_mnemonic` entirely.** Do not write a short one instead. The
         `reading_composition` field is the whole answer, and a fresh draft that
         writes anything here fails the gate.
-      - *Reading already taught by an earlier word* (90 words at N5+N4 — 答え
+      - *Reading already taught by an earlier word* (答え
         after 答える, 見つかる after 見る, 書ける after 書く): **one sentence**,
         60–170 characters, naming that word, with the reading in a `<reading>`
         tag and this word's meaning in a `<vocabulary>` tag. No cast character,
@@ -546,7 +525,7 @@ reply files.
 
 For each slug in the group, run:
 
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --slug <slug> --model <subagent-model>
 
 (The `--model` value is recorded in the sidecar entry's `_meta.generator_model`;
 pass the same `<subagent-model>` you generated with so provenance is honest.)
@@ -565,7 +544,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
@@ -581,8 +560,8 @@ validation errors appended to the prompt file and choose the repair method:
 Whichever method repairs the reply, it works from these files — this slug's
 only, never a group-mate's:
 
-- curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
-- curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.reply.md
+- curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.prompt.md
+- curriculum/_build/generate_content/web/mnemonics/<level-dir>/<type>/<slug>.reply.md
 
 The repair instructions are the same for both methods (an inline fix follows
 them exactly as a repair subagent would):
@@ -633,7 +612,7 @@ them exactly as a repair subagent would):
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --slug <slug> --model <subagent-model>
 
 Retry Limit
 
@@ -690,11 +669,11 @@ Final Build
 After every selected slug has been successfully ingested or skipped, run the
 project's normal generation pipeline.
 
-`generate.py` is **not** at the repository root and is **not** on `PATH`. It
+`generate.py` builds every level and takes no level flag. It is **not** at the repository root and is **not** on `PATH`. It
 lives at `curriculum/_build/generate.py` and needs that directory's venv
 interpreter, so it must be invoked explicitly:
 
-cd curriculum/_build && .venv/bin/python generate.py --level <level>
+cd curriculum/_build && .venv/bin/python generate.py
 
 Then, from the repository root:
 
@@ -704,11 +683,11 @@ And:
 
 npm run compile-curriculum
 
-Do not shorten the first command to a bare `generate.py --level <level>`. That
+Do not shorten the first command to a bare `generate.py`. That
 fails with `command not found`, while the two `npm` commands after it still
 succeed — so the build looks like it ran, `curriculum.db` gets rebuilt, and the
 new mnemonics are silently missing because nothing ever inlined them. If the
-inlining step worked, `curriculum/<type>/<level>.json` is newer than
+inlining step worked, `curriculum/<type>/items.json` is newer than
 `curriculum/<type>/mnemonics.json`; if the sidecar is the newer file,
 `generate.py` did not run.
 
@@ -725,7 +704,7 @@ inlined prose, not the sidecar.
 If the curriculum studio's `web/server` is already running, its curriculum
 index is an in-memory cache loaded once at startup
 (`web/server/curriculum/loader.ts`) and reads straight from
-`curriculum/<type>/<level>.json` — not from the mnemonics sidecar. It has no
+`curriculum/<type>/items.json` — not from the mnemonics sidecar. It has no
 file watcher, so it keeps serving pre-Final-Build content (including a stale
 `meaning_mnemonic`/`reading_mnemonic` and any older `_meta.prompt_version`)
 until something calls `reload()`. After this Final Build step, hit `POST

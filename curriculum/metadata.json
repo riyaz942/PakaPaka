@@ -1,21 +1,14 @@
 {
-  "version": 54,
-  "jlpt_levels": [
-    "N5",
-    "N4",
-    "N3",
-    "N2",
-    "N1"
-  ],
-  "description": "JLPT N5 and N4 full-depth curriculum — radicals, kanji, vocabulary, grammar, readings, and a precomputed dependency graph for bundled app import. Kanji and radicals are banded: each level teaches a fixed budget (150 / 175 / 375 / 300 / 1,000 kanji, 2,000 cumulative) ranked by the old-JLPT level KANJIDIC2 tags, then by school grade 1-3 first inside that level, then by how many of that level's own words each kanji unlocks; the first 10 N5 and 6 N4 slots go to the kanji those levels' own words lean on hardest. Radicals file at the level of the first kanji that needs them. N4 holds 175 so that all 181 kanji the JLPT tests at N4 fit inside the N5+N4 bands. A band is a teaching budget, not a coverage gate — words outside it are still taught: a kanji banded at or before a word's level emits a gating `requires` edge, and an out-of-band kanji a non-gating `builds_on` edge, which withholds the word's reading prompt instead of the word. N3/N2/N1 carry a derived skeleton: kanji, radicals and 8,500 frequency-ranked words (2,250 / 2,250 / 4,000) with readings, meanings and furigana, but no mnemonics, examples or reading passages; N3 also has the grammar points the JLPT level audit moved out of N4 (docs/content/grammar-jlpt-level-audit.md) (docs/content/kanji-coverage-and-dependency-order-plan.md).",
+  "version": 67,
+  "description": "Level-ladder curriculum — radicals, kanji, vocabulary, grammar, readings, and a precomputed dependency graph for bundled app import. Every item and reading passage sits on one of 60 ladder levels (integer `level`, 1-60) and has a `sort_order` inside its level; there are no per-JLPT files. The ladder is built by curriculum/_build/generate.py from curriculum/_build/ladder.json, which also records which ladder levels each JLPT level covers (N5 = levels 1-16, N4 = 17-22); compile-curriculum writes that to the `level_jlpt_equivalence` table as a label for the user, and nothing is gated on it. Authored depth (mnemonics, examples, reading passages) covers the N5 and N4 levels; the higher levels carry a derived skeleton: kanji, radicals and frequency-ranked words with readings, meanings and furigana. Ids and slugs never change when an item moves level (curriculum/id-registry.json).",
   "maintainer_notes": "version is a whole number that npm run compile-curriculum raises by 1 on every run — do not edit it by hand. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {
     "radicals": 817,
     "kanji": 2000,
     "vocabulary": 9749,
-    "grammar": 160,
-    "total_items": 12726,
+    "grammar": 161,
+    "total_items": 12727,
     "reading_passages": 60,
-    "dependency_edges": 23290
+    "dependency_edges": 23146
   }
 }

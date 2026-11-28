@@ -66,5 +66,21 @@ class StemSpanTest(unittest.TestCase):
         self.assertEqual(merged[0]["inflection"], "masu")
 
 
+class CopulaAruTest(unittest.TestCase):
+    """The ある of ではありません / じゃありません is the copula's negative,
+    not the verb "to exist", so it gets no word span."""
+
+    def test_copula_negative_is_not_aru(self):
+        for text in ("今日は十日ではありません。", "十日じゃありません。",
+                     "本ではありませんでした。"):
+            with self.subTest(text=text):
+                self.assertEqual(spans.build_inflected_spans(text, {"aru": "ある"}), [])
+                self.assertEqual(spans.build_stem_spans(text, {"aru": "ある"}), [])
+
+    def test_aru_after_a_particle_is_still_aru(self):
+        [span] = spans.build_inflected_spans("時間がありません。", {"aru": "ある"})
+        self.assertEqual((span["vocabulary_slug"], span["surface_form"]), ("aru", "ありません"))
+
+
 if __name__ == "__main__":
     unittest.main()

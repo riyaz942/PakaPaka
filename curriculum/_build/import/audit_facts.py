@@ -36,6 +36,16 @@ def load_json(*parts):
         return json.load(f)
 
 
+_ITEMS = {}
+
+
+def items_at(kind, level):
+    """The items of `curriculum/<kind>/items.json` at one ladder level."""
+    if kind not in _ITEMS:
+        _ITEMS[kind] = load_json(kind, "items.json")["items"]
+    return [it for it in _ITEMS[kind] if it["level"] == level]
+
+
 STOPWORDS = {
     "a", "an", "the", "of", "to", "in", "on", "for", "at", "with", "and",
     "or", "one", "be", "is", "do", "esp", "etc", "something", "someone",
@@ -167,7 +177,7 @@ KRAD_VARIANTS = {
 def audit_kanji(levels, kanjidic):
     findings = []
     for level in levels:
-        for item in load_json("kanji", f"{level}.json")["items"]:
+        for item in items_at("kanji", level):
             slug, char = item["slug"], item["primary_form"]
             kd = kanjidic.get(char)
             if kd is None:
@@ -219,7 +229,7 @@ def audit_vocab(levels, jmdict):
     tagger = furigana_lib._get_tagger()
     derived = 0
     for level in levels:
-        for item in load_json("vocabulary", f"{level}.json")["items"]:
+        for item in items_at("vocabulary", level):
             slug, form = item["slug"], item["primary_form"]
             reading = next(
                 (a["answer_text"] for a in item["accepted_answers"]
@@ -271,11 +281,11 @@ def audit_decomposition(levels, kradfile):
     findings = []
     radical_char = {}
     for level in levels:
-        for r in load_json("radicals", f"{level}.json")["items"]:
+        for r in items_at("radicals", level):
             radical_char[r["slug"]] = r["primary_form"]
     kanji_char = {}
     for level in levels:
-        for k in load_json("kanji", f"{level}.json")["items"]:
+        for k in items_at("kanji", level):
             kanji_char[k["slug"]] = k["primary_form"]
 
     taught_chars = {}
@@ -336,7 +346,8 @@ def audit_decomposition(levels, kradfile):
 
 
 def main():
-    levels = ["n5", "n4"]
+    # Ladder levels 1-20: the levels with authored content.
+    levels = list(range(1, 21))
     print("Loading KANJIDIC2…")
     kanjidic = sources.load_kanjidic2()
     print("Loading JMdict…")

@@ -337,15 +337,8 @@ def load_kanjivg():
 
 def load_corpus():
     """[(slug, char)] for every kanji the curriculum ships, in level order."""
-    out = []
-    for level in ("n5", "n4", "n3", "n2", "n1"):
-        path = os.path.join(CURRICULUM_DIR, "kanji", f"{level}.json")
-        if not os.path.exists(path):
-            continue
-        with open(path, encoding="utf-8") as f:
-            for item in json.load(f)["items"]:
-                out.append((item["slug"], item["primary_form"]))
-    return out
+    with open(os.path.join(CURRICULUM_DIR, "kanji", "items.json"), encoding="utf-8") as f:
+        return [(item["slug"], item["primary_form"]) for item in json.load(f)["items"]]
 
 
 def load_taught():
@@ -356,16 +349,9 @@ def load_taught():
     マ "hook") never had a KANJIDIC gloss to begin with. Re-deriving their
     wording from KANJIDIC would either drop them or silently rename a radical
     whose mnemonic is already written against the old word."""
-    out = {}
-    for level in ("n5", "n4", "n3", "n2", "n1"):
-        path = os.path.join(CURRICULUM_DIR, "radicals", f"{level}.json")
-        if not os.path.exists(path):
-            continue
-        with open(path, encoding="utf-8") as f:
-            for item in json.load(f)["items"]:
-                out[item["primary_form"]] = {
-                    "slug": item["slug"], "meaning": item["meaning"]}
-    return out
+    with open(os.path.join(CURRICULUM_DIR, "radicals", "items.json"), encoding="utf-8") as f:
+        return {item["primary_form"]: {"slug": item["slug"], "meaning": item["meaning"]}
+                for item in json.load(f)["items"]}
 
 
 def load_authored():

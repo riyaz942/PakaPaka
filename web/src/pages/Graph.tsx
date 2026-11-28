@@ -4,16 +4,15 @@ import { DependencyGraph } from '../components/DependencyGraph';
 import { useApi } from '../hooks/useApi';
 import {
   CONTENT_TYPE_LABELS,
-  JLPT_LEVELS,
   type BuildOrderRow,
   type ContentType,
   type GraphLevelResponse,
   type GraphSummaryResponse,
-  type JlptLevel,
 } from '../types/api';
 
 const GRAPH_TYPES: ContentType[] = ['radical', 'kanji', 'vocabulary', 'grammar'];
-const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
+/** Ladder levels 1-60. */
+const LEVELS: number[] = Array.from({ length: 60 }, (_, i) => i + 1);
 
 const REASON_LABELS: Record<string, string> = {
   missing: 'missing',
@@ -22,7 +21,7 @@ const REASON_LABELS: Record<string, string> = {
 };
 
 export default function Graph() {
-  const [level, setLevel] = useState<JlptLevel>('N5');
+  const [level, setLevel] = useState<number>(1);
   const [activeTypes, setActiveTypes] = useState<Set<ContentType>>(
     () => new Set<ContentType>(['radical', 'kanji']),
   );
@@ -59,18 +58,17 @@ export default function Graph() {
           completeness; a dashed red border marks a dangling reference. Click a node to open it.
         </p>
         <div className="filter-bar">
-          <div className="chip-group">
+          <select
+            value={level}
+            onChange={(e) => setLevel(Number(e.target.value))}
+            aria-label="Level"
+          >
             {LEVELS.map((lv) => (
-              <button
-                key={lv}
-                type="button"
-                className={lv === level ? 'chip chip--active' : 'chip'}
-                onClick={() => setLevel(lv)}
-              >
-                {lv}
-              </button>
+              <option key={lv} value={lv}>
+                Level {lv}
+              </option>
             ))}
-          </div>
+          </select>
           <div className="chip-group">
             {GRAPH_TYPES.map((type) => (
               <button
@@ -162,7 +160,7 @@ export default function Graph() {
       <section className="panel">
         <h2 className="panel-title">Build order — finish these first</h2>
         <p className="panel-muted">
-          {level} items whose prerequisites are missing from the corpus, still a draft, or a
+          Level {level} items whose prerequisites are missing from the corpus, still a draft, or a
           skeleton (≤60% complete), sorted by how many downstream items they unblock.
         </p>
         {buildOrder.status === 'loading' ? <p className="panel-muted">Loading…</p> : null}
@@ -171,7 +169,7 @@ export default function Graph() {
         ) : null}
         {buildOrder.status === 'ok' ? (
           buildOrder.data.length === 0 ? (
-            <p className="panel-muted">Nothing blocked for {level}.</p>
+            <p className="panel-muted">Nothing blocked for level {level}.</p>
           ) : (
             <div className="table-wrap">
               <table className="data-table">

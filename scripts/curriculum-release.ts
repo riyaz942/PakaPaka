@@ -151,3 +151,58 @@ export function buildPayload(
     published_at: now.toISOString(),
   };
 }
+
+/**
+ * Which schema a release is signed for, and which file it ships. No flags: the
+ * committed seed under the current schema. An older schema (content fixes for
+ * old store apps) needs `--seed <file>`, a db compiled for that schema: the
+ * committed seed has the current shape.
+ */
+export function resolveReleaseTarget(
+  args: string[],
+  currentSchema: number,
+): { schema: number; seedFile: string | undefined } {
+  const value = (flag: string): string | undefined => {
+    const i = args.indexOf(flag);
+    if (i < 0) return undefined;
+    const next = args[i + 1];
+    if (next === undefined || next.startsWith('--')) throw new Error(`${flag} needs a value.`);
+    return next;
+  };
+  const schemaArg = value('--schema');
+  const seedFile = value('--seed');
+  const schema = schemaArg === undefined ? currentSchema : Number(schemaArg);
+  if (!Number.isInteger(schema) || schema < 1 || schema > currentSchema) {
+    throw new Error(`--schema must be a whole number from 1 to ${currentSchema}.`);
+  }
+  if (schema === currentSchema && seedFile !== undefined) {
+    throw new Error('--seed is for an older --schema only. The current schema ships the committed seed.');
+  }
+  if (schema < currentSchema && seedFile === undefined) {
+    throw new Error(`--schema ${schema} needs --seed <file>: a db compiled for schema ${schema}.`);
+  }
+  return { schema, seedFile };
+}
+
+/**
+ * The db must have the shape of the schema it is signed for: an old store app
+ * cannot read a schema 2 file, and a new app cannot read a schema 1 file.
+ * `itemColumns` are the column names of `items`; `tables` are all table names.
+ */
+export function checkSeedShape(schema: number, tables: string[], itemColumns: string[]): void {
+  const hasLevel = itemColumns.includes('level');
+  const hasJlpt = itemColumns.includes('jlpt_level');
+  const fail = (why: string): never => {
+    throw new Error(`The db is not a schema ${schema} db: ${why}.`);
+  };
+  if (schema === 1) {
+    if (!hasJlpt) fail('items has no jlpt_level');
+    if (hasLevel) fail('items has level (a schema 2 shape)');
+  } else if (schema === 2) {
+    if (!hasLevel) fail('items has no level');
+    if (hasJlpt) fail('items has jlpt_level (a schema 1 shape)');
+    if (!tables.includes('level_jlpt_equivalence')) fail('there is no level_jlpt_equivalence table');
+  } else {
+    throw new Error(`No shape check for schema ${schema}.`);
+  }
+}

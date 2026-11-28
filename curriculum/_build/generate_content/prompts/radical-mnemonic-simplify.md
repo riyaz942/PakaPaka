@@ -68,8 +68,8 @@ For every slug in `kept` (not marked):
 Then sync the local drafts, which drive any future rebuild
 (`write_sidecar` reconstructs sidecars from them and would silently drop
 sidecar-only edits): for each marked slug, if
-`curriculum/_build/generate_content/drafts/mnemonics/<level>/radical/<slug>.json`
-exists, apply the same `mnemonic_text` / `image_prompt` change to its
+`curriculum/_build/generate_content/drafts/mnemonics/*/radical/<slug>.json`
+exists (the old JLPT folders `n5/` … or the ladder folders `level-NN/`), apply the same `mnemonic_text` / `image_prompt` change to its
 `tool_input`. The drafts directory is gitignored, so on a machine without it
 this step is a no-op — but then never run `assemble`/`run` for radicals here.
 
@@ -79,7 +79,7 @@ this step is a no-op — but then never run `assemble`/`run` for radicals here.
   (`validate_mnemonics.py`, Rev 4) re-checks sentence length and the tag on
   freshly validated drafts; your summaries must pass it.
 - Regenerate the shipped JSON: from `curriculum/_build` run
-  `python generate.py --bands`, then from the repo root
+  `python generate.py`, then from the repo root
   `npm run validate-schema && npm run compile-curriculum`.
 - Report: how many rewritten, how many duplicated, and any slug you could not
   simplify without changing the scene — list those; the maintainer decides.

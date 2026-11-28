@@ -8,10 +8,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from generate_content import reading_link as rl  # noqa: E402
 
-# Real slugs from the shipped level files; the sidecars are fabricated so the
+# Real slugs from the shipped items files; the sidecars are fabricated so the
 # tests do not depend on the prose stored today.
-#   polish (研, N4 kanji, けん → Ken), protect (N3 kanji), abunai (危ない, N5
-#   vocab, story reading), watashitachi (reading taught by watashi), boku (N5).
+#   polish (研, level 25 kanji, けん → Ken), protect (level 22 kanji), abunai
+#   (危ない, vocab, story reading), watashitachi (reading taught by watashi), boku.
 REVIEWED = {"generator_model": "m", "prompt_version": "4", "review_status": "reviewed"}
 DRAFT = {"generator_model": "m", "prompt_version": "4", "review_status": "draft"}
 
@@ -42,14 +42,14 @@ class SelectTest(unittest.TestCase):
         cls.cands = rl.select_candidates(sidecars())
         cls.keys = {(c["kind"], c["slug"]) for c in cls.cands}
 
-    def test_reviewed_n5_n4_kanji_is_selected(self):
+    def test_reviewed_kanji_is_selected(self):
         self.assertIn(("kanji", "polish"), self.keys)
 
     def test_draft_kanji_is_skipped(self):
         self.assertNotIn(("kanji", "special"), self.keys)
 
-    def test_n3_kanji_is_skipped(self):
-        self.assertNotIn(("kanji", "protect"), self.keys)
+    def test_every_level_is_in_scope(self):
+        self.assertIn(("kanji", "protect"), self.keys)
 
     def test_story_vocab_is_selected(self):
         self.assertIn(("vocab", "abunai"), self.keys)
@@ -62,7 +62,7 @@ class SelectTest(unittest.TestCase):
 
     def test_candidate_fields(self):
         polish = next(c for c in self.cands if c["slug"] == "polish")
-        self.assertEqual(polish["level"], "n4")
+        self.assertEqual(polish["level"], 25)
         self.assertEqual(polish["form"], "研")
         self.assertEqual(polish["reading"], "けん")
         self.assertIn("けん: Ken, the sword-collecting dog", polish["cast"])
@@ -261,14 +261,14 @@ class IdentityNoteTest(unittest.TestCase):
     # hand the reading the parent story to continue.
     def test_identity_kanji_note_quotes_the_radical_image(self):
         from generate_content import mnemonic_context as mc
-        ctx = mc.kanji_context("n5", "mountain")
+        ctx = mc.kanji_context("mountain")
         note = mc.format_identity(ctx)
         self.assertIn("> " + ctx["identical_radical"]["image"], note)
         self.assertIn("continues the radical's own image", note)
 
     def test_identity_word_note_quotes_the_kanji_story(self):
         from generate_content import mnemonic_context as mc
-        ctx = mc.vocab_context("n5", "watashi")
+        ctx = mc.vocab_context("watashi")
         comp = ctx["identical_kanji"]
         note = mc.format_vocab_identity(comp, ctx["meaning"], ctx["form"])
         self.assertIn("> " + comp["meaning_mnemonic"], note)

@@ -16,7 +16,7 @@ CREATE TABLE curriculum_metadata (
 CREATE TABLE items (
   id INTEGER PRIMARY KEY NOT NULL,
   item_type TEXT NOT NULL CHECK(item_type IN ('radical', 'kanji', 'vocabulary', 'grammar')),
-  jlpt_level TEXT NOT NULL,
+  level INTEGER NOT NULL,
   slug TEXT NOT NULL,
   primary_form TEXT NOT NULL,
   furigana TEXT,
@@ -180,7 +180,7 @@ CREATE TABLE grammar_vocabulary_links (
 
 CREATE TABLE reading_passages (
   id INTEGER PRIMARY KEY NOT NULL,
-  jlpt_level TEXT NOT NULL,
+  level INTEGER NOT NULL,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
   body_furigana TEXT,
@@ -232,6 +232,14 @@ CREATE TABLE passage_questions (
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
+-- Which ladder levels a JLPT level covers (from curriculum/_build/ladder.json).
+-- A label for the user; nothing is gated on it.
+CREATE TABLE level_jlpt_equivalence (
+  jlpt TEXT PRIMARY KEY NOT NULL,
+  first_level INTEGER NOT NULL,
+  last_level INTEGER NOT NULL
+);
+
 CREATE TABLE external_id_mappings (
   id INTEGER PRIMARY KEY NOT NULL,
   source TEXT NOT NULL CHECK(source IN ('wanikani', 'bunpro', 'anki')),
@@ -251,7 +259,7 @@ CREATE INDEX idx_kanji_readings_item ON kanji_readings(item_id);
 CREATE INDEX idx_accepted_answers_item ON accepted_answers(item_id, answer_type);
 CREATE INDEX idx_accepted_answers_text ON accepted_answers(answer_type, answer_text);
 CREATE INDEX idx_items_item_type ON items(item_type);
-CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
+CREATE INDEX idx_items_level ON items(level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);
 CREATE INDEX idx_item_relationships_child ON item_relationships(child_item_id);
 CREATE INDEX idx_external_id_mappings_source_external_id ON external_id_mappings(source, external_id);
@@ -266,7 +274,7 @@ CREATE INDEX idx_external_id_mappings_source_external_id ON external_id_mappings
  * `REQUIRED_CURRICULUM_SCHEMA_VERSION` (mobile) together, in one commit, whenever
  * CURRICULUM_DDL changes in a way that a query can observe.
  */
-export const CURRICULUM_SCHEMA_VERSION = 1;
+export const CURRICULUM_SCHEMA_VERSION = 2;
 
 export type ItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 

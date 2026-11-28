@@ -1,0 +1,1384 @@
+{
+  "level": 15,
+  "passages": [
+    {
+      "seed": "kagi-ga-kakete-aru",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "窓と電気",
+        "body": "夕方、私は一人で家に帰りました。ドアは鍵がかかっているのに、窓が開けてあります。部屋の電気もつけてあります。誰かが中にいるかもしれません。傘を持って、とても静かに入りました。台所にも、ベッドの上にも、誰もいません。傘を高く上げて、大きい声で「誰ですか」と言いました。答えはありません。少し考えました。朝、窓を開けたのも、電気をつけたのも私です。その日は天気がよくて、傘は要りませんでした。",
+        "questions": [
+          {
+            "prompt": "私は何を持って入りましたか。",
+            "accepted_answers": [
+              "傘",
+              "傘を",
+              "傘です",
+              "傘を持って入りました",
+              "かさ",
+              "かさを",
+              "かさです"
+            ],
+            "prompt_furigana": "私[わたし]は何[なに]を持[も]って入[はい]りましたか。"
+          },
+          {
+            "prompt": "窓はどうなっていましたか。",
+            "accepted_answers": [
+              "開けてあります",
+              "開けてある",
+              "窓が開けてあります",
+              "窓が開けてある",
+              "あけてあります",
+              "あけてある",
+              "まどがあけてあります",
+              "まどがあけてある"
+            ],
+            "prompt_furigana": "窓[まど]はどうなっていましたか。"
+          },
+          {
+            "prompt": "私はいつうちに帰りましたか。",
+            "accepted_answers": [
+              "夕方",
+              "夕方です",
+              "夕方に",
+              "ゆうがた",
+              "ゆうがたです",
+              "ゆうがたに"
+            ],
+            "prompt_furigana": "私[わたし]はいつうちに帰[かえ]りましたか。"
+          },
+          {
+            "prompt": "台所には誰がいましたか。",
+            "accepted_answers": [
+              "誰もいません",
+              "誰もいませんでした",
+              "誰もいない",
+              "だれもいません",
+              "だれもいませんでした",
+              "だれもいない"
+            ],
+            "prompt_furigana": "台[だい]所[どころ]には誰[だれ]がいましたか。"
+          },
+          {
+            "prompt": "窓を開けて電気をつけたのは誰ですか。",
+            "accepted_answers": [
+              "私",
+              "私です",
+              "わたし",
+              "わたしです"
+            ],
+            "prompt_furigana": "窓[まど]を開[あ]けて電[でん]気[き]をつけたのは誰[だれ]ですか。"
+          }
+        ],
+        "english_translation": "In the evening, I went home alone. The door is locked, but a window has been left open. The light in the room has been left on too. Someone might be inside. Holding an umbrella, I went in very quietly. There is nobody in the kitchen, nor on the bed. Raising the umbrella high, I said in a loud voice, \"Who is it?\" There was no answer. I thought for a little while. It was me who opened the window and turned on the light in the morning. The weather was good that day, and I did not need the umbrella.",
+        "summary_ja": "私は傘を持ってうちに入りましたが、窓を開けたのは私でした。",
+        "summary_en": "I went into my house holding an umbrella, but the one who had opened the window was me.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-adverb",
+          "adj-na-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "ka-question",
+          "kamoshirenai",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "no-nominalizer",
+          "no-possessive",
+          "noni",
+          "potential",
+          "ta-form",
+          "te-form",
+          "te-iru",
+          "tearu",
+          "teiru-result",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "ageru-raise",
+          "akeru",
+          "aru",
+          "asa",
+          "beddo",
+          "daidokoro",
+          "dare",
+          "denki",
+          "doa",
+          "hairu-v",
+          "heya",
+          "hi-sun-v",
+          "hitori-de",
+          "ie",
+          "iru-exist",
+          "iru-need",
+          "iu-v",
+          "kaeru-v",
+          "kagi",
+          "kangaeru",
+          "kasa",
+          "koe",
+          "kotae",
+          "mado",
+          "motsu",
+          "naka",
+          "ookii",
+          "shizuka",
+          "sono",
+          "sukoshi",
+          "tenki",
+          "totemo",
+          "tsukeru",
+          "ue",
+          "watashi",
+          "yoku",
+          "yuugata"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "yuugata",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "hitori-de",
+            "start": 5,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 10,
+            "end": 15,
+            "surface_form": "帰りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 16,
+            "end": 18
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 19,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 25,
+            "end": 27
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 30,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "akeru",
+            "start": 32,
+            "end": 35,
+            "surface_form": "開けて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 35,
+            "end": 39,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "heya",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "denki",
+            "start": 43,
+            "end": 45
+          },
+          {
+            "vocabulary_slug": "tsukeru",
+            "start": 46,
+            "end": 49,
+            "surface_form": "つけて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 49,
+            "end": 53,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "dare",
+            "start": 54,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 57,
+            "end": 58
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 59,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 69,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 71,
+            "end": 74,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 75,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "shizuka",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 81,
+            "end": 86,
+            "surface_form": "入りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 87,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "beddo",
+            "start": 92,
+            "end": 95
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 96,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "dare",
+            "start": 100,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 102,
+            "end": 106,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 107,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "ageru-raise",
+            "start": 111,
+            "end": 114,
+            "surface_form": "上げて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 115,
+            "end": 118
+          },
+          {
+            "vocabulary_slug": "koe",
+            "start": 118,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "dare",
+            "start": 121,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 127,
+            "end": 132,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kotae",
+            "start": 133,
+            "end": 135
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 136,
+            "end": 141,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 142,
+            "end": 144
+          },
+          {
+            "vocabulary_slug": "kangaeru",
+            "start": 144,
+            "end": 149,
+            "surface_form": "考えました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 150,
+            "end": 151
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 152,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "akeru",
+            "start": 154,
+            "end": 157,
+            "surface_form": "開けた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "denki",
+            "start": 160,
+            "end": 162
+          },
+          {
+            "vocabulary_slug": "tsukeru",
+            "start": 163,
+            "end": 166,
+            "surface_form": "つけた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 168,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 172,
+            "end": 174
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 174,
+            "end": 175
+          },
+          {
+            "vocabulary_slug": "tenki",
+            "start": 176,
+            "end": 178
+          },
+          {
+            "vocabulary_slug": "yoku",
+            "start": 179,
+            "end": 181
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 183,
+            "end": 184
+          },
+          {
+            "vocabulary_slug": "iru-need",
+            "start": 185,
+            "end": 193,
+            "surface_form": "要りませんでした",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 120,
+        "body_furigana": "夕[ゆう]方[がた]、私[わたし]は一人[ひとり]で家[いえ]に帰[かえ]りました。ドアは鍵[かぎ]がかかっているのに、窓[まど]が開[あ]けてあります。部屋[へや]の電[でん]気[き]もつけてあります。誰[だれ]かが中[なか]にいるかもしれません。傘[かさ]を持[も]って、とても静[しず]かに入[はい]りました。台[だい]所[どころ]にも、ベッドの上[うえ]にも、誰[だれ]もいません。傘[かさ]を高[たか]く上[あ]げて、大[おお]きい声[こえ]で「誰[だれ]ですか」と言[い]いました。答[こた]えはありません。少[すこ]し考[かんが]えました。朝[あさ]、窓[まど]を開[あ]けたのも、電[でん]気[き]をつけたのも私[わたし]です。その日[ひ]は天[てん]気[き]がよくて、傘[かさ]は要[い]りませんでした。",
+        "slug": "kagi-ga-kakete-aru",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "kado-no-ie-no-yuumeijin",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "角の家の男の人",
+        "body": "角の家には、男の人が一人で住んでいます。その人は有名らしいです。毎朝、家の前に若い女の人が立っています。みんな、手に写真を持って、男の人を待っています。ある日、私は店の人に「あの人は誰ですか」と聞きました。店の人は「有名な歌の人みたいですよ」と言いました。でも、男の人は本当は会社員です。顔が有名な歌の人と同じなのです。今は、毎晩、窓の前で歌うようになりました。歌はとても下手です。でも、みんな嬉しそうに聞いています。",
+        "questions": [
+          {
+            "prompt": "角の家には誰が住んでいますか。",
+            "accepted_answers": [
+              "男の人",
+              "男の人が",
+              "男の人です",
+              "おとこのひと",
+              "おとこのひとです"
+            ],
+            "prompt_furigana": "角[かど]の家[いえ]には誰[だれ]が住[す]んでいますか。"
+          },
+          {
+            "prompt": "みんなは手に何を持っていますか。",
+            "accepted_answers": [
+              "写真",
+              "写真を",
+              "写真です",
+              "しゃしん",
+              "しゃしんを",
+              "しゃしんです"
+            ],
+            "prompt_furigana": "みんなは手[て]に何[なに]を持[も]っていますか。"
+          },
+          {
+            "prompt": "男の人は本当は何ですか。",
+            "accepted_answers": [
+              "会社員",
+              "会社員です",
+              "かいしゃいん",
+              "かいしゃいんです"
+            ],
+            "prompt_furigana": "男[おとこ]の人[ひと]は本[ほん]当[とう]は何[なに]ですか。"
+          },
+          {
+            "prompt": "男の人は毎晩どこで歌いますか。",
+            "accepted_answers": [
+              "窓の前",
+              "窓の前で",
+              "窓の前です",
+              "まどのまえ",
+              "まどのまえで",
+              "まどのまえです"
+            ],
+            "prompt_furigana": "男[おとこ]の人[ひと]は毎[まい]晩[ばん]どこで歌[うた]いますか。"
+          },
+          {
+            "prompt": "男の人の歌はどうですか。",
+            "accepted_answers": [
+              "下手",
+              "下手です",
+              "とても下手",
+              "とても下手です",
+              "へた",
+              "へたです",
+              "とてもへた",
+              "とてもへたです"
+            ],
+            "prompt_furigana": "男[おとこ]の人[ひと]の歌[うた]はどうですか。"
+          }
+        ],
+        "english_translation": "A man lives alone in the house on the corner. He seems to be famous. Every morning, young women stand in front of the house. Everyone holds a photo in their hand and waits for the man. One day, I asked a person at a shop, \"Who is that man?\" The shop person said, \"He looks like a famous singer.\" But the man is really a company employee. His face is the same as a famous singer's. Now, he has come to sing in front of the window every night. His singing is very bad. But everyone listens happily.",
+        "summary_ja": "角の家の男の人は、有名な歌の人と顔が同じ会社員でした。",
+        "summary_en": "The man in the corner house was a company employee whose face was the same as a famous singer's.",
+        "grammar_slugs": [
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "de-location",
+          "desu",
+          "ga",
+          "ka-question",
+          "mashita",
+          "masu",
+          "mitai",
+          "ni-direction",
+          "ni-indirect",
+          "no-nominalizer",
+          "no-possessive",
+          "rashii",
+          "te-form",
+          "te-iru",
+          "to-and",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis",
+          "youninaru"
+        ],
+        "vocabulary_slugs": [
+          "ano",
+          "aru",
+          "dare",
+          "demo",
+          "heta",
+          "hi-sun-v",
+          "hito",
+          "hitori-de",
+          "ie",
+          "ima",
+          "iru-exist",
+          "iu-v",
+          "kado",
+          "kaishain",
+          "kao",
+          "kiku-v",
+          "mado",
+          "mae",
+          "maiasa",
+          "maiban",
+          "matsu",
+          "minna",
+          "mise",
+          "motsu",
+          "naru-become",
+          "onaji",
+          "onnanohito",
+          "otokonohito",
+          "shashin",
+          "sono",
+          "sumu",
+          "tatsu-v",
+          "te-v",
+          "totemo",
+          "uta",
+          "utau",
+          "wakai",
+          "watashi",
+          "yuumei"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kado",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "hitori-de",
+            "start": 10,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "sumu",
+            "start": 13,
+            "end": 16,
+            "surface_form": "住んで",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 16,
+            "end": 19,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 22,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "yuumei",
+            "start": 24,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "maiasa",
+            "start": 32,
+            "end": 34
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 35,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 37,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "wakai",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "onnanohito",
+            "start": 41,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "tatsu-v",
+            "start": 45,
+            "end": 48,
+            "surface_form": "立って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 48,
+            "end": 51,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 52,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "te-v",
+            "start": 56,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "shashin",
+            "start": 58,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "motsu",
+            "start": 61,
+            "end": 64,
+            "surface_form": "持って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 65,
+            "end": 68
+          },
+          {
+            "vocabulary_slug": "matsu",
+            "start": 69,
+            "end": 72,
+            "surface_form": "待って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 72,
+            "end": 75,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 76,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 78,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 80,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 82,
+            "end": 83
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 84,
+            "end": 85
+          },
+          {
+            "vocabulary_slug": "ano",
+            "start": 87,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 89,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "dare",
+            "start": 91,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 97,
+            "end": 102,
+            "surface_form": "聞きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 103,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 105,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "yuumei",
+            "start": 108,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "uta",
+            "start": 111,
+            "end": 112
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 113,
+            "end": 114
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 122,
+            "end": 127,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 128,
+            "end": 130
+          },
+          {
+            "vocabulary_slug": "otokonohito",
+            "start": 131,
+            "end": 134
+          },
+          {
+            "vocabulary_slug": "kaishain",
+            "start": 138,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "kao",
+            "start": 144,
+            "end": 145
+          },
+          {
+            "vocabulary_slug": "yuumei",
+            "start": 146,
+            "end": 148
+          },
+          {
+            "vocabulary_slug": "uta",
+            "start": 149,
+            "end": 150
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 151,
+            "end": 152
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 153,
+            "end": 155
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 160,
+            "end": 161
+          },
+          {
+            "vocabulary_slug": "maiban",
+            "start": 163,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 166,
+            "end": 167
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 168,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "utau",
+            "start": 170,
+            "end": 172
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 175,
+            "end": 180,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "uta",
+            "start": 181,
+            "end": 182
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 183,
+            "end": 186
+          },
+          {
+            "vocabulary_slug": "heta",
+            "start": 186,
+            "end": 188
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 191,
+            "end": 193
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 194,
+            "end": 197
+          },
+          {
+            "vocabulary_slug": "kiku-v",
+            "start": 202,
+            "end": 205,
+            "surface_form": "聞いて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 205,
+            "end": 208,
+            "surface_form": "います",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 135,
+        "body_furigana": "角[かど]の家[いえ]には、男[おとこ]の人[ひと]が一人[ひとり]で住[す]んでいます。その人[ひと]は有[ゆう]名[めい]らしいです。毎[まい]朝[あさ]、家[いえ]の前[まえ]に若[わか]い女[おんな]の人[ひと]が立[た]っています。みんな、手[て]に写[しゃ]真[しん]を持[も]って、男[おとこ]の人[ひと]を待[ま]っています。ある日[ひ]、私[わたし]は店[みせ]の人[ひと]に「あの人[ひと]は誰[だれ]ですか」と聞[き]きました。店[みせ]の人[ひと]は「有[ゆう]名[めい]な歌[うた]の人[ひと]みたいですよ」と言[い]いました。でも、男[おとこ]の人[ひと]は本[ほん]当[とう]は会[かい]社[しゃ]員[いん]です。顔[かお]が有[ゆう]名[めい]な歌[うた]の人[ひと]と同[おな]じなのです。今[いま]は、毎[まい]晩[ばん]、窓[まど]の前[まえ]で歌[うた]うようになりました。歌[うた]はとても下手[へた]です。でも、みんな嬉[うれ]しそうに聞[き]いています。",
+        "slug": "kado-no-ie-no-yuumeijin",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "sofu-no-kagi",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "祖父の鍵",
+        "body": "私の祖父の鍵が、朝から見つかりません。祖父は「私は何も忘れません。鍵を無くすはずがありません」と言いました。でも、鍵の場所を忘れたようです。家族はみんなで、台所や部屋や庭を見回しました。母は引き出しの中を、父はテーブルの下を見ました。犬も靴の中を見ています。祖父は椅子に座って、「どうして見つからないのですか」と言いました。その時、妹が「おじいさん、首に鍵がありますよ」と言いました。鍵は祖父の首にかかっていました。祖父は「無くしていませんよ」と言いました。",
+        "questions": [
+          {
+            "prompt": "祖父は何が見つかりませんか。",
+            "accepted_answers": [
+              "鍵",
+              "鍵が",
+              "鍵です",
+              "かぎ",
+              "かぎが",
+              "かぎです"
+            ],
+            "prompt_furigana": "祖[そ]父[ふ]は何[なに]が見[み]つかりませんか。"
+          },
+          {
+            "prompt": "母はどこを見ましたか。",
+            "accepted_answers": [
+              "引き出しの中",
+              "引き出しの中を",
+              "引き出しの中です",
+              "引き出し",
+              "ひきだしの中",
+              "ひきだしのなか",
+              "ひきだしのなかを",
+              "ひきだし"
+            ],
+            "prompt_furigana": "母[はは]はどこを見[み]ましたか。"
+          },
+          {
+            "prompt": "犬は何の中を見ていますか。",
+            "accepted_answers": [
+              "靴の中",
+              "靴の中を",
+              "靴の中です",
+              "靴",
+              "くつの中",
+              "くつのなか",
+              "くつのなかを",
+              "くつ"
+            ],
+            "prompt_furigana": "犬[いぬ]は何[なに]の中[なか]を見[み]ていますか。"
+          },
+          {
+            "prompt": "祖父に鍵があると言ったのは誰ですか。",
+            "accepted_answers": [
+              "妹",
+              "妹です",
+              "妹が",
+              "いもうと",
+              "いもうとです",
+              "いもうとが"
+            ],
+            "prompt_furigana": "祖[そ]父[ふ]に鍵[かぎ]があると言[い]ったのは誰[だれ]ですか。"
+          },
+          {
+            "prompt": "鍵はどこにありましたか。",
+            "accepted_answers": [
+              "祖父の首",
+              "祖父の首です",
+              "祖父の首に",
+              "首",
+              "首です",
+              "首に",
+              "そふのくび",
+              "そふのくびです",
+              "そふのくびに",
+              "くび",
+              "くびです",
+              "くびに"
+            ],
+            "prompt_furigana": "鍵[かぎ]はどこにありましたか。"
+          }
+        ],
+        "english_translation": "My grandfather's keys have not been found since the morning. Grandfather said, \"I never forget anything. There is no way I would lose my keys.\" But it seems he forgot where the keys were. The whole family looked around the kitchen, the rooms and the garden. Mother looked inside the drawer, and Father looked under the table. The dog is looking inside the shoes too. Grandfather sat on a chair and said, \"Why can't they be found?\" Then my younger sister said, \"Grandfather, the keys are on your neck!\" The keys were hanging around Grandfather's neck. Grandfather said, \"I have not lost them.\"",
+        "summary_ja": "祖父の鍵は、祖父の首にかかっていました。",
+        "summary_en": "Grandfather's keys were hanging around his own neck.",
+        "grammar_slugs": [
+          "de-location",
+          "ga",
+          "hazuganai",
+          "ka-question",
+          "kara-from",
+          "mada-teinai",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "nai-form",
+          "ni-direction",
+          "ni-indirect",
+          "no-nominalizer",
+          "no-possessive",
+          "ta-form",
+          "te-form",
+          "te-iru",
+          "teiru-result",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "ya-among",
+          "yo-emphasis",
+          "youda"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "asa",
+          "basho",
+          "chichi",
+          "daidokoro",
+          "demo",
+          "doushite",
+          "haha",
+          "heya",
+          "hikidashi",
+          "imouto",
+          "inu",
+          "iru-exist",
+          "isu",
+          "iu-v",
+          "ji-oclock",
+          "kagi",
+          "kazoku",
+          "kubi",
+          "kutsu",
+          "mimawasu",
+          "minna",
+          "miru-v",
+          "mitsukaru",
+          "naka",
+          "nakusu",
+          "nani",
+          "niwa",
+          "ojiisan",
+          "shita-v",
+          "sofu",
+          "sono",
+          "suwaru",
+          "teeburu",
+          "wasureru",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "mitsukaru",
+            "start": 11,
+            "end": 18,
+            "surface_form": "見つかりません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 19,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 23,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 25,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "wasureru",
+            "start": 27,
+            "end": 32,
+            "surface_form": "忘れません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 33,
+            "end": 34
+          },
+          {
+            "vocabulary_slug": "nakusu",
+            "start": 35,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 41,
+            "end": 46,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 48,
+            "end": 53,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 57,
+            "end": 58
+          },
+          {
+            "vocabulary_slug": "basho",
+            "start": 59,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "wasureru",
+            "start": 62,
+            "end": 65,
+            "surface_form": "忘れた",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "kazoku",
+            "start": 70,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 73,
+            "end": 76
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 78,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "heya",
+            "start": 81,
+            "end": 83
+          },
+          {
+            "vocabulary_slug": "niwa",
+            "start": 84,
+            "end": 85
+          },
+          {
+            "vocabulary_slug": "mimawasu",
+            "start": 86,
+            "end": 92,
+            "surface_form": "見回しました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 93,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "hikidashi",
+            "start": 95,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 100,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 103,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 105,
+            "end": 109
+          },
+          {
+            "vocabulary_slug": "shita-v",
+            "start": 110,
+            "end": 111
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 112,
+            "end": 116,
+            "surface_form": "見ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 117,
+            "end": 118
+          },
+          {
+            "vocabulary_slug": "kutsu",
+            "start": 119,
+            "end": 120
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 121,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 123,
+            "end": 125,
+            "surface_form": "見て",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 125,
+            "end": 128,
+            "surface_form": "います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 129,
+            "end": 131
+          },
+          {
+            "vocabulary_slug": "isu",
+            "start": 132,
+            "end": 134
+          },
+          {
+            "vocabulary_slug": "suwaru",
+            "start": 135,
+            "end": 138,
+            "surface_form": "座って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "doushite",
+            "start": 140,
+            "end": 144
+          },
+          {
+            "vocabulary_slug": "mitsukaru",
+            "start": 144,
+            "end": 150,
+            "surface_form": "見つからない",
+            "inflection": "nai"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 156,
+            "end": 161,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 162,
+            "end": 164
+          },
+          {
+            "vocabulary_slug": "ji-oclock",
+            "start": 164,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "imouto",
+            "start": 166,
+            "end": 167
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 169,
+            "end": 174
+          },
+          {
+            "vocabulary_slug": "kubi",
+            "start": 175,
+            "end": 176
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 177,
+            "end": 178
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 179,
+            "end": 183,
+            "surface_form": "あります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 186,
+            "end": 191,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kagi",
+            "start": 192,
+            "end": 193
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 194,
+            "end": 196
+          },
+          {
+            "vocabulary_slug": "kubi",
+            "start": 197,
+            "end": 198
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 203,
+            "end": 207,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sofu",
+            "start": 208,
+            "end": 210
+          },
+          {
+            "vocabulary_slug": "nakusu",
+            "start": 212,
+            "end": 216,
+            "surface_form": "無くして",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 216,
+            "end": 220,
+            "surface_form": "いません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 223,
+            "end": 228,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 139,
+        "body_furigana": "私[わたし]の祖[そ]父[ふ]の鍵[かぎ]が、朝[あさ]から見[み]つかりません。祖[そ]父[ふ]は「私[わたし]は何[なに]も忘[わす]れません。鍵[かぎ]を無[な]くすはずがありません」と言[い]いました。でも、鍵[かぎ]の場[ば]所[しょ]を忘[わす]れたようです。家[か]族[ぞく]はみんなで、台[だい]所[どころ]や部屋[へや]や庭[にわ]を見回[みまわ]しました。母[はは]は引[ひ]き出[だ]しの中[なか]を、父[ちち]はテーブルの下[した]を見[み]ました。犬[いぬ]も靴[くつ]の中[なか]を見[み]ています。祖[そ]父[ふ]は椅[い]子[す]に座[すわ]って、「どうして見[み]つからないのですか」と言[い]いました。その時[じ]、妹[いもうと]が「おじいさん、首[くび]に鍵[かぎ]がありますよ」と言[い]いました。鍵[かぎ]は祖[そ]父[ふ]の首[くび]にかかっていました。祖[そ]父[ふ]は「無[な]くしていませんよ」と言[い]いました。",
+        "slug": "sofu-no-kagi",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

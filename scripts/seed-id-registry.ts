@@ -39,36 +39,36 @@ function main(): void {
     }
 
     // Passages had no slug in the build, so each row is matched to the slug the
-    // source JSON now carries, by level and title.
-    const slugByLevelTitle = new Map<string, SourcePassage>();
+    // source JSON now carries, by title (a passage's level is on the passage, and
+    // a level move must not break the match).
+    const slugByTitle = new Map<string, SourcePassage>();
     for (const name of fs.readdirSync(path.join(CURRICULUM_DIR, 'readings'))) {
       const file = JSON.parse(
         fs.readFileSync(path.join(CURRICULUM_DIR, 'readings', name), 'utf8'),
-      ) as { jlpt_level: string; passages: SourcePassage[] };
+      ) as { passages: SourcePassage[] };
       for (const passage of file.passages) {
-        const key = `${file.jlpt_level}\0${passage.title}`;
-        if (slugByLevelTitle.has(key)) {
-          throw new Error(`Two ${file.jlpt_level} passages have the title ${passage.title}`);
+        if (slugByTitle.has(passage.title)) {
+          throw new Error(`Two passages have the title ${passage.title}`);
         }
-        slugByLevelTitle.set(key, passage);
+        slugByTitle.set(passage.title, passage);
       }
     }
 
     const passageIds: Record<string, number> = {};
     const passageById = new Map<number, SourcePassage>();
     for (const row of db
-      .prepare('SELECT id, jlpt_level, title FROM reading_passages ORDER BY id')
-      .all() as { id: number; jlpt_level: string; title: string }[]) {
-      const passage = slugByLevelTitle.get(`${row.jlpt_level}\0${row.title}`);
+      .prepare('SELECT id, title FROM reading_passages ORDER BY id')
+      .all() as { id: number; title: string }[]) {
+      const passage = slugByTitle.get(row.title);
       if (!passage) {
-        throw new Error(`No source passage for ${row.jlpt_level} "${row.title}" (id ${row.id})`);
+        throw new Error(`No source passage for "${row.title}" (id ${row.id})`);
       }
       passageIds[`passage:${passage.slug}`] = row.id;
       passageById.set(row.id, passage);
     }
-    if (passageById.size !== slugByLevelTitle.size) {
+    if (passageById.size !== slugByTitle.size) {
       throw new Error(
-        `The build has ${passageById.size} passages, the source JSON has ${slugByLevelTitle.size}`,
+        `The build has ${passageById.size} passages, the source JSON has ${slugByTitle.size}`,
       );
     }
 

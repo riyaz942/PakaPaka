@@ -13,9 +13,10 @@ This run auto-resumes: `webprompts` skips any batch whose reply already exists
 and validates, so you do NOT hand-pick a batch list, and stopping partway through
 a run is safe — the next run picks up exactly where you left off.
 
-Level (one JLPT level per run):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 6>
 
 Scope (which items are audited):
 
@@ -46,8 +47,8 @@ Batch size (sentence pairs per batch file; used as BATCH_SIZE in Step 1):
 
 Each reading passage is always its own batch regardless of this value — a
 passage carries its whole body, so batching several into one call would push a
-single request past useful attention. A full N5 draft-only run is on the order
-of 60-70 batch files total; consider a pilot of 2-3 batches first (see Ordering
+single request past useful attention. A full draft-only run of one level can be many
+batch files (the count grows with the level's draft sentences); consider a pilot of 2-3 batches first (see Ordering
 Note) before committing to a full run.
 
 ---
@@ -55,7 +56,7 @@ Note) before committing to a full run.
 Prerequisites
 
 Tier 2 is only worth paying for once tiers 0-1 are green. Before Step 1, confirm
-`curriculum/_build/reports/content-audit-<level>.md` exists (run
+`curriculum/_build/reports/content-audit-<level-dir>.md` exists (run
 `.venv/bin/python -m generate_content.audit_shipped --level <level>` first if
 not) — `ingest` refuses to run without it.
 
@@ -77,7 +78,7 @@ Run:
 
 Each batch prompt file is written to:
 
-curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.prompt.md
+curriculum/_build/generate_content/web/semantic/<level-dir>/<NNN>-<slugified-label>.prompt.md
 
 Rerunning this command is a safe no-op for every batch that already has a valid
 `.reply.md` — it prints how many batch files were written vs. skipped, plus a
@@ -94,7 +95,7 @@ For each batch file in this run's set, launch ONE general-purpose subagent
 (using <subagent-model>, high reasoning) in the foreground — ingestion must wait
 for it to finish. Give the subagent the prompt file path:
 
-curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.prompt.md
+curriculum/_build/generate_content/web/semantic/<level-dir>/<NNN>-<slugified-label>.prompt.md
 
 Give the subagent these instructions:
 
@@ -107,7 +108,7 @@ Give the subagent these instructions:
 
   Judge each item exactly as the prompt asks, then write your answer to:
 
-  curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.reply.md
+  curriculum/_build/generate_content/web/semantic/<level-dir>/<NNN>-<slugified-label>.reply.md
 
   Requirements:
 
@@ -155,8 +156,8 @@ the batch and choose the repair method:
 
 Whichever method repairs the reply, it works from these files:
 
-- curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.prompt.md
-- curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.reply.md
+- curriculum/_build/generate_content/web/semantic/<level-dir>/<NNN>-<slugified-label>.prompt.md
+- curriculum/_build/generate_content/web/semantic/<level-dir>/<NNN>-<slugified-label>.reply.md
 
 The repair instructions are the same for both methods (an inline fix follows
 them exactly as a repair subagent would; for an inline fix you already have the
@@ -220,7 +221,7 @@ reply on disk, and lists any batch with a missing or malformed reply under
 "Failed calls" so a human can see what was NOT checked. Rerunning ingest never
 touches curriculum content.
 
-Report written to: curriculum/_build/reports/content-audit-<level>.md
+Report written to: curriculum/_build/reports/content-audit-<level-dir>.md
 
 ---
 

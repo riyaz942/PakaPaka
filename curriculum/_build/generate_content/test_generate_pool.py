@@ -3,8 +3,12 @@
 import json
 import os
 import sys
+import argparse
+import contextlib
+import io
 import tempfile
 import unittest
+from unittest import mock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -69,10 +73,52 @@ class ReplyShapeTest(unittest.TestCase):
 
 class SelectTest(unittest.TestCase):
     def test_skips_sidecar_points_in_sort_order(self):
-        slugs = gp.select_slugs("n5", 3, sidecar={"wa-topic": {}})
-        self.assertEqual(len(slugs), 3)
-        self.assertNotIn("wa-topic", slugs)
-        self.assertEqual(slugs[0], "desu")
+        slugs = gp.select_slugs([1], 3, sidecar={"wa-topic": {}})
+        self.assertEqual(slugs, ["desu", "dewa-arimasen", "conjugation-primer"])
+
+    def test_takes_a_range_of_levels(self):
+        slugs = gp.select_slugs([1, 2], 20, sidecar={})
+        self.assertEqual(slugs[-1], "no-nominalizer")
+        self.assertEqual(len(slugs), 14)
+
+
+class SelectFailingTest(unittest.TestCase):
+    RESULTS = {1: {"a": [], "b": ["rule 4: 3 passing sentences, need 8"]},
+               2: {"c": ["rule 3: out of range ['x']"], "d": ["rule 4: 0 passing sentences"]},
+               21: {"e": ["rule 4: 0 passing sentences"]}}
+
+    def select(self, levels=None):
+        args = argparse.Namespace(failing=True, levels=levels, limit=4)
+        out = io.StringIO()
+        with mock.patch.object(gp.pool_check, "check_level", lambda level: self.RESULTS[level]), \
+                mock.patch.object(gp.context, "load_grammar",
+                                  lambda: [{"level": n} for n in self.RESULTS]), \
+                contextlib.redirect_stdout(out):
+            gp.cmd_select(args)
+        return out.getvalue().splitlines()[1]
+
+    def test_lists_the_points_check_grammar_pool_fails(self):
+        self.assertEqual(self.select(), "b,c,d,e")
+
+    def test_levels_and_limit_narrow_the_list(self):
+        self.assertEqual(self.select(levels=[1, 2]), "b,c,d")
+        args = argparse.Namespace(failing=True, levels=[1, 2], limit=2)
+        with mock.patch.object(gp.pool_check, "check_level", lambda level: self.RESULTS[level]), \
+                contextlib.redirect_stdout(io.StringIO()) as out:
+            gp.cmd_select(args)
+        self.assertEqual(out.getvalue().splitlines()[1], "b,c")
+
+    def test_no_flag_and_no_level_is_an_error(self):
+        with self.assertRaises(SystemExit):
+            gp.cmd_select(argparse.Namespace(failing=False, levels=None, limit=4))
+
+    def test_failing_list_is_the_gate_function_not_a_copy(self):
+        with mock.patch.object(gp.pool_check, "failing_slugs", return_value=["z"]) as failing:
+            args = argparse.Namespace(failing=True, levels=[3], limit=4)
+            with contextlib.redirect_stdout(io.StringIO()) as out:
+                gp.cmd_select(args)
+        failing.assert_called_once_with([3])
+        self.assertEqual(out.getvalue().splitlines()[1], "z")
 
 
 class SidecarTest(unittest.TestCase):

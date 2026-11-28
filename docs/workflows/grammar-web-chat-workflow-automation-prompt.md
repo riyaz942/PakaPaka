@@ -6,9 +6,10 @@ Use the existing logged-in Gemini session in my Chrome browser to generate gramm
 
 This run **auto-selects remaining unwritten slugs** unless you fill "Slugs for this run" below with a real comma list. Do not invent slugs — they are existing grammar-point ids.
 
-Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 6>
 
 Slugs for this run (optional override; leave the placeholder to auto-select):
 
@@ -19,10 +20,10 @@ If that is still the placeholder `<slug, slug>` (or empty), list remaining unwri
 .venv/bin/python - <<'PY'
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
-level = '<level>'
+level = <level>
 done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
-todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
-print(f'{len(todo)} {level} points left:')
+todo = [g['slug'] for g in context.load_grammar() if g['level'] == level and g['slug'] not in done]
+print(f'{len(todo)} level {level} points left:')
 print(','.join(todo[:10]))
 PY
 
@@ -74,7 +75,7 @@ Run, using the comma list from the listing above (one string, no spaces after co
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level <level> --slugs <slug>
+.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --slugs <slug>
 
 
 
@@ -330,7 +331,7 @@ Instead:
 
 
 
-curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
+curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.reply.md
 
 
 
@@ -362,7 +363,7 @@ Run:
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level <level>
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug>
 
 
 
@@ -395,7 +396,7 @@ The ingestion process rewrites:
 
 
 
-curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
 
 
 
@@ -441,9 +442,9 @@ Repair Procedure
 
 2. The repair works from these files, whichever method is used:
 
-   - curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+   - curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
 
-   - curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
+   - curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.reply.md
 
 
 
@@ -497,7 +498,7 @@ Repair Procedure
 
    - Ensure cloze variants use the target grammar correctly.
 
-   - Ensure all Japanese and vocabulary satisfy the level and prompt constraints.
+   - Ensure all Japanese and vocabulary satisfy the prompt constraints (every word at or below the point's level).
 
    - Do not add commentary outside the required JSON block.
 
@@ -513,7 +514,7 @@ Repair Procedure
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level <level>
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug>
 
 
 
@@ -579,23 +580,15 @@ After every slug has been successfully ingested or skipped, run the project's no
 
 
 
-Check the current invocation under:
+Check `generate.py --help` under `curriculum/_build` for the current invocation. `generate.py` builds every level and takes no level flag. From `curriculum/_build`, run:
 
 
 
-curriculum/_build/generate_content/
+.venv/bin/python generate.py
 
 
 
-Then run:
-
-
-
-generate.py
-
-
-
-Followed by:
+Then, from the repository root, run:
 
 
 
@@ -611,7 +604,7 @@ npm run compile-curriculum
 
 
 
-Use the current project-specific `generate.py` invocation and flags found under `curriculum/_build/generate_content/`. Do not guess if the documented invocation has changed.
+Do not guess if `--help` shows a different invocation.
 
 
 

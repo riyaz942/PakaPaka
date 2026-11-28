@@ -1,37 +1,28 @@
 # -*- coding: utf-8 -*-
 """Generate curriculum JSON files from the authored datasets.
 
---level n5|n4 emits that level's own content:
-  curriculum/vocabulary/<level>.json
-  curriculum/grammar/<level>.json
-  curriculum/readings/<level>.json
+Writes one file per item type, every item with its ladder `level` (1..60):
+  curriculum/radicals/items.json
+  curriculum/kanji/items.json
+  curriculum/vocabulary/items.json
+  curriculum/grammar/items.json
+  curriculum/readings/items.json   ({"passages": [...]})
 
---level n3 emits its derived vocabulary and the grammar levels.json moves there
-(no reading passages):
-  curriculum/vocabulary/n3.json
-  curriculum/grammar/n3.json
+The level and the in-level order come from `_build/ladder.json` (ladder.py,
+levels.py); `sort_order` is global inside a file: by level, then the ladder's
+sort_order. A dataset item the ladder does not name, or a ladder slug no
+dataset holds, is a build error: re-run ladder.py.
 
---level n2|n1 emits that level's derived vocabulary alone:
-  curriculum/vocabulary/<level>.json
+The words a learner knows at a level are the words at or below it: their
+readings override the tokenizer, and a passage links every one it contains.
 
---bands emits radicals and kanji for all five levels at once:
-  curriculum/radicals/{n5,n4,n3,n2,n1}.json
-  curriculum/kanji/{n5,n4,n3,n2,n1}.json
-
-Radicals and kanji cannot be written per level, because their level is a *band*
-assigned by reports/kanji_bands.py and a band draws from every source dataset.
-Whenever the datasets or levels.json change, run --level for every level, then
-kanji_bands.py (it ranks on the generated words), then --bands.
-
-An item's level is its source dataset's level (or its band) unless
-`levels.json` names it (see levels.py). So --level n5 reads every dataset, not
-only the n5 ones.
+--report-pool prints grammar pool failures and continues; without it a failing
+pool exits 1.
 
 Cross-references (grammar vocabulary_slugs, example vocabulary_slugs,
-dependency edges) are validated against the known item slug sets of every
-level; unresolved references abort generation with a clear error. A reference
-to an item at a later level is not an error here: reports/level_report.py
-lists it.
+dependency edges) are validated against every item slug; unresolved references
+abort generation with a clear error. A reference to an item at a later level is
+not an error here: reports/ladder_report.py counts it.
 """
 
 import argparse
@@ -52,7 +43,7 @@ from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 from generate_content import grammar_sentences as grammar_sentences_lib  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
 from generate_content.mnemonic_context import reading_composition  # noqa: E402
-from levels import KIND_LEVELS, place  # noqa: E402
+from levels import MAX_LEVEL, load_ladder, slugs_at_or_below  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
@@ -230,9 +221,9 @@ def _vocab_reading_map(*vocab_entry_lists):
 def _build_radical_items(radical_entries):
     """Items for one *source* dataset — n5, n4 or the derived corpus (`k`).
 
-    No `sort_order` and no level: `_write_banded` assigns both from bands.json.
+    No `sort_order` and no level: `write_items` assigns both from the ladder.
     The sidecar and the bundled art are keyed by slug alone, so neither moves
-    when the band does."""
+    when the level does."""
     mnemonics = _load_sidecar(RADICAL_MNEMONICS_PATH)
     items = []
     for r in radical_entries:
@@ -268,7 +259,7 @@ def _build_radical_items(radical_entries):
             # mobile/assets/radicals/. Missing files fall back to mnemonic text.
             # Radicals with no mnemonic text at all (raw or sidecar) carry
             # neither field rather than pointing at a file nobody has drawn.
-            # The ref holds no level: a radical that rebands keeps its art.
+            # The ref holds no level: a radical that moves level keeps its art.
             item["visual_mnemonic_url"] = f"radicals/{r['slug']}.webp"
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
@@ -359,7 +350,7 @@ def _load_vocab_transitivity_pairs():
         return json.load(f)
 
 
-def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
+def _build_vocab_level(label, vocab_entries, known_readings=None,
                        extra_vocab_forms=None):
     mnemonics = _load_sidecar(VOCAB_MNEMONICS_PATH)
     examples = _load_sidecar(VOCAB_EXAMPLES_PATH)
@@ -423,8 +414,8 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                              f"vocabulary {v['slug']}", errors)
         items.append(item)
     if errors:
-        raise ValueError(f"{jlpt_level} vocabulary reference errors:\n" + "\n".join(errors))
-    return {"jlpt_level": jlpt_level, "items": items}
+        raise ValueError(f"{label} vocabulary reference errors:\n" + "\n".join(errors))
+    return {"items": items}
 
 
 # ---------------------------------------------------------------------------
@@ -733,7 +724,7 @@ def _cloze_derived_examples(g, known_vocab_forms):
     return derived
 
 
-def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None,
+def _build_grammar_level(label, grammar_entries, vocab_forms, known_readings=None,
                          all_grammar_slugs=(), known_vocab_forms=None, pool_entries=None,
                          mnemonic_entries=None):
     errors = []
@@ -838,8 +829,8 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_reading
             _merge_sidecar_meta(item, _sidecar_meta(mnemonic))
         items.append(item)
     if errors:
-        raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))
-    return {"jlpt_level": jlpt_level, "items": items}
+        raise ValueError(f"{label} grammar reference errors:\n" + "\n".join(errors))
+    return {"items": items}
 
 
 #: Passage fields authored in the n5/n4 readings datasets and copied through
@@ -891,7 +882,7 @@ def _passage_word_spans(body, authored_spans, vocab_forms):
     return spans_lib.merge_spans(merged, spans_lib.build_word_spans(body, new_forms))
 
 
-def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
+def _build_readings_level(reading_entries, known_readings=None,
                           vocab_forms=None):
     passages = []
     for i, p in enumerate(reading_entries, start=1):
@@ -933,7 +924,7 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
                 | {s["vocabulary_slug"] for s in passage["word_spans"]}
             )
         passages.append(passage)
-    return {"jlpt_level": jlpt_level, "passages": passages}
+    return {"passages": passages}
 
 
 # ---------------------------------------------------------------------------
@@ -953,28 +944,22 @@ def build_n4_kanji():
 
 
 # ---------------------------------------------------------------------------
-# Bands
+# Ladder
 #
-# Radicals and kanji are not written per level. Their level is a *band* — a
-# teaching budget of 150 / 150 / 400 / 300 / 1,000 assigned by corpus reuse in
-# reports/kanji_bands.py — and a band mixes all three source datasets: a kanji
-# hand-authored in n4_kanji.py can sit in the N5 band, and one derived from
-# KANJIDIC in the N3 band.
+# Every item sits on a ladder level (ladder.py writes `_build/ladder.json`), and
+# a level mixes every source dataset: a kanji hand-authored in n4_kanji.py can
+# sit at level 3, and one derived from KANJIDIC at level 12.
 #
-# Slugs do not follow and name no level: `yen` is `yen` in whichever band it
-# lands, because `user.db` and the id registry are keyed by it, and a slug that
-# named a level would be a second, stale copy of the label the band carries.
+# Slugs do not follow and name no level: `yen` is `yen` at whichever level it
+# lands, because `user.db` and the id registry are keyed by it.
 # ---------------------------------------------------------------------------
 
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
 VOCAB_SKELETON_PATH = os.path.join(BUILD_DIR, "vocab_skeleton.json")
-BANDS_PATH = os.path.join(BUILD_DIR, "bands.json")
 DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
 
-BAND_LEVELS = ["n5", "n4", "n3", "n2", "n1"]
-
-#: Levels whose vocabulary is derived rather than hand-authored (plan v2 Phase
-#: D). They ship words, readings and meanings — no mnemonics, no examples.
+#: Frequency tiers of the derived vocabulary (plan v2 Phase D), in rank order.
+#: They ship words, readings and meanings — no mnemonics, no examples.
 SKELETON_VOCAB_LEVELS = ["n3", "n2", "n1"]
 
 
@@ -994,70 +979,56 @@ def load_decomposition():
         return json.load(f)
 
 
-def load_bands():
-    with open(BANDS_PATH, encoding="utf-8") as f:
-        return json.load(f)
+def ladder_entries(ladder, kind, items):
+    """ladder[kind], after checking it names exactly the slugs of `items`.
 
-
-def _write_banded(kind, items, bands):
-    """Split one flat item list across the five level files by band.
-
-    A slug bands.json does not name is a build error, not a silent drop: it
-    means the datasets and the band assignment have diverged, and the item would
-    disappear from the curriculum without anybody noticing."""
-    by_level = {level: [] for level in BAND_LEVELS}
-    for item in items:
-        band = bands.get(item["slug"])
-        if band is None:
-            raise ValueError(
-                f"{kind} {item['slug']!r} has no band; re-run "
-                "reports/kanji_bands.py after changing the datasets"
-            )
-        by_level[band["level"]].append((band["sort_order"], item))
-    for level, entries in by_level.items():
-        entries.sort(key=lambda pair: pair[0])
-        items_out = []
-        for i, (_key, item) in enumerate(entries, start=1):
-            items_out.append({**item, "sort_order": i})
-        write_json(
-            os.path.join(CURRICULUM_DIR, kind, f"{level}.json"),
-            {"jlpt_level": level.upper(), "items": items_out},
+    ladder.json is checked in and rebuilt by hand (ladder.py), so it can fall
+    behind the datasets. A slug on one side only is a build error, never a
+    silent drop or an invented item."""
+    entries = ladder[kind]
+    slugs = {item["slug"] for item in items}
+    missing = sorted(slugs - set(entries))
+    extra = sorted(set(entries) - slugs)
+    if missing or extra:
+        raise ValueError(
+            f"ladder.json and the {kind} datasets differ; re-run ladder.py. "
+            f"Not in the ladder: {', '.join(missing) or '-'}. "
+            f"In the ladder only: {', '.join(extra) or '-'}"
         )
-    return {level: len(v) for level, v in by_level.items()}
+    return entries
 
 
-def generate_bands():
-    """Rebuild all five radical and kanji level files from every source."""
-    skeleton = load_skeleton()
-    decomposition = load_decomposition()
-    bands = load_bands()
-
-    radicals = (
-        build_n5_radicals()
-        + build_n4_radicals()
-        + _build_radical_items(decomposition["radicals"])
-    )
-    kanji = (
-        build_n5_kanji()
-        + build_n4_kanji()
-        + _build_kanji_items(skeleton["kanji"])
-    )
-    rad_counts = _write_banded("radicals", radicals, bands["radicals"])
-    kanji_counts = _write_banded("kanji", kanji, bands["kanji"])
-    for level in BAND_LEVELS:
-        print(f"  {level.upper()}: {kanji_counts[level]} kanji, "
-              f"{rad_counts[level]} radicals")
+def _global_order(entries):
+    """{slug: n}: 1..N by level, then the ladder's in-level sort_order."""
+    ordered = sorted(entries, key=lambda s: (entries[s]["level"], entries[s]["sort_order"]))
+    return {slug: n for n, slug in enumerate(ordered, start=1)}
 
 
-# ---------------------------------------------------------------------------
-# Level orchestration
-# ---------------------------------------------------------------------------
+def _with_level(item, entries, order):
+    return {**item, "level": entries[item["slug"]]["level"], "sort_order": order[item["slug"]]}
+
+
+def write_items(path, key, entries, items):
+    """`{key: items}`, each with its `level` and global `sort_order`, in that
+    order. `entries` is `ladder_entries(...)` for the same items."""
+    order = _global_order(entries)
+    write_json(path, {key: [_with_level(item, entries, order)
+                            for item in sorted(items, key=lambda i: order[i["slug"]])]})
+
+
+def _by_level(entries, raw_entries):
+    """{level: [raw entry]} in dataset order."""
+    by_level = {}
+    for e in raw_entries:
+        by_level.setdefault(entries[e["slug"]]["level"], []).append(e)
+    return by_level
+
 
 def _vocab_sources():
-    """[(default level, entries)] for every word: the hand-authored N5/N4
-    datasets, then the derived corpus. A derived word's default level is its
-    frequency rank, which `import/build_vocab_skeleton.py` owns; the corpus is
-    written most-frequent-first, and that is the teaching order."""
+    """[(source, entries)] for every word: the hand-authored N5/N4 datasets,
+    then the derived corpus by frequency tier. The corpus is written
+    most-frequent-first (`import/build_vocab_skeleton.py` owns the rank), and
+    this order is the frequency order ladder.py spreads words by."""
     from n4_vocab import N4_VOCAB
     from n5_vocab import N5_VOCAB
 
@@ -1075,119 +1046,124 @@ def _vocab_sources():
     return sources
 
 
-def _grammar_inputs(level):
+def _grammar_inputs():
     from n4_grammar import N4_GRAMMAR
     from n5_grammar import N5_GRAMMAR
-    vocab_by_level = place("vocabulary", _vocab_sources())
-    all_vocab_forms = {
-        v["slug"]: v["form"] for entries in vocab_by_level.values() for v in entries
-    }
-    known = [v for lower in BAND_LEVELS[: BAND_LEVELS.index(level) + 1]
-             for v in vocab_by_level[lower]]
-    grammar_by_level = place("grammar", [("n5", N5_GRAMMAR), ("n4", N4_GRAMMAR)])
+
+    words = [v for _, entries in _vocab_sources() for v in entries]
+    grammar = list(N5_GRAMMAR) + list(N4_GRAMMAR)
     return {
-        "vocab_by_level": vocab_by_level,
-        "all_vocab_forms": all_vocab_forms,
-        "known": known,
-        "known_readings": _vocab_reading_map(known),
-        "grammar_by_level": grammar_by_level,
-        "all_grammar_slugs": {g["slug"] for entries in grammar_by_level.values() for g in entries},
+        "words": words,
+        "all_vocab_forms": {v["slug"]: v["form"] for v in words},
+        "grammar": grammar,
+        "all_grammar_slugs": {g["slug"] for g in grammar},
     }
 
 
-def build_grammar_point(level, slug, pool_entry):
-    """One grammar item as generate_level would write it with `pool_entry` in
-    the sidecar. The content lane validates this before writing anything."""
-    level = level.lower()
-    inputs = _grammar_inputs(level)
-    entries = [g for g in inputs["grammar_by_level"][level] if g["slug"] == slug]
+def _known(words, level):
+    """The words a learner knows at `level`: every word at or below it, in
+    dataset order (so an earlier dataset's reading of a shared form wins)."""
+    at_or_below = set(slugs_at_or_below("vocabulary", level))
+    return [v for v in words if v["slug"] in at_or_below]
+
+
+def build_grammar_point(slug, pool_entry):
+    """One grammar item as generate would write it with `pool_entry` in the
+    sidecar. The content lane validates this before writing anything."""
+    inputs = _grammar_inputs()
+    entries = [g for g in inputs["grammar"] if g["slug"] == slug]
     if not entries:
-        raise KeyError(f"unknown grammar slug {slug!r} in {level}")
+        raise KeyError(f"unknown grammar slug {slug!r}")
+    ladder = ladder_entries(load_ladder(), "grammar", inputs["grammar"])
+    known = _known(inputs["words"], ladder[slug]["level"])
     item = _build_grammar_level(
-        level.upper(), entries, inputs["all_vocab_forms"], inputs["known_readings"],
-        inputs["all_grammar_slugs"],
-        known_vocab_forms={v["slug"]: v["form"] for v in inputs["known"]},
+        f"level {ladder[slug]['level']}", entries, inputs["all_vocab_forms"],
+        _vocab_reading_map(known), inputs["all_grammar_slugs"],
+        known_vocab_forms={v["slug"]: v["form"] for v in known},
         pool_entries={slug: pool_entry},
         mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH),
     )["items"][0]
-    item["sort_order"] = next(
-        i for i, g in enumerate(inputs["grammar_by_level"][level], start=1) if g["slug"] == slug
-    )
-    return item
+    return _with_level(item, ladder, _global_order(ladder))
 
 
-def generate_level(level):
-    """Vocabulary, grammar and readings for one level.
-
-    Radicals and kanji are not here: their level is a band spanning every source
-    dataset, so they are written together by `generate_bands`."""
+def generate(report_pool=False):
+    """All five item files, from every source dataset."""
     from n4_readings import N4_READINGS
     from n5_readings import N5_READINGS
 
-    level = level.lower()
-    inputs = _grammar_inputs(level)
-    vocab_by_level = inputs["vocab_by_level"]
-    # {slug: dictionary form} of every word at every level: the cross-reference
-    # check, and the spans of the words a sentence links.
-    all_vocab_forms = inputs["all_vocab_forms"]
-    # The words a learner knows by the end of this level: their readings
-    # override the tokenizer, and a passage links every one it contains.
-    known = inputs["known"]
-    known_readings = inputs["known_readings"]
-    vocab = _build_vocab_level(level.upper(), vocab_by_level[level], known_readings,
-                               all_vocab_forms)
-    write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
-    if level not in KIND_LEVELS["grammar"]:
-        # Vocabulary only: N2+ grammar and reading passages are out of scope for
-        # this plan (docs/content/kanji-coverage-and-dependency-order-plan.md).
-        print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
-        return
+    ladder = load_ladder()
+    radicals = (
+        build_n5_radicals()
+        + build_n4_radicals()
+        + _build_radical_items(load_decomposition()["radicals"])
+    )
+    kanji = (
+        build_n5_kanji()
+        + build_n4_kanji()
+        + _build_kanji_items(load_skeleton()["kanji"])
+    )
+    for kind_dir, kind, items in (("radicals", "radical", radicals), ("kanji", "kanji", kanji)):
+        write_items(os.path.join(CURRICULUM_DIR, kind_dir, "items.json"), "items",
+                    ladder_entries(ladder, kind, items), items)
 
-    grammar_by_level = inputs["grammar_by_level"]
-    write_json(
-        os.path.join(CURRICULUM_DIR, "grammar", f"{level}.json"),
-        _build_grammar_level(level.upper(), grammar_by_level[level], all_vocab_forms,
-                             known_readings, inputs["all_grammar_slugs"],
-                             known_vocab_forms={v["slug"]: v["form"] for v in known},
-                             pool_entries=load_pool_sidecar(),
-                             mnemonic_entries=_load_sidecar(GRAMMAR_MNEMONICS_PATH)),
-    )
-    # Grammar Read + Build cards need every point's pool to pass (spec §4.4).
-    failing = {slug: errs for slug, errs in pool_check.check_level(level).items() if errs}
-    if failing:
-        lines = [f"{slug}: {errs[0]}" for slug, errs in failing.items()]
-        raise SystemExit(
-            f"{level.upper()} grammar pool fails for {len(failing)} point(s) — run "
-            "generate_content.check_grammar_pool for the full report:\n" + "\n".join(lines)
-        )
-    if level not in KIND_LEVELS["passage"]:
-        # N3 grammar has no reading passages (docs/content/grammar-jlpt-level-audit.md).
-        print(f"Generated {level.upper()} vocabulary and grammar JSON files.")
+    inputs = _grammar_inputs()
+    words, grammar = inputs["words"], inputs["grammar"]
+    passages = list(N5_READINGS) + list(N4_READINGS)
+    vocab_ladder = ladder_entries(ladder, "vocabulary", words)
+    grammar_ladder = ladder_entries(ladder, "grammar", grammar)
+    passage_ladder = ladder_entries(ladder, "passage", passages)
+    words_at = _by_level(vocab_ladder, words)
+    grammar_at = _by_level(grammar_ladder, grammar)
+    passages_at = _by_level(passage_ladder, passages)
+    pool_entries = load_pool_sidecar()
+    mnemonic_entries = _load_sidecar(GRAMMAR_MNEMONICS_PATH)
+    vocab_items, grammar_items, passage_items = [], [], []
+    for level in range(1, MAX_LEVEL + 1):
+        known = _known(words, level)
+        known_readings = _vocab_reading_map(known)
+        known_forms = {v["slug"]: v["form"] for v in known}
+        label = f"level {level}"
+        vocab_items += _build_vocab_level(label, words_at.get(level, []), known_readings,
+                                          inputs["all_vocab_forms"])["items"]
+        grammar_items += _build_grammar_level(
+            label, grammar_at.get(level, []), inputs["all_vocab_forms"], known_readings,
+            inputs["all_grammar_slugs"], known_vocab_forms=known_forms,
+            pool_entries=pool_entries, mnemonic_entries=mnemonic_entries,
+        )["items"]
+        passage_items += _build_readings_level(passages_at.get(level, []), known_readings,
+                                               known_forms)["passages"]
+    write_items(os.path.join(CURRICULUM_DIR, "vocabulary", "items.json"), "items",
+                vocab_ladder, vocab_items)
+    write_items(os.path.join(CURRICULUM_DIR, "grammar", "items.json"), "items",
+                grammar_ladder, grammar_items)
+    write_items(os.path.join(CURRICULUM_DIR, "readings", "items.json"), "passages",
+                passage_ladder, passage_items)
+    print(f"Generated {len(radicals)} radicals, {len(kanji)} kanji, {len(vocab_items)} words, "
+          f"{len(grammar_items)} grammar points and {len(passage_items)} passages.")
+    check_pool(report_pool)
+
+
+def check_pool(report_pool=False):
+    """Grammar Read + Build cards need every point's pool to pass (spec §4.4).
+    A failure exits 1, or with `report_pool` is printed and the build goes on."""
+    failing = {slug: errs for slug, errs in pool_check.check_level().items() if errs}
+    if not failing:
         return
-    passages_by_level = place("passage", [("n5", N5_READINGS), ("n4", N4_READINGS)])
-    write_json(
-        os.path.join(CURRICULUM_DIR, "readings", f"{level}.json"),
-        _build_readings_level(level.upper(), passages_by_level[level], known_readings,
-                              {v["slug"]: v["form"] for v in known}),
-    )
-    print(f"Generated {level.upper()} JSON files.")
+    lines = [f"{slug}: {errs[0]}" for slug, errs in failing.items()]
+    message = (f"grammar pool fails for {len(failing)} point(s) — run "
+               "generate_content.check_grammar_pool for the full report:\n" + "\n".join(lines))
+    if not report_pool:
+        raise SystemExit(message)
+    print(message)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--level", choices=["n5", "n4", "n3", "n2", "n1"],
-                        help="vocabulary, grammar and readings for one level "
-                             "(N3 has no readings; N2+ is vocabulary only, and derived)")
-    parser.add_argument("--bands", action="store_true",
-                        help="all five radical and kanji level files, from every source")
+    parser.add_argument("--report-pool", action="store_true",
+                        help="print grammar pool failures and continue (until the "
+                             "ladder grammar content is in)")
     args = parser.parse_args()
-    if not args.level and not args.bands:
-        parser.error("give --level and/or --bands")
-    if args.level:
-        generate_level(args.level)
-    if args.bands:
-        generate_bands()
-        print("Generated banded radical and kanji JSON files.")
+    generate(report_pool=args.report_pool)
 
 
 if __name__ == "__main__":

@@ -68,7 +68,7 @@ That is a human-read concern; the humour *mix* is checked at the seed level
 instead (`reading_seeds.tone_mix_errors`).
 
 Standalone usage:
-    .venv/bin/python -m generate_content.validate_readings --level n5
+    .venv/bin/python -m generate_content.validate_readings --level 16
     .venv/bin/python -m generate_content.validate_readings --fixtures
 """
 
@@ -82,8 +82,9 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from levels import MAX_LEVEL  # noqa: E402
 from generate_content import (  # noqa: E402
-    grammar_detect, level_check, reading_context, reading_seeds, spans,
+    context, grammar_detect, level_check, reading_context, reading_seeds, spans,
 )
 from generate_content.validate_drafts import _known_readings  # noqa: E402
 
@@ -478,8 +479,9 @@ def validate_draft(level, slug, draft, ctx=None):
                 f"Rewrite the sentence, or use a word whose reading is settled."
             )
 
-    # 6. grammar the body actually uses
-    errors += _grammar_errors(detect_grammar(body, level), body, ctx)
+    # 6. grammar the body actually uses — detected over every point, of any
+    # level, so a point above the passage's level is caught
+    errors += _grammar_errors(detect_grammar(body, MAX_LEVEL), body, ctx)
 
     errors += _question_errors(draft, ctx, known_readings)
     errors += _span_errors(build_passage_spans(body, ctx["span_forms"]), body, ctx)
@@ -534,7 +536,7 @@ def run_fixtures():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, help="ladder level, 1-60")
     parser.add_argument("--fixtures", action="store_true",
                         help="run the gate's own good/bad fixtures instead of drafts")
     args = parser.parse_args()
@@ -542,11 +544,13 @@ def main():
     if args.fixtures:
         raise SystemExit(1 if run_fixtures() else 0)
 
+    if args.level is None:
+        raise SystemExit("--level is required (or --fixtures)")
     seed_problems = reading_seeds.seed_errors(args.level)
     for problem in seed_problems:
         print(f"SEED  {problem}")
 
-    level_dir = os.path.join(DRAFTS_DIR, args.level)
+    level_dir = os.path.join(DRAFTS_DIR, context.level_dir(args.level))
     if not os.path.isdir(level_dir):
         raise SystemExit(
             f"no drafts at {level_dir}" + (" (and the seed list has problems)"

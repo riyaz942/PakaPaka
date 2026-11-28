@@ -116,6 +116,26 @@ class OtherGrammarPairsTest(unittest.TestCase):
             ba.other_grammar_pairs(TEA, "うちに", ["お茶が熱い間に飲んだ方がいいですよ。"],
                                    "お茶は熱い前に飲んだ方がいいですよ。"), [])
 
+    def test_no_pair_when_the_valid_alternate_extends_the_chunk(self):
+        home = "家へ帰る時、パンを買いました。"
+        before = ["家へ帰る前に、パンを買いました。"]
+        self.assertEqual(ba.other_grammar_pairs(home, "時", before, "家へ帰る時に、パンを買いました。"), [])
+        self.assertEqual(
+            ba.other_grammar_pairs(home, "時", before, "私は家へ帰る時、パンを買いました。"),
+            ["私は家へ帰る前に、パンを買いました。"])
+
+    def test_no_pair_when_the_valid_alternate_adds_a_particle_after_the_chunk(self):
+        cases = [  # sentence, chunk, other_grammar, valid alternate (bad pair it gave)
+            ("体が痛いとき、病院へ行きます。", "とき", "体が痛いから、病院へ行きます。",
+             "体が痛いときに、病院へ行きます。"),  # からに
+            ("お茶か何か飲みませんか。", "か何か", "お茶でも飲みませんか。",
+             "お茶か何かを飲みませんか。"),  # でもを
+            ("会社の入口は社員のみ使えます。", "のみ", "会社の入口は社員だけ使えます。",
+             "会社の入口は社員のみが使えます。"),  # だけが: correct, but dropped too
+        ]
+        for sentence, chunk, other, valid in cases:
+            self.assertEqual(ba.other_grammar_pairs(sentence, chunk, [other], valid), [], valid)
+
 
 CANDIDATES = [(0, TEA_WA), (0, "お茶が熱いうちに飲んだ方はいいですよ。")]
 REPLY = {"verdicts": [
@@ -168,38 +188,38 @@ class MergeTest(unittest.TestCase):
                                 "vocabulary_slugs": [],
                                 "alternates": [{"japanese": "会社の入口は社員だけ使えます。",
                                                 "kind": "other_grammar"}]}]}
-        candidates = [(0, "会社の入口は社員のみが使えます。"), (0, "会社の入口は社員のみも使えます。")]
+        candidates = [(0, "会社の入口は社員のみ、使えます。"), (0, "会社の入口は、社員のみ使えます。")]
         reply = {"verdicts": [{"candidate": c, "verdict": "valid"} for _, c in candidates]}
         merged = ba.merged_entry(entry, candidates, reply, "m", {0: "のみ"})
         self.assertEqual([a["japanese"] for a in merged["sentences"][0]["alternates"]], [
             "会社の入口は社員だけ使えます。",
-            "会社の入口は社員のみが使えます。",
-            "会社の入口は社員だけが使えます。",
-            "会社の入口は社員のみも使えます。",
-            "会社の入口は社員だけも使えます。",
+            "会社の入口は社員のみ、使えます。",
+            "会社の入口は社員だけ、使えます。",
+            "会社の入口は、社員のみ使えます。",
+            "会社の入口は、社員だけ使えます。",
         ])
 
 
 class SelectTest(unittest.TestCase):
     def test_skipped_points_are_not_selected_again(self):
-        slugs = [g["slug"] for g in ba.context.load_grammar("n4")][:2]
+        slugs = [g["slug"] for g in ba.context.load_grammar() if g["level"] == 16][:2]
         sidecar = {slugs[0]: {"_meta": {}}, slugs[1]: {"_meta": {}}}
         skipped = ba.skipped_entry(sidecar[slugs[0]], "unfixable: x")
         self.assertEqual(skipped["_meta"]["answers_check"],
                          {"version": ba.CHECK_VERSION, "skipped": "unfixable: x"})
         self.assertEqual(sidecar[slugs[0]]["_meta"], {})  # input untouched
         sidecar[slugs[0]] = skipped
-        self.assertEqual(ba.select_slugs("n4", 5, sidecar), [slugs[1]])
+        self.assertEqual(ba.select_slugs([16], 5, sidecar), [slugs[1]])
 
     def test_skips_checked_points(self):
-        slugs = [g["slug"] for g in ba.context.load_grammar("n4")][:2]
+        slugs = [g["slug"] for g in ba.context.load_grammar() if g["level"] == 16][:2]
         sidecar = {slugs[0]: {"_meta": {"answers_check": {"version": ba.CHECK_VERSION}}},
                    slugs[1]: {"_meta": {"particle_check": {"version": "1"}}}}
-        self.assertEqual(ba.select_slugs("n4", 5, sidecar), [slugs[1]])
+        self.assertEqual(ba.select_slugs([16], 5, sidecar), [slugs[1]])
 
 
 class GateTest(unittest.TestCase):
-    """Real n4 data: the three cases from the spec."""
+    """Real data: the three cases from the spec."""
 
     @classmethod
     def setUpClass(cls):
@@ -208,17 +228,24 @@ class GateTest(unittest.TestCase):
     def entry(self, slug):
         return copy.deepcopy(self.sidecar[slug])
 
+    @staticmethod
+    def about(errors, japanese):
+        """The errors about one sentence. The pool still has sentences with
+        words above their point's level (Task 7), which these cases are not
+        about."""
+        return [e for e in errors if e.startswith(japanese + " — ")]
+
     def test_suru_wo_alternate_passes_on_baai(self):
         entry = self.entry("baai")
         sentence = next(s for s in entry["sentences"] if s["japanese"] == "遅れる場合は、先生に電話します。")
         sentence["alternates"] = [{"japanese": "遅れる場合は、先生に電話をします。", "kind": "valid"}]
-        self.assertEqual(ba.point_gate_errors("n4", "baai", entry), [])
+        self.assertEqual(self.about(ba.point_gate_errors("baai", entry), sentence["japanese"]), [])
 
     def fixed_aida(self, fixed):
-        """The aida entry with its meeting/phone sentence (whichever form the
-        pool holds now) fixed to `fixed`."""
+        """The aida entry with its meeting/phone sentence
+        (会議の間に、電話が鳴った。) fixed to `fixed`."""
         entry = self.entry("aida")
-        current = next(s["japanese"] for s in entry["sentences"] if "電話を消した" in s["japanese"])
+        current = next(s["japanese"] for s in entry["sentences"] if "電話が鳴った" in s["japanese"])
         self.assertNotEqual(current, fixed)
         reply = {"sentences": [
             {"japanese": s["japanese"], "verdict": "ok", "reason": "x"}
@@ -228,40 +255,57 @@ class GateTest(unittest.TestCase):
         return ba.apply_fixes(entry, reply)[0]
 
     def test_fix_on_aida_passes_the_gate(self):
-        current = next(s["japanese"] for s in self.entry("aida")["sentences"]
-                       if "電話を消した" in s["japanese"])
-        fixed = MEETING if current == MEETING_FIXED else MEETING_FIXED
-        self.assertEqual(ba.fix_gate_errors("n4", "aida", self.fixed_aida(fixed)), [])
+        fixed = "会議の間、電話が鳴った。"
+        self.assertEqual(self.about(ba.fix_gate_errors("aida", self.fixed_aida(fixed)), fixed), [])
 
     def test_fix_that_drops_a_word_is_rejected(self):
         # The pool gate alone passes this: it never checks the main sentence
         # still holds its listed words.
-        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、消した。"))
+        with mock.patch.object(ba, "point_gate_errors", return_value=[]):
+            errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、鳴った。"))
         self.assertTrue(any("denwa" in e for e in errors))
 
     def test_fix_that_changes_register_is_rejected(self):
-        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、電話を消しました。"))
+        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話が鳴りました。"))
         self.assertTrue(any("register" in e for e in errors))
 
     def test_fix_that_changes_tense_is_rejected(self):
-        errors = ba.fix_gate_errors("n4", "aida", self.fixed_aida("会議の間に、電話を消す。"))
+        errors = ba.fix_gate_errors("aida", self.fixed_aida("会議の間に、電話が鳴る。"))
         self.assertTrue(any("shape" in e for e in errors))
 
     def test_judge_prompt_carries_the_lesson_rules(self):
         entry = self.entry("aida")
-        text = ba._judge_prompt("n4", "aida", entry, [(0, "x")])
-        item = ba.generate.build_grammar_point("n4", "aida", entry)
+        text = ba._judge_prompt("aida", entry, [(0, "x")])
+        item = ba.generate.build_grammar_point("aida", entry)
         self.assertIn(item["caution_notes"][0], text)
         self.assertIn(item["structure"], text)
 
     def test_errors_for_uchi_ni(self):
-        item = ba.generate.build_grammar_point("n3", "uchi-ni", self.entry("uchi-ni"))
+        item = ba.generate.build_grammar_point("uchi-ni", self.entry("uchi-ni"))
         built = next(s for s in item["example_sentences"] if s["japanese"] == TEA)
-        ctx = ba.gate_context("n3")
+        ctx = ba.gate_context("uchi-ni")
         errors = lambda c: ba.candidate_errors(c, built, item, ctx)  # noqa: E731
         self.assertEqual(errors(TEA_WA), [])
         self.assertTrue(errors("おちゃはあついうちにのんだほうがいいですよ。"))
         self.assertTrue(errors("お茶は熱いうちに飲んだ方がいいよ。"))
+
+
+class GateContextTest(unittest.TestCase):
+    def test_words_and_readings_are_the_ladder_words_of_build_grammar_point(self):
+        words = ba.generate._grammar_inputs()["words"]
+        for slug in ("baai", "uchi-ni", "aida"):
+            known = ba.generate._known(words, ba.context.grammar_item(slug)["level"])
+            ctx = ba.gate_context(slug)
+            self.assertEqual(ctx["vocab_forms"], {v["slug"]: v["form"] for v in known}, slug)
+            self.assertEqual(ctx["known_readings"], ba.generate._vocab_reading_map(known), slug)
+
+    def test_known_readings_come_from_the_same_known_call(self):
+        sentinel = [{"slug": "w", "form": "語", "reading": "ご"}]
+        with mock.patch.object(ba.generate, "_known", return_value=sentinel) as known:
+            ctx = ba.gate_context("baai")
+        known.assert_called_once()
+        self.assertEqual(ctx["vocab_forms"], {"w": "語"})
+        self.assertEqual(ctx["known_readings"], {"語": "ご"})
 
 
 class IngestTest(unittest.TestCase):
@@ -273,11 +317,13 @@ class IngestTest(unittest.TestCase):
                 before = f.read()
             with mock.patch.object(ba.generate, "POOL_SIDECAR", pool_path), \
                     mock.patch.object(ba, "WEB_DIR", tmp):
-                os.makedirs(os.path.join(tmp, "n4"))
-                with open(os.path.join(tmp, "n4", "uchi-ni.candidates.json"), "w",
+                folder = os.path.join(tmp, ba.context.level_dir(
+                    ba.context.grammar_item("uchi-ni")["level"]))
+                os.makedirs(folder)
+                with open(os.path.join(folder, "uchi-ni.candidates.json"), "w",
                           encoding="utf-8") as f:
                     json.dump([[0, TEA_WA]], f)
-                args = argparse.Namespace(level="n4", slug="uchi-ni", model="m")
+                args = argparse.Namespace(slug="uchi-ni", model="m")
                 with self.assertRaises(SystemExit) as raised:
                     ba.cmd_ingest(args)
                 self.assertIn("uchi-ni.judge.reply.md", str(raised.exception))
@@ -286,7 +332,7 @@ class IngestTest(unittest.TestCase):
 
     def test_ingest_without_candidates_file_exits(self):
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(ba, "WEB_DIR", tmp):
-            args = argparse.Namespace(level="n4", slug="uchi-ni", model="m")
+            args = argparse.Namespace(slug="uchi-ni", model="m")
             with self.assertRaises(SystemExit) as raised:
                 ba.cmd_ingest(args)
             self.assertIn("judgeprompts", str(raised.exception))

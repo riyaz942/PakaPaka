@@ -53,9 +53,6 @@ sys.path.insert(0, BUILD_DIR)
 import furigana as furigana_lib  # noqa: E402
 import sources  # noqa: E402
 
-#: Levels the curriculum hand-authors vocabulary for. Their words are excluded
-#: from the corpus: a word is taught once, by whoever wrote it first.
-AUTHORED_LEVELS = ("n5", "n4")
 
 #: The skeleton levels and their word counts — the "vocabulary added" column of
 #: the plan's ladder, less the two levels above.
@@ -216,12 +213,13 @@ def romaji(reading):
     return re.sub(r"[^a-z]+", "", "".join(out))
 
 
-def load_level_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    with open(path, encoding="utf-8") as f:
-        return json.load(f)["items"]
+def authored_vocab():
+    """The hand-authored words (`n5_vocab.py`, `n4_vocab.py`). They are excluded
+    from the corpus: a word is taught once, by whoever wrote it first."""
+    from n4_vocab import N4_VOCAB
+    from n5_vocab import N5_VOCAB
+
+    return list(N5_VOCAB) + list(N4_VOCAB)
 
 
 def corpus_chars():
@@ -242,11 +240,7 @@ def corpus_chars():
 
 def authored_forms():
     """Every written form the hand-authored levels already teach."""
-    return {
-        item["primary_form"]
-        for level in AUTHORED_LEVELS
-        for item in load_level_items("vocabulary", level)
-    }
+    return {v["form"] for v in authored_vocab()}
 
 
 def is_kanji_char(ch):
@@ -413,11 +407,7 @@ def main():
     entries = sources.load_jmdict_entries()
 
     shipped = authored_forms()
-    authored_slugs = {
-        item["slug"]
-        for level in AUTHORED_LEVELS
-        for item in load_level_items("vocabulary", level)
-    }
+    authored_slugs = {v["slug"] for v in authored_vocab()}
 
     selected, dropped = select_words(entries, shipped, corpus_chars())
     wanted = sum(size for _level, size in LEVEL_SIZES)

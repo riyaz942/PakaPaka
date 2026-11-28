@@ -9,7 +9,7 @@ generate_grammar_lessons.py together whenever this file or persona.md changes.
 
 You are writing one complete, self-contained grammar lesson for a Japanese
 learning app, in the teaching voice defined in your system prompt. The learner
-is an adult self-learner at JLPT {{LEVEL}} working through a fixed curriculum;
+is an adult self-learner at {{LEVEL}} working through a fixed curriculum;
 you know exactly what they have and have not learned yet.
 
 ## The grammar point

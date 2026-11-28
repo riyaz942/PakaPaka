@@ -1,0 +1,484 @@
+{
+  "level": 3,
+  "passages": [
+    {
+      "seed": "ojiisan-no-pan",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "おじいさんのパン",
+        "body": "おじいさんは毎日あそこへ行きます。パンを三つ買います。おばあさんも赤ちゃんも食べます。日曜日は、おじいさんがあそこで三つ食べます。",
+        "questions": [
+          {
+            "prompt": "おじいさんは毎日どこへ行きますか。",
+            "accepted_answers": [
+              "あそこ",
+              "あそこへ",
+              "あそこです",
+              "あそこへ行きます",
+              "あそこへいきます"
+            ],
+            "prompt_furigana": "おじいさんは毎[まい]日[にち]どこへ行[い]きますか。"
+          },
+          {
+            "prompt": "日曜日、おじいさんはパンをいくつ食べますか。",
+            "accepted_answers": [
+              "三つ",
+              "みっつ",
+              "三つです",
+              "みっつです",
+              "三つ食べます",
+              "みっつたべます"
+            ],
+            "prompt_furigana": "日[にち]曜[よう]日[び]、おじいさんはパンをいくつ食[た]べますか。"
+          }
+        ],
+        "english_translation": "Every day, Grandpa goes over there. He buys three pieces of bread. Grandma and the baby both eat it. On Sunday, Grandpa eats all three over there.",
+        "summary_ja": "おじいさんは毎日あそこでパンを買います。",
+        "summary_en": "Grandpa buys bread over there every day, and on Sunday he eats all of it there himself.",
+        "grammar_slugs": [
+          "de-location",
+          "ga",
+          "he-direction",
+          "masu",
+          "mo-also",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "akachan",
+          "asoko",
+          "iku-v",
+          "kau-v",
+          "mainichi",
+          "mittsu",
+          "nichiyoubi",
+          "obaasan",
+          "ojiisan",
+          "pan",
+          "taberu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 0,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "mainichi",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 8,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 12,
+            "end": 16,
+            "surface_form": "行きます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 22,
+            "end": 26,
+            "surface_form": "買います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 27,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 33,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 38,
+            "end": 42,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 43,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 48,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 54,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "mittsu",
+            "start": 58,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 60,
+            "end": 64,
+            "surface_form": "食べます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 36,
+        "body_furigana": "おじいさんは毎[まい]日[にち]あそこへ行[い]きます。パンを三[みっ]つ買[か]います。おばあさんも赤[あか]ちゃんも食[た]べます。日[にち]曜[よう]日[び]は、おじいさんがあそこで三[みっ]つ食[た]べます。",
+        "slug": "ojiisan-no-pan",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "nichiyoubi-no-nomimono",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "日曜日の飲み物",
+        "body": "毎週日曜日、おじいさんとおばあさんが来ます。大人や赤ちゃんも来ます。みんな飲み物を買います。食べ物はありません。月曜日も、飲み物を飲みます。",
+        "questions": [
+          {
+            "prompt": "日曜日、みんなは何を買いますか。",
+            "accepted_answers": [
+              "飲み物",
+              "のみもの",
+              "飲み物です",
+              "のみものです",
+              "飲み物を買います",
+              "のみものをかいます"
+            ],
+            "prompt_furigana": "日[にち]曜[よう]日[び]、みんなは何[なに]を買[か]いますか。"
+          },
+          {
+            "prompt": "食べ物はありますか。",
+            "accepted_answers": [
+              "ありません",
+              "いいえ、ありません",
+              "いいえ"
+            ],
+            "prompt_furigana": "食[た]べ物[もの]はありますか。"
+          }
+        ],
+        "english_translation": "Every Sunday, Grandpa and Grandma come. The grown-ups and the baby come too. Everyone buys drinks. There is no food. On Monday, too, they drink the drinks.",
+        "summary_ja": "毎週日曜日、みんな飲み物を買います。",
+        "summary_en": "Every Sunday the whole family comes and everyone buys drinks, nobody buys food, and the drinking goes on into Monday.",
+        "grammar_slugs": [
+          "ga",
+          "masen",
+          "masu",
+          "mo-also",
+          "to-and",
+          "wa-topic",
+          "wo",
+          "ya-among"
+        ],
+        "vocabulary_slugs": [
+          "akachan",
+          "aru",
+          "getsuyoubi",
+          "kau-v",
+          "kuru-v",
+          "maishuu",
+          "minna",
+          "nichiyoubi",
+          "nomimono",
+          "nomu-v",
+          "obaasan",
+          "ojiisan",
+          "otona",
+          "tabemono"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "maishuu",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 2,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 6,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "obaasan",
+            "start": 12,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 18,
+            "end": 21,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otona",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 25,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 30,
+            "end": 33,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 34,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "nomimono",
+            "start": 37,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 41,
+            "end": 45,
+            "surface_form": "買います",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tabemono",
+            "start": 46,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 50,
+            "end": 55,
+            "surface_form": "ありません",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 56,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "nomimono",
+            "start": 61,
+            "end": 64
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 65,
+            "end": 69,
+            "surface_form": "飲みます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 36,
+        "body_furigana": "毎[まい]週[しゅう]日[にち]曜[よう]日[び]、おじいさんとおばあさんが来[き]ます。大人[おとな]や赤[あか]ちゃんも来[き]ます。みんな飲[の]み物[もの]を買[か]います。食[た]べ物[もの]はありません。月[げつ]曜[よう]日[び]も、飲[の]み物[もの]を飲[の]みます。",
+        "slug": "nichiyoubi-no-nomimono",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "akachan-mo",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "赤ちゃんも",
+        "body": "金曜日、おじいさんがここに来ます。飲み物を飲みます。赤ちゃんも飲みます。あそこを見ます。赤ちゃんも見ます。月曜日に帰ります。赤ちゃんはあそこを見ます。",
+        "questions": [
+          {
+            "prompt": "おじいさんはいつここに来ますか。",
+            "accepted_answers": [
+              "金曜日",
+              "金曜日です",
+              "金曜日に",
+              "きんようび",
+              "きんようびです",
+              "きんようびに"
+            ],
+            "prompt_furigana": "おじいさんはいつここに来[き]ますか。"
+          },
+          {
+            "prompt": "月曜日、赤ちゃんはどこを見ますか。",
+            "accepted_answers": [
+              "あそこ",
+              "あそこです",
+              "あそこを見ます",
+              "あそこをみます"
+            ],
+            "prompt_furigana": "月[げつ]曜[よう]日[び]、赤[あか]ちゃんはどこを見[み]ますか。"
+          }
+        ],
+        "english_translation": "On Friday, Grandpa comes here. He drinks a drink. The baby drinks too. He looks over there. The baby looks too. On Monday he goes home. The baby looks over there.",
+        "summary_ja": "金曜日におじいさんがここに来ます。",
+        "summary_en": "Grandpa comes on Friday, the baby copies what he does, and after he goes home the baby keeps looking over there.",
+        "grammar_slugs": [
+          "ga",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "akachan",
+          "asoko",
+          "getsuyoubi",
+          "kaeru-v",
+          "kinyoubi",
+          "koko",
+          "kuru-v",
+          "miru-v",
+          "nomimono",
+          "nomu-v",
+          "ojiisan"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinyoubi",
+            "start": 0,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "ojiisan",
+            "start": 4,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 13,
+            "end": 16,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "nomimono",
+            "start": 17,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 21,
+            "end": 25,
+            "surface_form": "飲みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 26,
+            "end": 30
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 31,
+            "end": 35,
+            "surface_form": "飲みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 36,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 40,
+            "end": 43,
+            "surface_form": "見ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 44,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 49,
+            "end": 52,
+            "surface_form": "見ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "getsuyoubi",
+            "start": 53,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 57,
+            "end": 61,
+            "surface_form": "帰ります",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "akachan",
+            "start": 62,
+            "end": 66
+          },
+          {
+            "vocabulary_slug": "asoko",
+            "start": 67,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "miru-v",
+            "start": 71,
+            "end": 74,
+            "surface_form": "見ます",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 37,
+        "body_furigana": "金[きん]曜[よう]日[び]、おじいさんがここに来[き]ます。飲[の]み物[もの]を飲[の]みます。赤[あか]ちゃんも飲[の]みます。あそこを見[み]ます。赤[あか]ちゃんも見[み]ます。月[げつ]曜[よう]日[び]に帰[かえ]ります。赤[あか]ちゃんはあそこを見[み]ます。",
+        "slug": "akachan-mo",
+        "_meta": {
+          "generator_model": "claude-opus-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

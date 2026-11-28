@@ -1,12 +1,13 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { itemKey, type ContentType, type JlptLevel } from './types.js';
+import { itemKey, type ContentType } from './types.js';
 
 export type FindingSeverity = 'ERROR' | 'WARNING' | 'INFO';
 
 export type AuditFinding = {
-  level: JlptLevel;
+  /** Ladder level. */
+  level: number;
   check: string;
   severity: FindingSeverity;
   message: string;
@@ -22,14 +23,14 @@ export type AuditSummary = {
 };
 
 /**
- * Authored levels only. audit_shipped.py skips N3–N1 by default because they
- * ship as item-list skeletons — no mnemonics, examples or art — so every
- * content check would fire on all of them.
+ * Authored levels only: audit_shipped.py's default, ladder levels 1-20. The
+ * later levels are mostly item lists — no mnemonics, examples or art — so every
+ * content check would fire on them.
  */
-const REPORT_LEVELS: { level: JlptLevel; fileSuffix: string }[] = [
-  { level: 'N5', fileSuffix: 'n5' },
-  { level: 'N4', fileSuffix: 'n4' },
-];
+const REPORT_LEVELS: { level: number; fileSuffix: string }[] = Array.from(
+  { length: 20 },
+  (_, i) => ({ level: i + 1, fileSuffix: `level-${String(i + 1).padStart(2, '0')}` }),
+);
 
 function emptyTotals(): SeverityTotals {
   return { ERROR: 0, WARNING: 0, INFO: 0 };
@@ -39,7 +40,7 @@ function reportPath(root: string, fileSuffix: string, ext: 'json' | 'md'): strin
   return path.join(root, 'curriculum', '_build', 'reports', `content-audit-${fileSuffix}.${ext}`);
 }
 
-function readReport(root: string, level: JlptLevel, fileSuffix: string): AuditFinding[] {
+function readReport(root: string, level: number, fileSuffix: string): AuditFinding[] {
   const filePath = reportPath(root, fileSuffix, 'json');
   if (!fs.existsSync(filePath)) return [];
   const raw = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Array<{
@@ -178,7 +179,7 @@ export function runAudit(root: string): Promise<RunAuditResult> {
   return new Promise((resolve) => {
     const child = spawn(
       pythonBin,
-      ['-m', 'generate_content.audit_shipped', '--json', '--level', 'n5', '--level', 'n4'],
+      ['-m', 'generate_content.audit_shipped', '--json', '--levels', '1-20'],
       { cwd: buildDir },
     );
 

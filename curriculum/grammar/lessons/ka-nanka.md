@@ -4,7 +4,7 @@ prompt_version: 2
 review_status: reviewed
 caution_notes:
   - "Don't use か何か when you mean one specific, known thing — 友達か何か sounds like you doubt the person even is your friend."
-  - "Once か何か is in the sentence, drop the object marker を — a bare noun plus を plus か何か is never said together."
+  - "Put を after か何か, never between the noun and か何か — コーヒーをか何か is never said. After か何か, を is often dropped in casual speech: コーヒーか何か飲む and コーヒーか何かを飲む are both correct."
   - "か何か is for replaceable objects, foods, and activities, not for vague people or vague places."
 related_grammar_slugs:
   - "ka-douka"
@@ -33,7 +33,7 @@ Whatever particle the sentence actually needs — を, が, に, and so on — g
 
 *Would you like coffee or something?*
 
-Here か何か sits between コーヒー and 飲みます, doing the job a plain object marker を would otherwise do. Once か何か is in the sentence, you drop を entirely — a bare noun plus を plus か何か is not something anyone says, even though you might expect the object marker to still be needed somewhere. か何か already tells the listener what role コーヒー is playing.
+Here か何か sits between コーヒー and 飲みます, and the を after it is dropped, as it often is in casual speech. コーヒーか何かを飲みますか is also correct. What nobody says is を stuck onto the bare noun first — コーヒーをか何か is not Japanese.
 
 You can also put か何か in front of ある, when you're asking whether something — anything in a loose category — happens to be around, rather than hunting for one named item.
 

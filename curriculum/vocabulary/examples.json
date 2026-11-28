@@ -1156,36 +1156,37 @@
   "aru": {
     "example_sentences": [
       {
-        "japanese": "部屋に椅子がある。",
-        "english": "There's a chair in the room.",
+        "japanese": "それはどこにありますか。",
+        "english": "Where is that?",
         "vocabulary_slugs": [
-          "heya",
-          "isu",
+          "sore",
+          "doko",
           "aru"
         ]
       },
       {
-        "japanese": "今日は時間がある。",
-        "english": "I have time today.",
+        "japanese": "ここにはありません。",
+        "english": "It's not here.",
         "vocabulary_slugs": [
-          "kyou",
-          "jikan",
+          "koko",
           "aru"
         ]
       },
       {
-        "japanese": "お金がありますか。",
-        "english": "Do you have any money?",
+        "japanese": "来月の十日に何がありますか。",
+        "english": "What's happening on the 10th next month?",
         "vocabulary_slugs": [
-          "okane",
+          "raigetsu",
+          "tooka",
+          "nani",
           "aru"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "aruku": {
@@ -7835,37 +7836,38 @@
   "hanasu-v": {
     "example_sentences": [
       {
-        "japanese": "私は先生と話します。",
-        "english": "I speak with the teacher.",
+        "japanese": "今、話す時間がありますか。",
+        "english": "Do you have time to talk right now?",
         "vocabulary_slugs": [
-          "watashi",
-          "sensei",
+          "ima",
+          "hanasu-v",
+          "jikan",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "今日、何を話しましたか。",
+        "english": "What did you talk about today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "nani",
           "hanasu-v"
         ]
       },
       {
-        "japanese": "僕は友達と話した。",
-        "english": "I talked with a friend.",
+        "japanese": "来週、あそこで話しましょう。",
+        "english": "Let's talk over there next week.",
         "vocabulary_slugs": [
-          "boku",
-          "tomodachi",
-          "hanasu-v"
-        ]
-      },
-      {
-        "japanese": "彼女は学校で話しません。",
-        "english": "She does not speak at school.",
-        "vocabulary_slugs": [
-          "kanojo",
-          "gakkou-v",
+          "raishuu",
+          "asoko",
           "hanasu-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "gpt-5.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hanbun": {
@@ -10455,38 +10457,37 @@
   "iku-v": {
     "example_sentences": [
       {
-        "japanese": "明日学校に行きます。",
-        "english": "I'm going to school tomorrow.",
+        "japanese": "来月あそこに行きます。",
+        "english": "I'm going over there next month.",
         "vocabulary_slugs": [
-          "ashita",
-          "gakkou-v",
+          "raigetsu",
+          "asoko",
           "iku-v"
         ]
       },
       {
-        "japanese": "友達と一緒に駅に行く。",
-        "english": "I'm going to the station with a friend.",
+        "japanese": "あなたはいつ行きますか。",
+        "english": "When are you going?",
         "vocabulary_slugs": [
-          "tomodachi",
-          "issho-ni",
-          "eki",
+          "anata",
+          "itsu",
           "iku-v"
         ]
       },
       {
-        "japanese": "今日デパートに行きました。",
-        "english": "I went to the department store today.",
+        "japanese": "四日はどこにも行きません。",
+        "english": "I'm not going anywhere on the 4th.",
         "vocabulary_slugs": [
-          "kyou",
-          "depaato",
+          "yokka",
+          "doko",
           "iku-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "ikura": {
@@ -10934,37 +10935,36 @@
   "iru-exist": {
     "example_sentences": [
       {
-        "japanese": "あそこに猫がいる。",
-        "english": "There's a cat over there.",
+        "japanese": "あなたはどこにいますか。",
+        "english": "Where are you?",
+        "vocabulary_slugs": [
+          "anata",
+          "doko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "田中さんはここにいません。",
+        "english": "Tanaka isn't here.",
+        "vocabulary_slugs": [
+          "koko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "あそこに何がいましたか。",
+        "english": "What was that over there?",
         "vocabulary_slugs": [
           "asoko",
-          "neko",
-          "iru-exist"
-        ]
-      },
-      {
-        "japanese": "弟がいます。",
-        "english": "I have a younger brother.",
-        "vocabulary_slugs": [
-          "otouto",
-          "iru-exist"
-        ]
-      },
-      {
-        "japanese": "彼女は今うちにいます。",
-        "english": "She's at home now.",
-        "vocabulary_slugs": [
-          "kanojo",
-          "ima",
-          "uchi",
+          "nani",
           "iru-exist"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "iru-need": {
@@ -12484,39 +12484,36 @@
   "kaeru-v": {
     "example_sentences": [
       {
-        "japanese": "私は今日早く帰る。",
-        "english": "I'm going home early today.",
+        "japanese": "おじいさんは来週帰ります。",
+        "english": "Grandpa is coming back home next week.",
         "vocabulary_slugs": [
-          "watashi",
-          "kyou",
-          "hayai-early",
+          "ojiisan",
+          "raishuu",
           "kaeru-v"
         ]
       },
       {
-        "japanese": "彼は六時に家に帰る。",
-        "english": "He goes home at six.",
+        "japanese": "みんなで帰りましょう。",
+        "english": "Let's all head home together.",
         "vocabulary_slugs": [
-          "kare",
-          "roku-v",
-          "ie",
+          "minna",
           "kaeru-v"
         ]
       },
       {
-        "japanese": "毎日会社から帰る。",
-        "english": "I come home from the office every day.",
+        "japanese": "あさって、うちへ帰ります。",
+        "english": "I'm going home the day after tomorrow.",
         "vocabulary_slugs": [
-          "mainichi",
-          "kaisha",
+          "asatte",
+          "uchi",
           "kaeru-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kaesu": {
@@ -13225,39 +13222,35 @@
   "kaku": {
     "example_sentences": [
       {
-        "japanese": "私は手紙を書きます。",
-        "english": "I write a letter.",
+        "japanese": "何を書きますか。",
+        "english": "What are you going to write?",
         "vocabulary_slugs": [
-          "watashi",
-          "tegami",
+          "nani",
           "kaku"
         ]
       },
       {
-        "japanese": "僕は毎朝ノートに書きます。",
-        "english": "I write in my notebook every morning.",
+        "japanese": "今日、これを書きました。",
+        "english": "I wrote this today.",
         "vocabulary_slugs": [
-          "boku",
-          "maiasa",
-          "nooto",
+          "kyou",
+          "kore",
           "kaku"
         ]
       },
       {
-        "japanese": "先生は黒いペンで書きます。",
-        "english": "The teacher writes with a black pen.",
+        "japanese": "ここに書きましょう。",
+        "english": "Let's write it here.",
         "vocabulary_slugs": [
-          "sensei",
-          "kuroi",
-          "pen",
+          "koko",
           "kaku"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "gpt-5.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kamera": {
@@ -14345,39 +14338,39 @@
   "kau-v": {
     "example_sentences": [
       {
-        "japanese": "私はパンを買います。",
-        "english": "I buy bread.",
+        "japanese": "今日パンを三つ買いました。",
+        "english": "I bought three pieces of bread today.",
         "vocabulary_slugs": [
-          "watashi",
+          "kyou",
           "pan",
+          "mittsu",
           "kau-v"
         ]
       },
       {
-        "japanese": "彼女は新しいかばんを買う。",
-        "english": "She buys a new bag.",
+        "japanese": "あそこで食べ物を買いましょう。",
+        "english": "Let's buy some food over there.",
         "vocabulary_slugs": [
-          "kanojo",
-          "atarashii-adj",
-          "kaban",
+          "asoko",
+          "tabemono",
           "kau-v"
         ]
       },
       {
-        "japanese": "明日、スーパーで牛乳を買います。",
-        "english": "Tomorrow I will buy milk at the supermarket.",
+        "japanese": "おばあさんはそれをどこで買いましたか。",
+        "english": "Where did your grandmother buy that?",
         "vocabulary_slugs": [
-          "ashita",
-          "suupaa",
-          "gyuunyuu",
+          "obaasan",
+          "sore",
+          "doko",
           "kau-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "gpt-5.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kawa-v": {
@@ -18337,37 +18330,37 @@
   "kuru-v": {
     "example_sentences": [
       {
-        "japanese": "弟が午後来る。",
-        "english": "My younger brother is coming in the afternoon.",
+        "japanese": "来月、ここに来ます。",
+        "english": "I'm coming here next month.",
         "vocabulary_slugs": [
-          "otouto",
-          "gogo",
-          "kuru-v"
-        ]
-      },
-      {
-        "japanese": "猫がここへ来ます。",
-        "english": "The cat is coming over here.",
-        "vocabulary_slugs": [
-          "neko",
+          "raigetsu",
           "koko",
           "kuru-v"
         ]
       },
       {
-        "japanese": "いつ駅に来る？",
-        "english": "When are you coming to the station?",
+        "japanese": "あなたは何時に来ますか。",
+        "english": "What time are you coming?",
         "vocabulary_slugs": [
-          "itsu",
-          "eki",
+          "anata",
+          "nannji",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "十日はここに来ません。",
+        "english": "I'm not coming here on the 10th.",
+        "vocabulary_slugs": [
+          "tooka",
+          "koko",
           "kuru-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kuruma": {
@@ -20553,39 +20546,35 @@
   "miru-v": {
     "example_sentences": [
       {
-        "japanese": "私は毎日テレビを見ます。",
-        "english": "I watch TV every day.",
+        "japanese": "何を見ますか。",
+        "english": "What are you going to watch?",
         "vocabulary_slugs": [
-          "watashi",
-          "mainichi",
-          "terebi",
+          "nani",
           "miru-v"
         ]
       },
       {
-        "japanese": "昨日友達と映画を見ました。",
-        "english": "I watched a movie with a friend yesterday.",
+        "japanese": "それは見ません。",
+        "english": "I'm not watching that one.",
         "vocabulary_slugs": [
-          "kinou",
-          "tomodachi",
-          "eiga",
+          "sore",
           "miru-v"
         ]
       },
       {
-        "japanese": "窓から山を見ます。",
-        "english": "I look at the mountains from the window.",
+        "japanese": "来月、あそこで見ます。",
+        "english": "I'll see it over there next month.",
         "vocabulary_slugs": [
-          "mado",
-          "yama-v",
+          "raigetsu",
+          "asoko",
           "miru-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "mise": {
@@ -24212,37 +24201,40 @@
   "nomu-v": {
     "example_sentences": [
       {
-        "japanese": "冷たい水を飲みます。",
-        "english": "I drink cold water.",
+        "japanese": "あなたは何を飲みますか。",
+        "english": "What would you like to drink?",
         "vocabulary_slugs": [
-          "tsumetai",
-          "mizu",
+          "anata",
+          "nani",
           "nomu-v"
         ]
       },
       {
-        "japanese": "毎朝コーヒーを飲みます。",
-        "english": "I drink coffee every morning.",
+        "japanese": "おじいさんは毎日三時にお茶を飲みます。",
+        "english": "Grandpa drinks tea at three o'clock every day.",
         "vocabulary_slugs": [
-          "maiasa",
-          "koohii",
+          "ojiisan",
+          "mainichi",
+          "san-v",
+          "ocha",
           "nomu-v"
         ]
       },
       {
-        "japanese": "彼はお酒を飲みました。",
-        "english": "He drank alcohol.",
+        "japanese": "赤ちゃんがみんなの飲み物を飲みました。",
+        "english": "The baby drank everyone's drinks.",
         "vocabulary_slugs": [
-          "kare",
-          "osake",
+          "akachan",
+          "minna",
+          "nomimono",
           "nomu-v"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nooto": {
@@ -32378,37 +32370,36 @@
   "suru": {
     "example_sentences": [
       {
-        "japanese": "私は料理をする。",
-        "english": "I cook.",
+        "japanese": "来月、何をしますか。",
+        "english": "What are you doing next month?",
         "vocabulary_slugs": [
-          "watashi",
-          "ryouri",
+          "raigetsu",
+          "nani",
           "suru"
         ]
       },
       {
-        "japanese": "午後、電話をします。",
-        "english": "I'll make a phone call in the afternoon.",
+        "japanese": "あなたはどうしますか。",
+        "english": "What about you? What will you do?",
         "vocabulary_slugs": [
-          "gogo",
-          "denwa",
+          "anata",
+          "dou",
           "suru"
         ]
       },
       {
-        "japanese": "一緒に食事をした。",
-        "english": "We had a meal together.",
+        "japanese": "それはしません。",
+        "english": "I won't do that.",
         "vocabulary_slugs": [
-          "issho-ni",
-          "shokuji",
+          "sore",
           "suru"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "sushi": {
@@ -32751,39 +32742,36 @@
   "taberu": {
     "example_sentences": [
       {
-        "japanese": "私は毎日ご飯を食べます。",
-        "english": "I eat a meal every day.",
+        "japanese": "今日は何を食べますか。",
+        "english": "What are you eating today?",
         "vocabulary_slugs": [
-          "watashi",
-          "mainichi",
-          "gohan",
+          "kyou",
+          "nani",
           "taberu"
         ]
       },
       {
-        "japanese": "彼はレストランで魚を食べました。",
-        "english": "He ate fish at a restaurant.",
+        "japanese": "これを食べませんか。",
+        "english": "Would you like to eat this?",
         "vocabulary_slugs": [
-          "kare",
-          "resutoran",
-          "sakana",
+          "kore",
           "taberu"
         ]
       },
       {
-        "japanese": "一緒に晩ご飯を食べましょう。",
-        "english": "Let's eat dinner together.",
+        "japanese": "パンを三つ食べました。",
+        "english": "I ate three pieces of bread.",
         "vocabulary_slugs": [
-          "issho-ni",
-          "bangohan",
+          "pan",
+          "mittsu",
           "taberu"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "tabun": {
@@ -36775,36 +36763,34 @@
   "wakaru": {
     "example_sentences": [
       {
-        "japanese": "これが分かります。",
-        "english": "I understand this.",
+        "japanese": "これは分かります。",
+        "english": "This one I understand.",
         "vocabulary_slugs": [
           "kore",
           "wakaru"
         ]
       },
       {
-        "japanese": "難しい本が分かりません。",
-        "english": "I don't understand the difficult book.",
+        "japanese": "あそこは分かりますか。",
+        "english": "Do you know where that place over there is?",
         "vocabulary_slugs": [
-          "muzukashii",
-          "hon",
+          "asoko",
           "wakaru"
         ]
       },
       {
-        "japanese": "彼の言うことが分かる。",
-        "english": "I understand what he's saying.",
+        "japanese": "どれが分かりませんか。",
+        "english": "Which one don't you understand?",
         "vocabulary_slugs": [
-          "kare",
-          "iu-v",
+          "dore",
           "wakaru"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "wakasu": {
@@ -38007,41 +37993,40 @@
   "yomu": {
     "example_sentences": [
       {
-        "japanese": "私は毎朝新聞を読みます。",
-        "english": "I read the newspaper every morning.",
+        "japanese": "今日はどの本を読みましょうか。",
+        "english": "Which book shall we read today?",
         "vocabulary_slugs": [
-          "watashi",
-          "maiasa",
-          "shinbun",
-          "yomu"
-        ]
-      },
-      {
-        "japanese": "彼女は図書館で本を読みます。",
-        "english": "She reads books at the library.",
-        "vocabulary_slugs": [
-          "kanojo",
-          "toshokan",
+          "kyou",
+          "dono",
           "hon",
           "yomu"
         ]
       },
       {
-        "japanese": "僕は今この本を読みます。",
-        "english": "I'm going to read this book now.",
+        "japanese": "おじいさんは毎日あそこで何を読みますか。",
+        "english": "What does Grandpa read over there every day?",
         "vocabulary_slugs": [
-          "boku",
-          "ima",
-          "kono",
-          "hon",
+          "ojiisan",
+          "mainichi",
+          "asoko",
+          "nani",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "みんなでそれを読みませんか。",
+        "english": "Why don't we all read that together?",
+        "vocabulary_slugs": [
+          "minna",
+          "sore",
           "yomu"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "gpt-5.5-high",
+      "generator_model": "opus-5.5",
       "prompt_version": "1",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yon-v": {

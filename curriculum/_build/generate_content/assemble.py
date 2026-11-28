@@ -10,7 +10,7 @@ added by generate.py's build-time pass, never stored here, so reviewers edit
 plain Japanese.
 
 Candidate cloze_variants are NOT written into the lesson file or shipped —
-they stay in the draft JSON (drafts/<level>/<slug>-cloze-candidates.json) as
+they stay in the draft JSON (drafts/level-NN/<slug>-cloze-candidates.json) as
 input for the separate cloze authoring effort (docs/feedback/07–09); existing
 curated cloze variants in the *_grammar.py datasets remain the shipped source.
 """
@@ -24,6 +24,7 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 sys.path.insert(0, BUILD_DIR)
 
 from generate_content import frontmatter  # noqa: E402
+from generate_content.context import level_dir  # noqa: E402
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts")
@@ -51,7 +52,7 @@ def write_lesson_file(slug, tool_input, generator_model, prompt_version):
 def write_cloze_candidates(level, slug, tool_input):
     if not tool_input.get("cloze_variants"):
         return None
-    path = os.path.join(DRAFTS_DIR, level, f"{slug}-cloze-candidates.json")
+    path = os.path.join(DRAFTS_DIR, level_dir(level), f"{slug}-cloze-candidates.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(tool_input["cloze_variants"], f, ensure_ascii=False, indent=2)

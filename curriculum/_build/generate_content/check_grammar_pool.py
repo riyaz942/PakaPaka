@@ -7,7 +7,7 @@ Report-only until Plan 2 finishes the content; then generate/compile run it as
 a hard gate. Run after generate.py:
 
     .venv/bin/python -m generate_content.check_grammar_pool
-    .venv/bin/python -m generate_content.check_grammar_pool --level n5 --report reports/grammar-pool-baseline.md
+    .venv/bin/python -m generate_content.check_grammar_pool --level 4 --report reports/grammar-pool-baseline.md
 """
 
 import argparse
@@ -18,6 +18,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from levels import MAX_LEVEL  # noqa: E402
 from generate_content import context, grammar_detect, level_check  # noqa: E402
 from generate_content import grammar_sentences as gs  # noqa: E402
 from generate_content import spans as spans_lib  # noqa: E402
@@ -106,18 +107,17 @@ CORE_GRAMMAR = frozenset({
 })
 
 
-def allowed_grammar_for(level, item):
-    """Slugs a sentence for `item` may use: every lower level, this level up
-    to and including `item`, and CORE_GRAMMAR."""
-    lower = context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level)]
+def allowed_grammar_for(item):
+    """Slugs a sentence for `item` may use: every point up to and including
+    `item` in ladder order, and CORE_GRAMMAR."""
     return CORE_GRAMMAR | frozenset(
-        [g["slug"] for lv in lower for g in context.load_grammar(lv)]
-        + [g["slug"] for g in context.load_grammar(level) if g["sort_order"] <= item["sort_order"]]
+        g["slug"] for g in context.load_grammar() if g["sort_order"] <= item["sort_order"]
     )
 
 
-def _later_grammar(sentence, level, allowed_grammar):
-    """Detected grammar the learner has not met. A hit inside this point's own
+def _later_grammar(sentence, allowed_grammar):
+    """Detected grammar the learner has not met: the detector looks for every
+    grammar point, of any level. A hit inside this point's own
     span, or inside a word shown in dictionary form (暑い, 一緒に, もう), is not
     later grammar; a conjugated word (寒かった) is. Same-span matches are one
     hit (ました is masu and mashita); it passes when any of them is allowed."""
@@ -127,7 +127,7 @@ def _later_grammar(sentence, level, allowed_grammar):
     if sentence.get("grammar_span"):
         covered.append((sentence["grammar_span"]["start"], sentence["grammar_span"]["end"]))
     hits = {}
-    for m in grammar_detect.detect(jp, level)["matches"]:
+    for m in grammar_detect.detect(jp, MAX_LEVEL)["matches"]:
         if any(start <= m["start"] and m["end"] <= end for start, end in covered):
             continue
         hits.setdefault((m["start"], m["form"]), set()).add(m["slug"])
@@ -136,7 +136,7 @@ def _later_grammar(sentence, level, allowed_grammar):
 
 
 def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
-                    pronoun_slugs=frozenset(), level=None, allowed_grammar=None):
+                    pronoun_slugs=frozenset(), allowed_grammar=None):
     jp = sentence["japanese"]
     errors = []
     span = sentence.get("grammar_span")
@@ -149,7 +149,7 @@ def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_for
     if violations:
         errors.append(f"rule 3: out of range {violations}")
     if allowed_grammar is not None:
-        later = _later_grammar(sentence, level, allowed_grammar)
+        later = _later_grammar(sentence, allowed_grammar)
         if later:
             errors.append(f"rule 8: grammar from a later lesson {later}")
     errors.extend(_alternate_errors(sentence, item, other_family_forms, vocab_forms, pronoun_slugs))
@@ -157,12 +157,12 @@ def sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_for
 
 
 def point_errors(item, allowed_index, other_family_forms, vocab_forms,
-                 pronoun_slugs=frozenset(), level=None, allowed_grammar=None):
+                 pronoun_slugs=frozenset(), allowed_grammar=None):
     errors = []
     passing = []
     for sentence in item.get("example_sentences", []):
         found = sentence_errors(sentence, item, allowed_index, other_family_forms, vocab_forms,
-                                pronoun_slugs, level, allowed_grammar)
+                                pronoun_slugs, allowed_grammar)
         errors.extend(found)
         if not found:
             passing.append(sentence)
@@ -193,16 +193,6 @@ def _other_family_forms(item, grammar):
     ]
 
 
-def grammar_through(level):
-    """Grammar points of every level up to and including `level`: an N4
-    alternate may use an N5 point of the same family."""
-    return [
-        g
-        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
-        for g in context.load_grammar(lower)
-    ]
-
-
 #: Personal pronouns natural Japanese drops; a Build alternate may omit them.
 #: Question words and demonstratives (何, どこ, これ) are tagged pronoun in the
 #: vocabulary too, but dropping them changes the sentence.
@@ -211,45 +201,55 @@ DROPPABLE_PRONOUNS = frozenset({
 })
 
 
-def pronoun_slugs_through(level):
+def _pronoun_slugs(vocab):
     return frozenset(
-        v["slug"]
-        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
-        for v in context.load_vocab(lower)
+        v["slug"] for v in vocab
         if v["slug"] in DROPPABLE_PRONOUNS and "pronoun" in (v.get("word_type") or "")
     )
 
 
-def check_point(level, item):
-    """Every rule for one built grammar item, with the same context as
-    check_level — used by the content lane's ingest before anything is written."""
-    vocab_forms = {
-        v["slug"]: v["primary_form"]
-        for lower in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]
-        for v in context.load_vocab(lower)
-    }
-    allowed = level_check.build_allowed_index(context.allowed_vocab_for(level, item["slug"]))
+def pronoun_slugs_through(level):
+    return _pronoun_slugs(context.vocab_through(level))
+
+
+def check_point(item):
+    """Every rule for one built grammar item at its ladder level, with the same
+    context as check_level — used by the content lane's ingest before anything
+    is written. The words are `context.allowed_vocab_for`: every word at or
+    below the point's level; an alternate may use a same-family point at or
+    below it."""
+    level = item["level"]
+    vocab = context.vocab_through(level)
+    vocab_forms = {v["slug"]: v["primary_form"] for v in vocab}
+    allowed = level_check.build_allowed_index(vocab)
     return point_errors(
-        item, allowed, _other_family_forms(item, grammar_through(level)), vocab_forms,
-        pronoun_slugs_through(level), level, allowed_grammar_for(level, item),
+        item, allowed, _other_family_forms(item, context.grammar_through(level)), vocab_forms,
+        _pronoun_slugs(vocab), allowed_grammar_for(item),
     )
 
 
-def check_level(level):
-    """{slug: [errors]} for every grammar point at `level`. A read-once card is
-    never reviewed, so it has no pool to check."""
+def check_level(level=None):
+    """{slug: [errors]} for every grammar point at `level` (every level when
+    None). A read-once card is never reviewed, so it has no pool to check."""
     return {
-        item["slug"]: check_point(level, item)
-        for item in context.load_grammar(level)
-        if not item.get("read_once")
+        item["slug"]: check_point(item)
+        for item in context.load_grammar()
+        if not item.get("read_once") and level in (None, item["level"])
     }
+
+
+def failing_slugs(levels=None):
+    """Slugs of the points at `levels` (every level when None) that fail a rule,
+    in ladder order. The work list of the pool lane."""
+    levels = levels or sorted({g["level"] for g in context.load_grammar()})
+    return [slug for level in levels for slug, errors in check_level(level).items() if errors]
 
 
 def _report(results_by_level):
     lines = ["# Grammar pool report", ""]
     for level, results in results_by_level.items():
         failing = {slug: errs for slug, errs in results.items() if errs}
-        lines += [f"## {level.upper()} — {len(results) - len(failing)}/{len(results)} points pass", ""]
+        lines += [f"## Level {level} — {len(results) - len(failing)}/{len(results)} points pass", ""]
         for slug, errs in failing.items():
             lines.append(f"### {slug}")
             lines += [f"- {e}" for e in errs]
@@ -259,10 +259,10 @@ def _report(results_by_level):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--level", choices=context.LEVEL_ORDER)
+    parser.add_argument("--level", type=int, help="one ladder level (default: every level)")
     parser.add_argument("--report", help="write the markdown report to this path")
     args = parser.parse_args()
-    levels = [args.level] if args.level else context.LEVEL_ORDER
+    levels = [args.level] if args.level else sorted({g["level"] for g in context.load_grammar()})
     results = {level: check_level(level) for level in levels}
     report = _report(results)
     if args.report:

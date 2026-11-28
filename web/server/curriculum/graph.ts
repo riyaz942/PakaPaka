@@ -5,7 +5,6 @@ import {
   type ContentType,
   type CurriculumIndex,
   type DependencyEdge,
-  type JlptLevel,
   type ReviewStatus,
 } from './types.js';
 
@@ -13,7 +12,7 @@ export type GraphNode = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel | null;
+  level: number | null;
   reviewStatus: ReviewStatus | null;
   completeness: number | null;
   missing: boolean;
@@ -38,7 +37,7 @@ export type GraphOrphan = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel;
+  level: number;
 };
 
 export type GraphDanglingEdge = {
@@ -71,7 +70,7 @@ export type BuildOrderRow = {
   type: ContentType;
   slug: string;
   primaryForm: string;
-  level: JlptLevel;
+  level: number;
   outDegree: number;
   blockedBy: BuildOrderBlocker[];
 };
@@ -149,7 +148,7 @@ export function buildNeighborhood(
 
 export function buildLevelGraph(
   index: CurriculumIndex,
-  level: JlptLevel,
+  level: number,
 ): { nodes: GraphNode[]; edges: GraphEdgeOut[] } {
   const refByKey = new Map<string, { type: ContentType; slug: string }>();
   for (const item of index.items) {
@@ -251,7 +250,7 @@ export function buildGraphSummary(index: CurriculumIndex): GraphSummary {
 
 export function buildBuildOrder(
   index: CurriculumIndex,
-  level?: JlptLevel,
+  level?: number,
 ): BuildOrderRow[] {
   const outDegree = new Map<string, number>();
   for (const edge of index.edges) {

@@ -4,12 +4,12 @@ import { computeCompleteness } from './completeness.js';
 import {
   itemKey,
   JLPT_LEVELS,
+  MAX_LEVEL,
   type ContentItem,
   type ContentType,
   type CurriculumIndex,
   type CurriculumMetadata,
   type DependencyEdge,
-  type JlptLevel,
   type ReviewStatus,
   type SidecarMeta,
   type TargetsFile,
@@ -63,11 +63,11 @@ function discoverShippedFiles(curriculumDir: string): string[] {
   return files.sort();
 }
 
-function parseLevel(value: unknown): JlptLevel {
-  if (typeof value === 'string' && (JLPT_LEVELS as readonly string[]).includes(value)) {
-    return value as JlptLevel;
+function parseLevel(value: unknown, slug: unknown): number {
+  if (typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= MAX_LEVEL) {
+    return value;
   }
-  throw new Error(`Unsupported jlpt_level: ${String(value)}`);
+  throw new Error(`Item ${String(slug)} has no ladder level 1-${MAX_LEVEL}: ${String(value)}`);
 }
 
 function reviewStatusFromMeta(meta: unknown): ReviewStatus {
@@ -88,17 +88,17 @@ function asMeta(meta: unknown): SidecarMeta | undefined {
   return meta as SidecarMeta;
 }
 
-function passageSlug(raw: Record<string, unknown>, level: JlptLevel): string {
+function passageSlug(raw: Record<string, unknown>, level: number): string {
   if (typeof raw.slug === 'string' && raw.slug.length > 0) {
     return raw.slug;
   }
   const sortOrder = typeof raw.sort_order === 'number' ? raw.sort_order : 0;
-  return `passage-${level.toLowerCase()}-${sortOrder}`;
+  return `passage-${level}-${sortOrder}`;
 }
 
 function normalizeItem(
   type: ContentType,
-  level: JlptLevel,
+  level: number,
   raw: Record<string, unknown>,
   assetsDir: string,
 ): ContentItem {
@@ -159,16 +159,14 @@ export function loadCurriculum(root: string): CurriculumIndex {
     if (!mapping) continue;
 
     const file = readJson<{
-      jlpt_level: string;
       items?: Record<string, unknown>[];
       passages?: Record<string, unknown>[];
     }>(filePath);
 
-    const level = parseLevel(file.jlpt_level);
     const rows =
       (mapping.arrayKey === 'items' ? file.items : file.passages) ?? [];
     for (const row of rows) {
-      items.push(normalizeItem(mapping.type, level, row, assetsDir));
+      items.push(normalizeItem(mapping.type, parseLevel(row.level, row.slug), row, assetsDir));
     }
   }
 

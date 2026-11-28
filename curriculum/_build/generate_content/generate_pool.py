@@ -3,9 +3,13 @@
 """Grammar sentence pool content lane (single-session runbook:
 docs/workflows/grammar-pool-single-session-workflow-automation-prompt.md).
 
-    .venv/bin/python -m generate_content.generate_pool select --level n5 --limit 4
-    .venv/bin/python -m generate_content.generate_pool webprompts --level n5 --slugs a,b
-    .venv/bin/python -m generate_content.generate_pool ingest --level n5 --slug a --model <model>
+    .venv/bin/python -m generate_content.generate_pool select --levels 1-10 --limit 4
+    .venv/bin/python -m generate_content.generate_pool select --failing [--levels 1-20] --limit 4
+    .venv/bin/python -m generate_content.generate_pool webprompts --slugs a,b
+    .venv/bin/python -m generate_content.generate_pool ingest --slug a --model <model>
+
+Levels are ladder levels; staging files live in web/pool/level-NN/ (NN = the
+point's level).
 
 Ingest builds the point exactly as generate.py would with the reply in the
 sidecar, runs check_grammar_pool on it, and only then writes the sidecar.
@@ -31,8 +35,9 @@ PROMPT_VERSION = 1
 KINDS = ("valid", "other_grammar")
 
 
-def select_slugs(level, limit, sidecar):
-    return [g["slug"] for g in context.load_grammar(level) if g["slug"] not in sidecar][:limit]
+def select_slugs(levels, limit, sidecar):
+    return [g["slug"] for g in context.load_grammar()
+            if g["level"] in levels and g["slug"] not in sidecar][:limit]
 
 
 def reply_errors(reply):
@@ -94,8 +99,8 @@ def _read(name):
         return f.read()
 
 
-def _current_sentences(level, item):
-    errors = pool_check.check_point(level, item)
+def _current_sentences(item):
+    errors = pool_check.check_point(item)
     lines = []
     for s in item.get("example_sentences", []):
         own = [e for e in errors if e.startswith(s["japanese"] + " — ")]
@@ -105,62 +110,67 @@ def _current_sentences(level, item):
     return "\n".join(lines + [f"- (point) {e}" for e in point]) or "(none)"
 
 
-def prompt_text(level, slug, validator_errors=None):
-    grammar = context.load_grammar(level)
-    item = next(g for g in grammar if g["slug"] == slug)
-    family = [g for g in pool_check.grammar_through(level)
+def prompt_text(slug, validator_errors=None):
+    item = context.grammar_item(slug)
+    level = item["level"]
+    through = context.grammar_through(level)
+    family = [g for g in through
               if g["slug"] != slug and item.get("family") and g.get("family") == item.get("family")]
-    allowed = pool_check.allowed_grammar_for(level, item)
-    earlier = [g for g in pool_check.grammar_through(level)
-               if g["slug"] != slug and g["slug"] in allowed]
+    allowed = pool_check.allowed_grammar_for(item)
+    earlier = [g for g in through if g["slug"] != slug and g["slug"] in allowed]
     feedback = ""
     if validator_errors:
         feedback = ("\n## Fix these errors from the last attempt\n\n"
                     + "\n".join(f"- {e}" for e in validator_errors) + "\n")
     body = (_read("grammar-pool.md")
-            .replace("{{LEVEL}}", level.upper())
+            .replace("{{LEVEL}}", f"level {level}")
             .replace("{{FORM}}", item["primary_form"])
             .replace("{{MEANING}}", item["meaning"])
             .replace("{{STRUCTURE}}", item["structure"])
             .replace("{{ACCEPTED_FORMS}}", "、".join(item["accepted_forms"]))
             .replace("{{FAMILY}}", item.get("family") or "(none)")
             .replace("{{FAMILY_POINTS}}", context.format_grammar_list(family))
-            .replace("{{CURRENT_SENTENCES}}", _current_sentences(level, item))
+            .replace("{{CURRENT_SENTENCES}}", _current_sentences(item))
             .replace("{{ALLOWED_VOCAB}}",
-                     context.format_vocab_list(context.allowed_vocab_for(level, slug)))
+                     context.format_vocab_list(context.allowed_vocab_for(slug)))
             .replace("{{EARLIER_GRAMMAR}}", context.format_grammar_list(earlier))
             .replace("{{VALIDATOR_FEEDBACK}}", feedback))
-    header = (f"<!-- Grammar pool prompt for {level}/{slug}. Write the reply to "
-              f"web/pool/{level}/{slug}.reply.md, then run:\n"
+    header = (f"<!-- Grammar pool prompt for level {level}/{slug}. Write the reply to "
+              f"web/pool/{context.level_dir(level)}/{slug}.reply.md, then run:\n"
               f"  .venv/bin/python -m generate_content.generate_pool ingest "
-              f"--level {level} --slug {slug} --model <model>\n-->\n\n")
+              f"--slug {slug} --model <model>\n-->\n\n")
     return (header + "# Teaching voice — follow this in everything you write below\n\n"
             + _read("persona.md").strip() + "\n\n---\n\n" + body.strip()
             + "\n\nReply with exactly one fenced ```json code block and nothing else.\n")
 
 
-def _paths(level, slug):
-    base = os.path.join(WEB_DIR, level)
+def _paths(slug):
+    base = os.path.join(WEB_DIR, context.level_dir(context.grammar_item(slug)["level"]))
     return os.path.join(base, f"{slug}.prompt.md"), os.path.join(base, f"{slug}.reply.md")
 
 
 def cmd_select(args):
-    slugs = select_slugs(args.level, args.limit, generate.load_pool_sidecar())
+    if args.failing:
+        slugs = pool_check.failing_slugs(args.levels)[:args.limit]
+    elif args.levels:
+        slugs = select_slugs(args.levels, args.limit, generate.load_pool_sidecar())
+    else:
+        raise SystemExit("select needs --level, --levels or --failing")
     print(f"{len(slugs)} point(s) selected:")
     print(",".join(slugs))
 
 
 def cmd_webprompts(args):
     for slug in args.slugs.split(","):
-        prompt_path, _ = _paths(args.level, slug)
+        prompt_path, _ = _paths(slug)
         os.makedirs(os.path.dirname(prompt_path), exist_ok=True)
         with open(prompt_path, "w", encoding="utf-8") as f:
-            f.write(prompt_text(args.level, slug))
+            f.write(prompt_text(slug))
         print(f"wrote {prompt_path}")
 
 
 def cmd_ingest(args):
-    prompt_path, reply_path = _paths(args.level, args.slug)
+    prompt_path, reply_path = _paths(args.slug)
     if not os.path.exists(reply_path):
         raise SystemExit(f"no reply at {reply_path}")
     with open(reply_path, encoding="utf-8") as f:
@@ -170,13 +180,13 @@ def cmd_ingest(args):
         pool_entry = {"accepted_meanings": reply["accepted_meanings"],
                       "sentences": reply["sentences"]}
         try:
-            item = generate.build_grammar_point(args.level, args.slug, pool_entry)
-            errors = pool_check.check_point(args.level, item)
+            item = generate.build_grammar_point(args.slug, pool_entry)
+            errors = pool_check.check_point(item)
         except (ValueError, KeyError) as error:
             errors = [str(error)]
     if errors:
         with open(prompt_path, "w", encoding="utf-8") as f:
-            f.write(prompt_text(args.level, args.slug, errors))
+            f.write(prompt_text(args.slug, errors))
         print(f"{args.slug}: {len(errors)} error(s) — NOT written:")
         for e in errors:
             print(f"  - {e}")
@@ -191,15 +201,17 @@ def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("select")
-    p.add_argument("--level", required=True, choices=context.LEVEL_ORDER)
+    pick = p.add_mutually_exclusive_group()
+    pick.add_argument("--level", dest="levels", type=context.parse_level)
+    pick.add_argument("--levels", dest="levels", type=context.parse_levels)
+    p.add_argument("--failing", action="store_true",
+                   help="the points that fail check_grammar_pool (default: every level)")
     p.add_argument("--limit", type=int, default=4)
     p.set_defaults(func=cmd_select)
     p = sub.add_parser("webprompts")
-    p.add_argument("--level", required=True, choices=context.LEVEL_ORDER)
     p.add_argument("--slugs", required=True)
     p.set_defaults(func=cmd_webprompts)
     p = sub.add_parser("ingest")
-    p.add_argument("--level", required=True, choices=context.LEVEL_ORDER)
     p.add_argument("--slug", required=True)
     p.add_argument("--model", required=True)
     p.set_defaults(func=cmd_ingest)

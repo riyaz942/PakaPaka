@@ -37,17 +37,17 @@ function readItemIds(dbPath: string): Record<string, number> {
   }
 }
 
-const radical = (slug: string, jlpt_level: string) => ({
+const radical = (slug: string, level: number) => ({
   slug,
   primary_form: slug,
   meaning: slug,
-  jlpt_level,
+  level,
 });
 
 describe('item id registry', () => {
   it('keeps recorded ids whatever the level and sort order', () => {
     const { idByKey } = assignItemIds(
-      [radical('a', 'N4'), radical('b', 'N5')],
+      [radical('a', 17), radical('b', 1)],
       [],
       [],
       [],
@@ -57,16 +57,28 @@ describe('item id registry', () => {
     expect(idByKey.get('radical:b')).toBe(3);
   });
 
+  it('gives new keys ids in numeric level order, not string order', () => {
+    const { section: result } = assignItemIds(
+      [radical('c', 10), radical('a', 2), radical('b', 2)],
+      [],
+      [],
+      [],
+      section({}),
+      true,
+    );
+    expect(result.ids).toEqual({ 'radical:a': 100, 'radical:b': 101, 'radical:c': 102 });
+  });
+
   it('fails on a key with no id unless updateRegistry is set', () => {
     const registry = section({ 'radical:b': 3 });
     expect(() =>
-      assignItemIds([radical('a', 'N5'), radical('b', 'N5')], [], [], [], registry),
+      assignItemIds([radical('a', 1), radical('b', 1)], [], [], [], registry),
     ).toThrow(/items: 1 key\(s\) have no id: radical:a\. .*--update-registry/);
   });
 
   it('gives a new key next_id, and never a retired id', () => {
     const { idByKey, section: updated } = assignItemIds(
-      [radical('a', 'N5'), radical('b', 'N5')],
+      [radical('a', 1), radical('b', 1)],
       [],
       [],
       [],
@@ -148,19 +160,18 @@ describe('compile-curriculum', () => {
 
   it('keeps every id when an item moves to a different level', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
-    const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
-    fs.renameSync(kanjiPath, path.join(curriculumDir, 'kanji', 'n4.json'));
-    const kanjiFile = JSON.parse(fs.readFileSync(path.join(curriculumDir, 'kanji', 'n4.json'), 'utf8'));
-    kanjiFile.jlpt_level = 'N4';
-    fs.writeFileSync(path.join(curriculumDir, 'kanji', 'n4.json'), JSON.stringify(kanjiFile));
+    const kanjiPath = path.join(curriculumDir, 'kanji', 'items.json');
+    const kanjiFile = JSON.parse(fs.readFileSync(kanjiPath, 'utf8'));
+    kanjiFile.items[0].level = 17;
+    fs.writeFileSync(kanjiPath, JSON.stringify(kanjiFile));
     try {
       compileCurriculum(dbPath, curriculumDir);
       expect(readItemIds(dbPath)['kanji:one']).toBe(2);
       const db = new Database(dbPath, { readonly: true });
       try {
-        expect(
-          db.prepare("SELECT jlpt_level FROM items WHERE slug = 'one'").get(),
-        ).toEqual({ jlpt_level: 'N4' });
+        expect(db.prepare("SELECT level FROM items WHERE slug = 'one'").get()).toEqual({
+          level: 17,
+        });
       } finally {
         db.close();
       }
@@ -169,12 +180,61 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('writes items.level and reading_passages.level as integers, with no jlpt_level column', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    compileCurriculum(dbPath, curriculumDir);
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      expect(
+        db.prepare('SELECT DISTINCT typeof(level) AS type FROM items').all(),
+      ).toEqual([{ type: 'integer' }]);
+      expect(db.prepare('SELECT level FROM reading_passages').all()).toEqual([{ level: 1 }]);
+      const columns = (table: string) =>
+        (db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[]).map((c) => c.name);
+      expect(columns('items')).not.toContain('jlpt_level');
+      expect(columns('reading_passages')).not.toContain('jlpt_level');
+      expect(
+        db.prepare("SELECT name FROM sqlite_master WHERE name = 'idx_items_level'").get(),
+      ).toBeDefined();
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('writes the ladder jlpt_equivalence rows to level_jlpt_equivalence', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    compileCurriculum(dbPath, curriculumDir);
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      expect(
+        db.prepare('SELECT jlpt, first_level, last_level FROM level_jlpt_equivalence ORDER BY first_level').all(),
+      ).toEqual([
+        { jlpt: 'N5', first_level: 1, last_level: 16 },
+        { jlpt: 'N4', first_level: 17, last_level: 22 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('fails when _build/ladder.json is missing', () => {
+    const { tempDir, curriculumDir, dbPath } = copyFixture();
+    fs.rmSync(path.join(curriculumDir, '_build', 'ladder.json'));
+    try {
+      expect(() => compileCurriculum(dbPath, curriculumDir)).toThrow(/ladder\.json/);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('gives only the new item a new id, and only with updateRegistry', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
-    const radicalsPath = path.join(curriculumDir, 'radicals', 'n5.json');
+    const radicalsPath = path.join(curriculumDir, 'radicals', 'items.json');
     const radicalsFile = JSON.parse(fs.readFileSync(radicalsPath, 'utf8'));
     // "aaa" sorts before every fixture item, so a positional id would move all of them.
-    radicalsFile.items.unshift({ slug: 'aaa', primary_form: '丶', meaning: 'dot' });
+    radicalsFile.items.unshift({ slug: 'aaa', primary_form: '丶', meaning: 'dot', level: 1 });
     fs.writeFileSync(radicalsPath, JSON.stringify(radicalsFile));
     const registryPath = path.join(curriculumDir, 'id-registry.json');
     const registryBefore = fs.readFileSync(registryPath, 'utf8');
@@ -273,7 +333,7 @@ describe('compile-curriculum', () => {
 
   it('gives a new passage question an id without moving the others', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
-    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsPath = path.join(curriculumDir, 'readings', 'items.json');
     const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
     readingsFile.passages[0].questions.push({ prompt: 'Why?', accepted_answers: ['because'] });
     fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
@@ -518,7 +578,7 @@ describe('compile-curriculum', () => {
       };
       expect(readClasses().every((row) => row.conjugation_class === null)).toBe(true);
 
-      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'items.json');
       const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
       vocabFile.items[0].conjugation_class = 'godan';
       fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
@@ -535,11 +595,12 @@ describe('compile-curriculum', () => {
   it('links transitivity partners both ways', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
     try {
-      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'items.json');
       const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
       vocabFile.items[0].transitivity_partner = 'aku';
       vocabFile.items.push({
         slug: 'aku',
+        level: 1,
         primary_form: '開く',
         meaning: 'to open',
         accepted_answers: [
@@ -570,7 +631,7 @@ describe('compile-curriculum', () => {
   it('throws on an unresolved transitivity partner', () => {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
     try {
-      const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+      const vocabPath = path.join(curriculumDir, 'vocabulary', 'items.json');
       const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
       vocabFile.items[0].transitivity_partner = 'no-such-verb';
       fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
@@ -601,7 +662,7 @@ describe('compile-curriculum', () => {
       expect(readFlags().length).toBeGreaterThan(0);
       expect(readFlags().every((row) => row.read_once === 0)).toBe(true);
 
-      const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+      const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
       const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
       grammarFile.items[0].read_once = true;
       fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
@@ -620,7 +681,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
+    const kanjiPath = path.join(curriculumDir, 'kanji', 'items.json');
     const kanjiFile = JSON.parse(fs.readFileSync(kanjiPath, 'utf8'));
     kanjiFile.items[0].visually_similar_slugs = ['kanji:no-such-item'];
     fs.writeFileSync(kanjiPath, JSON.stringify(kanjiFile));
@@ -639,7 +700,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
     const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
     grammarFile.items[0].related_grammar_slugs = ['no-such-grammar'];
     fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
@@ -658,7 +719,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
     const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
     grammarFile.items[0]._meta = {
       generator_model: 'claude-fable-5',
@@ -686,7 +747,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
     const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
     grammarFile.items[0]._meta = { review_status: 'draft' };
     fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
@@ -707,7 +768,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
     const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
     grammarFile.items[0]._meta = { review_status: 'reviewed', reviewed_by: 'riyaz' };
     fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
@@ -731,7 +792,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsPath = path.join(curriculumDir, 'readings', 'items.json');
     const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
     readingsFile.passages[0].grammar_slugs = ['no-such-grammar'];
     fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
@@ -750,7 +811,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsPath = path.join(curriculumDir, 'readings', 'items.json');
     const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
     readingsFile.passages[0].word_spans = wordSpans;
     fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
@@ -797,7 +858,7 @@ describe('compile-curriculum', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
-    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsPath = path.join(curriculumDir, 'readings', 'items.json');
     const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
     readingsFile.passages[0].word_spans = [
       { vocabulary_slug: 'ichi-v', start: 0, end: 3, surface_form: '一です', inflection: 'masu' },
@@ -843,7 +904,7 @@ describe('compile-curriculum', () => {
     const curriculumDir = path.join(tempDir, 'curriculum');
     fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
 
-    const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+    const vocabPath = path.join(curriculumDir, 'vocabulary', 'items.json');
     const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
     vocabFile.items[0].example_sentences[0].word_spans = wordSpans;
     fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
@@ -911,7 +972,7 @@ describe('compile-curriculum', () => {
     mutate?: (grammarFile: { items: Record<string, unknown>[] }) => void,
   ): { dbPath: string; tempDir: string; run: () => void } {
     const { tempDir, curriculumDir, dbPath } = copyFixture();
-    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarPath = path.join(curriculumDir, 'grammar', 'items.json');
     const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
     mutate?.(grammarFile);
     fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));

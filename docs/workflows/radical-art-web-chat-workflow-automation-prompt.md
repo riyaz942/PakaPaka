@@ -20,9 +20,10 @@ only then do you re-roll (Steps 9 and 10).
 This run **auto-selects** the next radicals that have no art yet (Step 1) — you do NOT
 paste a slug list.
 
-Level:
+Level (one ladder level, 1–60). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n5>
+<level = 6>
 
 Images per Gemini session (how many radicals one fresh chat draws; used as
 IMAGES_PER_SESSION in Step 1):
@@ -83,8 +84,9 @@ Do NOT hand-pick radicals. From the repository root, substituting <level>,
 
 python3 - <<'PY'
 import json, os
-LEVEL, IMAGES_PER_SESSION, SESSION_COUNT = '<level>', <images-per-session>, <session-count>
-items = json.load(open(f'curriculum/radicals/{LEVEL}.json'))['items']
+LEVEL, IMAGES_PER_SESSION, SESSION_COUNT = <level>, <images-per-session>, <session-count>
+items = [i for i in json.load(open('curriculum/radicals/items.json'))['items']
+         if i['level'] == LEVEL]
 art_dir = 'mobile/assets/radicals'
 have = {f[:-5] for f in os.listdir(art_dir) if f.endswith('.webp')}
 todo = [i for i in items
@@ -94,7 +96,7 @@ total = IMAGES_PER_SESSION * SESSION_COUNT
 selected = todo[:total]
 sessions = [selected[i:i + IMAGES_PER_SESSION]
             for i in range(0, len(selected), IMAGES_PER_SESSION)]
-print(f'{len(todo)} {LEVEL} radicals still need art; taking {len(selected)} '
+print(f'{len(todo)} level {LEVEL} radicals still need art; taking {len(selected)} '
       f'in {len(sessions)} session(s) of <= {IMAGES_PER_SESSION}\n')
 for n, s in enumerate(sessions, 1):
     print(f'=== SESSION {n}: {",".join(i["slug"] for i in s)}')
@@ -165,7 +167,7 @@ Hard rules:
 - One subject; at most two supporting props, described as drawn smaller.
 
 Save all of this run's scene prompts to
-`curriculum/_build/generate_content/web/radical-art/<level>-scenes.md`, one `## <slug>`
+`curriculum/_build/generate_content/web/radical-art/<level-dir>-scenes.md`, one `## <slug>`
 heading per radical, before opening the browser. A re-roll must not mean rewriting the
 prompt. (That directory is gitignored.)
 
@@ -240,7 +242,7 @@ Step 6: Send Each Scene and Download Its Image
 
 For each radical in this session, **in order, one at a time**:
 
-1. Copy that radical's scene prompt from `<level>-scenes.md` to the clipboard and paste
+1. Copy that radical's scene prompt from `<level-dir>-scenes.md` to the clipboard and paste
    it with Cmd + V, same rules as Step 5. Send it.
 
    Send the scene text alone. Do not attach any image, and do not add a "match this
@@ -337,7 +339,7 @@ Step 10: Re-roll Round — only for the radicals I name
 
 Run this only when I have named specific slugs. Never start a re-roll round on your own.
 
-1. Revise those radicals' scene prompts in `<level>-scenes.md` using the reason I gave.
+1. Revise those radicals' scene prompts in `<level-dir>-scenes.md` using the reason I gave.
    Keep the Step 2 format — heading line plus one short paragraph — and keep it short.
    Fixing a bad image by adding clauses makes the next one worse; change the description,
    don't pile constraints onto it.

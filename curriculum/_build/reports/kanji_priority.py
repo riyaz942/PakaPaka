@@ -34,10 +34,9 @@ REPORTS_DIR = os.path.dirname(os.path.abspath(__file__))
 BUILD_DIR = os.path.dirname(REPORTS_DIR)
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
-LEVELS = ["n5", "n4", "n3", "n2", "n1"]
-
-#: Levels that ship full content, and so the only ones a mnemonic is owed for.
-AUTHORED_LEVELS = ["n5", "n4"]
+#: Ladder levels that ship full content, and so the only ones a mnemonic is
+#: owed for.
+AUTHORED_LEVELS = range(1, 21)
 
 
 def load(path):
@@ -45,11 +44,9 @@ def load(path):
         return json.load(f)
 
 
-def load_items(kind, level):
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    return load(path)["items"]
+def load_items(kind):
+    """Every item of `curriculum/<kind>/items.json`, in ladder order."""
+    return load(os.path.join(CURRICULUM_DIR, kind, "items.json"))["items"]
 
 
 def has_prose(item):
@@ -59,18 +56,17 @@ def has_prose(item):
 
 
 def collect(kind):
-    """{slug: {...}} across every band, in band order."""
+    """{slug: {...}} across every level, in ladder order."""
     out = {}
-    for level in LEVELS:
-        for item in load_items(kind, level):
-            out[item["slug"]] = {
-                "slug": item["slug"],
-                "form": item["primary_form"],
-                "meaning": item["meaning"],
-                "level": level,
-                "sort_order": item["sort_order"],
-                "authored": has_prose(item),
-            }
+    for item in load_items(kind):
+        out[item["slug"]] = {
+            "slug": item["slug"],
+            "form": item["primary_form"],
+            "meaning": item["meaning"],
+            "level": item["level"],
+            "sort_order": item["sort_order"],
+            "authored": has_prose(item),
+        }
     return out
 
 
@@ -89,17 +85,17 @@ def edges():
 
 def load_vocabulary():
     vocab = {}
-    for level in AUTHORED_LEVELS:
-        for item in load_items("vocabulary", level):
-            vocab[item["slug"]] = {"form": item["primary_form"], "level": level}
+    for item in load_items("vocabulary"):
+        if item["level"] in AUTHORED_LEVELS:
+            vocab[item["slug"]] = {"form": item["primary_form"], "level": item["level"]}
     return vocab
 
 
 def in_band(items):
-    """Band order across the levels that ship content."""
+    """Ladder order across the levels that ship content."""
     return sorted(
         (i for i in items.values() if i["level"] in AUTHORED_LEVELS),
-        key=lambda i: (AUTHORED_LEVELS.index(i["level"]), i["sort_order"]),
+        key=lambda i: (i["level"], i["sort_order"]),
     )
 
 
@@ -133,12 +129,12 @@ def render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on, requ
                "Do not edit by hand.\n")
     banded_kanji = in_band(kanji)
     banded_radicals = in_band(radicals)
-    out.append(f"{len(banded_radicals)} radicals and {len(banded_kanji)} kanji sit in the "
-               f"N5+N4 bands. **{len(radical_queue)} radicals and {len(kanji_queue)} kanji "
-               f"have no mnemonic.** Order is band order, which is the order a learner "
+    out.append(f"{len(banded_radicals)} radicals and {len(banded_kanji)} kanji sit in "
+               f"levels 1-20. **{len(radical_queue)} radicals and {len(kanji_queue)} kanji "
+               f"have no mnemonic.** Order is ladder order, which is the order a learner "
                f"meets them.\n")
-    out.append("Everything at N3+ is out of the queue by design — a band a learner does "
-               "not study owes no prose.\n")
+    out.append("Everything above level 20 is out of the queue by design — a level a "
+               "learner does not study yet owes no prose.\n")
 
     out.append("## Radicals\n")
     if radical_queue:
@@ -151,13 +147,13 @@ def render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on, requ
                     waiting[rad] += 1
         for i, row in enumerate(radical_queue, start=1):
             out.append(f"| {i} | {row['form']} `{row['slug']}` | {row['meaning']} "
-                       f"| {row['level'].upper()} | {waiting[row['slug']]} |")
+                       f"| {row['level']} | {waiting[row['slug']]} |")
     else:
-        out.append("None — every radical in the N5+N4 bands has a mnemonic.\n")
+        out.append("None — every radical in levels 1-20 has a mnemonic.\n")
     out.append("")
 
     out.append("## Coverage curve\n")
-    out.append(f"Words every kanji of which has prose, out of {len(vocab)} N5+N4 "
+    out.append(f"Words every kanji of which has prose, out of {len(vocab)} level 1-20 "
                f"vocabulary items, as the kanji queue is worked through.\n")
     out.append("| Kanji authored | Words fully told |")
     out.append("| ---: | ---: |")
@@ -167,7 +163,7 @@ def render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on, requ
 
     out.append("## Kanji\n")
     if kanji_queue:
-        out.append("| # | Kanji | Meaning | Level | Band pos. | Words | Components missing |")
+        out.append("| # | Kanji | Meaning | Level | Sort order | Words | Components missing |")
         out.append("| ---: | --- | --- | --- | ---: | ---: | --- |")
         for i, row in enumerate(kanji_queue, start=1):
             missing = [
@@ -177,10 +173,10 @@ def render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on, requ
             ]
             words = sum(1 for w in requires.get(row["slug"], []) if w in vocab)
             out.append(f"| {i} | {row['form']} `{row['slug']}` | {row['meaning']} "
-                       f"| {row['level'].upper()} | {row['sort_order']} | {words} "
+                       f"| {row['level']} | {row['sort_order']} | {words} "
                        f"| {' '.join(missing) or '—'} |")
     else:
-        out.append("None — every kanji in the N5+N4 bands has a mnemonic.\n")
+        out.append("None — every kanji in levels 1-20 has a mnemonic.\n")
     out.append("")
     return "\n".join(out)
 
@@ -212,8 +208,8 @@ def main():
         }, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
-    print(f"{len(radical_queue)} radicals and {len(kanji_queue)} kanji in the N5+N4 "
-          f"bands have no mnemonic.")
+    print(f"{len(radical_queue)} radicals and {len(kanji_queue)} kanji in levels 1-20 "
+          f"have no mnemonic.")
     print("Wrote kanji-priority.md / .json")
     return 0
 

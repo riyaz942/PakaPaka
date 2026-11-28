@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "slug": "ichi-v",
+      "primary_form": "一",
+      "meaning": "one",
+      "meaning_mnemonic": "The kanji 一 standing alone is simply the number one.",
+      "reading_mnemonic": "You already know いち from 一.",
+      "description": "The plain counting word for one.",
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "one",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いち"
+        }
+      ],
+      "example_sentences": [
+        {
+          "japanese": "一があります。",
+          "english": "There is a one.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ichi-v"
+          ],
+          "furigana": "一[いち]があります。"
+        }
+      ],
+      "level": 1
+    }
+  ]
+}

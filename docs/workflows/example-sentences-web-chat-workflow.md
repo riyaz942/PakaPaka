@@ -2,7 +2,7 @@
 
 This is the **no-API alternative** to the Message Batches driver for producing
 the Phase 2c example sentences (`docs/content/content-pipeline-plan.md`, 2c).
-Example generation for N5/N4 can be run either through the API for a few dollars
+Example generation for a ladder level (a number from 1 to 60) can be run either through the API for a few dollars
 or, instead, by pasting each item's prompt into a Claude or Gemini web chat
 (covered by a flat subscription) and feeding the reply back through the **same
 context builder and the same mechanical gate** the API path uses. Only the "call
@@ -34,13 +34,18 @@ existing curriculum ids — list them first (see "List remaining slugs" below),
 then pass them to `webprompts`:
 
 ```bash
-.venv/bin/python -m generate_content.generate_examples webprompts --type vocab --level n5 --slugs <slug,slug,...>
-.venv/bin/python -m generate_content.generate_examples ingest     --type vocab --level n5 --slug <slug> --model <claude-web|gemini-web>
+.venv/bin/python -m generate_content.generate_examples webprompts --type vocab [--level <N> | --levels 1-20 | --slugs <slug,slug,...>]
+.venv/bin/python -m generate_content.generate_examples ingest     --type vocab --slug <slug> --model <claude-web|gemini-web>
 ```
+
+`webprompts` needs one of `--level N`, `--levels 1-20` or `--slugs`. A level run picks only
+the words of that level that have **no example sentences yet**. Use `--slugs` to rewrite
+words that have sentences already. `ingest` needs only `--slug`: the level comes from the word.
 
 `--slugs` is **one comma-separated string with no spaces after the commas**
 (`watashi,taberu,mizu`). Working files live under
-`curriculum/_build/generate_content/web/examples/<level>/<type>/` and are
+`curriculum/_build/generate_content/web/examples/level-NN/<type>/` (NN = the word's
+level, two digits) and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
 **not** a per-item file; it is the keyed-by-slug **sidecar** that `ingest`
 merges each passing item into, one file for every level:
@@ -51,8 +56,8 @@ time as each item's `example_sentences`, **adding furigana with the tokenizer**
 (bracket notation via `furigana.py`, never the LLM), and each entry carries
 `_meta.review_status: draft`.
 
-Slug source (curriculum, sort order): `curriculum/vocabulary/n5.json` (e.g.
-`watashi`, `taberu`).
+Slug source (curriculum, ladder order): `curriculum/vocabulary/items.json` (e.g.
+`watashi`, `taberu`). Each word carries its ladder `level`.
 
 ---
 
@@ -63,22 +68,22 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
 - **The allowed vocabulary and the target the sentence must exemplify** are
   computed from the curriculum and baked into each prompt — you never pick these
   yourself. A **vocab** prompt lists the allowed vocab in two parts: "Already
-  known" (the item's own `sort_order` prefix + all lower levels + core seeds),
-  preferred, and "Coming up next" (the next 50 words of the level), allowed
-  when a sentence needs it. Grammar is split the same way. The gate accepts
-  both parts and rejects every other word, including words further ahead in
-  the same level. The prompt requires every
+  known" (every word up to the item in ladder order: all lower levels plus its own level
+  up to itself), preferred, and "Coming up next" (the next 50 words in ladder
+  order), allowed when a sentence needs it. Grammar is split the same way. The
+  gate accepts both parts and rejects every other word, including words further
+  ahead. The prompt requires every
   sentence to use the word (natural conjugations count: 食べました exemplifies
   食べる) (`example_context.py`).
 - **The mechanical gate** (`validate_examples.py`) runs on ingest exactly as it
   does in the API path. It rejects a set that: doesn't actually use the target;
-  references a `vocabulary_slugs` outside the allowed set; contains an
-  out-of-level content word (tokenizer level-check); has 2–4 sentences violated;
+  references a `vocabulary_slugs` outside the allowed set; contains a
+  content word above the allowed window (tokenizer level-check); has 2–4 sentences violated;
   breaks the length/plain-prose bounds; or — critically — **fails the furigana
   round-trip**, meaning a sentence the shipping tokenizer can't fully annotate is
   a *rejection*, not silent no-furigana. A reply that passes the gate is as
   constraint-clean as an API-generated one.
-- **Tatoeba is style anchors only.** In-level Tatoeba sentences may appear in the
+- **Tatoeba is style anchors only.** Tatoeba sentences inside the allowed window may appear in the
   prompt as real-usage references, but no Tatoeba text is ever shipped or adapted
   (ground rule 2). They are fetched optionally via
   `import/fetch_sources.sh --tatoeba`; if absent, the prompt simply has fewer
@@ -102,22 +107,24 @@ a slug; it does not invent the slug. From `curriculum/_build`, list the items of
 this type that have **no** sidecar entry yet:
 
 ```bash
-# list the remaining (not-yet-generated) N5 vocab example slugs
+# list the remaining (not-yet-generated) vocab example slugs of levels 1-20
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-level, kind = 'n5', 'vocab'
+levels, kind = range(1, 21), 'vocab'   # one level: range(6, 7)
 path = '../vocabulary/examples.json'
-done = set(json.load(open(path))) if os.path.exists(path) else set()
-todo = [s for s in ec.all_slugs(level, kind) if s not in done]
-print(f'{len(todo)} {level} {kind} items left:')
+sidecar = json.load(open(path)) if os.path.exists(path) else {}
+todo = [s for level in levels for s in ec.all_slugs(level, kind)
+        if not sidecar.get(s, {}).get('example_sentences')]
+print(f'{len(todo)} levels {levels.start}-{levels.stop - 1} {kind} items left:')
 print(','.join(todo))
 PY
 ```
 
 Take one slug from that list for the one-item loop below, or keep the whole comma
-list for a batch. Omitting `--slugs` writes a prompt for **every** item of the
-type — useful for a full-level dump, not for a sitting of ~10.
+list for a batch. `--level N` writes a prompt for every word of that level that has no
+sentences yet — a full-level dump, not a sitting of ~10. `webprompts` refuses to run
+with none of `--level`, `--levels` and `--slugs`.
 
 ---
 
@@ -128,10 +135,10 @@ type — useful for a full-level dump, not for a sitting of ~10.
 `taberu` is a worked example. Substitute a slug from the list above.
 
 ```bash
-.venv/bin/python -m generate_content.generate_examples webprompts --type vocab --level n5 --slugs taberu
+.venv/bin/python -m generate_content.generate_examples webprompts --type vocab --slugs taberu
 ```
 
-Writes `generate_content/web/examples/n5/vocab/taberu.prompt.md`. Open it.
+Writes `generate_content/web/examples/level-NN/vocab/taberu.prompt.md` (NN = the level of `taberu`). Open it.
 Everything below the `<!-- ... -->` header is one self-contained block: the
 teaching-voice sheet, the word being exemplified, the allowed
 vocabulary list, the Tatoeba style anchors, the writing rules, and a JSON output
@@ -157,7 +164,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into the reply path the prompt header names:
 
 ```
-generate_content/web/examples/n5/vocab/taberu.reply.md
+generate_content/web/examples/level-NN/vocab/taberu.reply.md
 ```
 
 The filename must match the slug and the `--type` subfolder.
@@ -174,7 +181,7 @@ three keys:
 ### 4. Ingest
 
 ```bash
-.venv/bin/python -m generate_content.generate_examples ingest --type vocab --level n5 --slug taberu --model claude-web
+.venv/bin/python -m generate_content.generate_examples ingest --type vocab --slug taberu --model claude-web
 ```
 
 **On pass:** it merges the item into `curriculum/vocabulary/examples.json`
@@ -185,15 +192,15 @@ the next item.
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/examples/n5/vocab/taberu.prompt.md`.
+1. Open the rewritten `web/examples/level-NN/vocab/taberu.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
 3. Save the new reply over `taberu.reply.md`.
 4. Run `ingest` again.
 
 The common failures are a sentence that never actually uses the target, a
-`vocabulary_slugs` reference outside the allowed list, an out-of-level content
-word, or a furigana round-trip failure; the appended feedback names the exact
+`vocabulary_slugs` reference outside the allowed list, a content
+word above the allowed window, or a furigana round-trip failure; the appended feedback names the exact
 offender, and the model usually fixes it on the second try. If an item fights the
 gate for 3+ rolls, skip it and come back — don't burn a session on one stubborn
 item.
@@ -202,16 +209,16 @@ item.
 
 ## Doing a batch efficiently
 
-`webprompts` accepts a comma-separated `--slugs` list (and defaults to **every**
-item of the type when you omit `--slugs`), so generate a screenful at once, then
+`webprompts` accepts a comma-separated `--slugs` list (or `--level N` for a whole
+level), so generate a screenful at once, then
 work them one chat at a time.
 
 Run the listing snippet above. Paste that comma list into
 `webprompts --type vocab --slugs ...`. Work in
-curriculum order (the list is already sorted by `sort_order`). Do **N5 fully before N4**
-(`--level n4`).
+ladder order (the list is already sorted by level, then `sort_order`). Do a lower level
+fully before the next one.
 
-**Pilot first.** Before committing to a full level, run **~10 items** and
+**Pilot first.** Before committing to a full level (or to levels 1-20), run **~10 items** and
 read the assembled output. Examples are cheaper to review than grammar lessons
 (bulk-skim, 10–20 per screen), but a bad prompt tune shows up fastest on a small
 batch. Only widen to the whole level once the pilot reads well.
@@ -230,7 +237,7 @@ doc):
 
 ```bash
 # 1. inline the sidecar into the vocab JSON (adds tokenizer furigana)
-cd curriculum/_build && .venv/bin/python generate.py --level n5 && cd -
+cd curriculum/_build && .venv/bin/python generate.py && cd -
 # 2. validate + compile
 npm run validate-schema
 npm run compile-curriculum
@@ -244,7 +251,7 @@ unreviewed prose can't silently ship.
 > The `examples.json` sidecar is deliberately **excluded** from
 > `validate-schema`'s file walk (it is a keyed-by-slug build input, not a
 > standalone curriculum file); its contents are validated once `generate.py`
-> inlines them into `vocabulary/<level>.json`. The schema rejects
+> inlines them into `vocabulary/items.json`. The schema rejects
 > `example_sentences` on a kanji item.
 
 ---
@@ -254,10 +261,10 @@ unreviewed prose can't silently ship.
 | Step | Command / action |
 |---|---|
 | List remaining slugs | the Python snippet under "List remaining slugs" |
-| Make prompts | `... webprompts --type vocab --level n5 --slugs a,b,c` |
+| Make prompts | `... webprompts --type vocab --level 6` or `... --slugs a,b,c` |
 | Paste | one item per fresh Claude/Gemini chat (skip the header comment) |
-| Save reply | `web/examples/<level>/<type>/<slug>.reply.md` |
-| Ingest + gate | `... ingest --type vocab --level n5 --slug a --model claude-web` |
+| Save reply | `web/examples/level-NN/<type>/<slug>.reply.md` |
+| Ingest + gate | `... ingest --type vocab --slug a --model claude-web` |
 | On gate failure | reopen the rewritten `<slug>.prompt.md`, re-roll, re-save, re-ingest |
 | After a batch | `generate.py` → `npm run validate-schema` → `npm run compile-curriculum` → human review |
 

@@ -13,10 +13,10 @@ This run **auto-selects the next batch of not-yet-written slugs** (Step 1) — y
 do NOT paste a slug list, and you never invent a slug. Slugs are existing
 grammar-point ids from the curriculum catalog.
 
-Level (one JLPT level per run; change to `n3`, … when ready — N5 is already
-fully written):
+Level (one ladder level, 1–60, per run). Its folder below is `<level-dir>`:
+`level-` and two digits, so level 6 is `level-06`:
 
-<level = n4>
+<level = 6>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -80,16 +80,16 @@ already written). Substitute this run's <level> and <batch-size>, then run:
 .venv/bin/python - <<'PY'
 import os, sys; sys.path.insert(0, '.')
 from generate_content import context
-LEVEL, BATCH_LIMIT = '<level>', <batch-size>
+LEVEL, BATCH_LIMIT = <level>, <batch-size>
 done = {f[:-3] for f in os.listdir('../grammar/lessons') if f.endswith('.md')}
-todo = [g['slug'] for g in context.load_grammar(LEVEL) if g['slug'] not in done]
-print(f'{len(todo)} {LEVEL} point(s) left; selecting {min(len(todo), BATCH_LIMIT)} (BATCH_LIMIT={BATCH_LIMIT}):')
+todo = [g['slug'] for g in context.load_grammar() if g['level'] == LEVEL and g['slug'] not in done]
+print(f'{len(todo)} level {LEVEL} point(s) left; selecting {min(len(todo), BATCH_LIMIT)} (BATCH_LIMIT={BATCH_LIMIT}):')
 print(','.join(todo[:BATCH_LIMIT]))
 PY
 
 "Done" here means an assembled lesson file exists at
 `curriculum/grammar/lessons/<slug>.md`. That is the committed artifact;
-draft records under `generate_content/drafts/<level>/` are working state and are
+draft records under `generate_content/drafts/<level-dir>/` are working state and are
 deliberately not consulted. Consequence: a slug that burned its repair budget in
 an earlier run **will** be selected again and gets a fresh generation. That is
 intended — a fresh write usually clears what repair could not.
@@ -101,11 +101,11 @@ iterates over exactly these slugs, and no slug outside this list is touched.
 1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
 single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level <level> --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --slugs <selected,slugs,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically
 from the curriculum.
@@ -118,7 +118,7 @@ For the current slug, launch ONE general-purpose subagent (using
 <subagent-model> at <subagent-effort>) in the foreground — ingestion must wait for
 it to finish. Give the subagent the prompt file path:
 
-curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
@@ -132,7 +132,7 @@ Give the subagent these instructions:
 
   Write the lesson exactly as the prompt body asks, then write your answer to:
 
-  curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
+  curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.reply.md
 
   Requirements:
 
@@ -187,7 +187,7 @@ Step 3: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --level <level> --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --slug <slug> --model <subagent-model>
 
 (The `--model` value is recorded in the assembled lesson's `generator_model`
 frontmatter; pass the same <subagent-model> you generated with so provenance is
@@ -201,7 +201,7 @@ curriculum/grammar/lessons/<slug>.md
 
 with `review_status: draft`, and its cloze candidates are stashed at
 
-curriculum/_build/generate_content/drafts/<level>/<slug>-cloze-candidates.json
+curriculum/_build/generate_content/drafts/<level-dir>/<slug>-cloze-candidates.json
 
 `ingest` also deletes the staged `<slug>.prompt.md` / `<slug>.reply.md` — no
 manual cleanup needed on a pass.
@@ -213,7 +213,7 @@ If ingestion fails:
 
 Nothing is assembled, and the ingestion process rewrites:
 
-curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
 
 with the validation errors appended (an "earlier draft failed mechanical
 validation" section).
@@ -229,8 +229,8 @@ prompt file and choose the repair method:
 
 Whichever method repairs the reply, it works from these files:
 
-- curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
-- curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
+- curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.prompt.md
+- curriculum/_build/generate_content/web/grammar/<level-dir>/<slug>.reply.md
 
 The repair instructions are the same for both methods (an inline fix follows
 them exactly as a repair subagent would):
@@ -252,8 +252,8 @@ them exactly as a repair subagent would):
     If you change a sentence in one place, change it in the other.
   - Keep at least three fence lines using an accepted form of the pattern.
   - Every `vocabulary_slugs` entry must be in the prompt's allowed list; every
-    content word, in fences and in prose, must be in-level. An out-of-level word
-    is fixed by rewording the sentence, not by dropping the slug.
+    content word, in fences and in prose, must be at or below the point's level.
+    A word above the level is fixed by rewording the sentence, not by dropping the slug.
   - Keep every Japanese sentence fully annotatable by the tokenizer (avoid
     constructions that fail the furigana round-trip).
   - Keep `caution_notes` at 1–4, `cloze_variants` at 4–6 with a ＿＿＿ blank and a
@@ -265,7 +265,7 @@ them exactly as a repair subagent would):
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --level <level> --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --slug <slug> --model <subagent-model>
 
 Retry Limit
 
@@ -297,8 +297,8 @@ Ordering Note
 
 Each run covers only its auto-selected <batch-size> slugs, so finishing a level
 takes several runs. Work levels in order and finish <level> fully before moving to
-the next — N4 lessons are allowed to use all N5 vocabulary, so N5 should be
-settled first. On the first run at a fresh level, read the assembled lessons
+the next — a lesson may use every word at or below its level, so the lower
+levels should be settled first. On the first run at a fresh level, read the assembled lessons
 before launching more runs; the batch size is already pilot-sized, so one run
 doubles as the pilot.
 
@@ -307,17 +307,14 @@ doubles as the pilot.
 Final Build
 
 After every selected slug has been successfully ingested or skipped, run the
-project's normal generation pipeline from the repository root.
+project's normal generation pipeline.
 
-Check the current invocation under:
+Check `generate.py --help` under `curriculum/_build` for the current invocation.
+`generate.py` builds every level and takes no level flag. From `curriculum/_build`, run:
 
-curriculum/_build/generate_content/
+.venv/bin/python generate.py
 
-Then run:
-
-generate.py --level <level>
-
-Followed by:
+Then, from the repository root, run:
 
 npm run validate-schema
 
@@ -326,10 +323,8 @@ And:
 npm run compile-curriculum
 
 `generate.py` inlines the assembled lesson markdown into the shipped grammar JSON
-and adds furigana with the tokenizer. Grammar is unbanded, so `--level` alone is
-sufficient. Use the current project-specific `generate.py` invocation and flags
-found under `curriculum/_build/`. Do not guess if the documented invocation has
-changed.
+and adds furigana with the tokenizer. Do not guess if `--help` shows a different
+invocation.
 
 ---
 

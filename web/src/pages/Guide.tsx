@@ -18,25 +18,26 @@ import {
   CONTENT_TYPE_LABELS,
   type AuditSummary,
   type GapsResponse,
-  type JlptLevel,
+  type Level,
 } from '../types/api';
 
 /**
- * Authored levels only — deliberately not every JlptLevel. Every stage here
- * writes mnemonics, examples, grammar or passages, and N3–N1 ship as
- * item-list skeletons that none of those stages produce.
+ * Authored ladder levels only: 1-20 (N5 + N4), the same range the audit reads.
+ * Every stage here writes mnemonics, examples, grammar or passages, and the
+ * later levels ship as item-list skeletons that none of those stages produce.
  */
-const LEVELS: JlptLevel[] = ['N5', 'N4'];
+const LEVELS: Level[] = Array.from({ length: 20 }, (_, i) => i + 1);
 
-function isLevel(value: string | null): value is JlptLevel {
-  return LEVELS.includes(value as JlptLevel);
+function parseLevel(value: string | null): Level | null {
+  const level = Number(value);
+  return LEVELS.includes(level) ? level : null;
 }
 
 /** Missing count for one produced field, or null while gaps are loading. */
 function gapFor(
   gaps: GapsResponse | null,
   field: ProducedField,
-  level: JlptLevel,
+  level: Level,
 ): { missing: number; total: number } | null {
   if (!gaps) return null;
   const bucket = gaps.byTypeLevel[field.type]?.[level];
@@ -53,7 +54,7 @@ function gapFor(
 function stageGapTotal(
   stage: GuideStage,
   gaps: GapsResponse | null,
-  level: JlptLevel,
+  level: Level,
 ): number | null {
   const owed = stage.produces.filter((f) => !f.optional);
   if (!gaps || owed.length === 0) return null;
@@ -66,7 +67,7 @@ function stageGapTotal(
 }
 
 /** Renders `backtick` spans as inline code, and fills in the level token. */
-function Prose({ text, level }: { text: string; level?: JlptLevel }) {
+function Prose({ text, level }: { text: string; level?: Level }) {
   const resolved = level ? withLevel(text, level) : text;
   const parts = resolved.split('`');
   // Odd backtick count means an unclosed span — render it verbatim rather than
@@ -104,7 +105,7 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-function CommandBlock({ commands, level }: { commands: string[]; level: JlptLevel }) {
+function CommandBlock({ commands, level }: { commands: string[]; level: Level }) {
   const resolved = commands.map((c) => withLevel(c, level));
   return (
     <div className="guide-commands">
@@ -118,7 +119,7 @@ function CommandBlock({ commands, level }: { commands: string[]; level: JlptLeve
   );
 }
 
-function LaneBody({ lane, level }: { lane: GuideLane; level: JlptLevel }) {
+function LaneBody({ lane, level }: { lane: GuideLane; level: Level }) {
   return (
     <div className="guide-lane">
       <p className="panel-muted">
@@ -152,7 +153,7 @@ function GapRow({
   gaps,
 }: {
   field: ProducedField;
-  level: JlptLevel;
+  level: Level;
   gaps: GapsResponse | null;
 }) {
   const gap = gapFor(gaps, field, level);
@@ -185,7 +186,7 @@ function GapRow({
             <Link
               to={contentGapHref(field.type, field.field, level)}
               className="guide-gap__count"
-              title={`Open the ${level} ${CONTENT_TYPE_LABELS[field.type]} still missing ${field.field}`}
+              title={`Open the level ${level} ${CONTENT_TYPE_LABELS[field.type]} still missing ${field.field}`}
             >
               {gap.missing} of {gap.total} missing →
             </Link>
@@ -223,7 +224,7 @@ function StageCard({
 }: {
   stage: GuideStage;
   index: number;
-  level: JlptLevel;
+  level: Level;
   gaps: GapsResponse | null;
   open: boolean;
   onToggle: () => void;
@@ -259,10 +260,10 @@ function StageCard({
           </span>
         </button>
         {worst === null ? null : worst === 0 ? (
-          <span className="guide-badge guide-badge--done">complete for {level}</span>
+          <span className="guide-badge guide-badge--done">complete for level {level}</span>
         ) : (
           <span className="guide-badge guide-badge--open">
-            {worst} {level} item{worst === 1 ? '' : 's'} to go
+            {worst} level {level} item{worst === 1 ? '' : 's'} to go
           </span>
         )}
       </header>
@@ -287,8 +288,8 @@ function StageCard({
                   }
                   title={
                     gap && gap > 0
-                      ? `${gap} ${level} items still missing content from ${required.title}`
-                      : `${required.title} has no gaps at ${level}`
+                      ? `${gap} level ${level} items still missing content from ${required.title}`
+                      : `${required.title} has no gaps at level ${level}`
                   }
                 >
                   {required.title}
@@ -362,7 +363,7 @@ export default function Guide() {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const levelParam = searchParams.get('level');
-  const level: JlptLevel = isLevel(levelParam) ? levelParam : 'N5';
+  const level: Level = parseLevel(levelParam) ?? 1;
 
   const gapsResult = useApi<GapsResponse>('/api/gaps');
   const auditResult = useApi<AuditSummary>('/api/audit/summary');
@@ -406,9 +407,9 @@ export default function Guide() {
   }, [location.hash, location.key, autoOpened]);
 
   const setLevel = useCallback(
-    (next: JlptLevel) => {
+    (next: Level) => {
       const params = new URLSearchParams(searchParams);
-      params.set('level', next);
+      params.set('level', String(next));
       setSearchParams(params, { replace: true });
     },
     [searchParams, setSearchParams],
@@ -446,24 +447,23 @@ export default function Guide() {
           </p>
         </div>
         <div className="guide-hero__controls">
-          <div className="chip-group" role="group" aria-label="Level">
+          <select
+            value={level}
+            onChange={(e) => setLevel(Number(e.target.value))}
+            aria-label="Level"
+          >
             {LEVELS.map((lvl) => (
-              <button
-                key={lvl}
-                type="button"
-                className={level === lvl ? 'chip chip--active' : 'chip'}
-                onClick={() => setLevel(lvl)}
-              >
-                {lvl}
-              </button>
+              <option key={lvl} value={lvl}>
+                Level {lvl}
+              </option>
             ))}
-          </div>
+          </select>
           <p className="panel-muted guide-hero__status">
             {gapsResult.status === 'loading'
               ? 'Loading current gaps…'
               : gapsResult.status === 'error'
                 ? 'Gap counts unavailable'
-                : `${openStageCount} stage${openStageCount === 1 ? '' : 's'} with ${level} gaps`}
+                : `${openStageCount} stage${openStageCount === 1 ? '' : 's'} with level ${level} gaps`}
           </p>
         </div>
       </section>
@@ -472,7 +472,7 @@ export default function Guide() {
         <h3 className="panel-title">Order of work</h3>
         <p className="panel-muted">
           Each stage reads the prose the one before it produced. Jump to any of them; the
-          count is what is still missing at {level}.
+          count is what is still missing at level {level}.
         </p>
         <ol className="guide-flow__list">
           {GUIDE_STAGES.map((stage, i) => {

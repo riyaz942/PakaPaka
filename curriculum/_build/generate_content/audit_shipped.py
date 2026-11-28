@@ -2,7 +2,8 @@
 """Tiers 0-1 shipped-content audit (docs/content/content-audit-plan.md).
 
 Runs the pipeline's existing per-draft gates against the *shipped*
-curriculum/<type>/<level>.json (they normally only see pre-assembly drafts),
+curriculum/<type>/items.json, one ladder level at a time (they normally only
+see pre-assembly drafts),
 plus the plan's ten new deterministic checks (accepted-answer invariants,
 decomposition completeness, mnemonic tag round-trips, passage grammar usage,
 look-alike symmetry, corpus hygiene, the review-status rollup, and the span
@@ -19,16 +20,15 @@ Findings are graded ERROR / WARNING / INFO, mirroring `import/audit_facts.py`:
           doesn't match a taught component, declared-but-unused grammar).
   INFO    context only (review-status counts, untaught KRADFILE primitives).
 
-Writes curriculum/_build/reports/content-audit-<level>.md per requested level
-and exits 1 if any level produced an ERROR.
+Writes curriculum/_build/reports/content-audit-level-NN.md per requested ladder
+level and exits 1 if any level produced an ERROR.
 
 Run (from curriculum/_build):
     .venv/bin/python -m generate_content.audit_shipped
-    .venv/bin/python -m generate_content.audit_shipped --level n5
+    .venv/bin/python -m generate_content.audit_shipped --level 6
 """
 
 import argparse
-import glob
 import json
 import os
 import re
@@ -252,35 +252,32 @@ def reading_from_furigana(annotated):
     return "".join(out)
 
 
-#: Levels that ship a kanji skeleton rather than authored content.
-SKELETON_LEVELS = ("n3", "n2", "n1")
+#: The ladder levels audited by default: the ones with authored content
+#: (levels 1-20 carry the N5 and N4 words, kanji and grammar). The later levels
+#: are mostly item lists with no mnemonics or examples, so every content check
+#: would fire on them; `--level 30` still audits one on purpose.
+DEFAULT_LEVELS = list(range(1, 21))
+
+_ITEMS = {}
 
 
-def load_items(kind_dir, level, key="items"):
-    """`curriculum/<kind_dir>/<level>.json` entries, or `[]` when the file does
-    not exist. Skeleton levels ship radicals, kanji and vocabulary as bare item
-    lists and no grammar or passages at all, so the cross-level checks below
-    cannot assume all four kinds per level the way the per-level checks can."""
-    path = os.path.join(CURRICULUM_DIR, kind_dir, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    return audit_facts.load_json(kind_dir, f"{level}.json")[key]
+def load_items(kind_dir, level):
+    """The `<kind_dir>` items (for `readings`, the passages) at one ladder
+    level, or `[]` when the level has none — grammar stops at level 25 and
+    passages cover only some levels, so the cross-level checks below cannot
+    assume all four kinds per level the way the per-level checks can."""
+    if kind_dir not in _ITEMS:
+        _ITEMS[kind_dir] = context.load_items(kind_dir)
+    return [it for it in _ITEMS[kind_dir] if it["level"] == level]
 
 
 def discover_levels():
-    """Levels with any item file on disk, in curriculum teaching order.
-
-    Not radicals alone: a skeleton level teaches kanji whose components are all
-    already taught, so it ships no radicals file at all (N1). Missing it here
-    would drop its kanji from the content_counts cross-check below."""
-    found = {
-        os.path.splitext(os.path.basename(p))[0]
+    """Ladder levels with any radical, kanji, word or grammar point, in order."""
+    return sorted({
+        it["level"]
         for kind in ("radicals", "kanji", "vocabulary", "grammar")
-        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "n[1-5].json"))
-    }
-    ordered = [lvl for lvl in context.LEVEL_ORDER if lvl in found]
-    ordered += sorted(found - set(ordered))
-    return ordered
+        for it in context.load_items(kind)
+    })
 
 
 class Findings:
@@ -317,13 +314,13 @@ def review_status_rollup(level):
     human-review tracker (plan check 9)."""
     rows = []
     for kind_dir in ("radicals", "kanji", "vocabulary", "grammar"):
-        items = audit_facts.load_json(kind_dir, f"{level}.json")["items"]
+        items = load_items(kind_dir, level)
         counts = {}
         for it in items:
             status = (it.get("_meta") or {}).get("review_status", "(none)")
             counts[status] = counts.get(status, 0) + 1
         rows.append((kind_dir, len(items), counts))
-    passages = audit_facts.load_json("readings", f"{level}.json")["passages"]
+    passages = load_items("readings", level)
     rows.append(("readings", len(passages), {"(no _meta field on passages)": len(passages)}))
     return rows
 
@@ -336,13 +333,13 @@ def rerun_mnemonic_gates(level):
     Shipped items carry the exact field names (`mnemonic_text`,
     `meaning_mnemonic`, `reading_mnemonic`, `description`) the draft-stage
     validators expect, and `mnemonic_context` already loads from the shipped
-    curriculum/<type>/<level>.json — so the draft item IS the shipped item,
+    curriculum/<type>/items.json — so the draft item IS the shipped item,
     no adapter needed.
     """
     results = []
     for kind, dirname in (("radical", "radicals"), ("kanji", "kanji"), ("vocab", "vocabulary")):
-        for item in mnemonic_context.load_items(dirname, level):
-            errors = validate_mnemonics.validate_draft(level, kind, item["slug"], item)
+        for item in load_items(dirname, level):
+            errors = validate_mnemonics.validate_draft(kind, item["slug"], item)
             for e in errors:
                 results.append(("ERROR", f"{kind} {item['slug']}: {e}"))
     return results
@@ -355,13 +352,13 @@ def rerun_example_gates(level):
     written with it, which the app lists instead — so any found is an ERROR.
     """
     results = []
-    for item in context.load_items("kanji", level):
+    for item in load_items("kanji", level):
         if item.get("example_sentences"):
             results.append(("ERROR", f"kanji {item['slug']}: ships example sentences; "
                                      f"kanji carry none (list the vocabulary instead)"))
-    for item in context.load_items("vocabulary", level):
+    for item in load_items("vocabulary", level):
         slug = item["slug"]
-        errors = validate_examples.validate_draft(level, "vocab", slug, item)
+        errors = validate_examples.validate_draft("vocab", slug, item)
         for e in errors:
             results.append(("ERROR", f"vocab {slug}: {e}"))
     return results
@@ -386,8 +383,8 @@ def rerun_grammar_example_gate(level):
     a human read rather than blocking a ship.
     """
     results = []
-    for item in context.load_grammar(level):
-        ctx = validate_drafts.item_context(level, item["slug"])
+    for item in load_items("grammar", level):
+        ctx = validate_drafts.item_context(item["slug"])
         example_lines = [
             e["japanese"].strip() for e in item.get("example_sentences") or [] if e.get("japanese")
         ]
@@ -422,27 +419,18 @@ def rerun_grammar_example_gate(level):
 def rerun_passage_gate(level):
     """Plan check 2: `validate_readings` re-run on shipped passages.
 
-    Only available where `reading_seeds` has authored seeds for the level
-    (today, n5 only) — the seed is what supplies the allowed vocab/grammar
-    context and target word-count band this gate checks against. Passages in
-    a level with no seeds still get every seed-independent check elsewhere in
-    this report (span re-derivation, grammar-usage, corpus hygiene).
+    Each passage's seed (same slug) supplies the allowed vocab/grammar context
+    and target word-count band this gate checks against; a passage sits at its
+    seed's level by construction.
     """
-    if level not in reading_seeds.SEEDS:
-        return [(
-            "INFO",
-            f"no reading_seeds authored for {level} — skipping the seed-dependent "
-            "passage re-validation (word-count band, structural re-check); the "
-            "span re-derivation diff and grammar-usage checks below still run",
-        )]
     results = []
-    seed_by_position = {s["position"]: s for s in reading_seeds.seeds_for(level)}
-    passages = audit_facts.load_json("readings", f"{level}.json")["passages"]
+    seed_by_slug = {s["slug"]: s for s in reading_seeds.SEEDS}
+    passages = load_items("readings", level)
     for passage in passages:
-        seed = seed_by_position.get(passage["sort_order"])
+        seed = seed_by_slug.get(passage["slug"])
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         if seed is None:
-            results.append(("ERROR", f"{label}: no seed at position {passage['sort_order']}"))
+            results.append(("ERROR", f"{label}: no reading seed {passage['slug']!r}"))
             continue
         ctx = reading_context.seed_context(level, seed["slug"])
         for e in validate_readings.validate_draft(level, seed["slug"], passage, ctx):
@@ -528,13 +516,13 @@ def vocab_reading_furigana_errors(slug, item):
 def accepted_answer_invariant_errors(level):
     results = []
     for kind_dir, kind in (("radicals", "radical"), ("kanji", "kanji"), ("vocabulary", "vocab")):
-        for item in audit_facts.load_json(kind_dir, f"{level}.json")["items"]:
+        for item in load_items(kind_dir, level):
             for e in meaning_answer_errors(kind, item["slug"], item):
                 results.append(("ERROR", e))
-    for item in audit_facts.load_json("kanji", f"{level}.json")["items"]:
+    for item in load_items("kanji", level):
         for e in kanji_reading_answer_errors(item["slug"], item):
             results.append(("ERROR", e))
-    for item in audit_facts.load_json("vocabulary", f"{level}.json")["items"]:
+    for item in load_items("vocabulary", level):
         for e in vocab_reading_furigana_errors(item["slug"], item):
             results.append(("ERROR", e))
     return results
@@ -654,8 +642,8 @@ def mnemonic_tag_reverse_errors(level):
         ("kanji", "kanji", "radical", mnemonic_context.kanji_context, "form"),
         ("vocab", "vocabulary", "kanji", mnemonic_context.vocab_context, "char"),
     ):
-        for item in mnemonic_context.load_items(dirname, level):
-            ctx = ctx_fn(level, item["slug"])
+        for item in load_items(dirname, level):
+            ctx = ctx_fn(item["slug"])
             text = item.get("meaning_mnemonic") or ""
             comps = ctx["components"]
             comp_words = [validate_mnemonics._meaning_words(c["meaning_synonyms"]) for c in comps]
@@ -675,17 +663,13 @@ def mnemonic_tag_reverse_errors(level):
 # --- check 5: passage grammar actually used ---------------------------------
 
 def _grammar_by_slug_upto(level):
-    out = {}
-    for lvl in context.LEVEL_ORDER[: context.LEVEL_ORDER.index(level) + 1]:
-        for g in context.load_grammar(lvl):
-            out[g["slug"]] = g
-    return out
+    return {g["slug"]: g for g in context.grammar_through(level)}
 
 
 def passage_grammar_usage_errors(level):
     grammar_by_slug = _grammar_by_slug_upto(level)
     results = []
-    for passage in audit_facts.load_json("readings", f"{level}.json")["passages"]:
+    for passage in load_items("readings", level):
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         body = passage["body"]
         for gslug in passage.get("grammar_slugs") or []:
@@ -746,7 +730,7 @@ def hygiene_errors(all_levels_present):
     for kind_dir in ("radicals", "kanji", "vocabulary", "grammar"):
         for lvl in all_levels_present:
             items = load_items(kind_dir, lvl)
-            label = f"{kind_dir}/{lvl}.json"
+            label = f"{kind_dir} level {lvl}"
 
             dup_slugs = _duplicates([it["slug"] for it in items])
             if dup_slugs:
@@ -827,7 +811,7 @@ def hygiene_errors(all_levels_present):
         )
     counts["total_items"] = sum(counts[k] for k in ("radicals", "kanji", "vocabulary", "grammar"))
     counts["reading_passages"] = sum(
-        len(load_items("readings", lvl, key="passages")) for lvl in all_levels_present
+        len(load_items("readings", lvl)) for lvl in all_levels_present
     )
     counts["dependency_edges"] = len(audit_facts.load_json("dependencies", "graph.json")["edges"])
 
@@ -904,14 +888,14 @@ def span_diff_errors(text, vocabulary_slugs, shipped_spans, primary_form_by_slug
 
 def span_rederivation_errors(level, primary_form_by_slug):
     results = []
-    for item in audit_facts.load_json("vocabulary", f"{level}.json")["items"]:
+    for item in load_items("vocabulary", level):
         for i, sentence in enumerate(item.get("example_sentences") or []):
             label = f"vocab {item['slug']} example[{i}]"
             results.extend(span_diff_errors(
                 sentence["japanese"], sentence.get("vocabulary_slugs") or [],
                 sentence.get("word_spans"), primary_form_by_slug, label,
             ))
-    for passage in audit_facts.load_json("readings", f"{level}.json")["passages"]:
+    for passage in load_items("readings", level):
         label = f"passage[sort_order={passage['sort_order']}] {passage['title']!r}"
         results.extend(span_diff_errors(
             passage["body"], passage.get("vocabulary_slugs") or [],
@@ -1011,7 +995,7 @@ def extract_slugs(message, level):
 
 def write_json_report(level, findings):
     os.makedirs(REPORTS_DIR, exist_ok=True)
-    out_path = os.path.join(REPORTS_DIR, f"content-audit-{level}.json")
+    out_path = os.path.join(REPORTS_DIR, f"content-audit-{context.level_dir(level)}.json")
     rows = []
     for title, entries in findings.sections:
         for severity, message in entries:
@@ -1029,9 +1013,9 @@ def write_json_report(level, findings):
 
 def write_report(level, findings):
     os.makedirs(REPORTS_DIR, exist_ok=True)
-    out_path = os.path.join(REPORTS_DIR, f"content-audit-{level}.md")
+    out_path = os.path.join(REPORTS_DIR, f"content-audit-{context.level_dir(level)}.md")
     lines = [
-        f"# Content audit — {level} (tiers 0-1)",
+        f"# Content audit — level {level} (tiers 0-1)",
         "",
         "Generated by `curriculum/_build/generate_content/audit_shipped.py` — "
         "re-runs the draft-stage gates against shipped JSON and the plan's ten new "
@@ -1066,21 +1050,19 @@ def write_report(level, findings):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", action="append", dest="levels",
-                        help="repeatable; defaults to every level present in curriculum/")
+    pick = parser.add_mutually_exclusive_group()
+    pick.add_argument("--level", dest="levels", type=context.parse_level,
+                      help="one ladder level (default: levels 1-20)")
+    pick.add_argument("--levels", dest="levels", type=context.parse_levels,
+                      help="a range of ladder levels, e.g. 1-20")
     parser.add_argument("--json", action="store_true",
-                        help="also write content-audit-<level>.json (studio UI consumption)")
+                        help="also write content-audit-level-NN.json (studio UI consumption)")
     args = parser.parse_args()
 
+    # Every level stays in `all_levels_present` so the audited levels can still
+    # resolve components that are taught elsewhere.
     all_levels_present = discover_levels()
-    # Skeleton levels are item lists by design — no mnemonics, no examples, no
-    # art (kanji-coverage plan Phase 2) — so every content check below would fire
-    # on all 553 of them. They stay in `all_levels_present` so the authored
-    # levels can still resolve components that are taught there, and `--level n3`
-    # still audits one on purpose.
-    levels = args.levels or [
-        lvl for lvl in all_levels_present if lvl not in SKELETON_LEVELS
-    ]
+    levels = args.levels or DEFAULT_LEVELS
     print("Loading KRADFILE…")
     kradfile = sources.load_kradfile()
 

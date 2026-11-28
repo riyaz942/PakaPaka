@@ -2,9 +2,10 @@
 
 This is the **no-API alternative** to the Message Batches driver for producing the
 radical descriptions, kanji mnemonics and vocabulary mnemonics
-(`docs/content/content-pipeline-plan.md`, 2b + 2d). The N5 set was first generated
-through the API for a few dollars; regenerating a level under Rev 1's
-`prompt_version: 2`, or extending to N4, can instead be done by pasting each item's
+(`docs/content/content-pipeline-plan.md`, 2b + 2d). The first set was generated
+through the API for a few dollars; regenerating items under Rev 1's
+`prompt_version: 2`, or writing the new items of a ladder level (a number from 1 to 60),
+can instead be done by pasting each item's
 prompt into a Claude or Gemini web chat (covered by a flat subscription) and feeding
 the reply back through the **same context builder and the same mechanical gate** the
 API path uses. Only the "call the model" step moves to the browser — nothing about
@@ -34,12 +35,13 @@ radical, kanji and vocab in that order, grammar at any time (see "Grammar" and
 them first (see "List remaining slugs" below), then pass them to `webprompts`:
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji   --level n5 --slugs <slug,slug,...>
-.venv/bin/python -m generate_content.generate_mnemonics ingest     --type kanji   --level n5 --slug <slug> --model <claude-web|gemini-web>
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji   --level 6     # or --levels 1-20, or --slugs <slug,slug,...>
+.venv/bin/python -m generate_content.generate_mnemonics ingest     --type kanji   --slug <slug> --model <claude-web|gemini-web>
 ```
 
 Working files live under
-`curriculum/_build/generate_content/web/mnemonics/<level>/<type>/` and are
+`curriculum/_build/generate_content/web/mnemonics/level-NN/<type>/` (NN = the
+item's ladder level, two digits: `level-06`) and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
 **not** a per-item file (that's how grammar lessons work); it is the
 keyed-by-slug **sidecar** (one file for every level) that `ingest` merges each
@@ -99,34 +101,38 @@ to `reviewed`.
 ## List remaining slugs
 
 Slugs already exist as curriculum ids (`east` is one kanji; they live in
-`curriculum/{radicals|kanji|vocabulary}/<level>.json`). `webprompts` writes a
+`curriculum/{radicals|kanji|vocabulary}/items.json`). `webprompts` writes a
 prompt *for* a slug; it does not invent the slug. From `curriculum/_build`, list
 the items of this type that have **no** sidecar entry yet:
 
 ```bash
-# list the remaining (not-yet-generated) N5 kanji slugs
+# list the remaining (not-yet-generated) level 6 kanji slugs
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import KIND_DIR, sidecar_path
-level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji', 'vocab' or 'grammar'
-subdir = KIND_DIR[kind]
-p = sidecar_path(kind)
-done = set(json.load(open(p))) if os.path.exists(p) else set()
-todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
-print(f'{len(todo)} {level} {kind} items left:')
+from generate_content.generate_mnemonics import default_slugs
+level, kind = 6, 'kanji'               # kind: 'radical', 'kanji', 'vocab' or 'grammar'
+todo = default_slugs(kind, [level])
+print(f'{len(todo)} level {level} {kind} items left:')
 print(','.join(todo))
 PY
 ```
 
 Take one slug from that list for the one-item loop below, or keep the whole comma
-list for a batch. Omitting `--slugs` writes a prompt for **every** item of the
-type — useful for a full-level dump, not for a sitting of ~10.
+list for a batch. `--level 6` instead of `--slugs` writes a prompt for **every**
+item of that level with no sidecar entry yet — the same list.
+
+For grammar, the snippet also lists a mnemonic whose Japanese example uses a
+word above the point's level (`grammar_mnemonics_above_level` in the ladder work
+list, from the same check). To fix existing vocabulary mnemonics, take the slugs
+from the work list instead: `vocab_mnemonics_pending` (`--type vocab`) in
+`curriculum/_build/reports/ladder-worklist.json`. See "Ladder work list" in
+`docs/workflows/README.md`.
 
 > The snippet lists items that have **no** sidecar entry yet. After a
-> `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
-> whole level rather than the gaps, and let `ingest` overwrite. The API path does
-> this for you — `run` re-queues any draft recorded under an older prompt version.
+> `PROMPT_VERSION` bump the existing entries are stale, not done: name them with
+> `--slugs` and let `ingest` overwrite. The API path's `run --level` takes the
+> same items as this list; `run --slugs` regenerates the named ones.
 > `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 6, "grammar": 1}`),
 > because the four prompts move independently. Radicals sitting at 1 is
 > deliberate: Rev 3 reverted the radical contract to the original shape — a
@@ -143,10 +149,11 @@ type — useful for a full-level dump, not for a sitting of ~10.
 `east` is a worked example. Substitute a slug from the list above.
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs east
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --slugs east
 ```
 
-Writes `generate_content/web/mnemonics/n5/kanji/east.prompt.md`. Open it.
+Writes `generate_content/web/mnemonics/level-NN/kanji/east.prompt.md` (NN = the level of
+`east`). Open it.
 Everything below the `<!-- ... -->` header is one self-contained block: the
 teaching-voice sheet, the character + meaning + readings, the taught
 decomposition, the cast block, the formatting rules, and a JSON output contract.
@@ -171,7 +178,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into the reply path the prompt header names:
 
 ```
-generate_content/web/mnemonics/n5/kanji/east.reply.md
+generate_content/web/mnemonics/level-NN/kanji/east.reply.md
 ```
 
 The filename must match the slug and the `--type` subfolder.
@@ -191,7 +198,7 @@ otherwise is correct, not incomplete.
 ### 4. Ingest
 
 ```bash
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --level n5 --slug east --model claude-web
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type kanji --slug east --model claude-web
 ```
 
 **On pass:** it merges the item into `curriculum/kanji/mnemonics.json`
@@ -202,7 +209,7 @@ the next item.
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/mnemonics/n5/kanji/east.prompt.md`.
+1. Open the rewritten `web/mnemonics/level-NN/kanji/east.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
 3. Save the new reply over `east.reply.md`.
@@ -220,22 +227,21 @@ stubborn item.
 
 **Grammar** sits outside the radical → kanji → vocab chain: its prompt uses no
 other layer's prose, so it can run at any time. Two conditions instead:
-`curriculum/_build/grammar_origins.json` must cover every N5/N4 grammar slug and
+`curriculum/_build/grammar_origins.json` must cover every grammar slug and
 carry `"review_status": "reviewed"` (every command with `--type grammar` stops
-with an error otherwise — report it, do not edit the file yourself), and only
-`--level n5` and `--level n4` have grammar in scope. The gate rules are in
+with an error otherwise — report it, do not edit the file yourself). The gate rules are in
 `validate_mnemonics.validate_grammar`: one or two story sentences plus a
 Japanese example ending in 。, `<reading>` on the English sound-alike and on the
 form's kana, `<grammar>` on the meaning, example words and kanji at or below
 the level, and the origin's keyword in the story (or no origin claim at all).
-After ingesting grammar, run `generate.py --level <level>` (grammar is not banded).
+After ingesting grammar, run `generate.py`.
 
 Design: `docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md`.
 
 ## Doing a batch efficiently
 
-`webprompts` accepts a comma-separated `--slugs` list (and defaults to **every**
-item of the type when you omit `--slugs`), so generate a screenful at once, then
+`webprompts` accepts a comma-separated `--slugs` list (or `--level` / `--levels`
+for every item of those levels with no sidecar entry yet), so generate a screenful at once, then
 work them one chat at a time.
 
 Run the listing snippet above. Paste that comma list into
@@ -245,7 +251,7 @@ kanji, then vocabulary** — a kanji story continues its radicals' descriptions 
 vocabulary story hooks into its kanji's meaning mnemonics, so each layer must be
 settled (and ideally reviewed) before the layer built on it, and `generate.py` has
 to be re-run between layers so the next layer's prompts read the new prose. And do
-N5 fully before N4 (`--level n4`).
+one level fully before the next.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.
@@ -261,7 +267,7 @@ doc):
 
 ```bash
 # 1. inline the sidecars into the kanji/radical JSON
-cd curriculum/_build && .venv/bin/python generate.py --level n5 && cd -
+cd curriculum/_build && .venv/bin/python generate.py && cd -
 # 2. validate + compile
 npm run validate-schema
 npm run compile-curriculum
@@ -275,7 +281,7 @@ fail on it, so unreviewed prose can't silently ship.
 > The `mnemonics.json` sidecars are deliberately **excluded** from
 > `validate-schema`'s file walk (they are keyed-by-slug build inputs, not
 > standalone curriculum files); their contents are validated once `generate.py`
-> inlines them into `kanji/<level>.json` / `radicals/<level>.json`.
+> inlines them into `kanji/items.json` / `radicals/items.json`.
 
 ---
 
@@ -284,10 +290,10 @@ fail on it, so unreviewed prose can't silently ship.
 | Step | Command / action |
 |---|---|
 | List remaining slugs | the Python snippet under "List remaining slugs" |
-| Make prompts | `... webprompts --type <radical|kanji|vocab> --level n5 --slugs a,b,c` |
+| Make prompts | `... webprompts --type <radical|kanji|vocab> --level 6` (or `--slugs a,b,c`) |
 | Paste | one item per fresh Claude/Gemini chat (skip the header comment) |
-| Save reply | `web/mnemonics/<level>/<type>/<slug>.reply.md` |
-| Ingest + gate | `... ingest --type kanji --level n5 --slug a --model claude-web` |
+| Save reply | `web/mnemonics/level-NN/<type>/<slug>.reply.md` |
+| Ingest + gate | `... ingest --type kanji --slug a --model claude-web` |
 | On gate failure | reopen the rewritten `<slug>.prompt.md`, re-roll, re-save, re-ingest |
 | After a batch | `generate.py` → `npm run validate-schema` → `npm run compile-curriculum` → human review |
 

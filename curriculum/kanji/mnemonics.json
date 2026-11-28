@@ -63,12 +63,12 @@
     }
   },
   "ancestor": {
-    "meaning_mnemonic": "An <radical>altar</radical> stands on the left. Beside it, an <radical>eye</radical> lies flat above a line of <radical>ground</radical> — a portrait propped over the offerings. Somebody long dead looks back at you off that shelf: your <kanji>ancestor</kanji>.",
-    "reading_mnemonic": "So is the small catch of sound the incense makes when it takes light at the altar — 「<reading>そ</reading>」 — and for a second the eye in the portrait seems to move. One syllable, once a year, for the ancestor. そ.",
+    "meaning_mnemonic": "The <radical form=\"礻\">cult</radical> shelf is already full of old photos, and <radical form=\"且\">moreover</radical> every funeral pushes one more on, because each face up there is an <kanji form=\"祖\">ancestor</kanji> waiting for incense.",
+    "reading_mnemonic": "Old Mr. <reading>So</reading> lights the incense and sighs 「<reading>そ</reading>」, short for so many, because one more <kanji form=\"祖\">ancestor</kanji> got squeezed onto the shelf overnight.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "angle": {
@@ -157,12 +157,12 @@
     }
   },
   "barley": {
-    "meaning_mnemonic": "A stalk of <radical>barley</radical> bows low in a strong wind. It keeps bending until its head touches the dirt. That endlessly bowing stalk is one tall shaft of <kanji>barley</kanji>.",
-    "reading_mnemonic": "The farmer who tends that field introduces himself as <reading>Baku</reading>, bowing just like his crop. Everyone at the riverbank echoes <reading>ばく</reading> back at him, mimicking his stiff, grain-heavy bow every time he passes.",
+    "meaning_mnemonic": "Dragging a <radical form=\"夂\">trailing foot</radical> over every young <radical form=\"龶\">sprout</radical> in the field sounds cruel, but stepped-on <kanji form=\"麦\">barley</kanji> grows back stronger.",
+    "reading_mnemonic": "Old farmer <reading>Baku</reading> stomps down the rows, the <kanji form=\"麦\">barley</kanji> springs <reading>back</reading> up behind him, and he shouts 「<reading>ばく</reading>」 and stomps again, a little angrier each time.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "beforehand": {
@@ -544,13 +544,13 @@
     }
   },
   "cold": {
-    "meaning_mnemonic": "It is so <kanji>cold</kanji> under the <radical>roof</radical> that the <radical>well</radical> freezes to <radical>ice</radical>, and the swelling ice <radical>splits</radical> the <radical>ground</radical> beneath the house.",
-    "reading_mnemonic": "Under the roof, a tin <reading>can</reading> dropped down the well bounces off solid ice with a hollow 「<reading>かん</reading>」, and the ground beneath the house splits wider, it is so <kanji form=\"寒\">cold</kanji>.",
+    "meaning_mnemonic": "When the <radical form=\"井\">well</radical> under your own <radical form=\"宀\">roof</radical> freezes into <radical form=\"冫\">ice</radical> hard enough to <radical form=\"八\">split</radical> the <radical form=\"一\">ground</radical>, the house is truly <kanji form=\"寒\">cold</kanji>.",
+    "reading_mnemonic": "Old <reading>Kan</reading> lowers his bucket for tea water and it bounces off the frozen surface with a hollow 「<reading>かん</reading>」, so he gives up on tea in a house this <kanji form=\"寒\">cold</kanji>.",
     "description": "This is the cold you feel all over, from cold weather or an unheated room. A single cold thing you touch, like a drink or a metal rail, is a different kanji.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "color": {
@@ -849,10 +849,10 @@
     }
   },
   "diligence": {
-    "meaning_mnemonic": "Growing one <radical>violet</radical> on nothing but the <radical>power</radical> of habit is what <kanji>diligence</kanji> looks like.",
-    "reading_mnemonic": "Everyone on the trail just calls the porter <reading>Kin</reading> — not his real name, just the sound he wheezes at the summit every morning: a worn-out <reading>きん</reading>. Then he drops the crate and turns straight back down for the next load.",
+    "meaning_mnemonic": "Carrying <radical form=\"菫\">the violet</radical> out into the sun takes only a little <radical form=\"力\">power</radical>, but doing it every morning for years is <kanji form=\"勤\">diligence</kanji>.",
+    "reading_mnemonic": "Old <reading>Kin</reading> is so <reading>keen</reading> on that pot that he grunts 「<reading>きん</reading>」 on every stair, and the whole street now uses his name for <kanji form=\"勤\">diligence</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -1292,13 +1292,13 @@
     }
   },
   "foot": {
-    "meaning_mnemonic": "A <radical>mouth</radical> sits on top of a pair of legs. The legs have skidded to a halt — they are <radical>stopping</radical> hard. They end in one part: a <radical>foot</radical>. That's your <kanji>foot</kanji>, your leg, plenty to stand on.",
-    "reading_mnemonic": "The walking mouth named <reading>Sock</reading> skids to such a hard stop that the sock flies off its <kanji form=\"足\">foot</kanji>, and it yelps 「<reading>そく</reading>」 at its bare toes.",
+    "meaning_mnemonic": "The <radical form=\"口\">mouth</radical> can shout <radical form=\"止\">stop</radical> all it likes, but only your <kanji form=\"足\">foot</kanji> can slam down on the ground and actually do it.",
+    "reading_mnemonic": "<reading>Sock</reading> the sprinter obeys the shout by slamming her <kanji form=\"足\">foot</kanji> down so hard that her sock flies off, and she yelps 「<reading>そく</reading>」 at her bare toes.",
     "description": "Means foot, leg, or to suffice/be enough; shows up in words for body parts and in verbs about having sufficient amounts.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "forest": {
@@ -1330,12 +1330,12 @@
     }
   },
   "friend": {
-    "meaning_mnemonic": "One stroke <radical>slides</radical> down from the top left across a bar of <radical>ground</radical>, met by a <radical>right hand</radical> rising underneath. Two hands close on each other, nobody paid, nobody in charge: that is a <kanji>friend</kanji>.",
-    "reading_mnemonic": "Yuu is always there before you, hand already out. He draws the greeting into a long two-beat call across the car park — 「<reading>ゆう</reading>」 — before you have shut the car door. ゆう means somebody is glad to see you.",
+    "meaning_mnemonic": "When your giant foam <radical form=\"𠂇\">left hand</radical> gets a high five from the same <radical form=\"又\">right hand</radical> at every game, that person is your <kanji form=\"友\">friend</kanji>.",
+    "reading_mnemonic": "Little <reading>Yuu</reading> in the next seat slaps your foam hand and shouts 「<reading>ゆう</reading>」, which sounds like <reading>you</reading>, because you are the one <kanji form=\"友\">friend</kanji> who always comes.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "front": {
@@ -1384,12 +1384,12 @@
     }
   },
   "genius": {
-    "meaning_mnemonic": "A coin slips onto a <radical>slide</radical> and speeds toward the <radical>ground</radical>. A tiny <radical>barb</radical> flicks up and snags it just in time. That perfectly timed catch is pure <kanji>genius</kanji>.",
-    "reading_mnemonic": "The hiker introduces himself as <reading>Sai</reading>, showing off his trick over and over. Everyone on the trail starts groaning <reading>さい</reading> before he even throws the coin, tired of his one genius party trick.",
+    "meaning_mnemonic": "A <radical form=\"扌\">hand</radical> that grabs the quiz buzzer before anyone else has even heard the question belongs to a <kanji form=\"才\">genius</kanji>.",
+    "reading_mnemonic": "The quiz kid <reading>Cy</reading> slaps the buzzer first yet again, and the whole room lets out a long 「<reading>さい</reading>」 of a <reading>sigh</reading> at the little <kanji form=\"才\">genius</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "gentleman": {
@@ -1458,13 +1458,13 @@
     }
   },
   "goods": {
-    "meaning_mnemonic": "A <radical>mouth</radical> shouts a price for a crate of <radical>goods</radical> in the crowded market. Another mouth shouts back an even higher price. By closing time both have sold every last one of their <kanji>goods</kanji>.",
-    "reading_mnemonic": "An inspector named <reading>Hin</reading> arrives to stamp the stacked crates before they ship. Top crate: a short, sharp <reading>ひん</reading>. Left crate: <reading>ひん</reading>. Right crate: <reading>ひん</reading>. Three stamps, three crates, one approved delivery.",
+    "meaning_mnemonic": "A market stall keeps piling up <kanji form=\"品\">goods</kanji> because three open <radical form=\"口\">mouth</radical>s, one stacked on two, are always yawning at the counter for more.",
+    "reading_mnemonic": "<reading>Hin</reading> the stall keeper squeaks 「<reading>ひん</reading>」 each time a customer points, hands over the <kanji form=\"品\">goods</kanji>, and watches the pile shrink faster than he can restock it.",
     "description": "品 covers more than merchandise. It can also mean refined bearing or quiet dignity — the sense behind calling someone classy rather than crude. That reading has nothing to do with boxes, so expect 品 to describe character as often as cargo.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "grade": {
@@ -1878,10 +1878,10 @@
     }
   },
   "leader": {
-    "meaning_mnemonic": "A <radical>claw</radical> kept on the <radical>left-side</radical> and every <radical>measure</radical> taken well in advance is what marks out a <kanji>leader</kanji>.",
-    "reading_mnemonic": "On that same field, Sho the tiny stage magician claps his white gloves, and a dove bursts skyward as the crowd yells <reading>Show</reading>! That's <reading>しょう</reading>, his one trick, performed the same way every time.",
+    "meaning_mnemonic": "The <kanji form=\"将\">leader</kanji> climbs onto the split <radical form=\"爿\">left-side kata</radical> log so everyone can see him, points with one <radical form=\"爪\">claw</radical>, and moves the whole army forward one <radical form=\"寸\">inch</radical> at a time.",
+    "reading_mnemonic": "<reading>Sho</reading> the tiny magician climbs onto that same log, waves his white gloves, yells 「<reading>しょう</reading>」, and a hundred doves march after him as if he were their <kanji form=\"将\">leader</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -2371,12 +2371,12 @@
     }
   },
   "nothingness": {
-    "meaning_mnemonic": "One <radical>slash</radical> of <radical>fire</radical> across open <radical>ground</radical> leaves behind pure <kanji>nothingness</kanji>.",
-    "reading_mnemonic": "A stray cow named Muu wanders into that same burned-out gym through Sei's echoing hallway, nobody around to shoo her out. Her only sound bounces off the bare walls, a flat <reading>む</reading>, like a drawn-out <reading>moo</reading> nobody is there to hear.",
+    "meaning_mnemonic": "The <radical form=\"無\">nothingness</radical> radical and the <kanji form=\"無\">nothingness</kanji> kanji are the same, and it also means none, because when nothing is left there is none of anything.",
+    "reading_mnemonic": "A cow named <reading>Moo</reading> pokes her head through the burned window frame, finds only hot coals and <kanji form=\"無\">nothingness</kanji>, and lets out one long sad 「<reading>む</reading>」.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "now": {
@@ -2390,12 +2390,12 @@
     }
   },
   "number": {
-    "meaning_mnemonic": "A <radical>woman</radical> drops a bag of <radical>rice</radical> and grains spill everywhere. Her <radical>trailing foot</radical> drags them into neat <radical>chevron</radical> stripes. She <radical>taps</radical> each stripe with her toe to find the final <kanji>number</kanji>.",
-    "reading_mnemonic": "Back in that gym, the scorekeeper — a woman named <reading>Sue</reading> — squints at the tally and groans <reading>すう</reading>, dragging the sound out like she dreads the total. The same scattered rice still crunches under her shoes.",
+    "meaning_mnemonic": "Give every <radical form=\"娄\">surname</radical> on the guest list one <radical form=\"攵\">tap</radical> of the stick, and the count of taps is the <kanji form=\"数\">number</kanji> of guests.",
+    "reading_mnemonic": "<reading>Sue</reading> races her stick down the guest list so fast that she loses the <kanji form=\"数\">number</kanji> at forty and moans 「<reading>すう</reading>」 as she starts again from the top.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "ocean": {
@@ -2876,12 +2876,12 @@
     }
   },
   "reason": {
-    "meaning_mnemonic": "Every <radical>village</radical> settles its arguments with one <radical>king's jewel</radical> on a stump, turning it until its cracks line up into the only <kanji>logic</kanji> nobody dares dispute.",
-    "reading_mnemonic": "Village judge <reading>Lee</reading> never explains a ruling, just grunts 「<reading>り</reading>」 and taps the jewel, as if the <kanji>logic</kanji> were far too obvious to say aloud.",
+    "meaning_mnemonic": "Even a <radical form=\"王\">king</radical> cannot just take a <radical form=\"里\">village</radical>'s rice, because first he has to give the farmers a good <kanji form=\"理\">reason</kanji>.",
+    "reading_mnemonic": "Little <reading>Lee</reading> sits on the village's last bag of rice and squeaks 「<reading>り</reading>」 at the king until he gives her a real <kanji form=\"理\">reason</kanji> to get up.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "red": {
@@ -3172,13 +3172,12 @@
     }
   },
   "see": {
-    "meaning_mnemonic": "Take an <radical>eye</radical> (目) and stand it up on a pair of <radical>human legs</radical> (儿), and suddenly it can <radical>see</radical> and walk around anywhere it wants. Where does an eye on legs go? Out into the world, to look at everything. So this is what it means to <kanji>see</kanji>.",
-    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog chases the walking eye on legs around the yard, barking 「<reading>けん</reading>」, because he wants it to <kanji form=\"見\">see</kanji> his newest sword.",
-    "description": "Means \"see\" and is the base of the common verb 見る (to see/look); it shows up constantly in everyday words about looking and watching.",
+    "meaning_mnemonic": "An <radical form=\"目\">eye</radical> that grows a pair of <radical form=\"儿\">human legs</radical> can walk right up to anything it wants to <kanji form=\"見\">see</kanji>.",
+    "reading_mnemonic": "The walking eyeball trots up to <reading>Ken</reading>'s sword wall, and the dog growls 「<reading>けん</reading>」 because nobody gets to <kanji form=\"見\">see</kanji> his swords for free.",
     "_meta": {
       "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "seethe": {
@@ -3267,12 +3266,12 @@
     }
   },
   "shape": {
-    "meaning_mnemonic": "<radical>Two hands</radical> stack <radical>one</radical> block, then <radical>two</radical> more on top. The wobbly pile tips down a <radical>slide</radical>. It crashes into <radical>three</radical> pieces and becomes a strange new <kanji>shape</kanji>.",
-    "reading_mnemonic": "Back at the sports field, coach <reading>Kay</reading> stares at the scratched-up chalk sketch and barks <reading>けい</reading> across the field, ordering everyone into position before the shape fades in the rain.",
+    "meaning_mnemonic": "Sit a heavy cow on a soft <radical form=\"开\">bench</radical> <radical form=\"彡\">three</radical> times and the dent it leaves takes the exact <kanji form=\"形\">shape</kanji> of its rear.",
+    "reading_mnemonic": "<reading>Kay</reading> the furniture seller runs a hand over the dent, gasps 「<reading>けい</reading>」, and doubles the price because no other seat comes with a cow <kanji form=\"形\">shape</kanji> built in.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "sheep": {
@@ -3380,12 +3379,12 @@
     }
   },
   "snow": {
-    "meaning_mnemonic": "The falling <radical>rain</radical> freezes solid before it lands outside the temple. A monk grabs a <radical>broom</radical> and sweeps the icy drops into soft white drifts. He won't ring the bell until every trace of <kanji>snow</kanji> is gone.",
-    "reading_mnemonic": "The groundskeeper everyone calls <reading>Set</reading> mutters <reading>せつ</reading> under his breath every time he has to shovel the steps again. By dawn the drifts are back, deeper than before, and so is his sigh.",
+    "meaning_mnemonic": "When the <radical form=\"雨\">rain</radical> piles up soft enough for a dog to push its <radical form=\"⺕\">snout</radical> into it and pull it out white, the rain has turned to <kanji form=\"雪\">snow</kanji>.",
+    "reading_mnemonic": "The dog owner <reading>Setsuko</reading> wipes the white cap off its nose and sighs 「<reading>せつ</reading>」 as it dives face first back into the <kanji form=\"雪\">snow</kanji>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "someone": {
@@ -3639,12 +3638,12 @@
     }
   },
   "swim": {
-    "meaning_mnemonic": "Picture 泳 as one motion at the riverbank: an arm slices forward through the <radical>water</radical>. It flings a trail of <radical>drop</radical>lets out sideways behind it in one clean streak. That arm-cut trailing a spray of droplets is <kanji>swim</kanji> — caught mid-stroke, again and again.",
-    "reading_mnemonic": "At the same riverbank, the lifeguard Ei blows her whistle every single stroke you take, shouting <reading>えい</reading>! — <reading>Ay</reading>! — like she's counting each one out loud. By the tenth lap her voice is the only thing keeping your arms moving.",
+    "meaning_mnemonic": "If you fall into <radical form=\"氵\">water</radical> that flows on for <radical form=\"永\">eternity</radical>, you have no choice but to <kanji form=\"泳\">swim</kanji> forever.",
+    "reading_mnemonic": "An otter named <reading>Ay</reading> has been carried down that endless river since Monday, and she gasps 「<reading>えい</reading>」 every time she has to <kanji form=\"泳\">swim</kanji> one more stroke.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "sword": {
@@ -4202,12 +4201,12 @@
     }
   },
   "wife": {
-    "meaning_mnemonic": "A <radical>woman</radical> sweeps her yard with a <radical>broom</radical> tied to a <radical>stick</radical>. She works until the bare <radical>ground</radical> is spotless. The neighbors call her the tidy <kanji>wife</kanji> of the house.",
-    "reading_mnemonic": "Sai is the one who actually decides. Ask her husband anything and he glances sideways at her first; she gives one flat 「<reading>さい</reading>」 and that is the answer on behalf of both of them. さい settles it.",
+    "meaning_mnemonic": "A <radical form=\"女\">woman</radical> holding a <radical form=\"丨\">stick</radical> to keep the pig's <radical form=\"⺕\">snout</radical> off her clean <radical form=\"一\">ground</radical> is a <kanji form=\"妻\">wife</kanji> who lost the fight about the pig living indoors.",
+    "reading_mnemonic": "<reading>Sai</reading> pokes the pig back out the door for the tenth time and lets out a long <reading>sigh</reading>, 「<reading>さい</reading>」, the sound of a <kanji form=\"妻\">wife</kanji> whose husband still calls the pig family.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "wind": {
@@ -4286,12 +4285,12 @@
     }
   },
   "yellow": {
-    "meaning_mnemonic": "Koichi forgets an oil lantern burning behind the konbini shelf. All night its glass glows a soft <radical>yellow</radical>, brighter than the fluorescent lights above. By morning the whole shelf is stained <kanji>yellow</kanji>.",
-    "reading_mnemonic": "Koichi restocks the shelf by lantern light, counting under his breath: <reading>こう</reading>. It comes out low and steady, exactly like a pigeon's <reading>coo</reading>, over and over until every row is full again.",
+    "meaning_mnemonic": "<radical form=\"龷\">Twin sprouts</radical> shut in a cupboard for <radical form=\"八\">eight</radical> days turn <kanji form=\"黄\">yellow</kanji>, and no sunlight is the whole <radical form=\"由\">reason</radical>.",
+    "reading_mnemonic": "<reading>Koichi</reading> finds the forgotten sprouts behind his onigiri shelf and groans 「<reading>こう</reading>」, because <kanji form=\"黄\">yellow</kanji> greens are one more thing he cannot sell.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "yen": {
@@ -4304,12 +4303,12 @@
     }
   },
   "yesterday": {
-    "meaning_mnemonic": "The <radical>sun</radical> on the left, a <radical>stick</radical> upright on the right with one <radical>slide</radical> of a stroke off it. That stick is a sundial, its shadow scratched beside. The sun moved on; the mark left behind is <kanji>yesterday</kanji>.",
-    "reading_mnemonic": "Saku is the old gardener who checks his shadow-stick every dawn and then grumbles about how much better the light was 「<reading>さく</reading>」 — his one-word shorthand for the day before. Nothing is ever as good as さく was.",
+    "meaning_mnemonic": "A <radical form=\"日\">day</radical> that comes to an <radical form=\"乍\">abrupt</radical> stop the moment you fall asleep is already <kanji form=\"昨\">yesterday</kanji> when you wake up.",
+    "reading_mnemonic": "Lazy <reading>Sack</reading> naps in a potato sack under the window, mutters 「<reading>さく</reading>」, and wakes to find the whole day gone and already <kanji form=\"昨\">yesterday</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "claude-opus-5-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "draft"
     }
   },
   "younger-brother": {
@@ -4338,6 +4337,1663 @@
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
       "review_status": "flagged_for_rewrite"
+    }
+  },
+  "sweet": {
+    "meaning_mnemonic": "The <radical form=\"甘\">sweet</radical> radical and the <kanji form=\"甘\">sweet</kanji> kanji are the same, and it also means to coax or pamper, because spoiling someone is just feeding them something nice.",
+    "reading_mnemonic": "Candy seller <reading>Kan</reading> drops one more piece on your tongue and will not let you shut your mouth until you groan 「<reading>かん</reading>」 and admit it is far too <kanji form=\"甘\">sweet</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pain": {
+    "meaning_mnemonic": "When your <radical form=\"疒\">sickness</radical> makes you stagger down a narrow <radical form=\"甬\">walled path</radical>, every wall you bump into adds more <kanji form=\"痛\">pain</kanji>.",
+    "reading_mnemonic": "A nurse follows you down the narrow lane to count the fresh bruises, but she only ever gets to <reading>two</reading>, 「<reading>つう</reading>」, before the <kanji form=\"痛\">pain</kanji> makes you yelp.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shoes": {
+    "meaning_mnemonic": "Stiff <radical form=\"革\">leather</radical> has to <radical form=\"化\">change</radical> its shape around your feet before it can become a pair of <kanji form=\"靴\">shoes</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow puffs little flames into your stiff new <kanji form=\"靴\">shoes</kanji> until they soften, and he caws 「<reading>か</reading>」 each time a toe finally fits.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "box": {
+    "meaning_mnemonic": "Weave <radical form=\"竹\">bamboo</radical> into four walls that face each other in a <radical form=\"相\">mutual</radical> stare, and the space they guard between them is a <kanji form=\"箱\">box</kanji>.",
+    "reading_mnemonic": "Granny <reading>Sew</reading> stitches the four woven walls together at the corners, nodding 「<reading>そう</reading>」 at each one, until they close into a <kanji form=\"箱\">box</kanji> with her own cat sewn inside.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "cry": {
+    "meaning_mnemonic": "When you <radical form=\"立\">stand</radical> perfectly still and a puddle of <radical form=\"氵\">water</radical> slowly grows around your shoes, nobody thinks it is rain, because you are having a big <kanji form=\"泣\">cry</kanji>.",
+    "reading_mnemonic": "The puddle gets so famous that people form a long <reading>queue</reading> to stand in it and <kanji form=\"泣\">cry</kanji>, and each one squeaks a wet 「<reading>きゅう</reading>」 when it is their turn.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wicked": {
+    "meaning_mnemonic": "An elephant that swings its <radical form=\"牙\">tusk</radical> through every roof in the <radical form=\"阝\">village</radical> just for fun is plain <kanji form=\"邪\">wicked</kanji>.",
+    "reading_mnemonic": "Between the smashed roofs, the same elephant steals the baker's cookie <reading>jar</reading> and trumpets 「<reading>じゃ</reading>」 on the way out, because being <kanji form=\"邪\">wicked</kanji> is hungry work.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "individual": {
+    "meaning_mnemonic": "Let cement <radical form=\"固\">harden</radical> around one <radical form=\"亻\">person</radical> at a time, and every statue in the garden comes out a different <kanji form=\"個\">individual</kanji>.",
+    "reading_mnemonic": "The sculptor <reading>Coco</reading> knocks on each grey statue, and every one goes 「<reading>こ</reading>」 in a slightly different note, since no two <kanji form=\"個\">individual</kanji>s sound the same.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "angling": {
+    "meaning_mnemonic": "Fish swim straight at a shiny <radical form=\"金\">gold</radical> <radical form=\"勺\">ladle</radical> hung on a string, which makes it the laziest trick in all of <kanji form=\"釣\">angling</kanji>.",
+    "reading_mnemonic": "At the riverbank, a fat cat named <reading>Chow</reading> sits by the line and yells 「<reading>ちょう</reading>」 at every fish that bites the shiny bait, because to him <kanji form=\"釣\">angling</kanji> is just ordering lunch.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "petition": {
+    "meaning_mnemonic": "When every flower in the <radical form=\"原\">meadow</radical> bows its <radical form=\"頁\">head</radical> at once to beg the clouds for rain, that is one giant <kanji form=\"願\">petition</kanji>.",
+    "reading_mnemonic": "A grumpy <reading>gander</reading> waddles through the bowing flowers honking 「<reading>がん</reading>」 at each one for a signature, since no cloud reads a <kanji form=\"願\">petition</kanji> with fewer than a thousand names.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "length": {
+    "meaning_mnemonic": "The <kanji form=\"丈\">length</kanji> of a lawn is simply how far the giant shears can <radical form=\"乂\">mow</radical> along the flat <radical form=\"一\">ground</radical> before the grass runs out.",
+    "reading_mnemonic": "<reading>Joe</reading> the gardener will not buy a tape measure, so he mows the lawn shouting 「<reading>じょう</reading>！」 at every stride and tells you its <kanji form=\"丈\">length</kanji> in Joes.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wherefore": {
+    "meaning_mnemonic": "The <kanji form=\"由\">wherefore</kanji> of a dark morning is usually a <radical form=\"丨\">stick</radical> someone jammed down through the top of the <radical form=\"日\">sun</radical> window to hold the blind shut.",
+    "reading_mnemonic": "<reading>Yu</reading> the window cleaner finds the jammed blind, points straight at <reading>you</reading> and says 「<reading>ゆ</reading>」, because you are the whole <kanji form=\"由\">wherefore</kanji> of the dark room.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dream": {
+    "meaning_mnemonic": "Pull the <radical form=\"冖\">cover</radical> up one <radical form=\"夕\">evening</radical> under a <radical form=\"罒\">net</radical> woven from <radical form=\"艹\">grass</radical>, and it catches every bad thought so only a good <kanji form=\"夢\">dream</kanji> slips through.",
+    "reading_mnemonic": "A cow called <reading>Moo</reading> chews through the catcher above your bed in the night, so now every <kanji form=\"夢\">dream</kanji> you have ends with a huge 「<reading>む</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sort": {
+    "meaning_mnemonic": "A <radical form=\"大\">big</radical> bowl of <radical form=\"米\">rice</radical> looks all the same until you press your <radical form=\"頁\">head</radical> right down to it and see that every grain is a different <kanji form=\"類\">sort</kanji>.",
+    "reading_mnemonic": "<reading>Louie</reading> the fussy chef peers into that bowl, runs out of names for each new <kanji form=\"類\">sort</kanji> of grain, and labels them all 「<reading>るい</reading>」 after himself.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "deliberation": {
+    "meaning_mnemonic": "A <kanji form=\"議\">deliberation</kanji> is a room full of people spending their <radical form=\"言\">words</radical> back and forth until the calm, fair choice of <radical form=\"義\">righteousness</radical> finally wins.",
+    "reading_mnemonic": "A goose named <reading>Gee</reading> sits in on every <kanji form=\"議\">deliberation</kanji>, honking 「<reading>ぎ</reading>」 over each speaker until the whole room gives up and votes his way.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "valve": {
+    "meaning_mnemonic": "Jam a soft silk <radical form=\"厶\">cocoon</radical> into a leaking pipe and twist it with <radical form=\"廾\">two hands</radical> to let the water through or hold it back, and you have built a <kanji form=\"弁\">valve</kanji>.",
+    "reading_mnemonic": "<reading>Ben</reading> the plumber bends over the dripping pipe all day, grunting 「<reading>べん</reading>」 each time he twists his soft little <kanji form=\"弁\">valve</kanji> shut, and it squeaks back open the moment he stands up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pay": {
+    "meaning_mnemonic": "When your <radical form=\"扌\">hand</radical> has to pull the coins out of the silk <radical form=\"厶\">cocoon</radical> where you keep them hidden, it is time to <kanji form=\"払\">pay</kanji>.",
+    "reading_mnemonic": "The miser <reading>Foots</reading> will only <kanji form=\"払\">pay</kanji> with his feet, so he kicks each coin out of its hiding place and across the counter, muttering 「<reading>ふつ</reading>」 with every kick.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dangerous": {
+    "meaning_mnemonic": "If you <radical form=\"𠂊\">crouch</radical> in the very spot where the <radical form=\"厄\">unlucky</radical> man got hit by a falling rock, you are doing something <kanji form=\"危\">dangerous</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit squeaks 「<reading>き</reading>！」 from her old pine above the falling rocks to warn you the spot is <kanji form=\"危\">dangerous</kanji>, then giggles when you duck one second too late.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "next": {
+    "meaning_mnemonic": "A man slumped in a waiting-room chair with a huge <radical form=\"欠\">yawn</radical> keeps missing his turn, until two chips of <radical form=\"冫\">ice</radical> down his shirt make him jump up just as the clerk calls <kanji form=\"次\">next</kanji>.",
+    "reading_mnemonic": "The clerk <reading>Gee</reading> never bothers to say <kanji form=\"次\">next</kanji> in full, so she just barks 「<reading>じ</reading>！」 across the waiting room, and the dripping man in the front chair jumps every single time.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fruit": {
+    "meaning_mnemonic": "Whatever hangs at the top of a <radical form=\"木\">tree</radical>, round and split into four green squares like a tiny <radical form=\"田\">rice field</radical>, is its <kanji form=\"果\">fruit</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow lands on the top branch, roasts the ripest <kanji form=\"果\">fruit</kanji> with one puff of flame, and caws 「<reading>か</reading>！」 because now it is far too hot to eat.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "easy": {
+    "meaning_mnemonic": "A <radical form=\"日\">sun</radical>ny day with not one sign anywhere telling you do <radical form=\"勿\">not</radical> is as <kanji form=\"易\">easy</kanji> as a day can get, because nothing you try is against the rules.",
+    "reading_mnemonic": "<reading>Eckie</reading> the lizard naps on top of the empty sign post all afternoon, sighing 「<reading>えき</reading>」, since a sunny day with nothing to obey is <kanji form=\"易\">easy</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sand": {
+    "meaning_mnemonic": "Every grain of <kanji form=\"砂\">sand</kanji> is a <radical form=\"石\">stone</radical> that the waves wore down until only a <radical form=\"少\">few</radical> crumbs of it were left.",
+    "reading_mnemonic": "A mason who tries to <reading>saw</reading> a boulder in half ends up knee-deep in <kanji form=\"砂\">sand</kanji>, spitting 「<reading>さ</reading>」 every time the grit gets between his teeth.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "extinguish": {
+    "meaning_mnemonic": "Splash <radical form=\"氵\">water</radical> on a campfire to <kanji form=\"消\">extinguish</kanji> it, and all that is left is a thin gray <radical form=\"肖\">resemblance</radical> of the fire drawn in smoke.",
+    "reading_mnemonic": "<reading>Sho</reading> the tiny magician ends every <reading>show</reading> by tipping a teacup of water over his candle to <kanji form=\"消\">extinguish</kanji> it, squeaking 「<reading>しょう</reading>」 while his doves cough in the smoke.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "present": {
+    "meaning_mnemonic": "A <radical form=\"王\">king</radical> who trusts only what he can <radical form=\"見\">see</radical> right in front of his face cares about nothing but the <kanji form=\"現\">present</kanji>.",
+    "reading_mnemonic": "At roll call, <reading>Gen</reading> the palace guard shouts 「<reading>げん</reading>」 one inch from the throne, because anyone out of the ruler's sight is not counted as <kanji form=\"現\">present</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tie": {
+    "meaning_mnemonic": "To stop a <radical form=\"吉\">good luck</radical> wish from flying away, you <kanji form=\"結\">tie</kanji> it down with a tight knot of <radical form=\"糸\">thread</radical>.",
+    "reading_mnemonic": "Visitors <kanji form=\"結\">tie</kanji> so many paper wishes to the horns of <reading>Ketsy</reading> the shrine goat that she bleats 「<reading>けつ</reading>」 every time a knot is pulled tight.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "spare-time": {
+    "meaning_mnemonic": "Holding a <radical form=\"叚\">false</radical> face up to your boss lets you slip outside into the <radical form=\"日\">sun</radical>, and every hour you steal that way is <kanji form=\"暇\">spare time</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow has so much <kanji form=\"暇\">spare time</kanji> on his sunny power line that he spots your mask, burns a hole in it, and caws 「<reading>か</reading>」 until your boss looks up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "desk": {
+    "meaning_mnemonic": "Nail a plank of <radical form=\"木\">tree</radical> across a wobbly little <radical form=\"几\">table</radical> so the teacup stops sliding off, and you have built a <kanji form=\"机\">desk</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the spirit still lives inside that wooden plank, so every time you lean on the <kanji form=\"机\">desk</kanji> to write, she giggles 「<reading>き</reading>」 under your elbows.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "egg": {
+    "meaning_mnemonic": "A <radical form=\"卯\">rabbit</radical> bends both long ears down around one round <radical form=\"丶\">drop</radical> to keep it warm, because that drop is her <kanji form=\"卵\">egg</kanji>.",
+    "reading_mnemonic": "When a fox sniffs at the nest, long-eared <reading>Ran</reading> squeaks 「<reading>らん</reading>」 and <reading>run</reading>s for it, the <kanji form=\"卵\">egg</kanji> still wobbling between her bent ears.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "milk": {
+    "meaning_mnemonic": "The <radical form=\"孚\">sincere</radical> hand feeds the small child first and the swan only <radical form=\"乙\">second</radical>, so the swan gets the last drops of <kanji form=\"乳\">milk</kanji> in the bottle.",
+    "reading_mnemonic": "Still hungry, the swan <reading>Nyu</reading> taps the empty bottle with her bent neck and honks 「<reading>にゅう</reading>」 until someone opens a <reading>new</reading> carton of <kanji form=\"乳\">milk</kanji> just for her.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sake": {
+    "meaning_mnemonic": "Pour plain <radical form=\"氵\">water</radical> into a <radical form=\"酉\">sake jar</radical> and leave it overnight, and the jar is so used to its job that by morning the water has become <kanji form=\"酒\">sake</kanji>.",
+    "reading_mnemonic": "All night <reading>Shu</reading> the innkeeper guards the lidded pot, hissing 「<reading>しゅ</reading>」 like <reading>shush</reading> at anyone who walks past, so it can turn into <kanji form=\"酒\">sake</kanji> in peace.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "candy": {
+    "meaning_mnemonic": "Leave a ripe <radical form=\"果\">fruit</radical> lying in the hot <radical form=\"艹\">grass</radical> all summer and the sun cooks it down into a sticky lump of <kanji form=\"菓\">candy</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the crow is too greedy to wait all summer, so he lets out one fiery <reading>caw</reading>, 「<reading>か</reading>」, and cooks the lump into <kanji form=\"菓\">candy</kanji> on the spot.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mail": {
+    "meaning_mnemonic": "The bag that has to <radical form=\"垂\">droop</radical> from the carrier's shoulder at every door in the <radical form=\"阝\">village</radical> is the bag stuffed with <kanji form=\"郵\">mail</kanji>.",
+    "reading_mnemonic": "<reading>Yuu</reading> the carrier pulls a letter from her sagging bag at each door and shouts 「<reading>ゆう</reading>」, like <reading>you</reading>, because she hands the <kanji form=\"郵\">mail</kanji> to whoever opens first.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "consume": {
+    "meaning_mnemonic": "Once your <radical form=\"口\">mouth</radical> makes a <radical form=\"契\">pledge</radical> to clear the whole table, you are stuck having to <kanji form=\"喫\">consume</kanji> every last dish on it.",
+    "reading_mnemonic": "<reading>Kit</reading> the goat hears that promise from under the table, bleats 「<reading>きつ</reading>」, and helps you <kanji form=\"喫\">consume</kanji> every dish, then the plates and the tablecloth too.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "harbor": {
+    "meaning_mnemonic": "At a <radical form=\"巷\">fork in the road</radical>, one branch goes on over land and the other ends in the <radical form=\"氵\">water</radical>, so that wet branch is the one that leads to the <kanji form=\"港\">harbor</kanji>.",
+    "reading_mnemonic": "<reading>Koichi</reading> builds his konbini right where that wet road ends, so his restock boats sail into the <kanji form=\"港\">harbor</kanji> and he waves each one in with a loud 「<reading>こう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "umbrella": {
+    "meaning_mnemonic": "One <radical form=\"人\">person</radical> opens a roof of cloth on a <radical form=\"十\">cross</radical> of sticks, and the moment <radical form=\"从\">two people</radical> and then <radical form=\"从\">two people</radical> more squeeze under it out of the rain, it is an <kanji form=\"傘\">umbrella</kanji>.",
+    "reading_mnemonic": "Even on dry days, <reading>Sunny</reading> pops open that crowded <kanji form=\"傘\">umbrella</kanji> and yells 「<reading>さん</reading>」 at the <reading>sun</reading>, and four strangers still pile under it out of habit.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "chair": {
+    "meaning_mnemonic": "A <radical form=\"木\">tree</radical> that grows a <radical form=\"奇\">strange</radical> flat seat and four short legs instead of branches is already a <kanji form=\"椅\">chair</kanji>.",
+    "reading_mnemonic": "<reading>Eeko</reading> the cat sits on that tree's <kanji form=\"椅\">chair</kanji>, and when a fresh twig pokes up through the seat she lets out a sharp 「<reading>い</reading>」, a squeaky <reading>eek</reading>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "abdomen": {
+    "meaning_mnemonic": "Your <kanji form=\"腹\">abdomen</kanji> is the part of you that makes you <radical form=\"复\">return</radical> to the fridge every time the <radical form=\"月\">moon</radical> comes up.",
+    "reading_mnemonic": "At midnight <reading>Fuku</reading> the raccoon stands in front of the open fridge, pats his round <kanji form=\"腹\">abdomen</kanji> and sighs 「<reading>ふく</reading>」, the only sound a stuffed belly can make.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "salt": {
+    "meaning_mnemonic": "The white <radical form=\"土\">earth</radical> you heap into a sharp <radical form=\"𠂉\">chevron</radical> on a <radical form=\"皿\">dish</radical>, so one pinch makes any <radical form=\"口\">mouth</radical> pucker, is <kanji form=\"塩\">salt</kanji>.",
+    "reading_mnemonic": "Enzo the chef saves the whole pointed white heap for the very <reading>end</reading>, then tips it all into the soup with a happy 「<reading>えん</reading>」, because to him <kanji form=\"塩\">salt</kanji> is how a recipe says the end.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "resign": {
+    "meaning_mnemonic": "If your job is to put your <radical form=\"舌\">tongue</radical> on <radical form=\"辛\">spicy</radical> peppers all day long, sooner or later you <kanji form=\"辞\">resign</kanji>.",
+    "reading_mnemonic": "<reading>Gigi</reading> the pepper taster can only hiss 「<reading>じ</reading>」 through her burning lips like a hot pan, so she writes her note to <kanji form=\"辞\">resign</kanji> on a napkin instead.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nose": {
+    "meaning_mnemonic": "The spot you point at to mean your <radical form=\"自\">self</radical> is also the spot you push into any box held out <radical form=\"畀\">to give</radical> you, which is why it is your <kanji form=\"鼻\">nose</kanji>.",
+    "reading_mnemonic": "A <reading>bee</reading> flies out of the gift box and stings you right on the <kanji form=\"鼻\">nose</kanji>, and you yelp 「<reading>び</reading>」 as it swells up like a red ball.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hair-of": {
+    "meaning_mnemonic": "<radical form=\"髟\">Hair hanging long</radical> enough for a <radical form=\"友\">friend</radical> to braid can only be <kanji form=\"髪\">hair of the head</kanji>, since nobody braids their arm hair.",
+    "reading_mnemonic": "Hattie stuffs the finished braid under three <reading>hats</reading> at once and says 「<reading>はつ</reading>」, because she thinks <kanji form=\"髪\">hair of the head</kanji> should never see daylight.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sugar": {
+    "meaning_mnemonic": "The dragon at the old <radical form=\"唐\">T'ang</radical> festival keeps its mouth shut on plain <radical form=\"米\">rice</radical>, so the cooks boil the rice down until it turns into sticky <kanji form=\"糖\">sugar</kanji>.",
+    "reading_mnemonic": "The festival pot tips over, and the dragon's back-leg dancer, <reading>Toe</reading>, walks off with <kanji form=\"糖\">sugar</kanji> glued to every toe, wailing 「<reading>とう</reading>」 at each sticky step.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "bridge": {
+    "meaning_mnemonic": "Cut down a <radical form=\"木\">tree</radical> as <radical form=\"喬\">high</radical> as a tower, let it fall across the river, and you have a <kanji form=\"橋\">bridge</kanji>.",
+    "reading_mnemonic": "A toll-keeper named <reading>Key-oh</reading> has put a padlock on the fallen trunk, and nobody crosses his <kanji form=\"橋\">bridge</kanji> until he jangles his one key and shouts 「<reading>きょう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "busy": {
+    "meaning_mnemonic": "You are so <kanji form=\"忙\">busy</kanji> that the wish candle you lit with your whole <radical form=\"忄\">heart</radical> burns down and is <radical form=\"亡\">deceased</radical> before you find one free minute to make the wish.",
+    "reading_mnemonic": "<reading>Bo</reading> the courier is far too <kanji form=\"忙\">busy</kanji> to slow down, so he sprints past your wish candle yelling 「<reading>ぼう</reading>」 and the wind from his legs blows it out.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "good": {
+    "meaning_mnemonic": "A traveler <radical form=\"艮\">stopping</radical> mid-step so that one tiny <radical form=\"丶\">drop</radical> of dew can slide off its leaf without being crushed is about as <kanji form=\"良\">good</kanji> as anyone gets.",
+    "reading_mnemonic": "<reading>Leo</reading> barks 「<reading>りょう</reading>」 at the hold-up on the path until he spots the saved dewdrop, then sits down and wags like the <kanji form=\"良\">good</kanji> boy he is.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "cat": {
+    "meaning_mnemonic": "The <radical form=\"犭\">animal</radical> that flattens every rice <radical form=\"苗\">seedling</radical> in the field by curling up for a nap on top of them is, of course, the <kanji form=\"猫\">cat</kanji>.",
+    "reading_mnemonic": "<reading>Bee-Owl</reading> swoops low over the field hooting 「<reading>びょう</reading>」 to chase off the napping <kanji form=\"猫\">cat</kanji>, who just rolls over onto a fresh patch of rice.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "refreshing": {
+    "meaning_mnemonic": "Nothing in the whole hot, crowded <radical form=\"京\">capital</radical> is as <kanji form=\"涼\">refreshing</kanji> as the cold <radical form=\"氵\">water</radical> in the fountain right inside its giant gate.",
+    "reading_mnemonic": "<reading>Leon</reading> the gate guard sneaks into the fountain sighing 「<reading>りょう</reading>」 and tells his angry captain the water was far too <kanji form=\"涼\">refreshing</kanji> to guard from outside.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "cap": {
+    "meaning_mnemonic": "A <kanji form=\"帽\">cap</kanji> is just a scrap of <radical form=\"巾\">cloth</radical> on your head that makes looking up at the sky no longer a <radical form=\"冒\">risk</radical>.",
+    "reading_mnemonic": "<reading>Beau</reading> the umpire bows so low to the crowd, groaning 「<reading>ぼう</reading>」, that his <kanji form=\"帽\">cap</kanji> drops in the dirt and he squints through the whole last inning.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "lake": {
+    "meaning_mnemonic": "So much <radical form=\"氵\">water</radical> that even a <radical form=\"胡\">barbarian</radical> rider has to stop his horse and ride all the way around it is a <kanji form=\"湖\">lake</kanji>.",
+    "reading_mnemonic": "<reading>Ko</reading>, a duck no bigger than a shoe, tows the fur-cloaked rider and his whole horse across the <kanji form=\"湖\">lake</kanji> on a rope, puffing 「<reading>こ</reading>」 with every paddle.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "grieve": {
+    "meaning_mnemonic": "When two hands wave <radical form=\"非\">not</radical> that one at the last cookie your <radical form=\"心\">heart</radical> wants, the heart has nothing left to do but <kanji form=\"悲\">grieve</kanji>.",
+    "reading_mnemonic": "Every time little <reading>Hee</reading> reaches for the last cookie, the two hands wave him away again, so he sits on the floor to <kanji form=\"悲\">grieve</kanji>, sobbing 「<reading>ひ</reading>」 into his sleeve.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "warmth": {
+    "meaning_mnemonic": "Grab the stick the <radical form=\"日\">sun</radical> lowers to you and it will <radical form=\"爰\">lead on to</radical> the top of the sky, close enough to soak up its <kanji form=\"暖\">warmth</kanji>.",
+    "reading_mnemonic": "Frozen <reading>Dan</reading> hauls himself up the stick hand over hand, yelling 「<reading>だん</reading>」 at every pull, until the <kanji form=\"暖\">warmth</kanji> up top melts the icicle off his nose.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "green": {
+    "meaning_mnemonic": "When you go <radical form=\"彔\">to carve wood</radical> from a fresh young log, the wet chips stain every <radical form=\"糸\">thread</radical> of your shirt <kanji form=\"緑\">green</kanji>.",
+    "reading_mnemonic": "Old <reading>Ryoko</reading> picks the wet chips off her shirt one by one, sighing 「<reading>りょく</reading>」 at each new <kanji form=\"緑\">green</kanji> spot that no washing will ever get out.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "glad": {
+    "meaning_mnemonic": "When the whole street blows horns to <radical form=\"喜\">rejoice</radical>, the <radical form=\"女\">woman</radical> who starts dancing in the middle of it is the one who is truly <kanji form=\"嬉\">glad</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> leans out of an old tree to watch the dancer spin past, so <kanji form=\"嬉\">glad</kanji> she giggles 「<reading>き</reading>、<reading>き</reading>」 until her branches shake loose a bird's nest.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "key": {
+    "meaning_mnemonic": "To keep your <radical form=\"金\">gold</radical> safe you <radical form=\"建\">build</radical> a lock around it, and the one small thing that can open that lock is the <kanji form=\"鍵\">key</kanji>.",
+    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog sleeps on top of the safe with its only <kanji form=\"鍵\">key</kanji> held in his teeth, and he growls 「<reading>けん</reading>」 at anyone who reaches for it.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "difficult": {
+    "meaning_mnemonic": "Even a patient <radical form=\"夫\">husband</radical> finds it <kanji form=\"難\">difficult</kanji> to push one blade of <radical form=\"艹\">grass</radical> into the clamped <radical form=\"口\">mouth</radical> of a stubborn <radical form=\"隹\">old bird</radical>.",
+    "reading_mnemonic": "His granny <reading>Nan</reading> takes over, hums 「<reading>なん</reading>」 once, and the beak pops open at once, because nothing is <kanji form=\"難\">difficult</kanji> for a granny.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dirty": {
+    "meaning_mnemonic": "<radical form=\"氵\">Water</radical> that sinks into the <radical form=\"一\">ground</radical> and then gets stuck in a <radical form=\"丂\">kink</radical> of the drain pipe just sits there until it turns <kanji form=\"汚\">dirty</kanji>.",
+    "reading_mnemonic": "The plumber Otto pulls the drain pipe straight, takes the whole <kanji form=\"汚\">dirty</kanji> gush in the face, and the only word he has left is <reading>Oh</reading>, 「<reading>お</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "bend": {
+    "meaning_mnemonic": "Hang from the bar across a <radical form=\"日\">sun</radical>-lit window by your <radical form=\"廾\">two hands</radical> every morning, and slowly that straight bar will <kanji form=\"曲\">bend</kanji>.",
+    "reading_mnemonic": "A fat pigeon called <reading>Kyo-coo</reading> also sits on that window bar each morning, coos 「<reading>きょく</reading>」, and makes it <kanji form=\"曲\">bend</kanji> a little more.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "spicy": {
+    "meaning_mnemonic": "After <radical form=\"十\">ten</radical> chilies you can no longer sit, so you <radical form=\"立\">stand</radical> up and hop around the table, which is how you know the soup is <kanji form=\"辛\">spicy</kanji>.",
+    "reading_mnemonic": "Hopping around the table after his own <kanji form=\"辛\">spicy</kanji> soup, the cook Shinji cracks his <reading>shin</reading> on a table leg and howls 「<reading>しん</reading>！」",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "young": {
+    "meaning_mnemonic": "The <radical form=\"艹\">grass</radical> your <radical form=\"右\">right</radical> hand can pull out with no effort at all is the soft, <kanji form=\"若\">young</kanji> kind.",
+    "reading_mnemonic": "The gardener <reading>Jack</reading> pulls up only the <kanji form=\"若\">young</kanji> shoots because one tug is enough, yet he still yanks so hard he falls on his back, yelling 「<reading>じゃく</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "cramped": {
+    "meaning_mnemonic": "An <radical form=\"犭\">animal</radical> that tries to nap inside your <radical form=\"夹\">sandwich</radical> has bread pressed against both sides and finds it very <kanji form=\"狭\">cramped</kanji>.",
+    "reading_mnemonic": "Pressed flat between the slices of bread in that <kanji form=\"狭\">cramped</kanji> lunch, the ferret <reading>Kyo</reading> squeaks 「<reading>きょう</reading>」 every time you take a bite.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "longing": {
+    "meaning_mnemonic": "Staring across a <radical form=\"谷\">valley</radical> at the rice ball on the far side, the one thing you <radical form=\"欠\">lack</radical>, is exactly what <kanji form=\"欲\">longing</kanji> feels like.",
+    "reading_mnemonic": "A tiny chick called <reading>Yolk</reading> peeps 「<reading>よく</reading>」 from the cliff edge at that rice ball all day, too small to jump across and too full of <kanji form=\"欲\">longing</kanji> to leave.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "closed": {
+    "meaning_mnemonic": "Lock a <radical form=\"才\">genius</radical> kid inside a <radical form=\"門\">gate</radical> and the doors stay <kanji form=\"閉\">closed</kanji>, because he already knows every trick you will try to open them.",
+    "reading_mnemonic": "A horse named <reading>Hay</reading> neighs 「<reading>へい</reading>」 at the doors all night for his dinner, but the kid inside just smiles and keeps them <kanji form=\"閉\">closed</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "undress": {
+    "meaning_mnemonic": "The night <radical form=\"兑\">exchange</radical> under the <radical form=\"月\">moon</radical> trades your day clothes for pajamas, but only once you <kanji form=\"脱\">undress</kanji> right there at the counter.",
+    "reading_mnemonic": "The clerk at that counter, a ladybug called <reading>Dots</reading>, taps the sign and says 「<reading>だつ</reading>」 until you <kanji form=\"脱\">undress</kanji>, then hands you pajamas covered in dots.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dislike": {
+    "meaning_mnemonic": "A <radical form=\"女\">woman</radical> made to perform two different dances <radical form=\"兼\">concurrently</radical> soon starts to <kanji form=\"嫌\">dislike</kanji> both of them.",
+    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog barks 「<reading>けん</reading>」 and tosses the dancer a sword to juggle as well, and she shows her <kanji form=\"嫌\">dislike</kanji> by throwing it straight back at his wall.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "lie-down": {
+    "meaning_mnemonic": "To <kanji form=\"寝\">lie down</kanji> under a <radical form=\"宀\">roof</radical>, stretch out on the half log of the <radical form=\"爿\">left-side kata</radical>, pull a <radical form=\"冖\">cover</radical> over all but your <radical form=\"⺕\">snout</radical>, and tug it up <radical form=\"又\">again</radical> whenever it slips.",
+    "reading_mnemonic": "A raccoon named <reading>Shin</reading> tries to <kanji form=\"寝\">lie down</kanji> on that half log, but the blanket only reaches his knees, so his bare shin sticks out and he squeaks 「<reading>しん</reading>」 all night.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "quiet": {
+    "meaning_mnemonic": "Once the kid and the pig who <radical form=\"争\">contend</radical> over the sausage fall asleep under the soft <radical form=\"青\">blue-green</radical> glow of the moon, the whole yard goes <kanji form=\"静\">quiet</kanji>.",
+    "reading_mnemonic": "Star student <reading>Sei</reading> creeps past the sleeping kid and pig and breathes a smug 「<reading>せい</reading>」, sure she has won the prize for keeping the yard <kanji form=\"静\">quiet</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "flourish": {
+    "meaning_mnemonic": "Hang the <radical form=\"辰\">sign of the dragon</radical> over a market stall and crowds rush to throw their <radical form=\"貝\">money</radical> at it, so the whole street starts to <kanji form=\"賑\">flourish</kanji>.",
+    "reading_mnemonic": "So many shoppers pack the dragon-sign stall that they keep kicking the trader <reading>Shin</reading> in the shin, and each 「<reading>しん</reading>！」 he yelps means business will <kanji form=\"賑\">flourish</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "jump": {
+    "meaning_mnemonic": "When a snail blocks the <radical form=\"甬\">walled path</radical> and there is no room to step around it, your <radical form=\"足\">foot</radical> has to <kanji form=\"踊\">jump</kanji> right over it.",
+    "reading_mnemonic": "A boy named <reading>Yo</reading> bounces over the snail on the walled path like a yo-yo, yelling 「<reading>よう</reading>！」 each time he <kanji form=\"踊\">jump</kanji>s back and forth.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "equal": {
+    "meaning_mnemonic": "Squeeze two kids into one bad <radical form=\"匸\">hiding enclosure</radical> and only their <radical form=\"儿\">human legs</radical> stick out, so with no faces to tell apart, the two of them look exactly <kanji form=\"匹\">equal</kanji>.",
+    "reading_mnemonic": "Old Hitsu, the fussiest seeker in town, <reading>hits</reading> each pair of sneakers poking out of the cupboard with one 「<reading>ひつ</reading>」 swat, so every hider gets an exactly <kanji form=\"匹\">equal</kanji> punishment.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "other": {
+    "meaning_mnemonic": "Nobody wants to grab a snake tail that just goes on <radical form=\"也\">to be</radical> there in the wall, so every <radical form=\"亻\">person</radical> points at someone else and says the <kanji form=\"他\">other</kanji> one should pull it.",
+    "reading_mnemonic": "Tamo, the playground champion of <reading>tag</reading>, taps the nearest shoulder with a quick 「<reading>た</reading>」, so reaching into that crack in the wall is now the <kanji form=\"他\">other</kanji> kid's job.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tome": {
+    "meaning_mnemonic": "A book so fat that it needs a <radical form=\"冂\">wide box</radical> for a cover and <radical form=\"廾\">two hands</radical> just to lift it is not a book anymore, it is a <kanji form=\"冊\">tome</kanji>.",
+    "reading_mnemonic": "The fat <kanji form=\"冊\">tome</kanji> will not stay shut until Satsu the sumo librarian <reading>sat</reading> on it, and every page lets out a flat 「<reading>さつ</reading>」 of dusty air.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "call": {
+    "meaning_mnemonic": "When your <radical form=\"口\">mouth</radical> shouts a name that ends in a big <radical form=\"乎\">question mark</radical> because you have no idea where they went, you are trying to <kanji form=\"呼\">call</kanji> them.",
+    "reading_mnemonic": "<reading>Coco</reading> the parrot can only <kanji form=\"呼\">call</kanji> you one way, a loud 「<reading>こ</reading>？」 that curls up at the end, and she keeps it up until you walk into the room.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "overnight-stay": {
+    "meaning_mnemonic": "Tying your boat up on calm <radical form=\"氵\">water</radical> and waiting there until the sky turns <radical form=\"白\">white</radical> with morning is an <kanji form=\"泊\">overnight stay</kanji>.",
+    "reading_mnemonic": "<reading>Hack</reading>, the old sailor in the next boat, coughs 「<reading>はく</reading>, <reading>はく</reading>」 at the dark water all night long and ruins your whole <kanji form=\"泊\">overnight stay</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "row": {
+    "meaning_mnemonic": "Stand <radical form=\"八\">eight</radical> stiff brush <radical form=\"业\">bristles</radical> upright on the flat <radical form=\"一\">ground</radical> and they make one tidy <kanji form=\"並\">row</kanji>, like the teeth of a comb.",
+    "reading_mnemonic": "Coach <reading>Hey</reading> stomps past the upturned brush and barks 「<reading>へい</reading>！」 at any hair that leans out of its <kanji form=\"並\">row</kanji>, so they all snap straight again.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sheet-of": {
+    "meaning_mnemonic": "Give a <radical form=\"木\">tree</radical> enough sharp <radical form=\"攵\">tap</radical>s and it peels apart into thin flat pieces, each one a <kanji form=\"枚\">sheet of</kanji> wood.",
+    "reading_mnemonic": "Little <reading>Mai</reading> snatches each piece as it peels off the trunk and shouts 「<reading>まい</reading>！」, which means every <kanji form=\"枚\">sheet of</kanji> wood in the pile is now hers.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "counter-for-2": {
+    "meaning_mnemonic": "A cup carved from a <radical form=\"木\">tree</radical> never gives a <radical form=\"不\">negative</radical> answer when you ask for more, so the <kanji form=\"杯\">counter for cupfuls</kanji> just keeps climbing.",
+    "reading_mnemonic": "Waiter <reading>Hi</reading> answers 「<reading>はい</reading>」 every time you wave the wooden cup and pours again, so the <kanji form=\"杯\">counter for cupfuls</kanji> on your bill hits forty before lunch.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "laugh": {
+    "meaning_mnemonic": "Those <radical form=\"竹\">bamboo</radical> stalks bent over in the wind are not facing an <radical form=\"夭\">early death</radical>, they are doubled over in one big <kanji form=\"笑\">laugh</kanji>.",
+    "reading_mnemonic": "Tiny <reading>Sho</reading> tickles the bent green stalks with his white gloves, and his whole <reading>show</reading> is them shaking with a <kanji form=\"笑\">laugh</kanji> while he squeaks 「<reading>しょう</reading>」 and bows.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "baggage": {
+    "meaning_mnemonic": "A huge bundle of <radical form=\"艹\">grass</radical> tied on your back, with nobody sure <radical form=\"何\">what</radical> is inside, is the oldest kind of <kanji form=\"荷\">baggage</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the crow lands on the bundle to peek inside, and his nosy <reading>caw</reading> of 「<reading>か</reading>」 comes out as a puff of flame that sets your whole <kanji form=\"荷\">baggage</kanji> smoking.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "grope": {
+    "meaning_mnemonic": "To <kanji form=\"探\">grope</kanji> for the fish that slipped out of <radical form=\"㓁\">a net</radical>, you push one <radical form=\"扌\">hand (left)</radical> blindly into the dark hollow of a <radical form=\"木\">tree</radical> and feel around.",
+    "reading_mnemonic": "Fisherman <reading>Tan</reading> is now stuck up to his elbow in that same hollow trunk, and every time he has to <kanji form=\"探\">grope</kanji> past a sleeping squirrel's tail, he squeaks 「<reading>たん</reading>！」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "impart": {
+    "meaning_mnemonic": "To <kanji form=\"授\">impart</kanji> what you know, your <radical form=\"扌\">hand (left)</radical> lowers the wrapped parcel to a student who reaches up to <radical form=\"受\">accept</radical> it.",
+    "reading_mnemonic": "The wrapped parcel holds one box of <reading>juice</reading>, because old Coach Ju thinks a single sip is how you <kanji form=\"授\">impart</kanji> forty years of judo, and he slurps 「<reading>じゅ</reading>」 to show the student how.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "token": {
+    "meaning_mnemonic": "A slip of <radical form=\"竹\">bamboo</radical> with a stamp made to <radical form=\"付\">adhere</radical> to it is the oldest <kanji form=\"符\">token</kanji> you can show at a gate to prove who sent you.",
+    "reading_mnemonic": "Gate guard <reading>Foo</reading> blows 「<reading>ふ</reading>」 at every slip as hard as he can, since a stamp that flies off was never a real <kanji form=\"符\">token</kanji>, and today three of them hit him in the face.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ascend": {
+    "meaning_mnemonic": "You can only <kanji form=\"登\">ascend</kanji> a giant heap of <radical form=\"豆\">beans</radical> on <radical form=\"癶\">outspread legs</radical>, feet planted wide so the heap cannot roll you back to the bottom.",
+    "reading_mnemonic": "Halfway up the heap, a hard little pellet wedges between Toby's <reading>toe</reading>s, and he hops on one foot crying 「<reading>とう</reading>！」 while still trying to <kanji form=\"登\">ascend</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "scatter": {
+    "meaning_mnemonic": "Give the <radical form=\"龷\">twin sprouts</radical> one sharp <radical form=\"攵\">tap</radical> under the <radical form=\"月\">moon</radical> and their seeds <kanji form=\"散\">scatter</kanji> across the whole dark garden.",
+    "reading_mnemonic": "At dawn, gardener <reading>Sandy</reading> crawls out with a teaspoon, muttering 「<reading>さん</reading>、<reading>さん</reading>」 as she picks up every seed you made <kanji form=\"散\">scatter</kanji>, one at a time.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "leaf": {
+    "meaning_mnemonic": "Each flat green <kanji form=\"葉\">leaf</kanji> is a tiny <radical form=\"枼\">table</radical> the plant holds up above the <radical form=\"艹\">grass</radical>, so the bugs have somewhere to eat their dinner.",
+    "reading_mnemonic": "A caterpillar called <reading>Yo</reading> shouts 「<reading>よう</reading>！」 to his friends from his seat at the tiny table, then eats the whole <kanji form=\"葉\">leaf</kanji>, so they arrive to find no table at all.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "iron": {
+    "meaning_mnemonic": "<kanji form=\"鉄\">Iron</kanji> is the cheap <radical form=\"金\">metal</radical> nobody keeps in a safe, since no one cries when they <radical form=\"失\">lose</radical> a rusty old nail.",
+    "reading_mnemonic": "Scrap man <reading>Tetsu</reading> drags a giant magnet down the street for every nail people lose, and each time one flies up and hits him in the forehead he yells 「<reading>てつ</reading>！」, happy to get more free <kanji form=\"鉄\">iron</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "neighboring": {
+    "meaning_mnemonic": "You only find out there is a <kanji form=\"隣\">neighboring</kanji> house when its green <radical form=\"粦\">phosphorus</radical> glow shines over the <radical form=\"⻖\">hill</radical> between you every night.",
+    "reading_mnemonic": "That <kanji form=\"隣\">neighboring</kanji> house has a glowing green doorbell, and every night a bored goat walks over to <reading>ring</reading> it with its nose, 「<reading>りん</reading>！」, just to watch it light up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "laundry": {
+    "meaning_mnemonic": "A scared <radical form=\"翟\">pheasant</radical> flapping hard in a tub of <radical form=\"氵\">water</radical> splashes like a washing machine, so you toss in your socks and call it <kanji form=\"濯\">laundry</kanji>.",
+    "reading_mnemonic": "Grandpa <reading>Tuck</reading> pulls each wet sock out of the pheasant's tub and says 「<reading>たく</reading>」 as he pins it up, grumbling that the feathers are now part of the <kanji form=\"濯\">laundry</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dish": {
+    "meaning_mnemonic": "The <radical form=\"皿\">dish</radical> radical and the <kanji form=\"皿\">dish</kanji> kanji are the same, and since the food piled on that flat plate is one helping, the word covers both.",
+    "reading_mnemonic": "A waiter named <reading>Bay</reading> piles so much food on one wide, flat <kanji form=\"皿\">dish</kanji> that it tips, and he wails 「<reading>べい</reading>！」 as the peas roll off the edge.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "undertake": {
+    "meaning_mnemonic": "A <radical form=\"人\">person</radical> who climbs up and stands on top of the <radical form=\"止\">stop</radical> barricade instead of waiting is ready to <kanji form=\"企\">undertake</kanji> the whole job.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit giggles 「<reading>き</reading>」 from the old oak behind the barricade, since chopping down her own tree is the silly job she dared the climber to <kanji form=\"企\">undertake</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "quandary": {
+    "meaning_mnemonic": "A <radical form=\"木\">tree</radical> boxed in by a four-walled <radical form=\"囗\">enclosure</radical> keeps growing with nowhere to go, which puts it in a real <kanji form=\"困\">quandary</kanji>.",
+    "reading_mnemonic": "<reading>Connie</reading> the gardener planted that tree and then built the walls around it, so now she sits in the corner groaning 「<reading>こん</reading>」 over a <kanji form=\"困\">quandary</kanji> she made herself.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "borough": {
+    "meaning_mnemonic": "A <radical form=\"广\">shelter</radical> whose walls are covered in rules taped up to <radical form=\"付\">adhere</radical> for years is the office that runs the whole <kanji form=\"府\">borough</kanji>.",
+    "reading_mnemonic": "The old clerk lets out a tired <reading>phew</reading>, 「<reading>ふ</reading>」, each time he tapes one more rule to the office wall, because the <kanji form=\"府\">borough</kanji> makes ten new ones a day.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "watch-over": {
+    "meaning_mnemonic": "Holding a <radical form=\"手\">hand</radical> flat over your <radical form=\"目\">eye</radical> to block the sun lets you stare far out and <kanji form=\"看\">watch over</kanji> everything below.",
+    "reading_mnemonic": "The lifeguard shades her face at the riverbank to <kanji form=\"看\">watch over</kanji> the swimmers, and anyone who splashes gets an empty <reading>can</reading> bounced off their head with a hollow 「<reading>かん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "beauty": {
+    "meaning_mnemonic": "A <radical form=\"羊\">sheep</radical> that grows so <radical form=\"大\">big</radical> and fluffy it wins first prize at the fair is the farm's idea of true <kanji form=\"美\">beauty</kanji>.",
+    "reading_mnemonic": "A <reading>bee</reading> lands on the fluffy prize winner at the fair, buzzes 「<reading>び</reading>」 and will not leave, because it thinks that much <kanji form=\"美\">beauty</kanji> must be a flower.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rhythm": {
+    "meaning_mnemonic": "Painting one <radical form=\"聿\">brush</radical> stroke on each <radical form=\"彳\">step</radical> as you climb, never faster and never slower, keeps your feet in a steady <kanji form=\"律\">rhythm</kanji>.",
+    "reading_mnemonic": "The music teacher <reading>Ritz</reading> claps 「<reading>りつ</reading>」 at the foot of the painted stairs, and anyone who climbs off the beat is sent back down to find the <kanji form=\"律\">rhythm</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "distribute": {
+    "meaning_mnemonic": "A good host learns to <kanji form=\"配\">distribute</kanji> by tipping the <radical form=\"酉\">sake jar</radical> into every cup at the table and keeping not one drop for <radical form=\"己\">oneself</radical>.",
+    "reading_mnemonic": "The host gives every guest a loud <reading>Hi</reading>, 「<reading>はい</reading>」, and a full cup, so after the fiftieth guest she has nothing left to <kanji form=\"配\">distribute</kanji> but greetings.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "price": {
+    "meaning_mnemonic": "Ask any shop <radical form=\"亻\">person</radical> how much something costs and the <kanji form=\"値\">price</kanji> comes back <radical form=\"直\">straightaway</radical>, because it is the one number every seller knows by heart.",
+    "reading_mnemonic": "When you beg the seller to drop the <kanji form=\"値\">price</kanji>, he clicks his tongue 「<reading>ち</reading>」 and tells you <reading>cheap</reading> things are sold next door.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "marriage": {
+    "meaning_mnemonic": "Long ago a <radical form=\"女\">woman</radical> danced her way to her new husband's house only after the sky went <radical form=\"昏\">dark</radical>, so every <kanji form=\"婚\">marriage</kanji> began at night.",
+    "reading_mnemonic": "<reading>Connie</reading> the bride reaches her new home in the pitch black, cannot find the bell, and knocks 「<reading>こん</reading>」 with her forehead to begin her <kanji form=\"婚\">marriage</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "notebook": {
+    "meaning_mnemonic": "Fold one <radical form=\"長\">long</radical> strip of <radical form=\"巾\">cloth</radical> back and forth and stitch it down one side, and every fold becomes a page of your first <kanji form=\"帳\">notebook</kanji>.",
+    "reading_mnemonic": "<reading>Chow</reading> the puppy thinks the cloth <kanji form=\"帳\">notebook</kanji> is his dinner, so he chews it one fold at a time and burps 「<reading>ちょう</reading>」 after every page.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "stick": {
+    "meaning_mnemonic": "A <radical form=\"占\">fortune-telling</radical> booth that wants your <radical form=\"貝\">money</radical> will <kanji form=\"貼\">stick</kanji> its lucky paper charm to your forehead and not peel it off until you pay.",
+    "reading_mnemonic": "Madam <reading>Ten</reading> the fortune teller makes one more charm <kanji form=\"貼\">stick</kanji> to your face for every coin, and she only stops at 「<reading>てん</reading>」 because there is no face left.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "overall": {
+    "meaning_mnemonic": "Once you <radical form=\"充\">allot</radical> one <radical form=\"糸\">thread</radical> to each puppet and gather every end in one fist, you control the <kanji form=\"統\">overall</kanji> show instead of a single doll.",
+    "reading_mnemonic": "Mr. <reading>Toe</reading> the puppeteer runs out of fingers, so he ties the last threads to his big toe and shouts 「<reading>とう</reading>」 as his foot runs the <kanji form=\"統\">overall</kanji> show.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "year-end": {
+    "meaning_mnemonic": "When the <radical form=\"戌\">sign of the dog</radical> must <radical form=\"止\">stop</radical> and pass the calendar to the next animal, its one <radical form=\"小\">small</radical> last page marks the <kanji form=\"歳\">year-end</kanji>.",
+    "reading_mnemonic": "The dog on the sign tears off that last little page with a huge <reading>sigh</reading>, 「<reading>さい</reading>」, because <kanji form=\"歳\">year-end</kanji> means handing the whole calendar to a smug pig.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "placement": {
+    "meaning_mnemonic": "Drop a <radical form=\"罒\">net</radical> over the pigeon <radical form=\"直\">straightaway</radical> and it stops wandering, so wherever the net lands becomes its <kanji form=\"置\">placement</kanji>.",
+    "reading_mnemonic": "The station keeps the pigeon's <kanji form=\"置\">placement</kanji> under the net with one cube of <reading>cheese</reading>, so it stays there all day pecking 「<reading>ち</reading>」 like a tiny clock.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "porcelain-bowl": {
+    "meaning_mnemonic": "Grind a <radical form=\"石\">stone</radical> to powder, bake it thin and white, and paint your <radical form=\"宛\">address</radical> on the bottom so nobody walks off with your <kanji form=\"碗\">porcelain bowl</kanji>.",
+    "reading_mnemonic": "The address on the bottom says it is your <reading>one</reading> and only <kanji form=\"碗\">porcelain bowl</kanji>, so when your elbow knocks it off the table you hold up one finger and wail 「<reading>わん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "practice": {
+    "meaning_mnemonic": "Pulling the same <radical form=\"糸\">thread</radical> through the cloth each time the sun comes up in the <radical form=\"東\">east</radical>, day after day, is what <kanji form=\"練\">practice</kanji> is.",
+    "reading_mnemonic": "A little <reading>wren</reading> lands on the sill at every sunrise and chirps 「<reading>れん</reading>」 each time your needle misses, so your sewing <kanji form=\"練\">practice</kanji> comes with a very rude coach.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "thong": {
+    "meaning_mnemonic": "The <radical form=\"糸\">thread</radical> looped between the toes of <radical form=\"者\">someone</radical> napping on a park bench, holding his sandal on, is a <kanji form=\"緒\">thong</kanji>.",
+    "reading_mnemonic": "The napping man's <kanji form=\"緒\">thong</kanji> snaps when he stands, and his hopping on one foot turns into a free <reading>show</reading> for the whole park, with kids chanting 「<reading>しょ</reading>」 at every hop.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "occasion": {
+    "meaning_mnemonic": "Holding a <radical form=\"祭\">ritual</radical> up on a <radical form=\"⻖\">hill</radical> where the whole village can see it turns an ordinary day into an <kanji form=\"際\">occasion</kanji>.",
+    "reading_mnemonic": "On such an <kanji form=\"際\">occasion</kanji> the goat on the hill climbs out of its dip, pushes to the <reading>side</reading> of the altar and bleats 「<reading>さい</reading>」 until it gets a share of the offering.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "purport": {
+    "meaning_mnemonic": "Late for the test, you <radical form=\"走\">run</radical> through the whole book and <radical form=\"取\">take</radical> only the one line that matters, and that line is its <kanji form=\"趣\">purport</kanji>.",
+    "reading_mnemonic": "That line is so short that you write the <kanji form=\"趣\">purport</kanji> on the sole of one <reading>shoe</reading>, and in the test you lift your foot and whisper 「<reading>しゅ</reading>」 to read it.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "chopsticks": {
+    "meaning_mnemonic": "Hand <radical form=\"者\">someone</radical> two thin sticks cut from <radical form=\"竹\">bamboo</radical> and they can pick up hot noodles without touching them, because now they hold <kanji form=\"箸\">chopsticks</kanji>.",
+    "reading_mnemonic": "The noodle cook <reading>Chopper</reading> is too busy to say the whole word <kanji form=\"箸\">chopsticks</kanji>, so he pushes a pair into that hungry hand with a quick 「<reading>ちょ</reading>！」 and runs back to his boiling pot.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "authority": {
+    "meaning_mnemonic": "The <radical form=\"隹\">old bird</radical> sitting under a <radical form=\"𠂉\">chevron</radical> of sticks at the top of the only <radical form=\"木\">tree</radical> on flat <radical form=\"一\">ground</radical> looks down on everyone, which gives it all the <kanji form=\"権\">authority</kanji>.",
+    "reading_mnemonic": "<reading>Ken</reading> the sword-collecting dog barks 「<reading>けん</reading>！」 up at that high perch all day and waves his longest sword, but nothing he owns reaches the top, so the bird keeps every bit of its <kanji form=\"権\">authority</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "go-between": {
+    "meaning_mnemonic": "A <radical form=\"亻\">person</radical> standing right <radical form=\"中\">in</radical> the middle of two neighbours who refuse to speak, carrying every angry note across the fence, is the <kanji form=\"仲\">go-between</kanji>.",
+    "reading_mnemonic": "When the two neighbours stop speaking, <reading>Chuu</reading> the loyal mouse becomes their <kanji form=\"仲\">go-between</kanji>, running along the fence with each angry note and squeaking 「<reading>ちゅう</reading>」 as he bows and hands it over.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "perfect": {
+    "meaning_mnemonic": "A house becomes <kanji form=\"完\">perfect</kanji> the moment the <radical form=\"宀\">roof</radical> goes on, because only then is everything built since the <radical form=\"元\">beginning</radical> finally covered and done.",
+    "reading_mnemonic": "The roofer <reading>Kan</reading> hammers the last tile on with an old soup <reading>can</reading>, and only when it rings a clean 「<reading>かん</reading>」 does he call the house <kanji form=\"完\">perfect</kanji> and climb down.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "value": {
+    "meaning_mnemonic": "No <radical form=\"亻\">person</radical> pays for a box before lifting its <radical form=\"覀\">flat lid</radical> to check what is inside, because only the contents tell you its <kanji form=\"価\">value</kanji>.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow lifts each box at the market and caws 「<reading>か</reading>」 at anything of real <kanji form=\"価\">value</kanji>, then sets the cheap stuff on fire.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dreadful": {
+    "meaning_mnemonic": "Your <radical form=\"忄\">heart</radical> nearly stops when a sheet of white <radical form=\"布\">linen</radical> floats down the dark hallway with nobody under it, because nothing is more <kanji form=\"怖\">dreadful</kanji>.",
+    "reading_mnemonic": "When the floating sheet snags on a coat hook and turns out to be laundry, <reading>Fuu</reading> the jumpy night guard sighs a long 「<reading>ふ</reading>」, a shaky <reading>phew</reading> after the most <kanji form=\"怖\">dreadful</kanji> minute of his life.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shallow": {
+    "meaning_mnemonic": "Pour <radical form=\"氵\">water</radical> into the <radical form=\"戋\">shallow</radical> knife cuts on a wooden board and it never gets deeper than a fingernail, which is as <kanji form=\"浅\">shallow</kanji> as water gets.",
+    "reading_mnemonic": "<reading>Sen</reading> the penny-pinching frog dives into the cuts after a lost <reading>cent</reading>, croaks 「<reading>せん</reading>」, and bonks his head on the board because the water is so <kanji form=\"浅\">shallow</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "faction": {
+    "meaning_mnemonic": "When a river of <radical form=\"氵\">water</radical> starts <radical form=\"𠂢\">to branch</radical> into three streams, the fish in each stream stop talking to the others and form their own <kanji form=\"派\">faction</kanji>.",
+    "reading_mnemonic": "Each <kanji form=\"派\">faction</kanji> of fish is led by a catfish called <reading>Hah</reading>, and all three of them spend the day shouting 「<reading>は</reading>」 at each other across the split river.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "romance": {
+    "meaning_mnemonic": "When your <radical form=\"心\">heart</radical> skips for the penguin next door and his heart skips for you <radical form=\"亦\">also</radical>, that matching beat is <kanji form=\"恋\">romance</kanji>.",
+    "reading_mnemonic": "<reading>Ren</reading> the penguin waddles to his sweetheart's iceberg every evening and sings 「<reading>れん</reading>」 under her window until the whole colony is sick of their <kanji form=\"恋\">romance</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shame": {
+    "meaning_mnemonic": "Your <radical form=\"耳\">ears</radical> go red hot and your <radical form=\"心\">heart</radical> thumps after you trip in front of the whole class, and that burning feeling is <kanji form=\"恥\">shame</kanji>.",
+    "reading_mnemonic": "<reading>Chee</reading> the school photographer snaps the picture the instant you trip, shouting 「<reading>ち</reading>」 for <reading>cheese</reading>, so your bright red ears go in the yearbook as pure <kanji form=\"恥\">shame</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "overthrow": {
+    "meaning_mnemonic": "The <radical form=\"到\">arrival</radical> of a bigger kid at the top of the sand pile means the <radical form=\"亻\">person</radical> who was king up there gets shoved down, which is an <kanji form=\"倒\">overthrow</kanji>.",
+    "reading_mnemonic": "The bigger kid, <reading>Toe</reading>-Grabber Taro, wins the sand pile by yanking the old king's big <reading>toe</reading>, and the yelp of 「<reading>とう</reading>」 on the way down is the sound of every playground <kanji form=\"倒\">overthrow</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "accidentally": {
+    "meaning_mnemonic": "A <radical form=\"禺\">long-tailed monkey</radical> lets its tail trail so far across the floor that every <radical form=\"亻\">person</radical> in the room ends up stepping on it <kanji form=\"偶\">accidentally</kanji>.",
+    "reading_mnemonic": "<reading>Goo</reading> the monkey yelps 「<reading>ぐう</reading>」 each time someone treads on his tail, and everyone swears they did it <kanji form=\"偶\">accidentally</kanji>, though it has happened forty times today.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "loneliness": {
+    "meaning_mnemonic": "When your <radical form=\"叔\">uncle</radical> is the only one left living under the big old <radical form=\"宀\">roof</radical>, every empty room he walks past fills the house with <kanji form=\"寂\">loneliness</kanji>.",
+    "reading_mnemonic": "The only visitor to that big empty house is a raccoon named <reading>Jack</reading>, who scratches 「<reading>じゃく</reading>」 at the back door each night because he cannot stand the <kanji form=\"寂\">loneliness</kanji> either.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "deep": {
+    "meaning_mnemonic": "Tie <radical form=\"㓁\">a net</radical> to the top of a tall <radical form=\"木\">tree</radical> trunk and push it down into the <radical form=\"氵\">water</radical>, and if it still never touches the bottom, the lake is truly <kanji form=\"深\">deep</kanji>.",
+    "reading_mnemonic": "The diver <reading>Shin</reading> wades in after the stuck pole, and the lake is so <kanji form=\"深\">deep</kanji> that his first step goes past his <reading>shin</reading>s and the second leaves only bubbles saying 「<reading>しん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "itchy": {
+    "meaning_mnemonic": "A <radical form=\"羊\">sheep</radical> that catches a skin <radical form=\"疒\">sickness</radical> under all that thick wool is <kanji form=\"痒\">itchy</kanji> in a place no hoof can ever reach.",
+    "reading_mnemonic": "The woolly patient rolls onto its back, and a farm boy called <reading>Yo</reading> scratches its <kanji form=\"痒\">itchy</kanji> belly with a garden rake until it bleats a happy 「<reading>よう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "gain": {
+    "meaning_mnemonic": "If the box you want <radical form=\"㝵\">to get</radical> sits on a high shelf, each <radical form=\"彳\">step</radical> you climb up the ladder is a small <kanji form=\"得\">gain</kanji> until it is finally yours.",
+    "reading_mnemonic": "Just as your fingers touch the box, a crow called <reading>Toku</reading> <reading>took</reading> it first, cawing 「<reading>とく</reading>」, so your whole climb ends as his <kanji form=\"得\">gain</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "trade": {
+    "meaning_mnemonic": "A <radical form=\"卯\">rabbit</radical> who sells carrots for <radical form=\"貝\">money</radical> shells, then spends the shells on more carrots, is running a busy little <kanji form=\"貿\">trade</kanji>.",
+    "reading_mnemonic": "The shopkeeper <reading>Bo</reading> will not finish any <kanji form=\"貿\">trade</kanji> until both sides <reading>bow</reading> low over the pile of carrots and say 「<reading>ぼう</reading>」 together.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tax": {
+    "meaning_mnemonic": "When you must <radical form=\"兑\">exchange</radical> one of every ten sacks of <radical form=\"禾\">grain</radical> for nothing but a paper receipt, you are paying <kanji form=\"税\">tax</kanji>.",
+    "reading_mnemonic": "The collector <reading>Zay</reading> drags your sacks onto his cart, hums 「<reading>ぜい</reading>」 and hands back a tiny receipt with your name spelled wrong, which is all <kanji form=\"税\">tax</kanji> ever gives back.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "admirable": {
+    "meaning_mnemonic": "A <radical form=\"亻\">person</radical> who pulls a stiff animal skin all day with bare hands until it turns into soft <radical form=\"韋\">tanned leather</radical> does hard, honest work that is truly <kanji form=\"偉\">admirable</kanji>.",
+    "reading_mnemonic": "The town gives the worker, old <reading>Ee</reading>, a gold medal for such <kanji form=\"偉\">admirable</kanji> work, and she only squeaks 「<reading>い</reading>」 because her arms are too sore to lift it.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "agriculture": {
+    "meaning_mnemonic": "Make a <radical form=\"辰\">dragon</radical> <radical form=\"曲\">bend</radical> its long body low and drag a plow through the fields, and <kanji form=\"農\">agriculture</kanji> gets done in one afternoon.",
+    "reading_mnemonic": "Farmer <reading>Noh</reading> begs it for one more field, but the beast flops down in the mud and booms 「<reading>のう</reading>」, the loudest <reading>no</reading> in the history of <kanji form=\"農\">agriculture</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "envious": {
+    "meaning_mnemonic": "A <radical form=\"羊\">sheep</radical> stuck in a dry pen with a <radical form=\"欠\">lack</radical> of <radical form=\"氵\">water</radical> stares at the duck splashing in the pond next door and feels deeply <kanji form=\"羨\">envious</kanji>.",
+    "reading_mnemonic": "The duck, named <reading>Sen</reading>, sells sips of pond for one <reading>cent</reading> each, quacking 「<reading>せん</reading>」, and the thirsty neighbour with empty pockets only gets more <kanji form=\"羨\">envious</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fishing": {
+    "meaning_mnemonic": "Pulling a <radical form=\"魚\">fish</radical> up out of the <radical form=\"氵\">water</radical> and into your boat is all <kanji form=\"漁\">fishing</kanji> ever is, however long the waiting takes.",
+    "reading_mnemonic": "The old fisherman <reading>Gyo</reading> yanks so hard that his catch flies over the boat and slaps his face, and the whole riverbank hears 「<reading>ぎょ</reading>」, the official sound of <kanji form=\"漁\">fishing</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "suitable": {
+    "meaning_mnemonic": "A potted plant with a short, stiff <radical form=\"啇\">stalk</radical> is the only <kanji form=\"適\">suitable</kanji> passenger for a bumpy <radical form=\"辶\">road</radical>, because a tall one snaps at the first pothole.",
+    "reading_mnemonic": "<reading>Techie</reading> the delivery driver scans every potted plant with a beeping gadget before the trip, and it only chirps 「<reading>てき</reading>」 when a plant is short enough to be <kanji form=\"適\">suitable</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "burdensome": {
+    "meaning_mnemonic": "A <radical form=\"馬\">horse</radical> that must carry a <radical form=\"太\">plump</radical> man, still sticky with syrup, up every hill on the farm finds the whole job <kanji form=\"駄\">burdensome</kanji>.",
+    "reading_mnemonic": "The rider is everyone's <reading>Dad</reading>, and each time he climbs on, the poor animal groans 「<reading>だ</reading>」, because carrying Dad uphill is the most <kanji form=\"駄\">burdensome</kanji> job on the farm.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "slacken": {
+    "meaning_mnemonic": "A <radical form=\"糸\">thread</radical> stays tight only while the hands keep pulling it to <radical form=\"爰\">lead on to</radical> the top, so the moment they let go, the thread starts to <kanji form=\"緩\">slacken</kanji>.",
+    "reading_mnemonic": "Halfway up, the pulling hand of lazy Uncle <reading>Khan</reading> gives up with a big yawn of 「<reading>かん</reading>」, and everything he was holding starts to <kanji form=\"緩\">slacken</kanji> and droop to the floor.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "stern": {
+    "meaning_mnemonic": "Only a <kanji form=\"厳\">stern</kanji> coach would make a <radical form=\"小\">small</radical> child take a <radical form=\"敢\">daring</radical> jump off a <radical form=\"厂\">cliff</radical> just to finish practice.",
+    "reading_mnemonic": "Coach <reading>Gen</reading> blows his whistle at the jumper climbing back up and barks 「<reading>げん</reading>」, short for <reading>again</reading>, with the most <kanji form=\"厳\">stern</kanji> face on the mountain.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tenderness": {
+    "meaning_mnemonic": "A <radical form=\"亻\">person</radical> who holds an umbrella over a <radical form=\"憂\">melancholy</radical> friend through a hundred days of rain is showing pure <kanji form=\"優\">tenderness</kanji>.",
+    "reading_mnemonic": "Under the umbrella, kind <reading>Yu</reading> keeps whispering 「<reading>ゆう</reading>」 like <reading>you</reading> first, tilting it until only her own back gets wet, which is <kanji form=\"優\">tenderness</kanji> at its soggiest.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "crowded": {
+    "meaning_mnemonic": "When everyone on the <radical form=\"辶\">road</radical> tries to <radical form=\"入\">enter</radical> the same tiny train at the same time, the carriage gets <kanji form=\"込\">crowded</kanji>.",
+    "reading_mnemonic": "<reading>Coco</reading> the train pusher shoves one last commuter through those doors, puffing 「<reading>こ</reading>」 with every push, until the <kanji form=\"込\">crowded</kanji> carriage cannot fit a single sock more.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "exist-2": {
+    "meaning_mnemonic": "The <radical form=\"才\">genius</radical> <radical form=\"子\">child</radical> sits up in her crib and works out that, since she is thinking, she must <kanji form=\"存\">exist</kanji>.",
+    "reading_mnemonic": "Her proud dad <reading>Sonny</reading> leans over the crib and gasps 「<reading>そん</reading>」 when the baby pokes his nose to check that he <kanji form=\"存\">exist</kanji>s too.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "welcome": {
+    "meaning_mnemonic": "Even the most <radical form=\"卬\">lofty</radical> lord walks down the <radical form=\"辶\">road</radical> to his gate when he wants to <kanji form=\"迎\">welcome</kanji> a guest.",
+    "reading_mnemonic": "The lord's doorman <reading>Gale</reading> flings that gate wide and bellows 「<reading>げい</reading>！」 so loudly that the guest he was meant to <kanji form=\"迎\">welcome</kanji> runs straight back home.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sink": {
+    "meaning_mnemonic": "A traveller who tries to <radical form=\"冘\">move on</radical> across deep <radical form=\"氵\">water</radical> without a boat has only one way to go, and that is to <kanji form=\"沈\">sink</kanji>.",
+    "reading_mnemonic": "The traveller's pet <reading>chinchilla</reading> rides on top of his wide hat, squeaking 「<reading>ちん</reading>」 louder and louder as the hat starts to <kanji form=\"沈\">sink</kanji> too.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pay-respects": {
+    "meaning_mnemonic": "A young <radical form=\"亻\">person</radical> who wants a part in the film first goes to the <radical form=\"司\">director</radical>'s trailer to bow and <kanji form=\"伺\">pay respects</kanji>.",
+    "reading_mnemonic": "<reading>Sheila</reading> guards that trailer door and insists you <kanji form=\"伺\">pay respects</kanji> in a whisper, so she hushes each nervous visitor with a sharp 「<reading>し</reading>！」 before they even bow.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wish": {
+    "meaning_mnemonic": "When your <radical form=\"心\">heart</radical> thumps <radical form=\"今\">now</radical>, now, now at the toy in the shop window, that thumping is a <kanji form=\"念\">wish</kanji>.",
+    "reading_mnemonic": "Little <reading>Nena</reading> presses her nose to that same shop window and hums 「<reading>ねん</reading>」 until the glass fogs up, as if a <kanji form=\"念\">wish</kanji> works better with more steam.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pray": {
+    "meaning_mnemonic": "The <radical form=\"礻\">cult</radical> cannot pull the <radical form=\"斤\">axe</radical> out of its offering table, so all its members can do is kneel around it and <kanji form=\"祈\">pray</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit still lives in the wood of that table, and each time the members <kanji form=\"祈\">pray</kanji> for the blade to come loose, she giggles 「<reading>き</reading>」 and holds it tighter.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "worship": {
+    "meaning_mnemonic": "After an <radical form=\"丰\">abundant</radical> harvest, farmers press each <radical form=\"扌\">hand</radical> together and bow down to the <radical form=\"一\">ground</radical> to <kanji form=\"拝\">worship</kanji> whoever sent it.",
+    "reading_mnemonic": "Farmer <reading>Heidi</reading> bows to the fruit pile and answers every roll of thunder with a cheerful 「<reading>はい</reading>！」, because to <kanji form=\"拝\">worship</kanji> the sky is to say yes to whatever it sends, hail included.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "acquiesce": {
+    "meaning_mnemonic": "After <radical form=\"三\">three</radical> days of <radical form=\"水\">water</radical> pouring into the boat, you finally <kanji form=\"承\">acquiesce</kanji>, quietly agreeing that the fishing trip is <radical form=\"了\">complete</radical>.",
+    "reading_mnemonic": "Tiny <reading>Sho</reading> the magician pulls a soggy dove out of the bailing bucket with a grand 「<reading>しょう</reading>！」, and the soaked crew <kanji form=\"承\">acquiesce</kanji> and clap, since it is the only catch they will get.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "escape": {
+    "meaning_mnemonic": "When the cracks on the turtle shell show a bad <radical form=\"兆\">portent</radical>, the smart thing is to take the nearest <radical form=\"辶\">road</radical> and <kanji form=\"逃\">escape</kanji>.",
+    "reading_mnemonic": "<reading>Toad</reading>, who was sitting on the fortune table, croaks 「<reading>とう</reading>」 at the first crack and hops off so fast that he is the first to <kanji form=\"逃\">escape</kanji>, leaving the shell reader behind.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "chase": {
+    "meaning_mnemonic": "A farmer who spent all autumn trying to <radical form=\"𠂤\">store up</radical> grain will <radical form=\"辶\">advance</radical> down any road at full speed to <kanji form=\"追\">chase</kanji> the crow that stole one sack.",
+    "reading_mnemonic": "The crow is called <reading>Tui</reading>, and he drops one grain every time he squawks 「<reading>つい</reading>」, so the farmer has to <kanji form=\"追\">chase</kanji> him across three more fields to pick them all up.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "angry": {
+    "meaning_mnemonic": "That <radical form=\"奴\">guy</radical> at the party who keeps stepping on your toes makes your <radical form=\"心\">heart</radical> thump a little harder with each step, until you are truly <kanji form=\"怒\">angry</kanji>.",
+    "reading_mnemonic": "His name tag says <reading>Doe</reading>, and on the tenth stomp you yell 「<reading>ど</reading>！」 so loud the music stops and the whole room sees how <kanji form=\"怒\">angry</kanji> you are.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "faith": {
+    "meaning_mnemonic": "A <radical form=\"亻\">person</radical> who keeps their <radical form=\"言\">words</radical> even after promising to eat a whole raw onion is someone you can put your <kanji form=\"信\">faith</kanji> in.",
+    "reading_mnemonic": "Your friend <reading>Shin</reading> finishes the onion with tears running down his face, whispering 「<reading>しん</reading>」 between bites, and your <kanji form=\"信\">faith</kanji> in him has never been higher.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "floating": {
+    "meaning_mnemonic": "A parent's <radical form=\"孚\">sincere</radical> hand under a child's back is enough to keep them <kanji form=\"浮\">floating</kanji> on the <radical form=\"氵\">water</radical>, even once that hand is down to one finger.",
+    "reading_mnemonic": "When the last finger slips away, little <reading>Fuu</reading> keeps <kanji form=\"浮\">floating</kanji> anyway and lets out a giant <reading>phew</reading>, 「<reading>ふ</reading>」, that blows bubbles across the pool.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "frozen": {
+    "meaning_mnemonic": "When <radical form=\"冫\">ice</radical> coats the tree in the <radical form=\"東\">east</radical> so thick that the morning sun cannot shine through, nothing warms up and the whole yard stays <kanji form=\"凍\">frozen</kanji>.",
+    "reading_mnemonic": "Barefoot Uncle <reading>Toby</reading> steps into that yard, finds his big toe <kanji form=\"凍\">frozen</kanji> to the grass, and groans 「<reading>とう</reading>」 until the sun finally gets over the tree.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "trouble": {
+    "meaning_mnemonic": "A <radical form=\"小\">small</radical> <radical form=\"凶\">villain</radical> who keeps blowing out the candle you lit with your whole <radical form=\"忄\">heart</radical> is nothing but <kanji form=\"悩\">trouble</kanji>.",
+    "reading_mnemonic": "Every time you light the wick again, your baby brother yells a happy <reading>No</reading>, 「<reading>のう</reading>」, and blows it out, so the <kanji form=\"悩\">trouble</kanji> lasts all evening.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "discipline": {
+    "meaning_mnemonic": "A monk who stays perfectly <radical form=\"攸\">relaxed</radical> against his post while a cat scratches <radical form=\"彡\">three</radical> claw marks down it right beside his ear has true <kanji form=\"修\">discipline</kanji>.",
+    "reading_mnemonic": "The monk wants to yell <reading>Shoo</reading> at the cat, but his <kanji form=\"修\">discipline</kanji> lets out only the softest 「<reading>しゅう</reading>」, which the cat ignores completely.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "distinction": {
+    "meaning_mnemonic": "The one <radical form=\"羊\">sheep</radical> that wandered through the <radical form=\"工\">construction</radical> site comes home with a <radical form=\"丿\">slash</radical> of orange paint on its wool, the only <kanji form=\"差\">distinction</kanji> between it and the rest of the flock.",
+    "reading_mnemonic": "Farmer Sawyer shouts 「<reading>さ</reading>」, short for I <reading>saw</reading> it, the moment she spots that orange stripe, the first <kanji form=\"差\">distinction</kanji> that has ever let her tell one animal in her flock from another.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "place-on": {
+    "meaning_mnemonic": "On this crowded <radical form=\"丁\">street</radical> nobody has a free hand, so the rule is to <kanji form=\"頂\">place on the head</kanji> whatever you buy, and every <radical form=\"頁\">head</radical> walks home under a wobbling stack of eggs.",
+    "reading_mnemonic": "The noodle cook <reading>Chow</reading> hands over each hot bowl with a cheerful 「<reading>ちょう</reading>」, so on top of the eggs you also have to <kanji form=\"頂\">place on the head</kanji> a full bowl of soup.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "doth": {
+    "meaning_mnemonic": "The lazy old king never stands up, he just gives one <radical form=\"攵\">tap</radical> of his stick and whatever he wants will <radical form=\"至\">arrive</radical>, which is how a king <kanji form=\"致\">doth</kanji> his work.",
+    "reading_mnemonic": "The one who really runs to fetch it all is his pet <reading>cheetah</reading>, who chirps 「<reading>ち</reading>」 at every order, so all the king <kanji form=\"致\">doth</kanji> is point.",
+    "description": "The old-fashioned gloss doth points at its register. In everyday Japanese this kanji mostly shows up in a very polite, humble verb meaning to do. You use it when you talk about your own actions to a customer or a boss. It can also mean to send or bring about.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rejoice": {
+    "meaning_mnemonic": "A goat that wins its fight bows its <radical form=\"丷\">horns</radical> to the <radical form=\"一\">ground</radical> while every <radical form=\"口\">mouth</radical> in the stands shouts <radical form=\"吉\">good luck</radical>, and the whole crowd jumps up to <kanji form=\"喜\">rejoice</kanji>.",
+    "reading_mnemonic": "<reading>Kiki</reading> the tree spirit watches the goat win from her old oak and squeals 「<reading>き</reading>」 so hard the branches shake, because she has never learned to <kanji form=\"喜\">rejoice</kanji> quietly.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "exchange": {
+    "meaning_mnemonic": "Two <radical form=\"夫\">husband</radical>s share one job, so every <radical form=\"日\">day</radical> at noon the first one hands his apron to the second in a quick <kanji form=\"替\">exchange</kanji>.",
+    "reading_mnemonic": "The two men also own only one <reading>tie</reading>, so at noon it changes necks too, and each one grunts 「<reading>たい</reading>」 as he knots it, an <kanji form=\"替\">exchange</kanji> neither of them enjoys.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "melt": {
+    "meaning_mnemonic": "Push a snowman into a tub of warm <radical form=\"氵\">water</radical> big enough to <radical form=\"容\">contain</radical> him, and within a minute he starts to <kanji form=\"溶\">melt</kanji>.",
+    "reading_mnemonic": "The snowman in the tub just waves and calls 「<reading>よう</reading>」, a cheerful <reading>Yo</reading>, while he <kanji form=\"溶\">melt</kanji>s down to a carrot and two buttons.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sigh": {
+    "meaning_mnemonic": "When the <radical form=\"艹\">grass</radical> grows back the morning after a <radical form=\"夫\">husband</radical> cut it, the only sound out of his <radical form=\"口\">mouth</radical> is one long <kanji form=\"嘆\">sigh</kanji>.",
+    "reading_mnemonic": "After a month of mowing in the sun his neck has gone deep <reading>tan</reading>, and every <kanji form=\"嘆\">sigh</kanji> he aims at the lawn comes out as a flat 「<reading>たん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rot": {
+    "meaning_mnemonic": "In a <radical form=\"府\">borough</radical> where every house is stuck to the next, one forgotten slab of <radical form=\"肉\">meat</radical> is enough for the smell of <kanji form=\"腐\">rot</kanji> to reach everyone.",
+    "reading_mnemonic": "Street sweeper <reading>Foo</reading> holds his nose past every stuck-together house and gasps 「<reading>ふ</reading>」, a tired <reading>phew</reading>, because the <kanji form=\"腐\">rot</kanji> follows him down the street.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "trust": {
+    "meaning_mnemonic": "Laying your <radical form=\"頁\">head</radical> on a <radical form=\"束\">bundle</radical> of sticks instead of a pillow means you <kanji form=\"頼\">trust</kanji> the rope around them completely.",
+    "reading_mnemonic": "Before you sleep on his pillow of sticks, the camp guide <reading>Rye</reading> swears 「<reading>らい</reading>」 he has never told a <reading>lie</reading>, which is just what someone you should not <kanji form=\"頼\">trust</kanji> would say.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "perusal": {
+    "meaning_mnemonic": "A <radical form=\"臣\">retainer</radical> bowed so low to the <radical form=\"一\">ground</radical> that all he can <radical form=\"見\">see</radical> is the scroll on a little <radical form=\"𠂉\">chevron</radical> stand has hours for slow, careful <kanji form=\"覧\">perusal</kanji>.",
+    "reading_mnemonic": "Each time the bowing man reaches the end, a scribe named <reading>Ran</reading> rolls out a longer scroll and whispers 「<reading>らん</reading>」, so the <kanji form=\"覧\">perusal</kanji> never ends.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "winding": {
+    "meaning_mnemonic": "The <radical form=\"喿\">chirping of birds</radical> never stops while they fly one long <radical form=\"糸\">thread</radical> round and round their branch, <kanji form=\"繰\">winding</kanji> it into a nest.",
+    "reading_mnemonic": "A mouse tailor called <reading>Sew</reading> sits under the nest with a nearly empty spool, moans 「<reading>そう</reading>」 at every loop it steals, and keeps <kanji form=\"繰\">winding</kanji> what he has left.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wonder": {
+    "meaning_mnemonic": "When even a galloping <radical form=\"馬\">horse</radical> stops dead and holds its breath in <radical form=\"敬\">awe</radical>, whatever it saw must be a true <kanji form=\"驚\">wonder</kanji>.",
+    "reading_mnemonic": "Stable boy <reading>Kyo</reading> runs up, gasps 「<reading>きょう</reading>」 and freezes too, so now two of them stand there in <kanji form=\"驚\">wonder</kanji> at a squirrel.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "icicle": {
+    "meaning_mnemonic": "Each <radical form=\"丶\">drop</radical> of <radical form=\"水\">water</radical> that freezes before it can fall off the roof adds one more inch to the <kanji form=\"氷\">icicle</kanji>.",
+    "reading_mnemonic": "<reading>Hyo</reading> the penguin licks the <kanji form=\"氷\">icicle</kanji> hanging off the roof, his tongue sticks fast, and every word he tries comes out as 「<reading>ひょう</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "waves": {
+    "meaning_mnemonic": "The <kanji form=\"波\">waves</kanji> on the sea are only the <radical form=\"皮\">skin</radical> on top of the <radical form=\"氵\">water</radical>, wrinkling up every time the wind pulls at it.",
+    "reading_mnemonic": "An old swimmer floats out on that wrinkled sea, and each of the <kanji form=\"波\">waves</kanji> slaps a short 「<reading>は</reading>」 out of him, a <reading>ha</reading> he did not mean to laugh.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mud": {
+    "meaning_mnemonic": "Pour <radical form=\"氵\">water</radical> on the path the <radical form=\"尼\">nun</radical> walks every day, and her bare feet turn it into <kanji form=\"泥\">mud</kanji>.",
+    "reading_mnemonic": "Gardener <reading>Day</reading> scrubs the footprints off that path every morning, groaning 「<reading>でい</reading>」, and every evening the <kanji form=\"泥\">mud</kanji> is back in the shape of his own boots.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "inflammation": {
+    "meaning_mnemonic": "A sore, swollen spot feels like one <radical form=\"火\">fire</radical> burning on top of another <radical form=\"火\">fire</radical>, which is exactly what an <kanji form=\"炎\">inflammation</kanji> is.",
+    "reading_mnemonic": "Nurse <reading>Ennie</reading> drops an ice pack on the <kanji form=\"炎\">inflammation</kanji>, it hisses into steam at once, and she sighs 「<reading>えん</reading>」 and goes to fetch the whole freezer.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "broil": {
+    "meaning_mnemonic": "To <kanji form=\"炒\">broil</kanji> something you hold it right next to the <radical form=\"火\">fire</radical> for just a <radical form=\"少\">few</radical> minutes, so the top goes brown and crisp.",
+    "reading_mnemonic": "Chef <reading>Soh</reading> yanks the tray out from under the grill, shouts 「<reading>そう</reading>」 at the brown crust because the <kanji form=\"炒\">broil</kanji> is done, then eats it all before anyone sees.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fox": {
+    "meaning_mnemonic": "The only <radical form=\"犭\">animal</radical> clever enough to roll a <radical form=\"瓜\">melon</radical> off the vine and all the way home to its den is the <kanji form=\"狐\">fox</kanji>.",
+    "reading_mnemonic": "Farmer <reading>Koh</reading> finds one more empty vine and shouts 「<reading>こ</reading>」 into the dark, and the <kanji form=\"狐\">fox</kanji> shouts it straight back from its den with its mouth full.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mosquito": {
+    "meaning_mnemonic": "An <radical form=\"虫\">insect</radical> that bites so many itchy red dots up your arm that they look like <radical form=\"文\">writing</radical> is a <kanji form=\"蚊\">mosquito</kanji>.",
+    "reading_mnemonic": "The rabbit twins Mon and <reading>Bun</reading> argue over how to read the bites on their fur, Bun snapping 「<reading>ぶん</reading>」 at every dot, while the <kanji form=\"蚊\">mosquito</kanji> quietly adds another line.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "splendor": {
+    "meaning_mnemonic": "Tie the <radical form=\"艹\">grass</radical>, a pair of <radical form=\"龷\">twin sprouts</radical> and <radical form=\"二\">two</radical> more shoots to one <radical form=\"丨\">stick</radical>, and they all flower at once in such <kanji form=\"華\">splendor</kanji> that the stick vanishes.",
+    "reading_mnemonic": "<reading>Kaa</reading> the crow lands on top of the flower tower to admire its <kanji form=\"華\">splendor</kanji>, caws 「<reading>か</reading>」, and his little puff of flame toasts every petal at once.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pork": {
+    "meaning_mnemonic": "Every full <radical form=\"月\">moon</radical> the farmer weighs the <radical form=\"豕\">pig</radical>, and the night it weighs a whole ton it becomes <kanji form=\"豚\">pork</kanji>.",
+    "reading_mnemonic": "The butcher reads the scale, gasps 「<reading>とん</reading>」 because the needle says one full <reading>ton</reading>, and starts printing <kanji form=\"豚\">pork</kanji> labels by the hundred.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "snake": {
+    "meaning_mnemonic": "The <radical form=\"虫\">insect</radical> hiding under the shelter runs off to find some <radical form=\"它\">other</radical> place to stay dry, because a <kanji form=\"蛇\">snake</kanji> got there first.",
+    "reading_mnemonic": "The <kanji form=\"蛇\">snake</kanji> under that shelter, a show-off called <reading>Jaw</reading>, opens his mouth so wide to yawn 「<reading>じゃ</reading>」 that nobody else ever tries to come in.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "elephant": {
+    "meaning_mnemonic": "A <radical form=\"豕\">pig</radical> so huge it has to <radical form=\"𠂊\">crouch</radical> under every door, with its <radical form=\"口\">mouth</radical> hidden under a long nose, is an <kanji form=\"象\">elephant</kanji>.",
+    "reading_mnemonic": "Tiny magician <reading>Sho</reading> waves his white gloves to make the <kanji form=\"象\">elephant</kanji> disappear, shouts 「<reading>しょう</reading>」, and it sneezes every one of his doves back out of its nose.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sunshine": {
+    "meaning_mnemonic": "The goat stuck on the <radical form=\"⻖\">hill</radical> does not mind at all, because every <radical form=\"昜\">sunbeam</radical> lands right there and it lies in <kanji form=\"陽\">sunshine</kanji> all day.",
+    "reading_mnemonic": "That goat, called <reading>Yo</reading>, rolls onto her back in the <kanji form=\"陽\">sunshine</kanji> and bleats a long, happy 「<reading>よう</reading>」 every time a cloud gets out of the way.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "storm": {
+    "meaning_mnemonic": "When the <radical form=\"風\">wind</radical> hits a <radical form=\"山\">mountain</radical> it has nowhere to go but up and over, and it comes down the other side as a <kanji form=\"嵐\">storm</kanji>.",
+    "reading_mnemonic": "The hiking guide sees the <kanji form=\"嵐\">storm</kanji> roll down the trail toward the vending machine, yells 「<reading>らん</reading>」, and starts to <reading>run</reading> before her group can ask what it means.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "attire": {
+    "meaning_mnemonic": "A man so <radical form=\"壮\">robust</radical> that ordinary <radical form=\"衣\">clothing</radical> splits at the seams has to have his <kanji form=\"装\">attire</kanji> made just for him.",
+    "reading_mnemonic": "<reading>Sew</reading> the tailor measures those huge shoulders, mutters 「<reading>そう</reading>」 with every stitch, and needs three whole rolls of cloth to finish one set of <kanji form=\"装\">attire</kanji>.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "monkey": {
+    "meaning_mnemonic": "The one <radical form=\"犭\">animal</radical> that would steal a <radical form=\"袁\">long kimono</radical> and swing through the trees with it trailing behind is a <kanji form=\"猿\">monkey</kanji>.",
+    "reading_mnemonic": "Grandma Kane grabs the trailing <reading>end</reading> as the <kanji form=\"猿\">monkey</kanji> swings off her shrine roof, shouts 「<reading>えん</reading>」, and is left holding one sleeve.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "smoke": {
+    "meaning_mnemonic": "When you <radical form=\"垔\">restrain</radical> a <radical form=\"火\">fire</radical> by locking it in a tight little cage, it can never burn bright, so all it pushes out between the bars is thick grey <kanji form=\"煙\">smoke</kanji>.",
+    "reading_mnemonic": "<reading>Enzo</reading> the fire warden leans in close to check the caged fire and swallows a whole mouthful of <kanji form=\"煙\">smoke</kanji>, so every cough comes out as a long, sad 「<reading>えん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "bear": {
+    "meaning_mnemonic": "The animal with the <radical form=\"能\">ability</radical> to lift a whole log is also strong enough to drop it onto the glowing <radical form=\"灬\">fire</radical> coals and cook its own dinner, and that animal is a <kanji form=\"熊\">bear</kanji>.",
+    "reading_mnemonic": "Park ranger <reading>Yuu</reading> marches up to tell the <kanji form=\"熊\">bear</kanji> that campfires are banned, and the bear just points a claw at him and growls 「<reading>ゆう</reading>」, which means he is the next log.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "acid": {
+    "meaning_mnemonic": "A <radical form=\"酉\">sake jar</radical> carried home by a man who can only <radical form=\"夋\">walk slowly</radical> takes so many weeks to arrive that the sake inside has gone sour and turned to <kanji form=\"酸\">acid</kanji>.",
+    "reading_mnemonic": "The slow man blames the hot <reading>sun</reading> that beat down on his jar the whole way, so every time he tastes the <kanji form=\"酸\">acid</kanji> he shakes his fist at the sky and yells 「<reading>さん</reading>」.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "butterfly": {
+    "meaning_mnemonic": "The only <radical form=\"虫\">insect</radical> you are happy to see land on your dinner <radical form=\"枼\">table</radical>, right between the candles, is a <kanji form=\"蝶\">butterfly</kanji>.",
+    "reading_mnemonic": "Grandma <reading>Cho</reading> rings her little dinner bell and sings 「<reading>ちょう</reading>」, and the first guest to the table is always a <kanji form=\"蝶\">butterfly</kanji>, waiting by the candles with its wings folded like a napkin.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "housefly": {
+    "meaning_mnemonic": "The <radical form=\"虫\">insect</radical> that zips around your kitchen in crooked <radical form=\"电\">lightning</radical> zigzags, never once in a straight line, is a <kanji form=\"蝿\">fly</kanji>.",
+    "reading_mnemonic": "Little <reading>Yoko</reading> snaps her yo-yo at the zigzagging <kanji form=\"蝿\">fly</kanji>, shouting 「<reading>よう</reading>」 with every throw, and it dodges every single one.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "quake": {
+    "meaning_mnemonic": "A cold <radical form=\"雨\">rain</radical> soaks the <radical form=\"辰\">sign of the dragon</radical> hanging from its ledge, and it shakes its long wet body so hard that the whole building starts to <kanji form=\"震\">quake</kanji>.",
+    "reading_mnemonic": "The wet dragon's tail flicks down and whacks the landlord in the <reading>shin</reading>, so he hops around yelling 「<reading>しん</reading>」 while the floor keeps on <kanji form=\"震\">quake</kanji>ing under him.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "pot": {
+    "meaning_mnemonic": "A <kanji form=\"鍋\">pot</kanji> is a big <radical form=\"金\">metal</radical> bowl with a <radical form=\"咼\">crooked mouth</radical> bent out on one side, so the soup pours out there and nowhere else.",
+    "reading_mnemonic": "<reading>Kaa</reading> the fire-breathing crow squats under the <kanji form=\"鍋\">pot</kanji> as a free stove, puffing flame and cawing 「<reading>か</reading>」 each time the soup spills over the crooked rim.",
+    "_meta": {
+      "generator_model": "claude-opus-5-5",
+      "prompt_version": "4",
+      "review_status": "draft"
     }
   }
 }

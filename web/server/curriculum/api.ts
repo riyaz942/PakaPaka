@@ -11,6 +11,7 @@ import {
   type AuditFinding,
   type FindingSeverity,
 } from './audit.js';
+import { changeBase, changedItemKeys, type ChangeBase } from './changes.js';
 import { expectedFields } from './completeness.js';
 import { loadGeneratedPassages } from './generatedPassages.js';
 import {
@@ -25,14 +26,13 @@ import { readGrammarLessonStatus, readGrammarMnemonicStatus } from './sidecar.js
 import {
   isSkeleton,
   itemKey,
-  JLPT_LEVELS,
+  MAX_LEVEL,
   SKELETON_THRESHOLD,
   type ContentItem,
   type ContentType,
   type CurriculumIndex,
   type DependencyRef,
   type DependencySummary,
-  type JlptLevel,
   type ReviewStatus,
 } from './types.js';
 import {
@@ -56,8 +56,6 @@ const CONTENT_TYPES: ContentType[] = [
   'grammar',
   'reading',
 ];
-
-const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 
 const STATUSES: ReviewStatus[] = [
   'draft',
@@ -158,23 +156,6 @@ function emptyGapBucket(type: ContentType): GapBucket {
   return { total: 0, missing };
 }
 
-function targetKeyForType(
-  type: ContentType,
-): 'radicals' | 'kanji' | 'vocabulary' | 'grammar' | 'readings' {
-  switch (type) {
-    case 'radical':
-      return 'radicals';
-    case 'kanji':
-      return 'kanji';
-    case 'vocabulary':
-      return 'vocabulary';
-    case 'grammar':
-      return 'grammar';
-    case 'reading':
-      return 'readings';
-  }
-}
-
 function parseType(value: unknown): ContentType | undefined {
   if (typeof value !== 'string') return undefined;
   return CONTENT_TYPES.includes(value as ContentType)
@@ -182,11 +163,16 @@ function parseType(value: unknown): ContentType | undefined {
     : undefined;
 }
 
-function parseLevel(value: unknown): JlptLevel | undefined {
-  if (typeof value !== 'string') return undefined;
-  return LEVELS.includes(value as JlptLevel)
-    ? (value as JlptLevel)
-    : undefined;
+/** A ladder level, 1..MAX_LEVEL, from a query or path string. */
+function parseLevel(value: unknown): number | undefined {
+  if (typeof value !== 'string' || !/^\d+$/.test(value)) return undefined;
+  const level = Number(value);
+  return level >= 1 && level <= MAX_LEVEL ? level : undefined;
+}
+
+/** The ladder levels that hold any item, in order. */
+function levelsOf(index: CurriculumIndex): number[] {
+  return [...new Set(index.items.map((item) => item.level))].sort((a, b) => a - b);
 }
 
 function parseStatus(value: unknown): ReviewStatus | undefined {
@@ -364,17 +350,18 @@ export function createCurriculumRouter(
     const index = getCurriculum(repoRoot);
     const targets = loadTargets(webRoot);
 
+    const levels = levelsOf(index);
     const byTypeLevel = {} as Record<
       ContentType,
-      Record<JlptLevel, OverviewBucket>
+      Record<number, OverviewBucket>
     >;
 
+    // targets.json is per JLPT level, which no ladder level maps to, so a
+    // ladder bucket carries no target.
     for (const type of CONTENT_TYPES) {
-      byTypeLevel[type] = {} as Record<JlptLevel, OverviewBucket>;
-      for (const level of LEVELS) {
-        byTypeLevel[type][level] = emptyBucket(
-          targets[level][targetKeyForType(type)],
-        );
+      byTypeLevel[type] = {} as Record<number, OverviewBucket>;
+      for (const level of levels) {
+        byTypeLevel[type][level] = emptyBucket(0);
       }
     }
 
@@ -387,7 +374,7 @@ export function createCurriculumRouter(
     }
 
     for (const type of CONTENT_TYPES) {
-      for (const level of LEVELS) {
+      for (const level of levels) {
         const bucket = byTypeLevel[type][level];
         bucket.meanCompleteness =
           bucket.total === 0 ? 0 : bucket.meanCompleteness / bucket.total;
@@ -424,10 +411,10 @@ export function createCurriculumRouter(
   router.get('/gaps', (_req: Request, res: Response) => {
     const index = getCurriculum(repoRoot);
 
-    const byTypeLevel = {} as Record<ContentType, Record<JlptLevel, GapBucket>>;
+    const byTypeLevel = {} as Record<ContentType, Record<number, GapBucket>>;
     for (const type of CONTENT_TYPES) {
-      byTypeLevel[type] = {} as Record<JlptLevel, GapBucket>;
-      for (const level of LEVELS) {
+      byTypeLevel[type] = {} as Record<number, GapBucket>;
+      for (const level of levelsOf(index)) {
         byTypeLevel[type][level] = emptyGapBucket(type);
       }
     }
@@ -614,7 +601,7 @@ export function createCurriculumRouter(
       return;
     }
 
-    const result = saveItem(repoRoot, type, item.level, req.params.slug, req.body as Record<string, unknown>);
+    const result = saveItem(repoRoot, type, req.params.slug, req.body as Record<string, unknown>);
     if (!result.ok) {
       res.status(400).json(result);
       return;
@@ -647,7 +634,7 @@ export function createCurriculumRouter(
       return;
     }
 
-    const result = updateReviewStatus(repoRoot, type, item.level, req.params.slug, reviewStatus);
+    const result = updateReviewStatus(repoRoot, type, req.params.slug, reviewStatus);
     if (!result.ok) {
       res.status(400).json(result);
       return;
@@ -672,7 +659,7 @@ export function createCurriculumRouter(
       });
       return;
     }
-    const result = updateGrammarMnemonicReviewStatus(repoRoot, item.level, req.params.slug, reviewStatus);
+    const result = updateGrammarMnemonicReviewStatus(repoRoot, req.params.slug, reviewStatus);
     if (!result.ok) {
       res.status(400).json(result);
       return;
@@ -699,7 +686,7 @@ export function createCurriculumRouter(
 
     const index = getCurriculum(repoRoot);
     const errors: string[] = [];
-    const resolved: { type: ContentType; level: JlptLevel; slug: string }[] = [];
+    const resolved: { type: ContentType; slug: string }[] = [];
 
     for (const raw of rawItems) {
       const type = parseType(raw?.type);
@@ -713,7 +700,7 @@ export function createCurriculumRouter(
         errors.push(`${type}/${slug}: not found`);
         continue;
       }
-      resolved.push({ type, level: item.level, slug });
+      resolved.push({ type, slug });
     }
 
     if (errors.length > 0) {
@@ -782,6 +769,57 @@ export function createCurriculumRouter(
     res.json({
       total: filtered.length,
       findings: filtered.map(({ finding, links }) => ({ ...finding, links })),
+    });
+  });
+
+  /**
+   * Everything taught at one ladder level, with full content, so a level can be
+   * read top to bottom. `changed` marks items whose content differs from the
+   * last commit made before `days` ago (default 3; see changes.ts).
+   */
+  router.get('/level/:level', (req: Request, res: Response) => {
+    const level = parseLevel(req.params.level);
+    if (!level) {
+      res.status(400).json({ error: `Unknown level: ${req.params.level}` });
+      return;
+    }
+    const daysRaw = req.query.days ?? '3';
+    if (typeof daysRaw !== 'string' || !/^\d+$/.test(daysRaw)) {
+      res.status(400).json({ error: `days must be a whole number: ${String(daysRaw)}` });
+      return;
+    }
+    const days = Number(daysRaw);
+
+    const index = getCurriculum(repoRoot);
+    let base: ChangeBase | null;
+    let changed: Set<string>;
+    try {
+      base = changeBase(repoRoot, days);
+      changed = base ? changedItemKeys(repoRoot, base.rev) : new Set();
+    } catch (err) {
+      res.status(500).json({ error: `git compare failed: ${err instanceof Error ? err.message : String(err)}` });
+      return;
+    }
+
+    const items = index.items
+      .filter((item) => item.level === level)
+      .sort(
+        (a, b) =>
+          CONTENT_TYPES.indexOf(a.type) - CONTENT_TYPES.indexOf(b.type) ||
+          a.sortOrder - b.sortOrder ||
+          a.slug.localeCompare(b.slug),
+      );
+
+    res.json({
+      level,
+      levels: levelsOf(index),
+      base,
+      items: items.map((item) => ({
+        ...item,
+        changed: changed.has(itemKey(item.type, item.slug)),
+        mnemonicReviewStatus:
+          item.type === 'grammar' ? readGrammarMnemonicStatus(repoRoot, item.slug) : null,
+      })),
     });
   });
 

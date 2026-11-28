@@ -27,12 +27,13 @@ function isContentType(value: string | undefined): value is ContentType {
   return !!value && (CONTENT_TYPES as string[]).includes(value);
 }
 
-function TypeSection({
+/** The type's full content view. Also used by the Levels page. */
+export function TypeSection({
   item,
   showReadings,
   onChanged,
 }: {
-  item: ItemDetailResponse;
+  item: Pick<ItemDetailResponse, 'type' | 'raw' | 'slug' | 'mnemonicReviewStatus'>;
   showReadings: boolean;
   onChanged: () => void;
 }) {

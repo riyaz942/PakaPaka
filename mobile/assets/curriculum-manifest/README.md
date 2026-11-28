@@ -10,7 +10,7 @@ The fixture is a copy of the early 114-item N5 seed. Its item slugs went through
 
 ## Manifest URL
 
-There is one manifest URL and no setting for it: `<API base>/api/curriculum/s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json`. On web the base is empty (same origin). On native it is `API_BASE_URL` (`mobile/src/config/api.ts`). Its only override is the build-time `EXPO_PUBLIC_API_BASE_URL`. There is no dev mock manifest and no placeholder URL.
+There is one manifest URL and no setting for it: `<API base>/api/curriculum/s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json`. `REQUIRED_CURRICULUM_SCHEMA_VERSION` is `2` (the level ladder database); store apps from before the ladder read `s1`. Both manifests are signed offline by the operator (see the schema rule in `docs/curriculum-releases.md`). This folder holds no manifest and no key. On web the base is empty (same origin). On native it is `API_BASE_URL` (`mobile/src/config/api.ts`). Its only override is the build-time `EXPO_PUBLIC_API_BASE_URL`. There is no dev mock manifest and no placeholder URL.
 
 ## Wi-Fi policy
 

@@ -10,6 +10,9 @@ export const JLPT_LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1'] as const;
 
 export type JlptLevel = (typeof JLPT_LEVELS)[number];
 
+/** Ladder levels run 1..MAX_LEVEL (curriculum/_build/levels.py). */
+export const MAX_LEVEL = 60;
+
 export type ReviewStatus =
   | 'draft'
   | 'reviewed'
@@ -32,7 +35,8 @@ export type Completeness = {
 
 export type ContentItem = {
   type: ContentType;
-  level: JlptLevel;
+  /** Ladder level, 1-60 (`level` on every item of `<kind>/items.json`). */
+  level: number;
   slug: string;
   primaryForm: string;
   meaning: string;

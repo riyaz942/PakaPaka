@@ -35,3 +35,6 @@ _bmad-output/implementation-artifacts/.review-tmp/
 .env*
 .dev.vars
 backend/.wrangler/
+
+# Unattended content runner logs (scripts/run-content-lane.sh)
+.content-runs/

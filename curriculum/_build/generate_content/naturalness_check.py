@@ -45,8 +45,8 @@ lands without passing the same checks the generation lane passes.
 No-API subagent lane, mirroring audit_semantic.py and generate_readings.py:
 
 Run (from curriculum/_build):
-    .venv/bin/python -m generate_content.naturalness_check webprompts --level n5
-    .venv/bin/python -m generate_content.naturalness_check ingest --level n5 \
+    .venv/bin/python -m generate_content.naturalness_check webprompts --level 22
+    .venv/bin/python -m generate_content.naturalness_check ingest --level 22 \
         --slug hako-no-naka-no-fuyu --model opus-5
     .venv/bin/python -m generate_content.naturalness_check --selftest
 
@@ -66,6 +66,7 @@ sys.path.insert(0, BUILD_DIR)
 from generate_content import context as grammar_context  # noqa: E402
 from generate_content import reading_context as rc  # noqa: E402
 from generate_content import reading_seeds  # noqa: E402
+from generate_content.context import level_dir  # noqa: E402
 from generate_content.validate_readings import validate_draft  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -250,7 +251,7 @@ def build_prompt(level, slug, ctx, draft, gate_errors=None):
     header = (
         f"<!-- Paste EVERYTHING below this line into a fresh chat, or hand this "
         f"file to a fresh subagent.\n"
-        f"     Save the reply to web/naturalness/{level}/{slug}.reply.md, then run:\n"
+        f"     Save the reply to web/naturalness/{level_dir(level)}/{slug}.reply.md, then run:\n"
         f"       .venv/bin/python -m generate_content.naturalness_check ingest \\\n"
         f"         --level {level} --slug {slug} --model <model-name>\n"
         f"     Read files and write only your reply file; never edit curriculum, "
@@ -398,7 +399,7 @@ def apply_findings(draft, findings, reply):
 # --- draft records -----------------------------------------------------------
 
 def _draft_path(level, slug):
-    return os.path.join(DRAFTS_DIR, level, f"{slug}.json")
+    return os.path.join(DRAFTS_DIR, level_dir(level), f"{slug}.json")
 
 
 def load_draft(level, slug):
@@ -441,10 +442,10 @@ def cmd_webprompts(args):
     slugs = reviewable_slugs(args.level, args.slugs, args.recheck)
     if not slugs:
         raise SystemExit(
-            f"nothing to review for {args.level} — no gate-passing draft is "
+            f"nothing to review for level {args.level} — no gate-passing draft is "
             f"unreviewed at review_version {REVIEW_VERSION} (--recheck forces)"
         )
-    out_dir = os.path.join(WEB_DIR, args.level)
+    out_dir = os.path.join(WEB_DIR, level_dir(args.level))
     os.makedirs(out_dir, exist_ok=True)
     for slug in slugs:
         record = load_draft(args.level, slug)
@@ -460,7 +461,7 @@ def cmd_ingest(args):
     if not args.slug:
         raise SystemExit("ingest requires --slug")
     level, slug = args.level, args.slug
-    out_dir = os.path.join(WEB_DIR, level)
+    out_dir = os.path.join(WEB_DIR, level_dir(level))
     reply_path = args.from_path or os.path.join(out_dir, f"{slug}.reply.md")
     if not os.path.exists(reply_path):
         raise SystemExit(f"no reply at {reply_path} — write the review there first")
@@ -671,7 +672,7 @@ def run_selftest():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", nargs="?", choices=["webprompts", "ingest"])
-    parser.add_argument("--level", default="n5")
+    parser.add_argument("--level", type=int, required=True, help="ladder level, 1-60")
     parser.add_argument("--slugs", default=None,
                         help="comma-separated seed slugs (default: every seed)")
     parser.add_argument("--slug", default=None, help="ingest only: single seed slug")

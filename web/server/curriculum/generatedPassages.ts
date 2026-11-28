@@ -1,14 +1,14 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { JLPT_LEVELS, type JlptLevel, type SidecarMeta } from './types.js';
+import type { SidecarMeta } from './types.js';
 
 /**
  * Read-only view over the Phase 4 reading-passage build artifact.
  *
  * This is deliberately separate from `loader.ts`: that indexes *shipped*
  * curriculum under `curriculum/` (and skips `_build/`), while these passages
- * live at `curriculum/_build/generate_content/passages/<level>.json` and do
+ * live at `curriculum/_build/generate_content/passages/level-NN.json` and do
  * not ship until a human reads the whole level and performs the wire-in
  * documented in docs/content/phase-4-reading-passage-tooling.md. Keeping them
  * out of the index is what stops them counting toward targets, appearing in
@@ -33,7 +33,8 @@ export type GeneratedSeedRow = {
 };
 
 export type GeneratedLevel = {
-  level: JlptLevel;
+  /** Ladder level. */
+  level: number;
   total: number;
   generated: number;
   rows: GeneratedSeedRow[];
@@ -53,7 +54,7 @@ import json, sys
 sys.path.insert(0, '.')
 from generate_content import reading_seeds as rs
 out = {}
-for level in rs.SEEDS:
+for level in sorted({rs.seed_level(s['slug']) for s in rs.SEEDS}):
     out[level] = [
         {
             'seed': s['slug'],
@@ -118,9 +119,10 @@ function asMeta(meta: unknown): SidecarMeta | undefined {
   return meta as SidecarMeta;
 }
 
-function readArtifact(root: string, levelKey: string): Map<string, ArtifactEntry> {
+function readArtifact(root: string, level: number): Map<string, ArtifactEntry> {
   const filePath = path.join(
-    root, 'curriculum', '_build', 'generate_content', 'passages', `${levelKey}.json`,
+    root, 'curriculum', '_build', 'generate_content', 'passages',
+    `level-${String(level).padStart(2, '0')}.json`,
   );
   const bySeed = new Map<string, ArtifactEntry>();
   if (!fs.existsSync(filePath)) {
@@ -138,11 +140,6 @@ function readArtifact(root: string, levelKey: string): Map<string, ArtifactEntry
   return bySeed;
 }
 
-function toJlptLevel(levelKey: string): JlptLevel | null {
-  const upper = levelKey.toUpperCase();
-  return (JLPT_LEVELS as readonly string[]).includes(upper) ? (upper as JlptLevel) : null;
-}
-
 export function loadGeneratedPassages(root: string): GeneratedResponse {
   const seeds = readSeeds(root);
   if (!seeds.ok) {
@@ -151,10 +148,8 @@ export function loadGeneratedPassages(root: string): GeneratedResponse {
 
   const levels: GeneratedLevel[] = [];
   for (const [levelKey, seedRows] of Object.entries(seeds.seeds)) {
-    const level = toJlptLevel(levelKey);
-    if (!level) continue;
-
-    const bySeed = readArtifact(root, levelKey);
+    const level = Number(levelKey);
+    const bySeed = readArtifact(root, level);
     const rows: GeneratedSeedRow[] = [...seedRows]
       .sort((a, b) => a.position - b.position)
       .map((seed) => {
@@ -171,6 +166,6 @@ export function loadGeneratedPassages(root: string): GeneratedResponse {
     });
   }
 
-  levels.sort((a, b) => JLPT_LEVELS.indexOf(a.level) - JLPT_LEVELS.indexOf(b.level));
+  levels.sort((a, b) => a.level - b.level);
   return { ok: true, levels };
 }

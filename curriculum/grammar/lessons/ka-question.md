@@ -1,105 +1,128 @@
 ---
-generator_model: gemini-web
+generator_model: sonnet-5
 prompt_version: 2
-review_status: reviewed
+review_status: draft
 caution_notes:
-  - "In formal writing, a sentence ending in か typically finishes with a standard full stop (。) rather than a question mark."
-  - "Never attach か directly to a casual verb; instead, drop the particle entirely and just use a rising intonation."
+  - "Put か only at the very end of the sentence, never in the middle."
+  - "Do not move the question word to the front the way English does; it stays where the answer would go."
+  - "Dropping か and ですか is casual speech, so keep ですか with strangers, shopkeepers and anyone senior."
+  - "A か right after 何 inside a sentence, as in 何か, usually means something, not a question."
 related_grammar_slugs:
-  - "ne-tag"
+  - "wa-topic"
+  - "no-possessive"
+  - "wo"
+  - "ni-direction"
 ---
 
-You are sitting at a restaurant with a coworker. They are staring intently at the menu, entirely unable to decide, and you want to ask what they are going to eat. 
+You're at a market stall. A small wooden object sits on the counter, you have no idea what it is, and the owner is already smiling at you. You point, and you need one sentence that gets you a price.
 
-In English, turning a simple statement of fact into a question requires you to scramble the entire sentence. "You eat" gets dismantled, flipped around, and rebuilt into "What will you eat?" 
-
-One of the biggest reliefs of Japanese grammar is that you never have to do that. You do not rearrange the sentence structure at all. Instead, you simply pull a single syllable from your grammatical toolkit and snap it onto the very end of the sentence. 
-
-That little syllable is か.
+Here it is.
 
 ```jp
-何を食べますか。
+これはいくらですか。
 ```
-*What will you eat?*
+
+*How much is this?*
+
+Look at the very end. That small か is the whole trick. Everything before it is a plain statement: これはいくらです would mean 'This is how much.' Add か and the sentence turns into something you hand over for the other person to answer.
+
+Out loud, your voice also lifts a little on か. But the か itself does the work, so you never have to rely on tone alone. That is a relief when you are nervous and your pitch is all over the place.
 
 ## How it works
 
-Think of か as a spoken question mark. Historically, the Japanese writing system did not use any punctuation at all. There were no commas, no periods, and certainly no question marks. Because everything was written in a continuous, unbroken stream of characters, the language needed a dedicated word to signal that a sentence was an inquiry rather than a fact.
+The rule has one step: take a finished sentence and put か at the end. Nothing moves and nothing changes shape. English flips the order ('this is' becomes 'is this'). Japanese keeps the order exactly as it was.
 
-To use it, take a complete, polite statement—ending in either the polite verb suffix ます or the copula です (the word that works like *is/am/are*)—and simply add か to the very end. The particle takes care of all the grammatical heavy lifting.
+There is a reason for this. A Japanese sentence keeps its verdict for the last moment, so the listener holds everything in their head until the final word tells them what kind of sentence it was. か is that final word. It says: this was a thing to answer, not a thing to nod at.
 
-```jp
-明日、本を読みますか。
-```
-*Will you read a book tomorrow?*
+Quick gloss before we go on. です is the copula (the word that works like *is/am/are*), and in polite speech it sits at the end of the sentence. Because か comes after it, the polite question ending you will hear all day long is ですか. Watch the change as one single step.
 
 ```jp
-あの人は学生ですか。
+これは十です → これは十ですか。
 ```
-*Is that person a student?*
 
-One of the best things about this particle is how cleanly it stacks with the rest of the language. When you want to ask a specific question, the question word simply slots into the exact space where the answer would normally live. 
+*This is ten → Is this ten?*
 
-Let's say you want to talk about returning from a location. First, look at a standard statement using the starting-point particle から.
+That means every statement you can already build is also a question you can already build. Same words, same order, one extra syllable.
+
+Now the question words: 何, どこ, いつ, どれ, どなた, いくら and the rest of that family. They do not jump to the front the way *what* and *where* do in English. They stand exactly where the answer would stand, and か still closes the sentence.
 
 ```jp
-図書館から帰ります。
+ここはどこですか。
 ```
-*I will return from the library.*
 
-If you don't know where the person is returning from, you do not move any words to the front of the sentence. You simply swap the location (図書館) for the question word (どこ), leave the particle から exactly where it is, and lock the sentence with か.
+*Where is this place?*
+
+The answer would simply take the spot of どこ. Nothing else in the sentence has to change.
+
+That gives you two kinds of question from one tool. Without a question word, you get a yes-or-no question: これは十ですか expects a yes or a no. With a question word, the listener fills in the missing piece instead.
+
+Sentences can also shrink to almost nothing. If the situation already tells everyone what you are talking about, Japanese happily drops the topic.
 
 ```jp
-どこから帰りますか。
+どちらですか。
 ```
-*Where will you return from?*
 
-This modular logic works with any particle you already know, like the recipient marker に.
+*Which way is it?*
 
-```jp
-誰に話しますか。
-```
-*Who will you speak to?*
+Picture yourself standing in a hallway with a map in your hand. That one short sentence is complete, polite, and perfectly normal.
+
+One handy trick: when someone answers a どれですか by pointing, you can repeat the pointed-at word with か to check. これですか means 'This one?' It is the quickest way to confirm you understood.
+
+A note on punctuation. In careful written Japanese, a か sentence ends with 。 and not with ？. The question mark shows up mostly in casual writing, which is why you will only meet it in the casual section below.
 
 ## Rules and exceptions
 
-Because this particle explicitly labels the sentence as a question, you generally do not need a written question mark in standard Japanese. A polite sentence ending in か typically finishes with a standard full stop (。).
+1. **か goes at the very end.** Putting it in the middle, as in `これか十です`, does not build a question. It breaks the sentence. (A か between two words can mean *or*, which is a story for a later lesson.)
+2. **One か per question.** The sentence is finished once, so it is marked once. Piling up extra か marks, as in `これは十ですかか`, only makes the sentence wrong.
+3. **ですか is the safe polite ending.** With a stranger, a shopkeeper, or anyone senior, keep ですか. A か stuck straight onto a blunt, plain ending can sound like a challenge, as if you were picking a fight.
+4. **The word order never flips.** Do not move the question word to the front to copy English. `何これは` is not how Japanese asks it; the question word stays in its slot.
 
-> You will absolutely see question marks used on the internet, in manga, and in text messages to add visual emotion, but in clean, standard writing, the particle does all the work.
+> A か that sits right after 何 inside a sentence, as in 何か, usually means *something*, not a question. Sentence-final か asks. A か glued to a question word in the middle makes a vague 'some-thing' out of it. You will meet that properly later, so do not be surprised when you see it.
 
-Another detail to watch is your intonation—the rising or falling pitch of your voice at the end of a sentence. In English, we rely heavily on a rising pitch to make a question sound like a question. In Japanese, because か is doing the mechanical work, your intonation does not need to spike aggressively. A slight, gentle rise is natural, but pitching your voice sky-high can sound overly dramatic.
+Here is the honest mess: the か you hear at the end of a sentence is not always a request for information. Sometimes it is a reaction, like 'Oh, is that so?' Context and tone decide, and that part you pick up from listening, not from rules.
 
 ## Casual speech
 
-This is where the textbook rules break down in real life, and it trips up almost everyone in their first week of speaking.
-
-The rule to "just add か" only applies when you are speaking politely, using です or ます. When you drop those polite endings to speak casually with friends, the rules change entirely. In casual speech, you **do not** add か to the end of a plain verb.
-
-If you say `お茶を飲むか` (Will you drink tea?) instead of polite `お茶を飲みますか`, you will sound incredibly rough. It gives off the abrasive vibe of a tough guy in an action movie or someone aggressively grumbling to themselves.
-
-Instead, modern casual Japanese drops the particle completely. You simply state the plain phrase and raise your intonation sharply at the end. Because the particle is gone, this is the one time standard Japanese actually relies on a written question mark to show that tone.
+With friends, Japanese drops both the polite です and the か. The voice rises at the end instead, and in writing that rise becomes ？. This is casual, so do not use it with someone you have just met.
 
 ```jp
-お茶を飲む？
+これは何？
+それはいくら？
 ```
-*Will you drink tea?*
 
-## Contrast: The power of one syllable
+*What's this?*
+*How much is that?*
 
-The power of a single syllable is immense in Japanese. Because the language relies so heavily on context, subjects like "I" and "you" are almost always dropped. 
+Notice that the rising voice is now the whole signal. That is why a friend can ask with a single raised syllable, while a stranger would expect the full ですか.
 
-When you state a fact without a question marker, the listener automatically assumes you are talking about yourself or an established truth. The moment you attach the particle, the focus pivots immediately to the listener. It is a minimal pair where swapping nothing for something changes the entire reality of the conversation.
+With a shopkeeper, dropping か and ですか makes you sound abrupt, even if you only meant to be quick. Save the short forms for people who already like you.
+
+## Contrast
+
+か and は meet in the same sentence all the time, and they never compete. は opens the sentence by saying what it is about. か closes it by saying it needs an answer. Take a statement and a question built from the same pieces.
 
 ```jp
-今日、肉を食べます。
+これは二つです。
+これは二つですか。
 ```
-*I will eat meat today.*
+
+*This is two.*
+*Is this two?*
+
+The only difference is the final か. Add it and the sentence flips from reporting to asking.
+
+の is the other sibling you know, and it does a different job entirely. の ties an owner to a thing, and when the thing is clear it can stand alone: あなたの means *yours*. か cannot link anything. It only closes. You can see all three in one sentence.
 
 ```jp
-今日、肉を食べますか。
+これはあなたのですか。
 ```
-*Will you eat meat today?*
 
-Without か, you are declaring your own dinner plans. The moment you add it, you are now asking about theirs.
+*Is this yours?*
 
-Hold onto this idea of sentence-ending particles changing the whole mood of a statement—it becomes incredibly important when we meet ね to ask for agreement later on.
+Here は sets the topic これ, の turns あなた into *yours*, and か closes the whole sentence. Each small word has its own place and its own job.
+
+One warning about あなた. Textbooks love it, but in real life people usually use the other person's name, and a bare あなた can sound pointed. It is fine for practice, and you will learn the more natural habits as you go.
+
+## Closing thought
+
+Add か to the end of any sentence, keep the order, and let the question word sit where the answer will go. That already lets you ask what, where, when, which, how many and how much. Hold onto this: soon you will learn を and に, and then you will be able to ask what someone does to what, and where they go, with か waiting at the end of those sentences too.

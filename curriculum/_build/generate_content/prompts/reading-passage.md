@@ -115,9 +115,10 @@ rule below is that one rule, with the mistake already made once:
   not contain, so a passage about salt in the tea cannot fall back on
   「お茶は辛いです」 — 辛い is *spicy*, and the sentence now says something else.
   Write a mix-up the words you have can describe.
-- **A spoken line ends in と言いました.** 話す is *to talk with someone about
+- **A quotation never takes 話す.** 話す is *to talk with someone about
   something* — 友達と話しました, 先生に話しました. It does not carry a quotation.
-  「明日も来ます」と話しました is not Japanese; 「明日も来ます」と言いました is.
+  「明日も来ます」と話しました is not Japanese; 「明日も来ます」と言いました is,
+  once the grammar list has quotation と (see *When someone speaks*).
 - **Use the verb the noun takes.** 宿題をします, never 宿題を書きます. 薬を
   飲みます, never 薬を食べます. When you are unsure which verb a noun takes,
   write about something you are sure of.
@@ -125,7 +126,8 @@ rule below is that one rule, with the mistake already made once:
   can intend the action. 箱が待っています is not a sentence a Japanese writer
   puts on the page — a box does not wait. A thing that has sat somewhere since
   a time is said with ある: 箱は先月から角にあります. (置いてあります is what an
-  adult would write, but 〜てある is N4 grammar and will not be on your list.)
+  adult would write, but 〜てある is not on your list unless the grammar list
+  above names it.)
 - **Do not count without the counter the object takes.** Pens take 本, books
   take 冊, animals take 匹. 〜つ is not a general-purpose counter: it counts
   small objects that have no counter of their own, and clothes (着) and shoes
@@ -143,9 +145,17 @@ rule below is that one rule, with the mistake already made once:
 
 ## When someone speaks
 
-- Put the spoken words in 「」 and close the sentence with と言いました — or
-  と聞きました for a question. Narration and speech never run together
-  unquoted.
+- Spoken or written words always go in 「」. Narration and speech never run
+  together unquoted.
+- **When the grammar list above has quotation と (`to-quotation`)**, close the
+  quote with と言いました — or と聞きました for a question, と書きました for
+  written words.
+- **When it does not, quotation と is off limits** — after a 」, after a verb
+  (行くと言いました) and before 言う, the gate reads that と as quotation, not
+  as *and*. Give each spoken or written line as its own sentence, with nothing
+  after the 」, and name the speaker or the paper in the sentence before:
+  兄は母に電話をしました。「コーヒーですね。」 For a sign or a note, say where
+  the paper is, then give its words: 箱に紙があります。「見ないでください。」
 - At most two speakers, and the reader must be able to tell who is talking from
   the sentence before. An exchange nobody is named in reads as noise.
 - Speech stays in the same polite 〜です／〜ます register as the narration.

@@ -57,8 +57,12 @@ from collections import defaultdict
 REPORTS_DIR = os.path.dirname(os.path.abspath(__file__))
 BUILD_DIR = os.path.dirname(REPORTS_DIR)
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
+sys.path.insert(0, BUILD_DIR)
 
-LEVELS = ["n5", "n4", "n3", "n2", "n1"]
+from levels import MAX_LEVEL  # noqa: E402
+
+#: The ladder levels, in study order.
+LEVELS = list(range(1, MAX_LEVEL + 1))
 KINDS = [
     ("radicals", "radical"),
     ("kanji", "kanji"),
@@ -81,21 +85,17 @@ def is_kanji_char(ch):
 
 
 def load_items():
-    """(item_type, slug) -> item dict, plus the level each item lives in."""
+    """(item_type, slug) -> item dict, plus the ladder level it lives in."""
     items = {}
-    for level in LEVELS:
-        for kind, item_type in KINDS:
-            path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-            if not os.path.exists(path):
-                continue
-            for item in load(path)["items"]:
-                items[(item_type, item["slug"])] = dict(item, _level=level)
+    for kind, item_type in KINDS:
+        for item in load(os.path.join(CURRICULUM_DIR, kind, "items.json"))["items"]:
+            items[(item_type, item["slug"])] = dict(item, _level=item["level"])
     return items
 
 
 def study_position(item):
     """Order the planner offers items in: level first, then sort_order."""
-    return (LEVELS.index(item["_level"]), item.get("sort_order", 0))
+    return (item["_level"], item.get("sort_order", 0))
 
 
 def coverage(items):
@@ -271,7 +271,7 @@ def group_by_child(findings):
         row["parents"].append(finding)
     return sorted(
         by_child.values(),
-        key=lambda row: (LEVELS.index(row["child_level"]), row["child_sort_order"]),
+        key=lambda row: (row["child_level"], row["child_sort_order"]),
     )
 
 
@@ -303,7 +303,7 @@ def render_markdown(per_level, untaught_uses, reading_per_level, blocking, findi
             totals[key] += value
         pct = f" ({stats['full'] * 100 // stats['total']}%)" if stats["total"] else ""
         lines.append(
-            f"| {level.upper()} | {stats['total']} | {stats['full']}{pct} "
+            f"| {level} | {stats['total']} | {stats['full']}{pct} "
             f"| {stats['partial']} | {stats['kana']} |"
         )
     pct = f" ({totals['full'] * 100 // totals['total']}%)" if totals["total"] else ""
@@ -350,7 +350,7 @@ def render_markdown(per_level, untaught_uses, reading_per_level, blocking, findi
             reading_totals[key] += value
         pct = f" ({stats['readable'] * 100 // stats['total']}%)" if stats["total"] else ""
         lines.append(
-            f"| {level.upper()} | {stats['total']} | {stats['readable']}{pct} "
+            f"| {level} | {stats['total']} | {stats['readable']}{pct} "
             f"| {stats['gated']} |"
         )
     pct = (
@@ -396,14 +396,14 @@ def render_markdown(per_level, untaught_uses, reading_per_level, blocking, findi
         for finding in unreachable:
             lines.append(
                 f"- **ERROR** {finding['child_form']} `{finding['child']}` "
-                f"({finding['child_level'].upper()}) is never reachable; parents: "
+                f"(level {finding['child_level']}) is never reachable; parents: "
                 f"{', '.join(f'`{p}`' for p in finding['parents'])}"
             )
         for finding in out_of_band:
             lines.append(
                 f"- **ERROR** {finding['child_form']} `{finding['child']}` "
-                f"({finding['child_level'].upper()}) is gated by {finding['parent_form']} "
-                f"`{finding['parent']}`, banded at {finding['parent_level'].upper()}"
+                f"(level {finding['child_level']}) is gated by {finding['parent_form']} "
+                f"`{finding['parent']}`, banded at level {finding['parent_level']}"
             )
     else:
         lines.append("(clean)")
@@ -425,7 +425,7 @@ def render_markdown(per_level, untaught_uses, reading_per_level, blocking, findi
                 for p in sorted(row["parents"], key=lambda p: p["parent_sort_order"])
             )
             lines.append(
-                f"| {row['child_form']} `{row['child']}` | {row['child_level'].upper()} "
+                f"| {row['child_form']} `{row['child']}` | {row['child_level']} "
                 f"| {row['child_sort_order']} | {parents} |"
             )
     else:

@@ -2,7 +2,8 @@
 """Curriculum context for Phase 2b/2d radical, kanji and vocabulary generation.
 
 Loads the *generated* curriculum JSON (curriculum/{kanji,radicals,vocabulary}/
-<level>.json, the canonical output of generate.py) and derives the per-item
+items.json, the canonical output of generate.py, every item carrying its ladder
+`level`) and derives the per-item
 inputs the generator prompt and the mechanical gate both need:
 
   * radical: form + meaning (its own accepted meanings) + look-alikes — the
@@ -17,10 +18,10 @@ inputs the generator prompt and the mechanical gate both need:
     the app's truth for kanji -> radical; a mnemonic must reference exactly
     those components and never a component the learner was not taught
     (docs/content/content-pipeline-plan.md 2b).
-  * vocabulary (Rev 1, 2d): the component kanji (kanji -> vocabulary `requires`
-    edges) with their established meaning mnemonics, the *untaught* kanji the
-    word is also written with (`builds_on` edges) carrying their meaning and
-    nothing else, plus the **reading
+  * vocabulary (Rev 1, 2d): the component kanji (kanji -> vocabulary edges)
+    at or below the word's level with their established meaning mnemonics, any
+    *untaught* kanji the word is also written with (above its level) carrying
+    their meaning and nothing else, plus the **reading
     regularity** of the word — computed mechanically from the word's reading
     against its kanji's KANJIDIC readings, so the "full reading story vs.
     pointer at an earlier word vs. no reading mnemonic at all" choice is
@@ -71,21 +72,6 @@ if os.path.exists(_WORD_TYPES_PATH):
 else:
     VOCAB_WORD_TYPES = {}
 
-#: Levels whose radicals/kanji can be components or look-alikes of one another,
-#: in teaching order (a learner meets N5 before N4).
-#:
-#: The skeleton levels are here for the *kanji and radical* layers (plan Phase
-#: 4): an N3 kanji is a real generation target with real components and real
-#: look-alikes. They deliberately do not move `vocab_context`'s taught-kanji
-#: window, which slices this tuple by `index(level)` and so still resolves to
-#: ("n5",) / ("n5", "n4") — see the note there.
-ALL_LEVELS = ("n5", "n4", "n3", "n2", "n1")
-
-#: Grammar mnemonics (docs/superpowers/specs/2026-10-17-grammar-mnemonics-design.md)
-#: cover the N5 and N4 points, and the N4 points the JLPT level audit moved to
-#: N3 (docs/content/grammar-jlpt-level-audit.md).
-GRAMMAR_MNEMONIC_LEVELS = ("n5", "n4", "n3")
-
 #: The reviewed origin table: every grammar point in scope maps to the real
 #: word its form comes from (おく = 置く "to put down") or to null, a recorded
 #: "no useful origin". The model never supplies an origin; this file does.
@@ -100,18 +86,10 @@ def _load_json(path):
         return json.load(f)
 
 
-def load_items(kind, level):
-    """Items of one kind at one level, or [] if that level ships none.
-
-    A level legitimately omits a kind: the skeleton levels ship kanji only, and
-    N1 not even radicals — its 93 kanji decompose entirely into components taught
-    lower down. An unknown *level* is still a caller bug and raises."""
-    if level not in ALL_LEVELS:
-        raise ValueError(f"unknown level {level!r}")
-    path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
-    if not os.path.exists(path):
-        return []
-    return _load_json(path)["items"]
+def load_items(kind):
+    """Every item of one kind (`curriculum/<kind>/items.json`), in teaching
+    order: by ladder level, then sort_order."""
+    return _load_json(os.path.join(CURRICULUM_DIR, kind, "items.json"))["items"]
 
 
 def _by_slug(items):
@@ -236,15 +214,14 @@ def _item_index():
     global _ITEM_INDEX
     if _ITEM_INDEX is None:
         index = {}
-        for level in ALL_LEVELS:
-            for kind, item_type in (("radicals", "radical"), ("kanji", "kanji")):
-                for it in load_items(kind, level):
-                    index[f"{item_type}:{it['slug']}"] = {
-                        "slug": it["slug"],
-                        "form": it["primary_form"],
-                        "meaning": it["meaning"],
-                        "type": item_type,
-                    }
+        for kind, item_type in (("radicals", "radical"), ("kanji", "kanji")):
+            for it in load_items(kind):
+                index[f"{item_type}:{it['slug']}"] = {
+                    "slug": it["slug"],
+                    "form": it["primary_form"],
+                    "meaning": it["meaning"],
+                    "type": item_type,
+                }
         _ITEM_INDEX = index
     return _ITEM_INDEX
 
@@ -288,23 +265,13 @@ def decomposition_edges():
     return out
 
 
-def kanji_context(level, slug, cast=None):
-    # Banding can move a kanji to a level other than the one its draft/sidecar
-    # file was generated under, so look it up across every level rather than
-    # just `level` — same reasoning as the radical lookup below.
-    kanji = {}
-    for lvl in ALL_LEVELS:
-        kanji.update(_by_slug(load_items("kanji", lvl)))
-    # A kanji's components can come from any level's radical set, not just its
-    # own. Skeleton kanji are the reason this is every level rather than "N5
-    # under N4": 旅 is N3 and builds on 方, an N3 radical, while most of its
-    # neighbours build on N5 ones. Ordering is not a concern — the planner pulls
-    # a radical forward with the kanji that needs it.
-    radicals = {}
-    for lvl in ALL_LEVELS:
-        radicals.update(_by_slug(load_items("radicals", lvl)))
+def kanji_context(slug, cast=None):
+    kanji = _by_slug(load_items("kanji"))
+    # The ladder files a radical at or before the first kanji that uses it, so
+    # every component is one the learner has met.
+    radicals = _by_slug(load_items("radicals"))
     if slug not in kanji:
-        raise KeyError(f"unknown kanji slug {slug!r} in level {level}")
+        raise KeyError(f"unknown kanji slug {slug!r}")
     item = kanji[slug]
 
     onyomi, kunyomi = _kanji_readings(item)
@@ -332,7 +299,7 @@ def kanji_context(level, slug, cast=None):
 
     return {
         "type": "kanji",
-        "level": level,
+        "level": item["level"],
         "slug": slug,
         "char": item["primary_form"],
         "meaning": item["meaning"],
@@ -351,10 +318,11 @@ def kanji_context(level, slug, cast=None):
 DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
 
 
-def radical_parts(form):
+def radical_parts(form, level=None):
     """The taught radicals a radical is itself built from: 動 -> 重 "heavy" +
     力 "power". [] for a radical that is one indivisible shape (口, 一) or one
-    whose split is not in the KanjiVG decomposition.
+    whose split is not in the KanjiVG decomposition, or (with `level`) one with
+    a part taught after that level.
 
     Some radicals are whole kanji promoted into the radical layer, and the
     learner already knows their pieces. A mnemonic that names those pieces —
@@ -364,15 +332,17 @@ def radical_parts(form):
     if len(parts) < 2 or form in parts:
         return []
     by_form = {}
-    for lvl in ALL_LEVELS:
-        for r in load_items("radicals", lvl):
-            by_form.setdefault(r["primary_form"], r)
+    for r in load_items("radicals"):
+        by_form.setdefault(r["primary_form"], r)
     out = []
     for part in parts:
         r = by_form.get(part)
         if not r:
             # An untaught piece cannot be named to the learner, so the split
             # is not usable: fall back to one picture of the whole shape.
+            return []
+        if level is not None and r["level"] > level:
+            # Same rule for a part the learner meets later.
             return []
         out.append({
             "slug": r["slug"],
@@ -383,41 +353,35 @@ def radical_parts(form):
     return out
 
 
-def radical_context(level, slug):
-    radicals = _by_slug(load_items("radicals", level))
+def radical_context(slug):
+    radicals = _by_slug(load_items("radicals"))
     if slug not in radicals:
-        raise KeyError(f"unknown radical slug {slug!r} in level {level}")
+        raise KeyError(f"unknown radical slug {slug!r}")
     item = radicals[slug]
     return {
         "type": "radical",
-        "level": level,
+        "level": item["level"],
         "slug": slug,
         "form": item["primary_form"],
         "meaning": item["meaning"],
         "meaning_synonyms": _meaning_answers(item) or [item["meaning"]],
         "existing_mnemonic": item.get("mnemonic_text", ""),
         "look_alikes": look_alikes("radical", slug),
-        "components": radical_parts(item["primary_form"]),
+        "components": radical_parts(item["primary_form"], item["level"]),
     }
 
 
 # --- vocabulary (Rev 1, 2d) ------------------------------------------------
 
-def vocab_component_edges(level):
-    """{vocab_slug: {"requires": [kanji_slug, ...], "builds_on": [...]}}.
+def vocab_component_edges():
+    """{vocab_slug: [kanji_slug, ...]}: every kanji -> vocabulary edge.
 
-    Both kanji -> vocabulary edge kinds, kept apart because they mean different
-    things to a mnemonic. `requires` is a kanji this level teaches: the lesson
-    gates on it, the learner has read its story, and a word mnemonic chains from
-    that story. `builds_on` is a kanji the word is *written* with but does not
-    wait for — 昨 in 昨日, banded N3 while the word is N5 — of which there are
-    2220.
-
-    The app already shows both as "Kanji in this word" chips
-    (`itemRepository.getComponentParentsForItem`), so a mnemonic that names only
-    the first kind leaves a character on the page the story acts as if is not
-    there: 昨日's story says "the day that slipped past", and the half of the
-    word carrying "previous" is never accounted for."""
+    The app shows each of them as a "Kanji in this word" chip
+    (`itemRepository.getComponentParentsForItem`), so a mnemonic that left one
+    out would leave a character on the page the story acts as if is not there:
+    昨日's story saying "the day that slipped past", and the half of the word
+    carrying "previous" never accounted for. `vocab_context` splits them by
+    level: taught (at or below the word's level) or not."""
     graph = _load_json(GRAPH_PATH)
     out = {}
     for e in graph["edges"]:
@@ -426,8 +390,7 @@ def vocab_component_edges(level):
             and e.get("from_type") == "kanji"
             and e.get("to_type") == "vocabulary"
         ):
-            entry = out.setdefault(e["to_slug"], {"requires": [], "builds_on": []})
-            entry[e["relationship_type"]].append(e["from_slug"])
+            out.setdefault(e["to_slug"], []).append(e["from_slug"])
     return out
 
 
@@ -725,69 +688,58 @@ def _reading_teachers():
         return _READING_TEACHERS
     taught = {}
     teachers = {}
-    for lvl in ALL_LEVELS:
-        for item in load_items("vocabulary", lvl):
-            form = item["primary_form"]
-            readings = _reading_answers(item)
-            regularity = reading_regularity(form, readings[0] if readings else "")
-            if regularity["kind"] != "kun_word":
-                continue
-            # A kun_word is one kanji by definition, so there is exactly one
-            # (char, chunk) pair to key the reading on.
-            char, chunk = next((ch, ck) for ch, ck in regularity["segments"]
-                               if _CJK_RE.match(ch))
-            if (char, chunk) in taught:
-                teachers[item["slug"]] = taught[(char, chunk)]
-            else:
-                taught[(char, chunk)] = {
-                    "level": lvl,
-                    "slug": item["slug"],
-                    "form": form,
-                    "reading": _hira(readings[0] if readings else ""),
-                    "char": char,
-                    "chunk": chunk,
-                }
+    for item in load_items("vocabulary"):
+        form = item["primary_form"]
+        readings = _reading_answers(item)
+        regularity = reading_regularity(form, readings[0] if readings else "")
+        if regularity["kind"] != "kun_word":
+            continue
+        # A kun_word is one kanji by definition, so there is exactly one
+        # (char, chunk) pair to key the reading on.
+        char, chunk = next((ch, ck) for ch, ck in regularity["segments"]
+                           if _CJK_RE.match(ch))
+        if (char, chunk) in taught:
+            teachers[item["slug"]] = taught[(char, chunk)]
+        else:
+            taught[(char, chunk)] = {
+                "level": item["level"],
+                "slug": item["slug"],
+                "form": form,
+                "reading": _hira(readings[0] if readings else ""),
+                "char": char,
+                "chunk": chunk,
+            }
     _READING_TEACHERS = teachers
     return _READING_TEACHERS
 
 
-def vocab_context(level, slug, cast=None):
-    vocab = _by_slug(load_items("vocabulary", level))
+def vocab_context(slug, cast=None):
+    vocab = _by_slug(load_items("vocabulary"))
     if slug not in vocab:
-        raise KeyError(f"unknown vocabulary slug {slug!r} in level {level}")
+        raise KeyError(f"unknown vocabulary slug {slug!r}")
     item = vocab[slug]
 
-    # The window that decides which kanji bring a *story* to the word. A word
-    # can sit at a level below one of its own kanji (N5's 明日 uses 明, taught at
-    # N4), and that kanji has no established story for the learner to chain
-    # from, so it does not become a component here. It is not dropped outright —
-    # it comes back below as an untaught component, meaning-only.
-    #
-    # Plan v2 Phase C put this rule back in force: pull-forward is gone, so a
-    # learner really does reach 写真 without having met 写 or 真. The window is
-    # right, and it is also what a vocabulary story needs — a story chains from
-    # its kanji's *established* stories, and most band kanji have none yet.
+    # The window that decides which kanji bring a *story* to the word: its
+    # kanji at or below the word's level, whose stories the learner has read.
+    # The ladder never files a word before its kanji (rule 2), so today that is
+    # all of them; a kanji above the word's level would come back below as an
+    # untaught component, meaning-only.
     #
     # `reading_regularity` deliberately does *not* use this window: it judges
     # against KANJIDIC, because whether a reading is derivable is a fact about
     # the language, not about lesson order. See its docstring.
-    taught_levels = ALL_LEVELS[:ALL_LEVELS.index(level) + 1]
-    kanji = {}
-    for lvl in taught_levels:
-        kanji.update(_by_slug(load_items("kanji", lvl)))
-    all_kanji = {}
-    for lvl in ALL_LEVELS:
-        all_kanji.update(_by_slug(load_items("kanji", lvl)))
+    all_kanji = _by_slug(load_items("kanji"))
+    kanji = {s: k for s, k in all_kanji.items() if k["level"] <= item["level"]}
 
     form = item["primary_form"]
     readings = _reading_answers(item)
     reading = readings[0] if readings else ""
     meaning_synonyms = _meaning_answers(item) or [item["meaning"]]
 
-    edges = vocab_component_edges(level).get(slug, {})
+    edges = vocab_component_edges().get(slug, [])
     components = []
     seen_chars = set()
-    for kslug in edges.get("requires", []):
+    for kslug in edges:
         k = kanji.get(kslug)
         # A character re-taught at a later level has two slugs and two edges;
         # the learner sees one kanji, so keep the first.
@@ -807,12 +759,9 @@ def vocab_context(level, slug, cast=None):
             # format_vocab_components).
             "meaning_mnemonic": k.get("meaning_mnemonic", ""),
         })
-    # The other half of the word: kanji it is written with but does not wait
-    # for. The learner has met neither the character nor its story, so only the
-    # *meaning* travels — see `format_vocab_components`. This applies whether or
-    # not the word has any *taught* components too — 家族, with both 家 and 族
-    # banded at N4, gets 家 and 族 named here exactly as 祖父 (祖 untaught, 父
-    # taught) gets 祖.
+    # The other half of the word: kanji it is written with but that sit above
+    # its level. The learner has met neither the character nor its story, so
+    # only the *meaning* travels — see `format_vocab_components`.
     #
     # One filter, deliberate: a kanji whose meaning simply restates the word's
     # is dropped. Naming it produces "the yesterday day is yesterday" (昨日),
@@ -823,9 +772,9 @@ def vocab_context(level, slug, cast=None):
     # standalone-story branch.
     own_words = _meaning_word_set(meaning_synonyms)
     untaught_components = []
-    for kslug in edges.get("builds_on", []):
+    for kslug in edges:
         k = all_kanji.get(kslug)
-        if not k or k["primary_form"] in seen_chars:
+        if not k or kslug in kanji or k["primary_form"] in seen_chars:
             continue
         synonyms = _meaning_answers(k) or [k["meaning"]]
         if _shares_meaning(own_words, _meaning_word_set(synonyms)):
@@ -850,7 +799,7 @@ def vocab_context(level, slug, cast=None):
 
     return {
         "type": "vocab",
-        "level": level,
+        "level": item["level"],
         "slug": slug,
         "form": form,
         "meaning": item["meaning"],
@@ -876,9 +825,9 @@ def vocab_context(level, slug, cast=None):
     }
 
 
-def all_slugs(level, kind):
-    """Slugs for a level in curriculum (sort) order."""
-    return [it["slug"] for it in load_items(kind, level)]
+def all_slugs(kind, level):
+    """Slugs of one ladder level in curriculum (sort) order."""
+    return [it["slug"] for it in load_items(kind) if it["level"] == level]
 
 
 def format_components(components):
@@ -896,7 +845,7 @@ def format_components(components):
                 f"component radical {c['slug']} has no `mnemonic_text` yet. "
                 "Generate the radical layer first (`generate_mnemonics run "
                 "--type radical` for the level that teaches it, then "
-                "`generate.py --level <level>`)."
+                "`generate.py`)."
             )
         syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
         lines.append(f"- {c['form']} — “{syn}”\n  Its established image, which your "
@@ -1042,7 +991,7 @@ def format_vocab_components(ctx):
                 f"component kanji {c['slug']} has no `meaning_mnemonic` yet. "
                 "Regenerate the kanji layer first (`generate_mnemonics run "
                 "--type kanji` for the level that teaches it, then "
-                "`generate.py --level <level>`)."
+                "`generate.py`)."
             )
         readings = "、".join(c["onyomi"] + c["kunyomi"]) or "(none)"
         lines.append(
@@ -1294,14 +1243,9 @@ def format_regularity(ctx):
 # --- grammar (grammar mnemonics spec) ---------------------------------------
 
 def grammar_mnemonic_slugs():
-    """Every grammar slug in scope, N5 then N4, in curriculum order. A read-once
-    card is never reviewed, so it has no mnemonic to write."""
-    return [
-        item["slug"]
-        for level in GRAMMAR_MNEMONIC_LEVELS
-        for item in load_items("grammar", level)
-        if not item.get("read_once")
-    ]
+    """Every grammar slug in scope, in curriculum order. A read-once card is
+    never reviewed, so it has no mnemonic to write."""
+    return [item["slug"] for item in load_items("grammar") if not item.get("read_once")]
 
 
 def load_grammar_origins(path=GRAMMAR_ORIGINS_PATH):
@@ -1352,20 +1296,20 @@ def grammar_lesson_opening(slug):
     return re.split(r"^## ", body, flags=re.M)[0].strip()
 
 
-def grammar_context(level, slug, table=None):
-    items = _by_slug(load_items("grammar", level))
+def grammar_context(slug, table=None):
+    items = _by_slug(load_items("grammar"))
     if slug not in items:
-        raise KeyError(f"unknown grammar slug {slug!r} in level {level}")
+        raise KeyError(f"unknown grammar slug {slug!r}")
     origins = (table or load_grammar_origins())["origins"]
     if slug not in origins:
         raise KeyError(
             f"grammar_origins.json has no entry for {slug!r}; write an origin or null first"
         )
     item = items[slug]
-    allowed_vocab = grammar_pool_context.allowed_vocab_for(level, slug)
+    allowed_vocab = grammar_pool_context.allowed_vocab_for(slug)
     return {
         "type": "grammar",
-        "level": level,
+        "level": item["level"],
         "slug": slug,
         "form": item["primary_form"],
         "accepted_forms": item["accepted_forms"],

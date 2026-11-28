@@ -11,7 +11,6 @@ import { listContextSearch } from '../lib/listContext';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
-  JLPT_LEVELS,
   MISSING_FIELD_OPTIONS,
   STATUS_LABELS,
   type ContentListItem,
@@ -19,11 +18,11 @@ import {
   type FindingSeverity,
   type ItemsModelsResponse,
   type ItemsResponse,
-  type JlptLevel,
   type ReviewStatus,
 } from '../types/api';
 
-const LEVEL_OPTIONS: Array<JlptLevel | ''> = ['', ...JLPT_LEVELS];
+/** Ladder levels 1-60. */
+const LEVEL_OPTIONS: number[] = Array.from({ length: 60 }, (_, i) => i + 1);
 const STATUSES: ReviewStatus[] = ['draft', 'reviewed', 'flagged_for_rewrite', 'none'];
 const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: '', label: 'Any audit status' },
@@ -344,18 +343,18 @@ export default function ContentList() {
       </div>
 
       <div className="filter-bar">
-        <div className="chip-group" role="group" aria-label="Level">
+        <select
+          value={level}
+          onChange={(e) => updateParams({ level: e.target.value || null })}
+          aria-label="Level"
+        >
+          <option value="">All levels</option>
           {LEVEL_OPTIONS.map((lvl) => (
-            <button
-              key={lvl || 'all'}
-              type="button"
-              className={level === lvl ? 'chip chip--active' : 'chip'}
-              onClick={() => updateParams({ level: lvl || null })}
-            >
-              {lvl || 'All'}
-            </button>
+            <option key={lvl} value={String(lvl)}>
+              Level {lvl}
+            </option>
           ))}
-        </div>
+        </select>
 
         <select
           value={status}

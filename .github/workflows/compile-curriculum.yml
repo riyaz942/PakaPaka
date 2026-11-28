@@ -73,13 +73,14 @@ jobs:
       - name: Fetch furigana dataset
         run: curriculum/_build/fetch_furigana_dataset.sh
 
+      # ladder.py is not run here: it reads KANJIDIC2 and KanjiVG, which are
+      # not committed. _build/ladder.json is checked in (curriculum/README.md).
+      # --report-pool until the ladder grammar content is in (level-ladder
+      # plan, Task 7).
       - name: Regenerate curriculum JSON
         run: |
-          python curriculum/_build/generate.py --level n5
-          python curriculum/_build/generate.py --level n4
-          python curriculum/_build/generate.py --level n3
-          python curriculum/_build/generate.py --level n2
-          python curriculum/_build/generate.py --level n1
+          python curriculum/_build/generate.py --report-pool
+          python curriculum/_build/generate_deps.py
 
       # Fields authored only in the JSON (not in the _build datasets) are
       # optional in the schema, so dropping them still validates and compiles.

@@ -1,0 +1,1565 @@
+{
+  "level": 19,
+  "passages": [
+    {
+      "seed": "mise-ga-aite-iru-ka-douka",
+      "position": 1,
+      "tone": "humorous",
+      "passage": {
+        "title": "日曜日のラーメン",
+        "body": "今日は日曜日で、ラーメンの店が休んでいるかどうか分かりませんでした。でも、ラーメンが食べたいので、店へ歩いて行きました。道で、何を注文するか考えました。ラーメンを二杯食べて、ビールも飲みたいと思いました。店の前に来ると、ドアに大きい紙がありました。「今日は休みます。」ドアの前にしばらく立っていました。お腹が大きく鳴りました。近くの小さいコンビニで、パンか何かを買いました。帰る道に、別の店がありました。窓から、ラーメンの店の人が見えました。その人は、ラーメンを二杯食べていました。パンを食べながら、家へ帰りました。",
+        "questions": [
+          {
+            "prompt": "いつ店へ歩いて行きましたか。",
+            "accepted_answers": [
+              "日曜日",
+              "日曜日です",
+              "今日",
+              "今日は日曜日です",
+              "にちようび",
+              "にちようびです"
+            ],
+            "prompt_furigana": "いつ店[みせ]へ歩[ある]いて行[い]きましたか。"
+          },
+          {
+            "prompt": "ラーメンの店のドアに、何がありましたか。",
+            "accepted_answers": [
+              "紙",
+              "紙です",
+              "かみ",
+              "かみです",
+              "紙がありました",
+              "かみがありました"
+            ],
+            "prompt_furigana": "ラーメンの店[みせ]のドアに、何[なに]がありましたか。"
+          },
+          {
+            "prompt": "私はどこでパンを買いましたか。",
+            "accepted_answers": [
+              "コンビニ",
+              "コンビニです",
+              "小さいコンビニ",
+              "小さいコンビニです",
+              "近くの小さいコンビニ",
+              "近くの小さいコンビニです",
+              "ちかくのちいさいコンビニ"
+            ],
+            "prompt_furigana": "私[わたし]はどこでパンを買[か]いましたか。"
+          },
+          {
+            "prompt": "ラーメンの店の人は、どこにいましたか。",
+            "accepted_answers": [
+              "別の店",
+              "別の店です",
+              "べつのみせ",
+              "べつのみせです",
+              "別の店にいました",
+              "べつの店です"
+            ],
+            "prompt_furigana": "ラーメンの店[みせ]の人[ひと]は、どこにいましたか。"
+          },
+          {
+            "prompt": "ラーメンの店の人は、ラーメンを何杯食べていましたか。",
+            "accepted_answers": [
+              "二杯",
+              "二杯です",
+              "にはい",
+              "にはいです",
+              "2杯",
+              "2杯です"
+            ],
+            "prompt_furigana": "ラーメンの店[みせ]の人[ひと]は、ラーメンを何[なに]杯[ばい]食[た]べていましたか。"
+          }
+        ],
+        "english_translation": "Today was Sunday, and I did not know whether the ramen shop was closed. But I wanted ramen, so I walked to the shop. On the way, I thought about what to order. I thought I would eat two bowls of ramen and drink beer too. When I arrived in front of the shop, there was a big piece of paper on the door. \"We are closed today.\" I stood in front of the door for a while. My stomach rumbled loudly. At a small convenience store nearby, I bought bread or something. On the way home, there was another shop. Through the window, I could see the ramen shop's owner. That person was eating two bowls of ramen. I walked home eating my bread.",
+        "summary_ja": "ラーメンの店は休みで、私はパンを買いました。",
+        "summary_en": "The ramen shop was closed, so I bought bread, and then saw the shop's owner eating ramen elsewhere.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "de-location",
+          "ga",
+          "he-direction",
+          "ka-douka",
+          "ka-nanka",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "nagara",
+          "ni-direction",
+          "no-possessive",
+          "node-because",
+          "potential",
+          "tai",
+          "te-form",
+          "te-iru",
+          "teiru-result",
+          "to-conditional",
+          "to-omou",
+          "to-quotation",
+          "wa-topic",
+          "wo"
+        ],
+        "vocabulary_slugs": [
+          "aru",
+          "aruku",
+          "betsu",
+          "biiru",
+          "chiisai",
+          "chikaku",
+          "chuumon-suru",
+          "demo",
+          "doa",
+          "dou",
+          "hito",
+          "ie",
+          "iku-v",
+          "iru-exist",
+          "kaeru-v",
+          "kami-paper",
+          "kangaeru",
+          "kau-v",
+          "konbini",
+          "kuru-v",
+          "kyou",
+          "mado",
+          "mae",
+          "michi-v",
+          "mieru",
+          "mise",
+          "nani",
+          "naru-ring",
+          "nichiyoubi",
+          "omou",
+          "onaka",
+          "ookii",
+          "pan",
+          "raamen",
+          "shibaraku",
+          "sono",
+          "taberu",
+          "tatsu-v",
+          "wakaru",
+          "yasumu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "raamen",
+            "start": 8,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 13,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "yasumu",
+            "start": 15,
+            "end": 18,
+            "surface_form": "休んで",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 18,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "dou",
+            "start": 21,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 24,
+            "end": 33,
+            "surface_form": "分かりませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "raamen",
+            "start": 37,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 49,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "aruku",
+            "start": 51,
+            "end": 54,
+            "surface_form": "歩いて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 54,
+            "end": 59,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 63,
+            "end": 64
+          },
+          {
+            "vocabulary_slug": "chuumon-suru",
+            "start": 65,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "kangaeru",
+            "start": 70,
+            "end": 75,
+            "surface_form": "考えました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "raamen",
+            "start": 76,
+            "end": 80
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 83,
+            "end": 86,
+            "surface_form": "食べて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "biiru",
+            "start": 87,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "omou",
+            "start": 96,
+            "end": 101,
+            "surface_form": "思いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 102,
+            "end": 103
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 104,
+            "end": 105
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 106,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 110,
+            "end": 112
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 113,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "kami-paper",
+            "start": 116,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 118,
+            "end": 123,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 125,
+            "end": 127
+          },
+          {
+            "vocabulary_slug": "yasumu",
+            "start": 128,
+            "end": 132,
+            "surface_form": "休みます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 134,
+            "end": 136
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 137,
+            "end": 138
+          },
+          {
+            "vocabulary_slug": "shibaraku",
+            "start": 139,
+            "end": 143
+          },
+          {
+            "vocabulary_slug": "tatsu-v",
+            "start": 143,
+            "end": 146,
+            "surface_form": "立って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 146,
+            "end": 150,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "onaka",
+            "start": 151,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "naru-ring",
+            "start": 157,
+            "end": 162,
+            "surface_form": "鳴りました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 163,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "chiisai",
+            "start": 166,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "konbini",
+            "start": 169,
+            "end": 173
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 175,
+            "end": 177
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 178,
+            "end": 179
+          },
+          {
+            "vocabulary_slug": "kau-v",
+            "start": 181,
+            "end": 186,
+            "surface_form": "買いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 187,
+            "end": 189
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 189,
+            "end": 190
+          },
+          {
+            "vocabulary_slug": "betsu",
+            "start": 192,
+            "end": 193
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 194,
+            "end": 195
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 196,
+            "end": 201,
+            "surface_form": "ありました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 202,
+            "end": 203
+          },
+          {
+            "vocabulary_slug": "raamen",
+            "start": 206,
+            "end": 210
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 211,
+            "end": 212
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 213,
+            "end": 214
+          },
+          {
+            "vocabulary_slug": "mieru",
+            "start": 215,
+            "end": 220,
+            "surface_form": "見えました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 221,
+            "end": 223
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 223,
+            "end": 224
+          },
+          {
+            "vocabulary_slug": "raamen",
+            "start": 226,
+            "end": 230
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 233,
+            "end": 236,
+            "surface_form": "食べて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 236,
+            "end": 240,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "pan",
+            "start": 241,
+            "end": 243
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 250,
+            "end": 251
+          },
+          {
+            "vocabulary_slug": "kaeru-v",
+            "start": 252,
+            "end": 257,
+            "surface_form": "帰りました",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 148,
+        "body_furigana": "今日[きょう]は日[にち]曜[よう]日[び]で、ラーメンの店[みせ]が休[やす]んでいるかどうか分[わ]かりませんでした。でも、ラーメンが食[た]べたいので、店[みせ]へ歩[ある]いて行[い]きました。道[みち]で、何[なに]を注[ちゅう]文[もん]するか考[かんが]えました。ラーメンを二[に]杯[ばい]食[た]べて、ビールも飲[の]みたいと思[おも]いました。店[みせ]の前[まえ]に来[く]ると、ドアに大[おお]きい紙[かみ]がありました。「今日[きょう]は休[やす]みます。」ドアの前[まえ]にしばらく立[た]っていました。お腹[なか]が大[おお]きく鳴[な]りました。近[ちか]くの小[ちい]さいコンビニで、パンか何[なに]かを買[か]いました。帰[かえ]る道[みち]に、別[べつ]の店[みせ]がありました。窓[まど]から、ラーメンの店[みせ]の人[ひと]が見[み]えました。その人[ひと]は、ラーメンを二[に]杯[ばい]食[た]べていました。パンを食[た]べながら、家[いえ]へ帰[かえ]りました。",
+        "slug": "mise-ga-aite-iru-ka-douka",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "naku-hodo-karai",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "泣くほど辛いカレー",
+        "body": "先週、友達と一緒にカレーの店へ行きました。その店は駅の近くにあって、いつも客が多いです。友達は「ここのカレーは、とてもおいしいですよ」と言いました。友達は毎週ここへ来ます。私は一番大きいカレーを注文しました。赤いカレーが来ました。カレーを食べると、すぐ泣くほど辛かったです。口も体も熱くなりました。私は、お腹が大きくなるくらい、水を六杯飲みました。だから、アイスクリームが入る場所は、もうありませんでした。友達は何も言いませんでした。友達の顔は赤くて、目も赤かったです。でも、友達は泣きながら、カレーを全部食べました。最後に、友達は少し笑って言いました。「今日は、前より辛くないですね。」",
+        "questions": [
+          {
+            "prompt": "友達と一緒にどこへ行きましたか。",
+            "accepted_answers": [
+              "カレーの店",
+              "カレーの店です",
+              "カレーのみせ",
+              "カレーのみせです",
+              "カレーの店へ行きました"
+            ],
+            "prompt_furigana": "友[とも]達[だち]と一[いっ]緒[しょ]にどこへ行[い]きましたか。"
+          },
+          {
+            "prompt": "私は何を注文しましたか。",
+            "accepted_answers": [
+              "一番大きいカレー",
+              "一番大きいカレーです",
+              "いちばん大きいカレー",
+              "いちばんおおきいカレー",
+              "いちばんおおきいカレーです",
+              "カレー",
+              "カレーです"
+            ],
+            "prompt_furigana": "私[わたし]は何[なに]を注[ちゅう]文[もん]しましたか。"
+          },
+          {
+            "prompt": "私は何をたくさん飲みましたか。",
+            "accepted_answers": [
+              "水",
+              "水です",
+              "みず",
+              "みずです"
+            ],
+            "prompt_furigana": "私[わたし]は何[なに]をたくさん飲[の]みましたか。"
+          },
+          {
+            "prompt": "もう何が入る場所がありませんでしたか。",
+            "accepted_answers": [
+              "アイスクリーム",
+              "アイスクリームです",
+              "アイスクリームが入る場所"
+            ],
+            "prompt_furigana": "もう何[なに]が入[はい]る場[ば]所[しょ]がありませんでしたか。"
+          },
+          {
+            "prompt": "友達は、泣きながらカレーをどのぐらい食べましたか。",
+            "accepted_answers": [
+              "全部",
+              "全部です",
+              "ぜんぶ",
+              "ぜんぶです",
+              "カレーを全部食べました"
+            ],
+            "prompt_furigana": "友[とも]達[だち]は、泣[な]きながらカレーをどのぐらい食[た]べましたか。"
+          }
+        ],
+        "english_translation": "Last week, I went to a curry shop with a friend. That shop is near the station, and there are always many customers. My friend said, \"The curry here is very delicious.\" My friend comes here every week. I ordered the biggest curry. A red curry came. When I ate the curry, it was so spicy that I cried right away. My mouth and my body became hot. I drank six glasses of water, so much that my stomach got big. So there was no room left for ice cream. My friend did not say anything. My friend's face was red, and the eyes were red too. But my friend ate all of the curry while crying. At the end, my friend smiled a little and said. \"Today it is less spicy than before.\"",
+        "summary_ja": "辛いカレーを食べて、私は泣きました。",
+        "summary_en": "I cried over a very spicy curry, while my friend ate all of it and said it was less spicy than before.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "comparative-yori",
+          "desu",
+          "ga",
+          "gurai",
+          "he-direction",
+          "hodo",
+          "kara-because",
+          "kurai-degree",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "mou-past",
+          "nagara",
+          "nai-form",
+          "naru-become",
+          "ne-tag",
+          "ni-direction",
+          "ni-indirect",
+          "no-possessive",
+          "superlative-ichiban",
+          "ta-form",
+          "te-form",
+          "to-and",
+          "to-conditional",
+          "to-quotation",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "aisukuriimu",
+          "akai",
+          "aru",
+          "basho",
+          "chikaku",
+          "chuumon",
+          "dakara",
+          "demo",
+          "eki",
+          "hairu-v",
+          "ichiban",
+          "iku-v",
+          "issho-ni",
+          "itsumo",
+          "iu-v",
+          "kao",
+          "karada",
+          "karai",
+          "karee",
+          "koko",
+          "kuchi-v",
+          "kuru-v",
+          "kyaku",
+          "kyou",
+          "mae",
+          "maishuu",
+          "me-v",
+          "mise",
+          "mizu",
+          "mou",
+          "naku",
+          "nani-mo",
+          "naru-become",
+          "nomu-v",
+          "oishii",
+          "onaka",
+          "ooi",
+          "ookii",
+          "saigo-ni",
+          "senshuu",
+          "sono",
+          "sugu",
+          "sukoshi",
+          "taberu",
+          "tomodachi",
+          "totemo",
+          "warau",
+          "watashi",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "senshuu",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "issho-ni",
+            "start": 6,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 9,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 13,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "iku-v",
+            "start": 15,
+            "end": 20,
+            "surface_form": "行きました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 21,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 23,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 25,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 27,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 30,
+            "end": 33,
+            "surface_form": "あって",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "itsumo",
+            "start": 34,
+            "end": 37
+          },
+          {
+            "vocabulary_slug": "kyaku",
+            "start": 37,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "ooi",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 44,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 48,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 51,
+            "end": 54
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 56,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "oishii",
+            "start": 59,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 68,
+            "end": 73,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 74,
+            "end": 76
+          },
+          {
+            "vocabulary_slug": "maishuu",
+            "start": 77,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 79,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 82,
+            "end": 85,
+            "surface_form": "来ます",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 86,
+            "end": 87
+          },
+          {
+            "vocabulary_slug": "ichiban",
+            "start": 88,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 90,
+            "end": 93
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 93,
+            "end": 96
+          },
+          {
+            "vocabulary_slug": "chuumon",
+            "start": 97,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "akai",
+            "start": 104,
+            "end": 106
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 106,
+            "end": 109
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 110,
+            "end": 114,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 115,
+            "end": 118
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 119,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "sugu",
+            "start": 124,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "naku",
+            "start": 126,
+            "end": 128
+          },
+          {
+            "vocabulary_slug": "karai",
+            "start": 130,
+            "end": 134,
+            "surface_form": "辛かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "kuchi-v",
+            "start": 137,
+            "end": 138
+          },
+          {
+            "vocabulary_slug": "karada",
+            "start": 139,
+            "end": 140
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 143,
+            "end": 148,
+            "surface_form": "なりました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 149,
+            "end": 150
+          },
+          {
+            "vocabulary_slug": "onaka",
+            "start": 152,
+            "end": 154
+          },
+          {
+            "vocabulary_slug": "naru-become",
+            "start": 158,
+            "end": 160
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 164,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "nomu-v",
+            "start": 168,
+            "end": 173,
+            "surface_form": "飲みました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "dakara",
+            "start": 174,
+            "end": 177
+          },
+          {
+            "vocabulary_slug": "aisukuriimu",
+            "start": 178,
+            "end": 185
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 186,
+            "end": 188
+          },
+          {
+            "vocabulary_slug": "basho",
+            "start": 188,
+            "end": 190
+          },
+          {
+            "vocabulary_slug": "mou",
+            "start": 192,
+            "end": 194
+          },
+          {
+            "vocabulary_slug": "aru",
+            "start": 194,
+            "end": 202,
+            "surface_form": "ありませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 203,
+            "end": 205
+          },
+          {
+            "vocabulary_slug": "nani-mo",
+            "start": 206,
+            "end": 208
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 208,
+            "end": 216,
+            "surface_form": "言いませんでした",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 217,
+            "end": 219
+          },
+          {
+            "vocabulary_slug": "kao",
+            "start": 220,
+            "end": 221
+          },
+          {
+            "vocabulary_slug": "akai",
+            "start": 222,
+            "end": 225,
+            "surface_form": "赤くて",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "me-v",
+            "start": 226,
+            "end": 227
+          },
+          {
+            "vocabulary_slug": "akai",
+            "start": 228,
+            "end": 232,
+            "surface_form": "赤かった",
+            "inflection": "ta"
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 235,
+            "end": 237
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 238,
+            "end": 240
+          },
+          {
+            "vocabulary_slug": "karee",
+            "start": 247,
+            "end": 250
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 251,
+            "end": 253
+          },
+          {
+            "vocabulary_slug": "taberu",
+            "start": 253,
+            "end": 258,
+            "surface_form": "食べました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "saigo-ni",
+            "start": 259,
+            "end": 262
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 263,
+            "end": 265
+          },
+          {
+            "vocabulary_slug": "sukoshi",
+            "start": 266,
+            "end": 268
+          },
+          {
+            "vocabulary_slug": "warau",
+            "start": 268,
+            "end": 271,
+            "surface_form": "笑って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 271,
+            "end": 276,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "kyou",
+            "start": 278,
+            "end": 280
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 282,
+            "end": 283
+          },
+          {
+            "vocabulary_slug": "karai",
+            "start": 285,
+            "end": 289,
+            "surface_form": "辛くない",
+            "inflection": "nai"
+          }
+        ],
+        "word_count": 160,
+        "body_furigana": "先[せん]週[しゅう]、友[とも]達[だち]と一[いっ]緒[しょ]にカレーの店[みせ]へ行[い]きました。その店[みせ]は駅[えき]の近[ちか]くにあって、いつも客[きゃく]が多[おお]いです。友[とも]達[だち]は「ここのカレーは、とてもおいしいですよ」と言[い]いました。友[とも]達[だち]は毎[まい]週[しゅう]ここへ来[き]ます。私[わたし]は一[いち]番[ばん]大[おお]きいカレーを注[ちゅう]文[もん]しました。赤[あか]いカレーが来[き]ました。カレーを食[た]べると、すぐ泣[な]くほど辛[つら]かったです。口[くち]も体[からだ]も熱[あつ]くなりました。私[わたし]は、お腹[なか]が大[おお]きくなるくらい、水[みず]を六[ろく]杯[ばい]飲[の]みました。だから、アイスクリームが入[はい]る場[ば]所[しょ]は、もうありませんでした。友[とも]達[だち]は何[なに]も言[い]いませんでした。友[とも]達[だち]の顔[かお]は赤[あか]くて、目[め]も赤[あか]かったです。でも、友[とも]達[だち]は泣[な]きながら、カレーを全[ぜん]部[ぶ]食[た]べました。最[さい]後[ご]に、友[とも]達[だち]は少[すこ]し笑[わら]って言[い]いました。「今日[きょう]は、前[まえ]より辛[つら]くないですね。」",
+        "slug": "naku-hodo-karai",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "atarashii-sensei-tte",
+      "position": 3,
+      "tone": "humorous",
+      "passage": {
+        "title": "新しい先生のうわさ",
+        "body": "今日、学校で、みんなが新しい先生の話をしていました。男の子は「新しい先生って、英語だけでなく、犬の言葉も分かるんですよ」と言いました。女の子は「その先生って、テニスだけでなく、ゴルフも上手なんです」と言いました。別の学生は「前は、歌が上手で有名な人でした」と言いました。午後、新しい先生が教室に来ました。先生は英語で話しました。窓の外に犬がいました。先生が犬に何か言うと、犬は走って来ました。授業の後で、先生は校庭でテニスをして、ゴルフもしました。とても上手でした。でも、先生を前から知っている人は、誰もいませんでした。",
+        "questions": [
+          {
+            "prompt": "新しい先生は、英語のほかに何の言葉が分かりますか。",
+            "accepted_answers": [
+              "犬の言葉",
+              "犬の言葉です",
+              "いぬの言葉",
+              "いぬのことば",
+              "いぬのことばです"
+            ],
+            "prompt_furigana": "新[あたら]しい先[せん]生[せい]は、英[えい]語[ご]のほかに何[なに]の言[こと]葉[ば]が分[わ]かりますか。"
+          },
+          {
+            "prompt": "女の子は、先生は何が上手だと言いましたか。",
+            "accepted_answers": [
+              "テニス",
+              "ゴルフ",
+              "テニスとゴルフ",
+              "テニスとゴルフです",
+              "テニスもゴルフも"
+            ],
+            "prompt_furigana": "女[おんな]の子[こ]は、先[せん]生[せい]は何[なに]が上手[じょうず]だと言[い]いましたか。"
+          },
+          {
+            "prompt": "新しい先生は、午後どこに来ましたか。",
+            "accepted_answers": [
+              "教室",
+              "教室です",
+              "きょうしつ",
+              "きょうしつです",
+              "教室に来ました"
+            ],
+            "prompt_furigana": "新[あたら]しい先[せん]生[せい]は、午[ご]後[ご]どこに来[き]ましたか。"
+          },
+          {
+            "prompt": "先生が何か言うと、犬はどうしましたか。",
+            "accepted_answers": [
+              "走って来ました",
+              "走ってきました",
+              "はしって来ました",
+              "はしってきました"
+            ],
+            "prompt_furigana": "先[せん]生[せい]が何[なに]か言[い]うと、犬[いぬ]はどうしましたか。"
+          },
+          {
+            "prompt": "先生は、どこでテニスをしましたか。",
+            "accepted_answers": [
+              "校庭",
+              "校庭です",
+              "こうてい",
+              "こうていです",
+              "校庭でしました"
+            ],
+            "prompt_furigana": "先[せん]生[せい]は、どこでテニスをしましたか。"
+          }
+        ],
+        "english_translation": "Today at school, everyone was talking about the new teacher. A boy said, \"The new teacher understands not only English but also the language of dogs.\" A girl said, \"That teacher is good at not only tennis but also golf.\" Another student said, \"Before, the teacher was a famous person who was good at singing.\" In the afternoon, the new teacher came to the classroom. The teacher spoke in English. There was a dog outside the window. When the teacher said something to the dog, the dog came running. After class, the teacher played tennis and golf in the schoolyard. The teacher was very good. But nobody knew the teacher from before.",
+        "summary_ja": "新しい先生は、みんなの話と同じでしたが、有名ではありませんでした。",
+        "summary_en": "The new teacher turned out to match the rumours, except that nobody had ever heard of the teacher.",
+        "grammar_slugs": [
+          "adj-i-adverb",
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "ato-de",
+          "dake-de-naku",
+          "de-location",
+          "desu",
+          "ga",
+          "kara-from",
+          "masen",
+          "mashita",
+          "masu",
+          "mo-also",
+          "ni-direction",
+          "ni-indirect",
+          "no-nominalizer",
+          "no-possessive",
+          "noda",
+          "te-form",
+          "te-iru",
+          "teiru-result",
+          "to-conditional",
+          "to-quotation",
+          "tte",
+          "wa-topic",
+          "wo",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "betsu",
+          "dare-mo",
+          "demo",
+          "eigo",
+          "gakkou-v",
+          "gakusei",
+          "gogo",
+          "gorufu",
+          "hanashi",
+          "hanasu-v",
+          "hashiru",
+          "hito",
+          "inu",
+          "iru-exist",
+          "iu-v",
+          "jouzu",
+          "jugyou",
+          "kotoba",
+          "koutei",
+          "kuru-v",
+          "kyou",
+          "kyoushitsu",
+          "mado",
+          "mae",
+          "minna",
+          "moshi",
+          "nani",
+          "onnanoko",
+          "otokonoko",
+          "sensei",
+          "shiru",
+          "sono",
+          "soto",
+          "suru",
+          "tenisu",
+          "totemo",
+          "uta",
+          "wakaru",
+          "yuumei"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "gakkou-v",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 7,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "atarashii-adj",
+            "start": 11,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 14,
+            "end": 16
+          },
+          {
+            "vocabulary_slug": "hanashi",
+            "start": 17,
+            "end": 18
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 19,
+            "end": 21,
+            "surface_form": "して",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 21,
+            "end": 25,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "otokonoko",
+            "start": 26,
+            "end": 29
+          },
+          {
+            "vocabulary_slug": "atarashii-adj",
+            "start": 31,
+            "end": 34
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 34,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "eigo",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 47,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "kotoba",
+            "start": 49,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "wakaru",
+            "start": 52,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 61,
+            "end": 66,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "onnanoko",
+            "start": 67,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 72,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 74,
+            "end": 76
+          },
+          {
+            "vocabulary_slug": "tenisu",
+            "start": 79,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "gorufu",
+            "start": 88,
+            "end": 91
+          },
+          {
+            "vocabulary_slug": "jouzu",
+            "start": 92,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 100,
+            "end": 105,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "betsu",
+            "start": 106,
+            "end": 107
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 108,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 112,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "uta",
+            "start": 115,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "jouzu",
+            "start": 117,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "yuumei",
+            "start": 120,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 123,
+            "end": 124
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 129,
+            "end": 134,
+            "surface_form": "言いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "gogo",
+            "start": 135,
+            "end": 137
+          },
+          {
+            "vocabulary_slug": "atarashii-adj",
+            "start": 138,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 141,
+            "end": 143
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 144,
+            "end": 146
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 147,
+            "end": 151,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 152,
+            "end": 154
+          },
+          {
+            "vocabulary_slug": "eigo",
+            "start": 155,
+            "end": 157
+          },
+          {
+            "vocabulary_slug": "hanasu-v",
+            "start": 158,
+            "end": 163,
+            "surface_form": "話しました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "mado",
+            "start": 164,
+            "end": 165
+          },
+          {
+            "vocabulary_slug": "soto",
+            "start": 166,
+            "end": 167
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 168,
+            "end": 169
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 170,
+            "end": 174,
+            "surface_form": "いました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 175,
+            "end": 177
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 178,
+            "end": 179
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 180,
+            "end": 181
+          },
+          {
+            "vocabulary_slug": "iu-v",
+            "start": 182,
+            "end": 184
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 186,
+            "end": 187
+          },
+          {
+            "vocabulary_slug": "hashiru",
+            "start": 188,
+            "end": 191,
+            "surface_form": "走って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "kuru-v",
+            "start": 191,
+            "end": 195,
+            "surface_form": "来ました",
+            "inflection": "masu"
+          },
+          {
+            "vocabulary_slug": "jugyou",
+            "start": 196,
+            "end": 198
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 202,
+            "end": 204
+          },
+          {
+            "vocabulary_slug": "koutei",
+            "start": 205,
+            "end": 207
+          },
+          {
+            "vocabulary_slug": "tenisu",
+            "start": 208,
+            "end": 211
+          },
+          {
+            "vocabulary_slug": "suru",
+            "start": 212,
+            "end": 214,
+            "surface_form": "して",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "gorufu",
+            "start": 215,
+            "end": 218
+          },
+          {
+            "vocabulary_slug": "moshi",
+            "start": 218,
+            "end": 220
+          },
+          {
+            "vocabulary_slug": "totemo",
+            "start": 224,
+            "end": 227
+          },
+          {
+            "vocabulary_slug": "jouzu",
+            "start": 227,
+            "end": 229
+          },
+          {
+            "vocabulary_slug": "demo",
+            "start": 233,
+            "end": 235
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 236,
+            "end": 238
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 239,
+            "end": 240
+          },
+          {
+            "vocabulary_slug": "shiru",
+            "start": 242,
+            "end": 245,
+            "surface_form": "知って",
+            "inflection": "te"
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 245,
+            "end": 247
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 247,
+            "end": 248
+          },
+          {
+            "vocabulary_slug": "dare-mo",
+            "start": 250,
+            "end": 252
+          },
+          {
+            "vocabulary_slug": "iru-exist",
+            "start": 252,
+            "end": 259,
+            "surface_form": "いませんでした",
+            "inflection": "masu"
+          }
+        ],
+        "word_count": 153,
+        "body_furigana": "今日[きょう]、学[がっ]校[こう]で、みんなが新[あたら]しい先[せん]生[せい]の話[はなし]をしていました。男[おとこ]の子[こ]は「新[あたら]しい先[せん]生[せい]って、英[えい]語[ご]だけでなく、犬[いぬ]の言[こと]葉[ば]も分[わ]かるんですよ」と言[い]いました。女[おんな]の子[こ]は「その先[せん]生[せい]って、テニスだけでなく、ゴルフも上手[じょうず]なんです」と言[い]いました。別[べつ]の学[がく]生[せい]は「前[まえ]は、歌[うた]が上手[じょうず]で有[ゆう]名[めい]な人[ひと]でした」と言[い]いました。午[ご]後[ご]、新[あたら]しい先[せん]生[せい]が教[きょう]室[しつ]に来[き]ました。先[せん]生[せい]は英[えい]語[ご]で話[はな]しました。窓[まど]の外[そと]に犬[いぬ]がいました。先[せん]生[せい]が犬[いぬ]に何[なに]か言[い]うと、犬[いぬ]は走[はし]って来[き]ました。授[じゅ]業[ぎょう]の後[あと]で、先[せん]生[せい]は校[こう]庭[てい]でテニスをして、ゴルフもしました。とても上手[じょうず]でした。でも、先[せん]生[せい]を前[まえ]から知[し]っている人[ひと]は、誰[だれ]もいませんでした。",
+        "slug": "atarashii-sensei-tte",
+        "_meta": {
+          "generator_model": "claude-sonnet-5-5",
+          "prompt_version": "5",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

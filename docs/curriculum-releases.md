@@ -81,7 +81,29 @@ The app reads only `s<REQUIRED_CURRICULUM_SCHEMA_VERSION>/manifest.json`. It ins
 - `CURRICULUM_SCHEMA_VERSION` in `scripts/curriculum-schema.ts`
 - `REQUIRED_CURRICULUM_SCHEMA_VERSION` in `mobile/src/data/curriculum/curriculumConfig.ts`
 
-When the curriculum DDL changes in a way that a query can see, raise both in one commit. Then the new file goes to a new path (`s2/...`). Old apps keep reading `s1` and keep their curriculum. Both are `1` now.
+When the curriculum DDL changes in a way that a query can see, raise both in one commit. Then the new file goes to a new path. Old apps keep reading their old path and keep their curriculum.
+
+| Schema | Path | Read by | Content |
+| --- | --- | --- | --- |
+| 1 | `s1/manifest.json` | Store apps from before the level ladder | The JLPT-banded database (`items.jlpt_level`) |
+| 2 | `s2/manifest.json` | Apps built from the level ladder on | The ladder database (`items.level`, `level_jlpt_equivalence`) |
+
+Both constants are `2` now. A new app asks for `s2` only. An old app asks for `s1` only, so it never sees a schema 2 file.
+
+The first schema 2 release is signed by the operator, offline, like every release: run the commands above from the commit that holds the ladder seed (the default is the current schema). The `s2` manifest does not exist until then, so a new app finds no update and keeps the seed that is bundled in it.
+
+### Content fix for old store apps (schema 1)
+
+A schema 1 release is a file compiled from the last schema 1 commit (before the ladder). Do not use the committed seed: it has the schema 2 shape, and the script refuses `--seed` for the current schema and `--schema 1` without `--seed`.
+
+1. In a clean checkout of the last schema 1 commit, run `COMPILE_OUTPUT_PATH=/tmp/curriculum-s1.db npm run compile-curriculum` (it raises the version; commit nothing from it that you do not need).
+2. Back in the current checkout, release it with the schema and the file:
+
+   ```bash
+   CURRICULUM_SIGNING_KEY_FILE=~/.pakapaka-keys/curriculum-k1.pem npm run release-curriculum -- --key-id k1 --schema 1 --seed /tmp/curriculum-s1.db --dry-run
+   ```
+
+   Then the same command without `--dry-run`. The script checks the version against the live `s1` manifest, so the file's `curriculum_metadata.version` must be higher than the live `s1` version.
 
 ## Key rotation
 
